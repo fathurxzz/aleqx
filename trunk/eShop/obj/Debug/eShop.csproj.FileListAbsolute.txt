@@ -1,5 +1,0 @@
-D:\projects\eShop\eShop\bin\eShop.dll
-D:\projects\eShop\eShop\bin\eShop.pdb
-D:\projects\eShop\eShop\obj\Debug\ResolveAssemblyReference.cache
-D:\projects\eShop\eShop\obj\Debug\eShop.dll
-D:\projects\eShop\eShop\obj\Debug\eShop.pdb
