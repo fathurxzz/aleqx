@@ -70,6 +70,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Главная.
+        /// </summary>
+        internal static string MainPage {
+            get {
+                return ResourceManager.GetString("MainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Новости.
+        /// </summary>
+        internal static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to eShop.
         /// </summary>
         internal static string PageTitle {

@@ -2,4 +2,5 @@
 <%@ Import Namespace="eShop.Helpers" %>
 
 
-<%=Html.ResourceActionLink("Categories","aaa","sss") %>
+<%=Html.ResourceActionLink("MainPage","Index","Home").ToLower() %>
+<%=Html.ResourceActionLink("News","News","Home").ToLower() %>
