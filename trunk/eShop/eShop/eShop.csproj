@@ -128,6 +128,7 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\images\bg.gif" />
     <Content Include="Views\Home\News.aspx" />
     <Content Include="Views\PageParts\MainMenu.ascx" />
   </ItemGroup>
