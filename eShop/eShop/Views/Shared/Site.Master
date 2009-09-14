@@ -15,19 +15,19 @@
 </head>
 
 <body>
-    <div class="page">
-        <div id="header">
-            
-        </div>
-        <div id="mainMenu">
-        <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
-        </div>
-        <div id="content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
-            <div id="footer">
+<center>
+    <div class="subLayer">
+        <div class="page">
+            <div id="mainMenu">
+            <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
+            </div>
+            <div id="content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                <div id="footer">
+                </div>
             </div>
         </div>
     </div>
+</center>    
 </body>
 </html>
