@@ -7,6 +7,7 @@
     font-family:tahoma;
     background-color:White;
 }
+
 .subLayer
 {    
     background-image:url('images/bg.gif');
@@ -39,8 +40,15 @@
 
 .content{}
 
-#header{height:100px; background:#E9C675; border:1px solid #E9C675;}
+#header 
+{
+    border-bottom-color:#818181;
+    border-bottom-style:solid;
+    }
+
+/*#header{height:100px; background:#E9C675; border:1px solid #E9C675;}
 #footer{}
 
 #header a{text-decoration:none;}
-#header a:hover{text-decoration:underline;}
+#header a:hover{text-decoration:underline;}*/
+

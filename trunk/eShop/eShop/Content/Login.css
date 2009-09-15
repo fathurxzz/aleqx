@@ -1,0 +1,21 @@
+﻿.logonInput
+{
+    width:70px;
+    height:15px;
+    font-size:12px;
+}
+
+.loginTitle
+{
+    font-size:11px;
+    
+}
+
+#btnLogin
+{
+    color:White;
+    background-color:#818181;
+    border-color:#818181;
+    border-style:none;
+    height:20px;
+}
