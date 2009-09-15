@@ -20,6 +20,11 @@ namespace eShop.Controllers
 
         #region Catigories
 
+        public ActionResult Categories()
+        {
+            return View();
+        }
+
         public ActionResult CategoriesList(int? id, int level)
         {
             using (ShopStorage context = new ShopStorage())

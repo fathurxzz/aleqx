@@ -35,3 +35,6 @@
 #subHeader { height:70px; }
 
 #leftMenu { float:left; padding:5px; }
+
+
+.adminTable tr td{border-collapse:collapse; border:1px dotted #ccc; padding:3px;}
