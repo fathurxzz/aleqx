@@ -28,10 +28,20 @@
                     <% Html.RenderPartial("LogonStatus"); %>
                 </div>
             </div>
+            
+            <div id="subHeader">
+            
+            
+            </div>
+            
+            
             <div id="content">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-                <div id="footer">
+                
+                <div id="leftMenu">
+                    <asp:ContentPlaceHolder ID="leftMenuContent" runat="server" />
                 </div>
+                
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
         </div>
     </div>

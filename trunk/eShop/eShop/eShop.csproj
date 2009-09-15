@@ -86,11 +86,6 @@
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Models\ProfileCommon.cs" />
-    <Compile Include="Models\Structure.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Structure.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,12 +112,6 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\Structure.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Structure.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Resources.resx">
