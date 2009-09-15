@@ -12,7 +12,11 @@ namespace eShop.Controllers
     {
         //
         // GET: /Admin/
+        public ActionResult MainMenu()
+        {
 
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

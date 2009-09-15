@@ -120,6 +120,12 @@
   <data name="Categories" xml:space="preserve">
     <value>Категории</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="DeleteCategoryConfirmation" xml:space="preserve">
+    <value>Удалить выбранную категорию?</value>
+  </data>
   <data name="MainPage" xml:space="preserve">
     <value>Главная</value>
   </data>

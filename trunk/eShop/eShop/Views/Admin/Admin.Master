@@ -18,7 +18,7 @@
     <div class="subLayer">
         <div class="page">
             <div id="mainMenu">
-                <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
+                <% Html.RenderAction<AdminController>(ac => ac.MainMenu()); %>
             </div>
             <div id="content">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
