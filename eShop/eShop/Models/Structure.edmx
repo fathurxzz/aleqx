@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ShopStorage.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="ShopStorageStoreContainer">
+          <EntitySet Name="Category" EntityType="ShopStorage.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CategorytProperties" EntityType="ShopStorage.Store.CategorytProperties" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="ShopStorage.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductProperties" EntityType="ShopStorage.Store.ProductProperties" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CATEGORY_REFERENCE_CATEGORY" Association="ShopStorage.Store.FK_CATEGORY_REFERENCE_CATEGORY">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORYPROP_REF_CATEGORY" Association="ShopStorage.Store.FK_CATEGORYPROP_REF_CATEGORY">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_REFERENCE_CATEGORY" Association="ShopStorage.Store.FK_PRODUCT_REFERENCE_CATEGORY">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTP_REFERENCE_CATEGORY" Association="ShopStorage.Store.FK_PRODUCTP_REFERENCE_CATEGORY">
+            <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+            <End Role="ProductProperties" EntitySet="ProductProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTP_REFERENCE_PRODUCT" Association="ShopStorage.Store.FK_PRODUCTP_REFERENCE_PRODUCT">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductProperties" EntitySet="ProductProperties" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="CategorytProperties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProductProperties">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ProductPropertyId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductPropertyId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_CATEGORY_REFERENCE_CATEGORY">
+          <End Role="Category" Type="ShopStorage.Store.Category" Multiplicity="0..1" />
+          <End Role="Category1" Type="ShopStorage.Store.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORYPROP_REF_CATEGORY">
+          <End Role="Category" Type="ShopStorage.Store.Category" Multiplicity="0..1" />
+          <End Role="CategorytProperties" Type="ShopStorage.Store.CategorytProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategorytProperties">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_REFERENCE_CATEGORY">
+          <End Role="Category" Type="ShopStorage.Store.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="ShopStorage.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTP_REFERENCE_CATEGORY">
+          <End Role="CategorytProperties" Type="ShopStorage.Store.CategorytProperties" Multiplicity="1" />
+          <End Role="ProductProperties" Type="ShopStorage.Store.ProductProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategorytProperties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductProperties">
+              <PropertyRef Name="ProductPropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTP_REFERENCE_PRODUCT">
+          <End Role="Product" Type="ShopStorage.Store.Product" Multiplicity="1" />
+          <End Role="ProductProperties" Type="ShopStorage.Store.ProductProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductProperties">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShopStorage" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="shopEntities">
+          <EntitySet Name="Categories" EntityType="ShopStorage.Category" />
+          <EntitySet Name="CategorytProperties" EntityType="ShopStorage.CategorytProperties" />
+          <EntitySet Name="Product" EntityType="ShopStorage.Product" />
+          <EntitySet Name="ProductProperties" EntityType="ShopStorage.ProductProperties" />
+          <AssociationSet Name="FK_CATEGORY_REFERENCE_CATEGORY" Association="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORYPROP_REF_CATEGORY" Association="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_REFERENCE_CATEGORY" Association="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTP_REFERENCE_CATEGORY" Association="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY">
+            <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+            <End Role="ProductProperties" EntitySet="ProductProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTP_REFERENCE_PRODUCT" Association="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductProperties" EntitySet="ProductProperties" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="Categories" Relationship="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Parent" Relationship="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="CategorytProperties" Relationship="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" FromRole="Category" ToRole="CategorytProperties" />
+          <NavigationProperty Name="Product" Relationship="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="CategorytProperties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Category" Relationship="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" FromRole="CategorytProperties" ToRole="Category" />
+          <NavigationProperty Name="ProductProperties" Relationship="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" FromRole="CategorytProperties" ToRole="ProductProperties" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ProductProperties" Relationship="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" FromRole="Product" ToRole="ProductProperties" />
+        </EntityType>
+        <EntityType Name="ProductProperties">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="ProductPropertyId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductPropertyId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CategorytProperties" Relationship="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" FromRole="ProductProperties" ToRole="CategorytProperties" />
+          <NavigationProperty Name="Product" Relationship="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" FromRole="ProductProperties" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_CATEGORY_REFERENCE_CATEGORY">
+          <End Role="Category" Type="ShopStorage.Category" Multiplicity="0..1" />
+          <End Role="Category1" Type="ShopStorage.Category" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_CATEGORYPROP_REF_CATEGORY">
+          <End Role="Category" Type="ShopStorage.Category" Multiplicity="0..1" />
+          <End Role="CategorytProperties" Type="ShopStorage.CategorytProperties" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_PRODUCT_REFERENCE_CATEGORY">
+          <End Role="Category" Type="ShopStorage.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="ShopStorage.Product" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_PRODUCTP_REFERENCE_CATEGORY">
+          <End Role="CategorytProperties" Type="ShopStorage.CategorytProperties" Multiplicity="1" />
+          <End Role="ProductProperties" Type="ShopStorage.ProductProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategorytProperties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductProperties">
+              <PropertyRef Name="ProductPropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTP_REFERENCE_PRODUCT">
+          <End Role="Product" Type="ShopStorage.Product" Multiplicity="1" />
+          <End Role="ProductProperties" Type="ShopStorage.ProductProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductProperties">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="ShopStorageStoreContainer" CdmEntityContainer="shopEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.Category)">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategorytProperties">
+            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.CategorytProperties)">
+              <MappingFragment StoreEntitySet="CategorytProperties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.Product)">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductProperties">
+            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.ProductProperties)">
+              <MappingFragment StoreEntitySet="ProductProperties">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductPropertyId" ColumnName="ProductPropertyId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_CATEGORY_REFERENCE_CATEGORY" TypeName="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" StoreEntitySet="Category">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="Id" ColumnName="CategoryId" />
+            </EndProperty>
+            <EndProperty Name="Category1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="CategoryId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_CATEGORYPROP_REF_CATEGORY" TypeName="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" StoreEntitySet="CategorytProperties">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="Id" ColumnName="CategoryId" />
+            </EndProperty>
+            <EndProperty Name="CategorytProperties">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="CategoryId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PRODUCT_REFERENCE_CATEGORY" TypeName="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" StoreEntitySet="Product">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="Id" ColumnName="CategoryId" />
+            </EndProperty>
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <Condition ColumnName="CategoryId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PRODUCTP_REFERENCE_CATEGORY" TypeName="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" StoreEntitySet="ProductProperties">
+            <EndProperty Name="CategorytProperties">
+              <ScalarProperty Name="Id" ColumnName="ProductPropertyId" />
+            </EndProperty>
+            <EndProperty Name="ProductProperties">
+              <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              <ScalarProperty Name="ProductPropertyId" ColumnName="ProductPropertyId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_PRODUCTP_REFERENCE_PRODUCT" TypeName="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" StoreEntitySet="ProductProperties">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="ProductId" />
+            </EndProperty>
+            <EndProperty Name="ProductProperties">
+              <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              <ScalarProperty Name="ProductPropertyId" ColumnName="ProductPropertyId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Structure">
+        <EntityTypeShape EntityType="ShopStorage.Category" Width="1.5" PointX="0.75" PointY="2.25" Height="2.0853483072916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.CategorytProperties" Width="1.5" PointX="3" PointY="1.125" Height="1.5923063151041665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.Product" Width="1.5" PointX="3" PointY="3.5" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.ProductProperties" Width="1.5" PointX="5.25" PointY="2.375" Height="1.7566536458333339" IsExpanded="true" />
+        <AssociationConnector Association="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.3353483072916674" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.5853483072916674" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.5853483072916674" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.3353483072916674" /></AssociationConnector>
+        <AssociationConnector Association="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.4836531575520833" />
+          <ConnectorPoint PointX="3" PointY="2.4836531575520833" /></AssociationConnector>
+        <AssociationConnector Association="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.9176741536458337" />
+          <ConnectorPoint PointX="3" PointY="3.9176741536458337" /></AssociationConnector>
+        <AssociationConnector Association="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.5461531575520833" />
+          <ConnectorPoint PointX="5.25" PointY="2.5461531575520833" /></AssociationConnector>
+        <AssociationConnector Association="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.8158268229166667" />
+          <ConnectorPoint PointX="5.25" PointY="3.8158268229166667" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
