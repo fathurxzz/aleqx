@@ -86,6 +86,11 @@
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Models\ProfileCommon.cs" />
+    <Compile Include="Models\Structure.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Structure.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +134,12 @@
     <Content Include="Views\Shared\LogOnName.ascx" />
     <Content Include="Views\Shared\LogOnStatus.ascx" />
     <Content Include="Views\Shared\MasterLogOn.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Structure.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Structure.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

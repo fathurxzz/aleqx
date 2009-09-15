@@ -14,11 +14,10 @@ namespace eShop.Controllers
         {
             using (ShopStorage context = new ShopStorage())
             {
-                List<Category> categories = (from category in context.Category where category.Enabled==true select category).ToList();
+                List<Category> categories = (from category in context.Categories where category.Enabled==true select category).ToList();
 
                 return View(categories);
             }
-            return View();
         }
     }
 }
