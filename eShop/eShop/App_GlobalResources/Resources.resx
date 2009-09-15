@@ -129,4 +129,7 @@
   <data name="PageTitle" xml:space="preserve">
     <value>eShop</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Добро пожаловать</value>
+  </data>
 </root>

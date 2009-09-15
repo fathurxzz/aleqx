@@ -85,6 +85,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Models\ProfileCommon.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,8 +134,15 @@
     <Content Include="Views\PageParts\MainMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Login.css" />
+    <Content Include="Views\Admin\Admin.Master" />
+    <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Shared\LogOnName.ascx" />
+    <Content Include="Views\Shared\LogOnStatus.ascx" />
+    <Content Include="Views\Shared\MasterLogOn.ascx" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
