@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ShopStorage.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="ShopStorage.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="ShopStorageStoreContainer">
           <EntitySet Name="Category" EntityType="ShopStorage.Store.Category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CategorytProperties" EntityType="ShopStorage.Store.CategorytProperties" store:Type="Tables" Schema="dbo" />
@@ -37,7 +37,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
-          <Property Name="Enabled" Type="bit" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
           <Property Name="CategoryId" Type="int" />
         </EntityType>
         <EntityType Name="CategorytProperties">
@@ -127,8 +127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShopStorage" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -164,7 +163,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Categories" Relationship="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Parent" Relationship="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" FromRole="Category1" ToRole="Category" />
           <NavigationProperty Name="CategorytProperties" Relationship="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" FromRole="Category" ToRole="CategorytProperties" />

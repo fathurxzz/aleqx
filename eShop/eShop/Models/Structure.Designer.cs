@@ -16,7 +16,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_PRODUCT", "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.Product), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
 
 // Original file name:
-// Generation date: 15.09.2009 15:02:37
+// Generation date: 15.09.2009 16:08:25
 namespace eShop.Models
 {
     
@@ -154,10 +154,12 @@ namespace eShop.Models
         /// Create a new Category object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
-        public static Category CreateCategory(int id)
+        /// <param name="enabled">Initial value of Enabled.</param>
+        public static Category CreateCategory(int id, bool enabled)
         {
             Category category = new Category();
             category.Id = id;
+            category.Enabled = enabled;
             return category;
         }
         /// <summary>
@@ -209,9 +211,9 @@ namespace eShop.Models
         /// <summary>
         /// There are no comments for Property Enabled in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<bool> Enabled
+        public bool Enabled
         {
             get
             {
@@ -226,8 +228,8 @@ namespace eShop.Models
                 this.OnEnabledChanged();
             }
         }
-        private global::System.Nullable<bool> _Enabled;
-        partial void OnEnabledChanging(global::System.Nullable<bool> value);
+        private bool _Enabled;
+        partial void OnEnabledChanging(bool value);
         partial void OnEnabledChanged();
         /// <summary>
         /// There are no comments for Categories in the schema.
