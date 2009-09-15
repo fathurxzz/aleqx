@@ -24,7 +24,7 @@ namespace eShop.Controllers
         {
             using (ShopStorage context = new ShopStorage())
             {
-                List<Category> categories = context.Category.Select(c => c).ToList();
+                List<Category> categories = context.Categories.Select(c => c).ToList();
                 if (id == null)
                     categories = categories.Select(c => c).Where(c => c.Parent == null).ToList();
                 else
