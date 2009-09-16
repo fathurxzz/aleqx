@@ -9,6 +9,7 @@
 <script type="text/javascript">
     var changes = {};
     var enables = {};
+
     function updateEnables(check, id) {
         if (check.checked) {
             enables[id] = true;
