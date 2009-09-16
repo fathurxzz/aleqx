@@ -32,10 +32,15 @@
                 <%= Html.Hidden("itemId_" + item.Id, item.Id)%>
             </td>
             <td style="width:200px">
-                <%= Html.Encode(item.Name) %>
+                <%= Html.TextBox("item_" + item.Id, item.Name, new { onblur = "tableChanged(changes, this)", style="width:120px;" })%>
             </td>
             <td align="center" style="width:40px;">
                 <%= Html.CheckBox("Enabled_" + item.Id, item.Enabled, new { onblur = "updateEnables(this, " + item.Id + ")" })%>
+            </td>
+            <td>
+                <a href="#" onclick="insertCategory(this, <%= item.Id %>)">
+                    <%= Html.ResourceString("AddSubCategory") %>
+                </a>
             </td>
             <td>
                 <%= Html.ActionLink(Html.ResourceString("Delete"), "DeleteCategory", new { id = item.Id }, new { onclick = "return confirm('" + Html.ResourceString("DeleteCategoryConfirmation") + "')" })%>

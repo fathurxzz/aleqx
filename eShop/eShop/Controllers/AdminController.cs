@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using eShop.Models;
+using System.Web.Script.Serialization;
 
 namespace eShop.Controllers
 {
@@ -45,6 +46,62 @@ namespace eShop.Controllers
             }
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InsertCategory(FormCollection form)
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                int parentId = int.Parse(form["parentId"]);
+                Category parent = null;
+                if (parentId >= 0)
+                    parent = context.Categories.Select(c => c).Where(c => c.Id == parentId).First();
+                Category category = new Category();
+                category.Parent = parent;
+                category.Name = form["categoryName"];
+                category.Enabled = form["categoryEnabled"].ToLowerInvariant().IndexOf("true") > -1;
+                context.AddToCategories(category);
+                context.SaveChanges();
+                //context.UpdateTranslations(category.NamesXml);
+            }
+            return RedirectToAction("Categories");
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateCategories(FormCollection form)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            if (!string.IsNullOrEmpty(form["updates"]))
+            {
+                Dictionary<string, Dictionary<string, string>> updates = serializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(form["updates"]);
+            //    foreach (string key in updates.Keys)
+            //    {
+            //        int itemId = int.Parse(key);
+            //        Dictionary<string, string> translations = updates[key];
+            //        List<TranslationItem> translationItems = new List<TranslationItem>();
+            //        translationItems = (from tr in translations select new TranslationItem { ItemId = itemId, ItemType = ItemTypes.Category, Language = tr.Key, Translation = tr.Value }).ToList();
+            //        string translationXml = Utils.CreateTranslationXml(translationItems);
+            //        using (ShopStorage context = new ShopStorage())
+            //        {
+            //            context.UpdateTranslations(translationXml);
+            //        }
+            //    }
+            }
+            //if (!string.IsNullOrEmpty(form["enablities"]))
+            //{
+            //    Dictionary<string, string> enables = serializer.Deserialize<Dictionary<string, string>>(form["enablities"]);
+            //    using (ShopStorage context = new ShopStorage())
+            //    {
+            //        foreach (string key in enables.Keys)
+            //        {
+            //            int id = int.Parse(key);
+            //            Category category = context.Categories.Select(c => c).Where(c => c.Id == id).First();
+            //            category.Enabled = bool.Parse(enables[key]);
+            //        }
+            //        context.SaveChanges(true);
+            //    }
+            //}
+            return RedirectToAction("Categories");
+        }
 
         #endregion
 

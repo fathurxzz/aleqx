@@ -41,3 +41,6 @@
 
 
 .adminTable tr td{border-collapse:collapse; border:1px dotted #ccc; padding:3px;}
+
+.greyBorderBox{padding:10px; border: 1px solid #dbdbdb;  background:white;}
+.popUpBox{position:absolute; display:none; z-index:10001;}
