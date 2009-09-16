@@ -61,7 +61,6 @@ namespace eShop.Controllers
                 category.Enabled = form["categoryEnabled"].ToLowerInvariant().IndexOf("true") > -1;
                 context.AddToCategories(category);
                 context.SaveChanges();
-                //context.UpdateTranslations(category.NamesXml);
             }
             return RedirectToAction("Categories");
         }
@@ -70,36 +69,36 @@ namespace eShop.Controllers
         public ActionResult UpdateCategories(FormCollection form)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
+            
             if (!string.IsNullOrEmpty(form["updates"]))
             {
-                Dictionary<string, Dictionary<string, string>> updates = serializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(form["updates"]);
-            //    foreach (string key in updates.Keys)
-            //    {
-            //        int itemId = int.Parse(key);
-            //        Dictionary<string, string> translations = updates[key];
-            //        List<TranslationItem> translationItems = new List<TranslationItem>();
-            //        translationItems = (from tr in translations select new TranslationItem { ItemId = itemId, ItemType = ItemTypes.Category, Language = tr.Key, Translation = tr.Value }).ToList();
-            //        string translationXml = Utils.CreateTranslationXml(translationItems);
-            //        using (ShopStorage context = new ShopStorage())
-            //        {
-            //            context.UpdateTranslations(translationXml);
-            //        }
-            //    }
+                Dictionary<string, string> updates = serializer.Deserialize<Dictionary<string, string>>(form["updates"]);
+                using (ShopStorage context = new ShopStorage())
+                {
+                    foreach(string key in updates.Keys)
+                    {
+                        int id = int.Parse(key);
+                        Category category = context.Categories.Select(c => c).Where(c => c.Id == id).First();
+                        category.Name = updates[key];
+                    }
+                    context.SaveChanges();
+                }
             }
-            //if (!string.IsNullOrEmpty(form["enablities"]))
-            //{
-            //    Dictionary<string, string> enables = serializer.Deserialize<Dictionary<string, string>>(form["enablities"]);
-            //    using (ShopStorage context = new ShopStorage())
-            //    {
-            //        foreach (string key in enables.Keys)
-            //        {
-            //            int id = int.Parse(key);
-            //            Category category = context.Categories.Select(c => c).Where(c => c.Id == id).First();
-            //            category.Enabled = bool.Parse(enables[key]);
-            //        }
-            //        context.SaveChanges(true);
-            //    }
-            //}
+
+            if (!string.IsNullOrEmpty(form["enablities"]))
+            {
+                Dictionary<string, string> enables = serializer.Deserialize<Dictionary<string, string>>(form["enablities"]);
+                using (ShopStorage context = new ShopStorage())
+                {
+                    foreach (string key in enables.Keys)
+                    {
+                        int id = int.Parse(key);
+                        Category category = context.Categories.Select(c => c).Where(c => c.Id == id).First();
+                        category.Enabled = bool.Parse(enables[key]);
+                    }
+                    context.SaveChanges(true);
+                }
+            }
             return RedirectToAction("Categories");
         }
 

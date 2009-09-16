@@ -7,8 +7,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript">
-    var changes = {};
     var enables = {};
+    var names = {};
 
     function updateEnables(check, id) {
         if (check.checked) {
@@ -18,11 +18,17 @@
             enables[id] = false;
         }
     }
+
+    function updateNames(value, id) {
+        names[id] = value;
+    }
     
     function collectCategoryChanges() {
-        collectChanges(changes, 'updates');
         var enablities = $get("enablities");
         enablities.value = Sys.Serialization.JavaScriptSerializer.serialize(enables);
+
+        var updates = $get("updates");
+        updates.value = Sys.Serialization.JavaScriptSerializer.serialize(names);
         return true;
     }
     
@@ -59,8 +65,8 @@
     
     <% using (Html.BeginForm("UpdateCategories", "Admin", FormMethod.Post)){ %>
     <% Html.RenderAction<eShop.Controllers.AdminController>(a => a.CategoriesList(null, 0)); %>
-    <%= Html.Hidden("updates") %>
     <%= Html.Hidden("enablities") %>
+    <%= Html.Hidden("updates") %>
     <input type="submit" value="<%= Html.ResourceString("Save") %>" onclick="return collectCategoryChanges();" />
     <%} %>
 

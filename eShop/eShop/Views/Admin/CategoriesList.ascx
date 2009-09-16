@@ -32,7 +32,7 @@
                 <%= Html.Hidden("itemId_" + item.Id, item.Id)%>
             </td>
             <td style="width:200px">
-                <%= Html.TextBox("item_" + item.Id, item.Name, new { onblur = "tableChanged(changes, this)", style="width:120px;" })%>
+                <%= Html.TextBox("item_" + item.Id, item.Name, new { onblur = "updateNames(this.value, " + item.Id + ")", style="width:120px;" })%>
             </td>
             <td align="center" style="width:40px;">
                 <%= Html.CheckBox("Enabled_" + item.Id, item.Enabled, new { onblur = "updateEnables(this, " + item.Id + ")" })%>
