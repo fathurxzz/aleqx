@@ -99,10 +99,6 @@
     <Content Include="Views\Categories\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\jquery-1.3.2.js" />
-    <Content Include="Scripts\jquery-1.3.2.min.js" />
-    <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
@@ -130,7 +126,16 @@
   <ItemGroup>
     <Content Include="Content\Login.css" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.corner.js" />
+    <Content Include="Scripts\jquery.dropshadow.js" />
+    <Content Include="Scripts\jquery.easing.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.treeview.js" />
+    <Content Include="Scripts\jquery.ui.js" />
+    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Views\Admin\Admin.Master" />
     <Content Include="Views\Admin\Categories.aspx" />
     <Content Include="Views\Admin\CategoriesList.ascx" />
