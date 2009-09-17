@@ -55,7 +55,6 @@
     }
     $(function() {
         $("#insertCategory").click(function(e) { e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; } });
-        //$("#imagePopUp").dialog({ autoOpen: false, width: 440, height: 360, minHeight: 360, resizable: false });
     }
     );
         

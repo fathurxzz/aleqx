@@ -1,16 +1,13 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<eShop.Models.CategorytProperties>>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<eShop.Models.CategoryProperties>>" %>
 <%@ Import Namespace="Microsoft.Web.Mvc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
+	CategoryPropertiesList
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
-
+    <h2>CategoryPropertiesList</h2>
     <% Html.RenderAction<eShop.Controllers.PagePartsController>(ppc => ppc.CategoriesList()); %>
-
-
     <table>
         <tr>
             <th></th>
@@ -47,6 +44,7 @@
     <p>
         <%= Html.ActionLink("Create New", "Create") %>
     </p>
-
+    
+    
 </asp:Content>
 

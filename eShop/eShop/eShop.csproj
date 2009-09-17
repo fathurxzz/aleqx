@@ -74,7 +74,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\CategoryPropertiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagePartsController.cs" />
     <Compile Include="Controllers\Resources.cs" />
@@ -141,9 +140,9 @@
     <Content Include="Views\Admin\Admin.Master" />
     <Content Include="Views\Admin\Categories.aspx" />
     <Content Include="Views\Admin\CategoriesList.ascx" />
+    <Content Include="Views\Admin\CategoryPropertiesList.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\MainMenu.ascx" />
-    <Content Include="Views\CategoryProperties\Index.aspx" />
     <Content Include="Views\PageParts\CategoriesList.ascx" />
     <Content Include="Views\Shared\LogOnName.ascx" />
     <Content Include="Views\Shared\LogOnStatus.ascx" />
