@@ -106,7 +106,7 @@ namespace eShop.Controllers
 
         #region CategoryProperty
 
-        public ActionResult CategoryPropertiesList(int categoryId)
+        public ActionResult CategoryProperties(int categoryId)
         {
             using (ShopStorage context = new ShopStorage())
             {
