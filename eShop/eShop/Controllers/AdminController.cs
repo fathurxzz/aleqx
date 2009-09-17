@@ -106,6 +106,12 @@ namespace eShop.Controllers
 
         #region CategoryProperty
 
+        public ActionResult CategoryProperties()
+        {
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult CategoryProperties(int categoryId)
         {
             using (ShopStorage context = new ShopStorage())
@@ -114,6 +120,16 @@ namespace eShop.Controllers
                 return View(categoryProperties);
             }
         }
+
+        #endregion
+
+        #region Products
+
+        public ActionResult Products()
+        {
+            return View();
+        }
+
         #endregion
     }
 }

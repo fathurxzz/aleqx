@@ -17,10 +17,10 @@
               %>
         <tr>
             <th>
-                Name
+                <%=Html.ResourceString("Name") %>
             </th>
             <th>
-                Enabled
+                <%=Html.ResourceString("Enabled")%>
             </th>
         </tr>
 

@@ -143,6 +143,7 @@
     <Content Include="Views\Admin\CategoryProperties.aspx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\MainMenu.ascx" />
+    <Content Include="Views\Admin\Products.aspx" />
     <Content Include="Views\PageParts\CategoriesList.ascx" />
     <Content Include="Views\Shared\LogOnName.ascx" />
     <Content Include="Views\Shared\LogOnStatus.ascx" />

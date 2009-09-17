@@ -7,3 +7,5 @@
 <%=Html.ResourceActionLink("Categories", "Categories", "Admin").ToLower() %>
 <span style="color: #ffffff"><b>|</b></span>
 <%=Html.ResourceActionLink("CategoryProperties", "CategoryProperties", "Admin").ToLower()%>
+<span style="color: #ffffff"><b>|</b></span>
+<%=Html.ResourceActionLink("Products", "Products", "Admin").ToLower()%>
