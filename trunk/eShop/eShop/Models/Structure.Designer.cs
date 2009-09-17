@@ -16,7 +16,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_PRODUCT", "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.Product), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
 
 // Original file name:
-// Generation date: 17.09.2009 10:17:08
+// Generation date: 17.09.2009 15:31:34
 namespace eShop.Models
 {
     
