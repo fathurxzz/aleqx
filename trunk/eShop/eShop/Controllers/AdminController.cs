@@ -104,5 +104,16 @@ namespace eShop.Controllers
 
         #endregion
 
+        #region CategoryProperty
+
+        public ActionResult CategoryPropertiesList(int categoryId)
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == categoryId select categoryProperty).ToList();
+                return View(categoryProperties);
+            }
+        }
+        #endregion
     }
 }
