@@ -343,25 +343,29 @@
     <edmx:Diagrams>
       <Diagram Name="Structure">
         <EntityTypeShape EntityType="ShopStorage.Category" Width="1.5" PointX="0.75" PointY="2.25" Height="2.0853483072916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopStorage.CategoryProperties" Width="1.5" PointX="3" PointY="1.125" Height="1.5923063151041665" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopStorage.Product" Width="1.5" PointX="3" PointY="3.5" Height="1.9210009765624996" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopStorage.ProductProperties" Width="1.5" PointX="5.25" PointY="2.375" Height="1.7566536458333339" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.CategoryProperties" Width="1.875" PointX="3" PointY="0.5" Height="1.5923063151041665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.Product" Width="1.5" PointX="3.375" PointY="5.625" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.ProductProperties" Width="1.75" PointX="6.125" PointY="2.375" Height="1.7566536458333339" IsExpanded="true" />
         <AssociationConnector Association="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" ManuallyRouted="false">
           <ConnectorPoint PointX="1.2819230769230767" PointY="4.3353483072916674" />
           <ConnectorPoint PointX="1.2819230769230767" PointY="4.5853483072916674" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="4.5853483072916674" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="4.3353483072916674" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.4836531575520833" />
-          <ConnectorPoint PointX="3" PointY="2.4836531575520833" /></AssociationConnector>
+          <ConnectorPoint PointX="2.25" PointY="2.84375" />
+          <ConnectorPoint PointX="4.71875" PointY="2.84375" />
+          <ConnectorPoint PointX="4.71875" PointY="2.0923063151041665" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="3.9176741536458337" />
-          <ConnectorPoint PointX="3" PointY="3.9176741536458337" /></AssociationConnector>
+          <ConnectorPoint PointX="0.98470903846153834" PointY="4.3353483072916674" />
+          <ConnectorPoint PointX="0.98470903846153834" PointY="6.58550048828125" />
+          <ConnectorPoint PointX="3.375" PointY="6.58550048828125" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="2.5461531575520833" />
-          <ConnectorPoint PointX="5.25" PointY="2.5461531575520833" /></AssociationConnector>
+          <ConnectorPoint PointX="4.875" PointY="1.2961531575520833" />
+          <ConnectorPoint PointX="7" PointY="1.2961531575520833" />
+          <ConnectorPoint PointX="7" PointY="2.375" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="3.8158268229166667" />
-          <ConnectorPoint PointX="5.25" PointY="3.8158268229166667" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="4.046875" PointY="5.625" />
+          <ConnectorPoint PointX="4.046875" PointY="3.4877018229166667" />
+          <ConnectorPoint PointX="6.125" PointY="3.4877018229166667" /></AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

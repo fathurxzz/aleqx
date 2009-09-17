@@ -121,6 +121,22 @@ namespace eShop.Controllers
             }
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InsertCategoryProperty(FormCollection form)
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                int categoryId = int.Parse(form["categoryId"]);
+                Category category = context.Categories.Select(c => c).Where(c => c.Id == categoryId).First();
+                CategoryProperties categoryProperty = new CategoryProperties();
+                categoryProperty.Category = category;
+                categoryProperty.Name = form["categoryPropertyName"];
+                context.AddToCategoryProperties(categoryProperty);
+                context.SaveChanges();
+            }
+            return RedirectToAction("CategoryProperties");
+        }
+
         #endregion
 
         #region Products
