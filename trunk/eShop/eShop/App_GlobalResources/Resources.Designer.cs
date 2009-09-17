@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Свойства категорий.
+        /// </summary>
+        internal static string CategoryProperties {
+            get {
+                return ResourceManager.GetString("CategoryProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Удалить.
         /// </summary>
         internal static string Delete {
@@ -174,6 +183,15 @@ namespace Resources {
         internal static string Show {
             get {
                 return ResourceManager.GetString("Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подкатегории.
+        /// </summary>
+        internal static string SubCategories {
+            get {
+                return ResourceManager.GetString("SubCategories", resourceCulture);
             }
         }
         

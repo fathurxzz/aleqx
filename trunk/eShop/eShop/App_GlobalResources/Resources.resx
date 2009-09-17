@@ -129,6 +129,9 @@
   <data name="Categories" xml:space="preserve">
     <value>Категории</value>
   </data>
+  <data name="CategoryProperties" xml:space="preserve">
+    <value>Свойства категорий</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="Show" xml:space="preserve">
     <value>Показывать</value>
+  </data>
+  <data name="SubCategories" xml:space="preserve">
+    <value>Подкатегории</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Добро пожаловать</value>

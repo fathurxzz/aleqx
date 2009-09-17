@@ -133,7 +133,7 @@
       <Schema Namespace="ShopStorage" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="shopEntities">
           <EntitySet Name="Categories" EntityType="ShopStorage.Category" />
-          <EntitySet Name="CategorytProperties" EntityType="ShopStorage.CategorytProperties" />
+          <EntitySet Name="CategoryProperties" EntityType="ShopStorage.CategoryProperties" />
           <EntitySet Name="Product" EntityType="ShopStorage.Product" />
           <EntitySet Name="ProductProperties" EntityType="ShopStorage.ProductProperties" />
           <AssociationSet Name="FK_CATEGORY_REFERENCE_CATEGORY" Association="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY">
@@ -142,14 +142,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_CATEGORYPROP_REF_CATEGORY" Association="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY">
             <End Role="Category" EntitySet="Categories" />
-            <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+            <End Role="CategorytProperties" EntitySet="CategoryProperties" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCT_REFERENCE_CATEGORY" Association="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCTP_REFERENCE_CATEGORY" Association="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY">
-            <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+            <End Role="CategorytProperties" EntitySet="CategoryProperties" />
             <End Role="ProductProperties" EntitySet="ProductProperties" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCTP_REFERENCE_PRODUCT" Association="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT">
@@ -169,7 +169,7 @@
           <NavigationProperty Name="CategorytProperties" Relationship="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" FromRole="Category" ToRole="CategorytProperties" />
           <NavigationProperty Name="Product" Relationship="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" FromRole="Category" ToRole="Product" />
         </EntityType>
-        <EntityType Name="CategorytProperties">
+        <EntityType Name="CategoryProperties">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -206,14 +206,14 @@
         </Association>
         <Association Name="FK_CATEGORYPROP_REF_CATEGORY">
           <End Role="Category" Type="ShopStorage.Category" Multiplicity="0..1" />
-          <End Role="CategorytProperties" Type="ShopStorage.CategorytProperties" Multiplicity="*" />
+          <End Role="CategorytProperties" Type="ShopStorage.CategoryProperties" Multiplicity="*" />
         </Association>
         <Association Name="FK_PRODUCT_REFERENCE_CATEGORY">
           <End Role="Category" Type="ShopStorage.Category" Multiplicity="0..1" />
           <End Role="Product" Type="ShopStorage.Product" Multiplicity="*" />
         </Association>
         <Association Name="FK_PRODUCTP_REFERENCE_CATEGORY">
-          <End Role="CategorytProperties" Type="ShopStorage.CategorytProperties" Multiplicity="1" />
+          <End Role="CategorytProperties" Type="ShopStorage.CategoryProperties" Multiplicity="1" />
           <End Role="ProductProperties" Type="ShopStorage.ProductProperties" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategorytProperties">
@@ -251,8 +251,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CategorytProperties">
-            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.CategorytProperties)">
+          <EntitySetMapping Name="CategoryProperties">
+            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.CategoryProperties)">
               <MappingFragment StoreEntitySet="CategorytProperties">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -343,7 +343,7 @@
     <edmx:Diagrams>
       <Diagram Name="Structure">
         <EntityTypeShape EntityType="ShopStorage.Category" Width="1.5" PointX="0.75" PointY="2.25" Height="2.0853483072916674" IsExpanded="true" />
-        <EntityTypeShape EntityType="ShopStorage.CategorytProperties" Width="1.5" PointX="3" PointY="1.125" Height="1.5923063151041665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShopStorage.CategoryProperties" Width="1.5" PointX="3" PointY="1.125" Height="1.5923063151041665" IsExpanded="true" />
         <EntityTypeShape EntityType="ShopStorage.Product" Width="1.5" PointX="3" PointY="3.5" Height="1.9210009765624996" IsExpanded="true" />
         <EntityTypeShape EntityType="ShopStorage.ProductProperties" Width="1.5" PointX="5.25" PointY="2.375" Height="1.7566536458333339" IsExpanded="true" />
         <AssociationConnector Association="ShopStorage.FK_CATEGORY_REFERENCE_CATEGORY" ManuallyRouted="false">
