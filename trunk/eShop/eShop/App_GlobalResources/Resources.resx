@@ -138,6 +138,9 @@
   <data name="DeleteCategoryConfirmation" xml:space="preserve">
     <value>Удалить выбранную категорию?</value>
   </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Отображать</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>Изображение</value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>eShop</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Товары</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>

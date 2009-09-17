@@ -2,7 +2,7 @@
 <%@ Import Namespace="eShop.Helpers" %>
 <%@ Import Namespace="Microsoft.Web.Mvc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Categories
+	<%=Html.ResourceString("Categories") %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -60,7 +60,7 @@
         
     
 </script>
-    <h2>Categories</h2>
+    <h2><%=Html.ResourceString("Categories") %></h2>
     
     <% using (Html.BeginForm("UpdateCategories", "Admin", FormMethod.Post)){ %>
     <% Html.RenderAction<eShop.Controllers.AdminController>(a => a.CategoriesList(null, 0)); %>

@@ -1,12 +1,13 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<eShop.Models.CategoryProperties>>" %>
 <%@ Import Namespace="Microsoft.Web.Mvc" %>
+<%@ Import Namespace="eShop.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	CategoryPropertiesList
+	<%=Html.ResourceString("CategoryProperties")%>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>CategoryPropertiesList</h2>
+    <h2><%=Html.ResourceString("CategoryProperties")%></h2>
     <% Html.RenderAction<eShop.Controllers.PagePartsController>(ppc => ppc.CategoriesList()); %>
     <table>
         <tr>
