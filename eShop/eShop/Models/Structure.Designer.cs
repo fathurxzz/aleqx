@@ -10,13 +10,13 @@
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_CATEGORY_REFERENCE_CATEGORY", "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(eShop.Models.Category), "Category1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.Category))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_CATEGORYPROP_REF_CATEGORY", "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(eShop.Models.Category), "CategorytProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.CategorytProperties))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_CATEGORYPROP_REF_CATEGORY", "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(eShop.Models.Category), "CategorytProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.CategoryProperties))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCT_REFERENCE_CATEGORY", "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(eShop.Models.Category), "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.Product))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.CategorytProperties), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.CategoryProperties), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_PRODUCT", "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.Product), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
 
 // Original file name:
-// Generation date: 15.09.2009 16:08:25
+// Generation date: 17.09.2009 10:17:08
 namespace eShop.Models
 {
     
@@ -66,20 +66,20 @@ namespace eShop.Models
         }
         private global::System.Data.Objects.ObjectQuery<Category> _Categories;
         /// <summary>
-        /// There are no comments for CategorytProperties in the schema.
+        /// There are no comments for CategoryProperties in the schema.
         /// </summary>
-        public global::System.Data.Objects.ObjectQuery<CategorytProperties> CategorytProperties
+        public global::System.Data.Objects.ObjectQuery<CategoryProperties> CategoryProperties
         {
             get
             {
-                if ((this._CategorytProperties == null))
+                if ((this._CategoryProperties == null))
                 {
-                    this._CategorytProperties = base.CreateQuery<CategorytProperties>("[CategorytProperties]");
+                    this._CategoryProperties = base.CreateQuery<CategoryProperties>("[CategoryProperties]");
                 }
-                return this._CategorytProperties;
+                return this._CategoryProperties;
             }
         }
-        private global::System.Data.Objects.ObjectQuery<CategorytProperties> _CategorytProperties;
+        private global::System.Data.Objects.ObjectQuery<CategoryProperties> _CategoryProperties;
         /// <summary>
         /// There are no comments for Product in the schema.
         /// </summary>
@@ -118,11 +118,11 @@ namespace eShop.Models
             base.AddObject("Categories", category);
         }
         /// <summary>
-        /// There are no comments for CategorytProperties in the schema.
+        /// There are no comments for CategoryProperties in the schema.
         /// </summary>
-        public void AddToCategorytProperties(CategorytProperties categorytProperties)
+        public void AddToCategoryProperties(CategoryProperties categoryProperties)
         {
-            base.AddObject("CategorytProperties", categorytProperties);
+            base.AddObject("CategoryProperties", categoryProperties);
         }
         /// <summary>
         /// There are no comments for Product in the schema.
@@ -296,17 +296,17 @@ namespace eShop.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<CategorytProperties> CategorytProperties
+        public global::System.Data.Objects.DataClasses.EntityCollection<CategoryProperties> CategorytProperties
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<CategorytProperties>("ShopStorage.FK_CATEGORYPROP_REF_CATEGORY", "CategorytProperties");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<CategoryProperties>("ShopStorage.FK_CATEGORYPROP_REF_CATEGORY", "CategorytProperties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<CategorytProperties>("ShopStorage.FK_CATEGORYPROP_REF_CATEGORY", "CategorytProperties", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<CategoryProperties>("ShopStorage.FK_CATEGORYPROP_REF_CATEGORY", "CategorytProperties", value);
                 }
             }
         }
@@ -333,25 +333,25 @@ namespace eShop.Models
         }
     }
     /// <summary>
-    /// There are no comments for ShopStorage.CategorytProperties in the schema.
+    /// There are no comments for ShopStorage.CategoryProperties in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="ShopStorage", Name="CategorytProperties")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="ShopStorage", Name="CategoryProperties")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class CategorytProperties : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class CategoryProperties : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new CategorytProperties object.
+        /// Create a new CategoryProperties object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
-        public static CategorytProperties CreateCategorytProperties(int id)
+        public static CategoryProperties CreateCategoryProperties(int id)
         {
-            CategorytProperties categorytProperties = new CategorytProperties();
-            categorytProperties.Id = id;
-            return categorytProperties;
+            CategoryProperties categoryProperties = new CategoryProperties();
+            categoryProperties.Id = id;
+            return categoryProperties;
         }
         /// <summary>
         /// There are no comments for Property Id in the schema.
@@ -730,15 +730,15 @@ namespace eShop.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public CategorytProperties CategorytProperties
+        public CategoryProperties CategorytProperties
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CategorytProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CategoryProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CategorytProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CategoryProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties").Value = value;
             }
         }
         /// <summary>
@@ -746,17 +746,17 @@ namespace eShop.Models
         /// </summary>
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<CategorytProperties> CategorytPropertiesReference
+        public global::System.Data.Objects.DataClasses.EntityReference<CategoryProperties> CategorytPropertiesReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CategorytProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CategoryProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<CategorytProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<CategoryProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties", value);
                 }
             }
         }

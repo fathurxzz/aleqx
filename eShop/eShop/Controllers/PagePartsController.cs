@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using eShop.Models;
 
 namespace eShop.Controllers
 {
@@ -19,8 +20,23 @@ namespace eShop.Controllers
 
         public ActionResult MainMenu()
         {
-
             return View();
+        }
+
+        public ActionResult CategoriesList()
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                List<Category> mainCategories = (from category in context.Categories.Include("Parent") where category.Enabled == true select category).ToList();
+                List<SelectListItem> categoriesList = (from category in mainCategories where category.Parent==null select new SelectListItem { Text = category.Name, Value = category.Id.ToString() }).ToList();
+                ViewData["categoriesList"] = categoriesList;
+
+                List<SelectListItem> subCategoriesList = (from category in mainCategories where category.Parent!=null /*&& category.Parent.Id == SystemSettings.CategoryId*/ select new SelectListItem { Text = category.Name, Value = category.Id.ToString(),Selected = category.Id == SystemSettings.CategoryId }).ToList();
+                ViewData["subCategoriesList"] = subCategoriesList;
+
+                return View();
+            }
+            
         }
         
 

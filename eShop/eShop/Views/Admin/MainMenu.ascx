@@ -4,5 +4,6 @@
 
 <%=Html.ResourceActionLink("MainPage","Index","Admin").ToLower() %>
 <span style="color: #ffffff"><b>|</b></span>
-<%=Html.ResourceActionLink("Categories","Categories","Admin").ToLower() %>
-
+<%=Html.ResourceActionLink("Categories", "Categories", "Admin").ToLower() %>
+<span style="color: #ffffff"><b>|</b></span>
+<%=Html.ResourceActionLink("CategoryProperties", "Index", "CategoryProperties").ToLower()%>
