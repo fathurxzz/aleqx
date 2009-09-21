@@ -106,19 +106,19 @@ namespace eShop.Controllers
 
         #region CategoryProperty
 
-        public ActionResult CategoryProperties()
-        {
-            return View();
-        }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult CategoryProperties(int categoryId)
+        public ActionResult CategoryProperties(string currentSubCategory)
         {
-            using (ShopStorage context = new ShopStorage())
+            if (currentSubCategory != null)
             {
-                List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == categoryId select categoryProperty).ToList();
-                return View(categoryProperties);
+                using (ShopStorage context = new ShopStorage())
+                {
+                    int categoryId = int.Parse(currentSubCategory);
+                    List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == categoryId select categoryProperty).ToList();
+                    return View(categoryProperties);
+                }
             }
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -142,6 +142,16 @@ namespace eShop.Controllers
         #region Products
 
         public ActionResult Products()
+        {
+            return View();
+        }
+
+        public ActionResult Products(int currentSubCategory)
+        {
+            return View();
+        }
+
+        public ActionResult SelectCategory(string currentSubCategory)
         {
             return View();
         }
