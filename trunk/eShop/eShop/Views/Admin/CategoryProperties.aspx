@@ -8,7 +8,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2><%=Html.ResourceString("CategoryProperties")%></h2>
+    
+    
     <% Html.RenderAction<eShop.Controllers.PagePartsController>(ppc => ppc.CategoriesList()); %>
+    
     <table>
         <tr>
             <th></th>

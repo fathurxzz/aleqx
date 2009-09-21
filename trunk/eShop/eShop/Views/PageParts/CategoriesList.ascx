@@ -7,9 +7,12 @@
         var categoryId = currentCategory[currentCategory.selectedIndex].value;
     }
 </script>
-
+<%using (Html.BeginForm("CategoryProperties", "Admin", FormMethod.Get))
+      {%>
+    
 <%= Html.ResourceString("Categories") %><br />
 <%= Html.DropDownList("currentCategory",(List<SelectListItem>)ViewData["categoriesList"]) %>
 <br /><br />
 <%= Html.ResourceString("SubCategories") %><br />
-<%= Html.DropDownList("currentSubCategory",(List<SelectListItem>)ViewData["subCategoriesList"]) %>
+<%= Html.DropDownList("currentSubCategory", (List<SelectListItem>)ViewData["subCategoriesList"], new { onchange="this.form.submit()" })%>
+<%} %>
