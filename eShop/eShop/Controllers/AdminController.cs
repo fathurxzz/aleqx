@@ -124,7 +124,6 @@ namespace eShop.Controllers
                 }
             }
 
-
             if (isParentChanged || SystemSettings.CategoryId == int.MinValue)
             {
                 using (ShopStorage context = new ShopStorage())
@@ -137,7 +136,6 @@ namespace eShop.Controllers
             {
                 SystemSettings.CategoryId = int.Parse(sCategory);
             }
-
 
             using (ShopStorage context = new ShopStorage())
             {
