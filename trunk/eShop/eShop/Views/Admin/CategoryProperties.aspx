@@ -40,32 +40,32 @@
     
     <table>
         <tr>
-            <th></th>
-            <th>
-                Id
-            </th>
+            
             <th>
                 Name
+            </th>
+            <th>
+                Unit
+            </th>
+            <th>
+                IsMainProperty
             </th>
         </tr>
 <%if (Model != null)
   { %>
     <% foreach (var item in Model)
        { %>
-    
         <tr>
-            <td>
-                <%= Html.ActionLink("Edit", "Edit", new { id = item.Id })%> |
-                <%= Html.ActionLink("Details", "Details", new { id = item.Id })%>
-            </td>
-            <td>
-                <%= Html.Encode(item.Id)%>
-            </td>
             <td>
                 <%= Html.Encode(item.Name)%>
             </td>
+            <td>
+                <%= Html.Encode(item.Unit)%>
+            </td>
+            <td>
+                <%=Html.CheckBox("IsMainProperty")%>
+            </td>
         </tr>
-    
     <% }
   }%>
 
