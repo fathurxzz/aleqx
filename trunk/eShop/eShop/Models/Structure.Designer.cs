@@ -16,7 +16,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_PRODUCT", "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.Product), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
 
 // Original file name:
-// Generation date: 17.09.2009 15:31:34
+// Generation date: 22.09.2009 12:36:33
 namespace eShop.Models
 {
     
@@ -399,6 +399,29 @@ namespace eShop.Models
         private string _Name;
         partial void OnNameChanging(string value);
         partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Unit in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Unit
+        {
+            get
+            {
+                return this._Unit;
+            }
+            set
+            {
+                this.OnUnitChanging(value);
+                this.ReportPropertyChanging("Unit");
+                this._Unit = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Unit");
+                this.OnUnitChanged();
+            }
+        }
+        private string _Unit;
+        partial void OnUnitChanging(string value);
+        partial void OnUnitChanged();
         /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>

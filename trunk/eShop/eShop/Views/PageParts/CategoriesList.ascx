@@ -11,8 +11,8 @@
       {%>
     
 <%= Html.ResourceString("Categories") %><br />
-<%= Html.DropDownList("currentCategory",(List<SelectListItem>)ViewData["categoriesList"]) %>
+<%= Html.DropDownList("pCategory", (List<SelectListItem>)ViewData["categoriesList"], new { onchange = "this.form.submit()" })%>
 <br /><br />
 <%= Html.ResourceString("SubCategories") %><br />
-<%= Html.DropDownList("currentSubCategory", (List<SelectListItem>)ViewData["subCategoriesList"], new { onchange="this.form.submit()" })%>
+<%= Html.DropDownList("sCategory", (List<SelectListItem>)ViewData["subCategoriesList"], new { onchange="this.form.submit()" })%>
 <%} %>
