@@ -107,18 +107,43 @@ namespace eShop.Controllers
         #region CategoryProperty
 
 
-        public ActionResult CategoryProperties(string currentSubCategory)
+        public ActionResult CategoryProperties(string sCategory, string pCategory)
         {
-            if (currentSubCategory != null)
+            bool isParentChanged = pCategory != SystemSettings.ParentCategoryId.ToString() && !string.IsNullOrEmpty(sCategory);
+            
+            if (!string.IsNullOrEmpty(pCategory))
+            {
+                SystemSettings.ParentCategoryId = int.Parse(pCategory);
+            }
+            else if (SystemSettings.ParentCategoryId == int.MinValue)
             {
                 using (ShopStorage context = new ShopStorage())
                 {
-                    int categoryId = int.Parse(currentSubCategory);
-                    List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == categoryId select categoryProperty).ToList();
-                    return View(categoryProperties);
+                    Category parentCategory = context.Categories.Select(c => c).Where(c => c.Enabled && c.Parent == null).First();
+                    SystemSettings.ParentCategoryId = parentCategory.Id;
                 }
             }
-            return View();
+
+
+            if (isParentChanged || SystemSettings.CategoryId == int.MinValue)
+            {
+                using (ShopStorage context = new ShopStorage())
+                {
+                    Category category = context.Categories.Select(c => c).Where(c => c.Enabled && c.Parent != null && c.Parent.Id == SystemSettings.ParentCategoryId).First();
+                    SystemSettings.CategoryId = category.Id;
+                }
+            }
+            else if (!string.IsNullOrEmpty(sCategory))
+            {
+                SystemSettings.CategoryId = int.Parse(sCategory);
+            }
+
+
+            using (ShopStorage context = new ShopStorage())
+            {
+                List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == SystemSettings.CategoryId select categoryProperty).ToList();
+                return View(categoryProperties);
+            }
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -126,11 +151,12 @@ namespace eShop.Controllers
         {
             using (ShopStorage context = new ShopStorage())
             {
-                int categoryId = int.Parse(form["categoryId"]);
+                int categoryId = SystemSettings.CategoryId;
                 Category category = context.Categories.Select(c => c).Where(c => c.Id == categoryId).First();
                 CategoryProperties categoryProperty = new CategoryProperties();
                 categoryProperty.Category = category;
                 categoryProperty.Name = form["categoryPropertyName"];
+                categoryProperty.Unit = form["categoryUnitName"];
                 context.AddToCategoryProperties(categoryProperty);
                 context.SaveChanges();
             }

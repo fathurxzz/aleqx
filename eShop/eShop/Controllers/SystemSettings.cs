@@ -13,6 +13,18 @@ namespace eShop.Controllers
             get { return HttpContext.Current.Session; }
         }
 
+        public static int ParentCategoryId
+        {
+            get
+            {
+                int result = int.MinValue;
+                if (Session["ParentCategoryId"] != null)
+                    result = Convert.ToInt32(Session["ParentCategoryId"]);
+                return result;
+            }
+            set { Session["ParentCategoryId"] = value; }
+        }
+
         public static int CategoryId
         {
             get

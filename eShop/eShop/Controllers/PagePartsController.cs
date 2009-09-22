@@ -28,17 +28,31 @@ namespace eShop.Controllers
             using (ShopStorage context = new ShopStorage())
             {
                 List<Category> mainCategories = (from category in context.Categories.Include("Parent") where category.Enabled == true select category).ToList();
-                List<SelectListItem> categoriesList = (from category in mainCategories where category.Parent==null select new SelectListItem { Text = category.Name, Value = category.Id.ToString() }).ToList();
+                List<SelectListItem> categoriesList =
+                    (from category in mainCategories
+                     where category.Parent == null
+                     select new SelectListItem
+                         {
+                             Text = category.Name,
+                             Value = category.Id.ToString(),
+                             Selected = category.Id == SystemSettings.ParentCategoryId
+                         }).ToList();
                 ViewData["categoriesList"] = categoriesList;
 
-                List<SelectListItem> subCategoriesList = (from category in mainCategories where category.Parent!=null /*&& category.Parent.Id == SystemSettings.CategoryId*/ select new SelectListItem { Text = category.Name, Value = category.Id.ToString(),Selected = category.Id == SystemSettings.CategoryId }).ToList();
+                List<SelectListItem> subCategoriesList = 
+                    (from category in mainCategories where category.Parent!=null && category.Parent.Id == SystemSettings.ParentCategoryId
+                     select new SelectListItem 
+                     { 
+                         Text = category.Name, 
+                         Value = category.Id.ToString(),
+                         Selected = category.Id == SystemSettings.CategoryId 
+                     }).ToList();
+                if (subCategoriesList.Count == 0)
+                    subCategoriesList.Add(new SelectListItem { Text = "----", Value = int.MinValue.ToString() });
                 ViewData["subCategoriesList"] = subCategoriesList;
 
                 return View();
             }
-            
         }
-        
-
     }
 }
