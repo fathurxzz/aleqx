@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="ShopStorage.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="ShopStorageStoreContainer">
+          <EntitySet Name="Brand" EntityType="ShopStorage.Store.Brand" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Category" EntityType="ShopStorage.Store.Category" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CategorytProperties" EntityType="ShopStorage.Store.CategorytProperties" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Product" EntityType="ShopStorage.Store.Product" store:Type="Tables" Schema="dbo" />
@@ -17,6 +18,10 @@
           <AssociationSet Name="FK_CATEGORYPROP_REF_CATEGORY" Association="ShopStorage.Store.FK_CATEGORYPROP_REF_CATEGORY">
             <End Role="Category" EntitySet="Category" />
             <End Role="CategorytProperties" EntitySet="CategorytProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_REFERENCE_BRAND" Association="ShopStorage.Store.FK_PRODUCT_REFERENCE_BRAND">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCT_REFERENCE_CATEGORY" Association="ShopStorage.Store.FK_PRODUCT_REFERENCE_CATEGORY">
             <End Role="Category" EntitySet="Category" />
@@ -31,6 +36,14 @@
             <End Role="ProductProperties" EntitySet="ProductProperties" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
@@ -48,16 +61,19 @@
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="Unit" Type="varchar" MaxLength="50" />
+          <Property Name="IsMainProperty" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" />
           <Property Name="Name" Type="varchar" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
-          <Property Name="Enabled" Type="bit" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="255" />
+          <Property Name="BrandId" Type="int" />
         </EntityType>
         <EntityType Name="ProductProperties">
           <Key>
@@ -89,6 +105,18 @@
             </Principal>
             <Dependent Role="CategorytProperties">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_REFERENCE_BRAND">
+          <End Role="Brand" Type="ShopStorage.Store.Brand" Multiplicity="0..1" />
+          <End Role="Product" Type="ShopStorage.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -157,7 +185,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductProperties" EntitySet="ProductProperties" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Brand" EntityType="ShopStorage.Brand" />
+          <AssociationSet Name="FK_PRODUCT_REFERENCE_BRAND" Association="ShopStorage.FK_PRODUCT_REFERENCE_BRAND">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" /></AssociationSet></EntityContainer>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
@@ -178,7 +209,8 @@
           <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Category" Relationship="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" FromRole="CategorytProperties" ToRole="Category" />
           <NavigationProperty Name="ProductProperties" Relationship="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" FromRole="CategorytProperties" ToRole="ProductProperties" />
-          <Property Name="Unit" Type="String" Nullable="true" /></EntityType>
+          <Property Name="Unit" Type="String" Nullable="true" />
+          <Property Name="IsMainProperty" Type="Boolean" Nullable="false" /></EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
@@ -186,10 +218,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="ProductProperties" Relationship="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" FromRole="Product" ToRole="ProductProperties" />
-        </EntityType>
+          <Property Name="Model" Type="String" Nullable="true" />
+          <NavigationProperty Name="Brand" Relationship="ShopStorage.FK_PRODUCT_REFERENCE_BRAND" FromRole="Product" ToRole="Brand" /></EntityType>
         <EntityType Name="ProductProperties">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -237,7 +270,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="ShopStorage.FK_PRODUCT_REFERENCE_BRAND" FromRole="Brand" ToRole="Product" /></EntityType>
+        <Association Name="FK_PRODUCT_REFERENCE_BRAND">
+          <End Type="ShopStorage.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="ShopStorage.Product" Role="Product" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -255,6 +297,7 @@
           <EntitySetMapping Name="CategoryProperties">
             <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.CategoryProperties)">
               <MappingFragment StoreEntitySet="CategorytProperties">
+                <ScalarProperty Name="IsMainProperty" ColumnName="IsMainProperty" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -264,6 +307,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.Product)">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -325,7 +369,18 @@
               <ScalarProperty Name="ProductPropertyId" ColumnName="ProductPropertyId" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Brand">
+            <EntityTypeMapping TypeName="IsTypeOf(ShopStorage.Brand)">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_PRODUCT_REFERENCE_BRAND" TypeName="ShopStorage.FK_PRODUCT_REFERENCE_BRAND" StoreEntitySet="Product">
+            <EndProperty Name="Product">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Brand">
+              <ScalarProperty Name="Id" ColumnName="BrandId" /></EndProperty>
+            <Condition ColumnName="BrandId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -354,20 +409,24 @@
           <ConnectorPoint PointX="1.7284615384615383" PointY="4.5853483072916674" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="4.3353483072916674" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_CATEGORYPROP_REF_CATEGORY" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.84375" />
-          <ConnectorPoint PointX="4.71875" PointY="2.84375" />
-          <ConnectorPoint PointX="4.71875" PointY="2.0923063151041665" /></AssociationConnector>
+          <ConnectorPoint PointX="2.25" PointY="2.8667509882812503" />
+          <ConnectorPoint PointX="3.40625" PointY="2.8667509882812503" />
+          <ConnectorPoint PointX="3.40625" PointY="2.4210009765625" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_PRODUCT_REFERENCE_CATEGORY" ManuallyRouted="false">
           <ConnectorPoint PointX="0.98470903846153834" PointY="4.3353483072916674" />
-          <ConnectorPoint PointX="0.98470903846153834" PointY="6.58550048828125" />
-          <ConnectorPoint PointX="3.375" PointY="6.58550048828125" /></AssociationConnector>
+          <ConnectorPoint PointX="0.98470903846153834" PointY="6.7498478190104159" />
+          <ConnectorPoint PointX="3.375" PointY="6.7498478190104159" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_PRODUCTP_REFERENCE_CATEGORY" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.875" PointY="1.2961531575520833" />
-          <ConnectorPoint PointX="7" PointY="1.2961531575520833" />
+          <ConnectorPoint PointX="4.875" PointY="1.4374995" />
+          <ConnectorPoint PointX="7" PointY="1.4374995" />
           <ConnectorPoint PointX="7" PointY="2.375" /></AssociationConnector>
         <AssociationConnector Association="ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.046875" PointY="5.625" />
-          <ConnectorPoint PointX="4.046875" PointY="3.4877018229166667" />
-          <ConnectorPoint PointX="6.125" PointY="3.4877018229166667" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="4.875" PointY="6.7498478190104159" />
+          <ConnectorPoint PointX="7" PointY="6.7498478190104159" />
+          <ConnectorPoint PointX="7" PointY="4.1316536458333335" /></AssociationConnector>
+        <EntityTypeShape EntityType="ShopStorage.Brand" Width="1.5" PointX="3.875" PointY="3.375" Height="1.5923063151041674" />
+        <AssociationConnector Association="ShopStorage.FK_PRODUCT_REFERENCE_BRAND" >
+          <ConnectorPoint PointX="4.375" PointY="4.9673063151041674" />
+          <ConnectorPoint PointX="4.375" PointY="5.625" /></AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

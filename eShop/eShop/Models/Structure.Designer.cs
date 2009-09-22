@@ -14,9 +14,10 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCT_REFERENCE_CATEGORY", "Category", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(eShop.Models.Category), "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.Product))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_CATEGORY", "CategorytProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.CategoryProperties), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCTP_REFERENCE_PRODUCT", "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(eShop.Models.Product), "ProductProperties", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.ProductProperties))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("ShopStorage", "FK_PRODUCT_REFERENCE_BRAND", "Brand", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(eShop.Models.Brand), "Product", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(eShop.Models.Product))]
 
 // Original file name:
-// Generation date: 22.09.2009 12:36:33
+// Generation date: 22.09.2009 16:56:58
 namespace eShop.Models
 {
     
@@ -111,6 +112,21 @@ namespace eShop.Models
         }
         private global::System.Data.Objects.ObjectQuery<ProductProperties> _ProductProperties;
         /// <summary>
+        /// There are no comments for Brand in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<Brand> Brand
+        {
+            get
+            {
+                if ((this._Brand == null))
+                {
+                    this._Brand = base.CreateQuery<Brand>("[Brand]");
+                }
+                return this._Brand;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<Brand> _Brand;
+        /// <summary>
         /// There are no comments for Categories in the schema.
         /// </summary>
         public void AddToCategories(Category category)
@@ -137,6 +153,13 @@ namespace eShop.Models
         public void AddToProductProperties(ProductProperties productProperties)
         {
             base.AddObject("ProductProperties", productProperties);
+        }
+        /// <summary>
+        /// There are no comments for Brand in the schema.
+        /// </summary>
+        public void AddToBrand(Brand brand)
+        {
+            base.AddObject("Brand", brand);
         }
     }
     /// <summary>
@@ -347,10 +370,12 @@ namespace eShop.Models
         /// Create a new CategoryProperties object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
-        public static CategoryProperties CreateCategoryProperties(int id)
+        /// <param name="isMainProperty">Initial value of IsMainProperty.</param>
+        public static CategoryProperties CreateCategoryProperties(int id, bool isMainProperty)
         {
             CategoryProperties categoryProperties = new CategoryProperties();
             categoryProperties.Id = id;
+            categoryProperties.IsMainProperty = isMainProperty;
             return categoryProperties;
         }
         /// <summary>
@@ -422,6 +447,29 @@ namespace eShop.Models
         private string _Unit;
         partial void OnUnitChanging(string value);
         partial void OnUnitChanged();
+        /// <summary>
+        /// There are no comments for Property IsMainProperty in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsMainProperty
+        {
+            get
+            {
+                return this._IsMainProperty;
+            }
+            set
+            {
+                this.OnIsMainPropertyChanging(value);
+                this.ReportPropertyChanging("IsMainProperty");
+                this._IsMainProperty = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IsMainProperty");
+                this.OnIsMainPropertyChanged();
+            }
+        }
+        private bool _IsMainProperty;
+        partial void OnIsMainPropertyChanging(bool value);
+        partial void OnIsMainPropertyChanged();
         /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>
@@ -496,10 +544,12 @@ namespace eShop.Models
         /// Create a new Product object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
-        public static Product CreateProduct(int id)
+        /// <param name="enabled">Initial value of Enabled.</param>
+        public static Product CreateProduct(int id, bool enabled)
         {
             Product product = new Product();
             product.Id = id;
+            product.Enabled = enabled;
             return product;
         }
         /// <summary>
@@ -574,9 +624,9 @@ namespace eShop.Models
         /// <summary>
         /// There are no comments for Property Enabled in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<bool> Enabled
+        public bool Enabled
         {
             get
             {
@@ -591,9 +641,32 @@ namespace eShop.Models
                 this.OnEnabledChanged();
             }
         }
-        private global::System.Nullable<bool> _Enabled;
-        partial void OnEnabledChanging(global::System.Nullable<bool> value);
+        private bool _Enabled;
+        partial void OnEnabledChanging(bool value);
         partial void OnEnabledChanged();
+        /// <summary>
+        /// There are no comments for Property Model in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Model
+        {
+            get
+            {
+                return this._Model;
+            }
+            set
+            {
+                this.OnModelChanging(value);
+                this.ReportPropertyChanging("Model");
+                this._Model = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Model");
+                this.OnModelChanged();
+            }
+        }
+        private string _Model;
+        partial void OnModelChanging(string value);
+        partial void OnModelChanged();
         /// <summary>
         /// There are no comments for Category in the schema.
         /// </summary>
@@ -649,6 +722,43 @@ namespace eShop.Models
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<ProductProperties>("ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT", "ProductProperties", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Brand in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("ShopStorage", "FK_PRODUCT_REFERENCE_BRAND", "Brand")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Brand Brand
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Brand>("ShopStorage.FK_PRODUCT_REFERENCE_BRAND", "Brand").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Brand>("ShopStorage.FK_PRODUCT_REFERENCE_BRAND", "Brand").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Brand in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Brand> BrandReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Brand>("ShopStorage.FK_PRODUCT_REFERENCE_BRAND", "Brand");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Brand>("ShopStorage.FK_PRODUCT_REFERENCE_BRAND", "Brand", value);
                 }
             }
         }
@@ -817,6 +927,120 @@ namespace eShop.Models
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Product>("ShopStorage.FK_PRODUCTP_REFERENCE_PRODUCT", "Product", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for ShopStorage.Brand in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="ShopStorage", Name="Brand")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Brand : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Brand object.
+        /// </summary>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="enabled">Initial value of Enabled.</param>
+        public static Brand CreateBrand(int id, bool enabled)
+        {
+            Brand brand = new Brand();
+            brand.Id = id;
+            brand.Enabled = enabled;
+            return brand;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this.ReportPropertyChanging("Name");
+                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Name");
+                this.OnNameChanged();
+            }
+        }
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Enabled in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Enabled
+        {
+            get
+            {
+                return this._Enabled;
+            }
+            set
+            {
+                this.OnEnabledChanging(value);
+                this.ReportPropertyChanging("Enabled");
+                this._Enabled = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Enabled");
+                this.OnEnabledChanged();
+            }
+        }
+        private bool _Enabled;
+        partial void OnEnabledChanging(bool value);
+        partial void OnEnabledChanged();
+        /// <summary>
+        /// There are no comments for Product in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("ShopStorage", "FK_PRODUCT_REFERENCE_BRAND", "Product")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Product> Product
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Product>("ShopStorage.FK_PRODUCT_REFERENCE_BRAND", "Product");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Product>("ShopStorage.FK_PRODUCT_REFERENCE_BRAND", "Product", value);
                 }
             }
         }
