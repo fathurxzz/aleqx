@@ -155,6 +155,7 @@ namespace eShop.Controllers
                 categoryProperty.Category = category;
                 categoryProperty.Name = form["categoryPropertyName"];
                 categoryProperty.Unit = form["categoryUnitName"];
+                categoryProperty.IsMainProperty = Convert.ToBoolean(form["isMainProperty"]);
                 context.AddToCategoryProperties(categoryProperty);
                 context.SaveChanges();
             }

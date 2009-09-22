@@ -63,7 +63,7 @@
                 <%= Html.Encode(item.Unit)%>
             </td>
             <td>
-                <%=Html.CheckBox("IsMainProperty")%>
+                <%=Html.CheckBox("IsMainProperty", item.IsMainProperty)%>
             </td>
         </tr>
     <% }
@@ -87,6 +87,9 @@
                 <th>
                     Unit
                 </th>
+                <th>
+                    IsMainProperty
+                </th>
             </tr>
             <tr>
                 <td>
@@ -95,7 +98,11 @@
                 <td align="center">
                     <%= Html.TextBox("categoryUnitName")%>
                 </td>
+                <td>
+                    <%= Html.CheckBox("isMainProperty")%>
+                </td>
             </tr>
+           
         </table>
         <input type="submit" value="<%= Html.ResourceString("Add") %>" />
         <%} %>
