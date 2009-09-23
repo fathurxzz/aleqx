@@ -38,38 +38,16 @@
     
     <% Html.RenderAction<eShop.Controllers.PagePartsController>(ppc => ppc.CategoriesList()); %>
     
-    <table>
-        <tr>
-            
-            <th>
-                Name
-            </th>
-            <th>
-                Unit
-            </th>
-            <th>
-                IsMainProperty
-            </th>
-        </tr>
-<%if (Model != null)
-  { %>
-    <% foreach (var item in Model)
-       { %>
-        <tr>
-            <td>
-                <%= Html.Encode(item.Name)%>
-            </td>
-            <td>
-                <%= Html.Encode(item.Unit)%>
-            </td>
-            <td>
-                <%=Html.CheckBox("IsMainProperty", item.IsMainProperty)%>
-            </td>
-        </tr>
-    <% }
-  }%>
-
-    </table>
+    <%using (Html.BeginForm("UpdateCategoryProperties", "Admin", FormMethod.Post))
+      { %>
+    
+    <%Html.RenderAction<eShop.Controllers.AdminController>(a=>a.CategoryPropertiesList(null)); %>
+    
+    <%= Html.Hidden("enablities") %>
+    <%= Html.Hidden("updates") %>
+    <input type="submit" value="<%= Html.ResourceString("Save") %>" onclick="return collectCategoryChanges();" />
+    <%} %>
+    
 
     <a href="#" onclick="insertCategoryProperty(this)">
         <%= Html.ResourceString("AddCategory") %>
@@ -99,7 +77,7 @@
                     <%= Html.TextBox("categoryUnitName")%>
                 </td>
                 <td>
-                    <%= Html.CheckBox("isMainProperty")%>
+                    <%= Html.CheckBox("isMainProperty",false)%>
                 </td>
             </tr>
            

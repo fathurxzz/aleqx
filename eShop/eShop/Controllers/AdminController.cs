@@ -102,9 +102,32 @@ namespace eShop.Controllers
             return RedirectToAction("Categories");
         }
 
+        public ActionResult DeleteCategory(int id)
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                Category category = context.Categories.Select(c => c).Where(c => c.Id == id).First();
+                context.DeleteObject(category);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("Categories");
+        }
+
         #endregion
 
+
+
         #region CategoryProperty
+
+        public ActionResult CategoryPropertiesList(int? id)
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == SystemSettings.CategoryId select categoryProperty).ToList();
+                return View(categoryProperties);
+            }
+        }
 
 
         public ActionResult CategoryProperties(string sCategory, string pCategory)
@@ -137,11 +160,7 @@ namespace eShop.Controllers
                 SystemSettings.CategoryId = int.Parse(sCategory);
             }
 
-            using (ShopStorage context = new ShopStorage())
-            {
-                List<CategoryProperties> categoryProperties = (from categoryProperty in context.CategoryProperties where categoryProperty.Category.Id == SystemSettings.CategoryId select categoryProperty).ToList();
-                return View(categoryProperties);
-            }
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -155,10 +174,23 @@ namespace eShop.Controllers
                 categoryProperty.Category = category;
                 categoryProperty.Name = form["categoryPropertyName"];
                 categoryProperty.Unit = form["categoryUnitName"];
-                categoryProperty.IsMainProperty = Convert.ToBoolean(form["isMainProperty"]);
+
+                categoryProperty.IsMainProperty = form["isMainProperty"].ToLowerInvariant().IndexOf("true") > -1;
                 context.AddToCategoryProperties(categoryProperty);
                 context.SaveChanges();
             }
+            return RedirectToAction("CategoryProperties");
+        }
+
+        public ActionResult DeleteCategoryProperty(int id)
+        {
+            using (ShopStorage context = new ShopStorage())
+            {
+                CategoryProperties categoryProperty = context.CategoryProperties.Select(c => c).Where(c => c.Id == id).First();
+                context.DeleteObject(categoryProperty);
+                context.SaveChanges();
+            }
+
             return RedirectToAction("CategoryProperties");
         }
 
@@ -170,17 +202,6 @@ namespace eShop.Controllers
         {
             return View();
         }
-
-        public ActionResult Products(int currentSubCategory)
-        {
-            return View();
-        }
-
-        public ActionResult SelectCategory(string currentSubCategory)
-        {
-            return View();
-        }
-
         #endregion
     }
 }
