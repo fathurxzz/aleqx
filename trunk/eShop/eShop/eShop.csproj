@@ -141,6 +141,7 @@
     <Content Include="Views\Admin\Categories.aspx" />
     <Content Include="Views\Admin\CategoriesList.ascx" />
     <Content Include="Views\Admin\CategoryProperties.aspx" />
+    <Content Include="Views\Admin\CategoryPropertiesList.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\MainMenu.ascx" />
     <Content Include="Views\Admin\Products.aspx" />
