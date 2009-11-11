@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EditStickerInfo" xml:space="preserve">
+    <value>Редактирование данных о стикерах</value>
+  </data>
   <data name="LogOff" xml:space="preserve">
     <value>Выход</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>CollectStickers</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Сохранить изменения</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>

@@ -7,7 +7,7 @@
 <%=Html.ResourceActionLink("MainPage","Index","Home").ToLower() %>
 <%if(authenticated){ %>
 <span style="color: #ffffff"><b>|</b></span>
-<%=Html.ResourceActionLink("MyPage","UserPage","Home").ToLower() %>
+<%=Html.ResourceActionLink("EditStickerInfo", "EditStickerInfo", "Home").ToLower()%>
 <%} %>
 <%if(IsAdmin){ %>
 <span style="color: #ffffff"><b>|</b></span>
