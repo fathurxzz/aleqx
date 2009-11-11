@@ -8,6 +8,8 @@
 <%if(authenticated){ %>
 <span style="color: #ffffff"><b>|</b></span>
 <%=Html.ResourceActionLink("EditStickerInfo", "EditStickerInfo", "Home").ToLower()%>
+<span style="color: #ffffff"><b>|</b></span>
+<%=Html.ResourceActionLink("StickersSummary", "StickersSummary", "Home").ToLower()%>
 <%} %>
 <%if(IsAdmin){ %>
 <span style="color: #ffffff"><b>|</b></span>

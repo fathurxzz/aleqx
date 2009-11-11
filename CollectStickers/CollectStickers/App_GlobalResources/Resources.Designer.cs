@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сводная информация по стикерам.
+        /// </summary>
+        internal static string StickersSummary {
+            get {
+                return ResourceManager.GetString("StickersSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пользователи.
         /// </summary>
         internal static string Users {

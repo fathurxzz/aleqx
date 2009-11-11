@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc.Html;
+using CollectStickers.Models;
 
 namespace CollectStickers.Helpers
 {
@@ -32,6 +33,24 @@ namespace CollectStickers.Helpers
         {
             string linkText = Controllers.ResourcesHelper.GetResourceString(resourceName);
             return helper.ActionLink(linkText, actionName, controllerName);
+        }
+
+        public class SortStickers : IComparer<StickerPresentation>
+        {
+            public int Compare(StickerPresentation x, StickerPresentation y)
+            {
+                if (x == null)
+                {
+                    if (y == null)
+                        return 0;
+                    else
+                        return -1;
+                }
+                else if (y == null)
+                    return 1;
+                else
+                    return x.Number.CompareTo(y.Number);
+            }
         }
     }
 }
