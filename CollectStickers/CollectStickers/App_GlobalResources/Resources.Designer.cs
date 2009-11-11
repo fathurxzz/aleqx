@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Найти совпадения.
+        /// </summary>
+        internal static string Coincidences {
+            get {
+                return ResourceManager.GetString("Coincidences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Редактирование данных о стикерах.
         /// </summary>
         internal static string EditStickerInfo {
