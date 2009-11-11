@@ -93,11 +93,6 @@
     <Compile Include="Models\MembershipExtentions.cs" />
     <Compile Include="Models\ProfileCommon.cs" />
     <Compile Include="Models\StickerPresentation.cs" />
-    <Compile Include="Models\Structure.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Structure.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserPresentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,12 +147,6 @@
     <EntityDeploy Include="Models\Membership.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Membership.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\Structure.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Structure.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>

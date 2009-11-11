@@ -147,7 +147,7 @@ namespace CollectStickers.Controllers
         }
 
 
-        public ActionResult Compatibility()
+        public ActionResult Coincidences()
         {
 
             return View();
