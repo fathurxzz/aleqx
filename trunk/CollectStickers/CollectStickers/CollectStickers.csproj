@@ -93,10 +93,10 @@
     <Compile Include="Models\MembershipExtentions.cs" />
     <Compile Include="Models\ProfileCommon.cs" />
     <Compile Include="Models\StickerPresentation.cs" />
-    <Compile Include="Models\Structure.Designer.cs">
+    <Compile Include="Models\Structure2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Structure.edmx</DependentUpon>
+      <DependentUpon>Structure2.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\UserPresentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +139,7 @@
     <Content Include="Scripts\MicrosoftAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Views\Home\Coincidences.aspx" />
     <Content Include="Views\Home\EditStickerInfo.aspx" />
     <Content Include="Views\Home\News.aspx" />
     <Content Include="Views\Home\StickersSummary.aspx" />
@@ -155,9 +156,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\Structure.edmx">
+    <EntityDeploy Include="Models\Structure2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Structure.Designer.cs</LastGenOutput>
+      <LastGenOutput>Structure2.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>

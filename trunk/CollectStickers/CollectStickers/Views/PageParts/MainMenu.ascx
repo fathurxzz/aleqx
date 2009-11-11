@@ -10,6 +10,8 @@
 <%=Html.ResourceActionLink("EditStickerInfo", "EditStickerInfo", "Home").ToLower()%>
 <span style="color: #ffffff"><b>|</b></span>
 <%=Html.ResourceActionLink("StickersSummary", "StickersSummary", "Home").ToLower()%>
+<span style="color: #ffffff"><b>|</b></span>
+<%=Html.ResourceActionLink("Coincidences", "Coincidences", "Home").ToLower()%>
 <%} %>
 <%if(IsAdmin){ %>
 <span style="color: #ffffff"><b>|</b></span>
