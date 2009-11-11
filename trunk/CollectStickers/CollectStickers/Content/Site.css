@@ -44,3 +44,8 @@
 
 .greyBorderBox{padding:10px; border: 1px solid #dbdbdb;  background:white;}
 .popUpBox{position:absolute; display:none; z-index:10001;}
+
+
+
+.stickerTable tr td{border-collapse:collapse; border:1px dotted #ccc; padding:1px;}
+.stickerTable th{border-collapse:collapse; border:1px dotted #ccc; padding:1px; color:Olive; width:150px;}

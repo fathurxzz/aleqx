@@ -14,6 +14,9 @@
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Login.css" rel="stylesheet" type="text/css" />
     <%= Html.RegisterJS("jquery.js")%>
+    <%= Html.RegisterJS("jquery.ui.js")%>
+    <%= Html.RegisterJS("MicrosoftAjax.js")%>
+    <%= Html.RegisterJS("MicrosoftMvcAjax.js")%>
 </head>
 
 <body>
