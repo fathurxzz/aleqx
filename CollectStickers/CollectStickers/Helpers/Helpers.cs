@@ -52,5 +52,27 @@ namespace CollectStickers.Helpers
                     return x.Number.CompareTo(y.Number);
             }
         }
+
+        public class SortStickersByUser : IComparer<StickerPresentation>
+        {
+            public int Compare(StickerPresentation x, StickerPresentation y)
+            {
+                if (x == null)
+                {
+                    if (y == null)
+                        return 0;
+                    else
+                        return -1;
+                }
+                else if (y == null)
+                    return 1;
+                else
+                {
+                    string strx = x.UserId.ToString() + x.Number.ToString();
+                    string stry = y.UserId.ToString() + y.Number.ToString();
+                    return strx.CompareTo(stry);
+                }
+            }
+        }
     }
 }
