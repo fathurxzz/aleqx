@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="collectstikersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="collectstikersModelStoreContainer">
+          <EntitySet Name="Album" EntityType="collectstikersModel.Store.Album" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stickers" EntityType="collectstikersModel.Store.Stickers" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_STICKERS_REFERENCE_ALBUM" Association="collectstikersModel.Store.FK_STICKERS_REFERENCE_ALBUM">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Stickers" EntitySet="Stickers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="MaxStickers" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Stickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AlbumId" Type="smallint" Nullable="false" />
+          <Property Name="NeedOrFree" Type="tinyint" Nullable="false" />
+          <Property Name="Number" Type="smallint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_STICKERS_REFERENCE_ALBUM">
+          <End Role="Album" Type="collectstikersModel.Store.Album" Multiplicity="1" />
+          <End Role="Stickers" Type="collectstikersModel.Store.Stickers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stickers">
+              <PropertyRef Name="AlbumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="collectstikersModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="collectstikersEntities2">
+          <EntitySet Name="Album" EntityType="collectstikersModel.Album" />
+          <EntitySet Name="Stickers" EntityType="collectstikersModel.Stickers" />
+          <AssociationSet Name="FK_STICKERS_REFERENCE_ALBUM" Association="collectstikersModel.FK_STICKERS_REFERENCE_ALBUM">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Stickers" EntitySet="Stickers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="MaxStickers" Type="Int16" />
+          <NavigationProperty Name="Stickers" Relationship="collectstikersModel.FK_STICKERS_REFERENCE_ALBUM" FromRole="Album" ToRole="Stickers" />
+        </EntityType>
+        <EntityType Name="Stickers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="NeedOrFree" Type="Byte" Nullable="false" />
+          <Property Name="Number" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Album" Relationship="collectstikersModel.FK_STICKERS_REFERENCE_ALBUM" FromRole="Stickers" ToRole="Album" />
+        </EntityType>
+        <Association Name="FK_STICKERS_REFERENCE_ALBUM">
+          <End Role="Album" Type="collectstikersModel.Album" Multiplicity="1" />
+          <End Role="Stickers" Type="collectstikersModel.Stickers" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="collectstikersModelStoreContainer" CdmEntityContainer="collectstikersEntities2">
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="IsTypeOf(collectstikersModel.Album)">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MaxStickers" ColumnName="MaxStickers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stickers">
+            <EntityTypeMapping TypeName="IsTypeOf(collectstikersModel.Stickers)">
+              <MappingFragment StoreEntitySet="Stickers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NeedOrFree" ColumnName="NeedOrFree" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_STICKERS_REFERENCE_ALBUM" TypeName="collectstikersModel.FK_STICKERS_REFERENCE_ALBUM" StoreEntitySet="Stickers">
+            <EndProperty Name="Album">
+              <ScalarProperty Name="Id" ColumnName="AlbumId" />
+            </EndProperty>
+            <EndProperty Name="Stickers">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Structure">
+        <EntityTypeShape EntityType="collectstikersModel.Album" Width="1.5" PointX="0.75" PointY="1" Height="1.592306315104167" IsExpanded="true" />
+        <EntityTypeShape EntityType="collectstikersModel.Stickers" Width="1.5" PointX="3" PointY="0.875" Height="1.7566536458333333" IsExpanded="true" />
+        <AssociationConnector Association="collectstikersModel.FK_STICKERS_REFERENCE_ALBUM" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.7961531575520835" />
+          <ConnectorPoint PointX="3" PointY="1.7961531575520835" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

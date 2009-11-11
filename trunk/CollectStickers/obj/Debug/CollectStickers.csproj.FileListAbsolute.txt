@@ -1,0 +1,6 @@
+D:\projects\CollectStickers\CollectStickers\bin\CollectStickers.dll
+D:\projects\CollectStickers\CollectStickers\bin\CollectStickers.pdb
+D:\projects\CollectStickers\CollectStickers\obj\Debug\ResolveAssemblyReference.cache
+D:\projects\CollectStickers\CollectStickers\obj\Debug\CollectStickers.dll
+D:\projects\CollectStickers\CollectStickers\obj\Debug\CollectStickers.pdb
+D:\projects\CollectStickers\CollectStickers\bin\Microsoft.Web.Mvc.dll
