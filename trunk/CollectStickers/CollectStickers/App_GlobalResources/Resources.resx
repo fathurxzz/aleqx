@@ -138,6 +138,9 @@
   <data name="SaveChanges" xml:space="preserve">
     <value>Сохранить изменения</value>
   </data>
+  <data name="StickersSummary" xml:space="preserve">
+    <value>Сводная информация по стикерам</value>
+  </data>
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>
   </data>

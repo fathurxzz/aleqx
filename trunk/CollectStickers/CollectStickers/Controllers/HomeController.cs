@@ -62,6 +62,7 @@ namespace CollectStickers.Controllers
                     stickerList.Add(sticker);
                 }
             }
+            stickerList.Sort(new CollectStickers.Helpers.Helpers.SortStickers());
             return stickerList; 
         }
 

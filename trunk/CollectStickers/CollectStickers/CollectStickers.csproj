@@ -141,6 +141,7 @@
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Views\Home\EditStickerInfo.aspx" />
     <Content Include="Views\Home\News.aspx" />
+    <Content Include="Views\Home\StickersSummary.aspx" />
     <Content Include="Views\Home\Users.aspx" />
     <Content Include="Views\PageParts\MainMenu.ascx" />
     <Content Include="Views\Shared\LogOnName.ascx" />
