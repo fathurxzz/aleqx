@@ -24,17 +24,21 @@ namespace CollectStickers.Controllers
 
         public ActionResult EditStickerInfo()
         {
-            int needStickerCount = 0;
+            int needStickers = 0;
+            int freeStickers = 0;
             List<StickerPresentation> stickerList = GetStickerList((Guid)SystemSettings.CurrentUserId);
             foreach (var item in stickerList)
             {
                 if (item.isNeed)
-                    needStickerCount++;
+                    needStickers++;
+                if (item.isFree)
+                    freeStickers++;
             }
 
-            ViewData["collected"] = SystemSettings.CurrentAlbumStickerCount - needStickerCount;
-            ViewData["collectedPercent"] = Math.Round((decimal)(SystemSettings.CurrentAlbumStickerCount - needStickerCount) / SystemSettings.CurrentAlbumStickerCount * 100, 2);
-            ViewData["needed"] = needStickerCount;
+            ViewData["collected"] = SystemSettings.CurrentAlbumStickerCount - needStickers;
+            ViewData["collectedPercent"] = Math.Round((decimal)(SystemSettings.CurrentAlbumStickerCount - needStickers) / SystemSettings.CurrentAlbumStickerCount * 100, 2);
+            ViewData["needed"] = needStickers;
+            ViewData["free"] = freeStickers;
             return View(stickerList);
         }
 
