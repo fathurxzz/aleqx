@@ -77,6 +77,7 @@
     <Compile Include="Controllers\Resources.cs" />
     <Compile Include="Controllers\Security.cs" />
     <Compile Include="Controllers\SystemSettings.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -148,6 +149,7 @@
     <Content Include="Views\Shared\LogOnName.ascx" />
     <Content Include="Views\Shared\LogOnStatus.ascx" />
     <Content Include="Views\Shared\MasterLogOn.ascx" />
+    <Content Include="Views\Users\Index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Membership.edmx">
