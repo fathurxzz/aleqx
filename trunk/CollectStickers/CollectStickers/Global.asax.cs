@@ -22,6 +22,12 @@ namespace CollectStickers
                 new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
             );
 
+            routes.MapRoute(
+                "Users",
+                "Users/{userId}",
+                new { controller = "Users", action = "Index", userId="" }
+                );
+
         }
 
         protected void Application_Start()
