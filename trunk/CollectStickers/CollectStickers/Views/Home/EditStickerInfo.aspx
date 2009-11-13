@@ -70,13 +70,15 @@
                 {
                     if (item.Number == i)
                     {
-                        existitem = true;
+                        
                         if (item.isNeed)
                         {
+                            existitem = true;
                             Response.Write("<td value=\"1\" style=\"background-color:#df8d1f\" id=\"item_" + i + "\" onclick=\"changeCellStatus(this.id," + i + ")\">" + i + "</td>");
                         }
                         else if (item.isFree)
                         {
+                            existitem = true;
                             Response.Write("<td value=\"2\" style=\"background-color:#4f7556\" id=\"item_" + i + "\" onclick=\"changeCellStatus(this.id," + i + ")\">" + i + "</td>"); 
                         }
                       

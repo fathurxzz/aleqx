@@ -21,36 +21,36 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("collectstikersModel1", "aspnet_UsersInRoles", "aspnet_Roles", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CollectStickers.Models.aspnet_Roles), "aspnet_Users", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CollectStickers.Models.aspnet_Users))]
 
 // Original file name:
-// Generation date: 11.11.2009 12:21:18
+// Generation date: 13.11.2009 19:59:19
 namespace CollectStickers.Models
 {
     
     /// <summary>
-    /// There are no comments for collectstikersMembership2 in the schema.
+    /// There are no comments for CollectstikersMembership in the schema.
     /// </summary>
     public partial class MembershipStorage : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// Initializes a new collectstikersMembership2 object using the connection string found in the 'collectstikersMembership2' section of the application configuration file.
+        /// Initializes a new CollectstikersMembership object using the connection string found in the 'CollectstikersMembership' section of the application configuration file.
         /// </summary>
         public MembershipStorage() : 
-                base("name=collectstikersMembership2", "collectstikersMembership2")
+                base("name=CollectstikersMembership", "CollectstikersMembership")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new collectstikersMembership2 object.
+        /// Initialize a new CollectstikersMembership object.
         /// </summary>
         public MembershipStorage(string connectionString) : 
-                base(connectionString, "collectstikersMembership2")
+                base(connectionString, "CollectstikersMembership")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new collectstikersMembership2 object.
+        /// Initialize a new CollectstikersMembership object.
         /// </summary>
         public MembershipStorage(global::System.Data.EntityClient.EntityConnection connection) : 
-                base(connection, "collectstikersMembership2")
+                base(connection, "CollectstikersMembership")
         {
             this.OnContextCreated();
         }
