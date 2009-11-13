@@ -120,6 +120,8 @@
 Собрано - <%=ViewData["collected"]%> (<%=ViewData["collectedPercent"]%>%)
 <br />
 Осталось собрать - <%=ViewData["needed"]%>
+<br />
+Лишних - <%=ViewData["free"]%>
 
 </div>
 
