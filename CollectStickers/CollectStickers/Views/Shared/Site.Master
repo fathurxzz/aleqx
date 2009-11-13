@@ -26,7 +26,11 @@
             <div id="mainMenu">
                 <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
             </div>
+            
             <div id="header">
+            
+            <!--    <div id="title"></div>-->
+            
                 <div id="masterLogin">
                     <% Html.RenderPartial("LogonStatus"); %>
                 </div>
@@ -34,12 +38,10 @@
             
             <div id="subHeader">
             
-            
             </div>
             
             
             <div id="content">
-                
                 <div id="leftMenu">
                     <asp:ContentPlaceHolder ID="leftMenuContent" runat="server" />
                 </div>

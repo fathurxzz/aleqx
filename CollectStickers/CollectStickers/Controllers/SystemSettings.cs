@@ -18,5 +18,10 @@ namespace CollectStickers.Controllers
                 return null;
             }
         }
+
+        public static int CurrentAlbumStickerCount
+        {
+            get { return 564; }
+        }
     }
 }

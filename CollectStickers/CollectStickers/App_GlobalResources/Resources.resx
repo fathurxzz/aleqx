@@ -121,7 +121,7 @@
     <value>Найти совпадения</value>
   </data>
   <data name="EditStickerInfo" xml:space="preserve">
-    <value>Редактирование данных о стикерах</value>
+    <value>Моя страничка</value>
   </data>
   <data name="LogOff" xml:space="preserve">
     <value>Выход</value>
@@ -131,9 +131,6 @@
   </data>
   <data name="MyPage" xml:space="preserve">
     <value>Моя страничка</value>
-  </data>
-  <data name="News" xml:space="preserve">
-    <value>Новости</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>CollectStickers</value>

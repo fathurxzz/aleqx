@@ -17,6 +17,4 @@
 <span style="color: #ffffff"><b>|</b></span>
 <%=Html.ResourceActionLink("Users", "Users", "Home").ToLower()%>
 <%} %>
-<span style="color: #ffffff"><b>|</b></span>
-<%=Html.ResourceActionLink("News","News","Home").ToLower() %>
 
