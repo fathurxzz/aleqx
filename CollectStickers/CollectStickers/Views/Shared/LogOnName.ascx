@@ -3,7 +3,8 @@
 
 <div class="logOnProperties">
     <div class="logOnName">
-        <%=Html.ResourceString("Welcome")%>, <%= Profile.UserName%>!
+        <%=Html.ResourceString("Welcome")%>, <font style="color:#df8d1f; font-weight:bold;"><%= Profile.UserName%></font>!
     </div>
+    Редактировать профиль&nbsp;
     <%= Html.ResourceActionLink("LogOff", "LogOff", "Account") %>
 </div>
