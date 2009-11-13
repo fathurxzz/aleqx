@@ -48,7 +48,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="collectstikersModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
-        <EntityContainer Name="collectstikersEntities8">
+        <EntityContainer Name="CollectStickersConnectionString">
           <EntitySet Name="Album" EntityType="collectstikersModel.Album" />
           <EntitySet Name="Stickers" EntityType="collectstikersModel.Stickers" />
           <AssociationSet Name="FK_STICKERS_REFERENCE_ALBUM" Association="collectstikersModel.FK_STICKERS_REFERENCE_ALBUM">
@@ -84,7 +84,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
-        <EntityContainerMapping StorageEntityContainer="collectstikersModelStoreContainer" CdmEntityContainer="collectstikersEntities8">
+        <EntityContainerMapping StorageEntityContainer="collectstikersModelStoreContainer" CdmEntityContainer="CollectStickersConnectionString">
           <EntitySetMapping Name="Album">
             <EntityTypeMapping TypeName="IsTypeOf(collectstikersModel.Album)">
               <MappingFragment StoreEntitySet="Album">

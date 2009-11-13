@@ -330,7 +330,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="collectstikersModel1" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
-        <EntityContainer Name="collectstikersMembership2">
+        <EntityContainer Name="CollectstikersMembership">
           <EntitySet Name="aspnet_Applications" EntityType="collectstikersModel1.aspnet_Applications" />
           <EntitySet Name="aspnet_Membership" EntityType="collectstikersModel1.aspnet_Membership" />
           <EntitySet Name="aspnet_Paths" EntityType="collectstikersModel1.aspnet_Paths" />
@@ -588,7 +588,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
-        <EntityContainerMapping StorageEntityContainer="collectstikersModel1StoreContainer" CdmEntityContainer="collectstikersMembership2">
+        <EntityContainerMapping StorageEntityContainer="collectstikersModel1StoreContainer" CdmEntityContainer="CollectstikersMembership">
           <EntitySetMapping Name="aspnet_Applications">
             <EntityTypeMapping TypeName="IsTypeOf(collectstikersModel1.aspnet_Applications)">
               <MappingFragment StoreEntitySet="aspnet_Applications">

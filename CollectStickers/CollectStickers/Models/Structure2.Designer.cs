@@ -12,36 +12,36 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("collectstikersModel", "FK_STICKERS_REFERENCE_ALBUM", "Album", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CollectStickers.Models.Album), "Stickers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CollectStickers.Models.Stickers))]
 
 // Original file name:
-// Generation date: 11.11.2009 16:51:16
+// Generation date: 13.11.2009 19:56:34
 namespace CollectStickers.Models
 {
     
     /// <summary>
-    /// There are no comments for collectstikersEntities8 in the schema.
+    /// There are no comments for CollectStickersConnectionString in the schema.
     /// </summary>
     public partial class StickersStorage : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// Initializes a new collectstikersEntities8 object using the connection string found in the 'collectstikersEntities8' section of the application configuration file.
+        /// Initializes a new CollectStickersConnectionString object using the connection string found in the 'CollectStickersConnectionString' section of the application configuration file.
         /// </summary>
         public StickersStorage() : 
-                base("name=collectstikersEntities8", "collectstikersEntities8")
+                base("name=CollectStickersConnectionString", "CollectStickersConnectionString")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new collectstikersEntities8 object.
+        /// Initialize a new CollectStickersConnectionString object.
         /// </summary>
         public StickersStorage(string connectionString) : 
-                base(connectionString, "collectstikersEntities8")
+                base(connectionString, "CollectStickersConnectionString")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new collectstikersEntities8 object.
+        /// Initialize a new CollectStickersConnectionString object.
         /// </summary>
         public StickersStorage(global::System.Data.EntityClient.EntityConnection connection) : 
-                base(connection, "collectstikersEntities8")
+                base(connection, "CollectStickersConnectionString")
         {
             this.OnContextCreated();
         }
