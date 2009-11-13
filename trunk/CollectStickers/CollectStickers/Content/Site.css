@@ -23,7 +23,7 @@
     border:1px solid black;
 }
 
-#mainMenu { text-align:left; background-color: #818181; padding-bottom:3px; float:left; }
+#mainMenu { text-align:left; background-color: #818181; padding-bottom:3px; float:left; width:100% }
 #mainMenu a:link,
 #mainMenu a:active,
 #mainMenu a:visited,
@@ -34,15 +34,15 @@
 #title  
 {
     float:left;
-    position:absolute;
+    /*position:absolute;*/
     padding-left:100px; 
-    background-position:center;
-    padding-top:40px;
-    width:350px;
+    background-position:right;
+    padding-top:0px;
+    width:470px;
     height:50px;
     background-image:url('images/logo.gif');
     background-repeat:no-repeat;
-    /*background-color:Red;*/
+    background-color:#ffffff;
 }
 
 
@@ -58,10 +58,22 @@
 
 .greyBorderBox{padding:10px; border: 1px solid #dbdbdb;  background:white;}
 .popUpBox{position:absolute; display:none; z-index:10001;}
+
 /*
 .stickerTable tr td{border-collapse:collapse; border:1px dotted #ccc; padding:1px;}
 .stickerTable th{border-collapse:collapse; border:1px dotted #ccc; padding:1px; color:Olive; width:150px;}
 */
 
 
-.stickerTable td{border-collapse:collapse; border:1px solid #ccc; padding:1px; cursor:default}
+.stickerTable td{border-collapse:collapse; border:1px solid #ccc; padding:1px; cursor:default; color:#000000}
+
+/*
+#4f7556 
+#df8d1f оранжевый
+*/
+
+.page{color:#4f7556}
+
+h1,h2{color:#df8d1f}
+h3,h4{color:#4f7556}
+
