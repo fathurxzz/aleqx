@@ -70,7 +70,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Редактирование данных о стикерах.
+        ///   Looks up a localized string similar to Моя страничка.
         /// </summary>
         internal static string EditStickerInfo {
             get {
@@ -102,15 +102,6 @@ namespace Resources {
         internal static string MyPage {
             get {
                 return ResourceManager.GetString("MyPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Новости.
-        /// </summary>
-        internal static string News {
-            get {
-                return ResourceManager.GetString("News", resourceCulture);
             }
         }
         

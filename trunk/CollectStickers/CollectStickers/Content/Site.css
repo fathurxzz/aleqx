@@ -31,21 +31,37 @@
 #mainMenu a:hover{color: #ffffff !important}
 
 
+#title  
+{
+    float:left;
+    position:absolute;
+    padding-left:100px; 
+    background-position:center;
+    padding-top:40px;
+    width:350px;
+    height:50px;
+    background-image:url('images/logo.gif');
+    background-repeat:no-repeat;
+    /*background-color:Red;*/
+}
+
+
 #content { padding:10px; }
 
 #header { border-bottom:solid 3px #818181; height:70px; }
 
-#subHeader { height:70px; }
+#subHeader { height:5px; }
 
 #leftMenu { float:left; padding:5px; }
-
 
 .adminTable tr td{border-collapse:collapse; border:1px dotted #ccc; padding:3px;}
 
 .greyBorderBox{padding:10px; border: 1px solid #dbdbdb;  background:white;}
 .popUpBox{position:absolute; display:none; z-index:10001;}
-
-
-
+/*
 .stickerTable tr td{border-collapse:collapse; border:1px dotted #ccc; padding:1px;}
 .stickerTable th{border-collapse:collapse; border:1px dotted #ccc; padding:1px; color:Olive; width:150px;}
+*/
+
+
+.stickerTable td{border-collapse:collapse; border:1px solid #ccc; padding:1px; cursor:default}

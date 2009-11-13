@@ -8,8 +8,6 @@
 
     <h2>Coincidences</h2>
 
-   
-
     <%
         string oldUser = "";
         foreach (var item in Model) {

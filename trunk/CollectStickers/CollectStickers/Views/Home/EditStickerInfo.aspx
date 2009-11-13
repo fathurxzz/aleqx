@@ -6,116 +6,124 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript">
-    var enablesNeed = {};
-    var enablesFree = {};
-
-    function updateEnablesNeed(check, id) {
-        if (check.checked) {
-            enablesNeed[id] = true;
-        }
-        else {
-            enablesNeed[id] = false;
-        }
-    }
-
-    function updateEnablesFree(check, id) {
-        if (check.checked) {
-            enablesFree[id] = true;
-        }
-        else {
-            enablesFree[id] = false;
-        }
-    }
+    var enables = {};
 
     function collectCategoryChanges() {
-
-        var enablitiesNeed = $get("enablitiesNeed");
-        enablitiesNeed.value = Sys.Serialization.JavaScriptSerializer.serialize(enablesNeed);
-
-        var enablitiesFree = $get("enablitiesFree");
-        enablitiesFree.value = Sys.Serialization.JavaScriptSerializer.serialize(enablesFree);
-
+        var enablities = $get("enablities");
+        enablities.value = Sys.Serialization.JavaScriptSerializer.serialize(enables);
         return true;
     }
+
+
+    function changeCellStatus(itemId, id) {
+        var item = $get(itemId);
+        
+        if (item.value == 0) {
+            item.value = 2
+            item.style.backgroundColor = "#4f7556";
+            enables[id] = 2;
+        }
+        else if (item.value == 2) {
+            item.value = 1
+            item.style.backgroundColor = "#df8d1f";
+            enables[id] = 1;
+        }
+        else {
+            item.value = 0
+            item.style.backgroundColor = "#ffffff";
+            enables[id] = 0;
+        }
+    }
+    
     
 </script>
     <h2>UserPage</h2>
 
 
+<%
+    bool existitem;
+     %>
+     
  <%using (Html.BeginForm("UpdateStickers", "Home", FormMethod.Post))
    {
-     %>
+     %>     
+<table class="stickerTable">
+<tr>
+<%
+    int maxcount = 564;
+    for (int i = 1; i <= 570; i++)
+    {
+        existitem = false;
+        if (i <= maxcount)
+        {
+            if (i % 30 == 1)
+            {
+             %>
+             </tr>
+             <tr>
+             <%
+            }
 
-    <table class="stickerTable">
-        <tr>
-            <th>
-                Номер стикера
-            </th>
-            <th>
-                Мне необходим данный стикер
-            </th>
-            <th>
-                У меня есть такой лишний
-            </th>
-        </tr>
+            if (Model != null)
+            {   
+                foreach (var item in Model)
+                {
+                    if (item.Number == i)
+                    {
+                        existitem = true;
+                        if (item.isNeed)
+                        {
+                            Response.Write("<td value=\"1\" style=\"background-color:#df8d1f\" id=\"item_" + i + "\" onclick=\"changeCellStatus(this.id," + i + ")\">" + i + "</td>");
+                        }
+                        else if (item.isFree)
+                        {
+                            Response.Write("<td value=\"2\" style=\"background-color:#4f7556\" id=\"item_" + i + "\" onclick=\"changeCellStatus(this.id," + i + ")\">" + i + "</td>"); 
+                        }
+                      
+                    }
+                }
+            }
 
-
-
-    <% 
-     bool existitem = false;
-     for (int i = 1; i <= 564; i++)
-     {
-         existitem = false;
-         if (Model != null)
-         {
-             foreach (var item in Model)
-             {
-                 if (item.Number == i)
-                 {
-                     existitem = true;
-                %>
-                <tr>
-                    <td>
-                        <%= Html.Encode(item.Number)%>
-                    </td>
-                    <td>
-                        <%= Html.CheckBox("chNeed_" + i, item.isNeed, new { onblur = "updateEnablesNeed(this, " + i + ")" })%>
-                    </td>
-                    <td>
-                        <%= Html.CheckBox("chFree_" + i, item.isFree, new { onblur = "updateEnablesFree(this, " + i + ")" })%>
-                    </td>
-                </tr>
-                <%
-     }
-
-             }
-         }
-
-         if (!existitem)
-         {
-                %>
-                <tr>
-                    <td>
-                        <%= Html.Encode(i)%>
-                    </td>
-                    <td>
-                        <%= Html.CheckBox("chNeed_" + i, false, new { onblur = "updateEnablesNeed(this, " + i + ")" })%>
-                    </td>
-                    <td>
-                        <%= Html.CheckBox("chFree_" + i, false, new { onblur = "updateEnablesFree(this, " + i + ")" })%>
-                    </td>
-                </tr>
-                <%
-     }
-     }
-        %>
-    </table>
-    
-    <%= Html.Hidden("enablitiesNeed")%>
-    <%= Html.Hidden("enablitiesFree")%>
+            if (!existitem)
+            {
+                Response.Write("<td value=\"0\" style=\"background-color:#ffffff\" id=\"item_" + i + "\" onclick=\"changeCellStatus(this.id," + i + ")\">" + i + "</td>"); 
+            }
+        }
+    }
+%>
+</tr>
+</table>
+<br />
+    <%= Html.Hidden("enablities")%>
     <input type="submit" value="<%= Html.ResourceString("SaveChanges") %>" onclick="return collectCategoryChanges();" />
     
 <%} %>
+
+<br />
+
+<div>
+
+<table>
+<tr>
+    <td style="width:15px; height:13px; background-color:#df8d1f"></td>
+    <td align="left"> - Ищу</td>
+</tr>
+<tr>
+    <td style="width:15px; height:13px; background-color:#4f7556"></td>
+    <td align="left"> - Готов обменять</td>
+</tr>
+</table>
+
+
+<br />
+
+Собрано - <%=ViewData["collected"]%> (<%=ViewData["collectedPercent"]%>%)
+<br />
+Осталось собрать - <%=ViewData["needed"]%>
+
+</div>
+
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="leftMenuContent" runat="server">
