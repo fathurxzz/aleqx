@@ -19,7 +19,7 @@
                 <br />
                 <br />
                 <%= Html.Encode(item.UserName) %>
-                <a href="/Users/<%=item.UserId%>">asdasd</a>
+                <a href="/Users/<%=item.UserName%>"><%= Html.Encode(item.UserName) %></a>
                 <hr />
                 <%
             }
