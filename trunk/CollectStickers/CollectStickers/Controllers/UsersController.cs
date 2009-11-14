@@ -12,10 +12,10 @@ namespace CollectStickers.Controllers
         //
         // GET: /Users/
 
-        public ActionResult Index(string userId)
+        public ActionResult Index(string userName)
         {
 
-            ViewData["userId"] = userId;
+            ViewData["userName"] = userName;
 
             return View();
         }

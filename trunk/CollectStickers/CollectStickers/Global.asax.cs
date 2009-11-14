@@ -21,13 +21,13 @@ namespace CollectStickers
                 "{controller}/{action}/{id}",                           // URL with parameters
                 new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
             );
-
+            
             routes.MapRoute(
                 "Users",
-                "Users/{userId}",
-                new { controller = "Users", action = "Index", userId="" }
+                "Users/{userName}",
+                new { controller = "Users", action = "Index", userName="alex" }
                 );
-
+            
         }
 
         protected void Application_Start()
