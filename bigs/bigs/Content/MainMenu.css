@@ -1,4 +1,9 @@
-﻿#menuContainer
+﻿#mainMenu
+{
+    float:right;
+}
+
+#menuContainer
 {
     width:650px;
     height:50px; 
