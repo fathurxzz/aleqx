@@ -30,8 +30,7 @@
 
 #menucontainer
 {
-    background-image:url('images/bg-menu-c.png'); 
-    background-repeat:repeat-x;
+
     width:600px;
     height:50px; 
 }
@@ -52,22 +51,26 @@
 }
 #menuitems
 {
-    width:400px; 
-    height:20px;
+    background-image:url('images/bg-menu-c.png'); 
+    background-repeat:repeat-x;
+    width:540px; 
+    height:50px;
     position:relative; 
     margin:0 auto;
-    border:1px solid black;
     float:left;
 }
 
 a.bigs 
 {
-    display:block; 
+    display:block;
     width:100px; 
-    height:30px; 
+    height:20px; 
     background-image:url('images/menuitem-bigs.png'); 
-    background-position:0px -60px;}
-a.bigs:hover{background-position: 0px -11px !important;}
+    background-position:0px -68px;
+    border:1px solid black;
+}
+    
+a.bigs:hover{background-position: 0px -19px !important;}
 a.bigs:Active{background-position: 0px -21px !important;}
 
 
