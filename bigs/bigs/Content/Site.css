@@ -15,29 +15,35 @@
     width:850px;
     background-color:White;
     height:100%;
-    border:1px solid black;
+    /*border:1px solid black;*/
     height:50px;
+    background-color:Aqua;
 }
 
 #logo
 {
     float:left;
-    width:100px;
+    width:160px;
+    height:250px;
+    background-color:Red;
 }
 
 #headerRight
 {
-    margin-left:100px;
+    margin-left:160px;
 }
 
 #phrase
 {
-    
+    height:180px;
+    background-color:Yellow;
 }
 
 #menu
 {
+    /*border:1px solid black;*/
     
+    background-color:Olive;
 }
 
 #middle
@@ -48,17 +54,23 @@
 #left
 {
     float:left;
-    width:200px;
+    width:160px;
+    background-color:Fuchsia;
+    height:100px;
 }
 #content
 {
-    margin-left:200px;
+    margin-left:160px;
+    background-color:Maroon;
+    height:100px;
 }
 
 
 #footer
 {
-    height:100px;   
+    height:100px;
+    background-color:Orange;
+     height:50px;
 }
 
 #languageBar
