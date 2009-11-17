@@ -20,7 +20,7 @@
 
 #title
 {
-    height:100px;
+    height:210px;
 }
 
 #footer
@@ -30,8 +30,7 @@
 
 #languageBar
 {
-       border:1px solid black;
        width:200px;
-       height:30px;
+       height:28px;
        float:right;
 }

@@ -1,0 +1,51 @@
+﻿#languageBarContainer
+{
+    width:200px;
+    height:30px; 
+}
+
+#languageBarLeftSide
+{
+    background-image:url('images/bg-languagebar-l.png'); 
+    height:26px; 
+    width:30px;
+    float:left;
+}
+#languageBarRightSide
+{
+    background-image:url('images/bg-languagebar-r.png'); 
+    height:26px; 
+    width:30px;
+    float:right;
+}
+
+#languageBarCentre
+{
+    background-image:url('images/bg-languagebar-c.png'); 
+    background-repeat:repeat-x;
+    
+    width:140px; 
+    height:50px;
+    position:relative; 
+    margin:0 auto;
+    float:left;
+}
+
+#languageBarItems
+{
+    float:left;
+    margin-top:1px;
+}
+
+a.ru{float:left;display:block;width:27px;height:28px;background-image:url('images/flag-ru.png');background-position:-29px 0px; background-repeat:no-repeat;margin-left:10px;}
+a.ru:hover{background-position: -59px 0px !important;}
+a.ru.ruActive{background-position: 3px 0px !important;}
+
+a.en{float:left;display:block;width:27px;height:28px;background-image:url('images/flag-en.png');background-position:-28px -0px;background-repeat:no-repeat;margin-left:20px;}
+a.en:hover{background-position: -59px 0px !important;}
+a.en.enActive{background-position: 3px 0px !important;}
+
+a.it{float:left;display:block;width:27px;height:28px;background-image:url('images/flag-it.png');background-position:-28px -0px;background-repeat:no-repeat;margin-left:20px;}
+a.it:hover{background-position: -58px 0px !important;}
+a.it.itActive{background-position: 3px 0px !important;}
+
