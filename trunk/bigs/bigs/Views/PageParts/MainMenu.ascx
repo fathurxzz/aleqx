@@ -1,11 +1,11 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 
-<div id="menucontainer">
-    <div id="menuleftside">
+<div id="menuContainer">
+    <div id="menuLeftSide">
     </div>
     
-    <div id="menucentre">
-        <div id="menuitems">
+    <div id="menuCentre">
+        <div id="menuItems">
         <a class="bigs" href=""></a>
         <a class="service" href=""></a>
         <a class="request" href=""></a>
@@ -14,6 +14,6 @@
         <a class="contacts" href=""></a>
         </div>
     </div>
-    <div id="menurightside">
+    <div id="menuRightSide">
     </div>
 </div>

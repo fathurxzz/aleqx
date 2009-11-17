@@ -8,6 +8,7 @@
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/MainMenu.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/LanguageBar.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -15,14 +16,14 @@
 
         <div id="header">
             <div id="languageBar">
-            languageBar
+                <% Html.RenderAction<PagePartsController>(ac => ac.LanguageBar()); %>
             </div>
         
             <div id="title">
                 
             </div>
             
-            <div id="mainMenu">
+            <div id="mainMenu" style="float:right">
                 <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
             </div>
             

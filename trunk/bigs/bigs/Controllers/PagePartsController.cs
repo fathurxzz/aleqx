@@ -22,5 +22,10 @@ namespace bigs.Controllers
             return View();
         }
 
+        public ActionResult LanguageBar()
+        {
+            return View();
+        }
+
     }
 }

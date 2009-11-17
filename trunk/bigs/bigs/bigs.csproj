@@ -72,18 +72,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\bg-languagebar-c.png" />
+    <Content Include="Content\images\bg-languagebar-l.png" />
+    <Content Include="Content\images\bg-languagebar-r.png" />
     <Content Include="Content\images\bg-menu-c.png" />
     <Content Include="Content\images\bg-menu-l.png" />
     <Content Include="Content\images\bg-menu-r.png" />
+    <Content Include="Content\images\flag-en.png" />
+    <Content Include="Content\images\flag-it.png" />
+    <Content Include="Content\images\flag-ru.png" />
     <Content Include="Content\images\menuitem-bigs.png" />
     <Content Include="Content\images\menuitem-capital.png" />
     <Content Include="Content\images\menuitem-contacts.png" />
     <Content Include="Content\images\menuitem-request.png" />
     <Content Include="Content\images\menuitem-service.png" />
     <Content Include="Content\images\menuitem-vacancy.png" />
+    <Content Include="Content\LanguageBar.css" />
     <Content Include="Content\MainMenu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\PageParts\LanguageBar.ascx" />
     <Content Include="Views\PageParts\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
