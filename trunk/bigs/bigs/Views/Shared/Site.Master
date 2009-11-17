@@ -28,12 +28,13 @@
         </div>
     </div>
     <div id="middle">
-    <div id="left">leftleftleftleft</div>
-    <div id="content">
+        <div id="left">leftleftleftleft</div>
+        <div id="content">
+        ASas
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
     </div>
-    </div>
- <div id="footer">footerfooterfooter</div>
+    <div id="footer">footerfooterfooter</div>
 </div>
 </body>
 </html>
