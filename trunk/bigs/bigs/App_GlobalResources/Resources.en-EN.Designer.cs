@@ -68,5 +68,14 @@ namespace Resources.Resources {
                 return ResourceManager.GetString("Bigs", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        internal static string Services {
+            get {
+                return ResourceManager.GetString("Services", resourceCulture);
+            }
+        }
     }
 }

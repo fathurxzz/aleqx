@@ -23,10 +23,10 @@ namespace bigs.Helpers
             string linkText = Controllers.ResourcesHelper.GetResourceString(resourceName);
             return helper.ActionLink(linkText, actionName, conrollerName);
         }
-        /*
-        public static string ActionLink<TController>(this System.Web.Mvc.HtmlHelper helper, Expression<Action<TController>> action) where TController : Controller
+
+        public static string RActionLink<TController>(this System.Web.Mvc.HtmlHelper helper, object htmlAttributes, Expression<Action<TController>> action) where TController : Controller
         {
-            return helper.ActionLink<TController>(action);
-        }*/
+            return helper.ActionLink<TController>(action, " ", htmlAttributes);
+        }
     }
 }
