@@ -62,19 +62,30 @@
 
 a.bigs 
 {
+    float:left;
     display:block;
-    width:100px; 
+    width:80px; 
     height:20px; 
     background-image:url('images/menuitem-bigs.png'); 
     background-position:0px -68px;
     border:1px solid black;
 }
-    
 a.bigs:hover{background-position: 0px -19px !important;}
 a.bigs:Active{background-position: 0px -21px !important;}
 
 
-.service{}
+a.service
+{
+    float:left;
+    display:block;
+    width:120px; 
+    height:20px; 
+    background-image:url('images/menuitem-service.png'); 
+    background-position:0px -60px;
+    border:1px solid black;
+}
+a.service:hover{background-position: 0px -19px !important;}
+
 .request{}
 .capital{}
 .vacancy{}
