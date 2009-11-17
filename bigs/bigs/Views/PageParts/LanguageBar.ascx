@@ -10,34 +10,29 @@
 <div id="languageBarContainer">
     <div id="languageBarLeftSide">
     </div>
-    
-    <div id="languageBarCentre">
-        <div id="languageBarItems">
-        
     <%
         string classname = string.Empty;
         string ruClassname = "ru";
         string enClassname = "en";
         string itClassname = "it";
-    switch (currentLanguage)
-    {
-        case "ru-RU":
-            ruClassname += " ruActive";
-            break;
-        case "en-EN":
-            enClassname += " enActive";
-            break;
-        case "it-IT":
-            itClassname += " itActive";
-            break;
-    }
- %>
- 
- <%
-     %>
-        <a class="<%=ruClassname %>" href=""></a>
-        <a class="<%=enClassname %>" href=""></a>
-        <a class="<%=itClassname %>" href=""></a>
+        switch (currentLanguage)
+        {
+            case "ru-RU":
+                ruClassname += " ruActive";
+                break;
+            case "en-EN":
+                enClassname += " enActive";
+                break;
+            case "it-IT":
+                itClassname += " itActive";
+                break;
+        }
+    %>
+    <div id="languageBarCentre">
+        <div id="languageBarItems">
+        <%=Html.RActionLink<HomeController>(new { @class = ruClassname }, c => c.SetRussian(returnUrl))%>
+        <%=Html.RActionLink<HomeController>(new { @class = enClassname }, c => c.SetEnglish(returnUrl))%>
+        <%=Html.RActionLink<HomeController>(new { @class = itClassname }, c => c.SetItalian(returnUrl))%>
         </div>
     </div>
     <div id="languageBarRightSide">

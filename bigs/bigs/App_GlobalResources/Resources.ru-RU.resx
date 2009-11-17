@@ -120,4 +120,7 @@
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
   </data>
+  <data name="Services" xml:space="preserve">
+    <value>Услуги</value>
+  </data>
 </root>
