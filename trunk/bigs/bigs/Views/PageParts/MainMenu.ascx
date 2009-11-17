@@ -7,13 +7,16 @@
     
     <div id="menuCentre">
         <div id="menuItems">
+        <%
+            string absolutePath = Request.Url.AbsolutePath;
+        %>
         
-        <a class="bigs" href=""></a>
-        <a class="service" href=""></a>
-        <a class="request" href=""></a>
-        <a class="capital" href=""></a>
-        <a class="vacancy" href=""></a>
-        <a class="contacts" href=""></a>
+        <%=Html.ActionLink(" ", "Bigs", "Home", null, new { @class = absolutePath == "/Home/Bigs" ? "bigs bigsActive" : "bigs" })%>
+        <%=Html.ActionLink(" ", "Service", "Home", null, new { @class = absolutePath == "/Home/Service" ? "service serviceActive" : "service" })%>
+        <%=Html.ActionLink(" ", "Request", "Home", null, new { @class = absolutePath == "/Home/Request" ? "request requestActive" : "request" })%>
+        <%=Html.ActionLink(" ", "Capital", "Home", null, new { @class = absolutePath == "/Home/Capital" ? "capital capitalActive" : "capital" })%>
+        <%=Html.ActionLink(" ", "Vacancy", "Home", null, new { @class = absolutePath == "/Home/Vacancy" ? "vacancy vacancyActive" : "vacancy" })%>
+        <%=Html.ActionLink(" ", "Contacts", "Home", null, new { @class = absolutePath == "/Home/Contacts" ? "contacts contactsActive" : "contacts" })%>
         </div>
     </div>
     <div id="menuRightSide">

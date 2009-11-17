@@ -34,3 +34,9 @@
        height:28px;
        float:right;
 }
+
+#main
+{
+    height:50px;
+    border:1px solid black;
+}
