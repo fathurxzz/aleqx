@@ -12,20 +12,24 @@
 
         <div id="header">
             <div id="title">
-                <h1>My MVC Application</h1>
+                
             </div>
-              
-            <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
-            </div> 
             
             <div id="menucontainer">
-            
-                <ul id="menu">              
-                    <li><%= Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%= Html.ActionLink("About", "About", "Home")%></li>
-                </ul>
-            
+                <div id="menuleftside">
+                </div>
+                
+                <div id="menuitems">
+                <a class="bigs" href=""></a>
+                <a class="service" href=""></a>
+                <a class="request"></a>
+                <a class="capital"></a>
+                <a class="vacancy"></a>
+                <a class="contacts"></a>
+                </div>
+                
+                <div id="menurightside">
+                </div>
             </div>
         </div>
 
