@@ -31,7 +31,7 @@
 #menucontainer
 {
 
-    width:600px;
+    width:650px;
     height:50px; 
 }
 
@@ -49,44 +49,47 @@
     width:30px;
     float:right;
 }
-#menuitems
+
+#menucentre
 {
     background-image:url('images/bg-menu-c.png'); 
     background-repeat:repeat-x;
-    width:540px; 
+    width:590px; 
     height:50px;
     position:relative; 
     margin:0 auto;
     float:left;
 }
 
-a.bigs 
+#menuitems
 {
     float:left;
-    display:block;
-    width:80px; 
-    height:20px; 
-    background-image:url('images/menuitem-bigs.png'); 
-    background-position:0px -68px;
-    border:1px solid black;
+    margin-top:16px;
 }
-a.bigs:hover{background-position: 0px -19px !important;}
-a.bigs:Active{background-position: 0px -21px !important;}
 
 
-a.service
-{
-    float:left;
-    display:block;
-    width:120px; 
-    height:20px; 
-    background-image:url('images/menuitem-service.png'); 
-    background-position:0px -60px;
-    border:1px solid black;
-}
-a.service:hover{background-position: 0px -19px !important;}
 
-.request{}
-.capital{}
-.vacancy{}
-.contacts{}
+a.bigs{float:left;display:block;width:52px;height:20px;background-image:url('images/menuitem-bigs.png');background-position:-20px -68px;}
+a.bigs:hover{background-position: -20px -19px !important;}
+a.bigs.bigsActive{background-position: -20px -43px !important;}
+
+
+a.service{float:left;display:block;width:82px;height:20px;background-image:url('images/menuitem-service.png');background-position:-25px -60px;}
+a.service:hover{background-position: -25px -19px !important;}
+a.service.serviceActive{background-position: -25px -39px !important;}
+
+a.request{float:left;display:block;width:92px;height:20px;background-image:url('images/menuitem-request.png');background-position:-40px -55px;}
+a.request:hover{background-position: -40px -12px !important;}
+a.request.requestActive{background-position: -40px -33px !important;}
+
+a.capital{float:left;display:block;width:152px;height:20px;background-image:url('images/menuitem-capital.png');background-position:-20px -62px;}
+a.capital:hover{background-position: -20px -21px !important;}
+a.capital.capitalActive{background-position: -20px -41px !important;}
+
+a.vacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-vacancy.png');background-position:-45px -66px;}
+a.vacancy:hover{background-position: -45px -22px !important;}
+a.vacancy.vacancyActive{background-position: -45px -43px !important;}
+
+a.contacts{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-contacts.png');background-position:-45px -57px;}
+a.contacts:hover{background-position: -45px -14px !important;}
+a.contacts.contactsActive{background-position: -45px -34px !important;}
