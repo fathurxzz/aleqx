@@ -149,6 +149,12 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resources.it-IT.designer.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Home\Bigs.aspx" />
+    <Content Include="Views\Home\Capital.aspx" />
+    <Content Include="Views\Home\Contacts.aspx" />
+    <Content Include="Views\Home\Request.aspx" />
+    <Content Include="Views\Home\Service.aspx" />
+    <Content Include="Views\Home\Vacancy.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
