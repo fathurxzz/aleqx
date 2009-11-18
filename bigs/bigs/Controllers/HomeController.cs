@@ -24,7 +24,7 @@ namespace bigs.Controllers
             return View();
         }
 
-        public ActionResult Service()
+        public ActionResult Services()
         {
             return View();
         }

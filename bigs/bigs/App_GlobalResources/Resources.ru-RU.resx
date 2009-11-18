@@ -120,7 +120,19 @@
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
   </data>
+  <data name="Capital" xml:space="preserve">
+    <value>Ценные бумаги</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Запрос</value>
+  </data>
   <data name="Services" xml:space="preserve">
     <value>Услуги</value>
+  </data>
+  <data name="Vacancy" xml:space="preserve">
+    <value>Вакансии</value>
   </data>
 </root>

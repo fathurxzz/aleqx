@@ -12,7 +12,7 @@
         %>
         
         <%=Html.ActionLink(" ", "Bigs", "Home", null, new { @class = absolutePath == "/Home/Bigs" ? "bigs bigsActive" : "bigs" })%>
-        <%=Html.ActionLink(" ", "Service", "Home", null, new { @class = absolutePath == "/Home/Service" ? "service serviceActive" : "service" })%>
+        <%=Html.ActionLink(" ", "Services", "Home", null, new { @class = absolutePath == "/Home/Services" ? "services servicesActive" : "services" })%>
         <%=Html.ActionLink(" ", "Request", "Home", null, new { @class = absolutePath == "/Home/Request" ? "request requestActive" : "request" })%>
         <%=Html.ActionLink(" ", "Capital", "Home", null, new { @class = absolutePath == "/Home/Capital" ? "capital capitalActive" : "capital" })%>
         <%=Html.ActionLink(" ", "Vacancy", "Home", null, new { @class = absolutePath == "/Home/Vacancy" ? "vacancy vacancyActive" : "vacancy" })%>

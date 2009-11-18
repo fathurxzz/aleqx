@@ -40,9 +40,9 @@ a.bigs{float:left;display:block;width:52px;height:20px;background-image:url('ima
 a.bigs:hover{background-position: -20px -43px !important;}
 a.bigs.bigsActive{background-position: -20px -19px !important;}
 
-a.service{float:left;display:block;width:82px;height:20px;background-image:url('images/menuitem-service.png');background-position:-25px -60px;}
-a.service:hover{background-position: -25px -39px !important;}
-a.service.serviceActive{background-position: -25px -19px !important;}
+a.services{float:left;display:block;width:82px;height:20px;background-image:url('images/menuitem-service.png');background-position:-25px -60px;}
+a.services:hover{background-position: -25px -39px !important;}
+a.services.servicesActive{background-position: -25px -19px !important;}
 
 a.request{float:left;display:block;width:92px;height:20px;background-image:url('images/menuitem-request.png');background-position:-40px -55px;}
 a.request:hover{background-position: -40px -33px !important;}

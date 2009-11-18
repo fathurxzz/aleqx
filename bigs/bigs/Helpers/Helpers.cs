@@ -28,5 +28,11 @@ namespace bigs.Helpers
         {
             return helper.ActionLink<TController>(action, " ", htmlAttributes);
         }
+
+        public static string ResourceString(this System.Web.Mvc.HtmlHelper helper, string resourceName)
+        {
+            return Controllers.ResourcesHelper.GetResourceString(resourceName);
+        }
+
     }
 }
