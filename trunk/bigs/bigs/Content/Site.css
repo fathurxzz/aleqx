@@ -25,7 +25,7 @@
     background-image:url('images/logo.png');
     background-repeat:no-repeat;
     float:left;
-    width:160px;
+    width:151px;
     height:256px;
 }
 
@@ -93,8 +93,8 @@
 
 #languageBar
 {
-       padding-left:490px;
-       height:28px;
+   padding-left:490px;
+   height:28px;
 }
 
 
