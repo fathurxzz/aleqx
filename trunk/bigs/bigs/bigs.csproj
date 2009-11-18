@@ -69,10 +69,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.it-IT.resx</DependentUpon>
     </Compile>
-    <Compile Include="App_GlobalResources\Resources.ru-RU.designer.cs">
+    <Compile Include="App_GlobalResources\Resources.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.ru-RU.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -133,9 +133,9 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Resources.ru-RU.resx">
+    <Content Include="App_GlobalResources\Resources.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Resources.ru-RU.designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
