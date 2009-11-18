@@ -76,7 +76,6 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PagePartsController.cs" />
     <Compile Include="Controllers\Resources.cs" />
     <Compile Include="Controllers\SystemSettings.cs" />
     <Compile Include="Default.aspx.cs">
@@ -109,8 +108,6 @@
     <Content Include="Content\MainMenu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Views\PageParts\LanguageBar.ascx" />
-    <Content Include="Views\PageParts\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />
@@ -156,6 +153,8 @@
     <Content Include="Views\Home\Request.aspx" />
     <Content Include="Views\Home\Services.aspx" />
     <Content Include="Views\Home\Vacancy.aspx" />
+    <Content Include="Views\Shared\LanguageBar.ascx" />
+    <Content Include="Views\Shared\MainMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

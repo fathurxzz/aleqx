@@ -22,13 +22,13 @@
         %>
         <div id="headerRight">
             <div id="languageBar">
-                <% Html.RenderAction<PagePartsController>(ac => ac.LanguageBar()); %>
+                <% Html.RenderPartial("LanguageBar");%>
             </div>
             <div id="phrase">
             
             </div>
             <div id="menu">
-                <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
+                <% Html.RenderPartial("MainMenu");%>
             </div>
         </div>
     </div>
