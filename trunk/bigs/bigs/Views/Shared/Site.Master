@@ -14,7 +14,7 @@
 <body>
 <div id="main">
     <div id="header">
-        <div id="logo">logo</div>
+        <div id="logo"></div>
         <div id="headerRight">
             <div id="languageBar">
                 <% Html.RenderAction<PagePartsController>(ac => ac.LanguageBar()); %>
@@ -23,7 +23,9 @@
             phrase
             </div>
             <div id="menu">
-            <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
+                
+                <% Html.RenderAction<PagePartsController>(ac => ac.MainMenu()); %>
+                
             </div>
         </div>
     </div>
