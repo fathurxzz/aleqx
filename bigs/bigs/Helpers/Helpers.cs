@@ -24,7 +24,7 @@ namespace bigs.Helpers
             return helper.ActionLink(linkText, actionName, conrollerName);
         }
 
-        public static string RActionLink<TController>(this System.Web.Mvc.HtmlHelper helper, object htmlAttributes, Expression<Action<TController>> action) where TController : Controller
+        public static string ResourceActionLink<TController>(this System.Web.Mvc.HtmlHelper helper, object htmlAttributes, Expression<Action<TController>> action) where TController : Controller
         {
             return helper.ActionLink<TController>(action, " ", htmlAttributes);
         }
