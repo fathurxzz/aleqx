@@ -37,7 +37,7 @@
 #phrase
 {
     height:180px;
-    background-color:Yellow;
+    
 }
 
 #menu
@@ -57,28 +57,37 @@
 {
     float:left;
     width:160px;
-    background-color:Fuchsia;
+    
     height:100px;
 }
 #content
 {
-    padding-left:10px;
+    padding-left:50px;
     padding-top:10px;
     margin-left:160px;
-    background-color:Maroon;
+    
     height:100px;
 }
 
 
 #footer
 {
-    height:100px;
-    background-color:Orange;
-     height:50px;
+    height:35px;
+    border-top-style:dotted;
+    border-top-color:Red;
+    border-bottom-style:dotted;
+    border-bottom-color:Red;
+    padding-top:20px;
 }
 
 #languageBar
 {
        padding-left:490px;
        height:28px;
+}
+
+
+h2
+{
+    color:Red;
 }
