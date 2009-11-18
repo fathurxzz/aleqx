@@ -67,7 +67,7 @@ namespace bigs.Controllers
         
         public ActionResult SetEnglish(string returnUrl)
         {
-            SystemSettings.CurrentLanguage = "en-EN";
+            SystemSettings.CurrentLanguage = "en-US";
             if (!String.IsNullOrEmpty(returnUrl))
             {
                 return Redirect(returnUrl);
