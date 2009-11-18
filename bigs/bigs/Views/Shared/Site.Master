@@ -16,7 +16,10 @@
 <body>
 <div id="main">
     <div id="header">
-        <div id="logo"></div>
+        <%
+            string absolutePath = Request.Url.AbsolutePath;
+            Response.Write(absolutePath != "/" ? "<a id=\"logo\" href=\"/\"></a>" : "<a id=\"logo\"></a>");
+        %>
         <div id="headerRight">
             <div id="languageBar">
                 <% Html.RenderAction<PagePartsController>(ac => ac.LanguageBar()); %>
@@ -42,7 +45,7 @@
         <%=Html.ResourceString("Copyright")%>
     </div>
     <div id="footerRight">
-        М.бренд|дизайн
+        М.бренд&nbsp;|&nbsp;<div style="float:right; background-color:Red; color:White;">дизайн</div>
     </div>
     
     </div>
