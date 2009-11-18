@@ -38,7 +38,13 @@
         </div>
     </div>
     <div id="footer">
-    <%=Html.ResourceString("Copyright")%>
+    <div id="footerLeft">
+        <%=Html.ResourceString("Copyright")%>
+    </div>
+    <div id="footerRight">
+        М.бренд|дизайн
+    </div>
+    
     </div>
 </div>
 </body>
