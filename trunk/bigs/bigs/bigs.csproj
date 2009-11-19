@@ -149,7 +149,6 @@
     <Content Include="bigs.jpg" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Default.htm" />
-    <Content Include="Index.htm" />
     <Content Include="Views\Home\Bigs.aspx" />
     <Content Include="Views\Home\Capital.aspx" />
     <Content Include="Views\Home\Contacts.aspx" />
