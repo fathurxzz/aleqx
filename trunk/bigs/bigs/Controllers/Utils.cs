@@ -14,8 +14,8 @@ namespace bigs.Controllers
             {
                 SiteContent result = context.SiteContent.Where(c => c.Url == contentUrl).Select(c => c).First();
                 context.Detach(result);
-                if (SystemSettings.CurrentLanguage != result.Language)
-                    SystemSettings.CurrentLanguage = result.Language;
+                //if (SystemSettings.CurrentLanguage != result.Language)
+                //    SystemSettings.CurrentLanguage = result.Language;
                 return result;
             }
         }

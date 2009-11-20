@@ -14,41 +14,6 @@ namespace bigs.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Bigs()
-        {
-            return View();
-        }
-
-        public ActionResult Services()
-        {
-            return View();
-        }
-
-        public ActionResult Request()
-        {
-            return View();
-        }
-
-        public ActionResult Capital()
-        {
-            return View();
-        }
-
-        public ActionResult Vacancy()
-        {
-            return View();
-        }
-
-        public ActionResult Contacts()
-        {
-            return View();
-        }
-
 
         
 

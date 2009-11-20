@@ -2,9 +2,12 @@
 <%@ Import Namespace="bigs.Helpers" %>
 <%@ Import Namespace="bigs.Controllers" %>
 <% 
-    string returnUrl = Request.Url.AbsolutePath;
+    string absolutePath = Request.Url.AbsolutePath;
+    string returnUri = Request.Url.AbsoluteUri;
+    string[] separator = new string[] { Request.Url.AbsolutePath };
+    string[] xParameters = returnUri.Split(separator,StringSplitOptions.None);
+    string returnUrl = absolutePath + xParameters[1];
     string currentLanguage = ((string)Session["lang"]) ?? "ru-RU";
-    
     %>
 
 <div id="languageBarContainer">
