@@ -7,12 +7,8 @@ using System.Web.Mvc;
 namespace bigs.Controllers
 {
     [HandleError]
-    public class HomeController : Controller
+    public class HomeController : BaseContentController
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
 
 
         
