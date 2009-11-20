@@ -187,16 +187,16 @@
     <Content Include="Views\Shared\MainMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\Structure.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Structure.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\ContentAdmin.Master" />
     <Content Include="Views\Admin\EditText.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Structure.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Structure.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
