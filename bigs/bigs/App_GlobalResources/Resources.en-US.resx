@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
   </data>
@@ -132,7 +135,7 @@
   <data name="Request" xml:space="preserve">
     <value>Request</value>
   </data>
-  <data name="Services" xml:space="preserve">
+  <data name="Service" xml:space="preserve">
     <value>Services</value>
   </data>
   <data name="Vacancy" xml:space="preserve">

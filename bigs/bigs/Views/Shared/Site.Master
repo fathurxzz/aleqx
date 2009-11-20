@@ -42,7 +42,9 @@
             <div id="title">
                 <asp:ContentPlaceHolder ID="ContentTitleContent" runat="server" />
             </div>
-        
+            
+            
+            <%= ViewData["text"]%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
     </div>

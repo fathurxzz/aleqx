@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to О компании.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bigs.
         /// </summary>
         internal static string Bigs {
@@ -108,9 +117,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Услуги.
         /// </summary>
-        internal static string Services {
+        internal static string Service {
             get {
-                return ResourceManager.GetString("Services", resourceCulture);
+                return ResourceManager.GetString("Service", resourceCulture);
             }
         }
         

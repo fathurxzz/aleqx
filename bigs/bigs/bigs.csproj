@@ -137,8 +137,6 @@
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Account\Register.aspx" />
-    <Content Include="Views\Home\About.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
@@ -162,16 +160,22 @@
       <LastGenOutput>Resources.it-IT.designer.cs</LastGenOutput>
     </Content>
     <Content Include="bigs.jpg" />
+    <Content Include="Content\images\enmenuitem-capital.png" />
+    <Content Include="Content\images\enmenuitem-contacts.png" />
+    <Content Include="Content\images\enmenuitem-request.png" />
+    <Content Include="Content\images\enmenuitem-service.png" />
+    <Content Include="Content\images\enmenuitem-vacancy.png" />
+    <Content Include="Content\images\itmenuitem-capital.png" />
+    <Content Include="Content\images\itmenuitem-contacts.png" />
+    <Content Include="Content\images\itmenuitem-request.png" />
+    <Content Include="Content\images\itmenuitem-service.png" />
+    <Content Include="Content\images\itmenuitem-vacancy.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\phrase.png" />
     <Content Include="Content\MainMenuTranslations.css" />
     <Content Include="Default.htm" />
-    <Content Include="Views\Home\Bigs.aspx" />
-    <Content Include="Views\Home\Capital.aspx" />
-    <Content Include="Views\Home\Contacts.aspx" />
-    <Content Include="Views\Home\Request.aspx" />
-    <Content Include="Views\Home\Services.aspx" />
-    <Content Include="Views\Home\Vacancy.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Index.aspx" />
     <Content Include="Views\Shared\LanguageBar.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
   </ItemGroup>
