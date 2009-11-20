@@ -26,7 +26,7 @@ namespace bigs
             routes.MapRoute(
                "Services",                                              // Route name
                "Services",                           // URL with parameters
-               new { controller = "Services", action = "Index", contentName = "" }  // Parameter defaults
+               new { controller = "Services", action = "Index", contentName = "Услуги" }  // Parameter defaults
            );
 
             routes.MapRoute(

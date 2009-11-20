@@ -21,7 +21,7 @@
         
         
         <%=Html.ActionLink(" ", "Index", "About", new { contentUrl = Html.ResourceString("About") }, new { @class = controllerName == "ABOUT" ? "bigs bigsActive" : "bigs" })%>
-        <%=Html.ActionLink(" ", "Index", "Service", new { contentUrl = Html.ResourceString("Service") }, new { @class = controllerName == "SERVICE" ? shortLang + "services " + shortLang + "servicesActive" : shortLang + "services" })%>
+        <%=Html.ActionLink(" ", "Index", "Services", new { contentUrl = Html.ResourceString("Services") }, new { @class = controllerName == "SERVICES" ? shortLang + "services " + shortLang + "servicesActive" : shortLang + "services" })%>
         <%=Html.ActionLink(" ", "Index", "Requests", new { contentUrl = Html.ResourceString("Request") }, new { @class = controllerName == "REQUESTS" ? shortLang + "request " + shortLang + "requestActive" : shortLang + "request" })%>
         <%=Html.ActionLink(" ", "Index", "Documents", new { contentUrl = Html.ResourceString("Capital") }, new { @class = controllerName == "DOCUMENTS" ? shortLang + "capital " + shortLang + "capitalActive" : shortLang + "capital" })%>
         <%=Html.ActionLink(" ", "Index", "Vacancies", new { contentUrl = Html.ResourceString("Vacancy") }, new { @class = controllerName == "VACANCIES" ? shortLang + "vacancy " + shortLang + "vacancyActive" : shortLang + "vacancy" })%>

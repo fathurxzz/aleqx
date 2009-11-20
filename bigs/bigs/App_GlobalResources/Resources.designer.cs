@@ -117,9 +117,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Услуги.
         /// </summary>
-        internal static string Service {
+        internal static string Services {
             get {
-                return ResourceManager.GetString("Service", resourceCulture);
+                return ResourceManager.GetString("Services", resourceCulture);
             }
         }
         
