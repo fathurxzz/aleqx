@@ -24,10 +24,44 @@ a.rucontacts.rucontactsActive{background-position: -45px -14px !important;}
 
 
 
-a.enservices{float:left;display:block;width:82px;height:20px;background-image:url('images/enmenuitem-service.png');background-position:-17px -22px;}
-a.enservices:hover{background-position: -17px -39px !important;}
-a.enservices.enservicesActive{background-position: -17px -58px !important;}
+a.enservices{float:left;display:block;width:82px;height:20px;background-image:url('images/enmenuitem-service.png');background-position:-14px -22px;}
+a.enservices:hover{background-position: -14px -39px !important;}
+a.enservices.enservicesActive{background-position: -14px -58px !important;}
 
-a.enrequest{float:left;display:block;width:92px;height:20px;background-image:url('images/enmenuitem-request.png');background-position:-12px -22px;}
-a.enrequest:hover{background-position: -12px -39px !important;}
-a.rurequest.rurequestActive{background-position: -12px -58px !important;}
+a.enrequest{float:left;display:block;width:92px;height:20px;background-image:url('images/enmenuitem-request.png');background-position:0px -22px;}
+a.enrequest:hover{background-position: 0px -39px !important;}
+a.enrequest.enrequestActive{background-position: 0px -58px !important;}
+
+a.encapital{float:left;display:block;width:152px;height:20px;background-image:url('images/enmenuitem-capital.png');background-position:10px -22px;}
+a.encapital:hover{background-position: 10px -39px !important;}
+a.encapital.encapitalActive{background-position: 10px -58px !important;}
+
+a.envacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-vacancy.png');background-position:-25px -22px;}
+a.envacancy:hover{background-position: -25px -39px !important;}
+a.envacancy.envacancyActive{background-position: -25px -58px !important;}
+
+a.encontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-contacts.png');background-position:-15px -22px;}
+a.encontacts:hover{background-position: -15px -39px !important;}
+a.encontacts.encontactsActive{background-position: -15px -58px !important;}
+
+
+
+a.itservices{float:left;display:block;width:82px;height:20px;background-image:url('images/itmenuitem-service.png');background-position:-14px -22px;}
+a.itservices:hover{background-position: -14px -39px !important;}
+a.itservices.itservicesActive{background-position: -14px -58px !important;}
+
+a.itrequest{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-request.png');background-position:0px -22px;}
+a.itrequest:hover{background-position: 0px -39px !important;}
+a.itrequest.itrequestActive{background-position: 0px -58px !important;}
+
+a.itcapital{float:left;display:block;width:140px;height:20px;background-image:url('images/itmenuitem-capital.png');background-position:0px -22px;}
+a.itcapital:hover{background-position: 0px -39px !important;}
+a.itcapital.itcapitalActive{background-position: 0px -58px !important;}
+
+a.itvacancy{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-vacancy.png');background-position:-20px -22px;}
+a.itvacancy:hover{background-position: -20px -39px !important;}
+a.itvacancy.itvacancyActive{background-position: -20px -58px !important;}
+
+a.itcontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/itmenuitem-contacts.png');background-position:10px -22px;}
+a.itcontacts:hover{background-position: 10px -39px !important;}
+a.itcontacts.itcontactsActive{background-position: 10px -58px !important;}
