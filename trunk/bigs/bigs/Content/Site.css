@@ -37,7 +37,9 @@
 #phrase
 {
     height:180px;
-    
+    background-image:url('images/phrase.png');
+    background-repeat:no-repeat;
+    background-position:315px bottom;
 }
 
 #menu
@@ -80,7 +82,13 @@
     border-bottom-style:dotted;
     border-bottom-color:Red;
     
+    
+    
 }
+
+
+#footerRight a { color: #7f0002; text-decoration: none; }
+#footerRight .mark { background: #7f0002; color: white; padding: 1px 3px 1px 3px; }
 
 #footerLeft
 {

@@ -45,7 +45,7 @@
         <%=Html.ResourceString("Copyright")%>
     </div>
     <div id="footerRight">
-        М.бренд&nbsp;|&nbsp;<div style="float:right; background-color:Red; color:White;">дизайн</div>
+        <a href="http://www.M-brand.com.ua" title="M.бренд">M.бренд&nbsp;|&nbsp;<font class="mark">дизайн</font></a>
     </div>
     
     </div>
