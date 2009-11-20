@@ -15,8 +15,12 @@ namespace bigs.Controllers
 
         public ActionResult Index(string contentUrl)
         {
-            //SiteContent content = Utils.GetText(contentUrl);
-            ViewData["text"] = "";// content.Text;
+            if (contentUrl != null)
+            {
+                ViewData["contentUrl"] = contentUrl;
+                SiteContent content = Utils.GetText(contentUrl);
+                ViewData["text"] = content.Text;
+            }
             return View();
         }
 
