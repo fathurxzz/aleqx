@@ -90,7 +90,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RequestsController.cs" />
     <Compile Include="Controllers\Resources.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\SystemSettings.cs" />
     <Compile Include="Controllers\Utils.cs" />
