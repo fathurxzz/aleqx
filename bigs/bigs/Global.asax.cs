@@ -17,6 +17,13 @@ namespace bigs
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               "Contacts",                                              // Route name
+               "Contacts",                           // URL with parameters
+               new { controller = "Contacts", action = "Index", contentName = "Контакты" }  // Parameter defaults
+           );
+
+
+            routes.MapRoute(
                "Services",                                              // Route name
                "Services",                           // URL with parameters
                new { controller = "Services", action = "Index", contentName = "" }  // Parameter defaults
