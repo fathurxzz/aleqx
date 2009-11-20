@@ -1,0 +1,26 @@
+﻿a.rubigs{float:left;display:block;width:52px;height:20px;background-image:url('images/menuitem-bigs.png');background-position:-20px -68px;}
+a.rubigs:hover{background-position: -20px -43px !important;}
+a.rubigs.rubigsActive{background-position: -20px -19px !important;}
+
+a.ruservices{float:left;display:block;width:82px;height:20px;background-image:url('images/menuitem-service.png');background-position:-25px -60px;}
+a.ruservices:hover{background-position: -25px -39px !important;}
+a.ruservices.ruservicesActive{background-position: -25px -19px !important;}
+
+a.rurequest{float:left;display:block;width:92px;height:20px;background-image:url('images/menuitem-request.png');background-position:-40px -55px;}
+a.rurequest:hover{background-position: -40px -33px !important;}
+a.rurequest.rurequestActive{background-position: -40px -12px !important;}
+
+a.rucapital{float:left;display:block;width:152px;height:20px;background-image:url('images/menuitem-capital.png');background-position:-20px -62px;}
+a.rucapital:hover{background-position: -20px -41px !important;}
+a.rucapital.rucapitalActive{background-position: -20px -21px !important;}
+
+a.ruvacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-vacancy.png');background-position:-45px -66px;}
+a.ruvacancy:hover{background-position: -45px -43px !important;}
+a.ruvacancy.ruvacancyActive{background-position: -45px -22px !important;}
+
+a.rucontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-contacts.png');background-position:-45px -57px;}
+a.rucontacts:hover{background-position: -45px -34px !important;}
+a.rucontacts.rucontactsActive{background-position: -45px -14px !important;}
+
+
+

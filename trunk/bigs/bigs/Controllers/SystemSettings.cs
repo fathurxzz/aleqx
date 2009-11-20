@@ -27,5 +27,13 @@ namespace bigs.Controllers
             set { System.Web.HttpContext.Current.Session["lang"] = value; }
         }
 
+        public static string CurrentLanguageShort
+        {
+            get
+            {
+                return CurrentLanguage.Substring(0, 2);
+            }
+        }
+
     }
 }
