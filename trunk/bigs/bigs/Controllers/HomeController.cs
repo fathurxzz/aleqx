@@ -9,10 +9,6 @@ namespace bigs.Controllers
     [HandleError]
     public class HomeController : BaseContentController
     {
-
-
-        
-
         public ActionResult SetRussian(string returnUrl)
         {
             SystemSettings.CurrentLanguage = "ru-RU";
