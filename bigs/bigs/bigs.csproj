@@ -198,6 +198,7 @@
     <Content Include="Content\images\rusellred.gif" />
     <Content Include="Content\images\ruteleportgreen.gif" />
     <Content Include="Content\images\ruteleportred.gif" />
+    <Content Include="Content\Slider.css" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
@@ -212,6 +213,7 @@
     <Content Include="Views\Admin\ContentAdmin.Master" />
     <Content Include="Views\Admin\EditText.aspx" />
     <Content Include="Views\Shared\ButtonPanel.ascx" />
+    <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
