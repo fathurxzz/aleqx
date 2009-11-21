@@ -16,9 +16,9 @@
     <div id="languageBarCentre">
         <div id="languageBarItems">
         <%
-            Response.Write(currentLanguage == "ru-RU" ? "<a class=\"ru ruActive\"></a>":Html.ResourceActionLink<HomeController>(new { @class = "ru" }, c => c.SetRussian(returnUrl)));
-            Response.Write(currentLanguage == "en-US" ? "<a class=\"en enActive\"></a>" : Html.ResourceActionLink<HomeController>(new { @class = "en" }, c => c.SetEnglish(returnUrl)));
-            Response.Write(currentLanguage == "it-IT" ? "<a class=\"it itActive\"></a>" : Html.ResourceActionLink<HomeController>(new { @class = "it" }, c => c.SetItalian(returnUrl)));
+            Response.Write(currentLanguage == "ru-RU" ? "<a class=\"ru ruActive\"></a>":Html.ResourceActionLink<LanguagesController>(new { @class = "ru" }, c => c.SetRussian(returnUrl)));
+            Response.Write(currentLanguage == "en-US" ? "<a class=\"en enActive\"></a>" : Html.ResourceActionLink<LanguagesController>(new { @class = "en" }, c => c.SetEnglish(returnUrl)));
+            Response.Write(currentLanguage == "it-IT" ? "<a class=\"it itActive\"></a>" : Html.ResourceActionLink<LanguagesController>(new { @class = "it" }, c => c.SetItalian(returnUrl)));
          %>
         </div>
     </div>
