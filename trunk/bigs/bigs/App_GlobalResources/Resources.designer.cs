@@ -106,6 +106,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Страхование.
+        /// </summary>
+        internal static string Insurance {
+            get {
+                return ResourceManager.GetString("Insurance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Складская логистика.
+        /// </summary>
+        internal static string Logistics {
+            get {
+                return ResourceManager.GetString("Logistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Запрос.
         /// </summary>
         internal static string Request {
@@ -120,6 +138,15 @@ namespace Resources {
         internal static string Services {
             get {
                 return ResourceManager.GetString("Services", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Перевозки.
+        /// </summary>
+        internal static string Transfers {
+            get {
+                return ResourceManager.GetString("Transfers", resourceCulture);
             }
         }
         

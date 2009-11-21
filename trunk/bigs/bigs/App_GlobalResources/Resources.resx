@@ -132,11 +132,20 @@
   <data name="Documents" xml:space="preserve">
     <value>Ценные бумаги</value>
   </data>
+  <data name="Insurance" xml:space="preserve">
+    <value>Страхование</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Складская логистика</value>
+  </data>
   <data name="Request" xml:space="preserve">
     <value>Запрос</value>
   </data>
   <data name="Services" xml:space="preserve">
     <value>Услуги</value>
+  </data>
+  <data name="Transfers" xml:space="preserve">
+    <value>Перевозки</value>
   </data>
   <data name="Vacancy" xml:space="preserve">
     <value>Вакансии</value>

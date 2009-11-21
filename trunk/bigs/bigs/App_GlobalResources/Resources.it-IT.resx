@@ -130,13 +130,22 @@
     <value>Copyright</value>
   </data>
   <data name="Documents" xml:space="preserve">
-    <value>Documents</value>
+    <value>Documenti</value>
+  </data>
+  <data name="Insurance" xml:space="preserve">
+    <value>Insurance</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>Richiesta</value>
   </data>
   <data name="Services" xml:space="preserve">
     <value>Servizio</value>
+  </data>
+  <data name="Transfers" xml:space="preserve">
+    <value>Transfers</value>
   </data>
   <data name="Vacancy" xml:space="preserve">
     <value>Vacancy</value>
