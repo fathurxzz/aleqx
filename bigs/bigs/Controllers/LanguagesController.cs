@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using bigs.Models;
 
 namespace bigs.Controllers
 {
@@ -12,49 +13,15 @@ namespace bigs.Controllers
         //
         // GET: /Languages/
 
-        public ActionResult Index()
+        public ActionResult SetLanguage(string language, string contentController, string contentUrl)
         {
-            return View();
-        }
-
-        public ActionResult SetRussian(string returnUrl)
-        {
-            SystemSettings.CurrentLanguage = "ru-RU";
-            if (!String.IsNullOrEmpty(returnUrl))
+            SystemSettings.CurrentLanguage = language;
+            using (DataStorage context = new DataStorage())
             {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
+                string contentName = context.SiteContent.Where(sc => sc.Url == contentUrl).Select(sc => sc.Name).First();
+                string newUrl = context.SiteContent.Where(sc => sc.Name == contentName && sc.Language == language).Select(sc => sc.Name).First();
+                return RedirectToAction("Index", contentController, new { contentUrl = newUrl });
             }
         }
-
-        public ActionResult SetEnglish(string returnUrl)
-        {
-            SystemSettings.CurrentLanguage = "en-US";
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        public ActionResult SetItalian(string returnUrl)
-        {
-            SystemSettings.CurrentLanguage = "it-IT";
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
     }
 }
