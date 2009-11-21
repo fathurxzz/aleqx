@@ -4,10 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bigskie_contentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="bigskie_contentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="bigskie_contentModelStoreContainer">
+          <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.Store.ButtonStatuses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.Store.SiteContent" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="ButtonStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Language" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="SwitchedOn" Type="bit" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
+        </EntityType>
         <EntityType Name="SiteContent">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,14 +32,13 @@
           <Property Name="SortOrder" Type="int" />
           <Property Name="ParentId" Type="int" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bigskie_contentModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="DataStorage">
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.SiteContent" />
-        </EntityContainer>
+          <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.ButtonStatuses" /></EntityContainer>
         <EntityType Name="SiteContent">
           <Key>
             <PropertyRef Name="Id" />
@@ -42,7 +52,14 @@
           <Property Name="SortOrder" Type="Int32" />
           <Property Name="ParentId" Type="Int32" />
         </EntityType>
-      </Schema>
+        <EntityType Name="ButtonStatuses">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Language" Type="String" Nullable="false" />
+          <Property Name="SwitchedOn" Type="Boolean" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="true" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -62,7 +79,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="ButtonStatuses">
+            <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.ButtonStatuses)">
+              <MappingFragment StoreEntitySet="ButtonStatuses">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="SwitchedOn" ColumnName="SwitchedOn" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -81,6 +105,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Structure">
-        <EntityTypeShape EntityType="bigskie_contentModel.SiteContent" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" /></Diagram></edmx:Diagrams>
+        <EntityTypeShape EntityType="bigskie_contentModel.SiteContent" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" />
+        <EntityTypeShape EntityType="bigskie_contentModel.ButtonStatuses" Width="1.5" PointX="3.375" PointY="0.75" Height="1.7566536458333331" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -187,6 +187,7 @@
     <Content Include="Views\Shared\MainMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Buttons.css" />
     <Content Include="Content\images\enhotgreen.gif" />
     <Content Include="Content\images\enhotred.gif" />
     <Content Include="Content\images\ensellgreen.gif" />
@@ -209,6 +210,7 @@
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\ContentAdmin.Master" />
     <Content Include="Views\Admin\EditText.aspx" />
+    <Content Include="Views\Shared\ButtonPanel.ascx" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Structure.edmx">
