@@ -58,15 +58,16 @@
 {
     float:left;
     width:160px;
+    padding-top:50px;
 }
 
 #content
 {
     padding-left:50px;
-    padding-top:10px;
+    padding-top:50px;
     margin-left:160px;
     margin-bottom:20px;
-    min-height:300px;
+    min-height:400px;
 }
 
 
@@ -104,4 +105,34 @@
 h2
 {
     color:Red;
+}
+
+
+#subMenu
+{
+    padding:10px 10px 10px 10px;
+    border-style:solid;
+    border-color:Red;
+    border-width:thin;
+    font-size:13px;
+    padding-top:30px !important;
+    margin-bottom:30px;
+    
+}
+
+#subMenu a
+{
+    padding-bottom:30px;
+    color:Black;
+}
+#subMenu a:hover
+{
+    text-decoration:none;
+    padding-bottom:30px;
+    color:Black;
+}
+
+#subMenu div
+{
+    margin-bottom:30px;
 }

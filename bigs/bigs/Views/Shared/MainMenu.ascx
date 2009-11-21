@@ -8,12 +8,6 @@
     <div id="menuCentre">
         <div id="menuItems">
         <%
-            
-            /*string[] separator = new string[] { "contentUrl=" };
-            string[] xParameters = Request.Url.AbsoluteUri.Split(separator, StringSplitOptions.None);
-            string xPath = string.Empty;
-            if (xParameters.Length > 1)
-                xPath = xParameters[1];*/
             string shortLang = SystemSettings.CurrentLanguageShort;
             string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
         %>

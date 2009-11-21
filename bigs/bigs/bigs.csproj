@@ -211,6 +211,7 @@
     <Content Include="Views\Admin\ContentAdmin.Master" />
     <Content Include="Views\Admin\EditText.aspx" />
     <Content Include="Views\Shared\ButtonPanel.ascx" />
+    <Content Include="Views\Shared\SubMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Structure.edmx">

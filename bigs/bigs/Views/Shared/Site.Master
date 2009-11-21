@@ -37,7 +37,9 @@
     </div>
     <div id="middle">
         <div id="left">
+            
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
+           
             <% Html.RenderPartial("ButtonPanel"); %>
         </div>
         <div id="content">
