@@ -16,25 +16,33 @@ namespace bigs
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-               "Contacts",                                              // Route name
-               "Contacts",                           // URL with parameters
-               new { controller = "Contacts", action = "Index", contentName = "Контакты" }  // Parameter defaults
-           );
-
 
             routes.MapRoute(
-               "Services",                                              // Route name
-               "Services",                           // URL with parameters
-               new { controller = "Services", action = "Index", contentName = "Услуги" }  // Parameter defaults
-           );
+                "Languages",                                              // Route name
+                "Languages/{action}/{returnUrl}",                           // URL with parameters
+                new { controller = "Languages", action = "Index", returnUrl = "" }  // Parameter defaults
+            );
+
+
+           
+            routes.MapRoute(
+                "Content",                                              // Route name
+                "{controller}/{contentUrl}",                           // URL with parameters
+                new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
+            );
+           /* 
+            routes.MapRoute(
+                "Default",                                              // Route name
+                "{controller}/{action}/{contentUrl}",                           // URL with parameters
+                new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
+            );*/
 
             routes.MapRoute(
                 "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                "{controller}/{action}/{contentUrl}",                           // URL with parameters
+                new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
             );
-
+            
         }
 
         protected void Application_Start()

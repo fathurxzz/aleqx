@@ -15,7 +15,7 @@ namespace bigs.Controllers
 
         public ActionResult Index(string contentUrl)
         {
-            if (contentUrl != null)
+            if (!string.IsNullOrEmpty(contentUrl))
             {
                 ViewData["contentUrl"] = contentUrl;
                 SiteContent content = Utils.GetText(contentUrl);
