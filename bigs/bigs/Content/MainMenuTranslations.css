@@ -10,9 +10,9 @@ a.rurequest{float:left;display:block;width:92px;height:20px;background-image:url
 a.rurequest:hover{background-position: -40px -33px !important;}
 a.rurequest.rurequestActive{background-position: -40px -12px !important;}
 
-a.rucapital{float:left;display:block;width:152px;height:20px;background-image:url('images/menuitem-capital.png');background-position:-20px -62px;}
-a.rucapital:hover{background-position: -20px -41px !important;}
-a.rucapital.rucapitalActive{background-position: -20px -21px !important;}
+a.rudocuments{float:left;display:block;width:152px;height:20px;background-image:url('images/menuitem-documents.png');background-position:-20px -62px;}
+a.rudocuments:hover{background-position: -20px -41px !important;}
+a.rudocuments.rudocumentsActive{background-position: -20px -21px !important;}
 
 a.ruvacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-vacancy.png');background-position:-45px -66px;}
 a.ruvacancy:hover{background-position: -45px -43px !important;}
@@ -32,9 +32,9 @@ a.enrequest{float:left;display:block;width:92px;height:20px;background-image:url
 a.enrequest:hover{background-position: 0px -39px !important;}
 a.enrequest.enrequestActive{background-position: 0px -58px !important;}
 
-a.encapital{float:left;display:block;width:152px;height:20px;background-image:url('images/enmenuitem-capital.png');background-position:10px -22px;}
-a.encapital:hover{background-position: 10px -39px !important;}
-a.encapital.encapitalActive{background-position: 10px -58px !important;}
+a.endocuments{float:left;display:block;width:152px;height:20px;background-image:url('images/enmenuitem-documents.png');background-position:10px -22px;}
+a.endocuments:hover{background-position: 10px -39px !important;}
+a.endocuments.endocumentsActive{background-position: 10px -58px !important;}
 
 a.envacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-vacancy.png');background-position:-25px -22px;}
 a.envacancy:hover{background-position: -25px -39px !important;}
@@ -54,9 +54,9 @@ a.itrequest{float:left;display:block;width:105px;height:20px;background-image:ur
 a.itrequest:hover{background-position: 0px -39px !important;}
 a.itrequest.itrequestActive{background-position: 0px -58px !important;}
 
-a.itcapital{float:left;display:block;width:140px;height:20px;background-image:url('images/itmenuitem-capital.png');background-position:0px -22px;}
-a.itcapital:hover{background-position: 0px -39px !important;}
-a.itcapital.itcapitalActive{background-position: 0px -58px !important;}
+a.itdocuments{float:left;display:block;width:140px;height:20px;background-image:url('images/itmenuitem-documents.png');background-position:0px -22px;}
+a.itdocuments:hover{background-position: 0px -39px !important;}
+a.itdocuments.itdocumentsActive{background-position: 0px -58px !important;}
 
 a.itvacancy{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-vacancy.png');background-position:-20px -22px;}
 a.itvacancy:hover{background-position: -20px -39px !important;}

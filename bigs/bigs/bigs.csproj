@@ -121,7 +121,7 @@
     <Content Include="Content\images\flag-it.png" />
     <Content Include="Content\images\flag-ru.png" />
     <Content Include="Content\images\menuitem-bigs.png" />
-    <Content Include="Content\images\menuitem-capital.png" />
+    <Content Include="Content\images\menuitem-documents.png" />
     <Content Include="Content\images\menuitem-contacts.png" />
     <Content Include="Content\images\menuitem-request.png" />
     <Content Include="Content\images\menuitem-service.png" />
@@ -168,12 +168,12 @@
     </Content>
     <Content Include="bigs.jpg" />
     <Content Include="Content\Admin.css" />
-    <Content Include="Content\images\enmenuitem-capital.png" />
+    <Content Include="Content\images\enmenuitem-documents.png" />
     <Content Include="Content\images\enmenuitem-contacts.png" />
     <Content Include="Content\images\enmenuitem-request.png" />
     <Content Include="Content\images\enmenuitem-service.png" />
     <Content Include="Content\images\enmenuitem-vacancy.png" />
-    <Content Include="Content\images\itmenuitem-capital.png" />
+    <Content Include="Content\images\itmenuitem-documents.png" />
     <Content Include="Content\images\itmenuitem-contacts.png" />
     <Content Include="Content\images\itmenuitem-request.png" />
     <Content Include="Content\images\itmenuitem-service.png" />

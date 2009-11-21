@@ -123,14 +123,14 @@
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
   </data>
-  <data name="Capital" xml:space="preserve">
-    <value>Capital</value>
-  </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contacts</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>Documents</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>Request</value>
