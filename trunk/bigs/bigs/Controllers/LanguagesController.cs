@@ -19,7 +19,7 @@ namespace bigs.Controllers
             using (DataStorage context = new DataStorage())
             {
                 string contentName = context.SiteContent.Where(sc => sc.Url == contentUrl).Select(sc => sc.Name).First();
-                string newUrl = context.SiteContent.Where(sc => sc.Name == contentName && sc.Language == language).Select(sc => sc.Name).First();
+                string newUrl = context.SiteContent.Where(sc => sc.Name == contentName && sc.Language == language).Select(sc => sc.Url).First();
                 return RedirectToAction("Index", contentController, new { contentUrl = newUrl });
             }
         }

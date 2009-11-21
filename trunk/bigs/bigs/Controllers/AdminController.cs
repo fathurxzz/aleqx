@@ -31,7 +31,7 @@ namespace bigs.Controllers
         public ActionResult EditText(string text, string controllerName, string contentUrl)
         {
             Utils.SetText(contentUrl, HttpUtility.HtmlDecode(text));
-            return RedirectToAction("Index", controllerName, new { contentName = contentUrl });
+            return RedirectToAction("Index", controllerName, new { contentUrl = contentUrl });
         }
 
     }
