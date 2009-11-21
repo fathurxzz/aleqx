@@ -52,6 +52,9 @@
            <%if (Request.IsAuthenticated)
              { %>
                 <div class="adminEditLink">
+                    
+                    <%=Html.ActionLink("Редактировать","EditText","Admin",new{contentUrl = ViewData["contentUrl"]},null)%>
+                
                     <a href="/Admin/EditText/<%= ViewData["contentUrl"] %>?controllerName=<%= ViewContext.RouteData.Values["controller"] %>">
                         Редактировать
                     </a>
@@ -72,5 +75,6 @@
     
     </div>
 </div>
+<asp:ContentPlaceHolder ID="Includes" runat="server" />
 </body>
 </html>

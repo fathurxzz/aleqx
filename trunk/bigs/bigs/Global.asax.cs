@@ -37,13 +37,13 @@ namespace bigs
                 "{controller}/{contentUrl}",                           // URL with parameters
                 new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
             );
-            /*
-                       routes.MapRoute(
-                           "Default",                                              // Route name
-                           "{controller}/{action}",                           // URL with parameters
-                           new { controller = "Home", action = "Index" }  // Parameter defaults
-                       );
-              */
+            
+           routes.MapRoute(
+               "Default",                                              // Route name
+               "{controller}/{action}/{contentUrl}",                           // URL with parameters
+               new { controller = "{controller}", action = "{action}", contentUrl="" }  // Parameter defaults
+           );
+              
         }
 
         protected void Application_Start()
