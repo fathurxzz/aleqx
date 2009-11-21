@@ -1,13 +1,20 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="bigs.Helpers" %>
+<%@ Import Namespace="bigs.Controllers" %>
+<%
+    string shortLang = SystemSettings.CurrentLanguageShort;
+    string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
+%>
+
 <div id="subMenu">
 
 <div>
-<a href="" >Перевозки</a>
+<%=Html.ActionLink(Html.ResourceString("Transfers"), "Index", "Services", new { contentUrl = Html.ResourceString("Transfers") },null)%>
 </div>        
 <div>
-<a href="" >Страхование</a>
+<%=Html.ActionLink(Html.ResourceString("Insurance"), "Index", "Services", new { contentUrl = Html.ResourceString("Insurance") }, null)%>
 </div>        
 <div>
-<a href="" >Складская логистика</a>
+<%=Html.ActionLink(Html.ResourceString("Logistics"), "Index", "Services", new { contentUrl = Html.ResourceString("Logistics") }, null)%>
 </div>                
 </div>

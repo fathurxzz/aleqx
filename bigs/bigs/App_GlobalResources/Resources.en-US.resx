@@ -132,11 +132,20 @@
   <data name="Documents" xml:space="preserve">
     <value>Documents</value>
   </data>
+  <data name="Insurance" xml:space="preserve">
+    <value>Insurance</value>
+  </data>
+  <data name="Logistics" xml:space="preserve">
+    <value>Logistics</value>
+  </data>
   <data name="Request" xml:space="preserve">
     <value>Request</value>
   </data>
   <data name="Services" xml:space="preserve">
     <value>Services</value>
+  </data>
+  <data name="Transfers" xml:space="preserve">
+    <value>Transfers</value>
   </data>
   <data name="Vacancy" xml:space="preserve">
     <value>Vacancy</value>
