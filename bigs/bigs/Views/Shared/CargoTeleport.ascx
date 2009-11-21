@@ -20,33 +20,53 @@
                 $("#transfer" + ui.value).css({ 'display': 'block' });
             }
         });
-
-        /*$("#amount").val('$' + $("#slider").slider("value"));*/
     });
 </script>    
    
-   <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+
+<div id="sliderOuterContainer">
+text text text text text text text text text text text text text text text text text 
+text text text text text text text text text text text text text text text text text 
+text text text text text text text text text text text text text text text text text 
+text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text text 
    
-<div id="slider" style="width:300px !important"></div>
+   
+<div id="slider"></div>
 
 
-
+<div id="sliderInnerContainer">
 <div id="transfer1" style="display:block;">
-transfer1
+transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
+transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
+transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
+transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
 </div>
 <div id="transfer2" style="display:none;">
-transfer2
+transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
+transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
+transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
+transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
 </div>
 <div id="transfer3" style="display:none;">
-transfer3
+transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
+transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
+transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
+transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
 </div>
 <div id="transfer4" style="display:none;">
-transfer4
+transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
+transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
+transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
+transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
 </div>
 <div id="transfer5" style="display:none;">
-transfer5
+transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
+transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
+transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
+transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
 </div>
-
-  
+</div>
+  </div>
 
 
