@@ -153,9 +153,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Вакансии.
         /// </summary>
-        internal static string Vacancy {
+        internal static string Vacancies {
             get {
-                return ResourceManager.GetString("Vacancy", resourceCulture);
+                return ResourceManager.GetString("Vacancies", resourceCulture);
             }
         }
     }

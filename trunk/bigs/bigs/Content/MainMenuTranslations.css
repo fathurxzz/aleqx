@@ -14,9 +14,9 @@ a.rudocuments{float:left;display:block;width:152px;height:20px;background-image:
 a.rudocuments:hover{background-position: -20px -41px !important;}
 a.rudocuments.rudocumentsActive{background-position: -20px -21px !important;}
 
-a.ruvacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-vacancy.png');background-position:-45px -66px;}
-a.ruvacancy:hover{background-position: -45px -43px !important;}
-a.ruvacancy.ruvacancyActive{background-position: -45px -22px !important;}
+a.ruvacancies{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-vacancies.png');background-position:-45px -66px;}
+a.ruvacancies:hover{background-position: -45px -43px !important;}
+a.ruvacancies.ruvacanciesActive{background-position: -45px -22px !important;}
 
 a.rucontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-contacts.png');background-position:-45px -57px;}
 a.rucontacts:hover{background-position: -45px -34px !important;}
@@ -36,9 +36,9 @@ a.endocuments{float:left;display:block;width:152px;height:20px;background-image:
 a.endocuments:hover{background-position: 10px -39px !important;}
 a.endocuments.endocumentsActive{background-position: 10px -58px !important;}
 
-a.envacancy{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-vacancy.png');background-position:-25px -22px;}
-a.envacancy:hover{background-position: -25px -39px !important;}
-a.envacancy.envacancyActive{background-position: -25px -58px !important;}
+a.envacancies{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-vacancies.png');background-position:-25px -22px;}
+a.envacancies:hover{background-position: -25px -39px !important;}
+a.envacancies.envacanciesActive{background-position: -25px -58px !important;}
 
 a.encontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-contacts.png');background-position:-15px -22px;}
 a.encontacts:hover{background-position: -15px -39px !important;}
@@ -58,9 +58,9 @@ a.itdocuments{float:left;display:block;width:140px;height:20px;background-image:
 a.itdocuments:hover{background-position: 0px -39px !important;}
 a.itdocuments.itdocumentsActive{background-position: 0px -58px !important;}
 
-a.itvacancy{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-vacancy.png');background-position:-20px -22px;}
-a.itvacancy:hover{background-position: -20px -39px !important;}
-a.itvacancy.itvacancyActive{background-position: -20px -58px !important;}
+a.itvacancies{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-vacancies.png');background-position:-20px -22px;}
+a.itvacancies:hover{background-position: -20px -39px !important;}
+a.itvacancies.itvacanciesActive{background-position: -20px -58px !important;}
 
 a.itcontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/itmenuitem-contacts.png');background-position:10px -22px;}
 a.itcontacts:hover{background-position: 10px -39px !important;}

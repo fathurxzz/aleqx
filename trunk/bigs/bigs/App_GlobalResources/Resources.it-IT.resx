@@ -147,7 +147,7 @@
   <data name="Transfers" xml:space="preserve">
     <value>Transfers</value>
   </data>
-  <data name="Vacancy" xml:space="preserve">
-    <value>Vacancy</value>
+  <data name="Vacancies" xml:space="preserve">
+    <value>Posti Vacanti</value>
   </data>
 </root>
