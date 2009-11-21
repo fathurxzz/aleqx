@@ -13,6 +13,7 @@
     <link href="../../Content/MainMenuTranslations.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/LanguageBar.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Buttons.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -37,6 +38,7 @@
     <div id="middle">
         <div id="left">
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
+            <% Html.RenderPartial("ButtonPanel"); %>
         </div>
         <div id="content">
             
