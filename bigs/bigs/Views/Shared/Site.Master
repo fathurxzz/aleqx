@@ -14,6 +14,14 @@
     <link href="../../Content/LanguageBar.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Buttons.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../Scripts/jquery.js" type="text/javascript"></script>
+
+    <script src="../../Scripts/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+
+    <script src="../../Scripts/ui.core.js" type="text/javascript"></script>
+
+    <script src="../../Scripts/ui.slider.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -53,7 +61,7 @@
              { %>
                 <div class="adminEditLink">
                     
-                    <%=Html.ActionLink("Редактировать","EditText","Admin",new{contentUrl = ViewData["contentUrl"]},null)%>
+                    <%=Html.ActionLink("Редактировать", "EditText", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
                 
                     <a href="/Admin/EditText/<%= ViewData["contentUrl"] %>?controllerName=<%= ViewContext.RouteData.Values["controller"] %>">
                         Редактировать
