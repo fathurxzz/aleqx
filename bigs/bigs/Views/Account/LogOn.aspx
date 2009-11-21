@@ -7,31 +7,31 @@
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Log On</h2>
     <p>
-        Please enter your username and password. <%= Html.ActionLink("Register", "Register") %> if you don't have an account.
+        Please enter your username and password.
     </p>
     <%= Html.ValidationSummary("Login was unsuccessful. Please correct the errors and try again.") %>
 
     <% using (Html.BeginForm()) { %>
-        <div>
-            <fieldset>
-                <legend>Account Information</legend>
-                <p>
-                    <label for="username">Username:</label>
-                    <%= Html.TextBox("username") %>
-                    <%= Html.ValidationMessage("username") %>
-                </p>
-                <p>
-                    <label for="password">Password:</label>
+            <table>
+            <tr>
+                <td align="right"><label for="username">Username:</label></td>
+                <td align="left">
+                <%= Html.TextBox("username") %>
+                <%= Html.ValidationMessage("username") %>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"><label for="password">Password:</label></td>
+                <td align="left">
                     <%= Html.Password("password") %>
                     <%= Html.ValidationMessage("password") %>
-                </p>
-                <p>
-                    <%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe">Remember me?</label>
-                </p>
-                <p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
                     <input type="submit" value="Log On" />
-                </p>
-            </fieldset>
-        </div>
+                </td>
+            </tr>
+            </table>
     <% } %>
 </asp:Content>
