@@ -18,31 +18,32 @@ namespace bigs
 
 
             routes.MapRoute(
+              "Account",                                              // Route name
+              "Account/{action}",                           // URL with parameters
+              new { controller = "Account", action = "LogOn" }  // Parameter defaults
+            );
+
+
+            routes.MapRoute(
                 "Languages",                                              // Route name
                 "Languages/{action}/{returnUrl}",                           // URL with parameters
                 new { controller = "Languages", action = "Index", returnUrl = "" }  // Parameter defaults
             );
 
 
-           
+
             routes.MapRoute(
                 "Content",                                              // Route name
                 "{controller}/{contentUrl}",                           // URL with parameters
                 new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
             );
-           /* 
-            routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{contentUrl}",                           // URL with parameters
-                new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
-            );*/
-
-            routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{contentUrl}",                           // URL with parameters
-                new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
-            );
-            
+            /*
+                       routes.MapRoute(
+                           "Default",                                              // Route name
+                           "{controller}/{action}",                           // URL with parameters
+                           new { controller = "Home", action = "Index" }  // Parameter defaults
+                       );
+              */
         }
 
         protected void Application_Start()
