@@ -4,7 +4,21 @@
 	Index
 </asp:Content>
 
+<asp:Content ID="Content5" ContentPlaceHolderID="Includes" runat="server">
+	
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<%
+            string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
+            if (controllerName == "SERVICES")
+            {
+                %>
+                <% Html.RenderPartial("CargoTeleport");%>
+                <%
+            }
+            %>
 
 </asp:Content>
 
