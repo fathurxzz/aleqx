@@ -192,12 +192,14 @@
     <Content Include="Content\images\itsellred.gif" />
     <Content Include="Content\images\itteleportgreen.gif" />
     <Content Include="Content\images\itteleportred.gif" />
+    <Content Include="Content\images\points.gif" />
     <Content Include="Content\images\ruhotgreen.gif" />
     <Content Include="Content\images\ruhotred.gif" />
     <Content Include="Content\images\rusellgreen.gif" />
     <Content Include="Content\images\rusellred.gif" />
     <Content Include="Content\images\ruteleportgreen.gif" />
     <Content Include="Content\images\ruteleportred.gif" />
+    <Content Include="Content\images\slider.gif" />
     <Content Include="Content\Slider.css" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
