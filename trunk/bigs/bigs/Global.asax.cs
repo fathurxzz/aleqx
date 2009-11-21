@@ -26,8 +26,8 @@ namespace bigs
 
             routes.MapRoute(
                 "Languages",                                              // Route name
-                "Languages/{action}/{returnUrl}",                           // URL with parameters
-                new { controller = "Languages", action = "Index", returnUrl = "" }  // Parameter defaults
+                "Languages/SetLanguage",                           // URL with parameters
+                new { controller = "Languages", action = "SetLanguage"}  // Parameter defaults
             );
 
 
