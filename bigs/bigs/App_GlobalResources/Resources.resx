@@ -147,7 +147,7 @@
   <data name="Transfers" xml:space="preserve">
     <value>Перевозки</value>
   </data>
-  <data name="Vacancy" xml:space="preserve">
+  <data name="Vacancies" xml:space="preserve">
     <value>Вакансии</value>
   </data>
 </root>
