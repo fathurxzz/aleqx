@@ -30,6 +30,11 @@ namespace bigs.Controllers
             }
         }
 
+        public static void UpdateButtonStatuses()
+        {
+ 
+        }
+
         
     }
 }

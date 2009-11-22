@@ -25,6 +25,7 @@
    
 
 <div id="sliderOuterContainer">
+<%= ViewData["text"]%>
 text text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text 
 text text text text text text text text text text text text text text text text text 

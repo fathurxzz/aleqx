@@ -34,5 +34,23 @@ namespace bigs.Controllers
             return RedirectToAction("Index", controllerName, new { contentUrl = contentUrl });
         }
 
+
+        [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
+        public ActionResult EditButtons(string controllerName)
+        {
+            /*ViewData["controllerName"] = controllerName;
+            ViewData["text"] = Utils.GetText(contentUrl).Text;
+            ViewData["contentUrl"] = contentUrl;*/
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditButtons(FormCollection form, string controllerName)
+        {
+            /*ViewData["controllerName"] = controllerName;
+            ViewData["text"] = Utils.GetText(contentUrl).Text;
+            ViewData["contentUrl"] = contentUrl;*/
+            return View();
+        }
     }
 }

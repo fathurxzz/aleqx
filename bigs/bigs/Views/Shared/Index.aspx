@@ -9,32 +9,20 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
 <%
-            string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
-            if (controllerName == "SERVICES")
-            {
-                %>
-                <% Html.RenderPartial("CargoTeleport");%>
-                <%
-            }
-            %>
+string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
+if (controllerName == "SERVICES")
+{
+    %>
+    <% Html.RenderPartial("CargoTeleport");%>
+    <%
+}
+%>
 
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="LeftContent" runat="server">
-
- <%
-            string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
-            //if (controllerName == "SERVICES")
-            //{
-                %>
-                <% Html.RenderPartial("SubMenu");%>
-                <%
-            //}
-            %>
-            
-
+    <% Html.RenderPartial("SubMenu");%>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentTitleContent" runat="server">
