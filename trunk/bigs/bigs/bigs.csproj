@@ -213,6 +213,7 @@
     <Content Include="Scripts\ui.slider.js" />
     <Content Include="Views\Admin\ContentAdmin.Master" />
     <Content Include="Views\Admin\EditText.aspx" />
+    <Content Include="Views\Admin\EditTransfers.aspx" />
     <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />

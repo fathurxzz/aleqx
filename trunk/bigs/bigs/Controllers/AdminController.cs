@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using bigs.Models;
 
 namespace bigs.Controllers
 {
@@ -36,21 +37,27 @@ namespace bigs.Controllers
 
 
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
-        public ActionResult EditButtons(string controllerName)
+        public ActionResult EditTransfers(string contentUrl, string controllerName)
         {
-            /*ViewData["controllerName"] = controllerName;
+            ViewData["controllerName"] = controllerName;
             ViewData["text"] = Utils.GetText(contentUrl).Text;
-            ViewData["contentUrl"] = contentUrl;*/
+            ViewData["contentUrl"] = contentUrl;
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditButtons(FormCollection form, string controllerName)
+        public ActionResult EditTransfers(string text, string controllerName, string contentUrl)
         {
-            /*ViewData["controllerName"] = controllerName;
-            ViewData["text"] = Utils.GetText(contentUrl).Text;
-            ViewData["contentUrl"] = contentUrl;*/
-            return View();
+            Utils.SetText(contentUrl, HttpUtility.HtmlDecode(text));
+
+            using (DataStorage context = new DataStorage())
+            {
+                string newUrl = context.SiteContent.Where(sc => sc.Name == "Services" && sc.Language == SystemSettings.CurrentLanguage).Select(sc => sc.Url).First();
+
+
+
+                return RedirectToAction("Index", controllerName, new { contentUrl = newUrl });
+            }
         }
     }
 }

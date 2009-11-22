@@ -1,4 +1,6 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="bigs.Models" %>
+<%@ Import Namespace="bigs.Controllers" %>
 
 <link href="../../Content/Slider.css" rel="stylesheet"
         type="text/css" />
@@ -30,36 +32,39 @@
 
 
 <div id="sliderContainer">
-<div id="transfer1" style="display:block;">
-transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
-transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
-transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
-transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
-</div>
-<div id="transfer2" style="display:none;">
-transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
-transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
-transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
-transfer2 transfer2 transfer2 transfer2 transfer2 transfer2 
-</div>
-<div id="transfer3" style="display:none;">
-transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
-transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
-transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
-transfer3 transfer3 transfer3 transfer3 transfer3 transfer3 
-</div>
-<div id="transfer4" style="display:none;">
-transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
-transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
-transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
-transfer4 transfer4 transfer4 transfer4 transfer4 transfer4 
-</div>
-<div id="transfer5" style="display:none;">
-transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
-transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
-transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
-transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
-</div>
+<% 
+    
+    using (DataStorage context = new DataStorage())
+    {
+
+        //   List<SiteContent> transferContent = (from content in context.SiteContent.Where(c=>c.Name=="transfer"))
+
+
+        for (int i = 1; i <= 5; i++)
+        {
+            string contentName = "transfer"+i;
+            
+            Response.Write(i == 1 ? "<div id=\"" + contentName + "\" style=\"display:block;\">" : "<div id=\"" + contentName + "\" style=\"display:none;\">");
+
+            SiteContent transferContent = (from content in context.SiteContent.Where(c => c.Name == contentName && c.Language == SystemSettings.CurrentLanguage) select content).First();
+
+            if (Request.IsAuthenticated)
+            {
+                Response.Write("<div class=\"adminEditLink\">");
+                Response.Write(Html.ActionLink("Редактировать", "EditTransfers", "Admin", new { contentUrl = transferContent.Url, controllerName = ViewContext.RouteData.Values["controller"] }, null));
+                Response.Write("</div>");
+            }
+
+            
+            Response.Write(transferContent.Text);
+            
+            
+
+
+            Response.Write("</div>");
+       %>
+<%}
+    } %>
 </div>
   
 
