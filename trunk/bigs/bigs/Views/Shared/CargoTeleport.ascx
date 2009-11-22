@@ -24,19 +24,12 @@
 </script>    
    
 
-<div id="sliderOuterContainer">
-<%= ViewData["text"]%>
-text text text text text text text text text text text text text text text text text 
-text text text text text text text text text text text text text text text text text 
-text text text text text text text text text text text text text text text text text 
-text text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text text 
-   
+
    
 <div id="slider"></div>
 
 
-<div id="sliderInnerContainer">
+<div id="sliderContainer">
 <div id="transfer1" style="display:block;">
 transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
 transfer1 transfer1 transfer1 transfer1 transfer1 transfer1
@@ -68,6 +61,6 @@ transfer5 transfer5 transfer5 transfer5 transfer5 transfer5
 transfer5 transfer5 transfer5 transfer5 transfer5 transfer5 
 </div>
 </div>
-  </div>
+  
 
 

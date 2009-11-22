@@ -7,14 +7,8 @@
 
 
 
-#sliderOuterContainer
-{
-    width:500px;
-    background-color:#E9EAEC;
-    padding:30px;
-}
 
-#sliderInnerContainer
+#sliderContainer
 {
     background-color:#FFFFCC;
     width:250px;

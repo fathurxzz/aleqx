@@ -58,16 +58,16 @@
 {
     float:left;
     width:160px;
-    padding-top:50px;
+    padding-top:64px;
 }
 
 #content
 {
     padding-left:50px;
-    padding-top:50px;
+    padding-top:10px;
     margin-left:160px;
     margin-bottom:20px;
-    min-height:400px;
+    min-height:450px;
 }
 
 
@@ -138,5 +138,18 @@ h2
 }
 
 
+#contentContainer
+{
+    border: solid 1px red;
+    width:500px;
+    background-color:#E9EAEC;
+    padding:30px;
+}
 
-
+#title
+{
+    font-size:20px;
+    color:Red;
+    margin:15px 15px 15px 35px;
+    
+}
