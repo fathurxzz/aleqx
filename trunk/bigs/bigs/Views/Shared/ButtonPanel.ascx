@@ -4,7 +4,15 @@
 <%@ Import Namespace="bigs.Models" %>
 
 <div id="buttonContainer">
+
 <%
+        if (Request.IsAuthenticated)
+        {
+            %>
+            <%=Html.ActionLink("Редактировать", "EditText", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
+            <%
+        }
+
     using (DataStorage context = new DataStorage())
     {
         List<ButtonStatuses> buttons = (from button in context.ButtonStatuses where button.Language == SystemSettings.CurrentLanguage orderby button.SortOrder ascending select button).ToList();
@@ -12,6 +20,7 @@
         {
             string color = button.SwitchedOn ? "green" : "red";
             Response.Write(Html.ActionLink(" ", "Index", "Home", null, new {@class =  button.Language.Substring(0, 2) + button.Name + color }));
+            
         }
     }
 %>

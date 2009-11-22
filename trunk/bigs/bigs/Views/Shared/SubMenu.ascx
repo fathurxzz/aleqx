@@ -6,27 +6,33 @@
     string shortLang = SystemSettings.CurrentLanguageShort;
     string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
 
+
+
+
     using (DataStorage context = new DataStorage())
     {
-
-        List<SiteContent> siteContent = (from content in context.SiteContent where content.Parent.Name.ToLower() == controllerName.ToLower() && content.Parent.Language == SystemSettings.CurrentLanguage select content).ToList();
-        if (siteContent.Count > 0)
+        int parentId = context.SiteContent.Where(p => p.Name == controllerName && p.Language == SystemSettings.CurrentLanguage).Select(p => p.Id).FirstOrDefault();
+        string parentName = context.SiteContent.Where(p => p.Name == controllerName && p.Language == SystemSettings.CurrentLanguage).Select(p => p.Name).FirstOrDefault();
+        if (parentId != 0)
         {
-        
-%>
-<div id="subMenu">
-<div>
-<%=Html.ActionLink(Html.ResourceString("Transfers"), "Index", "Services", new { contentUrl = Html.ResourceString("Transfers") }, null)%>
-</div>        
-<div>
-<%=Html.ActionLink(Html.ResourceString("Insurance"), "Index", "Services", new { contentUrl = Html.ResourceString("Insurance") }, null)%>
-</div>        
-<div>
-<%=Html.ActionLink(Html.ResourceString("Logistics"), "Index", "Services", new { contentUrl = Html.ResourceString("Logistics") }, null)%>
-</div>                
-</div>
-
-<%
-    }
+            List<SiteContent> siteContent = (from content in context.SiteContent where content.ParentId == parentId && content.Language == SystemSettings.CurrentLanguage orderby content.SortOrder ascending select content).ToList();
+            if (siteContent.Count > 0)
+            {
+                %>
+                <div id="subMenu">
+                <%
+                foreach (var content in siteContent)
+                {
+                    %>
+                    <div>
+                    <%=Html.ActionLink(Html.ResourceString(content.Name), "Index", parentName, new { contentUrl = Html.ResourceString(content.Name) }, null)%>
+                    </div>
+                    <%
+                }
+                %>
+                </div>
+                <%
+            }
+        }
     }
 %>
