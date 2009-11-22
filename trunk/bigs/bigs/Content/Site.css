@@ -84,7 +84,7 @@
     padding-top:10px;
     margin-left:160px;
     margin-bottom:20px;
-    min-height:450px;
+    min-height:540px;
 }
 
 
@@ -170,3 +170,15 @@ h2
     margin:15px 15px 15px 35px;
     
 }
+
+
+.ruvideo, .envideo, .itvideo
+{
+    background-repeat:no-repeat;
+    width:200px;
+    height:90px;
+}
+
+.ruvideo{background-image:url('images/ruvideo.gif');}
+.envideo{background-image:url('images/envideo.gif');}
+.itvideo{background-image:url('images/itvideo.gif');}

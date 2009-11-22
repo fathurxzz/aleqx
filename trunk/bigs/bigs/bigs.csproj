@@ -222,6 +222,7 @@
     <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
+    <Content Include="Views\Shared\VideoSurveillance.ascx" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Structure.edmx">

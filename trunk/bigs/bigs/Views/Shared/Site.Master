@@ -62,6 +62,8 @@
             
             <% Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
             
+            <% Html.RenderPartial("VideoSurveillance");%>
+            
         </div>
         <div id="content">
             
