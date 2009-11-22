@@ -170,7 +170,7 @@
     <Content Include="Content\images\itmenuitem-request.png" />
     <Content Include="Content\images\itmenuitem-service.png" />
     <Content Include="Content\images\itmenuitem-vacancies.png" />
-    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\rulogo.png" />
     <Content Include="Content\images\phrase.png" />
     <Content Include="Content\MainMenuTranslations.css" />
     <Content Include="Views\Shared\Index.aspx" />
@@ -181,16 +181,20 @@
     <Content Include="Content\Buttons.css" />
     <Content Include="Content\images\enhotgreen.gif" />
     <Content Include="Content\images\enhotred.gif" />
+    <Content Include="Content\images\enlogo.gif" />
     <Content Include="Content\images\ensellgreen.gif" />
     <Content Include="Content\images\ensellred.gif" />
     <Content Include="Content\images\enteleportgreen.gif" />
     <Content Include="Content\images\enteleportred.gif" />
+    <Content Include="Content\images\envideo.gif" />
     <Content Include="Content\images\ithotgreen.gif" />
     <Content Include="Content\images\ithotred.gif" />
+    <Content Include="Content\images\itlogo.gif" />
     <Content Include="Content\images\itsellgreen.gif" />
     <Content Include="Content\images\itsellred.gif" />
     <Content Include="Content\images\itteleportgreen.gif" />
     <Content Include="Content\images\itteleportred.gif" />
+    <Content Include="Content\images\itvideo.gif" />
     <Content Include="Content\images\points.gif" />
     <Content Include="Content\images\ruhotgreen.gif" />
     <Content Include="Content\images\ruhotred.gif" />
@@ -198,6 +202,7 @@
     <Content Include="Content\images\rusellred.gif" />
     <Content Include="Content\images\ruteleportgreen.gif" />
     <Content Include="Content\images\ruteleportred.gif" />
+    <Content Include="Content\images\ruvideo.gif" />
     <Content Include="Content\images\slider.gif" />
     <Content Include="Content\Slider.css" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.js" />

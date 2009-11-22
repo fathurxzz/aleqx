@@ -30,7 +30,18 @@
     <div id="header">
         <%
             string absolutePath = Request.Url.AbsolutePath;
-            Response.Write(absolutePath != "/" ? "<a id=\"logo\" href=\"/\"></a>" : "<a id=\"logo\"></a>");
+
+            if (absolutePath != "/")
+            {
+                Response.Write("<a href=\"/\"><div id=\"logo\" class=\"" + SystemSettings.CurrentLanguageShort + "logo\"></div></a>");
+            }
+            else
+            {
+                
+                Response.Write("<div id=\"logo\" class=\""+SystemSettings.CurrentLanguageShort+"logo\"></div>");
+            }
+            
+            //Response.Write(absolutePath != "/" ? "<a id=\"logo\" href=\"/\"></a>" : "<a id=\"logo\"></a>");
         %>
         <div id="headerRight">
             <div id="languageBar">

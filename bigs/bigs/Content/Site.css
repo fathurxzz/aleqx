@@ -19,9 +19,26 @@
     
 }
 
-#logo
+
+.rulogo
 {
-    background-image:url('images/logo.png');
+    background-image:url('images/rulogo.png');
+    background-repeat:no-repeat;
+    float:left;
+    width:151px;
+    height:256px;
+}
+.enlogo
+{
+    background-image:url('images/enlogo.gif');
+    background-repeat:no-repeat;
+    float:left;
+    width:151px;
+    height:256px;
+}
+.itlogo
+{
+    background-image:url('images/itlogo.gif');
     background-repeat:no-repeat;
     float:left;
     width:151px;
