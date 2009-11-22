@@ -4,10 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bigskie_contentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="bigskie_contentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="bigskie_contentModelStoreContainer">
           <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.Store.ButtonStatuses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.Store.SiteContent" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_SiteContent_SiteContent" Association="bigskie_contentModel.Store.FK_SiteContent_SiteContent">
+            <End Role="SiteContent" EntitySet="SiteContent" />
+            <End Role="SiteContent1" EntitySet="SiteContent" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ButtonStatuses">
           <Key>
@@ -32,15 +36,28 @@
           <Property Name="SortOrder" Type="int" />
           <Property Name="ParentId" Type="int" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_SiteContent_SiteContent">
+          <End Role="SiteContent" Type="bigskie_contentModel.Store.SiteContent" Multiplicity="0..1" />
+          <End Role="SiteContent1" Type="bigskie_contentModel.Store.SiteContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiteContent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SiteContent1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bigskie_contentModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="DataStorage">
           <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.ButtonStatuses" />
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.SiteContent" />
-        </EntityContainer>
+          <AssociationSet Name="FK_SiteContent_SiteContent" Association="bigskie_contentModel.FK_SiteContent_SiteContent">
+            <End Role="SiteContent" EntitySet="SiteContent" />
+            <End Role="SiteContent1" EntitySet="SiteContent" /></AssociationSet></EntityContainer>
         <EntityType Name="ButtonStatuses">
           <Key>
             <PropertyRef Name="Id" />
@@ -62,9 +79,11 @@
           <Property Name="Title" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Text" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="SortOrder" Type="Int32" />
-          <Property Name="ParentId" Type="Int32" />
-        </EntityType>
-      </Schema>
+          <NavigationProperty Name="Children" Relationship="bigskie_contentModel.FK_SiteContent_SiteContent" FromRole="SiteContent" ToRole="SiteContent1" />
+          <NavigationProperty Name="Parent" Relationship="bigskie_contentModel.FK_SiteContent_SiteContent" FromRole="SiteContent1" ToRole="SiteContent" /></EntityType>
+        <Association Name="FK_SiteContent_SiteContent">
+          <End Type="bigskie_contentModel.SiteContent" Role="SiteContent" Multiplicity="0..1" />
+          <End Type="bigskie_contentModel.SiteContent" Role="SiteContent1" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -91,11 +110,15 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <AssociationSetMapping Name="FK_SiteContent_SiteContent" TypeName="bigskie_contentModel.FK_SiteContent_SiteContent" StoreEntitySet="SiteContent">
+            <EndProperty Name="SiteContent1">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="SiteContent">
+              <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -115,6 +138,11 @@
     <edmx:Diagrams>
       <Diagram Name="Structure">
         <EntityTypeShape EntityType="bigskie_contentModel.ButtonStatuses" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7566536458333331" IsExpanded="true" />
-        <EntityTypeShape EntityType="bigskie_contentModel.SiteContent" Width="1.5" PointX="2.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" /></Diagram></edmx:Diagrams>
+        <EntityTypeShape EntityType="bigskie_contentModel.SiteContent" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7494921875" IsExpanded="true" />
+        <AssociationConnector Association="bigskie_contentModel.FK_SiteContent_SiteContent" >
+          <ConnectorPoint PointX="3.2819230769230767" PointY="3.4994921875" />
+          <ConnectorPoint PointX="3.2819230769230767" PointY="3.7494921874999996" />
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.7494921874999996" />
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.4994921875" /></AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
