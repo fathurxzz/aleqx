@@ -24,6 +24,5 @@ namespace bigs.Controllers
             }
             return View();
         }
-
     }
 }
