@@ -8,7 +8,7 @@
 
     using (DataStorage context = new DataStorage())
     {
-        List<SiteContent> siteContent = (from content in context.SiteContent where content.Parent.Name == controllerName && content.Language == SystemSettings.CurrentLanguage orderby content.SortOrder ascending select content).ToList();
+        List<SiteContent> siteContent = (from content in context.SiteContent.Include("Parent") where content.Parent.Name == controllerName && content.Language == SystemSettings.CurrentLanguage orderby content.SortOrder ascending select content).ToList();
         if (siteContent.Count > 0)
         {
             %>
