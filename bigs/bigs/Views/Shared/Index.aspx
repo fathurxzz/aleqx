@@ -26,12 +26,12 @@
 
  <%
             string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
-            if (controllerName == "SERVICES")
-            {
+            //if (controllerName == "SERVICES")
+            //{
                 %>
                 <% Html.RenderPartial("SubMenu");%>
                 <%
-            }
+            //}
             %>
             
 
