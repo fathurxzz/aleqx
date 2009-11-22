@@ -19,31 +19,16 @@
     
 }
 
-
-.rulogo
+.rulogo, .enlogo, .itlogo
 {
-    background-image:url('images/rulogo.png');
     background-repeat:no-repeat;
     float:left;
     width:151px;
     height:256px;
 }
-.enlogo
-{
-    background-image:url('images/enlogo.gif');
-    background-repeat:no-repeat;
-    float:left;
-    width:151px;
-    height:256px;
-}
-.itlogo
-{
-    background-image:url('images/itlogo.gif');
-    background-repeat:no-repeat;
-    float:left;
-    width:151px;
-    height:256px;
-}
+.rulogo { background-image:url('images/rulogo.png'); }
+.enlogo { background-image:url('images/enlogo.gif'); }
+.itlogo { background-image:url('images/itlogo.gif'); }
 
 #headerRight
 {
@@ -58,25 +43,11 @@
     background-position:315px bottom;
 }
 
-#menu
-{
-    /*border:1px solid black;*/
-    
-    
-    padding-left:40px;
-}
+#menu { padding-left:40px; }
 
-#middle
-{
-    
-}
+#middle{}
 
-#left
-{
-    float:left;
-    width:160px;
-    padding-top:64px;
-}
+#left { float:left; width:160px; padding-top:64px; }
 
 #content
 {
@@ -86,7 +57,6 @@
     margin-bottom:20px;
     min-height:540px;
 }
-
 
 #footer
 {
@@ -99,31 +69,15 @@
     border-bottom-color:Red;
 }
 
-
 #footerRight a { color: #7f0002; text-decoration: none; }
 #footerRight .mark { background: #7f0002; color: white; padding: 1px 3px 1px 3px; }
 
-#footerLeft
-{
-    float:left;        
-}
-#footerRight
-{
-    padding-left:760px;
-}
+#footerLeft { float:left; }
+#footerRight { padding-left:760px; }
 
-#languageBar
-{
-   padding-left:490px;
-   height:28px;
-}
+#languageBar { padding-left:490px; height:28px; }
 
-
-h2
-{
-    color:Red;
-}
-
+h2 { color:Red; }
 
 #subMenu
 {
@@ -134,7 +88,6 @@ h2
     font-size:13px;
     padding-top:30px !important;
     margin-bottom:30px;
-    
 }
 
 #subMenu a
@@ -149,11 +102,7 @@ h2
     color:Black;
 }
 
-#subMenu div
-{
-    margin-bottom:30px;
-}
-
+#subMenu div { margin-bottom:30px; }
 
 #contentContainer
 {
@@ -168,9 +117,7 @@ h2
     font-size:20px;
     color:Red;
     margin:15px 15px 15px 35px;
-    
 }
-
 
 .ruvideo, .envideo, .itvideo
 {
