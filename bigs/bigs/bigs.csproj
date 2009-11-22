@@ -159,7 +159,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Resources.it-IT.designer.cs</LastGenOutput>
     </Content>
-    <Content Include="bigs.jpg" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\images\enmenuitem-documents.png" />
     <Content Include="Content\images\enmenuitem-contacts.png" />
@@ -174,7 +173,6 @@
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\phrase.png" />
     <Content Include="Content\MainMenuTranslations.css" />
-    <Content Include="Default.htm" />
     <Content Include="Views\Shared\Index.aspx" />
     <Content Include="Views\Shared\LanguageBar.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
