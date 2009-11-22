@@ -89,6 +89,7 @@
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
+    <Compile Include="Controllers\PagePartsController.cs" />
     <Compile Include="Controllers\RequestsController.cs" />
     <Compile Include="Controllers\Resources.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -214,7 +215,7 @@
     <Content Include="Scripts\ui.slider.js" />
     <Content Include="Views\Admin\ContentAdmin.Master" />
     <Content Include="Views\Admin\EditText.aspx" />
-    <Content Include="Views\Shared\ButtonPanel.ascx" />
+    <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
   </ItemGroup>

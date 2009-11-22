@@ -20,6 +20,7 @@ namespace bigs.Controllers
                 ViewData["contentUrl"] = contentUrl;
                 SiteContent content = Utils.GetText(contentUrl);
                 ViewData["text"] = content.Text;
+                ViewData["title"] = content.Title;
             }
             return View();
         }

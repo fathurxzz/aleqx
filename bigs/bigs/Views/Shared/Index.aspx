@@ -9,6 +9,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+
+<div id="contentContainer">
+<%= ViewData["text"]%>
+
 <%
 string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
 if (controllerName == "SERVICES")
@@ -18,6 +23,7 @@ if (controllerName == "SERVICES")
     <%
 }
 %>
+</div>
 
 </asp:Content>
 
@@ -26,4 +32,5 @@ if (controllerName == "SERVICES")
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentTitleContent" runat="server">
+<%= ViewData["title"]%>
 </asp:Content>

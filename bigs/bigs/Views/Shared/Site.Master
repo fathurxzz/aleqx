@@ -7,7 +7,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    <%= ViewData["title"]%>
+    </title>
     
     
     
@@ -46,8 +48,9 @@
         <div id="left">
             
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
-           
-            <% Html.RenderPartial("ButtonPanel"); %>
+            
+            <% Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
+            
         </div>
         <div id="content">
             
@@ -60,15 +63,18 @@
              { %>
                 <div class="adminEditLink">
                     
+                    
+                    
                     <%=Html.ActionLink("Редактировать", "EditText", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
                 
+                <!--
                     <a href="/Admin/EditText/<%= ViewData["contentUrl"] %>?controllerName=<%= ViewContext.RouteData.Values["controller"] %>">
                         Редактировать
                     </a>
+                    -->
                 </div>
            <%} %>
             
-            <%= ViewData["text"]%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             
              
