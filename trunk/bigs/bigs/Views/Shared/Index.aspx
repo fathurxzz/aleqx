@@ -12,6 +12,8 @@
 
 
 <div id="contentContainer">
+<div id="contentContainerTop"></div>
+<div id="innerContentContainer">
 <%= ViewData["text"]%>
 
 <%
@@ -23,6 +25,8 @@ if (controllerName == "SERVICES")
     <%
 }
 %>
+</div>
+<div id="contentContainerBottom"></div>
 </div>
 
 </asp:Content>

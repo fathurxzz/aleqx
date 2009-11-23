@@ -13,16 +13,20 @@
         {
             %>
             <div id="subMenu">
+            <div id="subMenuTopBorder"></div>
+            <div id="subMenuContainer">
             <%
             foreach (var content in siteContent)
             {
                     %>
-                    <div>
+                    <div class="subMenuLink">
                     <%=Html.ActionLink(Html.ResourceString(content.Name), "Index", content.Parent.Name, new { contentUrl = Html.ResourceString(content.Name) }, null)%>
                     </div>
                     <%
             }
             %>
+            </div>
+            <div id="subMenuBottomBorder"></div>
             </div>
             <%
         }

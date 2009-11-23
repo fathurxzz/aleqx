@@ -81,35 +81,110 @@ h2 { color:Red; }
 
 #subMenu
 {
-    padding:10px 10px 10px 10px;
-    border-style:solid;
-    border-color:Red;
-    border-width:thin;
-    font-size:13px;
-    padding-top:30px !important;
     margin-bottom:30px;
 }
 
 #subMenu a
 {
-    padding-bottom:30px;
+    /*padding-bottom:30px;*/
     color:Black;
+    
+}
+
+#subMenu a.active
+{
+    /*padding-bottom:30px;*/
+    color:Red;
 }
 #subMenu a:hover
 {
     text-decoration:none;
-    padding-bottom:30px;
+    /*padding-bottom:30px;*/
     color:Black;
+     padding-top:10px;
+    padding-bottom:10px;
 }
 
-#subMenu div { margin-bottom:30px; }
+.subMenuLink
+{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+#subMenu div 
+{
+     /*margin-bottom:30px;*/
+}
+
+#subMenuTopBorder, #subMenuBottomBorder
+{
+    width:153px;
+    height:10px;
+}
+
+#subMenuTopBorder
+{
+    background-image:url('images/topsubmenu.gif');
+}
+
+#subMenuBottomBorder
+{
+    background-image:url('images/bottomsubmenu.gif');
+}
+
+#subMenuContainer
+{
+    border-left-color:#F86E6E;
+    border-left-style:solid;
+    border-left-width:1px;
+    border-right-color:#F86E6E;
+    border-right-style:solid;
+    border-right-width:1px;
+    
+    width:121px;
+    padding-left:15px;
+    padding-right:15px;
+    font-size:13px;
+    
+    /*font-size:13px;
+    padding-top:30px !important;
+    margin-bottom:30px;*/
+}
+
+
+#contentContainerTop,#contentContainerBottom
+{
+    width:640px;
+    height:10px;
+}
+#contentContainerTop
+{
+    background-image:url('images/topmaincontainer.gif');
+}
+#contentContainerBottom
+{
+    background-image:url('images/bottommaincontainer.gif');
+}
+
+#innerContentContainer
+{
+    border-left-color:#F86E6E;
+    border-left-style:solid;
+    border-left-width:1px;
+    border-right-color:#F86E6E;
+    border-right-style:solid;
+    border-right-width:1px;
+    background-color:#E9EAEC;
+    width:578px;
+    padding:30px;
+}
 
 #contentContainer
 {
-    border: solid 1px red;
-    width:500px;
-    background-color:#E9EAEC;
-    padding:30px;
+    /*border: solid 0px red;*/
+    /*width:640px;*/
+    /*background-color:#E9EAEC;*/
+    /*padding:30px;*/
 }
 
 #title
