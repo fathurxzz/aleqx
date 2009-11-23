@@ -43,7 +43,13 @@
                 if (Request.IsAuthenticated)
                     Response.Write(Html.CheckBox("cb" + button.Id, button.SwitchedOn, new { onclick = "updateEnables(this, " + button.Id + ")" }));
                 string color = button.SwitchedOn ? "green" : "red";
-                Response.Write(button.SwitchedOn || Request.IsAuthenticated ? Html.ActionLink(" ", "Index", button.ControllerName, null, new { @class = button.Language.Substring(0, 2) + button.Name + color }) : "<a class=\"" + button.Language.Substring(0, 2) + button.Name + color + "\"></a>");
+
+                using (bigs.Models.DataStorage context = new bigs.Models.DataStorage())
+                {
+                    string contentUrl = (from contentNames in context.SiteContent where contentNames.Name == button.ControllerName && contentNames.Language == bigs.Controllers.SystemSettings.CurrentLanguage select contentNames.Url).First();
+
+                    Response.Write(button.SwitchedOn || Request.IsAuthenticated ? Html.ActionLink(" ", "Index", button.ControllerName,  new{contentUrl = contentUrl}, new { @class = button.Language.Substring(0, 2) + button.Name + color }) : "<a class=\"" + button.Language.Substring(0, 2) + button.Name + color + "\"></a>");
+                }
             }
     }
 %>
