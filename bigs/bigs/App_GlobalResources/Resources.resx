@@ -132,6 +132,9 @@
   <data name="Documents" xml:space="preserve">
     <value>Ценные бумаги</value>
   </data>
+  <data name="HotOffer" xml:space="preserve">
+    <value>Горящее предложение</value>
+  </data>
   <data name="Insurance" xml:space="preserve">
     <value>Страхование</value>
   </data>
@@ -141,8 +144,14 @@
   <data name="Request" xml:space="preserve">
     <value>Запрос</value>
   </data>
+  <data name="SellForASong" xml:space="preserve">
+    <value>Отдаём в хорошие руки</value>
+  </data>
   <data name="Services" xml:space="preserve">
     <value>Услуги</value>
+  </data>
+  <data name="TeleportSession" xml:space="preserve">
+    <value>Сеанс телепортации</value>
   </data>
   <data name="Transfers" xml:space="preserve">
     <value>Перевозки</value>

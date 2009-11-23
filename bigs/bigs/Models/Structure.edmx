@@ -35,6 +35,8 @@
           <Property Name="Text" Type="text" />
           <Property Name="SortOrder" Type="int" />
           <Property Name="ParentId" Type="int" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Keywords" Type="text" />
         </EntityType>
         <Association Name="FK_SiteContent_SiteContent">
           <End Role="SiteContent" Type="bigskie_contentModel.Store.SiteContent" Multiplicity="0..1" />
@@ -80,7 +82,9 @@
           <Property Name="Text" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="SortOrder" Type="Int32" />
           <NavigationProperty Name="Children" Relationship="bigskie_contentModel.FK_SiteContent_SiteContent" FromRole="SiteContent" ToRole="SiteContent1" />
-          <NavigationProperty Name="Parent" Relationship="bigskie_contentModel.FK_SiteContent_SiteContent" FromRole="SiteContent1" ToRole="SiteContent" /></EntityType>
+          <NavigationProperty Name="Parent" Relationship="bigskie_contentModel.FK_SiteContent_SiteContent" FromRole="SiteContent1" ToRole="SiteContent" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="Keywords" Type="String" Nullable="true" /></EntityType>
         <Association Name="FK_SiteContent_SiteContent">
           <End Type="bigskie_contentModel.SiteContent" Role="SiteContent" Multiplicity="0..1" />
           <End Type="bigskie_contentModel.SiteContent" Role="SiteContent1" Multiplicity="*" /></Association></Schema>
@@ -103,6 +107,8 @@
           <EntitySetMapping Name="SiteContent">
             <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.SiteContent)">
               <MappingFragment StoreEntitySet="SiteContent">
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Language" ColumnName="Language" />

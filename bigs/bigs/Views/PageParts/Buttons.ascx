@@ -43,7 +43,7 @@
                 if (Request.IsAuthenticated)
                     Response.Write(Html.CheckBox("cb" + button.Id, button.SwitchedOn, new { onclick = "updateEnables(this, " + button.Id + ")" }));
                 string color = button.SwitchedOn ? "green" : "red";
-                Response.Write(button.SwitchedOn || Request.IsAuthenticated ? Html.ActionLink(" ", "Index", "Home", null, new { @class = button.Language.Substring(0, 2) + button.Name + color }) : "<a class=\"" + button.Language.Substring(0, 2) + button.Name + color + "\"></a>");
+                Response.Write(button.SwitchedOn || Request.IsAuthenticated ? Html.ActionLink(" ", "Index", button.ControllerName, null, new { @class = button.Language.Substring(0, 2) + button.Name + color }) : "<a class=\"" + button.Language.Substring(0, 2) + button.Name + color + "\"></a>");
             }
     }
 %>

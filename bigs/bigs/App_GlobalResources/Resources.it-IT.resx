@@ -132,6 +132,9 @@
   <data name="Documents" xml:space="preserve">
     <value>Documenti</value>
   </data>
+  <data name="HotOffer" xml:space="preserve">
+    <value>HotOfferit</value>
+  </data>
   <data name="Insurance" xml:space="preserve">
     <value>Insurance</value>
   </data>
@@ -141,8 +144,14 @@
   <data name="Request" xml:space="preserve">
     <value>Richiesta</value>
   </data>
+  <data name="SellForASong" xml:space="preserve">
+    <value>SellForASongit</value>
+  </data>
   <data name="Services" xml:space="preserve">
     <value>Servizio</value>
+  </data>
+  <data name="TeleportSession" xml:space="preserve">
+    <value>TeleportSessionit</value>
   </data>
   <data name="Transfers" xml:space="preserve">
     <value>Transfers</value>
