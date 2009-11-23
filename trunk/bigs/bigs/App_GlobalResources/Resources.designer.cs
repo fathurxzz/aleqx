@@ -106,6 +106,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Горящее предложение.
+        /// </summary>
+        internal static string HotOffer {
+            get {
+                return ResourceManager.GetString("HotOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Страхование.
         /// </summary>
         internal static string Insurance {
@@ -133,11 +142,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отдаём в хорошие руки.
+        /// </summary>
+        internal static string SellForASong {
+            get {
+                return ResourceManager.GetString("SellForASong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Услуги.
         /// </summary>
         internal static string Services {
             get {
                 return ResourceManager.GetString("Services", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сеанс телепортации.
+        /// </summary>
+        internal static string TeleportSession {
+            get {
+                return ResourceManager.GetString("TeleportSession", resourceCulture);
             }
         }
         

@@ -88,12 +88,15 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotOfferController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
     <Compile Include="Controllers\PagePartsController.cs" />
     <Compile Include="Controllers\RequestsController.cs" />
     <Compile Include="Controllers\Resources.cs" />
+    <Compile Include="Controllers\SellForASongController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\SystemSettings.cs" />
+    <Compile Include="Controllers\TeleportSessionController.cs" />
     <Compile Include="Controllers\Utils.cs" />
     <Compile Include="Controllers\VacanciesController.cs" />
     <Compile Include="Default.aspx.cs">
