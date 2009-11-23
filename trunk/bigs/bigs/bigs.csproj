@@ -198,6 +198,7 @@
     <Content Include="Content\images\itteleportgreen.gif" />
     <Content Include="Content\images\itteleportred.gif" />
     <Content Include="Content\images\itvideo.gif" />
+    <Content Include="Content\images\pixel.gif" />
     <Content Include="Content\images\points.gif" />
     <Content Include="Content\images\ruhotgreen.gif" />
     <Content Include="Content\images\ruhotred.gif" />
@@ -210,10 +211,14 @@
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
     <Content Include="Content\Slider.css" />
+    <Content Include="images\jquery-1.2.1.pack.js" />
+    <Content Include="images\jquery.ifixpng.js" />
+    <Content Include="images\pixel.gif" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
+    <Content Include="Scripts\jquery.ifixpng.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />

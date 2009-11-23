@@ -11,10 +11,6 @@
     <%= ViewData["title"]%>
     </title>
     
-    
-    
-    
-   
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/MainMenu.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/MainMenuTranslations.css" rel="stylesheet" type="text/css" />
