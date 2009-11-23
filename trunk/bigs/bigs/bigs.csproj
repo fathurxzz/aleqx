@@ -189,6 +189,7 @@
     <Content Include="Content\images\enteleportgreen.gif" />
     <Content Include="Content\images\enteleportred.gif" />
     <Content Include="Content\images\envideo.gif" />
+    <Content Include="Content\images\footerbackground.gif" />
     <Content Include="Content\images\ithotgreen.gif" />
     <Content Include="Content\images\ithotred.gif" />
     <Content Include="Content\images\itlogo.gif" />
