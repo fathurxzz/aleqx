@@ -178,6 +178,7 @@
     <Content Include="Views\Shared\MainMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bigs.jpg" />
     <Content Include="Content\Buttons.css" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
@@ -211,6 +212,7 @@
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
     <Content Include="Content\Slider.css" />
+    <Content Include="Default.htm" />
     <Content Include="images\jquery-1.2.1.pack.js" />
     <Content Include="images\jquery.ifixpng.js" />
     <Content Include="images\pixel.gif" />
