@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("bigskie_contentModel", "FK_SiteContent_SiteContent", "SiteContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(bigs.Models.SiteContent), "SiteContent1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(bigs.Models.SiteContent))]
 
 // Original file name:
-// Generation date: 24.11.2009 0:22:09
+// Generation date: 24.11.2009 0:41:05
 namespace bigs.Models
 {
     
@@ -233,6 +233,29 @@ namespace bigs.Models
         private global::System.Nullable<int> _SortOrder;
         partial void OnSortOrderChanging(global::System.Nullable<int> value);
         partial void OnSortOrderChanged();
+        /// <summary>
+        /// There are no comments for Property ControllerName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string ControllerName
+        {
+            get
+            {
+                return this._ControllerName;
+            }
+            set
+            {
+                this.OnControllerNameChanging(value);
+                this.ReportPropertyChanging("ControllerName");
+                this._ControllerName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ControllerName");
+                this.OnControllerNameChanged();
+            }
+        }
+        private string _ControllerName;
+        partial void OnControllerNameChanging(string value);
+        partial void OnControllerNameChanged();
     }
     /// <summary>
     /// There are no comments for bigskie_contentModel.SiteContent in the schema.

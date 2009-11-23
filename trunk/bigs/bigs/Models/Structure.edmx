@@ -22,6 +22,7 @@
           <Property Name="Language" Type="char" Nullable="false" MaxLength="5" />
           <Property Name="SwitchedOn" Type="bit" Nullable="false" />
           <Property Name="SortOrder" Type="int" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="SiteContent">
           <Key>
@@ -69,7 +70,7 @@
           <Property Name="Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
           <Property Name="SwitchedOn" Type="Boolean" Nullable="false" />
           <Property Name="SortOrder" Type="Int32" />
-        </EntityType>
+          <Property Name="ControllerName" Type="String" Nullable="true" /></EntityType>
         <EntityType Name="SiteContent">
           <Key>
             <PropertyRef Name="Id" />
@@ -96,6 +97,7 @@
           <EntitySetMapping Name="ButtonStatuses">
             <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.ButtonStatuses)">
               <MappingFragment StoreEntitySet="ButtonStatuses">
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Language" ColumnName="Language" />
