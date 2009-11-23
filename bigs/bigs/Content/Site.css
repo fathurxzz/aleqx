@@ -53,11 +53,14 @@
 
 #content
 {
-    padding-left:50px;
+    padding-left:0px;
     padding-top:10px;
-    margin-left:157px;
+    margin-left:207px;
     margin-bottom:20px;
-    min-height:540px;
+    /*min-height:540px;*/
+  min-height:500px;
+  height:auto !important;
+  height:500px;
 }
 
 #footer
