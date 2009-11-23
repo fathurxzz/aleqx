@@ -94,6 +94,9 @@
             
         </div>
     </div>
+    
+    
+    
     <div id="footer">
     <div id="footerLeft">
         <%=Html.ResourceString("Copyright")%>
@@ -101,8 +104,9 @@
     <div id="footerRight">
         <a href="http://www.M-brand.com.ua" title="M.бренд">M.бренд&nbsp;|&nbsp;<font class="mark">дизайн</font></a>
     </div>
-    
+    <div id="footerBottom"></div>
     </div>
+    
 </div>
 <asp:ContentPlaceHolder ID="Includes" runat="server" />
 </body>

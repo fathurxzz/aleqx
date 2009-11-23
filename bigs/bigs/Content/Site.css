@@ -17,6 +17,7 @@
     height:100%;
     height:50px;
     
+    
 }
 
 .rulogo, .enlogo, .itlogo
@@ -32,7 +33,8 @@
 
 #headerRight
 {
-    margin-left:160px;
+    margin-left:157px;
+    
 }
 
 #phrase
@@ -53,24 +55,36 @@
 {
     padding-left:50px;
     padding-top:10px;
-    margin-left:160px;
+    margin-left:157px;
     margin-bottom:20px;
     min-height:540px;
 }
 
 #footer
 {
+    /*margin-top:20px;*/
     padding-top:20px;
-    height:35px;
     
-    border-top-style:dotted;
-    border-top-color:Red;
-    border-bottom-style:dotted;
-    border-bottom-color:Red;
+    /*height:35px;*/
+    
+    
+
+    background-image:url('images/footerbackground.gif');
+    background-position:top;
+    background-repeat:repeat-x;
+
+}
+#footerBottom
+{
+    margin-top:20px;
+    height:2px;
+    background-image:url('images/footerbackground.gif');
+    background-position:bottom;
+    background-repeat:repeat-x;
 }
 
 #footerRight a { color: #7f0002; text-decoration: none; }
-#footerRight .mark { background: #7f0002; color: white; padding: 1px 3px 1px 3px; }
+#footerRight .mark { background: #7f0002; color: white; padding: 1px 1px 1px 3px; }
 
 #footerLeft { float:left; }
 #footerRight { padding-left:760px; }
@@ -86,50 +100,63 @@ h2 { color:Red; }
 
 #subMenu a
 {
-    /*padding-bottom:30px;*/
     color:Black;
-    
 }
 
 #subMenu a.active
 {
-    /*padding-bottom:30px;*/
+   
+}
+
+
+
+#subMenu 
+{
     color:Red;
 }
 #subMenu a:hover
 {
     text-decoration:none;
-    /*padding-bottom:30px;*/
     color:Black;
-     padding-top:10px;
-    padding-bottom:10px;
-}
-
-.subMenuLink
-{
     padding-top:10px;
     padding-bottom:10px;
 }
 
-#subMenu div 
+.subMenuLink active
 {
-     /*margin-bottom:30px;*/
+    color:Red;
+}
+
+.subMenuLink 
+{
+    padding-top:10px;
+    padding-bottom:10px;
 }
 
 #subMenuTopBorder, #subMenuBottomBorder
 {
     width:153px;
     height:10px;
+    padding:0px 0px 0px 0px;
+    margin:0px 0px 0px 0px;
+    background-repeat:no-repeat;
 }
 
 #subMenuTopBorder
 {
     background-image:url('images/topsubmenu.gif');
+   background-position:bottom;
 }
 
 #subMenuBottomBorder
 {
     background-image:url('images/bottomsubmenu.gif');
+   background-position:top;
+}
+
+#subMenuContainer div.active
+{
+    color:Red;
 }
 
 #subMenuContainer
@@ -156,14 +183,19 @@ h2 { color:Red; }
 {
     width:640px;
     height:10px;
+    background-repeat:no-repeat;
 }
 #contentContainerTop
 {
     background-image:url('images/topmaincontainer.gif');
+    background-position:bottom;
+    
+    
 }
 #contentContainerBottom
 {
     background-image:url('images/bottommaincontainer.gif');
+    background-position:top;
 }
 
 #innerContentContainer
@@ -177,6 +209,7 @@ h2 { color:Red; }
     background-color:#E9EAEC;
     width:578px;
     padding:30px;
+    
 }
 
 #contentContainer

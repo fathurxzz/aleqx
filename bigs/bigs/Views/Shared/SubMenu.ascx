@@ -18,11 +18,30 @@
             <%
             foreach (var content in siteContent)
             {
+
+                string contentUrl = (string)ViewData["contentUrl"];
+
+
+
+                string contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
+
+                if (content.Name != contentName)
+                {
                     %>
                     <div class="subMenuLink">
-                    <%=Html.ActionLink(Html.ResourceString(content.Name), "Index", content.Parent.Name, new { contentUrl = Html.ResourceString(content.Name) }, null)%>
+                        <%=Html.ActionLink(Html.ResourceString(content.Name), "Index", content.Parent.Name, new { contentUrl = Html.ResourceString(content.Name) }, null)%>
                     </div>
                     <%
+                }
+                else
+                {
+                    %>
+                    <div class="subMenuLink active">
+                    <%=Html.ResourceString(content.Name)%>
+                    </div>
+                    <%
+                     
+                }
             }
             %>
             </div>
