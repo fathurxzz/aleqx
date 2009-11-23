@@ -179,6 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Buttons.css" />
+    <Content Include="Content\images\bottommaincontainer.gif" />
+    <Content Include="Content\images\bottomsubmenu.gif" />
     <Content Include="Content\images\enhotgreen.gif" />
     <Content Include="Content\images\enhotred.gif" />
     <Content Include="Content\images\enlogo.gif" />
@@ -204,6 +206,8 @@
     <Content Include="Content\images\ruteleportred.gif" />
     <Content Include="Content\images\ruvideo.gif" />
     <Content Include="Content\images\slider.gif" />
+    <Content Include="Content\images\topmaincontainer.gif" />
+    <Content Include="Content\images\topsubmenu.gif" />
     <Content Include="Content\Slider.css" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.js" />
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
@@ -249,7 +253,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3089</DevelopmentServerPort>
+          <DevelopmentServerPort>1655</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
