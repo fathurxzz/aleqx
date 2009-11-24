@@ -4,9 +4,12 @@
 <script src="../../Scripts/jquery.ifixpng.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
-    //$('#nice').ifixpng();
+    $('#nice').ifixpng();
     });
 </script>
+
+
+<div id="nice"></div>
 
 <div id="menuContainer">
     <div id="menuLeftSide">
