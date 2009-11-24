@@ -1,7 +1,7 @@
 ﻿#menuItems{height:20px; overflow:hidden;}
 #menuItems a{float:left;display:block;height:43px; margin-top:6px;}
 #menuItems a:hover{margin-top:-11px !important;}
-#menuItems a.bigsActive{margin-top:-30px !important;}
+#menuItems a.active{margin-top:-30px !important;}
 
 a.bigs{width:30px;background-image:url('images/menuitem-bigs.png'); margin-left:10px;}
 
