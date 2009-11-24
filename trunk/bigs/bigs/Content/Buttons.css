@@ -1,19 +1,5 @@
-﻿#buttonContainer
-{
-    
-}
-
-
-#buttonContainer a
-{
-    display:block;
-    width:150px;
-    height:34px;
-    background-position: 0px 0px;
-    
-    margin-bottom:30px;
-    
-}
+﻿#buttonContainer{}
+#buttonContainer a{display:block;width:150px;height:34px;background-position: 0px 0px;margin-bottom:30px;}
 
 a.ruhotred{background-image:url('images/ruhotgray.gif');}
 a.rusellred{background-image:url('images/rusellgray.gif');}
