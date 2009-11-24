@@ -1,67 +1,24 @@
-﻿a.bigs{float:left;display:block;width:52px;height:20px;background-image:url('images/menuitem-bigs.png');background-position:-20px -68px;}
-a.bigs:hover{background-position: -20px -43px !important;}
-a.bigs.bigsActive{background-position: -20px -19px !important;}
+﻿#menuItems{height:20px; overflow:hidden;}
+#menuItems a{float:left;display:block;height:43px; margin-top:6px;}
+#menuItems a:hover{margin-top:-11px !important;}
+#menuItems a.bigsActive{margin-top:-30px !important;}
 
-a.ruservices{float:left;display:block;width:82px;height:20px;background-image:url('images/menuitem-service.png');background-position:-25px -60px;}
-a.ruservices:hover{background-position: -25px -39px !important;}
-a.ruservices.ruservicesActive{background-position: -25px -19px !important;}
+a.bigs{width:30px;background-image:url('images/menuitem-bigs.png');}
 
-a.rurequest{float:left;display:block;width:92px;height:20px;background-image:url('images/menuitem-request.png');background-position:-40px -55px;}
-a.rurequest:hover{background-position: -40px -33px !important;}
-a.rurequest.rurequestActive{background-position: -40px -12px !important;}
+a.ruservices{width:55px;background-image:url('images/menuitem-service.png');}
+a.rurequest{width:54px;background-image:url('images/menuitem-request.png');}
+a.rudocuments{width:119px;background-image:url('images/menuitem-documents.png');}
+a.ruvacancies{width:76px;background-image:url('images/menuitem-vacancies.png');}
+a.rucontacts{width:73px;background-image:url('images/menuitem-contacts.png');}
 
-a.rudocuments{float:left;display:block;width:152px;height:20px;background-image:url('images/menuitem-documents.png');background-position:-20px -62px;}
-a.rudocuments:hover{background-position: -20px -41px !important;}
-a.rudocuments.rudocumentsActive{background-position: -20px -21px !important;}
+a.enservices{width:82px;background-image:url('images/enmenuitem-service.png')}
+a.enrequest{width:92px;background-image:url('images/enmenuitem-request.png');}
+a.endocuments{width:152px;background-image:url('images/enmenuitem-documents.png');}
+a.envacancies{width:102px;background-image:url('images/enmenuitem-vacancies.png');}
+a.encontacts{width:102px;background-image:url('images/enmenuitem-contacts.png');}
 
-a.ruvacancies{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-vacancies.png');background-position:-45px -66px;}
-a.ruvacancies:hover{background-position: -45px -43px !important;}
-a.ruvacancies.ruvacanciesActive{background-position: -45px -22px !important;}
-
-a.rucontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/menuitem-contacts.png');background-position:-45px -57px;}
-a.rucontacts:hover{background-position: -45px -34px !important;}
-a.rucontacts.rucontactsActive{background-position: -45px -14px !important;}
-
-
-
-a.enservices{float:left;display:block;width:82px;height:20px;background-image:url('images/enmenuitem-service.png');background-position:-14px -22px;}
-a.enservices:hover{background-position: -14px -39px !important;}
-a.enservices.enservicesActive{background-position: -14px -58px !important;}
-
-a.enrequest{float:left;display:block;width:92px;height:20px;background-image:url('images/enmenuitem-request.png');background-position:0px -22px;}
-a.enrequest:hover{background-position: 0px -39px !important;}
-a.enrequest.enrequestActive{background-position: 0px -58px !important;}
-
-a.endocuments{float:left;display:block;width:152px;height:20px;background-image:url('images/enmenuitem-documents.png');background-position:10px -22px;}
-a.endocuments:hover{background-position: 10px -39px !important;}
-a.endocuments.endocumentsActive{background-position: 10px -58px !important;}
-
-a.envacancies{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-vacancies.png');background-position:-25px -22px;}
-a.envacancies:hover{background-position: -25px -39px !important;}
-a.envacancies.envacanciesActive{background-position: -25px -58px !important;}
-
-a.encontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/enmenuitem-contacts.png');background-position:-15px -22px;}
-a.encontacts:hover{background-position: -15px -39px !important;}
-a.encontacts.encontactsActive{background-position: -15px -58px !important;}
-
-
-
-a.itservices{float:left;display:block;width:82px;height:20px;background-image:url('images/itmenuitem-service.png');background-position:-14px -22px;}
-a.itservices:hover{background-position: -14px -39px !important;}
-a.itservices.itservicesActive{background-position: -14px -58px !important;}
-
-a.itrequest{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-request.png');background-position:0px -22px;}
-a.itrequest:hover{background-position: 0px -39px !important;}
-a.itrequest.itrequestActive{background-position: 0px -58px !important;}
-
-a.itdocuments{float:left;display:block;width:140px;height:20px;background-image:url('images/itmenuitem-documents.png');background-position:0px -22px;}
-a.itdocuments:hover{background-position: 0px -39px !important;}
-a.itdocuments.itdocumentsActive{background-position: 0px -58px !important;}
-
-a.itvacancies{float:left;display:block;width:105px;height:20px;background-image:url('images/itmenuitem-vacancies.png');background-position:-20px -22px;}
-a.itvacancies:hover{background-position: -20px -39px !important;}
-a.itvacancies.itvacanciesActive{background-position: -20px -58px !important;}
-
-a.itcontacts{float:left;display:block;width:102px;height:20px;background-image:url('images/itmenuitem-contacts.png');background-position:10px -22px;}
-a.itcontacts:hover{background-position: 10px -39px !important;}
-a.itcontacts.itcontactsActive{background-position: 10px -58px !important;}
+a.itservices{width:82px;background-image:url('images/itmenuitem-service.png');}
+a.itrequest{width:105px;background-image:url('images/itmenuitem-request.png');}
+a.itdocuments{width:140px;background-image:url('images/itmenuitem-documents.png');}
+a.itvacancies{width:105px;background-image:url('images/itmenuitem-vacancies.png');}
+a.itcontacts{width:102px;background-image:url('images/itmenuitem-contacts.png');}

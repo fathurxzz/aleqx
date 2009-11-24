@@ -1,10 +1,9 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="bigs.Helpers" %>
 <%@ Import Namespace="bigs.Controllers" %>
-<script src="../../Scripts/jquery.ifixpng.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
-    $('#nice').ifixpng();
+    $('#menuItems a').ifixpng();
     });
 </script>
 
@@ -21,7 +20,6 @@
             string shortLang = SystemSettings.CurrentLanguageShort;
             string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
         %>
-        
         
         
         <%=Html.ActionLink(" ", "Index", "About", new { contentUrl = Html.ResourceString("About") }, new { id = "about", @class = controllerName == "ABOUT" ? "bigs bigsActive" : "bigs" })%>
