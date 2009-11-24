@@ -11,14 +11,15 @@
     <%= ViewData["title"]%>
     </title>
     
-    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/MainMenu.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/MainMenuTranslations.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/LanguageBar.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
-    <link href="../../Content/Buttons.css" rel="stylesheet" type="text/css" />
-    <script src="../../Scripts/jquery.js" type="text/javascript"></script>
-  
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/MainMenu.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/MainMenuTranslations.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/LanguageBar.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Admin.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Buttons.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.ifixpng.js" type="text/javascript"></script>
+
 </head>
 
 <body>

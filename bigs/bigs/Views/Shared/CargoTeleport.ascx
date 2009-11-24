@@ -2,11 +2,10 @@
 <%@ Import Namespace="bigs.Models" %>
 <%@ Import Namespace="bigs.Controllers" %>
 
-<link href="../../Content/Slider.css" rel="stylesheet"
-        type="text/css" />
-<script src="../../Scripts/ui.core.js" type="text/javascript"></script>
-<script src="../../Scripts/ui.slider.js" type="text/javascript"></script>
-<script src="../../Scripts/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+<link href="/Content/Slider.css" rel="stylesheet" type="text/css" />
+<script src="/Scripts/ui.core.js" type="text/javascript"></script>
+<script src="/Scripts/ui.slider.js" type="text/javascript"></script>
+<script src="/Scripts/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(function() {
