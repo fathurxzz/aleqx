@@ -23,6 +23,12 @@
 </head>
 
 <body>
+
+<%
+    if (HttpContext.Current.Request.Cookies["cookie_fuckie"] == null)
+        Response.Redirect("Default.htm");
+%>
+
 <div id="main">
     <div id="header">
         <%
