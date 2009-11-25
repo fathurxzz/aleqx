@@ -23,19 +23,20 @@
 	    $(function() {
 
 
-	    
-            
+
+
 	        //run the currently selected effect
 	        function runEffect() {
+	            
 	            var selectedEffect = "blind";
 	            var options = {};
-	            $("#logo").show(selectedEffect, options, 500, callback);
+	            $("#logo").show(selectedEffect, options, 800, callback);
 	        };
 
 	        //callback function to bring a hidden box back
 	        function callback() {
 	            /*setTimeout(function() {
-	                $("#effect:visible").removeAttr('style').hide().fadeOut();
+	            $("#effect:visible").removeAttr('style').hide().fadeOut();
 	            }, 1000);*/
 	        };
 
@@ -45,8 +46,12 @@
 	            return false;
 	        });
 
-	        //$("#logo").hide();
-	        runEffect();
+	        $("#logo").hide();
+
+	        setTimeout(function() {
+	            runEffect();
+	        }, 300);
+
 	    });
 	</script>
 
