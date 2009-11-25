@@ -18,7 +18,7 @@
 		#effect h3 { margin: 0; padding: 0.4em; text-align: center; }
 		.ui-effects-transfer { border: 2px dotted gray; } 
 		#logo{position:relative; top:-256px;}
-		.hidden{display:none;}
+		.hidden{visibility:hidden;}
 	</style>
 	
 	<script type="text/javascript">
