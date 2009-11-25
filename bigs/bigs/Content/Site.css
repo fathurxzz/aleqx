@@ -27,22 +27,24 @@
     width:151px;
     height:256px;
 }
-.rulogo { background-image:url('images/rulogo.png'); }
+.rulogo { background-image:url('images/rulogo.gif'); }
 .enlogo { background-image:url('images/enlogo.gif'); }
 .itlogo { background-image:url('images/itlogo.gif'); }
 
 
-.ruconnection .enconnection .itconnection
+.ruconnection, .enconnection, .itconnection
 {
     background-repeat:no-repeat;
     height:9px;
-    margin-top:210px;
+    margin-top:224px;
+    
 }
 .ruconnection
 {
-    background-image:('images/ruconnection.gif');
+    background-color:Yellow;
+    background-image:url('images/ruconnection.gif');
     width:110px;
-    margin-left:10px;
+    margin-left:19px;
 }
 .enconnection
 {
