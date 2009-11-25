@@ -31,6 +31,18 @@
 .enlogo { background-image:url('images/enlogo.gif'); }
 .itlogo { background-image:url('images/itlogo.gif'); }
 
+
+.ruconnection
+{
+    background-repeat:no-repeat;
+    background-image:('images/ruconnection.gif');
+    width:110px;
+    height:9px;
+    margin-top:210px;
+    margin-left:10px;
+}
+
+
 #headerRight
 {
     margin-left:157px;
