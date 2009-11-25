@@ -17,15 +17,15 @@
 		#effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
 		#effect h3 { margin: 0; padding: 0.4em; text-align: center; }
 		.ui-effects-transfer { border: 2px dotted gray; } 
-		
+		#logo{position:relative; top:-256px;}
 		.hidden{display:none;}
 	</style>
 	
 	<script type="text/javascript">
 	    $(function() {
-	        window.setInterval(runEffect, 300);
+	        $("#logo").animate({ top: 0 }, 1000, function() {window.setInterval(runEffect, 300); });
+	        
 	    });
-
 
 	    function runEffect() {
 	        Sys.UI.DomElement.toggleCssClass($get("logo"), "hidden");
