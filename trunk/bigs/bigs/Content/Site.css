@@ -32,21 +32,35 @@
 .itlogo { background-image:url('images/itlogo.gif'); }
 
 
-.ruconnection
+.ruconnection .enconnection .itconnection
 {
     background-repeat:no-repeat;
-    background-image:('images/ruconnection.gif');
-    width:110px;
     height:9px;
     margin-top:210px;
+}
+.ruconnection
+{
+    background-image:('images/ruconnection.gif');
+    width:110px;
     margin-left:10px;
 }
-
+.enconnection
+{
+    background-image:('images/ruconnection.gif');
+    width:131px;
+    margin-left:10px;
+    
+}
+.itconnection
+{
+    background-image:('images/ruconnection.gif');
+    width:131px;
+    margin-left:10px;
+}
 
 #headerRight
 {
     margin-left:157px;
-    
 }
 
 #phrase
