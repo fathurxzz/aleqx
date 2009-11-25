@@ -22,20 +22,14 @@
 	<script type="text/javascript">
 	    $(function() {
 
+
+	    
+            
 	        //run the currently selected effect
 	        function runEffect() {
-	            //get effect type from
 	            var selectedEffect = "blind";
-
-	            //most effect types need no options passed by default
 	            var options = {};
-	            //check if it's scale, transfer, or size - they need options explicitly set
-	            if (selectedEffect == 'scale') { options = { percent: 100 }; }
-	            else if (selectedEffect == 'transfer') { options = { to: "#button", className: 'ui-effects-transfer' }; }
-	            else if (selectedEffect == 'size') { options = { to: { width: 280, height: 185} }; }
-
-	            //run the effect
-	            $("#effect").show(selectedEffect, options, 500, callback);
+	            $("#logo").show(selectedEffect, options, 500, callback);
 	        };
 
 	        //callback function to bring a hidden box back
@@ -51,16 +45,11 @@
 	            return false;
 	        });
 
-	        $("#effect").hide();
+	        //$("#logo").hide();
+	        runEffect();
 	    });
 	</script>
 
 
 <div id="logo" class="<%=SystemSettings.CurrentLanguageShort%>logo">
-
-    <div class="toggler">
-	    <div id="effect" class="ui-widget-content ui-corner-all">
-	    </div>
-    </div>
-<a href="#" id="button" class="ui-state-default ui-corner-all">Run Effect</a>
 </div>
