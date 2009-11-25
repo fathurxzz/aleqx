@@ -17,42 +17,20 @@
 		#effect { width: 240px; height: 135px; padding: 0.4em; position: relative; }
 		#effect h3 { margin: 0; padding: 0.4em; text-align: center; }
 		.ui-effects-transfer { border: 2px dotted gray; } 
+		
+		.hidden{display:none;}
 	</style>
 	
 	<script type="text/javascript">
 	    $(function() {
-
-
-
-
-	        //run the currently selected effect
-	        function runEffect() {
-	            
-	            var selectedEffect = "blind";
-	            var options = {};
-	            $("#logo").show(selectedEffect, options, 800, callback);
-	        };
-
-	        //callback function to bring a hidden box back
-	        function callback() {
-	            /*setTimeout(function() {
-	            $("#effect:visible").removeAttr('style').hide().fadeOut();
-	            }, 1000);*/
-	        };
-
-	        //set effect from select menu value
-	        $("#button").click(function() {
-	            runEffect();
-	            return false;
-	        });
-
-	        $("#logo").hide();
-
-	        setTimeout(function() {
-	            runEffect();
-	        }, 300);
-
+	        window.setInterval(runEffect, 300);
 	    });
+
+
+	    function runEffect() {
+	        Sys.UI.DomElement.toggleCssClass($get("logo"), "hidden");
+	    };
+
 	</script>
 
 

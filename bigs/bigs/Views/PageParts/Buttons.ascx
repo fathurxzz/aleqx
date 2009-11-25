@@ -1,6 +1,4 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<bigs.Models.ButtonStatuses>>" %>
-<script src="/Scripts/MicrosoftAjax.js" type="text/javascript"></script>
-<script src="/Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
 <script type="text/javascript">
     var enables = {};
     function collectStatusChanges() {
