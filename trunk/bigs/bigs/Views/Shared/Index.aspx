@@ -19,20 +19,20 @@
 <%= ViewData["text"]%>
 
 <%
-    using (DataStorage context = new DataStorage())
-    {
-        string contentUrl = (string)ViewData["contentUrl"];
-        string contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
+    //using (DataStorage context = new DataStorage())
+    //{
+    //    string contentUrl = (string)ViewData["contentUrl"];
+    //    string contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
     
     
-//string controllerName = ViewContext.RouteData.Values["controller"].ToString().ToUpperInvariant();
-if ( contentName.ToLower()== "transfers" /*controllerName == "SERVICES"*/)
-{
+
+//if ( contentName.ToLower()== "transfers")
+//{
     %>
-    <% Html.RenderPartial("CargoTeleport");%>
+    <% //Html.RenderPartial("CargoTeleport");%>
     <%
-}
-        }
+//}
+  //      }
 %>
 </div>
 <div id="contentContainerBottom"></div>
@@ -41,7 +41,7 @@ if ( contentName.ToLower()== "transfers" /*controllerName == "SERVICES"*/)
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="LeftContent" runat="server">
-    <% Html.RenderPartial("SubMenu");%>
+    <% //Html.RenderPartial("SubMenu");%>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentTitleContent" runat="server">
