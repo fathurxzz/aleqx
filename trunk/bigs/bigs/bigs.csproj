@@ -223,6 +223,7 @@
     <Content Include="Content\images\ruhotgray.gif" />
     <Content Include="Content\images\ruhotgreen.gif" />
     <Content Include="Content\images\ruhotred.gif" />
+    <Content Include="Content\images\rulogo.gif" />
     <Content Include="Content\images\rusellgray.gif" />
     <Content Include="Content\images\rusellgreen.gif" />
     <Content Include="Content\images\rusellred.gif" />
