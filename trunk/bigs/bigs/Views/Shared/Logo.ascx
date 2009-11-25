@@ -18,7 +18,6 @@
 	    function blink() {
 	        Sys.UI.DomElement.toggleCssClass($get("connectionSign"), "hidden");
 	    };
-
 	</script>
     <%} %>
 
