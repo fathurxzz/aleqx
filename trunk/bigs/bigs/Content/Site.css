@@ -32,30 +32,30 @@
 .itlogo { background-image:url('images/itlogo.gif'); }
 
 
-.ruconnection, .enconnection, .itconnection
+#connectionSign
 {
     background-repeat:no-repeat;
     height:9px;
     margin-top:224px;
-    
+    /*visibility:hidden;*/
 }
 .ruconnection
 {
-    background-color:Yellow;
     background-image:url('images/ruconnection.gif');
     width:110px;
     margin-left:19px;
+    
 }
 .enconnection
 {
-    background-image:('images/ruconnection.gif');
+    background-image:url('images/enconnection.gif');
     width:131px;
     margin-left:10px;
     
 }
 .itconnection
 {
-    background-image:('images/ruconnection.gif');
+    background-image:url('images/itconnection.gif');
     width:131px;
     margin-left:10px;
 }
