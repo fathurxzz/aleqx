@@ -14,14 +14,14 @@ namespace bigs.Controllers
         // GET: /BaseContent/
 
         public ActionResult Index(string contentUrl)
-        {/*
+        {
             if (!string.IsNullOrEmpty(contentUrl))
             {
                 ViewData["contentUrl"] = contentUrl;
                 SiteContent content = Utils.GetText(contentUrl);
                 ViewData["text"] = content.Text;
                 ViewData["title"] = content.Title;
-            }*/
+            }
             return View();
         }
     }

@@ -51,9 +51,9 @@
             
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
             
-            <% //Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
+            <% Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
             
-            <% //Html.RenderPartial("VideoSurveillance");%>
+            <% Html.RenderPartial("VideoSurveillance");%>
             
         </div>
         <div id="content">

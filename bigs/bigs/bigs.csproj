@@ -234,7 +234,6 @@
     <Content Include="Content\images\slider.gif" />
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
-    <Content Include="Content\jquery-ui-1.7.2.custom.css" />
     <Content Include="Content\Slider.css" />
     <Content Include="Default.htm" />
     <Content Include="images\jquery-1.2.1.pack.js" />
