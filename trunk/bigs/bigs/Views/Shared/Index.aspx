@@ -19,20 +19,22 @@
 <%= ViewData["text"]%>
 
 <%
-    //using (DataStorage context = new DataStorage())
-    //{
-    //    string contentUrl = (string)ViewData["contentUrl"];
-    //    string contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
+    using (DataStorage context = new DataStorage())
+    {
+        string contentName = string.Empty;
+        string contentUrl = (string)ViewData["contentUrl"];
+        if (contentUrl != null)
+            contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
     
     
 
-//if ( contentName.ToLower()== "transfers")
-//{
+if ( contentName.ToLower()== "transfers")
+{
     %>
-    <% //Html.RenderPartial("CargoTeleport");%>
+    <% Html.RenderPartial("CargoTeleport");%>
     <%
-//}
-  //      }
+}
+        }
 %>
 </div>
 <div id="contentContainerBottom"></div>
@@ -41,7 +43,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="LeftContent" runat="server">
-    <% //Html.RenderPartial("SubMenu");%>
+    <% Html.RenderPartial("SubMenu");%>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentTitleContent" runat="server">
