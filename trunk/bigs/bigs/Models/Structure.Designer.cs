@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("bigskie_contentModel", "FK_SiteContent_SiteContent", "SiteContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(bigs.Models.SiteContent), "SiteContent1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(bigs.Models.SiteContent))]
 
 // Original file name:
-// Generation date: 24.11.2009 0:41:05
+// Generation date: 26.11.2009 23:44:15
 namespace bigs.Models
 {
     
@@ -77,6 +77,21 @@ namespace bigs.Models
         }
         private global::System.Data.Objects.ObjectQuery<SiteContent> _SiteContent;
         /// <summary>
+        /// There are no comments for ImageContent in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<ImageContent> ImageContent
+        {
+            get
+            {
+                if ((this._ImageContent == null))
+                {
+                    this._ImageContent = base.CreateQuery<ImageContent>("[ImageContent]");
+                }
+                return this._ImageContent;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<ImageContent> _ImageContent;
+        /// <summary>
         /// There are no comments for ButtonStatuses in the schema.
         /// </summary>
         public void AddToButtonStatuses(ButtonStatuses buttonStatuses)
@@ -89,6 +104,13 @@ namespace bigs.Models
         public void AddToSiteContent(SiteContent siteContent)
         {
             base.AddObject("SiteContent", siteContent);
+        }
+        /// <summary>
+        /// There are no comments for ImageContent in the schema.
+        /// </summary>
+        public void AddToImageContent(ImageContent imageContent)
+        {
+            base.AddObject("ImageContent", imageContent);
         }
     }
     /// <summary>
@@ -549,5 +571,75 @@ namespace bigs.Models
                 }
             }
         }
+    }
+    /// <summary>
+    /// There are no comments for bigskie_contentModel.ImageContent in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// FileName
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="bigskie_contentModel", Name="ImageContent")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class ImageContent : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new ImageContent object.
+        /// </summary>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="fileName">Initial value of FileName.</param>
+        public static ImageContent CreateImageContent(int id, string fileName)
+        {
+            ImageContent imageContent = new ImageContent();
+            imageContent.Id = id;
+            imageContent.FileName = fileName;
+            return imageContent;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property FileName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName
+        {
+            get
+            {
+                return this._FileName;
+            }
+            set
+            {
+                this.OnFileNameChanging(value);
+                this.ReportPropertyChanging("FileName");
+                this._FileName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("FileName");
+                this.OnFileNameChanged();
+            }
+        }
+        private string _FileName;
+        partial void OnFileNameChanging(string value);
+        partial void OnFileNameChanged();
     }
 }

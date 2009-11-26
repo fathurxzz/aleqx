@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using bigs.Models;
+using System.IO;
 
 namespace bigs.Controllers
 {
@@ -61,6 +62,60 @@ namespace bigs.Controllers
 
 
                 return RedirectToAction("Index", controllerName, new { contentUrl = newUrl });
+            }
+        }
+
+
+        [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
+        public ActionResult EditPicture(string contentUrl, string controllerName)
+        {
+            using (DataStorage context = new DataStorage())
+            {
+                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
+                return View(images);
+            }
+        }
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditPicture(string image, string contentUrl, string controllerName)
+        {
+            using (DataStorage context = new DataStorage())
+            {
+
+                string imageName = Request.Files["image"].FileName;
+                if (!string.IsNullOrEmpty(imageName))
+                {
+                    imageName = Path.GetFileName(imageName);
+                    string imagePath = Server.MapPath("~/Content/Objects/" + imageName);
+                    Request.Files["image"].SaveAs(imagePath);
+                    ImageContent imageItem = new ImageContent();
+                    imageItem.FileName = imageName;
+                    context.AddToImageContent(imageItem);
+                    context.SaveChanges();
+                }
+
+                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
+                return View(images);
+            }
+        }
+
+        [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
+        public ActionResult DeletePicture(int id)
+        {
+            using (DataStorage context = new DataStorage())
+            {
+                ImageContent image = (from i in context.ImageContent where i.Id==id select i).First();
+                string imageName = image.FileName;
+                context.DeleteObject(image);
+                context.SaveChanges();
+
+                string path = Server.MapPath("~/Content/Objects/" + imageName);
+                if (System.IO.File.Exists(path))
+                    System.IO.File.Delete(path);
+
+                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
+                return View(images);
             }
         }
     }
