@@ -105,7 +105,7 @@ namespace bigs.Controllers
         {
             using (DataStorage context = new DataStorage())
             {
-                ImageContent image = (from i in context.ImageContent where i.Id==id select i).First();
+                ImageContent image = (from i in context.ImageContent where i.Id == id select i).First();
                 string imageName = image.FileName;
                 context.DeleteObject(image);
                 context.SaveChanges();
