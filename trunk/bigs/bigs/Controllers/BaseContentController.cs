@@ -18,9 +18,11 @@ namespace bigs.Controllers
             if (!string.IsNullOrEmpty(contentUrl))
             {
                 ViewData["contentUrl"] = contentUrl;
-                SiteContent content = Utils.GetText(contentUrl);
+                SiteContent content = Utils.GetContent(contentUrl);
                 ViewData["text"] = content.Text;
                 ViewData["title"] = content.Title;
+                ViewData["keywords"] = content.Keywords;
+                ViewData["description"] = content.Description;
             }
             return View();
         }
