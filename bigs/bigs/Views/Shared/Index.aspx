@@ -3,7 +3,7 @@
 <%@ Import Namespace="bigs.Controllers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
+	<%= ViewData["title"]%>
 </asp:Content>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="Includes" runat="server">

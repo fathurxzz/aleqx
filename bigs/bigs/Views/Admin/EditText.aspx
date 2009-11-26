@@ -9,6 +9,16 @@
     <% using(Html.BeginForm()){ %>  
         <%= Html.Hidden("controllerName") %>
         <%= Html.Hidden("contentUrl") %>
+        
+        Title
+        <%= Html.TextArea("title") %>
+        <br />
+        Keywords
+        <%= Html.TextArea("keywords") %>
+        <br />
+        Description
+        <%= Html.TextArea("description") %>
+        <br />
         <%= Html.TextArea("text") %>
         <input type="submit" value="Сохранить" />
     <%} %>
