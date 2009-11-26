@@ -39,7 +39,22 @@
                 <% Html.RenderPartial("LanguageBar");%>
             </div>
             <div id="phrase">
-            
+             <%if (Request.IsAuthenticated)
+             { %>
+                <div class="adminEditLink">
+                    
+                    
+                    
+                    <%=Html.ActionLink("Редактировать", "EditPicture", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
+                
+                <!--
+                    <a href="/Admin/EditText/<%= ViewData["contentUrl"] %>?controllerName=<%= ViewContext.RouteData.Values["controller"] %>">
+                        Редактировать
+                    </a>
+                    -->
+                </div>
+           <%} %>
+                <% Html.RenderPartial("Phrase");%>
             </div>
             <div id="menu">
                 <% Html.RenderPartial("MainMenu");%>

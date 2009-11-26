@@ -68,9 +68,10 @@
 #phrase
 {
     height:180px;
+    width:660px;
     background-image:url('images/phrase.png');
     background-repeat:no-repeat;
-    background-position:315px bottom;
+    background-position:right bottom;
 }
 
 #menu { padding-left:40px; }

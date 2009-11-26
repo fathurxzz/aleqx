@@ -7,6 +7,7 @@
     <Schema Namespace="bigskie_contentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="bigskie_contentModelStoreContainer">
           <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.Store.ButtonStatuses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.Store.ImageContent" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.Store.SiteContent" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_SiteContent_SiteContent" Association="bigskie_contentModel.Store.FK_SiteContent_SiteContent">
             <End Role="SiteContent" EntitySet="SiteContent" />
@@ -23,6 +24,13 @@
           <Property Name="SwitchedOn" Type="bit" Nullable="false" />
           <Property Name="SortOrder" Type="int" />
           <Property Name="ControllerName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ImageContent">
+          <Key>
+            <PropertyRef Name="FileName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="SiteContent">
           <Key>
@@ -60,7 +68,8 @@
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.SiteContent" />
           <AssociationSet Name="FK_SiteContent_SiteContent" Association="bigskie_contentModel.FK_SiteContent_SiteContent">
             <End Role="SiteContent" EntitySet="SiteContent" />
-            <End Role="SiteContent1" EntitySet="SiteContent" /></AssociationSet></EntityContainer>
+            <End Role="SiteContent1" EntitySet="SiteContent" /></AssociationSet>
+          <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.ImageContent" /></EntityContainer>
         <EntityType Name="ButtonStatuses">
           <Key>
             <PropertyRef Name="Id" />
@@ -88,7 +97,12 @@
           <Property Name="Keywords" Type="String" Nullable="true" /></EntityType>
         <Association Name="FK_SiteContent_SiteContent">
           <End Type="bigskie_contentModel.SiteContent" Role="SiteContent" Multiplicity="0..1" />
-          <End Type="bigskie_contentModel.SiteContent" Role="SiteContent1" Multiplicity="*" /></Association></Schema>
+          <End Type="bigskie_contentModel.SiteContent" Role="SiteContent1" Multiplicity="*" /></Association>
+        <EntityType Name="ImageContent">
+          <Key>
+            <PropertyRef Name="FileName" /></Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -126,7 +140,12 @@
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="SiteContent">
               <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
-            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping>
+          <EntitySetMapping Name="ImageContent">
+            <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.ImageContent)">
+              <MappingFragment StoreEntitySet="ImageContent">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -151,6 +170,7 @@
           <ConnectorPoint PointX="3.2819230769230767" PointY="3.4994921875" />
           <ConnectorPoint PointX="3.2819230769230767" PointY="3.7494921874999996" />
           <ConnectorPoint PointX="3.7284615384615383" PointY="3.7494921874999996" />
-          <ConnectorPoint PointX="3.7284615384615383" PointY="3.4994921875" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.4994921875" /></AssociationConnector>
+        <EntityTypeShape EntityType="bigskie_contentModel.ImageContent" Width="1.5" PointX="5.875" PointY="1.125" Height="1.2636116536458335" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

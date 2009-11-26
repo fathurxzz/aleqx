@@ -254,11 +254,13 @@
     <Content Include="Scripts\ui.slider.js" />
     <Content Include="SetCookie.aspx" />
     <Content Include="Views\Admin\ContentAdmin.Master" />
+    <Content Include="Views\Admin\EditPicture.aspx" />
     <Content Include="Views\Admin\EditText.aspx" />
     <Content Include="Views\Admin\EditTransfers.aspx" />
     <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\Logo.ascx" />
+    <Content Include="Views\Shared\Phrase.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
     <Content Include="Views\Shared\VideoSurveillance.ascx" />
   </ItemGroup>
@@ -271,6 +273,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="Content\Objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
