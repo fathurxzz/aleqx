@@ -16,6 +16,12 @@ namespace bigs
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(
+                          "DeletePicture",                                              // Route name
+                          "Admin/DeletePicture/{id}",                           // URL with parameters
+                          new { controller = "Admin", action = "DeletePicture", id="" }  // Parameter defaults
+                        );
+
 
             routes.MapRoute(
               "Account",                                              // Route name
