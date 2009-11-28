@@ -69,9 +69,6 @@
 {
     height:180px;
     width:660px;
-    /*background-image:url('images/phrase.png');
-    background-repeat:no-repeat;
-    background-position:right bottom;*/
     padding:0px 0px 0px 0px;
     margin:0px 0px 0px 0px;
     
@@ -79,9 +76,6 @@
 
 #phraseImage
 {
-    /*border:solid 1px black;*/
-    /*border-style:none;*/
-    /*float:right;*/
 }
 
 
@@ -97,26 +91,19 @@
     padding-top:10px;
     margin-left:207px;
     margin-bottom:20px;
-    /*min-height:540px;*/
-  min-height:500px;
-  height:auto !important;
-  height:500px;
+    min-height:500px;
+    height:auto !important;
+    height:500px;
 }
 
 #footer
 {
-    /*margin-top:20px;*/
     padding-top:20px;
-    
-    /*height:35px;*/
-    
-    
-
     background-image:url('images/footerbackground.gif');
     background-position:top;
     background-repeat:repeat-x;
-
 }
+
 #footerBottom
 {
     margin-top:20px;
