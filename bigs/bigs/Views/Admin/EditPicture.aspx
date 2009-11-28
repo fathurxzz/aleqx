@@ -30,7 +30,7 @@
                 <%= Html.Encode(item.FileName) %>
             </td>
             <td>
-                <img alt="<%= Html.Encode(item.FileName) %>" src="~/Content/Objects/<%=Html.Encode(item.FileName)%>" />
+                <img alt="<%= Html.Encode(item.FileName) %>" src="/Content/Objects/<%=Html.Encode(item.FileName)%>" />
             </td>
             <td>
                 <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id }, null)%>

@@ -234,6 +234,18 @@
     <Content Include="Content\images\slider.gif" />
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
+    <Content Include="Content\Objects\122674.jpg" />
+    <Content Include="Content\Objects\14199599_vishni.jpg" />
+    <Content Include="Content\Objects\1770500_5248678.jpg" />
+    <Content Include="Content\Objects\20396819.gif" />
+    <Content Include="Content\Objects\225ef87db8e2.gif" />
+    <Content Include="Content\Objects\31701297.png" />
+    <Content Include="Content\Objects\35574544.png" />
+    <Content Include="Content\Objects\8.jpg" />
+    <Content Include="Content\Objects\9066ed0f728e.gif" />
+    <Content Include="Content\Objects\dolls_50011.gif" />
+    <Content Include="Content\Objects\eHV8ESMwjY.png" />
+    <Content Include="Content\Objects\verh.gif" />
     <Content Include="Content\Slider.css" />
     <Content Include="Default.htm" />
     <Content Include="images\jquery-1.2.1.pack.js" />
@@ -273,7 +285,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="Content\Objects\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

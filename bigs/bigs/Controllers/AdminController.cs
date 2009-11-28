@@ -103,6 +103,7 @@ namespace bigs.Controllers
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
         public ActionResult DeletePicture(int id)
         {
+            /*
             using (DataStorage context = new DataStorage())
             {
                 ImageContent image = (from i in context.ImageContent where i.Id == id select i).First();
@@ -115,8 +116,9 @@ namespace bigs.Controllers
                     System.IO.File.Delete(path);
 
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
-                return View(images);
-            }
+            }*/
+
+            return RedirectToAction("EditPicture");
         }
     }
 }

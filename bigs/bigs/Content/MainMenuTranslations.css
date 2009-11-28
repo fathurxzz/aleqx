@@ -3,22 +3,22 @@
 #menuItems a:hover{margin-top:-11px !important;}
 #menuItems a.active{margin-top:-30px !important;}
 
-a.bigs{width:30px;background-image:url('images/menuitem-bigs.png'); margin-left:10px;}
+a.bigs{width:30px;background-image:url('images/menuitem-bigs.png'); margin-right:31px; margin-left:10px;}
 
-a.ruservices{width:55px;background-image:url('images/menuitem-service.png');margin-left:31px;}
-a.rurequest{width:54px;background-image:url('images/menuitem-request.png');margin-left:31px;}
-a.rudocuments{width:119px;background-image:url('images/menuitem-documents.png');margin-left:31px;}
-a.ruvacancies{width:76px;background-image:url('images/menuitem-vacancies.png');margin-left:31px;}
-a.rucontacts{width:73px;background-image:url('images/menuitem-contacts.png');margin-left:31px;}
+a.ruservices{width:55px;background-image:url('images/menuitem-service.png');margin-right:31px;}
+a.rurequest{width:54px;background-image:url('images/menuitem-request.png');margin-right:31px;}
+a.rudocuments{width:119px;background-image:url('images/menuitem-documents.png');margin-right:31px;}
+a.ruvacancies{width:76px;background-image:url('images/menuitem-vacancies.png');margin-right:31px;}
+a.rucontacts{width:73px;background-image:url('images/menuitem-contacts.png');}
 
-a.enservices{width:66px;background-image:url('images/enmenuitem-service.png');margin-left:36px;}
-a.enrequest{width:62px;background-image:url('images/enmenuitem-request.png');margin-left:36px;}
-a.endocuments{width:77px;background-image:url('images/enmenuitem-documents.png');margin-left:36px;}
-a.envacancies{width:77px;background-image:url('images/enmenuitem-vacancies.png');margin-left:36px;}
-a.encontacts{width:72px;background-image:url('images/enmenuitem-contacts.png');margin-left:36px;}
+a.enservices{width:66px;background-image:url('images/enmenuitem-service.png');margin-right:36px;}
+a.enrequest{width:62px;background-image:url('images/enmenuitem-request.png');margin-right:36px;}
+a.endocuments{width:77px;background-image:url('images/enmenuitem-documents.png');margin-right:36px;}
+a.envacancies{width:77px;background-image:url('images/enmenuitem-vacancies.png');margin-right:36px;}
+a.encontacts{width:72px;background-image:url('images/enmenuitem-contacts.png');}
 
-a.itservices{width:60px;background-image:url('images/itmenuitem-service.png');margin-left:31px;}
-a.itrequest{width:69px;background-image:url('images/itmenuitem-request.png');margin-left:31px;}
-a.itdocuments{width:80px;background-image:url('images/itmenuitem-documents.png');margin-left:31px;}
-a.itvacancies{width:103px;background-image:url('images/itmenuitem-vacancies.png');margin-left:31px;}
-a.itcontacts{width:65px;background-image:url('images/itmenuitem-contacts.png');margin-left:31px;}
+a.itservices{width:60px;background-image:url('images/itmenuitem-service.png');margin-right:30px;}
+a.itrequest{width:69px;background-image:url('images/itmenuitem-request.png');margin-right:30px;}
+a.itdocuments{width:80px;background-image:url('images/itmenuitem-documents.png');margin-right:30px;}
+a.itvacancies{width:103px;background-image:url('images/itmenuitem-vacancies.png');margin-right:30px;}
+a.itcontacts{width:65px;background-image:url('images/itmenuitem-contacts.png');}
