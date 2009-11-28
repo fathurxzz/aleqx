@@ -100,7 +100,6 @@ namespace bigs.Controllers
             }
         }
 
-        [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
         public ActionResult DeletePicture(int id)
         {
             /*
