@@ -199,15 +199,15 @@ namespace bigs.Controllers
         {
             if (String.IsNullOrEmpty(userName))
             {
-                ModelState.AddModelError("username", "You must specify a username.");
+                ModelState.AddModelError("username", "Введите логин.");
             }
             if (String.IsNullOrEmpty(password))
             {
-                ModelState.AddModelError("password", "You must specify a password.");
+                ModelState.AddModelError("password", "Введите пароль.");
             }
             if (!MembershipService.ValidateUser(userName, password))
             {
-                ModelState.AddModelError("_FORM", "The username or password provided is incorrect.");
+                ModelState.AddModelError("_FORM", "Неправильный логин или пароль.");
             }
 
             return ModelState.IsValid;
