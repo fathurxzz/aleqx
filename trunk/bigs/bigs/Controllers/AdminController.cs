@@ -71,6 +71,8 @@ namespace bigs.Controllers
         {
             using (DataStorage context = new DataStorage())
             {
+                ViewData["controllerName"] = controllerName;
+                ViewData["contentUrl"] = contentUrl;
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
                 return View(images);
             }
@@ -100,7 +102,7 @@ namespace bigs.Controllers
             }
         }
 
-        public ActionResult DeletePicture(int id)
+        public ActionResult DeletePicture(int id, string contentUrl, string controllerName)
         {
             /*
             using (DataStorage context = new DataStorage())
@@ -116,8 +118,8 @@ namespace bigs.Controllers
 
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
             }*/
-
-            return RedirectToAction("EditPicture");
+            return RedirectToAction("EditPicture", "Admin", new { contentUrl = contentUrl });
+            //return RedirectToAction("EditPicture");
         }
     }
 }

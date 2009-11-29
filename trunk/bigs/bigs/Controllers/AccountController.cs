@@ -79,7 +79,7 @@ namespace bigs.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
+        /*
         public ActionResult Register()
         {
 
@@ -101,7 +101,7 @@ namespace bigs.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuth.SignIn(userName, false /* createPersistentCookie */);
+                    FormsAuth.SignIn(userName, false );
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -113,6 +113,7 @@ namespace bigs.Controllers
             // If we got this far, something failed, redisplay form
             return View();
         }
+*/
 
         [Authorize]
         public ActionResult ChangePassword()
@@ -211,7 +212,7 @@ namespace bigs.Controllers
 
             return ModelState.IsValid;
         }
-
+        /*
         private bool ValidateRegistration(string userName, string email, string password, string confirmPassword)
         {
             if (String.IsNullOrEmpty(userName))
@@ -235,7 +236,7 @@ namespace bigs.Controllers
             }
             return ModelState.IsValid;
         }
-
+        */
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://msdn.microsoft.com/en-us/library/system.web.security.membershipcreatestatus.aspx for

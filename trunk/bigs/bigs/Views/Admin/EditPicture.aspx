@@ -33,7 +33,7 @@
                 <img alt="<%= Html.Encode(item.FileName) %>" src="/Content/Objects/<%=Html.Encode(item.FileName)%>" />
             </td>
             <td>
-                <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id }, null)%>
+                <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id, controllerName = ViewData["controllerName"], contentUrl = ViewData["contentUrl"] }, null)%>
             </td>
         </tr>
     
