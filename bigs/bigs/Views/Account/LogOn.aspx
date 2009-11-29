@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Log On
+    Вход в систему администрирования
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -9,11 +9,11 @@
         $("#username").focus();
     });
 </script>
-    <h2>Log On</h2>
+    <h2>Вход в систему администрирования</h2>
     <p>
-        Please enter your username and password.
+        Пожалуйста введите Ваш логин и пароль.
     </p>
-    <%= Html.ValidationSummary("Login was unsuccessful. Please correct the errors and try again.") %>
+    <%= Html.ValidationSummary("Вход не был выполнен. Пожалуйста введите правильный логин и пароль.") %>
 
     <% using (Html.BeginForm()) { %>
             <table>
