@@ -104,7 +104,7 @@ namespace bigs.Controllers
 
         public ActionResult DeletePicture(int id, string contentUrl, string controllerName)
         {
-            /*
+            
             using (DataStorage context = new DataStorage())
             {
                 ImageContent image = (from i in context.ImageContent where i.Id == id select i).First();
@@ -117,7 +117,7 @@ namespace bigs.Controllers
                     System.IO.File.Delete(path);
 
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
-            }*/
+            }
             return RedirectToAction("EditPicture", "Admin", new { contentUrl = contentUrl });
             //return RedirectToAction("EditPicture");
         }

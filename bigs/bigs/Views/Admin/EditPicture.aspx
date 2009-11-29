@@ -1,20 +1,17 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/ContentAdmin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<bigs.Models.ImageContent>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	EditPicture
+	Редактирование списка изображений
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>EditPicture</h2>
-
     <table>
         <tr>
             <th>
-                FileName
+                Имя файла
             </th>
             <th>
-                
+                Изображение
             </th>
             <th>
                 Удалить
@@ -33,7 +30,7 @@
                 <img alt="<%= Html.Encode(item.FileName) %>" src="/Content/Objects/<%=Html.Encode(item.FileName)%>" />
             </td>
             <td>
-                <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id, controllerName = ViewData["controllerName"], contentUrl = ViewData["contentUrl"] }, null)%>
+                <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id, controllerName = ViewData["controllerName"], contentUrl = ViewData["contentUrl"] }, new { onclick="return confirm('Удалить объект?');" })%>
             </td>
         </tr>
     
