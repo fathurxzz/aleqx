@@ -1,5 +1,11 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="bigs.Helpers" %>
+
 <link href="/Content/Request.css" rel="stylesheet" type="text/css" />
+
+<div id="requestTitle">
+<%=Html.ResourceString("PleaseFillForm")%>
+</div>
 
 <div class="yellowBoxContainer">
 <div class="yellowBoxContainerTop"></div>
@@ -7,29 +13,90 @@
 
 
 <div class="yellowBoxTitle">
-О Вас
+<%=Html.ResourceString("AboutYou")%>:
 </div>
 
 
 <div class="textBoxContainer">
-<div class="textBoxCaption">Название компании</div>
+<div class="textBoxTitle"><%=Html.ResourceString("NameOfYourCompany")%></div>
 <div>
-    <div class="textBoxLeftSide"></div>    
-        <input type="text" class="textBox" />
+    <div class="textBoxLeftSide"></div>  
+        <%=Html.TextBox("nameOfYourCompany", "", new { @class = "textBox" })%>  
+    <div class="textBoxRightSide"></div>    
+</div>
+</div>
+
+<div class="textBoxContainer">
+<div class="textBoxTitle"><%=Html.ResourceString("YourContacts")%></div>
+<div>
+    <div class="textBoxLeftSide"></div>  
+        <%=Html.TextBox("yourContacts", "", new { @class = "textBox" })%>  
+    <div class="textBoxRightSide"></div>    
+</div>
+</div>
+
+<div class="textBoxContainer">
+<div class="textBoxTitle"><%=Html.ResourceString("ContactTelephone")%></div>
+<div>
+    <div class="textBoxLeftSide"></div>  
+        <%=Html.TextBox("contactTelephone", "", new { @class = "textBox" })%>  
+    <div class="textBoxRightSide"></div>    
+</div>
+</div>
+
+
+</div>
+<div class="yellowBoxContainerBottom"></div>
+</div>
+
+
+
+
+<div class="yellowBoxContainer">
+<div class="yellowBoxContainerTop"></div>
+<div class="innerYellowBoxContainer">
+
+
+<div class="yellowBoxTitle">
+<%=Html.ResourceString("AboutTheCargo")%>:
+</div>
+
+
+<div class="textBoxContainer">
+<div class="textBoxTitle"><%=Html.ResourceString("TeleportWhereFrom")%></div>
+<div class="textBoxSubTitle">(<%=Html.ResourceString("CityAndPostalCode")%>)</div>
+<div>
+    <div class="textBoxLeftSide"></div>  
+        <%=Html.TextBox("teleportWhereFrom", "", new { @class = "textBox" })%>  
+    <div class="textBoxRightSide"></div>    
+</div>
+</div>
+
+<div class="textBoxContainer">
+<div class="textBoxTitle"><%=Html.ResourceString("AndWhereTo")%></div>
+<div class="textBoxSubTitle">(<%=Html.ResourceString("CityAndPostalCode")%>)</div>
+<div>
+    <div class="textBoxLeftSide"></div>  
+        <%=Html.TextBox("andWhereTo", "", new { @class = "textBox" })%>  
     <div class="textBoxRightSide"></div>    
 </div>
 </div>
 
 
 
+
+
 <div class="textAreaContainer">
-<div class="textBoxCaption">Название компании</div>
+<div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%></div>
+<div class="textBoxSubTitle">(<%=Html.ResourceString("TypeOfTheCargo")%>)</div>
 <div class="textAreaTop"></div>
     <textarea cols="10" rows="10" class="textArea"></textarea>
 <div class="textAreaBottom"></div>
 </div>
 
-
+<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>
+<input type="submit" id="requestSubmitButton" value="<%=Html.ResourceString("Done")%>" />
 
 </div>
 <div class="yellowBoxContainerBottom"></div>

@@ -26,16 +26,17 @@
 .yellowBoxContainer
 {
     margin-left:110px;
+    margin-bottom:40px;
 }
 
 .textBoxContainer
 {
     width:285px;
+    margin-top:20px;
+    margin-bottom:20px;
 }
-.textBoxCaption
-{
-    
-}
+.textBoxTitle{color:#2F2F27; font-weight:bold;}
+.textBoxSubTitle{color:#635E65; font-weight:bold;}
 
 .textBoxLeftSide,.textBoxRightSide
 {
@@ -78,7 +79,7 @@
 
 
 
-.textAreaContainer{}
+.textAreaContainer{margin-bottom:20px;}
 .textAreaTop
 {
     background-image:url('images/textareatop.gif');
@@ -104,4 +105,16 @@
     border-right:solid 1px #010101;
     width:280px;
     overflow:auto;
+}
+
+#requestTitle
+{
+    margin: 0px 10px 30px 10px;
+    font-size:13px;
+}
+
+#requestSubmitButton
+{
+    margin-top:20px;
+    margin-left:115px;
 }

@@ -70,11 +70,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to О грузе.
+        /// </summary>
+        internal static string AboutTheCargo {
+            get {
+                return ResourceManager.GetString("AboutTheCargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to О Вас.
+        /// </summary>
+        internal static string AboutYou {
+            get {
+                return ResourceManager.GetString("AboutYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Куда (город, почтовый код).
+        /// </summary>
+        internal static string AndWhereTo {
+            get {
+                return ResourceManager.GetString("AndWhereTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bigs.
         /// </summary>
         internal static string Bigs {
             get {
                 return ResourceManager.GetString("Bigs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to укажите город или почтовый код.
+        /// </summary>
+        internal static string CityAndPostalCode {
+            get {
+                return ResourceManager.GetString("CityAndPostalCode", resourceCulture);
             }
         }
         
@@ -88,7 +124,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;copy; 2009 Сулжба телепортации грузов &quot;BIGS&quot;.
+        ///   Looks up a localized string similar to Контакный телефон, email.
+        /// </summary>
+        internal static string ContactTelephone {
+            get {
+                return ResourceManager.GetString("ContactTelephone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;copy; 2009 Служба телепортации грузов &quot;BIGS&quot;.
         /// </summary>
         internal static string Copyright {
             get {
@@ -106,11 +151,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Готово.
+        /// </summary>
+        internal static string Done {
+            get {
+                return ResourceManager.GetString("Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите код с картинки.
+        /// </summary>
+        internal static string EnterTheCodeFromThePicture {
+            get {
+                return ResourceManager.GetString("EnterTheCodeFromThePicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Горящее предложение.
         /// </summary>
         internal static string HotOffer {
             get {
                 return ResourceManager.GetString("HotOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дополнительная информация о грузе.
+        /// </summary>
+        internal static string InformationAboutTheCargo {
+            get {
+                return ResourceManager.GetString("InformationAboutTheCargo", resourceCulture);
             }
         }
         
@@ -129,6 +201,24 @@ namespace Resources {
         internal static string Logistics {
             get {
                 return ResourceManager.GetString("Logistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Название компании.
+        /// </summary>
+        internal static string NameOfYourCompany {
+            get {
+                return ResourceManager.GetString("NameOfYourCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пожалуйста, заполните и отправьте форму.
+        /// </summary>
+        internal static string PleaseFillForm {
+            get {
+                return ResourceManager.GetString("PleaseFillForm", resourceCulture);
             }
         }
         
@@ -169,6 +259,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Откуда телепортируем.
+        /// </summary>
+        internal static string TeleportWhereFrom {
+            get {
+                return ResourceManager.GetString("TeleportWhereFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Перевозки.
         /// </summary>
         internal static string Transfers {
@@ -178,11 +277,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Наименование, кол-тво (шт), вес (кг), объем (м3), размеры, LDM.
+        /// </summary>
+        internal static string TypeOfTheCargo {
+            get {
+                return ResourceManager.GetString("TypeOfTheCargo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вакансии.
         /// </summary>
         internal static string Vacancies {
             get {
                 return ResourceManager.GetString("Vacancies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Вы же не робот?).
+        /// </summary>
+        internal static string YouAreNotARobot {
+            get {
+                return ResourceManager.GetString("YouAreNotARobot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Контактное лицо.
+        /// </summary>
+        internal static string YourContacts {
+            get {
+                return ResourceManager.GetString("YourContacts", resourceCulture);
             }
         }
     }
