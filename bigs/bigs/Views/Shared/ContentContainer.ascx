@@ -15,7 +15,16 @@
         string contentName = string.Empty;
         string contentUrl = (string)ViewData["contentUrl"];
         if (contentUrl != null)
-            contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl /*&& contentNames.Language == SystemSettings.CurrentLanguage*/ select contentNames.Name).First();
+        {
+            SiteContent content = (from contents in context.SiteContent where contents.Url == contentUrl /*&& contentNames.Language == SystemSettings.CurrentLanguage*/ select contents).First();
+            contentName = content.Name;
+            if (content.Language != SystemSettings.CurrentLanguage)
+            {
+                SetLanguage(content.Language, controller, contentUrl);
+            }
+            //contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl /*&& contentNames.Language == SystemSettings.CurrentLanguage*/ select contentNames.Name).First();
+        }   
+                
     
     
 
