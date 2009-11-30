@@ -229,9 +229,14 @@
     <Content Include="Content\images\ru\teleportred.gif" />
     <Content Include="Content\images\ru\video.gif" />
     <Content Include="Content\images\slider.gif" />
+    <Content Include="Content\images\textboxleftside.gif" />
+    <Content Include="Content\images\textboxrightside.gif" />
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
+    <Content Include="Content\images\yellowboxbottom.gif" />
+    <Content Include="Content\images\yellowboxtop.gif" />
     <Content Include="Content\Objects\phrase.png" />
+    <Content Include="Content\Request.css" />
     <Content Include="Content\Slider.css" />
     <Content Include="Default.htm" />
     <Content Include="images\jquery-1.2.1.pack.js" />
@@ -257,8 +262,10 @@
     <Content Include="Views\Admin\EditTransfers.aspx" />
     <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
+    <Content Include="Views\Shared\ContentContainer.ascx" />
     <Content Include="Views\Shared\Logo.ascx" />
     <Content Include="Views\Shared\Phrase.ascx" />
+    <Content Include="Views\Shared\Request.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
     <Content Include="Views\Shared\VideoSurveillance.ascx" />
   </ItemGroup>
