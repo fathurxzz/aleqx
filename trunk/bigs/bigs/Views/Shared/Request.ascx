@@ -88,9 +88,6 @@
 </div>
 
 
-
-
-
 <div class="textAreaContainer">
 <div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("TypeOfTheCargo")%>)</div>
