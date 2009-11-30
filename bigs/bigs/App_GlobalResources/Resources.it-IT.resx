@@ -120,26 +120,56 @@
   <data name="About" xml:space="preserve">
     <value>AboutIt</value>
   </data>
+  <data name="AboutTheCargo" xml:space="preserve">
+    <value>Della merce</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>Di Voi</value>
+  </data>
+  <data name="AndWhereTo" xml:space="preserve">
+    <value>Luogo di destinazione</value>
+  </data>
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
+  </data>
+  <data name="CityAndPostalCode" xml:space="preserve">
+    <value>(citta' o codice postale)</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contatti</value>
   </data>
+  <data name="ContactTelephone" xml:space="preserve">
+    <value>Telefono da contattare, e-mail</value>
+  </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
+    <value>Compila e inviaci la richiesta</value>
   </data>
   <data name="Documents" xml:space="preserve">
     <value>Documenti</value>
   </data>
+  <data name="Done" xml:space="preserve">
+    <value>Pronti</value>
+  </data>
+  <data name="EnterTheCodeFromThePicture" xml:space="preserve">
+    <value>Fate entrare il codice dal disegno</value>
+  </data>
   <data name="HotOffer" xml:space="preserve">
     <value>HotOfferit</value>
+  </data>
+  <data name="InformationAboutTheCargo" xml:space="preserve">
+    <value>Dati della merce</value>
   </data>
   <data name="Insurance" xml:space="preserve">
     <value>Insurance</value>
   </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistics</value>
+  </data>
+  <data name="NameOfYourCompany" xml:space="preserve">
+    <value>Nome di Vostra compagnia</value>
+  </data>
+  <data name="PleaseFillForm" xml:space="preserve">
+    <value>Compila e inviaci la richiesta</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>Richiesta</value>
@@ -153,10 +183,22 @@
   <data name="TeleportSession" xml:space="preserve">
     <value>TeleportSessionit</value>
   </data>
+  <data name="TeleportWhereFrom" xml:space="preserve">
+    <value>Luogo di carico</value>
+  </data>
   <data name="Transfers" xml:space="preserve">
     <value>Transfers</value>
   </data>
+  <data name="TypeOfTheCargo" xml:space="preserve">
+    <value>tipo (colli, bancali), peso (kg), volume (m3), dimensioni, metri lineari</value>
+  </data>
   <data name="Vacancies" xml:space="preserve">
     <value>Posti Vacanti</value>
+  </data>
+  <data name="YouAreNotARobot" xml:space="preserve">
+    <value>(Lei non e' robot, vero?)</value>
+  </data>
+  <data name="YourContacts" xml:space="preserve">
+    <value>Vostri contatti</value>
   </data>
 </root>

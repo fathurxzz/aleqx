@@ -120,26 +120,56 @@
   <data name="About" xml:space="preserve">
     <value>О компании</value>
   </data>
+  <data name="AboutTheCargo" xml:space="preserve">
+    <value>О грузе</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>О Вас</value>
+  </data>
+  <data name="AndWhereTo" xml:space="preserve">
+    <value>Куда (город, почтовый код)</value>
+  </data>
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
+  </data>
+  <data name="CityAndPostalCode" xml:space="preserve">
+    <value>укажите город или почтовый код</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Контакты</value>
   </data>
+  <data name="ContactTelephone" xml:space="preserve">
+    <value>Контакный телефон, email</value>
+  </data>
   <data name="Copyright" xml:space="preserve">
-    <value>&amp;copy; 2009 Сулжба телепортации грузов "BIGS"</value>
+    <value>&amp;copy; 2009 Служба телепортации грузов "BIGS"</value>
   </data>
   <data name="Documents" xml:space="preserve">
     <value>Ценные бумаги</value>
   </data>
+  <data name="Done" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="EnterTheCodeFromThePicture" xml:space="preserve">
+    <value>Введите код с картинки</value>
+  </data>
   <data name="HotOffer" xml:space="preserve">
     <value>Горящее предложение</value>
+  </data>
+  <data name="InformationAboutTheCargo" xml:space="preserve">
+    <value>Дополнительная информация о грузе</value>
   </data>
   <data name="Insurance" xml:space="preserve">
     <value>Страхование</value>
   </data>
   <data name="Logistics" xml:space="preserve">
     <value>Складская логистика</value>
+  </data>
+  <data name="NameOfYourCompany" xml:space="preserve">
+    <value>Название компании</value>
+  </data>
+  <data name="PleaseFillForm" xml:space="preserve">
+    <value>Пожалуйста, заполните и отправьте форму</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>Запрос</value>
@@ -153,10 +183,22 @@
   <data name="TeleportSession" xml:space="preserve">
     <value>Сеанс телепортации</value>
   </data>
+  <data name="TeleportWhereFrom" xml:space="preserve">
+    <value>Откуда телепортируем</value>
+  </data>
   <data name="Transfers" xml:space="preserve">
     <value>Перевозки</value>
   </data>
+  <data name="TypeOfTheCargo" xml:space="preserve">
+    <value>Наименование, кол-тво (шт), вес (кг), объем (м3), размеры, LDM</value>
+  </data>
   <data name="Vacancies" xml:space="preserve">
     <value>Вакансии</value>
+  </data>
+  <data name="YouAreNotARobot" xml:space="preserve">
+    <value>(Вы же не робот?)</value>
+  </data>
+  <data name="YourContacts" xml:space="preserve">
+    <value>Контактное лицо</value>
   </data>
 </root>

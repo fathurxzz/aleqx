@@ -120,11 +120,26 @@
   <data name="About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="AboutTheCargo" xml:space="preserve">
+    <value>About the cargo</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>About you</value>
+  </data>
+  <data name="AndWhereTo" xml:space="preserve">
+    <value>... and where to</value>
+  </data>
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
   </data>
+  <data name="CityAndPostalCode" xml:space="preserve">
+    <value>(city and postal code)</value>
+  </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contacts</value>
+  </data>
+  <data name="ContactTelephone" xml:space="preserve">
+    <value>Contact telephone, email</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
@@ -132,14 +147,29 @@
   <data name="Documents" xml:space="preserve">
     <value>Documents</value>
   </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="EnterTheCodeFromThePicture" xml:space="preserve">
+    <value>Enter the code from the picture below</value>
+  </data>
   <data name="HotOffer" xml:space="preserve">
     <value>HotOffer</value>
+  </data>
+  <data name="InformationAboutTheCargo" xml:space="preserve">
+    <value>Information about the cargo</value>
   </data>
   <data name="Insurance" xml:space="preserve">
     <value>Insurance</value>
   </data>
   <data name="Logistics" xml:space="preserve">
     <value>Logistics</value>
+  </data>
+  <data name="NameOfYourCompany" xml:space="preserve">
+    <value>Name of your company</value>
+  </data>
+  <data name="PleaseFillForm" xml:space="preserve">
+    <value>Please, fill and send the form</value>
   </data>
   <data name="Request" xml:space="preserve">
     <value>Request</value>
@@ -153,10 +183,22 @@
   <data name="TeleportSession" xml:space="preserve">
     <value>TeleportSession</value>
   </data>
+  <data name="TeleportWhereFrom" xml:space="preserve">
+    <value>Teleport where from...</value>
+  </data>
   <data name="Transfers" xml:space="preserve">
     <value>Transfers</value>
   </data>
+  <data name="TypeOfTheCargo" xml:space="preserve">
+    <value>type of the cargo, quantity (units, pallets), weight (kg), volume (m3), dimensions, LDM </value>
+  </data>
   <data name="Vacancies" xml:space="preserve">
     <value>Vacancies</value>
+  </data>
+  <data name="YouAreNotARobot" xml:space="preserve">
+    <value>(You are not a robot, are you?)</value>
+  </data>
+  <data name="YourContacts" xml:space="preserve">
+    <value>Your contacts</value>
   </data>
 </root>
