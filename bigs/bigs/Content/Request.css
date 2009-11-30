@@ -34,6 +34,7 @@
     width:285px;
     margin-top:20px;
     margin-bottom:20px;
+    
 }
 .textBoxTitle{color:#2F2F27; font-weight:bold;}
 .textBoxSubTitle{color:#635E65; font-weight:bold;}
@@ -43,6 +44,8 @@
     background-repeat:no-repeat;
     width:13px;
     height:22px;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
 }
 
 .textBoxLeftSide
@@ -65,6 +68,9 @@
     border-bottom:solid 1px black;
     height:18px;
     width:257px;
+    /*border:solid 1px black;*/
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
 }
 
 .yellowBoxTitle
