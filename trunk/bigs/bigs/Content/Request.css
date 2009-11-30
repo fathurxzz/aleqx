@@ -32,8 +32,9 @@
 .textBoxContainer
 {
     width:285px;
-    margin-top:20px;
-    margin-bottom:20px;
+    /*margin-top:20px;
+    margin-bottom:20px;*/
+     height:60px;
     
 }
 .textBoxTitle{color:#2F2F27; font-weight:bold;}
@@ -63,11 +64,8 @@
     border-right-style:none;
     border-top:solid 1px black;
     border-bottom:solid 1px black;
-    height:20px;
+    height:18px;
     width:257px;
-    /*border:solid 1px black;*/
-    margin:0px 0px 0px 0px;
-    padding:0px 0px 0px 0px;
     float:left;
     display:block;
 }
@@ -77,13 +75,17 @@
     font-size:16px;
     font-weight:bold;
     color:#C9C997;
-    /*margin-top:20px;*/
     margin-bottom:30px;
 }
 
 
 
-.textAreaContainer{margin-bottom:20px;}
+.textAreaContainer
+{
+    margin-bottom:20px;
+   
+                   
+                   }
 .textAreaTop
 {
     background-image:url('images/textareatop.gif');

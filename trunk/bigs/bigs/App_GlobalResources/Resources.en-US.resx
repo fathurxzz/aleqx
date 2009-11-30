@@ -142,7 +142,7 @@
     <value>Contact telephone, email</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright</value>
+    <value>&amp;copy; Cargo teleportation service</value>
   </data>
   <data name="Documents" xml:space="preserve">
     <value>Documents</value>
@@ -200,5 +200,11 @@
   </data>
   <data name="YourContacts" xml:space="preserve">
     <value>Your contacts</value>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>design</value>
+  </data>
+  <data name="Mbrand" xml:space="preserve">
+    <value>M.brand</value>
   </data>
 </root>

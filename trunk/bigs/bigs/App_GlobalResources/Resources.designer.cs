@@ -142,6 +142,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to дизайн.
+        /// </summary>
+        internal static string Design {
+            get {
+                return ResourceManager.GetString("Design", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ценные бумаги.
         /// </summary>
         internal static string Documents {
@@ -201,6 +210,15 @@ namespace Resources {
         internal static string Logistics {
             get {
                 return ResourceManager.GetString("Logistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M.бренд.
+        /// </summary>
+        internal static string Mbrand {
+            get {
+                return ResourceManager.GetString("Mbrand", resourceCulture);
             }
         }
         
