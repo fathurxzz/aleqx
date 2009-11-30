@@ -64,7 +64,7 @@
     border-right-style:none;
     border-top:solid 1px black;
     border-bottom:solid 1px black;
-    height:18px;
+    height:20px;
     width:257px;
     float:left;
     display:block;
@@ -102,6 +102,7 @@
     width:284px;
     height:11px;
     background-repeat:no-repeat;
+    display:block;
     float:left;
 }
 .textArea
@@ -110,7 +111,7 @@
     border-bottom-style:none;
     border-left:solid 1px #010101;
     border-right:solid 1px #010101;
-    width:280px;
+    width:282px;
     overflow:auto;
     display:block;
     float:left;
