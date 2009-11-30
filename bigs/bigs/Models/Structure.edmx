@@ -8,6 +8,7 @@
         <EntityContainer Name="bigskie_contentModelStoreContainer">
           <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.Store.ButtonStatuses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.Store.ImageContent" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Request" EntityType="bigskie_contentModel.Store.Request" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteContent" EntityType="bigskie_contentModel.Store.SiteContent" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_SiteContent_SiteContent" Association="bigskie_contentModel.Store.FK_SiteContent_SiteContent">
             <End Role="SiteContent" EntitySet="SiteContent" />
@@ -31,6 +32,19 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="255" />
+          <Property Name="ClientName" Type="varchar" MaxLength="255" />
+          <Property Name="PhoneEmail" Type="varchar" MaxLength="255" />
+          <Property Name="TeleportFrom" Type="varchar" MaxLength="255" />
+          <Property Name="TeleportTo" Type="varchar" MaxLength="255" />
+          <Property Name="CargoInfo" Type="text" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="SiteContent">
           <Key>
@@ -69,7 +83,8 @@
           <AssociationSet Name="FK_SiteContent_SiteContent" Association="bigskie_contentModel.FK_SiteContent_SiteContent">
             <End Role="SiteContent" EntitySet="SiteContent" />
             <End Role="SiteContent1" EntitySet="SiteContent" /></AssociationSet>
-          <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.ImageContent" /></EntityContainer>
+          <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.ImageContent" />
+          <EntitySet Name="Request" EntityType="bigskie_contentModel.Request" /></EntityContainer>
         <EntityType Name="ButtonStatuses">
           <Key>
             <PropertyRef Name="Id" />
@@ -102,7 +117,18 @@
           <Key>
             <PropertyRef Name="FileName" /></Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="FileName" Type="String" Nullable="false" /></EntityType></Schema>
+          <Property Name="FileName" Type="String" Nullable="false" /></EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" Nullable="true" />
+          <Property Name="ClientName" Type="String" Nullable="true" />
+          <Property Name="PhoneEmail" Type="String" Nullable="true" />
+          <Property Name="TeleportFrom" Type="String" Nullable="true" />
+          <Property Name="TeleportTo" Type="String" Nullable="true" />
+          <Property Name="CargoInfo" Type="String" Nullable="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -145,6 +171,17 @@
             <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.ImageContent)">
               <MappingFragment StoreEntitySet="ImageContent">
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.Request)">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CargoInfo" ColumnName="CargoInfo" />
+                <ScalarProperty Name="TeleportTo" ColumnName="TeleportTo" />
+                <ScalarProperty Name="TeleportFrom" ColumnName="TeleportFrom" />
+                <ScalarProperty Name="PhoneEmail" ColumnName="PhoneEmail" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -171,6 +208,7 @@
           <ConnectorPoint PointX="3.2819230769230767" PointY="3.7494921874999996" />
           <ConnectorPoint PointX="3.7284615384615383" PointY="3.7494921874999996" />
           <ConnectorPoint PointX="3.7284615384615383" PointY="3.4994921875" /></AssociationConnector>
-        <EntityTypeShape EntityType="bigskie_contentModel.ImageContent" Width="1.5" PointX="5.875" PointY="1.125" Height="1.2636116536458335" /></Diagram></edmx:Diagrams>
+        <EntityTypeShape EntityType="bigskie_contentModel.ImageContent" Width="1.5" PointX="5.875" PointY="1.125" Height="1.2636116536458335" />
+        <EntityTypeShape EntityType="bigskie_contentModel.Request" Width="1.5" PointX="0.75" PointY="4.75" Height="2.0853483072916674" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

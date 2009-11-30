@@ -3,6 +3,11 @@
 
 <link href="/Content/Request.css" rel="stylesheet" type="text/css" />
 
+
+<%using (Html.BeginForm("SaveRequest", "Requests", new { contentUrl = Html.ResourceString("Request") }, FormMethod.Post, null))
+{
+    %>
+
 <div id="requestTitle">
 <%=Html.ResourceString("PleaseFillForm")%>
 </div>
@@ -90,6 +95,7 @@
 <div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("TypeOfTheCargo")%>)</div>
 <div class="textAreaTop"></div>
+    <%=Html.TextArea("cargoInformation") %>
     <textarea cols="10" rows="10" class="textArea"></textarea>
 <div class="textAreaBottom"></div>
 </div>
@@ -101,3 +107,4 @@
 </div>
 <div class="yellowBoxContainerBottom"></div>
 </div>
+<%}%>

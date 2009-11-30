@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("bigskie_contentModel", "FK_SiteContent_SiteContent", "SiteContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(bigs.Models.SiteContent), "SiteContent1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(bigs.Models.SiteContent))]
 
 // Original file name:
-// Generation date: 26.11.2009 23:44:15
+// Generation date: 30.11.2009 21:49:18
 namespace bigs.Models
 {
     
@@ -92,6 +92,21 @@ namespace bigs.Models
         }
         private global::System.Data.Objects.ObjectQuery<ImageContent> _ImageContent;
         /// <summary>
+        /// There are no comments for Request in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<Request> Request
+        {
+            get
+            {
+                if ((this._Request == null))
+                {
+                    this._Request = base.CreateQuery<Request>("[Request]");
+                }
+                return this._Request;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<Request> _Request;
+        /// <summary>
         /// There are no comments for ButtonStatuses in the schema.
         /// </summary>
         public void AddToButtonStatuses(ButtonStatuses buttonStatuses)
@@ -111,6 +126,13 @@ namespace bigs.Models
         public void AddToImageContent(ImageContent imageContent)
         {
             base.AddObject("ImageContent", imageContent);
+        }
+        /// <summary>
+        /// There are no comments for Request in the schema.
+        /// </summary>
+        public void AddToRequest(Request request)
+        {
+            base.AddObject("Request", request);
         }
     }
     /// <summary>
@@ -641,5 +663,213 @@ namespace bigs.Models
         private string _FileName;
         partial void OnFileNameChanging(string value);
         partial void OnFileNameChanged();
+    }
+    /// <summary>
+    /// There are no comments for bigskie_contentModel.Request in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="bigskie_contentModel", Name="Request")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Request : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Request object.
+        /// </summary>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="date">Initial value of Date.</param>
+        public static Request CreateRequest(int id, global::System.DateTime date)
+        {
+            Request request = new Request();
+            request.Id = id;
+            request.Date = date;
+            return request;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property CompanyName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string CompanyName
+        {
+            get
+            {
+                return this._CompanyName;
+            }
+            set
+            {
+                this.OnCompanyNameChanging(value);
+                this.ReportPropertyChanging("CompanyName");
+                this._CompanyName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("CompanyName");
+                this.OnCompanyNameChanged();
+            }
+        }
+        private string _CompanyName;
+        partial void OnCompanyNameChanging(string value);
+        partial void OnCompanyNameChanged();
+        /// <summary>
+        /// There are no comments for Property ClientName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string ClientName
+        {
+            get
+            {
+                return this._ClientName;
+            }
+            set
+            {
+                this.OnClientNameChanging(value);
+                this.ReportPropertyChanging("ClientName");
+                this._ClientName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ClientName");
+                this.OnClientNameChanged();
+            }
+        }
+        private string _ClientName;
+        partial void OnClientNameChanging(string value);
+        partial void OnClientNameChanged();
+        /// <summary>
+        /// There are no comments for Property PhoneEmail in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneEmail
+        {
+            get
+            {
+                return this._PhoneEmail;
+            }
+            set
+            {
+                this.OnPhoneEmailChanging(value);
+                this.ReportPropertyChanging("PhoneEmail");
+                this._PhoneEmail = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("PhoneEmail");
+                this.OnPhoneEmailChanged();
+            }
+        }
+        private string _PhoneEmail;
+        partial void OnPhoneEmailChanging(string value);
+        partial void OnPhoneEmailChanged();
+        /// <summary>
+        /// There are no comments for Property TeleportFrom in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string TeleportFrom
+        {
+            get
+            {
+                return this._TeleportFrom;
+            }
+            set
+            {
+                this.OnTeleportFromChanging(value);
+                this.ReportPropertyChanging("TeleportFrom");
+                this._TeleportFrom = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TeleportFrom");
+                this.OnTeleportFromChanged();
+            }
+        }
+        private string _TeleportFrom;
+        partial void OnTeleportFromChanging(string value);
+        partial void OnTeleportFromChanged();
+        /// <summary>
+        /// There are no comments for Property TeleportTo in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string TeleportTo
+        {
+            get
+            {
+                return this._TeleportTo;
+            }
+            set
+            {
+                this.OnTeleportToChanging(value);
+                this.ReportPropertyChanging("TeleportTo");
+                this._TeleportTo = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TeleportTo");
+                this.OnTeleportToChanged();
+            }
+        }
+        private string _TeleportTo;
+        partial void OnTeleportToChanging(string value);
+        partial void OnTeleportToChanged();
+        /// <summary>
+        /// There are no comments for Property CargoInfo in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string CargoInfo
+        {
+            get
+            {
+                return this._CargoInfo;
+            }
+            set
+            {
+                this.OnCargoInfoChanging(value);
+                this.ReportPropertyChanging("CargoInfo");
+                this._CargoInfo = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("CargoInfo");
+                this.OnCargoInfoChanged();
+            }
+        }
+        private string _CargoInfo;
+        partial void OnCargoInfoChanging(string value);
+        partial void OnCargoInfoChanged();
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this.ReportPropertyChanging("Date");
+                this._Date = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Date");
+                this.OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
     }
 }
