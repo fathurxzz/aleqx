@@ -207,4 +207,7 @@
   <data name="Mbrand" xml:space="preserve">
     <value>M.бренд</value>
   </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Выйти из системы администрирования</value>
+  </data>
 </root>

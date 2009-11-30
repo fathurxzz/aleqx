@@ -207,4 +207,7 @@
   <data name="Mbrand" xml:space="preserve">
     <value>M.brand</value>
   </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>LogOff</value>
+  </data>
 </root>

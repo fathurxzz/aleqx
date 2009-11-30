@@ -38,13 +38,22 @@
             <% Html.RenderPartial("Logo");%>
         </div>
         <div id="headerRight">
+        <%if (Request.IsAuthenticated)
+          { %>
+        <div style="float:left" id="logOut"><%= Html.ResourceActionLink("LogOff", "LogOff", "Account")%></div>
+        <%} %>
             <div id="languageBar">
+            
                 <% Html.RenderPartial("LanguageBar");%>
             </div>
             <div id="phrase">
              <%if (Request.IsAuthenticated)
              { %>
+             
+                
+             
                 <div class="adminEditLink">
+                    
                     
                     
                     

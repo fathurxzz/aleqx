@@ -1,1 +1,10 @@
 ﻿.adminEditLink a, .adminLink{color:Red;}
+
+
+#logOut a, #logOut
+{
+    color:Red;   
+    font-size:13px;
+    font-weight:bold;
+    padding-left:50px;
+}
