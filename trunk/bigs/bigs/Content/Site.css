@@ -27,9 +27,9 @@
     width:151px;
     height:256px;
 }
-.rulogo { background-image:url('images/rulogo.gif'); }
-.enlogo { background-image:url('images/enlogo.gif'); }
-.itlogo { background-image:url('images/itlogo.gif'); }
+.rulogo { background-image:url('images/ru/logo.gif'); }
+.enlogo { background-image:url('images/en/logo.gif'); }
+.itlogo { background-image:url('images/it/logo.gif'); }
 
 
 #connectionSign
@@ -41,21 +41,21 @@
 }
 .ruconnection
 {
-    background-image:url('images/ruconnection.gif');
+    background-image:url('images/ru/connection.gif');
     width:110px;
     margin-left:19px;
     
 }
 .enconnection
 {
-    background-image:url('images/enconnection.gif');
+    background-image:url('images/en/connection.gif');
     width:131px;
     margin-left:10px;
     
 }
 .itconnection
 {
-    background-image:url('images/itconnection.gif');
+    background-image:url('images/it/connection.gif');
     width:131px;
     margin-left:10px;
 }
@@ -264,6 +264,6 @@ h2 { color:Red; }
     height:90px;
 }
 
-.ruvideo{background-image:url('images/ruvideo.gif');}
-.envideo{background-image:url('images/envideo.gif');}
-.itvideo{background-image:url('images/itvideo.gif');}
+.ruvideo{background-image:url('images/ru/video.gif');}
+.envideo{background-image:url('images/en/video.gif');}
+.itvideo{background-image:url('images/it/video.gif');}
