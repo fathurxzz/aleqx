@@ -15,6 +15,7 @@ namespace bigs.Controllers
 
         public ActionResult Index(string contentUrl)
         {
+            /*
             if (!string.IsNullOrEmpty(contentUrl))
             {
                 ViewData["contentUrl"] = contentUrl;
@@ -24,6 +25,8 @@ namespace bigs.Controllers
                 ViewData["keywords"] = content.Keywords;
                 ViewData["description"] = content.Description;
             }
+            */
+
             return View();
         }
     }
