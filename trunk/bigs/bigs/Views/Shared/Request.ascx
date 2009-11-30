@@ -96,8 +96,8 @@
 <div class="textAreaBottom"></div>
 </div>
 
-<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%></div>
-<div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>
+<!--<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>-->
 <input type="submit" id="requestSubmitButton" value="<%=Html.ResourceString("Done")%>" />
 
 </div>
