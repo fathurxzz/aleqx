@@ -92,8 +92,7 @@
 <div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("TypeOfTheCargo")%>)</div>
 <div class="textAreaTop"></div>
-    <%=Html.TextArea("cargoInformation") %>
-    <textarea cols="10" rows="10" class="textArea"></textarea>
+    <%=Html.TextArea("cargoInformation", new { @class = "textArea" })%>
 <div class="textAreaBottom"></div>
 </div>
 
