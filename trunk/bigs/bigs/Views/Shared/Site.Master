@@ -28,23 +28,8 @@
     if (HttpContext.Current.Request.Cookies["cookie_fuckie"] == null)
         Response.Redirect("Default.htm");
 
-
     string controller = (string)ViewContext.RouteData.Values["controller"];
     string contentUrl = (string)ViewData["contentUrl"];
-    //if (contentUrl != null)
-    //{
-    //    using (bigs.Models.DataStorage context = new bigs.Models.DataStorage())
-    //    {
-    //        bigs.Models.SiteContent content = (from contents in context.SiteContent where contents.Url == contentUrl /*&& contentNames.Language == SystemSettings.CurrentLanguage*/ select contents).First();
-    //        if (content.Language != SystemSettings.CurrentLanguage)
-    //        {
-    //            Response.Redirect("/Languages/SetLanguage?language=" + content.Language + "&contentController=" + controller + "&contentUrl=" + contentUrl); 
-    //            //SetLanguage(content.Language, controller, contentUrl);
-    //        }
-    //        //contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl /*&& contentNames.Language == SystemSettings.CurrentLanguage*/ select contentNames.Name).First();
-    //    }
-    //}
-    
 %>
 
 <div id="main">
