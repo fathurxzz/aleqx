@@ -10,16 +10,23 @@
         <%= Html.Hidden("controllerName") %>
         <%= Html.Hidden("contentUrl") %>
         
-        Title
-        <%= Html.TextArea("title") %>
-        <br />
-        Keywords
-        <%= Html.TextArea("keywords") %>
-        <br />
-        Description
-        <%= Html.TextArea("description") %>
-        <br />
-        <%= Html.TextArea("text") %>
+        <table>
+        <tr>
+            <td valign="middle" align="right">Title:</td>
+            <td align="left"><%= Html.TextArea("editTitle", new { cols="50", rows="2" })%></td>
+        </tr>
+        <tr>
+            <td valign="middle" align="right">Keywords:</td>
+            <td align="left"><%= Html.TextArea("keywords", new { cols = "50", rows = "5" })%></td>
+        </tr>
+        <tr>
+            <td valign="middle" align="right">Description:</td>
+            <td align="left"><%= Html.TextArea("description", new { cols = "50", rows = "5" })%></td>
+        </tr>
+        <tr>
+            <td colspan="2"><%= Html.TextArea("text")%></td>
+        </tr>
+        </table>
         <input type="submit" value="Сохранить" />
     <%} %>
 

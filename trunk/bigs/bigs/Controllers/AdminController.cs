@@ -26,7 +26,7 @@ namespace bigs.Controllers
             SiteContent content = Utils.GetContent(contentUrl);
             ViewData["controllerName"] = controllerName;
             ViewData["text"] = content.Text;
-            ViewData["title"] = content.Title;
+            ViewData["editTitle"] = content.Title;
             ViewData["keywords"] = content.Keywords;
             ViewData["description"] = content.Description;
             ViewData["contentUrl"] = contentUrl;
@@ -34,9 +34,9 @@ namespace bigs.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditText(string text, string title, string keywords, string description, string controllerName, string contentUrl)
+        public ActionResult EditText(string text, string editTitle, string keywords, string description, string controllerName, string contentUrl)
         {
-            Utils.SetText(contentUrl, HttpUtility.HtmlDecode(text), title, keywords, description); ;
+            Utils.SetText(contentUrl, HttpUtility.HtmlDecode(text), editTitle, keywords, description); ;
             return RedirectToAction("Index", controllerName, new { contentUrl = contentUrl });
         }
 
