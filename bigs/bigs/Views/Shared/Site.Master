@@ -111,7 +111,7 @@
         <%=Html.ResourceString("Copyright")%>
     </div>
     <div id="footerRight">
-        <a href="http://www.M-brand.com.ua" title="M.бренд">M.бренд&nbsp;|&nbsp;<font class="mark">дизайн</font></a>
+        <a href="http://www.M-brand.com.ua" title="M.бренд"><%=Html.ResourceString("Mbrand")%>&nbsp;|&nbsp;<font class="mark"><%=Html.ResourceString("Design")%></font></a>
     </div>
     <div id="footerBottom"></div>
     </div>

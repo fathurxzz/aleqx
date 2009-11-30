@@ -201,4 +201,10 @@
   <data name="YourContacts" xml:space="preserve">
     <value>Контактное лицо</value>
   </data>
+  <data name="Design" xml:space="preserve">
+    <value>дизайн</value>
+  </data>
+  <data name="Mbrand" xml:space="preserve">
+    <value>M.бренд</value>
+  </data>
 </root>
