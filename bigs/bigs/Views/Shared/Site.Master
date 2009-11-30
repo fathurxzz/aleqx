@@ -40,7 +40,7 @@
         <div id="headerRight">
         <%if (Request.IsAuthenticated)
           { %>
-        <div style="float:left" id="logOut"><%= Html.ResourceActionLink("LogOff", "LogOff", "Account")%></div>
+        <div style="float:left" id="logOut"><%= Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account")%></div>
         <%} %>
             <div id="languageBar">
             
@@ -50,12 +50,7 @@
              <%if (Request.IsAuthenticated)
              { %>
              
-                
-             
                 <div class="adminEditLink">
-                    
-                    
-                    
                     
                     <%=Html.ActionLink("Редактировать", "EditPicture", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
                 
