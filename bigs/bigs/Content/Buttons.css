@@ -1,23 +1,23 @@
 ﻿#buttonContainer{}
 #buttonContainer a{display:block;width:150px;height:34px;background-position: 0px 0px;margin-bottom:30px;}
 
-a.ruhotred{background-image:url('images/ruhotgray.gif');}
-a.rusellred{background-image:url('images/rusellgray.gif');}
-a.ruteleportred{background-image:url('images/ruteleportgray.gif');}
-a.enhotred{background-image:url('images/enhotgray.gif');}
-a.ensellred{background-image:url('images/ensellgray.gif');}
-a.enteleportred{background-image:url('images/enteleportgray.gif');}
-a.ithotred{background-image:url('images/ithotgray.gif');}
-a.itsellred{background-image:url('images/itsellgray.gif');}
-a.itteleportred{background-image:url('images/itteleportgray.gif');}
+a.ruhotred{background-image:url('images/ru/hotgray.gif');}
+a.rusellred{background-image:url('images/ru/sellgray.gif');}
+a.ruteleportred{background-image:url('images/ru/teleportgray.gif');}
+a.enhotred{background-image:url('images/en/hotgray.gif');}
+a.ensellred{background-image:url('images/en/sellgray.gif');}
+a.enteleportred{background-image:url('images/en/teleportgray.gif');}
+a.ithotred{background-image:url('images/it/hotgray.gif');}
+a.itsellred{background-image:url('images/it/sellgray.gif');}
+a.itteleportred{background-image:url('images/it/teleportgray.gif');}
 
-a.ruhotgreen{background-image:url('images/ruhotgreen.gif');}
-a.rusellgreen{background-image:url('images/rusellgreen.gif');}
-a.ruteleportgreen{background-image:url('images/ruteleportgreen.gif');}
-a.enhotgreen{background-image:url('images/enhotgreen.gif');}
-a.ensellgreen{background-image:url('images/ensellgreen.gif');}
-a.enteleportgreen{background-image:url('images/enteleportgreen.gif');}
-a.ithotgreen{background-image:url('images/ithotgreen.gif');}
-a.itsellgreen{background-image:url('images/itsellgreen.gif');}
-a.itteleportgreen{background-image:url('images/itteleportgreen.gif');}
+a.ruhotgreen{background-image:url('images/ru/hotgreen.gif');}
+a.rusellgreen{background-image:url('images/ru/sellgreen.gif');}
+a.ruteleportgreen{background-image:url('images/ru/teleportgreen.gif');}
+a.enhotgreen{background-image:url('images/en/hotgreen.gif');}
+a.ensellgreen{background-image:url('images/en/sellgreen.gif');}
+a.enteleportgreen{background-image:url('images/en/teleportgreen.gif');}
+a.ithotgreen{background-image:url('images/it/hotgreen.gif');}
+a.itsellgreen{background-image:url('images/it/sellgreen.gif');}
+a.itteleportgreen{background-image:url('images/it/teleportgreen.gif');}
 
