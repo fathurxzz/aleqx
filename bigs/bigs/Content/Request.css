@@ -1,0 +1,68 @@
+﻿.yellowBoxContainerTop, .yellowBoxContainerBottom
+{
+    width:346px;
+    height:10px;
+    background-repeat:no-repeat;
+}
+.yellowBoxContainerTop
+{
+    background-image:url('images/yellowboxtop.gif');
+    background-position:bottom;
+}
+.yellowBoxContainerBottom
+{
+    background-image:url('images/yellowboxbottom.gif');
+    background-position:top;
+}
+
+.innerYellowBoxContainer
+{
+    margin-left:1px;
+    background-color:#FFFFCE;
+    width:304px;
+    padding:20px;
+}
+
+.yellowBoxContainer
+{
+    margin-left:110px;
+}
+
+.textBoxContainer
+{
+    
+}
+.textBoxCaption
+{
+    
+}
+
+.textBoxLeftSide,.textBoxRightSide
+{
+    background-repeat:no-repeat;
+    width:13px;
+    height:22px;
+}
+
+.textBoxLeftSide
+{
+    background-image:url('images/textboxleftside.gif');
+    float:left;
+}
+
+.textBoxRightSide
+{
+    background-image:url('images/textboxrightside.gif');
+    float:right;
+}
+
+.textBox
+{
+    border-left-style:none;
+    border-right-style:none;
+    border-top:solid 1px black;
+    border-bottom:solid 1px black;
+    height:18px;
+    width:276px;
+    
+}

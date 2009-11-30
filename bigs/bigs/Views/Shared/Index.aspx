@@ -12,33 +12,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-
-<div id="contentContainer">
-<div id="contentContainerTop"></div>
-<div id="innerContentContainer">
-<%= ViewData["text"]%>
-
-<%
-//    using (DataStorage context = new DataStorage())
-//    {
-//        string contentName = string.Empty;
-//        string contentUrl = (string)ViewData["contentUrl"];
-//        if (contentUrl != null)
-//            contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
-    
-    
-
-//if ( contentName.ToLower()== "transfers")
-//{
-    %>
-    <% //Html.RenderPartial("CargoTeleport");%>
-    <%
-//}
-//        }
-%>
-</div>
-<div id="contentContainerBottom"></div>
-</div>
+    <% Html.RenderPartial("ContentContainer");%>
 
 </asp:Content>
 

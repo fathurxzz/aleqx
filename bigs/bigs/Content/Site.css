@@ -219,8 +219,6 @@ h2 { color:Red; }
 {
     background-image:url('images/topmaincontainer.gif');
     background-position:bottom;
-    
-    
 }
 #contentContainerBottom
 {
@@ -239,16 +237,16 @@ h2 { color:Red; }
     background-color:#E9EAEC;
     width:578px;
     padding:30px;
-    
 }
 
-#contentContainer
-{
-    /*border: solid 0px red;*/
-    /*width:640px;*/
-    /*background-color:#E9EAEC;*/
-    /*padding:30px;*/
-}
+#contentContainer {}
+
+
+
+
+
+
+
 
 #title
 {
@@ -267,3 +265,5 @@ h2 { color:Red; }
 .ruvideo{background-image:url('images/ru/video.gif');}
 .envideo{background-image:url('images/en/video.gif');}
 .itvideo{background-image:url('images/it/video.gif');}
+
+
