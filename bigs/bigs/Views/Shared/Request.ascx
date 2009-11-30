@@ -4,9 +4,11 @@
 <div class="yellowBoxContainer">
 <div class="yellowBoxContainerTop"></div>
 <div class="innerYellowBoxContainer">
-О Вас
-<br />
 
+
+<div class="yellowBoxTitle">
+О Вас
+</div>
 
 
 <div class="textBoxContainer">
@@ -16,6 +18,15 @@
         <input type="text" class="textBox" />
     <div class="textBoxRightSide"></div>    
 </div>
+</div>
+
+
+
+<div class="textAreaContainer">
+<div class="textBoxCaption">Название компании</div>
+<div class="textAreaTop"></div>
+    <textarea cols="10" rows="10" class="textArea"></textarea>
+<div class="textAreaBottom"></div>
 </div>
 
 

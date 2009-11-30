@@ -30,7 +30,7 @@
 
 .textBoxContainer
 {
-    
+    width:285px;
 }
 .textBoxCaption
 {
@@ -63,6 +63,45 @@
     border-top:solid 1px black;
     border-bottom:solid 1px black;
     height:18px;
-    width:276px;
+    width:257px;
     
+}
+
+.yellowBoxTitle
+{
+    font-size:16px;
+    font-weight:bold;
+    color:#C9C997;
+    /*margin-top:20px;*/
+    margin-bottom:30px;
+}
+
+
+
+.textAreaContainer{}
+.textAreaTop
+{
+    background-image:url('images/textareatop.gif');
+    background-position:bottom;
+}
+.textAreaBottom
+{
+    background-image:url('images/textareabottom.gif');
+    background-position:top;
+}
+
+.textAreaTop, .textAreaBottom
+{
+    width:284px;
+    height:11px;
+    background-repeat:no-repeat;
+}
+.textArea
+{
+    border-top-style:none;
+    border-bottom-style:none;
+    border-left:solid 1px #010101;
+    border-right:solid 1px #010101;
+    width:280px;
+    overflow:auto;
 }
