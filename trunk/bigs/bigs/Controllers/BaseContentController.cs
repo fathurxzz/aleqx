@@ -13,18 +13,38 @@ namespace bigs.Controllers
         //
         // GET: /BaseContent/
 
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            string contentUrl = filterContext.RouteData.Values["contentUrl"].ToString();
+
+            if (contentUrl != null)
+            {
+                using (bigs.Models.DataStorage context = new bigs.Models.DataStorage())
+                {
+                    SiteContent content = Utils.GetContent(contentUrl);
+                    
+                    if (content.Language != SystemSettings.CurrentLanguage)
+                    {
+                        SystemSettings.CurrentLanguage = content.Language;
+                    }
+                    ViewData["text"] = content.Text;
+                    ViewData["contentUrl"] = contentUrl;
+                    ViewData["text"] = content.Text;
+                    ViewData["title"] = content.Title;
+                    ViewData["keywords"] = content.Keywords;
+                    ViewData["description"] = content.Description;
+                    ViewData["contentName"] = content.Name;
+                }
+            }
+
+
+
+            base.OnActionExecuting(filterContext);
+        }
+
         public ActionResult Index(string contentUrl)
         {
             
-            if (!string.IsNullOrEmpty(contentUrl))
-            {
-                ViewData["contentUrl"] = contentUrl;
-                SiteContent content = Utils.GetContent(contentUrl);
-                ViewData["text"] = content.Text;
-                ViewData["title"] = content.Title;
-                ViewData["keywords"] = content.Keywords;
-                ViewData["description"] = content.Description;
-            }
             
 
             return View();
