@@ -4,7 +4,7 @@
 <link href="/Content/Request.css" rel="stylesheet" type="text/css" />
 
 
-<%using (Html.BeginForm("SaveRequest", "Requests", new { contentUrl = Html.ResourceString("Request") }, FormMethod.Post, null))
+<%using (Html.BeginForm("SendRequest", "Requests", new { contentUrl = Html.ResourceString("Request") }, FormMethod.Post, null))
 {
     %>
 
@@ -29,6 +29,7 @@
         <%=Html.TextBox("nameOfYourCompany", "", new { @class = "textBox" })%>  
     <div class="textBoxRightSide"></div>    
 </div>
+<%= Html.ValidationMessage("companyName", "*", new { @class="validationError"})%>
 </div>
 
 <div class="textBoxContainer">
@@ -38,6 +39,7 @@
         <%=Html.TextBox("yourContacts", "", new { @class = "textBox" })%>  
     <div class="textBoxRightSide"></div>    
 </div>
+<%= Html.ValidationMessage("clientName", "*", new { @class = "validationError" })%>
 </div>
 
 <div class="textBoxContainer">
@@ -96,8 +98,18 @@
 <div class="textAreaBottom"></div>
 </div>
 
-<!--<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%></div>
-<div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>-->
+<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>
+
+
+<%= Html.ValidationMessage("captchaInvalid", "*", new { @class="validationError"})%>
+<br />
+<%= Html.CaptchaImage(50, 160)%><br />
+<%= Html.TextBox("captcha", "")%>
+<br />
+
+
+
 <input type="submit" id="requestSubmitButton" value="<%=Html.ResourceString("Done")%>" />
 
 </div>

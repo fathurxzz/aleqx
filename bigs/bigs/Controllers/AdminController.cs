@@ -111,11 +111,11 @@ namespace bigs.Controllers
                 string imageName = image.FileName;
                 context.DeleteObject(image);
                 context.SaveChanges();
-
+                /*
                 string path = Server.MapPath("~/Content/Objects/" + imageName);
                 if (System.IO.File.Exists(path))
                     System.IO.File.Delete(path);
-
+                */
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
             }
             return RedirectToAction("EditPicture", "Admin", new { contentUrl = contentUrl });

@@ -107,6 +107,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\Mailelper.cs" />
+    <Compile Include="Models\Captcha\CaptchaImage.cs" />
+    <Compile Include="Models\Captcha\CaptchaImageHandler.cs" />
+    <Compile Include="Models\Captcha\CaptchaValidationAttribute.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -266,6 +270,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Structure.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\MailTemplates\newrequest" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -213,4 +213,13 @@
   <data name="Step" xml:space="preserve">
     <value>шаг</value>
   </data>
+  <data name="IncorrectCaptcha" xml:space="preserve">
+    <value>Неправильно введены символы с картинки</value>
+  </data>
+  <data name="IncorrectClientName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncorrectCompanyName" xml:space="preserve">
+    <value />
+  </data>
 </root>

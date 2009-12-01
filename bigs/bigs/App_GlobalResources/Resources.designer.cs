@@ -187,6 +187,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Неправильно введены символы с картинки.
+        /// </summary>
+        internal static string IncorrectCaptcha {
+            get {
+                return ResourceManager.GetString("IncorrectCaptcha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string IncorrectClientName {
+            get {
+                return ResourceManager.GetString("IncorrectClientName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string IncorrectCompanyName {
+            get {
+                return ResourceManager.GetString("IncorrectCompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дополнительная информация о грузе.
         /// </summary>
         internal static string InformationAboutTheCargo {
