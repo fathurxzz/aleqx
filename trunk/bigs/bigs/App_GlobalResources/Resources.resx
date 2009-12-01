@@ -210,4 +210,7 @@
   <data name="LogOff" xml:space="preserve">
     <value>Выйти из системы администрирования</value>
   </data>
+  <data name="Step" xml:space="preserve">
+    <value>шаг</value>
+  </data>
 </root>
