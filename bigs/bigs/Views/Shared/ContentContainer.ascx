@@ -9,17 +9,19 @@
 
 <%
     string controller = (string)ViewContext.RouteData.Values["controller"];
-    
     string contentName = (string)ViewData["contentName"];
-    if ( contentName.ToLower()== "transfers")
+
+    switch (controller.ToLower())
     {
-    %>
-    <% Html.RenderPartial("CargoTeleport");%>
-    <%
-        }
-    if (controller.ToLower() == "requests")
-        Html.RenderPartial("Request");
-        
+        case "requests": Html.RenderPartial("Request");
+            break;
+        case "services":
+            {
+                if (contentName.ToLower() == "services")
+                Html.RenderPartial("CargoTeleport");
+            }
+            break;
+    }
 %>
 </div>
 <div id="contentContainerBottom"></div>

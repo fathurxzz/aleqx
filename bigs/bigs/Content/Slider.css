@@ -1,4 +1,4 @@
-﻿#slider{margin:30px;width:313px;margin-left:110px;}
+﻿#slider{margin:5px 30px 30px 30px;width:313px;margin-left:110px;}
 #sliderContainer{background-color:#FFFFCC;width:250px;margin-left:120px;padding:20px;}
 
 .ui-widget-content{border: 0px solid #dddddd;background-image:url('images/points.gif');background-position:-3px 0px;background-repeat:no-repeat;color: #333333;}
@@ -11,11 +11,13 @@
 
 #steps
 {
-    padding-left:95px;
+    margin-left:90px;
+    margin-top:20px;
+    height:20px;
 }
 
 .step
 {
     float:left;
-    padding-right:45px;    
+    padding-right:35px;    
 }
