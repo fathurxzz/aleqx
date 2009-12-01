@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("bigskie_contentModel", "FK_SiteContent_SiteContent", "SiteContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(bigs.Models.SiteContent), "SiteContent1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(bigs.Models.SiteContent))]
 
 // Original file name:
-// Generation date: 30.11.2009 21:49:18
+// Generation date: 02.12.2009 0:00:15
 namespace bigs.Models
 {
     
@@ -107,6 +107,21 @@ namespace bigs.Models
         }
         private global::System.Data.Objects.ObjectQuery<Request> _Request;
         /// <summary>
+        /// There are no comments for ApplicationSettings in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<ApplicationSettings> ApplicationSettings
+        {
+            get
+            {
+                if ((this._ApplicationSettings == null))
+                {
+                    this._ApplicationSettings = base.CreateQuery<ApplicationSettings>("[ApplicationSettings]");
+                }
+                return this._ApplicationSettings;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<ApplicationSettings> _ApplicationSettings;
+        /// <summary>
         /// There are no comments for ButtonStatuses in the schema.
         /// </summary>
         public void AddToButtonStatuses(ButtonStatuses buttonStatuses)
@@ -133,6 +148,13 @@ namespace bigs.Models
         public void AddToRequest(Request request)
         {
             base.AddObject("Request", request);
+        }
+        /// <summary>
+        /// There are no comments for ApplicationSettings in the schema.
+        /// </summary>
+        public void AddToApplicationSettings(ApplicationSettings applicationSettings)
+        {
+            base.AddObject("ApplicationSettings", applicationSettings);
         }
     }
     /// <summary>
@@ -871,5 +893,73 @@ namespace bigs.Models
         private global::System.DateTime _Date;
         partial void OnDateChanging(global::System.DateTime value);
         partial void OnDateChanged();
+    }
+    /// <summary>
+    /// There are no comments for bigskie_contentModel.ApplicationSettings in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Name
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="bigskie_contentModel", Name="ApplicationSettings")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class ApplicationSettings : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new ApplicationSettings object.
+        /// </summary>
+        /// <param name="name">Initial value of Name.</param>
+        public static ApplicationSettings CreateApplicationSettings(string name)
+        {
+            ApplicationSettings applicationSettings = new ApplicationSettings();
+            applicationSettings.Name = name;
+            return applicationSettings;
+        }
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this.ReportPropertyChanging("Name");
+                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Name");
+                this.OnNameChanged();
+            }
+        }
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Value in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this._Value;
+            }
+            set
+            {
+                this.OnValueChanging(value);
+                this.ReportPropertyChanging("Value");
+                this._Value = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Value");
+                this.OnValueChanged();
+            }
+        }
+        private string _Value;
+        partial void OnValueChanging(string value);
+        partial void OnValueChanged();
     }
 }

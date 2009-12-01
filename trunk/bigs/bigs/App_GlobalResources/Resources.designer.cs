@@ -196,7 +196,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Не заполнено поле &quot;Клиент&quot;.
         /// </summary>
         internal static string IncorrectClientName {
             get {

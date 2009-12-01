@@ -87,9 +87,8 @@
 .textAreaContainer
 {
     margin-bottom:20px;
-   
-                   
-                   }
+    height:140px;
+}
 .textAreaTop
 {
     background-image:url('images/textareatop.gif');
@@ -131,4 +130,11 @@
 {
     margin-top:20px;
     margin-left:115px;
+}
+
+#capchaContainer
+{
+ 
+ padding-top:10px;
+ padding-left:60px;
 }
