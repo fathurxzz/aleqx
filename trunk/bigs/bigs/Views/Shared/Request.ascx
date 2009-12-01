@@ -46,7 +46,7 @@
 </div>
 
 <div class="textBoxContainer">
-<div class="textBoxTitle"><%=Html.ResourceString("ContactTelephone")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("ContactTelephone")%><%= Html.ValidationMessage("phoneEmail", "*", new { @class = "validationError" })%></div>
 <div>
     <div class="textBoxLeftSide"></div>  
         <%=Html.TextBox("contactTelephone", "", new { @class = "textBox" })%>  
@@ -73,7 +73,7 @@
 
 
 <div class="textBoxContainer">
-<div class="textBoxTitle"><%=Html.ResourceString("TeleportWhereFrom")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("TeleportWhereFrom")%><%= Html.ValidationMessage("teleportFrom", "*", new { @class = "validationError" })%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("CityAndPostalCode")%>)</div>
 <div>
     <div class="textBoxLeftSide"></div>  
@@ -83,7 +83,7 @@
 </div>
 
 <div class="textBoxContainer">
-<div class="textBoxTitle"><%=Html.ResourceString("AndWhereTo")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("AndWhereTo")%><%= Html.ValidationMessage("teleportTo", "*", new { @class = "validationError" })%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("CityAndPostalCode")%>)</div>
 <div>
     <div class="textBoxLeftSide"></div>  
@@ -94,7 +94,7 @@
 
 
 <div class="textAreaContainer">
-<div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%><%= Html.ValidationMessage("cargoInfo", "*", new { @class = "validationError" })%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("TypeOfTheCargo")%>)</div>
 <div class="textAreaTop"></div>
     <%=Html.TextArea("cargoInformation", new { @class = "textArea", rows = "5" })%>

@@ -222,4 +222,16 @@
   <data name="IncorrectCompanyName" xml:space="preserve">
     <value />
   </data>
+  <data name="IncorrectCargoInfo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncorrectPhoneEmail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncorrectTeleportFrom" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncorrectTeleportTo" xml:space="preserve">
+    <value />
+  </data>
 </root>
