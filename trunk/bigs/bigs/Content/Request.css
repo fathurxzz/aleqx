@@ -37,8 +37,12 @@
      height:60px;
     
 }
-.textBoxTitle{color:#2F2F27; font-weight:bold;}
-.textBoxSubTitle{color:#635E65; font-weight:bold;}
+
+.textBoxTitle, .textBoxSubTitle
+{font-weight:bold; font-size:10px;}
+.textBoxTitle{color:#2F2F27;}
+.textBoxSubTitle{color:#635E65;}
+
 
 .textBoxLeftSide,.textBoxRightSide
 {
