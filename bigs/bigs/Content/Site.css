@@ -64,19 +64,20 @@ body
 #headerRight
 {
     margin-left:157px;
+    /*border:solid 1px black;    */
 }
 
 #phrase
 {
     height:180px;
     width:660px;
-    padding:0px 0px 0px 0px;
-    margin:0px 0px 0px 0px;
-    
+    /*float:left;
+    display:block;*/
 }
 
 #phraseImage
 {
+/*border:solid 1px black;    */
 }
 
 
