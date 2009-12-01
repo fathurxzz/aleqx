@@ -25,9 +25,6 @@
 <body>
 
 <%
-    if (HttpContext.Current.Request.Cookies["cookie_fuckie"] == null)
-        Response.Redirect("Default.htm");
-
     string controller = (string)ViewContext.RouteData.Values["controller"];
     string contentUrl = (string)ViewData["contentUrl"];
 %>
