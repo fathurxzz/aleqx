@@ -56,10 +56,11 @@ namespace bigs.Controllers
 
 
 
-                ViewData["requestStatus"] = "Запрос отправлен";
+                if (MailRequest(body, subject))
+                    ViewData["requestStatus"] = "Запрос отправлен";
 
 
-                MailRequest(body, subject);
+               
 
 
                 //return RedirectToAction("ThankYou", "Requests");
@@ -82,11 +83,11 @@ namespace bigs.Controllers
             return ModelState.IsValid;
         }
 
-        private void MailRequest(string body , string subject)
+        private bool MailRequest(string body , string subject)
         {
             List<MailAddress> addresses = new List<MailAddress>();
             addresses.Add(new MailAddress(ApplicationData.DestinationEmail));
-            MailHelper.SendMessage("no-reply@bigs.kiev.ua", addresses, body, subject, true);
+            return MailHelper.SendMessage("no-reply@bigs.kiev.ua", addresses, body, subject, true);
    
         }
 
