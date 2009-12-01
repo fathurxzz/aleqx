@@ -7,3 +7,15 @@
 .ui-slider .ui-slider-handle{position: absolute;z-index: 2;width: 2em;height: 2.7em;cursor: default;}
 .ui-slider-horizontal { height: .8em; }
 .ui-slider-horizontal .ui-slider-handle { top: -.3em; margin-left: -.6em; }
+
+
+#steps
+{
+    padding-left:95px;
+}
+
+.step
+{
+    float:left;
+    padding-right:45px;    
+}

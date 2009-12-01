@@ -1,6 +1,7 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="bigs.Models" %>
 <%@ Import Namespace="bigs.Controllers" %>
+<%@ Import Namespace="bigs.Helpers" %>
 
 <link href="/Content/Slider.css" rel="stylesheet" type="text/css" />
 <script src="/Scripts/ui.core.js" type="text/javascript"></script>
@@ -26,6 +27,13 @@
    
 
 
+<div id="steps">
+<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;1</div>
+<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;2</div>
+<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;3</div>
+<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;4</div>
+<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;5</div>
+</div>
    
 <div id="slider"></div>
 
