@@ -128,8 +128,13 @@
 
 #requestSubmitButton
 {
+    
+}
+
+#requestSubmitButtonContainer
+{
     margin-top:20px;
-    margin-left:115px;
+    padding-left:110px;
 }
 
 #capchaContainer
