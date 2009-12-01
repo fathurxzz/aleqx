@@ -212,6 +212,7 @@
     <Content Include="Content\images\ru\hotgreen.gif" />
     <Content Include="Content\images\ru\hotred.gif" />
     <Content Include="Content\images\ru\logo.gif" />
+    <Content Include="Content\images\ru\menuitem-vacancies.png" />
     <Content Include="Content\images\ru\sellgray.gif" />
     <Content Include="Content\images\ru\sellgreen.gif" />
     <Content Include="Content\images\ru\sellred.gif" />
