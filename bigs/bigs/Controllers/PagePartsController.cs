@@ -51,5 +51,19 @@ namespace bigs.Controllers
                 return View(buttons);
             }
         }
+
+        public ActionResult EditEmail()
+        {
+            ViewData["email"] = ApplicationData.DestinationEmail;
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditEmail(string email)
+        {
+            ApplicationData.UpdateDestinationEmail(email);
+            ViewData["email"] = email;
+            return View();
+        }
     }
 }

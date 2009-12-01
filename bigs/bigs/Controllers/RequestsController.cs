@@ -51,17 +51,18 @@ namespace bigs.Controllers
 
                 subject += "Mail from bigs.kiev.ua";
 
+
+                body += "[ NEW REQUEST ]<br />";
                 body += "Company Name: " + nameOfYourCompany + "<br />";
                 body += "Client Name: " + yourContacts + "<br />";
-
+                body += "Phone, email: " + contactTelephone + "<br />";
+                body += "Teleport From: " + teleportWhereFrom + "<br />";
+                body += "Teleport To: " + andWhereTo + "<br />";
+                body += "Cargo Info: " + cargoInformation + "<br />";
 
 
                 if (MailRequest(body, subject))
                     ViewData["requestStatus"] = "Запрос отправлен";
-
-
-               
-
 
                 //return RedirectToAction("ThankYou", "Requests");
             }
@@ -76,6 +77,17 @@ namespace bigs.Controllers
                 ModelState.AddModelError("companyName", ResourcesHelper.GetResourceString("IncorrectCompanyName"));
             if (string.IsNullOrEmpty(clientName))
                 ModelState.AddModelError("clientName", ResourcesHelper.GetResourceString("IncorrectClientName"));
+            if (string.IsNullOrEmpty(PhoneEmail))
+                ModelState.AddModelError("phoneEmail", ResourcesHelper.GetResourceString("IncorrectPhoneEmail"));
+            if (string.IsNullOrEmpty(TeleportFrom))
+                ModelState.AddModelError("teleportFrom", ResourcesHelper.GetResourceString("IncorrectTeleportFrom"));
+            if (string.IsNullOrEmpty(TeleportTo))
+                ModelState.AddModelError("teleportTo", ResourcesHelper.GetResourceString("IncorrectTeleportTo"));
+            if (string.IsNullOrEmpty(CargoInfo))
+                ModelState.AddModelError("cargoInfo", ResourcesHelper.GetResourceString("IncorrectCargoInfo"));
+
+
+
             if (!captchaValid)
                 ModelState.AddModelError("captchaInvalid", ResourcesHelper.GetResourceString("IncorrectCaptcha"));
 

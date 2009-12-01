@@ -75,10 +75,12 @@
             <div id="menu">
                 <% Html.RenderPartial("MainMenu");%>
             </div>
+
         </div>
     </div>
     <div id="middle">
         <div id="left">
+
             
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
             
@@ -86,6 +88,12 @@
             
             <% Html.RenderPartial("VideoSurveillance");%>
             
+        <%if (Request.IsAuthenticated)
+          { %>            
+        <div id="editEmail">
+        <% Html.RenderAction<PagePartsController>(ac => ac.EditEmail()); %>
+        </div>
+            <%} %>
         </div>
         <div id="content">
             

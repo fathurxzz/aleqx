@@ -196,6 +196,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string IncorrectCargoInfo {
+            get {
+                return ResourceManager.GetString("IncorrectCargoInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не заполнено поле &quot;Клиент&quot;.
         /// </summary>
         internal static string IncorrectClientName {
@@ -210,6 +219,33 @@ namespace Resources {
         internal static string IncorrectCompanyName {
             get {
                 return ResourceManager.GetString("IncorrectCompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string IncorrectPhoneEmail {
+            get {
+                return ResourceManager.GetString("IncorrectPhoneEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string IncorrectTeleportFrom {
+            get {
+                return ResourceManager.GetString("IncorrectTeleportFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string IncorrectTeleportTo {
+            get {
+                return ResourceManager.GetString("IncorrectTeleportTo", resourceCulture);
             }
         }
         
