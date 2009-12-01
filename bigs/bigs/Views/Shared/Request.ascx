@@ -113,7 +113,9 @@
 
 
 
+<div id="requestSubmitButtonContainer">
 <input type="submit" id="requestSubmitButton" value="<%=Html.ResourceString("Done")%>" />
+</div>
 
 </div>
 <div class="yellowBoxContainerBottom"></div>
