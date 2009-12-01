@@ -129,7 +129,6 @@
     <Content Include="Content\images\ru\menuitem-contacts.png" />
     <Content Include="Content\images\ru\menuitem-request.png" />
     <Content Include="Content\images\ru\menuitem-service.png" />
-    <Content Include="Content\images\ru\menuitem-vacancies.png" />
     <Content Include="Content\LanguageBar.css" />
     <Content Include="Content\MainMenu.css" />
     <Content Include="Default.aspx" />
