@@ -12,16 +12,11 @@ namespace bigs.Helpers
 
     public static class MailHelper
     {
-        private static SmtpClient PrepareClient()
-        {
-            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SmtpClientHost"]);
-            client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["CredentialUsername"], ConfigurationManager.AppSettings["CredentialPassword"]);
-            return client;
-        }
-
         public static bool SendMessage(string from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
-            SmtpClient client = PrepareClient();
+            //SmtpClient client = PrepareClient();
+
+            SmtpClient client = new SmtpClient();
             bool result = true;
             try
             {

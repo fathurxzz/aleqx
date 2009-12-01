@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="bigskie_contentModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="bigskie_contentModelStoreContainer">
+          <EntitySet Name="ApplicationSettings" EntityType="bigskie_contentModel.Store.ApplicationSettings" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ButtonStatuses" EntityType="bigskie_contentModel.Store.ButtonStatuses" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.Store.ImageContent" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Request" EntityType="bigskie_contentModel.Store.Request" store:Type="Tables" Schema="dbo" />
@@ -15,6 +16,13 @@
             <End Role="SiteContent1" EntitySet="SiteContent" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ApplicationSettings">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Value" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="ButtonStatuses">
           <Key>
             <PropertyRef Name="Id" />
@@ -84,7 +92,8 @@
             <End Role="SiteContent" EntitySet="SiteContent" />
             <End Role="SiteContent1" EntitySet="SiteContent" /></AssociationSet>
           <EntitySet Name="ImageContent" EntityType="bigskie_contentModel.ImageContent" />
-          <EntitySet Name="Request" EntityType="bigskie_contentModel.Request" /></EntityContainer>
+          <EntitySet Name="Request" EntityType="bigskie_contentModel.Request" />
+          <EntitySet Name="ApplicationSettings" EntityType="bigskie_contentModel.ApplicationSettings" /></EntityContainer>
         <EntityType Name="ButtonStatuses">
           <Key>
             <PropertyRef Name="Id" />
@@ -128,7 +137,12 @@
           <Property Name="TeleportFrom" Type="String" Nullable="true" />
           <Property Name="TeleportTo" Type="String" Nullable="true" />
           <Property Name="CargoInfo" Type="String" Nullable="true" />
-          <Property Name="Date" Type="DateTime" Nullable="false" /></EntityType></Schema>
+          <Property Name="Date" Type="DateTime" Nullable="false" /></EntityType>
+        <EntityType Name="ApplicationSettings">
+          <Key>
+            <PropertyRef Name="Name" /></Key>
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="true" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -182,7 +196,12 @@
                 <ScalarProperty Name="PhoneEmail" ColumnName="PhoneEmail" />
                 <ScalarProperty Name="ClientName" ColumnName="ClientName" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ApplicationSettings">
+            <EntityTypeMapping TypeName="IsTypeOf(bigskie_contentModel.ApplicationSettings)">
+              <MappingFragment StoreEntitySet="ApplicationSettings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -209,6 +228,7 @@
           <ConnectorPoint PointX="3.7284615384615383" PointY="3.7494921874999996" />
           <ConnectorPoint PointX="3.7284615384615383" PointY="3.4994921875" /></AssociationConnector>
         <EntityTypeShape EntityType="bigskie_contentModel.ImageContent" Width="1.5" PointX="5.875" PointY="1.125" Height="1.2636116536458335" />
-        <EntityTypeShape EntityType="bigskie_contentModel.Request" Width="1.5" PointX="0.75" PointY="4.75" Height="2.0853483072916674" /></Diagram></edmx:Diagrams>
+        <EntityTypeShape EntityType="bigskie_contentModel.Request" Width="1.5" PointX="0.75" PointY="4.75" Height="2.0853483072916674" />
+        <EntityTypeShape EntityType="bigskie_contentModel.ApplicationSettings" Width="1.5" PointX="3.375" PointY="4.75" Height="1.2636116536458335" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -1,11 +1,16 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="bigs.Helpers" %>
-
 <link href="/Content/Request.css" rel="stylesheet" type="text/css" />
+<%
+    string requestStatus = (string)ViewData["requestStatus"];
+    if (!string.IsNullOrEmpty(requestStatus))
+        Response.Write(requestStatus);
+    else
+    {
+%>
 
-
-<%using (Html.BeginForm("SendRequest", "Requests", new { contentUrl = Html.ResourceString("Request") }, FormMethod.Post, null))
-{
+<%using (Html.BeginForm("Index", "Requests", new { contentUrl = Html.ResourceString("Request") }, FormMethod.Post, null))
+  {
     %>
 
 <div id="requestTitle">
@@ -23,23 +28,21 @@
 
 
 <div class="textBoxContainer">
-<div class="textBoxTitle"><%=Html.ResourceString("NameOfYourCompany")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("NameOfYourCompany")%><%= Html.ValidationMessage("companyName", "*", new { @class = "validationError" })%></div>
 <div>
     <div class="textBoxLeftSide"></div>  
         <%=Html.TextBox("nameOfYourCompany", "", new { @class = "textBox" })%>  
     <div class="textBoxRightSide"></div>    
 </div>
-<%= Html.ValidationMessage("companyName", "*", new { @class="validationError"})%>
 </div>
 
 <div class="textBoxContainer">
-<div class="textBoxTitle"><%=Html.ResourceString("YourContacts")%></div>
+<div class="textBoxTitle"><%=Html.ResourceString("YourContacts")%><%= Html.ValidationMessage("clientName", "*", new { @class = "validationError" })%></div>
 <div>
     <div class="textBoxLeftSide"></div>  
         <%=Html.TextBox("yourContacts", "", new { @class = "textBox" })%>  
     <div class="textBoxRightSide"></div>    
 </div>
-<%= Html.ValidationMessage("clientName", "*", new { @class = "validationError" })%>
 </div>
 
 <div class="textBoxContainer">
@@ -94,19 +97,19 @@
 <div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("TypeOfTheCargo")%>)</div>
 <div class="textAreaTop"></div>
-    <%=Html.TextArea("cargoInformation", new { @class = "textArea", rows="5" })%>
+    <%=Html.TextArea("cargoInformation", new { @class = "textArea", rows = "5" })%>
 <div class="textAreaBottom"></div>
 </div>
 
-<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%></div>
+
+
+
+<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%><%= Html.ValidationMessage("captchaInvalid", "*", new { @class = "validationError" })%></div>
 <div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>
-
-
-<%= Html.ValidationMessage("captchaInvalid", "*", new { @class="validationError"})%>
-<br />
+<div id="capchaContainer">
 <%= Html.CaptchaImage(50, 160)%><br />
 <%= Html.TextBox("captcha", "")%>
-<br />
+</div>
 
 
 
@@ -115,4 +118,5 @@
 </div>
 <div class="yellowBoxContainerBottom"></div>
 </div>
-<%}%>
+<%}
+    }%>

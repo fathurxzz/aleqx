@@ -13,13 +13,12 @@ namespace bigs.Controllers
 {
     public class RequestsController : BaseContentController
     {
-
         [AcceptVerbs(HttpVerbs.Post)]
         [CaptchaValidation("captcha")]
-        public ActionResult SendRequest(string nameOfYourCompany, string yourContacts, string contactTelephone, string teleportWhereFrom, string andWhereTo, string cargoInformation,bool captchaValid)
+        public ActionResult Index(string nameOfYourCompany, string yourContacts, string contactTelephone, string teleportWhereFrom, string andWhereTo, string cargoInformation,bool captchaValid)
         {
 
-            if (ValidateSendRequest(captchaValid, nameOfYourCompany, yourContacts))
+            if (ValidateSendRequest(captchaValid, nameOfYourCompany, yourContacts, contactTelephone, teleportWhereFrom, andWhereTo, cargoInformation))
             {
 
                 Request request = new Request();
@@ -30,7 +29,6 @@ namespace bigs.Controllers
                 request.TeleportTo = andWhereTo;
                 request.CargoInfo = cargoInformation;
                 request.Date = DateTime.Now;
-                MailRequest(request);
 
                 /*
                 using (DataStorage context = new DataStorage())
@@ -50,18 +48,28 @@ namespace bigs.Controllers
 
                 string body = string.Empty;
                 string subject = string.Empty;
-                List<MailAddress> addresses = new List<MailAddress>();
-                addresses.Add(new MailAddress(ConfigurationManager.AppSettings["MailAddress"]));
-                MailHelper.SendMessage(ConfigurationManager.AppSettings["FeedbackEmail"], addresses, body, subject, false);
 
+                subject += "Mail from bigs.kiev.ua";
+
+                body += "Company Name: " + nameOfYourCompany + "<br />";
+                body += "Client Name: " + yourContacts + "<br />";
+
+
+
+                ViewData["requestStatus"] = "Запрос отправлен";
+
+
+                MailRequest(body, subject);
+
+
+                //return RedirectToAction("ThankYou", "Requests");
             }
 
-
-            return RedirectToAction("Index", "Requests");
+            return View();
             
         }
 
-        private bool ValidateSendRequest(bool captchaValid, string companyName, string clientName)
+        private bool ValidateSendRequest(bool captchaValid, string companyName, string clientName, string PhoneEmail, string TeleportFrom, string TeleportTo, string CargoInfo)
         {
             if (string.IsNullOrEmpty(companyName))
                 ModelState.AddModelError("companyName", ResourcesHelper.GetResourceString("IncorrectCompanyName"));
@@ -70,12 +78,16 @@ namespace bigs.Controllers
             if (!captchaValid)
                 ModelState.AddModelError("captchaInvalid", ResourcesHelper.GetResourceString("IncorrectCaptcha"));
 
+
             return ModelState.IsValid;
         }
 
-        private void MailRequest(Request request)
+        private void MailRequest(string body , string subject)
         {
-            
+            List<MailAddress> addresses = new List<MailAddress>();
+            addresses.Add(new MailAddress(ApplicationData.DestinationEmail));
+            MailHelper.SendMessage("no-reply@bigs.kiev.ua", addresses, body, subject, true);
+   
         }
 
     }

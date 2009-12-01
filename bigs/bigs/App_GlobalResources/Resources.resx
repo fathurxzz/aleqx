@@ -217,7 +217,7 @@
     <value>Неправильно введены символы с картинки</value>
   </data>
   <data name="IncorrectClientName" xml:space="preserve">
-    <value />
+    <value>Не заполнено поле "Клиент"</value>
   </data>
   <data name="IncorrectCompanyName" xml:space="preserve">
     <value />
