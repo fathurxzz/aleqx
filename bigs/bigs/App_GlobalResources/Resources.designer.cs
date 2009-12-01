@@ -88,7 +88,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Куда (город, почтовый код).
+        ///   Looks up a localized string similar to Куда.
         /// </summary>
         internal static string AndWhereTo {
             get {

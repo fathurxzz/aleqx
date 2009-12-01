@@ -127,7 +127,7 @@
     <value>О Вас</value>
   </data>
   <data name="AndWhereTo" xml:space="preserve">
-    <value>Куда (город, почтовый код)</value>
+    <value>Куда</value>
   </data>
   <data name="Bigs" xml:space="preserve">
     <value>Bigs</value>
