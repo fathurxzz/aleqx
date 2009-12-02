@@ -86,7 +86,7 @@
 
 .textAreaContainer
 {
-    margin-bottom:20px;
+    margin-bottom:12px;
     height:140px;
 }
 .textAreaTop
@@ -139,7 +139,11 @@
 
 #capchaContainer
 {
- 
- padding-top:10px;
- padding-left:60px;
+    padding-top:10px;
+    padding-left:60px;
+}
+
+.requestItemsSeparator
+{
+    height:10px;
 }

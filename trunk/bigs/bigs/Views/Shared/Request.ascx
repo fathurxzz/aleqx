@@ -82,6 +82,8 @@
 </div>
 </div>
 
+<div class="requestItemsSeparator"></div>
+
 <div class="textBoxContainer">
 <div class="textBoxTitle"><%=Html.ResourceString("AndWhereTo")%><%= Html.ValidationMessage("teleportTo", "*", new { @class = "validationError" })%></div>
 <div class="textBoxSubTitle">(<%=Html.ResourceString("CityAndPostalCode")%>)</div>
@@ -91,7 +93,7 @@
     <div class="textBoxRightSide"></div>    
 </div>
 </div>
-
+<div class="requestItemsSeparator"></div>
 
 <div class="textAreaContainer">
 <div class="textBoxTitle"><%=Html.ResourceString("InformationAboutTheCargo")%><%= Html.ValidationMessage("cargoInfo", "*", new { @class = "validationError" })%></div>
@@ -100,12 +102,10 @@
     <%=Html.TextArea("cargoInformation", new { @class = "textArea", rows = "5" })%>
 <div class="textAreaBottom"></div>
 </div>
+<div class="requestItemsSeparator"></div>
 
+<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%> <%=Html.ResourceString("YouAreNotARobot")%><%= Html.ValidationMessage("captchaInvalid", "*", new { @class = "validationError" })%></div>
 
-
-
-<div class="textBoxTitle"><%=Html.ResourceString("EnterTheCodeFromThePicture")%><%= Html.ValidationMessage("captchaInvalid", "*", new { @class = "validationError" })%></div>
-<div class="textBoxTitle"><%=Html.ResourceString("YouAreNotARobot")%></div>
 <div id="capchaContainer">
 <%= Html.CaptchaImage(50, 160)%><br />
 <%= Html.TextBox("captcha", "")%>
