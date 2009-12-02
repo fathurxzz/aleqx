@@ -26,12 +26,8 @@
 	</script>
     <%} %>
 
-<%if (!isRoot)
-  { %><a href="/"><%} %>
 <div id="logo" class="<%=SystemSettings.CurrentLanguageShort%>logo">
 <div id="connectionSign" class="<%=SystemSettings.CurrentLanguageShort%>connection"></div>
 </div>
-<%if (!isRoot)
-  { %></a><%} %>
 
 
