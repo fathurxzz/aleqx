@@ -27,30 +27,35 @@
    
 
 
-<div id="steps">
-<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;1</div>
-<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;2</div>
-<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;3</div>
-<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;4</div>
-<div class="step"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;5</div>
-</div>
-   
-<div id="slider"></div>
 
+
+
+<table id="steps">
+<tr>
+    <td align="center"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;1</td>
+    <td align="center"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;2</td>
+    <td align="center"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;3</td>
+    <td align="center"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;4</td>
+    <td align="center"><%=Html.ResourceString("Step").ToUpper()%>&nbsp;5</td>
+</tr>
+</table>
+
+   
 
 <div id="sliderContainer">
+    <div id="slider"></div>
+</div>
+
+
+<div id="sliderResultContainer">
 <% 
     
     using (DataStorage context = new DataStorage())
     {
-
-        //   List<SiteContent> transferContent = (from content in context.SiteContent.Where(c=>c.Name=="transfer"))
-
-
         for (int i = 1; i <= 5; i++)
         {
-            string contentName = "transfer"+i;
-            
+            string contentName = "transfer" + i;
+
             Response.Write(i == 1 ? "<div id=\"" + contentName + "\" style=\"display:block;\">" : "<div id=\"" + contentName + "\" style=\"display:none;\">");
 
             SiteContent transferContent = (from content in context.SiteContent.Where(c => c.Name == contentName && c.Language == SystemSettings.CurrentLanguage) select content).First();
@@ -62,16 +67,17 @@
                 Response.Write("</div>");
             }
 
-            
+
             Response.Write(transferContent.Text);
-            
-            
+
+
 
 
             Response.Write("</div>");
-       %>
-<%}
-    } %>
+
+        }
+    }
+     %>
 </div>
   
 
