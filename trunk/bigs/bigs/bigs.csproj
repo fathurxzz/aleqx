@@ -185,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Buttons.css" />
+    <Content Include="Content\Errors.css" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
     <Content Include="Content\images\en\connection.gif" />
@@ -265,6 +266,7 @@
     <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\ContentContainer.ascx" />
     <Content Include="Views\Shared\Logo.ascx" />
+    <Content Include="Views\Shared\NotFound.ascx" />
     <Content Include="Views\Shared\Phrase.ascx" />
     <Content Include="Views\Shared\Request.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />

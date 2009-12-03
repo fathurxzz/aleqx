@@ -1,0 +1,36 @@
+﻿#yourCordinats
+{
+    font-size:16px;
+    margin-left:60px;
+    
+}
+
+#sign404
+{
+    font-size:80px;
+    margin-left:60px;
+    color:Red;
+}
+
+#belowText
+{
+    
+    margin-left:130px;
+    width:300px;
+}
+
+.yellowBoxContainer
+{
+    
+    margin-bottom:10px !important;
+}
+
+#administration
+{
+    font-style:italic;
+    color:Red;
+    padding-left:350px;
+    
+    margin-top:20px;
+    
+}
