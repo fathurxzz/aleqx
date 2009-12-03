@@ -12,7 +12,9 @@ namespace bigs.Controllers
         {
             using (DataStorage context = new DataStorage())
             {
-                SiteContent result = context.SiteContent.Where(c => c.Url == contentUrl).Select(c => c).First();
+                SiteContent result = context.SiteContent.Where(c => c.Url == contentUrl).Select(c => c).FirstOrDefault();
+                if (result == null)
+                    return result;
                 context.Detach(result);
                 return result;
             }
