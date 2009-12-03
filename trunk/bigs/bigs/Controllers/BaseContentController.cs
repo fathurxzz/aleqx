@@ -23,7 +23,11 @@ namespace bigs.Controllers
                 using (bigs.Models.DataStorage context = new bigs.Models.DataStorage())
                 {
                     SiteContent content = Utils.GetContent(contentUrl);
-                    
+
+                    if (content == null)
+                        RedirectToAction("FileNotFound", "Errors");
+
+
                     if (content.Language != SystemSettings.CurrentLanguage)
                     {
                         SystemSettings.CurrentLanguage = content.Language;
