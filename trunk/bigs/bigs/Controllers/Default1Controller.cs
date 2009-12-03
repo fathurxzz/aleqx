@@ -7,17 +7,15 @@ using System.Web.Mvc.Ajax;
 
 namespace bigs.Controllers
 {
-    public class ErrorsController : Controller
+    public class Default1Controller : Controller
     {
         //
-        // GET: /Errors/
+        // GET: /Default1/
 
-        public ActionResult FileNotFound()
+        public ActionResult Index()
         {
             return View();
         }
-
-
 
     }
 }
