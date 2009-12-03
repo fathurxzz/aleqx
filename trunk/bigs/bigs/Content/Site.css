@@ -107,6 +107,8 @@ body
     background-image:url('images/footerbackground.gif');
     background-position:top;
     background-repeat:repeat-x;
+    padding-bottom:15px;
+    
 }
 
 #footerBottom
