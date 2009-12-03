@@ -17,7 +17,10 @@ namespace bigs.Controllers
             return View();
         }
 
-
+        public ActionResult Index()
+        {
+            return View();
+        }
 
     }
 }
