@@ -161,6 +161,8 @@ namespace bigs
 		private int _width;
 		private Random _rand;
 
+        private Color _backgroundcolor = Color.FromArgb(255, 255, 204);
+
 		#region Public Properties
 
 		/// <summary>
@@ -365,7 +367,7 @@ namespace bigs
 			using (Graphics gr = Graphics.FromImage(bmp))
 			{
 				gr.SmoothingMode = SmoothingMode.AntiAlias;
-				gr.Clear(Color.White);
+                gr.Clear(_backgroundcolor);
 
 				int charOffset = 0;
 				double charWidth = _width / TextLength;
