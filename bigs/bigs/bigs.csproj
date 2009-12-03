@@ -261,8 +261,10 @@
     <Content Include="Views\Admin\EditText.aspx" />
     <Content Include="Views\Admin\EditTransfers.aspx" />
     <Content Include="Views\Errors\FileNotFound.aspx" />
+    <Content Include="Views\Errors\Index.aspx" />
     <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\PageParts\EditEmail.ascx" />
+    <Content Include="Views\Shared\505.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
     <Content Include="Views\Shared\ContentContainer.ascx" />
     <Content Include="Views\Shared\Logo.ascx" />
