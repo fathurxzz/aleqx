@@ -18,6 +18,13 @@ namespace bigs
             routes.IgnoreRoute("captcha.ashx");
 
             routes.MapRoute(
+    "FileNotFound",                                              // Route name
+    "Errors/NotFound",                           // URL with parameters
+    new { controller = "Errors", action = "FileNotFound" }  // Parameter defaults
+);
+
+
+            routes.MapRoute(
                           "DeletePicture",                                              // Route name
                           "Admin/DeletePicture/{id}",                           // URL with parameters
                           new { controller = "Admin", action = "DeletePicture", id="" }  // Parameter defaults
@@ -44,12 +51,16 @@ namespace bigs
                 "{controller}/{contentUrl}",                           // URL with parameters
                 new { controller = "Home", action = "Index", contentUrl = "О компании" }  // Parameter defaults
             );
+
+            routes.MapRoute(
+                "Default",                                              // Route name
+                "{controller}/{action}/{contentUrl}",                           // URL with parameters
+                new { controller = "{controller}", action = "{action}", contentUrl = "" }  // Parameter defaults
+            );
+
             
-           routes.MapRoute(
-               "Default",                                              // Route name
-               "{controller}/{action}/{contentUrl}",                           // URL with parameters
-               new { controller = "{controller}", action = "{action}", contentUrl="" }  // Parameter defaults
-           );
+
+
               
         }
 

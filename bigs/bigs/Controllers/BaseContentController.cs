@@ -25,7 +25,7 @@ namespace bigs.Controllers
                     SiteContent content = Utils.GetContent(contentUrl);
 
                     if (content == null)
-                        RedirectToAction("FileNotFound", "Errors");
+                        Response.Redirect("~/Errors/NotFound");
 
 
                     if (content.Language != SystemSettings.CurrentLanguage)

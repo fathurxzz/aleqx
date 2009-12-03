@@ -87,6 +87,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseContentController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -258,6 +259,7 @@
     <Content Include="Views\Admin\EditPicture.aspx" />
     <Content Include="Views\Admin\EditText.aspx" />
     <Content Include="Views\Admin\EditTransfers.aspx" />
+    <Content Include="Views\Errors\FileNotFound.aspx" />
     <Content Include="Views\PageParts\Buttons.ascx" />
     <Content Include="Views\PageParts\EditEmail.ascx" />
     <Content Include="Views\Shared\CargoTeleport.ascx" />
