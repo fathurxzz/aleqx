@@ -214,7 +214,6 @@
     <Content Include="Content\images\it\teleportred.gif" />
     <Content Include="Content\images\it\video.gif" />
     <Content Include="Content\images\pixel.gif" />
-    <Content Include="Content\images\points.gif" />
     <Content Include="Content\images\ru\connection.gif" />
     <Content Include="Content\images\ru\hotgray.gif" />
     <Content Include="Content\images\ru\hotgreen.gif" />
