@@ -191,7 +191,6 @@
     <Content Include="Content\images\en\connection.gif" />
     <Content Include="Content\images\en\hotgray.gif" />
     <Content Include="Content\images\en\hotgreen.gif" />
-    <Content Include="Content\images\en\hotred.gif" />
     <Content Include="Content\images\en\logo.gif" />
     <Content Include="Content\images\en\sellgray.gif" />
     <Content Include="Content\images\en\sellgreen.gif" />
@@ -204,7 +203,6 @@
     <Content Include="Content\images\it\connection.gif" />
     <Content Include="Content\images\it\hotgray.gif" />
     <Content Include="Content\images\it\hotgreen.gif" />
-    <Content Include="Content\images\it\hotred.gif" />
     <Content Include="Content\images\it\logo.gif" />
     <Content Include="Content\images\it\sellgray.gif" />
     <Content Include="Content\images\it\sellgreen.gif" />
@@ -218,7 +216,6 @@
     <Content Include="Content\images\ru\connection.gif" />
     <Content Include="Content\images\ru\hotgray.gif" />
     <Content Include="Content\images\ru\hotgreen.gif" />
-    <Content Include="Content\images\ru\hotred.gif" />
     <Content Include="Content\images\ru\logo.gif" />
     <Content Include="Content\images\ru\menuitem-vacancies.png" />
     <Content Include="Content\images\ru\sellgray.gif" />
