@@ -28,29 +28,29 @@ namespace bigs.Controllers
             }
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Buttons(FormCollection form)
-        {
-            using (DataStorage context = new DataStorage())
-            {
-                if (!string.IsNullOrEmpty(form["enablities"]))
-                {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    Dictionary<string, string> enables = serializer.Deserialize<Dictionary<string, string>>(form["enablities"]);
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult Buttons(FormCollection form)
+        //{
+        //    using (DataStorage context = new DataStorage())
+        //    {
+        //        if (!string.IsNullOrEmpty(form["enablities"]))
+        //        {
+        //            JavaScriptSerializer serializer = new JavaScriptSerializer();
+        //            Dictionary<string, string> enables = serializer.Deserialize<Dictionary<string, string>>(form["enablities"]);
 
-                    foreach (string key in enables.Keys)
-                    {
+        //            foreach (string key in enables.Keys)
+        //            {
 
-                        int id = int.Parse(key);
-                        ButtonStatuses sButton = (from button in context.ButtonStatuses where button.Id == id select button).First();
-                        sButton.SwitchedOn = bool.Parse(enables[key]);
-                    }
-                    context.SaveChanges();
-                }
-                List<ButtonStatuses> buttons = (from button in context.ButtonStatuses where button.Language == SystemSettings.CurrentLanguage orderby button.SortOrder ascending select button).ToList();
-                return View(buttons);
-            }
-        }
+        //                int id = int.Parse(key);
+        //                ButtonStatuses sButton = (from button in context.ButtonStatuses where button.Id == id select button).First();
+        //                sButton.SwitchedOn = bool.Parse(enables[key]);
+        //            }
+        //            context.SaveChanges();
+        //        }
+        //        List<ButtonStatuses> buttons = (from button in context.ButtonStatuses where button.Language == SystemSettings.CurrentLanguage orderby button.SortOrder ascending select button).ToList();
+        //        return View(buttons);
+        //    }
+        //}
 
         public ActionResult EditEmail()
         {
@@ -58,12 +58,15 @@ namespace bigs.Controllers
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditEmail(string email)
-        {
-            ApplicationData.UpdateDestinationEmail(email);
-            ViewData["email"] = email;
-            return View();
-        }
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult EditEmail(string email)
+        //{
+        //    if (!string.IsNullOrEmpty())
+        //    {
+        //        ApplicationData.UpdateDestinationEmail(email);
+        //        ViewData["email"] = email;
+        //    }
+        //    return View();
+        //}
     }
 }

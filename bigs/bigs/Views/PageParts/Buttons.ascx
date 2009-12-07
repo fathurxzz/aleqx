@@ -21,14 +21,14 @@
 
 <%
     
-    using (Html.BeginForm())
+    using (Html.BeginForm("UpdateButtonsState", "Admin", FormMethod.Post))
     {
 
         if (Request.IsAuthenticated)
         {
             %>
             <%= Html.Hidden("enablities")%>
-            
+            <%= Html.Hidden("redirectUrl", Request.Url.AbsolutePath) %>
             <input type="submit" value="Сохранить" onclick="return collectStatusChanges()"/>
             <br />
             <%

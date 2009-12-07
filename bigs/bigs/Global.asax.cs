@@ -18,17 +18,28 @@ namespace bigs
             routes.IgnoreRoute("captcha.ashx");
 
             routes.MapRoute(
-    "FileNotFound",                                              // Route name
-    "Errors/NotFound",                           // URL with parameters
-    new { controller = "Errors", action = "FileNotFound" }  // Parameter defaults
-);
-
+                "FileNotFound",                                              // Route name
+                "Errors/NotFound",                           // URL with parameters
+                new { controller = "Errors", action = "FileNotFound" }  // Parameter defaults
+            );
 
             routes.MapRoute(
-                          "DeletePicture",                                              // Route name
-                          "Admin/DeletePicture/{id}",                           // URL with parameters
-                          new { controller = "Admin", action = "DeletePicture", id="" }  // Parameter defaults
-                        );
+                "UpdateEmail",                                              // Route name
+                "Admin/UpdateEmail",                           // URL with parameters
+                new { controller = "Admin", action = "UpdateEmail" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "UpdateButtonsState",                                              // Route name
+                "Admin/UpdateButtonsState",                           // URL with parameters
+                new { controller = "Admin", action = "UpdateButtonsState" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+              "DeletePicture",                                              // Route name
+              "Admin/DeletePicture/{id}",                           // URL with parameters
+              new { controller = "Admin", action = "DeletePicture", id = "" }  // Parameter defaults
+            );
 
 
             routes.MapRoute(
@@ -37,14 +48,11 @@ namespace bigs
               new { controller = "Account", action = "LogOn" }  // Parameter defaults
             );
 
-
             routes.MapRoute(
                 "Languages",                                              // Route name
                 "Languages/SetLanguage",                           // URL with parameters
-                new { controller = "Languages", action = "SetLanguage"}  // Parameter defaults
+                new { controller = "Languages", action = "SetLanguage" }  // Parameter defaults
             );
-
-
 
             routes.MapRoute(
                 "Content",                                              // Route name
@@ -58,10 +66,10 @@ namespace bigs
                 new { controller = "{controller}", action = "{action}", contentUrl = "" }  // Parameter defaults
             );
 
-            
 
 
-              
+
+
         }
 
         protected void Application_Start()

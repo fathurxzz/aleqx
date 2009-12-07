@@ -1,5 +1,5 @@
 ﻿#buttonContainer{}
-#buttonContainer a{display:block;width:150px;height:34px;background-position: 0px 0px;margin-bottom:30px;}
+#buttonContainer a{display:block;width:150px;height:34px;background-position: 0px 0px;margin-bottom:30px; background-repeat:no-repeat;}
 
 a.ruhotred{background-image:url('images/ru/hotgray.gif');}
 a.rusellred{background-image:url('images/ru/sellgray.gif');}
