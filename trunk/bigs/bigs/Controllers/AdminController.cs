@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using bigs.Models;
 using System.IO;
+using System.Web.Script.Serialization;
 
 namespace bigs.Controllers
 {
@@ -111,15 +112,48 @@ namespace bigs.Controllers
                 string imageName = image.FileName;
                 context.DeleteObject(image);
                 context.SaveChanges();
-                /*
+                
                 string path = Server.MapPath("~/Content/Objects/" + imageName);
                 if (System.IO.File.Exists(path))
                     System.IO.File.Delete(path);
-                */
-                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
             }
             return RedirectToAction("EditPicture", "Admin", new { contentUrl = contentUrl });
-            //return RedirectToAction("EditPicture");
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateEmail(string email, string redirectUrl)
+        {
+            if (!string.IsNullOrEmpty(email))
+            {
+                ApplicationData.UpdateDestinationEmail(email);
+                ViewData["email"] = email;
+            }
+            return Redirect(redirectUrl);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateButtonsState(FormCollection form, string redirectUrl)
+        {
+            using (DataStorage context = new DataStorage())
+            {
+                if (!string.IsNullOrEmpty(form["enablities"]))
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    Dictionary<string, string> enables = serializer.Deserialize<Dictionary<string, string>>(form["enablities"]);
+
+                    foreach (string key in enables.Keys)
+                    {
+
+                        int id = int.Parse(key);
+                        ButtonStatuses sButton = (from button in context.ButtonStatuses where button.Id == id select button).First();
+                        sButton.SwitchedOn = bool.Parse(enables[key]);
+                    }
+                    context.SaveChanges();
+                }
+                List<ButtonStatuses> buttons = (from button in context.ButtonStatuses where button.Language == SystemSettings.CurrentLanguage orderby button.SortOrder ascending select button).ToList();
+                return Redirect(redirectUrl);
+            }
+
         }
     }
 }
