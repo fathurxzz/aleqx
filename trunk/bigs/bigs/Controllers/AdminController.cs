@@ -7,6 +7,7 @@ using System.Web.Mvc.Ajax;
 using bigs.Models;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Threading;
 
 namespace bigs.Controllers
 {
@@ -92,6 +93,7 @@ namespace bigs.Controllers
                     imageName = Path.GetFileName(imageName);
                     string imagePath = Server.MapPath("~/Content/Objects/" + imageName);
                     Request.Files["image"].SaveAs(imagePath);
+                    Request.Files["image"].InputStream.Close();
                     ImageContent imageItem = new ImageContent();
                     imageItem.FileName = imageName;
                     context.AddToImageContent(imageItem);
@@ -101,6 +103,40 @@ namespace bigs.Controllers
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
                 return View(images);
             }
+        }
+
+        private void DeleteFileInTheThread(string path)
+        {
+            Func<string, bool> tryDeleteFile = filePath =>
+            {
+                bool result = true;
+                try
+                {
+                    System.IO.File.Delete(path);
+                }
+                catch
+                {
+                    result = false;
+                }
+                return result;
+            };
+
+            Thread thread = new Thread(new ThreadStart(delegate(){
+                bool result = false;
+                int counter = 0;
+                while (!result)
+                {
+                    result = tryDeleteFile(path);
+                    if (!result)
+                    {
+                        counter++;
+                        Thread.Sleep(1000);
+                    }
+                    if (!result && counter >= 500)
+                        result = true;
+                }
+                Thread.CurrentThread.Abort();
+            }));
         }
 
         public ActionResult DeletePicture(int id, string contentUrl, string controllerName)
@@ -114,8 +150,12 @@ namespace bigs.Controllers
                 context.SaveChanges();
                 
                 string path = Server.MapPath("~/Content/Objects/" + imageName);
-                if (System.IO.File.Exists(path))
+
+                if (!string.IsNullOrEmpty(imageName))
+                {
+                    //DeleteFileInTheThread(path);
                     System.IO.File.Delete(path);
+                }
             }
             return RedirectToAction("EditPicture", "Admin", new { contentUrl = contentUrl });
         }
