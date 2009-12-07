@@ -21,6 +21,9 @@
                 Html.RenderPartial("CargoTeleport");
             }
             break;
+        case "teleportsession":
+            Html.RenderPartial("Teleport");
+            break;
     }
 %>
 </div>
