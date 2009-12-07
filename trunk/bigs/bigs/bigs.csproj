@@ -272,6 +272,7 @@
     <Content Include="Views\Shared\Phrase.ascx" />
     <Content Include="Views\Shared\Request.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
+    <Content Include="Views\Shared\Teleport.ascx" />
     <Content Include="Views\Shared\VideoSurveillance.ascx" />
   </ItemGroup>
   <ItemGroup>
