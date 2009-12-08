@@ -18,7 +18,10 @@
     });
 
     function submitForm() {
-        $("#mainForm").submit();
+
+
+        //$("#mainForm").submit();
+        
     }
     
 </script>
@@ -29,7 +32,7 @@
 <div>
 Выберите объект, назовите его и телепортируйте.
     <div id="monik">
-        <div id="moped"></div>
+        <div id="diods" class=""></div>
     </div>
 
     <div id="arrowsContainer">
