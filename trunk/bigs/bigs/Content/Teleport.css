@@ -6,6 +6,12 @@ a.leftArrow{background-image:url('images/left-arrow.gif');}
 a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 
+
+a.leftArrow{background-image:url('images/left-arrow.gif');}
+a.rightArrow{background-image:url('images/right-arrow.gif');}
+
+
+
 #arrowSign
 {
     margin:26px 10px 0px 10px;
@@ -34,6 +40,7 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     margin-top:40px;
     margin-left:150px;
     height:100px;
+    margin-bottom:10px;
 }
 
 #editLeftSide, #editRightSide
@@ -60,6 +67,55 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     font-size:20px;
 }
 
+
+
+
+/*
+#buttonLeftSide, #buttonRightSide
+{
+    background-repeat:no-repeat;
+    width:7px;
+    height:34px;
+    float:left;
+    display:block;
+}
+
+#buttonLeftSide{background-image:url('images/button-left-side-default.gif');} 
+#buttonRightSide{background-image:url('images/button-right-side-default.gif');}
+
+#teleportSubmitButton
+{
+    background-image:url('images/button-bg.gif');
+    background-repeat:repeat-x;
+    border:none;
+    height:34px;
+    width:120px;
+    float:left;
+    display:block;
+    font-size:12px;
+    text-transform:uppercase;
+}
+*/
+
+#teleportButtonSubmitContainer
+{
+    padding-left:170px;
+    height:34px;
+    margin-bottom:10px;
+}
+
+#teleportButtonSubmitContainer a
+{
+    background-image:url('images/button.gif');
+    background-repeat:no-repeat;
+    width:235px; height:34px; display:block; float:left;
+}
+#teleportButtonSubmitContainer a:hover{background-position:0 -34px; background-repeat:no-repeat;}
+
+
+
+
+
 #objectName
 {
     background-image:url('images/objectname.gif');
@@ -81,4 +137,20 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 #teleportButton
 {
     margin-left:220px;
+}
+
+.arrow
+{
+    
+}
+
+#moped
+{
+    background-image:url('images/moped.gif');
+    background-repeat:no-repeat;
+    margin-left:55px;
+    margin-top:45px;
+    float:left;
+    width:413px;
+    height:298px;
 }

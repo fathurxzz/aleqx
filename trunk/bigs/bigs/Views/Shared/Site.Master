@@ -61,7 +61,7 @@
                     -->
                 </div>
            <%} %>
-                <% Html.RenderPartial("Phrase");%>
+                <% //Html.RenderPartial("Phrase");%>
             </div>
             <div id="menu">
                 <% Html.RenderPartial("MainMenu");%>
@@ -75,7 +75,7 @@
             
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
             
-            <% Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
+            <% //Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
             
             <% Html.RenderPartial("VideoSurveillance");%>
             

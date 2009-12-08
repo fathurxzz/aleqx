@@ -1,15 +1,33 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <link href="/Content/Teleport.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript">
+    $(function() {
+        $(".arrow").mousedown(function() {
+            $(this).css("background-position", "0 -120px");
+        });
+        $(".arrow").mouseout(function() {
+            $(this).css("background-position", "0 0px");
+        });
+        $(".arrow").mouseover(function() {
+            $(this).css("background-position", "0 -60px");
+        });
+        $(".arrow").mouseup(function() {
+            $(this).css("background-position", "0 -60px");
+        });
+    });
+</script>
 
 <div>
 Выберите объект, назовите его и телепортируйте.
-    <div id="monik"></div>
+    <div id="monik">
+        <div id="moped"></div>
+    </div>
 
     <div id="arrowsContainer">
-        <a class="leftArrow"></a>
+        <a id="leftArrow" class="leftArrow arrow"></a>
         <div id="arrowSign"></div>
-        <a class="rightArrow"></a>
+        <a id="rightArrow" class="rightArrow arrow"></a>
     </div>
 
     <div id="editTextContainer">
@@ -23,6 +41,11 @@
     </div>
     
     
-    <input id="teleportButton" type="submit" value="ТЕЛЕПОРТИРОВАТЬ" />
+    
+    <div id="teleportButtonSubmitContainer">
+        <a></a>
+    </div>
+    
+    
     
 </div>

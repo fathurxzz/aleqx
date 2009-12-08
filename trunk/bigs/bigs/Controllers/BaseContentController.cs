@@ -16,10 +16,10 @@ namespace bigs.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             string contentUrl = filterContext.RouteData.Values["contentUrl"].ToString();
-
+            
             if (contentUrl != null)
             {
-                
+                /*
                 using (bigs.Models.DataStorage context = new bigs.Models.DataStorage())
                 {
                     SiteContent content = Utils.GetContent(contentUrl);
@@ -40,7 +40,7 @@ namespace bigs.Controllers
                     ViewData["description"] = content.Description;
                     ViewData["contentName"] = content.Name;
                 }
-                
+                */
             }
 
 
