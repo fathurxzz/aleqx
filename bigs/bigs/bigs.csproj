@@ -188,6 +188,8 @@
     <Content Include="Content\Errors.css" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
+    <Content Include="Content\images\edit-left-side.gif" />
+    <Content Include="Content\images\edit-right-side.gif" />
     <Content Include="Content\images\en\connection.gif" />
     <Content Include="Content\images\en\hotgray.gif" />
     <Content Include="Content\images\en\hotgreen.gif" />
@@ -213,8 +215,12 @@
     <Content Include="Content\images\it\teleportgreen.gif" />
     <Content Include="Content\images\it\teleportred.gif" />
     <Content Include="Content\images\it\video.gif" />
+    <Content Include="Content\images\left-arrow.gif" />
+    <Content Include="Content\images\monik.gif" />
+    <Content Include="Content\images\objectname.gif" />
     <Content Include="Content\images\pixel.gif" />
     <Content Include="Content\images\points.gif" />
+    <Content Include="Content\images\right-arrow.gif" />
     <Content Include="Content\images\ru\connection.gif" />
     <Content Include="Content\images\ru\hotgray.gif" />
     <Content Include="Content\images\ru\hotgreen.gif" />
@@ -228,6 +234,7 @@
     <Content Include="Content\images\ru\teleportgreen.gif" />
     <Content Include="Content\images\ru\teleportred.gif" />
     <Content Include="Content\images\ru\video.gif" />
+    <Content Include="Content\images\selectobject.gif" />
     <Content Include="Content\images\slider.gif" />
     <Content Include="Content\images\textareabottom.gif" />
     <Content Include="Content\images\textareatop.gif" />
@@ -240,6 +247,7 @@
     <Content Include="Content\Objects\phrase.png" />
     <Content Include="Content\Request.css" />
     <Content Include="Content\Slider.css" />
+    <Content Include="Content\Teleport.css" />
     <Content Include="images\jquery-1.2.1.pack.js" />
     <Content Include="images\jquery.ifixpng.js" />
     <Content Include="images\pixel.gif" />
