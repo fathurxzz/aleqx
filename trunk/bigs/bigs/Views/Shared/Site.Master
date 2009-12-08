@@ -54,14 +54,10 @@
                     
                     <%=Html.ActionLink("Редактировать", "EditPicture", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
                 
-                <!--
-                    <a href="/Admin/EditText/<%= ViewData["contentUrl"] %>?controllerName=<%= ViewContext.RouteData.Values["controller"] %>">
-                        Редактировать
-                    </a>
-                    -->
+               
                 </div>
            <%} %>
-                <% //Html.RenderPartial("Phrase");%>
+                <% Html.RenderPartial("Phrase");%>
             </div>
             <div id="menu">
                 <% Html.RenderPartial("MainMenu");%>
@@ -75,7 +71,7 @@
             
             <asp:ContentPlaceHolder ID="LeftContent" runat="server" />
             
-            <% //Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
+            <% Html.RenderAction<PagePartsController>(ac => ac.Buttons()); %>
             
             <% Html.RenderPartial("VideoSurveillance");%>
             
@@ -101,11 +97,7 @@
                     
                     <%=Html.ActionLink("Редактировать", "EditText", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
                 
-                <!--
-                    <a href="/Admin/EditText/<%= ViewData["contentUrl"] %>?controllerName=<%= ViewContext.RouteData.Values["controller"] %>">
-                        Редактировать
-                    </a>
-                    -->
+              
                 </div>
            <%} %>
             
