@@ -16,7 +16,15 @@
             $(this).css("background-position", "0 -60px");
         });
     });
+
+    function submitForm() {
+        $("#mainForm").submit();
+    }
+    
 </script>
+
+<%using (Html.BeginForm("ActionName", "ControllerName", FormMethod.Post, new { id = "mainForm" }))
+  {%>
 
 <div>
 Выберите объект, назовите его и телепортируйте.
@@ -34,7 +42,7 @@
         <div id="objectName"></div>
 
         <div id="editLeftSide"></div>
-        <%=Html.TextBox("textBox", "", new { @class = "textBox",maxlength ="10" })%>  
+        <%=Html.TextBox("textBox", "", new { @class = "textBox", maxlength = "10" })%>  
         <div id="editRightSide"></div>
         
         <div id="maxLength">( 10 символов )</div>
@@ -42,10 +50,12 @@
     
     
     
-    <div id="teleportButtonSubmitContainer">
+    <div id="teleportButtonSubmitContainer" onclick="submitForm()">
         <a></a>
     </div>
-    
+
     
     
 </div>
+
+<%} %>
