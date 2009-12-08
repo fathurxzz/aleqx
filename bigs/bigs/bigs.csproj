@@ -184,10 +184,12 @@
     <Content Include="Views\Shared\MainMenu.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\button-bg.gif" />
     <Content Include="Content\Buttons.css" />
     <Content Include="Content\Errors.css" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
+    <Content Include="Content\images\button.gif" />
     <Content Include="Content\images\edit-left-side.gif" />
     <Content Include="Content\images\edit-right-side.gif" />
     <Content Include="Content\images\en\connection.gif" />
@@ -217,6 +219,7 @@
     <Content Include="Content\images\it\video.gif" />
     <Content Include="Content\images\left-arrow.gif" />
     <Content Include="Content\images\monik.gif" />
+    <Content Include="Content\images\moped.gif" />
     <Content Include="Content\images\objectname.gif" />
     <Content Include="Content\images\pixel.gif" />
     <Content Include="Content\images\points.gif" />
