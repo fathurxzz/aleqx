@@ -41,6 +41,8 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     margin-left:150px;
     height:100px;
     margin-bottom:10px;
+    
+    border:solid 1px black;
 }
 
 #editLeftSide, #editRightSide
@@ -49,6 +51,7 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     width:7px;
     height:34px;
     float:left;
+    border:solid 1px black;
 }
 
 #editLeftSide{background-image:url('images/edit-left-side.gif');} 
@@ -65,6 +68,7 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     float:left;
     display:block;
     font-size:20px;
+    border:solid 1px black;
 }
 
 
@@ -100,7 +104,7 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 #teleportButtonSubmitContainer
 {
     padding-left:170px;
-    height:34px;
+    height:36px;
     margin-bottom:10px;
 }
 
@@ -108,9 +112,9 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 {
     background-image:url('images/button.gif');
     background-repeat:no-repeat;
-    width:235px; height:34px; display:block; float:left;
+    width:237px; height:36px; display:block; float:left;
 }
-#teleportButtonSubmitContainer a:hover{background-position:0 -34px; background-repeat:no-repeat;}
+#teleportButtonSubmitContainer a:hover{background-position:0 -36px; background-repeat:no-repeat;}
 
 
 
@@ -144,9 +148,9 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     
 }
 
-#moped
+#diods
 {
-    background-image:url('images/moped.gif');
+    background-image:url('images/diod-red.gif');
     background-repeat:no-repeat;
     margin-left:55px;
     margin-top:45px;
@@ -154,3 +158,17 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     width:413px;
     height:298px;
 }
+
+.diods
+{
+    
+}
+
+.diods
+{
+    
+}
+
+.red
+{}
+.gray{}

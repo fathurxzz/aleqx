@@ -190,6 +190,8 @@
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
     <Content Include="Content\images\button.gif" />
+    <Content Include="Content\images\diod-gray.gif" />
+    <Content Include="Content\images\diod-red.gif" />
     <Content Include="Content\images\edit-left-side.gif" />
     <Content Include="Content\images\edit-right-side.gif" />
     <Content Include="Content\images\en\connection.gif" />
