@@ -2,6 +2,8 @@
 <link href="/Content/Teleport.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
+
+    var cnt = 0;
     $(function() {
         $(".arrow").mousedown(function() {
             $(this).css("background-position", "0 -120px");
@@ -19,10 +21,24 @@
 
     function submitForm() {
 
+        //$("#diods").addClass("faded");
+
+        window.setInterval(blink, 50);
 
         //$("#mainForm").submit();
         
     }
+
+    function blink() {
+        if (cnt < 19) {
+            Sys.UI.DomElement.toggleCssClass($get("diods"), "faded");
+            Sys.UI.DomElement.toggleCssClass($get("teleportButton"), "buttonActive");
+            cnt++;
+        }
+        if (cnt == 19) {
+            Sys.UI.DomElement.toggleCssClass($get("picture"), " hidepicture");
+        }
+    };
     
 </script>
 
@@ -32,7 +48,9 @@
 <div>
 Выберите объект, назовите его и телепортируйте.
     <div id="monik">
-        <div id="diods" class=""></div>
+        <div id="diods" class="">
+            <div id="picture" class=""></div>
+        </div>
     </div>
 
     <div id="arrowsContainer">
@@ -54,7 +72,7 @@
     
     
     <div id="teleportButtonSubmitContainer" onclick="submitForm()">
-        <a></a>
+        <a id="teleportButton" ></a>
     </div>
 
     
