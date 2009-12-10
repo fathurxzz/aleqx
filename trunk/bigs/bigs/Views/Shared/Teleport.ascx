@@ -48,6 +48,12 @@
         else if (cnt == 19) {
             $("#picture ul li").effect("drop", { direction: "right" }, 500, null);
             $('#rightArrow, #leftArrow').unbind("click");
+            $('#teleportTitleSign').css("display", "none");
+            $('#arrowsContainer').css("display", "none");
+            $('#editTextContainer').css("display", "none");
+            $('#teleportButtonSubmitContainer').css("display", "none");
+            $('#waitingFor').css("display", "none");
+            $('#postTeleportMessage').css("display", "block");
         }
         cnt++;
     };
@@ -122,8 +128,9 @@
 <%using (Html.BeginForm("ActionName", "ControllerName", FormMethod.Post, new { id = "mainForm" }))
   {%>
 <div>
-    Выберите объект, назовите его и телепортируйте.
-    
+    <div id="teleportTitleSign">
+        Выберите объект, назовите его и телепортируйте.
+    </div>
     <div id="monik">
         <div id="diods" class="jcarousel-skin-tango">
             <div id="picture">
@@ -155,5 +162,12 @@
     <div id="teleportButtonSubmitContainer" onclick="submitForm()">
         <a id="teleportButton"></a>
     </div>
+    
+    <div id="postTeleportMessage">
+        Свершилось!
+        <br />
+        Моцыкпацык успешно <a style="color:Red" href="#">телепортирован</a>.
+    </div>
+    
 </div>
 <%} %>
