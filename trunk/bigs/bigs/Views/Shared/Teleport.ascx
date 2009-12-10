@@ -23,7 +23,14 @@
 
         //$("#diods").addClass("faded");
 
-        window.setInterval(blink, 50);
+        if ($.trim($get("textBox").value) == "") {
+            $("#textBoxValid").html("*");
+        }
+        else {
+            $("#textBoxValid").html("");
+            window.setInterval(blink, 50);
+        }
+                
 
         //$("#mainForm").submit();
         
@@ -34,7 +41,8 @@
             Sys.UI.DomElement.toggleCssClass($get("diods"), "faded");
             Sys.UI.DomElement.toggleCssClass($get("teleportButton"), "buttonActive");
         }else if (cnt == 19) {
-            $("#picture").effect("puff", null, 500, null);
+        $("#picture").effect("puff", null, 500, null);
+        //$("#picture").effect("drop", { direction: "right" }, 500);
             /*Sys.UI.DomElement.toggleCssClass($get("picture"), " hidepicture");*/
         }
         cnt++;
@@ -67,6 +75,8 @@
         <div id="editLeftSide"></div>
         <%=Html.TextBox("textBox", "", new { @class = "textBox", maxlength = "10" })%>  
         <div id="editRightSide"></div>
+        
+        <div id="textBoxValid" style=""></div>
         
         <div id="maxLength">( 10 символов )</div>
     </div>
