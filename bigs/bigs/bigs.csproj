@@ -186,6 +186,8 @@
   <ItemGroup>
     <Content Include="Content\button-bg.gif" />
     <Content Include="Content\Buttons.css" />
+    <Content Include="Content\Carousel.css" />
+    <Content Include="Content\CarouselSkin.css" />
     <Content Include="Content\Errors.css" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
@@ -263,6 +265,7 @@
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Scripts\jquery.ifixpng.js" />
+    <Content Include="Scripts\jquery.jcarousel.pack.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftAjax.js" />
