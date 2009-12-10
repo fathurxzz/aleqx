@@ -272,3 +272,13 @@ h2 { color:Red; }
 .itvideo{background-image:url('images/it/video.gif');}
 
 
+#cameraRecord
+{
+	width:13px;
+	height:13px;
+	float:left;
+	background-image:url('images/camera-record.gif');
+	background-repeat:no-repeat;
+	margin-top:77px;
+	margin-left:46px;
+}
