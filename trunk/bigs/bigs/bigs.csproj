@@ -244,15 +244,6 @@
     <Content Include="Content\images\ru\video.gif" />
     <Content Include="Content\images\selectobject.gif" />
     <Content Include="Content\images\slider.gif" />
-    <Content Include="Content\images\teleport-content\_teleport-alko.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-cake.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-clothes.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-flammable.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-kombain.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-moto.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-posud.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-rice.jpg" />
-    <Content Include="Content\images\teleport-content\_teleport-vegetables.jpg" />
     <Content Include="Content\images\textareabottom.gif" />
     <Content Include="Content\images\textareatop.gif" />
     <Content Include="Content\images\textboxleftside.gif" />
@@ -313,6 +304,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
+    <Folder Include="Content\images\teleport-content\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
