@@ -5,11 +5,21 @@
 <div id="contentContainer">
 <div id="contentContainerTop"></div>
 <div id="innerContentContainer">
+<%
+     string controller = (string)ViewContext.RouteData.Values["controller"];
+    string contentName = (string)ViewData["contentName"];
+
+    if (controller.ToLower() == "services" && contentName.ToLower() == "services" && ViewData["teleportObjectImageUrl"] != null)
+    {
+        if (!string.IsNullOrEmpty(ViewData["teleportObjectImageUrl"].ToString()) && !string.IsNullOrEmpty(ViewData["teleportMessage"].ToString()))
+            Html.RenderPartial("TeleportedObject");
+    
+    } %>
+
 <%= ViewData["text"]%>
 
 <%
-    string controller = (string)ViewContext.RouteData.Values["controller"];
-    string contentName = (string)ViewData["contentName"];
+   
 
     switch (controller.ToLower())
     {
@@ -18,7 +28,10 @@
         case "services":
             {
                 if (contentName.ToLower() == "services")
-                Html.RenderPartial("CargoTeleport");
+                {
+                    
+                    Html.RenderPartial("CargoTeleport");
+                }
             }
             break;
         case "teleportsession":

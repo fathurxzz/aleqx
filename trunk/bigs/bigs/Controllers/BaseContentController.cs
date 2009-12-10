@@ -16,7 +16,7 @@ namespace bigs.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             string contentUrl = filterContext.RouteData.Values["contentUrl"].ToString();
-            
+
             if (contentUrl != null)
             {
                
@@ -48,10 +48,10 @@ namespace bigs.Controllers
             base.OnActionExecuting(filterContext);
         }
 
-        public ActionResult Index(string contentUrl)
+        public ActionResult Index(string contentUrl, string teleportMessageBox, string teleportObjectImageUrl)
         {
-            
-            
+            ViewData["teleportMessage"] = teleportMessageBox;
+            ViewData["teleportObjectImageUrl"] = teleportObjectImageUrl;
 
             return View();
         }

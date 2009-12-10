@@ -54,7 +54,7 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 #editLeftSide{background-image:url('images/edit-left-side.gif');} 
 #editRightSide{background-image:url('images/edit-right-side.gif');}
 
-#textBox
+#teleportMessageBox
 {
     border-left-style:none;
     border-right-style:none;
@@ -212,5 +212,7 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 #postTeleportMessage
 {
+	text-align:center;
 	display:none;
+	font-size:25px;
 }

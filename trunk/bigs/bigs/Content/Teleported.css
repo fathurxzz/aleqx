@@ -1,0 +1,48 @@
+﻿#teleportedContainer
+{
+	margin-left:100px;
+	width:348px;
+}
+
+
+#teleportedTop,#telepordedBottom
+{
+	width:346px;
+}
+
+
+#teleportedTop
+{
+	height:26px;
+	background-image:url('images/teleported-top.gif');
+}
+
+#telepordedBottom
+{
+	background-image:url('images/teleported-bottom.gif');
+	height:11px;
+}
+
+#teleportedMiddle
+{
+	width:344px;
+	border-top-style:none;
+	border-bottom-style:none;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-width:1px;
+	border-color:Black;
+	background-color:#ffffff;
+}
+
+#teleportedImage
+{
+	margin-left:20px;
+}
+
+#text
+{
+	margin-top:20px;
+	margin-bottom:20px;
+	font-weight:bold;
+}

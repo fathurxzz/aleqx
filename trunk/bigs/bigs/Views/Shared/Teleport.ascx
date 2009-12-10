@@ -1,4 +1,7 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="bigs.Helpers" %>
+
+
 <link href="/Content/Teleport.css" rel="stylesheet" type="text/css" />
 <link href="/Content/Carousel.css" rel="stylesheet" type="text/css" />
 <link href="/Content/CarouselSkin.css" rel="stylesheet" type="text/css" />
@@ -23,11 +26,11 @@
         });
     });
 
-    function submitForm() {
+    function startTeleport() {
 
         //$("#diods").addClass("faded");
 
-        if ($.trim($get("textBox").value) == "") {
+        if ($.trim($get("teleportMessageBox").value) == "") {
             $("#textBoxValid").html("*");
         }
         else {
@@ -36,8 +39,12 @@
         }
 
 
-        //$("#mainForm").submit();
 
+
+    }
+
+    function submitForm() {
+        $("#mainForm").submit();
     }
 
     function blink() {
@@ -54,11 +61,15 @@
             $('#teleportButtonSubmitContainer').css("display", "none");
             $('#waitingFor').css("display", "none");
             $('#postTeleportMessage').css("display", "block");
+            
         }
         cnt++;
+        
+        
     };
 
     function mycarousel_initCallback(carousel) {
+        
         jQuery('.jcarousel-control a').bind('click', function() {
             carousel.scroll(jQuery.jcarousel.intval(jQuery(this).text()));
             return false;
@@ -96,7 +107,7 @@
 
 
     var mycarousel_itemList = [
-    { url: '/Content/images/teleport-content/300x200_alko.jpg" />', title: 'alko' },
+    { url: '/Content/images/teleport-content/300x200_alko.jpg', title: 'alko' },
     { url: '/Content/images/teleport-content/300x200_cake.jpg', title: 'cake' },
     { url: '/Content/images/teleport-content/300x200_clothes.jpg', title: 'clothes' },
     { url: '/Content/images/teleport-content/300x200_flame.jpg', title: 'flammable' },
@@ -112,6 +123,7 @@
     function mycarousel_itemVisibleInCallback(carousel, item, i, state, evt) {
         // The index() method calculates the index from a
         // given index who is out of the actual item range.
+        
         var idx = carousel.index(i, mycarousel_itemList.length);
         carousel.add(i, mycarousel_getItemHTML(mycarousel_itemList[idx - 1]));
     };
@@ -121,11 +133,16 @@
     };
 
     function mycarousel_getItemHTML(item) {
+        $get("teleportObjectImageUrl").value = item.url;
         return '<img src="' + item.url + '" width="300" height="200" alt="' + item.title + '" />';
     };
+
+    function update(value) {
+        $("#objName").text(value);
+    }
 </script>
 
-<%using (Html.BeginForm("ActionName", "ControllerName", FormMethod.Post, new { id = "mainForm" }))
+<%using (Html.BeginForm("Index", "Services", new { contentUrl = Html.ResourceString("Services") }, FormMethod.Post, new { id = "mainForm"}))
   {%>
 <div>
     <div id="teleportTitleSign">
@@ -151,7 +168,8 @@
         </div>
         <div id="editLeftSide">
         </div>
-        <%=Html.TextBox("textBox", "", new { @class = "textBox", maxlength = "10" })%>
+        <%=Html.Hidden("teleportObjectImageUrl")%>
+        <%=Html.TextBox("teleportMessageBox", "", new { @class = "teleportMessageBox", maxlength = "10", onkeyup="update(this.value)" })%>
         <div id="editRightSide">
         </div>
         <div id="textBoxValid" style="">
@@ -159,14 +177,18 @@
         <div id="maxLength">
             ( 10 символов )</div>
     </div>
-    <div id="teleportButtonSubmitContainer" onclick="submitForm()">
+    <div id="teleportButtonSubmitContainer" onclick="startTeleport()">
         <a id="teleportButton"></a>
     </div>
     
     <div id="postTeleportMessage">
-        Свершилось!
+    
+        <b>СВЕРШИЛОСЬ!</b>
         <br />
-        Моцыкпацык успешно <a style="color:Red" href="#">телепортирован</a>.
+        <br />
+        
+        <label id="objName"></label> успешно <a style="color:Red" href="#" onclick="submitForm()">телепортирован</a>.
+    
     </div>
     
 </div>
