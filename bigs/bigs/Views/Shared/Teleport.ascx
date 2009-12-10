@@ -49,7 +49,9 @@
 Выберите объект, назовите его и телепортируйте.
     <div id="monik">
         <div id="diods" class="">
-            <div id="picture" class=""></div>
+            
+            <img id="picture" src="/Content/images/picture.png" alt="" />
+            
         </div>
     </div>
 

@@ -179,8 +179,8 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 #picture
 {
-    background-image:url('images/picture.png');
-    background-repeat:no-repeat;
+    /*background-image:url('images/picture.png');
+    background-repeat:no-repeat;*/
     margin-left:55px;
     margin-top:60px;
     float:left;
