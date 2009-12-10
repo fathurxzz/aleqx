@@ -57,7 +57,7 @@
             carousel.scroll(jQuery.jcarousel.intval(jQuery(this).text()));
             return false;
         });
-     
+
         jQuery('.jcarousel-scroll select').bind('change', function() {
             carousel.options.scroll = jQuery.jcarousel.intval(this.options[this.selectedIndex].value);
             return false;
@@ -82,12 +82,42 @@
             initCallback: mycarousel_initCallback,
             scroll: 1,
             buttonNextHTML: null,
-            buttonPrevHTML: null
+            buttonPrevHTML: null,
+            itemVisibleInCallback: {onBeforeAnimation: mycarousel_itemVisibleInCallback},
+            itemVisibleOutCallback: {onAfterAnimation: mycarousel_itemVisibleOutCallback}
         });
-
-
     });
+
+
+    var mycarousel_itemList = [
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' },
+    { url: '/Content/images/picture.png', title: 'Моцик' }
+];
+
     
+
+    function mycarousel_itemVisibleInCallback(carousel, item, i, state, evt) {
+        // The index() method calculates the index from a
+        // given index who is out of the actual item range.
+        var idx = carousel.index(i, mycarousel_itemList.length);
+        carousel.add(i, mycarousel_getItemHTML(mycarousel_itemList[idx - 1]));
+    };
+
+    function mycarousel_itemVisibleOutCallback(carousel, item, i, state, evt) {
+        carousel.remove(i);
+    };
+
+    function mycarousel_getItemHTML(item) {
+        return '<img src="' + item.url + '" width="300" height="180" alt="' + item.title + '" />';
+    };
 </script>
 
 <%using (Html.BeginForm("ActionName", "ControllerName", FormMethod.Post, new { id = "mainForm" }))
@@ -99,13 +129,7 @@
         <div id="diods" class="jcarousel-skin-tango">
             <div id="picture">
                 <ul id="mycarousel" class="">
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
-                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+
                 </ul>
             </div>
         </div>
