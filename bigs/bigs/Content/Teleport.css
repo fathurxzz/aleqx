@@ -199,3 +199,13 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     color:Red;
     float:left
 }
+
+#waitingFor
+{
+    background-image:url('images/waiting.gif');
+    width:58px;
+    height:7px;
+    float:left;
+    margin-top:400px;
+    margin-left:-213px;
+}

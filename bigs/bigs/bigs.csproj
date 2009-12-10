@@ -259,6 +259,7 @@
     <Content Include="Content\images\textboxrightside.gif" />
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
+    <Content Include="Content\images\waiting.gif" />
     <Content Include="Content\images\yellowboxbottom.gif" />
     <Content Include="Content\images\yellowboxtop.gif" />
     <Content Include="Content\Objects\phrase.png" />
