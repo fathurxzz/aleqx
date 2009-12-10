@@ -223,7 +223,7 @@
     <Content Include="Content\images\monik.gif" />
     <Content Include="Content\images\moped.gif" />
     <Content Include="Content\images\objectname.gif" />
-    <Content Include="Content\images\picture.gif" />
+    <Content Include="Content\images\picture.png" />
     <Content Include="Content\images\pixel.gif" />
     <Content Include="Content\images\points.gif" />
     <Content Include="Content\images\right-arrow.gif" />
