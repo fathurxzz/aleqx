@@ -90,16 +90,15 @@
 
 
     var mycarousel_itemList = [
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' },
-    { url: '/Content/images/picture.png', title: 'Моцик' }
+    { url: '/Content/images/teleport-content/_teleport-alko.jpg" />', title: 'alko' },
+    { url: '/Content/images/teleport-content/_teleport-cake.jpg', title: 'cake' },
+    { url: '/Content/images/teleport-content/_teleport-clothes.jpg', title: 'clothes' },
+    { url: '/Content/images/teleport-content/_teleport-flammable.jpg', title: 'flammable' },
+    { url: '/Content/images/teleport-content/_teleport-kombain.jpg', title: 'kombain' },
+    { url: '/Content/images/teleport-content/_teleport-moto.jpg', title: 'moto' },
+    { url: '/Content/images/teleport-content/_teleport-posud.jpg', title: 'posud' },
+    { url: '/Content/images/teleport-content/_teleport-rice.jpg', title: 'rice' },
+    { url: '/Content/images/teleport-content/_teleport-vegetables.jpg', title: 'vegetables' }
 ];
 
 
@@ -116,7 +115,7 @@
     };
 
     function mycarousel_getItemHTML(item) {
-        return '<img src="' + item.url + '" width="300" height="180" alt="' + item.title + '" />';
+        return '<img src="' + item.url + '" width="300" height="227" alt="' + item.title + '" />';
     };
 </script>
 
