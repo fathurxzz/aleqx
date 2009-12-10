@@ -195,3 +195,10 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 }
 
 
+#textBoxValid
+{
+    font-size:30px;
+    font-weight:bold;
+    color:Red;
+    float:left
+}
