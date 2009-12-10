@@ -123,6 +123,7 @@
   {%>
 <div>
     Выберите объект, назовите его и телепортируйте.
+    
     <div id="monik">
         <div id="diods" class="jcarousel-skin-tango">
             <div id="picture">
@@ -130,6 +131,7 @@
                 </ul>
             </div>
         </div>
+        <div id="waitingFor"></div>
     </div>
     <div id="arrowsContainer">
         <a id="leftArrow" class="leftArrow arrow"></a>
