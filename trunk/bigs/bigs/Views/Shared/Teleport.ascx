@@ -115,7 +115,7 @@
     };
 
     function mycarousel_getItemHTML(item) {
-        return '<img src="' + item.url + '" width="300" height="227" alt="' + item.title + '" />';
+        return '<img src="' + item.url + '" width="300" height="200" alt="' + item.title + '" />';
     };
 </script>
 

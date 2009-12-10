@@ -179,14 +179,11 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 #picture
 {
-    /*background-image:url('images/picture.png');
-    background-repeat:no-repeat;*/
     margin-left:55px;
-    margin-top:45px;
+    margin-top:48px;
     float:left;
     width:300px;
-    height:227px;
-    
+    height:200px;
 }
 
 .hidepicture
