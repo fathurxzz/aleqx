@@ -33,11 +33,11 @@
         if (cnt < 19) {
             Sys.UI.DomElement.toggleCssClass($get("diods"), "faded");
             Sys.UI.DomElement.toggleCssClass($get("teleportButton"), "buttonActive");
-            cnt++;
+        }else if (cnt == 19) {
+            $("#picture").effect("puff", null, 500, null);
+            /*Sys.UI.DomElement.toggleCssClass($get("picture"), " hidepicture");*/
         }
-        if (cnt == 19) {
-            Sys.UI.DomElement.toggleCssClass($get("picture"), " hidepicture");
-        }
+        cnt++;
     };
     
 </script>
