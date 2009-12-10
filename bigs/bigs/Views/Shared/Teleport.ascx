@@ -90,15 +90,15 @@
 
 
     var mycarousel_itemList = [
-    { url: '/Content/images/teleport-content/_teleport-alko.jpg" />', title: 'alko' },
-    { url: '/Content/images/teleport-content/_teleport-cake.jpg', title: 'cake' },
-    { url: '/Content/images/teleport-content/_teleport-clothes.jpg', title: 'clothes' },
-    { url: '/Content/images/teleport-content/_teleport-flammable.jpg', title: 'flammable' },
-    { url: '/Content/images/teleport-content/_teleport-kombain.jpg', title: 'kombain' },
-    { url: '/Content/images/teleport-content/_teleport-moto.jpg', title: 'moto' },
-    { url: '/Content/images/teleport-content/_teleport-posud.jpg', title: 'posud' },
-    { url: '/Content/images/teleport-content/_teleport-rice.jpg', title: 'rice' },
-    { url: '/Content/images/teleport-content/_teleport-vegetables.jpg', title: 'vegetables' }
+    { url: '/Content/images/teleport-content/300x200_alko.jpg" />', title: 'alko' },
+    { url: '/Content/images/teleport-content/300x200_cake.jpg', title: 'cake' },
+    { url: '/Content/images/teleport-content/300x200_clothes.jpg', title: 'clothes' },
+    { url: '/Content/images/teleport-content/300x200_flame.jpg', title: 'flammable' },
+    { url: '/Content/images/teleport-content/300x200_kombine.jpg', title: 'kombain' },
+    { url: '/Content/images/teleport-content/300x200_moto.jpg', title: 'moto' },
+    { url: '/Content/images/teleport-content/300x200_posuda.jpg', title: 'posud' },
+    { url: '/Content/images/teleport-content/300x200_rice.jpg', title: 'rice' },
+    { url: '/Content/images/teleport-content/300x200_vegetables.jpg', title: 'vegetables' }
 ];
 
 
