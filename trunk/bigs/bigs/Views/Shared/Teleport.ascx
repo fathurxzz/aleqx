@@ -1,5 +1,9 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <link href="/Content/Teleport.css" rel="stylesheet" type="text/css" />
+<link href="/Content/Carousel.css" rel="stylesheet" type="text/css" />
+<link href="/Content/CarouselSkin.css" rel="stylesheet" type="text/css" />
+<script src="/Scripts/jquery.jcarousel.pack.js" type="text/javascript"></script>
+
 
 <script type="text/javascript">
 
@@ -47,6 +51,11 @@
         }
         cnt++;
     };
+
+
+    jQuery(document).ready(function() {
+        jQuery('#mycarousel').jcarousel();
+    });
     
 </script>
 
@@ -56,10 +65,18 @@
 <div>
 Выберите объект, назовите его и телепортируйте.
     <div id="monik">
-        <div id="diods" class="">
-            
-            <img id="picture" src="/Content/images/picture.png" alt="" />
-            
+        <div id="diods" class="jcarousel-skin-tango">
+            <div id="picture">
+                <ul id="mycarousel" class="">
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                <li><img src="/Content/images/picture.png" alt="" width="300" height="180" /></li>
+                </ul>
+            </div>
         </div>
     </div>
 
