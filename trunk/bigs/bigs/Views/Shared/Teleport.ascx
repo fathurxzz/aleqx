@@ -45,7 +45,7 @@
             Sys.UI.DomElement.toggleCssClass($get("diods"), "faded");
             Sys.UI.DomElement.toggleCssClass($get("teleportButton"), "buttonActive");
         }else if (cnt == 19) {
-        $("#picture").effect("puff", null, 500, null);
+        $("#picture ul li").effect("drop", { direction: "right" }, 500, null);
         //$("#picture").effect("drop", { direction: "right" }, 500);
             /*Sys.UI.DomElement.toggleCssClass($get("picture"), " hidepicture");*/
         }
