@@ -209,3 +209,8 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     margin-top:400px;
     margin-left:-213px;
 }
+
+#postTeleportMessage
+{
+	display:none;
+}
