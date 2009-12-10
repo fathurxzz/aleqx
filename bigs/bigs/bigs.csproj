@@ -244,6 +244,15 @@
     <Content Include="Content\images\ru\video.gif" />
     <Content Include="Content\images\selectobject.gif" />
     <Content Include="Content\images\slider.gif" />
+    <Content Include="Content\images\teleport-content\_teleport-alko.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-cake.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-clothes.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-flammable.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-kombain.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-moto.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-posud.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-rice.jpg" />
+    <Content Include="Content\images\teleport-content\_teleport-vegetables.jpg" />
     <Content Include="Content\images\textareabottom.gif" />
     <Content Include="Content\images\textareatop.gif" />
     <Content Include="Content\images\textboxleftside.gif" />
