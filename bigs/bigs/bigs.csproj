@@ -189,6 +189,7 @@
     <Content Include="Content\Carousel.css" />
     <Content Include="Content\CarouselSkin.css" />
     <Content Include="Content\Errors.css" />
+    <Content Include="Content\images\blurredBorders.png" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
     <Content Include="Content\images\button.gif" />

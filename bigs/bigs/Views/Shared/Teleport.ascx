@@ -150,9 +150,11 @@
     </div>
     <div id="monik">
         <div id="diods" class="jcarousel-skin-tango">
-            <div id="picture">
-                <ul id="mycarousel" class="">
-                </ul>
+                <div id="picture">
+                    <ul id="mycarousel" class="">
+                    </ul>
+                </div>
+            <div id="pictureWrapper">
             </div>
         </div>
         <div id="waitingFor"></div>
