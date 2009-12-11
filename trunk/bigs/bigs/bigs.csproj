@@ -96,6 +96,7 @@
     <Compile Include="Controllers\PagePartsController.cs" />
     <Compile Include="Controllers\RequestsController.cs" />
     <Compile Include="Controllers\Resources.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SellForASongController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\SystemSettings.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\Mailelper.cs" />
     <Compile Include="Models\Captcha\CaptchaImage.cs" />
-    <Compile Include="Models\Captcha\CaptchaImageHandler.cs" />
     <Compile Include="Models\Captcha\CaptchaValidationAttribute.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>

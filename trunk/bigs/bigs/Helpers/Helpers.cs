@@ -58,7 +58,7 @@ namespace bigs.Helpers
             stringBuilder.Append("\" />");
             stringBuilder.AppendLine();
             stringBuilder.Append("<img src=\"");
-            stringBuilder.Append("/captcha.ashx?guid=" + image.UniqueId);
+            stringBuilder.Append("/Security/Captcha/?guid=" + image.UniqueId);
             stringBuilder.Append("\" alt=\"CAPTCHA\" width=\"");
             stringBuilder.Append(width);
             stringBuilder.Append("\" height=\"");
