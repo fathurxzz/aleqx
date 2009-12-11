@@ -18,6 +18,12 @@ namespace bigs
             routes.IgnoreRoute("captcha.ashx");
 
             routes.MapRoute(
+                "Captcha",                                              // Route name
+                "Security/Captcha",                           // URL with parameters
+                new { controller = "Security", action = "Captcha" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "FileNotFound",                                              // Route name
                 "Errors/NotFound",                           // URL with parameters
                 new { controller = "Errors", action = "FileNotFound" }  // Parameter defaults
