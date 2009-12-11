@@ -187,7 +187,7 @@
         <br />
         <br />
         
-        <label id="objName"></label> успешно <a style="color:Red" href="#" onclick="submitForm()">телепортирован</a>.
+        Объект <label id="objName"></label> успешно <a style="color:Red" href="#" onclick="submitForm()">телепортирован</a>.
     
     </div>
     

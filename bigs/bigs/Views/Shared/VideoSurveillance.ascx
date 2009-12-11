@@ -8,5 +8,9 @@
 </script>
 
 <div class="<%=bigs.Controllers.SystemSettings.CurrentLanguageShort%>video">
-<div id="cameraRecord"></div>
+<div id="cameraRecordBg">
+<div id="cameraRecord">
+</div>
+</div>
+
 </div>
