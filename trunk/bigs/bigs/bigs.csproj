@@ -192,6 +192,7 @@
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
     <Content Include="Content\images\button.gif" />
+    <Content Include="Content\images\camera-record-bg.gif" />
     <Content Include="Content\images\camera-record.gif" />
     <Content Include="Content\images\diod-gray.gif" />
     <Content Include="Content\images\diod-red.gif" />
