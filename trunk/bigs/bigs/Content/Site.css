@@ -69,10 +69,12 @@ body
 
 #phrase
 {
-    height:180px;
+    /*height:180px;*/
     width:660px;
+    margin-left:10px;
     /*float:left;
     display:block;*/
+    /*padding-bottom:2px;*/
 }
 
 #phraseImage
