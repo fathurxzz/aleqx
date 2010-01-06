@@ -106,7 +106,7 @@ namespace bigs
 			if (String.IsNullOrEmpty(guid))
 				return null;
 
-			return (CaptchaImage)HttpContext.Current.Session[guid];
+			return (CaptchaImage)HttpContext.Current.Cache[guid];
 		}
 
 		/// <summary>
