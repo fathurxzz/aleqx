@@ -43,16 +43,7 @@ namespace bigs.Helpers
                 Width = width,
             };
 
-            HttpContext.Current.Session[image.UniqueId] = image;
-
-            //HttpRuntime.Cache.Add(
-            //    image.UniqueId,
-            //    image,
-            //    null,
-            //    DateTime.Now.AddSeconds(bigs.CaptchaImage.CacheTimeOut),
-            //    Cache.NoSlidingExpiration,
-            //    CacheItemPriority.NotRemovable,
-            //    null);
+            HttpContext.Current.Cache.Add(image.UniqueId, image, null, DateTime.Now.AddMinutes(30), Cache.NoSlidingExpiration, CacheItemPriority.Default, null);
 
             StringBuilder stringBuilder = new StringBuilder(256);
             stringBuilder.Append("<input type=\"hidden\" name=\"captcha-guid\" value=\"");
@@ -60,7 +51,7 @@ namespace bigs.Helpers
             stringBuilder.Append("\" />");
             stringBuilder.AppendLine();
             stringBuilder.Append("<img src=\"");
-            stringBuilder.Append("/Security/Captcha/?guid=" + image.UniqueId);
+            stringBuilder.Append("/captcha.ashx?guid=" + image.UniqueId);
             stringBuilder.Append("\" alt=\"CAPTCHA\" width=\"");
             stringBuilder.Append(width);
             stringBuilder.Append("\" height=\"");
@@ -69,6 +60,7 @@ namespace bigs.Helpers
 
             return stringBuilder.ToString();
         }
+
 
     }
 }

@@ -21,8 +21,6 @@
 
                 string contentUrl = (string)ViewData["contentUrl"];
 
-
-
                 string contentName = (from contentNames in context.SiteContent where contentNames.Url == contentUrl && contentNames.Language == SystemSettings.CurrentLanguage select contentNames.Name).First();
 
                 if (content.Name != contentName)

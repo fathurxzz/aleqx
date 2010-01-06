@@ -25,7 +25,7 @@ namespace bigs.Controllers
                     SiteContent content = Utils.GetContent(contentUrl);
 
                     if (content == null)
-                        Response.Redirect("~/Errors/NotFound");
+                        throw new HttpException(404, "NotFound");
 
 
                     if (content.Language != SystemSettings.CurrentLanguage)
@@ -42,9 +42,6 @@ namespace bigs.Controllers
                 }
                 
             }
-
-
-
             base.OnActionExecuting(filterContext);
         }
 

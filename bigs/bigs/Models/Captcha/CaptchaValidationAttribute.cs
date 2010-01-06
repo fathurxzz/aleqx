@@ -59,7 +59,7 @@ namespace bigs
             string expectedValue = image == null ? String.Empty : image.Text;
 
             // removes the captch from cache so it cannot be used again
-            filterContext.HttpContext.Session.Remove(guid);
+            filterContext.HttpContext.Cache.Remove(guid);
 
             // validate the captch
             filterContext.ActionParameters["captchaValid"] =
