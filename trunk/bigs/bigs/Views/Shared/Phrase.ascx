@@ -1,10 +1,11 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="bigs.Models" %>
+<%@ Import Namespace="bigs.Controllers" %>
 <% 
     using (DataStorage context = new DataStorage())
     {
         var rnd = new Random();
-        List<ImageContent> images = (from im in context.ImageContent select im).ToList();
+        List<ImageContent> images = (from im in context.ImageContent where im.Language== SystemSettings.CurrentLanguage select im).ToList();
         if (images.Count > 0)
         {
             string imageLocationPath = Server.MapPath("/Content/Objects/");
