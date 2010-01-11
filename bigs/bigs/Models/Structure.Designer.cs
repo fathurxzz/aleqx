@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("bigskie_contentModel", "FK_SiteContent_SiteContent", "SiteContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(bigs.Models.SiteContent), "SiteContent1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(bigs.Models.SiteContent))]
 
 // Original file name:
-// Generation date: 02.12.2009 0:00:15
+// Generation date: 11/01/2010 10:20:35
 namespace bigs.Models
 {
     
@@ -632,11 +632,13 @@ namespace bigs.Models
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
         /// <param name="fileName">Initial value of FileName.</param>
-        public static ImageContent CreateImageContent(int id, string fileName)
+        /// <param name="language">Initial value of Language.</param>
+        public static ImageContent CreateImageContent(int id, string fileName, string language)
         {
             ImageContent imageContent = new ImageContent();
             imageContent.Id = id;
             imageContent.FileName = fileName;
+            imageContent.Language = language;
             return imageContent;
         }
         /// <summary>
@@ -685,6 +687,29 @@ namespace bigs.Models
         private string _FileName;
         partial void OnFileNameChanging(string value);
         partial void OnFileNameChanged();
+        /// <summary>
+        /// There are no comments for Property Language in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Language
+        {
+            get
+            {
+                return this._Language;
+            }
+            set
+            {
+                this.OnLanguageChanging(value);
+                this.ReportPropertyChanging("Language");
+                this._Language = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Language");
+                this.OnLanguageChanged();
+            }
+        }
+        private string _Language;
+        partial void OnLanguageChanging(string value);
+        partial void OnLanguageChanged();
     }
     /// <summary>
     /// There are no comments for bigskie_contentModel.Request in the schema.

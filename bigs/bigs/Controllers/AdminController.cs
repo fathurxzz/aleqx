@@ -75,7 +75,7 @@ namespace bigs.Controllers
             {
                 ViewData["controllerName"] = controllerName;
                 ViewData["contentUrl"] = contentUrl;
-                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
+                List<ImageContent> images = context.ImageContent.Where(i => i.Language == SystemSettings.CurrentLanguage).Select(i => i).ToList();
                 return View(images);
             }
         }
@@ -96,6 +96,7 @@ namespace bigs.Controllers
                     Request.Files["image"].InputStream.Close();
                     ImageContent imageItem = new ImageContent();
                     imageItem.FileName = imageName;
+                    imageItem.Language = SystemSettings.CurrentLanguage;
                     context.AddToImageContent(imageItem);
                     context.SaveChanges();
                 }
