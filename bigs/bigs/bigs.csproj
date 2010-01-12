@@ -257,7 +257,7 @@
     <Content Include="Content\images\teleport-content\300x200_rice.jpg" />
     <Content Include="Content\images\teleport-content\300x200_vegetables.jpg" />
     <Content Include="Content\images\teleported-bottom.gif" />
-    <Content Include="Content\images\teleported-top.gif" />
+    <Content Include="Content\images\teleported-top-ru.gif" />
     <Content Include="Content\images\textareabottom.gif" />
     <Content Include="Content\images\textareatop.gif" />
     <Content Include="Content\images\textboxleftside.gif" />

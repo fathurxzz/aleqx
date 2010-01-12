@@ -5,7 +5,7 @@
 }
 
 
-#teleportedTop,#telepordedBottom
+#teleportedTop, #telepordedBottom
 {
 	width:346px;
 }
@@ -14,7 +14,21 @@
 #teleportedTop
 {
 	height:26px;
-	background-image:url('images/teleported-top.gif');
+}
+
+.teleportedTop-ru
+{
+	background-image:url('images/teleported-top-ru.gif');
+}
+
+.teleportedTop-en
+{
+	background-image:url('images/teleported-top-en.gif');
+}
+
+.teleportedTop-it
+{
+	background-image:url('images/teleported-top-it.gif');
 }
 
 #telepordedBottom
