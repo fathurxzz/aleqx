@@ -192,6 +192,8 @@
     <Content Include="Content\images\blurredBorders.png" />
     <Content Include="Content\images\bottommaincontainer.gif" />
     <Content Include="Content\images\bottomsubmenu.gif" />
+    <Content Include="Content\images\button-en.gif" />
+    <Content Include="Content\images\button-it.gif" />
     <Content Include="Content\images\button.gif" />
     <Content Include="Content\images\camera-record-bg.gif" />
     <Content Include="Content\images\camera-record.gif" />
@@ -225,9 +227,12 @@
     <Content Include="Content\images\it\teleportred.gif" />
     <Content Include="Content\images\it\video.gif" />
     <Content Include="Content\images\left-arrow.gif" />
-    <Content Include="Content\images\monik.gif" />
+    <Content Include="Content\images\monik-en.gif" />
+    <Content Include="Content\images\monik-ru.gif" />
     <Content Include="Content\images\moped.gif" />
-    <Content Include="Content\images\objectname.gif" />
+    <Content Include="Content\images\objectname-en.gif" />
+    <Content Include="Content\images\objectname-it.gif" />
+    <Content Include="Content\images\objectname-ru.gif" />
     <Content Include="Content\images\picture.png" />
     <Content Include="Content\images\pixel.gif" />
     <Content Include="Content\images\points.gif" />
@@ -245,7 +250,9 @@
     <Content Include="Content\images\ru\teleportgreen.gif" />
     <Content Include="Content\images\ru\teleportred.gif" />
     <Content Include="Content\images\ru\video.gif" />
-    <Content Include="Content\images\selectobject.gif" />
+    <Content Include="Content\images\selectobject-en.gif" />
+    <Content Include="Content\images\selectobject-it.gif" />
+    <Content Include="Content\images\selectobject-ru.gif" />
     <Content Include="Content\images\slider.gif" />
     <Content Include="Content\images\teleport-content\300x200_alko.jpg" />
     <Content Include="Content\images\teleport-content\300x200_cake.jpg" />
@@ -266,7 +273,9 @@
     <Content Include="Content\images\textboxrightside.gif" />
     <Content Include="Content\images\topmaincontainer.gif" />
     <Content Include="Content\images\topsubmenu.gif" />
-    <Content Include="Content\images\waiting.gif" />
+    <Content Include="Content\images\waiting-en.gif" />
+    <Content Include="Content\images\waiting-it.gif" />
+    <Content Include="Content\images\waiting-ru.gif" />
     <Content Include="Content\images\yellowboxbottom.gif" />
     <Content Include="Content\images\yellowboxtop.gif" />
     <Content Include="Content\Objects\phrase.png" />
