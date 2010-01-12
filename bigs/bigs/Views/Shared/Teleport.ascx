@@ -1,5 +1,6 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="bigs.Helpers" %>
+<%@ Import Namespace="bigs.Controllers" %>
 
 
 <link href="/Content/Teleport.css" rel="stylesheet" type="text/css" />
@@ -189,8 +190,14 @@
         <br />
         <br />
         
-        Объект <label id="objName"></label> успешно <a style="color:Red" href="#" onclick="submitForm()">телепортирован</a>.
-    
+        <%if (SystemSettings.CurrentLanguageShort == "it")
+          { %>
+          <%=Html.ResourceString("Object")%> <%=Html.ResourceString("Successfully")%> <a style="color:Red" href="#" onclick="submitForm()"><%=Html.ResourceString("Teleported")%></a> <label id="Label1"></label>.
+        <%}
+          else
+          { %>
+        <%=Html.ResourceString("Object")%> <label id="objName"></label> <%=Html.ResourceString("Successfully")%> <a style="color:Red" href="#" onclick="submitForm()"><%=Html.ResourceString("Teleported")%></a>.
+    <%} %>
     </div>
     
 </div>

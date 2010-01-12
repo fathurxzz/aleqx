@@ -234,4 +234,22 @@
   <data name="IncorrectTeleportTo" xml:space="preserve">
     <value />
   </data>
+  <data name="AskUs" xml:space="preserve">
+    <value>Ask us!</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Object</value>
+  </data>
+  <data name="Successfully" xml:space="preserve">
+    <value>has been successfully</value>
+  </data>
+  <data name="Teleported" xml:space="preserve">
+    <value>teleported</value>
+  </data>
+  <data name="ThatIsTheWayWeWorkBegin" xml:space="preserve">
+    <value>That is the way we work. And teleportation object may not only be</value>
+  </data>
+  <data name="ThatIsTheWayWeWorkEnd" xml:space="preserve">
+    <value>but any other cargo as well.</value>
+  </data>
 </root>

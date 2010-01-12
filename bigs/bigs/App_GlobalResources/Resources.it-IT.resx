@@ -234,4 +234,23 @@
   <data name="IncorrectTeleportTo" xml:space="preserve">
     <value />
   </data>
+  <data name="AskUs" xml:space="preserve">
+    <value>Ci chiedi!</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Siamo</value>
+  </data>
+  <data name="Successfully" xml:space="preserve">
+    <value>gia' riusciti a</value>
+  </data>
+  <data name="Teleported" xml:space="preserve">
+    <value>teletrasportare</value>
+  </data>
+  <data name="ThatIsTheWayWeWorkBegin" xml:space="preserve">
+    <value>Ecco nostro risultato! Sai che il prodotto da teletrasportare puo'
+essere non solo questo</value>
+  </data>
+  <data name="ThatIsTheWayWeWorkEnd" xml:space="preserve">
+    <value>ma qualsiasi altro.</value>
+  </data>
 </root>
