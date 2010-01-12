@@ -237,11 +237,17 @@
   <data name="AskUs" xml:space="preserve">
     <value>Узнайте у нас!</value>
   </data>
+  <data name="ChooseObject" xml:space="preserve">
+    <value>Выберите объект, назовите его и телепортируйте.</value>
+  </data>
   <data name="Object" xml:space="preserve">
     <value>Объект</value>
   </data>
   <data name="Successfully" xml:space="preserve">
     <value>успешно</value>
+  </data>
+  <data name="Symbols" xml:space="preserve">
+    <value>символов</value>
   </data>
   <data name="Teleported" xml:space="preserve">
     <value>телепортирован</value>

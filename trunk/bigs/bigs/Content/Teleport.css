@@ -12,26 +12,54 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 
 
-#arrowSign
+.arrowSign-ru
 {
     margin:26px 10px 0px 10px;
     display:block; 
     float:left;
-    background-image:url('images/selectobject.gif');
+    background-image:url('images/selectobject-ru.gif');
     background-repeat:no-repeat;
     width:128px;
     height:7px;
     border:none;
 }
 
-#monik
+.arrowSign-en
+{
+    margin:26px 10px 0px 10px;
+    display:block; 
+    float:left;
+    background-image:url('images/selectobject-en.gif');
+    background-repeat:no-repeat;
+    width:142px;
+    height:7px;
+    border:none;
+}
+
+.arrowSign-it
+{
+    margin:26px 10px 0px 10px;
+    display:block; 
+    float:left;
+    background-image:url('images/selectobject-it.gif');
+    background-repeat:no-repeat;
+    width:128px;
+    height:21px;
+    border:none;
+}
+
+
+
+.monik-ru, .monik-en, .monik-it
 {
     margin-top:20px;
     width:571px;
     height:419px;
-    background-image:url('images/monik.gif');
     background-repeat:no-repeat;
 }
+
+.monik-ru{background-image:url('images/monik-ru.gif');}
+.monik-en, .monik-it{background-image:url('images/monik-en.gif');}
 
 
 
@@ -107,10 +135,13 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 #teleportButtonSubmitContainer a
 {
-    background-image:url('images/button.gif');
     background-repeat:no-repeat;
     width:237px; height:36px; display:block; float:left;
 }
+
+.teleportButtonSubmitContainer-ru a{background-image:url('images/button-ru.gif');}
+.teleportButtonSubmitContainer-en a{background-image:url('images/button-en.gif');}
+.teleportButtonSubmitContainer-it a{background-image:url('images/button-it.gif');}
 
 #teleportButtonSubmitContainer a:hover{background-position:0 -36px; background-repeat:no-repeat;}
 
@@ -133,14 +164,32 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
 
 
 
-#objectName
+.objectName-ru, .objectName-en, .objectName-it
 {
-    background-image:url('images/objectname.gif');
-    background-repeat:no-repeat;
-    height:7px;
+	background-repeat:no-repeat;
+	height:7px;
+	margin-bottom:10px;
+}
+
+.objectName-ru
+{
+    background-image:url('images/objectname-ru.gif');
     width:156px;
-    margin-bottom:10px;
     margin-left:55px;
+}
+
+.objectName-en
+{
+    background-image:url('images/objectname-en.gif');
+    width:107px;
+    margin-left:75px;
+}
+
+.objectName-it
+{
+    background-image:url('images/objectname-it.gif');
+    width:183px;
+    margin-left:45px;
 }
 
 #maxLength
@@ -210,15 +259,29 @@ a.rightArrow{background-image:url('images/right-arrow.gif');}
     float:left
 }
 
-#waitingFor
+.waitingFor-ru, .waitingFor-en
 {
-    background-image:url('images/waiting.gif');
     width:58px;
     height:7px;
     float:left;
     margin-top:400px;
     margin-left:-213px;
 }
+
+.waitingFor-ru { background-image:url('images/waiting-ru.gif'); }
+.waitingFor-en { background-image:url('images/waiting-en.gif'); }
+
+.waitingFor-it
+{
+    background-image:url('images/waiting-it.gif');
+    width:68px;
+    height:7px;
+    float:left;
+    margin-top:400px;
+    margin-left:-218px;
+}
+
+
 
 #postTeleportMessage
 {

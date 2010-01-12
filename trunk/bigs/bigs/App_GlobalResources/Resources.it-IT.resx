@@ -237,11 +237,17 @@
   <data name="AskUs" xml:space="preserve">
     <value>Ci chiedi!</value>
   </data>
+  <data name="ChooseObject" xml:space="preserve">
+    <value>Sceglia la tipologia del prodotto, lo chiama e teletrasporta!</value>
+  </data>
   <data name="Object" xml:space="preserve">
     <value>Siamo</value>
   </data>
   <data name="Successfully" xml:space="preserve">
     <value>gia' riusciti a</value>
+  </data>
+  <data name="Symbols" xml:space="preserve">
+    <value>simboli</value>
   </data>
   <data name="Teleported" xml:space="preserve">
     <value>teletrasportare</value>

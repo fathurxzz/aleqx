@@ -237,11 +237,17 @@
   <data name="AskUs" xml:space="preserve">
     <value>Ask us!</value>
   </data>
+  <data name="ChooseObject" xml:space="preserve">
+    <value>Choose the object, name it and teleport it!</value>
+  </data>
   <data name="Object" xml:space="preserve">
     <value>Object</value>
   </data>
   <data name="Successfully" xml:space="preserve">
     <value>has been successfully</value>
+  </data>
+  <data name="Symbols" xml:space="preserve">
+    <value>symbols</value>
   </data>
   <data name="Teleported" xml:space="preserve">
     <value>teleported</value>

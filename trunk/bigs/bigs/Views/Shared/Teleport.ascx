@@ -147,9 +147,9 @@
   {%>
 <div>
     <div id="teleportTitleSign">
-        Выберите объект, назовите его и телепортируйте.
+        <%=Html.ResourceString("ChooseObject")%>
     </div>
-    <div id="monik">
+    <div class="monik-<%=SystemSettings.CurrentLanguageShort%>">
         <div id="diods" class="jcarousel-skin-tango">
                 <div id="picture">
                     <ul id="mycarousel" class="">
@@ -158,16 +158,16 @@
             <div id="pictureWrapper">
             </div>
         </div>
-        <div id="waitingFor"></div>
+        <div class="waitingFor-<%=SystemSettings.CurrentLanguageShort%>"></div>
     </div>
     <div id="arrowsContainer">
         <a id="leftArrow" class="leftArrow arrow"></a>
-        <div id="arrowSign">
+        <div class="arrowSign-<%=SystemSettings.CurrentLanguageShort%>">
         </div>
         <a id="rightArrow" class="rightArrow arrow"></a>
     </div>
     <div id="editTextContainer">
-        <div id="objectName">
+        <div class="objectName-<%=SystemSettings.CurrentLanguageShort%>">
         </div>
         <div id="editLeftSide">
         </div>
@@ -178,10 +178,10 @@
         <div id="textBoxValid" style="">
         </div>
         <div id="maxLength">
-            ( 10 символов )</div>
+            ( 10 <%=Html.ResourceString("Symbols")%> )</div>
     </div>
-    <div id="teleportButtonSubmitContainer" onclick="startTeleport()">
-        <a id="teleportButton"></a>
+    <div id="teleportButtonSubmitContainer" class="teleportButtonSubmitContainer-<%=SystemSettings.CurrentLanguageShort%>" onclick="startTeleport()">
+        <a id="teleportButton" class=""></a>
     </div>
     
     <div id="postTeleportMessage">

@@ -14,18 +14,18 @@
         <div id="languageBarItems">
         <%
             
-            if (Request.IsAuthenticated)
-            {
+            //if (Request.IsAuthenticated)
+            //{
                 Response.Write(currentLanguage == "ru-RU" ? "<a class=\"ru ruActive\"></a>" : "<a class=\"ru\" href=\"/Languages/SetLanguage?language=ru-RU&contentController=" + controller + "&contentUrl=" + contentUrl + "\"></a>");
                 Response.Write(currentLanguage == "en-US" ? "<a class=\"en enActive\"></a>" : "<a class=\"en\" href=\"/Languages/SetLanguage?language=en-US&contentController=" + controller + "&contentUrl=" + contentUrl + "\"></a>");
                 Response.Write(currentLanguage == "it-IT" ? "<a class=\"it itActive\"></a>" : "<a class=\"it\" href=\"/Languages/SetLanguage?language=it-IT&contentController=" + controller + "&contentUrl=" + contentUrl + "\"></a>");
-            }
-            else
-            {
-                Response.Write("<a class=\"ru ruActive\"></a>");
-                Response.Write("<a class=\"en\"></a>");
-                Response.Write("<a class=\"it\"></a>");
-            }
+            //}
+            //else
+            //{
+            //    Response.Write("<a class=\"ru ruActive\"></a>");
+            //    Response.Write("<a class=\"en\"></a>");
+            //    Response.Write("<a class=\"it\"></a>");
+            //}
             
         %>
         </div>

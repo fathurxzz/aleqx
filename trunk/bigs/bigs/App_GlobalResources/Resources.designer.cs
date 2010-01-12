@@ -115,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Выберите объект, назовите его и телепортируйте..
+        /// </summary>
+        internal static string ChooseObject {
+            get {
+                return ResourceManager.GetString("ChooseObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to укажите город или почтовый код.
         /// </summary>
         internal static string CityAndPostalCode {
@@ -372,6 +381,15 @@ namespace Resources {
         internal static string Successfully {
             get {
                 return ResourceManager.GetString("Successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to символов.
+        /// </summary>
+        internal static string Symbols {
+            get {
+                return ResourceManager.GetString("Symbols", resourceCulture);
             }
         }
         
