@@ -234,4 +234,23 @@
   <data name="IncorrectTeleportTo" xml:space="preserve">
     <value />
   </data>
+  <data name="AskUs" xml:space="preserve">
+    <value>Узнайте у нас!</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Объект</value>
+  </data>
+  <data name="Successfully" xml:space="preserve">
+    <value>успешно</value>
+  </data>
+  <data name="Teleported" xml:space="preserve">
+    <value>телепортирован</value>
+  </data>
+  <data name="ThatIsTheWayWeWorkBegin" xml:space="preserve">
+    <value>Так мы работаем. Причём телепортируемым объектом может быть не
+только</value>
+  </data>
+  <data name="ThatIsTheWayWeWorkEnd" xml:space="preserve">
+    <value>но и любой другой груз.</value>
+  </data>
 </root>

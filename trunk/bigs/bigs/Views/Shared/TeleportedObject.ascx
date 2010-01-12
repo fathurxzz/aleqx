@@ -13,9 +13,9 @@
 </div>
 
 <div id="text">
-Так мы работаем. Причём телепортируемым объектом может быть не только <%=ViewData["teleportMessage"]%>, но и любой другой груз.
+<%=Html.ResourceString("ThatIsTheWayWeWorkBegin")%> <%=ViewData["teleportMessage"]%>, <%=Html.ResourceString("ThatIsTheWayWeWorkEnd")%>
 <br />
-<%=Html.ActionLink("Узнайте", "Index", "Requests", new { contentUrl = Html.ResourceString("Request") },null)%> у нас!
+<%=Html.ActionLink(Html.ResourceString("AskUs"), "Index", "Requests", new { contentUrl = Html.ResourceString("Request") },null)%>
 </div>
 </div>
 
