@@ -186,7 +186,7 @@
     
     <div id="postTeleportMessage">
     
-        <b>ябепьхкняэ!</b>
+        <!--<b>ябепьхкняэ!</b>-->
         <br />
         <br />
         
