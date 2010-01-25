@@ -163,7 +163,7 @@
     <value>Insurance</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistics</value>
+    <value>Warehousing</value>
   </data>
   <data name="NameOfYourCompany" xml:space="preserve">
     <value>Name of your company</value>
@@ -187,7 +187,7 @@
     <value>Teleport where from...</value>
   </data>
   <data name="Transfers" xml:space="preserve">
-    <value>Transfers</value>
+    <value>Transportation</value>
   </data>
   <data name="TypeOfTheCargo" xml:space="preserve">
     <value>type of the cargo, quantity (units, pallets), weight (kg), volume (m3), dimensions, LDM </value>
