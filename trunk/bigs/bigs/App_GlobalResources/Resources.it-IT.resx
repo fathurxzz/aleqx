@@ -160,10 +160,10 @@
     <value>Dati della merce</value>
   </data>
   <data name="Insurance" xml:space="preserve">
-    <value>Insurance</value>
+    <value>ASSICURAZIONE</value>
   </data>
   <data name="Logistics" xml:space="preserve">
-    <value>Logistics</value>
+    <value>LOGISTICA E MAGAZZINAGGIO</value>
   </data>
   <data name="NameOfYourCompany" xml:space="preserve">
     <value>Nome di Vostra compagnia</value>
@@ -187,7 +187,7 @@
     <value>Luogo di carico</value>
   </data>
   <data name="Transfers" xml:space="preserve">
-    <value>Transfers</value>
+    <value>Transporti</value>
   </data>
   <data name="TypeOfTheCargo" xml:space="preserve">
     <value>tipo (colli, bancali), peso (kg), volume (m3), dimensioni, metri lineari</value>
@@ -211,7 +211,7 @@
     <value>LogOff</value>
   </data>
   <data name="Step" xml:space="preserve">
-    <value>Step</value>
+    <value>Passo</value>
   </data>
   <data name="IncorrectCaptcha" xml:space="preserve">
     <value />
