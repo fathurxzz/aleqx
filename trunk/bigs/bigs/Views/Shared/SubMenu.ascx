@@ -27,7 +27,11 @@
                 {
                     %>
                     <div class="subMenuLink">
-                        <%=Html.ActionLink(Html.ResourceString(content.Name), "Index", content.Parent.Name, new { contentUrl = Html.ResourceString(content.Name) }, null)%>
+                        <%=Html.ActionLink(content.Url, "Index", content.Parent.Name, new { contentUrl = content.Url }, null)%>
+                        <%if (Request.IsAuthenticated)
+                          { %>
+                        <%=Html.ActionLink("x", "DeleteSubMenuItem", "Admin", new { id = content.Id, redirectUrl = Request.Url.AbsolutePath }, new { onclick = "return confirm('Удалить объект?');", style = "color:red" })%>
+                        <%} %>
                     </div>
                     <%
                 }
@@ -35,13 +39,39 @@
                 {
                     %>
                     <div class="subMenuLink active">
-                    <%=Html.ResourceString(content.Name)%>
+                    <%=content.Url%>
                     </div>
                     <%
                      
                 }
+                %>
+                
+                
+                <%
             }
             %>
+            
+            <%
+                using (Html.BeginForm("AddSubMenuItem", "Admin", FormMethod.Post))
+                {
+                    if (Request.IsAuthenticated)
+                    {
+
+                  %>
+                    <%= Html.Hidden("redirectUrl", Request.Url.AbsolutePath) %>
+                    <fieldset>
+                    <legend style="font-size:x-small">Добавить пункт</legend>
+                    Имя (в бд)<br />
+                    <%=Html.TextBox("tName", "", new {size="13" })%>
+                    <br /><br />
+                    Название<br />
+                    <%=Html.TextBox("tTitle", "", new { size = "13" })%>
+                    <br />
+                    
+                    <input type="submit" value="Добавить"/>
+                    </fieldset>
+                <%}
+              }%>
             </div>
             <div id="subMenuBottomBorder"></div>
             </div>

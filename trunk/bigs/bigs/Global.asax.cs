@@ -42,9 +42,21 @@ namespace bigs
             );
 
             routes.MapRoute(
+                "AddSubMenuItem",                                              // Route name
+                "Admin/AddSubMenuItem",                           // URL with parameters
+                new { controller = "Admin", action = "AddSubMenuItem" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
               "DeletePicture",                                              // Route name
               "Admin/DeletePicture/{id}",                           // URL with parameters
               new { controller = "Admin", action = "DeletePicture", id = "" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+              "DeleteSubMenuItem",                                              // Route name
+              "Admin/DeleteSubMenuItem/{id}",                           // URL with parameters
+              new { controller = "Admin", action = "DeleteSubMenuItem", id = "" }  // Parameter defaults
             );
 
 
