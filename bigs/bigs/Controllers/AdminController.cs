@@ -82,7 +82,7 @@ namespace bigs.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditPicture(string image, string contentUrl, string controllerName)
+        public ActionResult EditPicture(string image, string contentUrl, string controllerName, string url)
         {
             using (DataStorage context = new DataStorage())
             {
@@ -140,6 +140,9 @@ namespace bigs.Controllers
             }));
         }
 
+
+
+        
         public ActionResult DeletePicture(int id, string contentUrl, string controllerName)
         {
             
@@ -196,5 +199,37 @@ namespace bigs.Controllers
             }
 
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddSubMenuItem(FormCollection form, string redirectUrl, string tName, string tTitle)
+        {
+            using (DataStorage context = new DataStorage())
+            {
+                SiteContent parent = (from c in context.SiteContent.Include("Parent") where c.Language==SystemSettings.CurrentLanguage && c.Name=="Services" select c).First();
+                SiteContent content = new SiteContent();
+                content.Name = tName;
+                content.Title = tTitle;
+                content.Language = SystemSettings.CurrentLanguage;
+                content.Url = tTitle;
+                content.SortOrder = 4;
+                content.Parent = parent;
+                context.AddToSiteContent(content);
+                context.SaveChanges();
+                return Redirect(redirectUrl);
+            }
+        }
+
+        public ActionResult DeleteSubMenuItem(int id, string redirectUrl)
+        {
+            using (DataStorage context = new DataStorage())
+            {
+                SiteContent content = (from c in context.SiteContent where c.Id == id select c).First();
+                context.DeleteObject(content);
+                context.SaveChanges();
+                return Redirect(redirectUrl);
+            }
+        }
+
+
     }
 }

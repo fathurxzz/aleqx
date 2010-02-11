@@ -52,6 +52,11 @@
             <td><input type="file" name="image" /></td>
         </tr>
         <tr>
+            <td>URL:</td>
+            <td><input type="text" name="url" /></td>
+        </tr>
+        
+        <tr>
             <td></td>
             <td><input type="submit" value="Сохранить" /></td>
         </tr>
