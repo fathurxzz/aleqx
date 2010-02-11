@@ -8,7 +8,7 @@ margin-left:5px;
 background-image:url('images/points.gif');background-position:0px 0px;background-repeat:no-repeat;
 height:10px;
                  }
-#sliderResultContainer{background-color:#FFFFCC;width:250px;margin-left:120px;padding:20px; height:175px;}
+#sliderResultContainer{background-color:#FFFFCC;width:250px;margin-left:120px;padding:20px; height:300px;}
 
 .ui-widget-content{border: 0px solid #dddddd;color: #333333;}
 .ui-state-default, .ui-widget-content .ui-state-default{background-image:url('images/slider.gif');background-repeat:no-repeat;font-weight: bold;color: #1c94c4;outline: none;}
