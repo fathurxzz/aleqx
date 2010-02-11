@@ -97,9 +97,27 @@ namespace bigs.Controllers
                     ImageContent imageItem = new ImageContent();
                     imageItem.FileName = imageName;
                     imageItem.Language = SystemSettings.CurrentLanguage;
+                    imageItem.Url = url;
                     context.AddToImageContent(imageItem);
                     context.SaveChanges();
                 }
+
+                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
+                return View(images);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditPictureUrl(FormCollection form)
+        {
+
+            if (!string.IsNullOrEmpty(form["enablities"]))
+            {
+
+            }
+
+            using (DataStorage context = new DataStorage())
+            {
 
                 List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
                 return View(images);
