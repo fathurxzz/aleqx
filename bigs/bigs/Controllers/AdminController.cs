@@ -106,23 +106,8 @@ namespace bigs.Controllers
                 return View(images);
             }
         }
+       
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditPictureUrl(FormCollection form)
-        {
-
-            if (!string.IsNullOrEmpty(form["enablities"]))
-            {
-
-            }
-
-            using (DataStorage context = new DataStorage())
-            {
-
-                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
-                return View(images);
-            }
-        }
 
         private void DeleteFileInTheThread(string path)
         {
