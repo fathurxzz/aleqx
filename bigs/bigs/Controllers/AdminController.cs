@@ -221,7 +221,7 @@ namespace bigs.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddSubMenuItem(FormCollection form, string redirectUrl, string tName, string tTitle)
         {
-            if (!string.IsNullOrEmpty(tName) && !!string.IsNullOrEmpty(tTitle))
+            if (!string.IsNullOrEmpty(tName) && !string.IsNullOrEmpty(tTitle))
             {
                 using (DataStorage context = new DataStorage())
                 {
