@@ -50,7 +50,8 @@
                 <img alt="<%= Html.Encode(item.FileName) %>" src="/Content/Objects/<%=Html.Encode(item.FileName)%>" />
             </td>
             <td>
-                <%=Html.TextBox("tb"+item.Id, item.Url, new { onblur = "updateEnables(this.value, " + item.Id + ")" })%>
+                <%= Html.Encode(item.Url)%>
+                <%=//Html.TextBox("tb"+item.Id, item.Url, new { onblur = "updateEnables(this.value, " + item.Id + ")" })%>
             </td>
             <td>
                 <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id, controllerName = ViewData["controllerName"], contentUrl = ViewData["contentUrl"] }, new { onclick = "return confirm('Удалить объект?');" })%>
@@ -61,7 +62,7 @@
 
     </table>
     
-    <input type="submit" value="Сохранить" onclick="return collectStatusChanges()" />
+    <!--<input type="submit" value="Сохранить" onclick="return collectStatusChanges()" />-->
     <br />
     <br />
     <br />
