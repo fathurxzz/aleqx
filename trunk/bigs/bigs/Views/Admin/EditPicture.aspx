@@ -5,22 +5,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<script type="text/javascript">
-    var enables = {};
-    function collectStatusChanges() {
-        var enablities = $get("enablities");
-        enablities.value = Sys.Serialization.JavaScriptSerializer.serialize(enables);
-        return true;
-    }
-
-    function updateEnables(value, id) {
-        enables[id] = value;
-    }
-</script>
-
-<% using (Html.BeginForm("EditPictureUrl", "Admin", FormMethod.Post))
-   { %>
-    <%= Html.Hidden("enablities")%>
     <table>
         <tr>
             <th>
@@ -62,12 +46,10 @@
 
     </table>
     
-    <!--<input type="submit" value="Сохранить" onclick="return collectStatusChanges()" />-->
-    <br />
     <br />
     <br />
     
-<%} %>
+
     <p>
         Добавить новое изображение
     </p>
