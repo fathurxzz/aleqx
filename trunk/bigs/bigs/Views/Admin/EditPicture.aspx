@@ -57,6 +57,8 @@
 
 <% using (Html.BeginForm("EditPicture", "Admin", FormMethod.Post, new {enctype="multipart/form-data"})){ %>
     <%= Html.Hidden("id") %>
+    <%= Html.Hidden("contentUrl") %>
+    <%= Html.Hidden("controllerName")%>
     <table>
         <tr>
             <td>Изображение:</td>

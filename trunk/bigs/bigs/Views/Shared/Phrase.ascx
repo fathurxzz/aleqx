@@ -10,7 +10,7 @@
         {
             string imageLocationPath = Server.MapPath("/Content/Objects/");
 
-            var imagesWeigted = images.Select(i => new { image = i, weight = (!string.IsNullOrEmpty(i.Url) ? 5 : 0) }).OrderBy(i=>rnd.Next(10) + i.weight);
+            var imagesWeigted = images.Select(i => new { image = i, weight = (!string.IsNullOrEmpty(i.Url) ? 5 : 1) }).OrderBy(i=>rnd.Next(10) * 1/i.weight);
 
             ImageContent imageItem = imagesWeigted.First().image;
             //string fileName = images.Skip(rnd.Next(images.Count)).Take(1).First().FileName;
@@ -25,7 +25,7 @@
         
         <%if(!string.IsNullOrEmpty(url)){ %>
                 <a href="<%=url%>">
-                <img id="phraseImage" style="padding-top:<%=paddingTop%>px; padding-left:<%=paddingLeft%>px" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
+                <img id="phraseImage" style="padding-top:<%=paddingTop%>px; padding-left:<%=paddingLeft%>px; border:0" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
                 </a>
         <%}else{ %>
                 <img id="phraseImage" style="padding-top:<%=paddingTop%>px; padding-left:<%=paddingLeft%>px" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
