@@ -51,7 +51,6 @@
              { %>
              
                 <div class="adminEditLink">
-                    
                     <%=Html.ActionLink("Редактировать", "EditPicture", "Admin", new { contentUrl = ViewData["contentUrl"], controllerName = ViewContext.RouteData.Values["controller"] }, null)%>
                 
                

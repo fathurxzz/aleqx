@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/ContentAdmin.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<bigs.Models.ImageContent>>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<bigs.Models.ImageContent>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Редактирование списка изображений
@@ -35,7 +35,6 @@
             </td>
             <td>
                 <%= Html.Encode(item.Url)%>
-                <%=//Html.TextBox("tb"+item.Id, item.Url, new { onblur = "updateEnables(this.value, " + item.Id + ")" })%>
             </td>
             <td>
                 <%=Html.ActionLink("Удалить", "DeletePicture", "Admin", new { id = item.Id, controllerName = ViewData["controllerName"], contentUrl = ViewData["contentUrl"] }, new { onclick = "return confirm('Удалить объект?');" })%>
@@ -77,10 +76,3 @@
 
 
 </asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentTitle" runat="server">
-</asp:Content>
-
-<asp:Content ID="Content4" ContentPlaceHolderID="Includes" runat="server">
-</asp:Content>
-
