@@ -10,7 +10,9 @@
         {
             string imageLocationPath = Server.MapPath("/Content/Objects/");
 
-            ImageContent imageItem = images.Skip(rnd.Next(images.Count)).Take(1).First();
+            var imagesWeigted = images.Select(i => new { image = i, weight = (!string.IsNullOrEmpty(i.Url) ? 5 : 0) }).OrderBy(i=>rnd.Next(10) + i.weight);
+
+            ImageContent imageItem = imagesWeigted.First().image;
             //string fileName = images.Skip(rnd.Next(images.Count)).Take(1).First().FileName;
             string fileName = imageItem.FileName;
             string url = imageItem.Url;
