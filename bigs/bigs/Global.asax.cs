@@ -48,12 +48,6 @@ namespace bigs
             );
 
             routes.MapRoute(
-                "EditPictureUrl",                                              // Route name
-                "Admin/EditPictureUrl",                           // URL with parameters
-                new { controller = "Admin", action = "EditPictureUrl" }  // Parameter defaults
-            );
-
-            routes.MapRoute(
               "DeletePicture",                                              // Route name
               "Admin/DeletePicture/{id}",                           // URL with parameters
               new { controller = "Admin", action = "DeletePicture", id = "" }  // Parameter defaults
