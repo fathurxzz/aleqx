@@ -108,7 +108,6 @@ namespace bigs.Controllers
         }
        
 
-
         private void DeleteFileInTheThread(string path)
         {
             Func<string, bool> tryDeleteFile = filePath =>
