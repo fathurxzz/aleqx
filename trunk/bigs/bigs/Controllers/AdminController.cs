@@ -221,20 +221,23 @@ namespace bigs.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult AddSubMenuItem(FormCollection form, string redirectUrl, string tName, string tTitle)
         {
-            using (DataStorage context = new DataStorage())
+            if (!string.IsNullOrEmpty(tName) && !!string.IsNullOrEmpty(tTitle))
             {
-                SiteContent parent = (from c in context.SiteContent.Include("Parent") where c.Language==SystemSettings.CurrentLanguage && c.Name=="Services" select c).First();
-                SiteContent content = new SiteContent();
-                content.Name = tName;
-                content.Title = tTitle;
-                content.Language = SystemSettings.CurrentLanguage;
-                content.Url = tTitle;
-                content.SortOrder = 4;
-                content.Parent = parent;
-                context.AddToSiteContent(content);
-                context.SaveChanges();
-                return Redirect(redirectUrl);
+                using (DataStorage context = new DataStorage())
+                {
+                    SiteContent parent = (from c in context.SiteContent.Include("Parent") where c.Language == SystemSettings.CurrentLanguage && c.Name == "Services" select c).First();
+                    SiteContent content = new SiteContent();
+                    content.Name = tName;
+                    content.Title = tTitle;
+                    content.Language = SystemSettings.CurrentLanguage;
+                    content.Url = tTitle;
+                    content.SortOrder = 4;
+                    content.Parent = parent;
+                    context.AddToSiteContent(content);
+                    context.SaveChanges();
+                }
             }
+            return Redirect(redirectUrl);
         }
 
         public ActionResult DeleteSubMenuItem(int id, string redirectUrl)
