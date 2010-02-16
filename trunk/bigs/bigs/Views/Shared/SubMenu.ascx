@@ -27,7 +27,7 @@
                 {
                     %>
                     <div class="subMenuLink">
-                        <%=Html.ActionLink(content.Url, "Index", content.Parent.Name, new { contentUrl = content.Url }, null)%>
+                        <%=Html.ActionLink(content.Title, "Index", content.Parent.Name, new { contentUrl = content.Url }, null)%>
                         <%if (Request.IsAuthenticated)
                           { %>
                         <%=Html.ActionLink("x", "DeleteSubMenuItem", "Admin", new { id = content.Id, redirectUrl = Request.Url.AbsolutePath }, new { onclick = "return confirm('Удалить объект?');", style = "color:red" })%>
@@ -39,7 +39,7 @@
                 {
                     %>
                     <div class="subMenuLink active">
-                    <%=content.Url%>
+                    <%=content.Title%>
                     </div>
                     <%
                      
