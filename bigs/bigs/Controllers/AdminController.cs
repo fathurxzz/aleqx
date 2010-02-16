@@ -82,7 +82,7 @@ namespace bigs.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditPicture(string image, string contentUrl, string controllerName, string url)
+        public ActionResult EditPicture(string contentUrl, string controllerName, string image, string url)
         {
             using (DataStorage context = new DataStorage())
             {
@@ -102,7 +102,7 @@ namespace bigs.Controllers
                     context.SaveChanges();
                 }
 
-                List<ImageContent> images = context.ImageContent.Select(i => i).ToList();
+                List<ImageContent> images = context.ImageContent.Where(i => i.Language == SystemSettings.CurrentLanguage).Select(i => i).ToList();
                 return View(images);
             }
         }
