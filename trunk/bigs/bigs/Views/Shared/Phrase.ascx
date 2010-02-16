@@ -25,10 +25,10 @@
         
         <%if(!string.IsNullOrEmpty(url)){ %>
                 <a href="<%=url%>">
-                <img id="phraseImage" style="padding-top:<%=paddingTop%>px; padding-left:<%=paddingLeft%>px; border:0" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
+                <img id="phraseImage" style="padding-top:<%=paddingTop%>px; margin-left:<%=paddingLeft%>px; border:0" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
                 </a>
         <%}else{ %>
-                <img id="phraseImage" style="padding-top:<%=paddingTop%>px; padding-left:<%=paddingLeft%>px" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
+                <img id="phraseImage" style="padding-top:<%=paddingTop%>px; margin-left:<%=paddingLeft%>px" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
                 <%} %>
         <%
             }
