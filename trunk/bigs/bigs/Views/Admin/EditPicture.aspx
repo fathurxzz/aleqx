@@ -55,9 +55,11 @@
 
 
 <form enctype="multipart/form-data", action="/Admin/EditPicture" method="post"></form>
-<% using (Html.BeginForm("EditPicture", "Admin", new { controllerName = ViewData["controllerName"], contentUrl = ViewData["contentUrl"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+<% using (Html.BeginForm("EditPicture", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
    { %>
     <%= Html.Hidden("id")%>
+    <%= Html.Hidden("contentUrl")%>
+    <%= Html.Hidden("controllerName")%>
     <table>
         <tr>
             <td>Изображение:</td>
