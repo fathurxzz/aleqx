@@ -8,7 +8,7 @@
         List<ImageContent> images = (from im in context.ImageContent where im.Language== SystemSettings.CurrentLanguage select im).ToList();
         if (images.Count > 0)
         {
-            string imageLocationPath = Server.MapPath("/Content/Objects/");
+            string imageLocationPath = Server.MapPath("~/Content/Objects/");
 
             var imagesWeigted = images.Select(i => new { image = i, weight = (!string.IsNullOrEmpty(i.Url) ? 5 : 1) }).OrderBy(i=>rnd.Next(10) * 1/i.weight);
 
@@ -24,9 +24,14 @@
         %>
         
         <%if(!string.IsNullOrEmpty(url)){ %>
-                <a href="<%=url%>">
+                <a href="<%=url%>" id="phraseLink">
                 <img id="phraseImage" style="padding-top:<%=paddingTop%>px; margin-left:<%=paddingLeft%>px; border:0" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
                 </a>
+                <script type="text/javascript">
+                    $(function() {
+                        document.getElementById("phraseLink").blur();
+                    })
+                </script>
         <%}else{ %>
                 <img id="phraseImage" style="padding-top:<%=paddingTop%>px; margin-left:<%=paddingLeft%>px" alt="<%=fileName%>" src="/Content/Objects/<%=fileName%>" />
                 <%} %>

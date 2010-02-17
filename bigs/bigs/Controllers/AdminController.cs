@@ -82,7 +82,7 @@ namespace bigs.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditPicture(string contentUrl, string controllerName, string image, string url)
+        public ActionResult EditPicture(FormCollection form)
         {
             using (DataStorage context = new DataStorage())
             {
@@ -97,7 +97,7 @@ namespace bigs.Controllers
                     ImageContent imageItem = new ImageContent();
                     imageItem.FileName = imageName;
                     imageItem.Language = SystemSettings.CurrentLanguage;
-                    imageItem.Url = url;
+                    imageItem.Url = form["url"];
                     context.AddToImageContent(imageItem);
                     context.SaveChanges();
                 }
