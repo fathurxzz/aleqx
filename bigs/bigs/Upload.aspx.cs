@@ -12,9 +12,25 @@ namespace bigs
 {
     public partial class Upload : System.Web.UI.Page
     {
+        private string contentUrl
+        {
+            get
+            {
+                return Request.Form["contentUrl"];
+            }
+        }
+
+        private string controllerName
+        {
+            get
+            {
+                return Request.Form["controllerName"];
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-           /*
+           
             using (DataStorage context = new DataStorage())
             {
 
@@ -28,7 +44,7 @@ namespace bigs
                     ImageContent imageItem = new ImageContent();
                     imageItem.FileName = imageName;
                     imageItem.Language = SystemSettings.CurrentLanguage;
-                    //imageItem.Url = form["url"];
+                    imageItem.Url = Request.Form["url"];
                     context.AddToImageContent(imageItem);
                     context.SaveChanges();
                 }
@@ -38,8 +54,8 @@ namespace bigs
                 //List<ImageContent> images = context.ImageContent.Where(i => i.Language == SystemSettings.CurrentLanguage).Select(i => i).ToList();
                 //return View(images);
             }
-            */
-            Response.Redirect("");
+
+            Response.Redirect("Admin/EditPicture/?contentUrl=" + contentUrl + "&controllerName=" + controllerName);
         }
     }
 }
