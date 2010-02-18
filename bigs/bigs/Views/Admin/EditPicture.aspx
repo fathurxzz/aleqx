@@ -54,9 +54,9 @@
     </p>
 
 
-<form enctype="multipart/form-data", action="/Admin/EditPicture" method="post"></form>
-<% using (Html.BeginForm("EditPicture", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-   { %>
+<!--<form enctype="multipart/form-data", action="/Admin/EditPicture" method="post"></form>-->
+<form enctype="multipart/form-data", action="../../Upload.aspx" method="post">
+
     <%= Html.Hidden("id")%>
     <%= Html.Hidden("contentUrl")%>
     <%= Html.Hidden("controllerName")%>
@@ -75,7 +75,7 @@
             <td><input type="submit" value="Загрузить" /></td>
         </tr>
     </table>
-<%} %>
 
+</form>
 
 </asp:Content>
