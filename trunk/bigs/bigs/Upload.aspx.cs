@@ -50,12 +50,12 @@ namespace bigs
                 }
 
                 
-
+                
                 //List<ImageContent> images = context.ImageContent.Where(i => i.Language == SystemSettings.CurrentLanguage).Select(i => i).ToList();
                 //return View(images);
             }
-
-            Response.Redirect("Admin/EditPicture/?contentUrl=" + contentUrl + "&controllerName=" + controllerName);
+            Response.Write("<script>window.close()</script>");
+            //Response.Redirect("Admin/EditPicture/?contentUrl=" + contentUrl + "&controllerName=" + controllerName);
         }
     }
 }
