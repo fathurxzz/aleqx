@@ -55,7 +55,7 @@
 
 
 <!--<form enctype="multipart/form-data", action="/Admin/EditPicture" method="post"></form>-->
-<form enctype="multipart/form-data", action="../../Upload.aspx" method="post">
+<form enctype="multipart/form-data", target="_blank" action="../../Upload.aspx" method="post">
 
     <%= Html.Hidden("id")%>
     <%= Html.Hidden("contentUrl")%>
