@@ -15,7 +15,9 @@ namespace bigs
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
             routes.IgnoreRoute("captcha.ashx");
+            routes.IgnoreRoute("Upload.aspx");
 
             routes.MapRoute(
                 "Captcha",                                              // Route name
@@ -45,6 +47,12 @@ namespace bigs
                 "AddSubMenuItem",                                              // Route name
                 "Admin/AddSubMenuItem",                           // URL with parameters
                 new { controller = "Admin", action = "AddSubMenuItem" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+              "EditPicture",                                              // Route name
+              "Admin/EditPicture",                           // URL with parameters
+              new { controller = "Admin", action = "EditPicture", id = "" }  // Parameter defaults
             );
 
             routes.MapRoute(
