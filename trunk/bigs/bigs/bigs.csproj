@@ -290,6 +290,7 @@
     <Content Include="Content\Slider.css" />
     <Content Include="Content\Teleport.css" />
     <Content Include="Content\Teleported.css" />
+    <Content Include="favicon.ico" />
     <Content Include="images\jquery-1.2.1.pack.js" />
     <Content Include="images\jquery.ifixpng.js" />
     <Content Include="images\pixel.gif" />
