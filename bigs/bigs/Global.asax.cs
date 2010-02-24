@@ -17,6 +17,7 @@ namespace bigs
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
             routes.IgnoreRoute("captcha.ashx");
+            routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("Upload.aspx");
 
             routes.MapRoute(
