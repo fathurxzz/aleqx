@@ -85,7 +85,10 @@ body
 
 #menu { padding-left:40px; }
 
-#middle{}
+#middle
+{
+	margin-top:20px;
+}
 
 #left { float:left; width:160px; padding-top:64px; }
 
