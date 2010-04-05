@@ -93,6 +93,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="captcha.ashx.cs">
+      <DependentUpon>captcha.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -347,6 +350,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="captcha.ashx" />
     <None Include="Content\MailTemplates\newrequest" />
   </ItemGroup>
   <ItemGroup>
