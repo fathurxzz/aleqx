@@ -1,0 +1,5 @@
+D:\projects\ViaCon\ViaCon\bin\ViaCon.dll
+D:\projects\ViaCon\ViaCon\bin\ViaCon.pdb
+D:\projects\ViaCon\ViaCon\obj\Debug\ResolveAssemblyReference.cache
+D:\projects\ViaCon\ViaCon\obj\Debug\ViaCon.dll
+D:\projects\ViaCon\ViaCon\obj\Debug\ViaCon.pdb
