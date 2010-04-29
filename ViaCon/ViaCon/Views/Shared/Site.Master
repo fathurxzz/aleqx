@@ -1,0 +1,31 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="page">
+        <div id="header">
+            <div id="logoContainer">
+                <img src="../../Content/img/logo.gif" alt="logo" />
+            </div>
+        </div>
+
+        <div id="main">
+            <div id="menuContainer">
+                <% Html.RenderPartial("MainMenu"); %>
+            </div>
+            <div id="contentContainer">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </div>
+        </div>
+        <div id="footer">
+        footer footer footer footer footer footer 
+        </div>
+    </div>
+</body>
+</html>
