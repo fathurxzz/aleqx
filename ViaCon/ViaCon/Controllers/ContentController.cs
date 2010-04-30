@@ -15,7 +15,7 @@ namespace ViaCon.Controllers
 
         public ActionResult Index(string id)
         {
-            using (ContentStorage context = new ContentStorage())
+            using (var context = new ContentStorage())
             {
                 ViewData["id"] = id;
                 Content content = context.Content.Where(c => c.ContentId == id).FirstOrDefault();

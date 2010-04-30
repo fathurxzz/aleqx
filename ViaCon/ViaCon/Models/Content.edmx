@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="viacondbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="viacondbModelStoreContainer">
+          <EntitySet Name="content" EntityType="viacondbModel.Store.content" store:Type="Tables" Schema="viacondb" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Collapsible" Type="bit" Nullable="false" />
+          <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="Horisontal" Type="bit" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Keywords" Type="varchar" MaxLength="255" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="viacondbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="viacondbModel.Content" />
+          <AssociationSet Name="ContentContent" Association="viacondbModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" /></AssociationSet></EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Collapsible" Type="Boolean" Nullable="false" />
+          <Property Name="ContentId" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Horisontal" Type="Boolean" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Keywords" Type="String" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="Parent" Relationship="viacondbModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Child" Relationship="viacondbModel.ContentContent" FromRole="Content1" ToRole="Content" /></EntityType>
+        <Association Name="ContentContent">
+          <End Type="viacondbModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="viacondbModel.Content" Role="Content1" Multiplicity="*" /></Association></Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="viacondbModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content">
+            <EntityTypeMapping TypeName="IsTypeOf(viacondbModel.Content)">
+              <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="Collapsible" ColumnName="Collapsible" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Horisontal" ColumnName="Horisontal" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="viacondbModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Content">
+        <EntityTypeShape EntityType="viacondbModel.Content" Width="1.5" PointX="3.125" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" />
+        <AssociationConnector Association="viacondbModel.ContentContent">
+          <ConnectorPoint PointX="3.6569230769230767" PointY="2.9996956380208331" />
+          <ConnectorPoint PointX="3.6569230769230767" PointY="3.2496956380208331" />
+          <ConnectorPoint PointX="4.1034615384615378" PointY="3.2496956380208331" />
+          <ConnectorPoint PointX="4.1034615384615378" PointY="2.9996956380208331" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
