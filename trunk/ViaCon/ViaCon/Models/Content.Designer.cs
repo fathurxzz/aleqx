@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 30.04.2010 10:20:00
+// Generation date: 30.04.2010 10:20:55
 namespace ViaCon.Models
 {
     
