@@ -1,1 +1,100 @@
-﻿
+﻿#menuBoxTopLeft
+{
+	background-image: url('img/menu-top-left.gif');
+}
+
+#menuBoxTopRight
+{
+	background-image: url('img/menu-top-right.gif');
+}
+
+#menuBoxBottomLeft
+{
+	background-image: url('img/menu-bottom-left.gif');
+}
+
+#menuBoxBottomRight
+{
+	background-image: url('img/menu-bottom-right.gif');
+}
+
+#menuBoxTopLeft, #menuBoxTopRight, #menuBoxBottomLeft, #menuBoxBottomRight
+{
+	width: 15px;
+	height: 18px;
+}
+
+
+#tableMenu
+{
+	border-collapse: collapse;
+}
+
+#tmenuBoxTopLeft
+{
+	background-image: url('img/menu-top-left.gif');
+	background-position: :left;
+}
+
+#tmenuBoxTopMiddle
+{
+	background-color: #004070;
+}
+
+#tmenuBoxTopRight
+{
+	background-image: url('img/menu-top-right.gif');
+	background-position: right;
+}
+
+#tmenuBoxBottomLeft
+{
+	background-image: url('img/menu-bottom-left.gif');
+	background-position: :left;
+}
+
+#tmenuBoxBottomMiddle
+{
+	background-color: #004070;
+}
+
+#tmenuBoxBottomRight
+{
+	background-image: url('img/menu-bottom-right.gif');
+	background-position: right;
+}
+
+#tmenuBoxTopLeft, #tmenuBoxTopRight, #tmenuBoxBottomLeft, #tmenuBoxBottomRight
+{
+	width: 15px;
+	height: 18px;
+	background-repeat: no-repeat;
+}
+
+.menuItem
+{
+	background-color: #004070;
+}
+
+.selected
+{
+	background-color:#809ABF;
+}
+
+.tmenuMiddleBox
+{
+	background-color: #004070;
+}
+
+a
+{
+	color: #ffffff;
+}
+a:active
+{
+	color: #ffffff;
+}
+a:hover
+{
+	color: #ffffff;
+}
