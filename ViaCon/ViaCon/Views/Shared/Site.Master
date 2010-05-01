@@ -5,6 +5,7 @@
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Menu.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -20,11 +21,24 @@
                 <% Html.RenderPartial("MainMenu"); %>
             </div>
             <div id="contentContainer">
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                <div id="contentBox">
+                    <div id="contentBoxTop">
+                        <asp:ContentPlaceHolder ID="ContentContainerTitle" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+                    <div id="contentBoxMiddle">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                    </div>
+                    <div id="contentBoxBottom"></div>
+                </div>
             </div>
         </div>
         <div id="footer">
-        footer footer footer footer footer footer 
+            <div id="footerLeft">
+                &copy; 2010 "Виакон-Украина"
+            </div>
+            <div id="footerRight">
+                <a href="http://www.M-brand.com.ua" title="M.бренд">М.бренд&nbsp;|&nbsp;<font class="mark">дизайн</font></a>
+            </div>
         </div>
     </div>
 </body>

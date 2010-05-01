@@ -83,7 +83,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\content-bottom.gif" />
+    <Content Include="Content\img\content-top.gif" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\menu-bottom-left.gif" />
+    <Content Include="Content\img\menu-bottom-right.gif" />
+    <Content Include="Content\img\menu-top-left.gif" />
+    <Content Include="Content\img\menu-top-right.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />

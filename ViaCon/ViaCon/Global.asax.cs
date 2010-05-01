@@ -17,15 +17,21 @@ namespace ViaCon
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Content",                                              // Route name
+                "DefaultContent",                                              // Route name
                 "Content/{id}",                           // URL with parameters
-                new { controller = "Content", action = "Index", id = "" }  // Parameter defaults
+                new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+            "Content",                                              // Route name
+            "{id}",                           // URL with parameters
+            new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
 
             routes.MapRoute(
                 "Default",                                              // Route name
                 "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
 
         }
