@@ -11,34 +11,41 @@
             </td>
         </tr>
         <tr>
-            <td class="tmenuMiddleBox">
-            </td>
-            <td class="tmenuMiddleBox">
+            <td colspan="3" class="tmenuMiddleBox">
                 <%
                     string contentId = (string)ViewData["id"];
 
                     using (var context = new ViaCon.Models.ContentStorage())
                     {
-                        var contentList = context.Content.Where(c => !c.Horisontal).ToList();
+                        var menuList = context.Content.Where(c => !c.Horisontal).ToList();
 
-                        if (contentList != null)
+                        //var menuListSecondLevel = context.Content.Where(c => !c.Horisontal && c.Parent != null).ToList();
+
+
+                        if (menuList != null)
                         {
-                            foreach (var item in contentList)
+                            foreach (var item in menuList)
                             {
-                                string cls = item.ContentId == contentId ? "menuItem selected" : "menuItem";
+                                if (item.Parent != null) continue;
+                                //if (item.Parent.Count > 0) continue;
+                                //string cls = item.ContentId == contentId ? "menuLink selected" : "menuLink";
+                                if (item.ContentId == contentId){ %><div class="menuItem selected"><%=item.Title%></div><%
                                 
-                                %>
-                                <div>
-                                <%=Html.ActionLink(item.Title, "Index", new { id = item.ContentId }, new { @class = cls })%>
-                                </div>
-                                <%
+                                    if(item.Children!=null)
+                                    {
+                                        foreach (var child in item.Children)
+                                        {
+                                            %><div class="childMenuItem"><a href="/<%=child.ContentId%>"><%=child.Title%></a></div><%
+                                        }
+                                    }
+                                
+                                }else{ %><div class="menuItem"><a href="/<%=item.ContentId%>"><%=item.Title%></a></div><%}
+                                
                             }
                         }
                     }   
     
                 %>
-            </td>
-            <td class="tmenuMiddleBox">
             </td>
         </tr>
         <tr>

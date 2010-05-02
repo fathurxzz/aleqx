@@ -33,24 +33,26 @@
 #tmenuBoxTopLeft
 {
 	background-image: url('img/menu-top-left.gif');
-	background-position: :left;
+	background-position:left;
+	width: 15px;
 }
 
 #tmenuBoxTopMiddle
 {
 	background-color: #004070;
+	width:110px;
 }
 
 #tmenuBoxTopRight
 {
 	background-image: url('img/menu-top-right.gif');
-	background-position: right;
+	background-position:right;
 }
 
 #tmenuBoxBottomLeft
 {
 	background-image: url('img/menu-bottom-left.gif');
-	background-position: :left;
+	background-position:left;
 }
 
 #tmenuBoxBottomMiddle
@@ -74,6 +76,14 @@
 .menuItem
 {
 	background-color: #004070;
+	padding:3px 20px 3px 20px;
+}
+
+.childMenuItem
+{
+	background-color: #004070;
+	padding:3px 0px 3px 40px;
+	font-size:11px;
 }
 
 .selected
@@ -84,6 +94,7 @@
 .tmenuMiddleBox
 {
 	background-color: #004070;
+	font-size:14px;
 }
 
 a
@@ -97,4 +108,9 @@ a:active
 a:hover
 {
 	color: #ffffff;
+}
+
+.menuLink
+{
+	background-color: #004070;
 }

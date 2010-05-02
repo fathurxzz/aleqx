@@ -18,7 +18,7 @@ namespace ViaCon.Controllers
             using (var context = new ContentStorage())
             {
                 ViewData["id"] = id;
-                Content content = context.Content.Where(c => c.ContentId == id).FirstOrDefault();
+                var content = context.Content.Where(c => c.ContentId == id).FirstOrDefault();
                 return View("Content", content);
             }
         }
