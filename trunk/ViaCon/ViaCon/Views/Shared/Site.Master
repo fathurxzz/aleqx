@@ -23,7 +23,7 @@
                  if (controller != "Admin")
                  {
                   %>
-              <a href="/Admin/EditContent">Система администрирования</a>
+              <a href="/Admin/Index">Система администрирования</a>
             <%}
              } %> 
             </div>

@@ -32,16 +32,16 @@
             </p>            
             <p>
                 <label for="Description">Description:</label>
-                <%= Html.TextBox("description", Model.Description) %>
+                <%= Html.TextArea("description", Model.Description)%>
             </p>
 
             <p>
                 <label for="Keywords">Keywords:</label>
-                <%= Html.TextBox("keywords", Model.Keywords) %>
+                <%= Html.TextArea("keywords", Model.Keywords)%>
             </p>
             <p>
                 <label for="Text">Text:</label>
-                <%= Html.TextBox("text", Model.Text) %>
+                <%= Html.TextArea("text", Model.Text)%>
             </p>
             <p>
                 <input type="submit" value="Save" />

@@ -16,7 +16,17 @@ namespace ViaCon.Controllers
         // GET: /Admin/
 
 
-        public ActionResult EditContent()
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Content()
+        {
+            return View();
+        }
+
+        public ActionResult Gallery()
         {
             return View();
         }
@@ -85,7 +95,7 @@ namespace ViaCon.Controllers
                     context.AddToContent(content);
                 context.SaveChanges();
             }
-            return RedirectToAction("EditContent");
+            return RedirectToAction("Content");
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -104,7 +114,7 @@ namespace ViaCon.Controllers
                 context.AddToContent(content);
                 context.SaveChanges();
             }
-            return RedirectToAction("EditContent");
+            return RedirectToAction("Content");
         }
 
         public ActionResult DeleteContentItem(int id)
@@ -118,7 +128,7 @@ namespace ViaCon.Controllers
                     context.SaveChanges();
                 }
             }
-            return RedirectToAction("EditContent");
+            return RedirectToAction("Content");
         }
     }
 }
