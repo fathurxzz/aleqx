@@ -3,6 +3,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: Verdana;
+	font-size:13px;
 }
 
 img
@@ -91,8 +92,26 @@ img
 	font-size:11px;
 }
 
-#footerRight a { color: #004070; text-decoration: none; }
-#footerRight .mark { background: #004070; color: white; padding: 1px 1px 1px 3px; }
+#footerRight a { color: #004070; text-decoration: none; font-size:11px;}
+#footerRight .mark { background: #004070; color: white; padding: 1px 1px 1px 3px; font-size:11px;}
 
-#footerLeft { float:left; padding-left:20px; }
-#footerRight { padding-left:800px; }
+#footerLeft { float:left; padding-left:20px; font-size:11px;}
+#footerRight { padding-left:800px; font-size:11px; }
+
+
+
+.popUpBox{position:absolute; display:none; z-index:10001;}
+.greyBorderBox{padding:10px; border: 1px solid #dbdbdb;  background:white;}
+
+a
+{
+	color: #000000;
+}
+a:active
+{
+	color: #000000;
+}
+a:hover
+{
+	color: #000000;
+}

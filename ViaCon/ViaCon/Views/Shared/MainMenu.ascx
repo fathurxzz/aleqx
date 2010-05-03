@@ -1,4 +1,5 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="ViaCon.Models" %>
 <div id="menuBox">
     <table id="tableMenu" cellpadding="0" cellspacing="0">
         <tr>
@@ -13,38 +14,37 @@
         <tr>
             <td colspan="3" class="tmenuMiddleBox">
                 <%
-                    string contentId = (string)ViewData["id"];
+                    string contentId = (string)ViewData["contentId"];
+                    string parentContentId = (string)ViewData["parentContentId"];
+                    string className = string.Empty;
 
-                    using (var context = new ViaCon.Models.ContentStorage())
+                    using (var context = new ContentStorage())
                     {
-                        var menuList = context.Content.Where(c => !c.Horisontal).ToList();
-
-                        //var menuListSecondLevel = context.Content.Where(c => !c.Horisontal && c.Parent != null).ToList();
-
-
-                        if (menuList != null)
+                        var parentParentContent = context.Content.Include("Parent").Where(c => c.ContentId == parentContentId && c.Parent != null).FirstOrDefault();
+                        if (parentParentContent != null)
                         {
-                            foreach (var item in menuList)
+                            contentId = parentContentId;
+                            parentContentId = parentParentContent.Parent.ContentId;
+                        }
+                        var menuItemsList = context.Content.Where(c => !c.Horisontal).ToList();
+                        foreach (var item in menuItemsList)
+                        {
+                            if (item.Parent == null)
                             {
-                                if (item.Parent != null) continue;
-                                //if (item.Parent.Count > 0) continue;
-                                //string cls = item.ContentId == contentId ? "menuLink selected" : "menuLink";
-                                if (item.ContentId == contentId){ %><div class="menuItem selected"><%=item.Title%></div><%
-                                
-                                    if(item.Children!=null)
+                                className = item.ContentId == contentId ? "menuItem selected" : "menuItem";
+                                %><div class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></div><%
+                                var childrenItems = item.Children.OrderBy(c => c.Id).ToList();
+                                foreach (var childItem in childrenItems)
+                                {
+                                    if (item.ContentId == contentId || childItem.Parent.ContentId == parentContentId)
                                     {
-                                        foreach (var child in item.Children)
-                                        {
-                                            %><div class="childMenuItem"><a href="/<%=child.ContentId%>"><%=child.Title%></a></div><%
-                                        }
+                                        className = childItem.ContentId == contentId ? "childMenuItem selected" : "childMenuItem";
+                                        %><div class="<%=className%>"><a href="/<%=childItem.ContentId%>"><%=childItem.Title%></a></div><%
                                     }
-                                
-                                }else{ %><div class="menuItem"><a href="/<%=item.ContentId%>"><%=item.Title%></a></div><%}
-                                
+                                }
                             }
                         }
                     }   
-    
                 %>
             </td>
         </tr>

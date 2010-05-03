@@ -1,0 +1,24 @@
+﻿.adminContentTable
+{
+	
+	
+}
+
+.adminContentTable td
+{
+	border:solid 1px silver;
+	padding:3px;
+}
+
+.adminContentTable a
+{
+	color:Silver;
+}
+.adminContentTable a:active
+{
+	color:Red;
+}
+.adminContentTable a:hover
+{
+	color:Red;
+}
