@@ -77,6 +77,22 @@
 {
 	background-color: #004070;
 	padding:3px 20px 3px 20px;
+	color:#ffffff;
+}
+
+.menuItem a
+{
+	color:#ffffff;
+}
+
+.menuItem a:active
+{
+	color:#ffffff;
+}
+
+.menuItem a:hover
+{
+	color:#ffffff;
 }
 
 .childMenuItem
@@ -86,9 +102,25 @@
 	font-size:11px;
 }
 
+.childMenuItem a
+{
+	color:#ffffff;
+}
+
+.childMenuItem a:active
+{
+	color:#ffffff;
+}
+
+.childMenuItem a:hover
+{
+	color:#ffffff;
+}
+
 .selected
 {
 	background-color:#809ABF;
+	color:#ffffff;
 }
 
 .tmenuMiddleBox
@@ -97,20 +129,44 @@
 	font-size:14px;
 }
 
-a
-{
-	color: #ffffff;
-}
-a:active
-{
-	color: #ffffff;
-}
-a:hover
-{
-	color: #ffffff;
-}
+
 
 .menuLink
 {
 	background-color: #004070;
+}
+
+
+
+#contentBoxHorisontalMenu
+{
+	text-align:center;
+	height:25px;
+	width:722px;
+	padding-top:5px;
+	color:#ffffff;
+	background-color:#BAC7D1;
+	border-left:solid 2px #004070;
+	border-right:solid 2px #004070;
+}
+
+
+#contentBoxHorisontalMenu a
+{
+	color:#005EBA;
+}
+
+#contentBoxHorisontalMenu a:active
+{
+	color:#005EBA;
+}
+
+#contentBoxHorisontalMenu a:hover
+{
+	color:#005EBA;
+}
+
+#contentBoxHorisontalMenu selected
+{
+	
 }

@@ -15,10 +15,14 @@ namespace ViaCon.Controllers
 
         public ActionResult Index(string id)
         {
+            string contentId = id;
             using (var context = new ContentStorage())
             {
-                ViewData["id"] = id;
-                var content = context.Content.Where(c => c.ContentId == id).FirstOrDefault();
+                ViewData["contentId"] = contentId;
+                var content = context.Content.Include("Parent").Where(c => c.ContentId == contentId).FirstOrDefault();
+                if (content != null)
+                    if (content.Parent != null)
+                        ViewData["parentContentId"] = content.Parent.ContentId;
                 return View("Content", content);
             }
         }
