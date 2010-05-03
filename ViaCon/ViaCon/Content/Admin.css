@@ -1,8 +1,7 @@
-﻿.adminContentTable
-{
-	
-	
-}
+﻿
+
+
+
 
 .adminContentTable td
 {
@@ -22,3 +21,19 @@
 {
 	color:Red;
 }
+
+.adminContentTableLink
+{
+	color:Silver;
+}
+
+.adminContentTableLink:active
+{
+	color:Red;
+}
+
+.adminContentTableLink:hover
+{
+	color:Red;
+}
+

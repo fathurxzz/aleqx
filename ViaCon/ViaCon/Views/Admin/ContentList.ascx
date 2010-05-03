@@ -4,6 +4,8 @@
     int level = Convert.ToInt32(ViewData["level"]);
     string marginLeft = level * 20 + "px";
 %>
+
+
 <table>
 <tr>
     <td align="left">
@@ -15,6 +17,7 @@
                
                %>
         
+       
         <table class="adminContentTable" style="margin-left:<%= marginLeft %>">
         <%if (level == 0 && ViewData["firstDisplayed"]==null){
               ViewData["firstDisplayed"] = true;
@@ -54,7 +57,9 @@
             
             <%} %>
             <td>
-                <%= Html.ActionLink("Редактировать", "EditContentItem", new { id = item.Id, parentId = parentId, horisontal=level==1 })%>
+                <%= 
+                    Html.ActionLink("Редактировать", "EditContentItem", new { id = item.Id, parentId = parentId, horisontal=level==2 })
+                    %>
             </td>
             <td>
                 <%= Html.ActionLink("Удалить", "DeleteContentItem", new { id = item.Id }, new { onclick = "return confirm('Удалить этот пункт?')" })%>

@@ -4,9 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="viacondbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="viacondbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="viacondbModelStoreContainer">
           <EntitySet Name="content" EntityType="viacondbModel.Store.content" store:Type="Tables" Schema="viacondb" />
+          <EntitySet Name="gallery" EntityType="viacondbModel.Store.gallery" store:Type="Tables" Schema="viacondb" />
         </EntityContainer>
         <EntityType Name="content">
           <Key>
@@ -22,8 +23,16 @@
           <Property Name="Text" Type="text" />
           <Property Name="Title" Type="varchar" MaxLength="255" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityType Name="gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" MaxLength="255" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="viacondbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -31,7 +40,11 @@
           <EntitySet Name="Content" EntityType="viacondbModel.Content" />
           <AssociationSet Name="ContentContent" Association="viacondbModel.ContentContent">
             <End Role="Content" EntitySet="Content" />
-            <End Role="Content1" EntitySet="Content" /></AssociationSet></EntityContainer>
+            <End Role="Content1" EntitySet="Content" /></AssociationSet>
+          <EntitySet Name="Gallery" EntityType="viacondbModel.Gallery" />
+          <AssociationSet Name="ContentGallery" Association="viacondbModel.ContentGallery">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Gallery" EntitySet="Gallery" /></AssociationSet></EntityContainer>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,10 +58,21 @@
           <Property Name="Text" Type="String" />
           <Property Name="Title" Type="String" />
           <NavigationProperty Name="Children" Relationship="viacondbModel.ContentContent" FromRole="Content" ToRole="Content1" />
-          <NavigationProperty Name="Parent" Relationship="viacondbModel.ContentContent" FromRole="Content1" ToRole="Content" /></EntityType>
+          <NavigationProperty Name="Parent" Relationship="viacondbModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <NavigationProperty Name="Galleries" Relationship="viacondbModel.ContentGallery" FromRole="Content" ToRole="Gallery" /></EntityType>
         <Association Name="ContentContent">
           <End Type="viacondbModel.Content" Role="Content" Multiplicity="0..1" />
-          <End Type="viacondbModel.Content" Role="Content1" Multiplicity="*" /></Association></Schema>
+          <End Type="viacondbModel.Content" Role="Content1" Multiplicity="*" /></Association>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="FileName" Type="String" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <NavigationProperty Name="Content" Relationship="viacondbModel.ContentGallery" FromRole="Gallery" ToRole="Content" /></EntityType>
+        <Association Name="ContentGallery">
+          <End Type="viacondbModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="viacondbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -73,7 +97,19 @@
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="Content">
               <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
-            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping>
+          <EntitySetMapping Name="Gallery">
+            <EntityTypeMapping TypeName="IsTypeOf(viacondbModel.Gallery)">
+              <MappingFragment StoreEntitySet="gallery">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentGallery" TypeName="viacondbModel.ContentGallery" StoreEntitySet="gallery">
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -97,6 +133,10 @@
           <ConnectorPoint PointX="1.2819230769230767" PointY="2.9996956380208331" />
           <ConnectorPoint PointX="1.2819230769230767" PointY="3.2496956380208335" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="3.2496956380208335" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="2.9996956380208331" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="1.7284615384615383" PointY="2.9996956380208331" /></AssociationConnector>
+        <EntityTypeShape EntityType="viacondbModel.Gallery" Width="1.5" PointX="3.375" PointY="0.75" Height="1.427958984375" />
+        <AssociationConnector Association="viacondbModel.ContentGallery">
+          <ConnectorPoint PointX="2.25" PointY="1.4639794921875" />
+          <ConnectorPoint PointX="3.375" PointY="1.4639794921875" /></AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -10,9 +10,10 @@
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("viacondbModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ViaCon.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ViaCon.Models.Content))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("viacondbModel", "ContentGallery", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ViaCon.Models.Content), "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ViaCon.Models.Gallery))]
 
 // Original file name:
-// Generation date: 02.05.2010 11:14:22
+// Generation date: 03.05.2010 21:46:08
 namespace ViaCon.Models
 {
     
@@ -62,11 +63,33 @@ namespace ViaCon.Models
         }
         private global::System.Data.Objects.ObjectQuery<Content> _Content;
         /// <summary>
+        /// There are no comments for Gallery in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<Gallery> Gallery
+        {
+            get
+            {
+                if ((this._Gallery == null))
+                {
+                    this._Gallery = base.CreateQuery<Gallery>("[Gallery]");
+                }
+                return this._Gallery;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<Gallery> _Gallery;
+        /// <summary>
         /// There are no comments for Content in the schema.
         /// </summary>
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+        /// <summary>
+        /// There are no comments for Gallery in the schema.
+        /// </summary>
+        public void AddToGallery(Gallery gallery)
+        {
+            base.AddObject("Gallery", gallery);
         }
     }
     /// <summary>
@@ -335,6 +358,157 @@ namespace ViaCon.Models
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Content>("viacondbModel.ContentContent", "Content", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Galleries in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("viacondbModel", "ContentGallery", "Gallery")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Gallery> Galleries
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Gallery>("viacondbModel.ContentGallery", "Gallery");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Gallery>("viacondbModel.ContentGallery", "Gallery", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for viacondbModel.Gallery in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="viacondbModel", Name="Gallery")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Gallery : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Gallery object.
+        /// </summary>
+        /// <param name="fileName">Initial value of FileName.</param>
+        /// <param name="id">Initial value of Id.</param>
+        public static Gallery CreateGallery(string fileName, int id)
+        {
+            Gallery gallery = new Gallery();
+            gallery.FileName = fileName;
+            gallery.Id = id;
+            return gallery;
+        }
+        /// <summary>
+        /// There are no comments for Property FileName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName
+        {
+            get
+            {
+                return this._FileName;
+            }
+            set
+            {
+                this.OnFileNameChanging(value);
+                this.ReportPropertyChanging("FileName");
+                this._FileName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("FileName");
+                this.OnFileNameChanged();
+            }
+        }
+        private string _FileName;
+        partial void OnFileNameChanging(string value);
+        partial void OnFileNameChanged();
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Title in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
+            }
+        }
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Content in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("viacondbModel", "ContentGallery", "Content")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Content Content
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("viacondbModel.ContentGallery", "Content").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("viacondbModel.ContentGallery", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Content in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("viacondbModel.ContentGallery", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Content>("viacondbModel.ContentGallery", "Content", value);
                 }
             }
         }

@@ -101,9 +101,11 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
+    <Content Include="Views\Admin\Content.aspx" />
     <Content Include="Views\Admin\ContentList.ascx" />
-    <Content Include="Views\Admin\EditContent.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Admin\Gallery.aspx" />
+    <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\HorisontalMenu.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />

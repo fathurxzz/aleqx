@@ -140,14 +140,15 @@
 
 #contentBoxHorisontalMenu
 {
-	text-align:center;
-	height:25px;
+	/*text-align:center;*/
+	height:20px;
 	width:722px;
 	padding-top:5px;
 	color:#ffffff;
 	background-color:#BAC7D1;
 	border-left:solid 2px #004070;
 	border-right:solid 2px #004070;
+	
 }
 
 
@@ -166,7 +167,24 @@
 	color:#005EBA;
 }
 
-#contentBoxHorisontalMenu selected
+.horisontalMenuItem
+{
+	margin-left:10px;
+	float:left;
+	font-size:11px;
+	color:#7A8791;
+}
+
+.horisontalMenuItem a
+{
+		font-size:11px;
+}
+
+.horisontalMenuItem
 {
 	
+}
+
+#horisontalMenuItemsBox
+{
 }

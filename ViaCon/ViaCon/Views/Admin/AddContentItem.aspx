@@ -18,6 +18,7 @@
         <%=Html.Hidden("parentId",parentId)%>
         <%=Html.Hidden("id",int.MinValue)%>
         <%=Html.Hidden("horisontal", horisontal)%>
+        
         <fieldset>
             <legend>Fields</legend>
             <p>
@@ -30,15 +31,15 @@
             </p>
             <p>
                 <label for="Description">Description:</label>
-                <%= Html.TextBox("description") %>
+                <%= Html.TextArea("description") %>
             </p>
             <p>
                 <label for="Keywords">Keywords:</label>
-                <%= Html.TextBox("keywords") %>
+                <%= Html.TextArea("keywords")%>
             </p>
             <p>
                 <label for="Text">Text:</label>
-                <%= Html.TextBox("text") %>
+                <%= Html.TextArea("text") %>
             </p>
             <p>
                 <input type="submit" value="Create" />
