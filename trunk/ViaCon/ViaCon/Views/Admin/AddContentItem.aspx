@@ -18,6 +18,7 @@
         <%=Html.Hidden("parentId",parentId)%>
         <%=Html.Hidden("id",int.MinValue)%>
         <%=Html.Hidden("horisontal", horisontal)%>
+        <%=Html.Hidden("isGalleryItem", false)%>
         
         <fieldset>
             <legend>Fields</legend>
@@ -49,7 +50,7 @@
     <% } %>
 
     <div>
-        <%=Html.ActionLink("Back to List", "EditContent") %>
+        <%=Html.ActionLink("Back to List", "Content") %>
     </div>
 
 </asp:Content>

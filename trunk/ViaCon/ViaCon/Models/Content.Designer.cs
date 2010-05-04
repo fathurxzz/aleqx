@@ -13,7 +13,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("viacondbModel", "ContentGallery", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ViaCon.Models.Content), "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ViaCon.Models.Gallery))]
 
 // Original file name:
-// Generation date: 03.05.2010 21:46:08
+// Generation date: 04.05.2010 0:53:56
 namespace ViaCon.Models
 {
     
@@ -110,13 +110,15 @@ namespace ViaCon.Models
         /// <param name="contentId">Initial value of ContentId.</param>
         /// <param name="horisontal">Initial value of Horisontal.</param>
         /// <param name="id">Initial value of Id.</param>
-        public static Content CreateContent(bool collapsible, string contentId, bool horisontal, int id)
+        /// <param name="isGalleryItem">Initial value of IsGalleryItem.</param>
+        public static Content CreateContent(bool collapsible, string contentId, bool horisontal, int id, bool isGalleryItem)
         {
             Content content = new Content();
             content.Collapsible = collapsible;
             content.ContentId = contentId;
             content.Horisontal = horisontal;
             content.Id = id;
+            content.IsGalleryItem = isGalleryItem;
             return content;
         }
         /// <summary>
@@ -304,6 +306,29 @@ namespace ViaCon.Models
         partial void OnTitleChanging(string value);
         partial void OnTitleChanged();
         /// <summary>
+        /// There are no comments for Property IsGalleryItem in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsGalleryItem
+        {
+            get
+            {
+                return this._IsGalleryItem;
+            }
+            set
+            {
+                this.OnIsGalleryItemChanging(value);
+                this.ReportPropertyChanging("IsGalleryItem");
+                this._IsGalleryItem = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IsGalleryItem");
+                this.OnIsGalleryItemChanged();
+            }
+        }
+        private bool _IsGalleryItem;
+        partial void OnIsGalleryItemChanging(bool value);
+        partial void OnIsGalleryItemChanged();
+        /// <summary>
         /// There are no comments for Children in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("viacondbModel", "ContentContent", "Content1")]
@@ -397,38 +422,15 @@ namespace ViaCon.Models
         /// <summary>
         /// Create a new Gallery object.
         /// </summary>
-        /// <param name="fileName">Initial value of FileName.</param>
         /// <param name="id">Initial value of Id.</param>
-        public static Gallery CreateGallery(string fileName, int id)
+        /// <param name="imageSource">Initial value of ImageSource.</param>
+        public static Gallery CreateGallery(int id, string imageSource)
         {
             Gallery gallery = new Gallery();
-            gallery.FileName = fileName;
             gallery.Id = id;
+            gallery.ImageSource = imageSource;
             return gallery;
         }
-        /// <summary>
-        /// There are no comments for Property FileName in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public string FileName
-        {
-            get
-            {
-                return this._FileName;
-            }
-            set
-            {
-                this.OnFileNameChanging(value);
-                this.ReportPropertyChanging("FileName");
-                this._FileName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("FileName");
-                this.OnFileNameChanged();
-            }
-        }
-        private string _FileName;
-        partial void OnFileNameChanging(string value);
-        partial void OnFileNameChanged();
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
@@ -475,6 +477,75 @@ namespace ViaCon.Models
         private string _Title;
         partial void OnTitleChanging(string value);
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property ImageSource in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageSource
+        {
+            get
+            {
+                return this._ImageSource;
+            }
+            set
+            {
+                this.OnImageSourceChanging(value);
+                this.ReportPropertyChanging("ImageSource");
+                this._ImageSource = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("ImageSource");
+                this.OnImageSourceChanged();
+            }
+        }
+        private string _ImageSource;
+        partial void OnImageSourceChanging(string value);
+        partial void OnImageSourceChanged();
+        /// <summary>
+        /// There are no comments for Property Location in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location
+        {
+            get
+            {
+                return this._Location;
+            }
+            set
+            {
+                this.OnLocationChanging(value);
+                this.ReportPropertyChanging("Location");
+                this._Location = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Location");
+                this.OnLocationChanged();
+            }
+        }
+        private string _Location;
+        partial void OnLocationChanging(string value);
+        partial void OnLocationChanged();
+        /// <summary>
+        /// There are no comments for Property Material in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Material
+        {
+            get
+            {
+                return this._Material;
+            }
+            set
+            {
+                this.OnMaterialChanging(value);
+                this.ReportPropertyChanging("Material");
+                this._Material = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Material");
+                this.OnMaterialChanged();
+            }
+        }
+        private string _Material;
+        partial void OnMaterialChanging(string value);
+        partial void OnMaterialChanged();
         /// <summary>
         /// There are no comments for Content in the schema.
         /// </summary>
