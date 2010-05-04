@@ -81,6 +81,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Content.cs" />
+    <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\Content.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,11 +103,15 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
+    <Content Include="Views\Admin\AddGalleryItem.aspx" />
     <Content Include="Views\Admin\Content.aspx" />
     <Content Include="Views\Admin\ContentList.ascx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Admin\EditGalleryItem.aspx" />
     <Content Include="Views\Admin\Gallery.aspx" />
+    <Content Include="Views\Admin\GalleryList.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
+    <Content Include="Views\Admin\ManageGalleryPictures.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\HorisontalMenu.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
@@ -138,6 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\GalleryImages\" />
+    <Folder Include="ImageCache\thumbnail1\" />
     <Folder Include="Views\Content\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

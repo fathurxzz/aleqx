@@ -17,6 +17,12 @@ namespace ViaCon
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Admin",                                              // Route name
+                "Admin/{action}",                           // URL with parameters
+                new { controller = "Admin", action = "Index", id = "" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "DefaultContent",                                              // Route name
                 "Content/{id}",                           // URL with parameters
                 new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
