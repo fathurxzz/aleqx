@@ -8,6 +8,7 @@
 <%
     int? parentId = (int?)ViewData["parentId"];
     bool? horisontal = (bool?)ViewData["horisontal"];
+    bool? collapsible = (bool?)ViewData["collapsible"];
      %>
     <h2>AddContentItem</h2>
 
@@ -18,7 +19,9 @@
         <%=Html.Hidden("parentId",parentId)%>
         <%=Html.Hidden("id",int.MinValue)%>
         <%=Html.Hidden("horisontal", horisontal)%>
+         <%=Html.Hidden("collapsible", collapsible)%>
         <%=Html.Hidden("isGalleryItem", false)%>
+        
         
         <fieldset>
             <legend>Fields</legend>
@@ -43,14 +46,14 @@
                 <%= Html.TextArea("text") %>
             </p>
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="Создать" />
             </p>
         </fieldset>
 
     <% } %>
 
     <div>
-        <%=Html.ActionLink("Back to List", "Content") %>
+        <%=Html.ActionLink("Назад к списку", "Content") %>
     </div>
 
 </asp:Content>

@@ -26,7 +26,7 @@
                             contentId = parentContentId;
                             parentContentId = parentParentContent.Parent.ContentId;
                         }
-                        var menuItemsList = context.Content.Where(c => !c.Horisontal).ToList();
+                        var menuItemsList = context.Content.Where(c => !c.Horisontal&&!c.Collapsible).ToList();
                         foreach (var item in menuItemsList)
                         {
                             if (item.Parent == null)

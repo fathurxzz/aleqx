@@ -21,22 +21,32 @@ namespace ViaCon
                 "Admin/{action}",                           // URL with parameters
                 new { controller = "Admin", action = "Index", id = "" }  // Parameter defaults
             );
-
+            
+            
+            /*
             routes.MapRoute(
                 "DefaultContent",                                              // Route name
                 "Content/{id}",                           // URL with parameters
                 new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
+            */
+
 
             routes.MapRoute(
             "Content",                                              // Route name
             "{id}",                           // URL with parameters
             new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
-
+            
             routes.MapRoute(
                 "Default",                                              // Route name
                 "{controller}/{action}/{id}",                           // URL with parameters
+                new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Default1",                                              // Route name
+                "{controller}/{action}",                           // URL with parameters
                 new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
 

@@ -18,5 +18,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentContainerTitle" runat="server">
-Система администрирования
+Система администрирования 
 </asp:Content>
