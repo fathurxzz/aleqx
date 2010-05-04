@@ -9,14 +9,14 @@
 <%
     int id = (int)ViewData["id"];
 %>
-    <h2>ManageGalleryPictures</h2>
+    <h2>Редактирование содержимого галереи</h2>
 
-    <table>
+    <table id="adminGalleryTable">
         <tr>
-            <th>Title</th>
-            <th>Image</th>
-            <th>Material</th>
-            <th>Location</th>
+            <th>Заголовок</th>
+            <th>Картинка</th>
+            <th>Материал</th>
+            <th>Локация</th>
             <th></th>
         </tr>
     <% foreach (var item in Model) 
@@ -26,7 +26,7 @@
             <td><%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail1"))%></td>
             <td><%= Html.Encode(item.Material) %></td>
             <td><%= Html.Encode(item.Location) %></td>
-            <td><%= Html.ActionLink("Delete", "DeleteImage", new { contentId = id, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%></td>
+            <td><%= Html.ActionLink("Удалить", "DeleteImage", new { contentId = id, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%></td>
         </tr>
     <% } %>
     </table>
@@ -40,19 +40,19 @@
             
             <table>
             <tr>
-                <td>Title:</td>
+                <td>Заголовок:</td>
                 <td><%=Html.TextBox("title") %></td>
             </tr>
             <tr>
-                <td>Material:</td>
+                <td>Материал:</td>
                 <td><%=Html.TextBox("material") %></td>
             </tr>
             <tr>
-                <td>Location:</td>
+                <td>Локация:</td>
                 <td><%=Html.TextBox("location")%></td>
             </tr>
             <tr>
-                <td>File:</td>
+                <td>Файл:</td>
                 <td><input type="file" name="image" />
             </td>
             </tr>

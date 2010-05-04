@@ -84,11 +84,11 @@ namespace ViaCon.Controllers
             }
         }
 
-        public ActionResult EditContentItem(int id, int? parentId, bool? horisontal)
+        public ActionResult EditContentItem(int id, int? parentId, bool? horisontal, bool? collapsible)
         {
             ViewData["parentId"] = parentId;
             ViewData["horisontal"] = horisontal;
-
+            ViewData["collapsible"] = collapsible;
             using (var context = new ContentStorage())
             {
                 var contentItem = context.Content.Where(c => c.Id == id).Select(c => c).FirstOrDefault();
@@ -109,10 +109,11 @@ namespace ViaCon.Controllers
 
 
 
-        public ActionResult AddContentItem(int? parentId, bool? horisontal)
+        public ActionResult AddContentItem(int? parentId, bool? horisontal, bool? collapsible)
         {
             ViewData["parentId"] = parentId;
             ViewData["horisontal"] = horisontal;
+            ViewData["collapsible"] = collapsible;
             return View();
         }
 
@@ -159,7 +160,7 @@ namespace ViaCon.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, /*bool collapsible,*/ bool? horisontal)
+        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool collapsible, bool? horisontal)
         {
             using (var context = new ContentStorage())
             {
@@ -179,7 +180,7 @@ namespace ViaCon.Controllers
                 content.Keywords = keywords;
                 content.Text = text;
                 content.IsGalleryItem = isGalleryItem;
-                //content.Collapsible=collapsible;
+                content.Collapsible=collapsible;
                 if (horisontal.HasValue)
                     content.Horisontal = horisontal.Value;
                 if (content.Id == 0)

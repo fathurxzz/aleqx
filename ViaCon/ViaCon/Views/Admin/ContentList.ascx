@@ -24,10 +24,10 @@
               %>
         <tr>
             <th>
-                ContentId
+                Идентификатор
             </th>
             <th>
-                Title
+                Заголовок
             </th>
         </tr>
          <%
@@ -56,9 +56,16 @@
                </td>
             
             <%} %>
+            
+            <%if (level <= 2)
+              { %>
+            <td>
+                <%=Html.ActionLink("Добавить \"вападающую\" часть страницы", "AddContentItem", new { parentId = item.Id, collapsible = true })%>
+            </td>
+            <%} %>
             <td>
                 <%= 
-                    Html.ActionLink("Редактировать", "EditContentItem", new { id = item.Id, parentId = parentId, horisontal=level==2 })
+                    Html.ActionLink("Редактировать", "EditContentItem", new { id = item.Id, parentId = parentId, horisontal=level==2, collapsible=item.Collapsible })
                     %>
             </td>
             <td>

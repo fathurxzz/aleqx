@@ -39,14 +39,14 @@
             </p>
             
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="Создать" />
             </p>
         </fieldset>
 
     <% } %>
 
     <div>
-        <%=Html.ActionLink("Back to List", "Gallery") %>
+        <%=Html.ActionLink("Назад к списку", "Gallery")%>
     </div>
 
 </asp:Content>

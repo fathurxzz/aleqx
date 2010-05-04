@@ -45,14 +45,14 @@
                 <%= Html.ValidationMessage("Text", "*") %>
             </p>
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Сохранить" />
             </p>
         </fieldset>
 
     <% } %>
 
     <div>
-        <%=Html.ActionLink("Back to List", "Gallery") %>
+        <%=Html.ActionLink("Назад к списку", "Gallery")%>
     </div>
 
 </asp:Content>

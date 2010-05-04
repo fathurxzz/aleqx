@@ -68,7 +68,7 @@ namespace ViaCon.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             }
         }
 
@@ -77,42 +77,42 @@ namespace ViaCon.Controllers
 
             FormsAuth.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Content");
         }
+        
+        //public ActionResult Register()
+        //{
 
-        public ActionResult Register()
-        {
+        //    ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+        //    return View();
+        //}
 
-            return View();
-        }
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult Register(string userName, string email, string password, string confirmPassword)
+        //{
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Register(string userName, string email, string password, string confirmPassword)
-        {
+        //    ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+        //    if (ValidateRegistration(userName, email, password, confirmPassword))
+        //    {
+        //        // Attempt to register the user
+        //        MembershipCreateStatus createStatus = MembershipService.CreateUser(userName, password, email);
 
-            if (ValidateRegistration(userName, email, password, confirmPassword))
-            {
-                // Attempt to register the user
-                MembershipCreateStatus createStatus = MembershipService.CreateUser(userName, password, email);
+        //        if (createStatus == MembershipCreateStatus.Success)
+        //        {
+        //            FormsAuth.SignIn(userName, false /* createPersistentCookie */);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("_FORM", ErrorCodeToString(createStatus));
+        //        }
+        //    }
 
-                if (createStatus == MembershipCreateStatus.Success)
-                {
-                    FormsAuth.SignIn(userName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("_FORM", ErrorCodeToString(createStatus));
-                }
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View();
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View();
+        //}
 
         [Authorize]
         public ActionResult ChangePassword()
@@ -176,19 +176,19 @@ namespace ViaCon.Controllers
         {
             if (String.IsNullOrEmpty(currentPassword))
             {
-                ModelState.AddModelError("currentPassword", "You must specify a current password.");
+                ModelState.AddModelError("currentPassword", "Введите пароль.");
             }
             if (newPassword == null || newPassword.Length < MembershipService.MinPasswordLength)
             {
                 ModelState.AddModelError("newPassword",
                     String.Format(CultureInfo.CurrentCulture,
-                         "You must specify a new password of {0} or more characters.",
+                         "пароль должен состоять минимум из {0} символов.",
                          MembershipService.MinPasswordLength));
             }
 
             if (!String.Equals(newPassword, confirmPassword, StringComparison.Ordinal))
             {
-                ModelState.AddModelError("_FORM", "The new password and confirmation password do not match.");
+                ModelState.AddModelError("_FORM", "подтверждение пароля не совпадает с введённым.");
             }
 
             return ModelState.IsValid;
@@ -198,15 +198,15 @@ namespace ViaCon.Controllers
         {
             if (String.IsNullOrEmpty(userName))
             {
-                ModelState.AddModelError("username", "You must specify a username.");
+                ModelState.AddModelError("username", "Введите логин.");
             }
             if (String.IsNullOrEmpty(password))
             {
-                ModelState.AddModelError("password", "You must specify a password.");
+                ModelState.AddModelError("password", "Введите пароль.");
             }
             if (!MembershipService.ValidateUser(userName, password))
             {
-                ModelState.AddModelError("_FORM", "The username or password provided is incorrect.");
+                ModelState.AddModelError("_FORM", "Неправильный логин или пароль.");
             }
 
             return ModelState.IsValid;

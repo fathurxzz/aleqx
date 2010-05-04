@@ -40,3 +40,20 @@
 #addMore p{ font-size:12px; font-weight:bold; color:#676767}
 #addMore{margin:20px 0;}
 
+
+.field-validation-error, .validation-summary-errors
+{
+	color:Red;
+}
+
+#adminGalleryTable
+{
+	border:solid 1px black;
+	border-collapse:collapse;
+}
+
+#adminGalleryTable td,#adminGalleryTable th
+{
+	border:solid 1px silver;
+	padding:2px;
+}
