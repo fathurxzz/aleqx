@@ -14,7 +14,8 @@ namespace ViaCon.Helpers
         static GraphicsHelper()
         {
             maxDimensions.Add("mainView", 400);
-            maxDimensions.Add("thumbnail1", 150);
+            //maxDimensions.Add("thumbnail1", 150);
+            maxDimensions.Add("thumbnail1", 180);
             maxDimensions.Add("thumbnail2", 90);
             maxDimensions.Add("thumbnail3", 75);
         }
