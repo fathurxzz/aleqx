@@ -26,6 +26,12 @@
                 {%>
                 <div class="galleryItem">
                 <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail1"))%>
+                
+                    <div class="galleryItemSign">
+                    <b>Локация:</b> <%=Html.Encode(item.Location)%>
+                    <br />
+                    <b>Материал:</b> <%=Html.Encode(item.Material)%>
+                    </div>
                 </div>
                 <%}%>
                 </div>
