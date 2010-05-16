@@ -35,7 +35,7 @@ namespace ViaCon.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddImageToGallery(int id,string title, string material, string location)
+        public ActionResult AddImageToGallery(int id,string title, string materialText, string materialUrl, string location)
         {
             string file = Request.Files["image"].FileName;
             if (!string.IsNullOrEmpty(file))
@@ -53,8 +53,10 @@ namespace ViaCon.Controllers
                     //galleryItem.Content = content;
                     galleryItem.ContentReference.EntityKey = new EntityKey("ContentStorage.Content", "Id", id);
                     galleryItem.ImageSource = newFileName;
-                    galleryItem.Title = title;
-                    galleryItem.Material = material;
+                    //galleryItem.Title = title;
+                    //galleryItem.Material = material;
+                    galleryItem.MaterialText = materialText;
+                    galleryItem.MaterialUrl = materialUrl;
                     galleryItem.Location = location;
                     context.AddToGallery(galleryItem);
                     context.SaveChanges();

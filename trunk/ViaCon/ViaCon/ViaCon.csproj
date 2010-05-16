@@ -83,10 +83,10 @@
     <Compile Include="Helpers\Content.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
-    <Compile Include="Models\Content.Designer.cs">
+    <Compile Include="Models\Content2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Content.edmx</DependentUpon>
+      <DependentUpon>Content2.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,9 +137,9 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\Content.edmx">
+    <EntityDeploy Include="Models\Content2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Content.Designer.cs</LastGenOutput>
+      <LastGenOutput>Content2.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
