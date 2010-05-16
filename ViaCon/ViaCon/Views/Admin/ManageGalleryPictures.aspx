@@ -38,10 +38,6 @@
             
             <table>
             <tr>
-                <td>Заголовок:</td>
-                <td><%=Html.TextBox("title") %></td>
-            </tr>
-            <tr>
                 <td>Материал текст:</td>
                 <td><%=Html.TextBox("materialText") %></td>
             </tr>

@@ -35,7 +35,7 @@ namespace ViaCon.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddImageToGallery(int id,string title, string materialText, string materialUrl, string location)
+        public ActionResult AddImageToGallery(int id, string materialText, string materialUrl, string location)
         {
             string file = Request.Files["image"].FileName;
             if (!string.IsNullOrEmpty(file))

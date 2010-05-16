@@ -1,18 +1,16 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="ViaCon.Models" %>
 <div id="menuBox">
-    <table id="tableMenu" cellpadding="0" cellspacing="0">
-        <tr>
-            <td id="tmenuBoxTopLeft">
-            </td>
-            <td id="tmenuBoxTopMiddle">
-                &nbsp;
-            </td>
-            <td id="tmenuBoxTopRight">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" class="tmenuMiddleBox">
+    
+    
+    <div id="divMenuBoxTopRight">
+        <div id="divMenuBoxTopLeft"></div>
+    </div>
+    <div id="divMenuBoxMiddle">
+    
+    
+    
+   
                 <%
                     string contentId = (string)ViewData["contentId"];
                     string parentContentId = (string)ViewData["parentContentId"];
@@ -46,31 +44,10 @@
                         }
                     }   
                 %>
-            </td>
-        </tr>
-        <tr>
-            <td id="tmenuBoxBottomLeft">
-            </td>
-            <td id="tmenuBoxBottomMiddle">
-                &nbsp;
-            </td>
-            <td id="tmenuBoxBottomRight">
-            </td>
-        </tr>
-    </table>
-    <!--
-<div id="menuBoxTop">
-    <div id="menuBoxTopLeft"></div>
-    <div id="menuBoxTopRight"></div>
-</div>
-<div id="menuBoxMiddle">
-
-
-
-</div>
-<div id="menuBoxBottom">
-    <div id="menuBoxBottomLeft"></div>
-    <div id="menuBoxBottomRight"></div>
-</div>
--->
+                </div>
+    <div id="divMenuBoxBottomRight">
+        <div id="divMenuBoxBottomLeft"></div>
+    </div>
+    
+    
 </div>
