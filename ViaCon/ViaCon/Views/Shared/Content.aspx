@@ -30,7 +30,7 @@
                     <div class="galleryItemSign">
                     <b>Локация:</b> <%=Html.Encode(item.Location)%>
                     <br />
-                    <b>Материал:</b> <%=Html.Encode(item.Material)%>
+                    <b>Материал:</b> <a href="<%=item.MaterialUrl%>"><%=item.MaterialText%></a>
                     </div>
                 </div>
                 <%}%>

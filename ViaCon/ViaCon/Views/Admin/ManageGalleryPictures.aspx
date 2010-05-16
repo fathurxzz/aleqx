@@ -13,7 +13,6 @@
 
     <table id="adminGalleryTable">
         <tr>
-            <th>Заголовок</th>
             <th>Картинка</th>
             <th>Материал</th>
             <th>Локация</th>
@@ -22,9 +21,8 @@
     <% foreach (var item in Model) 
        { %>
         <tr>
-            <td><%= Html.Encode(item.Title) %></td>
             <td><%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail1"))%></td>
-            <td><%= Html.Encode(item.Material) %></td>
+            <td><a href="<%=item.MaterialUrl%>"><%=item.MaterialText%></a>  </td>
             <td><%= Html.Encode(item.Location) %></td>
             <td><%= Html.ActionLink("Удалить", "DeleteImage", new { contentId = id, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%></td>
         </tr>
@@ -44,8 +42,12 @@
                 <td><%=Html.TextBox("title") %></td>
             </tr>
             <tr>
-                <td>Материал:</td>
-                <td><%=Html.TextBox("material") %></td>
+                <td>Материал текст:</td>
+                <td><%=Html.TextBox("materialText") %></td>
+            </tr>
+            <tr>
+                <td>Материал URL:</td>
+                <td><%=Html.TextBox("materialUrl") %></td>
             </tr>
             <tr>
                 <td>Локация:</td>

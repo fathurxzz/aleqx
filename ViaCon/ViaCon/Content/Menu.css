@@ -105,16 +105,19 @@
 .childMenuItem a
 {
 	color:#ffffff;
+	font-size:11px;
 }
 
 .childMenuItem a:active
 {
 	color:#ffffff;
+	font-size:11px;
 }
 
 .childMenuItem a:hover
 {
 	color:#ffffff;
+	font-size:11px;
 }
 
 .selected
