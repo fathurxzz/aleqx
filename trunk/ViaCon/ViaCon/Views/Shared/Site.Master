@@ -25,6 +25,10 @@
         $("#collapsibleContentBox").slideDown("fast");
     }
 </script>
+
+
+<asp:ContentPlaceHolder ID="Includes" runat="server"></asp:ContentPlaceHolder>
+
 </head>
 <body>
     <div id="page">

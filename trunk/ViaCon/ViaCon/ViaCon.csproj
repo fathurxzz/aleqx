@@ -102,6 +102,7 @@
     <Content Include="Content\Menu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\AddGalleryItem.aspx" />
     <Content Include="Views\Admin\Content.aspx" />
