@@ -112,8 +112,8 @@ namespace ViaCon.Controllers
         public ActionResult AddContentItem(int? parentId, bool? horisontal, bool? collapsible)
         {
             ViewData["parentId"] = parentId;
-            ViewData["horisontal"] = horisontal;
-            ViewData["collapsible"] = collapsible;
+            ViewData["horisontal"] = (horisontal.HasValue) ? horisontal.Value : false;
+            ViewData["collapsible"] = (collapsible.HasValue) ? collapsible.Value : false;
             return View();
         }
 
