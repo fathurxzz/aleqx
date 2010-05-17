@@ -22,28 +22,27 @@
          <%=Html.Hidden("collapsible", collapsible)%>
         <%=Html.Hidden("isGalleryItem", false)%>
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
 
             <p>
-                <label for="ContentId">ContentId:</label>
+                <label for="ContentId">Идентификатор:</label>
                 <%= Html.TextBox("contentId", Model.ContentId) %>
             </p>
             <p>
-                <label for="Title">Title:</label>
+                <label for="Title">Заголовок (он же пункт меню):</label>
                 <%= Html.TextBox("title", Model.Title) %>
             </p>            
             <p>
-                <label for="Description">Description:</label>
-                <%= Html.TextArea("description", Model.Description)%>
+                <label for="Text">Текст:</label>
+                <%= Html.TextArea("text", Model.Text)%>
             </p>
-
             <p>
                 <label for="Keywords">Keywords:</label>
-                <%= Html.TextArea("keywords", Model.Keywords)%>
+                <%= Html.TextBox("keywords", Model.Keywords)%>
             </p>
             <p>
-                <label for="Text">Text:</label>
-                <%= Html.TextArea("text", Model.Text)%>
+                <label for="Description">Description:</label>
+                <%= Html.TextArea("description", Model.Description)%>
             </p>
             <p>
                 <input type="submit" value="Сохранить" />
