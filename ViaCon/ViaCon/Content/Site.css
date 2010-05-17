@@ -20,8 +20,8 @@ img{border: 0;}
 a{color: #000000;}
 a:active{color: #000000;}
 a:hover{color: #000000;}
-#galleryContainer{}
-.galleryItem{float:left; width:190px; margin:0 13px 13px 13px;}
+#galleryContainer{ width:640px;}
+.galleryItem{float:left; width:190px; margin:0 11px 13px 11px;}
 .galleryItemSign{ font-size:11px; padding-top:5px; }
 .galleryItemSign b {font-size:11px;}
 #collapsibleLink{font-size:18px; color:#0066FF;}
