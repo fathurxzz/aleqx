@@ -1,7 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ViaCon.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	AddContentItem
+	ViaCon - Система администрирования - Добавить контент
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -10,7 +10,7 @@
     var horisontal = (bool?)ViewData["horisontal"];
     var collapsible = (bool?)ViewData["collapsible"];
      %>
-    <h2>AddContentItem</h2>
+    <h2>Добавить контент</h2>
 
     <% using (Html.BeginForm("UpdateContent", "Admin"))
        {%>
@@ -20,30 +20,43 @@
         <%=Html.Hidden("id",int.MinValue)%>
         <%=Html.Hidden("horisontal", horisontal)%>
          <%=Html.Hidden("collapsible", collapsible)%>
-        <%=Html.Hidden("isGalleryItem", false)%>
-        
         
         <fieldset>
             <legend></legend>
             <p>
                 <label for="ContentId">Идентификатор:</label>
-                <%= Html.TextBox("contentId") %>
+                <br />
+                <%= Html.TextBox("contentId", "", new { style = "width:90%" })%>
             </p>
+            
             <p>
                 <label for="Title">Заголовок (он же пункт меню):</label>
-                <%= Html.TextBox("title") %>
+                <br />
+                <%= Html.TextBox("title", "", new { style = "width:90%" })%>
             </p>
             <p>
                 <label for="Text">Текст:</label>
+                <br />
                 <%= Html.TextArea("text") %>
             </p>
             <p>
                 <label for="Keywords">Keywords:</label>
-                <%= Html.TextBox("keywords")%>
+                <br />
+                <%= Html.TextBox("keywords", "", new { style = "width:90%" })%>
             </p>
             <p>
                 <label for="Description">Description:</label>
-                <%= Html.TextArea("description") %>
+                <br />
+                <%= Html.TextArea("description","",5,70,null) %>
+            </p>
+            <p>
+                <label for="SortOrder">Порядок отбражения:</label>
+                <br />
+                <%= Html.TextBox("sortOrder", "",new{style="width:100%"}) %>
+            </p>
+            <p>
+                <label for="IsGalleryItem">Галерея:</label>
+                <%= Html.CheckBox("isGalleryItem",false)%>
             </p>
             <p>
                 <input type="submit" value="Создать" />
@@ -51,11 +64,6 @@
         </fieldset>
 
     <% } %>
-
-    <div>
-        <%=Html.ActionLink("Назад к списку", "Content") %>
-    </div>
-
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentContainerTitle" runat="server">

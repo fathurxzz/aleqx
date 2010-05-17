@@ -86,11 +86,12 @@ namespace ViaCon.Controllers
             }
         }
 
-        public ActionResult EditContentItem(int id, int? parentId, bool? horisontal, bool? collapsible)
+        public ActionResult EditContentItem(int id, int? parentId, bool? horisontal, bool? collapsible, bool? isGalleryItem)
         {
             ViewData["parentId"] = parentId;
             ViewData["horisontal"] = horisontal;
             ViewData["collapsible"] = collapsible;
+            ViewData["isGalleryItem"] = isGalleryItem ?? false;
             using (var context = new ContentStorage())
             {
                 var contentItem = context.Content.Where(c => c.Id == id).Select(c => c).FirstOrDefault();
@@ -162,7 +163,7 @@ namespace ViaCon.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool collapsible, bool? horisontal)
+        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool collapsible, bool? horisontal,int sortOrder)
         {
             using (var context = new ContentStorage())
             {
@@ -170,11 +171,7 @@ namespace ViaCon.Controllers
                 Content parent = null;
                 if(parentId!=null)
                     parent = context.Content.Select(c => c).Where(c => c.Id == parentId).First();
-                Content content;
-                if (id != int.MinValue)
-                    content = context.Content.Select(c => c).Where(c => c.Id == id).First();
-                else
-                    content = new Content();
+                Content content = id != int.MinValue ? context.Content.Select(c => c).Where(c => c.Id == id).First() : new Content();
                 content.Parent = parent;
                 content.ContentId = contentId;
                 content.Title = title;
@@ -183,14 +180,16 @@ namespace ViaCon.Controllers
                 content.Text = text;
                 content.IsGalleryItem = isGalleryItem;
                 content.Collapsible=collapsible;
+                content.SortOrder = sortOrder;
                 if (horisontal.HasValue)
                     content.Horisontal = horisontal.Value;
                 if (content.Id == 0)
                     context.AddToContent(content);
                 context.SaveChanges();
             }
-            string returnUrl = isGalleryItem ? "Gallery" : "Content";
-            return RedirectToAction(returnUrl);
+            //string returnUrl = isGalleryItem ? "Gallery" : "Content";
+            return RedirectToAction("Index", "Content", new {id = contentId});
+            //return RedirectToRoute(contentId); // RedirectToAction("/");
         }
 
         /*
@@ -217,7 +216,7 @@ namespace ViaCon.Controllers
 
         public ActionResult DeleteContentItem(int id)
         {
-            using (ContentStorage context = new ContentStorage())
+            using (var context = new ContentStorage())
             {
                 Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
                 if (content.Children.Count == 0)

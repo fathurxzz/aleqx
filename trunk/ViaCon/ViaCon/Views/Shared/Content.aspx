@@ -9,7 +9,31 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <% if (Model != null) Response.Write(Model.Text); %>
+    
+    
+
+    <% if (Model != null)
+ {
+           if(Request.IsAuthenticated)
+           {
+               int? mparentId = null;
+               if (Model.Parent != null)
+                   mparentId = Model.Parent.Id;
+               %>
+               <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, parentId = mparentId, collapsible = Model.Collapsible ,isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
+               <%if (Model.Children.Count == 0)
+                 { %>
+               <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+               <%} %>
+               <%if (Model.Parent != null)
+                 { %>
+                 <%=Html.ActionLink("[добавить пункт горизонтального меню]", "AddContentItem", "Admin", new { parentId = Model.Id, horisontal = true }, new { @class = "adminLink" })%>
+               <%} %>
+               <br />
+               <%
+           }
+     Response.Write(Model.Text);
+ } %>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="GalleryContent" runat="server">

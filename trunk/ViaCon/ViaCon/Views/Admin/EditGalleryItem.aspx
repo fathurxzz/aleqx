@@ -1,14 +1,14 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ViaCon.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	EditGalleryItem
+	ViaCon - Система администрирования - Редактировать контент
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
     var parentId = (int?)ViewData["parentId"];
      %>
-    <h2>EditGalleryItem</h2>
+    <h2>Редактировать контент</h2>
 
    
 
@@ -22,29 +22,35 @@
             <legend></legend>
             <p>
                 <label for="ContentId">Идентификатор:</label>
-                <%= Html.TextBox("contentId", Model.ContentId) %>
-                <%= Html.ValidationMessage("contentId", "*") %>
+                <br />
+                <%= Html.TextBox("contentId", Model.ContentId,new{style="width:100%"}) %>
             </p>
             <p>
                 <label for="Title">Заголовок (он же пункт меню):</label>
+                <br />
                 <%= Html.TextBox("title", Model.Title) %>
-                <%= Html.ValidationMessage("title", "*") %>
             </p>
             <p>
                 <label for="Text">Текст:</label>
+                <br />
                 <%= Html.TextArea("text", Model.Text)%>
-                <%= Html.ValidationMessage("text", "*") %>
             </p>
             <p>
                 <label for="Keywords">Keywords:</label>
+                <br />
                 <%= Html.TextBox("keywords", Model.Keywords) %>
-                <%= Html.ValidationMessage("keywords", "*") %>
             </p>
             <p>
                 <label for="Description">Description:</label>
+                <br />
                 <%= Html.TextBox("description", Model.Description) %>
-                <%= Html.ValidationMessage("description", "*") %>
             </p>
+            <p>
+                <label for="SortOrder">Порядок отбражения:</label>
+                <br />
+                <%= Html.TextBox("sortOrder", Model.SortOrder,new{style="width:100%"}) %>
+            </p>
+
             <p>
                 <input type="submit" value="Сохранить" />
             </p>
