@@ -7,10 +7,6 @@
         <div id="divMenuBoxTopLeft"></div>
     </div>
     <div id="divMenuBoxMiddle">
-    
-    
-    
-   
                 <%
                     var contentId = (string)ViewData["contentId"];
                     var parentContentId = (string)ViewData["parentContentId"];
@@ -39,26 +35,9 @@
                                 <%    
                                   }
                                   else
-                                  
                                 {  %>
                                 <a href="/<%=item.ContentId%>"><%=item.Title%></a>
                                 <%} %>
-                                
-                                <%if (Request.IsAuthenticated)
-                                  {
-                                      string adminClassName = item.ContentId == contentId ? "adminLinkContainer selectedAdmin" : "adminLinkContainer";
-                                       %>
-                                <div class="<%=adminClassName%>">
-                                    <%=Html.ActionLink("добавить подпункт", "AddContentItem", "Admin", new { @class = "adminLink" })%>
-                                </div>
-                                <div class="<%=adminClassName%>">
-                                    <%=Html.ActionLink("редактировать", "EditContentItem", "Admin", new { id = item.Id, collapsible = item.Collapsible }, new { @class = "adminLink" })%>
-                                </div>
-                                <div class="<%=adminClassName%>">
-                                    <%=Html.ActionLink("добавить ***", "AddContentItem", "Admin", new { parentId = item.Id, collapsible = true }, new { @class = "adminLink" })%>
-                                </div>
-                                <%} %>
-                                
                                 </div><%
                                 var childrenItems = item.Children.OrderBy(c => c.Id).OrderBy(c=>c.SortOrder).ToList();
                                 foreach (var childItem in childrenItems)
@@ -77,20 +56,6 @@
                                           { %>
                                         <a href="/<%=childItem.ContentId%>"><%=childItem.Title%></a>
                                         <%} %>
-                                        
-                                        
-                                        <%if (Request.IsAuthenticated)
-                                          {
-                                              string adminClassName = childItem.ContentId == contentId ? "adminLinkContainer selectedAdmin" : "adminLinkContainer";
-                                               %>
-                                        <div class="<%=adminClassName%>">
-                                            <%=Html.ActionLink("редактировать", "EditContentItem", "Admin", new { id = childItem.Id, parentId = item.Id, collapsible = item.Collapsible }, new { @class = "adminLink" })%>
-                                        </div>
-                                        <div class="<%=adminClassName%>">
-                                            <%=Html.ActionLink("добавить ***", "AddContentItem", "Admin", new { parentId = item.Id, collapsible = true }, new { @class = "adminLink" })%>
-                                        </div>
-                                        <%} %>
-                                
                                         </div><%
                                     }
                                 }

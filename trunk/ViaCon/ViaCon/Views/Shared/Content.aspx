@@ -20,6 +20,11 @@
                if (Model.Parent != null)
                    mparentId = Model.Parent.Id;
                %>
+               <%if (Model.Parent == null)
+                 { %>
+               <%=Html.ActionLink("добавить подпункт", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
+               <%} %>
+               <%=Html.ActionLink("добавить \"выпадающую\" часть страницы", "AddContentItem", "Admin", new { parentId = Model.Id, collapsible = true }, new { @class = "adminLink" })%>
                <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, parentId = mparentId, collapsible = Model.Collapsible ,isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
                <%if (Model.Children.Count == 0)
                  { %>
