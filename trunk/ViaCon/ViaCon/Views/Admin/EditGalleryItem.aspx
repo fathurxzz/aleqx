@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
-    int? parentId = (int?)ViewData["parentId"];
+    var parentId = (int?)ViewData["parentId"];
      %>
     <h2>EditGalleryItem</h2>
 
