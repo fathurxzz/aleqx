@@ -57,3 +57,16 @@
 	border:solid 1px silver;
 	padding:2px;
 }
+
+p{margin-top:10px;}
+
+.adminLinkContainer{background-color:#004070;}
+
+a.adminLink{    font-size:9px;    color:Red; margin-left:20px;}
+a:hover.adminLink{    font-size:9px;    color:Lime; margin-left:20px;}
+a:visited.adminLink{    font-size:9px;    color:Red; margin-left:20px;}
+
+.selectedAdmin
+{
+    background-color:#809ABF;
+}

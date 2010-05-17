@@ -1,14 +1,14 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ViaCon.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	AddGalleryItem
+	ViaCon - Система администрирования - Добавить контент
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
     var parentId = (int?)ViewData["parentId"];
      %>
-    <h2>AddGalleryItem</h2>
+    <h2>Добавить контент</h2>
 
     <% using (Html.BeginForm("UpdateContent","Admin")) {%>
         <%=Html.Hidden("parentId",parentId)%>
@@ -17,26 +17,37 @@
         <%=Html.Hidden("collapsible", false)%>
         <fieldset>
             <legend></legend>
-        
+           
+
             <p>
                 <label for="ContentId">Идентификатор:</label>
-                <%= Html.TextBox("contentId") %>
+                <br />
+                <%= Html.TextBox("contentId", "", new { style = "width:100%" })%>
             </p>
             <p>
                 <label for="Title">Заголовок (он же пункт меню):</label>
+                <br />
                 <%= Html.TextBox("title") %>
             </p>
             <p>
                 <label for="Text">Текст:</label>
+                <br />
                 <%= Html.TextArea("text")%>
             </p>
             <p>
                 <label for="Keywords">Keywords:</label>
+                <br />
                 <%= Html.TextBox("keywords") %>
             </p>
             <p>
                 <label for="Description">Description:</label>
+                <br />
                 <%= Html.TextArea("description")%>
+            </p>
+            <p>
+                <label for="SortOrder">Порядок отбражения:</label>
+                <br />
+                <%= Html.TextBox("sortOrder", "",new{style="width:100%"}) %>
             </p>
             <p>
                 <input type="submit" value="Создать" />

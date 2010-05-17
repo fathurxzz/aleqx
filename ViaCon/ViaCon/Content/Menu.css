@@ -93,8 +93,18 @@
 .selected
 {
 	background-color:#809ABF;
+	font-size:15px;
 	color:#ffffff;
 }
+
+.selectedChild
+{
+	background-color:#809ABF;
+	font-size:11px;
+	/*color:#C2CEDE;*/
+	color:#ffffff;
+}
+
 
 .tmenuMiddleBox
 {
@@ -162,3 +172,7 @@
 {
 	
 }
+
+a.parentSelected {color:#77A3C8 !important;}
+a:active.parentSelected {color:#77A3C8 !important;}
+a:hover.parentSelected{color:#77A3C8 !important;}

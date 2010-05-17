@@ -24,6 +24,9 @@
               %>
         <tr>
             <th>
+                Порядок отображения
+            </th>
+            <th>
                 Идентификатор
             </th>
             <th>
@@ -38,6 +41,7 @@
             <td style="display:none">
                 <%= Html.Hidden("itemId_" + item.Id, item.Id)%>
             </td>
+            <td><%=item.SortOrder%></td>
             <td><%=item.ContentId%></td>
             <td><%=item.Title%></td>
             

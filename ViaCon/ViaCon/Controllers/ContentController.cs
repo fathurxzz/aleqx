@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
 using ViaCon.Models;
 
 namespace ViaCon.Controllers
@@ -26,10 +22,6 @@ namespace ViaCon.Controllers
                     {
                         ViewData["parentContentId"] = content.Parent.ContentId;
                     }
-                }
-                else
-                {
-                    //throw new HttpException(404, "Приехали");
                 }
                 return View("Content", content);
             }
