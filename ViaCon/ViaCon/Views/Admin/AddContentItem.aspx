@@ -6,9 +6,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
-    int? parentId = (int?)ViewData["parentId"];
-    bool? horisontal = (bool?)ViewData["horisontal"];
-    bool? collapsible = (bool?)ViewData["collapsible"];
+    var parentId = (int?)ViewData["parentId"];
+    var horisontal = (bool?)ViewData["horisontal"];
+    var collapsible = (bool?)ViewData["collapsible"];
      %>
     <h2>AddContentItem</h2>
 
