@@ -60,7 +60,7 @@
             <%if (level <= 2)
               { %>
             <td>
-                <%=Html.ActionLink("Добавить \"вападающую\" часть страницы", "AddContentItem", new { parentId = item.Id, collapsible = true })%>
+                <%=Html.ActionLink("Добавить \"выпадающую\" часть страницы", "AddContentItem", new { parentId = item.Id, collapsible = true })%>
             </td>
             <%} %>
             <td>

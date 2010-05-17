@@ -24,26 +24,26 @@
         
         
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
             <p>
-                <label for="ContentId">ContentId:</label>
+                <label for="ContentId">Идентификатор:</label>
                 <%= Html.TextBox("contentId") %>
             </p>
             <p>
-                <label for="Title">Title:</label>
+                <label for="Title">Заголовок (он же пункт меню):</label>
                 <%= Html.TextBox("title") %>
+            </p>
+            <p>
+                <label for="Text">Текст:</label>
+                <%= Html.TextArea("text") %>
+            </p>
+            <p>
+                <label for="Keywords">Keywords:</label>
+                <%= Html.TextBox("keywords")%>
             </p>
             <p>
                 <label for="Description">Description:</label>
                 <%= Html.TextArea("description") %>
-            </p>
-            <p>
-                <label for="Keywords">Keywords:</label>
-                <%= Html.TextArea("keywords")%>
-            </p>
-            <p>
-                <label for="Text">Text:</label>
-                <%= Html.TextArea("text") %>
             </p>
             <p>
                 <input type="submit" value="Создать" />

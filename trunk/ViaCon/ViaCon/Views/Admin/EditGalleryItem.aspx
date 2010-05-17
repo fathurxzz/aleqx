@@ -19,21 +19,21 @@
         <%=Html.Hidden("isGalleryItem", true)%>
         <%=Html.Hidden("collapsible", false)%>
         <fieldset>
-            <legend>Fields</legend>
+            <legend></legend>
             <p>
-                <label for="ContentId">ContentId:</label>
+                <label for="ContentId">Идентификатор:</label>
                 <%= Html.TextBox("contentId", Model.ContentId) %>
                 <%= Html.ValidationMessage("contentId", "*") %>
             </p>
             <p>
-                <label for="Title">Title:</label>
+                <label for="Title">Заголовок (он же пункт меню):</label>
                 <%= Html.TextBox("title", Model.Title) %>
                 <%= Html.ValidationMessage("title", "*") %>
             </p>
             <p>
-                <label for="Description">Description:</label>
-                <%= Html.TextBox("description", Model.Description) %>
-                <%= Html.ValidationMessage("description", "*") %>
+                <label for="Text">Текст:</label>
+                <%= Html.TextArea("text", Model.Text)%>
+                <%= Html.ValidationMessage("text", "*") %>
             </p>
             <p>
                 <label for="Keywords">Keywords:</label>
@@ -41,9 +41,9 @@
                 <%= Html.ValidationMessage("keywords", "*") %>
             </p>
             <p>
-                <label for="Text">Text:</label>
-                <%= Html.TextArea("text", Model.Text)%>
-                <%= Html.ValidationMessage("text", "*") %>
+                <label for="Description">Description:</label>
+                <%= Html.TextBox("description", Model.Description) %>
+                <%= Html.ValidationMessage("description", "*") %>
             </p>
             <p>
                 <input type="submit" value="Сохранить" />
