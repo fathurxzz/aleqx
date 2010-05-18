@@ -10,6 +10,8 @@
                 <%
                     var contentId = (string)ViewData["contentId"];
                     var parentContentId = (string)ViewData["parentContentId"];
+                    var currentContentId = contentId;
+                    
 
                     using (var context = new ContentStorage())
                     {
@@ -41,7 +43,7 @@
                                 </div><%
                                 var childrenItems = item.Children.OrderBy(c => c.Id).OrderBy(c=>c.SortOrder).ToList();
                                 foreach (var childItem in childrenItems)
-                                {
+                             {
                                     if (item.ContentId == contentId || childItem.Parent.ContentId == parentContentId)
                                     {
                                         className = childItem.ContentId == contentId ? "childMenuItem selectedChild" : "childMenuItem";
@@ -49,9 +51,19 @@
                                         %><div class="<%=className%>">
                                         
                                         <%if (childItem.ContentId == contentId)
-                                          { %>
+                                          {
+                                              if (childItem.ContentId != currentContentId)
+                                              {
+                                                  %>
+                                                  <a href="/<%=childItem.ContentId%>"><%=childItem.Title%></a>
+                                                  <%
+                                              }
+                                              else
+                                              {
+%>
                                           <%=childItem.Title%>
                                         <%}
+                                          }
                                           else
                                           { %>
                                         <a href="/<%=childItem.ContentId%>"><%=childItem.Title%></a>
@@ -66,7 +78,7 @@
                         {
                             %>
                             <div class="adminLinkContainer">
-                            <%=Html.ActionLink("добавить пункт", "AddContentItem", "Admin",null, new { @class = "adminLink" })%>
+                            <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin",null, new { @class = "adminLink" })%>
                             </div>
                             <%
                         }

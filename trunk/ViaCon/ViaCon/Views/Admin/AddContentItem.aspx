@@ -52,7 +52,7 @@
             <p>
                 <label for="SortOrder">Порядок отбражения:</label>
                 <br />
-                <%= Html.TextBox("sortOrder", "0",new{style="width:100%"}) %>
+                <%= Html.TextBox("sortOrder", "0",new{style="width:90%"}) %>
             </p>
             <p>
                 <label for="IsGalleryItem">Галерея:</label>

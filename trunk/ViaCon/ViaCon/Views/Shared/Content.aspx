@@ -20,7 +20,7 @@
     %>
     <%if (Model.Parent == null)
       { %>
-    <%=Html.ActionLink("[добавить подпункт]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
+    <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
     <%} %>
     <%if (Model.Children.Count > 0)
           foreach (var item in Model.Children)
@@ -75,7 +75,10 @@
             foreach (var item in galleryList)
             {%>
         <div class="galleryItem">
+            
+            <a rel="example_group" href="../../Content/GalleryImages/<%=item.ImageSource%>">
             <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail1"))%>
+            </a>
             <div class="galleryItemSign">
                 <b>Локация:</b>
                 <%=Html.Encode(item.Location)%>
@@ -205,4 +208,23 @@
         }
     }
     %>
+</asp:Content>
+
+
+<asp:Content ID="Content6" ContentPlaceHolderID="Includes" runat="server">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	        $("a[rel=example_group]").fancybox({
+	            'transitionIn': 'none',
+	            'transitionOut': 'none',
+	            'titlePosition': 'over',
+	            'titleFormat': function(title, currentArray, currentIndex, currentOpts) {
+	                return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+	            }
+	        });
+	    });
+	</script>
 </asp:Content>

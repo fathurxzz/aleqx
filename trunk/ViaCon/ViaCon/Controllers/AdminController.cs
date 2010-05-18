@@ -198,7 +198,7 @@ namespace ViaCon.Controllers
                 content.Title = title;
                 content.Description = description;
                 content.Keywords = keywords;
-                content.Text = text;
+                content.Text = HttpUtility.HtmlDecode(text);
                 content.IsGalleryItem = isGalleryItem;
                 content.Collapsible=collapsible;
                 content.SortOrder = sortOrder;
