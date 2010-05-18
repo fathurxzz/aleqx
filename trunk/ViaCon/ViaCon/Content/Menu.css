@@ -126,7 +126,8 @@
 	/*text-align:center;*/
 	height:20px;
 	width:722px;
-	padding-top:5px;
+	padding-top:3px;
+	padding-bottom:2px;
 	color:#ffffff;
 	background-color:#BAC7D1;
 	border-left:solid 2px #004070;
@@ -152,8 +153,7 @@
 
 .horisontalMenuItem
 {
-	margin-left:10px;
-	float:left;
+	padding-left:17px;
 	font-size:11px;
 	color:#7A8791;
 }
@@ -164,11 +164,6 @@
 }
 
 .horisontalMenuItem
-{
-	
-}
-
-#horisontalMenuItemsBox
 {
 	
 }

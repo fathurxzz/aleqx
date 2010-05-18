@@ -109,6 +109,7 @@
     <Content Include="Views\Admin\ContentList.ascx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\Admin\EditGalleryItem.aspx" />
+    <Content Include="Views\Admin\EditImageAttributes.aspx" />
     <Content Include="Views\Admin\Gallery.aspx" />
     <Content Include="Views\Admin\GalleryList.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
