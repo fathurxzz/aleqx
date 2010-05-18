@@ -35,7 +35,7 @@ namespace ViaCon.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddImageToGallery(int id, string materialText, string materialUrl, string location)
+        public ActionResult AddImageToGallery(int itemId, string contentId, string materialText, string materialUrl, string location, int sortOrder)
         {
             string file = Request.Files["image"].FileName;
             if (!string.IsNullOrEmpty(file))
@@ -45,35 +45,56 @@ namespace ViaCon.Controllers
                 Request.Files["image"].SaveAs(filePath);
                 using (var context = new ContentStorage())
                 {
-                    //var content = context.Content.Where(c => c.Id == id).Select(c => c).FirstOrDefault();
-                    //if (content == null) 
-                        //return RedirectToAction("ManageGalleryPictures", new { id = id });
-
                     var galleryItem = new Gallery();
-                    //galleryItem.Content = content;
-                    galleryItem.ContentReference.EntityKey = new EntityKey("ContentStorage.Content", "Id", id);
+                    galleryItem.ContentReference.EntityKey = new EntityKey("ContentStorage.Content", "Id", itemId);
                     galleryItem.ImageSource = newFileName;
-                    //galleryItem.Title = title;
-                    //galleryItem.Material = material;
                     galleryItem.MaterialText = materialText;
                     galleryItem.MaterialUrl = materialUrl;
                     galleryItem.Location = location;
+                    galleryItem.SortOrder = sortOrder;
                     context.AddToGallery(galleryItem);
                     context.SaveChanges();
                 }
             }
-            return RedirectToAction("ManageGalleryPictures", new { id = id });
+            return RedirectToAction("Index", "Content", new { id = contentId });
         }
 
-        public ActionResult DeleteImage(int contentId, int id)
+
+        public ActionResult EditImageAttributes(int id, string contentId)
+        {
+            using(var context = new ContentStorage())
+            {
+                var galleryItem = context.Gallery.Include("Content").Where(c => c.Id == id).Select(c => c).First();
+                return View(galleryItem);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateImageAttributes(int id, string contentId,string location,string materialText,string materialUrl,int sortOrder)
         {
             using (var context = new ContentStorage())
             {
-                var galleryItem = context.Gallery.Where(c => c.Id == id).Select(c => c).First();
-                context.DeleteObject(galleryItem);
+                var galleryItem = context.Gallery.Include("Content").Where(c => c.Id == id).Select(c => c).First();
+                galleryItem.Location = location;
+                galleryItem.MaterialText = materialText;
+                galleryItem.MaterialUrl = materialUrl;
+                galleryItem.SortOrder = sortOrder;
                 context.SaveChanges();
             }
-            return RedirectToAction("ManageGalleryPictures", new { id = contentId });
+            return RedirectToAction("Index", "Content", new { id = contentId });
+        }
+
+        public ActionResult DeleteImage(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var galleryItem = context.Gallery.Include("Content").Where(c => c.Id == id).Select(c => c).First();
+                string contentId = galleryItem.Content.ContentId;
+                context.DeleteObject(galleryItem);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Content", new { id = contentId });
+            }
+            
         }
 
         public ActionResult ManageGalleryPictures(int id)
@@ -186,9 +207,18 @@ namespace ViaCon.Controllers
                 if (content.Id == 0)
                     context.AddToContent(content);
                 context.SaveChanges();
+
+
+                if (collapsible && parent != null)
+                    contentId = parent.ContentId;
+
+                return RedirectToAction("Index", "Content", new { id = contentId });
             }
             //string returnUrl = isGalleryItem ? "Gallery" : "Content";
-            return RedirectToAction("Index", "Content", new {id = contentId});
+
+
+
+            
             //return RedirectToRoute(contentId); // RedirectToAction("/");
         }
 
@@ -219,18 +249,20 @@ namespace ViaCon.Controllers
             using (var context = new ContentStorage())
             {
                 Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
+                string contentId = content.ContentId;
                 if (content.Children.Count == 0)
                 {
                     context.DeleteObject(content);
                     context.SaveChanges();
                 }
+                return RedirectToAction("Index", "Content", new { id = "About" });
             }
-            return RedirectToAction("Content");
+            
         }
 
         public ActionResult DeleteGalleryItem(int id)
         {
-            /*
+         /*   
             using (ContentStorage context = new ContentStorage())
             {
                 Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
@@ -239,7 +271,8 @@ namespace ViaCon.Controllers
                     context.DeleteObject(content);
                     context.SaveChanges();
                 }
-            }*/
+            }
+            */
             return RedirectToAction("Gallery");
         }
     }

@@ -66,7 +66,7 @@
                         {
                             %>
                             <div class="adminLinkContainer">
-                            <%=Html.ActionLink("добавить пункт", "AddContentItem", "Admin", new { @class = "adminLink" })%>
+                            <%=Html.ActionLink("добавить пункт", "AddContentItem", "Admin",null, new { @class = "adminLink" })%>
                             </div>
                             <%
                         }

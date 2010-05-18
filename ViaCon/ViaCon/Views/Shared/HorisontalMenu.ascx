@@ -18,18 +18,23 @@
         }
         
         var menuItemsList = context.Content.Include("Parent").Where(c => c.Horisontal&& c.Parent!=null).ToList();
-        menuItemsList = menuItemsList.Where(c => c.Parent.ContentId == contentId).ToList();
+        menuItemsList = menuItemsList.Where(c => c.Parent.ContentId == contentId).OrderBy(c=>c.SortOrder).ToList();
         if (menuItemsList.Count > 0)
         {
             %><div id="contentBoxHorisontalMenu">
-                <div id="horisontalMenuItemsBox">
-            <%
+            
+            <table style="width:100%; border:none;">
+            <tr>
+            <td align="center" >
+                <table cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;">
+                <tr>
+                    <%
             foreach (var item in menuItemsList)
             {
                 if (item.Parent.ContentId == contentId)
                 {
                     %>
-                    <div class="horisontalMenuItem">
+                    <td class="horisontalMenuItem">
                     <%
                     if (item.ContentId == childContentId)
                     {
@@ -40,11 +45,19 @@
                         %><a href="/<%=item.ContentId%>"><%=item.Title%></a><% 
                     }
                     %>
-                    </div>
+                    </td>
                     <%
                 }
             }
-            %></div></div><%
+            %>                
+                </tr>
+                </table>
+            
+                
+            </td>
+            </tr>
+            </table>
+     </div><%
         }
         
     }
