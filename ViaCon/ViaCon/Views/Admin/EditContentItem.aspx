@@ -27,12 +27,12 @@
             <p>
                 <label for="ContentId">Идентификатор:</label>
                 <br />
-                <%= Html.TextBox("contentId", Model.ContentId,new{style="width:100%"}) %>
+                <%= Html.TextBox("contentId", Model.ContentId,new{style="width:90%"}) %>
             </p>
             <p>
                 <label for="Title">Заголовок (он же пункт меню):</label>
                 <br />
-                <%= Html.TextBox("title", Model.Title) %>
+                <%= Html.TextBox("title", Model.Title, new { style = "width:90%" })%>
             </p>            
             <p>
                 <label for="Text">Текст:</label>
@@ -42,17 +42,17 @@
             <p>
                 <label for="Keywords">Keywords:</label>
                 <br />
-                <%= Html.TextBox("keywords", Model.Keywords)%>
+                <%= Html.TextBox("keywords", Model.Keywords, new { style = "width:90%" })%>
             </p>
             <p>
                 <label for="Description">Description:</label>
                 <br />
-                <%= Html.TextArea("description", Model.Description)%>
+                <%= Html.TextArea("description", Model.Description,5,70,null)%>
             </p>
             <p>
                 <label for="SortOrder">Порядок отбражения:</label>
                 <br />
-                <%= Html.TextBox("sortOrder", Model.SortOrder,new{style="width:100%"}) %>
+                <%= Html.TextBox("sortOrder", Model.SortOrder,new{style="width:90%"}) %>
             </p>
             <p>
                 <label for="IsGalleryItem">Галерея:</label>
