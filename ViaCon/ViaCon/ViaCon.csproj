@@ -99,6 +99,7 @@
     <Content Include="Content\img\menu-bottom-right.gif" />
     <Content Include="Content\img\menu-top-left.gif" />
     <Content Include="Content\img\menu-top-right.gif" />
+    <Content Include="Content\img\viacon-logo.jpg" />
     <Content Include="Content\Menu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />

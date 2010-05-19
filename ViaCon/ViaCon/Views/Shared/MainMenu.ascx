@@ -30,11 +30,26 @@
                                 string classNameAdmin = item.ContentId == contentId ? "adminLinkContainer selectedAdmin" : "adminLinkContainer";
                                 %><div class="<%=className%>">
                                 
-                                <%if (item.ContentId == contentId) { Response.Write(item.Title); }
+                                <%if (item.ContentId == contentId)
+                                    {
+                                        Response.Write(item.Title);
+                                      
+                                      
+                                      if (Request.IsAuthenticated&&item.Children.Count==0)
+                                        { %>
+                                        <div class="<%=classNameAdmin%>">
+                                        <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = item.Id, isGalleryItem = item.IsGalleryItem }, new { @class = "adminLink" })%>
+                                        </div>
+                                        <%} 
+                                      
+                                      
+                                    }
                                   else if (item.ContentId==parentContentId)
                                   {
                                   %>
                                 <a href="/<%=item.ContentId%>" class="parentSelected"><%=item.Title%></a>
+                                
+                                
                                 <%    
                                   }
                                   else
@@ -43,18 +58,16 @@
                                 <%} %>
                                 
                                 
-                                <%if (Request.IsAuthenticated)
-                                  { %>
-                                <div class="<%=classNameAdmin%>">
-                                <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin", new { parentId = item.Id, isGalleryItem = item.IsGalleryItem }, new { @class = "adminLink" })%>
-                                </div>
-                                <%} %>
+                                
                                 </div><%
+                                
                                 var childrenItems = item.Children.OrderBy(c => c.Id).OrderBy(c=>c.SortOrder).ToList();
+                                int childItemsCount = 0;
                                 foreach (var childItem in childrenItems)
                              {
                                     if (item.ContentId == contentId || childItem.Parent.ContentId == parentContentId)
                                     {
+                                        childItemsCount++;
                                         className = childItem.ContentId == contentId ? "childMenuItem selectedChild" : "childMenuItem";
                                         
                                         %><div class="<%=className%>">
@@ -80,6 +93,14 @@
                                         </div><%
                                     }
                                 }
+                                if(childItemsCount>0&&Request.IsAuthenticated)
+                                {%>
+                                <div class="childMenuItem">
+                                <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = item.Id, isGalleryItem = item.IsGalleryItem }, new { @class = "adminLink" })%>
+                                </div>
+                                <%
+                                }
+
                             }
                         }
                     }   

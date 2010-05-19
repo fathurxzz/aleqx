@@ -62,9 +62,9 @@ p{margin-top:10px;}
 
 .adminLinkContainer{background-color:#004070;}
 
-a.adminLink{    font-size:9px;    color:Red; margin-left:5px;}
-a:hover.adminLink{    font-size:9px;    color:Lime; margin-left:5px;}
-a:visited.adminLink{    font-size:9px;    color:Red; margin-left:5px;}
+a.adminLink{    font-size:9px;    color:Red; margin-right:5px}
+a:hover.adminLink{    font-size:9px;    color:Lime; margin-right:5px;}
+a:visited.adminLink{    font-size:9px;    color:Red; margin-right:5px;}
 
 .selectedAdmin
 {
