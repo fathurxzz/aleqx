@@ -38,11 +38,11 @@
             
             <table>
             <tr>
-                <td>Материал текст:</td>
+                <td>Название материала:</td>
                 <td><%=Html.TextBox("materialText") %></td>
             </tr>
             <tr>
-                <td>Материал URL:</td>
+                <td>Ссылка на материал (http://...):</td>
                 <td><%=Html.TextBox("materialUrl") %></td>
             </tr>
             <tr>

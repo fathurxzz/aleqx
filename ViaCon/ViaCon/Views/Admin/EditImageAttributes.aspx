@@ -22,12 +22,12 @@
             </p>
             
             <p>
-                <label for="MaterialText">Материал текст:</label>
+                <label for="MaterialText">Название материала:</label>
                 <br />
                 <%= Html.TextBox("MaterialText", Model.MaterialText, new { style = "width:90%" })%>
             </p>
             <p>
-                <label for="MaterialUrl">Материал URL:</label>
+                <label for="MaterialUrl">Ссылка на материал (http://...):</label>
                 <br />
                 <%= Html.TextBox("MaterialUrl", Model.MaterialUrl, new { style = "width:90%" })%>
             </p>
