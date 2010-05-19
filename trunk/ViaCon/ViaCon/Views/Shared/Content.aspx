@@ -19,7 +19,7 @@
                    mparentId = Model.Parent.Id;
     %>
     <%//if (Model.Parent == null)
-      //{ %>
+        //{ %>
     <%//=Html.ActionLink("[добавить пункт]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
     <%//} %>
     <%if (Model.Children.Count > 0)
@@ -45,9 +45,9 @@
     <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
     <%}
 
-                   }
-                   else if (Model.Children.Count == 0)
-                   { %>
+        }
+        else if (Model.Children.Count == 0)
+        { %>
     <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
     <%} %>
     <%if (Model.Parent != null && !Model.Horisontal && !Model.IsGalleryItem)
@@ -58,7 +58,7 @@
     <%
         }
            Response.Write(Model.Text);
- } %>
+       } %>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="GalleryContent" runat="server">
     <%
@@ -75,9 +75,8 @@
             foreach (var item in galleryList)
             {%>
         <div class="galleryItem">
-            
-            <a rel="example_group" href="../../Content/GalleryImages/<%=item.ImageSource%>">
-            <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail1"))%>
+            <a class="grouped_elements" href="../../Content/GalleryImages/<%=item.ImageSource%>">
+                <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail1"))%>
             </a>
             <div class="galleryItemSign">
                 <b>Локация:</b>
@@ -89,7 +88,7 @@
             <%if (Request.IsAuthenticated)
               {
                   
-                   %>
+            %>
             порядок:<%=item.SortOrder %>
             <br />
             <%= Html.ActionLink("[редактировать]", "EditImageAttributes", "Admin", new { id = item.Id, contentId=item.Content.ContentId }, new { @class = "adminLink" })%>
@@ -102,16 +101,14 @@
     </div>
     <%
         }
-            if(Request.IsAuthenticated)
-            if (Model.IsGalleryItem)
-            {
+            if (Request.IsAuthenticated)
+                if (Model.IsGalleryItem)
+                {
     %>
     <%using (Html.BeginForm("AddImageToGallery", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
       { %>
-    
-        <%=Html.Hidden("itemId", Model.Id)%>
-        <%=Html.Hidden("contentId", Model.ContentId)%>
-        
+    <%=Html.Hidden("itemId", Model.Id)%>
+    <%=Html.Hidden("contentId", Model.ContentId)%>
     <div id="addMore">
         <p>
             Добавить еще:</p>
@@ -141,8 +138,12 @@
                 </td>
             </tr>
             <tr>
-                <td>Порядок отображения:</td>
-                <td><%=Html.TextBox("sortOrder",0)%></td>
+                <td>
+                    Порядок отображения:
+                </td>
+                <td>
+                    <%=Html.TextBox("sortOrder",0)%>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -183,15 +184,14 @@
                 
     %>
     <div id="collapsibleContentContainer">
-    <br />
+        <br />
         <hr />
         <table style="border: none; width: 100%">
             <tr>
                 <td align="center">
                     <a href="#" id="collapsibleLink" onclick="showCollapsibleBox()">
-                    <%//=Html.Encode(collapsibleContentItem.Title)%>
-                        Процесс использования
-                        </a>
+                        <%//=Html.Encode(collapsibleContentItem.Title)%>
+                        Процесс использования </a>
                 </td>
             </tr>
         </table>
@@ -208,26 +208,43 @@
     </div>
     <%
         }
+            }
         }
-    }
     %>
 </asp:Content>
-
-
 <asp:Content ID="Content6" ContentPlaceHolderID="Includes" runat="server">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+
     <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
-	<link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
-	<script type="text/javascript">
-	    $(document).ready(function() {
-	        $("a[rel=example_group]").fancybox({
-	            'transitionIn': 'none',
-	            'transitionOut': 'none',
-	            'titlePosition': 'over',
-	            'titleFormat': function(title, currentArray, currentIndex, currentOpts) {
-	                return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
-	            }
-	        });
-	    });
-	</script>
+
+    <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css"
+        media="screen" />
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            /*
+            $("a[rel=example_group]").fancybox({
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'titlePosition': 'over',
+            'titleFormat': function(title, currentArray, currentIndex, currentOpts) {
+            return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+            }
+            });
+            */
+                $("a.grouped_elements").fancybox({
+                'titleShow': false,
+                'transitionIn': 'none',
+                'transitionOut': 'none',
+                'hideOnOverlayClick': true,
+                'hideOnContentClick': true,
+                'enableEscapeButton': true,
+                'showCloseButton': false
+            });
+
+        });
+    </script>
+
 </asp:Content>
