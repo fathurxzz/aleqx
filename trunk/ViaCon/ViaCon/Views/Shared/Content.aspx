@@ -18,10 +18,10 @@
                if (Model.Parent != null)
                    mparentId = Model.Parent.Id;
     %>
-    <%if (Model.Parent == null)
-      { %>
-    <%=Html.ActionLink("[добавить пункт]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
-    <%} %>
+    <%//if (Model.Parent == null)
+      //{ %>
+    <%//=Html.ActionLink("[добавить пункт]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
+    <%//} %>
     <%if (Model.Children.Count > 0)
           foreach (var item in Model.Children)
           {
@@ -118,7 +118,7 @@
         <table>
             <tr>
                 <td>
-                    Материал текст:
+                    Название материала:
                 </td>
                 <td>
                     <%=Html.TextBox("materialText")%>
@@ -126,7 +126,7 @@
             </tr>
             <tr>
                 <td>
-                    Материал URL:
+                    Ссылка на материал (http://...):
                 </td>
                 <td>
                     <%=Html.TextBox("materialUrl")%>
@@ -183,12 +183,15 @@
                 
     %>
     <div id="collapsibleContentContainer">
+    <br />
         <hr />
         <table style="border: none; width: 100%">
             <tr>
                 <td align="center">
                     <a href="#" id="collapsibleLink" onclick="showCollapsibleBox()">
-                        <%=Html.Encode(collapsibleContentItem.Title)%></a>
+                    <%//=Html.Encode(collapsibleContentItem.Title)%>
+                        Процесс использования
+                        </a>
                 </td>
             </tr>
         </table>

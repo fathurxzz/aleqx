@@ -27,6 +27,7 @@
                             if (item.Parent == null)
                             {
                                 string className = item.ContentId == contentId ? "menuItem selected" : "menuItem";
+                                string classNameAdmin = item.ContentId == contentId ? "adminLinkContainer selectedAdmin" : "adminLinkContainer";
                                 %><div class="<%=className%>">
                                 
                                 <%if (item.ContentId == contentId) { Response.Write(item.Title); }
@@ -40,6 +41,12 @@
                                 {  %>
                                 <a href="/<%=item.ContentId%>"><%=item.Title%></a>
                                 <%} %>
+                                
+                                
+                                
+                                <div class="<%=classNameAdmin%>">
+                                <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin", new { parentId = item.Id, isGalleryItem = item.IsGalleryItem }, new { @class = "adminLink" })%>
+                                </div>
                                 </div><%
                                 var childrenItems = item.Children.OrderBy(c => c.Id).OrderBy(c=>c.SortOrder).ToList();
                                 foreach (var childItem in childrenItems)
