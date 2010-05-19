@@ -43,10 +43,12 @@
                                 <%} %>
                                 
                                 
-                                
+                                <%if (Request.IsAuthenticated)
+                                  { %>
                                 <div class="<%=classNameAdmin%>">
                                 <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin", new { parentId = item.Id, isGalleryItem = item.IsGalleryItem }, new { @class = "adminLink" })%>
                                 </div>
+                                <%} %>
                                 </div><%
                                 var childrenItems = item.Children.OrderBy(c => c.Id).OrderBy(c=>c.SortOrder).ToList();
                                 foreach (var childItem in childrenItems)
