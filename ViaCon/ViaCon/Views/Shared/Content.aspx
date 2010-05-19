@@ -20,7 +20,7 @@
     %>
     <%if (Model.Parent == null)
       { %>
-    <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
+    <%=Html.ActionLink("[добавить пункт]", "AddContentItem", "Admin", new { parentId = Model.Id, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
     <%} %>
     <%if (Model.Children.Count > 0)
           foreach (var item in Model.Children)
@@ -31,7 +31,7 @@
     %>
     <%if (!hasCollapsibleItem && !Model.IsGalleryItem)
       { %>
-    <%=Html.ActionLink("[добавить \"выпадающую\" часть страницы]", "AddContentItem", "Admin", new { parentId = Model.Id, collapsible = true }, new { @class = "adminLink" })%>
+    <%=Html.ActionLink("[добавить процесс использования]", "AddContentItem", "Admin", new { parentId = Model.Id, collapsible = true }, new { @class = "adminLink" })%>
     <%} %>
     <%if (!Model.IsGalleryItem)
       { %>

@@ -28,12 +28,16 @@
                 <br />
                 <%= Html.TextBox("contentId", "", new { style = "width:90%" })%>
             </p>
-            
+            <%if(collapsible == null || !collapsible.Value){ %>
             <p>
                 <label for="Title">Заголовок (он же пункт меню):</label>
                 <br />
                 <%= Html.TextBox("title", "", new { style = "width:90%" })%>
             </p>
+            <%} %>
+            <% else{ %>
+                <%= Html.Hidden("title", "Процесс использования")%>
+            <%} %>
             <p>
                 <label for="Text">Текст:</label>
                 <br />
@@ -54,10 +58,19 @@
                 <br />
                 <%= Html.TextBox("sortOrder", "0",new{style="width:90%"}) %>
             </p>
+             <%if(collapsible == null || !collapsible.Value){ %>
             <p>
                 <label for="IsGalleryItem">Галерея:</label>
                 <%= Html.CheckBox("isGalleryItem",false)%>
             </p>
+            <%} %>
+            <%else{ %>
+            <p style="display:none;">
+                <label for="IsGalleryItem">Галерея:</label>
+                <%= Html.CheckBox("isGalleryItem",false)%>
+            </p>
+                
+            <%} %>
             <p>
                 <input type="submit" value="Создать" />
             </p>

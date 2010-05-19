@@ -29,11 +29,16 @@
                 <br />
                 <%= Html.TextBox("contentId", Model.ContentId,new{style="width:90%"}) %>
             </p>
+            <%if(collapsible == null || !collapsible.Value){ %>
             <p>
                 <label for="Title">Заголовок (он же пункт меню):</label>
                 <br />
                 <%= Html.TextBox("title", Model.Title, new { style = "width:90%" })%>
             </p>            
+            <%} %>
+            <%else{ %>
+                <%= Html.Hidden("title", "Процесс использования")%>
+            <%} %>
             <p>
                 <label for="Text">Текст:</label>
                 <br />

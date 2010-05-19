@@ -21,7 +21,7 @@ namespace ViaCon.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Content()
