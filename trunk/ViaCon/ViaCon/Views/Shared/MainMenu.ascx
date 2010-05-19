@@ -73,15 +73,6 @@
                                 }
                             }
                         }
-                        
-                        if(Request.IsAuthenticated)
-                        {
-                            %>
-                            <div class="adminLinkContainer">
-                            <%=Html.ActionLink("[добавить раздел]", "AddContentItem", "Admin",null, new { @class = "adminLink" })%>
-                            </div>
-                            <%
-                        }
                     }   
                 %>
                 </div>
