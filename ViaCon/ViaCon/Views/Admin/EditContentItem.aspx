@@ -25,7 +25,7 @@
         <fieldset>
             <legend></legend>
             <p>
-                <label for="ContentId">Идентификатор:</label>
+                <label for="ContentId">Идентификатор (вводить латиницей):</label>
                 <br />
                 <%= Html.TextBox("contentId", Model.ContentId,new{style="width:90%"}) %>
             </p>
