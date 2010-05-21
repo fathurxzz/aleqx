@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="avenuedbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="avenuedbModelStoreContainer">
+          <EntitySet Name="content" EntityType="avenuedbModel.Store.content" store:Type="Tables" Schema="avenuedb" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="MenuLevel" Type="int" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="avenuedbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="avenuedbModel.Content" />
+          <AssociationSet Name="ContentContent" Association="avenuedbModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" /></AssociationSet></EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Keywords" Type="String" />
+          <Property Name="MenuLevel" Type="Int32" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="Children" Relationship="avenuedbModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Parent" Relationship="avenuedbModel.ContentContent" FromRole="Content1" ToRole="Content" /></EntityType>
+        <Association Name="ContentContent">
+          <End Type="avenuedbModel.Content" Role="Content" Multiplicity="0..1" />
+          <End Type="avenuedbModel.Content" Role="Content1" Multiplicity="*" /></Association></Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="avenuedbModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content">
+            <EntityTypeMapping TypeName="IsTypeOf(avenuedbModel.Content)">
+              <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="MenuLevel" ColumnName="MenuLevel" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="avenuedbModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Structure">
+        <EntityTypeShape EntityType="avenuedbModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
+        <AssociationConnector Association="avenuedbModel.ContentContent">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="3.16404296875" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="3.4140429687499996" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="3.4140429687499996" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="3.16404296875" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
