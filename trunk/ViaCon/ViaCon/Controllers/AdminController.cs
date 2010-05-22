@@ -214,34 +214,9 @@ namespace ViaCon.Controllers
 
                 return RedirectToAction("Index", "Content", new { id = contentId });
             }
-            //string returnUrl = isGalleryItem ? "Gallery" : "Content";
-
-
-
-            
-            //return RedirectToRoute(contentId); // RedirectToAction("/");
         }
 
-        /*
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult InsertContentItem(FormCollection form)
-        {
-            using (var context = new ContentStorage())
-            {
-                int parentId = int.Parse(form["parentId"]);
-                Content parent = null;
-                if (parentId >= 0)
-                    parent = context.Content.Select(c => c).Where(c => c.Id == parentId).First();
-                Content content = new Content();
-                content.Parent = parent;
-                content.ContentId = form["contentId"];
-                content.Title = form["title"];
-                context.AddToContent(content);
-                context.SaveChanges();
-            }
-            return RedirectToAction("Content");
-        }
-        */
+
 
 
         public ActionResult DeleteContentItem(int id)
@@ -262,17 +237,6 @@ namespace ViaCon.Controllers
 
         public ActionResult DeleteGalleryItem(int id)
         {
-         /*   
-            using (ContentStorage context = new ContentStorage())
-            {
-                Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
-                if (content.Children.Count == 0)
-                {
-                    context.DeleteObject(content);
-                    context.SaveChanges();
-                }
-            }
-            */
             return RedirectToAction("Gallery");
         }
     }
