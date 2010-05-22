@@ -80,14 +80,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\content-bottom-left-bg.gif" />
+    <Content Include="Content\img\content-bottom-right-bg.gif" />
+    <Content Include="Content\img\content-top-bg.gif" />
     <Content Include="Content\img\header-center-container.gif" />
     <Content Include="Content\img\header-left.gif" />
     <Content Include="Content\img\header-right.gif" />
+    <Content Include="Content\img\left-menu-bg.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Shared\HorisontalMenu.ascx" />
+    <Content Include="Views\Shared\LeftMenu.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

@@ -1,2 +1,25 @@
 ﻿#mainMenuContainer{ margin:0 auto; width:737px; height:95px; position:relative;background-image: url('img/main-menu-bg.gif'); background-repeat:no-repeat;}
+#mainMenuBox{ padding-top:40px; height:20px; width:700px; position:relative; margin:0 auto;}
+
 #mainMenu{}
+
+#leftMenuContainer{float:left; background-image:url('img/left-menu-bg.gif'); background-repeat:no-repeat; background-position:0 30px;  width:170px; /*background-color:Red;*/ height:367px;}
+
+#leftMenuBox{ padding-top:80px;}
+
+#horisontalMenuContainer{margin:0 auto;position:relative; width:500px; height:25px; }
+
+
+.mainMenuItem {  }
+.mainMenuItem a { color:#669900; font-family:Georgia; font-size:16px; padding-right:15px; padding-left:15px; }
+.mainMenuItem.selected a { color:#9bd240; font-weight:bold; font-family:Georgia; font-size:16px; padding-right:15px; padding-left:15px; }
+
+.leftMenuItem { padding-left:40px; padding-top:20px; }
+.leftMenuItem a { color:#669900; font-style:italic; font-family:Georgia; font-size:11px; padding-right:30px; }
+.leftMenuItem.selected a { color:#9bd240; font-style:italic; font-family:Georgia; font-size:11px; padding-right:30px; }
+
+.horisontalMenuItem { font-style:italic; }
+.horisontalMenuItem a { color:#ffffff; font-family:Georgia; font-size:11px; padding-left:25px; padding-right:25px; }
+.horisontalMenuItem.selected a { color:#ffffff; font-family:Georgia; font-size:11px; padding-left:25px; padding-right:25px; }
+
+
