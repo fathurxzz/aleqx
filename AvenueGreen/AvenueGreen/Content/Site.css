@@ -1,7 +1,7 @@
 ﻿*{margin: 0;	padding: 0;	font-family: Verdana;	font-size: 13px;}
 img{border: 0;}
 .clearBoth{	clear: both;}
-#page{/*position: relative;*/	margin: 0 auto;	/*width: 950px;*/	background-color: #1f2935;	height: 100%;}
+#page{/*position: relative;*/ min-width:969px;	margin: 0 auto;	/*width: 950px;*/	background-color: #1f2935;	height: 100%;}
 
 #header{min-width:969px;}
 #headerLeft{float:left; width:290px; height:182px;background-image: url('img/header-left.gif');}
@@ -13,7 +13,7 @@ img{border: 0;}
 
 
 #contentTitle{padding-left:10px; position:relative; height:30px; font-size:20px; font-family:Georgia; color:#ffffff; margin-left:200px; margin-right:200px;}
-#mainContent{ padding:20px 10px 10px 10px; position:relative; color:#a4b09c; font-size:13px;  margin-left:200px; margin-right:200px;}
+#mainContent{ padding:20px 10px 10px 10px; position:relative; color:#a4b09c; font-size:13px;  margin-left:200px; margin-right:200px; z-index:1; margin-bottom:-30px;}
 
 
 #footer{ margin:0 auto; width:737px; height:95px; position:relative;background-image: url('img/main-menu-bg.gif'); background-repeat:no-repeat;}
@@ -24,6 +24,6 @@ img{border: 0;}
 #footerRight a:visited{color:#ffffff; font-family:Georgia; font-size:11px;}
 
 
-#contentBottomContainer{height:150px; position:relative; margin-left:130px; margin-right:130px; }
+#contentBottomContainer{height:150px; position:relative; margin-left:130px; margin-right:130px;z-index:0; }
 #contentBottomLeftContainer{float:left; height:150px; width:150px;  background-image: url('img/content-bottom-left-bg.gif');}
 #contentBottomRightContainer{float:right; height:150px; width:150px; background-image: url('img/content-bottom-right-bg.gif');}
