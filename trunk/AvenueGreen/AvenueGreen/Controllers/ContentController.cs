@@ -15,7 +15,7 @@ namespace AvenueGreen.Controllers
 
         public ActionResult Index()
         {
-            using (ContentStorage context = new ContentStorage())
+            using (var context = new ContentStorage())
             {
                 Content content = context.Content.Select(c => c).FirstOrDefault(); 
                 return View(content);
