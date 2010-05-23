@@ -24,6 +24,13 @@ namespace AvenueGreen.Controllers
             return View();
         }
 
+        public ActionResult AddContentItem(int? parentId, int contentLevel)
+        {
+            ViewData["parentId"] = parentId;
+            ViewData["contentLevel"] = contentLevel;
+            return View();
+        }
+
         public ActionResult EditContentItem(int id, int? parentId, bool? horisontal, bool? isGalleryItem, int contentLevel)
         {
             ViewData["parentId"] = parentId;
@@ -37,8 +44,81 @@ namespace AvenueGreen.Controllers
             }
         }
 
+
+        #region News
+        public ActionResult AddEditArticle(string id)
+        {
+            string title = "Создание новости";
+            ViewData["isNew"] = string.IsNullOrEmpty(id);
+            ViewData["id"] = id;
+            if (!string.IsNullOrEmpty(id))
+            {
+                using (ContentStorage context = new ContentStorage())
+                {
+                    Article article = context.Article.Where(a => a.Name == id).First();
+                    title = string.Format("Редактирование новости \"{0}\"", article.Title);
+                    ViewData["title"] = article.Title;
+                    ViewData["date"] = article.Date.ToString("dd.MM.yyyy");
+                    ViewData["text"] = article.Text;
+                    ViewData["description"] = article.Description;
+                    ViewData["keywords"] = article.Keywords;
+                }
+            }
+            ViewData["cTitle"] = title;
+            return View();
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool? horisontal, int sortOrder)
+        public ActionResult AddEditArticle(string id,
+            string title,
+            string date,
+            string keywords,
+            string description,
+            string text,
+            bool isNew)
+        {
+            using (ContentStorage context = new ContentStorage())
+            {
+                Article article;
+                if (isNew)
+                {
+                    article = new Article();
+                    article.Name = id;
+                    context.AddToArticle(article);
+                }
+                else
+                {
+                    article = context.Article.Where(a => a.Name == id).First();
+                }
+
+                article.Title = title;
+                article.Date = DateTime.Parse(date);
+                article.Text = HttpUtility.HtmlDecode(text);
+                article.Description = description;
+                article.Keywords = keywords;
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "News");
+        }
+
+        public ActionResult DeleteArticle(string id)
+        {
+            using (ContentStorage context = new ContentStorage())
+            {
+                List<Article> articles = context.Article.Where(a => a.Name == id).ToList();
+
+                foreach (var item in articles)
+                {
+                    context.DeleteObject(item);
+                }
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "News");
+        }
+        #endregion
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool? horisontal, int sortOrder, int contentLevel)
         {
             using (var context = new ContentStorage())
             {
@@ -53,6 +133,7 @@ namespace AvenueGreen.Controllers
                 content.Description = description;
                 content.Keywords = keywords;
                 content.Text = HttpUtility.HtmlDecode(text);
+                content.ContentLevel = contentLevel;
                 //content.IsGalleryItem = isGalleryItem;
                 //content.Collapsible = collapsible;
                 content.SortOrder = sortOrder;
@@ -64,6 +145,22 @@ namespace AvenueGreen.Controllers
 
                 return RedirectToAction("Index", "Content", new { id = contentId });
             }
+        }
+
+        public ActionResult DeleteContentItem(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
+                string contentId = content.ContentId;
+                if (content.Children.Count == 0)
+                {
+                    context.DeleteObject(content);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Content", new { id = "About" });
+            }
+
         }
 
     }

@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("avenuedbModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AvenueGreen.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AvenueGreen.Models.Content))]
 
 // Original file name:
-// Generation date: 23.05.2010 10:13:03
+// Generation date: 23.05.2010 21:23:37
 namespace AvenueGreen.Models
 {
     
@@ -62,11 +62,33 @@ namespace AvenueGreen.Models
         }
         private global::System.Data.Objects.ObjectQuery<Content> _Content;
         /// <summary>
+        /// There are no comments for Article in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<Article> Article
+        {
+            get
+            {
+                if ((this._Article == null))
+                {
+                    this._Article = base.CreateQuery<Article>("[Article]");
+                }
+                return this._Article;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<Article> _Article;
+        /// <summary>
         /// There are no comments for Content in the schema.
         /// </summary>
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+        /// <summary>
+        /// There are no comments for Article in the schema.
+        /// </summary>
+        public void AddToArticle(Article article)
+        {
+            base.AddObject("Article", article);
         }
     }
     /// <summary>
@@ -338,5 +360,215 @@ namespace AvenueGreen.Models
                 }
             }
         }
+    }
+    /// <summary>
+    /// There are no comments for avenuedbModel.Article in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="avenuedbModel", Name="Article")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Article : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new Article object.
+        /// </summary>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="name">Initial value of Name.</param>
+        public static Article CreateArticle(global::System.DateTime date, int id, string name)
+        {
+            Article article = new Article();
+            article.Date = date;
+            article.Id = id;
+            article.Name = name;
+            return article;
+        }
+        /// <summary>
+        /// There are no comments for Property Date in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this.ReportPropertyChanging("Date");
+                this._Date = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Date");
+                this.OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for Property Description in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this.ReportPropertyChanging("Description");
+                this._Description = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Description");
+                this.OnDescriptionChanged();
+            }
+        }
+        private string _Description;
+        partial void OnDescriptionChanging(string value);
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        private int _Id;
+        partial void OnIdChanging(int value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property Keywords in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Keywords
+        {
+            get
+            {
+                return this._Keywords;
+            }
+            set
+            {
+                this.OnKeywordsChanging(value);
+                this.ReportPropertyChanging("Keywords");
+                this._Keywords = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Keywords");
+                this.OnKeywordsChanged();
+            }
+        }
+        private string _Keywords;
+        partial void OnKeywordsChanging(string value);
+        partial void OnKeywordsChanged();
+        /// <summary>
+        /// There are no comments for Property Name in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this.ReportPropertyChanging("Name");
+                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("Name");
+                this.OnNameChanged();
+            }
+        }
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// There are no comments for Property Preview in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Preview
+        {
+            get
+            {
+                return this._Preview;
+            }
+            set
+            {
+                this.OnPreviewChanging(value);
+                this.ReportPropertyChanging("Preview");
+                this._Preview = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Preview");
+                this.OnPreviewChanged();
+            }
+        }
+        private string _Preview;
+        partial void OnPreviewChanging(string value);
+        partial void OnPreviewChanged();
+        /// <summary>
+        /// There are no comments for Property Text in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text
+        {
+            get
+            {
+                return this._Text;
+            }
+            set
+            {
+                this.OnTextChanging(value);
+                this.ReportPropertyChanging("Text");
+                this._Text = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Text");
+                this.OnTextChanged();
+            }
+        }
+        private string _Text;
+        partial void OnTextChanging(string value);
+        partial void OnTextChanged();
+        /// <summary>
+        /// There are no comments for Property Title in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title
+        {
+            get
+            {
+                return this._Title;
+            }
+            set
+            {
+                this.OnTitleChanging(value);
+                this.ReportPropertyChanging("Title");
+                this._Title = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Title");
+                this.OnTitleChanged();
+            }
+        }
+        private string _Title;
+        partial void OnTitleChanging(string value);
+        partial void OnTitleChanged();
     }
 }

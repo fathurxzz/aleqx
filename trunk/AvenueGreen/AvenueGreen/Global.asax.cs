@@ -16,10 +16,18 @@ namespace AvenueGreen
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
             routes.MapRoute(
                 "Admin",                                              // Route name
                 "Admin/{action}",                           // URL with parameters
                 new { controller = "Admin", action = "Index", id = "" }  // Parameter defaults
+            );
+
+
+            routes.MapRoute(
+                "News",                                              // Route name
+                "News/{action}",                           // URL with parameters
+                new { controller = "News", action = "Index", id = "" }  // Parameter defaults
             );
 
 

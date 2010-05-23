@@ -5,7 +5,7 @@
 <%
     var contentId = (string)ViewData["contentId"];
     var parentContentId = (string)ViewData["parentContentId"];
-    var contentLevel = (int)ViewData["contentLevel"];
+    var contentLevel = (int?)ViewData["contentLevel"];
     var parentParentContentId = (string)ViewData["parentParentContentId"];
 
     using (var context = new ContentStorage())

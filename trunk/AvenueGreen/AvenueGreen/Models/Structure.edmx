@@ -6,8 +6,22 @@
     <edmx:StorageModels>
     <Schema Namespace="avenuedbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="avenuedbModelStoreContainer">
+          <EntitySet Name="article" EntityType="avenuedbModel.Store.article" store:Type="Tables" Schema="avenuedb" />
           <EntitySet Name="content" EntityType="avenuedbModel.Store.content" store:Type="Tables" Schema="avenuedb" />
         </EntityContainer>
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Preview" Type="varchar" MaxLength="500" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="content">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,7 +44,8 @@
           <EntitySet Name="Content" EntityType="avenuedbModel.Content" />
           <AssociationSet Name="ContentContent" Association="avenuedbModel.ContentContent">
             <End Role="Content" EntitySet="Content" />
-            <End Role="Content1" EntitySet="Content" /></AssociationSet></EntityContainer>
+            <End Role="Content1" EntitySet="Content" /></AssociationSet>
+          <EntitySet Name="Article" EntityType="avenuedbModel.Article" /></EntityContainer>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
@@ -47,7 +62,18 @@
           <Property Name="ContentLevel" Type="Int32" Nullable="false" /></EntityType>
         <Association Name="ContentContent">
           <End Type="avenuedbModel.Content" Role="Content" Multiplicity="0..1" />
-          <End Type="avenuedbModel.Content" Role="Content1" Multiplicity="*" /></Association></Schema>
+          <End Type="avenuedbModel.Content" Role="Content1" Multiplicity="*" /></Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Keywords" Type="String" Nullable="true" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Preview" Type="String" Nullable="true" />
+          <Property Name="Text" Type="String" Nullable="true" />
+          <Property Name="Title" Type="String" Nullable="true" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -72,7 +98,18 @@
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="Content">
               <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
-            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping>
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="IsTypeOf(avenuedbModel.Article)">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Preview" ColumnName="Preview" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -96,6 +133,7 @@
           <ConnectorPoint PointX="1.2819230769230767" PointY="3.3283902994791661" />
           <ConnectorPoint PointX="1.2819230769230767" PointY="3.5783902994791656" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="3.5783902994791656" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="3.3283902994791661" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="1.7284615384615383" PointY="3.3283902994791661" /></AssociationConnector>
+        <EntityTypeShape EntityType="avenuedbModel.Article" Width="1.5" PointX="3.375" PointY="0.75" Height="2.2496956380208331" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

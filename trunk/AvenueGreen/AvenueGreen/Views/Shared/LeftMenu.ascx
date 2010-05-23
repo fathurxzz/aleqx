@@ -2,10 +2,12 @@
 <%@ Import Namespace="AvenueGreen.Models" %>
 <div id="leftMenuBox">
 <%
+    
     var contentId = (string)ViewData["contentId"];
     var parentContentId = (string)ViewData["parentContentId"];
     var parentParentContentId = (string)ViewData["parentParentContentId"];
-    var contentLevel = (int)ViewData["contentLevel"];
+    var contentLevel = (int?)ViewData["contentLevel"];
+    var parentId = (int?)ViewData["parentId"];
 
     using (var context = new ContentStorage())
     {
@@ -27,8 +29,17 @@
              <%
              }
          }
-    }   
+    }
+
+    if (Request.IsAuthenticated&&ViewData["typeData"]!="news")
+    {
+        %>
+        <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = parentId, contentLevel=1}, new { @class = "adminLink", style="margin:40px;" })%>
+        <% 
+    }                 
+                 
 %>
+
 </div>
 
  
