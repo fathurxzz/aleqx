@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("avenuedbModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AvenueGreen.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AvenueGreen.Models.Content))]
 
 // Original file name:
-// Generation date: 21.05.2010 22:33:16
+// Generation date: 23.05.2010 10:13:03
 namespace AvenueGreen.Models
 {
     
@@ -85,11 +85,15 @@ namespace AvenueGreen.Models
         /// </summary>
         /// <param name="contentId">Initial value of ContentId.</param>
         /// <param name="id">Initial value of Id.</param>
-        public static Content CreateContent(string contentId, int id)
+        /// <param name="sortOrder">Initial value of SortOrder.</param>
+        /// <param name="contentLevel">Initial value of ContentLevel.</param>
+        public static Content CreateContent(string contentId, int id, int sortOrder, int contentLevel)
         {
             Content content = new Content();
             content.ContentId = contentId;
             content.Id = id;
+            content.SortOrder = sortOrder;
+            content.ContentLevel = contentLevel;
             return content;
         }
         /// <summary>
@@ -185,29 +189,6 @@ namespace AvenueGreen.Models
         partial void OnKeywordsChanging(string value);
         partial void OnKeywordsChanged();
         /// <summary>
-        /// There are no comments for Property MenuLevel in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Nullable<int> MenuLevel
-        {
-            get
-            {
-                return this._MenuLevel;
-            }
-            set
-            {
-                this.OnMenuLevelChanging(value);
-                this.ReportPropertyChanging("MenuLevel");
-                this._MenuLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("MenuLevel");
-                this.OnMenuLevelChanged();
-            }
-        }
-        private global::System.Nullable<int> _MenuLevel;
-        partial void OnMenuLevelChanging(global::System.Nullable<int> value);
-        partial void OnMenuLevelChanged();
-        /// <summary>
         /// There are no comments for Property Text in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
@@ -253,6 +234,52 @@ namespace AvenueGreen.Models
         private string _Title;
         partial void OnTitleChanging(string value);
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property SortOrder in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int SortOrder
+        {
+            get
+            {
+                return this._SortOrder;
+            }
+            set
+            {
+                this.OnSortOrderChanging(value);
+                this.ReportPropertyChanging("SortOrder");
+                this._SortOrder = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SortOrder");
+                this.OnSortOrderChanged();
+            }
+        }
+        private int _SortOrder;
+        partial void OnSortOrderChanging(int value);
+        partial void OnSortOrderChanged();
+        /// <summary>
+        /// There are no comments for Property ContentLevel in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int ContentLevel
+        {
+            get
+            {
+                return this._ContentLevel;
+            }
+            set
+            {
+                this.OnContentLevelChanging(value);
+                this.ReportPropertyChanging("ContentLevel");
+                this._ContentLevel = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ContentLevel");
+                this.OnContentLevelChanged();
+            }
+        }
+        private int _ContentLevel;
+        partial void OnContentLevelChanging(int value);
+        partial void OnContentLevelChanged();
         /// <summary>
         /// There are no comments for Children in the schema.
         /// </summary>

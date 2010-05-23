@@ -13,12 +13,27 @@ namespace AvenueGreen.Controllers
         //
         // GET: /Content/
 
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
+            string contentId = id;
             using (var context = new ContentStorage())
             {
-                Content content = context.Content.Select(c => c).FirstOrDefault(); 
-                return View(content);
+                ViewData["contentId"] = contentId;
+                var content = context.Content.Include("Parent").Include("Children").Where(c => c.ContentId == contentId).FirstOrDefault();
+                if (content != null)
+                {
+                    ViewData["contentLevel"] = content.ContentLevel;
+                    if (content.Parent != null)
+                    {
+                        ViewData["parentContentId"] = content.Parent.ContentId;
+                        var pcontent = context.Content.Include("Parent").Where(c => c.ContentId == content.Parent.ContentId).FirstOrDefault();
+                        if (pcontent.Parent != null)
+                        {
+                            ViewData["parentParentContentId"] = pcontent.Parent.ContentId;
+                        }
+                    }
+                }
+                return View("Content", content);
             }
         }
 
