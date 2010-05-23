@@ -3,7 +3,7 @@
 <%
     var contentId = (string)ViewData["contentId"];
     var parentContentId = (string)ViewData["parentContentId"];
-    var contentLevel = (int)ViewData["contentLevel"];
+    var contentLevel = (int?)ViewData["contentLevel"];
     using (var context = new ContentStorage())
     {
         var menuItemsList = context.Content.Include("Parent").Where(c => c.ContentLevel == 2).Where(c => c.Parent.ContentId == parentContentId || c.Parent.ContentId == contentId).OrderBy(c => c.SortOrder).ToList();

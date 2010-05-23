@@ -66,6 +66,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -91,14 +92,20 @@
     <Content Include="Content\img\left-menu-bg.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\news-item-bg.gif" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\News.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Admin\AddEditArticle.aspx" />
+    <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\News\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\HorisontalMenu.ascx" />
     <Content Include="Views\Shared\LeftMenu.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
+    <Content Include="Views\Shared\NewsWidget.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />

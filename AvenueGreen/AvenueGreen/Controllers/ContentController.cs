@@ -26,11 +26,17 @@ namespace AvenueGreen.Controllers
                     if (content.Parent != null)
                     {
                         ViewData["parentContentId"] = content.Parent.ContentId;
+                        ViewData["parentId"] = content.Parent.Id;
                         var pcontent = context.Content.Include("Parent").Where(c => c.ContentId == content.Parent.ContentId).FirstOrDefault();
                         if (pcontent.Parent != null)
                         {
                             ViewData["parentParentContentId"] = pcontent.Parent.ContentId;
+                            ViewData["parentId"] = pcontent.Parent.Id;
                         }
+                    }
+                    else
+                    {
+                        ViewData["parentId"] = content.Id;
                     }
                 }
                 return View("Content", content);
