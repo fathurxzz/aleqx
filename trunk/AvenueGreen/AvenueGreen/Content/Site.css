@@ -24,14 +24,15 @@ img{border: 0;}
 #footerRight a:visited{color:#ffffff; font-family:Georgia; font-size:11px;}
 
 
-#contentBottomContainer{height:150px; position:relative; margin-left:130px; margin-right:130px;z-index:0; }
+#contentBottomContainer{height:150px; position:relative; margin-left:130px; margin-right:130px; }
 #contentBottomLeftContainer{float:left; height:150px; width:150px;  background-image: url('img/content-bottom-left-bg.gif');}
 #contentBottomRightContainer{float:right; height:150px; width:150px; background-image: url('img/content-bottom-right-bg.gif');}
 
 
-#rightItemsConteiner{float:right;width:169px;}
-#rightItem1{/*background-color:Aqua;*/width:169px;height:200px;}
-#rightItem2{/*background-color:Blue;*/width:169px;height:200px;}
+#rightItemsConteiner{float:right;width:216px; margin-top:74px; z-index:1;/*169*/}
+
+#projectsWidgetContainer{/*background-color:Aqua;*/width:216px;height:204px;background-image: url('img/projects.gif'); }
+#widget2{/*background-color:Blue;*/width:216px;height:240px;background-image: url('img/widget2.gif');}
 
 #allNewsLink{padding-left:40px;padding-top:10px;}
 #allNewsLink a{color:#669900;font-family:Georgia;font-size:11px;}

@@ -67,6 +67,7 @@
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,6 +94,8 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\news-item-bg.gif" />
+    <Content Include="Content\img\projects.gif" />
+    <Content Include="Content\img\widget2.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\News.css" />
     <Content Include="Default.aspx" />
@@ -101,6 +104,7 @@
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\News\Index.aspx" />
+    <Content Include="Views\Search\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\HorisontalMenu.ascx" />
     <Content Include="Views\Shared\LeftMenu.ascx" />

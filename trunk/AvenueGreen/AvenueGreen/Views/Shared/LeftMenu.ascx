@@ -31,7 +31,9 @@
          }
     }
 
-    if (Request.IsAuthenticated&&ViewData["typeData"]!="news")
+    string controller = (string)ViewContext.RouteData.Values["controller"];
+
+    if (controller.ToLower() != "news" && controller.ToLower() != "search")
     {
         %>
         <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = parentId, contentLevel=1}, new { @class = "adminLink", style="margin:40px;" })%>

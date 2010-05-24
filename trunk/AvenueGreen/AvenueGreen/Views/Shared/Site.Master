@@ -43,16 +43,24 @@
         <div id="header">
             <div id="headerLeft"></div>
             <div id="headerRight">
-            <%=Html.TextBox("searchInput", "Слово+Enter", new { @class = "searchInput", onfocus = "OnSearchFocus(this)", onblur = "OnSearchBlur(this)" })%>
+            <%using (Html.BeginForm("Index", "Search", FormMethod.Get))
+              { %>
+            <%=Html.TextBox("searchString", "Слово+Enter", new { @class = "searchInput", onfocus = "OnSearchFocus(this)", onblur = "OnSearchBlur(this)" })%>
+            <%} %>
             </div>
             <div id="headerCenterContainer">
                 <div id="headerCenter"></div>
             </div>
             <div id="leftMenuContainer"><% Html.RenderPartial("LeftMenu");%></div>
             <div id="rightItemsConteiner">
-                <div id="rightItem1"></div>
-                <div id="rightItem2"></div>
-                <div id="newsWidgetContainer"><% Html.RenderPartial("NewsWidget");%></div>
+                <div id="projectsWidgetContainer"></div>
+                <div id="widget2"></div>
+                <div id="newsWidget">
+                    <div id="newsWidgetContainer">
+                    
+                    <% Html.RenderPartial("NewsWidget");%>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="mainMenuContainer">

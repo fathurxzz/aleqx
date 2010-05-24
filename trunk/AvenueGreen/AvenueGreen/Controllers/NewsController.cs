@@ -15,7 +15,7 @@ namespace AvenueGreen.Controllers
 
         public ActionResult Index()
         {
-            ViewData["typeData"] = "news";
+           
 
             using (var context = new ContentStorage())
             {
