@@ -31,16 +31,7 @@
 	font-size:11px;
 }
 
-#newsWidgetContainer
-{
-	background-image: url('img/news-item-bg.gif');
-	width:169px;
-	height:188px;
-}
-#newsWidget
-{
-	padding-left:47px;
-	}
+
 
 #byTheWayLabel
 {

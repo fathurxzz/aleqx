@@ -31,6 +31,12 @@ namespace AvenueGreen
             );
 
             routes.MapRoute(
+                "Widgets",                                              // Route name
+                "Widgets/{type}",                           // URL with parameters
+                new { controller = "Widget", action = "Index", type = "" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Search",                                              // Route name
                 "Search/{action}",                           // URL with parameters
                 new { controller = "Search", action = "Index", id = "" }  // Parameter defaults

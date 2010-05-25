@@ -19,6 +19,7 @@ namespace AvenueGreen.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        #region Content
         public ActionResult Content()
         {
             return View();
@@ -44,6 +45,55 @@ namespace AvenueGreen.Controllers
             }
         }
 
+
+     
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool? horisontal, int sortOrder, int contentLevel)
+        {
+            using (var context = new ContentStorage())
+            {
+
+                Content parent = null;
+                if (parentId != null)
+                    parent = context.Content.Select(c => c).Where(c => c.Id == parentId).First();
+                Content content = id != int.MinValue ? context.Content.Select(c => c).Where(c => c.Id == id).First() : new Content();
+                content.Parent = parent;
+                content.ContentId = contentId;
+                content.Title = title;
+                content.Description = description;
+                content.Keywords = keywords;
+                content.Text = HttpUtility.HtmlDecode(text);
+                content.ContentLevel = contentLevel;
+                //content.IsGalleryItem = isGalleryItem;
+                //content.Collapsible = collapsible;
+                content.SortOrder = sortOrder;
+                //if (horisontal.HasValue)
+                    //content.Horisontal = horisontal.Value;
+                if (content.Id == 0)
+                    context.AddToContent(content);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Content", new { id = contentId });
+            }
+        }
+
+        public ActionResult DeleteContentItem(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
+                string contentId = content.ContentId;
+                if (content.Children.Count == 0)
+                {
+                    context.DeleteObject(content);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Content", new { id = "About" });
+            }
+
+        }
+        #endregion
 
         #region News
         public ActionResult AddEditArticle(string id)
@@ -116,52 +166,6 @@ namespace AvenueGreen.Controllers
             return RedirectToAction("Index", "News");
         }
         #endregion
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UpdateContent(int id, bool isGalleryItem, int? parentId, string contentId, string title, string description, string keywords, string text, bool? horisontal, int sortOrder, int contentLevel)
-        {
-            using (var context = new ContentStorage())
-            {
-
-                Content parent = null;
-                if (parentId != null)
-                    parent = context.Content.Select(c => c).Where(c => c.Id == parentId).First();
-                Content content = id != int.MinValue ? context.Content.Select(c => c).Where(c => c.Id == id).First() : new Content();
-                content.Parent = parent;
-                content.ContentId = contentId;
-                content.Title = title;
-                content.Description = description;
-                content.Keywords = keywords;
-                content.Text = HttpUtility.HtmlDecode(text);
-                content.ContentLevel = contentLevel;
-                //content.IsGalleryItem = isGalleryItem;
-                //content.Collapsible = collapsible;
-                content.SortOrder = sortOrder;
-                //if (horisontal.HasValue)
-                    //content.Horisontal = horisontal.Value;
-                if (content.Id == 0)
-                    context.AddToContent(content);
-                context.SaveChanges();
-
-                return RedirectToAction("Index", "Content", new { id = contentId });
-            }
-        }
-
-        public ActionResult DeleteContentItem(int id)
-        {
-            using (var context = new ContentStorage())
-            {
-                Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
-                string contentId = content.ContentId;
-                if (content.Children.Count == 0)
-                {
-                    context.DeleteObject(content);
-                    context.SaveChanges();
-                }
-                return RedirectToAction("Index", "Content", new { id = "About" });
-            }
-
-        }
 
     }
 }
