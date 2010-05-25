@@ -68,7 +68,7 @@ namespace AvenueGreen.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             }
         }
 
@@ -77,42 +77,42 @@ namespace AvenueGreen.Controllers
 
             FormsAuth.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Content");
         }
 
-        public ActionResult Register()
-        {
+        //public ActionResult Register()
+        //{
 
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+        //    ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Register(string userName, string email, string password, string confirmPassword)
-        {
+        //[AcceptVerbs(HttpVerbs.Post)]
+        //public ActionResult Register(string userName, string email, string password, string confirmPassword)
+        //{
 
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
+        //    ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
 
-            if (ValidateRegistration(userName, email, password, confirmPassword))
-            {
-                // Attempt to register the user
-                MembershipCreateStatus createStatus = MembershipService.CreateUser(userName, password, email);
+        //    if (ValidateRegistration(userName, email, password, confirmPassword))
+        //    {
+        //        // Attempt to register the user
+        //        MembershipCreateStatus createStatus = MembershipService.CreateUser(userName, password, email);
 
-                if (createStatus == MembershipCreateStatus.Success)
-                {
-                    FormsAuth.SignIn(userName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("_FORM", ErrorCodeToString(createStatus));
-                }
-            }
+        //        if (createStatus == MembershipCreateStatus.Success)
+        //        {
+        //            FormsAuth.SignIn(userName, false /* createPersistentCookie */);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("_FORM", ErrorCodeToString(createStatus));
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View();
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View();
+        //}
 
         [Authorize]
         public ActionResult ChangePassword()

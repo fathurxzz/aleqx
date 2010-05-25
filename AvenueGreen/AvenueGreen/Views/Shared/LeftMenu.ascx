@@ -33,6 +33,7 @@
 
     string controller = (string)ViewContext.RouteData.Values["controller"];
 
+    if(Request.IsAuthenticated)
     if (controller.ToLower() != "news" && controller.ToLower() != "search")
     {
         %>
