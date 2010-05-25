@@ -8,6 +8,7 @@
         <EntityContainer Name="avenuedbModelStoreContainer">
           <EntitySet Name="article" EntityType="avenuedbModel.Store.article" store:Type="Tables" Schema="avenuedb" />
           <EntitySet Name="content" EntityType="avenuedbModel.Store.content" store:Type="Tables" Schema="avenuedb" />
+          <EntitySet Name="widgets" EntityType="avenuedbModel.Store.widgets" store:Type="Tables" Schema="avenuedb" />
         </EntityContainer>
         <EntityType Name="article">
           <Key>
@@ -36,6 +37,15 @@
           <Property Name="Text" Type="text" />
           <Property Name="Title" Type="varchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="widgets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" MaxLength="500" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Type" Type="int" Nullable="false" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -45,7 +55,8 @@
           <AssociationSet Name="ContentContent" Association="avenuedbModel.ContentContent">
             <End Role="Content" EntitySet="Content" />
             <End Role="Content1" EntitySet="Content" /></AssociationSet>
-          <EntitySet Name="Article" EntityType="avenuedbModel.Article" /></EntityContainer>
+          <EntitySet Name="Article" EntityType="avenuedbModel.Article" />
+          <EntitySet Name="Widgets" EntityType="avenuedbModel.Widgets" /></EntityContainer>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
@@ -73,7 +84,14 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Preview" Type="String" Nullable="true" />
           <Property Name="Text" Type="String" Nullable="true" />
-          <Property Name="Title" Type="String" Nullable="true" /></EntityType></Schema>
+          <Property Name="Title" Type="String" Nullable="true" /></EntityType>
+        <EntityType Name="Widgets">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ImageSource" Type="String" Nullable="true" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <Property Name="Type" Type="Int32" Nullable="false" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -109,7 +127,14 @@
                 <ScalarProperty Name="Keywords" ColumnName="Keywords" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Date" ColumnName="Date" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
+                <ScalarProperty Name="Date" ColumnName="Date" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Widgets">
+            <EntityTypeMapping TypeName="IsTypeOf(avenuedbModel.Widgets)">
+              <MappingFragment StoreEntitySet="widgets">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -134,6 +159,7 @@
           <ConnectorPoint PointX="1.2819230769230767" PointY="3.5783902994791656" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="3.5783902994791656" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="3.3283902994791661" /></AssociationConnector>
-        <EntityTypeShape EntityType="avenuedbModel.Article" Width="1.5" PointX="3.375" PointY="0.75" Height="2.2496956380208331" /></Diagram></edmx:Diagrams>
+        <EntityTypeShape EntityType="avenuedbModel.Article" Width="1.5" PointX="3.375" PointY="0.75" Height="2.2496956380208331" />
+        <EntityTypeShape EntityType="avenuedbModel.Widgets" Width="1.5" PointX="3.375" PointY="3.75" Height="1.592306315104167" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

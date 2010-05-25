@@ -1,0 +1,19 @@
+﻿#newsWidget
+{
+	padding-left:47px;
+}
+#newsWidgetContainer
+{
+	background-image: url('img/news-item-bg.gif');
+	width:169px;
+	height:188px;
+}
+
+
+#projectsWidgetPicture
+{
+    padding-top:57px;
+    padding-left:55px;
+    width:131px;
+    height:89px;
+}
