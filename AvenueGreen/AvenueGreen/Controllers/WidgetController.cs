@@ -46,5 +46,10 @@ namespace AvenueGreen.Controllers
             }
             return RedirectToAction("Index", "Widgets");
         }
+
+        public ActionResult DeleteWidgetItem(int widgetType,int id)
+        {
+            return RedirectToAction("Index", "Widgets", new {type = widgetType});
+        }
     }
 }

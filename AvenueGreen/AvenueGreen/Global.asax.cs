@@ -42,15 +42,6 @@ namespace AvenueGreen
                 new { controller = "Search", action = "Index", id = "" }  // Parameter defaults
             );
 
-            /*
-            routes.MapRoute(
-                "DefaultContent",                                              // Route name
-                "Content/{id}",                           // URL with parameters
-                new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
-            );
-            */
-
-
             routes.MapRoute(
             "Content",                                              // Route name
             "{id}",                           // URL with parameters

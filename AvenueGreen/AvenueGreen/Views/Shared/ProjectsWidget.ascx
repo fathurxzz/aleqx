@@ -17,7 +17,7 @@
 <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "projectsWidgetPicture" })%>
     
 <%
-    }
+            }
         }
     }%>
 <%if(Request.IsAuthenticated){ %>

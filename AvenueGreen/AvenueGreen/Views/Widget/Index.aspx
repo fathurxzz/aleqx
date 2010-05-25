@@ -29,7 +29,7 @@
         <tr>
             <td>
                 <%= Html.ActionLink("Edit", "Edit", new { id=item.Id }) %> |
-                <%= Html.ActionLink("Details", "Details", new { id=item.Id })%>
+                <%= Html.ActionLink("Удалить", "DeleteWidgetItem", new { widgetType = item.Type, id = item.Id })%>
             </td>
             <td>
                 <%= Html.Encode(item.Id) %>
