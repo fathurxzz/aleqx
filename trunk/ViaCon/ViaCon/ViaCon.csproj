@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\img\contacts.gif" />
     <Content Include="Content\img\content-bottom.gif" />
     <Content Include="Content\img\content-top.gif" />
     <Content Include="Content\img\logo.gif" />
@@ -99,10 +100,12 @@
     <Content Include="Content\img\menu-bottom-right.gif" />
     <Content Include="Content\img\menu-top-left.gif" />
     <Content Include="Content\img\menu-top-right.gif" />
+    <Content Include="Content\img\via-map.jpg" />
     <Content Include="Content\img\viacon-logo.jpg" />
     <Content Include="Content\Menu.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Map.htm" />
     <Content Include="Scripts\fancybox\blank.gif" />
     <Content Include="Scripts\fancybox\fancybox-x.png" />
     <Content Include="Scripts\fancybox\fancybox-y.png" />
