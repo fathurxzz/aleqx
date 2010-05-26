@@ -160,6 +160,7 @@
     <Folder Include="ImageCache\mainView\" />
     <Folder Include="ImageCache\thumbnail1\" />
     <Folder Include="ImageCache\thumbnail2\" />
+    <Folder Include="ImageCache\thumbnail4\" />
     <Folder Include="Views\Content\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

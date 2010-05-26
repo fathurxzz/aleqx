@@ -32,35 +32,47 @@
 <asp:Content ContentPlaceHolderID="GalleryContent" runat="server">
 
 
-<%if(Model.IsGalleryItem)
- {
-      %>
+<%
+    if(Model!=null){
+        if (Model.IsGalleryItem)
+        {
+%>
       <ul id="mycarousel" class="jcarousel-skin-tango">
       <%
-     using (var context = new ContentStorage())
-     {
-         var gallery = context.Gallery.Select(g => g).Where(g => g.Content.Id == Model.Id).ToList();
-         foreach (var item in gallery)
-         {
-             %>
+            using (var context = new ContentStorage())
+            {
+                var gallery = context.Gallery.Select(g => g).Where(g => g.Content.Id == Model.Id).ToList();
+                foreach (var item in gallery)
+                {
+        %>
               <li>
-                <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail2"))%>
+                <%
+                    if (Request.IsAuthenticated)
+                    {%>
+                  <div style="">
+                    <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new {id = item.Id, contentId = Model.ContentId}, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+                    </div>
+                    <%}%>
+                <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
              </li>
              <%
-         }
-     }
-      %>
+                }
+            }
+%>
       </ul>
 <%
- }%>
+        }
+    }%>
 
 
 
 
-<%if(Request.IsAuthenticated&&Model.IsGalleryItem)
- {
-     using (Html.BeginForm("AddGalleryItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-  {
+<%
+    if(Model!=null){
+        if (Request.IsAuthenticated && Model.IsGalleryItem)
+        {
+            using (Html.BeginForm("AddGalleryItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
               %>
     <%=Html.Hidden("parentId", Model.Id)%>
     <%=Html.Hidden("contentId", Model.ContentId)%>
@@ -81,6 +93,7 @@
         <input type="submit" value="Добавить" />
     </div>
     <%}
+        }
  }%>
 </asp:Content>
 
