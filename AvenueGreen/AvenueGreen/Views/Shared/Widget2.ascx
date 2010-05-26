@@ -15,12 +15,22 @@
             {
 %>
 <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "widget2" })%>
-    
+    <div id="widget2Title">
+    <a href="#"><%=widget.Title%></a>
+    </div>
 <%
             }
         }
     }%>
+
+<div id="widget2Sign">
+А может, Вы<br />ищете...
+</div>
+    
+    
 <%if(Request.IsAuthenticated){ %>
+
+
 <div>
 <a class="adminLink" style="margin-left:50px" href="\Widgets\2">[редактировать список]</a>
 </div>

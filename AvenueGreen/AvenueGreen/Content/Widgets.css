@@ -28,3 +28,25 @@
     height:89px;
 }
 
+#widget2Sign
+{
+    color:#ffffff;
+    margin-top:-140px;
+    margin-left:10px;
+    text-align:center;
+    font-family:Georgia;
+    font-size:12px;
+}
+
+#widget2Title
+{
+    text-align:center;
+    
+}
+
+#widget2Title a
+{
+    text-transform:uppercase;
+    color:#669900;
+    margin-top:10px;
+}
