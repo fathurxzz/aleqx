@@ -1,4 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AvenueGreen.Models.Content>" %>
+<%@ Import Namespace="AvenueGreen.Helpers"%>
+<%@ Import Namespace="Microsoft.Web.Mvc"%>
+<%@ Import Namespace="AvenueGreen.Models"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <%  if (Model != null)
@@ -13,7 +16,7 @@
             
                if (Model.ContentLevel == 1)
                {%>
-                   <%=Html.ActionLink("[добавить пункт горизонтального меню]", "AddContentItem", "Admin", new { parentId = Model.Id, contentLevel=2}, new { @class = "adminLink"})%> 
+                   <%=Html.ActionLink("[добавить пункт горизонтального меню]", "AddContentItem", "Admin", new { parentId = Model.Id, contentLevel=2,isGalleryItem = Model.IsGalleryItem}, new { @class = "adminLink"})%> 
                <%}
             if(Model.ContentLevel!=0)
           %>
@@ -28,6 +31,57 @@
 
 <asp:Content ContentPlaceHolderID="GalleryContent" runat="server">
 
+
+<%if(Model.IsGalleryItem)
+ {
+      %>
+      <ul id="mycarousel" class="jcarousel-skin-tango">
+      <%
+     using (var context = new ContentStorage())
+     {
+         var gallery = context.Gallery.Select(g => g).Where(g => g.Content.Id == Model.Id).ToList();
+         foreach (var item in gallery)
+         {
+             %>
+              <li>
+                <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail2"))%>
+             </li>
+             <%
+         }
+     }
+      %>
+      </ul>
+<%
+ }%>
+
+
+
+
+<%if(Request.IsAuthenticated&&Model.IsGalleryItem)
+ {
+     using (Html.BeginForm("AddGalleryItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+  {
+              %>
+    <%=Html.Hidden("parentId", Model.Id)%>
+    <%=Html.Hidden("contentId", Model.ContentId)%>
+    <h2>Галерея</h2>
+    <div id="addMore">
+        <p>
+            Добавить еще:</p>
+        <table>
+            <tr>
+                <td>
+                    Файл:
+                </td>
+                <td>
+                    <input type="file" name="image" />
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Добавить" />
+    </div>
+    <%}
+ }%>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Title" runat="server">
@@ -35,6 +89,17 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
+
+
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        jQuery('#mycarousel').jcarousel();
+    });
+
+</script>
+
+
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentTitle" runat="server">

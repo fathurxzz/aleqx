@@ -31,8 +31,7 @@ img{border: 0;}
 
 #rightItemsConteiner{float:right;width:216px; margin-top:74px; z-index:1;/*169*/}
 
-#projectsWidgetContainer{/*background-color:Aqua;*/width:216px;height:204px;background-image: url('img/projects.gif'); }
-#widget2{/*background-color:Blue;*/width:216px;height:240px;background-image: url('img/widget2.gif');}
+
 
 #allNewsLink{padding-left:40px;padding-top:10px;}
 #allNewsLink a{color:#669900;font-family:Georgia;font-size:11px;}

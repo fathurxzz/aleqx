@@ -17,3 +17,14 @@
     width:131px;
     height:89px;
 }
+
+#projectsWidgetContainer{width:216px;height:204px;background-image: url('img/projects.gif'); }
+#widget2Container{width:216px;height:240px;background-image: url('img/widget2.gif');}
+#widget2
+{
+    padding-top:57px;
+    padding-left:55px;
+    width:131px;
+    height:89px;
+}
+
