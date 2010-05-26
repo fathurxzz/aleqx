@@ -59,14 +59,12 @@
                             "</script>");
                     }
                     cnt++;
-%>
+    %>
               <li>
                 <%
                     if (Request.IsAuthenticated)
                     {%>
-                  
                     <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new {id = item.Id, contentId = Model.ContentId}, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
-                    
                     <%}%>
                     <div style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
                     <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
