@@ -50,3 +50,26 @@ img{border: 0;}
 	color:#999999;
 	font-size:11px;
 }
+
+
+#galleryPictureTarget
+{
+    width:540px;
+    height:390px;
+    border:solid 1px #ffffff;
+    position:relative;
+    margin:0 auto;
+}
+
+#carouselContainer
+{
+    position:relative;
+    margin:0 auto;
+}
+
+#galleryContainer
+{
+    position:relative;
+    margin:0 auto;
+    width:618px;
+}

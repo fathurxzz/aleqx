@@ -94,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\img\arrow-left.gif" />
+    <Content Include="Content\img\arrow-right.gif" />
     <Content Include="Content\img\content-bottom-left-bg.gif" />
     <Content Include="Content\img\content-bottom-right-bg.gif" />
     <Content Include="Content\img\content-top-bg.gif" />
@@ -161,6 +163,7 @@
     <Folder Include="ImageCache\thumbnail1\" />
     <Folder Include="ImageCache\thumbnail2\" />
     <Folder Include="ImageCache\thumbnail4\" />
+    <Folder Include="ImageCache\thumbnail5\" />
     <Folder Include="Views\Content\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
