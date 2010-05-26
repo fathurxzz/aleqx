@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Objects.DataClasses;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using AvenueGreen.Helpers;
 using AvenueGreen.Models;
 
 namespace AvenueGreen.Controllers
@@ -19,24 +23,49 @@ namespace AvenueGreen.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        #region Gallery
+
+        public ActionResult AddGalleryItem(int parentId, string contentId)
+        {
+            string file = Request.Files["image"].FileName;
+            if (!string.IsNullOrEmpty(file))
+            {
+                string newFileName = IOHelper.GetUniqueFileName("~/Content/GalleryImages", file);
+                string filePath = Path.Combine(Server.MapPath("~/Content/GalleryImages"), newFileName);
+                Request.Files["image"].SaveAs(filePath);
+                using (var context = new ContentStorage())
+                {
+                    var galleryItem = new Gallery();
+                    galleryItem.ContentReference.EntityKey = new EntityKey("ContentStorage.Content", "Id", parentId);
+                    galleryItem.ImageSource = newFileName;
+                    context.AddToGallery(galleryItem);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", "Content", new { id = contentId });
+        }
+
+        #endregion
+
         #region Content
         public ActionResult Content()
         {
             return View();
         }
 
-        public ActionResult AddContentItem(int? parentId, int contentLevel)
+        public ActionResult AddContentItem(int? parentId, int contentLevel, bool isGalleryItem)
         {
             ViewData["parentId"] = parentId;
             ViewData["contentLevel"] = contentLevel;
+            ViewData["isGalleryItem"] = isGalleryItem;
             return View();
         }
 
-        public ActionResult EditContentItem(int id, int? parentId, bool? horisontal, bool? isGalleryItem, int contentLevel)
+        public ActionResult EditContentItem(int id, int? parentId, bool? horisontal, bool isGalleryItem, int contentLevel)
         {
             ViewData["parentId"] = parentId;
             ViewData["horisontal"] = horisontal;
-            ViewData["isGalleryItem"] = isGalleryItem ?? false;
+            ViewData["isGalleryItem"] = isGalleryItem;
             ViewData["contentLevel"] = contentLevel;
             using (var context = new ContentStorage())
             {
@@ -65,11 +94,8 @@ namespace AvenueGreen.Controllers
                 content.Keywords = keywords;
                 content.Text = HttpUtility.HtmlDecode(text);
                 content.ContentLevel = contentLevel;
-                //content.IsGalleryItem = isGalleryItem;
-                //content.Collapsible = collapsible;
+                content.IsGalleryItem = isGalleryItem;
                 content.SortOrder = sortOrder;
-                //if (horisontal.HasValue)
-                    //content.Horisontal = horisontal.Value;
                 if (content.Id == 0)
                     context.AddToContent(content);
                 context.SaveChanges();

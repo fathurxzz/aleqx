@@ -8,13 +8,15 @@
     var parentParentContentId = (string)ViewData["parentParentContentId"];
     var contentLevel = (int?)ViewData["contentLevel"];
     var parentId = (int?)ViewData["parentId"];
+    bool isGalleryItem = false;
 
     using (var context = new ContentStorage())
     {
         var menuItemsList = context.Content.Include("Parent").Where(c => c.ContentLevel == 1).Where(c => c.Parent.ContentId == parentContentId || c.Parent.ContentId == contentId || c.Parent.ContentId == parentParentContentId).OrderBy(c => c.SortOrder).ToList();
          foreach (var item in menuItemsList)
          {
-             
+             if(item.Parent.IsGalleryItem)
+                 isGalleryItem = true;
              if (item.ContentId == contentId)
              {
                  %>
@@ -37,7 +39,7 @@
     if (controller.ToLower() != "news" && controller.ToLower() != "search")
     {
         %>
-        <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = parentId, contentLevel=1}, new { @class = "adminLink", style="margin:40px;" })%>
+        <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = parentId, contentLevel = 1, isGalleryItem = isGalleryItem }, new { @class = "adminLink", style = "margin:40px;" })%>
         <% 
     }                 
                  

@@ -106,11 +106,13 @@
     <Content Include="Content\img\news-item-bg.gif" />
     <Content Include="Content\img\projects.gif" />
     <Content Include="Content\img\widget2.gif" />
+    <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\News.css" />
     <Content Include="Content\Widgets.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Views\Admin\AddEditArticle.aspx" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
@@ -122,6 +124,7 @@
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\NewsWidget.ascx" />
     <Content Include="Views\Shared\ProjectsWidget.ascx" />
+    <Content Include="Views\Shared\Widget2.ascx" />
     <Content Include="Views\Widget\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
@@ -152,7 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\GalleryImages\" />
     <Folder Include="Content\WidgetImages\" />
+    <Folder Include="ImageCache\mainView\" />
     <Folder Include="ImageCache\thumbnail1\" />
     <Folder Include="ImageCache\thumbnail2\" />
     <Folder Include="Views\Content\" />

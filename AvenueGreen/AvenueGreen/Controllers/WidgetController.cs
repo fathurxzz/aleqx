@@ -44,12 +44,12 @@ namespace AvenueGreen.Controllers
                     context.SaveChanges();
                 }
             }
-            return RedirectToAction("Index", "Widgets");
+            return RedirectToAction("Index", "Content");
         }
 
         public ActionResult DeleteWidgetItem(int widgetType,int id)
         {
-            return RedirectToAction("Index", "Widgets", new {type = widgetType});
+            return RedirectToAction("Index", "Content");
         }
     }
 }

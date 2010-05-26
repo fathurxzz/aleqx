@@ -4,6 +4,7 @@
 <%
     var parentId = (int?)ViewData["parentId"];
     var contentLevel = (int)ViewData["contentLevel"];
+    var isGalleryItem = (bool)ViewData["isGalleryItem"];
      %>
     <h2>Добавить контент</h2>
 
@@ -13,6 +14,7 @@
         <%=Html.Hidden("parentId",parentId)%>
         <%=Html.Hidden("id",int.MinValue)%>
         <%=Html.Hidden("contentLevel", contentLevel)%>
+        <%=Html.Hidden("isGalleryItem", isGalleryItem)%>
         
         
         <fieldset>
