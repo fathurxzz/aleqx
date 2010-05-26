@@ -45,6 +45,17 @@ namespace AvenueGreen.Controllers
             return RedirectToAction("Index", "Content", new { id = contentId });
         }
 
+        public ActionResult DeleteGalleryItem(int id, string contentId)
+        {
+            using (var context = new ContentStorage())
+            {
+                Gallery galleryItem = context.Gallery.Select(g => g).Where(g => g.Id == id).FirstOrDefault();
+                context.DeleteObject(galleryItem);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Content", new { id = contentId });
+            }
+        }
+
         #endregion
 
         #region Content
