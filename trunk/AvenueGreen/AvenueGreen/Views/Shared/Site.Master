@@ -63,6 +63,7 @@
             <div id="rightItemsConteiner">
                 <div id="projectsWidgetContainer"><% Html.RenderPartial("ProjectsWidget");%></div>
                 <div id="widget2Container">
+                
                 <% Html.RenderPartial("Widget2");%>
                 </div>
                 <div id="newsWidget">
