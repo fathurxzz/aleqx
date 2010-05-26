@@ -48,9 +48,18 @@
             using (var context = new ContentStorage())
             {
                 var gallery = context.Gallery.Select(g => g).Where(g => g.Content.Id == Model.Id).ToList();
+                var cnt = 0;
                 foreach (var item in gallery)
                 {
-        %>
+                    if(cnt==0)
+                    {
+                        Response.Write(
+                            "<script type=\"text/javascript\">"+
+                            "$(\"#pictureContainer\").attr(\"src\", \"/Content/GalleryImages/" + item.ImageSource + "\");"+
+                            "</script>");
+                    }
+                    cnt++;
+%>
               <li>
                 <%
                     if (Request.IsAuthenticated)
