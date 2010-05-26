@@ -36,7 +36,13 @@
     if(Model!=null){
         if (Model.IsGalleryItem)
         {
+            
 %>
+        <div id="galleryContainer">
+            <div id="galleryPictureTarget">
+                <img src="" alt="" id="pictureContainer" width="540" height="390" />
+            </div>
+            <div id="carouselContainer">
       <ul id="mycarousel" class="jcarousel-skin-tango">
       <%
             using (var context = new ContentStorage())
@@ -49,17 +55,22 @@
                 <%
                     if (Request.IsAuthenticated)
                     {%>
-                  <div style="">
+                  
                     <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new {id = item.Id, contentId = Model.ContentId}, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
-                    </div>
+                    
                     <%}%>
-                <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
+                    <div style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
+                    <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
+                </div>
              </li>
              <%
                 }
             }
 %>
       </ul>
+      </div>
+      </div>
+
 <%
         }
     }%>
@@ -109,6 +120,16 @@
     jQuery(document).ready(function() {
         jQuery('#mycarousel').jcarousel();
     });
+
+
+    
+
+    function setImage(path) {
+
+        //$("#galleryPictureTarget").css("background-image", "url('/Content/GalleryImages/" + path + "')");
+        $("#pictureContainer").attr("src","/Content/GalleryImages/" + path);
+        //alert($('#targetPictureContainer').src);
+    }
 
 </script>
 

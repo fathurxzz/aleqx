@@ -19,6 +19,7 @@ namespace AvenueGreen.Helpers
             maxDimensions.Add("thumbnail2", 131);
             maxDimensions.Add("thumbnail3", 75);
             maxDimensions.Add("thumbnail4", 135);
+            maxDimensions.Add("thumbnail5", 540);
         }
 
         public static void ScaleImage(Bitmap image, int maxDimension, Stream saveTo)
