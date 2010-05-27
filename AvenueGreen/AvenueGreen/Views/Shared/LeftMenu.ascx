@@ -12,11 +12,15 @@
 
     using (var context = new ContentStorage())
     {
+        var parentItem = context.Content.Select(p => p).Where(p => p.Id == parentId).FirstOrDefault();
+        if(parentItem!=null)
+        isGalleryItem = parentItem.IsGalleryItem;
+        
+        
         var menuItemsList = context.Content.Include("Parent").Where(c => c.ContentLevel == 1).Where(c => c.Parent.ContentId == parentContentId || c.Parent.ContentId == contentId || c.Parent.ContentId == parentParentContentId).OrderBy(c => c.SortOrder).ToList();
          foreach (var item in menuItemsList)
          {
-             if(item.Parent.IsGalleryItem)
-                 isGalleryItem = true;
+             
              if (item.ContentId == contentId)
              {
                  %>
@@ -26,8 +30,9 @@
              else
              {
                  string className = (item.ContentId == contentId || item.ContentId==parentContentId) ? "leftMenuItem selected" : "leftMenuItem";
+                 string url = AvenueGreen.Helpers.Helper.GetUrl(Request.ApplicationPath, item.ContentId);
              %>
-             <div class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></div>
+             <div class="<%=className%>"><a href="<%=url%>"><%=item.Title%></a></div>
              <%
              }
          }

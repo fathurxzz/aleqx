@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <%
     var parentId = (int?)ViewData["parentId"];
+    var contentLevel = (int)ViewData["contentLevel"];
     var horisontal = (bool?)ViewData["horisontal"];
     var isGalleryItem = (bool) ViewData["isGalleryItem"];
      %>
@@ -15,6 +16,7 @@
         <%=Html.Hidden("parentId",parentId)%>
         <%=Html.Hidden("id",Model.Id)%>
         <%=Html.Hidden("horisontal", horisontal)%>
+        <%=Html.Hidden("contentLevel", contentLevel)%>
         <fieldset>
             <legend></legend>
             <p>
@@ -67,10 +69,10 @@ AvenueGreen - Система администрирования - Редактировать контент
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
 <script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
     <script type="text/javascript">
-        /*$(function() {
+        $(function() {
             $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#text").fck({ height: 500, width:600 });
-        });*/
+            $("#text").fck({ height: 500, width: 600 });
+        });
     </script>
 </asp:Content>
 

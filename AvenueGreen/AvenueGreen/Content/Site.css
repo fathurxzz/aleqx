@@ -16,7 +16,7 @@ img{border: 0;}
 #mainContent{ padding:20px 10px 10px 10px; position:relative; color:#a4b09c; font-size:13px;  margin-left:200px; margin-right:200px; z-index:1; margin-bottom:-30px; min-height:250px;}
 
 
-#footer{ margin:0 auto; width:737px; height:95px; position:relative;background-image: url('img/main-menu-bg.gif'); background-repeat:no-repeat;}
+#footer{ margin:0 auto; width:737px; height:95px; /*background-color:Red;*/ position:relative;background-image: url('img/main-menu-bg.gif'); background-repeat:no-repeat;}
 #footerLeft{ padding-top:40px; padding-left:45px; float:left;  font-family:Georgia; font-size:11px; color:#669c3a;}
 #footerRight{ padding-top:40px; padding-right:40px; float:right;  font-family:Georgia; font-size:11px; color:#669c3a;}
 #footerRight a{color:#ffffff; font-family:Georgia; font-size:11px;}
@@ -29,7 +29,7 @@ img{border: 0;}
 #contentBottomRightContainer{float:right; height:150px; width:150px; background-image: url('img/content-bottom-right-bg.gif');}
 
 
-#rightItemsConteiner{float:right;width:216px; margin-top:74px; z-index:1;/*169*/}
+#rightItemsConteiner{ position:relative; top:-90px; float:right;width:216px; margin-top:74px; z-index:1;/*169*/}
 
 
 

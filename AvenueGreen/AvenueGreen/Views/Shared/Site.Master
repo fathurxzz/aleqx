@@ -59,6 +59,21 @@
                 <%} %>
                 </div>
             </div>
+            
+            
+            
+            
+            
+            
+        </div>
+        <div id="mainMenuContainer">
+            <% Html.RenderPartial("MainMenu"); %>
+        </div>
+        <div id="main">
+            
+            
+            
+            
             <div id="leftMenuContainer"><% Html.RenderPartial("LeftMenu");%></div>
             <div id="rightItemsConteiner">
                 <div id="projectsWidgetContainer"><% Html.RenderPartial("ProjectsWidget");%></div>
@@ -72,11 +87,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="mainMenuContainer">
-            <% Html.RenderPartial("MainMenu"); %>
-        </div>
-        <div id="main">
+            
+            
+            
+            
+            
             <div id="horisontalMenuContainer">
                 <% Html.RenderPartial("HorisontalMenu"); %>
             </div>

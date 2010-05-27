@@ -9,6 +9,7 @@
         var menuItemsList = context.Content.Include("Parent").Where(c => c.ContentLevel == 2).Where(c => c.Parent.ContentId == parentContentId || c.Parent.ContentId == contentId).OrderBy(c => c.SortOrder).ToList();
         foreach (var item in menuItemsList)
         {
+            
             if (item.ContentId == contentId)
             {
                 %>
@@ -18,8 +19,9 @@
             else
             {
                 string className = item.ContentId == contentId ? "horisontalMenuItem selected" : "horisontalMenuItem";
+                string url = AvenueGreen.Helpers.Helper.GetUrl(Request.ApplicationPath, item.ContentId);
             %>
-             <span class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></span>
+             <span class="<%=className%>"><a href="<%=url%>"><%=item.Title%></a></span>
              <%
             }
         }

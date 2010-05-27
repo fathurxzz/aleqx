@@ -4,8 +4,8 @@
 .mainMenuItem.selected a { color:#9bd240; font-weight:bold; font-family:Georgia; font-size:16px; padding-right:15px; padding-left:15px; }
 .selectedMainMenuItem{color:#9bd240; font-weight:bold; font-family:Georgia; font-size:16px;}
 
-#leftMenuContainer{float:left; background-image:url('img/left-menu-bg.gif'); background-repeat:no-repeat; background-position:0 30px;  width:170px; /*background-color:Red;*/ height:367px;}
-#leftMenuBox{ padding-top:80px;}
+#leftMenuContainer{ position:relative; top:-60px; float:left; background-image:url('img/left-menu-bg.gif'); background-repeat:no-repeat; background-position:0 0;  width:170px; /*background-color:Red;*/ height:367px;}
+#leftMenuBox{ padding-top:50px;}
 .leftMenuItem { padding-left:40px; padding-top:15px; }
 .leftMenuItem a { color:#669900; font-style:italic; font-family:Georgia; font-size:11px;}
 .leftMenuItem.selected a { color:#9bd240; font-style:italic; font-family:Georgia; font-size:11px;}
