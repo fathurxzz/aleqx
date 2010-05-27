@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\develop\libs\Microsoft.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\..\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -100,6 +100,7 @@
     <Content Include="Content\img\menu-bottom-right.gif" />
     <Content Include="Content\img\menu-top-left.gif" />
     <Content Include="Content\img\menu-top-right.gif" />
+    <Content Include="Content\img\new-logo.gif" />
     <Content Include="Content\img\via-map.jpg" />
     <Content Include="Content\img\viacon-logo.jpg" />
     <Content Include="Content\Menu.css" />
