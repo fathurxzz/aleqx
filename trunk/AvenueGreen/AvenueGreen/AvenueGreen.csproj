@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ViaCon\ViaCon\bin\Microsoft.Web.Mvc.dll</HintPath>
+      <HintPath>..\..\..\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -84,6 +84,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>

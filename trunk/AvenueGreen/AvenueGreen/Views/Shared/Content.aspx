@@ -7,10 +7,15 @@
 <%  if (Model != null)
     {
 
+        int? mparentId = null;
+
+        if (Model.Parent != null)
+            mparentId = Model.Parent.Id;
+        
         if (Request.IsAuthenticated)
         {
          %>   
-            <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, contentLevel=Model.ContentLevel /*parentId = mparentId, isGalleryItem = Model.IsGalleryItem*/ }, new { @class = "adminLink" })%>
+            <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, contentLevel = Model.ContentLevel, isGalleryItem = Model.IsGalleryItem, parentId = mparentId }, new { @class = "adminLink" })%>
             
            <% 
             
@@ -33,8 +38,9 @@
 
 
 <%
-    if(Model!=null){
+    if(Model!=null)
         if (Model.IsGalleryItem)
+            if(Model.Galleries.Count>0)
         {
             
 %>
@@ -80,7 +86,7 @@
 
 <%
         }
-    }%>
+    %>
 
 
 
