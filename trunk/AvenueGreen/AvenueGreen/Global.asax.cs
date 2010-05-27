@@ -53,12 +53,14 @@ namespace AvenueGreen
                 "{controller}/{action}/{id}",                           // URL with parameters
                 new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
-
+            
+            
             routes.MapRoute(
                 "Default1",                                              // Route name
                 "{controller}/{action}",                           // URL with parameters
                 new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
+            
 
         }
 
