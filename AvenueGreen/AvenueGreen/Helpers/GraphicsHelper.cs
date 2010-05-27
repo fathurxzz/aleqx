@@ -71,7 +71,7 @@ namespace AvenueGreen.Helpers
                 }
                 catch
                 {
-                    return GetCachedImage(originalPath, "tripsWebMvcNoCarImage.jpg", cacheFolder);
+                    //return GetCachedImage(originalPath, "tripsWebMvcNoCarImage.jpg", cacheFolder);
                 }
                 return result;
             }
