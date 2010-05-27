@@ -30,9 +30,8 @@
              else
              {
                  string className = (item.ContentId == contentId || item.ContentId==parentContentId) ? "leftMenuItem selected" : "leftMenuItem";
-                 string url = AvenueGreen.Helpers.Helper.GetUrl(Request.ApplicationPath, item.ContentId);
              %>
-             <div class="<%=className%>"><a href="<%=url%>"><%=item.Title%></a></div>
+             <div class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></div>
              <%
              }
          }
