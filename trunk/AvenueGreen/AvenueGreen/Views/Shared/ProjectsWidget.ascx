@@ -15,16 +15,14 @@
             {
 %>
 <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "projectsWidgetPicture" })%>
+    
 <%
             }
         }
     }%>
 <%if(Request.IsAuthenticated){ %>
 <div>
-<%
-    string url = AvenueGreen.Helpers.Helper.GetUrl(Request.ApplicationPath, "Widgets/1");
-       %>
-<a class="adminLink" style="margin-left:50px" href="<%=url%>">[редактировать список]</a>
+<a class="adminLink" style="margin-left:50px" href="\Widgets\1">[редактировать список]</a>
 </div>
 <%} %>
 
