@@ -39,12 +39,12 @@
                     if (isRoot)
                     {
                 %>
-                <img src="../../Content/img/new-logo.gif" alt="logo" />
+                <img class="logo" src="../../Content/img/logo-short.gif" alt="logo" />
                 <%}
                     else
                     { %>
                 <a runat="server" href="~/">
-                    <img src="../../Content/img/new-logo.gif" alt="logo" />
+                    <img  class="logo" src="../../Content/img/logo-short.gif" alt="logo" />
                 </a>
                 <%} %>
             </div>
