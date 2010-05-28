@@ -95,6 +95,7 @@
     <Content Include="Content\img\contacts.gif" />
     <Content Include="Content\img\content-bottom.gif" />
     <Content Include="Content\img\content-top.gif" />
+    <Content Include="Content\img\logo-short.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\menu-bottom-left.gif" />
     <Content Include="Content\img\menu-bottom-right.gif" />

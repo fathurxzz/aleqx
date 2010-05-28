@@ -3,7 +3,8 @@ img{border: 0;}
 .clearBoth{	clear: both;}
 #page{position: relative;	margin: 0 auto;	width: 950px;	background-color: #ffffff;	height: 100%;}
 #header{padding-bottom: 20px;}
-#logoContainer{	padding-top: 50px;	padding-left: 0px;}
+#logoContainer{	padding-top: 50px;	padding-left: 0px; background-image:url('img/new-logo.gif'); width:933px; height:74px; background-position:bottom; background-repeat:no-repeat;}
+.logo{padding-left:11px; padding-top:9px;}
 #main{}
 #menuContainer{padding-left: 0px;	float: left;	width: 190px; /*background:#ffaaff;*/}
 #contentContainer{/*background:#aaee00;*/	margin-left: 207px;}
