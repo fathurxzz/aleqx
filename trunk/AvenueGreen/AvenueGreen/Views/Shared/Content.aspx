@@ -73,7 +73,7 @@
                     <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new {id = item.Id, contentId = Model.ContentId}, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
                     <%}%>
                     <div style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
-                    <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
+                    <%=Html.Image(GraphicsHelper.GetCachedImage("~/ag/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
                 </div>
              </li>
              <%
