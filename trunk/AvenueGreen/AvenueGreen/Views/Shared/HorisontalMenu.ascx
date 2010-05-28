@@ -19,7 +19,7 @@
             {
                 string className = item.ContentId == contentId ? "horisontalMenuItem selected" : "horisontalMenuItem";
             %>
-             <span class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></span>
+             <span class="<%=className%>"><a href="/ag/<%=item.ContentId%>"><%=item.Title%></a></span>
              <%
             }
         }

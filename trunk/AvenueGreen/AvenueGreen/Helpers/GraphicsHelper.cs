@@ -56,8 +56,8 @@ namespace AvenueGreen.Helpers
             {
                 fileName = "tripsWebMvcNoCarImage.jpg";
             }
-            string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
-            string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
+            string result = Path.Combine("/ag/ImageCache/" + cacheFolder + "/", fileName);
+            string cachePath = HttpContext.Current.Server.MapPath("~/ag/ImageCache/" + cacheFolder);
             string cachedImagePath = Path.Combine(cachePath, fileName);
             if (File.Exists(cachedImagePath))
             {
@@ -86,7 +86,7 @@ namespace AvenueGreen.Helpers
                 image = new Bitmap(stream);
             }
 
-            string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
+            string cachePath = HttpContext.Current.Server.MapPath("~/ag/ImageCache/" + cacheFolder);
             string cachedImagePath = Path.Combine(cachePath, fileName);
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
