@@ -24,7 +24,7 @@
              {
                  string className = (item.ContentId == parentContentId||item.ContentId==parentParentContentId) ? "mainMenuItem selected" : "mainMenuItem";
              %>
-             <span class="<%=className%>"><a href="/ag/<%=item.ContentId%>"><%=item.Title%></a></span>
+             <span class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></span>
              <%
              }
          }

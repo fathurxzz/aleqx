@@ -32,7 +32,7 @@
 
 
 <div>
-<a class="adminLink" style="margin-left:50px" href="/ag/Widgets/2">[редактировать список]</a>
+<a class="adminLink" style="margin-left:50px" href="/Widgets/2">[редактировать список]</a>
 </div>
 <%} %>
 
