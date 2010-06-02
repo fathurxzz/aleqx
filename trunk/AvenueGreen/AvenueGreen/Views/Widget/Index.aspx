@@ -5,16 +5,14 @@
 
 
 <% var widgetType = (int)ViewData["type"]; %>
-    <h2>Index</h2>
-
     <table>
         <tr>
             <th></th>
             <th>
-                ImageSource
+                Картинка
             </th>
             <th>
-                Title
+                Подпись
             </th>
         </tr>
 
@@ -25,7 +23,7 @@
                 <%= Html.ActionLink("Удалить", "DeleteWidgetItem", new { widgetType = item.Type, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%>
             </td>
             <td>
-                <%= Html.Image(GraphicsHelper.GetCachedImage("~/ag/Content/WidgetImages", item.ImageSource, "thumbnail1"))%>
+                <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", item.ImageSource, "thumbnail1"))%>
             </td>
             <td>
                 <%= Html.Encode(item.Title) %>
@@ -50,7 +48,7 @@
         <table>
             <tr>
                 <td>
-                    Title:
+                    Подпись:
                 </td>
                 <td>
                     <%=Html.TextBox("title")%>

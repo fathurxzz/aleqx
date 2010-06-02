@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
     <Folder Include="Content\GalleryImages\" />
     <Folder Include="Content\WidgetImages\" />
     <Folder Include="ImageCache\mainView\" />
