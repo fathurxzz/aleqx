@@ -15,8 +15,6 @@ namespace AvenueGreen.Controllers
 
         public ActionResult Index()
         {
-           
-
             using (var context = new ContentStorage())
             {
                 var newsList = context.Article.Select(c => c).ToList();
