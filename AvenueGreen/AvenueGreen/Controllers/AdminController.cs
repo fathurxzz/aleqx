@@ -35,12 +35,27 @@ namespace AvenueGreen.Controllers
                 Request.Files["image"].SaveAs(filePath);
                 using (var context = new ContentStorage())
                 {
-                    var galleryItem = new Gallery();
-                    galleryItem.ContentReference.EntityKey = new EntityKey("ContentStorage.Content", "Id", parentId);
+                    var galleryItem = new GalleryItems();
+                    galleryItem.GalleryReference.EntityKey = new EntityKey("ContentStorage.Gallery", "Id", parentId);
                     galleryItem.ImageSource = newFileName;
-                    context.AddToGallery(galleryItem);
+                    context.AddToGalleryItems(galleryItem);
                     context.SaveChanges();
                 }
+            }
+            return RedirectToAction("Index", "Content", new { id = contentId });
+            /*return RedirectToAction("Index", "Galleries", new { id = contentId });*/
+        }
+
+        public ActionResult AddGallery(int parentId, string contentId,string galleryName)
+        {
+            using (var context = new ContentStorage())
+            {
+                var galleryItem = new Gallery();
+                galleryItem.ContentReference.EntityKey = new EntityKey("ContentStorage.Content", "Id", parentId);
+                galleryItem.Title = galleryName;
+                galleryItem.ImageSource = "";
+                context.AddToGallery(galleryItem);
+                context.SaveChanges();
             }
             return RedirectToAction("Index", "Content", new { id = contentId });
         }
@@ -49,7 +64,7 @@ namespace AvenueGreen.Controllers
         {
             using (var context = new ContentStorage())
             {
-                Gallery galleryItem = context.Gallery.Select(g => g).Where(g => g.Id == id).FirstOrDefault();
+                GalleryItems galleryItem = context.GalleryItems.Select(g => g).Where(g => g.Id == id).FirstOrDefault();
                 context.DeleteObject(galleryItem);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Content", new { id = contentId });

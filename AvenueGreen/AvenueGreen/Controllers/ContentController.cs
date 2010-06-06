@@ -19,7 +19,7 @@ namespace AvenueGreen.Controllers
             using (var context = new ContentStorage())
             {
                 ViewData["contentId"] = contentId;
-                var content = context.Content.Include("Parent").Include("Children").Where(c => c.ContentId == contentId).FirstOrDefault();
+                var content = context.Content.Include("Parent").Include("Children").Include("Galleries").Where(c => c.ContentId == contentId).FirstOrDefault();
                 if (content != null)
                 {
                     ViewData["contentLevel"] = content.ContentLevel;

@@ -11,9 +11,10 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("avenuedbModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(AvenueGreen.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AvenueGreen.Models.Content))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("avenuedbModel", "ContentGallery", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AvenueGreen.Models.Content), "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AvenueGreen.Models.Gallery))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("avenuedbModel", "GalleryGalleryItems", "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(AvenueGreen.Models.Gallery), "GalleryItems", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(AvenueGreen.Models.GalleryItems))]
 
 // Original file name:
-// Generation date: 06.06.2010 17:28:18
+// Generation date: 06.06.2010 18:04:07
 namespace AvenueGreen.Models
 {
     
@@ -156,6 +157,13 @@ namespace AvenueGreen.Models
         public void AddToGalleryItems(GalleryItems galleryItems)
         {
             base.AddObject("GalleryItems", galleryItems);
+        }
+        /// <summary>
+        /// There are no comments for avenuedbModel.GetContents in the schema.
+        /// </summary>
+        public global::System.Data.Objects.ObjectResult<Content> GetContents()
+        {
+            return base.ExecuteFunction<Content>("GetContents");
         }
     }
     /// <summary>
@@ -931,6 +939,27 @@ namespace AvenueGreen.Models
                 }
             }
         }
+        /// <summary>
+        /// There are no comments for GalleryItems in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("avenuedbModel", "GalleryGalleryItems", "GalleryItems")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<GalleryItems> GalleryItems
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<GalleryItems>("avenuedbModel.GalleryGalleryItems", "GalleryItems");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<GalleryItems>("avenuedbModel.GalleryGalleryItems", "GalleryItems", value);
+                }
+            }
+        }
     }
     /// <summary>
     /// There are no comments for avenuedbModel.GalleryItems in the schema.
@@ -946,42 +975,17 @@ namespace AvenueGreen.Models
         /// <summary>
         /// Create a new GalleryItems object.
         /// </summary>
-        /// <param name="galleryId">Initial value of GalleryId.</param>
         /// <param name="id">Initial value of Id.</param>
         /// <param name="imageSource">Initial value of ImageSource.</param>
         /// <param name="isMainPhoto">Initial value of IsMainPhoto.</param>
-        public static GalleryItems CreateGalleryItems(int galleryId, int id, string imageSource, bool isMainPhoto)
+        public static GalleryItems CreateGalleryItems(int id, string imageSource, bool isMainPhoto)
         {
             GalleryItems galleryItems = new GalleryItems();
-            galleryItems.GalleryId = galleryId;
             galleryItems.Id = id;
             galleryItems.ImageSource = imageSource;
             galleryItems.IsMainPhoto = isMainPhoto;
             return galleryItems;
         }
-        /// <summary>
-        /// There are no comments for Property GalleryId in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public int GalleryId
-        {
-            get
-            {
-                return this._GalleryId;
-            }
-            set
-            {
-                this.OnGalleryIdChanging(value);
-                this.ReportPropertyChanging("GalleryId");
-                this._GalleryId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("GalleryId");
-                this.OnGalleryIdChanged();
-            }
-        }
-        private int _GalleryId;
-        partial void OnGalleryIdChanging(int value);
-        partial void OnGalleryIdChanged();
         /// <summary>
         /// There are no comments for Property Id in the schema.
         /// </summary>
@@ -1051,5 +1055,42 @@ namespace AvenueGreen.Models
         private bool _IsMainPhoto;
         partial void OnIsMainPhotoChanging(bool value);
         partial void OnIsMainPhotoChanged();
+        /// <summary>
+        /// There are no comments for Gallery in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("avenuedbModel", "GalleryGalleryItems", "Gallery")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Gallery Gallery
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gallery>("avenuedbModel.GalleryGalleryItems", "Gallery").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gallery>("avenuedbModel.GalleryGalleryItems", "Gallery").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Gallery in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Gallery> GalleryReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gallery>("avenuedbModel.GalleryGalleryItems", "Gallery");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Gallery>("avenuedbModel.GalleryGalleryItems", "Gallery", value);
+                }
+            }
+        }
     }
 }

@@ -71,5 +71,47 @@ img{border: 0;}
 {
     position:relative;
     margin:0 auto;
+    /*width:620px;*/
+}
+
+#galleryItemsContainer
+{
+	  position:relative;
+    margin:0 auto;
     width:620px;
 }
+
+.gallery
+{
+	float:left;
+	margin-right:35px;
+	margin-left:35px;
+	/*border:solid 1px red;*/
+}
+.galleryMainPicture
+{
+	width:135px;
+	height:93px;
+	background-image:url('img/no-image.gif');
+}
+
+.galleryTitle a
+{
+	font-size:10px;
+	color:#999999;
+}
+
+.galleryTitle a:visited
+{
+	font-size:10px;
+	color:#999999;
+}
+
+.galleryTitle a:hover
+{
+	font-size:10px;
+	color:#999999;
+}
+
+
+
