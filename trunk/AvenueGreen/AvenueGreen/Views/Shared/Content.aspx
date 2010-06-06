@@ -34,7 +34,16 @@
 
 </asp:Content>
 
+
+
 <asp:Content ContentPlaceHolderID="GalleryContent" runat="server">
+
+
+
+
+
+
+
 
 
 <%
@@ -45,44 +54,28 @@
             
 %>
         <div id="galleryContainer">
-            <div id="galleryPictureTarget">
-                <img src="" alt="" id="pictureContainer" width="540" height="390" />
-            </div>
-            <div id="carouselContainer">
-      <ul id="mycarousel" class="jcarousel-skin-tango">
-      <%
-            using (var context = new ContentStorage())
+        
+        <%
+        
+            foreach (var item in Model.Galleries)
             {
-                var gallery = context.Gallery.Select(g => g).Where(g => g.Content.Id == Model.Id).ToList();
-                var cnt = 0;
-                foreach (var item in gallery)
-                {
-                    if(cnt==0)
-                    {
-                        Response.Write(
-                            "<script type=\"text/javascript\">"+
-                            "$(\"#pictureContainer\").attr(\"src\", \"/Content/GalleryImages/" + item.ImageSource + "\");"+
-                            "</script>");
-                    }
-                    cnt++;
-    %>
-              <li>
-                <%
-                    if (Request.IsAuthenticated)
-                    {%>
-                    <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new {id = item.Id, contentId = Model.ContentId}, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
-                    <%}%>
-                    <div style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
-                    <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
+                %>
+                <div class="gallery">
+                
+                <div class="galleryMainPicture">
+                
                 </div>
-             </li>
-             <%
-                }
-            }
-%>
-      </ul>
-      </div>
-      </div>
+                
+                <div class="galleryTitle">
+                <a href="/Galleries/<%=item.Id%>"><%=item.Title%></a>
+                </div>
+                
+                </div>
+                <%
+            }        
+        %>
+            <div style="clear:both;"></div>
+        </div>
 
 <%
         }
@@ -95,7 +88,7 @@
     if(Model!=null){
         if (Request.IsAuthenticated && Model.IsGalleryItem)
         {
-            using (Html.BeginForm("AddGalleryItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            using (Html.BeginForm("AddGallery", "Admin"))
             {
               %>
     <%=Html.Hidden("parentId", Model.Id)%>
@@ -107,10 +100,10 @@
         <table>
             <tr>
                 <td>
-                    Файл:
+                    Название галереи:
                 </td>
                 <td>
-                    <input type="file" name="image" />
+                    <%=Html.TextBox("galleryName")%>
                 </td>
             </tr>
         </table>
@@ -128,23 +121,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
 
 
-<script type="text/javascript">
-
-    jQuery(document).ready(function() {
-        jQuery('#mycarousel').jcarousel();
-    });
-
-
-    
-
-    function setImage(path) {
-
-        //$("#galleryPictureTarget").css("background-image", "url('/Content/GalleryImages/" + path + "')");
-        $("#pictureContainer").attr("src","/Content/GalleryImages/" + path);
-        //alert($('#targetPictureContainer').src);
-    }
-
-</script>
 
 
 </asp:Content>

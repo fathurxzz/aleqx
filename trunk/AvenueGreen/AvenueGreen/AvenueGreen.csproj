@@ -81,6 +81,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\GalleriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -116,6 +117,7 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\news-item-bg.gif" />
+    <Content Include="Content\img\no-image.gif" />
     <Content Include="Content\img\projects.gif" />
     <Content Include="Content\img\widget2.gif" />
     <Content Include="Content\jcarousel.css" />
@@ -128,6 +130,7 @@
     <Content Include="Views\Admin\AddEditArticle.aspx" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Galleries\Index.aspx" />
     <Content Include="Views\News\Index.aspx" />
     <Content Include="Views\Search\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
