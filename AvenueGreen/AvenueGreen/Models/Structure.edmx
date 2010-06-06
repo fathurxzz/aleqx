@@ -4,12 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="avenuedbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="avenuedbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="avenuedbModelStoreContainer">
-          <EntitySet Name="article" EntityType="avenuedbModel.Store.article" store:Type="Tables" Schema="avenuedb" />
-          <EntitySet Name="content" EntityType="avenuedbModel.Store.content" store:Type="Tables" Schema="avenuedb" />
-          <EntitySet Name="gallery" EntityType="avenuedbModel.Store.gallery" store:Type="Tables" Schema="avenuedb" />
-          <EntitySet Name="widgets" EntityType="avenuedbModel.Store.widgets" store:Type="Tables" Schema="avenuedb" />
+          <EntitySet Name="article" EntityType="avenuedbModel.Store.article" store:Type="Tables" Schema="gbua_ag" />
+          <EntitySet Name="content" EntityType="avenuedbModel.Store.content" store:Type="Tables" Schema="gbua_ag" />
+          <EntitySet Name="gallery" EntityType="avenuedbModel.Store.gallery" store:Type="Tables" Schema="gbua_ag" />
+          <EntitySet Name="GalleryItems" EntityType="avenuedbModel.Store.GalleryItems" store:Type="Tables" Schema="gbua_ag" />
+          <EntitySet Name="widgets" EntityType="avenuedbModel.Store.widgets" store:Type="Tables" Schema="gbua_ag" />
         </EntityContainer>
         <EntityType Name="article">
           <Key>
@@ -46,6 +47,16 @@
           <Property Name="ContentId" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GalleryItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="GalleryId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsMainPhoto" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="widgets">
           <Key>
@@ -56,6 +67,7 @@
           <Property Name="Title" Type="varchar" MaxLength="500" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
+        <Function Name="search_routine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gbua_ag" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -70,7 +82,8 @@
           <EntitySet Name="Gallery" EntityType="avenuedbModel.Gallery" />
           <AssociationSet Name="ContentGallery" Association="avenuedbModel.ContentGallery">
             <End Role="Content" EntitySet="Content" />
-            <End Role="Gallery" EntitySet="Gallery" /></AssociationSet></EntityContainer>
+            <End Role="Gallery" EntitySet="Gallery" /></AssociationSet>
+          <EntitySet Name="GalleryItems" EntityType="avenuedbModel.GalleryItems" /></EntityContainer>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
@@ -113,10 +126,18 @@
             <PropertyRef Name="Id" /></Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="ImageSource" Type="String" Nullable="false" />
-          <NavigationProperty Name="Content" Relationship="avenuedbModel.ContentGallery" FromRole="Gallery" ToRole="Content" /></EntityType>
+          <NavigationProperty Name="Content" Relationship="avenuedbModel.ContentGallery" FromRole="Gallery" ToRole="Content" />
+          <Property Name="Title" Type="String" Nullable="false" /></EntityType>
         <Association Name="ContentGallery">
           <End Type="avenuedbModel.Content" Role="Content" Multiplicity="1" />
-          <End Type="avenuedbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association></Schema>
+          <End Type="avenuedbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association>
+        <EntityType Name="GalleryItems">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="GalleryId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ImageSource" Type="String" Nullable="false" />
+          <Property Name="IsMainPhoto" Type="Boolean" Nullable="false" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -164,6 +185,7 @@
           <EntitySetMapping Name="Gallery">
             <EntityTypeMapping TypeName="IsTypeOf(avenuedbModel.Gallery)">
               <MappingFragment StoreEntitySet="gallery">
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 </MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -171,7 +193,14 @@
             <EndProperty Name="Gallery">
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="Content">
-              <ScalarProperty Name="Id" ColumnName="ContentId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
+              <ScalarProperty Name="Id" ColumnName="ContentId" /></EndProperty></AssociationSetMapping>
+          <EntitySetMapping Name="GalleryItems">
+            <EntityTypeMapping TypeName="IsTypeOf(avenuedbModel.GalleryItems)">
+              <MappingFragment StoreEntitySet="GalleryItems">
+                <ScalarProperty Name="IsMainPhoto" ColumnName="IsMainPhoto" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -192,15 +221,16 @@
       <Diagram Name="Structure">
         <EntityTypeShape EntityType="avenuedbModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5783902994791661" IsExpanded="true" />
         <AssociationConnector Association="avenuedbModel.ContentContent">
-          <ConnectorPoint PointX="1.2819230769230767" PointY="3.3283902994791661" />
-          <ConnectorPoint PointX="1.2819230769230767" PointY="3.5783902994791656" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="3.5783902994791656" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="3.3283902994791661" /></AssociationConnector>
+          <ConnectorPoint PointX="1.2819230769230767" PointY="0.75" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="0.5" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="0.5" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="0.75" /></AssociationConnector>
         <EntityTypeShape EntityType="avenuedbModel.Article" Width="1.5" PointX="3.375" PointY="0.75" Height="2.2496956380208331" />
         <EntityTypeShape EntityType="avenuedbModel.Widgets" Width="1.5" PointX="3.375" PointY="3.75" Height="1.592306315104167" />
         <EntityTypeShape EntityType="avenuedbModel.Gallery" Width="1.5" PointX="0.75" PointY="4.75" Height="1.4279589843749996" />
         <AssociationConnector Association="avenuedbModel.ContentGallery">
-          <ConnectorPoint PointX="0.95346153846153836" PointY="3.4927376302083331" />
-          <ConnectorPoint PointX="0.95346153846153836" PointY="4.75" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="1.5" PointY="4.076396484375" />
+          <ConnectorPoint PointX="1.5" PointY="4.75" /></AssociationConnector>
+        <EntityTypeShape EntityType="avenuedbModel.GalleryItems" Width="1.5" PointX="5.375" PointY="0.75" Height="1.7879850260416672" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
