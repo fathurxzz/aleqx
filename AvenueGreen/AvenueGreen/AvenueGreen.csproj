@@ -101,6 +101,8 @@
     <Content Include="Content\img\content-bottom-left-bg.gif" />
     <Content Include="Content\img\content-bottom-right-bg.gif" />
     <Content Include="Content\img\content-top-bg.gif" />
+    <Content Include="Content\img\h-menu-bg-left.gif" />
+    <Content Include="Content\img\h-menu-bg-right.gif" />
     <Content Include="Content\img\header-center-container.gif" />
     <Content Include="Content\img\header-left.gif" />
     <Content Include="Content\img\header-right.gif" />
