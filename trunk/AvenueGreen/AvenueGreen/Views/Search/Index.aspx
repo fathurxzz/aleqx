@@ -1,8 +1,30 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<AvenueGreen.Models.Content>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Search Result</h2>
+    <h2>Результаты поиска</h2>
+    
+    <% foreach (var item in Model)
+       {
+           %>
+           
+           <div class="searchResult">
+           <a href="/<%=item.ContentId%>"><%=item.Title%></a><br />
+           <%
+             if(item.Text.Length<=200)  
+             {
+                 Response.Write(item.Text);
+             }
+           else
+             {
+                 Response.Write(item.Text.Substring(0,199));
+             }
+               
+           %>
+           </div>
+           <%
+       } 
+   %>
 
 </asp:Content>
 
