@@ -61,7 +61,12 @@
             {
                 %>
                 <div class="gallery">
-                
+                <%if (Request.IsAuthenticated)
+                  { %>
+                  
+                  <%=Html.ActionLink("[удалить]", "DeleteGallery", "Admin", new { id = item.Id, contentId = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+                  
+                <%} %>
                 <div class="galleryMainPicture">
                 
                 </div>

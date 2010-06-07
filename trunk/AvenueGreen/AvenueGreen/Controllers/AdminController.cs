@@ -60,6 +60,21 @@ namespace AvenueGreen.Controllers
             return RedirectToAction("Index", "Content", new { id = contentId });
         }
 
+        public ActionResult DeleteGallery(int id, string contentId)
+        {
+            using (var context = new ContentStorage())
+            {
+                Gallery gallery = context.Gallery.Include("GalleryItems").Select(g => g).Where(g => g.Id == id).FirstOrDefault();
+                if (gallery.GalleryItems.Count == 0)
+                {
+                    context.DeleteObject(gallery);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Content", new { id = contentId });
+            }
+        }
+
+
         public ActionResult DeleteGalleryItem(int id, string contentId)
         {
             using (var context = new ContentStorage())
