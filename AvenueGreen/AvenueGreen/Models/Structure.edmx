@@ -67,8 +67,9 @@
           <Property Name="Title" Type="varchar" MaxLength="500" />
           <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
-        <Function Name="sp_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gbua_ag" />
-        <Function Name="search_routine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gbua_ag" />
+      <Function Name="sp_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gbua_ag" >
+        <Parameter Name="searchString" Type="varchar" MaxLength="500"></Parameter>
+      </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -85,11 +86,12 @@
             <End Role="Content" EntitySet="Content" />
             <End Role="Gallery" EntitySet="Gallery" /></AssociationSet>
           <EntitySet Name="GalleryItems" EntityType="avenuedbModel.GalleryItems" />
-          <FunctionImport Name="GetContents" EntitySet="Content" ReturnType="Collection(avenuedbModel.Content)" />
           <AssociationSet Name="GalleryGalleryItems" Association="avenuedbModel.GalleryGalleryItems">
             <End Role="Gallery" EntitySet="Gallery" />
             <End Role="GalleryItems" EntitySet="GalleryItems" /></AssociationSet>
-          <FunctionImport Name="SearchInContent" EntitySet="Content" ReturnType="Collection(avenuedbModel.Content)" /></EntityContainer>
+          <FunctionImport Name="SearchInContent" EntitySet="Content" ReturnType="Collection(avenuedbModel.Content)" />
+          <FunctionImport Name="Search" EntitySet="Content" ReturnType="Collection(avenuedbModel.Content)">
+            <Parameter Name="searchString" Type="String" /></FunctionImport></EntityContainer>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
@@ -212,13 +214,12 @@
                 <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetContents" FunctionName="avenuedbModel.Store.search_routine" />
           <AssociationSetMapping Name="GalleryGalleryItems" TypeName="avenuedbModel.GalleryGalleryItems" StoreEntitySet="GalleryItems">
             <EndProperty Name="GalleryItems">
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="Gallery">
               <ScalarProperty Name="Id" ColumnName="GalleryId" /></EndProperty></AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="SearchInContent" FunctionName="avenuedbModel.Store.sp_search" /></EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="Search" FunctionName="avenuedbModel.Store.sp_search" /></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
