@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using AvenueGreen.Models;
 
 namespace AvenueGreen.Controllers
 {
@@ -14,7 +15,10 @@ namespace AvenueGreen.Controllers
 
         public ActionResult Index(string searchString)
         {
-            
+            using (var context = new ContentStorage())
+            {
+                
+            }
 
             return View();
         }
