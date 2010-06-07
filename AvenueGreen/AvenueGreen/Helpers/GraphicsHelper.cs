@@ -54,7 +54,7 @@ namespace AvenueGreen.Helpers
             if (string.IsNullOrEmpty(fileName) ||
                 !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
             {
-                fileName = "tripsWebMvcNoCarImage.jpg";
+                fileName = "no-image.gif";
             }
             string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
