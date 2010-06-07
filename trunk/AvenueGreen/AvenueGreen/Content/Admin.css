@@ -1,3 +1,24 @@
 ﻿a.adminLink{    font-size:9px;    color:Red; margin-right:5px}
 a:hover.adminLink{    font-size:9px;    color:Lime; margin-right:5px;}
 a:visited.adminLink{    font-size:9px;    color:Red; margin-right:5px;}
+
+h2.editContentTitle
+{
+	color:#0c9e3c;
+	font-weight:normal;
+}
+
+.adminEditContentContainer
+{
+	margin-top:5px;
+	border:solid 1px #0c9e3c;
+	padding:20px;
+	margin-bottom:30px;
+	
+}
+
+.adminEditContentTable td
+{
+	padding-left:20px;
+	padding-top:10px;
+}
