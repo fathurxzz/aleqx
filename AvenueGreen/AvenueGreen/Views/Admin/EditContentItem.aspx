@@ -7,7 +7,8 @@
     var horisontal = (bool?)ViewData["horisontal"];
     var isGalleryItem = (bool) ViewData["isGalleryItem"];
      %>
-     <h2>Редактировать контент</h2>
+     
+     <h2 class="editContentTitle">Редактирование содержимого</h2>
 
 
    <% using (Html.BeginForm("UpdateContent","Admin"))
@@ -17,46 +18,80 @@
         <%=Html.Hidden("id",Model.Id)%>
         <%=Html.Hidden("horisontal", horisontal)%>
         <%=Html.Hidden("contentLevel", contentLevel)%>
-        <fieldset>
-            <legend></legend>
-            <p>
-                <label for="ContentId">Идентификатор (вводить латиницей):</label>
-                <br />
-                <%= Html.TextBox("contentId", Model.ContentId,new{style="width:90%"}) %>
-            </p>
-            <p>
-                <label for="Title">Заголовок (он же пункт меню):</label>
-                <br />
-                <%= Html.TextBox("title", Model.Title, new { style = "width:90%" })%>
-            </p>            
-            <p>
-                <label for="Text">Текст:</label>
-                <br />
-                <%= Html.TextArea("text", Model.Text)%>
-            </p>
-            <p>
-                <label for="Keywords">Keywords:</label>
-                <br />
-                <%= Html.TextBox("keywords", Model.Keywords, new { style = "width:90%" })%>
-            </p>
-            <p>
-                <label for="Description">Description:</label>
-                <br />
-                <%= Html.TextArea("description", Model.Description,5,70,null)%>
-            </p>
-            <p>
-                <label for="SortOrder">Порядок отбражения:</label>
-                <br />
-                <%= Html.TextBox("sortOrder", Model.SortOrder,new{style="width:90%"}) %>
-            </p>
-            <p>
-                <label for="IsGalleryItem">Галерея:</label>
-                <%= Html.CheckBox("isGalleryItem", isGalleryItem)%>
-            </p>
-            <p>
-                <input type="submit" value="Сохранить" />
-            </p>
-        </fieldset>
+        
+        
+        <div class="adminEditContentContainer">
+        
+        <table class="adminEditContentTable">
+        <tr>
+            <td>
+                Техническое имя страницы<br />
+                <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
+            </td>
+            <td>
+                <%= Html.TextBox("contentId", Model.ContentId,new{style="width:300px;"}) %>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                Название пункта меню<br />
+                <span style="font-size:10px;">(пишите кириллицей)</span>
+            </td>
+            <td>
+                <%= Html.TextBox("title", Model.Title, new { style = "width:300px;" })%>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                Содержимое страницы<br />
+                 <%= Html.TextArea("text", Model.Text)%>
+            </td>
+        </tr>
+        <tr>
+            <td>Поставьте галочку, чтобы создать галерею</td>
+            <td> <%= Html.CheckBox("isGalleryItem", isGalleryItem)%></td>
+        </tr>
+        <tr>
+            <td style="width:200px;">Порядок отбражения:<br />
+                <span style="font-size:10px;">(каким по очереди будет этот раздел, необходимо ввести только цифру)</span></td>
+            <td>  <%= Html.TextBox("sortOrder", Model.SortOrder,new{style="width:20px;"}) %></td>
+        </tr>
+        
+        </table>
+        
+         </div>
+         
+          <h2 class="editContentTitle">Для поисковых систем</h2>
+          
+           <div class="adminEditContentContainer">
+                <table class="adminEditContentTable">
+                <tr>
+                    <td>
+                        Ключевые слова этой страницы<br />
+                        <span style="font-size:10px;">(вводятся через запятую)</span>
+                    </td>
+                    <td>
+                       <%= Html.TextBox("keywords", Model.Keywords, new { style = "width:300px;" })%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Описание страницы
+                    </td>
+                    <td>
+                       <%= Html.TextArea("description", Model.Description,5,50,null)%>
+                    </td>
+                </tr>
+                </table>
+           
+           </div>
+           
+           
+         <div style="position:relative; margin:auto; width:110px;">
+         <input  type="submit" value="Сохранить всё" />
+         </div>
+        
 
     <% } %>
 
