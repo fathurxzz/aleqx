@@ -114,4 +114,27 @@ img{border: 0;}
 }
 
 
+.searchResult
+{
+	margin-top:25px;
+	font-size:14px;
+}
+
+.searchResult a
+{
+	font-size:14px;
+	color:#669900;
+}
+.searchResult a:visited
+{
+	font-size:14px;
+	color:#669900;
+}
+.searchResult a:hover
+{
+	font-size:14px;
+	color:#669900;
+}
+
+h2 { font-size:16px;}
 
