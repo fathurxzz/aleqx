@@ -17,7 +17,8 @@ namespace AvenueGreen.Controllers
         {
             using (var context = new ContentStorage())
             {
-                
+                var result = context.Search(searchString).ToList();
+
             }
 
             return View();
