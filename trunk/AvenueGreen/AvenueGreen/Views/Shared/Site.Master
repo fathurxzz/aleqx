@@ -88,13 +88,8 @@
                 </div>
             </div>
             
+            <% Html.RenderPartial("HorisontalMenu"); %>
             
-            
-            
-            
-            <div id="horisontalMenuContainer">
-                <% Html.RenderPartial("HorisontalMenu"); %>
-            </div>
             <div id="contentTop"></div>
             
             <div id="contentTitle">

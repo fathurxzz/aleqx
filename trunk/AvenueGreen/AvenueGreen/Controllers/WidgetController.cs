@@ -49,6 +49,15 @@ namespace AvenueGreen.Controllers
 
         public ActionResult DeleteWidgetItem(int widgetType,int id)
         {
+            using (var context = new ContentStorage())
+            {
+                var widgetItem = context.Widgets.Select(w => w).Where(w => w.Id == id).FirstOrDefault();
+                if (widgetItem != null)
+                {
+                    context.DeleteObject(widgetItem);
+                    context.SaveChanges();
+                }
+            }
             return RedirectToAction("Index", "Content");
         }
     }
