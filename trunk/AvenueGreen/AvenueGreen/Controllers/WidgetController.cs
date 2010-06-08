@@ -28,7 +28,7 @@ namespace AvenueGreen.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AddWidgetItem(int widgetType, string title)
+        public ActionResult AddWidgetItem(int widgetType, string title, string url)
         {
             ViewData["type"] = widgetType;
             string file = Request.Files["image"].FileName;
@@ -39,7 +39,7 @@ namespace AvenueGreen.Controllers
                 Request.Files["image"].SaveAs(filePath);
                 using (var context = new ContentStorage())
                 {
-                    var widgetItem = new Widgets { Type = widgetType, ImageSource = newFileName, Title = title };
+                    var widgetItem = new Widgets { Type = widgetType, ImageSource = newFileName, Title = title, Url = url }; 
                     context.AddToWidgets(widgetItem);
                     context.SaveChanges();
                 }

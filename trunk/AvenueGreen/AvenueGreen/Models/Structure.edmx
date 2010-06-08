@@ -66,9 +66,10 @@
           <Property Name="ImageSource" Type="varchar" MaxLength="500" />
           <Property Name="Title" Type="varchar" MaxLength="500" />
           <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="500" />
         </EntityType>
-      <Function Name="sp_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gbua_ag" >
-        <Parameter Name="searchString" Type="varchar" MaxLength="500"></Parameter>
+      <Function Name="sp_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="gbua_ag">
+        <Parameter Type="varchar" MaxLength="500" Name="searchString"></Parameter>
       </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -129,7 +130,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="ImageSource" Type="String" Nullable="true" />
           <Property Name="Title" Type="String" Nullable="true" />
-          <Property Name="Type" Type="Int32" Nullable="false" /></EntityType>
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="true" /></EntityType>
         <EntityType Name="Gallery">
           <Key>
             <PropertyRef Name="Id" /></Key>
@@ -191,6 +193,7 @@
           <EntitySetMapping Name="Widgets">
             <EntityTypeMapping TypeName="IsTypeOf(avenuedbModel.Widgets)">
               <MappingFragment StoreEntitySet="widgets">
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
