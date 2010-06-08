@@ -26,7 +26,7 @@ img{border: 0;}
 
 #contentBottomContainer{height:150px; position:relative; margin-left:130px; margin-right:130px; }
 #contentBottomLeftContainer{float:left; height:150px; width:150px;  background-image: url('img/content-bottom-left-bg.gif');}
-#contentBottomRightContainer{float:right; height:150px; width:150px; background-image: url('img/content-bottom-right-bg.gif');}
+#contentBottomRightContainer{float:right; height:150px; width:150px; background-repeat:no-repeat; background-position:0 -25px; background-image: url('img/content-bottom-right-bg.gif');}
 
 
 #rightItemsConteiner{ position:relative; top:-90px; float:right;width:216px; margin-top:74px; z-index:1;/*169*/}
