@@ -1,0 +1,40 @@
+﻿.divBoxCornerTopRight
+{
+	background-image: url('img/corner_top_right.gif');
+	background-position:right;
+	background-repeat:no-repeat;
+	background-color:#ffffff;
+	height: 10px;
+}
+
+.divBoxCornerTopLeft
+{
+	background-image: url('img/corner_top_left.gif');
+	background-position:left;
+	width: 10px;
+	height: 10px;
+}
+
+#divMenuBoxMiddle
+{
+	 background-color:#ffffff;
+}
+
+.divBoxCornerBottomRight
+{
+	background-image: url('img/corner_bottom_right.gif');
+	background-position:right;
+	background-repeat:no-repeat;
+	background-color:#ffffff;
+	height: 10px;
+	
+}
+
+.divBoxCornerBottomLeft
+{
+	background-image: url('img/corner_bottom_left.gif');
+	background-position:left;
+	width: 10px;
+	height: 10px;
+	
+}
