@@ -15,6 +15,7 @@
             
 %>
         <div id="galleryItemsContainer">
+            <div style="width:600px;"></div>
             <div id="galleryPictureTarget">
                 <img src="" alt="" id="pictureContainer" width="540" height="390" />
             </div>
