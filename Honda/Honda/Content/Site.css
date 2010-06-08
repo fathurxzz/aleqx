@@ -1,34 +1,15 @@
 ﻿*{margin: 0;	padding: 0;	font-family: Verdana;	font-size: 13px;}
 img{border: 0;}
 .clearBoth{	clear: both;}
-#page{position: relative;	margin: 0 auto;	width: 1000px;	background-color: #ffffff;	height: 100%;}
-html{height: 100%;}
+#page{position: relative; background-color:#3695c1;	margin: 0 auto;	/*width: 1000px;*/	background-color: #ffffff;	height: 100%;}
+#outerHeader{height:159px; background: url('img/grad-top.gif') #3695c1 repeat-x;}
+#header{position:relative; width:1000px; background-image:url('img/bg-header.gif');height:159px; margin:0 auto; border:solid 1px blue;}
 
-.faceplate{ background-color:#3695c1;}
 
-#faceplateDiv
-{
-    background:url(img/faceplate.gif) #3695c1; 
-    width:800px; 
-    height:350px;
-    position:relative;
-    margin:0 auto;
-}
 
-#faceplateSign
-{
-    color:#ffffff;
-    position:relative;
-    top:400px;
-    width:800px;
-    text-align:center;
-    font-family:Verdana;
-    font-size:12px;
-}
+#outerFooter{height:132px; background: url('img/grad-bottom.gif') #3695c1 repeat-x;}
+#footer{position:relative; width:1000px; background-image:url('img/bg-footer.gif');height:132px;margin:0 auto; border:solid 1px blue;}
 
-#faceplateSign a
-{
-    color:#ffffff;
-    font-weight:bold;
-}
 
+#outerMain{background-color:#3695c1;}
+#main {min-height:500px; background-color:#3695c1; width:1000px; position:relative; margin:0 auto; border:solid 1px blue;}

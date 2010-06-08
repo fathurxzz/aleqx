@@ -69,7 +69,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\bg-footer.gif" />
+    <Content Include="Content\img\bg-header.gif" />
     <Content Include="Content\img\faceplate.gif" />
+    <Content Include="Content\img\grad-bottom.gif" />
+    <Content Include="Content\img\grad-top.gif" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />

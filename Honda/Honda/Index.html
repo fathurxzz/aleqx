@@ -2,43 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <title></title>
-    <link href="Content/Site.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
-    html, body {
-   height: 100%;
-   margin:0;
-   padding:0;
-    }
-    #container {
-   min-height: 100%;
-   background: #3695c1;
-   height:100%;
-   width:100%;
-    }
-    * html #container {
-   height:100%;
-   
-   
-    }
-</style>
+        html, body {height: 100%; margin:0; padding:0; }
+        #container { min-height: 100%; background: #3695c1; height:100%; width:100%; }
+        * html #container { height:100%; }
+        #faceplateDiv {background:url(content/img/faceplate.gif) #3695c1; width:800px; height:350px; position:relative; margin:0 auto; }
+        #faceplateSign { color:#ffffff; position:relative; top:400px; width:800px; text-align:center; font-family:Verdana; font-size:12px; }
+        #faceplateSign a { color:#ffffff; font-weight:bold; }
+    </style>
 </head>
 <body>
-
 <table id="container">
-   <tr>
-       <td valign="middle">
-       
-       
-       <div id="faceplateDiv">
-        <div id="faceplateSign">
-            Сайт разрабатывается в <a href="http://m-brand.com.ua">М.бренде</a>
-        </div>
-        </div>
-
-       </td>
-   </tr>
+    <tr>
+        <td valign="middle">
+            <div id="faceplateDiv">
+                <div id="faceplateSign">
+                    Сайт разрабатывается в <a href="http://m-brand.com.ua">М.бренде</a>
+                </div>
+            </div>
+        </td>
+    </tr>
 </table>
-
-
 </body>
 </html>
