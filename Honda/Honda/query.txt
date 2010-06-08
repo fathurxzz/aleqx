@@ -1,25 +1,47 @@
-﻿CREATE  TABLE IF NOT EXISTS `hondadb`.`Content` (
-  `Id` INT NOT NULL AUTO_INCREMENT ,
-  `ParentId` INT NULL ,
-  `ContentId` VARCHAR(255) NOT NULL ,
-  `Keywords` VARCHAR(500) NULL ,
-  `Description` VARCHAR(500) NULL ,
-  `Title` VARCHAR(500) NULL ,
-  `Text` TEXT NULL ,
-  `Horisontal` BIT NOT NULL DEFAULT 0 ,
-  `IsGalleryItem` BIT NOT NULL DEFAULT 0 ,
-  PRIMARY KEY (`Id`) );
+﻿CREATE  TABLE IF NOT EXISTS `hondadb`.`Content` (
+
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+
+  `ParentId` INT NULL ,
+
+  `ContentId` VARCHAR(255) NOT NULL ,
+
+  `Keywords` VARCHAR(500) NULL ,
+
+  `Description` VARCHAR(500) NULL ,
+
+  `Title` VARCHAR(500) NULL ,
+
+  `Text` TEXT NULL ,
+
+  `Horisontal` BIT NOT NULL DEFAULT 0 ,
+
+  `IsGalleryItem` BIT NOT NULL DEFAULT 0 ,
+
+  PRIMARY KEY (`Id`) );
 
 
-CREATE  TABLE IF NOT EXISTS `hondadb`.`Gallery` (
-  `Id` INT NOT NULL AUTO_INCREMENT ,
-  `ContentId` INT NOT NULL ,
-  `Title` VARCHAR(500) NULL ,
-  PRIMARY KEY (`Id`) );
+
+CREATE  TABLE IF NOT EXISTS `hondadb`.`Gallery` (
+
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+
+  `ContentId` INT NOT NULL ,
+
+  `Title` VARCHAR(500) NULL ,
+
+  PRIMARY KEY (`Id`) );
 
 
-CREATE  TABLE IF NOT EXISTS `hondadb`.`GalleryItems` (
-  `Id` INT NOT NULL AUTO_INCREMENT ,
-  `GalleryId` INT NOT NULL ,
-  `ImageSource` VARCHAR(500) NOT NULL ,
-  PRIMARY KEY (`Id`) );
+
+CREATE  TABLE IF NOT EXISTS `hondadb`.`GalleryItems` (
+
+  `Id` INT NOT NULL AUTO_INCREMENT ,
+
+  `GalleryId` INT NOT NULL ,
+
+  `ImageSource` VARCHAR(500) NOT NULL ,
+
+  PRIMARY KEY (`Id`) );
+
+ALTER TABLE `hondadb`.`content` ADD COLUMN `SortOrder` INT NOT NULL DEFAULT 0  AFTER `IsGalleryItem` ;

@@ -1,0 +1,14 @@
+﻿.field-validation-error, .validation-summary-errors
+{
+	color:Red;
+}
+
+p{margin-top:10px;}
+
+a.adminLink{    font-size:9px;    color:Red; margin-right:5px}
+a:hover.adminLink{    font-size:9px;    color:Lime; margin-right:5px;}
+a:visited.adminLink{    font-size:9px;    color:Red; margin-right:5px;}
+
+
+.logOffLink{color:#ff0000;}
+.logOffLink:hover{color:#ff0000;}

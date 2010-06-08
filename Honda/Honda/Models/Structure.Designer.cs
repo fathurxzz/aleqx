@@ -14,7 +14,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("hondadbModel", "ContentGallery", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Honda.Models.Content), "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Honda.Models.Gallery))]
 
 // Original file name:
-// Generation date: 08.06.2010 23:40:04
+// Generation date: 09.06.2010 0:04:14
 namespace Honda.Models
 {
     
@@ -133,13 +133,15 @@ namespace Honda.Models
         /// <param name="horisontal">Initial value of Horisontal.</param>
         /// <param name="id">Initial value of Id.</param>
         /// <param name="isGalleryItem">Initial value of IsGalleryItem.</param>
-        public static Content CreateContent(string contentId, bool horisontal, int id, bool isGalleryItem)
+        /// <param name="sortOrder">Initial value of SortOrder.</param>
+        public static Content CreateContent(string contentId, bool horisontal, int id, bool isGalleryItem, int sortOrder)
         {
             Content content = new Content();
             content.ContentId = contentId;
             content.Horisontal = horisontal;
             content.Id = id;
             content.IsGalleryItem = isGalleryItem;
+            content.SortOrder = sortOrder;
             return content;
         }
         /// <summary>
@@ -326,6 +328,29 @@ namespace Honda.Models
         private string _Title;
         partial void OnTitleChanging(string value);
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property SortOrder in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int SortOrder
+        {
+            get
+            {
+                return this._SortOrder;
+            }
+            set
+            {
+                this.OnSortOrderChanging(value);
+                this.ReportPropertyChanging("SortOrder");
+                this._SortOrder = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SortOrder");
+                this.OnSortOrderChanged();
+            }
+        }
+        private int _SortOrder;
+        partial void OnSortOrderChanging(int value);
+        partial void OnSortOrderChanged();
         /// <summary>
         /// There are no comments for Children in the schema.
         /// </summary>
