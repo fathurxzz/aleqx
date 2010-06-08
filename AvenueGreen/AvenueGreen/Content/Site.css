@@ -16,7 +16,7 @@ img{border: 0;}
 #contentTitle{padding-left:10px; position:relative; height:30px; font-size:20px; font-family:Georgia; color:#ffffff; margin-left:250px; margin-right:250px;}
 
 
-#mainContent{ min-width:700px; padding:20px 10px 10px 10px; position:relative; color:#a4b09c; font-size:13px;  margin-left:250px; margin-right:250px; z-index:1; margin-bottom:-30px; min-height:300px;}
+#mainContent{ padding:20px 10px 10px 10px; position:relative; color:#a4b09c; font-size:13px;  margin-left:250px; margin-right:250px; z-index:1; margin-bottom:-30px; min-height:300px;}
 
 #main
 {
