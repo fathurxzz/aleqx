@@ -18,6 +18,8 @@
 #divMenuBoxMiddle
 {
 	 background-color:#ffffff;
+	 padding-top:20px;
+	 padding-bottom:20px;
 }
 
 .divBoxCornerBottomRight
@@ -37,4 +39,32 @@
 	width: 10px;
 	height: 10px;
 	
+}
+
+.menuItem
+{
+	background-color: #ffffff;
+	padding:3px 20px 3px 20px;
+	margin:10px 0 10px 0;
+	color:#aaaaaa;
+	font-family:Arial;
+	font-size:15px;
+	
+}
+
+.menuItem a
+{
+	color:#333366;
+	font-family:Arial;
+	font-size:15px;
+}
+
+.selected
+{
+	background-color:#60b4fd;
+	font-size:12px;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
 }
