@@ -17,7 +17,7 @@ img{border: 0;}
 #main { background-color:#3695c1; width:1000px; position:relative; margin:0 auto;/* z-index:2;*/}
 
 
-#menuContainer{padding-left: 0px;	float: left;	width: 240px;}
+#menuContainer{ margin-left:40px; padding-left: 0px;	float: left;	width: 185px;}
 #contentContainer{	margin-left: 260px; margin-right:40px;/* z-index:2; margin-bottom:-20px;*/}
 
-#divContentBoxMiddle{min-height:100px; background-color:#ffffff;}
+#divContentBoxMiddle{min-height:500px; background-color:#ffffff;}

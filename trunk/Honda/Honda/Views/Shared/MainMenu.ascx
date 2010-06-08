@@ -7,7 +7,10 @@
     </div>
     <div id="divMenuBoxMiddle">
     
-    asd
+    <div class="menuItem selected">О компании</div>
+    <div class="menuItem"><a href="#">Каталог оборудования</a></div>
+    <div class="menuItem"><a href="#">Новости</a></div>
+    <div class="menuItem"><a href="#">Контакная информация</a></div>
     
     </div>
     <div class="divBoxCornerBottomRight">
