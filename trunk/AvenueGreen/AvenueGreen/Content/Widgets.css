@@ -24,8 +24,9 @@
 {
     padding-top:57px;
     padding-left:55px;
-    width:131px;
-    height:89px;
+    position:relative;
+    top:20px;
+    border:0;
 }
 
 #widget2Sign
