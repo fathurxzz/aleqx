@@ -1,4 +1,6 @@
-﻿.divBoxCornerTopRight
+﻿#menuContainer{ margin-left:40px; padding-left: 0px;	float: left;	width: 185px;}
+
+.divBoxCornerTopRight
 {
 	background-image: url('img/corner_top_right.gif');
 	background-position:right;

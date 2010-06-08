@@ -21,15 +21,12 @@
                 <div id="headerSign">Эксклюзивный представитель <font style="font-weight:bold">Honda Electronics</font> (Япония) в Украине — <font style="font-weight:bold">СП «Биомедика-Сервис»</font></div>
             </div>
         </div>
-
-        
         <div id="outerMain">
             <div id="main">
                 <div id="menuContainer">
                     <% Html.RenderPartial("MainMenu"); %>
                 </div>
                 <div id="contentContainer">
-                
                     <div class="divBoxCornerTopRight">
                         <div class="divBoxCornerTopLeft"></div>
                     </div>
@@ -47,18 +44,12 @@
                     <div class="divBoxCornerBottomRight">
                         <div class="divBoxCornerBottomLeft"></div>
                     </div>
-                
                 </div>
-            
-                
-
             </div>
         </div>
-        <div id="outerFooter">
-            <div id="footer">
-                <div id="footerSign">
-                © 2010 СП «Биомедика-Сервис»<br /> Разработка сайта — Евгений Миллер
-                </div>
+        <div id="footer">
+            <div id="footerSign">
+            © 2010 СП «Биомедика-Сервис»<br />Разработка сайта — <a href="http://m-brand.com.ua">Евгений Миллер</a>
             </div>
         </div>
     </div>
