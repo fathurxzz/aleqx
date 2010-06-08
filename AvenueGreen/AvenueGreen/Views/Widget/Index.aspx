@@ -62,6 +62,14 @@
                     <input type="file" name="image" />
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Ссылка:
+                </td>
+                <td>
+                    <%=Html.TextBox("url")%>
+                </td>
+            </tr>
         </table>
         <input type="submit" value="Добавить" />
     </div>

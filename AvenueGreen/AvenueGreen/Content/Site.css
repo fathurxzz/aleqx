@@ -1,7 +1,8 @@
-﻿*{margin: 0;	padding: 0;	font-family: Verdana;	font-size: 13px;}
+﻿body{background-color: #1f2935;}
+*{margin: 0;	padding: 0;	font-family: Verdana;	font-size: 13px;}
 img{border: 0;}
 .clearBoth{	clear: both;}
-#page{/*position: relative;*/ min-width:969px;	margin: 0 auto;	/*width: 950px;*/	background-color: #1f2935;	/*height: 100%;*/}
+#page{/*position: relative;*/ min-width:969px;	margin: 0 auto;	/*width: 950px;*/	/*height: 100%;*/}
 
 #header{min-width:969px;}
 #headerLeft{float:left; width:290px; height:182px;background-image: url('img/header-left.gif');}
