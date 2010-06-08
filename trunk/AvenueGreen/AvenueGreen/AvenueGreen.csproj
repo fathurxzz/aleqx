@@ -113,6 +113,7 @@
     <Content Include="Content\img\no-image.gif" />
     <Content Include="Content\img\projects.gif" />
     <Content Include="Content\img\widget2.gif" />
+    <Content Include="Content\img\widget22.gif" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\News.css" />
