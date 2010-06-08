@@ -30,8 +30,10 @@
              else
              {
                  string className = (item.ContentId == contentId || item.ContentId==parentContentId) ? "leftMenuItem selected" : "leftMenuItem";
+                 string className1 = (item.ContentId == contentId || item.ContentId == parentContentId) ? "selected" : "";
+                 
              %>
-             <div class="<%=className%>"><a href="/<%=item.ContentId%>"><%=item.Title%></a></div>
+             <div class="<%=className%>"><a class="<%=className1%>" href="/<%=item.ContentId%>"><%=item.Title%></a></div>
              <%
              }
          }
