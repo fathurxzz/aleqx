@@ -11,7 +11,7 @@ img{border: 0;}
 
 #outerFooter{height:132px; background: url('img/grad-bottom.gif') #3695c1 repeat-x;/* z-index:1;*/}
 #footer{position:relative; width:1000px; background-image:url('img/bg-footer.gif');height:132px;margin:0 auto;/* z-index:1;*/}
-
+#footerSign{position:relative;margin:0 auto; top:10px; color:#333366; font-family:Arial; font-size:12px;}
 
 #outerMain{background-color:#3695c1;/* z-index:0;*/}
 #main { background-color:#3695c1; width:1000px; position:relative; margin:0 auto;/* z-index:2;*/}
@@ -21,3 +21,22 @@ img{border: 0;}
 #contentContainer{	margin-left: 260px; margin-right:40px;/* z-index:2; margin-bottom:-20px;*/}
 
 #divContentBoxMiddle{min-height:500px; background-color:#ffffff;}
+
+
+#divContentBoxTitle
+{
+    text-align:center; 
+    padding-top:10px;
+    padding-bottom:15px;
+    border-bottom:solid 3px #60b4fd;
+    font-family:Arial;
+    font-size:18px;
+    font-weight:bold;
+    color:#999999;
+}
+
+#contentText
+{
+    padding:40px 40px 40px 40px;
+}
+

@@ -35,7 +35,13 @@
                     </div>
                     <div id="divContentBoxMiddle">
                     
+                    <div id="divContentBoxTitle">
+                        <asp:ContentPlaceHolder ID="ContentBoxTitle" runat="server" />
+                    </div>
                     
+                    <div id="contentText">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                    </div>
                     
                     </div>
                     <div class="divBoxCornerBottomRight">
@@ -44,13 +50,15 @@
                 
                 </div>
             
-                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                
 
             </div>
         </div>
         <div id="outerFooter">
             <div id="footer">
-                
+                <div id="footerSign">
+                © 2010 СП «Биомедика-Сервис»<br /> Разработка сайта — Евгений Миллер
+                </div>
             </div>
         </div>
     </div>
