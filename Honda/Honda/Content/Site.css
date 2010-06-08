@@ -1,42 +1,22 @@
 ﻿*{margin: 0;	padding: 0;	font-family: Verdana;	font-size: 13px;}
 img{border: 0;}
 .clearBoth{	clear: both;}
-#page{position: relative; background-color:#3695c1;	margin: 0 auto;	/*width: 1000px;*/	background-color: #ffffff;	height: 100%;}
+#page{position: relative; background-color:#3695c1;	margin: 0 auto;	height: 100%; background-repeat:repeat-x; background-position:bottom; background-image:url('img/grad-bottom.gif');}
 
 #outerHeader{height:159px; background: url('img/grad-top.gif') #3695c1 repeat-x;}
 #header{position:relative; width:1000px; background-image:url('img/bg-header.gif');height:159px; margin:0 auto;}
 #headerSign{position:relative; top:52px; margin:0 auto; text-align:center; color:#d8d8d8; font-family:Arial; font-size:12px;}
 #logo {width:510px; height:60px; background-image:url('img/logo.gif');top:29px; left:245px; position:relative;}
 
+#footer{position:relative; width:1000px; background-image:url('img/bg-footer.gif');height:105px;margin:0 auto; background-position:0 -27px;}
+#footerSign{position:relative;margin:0 auto; top:60px; color:#333366; font-family:Arial; font-size:12px; text-align:center;}
+#footerSign a{color:#333366; font-family:Arial; font-size:12px; font-weight:bold;}
 
-#outerFooter{height:132px; background: url('img/grad-bottom.gif') #3695c1 repeat-x;/* z-index:1;*/}
-#footer{position:relative; width:1000px; background-image:url('img/bg-footer.gif');height:132px;margin:0 auto;/* z-index:1;*/}
-#footerSign{position:relative;margin:0 auto; top:10px; color:#333366; font-family:Arial; font-size:12px;}
-
-#outerMain{background-color:#3695c1;/* z-index:0;*/}
-#main { background-color:#3695c1; width:1000px; position:relative; margin:0 auto;/* z-index:2;*/}
+#main {  width:1000px; position:relative; margin:0 auto;}
 
 
-#menuContainer{ margin-left:40px; padding-left: 0px;	float: left;	width: 185px;}
-#contentContainer{	margin-left: 260px; margin-right:40px;/* z-index:2; margin-bottom:-20px;*/}
-
+#contentContainer{	margin-left: 260px; margin-right:40px;}
 #divContentBoxMiddle{min-height:500px; background-color:#ffffff;}
-
-
-#divContentBoxTitle
-{
-    text-align:center; 
-    padding-top:10px;
-    padding-bottom:15px;
-    border-bottom:solid 3px #60b4fd;
-    font-family:Arial;
-    font-size:18px;
-    font-weight:bold;
-    color:#999999;
-}
-
-#contentText
-{
-    padding:40px 40px 40px 40px;
-}
+#divContentBoxTitle { text-align:center; padding-top:10px; padding-bottom:15px; border-bottom:solid 3px #60b4fd; font-family:Arial; font-size:18px; font-weight:bold; color:#999999; }
+#contentText { padding:40px 40px 40px 40px; }
 

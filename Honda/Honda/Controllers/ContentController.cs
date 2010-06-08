@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using Honda.Models;
 
 namespace Honda.Controllers
 {
@@ -12,9 +13,23 @@ namespace Honda.Controllers
         //
         // GET: /Content/
 
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            return View();
+            string contentId = id;
+
+            using (var context = new ContentStorage())
+            {
+                ViewData["contentId"] = contentId;
+                var content = context.Content.Include("Parent").Include("Gallery").Include("Children").Where(c => c.ContentId == contentId).FirstOrDefault();
+                if (content != null)
+                {
+                    if (content.Parent != null)
+                    {
+                        ViewData["parentContentId"] = content.Parent.ContentId;
+                    }
+                }
+                return View("Content", content);
+            }
         }
 
     }

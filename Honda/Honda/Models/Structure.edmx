@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="hondadbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="hondadbModelStoreContainer">
+          <EntitySet Name="content" EntityType="hondadbModel.Store.content" store:Type="Tables" Schema="hondadb" />
+          <EntitySet Name="gallery" EntityType="hondadbModel.Store.gallery" store:Type="Tables" Schema="hondadb" />
+          <EntitySet Name="galleryitems" EntityType="hondadbModel.Store.galleryitems" store:Type="Tables" Schema="hondadb" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Horisontal" Type="bit" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsGalleryItem" Type="bit" Nullable="false" />
+          <Property Name="Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="galleryitems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="GalleryId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hondadbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="hondadbModel.Content" />
+          <EntitySet Name="Gallery" EntityType="hondadbModel.Gallery" />
+          <AssociationSet Name="ContentContent" Association="hondadbModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" /></AssociationSet>
+          <EntitySet Name="GalleryItems" EntityType="hondadbModel.GalleryItems" />
+          <AssociationSet Name="GalleryGalleryItems" Association="hondadbModel.GalleryGalleryItems">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="GalleryItems" EntitySet="GalleryItems" /></AssociationSet>
+          <AssociationSet Name="ContentGallery" Association="hondadbModel.ContentGallery">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Gallery" EntitySet="Gallery" /></AssociationSet></EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Horisontal" Type="Boolean" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IsGalleryItem" Type="Boolean" Nullable="false" />
+          <Property Name="Keywords" Type="String" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="Children" Relationship="hondadbModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Parent" Relationship="hondadbModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <NavigationProperty Name="Gallery" Relationship="hondadbModel.ContentGallery" FromRole="Content" ToRole="Gallery" /></EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="GalleryItems" Relationship="hondadbModel.GalleryGalleryItems" FromRole="Gallery" ToRole="GalleryItems" />
+          <NavigationProperty Name="Content" Relationship="hondadbModel.ContentGallery" FromRole="Gallery" ToRole="Content" /></EntityType>
+        <Association Name="ContentContent">
+          <End Type="hondadbModel.Content" Role="Content" Multiplicity="0..1" />
+          <End Type="hondadbModel.Content" Role="Content1" Multiplicity="*" /></Association>
+        <EntityType Name="GalleryItems">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ImageSource" Type="String" Nullable="false" />
+          <NavigationProperty Name="Gallery" Relationship="hondadbModel.GalleryGalleryItems" FromRole="GalleryItems" ToRole="Gallery" /></EntityType>
+        <Association Name="GalleryGalleryItems">
+          <End Type="hondadbModel.Gallery" Role="Gallery" Multiplicity="1" />
+          <End Type="hondadbModel.GalleryItems" Role="GalleryItems" Multiplicity="*" /></Association>
+        <Association Name="ContentGallery">
+          <End Type="hondadbModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="hondadbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association></Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="hondadbModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content">
+            <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Content)">
+              <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Horisontal" ColumnName="Horisontal" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsGalleryItem" ColumnName="IsGalleryItem" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gallery">
+            <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Gallery)">
+              <MappingFragment StoreEntitySet="gallery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="hondadbModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping>
+          <EntitySetMapping Name="GalleryItems">
+            <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.GalleryItems)">
+              <MappingFragment StoreEntitySet="galleryitems">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="GalleryGalleryItems" TypeName="hondadbModel.GalleryGalleryItems" StoreEntitySet="galleryitems">
+            <EndProperty Name="GalleryItems">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="Id" ColumnName="GalleryId" /></EndProperty></AssociationSetMapping>
+          <AssociationSetMapping Name="ContentGallery" TypeName="hondadbModel.ContentGallery" StoreEntitySet="gallery">
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Structure">
+        <EntityTypeShape EntityType="hondadbModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" />
+        <EntityTypeShape EntityType="hondadbModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.427958984375" IsExpanded="true" />
+        <AssociationConnector Association="hondadbModel.ContentContent">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="2.9996956380208331" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="3.2496956380208331" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="3.2496956380208331" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="2.9996956380208331" /></AssociationConnector>
+        <EntityTypeShape EntityType="hondadbModel.GalleryItems" Width="1.5" PointX="3.375" PointY="3.75" Height="1.2636116536458326" />
+        <AssociationConnector Association="hondadbModel.GalleryGalleryItems">
+          <ConnectorPoint PointX="3.8125" PointY="2.177958984375" />
+          <ConnectorPoint PointX="3.8125" PointY="3.75" /></AssociationConnector>
+        <AssociationConnector Association="hondadbModel.ContentGallery">
+          <ConnectorPoint PointX="2.25" PointY="1.4639794921875" />
+          <ConnectorPoint PointX="2.75" PointY="1.4639794921875" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
