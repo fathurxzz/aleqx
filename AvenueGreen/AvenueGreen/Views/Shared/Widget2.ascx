@@ -4,6 +4,8 @@
 <%@ Import Namespace="AvenueGreen.Models"%>
 
 <%
+    if(2==3)
+    {
     using (var context = new ContentStorage())
     {
         var widgets = context.Widgets.Where(w => w.Type == 2).Select(w => w).ToList();
@@ -21,14 +23,19 @@
 <%
             }
         }
-    }%>
+    }}%>
 
+
+<%if (2 == 3)
+  { %>
 <div id="widget2Sign">
 А может, Вы<br />ищете...
 </div>
+    <%} %>
     
-    
-<%if(Request.IsAuthenticated){ %>
+<%
+    if(2==3)
+    if(Request.IsAuthenticated){ %>
 
 
 <div>
