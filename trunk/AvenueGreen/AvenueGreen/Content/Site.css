@@ -18,11 +18,11 @@ img{border: 0;}
 
 
 #footer{ margin:0 auto; width:737px; height:95px; /*background-color:Red;*/ position:relative;background-image: url('img/main-menu-bg.gif'); background-repeat:no-repeat;}
-#footerLeft{ padding-top:40px; padding-left:45px; float:left;  font-family:Georgia; font-size:11px; color:#669c3a;}
-#footerRight{ padding-top:40px; padding-right:40px; float:right;  font-family:Georgia; font-size:11px; color:#669c3a;}
-#footerRight a{color:#ffffff; font-family:Georgia; font-size:11px;}
-#footerRight a:hover{color:#ffffff; font-family:Georgia; font-size:11px;}
-#footerRight a:visited{color:#ffffff; font-family:Georgia; font-size:11px;}
+#footerLeft{ padding-top:40px; padding-left:45px; float:left;  font-family:Verdana; font-size:11px; color:#669c3a;}
+#footerRight{ padding-top:40px; padding-right:40px; float:right;  font-family:Verdana; font-size:11px; color:#669c3a;}
+#footerRight a{color:#ffffff; font-family:Verdana; font-size:11px;}
+#footerRight a:hover{color:#ffffff; font-family:Verdana; font-size:11px;}
+#footerRight a:visited{color:#ffffff; font-family:Verdana; font-size:11px;}
 
 
 #contentBottomContainer{height:150px; position:relative; margin-left:130px; margin-right:130px; }
