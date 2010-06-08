@@ -104,8 +104,8 @@ AvenueGreen - Система администрирования - Добавить контент
  <script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
     <script type="text/javascript">
         $(function() {
-            $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#text").fck({ height: 500, width:600 });
+            $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: {Toolbar:"Basic", DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
+            $("#text").fck({ toolbar: "Basic", height: 500, width:600 });
         });
     </script>
 </asp:Content>

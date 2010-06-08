@@ -120,6 +120,7 @@
     <Content Include="Content\Widgets.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Views\Admin\AddEditArticle.aspx" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
