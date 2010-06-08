@@ -14,6 +14,11 @@ namespace Honda.Controllers
 
         public ActionResult Index()
         {
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Content()
+        {
             return View();
         }
 

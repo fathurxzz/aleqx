@@ -21,6 +21,7 @@
           <Property Name="IsGalleryItem" Type="bit" Nullable="false" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
           <Property Name="ParentId" Type="int" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" />
           <Property Name="Title" Type="varchar" MaxLength="500" />
         </EntityType>
@@ -71,7 +72,8 @@
           <Property Name="Title" Type="String" />
           <NavigationProperty Name="Children" Relationship="hondadbModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="hondadbModel.ContentContent" FromRole="Content1" ToRole="Content" />
-          <NavigationProperty Name="Gallery" Relationship="hondadbModel.ContentGallery" FromRole="Content" ToRole="Gallery" /></EntityType>
+          <NavigationProperty Name="Gallery" Relationship="hondadbModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" /></EntityType>
         <EntityType Name="Gallery">
           <Key>
             <PropertyRef Name="Id" />
@@ -103,6 +105,7 @@
           <EntitySetMapping Name="Content">
             <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Content)">
               <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="ContentId" ColumnName="ContentId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Horisontal" ColumnName="Horisontal" />

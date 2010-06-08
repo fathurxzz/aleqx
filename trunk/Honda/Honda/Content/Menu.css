@@ -61,6 +61,45 @@
 	font-size:15px;
 }
 
+.menuItem a:active
+{
+	color:#333366;
+	font-family:Arial;
+	font-size:15px;
+}
+
+.menuItem a:hover
+{
+	color:#333366;
+	font-family:Arial;
+	font-size:15px;
+}
+
+.childMenuItem
+{
+	background-color: #004070;
+	padding:3px 0px 3px 40px;
+	font-size:11px;
+}
+
+.childMenuItem a
+{
+	color:#ffffff;
+	font-size:11px;
+}
+
+.childMenuItem a:active
+{
+	color:#ffffff;
+	font-size:11px;
+}
+
+.childMenuItem a:hover
+{
+	color:#ffffff;
+	font-size:11px;
+}
+
 .selected
 {
 	background-color:#60b4fd;
@@ -70,3 +109,21 @@
 	font-size:15px;
 	font-weight:bold;
 }
+
+.selectedChild
+{
+	background-color:#809ABF;
+	font-size:11px;
+	/*color:#C2CEDE;*/
+	color:#ffffff;
+}
+
+.menuLink
+{
+	background-color: #004070;
+}
+
+
+a.parentSelected {color:#77A3C8 !important;}
+a:active.parentSelected {color:#77A3C8 !important;}
+a:hover.parentSelected{color:#77A3C8 !important;}
