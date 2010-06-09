@@ -67,7 +67,11 @@ img{border: 0;}
     border:solid 1px #ffffff;
     position:relative;
     margin:0 auto;
+    overflow:hidden;
+    text-align:center;
 }
+
+.carouselItem{text-align:center;}
 
 #carouselContainer
 {
