@@ -77,26 +77,26 @@
 
 .childMenuItem
 {
-	background-color: #004070;
+	background-color: #ffffff;
 	padding:3px 0px 3px 40px;
 	font-size:11px;
 }
 
 .childMenuItem a
 {
-	color:#ffffff;
+	color:#333366;
 	font-size:11px;
 }
 
 .childMenuItem a:active
 {
-	color:#ffffff;
+	color:#333366;
 	font-size:11px;
 }
 
 .childMenuItem a:hover
 {
-	color:#ffffff;
+	color:#333366;
 	font-size:11px;
 }
 
@@ -112,7 +112,7 @@
 
 .selectedChild
 {
-	background-color:#809ABF;
+	background-color:#60b4fd;
 	font-size:11px;
 	/*color:#C2CEDE;*/
 	color:#ffffff;
@@ -127,3 +127,84 @@
 a.parentSelected {color:#77A3C8 !important;}
 a:active.parentSelected {color:#77A3C8 !important;}
 a:hover.parentSelected{color:#77A3C8 !important;}
+
+
+#contentBoxHorisontalMenu
+{
+	height:30px;
+	width:700px;
+	padding-top:2px;
+	padding-bottom:2px;
+	color:#ffffff;
+	background-color:#60b4fd;
+}
+
+
+#contentBoxHorisontalMenu a
+{
+	color:#005EBA;
+}
+
+#contentBoxHorisontalMenu a:active
+{
+	color:#005EBA;
+}
+
+#contentBoxHorisontalMenu a:hover
+{
+	color:#005EBA;
+}
+
+.horisontalMenuItem
+{
+	padding-left:8px;
+	padding-right:8px;
+	font-size:11px;
+	
+	color:#333366;
+}
+
+.horisontalMenuItem a
+{
+		font-size:11px;
+		color:#ffffff !important;
+}
+
+.horisontalMenuItem a:hover
+{
+		font-size:11px;
+		color:#ffffff;
+}
+
+.horisontalMenuItem a:visited
+{
+		font-size:11px;
+		color:#ffffff;
+}
+
+
+.horisontalSelectedLeft
+{
+	float:left;
+	height:18px;
+	padding-top:5px;
+	background-image: url('img/bg-horisontal-selected-left.gif');
+	background-position:left;
+	background-repeat:no-repeat;
+	font-size:11px;
+	color:#333366;
+	padding-left:5px;
+}
+
+.horisontalSelectedRight
+{
+	
+	background-color:#ffffff;
+	float:right;
+	height:23px;
+	background-image: url('img/bg-horisontal-selected-right.gif');
+	background-position:right;
+	background-repeat:no-repeat;
+	padding-right:7px;
+	
+}

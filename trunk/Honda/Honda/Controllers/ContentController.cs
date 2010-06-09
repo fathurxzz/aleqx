@@ -20,7 +20,7 @@ namespace Honda.Controllers
             using (var context = new ContentStorage())
             {
                 ViewData["contentId"] = contentId;
-                var content = context.Content.Include("Parent").Include("Gallery").Include("Children").Where(c => c.ContentId == contentId).FirstOrDefault();
+                var content = context.Content.Include("Parent").Include("Galleries").Include("Children").Where(c => c.ContentId == contentId).FirstOrDefault();
                 if (content != null)
                 {
                     if (content.Parent != null)

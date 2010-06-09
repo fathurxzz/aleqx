@@ -14,7 +14,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("hondadbModel", "ContentGallery", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Honda.Models.Content), "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Honda.Models.Gallery))]
 
 // Original file name:
-// Generation date: 09.06.2010 0:04:14
+// Generation date: 09.06.2010 21:57:42
 namespace Honda.Models
 {
     
@@ -410,13 +410,13 @@ namespace Honda.Models
             }
         }
         /// <summary>
-        /// There are no comments for Gallery in the schema.
+        /// There are no comments for Galleries in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("hondadbModel", "ContentGallery", "Gallery")]
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Gallery> Gallery
+        public global::System.Data.Objects.DataClasses.EntityCollection<Gallery> Galleries
         {
             get
             {
@@ -446,10 +446,12 @@ namespace Honda.Models
         /// Create a new Gallery object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
-        public static Gallery CreateGallery(int id)
+        /// <param name="imageSource">Initial value of ImageSource.</param>
+        public static Gallery CreateGallery(int id, string imageSource)
         {
             Gallery gallery = new Gallery();
             gallery.Id = id;
+            gallery.ImageSource = imageSource;
             return gallery;
         }
         /// <summary>
@@ -498,6 +500,29 @@ namespace Honda.Models
         private string _Title;
         partial void OnTitleChanging(string value);
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Property ImageSource in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageSource
+        {
+            get
+            {
+                return this._ImageSource;
+            }
+            set
+            {
+                this.OnImageSourceChanging(value);
+                this.ReportPropertyChanging("ImageSource");
+                this._ImageSource = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("ImageSource");
+                this.OnImageSourceChanged();
+            }
+        }
+        private string _ImageSource;
+        partial void OnImageSourceChanging(string value);
+        partial void OnImageSourceChanged();
         /// <summary>
         /// There are no comments for GalleryItems in the schema.
         /// </summary>

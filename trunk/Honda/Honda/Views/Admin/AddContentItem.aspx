@@ -1,0 +1,101 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Honda.Models.Content>" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+	СП «Биомедика-Сервис» - Система администрирования - Добавить содержимое
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<%
+    var parentId = (int?)ViewData["parentId"];
+    var horisontal = (bool?)ViewData["horisontal"];
+    var isGalleryItem = (bool)ViewData["isGalleryItem"];
+     %>
+   <h2 class="editContentTitle">Добавить содержимое</h2>
+<% using (Html.BeginForm("UpdateContent", "Admin"))
+       {%>
+        
+        <%=Html.Hidden("parentId",parentId)%>
+        <%=Html.Hidden("id",int.MinValue)%>
+        <%=Html.Hidden("isGalleryItem", isGalleryItem)%>
+        <%=Html.Hidden("horisontal", horisontal)%>
+        
+        <div class="adminEditContentContainer">
+        
+        <table class="adminEditContentTable">
+        <tr>
+            <td>
+                Техническое имя страницы<br />
+                <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
+            </td>
+            <td>
+                <%= Html.TextBox("contentId", "",new{style="width:300px;"}) %>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Название пункта меню<br />
+                <span style="font-size:10px;">(пишите кириллицей)</span>
+            </td>
+            <td>
+                <%= Html.TextBox("title", "", new { style = "width:300px;" })%>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="2">
+                Содержимое страницы<br />
+                 <%= Html.TextArea("text")%>
+            </td>
+        </tr>
+         <tr>
+            <td>Поставьте галочку, чтобы создать галерею</td>
+            <td> <%= Html.CheckBox("isGalleryItem", false)%></td>
+        </tr>
+        <tr>
+            <td style="width:200px;">Порядок отбражения:<br />
+                <span style="font-size:10px;">(каким по очереди будет этот раздел, необходимо ввести только цифру)</span></td>
+            <td>  <%= Html.TextBox("sortOrder", "0", new { style = "width:20px;" })%></td>
+        </tr>
+        </table>
+        
+        </div>
+        
+        
+        <h2 class="editContentTitle">Для поисковых систем</h2>
+          
+           <div class="adminEditContentContainer">
+                <table class="adminEditContentTable">
+                <tr>
+                    <td>
+                        Ключевые слова этой страницы<br />
+                        <span style="font-size:10px;">(вводятся через запятую)</span>
+                    </td>
+                    <td>
+                       <%= Html.TextBox("keywords", "", new { style = "width:300px;" })%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Описание страницы
+                    </td>
+                    <td>
+                       <%= Html.TextArea("description", "",5,50,null)%>
+                    </td>
+                </tr>
+                </table>
+           
+           </div>
+        
+           
+           
+          
+            
+         <div style="position:relative; margin:auto; width:110px;">
+         <input  type="submit" value="Сохранить всё" />
+         </div>
+      
+
+    <% } %>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentBoxTitle" runat="server">
+</asp:Content>
