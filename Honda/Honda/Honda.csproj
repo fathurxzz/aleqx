@@ -80,6 +80,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +93,8 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\img\bg-footer.gif" />
     <Content Include="Content\img\bg-header.gif" />
+    <Content Include="Content\img\bg-horisontal-selected-left.gif" />
+    <Content Include="Content\img\bg-horisontal-selected-right.gif" />
     <Content Include="Content\img\corner_bottom_left.gif" />
     <Content Include="Content\img\corner_bottom_right.gif" />
     <Content Include="Content\img\corner_top_left.gif" />
@@ -105,7 +109,10 @@
     <Content Include="Index.html" />
     <Content Include="query.txt" />
     <Content Include="SetCookie.aspx" />
+    <Content Include="Views\Admin\AddContentItem.aspx" />
+    <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
+    <Content Include="Views\Shared\HorisontalMenu.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
@@ -136,6 +143,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\GalleryImages\" />
+    <Folder Include="ImageCache\MainView\" />
+    <Folder Include="ImageCache\thumbnail1\" />
+    <Folder Include="ImageCache\thumbnail2\" />
+    <Folder Include="ImageCache\thumbnail3\" />
+    <Folder Include="ImageCache\thumbnail4\" />
+    <Folder Include="ImageCache\thumbnail5\" />
     <Folder Include="Views\Content\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

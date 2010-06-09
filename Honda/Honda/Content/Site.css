@@ -20,3 +20,44 @@ img{border: 0;}
 #divContentBoxTitle { text-align:center; padding-top:10px; padding-bottom:15px; border-bottom:solid 3px #60b4fd; font-family:Arial; font-size:18px; font-weight:bold; color:#999999; }
 #contentText { padding:40px 40px 40px 40px; }
 
+
+#galleryItemsContainer
+{
+	position:relative;
+    margin:0 auto;
+    width:430px;
+    height:500px;
+}
+
+#galleryPictureTarget
+{
+    width:430px;
+    height:372px;
+    border:solid 2px #999999;
+    position:relative;
+    margin:0 auto;
+    overflow:hidden;
+    text-align:center;
+}
+
+
+#imageListContainer
+{
+	position:relative;
+    margin:0 auto;
+    margin-top:15px;
+    text-align:center;
+    width:450px;
+    
+    
+}
+
+.imageListItem
+{
+	float:left;
+	width:84px;
+	height:72px;
+	border:solid 2px #999999;
+	margin:10px 10px 10px 10px;
+	
+}

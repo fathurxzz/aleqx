@@ -31,6 +31,7 @@
           </Key>
           <Property Name="ContentId" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="Title" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="galleryitems">
@@ -72,7 +73,7 @@
           <Property Name="Title" Type="String" />
           <NavigationProperty Name="Children" Relationship="hondadbModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="hondadbModel.ContentContent" FromRole="Content1" ToRole="Content" />
-          <NavigationProperty Name="Gallery" Relationship="hondadbModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
+          <NavigationProperty Name="Galleries" Relationship="hondadbModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" /></EntityType>
         <EntityType Name="Gallery">
           <Key>
@@ -81,7 +82,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" />
           <NavigationProperty Name="GalleryItems" Relationship="hondadbModel.GalleryGalleryItems" FromRole="Gallery" ToRole="GalleryItems" />
-          <NavigationProperty Name="Content" Relationship="hondadbModel.ContentGallery" FromRole="Gallery" ToRole="Content" /></EntityType>
+          <NavigationProperty Name="Content" Relationship="hondadbModel.ContentGallery" FromRole="Gallery" ToRole="Content" />
+          <Property Name="ImageSource" Type="String" Nullable="false" /></EntityType>
         <Association Name="ContentContent">
           <End Type="hondadbModel.Content" Role="Content" Multiplicity="0..1" />
           <End Type="hondadbModel.Content" Role="Content1" Multiplicity="*" /></Association>
@@ -120,6 +122,7 @@
           <EntitySetMapping Name="Gallery">
             <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Gallery)">
               <MappingFragment StoreEntitySet="gallery">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
