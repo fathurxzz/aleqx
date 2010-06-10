@@ -17,7 +17,9 @@
         <div id="galleryItemsContainer">
             <div style="width:600px;"></div>
             <div id="galleryPictureTarget">
-                <img src="" alt="" id="pictureContainer" />
+                <a href="#" id="pictureLink">
+                <img src="" width="540" height="390" alt="" id="pictureContainer" />
+                </a>
             </div>
             <div id="carouselContainer">
       <ul id="mycarousel" class="jcarousel-skin-tango">
@@ -33,6 +35,7 @@
                         Response.Write(
                             "<script type=\"text/javascript\">"+
                             "$(\"#pictureContainer\").attr(\"src\", \"/Content/GalleryImages/" + item.ImageSource + "\");"+
+                            "$(\"#pictureLink\").attr(\"href\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
                             "</script>");
                     }
                     cnt++;
@@ -97,11 +100,25 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
+ <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css"
+        media="screen" />
+
 
 <script type="text/javascript">
 
     jQuery(document).ready(function() {
-        jQuery('#mycarousel').jcarousel();
+    jQuery('#mycarousel').jcarousel();
+    $("a#pictureLink").fancybox({
+        'titleShow': false,
+        'transitionIn': 'none',
+        'transitionOut': 'none',
+        'hideOnOverlayClick': true,
+        'hideOnContentClick': true,
+        'enableEscapeButton': true,
+        'showCloseButton': false
+    });
     });
 
 
@@ -109,9 +126,8 @@
 
     function setImage(path) {
 
-        //$("#galleryPictureTarget").css("background-image", "url('/Content/GalleryImages/" + path + "')");
-        $("#pictureContainer").attr("src","/Content/GalleryImages/" + path);
-        //alert($('#targetPictureContainer').src);
+        $("#pictureContainer").attr("src", "/Content/GalleryImages/" + path);
+        $("#pictureLink").attr("href", "/Content/GalleryImages/" + path);
     }
 
 </script>
