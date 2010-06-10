@@ -8,7 +8,6 @@
         <EntityContainer Name="hondadbModelStoreContainer">
           <EntitySet Name="content" EntityType="hondadbModel.Store.content" store:Type="Tables" Schema="hondadb" />
           <EntitySet Name="gallery" EntityType="hondadbModel.Store.gallery" store:Type="Tables" Schema="hondadb" />
-          <EntitySet Name="galleryitems" EntityType="hondadbModel.Store.galleryitems" store:Type="Tables" Schema="hondadb" />
         </EntityContainer>
         <EntityType Name="content">
           <Key>
@@ -34,14 +33,6 @@
           <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="Title" Type="varchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="galleryitems">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="GalleryId" Type="int" Nullable="false" />
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="500" />
-        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -52,10 +43,6 @@
           <AssociationSet Name="ContentContent" Association="hondadbModel.ContentContent">
             <End Role="Content" EntitySet="Content" />
             <End Role="Content1" EntitySet="Content" /></AssociationSet>
-          <EntitySet Name="GalleryItems" EntityType="hondadbModel.GalleryItems" />
-          <AssociationSet Name="GalleryGalleryItems" Association="hondadbModel.GalleryGalleryItems">
-            <End Role="Gallery" EntitySet="Gallery" />
-            <End Role="GalleryItems" EntitySet="GalleryItems" /></AssociationSet>
           <AssociationSet Name="ContentGallery" Association="hondadbModel.ContentGallery">
             <End Role="Content" EntitySet="Content" />
             <End Role="Gallery" EntitySet="Gallery" /></AssociationSet></EntityContainer>
@@ -81,21 +68,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" />
-          <NavigationProperty Name="GalleryItems" Relationship="hondadbModel.GalleryGalleryItems" FromRole="Gallery" ToRole="GalleryItems" />
           <NavigationProperty Name="Content" Relationship="hondadbModel.ContentGallery" FromRole="Gallery" ToRole="Content" />
           <Property Name="ImageSource" Type="String" Nullable="false" /></EntityType>
         <Association Name="ContentContent">
           <End Type="hondadbModel.Content" Role="Content" Multiplicity="0..1" />
           <End Type="hondadbModel.Content" Role="Content1" Multiplicity="*" /></Association>
-        <EntityType Name="GalleryItems">
-          <Key>
-            <PropertyRef Name="Id" /></Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ImageSource" Type="String" Nullable="false" />
-          <NavigationProperty Name="Gallery" Relationship="hondadbModel.GalleryGalleryItems" FromRole="GalleryItems" ToRole="Gallery" /></EntityType>
-        <Association Name="GalleryGalleryItems">
-          <End Type="hondadbModel.Gallery" Role="Gallery" Multiplicity="1" />
-          <End Type="hondadbModel.GalleryItems" Role="GalleryItems" Multiplicity="*" /></Association>
         <Association Name="ContentGallery">
           <End Type="hondadbModel.Content" Role="Content" Multiplicity="1" />
           <End Type="hondadbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association></Schema>
@@ -134,17 +111,6 @@
             <EndProperty Name="Content">
               <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
             <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping>
-          <EntitySetMapping Name="GalleryItems">
-            <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.GalleryItems)">
-              <MappingFragment StoreEntitySet="galleryitems">
-                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <AssociationSetMapping Name="GalleryGalleryItems" TypeName="hondadbModel.GalleryGalleryItems" StoreEntitySet="galleryitems">
-            <EndProperty Name="GalleryItems">
-              <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
-            <EndProperty Name="Gallery">
-              <ScalarProperty Name="Id" ColumnName="GalleryId" /></EndProperty></AssociationSetMapping>
           <AssociationSetMapping Name="ContentGallery" TypeName="hondadbModel.ContentGallery" StoreEntitySet="gallery">
             <EndProperty Name="Gallery">
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
@@ -175,10 +141,6 @@
           <ConnectorPoint PointX="1.2819230769230767" PointY="3.2496956380208331" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="3.2496956380208331" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="2.9996956380208331" /></AssociationConnector>
-        <EntityTypeShape EntityType="hondadbModel.GalleryItems" Width="1.5" PointX="3.375" PointY="3.75" Height="1.2636116536458326" />
-        <AssociationConnector Association="hondadbModel.GalleryGalleryItems">
-          <ConnectorPoint PointX="3.8125" PointY="2.177958984375" />
-          <ConnectorPoint PointX="3.8125" PointY="3.75" /></AssociationConnector>
         <AssociationConnector Association="hondadbModel.ContentGallery">
           <ConnectorPoint PointX="2.25" PointY="1.4639794921875" />
           <ConnectorPoint PointX="2.75" PointY="1.4639794921875" /></AssociationConnector></Diagram></edmx:Diagrams>
