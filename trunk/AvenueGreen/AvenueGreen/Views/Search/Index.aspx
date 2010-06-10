@@ -11,15 +11,17 @@
            <div class="searchResult">
            <a href="/<%=item.ContentId%>"><%=item.Title%></a><br />
            <%
-             if(item.Text.Length<=200)  
-             {
-                 Response.Write(item.Text);
-             }
-           else
-             {
-                 Response.Write(item.Text.Substring(0,199));
-             }
-               
+               if (item.Text != null)
+               {
+                   if (item.Text.Length <= 200)
+                   {
+                       Response.Write(item.Text);
+                   }
+                   else
+                   {
+                       Response.Write(item.Text.Substring(0, 199));
+                   }
+               }   
            %>
            </div>
            <%
