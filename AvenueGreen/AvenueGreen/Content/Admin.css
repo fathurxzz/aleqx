@@ -12,13 +12,19 @@ h2.editContentTitle
 {
 	margin-top:5px;
 	border:solid 1px #0c9e3c;
-	padding:20px;
+	padding:10px;
 	margin-bottom:30px;
-	
+	min-width:400px;
+}
+
+.adminEditContentTable
+{
+	width:400px;
 }
 
 .adminEditContentTable td
 {
 	padding-left:20px;
 	padding-top:10px;
+	
 }
