@@ -133,7 +133,6 @@
     <Content Include="Scripts\fancybox\jquery.fancybox-1.3.1.js" />
     <Content Include="Scripts\fancybox\jquery.fancybox-1.3.1.pack.js" />
     <Content Include="Scripts\fancybox\jquery.mousewheel-3.0.2.pack.js" />
-    <Content Include="Scripts\jquery.easing.js" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="SetCookie.aspx" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
