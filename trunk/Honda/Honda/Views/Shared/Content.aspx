@@ -148,7 +148,7 @@
     <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
 
-    <script src="../../Scripts/jquery.easing.js" type="text/javascript"></script>
+    
 
     <script type="text/javascript">
 
