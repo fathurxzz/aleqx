@@ -18,7 +18,7 @@
             <div style="width:600px;"></div>
             <div id="galleryPictureTarget">
                 <a href="#" id="pictureLink">
-                <img src="" width="540" height="390" alt="" id="pictureContainer" />
+                <img src="" alt="" id="pictureContainer" />
                 </a>
             </div>
             <div id="carouselContainer">
