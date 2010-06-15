@@ -77,7 +77,7 @@
                        Описание страницы
                     </td>
                     <td>
-                       <%= Html.TextArea("description", "",5,50,null)%>
+                       <%= Html.TextArea("description", "",5,40,null)%>
                     </td>
                 </tr>
                 </table>
@@ -105,7 +105,7 @@ AvenueGreen - Система администрирования - Добавить контент
     <script type="text/javascript">
         $(function() {
             $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: {Toolbar:"Basic", DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#text").fck({ toolbar: "Basic", height: 500, width:600 });
+            $("#text").fck({ toolbar: "Basic", height: 500, width:450 });
         });
     </script>
 </asp:Content>

@@ -80,7 +80,7 @@
                        Описание страницы
                     </td>
                     <td>
-                       <%= Html.TextArea("description", Model.Description,5,50,null)%>
+                       <%= Html.TextArea("description", Model.Description,5,40,null)%>
                     </td>
                 </tr>
                 </table>
@@ -106,7 +106,7 @@ AvenueGreen - Система администрирования - Редактировать контент
     <script type="text/javascript">
         $(function() {
             $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#text").fck({ height: 500, width: 600, toolbar:"Basic" });
+            $("#text").fck({ height: 500, width: 450, toolbar:"Basic" });
         });
     </script>
 </asp:Content>
