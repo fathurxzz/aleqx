@@ -55,8 +55,10 @@ img{border: 0;}
 .imageListItem
 {
 	float:left;
-	width:84px;
-	height:72px;
+	/*width:84px;
+	height:72px;*/
+	width:86px;
+	height:86px;
 	border:solid 2px #999999;
 	margin:10px 10px 10px 10px;
 	
