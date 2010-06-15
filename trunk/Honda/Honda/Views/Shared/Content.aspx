@@ -60,15 +60,14 @@
 %>
         <div id="galleryItemsContainer">
             <div id="galleryPictureTarget">
-                <img src="" alt="" id="pictureContainer" width="430" height="372" />
+                <a href="#" id="pictureLink">
+                    <img src="" alt="" id="pictureContainer" width="430" />
+                </a>
             </div>
             
             
             <div id="imageListContainer">
                   <%
-                  using (var context = new ContentStorage())
-                  {
-
                       var cnt = 0;
                       foreach (var item in Model.Galleries)
                       {
@@ -77,6 +76,7 @@
                               Response.Write(
                                   "<script type=\"text/javascript\">" +
                                   "$(\"#pictureContainer\").attr(\"src\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
+                                  "$(\"#pictureLink\").attr(\"href\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
                                   "</script>");
                           }
                           cnt++;
@@ -87,14 +87,13 @@
                                 {%>
                                 <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new { id = item.Id, contentId = item.Content.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
                                 <%}%>
-                                <div style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
+                                <div class="devicePhoto">
                                 <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
+                                    <div class="fadeImage"></div>
                                 </div>
                          </div>
                          <%
                         }
-                        
-                  }
                 %>
      
             </div>
@@ -146,11 +145,82 @@
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Includes" runat="server">
 
-<script type="text/javascript">
+    <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
+
+    <script src="../../Scripts/jquery.easing.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+
+        function calculateDimensions() {
+            $(".fadeImage").each(function() {
+                var width = $(this).prev("img").width();
+                var height = $(this).prev("img").height();
+
+                //alert(height);
+
+                this.style.width = width + "px";
+                this.style.height = height + "px";
+                this.style.position = "relative";
+
+                var shift = 42 - width / 2;
+
+                this.style.left = 0 + shift + "px";
+                this.style.top = (-height-3) + "px";
+
+                //$(this).fadeTo(0.3);
+
+                this.style.background = "White";
+                this.style.display = "none";
+
+            });
+
+            //$(".fadeImage").eq(0).fadeTo(0, 0.5);
+        }
+
+
+        jQuery(document).ready(function() {
+            $("a#pictureLink").fancybox({
+                'titleShow': false,
+                'transitionIn': 'none',
+                'transitionOut': 'none',
+                'hideOnOverlayClick': true,
+                'hideOnContentClick': true,
+                'enableEscapeButton': true,
+                'showCloseButton': false
+            });
+
+
+            $(".devicePhoto img").click(function(ev, elem) {
+
+
+                var src = this.src.substring(this.src.lastIndexOf("/"));
+
+                var href = "/Content/GalleryImages" + src;
+                src = "/Content/GalleryImages" + src;
+
+                $("#pictureContainer").attr("src", src);
+                $("#pictureLink").attr("href", href);
+
+                $(".fadeImage").fadeOut(0);
+                
+                $(this).next("div").css("display", "block").fadeTo(0, 0.5);
+
+            });
+
+             window.setTimeout(calculateDimensions, 500);
+
+        });
+
 
     function setImage(path) {
         $("#pictureContainer").attr("src", "/Content/GalleryImages/" + path);
+        $("#pictureLink").attr("href", "/Content/GalleryImages/" + path);
     }
+  
+    
+    
 
 </script>
 </asp:Content>
