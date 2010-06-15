@@ -42,7 +42,7 @@
 <!--[if IE 6]>
 <style>
 #main{
-width: expression(document.body.clientWidth > 1150 ? "auto" : "1150px")}
+width: expression(document.body.clientWidth > 1150 ? "auto" : "1000px")}
 </style>
 <![endif]-->
     

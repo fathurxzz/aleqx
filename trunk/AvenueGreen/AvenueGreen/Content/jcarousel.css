@@ -54,7 +54,9 @@
 .jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
     cursor: default;
     /*background-position: 0 0;*/
-     background: url('/content/img/arrow-right-end.gif') no-repeat 0 0;
+     /*background: url('/content/img/arrow-right-end.gif') no-repeat 0 0;*/
+     opacity:0.5;
+     filter:alpha(opacity=50);
 }
 
 .jcarousel-skin-tango .jcarousel-prev-horizontal {
@@ -80,6 +82,9 @@
 .jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
     cursor: default;
     background-position: /*-96px*/0 0;
-     background: url('/content/img/arrow-left-end.gif') no-repeat 0 0;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+    
+     /*background: url('/content/img/arrow-left-end.gif') no-repeat 0 0;*/
 }
 
