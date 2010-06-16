@@ -68,7 +68,10 @@
                   
                 <%} %>
                 <div class="galleryMainPicture">
-                
+                <%if (!string.IsNullOrEmpty(item.ImageSource))
+                  { %>
+                <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail2"))%>
+                <%} %>
                 </div>
                 
                 <div class="galleryTitle">
