@@ -25,7 +25,7 @@ namespace AvenueGreen.Controllers
 
         #region Gallery
 
-        public ActionResult AddGalleryItem(int parentId, string contentId)
+        public ActionResult AddGalleryItem(int parentId, string contentId, int galleryId)
         {
             string file = Request.Files["image"].FileName;
             if (!string.IsNullOrEmpty(file))
@@ -42,7 +42,10 @@ namespace AvenueGreen.Controllers
                     context.SaveChanges();
                 }
             }
-            return RedirectToAction("Index", "Content", new { id = contentId });
+            //return RedirectToAction("Index", "Content", new { id = contentId });
+
+            return Redirect("~/Galleries/" + galleryId);
+
             /*return RedirectToAction("Index", "Galleries", new { id = contentId });*/
         }
 
