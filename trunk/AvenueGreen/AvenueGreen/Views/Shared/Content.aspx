@@ -72,7 +72,8 @@
                 </div>
                 
                 <div class="galleryTitle">
-                <a href="/Galleries/<%=item.Id%>"><%=item.Title%></a>
+                    <%=Html.ActionLink(item.Title,"Index","Galleries",new{id=item.Id,contentId=Model.ContentId},null)%>
+                    <!--<a href="/Galleries/<%=item.Id%>"><%=item.Title%></a>-->
                 </div>
                 
                 </div>
