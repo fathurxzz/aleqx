@@ -2,10 +2,14 @@
 <%@ Import Namespace="AvenueGreen.Helpers"%>
 <%@ Import Namespace="Microsoft.Web.Mvc"%>
 <%@ Import Namespace="AvenueGreen.Models"%>
-
+<script type="text/javascript">
+    $(function() {
+    $('#widget2').ifixpng();
+    });
+</script>
 <%
-    if(2==3)
-    {
+    
+    
     using (var context = new ContentStorage())
     {
         var widgets = context.Widgets.Where(w => w.Type == 2).Select(w => w).ToList();
@@ -13,33 +17,31 @@
         {
             var rnd = new Random();
             var widget = widgets.Skip(rnd.Next(widgets.Count)).Take(1).First();
-            if (widget != null)
-            {
+   
 %>
+<%if (widget != null){ %>
 <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "widget2" })%>
+<%} %>
     <div id="widget2Title">
-    <a href="#"><%=widget.Title%></a>
+        <a href="#"><%if (widget != null){ %><%=widget.Title%><%}else {%>widget.Title<%} %></a>
     </div>
 <%
-            }
         }
-    }}%>
+    }%>
 
 
-<%if (2 == 3)
-  { %>
+
 <div id="widget2Sign">
 А может, Вы<br />ищете...
 </div>
-    <%} %>
-    
+  
 <%
-    if(2==3)
+    
     if(Request.IsAuthenticated){ %>
 
 
-<div>
-<a class="adminLink" style="margin-left:50px" href="/Widgets/2">[редактировать список]</a>
+<div style="padding-top:120px;">
+    <a class="adminLink" style="margin-left:50px" href="/Widgets/2">[редактировать список]</a>
 </div>
 <%} %>
 

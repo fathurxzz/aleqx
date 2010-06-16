@@ -74,19 +74,34 @@ namespace AvenueGreen.Controllers
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index", "Content", new { id = contentId });
+                
+
             }
         }
 
 
-        public ActionResult DeleteGalleryItem(int id, string contentId)
+        public ActionResult DeleteGalleryItem(int id, string contentId, int galleryId)
         {
             using (var context = new ContentStorage())
             {
                 GalleryItems galleryItem = context.GalleryItems.Select(g => g).Where(g => g.Id == id).FirstOrDefault();
                 context.DeleteObject(galleryItem);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Content", new { id = contentId });
+                //return RedirectToAction("Index", "Content", new { id = contentId });
+                return Redirect("~/Galleries/" + galleryId);
             }
+        }
+
+        public ActionResult SetDefaultImage(int id, string contentId, int galleryId)
+        {
+            using (var context = new ContentStorage())
+            {
+                GalleryItems galleryItem = context.GalleryItems.Select(g => g).Where(g => g.Id == id).FirstOrDefault();
+                Gallery gallery = context.Gallery.Select(g => g).Where(g => g.Id == galleryId).FirstOrDefault();
+                gallery.ImageSource = galleryItem.ImageSource;
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Content", new { id = contentId });
         }
 
         #endregion

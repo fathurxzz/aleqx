@@ -46,7 +46,8 @@
                 <%
                     if (Request.IsAuthenticated)
                     {%>
-                    <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new {id = item.Id, contentId = Model.Content.ContentId}, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+                    <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new { id = item.Id, contentId = Model.Content.ContentId, galleryId = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+                    <%=Html.ActionLink("[на превью]", "SetDefaultImage", "Admin", new { id = item.Id, contentId = Model.Content.ContentId, galleryId = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать это фото по умолчанию?')" })%>
                     <%}%>
                     <div class="carouselItem" style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
                     <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
