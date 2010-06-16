@@ -9,6 +9,8 @@
     
     
     <%
+        
+        
     if(Model!=null)
             if(Model.GalleryItems.Count>0)
         {
@@ -72,6 +74,7 @@
             using (Html.BeginForm("AddGalleryItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
               %>
+    <%=Html.Hidden("galleryId", ViewData["galleryId"])%>
     <%=Html.Hidden("parentId", Model.Id)%>
     <%=Html.Hidden("contentId", Model.Content.ContentId)%>
     <h2>Галерея</h2>
