@@ -109,16 +109,16 @@
 <script type="text/javascript">
 
     jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel();
-    $("a#pictureLink").fancybox({
-        'titleShow': false,
-        'transitionIn': 'none',
-        'transitionOut': 'none',
-        'hideOnOverlayClick': true,
-        'hideOnContentClick': true,
-        'enableEscapeButton': true,
-        'showCloseButton': false
-    });
+        jQuery('#mycarousel').jcarousel({'scroll':1});
+        $("a#pictureLink").fancybox({
+            'titleShow': false,
+            'transitionIn': 'none',
+            'transitionOut': 'none',
+            'hideOnOverlayClick': true,
+            'hideOnContentClick': true,
+            'enableEscapeButton': true,
+            'showCloseButton': false
+        });
     });
 
 
