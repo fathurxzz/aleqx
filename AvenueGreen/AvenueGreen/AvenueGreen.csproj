@@ -161,6 +161,7 @@
     <Content Include="Views\Shared\NewsWidget.ascx" />
     <Content Include="Views\Shared\ProjectsWidget.ascx" />
     <Content Include="Views\Shared\Widget2.ascx" />
+    <Content Include="Views\Widget\EditWidgetItem.aspx" />
     <Content Include="Views\Widget\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

@@ -7,26 +7,36 @@
 <% var widgetType = (int)ViewData["type"]; %>
     <table>
         <tr>
-            <th></th>
             <th>
                 Картинка
             </th>
             <th>
                 Подпись
             </th>
+            <th>
+                Адрес
+            </th>
+            <th></th>
+            <th></th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
             <td>
-                <%= Html.ActionLink("Удалить", "DeleteWidgetItem", new { widgetType = item.Type, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%>
-            </td>
-            <td>
                 <%= Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", item.ImageSource, "thumbnail1"))%>
             </td>
             <td>
                 <%= Html.Encode(item.Title) %>
+            </td>
+            <td>
+                <%= Html.Encode(item.Url) %>
+            </td>
+            <td style="padding:5px;">
+                <%= Html.ActionLink("Удалить", "DeleteWidgetItem", new { widgetType = item.Type, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%>
+            </td>
+            <td>
+                <%= Html.ActionLink("Редактировать", "EditWidgetItem", new { widgetType = item.Type, id = item.Id }, null)%>
             </td>
         </tr>
     
