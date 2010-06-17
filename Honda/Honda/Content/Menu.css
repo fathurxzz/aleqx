@@ -13,6 +13,8 @@
 {
 	background-image: url('img/corner_top_left.gif');
 	background-position:left 0;
+	background-repeat:no-repeat;
+	background-color:#ffffff;
 	width: 10px;
 	height: 10px;
 }
@@ -38,6 +40,8 @@
 {
 	background-image: url('img/corner_bottom_left.gif');
 	background-position:left 0;
+	background-repeat:no-repeat;
+	background-color:#ffffff;
 	width: 10px;
 	height: 10px;
 	
@@ -132,7 +136,7 @@ a:hover.parentSelected{color:#77A3C8 !important;}
 #contentBoxHorisontalMenu
 {
 	height:30px;
-	width:700px;
+	width:740px;
 	padding-top:2px;
 	padding-bottom:2px;
 	color:#ffffff;
