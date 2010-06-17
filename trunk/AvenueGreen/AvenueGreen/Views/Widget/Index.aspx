@@ -17,7 +17,6 @@
                 Адрес
             </th>
             <th></th>
-            <th></th>
         </tr>
 
     <% foreach (var item in Model) { %>
@@ -32,9 +31,6 @@
             <td>
                 <%= Html.Encode(item.Url) %>
             </td>
-            <td style="padding:5px;">
-                <%= Html.ActionLink("Удалить", "DeleteWidgetItem", new { widgetType = item.Type, id = item.Id }, new { onclick = "return confirm('Вы уверены?')" })%>
-            </td>
             <td>
                 <%= Html.ActionLink("Редактировать", "EditWidgetItem", new { widgetType = item.Type, id = item.Id }, null)%>
             </td>
@@ -45,6 +41,7 @@
  </table>
 
     <%
+        if(2==3)
         if (Request.IsAuthenticated)
         {
             using (Html.BeginForm("AddWidgetItem", "Widget", FormMethod.Post, new { enctype = "multipart/form-data" }))
