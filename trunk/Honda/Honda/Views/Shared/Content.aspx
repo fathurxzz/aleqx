@@ -104,9 +104,10 @@
                 
      
             </div>
+            
       </div>
-
-      <div class="separator"></div>
+<div class="separator"></div>
+      
       
 <%
       }
