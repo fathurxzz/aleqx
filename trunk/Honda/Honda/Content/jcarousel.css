@@ -1,0 +1,90 @@
+.jcarousel-skin-tango .jcarousel-container {
+    -moz-border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    width: 420px;
+    padding: 20px 40px;
+    
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:  420px;
+    height: 77px;
+    border:solid 1px #ffffff;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+    width: 103px;
+    height: 77px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+    margin-right: 0px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-placeholder {
+    background: #1f2935;
+    color: #000;
+}
+
+
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+    position: absolute;
+    top: 50px;
+    right: 19px;
+    width: 12px;
+    height: 21px;
+    cursor: pointer;
+    background: url('/content/img/arrow-default-right.png') no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover {
+    background-position: 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:active {
+    background-position: 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    /*background-position: 0 0;*/
+     background: url('/content/img/arrow-end-right.png') no-repeat 0 0;
+    /* opacity:0.5;
+     filter:alpha(opacity=50);*/
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 12px;
+    height: 21px;
+    cursor: pointer;
+    background: url('/content/img/arrow-default-left.png') no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover {
+    background-position: /*-32px*/0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+    background-position: /*-64px*/0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: /*-96px*/0 0;
+    /*opacity:0.5;
+    filter:alpha(opacity=50);*/
+    
+     background: url('/content/img/arrow-end-left.png') no-repeat 0 0;
+}
+
