@@ -1,9 +1,9 @@
-﻿#menuContainer{ margin-left:40px; padding-left: 0px;	float: left;	width: 185px;}
+﻿#menuContainer{ /*margin-left:40px;*/ padding-left: 0px;	float: left;	width: 185px;}
 
 .divBoxCornerTopRight
 {
 	background-image: url('img/corner_top_right.gif');
-	background-position:right;
+	background-position:right 0;
 	background-repeat:no-repeat;
 	background-color:#ffffff;
 	height: 10px;
@@ -12,7 +12,7 @@
 .divBoxCornerTopLeft
 {
 	background-image: url('img/corner_top_left.gif');
-	background-position:left;
+	background-position:left 0;
 	width: 10px;
 	height: 10px;
 }
@@ -27,7 +27,7 @@
 .divBoxCornerBottomRight
 {
 	background-image: url('img/corner_bottom_right.gif');
-	background-position:right;
+	background-position:right 0;
 	background-repeat:no-repeat;
 	background-color:#ffffff;
 	height: 10px;
@@ -37,7 +37,7 @@
 .divBoxCornerBottomLeft
 {
 	background-image: url('img/corner_bottom_left.gif');
-	background-position:left;
+	background-position:left 0;
 	width: 10px;
 	height: 10px;
 	
@@ -78,7 +78,7 @@
 .childMenuItem
 {
 	background-color: #ffffff;
-	padding:3px 0px 3px 40px;
+	padding:3px 20px 3px 40px;
 	font-size:11px;
 }
 

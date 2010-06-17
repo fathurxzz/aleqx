@@ -67,38 +67,47 @@
             
             
             <div id="imageListContainer">
-                  <%
-                      var cnt = 0;
-                      foreach (var item in Model.Galleries)
-                      {
-                          if (cnt == 0)
-                          {
-                              Response.Write(
-                                  "<script type=\"text/javascript\">" +
-                                  "$(\"#pictureContainer\").attr(\"src\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
-                                  "$(\"#pictureLink\").attr(\"href\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
-                                  "</script>");
-                          }
-                          cnt++;
-                          %>
-                          <div class="imageListItem">
-                            <%
-                            if (Request.IsAuthenticated)
-                                {%>
-                                <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new { id = item.Id, contentId = item.Content.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
-                                <%}%>
-                                <div class="devicePhoto">
-                                <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
-                                    <div class="fadeImage"></div>
-                                </div>
-                         </div>
-                         <%
-                        }
-                %>
+            
+            <ul id="mycarousel" class="jcarousel-skin-tango">
+      <%
+            using (var context = new ContentStorage())
+            {
+                
+                var cnt = 0;
+                foreach (var item in Model.Galleries)
+                {
+                    if(cnt==0)
+                    {
+                        Response.Write(
+                            "<script type=\"text/javascript\">"+
+                            "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "mainView") + "\");" +
+                            "$(\"#pictureLink\").attr(\"href\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
+                            "</script>");
+                    }
+                    cnt++;
+    %>
+              <li>
+                <%
+                    if (Request.IsAuthenticated)
+                    {%>
+                    <%=Html.ActionLink("[удалить]", "DeleteGalleryItem", "Admin", new { id = item.Id, contentId = item.Content.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить это изображение?')" })%>
+                    <%}%>
+                    <div class="carouselItem" style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
+                    <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "thumbnail4"))%>
+                </div>
+             </li>
+             <%
+                }
+            }
+%>
+      </ul>
+                
      
             </div>
       </div>
 
+      <div class="separator"></div>
+      
 <%
       }
           if (Model.IsGalleryItem && Request.IsAuthenticated)
@@ -135,6 +144,7 @@
       
       }%>
 
+
 </asp:Content>
 
 
@@ -151,6 +161,18 @@
     
 
     <script type="text/javascript">
+
+
+    
+
+
+
+
+        function setImage(path) {
+            $("#pictureContainer").attr("src", "/ImageCache/mainView/" + path);
+            $("#pictureLink").attr("href", "/Content/GalleryImages/" + path);
+        }
+
 
 
         function calculateDimensions() {
@@ -181,6 +203,7 @@
 
 
         jQuery(document).ready(function() {
+            jQuery('#mycarousel').jcarousel({ 'scroll': 1 });
             $("a#pictureLink").fancybox({
                 'titleShow': false,
                 'transitionIn': 'none',

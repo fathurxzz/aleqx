@@ -12,10 +12,10 @@ img{border: 0;}
 #footerSign{position:relative;margin:0 auto; top:60px; color:#333366; font-family:Arial; font-size:12px; text-align:center;}
 #footerSign a{color:#333366; font-family:Arial; font-size:12px; font-weight:bold;}
 
-#main {  width:1000px; position:relative; margin:0 auto;}
+#main {  width:960px; position:relative; margin:0 auto;}
 
 
-#contentContainer{	margin-left: 260px; margin-right:40px;}
+#contentContainer{	/*margin-left: 260px;*/margin-left: 220px; /*margin-right:40px;*/}
 #divContentBoxMiddle{min-height:500px; background-color:#ffffff;}
 #divContentBoxTitle { text-align:center; padding-top:10px; padding-bottom:15px; border-bottom:solid 3px #60b4fd; font-family:Arial; font-size:18px; font-weight:bold; color:#999999; }
 #contentText { padding:40px 40px 40px 40px; }
@@ -46,7 +46,7 @@ img{border: 0;}
 	/*position:relative;
     margin:0 auto;*/
     margin-top:15px;
-    padding-left:100px;
+    padding-left:60px;
     padding-right:100px;
     text-align:center;
     float:left;
@@ -71,4 +71,14 @@ img{border: 0;}
 .devicePhoto
 {
     cursor:pointer;
+}
+
+
+div.separator
+{
+	position:relative;
+	margin:0 auto;
+	width:698px;
+	left:-40px;
+	border:solid 1px #60b4fd;
 }
