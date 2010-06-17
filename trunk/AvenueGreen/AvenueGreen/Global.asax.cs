@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.IO;
+using AvenueGreen.Helpers;
 
 namespace AvenueGreen
 {
@@ -73,6 +75,19 @@ namespace AvenueGreen
         protected void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_BeginRequest()
+        {
+            if (Request.Path.Contains("/ImageCache/"))
+            {
+                string fileName = Path.GetFileName(Server.MapPath(Request.Path));
+
+                string folder = Request.Path.Replace("/" + fileName, "");
+                folder = folder.Substring(folder.LastIndexOf("/") + 1);
+
+                string path = GraphicsHelper.GetCachedImage("~/Content/GalleryImages", fileName, folder);
+            }
         }
     }
 }

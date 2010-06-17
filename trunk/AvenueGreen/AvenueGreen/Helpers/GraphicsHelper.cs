@@ -13,7 +13,7 @@ namespace AvenueGreen.Helpers
 
         static GraphicsHelper()
         {
-            maxDimensions.Add("mainView", 400);
+            maxDimensions.Add("mainView", 420);
             //maxDimensions.Add("thumbnail1", 150);
             maxDimensions.Add("thumbnail1", 180);
             maxDimensions.Add("thumbnail2", 131);

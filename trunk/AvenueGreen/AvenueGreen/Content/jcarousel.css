@@ -5,20 +5,20 @@
 }
 
 .jcarousel-skin-tango .jcarousel-container-horizontal {
-    width: 540px;
+    width: 420px;
     padding: 20px 40px;
     
 }
 
 .jcarousel-skin-tango .jcarousel-clip-horizontal {
-    width:  540px;
-    height: 100px;
+    width:  420px;
+    height: 77px;
     border:solid 1px #ffffff;
 }
 
 .jcarousel-skin-tango .jcarousel-item {
-    width: 135px;
-    height: 100px;
+    width: 103px;
+    height: 77px;
 }
 
 .jcarousel-skin-tango .jcarousel-item-horizontal {
