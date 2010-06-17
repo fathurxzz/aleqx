@@ -109,6 +109,7 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\News.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
@@ -141,6 +142,7 @@
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="SetCookie.aspx" />
+    <Content Include="Views\Admin\AddEditArticle.aspx" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\Shared\Content.aspx" />

@@ -28,15 +28,17 @@
         if (Model.IsGalleryItem)
         {
             if (Model.Galleries.Count == 0)
-            {%>
+            {
+                if (Model.Parent != null)%>
     <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
     <%}
 
         }
         else if (Model.Children.Count == 0)
-        { %>
-    <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
-    <%} %>
+        { 
+            if(Model.Parent!=null)%>
+        <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+        <%} %>
     <%if (Model.Parent != null && !Model.Horisontal && !Model.IsGalleryItem)
       { %>
     <%=Html.ActionLink("[добавить пункт горизонтального меню]", "AddContentItem", "Admin", new { parentId = Model.Id, horisontal = true, isGalleryItem=Model.IsGalleryItem }, new { @class = "adminLink" })%>
@@ -148,6 +150,65 @@
 
 </asp:Content>
 
+<asp:Content ContentPlaceHolderID="NewsContent" runat="server">
+
+<%
+    string contentId = (string)ViewData["contentId"];
+    if (contentId.ToString().ToLower() == "news")
+    {
+        if (Model != null)
+        {
+            using (var context = new ContentStorage())
+            {
+                var news = context.Article.Select(a => a).OrderByDescending(a => a.Date).ToList();
+
+                foreach (var item in news)
+                {
+                    %>
+                    
+            <div class="newsItem">
+            <div class="date">
+                <%= item.Date.ToString("dd.MM.yyyy") %>
+            </div>
+            <h3>
+                <%= item.Title %>
+            </h3>
+
+                    
+                    <% if (Request.IsAuthenticated){ %>
+                <div>
+                    <%= Html.ActionLink("Редактировать", "AddEditArticle", "Admin", new { id = item.Id }, new { @class = "adminLink" })%>
+                </div>
+                <div>
+                    <%= Html.ActionLink("Удалить", "DeleteArticle", "Admin", new { id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить новость?')" })%>
+                </div>
+                <%} %>
+                
+                 <div class="text">
+                <%= item.Text %>
+                </div>
+                </div>
+                 <div class="line"></div>
+            
+                    
+                    <%
+                }
+            }
+%>
+
+
+
+<%
+    } %>
+
+
+ <% 
+     
+     
+    if (Request.IsAuthenticated)
+        Response.Write(Html.ActionLink("Создать новость", "AddEditArticle", "Admin", null, new { @class = "adminLink" })); %>
+<%} %>
+</asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentBoxTitle" runat="server">
 <% if (Model != null) Response.Write(Model.Title); %>

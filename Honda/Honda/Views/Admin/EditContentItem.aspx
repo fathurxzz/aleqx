@@ -6,6 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
+    var contentId = (string)ViewData["contentId"];
     var parentId = (int?)ViewData["parentId"];
     var horisontal = (bool?)ViewData["horisontal"];
     var isGalleryItem = (bool) ViewData["isGalleryItem"];
@@ -19,6 +20,7 @@
         <%=Html.Hidden("horisontal", horisontal)%>
         
         
+        
         <div class="adminEditContentContainer">
         
         <table class="adminEditContentTable">
@@ -27,8 +29,14 @@
                 Техническое имя страницы<br />
                 <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
             </td>
-            <td>
-                <%= Html.TextBox("contentId", Model.ContentId,new{style="width:300px;"}) %>
+            <td><%if (contentId.ToLower() == "news")
+                  { %>
+                <%= Html.TextBox("contentId", Model.ContentId, new { style = "width:300px;", @readonly="true" })%>
+                <%}
+                  else
+                  { %>
+                  <%= Html.TextBox("contentId", Model.ContentId, new { style = "width:300px;" })%>
+                <%} %>
             </td>
         </tr>
         

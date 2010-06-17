@@ -35,7 +35,7 @@
                                         Response.Write(item.Title);
                                       
                                       
-                                      if (Request.IsAuthenticated&&item.Children.Count==0)
+                                      if (Request.IsAuthenticated&&item.Children.Count==0&&contentId.ToLower()!="news")
                                         { %>
                                         <div class="<%=classNameAdmin%>">
                                         <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", new { parentId = item.Id, isGalleryItem = item.IsGalleryItem }, new { @class = "adminLink" })%>

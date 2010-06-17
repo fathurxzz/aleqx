@@ -6,9 +6,23 @@
     <edmx:StorageModels>
     <Schema Namespace="hondadbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="hondadbModelStoreContainer">
-          <EntitySet Name="content" EntityType="hondadbModel.Store.content" store:Type="Tables" Schema="hondadb" />
-          <EntitySet Name="gallery" EntityType="hondadbModel.Store.gallery" store:Type="Tables" Schema="hondadb" />
+          <EntitySet Name="article" EntityType="hondadbModel.Store.article" store:Type="Tables" Schema="gbua_x_honda_el" />
+          <EntitySet Name="content" EntityType="hondadbModel.Store.content" store:Type="Tables" Schema="gbua_x_honda_el" />
+          <EntitySet Name="gallery" EntityType="hondadbModel.Store.gallery" store:Type="Tables" Schema="gbua_x_honda_el" />
         </EntityContainer>
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Preview" Type="varchar" MaxLength="500" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="content">
           <Key>
             <PropertyRef Name="Id" />
@@ -38,6 +52,7 @@
     <edmx:ConceptualModels>
       <Schema Namespace="hondadbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Article" EntityType="hondadbModel.Article" />
           <EntitySet Name="Content" EntityType="hondadbModel.Content" />
           <EntitySet Name="Gallery" EntityType="hondadbModel.Gallery" />
           <AssociationSet Name="ContentContent" Association="hondadbModel.ContentContent">
@@ -45,66 +60,85 @@
             <End Role="Content1" EntitySet="Content" /></AssociationSet>
           <AssociationSet Name="ContentGallery" Association="hondadbModel.ContentGallery">
             <End Role="Content" EntitySet="Content" />
-            <End Role="Gallery" EntitySet="Gallery" /></AssociationSet></EntityContainer>
+            <End Role="Gallery" EntitySet="Gallery" /></AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Keywords" Type="String" Nullable="true" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Preview" Type="String" Nullable="true" />
+          <Property Name="Text" Type="String" Nullable="true" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          </EntityType>
         <EntityType Name="Content">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+            <PropertyRef Name="Id" /></Key>
           <Property Name="ContentId" Type="String" Nullable="false" />
-          <Property Name="Description" Type="String" />
+          <Property Name="Description" Type="String" Nullable="true" />
           <Property Name="Horisontal" Type="Boolean" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="IsGalleryItem" Type="Boolean" Nullable="false" />
-          <Property Name="Keywords" Type="String" />
-          <Property Name="Text" Type="String" />
-          <Property Name="Title" Type="String" />
+          <Property Name="Keywords" Type="String" Nullable="true" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="true" />
+          <Property Name="Title" Type="String" Nullable="true" />
           <NavigationProperty Name="Children" Relationship="hondadbModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="hondadbModel.ContentContent" FromRole="Content1" ToRole="Content" />
           <NavigationProperty Name="Galleries" Relationship="hondadbModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
-          <Property Name="SortOrder" Type="Int32" Nullable="false" /></EntityType>
+          </EntityType>
         <EntityType Name="Gallery">
           <Key>
-            <PropertyRef Name="Id" />
-          </Key>
+            <PropertyRef Name="Id" /></Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" />
-          <NavigationProperty Name="Content" Relationship="hondadbModel.ContentGallery" FromRole="Gallery" ToRole="Content" />
-          <Property Name="ImageSource" Type="String" Nullable="false" /></EntityType>
+          <Property Name="ImageSource" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="true" />
+          <NavigationProperty Name="Content" Relationship="hondadbModel.ContentGallery" FromRole="Gallery" ToRole="Content" /></EntityType>
         <Association Name="ContentContent">
           <End Type="hondadbModel.Content" Role="Content" Multiplicity="0..1" />
           <End Type="hondadbModel.Content" Role="Content1" Multiplicity="*" /></Association>
         <Association Name="ContentGallery">
           <End Type="hondadbModel.Content" Role="Content" Multiplicity="1" />
-          <End Type="hondadbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association></Schema>
+          <End Type="hondadbModel.Gallery" Role="Gallery" Multiplicity="*" /></Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="hondadbModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Article)">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Preview" ColumnName="Preview" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Content">
             <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Content)">
               <MappingFragment StoreEntitySet="content">
-                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
-                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Horisontal" ColumnName="Horisontal" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IsGalleryItem" ColumnName="IsGalleryItem" />
-                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
-                <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="IsGalleryItem" ColumnName="IsGalleryItem" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Horisontal" ColumnName="Horisontal" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Gallery">
             <EntityTypeMapping TypeName="IsTypeOf(hondadbModel.Gallery)">
               <MappingFragment StoreEntitySet="gallery">
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <AssociationSetMapping Name="ContentContent" TypeName="hondadbModel.ContentContent" StoreEntitySet="content">
             <EndProperty Name="Content1">
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
@@ -115,7 +149,8 @@
             <EndProperty Name="Gallery">
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="Content">
-              <ScalarProperty Name="Id" ColumnName="ContentId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
+              <ScalarProperty Name="Id" ColumnName="ContentId" /></EndProperty></AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -134,15 +169,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Structure">
-        <EntityTypeShape EntityType="hondadbModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" />
-        <EntityTypeShape EntityType="hondadbModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.427958984375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hondadbModel.Article" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" />
+        <EntityTypeShape EntityType="hondadbModel.Content" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7427376302083331" />
+        <EntityTypeShape EntityType="hondadbModel.Gallery" Width="1.5" PointX="4.75" PointY="0.75" Height="1.592306315104167" />
         <AssociationConnector Association="hondadbModel.ContentContent">
-          <ConnectorPoint PointX="1.2819230769230767" PointY="2.9996956380208331" />
-          <ConnectorPoint PointX="1.2819230769230767" PointY="3.2496956380208331" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="3.2496956380208331" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="2.9996956380208331" /></AssociationConnector>
+          <ConnectorPoint PointX="3.2819230769230767" PointY="3.4927376302083331" />
+          <ConnectorPoint PointX="3.2819230769230767" PointY="3.7427376302083335" />
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.7427376302083335" />
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.4927376302083331" /></AssociationConnector>
         <AssociationConnector Association="hondadbModel.ContentGallery">
-          <ConnectorPoint PointX="2.25" PointY="1.4639794921875" />
-          <ConnectorPoint PointX="2.75" PointY="1.4639794921875" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="4.25" PointY="1.4639794921875" />
+          <ConnectorPoint PointX="4.75" PointY="1.4639794921875" /></AssociationConnector>
+        </Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
