@@ -76,9 +76,11 @@ img{border: 0;}
 
 div.separator
 {
+	clear:both;
 	position:relative;
 	margin:0 auto;
 	width:698px;
 	left:-40px;
 	border:solid 1px #60b4fd;
+	margin-bottom:10px;
 }
