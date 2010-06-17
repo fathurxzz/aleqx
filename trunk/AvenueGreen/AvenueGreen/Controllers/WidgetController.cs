@@ -58,7 +58,30 @@ namespace AvenueGreen.Controllers
                     context.SaveChanges();
                 }
             }
-            return RedirectToAction("Index", "Content");
+            return Redirect("~/Widgets/" + widgetType);
         }
+
+        public ActionResult EditWidgetItem(int widgetType, int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var widgetItem = context.Widgets.Select(w => w).Where(w => w.Id == id).FirstOrDefault();
+                return View(widgetItem);
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateWidgetItem(int widgetType, int id, string title, string url)
+        {
+            using (var context = new ContentStorage())
+            {
+                var widgetItem = context.Widgets.Select(w => w).Where(w => w.Id == id).FirstOrDefault();
+                widgetItem.Title = title;
+                widgetItem.Url = url;
+                context.SaveChanges();
+            }
+            return Redirect("~/Widgets/" + widgetType);
+        }
+
     }
 }
