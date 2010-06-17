@@ -7,6 +7,10 @@
     $('#widget2').ifixpng();
     });*/
 </script>
+
+
+
+
 <%
     
     
@@ -22,7 +26,10 @@
             <div id="widget2Sign">А может, Вы<br />ищете...</div>
         <%if (widget != null)
           { %>
-            <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "widget2" })%>
+            <map name="lupamap">
+                <area shape="circle" coords="65,60,40" href="<%=widget.Url%>" alt="<%=widget.Title%>" />
+            </map>
+            <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "widget2", usemap="#lupamap" })%>
             <div id="widget2Title"><a href="<%=widget.Url%>"><%=widget.Title%></a></div>
             <%} %>
             <%
