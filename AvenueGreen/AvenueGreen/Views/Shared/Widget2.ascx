@@ -3,9 +3,9 @@
 <%@ Import Namespace="Microsoft.Web.Mvc"%>
 <%@ Import Namespace="AvenueGreen.Models"%>
 <script type="text/javascript">
-    $(function() {
+    /*$(function() {
     $('#widget2').ifixpng();
-    });
+    });*/
 </script>
 <%
     
@@ -18,29 +18,26 @@
             var rnd = new Random();
             var widget = widgets.Skip(rnd.Next(widgets.Count)).Take(1).First();
    
-%>
-<%if (widget != null){ %>
-<%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "widget2" })%>
-<%} %>
-    <div id="widget2Title">
-        <a href="#"><%if (widget != null){ %><%=widget.Title%><%}else {%>widget.Title<%} %></a>
-    </div>
-<%
+        %>
+            <div id="widget2Sign">А может, Вы<br />ищете...</div>
+        <%if (widget != null)
+          { %>
+            <%=Html.Image(GraphicsHelper.GetCachedImage("~/Content/WidgetImages", widget.ImageSource, "thumbnail2"), "", new { id = "widget2" })%>
+            <div id="widget2Title"><a href="<%=widget.Url%>"><%=widget.Title%></a></div>
+            <%} %>
+            <%
         }
     }%>
 
 
 
-<div id="widget2Sign">
-А может, Вы<br />ищете...
-</div>
   
 <%
     
     if(Request.IsAuthenticated){ %>
 
 
-<div style="padding-top:120px;">
+<div>
     <a class="adminLink" style="margin-left:50px" href="/Widgets/2">[редактировать список]</a>
 </div>
 <%} %>

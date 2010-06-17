@@ -85,10 +85,7 @@ width: expression(document.body.clientWidth > 1150 ? "auto" : "1000px")}
             <div id="leftMenuContainer"><% Html.RenderPartial("LeftMenu");%></div>
             <div id="rightItemsConteiner">
                 <div id="projectsWidgetContainer"><% Html.RenderPartial("ProjectsWidget");%></div>
-                <div id="widget2Container">
-                
-                <% Html.RenderPartial("Widget2");%>
-                </div>
+                <div id="widget2Container"><% Html.RenderPartial("Widget2");%></div>
                 <div id="newsWidget">
                     <div id="newsWidgetContainer">
                     <% Html.RenderPartial("NewsWidget");%>
