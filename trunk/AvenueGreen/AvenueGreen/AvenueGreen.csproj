@@ -108,6 +108,13 @@
     <Content Include="Content\img\header-right.gif" />
     <Content Include="Content\img\left-menu-bg.gif" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\lupa-01.jpg" />
+    <Content Include="Content\img\lupa-02.jpg" />
+    <Content Include="Content\img\lupa-03.jpg" />
+    <Content Include="Content\img\lupa-04.jpg" />
+    <Content Include="Content\img\lupa-05.jpg" />
+    <Content Include="Content\img\lupa-06.jpg" />
+    <Content Include="Content\img\lupa-07.jpg" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\news-item-bg.gif" />
     <Content Include="Content\img\no-image.gif" />
