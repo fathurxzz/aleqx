@@ -36,7 +36,7 @@
                     {
                         Response.Write(
                             "<script type=\"text/javascript\">"+
-                            "$(\"#pictureContainer\").attr(\"src\", \"/Content/GalleryImages/" + item.ImageSource + "\");"+
+                            "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/GalleryImages", item.ImageSource, "mainView") + "\");" +
                             "$(\"#pictureLink\").attr(\"href\", \"/Content/GalleryImages/" + item.ImageSource + "\");" +
                             "</script>");
                     }
@@ -129,8 +129,7 @@
     
 
     function setImage(path) {
-
-        $("#pictureContainer").attr("src", "/Content/GalleryImages/" + path);
+        $("#pictureContainer").attr("src", "/ImageCache/mainView/" + path);
         $("#pictureLink").attr("href", "/Content/GalleryImages/" + path);
     }
 

@@ -13,15 +13,18 @@ img{border: 0;}
 #contentTop{width:298px; height:58px; position:relative; margin:0 auto; background-image: url('img/content-top-bg.gif'); background-repeat:no-repeat; margin-top:30px;}
 
 
-#contentTitle{padding-left:10px; position:relative; height:30px; font-size:20px; font-family:Georgia; color:#ffffff; margin-left:250px; margin-right:250px;
-              width:500px;
+#contentTitle
+{
+                padding-left:10px; position:relative; height:30px; font-size:20px; font-family:Georgia; color:#ffffff; 
+                margin:0 auto;
+                width:500px;
               margin:0 auto;
               }
 
 
 #mainContent{ padding:20px 10px 10px 10px; position:relative; color:#a4b09c; font-size:13px; 
-              margin-left:250px;
-               margin-right:250px; z-index:1; margin-bottom:-30px; min-height:300px;
+              /*margin-left:250px; */ margin:0 auto;
+               /*margin-right:250px;*/ z-index:1; margin-bottom:-30px; min-height:300px;
                /*min-width:500px;*/width:500px;margin:0 auto;
                }
 
@@ -69,8 +72,8 @@ img{border: 0;}
 
 #galleryPictureTarget
 {
-    width:540px;
-    height:390px;
+    width:420px;
+    height:303px;
     border:solid 1px #ffffff;
     position:relative;
     margin:0 auto;
@@ -95,9 +98,9 @@ img{border: 0;}
 
 #galleryItemsContainer
 {
-	  position:relative;
+    position:relative;
     margin:0 auto;
-    width:620px;
+    width:480px;
 }
 
 .gallery
