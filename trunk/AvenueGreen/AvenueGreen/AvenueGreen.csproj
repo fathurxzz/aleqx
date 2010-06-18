@@ -116,6 +116,7 @@
     <Content Include="Content\img\lupa-06.jpg" />
     <Content Include="Content\img\lupa-07.jpg" />
     <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\map.gif" />
     <Content Include="Content\img\news-item-bg.gif" />
     <Content Include="Content\img\no-image.gif" />
     <Content Include="Content\img\projects.gif" />
