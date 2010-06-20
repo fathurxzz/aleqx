@@ -120,6 +120,8 @@
     <Content Include="Content\img\news-item-bg.gif" />
     <Content Include="Content\img\no-image.gif" />
     <Content Include="Content\img\projects.gif" />
+    <Content Include="Content\img\watermark.bmp" />
+    <Content Include="Content\img\watermark.png" />
     <Content Include="Content\img\widget2.gif" />
     <Content Include="Content\img\widget22.gif" />
     <Content Include="Content\jcarousel.css" />
@@ -201,7 +203,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
-    <Folder Include="Content\GalleryImages\" />
+    <Folder Include="Content\GalleryImages\tmp\" />
     <Folder Include="Content\WidgetImages\" />
     <Folder Include="ImageCache\mainView\" />
     <Folder Include="ImageCache\thumbnail1\" />
