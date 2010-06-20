@@ -21,7 +21,7 @@
                     <%= Html.ActionLink("Редактировать", "AddEditArticle", "Admin", new { id = item.Name }, new { @class = "adminLink" })%>
                 </div>
                 <div>
-                    <%= Html.ActionLink("Удалить", "DeleteArticle", "Admin", new { id = item.Name }, new { @class = "adminLink" })%>
+                    <%= Html.ActionLink("Удалить", "DeleteArticle", "Admin", new { id = item.Name }, new { @class = "adminLink", onclick = "return confirm('Удалить эту новость?')" })%>
                 </div>
             <%} %>
             <div class="text">

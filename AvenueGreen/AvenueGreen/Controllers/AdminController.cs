@@ -286,6 +286,10 @@ namespace AvenueGreen.Controllers
                     ViewData["keywords"] = article.Keywords;
                 }
             }
+            else
+            {
+                ViewData["date"] = DateTime.Now.ToString("dd.MM.yyyy");
+            }
             ViewData["cTitle"] = title;
             return View();
         }
