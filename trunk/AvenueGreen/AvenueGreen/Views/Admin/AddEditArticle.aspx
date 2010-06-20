@@ -5,40 +5,85 @@
     <% using (Html.BeginForm("AddEditArticle", "Admin", FormMethod.Post, new { id = "AddEditArticle" }))
        {%>
         <%= Html.Hidden("isNew") %>
-        <fieldset>
-            <legend></legend>
-            <p>
-                Адрессная строка:<span id="idErrorHolder"></span> <br />
-                <%if((bool)ViewData["isNew"]){ %>
+        
+        
+        
+         <div class="adminEditContentContainer">
+         <table class="adminEditContentTable">
+        <tr>
+            <td>
+              Адресная строка:<span id="idErrorHolder"></span> <br />
+                <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
+            </td>
+            <td>
+            <%if((bool)ViewData["isNew"]){ %>
                     <%= Html.TextBox("id") %>
                 <%} %>
-                <%else{ %>
+                <%else{
+                      
+                       %>
+                       <%=Html.Hidden("id", ViewData["id"])%>
                     <strong><%= ViewData["id"] %></strong>
                 <%} %>
-            </p>
-
-        <p>
-            Заглавие:<span id="titleErrorHolder"></span> <br />
-            <%= Html.TextBox("title") %>
-        </p>
-        <p>
-            Дата: <span id="dateErrorHolder"></span> <br />
-            <%= Html.TextBox("date") %>
-        </p>
-        <p>
-            Текст: <span id="textErrorHolder"></span> <br />
-            <%= Html.TextArea("text") %>
-        </p>
-        <p>
-            Description:<br />
-            <%= Html.TextBox("description") %>
-        </p>
-        <p>
-            Keywords:<br />
-            <%= Html.TextBox("keywords") %>
-        </p>
-        <input type="submit" value="Сохранить" />
-        </fieldset>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Заголовок новости:
+                <span style="font-size:10px;">(пишите кириллицей)</span>
+            </td>
+            <td>
+                <%= Html.TextBox("title") %>
+            </td>
+        </tr>
+         <tr>
+            <td>
+               Дата:
+                <span style="font-size:10px;">(пишите кириллицей)</span>
+            </td>
+            <td>
+               <%= Html.TextBox("date") %>
+            </td>
+        </tr>
+        
+         <tr>
+            <td colspan="2">
+                Текст:<br />
+                 <%= Html.TextArea("text")%>
+            </td>
+        </tr>
+        </table>
+         </div>
+         
+         <h2 class="editContentTitle">Для поисковых систем</h2>
+        
+        <div class="adminEditContentContainer">
+                <table class="adminEditContentTable">
+                <tr>
+                    <td>
+                        Ключевые слова этой страницы<br />
+                        <span style="font-size:10px;">(вводятся через запятую)</span>
+                    </td>
+                    <td>
+                       <%= Html.TextBox("keywords")%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       Описание страницы
+                    </td>
+                    <td>
+                       <%= Html.TextArea("description")%>
+                    </td>
+                </tr>
+                </table>
+           
+           </div>
+        
+       
+         <div style="position:relative; margin:auto; width:110px;">
+         <input  type="submit" value="Сохранить всё" />
+         </div>
 
     <% } %>
 </asp:Content>
