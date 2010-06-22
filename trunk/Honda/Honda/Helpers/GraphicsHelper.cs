@@ -17,7 +17,7 @@ namespace Honda.Helpers
             maxDimensions.Add("thumbnail1", 180);
             maxDimensions.Add("thumbnail2", 131);
             maxDimensions.Add("thumbnail3", 75);
-            maxDimensions.Add("thumbnail4", 135);
+            maxDimensions.Add("thumbnail4", 103);
             maxDimensions.Add("thumbnail5", 540);
         }
 
