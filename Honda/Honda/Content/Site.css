@@ -16,7 +16,7 @@ img{border: 0;}
 
 
 #contentContainer{	/*margin-left: 260px;*/margin-left: 220px; /*margin-right:40px;*/}
-#divContentBoxMiddle{min-height:500px; background-color:#ffffff;}
+#divContentBoxMiddle{min-height:550px; background-color:#ffffff;}
 #divContentBoxTitle { text-align:center; padding-top:10px; padding-bottom:15px; border-bottom:solid 3px #60b4fd; font-family:Arial; font-size:18px; font-weight:bold; color:#999999; }
 #contentText { padding:20px 40px 40px 40px; }
 

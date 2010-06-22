@@ -16,13 +16,15 @@
 
 .jcarousel-skin-tango .jcarousel-clip-horizontal {
     width:  618px;
-    height: 77px;
+    height: 101px;
     /*border:solid 1px #ffaaff;*/
 }
 
 .jcarousel-skin-tango .jcarousel-item {
     width: 103px;
-    height: 77px;
+    height: 97px;
+    border:solid 1px #999999;
+    /*border-right:solid 1px #999999;*/
 }
 
 .jcarousel-skin-tango .jcarousel-item-horizontal {
