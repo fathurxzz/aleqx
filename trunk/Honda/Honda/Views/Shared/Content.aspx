@@ -63,7 +63,7 @@
         <div id="galleryItemsContainer">
             <div id="galleryPictureTarget">
                 <a href="#" id="pictureLink">
-                    <img src="" alt="" id="pictureContainer" width="430" />
+                    <img src="" alt="" id="pictureContainer" width="540" />
                 </a>
             </div>
             
