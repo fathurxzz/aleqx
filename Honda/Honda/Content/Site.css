@@ -28,14 +28,16 @@ img{border: 0;}
     margin:0 auto;
     left:-10px;
     width:680px;
-    height:495px;
+    height:510px;
     /*border:solid 1px red;*/
 }
 
 #galleryPictureTarget
 {
-    width:430px;
-    height:372px;
+    /*width:430px;
+    height:372px;*/
+    width:540px;
+    height:400px;
     border:solid 2px #999999;
     position:relative;
     margin:0 auto;
