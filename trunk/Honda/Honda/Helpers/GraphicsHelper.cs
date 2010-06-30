@@ -14,11 +14,7 @@ namespace Honda.Helpers
         static GraphicsHelper()
         {
             maxDimensions.Add("mainView", 540);
-            maxDimensions.Add("thumbnail1", 180);
-            maxDimensions.Add("thumbnail2", 131);
-            maxDimensions.Add("thumbnail3", 75);
-            maxDimensions.Add("thumbnail4", 80);
-            maxDimensions.Add("thumbnail5", 540);
+            maxDimensions.Add("thumbnail1", 80);
         }
 
         public static void ScaleImage(Bitmap image, int maxDimension, Stream saveTo)
