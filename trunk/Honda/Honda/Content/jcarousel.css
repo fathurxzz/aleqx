@@ -46,7 +46,7 @@
 
 .jcarousel-skin-tango .jcarousel-next-horizontal {
     position: absolute;
-    top: 50px;
+    top: 40px;
     right: 10px;
     width: 12px;
     height: 21px;
@@ -74,7 +74,7 @@
 
 .jcarousel-skin-tango .jcarousel-prev-horizontal {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 5px;
     width: 12px;
     height: 21px;
