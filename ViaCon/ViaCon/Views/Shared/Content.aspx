@@ -203,7 +203,7 @@
             <br />
             <%  
                 } %>
-            <%=Html.Encode(collapsibleContentItem.Text)%>
+            <%=Response.Write(collapsibleContentItem.Text)%>
         </div>
     </div>
     <%
