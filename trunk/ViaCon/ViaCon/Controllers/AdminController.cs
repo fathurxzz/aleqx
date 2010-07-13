@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
 using ViaCon.Models;
-using System.Web.Script.Serialization;
 using ViaCon.Helpers;
 using System.IO;
 using System.Data;
@@ -238,6 +235,21 @@ namespace ViaCon.Controllers
         public ActionResult DeleteGalleryItem(int id)
         {
             return RedirectToAction("Gallery");
+        }
+
+        public ActionResult HorisontalMenuLine(string contentId, int level, string parentParentContentId, string currentContentId)
+        {
+            using (var context = new ContentStorage())
+            {
+                var parentContentId = context.Content.Where(c => c.ContentId == contentId).Select(c => c.Parent.ContentId).FirstOrDefault();
+                var menuItemsList = context.Content.Where(c => c.ContentId == contentId).SelectMany(c => c.Children).Where(c => c.Horisontal).ToList();
+                ViewData["level"] = level;
+                ViewData["contentId"] = contentId;
+                ViewData["parentContentId"] = parentContentId;
+                ViewData["parentParentContentId"] = parentParentContentId;
+                ViewData["currentContentId"] = currentContentId;
+                return View(menuItemsList);
+            }
         }
     }
 }

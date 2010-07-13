@@ -121,7 +121,7 @@
 
 
 
-#contentBoxHorisontalMenu
+.contentBoxHorisontalMenu
 {
 	/*text-align:center;*/
 	height:20px;
@@ -132,21 +132,22 @@
 	background-color:#BAC7D1;
 	border-left:solid 2px #004070;
 	border-right:solid 2px #004070;
+	border-bottom:solid 1px #004070;
 	
 }
 
 
-#contentBoxHorisontalMenu a
+.contentBoxHorisontalMenu a
 {
 	color:#005EBA;
 }
 
-#contentBoxHorisontalMenu a:active
+.contentBoxHorisontalMenu a:active
 {
 	color:#005EBA;
 }
 
-#contentBoxHorisontalMenu a:hover
+.contentBoxHorisontalMenu a:hover
 {
 	color:#005EBA;
 }

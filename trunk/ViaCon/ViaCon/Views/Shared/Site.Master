@@ -67,7 +67,7 @@
                         <asp:ContentPlaceHolder ID="ContentContainerTitle" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
-                    <% Html.RenderPartial("HorisontalMenu"); %>
+                    <% Html.RenderPartial("HorisontalMenu1"); %>
                     <div id="contentBoxMiddle">
                         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
                         <asp:ContentPlaceHolder ID="GalleryContent" runat="server" />

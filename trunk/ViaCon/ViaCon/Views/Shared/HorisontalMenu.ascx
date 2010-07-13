@@ -1,8 +1,11 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="ViaCon.Models" %>
 <%
-    string contentId = (string)ViewData["contentId"];
-    string parentContentId = (string)ViewData["parentContentId"];
+    var contentId = (string)ViewData["contentId"];
+    var parentContentId = (string)ViewData["parentContentId"];
+
+    
+    
 
     using (var context = new ContentStorage())
     {
@@ -19,6 +22,9 @@
         
         var menuItemsList = context.Content.Include("Parent").Where(c => c.Horisontal&& c.Parent!=null).ToList();
         menuItemsList = menuItemsList.Where(c => c.Parent.ContentId == contentId).OrderBy(c=>c.SortOrder).ToList();
+        
+        
+        
         if (menuItemsList.Count > 0)
         {
             %><div id="contentBoxHorisontalMenu">
