@@ -35,9 +35,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data.Entity, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Web, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.Entity, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -143,10 +143,12 @@
     <Content Include="Views\Admin\EditImageAttributes.aspx" />
     <Content Include="Views\Admin\Gallery.aspx" />
     <Content Include="Views\Admin\GalleryList.ascx" />
+    <Content Include="Views\Admin\HorisontalMenuLine.ascx" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Admin\ManageGalleryPictures.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\HorisontalMenu.ascx" />
+    <Content Include="Views\Shared\HorisontalMenu1.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />

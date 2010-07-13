@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="gbua_viaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="gbua_viaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="gbua_viaModelStoreContainer">
           <EntitySet Name="content" EntityType="gbua_viaModel.Store.content" store:Type="Tables" Schema="gbua_via" />
           <EntitySet Name="gallery" EntityType="gbua_viaModel.Store.gallery" store:Type="Tables" Schema="gbua_via" />
@@ -17,13 +17,14 @@
           <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="2000" />
           <Property Name="Horisontal" Type="bit" Nullable="false" />
+          <Property Name="HorisontalLevel" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IsGalleryItem" Type="bit" Nullable="false" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
           <Property Name="ParentId" Type="int" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
-          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="Title" Type="varchar" Nullable="false" />
         </EntityType>
         <EntityType Name="gallery">
           <Key>
@@ -32,8 +33,8 @@
           <Property Name="ContentId" Type="int" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" MaxLength="255" />
-          <Property Name="Location" Type="varchar" MaxLength="1000" />
-          <Property Name="MaterialText" Type="varchar" MaxLength="1000" />
+          <Property Name="Location" Type="varchar" />
+          <Property Name="MaterialText" Type="varchar" />
           <Property Name="MaterialUrl" Type="varchar" MaxLength="2000" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
         </EntityType>
@@ -66,7 +67,8 @@
           <NavigationProperty Name="Galleries" Relationship="gbua_viaModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
           <NavigationProperty Name="Children" Relationship="gbua_viaModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="gbua_viaModel.ContentContent" FromRole="Content1" ToRole="Content" />
-          <Property Name="SortOrder" Type="Int32" Nullable="false" /></EntityType>
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="HorisontalLevel" Type="Int32" Nullable="false" /></EntityType>
         <EntityType Name="Gallery">
           <Key>
             <PropertyRef Name="Id" />
@@ -92,6 +94,7 @@
           <EntitySetMapping Name="Content">
             <EntityTypeMapping TypeName="IsTypeOf(gbua_viaModel.Content)">
               <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="HorisontalLevel" ColumnName="HorisontalLevel" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="Collapsible" ColumnName="Collapsible" />
                 <ScalarProperty Name="ContentId" ColumnName="ContentId" />
