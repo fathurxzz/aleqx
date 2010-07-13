@@ -17,7 +17,6 @@
           <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="2000" />
           <Property Name="Horisontal" Type="bit" Nullable="false" />
-          <Property Name="HorisontalLevel" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IsGalleryItem" Type="bit" Nullable="false" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
@@ -68,7 +67,7 @@
           <NavigationProperty Name="Children" Relationship="gbua_viaModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="gbua_viaModel.ContentContent" FromRole="Content1" ToRole="Content" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
-          <Property Name="HorisontalLevel" Type="Int32" Nullable="false" /></EntityType>
+          </EntityType>
         <EntityType Name="Gallery">
           <Key>
             <PropertyRef Name="Id" />
@@ -94,7 +93,6 @@
           <EntitySetMapping Name="Content">
             <EntityTypeMapping TypeName="IsTypeOf(gbua_viaModel.Content)">
               <MappingFragment StoreEntitySet="content">
-                <ScalarProperty Name="HorisontalLevel" ColumnName="HorisontalLevel" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="Collapsible" ColumnName="Collapsible" />
                 <ScalarProperty Name="ContentId" ColumnName="ContentId" />
@@ -149,15 +147,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Content2">
-        <EntityTypeShape EntityType="gbua_viaModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_viaModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.0714322916666665" IsExpanded="true" />
         <EntityTypeShape EntityType="gbua_viaModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9210009765625" IsExpanded="true" />
         <AssociationConnector Association="gbua_viaModel.ContentGallery">
-          <ConnectorPoint PointX="2.25" PointY="1.71050048828125" />
-          <ConnectorPoint PointX="2.75" PointY="1.71050048828125" /></AssociationConnector>
+          <ConnectorPoint PointX="2.25" PointY="1.7926741536458335" />
+          <ConnectorPoint PointX="2.75" PointY="1.7926741536458335" /></AssociationConnector>
         <AssociationConnector Association="gbua_viaModel.ContentContent">
-          <ConnectorPoint PointX="1.2819230769230767" PointY="3.3283902994791665" />
-          <ConnectorPoint PointX="1.2819230769230767" PointY="3.5783902994791665" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="3.5783902994791665" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="3.3283902994791665" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="1.2819230769230767" PointY="3.8214322916666665" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.0714322916666665" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.0714322916666665" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="3.8214322916666665" /></AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
