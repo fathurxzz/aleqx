@@ -221,7 +221,6 @@ namespace ViaCon.Controllers
             using (var context = new ContentStorage())
             {
                 Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
-                string contentId = content.ContentId;
                 if (content.Children.Count == 0)
                 {
                     context.DeleteObject(content);
@@ -241,21 +240,19 @@ namespace ViaCon.Controllers
         {
             using (var context = new ContentStorage())
             {
-                //level++;
                 var parentContentId = context.Content.Where(c => c.ContentId == contentId).Select(c => c.Parent.ContentId).FirstOrDefault();
                 var menuItemsList = context.Content.Where(c => c.ContentId == contentId).SelectMany(c => c.Children).Where(c => c.Horisontal).ToList();
-                /*if (menuItemsList.Count == 0 && level == 1)
+
+                if (menuItemsList.Count == 0 && level == 0)
                 {
-                    menuItemsList =
-                        context.Content.Where(c => c.ContentId == parentContentId).SelectMany(c => c.Children).Where(
-                            c => c.Horisontal).ToList();
                     ViewData["lastLevel"] = true;
                 }
                 else
+                {
                     ViewData["lastLevel"] = false;
-                */
-                //if (level>1 && menuItemsList.Count == 0) level--;
-                ViewData["level"] = level;
+                }
+
+                ViewData["level"] = level+1;
                 ViewData["contentId"] = contentId;
                 ViewData["parentContentId"] = parentContentId;
                 ViewData["parentParentContentId"] = parentParentContentId;
