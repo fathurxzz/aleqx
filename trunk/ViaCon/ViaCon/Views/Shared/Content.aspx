@@ -54,6 +54,10 @@
       { %>
     <%=Html.ActionLink("[добавить пункт горизонтального меню]", "AddContentItem", "Admin", new { parentId = Model.Id, horisontal = true }, new { @class = "adminLink" })%>
     <%} %>
+    <%if (Model.Horisontal && !Model.IsGalleryItem)
+      { %>
+      <%=Html.ActionLink("[добавить подпункт горизонтального меню]", "AddContentItem", "Admin", new { parentId = Model.Id, horisontal = true }, new { @class = "adminLink" })%>
+    <%} %>
     <br />
     <%
         }
