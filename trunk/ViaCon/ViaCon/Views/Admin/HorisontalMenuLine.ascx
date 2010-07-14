@@ -9,11 +9,15 @@
         var level = (int) ViewData["level"];
         var itemHasChildren = (bool)ViewData["itemHasChildren"];
         var itemHasChildrenParent = (bool)ViewData["itemHasChildrenParent"];
-        //var lastLevel = (bool) ViewData["lastLevel"];
+        var lastLevel = (bool) ViewData["lastLevel"];
         
         
-        if (Model.Count() != 0 /*&& !lastLevel */ || level == 0)
-            Html.RenderAction<ViaCon.Controllers.AdminController>(a => a.HorisontalMenuLine(parentContentId, level+1, itemHasChildrenParent, contentId, currentContentId));
+        if (Model.Count() != 0 || lastLevel /*&& !lastLevel  || level == 0*/)
+        //if(!lastLevel)
+            Html.RenderAction<ViaCon.Controllers.AdminController>(a => a.HorisontalMenuLine(parentContentId, level, itemHasChildrenParent, contentId, currentContentId));
+        
+        
+        
         
         if (Model.Count() != 0)
         {
@@ -35,18 +39,18 @@
                 if (item.ContentId != currentContentId)
                 {
                     %><td class="horisontalMenuItem horisontalMenuItemActive color<%=((level+1) % 2)%>">
-                    <a href="/<%=item.ContentId%>"><%=item.Title+level%></a><%
+                    <a href="/<%=item.ContentId%>"><%=item.Title%></a><%
                 }
                 else
                 {
 
                     string className = (!itemHasChildren) ? "" : "horisontalMenuItemActive color" + ((level + 1) % 2);
                                   
-                    %><td class="horisontalMenuItem <%=className%>"><%=item.Title + level%><%}
+                    %><td class="horisontalMenuItem <%=className%>"><%=item.Title%><%}
                 }
                   else
                   { %>
-                    <td class="horisontalMenuItem"><a href="/<%=item.ContentId%>"><%=item.Title + level%></a>
+                    <td class="horisontalMenuItem"><a href="/<%=item.ContentId%>"><%=item.Title%></a>
                 <%} %>
                 </td>
             <%}%>
