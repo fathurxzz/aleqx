@@ -187,8 +187,12 @@ namespace ViaCon.Controllers
             {
 
                 Content parent = null;
-                if(parentId!=null)
+                int parentHorisontalLevel = 0;
+                if (parentId != null)
+                {
                     parent = context.Content.Select(c => c).Where(c => c.Id == parentId).First();
+                    parentHorisontalLevel = context.Content.Where(c => c.Id == parentId).Select(c => c.HorisontalLevel).First();
+                }
                 Content content = id != int.MinValue ? context.Content.Select(c => c).Where(c => c.Id == id).First() : new Content();
                 content.Parent = parent;
                 content.ContentId = contentId;
@@ -199,6 +203,7 @@ namespace ViaCon.Controllers
                 content.IsGalleryItem = isGalleryItem;
                 content.Collapsible=collapsible;
                 content.SortOrder = sortOrder;
+                content.HorisontalLevel = parentHorisontalLevel + 1;
                 if (horisontal.HasValue)
                     content.Horisontal = horisontal.Value;
                 if (content.Id == 0)

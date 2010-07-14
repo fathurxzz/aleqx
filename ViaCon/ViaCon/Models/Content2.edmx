@@ -17,6 +17,7 @@
           <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="2000" />
           <Property Name="Horisontal" Type="bit" Nullable="false" />
+          <Property Name="HorisontalLevel" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IsGalleryItem" Type="bit" Nullable="false" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
@@ -67,7 +68,7 @@
           <NavigationProperty Name="Children" Relationship="gbua_viaModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="gbua_viaModel.ContentContent" FromRole="Content1" ToRole="Content" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
-          </EntityType>
+          <Property Name="HorisontalLevel" Type="Int32" Nullable="false" /></EntityType>
         <EntityType Name="Gallery">
           <Key>
             <PropertyRef Name="Id" />
@@ -93,6 +94,7 @@
           <EntitySetMapping Name="Content">
             <EntityTypeMapping TypeName="IsTypeOf(gbua_viaModel.Content)">
               <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="HorisontalLevel" ColumnName="HorisontalLevel" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="Collapsible" ColumnName="Collapsible" />
                 <ScalarProperty Name="ContentId" ColumnName="ContentId" />

@@ -124,11 +124,12 @@
 .contentBoxHorisontalMenu
 {
 	/*text-align:center;*/
-	height:20px;
+	/*height:25px;*/
 	width:722px;
-	padding-top:3px;
-	padding-bottom:2px;
+	/*padding-top:3px;
+	padding-bottom:2px;*/
 	color:#ffffff;
+	/*height:25px;*/
 	background-color:#BAC7D1;
 	border-left:solid 2px #004070;
 	border-right:solid 2px #004070;
@@ -154,45 +155,87 @@
 
 .horisontalMenuItem
 {
-	padding:0 8px 6px 8px;
 	font-size:11px;
 	color:#7A8791;
-/*	border:solid 1px red;*/
 	text-align:center;
+	/*height:15px  !important;*/
+}
+
+.horisontalMenuItem div
+{  
+    padding-left:8px;
+ 	padding-right:8px;
+ 	font-size:11px;
+ 	height:15px;
+ 	padding-top:2px;
+ 	margin-top:4px;
+ 	padding-bottom:4px;
+ 	position:relative;
+ 	top:1px;
+ 	
 }
 
 .horisontalMenuItemActive
 {
-    border-top-style:solid;
-    border-width:1px;
-    border-right-style:solid;
-    border-left-style:solid;
-    border-color:#004070;
-    /*border-bottom-color:#BAC7D1;*/
-    border-bottom-style:solid;
+     border-top:solid 1px #004070;
+     border-left:solid 1px #004070;
+     border-right:solid 1px #004070;
+     float:left;
+     
+     
 }
+.horisontalMenuItemActive a
+{
+    color:#7A8791;
+    font-weight:bold;
+}
+
+.shadow
+{
+    float:left;
+    width:2px;
+    padding:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    margin-top:7px !important;
+    height:19px !important;
+    background-color:#004070;
+}
+
 
 .color0
-{
-    background-color:#a6bdcf;
-    border-bottom-color:#a6bdcf;
-    /*background-color:White;*/
-}
-
-.color1
 {
     background-color:#BAC7D1;
     border-bottom-color:#BAC7D1;
 }
 
+.color1
+{
+    background-color:#a6bdcf;
+    border-bottom-color:#a6bdcf;
+   
+}
+
+.color2
+{
+    background-color:#dae4ed;
+    border-bottom-color:#dae4ed;
+}
+
 .mcolor0
+{
+    background-color:#BAC7D1;
+}
+
+
+.mcolor1
 {
     background-color:#a6bdcf;
 }
 
-.mcolor1
+.mcolor2
 {
-    background-color:#BAC7D1;
+    background-color:#dae4ed;
 }
 
 
@@ -211,3 +254,10 @@
 a.parentSelected {color:#77A3C8 !important;}
 a:active.parentSelected {color:#77A3C8 !important;}
 a:hover.parentSelected{color:#77A3C8 !important;}
+
+
+.selectedItem
+{
+    font-weight:bold;
+    color:#005EBA;
+    }
