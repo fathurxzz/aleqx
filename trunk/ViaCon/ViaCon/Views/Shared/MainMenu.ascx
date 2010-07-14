@@ -8,8 +8,8 @@
     </div>
     <div id="divMenuBoxMiddle">
                 <%
-                    var contentId = (string)ViewData["contentId"];
-                    var parentContentId = (string)ViewData["parentContentId"];
+                    var contentId = (string)ViewData["mcontentId"];
+                    var parentContentId = (string)ViewData["mparentContentId"];
                     var currentContentId = contentId;
                     
 
