@@ -26,8 +26,18 @@ namespace Honda.Controllers
                     if (content.Parent != null)
                     {
                         ViewData["parentContentId"] = content.Parent.ContentId;
+
+                        if(!content.Horisontal)
+                        {
+                            var childrenItems = context.Content.Where(c => c.ContentId == contentId).SelectMany(c => c.Children).ToList();
+                            if (childrenItems.Count > 0)
+                            {
+                                return RedirectToAction("Index", "Content", new {id = childrenItems[0].ContentId});
+                            }
+                        }
                     }
                 }
+
                 return View("Content", content);
             }
         }
