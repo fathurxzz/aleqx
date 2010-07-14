@@ -237,17 +237,32 @@ namespace ViaCon.Controllers
             return RedirectToAction("Gallery");
         }
 
-        public ActionResult HorisontalMenuLine(string contentId, int level, string parentParentContentId, string currentContentId)
+        public ActionResult HorisontalMenuLine(string contentId, int level, bool itemHasChildren, string parentParentContentId, string currentContentId)
         {
             using (var context = new ContentStorage())
             {
+                //level++;
                 var parentContentId = context.Content.Where(c => c.ContentId == contentId).Select(c => c.Parent.ContentId).FirstOrDefault();
                 var menuItemsList = context.Content.Where(c => c.ContentId == contentId).SelectMany(c => c.Children).Where(c => c.Horisontal).ToList();
+                /*if (menuItemsList.Count == 0 && level == 1)
+                {
+                    menuItemsList =
+                        context.Content.Where(c => c.ContentId == parentContentId).SelectMany(c => c.Children).Where(
+                            c => c.Horisontal).ToList();
+                    ViewData["lastLevel"] = true;
+                }
+                else
+                    ViewData["lastLevel"] = false;
+                */
+                //if (level>1 && menuItemsList.Count == 0) level--;
                 ViewData["level"] = level;
                 ViewData["contentId"] = contentId;
                 ViewData["parentContentId"] = parentContentId;
                 ViewData["parentParentContentId"] = parentParentContentId;
                 ViewData["currentContentId"] = currentContentId;
+                ViewData["itemHasChildrenParent"] = menuItemsList.Count > 0;
+                ViewData["itemHasChildren"] = itemHasChildren;
+                
                 return View(menuItemsList);
             }
         }

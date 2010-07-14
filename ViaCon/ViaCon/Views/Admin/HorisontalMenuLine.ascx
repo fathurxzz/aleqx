@@ -7,38 +7,46 @@
         var contentId = (string)ViewData["contentId"];
         var parentParentContentId = (string)ViewData["parentParentContentId"];
         var level = (int) ViewData["level"];
-
-
-        if (Model.Count() != 0 || level == 0)
-            Html.RenderAction<ViaCon.Controllers.AdminController>(a => a.HorisontalMenuLine(parentContentId, level + 1, contentId,currentContentId));
+        var itemHasChildren = (bool)ViewData["itemHasChildren"];
+        var itemHasChildrenParent = (bool)ViewData["itemHasChildrenParent"];
+        //var lastLevel = (bool) ViewData["lastLevel"];
+        
+        
+        if (Model.Count() != 0 /*&& !lastLevel */ || level == 0)
+            Html.RenderAction<ViaCon.Controllers.AdminController>(a => a.HorisontalMenuLine(parentContentId, level+1, itemHasChildrenParent, contentId, currentContentId));
         
         if (Model.Count() != 0)
         {
         %>
-        <div class="contentBoxHorisontalMenu">
+        <div class="contentBoxHorisontalMenu mcolor<%=(level % 2)%>">
         <table style="width:100%; border:none;">
         <tr>
         <td align="center" >
             <table cellpadding="0" cellspacing="0" style="border-collapse:collapse; border:none;">
             <tr>
-            <%foreach (var item in Model)
-            {%>
-                <td class="horisontalMenuItem">
+            <%
+            
+            foreach (var item in Model)
+            {
+                %>
+                
                 <%if (item.ContentId == parentParentContentId)
-{
-    if (item.ContentId != currentContentId)
-    {
-        %><%="["+item.Title+"]"%><%
-    }
-    else
-    {
-                          
-                      
-%><%=item.Title%><%}
-}
+                {
+                if (item.ContentId != currentContentId)
+                {
+                    %><td class="horisontalMenuItem horisontalMenuItemActive color<%=((level+1) % 2)%>">
+                    <a href="/<%=item.ContentId%>"><%=item.Title+level%></a><%
+                }
+                else
+                {
+
+                    string className = (!itemHasChildren) ? "" : "horisontalMenuItemActive color" + ((level + 1) % 2);
+                                  
+                    %><td class="horisontalMenuItem <%=className%>"><%=item.Title + level%><%}
+                }
                   else
                   { %>
-                <a href="/<%=item.ContentId%>"><%=item.Title%></a>
+                    <td class="horisontalMenuItem"><a href="/<%=item.ContentId%>"><%=item.Title + level%></a>
                 <%} %>
                 </td>
             <%}%>

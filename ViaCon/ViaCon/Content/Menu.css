@@ -154,10 +154,49 @@
 
 .horisontalMenuItem
 {
-	padding-left:17px;
+	padding:0 8px 6px 8px;
 	font-size:11px;
 	color:#7A8791;
+/*	border:solid 1px red;*/
+	text-align:center;
 }
+
+.horisontalMenuItemActive
+{
+    border-top-style:solid;
+    border-width:1px;
+    border-right-style:solid;
+    border-left-style:solid;
+    border-color:#004070;
+    /*border-bottom-color:#BAC7D1;*/
+    border-bottom-style:solid;
+}
+
+.color0
+{
+    background-color:#a6bdcf;
+    border-bottom-color:#a6bdcf;
+    /*background-color:White;*/
+}
+
+.color1
+{
+    background-color:#BAC7D1;
+    border-bottom-color:#BAC7D1;
+}
+
+.mcolor0
+{
+    background-color:#a6bdcf;
+}
+
+.mcolor1
+{
+    background-color:#BAC7D1;
+}
+
+
+
 
 .horisontalMenuItem a
 {
