@@ -14,7 +14,7 @@
         
         if (Model.Count() != 0 || lastLevel /*&& !lastLevel  || level == 0*/)
         //if(!lastLevel)
-            Html.RenderAction<ViaCon.Controllers.AdminController>(a => a.HorisontalMenuLine(parentContentId, level, itemHasChildrenParent, contentId, currentContentId));
+            Html.RenderAction<ViaCon.Controllers.ContentController>(a => a.HorisontalMenuLine(parentContentId, level, itemHasChildrenParent, contentId, currentContentId));
         
         
         

@@ -3,5 +3,5 @@
 <%@ Import Namespace="Microsoft.Web.Mvc" %>
 <%
     var contentId = (string)ViewData["contentId"];
-    Html.RenderAction<ViaCon.Controllers.AdminController>(a => a.HorisontalMenuLine(contentId, 0,false, null, contentId));
+    Html.RenderAction<ViaCon.Controllers.ContentController>(a => a.HorisontalMenuLine(contentId, 0,false, null, contentId));
 %>
