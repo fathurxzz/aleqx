@@ -21,7 +21,6 @@
         <%=Html.Hidden("id",Model.Id)%>
         <%=Html.Hidden("horisontal", horisontal)%>
          <%=Html.Hidden("collapsible", collapsible)%>
-        <%=Html.Hidden("isGalleryItem", false)%>
         <fieldset>
             <legend></legend>
             <p>

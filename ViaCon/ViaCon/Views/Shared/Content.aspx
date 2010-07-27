@@ -33,10 +33,10 @@
       { %>
     <%=Html.ActionLink("[добавить процесс использования]", "AddContentItem", "Admin", new { parentId = Model.Id, collapsible = true }, new { @class = "adminLink" })%>
     <%} %>
-    <%if (!Model.IsGalleryItem)
-      { %>
+    <%//if (!Model.IsGalleryItem)
+      //{ %>
     <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, parentId = mparentId, isGalleryItem = Model.IsGalleryItem }, new { @class = "adminLink" })%>
-    <%} %>
+    <%//} %>
     <%
         if (Model.IsGalleryItem)
         {
