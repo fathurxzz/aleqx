@@ -21,23 +21,27 @@ namespace ViaCon.Controllers
                 {
                     if (content.Parent != null)
                     {
-                        ViewData["parentContentId"] = content.Parent.ContentId;
-                        ViewData["mparentContentId"] = content.Parent.ContentId;
+                        ViewData["mparentContentId"]=ViewData["parentContentId"] = content.Parent.ContentId;
                     }
-
-
 
                     if (content.Horisontal && content.HorisontalLevel > 0)
                     {
-                        var mcontent = context.Content.Include("Parent").Include("Galleries").Include("Children").Where(c => c.Horisontal&&c.HorisontalLevel==0).FirstOrDefault();
-                        if(mcontent!=null)
+                        if (content.HorisontalLevel == 1)
                         {
-                            ViewData["mcontentId"] = mcontent.ContentId;
-                            if (mcontent.Parent != null)
+                            var mcontent = context.Content.Include("Parent").Include("Galleries").Include("Children").Where(c => c.Horisontal && c.HorisontalLevel == 0&&c.ContentId==content.Parent.ContentId).FirstOrDefault();
+                            if (mcontent != null)
                             {
-                                ViewData["mparentContentId"] = mcontent.Parent.ContentId;
+                                Session["mcontentId"] = ViewData["mcontentId"] = mcontent.ContentId;
+                                if (mcontent.Parent != null)
+                                {
+                                    Session["mparentContentId"] = ViewData["mparentContentId"] = mcontent.Parent.ContentId;
+                                }
                             }
-
+                        }
+                        else
+                        {
+                            ViewData["mcontentId"] = Session["mcontentId"];
+                            ViewData["mparentContentId"] = Session["mparentContentId"];
                         }
                     }
                 }
