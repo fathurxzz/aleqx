@@ -1,0 +1,22 @@
+﻿*{margin: 0;	padding: 0;	font-family: Verdana;	font-size: 13px;}
+img{border: 0;}
+.clearBoth{	clear: both;}
+html{background-color:#051f3a;}
+#page{position: relative;	margin: 0 auto;	width: 950px; 	 }
+#header{padding-bottom: 20px; height:260px; }
+/*#logoContainer{	padding-top: 50px;	padding-left: 0px; background-image:url('img/new-logo.gif'); width:933px; height:74px; background-position:bottom; background-repeat:no-repeat;}*/
+.logo{padding-left:11px; padding-top:9px;}
+
+html{background:url("img/body_bg.jpg") repeat-x scroll left top #041E39 }
+body{height: 100%;background :url("img/background_2.jpg") no-repeat scroll center top transparent; color:#5A7FAD;}
+
+
+#menuContainer{padding-left: 0px;	float: left;	width: 190px; /*background:#ffaaff;*/}
+#contentContainer{/*background:#aaee00;*/	margin-left: 217px; min-height:400px;}
+
+#main
+{
+    background:url("img/wrap_bg.gif") repeat-y scroll center top #F2F2D6;
+    padding:20px;   
+    width:910px;
+}

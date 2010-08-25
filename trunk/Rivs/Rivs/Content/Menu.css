@@ -1,0 +1,66 @@
+﻿.menuHeader
+{
+    width:190px;
+    height:16px;
+    background-image:url("img/menu_header.gif");
+    background-repeat:no-repeat;
+    color:#FFFFFF;
+    font:bold 11px/15px Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:7px 0 15px 8px;
+    text-align:left;
+    text-transform:uppercase;
+}
+
+
+.menuBox
+{
+    margin-bottom:10px;
+}
+
+ul.menu li {
+background:none repeat scroll 0 0 transparent;
+display:block;
+margin:0;
+padding:0;
+}
+
+ul.menu li a {
+background:url("img/li_a_bg.gif") no-repeat scroll center bottom transparent;
+color:#00589D;
+display:block;
+font:13px/12px Arial,Helvetica,sans-serif;
+margin:0;
+padding:5px 0 6px 8px;
+text-align:left;
+text-decoration:none;
+text-transform:none;
+}
+
+
+.latestnews {
+background:none repeat scroll 0 0 transparent;
+list-style:none outside none;
+margin:0;
+padding:1px 2px;
+text-align:left;
+}
+
+li.latestnews {
+background:none repeat scroll 0 0 transparent;
+list-style:none outside none;
+margin:0;
+padding:0;
+}
+
+li.latestnews a{
+background:url("img/arrow.gif") no-repeat scroll left center transparent;
+color:#009FFB;
+display:block;
+padding-left:20px;
+text-align:left;
+text-decoration:none;
+text-transform:none;
+width:150px;
+font-size:11px;
+}

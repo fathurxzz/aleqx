@@ -1,0 +1,5 @@
+D:\projects\Rivs\Rivs\bin\Rivs.dll
+D:\projects\Rivs\Rivs\bin\Rivs.pdb
+D:\projects\Rivs\Rivs\obj\Debug\ResolveAssemblyReference.cache
+D:\projects\Rivs\Rivs\obj\Debug\Rivs.dll
+D:\projects\Rivs\Rivs\obj\Debug\Rivs.pdb
