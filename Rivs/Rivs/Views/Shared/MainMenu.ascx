@@ -1,5 +1,5 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
-
+<%@ Import Namespace="Rivs.Models" %>
 <div class="menuBox">
 
     <div class="menuHeader">
@@ -7,7 +7,21 @@
     </div>
     
     <ul class="menu">
-        <li><a href="#">Главная</a></li>
+    
+    <%
+        using (var context = new ContentStorage())
+        {
+            var menuImemList = context.Content.Select(m => m).OrderBy(m=>m.SortOrder).ToList();
+            foreach (var item in menuImemList)
+            {
+                %>
+                <li><a href="/<%=item.ContentId%>"><%=item.Title%></a></li>
+                <%
+            }
+        }
+         %>
+    
+        
         <li><a href="#">Новости</a></li>
         <li><a href="#">Специальные предложения</a></li>
         <li><a href="#">Обратная связь</a></li>

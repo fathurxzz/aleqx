@@ -16,7 +16,7 @@ body{height: 100%;background :url("img/background_2.jpg") no-repeat scroll cente
 
 #main
 {
-    background:url("img/wrap_bg.gif") repeat-y scroll center top #F2F2D6;
+    background:url("img/wrap_bg.gif") repeat-y scroll center top;
     padding:20px;   
     width:910px;
 }
