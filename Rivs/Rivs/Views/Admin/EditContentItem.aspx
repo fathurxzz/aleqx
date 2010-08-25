@@ -1,15 +1,23 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Rivs.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	«Ривс» - Система администрирования - Добавить содержимое
+	«Ривс» - Система администрирования -Редактирование содержимого
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h2 class="editContentTitle">Добавить содержимое</h2>
-<% using (Html.BeginForm("UpdateContent", "Admin"))
+<%
+    var contentId = (string)ViewData["contentId"];
+    var parentId = (int?)ViewData["parentId"];
+    var horisontal = (bool?)ViewData["horisontal"];
+    var isGalleryItem = (bool) ViewData["isGalleryItem"];
+     %>
+    <h2 class="editContentTitle">Редактирование содержимого</h2>
+ <% using (Html.BeginForm("UpdateContent","Admin"))
        {%>
+
+        <%=Html.Hidden("id",Model.Id)%>
         
-        <%=Html.Hidden("id",int.MinValue)%>
+        
         
         <div class="adminEditContentContainer">
         
@@ -19,36 +27,47 @@
                 Техническое имя страницы<br />
                 <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
             </td>
-            <td>
-                <%= Html.TextBox("contentId", "",new{style="width:300px;"}) %>
+            <td><%if (contentId.ToLower() == "news")
+                  { %>
+                <%= Html.TextBox("contentId", Model.ContentId, new { style = "width:300px;", @readonly="true" })%>
+                <%}
+                  else
+                  { %>
+                  <%= Html.TextBox("contentId", Model.ContentId, new { style = "width:300px;" })%>
+                <%} %>
             </td>
         </tr>
-         <tr>
+        
+        <tr>
             <td>
                 Название пункта меню<br />
                 <span style="font-size:10px;">(пишите кириллицей)</span>
             </td>
             <td>
-                <%= Html.TextBox("title", "", new { style = "width:300px;" })%>
+                <%= Html.TextBox("title", Model.Title, new { style = "width:300px;" })%>
             </td>
         </tr>
-         <tr>
+        <tr>
             <td colspan="2">
                 Содержимое страницы<br />
-                 <%= Html.TextArea("text")%>
+                 <%= Html.TextArea("text", Model.Text)%>
             </td>
+        </tr>
+        <tr>
+            <td>Поставьте галочку, чтобы создать галерею</td>
+            <td> <%= Html.CheckBox("isGalleryItem", isGalleryItem)%></td>
         </tr>
         <tr>
             <td style="width:200px;">Порядок отбражения:<br />
                 <span style="font-size:10px;">(каким по очереди будет этот раздел, необходимо ввести только цифру)</span></td>
-            <td>  <%= Html.TextBox("sortOrder", "0", new { style = "width:20px;" })%></td>
+            <td>  <%= Html.TextBox("sortOrder", Model.SortOrder,new{style="width:20px;"}) %></td>
         </tr>
+        
         </table>
         
-        </div>
-        
-        
-        <h2 class="editContentTitle">Для поисковых систем</h2>
+         </div>
+         
+          <h2 class="editContentTitle">Для поисковых систем</h2>
           
            <div class="adminEditContentContainer">
                 <table class="adminEditContentTable">
@@ -58,7 +77,7 @@
                         <span style="font-size:10px;">(вводятся через запятую)</span>
                     </td>
                     <td>
-                       <%= Html.TextBox("keywords", "", new { style = "width:300px;" })%>
+                       <%= Html.TextBox("keywords", Model.Keywords, new { style = "width:300px;" })%>
                     </td>
                 </tr>
                 <tr>
@@ -66,31 +85,27 @@
                        Описание страницы
                     </td>
                     <td>
-                       <%= Html.TextArea("description", "",5,50,null)%>
+                       <%= Html.TextArea("description", Model.Description,5,50,null)%>
                     </td>
                 </tr>
                 </table>
            
            </div>
-        
            
            
-          
-            
          <div style="position:relative; margin:auto; width:110px;">
          <input  type="submit" value="Сохранить всё" />
          </div>
-      
+        
 
     <% } %>
 
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentContainerTitle" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
 </asp:Content>
 
-
-<asp:Content ID="Content4" ContentPlaceHolderID="Includes" runat="server">
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentContainerTitle" runat="server">
 <script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
     <script type="text/javascript">
         $(function() {
