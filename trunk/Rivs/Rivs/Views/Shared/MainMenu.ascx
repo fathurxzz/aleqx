@@ -12,5 +12,15 @@
         <li><a href="#">Специальные предложения</a></li>
         <li><a href="#">Обратная связь</a></li>
     </ul>
+    
+    <%
+        if(Request.IsAuthenticated)
+        {%>
+        <div>
+        <%=Html.ActionLink("[добавить]", "AddContentItem", "Admin", null, new { @class = "adminLink" })%>
+        </div>
+        <%
+        }        
+    %>
 
 </div>
