@@ -96,7 +96,9 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
+    <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\Content\Index.aspx" />
+    <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\LatestNews.ascx" />
     <Content Include="Web.config" />
