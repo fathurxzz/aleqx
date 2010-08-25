@@ -1,37 +1,36 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Log On
+    «Ривс» - Вход в систему администрирования
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Log On</h2>
+   <h2>Вход в систему администрирования</h2>
     <p>
-        Please enter your username and password. <%= Html.ActionLink("Register", "Register") %> if you don't have an account.
+        Пожалуйста введите логин и пароль.
     </p>
-    <%= Html.ValidationSummary("Login was unsuccessful. Please correct the errors and try again.") %>
+    <%= Html.ValidationSummary("Аутентификация пользователя не удалась. Пожалуйста проверте данные и повторите попытку.") %>
 
     <% using (Html.BeginForm()) { %>
         <div>
-            <fieldset>
-                <legend>Account Information</legend>
-                <p>
-                    <label for="username">Username:</label>
+        
+            <table>
+            <tr>
+                <td><label for="username">Логин:</label></td>
+                <td>
                     <%= Html.TextBox("username") %>
                     <%= Html.ValidationMessage("username") %>
-                </p>
-                <p>
-                    <label for="password">Password:</label>
-                    <%= Html.Password("password") %>
-                    <%= Html.ValidationMessage("password") %>
-                </p>
-                <p>
-                    <%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe">Remember me?</label>
-                </p>
-                <p>
-                    <input type="submit" value="Log On" />
-                </p>
-            </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">Пароль:</label></td>
+                <td><%= Html.Password("password") %><%= Html.ValidationMessage("password") %></td>
+            </tr>
+            <tr>
+                <td colspan="2"><%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe">запомнить?</label></td>
+            </tr>
+            </table>
+            <input type="submit" value="Вход" />
         </div>
     <% } %>
 </asp:Content>
