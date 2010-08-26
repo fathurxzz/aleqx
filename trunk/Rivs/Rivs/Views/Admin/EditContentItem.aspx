@@ -6,10 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
-    var contentId = (string)ViewData["contentId"];
-    var parentId = (int?)ViewData["parentId"];
-    var horisontal = (bool?)ViewData["horisontal"];
-    var isGalleryItem = (bool) ViewData["isGalleryItem"];
+    //var contentId = (string)ViewData["contentId"];
      %>
     <h2 class="editContentTitle">Редактирование содержимого</h2>
  <% using (Html.BeginForm("UpdateContent","Admin"))
@@ -27,14 +24,8 @@
                 Техническое имя страницы<br />
                 <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
             </td>
-            <td><%if (contentId.ToLower() == "news")
-                  { %>
-                <%= Html.TextBox("contentId", Model.ContentId, new { style = "width:300px;", @readonly="true" })%>
-                <%}
-                  else
-                  { %>
+            <td>
                   <%= Html.TextBox("contentId", Model.ContentId, new { style = "width:300px;" })%>
-                <%} %>
             </td>
         </tr>
         
@@ -52,10 +43,6 @@
                 Содержимое страницы<br />
                  <%= Html.TextArea("text", Model.Text)%>
             </td>
-        </tr>
-        <tr>
-            <td>Поставьте галочку, чтобы создать галерею</td>
-            <td> <%= Html.CheckBox("isGalleryItem", isGalleryItem)%></td>
         </tr>
         <tr>
             <td style="width:200px;">Порядок отбражения:<br />

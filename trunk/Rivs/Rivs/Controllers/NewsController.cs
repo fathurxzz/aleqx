@@ -8,19 +8,19 @@ using Rivs.Models;
 
 namespace Rivs.Controllers
 {
-    public class ContentController : Controller
+    public class NewsController : Controller
     {
         //
-        // GET: /Content/
+        // GET: /News/
 
-        public ActionResult Index(string id)
+        public ActionResult Index()
         {
-            string contentId = id;
             using (var context = new ContentStorage())
             {
-                var content = context.Content.Where(c => c.ContentId == contentId).Select(c => c).FirstOrDefault();
-                return View("Content", content);
+                var newsList = context.Article.Select(c => c).ToList();
+                return View(newsList);
             }
         }
+
     }
 }
