@@ -35,8 +35,18 @@ html{background-color:#051f3a;}
     height:160px;
     background-image:url("img/logo.gif");
     margin:10px;
-    
+    float:left;
     /*margin-top:20px;*/
+}
+
+#obout_show
+{
+	width:750px;
+	height:160px;
+	/*background-color:Yellow;*/
+	margin-left:180px;
+	margin-top:10px;
+	
 }
 
 .logo{padding-left:11px; padding-top:9px;}
@@ -71,3 +81,4 @@ body
 }
 
 .line{border-top: 1px solid #009FFB;text-align:center; padding:20px 0 0 0;font-family: Tahoma, Helvetica, sans-serif;font-weight:bold;font-size:12px;}
+
