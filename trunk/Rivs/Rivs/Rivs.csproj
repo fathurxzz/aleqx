@@ -91,6 +91,8 @@
     <Content Include="Content\img\body_bg.jpg" />
     <Content Include="Content\img\content_bg.gif" />
     <Content Include="Content\img\li_a_bg.gif" />
+    <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\img\menu_header.gif" />
     <Content Include="Content\img\wrap_bg.gif" />
     <Content Include="Content\Menu.css" />

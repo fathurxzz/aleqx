@@ -3,12 +3,56 @@ img{border: 0;}
 .clearBoth{	clear: both;}
 html{background-color:#051f3a;}
 #page{position: relative;	margin: 0 auto;	width: 950px; 	 }
-#header{padding-bottom: 20px; height:260px; }
-/*#logoContainer{	padding-top: 50px;	padding-left: 0px; background-image:url('img/new-logo.gif'); width:933px; height:74px; background-position:bottom; background-repeat:no-repeat;}*/
+#header{padding-bottom: 20px; height:200px; }
+
+#logoContainer
+{
+/*    padding-top: 50px;	
+    padding-left: 0px; */
+/*
+    background-image:url('img/new-logo.gif');
+    background-position:bottom; 
+    background-repeat:no-repeat;
+*/
+    /*background-color:#21518f;*/
+    background-color:#2a425e;
+    border:solid 2px #5e8fc6;
+    
+    width:950px; 
+    height:180px;
+    
+    margin-top:20px;
+    position:absolute;
+    
+    /*margin-top:10px;*/
+    /*top:10px;*/
+    
+}
+
+#logo
+{
+    width:160px;
+    height:160px;
+    background-image:url("img/logo.gif");
+    margin:10px;
+    
+    /*margin-top:20px;*/
+}
+
 .logo{padding-left:11px; padding-top:9px;}
 
-html{background:url("img/body_bg.jpg") repeat-x scroll left top #041E39 }
-body{height: 100%;background :url("img/background_2.jpg") no-repeat scroll center top transparent; color:#5A7FAD;}
+html{background:url("img/body_bg.jpg") repeat-x scroll left top #041E39;
+     background-position:0 -60px;
+      }
+body
+{
+    height: 100%;
+     color:#5A7FAD;
+     background-image:url("img/background_2.jpg");
+     background-repeat:no-repeat;
+     background-position:top;
+     background-position:50% -60px;
+}
 
 
 #menuContainer{padding-left: 0px;	float: left;	width: 190px; /*background:#ffaaff;*/}
