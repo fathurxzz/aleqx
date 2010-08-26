@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
 using Rivs.Models;
 
 namespace Rivs.Controllers
@@ -63,13 +62,91 @@ namespace Rivs.Controllers
         {
             using (var context = new ContentStorage())
             {
-                Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
+                Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
                 context.DeleteObject(content);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Content", new { id = "About" });
             }
 
         }
-        
+
+
+        #region News
+
+        public ActionResult AddEditArticle(string id)
+        {
+            string title = "Создание новости";
+            ViewData["isNew"] = string.IsNullOrEmpty(id);
+            ViewData["id"] = id;
+            if (!string.IsNullOrEmpty(id))
+            {
+                using (ContentStorage context = new ContentStorage())
+                {
+                    Article article = context.Article.Where(a => a.Name == id).First();
+                    title = string.Format("Редактирование новости \"{0}\"", article.Title);
+                    ViewData["title"] = article.Title;
+                    ViewData["date"] = article.Date.ToString("dd.MM.yyyy");
+                    ViewData["text"] = article.Text;
+                    ViewData["description"] = article.Description;
+                    ViewData["keywords"] = article.Keywords;
+                }
+            }
+            else
+            {
+                ViewData["date"] = DateTime.Now.ToString("dd.MM.yyyy");
+            }
+            ViewData["cTitle"] = title;
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult AddEditArticle(string id,
+            string title,
+            string date,
+            string keywords,
+            string description,
+            string text,
+            bool isNew)
+        {
+            using (ContentStorage context = new ContentStorage())
+            {
+                Article article;
+                if (isNew)
+                {
+                    article = new Article {Name = id};
+                    context.AddToArticle(article);
+                }
+                else
+                {
+                    article = context.Article.Where(a => a.Name == id).First();
+                }
+
+                article.Title = title;
+                article.Date = DateTime.Parse(date);
+                article.Text = HttpUtility.HtmlDecode(text);
+                article.Description = description;
+                article.Keywords = keywords;
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "News");
+        }
+
+        public ActionResult DeleteArticle(string id)
+        {
+            using (ContentStorage context = new ContentStorage())
+            {
+                List<Article> articles = context.Article.Where(a => a.Name == id).ToList();
+
+                foreach (var item in articles)
+                {
+                    context.DeleteObject(item);
+                }
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "News");
+        }
+
+        #endregion
+
     }
 }

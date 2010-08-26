@@ -12,11 +12,14 @@
        if (Request.IsAuthenticated)
            {
            %>
-           <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, parentId = mparentId, isGalleryItem = Model.IsGalleryItem }, new { @class = "adminLink" })%>
+           <div>
+           <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink" })%>
+           <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
+           </div>
            <%
            }
-      
-    } %>
+        Response.Write(Model.Text);
+      } %>
 
 </asp:Content>
 
@@ -24,4 +27,5 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentContainerTitle" runat="server">
+<% if (Model != null) Response.Write(Model.Title); %>
 </asp:Content>
