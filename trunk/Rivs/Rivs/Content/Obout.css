@@ -1,0 +1,31 @@
+﻿	.panelTable
+		{
+			border-collapse: separate;
+			border-spacing: expression(cellSpacing=0);
+			border-spacing: 0px;
+			border-padding: expression(cellPadding=0);
+			border-padding: 0px;
+		}
+		.title
+		{
+			color:crimson;
+			font-size:14px;
+			font-weight:bold;
+		}
+		body
+		{
+			font-family:tahoma;
+		}
+		.examples
+		{
+			font-size:12px;
+		}
+		.tdText
+		{
+			font-size:12px;
+		}
+		.tdText
+			{
+				font:11px Verdana;
+			    color:white;
+			}

@@ -34,6 +34,10 @@
     <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Web, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="obout_Show_Net, Version=1.4.0.0, Culture=neutral, PublicKeyToken=a24f0e4ecff66e91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\oboutSuite\bin\obout_Show_Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -94,9 +98,14 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\img\menu_header.gif" />
+    <Content Include="Content\img\obout\calendar.jpg" />
+    <Content Include="Content\img\obout\combobox.jpg" />
+    <Content Include="Content\img\obout\easymenu.jpg" />
+    <Content Include="Content\img\obout\tcm.jpg" />
     <Content Include="Content\img\wrap_bg.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\News.css" />
+    <Content Include="Content\Obout.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
@@ -107,6 +116,7 @@
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\LatestNews.ascx" />
+    <Content Include="Views\Shared\OboutControl.ascx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />
