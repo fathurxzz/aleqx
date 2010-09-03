@@ -24,7 +24,10 @@ namespace Rivs.Controllers
                 {
                     ViewData["ContentId"] = content.ContentId;
                     if (content.Parent != null)
+                    {
                         ViewData["ParentContentId"] = content.Parent.ContentId;
+                        ViewData["ParentId"] = content.Parent.Id;
+                    }
                 }
                 return View("Content", content);
             }

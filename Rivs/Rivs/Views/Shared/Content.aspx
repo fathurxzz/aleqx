@@ -13,6 +13,7 @@
     <div>
         <%
             var parentContentId = (string)ViewData["ParentContentId"];
+            var pId = (int?)ViewData["parentId"];
             if (parentContentId == null)
             {
         %>
@@ -20,7 +21,7 @@
         <%
             }
         %>
-        <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink" })%>
+        <%=Html.ActionLink("[редактировать]", "EditContentItem", "Admin", new { id = Model.Id, parentId = pId }, new { @class = "adminLink" })%>
         <%=Html.ActionLink("[удалить]", "DeleteContentItem", "Admin", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить этот пункт?')" })%>
     </div>
     <%
