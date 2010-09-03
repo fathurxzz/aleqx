@@ -29,9 +29,10 @@ namespace Rivs.Controllers
             return View();
         }
 
-        
-        public ActionResult EditContentItem(int id)
+
+        public ActionResult EditContentItem(int id, int? parentId)
         {
+            ViewData["parentId"] = parentId;
             using (var context = new ContentStorage())
             {
                 var contentItem = context.Content.Where(c => c.Id == id).Select(c => c).FirstOrDefault();
