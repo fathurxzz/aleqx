@@ -18,7 +18,14 @@ namespace Rivs.Controllers
             string contentId = id;
             using (var context = new ContentStorage())
             {
-                var content = context.Content.Where(c => c.ContentId == contentId).Select(c => c).FirstOrDefault();
+                
+                var content = context.Content.Include("Parent").Where(c => c.ContentId == contentId).Select(c => c).FirstOrDefault();
+                if (content != null)
+                {
+                    ViewData["ContentId"] = content.ContentId;
+                    if (content.Parent != null)
+                        ViewData["ParentContentId"] = content.Parent.ContentId;
+                }
                 return View("Content", content);
             }
         }

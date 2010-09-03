@@ -23,8 +23,9 @@ namespace Rivs.Controllers
             return View();
         }
 
-        public ActionResult AddContentItem()
+        public ActionResult AddContentItem(int? parentId)
         {
+            ViewData["parentId"] = parentId;
             return View();
         }
 
@@ -39,11 +40,18 @@ namespace Rivs.Controllers
         }
         
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult UpdateContent(int id, string contentId, string title, string description, string keywords, string text, int sortOrder)
+        public ActionResult UpdateContent(int id, int? parentId, string contentId, string title, string description, string keywords, string text, int sortOrder)
         {
             using (var context = new ContentStorage())
             {
+                Content parent = null;
+                if (parentId != null)
+                {
+                    parent = context.Content.Select(c => c).Where(c => c.Id == parentId).First();
+                }
+
                 Content content = id != int.MinValue ? context.Content.Select(c => c).Where(c => c.Id == id).First() : new Content();
+                content.Parent = parent;
                 content.ContentId = contentId;
                 content.Title = title;
                 content.Description = description;

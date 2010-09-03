@@ -26,7 +26,7 @@
                 
                 <div id="obout_show">
                 
-		              <% Html.RenderPartial("OboutControl"); %>   
+		              <% //Html.RenderPartial("OboutControl"); %>   
                 
                 </div>
                 

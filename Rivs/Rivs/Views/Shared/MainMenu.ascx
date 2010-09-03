@@ -1,5 +1,12 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <%@ Import Namespace="Rivs.Models" %>
+
+<%
+    var contentId = (string) ViewData["ContentId"];
+    var parentContentId = (string)ViewData["PatentContentId"];
+%>
+
+
 <div class="menuBox">
 
     <div class="menuHeader">
@@ -11,7 +18,10 @@
     <%
         using (var context = new ContentStorage())
         {
-            var menuImemList = context.Content.Select(m => m).OrderBy(m=>m.SortOrder).ToList();
+            var menuImemList = context.Content.Include("Parent").Select(m => m).OrderBy(m=>m.SortOrder).ToList();
+            
+            
+            
             foreach (var item in menuImemList)
             {
                 %>
