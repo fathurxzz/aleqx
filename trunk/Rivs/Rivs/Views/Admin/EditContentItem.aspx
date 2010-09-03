@@ -7,12 +7,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%
     //var contentId = (string)ViewData["contentId"];
+    var parentId = (int?)ViewData["parentId"];
      %>
     <h2 class="editContentTitle">Редактирование содержимого</h2>
  <% using (Html.BeginForm("UpdateContent","Admin"))
        {%>
 
         <%=Html.Hidden("id",Model.Id)%>
+        <%=Html.Hidden("parentId",parentId)%>
         
         
         
