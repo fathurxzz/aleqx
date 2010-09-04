@@ -71,9 +71,12 @@ namespace Rivs.Controllers
         {
             using (var context = new ContentStorage())
             {
-                Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
-                context.DeleteObject(content);
-                context.SaveChanges();
+                Content content = context.Content.Include("Children").Where(c => c.Id == id).FirstOrDefault();
+                if (content.Children.Count == 0)
+                {
+                    context.DeleteObject(content);
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Index", "Content", new { id = "About" });
             }
 

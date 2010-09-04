@@ -64,3 +64,9 @@ text-transform:none;
 width:150px;
 font-size:11px;
 }
+
+a.selected
+{
+	/*color:Red !important;*/
+	font-weight:bold !important;
+}
