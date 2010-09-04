@@ -95,13 +95,13 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
-<script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
- <script type="text/javascript">
+    <script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
+    <script type="text/javascript">
         $(function() {
             $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#text").fck({ height: 500, width:450 });
+            $("#text").fck({ height: 500, width: 600 });
         });
-</script>
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentContainerTitle" runat="server">
