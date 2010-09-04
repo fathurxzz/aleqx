@@ -99,7 +99,7 @@
     <script type="text/javascript">
         $(function() {
             $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: {Toolbar:"Basic", DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#text").fck({ toolbar: "Basic", height: 500, width:500 });
+            $("#text").fck({ height: 500, width:500 });
         });
     </script>
 </asp:Content>
