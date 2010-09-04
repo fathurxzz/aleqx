@@ -29,20 +29,36 @@
                             }
                         }
 
-
-%>
-                        <li><a href="/<%=item.ContentId%>"><%=item.Title%></a></li>
-                        <%
+                        if (item.ContentId == contentId)
+                        {
+                            %>
+                            <li><a class="selected" href="/<%=item.ContentId%>"><%=item.Title%></a></li>
+                            <% 
+                        }
+                        else
+                        {
+                            %>
+                            <li><a href="/<%=item.ContentId%>"><%=item.Title%></a></li>
+                            <%
+                        }
+                        
                             if (contentId == item.ContentId || parentItemHasChildren)
                         {
                             if (item.Children.Count > 0)
                             {
                                 foreach (var child in item.Children)
                                 {
-%>
-                                <li style="padding-left: 20px;"><a href="/<%=child.ContentId%>">
-                                    <%=child.Title%></a></li>
-                                <%
+                                    if (child.ContentId == contentId)
+                                    {
+                                    %>
+                                    <li style="padding-left: 20px;"><a class="selected" href="/<%=child.ContentId%>"><%=child.Title%></a></li>
+                                    <%                                    }
+                                    else
+                                    {
+                                    %>
+                                    <li style="padding-left: 20px;"><a href="/<%=child.ContentId%>"><%=child.Title%></a></li>
+                                    <%
+                                    }
                                 }
                             }
                         }
