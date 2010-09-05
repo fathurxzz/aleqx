@@ -73,7 +73,7 @@
           <NavigationProperty Name="Children" Relationship="rivsModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="rivsModel.ContentContent" FromRole="Content1" ToRole="Content" /></EntityType>
         <Association Name="ContentContent">
-          <End Type="rivsModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="rivsModel.Content" Role="Content" Multiplicity="0..1" />
           <End Type="rivsModel.Content" Role="Content1" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,7 +111,8 @@
             <EndProperty Name="Content1">
               <ScalarProperty Name="Id" ColumnName="Id" /></EndProperty>
             <EndProperty Name="Content">
-              <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty></AssociationSetMapping></EntityContainerMapping>
+              <ScalarProperty Name="Id" ColumnName="ParentId" /></EndProperty>
+            <Condition ColumnName="ParentId" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

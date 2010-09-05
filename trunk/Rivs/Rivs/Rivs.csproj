@@ -94,6 +94,7 @@
     <Content Include="Content\img\background_2.jpg" />
     <Content Include="Content\img\body_bg.jpg" />
     <Content Include="Content\img\content_bg.gif" />
+    <Content Include="Content\img\header-info.gif" />
     <Content Include="Content\img\li_a_bg.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\logo.jpg" />
@@ -114,6 +115,7 @@
     <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\News\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
+    <Content Include="Views\Shared\HeaderInfo.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\LatestNews.ascx" />
     <Content Include="Views\Shared\OboutControl.ascx" />
