@@ -1,0 +1,1298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nop.Payment.AuthorizeNet</name>
+    </assembly>
+    <members>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.IsAlive">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.IsAliveAsync">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.IsAliveAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.AuthenticateTest(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.AuthenticateTestAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.AuthenticateTestAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCreateSubscription(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCreateSubscriptionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCreateSubscriptionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBUpdateSubscription(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBUpdateSubscriptionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBUpdateSubscriptionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCancelSubscription(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCancelSubscriptionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCancelSubscriptionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerPaymentProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerShippingAddress(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerPaymentProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerShippingAddress(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileExType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileExType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileExType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerPaymentProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileExType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileExType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileExType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerShippingAddress(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressExType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressExType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressExType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerPaymentProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerShippingAddress(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerShippingAddressAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileTransaction(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransactionType,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileTransactionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransactionType,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileTransactionAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransactionType,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ValidateCustomerPaymentProfile(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Int64,System.String,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ValidateCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Int64,System.String,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ValidateCustomerPaymentProfileAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Int64,System.Int64,System.Int64,System.String,NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileIds(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileIdsAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileIdsAsync(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.IsAliveCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.AuthenticateTestCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCreateSubscriptionCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBUpdateSubscriptionCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ARBCancelSubscriptionCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerPaymentProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerShippingAddressCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerPaymentProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerShippingAddressCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerPaymentProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.UpdateCustomerShippingAddressCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerPaymentProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.DeleteCustomerShippingAddressCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.CreateCustomerProfileTransactionCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.ValidateCustomerPaymentProfileCompleted">
+            <remarks/>
+        </member>
+        <member name="E:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.Service.GetCustomerProfileIdsCompleted">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ANetApiResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ANetApiResponseType.resultCode">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ANetApiResponseType.messages">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MessageTypeEnum">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MessageTypeEnum.Ok">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MessageTypeEnum.Error">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MessagesTypeMessage">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MessagesTypeMessage.code">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MessagesTypeMessage.text">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.customerProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.customerProfileIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.customerPaymentProfileIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.customerShippingAddressId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.customerShippingAddressIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransVoidType.transId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.itemId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.name">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.description">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.quantity">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.unitPrice">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.taxable">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.LineItemType.taxableSpecified">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ExtendedAmountType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ExtendedAmountType.amount">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ExtendedAmountType.name">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ExtendedAmountType.description">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAmountType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAmountType.amount">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAmountType.tax">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAmountType.shipping">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAmountType.duty">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAmountType.lineItems">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.customerProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.customerProfileIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.customerPaymentProfileIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.customerShippingAddressId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.customerShippingAddressIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransPriorAuthCaptureType.transId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.customerProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.customerProfileIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.customerPaymentProfileIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.customerShippingAddressId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.customerShippingAddressIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.creditCardNumberMasked">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.bankRoutingNumberMasked">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.bankAccountNumberMasked">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.order">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransRefundType.transId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.OrderExType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.OrderType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.OrderType.invoiceNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.OrderType.description">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.OrderExType.purchaseOrderNumber">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.customerProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.customerShippingAddressId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.customerShippingAddressIdSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.order">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.taxExempt">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.taxExemptSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.recurringBilling">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.recurringBillingSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransOrderType.cardCode">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAuthCaptureType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransCaptureOnlyType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransCaptureOnlyType.approvalCode">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransAuthOnlyType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransactionType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ProfileTransactionType.Item">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.type">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.typeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.id">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.email">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.phoneNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.faxNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.driversLicense">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerType.taxId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerTypeEnum">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerTypeEnum.individual">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerTypeEnum.business">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseBaseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseBaseType.state">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseType.number">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseType.dateOfBirth">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseMaskedType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseMaskedType.number">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DriversLicenseMaskedType.dateOfBirth">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleTypeInterval">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleTypeInterval.length">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleTypeInterval.unit">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionUnitEnum">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionUnitEnum.days">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionUnitEnum.months">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.interval">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.startDate">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.startDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.totalOccurrences">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.totalOccurrencesSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.trialOccurrences">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentScheduleType.trialOccurrencesSpecified">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.name">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.paymentSchedule">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.amount">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.amountSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.trialAmount">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.trialAmountSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.payment">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.order">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.customer">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.billTo">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBSubscriptionType.shipTo">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentType.Item">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType.accountType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType.accountTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType.nameOnAccount">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType.echeckType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType.echeckTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountBaseType.bankName">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountType.routingNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountType.accountNumber">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountTypeEnum">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountTypeEnum.checking">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountTypeEnum.savings">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountTypeEnum.businessChecking">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.EcheckTypeEnum">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.EcheckTypeEnum.PPD">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.EcheckTypeEnum.WEB">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.EcheckTypeEnum.CCD">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.EcheckTypeEnum.TEL">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountMaskedType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountMaskedType.routingNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.BankAccountMaskedType.accountNumber">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardSimpleType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardSimpleType.cardNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardSimpleType.expirationDate">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardType.cardCode">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.firstName">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.lastName">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.company">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.address">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.city">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.state">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.zip">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.NameAndAddressType.country">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressType.phoneNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressType.faxNumber">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressExType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerAddressExType.customerAddressId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType.name">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.MerchantAuthenticationType.transactionKey">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardMaskedType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardMaskedType.cardNumber">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreditCardMaskedType.expirationDate">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentMaskedType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.PaymentMaskedType.Item">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileBaseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileBaseType.customerType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileBaseType.customerTypeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileBaseType.billTo">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileMaskedType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileMaskedType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileMaskedType.payment">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileMaskedType.driversLicense">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileMaskedType.taxId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType.payment">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType.driversLicense">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileType.taxId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileExType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerPaymentProfileExType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileBaseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileBaseType.merchantCustomerId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileBaseType.description">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileBaseType.email">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileExType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileExType.customerProfileId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileMaskedType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileMaskedType.paymentProfiles">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileMaskedType.shipToList">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileType.paymentProfiles">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CustomerProfileType.shipToList">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileIdsResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileIdsResponseType.ids">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidateCustomerPaymentProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidateCustomerPaymentProfileResponseType.directResponse">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileTransactionResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileTransactionResponseType.directResponse">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerShippingAddressResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerPaymentProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerShippingAddressResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerPaymentProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerPaymentProfileResponseType.validationDirectResponse">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerShippingAddressResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerShippingAddressResponseType.address">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerPaymentProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerPaymentProfileResponseType.paymentProfile">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileResponseType.profile">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerShippingAddressResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerShippingAddressResponseType.customerAddressId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerPaymentProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerPaymentProfileResponseType.customerPaymentProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerPaymentProfileResponseType.validationDirectResponse">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileResponseType.customerProfileId">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileResponseType.customerPaymentProfileIdList">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileResponseType.customerShippingAddressIdList">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileResponseType.validationDirectResponseList">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCancelSubscriptionResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBUpdateSubscriptionResponseType">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCreateSubscriptionResponseType">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCreateSubscriptionResponseType.subscriptionId">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum.none">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum.testMode">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum.liveMode">
+            <remarks/>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidationModeEnum.oldLiveMode">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.IsAliveCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.IsAliveCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.IsAliveCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.AuthenticateTestCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.AuthenticateTestCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.AuthenticateTestCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCreateSubscriptionCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCreateSubscriptionCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCreateSubscriptionCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBUpdateSubscriptionCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBUpdateSubscriptionCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBUpdateSubscriptionCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCancelSubscriptionCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCancelSubscriptionCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ARBCancelSubscriptionCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerPaymentProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerPaymentProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerPaymentProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerShippingAddressCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerShippingAddressCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerShippingAddressCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerPaymentProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerPaymentProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerPaymentProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerShippingAddressCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerShippingAddressCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerShippingAddressCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerPaymentProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerPaymentProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerPaymentProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerShippingAddressCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerShippingAddressCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.UpdateCustomerShippingAddressCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerPaymentProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerPaymentProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerPaymentProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerShippingAddressCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerShippingAddressCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.DeleteCustomerShippingAddressCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileTransactionCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileTransactionCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.CreateCustomerProfileTransactionCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidateCustomerPaymentProfileCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidateCustomerPaymentProfileCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ValidateCustomerPaymentProfileCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileIdsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileIdsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.GetCustomerProfileIdsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.TransactMode">
+            <summary>
+            Represents an Authorize.NET payment processor transaction mode
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.TransactMode.Authorize">
+            <summary>
+            Authorize transaction mode
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.TransactMode.AuthorizeAndCapture">
+            <summary>
+            Authorize and capture transaction mode
+            </summary>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor">
+            <summary>
+            Authorize.Net payment processor
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.#ctor">
+            <summary>
+            Creates a new instance of the AuthorizeNetPaymentProcessor class
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.InitSettings">
+            <summary>
+            Initializes the Authorize.NET payment processor
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.GetAuthorizeNETUrl">
+            <summary>
+            Gets Authorize.NET URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.GetErrors(NopSolutions.NopCommerce.Payment.Methods.AuthorizeNet.net.authorize.api.ANetApiResponseType)">
+            <summary>
+             Get errors (ARB Support)
+            </summary>
+            <param name="response"></param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.GetCurrentTransactionMode">
+            <summary>
+            Gets current transaction mode
+            </summary>
+            <returns>Current transaction mode</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.ProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.PostProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order)">
+            <summary>
+            Post process payment (payment gateways that require redirecting)
+            </summary>
+            <param name="order">Order</param>
+            <returns>The error status, or String.Empty if no errors</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.GetAdditionalHandlingFee">
+            <summary>
+            Gets additional handling fee
+            </summary>
+            <returns>Additional handling fee</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.Capture(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Captures payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.Refund(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Refunds payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.Void(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Voids payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.ProcessRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process recurring payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.CancelRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Cancels recurring payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.APIVersion">
+            <summary>
+            Gets Authorize.NET API version
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.CanCapture">
+            <summary>
+            Gets a value indicating whether capture is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.CanPartiallyRefund">
+            <summary>
+            Gets a value indicating whether partial refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.CanRefund">
+            <summary>
+            Gets a value indicating whether refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.CanVoid">
+            <summary>
+            Gets a value indicating whether void is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.SupportRecurringPayments">
+            <summary>
+            Gets a recurring payment type of payment method
+            </summary>
+            <returns>A recurring payment type of payment method</returns>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.AuthorizeNET.AuthorizeNetPaymentProcessor.PaymentMethodType">
+            <summary>
+            Gets a payment method type
+            </summary>
+            <returns>A payment method type</returns>
+        </member>
+    </members>
+</doc>
