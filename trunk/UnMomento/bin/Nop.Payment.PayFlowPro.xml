@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nop.Payment.PayFlowPro</name>
+    </assembly>
+    <members>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor">
+            <summary>
+            PayFlow payment processor
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.#ctor">
+            <summary>
+            Creates a new instance of the PayFlowPaymentProcessor class
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.GetPaypalUrl">
+            <summary>
+            Gets Paypal URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.GetCurrentTransactionMode">
+            <summary>
+            Gets transaction mode configured by store owner
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.InitSettings">
+            <summary>
+            Initializes the PayPalDirectPaymentProcessor
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.ProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.PostProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order)">
+            <summary>
+            Post process payment (payment gateways that require redirecting)
+            </summary>
+            <param name="order">Order</param>
+            <returns>The error status, or String.Empty if no errors</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.GetAdditionalHandlingFee">
+            <summary>
+            Gets additional handling fee
+            </summary>
+            <returns>Additional handling fee</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.Capture(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Captures payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.Refund(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Refunds payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.Void(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Voids payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.ProcessRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process recurring payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.CancelRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Cancels recurring payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.CanCapture">
+            <summary>
+            Gets a value indicating whether capture is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.CanPartiallyRefund">
+            <summary>
+            Gets a value indicating whether partial refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.CanRefund">
+            <summary>
+            Gets a value indicating whether refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.CanVoid">
+            <summary>
+            Gets a value indicating whether void is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.SupportRecurringPayments">
+            <summary>
+            Gets a recurring payment type of payment method
+            </summary>
+            <returns>A recurring payment type of payment method</returns>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.PayFlowProPaymentProcessor.PaymentMethodType">
+            <summary>
+            Gets a payment method type
+            </summary>
+            <returns>A payment method type</returns>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.TransactMode">
+            <summary>
+            Represents paypal PayFlowPro payment processor transaction mode
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.TransactMode.Authorize">
+            <summary>
+            Authorize transaction mode
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.PayFlowPro.TransactMode.AuthorizeAndCapture">
+            <summary>
+            Authorize and capture transaction mode
+            </summary>
+        </member>
+    </members>
+</doc>

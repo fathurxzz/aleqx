@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nop.Payment.TwoCheckout</name>
+    </assembly>
+    <members>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor">
+            <summary>
+            2Checkout payment processor
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.#ctor">
+            <summary>
+            Creates a new instance of the TwoCheckoutPaymentProcessor class
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.ProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.PostProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order)">
+            <summary>
+            Post process payment (payment gateways that require redirecting)
+            </summary>
+            <param name="order">Order</param>
+            <returns>The error status, or String.Empty if no errors</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.GetAdditionalHandlingFee">
+            <summary>
+            Gets additional handling fee
+            </summary>
+            <returns>Additional handling fee</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.Capture(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Captures payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.Refund(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Refunds payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.Void(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Voids payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.CancelRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Cancels recurring payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.ProcessRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process recurring payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.CalculateMD5hash(System.String)">
+            <summary>
+            Claculates MD5 hash
+            </summary>
+            <param name="input">input</param>
+            <returns>MD5 hash</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.GetPaymentStatus(System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets a payment status
+            </summary>
+            <param name="message_type"> Indicates type of message (ORDER_CREATED, FRAUD_STATUS_CHANGED, SHIP_STATUS_CHANGED, INVOICE_STATUS_CHANGED, REFUND_ISSUED, RECURRING_INSTALLMENT_SUCCESS, RECURRING_INSTALLMENT_FAILED, RECURRING_STOPPED, RECURRING_COMPLETE, or RECURRING_RESTARTED)</param>
+            <param name="invoice_status">Invoice status (approved, pending, deposited, or declined)</param>
+            <param name="fraud_status">2Checkout fraud review (pass, fail, or wait); This parameter could be empty for some sales</param>
+            <param name="payment_type">2Checkout payment type</param>
+            <returns>Payment status</returns>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.CanCapture">
+            <summary>
+            Gets a value indicating whether capture is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.CanPartiallyRefund">
+            <summary>
+            Gets a value indicating whether partial refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.CanRefund">
+            <summary>
+            Gets a value indicating whether refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.CanVoid">
+            <summary>
+            Gets a value indicating whether void is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.SupportRecurringPayments">
+            <summary>
+            Gets a recurring payment type of payment method
+            </summary>
+            <returns>A recurring payment type of payment method</returns>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.TwoCheckout.TwoCheckoutPaymentProcessor.PaymentMethodType">
+            <summary>
+            Gets a payment method type
+            </summary>
+            <returns>A payment method type</returns>
+        </member>
+    </members>
+</doc>

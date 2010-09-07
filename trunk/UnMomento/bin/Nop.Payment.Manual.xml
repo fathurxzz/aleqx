@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nop.Payment.Manual</name>
+    </assembly>
+    <members>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.Manual.TransactMode">
+            <summary>
+            Represents manual payment processor transaction mode
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.Manual.TransactMode.Pending">
+            <summary>
+            Pending
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.Manual.TransactMode.Authorize">
+            <summary>
+            Authorize
+            </summary>
+        </member>
+        <member name="F:NopSolutions.NopCommerce.Payment.Methods.Manual.TransactMode.AuthorizeAndCapture">
+            <summary>
+            Authorize and capture
+            </summary>
+        </member>
+        <member name="T:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor">
+            <summary>
+            Manual payment processor
+            </summary>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.GetCurrentTransactionMode">
+            <summary>
+            Gets current transaction mode
+            </summary>
+            <returns>Current transaction mode</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.ProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.PostProcessPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order)">
+            <summary>
+            Post process payment (payment gateways that require redirecting)
+            </summary>
+            <param name="order">Order</param>
+            <returns>The error status, or String.Empty if no errors</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.GetAdditionalHandlingFee">
+            <summary>
+            Gets additional handling fee
+            </summary>
+            <returns>Additional handling fee</returns>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.Capture(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Captures payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.Refund(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Refunds payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.Void(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Voids payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.ProcessRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Payment.PaymentInfo,NopSolutions.NopCommerce.BusinessLogic.CustomerManagement.Customer,System.Guid,NopSolutions.NopCommerce.BusinessLogic.Payment.ProcessPaymentResult@)">
+            <summary>
+            Process recurring payment
+            </summary>
+            <param name="paymentInfo">Payment info required for an order processing</param>
+            <param name="customer">Customer</param>
+            <param name="orderGuid">Unique order identifier</param>
+            <param name="processPaymentResult">Process payment result</param>
+        </member>
+        <member name="M:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.CancelRecurringPayment(NopSolutions.NopCommerce.BusinessLogic.Orders.Order,NopSolutions.NopCommerce.BusinessLogic.Payment.CancelPaymentResult@)">
+            <summary>
+            Cancels recurring payment
+            </summary>
+            <param name="order">Order</param>
+            <param name="cancelPaymentResult">Cancel payment result</param>        
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.CanCapture">
+            <summary>
+            Gets a value indicating whether capture is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.CanPartiallyRefund">
+            <summary>
+            Gets a value indicating whether partial refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.CanRefund">
+            <summary>
+            Gets a value indicating whether refund is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.CanVoid">
+            <summary>
+            Gets a value indicating whether void is supported
+            </summary>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.SupportRecurringPayments">
+            <summary>
+            Gets a recurring payment type of payment method
+            </summary>
+            <returns>A recurring payment type of payment method</returns>
+        </member>
+        <member name="P:NopSolutions.NopCommerce.Payment.Methods.Manual.ManualPaymentProcessor.PaymentMethodType">
+            <summary>
+            Gets a payment method type
+            </summary>
+            <returns>A payment method type</returns>
+        </member>
+    </members>
+</doc>
