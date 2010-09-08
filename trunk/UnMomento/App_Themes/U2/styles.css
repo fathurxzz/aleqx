@@ -82,6 +82,7 @@ h2, h3
 {
 	margin: 0 auto;
 	width: 1000px;
+	background: url('images/all_bkg.png') no-repeat bottom;
 }
 
 .master-wrapper-content
@@ -90,7 +91,7 @@ h2, h3
 	width: 1000px;
 	margin: 15px 0 0;
 	text-align: left;
-	background: #FFF;
+	
 }
 
 /* two column master page */
@@ -424,11 +425,12 @@ a.logo
 .footer
 {
 	clear: both;
-	height: 35px;
-	border-top:4px solid #666666;
-	background: #FFF;
+	height: 80px;
+	/*border-top:4px solid #666666;*/
+	/*background: #FFF;*/
 	padding: 5px 5px 5px 5px;
 }
+ #desBy {/*margin-top: 10px;*/}
 
 .footer a
 {
@@ -5574,7 +5576,7 @@ pre {
 .ot1, .ot2, .ot3, .ot4, .ot5, .ot6, .ot6Selected, .ot7, .bt1, .bt2, .bt3, .pt1, .pt2, .pgt1  {font-family: Georgia, 'Times New Roman', Times, serif; color: Black;}   
 .ot1 {font-size: 25px;}
     .ot2 {font-size: 16px;}  
-    .ot3 {padding-left: 15px; font-weight:600; }  
+    .ot3 {padding-left: 15px; font-weight:600; /*font-size: 16px;*/ }  
     .ot4, .ot5  {font-size: 13px; text-align:center;}
     .ot3, .ot5, .bt2 { color: #cc0000;}
     .ot6, .ot6Selected, .ot7, .bt3 { font-size: 13px; line-height: 25px; font-weight:bold;}
