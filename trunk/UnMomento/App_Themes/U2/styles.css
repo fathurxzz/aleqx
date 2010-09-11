@@ -124,8 +124,12 @@ h2, h3
 	/*margin: 0px 0 0 10px;*/
 	/*background: #FFF;
 	display: inline;*/
-	background: url('images/main_box.png') no-repeat;
+	background: url('images/mainBoxCenter.gif') repeat-y; margin-bottom: 50px;
 }
+/*
+	margin-left: auto; margin-right: auto; width: 602px;  
+          background: url('./img/mainBoxCenter.gif') repeat-y; margin-bottom: 50px;
+*/
 
 .master-wrapper-cph
 {
@@ -133,8 +137,10 @@ h2, h3
 	width: 602px;
 	/*background: #FFF;*/
 	color: #000;
-	min-height: 886px;
+	/*min-height: 886px;*/
 	padding: 10px 10px 10px 10px;
+	min-height:300px;
+	
 }
 
 /* one column master page */
@@ -5605,3 +5611,15 @@ pre {
     .it2 {font-size: 14px; color: #666666; line-height: 22px; font-weight:bold;}
     .it3 {line-height: 20px;}
     .pgt1 {font-size: 20px; color: black; text-align:center;}
+    
+    
+    
+.ctop
+{
+	background: url('images/mainBoxTop.gif') no-repeat; width:auto; height:113px; margin-bottom: 20px;
+}
+
+.cbottom
+{
+	background: url('images/mainBoxBottom.gif') no-repeat; width:auto; height:112px;	
+}
