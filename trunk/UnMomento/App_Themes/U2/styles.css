@@ -133,13 +133,13 @@ h2, h3
 
 .master-wrapper-cph
 {
-	float: left;
+	/*float: left;*/
 	width: 602px;
 	/*background: #FFF;*/
 	color: #000;
 	/*min-height: 886px;*/
 	padding: 10px 10px 10px 10px;
-	min-height:300px;
+	/*min-height:300px;*/
 	
 }
 
@@ -2496,7 +2496,7 @@ ul.languagelist li .selected
 
 .login-page .wrapper
 {
-	width: 600px;
+	width: 570px;
 	margin-top: 10px;
 	padding-left: 5px;
 	font-size: 11px;
@@ -5553,7 +5553,7 @@ pre {
 #currencySelector
 {
     position:absolute;
-    padding-top:230px;
+    /*padding-top:230px;*/
     padding-left:45px;
 }
 
