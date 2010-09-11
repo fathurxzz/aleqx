@@ -29,6 +29,7 @@
     </div>
     <div class="master-wrapper-rightside-3">
         <asp:ContentPlaceHolder ID="cph3" runat="server">
+            
             <nopCommerce:LiveChatBlock ID="ctrlLiveChatBlock" runat="server" />
             <div class="clear">
             </div>
@@ -43,6 +44,7 @@
             <div class="clear">
             </div>
             <nopCommerce:InfoBlock ID="ctrlInfoBlock" runat="server" />
+            
         </asp:ContentPlaceHolder>
     </div>
 </asp:Content>
