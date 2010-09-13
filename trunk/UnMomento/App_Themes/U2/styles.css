@@ -949,6 +949,12 @@ ul.languagelist li .selected
 	padding: 0px 0px 0px 10px;
 	color: #3664A5;
 	background-color: inherit;
+	width:150px;
+}
+
+.block .listbox ul li
+{
+	padding-bottom:7px;
 }
 
 .block a
@@ -1007,24 +1013,36 @@ ul.languagelist li .selected
 .block-category-navigation .active a
 {
     color:#999999;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.block-category-navigation .inactive a
+{
+	font-size:14px;
 }
 
 .block-category-navigation .listbox ul .active
 {
 	font-weight: bold;
+	
 }
 
 .block-category-navigation .listbox ul .inactive
 {
+	 
 }
 
 .block-manufacturer-navigation a.active
 {
 	font-weight:bold;
+	color:#999999;
+	font-size:14px;
 }
 
 .block-manufacturer-navigation a.inactive
 {
+	 font-size:14px;
 }
 
 .block-manufacturer-navigation .listbox .viewall a
@@ -5584,7 +5602,7 @@ pre {
     .ot2 {font-size: 16px;}  
     .ot3 {padding-left: 15px; font-weight:600; /*font-size: 16px;*/ }  
     .ot4, .ot5  {font-size: 13px; text-align:center;}
-    .ot3, .ot5, .bt2 { color: #cc0000;}
+    .ot3, .ot5, .bt2 { color: #cc0000; font-size:16px;}
     .ot6, .ot6Selected, .ot7, .bt3 { font-size: 13px; line-height: 25px; font-weight:bold;}
     .ot7 {line-height: 15px;}      
     .bt1, .bt2, .bt3 {font-size: 12px; text-align:center;}

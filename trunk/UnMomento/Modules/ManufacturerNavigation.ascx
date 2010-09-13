@@ -3,7 +3,8 @@
 <div class="block block-manufacturer-navigation">
     <div class="bubReason">
         <p class="ot3">
-        <%=GetLocaleResourceString("Manufacturer.Manufacturers")%>
+        <!--<%=GetLocaleResourceString("Manufacturer.Manufacturers")%>-->
+        ...или повод
         </p>
     </div>
     <div class="clear">

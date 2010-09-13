@@ -3,7 +3,8 @@
 <div class="block block-category-navigation">
     <div class="bubGift">
     <p class="ot3">
-        <%=GetLocaleResourceString("Category.Categories")%>
+        <!--<%=GetLocaleResourceString("Category.Categories")%>-->
+        Выберите подарок...
     </p>
     </div>
     <div class="clear"></div>
