@@ -4,7 +4,7 @@
 
     <div id="desBy">       
             <p class="ot4">© 2010 —лужба моментальной доставки цветов и подарков У<b>Ч Un momento!</b>Ф <br />        
-            ƒизайн сайта Ч <a href="#"  class="ot5"><b>≈вгений ћиллер</b> </a> </p>   
+            ƒизайн сайта Ч <a href="http://www.m-brand.com.ua/"  class="otm"><b>≈вгений ћиллер</b> </a> </p>   
         </div>
 
 <!--

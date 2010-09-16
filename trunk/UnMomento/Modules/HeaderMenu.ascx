@@ -8,7 +8,9 @@
     </div>-->
     <ul>
         <li><a href="<%=CommonHelper.GetStoreLocation()%>">
-            <%=GetLocaleResourceString("Content.HomePage")%></a> </li>
+            <!--<%=GetLocaleResourceString("Content.HomePage")%>-->√À¿¬Õ¿ﬂ</a>
+            
+             </li>
         <% if (ProductManager.RecentlyAddedProductsEnabled)
            { %>
         <li><a href="<%=Page.ResolveUrl("~/recentlyaddedproducts.aspx")%>">

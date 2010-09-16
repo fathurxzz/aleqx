@@ -5641,3 +5641,9 @@ pre {
 {
 	background: url('images/mainBoxBottom.gif') no-repeat; width:auto; height:30px;	
 }
+
+a.otm
+{
+	text-decoration:underline;
+	 color: #cc0000; font-size:14px;
+}
