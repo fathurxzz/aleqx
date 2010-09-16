@@ -16,9 +16,9 @@
             <nopCommerce:ProductPrice2 ID="ctrlProductPrice" runat="server" ProductID='<%#Eval("ProductId") %>' />
         </div>
         <div class="buttons">
-            <asp:Button runat="server" ID="btnProductDetails" OnCommand="btnProductDetails_Click"
+            <!--<asp:Button runat="server" ID="btnProductDetails" OnCommand="btnProductDetails_Click"
                 Text="<% $NopResources:Products.ProductDetails %>" ValidationGroup="ProductDetails"
-                CommandArgument='<%# Eval("ProductId") %>' CssClass="productgridproductdetailbutton" /><br />
+                CommandArgument='<%# Eval("ProductId") %>' CssClass="productgridproductdetailbutton" /><br />-->
             <asp:Button runat="server" ID="btnAddToCart" OnCommand="btnAddToCart_Click" Text="<% $NopResources:Products.AddToCart %>"
                 ValidationGroup="ProductDetails" CommandArgument='<%# Eval("ProductId") %>' CssClass="productgridaddtocartbutton" />
         </div>
