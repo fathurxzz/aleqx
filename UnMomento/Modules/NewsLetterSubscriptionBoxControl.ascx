@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NewsLetterSubscriptionBoxControl.ascx.cs"
     Inherits="NopSolutions.NopCommerce.Web.Modules.NewsLetterSubscriptionBoxControl" %>
 <%@ Register TagPrefix="nopCommerce" TagName="EmailTextBox" Src="EmailTextBox.ascx" %>
+
 <div class="block block-newsletter">
     <div class="title">
         <%=GetLocaleResourceString("NewsLetterSubscriptionBox.Info")%>

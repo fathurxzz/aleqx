@@ -5647,3 +5647,14 @@ a.otm
 	text-decoration:underline;
 	 color: #cc0000; font-size:14px;
 }
+
+.phonePanel
+{
+	font-size:24px;
+	padding-right:100px;
+}
+
+.block-newsletter
+{
+	display:none;
+}
