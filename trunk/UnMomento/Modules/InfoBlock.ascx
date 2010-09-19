@@ -1,5 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="NopSolutions.NopCommerce.Web.Modules.InfoBlockControl"
     CodeBehind="InfoBlock.ascx.cs" %>
+    <!--
 <div class="block block-info">
     <div class="title">
         <%=GetLocaleResourceString("Content.Information")%>
@@ -48,3 +49,4 @@
         </ul>
     </div>
 </div>
+-->

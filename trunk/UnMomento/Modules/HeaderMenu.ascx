@@ -19,7 +19,10 @@
         <li><a href="<%=Page.ResolveUrl("~/search.aspx")%>">
             <%=GetLocaleResourceString("Search.Search")%></a> </li>
         <li><a href="<%= SEOHelper.GetMyAccountUrl()%>">
-            <%=GetLocaleResourceString("Account.MyAccount")%></a> </li>
+
+            <!--<%=GetLocaleResourceString("Account.MyAccount")%>-->
+            ќплата и доставка
+            </a> </li>
         <% if (BlogManager.BlogEnabled)
            { %>
         <li><a href="<%= SEOHelper.GetBlogUrl()%>">
@@ -30,7 +33,9 @@
         <li><a href="<%= SEOHelper.GetForumMainUrl()%>">
             <%=GetLocaleResourceString("Forum.Forums")%></a></li>
         <%} %>
-        <li><a href="<%=Page.ResolveUrl("~/contactus.aspx")%>">
-            <%=GetLocaleResourceString("ContactUs.ContactUs")%></a> </li>
+        <li><a href="<%=Page.ResolveUrl("~/contactus.aspx")%>"><!--
+            <%=GetLocaleResourceString("ContactUs.ContactUs")%>-->
+            ќЅ–ј“Ќјя —¬я«№
+            </a> </li>
     </ul>
 </div>

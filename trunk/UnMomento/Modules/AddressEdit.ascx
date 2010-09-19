@@ -39,7 +39,7 @@
             <nopCommerce:EmailTextBox runat="server" ID="txtEmail"></nopCommerce:EmailTextBox>
         </td>
     </tr>
-    <tr>
+    <tr style="display:none">
         <td>
             <%=GetLocaleResourceString("Address.FaxNumber")%>:
         </td>
@@ -64,7 +64,7 @@
             </nopCommerce:SimpleTextBox>
         </td>
     </tr>
-    <tr>
+    <tr style="display:none">
         <td>
             <%=GetLocaleResourceString("Address.Address2")%>:
         </td>
