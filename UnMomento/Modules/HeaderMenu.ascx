@@ -19,8 +19,8 @@
         <li><a href="<%=Page.ResolveUrl("~/search.aspx")%>">
             <%=GetLocaleResourceString("Search.Search")%></a> </li>
         <li><a href="<%=Page.ResolveUrl("~/aboutus.aspx")%>">
-                <%=GetLocaleResourceString("Content.AboutUs")%>
-        <!--<a href="<%= SEOHelper.GetMyAccountUrl()%>">
+                <!--<%=GetLocaleResourceString("Content.AboutUs")%>
+        <a href="<%= SEOHelper.GetMyAccountUrl()%>">
             <%=GetLocaleResourceString("Account.MyAccount")%>-->
             Оплата и доставка
             </a> </li>
