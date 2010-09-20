@@ -43,7 +43,7 @@
                     </AnonymousTemplate>
                     
                     <LoggedInTemplate>
-                        <li>
+                        <li class="accItem">
                             <a href="<%= SEOHelper.GetMyAccountUrl()%>" class="account"><%=Page.User.Identity.Name %></a>
                             <% if (NopContext.Current.IsCurrentCustomerImpersonated)
                                { 
@@ -90,6 +90,7 @@
             </ul>
         </div>
         <div class="phonePanel">(044) 362-59-57</div>
+        <div class="workTimePanel">”крашаем вашу жизнь<br/>с 8 утра до 20 вечера</div>
     </div>
     
 </div>

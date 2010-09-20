@@ -5651,10 +5651,22 @@ a.otm
 .phonePanel
 {
 	font-size:24px;
-	padding-right:100px;
+	/*padding-right:100px;*/
+}
+.workTimePanel
+{
+    font-size:14px;
+    font-family:Georgia;
+    font-weight:bold;
+    color:#CC0000;
 }
 
 .block-newsletter
 {
 	display:none;
+}
+
+.accItem
+{
+    padding-bottom:15px;
 }
