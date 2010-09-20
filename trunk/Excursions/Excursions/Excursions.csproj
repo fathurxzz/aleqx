@@ -94,7 +94,9 @@
     <Content Include="Content\img\title_bg.jpg" />
     <Content Include="Content\img\welcome_bg.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
+    <Content Include="Views\Shared\TopMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
