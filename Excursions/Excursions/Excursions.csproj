@@ -71,7 +71,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\arrow.gif" />
+    <Content Include="Content\img\banner.jpg" />
+    <Content Include="Content\img\bg.jpg" />
+    <Content Include="Content\img\big_bg.jpg" />
+    <Content Include="Content\img\big_photo.jpg" />
+    <Content Include="Content\img\block_bg.gif" />
+    <Content Include="Content\img\button.jpg" />
+    <Content Include="Content\img\circle.gif" />
+    <Content Include="Content\img\gbg.gif" />
+    <Content Include="Content\img\gbot.gif" />
+    <Content Include="Content\img\gtop.gif" />
+    <Content Include="Content\img\img1.jpg" />
+    <Content Include="Content\img\img2.jpg" />
+    <Content Include="Content\img\img3.jpg" />
+    <Content Include="Content\img\photo.jpg" />
+    <Content Include="Content\img\photo_bg.gif" />
+    <Content Include="Content\img\right_bot.gif" />
+    <Content Include="Content\img\smallbg.gif" />
+    <Content Include="Content\img\title1.jpg" />
+    <Content Include="Content\img\title3_bg.jpg" />
+    <Content Include="Content\img\title_bg.jpg" />
+    <Content Include="Content\img\welcome_bg.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
