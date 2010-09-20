@@ -1,5 +1,0 @@
-D:\projects\Travel\Travel\bin\Travel.dll
-D:\projects\Travel\Travel\bin\Travel.pdb
-D:\projects\Travel\Travel\obj\Debug\ResolveAssemblyReference.cache
-D:\projects\Travel\Travel\obj\Debug\Travel.dll
-D:\projects\Travel\Travel\obj\Debug\Travel.pdb
