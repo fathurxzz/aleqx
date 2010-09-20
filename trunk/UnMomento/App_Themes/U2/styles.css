@@ -2869,7 +2869,7 @@ ul.languagelist li .selected
 .newslist .newsitems a.newstitle
 {
 	color: #555;
-	text-decoration: none;
+	text-decoration: underline;
 	font-size: 1.2em;
 }
 
