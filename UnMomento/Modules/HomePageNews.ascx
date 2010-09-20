@@ -28,8 +28,9 @@
                     <div class="newsdetails">
                         <%#Eval("Short")%>
                     </div>
+                    <!--
                     <a href="<%#SEOHelper.GetNewsUrl(Convert.ToInt32(Eval("NewsId")))%>" class="readmore">
-                        <%=GetLocaleResourceString("News.MoreInfo")%></a>
+                        <%=GetLocaleResourceString("News.MoreInfo")%></a>-->
                 </div>
             </ItemTemplate>
         </asp:Repeater>
