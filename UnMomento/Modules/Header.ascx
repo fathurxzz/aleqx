@@ -11,16 +11,16 @@
         <a href="<%=CommonHelper.GetStoreLocation()%>" class="logo">&nbsp; </a>
     </div>
     -->
-
-    <nopCommerce:HeaderMenu ID="ctrlHeaderMenu" runat="server" />
-
-    <div id="topCentral">
-    </div>
-
     <div id="currencySelector">
         <nopCommerce:CurrencySelector runat="server" ID="CurrencySelector1"></nopCommerce:CurrencySelector>
     </div>
-
+    <nopCommerce:HeaderMenu ID="ctrlHeaderMenu" runat="server" />
+    <!--
+    <div id="topCentral">
+    </div>
+    -->
+    
+    <!--
     <div class="header-selectors-wrapper">
         <div class="header-taxDisplayTypeSelector">
             <nopCommerce:TaxDisplayTypeSelector runat="server" ID="ctrlTaxDisplayTypeSelector">
@@ -31,6 +31,7 @@
             <nopCommerce:LanguageSelector runat="server" ID="ctrlLanguageSelector"></nopCommerce:LanguageSelector>
         </div>
     </div>
+    -->
     <div class="header-links-wrapper">
         <div class="header-links">
             <ul>

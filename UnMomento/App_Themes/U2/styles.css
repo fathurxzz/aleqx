@@ -212,7 +212,7 @@ h2, h3
 	
 	/*height: 60px;*/
 	height: 257px;
-	background: url('images/top_bkg.jpg') no-repeat -3px;
+	background: url('images/top_bkg1.jpg') no-repeat -3px;
 }
 
 .header .icon
@@ -318,7 +318,7 @@ a.logo
 
 .header-links
 {
-	border: solid 1px #FFF;
+	/*border: solid 1px #FFF;*/
 	padding: 5px 5px 5px 5px;
 	margin-bottom: 5px;
 	display: inline-table;
@@ -378,7 +378,7 @@ a.logo
 	letter-spacing: 1px;
 	margin: 0 5px 0 5px;
 	float:left;
-	padding-top:50px;
+	padding-top:20px;
 }
 
 .headermenu ul
@@ -5566,13 +5566,15 @@ pre {
     margin-left: 350px; width: 293px; position: absolute;
     height:211px;
     background: url('images/logo.png') no-repeat center;
+    float:left;
 }
 
 #currencySelector
 {
-    position:absolute;
+    /*position:absolute;*/
     /*padding-top:230px;*/
     padding-left:45px;
+    /*float:left;*/
 }
 
 
