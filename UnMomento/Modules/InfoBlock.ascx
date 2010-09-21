@@ -1,14 +1,25 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="NopSolutions.NopCommerce.Web.Modules.InfoBlockControl"
     CodeBehind="InfoBlock.ascx.cs" %>
-    <!--
+
+
+
+
+    
 <div class="block block-info">
+    <div class="why">
+        <a href="<%=Page.ResolveUrl("~/shippinginfo.aspx")%>">Почему с нами жить хорошо</a>
+    </div>
+    <!--
     <div class="title">
         <%=GetLocaleResourceString("Content.Information")%>
     </div>
+    
     <div class="clear">
     </div>
     <div class="listbox">
+     
         <ul>
+           
             <li><a href="<%=Page.ResolveUrl("~/contactus.aspx")%>">
                 <%=GetLocaleResourceString("ContactUs.ContactUs")%></a> </li>
             <li><a href="<%=Page.ResolveUrl("~/aboutus.aspx")%>">
@@ -40,13 +51,18 @@
             <%} %>
             <li><a href="<%=Page.ResolveUrl("~/sitemap.aspx")%>">
                 <%=GetLocaleResourceString("Content.Sitemap")%></a></li>
-            <li><a href="<%=Page.ResolveUrl("~/shippinginfo.aspx")%>">
+              <li><a href="<%=Page.ResolveUrl("~/shippinginfo.aspx")%>">
                 <%=GetLocaleResourceString("Content.Shipping&Returns")%></a></li>
             <li><a href="<%=Page.ResolveUrl("~/privacyinfo.aspx")%>">
                 <%=GetLocaleResourceString("Content.PrivacyNotice")%></a></li>
             <li><a href="<%=Page.ResolveUrl("~/conditionsinfo.aspx")%>">
                 <%=GetLocaleResourceString("Content.ConditionsOfUse")%></a></li>
+               
+
+              
         </ul>
+        
     </div>
+     -->
 </div>
--->
+
