@@ -5702,9 +5702,16 @@ a.otm
 .home-page-category-grid-header
 {
     text-align:center;
+    font-family:Georgia;
+    font-size:13px;
+    line-height: 1.5;
+    margin-top:10px;
+    margin-bottom:25px;
 }
 
 .home-page-category-grid-header a
 {
     font-weight:bold;
+     font-family:Georgia;
+    font-size:13px;
 }
