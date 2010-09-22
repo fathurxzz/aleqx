@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="excursionsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="excursionsModelStoreContainer">
+          <EntitySet Name="content" EntityType="excursionsModel.Store.content" store:Type="Tables" Schema="excursions" />
+          <EntitySet Name="excursion" EntityType="excursionsModel.Store.excursion" store:Type="Tables" Schema="excursions" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="Text" Type="text" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" />
+        </EntityType>
+        <EntityType Name="excursion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="Text" Type="text" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="excursionsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Excursion" EntityType="excursionsModel.Excursion" />
+          <EntitySet Name="Content" EntityType="excursionsModel.Content" />
+        </EntityContainer>
+        <EntityType Name="Excursion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="ContentId" Nullable="false" />
+          <Property Type="String" Name="Description" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Keywords" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="excursionsModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Excursion"><EntityTypeMapping TypeName="excursionsModel.Excursion"><MappingFragment StoreEntitySet="excursion">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Content">
+            <EntityTypeMapping TypeName="excursionsModel.Content">
+              <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="excursionsModel.Excursion" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7566536458333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="excursionsModel.Content" Width="1.5" PointX="3.375" PointY="0.75" Height="2.0853483072916674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

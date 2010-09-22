@@ -17,9 +17,33 @@ namespace Excursions
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Admin",                                              // Route name
+                "Admin/{action}",                           // URL with parameters
+                new { controller = "Admin", action = "Index", id = "" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+               "Excursions",                                              // Route name
+               "Excursions/{action}",                           // URL with parameters
+               new { controller = "Excursions", action = "Index", id = "" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
+            "Content",                                              // Route name
+            "{id}",                           // URL with parameters
+            new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Default1",                                              // Route name
+                "{controller}/{action}",                           // URL with parameters
+                new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
             );
 
         }
