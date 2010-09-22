@@ -2,7 +2,7 @@
     CodeBehind="HomePageCategories.ascx.cs" %>
 <div class="home-page-category-grid">
     <div class="home-page-category-grid-header">
-        Заявки принимаются с <b>8 утра</b> до <b>20 вечера</b>, а доставляются - <b>круглосуточно</b>.<br />
+        Заявки принимаются с <b>8 утра</b> до <b>20 вечера</b>, <br />а доставляются - <b>круглосуточно</b>.<br />
         Цены в каталоге указаны <b>с учётом доставки и оформления</b>.<br />
         Обязательно узнайте, <a href="<%=Page.ResolveUrl("~/shippinginfo.aspx")%>">почему с нами жить хорошо</a>. ;-)
     </div>
