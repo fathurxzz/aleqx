@@ -5704,8 +5704,7 @@ a.otm
     text-align:center;
     font-family:Georgia;
     font-size:13px;
-    line-height: 1.5;
-    margin-top:10px;
+    
     margin-bottom:25px;
 }
 
@@ -5714,4 +5713,9 @@ a.otm
     font-weight:bold;
      font-family:Georgia;
     font-size:13px;
+}
+
+.home-page-category-grid-header-line
+{
+	padding-top:8px;
 }
