@@ -1,6 +1,11 @@
 <%@ Control Language="C#" AutoEventWireup="true" Inherits="NopSolutions.NopCommerce.Web.Modules.HomePageCategories"
     CodeBehind="HomePageCategories.ascx.cs" %>
 <div class="home-page-category-grid">
+    <div class="home-page-category-grid-header">
+        Заявки принимаются с <b>8 утра</b> до <b>20 вечера</b>, а доставляются - <b>круглосуточно</b>.<br />
+        Цены в каталоге указаны <b>с учётом доставки и оформления</b>.<br />
+        Обязательно узнайте, <a href="<%=Page.ResolveUrl("~/shippinginfo.aspx")%>">почему с нами жить хорошо</a>. ;-)
+    </div>
     <asp:DataList ID="dlCategories" runat="server" RepeatColumns="3" RepeatDirection="Horizontal"
         RepeatLayout="Table" OnItemDataBound="dlCategories_ItemDataBound" ItemStyle-CssClass="item-box" EnableViewState="false">
         <ItemTemplate>

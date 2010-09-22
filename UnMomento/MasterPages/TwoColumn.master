@@ -63,5 +63,10 @@
             <nopCommerce:MiniShoppingCartBox ID="ctrlMiniShoppingCartBox" runat="server" />
             <div class="clear">
             </div>
+            <div class="bannerContainer">
+                <a href="http:\\madampo.com.ua">
+                <img src="<%=Page.ResolveUrl("~/images/banner-madam-po.gif")%>" alt="madampo.com.ua" />
+                </a>
+            </div>
     </div>
 </asp:Content>
