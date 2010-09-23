@@ -71,7 +71,7 @@ namespace Excursions.Controllers
         {
             FormsService.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Content");
         }
 
         // **************************************
