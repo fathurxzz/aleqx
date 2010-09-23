@@ -33,6 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.3.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.4\Assemblies\v2.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity">
+      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.4\Assemblies\v2.0\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.3.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.4\Assemblies\v2.0\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -65,6 +76,7 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
@@ -82,6 +94,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Excursions\AddEdit.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\img\arrow.gif" />
     <Content Include="Content\img\banner.jpg" />
@@ -108,7 +121,9 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
+    <Content Include="Views\Admin\AddExcursion.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Admin\EditExcursion.aspx" />
     <Content Include="Views\Excursions\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
@@ -147,6 +162,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Content\" />
   </ItemGroup>
   <ItemGroup>

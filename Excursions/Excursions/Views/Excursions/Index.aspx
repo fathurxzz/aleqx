@@ -32,9 +32,8 @@
     
         <tr>
             <td>
-                <%= Html.ActionLink("Edit", "Edit", new { id=item.Id }) %> |
-                <%= Html.ActionLink("Details", "Details", new { id=item.Id })%> |
-                <%= Html.ActionLink("Delete", "Delete", new { id=item.Id })%>
+                <%= Html.ActionLink("Edit", "EditExcursion", "Admin", new { id = item.Id },null)%> |
+                <%= Html.ActionLink("Delete", "DeleteExcursion", "Admin", new { id = item.Id },null)%>
             </td>
             <td>
                 <%= Html.Encode(item.Id) %>
@@ -56,11 +55,15 @@
     <% } %>
 
     </table>
-
+    <%
+    if (Request.IsAuthenticated)
+    {
+    %>
     <p>
-        <%= Html.ActionLink("Create New", "Create") %>
+        <%= Html.ActionLink("Создать", "AddEdit", "Excursions", new { area="Admin"}, null)%>
     </p>
-
+    <%
+    } %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="LeftContent" runat="server">
