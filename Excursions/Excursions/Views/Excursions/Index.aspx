@@ -60,7 +60,7 @@
     {
     %>
     <p>
-        <%= Html.ActionLink("Создать", "AddEdit", "Excursions", new { area="Admin"}, null)%>
+       <%= Html.ActionLink("Создать", "AddEdit", "Excursions", new { area="Admin"}, null)%>
     </p>
     <%
     } %>
