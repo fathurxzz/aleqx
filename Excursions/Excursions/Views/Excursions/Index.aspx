@@ -5,56 +5,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+   
+       <% if(Model!=null)
+           foreach (var item in Model)
+           {
+               Html.RenderPartial("Excursion", item);
+           } %>
 
-    <h2>Index</h2>
-
-    <table>
-        <tr>
-            <th></th>
-            <th>
-                Id
-            </th>
-            <th>
-                ImageSource
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Text
-            </th>
-            <th>
-                Title
-            </th>
-        </tr>
-
-    <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-                <%= Html.ActionLink("Edit", "EditExcursion", "Admin", new { id = item.Id },null)%> |
-                <%= Html.ActionLink("Delete", "DeleteExcursion", "Admin", new { id = item.Id },null)%>
-            </td>
-            <td>
-                <%= Html.Encode(item.Id) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.ImageSource) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Name) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Text) %>
-            </td>
-            <td>
-                <%= Html.Encode(item.Title) %>
-            </td>
-        </tr>
-    
-    <% } %>
-
-    </table>
     <%
     if (Request.IsAuthenticated)
     {

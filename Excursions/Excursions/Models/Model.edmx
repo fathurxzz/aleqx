@@ -26,9 +26,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" MaxLength="500" />
+          <Property Name="Keywords" Type="varchar" MaxLength="500" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
           <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
@@ -52,6 +55,9 @@
           <Property Name="Title" Type="String" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="Keywords" />
+          <Property Type="Decimal" Name="Price" Nullable="false" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -72,7 +78,10 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="excursionsModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Excursion"><EntityTypeMapping TypeName="excursionsModel.Excursion"><MappingFragment StoreEntitySet="excursion">
-            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />

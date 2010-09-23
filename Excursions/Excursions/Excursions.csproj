@@ -79,7 +79,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -122,9 +121,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
-    <Content Include="Views\Admin\AddExcursion.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
-    <Content Include="Views\Admin\EditExcursion.aspx" />
+    <Content Include="Views\Excursions\Excursion.ascx" />
     <Content Include="Views\Excursions\Index.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />

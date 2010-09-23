@@ -78,7 +78,7 @@
     <% } %>
 
     <div>
-        <%= Html.ActionLink("Back to List", "Index") %>
+        <%= Html.ActionLink("Назад к списку экскурсий", "Index", "Excursions", new { area=""},null)%>
     </div>
 
 </asp:Content>
