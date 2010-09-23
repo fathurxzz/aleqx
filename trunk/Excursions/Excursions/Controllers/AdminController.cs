@@ -12,20 +12,70 @@ namespace Excursions.Controllers
         //
         // GET: /Admin/
 
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        #region Excursions
+
+        //public ActionResult Excursions()
+        //{
+        //    using (var context = new ContentStorage())
+        //    {
+        //        var excursionList = context.Excursion.Select(e => e).OrderBy(e => e.SortOrder).ToList();
+        //        return View(excursionList);
+        //    }
+        //}
+
+        public ActionResult AddExcursion()
         {
+            ViewData["Id"] = int.MinValue;
             return View();
         }
 
-        #region Excursions
+        public ActionResult EditExcursion(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == id).First();
+                return View(excursion);
+            }
+        }
+
+        public ActionResult DeleteExcursion(int id)
+        {
+
+            return RedirectToAction("Index", "Excursions");
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult UpdateExcursion(int id, string name, string title, string text, string description, string keywords, int sortOrder)
+        {
+            using (var context = new ContentStorage())
+            {
+                Excursion excursion = id != int.MinValue ? context.Excursion.Select(c => c).Where(c => c.Id == id).First():new Excursion();
+                excursion.Date = DateTime.Now;
+                excursion.Name = name;
+                excursion.Text = text;
+                excursion.SortOrder = sortOrder;
+                excursion.Title = title;
+                if(excursion.Id==0)
+                    context.AddToExcursion(excursion);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Excursions");
+            }
+        }
+
+
         #endregion
 
         #region Content
 
-        public ActionResult Content()
-        {
-            return View();
-        }
+        //public ActionResult Content()
+        //{
+        //    return View();
+        //}
 
         public ActionResult AddContentItem()
         {

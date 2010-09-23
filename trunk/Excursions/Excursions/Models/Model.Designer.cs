@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 22.09.2010 12:26:08
+// Generation date: 23.09.2010 8:52:00
 namespace Excursions.Models
 {
     
@@ -114,14 +114,18 @@ namespace Excursions.Models
         /// <param name="name">Initial value of Name.</param>
         /// <param name="text">Initial value of Text.</param>
         /// <param name="title">Initial value of Title.</param>
+        /// <param name="date">Initial value of Date.</param>
+        /// <param name="sortOrder">Initial value of SortOrder.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Excursion CreateExcursion(long id, string name, string text, string title)
+        public static Excursion CreateExcursion(long id, string name, string text, string title, global::System.DateTime date, int sortOrder)
         {
             Excursion excursion = new Excursion();
             excursion.Id = id;
             excursion.Name = name;
             excursion.Text = text;
             excursion.Title = title;
+            excursion.Date = date;
+            excursion.SortOrder = sortOrder;
             return excursion;
         }
         /// <summary>
@@ -259,6 +263,60 @@ namespace Excursions.Models
         partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for property Date in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this.ReportPropertyChanging("Date");
+                this._Date = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Date");
+                this.OnDateChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.DateTime _Date;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDateChanging(global::System.DateTime value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDateChanged();
+        /// <summary>
+        /// There are no comments for property SortOrder in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int SortOrder
+        {
+            get
+            {
+                return this._SortOrder;
+            }
+            set
+            {
+                this.OnSortOrderChanging(value);
+                this.ReportPropertyChanging("SortOrder");
+                this._SortOrder = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SortOrder");
+                this.OnSortOrderChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _SortOrder;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSortOrderChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSortOrderChanged();
     }
     /// <summary>
     /// There are no comments for excursionsModel.Content in the schema.
