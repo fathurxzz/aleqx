@@ -49,14 +49,18 @@ namespace Excursions.Areas.Admin.Controllers
                 }
                 context.SaveChanges();
             }
+// ReSharper disable Asp.NotResolved
             return RedirectToAction("Index", "Excursions", new { area = "" });
+// ReSharper restore Asp.NotResolved
         }
 
 
         public ActionResult Delete(int id)
         {
 
-            return RedirectToAction("Index", "Excursions");
+// ReSharper disable Asp.NotResolved
+            return RedirectToAction("Index", "Excursions", new { area = "" });
+// ReSharper restore Asp.NotResolved
         }
 
     }
