@@ -1,37 +1,56 @@
 ﻿.field-validation-error, .validation-summary-errors
 {
-	color:Red;
+    color: Red;
 }
 
-p{margin-top:10px;}
+p
+{
+    margin-top: 10px;
+}
 
-a.adminLink{    font-size:9px;    color:Red !important; margin-right:5px}
-a:hover.adminLink{    font-size:9px;    color:Lime; margin-right:5px;}
-a:visited.adminLink{    font-size:9px;    color:Red; margin-right:5px;}
+a.adminLink
+{
+    font-size: 12px;
+    color: Red;
+    margin-left:15px;
+}
+
+a:hover.adminLink
+{
+    color: Lime;
+}
+
+a:visited.adminLink
+{
+}
 
 
-.logOffLink{color:#ff0000;}
-.logOffLink:hover{color:#ff0000;}
+.logOffLink
+{
+    color: #ff0000;
+}
 
+.logOffLink:hover
+{
+    color: #ff0000;
+}
 
 h2.editContentTitle
 {
-	color:#60b4fd;
-	font-weight:normal;
+    color: #60b4fd;
+    font-weight: normal;
 }
-
 
 .adminEditContentContainer
 {
-	margin-top:5px;
-	border:solid 1px #60b4fd;
-	padding:20px;
-	margin-bottom:30px;
-	
+    margin-top: 5px;
+    border: solid 1px #60b4fd;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 .adminEditContentTable td
 {
-	padding-left:20px;
-	padding-top:10px;
+    padding-left: 20px;
+    padding-top: 10px;
 }

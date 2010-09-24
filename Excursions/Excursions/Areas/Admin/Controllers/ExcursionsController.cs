@@ -21,7 +21,7 @@ namespace Excursions.Areas.Admin.Controllers
             {
                 using (var context = new ContentStorage())
                 {
-                    excursion = context.Excursion.Select(c => c).Where(c => c.Id == id).First();
+                    excursion = context.Excursion.Include("Comments").Select(c => c).Where(c => c.Id == id).First();
                 }
             }
             return View(excursion);

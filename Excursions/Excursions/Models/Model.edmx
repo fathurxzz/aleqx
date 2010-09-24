@@ -6,9 +6,20 @@
     <edmx:StorageModels>
     <Schema Namespace="excursionsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="excursionsModelStoreContainer">
+          <EntitySet Name="comments" EntityType="excursionsModel.Store.comments" store:Type="Tables" Schema="excursions" />
           <EntitySet Name="content" EntityType="excursionsModel.Store.content" store:Type="Tables" Schema="excursions" />
           <EntitySet Name="excursion" EntityType="excursionsModel.Store.excursion" store:Type="Tables" Schema="excursions" />
         </EntityContainer>
+        <EntityType Name="comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ExcursionId" Type="uint" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Text" Type="text" Nullable="false" />
+        </EntityType>
         <EntityType Name="content">
           <Key>
             <PropertyRef Name="Id" />
@@ -43,6 +54,11 @@
         <EntityContainer Name="ContentStorage">
           <EntitySet Name="Excursion" EntityType="excursionsModel.Excursion" />
           <EntitySet Name="Content" EntityType="excursionsModel.Content" />
+          <EntitySet Name="Comments" EntityType="excursionsModel.Comments" />
+          <AssociationSet Name="ExcursionComments" Association="excursionsModel.ExcursionComments">
+            <End Role="Excursion" EntitySet="Excursion" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Excursion">
           <Key>
@@ -58,6 +74,7 @@
           <Property Type="String" Name="Description" />
           <Property Type="String" Name="Keywords" />
           <Property Type="Decimal" Name="Price" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="excursionsModel.ExcursionComments" FromRole="Excursion" ToRole="Comments" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -71,6 +88,20 @@
           <Property Type="String" Name="Text" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" />
         </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Excursion" Relationship="excursionsModel.ExcursionComments" FromRole="Comments" ToRole="Excursion" />
+        </EntityType>
+        <Association Name="ExcursionComments">
+          <End Type="excursionsModel.Excursion" Role="Excursion" Multiplicity="1" />
+          <End Type="excursionsModel.Comments" Role="Comments" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -102,6 +133,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="excursionsModel.Comments">
+              <MappingFragment StoreEntitySet="comments">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ExcursionComments" TypeName="excursionsModel.ExcursionComments" StoreEntitySet="comments">
+            <EndProperty Name="Comments">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Excursion">
+              <ScalarProperty Name="Id" ColumnName="ExcursionId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -125,6 +174,12 @@
       <Diagram Name="Model">
         <EntityTypeShape EntityType="excursionsModel.Excursion" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7566536458333331" IsExpanded="true" />
         <EntityTypeShape EntityType="excursionsModel.Content" Width="1.5" PointX="3.375" PointY="0.75" Height="2.0853483072916674" />
+        <EntityTypeShape EntityType="excursionsModel.Comments" Width="1.5" PointX="3.375" PointY="3.75" Height="1.5923063151041665" />
+        <AssociationConnector Association="excursionsModel.ExcursionComments">
+          <ConnectorPoint PointX="1.5" PointY="3.4927376302083331" />
+          <ConnectorPoint PointX="1.5" PointY="4.6283268229166667" />
+          <ConnectorPoint PointX="3.375" PointY="4.6283268229166667" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

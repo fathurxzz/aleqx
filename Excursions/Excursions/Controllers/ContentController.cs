@@ -15,6 +15,5 @@ namespace Excursions.Controllers
         {
             return View("Content");
         }
-
     }
 }
