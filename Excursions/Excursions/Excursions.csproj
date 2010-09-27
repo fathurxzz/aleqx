@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
@@ -124,6 +125,7 @@
     <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\Excursions\Excursion.ascx" />
     <Content Include="Views\Excursions\Index.aspx" />
+    <Content Include="Views\Excursions\List.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />

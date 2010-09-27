@@ -8,6 +8,6 @@
         <%if (Request.IsAuthenticated){%><%= Html.ActionLink("Редактировать", "AddEdit","Excursions", new { area="Admin", id = Model.Id },new{@class="adminLink"})%><%} %>
         <p><%=Model.Text%></p>
         <span class="price"><%=Model.Price.ToString()%></span>
-        <a class="more" href="#">more details</a>
+        <%=Html.ActionLink("more details", "Index", "Excursions", new { area = "", id = Model.Id }, new { @class = "more" })%>
     </div>
 </div>
