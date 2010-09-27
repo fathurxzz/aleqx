@@ -26,15 +26,7 @@
 </div>
 
 <div id="wrapper">
-	<div id="left">
-        <asp:ContentPlaceHolder ID="LeftContent" runat="server"></asp:ContentPlaceHolder>
-	</div>  
-	<div id="central">
         <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-	</div>
-	<div id="right">
-        <asp:ContentPlaceHolder ID="RightContent" runat="server"></asp:ContentPlaceHolder>
-	</div>
 </div>
 <div id="footer">
 	<% Html.RenderPartial("Footer"); %>

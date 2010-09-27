@@ -8,12 +8,17 @@
 
    <h2 class="editContentTitle">Редактирование содержимого</h2>
 
-    <% using (Html.BeginForm()) {%>
+    <% using (Html.BeginForm("AddEdit","Excursions",FormMethod.Post,new { area="Admin", enctype = "multipart/form-data" }))
+       {%>
         <%= Html.ValidationSummary(true) %>
          
         <div class="adminEditContentContainer">
         
         <table class="adminEditContentTable">
+        <tr>
+            <td>Файл изображения:</td>
+            <td><input type="file" name="image" /></td>
+        </tr>
         <tr>
             <td>
                 Название пункта меню<br />
@@ -111,9 +116,5 @@
     </script>
 </asp:Content>
 
-<asp:Content ID="Content4" ContentPlaceHolderID="LeftContent" runat="server">
-</asp:Content>
 
-<asp:Content ID="Content5" ContentPlaceHolderID="RightContent" runat="server">
-</asp:Content>
 
