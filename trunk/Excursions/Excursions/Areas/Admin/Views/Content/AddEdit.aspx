@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Excursions.Models.Excursion>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Excursions.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	AddEdit
@@ -16,6 +16,16 @@
         <table class="adminEditContentTable">
         <tr>
             <td>
+                Техническое имя страницы<br />
+                <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
+            </td>
+            <td>
+                  <%= Html.TextBoxFor(model => model.Name, new { style = "width:300px;" })%>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
                 Название пункта меню<br />
                 <span style="font-size:10px;">(пишите кириллицей)</span>
             </td>
@@ -24,13 +34,7 @@
                 <%= Html.TextBoxFor(model => model.Title, new { style = "width:300px;" })%>
             </td>
         </tr>
-        <tr>
-            <td colspan="2">
-                Краткое содержимое страницы (отображается в списке)<br />
-                
-                <%= Html.TextAreaFor(model => model.ShortDescription)%>
-            </td>
-        </tr>
+      
 
         <tr>
             <td colspan="2">
@@ -40,14 +44,7 @@
             </td>
         </tr>
 
-        <tr>
-            <td>
-                Цена
-            </td>
-            <td>
-                <%=Html.TextBoxFor(model=>model.Price) %>
-            </td>
-        </tr>
+    
 
         <tr>
             <td style="width:200px;">Порядок отбражения:<br />
@@ -97,6 +94,7 @@
     <div>
         <%= Html.ActionLink("Назад к списку экскурсий", "Index", "Excursions", new { area=""},null)%>
     </div>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
@@ -116,4 +114,3 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="RightContent" runat="server">
 </asp:Content>
-

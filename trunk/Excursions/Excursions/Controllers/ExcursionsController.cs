@@ -13,7 +13,8 @@ namespace Excursions.Controllers
         //
         // GET: /Excursions/
 
-        public ActionResult List()
+        [HttpGet]
+        public ActionResult Index()
         {
             using (var context = new ContentStorage())
             {
@@ -22,12 +23,12 @@ namespace Excursions.Controllers
             }
         }
 
-   
-        public ActionResult Index(int id)
+
+        public ActionResult Details(int id)
         {
             using (var context = new ContentStorage())
             {
-                var excursion = context.Excursion.Select(e => e).Where(e => e.Id == id).First();
+                var excursion = context.Excursion.Include("Comments").Select(e => e).Where(e => e.Id == id).First();
                 return View(excursion);
             }
         }
