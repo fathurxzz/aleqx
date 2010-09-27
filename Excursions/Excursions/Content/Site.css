@@ -245,11 +245,28 @@ body
 {
     float: left;
 }
-.block div
+
+
+.innerBlock
 {
     float: left;
-    margin: 0 0 0 25px;
+    margin: 0 0 0 15px;
+    font-family: Tahoma;
+    font-size: 11px;
+    color: #565656;
+    display: block;
+    width: 259px;
+    
+    padding: 15px 0 10px 0;
+  
 }
+
+.line
+{
+    width:100%;
+    border-bottom: 1px solid #D2D2D2;
+}
+
 .block div h4
 {
     font-family: Arial, Helvetica, sans-serif;
@@ -258,17 +275,7 @@ body
     text-decoration: underline;
     font-weight: bold;
 }
-.block div p
-{
-    font-family: Tahoma;
-    font-size: 11px;
-    color: #565656;
-    display: block;
-    width: 259px;
-    border-bottom: 1px solid #D2D2D2;
-    padding: 15px 0 10px 0;
-    margin: 0 0 5px 0;
-}
+
 .price
 {
     font-family: Arial, Helvetica, sans-serif;

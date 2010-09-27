@@ -20,7 +20,7 @@
                 <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
             </td>
             <td>
-                  <%= Html.TextBoxFor(model => model.Name, new { style = "width:300px;" })%>
+                  <%= Html.TextBoxFor(model => model.ContentId, new { style = "width:300px;" })%>
             </td>
         </tr>
         
