@@ -25,27 +25,29 @@ namespace Excursions
             routes.MapRoute(
                "Excursions",                                              // Route name
                "Excursions/{action}",                           // URL with parameters
-               new { controller = "Excursions", action = "List", id = "" },
-               new string[1]{"Excursions.Controllers"}// Parameter defaults
+               new { controller = "Excursions", action = "Index", id = "" },
+               new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
 
             routes.MapRoute(
-               "ExcursionsDetails",                                              // Route name
-               "Excursions/{id}",                           // URL with parameters
-               new { controller = "Excursions", action = "Index", id = "" },
+               "ExcursionDetails",                                              // Route name
+               "Excursions/{action}/{id}",                           // URL with parameters
+               new { controller = "Excursions", action = "Details", id = "" },
                new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
 
             routes.MapRoute(
             "Content",                                              // Route name
             "{id}",                           // URL with parameters
-            new { controller = "Content", action = "Index", id = "About" }  // Parameter defaults
+            new { controller = "Excursions", action = "Index", id = "About" },
+             new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
 
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                ,new string[1] { "Excursions.Controllers" }
             );
 
             routes.MapRoute(

@@ -14,10 +14,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Author" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="ExcursionId" Type="uint" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Text" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="content">
@@ -41,8 +41,8 @@
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" MaxLength="500" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="ShortDescription" Type="text" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
           <Property Name="Title" Type="varchar" Nullable="false" MaxLength="500" />
@@ -66,7 +66,6 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="String" />
-          <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Text" Type="String" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
@@ -75,6 +74,7 @@
           <Property Type="String" Name="Keywords" />
           <Property Type="Decimal" Name="Price" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="excursionsModel.ExcursionComments" FromRole="Excursion" ToRole="Comments" />
+          <Property Type="String" Name="ShortDescription" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -94,9 +94,9 @@
           </Key>
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
           <NavigationProperty Name="Excursion" Relationship="excursionsModel.ExcursionComments" FromRole="Comments" ToRole="Excursion" />
+          <Property Type="String" Name="Author" Nullable="false" />
         </EntityType>
         <Association Name="ExcursionComments">
           <End Type="excursionsModel.Excursion" Role="Excursion" Multiplicity="1" />
@@ -109,14 +109,14 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="excursionsModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Excursion"><EntityTypeMapping TypeName="excursionsModel.Excursion"><MappingFragment StoreEntitySet="excursion">
-            <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Keywords" ColumnName="Keywords" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Text" ColumnName="Text" />
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
@@ -136,8 +136,8 @@
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="excursionsModel.Comments">
               <MappingFragment StoreEntitySet="comments">
+                <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
@@ -172,9 +172,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="excursionsModel.Excursion" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7566536458333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="excursionsModel.Excursion" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7427376302083331" IsExpanded="true" />
         <EntityTypeShape EntityType="excursionsModel.Content" Width="1.5" PointX="3.375" PointY="0.75" Height="2.0853483072916674" />
-        <EntityTypeShape EntityType="excursionsModel.Comments" Width="1.5" PointX="3.375" PointY="3.75" Height="1.5923063151041665" />
+        <EntityTypeShape EntityType="excursionsModel.Comments" Width="1.5" PointX="3.375" PointY="3.75" Height="1.7566536458333335" />
         <AssociationConnector Association="excursionsModel.ExcursionComments">
           <ConnectorPoint PointX="1.5" PointY="3.4927376302083331" />
           <ConnectorPoint PointX="1.5" PointY="4.6283268229166667" />

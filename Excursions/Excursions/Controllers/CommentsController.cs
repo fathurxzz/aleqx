@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Excursions.Models;
 
-namespace Excursions.Areas.Admin.Controllers
+namespace Excursions.Controllers
 {
     public class CommentsController : Controller
     {
         //
-        // GET: /Admin/Comments/
+        // GET: /Comments/
 
         public ActionResult Index()
         {
@@ -17,7 +19,7 @@ namespace Excursions.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/Comments/Details/5
+        // GET: /Comments/Details/5
 
         public ActionResult Details(int id)
         {
@@ -25,7 +27,7 @@ namespace Excursions.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/Comments/Create
+        // GET: /Comments/Create
 
         public ActionResult Create()
         {
@@ -33,25 +35,26 @@ namespace Excursions.Areas.Admin.Controllers
         } 
 
         //
-        // POST: /Admin/Comments/Create
+        // POST: /Comments/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Comments comment, int excursionId, string author, string commentText)
         {
-            try
+            using (var context = new ContentStorage())
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
+                comment.Excursion = excursion;
+                comment.Text = HttpUtility.HtmlDecode(commentText);
+                comment.Author = author;
+                comment.Date = DateTime.Now;
+                context.AddToComments(comment);
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Details", "Excursions", new {area = "", id = excursionId});
         }
         
         //
-        // GET: /Admin/Comments/Edit/5
+        // GET: /Comments/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -59,7 +62,7 @@ namespace Excursions.Areas.Admin.Controllers
         }
 
         //
-        // POST: /Admin/Comments/Edit/5
+        // POST: /Comments/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -77,17 +80,15 @@ namespace Excursions.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/Comments/Delete/5
+        // GET: /Comments/Delete/5
  
         public ActionResult Delete(int id)
         {
-            // ReSharper disable Asp.NotResolved
-            return RedirectToAction("Index", "Excursions", new { area = "" });
-            // ReSharper restore Asp.NotResolved
+            return View();
         }
 
         //
-        // POST: /Admin/Comments/Delete/5
+        // POST: /Comments/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

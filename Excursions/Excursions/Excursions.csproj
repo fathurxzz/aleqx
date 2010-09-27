@@ -77,9 +77,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -95,8 +96,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Content\AddEdit.aspx" />
     <Content Include="Areas\Admin\Views\Excursions\AddEdit.aspx" />
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Admin2.css" />
     <Content Include="Content\img\arrow.gif" />
     <Content Include="Content\img\banner.jpg" />
     <Content Include="Content\img\bg.jpg" />
@@ -123,9 +126,10 @@
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Excursions\Comment.ascx" />
+    <Content Include="Views\Excursions\Details.aspx" />
     <Content Include="Views\Excursions\Excursion.ascx" />
     <Content Include="Views\Excursions\Index.aspx" />
-    <Content Include="Views\Excursions\List.aspx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />

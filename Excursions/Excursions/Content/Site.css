@@ -502,3 +502,41 @@ body
     padding: 0px;
     font-size: 11px;
 }
+
+
+
+/*********************************************************************************/
+
+.comments
+{
+    
+}
+
+.comment
+{
+    width:400px;
+    margin:10px;
+    font-size:13px;
+    border-bottom-color:Silver;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+}
+
+.addComment
+{
+    
+}
+
+.author
+{
+    color:Maroon;
+    font-size:13px;
+    font-weight:bold;
+}
+    
+.date
+{
+    float:right;
+    color:Teal;
+    font-size:13px;
+}

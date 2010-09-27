@@ -21,7 +21,7 @@ namespace Excursions.Areas.Admin.Controllers
             {
                 using (var context = new ContentStorage())
                 {
-                    excursion = context.Excursion.Include("Comments").Select(c => c).Where(c => c.Id == id).First();
+                    excursion = context.Excursion.Select(c => c).Where(c => c.Id == id).First();
                 }
             }
             return View(excursion);
@@ -30,14 +30,15 @@ namespace Excursions.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddEdit(Excursion excursion, int? Id)
         {
+            excursion.Text = HttpUtility.HtmlDecode(excursion.Text);
+            excursion.ShortDescription = HttpUtility.HtmlDecode(excursion.ShortDescription);
             using (var context = new ContentStorage())
             {
-
                 if (Id.HasValue && Id.Value > 0)
                 {
                     excursion.Id = Id.Value;
                     object originalItem;
-                    EntityKey entityKey = new EntityKey("ContentStorage.Excursions", "Id", excursion.Id);
+                    EntityKey entityKey = new EntityKey("ContentStorage.Excursion", "Id", excursion.Id);
                     if (context.TryGetObjectByKey(entityKey, out originalItem))
                     {
                         context.ApplyPropertyChanges(entityKey.EntitySetName, excursion);
@@ -49,9 +50,7 @@ namespace Excursions.Areas.Admin.Controllers
                 }
                 context.SaveChanges();
             }
-// ReSharper disable Asp.NotResolved
             return RedirectToAction("Index", "Excursions", new { area = "" });
-// ReSharper restore Asp.NotResolved
         }
 
 
