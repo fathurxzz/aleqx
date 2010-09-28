@@ -13,6 +13,7 @@ namespace Excursions.Controllers
 
         public ActionResult Index(string id)
         {
+
             return View("Content");
         }
     }
