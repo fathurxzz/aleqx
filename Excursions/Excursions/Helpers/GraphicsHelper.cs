@@ -3,33 +3,44 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Excursions.Helpers
 {
     public static class GraphicsHelper
     {
-        public static Dictionary<string, int> maxDimensions = new Dictionary<string, int>();
+        public enum FixedDimension { Width, Height }
+
+        private static Dictionary<string, int> maxDimensions = new Dictionary<string, int>();
+        private static Dictionary<string, FixedDimension> fixDimension = new Dictionary<string, FixedDimension>();
 
         static GraphicsHelper()
         {
-            maxDimensions.Add("mainView", 400);
-            maxDimensions.Add("thumbnail1", 280);
-            maxDimensions.Add("thumbnail2", 90);
-            maxDimensions.Add("thumbnail3", 75);
+            maxDimensions.Add("mainView", 358);
+            fixDimension.Add("mainView", FixedDimension.Width);
+            maxDimensions.Add("thumbnail1", 79);
+            fixDimension.Add("thumbnail1", FixedDimension.Width);
+            maxDimensions.Add("thumbnail2", 152);
+            fixDimension.Add("thumbnail2", FixedDimension.Width);
+            maxDimensions.Add("thumbnail3", 85);
+            fixDimension.Add("thumbnail3", FixedDimension.Width);
+            maxDimensions.Add("cartThumb", 60);
+            fixDimension.Add("cartThumb", FixedDimension.Width);
         }
 
-        public static void ScaleImage(Bitmap image, int maxDimension, Stream saveTo)
+        private static Size CalculateSize(Size image, FixedDimension? fixedDimension, int maxDimension)
         {
             int width;
             int height;
-            if (image.Width > image.Height)
+            if ((fixedDimension.HasValue && fixedDimension.Value == FixedDimension.Width) || (image.Width > image.Height))
             {
                 width = maxDimension;
                 height = (maxDimension * image.Height) / image.Width;
 
             }
-            else if (image.Height > image.Width)
+            else if ((fixedDimension.HasValue && fixedDimension.Value == FixedDimension.Height) || (image.Height > image.Width))
             {
                 height = maxDimension;
                 width = (maxDimension * image.Width) / image.Height;
@@ -37,8 +48,14 @@ namespace Excursions.Helpers
             else
                 width = height = maxDimension;
 
+            return new Size(width, height);
+        }
 
-            Bitmap thumbnailImage = new Bitmap(width, height);
+        public static void ScaleImage(Bitmap image, FixedDimension? fixedDimension, int maxDimension, Stream saveTo)
+        {
+            Size imageSize = CalculateSize(image.Size, fixedDimension, maxDimension);
+
+            Bitmap thumbnailImage = new Bitmap(imageSize.Width, imageSize.Height);
             Graphics graphics = Graphics.FromImage(thumbnailImage);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, 0, 0, thumbnailImage.Width, thumbnailImage.Height);
@@ -51,7 +68,11 @@ namespace Excursions.Helpers
             if (string.IsNullOrEmpty(fileName) ||
                 !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
             {
-                fileName = "excursionsWebMvcNoImage.jpg";
+                fileName = "tripsWebMvcNoCarImage.jpg";
+                if (!File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
+                {
+                    return null;
+                }
             }
             string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
@@ -68,7 +89,7 @@ namespace Excursions.Helpers
                 }
                 catch
                 {
-                    return GetCachedImage(originalPath, "excursionsWebMvcNoImage.jpg", cacheFolder);
+                    return GetCachedImage(originalPath, "tripsWebMvcNoCarImage.jpg", cacheFolder);
                 }
                 return result;
             }
@@ -88,8 +109,21 @@ namespace Excursions.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(image, maxDimensions[cacheFolder], stream);
+                FixedDimension? fixedDimension = null;
+                if (fixDimension.ContainsKey(cacheFolder))
+                    fixedDimension = fixDimension[cacheFolder];
+                ScaleImage(image, fixedDimension, maxDimensions[cacheFolder], stream);
             }
+        }
+
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, string alt)
+        {
+            StringBuilder sb = new StringBuilder();
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
+
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt);
+
+            return sb.ToString();
         }
     }
 }
