@@ -18,7 +18,7 @@ namespace Excursions.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var excursionList = context.Excursion.Select(e => e).ToList();
+                var excursionList = context.Excursion.Select(e => e).OrderBy(e => e.SortOrder).ToList();
                 return View(excursionList);
             }
         }

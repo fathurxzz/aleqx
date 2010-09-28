@@ -38,6 +38,14 @@ namespace Excursions
             );
 
             routes.MapRoute(
+            "Contacts",                                              // Route name
+            "{id}",                           // URL with parameters
+            new { controller = "Contacts", action = "Index" },
+             new string[1] { "Excursions.Controllers" }// Parameter defaults
+            );
+
+
+            routes.MapRoute(
             "Content",                                              // Route name
             "{id}",                           // URL with parameters
             new { controller = "Excursions", action = "Index", id = "About" },

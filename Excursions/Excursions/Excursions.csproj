@@ -91,6 +91,7 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ExcursionsController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -98,6 +99,7 @@
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Captcha\CaptchaImage.cs" />
     <Compile Include="Models\Captcha\CaptchaImageHandler.cs" />
@@ -136,10 +138,12 @@
     <Content Include="Content\img\title3_bg.jpg" />
     <Content Include="Content\img\title_bg.jpg" />
     <Content Include="Content\img\welcome_bg.jpg" />
+    <None Include="Content\MailTemplates\newComment" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Contacts\Index.aspx" />
     <Content Include="Views\Excursions\AddComment.ascx" />
     <Content Include="Views\Excursions\Comment.ascx" />
     <Content Include="Views\Excursions\Details.aspx" />
@@ -148,6 +152,7 @@
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
+    <Content Include="Views\Shared\PopularExcursions.ascx" />
     <Content Include="Views\Shared\TopMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

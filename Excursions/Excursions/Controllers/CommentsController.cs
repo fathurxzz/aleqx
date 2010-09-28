@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using Excursions.Helpers;
 using Excursions.Models;
 using Excursions.Models.Captcha;
 
@@ -52,6 +55,11 @@ namespace Excursions.Controllers
                     comment.Date = DateTime.Now;
                     context.AddToComments(comment);
                     context.SaveChanges();
+
+                    string linkBase = ConfigurationManager.AppSettings["linkBase"];
+                    
+                    MailHelper.SendTemplate("from@mail.net", new List<MailAddress> {new MailAddress("to@mail.net")},"Excursions", "newComment", false, linkBase + "/Excursions/Details/" + excursionId);
+
                 }
             return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });
         }
