@@ -8,7 +8,7 @@
     <%
         using (var context = new ContentStorage())
         {
-            var menuImemList = context.Content.Select(m => m).OrderBy(m => m.SortOrder).ToList();
+            var menuImemList = context.Content.Select(m => m).Where(m=>!m.IsContactsPage).OrderBy(m => m.SortOrder).ToList();
             foreach (var item in menuImemList)
             {
                 %>

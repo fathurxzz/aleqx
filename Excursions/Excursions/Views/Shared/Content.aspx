@@ -9,9 +9,3 @@
     <h2>Content</h2>
 
 </asp:Content>
-
-<asp:Content ID="Content3" ContentPlaceHolderID="LeftContent" runat="server">
-</asp:Content>
-
-<asp:Content ID="Content4" ContentPlaceHolderID="RightContent" runat="server">
-</asp:Content>

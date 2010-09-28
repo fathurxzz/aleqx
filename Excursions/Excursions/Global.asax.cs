@@ -44,18 +44,18 @@ namespace Excursions
              new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
 
-
+            
             routes.MapRoute(
             "Content",                                              // Route name
             "{id}",                           // URL with parameters
-            new { controller = "Excursions", action = "Index", id = "About" },
+            new { controller = "Content", action = "Index" },
              new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
-
+            
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Excursions", action = "Index", id = UrlParameter.Optional } // Parameter defaults
                 ,new string[1] { "Excursions.Controllers" }
             );
 
