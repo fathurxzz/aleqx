@@ -161,7 +161,7 @@ namespace Excursions.Models.Captcha
         private int _width;
         private Random _rand;
 
-        private Color _backgroundcolor = Color.FromArgb(255, 255, 204);
+        private Color _backgroundcolor = Color.FromArgb(255, 255, 255);
 
         #region Public Properties
 
