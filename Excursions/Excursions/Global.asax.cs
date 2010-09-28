@@ -15,6 +15,7 @@ namespace Excursions
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("captcha.ashx");
 
             routes.MapRoute(
                 "Admin",                                              // Route name

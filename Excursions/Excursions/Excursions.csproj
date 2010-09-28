@@ -80,10 +80,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
+    <Compile Include="captcha.ashx.cs">
+      <DependentUpon>captcha.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -91,8 +96,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Captcha\CaptchaImage.cs" />
+    <Compile Include="Models\Captcha\CaptchaImageHandler.cs" />
+    <Compile Include="Models\Captcha\CaptchaValidationAttribute.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -131,6 +140,7 @@
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
     <Content Include="Views\Admin\EditContentItem.aspx" />
+    <Content Include="Views\Excursions\AddComment.ascx" />
     <Content Include="Views\Excursions\Comment.ascx" />
     <Content Include="Views\Excursions\Details.aspx" />
     <Content Include="Views\Excursions\Excursion.ascx" />
@@ -186,6 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="captcha.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

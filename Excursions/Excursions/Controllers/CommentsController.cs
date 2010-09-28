@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Excursions.Models;
+using Excursions.Models.Captcha;
 
 namespace Excursions.Controllers
 {
@@ -32,30 +33,32 @@ namespace Excursions.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Comments/Create
 
         [HttpPost]
-        public ActionResult Create(Comments comment, int excursionId, string author, string commentText)
+        [CaptchaValidation("captcha")]
+        public ActionResult Create(Comments comment, int excursionId, string author, string commentText, bool captchaValid)
         {
-            using (var context = new ContentStorage())
-            {
-                Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
-                comment.Excursion = excursion;
-                comment.Text = HttpUtility.HtmlDecode(commentText);
-                comment.Author = author;
-                comment.Date = DateTime.Now;
-                context.AddToComments(comment);
-                context.SaveChanges();
-            }
-            return RedirectToAction("Details", "Excursions", new {area = "", id = excursionId});
+            if (captchaValid)
+                using (var context = new ContentStorage())
+                {
+                    Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
+                    comment.Excursion = excursion;
+                    comment.Text = HttpUtility.HtmlDecode(commentText);
+                    comment.Author = author;
+                    comment.Date = DateTime.Now;
+                    context.AddToComments(comment);
+                    context.SaveChanges();
+                }
+            return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });
         }
-        
+
         //
         // GET: /Comments/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -70,7 +73,7 @@ namespace Excursions.Controllers
             try
             {
                 // TODO: Add update logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
@@ -81,7 +84,7 @@ namespace Excursions.Controllers
 
         //
         // GET: /Comments/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             return View();
@@ -96,7 +99,7 @@ namespace Excursions.Controllers
             try
             {
                 // TODO: Add delete logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
