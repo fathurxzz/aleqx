@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
     <Compile Include="captcha.ashx.cs">
@@ -91,7 +92,6 @@
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ExcursionsController.cs" />
-    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -112,6 +112,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Contacts\Update.aspx" />
     <Content Include="Areas\Admin\Views\Content\AddEdit.aspx" />
     <Content Include="Areas\Admin\Views\Excursions\AddEdit.aspx" />
     <Content Include="Content\Admin.css" />

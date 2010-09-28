@@ -27,6 +27,7 @@
           <Property Name="ContentId" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Description" Type="varchar" MaxLength="500" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsContactsPage" Type="bit" Nullable="false" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
@@ -87,6 +88,7 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="Boolean" Name="IsContactsPage" Nullable="false" />
         </EntityType>
         <EntityType Name="Comments">
           <Key>
@@ -123,6 +125,7 @@
           <EntitySetMapping Name="Content">
             <EntityTypeMapping TypeName="excursionsModel.Content">
               <MappingFragment StoreEntitySet="content">
+                <ScalarProperty Name="IsContactsPage" ColumnName="IsContactsPage" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />

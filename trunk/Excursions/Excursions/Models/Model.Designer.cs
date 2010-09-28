@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("excursionsModel", "ExcursionComments", "Excursion", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Excursions.Models.Excursion), "Comments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Excursions.Models.Comments))]
 
 // Original file name:
-// Generation date: 28.09.2010 11:41:52
+// Generation date: 28.09.2010 16:11:21
 namespace Excursions.Models
 {
     
@@ -466,8 +466,9 @@ namespace Excursions.Models
         /// <param name="sortOrder">Initial value of SortOrder.</param>
         /// <param name="text">Initial value of Text.</param>
         /// <param name="title">Initial value of Title.</param>
+        /// <param name="isContactsPage">Initial value of IsContactsPage.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Content CreateContent(string contentId, int id, int sortOrder, string text, string title)
+        public static Content CreateContent(string contentId, int id, int sortOrder, string text, string title, bool isContactsPage)
         {
             Content content = new Content();
             content.ContentId = contentId;
@@ -475,6 +476,7 @@ namespace Excursions.Models
             content.SortOrder = sortOrder;
             content.Text = text;
             content.Title = title;
+            content.IsContactsPage = isContactsPage;
             return content;
         }
         /// <summary>
@@ -666,6 +668,33 @@ namespace Excursions.Models
         partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for property IsContactsPage in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public bool IsContactsPage
+        {
+            get
+            {
+                return this._IsContactsPage;
+            }
+            set
+            {
+                this.OnIsContactsPageChanging(value);
+                this.ReportPropertyChanging("IsContactsPage");
+                this._IsContactsPage = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("IsContactsPage");
+                this.OnIsContactsPageChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private bool _IsContactsPage;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIsContactsPageChanging(bool value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIsContactsPageChanged();
     }
     /// <summary>
     /// There are no comments for excursionsModel.Comments in the schema.
