@@ -21,8 +21,7 @@
         </tr>
         <tr>
             <td>
-                Название пункта меню<br />
-                <span style="font-size:10px;">(пишите кириллицей)</span>
+                Название экскурсии
             </td>
             <td>
                 
@@ -32,7 +31,6 @@
         <tr>
             <td colspan="2">
                 Краткое содержимое страницы (отображается в списке)<br />
-                
                 <%= Html.TextAreaFor(model => model.ShortDescription)%>
             </td>
         </tr>
@@ -40,11 +38,13 @@
         <tr>
             <td colspan="2">
                 Содержимое страницы<br />
-                
                 <%= Html.TextAreaFor(model => model.Text)%>
             </td>
         </tr>
-
+        <tr>
+            <td>Популярная</td>
+            <td><%=Html.CheckBoxFor(model=>model.Popular) %></td>
+        </tr>
         <tr>
             <td>
                 Цена
@@ -110,8 +110,8 @@
     <script type="text/javascript">
         $(function () {
             $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { Toolbar: "Basic", DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#Text").fck({ toolbar: "Basic", height: 500, width: 500 });
-            $("#ShortDescription").fck({ toolbar: "Basic", height: 500, width: 500 });
+            $("#Text").fck({ toolbar: "Basic", height: 400, width: 500 });
+            $("#ShortDescription").fck({ toolbar: "Basic", height: 200, width: 500 });
         });
     </script>
 </asp:Content>

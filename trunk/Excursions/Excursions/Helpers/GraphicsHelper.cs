@@ -20,7 +20,7 @@ namespace Excursions.Helpers
         {
             maxDimensions.Add("mainView", 358);
             fixDimension.Add("mainView", FixedDimension.Width);
-            maxDimensions.Add("thumbnail1", 79);
+            maxDimensions.Add("thumbnail1", 200);
             fixDimension.Add("thumbnail1", FixedDimension.Width);
             maxDimensions.Add("thumbnail2", 152);
             fixDimension.Add("thumbnail2", FixedDimension.Width);

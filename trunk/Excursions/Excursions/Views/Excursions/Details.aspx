@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Excursions.Models.Excursion>" %>
+<%@ Import Namespace="Excursions.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Details
@@ -10,16 +11,19 @@
 
 <h2><%=Model.Title %></h2>
 <div class="big_photo">
-<img height="217" width="260" alt="" src="../../Content/img/big_photo.jpg" />
+<%= Html.CachedImage("~/Content/Images", Model.ImageSource, "thumbnail1",Model.Title)%>
+
 </div>
 <div class="text">
 <%=Model.Text %>
-</div>
+<br />
 <%=Html.ActionLink("К списку экскурсий", "Index", "Excursions", null, new { @class = "more" })%>
+</div>
+
 
 
 <div class="comments">
-Коментарии:
+Комментарии:
     <% foreach (var item in Model.Comments)
     {
         Html.RenderPartial("Comment", item);
@@ -28,21 +32,10 @@
 </div>
 
 
-<% using (Html.BeginForm("Create", "Comments", FormMethod.Post, new { excursionId = Model.Id }))
-       {
-       %>
-<div class="addComment">
-
-<%=Html.Hidden("excursionId",Model.Id)%>
-<%=Html.TextBox("author") %>
-<br />
-<%=Html.TextArea("commentText","",10,50,null)%>
-<br />
-
-<input type="submit" value="Отправить" />
-</div>
 <%
-       }%>
+    Html.RenderPartial("AddComment", Model);
+%>
+
 
 </asp:Content>
 

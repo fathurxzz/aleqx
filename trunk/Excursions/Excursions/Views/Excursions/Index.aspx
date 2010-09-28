@@ -13,7 +13,9 @@
         if (Request.IsAuthenticated)
         {
     %>
-    <%= Html.ActionLink("Создать", "AddEdit", "Excursions", new { area = "Admin" }, new { @class = "adminLink" })%>
+    <div>
+    <%= Html.ActionLink("Добавить запись", "AddEdit", "Excursions", new { area = "Admin" }, new { @class = "adminLink" })%>
+    </div>
     <%
         } %>
 </asp:Content>

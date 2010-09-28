@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("excursionsModel", "ExcursionComments", "Excursion", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Excursions.Models.Excursion), "Comments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Excursions.Models.Comments))]
 
 // Original file name:
-// Generation date: 27.09.2010 16:01:44
+// Generation date: 28.09.2010 11:41:52
 namespace Excursions.Models
 {
     
@@ -139,19 +139,19 @@ namespace Excursions.Models
         /// <param name="id">Initial value of Id.</param>
         /// <param name="text">Initial value of Text.</param>
         /// <param name="title">Initial value of Title.</param>
-        /// <param name="date">Initial value of Date.</param>
         /// <param name="sortOrder">Initial value of SortOrder.</param>
         /// <param name="price">Initial value of Price.</param>
+        /// <param name="popular">Initial value of Popular.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Excursion CreateExcursion(long id, string text, string title, global::System.DateTime date, int sortOrder, decimal price)
+        public static Excursion CreateExcursion(long id, string text, string title, int sortOrder, decimal price, bool popular)
         {
             Excursion excursion = new Excursion();
             excursion.Id = id;
             excursion.Text = text;
             excursion.Title = title;
-            excursion.Date = date;
             excursion.SortOrder = sortOrder;
             excursion.Price = price;
+            excursion.Popular = popular;
             return excursion;
         }
         /// <summary>
@@ -262,33 +262,6 @@ namespace Excursions.Models
         partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleChanged();
-        /// <summary>
-        /// There are no comments for property Date in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.DateTime Date
-        {
-            get
-            {
-                return this._Date;
-            }
-            set
-            {
-                this.OnDateChanging(value);
-                this.ReportPropertyChanging("Date");
-                this._Date = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("Date");
-                this.OnDateChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.DateTime _Date;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDateChanging(global::System.DateTime value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnDateChanged();
         /// <summary>
         /// There are no comments for property SortOrder in the schema.
         /// </summary>
@@ -424,6 +397,33 @@ namespace Excursions.Models
         partial void OnShortDescriptionChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnShortDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property Popular in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public bool Popular
+        {
+            get
+            {
+                return this._Popular;
+            }
+            set
+            {
+                this.OnPopularChanging(value);
+                this.ReportPropertyChanging("Popular");
+                this._Popular = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Popular");
+                this.OnPopularChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private bool _Popular;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPopularChanging(bool value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPopularChanged();
         /// <summary>
         /// There are no comments for Comments in the schema.
         /// </summary>
