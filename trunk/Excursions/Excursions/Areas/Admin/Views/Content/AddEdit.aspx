@@ -108,9 +108,3 @@
         });
     </script>
 </asp:Content>
-
-<asp:Content ID="Content4" ContentPlaceHolderID="LeftContent" runat="server">
-</asp:Content>
-
-<asp:Content ID="Content5" ContentPlaceHolderID="RightContent" runat="server">
-</asp:Content>

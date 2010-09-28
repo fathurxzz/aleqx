@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace Excursions.Controllers
 {
-    public class ContactsController : Controller
+    public class FeedbackController : Controller
     {
         //
-        // GET: /Contacts/
+        // GET: /Feedback/
 
-        public ActionResult Index()
+        public ActionResult Create()
         {
             return View();
         }

@@ -26,7 +26,15 @@
 </div>
 
 <div id="wrapper">
+    <div id="left">
+        <div id="left_navigation">
+        <% Html.RenderPartial("PopularExcursions"); %>
+        </div>
+    </div>
+    <div id="central">
         <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+    </div>
+        
 </div>
 <div id="footer">
 	<% Html.RenderPartial("Footer"); %>
