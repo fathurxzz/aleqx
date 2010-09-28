@@ -140,6 +140,7 @@
     <Content Include="Content\img\title_bg.jpg" />
     <Content Include="Content\img\welcome_bg.jpg" />
     <None Include="Content\MailTemplates\newComment" />
+    <Content Include="Content\query.txt" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
     <Content Include="Views\Admin\AddContentItem.aspx" />
@@ -155,7 +156,9 @@
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\PopularExcursions.ascx" />
     <Content Include="Views\Shared\TopMenu.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
