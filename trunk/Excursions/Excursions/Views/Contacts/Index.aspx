@@ -9,7 +9,7 @@
 
     <h2>Contacts</h2>
 
-    <% using (Html.BeginForm("Create", "Comments", FormMethod.Post, new { excursionId = Model.Id }))
+    <% using (Html.BeginForm("FeedBack", "Contacts", FormMethod.Post))
        {
        %>
 
