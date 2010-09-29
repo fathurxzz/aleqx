@@ -59,10 +59,11 @@ namespace Excursions.Controllers
                     string linkBase = ConfigurationManager.AppSettings["linkBase"];
                     string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
                     string emailTo = ConfigurationManager.AppSettings["emailTo"];
+                    string subject = "testours.1gb.ua - Новый комментарий";
 
                     string[] replacements = { linkBase + "/Excursions/Details/" + excursionId , comment.Date.ToString(), comment.Author, comment.Text};
 
-                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, "Excursions", "newComment", false, replacements);
+                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, subject, "newComment", false, replacements);
 
                 }
             return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });

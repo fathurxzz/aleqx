@@ -15,28 +15,6 @@
         
         <table class="adminEditContentTable">
         <tr>
-            <td>
-                Техническое имя страницы<br />
-                <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
-            </td>
-            <td>
-                  <%= Html.TextBoxFor(model => model.ContentId, new { style = "width:300px;" })%>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>
-                Название пункта меню<br />
-                <span style="font-size:10px;">(пишите кириллицей)</span>
-            </td>
-            <td>
-                
-                <%= Html.TextBoxFor(model => model.Title, new { style = "width:300px;" })%>
-            </td>
-        </tr>
-      
-
-        <tr>
             <td colspan="2">
                 Содержимое страницы<br />
                 

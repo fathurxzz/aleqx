@@ -137,6 +137,7 @@
     <Content Include="Content\img\title_bg.jpg" />
     <Content Include="Content\img\welcome_bg.jpg" />
     <None Include="Content\MailTemplates\newComment" />
+    <None Include="Content\MailTemplates\newFeedback" />
     <Content Include="Content\query.txt" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />

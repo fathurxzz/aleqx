@@ -49,7 +49,19 @@ namespace Excursions.Areas.Admin.Controllers
                 }
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Content", new { area = "" });
+            return RedirectToAction("Index", "Content", new { area = "", id=content.ContentId });
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ContentStorage())
+            {/*
+                var content = context.Content.Select(c => c).Where(c => c.Id == id).First();
+                context.DeleteObject(content);
+                context.SaveChanges();*/
+            }
+            return RedirectToAction("Index", "Excursions", new { area = "" });
         }
 
     }
