@@ -24,7 +24,11 @@
 
 <div class="comments">
 Комментарии:
-    <% foreach (var item in Model.Comments)
+    <%
+
+    var comments = Model.Comments.Select(c => c).OrderBy(c => c.Date).ToList();
+            
+    foreach (var item in comments)
     {
         Html.RenderPartial("Comment", item);
     } 
