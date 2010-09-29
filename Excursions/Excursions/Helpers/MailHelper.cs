@@ -19,7 +19,7 @@ namespace Excursions.Helpers
                 message.Body = body;
                 message.Subject = subject;
                 to.ForEach(t => message.To.Add(t));
-                message.From = new MailAddress("no-reply@zamov.com");
+                message.From = new MailAddress(from);
                 message.IsBodyHtml = isBodyHtml;
                 client.Send(message);
             }
