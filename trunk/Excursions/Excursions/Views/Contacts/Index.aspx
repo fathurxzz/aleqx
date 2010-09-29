@@ -21,10 +21,11 @@
 
     
 
-    
+    <div id="collapsibleLink">
+    <a href="#"  onclick="showCollapsibleBox()">Оставить сообщение</a>
+    </div>
 
-
-    <fieldset class="feedBack"><legend>Оставить сообщение:</legend> 
+    <fieldset id="feedBackBox" class="feedBack"><legend>Оставить сообщение:</legend> 
     
 
     <% using (Html.BeginForm("FeedBack", "Contacts", FormMethod.Post))
@@ -62,4 +63,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
+<script type="text/javascript">
+    function showCollapsibleBox() {
+
+        $("#collapsibleLink").css("display", "none");
+
+        $("#feedBackBox").slideDown("fast");
+    }
+    </script>
 </asp:Content>

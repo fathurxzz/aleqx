@@ -35,6 +35,9 @@
     %>
 </div>
 
+ <div id="collapsibleLink">
+    <a href="#"  onclick="showCollapsibleBox()">Добавить комментарий</a>
+    </div>
 
 <%
     Html.RenderPartial("AddComment", Model);
@@ -44,6 +47,14 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
+<script type="text/javascript">
+    function showCollapsibleBox() {
+
+        $("#collapsibleLink").css("display", "none");
+
+        $("#addComment").slideDown("fast");
+    }
+    </script>
 </asp:Content>
 
 
