@@ -57,8 +57,10 @@ namespace Excursions.Controllers
                     context.SaveChanges();
 
                     string linkBase = ConfigurationManager.AppSettings["linkBase"];
-                    
-                    MailHelper.SendTemplate("from@mail.net", new List<MailAddress> {new MailAddress("to@mail.net")},"Excursions", "newComment", false, linkBase + "/Excursions/Details/" + excursionId);
+                    string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
+                    string emailTo = ConfigurationManager.AppSettings["emailTo"];
+
+                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, "Excursions", "newComment", false, linkBase + "/Excursions/Details/" + excursionId);
 
                 }
             return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });
