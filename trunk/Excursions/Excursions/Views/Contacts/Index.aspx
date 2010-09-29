@@ -23,12 +23,25 @@
 
     
 
+
     <fieldset class="feedBack"><legend>Оставить сообщение:</legend> 
     
 
     <% using (Html.BeginForm("FeedBack", "Contacts", FormMethod.Post))
        {
        %>
+
+       <%if (!string.IsNullOrEmpty((string)ViewData["message"]))
+      {%>
+    <div class="messageSent">
+    <script type="text/javascript">
+        alert('<%=ViewData["message"].ToString() %>');
+    </script>
+    
+    </div>
+    <%
+      }%>
+
     <div class="addFeedbackAuthor">Имя:</div>
     <%=Html.TextBox("author") %>
     <div class="addFeedbackEmail">Email:</div>

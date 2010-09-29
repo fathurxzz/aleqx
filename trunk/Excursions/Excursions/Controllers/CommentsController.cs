@@ -41,33 +41,44 @@ namespace Excursions.Controllers
         //
         // POST: /Comments/Create
 
-        [HttpPost]
-        [CaptchaValidation("captcha")]
-        public ActionResult Create(Comments comment, int excursionId, string author, string commentText, bool captchaValid)
-        {
-            if (captchaValid)
-                using (var context = new ContentStorage())
-                {
-                    Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
-                    comment.Excursion = excursion;
-                    comment.Text = HttpUtility.HtmlDecode(commentText);
-                    comment.Author = author;
-                    comment.Date = DateTime.Now;
-                    context.AddToComments(comment);
-                    context.SaveChanges();
+        //[HttpPost]
+        //[CaptchaValidation("captcha")]
+        //public ActionResult Create(Comments comment, int excursionId, string author, string commentText, bool captchaValid)
+        //{
+        //    if (captchaValid)
+        //    {
+        //        using (var context = new ContentStorage())
+        //        {
+        //            Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
+        //            comment.Excursion = excursion;
+        //            comment.Text = HttpUtility.HtmlDecode(commentText);
+        //            comment.Author = author;
+        //            comment.Date = DateTime.Now;
+        //            context.AddToComments(comment);
+        //            context.SaveChanges();
 
-                    string linkBase = ConfigurationManager.AppSettings["linkBase"];
-                    string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
-                    string emailTo = ConfigurationManager.AppSettings["emailTo"];
-                    string subject = "testours.1gb.ua - Новый комментарий";
+        //            string linkBase = ConfigurationManager.AppSettings["linkBase"];
+        //            string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
+        //            string emailTo = ConfigurationManager.AppSettings["emailTo"];
+        //            string subject = "testours.1gb.ua - Новый комментарий";
 
-                    string[] replacements = { linkBase + "/Excursions/Details/" + excursionId , comment.Date.ToString(), comment.Author, comment.Text};
+        //            string[] replacements = {
+        //                                        linkBase + "/Excursions/Details/" + excursionId, comment.Date.ToString(),
+        //                                        comment.Author, comment.Text
+        //                                    };
 
-                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, subject, "newComment", false, replacements);
+        //            MailHelper.SendTemplate(emailFrom, new List<MailAddress> {new MailAddress(emailTo)}, subject,
+        //                                    "newComment", false, replacements);
 
-                }
-            return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });
-        }
+        //        }
+        //        return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction()
+        //    }
+            
+        //}
 
         //
         // GET: /Comments/Edit/5

@@ -102,9 +102,9 @@
 <script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
     <script type="text/javascript">
         $(function () {
-            $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { Toolbar: "Basic", DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
-            $("#Text").fck({ toolbar: "Basic", height: 500, width: 500 });
-            $("#ShortDescription").fck({ toolbar: "Basic", height: 500, width: 500 });
+            $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
+            $("#Text").fck({ height: 500, width: 500 });
+            $("#ShortDescription").fck({ height: 500, width: 500 });
         });
     </script>
 </asp:Content>

@@ -583,3 +583,10 @@ legend
     font-size:13px;
     font-weight:bold;
 }
+
+.messageSent
+{
+    color:Green;
+    font-size:18px;
+    font-weight:bold;
+ }
