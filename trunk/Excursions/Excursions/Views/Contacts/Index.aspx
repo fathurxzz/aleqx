@@ -18,18 +18,22 @@
 
     <%=Model.Text %>
     
-    <div class="feedBack">
-    Оставить сообщение:<br />
+
+    
+
+    
+
+    <fieldset class="feedBack"><legend>Оставить сообщение:</legend> 
+    
 
     <% using (Html.BeginForm("FeedBack", "Contacts", FormMethod.Post))
        {
        %>
-
-    Имя:<%=Html.TextBox("author") %>
-    <br />
-    Email:<%=Html.TextBox("email") %>
-    <br />
-    Текст сообщения<br />
+    <div class="addFeedbackAuthor">Имя:</div>
+    <%=Html.TextBox("author") %>
+    <div class="addFeedbackEmail">Email:</div>
+    <%=Html.TextBox("email") %>
+    <div class="addFeedbackText">Текст сообщения:</div>
     <%=Html.TextArea("feedbackText","",10,50,null)%>
     
     <div id="capchaContainer">
@@ -39,7 +43,9 @@
     <input type="submit" value="Отправить" />
     <%
        }%>
-    </div>
+       </fieldset>
+    
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
