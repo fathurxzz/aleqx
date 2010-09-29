@@ -29,7 +29,8 @@
     %>
 </ul>
 
-
+<!--
 <ul id="forum">
 	<li><a href="#">Forum</a></li>
 </ul>
+-->
