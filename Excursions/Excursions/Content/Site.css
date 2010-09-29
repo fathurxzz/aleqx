@@ -238,16 +238,13 @@ body
 .block
 {
     width: 570px;
-    margin: 0 0 50px 23px;
-    
-    /*display: inline;*/
-    /*float: left;*/
+    margin: 0 0 50px 23px; /*display: inline;*/ /*float: left;*/
 }
 
 .block img
 {
     float: left;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 
@@ -261,7 +258,7 @@ body
 
 .line
 {
-    width:100%;
+    width: 100%;
     border-bottom: 1px solid #D2D2D2;
 }
 
@@ -469,7 +466,7 @@ a.h4
 
 h2
 {
-    margin:0 0 10px 25px;
+    margin: 0 0 10px 25px;
 }
 
 .other
@@ -505,7 +502,7 @@ h2
     font-family: Tahoma;
     font-size: 11px;
     color: #565656;
-    margin:0 0 25px 25px;
+    margin: 0 0 25px 25px;
 }
 .text p
 {
@@ -530,63 +527,75 @@ h2
 
 .comments
 {
-    
 }
 
 .comment
 {
-    width:400px;
-    margin:10px;
-    font-size:13px;
-    border-bottom-color:Silver;
-    border-bottom-style:solid;
-    border-bottom-width:1px;
+    width: 400px;
+    margin: 10px;
+    font-size: 13px;
+    border-bottom-color: Silver;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
 }
 
 .addComment
 {
-    
+    display:none;
 }
 
 .author
 {
-    color:Maroon;
-    font-size:13px;
-    font-weight:bold;
+    color: Maroon;
+    font-size: 13px;
+    font-weight: bold;
 }
-    
+
 .date
 {
-    float:right;
-    color:Teal;
-    font-size:13px;
+    float: right;
+    color: Teal;
+    font-size: 13px;
 }
 
 .addCommentAuthor, .addCommentText, .addFeedbackAuthor, .addFeedbackEmail, .addFeedbackText
 {
-    margin-top:10px;
-    color:Green;
-    font-size:13px;
-    font-weight:bold;
+    margin-top: 10px;
+    color: Green;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 
 .feedBack
 {
-    padding:10px;
-	margin-top:20px;
+    padding: 10px;
+    margin-top: 20px;
+    display: none;
 }
 
 legend
 {
-    color:Maroon;
-    font-size:13px;
-    font-weight:bold;
+    color: Maroon;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .messageSent
 {
-    color:Green;
-    font-size:18px;
-    font-weight:bold;
- }
+    color: Green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#collapsibleLink
+{
+    margin-top: 15px;
+}
+
+#collapsibleLink a
+{
+    color: Maroon;
+    font-size: 13px;
+    font-weight: bold;
+}

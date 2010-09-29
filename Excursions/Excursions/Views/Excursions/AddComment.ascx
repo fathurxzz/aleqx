@@ -4,7 +4,7 @@
 <% using (Html.BeginForm("CreateComment", "Excursions", FormMethod.Post, new { excursionId = Model.Id }))
        {
        %>
-<div class="addComment">
+<div class="addComment" id="addComment">
 
 <%=Html.Hidden("excursionId",Model.Id)%>
 <div class="addCommentAuthor">
