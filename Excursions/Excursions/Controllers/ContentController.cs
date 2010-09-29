@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Excursions.Models;
 
 namespace Excursions.Controllers
 {
@@ -13,8 +14,11 @@ namespace Excursions.Controllers
 
         public ActionResult Index(string id)
         {
-
-            return View("Content");
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Select(c => c).Where(c => c.ContentId == id).First();
+                return View("Content", content);
+            }
         }
     }
 }

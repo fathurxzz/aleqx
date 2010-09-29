@@ -34,9 +34,13 @@ namespace Excursions.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 var contactsInfo = context.Content.Select(c => c).Where(c => c.IsContactsPage).First();
+
                 content.Id = contactsInfo.Id;
                 content.Text = HttpUtility.HtmlDecode(content.Text);
                 content.IsContactsPage = true;
+
+                content.ContentId = "Contacts";
+                content.Title = "Контакты";
 
                 object originalItem;
                 EntityKey entityKey = new EntityKey("ContentStorage.Content", "Id", content.Id);

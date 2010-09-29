@@ -19,15 +19,19 @@
     <%=Model.Text %>
     
     <div class="feedBack">
+    Оставить сообщение:<br />
 
     <% using (Html.BeginForm("FeedBack", "Contacts", FormMethod.Post))
        {
        %>
 
-    <%=Html.TextBox("Author") %>
+    Имя:<%=Html.TextBox("author") %>
     <br />
-    <%=Html.TextArea("FeedbackText","",10,50,null)%>
+    Email:<%=Html.TextBox("email") %>
     <br />
+    Текст сообщения<br />
+    <%=Html.TextArea("feedbackText","",10,50,null)%>
+    
     <div id="capchaContainer">
     <%= Html.CaptchaImage(50, 160)%><br />
     <%= Html.TextBox("captcha", "")%>
