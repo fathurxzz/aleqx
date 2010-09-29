@@ -50,7 +50,7 @@ namespace Excursions.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Excursions");
                     }
                 }
                 else
