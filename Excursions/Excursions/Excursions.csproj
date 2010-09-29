@@ -141,8 +141,6 @@
     <Content Include="Content\query.txt" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
-    <Content Include="Views\Admin\AddContentItem.aspx" />
-    <Content Include="Views\Admin\EditContentItem.aspx" />
     <Content Include="Views\Contacts\Index.aspx" />
     <Content Include="Views\Excursions\AddComment.ascx" />
     <Content Include="Views\Excursions\Comment.ascx" />

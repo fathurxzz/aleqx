@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Excursions.Models.Excursion>" %>
 <%@ Import Namespace="Excursions.Helpers" %>
 
-<% using (Html.BeginForm("Create", "Comments", FormMethod.Post, new { excursionId = Model.Id }))
+<% using (Html.BeginForm("CreateComment", "Excursions", FormMethod.Post, new { excursionId = Model.Id }))
        {
        %>
 <div class="addComment">

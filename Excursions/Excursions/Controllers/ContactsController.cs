@@ -16,11 +16,12 @@ namespace Excursions.Controllers
         //
         // GET: /Contacts/
 
-        public ActionResult Index()
+        public ActionResult Index(string message)
         {
             using (var context = new ContentStorage())
             {
                 var contactsInfo = context.Content.Select(c => c).Where(c => c.IsContactsPage).First();
+                ViewData["message"] = message;
                 return View(contactsInfo);
             }
         }
@@ -37,7 +38,7 @@ namespace Excursions.Controllers
                 string subject = "testours.1gb.ua - Новый отзыв";
                 string[] replacements = {DateTime.Now.ToString(), author, email, feedbackText};
                 MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, subject, "newFeedback", false, replacements);
-                return RedirectToAction("Index", "Contacts");
+                return RedirectToAction("Index", "Contacts", new { message = "Сообщение отправлено" });
             }
 
             using (var context = new ContentStorage())
@@ -46,6 +47,7 @@ namespace Excursions.Controllers
                 ViewData["author"] = author;
                 ViewData["email"] = email;
                 ViewData["feedbackText"] = feedbackText;
+                ViewData["message"] = null;
                 return View("Index", contactsInfo);
             }
         }
