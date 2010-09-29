@@ -562,7 +562,7 @@ h2
     font-size:13px;
 }
 
-.addCommentAuthor, .addCommentText
+.addCommentAuthor, .addCommentText, .addFeedbackAuthor, .addFeedbackEmail, .addFeedbackText
 {
     margin-top:10px;
     color:Green;
@@ -573,5 +573,13 @@ h2
 
 .feedBack
 {
+    padding:10px;
 	margin-top:20px;
+}
+
+legend
+{
+    color:Maroon;
+    font-size:13px;
+    font-weight:bold;
 }
