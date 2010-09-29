@@ -60,7 +60,9 @@ namespace Excursions.Controllers
                     string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
                     string emailTo = ConfigurationManager.AppSettings["emailTo"];
 
-                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, "Excursions", "newComment", false, linkBase + "/Excursions/Details/" + excursionId);
+                    string[] replacements = { linkBase + "/Excursions/Details/" + excursionId , comment.Date.ToString(), comment.Author, comment.Text};
+
+                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, "Excursions", "newComment", false, replacements);
 
                 }
             return RedirectToAction("Details", "Excursions", new { area = "", id = excursionId });
