@@ -76,11 +76,13 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationData.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
     <Compile Include="captcha.ashx.cs">
       <DependentUpon>captcha.ashx</DependentUpon>
     </Compile>
@@ -106,12 +108,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Settings.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Contacts\Update.aspx" />
     <Content Include="Areas\Admin\Views\Content\AddEdit.aspx" />
     <Content Include="Areas\Admin\Views\Excursions\AddEdit.aspx" />
+    <Content Include="Areas\Admin\Views\Settings\Index.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Admin2.css" />
     <Content Include="Content\img\arrow.gif" />
@@ -184,6 +192,10 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <EntityDeploy Include="Models\Settings.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -59,7 +59,7 @@ namespace Excursions.Controllers
 
                     string linkBase = ConfigurationManager.AppSettings["linkBase"];
                     string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
-                    string emailTo = ConfigurationManager.AppSettings["emailTo"];
+                    string emailTo = ApplicationData.NotificationEmail;
                     string subject = "testours.1gb.ua - Новый комментарий";
 
                     string[] replacements = {
