@@ -59,7 +59,11 @@ namespace Excursions.Controllers
 
                     string linkBase = ConfigurationManager.AppSettings["linkBase"];
                     string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
-                    string emailTo = ApplicationData.NotificationEmail;
+                    
+                    
+                    string emailsTo = ApplicationData.NotificationEmail;
+                    
+
                     string subject = "testours.1gb.ua - Новый комментарий";
 
                     string[] replacements = {
@@ -68,8 +72,7 @@ namespace Excursions.Controllers
                                                 comment.Author, comment.Text
                                             };
 
-                    MailHelper.SendTemplate(emailFrom, new List<MailAddress> {new MailAddress(emailTo)}, subject,
-                                            "newComment", false, replacements);
+                    MailHelper.SendTemplate(emailFrom, emailsTo, ";", subject, "newComment", false, replacements);
 
 
                     return RedirectToAction("Details", "Excursions", new {area = "", id = excursionId});

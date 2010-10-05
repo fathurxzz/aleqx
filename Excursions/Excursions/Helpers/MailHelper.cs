@@ -11,13 +11,11 @@ namespace Excursions.Helpers
     {
         public static bool SendMessage(string from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
-            SmtpClient client = new SmtpClient();
+            var client = new SmtpClient();
             bool result = true;
             try
             {
-                MailMessage message = new MailMessage();
-                message.Body = body;
-                message.Subject = subject;
+                var message = new MailMessage {Body = body, Subject = subject};
                 to.ForEach(t => message.To.Add(t));
                 message.From = new MailAddress(from);
                 message.IsBodyHtml = isBodyHtml;
@@ -35,12 +33,26 @@ namespace Excursions.Helpers
             return SendTemplate(from, to, string.Empty, template, isBodyHtml, null);
         }
 
+        public static bool SendTemplate(string from, string to, string separator, string subject, string template, bool isBodyHtml, params object[] replacements)
+        {
+            List < MailAddress > mailAddresses;
+            try
+            {
+                string[] x = to.Split(new[] { separator }, StringSplitOptions.None);
+                mailAddresses = (from s in x where !string.IsNullOrEmpty(s.Trim()) select new MailAddress(s.Trim())).ToList();
+            }
+            catch
+            {
+                return false;
+            }
+            return SendTemplate(from, mailAddresses, subject, template, isBodyHtml, replacements);
+        }
 
         public static bool SendTemplate(string from, List<MailAddress> to, string subject, string template, bool isBodyHtml, params object[] replacements)
         {
             string filePath = HttpContext.Current.Server.MapPath("~/Content/MailTemplates/" + template);
-            FileStream file = new FileStream(filePath, FileMode.Open);
-            StreamReader reader = new StreamReader(file);
+            var file = new FileStream(filePath, FileMode.Open);
+            var reader = new StreamReader(file);
             string body = reader.ReadToEnd();
             string formattedBody = (replacements != null && replacements.Length > 0) ? string.Format(body, replacements) : body;
             reader.Close();

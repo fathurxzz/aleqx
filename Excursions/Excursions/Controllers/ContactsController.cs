@@ -34,10 +34,10 @@ namespace Excursions.Controllers
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(feedbackText) && captchaValid)
             {
                 string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
-                string emailTo = ApplicationData.NotificationEmail;
+                string emailsTo = ApplicationData.NotificationEmail;
                 string subject = "testours.1gb.ua - Новый отзыв";
                 string[] replacements = {DateTime.Now.ToString(), author, email, feedbackText};
-                MailHelper.SendTemplate(emailFrom, new List<MailAddress> { new MailAddress(emailTo) }, subject, "newFeedback", false, replacements);
+                MailHelper.SendTemplate(emailFrom, emailsTo, ";", subject, "newFeedback", false, replacements);
                 return RedirectToAction("Index", "Contacts", new { message = "Сообщение отправлено" });
             }
 

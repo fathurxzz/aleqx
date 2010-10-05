@@ -13,7 +13,7 @@
         %>
     <table class="adminEditContentTable">
         <tr>
-            <td>Email для нотификации</td>
+            <td>Email адреса для нотификации (вводить через ";")</td>
             <td><%=Html.TextBox("NotificationEmail", ViewData["NotificationEmail"],new { style = "width:400px;"})%> </td>
         </tr>
     </table>
