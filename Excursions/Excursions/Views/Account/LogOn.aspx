@@ -16,21 +16,25 @@
         
             <table class="logOnTable">
             <tr>
-                <td><label for="username">Логин:</label></td>
+                <td align="right"><label for="username">Логин:</label></td>
                 <td>
-                    <%= Html.TextBox("username", "логин", new { onfocus = "javascript:if(this.value=='логин')this.value=''", onblur = "javascript:if(this.value=='')this.value='логин'" })%>
+                    <%= Html.TextBox("username","",new{style="width:200px;"})%>
                     <%= Html.ValidationMessage("username") %>
                 </td>
             </tr>
             <tr>
-                <td><label for="password">Пароль:</label></td>
-                <td><%= Html.Password("password", "password", new { onfocus = "javascript:if(this.value=='password')this.value=''", onblur = "javascript:if(this.value=='')this.value='password'" })%><%= Html.ValidationMessage("password") %></td>
+                <td align="right"><label for="password">Пароль:</label></td>
+                <td><%= Html.Password("password", "", new { style = "width:200px;" })%><%= Html.ValidationMessage("password") %></td>
             </tr>
             <tr>
-                <td colspan="2"><%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe">запомнить?</label></td>
+                <td></td>
+                <td><%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe">запомнить?</label></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Вход" /></td>
             </tr>
             </table>
-            <input type="submit" value="Вход" />
+            
         </div>
     <% } %>
 </asp:Content>
