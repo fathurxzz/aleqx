@@ -9,7 +9,9 @@
         <%} %>
             <%=Model.ShortDescription %>
         <div class="line">&nbsp;</div>
-        <span class="price"><%=Model.Price.ToString()%></span>
+        <span class="price">
+        <%=(Model.Price!=0? Model.Price.ToString():"&nbsp")%>
+        </span>
         <%=Html.ActionLink("подробнее", "Details", "Excursions", new { area = "", id = Model.Id }, new { @class = "more" })%>
     </div>
 </div>
