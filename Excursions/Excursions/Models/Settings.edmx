@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="excursionsModel1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="excursionsModel1StoreContainer">
+          <EntitySet Name="applicationsettings" EntityType="excursionsModel1.Store.applicationsettings" store:Type="Tables" Schema="excursions" />
+        </EntityContainer>
+        <EntityType Name="applicationsettings">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Value" Type="varchar" MaxLength="255" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="excursionsModel1" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="SettingsStorage">
+          <EntitySet Name="ApplicationSettings" EntityType="excursionsModel1.ApplicationSettings" />
+        </EntityContainer>
+        <EntityType Name="ApplicationSettings">
+          <Key>
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Key" Type="String" Nullable="false" />
+          <Property Name="Value" Type="String" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="excursionsModel1StoreContainer" CdmEntityContainer="SettingsStorage">
+          <EntitySetMapping Name="ApplicationSettings"><EntityTypeMapping TypeName="excursionsModel1.ApplicationSettings"><MappingFragment StoreEntitySet="applicationsettings">
+            <ScalarProperty Name="Key" ColumnName="Key" />
+            <ScalarProperty Name="Value" ColumnName="Value" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Settings">
+        <EntityTypeShape EntityType="excursionsModel1.ApplicationSettings" Width="1.5" PointX="0.75" PointY="0.75" Height="1.2636116536458335" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

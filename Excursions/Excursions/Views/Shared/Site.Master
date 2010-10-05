@@ -19,6 +19,9 @@
                   {
                 %>
                 <%= Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account",null, new { @class= "logOffLink" })%>
+                
+                <%=Html.ActionLink("Настройки","Index","Settings",new{area="Admin"},new{@class="adminLink"}) %>
+                
                 <%
                     } %>
     <% Html.RenderPartial("TopMenu"); %>
