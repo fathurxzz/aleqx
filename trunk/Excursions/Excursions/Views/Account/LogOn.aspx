@@ -5,26 +5,26 @@
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-   <h2>Вход в систему администрирования</h2>
+   <h3>Вход в систему администрирования</h3>
     <p>
         Пожалуйста введите логин и пароль.
     </p>
     <%= Html.ValidationSummary("Аутентификация пользователя не удалась. Пожалуйста проверте данные и повторите попытку.") %>
 
     <% using (Html.BeginForm()) { %>
-        <div>
+        <div style="padding:10px;">
         
-            <table>
+            <table class="logOnTable">
             <tr>
                 <td><label for="username">Логин:</label></td>
                 <td>
-                    <%= Html.TextBox("username") %>
+                    <%= Html.TextBox("username", "логин", new { onfocus = "javascript:if(this.value=='логин')this.value=''", onblur = "javascript:if(this.value=='')this.value='логин'" })%>
                     <%= Html.ValidationMessage("username") %>
                 </td>
             </tr>
             <tr>
                 <td><label for="password">Пароль:</label></td>
-                <td><%= Html.Password("password") %><%= Html.ValidationMessage("password") %></td>
+                <td><%= Html.Password("password", "password", new { onfocus = "javascript:if(this.value=='password')this.value=''", onblur = "javascript:if(this.value=='')this.value='password'" })%><%= Html.ValidationMessage("password") %></td>
             </tr>
             <tr>
                 <td colspan="2"><%= Html.CheckBox("rememberMe") %> <label class="inline" for="rememberMe">запомнить?</label></td>

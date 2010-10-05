@@ -14,7 +14,11 @@ namespace Excursions
             set { SetApplicationData("notificationEmail", value); }
         }
 
-
+        public static string Email
+        {
+            get { return GetApplicationData("email"); }
+            set { SetApplicationData("email", value); }
+        }
 
 
         private static string GetApplicationData(string key)

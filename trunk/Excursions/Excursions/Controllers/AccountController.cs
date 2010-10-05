@@ -55,7 +55,7 @@ namespace Excursions.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Неправильный логин или пароль.");
                 }
             }
 

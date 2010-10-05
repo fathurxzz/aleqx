@@ -33,12 +33,13 @@ namespace Excursions.Helpers
             return SendTemplate(from, to, string.Empty, template, isBodyHtml, null);
         }
 
-        public static bool SendTemplate(string from, string to, string separator, string subject, string template, bool isBodyHtml, params object[] replacements)
+        public static bool SendTemplate(string from, string to, string subject, string template, bool isBodyHtml, params object[] replacements)
         {
             List < MailAddress > mailAddresses;
             try
             {
-                string[] x = to.Split(new[] { separator }, StringSplitOptions.None);
+                string[] separator = new string[] {";", " ", ","};
+                string[] x = to.Split( separator , StringSplitOptions.None);
                 mailAddresses = (from s in x where !string.IsNullOrEmpty(s.Trim()) select new MailAddress(s.Trim())).ToList();
             }
             catch
