@@ -6,18 +6,27 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Настройки</h2>
+    <h3>Настройки</h3>
 
     <% using(Html.BeginForm("Update","Settings",FormMethod.Post))
         {
         %>
     <table class="adminEditContentTable">
         <tr>
-            <td>Email адреса для нотификации (вводить через ";")</td>
-            <td><%=Html.TextBox("NotificationEmail", ViewData["NotificationEmail"],new { style = "width:400px;"})%> </td>
+            <td valign="top" align="right">Email адреса для нотификации:</td>
+            <td align="left"><%=Html.TextArea("NotificationEmail", (string)ViewData["NotificationEmail"],5,45,null)%> </td>
+        </tr>
+        <tr>
+            <td valign="top" align="right">Email (ссылка вверху):</td>
+            <td align="left"><%=Html.TextBox("Email", ViewData["Email"], new{style="width:300px;"})%> </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit"  value="Сохранить"/>
+            </td>
         </tr>
     </table>
-    <input type="submit"  value="Сохранить"/>
+    
     <%
         }%>
 </asp:Content>

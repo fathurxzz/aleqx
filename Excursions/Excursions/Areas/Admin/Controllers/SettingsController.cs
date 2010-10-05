@@ -16,6 +16,8 @@ namespace Excursions.Areas.Admin.Controllers
         public ActionResult Index()
         {
             ViewData["NotificationEmail"] = ApplicationData.NotificationEmail;
+            ViewData["Email"] = ApplicationData.Email;
+
             return View();
         }
 
@@ -23,7 +25,7 @@ namespace Excursions.Areas.Admin.Controllers
         public ActionResult Update(FormCollection form)
         {
             ApplicationData.NotificationEmail = form["NotificationEmail"];
-
+            ApplicationData.Email = form["Email"];
             return RedirectToAction("Index");
         }
     }

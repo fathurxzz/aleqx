@@ -72,7 +72,7 @@ namespace Excursions.Controllers
                                                 comment.Author, comment.Text
                                             };
 
-                    MailHelper.SendTemplate(emailFrom, emailsTo, ";", subject, "newComment", false, replacements);
+                    MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newComment", false, replacements);
 
 
                     return RedirectToAction("Details", "Excursions", new {area = "", id = excursionId});

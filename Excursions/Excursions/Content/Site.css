@@ -464,9 +464,40 @@ a.h4
     margin: 0 0 10px 0;
 }
 
-h2
+h2, h3
 {
     margin: 0 0 10px 25px;
+}
+
+h3
+{
+    color:#009EDC;
+    font-size:22px;
+}
+
+input[type="submit"]
+{
+    color:#009EDC;
+    border:solid 1px #A6A8A0;
+    background-color:#eaeaea;
+    font-size:14px;
+    padding:2px;
+    
+}
+
+input[type="text"], input[type="password"]
+{
+    /*color:#009EDC;*/
+    border:solid 1px silver;
+    /*background-color:#eaeaea;*/
+    /*font-size:14px;*/
+    padding:2px;
+    
+}
+
+.logOnTable
+{
+    color:#009EDC;
 }
 
 .other

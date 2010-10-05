@@ -37,7 +37,7 @@ namespace Excursions.Controllers
                 string emailsTo = ApplicationData.NotificationEmail;
                 string subject = "testours.1gb.ua - Новый отзыв";
                 string[] replacements = {DateTime.Now.ToString(), author, email, feedbackText};
-                MailHelper.SendTemplate(emailFrom, emailsTo, ";", subject, "newFeedback", false, replacements);
+                MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newFeedback", false, replacements);
                 return RedirectToAction("Index", "Contacts", new { message = "Сообщение отправлено" });
             }
 
