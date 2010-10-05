@@ -8,6 +8,7 @@ using Excursions.Models;
 
 namespace Excursions.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContactsController : Controller
     {
         //
