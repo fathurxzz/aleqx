@@ -31,7 +31,8 @@ Comments:
     } 
     %>
 </div>
-    <a id="feedbackForm" class="iframe" href="/Excursions/AddComment">Add comment</a>
+    <a id="feedbackForm" class="iframe" href="/Excursions/AddComment/<%=Model.Id%>">Add comment</a>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">

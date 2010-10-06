@@ -9,9 +9,13 @@
         }
     </script>
     <% Html.EnableClientValidation(); %>
-    <% using (Html.BeginForm()) {%>
+    <% using (Html.BeginForm()) {
+           
+           
+           
+           %>
         <%= Html.ValidationSummary(true) %>
-        
+        <%=Html.Hidden("excursionId", ViewData["excursionId"])%>
             <div class="editor-label">
                 <%= Html.LabelFor(model => model.Name) %>
             </div>
