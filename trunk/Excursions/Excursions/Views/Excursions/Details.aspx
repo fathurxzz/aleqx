@@ -17,13 +17,13 @@
 <div class="text">
 <%=Model.Text %>
 <br />
-<%=Html.ActionLink("К списку экскурсий", "Index", "Excursions", null, new { @class = "more" })%>
+<%=Html.ActionLink("Back to list", "Index", "Excursions", null, new { @class = "more" })%>
 </div>
 
 
 
 <div class="comments">
-Комментарии:
+Comments:
     <%
 
     var comments = Model.Comments.Select(c => c).OrderBy(c => c.Date).ToList();
@@ -36,7 +36,10 @@
 </div>
 
  <div id="collapsibleLink">
-    <a href="#"  onclick="showCollapsibleBox()">Добавить комментарий</a>
+    <a href="#"  onclick="showCollapsibleBox()">Add comment</a>
+
+    <br />
+    <a id="feedbackForm" class="iframe" href="/Home/FeedbackForm">Форма обратной связи</a>
     </div>
 
 <%
@@ -55,6 +58,23 @@
         $("#addComment").slideDown("fast");
     }
     </script>
+
+
+
+    <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
+    <%= Ajax.DynamicCssInclude("/Content/fancybox/jquery.fancybox.css") %>
+    <%= Ajax.ScriptInclude("/Scripts/jquery.fancybox.js")%>
+    <script type="text/javascript">
+        $(function () {
+            $("#feedbackForm").fancybox(
+            {
+                hideOnContentClick: false,
+                hideOnOverlayClick: false,
+                showCloseButton: true
+            });
+        });
+    </script>
+
 </asp:Content>
 
 

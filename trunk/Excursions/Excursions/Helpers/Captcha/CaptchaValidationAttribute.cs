@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
 using System.Web.Mvc;
 
-namespace Excursions.Models.Captcha
+namespace Dev.Helpers
 {
     /// <summary>
     /// 
@@ -58,14 +58,17 @@ namespace Excursions.Models.Captcha
             string actualValue = filterContext.HttpContext.Request.Form[Field];
             string expectedValue = image == null ? String.Empty : image.Text;
 
-            // removes the captch from cache so it cannot be used again
-            filterContext.HttpContext.Cache.Remove(guid);
-
-            // validate the captch
-            filterContext.ActionParameters["captchaValid"] =
-                    !String.IsNullOrEmpty(actualValue)
+            bool captchaValid = !String.IsNullOrEmpty(actualValue)
                     && !String.IsNullOrEmpty(expectedValue)
                     && String.Equals(actualValue, expectedValue, StringComparison.OrdinalIgnoreCase);
+
+            // removes the captch from cache so it cannot be used again
+            if(!captchaValid)
+                filterContext.HttpContext.Cache.Remove(guid);
+
+            // validate the captch
+            filterContext.ActionParameters["captchaValid"] = captchaValid;
+                    
         }
     }
 }

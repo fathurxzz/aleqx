@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
+using System.Drawing.Imaging;
+using System.Drawing;
 
-namespace Excursions.Models.Captcha
+namespace Dev.Helpers
 {
     public class CaptchaImageHandler : IHttpHandler
     {
-        #region IHttpHandler Members
-
-        /// <summary>
-        /// Gets a value indicating whether another request can use the <see cref="T:System.Web.IHttpHandler"/> instance.
-        /// </summary>
-        /// <value></value>
-        /// <returns>true if the <see cref="T:System.Web.IHttpHandler"/> instance is reusable; otherwise, false.</returns>
         public bool IsReusable
         {
             get { return true; }
@@ -50,7 +43,5 @@ namespace Excursions.Models.Captcha
             context.Response.StatusDescription = "OK";
             context.ApplicationInstance.CompleteRequest();
         }
-
-        #endregion
     }
 }

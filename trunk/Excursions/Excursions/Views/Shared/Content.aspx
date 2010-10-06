@@ -7,7 +7,8 @@
     <%if (Request.IsAuthenticated)
       {
     %>
-    <%=Html.ActionLink("редактировать станицу", "AddEdit", "Content", new { area = "Admin",id=Model.Id }, new { @class = "adminLink" })%>
+    <%=Html.ActionLink("Edit page", "AddEdit", "Content", new { area = "Admin",id=Model.Id }, new { @class = "adminLink" })%> | 
+    <%=Html.ActionLink("Delete page", "Delete", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Are you sure?')" })%>
     <%
         } %>
     <%=Model.Text %>

@@ -41,6 +41,7 @@
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" MaxLength="500" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Popular" Type="bit" Nullable="false" />
           <Property Name="Price" Type="decimal" Nullable="false" />
           <Property Name="ShortDescription" Type="text" />
@@ -76,6 +77,7 @@
           <NavigationProperty Name="Comments" Relationship="excursionsModel.ExcursionComments" FromRole="Excursion" ToRole="Comments" />
           <Property Type="String" Name="ShortDescription" />
           <Property Type="Boolean" Name="Popular" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -111,6 +113,7 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="excursionsModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Excursion"><EntityTypeMapping TypeName="excursionsModel.Excursion"><MappingFragment StoreEntitySet="excursion">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Popular" ColumnName="Popular" />
                 <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
                 <ScalarProperty Name="Price" ColumnName="Price" />

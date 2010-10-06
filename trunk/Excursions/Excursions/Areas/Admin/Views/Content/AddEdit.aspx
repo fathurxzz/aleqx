@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Excursions.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	AddEdit
+	Update content
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-   <h2 class="editContentTitle">Редактирование содержимого</h2>
+   <h2 class="editContentTitle">Update content</h2>
 
     <% using (Html.BeginForm()) {%>
         <%= Html.ValidationSummary(true) %>
@@ -16,8 +16,8 @@
         <table class="adminEditContentTable">
         <tr>
             <td>
-                Техническое имя страницы<br />
-                <span style="font-size:10px;">(цельное слово, только латинские буквы)</span>
+                PageName<br />
+                <span style="font-size:10px;">(solid word without gabs)</span>
             </td>
             <td>
                   <%= Html.TextBoxFor(model => model.ContentId, new { style = "width:300px;" })%>
@@ -26,8 +26,7 @@
         
         <tr>
             <td>
-                Название пункта меню<br />
-                <span style="font-size:10px;">(пишите кириллицей)</span>
+                Title
             </td>
             <td>
                 
@@ -38,7 +37,7 @@
 
         <tr>
             <td colspan="2">
-                Содержимое страницы<br />
+                Page content<br />
                 
                 <%= Html.TextAreaFor(model => model.Text)%>
             </td>
@@ -47,8 +46,7 @@
     
 
         <tr>
-            <td style="width:200px;">Порядок отбражения:<br />
-                <span style="font-size:10px;">(каким по очереди будет этот раздел, необходимо ввести только цифру)</span></td>
+            <td style="width:200px;">Order:</td>
             <td> 
             <%= Html.TextBoxFor(model => model.SortOrder, new { style = "width:20px;" })%>
             </td>
@@ -58,14 +56,13 @@
         
          </div>
          
-          <h2 class="editContentTitle">Для поисковых систем</h2>
+          <h2 class="editContentTitle">SEO</h2>
           
            <div class="adminEditContentContainer">
                 <table class="adminEditContentTable">
                 <tr>
                     <td>
-                        Ключевые слова этой страницы<br />
-                        <span style="font-size:10px;">(вводятся через запятую)</span>
+                        Keywords
                     </td>
                     <td>
                         <%= Html.TextBoxFor(model => model.Keywords, new { style = "width:300px;" })%>
@@ -73,7 +70,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Описание страницы
+                       Description
                     </td>
                     <td>
                        <%= Html.TextAreaFor(model => model.Description, 5, 50, null)%>
@@ -85,14 +82,14 @@
            
            
          <div style="position:relative; margin:auto; width:110px;">
-         <input  type="submit" value="Сохранить всё" />
+         <input  type="submit" value="Save" />
          </div>
 
       
     <% } %>
 
     <div>
-        <%= Html.ActionLink("Назад к списку экскурсий", "Index", "Excursions", new { area=""},null)%>
+        <%= Html.ActionLink("Back to list", "Index", "Excursions", new { area=""},null)%>
     </div>
 
 </asp:Content>

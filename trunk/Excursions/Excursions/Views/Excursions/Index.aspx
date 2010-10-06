@@ -14,7 +14,7 @@
         {
     %>
     <div>
-    <%= Html.ActionLink("Добавить запись", "AddEdit", "Excursions", new { area = "Admin" }, new { @class = "adminLink" })%>
+    <%= Html.ActionLink("Add item", "AddEdit", "Excursions", new { area = "Admin" }, new { @class = "adminLink" })%>
     </div>
     <%
         } %>

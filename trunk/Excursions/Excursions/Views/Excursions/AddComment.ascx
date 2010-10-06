@@ -8,7 +8,7 @@
 
 <%=Html.Hidden("excursionId",Model.Id)%>
 <div class="addCommentAuthor">
-Автор:
+Name:
 </div>
 <%=Html.TextBox("author") %>
 
@@ -23,7 +23,7 @@
 </div>
 
 
-<input type="submit" value="Отправить" />
+<input type="submit" value="Send" />
 </div>
 <%
-       }%>
+}%>

@@ -99,11 +99,11 @@ namespace Excursions.Areas.Admin.Controllers
                     string filePath = Path.Combine(Server.MapPath("~/Content/Images"), newFileName);
                     Request.Files["image"].SaveAs(filePath);
                     excursion.ImageSource = newFileName;
-                    fieldsToUpdate = new string[] { "Title", "ShortDescription", "Text", "Keywords", "Price", "SortOrder", "Popular", "ImageSource" };
+                    fieldsToUpdate = new string[] { "Title", "ShortDescription", "Text", "Name", "Keywords", "Description", "Price", "SortOrder", "Popular", "ImageSource" };
                 }
                 else
                 {
-                    fieldsToUpdate = new string[] { "Title", "ShortDescription", "Text", "Keywords", "Price", "SortOrder", "Popular" };
+                    fieldsToUpdate = new string[] { "Title", "ShortDescription", "Text", "Name", "Keywords", "Description", "Price", "SortOrder", "Popular" };
                 }
 
                 TryUpdateModel(excursion, fieldsToUpdate, form.ToValueProvider());
@@ -118,6 +118,8 @@ namespace Excursions.Areas.Admin.Controllers
                     ModelState.AddModelError("ShortDescription", "ShortDescription is required!");
                 if (String.IsNullOrEmpty(excursion.Text))
                     ModelState.AddModelError("Text", "Text is required!");
+                if (String.IsNullOrEmpty(excursion.Name))
+                    ModelState.AddModelError("Name", "Name is required!");
 
                 if (ModelState.IsValid)
                 {
