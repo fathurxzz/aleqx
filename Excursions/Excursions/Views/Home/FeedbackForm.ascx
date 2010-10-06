@@ -48,7 +48,7 @@
             </div>
             
             <div>
-                Всё верно, <input type="submit" value="Отправить" />
+                <input type="submit" value="Send" />
             </div>
 
     <% } %>
