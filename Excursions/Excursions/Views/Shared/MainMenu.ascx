@@ -22,7 +22,7 @@
         if (Request.IsAuthenticated)
         {%>
     
-        <li class="admin"><%=Html.ActionLink("[добавить ещё]", "AddEdit", "Content", new { area = "Admin" }, new { @class = "adminLink" })%></li>
+        <li class="admin"><%=Html.ActionLink("[Add item]", "AddEdit", "Content", new { area = "Admin" }, new { @class = "adminLink" })%></li>
     
     <%
         }        

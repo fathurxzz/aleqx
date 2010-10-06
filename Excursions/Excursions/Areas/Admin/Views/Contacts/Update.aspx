@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Excursions.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Update
+	Update contacts
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -16,7 +16,7 @@
         <table class="adminEditContentTable">
         <tr>
             <td colspan="2">
-                Содержимое страницы<br />
+                Content<br />
                 
                 <%= Html.TextAreaFor(model => model.Text)%>
             </td>
@@ -25,14 +25,14 @@
         
          </div>
          
-          <h2 class="editContentTitle">Для поисковых систем</h2>
+          <h2 class="editContentTitle">SEO</h2>
           
            <div class="adminEditContentContainer">
                 <table class="adminEditContentTable">
                 <tr>
                     <td>
-                        Ключевые слова этой страницы<br />
-                        <span style="font-size:10px;">(вводятся через запятую)</span>
+                        Keywords<!--<br />
+                        <span style="font-size:10px;">(вводятся через запятую)</span>-->
                     </td>
                     <td>
                         <%= Html.TextBoxFor(model => model.Keywords, new { style = "width:300px;" })%>
@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td>
-                       Описание страницы
+                       Description
                     </td>
                     <td>
                        <%= Html.TextAreaFor(model => model.Description, 5, 50, null)%>
@@ -52,14 +52,14 @@
            
            
          <div style="position:relative; margin:auto; width:110px;">
-         <input  type="submit" value="Сохранить всё" />
+         <input  type="submit" value="Save" />
          </div>
 
       
     <% } %>
 
     <div>
-        <%= Html.ActionLink("Назад к списку экскурсий", "Index", "Excursions", new { area=""},null)%>
+        <%= Html.ActionLink("Back to list", "Index", "Excursions", new { area=""},null)%>
     </div>
 
 

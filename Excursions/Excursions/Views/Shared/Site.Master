@@ -18,9 +18,11 @@
      <%if (Request.IsAuthenticated)
                   {
                 %>
-                <%= Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account",null, new { @class= "logOffLink" })%>
+                <%= Html.ActionLink("LogOff", "LogOff", "Account", null, new { @class = "adminLink" })%>
                 
-                <%=Html.ActionLink("Настройки","Index","Settings",new{area="Admin"},new{@class="adminLink"}) %>
+                <%=Html.ActionLink("Settings","Index","Settings",new{area="Admin"},new{@class="adminLink"}) %>
+
+                <%=Html.ActionLink("Change Password", "ChangePassword", "Account", null, new { @class = "adminLink" })%>
                 
                 <%
                     } %>

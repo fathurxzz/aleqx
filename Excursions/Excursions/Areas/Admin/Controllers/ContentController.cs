@@ -57,10 +57,10 @@ namespace Excursions.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             using (var context = new ContentStorage())
-            {/*
+            {
                 var content = context.Content.Select(c => c).Where(c => c.Id == id).First();
                 context.DeleteObject(content);
-                context.SaveChanges();*/
+                context.SaveChanges();
             }
             return RedirectToAction("Index", "Excursions", new { area = "" });
         }

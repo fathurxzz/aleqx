@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using Excursions.Helpers;
 using Excursions.Models;
-using Excursions.Models.Captcha;
 
 namespace Excursions.Controllers
 {

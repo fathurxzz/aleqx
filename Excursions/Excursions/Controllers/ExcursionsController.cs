@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using Excursions.Helpers;
 using Excursions.Models;
-using Excursions.Models.Captcha;
 
 
 namespace Excursions.Controllers
@@ -28,16 +27,16 @@ namespace Excursions.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             using (var context = new ContentStorage())
             {
-                var excursion = context.Excursion.Include("Comments").Select(e => e).Where(e => e.Id == id).First();
+                var excursion = context.Excursion.Include("Comments").Select(e => e).Where(e => e.Name == id).First();
                 return View(excursion);
             }
         }
 
-
+        /*
         [HttpPost]
         [CaptchaValidation("captcha")]
         public ActionResult CreateComment(Comments comment, int excursionId, string author, string commentText, bool captchaValid)
@@ -87,7 +86,7 @@ namespace Excursions.Controllers
                 }
             }
 
-        }
+        }*/
 
     }
 }

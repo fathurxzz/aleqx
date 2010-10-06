@@ -36,8 +36,8 @@ body
 }
 #meta
 {
-    width: 132px;
-    border-top: 6px solid #DDDDDD;
+    width: 145px;
+    /*border-top: 6px solid #DDDDDD;*/
     padding-top: 42px;
     text-align: center;
     font-size: 11px;

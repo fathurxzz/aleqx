@@ -83,10 +83,8 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExcursionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
-    <Compile Include="captcha.ashx.cs">
-      <DependentUpon>captcha.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
@@ -95,14 +93,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AjaxExtensions.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaAttribute.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaAttributeAdapter.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaExtensions.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaImage.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaImageHandler.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaValidationAttribute.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Helpers\ResourceTracker.cs" />
+    <Compile Include="Helpers\ScriptExtensions.cs" />
+    <Compile Include="Helpers\Validation\RemoteAttribute.cs" />
+    <Compile Include="Helpers\Validation\RemoteAttributeAdapter.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Captcha\CaptchaImage.cs" />
-    <Compile Include="Models\Captcha\CaptchaImageHandler.cs" />
-    <Compile Include="Models\Captcha\CaptchaValidationAttribute.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +128,27 @@
     <Content Include="Areas\Admin\Views\Settings\Index.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Admin2.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox-x.png" />
+    <Content Include="Content\fancybox\fancybox-y.png" />
+    <Content Include="Content\fancybox\fancybox.png" />
+    <Content Include="Content\fancybox\fancy_close.png" />
+    <Content Include="Content\fancybox\fancy_loading.png" />
+    <Content Include="Content\fancybox\fancy_nav_left.png" />
+    <Content Include="Content\fancybox\fancy_nav_right.png" />
+    <Content Include="Content\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\fancybox\fancy_title_left.png" />
+    <Content Include="Content\fancybox\fancy_title_main.png" />
+    <Content Include="Content\fancybox\fancy_title_over.png" />
+    <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\img\arrow.gif" />
     <Content Include="Content\img\banner.jpg" />
     <Content Include="Content\img\bg.jpg" />
@@ -148,13 +175,16 @@
     <None Include="Content\MailTemplates\newFeedback" />
     <Content Include="Content\query.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.FCKEditor.js" />
+    <Content Include="Scripts\MvcCaptchaValidation.js" />
     <Content Include="Views\Contacts\Index.aspx" />
     <Content Include="Views\Excursions\AddComment.ascx" />
     <Content Include="Views\Excursions\Comment.ascx" />
     <Content Include="Views\Excursions\Details.aspx" />
     <Content Include="Views\Excursions\Excursion.ascx" />
     <Content Include="Views\Excursions\Index.aspx" />
+    <Content Include="Views\Home\FeedbackForm.ascx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
@@ -213,9 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="captcha.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

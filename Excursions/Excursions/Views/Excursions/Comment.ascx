@@ -7,7 +7,7 @@
             if(Request.IsAuthenticated)
             {
                 %>
-                <%= Html.ActionLink("Удалить", "Delete", "Comments", new { area = "Admin", id = Model.Id, excursionId = Model.Excursion.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить комментарий?')" })%><br/>
+                <%= Html.ActionLink("Delete", "Delete", "Comments", new { area = "Admin", id = Model.Id, excursionId = Model.Excursion.Id }, new { @class = "adminLink", onclick = "return confirm('Delete comment?')" })%><br/>
                 <%
             }
         %>
