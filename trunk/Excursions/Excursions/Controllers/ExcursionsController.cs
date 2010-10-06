@@ -72,9 +72,10 @@ namespace Excursions.Controllers
 
                 
 
-                Response.Write("<script>window.top.$.fancybox.close()</script>");
+                //Response.Write("<script>window.top.$.fancybox.close()</script>");
+                Response.Write("<script>window.top.location.href=window.top.location.href</script>");
 
-                Redirect("~/Excursions/Details/" + excursion.Name);
+                //Redirect("~/Excursions/Details/" + excursion.Name);
                 
                 //return RedirectToAction("Details", "Excursions", new { area = "", id = excursion.Name });
 
