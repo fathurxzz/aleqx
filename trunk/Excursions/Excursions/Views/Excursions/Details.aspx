@@ -2,13 +2,10 @@
 <%@ Import Namespace="Excursions.Helpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Details
+	Kyiv Tours - Excursions - <%=Model.Title %>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-
-
 <h2><%=Model.Title %></h2>
 <div class="big_photo">
 <%= Html.CachedImage("~/Content/Images", Model.ImageSource, "thumbnail1",Model.Title)%>
@@ -34,32 +31,10 @@ Comments:
     } 
     %>
 </div>
-
- <div id="collapsibleLink">
-    <a href="#"  onclick="showCollapsibleBox()">Add comment</a>
-
-    <br />
-    <a id="feedbackForm" class="iframe" href="/Home/FeedbackForm">Форма обратной связи</a>
-    </div>
-
-<%
-    Html.RenderPartial("AddComment", Model);
-%>
-
-
+    <a id="feedbackForm" class="iframe" href="/Excursions/AddComment">Add comment</a>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
-<script type="text/javascript">
-    function showCollapsibleBox() {
-
-        $("#collapsibleLink").css("display", "none");
-
-        $("#addComment").slideDown("fast");
-    }
-    </script>
-
-
 
     <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
     <%= Ajax.DynamicCssInclude("/Content/fancybox/jquery.fancybox.css") %>

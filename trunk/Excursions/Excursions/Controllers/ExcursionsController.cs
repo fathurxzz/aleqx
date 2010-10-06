@@ -36,6 +36,11 @@ namespace Excursions.Controllers
             }
         }
 
+        public ActionResult AddComment()
+        {
+            return View();
+        }
+
         /*
         [HttpPost]
         [CaptchaValidation("captcha")]

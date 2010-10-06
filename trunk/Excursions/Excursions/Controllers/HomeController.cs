@@ -65,17 +65,37 @@ namespace Excursions.Models
 {
     public class FeedbackFormModel
     {
-        [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Имя, фамилия")]
+        
+        [DisplayName("Name")]
         public string Name { get; set; }
-        [DisplayName("Электропочта")]
+
+        [Required(ErrorMessage = "* Required")]
+        [DisplayName("Email")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Неверно введен адрес почты. Формат: name@domain.com")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Текст запроса")]
+
+        [Required(ErrorMessage = "* Required")]
+        [DisplayName("Message")]
         public string Text { get; set; }
-        [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Неправильно введены символы с картинки!")]
-        [Required(ErrorMessage = "Введите символы с картинки")]
+        
+        [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Wrong symbols!")]
+        [Required(ErrorMessage = "Enter symbols")]
+        [DisplayName("")]
+        public string Captcha { get; set; }
+    }
+
+    public class AddCommentFormModel
+    {
+        [Required(ErrorMessage = "* Required")]
+        [DisplayName("Name")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "* Required")]
+        [DisplayName("Comment")]
+        public string Text { get; set; }
+
+        [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Wrong symbols!")]
+        [Required(ErrorMessage = "Enter symbols")]
         [DisplayName("")]
         public string Captcha { get; set; }
     }
