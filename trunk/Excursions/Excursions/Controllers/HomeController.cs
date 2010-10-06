@@ -37,25 +37,11 @@ namespace Excursions.Controllers
         [HttpPost]
         public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-
-            /*
-            SiteSettings settings = Configurator.LoadSettings();
-            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress(settings.ReceiverMail) },
-                "Форма обратной связи", "FeedbackTemplate.htm",
-                null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
-            */
-
-
             string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
             string emailsTo = ApplicationData.NotificationEmail;
             string subject = "testours.1gb.ua - Новый отзыв";
             string[] replacements = { DateTime.Now.ToString(), feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text };
             MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newFeedback", false, replacements);
-            
-            //return RedirectToAction("Index", "Contacts", new { message = "Сообщение отправлено" });
-
-
-
             Response.Write("<script>window.top.$.fancybox.close()</script>");
         }
     }

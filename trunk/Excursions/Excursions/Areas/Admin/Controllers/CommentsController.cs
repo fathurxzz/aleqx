@@ -13,7 +13,7 @@ namespace Excursions.Areas.Admin.Controllers
         //
         // GET: /Admin/Comments/
 
-        public ActionResult Delete(int id, int excursionId)
+        public ActionResult Delete(int id, string excursionId)
         {
 
             using (var context = new ContentStorage())
