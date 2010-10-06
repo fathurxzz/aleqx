@@ -22,7 +22,7 @@
                 
                 <%=Html.ActionLink("Settings","Index","Settings",new{area="Admin"},new{@class="adminLink"}) %>
 
-                <%=Html.ActionLink("Change Password", "ChangePassword", "Account", null, new { @class = "adminLink" })%>
+                <%=Html.ActionLink("Change Password", "ChangePassword", "Account", new { area = "" }, new { @class = "adminLink" })%>
                 
                 <%
                     } %>
