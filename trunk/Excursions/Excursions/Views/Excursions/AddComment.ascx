@@ -28,7 +28,7 @@
                 <%= Html.LabelFor(model => model.Text) %>
             </div>
             <div class="editor-field">
-                <%= Html.TextAreaFor(model => model.Text) %>
+                <%= Html.TextAreaFor(model => model.Text,8,60,null) %>
                 <%= Html.ValidationMessageFor(model => model.Text) %>
             </div>
             <div id="captchaImage">
