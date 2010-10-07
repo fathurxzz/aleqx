@@ -18,7 +18,7 @@
 
     <%=Model.Text %>
     
-    <a id="feedbackForm" class="iframe" href="/Home/FeedbackForm">Форма обратной связи</a>
+    <a id="feedbackForm" class="iframe" href="/Home/FeedbackForm">Feedback</a>
 
 </asp:Content>
 
