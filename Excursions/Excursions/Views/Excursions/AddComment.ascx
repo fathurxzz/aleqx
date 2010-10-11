@@ -12,8 +12,6 @@
     <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm()) {
            
-           
-           
            %>
         <%= Html.ValidationSummary(true) %>
         <%=Html.Hidden("excursionId", ViewData["excursionId"])%>
