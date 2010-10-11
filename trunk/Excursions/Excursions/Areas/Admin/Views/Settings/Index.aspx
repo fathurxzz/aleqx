@@ -13,11 +13,11 @@
         %>
     <table class="adminEditContentTable">
         <tr>
-            <td valign="top" align="right">New comment notofication email:</td>
+            <td valign="top" align="right">New comment notification email:</td>
             <td align="left"><%=Html.TextArea("NewCommentNotificationEmail", (string)ViewData["NewCommentNotificationEmail"], 5, 45, null)%> </td>
         </tr>
         <tr>
-            <td valign="top" align="right">Feedback notofication email:</td>
+            <td valign="top" align="right">Feedback notification email:</td>
             <td align="left"><%=Html.TextArea("FeebbackNotificationEmail", (string)ViewData["FeebbackNotificationEmail"], 5, 45, null)%> </td>
         </tr>
         <tr>
