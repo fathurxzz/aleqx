@@ -1,11 +1,13 @@
 ﻿.field-validation-error, .validation-summary-errors
 {
     color: Red;
+    font-family:Tahoma;
 }
 
 p
 {
     margin-top: 10px;
+    font-family:Tahoma;
 }
 
 a.adminLink
@@ -14,6 +16,7 @@ a.adminLink
     font-family:Tahoma;
     color: Red;
     margin-left:15px;
+    
 }
 
 a:hover.adminLink
@@ -29,6 +32,7 @@ a:visited.adminLink
 .logOffLink
 {
     color: #ff0000;
+    font-family:Tahoma;
 }
 
 .logOffLink:hover
@@ -40,6 +44,7 @@ h2.editContentTitle
 {
     color: #60b4fd;
     font-weight: normal;
+    font-family:Tahoma;
 }
 
 .adminEditContentContainer
@@ -54,6 +59,8 @@ h2.editContentTitle
 {
     padding-left: 20px;
     padding-top: 10px;
+    font-family:Tahoma;
+    font-size:14px;
 }
 
 

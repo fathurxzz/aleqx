@@ -10,7 +10,7 @@
             <%=Model.ShortDescription %>
         <div class="line">&nbsp;</div>
         <span class="price">
-        <%=(Model.Price!=0? Model.Price.ToString():"&nbsp")%>
+        <%=(Model.Price ?? "&nbsp")%>
         </span>
         <%=Html.ActionLink("more details", "Details", "Excursions", new { area = "", id = Model.Name }, new { @class = "more" })%>
     </div>

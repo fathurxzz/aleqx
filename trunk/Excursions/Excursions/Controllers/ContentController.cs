@@ -16,7 +16,9 @@ namespace Excursions.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var content = context.Content.Select(c => c).Where(c => c.ContentId == id).First();
+                var content = context.Content.Select(c => c).Where(c => c.ContentId == id).FirstOrDefault();
+                if (content == null)
+                    throw new HttpException(404, "NotFound");
                 return View("Content", content);
             }
         }

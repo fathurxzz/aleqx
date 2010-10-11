@@ -14,17 +14,29 @@
 <div class="text">
 <%=Model.Text %>
 <br />
+<span class="price">
+        <%=(Model.Price ?? "&nbsp")%>
+        </span>
+        <br />
 <%=Html.ActionLink("Back to list", "Index", "Excursions", null, new { @class = "more" })%>
 </div>
 
 
 
 <div class="comments">
+
+<%
+    var comments = Model.Comments.Select(c => c).OrderBy(c => c.Date).ToList();
+
+    if (comments.Count > 0)
+    {
+
+%>
 Comments:
     <%
+    }
 
-    var comments = Model.Comments.Select(c => c).OrderBy(c => c.Date).ToList();
-            
+
     foreach (var item in comments)
     {
         Html.RenderPartial("Comment", item);

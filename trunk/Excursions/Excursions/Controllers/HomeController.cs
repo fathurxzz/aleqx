@@ -38,7 +38,7 @@ namespace Excursions.Controllers
         public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
             string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
-            string emailsTo = ApplicationData.NotificationEmail;
+            string emailsTo = ApplicationData.FeedbackNotificationEmail;
             string subject = "testours.1gb.ua - Новый отзыв";
             string[] replacements = { DateTime.Now.ToString(), feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text };
             MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newFeedback", false, replacements);
@@ -57,7 +57,7 @@ namespace Excursions.Models
 
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Email")]
-        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Неверно введен адрес почты. Формат: name@domain.com")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Please enter a valid email address.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "* Required")]

@@ -15,7 +15,8 @@ namespace Excursions.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            ViewData["NotificationEmail"] = ApplicationData.NotificationEmail;
+            ViewData["NewCommentNotificationEmail"] = ApplicationData.NewCommentNotificationEmail;
+            ViewData["FeebbackNotificationEmail"] = ApplicationData.FeedbackNotificationEmail;
             ViewData["Email"] = ApplicationData.Email;
 
             return View();
@@ -24,7 +25,8 @@ namespace Excursions.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Update(FormCollection form)
         {
-            ApplicationData.NotificationEmail = form["NotificationEmail"];
+            ApplicationData.NewCommentNotificationEmail = form["NewCommentNotificationEmail"];
+            ApplicationData.FeedbackNotificationEmail = form["FeebbackNotificationEmail"];
             ApplicationData.Email = form["Email"];
             return RedirectToAction("Index");
         }

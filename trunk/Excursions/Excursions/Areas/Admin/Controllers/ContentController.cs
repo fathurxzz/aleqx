@@ -17,7 +17,7 @@ namespace Excursions.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult AddEdit(int? id)
         {
-            Content content = null;
+            Content content;
             if (id.HasValue)
             {
                 using (var context = new ContentStorage())
@@ -25,32 +25,48 @@ namespace Excursions.Areas.Admin.Controllers
                     content = context.Content.Select(c => c).Where(c => c.Id == id).First();
                 }
             }
+            else
+            {
+                content = new Content();
+            }
             return View(content);
         }
 
         [HttpPost]
         public ActionResult AddEdit(Content content, int? Id)
         {
-            content.Text = HttpUtility.HtmlDecode(content.Text);
-            using (var context = new ContentStorage())
+
+            if (String.IsNullOrEmpty(content.Title))
+                ModelState.AddModelError("Title", "Title is required!");
+            if (String.IsNullOrEmpty(content.Text))
+                ModelState.AddModelError("Text", "Text is required!");
+            if (String.IsNullOrEmpty(content.ContentId))
+                ModelState.AddModelError("ContentId", "ContentId is required!");
+
+            if (ModelState.IsValid)
             {
-                if (Id.HasValue && Id.Value > 0)
+                content.Text = HttpUtility.HtmlDecode(content.Text);
+                using (var context = new ContentStorage())
                 {
-                    content.Id = Id.Value;
-                    object originalItem;
-                    EntityKey entityKey = new EntityKey("ContentStorage.Content", "Id", content.Id);
-                    if (context.TryGetObjectByKey(entityKey, out originalItem))
+                    if (Id.HasValue && Id.Value > 0)
                     {
-                        context.ApplyPropertyChanges(entityKey.EntitySetName, content);
+                        content.Id = Id.Value;
+                        object originalItem;
+                        EntityKey entityKey = new EntityKey("ContentStorage.Content", "Id", content.Id);
+                        if (context.TryGetObjectByKey(entityKey, out originalItem))
+                        {
+                            context.ApplyPropertyChanges(entityKey.EntitySetName, content);
+                        }
                     }
+                    else
+                    {
+                        context.AddToContent(content);
+                    }
+                    context.SaveChanges();
                 }
-                else
-                {
-                    context.AddToContent(content);
-                }
-                context.SaveChanges();
+                return RedirectToAction("Index", "Content", new {area = "", id = content.ContentId});
             }
-            return RedirectToAction("Index", "Content", new { area = "", id=content.ContentId });
+            return View(content);
         }
 
         [HttpGet]

@@ -17,10 +17,11 @@
         <tr>
             <td>
                 PageName<br />
-                <span style="font-size:10px;">(solid word without gabs)</span>
+                <span style="font-size:14px; font-family:Tahoma;">(solid word without gaps)</span>
             </td>
             <td>
                   <%= Html.TextBoxFor(model => model.ContentId, new { style = "width:300px;" })%>
+                  <%= Html.ValidationMessageFor(model => model.ContentId)%>
             </td>
         </tr>
         
@@ -31,13 +32,14 @@
             <td>
                 
                 <%= Html.TextBoxFor(model => model.Title, new { style = "width:300px;" })%>
+                <%= Html.ValidationMessageFor(model => model.Title)%>
             </td>
         </tr>
       
 
         <tr>
             <td colspan="2">
-                Page content<br />
+                Page content <%= Html.ValidationMessageFor(model => model.Text)%><br />
                 
                 <%= Html.TextAreaFor(model => model.Text)%>
             </td>
@@ -49,6 +51,7 @@
             <td style="width:200px;">Order:</td>
             <td> 
             <%= Html.TextBoxFor(model => model.SortOrder, new { style = "width:20px;" })%>
+            <%= Html.ValidationMessageFor(model => model.SortOrder)%>
             </td>
         </tr>
         
