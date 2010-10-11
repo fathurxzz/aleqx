@@ -78,6 +78,7 @@ namespace Excursions.Models
 
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Comment")]
+        [RegularExpression(@"^(\w*\s*)*$",ErrorMessage = "Message cannot contains < or >")]
         public string Text { get; set; }
 
         [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Wrong symbols!")]

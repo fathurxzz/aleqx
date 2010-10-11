@@ -43,9 +43,12 @@ namespace Excursions.Areas.Admin.Controllers
             if (String.IsNullOrEmpty(content.ContentId))
                 ModelState.AddModelError("ContentId", "ContentId is required!");
 
+
+            content.Text = HttpUtility.HtmlDecode(content.Text);
+
             if (ModelState.IsValid)
             {
-                content.Text = HttpUtility.HtmlDecode(content.Text);
+                
                 using (var context = new ContentStorage())
                 {
                     if (Id.HasValue && Id.Value > 0)

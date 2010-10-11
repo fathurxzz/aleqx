@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Excursions.Helpers;
 using Excursions.Models;
@@ -45,12 +46,14 @@ namespace Excursions.Controllers
             using (var context = new ContentStorage())
             {
                 
+                
+
                 Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
                 
                 var comment = new Comments
                                   {
                                       Excursion = excursion,
-                                      Text = addCommentFormModel.Text,
+                                      Text = HttpUtility.HtmlDecode(addCommentFormModel.Text),
                                       Author = addCommentFormModel.Name,
                                       Date = DateTime.Now
                                   };
