@@ -59,10 +59,10 @@ namespace Excursions.Controllers
 
                 string linkBase = ConfigurationManager.AppSettings["linkBase"];
                 string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
-                string emailsTo = ApplicationData.NotificationEmail;
+                string emailsTo = ApplicationData.NewCommentNotificationEmail;
                 const string subject = "testours.1gb.ua - Новый комментарий";
                 string[] replacements = {
-                                                linkBase + "/Excursions/Details/" + excursionId, comment.Date.ToString()
+                                                linkBase + "/Excursions/Details/" + excursion.Name, comment.Date.ToString()
                                                 ,
                                                 comment.Author, comment.Text
                                             };

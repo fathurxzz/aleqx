@@ -108,9 +108,6 @@ namespace Excursions.Areas.Admin.Controllers
 
                 TryUpdateModel(excursion, fieldsToUpdate, form.ToValueProvider());
 
-                excursion.Text = HttpUtility.HtmlDecode(excursion.Text);
-                excursion.ShortDescription = HttpUtility.HtmlDecode(excursion.ShortDescription);
-
 
                 if (String.IsNullOrEmpty(excursion.Title))
                     ModelState.AddModelError("Title", "Title is required!");
@@ -121,8 +118,16 @@ namespace Excursions.Areas.Admin.Controllers
                 if (String.IsNullOrEmpty(excursion.Name))
                     ModelState.AddModelError("Name", "Name is required!");
 
+
+                
+
                 if (ModelState.IsValid)
                 {
+                    
+
+                    excursion.Text = HttpUtility.HtmlDecode(excursion.Text);
+                    excursion.ShortDescription = HttpUtility.HtmlDecode(excursion.ShortDescription);
+
                     if (excursion.Id == 0)
                         context.AddToExcursion(excursion);
 
@@ -142,9 +147,7 @@ namespace Excursions.Areas.Admin.Controllers
                 context.DeleteObject(excursion);
                 context.SaveChanges();
             }
-            // ReSharper disable Asp.NotResolved
             return RedirectToAction("Index", "Excursions", new { area = "" });
-            // ReSharper restore Asp.NotResolved
         }
 
     }

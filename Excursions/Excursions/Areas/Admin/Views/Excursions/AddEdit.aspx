@@ -7,7 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
    <h2 class="editContentTitle">Edit content</h2>
-
+   
     <% using (Html.BeginForm("AddEdit","Excursions",FormMethod.Post,new { area="Admin", enctype = "multipart/form-data" }))
        {%>
         <%= Html.ValidationSummary(true) %>
@@ -24,30 +24,29 @@
                 Name
             </td>
             <td>
-                
                 <%= Html.TextBoxFor(model => model.Name, new { style = "width:300px;" })%>
+                <%= Html.ValidationMessageFor(model => model.Name)%>
             </td>
         </tr>
         <tr>
             <td>
-                Title
+                Title 
             </td>
             <td>
-                
                 <%= Html.TextBoxFor(model => model.Title, new { style = "width:300px;" })%>
+                <%= Html.ValidationMessageFor(model => model.Title)%>
             </td>
         </tr>
-
         <tr>
             <td colspan="2">
-                Short Description<br />
+                Short Description <%= Html.ValidationMessageFor(model => model.ShortDescription)%><br />
                 <%= Html.TextAreaFor(model => model.ShortDescription)%>
             </td>
         </tr>
 
         <tr>
             <td colspan="2">
-                Content<br />
+                Content <%= Html.ValidationMessageFor(model => model.Text)%> <br />
                 <%= Html.TextAreaFor(model => model.Text)%>
             </td>
         </tr>
@@ -65,10 +64,10 @@
         </tr>
 
         <tr>
-            <td style="width:200px;">Order:<!--<br />
-                <span style="font-size:10px;">(каким по очереди будет этот раздел, необходимо ввести только цифру)</span>--></td>
+            <td style="width:200px;">Order:</td>
             <td> 
             <%= Html.TextBoxFor(model => model.SortOrder, new { style = "width:20px;" })%>
+            <%= Html.ValidationMessageFor(model => model.SortOrder)%>
             </td>
         </tr>
         

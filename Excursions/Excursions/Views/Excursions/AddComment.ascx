@@ -3,6 +3,7 @@
     <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
     <script type="text/javascript" src="/Scripts/MvcCaptchaValidation.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
+    <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         function OnCaptchaValidationError() {
             $.get("/Captcha/Draw", function (data) { $("#captchaImage").html(data); });
@@ -26,10 +27,10 @@
             
             <div class="editor-label">
                 <%= Html.LabelFor(model => model.Text) %>
+                <%= Html.ValidationMessageFor(model => model.Text) %>
             </div>
             <div class="editor-field">
                 <%= Html.TextAreaFor(model => model.Text,8,60,null) %>
-                <%= Html.ValidationMessageFor(model => model.Text) %>
             </div>
             <div id="captchaImage">
                 <%= Html.Action("Draw", new {area="", controller="Captcha"})%>

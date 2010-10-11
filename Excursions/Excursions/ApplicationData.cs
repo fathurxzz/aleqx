@@ -8,10 +8,16 @@ namespace Excursions
 {
     public static class ApplicationData
     {
-        public static string NotificationEmail
+        public static string NewCommentNotificationEmail
         {
-            get { return GetApplicationData("notificationEmail"); }
-            set { SetApplicationData("notificationEmail", value); }
+            get { return GetApplicationData("newCommentNotificationEmail"); }
+            set { SetApplicationData("newCommentNotificationEmail", value); }
+        }
+
+        public static string FeedbackNotificationEmail
+        {
+            get { return GetApplicationData("feedbackNotificationEmail"); }
+            set { SetApplicationData("feedbackNotificationEmail", value); }
         }
 
         public static string Email
@@ -19,7 +25,6 @@ namespace Excursions
             get { return GetApplicationData("email"); }
             set { SetApplicationData("email", value); }
         }
-
 
         private static string GetApplicationData(string key)
         {
@@ -47,7 +52,5 @@ namespace Excursions
                 context.SaveChanges();
             }
         }
-
-
     }
 }
