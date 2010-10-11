@@ -7,6 +7,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
    <h2 class="editContentTitle">Update content</h2>
+    
+    <% Html.EnableClientValidation(); %>
 
     <% using (Html.BeginForm()) {%>
         <%= Html.ValidationSummary(true) %>
@@ -107,4 +109,8 @@
             $("#ShortDescription").fck({ height: 500, width: 500 });
         });
     </script>
+    
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+
 </asp:Content>
