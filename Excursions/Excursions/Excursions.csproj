@@ -193,6 +193,7 @@
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\PopularExcursions.ascx" />
+    <Content Include="Views\Shared\Search.ascx" />
     <Content Include="Views\Shared\TopMenu.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
