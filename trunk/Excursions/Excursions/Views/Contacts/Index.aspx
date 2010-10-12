@@ -18,7 +18,7 @@
 
     <%=Model.Text %>
     
-    <a id="feedbackForm" class="iframe" href="/Home/FeedbackForm">Feedback</a>
+    <a id="feedbackForm" class="iframe" href="/Home/FeedbackForm">Leave a message</a>
 
 </asp:Content>
 
@@ -30,6 +30,7 @@
         $(function () {
             $("#feedbackForm").fancybox(
             {
+                scrolling:'no',
                 hideOnContentClick: false,
                 hideOnOverlayClick: false,
                 showCloseButton: true
