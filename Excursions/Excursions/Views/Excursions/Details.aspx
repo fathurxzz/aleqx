@@ -56,6 +56,7 @@ Comments:
         $(function () {
             $("#feedbackForm").fancybox(
             {
+                scrolling: 'no',
                 hideOnContentClick: false,
                 hideOnOverlayClick: false,
                 showCloseButton: true
