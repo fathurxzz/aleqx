@@ -78,7 +78,7 @@ namespace Excursions.Models
 
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Comment")]
-        [RegularExpression(@"^(\w*\s*)*$", ErrorMessage = "Message contains illegal symbols like \"<\" or \">\"")]
+        [RegularExpression(@"^(\w*\s*)*$", ErrorMessage = "Message contains illegal symbols")]
         public string Text { get; set; }
 
         [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Wrong symbols!")]
