@@ -3,7 +3,7 @@
 <ul id="menu">
 	<li><a runat="server" href="~/Excursions">Home</a></li>
 	<!--<li><a href="#">Services</a></li>-->
-	<li><a runat="server" href="~/Contacts">Contacts</a></li>
+	
 
     <%
         using (var context = new ContentStorage())
@@ -17,7 +17,7 @@
             }
         }
      %>
-
+     <li><a id="A1" runat="server" href="~/Contacts">Contacts</a></li>
     <%
         if (Request.IsAuthenticated)
         {%>
