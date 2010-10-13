@@ -18,9 +18,11 @@
         <%=(Model.Price ?? "&nbsp")%>
         </span>
         <br />
-<%=Html.ActionLink("Back to list", "Index", "Excursions", null, new { @class = "more" })%>
-</div>
 
+
+
+</div>
+<%=Html.ActionLink("Back to list", "Index", "Excursions", null, new { @class = "backToList" })%>
 
 
 <div class="comments">
@@ -43,7 +45,7 @@ Comments:
     } 
     %>
 </div>
-    <a id="feedbackForm" class="iframe" href="/Excursions/AddComment/<%=Model.Id%>">Add comment</a>
+    <a style="margin-left:25px;" id="feedbackForm" class="iframe" href="/Excursions/AddComment/<%=Model.Id%>">Add comment</a>
 
 </asp:Content>
 

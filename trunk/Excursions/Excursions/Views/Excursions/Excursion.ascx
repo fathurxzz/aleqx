@@ -13,5 +13,7 @@
         <%=(Model.Price ?? "&nbsp")%>
         </span>
         <%=Html.ActionLink("more details", "Details", "Excursions", new { area = "", id = Model.Name }, new { @class = "more" })%>
+        <div class="separator">&nbsp;</div>
     </div>
 </div>
+
