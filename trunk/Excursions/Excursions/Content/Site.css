@@ -249,7 +249,7 @@ body
 .block
 {
     width: 570px;
-    margin: 0 0 50px 23px; /*display: inline;*/ /*float: left;*/
+    margin: 0 0 0 23px; /*display: inline;*/ float: left;
 }
 
 .block img
