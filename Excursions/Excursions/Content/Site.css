@@ -23,6 +23,7 @@ body
     background-image: url(img/bg.jpg);
     background-position: top center;
     background-repeat: no-repeat;
+    min-width:1000px;
 }
 #header
 {
@@ -178,6 +179,15 @@ body
     margin: 0 0 5px 30px;
     float: left;
 }
+
+.backToList
+{
+    font-family: Arial;
+    font-size: 12px;
+    color: #009EDC;
+    margin-left:25px;
+}
+
 .banner
 {
     margin: 5px 0;
@@ -185,7 +195,7 @@ body
 }
 #central
 {
-    width: 607px;
+    width: 767px;
     float: left;
     margin: 30px 12px 0 20px;
     display: inline;
@@ -261,7 +271,16 @@ body
 {
     width: 100%;
     border-bottom: 1px solid #D2D2D2;
+    float:left;
 }
+.separator
+{
+    width: 100%;
+    border:none;
+    float:left;
+    height:30px;
+}
+
 
 .block div h4
 {
@@ -565,11 +584,13 @@ input[type="text"], input[type="password"]
     font-size:14px;
     font-weight:bold;
     color: #009EDC;
+    margin-left:25px;
+    padding-top:25px;
 }
 
 .comment
 {
-    width: 400px;
+    width: 680px;
     margin: 10px;
     font-size: 13px;
     border-bottom-color: Silver;

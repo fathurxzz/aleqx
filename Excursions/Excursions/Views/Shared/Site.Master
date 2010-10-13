@@ -37,7 +37,7 @@
         </div>
     </div>
     <div id="central">
-        <% Html.RenderPartial("Search"); %>
+        <% //Html.RenderPartial("Search"); %>
         <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
     </div>
         
