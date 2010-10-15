@@ -16,6 +16,7 @@
     /*background-color: #FFFFFF;*/
     border-color:transparent;
     background-color:transparent;
+    width:650px;
     
   }
   input.gsc-input {
