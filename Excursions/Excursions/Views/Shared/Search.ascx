@@ -12,8 +12,10 @@
  <style type="text/css">
   .gsc-control-cse {
     font-family: Verdana, sans-serif;
-    border-color: #FFFFFF;
-    background-color: #FFFFFF;
+    /*border-color: #FFFFFF;*/
+    /*background-color: #FFFFFF;*/
+    border-color:transparent;
+    background-color:transparent;
     
   }
   input.gsc-input {

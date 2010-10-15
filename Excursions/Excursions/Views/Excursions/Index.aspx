@@ -4,6 +4,7 @@
     Kyiv Tours - Excursions
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <% Html.RenderPartial("Search"); %>
     <% if (Model != null)
            foreach (var item in Model)
            {
