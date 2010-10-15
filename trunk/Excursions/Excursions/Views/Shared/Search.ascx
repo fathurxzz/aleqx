@@ -14,6 +14,7 @@
     font-family: Verdana, sans-serif;
     border-color: #FFFFFF;
     background-color: #FFFFFF;
+    
   }
   input.gsc-input {
     border-color: #777777;
@@ -21,11 +22,20 @@
   input.gsc-search-button {
     border-color: #ffffff;
     background-color: #66cccc;
+    visibility:hidden;
+    
   }
   .gsc-tabHeader.gsc-tabhInactive {
     border-color: #777777;
     background-color: #777777;
+    
   }
+  
+  .gsc-clear-button
+  {
+      visibility:hidden;
+    }
+    
   .gsc-tabHeader.gsc-tabhActive {
     border-color: #333333;
     background-color: #333333;
