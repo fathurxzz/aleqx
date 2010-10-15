@@ -23,17 +23,17 @@ namespace Excursions
                 "Admin/{action}",                           // URL with parameters
                 new { controller = "Admin", action = "Index", id = "" }  // Parameter defaults
             );
-
+            
             routes.MapRoute(
                "Excursions",                                              // Route name
-               "Excursions/{action}",                           // URL with parameters
+               "Excursions/",                           // URL with parameters
                new { controller = "Excursions", action = "Index", id = "" },
                new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
-
+            
             routes.MapRoute(
                "ExcursionDetails",                                              // Route name
-               "Excursions/{action}/{id}",                           // URL with parameters
+               "Excursions/{id}",                           // URL with parameters
                new { controller = "Excursions", action = "Details", id = "" },
                new string[1] { "Excursions.Controllers" }// Parameter defaults
             );

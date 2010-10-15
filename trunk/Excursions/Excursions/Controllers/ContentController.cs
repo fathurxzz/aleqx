@@ -18,7 +18,9 @@ namespace Excursions.Controllers
             {
                 var content = context.Content.Select(c => c).Where(c => c.ContentId == id).FirstOrDefault();
                 if (content == null)
-                    throw new HttpException(404, "NotFound");
+                {
+                    return RedirectToAction("NotFound", "Errors");
+                }
                 return View("Content", content);
             }
         }
