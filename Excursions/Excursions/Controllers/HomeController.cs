@@ -42,7 +42,11 @@ namespace Excursions.Controllers
             string subject = "testours.1gb.ua - Новый отзыв";
             string[] replacements = { DateTime.Now.ToString(), feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text };
             MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newFeedback", false, replacements);
-            Response.Write("<script>window.top.$.fancybox.close()</script>");
+            
+            //Response.Write("<script>window.top.$.fancybox.close()</script>");
+            //Response.Write("<script>alert('Thank you! Your message has been sent.')</script>");
+            Response.Write("<div style=\"width:100%; text-align:center; margin-top:100px;\">Thank you! Your message has been sent.</div>");
+            
         }
     }
 }
@@ -53,6 +57,7 @@ namespace Excursions.Models
     {
         
         [DisplayName("Name")]
+        [RegularExpression("^[^<>]*$", ErrorMessage = "Message contains illegal symbols")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "* Required")]
@@ -75,6 +80,7 @@ namespace Excursions.Models
     {
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Name")]
+        [RegularExpression("^[^<>]*$", ErrorMessage = "Message contains illegal symbols")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "* Required")]

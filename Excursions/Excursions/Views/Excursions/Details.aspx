@@ -28,7 +28,7 @@
 <div class="comments">
 
 <%
-    var comments = Model.Comments.Select(c => c).OrderBy(c => c.Date).ToList();
+    var comments = Model.Comments.Select(c => c).OrderByDescending(c => c.Date).ToList();
 
     if (comments.Count > 0)
     {
