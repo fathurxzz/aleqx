@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>The page has not been found.</h2>
+    <h3>The page has not been found.</h3>
 
 </asp:Content>
 
