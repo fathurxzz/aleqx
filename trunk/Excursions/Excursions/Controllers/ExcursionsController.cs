@@ -65,7 +65,7 @@ namespace Excursions.Controllers
                 string emailsTo = ApplicationData.NewCommentNotificationEmail;
                 const string subject = "testours.1gb.ua - Новый комментарий";
                 string[] replacements = {
-                                                linkBase + "/Excursions/Details/" + excursion.Name, comment.Date.ToString()
+                                                linkBase + "/Excursions/" + excursion.Name, comment.Date.ToString()
                                                 ,
                                                 comment.Author, comment.Text
                                             };
