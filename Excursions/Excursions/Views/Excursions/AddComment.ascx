@@ -19,10 +19,9 @@
                 <%= Html.LabelFor(model => model.Name) %>
             </div>
             <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Name) %>
+                <%= Html.TextBoxFor(model => model.Name, new { maxlength = 100 })%>
                 <%= Html.ValidationMessageFor(model => model.Name) %>
             </div>
-            
             <div class="editor-label">
                 <%= Html.LabelFor(model => model.Text) %>
                 <%= Html.ValidationMessageFor(model => model.Text) %>

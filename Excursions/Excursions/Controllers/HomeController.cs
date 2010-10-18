@@ -57,7 +57,7 @@ namespace Excursions.Models
     {
         
         [DisplayName("Name")]
-        [RegularExpression("^[^<>]*$", ErrorMessage = "Message contains illegal symbols")]
+        [RegularExpression("^[^<>]*$", ErrorMessage = "Message should not contain any of the following symbols: <, >.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "* Required")]
@@ -67,7 +67,7 @@ namespace Excursions.Models
 
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Message")]
-        [RegularExpression("^[^<>]*$", ErrorMessage = "Message contains illegal symbols")]
+        [RegularExpression("^[^<>]*$", ErrorMessage = "Message should not contain any of the following symbols: <, >.")]
         public string Text { get; set; }
         
         [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Wrong symbols!")]
@@ -80,12 +80,12 @@ namespace Excursions.Models
     {
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Name")]
-        [RegularExpression("^[^<>]*$", ErrorMessage = "Message contains illegal symbols")]
+        [RegularExpression("^[^<>]*$", ErrorMessage = "Message should not contain any of the following symbols: <, >.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "* Required")]
         [DisplayName("Comment")]
-        [RegularExpression("^[^<>]*$", ErrorMessage = "Message contains illegal symbols")]
+        [RegularExpression("^[^<>]*$", ErrorMessage = "Message should not contain any of the following symbols: <, >.")]
         public string Text { get; set; }
 
         [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Wrong symbols!")]
