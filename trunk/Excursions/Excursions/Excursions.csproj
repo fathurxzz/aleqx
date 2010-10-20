@@ -191,6 +191,7 @@
     <Content Include="Views\Excursions\Excursion.ascx" />
     <Content Include="Views\Excursions\Index.aspx" />
     <Content Include="Views\Home\FeedbackForm.ascx" />
+    <Content Include="Views\Shared\ContactsPanel.ascx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />

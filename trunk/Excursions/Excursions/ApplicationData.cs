@@ -14,6 +14,12 @@ namespace Excursions
             set { SetApplicationData("newCommentNotificationEmail", value); }
         }
 
+        public static string ContactsPanelText
+        {
+            get { return GetApplicationData("contactsPanelText"); }
+            set { SetApplicationData("contactsPanelText", value); }
+        }
+
         public static string FeedbackNotificationEmail
         {
             get { return GetApplicationData("feedbackNotificationEmail"); }

@@ -25,6 +25,10 @@
             <td align="left"><%=Html.TextBox("Email", ViewData["Email"], new{style="width:300px;"})%> </td>
         </tr>
         <tr>
+            <td valign="top" align="right">Text on ContactsPanel:</td>
+            <td align="left"><%=Html.TextArea("ContactsPanelText", (string)ViewData["ContactsPanelText"], 5, 45, null)%> </td>
+        </tr>
+        <tr>
             <td align="center" colspan="2">
                 <input type="submit"  value="Save"/>
             </td>
@@ -37,4 +41,11 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
     <link href="../../../../Content/Admin.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/jquery.FCKEditor.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.fck.config = { path: '<%= VirtualPathUtility.ToAbsolute("~/Controls/fckeditor/") %>', config: { DefaultLanguage: "ru", AutoDetectLanguage: false, SkinPath: "/Controls/fckeditor/editor/skins/office2003/"} };
+            $("#ContactsPanelText").fck({ height: 500, width: 500 });
+        });
+    </script>
 </asp:Content>
