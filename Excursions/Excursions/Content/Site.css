@@ -668,3 +668,19 @@ a
     font-size:13px;
     color: #009EDC;
 }
+
+.addExcursionLink
+{
+	width:150px;
+}
+
+#contactsPanel
+{
+	float:left;
+	width:230px;
+	
+	
+	margin-top:10px;
+	font-family:Tahoma;
+    font-size:13px;
+}

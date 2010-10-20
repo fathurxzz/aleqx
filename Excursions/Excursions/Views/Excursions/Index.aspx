@@ -14,7 +14,7 @@
         if (Request.IsAuthenticated)
         {
     %>
-    <div>
+    <div class="addExcursionLink">
     <%= Html.ActionLink("Add item", "AddEdit", "Excursions", new { area = "Admin" }, new { @class = "adminLink" })%>
     </div>
     <%

@@ -17,8 +17,8 @@ namespace Excursions.Areas.Admin.Controllers
         {
             ViewData["NewCommentNotificationEmail"] = ApplicationData.NewCommentNotificationEmail;
             ViewData["FeebbackNotificationEmail"] = ApplicationData.FeedbackNotificationEmail;
+            ViewData["ContactsPanelText"] = ApplicationData.ContactsPanelText;
             ViewData["Email"] = ApplicationData.Email;
-
             return View();
         }
 
@@ -27,6 +27,7 @@ namespace Excursions.Areas.Admin.Controllers
         {
             ApplicationData.NewCommentNotificationEmail = form["NewCommentNotificationEmail"];
             ApplicationData.FeedbackNotificationEmail = form["FeebbackNotificationEmail"];
+            ApplicationData.ContactsPanelText = HttpUtility.HtmlDecode(form["ContactsPanelText"]);
             ApplicationData.Email = form["Email"];
             return RedirectToAction("Index");
         }

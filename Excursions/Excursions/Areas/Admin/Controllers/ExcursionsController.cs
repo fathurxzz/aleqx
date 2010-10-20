@@ -95,6 +95,12 @@ namespace Excursions.Areas.Admin.Controllers
                 string file = Request.Files["image"].FileName;
                 if (!string.IsNullOrEmpty(file))
                 {
+
+                    if(!string.IsNullOrEmpty(excursion.ImageSource))
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", excursion.ImageSource);
+                    }
+
                     string newFileName = IOHelper.GetUniqueFileName("~/Content/Images", file);
                     string filePath = Path.Combine(Server.MapPath("~/Content/Images"), newFileName);
                     Request.Files["image"].SaveAs(filePath);
@@ -144,6 +150,10 @@ namespace Excursions.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == id).First();
+                if (!string.IsNullOrEmpty(excursion.ImageSource))
+                {
+                    IOHelper.DeleteFile("~/Content/Images", excursion.ImageSource);
+                }
                 context.DeleteObject(excursion);
                 context.SaveChanges();
             }

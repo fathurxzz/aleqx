@@ -15,6 +15,7 @@
 
 <body>
 <div id="header">
+<% Html.RenderPartial("ContactsPanel"); %>
      <%if (Request.IsAuthenticated)
                   {
                 %>
