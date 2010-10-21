@@ -2,7 +2,7 @@
 <%@ Import Namespace="Excursions.Models" %>
 
 <div>
-		<a id="A1" runat="server" href="~/Excursions">Home</a> | <a id="A2" runat="server" href="~/Contacts">Contacts</a>  
+		<a id="A1" runat="server" href="~/Excursions">Home</a> 
             <%
         using (var context = new ContentStorage())
         {
@@ -16,7 +16,7 @@
         }
      %>
 
-        
+        | <a id="A2" runat="server" href="~/Contacts">Contacts</a>  
          
 	</div>
 	<p id="copy">Copyright &#169;. All rights reserved. Design by <a href="http://www.bestfreetemplates.info/" target="_blank" title="Best Free Templates">BFT</a>     </p>
