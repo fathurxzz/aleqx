@@ -21,19 +21,7 @@ namespace Excursions.Controllers
     {
         //
         // GET: /Excursions/
-
-        /*
-        [HttpGet]
-        public ActionResult Index()
-        {
-            using (var context = new ContentStorage())
-            {
-                var excursionList = context.Excursion.Select(e => e).OrderBy(e => e.SortOrder).ToList();
-                return View(excursionList);
-            }
-        }
-        */
-
+        
         [HttpGet]
         public ActionResult Index(ExcursionType type)
         {
@@ -45,6 +33,10 @@ namespace Excursions.Controllers
                 return View(excursionList);
             }
         }
+        
+
+
+       
 
 
         public ActionResult Details(string id)
