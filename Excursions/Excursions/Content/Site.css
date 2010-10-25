@@ -226,6 +226,7 @@ body
     font-weight: bold;
     padding: 11px 0 9px 0;
     margin: 0 0 30px 0;
+    width:670px;
 }
 .search input
 {
@@ -684,3 +685,4 @@ a
 	font-family:Tahoma;
     font-size:13px;
 }
+
