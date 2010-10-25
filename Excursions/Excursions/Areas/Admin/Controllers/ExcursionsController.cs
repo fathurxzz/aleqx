@@ -109,8 +109,10 @@ namespace Excursions.Areas.Admin.Controllers
                 }
                 else
                 {
-                    fieldsToUpdate = new string[] { "Title", "ShortDescription", "Text", "Name", "Keywords", "Description", "Price", "SortOrder", "Popular" };
+                    fieldsToUpdate = new string[] { "Title", "ShortDescription", "Text", "Name", "Keywords", "Description", "Price", "SortOrder", "Popular", "ExcursionType" };
                 }
+
+                excursion.ExcursionType = Convert.ToInt32(form["excursionType"]);
 
                 TryUpdateModel(excursion, fieldsToUpdate, form.ToValueProvider());
 
