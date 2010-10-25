@@ -37,6 +37,7 @@
   input.gsc-input {
     border-color: #777777;
     width:633px;
+    font-size:12px;
   }
   input.gsc-search-button {
     border-color: #ffffff;
