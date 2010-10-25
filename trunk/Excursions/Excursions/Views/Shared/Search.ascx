@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
-<div id="cse" style="width: 100%;">Loading</div>
+ <div id="cse" style="width: 100%;">Loading</div>
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
     google.load('search', '1', { language: 'en', style: google.loader.themes.MINIMALIST });
@@ -7,6 +7,9 @@
         var customSearchControl = new google.search.CustomSearchControl('012547704737589669486:pozbfahyxas');
         customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
         customSearchControl.draw('cse');
+        $(".gsc-input").focus();
+        $(".gsc-input").val('<%=Request.Form["q"]%>');//insert into search field requested search text
+        $(".gsc-search-button").click(); //call button click event, show results
     }, true);
 </script>
  <style type="text/css">

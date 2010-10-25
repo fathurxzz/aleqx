@@ -94,6 +94,7 @@
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\ExcursionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +192,7 @@
     <Content Include="Views\Excursions\Excursion.ascx" />
     <Content Include="Views\Excursions\Index.aspx" />
     <Content Include="Views\Home\FeedbackForm.ascx" />
+    <Content Include="Views\Search\Index.aspx" />
     <Content Include="Views\Shared\ContactsPanel.ascx" />
     <Content Include="Views\Shared\Content.aspx" />
     <Content Include="Views\Shared\Footer.ascx" />
