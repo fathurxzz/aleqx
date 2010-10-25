@@ -1,7 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Excursions.Models.Excursion>>" %>
+<%@ Import Namespace="Excursions.Controllers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Kyiv Tours - Excursions
+
+    <%
+        var excursionType = (ExcursionType) ViewData["ExcursionType"];
+    %>
+
+    Kyiv Tours - <%=excursionType == ExcursionType.Both ? "Excursions" : excursionType + "s"%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     

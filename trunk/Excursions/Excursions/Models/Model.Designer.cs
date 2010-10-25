@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("excursionsModel", "ExcursionComments", "Excursion", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Excursions.Models.Excursion), "Comments", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Excursions.Models.Comments))]
 
 // Original file name:
-// Generation date: 11.10.2010 9:52:11
+// Generation date: 25.10.2010 16:51:31
 namespace Excursions.Models
 {
     
@@ -142,8 +142,9 @@ namespace Excursions.Models
         /// <param name="sortOrder">Initial value of SortOrder.</param>
         /// <param name="popular">Initial value of Popular.</param>
         /// <param name="name">Initial value of Name.</param>
+        /// <param name="excursionType">Initial value of ExcursionType.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Excursion CreateExcursion(long id, string text, string title, int sortOrder, bool popular, string name)
+        public static Excursion CreateExcursion(long id, string text, string title, int sortOrder, bool popular, string name, int excursionType)
         {
             Excursion excursion = new Excursion();
             excursion.Id = id;
@@ -152,6 +153,7 @@ namespace Excursions.Models
             excursion.SortOrder = sortOrder;
             excursion.Popular = popular;
             excursion.Name = name;
+            excursion.ExcursionType = excursionType;
             return excursion;
         }
         /// <summary>
@@ -451,6 +453,33 @@ namespace Excursions.Models
         partial void OnPriceChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPriceChanged();
+        /// <summary>
+        /// There are no comments for property ExcursionType in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int ExcursionType
+        {
+            get
+            {
+                return this._ExcursionType;
+            }
+            set
+            {
+                this.OnExcursionTypeChanging(value);
+                this.ReportPropertyChanging("ExcursionType");
+                this._ExcursionType = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ExcursionType");
+                this.OnExcursionTypeChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _ExcursionType;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnExcursionTypeChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnExcursionTypeChanged();
         /// <summary>
         /// There are no comments for Comments in the schema.
         /// </summary>

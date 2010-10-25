@@ -33,8 +33,15 @@ namespace Excursions
 
             routes.MapRoute(
                "Excursions",                                              // Route name
-               "Excursions/",                           // URL with parameters
-               new { controller = "Excursions", action = "Index", id = "" },
+               "Excursions/{type}",                           // URL with parameters
+               new { controller = "Excursions", action = "Index", type = "1" },
+               new string[1] { "Excursions.Controllers" }// Parameter defaults
+            );
+            
+            routes.MapRoute(
+               "Sights",                                              // Route name
+               "Sights/{type}",                           // URL with parameters
+               new { controller = "Excursions", action = "Index", type = "2" },
                new string[1] { "Excursions.Controllers" }// Parameter defaults
             );
             
@@ -62,8 +69,8 @@ namespace Excursions
             
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Excursions", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                "{controller}/{action}/{type}", // URL with parameters
+                new { controller = "Excursions", action = "Index", type = "0" } // Parameter defaults
                 ,new string[1] { "Excursions.Controllers" }
             );
 

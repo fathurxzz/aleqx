@@ -38,6 +38,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="ExcursionType" Type="usmallint" Nullable="false" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" MaxLength="500" />
           <Property Name="Keywords" Type="varchar" MaxLength="500" />
@@ -78,6 +79,7 @@
           <Property Type="Boolean" Name="Popular" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Price" />
+          <Property Type="Int32" Name="ExcursionType" Nullable="false" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -113,6 +115,7 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="excursionsModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Excursion"><EntityTypeMapping TypeName="excursionsModel.Excursion"><MappingFragment StoreEntitySet="excursion">
+                <ScalarProperty Name="ExcursionType" ColumnName="ExcursionType" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Popular" ColumnName="Popular" />
@@ -178,11 +181,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="excursionsModel.Excursion" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7427376302083331" IsExpanded="true" />
+        <EntityTypeShape EntityType="excursionsModel.Excursion" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9070849609374996" IsExpanded="true" />
         <EntityTypeShape EntityType="excursionsModel.Content" Width="1.5" PointX="3.375" PointY="0.75" Height="2.0853483072916674" />
         <EntityTypeShape EntityType="excursionsModel.Comments" Width="1.5" PointX="3.375" PointY="3.75" Height="1.7566536458333335" />
         <AssociationConnector Association="excursionsModel.ExcursionComments">
-          <ConnectorPoint PointX="1.5" PointY="3.4927376302083331" />
+          <ConnectorPoint PointX="1.5" PointY="3.6570849609374996" />
           <ConnectorPoint PointX="1.5" PointY="4.6283268229166667" />
           <ConnectorPoint PointX="3.375" PointY="4.6283268229166667" />
         </AssociationConnector>

@@ -9,17 +9,39 @@ using Excursions.Models;
 
 namespace Excursions.Controllers
 {
+    public enum ExcursionType
+    {
+        Both = 0,
+        Excursion = 1,
+        Sight = 2
+    }
+
+
     public class ExcursionsController : Controller
     {
         //
         // GET: /Excursions/
 
+        /*
         [HttpGet]
         public ActionResult Index()
         {
             using (var context = new ContentStorage())
             {
                 var excursionList = context.Excursion.Select(e => e).OrderBy(e => e.SortOrder).ToList();
+                return View(excursionList);
+            }
+        }
+        */
+
+        [HttpGet]
+        public ActionResult Index(ExcursionType type)
+        {
+            ViewData["ExcursionType"] = type;
+            var exType = (int) type;
+            using (var context = new ContentStorage())
+            {
+                var excursionList = context.Excursion.Where(e => e.ExcursionType == exType || exType == 0).Select(e => e).OrderBy(e => e.SortOrder).ToList();
                 return View(excursionList);
             }
         }
@@ -45,11 +67,11 @@ namespace Excursions.Controllers
         {
             using (var context = new ContentStorage())
             {
-                
-                
+
+
 
                 Excursion excursion = context.Excursion.Select(e => e).Where(e => e.Id == excursionId).First();
-                
+
                 var comment = new Comments
                                   {
                                       Excursion = excursion,
@@ -73,17 +95,17 @@ namespace Excursions.Controllers
                 MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newComment", false, replacements);
 
 
-                
+
 
                 //Response.Write("<script>window.top.$.fancybox.close()</script>");
                 Response.Write("<script>window.top.location.href=window.top.location.href</script>");
 
                 //Redirect("~/Excursions/Details/" + excursion.Name);
-                
+
                 //return RedirectToAction("Details", "Excursions", new { area = "", id = excursion.Name });
 
-                
-                
+
+
                 //return RedirectToAction("Details", "Excursions", new { area = "", id = excursion.Name });
             }
 

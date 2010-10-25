@@ -3,6 +3,7 @@
 
 <div>
 		<a id="A1" runat="server" href="~/Excursions">Home</a> 
+        <a id="A3" runat="server" href="~/Sights">Sights</a> 
             <%
         using (var context = new ContentStorage())
         {

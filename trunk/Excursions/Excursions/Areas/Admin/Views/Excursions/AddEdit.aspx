@@ -16,6 +16,16 @@
         
         <table class="adminEditContentTable">
         <tr>
+            <td>Type:</td>
+            <td>
+                <select id="excursionType" name="excursionType">
+                <option value="1">Excursion</option>
+                <option value="2">Sight</option>
+                <option value="0">Both</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td>Picture:</td>
             <td><input type="file" name="image" /></td>
         </tr>
