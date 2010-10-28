@@ -1321,6 +1321,7 @@ ul.languagelist li .selected
 	background: rgb(247, 245, 232);
 	margin-bottom: 10px;
 	border: dotted 1px #d3d3d3;
+	display:none;
 }
 .estimate-shipping .shipping-options
 {
