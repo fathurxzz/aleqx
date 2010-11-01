@@ -39,7 +39,7 @@ namespace Excursions.Controllers
         {
             string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
             string emailsTo = ApplicationData.FeedbackNotificationEmail;
-            string subject = "testours.1gb.ua - Новый отзыв";
+            string subject = "walking.kiev.ua - Новый отзыв";
             string[] replacements = { DateTime.Now.ToString(), feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text };
             MailHelper.SendTemplate(emailFrom, emailsTo, subject, "newFeedback", false, replacements);
             

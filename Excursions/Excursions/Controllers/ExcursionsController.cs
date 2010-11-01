@@ -77,7 +77,7 @@ namespace Excursions.Controllers
                 string linkBase = ConfigurationManager.AppSettings["linkBase"];
                 string emailFrom = ConfigurationManager.AppSettings["emailFrom"];
                 string emailsTo = ApplicationData.NewCommentNotificationEmail;
-                const string subject = "testours.1gb.ua - Новый комментарий";
+                const string subject = "walking.kiev.ua - Новый комментарий";
                 string[] replacements = {
                                                 linkBase + "/Excursions/" + excursion.Name, comment.Date.ToString()
                                                 ,
