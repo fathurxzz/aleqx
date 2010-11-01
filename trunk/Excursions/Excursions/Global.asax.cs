@@ -70,7 +70,7 @@ namespace Excursions
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Excursions", action = "Index", type = "0",id="" } // Parameter defaults
+                new { controller = "Excursions", action = "Index", type = "1",id="" } // Parameter defaults
                 ,new string[1] { "Excursions.Controllers" }
             );
 
