@@ -1,18 +1,42 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+ 
+           <div class="search">
+          <span>Site Search</span><%=Html.TextBox("q1")%>
+          </div>
+
+ 
  <div id="cse" style="width: 100%;">Loading</div>
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
+
+    $("#q1").keyup(function () {
+        if (event.keyCode == 13) {
+            $(".gsc-search-button").click();
+        }
+        else {
+            $(".gsc-input").val(this.value);
+        }
+    })
+
     google.load('search', '1', { language: 'en', style: google.loader.themes.MINIMALIST });
     google.setOnLoadCallback(function () {
         var customSearchControl = new google.search.CustomSearchControl('012547704737589669486:pozbfahyxas');
         customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
         customSearchControl.draw('cse');
-        $(".gsc-input").focus();
+        //$(".gsc-input").focus();
+        $("#q1").val('<%=Request.Form["q"]%>');
         $(".gsc-input").val('<%=Request.Form["q"]%>');//insert into search field requested search text
         $(".gsc-search-button").click(); //call button click event, show results
     }, true);
 </script>
  <style type="text/css">
+
+.gsc-search-box
+{
+    /*visibility:hidden;
+    height:1px;*/
+}
+
   .gsc-control-cse {
     font-family: Verdana, sans-serif;
     /*border-color: #FFFFFF;*/
@@ -22,6 +46,8 @@
     width:746px;
     
   }
+  
+  
   
   .gsc-webResult.gsc-result
   {
