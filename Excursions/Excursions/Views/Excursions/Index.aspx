@@ -16,7 +16,7 @@
         {
           %>
           <div class="search">
-          <span>Search</span><%=Html.TextBox("q")%>
+          <span>Site Search</span><%=Html.TextBox("q")%>
           </div>
           <%
         }
