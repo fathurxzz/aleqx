@@ -33,8 +33,8 @@
 
 .gsc-search-box
 {
-    /*visibility:hidden;
-    height:1px;*/
+    visibility:hidden;
+    height:1px;
 }
 
   .gsc-control-cse {
