@@ -90,7 +90,7 @@
                 <%} %>
             </ul>
         </div>
-        <div class="phonePanel">(044) 362-59-57</div>
+        <div class="phonePanel">(093) 985-88-32<br />(050) 228-55-79<br />(044) 362-59-57</div>
         <!--<div class="workTimePanel">”крашаем вашу жизнь<br/>с 8 утра до 20 вечера</div>-->
     </div>
     
