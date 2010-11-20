@@ -6,7 +6,7 @@
         Заявки принимаются с <b>8 утра</b> до <b>20 вечера</b>, <br />а доставляются &mdash; <b>круглосуточно</b>.
         </div>
         <div class="home-page-category-grid-header-line">
-        Цены в каталоге указаны <b>с учётом доставки и оформления</b>.
+        Цены в каталоге указаны <b>без учёта доставки</b>. Стоимость доставки &mdash; 50 грн.
         </div>
         <div class="home-page-category-grid-header-line">
         Обязательно узнайте, <a href="<%=Page.ResolveUrl("~/shippinginfo.aspx")%>">почему с нами жить хорошо</a>. ;-)
