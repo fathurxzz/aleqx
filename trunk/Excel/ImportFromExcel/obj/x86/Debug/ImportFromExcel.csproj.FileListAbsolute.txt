@@ -1,0 +1,12 @@
+D:\projects\ImportFromExcel\ImportFromExcel\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\ImportFromExcel.exe
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\ImportFromExcel.pdb
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\Excel.dll
+D:\projects\ImportFromExcel\ImportFromExcel\obj\x86\Debug\ImportFromExcel.exe
+D:\projects\ImportFromExcel\ImportFromExcel\obj\x86\Debug\ImportFromExcel.pdb
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\ImportFromExcel.exe.config
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\office.dll
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\Microsoft.Office.Interop.Excel.xml
+D:\projects\ImportFromExcel\ImportFromExcel\bin\Debug\office.xml
