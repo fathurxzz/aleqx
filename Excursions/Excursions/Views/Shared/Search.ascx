@@ -1,21 +1,15 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
-  <%
-        using(Html.BeginForm("Index","Search",FormMethod.Post))
-        {
-          %>
+  
            <div class="search">
           <span>Site Search</span><%=Html.TextBox("q1")%>
           </div>
-                    <%
-        }
-         %>
-
+     
  
  <div id="cse" style="width: 100%;">Loading</div>
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
 
-    $("#q1").keyup(function () {
+    $("#q1").keyup(function (event) {
         if (event.keyCode == 13) {
             $(".gsc-search-button").click();
         }
