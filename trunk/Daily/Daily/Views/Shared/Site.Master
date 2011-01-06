@@ -9,11 +9,43 @@
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="headLine"></div>
-
+    <div class="headLine">
+    </div>
+    <div style="clear: both" />
     <div class="globalContainer">
-        <asp:ContentPlaceHolder ID="MainContent" runat="server">
-        </asp:ContentPlaceHolder>
+        <div class="leftContainer">
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        left<br />
+        </div>
+        <div class="contentContainer">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
     </div>
 </body>
 </html>

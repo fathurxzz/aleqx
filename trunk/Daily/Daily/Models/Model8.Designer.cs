@@ -18,12 +18,12 @@ namespace Daily.Models
     /// <summary>
     /// There are no comments for newsdbEntities4 in the schema.
     /// </summary>
-    public partial class newsdbEntities4 : global::System.Data.Objects.ObjectContext
+    public partial class ContentStorage : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
         /// Initializes a new newsdbEntities4 object using the connection string found in the 'newsdbEntities4' section of the application configuration file.
         /// </summary>
-        public newsdbEntities4() : 
+        public ContentStorage() : 
                 base("name=newsdbEntities4", "newsdbEntities4")
         {
             this.OnContextCreated();
@@ -31,7 +31,7 @@ namespace Daily.Models
         /// <summary>
         /// Initialize a new newsdbEntities4 object.
         /// </summary>
-        public newsdbEntities4(string connectionString) : 
+        public ContentStorage(string connectionString) : 
                 base(connectionString, "newsdbEntities4")
         {
             this.OnContextCreated();
@@ -39,7 +39,7 @@ namespace Daily.Models
         /// <summary>
         /// Initialize a new newsdbEntities4 object.
         /// </summary>
-        public newsdbEntities4(global::System.Data.EntityClient.EntityConnection connection) : 
+        public ContentStorage(global::System.Data.EntityClient.EntityConnection connection) : 
                 base(connection, "newsdbEntities4")
         {
             this.OnContextCreated();
