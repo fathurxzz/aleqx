@@ -7,8 +7,13 @@
     </boolean>
   </SettingsComponent>
   <RecentFiles>
-    <RecentFiles />
-    <RecentEdits />
+    <RecentFiles>
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Shared/f:Site.Master" caret="0" fromTop="0" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="1188" fromTop="29" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="1188" fromTop="29" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
