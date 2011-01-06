@@ -47,9 +47,35 @@ body
     
     width:295px;
     float:left;
-    border:1px solid #8a8070;
+    
 }
 
+
+
+.newsTitleListItem
+{
+    padding:5px 5px;
+}
+
+.newsTitleListItem:hover
+{
+    background-color:#eeeeee;
+    
+}
+
+
+.newsTitleListItem h1
+{
+    font-size:13px;
+    font-weight:normal;
+}
+
+
+.newsTitleListContainer
+{
+    margin-top:30px;
+    border:1px solid #8a8070;
+}
 
 
 /*

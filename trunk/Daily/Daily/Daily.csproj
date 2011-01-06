@@ -81,7 +81,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="TextFile1.txt" />
     <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Shared\NewsTitleList.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
