@@ -1,0 +1,39 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: Tahoma, Verdana;
+    font-size: 12px;
+}
+
+.headLine
+{
+    height:20px;
+    position:absolute;
+    background-color:#968E80;
+    width:100%;
+    top:0;
+}
+
+
+.globalContainer
+{
+    border:1px solid #8a8070;
+    position:relative;
+    width:1000px;
+    margin:3px auto;
+    
+}
+
+
+/*
+.header
+{
+    height:16px;
+    background-color:#A79F90;
+}
+*/
