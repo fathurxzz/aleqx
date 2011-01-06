@@ -6,6 +6,17 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    sdfsdf<br />sdfsdf<br />sdfsdf<br />sdfsdf<br />sdfsdf<br />
+    <h2>Index</h2>
 
 </asp:Content>
+
+
+<asp:Content ID="Content3" ContentPlaceHolderID="LeftContent" runat="server">
+
+    <%
+        Html.RenderPartial("NewsTitleList");
+    %>
+
+</asp:Content>
+
+

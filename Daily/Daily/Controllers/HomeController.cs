@@ -16,5 +16,12 @@ namespace Daily.Controllers
             return View();
         }
 
+
+        public ActionResult NewsList()
+        {
+
+            return View();
+        }
+
     }
 }

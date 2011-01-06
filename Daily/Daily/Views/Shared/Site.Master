@@ -14,33 +14,10 @@
     <div style="clear: both" />
     <div class="globalContainer">
         <div class="leftContainer">
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
-        left<br />
+            <div class="newsTitleListContainer">
+                <asp:ContentPlaceHolder ID="LeftContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
         <div class="contentContainer">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
