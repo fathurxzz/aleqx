@@ -17,12 +17,16 @@ namespace NewsLoader
         {
             var date = DateTime.Now;
 
-            var link = "http://fakty.ua/archive/index?d=" + date.Year + date.Month + date.Day;
+            var link = "http://fakty.ua/archive/index?d=" + date.Year + (date.Month.ToString().Length == 1 ? "0" + date.Month : date.Month.ToString()) + (date.Day.ToString().Length == 1 ? "0" + date.Day : date.Day.ToString());
 
+            /*
             for (var i = 1; i < 2; i++)
             {
                 GetSourceLinks(link + "&ArticlesItem_page="+i);
             }
+            */
+
+            GetSourceLinks(link);
 
             foreach (var sourseLink in SourseLinks)
             {
@@ -93,7 +97,20 @@ namespace NewsLoader
             }
 
 
-
+            using (var context = new ContentStorage())
+            {
+                var newsEntity = new News
+                                     {
+                                         Date = DateTime.Now,
+                                         Content = content,
+                                         SourceId = 1,
+                                         SourceName = "Факти",
+                                         Title = title,
+                                         ImageSource = mainImage
+                                     };
+                context.AddToNews(newsEntity);
+                context.SaveChanges();
+            }
 
         }
 
