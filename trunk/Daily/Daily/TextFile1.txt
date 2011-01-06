@@ -1,0 +1,30 @@
+﻿/*==============================================================*/
+/* DBMS name:      Microsoft SQL Server 2005                    */
+/* Created on:     06.01.2011 9:51:36                           */
+/*==============================================================*/
+
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('News')
+            and   type = 'U')
+   drop table News
+go
+
+/*==============================================================*/
+/* Table: News                                                  */
+/*==============================================================*/
+create table News (
+   Id                   int                  not null,
+   Title                varchar(255)         not null,
+   Content              text                 null,
+   ImageSource          varchar(255)         null,
+   Link                 varchar(255)         null,
+   Category             varchar(255)         null,
+   SourceName           varchar(255)         not null,
+   SourceId             int                  not null,
+   Date                 datetime             not null,
+   constraint PK_NEWS primary key (Id)
+)
+go
+
