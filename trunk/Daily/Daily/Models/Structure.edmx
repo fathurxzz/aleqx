@@ -4,15 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ContentStorage.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
-        <EntityContainer Name="ContentStorageStoreContainer">
-          <EntitySet Name="News" EntityType="ContentStorage.Store.News" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="newsdbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="newsdbModelStoreContainer">
+          <EntitySet Name="News" EntityType="newsdbModel.Store.News" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Content" Type="text" />
           <Property Name="ImageSource" Type="varchar" MaxLength="255" />
@@ -26,15 +26,15 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ContentStorage" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
-        <EntityContainer Name="newsdbEntities4">
-          <EntitySet Name="News" EntityType="ContentStorage.News" />
+      <Schema Namespace="newsdbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="News" EntityType="newsdbModel.News" />
         </EntityContainer>
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Content" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="ImageSource" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -49,8 +49,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
-        <EntityContainerMapping StorageEntityContainer="ContentStorageStoreContainer" CdmEntityContainer="newsdbEntities4">
-          <EntitySetMapping Name="News"><EntityTypeMapping TypeName="ContentStorage.News"><MappingFragment StoreEntitySet="News">
+        <EntityContainerMapping StorageEntityContainer="newsdbModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="News"><EntityTypeMapping TypeName="newsdbModel.News"><MappingFragment StoreEntitySet="News">
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Title" ColumnName="Title" />
             <ScalarProperty Name="Content" ColumnName="Content" />
@@ -81,8 +81,8 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="Model8" ZoomLevel="75">
-        <EntityTypeShape EntityType="ContentStorage.News" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
+      <Diagram Name="Structure" ZoomLevel="99">
+        <EntityTypeShape EntityType="newsdbModel.News" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>
