@@ -11,36 +11,36 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 06.01.2011 14:45:08
+// Generation date: 06.01.2011 15:40:23
 namespace NewsLoader
 {
     
     /// <summary>
-    /// There are no comments for newsdbEntities in the schema.
+    /// There are no comments for ContentStorage in the schema.
     /// </summary>
     public partial class ContentStorage : global::System.Data.Objects.ObjectContext
     {
         /// <summary>
-        /// Initializes a new newsdbEntities object using the connection string found in the 'newsdbEntities' section of the application configuration file.
+        /// Initializes a new ContentStorage object using the connection string found in the 'ContentStorage' section of the application configuration file.
         /// </summary>
         public ContentStorage() : 
-                base("name=newsdbEntities", "newsdbEntities")
+                base("name=ContentStorage", "ContentStorage")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new newsdbEntities object.
+        /// Initialize a new ContentStorage object.
         /// </summary>
         public ContentStorage(string connectionString) : 
-                base(connectionString, "newsdbEntities")
+                base(connectionString, "ContentStorage")
         {
             this.OnContextCreated();
         }
         /// <summary>
-        /// Initialize a new newsdbEntities object.
+        /// Initialize a new ContentStorage object.
         /// </summary>
         public ContentStorage(global::System.Data.EntityClient.EntityConnection connection) : 
-                base(connection, "newsdbEntities")
+                base(connection, "ContentStorage")
         {
             this.OnContextCreated();
         }
@@ -72,12 +72,12 @@ namespace NewsLoader
         }
     }
     /// <summary>
-    /// There are no comments for ContentStorage.News in the schema.
+    /// There are no comments for newsdbModel.News in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="ContentStorage", Name="News")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="newsdbModel", Name="News")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
     public partial class News : global::System.Data.Objects.DataClasses.EntityObject
