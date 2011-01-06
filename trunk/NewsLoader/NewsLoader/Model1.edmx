@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ContentStorage.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="ContentStorageStoreContainer">
+          <EntitySet Name="News" EntityType="ContentStorage.Store.News" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Content" Type="text" />
+          <Property Name="ImageSource" Type="varchar" MaxLength="255" />
+          <Property Name="Link" Type="varchar" MaxLength="255" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="SourceName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContentStorage" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="newsdbEntities">
+          <EntitySet Name="News" EntityType="ContentStorage.News" />
+        </EntityContainer>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ImageSource" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Category" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SourceName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SourceId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="ContentStorageStoreContainer" CdmEntityContainer="newsdbEntities">
+          <EntitySetMapping Name="News"><EntityTypeMapping TypeName="ContentStorage.News"><MappingFragment StoreEntitySet="News">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Content" ColumnName="Content" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="Link" ColumnName="Link" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+            <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="ContentStorage.News" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
