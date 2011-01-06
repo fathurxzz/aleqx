@@ -8,11 +8,29 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Shared/f:Site.Master" caret="0" fromTop="0" />
-      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="1188" fromTop="29" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Home/f:Index.aspx" caret="221" fromTop="4" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Shared/f:Site.Master" caret="1138" fromTop="42" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Models/f:Model8.Designer.cs" caret="795" fromTop="21" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:Web.config" caret="2964" fromTop="25" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="625" fromTop="33" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="912" fromTop="23" />
     </RecentFiles>
     <RecentEdits>
-      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="1188" fromTop="29" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="245" fromTop="18" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Home/f:Index.aspx" caret="221" fromTop="4" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="105" fromTop="8" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="141" fromTop="13" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="696" fromTop="41" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="442" fromTop="33" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="355" fromTop="26" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Shared/f:Site.Master" caret="1311" fromTop="19" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Views/d:Shared/f:Site.Master" caret="1138" fromTop="42" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="591" fromTop="28" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Content/f:Site.css" caret="625" fromTop="33" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:Web.config" caret="2964" fromTop="25" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/d:Models/f:Model8.Designer.cs" caret="722" fromTop="19" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="0" fromTop="0" />
+      <File id="7FCC40CB-C1DF-4D13-94A0-327EE3B34DE4/f:TextFile1.txt" caret="912" fromTop="23" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

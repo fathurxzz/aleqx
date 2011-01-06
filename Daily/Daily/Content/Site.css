@@ -7,27 +7,49 @@
 body
 {
     font-family: Tahoma, Verdana;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .headLine
 {
-    height:20px;
+    height:30px;
     position:absolute;
     background-color:#968E80;
     width:100%;
     top:0;
+    padding:0;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 
 .globalContainer
 {
-    border:1px solid #8a8070;
+    /*border:1px solid #8a8070;*/
     position:relative;
     width:1000px;
     margin:3px auto;
     
 }
+
+.contentContainer
+{
+    border:1px solid #8a8070;
+    position:relative;
+    width:700px;
+    /*float:right;*/
+    padding-top:30px;
+    margin-left:300px;
+}
+
+.leftContainer
+{
+    
+    width:295px;
+    float:left;
+    border:1px solid #8a8070;
+}
+
 
 
 /*
