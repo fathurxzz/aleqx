@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Daily.Models;
 
 namespace Daily.Controllers
 {
@@ -16,11 +17,13 @@ namespace Daily.Controllers
             return View();
         }
 
-
-        public ActionResult NewsList()
+        public ActionResult NewsDetails(int id)
         {
-
-            return View();
+            using (var context = new ContentStorage())
+            {
+                var newsEntity = context.News.Where(n => n.Id == id).Select(n => n).FirstOrDefault();
+                return View(newsEntity);    
+            }
         }
 
     }

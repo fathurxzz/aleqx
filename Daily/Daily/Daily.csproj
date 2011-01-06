@@ -81,6 +81,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="TextFile1.txt" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\NewsDetails.aspx" />
     <Content Include="Views\Shared\NewsTitleList.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
