@@ -88,6 +88,11 @@ namespace NewsLoader
             if(node!=null)
             {
                 title = node.InnerHtml;
+                var document1 = new HtmlDocument();
+                document1.LoadHtml(title);
+                node = document1.DocumentNode.SelectSingleNode("//h1");
+                title = node.InnerHtml;
+
             }
 
             node = document.DocumentNode.SelectSingleNode("//div[@id='article_content']");
