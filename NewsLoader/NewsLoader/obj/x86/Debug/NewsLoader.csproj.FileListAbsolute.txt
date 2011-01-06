@@ -1,0 +1,6 @@
+D:\projects\NewsLoader\NewsLoader\bin\Debug\NewsLoader.exe
+D:\projects\NewsLoader\NewsLoader\bin\Debug\NewsLoader.pdb
+D:\projects\NewsLoader\NewsLoader\bin\Debug\HtmlAgilityPack.dll
+D:\projects\NewsLoader\NewsLoader\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\projects\NewsLoader\NewsLoader\obj\x86\Debug\NewsLoader.exe
+D:\projects\NewsLoader\NewsLoader\obj\x86\Debug\NewsLoader.pdb
