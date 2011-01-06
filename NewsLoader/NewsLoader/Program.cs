@@ -19,12 +19,12 @@ namespace NewsLoader
 
             var link = "http://fakty.ua/archive/index?d=" + date.Year + (date.Month.ToString().Length == 1 ? "0" + date.Month : date.Month.ToString()) + (date.Day.ToString().Length == 1 ? "0" + date.Day : date.Day.ToString());
 
-            /*
-            for (var i = 1; i < 2; i++)
+            
+            for (var i = 1; i < 10; i++)
             {
                 GetSourceLinks(link + "&ArticlesItem_page="+i);
             }
-            */
+            
 
             GetSourceLinks(link);
 
