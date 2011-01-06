@@ -110,6 +110,7 @@ namespace NewsLoader
                                      };
                 context.AddToNews(newsEntity);
                 context.SaveChanges();
+                Console.WriteLine(newsEntity.Title+" saved.");
             }
 
         }
