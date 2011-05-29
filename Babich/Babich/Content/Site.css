@@ -1,0 +1,48 @@
+﻿*{margin:0;padding:0;}
+body
+{
+    background-color:#000;
+    color:#fff;
+}
+
+.page
+{
+    position:relative;
+    margin:auto;
+    width:804px;
+    background:#000 url('img/bg.gif') repeat-y;
+    border-bottom:1px solid #fff;
+}
+
+#header, #footer
+{
+    height:97px;
+}
+
+#main
+{
+    background:#000 url('img/bg-middle.gif') repeat-y;
+    min-height:500px;
+    border-top:1px solid #fff;
+    border-bottom:1px solid #fff;
+}
+
+#leftContainer, #centerContainer, #rightContainder
+{
+    float:left;
+}
+
+#leftContainer, #rightContainder
+{
+    width:100px;
+}
+
+#centerContainer
+{
+    margin-left:3px;
+}
+
+#centerContainer
+{
+    width:600px;
+}
