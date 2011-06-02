@@ -4,6 +4,10 @@
 
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="Title" runat="server">
+Title
+</asp:Content>
 
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+Content Content Content Content Content Content Content Content Content Content 
 </asp:Content>

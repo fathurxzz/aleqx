@@ -71,3 +71,37 @@ body
     font-size:13px;
     margin-bottom:5px;
 }
+
+#contentTop, #contentBottom
+{
+    width:920px;
+    height:21px;
+}
+
+#contentTop
+{
+    background-image:url('img/content-container-bg-top.gif');
+}
+
+#contentBottom
+{
+    background-image:url('img/content-container-bg-bottom.gif');
+}
+
+#titleContainer
+{
+    text-align:center;
+}
+
+#contentContainer
+{
+    position:relative;
+    margin:auto;
+    width:920px;
+}
+
+#contentMiddle
+{
+    border-left:1px solid #cc0000;
+    border-right:1px solid #cc0000;
+}
