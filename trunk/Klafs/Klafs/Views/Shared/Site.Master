@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="PageTitle" runat="server" />
+    </title>
+    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="headerMenuLine">
+        <div id="headerMenu">
+            :::::: <a href="#">Ссылки на ресурсы</a> :::::: <a href="#">Партнерская информация</a>
+            :::::: <a href="#">Контактная информация</a> ::::::
+        </div>
+    </div>
+    <div class="page">
+        <div id="header">
+        </div>
+        <div id="mainMenu">
+        </div>
+        <div id="main">
+            <div id="titleContainer">
+                <asp:ContentPlaceHolder ID="Title" runat="server" />
+            </div>
+            <div id="contentContainer">
+                <div id="contentTop">
+                </div>
+                <div id="contentMiddle">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                </div>
+                <div id="contentBottom">
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="designedBy">
+                <div id="copyright">
+                    &copy;
+                    <%=DateTime.Now.Year%>
+                    Клафс Украина
+                </div>
+                Сайт создан в <a href="#">Студии Евгения Миллера</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

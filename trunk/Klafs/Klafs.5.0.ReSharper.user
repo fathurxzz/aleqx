@@ -1,0 +1,72 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Controllers/f:HomeController.cs" caret="356" fromTop="14" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/f:Web.config" caret="2565" fromTop="24" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="677" fromTop="28" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Home/f:Index.aspx" caret="166" fromTop="1" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1183" fromTop="29" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/f:Web.config" caret="3382" fromTop="33" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/f:Web.config" caret="5787" fromTop="26" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/f:Web.config" caret="2639" fromTop="24" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="23" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="15" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="0" fromTop="0" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="244" fromTop="10" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="9" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="29" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="20" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="15" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="18" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="75" fromTop="7" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="382" fromTop="27" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="498" fromTop="11" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="438" fromTop="32" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Home/f:Index.aspx" caret="284" fromTop="6" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="233" fromTop="20" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1620" fromTop="14" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1582" fromTop="29" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="749" fromTop="42" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="746" fromTop="34" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="808" fromTop="40" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Content/f:Site.css" caret="677" fromTop="28" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="309" fromTop="5" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Home/f:Index.aspx" caret="166" fromTop="1" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1502" fromTop="24" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1502" fromTop="34" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1502" fromTop="29" />
+      <File id="CC2A9787-1367-41A7-A9BE-6980313DE161/d:Views/d:Shared/f:Site.Master" caret="1037" fromTop="26" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="DateTime`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Now" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DateTime">
+      <Item value="Year" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

@@ -1,0 +1,5 @@
+D:\projects\Klafs\Klafs\bin\Klafs.dll
+D:\projects\Klafs\Klafs\bin\Klafs.pdb
+D:\projects\Klafs\Klafs\obj\Debug\ResolveAssemblyReference.cache
+D:\projects\Klafs\Klafs\obj\Debug\Klafs.dll
+D:\projects\Klafs\Klafs\obj\Debug\Klafs.pdb
