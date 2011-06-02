@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="klafsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="ContentStorage">
+    <EntitySet Name="content" EntityType="klafsModel.content" />
+  </EntityContainer>
+  <EntityType Name="content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ContentType" Type="Int32" />
+    <Property Name="Description" Type="String" />
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="SeoDescription" Type="String" />
+    <Property Name="SeoKeywords" Type="String" />
+    <Property Name="SortOrder" Type="Int32" />
+    <Property Name="Text" Type="String" />
+    <Property Name="Title" Type="String" />
+    <Property Type="String" Name="PageTitle" />
+    <Property Type="String" Name="TitleDescription" />
+    <Property Type="String" Name="ImageSource" />
+  </EntityType>
+</Schema>
