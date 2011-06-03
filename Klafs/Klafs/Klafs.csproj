@@ -91,7 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\img\bg-footer.gif" />
-    <Content Include="Content\img\bg-header.gif" />
     <Content Include="Content\img\content-container-bg-bottom.gif" />
     <Content Include="Content\img\content-container-bg-top.gif" />
     <Content Include="Global.asax" />
