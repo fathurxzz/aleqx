@@ -7,6 +7,7 @@
         <asp:ContentPlaceHolder ID="PageTitle" runat="server" />
     </title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="headerMenuLine">
@@ -24,6 +25,11 @@
             <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
             </div>
         </div>
+        <%if (Request.IsAuthenticated)
+          {%>
+          <%=Html.ActionLink("редактировать главную страницу","EditContent","Content",new{area="Admin", id=1 },new{ @class="adminLink"})%>
+          <%
+          }%>
             <% Html.RenderPartial("MainMenu"); %>
         <div id="main">
             <div id="titleContainer">
