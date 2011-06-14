@@ -9,8 +9,7 @@
     <%=Html.HiddenFor(x=>x.Id) %>
         <%= Html.ValidationSummary(true) %>
         
-        <fieldset>
-            <legend>Fields</legend>
+       
             
             <div class="editor-label">
                 <%= Html.LabelFor(model => model.Name) %>
@@ -26,6 +25,14 @@
             <div class="editor-field">
                 <%= Html.TextBoxFor(model => model.PageTitle) %>
                 <%= Html.ValidationMessageFor(model => model.PageTitle) %>
+            </div>
+
+            <div class="editor-label">
+                <%= Html.LabelFor(model => model.MenuTitle) %>
+            </div>
+            <div class="editor-field">
+                <%= Html.TextBoxFor(model => model.MenuTitle)%>
+                <%= Html.ValidationMessageFor(model => model.MenuTitle)%>
             </div>
 
             <div class="editor-label">
@@ -83,12 +90,12 @@
                 <%= Html.LabelFor(model => model.Text) %>
             </div>
             <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Text) %>
+                <%= Html.TextAreaFor(model => model.Text) %>
                 <%= Html.ValidationMessageFor(model => model.Text) %>
             </div>
             
             <div class="editor-label">
-                <%= Html.TextAreaFor(model => model.SeoDescription) %>
+                <%= Html.LabelFor(model => model.SeoDescription)%>
             </div>
             <div class="editor-field">
                 <%= Html.TextBoxFor(model => model.SeoDescription) %>
@@ -105,15 +112,7 @@
             
             
            <div class="editor-label">
-                <%= Html.LabelFor(model => model.SeoTitle) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.SeoTitle)%>
-                <%= Html.ValidationMessageFor(model => model.SeoTitle)%>
-            </div>
-            
-           <div class="editor-label">
-                <%= Html.TextAreaFor(model => model.SeoText) %>
+                <%= Html.LabelFor(model => model.SeoText)%>
             </div>
             <div class="editor-field">
                 <%= Html.TextAreaFor(model => model.SeoText)%>
@@ -125,7 +124,7 @@
             <p>
                 <input type="submit" value="Save" />
             </p>
-        </fieldset>
+        
 
     <% } %>
 
@@ -142,9 +141,6 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
-</asp:Content>
-
-<asp:Content ID="Content5" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content6" ContentPlaceHolderID="SeoContent" runat="server">

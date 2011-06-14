@@ -14,8 +14,14 @@ namespace Klafs.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var contentItems = context.Content.Where(c => c.Visible).OrderBy(c=>c.SortOrder).ToList();
+                var contentItems = context.Content.Where(c => c.Visible && c.ContentType == 1).OrderBy(c => c.SortOrder).ToList();
                 ViewData["contentItems"] = contentItems;
+
+                var headerMenuItems = context.Content.Where(c => c.Visible && c.ContentType == 0).OrderBy(c => c.SortOrder).ToList();
+                ViewData["headerMenuItems"] = headerMenuItems;
+
+
+
                 Content content;
                 if (id == null)
                     content = context.Content.Where(c => c.Id == 1).FirstOrDefault();
