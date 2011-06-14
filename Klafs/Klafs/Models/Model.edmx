@@ -20,10 +20,13 @@
           <Property Name="PageTitle" Type="varchar" />
           <Property Name="SeoDescription" Type="varchar" />
           <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SeoText" Type="text" />
+          <Property Name="SeoTitle" Type="varchar" />
+          <Property Name="Sign" Type="varchar" MaxLength="100" />
+          <Property Name="Sign2" Type="varchar" />
           <Property Name="SortOrder" Type="usmallint" />
           <Property Name="Text" Type="text" />
           <Property Name="Title" Type="varchar" />
-          <Property Name="TitleDescription" Type="text" />
           <Property Name="Visible" Type="bit" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
@@ -47,9 +50,12 @@
           <Property Name="Text" Type="String" />
           <Property Name="Title" Type="String" />
           <Property Type="String" Name="PageTitle" />
-          <Property Type="String" Name="TitleDescription" />
           <Property Type="String" Name="ImageSource" />
           <Property Type="Boolean" Name="Visible" Nullable="false" />
+          <Property Type="String" Name="SeoText" />
+          <Property Type="String" Name="SeoTitle" />
+          <Property Type="String" Name="Sign" />
+          <Property Type="String" Name="Sign2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -58,9 +64,12 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="klafsModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="klafsModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="Visible" ColumnName="Visible" />
+            <ScalarProperty Name="Sign2" ColumnName="Sign2" />
+                <ScalarProperty Name="Sign" ColumnName="Sign" />
+                <ScalarProperty Name="SeoTitle" ColumnName="SeoTitle" />
+                <ScalarProperty Name="SeoText" ColumnName="SeoText" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
                 <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
-                <ScalarProperty Name="TitleDescription" ColumnName="TitleDescription" />
                 <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
                 <ScalarProperty Name="ContentType" ColumnName="ContentType" />
             <ScalarProperty Name="Description" ColumnName="Description" />
@@ -93,7 +102,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
+        <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9070849609375" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

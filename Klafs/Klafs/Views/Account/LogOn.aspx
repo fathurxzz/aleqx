@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Klafs.Models.LogOnModel>" %>
 
-<asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
+<asp:Content ID="loginTitle" ContentPlaceHolderID="PageTitle" runat="server">
     Log On
 </asp:Content>
 

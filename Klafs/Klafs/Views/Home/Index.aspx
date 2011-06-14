@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Klafs.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PageTitle" runat="server">
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Title" runat="server">
-Title
+<%=Model.Title %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
@@ -14,11 +14,11 @@ Content Content Content Content Content Content Content Content Content Content
 
 
 <asp:Content ContentPlaceHolderID="HeaderTitleContent" runat="server">
-Что ищете?
+<%=Model.Sign %>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
-Выберите интересующий вас раздел
+<%=Model.Sign2%>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="SeoContent" runat="server">
