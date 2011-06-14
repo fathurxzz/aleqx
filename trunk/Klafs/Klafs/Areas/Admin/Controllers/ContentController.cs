@@ -27,23 +27,24 @@ namespace Klafs.Areas.Admin.Controllers
                     content = context.Content.Where(c => c.Id == id).FirstOrDefault();
                 }
 
-                return View(content);    
+                return View(content);
             }
         }
 
 
         [HttpPost]
-        public ActionResult EditContent(int id)
+        public ActionResult EditContent(int id, FormCollection form)
         {
             using (var context = new ContentStorage())
             {
                 Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
 
-                TryUpdateModel(content, new string[] {"Name","PageTitle","Title","ImageSource","SeoKeywords","SeoDescription","Description","Sign","Sign2"});
-
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "ImageSource", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2","MenuTitle"});
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Home", new {area="", id = content.Name});
+                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
             }
         }
 

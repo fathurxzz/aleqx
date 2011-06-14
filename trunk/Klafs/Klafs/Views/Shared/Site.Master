@@ -11,10 +11,7 @@
 </head>
 <body>
     <div id="headerMenuLine">
-        <div id="headerMenu">
-            :::::: <a href="#">Ссылки на ресурсы</a> :::::: <a href="#">Партнерская информация</a>
-            :::::: <a href="#">Контактная информация</a> ::::::
-        </div>
+       <% Html.RenderPartial("HeaderMenu"); %>
     </div>
     <div class="page">
         <div id="header">
@@ -25,38 +22,15 @@
             <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
             </div>
         </div>
-        <%if (Request.IsAuthenticated)
-          {%>
-          <%=Html.ActionLink("редактировать главную страницу","EditContent","Content",new{area="Admin", id=1 },new{ @class="adminLink"})%>
-          <%
-          }%>
             <% Html.RenderPartial("MainMenu"); %>
-        <div id="main">
-            <div id="titleContainer">
-                <asp:ContentPlaceHolder ID="Title" runat="server" />
-            </div>
-            <div id="contentContainer">
-                <div id="contentTop">
-                </div>
-                <div id="contentMiddle">
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-                </div>
-                <div id="contentBottom">
-                </div>
-            </div>
-        </div>
-        <div id="seoDescription">
-            <div id="seoContentTitle">Официальная информация</div>
-            <div id="seoContentContainer">
-                <div id="seoContentTop">
-                </div>
-                <div id="seoContentMiddle">
-                    <asp:ContentPlaceHolder ID="SeoContent" runat="server" />
-                </div>
-                <div id="seoContentBottom">
-                </div>
-            </div>
-        </div>
+        
+        
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+        
+
+        <asp:ContentPlaceHolder ID="SeoContent" runat="server" />
+        
         <div id="footer">
             <div id="designedBy">
                 <div id="copyright">

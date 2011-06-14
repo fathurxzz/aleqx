@@ -73,6 +73,7 @@ body
 {
     text-align:center;
     padding-left:45px;
+    padding-bottom:20px;
 }
 
 .menuItem
@@ -112,7 +113,7 @@ body
 
 #main
 {
-    padding-top:40px;
+    padding-top:20px;
     
     /*display:none;*/
 }
