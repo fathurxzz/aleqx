@@ -24,15 +24,16 @@
           <Property Name="Text" Type="text" />
           <Property Name="Title" Type="varchar" />
           <Property Name="TitleDescription" Type="text" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="klafsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="ContentStorage">
-          <EntitySet Name="content" EntityType="klafsModel.content" />
+          <EntitySet Name="Content" EntityType="klafsModel.Content" />
         </EntityContainer>
-        <EntityType Name="content">
+        <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -48,6 +49,7 @@
           <Property Type="String" Name="PageTitle" />
           <Property Type="String" Name="TitleDescription" />
           <Property Type="String" Name="ImageSource" />
+          <Property Type="Boolean" Name="Visible" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -55,8 +57,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="klafsModelStoreContainer" CdmEntityContainer="ContentStorage">
-          <EntitySetMapping Name="content"><EntityTypeMapping TypeName="klafsModel.content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="klafsModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
                 <ScalarProperty Name="TitleDescription" ColumnName="TitleDescription" />
                 <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
                 <ScalarProperty Name="ContentType" ColumnName="ContentType" />
@@ -90,7 +93,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="klafsModel.content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
+        <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.41404296875" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

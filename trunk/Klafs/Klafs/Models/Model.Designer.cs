@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 02.06.2011 12:21:41
+// Generation date: 14.06.2011 16:37:45
 namespace Klafs.Models
 {
     
@@ -46,53 +46,55 @@ namespace Klafs.Models
         }
         partial void OnContextCreated();
         /// <summary>
-        /// There are no comments for content in the schema.
+        /// There are no comments for Content in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<content> content
+        public global::System.Data.Objects.ObjectQuery<Content> Content
         {
             get
             {
-                if ((this._content == null))
+                if ((this._Content == null))
                 {
-                    this._content = base.CreateQuery<content>("[content]");
+                    this._Content = base.CreateQuery<Content>("[Content]");
                 }
-                return this._content;
+                return this._Content;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<content> _content;
+        private global::System.Data.Objects.ObjectQuery<Content> _Content;
         /// <summary>
-        /// There are no comments for content in the schema.
+        /// There are no comments for Content in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddTocontent(content content)
+        public void AddToContent(Content content)
         {
-            base.AddObject("content", content);
+            base.AddObject("Content", content);
         }
     }
     /// <summary>
-    /// There are no comments for klafsModel.content in the schema.
+    /// There are no comments for klafsModel.Content in the schema.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="klafsModel", Name="content")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="klafsModel", Name="Content")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class content : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class Content : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new content object.
+        /// Create a new Content object.
         /// </summary>
         /// <param name="id">Initial value of Id.</param>
         /// <param name="name">Initial value of Name.</param>
+        /// <param name="visible">Initial value of Visible.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static content Createcontent(long id, string name)
+        public static Content CreateContent(long id, string name, bool visible)
         {
-            content content = new content();
+            Content content = new Content();
             content.Id = id;
             content.Name = name;
+            content.Visible = visible;
             return content;
         }
         /// <summary>
@@ -419,5 +421,32 @@ namespace Klafs.Models
         partial void OnImageSourceChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnImageSourceChanged();
+        /// <summary>
+        /// There are no comments for property Visible in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public bool Visible
+        {
+            get
+            {
+                return this._Visible;
+            }
+            set
+            {
+                this.OnVisibleChanging(value);
+                this.ReportPropertyChanging("Visible");
+                this._Visible = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Visible");
+                this.OnVisibleChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private bool _Visible;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnVisibleChanging(bool value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnVisibleChanged();
     }
 }
