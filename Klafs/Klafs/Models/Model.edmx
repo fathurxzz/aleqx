@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="klafsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="klafsModelStoreContainer">
+          <EntitySet Name="content" EntityType="klafsModel.Store.content" store:Type="Tables" Schema="klafs" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentType" Type="usmallint" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" MaxLength="100" />
+          <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SeoText" Type="text" />
+          <Property Name="Sign" Type="varchar" MaxLength="100" />
+          <Property Name="Sign2" Type="varchar" />
+          <Property Name="SortOrder" Type="usmallint" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="klafsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="klafsModel.Content" />
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentType" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" />
+          <Property Name="MenuTitle" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+          <Property Name="SeoText" Type="String" />
+          <Property Name="Sign" Type="String" />
+          <Property Name="Sign2" Type="String" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="klafsModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="klafsModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SeoText" ColumnName="SeoText" />
+            <ScalarProperty Name="Sign" ColumnName="Sign" />
+            <ScalarProperty Name="Sign2" ColumnName="Sign2" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="Visible" ColumnName="Visible" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5644742838541665" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
