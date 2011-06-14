@@ -22,6 +22,25 @@ body
     background-image:url('img/bg-header.gif');
 }
 
+#headerTitle
+{
+    padding-top:238px;
+    text-align:center;
+    font-weight:bold;
+    color:#fff;
+    font-size:20px;
+}
+
+#headerTitleSign
+{
+    text-align:center;
+    color:#cc0000;
+    font-style:italic;
+    font-size:12px;
+    padding-top:8px;
+}
+
+
 #headerMenuLine
 {
     height: 27px;
@@ -45,16 +64,23 @@ body
    color:inherit;
 }
 
+
+#mainMenu
+{
+    
+}
+
+
 #footer
 {
-    height:360px;
+    height:315px;
     background-image:url('img/bg-footer.gif');
 }
 
 #designedBy
 {
     text-align:center;
-    padding-top:293px;
+    padding-top:245px;
     
     color:#fff;
     font-size:11px;

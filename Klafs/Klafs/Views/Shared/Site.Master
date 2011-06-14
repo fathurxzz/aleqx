@@ -17,9 +17,14 @@
     </div>
     <div class="page">
         <div id="header">
+            <div id="headerTitle">
+            <asp:ContentPlaceHolder ID="HeaderTitleContent" runat="server" />
+            </div>
+            <div id="headerTitleSign">
+            <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
+            </div>
         </div>
-        <div id="mainMenu">
-        </div>
+            <% Html.RenderPartial("MainMenu"); %>
         <div id="main">
             <div id="titleContainer">
                 <asp:ContentPlaceHolder ID="Title" runat="server" />

@@ -11,3 +11,12 @@ Title
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 Content Content Content Content Content Content Content Content Content Content 
 </asp:Content>
+
+
+<asp:Content ContentPlaceHolderID="HeaderTitleContent" runat="server">
+Что ищете?
+</asp:Content>
+
+<asp:Content ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
+Выберите интересующий вас раздел
+</asp:Content>

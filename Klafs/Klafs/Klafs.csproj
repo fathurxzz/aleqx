@@ -94,7 +94,9 @@
     <Content Include="Content\img\bg-header.gif" />
     <Content Include="Content\img\content-container-bg-bottom.gif" />
     <Content Include="Content\img\content-container-bg-top.gif" />
+    <Content Include="Content\img\sauna.gif" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
