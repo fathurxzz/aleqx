@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        AddPhoto</h2>
+        Добавление фотографии</h2>
     <% using (Html.BeginForm("AddPhoto", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
     <%=Html.Hidden("contentId") %>
