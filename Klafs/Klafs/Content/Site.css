@@ -58,6 +58,9 @@ body
     font-size:16px;
 }
 
+
+
+
 #headerMenu
 {
     padding-top:2px;
@@ -65,7 +68,27 @@ body
 
 #headerMenu a
 {
-   color:inherit;
+   color:#fff;
+   font-size:15px;
+}
+
+#rightHeaderMenuItem
+{
+    float:right;
+    position:absolute;
+}
+
+.hobbyLink
+{
+    
+}
+
+
+
+.hobbyLink img
+{
+    border:none;
+    border-right:4px solid #999999;
 }
 
 
@@ -123,6 +146,8 @@ body
     margin-top:-150px;
     height:315px;
     background-image:url('img/bg-footer.gif');
+    position:relative;
+    z-index:-1;
 }
 
 #designedBy
@@ -136,7 +161,7 @@ body
 
 #designedBy a
 {
-    color:inherit;
+    color:#fff;
     font-weight:bold;
 }
 

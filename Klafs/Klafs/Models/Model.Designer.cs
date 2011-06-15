@@ -11,7 +11,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
 
 // Original file name:
-// Generation date: 14.06.2011 20:03:16
+// Generation date: 15.06.2011 12:12:00
 namespace Klafs.Models
 {
     
@@ -180,33 +180,6 @@ namespace Klafs.Models
         partial void OnIdChanging(long value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnIdChanged();
-        /// <summary>
-        /// There are no comments for property ImageSource in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string ImageSource
-        {
-            get
-            {
-                return this._ImageSource;
-            }
-            set
-            {
-                this.OnImageSourceChanging(value);
-                this.ReportPropertyChanging("ImageSource");
-                this._ImageSource = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("ImageSource");
-                this.OnImageSourceChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _ImageSource;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnImageSourceChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnImageSourceChanged();
         /// <summary>
         /// There are no comments for property MenuTitle in the schema.
         /// </summary>
