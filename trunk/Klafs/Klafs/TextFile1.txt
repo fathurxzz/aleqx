@@ -1,1 +1,96 @@
-﻿
+﻿# HeidiSQL Dump 
+#
+# --------------------------------------------------------
+# Host:                 127.0.0.1
+# Database:             klafs
+# Server version:       5.1.46-community
+# Server OS:            Win32
+# Target-Compatibility: MySQL 5.1 and above
+# Extended INSERTs:     Y
+# max_allowed_packet:   1048576
+# HeidiSQL version:     3.0 Revision: 572
+# --------------------------------------------------------
+
+/*!40100 SET CHARACTER SET cp1251*/;
+
+
+#
+# Database structure for database 'klafs'
+#
+
+CREATE DATABASE `klafs` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `klafs`;
+
+
+#
+# Table structure for table 'content'
+#
+
+CREATE TABLE `content` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` varchar(1000) NOT NULL,
+  `Title` varchar(1000) DEFAULT NULL,
+  `PageTitle` varchar(1000) DEFAULT NULL,
+  `SeoKeywords` varchar(1000) DEFAULT NULL,
+  `SeoDescription` varchar(1000) DEFAULT NULL,
+  `Description` text,
+  `Text` text,
+  `SortOrder` smallint(5) unsigned DEFAULT '0',
+  `ContentType` smallint(5) unsigned NOT NULL DEFAULT '1',
+  `Visible` bit(1) NOT NULL,
+  `SeoText` text,
+  `Sign` varchar(100) DEFAULT NULL,
+  `Sign2` varchar(1000) DEFAULT NULL,
+  `MenuTitle` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'content'
+#
+
+/*!40000 ALTER TABLE `content` DISABLE KEYS*/;
+LOCK TABLES `content` WRITE;
+INSERT INTO `content` (`Id`, `Name`, `Title`, `PageTitle`, `SeoKeywords`, `SeoDescription`, `Description`, `Text`, `SortOrder`, `ContentType`, `Visible`, `SeoText`, `Sign`, `Sign2`, `MenuTitle`) VALUES ('1','Main',NULL,'Main',NULL,NULL,NULL,'',0,1,_cp1251 0x00,'','Что ищете?','Выберите интересующий вас раздел ',NULL),
+	('2','sauna','Сауна','Сауна',NULL,NULL,NULL,'сауна сауна сауна сауна сауна сауна сауна ',0,1,_cp1251 0x01,'',NULL,NULL,'Сауна'),
+	('3','banya','Баня','Баня',NULL,NULL,NULL,'<p>\r\n ывап ыва пывап</p>\r\n',0,1,_cp1251 0x01,'<p>\r\n Die Frauen machen es im Fu&szlig;ball einmal mehr den M&auml;nnern vor: Die deutschen Meisterinnen von Turbine Potsdam &ndash; 2010 bereits Gewinner der ersten Champions-League in der Frauenfu&szlig;ball-Historie &ndash; erk&auml;mpften sich im Halbfinal-Hinspiel nun schon wieder eine gute Ausgangsposition f&uuml;r den Einzug ins Finale. Der Countdown l&auml;uft f&uuml;r den absoluten Saisonh&ouml;hepunkt &ndash; das Endspiel der UEFA Women&#39;s Champions League zwischen der 1. FFC Turbine Potsdam gegen Olympique Lyon im Londoner &quot;Craven Cottage&quot; am 26.5.2011. Ordentlich eingeheizt wird nun den Potsdamer Erfolgsfu&szlig;ballerinnen mit einer Mannschaftssauna, die Spa-Ausstatter KLAFS zur Verf&uuml;gung stellt: Nicht zuletzt f&uuml;r die muskul&auml;re und psychische Entspan&not;nung der sportlichen Ladies. Auch f&uuml;r die f&uuml;nf Damen, die im WM Kader stehen und somit den Ausgang der diesj&auml;hrigen Weltmeisterschaft mitbestimmen, dr&uuml;ckt KLAFS beide Daumen. Und damit es erneut mit dem Champions League Titel der Mannschaft und dem WM Titel der deutschen Damen klappt, hei&szlig;t es nun: Schwitzen f&uuml;r den Sieg! Die Frauen machen es im Fu&szlig;ball einmal mehr den M&auml;nnern vor: Die deutschen Meisterinnen von Turbine Potsdam &ndash; 2010 bereits Gewinner der ersten Champions-League in der Frauenfu&szlig;ball-Historie</p>\r\n',NULL,NULL,'Баня'),
+	('4','rome',NULL,'Римская парная',NULL,NULL,NULL,'',0,1,_cp1251 0x01,'',NULL,NULL,'Римская парная'),
+	('5','hamam','Хамам','Хамам',NULL,NULL,NULL,NULL,0,1,_cp1251 0x01,NULL,NULL,NULL,'Хамам'),
+	('6','spa','SPA','SPA',NULL,NULL,NULL,NULL,0,1,_cp1251 0x01,NULL,NULL,NULL,'SPA'),
+	('7','links',NULL,'Ссылки на ресурсы',NULL,NULL,NULL,'',0,0,_cp1251 0x01,'',NULL,NULL,'Ссылки на ресурсы'),
+	('8','info',NULL,'Партнерская информация',NULL,NULL,NULL,'',0,0,_cp1251 0x01,'',NULL,NULL,'Партнерская информация'),
+	('9','contacts',NULL,'Контактная информация',NULL,NULL,NULL,'',0,0,_cp1251 0x01,'',NULL,NULL,'Контактная информация'),
+	('10','hobby',NULL,NULL,NULL,NULL,NULL,NULL,0,3,_cp1251 0x01,NULL,NULL,NULL,'Наши хобби');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `content` ENABLE KEYS*/;
+
+
+#
+# Table structure for table 'galleryitem'
+#
+
+CREATE TABLE `galleryitem` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ContentId` int(10) unsigned NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
+  `ImageSource` varchar(1000) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'galleryitem'
+#
+
+/*!40000 ALTER TABLE `galleryitem` DISABLE KEYS*/;
+LOCK TABLES `galleryitem` WRITE;
+INSERT INTO `galleryitem` (`Id`, `ContentId`, `Description`, `ImageSource`) VALUES ('3','2','Разнообразие дизайна и пород дерева; многообразие форм и оснащения. Все элементы согласованы - основание гарантии и качества.','9f033c24e39e1.jpg'),
+	('4','2','ыва ыва ыва ыва ','1247684681-DoktorHaus1.jpg'),
+	('5','2','вкпвапвап','1247684681-DoktorHaus11.jpg'),
+	('6','2','ываыва','9f033c24e39e11.jpg');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `galleryitem` ENABLE KEYS*/;
