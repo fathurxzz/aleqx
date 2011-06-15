@@ -4,9 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="klafsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="klafsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="klafsModelStoreContainer">
           <EntitySet Name="content" EntityType="klafsModel.Store.content" store:Type="Tables" Schema="klafs" />
+          <EntitySet Name="galleryitem" EntityType="klafsModel.Store.galleryitem" store:Type="Tables" Schema="klafs" />
         </EntityContainer>
         <EntityType Name="content">
           <Key>
@@ -15,7 +16,6 @@
           <Property Name="ContentType" Type="usmallint" Nullable="false" />
           <Property Name="Description" Type="text" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ImageSource" Type="varchar" MaxLength="100" />
           <Property Name="MenuTitle" Type="varchar" />
           <Property Name="Name" Type="varchar" Nullable="false" />
           <Property Name="PageTitle" Type="varchar" />
@@ -29,13 +29,26 @@
           <Property Name="Title" Type="varchar" />
           <Property Name="Visible" Type="bit" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityType Name="galleryitem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="uint" Nullable="false" />
+          <Property Name="Description" Type="varchar" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="klafsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="ContentStorage">
           <EntitySet Name="Content" EntityType="klafsModel.Content" />
+          <EntitySet Name="GalleryItem" EntityType="klafsModel.GalleryItem" />
+          <AssociationSet Name="ContentGalleryItem" Association="klafsModel.ContentGalleryItem">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="GalleryItem" EntitySet="GalleryItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Content">
           <Key>
@@ -56,7 +69,21 @@
           <Property Name="Text" Type="String" />
           <Property Name="Title" Type="String" />
           <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GalleryItem" Relationship="klafsModel.ContentGalleryItem" FromRole="Content" ToRole="GalleryItem" />
         </EntityType>
+        <EntityType Name="GalleryItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="Description" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="klafsModel.ContentGalleryItem" FromRole="GalleryItem" ToRole="Content" />
+        </EntityType>
+        <Association Name="ContentGalleryItem">
+          <End Type="klafsModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="klafsModel.GalleryItem" Role="GalleryItem" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -80,6 +107,23 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
             <ScalarProperty Name="Visible" ColumnName="Visible" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GalleryItem">
+            <EntityTypeMapping TypeName="klafsModel.GalleryItem">
+              <MappingFragment StoreEntitySet="galleryitem">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ContentGalleryItem" TypeName="klafsModel.ContentGalleryItem" StoreEntitySet="galleryitem">
+            <EndProperty Name="GalleryItem">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -102,6 +146,11 @@
     <Diagrams>
       <Diagram Name="Model">
         <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.4001269531249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="klafsModel.GalleryItem" Width="1.5" PointX="3.25" PointY="0.875" Height="1.427958984375" />
+        <AssociationConnector Association="klafsModel.ContentGalleryItem">
+          <ConnectorPoint PointX="2.25" PointY="1.6711531575520835" />
+          <ConnectorPoint PointX="3.25" PointY="1.6711531575520835" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

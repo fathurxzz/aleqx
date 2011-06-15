@@ -75,7 +75,8 @@ body
 #rightHeaderMenuItem
 {
     float:right;
-    position:absolute;
+    /*position:absolute;*/
+    padding-right:10px;
 }
 
 .hobbyLink
@@ -131,6 +132,22 @@ body
 .menuItem img
 {
     border:none;
+    text-decoration:none;
+}
+
+.menuItem img:visited
+{
+    border:none;
+    text-decoration:none;
+}
+
+
+
+
+.menuItem img:hover
+{
+    opacity:0.5;
+    filter:alpha(opacity=50);
 }
 
 
@@ -140,6 +157,21 @@ body
     
     /*display:none;*/
 }
+
+
+.mainText
+{
+    padding:0 40px;
+}
+
+
+
+.separator
+{
+    margin-top:40px;
+}
+
+
 
 #footer
 {
@@ -214,7 +246,7 @@ body
 {
     border-left:1px solid #cc0000;
     border-right:1px solid #cc0000;
-    padding:30px 70px;
+    padding:30px 25px;
 }
 
 
