@@ -17,7 +17,7 @@ namespace Klafs.Controllers
                 var contentItems = context.Content.Where(c => c.Visible && c.ContentType == 1).OrderBy(c => c.SortOrder).ToList();
                 ViewData["contentItems"] = contentItems;
 
-                var headerMenuItems = context.Content.Where(c => c.Visible && c.ContentType == 0).OrderBy(c => c.SortOrder).ToList();
+                var headerMenuItems = context.Content.Where(c => c.Visible && (c.ContentType == 0 || c.ContentType == 3)).OrderBy(c => c.SortOrder).ToList();
                 ViewData["headerMenuItems"] = headerMenuItems;
 
 

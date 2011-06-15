@@ -39,7 +39,7 @@ namespace Klafs.Areas.Admin.Controllers
             {
                 Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
 
-                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "ImageSource", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2","MenuTitle"});
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2","MenuTitle"});
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.SaveChanges();

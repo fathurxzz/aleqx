@@ -7,3 +7,38 @@
 
 a.adminLink:hover
 {   color:#ff0000;}
+
+
+
+.adminEditContentContainer
+{
+	margin-top:5px;
+	border:solid 1px #999999;
+	padding:10px;
+	margin-bottom:30px;
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.adminEditContentTable
+{
+	width:1000px;
+}
+
+.adminEditContentTable td
+{
+	padding-left:20px;
+	padding-top:10px;
+	
+}
+.buttonsContainer
+{
+    text-align:center;
+}
+
+h2.editContentTitle
+{
+    color:#999999;
+    padding-left:90px;
+}

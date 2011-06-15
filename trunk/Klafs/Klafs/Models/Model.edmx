@@ -44,7 +44,6 @@
           <Property Name="ContentType" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" />
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImageSource" Type="String" />
           <Property Name="MenuTitle" Type="String" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="PageTitle" Type="String" />
@@ -68,7 +67,6 @@
             <ScalarProperty Name="ContentType" ColumnName="ContentType" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Id" ColumnName="Id" />
-            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
             <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
@@ -103,7 +101,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5644742838541665" IsExpanded="true" />
+        <EntityTypeShape EntityType="klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.4001269531249996" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

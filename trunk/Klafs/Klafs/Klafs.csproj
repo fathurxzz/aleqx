@@ -83,7 +83,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AjaxExtensions.cs" />
+    <Compile Include="Helpers\ResourceTracker.cs" />
+    <Compile Include="Helpers\ScriptExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,19 +98,20 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Content\EditContent.aspx" />
     <Content Include="Content\Admin.css" />
-    <Content Include="Content\img\banya.gif" />
+    <Content Include="Content\img\3.gif" />
     <Content Include="Content\img\bg-footer.gif" />
     <Content Include="Content\img\bg-header.gif" />
     <Content Include="Content\img\content-container-bg-bottom.gif" />
     <Content Include="Content\img\content-container-bg-bottom.png" />
     <Content Include="Content\img\content-container-bg-top.gif" />
     <Content Include="Content\img\content-container-bg-top.png" />
-    <Content Include="Content\img\hamam.gif" />
-    <Content Include="Content\img\rome.gif" />
-    <Content Include="Content\img\sauna.gif" />
+    <Content Include="Content\img\5.gif" />
+    <Content Include="Content\img\heart.gif" />
+    <Content Include="Content\img\4.gif" />
+    <Content Include="Content\img\2.gif" />
     <Content Include="Content\img\seo-content-container-bg-bottom.png" />
     <Content Include="Content\img\seo-content-container-bg-top.png" />
-    <Content Include="Content\img\spa.gif" />
+    <Content Include="Content\img\6.gif" />
     <Content Include="Global.asax" />
     <Content Include="TextFile1.txt" />
     <Content Include="Views\Shared\HeaderMenu.ascx" />
