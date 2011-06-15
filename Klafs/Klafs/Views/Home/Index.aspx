@@ -17,7 +17,10 @@
                 <div id="contentTop">
                 </div>
                 <div id="contentMiddle">
-                    <%=Model.Text%>
+                    <% Html.RenderPartial("Gallery",Model.GalleryItem); %>
+                    
+                    <div class="mainText">
+                    <%=Model.Text%></div>
                 </div>
                 <div id="contentBottom">
                 </div>
@@ -33,11 +36,22 @@
     <%=Model.Sign2%>
 
     <%if (Request.IsAuthenticated)
+      {%>
+          <br />
+          <br />
+        <%=Html.ActionLink("редактировать", "EditContent", "Content",
+                                            new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
+        
+        <%
+          if (Model.ContentType==1&& Model.Visible)
           {%>
-          <br />
-          <br />
-        <%=Html.ActionLink("редактировать","EditContent","Content",new{area="Admin", id=Model.Id },new{ @class="adminLink"})%>
-        <%}%>
+        <br />
+        <%=Html.ActionLink("добавить фото", "AddPhoto", "Content",
+                                                new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
+
+        <%
+          }
+      }%>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="SeoContent" runat="server">
     <%if (!string.IsNullOrEmpty(Model.SeoText))

@@ -8,6 +8,7 @@
     </title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Gallery.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
     <asp:ContentPlaceHolder runat="server" ID="includes">
     </asp:ContentPlaceHolder>

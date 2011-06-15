@@ -9,9 +9,10 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("klafsModel", "ContentGalleryItem", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Klafs.Models.Content), "GalleryItem", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Klafs.Models.GalleryItem))]
 
 // Original file name:
-// Generation date: 15.06.2011 12:12:00
+// Generation date: 15.06.2011 14:22:35
 namespace Klafs.Models
 {
     
@@ -63,12 +64,37 @@ namespace Klafs.Models
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<Content> _Content;
         /// <summary>
+        /// There are no comments for GalleryItem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public global::System.Data.Objects.ObjectQuery<GalleryItem> GalleryItem
+        {
+            get
+            {
+                if ((this._GalleryItem == null))
+                {
+                    this._GalleryItem = base.CreateQuery<GalleryItem>("[GalleryItem]");
+                }
+                return this._GalleryItem;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private global::System.Data.Objects.ObjectQuery<GalleryItem> _GalleryItem;
+        /// <summary>
         /// There are no comments for Content in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+        /// <summary>
+        /// There are no comments for GalleryItem in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public void AddToGalleryItem(GalleryItem galleryItem)
+        {
+            base.AddObject("GalleryItem", galleryItem);
         }
     }
     /// <summary>
@@ -504,5 +530,172 @@ namespace Klafs.Models
         partial void OnVisibleChanging(bool value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnVisibleChanged();
+        /// <summary>
+        /// There are no comments for GalleryItem in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("klafsModel", "ContentGalleryItem", "GalleryItem")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<GalleryItem> GalleryItem
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<GalleryItem>("klafsModel.ContentGalleryItem", "GalleryItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<GalleryItem>("klafsModel.ContentGalleryItem", "GalleryItem", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// There are no comments for klafsModel.GalleryItem in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="klafsModel", Name="GalleryItem")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class GalleryItem : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// Create a new GalleryItem object.
+        /// </summary>
+        /// <param name="id">Initial value of Id.</param>
+        /// <param name="imageSource">Initial value of ImageSource.</param>
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public static GalleryItem CreateGalleryItem(long id, string imageSource)
+        {
+            GalleryItem galleryItem = new GalleryItem();
+            galleryItem.Id = id;
+            galleryItem.ImageSource = imageSource;
+            return galleryItem;
+        }
+        /// <summary>
+        /// There are no comments for property Description in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string Description
+        {
+            get
+            {
+                return this._Description;
+            }
+            set
+            {
+                this.OnDescriptionChanging(value);
+                this.ReportPropertyChanging("Description");
+                this._Description = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Description");
+                this.OnDescriptionChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _Description;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionChanged();
+        /// <summary>
+        /// There are no comments for property Id in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public long Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this.ReportPropertyChanging("Id");
+                this._Id = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("Id");
+                this.OnIdChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private long _Id;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIdChanging(long value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for property ImageSource in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ImageSource
+        {
+            get
+            {
+                return this._ImageSource;
+            }
+            set
+            {
+                this.OnImageSourceChanging(value);
+                this.ReportPropertyChanging("ImageSource");
+                this._ImageSource = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this.ReportPropertyChanged("ImageSource");
+                this.OnImageSourceChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ImageSource;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnImageSourceChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnImageSourceChanged();
+        /// <summary>
+        /// There are no comments for Content in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("klafsModel", "ContentGalleryItem", "Content")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Content Content
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("klafsModel.ContentGalleryItem", "Content").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("klafsModel.ContentGalleryItem", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Content in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("klafsModel.ContentGalleryItem", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Content>("klafsModel.ContentGalleryItem", "Content", value);
+                }
+            }
+        }
     }
 }

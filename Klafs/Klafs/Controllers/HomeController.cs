@@ -27,7 +27,7 @@ namespace Klafs.Controllers
                     content = context.Content.Where(c => c.Id == 1).FirstOrDefault();
                 else
                 {
-                    content = context.Content.Where(c => c.Name == id).FirstOrDefault();
+                    content = context.Content.Include("GalleryItem").Where(c => c.Name == id).FirstOrDefault();
                 }
                 return View(content);
             }

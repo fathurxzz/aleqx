@@ -15,7 +15,7 @@
     <div class="menuItem">
         <a href="/<%=item.Name%>">
             <%=item.MenuTitle%><br />
-            <img src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
+            <img border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
         </a>
         <div class="description">
             Для частных домов. Разные породы дерева, многообразие форм и оснащение удовлетворят
