@@ -25,99 +25,49 @@ namespace Dev.Mvc.Helpers
             limitHeight.Add("thumbnail", 240);
             limitWidth.Add("thumbnail", 360);
         }
-
-        private static Rectangle CalculateSourceRect(string name, Size image, Size calulatedSize)
-        {
-            int height = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-            int width = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
-            if (height + width > 0)
-            {
-                int sourceHeight = image.Height;
-                int sourceWidth = image.Width;
-                if (height > 0 && calulatedSize.Height > height)
-                {
-                    double coef = (double)height / (double)calulatedSize.Height;
-                    sourceHeight = (int)Math.Truncate(image.Height * coef);
-                }
-                if (width > 0 && calulatedSize.Width > width)
-                {
-                    double coef = (double)width / (double)calulatedSize.Width;
-                    sourceWidth = (int)Math.Truncate(image.Width * coef);
-                }
-                return new Rectangle(0, 0, sourceWidth, sourceHeight);
-            }
-            else
-                return new Rectangle(0, 0, image.Width, image.Height);
-        }
-
-        private static Rectangle CalculateDestRect(string name, Size image, Size calulatedSize)
+        
+        private static Rectangle CalcSourceRect(string name, Size image)
         {
             int height = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
             int width = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
 
-            if (height + width > 0)
+            int destWidth = image.Width;
+            int destHeight = image.Height;
+
+            double ratio;
+
+            if (height > width)
             {
-                int destHeight = calulatedSize.Height;
-                int destWidth = calulatedSize.Width;
-                if (height > 0 /*&& calulatedSize.Height > height*/)
-                    destHeight = height;
-                if (width > 0 /*&& calulatedSize.Width > width*/)
-                    destWidth = width;
-                return new Rectangle(0, 0, destWidth, destHeight);
+                ratio = (double)height / (double)width;
+                if (image.Width > image.Height)
+                {
+                    destWidth = (int)Math.Truncate(image.Height / ratio);
+                }
+                else
+                {
+                    destHeight = (int)Math.Truncate(image.Width / ratio);
+                }
             }
             else
-                return new Rectangle(0, 0, calulatedSize.Width, calulatedSize.Height);
-        }
-
-        private static Size CalculateSize(Size image, FixedDimension? fixedDimension, int maxDimension)
-        {
-            int width;
-            int height;
-            if ((fixedDimension.HasValue && fixedDimension.Value == FixedDimension.Width) || (image.Width > image.Height))
             {
-                width = maxDimension;
-                height = (maxDimension * image.Height) / image.Width;
-
+                ratio = (double)width / (double)height;
+                if (image.Height > image.Width)
+                {
+                    destHeight = (int)Math.Truncate(image.Width / ratio);
+                }
+                else
+                {
+                    destWidth = (int)Math.Truncate(image.Height / ratio);
+                }
             }
-            else if ((fixedDimension.HasValue && fixedDimension.Value == FixedDimension.Height) || (image.Height > image.Width))
-            {
-                height = maxDimension;
-                width = (maxDimension * image.Width) / image.Height;
-            }
-            else
-                width = height = maxDimension;
 
-            return new Size(width, height);
+            return new Rectangle(0, 0, destWidth, destHeight);
         }
-
-        private static Size CalculateSize(Size image)
-        {
-            int maxValue = image.Height;
-            if (image.Width < maxValue)
-                maxValue = image.Width;
-            return new Size(maxValue, maxValue);
-        }
-
-        public static void ScaleImage(string name, Bitmap image, FixedDimension? fixedDimension, int maxDimension, Stream saveTo)
-        {
-            Size imageSize = CalculateSize(image.Size, fixedDimension, maxDimension);
-            Rectangle sourceRect = CalculateSourceRect(name, image.Size, imageSize);
-            Rectangle destRect = CalculateDestRect(name, image.Size, imageSize);
-
-            Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
-            Graphics graphics = Graphics.FromImage(thumbnailImage);
-            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
-            thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
-            saveTo.Position = 0;
-        }
-
+        
         public static void ScaleImage1(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
-            Size imageSize = CalculateSize(image.Size);
-            Rectangle sourceRect = new Rectangle(0, 0, imageSize.Width, imageSize.Height);
-            //Rectangle sourceRect = CalculateSourceRect(name, image.Size, imageSize);
-            Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight); //CalculateDestRect(name, image.Size, imageSize);
+            Rectangle sourceRect = CalcSourceRect(name, image.Size);
+            Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             Graphics graphics = Graphics.FromImage(thumbnailImage);
@@ -176,13 +126,7 @@ namespace Dev.Mvc.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                FixedDimension? fixedDimension = null;
-                if (fixDimension.ContainsKey(cacheFolder))
-                    fixedDimension = fixDimension[cacheFolder];
-                if (forDesigners)
-                    ScaleImage1(cacheFolder, image, limitWidth[cacheFolder],  limitHeight[cacheFolder], stream);
-                else
-                    ScaleImage(cacheFolder, image, fixedDimension, maxDimensions[cacheFolder], stream);
+                ScaleImage1(cacheFolder, image, limitWidth[cacheFolder],  limitHeight[cacheFolder], stream);
             }
         }
 
