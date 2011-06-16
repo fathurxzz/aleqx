@@ -75,21 +75,35 @@ body
 #rightHeaderMenuItem
 {
     float:right;
-    /*position:absolute;*/
     padding-right:10px;
-}
-
-.hobbyLink
-{
+    margin-top:-17px;
+    position:relative;
     
 }
 
+a.hobbyLink
+{
+    display:block;
+    vertical-align:bottom;
+    height:22px;
+    text-align:left;
+}
+
+a.hobbyLink span
+{
+    margin-top:-22px;
+    display:block;
+}
 
 
-.hobbyLink img
+a.hobbyLink img
 {
     border:none;
-    border-right:4px solid #999999;
+    /*border-right:4px solid #999999;*/
+    /*margin-left:-80px;*/
+    /*display:block;*/
+    margin-left:-22px;
+    
 }
 
 

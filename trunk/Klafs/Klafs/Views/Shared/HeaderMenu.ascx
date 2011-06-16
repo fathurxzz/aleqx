@@ -8,31 +8,29 @@
     {
 %>
 <div id="headerMenu">
-    &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
-    <%
-        foreach (var item in headerMenuItems.Where(c=>c.ContentType==0))
-        {
-    %>
-    <a href="/<%=item.Name %>">
-        <%=item.MenuTitle%></a> &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
-    <%
-        }
-    %>
-
-<div id="rightHeaderMenuItem">
-    <%
-        foreach (var item in headerMenuItems.Where(c=>c.ContentType==3))
-        {
-    %>
-
-    <a class="hobbyLink" href="/<%=item.Name %>"><img src="../../Content/img/heart.gif" alt="" /><%=item.MenuTitle%></a>
-    
+    <div>
+        &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
-        }
-    %>
-
+            foreach (var item in headerMenuItems.Where(c => c.ContentType == 0))
+            {
+        %>
+        <a href="/<%=item.Name %>">
+            <%=item.MenuTitle%></a> &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
+        <%
+            }
+        %>
+    </div>
+    <div id="rightHeaderMenuItem">
+        <%
+            foreach (var item in headerMenuItems.Where(c => c.ContentType == 3))
+            {
+        %>
+        <a class="hobbyLink" href="/<%=item.Name %>">
+            <img src="../../Content/img/heart.gif" alt="" /><span><%=item.MenuTitle%></span></a>
+        <%
+            }
+        %>
+    </div>
 </div>
-</div>
-
 <%
 }%>
