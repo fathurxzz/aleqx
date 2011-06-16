@@ -26,47 +26,36 @@ namespace Dev.Mvc.Helpers
             limitWidth.Add("thumbnail", 360);
         }
         
-        private static Rectangle CalcSourceRect(string name, Size image)
+        private static Rectangle CalculateSourceRect(string name, Size sourceImage)
         {
-            int height = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-            int width = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            int previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
+            int previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
 
-            int destWidth = image.Width;
-            int destHeight = image.Height;
+            int resultWidth;
+            int resultHeight;
 
-            double ratio;
+            double wRatio = (double)sourceImage.Width / (double)previewWidth;
+            double hRatio = (double)sourceImage.Height / (double)previewHeight;
 
-            if (height > width)
+            double coef = (double)previewHeight / (double)previewWidth;
+
+            if (wRatio < hRatio)
             {
-                ratio = (double)height / (double)width;
-                if (image.Width > image.Height)
-                {
-                    destWidth = (int)Math.Truncate(image.Height / ratio);
-                }
-                else
-                {
-                    destHeight = (int)Math.Truncate(image.Width / ratio);
-                }
+                resultWidth = sourceImage.Width;
+                resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
             }
             else
             {
-                ratio = (double)width / (double)height;
-                if (image.Height > image.Width)
-                {
-                    destHeight = (int)Math.Truncate(image.Width / ratio);
-                }
-                else
-                {
-                    destWidth = (int)Math.Truncate(image.Height / ratio);
-                }
+                resultHeight = sourceImage.Height;
+                resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
             }
 
-            return new Rectangle(0, 0, destWidth, destHeight);
+            return new Rectangle(0, 0, resultWidth, resultHeight);
         }
         
-        public static void ScaleImage1(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
+        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
-            Rectangle sourceRect = CalcSourceRect(name, image.Size);
+            Rectangle sourceRect = CalculateSourceRect(name, image.Size);
             Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
@@ -126,7 +115,7 @@ namespace Dev.Mvc.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage1(cacheFolder, image, limitWidth[cacheFolder],  limitHeight[cacheFolder], stream);
+                ScaleImage(cacheFolder, image, limitWidth[cacheFolder],  limitHeight[cacheFolder], stream);
             }
         }
 
