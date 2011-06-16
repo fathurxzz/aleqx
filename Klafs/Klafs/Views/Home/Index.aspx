@@ -39,6 +39,9 @@
       {%>
           <br />
           <br />
+          <%=Html.ActionLink("выйти из системы администрирования", "LogOff", "Account",
+                                            new {area = ""}, new {@class = "adminLink"})%>
+          <br />
         <%=Html.ActionLink("редактировать", "EditContent", "Content",
                                             new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
         

@@ -115,7 +115,8 @@ namespace Dev.Mvc.Helpers
         public static void ScaleImage1(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
             Size imageSize = CalculateSize(image.Size);
-            Rectangle sourceRect = new Rectangle(0, 0, imageSize.Width, imageSize.Height);// CalculateSourceRect(name, image.Size, imageSize);
+            Rectangle sourceRect = new Rectangle(0, 0, imageSize.Width, imageSize.Height);
+            //Rectangle sourceRect = CalculateSourceRect(name, image.Size, imageSize);
             Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight); //CalculateDestRect(name, image.Size, imageSize);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
