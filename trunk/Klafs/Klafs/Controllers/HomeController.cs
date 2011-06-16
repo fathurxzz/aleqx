@@ -29,6 +29,9 @@ namespace Klafs.Controllers
                 {
                     content = context.Content.Include("GalleryItem").Where(c => c.Name == id).FirstOrDefault();
                 }
+
+                ViewData["contentType"] = content.ContentType;
+
                 return View(content);
             }
         }

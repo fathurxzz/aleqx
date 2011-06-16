@@ -10,8 +10,6 @@
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Gallery.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
-    <!--<script type="text/javascript" src="/Scripts/jquery.fancybox.js"></script>
-    <link href="/Content/fbDefault/jquery.fancybox.css" rel="stylesheet" type="text/css" />-->
     <asp:ContentPlaceHolder runat="server" ID="includes">
     </asp:ContentPlaceHolder>
 </head>
@@ -28,7 +26,14 @@
             <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
             </div>
         </div>
-            <% Html.RenderPartial("MainMenu"); %>
+            <%
+          var contentType = 0;
+          if (ViewData["contentType"] != null)
+              contentType = (int) ViewData["contentType"];
+          if (contentType == 1)
+          {
+              Html.RenderPartial("MainMenu");
+          }%>
         
         
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
