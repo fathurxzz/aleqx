@@ -33,16 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.3.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.4\Assemblies\v2.0\MySql.Data.dll</HintPath>
+      <HintPath>..\..\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity">
-      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.4\Assemblies\v2.0\MySql.Data.Entity.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Web, Version=6.3.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data.Entity, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.3.4\Assemblies\v2.0\MySql.Web.dll</HintPath>
+      <HintPath>..\..\MySql.Data.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,27 +102,6 @@
     <Content Include="Areas\Admin\Views\Content\AddPhoto.aspx" />
     <Content Include="Areas\Admin\Views\Content\EditContent.aspx" />
     <Content Include="Content\Admin.css" />
-    <Content Include="Content\fbDefault\blank.gif" />
-    <Content Include="Content\fbDefault\fancybox-x.png" />
-    <Content Include="Content\fbDefault\fancybox-y.png" />
-    <Content Include="Content\fbDefault\fancybox.png" />
-    <Content Include="Content\fbDefault\fancy_close.png" />
-    <Content Include="Content\fbDefault\fancy_loading.png" />
-    <Content Include="Content\fbDefault\fancy_nav_left.png" />
-    <Content Include="Content\fbDefault\fancy_nav_right.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_e.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_n.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_ne.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_nw.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_s.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_se.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_sw.png" />
-    <Content Include="Content\fbDefault\fancy_shadow_w.png" />
-    <Content Include="Content\fbDefault\fancy_title_left.png" />
-    <Content Include="Content\fbDefault\fancy_title_main.png" />
-    <Content Include="Content\fbDefault\fancy_title_over.png" />
-    <Content Include="Content\fbDefault\fancy_title_right.png" />
-    <Content Include="Content\fbDefault\jquery.fancybox.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\3.gif" />
     <Content Include="Content\img\bg-footer.gif" />
@@ -139,7 +119,6 @@
     <Content Include="Content\img\6.gif" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.fancybox.js" />
-    <Content Include="TextFile1.txt" />
     <Content Include="Views\Shared\Gallery.ascx" />
     <Content Include="Views\Shared\HeaderMenu.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
