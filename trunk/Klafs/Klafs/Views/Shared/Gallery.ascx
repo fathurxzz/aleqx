@@ -3,6 +3,11 @@
 <%if (Model.Count() > 0)
   {
 %>
+<script type="text/javascript">
+    $(function () {
+        $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+    });
+</script>
 <div id="galleryContainer">
     <%  
         foreach (var item in Model)
@@ -10,7 +15,9 @@
     %>
     <div class="galleryItem">
         <div class="galleryImage">
-            <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource, true)%>
+            <a rel="group1" href="../../Content/Photos/<%=item.ImageSource%>" class="fancy iframe">
+                <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource, true)%>
+            </a>
         </div>
         <div class="imageSign">
             <%=item.Description %>
@@ -26,6 +33,7 @@
 </div>
 <div class="clear">
 </div>
-<div class="separator"></div>
+<div class="separator">
+</div>
 <%
     }%>
