@@ -14,11 +14,23 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+<%
+    var contentType = 0;
+    if (ViewData["contentType"] != null)
+        contentType = (int)ViewData["contentType"];
+     %>
     <div id="headerMenuLine">
        <% Html.RenderPartial("HeaderMenu"); %>
     </div>
     <div class="page">
         <div id="header">
+
+            <%if (contentType != 1)
+              {%>
+            <a href="/" class="rootLink"></a>
+            <%
+              }%>
+
             <div id="headerTitle">
             <asp:ContentPlaceHolder ID="HeaderTitleContent" runat="server" />
             </div>
@@ -27,9 +39,7 @@
             </div>
         </div>
             <%
-          var contentType = 0;
-          if (ViewData["contentType"] != null)
-              contentType = (int) ViewData["contentType"];
+          
           if (contentType == 1)
           {
               Html.RenderPartial("MainMenu");
