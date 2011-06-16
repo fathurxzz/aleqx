@@ -4,9 +4,9 @@
   {
 %>
 <script type="text/javascript">
-    $(function () {
+    /*$(function () {
         $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
-    });
+    });*/
 </script>
 <div id="galleryContainer">
     <%  
@@ -15,9 +15,9 @@
     %>
     <div class="galleryItem">
         <div class="galleryImage">
-            <a rel="group1" href="../../Content/Photos/<%=item.ImageSource%>" class="fancy iframe">
+            <!--<a rel="group1" href="../../Content/Photos/<%=item.ImageSource%>" class="fancy iframe">-->
                 <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource, true)%>
-            </a>
+            <!--</a>-->
         </div>
         <div class="imageSign">
             <%=item.Description %>
