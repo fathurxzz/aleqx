@@ -1,13 +1,15 @@
 ﻿a.adminLink
 {
-    color:#ff0000;
-    font-size:11px;
+    color:#0000ff;
+    font-size:12px;
     font-weight:normal;
+    font-style:italic;
+    text-decoration:underline !important;
 }
 
 a.adminLink:hover
-{   color:#ff0000;
-    font-weight:bold;}
+{   color:#0000ff;
+   text-decoration:none !important;}
 
 
 
@@ -31,8 +33,19 @@ a.adminLink:hover
 {
 	padding-left:20px;
 	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+	
 	
 }
+
+.adminEditContentTable td span
+{
+	font-size: 11px;
+	font-weight:normal;
+	
+}
+
 .buttonsContainer
 {
     text-align:center;
@@ -42,4 +55,41 @@ h2.editContentTitle
 {
     color:#999999;
     padding-left:90px;
+}
+
+.logOnForm
+{
+	position:relative;
+	margin:0 auto;
+	width:220px;
+}
+
+.logOnForm table td
+{
+	line-height:30px;
+}
+
+.logOffLink
+{
+	display:block;
+	position:absolute;
+	margin-top:25px;
+	
+}
+
+.editMainPageLink
+{display:block;
+	position:absolute;
+	margin-top:25px;
+	margin-left:500px;
+	}
+
+.adminLinksContainder a
+{
+	line-height:0px !important;
+}
+
+.adminLinksContainder
+{
+	padding-top:15px;
 }

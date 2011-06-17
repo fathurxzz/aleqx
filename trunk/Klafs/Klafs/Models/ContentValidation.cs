@@ -18,17 +18,17 @@ namespace Klafs.Models
     public class ContentValidation
     {
         [Required(ErrorMessage = "*")]
-        [DisplayName("Техническое имя страницы")]
+        [DisplayName("Веб-имя страницы")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [DisplayName("Название пункта меню")]
+        [DisplayName("Название товарного раздела")]
         public string MenuTitle { get; set; }
 
-        [DisplayName("Заголовок в шапке браузера")]
+        [DisplayName("Заголовок в шапке обозревателя")]
         public string PageTitle { get; set; }
 
-        [DisplayName("Заголовок")]
+        [DisplayName("Заголовок разворачиваемой области")]
         public string Title { get; set; }
 
         [DisplayName("Надпись на красной плашке")]
@@ -37,7 +37,7 @@ namespace Klafs.Models
         [DisplayName("Надпись под красной плашкой")]
         public string Sign2 { get; set; }
 
-        [DisplayName("Описание пункта меню")]
+        [DisplayName("Описание товарного раздела")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "*")]

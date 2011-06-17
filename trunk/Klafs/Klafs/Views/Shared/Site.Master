@@ -18,6 +18,8 @@
     var contentType = 0;
     if (ViewData["contentType"] != null)
         contentType = (int)ViewData["contentType"];
+    
+    
      %>
     <div id="headerMenuLine">
        <% Html.RenderPartial("HeaderMenu"); %>
@@ -25,7 +27,17 @@
     <div class="page">
         <div id="header">
 
-            <%if (contentType != 1)
+        <%if (Request.IsAuthenticated)
+          {%>
+           <%=Html.ActionLink("выйти из системы администрирования", "LogOff", "Account",
+                                            new {area = ""}, new {@class = "adminLink logOffLink"})%>
+
+                                                       <%=Html.ActionLink("Редактировать главную страницу", "EditContent", "Content",
+                                      new { area = "Admin", id = 1 }, new { @class = "adminLink editMainPageLink" })%>
+      <%
+          }%>
+
+            <%if (contentType!=5)
               {%>
             <a href="/" class="rootLink"></a>
             <%
@@ -37,10 +49,13 @@
             <div id="headerTitleSign">
             <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
             </div>
+
+           
+
         </div>
             <%
           
-          if (contentType == 1)
+          if (contentType == 1||contentType==5)
           {
               Html.RenderPartial("MainMenu");
           }%>

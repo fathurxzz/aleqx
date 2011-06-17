@@ -32,6 +32,7 @@ namespace Klafs.Controllers
 
                 ViewData["contentType"] = content.ContentType;
                 ViewData["contentName"] = content.Name;
+                ViewData["id"] = content.Id;
 
                 return View(content);
             }
