@@ -14,11 +14,11 @@
     $(function () {
 
         $(".menuItem a").mousemove(function () {
-            $(this).children('span').css("text-decoration", "none");
+            //$(this).children('span').css("text-decoration", "none");
             $(this).children('img').addClass("fade");
         });
         $(".menuItem a").mouseleave(function () {
-            $(this).children('span').css("text-decoration", "underline");
+            //$(this).children('span').css("text-decoration", "underline");
             $(this).children('img').removeClass("fade");
         });
     });
