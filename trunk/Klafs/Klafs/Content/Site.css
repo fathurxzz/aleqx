@@ -136,7 +136,19 @@ a.fancy img{border:none;}
     border:none;
     display:block;
     font-weight:bold;
+    text-decoration:none;
 }
+
+.menuItem a span
+{
+    text-decoration:underline;
+    /*text-decoration:inherit;*/
+}
+.menuItem a span:hover
+{
+    text-decoration:none;
+}
+
 
 .menuItem a:hover
 {
@@ -157,9 +169,13 @@ a.fancy img{border:none;}
 }
 
 
-
-
 .menuItem img:hover
+{
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+
+.fade
 {
     opacity:0.5;
     filter:alpha(opacity=50);
@@ -203,7 +219,7 @@ a.fancy img{border:none;}
     padding-top:245px;
     
     color:#fff;
-    font-size:11px;
+    font-size:12px;
 }
 
 #designedBy a
@@ -214,7 +230,7 @@ a.fancy img{border:none;}
 
 #copyright
 {
-    font-size:13px;
+    font-size:12px;
     margin-bottom:5px;
 }
 
