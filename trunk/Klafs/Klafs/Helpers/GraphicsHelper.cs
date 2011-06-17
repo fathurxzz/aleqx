@@ -6,6 +6,7 @@ using System.IO;
 using System.Drawing;
 using System.Web.Mvc;
 using System.Text;
+using System.Drawing.Drawing2D;
 
 namespace Dev.Mvc.Helpers
 {
@@ -58,10 +59,23 @@ namespace Dev.Mvc.Helpers
             Rectangle sourceRect = CalculateSourceRect(name, image.Size);
             Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight);
 
+            
+            
+            
+            
+
+
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             Graphics graphics = Graphics.FromImage(thumbnailImage);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
+
+            ////
+            Watermark watermark = new Watermark();
+            string waterMarkText = "© Клафс Украина | www.klafs.in.ua";
+            watermark.WaterMarkToImage(thumbnailImage, waterMarkText);
+            ////
             thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
             saveTo.Position = 0;
         }
@@ -129,4 +143,5 @@ namespace Dev.Mvc.Helpers
             return sb.ToString();
         }
     }
+
 }

@@ -89,6 +89,7 @@
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\ResourceTracker.cs" />
     <Compile Include="Helpers\ScriptExtensions.cs" />
+    <Compile Include="Helpers\WaterMark.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Model.Designer.cs">
