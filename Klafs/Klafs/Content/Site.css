@@ -72,6 +72,17 @@ body
    font-size:15px;
 }
 
+#headerMenu span
+{
+    color:#eee;
+   font-size:15px;
+    }
+
+#headerMenu a:hover
+{
+   color:#eee;
+}
+
 #rightHeaderMenuItem
 {
     float:right;
@@ -82,14 +93,10 @@ body
 }
 
 
-
-
-
-
 a.hobbyLink
 {
     display:block;
-    height:22px;
+    height:20px;
     background:url('img/heart.gif') no-repeat;
     padding-left:25px;
 }
@@ -99,10 +106,13 @@ a.hobbyLink:hover
     background-position:0 -20px;
 }
 
-a.hobbyLink span
+span.hobbyLink 
 {
-    /*margin-top:-22px;
-    display:block;*/
+    display:block;
+    height:20px;
+    background:url('img/heart.gif') no-repeat;
+    padding-left:25px;
+    background-position:0 -20px;
 }
 
 

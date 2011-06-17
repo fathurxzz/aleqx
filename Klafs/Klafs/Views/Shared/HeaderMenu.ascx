@@ -14,8 +14,24 @@
             foreach (var item in headerMenuItems.Where(c => c.ContentType == 0))
             {
         %>
-        <a href="/<%=item.Name %>">
-            <%=item.MenuTitle%></a> &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
+
+        <%if ((string)ViewData["contentName"] != item.Name)
+          {%>
+
+        <a href="/<%=item.Name%>">
+            <%=item.MenuTitle%></a> 
+            <%
+            }
+          else
+{%>
+<span>
+<%=item.MenuTitle%>
+</span>
+<%
+}%>
+            
+            
+            &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
             }
         %>
@@ -25,9 +41,22 @@
             foreach (var item in headerMenuItems.Where(c => c.ContentType == 3))
             {
         %>
+
+        
+        <%if ((string)ViewData["contentName"] != item.Name)
+          {%>
         <a class="hobbyLink" href="/<%=item.Name %>">
             <%=item.MenuTitle%>
         </a>
+        <%
+            }
+          else
+{%>
+<span class="hobbyLink">
+<%=item.MenuTitle%>
+</span>
+<%
+}%>
         <%
             }
         %>
