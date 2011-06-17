@@ -35,25 +35,13 @@
 <asp:Content ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
     <%=Model.Sign2%>
 
-    <%if (Request.IsAuthenticated)
+    <%if (Request.IsAuthenticated&&(Model.ContentType==0||Model.ContentType==3 ))
       {%>
-         
-          <br />
-          <%=Html.ActionLink("выйти из системы администрирования", "LogOff", "Account",
-                                            new {area = ""}, new {@class = "adminLink"})%>
-          <br />
         <%=Html.ActionLink("редактировать", "EditContent", "Content",
                                             new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
         
         <%
-          if (Model.ContentType==1&& Model.Visible)
-          {%>
-        <br />
-        <%=Html.ActionLink("добавить фото", "AddPhoto", "Content",
-                                                new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
-
-        <%
-          }
+         
       }%>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="SeoContent" runat="server">

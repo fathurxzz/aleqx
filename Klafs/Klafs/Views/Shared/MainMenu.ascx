@@ -39,10 +39,22 @@
         </a>
 
         <div class="description">
-            Для частных домов. Разные породы дерева, многообразие форм и оснащение удовлетворят
-            самые различные пожелания
+           <%=item.Description%>
         </div>
-        
+
+
+        <%if (Request.IsAuthenticated)
+{%>
+<div class="adminLinksContainder">
+                <%=Html.ActionLink("редактировать", "EditContent", "Content",
+                                      new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
+
+                                      <br />
+                                       <%=Html.ActionLink("добавить фото", "AddPhoto", "Content",
+                                                new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
+                                                </div>
+                                            <%
+}%>
     </div>
     <%
         }

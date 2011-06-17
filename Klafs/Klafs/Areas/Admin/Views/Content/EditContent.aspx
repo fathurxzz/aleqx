@@ -14,7 +14,7 @@
             <tr>
                 <td>
                     <%= Html.LabelFor(model => model.Name) %><br />
-                    <span style="font-size: 10px;">(цельное слово, только латинские буквы)</span>
+                    <span style="font-size: 11px;">(только имя, латиницей, без указания расширения)</span>
                 </td>
                 <td>
                     <%= Html.TextBoxFor(model => model.Name,new{style="width:600px;"} ) %>
@@ -24,7 +24,7 @@
             <tr>
                 <td>
                     <%= Html.LabelFor(model => model.MenuTitle) %><br />
-                    <span style="font-size: 10px;">(пишите кириллицей)</span>
+                    <span style="font-size: 11px;">(Заголовок Главной превью товарной категории)</span>
                 </td>
                 <td>
                     <%= Html.TextBoxFor(model => model.MenuTitle, new { style = "width:600px;" })%>
@@ -34,7 +34,7 @@
             <tr>
                 <td>
                     <%= Html.LabelFor(model => model.Description)%><br />
-                    <span style="font-size: 10px;">(отображается под логотипом пункта меню)</span>
+                    <span style="font-size: 11px;">(будет отображено под Главной Картинкой создаваемого раздела)</span>
                 </td>
                 <td>
                     <%= Html.TextBoxFor(model => model.Description, new { style = "width:600px;" })%>
@@ -61,26 +61,30 @@
             </tr>
             <tr>
                 <td>
-                    <%= Html.LabelFor(model => model.Sign)%>
+                    <%=Html.LabelFor(model => model.Sign)%>
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(model => model.Sign, new { style = "width:600px;" })%>
-                    <%= Html.ValidationMessageFor(model => model.Sign)%>
+                    <%=Html.TextBoxFor(model => model.Sign, new {style = "width:600px;"})%>
+                    <%=Html.ValidationMessageFor(model => model.Sign)%>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <%= Html.LabelFor(model => model.Sign2)%>
+                    <%=Html.LabelFor(model => model.Sign2)%>
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(model => model.Sign2, new { style = "width:600px;" })%>
-                    <%= Html.ValidationMessageFor(model => model.Sign2)%>
+                    <%=Html.TextBoxFor(model => model.Sign2, new {style = "width:600px;"})%>
+                    <%=Html.ValidationMessageFor(model => model.Sign2)%>
                 </td>
             </tr>
+
+
+
+
             <tr>
                 <td>
                     <%= Html.LabelFor(model => model.SortOrder)%><br />
-                    <span style="font-size: 10px;">(каким по очереди будет этот раздел, необходимо ввести
+                    <span style="font-size: 11px;">(каким по очереди будет этот раздел, необходимо ввести
                         только цифру)</span>
                 </td>
                 <td>
@@ -124,7 +128,7 @@
             <tr>
                 <td>
                     <%= Html.LabelFor(model => model.SeoText)%><br />
-                    <span style="font-size: 10px;">(отображается внизу страницы)</span>
+                    <span style="font-size: 11px;">(отображается внизу страницы)</span>
                 </td>
                 <td>
                     <%= Html.TextAreaFor(model => model.SeoText)%>
