@@ -26,7 +26,8 @@
             {
         %>
         <a class="hobbyLink" href="/<%=item.Name %>">
-            <img src="../../Content/img/heart.gif" alt="" /><span><%=item.MenuTitle%></span></a>
+            <%=item.MenuTitle%>
+        </a>
         <%
             }
         %>

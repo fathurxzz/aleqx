@@ -81,30 +81,34 @@ body
     
 }
 
+
+
+
+
+
 a.hobbyLink
 {
     display:block;
-    vertical-align:bottom;
     height:22px;
-    text-align:left;
+    background:url('img/heart.gif') no-repeat;
+    padding-left:25px;
+}
+
+a.hobbyLink:hover
+{
+    background-position:0 -20px;
 }
 
 a.hobbyLink span
 {
-    margin-top:-22px;
-    display:block;
+    /*margin-top:-22px;
+    display:block;*/
 }
 
 
-a.hobbyLink img
-{
-    border:none;
-    /*border-right:4px solid #999999;*/
-    /*margin-left:-80px;*/
-    /*display:block;*/
-    margin-left:-22px;
-    
-}
+
+
+
 
 a.fancy img{border:none;}
 
