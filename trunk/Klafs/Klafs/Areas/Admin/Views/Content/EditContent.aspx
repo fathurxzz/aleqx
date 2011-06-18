@@ -9,6 +9,20 @@
        {%>
     <%=Html.HiddenFor(x=>x.Id) %>
     <%= Html.ValidationSummary(true) %>
+
+
+
+    <%if (Model.ContentType == 5)
+{%>
+   <script type="text/javascript">
+       $(function () {
+           $(".sign").css("display", "none");
+       });
+</script>
+
+    <%
+}%>
+
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
             <tr>
@@ -59,7 +73,7 @@
                     <%= Html.ValidationMessageFor(model => model.Title)%>
                 </td>
             </tr>
-            <tr>
+            <tr class="sign">
                 <td>
                     <%=Html.LabelFor(model => model.Sign)%>
                 </td>
@@ -68,7 +82,7 @@
                     <%=Html.ValidationMessageFor(model => model.Sign)%>
                 </td>
             </tr>
-            <tr>
+            <tr class="sign">
                 <td>
                     <%=Html.LabelFor(model => model.Sign2)%>
                 </td>
