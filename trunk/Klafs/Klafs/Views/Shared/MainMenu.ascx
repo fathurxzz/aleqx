@@ -46,11 +46,11 @@
         <%if (Request.IsAuthenticated)
 {%>
 <div class="adminLinksContainder">
-                <%=Html.ActionLink("редактировать", "EditContent", "Content",
+                <%=Html.ActionLink("Редактировать", "EditContent", "Content",
                                       new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
 
                                       <br />
-                                       <%=Html.ActionLink("добавить фото", "AddPhoto", "Content",
+                                       <%=Html.ActionLink("Добавить фото", "AddPhoto", "Content",
                                                 new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
                                                 </div>
                                             <%
