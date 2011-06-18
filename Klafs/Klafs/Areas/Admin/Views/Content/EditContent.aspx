@@ -25,7 +25,7 @@
 
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
-            <tr>
+            <tr class="sign">
                 <td>
                     <%= Html.LabelFor(model => model.Name) %><br />
                     <span style="font-size: 11px;">(только имя, латиницей, без указания расширения)</span>
@@ -35,7 +35,7 @@
                     <%= Html.ValidationMessageFor(model => model.Name) %>
                 </td>
             </tr>
-            <tr>
+            <tr class="sign">
                 <td>
                     <%= Html.LabelFor(model => model.MenuTitle) %><br />
                     <span style="font-size: 11px;">(Заголовок Главной превью товарной категории)</span>
@@ -45,7 +45,7 @@
                     <%= Html.ValidationMessageFor(model => model.MenuTitle)%>
                 </td>
             </tr>
-            <tr>
+            <tr class="sign">
                 <td>
                     <%= Html.LabelFor(model => model.Description)%><br />
                     <span style="font-size: 11px;">(будет отображено под Главной Картинкой создаваемого раздела)</span>
@@ -64,7 +64,7 @@
                     <%= Html.ValidationMessageFor(model => model.PageTitle)%>
                 </td>
             </tr>
-            <tr>
+            <tr class="sign">
                 <td>
                     <%= Html.LabelFor(model => model.Title)%>
                 </td>
@@ -95,7 +95,7 @@
 
 
 
-            <tr>
+            <tr class="sign">
                 <td>
                     <%= Html.LabelFor(model => model.SortOrder)%><br />
                     <span style="font-size: 11px;">(каким по очереди будет этот раздел, необходимо ввести
@@ -106,7 +106,7 @@
                     <%= Html.ValidationMessageFor(model => model.SortOrder)%>
                 </td>
             </tr>
-            <tr>
+            <tr class="sign">
                 <td>
                     <%= Html.LabelFor(model => model.Text)%>
                 </td>
@@ -160,6 +160,10 @@
         
     
 </asp:Content>
+<asp:Content ContentPlaceHolderID="HeaderTitleContent" runat="server">
+Админка
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="PageTitle" runat="server">
     Редактирование содержимого
 </asp:Content>

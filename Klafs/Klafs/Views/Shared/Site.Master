@@ -29,7 +29,7 @@
 
         <%if (Request.IsAuthenticated)
           {%>
-           <%=Html.ActionLink("выйти из системы администрирования", "LogOff", "Account",
+           <%=Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account",
                                             new {area = ""}, new {@class = "adminLink logOffLink"})%>
 
                                                        <%=Html.ActionLink("Редактировать главную страницу", "EditContent", "Content",
