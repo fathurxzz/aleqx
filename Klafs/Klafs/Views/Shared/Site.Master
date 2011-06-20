@@ -10,6 +10,29 @@
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Gallery.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
+
+    <script type="text/javascript">
+        /*$(function () {
+            $(".rootLink").hover(function () {
+                jQuery(this).css('background-color', 'white');
+            }, function () {
+                jQuery(this).css('background-color', '#D4D0C8');
+            });
+        });*/
+
+        $(function () {
+            $(".rootLink").mouseover(function (event) {
+                $(this).css('cursor', 'pointer');
+            });
+            $(".rootLink").mousemove(function (event) {
+                $(this).css('cursor', 'pointer');
+            });
+            $(".rootLink").mouseenter(function (event) {
+                $(this).css('cursor', 'pointer');
+            });
+        });
+    </script>
+
     <asp:ContentPlaceHolder runat="server" ID="includes">
     </asp:ContentPlaceHolder>
 </head>
@@ -29,17 +52,15 @@
 
         <%if (Request.IsAuthenticated)
           {%>
-           <%=Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account",
-                                            new {area = ""}, new {@class = "adminLink logOffLink"})%>
-
-                                                       <%=Html.ActionLink("Редактировать главную страницу", "EditContent", "Content",
-                                      new { area = "Admin", id = 1 }, new { @class = "adminLink editMainPageLink" })%>
-      <%
-          }%>
+           <%=Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new {area = ""}, new {@class = "adminLink logOffLink"})%>
+           <%=Html.ActionLink("Редактировать главную страницу", "EditContent", "Content", new { area = "Admin", id = 1 }, new { @class = "adminLink editMainPageLink" })%>
+      <%}%>
 
             <%if (contentType!=5)
               {%>
-            <a href="/" class="rootLink"></a>
+            <!--<a href="/" class="rootLink"><span>1</span></a>-->
+            <div class="rootLink">1111</div>
+            
             <%
               }%>
 
