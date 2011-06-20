@@ -26,7 +26,7 @@
             </div>
             <div id="subMenuLine">
                 <div id="logo"></div>
-                <div id="sumMenuContainer">
+                <div id="subMenuContainer">
                     
                     <div id="subMenu">
                     <a href="#">Житлові будівлі</a>
@@ -45,13 +45,26 @@
             </div>
             <div class="menuLineSeparator">
             </div>
-            <div id="mainContent">
-            
+            <div id="mainContentContainer">
+                
+                <div id="contactsContainer">
+                <% Html.RenderPartial("Contacts"); %>
+                </div>
+                <div id="titleLine"></div>
+                <div id="mainContent">
+                    
+                </div>
             </div>
 
         </div>
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        <div id="skatch"></div>
+    </div>
+    
+    <div id="footer">
+        <div id="sign">
+        
+        &copy; <%=DateTime.Now.Year%> Творча архітектурна майстерня &laquo;Бабіч&raquo;<br />
+        Сайт створено в <a target="_blank" href="http://m-brand.com.ua">Студії Євгена Міллера</a>
         </div>
     </div>
 </body>
