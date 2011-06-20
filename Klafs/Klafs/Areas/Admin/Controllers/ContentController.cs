@@ -14,6 +14,57 @@ namespace Klafs.Areas.Admin.Controllers
         //
         // GET: /Admin/Content/
 
+        public ActionResult AddContent()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult AddContent(FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                Content content = new Models.Content();
+
+                /*
+                content.ContentType = 10;
+                content.Name = form["Name"];
+                content.MenuTitle = form["MenuTitle"];
+                content.Description = form["Description"];
+                content.PageTitle = form["PageTitle"];
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
+                content.Title = form["Title"];
+                content.SortOrder = Convert.ToInt32(form["SortOrder"]);
+                */
+
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2", "MenuTitle","SortOrder" });
+                content.ContentType = 10;
+                content.Visible = true;
+                
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
+                context.AddToContent(content);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+            }
+        }
+
+
+        public ActionResult DeleteContent(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
+                context.DeleteObject(content);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new { area = "", id = "" });
+            }
+        }
+
+
         public ActionResult EditContent(int? id)
         {
             using (var context = new ContentStorage())
@@ -41,7 +92,7 @@ namespace Klafs.Areas.Admin.Controllers
             {
                 Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
 
-                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2","MenuTitle"});
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2", "MenuTitle", "SortOrder" });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.SaveChanges();
