@@ -4,7 +4,7 @@
 
 
 
-<%if (ViewData["contentType"] != null && ((int)ViewData["contentType"] == 3 || (int)ViewData["contentType"] == 5))
+<%if (ViewData["contentType"] != null && ((int)ViewData["contentType"] == 3 || (int)ViewData["contentType"] == 10))
   {%>
 
 <%
@@ -38,14 +38,26 @@
 </span>
 <%
 }
+              
+              %>
+              <%if (Request.IsAuthenticated)
+                {%>
+                <%=Html.ActionLink("Редактировать", "EditContent", "Content",
+                                                          new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink" })%>
+<%} %>
+              <%
+              
           }
 %>
     
+    
+
     </td>
     <td class="subMenuRightSide"></td>
 </tr>
 </table>
 </div>
+<div class="clear"></div>
 <%
       }
   }%>

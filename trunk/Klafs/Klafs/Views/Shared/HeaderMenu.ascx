@@ -41,11 +41,10 @@
             foreach (var item in headerMenuItems.Where(c => c.ContentType == 3))
             {
         %>
-
         
-        <%if ((string)ViewData["contentName"] != item.Name)
+        <%if ((string)ViewData["contentName"] != item.Name && ViewData["contentType"].ToString() !="10")
           {%>
-        <a class="hobbyLink" href="/<%=item.Name %>">
+        <a class="hobbyLink" href="/Ecology">
             <%=item.MenuTitle%>
         </a>
         <%
