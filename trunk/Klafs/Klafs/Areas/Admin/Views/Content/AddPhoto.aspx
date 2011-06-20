@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>
-        Добавление фотографии</h2>
     <% using (Html.BeginForm("AddPhoto", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
     <%=Html.Hidden("contentId") %>
@@ -35,6 +33,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="includes" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="HeaderTitleContent" runat="server">
+Добавление фотографии
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
 </asp:Content>
