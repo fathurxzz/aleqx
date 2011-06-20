@@ -100,6 +100,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Content\AddContent.aspx" />
     <Content Include="Areas\Admin\Views\Content\AddPhoto.aspx" />
     <Content Include="Areas\Admin\Views\Content\EditContent.aspx" />
     <Content Include="Content\Admin.css" />
