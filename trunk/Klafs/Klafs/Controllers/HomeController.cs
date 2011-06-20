@@ -21,6 +21,8 @@ namespace Klafs.Controllers
                 ViewData["headerMenuItems"] = headerMenuItems;
 
 
+                var subMenuItems = context.Content.Where(c => c.Visible && c.ContentType == 10).OrderBy(c => c.SortOrder).ToList();
+                ViewData["subMenuItems"] = subMenuItems;
 
                 Content content;
                 if (id == null)
