@@ -120,6 +120,45 @@ span.hobbyLink
 
 
 
+.subMenuContainer
+{
+    position:relative;
+    margin:0 auto;
+    margin-top:60px;
+    text-align:center;
+}
+
+.subMenuContainer table
+{
+    border-collapse:collapse;
+    position:relative;
+    margin:0 auto;
+}
+
+.subMenuLeftSide, .subMenuRightSide
+{
+    height:47px;
+    width:20px;
+}
+
+.subMenuLeftSide
+{
+    background:url('img/submenu-bg-left.png') no-repeat;
+}
+
+.subMenuRightSide
+{
+    background:url('img/submenu-bg-right.png') no-repeat;
+}
+
+.subMenuCenter
+{
+    white-space:nowrap;
+    border-top:2px solid #cc0000;
+    border-bottom:2px solid #cc0000;
+    
+}
+
 
 
 a.fancy img{border:none;}
