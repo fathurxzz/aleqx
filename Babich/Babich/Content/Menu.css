@@ -44,14 +44,14 @@
 }
 
 
-#sumMenuContainer
+#subMenuContainer
 {
     min-height:62px;
     background-color:#cccccc;
     width:857px;
     margin-right:56px;
     margin-left:auto;
-    padding:30px 50px;
+    padding: 30px 60px 30px 40px;
     font-size:13px;
 }
 
@@ -60,7 +60,8 @@
     display:block;
     float:left;
     white-space:nowrap;
-    margin:0 25px;
+    margin:0 20px;
     color:#666666;
     line-height:20px;
+    letter-spacing:1px;
 }

@@ -73,8 +73,10 @@
   <ItemGroup>
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\menuSeparator.gif" />
+    <Content Include="Content\img\skatch.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Shared\Contacts.ascx" />
     <Content Include="Views\Shared\LanguageSelector.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Web.config" />
