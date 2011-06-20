@@ -178,6 +178,16 @@ span.hobbyLink
     font-size:12px;
 }
 
+.subMenuCenter div
+{ 
+    float:left;
+}
+
+.subMenuCenter div .adminLink
+{
+    margin-left:1px !important;
+    margin-right:1px !important;
+}
 
 
 a.fancy img{border:none;}
