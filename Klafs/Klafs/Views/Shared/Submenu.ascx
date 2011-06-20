@@ -24,9 +24,13 @@
     <%
           foreach (var subMenuItem in subMenuItems)
           {
+              %>
+              <div>
+              <%
+              
               if ((string)ViewData["contentName"] != subMenuItem.Name)
           {%>
-
+          
         <a href="/<%=subMenuItem.Name%>">
             <%=subMenuItem.MenuTitle%></a> 
             <%
@@ -42,15 +46,21 @@
               %>
               <%if (Request.IsAuthenticated)
                 {%>
-                <%=Html.ActionLink("Редактировать", "EditContent", "Content",
-                                                          new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink" })%>
+                <br />
+                <%=Html.ActionLink("Редактировать", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink" })%>
+                <%=Html.ActionLink("Удалить", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>|
 <%} %>
+</div>
               <%
               
           }
 %>
     
-    
+    <%if (Request.IsAuthenticated)
+                {%>
+                <%=Html.ActionLink("Добавить", "AddContent", "Content",
+                                                          new { area = "Admin" }, new { @class = "adminLink" })%>
+<%} %>
 
     </td>
     <td class="subMenuRightSide"></td>
