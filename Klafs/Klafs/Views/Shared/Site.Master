@@ -50,7 +50,7 @@
             <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
             </div>
 
-           <%Html.RenderPartial("Submenu"); %>
+           
 
         </div>
         <div id="mainContentContainer">
@@ -61,9 +61,13 @@
               Html.RenderPartial("MainMenu");
           }%>
         
-        
+        <%Html.RenderPartial("Submenu"); %>
+
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         <asp:ContentPlaceHolder ID="SeoContent" runat="server" />
+
+        
+
         <div class="clear"></div>
         </div>
         <div id="footer">
