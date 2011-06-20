@@ -1,0 +1,51 @@
+﻿*
+{
+    margin:0;
+    padding:0;
+}
+
+body
+{
+    font-family:Arial;
+}
+
+#page
+{
+    width:1265px;
+    margin-right:0px;
+    margin-left:auto;
+}
+
+#logo
+{
+    background:url('img/logo.gif');
+    width:212px;
+    height:122px;
+    float:left;
+    margin-right:0px;
+    margin-left:3px;
+}
+
+#languageSelector
+{
+    float:left;
+    color:#000;
+    font-size:11px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+#languageSelector a
+{
+    font-weight:normal;
+    color:#cc0000;
+}
+
+#mainContent
+{
+    min-height:400px;
+    background-color:#cccccc;
+    width:957px;
+    margin-right:56px;
+    margin-left:auto;
+}
