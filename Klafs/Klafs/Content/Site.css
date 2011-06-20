@@ -153,7 +153,7 @@ span.hobbyLink
 
 .subMenuCenter
 {
-    white-space:nowrap;
+    /*white-space:nowrap;*/
     border-top:2px solid #cc0000;
     border-bottom:2px solid #cc0000;
     
@@ -439,13 +439,21 @@ a.fancy img{border:none;}
 	height:75px;
 	margin-left:460px;
 	
-	border:1px solid black;
+	/*border:1px solid black;*/
+	/*background:url('img/pixel.gif');*/
+}
+
+.rootLink img
+{
+    width:280px;
+	height:75px;
+	border:none;
 }
 
 .rootLink : hover
 {
-   /* cursor:pointer;
-    background-color:Red;
+    /*cursor:pointer;*/
+   /* background-color:Red;
     z-index:1000;*/
    
 }
