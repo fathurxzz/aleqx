@@ -438,4 +438,15 @@ a.fancy img{border:none;}
 	width:280px;
 	height:75px;
 	margin-left:460px;
+	
+	border:1px solid black;
 }
+
+.rootLink : hover
+{
+   /* cursor:pointer;
+    background-color:Red;
+    z-index:1000;*/
+   
+}
+
