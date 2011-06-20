@@ -50,7 +50,7 @@
             <asp:ContentPlaceHolder ID="HeaderTitleSignContent" runat="server" />
             </div>
 
-           
+           <%Html.RenderPartial("Submenu"); %>
 
         </div>
         <div id="mainContentContainer">
