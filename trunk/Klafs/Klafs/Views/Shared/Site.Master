@@ -19,18 +19,12 @@
                 jQuery(this).css('background-color', '#D4D0C8');
             });
         });*/
-
+        /*
         $(function () {
             $(".rootLink").mouseover(function (event) {
                 $(this).css('cursor', 'pointer');
             });
-            $(".rootLink").mousemove(function (event) {
-                $(this).css('cursor', 'pointer');
-            });
-            $(".rootLink").mouseenter(function (event) {
-                $(this).css('cursor', 'pointer');
-            });
-        });
+        });*/
     </script>
 
     <asp:ContentPlaceHolder runat="server" ID="includes">
@@ -58,8 +52,9 @@
 
             <%if (contentType!=5)
               {%>
-            <!--<a href="/" class="rootLink"><span>1</span></a>-->
-            <div class="rootLink">1111</div>
+            <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
+            <!--<div class="rootLink">           
+            </div>-->
             
             <%
               }%>
