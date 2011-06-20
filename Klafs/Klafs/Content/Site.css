@@ -198,6 +198,11 @@ a.fancy img{border:none;}
 }
 
 
+#mainContentContainer
+{
+    min-height:380px;
+}
+
 #main
 {
     padding-top:20px;

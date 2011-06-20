@@ -53,6 +53,7 @@
            
 
         </div>
+        <div id="mainContentContainer">
             <%
           
           if (contentType == 1||contentType==5)
@@ -62,11 +63,9 @@
         
         
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
-        
-
         <asp:ContentPlaceHolder ID="SeoContent" runat="server" />
-        
+        <div class="clear"></div>
+        </div>
         <div id="footer">
             <div id="designedBy">
                 <div id="copyright">
