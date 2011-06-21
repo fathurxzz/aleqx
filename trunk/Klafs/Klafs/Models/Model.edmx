@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gbua_klafsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="gbua_klafsModelStoreContainer">
+          <EntitySet Name="content" EntityType="gbua_klafsModel.Store.content" store:Type="Tables" Schema="gbua_klafs" />
+          <EntitySet Name="galleryitem" EntityType="gbua_klafsModel.Store.galleryitem" store:Type="Tables" Schema="gbua_klafs" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentType" Type="usmallint" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="ParentId" Type="uint" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SeoText" Type="text" />
+          <Property Name="Sign" Type="varchar" MaxLength="100" />
+          <Property Name="Sign2" Type="varchar" />
+          <Property Name="SortOrder" Type="usmallint" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="galleryitem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="uint" Nullable="false" />
+          <Property Name="Description" Type="varchar" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gbua_klafsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="gbua_klafsModel.Content" />
+          <EntitySet Name="GalleryItem" EntityType="gbua_klafsModel.GalleryItem" />
+          <AssociationSet Name="ContentGalleryItem" Association="gbua_klafsModel.ContentGalleryItem">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="GalleryItem" EntitySet="GalleryItem" />
+          </AssociationSet>
+          <AssociationSet Name="ContentContent" Association="gbua_klafsModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentType" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuTitle" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+          <Property Name="SeoText" Type="String" />
+          <Property Name="Sign" Type="String" />
+          <Property Name="Sign2" Type="String" />
+          <Property Name="SortOrder" Type="Int32" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="GalleryItems" Relationship="gbua_klafsModel.ContentGalleryItem" FromRole="Content" ToRole="GalleryItem" />
+          <NavigationProperty Name="Children" Relationship="gbua_klafsModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Parent" Relationship="gbua_klafsModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          </EntityType>
+        <EntityType Name="GalleryItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="gbua_klafsModel.ContentGalleryItem" FromRole="GalleryItem" ToRole="Content" />
+        </EntityType>
+        <Association Name="ContentGalleryItem">
+          <End Type="gbua_klafsModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="gbua_klafsModel.GalleryItem" Role="GalleryItem" Multiplicity="*" />
+        </Association>
+        <Association Name="ContentContent">
+          <End Type="gbua_klafsModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="gbua_klafsModel.Content" Role="Content1" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="gbua_klafsModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="gbua_klafsModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SeoText" ColumnName="SeoText" />
+            <ScalarProperty Name="Sign" ColumnName="Sign" />
+            <ScalarProperty Name="Sign2" ColumnName="Sign2" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GalleryItem"><EntityTypeMapping TypeName="gbua_klafsModel.GalleryItem"><MappingFragment StoreEntitySet="galleryitem">
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentGalleryItem" TypeName="gbua_klafsModel.ContentGalleryItem" StoreEntitySet="galleryitem">
+            <EndProperty Name="GalleryItem">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="gbua_klafsModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="gbua_klafsModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.7288216145833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbua_klafsModel.GalleryItem" Width="1.5" PointX="2.75" PointY="0.75" Height="1.592306315104167" IsExpanded="true" />
+        <AssociationConnector Association="gbua_klafsModel.ContentGalleryItem">
+          <ConnectorPoint PointX="2.25" PointY="1.5461531575520837" />
+          <ConnectorPoint PointX="2.75" PointY="1.5461531575520837" />
+        </AssociationConnector>
+        <AssociationConnector Association="gbua_klafsModel.ContentContent">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.4788216145833326" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.7288216145833326" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.7288216145833326" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.4788216145833326" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
