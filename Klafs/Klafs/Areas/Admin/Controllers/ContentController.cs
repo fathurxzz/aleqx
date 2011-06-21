@@ -14,8 +14,9 @@ namespace Klafs.Areas.Admin.Controllers
         //
         // GET: /Admin/Content/
 
-        public ActionResult AddContent()
+        public ActionResult AddContent(int id)
         {
+            ViewData["id"] = id;
             return View();
         }
 
@@ -26,6 +27,12 @@ namespace Klafs.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 Content content = new Models.Content();
+
+                Int64 parentId = Convert.ToInt64(form["id"]);
+
+                Content parentContent = context.Content.Where(c => c.Id == parentId).FirstOrDefault();
+
+                content.Parent = parentContent;
 
                 TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2", "MenuTitle","SortOrder" });
                 content.ContentType = 4;

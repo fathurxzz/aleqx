@@ -33,7 +33,7 @@
     <%=Html.ActionLink("Удалить", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>|
     <%}}if (Request.IsAuthenticated)
       {%>
-    <%=Html.ActionLink("Добавить", "AddContent", "Content", new { area = "Admin" }, new { @class = "adminLink" })%>
+    <%=Html.ActionLink("Добавить", "AddContent", "Content", new { area = "Admin", id=ViewData["id"].ToString() }, new { @class = "adminLink" })%>
     <%} %>
 
     </td>

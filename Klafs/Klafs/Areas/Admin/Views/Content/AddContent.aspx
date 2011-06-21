@@ -8,7 +8,7 @@
     
     <%= Html.ValidationSummary(true) %>
 
-
+    <%=Html.Hidden("id") %>
 
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
