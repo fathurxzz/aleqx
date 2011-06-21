@@ -21,18 +21,32 @@ namespace Klafs.Controllers
                 ViewData["headerMenuItems"] = headerMenuItems;
 
 
-                var subMenuItems = context.Content.Include("Parent").Where(c => c.ContentType == 4).OrderBy(c => c.SortOrder).ToList();
-                ViewData["subMenuItems"] = subMenuItems;
+
+                
 
                 Content content;
                 if (id == null)
                     content = context.Content.Where(c => c.Id == 1).FirstOrDefault();
                 else
                 {
-                    content = context.Content.Include("Parent").Include("GalleryItems").Where(c => c.Name == id).FirstOrDefault();
+                    content = context.Content.Include("Parent").Include("Children").Include("GalleryItems").Where(c => c.Name == id).FirstOrDefault();
                     if(content.Parent!=null)
                         ViewData["parentContentName"] = content.Parent.Name;
                 }
+
+                if (content.Children.Count > 0)
+                {
+                    var subMenuItems = content.Children.OrderBy(c => c.SortOrder).ToList();
+                    ViewData["subMenuItems"] = subMenuItems;
+                }
+                else if (content.Parent != null)
+                {
+                    long parentId = content.Parent.Id;
+                    Content parent = context.Content.Include("Children").Where(c => c.Id == parentId).FirstOrDefault();
+                    var subMenuItems = parent.Children.OrderBy(c => c.SortOrder).ToList();
+                    ViewData["subMenuItems"] = subMenuItems;
+                }
+
 
                 ViewData["contentType"] = content.ContentType;
                 ViewData["contentName"] = content.Name;

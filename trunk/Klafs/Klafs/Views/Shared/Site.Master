@@ -50,7 +50,7 @@
            <%=Html.ActionLink("Редактировать главную страницу", "EditContent", "Content", new { area = "Admin", id = 1 }, new { @class = "adminLink editMainPageLink" })%>
       <%}%>
 
-            <%if (contentType!=5)
+            <%if (contentType!=0)
               {%>
             <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
             <!--<div class="rootLink">           
@@ -72,7 +72,7 @@
         <div id="mainContentContainer">
             <%
           
-          if (contentType == 1||contentType==5)
+          if (contentType == 1||contentType==0)
           {
               Html.RenderPartial("MainMenu");
           }%>

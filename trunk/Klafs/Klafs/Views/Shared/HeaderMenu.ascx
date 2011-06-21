@@ -37,7 +37,7 @@
             foreach (var item in headerMenuItems.Where(c => c.ContentType == 3))
             {
         %>
-        <%if ((string)ViewData["contentName"] == item.Name || (string)ViewData["parentContentName"] == item.Name)
+        <%if ((string)ViewData["contentName"] == item.Name/* || (string)ViewData["parentContentName"] == item.Name*/)
           {%>
         <span class="hobbyLink">
             <%=item.MenuTitle%>
@@ -46,7 +46,7 @@
             }
           else
           {%>
-        <a class="hobbyLink" href="/Ecology">
+        <a class="hobbyLink" href="/<%=item.Name%>">
             <%=item.MenuTitle%>
         </a>
         <%

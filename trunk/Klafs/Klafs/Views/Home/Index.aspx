@@ -35,13 +35,19 @@
 <asp:Content ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
     <%=Model.Sign2%>
 
-    <%if (Request.IsAuthenticated&&(Model.ContentType==0||Model.ContentType==3 ))
+    <%if (Request.IsAuthenticated&&(Model.ContentType==2||Model.ContentType==3 ))
       {%>
-        <%=Html.ActionLink("редактировать", "EditContent", "Content",
-                                            new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
+        <%=Html.ActionLink("редактировать", "EditContent", "Content",new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
+        
+        <%if (Model.ContentType != 0)
+{%>
+        
+        <br />
+
+        <%=Html.ActionLink("Добавить пункт подменю", "AddContent", "Content", new { area = "Admin", id=ViewData["id"].ToString() }, new { @class = "adminLink" })%>
         
         <%
-         
+}
       }%>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="SeoContent" runat="server">
