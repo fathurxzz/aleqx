@@ -44,7 +44,7 @@ body
 #mainContent
 {
     min-height:400px;
-    background-color:#cccccc;
+    /*background-color:#cccccc;*/
     width:957px;
     margin-right:56px;
     margin-left:auto;
