@@ -14,14 +14,14 @@ namespace Klafs.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var contentItems = context.Content.Where(c => c.Visible && c.ContentType == 1).OrderBy(c => c.SortOrder).ToList();
+                var contentItems = context.Content.Where(c => c.ContentType == 1).OrderBy(c => c.SortOrder).ToList();
                 ViewData["contentItems"] = contentItems;
 
-                var headerMenuItems = context.Content.Where(c => c.Visible && (c.ContentType == 0 || c.ContentType == 3)).OrderBy(c => c.SortOrder).ToList();
+                var headerMenuItems = context.Content.Where(c => c.ContentType == 2 || c.ContentType == 3).OrderBy(c => c.SortOrder).ToList();
                 ViewData["headerMenuItems"] = headerMenuItems;
 
 
-                var subMenuItems = context.Content.Where(c => c.Visible && c.ContentType == 10).OrderBy(c => c.SortOrder).ToList();
+                var subMenuItems = context.Content.Include("Parent").Where(c => c.ContentType == 4).OrderBy(c => c.SortOrder).ToList();
                 ViewData["subMenuItems"] = subMenuItems;
 
                 Content content;
@@ -29,7 +29,9 @@ namespace Klafs.Controllers
                     content = context.Content.Where(c => c.Id == 1).FirstOrDefault();
                 else
                 {
-                    content = context.Content.Include("GalleryItem").Where(c => c.Name == id).FirstOrDefault();
+                    content = context.Content.Include("Parent").Include("GalleryItems").Where(c => c.Name == id).FirstOrDefault();
+                    if(content.Parent!=null)
+                        ViewData["parentContentName"] = content.Parent.Name;
                 }
 
                 ViewData["contentType"] = content.ContentType;
