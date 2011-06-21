@@ -1,0 +1,110 @@
+﻿*
+{
+    margin:0;
+    padding:0;
+}
+
+body
+{
+    font-family:Arial;
+}
+
+#page
+{
+    width:1265px;
+    margin-right:0px;
+    margin-left:auto;
+}
+
+#logo
+{
+    background:url('img/logo.gif');
+    width:212px;
+    height:122px;
+    float:left;
+    margin-right:0px;
+    margin-left:3px;
+}
+
+#languageSelector
+{
+    float:left;
+    color:#000;
+    font-size:11px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+#languageSelector a
+{
+    font-weight:normal;
+    color:#cc0000;
+}
+
+#mainContent
+{
+    min-height:400px;
+    background-color:#cccccc;
+    width:957px;
+    margin-right:56px;
+    margin-left:auto;
+    border:1px solid black;
+}
+
+#contactsContainer
+{
+	margin-top:40px;
+	margin-left:23px;
+	width:200px;
+	float:left;
+	font-size:11px;
+	color:#666666;
+}
+
+#footer
+{
+	height:49px;
+	background-color:#777777;
+	margin-top:-65px;
+}
+
+#sign
+{
+	margin-right:110px;
+	margin-left:auto;
+	text-align:right;
+	color:#fff;
+	font-size:11px;
+	line-height:17px;
+	padding-top:8px;
+}
+
+#sign a
+{
+	color:#fff;
+	font-size:11px;
+	font-weight:bold;
+}
+
+#titleLine
+{
+	height:106px;
+    background-color:#cccccc;
+    width:957px;
+    margin-right:56px;
+    margin-left:auto;
+    
+}
+
+#skatch
+{
+	/*border:1px solid black;*/
+	width:290px;
+	height:324px;
+	margin-right:1100px;
+	margin-left:auto;
+	margin-top:-345px;
+	position:absolute;
+	background:url('img/skatch.gif');
+	z-index:-1;
+}
