@@ -1,5 +1,0 @@
-D:\projects\Babich\Babich\bin\Babich.dll
-D:\projects\Babich\Babich\bin\Babich.pdb
-D:\projects\Babich\Babich\obj\Debug\ResolveAssemblyReference.cache
-D:\projects\Babich\Babich\obj\Debug\Babich.dll
-D:\projects\Babich\Babich\obj\Debug\Babich.pdb
