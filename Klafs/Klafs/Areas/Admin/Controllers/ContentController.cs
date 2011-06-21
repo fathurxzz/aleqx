@@ -27,21 +27,8 @@ namespace Klafs.Areas.Admin.Controllers
             {
                 Content content = new Models.Content();
 
-                /*
-                content.ContentType = 10;
-                content.Name = form["Name"];
-                content.MenuTitle = form["MenuTitle"];
-                content.Description = form["Description"];
-                content.PageTitle = form["PageTitle"];
-                content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
-                content.Title = form["Title"];
-                content.SortOrder = Convert.ToInt32(form["SortOrder"]);
-                */
-
                 TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2", "MenuTitle","SortOrder" });
-                content.ContentType = 10;
-                content.Visible = true;
+                content.ContentType = 4;
                 
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
@@ -120,7 +107,7 @@ namespace Klafs.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Photos");
                     filePath = Path.Combine(filePath, fileName);
                     Request.Files["logo"].SaveAs(filePath);
-                    content.GalleryItem.Add(new GalleryItem{Description = form["description"],ImageSource = fileName});
+                    content.GalleryItems.Add(new GalleryItem{Description = form["description"],ImageSource = fileName});
                     context.SaveChanges();
                 }
 
