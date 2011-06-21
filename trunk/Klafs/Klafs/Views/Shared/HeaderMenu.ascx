@@ -11,27 +11,23 @@
     <div>
         &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
-            foreach (var item in headerMenuItems.Where(c => c.ContentType == 0))
+            foreach (var item in headerMenuItems.Where(c => c.ContentType == 2))
             {
         %>
-
-        <%if ((string)ViewData["contentName"] != item.Name)
+        <%if ((string)ViewData["contentName"] == item.Name || (string)ViewData["parentContentName"] == item.Name)
           {%>
-
-        <a href="/<%=item.Name%>">
-            <%=item.MenuTitle%></a> 
-            <%
+        <span>
+            <%=item.MenuTitle%>
+        </span>
+        <%
             }
           else
-{%>
-<span>
-<%=item.MenuTitle%>
-</span>
-<%
-}%>
-            
-            
-            &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
+          {%>
+        <a href="/<%=item.Name%>">
+            <%=item.MenuTitle%></a>
+        <%
+            }%>
+        &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
             }
         %>
@@ -41,21 +37,20 @@
             foreach (var item in headerMenuItems.Where(c => c.ContentType == 3))
             {
         %>
-        
-        <%if ((string)ViewData["contentName"] != item.Name && ViewData["contentType"].ToString() !="10")
+        <%if ((string)ViewData["contentName"] == item.Name || (string)ViewData["parentContentName"] == item.Name)
+          {%>
+        <span class="hobbyLink">
+            <%=item.MenuTitle%>
+        </span>
+        <%
+            }
+          else
           {%>
         <a class="hobbyLink" href="/Ecology">
             <%=item.MenuTitle%>
         </a>
         <%
-            }
-          else
-{%>
-<span class="hobbyLink">
-<%=item.MenuTitle%>
-</span>
-<%
-}%>
+            }%>
         <%
             }
         %>

@@ -17,7 +17,7 @@
                 <div id="contentTop">
                 </div>
                 <div id="contentMiddle">
-                    <% Html.RenderPartial("Gallery",Model.GalleryItem); %>
+                    <% Html.RenderPartial("Gallery",Model.GalleryItems); %>
                     
                     <div class="mainText">
                     <%=Model.Text%></div>
