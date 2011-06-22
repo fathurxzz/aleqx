@@ -1,13 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Klafs.Models.GalleryItem>" %>
+<%@ Import Namespace="Dev.Mvc.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <% using (Html.BeginForm("AddPhoto", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    <% using (Html.BeginForm("EditPhoto", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
-    <%=Html.Hidden("contentId") %>
+    <%=Html.HiddenFor(x=>x.Id) %>
+    <%=Html.Hidden("contentName")%>
     <table>
         <tr>
+        <td>Фото</td>
+        <td>
+        <%=Html.CachedImage("~/Content/Photos/", Model.ImageSource, "thumbnail", Model.ImageSource, true)%>
+        </td>
+        </tr>
+        <tr>
             <td>
-                Файл
+            Если хотите заменить фото &ndash; выберите файл
             </td>
             <td>
                 <input type="file" name="logo" />
@@ -18,7 +26,7 @@
                 Описание
             </td>
             <td>
-                <%=Html.TextArea("description","", 6,30,null)%>
+                <%=Html.TextAreaFor(x=>x.Description,6,30,null) %>
             </td>
         </tr>
         <tr>
@@ -26,7 +34,7 @@
                 Порядок отображения:
             </td>
             <td>
-                <%=Html.TextBox("sortOrder") %>
+                <%=Html.TextBoxFor(x=>x.SortOrder) %>
             </td>
         </tr>
     </table>
@@ -35,15 +43,21 @@
     </div>
     <%
         }%>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="PageTitle" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="includes" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="HeaderTitleContent" runat="server">
-Добавление фотографии
+Редактирование фотографии
 </asp:Content>
+
 <asp:Content ID="Content5" ContentPlaceHolderID="HeaderTitleSignContent" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content6" ContentPlaceHolderID="SeoContent" runat="server">
 </asp:Content>

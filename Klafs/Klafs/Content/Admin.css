@@ -12,6 +12,14 @@ a.adminLink:hover
    text-decoration:none !important;}
 
 
+span.sortOrder
+{
+    font-weight:bold;
+    color:#0000ff !important;
+    font-size:12px !important;
+    text-decoration:none !important;
+}
+
 
 .adminEditContentContainer
 {
@@ -95,3 +103,12 @@ h2.editContentTitle
 {
 	padding-top:15px;
 }
+
+.subMenuCenter a.adminLink
+{
+    font-size:11px;
+    
+}
+
+.subMenuCenter div.subMenuAdminLinkContainer
+{line-height:11px;}
