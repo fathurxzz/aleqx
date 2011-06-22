@@ -97,8 +97,20 @@ namespace Klafs.Areas.Admin.Controllers
 
         public ActionResult AddPhoto(int id)
         {
-            ViewData["contentId"] = id;
-            return View();
+            
+
+            using (var context = new ContentStorage())
+            {
+                ViewData["contentId"] = id;
+
+                Content content = context.Content.Include("GalleryItems").Where(c => c.Id == id).FirstOrDefault();
+
+                int sortOrder = content.GalleryItems.Max(c => c.SortOrder).Value;
+                ViewData["sortOrder"] = (sortOrder + 1).ToString();
+                return View();
+            }
+
+            
         }
 
         [HttpPost]
@@ -114,11 +126,44 @@ namespace Klafs.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Photos");
                     filePath = Path.Combine(filePath, fileName);
                     Request.Files["logo"].SaveAs(filePath);
-                    content.GalleryItems.Add(new GalleryItem{Description = form["description"],ImageSource = fileName});
+                    content.GalleryItems.Add(new GalleryItem{Description = form["description"],ImageSource = fileName,SortOrder= Convert.ToInt32(form["sortOrder"])});
                     context.SaveChanges();
                 }
 
                 return RedirectToAction("Index", "Home", new {area = "", id = content.Name});
+            }
+        }
+
+        public ActionResult EditPhoto(int id, string contentName)
+        {
+            using (var context = new ContentStorage())
+            {
+                ViewData["contentName"] = contentName;
+                var photo = context.GalleryItem.Include("Content").Where(p => p.Id == id).First();
+                return View(photo);
+            }
+        }
+        
+        [HttpPost]
+        public ActionResult EditPhoto(FormCollection form)
+        {
+            int id = Convert.ToInt32(form["id"]);
+
+            using (var context = new ContentStorage())
+            {
+                GalleryItem gItem = context.GalleryItem.Where(g => g.Id == id).FirstOrDefault();
+                gItem.Description = form["description"];
+                gItem.SortOrder = Convert.ToInt32(form["sortOrder"]);
+                if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Photos", Request.Files["logo"].FileName);
+                    string filePath = Server.MapPath("~/Content/Photos");
+                    filePath = Path.Combine(filePath, fileName);
+                    Request.Files["logo"].SaveAs(filePath);
+                    gItem.ImageSource = fileName;
+                }
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new { area = "", id = form["contentName"] });
             }
         }
 

@@ -35,6 +35,11 @@
             <span>
             <%=item.MenuTitle%>
             </span>
+            <%if (Request.IsAuthenticated)
+          { %> <span class="sortOrder">
+          <%=item.SortOrder %>
+          </span>
+        <%} %>
             <img border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
         </a>
 

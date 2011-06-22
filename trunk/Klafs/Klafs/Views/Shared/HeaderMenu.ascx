@@ -27,6 +27,12 @@
             <%=item.MenuTitle%></a>
         <%
             }%>
+
+            <%if (Request.IsAuthenticated)
+              { %>
+              <span class="sortOrder"><%=item.SortOrder %></span>
+            <%} %>
+
         &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
             }

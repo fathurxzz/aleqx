@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="gbua_klafsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="gbua_klafsModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="gbua_klafsModelStoreContainer">
           <EntitySet Name="content" EntityType="gbua_klafsModel.Store.content" store:Type="Tables" Schema="gbua_klafs" />
           <EntitySet Name="galleryitem" EntityType="gbua_klafsModel.Store.galleryitem" store:Type="Tables" Schema="gbua_klafs" />
@@ -37,9 +37,9 @@
           <Property Name="Description" Type="varchar" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" Nullable="false" />
+          <Property Name="SortOrder" Type="int" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="gbua_klafsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -85,6 +85,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="String" Nullable="false" />
           <NavigationProperty Name="Content" Relationship="gbua_klafsModel.ContentGalleryItem" FromRole="GalleryItem" ToRole="Content" />
+          <Property Type="Int32" Name="SortOrder" />
         </EntityType>
         <Association Name="ContentGalleryItem">
           <End Type="gbua_klafsModel.Content" Role="Content" Multiplicity="1" />
@@ -117,7 +118,8 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="GalleryItem"><EntityTypeMapping TypeName="gbua_klafsModel.GalleryItem"><MappingFragment StoreEntitySet="galleryitem">
-            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
