@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     
-    <%if (!string.IsNullOrEmpty(Model.Title) || !string.IsNullOrEmpty(Model.Text))
+    <%if (!string.IsNullOrEmpty(Model.Title) || !string.IsNullOrEmpty(Model.Text)||Model.GalleryItems.Count>0)
       {%>
 
     <div id="main">

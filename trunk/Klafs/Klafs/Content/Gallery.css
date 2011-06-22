@@ -7,8 +7,8 @@
 .galleryItem
 {
     float:left;
-    margin:35px;
-    height:300px;
+    margin:20px 35px;
+    /*height:300px;*/
     
 }
 
@@ -18,4 +18,9 @@
     width:360px;
     font-size:13px;
     color:#666666;
+}
+
+.galleryImage img
+{
+    
 }

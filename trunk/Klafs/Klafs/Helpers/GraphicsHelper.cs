@@ -14,23 +14,39 @@ namespace Dev.Mvc.Helpers
     {
         public enum FixedDimension { Width, Height }
 
-        private static Dictionary<string, int> maxDimensions = new Dictionary<string, int>();
-        private static Dictionary<string, FixedDimension> fixDimension = new Dictionary<string, FixedDimension>();
+        //private static Dictionary<string, int> maxDimensions = new Dictionary<string, int>();
+        //private static Dictionary<string, FixedDimension> fixDimension = new Dictionary<string, FixedDimension>();
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
         static GraphicsHelper()
         {
-            maxDimensions.Add("thumbnail", 360);
-            fixDimension.Add("thumbnail", FixedDimension.Width);
+            //maxDimensions.Add("thumbnail", 360);
+            //fixDimension.Add("thumbnail", FixedDimension.Width);
             limitHeight.Add("thumbnail", 240);
             limitWidth.Add("thumbnail", 360);
         }
-        
+
+        private static Rectangle CalculateDestRect(int limWidth, int limHeight, Size imageSize)
+        {
+            return imageSize.Width< imageSize.Height ? new Rectangle(0, 0, limHeight, limWidth) : new Rectangle(0, 0, limWidth, limHeight);
+        }
+
         private static Rectangle CalculateSourceRect(string name, Size sourceImage)
         {
-            int previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-            int previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            int previewHeight;
+            int previewWidth;
+
+            if (sourceImage.Width > sourceImage.Height)
+            {
+                previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
+                previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            }
+            else
+            {
+                previewWidth = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
+                previewHeight = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            }
 
             int resultWidth;
             int resultHeight;
@@ -53,17 +69,12 @@ namespace Dev.Mvc.Helpers
 
             return new Rectangle(0, 0, resultWidth, resultHeight);
         }
-        
+
         public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
             Rectangle sourceRect = CalculateSourceRect(name, image.Size);
-            Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight);
 
-            
-            
-            
-            
-
+            Rectangle destRect = CalculateDestRect(limWidth, limHeight, image.Size);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             Graphics graphics = Graphics.FromImage(thumbnailImage);
@@ -129,7 +140,7 @@ namespace Dev.Mvc.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, limitWidth[cacheFolder],  limitHeight[cacheFolder], stream);
+                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream);
             }
         }
 

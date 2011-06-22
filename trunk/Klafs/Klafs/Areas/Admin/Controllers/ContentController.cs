@@ -34,9 +34,9 @@ namespace Klafs.Areas.Admin.Controllers
 
                 content.Parent = parentContent;
 
-                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2", "MenuTitle","SortOrder" });
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "Sign2", "MenuTitle", "SortOrder" });
                 content.ContentType = 4;
-                
+
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.AddToContent(content);
@@ -97,7 +97,7 @@ namespace Klafs.Areas.Admin.Controllers
 
         public ActionResult AddPhoto(int id)
         {
-            
+
 
             using (var context = new ContentStorage())
             {
@@ -105,12 +105,14 @@ namespace Klafs.Areas.Admin.Controllers
 
                 Content content = context.Content.Include("GalleryItems").Where(c => c.Id == id).FirstOrDefault();
 
-                int sortOrder = content.GalleryItems.Max(c => c.SortOrder).Value;
+
+
+                int sortOrder = content.GalleryItems.Max(c => c.SortOrder).HasValue ? content.GalleryItems.Max(c => c.SortOrder).Value : -1;
                 ViewData["sortOrder"] = (sortOrder + 1).ToString();
                 return View();
             }
 
-            
+
         }
 
         [HttpPost]
@@ -126,11 +128,11 @@ namespace Klafs.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Photos");
                     filePath = Path.Combine(filePath, fileName);
                     Request.Files["logo"].SaveAs(filePath);
-                    content.GalleryItems.Add(new GalleryItem{Description = form["description"],ImageSource = fileName,SortOrder= Convert.ToInt32(form["sortOrder"])});
+                    content.GalleryItems.Add(new GalleryItem { Description = form["description"], ImageSource = fileName, SortOrder = Convert.ToInt32(form["sortOrder"]) });
                     context.SaveChanges();
                 }
 
-                return RedirectToAction("Index", "Home", new {area = "", id = content.Name});
+                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
             }
         }
 
@@ -143,7 +145,7 @@ namespace Klafs.Areas.Admin.Controllers
                 return View(photo);
             }
         }
-        
+
         [HttpPost]
         public ActionResult EditPhoto(FormCollection form)
         {
