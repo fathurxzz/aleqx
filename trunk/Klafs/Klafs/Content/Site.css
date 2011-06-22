@@ -49,6 +49,7 @@ body
 {
     height: 27px;
     background-color:#999999;
+    min-width:1200px;
 }
 
 #headerMenuLine
@@ -279,7 +280,7 @@ a.fancy img{border:none;}
 
 .separator
 {
-    margin-top:40px;
+    margin-top:20px;
 }
 
 

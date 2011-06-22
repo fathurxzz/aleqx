@@ -31,15 +31,15 @@
     %>
     <div class="menuItem">
         <a href="/<%=item.Name%>" >
-            
-            <span>
-            <%=item.MenuTitle%>
-            </span>
             <%if (Request.IsAuthenticated)
-          { %> <span class="sortOrder">
+          { %> <span style="float:left" class="sortOrder">
           <%=item.SortOrder %>
           </span>
         <%} %>
+            <span>
+            <%=item.MenuTitle%>
+            </span>
+            
             <img border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
         </a>
 
