@@ -15,7 +15,7 @@ a.adminLink:hover
 span.sortOrder
 {
     font-weight:bold;
-    color:#0000ff !important;
+    color:#555555 !important;
     font-size:12px !important;
     text-decoration:none !important;
 }
@@ -111,4 +111,9 @@ h2.editContentTitle
 }
 
 .subMenuCenter div.subMenuAdminLinkContainer
-{line-height:11px;}
+{
+    padding-top:23px;
+    /*line-height:11px;*/
+    text-align:center;
+    width:100%;
+ }

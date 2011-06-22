@@ -8,14 +8,21 @@
         $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
     });*/
 </script>
-<div id="galleryContainer">
+
+
+
+
+
+
+<table id="galleryContainer">
+<tr>
     <%
       int cnt = 0;
         foreach (var item in Model.OrderBy(c=>c.SortOrder))
         {
             cnt++;
     %>
-    <div class="galleryItem">
+    <td class="galleryItem">
         <%if (Request.IsAuthenticated)
           { %> <span class="sortOrder">
           <%=item.SortOrder %>
@@ -23,30 +30,43 @@
         <%} %>
         <div class="galleryImage">
         <center>
+            <div">
             <!--<a rel="group1" href="../../Content/Photos/<%=item.ImageSource%>" class="fancy iframe">-->
                 <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource, true)%>
             <!--</a>-->
+             <div class="imageSign">
+            <%=item.Description %>
+            </div>
+            </div>
+            
             </center>
         </div>
-        <div class="imageSign">
-            <%=item.Description %>
-        </div>
+       
         <%if (Request.IsAuthenticated)
           { %>
-        <%= Html.ActionLink("Редактировать", "EditPhoto", "Content", new { area = "Admin", id = item.Id, contentName = ViewData["contentName"] }, new { @class = "adminLink" })%>
-        <%= Html.ActionLink("Удалить", "DeletePhoto", "Content", new { area = "Admin", id = item.Id }, new { onclick = "return confirm('Вы уверены что хотите удалить фото?')", @class = "adminLink" })%>
+
+          <table style="width:100%">
+          <tr>
+            <td align="left" style="padding-left:10px;"><%= Html.ActionLink("Редактировать", "EditPhoto", "Content", new { area = "Admin", id = item.Id, contentName = ViewData["contentName"] }, new { @class = "adminLink" })%></td>
+            <td align="right" style="padding-right:10px;"><%= Html.ActionLink("Удалить", "DeletePhoto", "Content", new { area = "Admin", id = item.Id }, new { onclick = "return confirm('Вы уверены что хотите удалить фото?')", @class = "adminLink" })%></td>
+          </tr>
+          </table>
+        
+        
+        
         <%} %>
-    </div>
+    </td>
     <%if (cnt % 2 == 0)
 {%>
-    <div class="clear"></div>    
+
+    </tr><tr>
+    
     <%
 }
         }
     %>
-</div>
-<div class="clear">
-</div>
+    </tr>
+</table>
 <div class="separator">
 </div>
 <%
