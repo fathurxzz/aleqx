@@ -64,7 +64,17 @@
                                       <br />
                                        <%=Html.ActionLink("Добавить фото", "AddPhoto", "Content",
                                                 new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
+
+                                                                                         <br />
+
+        <%=Html.ActionLink("Добавить пункт подменю", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })%>
+
                                                 </div>
+                                                <br />
+
+        
+
+
                                             <%
 }%>
     </div>
