@@ -24,12 +24,19 @@
     });
 
 </script>
-
+<div>
     <%
+        int i = 0;
         foreach (var item in contentItems)
         {
+            i++;
+            
+            
     %>
-    <div class="menuItem">
+
+    
+
+    <div class="menuItem m<%=item.Id%>">
         <a href="/<%=item.Name%>" >
             <%if (Request.IsAuthenticated)
           { %> <span style="float:left" class="sortOrder">
@@ -61,11 +68,26 @@
                                             <%
 }%>
     </div>
+
+
+   
+
     <%
+            
+        if (i % 5 == 0)
+        {
+            %>
+          <div class="clear"></div>
+    </div>
+    <div>  
+            <% 
+        }
+            
         }
     %>
     <div class="clear">
     </div>
+     </div>
 </div>
 <%
 }%>
