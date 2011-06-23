@@ -17,11 +17,11 @@ namespace Klafs.Models
     [Bind(Exclude = "Id")]
     public class ContentValidation
     {
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* Введите веб-имя страницы")]
         [DisplayName("Веб-имя страницы")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* Введите название товарного раздела")]
         [DisplayName("Название товарного раздела")]
         public string MenuTitle { get; set; }
 
@@ -40,7 +40,7 @@ namespace Klafs.Models
         [DisplayName("Описание товарного раздела")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* Введите порядок отображения (целое число)")]
         [DisplayName("Порядок отбражения")]
         public string SortOrder { get; set; }
 

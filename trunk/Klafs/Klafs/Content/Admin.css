@@ -117,3 +117,10 @@ h2.editContentTitle
     text-align:center;
     width:100%;
  }
+ 
+span.field-validation-error
+{
+     color:Red !important;
+     font-size:13px !important;
+     font-weight:bold !important;
+}
