@@ -30,8 +30,11 @@ namespace Klafs.Controllers
                 else
                 {
                     content = context.Content.Include("Parent").Include("Children").Include("GalleryItems").Where(c => c.Name == id).FirstOrDefault();
-                    if(content.Parent!=null)
+                    if (content.Parent != null)
+                    {
                         ViewData["parentContentName"] = content.Parent.Name;
+                        ViewData["parentContentType"] = content.Parent.ContentType;
+                    }
                 }
 
                 if (content.Children.Count > 0)

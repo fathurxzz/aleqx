@@ -72,7 +72,7 @@
         <div id="mainContentContainer">
             <%
           
-          if (contentType == 1||contentType==0)
+                if (contentType == 1 || contentType == 0 || (int)ViewData["parentContentType"]==1)
           {
               Html.RenderPartial("MainMenu");
           }%>
