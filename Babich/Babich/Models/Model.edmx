@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="babichModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="babichModelStoreContainer">
+          <EntitySet Name="content" EntityType="babichModel.Store.content" store:Type="Tables" Schema="babich" />
+          <EntitySet Name="gallery" EntityType="babichModel.Store.gallery" store:Type="Tables" Schema="babich" />
+          <EntitySet Name="galleryitem" EntityType="babichModel.Store.galleryitem" store:Type="Tables" Schema="babich" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentLevel" Type="usmallint" Nullable="false" />
+          <Property Name="ContentTitle" Type="varchar" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Lang" Type="varchar" MaxLength="5" />
+          <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="ParentId" Type="uint" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SortOrder" Type="usmallint" Nullable="false" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" />
+        </EntityType>
+        <EntityType Name="gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="uint" Nullable="false" />
+          <Property Name="Description" Type="varchar" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="galleryitem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DefaultGalleryImage" Type="bit" Nullable="false" />
+          <Property Name="GalleryId" Type="uint" Nullable="false" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="babichModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="babichModel.Content" />
+          <EntitySet Name="Gallery" EntityType="babichModel.Gallery" />
+          <EntitySet Name="GalleryItem" EntityType="babichModel.GalleryItem" />
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentLevel" Type="Int32" Nullable="false" />
+          <Property Name="ContentTitle" Type="String" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lang" Type="String" />
+          <Property Name="MenuTitle" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GalleryItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DefaultGalleryImage" Type="Boolean" Nullable="false" />
+          <Property Name="GalleryId" Type="Int64" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="babichModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="babichModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
+            <ScalarProperty Name="ContentTitle" ColumnName="ContentTitle" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Lang" ColumnName="Lang" />
+            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Gallery"><EntityTypeMapping TypeName="babichModel.Gallery"><MappingFragment StoreEntitySet="gallery">
+            <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GalleryItem"><EntityTypeMapping TypeName="babichModel.GalleryItem"><MappingFragment StoreEntitySet="galleryitem">
+            <ScalarProperty Name="DefaultGalleryImage" ColumnName="DefaultGalleryImage" />
+            <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="babichModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.2357796223958335" IsExpanded="true" />
+        <EntityTypeShape EntityType="babichModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7566536458333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="babichModel.GalleryItem" Width="1.5" PointX="2.75" PointY="3.75" Height="1.592306315104167" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
