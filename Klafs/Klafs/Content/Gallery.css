@@ -39,3 +39,10 @@
     padding:0px 33px 40px 33px;
     
 }
+
+.pictureAndSignContainer td
+{
+    margin:0 !important;
+    padding:0 !important;
+    width:10px;
+}

@@ -30,14 +30,20 @@
         <%} %>
         <div class="galleryImage">
         <center>
-            <div">
-            <!--<a rel="group1" href="../../Content/Photos/<%=item.ImageSource%>" class="fancy iframe">-->
-                <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource, true)%>
-            <!--</a>-->
-             <div class="imageSign">
-            <%=item.Description %>
-            </div>
-            </div>
+            <table class="pictureAndSignContainer">
+            <tr>
+            <td>
+            
+            
+                <!--<a rel="group1" href="../../Content/Photos/<%=item.ImageSource%>" class="fancy iframe">-->
+                    <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource, true)%>
+                <!--</a>-->
+                 <div class="imageSign">
+                <%=item.Description %>
+                </div>
+                </td>
+            </tr>
+            </table>
             
             </center>
         </div>
