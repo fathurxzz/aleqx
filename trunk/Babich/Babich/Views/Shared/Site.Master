@@ -14,10 +14,9 @@
         <div id="header">
             <div id="mainMenuLine">
                 <div id="languageSelector">
-                <%
-                    Html.RenderPartial("LanguageSelector"); %>
+                    <%
+                        Html.RenderPartial("LanguageSelector"); %>
                 </div>
-                
                 <div id="mainMenu">
                     <%Html.RenderPartial("MainMenu"); %>
                 </div>
@@ -25,46 +24,47 @@
             <div class="menuLineSeparator">
             </div>
             <div id="subMenuLine">
-                <div id="logo"></div>
+                <div id="logo">
+                </div>
                 <div id="subMenuContainer">
-                    
                     <div id="subMenu">
-                    <a href="#">Житлові будівлі</a>
-                    <a href="#">Отелі</a>
-                    <a href="#">Котеджі</a>
-                    <a href="#">Торговельно-розважальні комплекси</a>
-                    <a href="#">Ресторанні комплекси</a>
-                    <a href="#">Офісні споруди</a>
-                    <a href="#">Конкурсні проекти</a>
-                    <a href="#">Громадські споруди</a>
-                    <a href="#">Сакральна архітектура</a>
-                    <a href="#">Приватні будинки</a>
-                    <a href="#">Ландшафтна архітектура</a>
+                        <%Html.RenderPartial("SubMenu"); %>
                     </div>
                 </div>
             </div>
             <div class="menuLineSeparator">
             </div>
-            <div id="mainContentContainer">
-                
-                <div id="contactsContainer">
+        </div>
+        <div id="mainContentContainer">
+            <div id="contactsContainer">
                 <% Html.RenderPartial("Contacts"); %>
-                </div>
-                <div id="titleLine"></div>
+            </div>
+            <div id="titleLine">
+                Житлові будівлі
+            </div>
+            <div id="mainContentOuter">
                 <div id="mainContent">
-                    111
+                    
                 </div>
             </div>
-
+            <div id="mainContentFooter">
+            </div>
         </div>
-        <div id="skatch"></div>
     </div>
-    
     <div id="footer">
-        <div id="sign">
-        
-        &copy; <%=DateTime.Now.Year%> Творча архітектурна майстерня &laquo;Бабіч&raquo;<br />
-        Сайт створено в <a target="_blank" href="http://m-brand.com.ua">Студії Євгена Міллера</a>
+        <div id="rightSign" class="sign">
+            Сайт створено в <a target="_blank" href="http://m-brand.com.ua">Студії Євгена Міллера</a>
+        </div>
+        <div id="leftSign" class="sign">
+            Творча
+            <br />
+            архітектурна
+            <br />
+            майстерня
+        </div>
+    </div>
+    <div id="backFooter">
+        <div id="babich_h">
         </div>
     </div>
 </body>
