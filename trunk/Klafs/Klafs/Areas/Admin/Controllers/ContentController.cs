@@ -52,6 +52,13 @@ namespace Klafs.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
+
+
+                while (content.GalleryItems.Any())
+                {
+                    context.DeleteObject(content.GalleryItems.First());
+                }
+
                 context.DeleteObject(content);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home", new { area = "", id = "" });
