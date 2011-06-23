@@ -118,7 +118,7 @@
     </div>
     <div class="buttonsContainer">
         <input type="submit" value="Сохранить" />&nbsp;
-        <%= Html.ActionLink("Назад", "Index","Home",new{area=""},null) %>
+        <%= Html.ActionLink("Назад", "Index","Home",new{area="",id=""},null) %>
     </div>
     <% } %>
     
