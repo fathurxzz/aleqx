@@ -44,7 +44,7 @@
         
         <br />
 
-        <%=Html.ActionLink("Добавить пункт подменю", "AddContent", "Content", new { area = "Admin", id=ViewData["id"].ToString() }, new { @class = "adminLink" })%>
+        <%=Html.ActionLink("Добавить подраздел", "AddContent", "Content", new { area = "Admin", id=ViewData["id"].ToString() }, new { @class = "adminLink" })%>
         
         <%
 }

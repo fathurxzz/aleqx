@@ -67,7 +67,7 @@
 
                                                                                          <br />
 
-        <%=Html.ActionLink("Добавить пункт подменю", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })%>
+        <%=Html.ActionLink("Добавить подраздел", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })%>
 
                                                 </div>
                                                 <br />
