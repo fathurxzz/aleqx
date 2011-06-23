@@ -19,6 +19,7 @@
                 </td>
                 <td>
                     <%= Html.TextBoxFor(model => model.Name,new{style="width:600px;"} ) %>
+                    <br />
                     <%= Html.ValidationMessageFor(model => model.Name) %>
                 </td>
             </tr>
@@ -28,7 +29,7 @@
                     <span style="font-size: 11px;">(Заголовок Главной превью товарной категории)</span>
                 </td>
                 <td>
-                    <%= Html.TextBoxFor(model => model.MenuTitle, new { style = "width:600px;" })%>
+                    <%= Html.TextBoxFor(model => model.MenuTitle, new { style = "width:600px;" })%><br />
                     <%= Html.ValidationMessageFor(model => model.MenuTitle)%>
                 </td>
             </tr>
