@@ -268,7 +268,7 @@ a.fancy img{border:none;}
 #mainContentContainer
 {
     min-height:380px;
-    /*z-index:2;*/
+    z-index:10;
 }
 
 #main
@@ -310,14 +310,14 @@ a.fancy img{border:none;}
     
     color:#fff;
     font-size:12px;
-    z-index:100;
+    /*z-index:100;*/
 }
 
 #designedBy a
 {
     color:#fff;
     font-weight:bold;
-    z-index:101;
+    /*z-index:101;*/
 }
 
 #copyright
