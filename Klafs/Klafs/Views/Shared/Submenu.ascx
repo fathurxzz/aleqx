@@ -35,6 +35,7 @@
       {%>
     <br />
     <div class="subMenuAdminLinkContainer">
+     <%=Html.ActionLink("Добавить фото", "AddPhoto", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink" })%><br />
     <%=Html.ActionLink("Редактировать", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink" })%><br />
     <%=Html.ActionLink("Удалить", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>
     </div>
