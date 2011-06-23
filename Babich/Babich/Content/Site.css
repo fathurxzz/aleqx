@@ -43,12 +43,24 @@ body
 
 #mainContent
 {
-    min-height:400px;
-    /*background-color:#cccccc;*/
-    width:957px;
-    margin-right:56px;
+    min-height:300px;
+    background-color:#a8a8a8;
+    width:938px;
+    margin-right:66px;
     margin-left:auto;
-    border:1px solid black;
+    /*border:1px solid black;*/
+    padding-bottom:10px;
+    margin-top:1px;
+    
+}
+
+#mainContentFooter
+{
+    background-color:#cccccc;
+    width:957px;
+    margin-right:51px;
+    margin-left:auto;
+    height:48px;
 }
 
 #contactsContainer
@@ -65,46 +77,113 @@ body
 {
 	height:49px;
 	background-color:#777777;
-	margin-top:-65px;
+	/*margin-top:-69px;*/
 }
 
-#sign
+#mainContentOuter
 {
+    background-image:url('img/babich_v.gif');
+    background-repeat:no-repeat;
+    background-position:right bottom;
+}
+
+
+
+#backFooter
+{
+    background-color:#cccccc;
+    width:957px;
+    margin-right:51px;
+    margin-left:auto;
+    height:20px;
+}
+
+
+
+.sign
+{
+    /*
 	margin-right:110px;
 	margin-left:auto;
 	text-align:right;
-	color:#fff;
-	font-size:11px;
+
 	line-height:17px;
 	padding-top:8px;
+*/
+	color:#fff;
+	font-size:12px;
 }
 
-#sign a
+.sign a
 {
 	color:#fff;
-	font-size:11px;
+	font-size:12px;
 	font-weight:bold;
 }
 
+#leftSign
+{
+    font-size:11px;
+    margin-right:1033px;
+    margin-left:auto;
+    position:relative;
+    width:200px;
+    padding-top:4px;
+}
+
+#rightSign
+{
+    float:right;
+    margin-right:63px;
+	font-size:12px;
+	padding-top:20px;
+}
+#rightSign a
+{
+    font-size:inherit;
+}
+
+
+
+
 #titleLine
 {
-	height:106px;
+	height:66px;
+	padding-top:40px;
     background-color:#cccccc;
     width:957px;
     margin-right:56px;
     margin-left:auto;
+    letter-spacing:1px;
+    /*font-weight:bold;*/
+    font-size:25px;
+    text-align:center;
+    white-space:nowrap;
+    color:#cc0000;
     
 }
-
+/*
 #skatch
 {
-	/*border:1px solid black;*/
+	border:1px solid black;
 	width:290px;
 	height:324px;
 	margin-right:1100px;
 	margin-left:auto;
-	margin-top:-345px;
+	margin-top:-325px;
 	position:absolute;
 	background:url('img/skatch.gif');
 	z-index:-1;
+}
+*/
+
+#babich_h
+{
+	float:left;
+	width:197px;
+	height:14px;
+	margin-left:-250px;
+	margin-top:-63px;
+	/*position:absolute;*/
+	background:url('img/babich_h.gif');
 }
