@@ -35,16 +35,6 @@
             </tr>
             <tr>
                 <td>
-                    <%= Html.LabelFor(model => model.Description)%><br />
-                    <span style="font-size: 11px;">(будет отображено под Главной Картинкой создаваемого раздела)</span>
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(model => model.Description, new { style = "width:600px;" })%>
-                    <%= Html.ValidationMessageFor(model => model.Description)%>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <%= Html.LabelFor(model => model.PageTitle)%>
                 </td>
                 <td>

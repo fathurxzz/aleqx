@@ -147,27 +147,36 @@ span.hobbyLink
     background-color:#fae5e5;
     height:47px;
     background:url('img/submenu-bg-center.gif') repeat-x;
-}
-
-
-.subMenuCenter a
-{
-    margin-left:20px;
-    margin-right:20px;
-    font-family:Arial;
-    font-size:12px;
-    color:#cc0000;
+    text-align:center;
 }
 
 .subMenuCenter span
 {
     font-family:Arial;
     font-weight:bold;
-    margin-left:20px;
-    margin-right:20px;
+    margin-left:8px;
+    margin-right:8px;
     color:#666666;
     font-size:12px;
 }
+
+.subMenuCenter span a
+{
+    margin-left:8px;
+    margin-right:8px;
+    font-family:Arial;
+    font-size:12px;
+    color:#cc0000;
+    white-space:nowrap;
+}
+
+.sMenuItem
+{
+    margin:0 !important;
+    white-space:nowrap;
+}
+
+
 
 .subMenuCenter div
 { 
