@@ -12,7 +12,7 @@
 
 
 
-    <%if (Model.ContentType == 5)
+    <%if (Model.Id == 1)
 {%>
    <script type="text/javascript">
        $(function () {
@@ -23,9 +23,20 @@
     <%
 }%>
 
+    <%if (Model.ContentType == 4)
+{%>
+   <script type="text/javascript">
+       $(function () {
+           $(".editSubitem").css("display", "none");
+       });
+</script>
+
+    <%
+}%>
+
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
-            <tr class="sign">
+            <tr class="sign editSubitem">
                 <td>
                     <%= Html.LabelFor(model => model.Name) %><br />
                     <span style="font-size: 11px;">(только имя, латиницей, без указания расширения)</span>
@@ -45,7 +56,7 @@
                     <%= Html.ValidationMessageFor(model => model.MenuTitle)%>
                 </td>
             </tr>
-            <tr class="sign">
+            <tr class="sign editSubitem">
                 <td>
                     <%= Html.LabelFor(model => model.Description)%><br />
                     <span style="font-size: 11px;">(будет отображено под Главной Картинкой создаваемого раздела)</span>
@@ -73,7 +84,7 @@
                     <%= Html.ValidationMessageFor(model => model.Title)%>
                 </td>
             </tr>
-            <tr class="sign">
+            <tr class="sign editSubitem">
                 <td>
                     <%=Html.LabelFor(model => model.Sign)%>
                 </td>
@@ -82,7 +93,7 @@
                     <%=Html.ValidationMessageFor(model => model.Sign)%>
                 </td>
             </tr>
-            <tr class="sign">
+            <tr class="sign" style="display:none">
                 <td>
                     <%=Html.LabelFor(model => model.Sign2)%>
                 </td>
