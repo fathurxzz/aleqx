@@ -2,6 +2,7 @@
 .subMenuTable
 {
     border-collapse:collapse;
+    width:100%;
 }
 
 .topLeft, .topRight, .bottomLeft, .bottomRight
@@ -29,17 +30,18 @@
 
 
 
-.center span
+.submenuItem 
 {
     font-family:Arial;
     font-weight:bold;
-    padding:10px 8px;
+    padding:0px 8px;
     color:#666666;
     font-size:12px;
-    line-height:25px;
+    /*line-height:25px;*/
+    display:inline-block;
 }
 
-.center span a
+.submenuItem a
 {
     font-family:Arial;
     font-size:12px;
@@ -47,6 +49,19 @@
     white-space:nowrap;
 }
 
+.adminSubMenuLinksContainer
+{
+    display:inline-block;
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+.adminSubMenuLinksContainer a
+{
+    color:#fff;
+}
+
+/*
 .sMenuItem
 {
     margin:0 !important;
@@ -64,4 +79,22 @@
 {
     margin-left:1px !important;
     margin-right:1px !important;
+}
+*/
+
+a.pictureLink
+{
+    
+    width:16px;
+    height:15px;
+    background:url('img/delete.gif');
+    display:inline-block;
+    background-position:0 -15px;
+    text-decoration:none !important;
+}
+
+a.pictureLink:hover
+{
+    background-position:0 0;
+    text-decoration:none !important;
 }
