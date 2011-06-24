@@ -48,7 +48,15 @@
 
 
 
+
+
+
+
+
+ <%if ((string)ViewData["contentName"] != item.Name)
+   { %>
         <a href="/<%=item.Name%>" >
+        <%} %>
             <%if (Request.IsAuthenticated)
           { %> <span style="float:left" class="sortOrder">
           <%=item.SortOrder %>
@@ -72,7 +80,16 @@
             </span>
             <img class="" border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
             <%} %>
+        
+        <%if ((string)ViewData["contentName"] != item.Name)
+   { %>
         </a>
+        <%} %>
+
+
+
+
+
 
         <div class="description">
            <%=item.Description%>

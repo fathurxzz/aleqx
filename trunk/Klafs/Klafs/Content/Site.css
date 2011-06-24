@@ -118,16 +118,6 @@ span.hobbyLink
     background-position:0 -20px;
 }
 
-
-
-
-
-
-
-
-
-
-
 a.fancy img{border:none;}
 
 #mainMenu
@@ -169,6 +159,18 @@ a.fancy img{border:none;}
     font-weight:bold;
     text-decoration:none;
 }
+
+
+.menuItem
+{
+    line-height:30px;
+    color:#cc0000;
+    border:none;
+    display:block;
+    font-weight:bold;
+    text-decoration:none;
+}
+
 
 .menuItem a span
 {
