@@ -112,6 +112,7 @@
     <Content Include="Content\img\4.gif" />
     <Content Include="Content\img\5.gif" />
     <Content Include="Content\img\6.gif" />
+    <Content Include="Content\img\add-subitem.gif" />
     <Content Include="Content\img\add.gif" />
     <Content Include="Content\img\bg-footer.gif" />
     <Content Include="Content\img\bg-header.gif" />
