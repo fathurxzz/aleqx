@@ -206,12 +206,17 @@ a.fancy img{border:none;}
     filter:alpha(opacity=50);
 }
 
-.fade
+.fade, .mainMenuItemSelected
 {
     opacity:0.5;
     filter:alpha(opacity=50);
 }
 
+.mainMenuItemSelectedTitle
+{
+    text-decoration:none;
+    color:#999999;
+}
 
 #mainContentContainer
 {

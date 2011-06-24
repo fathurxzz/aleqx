@@ -54,11 +54,24 @@
           <%=item.SortOrder %>
           </span>
         <%} %>
-            <span>
+           
+            
+            <%
+                if ((string)ViewData["contentName"] == item.Name || (string)ViewData["parentContentName"] == item.Name)
+                {
+                  %>
+                  <span class="mainMenuItemSelectedTitle">
             <%=item.MenuTitle%>
             </span>
-            
-            <img border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
+                  <img class="mainMenuItemSelected" border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
+                  <%}
+                else
+                { %>
+                <span>
+            <%=item.MenuTitle%>
+            </span>
+            <img class="" border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
+            <%} %>
         </a>
 
         <div class="description">
