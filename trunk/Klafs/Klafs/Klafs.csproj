@@ -112,6 +112,7 @@
     <Content Include="Content\img\4.gif" />
     <Content Include="Content\img\5.gif" />
     <Content Include="Content\img\6.gif" />
+    <Content Include="Content\img\add.gif" />
     <Content Include="Content\img\bg-footer.gif" />
     <Content Include="Content\img\bg-header.gif" />
     <Content Include="Content\img\content-container-bg-bottom.gif" />
@@ -119,6 +120,7 @@
     <Content Include="Content\img\content-container-bg-top.gif" />
     <Content Include="Content\img\content-container-bg-top.png" />
     <Content Include="Content\img\delete.gif" />
+    <Content Include="Content\img\edit.gif" />
     <Content Include="Content\img\heart.gif" />
     <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\sbm-bottom-left.gif" />
