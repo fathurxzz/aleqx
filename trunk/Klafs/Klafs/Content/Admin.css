@@ -94,14 +94,14 @@ h2.editContentTitle
 	margin-left:500px;
 	}
 
-.adminLinksContainder a
-{
-	line-height:0px !important;
-}
-
 .adminLinksContainder
 {
-	padding-top:15px;
+    margin-top:15px;
+}
+
+.adminLinksContainder a
+{
+	vertical-align:top;
 }
 
 .subMenuCenter a.adminLink
