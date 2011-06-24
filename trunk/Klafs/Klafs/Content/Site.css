@@ -123,71 +123,9 @@ span.hobbyLink
 
 
 
-.subMenuTable
-{
-    border-collapse:collapse;
-}
-
-.subMenuLeftSide
-{
-    height:47px;
-    width:20px;
-    background:url('img/submenu-bg-left.gif') no-repeat;
-}
-
-.subMenuRightSide
-{
-    height:47px;
-    width:20px;
-    background:url('img/submenu-bg-right.gif') no-repeat;
-}
-
-.subMenuCenter
-{
-    background-color:#fae5e5;
-    height:47px;
-    background:url('img/submenu-bg-center.gif') repeat-x;
-    text-align:center;
-}
-
-.subMenuCenter span
-{
-    font-family:Arial;
-    font-weight:bold;
-    margin-left:8px;
-    margin-right:8px;
-    color:#666666;
-    font-size:12px;
-}
-
-.subMenuCenter span a
-{
-    margin-left:8px;
-    margin-right:8px;
-    font-family:Arial;
-    font-size:12px;
-    color:#cc0000;
-    white-space:nowrap;
-}
-
-.sMenuItem
-{
-    margin:0 !important;
-    white-space:nowrap;
-}
 
 
 
-.subMenuCenter div
-{ 
-    float:left;
-}
-
-.subMenuCenter div .adminLink
-{
-    margin-left:1px !important;
-    margin-right:1px !important;
-}
 
 
 a.fancy img{border:none;}
