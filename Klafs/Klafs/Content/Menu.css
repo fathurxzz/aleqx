@@ -10,10 +10,10 @@
     height:18px;
 }
 
-.topLeft{background-image:url('sbm-top-left.gif');}
-.topRight{background-image:url('sbm-top-right.gif');} 
-.bottomLeft{background-image:url('sbm-bottom-left.gif');} 
-.bottomRight{background-image:url('sbm-bottom-right.gif');}
+.topLeft{background-image:url('img/sbm-top-left.gif');}
+.topRight{background-image:url('img/sbm-top-right.gif');} 
+.bottomLeft{background-image:url('img/sbm-bottom-left.gif');} 
+.bottomRight{background-image:url('img/sbm-bottom-right.gif');}
 
 .top, .left, .right, .bottom, .center{    background-color:#fae5e5;}
 
@@ -29,20 +29,18 @@
 
 
 
-.subMenuCenter span
+.center span
 {
     font-family:Arial;
     font-weight:bold;
-    margin-left:8px;
-    margin-right:8px;
+    padding:10px 8px;
     color:#666666;
     font-size:12px;
+    line-height:25px;
 }
 
-.subMenuCenter span a
+.center span a
 {
-    margin-left:8px;
-    margin-right:8px;
     font-family:Arial;
     font-size:12px;
     color:#cc0000;

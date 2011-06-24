@@ -34,6 +34,17 @@
     <%
 }%>
 
+ <%if (Model.ContentType == 2 || Model.ContentType == 3)
+{%>
+   <script type="text/javascript">
+       $(function () {
+           $(".editHeaderMunuItem").css("display", "none");
+       });
+</script>
+
+    <%
+}%>
+
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
             <tr class="sign editSubitem">
@@ -56,7 +67,7 @@
                     <%= Html.ValidationMessageFor(model => model.MenuTitle)%>
                 </td>
             </tr>
-            <tr class="sign editSubitem">
+            <tr class="sign editSubitem editHeaderMunuItem">
                 <td>
                     <%= Html.LabelFor(model => model.Description)%><br />
                     <span style="font-size: 11px;">(будет отображено под Главной Картинкой создаваемого раздела)</span>
