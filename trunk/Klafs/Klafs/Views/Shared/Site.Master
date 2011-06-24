@@ -14,7 +14,7 @@
     <!--[if lte IE 7]>
 <style type="text/css">
     ul li {
-        display: inline
+        display: inline !important
     }
 </style>
 <![endif]-->
