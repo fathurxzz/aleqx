@@ -10,24 +10,25 @@
 <table style="width:925px;">
 <tr>
 <td>
-<table class="subMenuTable">
+
+
+
+
+<table class="subMenuTable" cellpadding="0" cellspacing="0">
 <tr>
-<td class="subMenuLeftSide"></td>
-<td class="subMenuCenter">
+    <td class="topLeft"></td>
+    <td class="top"></td>
+    <td class="topRight"></td>
+</tr>
+<tr>
+    <td class="left"></td>
+    <td class="center">
+    
     
     <%
         foreach (var subMenuItem in subMenuItems)
         {
-            if (Request.IsAuthenticated)
-            {
-            %>
-            <div><span>
-            <%}
-            else
-            { %>
-            <span>
-            <%
-        }
+           
             if ((string)ViewData["contentName"] != subMenuItem.Name)
             {%>
     <a href="/<%=subMenuItem.Name%>">
@@ -36,9 +37,9 @@
         }
             else
             {%>
-    <span class="sMenuItem">
+   
         <%=subMenuItem.MenuTitle%>
-        </span>
+        
     
     <%}
             if (Request.IsAuthenticated)
@@ -49,21 +50,27 @@
     <%=Html.ActionLink("Редактировать", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink" })%><br />
     <%=Html.ActionLink("Удалить", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>
     </div>
-    <%}
-            if (Request.IsAuthenticated)
-            {%></span></div><%}
-            else
-            { %>
-            
-    
-    </span>
-    <%}
-        }%>
+    <%}}%>
+
+
 
     </td>
-<td class="subMenuRightSide"></td>
+    <td class="right"></td>
 </tr>
-</table></td>
+<tr>
+    <td class="bottomLeft"></td>
+    <td class="bottom"></td>
+    <td class="bottomRight"></td>
+</tr>
+</table>
+
+
+
+
+
+
+
+</td>
 </tr>
 </table>
 </center>

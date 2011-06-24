@@ -120,11 +120,16 @@
     <Content Include="Content\img\content-container-bg-top.png" />
     <Content Include="Content\img\heart.gif" />
     <Content Include="Content\img\pixel.gif" />
+    <Content Include="Content\img\sbm-bottom-left.gif" />
+    <Content Include="Content\img\sbm-bottom-right.gif" />
+    <Content Include="Content\img\sbm-top-left.gif" />
+    <Content Include="Content\img\sbm-top-right.gif" />
     <Content Include="Content\img\seo-content-container-bg-bottom.png" />
     <Content Include="Content\img\seo-content-container-bg-top.png" />
     <Content Include="Content\img\submenu-bg-center.gif" />
     <Content Include="Content\img\submenu-bg-left.gif" />
     <Content Include="Content\img\submenu-bg-right.gif" />
+    <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Views\Shared\Gallery.ascx" />
