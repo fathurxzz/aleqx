@@ -46,6 +46,7 @@
     font-size:12px;
     color:#cc0000;
     white-space:nowrap;
+    display:inline-block;
 }
 
 .adminSubMenuLinksContainer
@@ -67,7 +68,24 @@
 a.add{background:url('img/add.gif');}
 a.edit{background:url('img/edit.gif');}
 a.delete{background:url('img/delete.gif');}
+a.addSubItem{background:url('img/add-subitem.gif');}
 
+a.pictureLinkSubItem
+{
+    width:21px;
+    height:21px;
+    display:inline-block;
+
+    background-position:0 -21px;
+    text-decoration:none !important;
+
+}
+
+a.pictureLinkSubItem:hover
+{
+     background-position:0 0;
+    text-decoration:none !important;
+}
 
 a.pictureLink
 {
@@ -82,4 +100,17 @@ a.pictureLink:hover
 {
     background-position:0 0;
     text-decoration:none !important;
+}
+
+.white
+{
+    color:#fff !important;
+}
+.gray
+{
+    color:#b2b2b2 !important;
+}
+.marg
+{
+    margin-bottom:10px;
 }

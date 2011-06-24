@@ -24,16 +24,18 @@
     <td class="left"></td>
     <td class="center">
     
-    
+    <ul>
     <%
         foreach (var subMenuItem in subMenuItems)
         {
            %>
-           <div class="submenuItem">
+
+
+           <li class="submenuItem">
            <%
             if ((string)ViewData["contentName"] != subMenuItem.Name)
             {%>
-    <a href="/<%=subMenuItem.Name%>">  <%=subMenuItem.MenuTitle%></a>
+    <a href="/<%=subMenuItem.Name%>"><%=subMenuItem.MenuTitle%></a>
 
     
 
@@ -51,19 +53,17 @@
     
     <br />
     <div class="adminSubMenuLinksContainer">
-    
-
-    <%=Html.ActionLink(".", "AddPhoto", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink add", title="Добавить фотографию" })%>
-    <%=Html.ActionLink(".", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink edit", title = "Редактировать" })%>
-    <%=Html.ActionLink(".", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink delete", title="Удалить", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>
+    <%=Html.ActionLink(".", "AddPhoto", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "pictureLink add gray", title="Добавить фотографию" })%>
+    <%=Html.ActionLink(".", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "pictureLink edit gray", title = "Редактировать" })%>
+    <%=Html.ActionLink(".", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "pictureLink delete gray", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>
     </div>
     
     <%}
-        %></div><%
+        %></li><%
         }%>
 
 
-
+        </ul>
     </td>
     <td class="right"></td>
 </tr>

@@ -37,6 +37,17 @@
     
 
     <div class="menuItem m<%=item.Id%>">
+        <%if (Request.IsAuthenticated)
+{%>
+<div class="adminLinksContainder">
+                <%=Html.ActionLink(".", "EditContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit white marg", title = "Редактировать" })%>
+                <%=Html.ActionLink(".", "AddPhoto", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink add white marg", title = "Добавить фото" })%>
+                <%=Html.ActionLink(".", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLinkSubItem addSubItem white", title = "Добавить подраздел" })%>
+ </div>
+ <%}%>
+
+
+
         <a href="/<%=item.Name%>" >
             <%if (Request.IsAuthenticated)
           { %> <span style="float:left" class="sortOrder">
@@ -55,28 +66,6 @@
         </div>
 
 
-        <%if (Request.IsAuthenticated)
-{%>
-<div class="adminLinksContainder">
-                <%=Html.ActionLink("Редактировать", "EditContent", "Content",
-                                      new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
-
-                                      <br />
-                                       <%=Html.ActionLink("Добавить фото", "AddPhoto", "Content",
-                                                new {area = "Admin", id = item.Id}, new {@class = "adminLink"})%>
-
-                                                                                         <br />
-
-        <%=Html.ActionLink("Добавить подраздел", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })%>
-
-                                                </div>
-                                                <br />
-
-        
-
-
-                                            <%
-}%>
     </div>
 
 
