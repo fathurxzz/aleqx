@@ -37,7 +37,7 @@
 
     <%if (Request.IsAuthenticated&&(Model.ContentType==2||Model.ContentType==3 ))
       {%>
-        <%=Html.ActionLink("редактировать", "EditContent", "Content",new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
+        <%=Html.ActionLink("Редактировать", "EditContent", "Content",new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
         
         <%if (Model.ContentType != 0)
 {%>
