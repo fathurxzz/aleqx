@@ -37,7 +37,6 @@
     padding:0px 8px;
     color:#666666;
     font-size:12px;
-    /*line-height:25px;*/
     display:inline-block;
 }
 
@@ -61,33 +60,19 @@
     color:#fff;
 }
 
-/*
-.sMenuItem
-{
-    margin:0 !important;
-    white-space:nowrap;
-}
 
 
 
-.subMenuCenter div
-{ 
-    float:left;
-}
 
-.subMenuCenter div .adminLink
-{
-    margin-left:1px !important;
-    margin-right:1px !important;
-}
-*/
+a.add{background:url('img/add.gif');}
+a.edit{background:url('img/edit.gif');}
+a.delete{background:url('img/delete.gif');}
+
 
 a.pictureLink
 {
-    
     width:16px;
     height:15px;
-    background:url('img/delete.gif');
     display:inline-block;
     background-position:0 -15px;
     text-decoration:none !important;

@@ -51,10 +51,11 @@
     
     <br />
     <div class="adminSubMenuLinksContainer">
+    
 
-    <%=Html.ActionLink(".", "AddPhoto", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink" })%>
-    <%=Html.ActionLink(".", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink" })%>
-    <%=Html.ActionLink(".", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>
+    <%=Html.ActionLink(".", "AddPhoto", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink add", title="Добавить фотографию" })%>
+    <%=Html.ActionLink(".", "EditContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink edit", title = "Редактировать" })%>
+    <%=Html.ActionLink(".", "DeleteContent", "Content", new { area = "Admin", id = subMenuItem.Id }, new { @class = "adminLink pictureLink delete", title="Удалить", onclick = "return confirm('Вы действительно хотите удалить раздел?')" })%>
     </div>
     
     <%}
