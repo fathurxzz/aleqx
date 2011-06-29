@@ -78,17 +78,27 @@
     margin-left:auto;
     padding: 30px 60px 30px 40px;
     font-size:13px;
+    
 }
 
-#subMenu a
+
+
+#subMenu span
 {
     display:block;
     float:left;
     white-space:nowrap;
     margin:0 20px;
-    color:#666666;
     line-height:20px;
+    color:#666666;
     letter-spacing:1px;
+}
+
+#subMenu a
+{
+    color:inherit;
+    line-height:inherit;
+    letter-spacing:inherit;
 }
 
 #subMenu a:hover

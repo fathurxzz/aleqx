@@ -9,6 +9,11 @@ body
     font-family:Arial;
 }
 
+.clear
+{
+    clear:both;
+}
+
 #page
 {
     width:1265px;

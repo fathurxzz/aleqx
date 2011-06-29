@@ -31,8 +31,18 @@ namespace Babich.Controllers
                     var subMenuItems = content.Children.OrderBy(c => c.SortOrder).ToList();
                     ViewData["subMenuItems"] = subMenuItems;
                 }
+                else if(content.Parent!=null)
+                {
+                    var parentContentId = content.Parent.Id;
+                    var parentContent = context.Content.Include("Children").Where(pc => pc.Id == parentContentId).First();
+                    var subMenuItems = parentContent.Children.OrderBy(c => c.SortOrder).ToList();
+                    ViewData["subMenuItems"] = subMenuItems;
+                }
 
                 ViewData["contentName"] = content.Name;
+                ViewData["contentId"] = content.Id;
+
+                ViewData["Galleries"] = new List<Gallery>();
 
                 return View(content);
             }

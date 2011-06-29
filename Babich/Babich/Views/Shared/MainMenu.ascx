@@ -2,19 +2,24 @@
 
 <%
     var menuItems = (IEnumerable<Babich.Models.Content>) ViewData["menuItems"];
-    foreach (var item in menuItems)
+
+    if (menuItems != null)
     {
-        if (item.Name == (string) ViewData["contentName"])
+
+        foreach (var item in menuItems)
         {
-            %>
+            if (item.Name == (string)ViewData["contentName"] || item.Name == (string)ViewData["parentContentName"])
+            {
+%>
             <span id="menuItem<%=item.Id%>"></span>
             <%
-        }
-        else
-        {
+            }
+            else
+            {
 %>
   <a id="menuItem<%=item.Id%>" href="/<%=item.Name%>"></a>
   <%
+            }
         }
     }
 %>

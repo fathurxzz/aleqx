@@ -1,0 +1,19 @@
+﻿.adminLink
+{
+    color:Blue !important;
+    font-size:12px;
+}
+
+#subMenuAdminLinkContainer
+{
+    float:none;
+    text-align:center !important;
+}
+
+#logOutAdminLinkContainer
+{
+    float:left;
+    padding-left:30px;
+    padding-top:1px;
+    width:160px;
+}
