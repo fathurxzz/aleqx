@@ -10,7 +10,7 @@ namespace Babich.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        public ActionResult Index(string id, int? galleryPage)
+        public ActionResult Index(string id, int? galleryPage, int? galleryId)
         {
             using (var context = new ContentStorage())
             {
@@ -55,6 +55,16 @@ namespace Babich.Controllers
                 {
                     ViewData["Galleries"] = new List<Gallery>();
                 }
+
+                if(galleryId.HasValue)
+                {
+                    ViewData["Gallery"] = new Gallery();
+                    ViewData["galleryId"] = galleryId.Value;
+                }else
+                {
+                    ViewData["Gallery"] = new Gallery();
+                }
+
 
                 ViewData["contentName"] = content.Name;
                 ViewData["contentId"] = content.Id;

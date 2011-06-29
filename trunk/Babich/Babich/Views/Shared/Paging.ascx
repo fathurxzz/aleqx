@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Babich.Models.Gallery>>" %>
 
-<%if(Model.Count()>8)
+<%if (Model.Count() > 8 && ViewData["galleryId"] == null)
   {%>
 <div id="paging">
     <%
