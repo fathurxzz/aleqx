@@ -25,3 +25,23 @@
     height:190px;
     margin:10px 30px;
 }
+
+#paging
+{
+    text-align:center;
+    padding-top:20px;
+}
+
+#paging
+{
+    color:#cc0000;
+    font-size:12px;
+}
+
+#paging span
+{  color:#000;}
+
+#paging a
+{
+    color:#000;
+}

@@ -75,6 +75,8 @@
                 </div>
             </div>
             <div id="mainContentFooter">
+            <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+            </asp:ContentPlaceHolder>
             </div>
         </div>
     </div>
