@@ -1,6 +1,20 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 
-<a id="studio" href="#"></a>
-<a id="projects" href="#"></a>
-<a id="team" href="#"></a>
-<a id="rewards" href="#" class="selected"></a>
+<%
+    var menuItems = (IEnumerable<Babich.Models.Content>) ViewData["menuItems"];
+    foreach (var item in menuItems)
+    {
+        if (item.Name == (string) ViewData["contentName"])
+        {
+            %>
+            <span id="menuItem<%=item.Id%>"></span>
+            <%
+        }
+        else
+        {
+%>
+  <a id="menuItem<%=item.Id%>" href="/<%=item.Name%>"></a>
+  <%
+        }
+    }
+%>

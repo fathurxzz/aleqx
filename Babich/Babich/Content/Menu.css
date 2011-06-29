@@ -7,25 +7,25 @@
     margin-left:auto;
 }
 
-#studio
+#menuItem2
 {
     background-image:url('img/menu/studio.gif');
     width:100px;
 }
 
-#projects
+#menuItem3
 {
     background-image:url('img/menu/projects.gif');
     width:75px;
 }
 
-#team
+#menuItem4
 {
     background-image:url('img/menu/team.gif');
     width:82px;
 }
 
-#rewards
+#menuItem5
 {
     background-image:url('img/menu/rewards.gif');
     width:90px;
@@ -39,12 +39,20 @@
     height:44px;
 }
 
+#mainMenu span
+{
+    float:left;
+    height:44px;
+    display:block;
+    margin:0 74px;
+}
+
 #mainMenu a:hover
 {
     background-position:0 88px;
 }
 
-#mainMenu a.selected
+#mainMenu span
 {
     background-position:0 44px;
 }

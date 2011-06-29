@@ -57,6 +57,18 @@
           <EntitySet Name="Content" EntityType="babichModel.Content" />
           <EntitySet Name="Gallery" EntityType="babichModel.Gallery" />
           <EntitySet Name="GalleryItem" EntityType="babichModel.GalleryItem" />
+          <AssociationSet Name="ContentGallery" Association="babichModel.ContentGallery">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Gallery" EntitySet="Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="GalleryGalleryItem" Association="babichModel.GalleryGalleryItem">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="GalleryItem" EntitySet="GalleryItem" />
+          </AssociationSet>
+          <AssociationSet Name="ContentContent" Association="babichModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Content">
           <Key>
@@ -70,32 +82,47 @@
           <Property Name="MenuTitle" Type="String" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="PageTitle" Type="String" />
-          <Property Name="ParentId" Type="Int64" />
           <Property Name="SeoDescription" Type="String" />
           <Property Name="SeoKeywords" Type="String" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" />
           <Property Name="Title" Type="String" />
+          <NavigationProperty Name="Galleries" Relationship="babichModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
+          <NavigationProperty Name="Children" Relationship="babichModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Parent" Relationship="babichModel.ContentContent" FromRole="Content1" ToRole="Content" />
         </EntityType>
         <EntityType Name="Gallery">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ContentId" Type="Int64" Nullable="false" />
           <Property Name="Description" Type="String" />
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="String" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="babichModel.ContentGallery" FromRole="Gallery" ToRole="Content" />
+          <NavigationProperty Name="GalleryItems" Relationship="babichModel.GalleryGalleryItem" FromRole="Gallery" ToRole="GalleryItem" />
         </EntityType>
         <EntityType Name="GalleryItem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="DefaultGalleryImage" Type="Boolean" Nullable="false" />
-          <Property Name="GalleryId" Type="Int64" Nullable="false" />
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="String" />
+          <NavigationProperty Name="Gallery" Relationship="babichModel.GalleryGalleryItem" FromRole="GalleryItem" ToRole="Gallery" />
         </EntityType>
+        <Association Name="ContentGallery">
+          <End Type="babichModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="babichModel.Gallery" Role="Gallery" Multiplicity="*" />
+        </Association>
+        <Association Name="GalleryGalleryItem">
+          <End Type="babichModel.Gallery" Role="Gallery" Multiplicity="1" />
+          <End Type="babichModel.GalleryItem" Role="GalleryItem" Multiplicity="*" />
+        </Association>
+        <Association Name="ContentContent">
+          <End Type="babichModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="babichModel.Content" Role="Content1" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,7 +138,6 @@
             <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
-            <ScalarProperty Name="ParentId" ColumnName="ParentId" />
             <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
             <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
             <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
@@ -119,7 +145,6 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Gallery"><EntityTypeMapping TypeName="babichModel.Gallery"><MappingFragment StoreEntitySet="gallery">
-            <ScalarProperty Name="ContentId" ColumnName="ContentId" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
@@ -127,10 +152,33 @@
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="GalleryItem"><EntityTypeMapping TypeName="babichModel.GalleryItem"><MappingFragment StoreEntitySet="galleryitem">
             <ScalarProperty Name="DefaultGalleryImage" ColumnName="DefaultGalleryImage" />
-            <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentGallery" TypeName="babichModel.ContentGallery" StoreEntitySet="gallery">
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="GalleryGalleryItem" TypeName="babichModel.GalleryGalleryItem" StoreEntitySet="galleryitem">
+            <EndProperty Name="GalleryItem">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="Id" ColumnName="GalleryId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="babichModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -152,9 +200,23 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="babichModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.2357796223958335" IsExpanded="true" />
-        <EntityTypeShape EntityType="babichModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7566536458333335" IsExpanded="true" />
-        <EntityTypeShape EntityType="babichModel.GalleryItem" Width="1.5" PointX="2.75" PointY="3.75" Height="1.592306315104167" IsExpanded="true" />
+        <EntityTypeShape EntityType="babichModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.2357796223958331" IsExpanded="true" />
+        <EntityTypeShape EntityType="babichModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7566536458333339" IsExpanded="true" />
+        <EntityTypeShape EntityType="babichModel.GalleryItem" Width="1.5" PointX="2.75" PointY="3.75" Height="1.5923063151041665" IsExpanded="true" />
+        <AssociationConnector Association="babichModel.ContentGallery">
+          <ConnectorPoint PointX="2.25" PointY="1.71050048828125" />
+          <ConnectorPoint PointX="2.75" PointY="1.71050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="babichModel.GalleryGalleryItem">
+          <ConnectorPoint PointX="3.5" PointY="2.6710009765625" />
+          <ConnectorPoint PointX="3.5" PointY="3.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="babichModel.ContentContent">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.3144742838541656" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.5644742838541656" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.5644742838541656" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.3144742838541656" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

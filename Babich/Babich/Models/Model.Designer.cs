@@ -9,9 +9,12 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("babichModel", "ContentGallery", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Babich.Models.Content), "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Babich.Models.Gallery))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("babichModel", "GalleryGalleryItem", "Gallery", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Babich.Models.Gallery), "GalleryItem", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Babich.Models.GalleryItem))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("babichModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Babich.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Babich.Models.Content))]
 
 // Original file name:
-// Generation date: 23.06.2011 17:24:56
+// Generation date: 23.06.2011 18:42:13
 namespace Babich.Models
 {
     
@@ -366,33 +369,6 @@ namespace Babich.Models
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnPageTitleChanged();
         /// <summary>
-        /// There are no comments for property ParentId in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Nullable<long> ParentId
-        {
-            get
-            {
-                return this._ParentId;
-            }
-            set
-            {
-                this.OnParentIdChanging(value);
-                this.ReportPropertyChanging("ParentId");
-                this._ParentId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ParentId");
-                this.OnParentIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Nullable<long> _ParentId;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnParentIdChanging(global::System.Nullable<long> value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnParentIdChanged();
-        /// <summary>
         /// There are no comments for property SeoDescription in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
@@ -527,6 +503,89 @@ namespace Babich.Models
         partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for Galleries in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "ContentGallery", "Gallery")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Gallery> Galleries
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Gallery>("babichModel.ContentGallery", "Gallery");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Gallery>("babichModel.ContentGallery", "Gallery", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Children in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "ContentContent", "Content1")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Content> Children
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Content>("babichModel.ContentContent", "Content1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Content>("babichModel.ContentContent", "Content1", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for Parent in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "ContentContent", "Content")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Content Parent
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("babichModel.ContentContent", "Content").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("babichModel.ContentContent", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Parent in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Content> ParentReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("babichModel.ContentContent", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Content>("babichModel.ContentContent", "Content", value);
+                }
+            }
+        }
     }
     /// <summary>
     /// There are no comments for babichModel.Gallery in the schema.
@@ -542,45 +601,16 @@ namespace Babich.Models
         /// <summary>
         /// Create a new Gallery object.
         /// </summary>
-        /// <param name="contentId">Initial value of ContentId.</param>
         /// <param name="id">Initial value of Id.</param>
         /// <param name="sortOrder">Initial value of SortOrder.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Gallery CreateGallery(long contentId, long id, int sortOrder)
+        public static Gallery CreateGallery(long id, int sortOrder)
         {
             Gallery gallery = new Gallery();
-            gallery.ContentId = contentId;
             gallery.Id = id;
             gallery.SortOrder = sortOrder;
             return gallery;
         }
-        /// <summary>
-        /// There are no comments for property ContentId in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public long ContentId
-        {
-            get
-            {
-                return this._ContentId;
-            }
-            set
-            {
-                this.OnContentIdChanging(value);
-                this.ReportPropertyChanging("ContentId");
-                this._ContentId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("ContentId");
-                this.OnContentIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private long _ContentId;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnContentIdChanging(long value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnContentIdChanged();
         /// <summary>
         /// There are no comments for property Description in the schema.
         /// </summary>
@@ -689,6 +719,67 @@ namespace Babich.Models
         partial void OnSortOrderChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSortOrderChanged();
+        /// <summary>
+        /// There are no comments for Content in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "ContentGallery", "Content")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Content Content
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("babichModel.ContentGallery", "Content").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("babichModel.ContentGallery", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Content in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Content>("babichModel.ContentGallery", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Content>("babichModel.ContentGallery", "Content", value);
+                }
+            }
+        }
+        /// <summary>
+        /// There are no comments for GalleryItems in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "GalleryGalleryItem", "GalleryItem")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<GalleryItem> GalleryItems
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<GalleryItem>("babichModel.GalleryGalleryItem", "GalleryItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<GalleryItem>("babichModel.GalleryGalleryItem", "GalleryItem", value);
+                }
+            }
+        }
     }
     /// <summary>
     /// There are no comments for babichModel.GalleryItem in the schema.
@@ -705,14 +796,12 @@ namespace Babich.Models
         /// Create a new GalleryItem object.
         /// </summary>
         /// <param name="defaultGalleryImage">Initial value of DefaultGalleryImage.</param>
-        /// <param name="galleryId">Initial value of GalleryId.</param>
         /// <param name="id">Initial value of Id.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static GalleryItem CreateGalleryItem(bool defaultGalleryImage, long galleryId, long id)
+        public static GalleryItem CreateGalleryItem(bool defaultGalleryImage, long id)
         {
             GalleryItem galleryItem = new GalleryItem();
             galleryItem.DefaultGalleryImage = defaultGalleryImage;
-            galleryItem.GalleryId = galleryId;
             galleryItem.Id = id;
             return galleryItem;
         }
@@ -743,33 +832,6 @@ namespace Babich.Models
         partial void OnDefaultGalleryImageChanging(bool value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnDefaultGalleryImageChanged();
-        /// <summary>
-        /// There are no comments for property GalleryId in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public long GalleryId
-        {
-            get
-            {
-                return this._GalleryId;
-            }
-            set
-            {
-                this.OnGalleryIdChanging(value);
-                this.ReportPropertyChanging("GalleryId");
-                this._GalleryId = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("GalleryId");
-                this.OnGalleryIdChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private long _GalleryId;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnGalleryIdChanging(long value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnGalleryIdChanged();
         /// <summary>
         /// There are no comments for property Id in the schema.
         /// </summary>
@@ -824,5 +886,44 @@ namespace Babich.Models
         partial void OnImageSourceChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnImageSourceChanged();
+        /// <summary>
+        /// There are no comments for Gallery in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "GalleryGalleryItem", "Gallery")]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Gallery Gallery
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gallery>("babichModel.GalleryGalleryItem", "Gallery").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gallery>("babichModel.GalleryGalleryItem", "Gallery").Value = value;
+            }
+        }
+        /// <summary>
+        /// There are no comments for Gallery in the schema.
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Gallery> GalleryReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Gallery>("babichModel.GalleryGalleryItem", "Gallery");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Gallery>("babichModel.GalleryGalleryItem", "Gallery", value);
+                }
+            }
+        }
     }
 }
