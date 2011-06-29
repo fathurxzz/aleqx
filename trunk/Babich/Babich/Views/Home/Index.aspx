@@ -20,5 +20,10 @@
 <asp:Content ContentPlaceHolderID="ContentTitleContent" runat="server">
 <div id="titleLine">
     <%=Model.Title %>
-    </div>
+</div>
 </asp:Content>
+
+<asp:Content ContentPlaceHolderID="FooterContent" runat="server">
+<%Html.RenderPartial("Paging", ViewData["Galleries"]); %>
+</asp:Content>
+

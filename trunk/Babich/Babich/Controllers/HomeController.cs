@@ -10,7 +10,7 @@ namespace Babich.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        public ActionResult Index(string id)
+        public ActionResult Index(string id, int? galleryPage)
         {
             using (var context = new ContentStorage())
             {
@@ -31,7 +31,7 @@ namespace Babich.Controllers
                     var subMenuItems = content.Children.OrderBy(c => c.SortOrder).ToList();
                     ViewData["subMenuItems"] = subMenuItems;
                 }
-                else if(content.Parent!=null)
+                else if (content.Parent != null)
                 {
                     var parentContentId = content.Parent.Id;
                     var parentContent = context.Content.Include("Children").Where(pc => pc.Id == parentContentId).First();
@@ -39,10 +39,27 @@ namespace Babich.Controllers
                     ViewData["subMenuItems"] = subMenuItems;
                 }
 
+
+
+                if (content.Galleries.Count > 0)
+                {
+                    if (galleryPage.HasValue)
+                    {
+                        ViewData["galleryPage"] = galleryPage.Value;
+                    }
+
+                    ViewData["Galleries"] = content.Galleries;
+
+                }
+                else
+                {
+                    ViewData["Galleries"] = new List<Gallery>();
+                }
+
                 ViewData["contentName"] = content.Name;
                 ViewData["contentId"] = content.Id;
 
-                ViewData["Galleries"] = new List<Gallery>();
+
 
                 return View(content);
             }

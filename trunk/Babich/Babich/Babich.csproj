@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GalleryController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -94,6 +95,7 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Content\Add.aspx" />
     <Content Include="Areas\Admin\Views\Content\Edit.aspx" />
+    <Content Include="Areas\Admin\Views\Gallery\Add.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\babich_h.gif" />
@@ -111,7 +113,9 @@
     <Content Include="Views\Shared\Gallery.ascx" />
     <Content Include="Views\Shared\LanguageSelector.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
+    <Content Include="Views\Shared\Paging.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
+    <Content Include="Views\Shared\ViewGallery.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
