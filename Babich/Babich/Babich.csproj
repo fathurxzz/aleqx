@@ -100,6 +100,7 @@
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\babich_h.gif" />
     <Content Include="Content\img\babich_v.gif" />
+    <Content Include="Content\img\back.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\menuSeparator.gif" />
     <Content Include="Content\img\menu\projects.gif" />

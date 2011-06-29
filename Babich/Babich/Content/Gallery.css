@@ -45,3 +45,40 @@
 {
     color:#000;
 }
+
+#backToCatalogue
+{
+    width:104px;
+    height:18px;
+    background:url('img/back.gif') no-repeat;
+    color:#fff;
+    font-size:12px;
+    margin-left:-3px;
+    padding-left:10px;
+    padding-top:3px;
+}
+
+#backToCatalogue a
+{
+    color:#fff;
+    padding-left:5px;
+    font-size:12px;
+}
+#backToCatalogue a:hover
+{
+    text-decoration:none;
+}
+
+#galleryViewerContainer
+{
+    height:437px;
+    text-align:center;
+}
+
+#galleryViewer
+{
+    height:356px;
+    width:407px;
+    border:1px solid #000;
+    margin-left:260px;
+}

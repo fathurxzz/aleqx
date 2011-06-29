@@ -9,7 +9,9 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="GalleryContent" runat="server">
-<% Html.RenderPartial("Gallery",ViewData["Galleries"]); %>
+<%Html.RenderPartial("Gallery",ViewData["Galleries"]); %>
+<%Html.RenderPartial("ViewGallery",ViewData["Gallery"]); %>
+
 </asp:Content>
 
 
