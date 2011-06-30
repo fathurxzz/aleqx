@@ -25,6 +25,25 @@
           $("#pictureContainer").attr("src", "/ImageCache/mainView/" + path);
           $("#pictureLink").attr("href", "/Content/Photos/" + path);
       }
+
+
+
+
+
+
+      $(function () {
+
+          $(".carouselItem").mousemove(function () {
+              //$(this).children('span').css("text-decoration", "none");
+              $(this).children('div').addClass("show");
+          });
+          $(".carouselItem").mouseleave(function () {
+              //$(this).children('span').css("text-decoration", "underline");
+              $(this).children('div').removeClass("show");
+          });
+      });
+
+
 </script>
 
 
@@ -45,7 +64,7 @@
     
     <%
       var cnt = 0;
-      foreach (var item in Model.GalleryItems)
+      foreach (var item in Model.GalleryItems.OrderBy(gi=>gi.Id))
 {
     if (cnt == 0)
     {
@@ -60,6 +79,9 @@
   
   <li>
     <div class="carouselItem" style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
+        <div class="adminLinksPouUpContainer">
+        <%= Html.ActionLink("Удалить", "DeletePhoto", "Gallery", new { area = "Admin", id = item.Id }, new { onclick = "return confirm('Вы уверены что хотите удалить фото?')", @class = "adminLink" })%>
+        </div>
     <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource)%>
     </div>
   </li>

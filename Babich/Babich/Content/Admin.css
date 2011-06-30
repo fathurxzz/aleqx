@@ -27,3 +27,20 @@
 {
     text-align:center;
 }
+
+.adminLinksPouUpContainer
+{
+    position:absolute;
+    margin-top:-20px;
+    margin-left:10px;
+    background-color:#fff;
+    display:none;
+    height:20px;
+    width:50px;
+}
+
+.show
+{
+    display:block;
+}
+
