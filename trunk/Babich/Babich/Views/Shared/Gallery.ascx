@@ -32,20 +32,17 @@
     <%
               }%>
 
-                
-        <a href="#">
-        <img src="../../Content/img/gallery_preview.gif" alt="" />
-        </a>
+         <%=Html.ActionLink("[IMAGE]", "Index", "Home", new { galleryId = item.Id }, null).ToString().Replace("[IMAGE]", "<img src=\"../../Content/img/gallery_preview.gif\"/>")%>
+         
         <div class="gallerySign">
-            
             <%
-              string linkText = "-";
-              if (!string.IsNullOrEmpty(item.Description))
-                  linkText = item.Description;
-%>
-
-            <%=Html.ActionLink(linkText, "Index", "Home", new {galleryId = item.Id}, null)%>
-            Житловий комплекс по вул. Лук'янівській, 77
+                if (!string.IsNullOrEmpty(item.Description))
+                {
+            %>
+            <%=Html.ActionLink(item.Description, "Index", "Home", new { galleryId = item.Id }, null)%>
+            <%
+                }
+            %>
         </div>
     </div>
   
@@ -65,7 +62,7 @@
   }%>
 
   <%
-      if (Request.IsAuthenticated)
+      if (Request.IsAuthenticated && ViewData["contentLevel"] != null && (int)ViewData["contentLevel"] == 1 && ViewData["galleryId"] == null)
       {%>
       <div class="clear"></div>
       <div id="addGalleryAdminLinkContainer">

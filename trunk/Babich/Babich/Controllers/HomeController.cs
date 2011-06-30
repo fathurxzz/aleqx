@@ -58,7 +58,8 @@ namespace Babich.Controllers
 
                 if(galleryId.HasValue)
                 {
-                    ViewData["Gallery"] = new Gallery();
+                    var gallery = context.Gallery.Include("GalleryItems").Where(g => g.Id == galleryId.Value).First();
+                    ViewData["Gallery"] = gallery;
                     ViewData["galleryId"] = galleryId.Value;
                 }else
                 {
@@ -68,6 +69,7 @@ namespace Babich.Controllers
 
                 ViewData["contentName"] = content.Name;
                 ViewData["contentId"] = content.Id;
+                ViewData["contentLevel"] = content.ContentLevel;
 
 
 
