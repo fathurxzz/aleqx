@@ -82,11 +82,35 @@ namespace Babich.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Photos");
                     filePath = Path.Combine(filePath, fileName);
                     Request.Files["logo"].SaveAs(filePath);
+
+                    GraphicsHelper.SaveCachedImage("~/Content/Photos", fileName, "mainView");
+
                     gallery.GalleryItems.Add(new GalleryItem { ImageSource = fileName });
                     context.SaveChanges();
                 }
 
                 return RedirectToAction("Index", "Home", new { area = "", id = contentName, galleryId=galleryId });
+            }
+        }
+
+        public ActionResult DeletePhoto(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var photo = context.GalleryItem.Include("Gallery").Where(p => p.Id == id).First();
+                long galleryId = photo.Gallery.Id;
+                var gallery = context.Gallery.Include("Content").Where(g => g.Id == galleryId).First();
+                context.DeleteObject(photo);
+                context.SaveChanges();
+
+                if (!string.IsNullOrEmpty(photo.ImageSource))
+                {
+                    IOHelper.DeleteFile("~/Content/Photos", photo.ImageSource);
+                    IOHelper.DeleteFile("~/ImageCache/mainView", photo.ImageSource);
+                    IOHelper.DeleteFile("~/ImageCache/thumbnail", photo.ImageSource);
+                }
+
+                return RedirectToAction("Index", "Home", new { area = "", id = gallery.Content.Name, galleryId = galleryId });
             }
         }
     }

@@ -132,6 +132,13 @@ namespace Dev.Mvc.Helpers
 
             return sb.ToString();
         }
+
+        public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder)
+        {
+            CacheImage(originalPath, fileName, cacheFolder);
+        }
+
+
     }
 
 }
