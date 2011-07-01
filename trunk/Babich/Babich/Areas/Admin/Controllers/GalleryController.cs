@@ -149,5 +149,21 @@ namespace Babich.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Home", new { area = "", id = gallery.Content.Name, galleryId = galleryId });
             }
         }
+
+
+        public ActionResult SetPreviewPicture(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var photo = context.GalleryItem.Include("Gallery").Where(p => p.Id == id).First();
+                long galleryId = photo.Gallery.Id;
+                var gallery = context.Gallery.Include("Content").Where(g => g.Id == galleryId).First();
+
+                gallery.ImageSource = photo.ImageSource;
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { area = "", id = gallery.Content.Name, galleryId = galleryId });
+            }
+        }
     }
 }
