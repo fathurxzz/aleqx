@@ -31,12 +31,14 @@
 .adminLinksPouUpContainer
 {
     position:absolute;
-    margin-top:-20px;
+    margin-top:-8px;
     margin-left:10px;
+    /*background-color:#a8a8a8;*/
     background-color:#fff;
     display:none;
-    height:20px;
+    height:18px;
     width:50px;
+    text-align:center;
 }
 
 .show
@@ -44,3 +46,21 @@
     display:block;
 }
 
+a.pictureLink
+{
+    width:16px;
+    height:15px;
+    display:inline-block;
+    background-position:0 -15px !important;
+    text-decoration:none !important;
+}
+
+a.pictureLink:hover
+{
+    background-position:0 0 !important;
+    text-decoration:none !important;
+}
+
+a.add{background:url('img/add.gif');}
+a.edit{background:url('img/edit.gif');}
+a.delete{background:url('img/delete.gif');}
