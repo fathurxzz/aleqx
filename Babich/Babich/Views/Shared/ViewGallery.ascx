@@ -4,9 +4,15 @@
   {%>
 
 
-
+  <%if (Model.GalleryItems.Count > 0)
+{%>
 
   <script type="text/javascript">
+
+      $(function () {
+          $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
+      });
+
       $(function () {
       /*
           jQuery('#mycarousel').jcarousel({ 'scroll': 1 });
@@ -26,26 +32,20 @@
           $("#pictureLink").attr("href", "/Content/Photos/" + path);
       }
 
-
-
-
-
-
       $(function () {
-
+      
           $(".carouselItem").mousemove(function () {
-              //$(this).children('span').css("text-decoration", "none");
               $(this).children('div').addClass("show");
           });
           $(".carouselItem").mouseleave(function () {
-              //$(this).children('span').css("text-decoration", "underline");
               $(this).children('div').removeClass("show");
           });
       });
 
-
 </script>
 
+<%
+}%>
 
 
 
@@ -56,9 +56,14 @@
 
 <div id="galleryViewerContainer">
     <div id="galleryViewer">
-        <a href="#" id="pictureLink">
+     <%if (Model.GalleryItems.Count > 0)
+{%>
+
+        <a href="#" id="pictureLink" class="fancy">
            <img src="" alt="" id="pictureContainer" />
         </a>
+        <%
+}%>
     </div>
     <ul id="galleryPreviews">
     
@@ -79,9 +84,30 @@
   
   <li>
     <div class="carouselItem" style="cursor:pointer" onclick="setImage('<%=item.ImageSource%>')">
+        
+            <%if (Request.IsAuthenticated)
+    {%>
         <div class="adminLinksPouUpContainer">
-        <%= Html.ActionLink("Удалить", "DeletePhoto", "Gallery", new { area = "Admin", id = item.Id }, new { onclick = "return confirm('Вы уверены что хотите удалить фото?')", @class = "adminLink" })%>
+        
+            <%=Html.ActionLink("[IMAGE]", "DeletePhoto", "Gallery", new { area = "Admin", id = item.Id },
+                                      new
+                                          {
+                                              @class = "pictureLink delete",
+                                              title = "Удалить фотографию",
+                                              onclick = "return confirm('Вы уверены что хотите удалить фотографию?')"
+                                          }).ToString().Replace("[IMAGE]","")%>
+
+            <%=Html.ActionLink("[IMAGE]", "SetPreviewPicture", "Gallery", new { area = "Admin", id = item.Id },
+                                      new
+                                          {
+                                              @class = "pictureLink delete",
+                                              title = "Установить фотографию на превью галереи",
+                                              onclick = "return confirm('Вы уверены что хотите установить данную фотографию на превью галереи?')"
+                                          }).ToString().Replace("[IMAGE]", "")%>
+
         </div>
+        <%
+}%>
     <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource)%>
     </div>
   </li>

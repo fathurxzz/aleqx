@@ -1,7 +1,24 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Babich.Models.Gallery>>" %>
+<%@ Import Namespace="Dev.Mvc.Helpers" %>
 
 <%if (Model.Count() > 0 && ViewData["galleryId"]==null)
   {%>
+
+
+  <script type="text/javascript">
+
+      $(function () {
+
+          $(".galleryItem").mousemove(function () {
+              $(this).children('div').addClass("show");
+          });
+          $(".galleryItem").mouseleave(function () {
+              $(this).children('div').removeClass("show");
+          });
+      });
+
+  </script>
+
 
 <div id="gallery">
 
@@ -25,14 +42,27 @@
 %>
     
     <div class="galleryItem">
-    <%
-              if (Request.IsAuthenticated)
-              {%>
-    <%=item.SortOrder%>
-    <%
+            <%if (Request.IsAuthenticated)
+        {%>
+        <div class="adminLinksPouUpContainer">
+            <%= Html.ActionLink("[IMAGE]", "Delete", "Gallery", new { area = "Admin", id = item.Id }, new { @class = "pictureLink delete", title = "Удалить галерею", onclick = "return confirm('Вы уверены что хотите удалить галерею?')" }).ToString().Replace("[IMAGE]", "")%>
+        </div>
+        <div style="position:absolute">
+            <%=item.SortOrder%>
+        </div>
+        <%
               }%>
 
-         <%=Html.ActionLink("[IMAGE]", "Index", "Home", new { galleryId = item.Id }, null).ToString().Replace("[IMAGE]", "<img src=\"../../Content/img/gallery_preview.gif\"/>")%>
+              <%if(!string.IsNullOrEmpty( item.ImageSource))
+{%>
+         <%=Html.ActionLink("[IMAGE]", "Index", "Home", new {galleryId = item.Id}, null).ToString().Replace("[IMAGE]", "<img src=\"" + GraphicsHelper.GetCachedImage("~/Content/Photos", item.ImageSource,"galleryThumbnail") +"\">")%>
+                  <%
+}else
+{
+                    %>
+                    <%=Html.ActionLink("[IMAGE]", "Index", "Home", new { galleryId = item.Id }, null).ToString().Replace("[IMAGE]", "<img src=\"" + GraphicsHelper.GetCachedImage("~/Content/Photos", "nophoto.gif", "galleryThumbnail") + "\">")%>
+                    <%
+}%>
          
         <div class="gallerySign">
             <%

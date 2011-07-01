@@ -99,7 +99,7 @@ namespace Dev.Mvc.Helpers
                 }
                 catch
                 {
-                    return GetCachedImage(originalPath, "tripsWebMvcNoCarImage.jpg", cacheFolder);
+                    return GetCachedImage(originalPath, "nophoto.gif", cacheFolder);
                 }
                 return result;
             }

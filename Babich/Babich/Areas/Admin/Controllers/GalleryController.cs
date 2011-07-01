@@ -57,6 +57,35 @@ namespace Babich.Areas.Admin.Controllers
 
         }
 
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+
+                var gallery = context.Gallery.Include("GalleryItems").Include("Content").Where(g => g.Id == id).First();
+                var content = gallery.Content;
+
+                while (gallery.GalleryItems.Any())
+                {
+                    var photo = gallery.GalleryItems.First();
+                    if (!string.IsNullOrEmpty(photo.ImageSource))
+                    {
+                        IOHelper.DeleteFile("~/Content/Photos", photo.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/mainView", photo.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/thumbnail", photo.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", photo.ImageSource);
+                    }
+                    context.DeleteObject(gallery.GalleryItems.First());
+                }
+
+                context.DeleteObject(gallery);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+            }
+        }
+
 
         public ActionResult AddPhoto(int id)
         {
@@ -74,7 +103,7 @@ namespace Babich.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var gallery = context.Gallery.Where(g => g.Id == galleryId).FirstOrDefault();
+                var gallery = context.Gallery.Include("GalleryItems").Where(g => g.Id == galleryId).FirstOrDefault();
                 
                 if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
                 {
@@ -84,8 +113,14 @@ namespace Babich.Areas.Admin.Controllers
                     Request.Files["logo"].SaveAs(filePath);
 
                     GraphicsHelper.SaveCachedImage("~/Content/Photos", fileName, "mainView");
+                    GraphicsHelper.SaveCachedImage("~/Content/Photos", fileName, "galleryThumbnail");
+
 
                     gallery.GalleryItems.Add(new GalleryItem { ImageSource = fileName });
+
+                    if (gallery.GalleryItems.Count == 1)
+                        gallery.ImageSource = fileName;
+
                     context.SaveChanges();
                 }
 
@@ -108,6 +143,7 @@ namespace Babich.Areas.Admin.Controllers
                     IOHelper.DeleteFile("~/Content/Photos", photo.ImageSource);
                     IOHelper.DeleteFile("~/ImageCache/mainView", photo.ImageSource);
                     IOHelper.DeleteFile("~/ImageCache/thumbnail", photo.ImageSource);
+                    IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", photo.ImageSource);
                 }
 
                 return RedirectToAction("Index", "Home", new { area = "", id = gallery.Content.Name, galleryId = galleryId });
