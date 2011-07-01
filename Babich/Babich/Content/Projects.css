@@ -1,0 +1,53 @@
+﻿#projectsContainer
+{
+    width:846px;
+    height:404px;
+    margin-left:50px;
+}
+
+
+#projectsContainer #menu
+{
+    width:321px;
+    height:402px;
+    float:left;
+}
+
+#projectsContainer #content
+{
+    margin-left:321px;
+    width:519px;
+    height:398px;
+    border:3px solid #fff;
+}
+
+#projectsContainer #menu a.menuItem
+{
+    width:321px;
+    height:34px;
+    background-color:#919191;
+    display:block;
+    text-decoration:none;
+    color:#fff;
+    font-size:20px;
+}
+
+#projectsContainer #menu a.menuItem:hover
+{
+    background-color:#fff;
+    color:#919191;
+}
+
+#projectsContainer #menu .menuItem.selected
+{
+    
+    background-color:#fff;
+    text-decoration:none;
+    color:#919191;
+}
+
+#projectsContainer #menu .separator
+{
+    width:321px;
+    height:3px;
+}
