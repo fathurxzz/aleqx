@@ -31,7 +31,7 @@
           $("#pictureContainer").attr("src", "/ImageCache/mainView/" + path);
           $("#pictureLink").attr("href", "/Content/Photos/" + path);
       }
-
+      /*
       $(function () {
       
           $(".carouselItem").mousemove(function () {
@@ -41,7 +41,7 @@
               $(this).children('div').removeClass("show");
           });
       });
-
+      */
 </script>
 
 <%
@@ -87,25 +87,28 @@
         
             <%if (Request.IsAuthenticated)
     {%>
-        <div class="adminLinksPouUpContainer">
-        
-            <%=Html.ActionLink("[IMAGE]", "DeletePhoto", "Gallery", new { area = "Admin", id = item.Id },
+
+    <%=Html.ActionLink("[IMAGE]", "DeletePhoto", "Gallery", new { area = "Admin", id = item.Id },
                                       new
                                           {
-                                              @class = "pictureLink delete",
+                                              @class = "remove",
                                               title = "Удалить фотографию",
                                               onclick = "return confirm('Вы уверены что хотите удалить фотографию?')"
                                           }).ToString().Replace("[IMAGE]","")%>
 
+        
+        
+            
+
             <%=Html.ActionLink("[IMAGE]", "SetPreviewPicture", "Gallery", new { area = "Admin", id = item.Id },
                                       new
                                           {
-                                              @class = "pictureLink delete",
+                                              @class = "setDefault "+(Model.ImageSource==item.ImageSource?"selected":""),
                                               title = "Установить фотографию на превью галереи",
                                               onclick = "return confirm('Вы уверены что хотите установить данную фотографию на превью галереи?')"
                                           }).ToString().Replace("[IMAGE]", "")%>
 
-        </div>
+        
         <%
 }%>
     <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource)%>
@@ -126,13 +129,21 @@
 <div class="clear">
 </div>
 <div id="backToCatalogue">
-    &lt;&lt; <a href="#">До каталогу</a>
+    &lt;&lt; 
+    
+  <%if (ViewData["galleryPage"] != null)
+  {%>
+    <%=Html.ActionLink("До каталогу", "Index", "Home", new { id = ViewData["contentName"], galleryPage = ViewData["galleryPage"] }, null)%>
+    <%
+  }
+  else
+{%>
+<%=Html.ActionLink("До каталогу","Index","Home",new{id=ViewData["contentName"]},null) %>
+<%
+}%>
 </div>
 
-
-
 <%if(Request.IsAuthenticated){ %>
-
 <div class="adminLinkContainer">
 <%=Html.ActionLink("Добавить фото", "AddPhoto", "Gallery", new { area = "Admin", id = ViewData["galleryId"] }, new { @class = "adminLink" })%>
 </div>

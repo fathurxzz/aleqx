@@ -45,7 +45,12 @@
             <%if (Request.IsAuthenticated)
         {%>
         <div class="adminLinksPouUpContainer">
-            <%= Html.ActionLink("[IMAGE]", "Delete", "Gallery", new { area = "Admin", id = item.Id }, new { @class = "pictureLink delete", title = "Удалить галерею", onclick = "return confirm('Вы уверены что хотите удалить галерею?')" }).ToString().Replace("[IMAGE]", "")%>
+            <div class="adminLinksPouUpContainerRight">
+                <div class="adminLinksPouUpContainerInner">
+                    <%= Html.ActionLink("[IMAGE]", "Delete", "Gallery", new { area = "Admin", id = item.Id }, new { @class = "pictureLink delete", title = "Удалить галерею", onclick = "return confirm('Вы уверены что хотите удалить галерею?')" }).ToString().Replace("[IMAGE]", "")%>
+                    <%= Html.ActionLink("[IMAGE]", "Edit", "Gallery", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit", title = "Редактировать галерею" }).ToString().Replace("[IMAGE]", "")%>
+                </div>
+            </div>
         </div>
         <div style="position:absolute">
             <%=item.SortOrder%>
