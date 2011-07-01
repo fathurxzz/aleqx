@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
-<%@ Import Namespace="Babich.Models" %>
 
+<%@ Import Namespace="Babich.Models" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -12,12 +12,9 @@
     <link href="../../Content/Gallery.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
-
-
     <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
-
-      
+    <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css"
+        media="screen" />
 </head>
 <body>
     <div id="page">
@@ -27,16 +24,15 @@
                     <%
                         Html.RenderPartial("LanguageSelector"); %>
                 </div>
-                <%if(Request.IsAuthenticated)
+                <%if (Request.IsAuthenticated)
                   {
-                      %>
-                      <div id="logOutAdminLinkContainer">
-                      <%= Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account",null,new{@class="adminLink"}) %>
-                      </div>
-                      <%
+                %>
+                <div id="logOutAdminLinkContainer">
+                    <%= Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account",null,new{@class="adminLink"}) %>
+                </div>
+                <%
                       
-                  } %>
-
+                    } %>
                 <div id="mainMenu">
                     <%Html.RenderPartial("MainMenu"); %>
                 </div>
@@ -53,7 +49,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="menuLineSeparator">
             </div>
         </div>
@@ -61,29 +56,15 @@
             <div id="contactsContainer">
                 <% Html.RenderPartial("Contacts"); %>
             </div>
-            
-                <asp:ContentPlaceHolder ID="ContentTitleContent" runat="server">
-
-                        </asp:ContentPlaceHolder>
-                
-            
-            <div id="mainContentOuter">
-                <div id="mainContent">
-
-                    <asp:ContentPlaceHolder ID="GalleryContent" runat="server">
-                    
-                    </asp:ContentPlaceHolder>
-
-                    
-
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-
-                   
-                </div>
-            </div>
-            <div id="mainContentFooter">
-            <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+            <asp:ContentPlaceHolder ID="ContentTitleContent" runat="server">
             </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="GalleryContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <div id="mainContentFooter">
+                <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+                </asp:ContentPlaceHolder>
             </div>
         </div>
     </div>
