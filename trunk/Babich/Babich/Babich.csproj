@@ -119,6 +119,7 @@
     <Content Include="Content\img\remove.gif" />
     <Content Include="Content\img\skatch.gif" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\Projects.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\fancybox\blank.gif" />
     <Content Include="Scripts\fancybox\fancybox-x.png" />
@@ -150,6 +151,7 @@
     <Content Include="Views\Shared\LanguageSelector.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\Paging.ascx" />
+    <Content Include="Views\Shared\Projects.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
     <Content Include="Views\Shared\ViewGallery.ascx" />
     <Content Include="Web.config" />

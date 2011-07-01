@@ -7,7 +7,11 @@
 <%if (Model.ContentLevel == 0)
   {
       %>
-      <div id="mainContent"></div>
+      <div id="mainContent">
+      
+      <% Html.RenderPartial("Projects"); %>
+      
+      </div>
       <%
   }%>
 </asp:Content>
