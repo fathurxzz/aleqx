@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>AddPhoto</h2>
+<div id="mainContent">
+    <h2>Добавление фотографии</h2>
 
 
     <%using (Html.BeginForm("AddPhoto", "Gallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -28,7 +28,7 @@
           
           <%
       }%>
-
+      </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="SubMenuContent" runat="server">
