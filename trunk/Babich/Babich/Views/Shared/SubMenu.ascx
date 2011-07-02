@@ -44,6 +44,7 @@
   {%>
   <div class="clear"></div>
   <div id="subMenuAdminLinkContainer">
+  <%=Html.ActionLink("Редактировать", "Edit", "Content", new { id = ViewData["contentId"], area = "Admin" }, new { @class = "adminLink" })%>
   <%=Html.ActionLink("Добавить подраздел","Add","Content",new{id=ViewData["contentId"],area="Admin"},new{@class="adminLink"}) %>
   </div>
 <%
