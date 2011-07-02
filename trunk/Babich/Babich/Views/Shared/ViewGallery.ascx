@@ -133,12 +133,12 @@
     
   <%if (ViewData["galleryPage"] != null)
   {%>
-    <%=Html.ActionLink("До каталогу", "Index", "Home", new { id = ViewData["contentName"], galleryPage = ViewData["galleryPage"] }, null)%>
+    <%=Html.ResourceActionLink("Back", "Index", "Home", new { id = ViewData["contentName"], galleryPage = ViewData["galleryPage"] }, null)%>
     <%
   }
   else
 {%>
-<%=Html.ActionLink("До каталогу","Index","Home",new{id=ViewData["contentName"]},null) %>
+<%=Html.ResourceActionLink("Back", "Index", "Home", new { id = ViewData["contentName"] }, null)%>
 <%
 }%>
 </div>
