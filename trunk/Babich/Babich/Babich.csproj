@@ -101,6 +101,7 @@
     <Compile Include="Helpers\ScriptExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\GalleryValidation.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +115,7 @@
     <Content Include="Areas\Admin\Views\Content\Edit.aspx" />
     <Content Include="Areas\Admin\Views\Gallery\Add.aspx" />
     <Content Include="Areas\Admin\Views\Gallery\AddPhoto.aspx" />
+    <Content Include="Areas\Admin\Views\Gallery\Edit.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\add.gif" />

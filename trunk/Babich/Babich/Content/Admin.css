@@ -97,6 +97,15 @@ a.remove
     margin-top:2px;
 }
 
+a.removeContent
+{
+    width:11px;
+    height:11px;
+    position:absolute;
+    background:url('img/remove.gif');
+    margin-top:4px;
+}
+
 a.setDefault
 {
     width:11px;

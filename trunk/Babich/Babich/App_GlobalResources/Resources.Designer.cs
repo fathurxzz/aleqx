@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to До каталогу1.
+        ///   Looks up a localized string similar to До каталогу.
         /// </summary>
         internal static string Back {
             get {

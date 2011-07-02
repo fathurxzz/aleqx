@@ -57,6 +57,32 @@ namespace Babich.Areas.Admin.Controllers
 
         }
 
+        public ActionResult Edit(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+
+                var gallery = context.Gallery.Include("Content").Where(g => g.Id == id).First();
+                ViewData["contentName"] = gallery.Content.Name;
+                return View(gallery);
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                var gallery = context.Gallery.Include("Content").Where(g => g.Id == id).First();
+                var content = gallery.Content;
+
+
+
+                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+            }
+        }
+
         public ActionResult Delete(int id)
         {
             using (var context = new ContentStorage())
