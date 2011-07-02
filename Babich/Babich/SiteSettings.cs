@@ -13,7 +13,7 @@ namespace Babich
             {
                 if (HttpContext.Current.Session["lang"] == null)
                 {
-                    HttpContext.Current.Session["lang"] = "ru-RU";
+                    HttpContext.Current.Session["lang"] = "uk-UA";
                 }
                 return HttpContext.Current.Session["lang"].ToString();
             }
