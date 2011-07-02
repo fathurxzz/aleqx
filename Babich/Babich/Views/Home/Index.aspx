@@ -12,14 +12,14 @@
         <%
             if (Model.Id == 3)
             {
-                Html.RenderPartial("Projects", Model.Children);
+                //Html.RenderPartial("Projects", Model.Children);
             }
             else if (Model.Id == 1)
             {
                 using (var context = new ContentStorage())
                 {
-                    var content = context.Content.Include("Children").Where(c => c.Id == 3).First();
-                    Html.RenderPartial("Projects", content.Children);
+                    //var content = context.Content.Include("Children").Where(c => c.Id == 3).First();
+                    //Html.RenderPartial("Projects", content.Children);
                 }
             }
       

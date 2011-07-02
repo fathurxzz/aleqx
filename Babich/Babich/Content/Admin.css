@@ -5,7 +5,7 @@
 }
 .adminLink:hover
 {
- font-weight:bold;
+	color:#ff0000 !important;
 }
 
 #subMenuAdminLinkContainer
