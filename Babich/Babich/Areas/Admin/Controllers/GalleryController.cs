@@ -27,8 +27,8 @@ namespace Babich.Areas.Admin.Controllers
                 var content = context.Content.Include("Galleries").Where(c => c.Id == id).First();
                 int sortOrder = content.Galleries.Count > 0 ? content.Galleries.Max(c => c.SortOrder) : -1;
                 ViewData["SortOrder"] = (sortOrder + 1).ToString();
+                return View(new Gallery {SortOrder = sortOrder + 1});
             }
-            return View();
         }
 
         [HttpPost]
@@ -43,11 +43,9 @@ namespace Babich.Areas.Admin.Controllers
                 var gallery = new Gallery
                 {
                     Content = content,
-                    Description = form["description"],
-                    SortOrder = Convert.ToInt32(form["SortOrder"])
                 };
 
-
+                TryUpdateModel(gallery, new string[] { "Description", "DescriptionEng", "SortOrder" });
 
                 context.AddToGallery(gallery);
                 context.SaveChanges();

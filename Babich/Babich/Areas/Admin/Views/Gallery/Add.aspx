@@ -5,50 +5,59 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Add</h2>
+<div id="mainContent">
+   <% Html.EnableClientValidation(); %>
+    <h2 class="editContentTitle">
+        Редактирование галереи</h2>
 
     <% using (Html.BeginForm()) {%>
         <%= Html.ValidationSummary(true) %>
+        
 
-        <fieldset>
-            <legend>Fields</legend>
-            
-            <div class="editor-label">
-                <%= Html.LabelFor(model => model.Description) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Description) %>
-                <%= Html.ValidationMessageFor(model => model.Description) %>
-            </div>
-            
-            <div class="editor-label">
-                <%= Html.LabelFor(model => model.ImageSource) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.ImageSource) %>
-                <%= Html.ValidationMessageFor(model => model.ImageSource) %>
-            </div>
-            
-            <div class="editor-label">
-                <%= Html.LabelFor(model => model.SortOrder) %>
-            </div>
-            <div class="editor-field">
-                <%= Html.TextBox("SortOrder") %>
-                <%= Html.ValidationMessageFor(model => model.SortOrder) %>
-            </div>
-            
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
+         <%=Html.HiddenFor(x=>x.Id) %>
 
-    <% } %>
 
-    <div>
-        <%= Html.ActionLink("Back to List", "Index") %>
+         <div class="adminEditContentContainer">
+
+         <table class="adminEditContentTable">
+         <tr>
+            <td style="width:200px;">
+            <%= Html.LabelFor(model => model.Description)%>
+            </td>
+            <td>
+                <div id="editDescriptionUkr">
+                    UKR:<br />
+                    <%= Html.TextAreaFor(model => model.Description,4,40,null)%>
+                    <br /><br />
+                </div>
+                <div id="editDescriptionEng">
+                ENG:<br />
+                    <%= Html.TextAreaFor(model => model.DescriptionEng,4, 40, null)%>
+                </div>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <%= Html.LabelFor(model => model.SortOrder)%><br />
+                    <span style="font-size: 11px;">(каким по очереди будет этот раздел, необходимо ввести
+                        только цифру)</span>
+            </td>
+            <td>
+             <%= Html.TextBoxFor(model => model.SortOrder, new { style = "width:20px;" })%>
+                    <%= Html.ValidationMessageFor(model => model.SortOrder)%>
+            </td>
+        </tr>
+        </table>
+
+         </div>
+
+          <div class="buttonsContainer">
+        <input type="submit" value="Сохранить" />&nbsp;
+        <%= Html.ActionLink("Назад", "Index", "Home", new { area = "", id = ViewData["contentName"] }, null)%>
     </div>
 
+    <% } %>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="SubMenuContent" runat="server">
@@ -63,3 +72,8 @@
 <asp:Content ID="Content6" ContentPlaceHolderID="FooterContent" runat="server">
 </asp:Content>
 
+
+<asp:Content ID="Content7" ContentPlaceHolderID="includes" runat="server">
+<script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+</asp:Content>
