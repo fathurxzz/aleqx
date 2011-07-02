@@ -13,6 +13,20 @@
     <% using (Html.BeginForm()) {%>
         <%= Html.ValidationSummary(true) %>
 
+
+         <%if (Model.ContentLevel == 0)
+{%>
+   <script type="text/javascript">
+       $(function () {
+           $(".sortOrder").css("display", "none");
+       });
+</script>
+
+    <%
+}%>
+
+
+
     <%=Html.HiddenFor(x=>x.Id) %>
         
 
@@ -52,7 +66,25 @@
 
             </td>
         </tr>
+
         <tr>
+            <td>
+            <%= Html.LabelFor(model => model.Description)%>
+            </td>
+            <td>
+                <div id="editDescriptionSwitcher">
+                    <div  id="showDescrUkr" class="selected">UKR</div> <div id="showDescrEng">ENG</div>
+                </div>
+                <div id="editDescriptionUkr">
+                    <%= Html.TextAreaFor(model => model.Description)%>
+                </div>
+                <div id="editDescriptionEng" style="display:none;">
+                    <%= Html.TextAreaFor(model => model.DescriptionEng)%>
+                </div>
+            </td>
+        </tr>
+
+        <tr class="sortOrder">
             <td>
                 <%= Html.LabelFor(model => model.SortOrder)%><br />
                     <span style="font-size: 11px;">(каким по очереди будет этот раздел, необходимо ввести
@@ -70,13 +102,13 @@
             </td>
             <td>
                 <div id="editTextSwitcher">
-                    <a href="#" id="showUkr">UKR</a> <a href="#" id="showEng">ENG</a>
+                    <div id="showUkr" class="selected">UKR</div> <div id="showEng">ENG</div>
                 </div>
                 <div id="editTextUkr">
-                    UKR:<%= Html.TextAreaFor(model => model.Text)%>
+                    <%= Html.TextAreaFor(model => model.Text)%>
                 </div>
                 <div id="editTextEng" style="display:none;">
-                    ENG:<%= Html.TextAreaFor(model => model.TextEng)%>
+                    <%= Html.TextAreaFor(model => model.TextEng)%>
                 </div>
             </td>
         </tr>
@@ -93,7 +125,7 @@
                 </td>
                 <td>
                     UKR:<%= Html.TextBoxFor(model => model.SeoKeywords, new { style = "width:600px;" })%><br />
-                    ENG:<%= Html.TextBoxFor(model => model.SeoKeywords, new { style = "width:600px;" })%>
+                    ENG:<%= Html.TextBoxFor(model => model.SeoKeywordsEng, new { style = "width:600px;" })%>
                 </td>
             </tr>
             <tr>
@@ -102,7 +134,7 @@
                 </td>
                 <td>
                     UKR:<%= Html.TextBoxFor(model => model.SeoDescription, new { style = "width:600px;"}) %><br />
-                    ENG:<%= Html.TextBoxFor(model => model.SeoDescription, new { style = "width:600px;"}) %>
+                    ENG:<%= Html.TextBoxFor(model => model.SeoDescriptionEng, new { style = "width:600px;"}) %>
                 </td>
             </tr>
         </table>
@@ -135,16 +167,37 @@
         $(function () {
             CKEDITOR.replace("Text", { toolbar: "Media" });
             CKEDITOR.replace("TextEng", { toolbar: "Media" });
+            CKEDITOR.replace("Description", { toolbar: "Media" });
+            CKEDITOR.replace("DescriptionEng", { toolbar: "Media" });
 
 
             $("#showUkr").click(function () {
                 $("#editTextUkr").css("display", "block");
                 $("#editTextEng").css("display", "none");
+                $(this).addClass("selected");
+                $("#showEng").removeClass("selected");
             });
 
             $("#showEng").click(function () {
                 $("#editTextEng").css("display", "block");
                 $("#editTextUkr").css("display", "none");
+                $(this).addClass("selected");
+                $("#showUkr").removeClass("selected");
+            });
+
+
+            $("#showDescrUkr").click(function () {
+                $("#editDescriptionUkr").css("display", "block");
+                $("#editDescriptionEng").css("display", "none");
+                $(this).addClass("selected");
+                $("#showDescrEng").removeClass("selected");
+            });
+
+            $("#showDescrEng").click(function () {
+                $("#editDescriptionEng").css("display", "block");
+                $("#editDescriptionUkr").css("display", "none");
+                $(this).addClass("selected");
+                $("#showDescrUkr").removeClass("selected");
             });
 
         })

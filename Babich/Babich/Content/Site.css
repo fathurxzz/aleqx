@@ -202,3 +202,20 @@ body
 	/*position:absolute;*/
 	background:url('img/babich_h.gif');
 }
+
+
+.rootLink
+{
+	display:block;
+	position:absolute;
+	width:170px;
+    height:95px;
+	margin-left:20px;
+}
+
+.rootLink img
+{
+    width:170px;
+    height:95px;
+	border:none;
+}

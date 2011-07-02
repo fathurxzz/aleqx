@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="Babich" %>
 
 
 <%
@@ -12,14 +13,38 @@
             if (item.Name == (string) ViewData["contentName"])
             {
 %>
-            <span><%=item.MenuTitle%></span>
+            <span>
+            <%if (SiteSettings.Language == Language.En)
+              {%>
+            <%=item.TitleEng%>
+            <%
+                }
+              else
+{%>
+           <%=item.Title%>
+<%
+}%>
+            </span>
             <%
             }
             else
             {
 %>
     <span>
-  <a href="/<%=item.Name%>"><%=item.MenuTitle%></a>
+  
+
+  <%if (SiteSettings.Language == Language.En)
+              {%>
+            <a href="/<%=item.Name%>"><%=item.TitleEng%></a>
+            <%
+                }
+              else
+{%>
+           <a href="/<%=item.Name%>"><%=item.Title%></a>
+<%
+}%>
+
+
   </span>
   <%
             }

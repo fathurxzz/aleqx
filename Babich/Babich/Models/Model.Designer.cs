@@ -14,7 +14,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("babichModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Babich.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Babich.Models.Content))]
 
 // Original file name:
-// Generation date: 02.07.2011 11:46:44
+// Generation date: 02.07.2011 13:56:56
 namespace Babich.Models
 {
     
@@ -611,6 +611,87 @@ namespace Babich.Models
         partial void OnTitleEngChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleEngChanged();
+        /// <summary>
+        /// There are no comments for property SeoDescriptionEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string SeoDescriptionEng
+        {
+            get
+            {
+                return this._SeoDescriptionEng;
+            }
+            set
+            {
+                this.OnSeoDescriptionEngChanging(value);
+                this.ReportPropertyChanging("SeoDescriptionEng");
+                this._SeoDescriptionEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("SeoDescriptionEng");
+                this.OnSeoDescriptionEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _SeoDescriptionEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoDescriptionEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoDescriptionEngChanged();
+        /// <summary>
+        /// There are no comments for property SeoKeywordsEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string SeoKeywordsEng
+        {
+            get
+            {
+                return this._SeoKeywordsEng;
+            }
+            set
+            {
+                this.OnSeoKeywordsEngChanging(value);
+                this.ReportPropertyChanging("SeoKeywordsEng");
+                this._SeoKeywordsEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("SeoKeywordsEng");
+                this.OnSeoKeywordsEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _SeoKeywordsEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoKeywordsEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSeoKeywordsEngChanged();
+        /// <summary>
+        /// There are no comments for property DescriptionEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string DescriptionEng
+        {
+            get
+            {
+                return this._DescriptionEng;
+            }
+            set
+            {
+                this.OnDescriptionEngChanging(value);
+                this.ReportPropertyChanging("DescriptionEng");
+                this._DescriptionEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("DescriptionEng");
+                this.OnDescriptionEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _DescriptionEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionEngChanged();
         /// <summary>
         /// There are no comments for Galleries in the schema.
         /// </summary>

@@ -17,6 +17,7 @@
           <Property Name="ContentLevel" Type="usmallint" Nullable="false" />
           <Property Name="ContentTitle" Type="varchar" />
           <Property Name="Description" Type="text" />
+          <Property Name="DescriptionEng" Type="text" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Lang" Type="varchar" MaxLength="5" />
           <Property Name="MenuTitle" Type="varchar" />
@@ -26,7 +27,9 @@
           <Property Name="PageTitleEng" Type="varchar" />
           <Property Name="ParentId" Type="uint" />
           <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoDescriptionEng" Type="varchar" />
           <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SeoKeywordsEng" Type="varchar" />
           <Property Name="SortOrder" Type="usmallint" Nullable="false" />
           <Property Name="Text" Type="text" />
           <Property Name="TextEng" Type="text" />
@@ -98,6 +101,9 @@
           <Property Type="String" Name="PageTitleEng" />
           <Property Type="String" Name="TextEng" />
           <Property Type="String" Name="TitleEng" />
+          <Property Type="String" Name="SeoDescriptionEng" />
+          <Property Type="String" Name="SeoKeywordsEng" />
+          <Property Type="String" Name="DescriptionEng" />
         </EntityType>
         <EntityType Name="Gallery">
           <Key>
@@ -139,7 +145,10 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="babichModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="babichModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+            <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+                <ScalarProperty Name="SeoKeywordsEng" ColumnName="SeoKeywordsEng" />
+                <ScalarProperty Name="SeoDescriptionEng" ColumnName="SeoDescriptionEng" />
+                <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
                 <ScalarProperty Name="TextEng" ColumnName="TextEng" />
                 <ScalarProperty Name="PageTitleEng" ColumnName="PageTitleEng" />
                 <ScalarProperty Name="MenuTitleEng" ColumnName="MenuTitleEng" />

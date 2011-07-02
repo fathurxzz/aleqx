@@ -68,9 +68,11 @@ namespace Babich.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
-                TryUpdateModel(content, new string[] { "Name", "PageTitle", "PageTitleEng", "Title", "TitleEng", "SeoKeywords", "SeoDescription", "SortOrder" });
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "PageTitleEng", "Title", "TitleEng", "SeoKeywords", "SeoKeywordsEng", "SeoDescription", "SeoDescriptionEng", "SortOrder" });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.TextEng = HttpUtility.HtmlDecode(form["TextEng"]);
+                content.Description = HttpUtility.HtmlDecode(form["Description"]);
+                content.DescriptionEng = HttpUtility.HtmlDecode(form["DescriptionEng"]);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
             }
