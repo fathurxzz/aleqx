@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<Babich.Models.Content>>" %>
 
 <script type="text/javascript">
     $(function () {
@@ -13,19 +13,12 @@
     });
   </script>
 
-  <%
-      var items = new List<Babich.Models.Content>();
-      if (ViewData["subMenuItems"]!=null)
-      
-      items = (List<Babich.Models.Content>) ViewData["subMenuItems"];
-       %>
-
 <div id="projectsContainer">
     <div id="menu">
 
     <%
       int cnt = 1;
-        foreach (var item in items)
+        foreach (var item in Model)
 {
           if(cnt>11)break;  
   %>

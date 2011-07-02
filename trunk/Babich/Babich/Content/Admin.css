@@ -189,3 +189,19 @@ span.field-validation-error
      font-size:13px !important;
      font-weight:bold !important;
 }
+
+
+#showDescrUkr, #showDescrEng, #showUkr, #showEng
+{
+    display:inline-block;
+    text-decoration:underline;
+    cursor:pointer;
+    color:#0000ff;
+}
+
+#showDescrUkr.selected, #showUkr.selected, #showDescrEng.selected, #showEng.selected
+{
+    text-decoration:none;
+    cursor:default;
+    color:#000;
+}

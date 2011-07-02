@@ -5,6 +5,12 @@ using System.Web;
 
 namespace Babich
 {
+    public enum Language
+    {
+        En,
+        Ua
+    }
+
     public static class SiteSettings
     {
         public static string GetCurrentLanguage
@@ -22,6 +28,14 @@ namespace Babich
         public static void SetCurrentLanguage(string lang)
         {
             HttpContext.Current.Session["lang"] = lang;
+        }
+
+        public static Language Language
+        {
+            get
+            {
+                return GetCurrentLanguage == "uk-UA" ? Language.Ua : Language.En;
+            }
         }
     }
 }

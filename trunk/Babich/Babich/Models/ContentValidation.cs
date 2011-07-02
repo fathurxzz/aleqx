@@ -28,6 +28,9 @@ namespace Babich.Models
         [DisplayName("Заголовок разворачиваемой области, название пункта меню")]
         public string Title { get; set; }
 
+        [DisplayName("Текст под основными пунктами меню")]
+        public string Description { get; set; }
+
         [Required(ErrorMessage = "* Введите порядок отображения (целое число)")]
         [DisplayName("Порядок отбражения")]
         public string SortOrder { get; set; }

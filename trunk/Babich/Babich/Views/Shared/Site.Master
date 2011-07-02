@@ -43,8 +43,10 @@
             <div class="menuLineSeparator">
             </div>
             <div id="subMenuLine">
-                <div id="logo">
-                </div>
+
+                <asp:ContentPlaceHolder ID="LogoContainer" runat="server">
+                
+                </asp:ContentPlaceHolder>
                 <div id="subMenuContainer">
                     <div id="subMenu">
                         <asp:ContentPlaceHolder ID="SubMenuContent" runat="server">
