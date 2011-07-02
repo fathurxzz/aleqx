@@ -20,7 +20,7 @@ namespace Babich.Areas.Admin.Controllers
         public ActionResult Add(int id)
         {
             ViewData["id"] = id;
-            return View();
+            return View(new Content());
         }
 
         [HttpPost]
@@ -30,23 +30,11 @@ namespace Babich.Areas.Admin.Controllers
             {
                 var parentContent = context.Content.Where(c => c.Id == id).First();
 
-                var content = new Content
-                                  {
-                                      ContentLevel = 1,
-                                      Name = form["Name"],
-                                      PageTitle = form["PageTitle"],
-                                      SeoDescription = form["SeoDescription"],
-                                      SeoKeywords = form["SeoKeywords"],
-                                      SortOrder = Convert.ToInt32( form["SortOrder"]),
-                                      Title = form["Title"]
-                                  };
-
+                var content = new Content {ContentLevel = 1};
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "PageTitleEng", "Title", "TitleEng", "SeoKeywords", "SeoKeywordsEng", "SeoDescription", "SeoDescriptionEng", "SortOrder" });             
                 content.Parent = parentContent;
                 context.AddToContent(content);
                 context.SaveChanges();
-
-                
-
 
                 return RedirectToAction("Index", "Home", new {area="", id = parentContent.Name});
             }
@@ -83,8 +71,11 @@ namespace Babich.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var parentContent = context.Content.Where(c => c.Id == id).First();
-                return RedirectToAction("Index", "Home", new { area = "", id = parentContent.Name });
+                var content = context.Content.Include("Parent").Where(c => c.Id == id).First();
+                string parentName = content.Parent.Name;
+                context.DeleteObject(content);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new { area = "", id = parentName });
             }
         }
 
