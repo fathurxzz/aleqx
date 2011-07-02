@@ -51,26 +51,19 @@
         }
     }
 %>
-<!--
-<span><a href="#">Житлові будівлі</a> </span>
-<span><a href="#">Отелі</a> </span>
-<span><a href="#">Котеджі</a> </span>
-<span><a href="#">Торговельно-розважальні комплекси</a> </span>
-<span><a href="#">Ресторанні комплекси</a></span>
-<span><a href="#">Офісні споруди</a> </span>
-<span><a href="#">Конкурсні проекти</a> </span>
-<span><a href="#">Громадські споруди</a> </span>
-<span><a href="#">Сакральна архітектура</a> </span>
-<span><a href="#">Приватні будинки</a></span>
-<span><a href="#">Ландшафтна архітектура</a></span>
--->
 
 <%if (Request.IsAuthenticated)
   {%>
   <div class="clear"></div>
   <div id="subMenuAdminLinkContainer">
   <%=Html.ActionLink("Редактировать", "Edit", "Content", new { id = ViewData["contentId"], area = "Admin" }, new { @class = "adminLink" })%>
-  <%=Html.ActionLink("Добавить подраздел","Add","Content",new{id=ViewData["contentId"],area="Admin"},new{@class="adminLink"}) %>
+  
+  <%if (ViewData["contentId"].ToString() != "1" && ViewData["contentLevel"].ToString()!="1")
+{%>
+  <%=Html.ActionLink("Добавить подраздел", "Add", "Content",
+                                      new {id = ViewData["contentId"], area = "Admin"}, new {@class = "adminLink"})%>
+  <%
+}%>
   </div>
 <%
   }%>

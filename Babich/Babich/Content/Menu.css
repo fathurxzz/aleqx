@@ -47,6 +47,19 @@
     margin:0 74px;
 }
 
+
+#mainMenu a.subMenuSelected
+{
+    background-position:0 44px;
+}
+
+#mainMenu a.subMenuSelected:hover
+{
+    background-position:0 44px;
+}
+
+
+
 #mainMenu a:hover
 {
     background-position:0 88px;
