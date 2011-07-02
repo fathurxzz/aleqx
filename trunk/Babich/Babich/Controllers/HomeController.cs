@@ -76,5 +76,11 @@ namespace Babich.Controllers
                 return View(content);
             }
         }
+
+        public ActionResult SetLanguage(string id)
+        {
+            SiteSettings.SetCurrentLanguage(id);
+            return RedirectToAction("Index", "Home",new{id=""});
+        }
     }
 }
