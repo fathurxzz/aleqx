@@ -16,6 +16,8 @@
     <script type="text/javascript" src="../../Scripts/fancybox/jquery.fancybox-1.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="../../Scripts/fancybox/jquery.fancybox-1.3.1.css"
         media="screen" />
+        <asp:ContentPlaceHolder runat="server" ID="includes">
+    </asp:ContentPlaceHolder>
 </head>
 <body>
     <div id="page">

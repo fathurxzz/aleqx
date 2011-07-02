@@ -14,7 +14,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("babichModel", "ContentContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Babich.Models.Content), "Content1", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Babich.Models.Content))]
 
 // Original file name:
-// Generation date: 23.06.2011 18:42:13
+// Generation date: 02.07.2011 11:46:44
 namespace Babich.Models
 {
     
@@ -504,6 +504,114 @@ namespace Babich.Models
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleChanged();
         /// <summary>
+        /// There are no comments for property MenuTitleEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string MenuTitleEng
+        {
+            get
+            {
+                return this._MenuTitleEng;
+            }
+            set
+            {
+                this.OnMenuTitleEngChanging(value);
+                this.ReportPropertyChanging("MenuTitleEng");
+                this._MenuTitleEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("MenuTitleEng");
+                this.OnMenuTitleEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _MenuTitleEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMenuTitleEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnMenuTitleEngChanged();
+        /// <summary>
+        /// There are no comments for property PageTitleEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string PageTitleEng
+        {
+            get
+            {
+                return this._PageTitleEng;
+            }
+            set
+            {
+                this.OnPageTitleEngChanging(value);
+                this.ReportPropertyChanging("PageTitleEng");
+                this._PageTitleEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("PageTitleEng");
+                this.OnPageTitleEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _PageTitleEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPageTitleEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnPageTitleEngChanged();
+        /// <summary>
+        /// There are no comments for property TextEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string TextEng
+        {
+            get
+            {
+                return this._TextEng;
+            }
+            set
+            {
+                this.OnTextEngChanging(value);
+                this.ReportPropertyChanging("TextEng");
+                this._TextEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TextEng");
+                this.OnTextEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _TextEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTextEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTextEngChanged();
+        /// <summary>
+        /// There are no comments for property TitleEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string TitleEng
+        {
+            get
+            {
+                return this._TitleEng;
+            }
+            set
+            {
+                this.OnTitleEngChanging(value);
+                this.ReportPropertyChanging("TitleEng");
+                this._TitleEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("TitleEng");
+                this.OnTitleEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _TitleEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTitleEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnTitleEngChanged();
+        /// <summary>
         /// There are no comments for Galleries in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("babichModel", "ContentGallery", "Gallery")]
@@ -719,6 +827,33 @@ namespace Babich.Models
         partial void OnSortOrderChanging(int value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnSortOrderChanged();
+        /// <summary>
+        /// There are no comments for property DescriptionEng in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string DescriptionEng
+        {
+            get
+            {
+                return this._DescriptionEng;
+            }
+            set
+            {
+                this.OnDescriptionEngChanging(value);
+                this.ReportPropertyChanging("DescriptionEng");
+                this._DescriptionEng = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("DescriptionEng");
+                this.OnDescriptionEngChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _DescriptionEng;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionEngChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnDescriptionEngChanged();
         /// <summary>
         /// There are no comments for Content in the schema.
         /// </summary>

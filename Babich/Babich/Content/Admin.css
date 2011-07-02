@@ -3,6 +3,10 @@
     color:Blue !important;
     font-size:12px;
 }
+.adminLink:hover
+{
+ font-weight:bold;
+}
 
 #subMenuAdminLinkContainer
 {
@@ -107,4 +111,81 @@ a.setDefault
 a.setDefault.selected
 {
     background-color:Green;
+}
+
+
+
+
+span.sortOrder
+{
+    font-weight:bold;
+    color:#555555 !important;
+    font-size:12px !important;
+    text-decoration:none !important;
+}
+
+
+.adminEditContentContainer
+{
+	margin-top:5px;
+	border:solid 1px #999999;
+	padding:10px;
+	margin-bottom:30px;
+	width:900px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	z-index:1;
+}
+
+.adminEditContentTable
+{
+	width:900px;
+}
+
+.adminEditContentTable td
+{
+	padding-left:20px;
+	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+	
+	
+}
+
+.adminEditContentTable td span
+{
+	font-size: 11px;
+	font-weight:normal;
+	
+}
+
+.buttonsContainer
+{
+    text-align:center;
+}
+
+h2.editContentTitle
+{
+    color:#999999;
+    padding-left:90px;
+}
+
+.logOnForm
+{
+	position:relative;
+	margin:0 auto;
+	width:220px;
+}
+
+.logOnForm table td
+{
+	line-height:30px;
+}
+
+span.field-validation-error
+{
+     color:Red !important;
+     font-size:13px !important;
+     font-weight:bold !important;
 }

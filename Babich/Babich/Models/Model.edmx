@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="babichModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="babichModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="babichModelStoreContainer">
           <EntitySet Name="content" EntityType="babichModel.Store.content" store:Type="Tables" Schema="babich" />
           <EntitySet Name="gallery" EntityType="babichModel.Store.gallery" store:Type="Tables" Schema="babich" />
@@ -20,14 +20,18 @@
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Lang" Type="varchar" MaxLength="5" />
           <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="MenuTitleEng" Type="varchar" />
           <Property Name="Name" Type="varchar" Nullable="false" />
           <Property Name="PageTitle" Type="varchar" />
+          <Property Name="PageTitleEng" Type="varchar" />
           <Property Name="ParentId" Type="uint" />
           <Property Name="SeoDescription" Type="varchar" />
           <Property Name="SeoKeywords" Type="varchar" />
           <Property Name="SortOrder" Type="usmallint" Nullable="false" />
           <Property Name="Text" Type="text" />
+          <Property Name="TextEng" Type="text" />
           <Property Name="Title" Type="varchar" />
+          <Property Name="TitleEng" Type="varchar" />
         </EntityType>
         <EntityType Name="gallery">
           <Key>
@@ -35,6 +39,7 @@
           </Key>
           <Property Name="ContentId" Type="uint" Nullable="false" />
           <Property Name="Description" Type="varchar" />
+          <Property Name="DescriptionEng" Type="varchar" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
@@ -48,8 +53,7 @@
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="babichModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -90,6 +94,10 @@
           <NavigationProperty Name="Galleries" Relationship="babichModel.ContentGallery" FromRole="Content" ToRole="Gallery" />
           <NavigationProperty Name="Children" Relationship="babichModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="babichModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <Property Type="String" Name="MenuTitleEng" />
+          <Property Type="String" Name="PageTitleEng" />
+          <Property Type="String" Name="TextEng" />
+          <Property Type="String" Name="TitleEng" />
         </EntityType>
         <EntityType Name="Gallery">
           <Key>
@@ -101,6 +109,7 @@
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Content" Relationship="babichModel.ContentGallery" FromRole="Gallery" ToRole="Content" />
           <NavigationProperty Name="GalleryItems" Relationship="babichModel.GalleryGalleryItem" FromRole="Gallery" ToRole="GalleryItem" />
+          <Property Type="String" Name="DescriptionEng" />
         </EntityType>
         <EntityType Name="GalleryItem">
           <Key>
@@ -130,7 +139,11 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="babichModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="babichModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
+            <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+                <ScalarProperty Name="TextEng" ColumnName="TextEng" />
+                <ScalarProperty Name="PageTitleEng" ColumnName="PageTitleEng" />
+                <ScalarProperty Name="MenuTitleEng" ColumnName="MenuTitleEng" />
+                <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
             <ScalarProperty Name="ContentTitle" ColumnName="ContentTitle" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Id" ColumnName="Id" />
@@ -145,7 +158,8 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Gallery"><EntityTypeMapping TypeName="babichModel.Gallery"><MappingFragment StoreEntitySet="gallery">
-            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
             <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
