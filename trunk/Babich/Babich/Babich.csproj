@@ -119,6 +119,8 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\add.gif" />
+    <Content Include="Content\img\arrow-left.gif" />
+    <Content Include="Content\img\arrow-right.gif" />
     <Content Include="Content\img\babich_h.gif" />
     <Content Include="Content\img\babich_v.gif" />
     <Content Include="Content\img\back.gif" />
@@ -135,6 +137,7 @@
     <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\remove.gif" />
     <Content Include="Content\img\skatch.gif" />
+    <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\Projects.css" />
     <Content Include="Global.asax" />
@@ -163,6 +166,7 @@
     <Content Include="Scripts\fancybox\jquery.fancybox-1.3.1.js" />
     <Content Include="Scripts\fancybox\jquery.fancybox-1.3.1.pack.js" />
     <Content Include="Scripts\fancybox\jquery.mousewheel-3.0.2.pack.js" />
+    <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Views\Shared\Contacts.ascx" />
     <Content Include="Views\Shared\Gallery.ascx" />
     <Content Include="Views\Shared\LanguageSelector.ascx" />

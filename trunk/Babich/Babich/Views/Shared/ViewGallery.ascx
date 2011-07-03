@@ -10,38 +10,15 @@
   <script type="text/javascript">
 
       $(function () {
+          //$('#galleryPreviews').jcarousel({ 'scroll': 1 });
           $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
-      });
-
-      $(function () {
-      /*
-          jQuery('#mycarousel').jcarousel({ 'scroll': 1 });
-          $("a#pictureLink").fancybox({
-              'titleShow': false,
-              'transitionIn': 'none',
-              'transitionOut': 'none',
-              'hideOnOverlayClick': true,
-              'hideOnContentClick': true,
-              'enableEscapeButton': true,
-              'showCloseButton': false
-          });*/
       });
 
       function setImage(path) {
           $("#pictureContainer").attr("src", "/ImageCache/mainView/" + path);
           $("#pictureLink").attr("href", "/Content/Photos/" + path);
       }
-      /*
-      $(function () {
       
-          $(".carouselItem").mousemove(function () {
-              $(this).children('div').addClass("show");
-          });
-          $(".carouselItem").mouseleave(function () {
-              $(this).children('div').removeClass("show");
-          });
-      });
-      */
 </script>
 
 <%
@@ -65,7 +42,7 @@
         <%
 }%>
     </div>
-    <ul id="galleryPreviews">
+    <ul id="galleryPreviews" class="jcarousel-skin-tango">
     
     <%
       var cnt = 0;
