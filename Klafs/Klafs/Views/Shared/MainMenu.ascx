@@ -40,9 +40,9 @@
         <%if (Request.IsAuthenticated)
 {%>
 <div class="adminLinksContainder">
-                <%=Html.ActionLink(".", "EditContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit white marg", title = "Редактировать" })%>
-                <%=Html.ActionLink(".", "AddPhoto", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink add white marg", title = "Добавить фото" })%>
-                <%=Html.ActionLink(".", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLinkSubItem addSubItem white", title = "Добавить подраздел" })%>
+                <%=Html.ActionLink("[IMAGE]", "EditContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit white marg", title = "Редактировать" }).ToString().Replace("[IMAGE]","")%>
+                <%=Html.ActionLink("[IMAGE]", "AddPhoto", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink add white marg", title = "Добавить фото" }).ToString().Replace("[IMAGE]", "")%>
+                <%=Html.ActionLink("[IMAGE]", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLinkSubItem addSubItem white", title = "Добавить подраздел" }).ToString().Replace("[IMAGE]", "")%>
  </div>
  <%}%>
 
