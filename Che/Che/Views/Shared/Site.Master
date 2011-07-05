@@ -18,6 +18,9 @@
                <span> (093)</span><br/>431-24-24
             </div>
             <div id="reasons">
+            <a href="#">Причины</a>,<br/><br/>
+            <span>по которым с нами<br/>
+            приятно работать</span>
             </div>
             <%Html.RenderPartial("MainMenu"); %>
         </div>
