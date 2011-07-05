@@ -14,15 +14,24 @@
 
         <div id="header">
            
-              
+              <div id="phone"></div>
+              <div id="reasons"></div>
             
         </div>
 
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
 
-            <div id="footer">
-            </div>
+        <div id="footer">
+        <div id="critic"></div>
+        <div id="euro"></div>
+
+        <div id="sign">
+        <%=DateTime.Now.Year%> год<br />дизайн для чернигова
+
+        </div>
+
         </div>
         <div class="line"></div>
     </div>
