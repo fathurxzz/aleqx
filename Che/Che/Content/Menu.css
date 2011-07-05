@@ -1,0 +1,40 @@
+﻿#mainMenu
+{
+	position: absolute;
+	margin-left: 215px;
+	margin-top: 195px;
+}
+
+
+#sites, #firmStyle, #advDesign
+{
+	height: 24px;
+	display: inline-block;
+	margin: 0 36px;
+}
+
+#sites
+{
+	width: 63px;
+	background: url('img/site.gif');
+}
+
+#firmStyle
+{
+	width: 187px;
+	background: url('img/style.gif');
+}
+
+#advDesign 
+{
+	width: 198px;
+	background: url('img/design.png');
+}
+
+
+#sites:hover, #firmStyle:hover, #advDesign:hover
+{
+	background-position: 0px -24px;
+}
+
+
