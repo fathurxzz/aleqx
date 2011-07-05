@@ -71,8 +71,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\critic.gif" />
+    <Content Include="Content\img\euro.gif" />
+    <Content Include="Content\img\footer.gif" />
     <Content Include="Content\img\header.gif" />
     <Content Include="Content\img\line.gif" />
+    <Content Include="Content\img\phone.gif" />
+    <Content Include="Content\img\reasons.gif" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
