@@ -10,7 +10,7 @@
   <script type="text/javascript">
 
       $(function () {
-          //$('#galleryPreviews').jcarousel({ 'scroll': 1 });
+          $('#galleryPreviews').jcarousel({ 'scroll': 1 });
           $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
       });
 
