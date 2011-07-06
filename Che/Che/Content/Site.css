@@ -71,7 +71,7 @@ body
 	line-height: 8px;
 }
 
-#reasons a
+#reasons a, #critic a
 {
 	color: #cc0033;
 	font-style: italic;
@@ -79,12 +79,40 @@ body
 	font-size: 25px;
 }
 
-#reasons span
+#reasons div, #critic div
 {
 	font-family: Verdana;
 	font-size: 10px;
 	color: #000;
-	
+    line-height: 10px;
+}
+
+#reasons div
+{
+    margin-top:12px;
+}
+
+#critic
+{
+    background:url('img/critic.gif');
+    width:94px;
+    height:94px;
+    position:absolute;
+    margin-top:35px;
+    margin-left:70px;
+    font-size: 30px;
+}
+
+#critic a
+{
+    margin-left: 115px;
+}
+
+#critic div 
+{
+    margin-left: 115px;
+    margin-top: 20px;
+    width: 150px;
 }
 
 
@@ -108,25 +136,28 @@ body
     
 }
 
-#critic
-{
-    background:url('img/critic.gif');
-    width:94px;
-    height:94px;
-    position:absolute;
-    margin-top:35px;
-    margin-left:70px;
-    
-}
+
 
 #euro
 {
-    background:url('img/euro.gif');
-    width:94px;
+    background:url('img/euro.gif') no-repeat;
+    background-position: right;
+    font-family: Georgia;
+    font-size:20px;
+    width:254px;
     height:120px;
     position:absolute;
-    margin-left:920px;
+    margin-left:760px;
     margin-top:9px;
+}
+
+#euro div {
+    margin-top: 50px;
+}
+#euro a {
+    color: #cc0033;
+	font-style: italic;
+	font-family: Georgia;
 }
 
 #main

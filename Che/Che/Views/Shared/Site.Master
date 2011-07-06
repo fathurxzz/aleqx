@@ -15,12 +15,14 @@
         </div>
         <div id="header">
             <div id="phone">
-               <span> (093)</span><br/>431-24-24
+                <span>(093)</span><br />
+                431-24-24
             </div>
             <div id="reasons">
-            <a href="#">Причины</a>,<br/><br/>
-            <span>по которым с нами<br/>
-            приятно работать</span>
+                <a href="#">Причины</a>,
+                
+                <div>по которым с нами<br />
+                    приятно работать</div>
             </div>
             <%Html.RenderPartial("MainMenu"); %>
         </div>
@@ -35,8 +37,12 @@
         </div>
         <div id="footer">
             <div id="critic">
+                <div>Нас критикуют<br/>другие дизайнеры</div>
+                <a href="#">Спасибо</a>.
             </div>
             <div id="euro">
+                <div>Чернигову &mdash;</div>
+                <a href="#">евро-качество</a>!
             </div>
             <div id="sign">
                 <%=DateTime.Now.Year%>
