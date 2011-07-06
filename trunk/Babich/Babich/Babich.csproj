@@ -175,7 +175,9 @@
     <Content Include="Views\Shared\Projects.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />
     <Content Include="Views\Shared\ViewGallery.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
