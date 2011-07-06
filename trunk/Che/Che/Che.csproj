@@ -75,6 +75,7 @@
     <Content Include="Content\img\content-top.gif" />
     <Content Include="Content\img\critic.gif" />
     <Content Include="Content\img\design.gif" />
+    <Content Include="Content\img\design.png" />
     <Content Include="Content\img\euro.gif" />
     <Content Include="Content\img\footer.gif" />
     <Content Include="Content\img\header.gif" />
@@ -82,7 +83,9 @@
     <Content Include="Content\img\phone.gif" />
     <Content Include="Content\img\reasons.gif" />
     <Content Include="Content\img\site.gif" />
+    <Content Include="Content\img\site.png" />
     <Content Include="Content\img\style.gif" />
+    <Content Include="Content\img\style.png" />
     <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Views\Shared\MainMenu.ascx" />
