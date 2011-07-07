@@ -4,16 +4,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>
-        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+        <asp:ContentPlaceHolder ID="PageTitle" runat="server" />
     </title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Menu.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="page">
         <div class="line">
         </div>
         <div id="header">
+            <%if(Request.IsAuthenticated)
+              {%>
+              <div id="logOffLinkContainer">
+              <%=Html.ActionLink("Выйти из системы администрирования","LogOff","Account",null,new{@class="adminLink"})%>
+              </div>
+              <%
+              }%>
             <div id="phone">
                 <span>(093)</span><br />
                 431-24-24
@@ -30,6 +38,9 @@
             <div id="mainTop">
             </div>
             <div id="mainMiddle">
+                <div id="titleContent">
+                <asp:ContentPlaceHolder ID="Title" runat="server" />
+                </div>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
             <div id="mainBottom">
