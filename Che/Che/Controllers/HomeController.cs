@@ -25,7 +25,7 @@ namespace Che.Controllers
             {
                 if (!string.IsNullOrEmpty(id))
                 {
-                    var content = context.Content.Include("Parent").Where(c => c.Name == id).First();
+                    var content = context.Content.Include("Parent").Include("Children").Where(c => c.Name == id).First();
                     return View("Details", content);
                 }
 

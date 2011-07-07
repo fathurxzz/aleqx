@@ -115,3 +115,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Title" runat="server">
 </asp:Content>
 
+<asp:Content ID="Content4" ContentPlaceHolderID="includes" runat="server">
+<link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
+</asp:Content>

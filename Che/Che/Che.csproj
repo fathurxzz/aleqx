@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
+    <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Model.Designer.cs">
@@ -95,7 +96,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\Admin.css" />
     <Content Include="Areas\Admin\Views\Content\Add.aspx" />
+    <Content Include="Areas\Admin\Views\Content\AddDetailsItem.aspx" />
     <Content Include="Areas\Admin\Views\Content\Edit.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\img\content-bottom.gif" />

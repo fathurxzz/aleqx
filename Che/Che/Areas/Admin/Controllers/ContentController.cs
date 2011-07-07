@@ -56,6 +56,16 @@ namespace Che.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult AddDetailsItem(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Where(c => c.Id == id).First();
+
+                return View(new Content { ContentType = content.ContentType, ContentLevel = 2 });
+            }
+        }
+
         public ActionResult Edit(int id)
         {
             var content = new Content();

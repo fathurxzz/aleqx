@@ -1,11 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Che.Models.LogOnModel>" %>
 
 <asp:Content ID="loginTitle" ContentPlaceHolderID="PageTitle" runat="server">
-    Вход в систему администрирования
+     Че-дизайн - Вход в систему администрирования
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Title" runat="server">
-    Дизайн для чернигова. Вход в систему администрирования
+   Вход в систему администрирования
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">

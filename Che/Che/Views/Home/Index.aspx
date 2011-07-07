@@ -50,8 +50,9 @@
 
 %>
          <td class="<%=cnt%2==0?"firstItem":"secondItem"%>">
-
+         <a href="/<%=SiteHelper.GetPathByContentType(Model.ContentType) %>/<%=item.Name%>">
          <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail1", item.ImageSource)%>
+         </a>
          <div class="contentItemDescription">
          <%=item.Description %></div>
          
