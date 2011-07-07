@@ -9,11 +9,16 @@ namespace Che.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
 
             return View();
+        }
+
+        public ActionResult Content(string id)
+        {
+
+            return View("Index");
         }
 
         public ActionResult About()

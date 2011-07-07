@@ -193,3 +193,12 @@ body
 	width: 618px;
 	background-color: #fff;
 }
+
+
+#titleContent
+{
+    text-align: center;
+    color: #cc3333;
+    font-family: Georgia;
+    font-size: 20px;
+}

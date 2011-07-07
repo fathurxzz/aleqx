@@ -1,0 +1,31 @@
+﻿.logOnForm
+{
+	position:relative;
+	margin:0 auto;
+	width:220px;
+}
+
+.logOnForm table td
+{
+	line-height:30px;
+}
+
+span.field-validation-error
+{
+     color:Red !important;
+     font-size:13px !important;
+     font-weight:bold !important;
+}
+
+#logOffLinkContainer
+{
+    position: absolute;
+    margin-left: 440px;
+    margin-top: 10px;
+}
+
+a.adminLink
+{
+    color: #ff0000;
+    font-size: 12px;
+}
