@@ -12,27 +12,22 @@ namespace Che.Controllers
     {
         public ActionResult Index(string id)
         {
-
-
-
-            return View();
+            return View(new Content());
         }
 
         public ActionResult Content(string id, int contentType)
         {
-
             using (var context = new ContentStorage())
             {
-                
+                if (!string.IsNullOrEmpty(id))
+                {
+                    var content = context.Content.Include("Parent").Where(c => c.Name == id).First();
+                    return View("Details", content);
+                }
+
+                var mainContent = context.Content.Include("Children").Where(c => c.ContentType == contentType&&c.ContentLevel==0).First();
+                return View("Index", mainContent);
             }
-
-            if(!string.IsNullOrEmpty(id))
-            {
-                
-            }
-
-
-            return View("Index");
         }
     }
 }
