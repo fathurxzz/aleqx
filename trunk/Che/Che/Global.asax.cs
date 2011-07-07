@@ -17,16 +17,29 @@ namespace Che
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-              "Main", // Route name
-              "{id}", // URL with parameters
-              new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+              "Sites", // Route name
+              "Sites/{id}", // URL with parameters
+              new { controller = "Home", action = "Content", id = UrlParameter.Optional, contentType=1 } // Parameter defaults
             );
 
             routes.MapRoute(
-              "Sites", // Route name
-              "Sites/{id}", // URL with parameters
-              new { controller = "Home", action = "Content", id = UrlParameter.Optional } // Parameter defaults
+              "Styles", // Route name
+              "Styles/{id}", // URL with parameters
+              new { controller = "Home", action = "Content", id = UrlParameter.Optional, contentType = 2 } // Parameter defaults
             );
+            routes.MapRoute(
+              "Adv", // Route name
+              "Adv/{id}", // URL with parameters
+              new { controller = "Home", action = "Content", id = UrlParameter.Optional, contentType = 3 } // Parameter defaults
+            );
+
+            routes.MapRoute(
+              "Main", // Route name
+              "{id}", // URL with parameters
+              new { controller = "Home", action = "Index", id = UrlParameter.Optional, contentType = 0 } // Parameter defaults
+            );
+
+            
 
             routes.MapRoute(
                 "Default", // Route name
