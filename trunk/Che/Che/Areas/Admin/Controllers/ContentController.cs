@@ -14,7 +14,17 @@ namespace Che.Areas.Admin.Controllers
 
         public ActionResult Add(int id)
         {
-            var content = new Content();
+            var content = new Content {Id = id};
+
+            return View(content);
+        }
+        
+        [HttpPost]
+        public ActionResult Add(int id, FormCollection form)
+        {
+            var content = new Content { Id = id };
+
+
 
             return View(content);
         }
