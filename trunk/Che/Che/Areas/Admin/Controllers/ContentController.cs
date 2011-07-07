@@ -12,7 +12,14 @@ namespace Che.Areas.Admin.Controllers
         //
         // GET: /Admin/Content/
 
-        public ActionResult Add()
+        public ActionResult Add(int id)
+        {
+            var content = new Content();
+
+            return View(content);
+        }
+
+        public ActionResult Edit(int id)
         {
             var content = new Content();
 
