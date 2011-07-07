@@ -190,7 +190,8 @@ body
 	min-height: 300px;
 	position: relative;
 	margin: 0 auto;
-	width: 618px;
+	width: 478px;
+    padding: 0 70px;
 	background-color: #fff;
 }
 
@@ -201,4 +202,38 @@ body
     color: #cc3333;
     font-family: Georgia;
     font-size: 20px;
+    padding-bottom: 40px;
+}
+
+#contentList
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#contentList td {
+    
+    /*border: 1px solid #000;*/
+    
+}
+
+#contentList td.firstItem
+{
+    padding-left: 0px;
+    padding-right: 60px;
+}
+
+#contentList td.secondItem
+{
+    padding-left: 60px;
+    padding-right: 0px;
+}
+
+.contentItemDescription
+{
+    font-family: Verdana;
+    color: #666666;
+    font-size: 11px;
+    margin-bottom: 40px;
+    margin-top: 5px;
 }

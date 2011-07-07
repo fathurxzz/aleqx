@@ -10,6 +10,9 @@
     <%= Html.ValidationSummary(true) %>
 
     <%=Html.HiddenFor(x=>x.Id) %>
+    <%=Html.HiddenFor(x=>x.ContentType) %>
+    <%=Html.HiddenFor(x=>x.ContentLevel) %>
+
 
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
@@ -70,7 +73,7 @@
                     <%= Html.ValidationMessageFor(model => model.SortOrder) %>
                 </td>
             </tr>
-            <tr>
+            <tr style="display: none;">
                 <td>
                     <%= Html.LabelFor(model => model.Text) %>
                 </td>
@@ -110,7 +113,7 @@
     <% } %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PageTitle" runat="server">
-    Система администрирования. Редактирование содержимого.
+    Система администрирования - Редактирование содержимого
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Title" runat="server">
     Редактирование содержимого
