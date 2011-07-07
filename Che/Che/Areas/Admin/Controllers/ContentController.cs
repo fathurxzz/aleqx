@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Che.Models;
 
 namespace Che.Areas.Admin.Controllers
 {
@@ -11,9 +12,11 @@ namespace Che.Areas.Admin.Controllers
         //
         // GET: /Admin/Content/
 
-        public ActionResult Index()
+        public ActionResult Add()
         {
-            return View();
+            var content = new Content();
+
+            return View(content);
         }
 
     }
