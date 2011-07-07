@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="cheModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="cheModelStoreContainer">
+          <EntitySet Name="content" EntityType="cheModel.Store.content" store:Type="Tables" Schema="che" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentLevel" Type="usmallint" Nullable="false" />
+          <Property Name="ContentType" Type="usmallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="ParentId" Type="uint" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cheModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="cheModel.Content" />
+          <AssociationSet Name="ContentContent" Association="cheModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentType" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="Children" Relationship="cheModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Parent" Relationship="cheModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <Property Type="Int32" Name="ContentLevel" Nullable="false" />
+        </EntityType>
+        <Association Name="ContentContent">
+          <End Type="cheModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="cheModel.Content" Role="Content1" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="cheModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="cheModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="cheModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="cheModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7427376302083331" IsExpanded="true" />
+        <AssociationConnector Association="cheModel.ContentContent">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="3.8214322916666661" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.0714322916666656" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.0714322916666656" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="3.8214322916666661" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
