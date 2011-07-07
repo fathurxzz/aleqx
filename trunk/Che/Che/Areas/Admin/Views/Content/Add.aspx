@@ -123,4 +123,5 @@
 <asp:Content ID="Content6" ContentPlaceHolderID="includes" runat="server">
     <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
 </asp:Content>

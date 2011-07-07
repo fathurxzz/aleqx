@@ -205,6 +205,14 @@ body
     padding-bottom: 40px;
 }
 
+#titleContent a
+{
+    
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
 #contentList
 {
     border-collapse: collapse;
@@ -236,4 +244,25 @@ body
     font-size: 11px;
     margin-bottom: 40px;
     margin-top: 5px;
+}
+
+img{border: none}
+
+
+#subTitle {
+    color: #666666;
+    font-size: 18px;
+}
+
+#backLink, #backLink a
+{
+    color: #cc3333;
+    font-weight: bold;
+    font-family: Georgia;
+    font-size: 15px;
+}
+
+#backLink
+{
+    text-align: center;
 }

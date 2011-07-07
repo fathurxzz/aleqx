@@ -42,7 +42,9 @@
             <div id="mainMiddle">
                 <div id="titleContent">
                 <asp:ContentPlaceHolder ID="Title" runat="server" />
+                <asp:ContentPlaceHolder ID="SubTitle" runat="server" />
                 </div>
+                
                 <asp:ContentPlaceHolder ID="MainContent" runat="server" />
             </div>
             <div id="mainBottom">
