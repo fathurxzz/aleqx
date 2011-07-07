@@ -9,6 +9,8 @@
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Menu.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder runat="server" ID="includes">
+    </asp:ContentPlaceHolder>
 </head>
 <body>
     <div id="page">

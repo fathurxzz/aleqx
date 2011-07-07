@@ -29,3 +29,51 @@ a.adminLink
     color: #ff0000;
     font-size: 12px;
 }
+
+.adminEditContentContainer
+{
+	margin-top:5px;
+	/*border:solid 1px #999999;*/
+	padding:10px;
+	/*margin-bottom:30px;*/
+	width:550px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	z-index:1;
+}
+
+.adminEditContentTable
+{
+	width:550px;
+}
+
+.adminEditContentTable td
+{
+	padding-left:20px;
+	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+	/*border:solid 1px #999999;*/
+	
+}
+
+.adminEditContentTable td input
+{
+    width: 350px;
+}
+
+.adminEditContentTable td span
+{
+	font-size: 11px;
+	font-weight:normal;
+	
+}
+
+.buttonsContainer
+{
+    text-align:center;
+    margin-top: 10px;
+}
+
+
