@@ -108,15 +108,16 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
+            <a href="#" onclick="javascript:history.back();">Отмена</a>
         </div>
     </div>
     <% } %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PageTitle" runat="server">
-    Система администрирования - Редактирование содержимого
+    Система администрирования - Добавление содержимого
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Title" runat="server">
-    Редактирование содержимого
+    Добавление содержимого
 </asp:Content>
 
 

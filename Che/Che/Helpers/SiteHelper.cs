@@ -13,11 +13,11 @@ namespace Dev.Mvc.Helpers
             switch (contentType)
             {
                 case 1:
-                    return "Sites";
+                    return "sites";
                 case 2:
-                    return "Styles";
+                    return "id";
                 case 3:
-                    return "Adv";
+                    return "ad";
             }
             throw new ArgumentOutOfRangeException();
         }
