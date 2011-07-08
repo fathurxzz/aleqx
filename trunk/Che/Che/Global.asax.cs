@@ -18,18 +18,18 @@ namespace Che
 
             routes.MapRoute(
               "Sites", // Route name
-              "Sites/{id}", // URL with parameters
+              "sites/{id}", // URL with parameters
               new { controller = "Home", action = "Content", id = UrlParameter.Optional, contentType=1 } // Parameter defaults
             );
 
             routes.MapRoute(
               "Styles", // Route name
-              "Styles/{id}", // URL with parameters
+              "id/{id}", // URL with parameters
               new { controller = "Home", action = "Content", id = UrlParameter.Optional, contentType = 2 } // Parameter defaults
             );
             routes.MapRoute(
               "Adv", // Route name
-              "Adv/{id}", // URL with parameters
+              "ad/{id}", // URL with parameters
               new { controller = "Home", action = "Content", id = UrlParameter.Optional, contentType = 3 } // Parameter defaults
             );
 

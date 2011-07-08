@@ -16,19 +16,22 @@
   {
       %>
 
-      <%if(Model.Id!=1)
+      
+      
+      <%=Html.ActionLink("Редактировать","Edit","Content",new {area="Admin",id=Model.Id},new{@class="adminLink"}) %>
+      <%if (Model.Id != 1 && Model.ContentType != 4 && Model.ContentType != 5 && Model.ContentType != 6)
 {
             %>
+            <br/>
                 <%=Html.ActionLink("Добавить подраздел","Add","Content",new {area="Admin",id=Model.Id},new{@class="adminLink"}) %>      
             <%
 } %>
 
-      
-      <%=Html.ActionLink("Редактировать","Edit","Content",new {area="Admin",id=Model.Id},new{@class="adminLink"}) %>
       <%
       
   } %>
 
+  <%=Model.Text %>
 
   <%
       if (Model.Children.Count > 0)
@@ -50,6 +53,15 @@
 
 %>
          <td class="<%=cnt%2==0?"firstItem":"secondItem"%>">
+             <%if(Request.IsAuthenticated)
+{
+    %>
+    <br/>
+    <%=Html.ActionLink("Редактировать", "Edit", "Content", new { id = item.Id, area = "Admin" }, new { @class = "adminLink"})%>
+    <%=Html.ActionLink("Удалить", "Delete", "Content", new { id = item.Id, area = "Admin" }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить запись?')" })%>
+    
+    <%
+} %>
          <a href="/<%=SiteHelper.GetPathByContentType(Model.ContentType) %>/<%=item.Name%>">
          <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail1", item.ImageSource)%>
          </a>
@@ -66,4 +78,15 @@
       }%>
 
 
+</asp:Content>
+
+
+<asp:Content ContentPlaceHolderID="RootLink" runat="server">
+ <%
+               
+                if (Model.Id!=1)
+              {%>
+            <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" alt="" /></a>
+            <%
+              }%>
 </asp:Content>

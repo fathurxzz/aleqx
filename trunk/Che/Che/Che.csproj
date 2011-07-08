@@ -109,6 +109,7 @@
     <Content Include="Content\img\header.gif" />
     <Content Include="Content\img\line.gif" />
     <Content Include="Content\img\phone.gif" />
+    <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\reasons.gif" />
     <Content Include="Content\img\site.png" />
     <Content Include="Content\img\style.png" />

@@ -37,6 +37,17 @@ body
 	margin-bottom: 8px;
 }
 
+.rootLink
+{
+    display:block;
+	position:absolute;
+    width: 111px;
+    height: 110px;
+    margin-left: 502px;
+    margin-top: 40px;
+    background:url('img/pixel.gif');
+}
+
 #phone
 {
     position:absolute;
@@ -113,6 +124,7 @@ body
     margin-left: 115px;
     margin-top: 20px;
     width: 150px;
+    margin-bottom: -4px;
 }
 
 

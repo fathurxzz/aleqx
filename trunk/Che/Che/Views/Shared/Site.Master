@@ -21,6 +21,13 @@
         <div class="line">
         </div>
         <div id="header">
+                
+                <asp:ContentPlaceHolder runat="server" ID="RootLink">
+    </asp:ContentPlaceHolder>
+            
+           
+
+
             <%if(Request.IsAuthenticated)
               {%>
               <div id="logOffLinkContainer">
@@ -33,7 +40,7 @@
                 431-24-24
             </div>
             <div id="reasons">
-                <a href="#">Причины</a>,
+                <a href="/reasons">Причины</a>,
                 
                 <div>по которым с нами<br />
                     приятно работать</div>
@@ -57,11 +64,11 @@
         <div id="footer">
             <div id="critic">
                 <div>Нас критикуют<br/>другие дизайнеры</div>
-                <a href="#">Спасибо</a>.
+                <a href="/thnx-asshls">Спасибо</a>.
             </div>
             <div id="euro">
                 <div>Чернигову &mdash;</div>
-                <a href="#">евро-качество</a>!
+                <a href="/che-euro">евро-качество</a>!
             </div>
             <div id="sign">
                 <%=DateTime.Now.Year%>

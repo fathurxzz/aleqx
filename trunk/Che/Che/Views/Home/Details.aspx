@@ -20,11 +20,21 @@
     %>
     <tr> 
     
-    <td class="description"><%=item.Description %></td>   
+    <td class="description"><%=item.Description %>
+            <%if(Request.IsAuthenticated)
+{
+    %>
+    <br/>
+    <%=Html.ActionLink("Удалить", "Delete", "Content", new { id = item.Id, area = "Admin" }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить запись?')" })%>
+    
+    <%
+} %>
+    </td>   
     <td>
         <a href="/Content/Photos/<%=item.ImageSource %>" class="fancy" >
         <%=Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail2", item.ImageSource)%>
         </a>
+
     </td>   
     </tr>
         <%
