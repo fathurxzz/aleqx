@@ -51,10 +51,10 @@ namespace Che.Areas.Admin.Controllers
 
                 context.AddToContent(content);
                 context.SaveChanges();
-
-                return RedirectToAction("Index", "Home", new { area = "", id = "" });
             }
+            return RedirectToAction("Index", "Home", new { area = "", id = "" });
         }
+
 
         public ActionResult AddDetailsItem(int id)
         {
@@ -65,6 +65,31 @@ namespace Che.Areas.Admin.Controllers
                 return View(new Content { ContentType = content.ContentType, ContentLevel = 2 });
             }
         }
+
+        [HttpPost]
+        public ActionResult AddDetailsItem(int id, FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                var parent = context.Content.Where(c => c.Id == id).First();
+                var content = new Content {Parent = parent, Name = ""};
+
+                TryUpdateModel(content, new[] {"Description", "SortOrder"});
+
+                if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Photos", Request.Files["logo"].FileName);
+                    string filePath = Server.MapPath("~/Content/Photos");
+                    filePath = Path.Combine(filePath, fileName);
+                    Request.Files["logo"].SaveAs(filePath);
+                    content.ImageSource = fileName;
+                }
+                context.AddToContent(content);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", new { area = "", id = "" });
+        }
+
 
         public ActionResult Edit(int id)
         {

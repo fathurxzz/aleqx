@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 <% Html.EnableClientValidation(); %>
-    <% using (Html.BeginForm("Add", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    <% using (Html.BeginForm("AddDetailsItem", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
        <%= Html.ValidationSummary(true) %>
 
@@ -56,7 +56,13 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="includes" runat="server">
-<link href="../../Admin.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+#mainMiddle
+{
+    padding: 0 !important;
+    width: 618px !important;
+}
+</style>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Title" runat="server">

@@ -266,3 +266,13 @@ img{border: none}
 {
     text-align: center;
 }
+
+
+#contentItemDetails td.description
+{
+    padding-right: 25px;
+    font-family: Verdana;
+    font-size: 12px;
+    vertical-align: top;
+    color: #38101a;
+}

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Che.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<% Html.EnableClientValidation(); %>
+
 
     <h2>Edit</h2>
 
@@ -116,5 +118,14 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="includes" runat="server">
-<link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+<style type="text/css">
+#mainMiddle
+{
+    padding: 0 !important;
+    width: 618px !important;
+}
+</style>
+
 </asp:Content>

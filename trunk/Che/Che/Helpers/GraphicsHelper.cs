@@ -18,6 +18,9 @@ namespace Dev.Mvc.Helpers
         {
             LimitWidth.Add("thumbnail1", 180);
             LimitHeight.Add("thumbnail1", 180);
+
+            LimitWidth.Add("thumbnail2", 205);
+            LimitHeight.Add("thumbnail2", 310);
         }
 
 
