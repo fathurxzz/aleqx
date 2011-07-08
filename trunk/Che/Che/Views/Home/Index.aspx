@@ -41,7 +41,7 @@
           <tr>
           <%
           int cnt = 0;
-          foreach (var item in Model.Children)
+          foreach (var item in Model.Children.OrderBy(c=>c.SortOrder))
           {
               if(cnt%2==0&&cnt!=0)
               {

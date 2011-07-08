@@ -21,7 +21,7 @@
     <%
 }%>
 
-    <%if (Model.ContentLevel == 1)
+    <%if (Model.ContentType == 1||Model.ContentType == 2||Model.ContentType == 3)
 {%>
    <script type="text/javascript">
        $(function () {

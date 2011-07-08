@@ -15,7 +15,7 @@
     %>
     <table id="contentItemDetails">
     
-    <% foreach (var item in Model.Children)
+    <% foreach (var item in Model.Children.OrderBy(c=>c.SortOrder))
 {
     %>
     <tr> 
