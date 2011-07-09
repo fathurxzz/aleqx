@@ -9,6 +9,7 @@ using Dev.Mvc.Helpers;
 
 namespace Che.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         //
