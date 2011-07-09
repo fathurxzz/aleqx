@@ -96,7 +96,7 @@
                     <%= Html.LabelFor(model => model.Text) %>
                     <br/>
                 
-                    <%= Html.TextAreaFor(model => model.Text)%>
+                    <%= Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })%>
                     <%= Html.ValidationMessageFor(model => model.Text) %>
                 </td>
             </tr>
@@ -151,7 +151,7 @@
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
     <script type="text/javascript">
         $(function () {
-            CKEDITOR.replace("Text", { toolbar: "Media" });
+            //CKEDITOR.replace("Text", { toolbar: "Media" });
         })
     </script>
 <style type="text/css">
