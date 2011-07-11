@@ -178,30 +178,38 @@ body
     color:#cc0000;
     
 }
-/*
+
 #skatch
 {
-	border:1px solid black;
-	width:290px;
-	height:324px;
-	margin-right:1100px;
-	margin-left:auto;
-	margin-top:-325px;
+	/*border:1px solid black;*/
+	width:608px;
+	height:427px;
+	
+	/*margin-right:100px;*/
+	margin-left:-400px;
+	margin-top:-430px;
 	position:absolute;
-	background:url('img/skatch.gif');
 	z-index:-1;
 }
-*/
+
+.skatch1{background:url('img/skatch/s1.gif');}
+.skatch2{background:url('img/skatch/s2.gif');}
+.skatch3{background:url('img/skatch/s3.gif');}
+.skatch4{background:url('img/skatch/s4.gif');}
+.skatch5{background:url('img/skatch/s5.gif');}
+.skatch6{background:url('img/skatch/s6.gif');}
+.skatch7{background:url('img/skatch/s7.gif');}
+
 
 #babich_h
 {
 	float:left;
 	width:197px;
-	height:14px;
+	height:15px;
 	margin-left:-250px;
 	margin-top:-63px;
 	/*position:absolute;*/
-	background:url('img/babich_h.gif');
+	background:url('img/babich_h.png');
 }
 
 
