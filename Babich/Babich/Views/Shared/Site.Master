@@ -78,6 +78,7 @@
         </div>
     </div>
     <div id="footer">
+        
         <div id="rightSign" class="sign">
             Сайт створено в <a target="_blank" href="http://m-brand.com.ua">Студії Євгена Міллера</a>
         </div>
@@ -90,6 +91,15 @@
         </div>
     </div>
     <div id="backFooter">
+    <% Random random = new Random();
+       int number = random.Next(1,8);
+       if (number == 8)
+           number = 7;
+         %>
+    <div id="skatch" class="skatch<%=number%>">
+    
+    </div>
+
         <div id="babich_h">
         </div>
     </div>

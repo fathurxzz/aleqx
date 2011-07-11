@@ -120,6 +120,7 @@
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\add.gif" />
     <Content Include="Content\img\babich_h.gif" />
+    <Content Include="Content\img\babich_h.png" />
     <Content Include="Content\img\babich_v.gif" />
     <Content Include="Content\img\back.gif" />
     <Content Include="Content\img\cloud-bg-left.gif" />
@@ -155,6 +156,13 @@
     <Content Include="Content\img\remove.gif" />
     <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\skatch.gif" />
+    <Content Include="Content\img\skatch\s1.gif" />
+    <Content Include="Content\img\skatch\s2.gif" />
+    <Content Include="Content\img\skatch\s3.gif" />
+    <Content Include="Content\img\skatch\s4.gif" />
+    <Content Include="Content\img\skatch\s5.gif" />
+    <Content Include="Content\img\skatch\s6.gif" />
+    <Content Include="Content\img\skatch\s7.gif" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\Projects.css" />
