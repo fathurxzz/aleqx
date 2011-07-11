@@ -13,6 +13,9 @@
             if (Model.Id == 3 || Model.Id == 1)
                 Html.RenderPartial("Projects");
         %>
+
+        <%=Model.Text %>
+
     </div>
     <%
         }%>
