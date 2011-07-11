@@ -10,19 +10,8 @@
     %>
     <div id="mainContent">
         <%
-            if (Model.Id == 3)
-            {
-                //Html.RenderPartial("Projects", Model.Children);
-            }
-            else if (Model.Id == 1)
-            {
-                using (var context = new ContentStorage())
-                {
-                    //var content = context.Content.Include("Children").Where(c => c.Id == 3).First();
-                    //Html.RenderPartial("Projects", content.Children);
-                }
-            }
-      
+            if (Model.Id == 3 || Model.Id == 1)
+                Html.RenderPartial("Projects");
         %>
     </div>
     <%
