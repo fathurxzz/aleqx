@@ -119,8 +119,6 @@
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\add.gif" />
-    <Content Include="Content\img\arrow-left.gif" />
-    <Content Include="Content\img\arrow-right.gif" />
     <Content Include="Content\img\babich_h.gif" />
     <Content Include="Content\img\babich_v.gif" />
     <Content Include="Content\img\back.gif" />
@@ -128,6 +126,7 @@
     <Content Include="Content\img\cloud-bg-right.gif" />
     <Content Include="Content\img\delete.gif" />
     <Content Include="Content\img\edit.gif" />
+    <Content Include="Content\img\leftArrow.png" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\menuSeparator.gif" />
     <Content Include="Content\img\menu\projects.gif" />
@@ -154,6 +153,7 @@
     <Content Include="Content\img\projects\p8.gif" />
     <Content Include="Content\img\projects\p9.gif" />
     <Content Include="Content\img\remove.gif" />
+    <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\skatch.gif" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
