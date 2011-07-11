@@ -2,7 +2,8 @@
 <%@ Import Namespace="Babich" %>
 
 <%if(SiteSettings.GetCurrentLanguage=="uk-UA"){ %>
-<%=Html.ActionLink("ENG","SetLanguage","Home",new{id="en-US"},null)  %>
+<!--<%= Html.ActionLink("ENG","SetLanguage","Home",new{id="en-US"},null)  %>-->
+ENG
 <br />
 UKR
 <%}else{ %>
