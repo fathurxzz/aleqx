@@ -47,7 +47,8 @@
       
         } %>
         <div id="backLink">
-        &laquo; <a href="javascript:history.back();">В каталог</a>
+        &laquo; <!--<a href="javascript:history.back();">В каталог</a>-->
+         <a href="/<%=SiteHelper.GetPathByContentType(Model.Parent.ContentType) %>">В каталог</a>
         </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PageTitle" runat="server">

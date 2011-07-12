@@ -26,7 +26,7 @@
                     <%= Html.LabelFor(model => model.Description) %>
                 </td>
                 <td>
-                    <%= Html.TextAreaFor(model => model.Description, 3, 40, null)%>
+                    <%= Html.TextAreaFor(model => model.Description, 3, 40, new { @class = "ckeditor" })%>
                     <%= Html.ValidationMessageFor(model => model.Description) %>
                 </td>
             </tr>
@@ -58,6 +58,10 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="includes" runat="server">
+<script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 <style type="text/css">
 #mainMiddle
 {
