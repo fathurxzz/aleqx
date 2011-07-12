@@ -25,10 +25,10 @@ namespace Babich.Models
         public string PageTitle { get; set; }
 
         [Required(ErrorMessage = "* Введите заголовок")]
-        [DisplayName("Заголовок разворачиваемой области, название пункта меню")]
+        [DisplayName("Заголовок разворачиваемой области")]
         public string Title { get; set; }
 
-        [DisplayName("Текст под основными пунктами меню")]
+        [DisplayName("Текст над подразделами")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "* Введите порядок отображения (целое число)")]

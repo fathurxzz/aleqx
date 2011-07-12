@@ -7,59 +7,56 @@
     {
         foreach (var item in subMenuItems)
         {
-        %>
-        <span>
-            <%
-                if (item.Name == (string)ViewData["contentName"])
-                {
-                    if (SiteSettings.Language == Language.En)
-                    {%>
-            <%=item.TitleEng%>
-            <%
-        }
-        else
-        {%>
-            <%=item.Title%>
-            <%
-                }
-                    }
+%>
+<span>
+    <%
+        if (item.Name == (string)ViewData["contentName"] && ViewData["galleryId"] == null)
+        {
+            if (SiteSettings.Language == Language.En)
+            {%>
+    <%=item.TitleEng%>
+    <%
+}
                     else
-                    {
-            %>
-            <%if (SiteSettings.Language == Language.En)
-              {%>
-            <a href="/<%=item.Name%>">
-                <%=item.TitleEng%></a>
-            <%
+                    {%>
+    <%=item.Title%>
+    <%
+        }
                 }
-              else
-              {%>
-            <a href="/<%=item.Name%>">
-                <%=item.Title%></a>
-            <%
-                }
+                else
+                {
+    %>
+    <%if (SiteSettings.Language == Language.En)
+      {%>
+    <a href="/<%=item.Name%>">
+        <%=item.TitleEng%></a>
+    <%
+        }
+      else
+      {%>
+    <a href="/<%=item.Name%>">
+        <%=item.Title%></a>
+    <%
+}
                     }
-            
-            if(Request.IsAuthenticated)
-            {
-                %>
-                    <%=Html.ActionLink("[IMAGE]", "Delete", "Content", new { area = "Admin", id = item.Id },
+
+                if (Request.IsAuthenticated)
+                {
+    %>
+    <%=Html.ActionLink("[IMAGE]", "Delete", "Content", new { area = "Admin", id = item.Id },
                                       new
                                           {
                                               @class = "removeContent",
                                               title = "Удалить раздел",
                                               onclick = "return confirm('Вы уверены что хотите удалить раздел?')"
                                           }).ToString().Replace("[IMAGE]","")%>
-
-                <%
-            }
-
-%>
-
-
-        </span>
-        <%
+    <%
         }
+
+    %>
+</span>
+<%
+}
     }
 %>
 <%if (Request.IsAuthenticated)

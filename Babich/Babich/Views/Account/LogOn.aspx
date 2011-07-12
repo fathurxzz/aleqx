@@ -44,3 +44,11 @@
     <% } %>
     </div>
 </asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="LogoContainer" runat="server">
+    <div id="logo">
+        
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" alt="" /></a>
+        
+    </div>
+</asp:Content>
