@@ -167,8 +167,8 @@
         $(function () {
             CKEDITOR.replace("Text", { toolbar: "Media" });
             CKEDITOR.replace("TextEng", { toolbar: "Media" });
-            CKEDITOR.replace("Description", { toolbar: "Media" });
-            CKEDITOR.replace("DescriptionEng", { toolbar: "Media" });
+            CKEDITOR.replace("Description", { toolbar: "Media", height: "100px" });
+            CKEDITOR.replace("DescriptionEng", { toolbar: "Media", height: "100px" });
 
 
             $("#showUkr").click(function () {

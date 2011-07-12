@@ -106,8 +106,7 @@
 <div class="clear">
 </div>
 <div id="backToCatalogue">
-    &lt;&lt; 
-    
+    &laquo;
   <%if (ViewData["galleryPage"] != null)
   {%>
     <%=Html.ResourceActionLink("Back", "Index", "Home", new { id = ViewData["contentName"], galleryPage = ViewData["galleryPage"] }, null)%>
