@@ -150,7 +150,8 @@ namespace Che.Areas.Admin.Controllers
                 
                 var content = context.Content.Include("Parent").Where(c => c.Id == id).First();
                 string parentName = content.Parent.Name;
-                TryUpdateModel(content, new[] { "Description", "SortOrder" });
+                TryUpdateModel(content, new[] { "SortOrder" });
+                content.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                 if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
                 {
@@ -164,10 +165,10 @@ namespace Che.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Photos", Request.Files["logo"].FileName);
                     string filePath = Server.MapPath("~/Content/Photos");
                     filePath = Path.Combine(filePath, fileName);
-                    //Request.Files["logo"].SaveAs(filePath);
+                    Request.Files["logo"].SaveAs(filePath);
                     content.ImageSource = fileName;
                 }
-                //context.SaveChanges();
+                context.SaveChanges();
 
                 return RedirectToAction("Content", "Home", new { area = "", id = parentName });
             }
