@@ -12,9 +12,6 @@ namespace Che.Areas.Admin.Controllers
     [Authorize]
     public class ContentController : Controller
     {
-        //
-        // GET: /Admin/Content/
-
         public ActionResult Add(int id)
         {
             using (var context = new ContentStorage())
@@ -33,6 +30,9 @@ namespace Che.Areas.Admin.Controllers
                 var content = new Content();
                 var parent = context.Content.Where(c => c.Id == id).First();
                 content.Parent = parent;
+
+                string parentName = parent.Name;
+
                 TryUpdateModel(content,
                                new[]
                                    {
@@ -52,8 +52,9 @@ namespace Che.Areas.Admin.Controllers
 
                 context.AddToContent(content);
                 context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new {area = "", id = parentName});
             }
-            return RedirectToAction("Index", "Home", new { area = "", id = "" });
         }
 
 
@@ -71,7 +72,11 @@ namespace Che.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var content = context.Content.Where(c => c.Id == id).First();
+                var content = context.Content.Include("Parent").Where(c => c.Id == id).First();
+                string parentName = "";
+                if (content.Parent != null)
+                    parentName = content.Parent.Name;
+                string name = content.Name;
                 TryUpdateModel(content, new[]
                                    {
                                        "Name", 
@@ -85,7 +90,7 @@ namespace Che.Areas.Admin.Controllers
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Home", new { area = "", id = "" });
+                return RedirectToAction("Index", "Home", new { area = "", id = parentName!=""?parentName: name });
             }
         }
 
@@ -108,9 +113,10 @@ namespace Che.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 var parent = context.Content.Where(c => c.Id == id).First();
-                var content = new Content { Parent = parent, Name = "", ContentLevel = 3 };
+                string parentName = parent.Name;
+                var content = new Content {Parent = parent, Name = "", ContentLevel = 3};
 
-                TryUpdateModel(content, new[] { "Description", "SortOrder" });
+                TryUpdateModel(content, new[] {"Description", "SortOrder"});
 
                 if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
                 {
@@ -122,8 +128,48 @@ namespace Che.Areas.Admin.Controllers
                 }
                 context.AddToContent(content);
                 context.SaveChanges();
+
+                return RedirectToAction("Content", "Home", new {area = "", id = parentName});
             }
-            return RedirectToAction("Index", "Home", new { area = "", id = "" });
+        }
+
+        public ActionResult EditDetailsItem(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Where(c => c.Id == id).First();
+                return View(content);
+            }
+        }
+        [HttpPost]
+        public ActionResult EditDetailsItem(int id, FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                
+                var content = context.Content.Include("Parent").Where(c => c.Id == id).First();
+                string parentName = content.Parent.Name;
+                TryUpdateModel(content, new[] { "Description", "SortOrder" });
+
+                if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
+                {
+                    if(!string.IsNullOrEmpty(content.ImageSource))
+                    {
+                        IOHelper.DeleteFile("~/Content/Photos", content.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/thumbnail1", content.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/thumbnail2", content.ImageSource);
+                    }
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Photos", Request.Files["logo"].FileName);
+                    string filePath = Server.MapPath("~/Content/Photos");
+                    filePath = Path.Combine(filePath, fileName);
+                    //Request.Files["logo"].SaveAs(filePath);
+                    content.ImageSource = fileName;
+                }
+                //context.SaveChanges();
+
+                return RedirectToAction("Content", "Home", new { area = "", id = parentName });
+            }
         }
 
         public ActionResult Delete(int id)

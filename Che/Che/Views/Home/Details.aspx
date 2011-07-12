@@ -25,6 +25,8 @@
 {
     %>
     <br/>
+    <%=Html.ActionLink("Редактировать", "EditDetailsItem", "Content", new { id = item.Id, area = "Admin" }, new { @class = "adminLink"})%>
+    <br/>
     <%=Html.ActionLink("Удалить", "Delete", "Content", new { id = item.Id, area = "Admin" }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить запись?')" })%>
     
     <%
@@ -66,8 +68,7 @@
 <asp:Content ContentPlaceHolderID="includes" runat="server">
 <script type="text/javascript">
 $(function () {
-    $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
+    $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true,titleShow:false });
 });
-
 </script>
 </asp:Content>
