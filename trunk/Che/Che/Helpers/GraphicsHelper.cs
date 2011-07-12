@@ -24,7 +24,7 @@ namespace Dev.Mvc.Helpers
         }
 
 
-        private static Rectangle CalculateSourceRect(string name, Size sourceImage)
+        private static Rectangle CalculateDestRect(string name, Size sourceImage)
         {
             int previewHeight = LimitHeight[name];
             int previewWidth = LimitWidth[name];
@@ -32,30 +32,25 @@ namespace Dev.Mvc.Helpers
             int resultWidth;
             int resultHeight;
 
-            double wRatio = (double)sourceImage.Width / (double)previewWidth;
-            double hRatio = (double)sourceImage.Height / (double)previewHeight;
+            double coef = (double)sourceImage.Width / (double)previewWidth;
 
-            double coef = (double)previewHeight / (double)previewWidth;
+            resultHeight = (int)Math.Truncate(sourceImage.Height / coef);
 
-            if (wRatio < hRatio)
-            {
-                resultWidth = sourceImage.Width;
-                resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
-            }
-            else
-            {
-                resultHeight = sourceImage.Height;
-                resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
-            }
+            resultWidth = previewWidth;
 
             return new Rectangle(0, 0, resultWidth, resultHeight);
+        }
+
+        private static Rectangle CalculateSourceRect(string name, Size sourceImage)
+        {
+            return new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
         }
 
         public static void ScaleImage(string name, Bitmap sourceImage, int limitWidth, int limitHeight, Stream saveTo)
         {
             Rectangle sourceRect = CalculateSourceRect(name, sourceImage.Size);
 
-            Rectangle destRect = new Rectangle(0, 0, limitWidth, limitHeight);
+            Rectangle destRect = CalculateDestRect(name, sourceImage.Size);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             Graphics graphics = Graphics.FromImage(thumbnailImage);

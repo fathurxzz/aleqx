@@ -234,6 +234,7 @@ body
 #contentList td {
     
     /*border: 1px solid #000;*/
+    vertical-align: top;
     
 }
 
@@ -282,6 +283,7 @@ img{border: none}
 #contentItemDetails td
 {
     padding-bottom: 20px;
+    vertical-align: top;
 }
 
 #contentItemDetails td.description
