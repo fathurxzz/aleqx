@@ -47,7 +47,7 @@
       
         } %>
         <div id="backLink">
-        << <a href="javascript:history.back();">В каталог</a>
+        &laquo; <a href="javascript:history.back();">В каталог</a>
         </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PageTitle" runat="server">
