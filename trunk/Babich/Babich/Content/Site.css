@@ -190,6 +190,7 @@ body
 	margin-top:-430px;
 	position:absolute;
 	z-index:-1;
+    display: block;
 }
 
 .skatch1{background:url('img/skatch/s1.gif');}
