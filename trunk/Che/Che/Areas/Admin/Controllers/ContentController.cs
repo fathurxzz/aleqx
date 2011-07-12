@@ -116,7 +116,8 @@ namespace Che.Areas.Admin.Controllers
                 string parentName = parent.Name;
                 var content = new Content {Parent = parent, Name = "", ContentLevel = 3};
 
-                TryUpdateModel(content, new[] {"Description", "SortOrder"});
+                TryUpdateModel(content, new[] { "SortOrder"});
+                content.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                 if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
                 {
