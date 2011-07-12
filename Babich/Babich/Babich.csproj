@@ -156,6 +156,13 @@
     <Content Include="Content\img\remove.gif" />
     <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\skatch.gif" />
+    <Content Include="Content\img\skatch\s1.gif" />
+    <Content Include="Content\img\skatch\s2.gif" />
+    <Content Include="Content\img\skatch\s3.gif" />
+    <Content Include="Content\img\skatch\s4.gif" />
+    <Content Include="Content\img\skatch\s5.gif" />
+    <Content Include="Content\img\skatch\s6.gif" />
+    <Content Include="Content\img\skatch\s7.gif" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\Projects.css" />
@@ -230,7 +237,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Content\img\skatch\" />
     <Folder Include="Content\Photos\" />
     <Folder Include="ImageCache\galleryThumbnail\" />
     <Folder Include="ImageCache\mainView\" />
@@ -272,7 +278,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>7230</DevelopmentServerPort>
+          <DevelopmentServerPort>3901</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
