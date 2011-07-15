@@ -2,37 +2,43 @@
 {
 	position: absolute;
 	margin-left: 215px;
-	margin-top: 195px;
+	/*margin-top: 195px;*/
+	margin-top: 205px;
 }
 
 
-#sites, #firmStyle, #advDesign
+.sites, .firmStyle, .advDesign
 {
 	height: 24px;
 	display: inline-block;
 	margin: 0 36px;
 }
 
-#sites
+.sites
 {
 	width: 63px;
 	background: url('img/site.png');
 }
 
-#firmStyle
+.firmStyle
 {
 	width: 187px;
 	background: url('img/style.png');
 }
 
-#advDesign 
+.advDesign 
 {
 	width: 198px;
 	background: url('img/design.png');
 }
 
 
-#sites:hover, #firmStyle:hover, #advDesign:hover
+a.sites:hover, a.firmStyle:hover, a.advDesign:hover
+{
+	background-position: 0px -24px;
+}
+
+div.sites, div.firmStyle, div.advDesign
 {
 	background-position: 0px -24px;
 }

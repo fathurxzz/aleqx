@@ -15,6 +15,7 @@ namespace Che.Controllers
             using (var context = new ContentStorage())
             {
                 var content = context.Content.Where(c => string.IsNullOrEmpty(id) ? c.ContentType == 0 && c.ContentLevel == 0 : c.Name == id).First();
+                ViewData["contentType"] = content.ContentType;
                 return View(content);
             }
         }
@@ -26,10 +27,12 @@ namespace Che.Controllers
                 if (!string.IsNullOrEmpty(id))
                 {
                     var content = context.Content.Include("Parent").Include("Children").Where(c => c.Name == id).First();
+                    ViewData["contentType"] = content.ContentType;
                     return View("Details", content);
                 }
 
                 var mainContent = context.Content.Include("Children").Where(c => c.ContentType == contentType && c.ContentLevel == 0).First();
+                ViewData["contentType"] = mainContent.ContentType;
                 return View("Index", mainContent);
             }
         }

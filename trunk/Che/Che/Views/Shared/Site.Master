@@ -40,7 +40,15 @@
                 431-24-24
             </div>
             <div id="reasons">
+                <%if (ViewData["contentType"] != null && (int)ViewData["contentType"] == 4)
+                  { %>
+                  <div id="reasonsSelected">Причины</div>,
+  <% }
+
+                  else
+                  {%>
                 <a href="/reasons">Причины</a>,
+                <% } %>
                 
                 <div>по которым с нами<br />
                     приятно работать</div>
@@ -64,11 +72,27 @@
         <div id="footer">
             <div id="critic">
                 <div>Нас критикуют<br/>другие дизайнеры.</div>
+                <%if (ViewData["contentType"] != null && (int)ViewData["contentType"] == 5)
+                  { %>
+                  <span id="criticSelected">Спасибо</span>.
+  <% }
+
+                  else
+                  {%>
                 <a href="/thnx-asshls">Спасибо</a>.
+                <% } %>
             </div>
             <div id="euro">
                 <div>Чернигову &mdash;</div>
+                <%if (ViewData["contentType"] != null && (int)ViewData["contentType"] == 6)
+                  { %>
+                  <span id="euroSelected">евро-качество</span>!
+  <% }
+
+                  else
+                  {%>
                 <a href="/che-euro">евро-качество</a>!
+                <% } %>
             </div>
             <div id="sign">
                 <%=DateTime.Now.Year%>
