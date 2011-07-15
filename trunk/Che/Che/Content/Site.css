@@ -83,7 +83,7 @@ body
 	line-height: 8px;
 }
 
-#reasons a, #critic a, #criticSelected
+#reasons a, #critic a, #criticSelected, #reasonsSelected
 {
 	color: #cc0033;
 	font-style: italic;
@@ -96,16 +96,8 @@ body
 	 margin-left: 115px;
 }
 
-#reasonsSelected
-{
-	color: #cc0033 !important;
-	font-style: italic !important;
-	font-family: Georgia !important;
-	font-size: 25px !important;
-	display: inline-block;
-	/*line-height: 0px !important;*/
-	margin-top: 0  !important;
-}
+
+
 
 #reasons div, #critic div
 {

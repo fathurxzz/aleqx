@@ -42,7 +42,7 @@
             <div id="reasons">
                 <%if (ViewData["contentType"] != null && (int)ViewData["contentType"] == 4)
                   { %>
-                  <div id="reasonsSelected">Причины</div>,
+                  <span id="reasonsSelected">Причины</span>,
   <% }
 
                   else
