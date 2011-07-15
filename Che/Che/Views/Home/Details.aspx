@@ -69,7 +69,7 @@
 <asp:Content ContentPlaceHolderID="includes" runat="server">
 <script type="text/javascript">
 $(function () {
-    $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true,titleShow:false });
+    $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: false,titleShow:false, autoScale:false });
 });
 </script>
 </asp:Content>
