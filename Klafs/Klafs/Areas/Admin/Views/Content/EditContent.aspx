@@ -57,16 +57,9 @@
                     <%= Html.ValidationMessageFor(model => model.Name) %>
                 </td>
             </tr>
-            <tr class="sign">
-                <td>
-                    <%= Html.LabelFor(model => model.MenuTitle) %><br />
-                    <span style="font-size: 11px;">(Заголовок Главной превью товарной категории)</span>
-                </td>
-                <td>
-                    <%= Html.TextBoxFor(model => model.MenuTitle, new { style = "width:600px;" })%>
-                    <%= Html.ValidationMessageFor(model => model.MenuTitle)%>
-                </td>
-            </tr>
+
+            
+
             <tr class="sign editSubitem editHeaderMunuItem">
                 <td>
                     <%= Html.LabelFor(model => model.Description)%><br />

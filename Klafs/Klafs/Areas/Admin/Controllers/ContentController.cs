@@ -34,7 +34,7 @@ namespace Klafs.Areas.Admin.Controllers
 
                 content.Parent = parentContent;
 
-                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "MenuTitle", "SortOrder" });
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "SortOrder" });
                 content.ContentType = 4;
 
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
@@ -93,7 +93,7 @@ namespace Klafs.Areas.Admin.Controllers
             {
                 Content content = context.Content.Where(c => c.Id == id).FirstOrDefault();
 
-                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "MenuTitle", "SortOrder" });
+                TryUpdateModel(content, new string[] { "Name", "PageTitle", "Title", "SeoKeywords", "SeoDescription", "Description", "Sign", "SortOrder" });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.SaveChanges();
