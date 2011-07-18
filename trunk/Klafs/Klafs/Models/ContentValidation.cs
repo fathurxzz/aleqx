@@ -20,11 +20,11 @@ namespace Klafs.Models
         [Required(ErrorMessage = "* Введите веб-имя страницы")]
         [DisplayName("Веб-имя страницы")]
         public string Name { get; set; }
-
+        /*
         [Required(ErrorMessage = "* Введите название товарного раздела")]
         [DisplayName("Название товарного раздела")]
         public string MenuTitle { get; set; }
-
+        */
         [DisplayName("Заголовок в шапке обозревателя")]
         public string PageTitle { get; set; }
 

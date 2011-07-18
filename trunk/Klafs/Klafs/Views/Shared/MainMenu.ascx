@@ -55,7 +55,7 @@
 
  <%if ((string)ViewData["contentName"] != item.Name)
    { %>
-        <a href="/<%=item.Name%>" >
+        <a href="/<%=item.Name%>#titleContainer" >
         <%} %>
             <%if (Request.IsAuthenticated)
           { %> <span style="float:left" class="sortOrder">
@@ -69,14 +69,14 @@
                 {
                   %>
                   <span class="mainMenuItemSelectedTitle">
-            <%=item.MenuTitle%>
+            <%=item.Title%>
             </span>
                   <img class="mainMenuItemSelected" border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
                   <%}
                 else
                 { %>
                 <span>
-            <%=item.MenuTitle%>
+            <%=item.Title%>
             </span>
             <img class="" border="0" src="../../Content/img/<%=item.Id %>.gif" alt="<%=item.Title %>" />
             <%} %>

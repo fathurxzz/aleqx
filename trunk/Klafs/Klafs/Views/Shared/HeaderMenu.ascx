@@ -17,14 +17,14 @@
         <%if ((string)ViewData["contentName"] == item.Name || (string)ViewData["parentContentName"] == item.Name)
           {%>
         <span>
-            <%=item.MenuTitle%>
+            <%=item.Title%>
         </span>
         <%
             }
           else
           {%>
         <a href="/<%=item.Name%>">
-            <%=item.MenuTitle%></a>
+            <%=item.Title%></a>
         <%
             }%>
 
@@ -46,14 +46,14 @@
         <%if ((string)ViewData["contentName"] == item.Name/* || (string)ViewData["parentContentName"] == item.Name*/)
           {%>
         <span class="hobbyLink">
-            <%=item.MenuTitle%>
+            <%=item.Title%>
         </span>
         <%
             }
           else
           {%>
         <a class="hobbyLink" href="/<%=item.Name%>">
-            <%=item.MenuTitle%>
+            <%=item.Title%>
         </a>
         <%
             }%>

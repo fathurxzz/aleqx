@@ -35,7 +35,7 @@
            <%
             if ((string)ViewData["contentName"] != subMenuItem.Name)
             {%>
-    <a href="/<%=subMenuItem.Name%>"><%=subMenuItem.MenuTitle%></a>
+    <a href="/<%=subMenuItem.Name%>"><%=subMenuItem.Title%></a>
 
     
 
@@ -44,7 +44,7 @@
             else
             {%>
    
-        <%=subMenuItem.MenuTitle%>
+        <%=subMenuItem.Title%>
         
     
     <%}
