@@ -3,35 +3,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder runat="server" ID="Includes"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder runat="server" ID="Includes">
+    </asp:ContentPlaceHolder>
 </head>
-
 <body>
     <div class="page">
-    
-    <div class="header">
-        <div class="header-left"></div>
-        <div class="header-right"></div>
-    </div>
-    <div class="main-content-outer-container">
-    <div class="main-content-inner-container">
-    <div class="line line-top"></div>
-    <asp:ContentPlaceHolder runat="server" ID="MainContent"></asp:ContentPlaceHolder>
-
-
-    </div>
-
-    </div>
-
-
-    
-
-    <div class="footer">
-        <div class="footer-left"></div>
-        <div class="footer-right"></div>
-    </div>
+        <div class="header">
+            <div class="header-left">
+            </div>
+            <div class="header-right">
+            </div>
+        </div>
+        <div class="main-content-outer-container">
+            <div class="main-content-inner-container">
+                <div class="line line-top">
+                </div>
+                <div class="logo">
+                </div>
+                <div class="main-menu">
+                </div>
+                <div class="main-content">
+                    <div class="main-content-top">
+                    </div>
+                    <div class="main-content-middle">
+                        <asp:ContentPlaceHolder runat="server" ID="MainContent">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div class="main-content-bottom">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-center">
+                <div class="footer-inner">
+                    <div class="sign">сайт создан...</div>
+                </div>
+                <div class="line line-bottom">
+                </div>
+            </div>
+            <div class="footer-left">
+            </div>
+            <div class="footer-right">
+            </div>
+            
+        </div>
     </div>
 </body>
 </html>

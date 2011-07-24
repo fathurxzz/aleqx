@@ -4,6 +4,11 @@
 	padding: 0;
 }
 
+.clear
+{
+	clear: both;
+}
+
 body
 {
 	background-color: #000;
@@ -48,10 +53,24 @@ body
 .header-center
 {
 	position: absolute;
-	margin-left: 400px;
+	margin-left: 480px;
 	background-color: yellow;
 	width: 800px;	
 }
+
+.logo
+{
+	width: 355px;
+	height: 100px;
+	background: url('img/logo.gif');
+	margin: 0 auto;
+	margin-top: 32px;
+	position: relative;
+}
+
+
+.main-menu
+{}
 
 .main-content-outer-container
 {
@@ -63,21 +82,45 @@ body
 
 .main-content-inner-container
 {
-	background-color: #ff0000;
-	height: 500px;
 	width: 696px;
 	position: relative;
 	margin-left:  auto;
 	margin-right: auto;
 	margin-top: -270px;
-	margin-bottom: -100px;
+	margin-bottom: -200px;
+}
+
+.main-content
+{
 	
+}
+
+.main-content-top
+{
+	width: 696px;
+	height: 103px;
+	background: url('img/main-content-top-bg.gif');
+}
+
+.main-content-middle
+{
+	border-left: 1px solid #d00000;
+	border-right: 1px solid #d00000;
+	min-height: 300px;
+	background-color: #f1f1f1;
+}
+
+.main-content-bottom
+{
+	width: 696px;
+	height: 103px;
+	background: url('img/main-content-bottom-bg.gif');
 }
 
 .line
 {
 	width: 525px;
-	height: 11px;
+	height: 10px;
 	background: url('img/line.gif');
 }
 
@@ -88,19 +131,26 @@ body
 	
 }
 
+.line-bottom
+{
+	position: relative;
+	margin: 0 auto;
+	margin-top: 11px;
+}
+
 
 .footer
 {
 	width: 1755px;
 	height: 362px;
-	background-color: green;
+	background-color: #f1f1f1;
 }
 .footer-left
 {
 	width: 465px;
 	height: 362px;
 	background: url('img/footer-left-bg.gif');
-	background-color: #000;
+	background-color:  #f1f1f1;
 	margin-left: 0px;
 	margin-right: auto;
 	float: left;
@@ -111,8 +161,35 @@ body
 	width: 465px;
 	height: 362px;
 	background: url('img/footer-right-bg.gif');
-	background-color: #000;
+	background-color:  #f1f1f1;
 	margin-left: auto;
 	margin-right: 0px;
+	
+}
+
+.footer-center
+{
+	margin-top: 216px;
+	position: absolute;
+	margin-left: 480px;
+	background-color: #f1f1f1;
+	width: 800px;
+	height: 146px;
+	
+}
+
+.footer-inner
+{
+	height: 125px;
+	width: 800px;
+	position: relative;
+	margin: 0 auto;
+	background-image: url('img/phones.gif');
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+.sign
+{
 	
 }
