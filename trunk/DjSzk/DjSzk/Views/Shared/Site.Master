@@ -25,6 +25,7 @@
                 <div class="logo">
                 </div>
                 <div class="main-menu">
+                    <% Html.RenderPartial("MainMenu"); %>
                 </div>
                 <div class="main-content">
                     <div class="main-content-top">
@@ -39,14 +40,17 @@
             </div>
         </div>
         <div class="footer">
-            <div class="footer-center">
+           
+            <div class="footer-left">
+            </div>
+             <div class="footer-center">
                 <div class="footer-inner">
-                    <div class="sign">сайт создан...</div>
+                    <div class="sign">Cайт создан в 
+                    <a href="http://m-brand.com.ua">Студии Евгения Миллера</a>
+                    </div>
                 </div>
                 <div class="line line-bottom">
                 </div>
-            </div>
-            <div class="footer-left">
             </div>
             <div class="footer-right">
             </div>

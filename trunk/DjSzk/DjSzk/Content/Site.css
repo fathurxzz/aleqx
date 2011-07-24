@@ -12,6 +12,7 @@
 body
 {
 	background-color: #000;
+	font-family: Lucida Sans Unicode, Arial;
 }
 
 .page
@@ -70,7 +71,46 @@ body
 
 
 .main-menu
-{}
+{
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 11px;
+	text-transform: uppercase;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+.main-menu a 
+{
+	color: #000000;
+}
+
+
+
+.main-menu div
+{
+	display: inline-block;
+	padding-left: 20px;
+	margin-left: 10px;
+	height: 20px;
+}
+
+.main-menu div.read
+{
+	background: url('img/menu-read.gif') no-repeat;
+}
+.main-menu div.hear
+{
+	background: url('img/menu-hear.gif') no-repeat;
+	
+}
+.main-menu div.connect
+{
+	background: url('img/menu-connect.gif') no-repeat;
+	
+}
+
 
 .main-content-outer-container
 {
@@ -108,6 +148,7 @@ body
 	border-right: 1px solid #d00000;
 	min-height: 300px;
 	background-color: #f1f1f1;
+	padding: 10px 70px;
 }
 
 .main-content-bottom
@@ -170,8 +211,11 @@ body
 .footer-center
 {
 	margin-top: 216px;
-	position: absolute;
-	margin-left: 480px;
+	/*position: absolute;*/
+	/*margin-left: 480px;*/
+	position: relative;
+	float: left;
+	
 	background-color: #f1f1f1;
 	width: 800px;
 	height: 146px;
@@ -191,5 +235,19 @@ body
 
 .sign
 {
+	height: 25px;
+	background: url('img/star.gif') no-repeat;
 	
+	padding-left: 30px;
+	font-size: 12px;
+	line-height: 14px;
+	margin-top: 50px;
+	margin-left: 47px;
+	position: absolute;
+}
+
+.sign a
+{
+	display: block;
+	color: #ff0000;
 }
