@@ -14,12 +14,14 @@
     <div class="header">
         <div class="header-left"></div>
         <div class="header-right"></div>
-        
     </div>
     <div class="main-content-outer-container">
-    
+    <div class="main-content-inner-container">
+    <div class="line line-top"></div>
     <asp:ContentPlaceHolder runat="server" ID="MainContent"></asp:ContentPlaceHolder>
 
+
+    </div>
 
     </div>
 

@@ -71,8 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\header-left-bg.gif" />
-    <Content Include="Content\img\header-right-bg.gif" />
+    <Content Include="Content\img\line.gif" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
