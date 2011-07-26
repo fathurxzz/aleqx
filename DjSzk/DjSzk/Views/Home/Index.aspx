@@ -30,28 +30,41 @@
 
             $("#jpId").jPlayer({
                 swfPath: "Content",
-                backgroundColor:"#f1f1f1",
+                backgroundColor: "#f1f1f1",
                 ready: function () {
-                    /*$(this).jPlayer("setMedia", {
+
+
+                    $(this).jPlayer("setMedia", {
                         mp3: "../Content/Files/01.mp3" // Defines the mp3 url
 
-                    }
-                    );*/
+                    });
+
+
                 }
             });
 
-            //$("#jpId").css("display", "none");
-
-            $("#playPauseButton").click(function () {
-                
+            $(".play").click(function () {
+                var filename = $(this).parent().attr("filename");
+                $("#jpId").jPlayer("setMedia", {
+                    mp3: "../Content/Files/" + filename // Defines the mp3 url
+                });
                 $("#jpId").jPlayer("play", 0);
+                $('.pause').each(function (index) {
+                    $(this).removeClass("pause");
+                    $(this).addClass("play");
+                });
+                $(this).removeClass("play");
+                $(this).addClass("pause");
             });
 
-            
-            $("#stopButton").click(function () {
+
+            $(".stop").click(function () {
                 $("#jpId").jPlayer("stop");
+                $('.pause').each(function (index) {
+                    $(this).removeClass("pause");
+                    $(this).addClass("play");
+                });
             });
-            
 
         });
 
