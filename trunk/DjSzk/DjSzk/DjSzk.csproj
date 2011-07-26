@@ -87,6 +87,7 @@
     <Content Include="Content\img\star.gif" />
     <Content Include="Content\Player.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.jplayer.min.js" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\Player.ascx" />
     <Content Include="Web.config" />

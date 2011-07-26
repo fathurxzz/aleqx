@@ -9,27 +9,11 @@
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Player.css" rel="stylesheet" type="text/css" />
     <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.jplayer.min.js" type="text/javascript"></script>
+
     <asp:ContentPlaceHolder runat="server" ID="Includes">
     </asp:ContentPlaceHolder>
-    <script type="text/javascript">
-        /*
-        $(function () {
-
-
-        $("#playPause").click(function () {
-        $("#mPlayer").attr("src", "");
-        alert("playPause");
-        });
-
-        $("#stop").click(function () {
-        $("#mPlayer").attr("src", "");
-        alert("stop");
-        $("#mPlayer").removeAttr("src");
-        });
-
-        });
-        */
-    </script>
+   
 </head>
 <body>
     <div class="header">

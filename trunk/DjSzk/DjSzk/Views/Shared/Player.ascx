@@ -1,13 +1,15 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 
-<!--
-<embed id="mPlayer" src="Content/Files/01 the mirror's truth.mp3" hidden="true" autostart="true" loop="true" volume="10" />
--->
+
+
+<div id="jpId"></div>
+
+
 <div class="playerContainer">
 <table class="player">
     <tr>
         <td>
-            <a class="play button" id="playPause" >
+            <a href="#" class="play button" id="playPauseButton" >
             </a>
         </td>
         <td>
@@ -16,7 +18,7 @@
             </div>
         </td>
         <td>
-            <a class="stop button" id="stop">
+            <a href="#" class="stop button" id="stopButton">
             </a>
         </td>
     </tr>
