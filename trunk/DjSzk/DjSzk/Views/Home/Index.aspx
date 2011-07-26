@@ -7,4 +7,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
     dfg df gdfg df g
+
+
+
+
+    <%Html.RenderPartial("Player");%>
+
+
 </asp:Content>

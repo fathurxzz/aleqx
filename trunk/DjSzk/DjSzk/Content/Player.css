@@ -1,0 +1,50 @@
+﻿.playerContainer
+{
+    width: 640px;
+    margin: 0 auto;
+    position: relative;
+    background-image: url('img/player/bg-line.gif');
+    background-repeat: no-repeat;
+    background-position: 0px 18px;
+}
+table.player
+{
+    border-collapse: collapse;
+    margin: 0 auto;
+    position: relative;
+}
+
+table.player .button
+{
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+table.player .play
+{
+    background: url('img/player/play.gif') no-repeat;
+}
+
+table.player .pause
+{
+    background: url('img/player/pause.gif') no-repeat;
+}
+
+table.player .stop
+{
+    background: url('img/player/stop.gif') no-repeat;
+}
+
+table.player .bg
+{
+    height: 28px;
+    background: url('img/player/bg.gif') repeat-x;
+    min-width: 118px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-top: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
