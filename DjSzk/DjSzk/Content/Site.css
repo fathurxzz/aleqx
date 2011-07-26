@@ -19,26 +19,31 @@ body
 {
 	position: relative;
 	margin: 0 auto;
-	width: 1755px;
+	/*width: 1755px;*/
+    width: 1155px;
 }
 
 .header
 {
-	position: relative;
-	margin: 0 auto;
 	width: 1755px;
+    margin-left: -300px;
+    margin-right: -300px;
 	background-color: #f1f1f1;
+    border-collapse: collapse;
+    position: relative;
+    
 }
 
 .header-left
 {
 	width: 465px;
 	height: 270px;
+    /*margin-left: -300px;*/
 	background: url('img/header-left-bg.gif');
 	background-color: #000;
-	margin-left: 0px;
-	margin-right: auto;
-	float: left;
+	/*margin-left: 0px;*/
+	/*margin-right: auto;*/
+	/*float: left;*/
 }
 
 .header-right
@@ -47,16 +52,17 @@ body
 	height: 270px;
 	background: url('img/header-right-bg.gif');
 	background-color: #000;
-	margin-left: auto;
-	margin-right: 0px;
-	
+	/*margin-left: auto;
+	margin-right: -300px;
+    position: relative;*/
 }
 .header-center
 {
-	position: absolute;
+	/*position: absolute;
 	margin-left: 480px;
 	background-color: yellow;
-	width: 800px;	
+	width: 800px;	*/
+    
 }
 
 .logo
@@ -148,7 +154,7 @@ body
 	border-right: 1px solid #d00000;
 	min-height: 300px;
 	background-color: #f1f1f1;
-	padding: 10px 70px;
+	/*padding: 10px 70px;*/
 }
 
 .main-content-bottom
