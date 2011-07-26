@@ -33,18 +33,19 @@
                 backgroundColor: "#f1f1f1",
                 ready: function () {
 
-
+                    /*
                     $(this).jPlayer("setMedia", {
-                        mp3: "../Content/Files/01.mp3" // Defines the mp3 url
+                    mp3: "../Content/Files/01.mp3" // Defines the mp3 url
 
                     });
-
+                    */
 
                 }
             });
 
             $(".play").click(function () {
                 var filename = $(this).parent().attr("filename");
+                //alert(filename);
                 $("#jpId").jPlayer("setMedia", {
                     mp3: "../Content/Files/" + filename // Defines the mp3 url
                 });
@@ -55,6 +56,14 @@
                 });
                 $(this).removeClass("play");
                 $(this).addClass("pause");
+            });
+
+
+            $(".pause").click(function () {
+                alert("pause");
+                $("#jpId").jPlayer("pause", 0);
+                $(this).removeClass("pause");
+                $(this).addClass("play");
             });
 
 
