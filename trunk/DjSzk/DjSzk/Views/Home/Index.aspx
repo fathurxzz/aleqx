@@ -1,10 +1,24 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DjSzk.Models.Content>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Home Page
+    <%=Model.PageTitle%>
 </asp:Content>
+
+<asp:Content runat="server" ContentPlaceHolderID="ContentTitle">
+<%=Model.Title%>
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-        <%Html.RenderPartial("Player");%>
+<div id="jpId"></div>
+    
+        <div class="descriptionContainer">
+        <%=Model.Text%>
+        </div>
+
+        <% foreach (var mc in Model.MusicContent)
+           {
+               Html.RenderPartial("MusicItem",mc);
+           } %>
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="Includes">
     <script type="text/javascript">
@@ -30,47 +44,54 @@
 
             $("#jpId").jPlayer({
                 swfPath: "Content",
-                backgroundColor: "#f1f1f1",
+                backgroundColor: "#f1f1f1"/*,
                 ready: function () {
 
-                    /*
+                    
                     $(this).jPlayer("setMedia", {
                     mp3: "../Content/Files/01.mp3" // Defines the mp3 url
 
                     });
-                    */
+                    
 
-                }
+                }*/
             });
 
             $(".play").click(function () {
                 var filename = $(this).parent().attr("filename");
-                //alert(filename);
-                $("#jpId").jPlayer("setMedia", {
-                    mp3: "../Content/Files/" + filename // Defines the mp3 url
-                });
-                $("#jpId").jPlayer("play", 0);
-                $('.pause').each(function (index) {
+
+                if ($(this).hasClass("play")) {
+
+                    if (!$(this).hasClass("paused")) {
+                        $("#jpId").jPlayer("setMedia", {
+                            mp3: "../Content/Files/" + filename // Defines the mp3 url
+                        });
+                    }
+                    
+                    $("#jpId").jPlayer("play");
+                    $('.pause').each(function (index) {
+                        $(this).removeClass("pause");
+                        $(this).removeClass("paused");
+                        $(this).addClass("play");
+                    });
+                    $(this).removeClass("play");
+                    $(this).addClass("pause");
+                }
+                else if ($(this).hasClass("pause")) {
+                    $("#jpId").jPlayer("pause");
                     $(this).removeClass("pause");
                     $(this).addClass("play");
-                });
-                $(this).removeClass("play");
-                $(this).addClass("pause");
+                    $(this).addClass("paused");
+                }
             });
 
-
-            $(".pause").click(function () {
-                alert("pause");
-                $("#jpId").jPlayer("pause", 0);
-                $(this).removeClass("pause");
-                $(this).addClass("play");
-            });
 
 
             $(".stop").click(function () {
                 $("#jpId").jPlayer("stop");
                 $('.pause').each(function (index) {
                     $(this).removeClass("pause");
+                    $(this).removeClass("paused");
                     $(this).addClass("play");
                 });
             });

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="djModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="djModelStoreContainer">
+          <EntitySet Name="content" EntityType="djModel.Store.content" store:Type="Tables" Schema="dj" />
+          <EntitySet Name="musiccontent" EntityType="djModel.Store.musiccontent" store:Type="Tables" Schema="dj" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuTitle" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" />
+        </EntityType>
+        <EntityType Name="musiccontent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="FileSource" Type="varchar" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="djModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="ContentStorage">
+          <EntitySet Name="Content" EntityType="djModel.Content" />
+          <EntitySet Name="MusicContent" EntityType="djModel.MusicContent" />
+          <AssociationSet Name="ContentMusicContent" Association="djModel.ContentMusicContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="MusicContent" EntitySet="MusicContent" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="MusicContent" Relationship="djModel.ContentMusicContent" FromRole="Content" ToRole="MusicContent" />
+          <Property Type="String" Name="MenuTitle" />
+        </EntityType>
+        <EntityType Name="MusicContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Description" Type="String" />
+          <Property Name="FileSource" Type="String" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Content" Relationship="djModel.ContentMusicContent" FromRole="MusicContent" ToRole="Content" />
+          <Property Type="String" Name="Title" />
+        </EntityType>
+        <Association Name="ContentMusicContent">
+          <End Type="djModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="djModel.MusicContent" Role="MusicContent" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="djModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="djModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MusicContent"><EntityTypeMapping TypeName="djModel.MusicContent"><MappingFragment StoreEntitySet="musiccontent">
+            <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="FileSource" ColumnName="FileSource" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentMusicContent" TypeName="djModel.ContentMusicContent" StoreEntitySet="musiccontent">
+            <EndProperty Name="MusicContent">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="djModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" />
+        <EntityTypeShape EntityType="djModel.MusicContent" Width="1.5" PointX="2.75" PointY="0.75" Height="1.592306315104167" IsExpanded="true" />
+        <AssociationConnector Association="djModel.ContentMusicContent">
+          <ConnectorPoint PointX="2.25" PointY="1.5461531575520835" />
+          <ConnectorPoint PointX="2.75" PointY="1.5461531575520835" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
