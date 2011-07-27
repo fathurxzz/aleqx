@@ -29,7 +29,8 @@
         </div>
 
         <div class="main-menu">
-            <% Html.RenderPartial("MainMenu"); %>
+            <asp:ContentPlaceHolder runat="server" ID="MainMenu">
+            </asp:ContentPlaceHolder>
         </div>
 
     </div>

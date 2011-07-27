@@ -8,9 +8,16 @@
 <%=Model.Title%>
 </asp:Content>
 
+<asp:Content ContentPlaceHolderID="MainMenu" runat="server">
+<% Html.RenderPartial("MainMenu"); %>
+</asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div id="jpId"></div>
-    
+        <%if (Request.IsAuthenticated)
+          { %>
+          <%=Html.ActionLink("редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })%>
+        <% } %>
         <div class="descriptionContainer">
         <%=Model.Text%>
         </div>
@@ -19,6 +26,9 @@
            {
                Html.RenderPartial("MusicItem",mc);
            } %>
+
+           <%=Html.ActionLink("добавить музыкальный контент", "AddMusicContent","Content",new{area="Admin",id=Model.Id},new{@class="adminLink"})%>
+
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="Includes">
     <script type="text/javascript">
