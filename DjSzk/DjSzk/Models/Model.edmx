@@ -13,6 +13,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="ClassName" Type="varchar" MaxLength="50" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MenuTitle" Type="varchar" MaxLength="500" />
           <Property Name="Name" Type="varchar" Nullable="false" />
@@ -59,6 +60,7 @@
           <Property Name="Title" Type="String" />
           <NavigationProperty Name="MusicContent" Relationship="djModel.ContentMusicContent" FromRole="Content" ToRole="MusicContent" />
           <Property Type="String" Name="MenuTitle" />
+          <Property Type="String" Name="ClassName" />
         </EntityType>
         <EntityType Name="MusicContent">
           <Key>
@@ -81,7 +83,8 @@
       <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="djModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="djModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+            <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />

@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("djModel", "ContentMusicContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DjSzk.Models.Content), "MusicContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DjSzk.Models.MusicContent))]
 
 // Original file name:
-// Generation date: 27.07.2011 14:51:13
+// Generation date: 27.07.2011 15:03:32
 namespace DjSzk.Models
 {
     
@@ -366,6 +366,33 @@ namespace DjSzk.Models
         partial void OnMenuTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnMenuTitleChanged();
+        /// <summary>
+        /// There are no comments for property ClassName in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string ClassName
+        {
+            get
+            {
+                return this._ClassName;
+            }
+            set
+            {
+                this.OnClassNameChanging(value);
+                this.ReportPropertyChanging("ClassName");
+                this._ClassName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("ClassName");
+                this.OnClassNameChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _ClassName;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnClassNameChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnClassNameChanged();
         /// <summary>
         /// There are no comments for MusicContent in the schema.
         /// </summary>

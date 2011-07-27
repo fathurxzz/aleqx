@@ -83,7 +83,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +94,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Content\AddMusicContent.aspx" />
+    <Content Include="Areas\Admin\Views\Content\Edit.aspx" />
     <Content Include="Content\Admin.css" />
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\header-bg.gif" />

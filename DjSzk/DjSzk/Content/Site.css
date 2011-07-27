@@ -112,7 +112,10 @@ body
     padding-right: 70px;
 }
 
-
+.separator
+{
+    margin-bottom: 30px;
+}
 
 
 .title

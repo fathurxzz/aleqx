@@ -22,3 +22,6 @@
 </table>
 
 </div>
+<div class="descriptionContainer separator">
+<%=Model.Description %>
+</div>
