@@ -53,7 +53,7 @@ body
 
 
     /*margin-top: 32px;*/
-    top: 32px;
+    top: 45px;
     /*padding-top: 32px;*/
     
 	width: 355px;
@@ -68,9 +68,9 @@ body
 	position: relative;
 	margin: 0 auto;
 	text-align: center;
-	font-size: 11px;
+	font-size: 10px;
 	text-transform: uppercase;
-	top: 65px;
+	top: 70px;
 	margin-bottom: 10px;
 }
 
@@ -85,7 +85,8 @@ body
 {
 	display: inline-block;
 	padding-left: 20px;
-	margin-left: 10px;
+	margin-left: 11px;
+    margin-right: 11px;
 	height: 20px;
 }
 
@@ -104,6 +105,25 @@ body
 	
 }
 
+
+.descriptionContainer
+{
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+
+
+
+.title
+{
+    font-style: italic;
+    color: #cc0000;
+    font-family: Times New Roman;
+    text-align: left;
+    padding-left: 70px;
+    font-size: 21px;
+}
 
 .main-content-container
 {

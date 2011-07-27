@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DjSzk.Models;
 
 namespace DjSzk.Controllers
 {
     [HandleError]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            return View();
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Include("MusicContent").Where(c => string.IsNullOrEmpty(id) ? c.Id == 1 : c.Name == id).First();
+                return View(content);
+            }
         }
     }
 }

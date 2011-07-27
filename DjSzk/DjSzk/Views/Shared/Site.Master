@@ -8,6 +8,7 @@
     </title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Player.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
     <script src="../../Scripts/jquery-1.4.1.js" type="text/javascript"></script>
     <script src="../../Scripts/jquery.jplayer.min.js" type="text/javascript"></script>
 
@@ -17,7 +18,13 @@
 </head>
 <body>
     <div class="header">
-        
+        <%if(Request.IsAuthenticated)
+              {%>
+              <div id="logOffLinkContainer">
+              <%=Html.ActionLink("Выйти из системы администрирования","LogOff","Account",null,new{@class="adminLink"})%>
+              </div>
+              <%
+              }%>
         <div class="logo">
         </div>
 
@@ -34,6 +41,12 @@
                     <div class="main-content-top">
                     </div>
                     <div class="main-content-middle">
+                        <div class="title">
+                        <asp:ContentPlaceHolder runat="server" ID="ContentTitle">
+
+                        </asp:ContentPlaceHolder>
+                        </div>
+
                         <asp:ContentPlaceHolder runat="server" ID="MainContent">
                         </asp:ContentPlaceHolder>
                     </div>
