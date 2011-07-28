@@ -107,6 +107,7 @@
     <Content Include="Content\img\menu-connect.gif" />
     <Content Include="Content\img\menu-hear.gif" />
     <Content Include="Content\img\menu-read.gif" />
+    <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\player\bg-line.gif" />
     <Content Include="Content\img\player\bg.gif" />
     <Content Include="Content\img\player\pause.gif" />

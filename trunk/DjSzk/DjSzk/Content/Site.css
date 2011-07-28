@@ -9,6 +9,10 @@
 	clear: both;
 }
 
+img
+{
+    border: none;
+}
 body
 {
 	background-color: #000;
@@ -60,6 +64,15 @@ body
 	height: 100px;
 	
 	background: url('img/logo.gif');
+}
+
+.rootLink
+{
+    display:block;
+	/*position:absolute;*/
+    width: 355px;
+	height: 100px;
+    
 }
 
 

@@ -116,3 +116,13 @@
 
     </script>
 </asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="RootLink" runat="server">
+ <%
+               
+                if (Model.Id!=1)
+              {%>
+            <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" alt="" /></a>
+            <%
+              }%>
+</asp:Content>
