@@ -19,6 +19,8 @@ namespace DjSzk.Controllers
                 var menuItems = context.Content.Where(c => c.Id != 1).ToList();
                 ViewData["menuItems"] = menuItems;
                 ViewData["contentName"] = content.Name;
+                ViewData["seoDescription"] = content.SeoDescription;
+                ViewData["seoKeywords"] = content.SeoKeywords;
 
                 return View(content);
             }
