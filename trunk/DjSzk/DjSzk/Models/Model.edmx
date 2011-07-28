@@ -32,6 +32,7 @@
           <Property Name="Description" Type="text" />
           <Property Name="FileSource" Type="varchar" Nullable="false" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="500" />
         </EntityType>
       </Schema></edmx:StorageModels>
@@ -71,6 +72,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Content" Relationship="djModel.ContentMusicContent" FromRole="MusicContent" ToRole="Content" />
           <Property Type="String" Name="Title" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <Association Name="ContentMusicContent">
           <End Type="djModel.Content" Role="Content" Multiplicity="1" />
@@ -95,7 +97,8 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="MusicContent"><EntityTypeMapping TypeName="djModel.MusicContent"><MappingFragment StoreEntitySet="musiccontent">
-            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="FileSource" ColumnName="FileSource" />
             <ScalarProperty Name="Id" ColumnName="Id" />

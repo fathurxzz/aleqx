@@ -4,6 +4,7 @@
     Добавить музыкальный контент
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <% Html.EnableClientValidation(); %>
     <% using (Html.BeginForm("AddMusicContent", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
        {%>
     <%= Html.ValidationSummary(true) %>
@@ -28,6 +29,17 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <%= Html.LabelFor(model => model.SortOrder) %><br />
+                    <span style="font-size: 11px;">(каким по очереди будет этот раздел, необходимо ввести
+                        только цифру)</span>
+                </td>
+                <td>
+                    <%= Html.TextBoxFor(model => model.SortOrder, new { style = "width:20px;" })%>
+                    <%= Html.ValidationMessageFor(model => model.SortOrder) %>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <%= Html.LabelFor(model => model.Description)%>
                     <br />
@@ -44,6 +56,10 @@
     <% } %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Includes" runat="server">
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainMenu" runat="server">
 </asp:Content>
