@@ -135,7 +135,8 @@ body
 {
     font-style: italic;
     color: #cc0000;
-    font-family: Times New Roman;
+	font-family: Lucida Sans Unicode;
+	/*font-family: Hobo Std;*/
     text-align: left;
     padding-left: 70px;
     font-size: 21px;
