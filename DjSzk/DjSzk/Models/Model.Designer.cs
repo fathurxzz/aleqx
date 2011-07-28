@@ -12,7 +12,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("djModel", "ContentMusicContent", "Content", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DjSzk.Models.Content), "MusicContent", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DjSzk.Models.MusicContent))]
 
 // Original file name:
-// Generation date: 27.07.2011 15:03:32
+// Generation date: 28.07.2011 11:48:21
 namespace DjSzk.Models
 {
     
@@ -432,12 +432,14 @@ namespace DjSzk.Models
         /// </summary>
         /// <param name="fileSource">Initial value of FileSource.</param>
         /// <param name="id">Initial value of Id.</param>
+        /// <param name="sortOrder">Initial value of SortOrder.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static MusicContent CreateMusicContent(string fileSource, int id)
+        public static MusicContent CreateMusicContent(string fileSource, int id, int sortOrder)
         {
             MusicContent musicContent = new MusicContent();
             musicContent.FileSource = fileSource;
             musicContent.Id = id;
+            musicContent.SortOrder = sortOrder;
             return musicContent;
         }
         /// <summary>
@@ -548,6 +550,33 @@ namespace DjSzk.Models
         partial void OnTitleChanging(string value);
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnTitleChanged();
+        /// <summary>
+        /// There are no comments for property SortOrder in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public int SortOrder
+        {
+            get
+            {
+                return this._SortOrder;
+            }
+            set
+            {
+                this.OnSortOrderChanging(value);
+                this.ReportPropertyChanging("SortOrder");
+                this._SortOrder = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("SortOrder");
+                this.OnSortOrderChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private int _SortOrder;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSortOrderChanging(int value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnSortOrderChanged();
         /// <summary>
         /// There are no comments for Content in the schema.
         /// </summary>
