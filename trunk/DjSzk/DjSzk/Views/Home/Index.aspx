@@ -57,7 +57,7 @@
         $(function () {
 
             $("#jpId").jPlayer({
-                swfPath: "Content",
+                swfPath: "../Content",
                 backgroundColor: "#f1f1f1"/*,
                 ready: function () {
 
