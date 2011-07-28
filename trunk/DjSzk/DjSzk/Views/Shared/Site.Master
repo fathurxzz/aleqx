@@ -6,6 +6,8 @@
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
+    <meta name="description" content="<%=ViewData["seoDescription"]%>"/> 
+    <meta name="keywords" content="<%=ViewData["seoKeywords"]%>"/> 
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Player.css" rel="stylesheet" type="text/css" />
     <link href="../../Content/Admin.css" rel="stylesheet" type="text/css" />
