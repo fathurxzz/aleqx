@@ -27,7 +27,11 @@
                Html.RenderPartial("MusicItem",mc);
            } %>
 
-           <%=Html.ActionLink("добавить музыкальный контент", "AddMusicContent","Content",new{area="Admin",id=Model.Id},new{@class="adminLink"})%>
+           <%if (Request.IsAuthenticated)
+             { %>
+           <%=Html.ActionLink("добавить музыкальный контент", "AddMusicContent", "Content",
+                                                   new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
+           <% } %>
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="Includes">
