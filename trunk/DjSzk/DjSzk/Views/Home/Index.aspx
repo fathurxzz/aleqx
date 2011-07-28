@@ -22,7 +22,7 @@
         <%=Model.Text%>
         </div>
 
-        <% foreach (var mc in Model.MusicContent)
+        <% foreach (var mc in Model.MusicContent.OrderBy(c=>c.SortOrder))
            {
                Html.RenderPartial("MusicItem",mc);
            } %>
