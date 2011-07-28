@@ -28,6 +28,8 @@
               <%
               }%>
         <div class="logo">
+        <asp:ContentPlaceHolder runat="server" ID="RootLink">
+    </asp:ContentPlaceHolder>
         </div>
 
         <div class="main-menu">
