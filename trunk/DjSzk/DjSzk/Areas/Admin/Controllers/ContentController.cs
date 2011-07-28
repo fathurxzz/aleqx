@@ -65,21 +65,57 @@ namespace DjSzk.Areas.Admin.Controllers
             using (var context = new ContentStorage())
             {
                 var content = context.Content.Where(c => c.Id == id).First();
+                var mc = new MusicContent();
                 if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
                 {
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Files", Request.Files["logo"].FileName);
                     string filePath = Server.MapPath("~/Content/Files");
                     filePath = Path.Combine(filePath, fileName);
                     Request.Files["logo"].SaveAs(filePath);
-                    content.MusicContent.Add(new MusicContent{ Description = form["description"], FileSource = fileName ,Title = form["Title"],SortOrder = Convert.ToInt32(form["SortOrder"])});
-                    context.SaveChanges();
+                    mc.FileSource = fileName;
+
                 }
+                TryUpdateModel(mc, new[] {"Title", "SortOrder"});
+                mc.Description = HttpUtility.HtmlDecode(form["Description"]);
+                content.MusicContent.Add(mc);
+                context.SaveChanges();
+
+
                 return RedirectToAction("Index", "Home", new {id = content.Name, area = ""});
             }
         }
 
+        public ActionResult EditMusicContent(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var content = context.MusicContent.Where(c => c.Id == id).First();
+                return View(content);
+            }
+        }
 
-
+        [HttpPost]
+        public ActionResult EditMusicContent(int id, FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                var mc = context.MusicContent.Include("Content").Where(c => c.Id == id).First();
+                
+                if (Request.Files["logo"] != null && !string.IsNullOrEmpty(Request.Files["logo"].FileName))
+                {
+                    IOHelper.DeleteFile("~/Content/Files", mc.FileSource);
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Files", Request.Files["logo"].FileName);
+                    string filePath = Server.MapPath("~/Content/Files");
+                    filePath = Path.Combine(filePath, fileName);
+                    Request.Files["logo"].SaveAs(filePath);
+                    mc.FileSource = fileName;
+                }
+                TryUpdateModel(mc, new[] { "SortOrder", "Title" });
+                mc.Description = HttpUtility.HtmlDecode(form["Description"]);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new { id = mc.Content.Name, area = "" });
+            }
+        }
 
 
         public ActionResult DeleteMusicContent(int id)
