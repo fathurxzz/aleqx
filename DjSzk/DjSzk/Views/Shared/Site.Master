@@ -36,26 +36,27 @@
             <asp:ContentPlaceHolder runat="server" ID="MainMenu">
             </asp:ContentPlaceHolder>
         </div>
+        <div class="main-content-top-container">
+            <div class="main-content-top">
+            </div>
+        </div>
     </div>
     <div class="page">
         <div class="main-content-container">
             <div class="main-content">
-                <div class="main-content-top">
-                </div>
-                <div class="main-content-middle">
+                
                     <div class="title">
                         <asp:ContentPlaceHolder runat="server" ID="ContentTitle">
                         </asp:ContentPlaceHolder>
                     </div>
                     <asp:ContentPlaceHolder runat="server" ID="MainContent">
                     </asp:ContentPlaceHolder>
-                </div>
-                <div class="main-content-bottom">
-                </div>
             </div>
         </div>
     </div>
     <div class="footer">
+            <div class="main-content-bottom">
+                </div>
         <div class="footerContent">
             <div class="sign">
                 Cайт создан в <a href="http://m-brand.com.ua">Студии Евгения Миллера</a>
