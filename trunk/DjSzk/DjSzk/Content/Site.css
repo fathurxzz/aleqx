@@ -162,7 +162,9 @@ body
 .descriptionContainer
 {
 	padding: 25px 70px;
+	line-height: 1.1em;
 }
+
 
 .separator
 {

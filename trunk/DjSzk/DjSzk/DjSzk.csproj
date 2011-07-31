@@ -109,6 +109,8 @@
     <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\player\bg-line.gif" />
     <Content Include="Content\img\player\bg.gif" />
+    <Content Include="Content\img\player\button-empty-left.gif" />
+    <Content Include="Content\img\player\button-empty-right.gif" />
     <Content Include="Content\img\player\pause.gif" />
     <Content Include="Content\img\player\play.gif" />
     <Content Include="Content\img\player\stop.gif" />
