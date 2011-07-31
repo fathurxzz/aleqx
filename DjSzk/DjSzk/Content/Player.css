@@ -21,6 +21,23 @@ table.player div.play, table.player div.stop, table.player div.pause, table.play
     display: block;
 }
 
+.buttonLeft 
+{
+	width: 40px;
+    height: 40px;
+    display: block;
+	background: url('img/player/button-empty-left.gif') no-repeat;
+}
+
+.buttonRight
+{
+	width: 40px;
+    height: 40px;
+    display: block;
+	background: url('img/player/button-empty-right.gif') no-repeat;
+}
+
+
 table.player .play
 {
     background: url('img/player/play.gif') no-repeat;
