@@ -6,17 +6,17 @@
     foreach (var item in menuItems.OrderBy(c=>c.SortOrder))
     {
         %>
-            <div class="<%=item.ClassName%>">
+           
             
             <%if (item.Name == contentName)
               { %>
-              <span><%=item.MenuTitle%></span>
+              <span class="<%=item.ClassName%>" ><%=item.MenuTitle%></span>
             <% }
               else
 { %>
-            <a href="/<%=item.Name%>"><%=item.MenuTitle%></a>
+            <a class="<%=item.ClassName%>" href="/<%=item.Name%>"><%=item.MenuTitle%></a>
             <% } %>
-            </div>
+            
         <%
     }
 %>

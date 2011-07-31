@@ -92,39 +92,76 @@ body
 .main-menu a 
 {
 	color: #000000;
+	display: block;
+	letter-spacing: 2px;
+	padding-top: 2px;
+	
+	
+	
+	display: inline-block;
+	padding-left: 22px;
+	margin-left: 10px;
+    margin-right: 10px;
+	height: 18px;
 }
+
+.main-menu span
+{
+	letter-spacing: 2px;
+	color: #ff0000;
+	
+	/*display: block;*/
+	padding-top: 2px;
+	
+	display: inline-block;
+	padding-left: 22px;
+	margin-left: 10px;
+    margin-right: 10px;
+	height: 18px;
+}
+
 
 
 
 .main-menu div
 {
-	display: inline-block;
-	padding-left: 20px;
-	margin-left: 11px;
-    margin-right: 11px;
-	height: 20px;
-}
-
-.main-menu div.read
-{
-	background: url('img/menu-read.gif') no-repeat;
-}
-.main-menu div.hear
-{
-	background: url('img/menu-hear.gif') no-repeat;
-	
-}
-.main-menu div.connect
-{
-	background: url('img/menu-connect.gif') no-repeat;
 	
 }
 
+.main-menu .read
+{
+	background: url('img/read.gif') no-repeat;
+}
+.main-menu .hear
+{
+	background: url('img/listen.gif') no-repeat;
+	
+}
+.main-menu .connect
+{
+	background: url('img/connect.gif') no-repeat;
+}
+
+.main-menu a:hover
+{
+	background-position: 0 -20px;
+
+}
+
+.main-menu span
+{
+	background-position: 0 -20px !important;
+
+}
+
+.main-menu a:hover
+{
+	color: #ff0000;	
+}
 
 .descriptionContainer
 {
-    padding-left: 70px;
-    padding-right: 70px;
+	padding: 25px 70px;
 }
 
 .separator
@@ -138,10 +175,12 @@ body
     font-style: italic;
     color: #cc0000;
 	font-family: Lucida Sans Unicode;
+	font-family: Times New Roman;
 	/*font-family: Hobo Std;*/
     text-align: left;
     padding-left: 70px;
     font-size: 21px;
+	padding-bottom: 40px;
 }
 
 .main-content-container
