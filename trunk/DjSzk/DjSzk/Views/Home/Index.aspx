@@ -18,9 +18,12 @@
           { %>
           <%=Html.ActionLink("редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })%>
         <% } %>
+        <%if (!string.IsNullOrEmpty(Model.Text))
+          { %>
         <div class="descriptionContainer">
         <%=Model.Text%>
         </div>
+        <% } %>
 
         <% foreach (var mc in Model.MusicContent.OrderBy(c=>c.SortOrder))
            {
@@ -81,7 +84,17 @@
                             mp3: "../Content/Files/" + filename // Defines the mp3 url
                         });
                     }
-                    
+                    $('.stop').each(function (index) {
+                        $(this).removeClass("stop");
+                        $(this).addClass("szk");
+                    });
+
+                    //var obj = ;
+                    //alert($(obj > div).html());
+
+                    $('.szk', $(this).parent().parent()).removeClass("szk").addClass("stop");
+
+
                     $("#jpId").jPlayer("play");
                     $('.pause').each(function (index) {
                         $(this).removeClass("pause");
@@ -101,8 +114,9 @@
 
 
 
-            $(".stop").click(function () {
+            $(".stopbutton").click(function () {
                 $("#jpId").jPlayer("stop");
+                $(this).removeClass("stop").addClass("szk");
                 $('.pause').each(function (index) {
                     $(this).removeClass("pause");
                     $(this).removeClass("paused");

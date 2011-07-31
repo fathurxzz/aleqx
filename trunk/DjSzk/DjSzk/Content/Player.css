@@ -14,7 +14,7 @@ table.player
     position: relative;
 }
 
-table.player a
+table.player div.play, table.player div.stop, table.player div.pause, table.player div.szk
 {
     width: 40px;
     height: 40px;
@@ -34,6 +34,11 @@ table.player .pause
 table.player .stop
 {
     background: url('img/player/stop.gif') no-repeat;
+}
+
+table.player .szk
+{
+    background: url('img/player/szk.gif') no-repeat;
 }
 
 table.player .bg

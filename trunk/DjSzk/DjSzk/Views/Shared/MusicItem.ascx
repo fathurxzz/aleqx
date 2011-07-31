@@ -6,8 +6,8 @@
 <table class="player">
     <tr>
         <td filename="<%=Model.FileSource%>">
-            <a href="#" class="play" >
-            </a>
+            <div class="play" >
+            </div>
         </td>
         <td>
             <div class="bg">
@@ -15,8 +15,8 @@
             </div>
         </td>
         <td>
-            <a href="#" class="stop">
-            </a>
+            <div class="szk stopbutton">
+            </div>
         </td>
     </tr>
 </table>
@@ -30,6 +30,9 @@
 
 <% } %>
 </div>
+<%if (!string.IsNullOrEmpty(Model.Description))
+  { %>
 <div class="descriptionContainer separator">
-<%=Model.Description %>
+<%=Model.Description%>
 </div>
+<% } %>
