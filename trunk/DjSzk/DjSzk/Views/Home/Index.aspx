@@ -79,22 +79,31 @@
                             mp3: "../Content/Files/" + filename // Defines the mp3 url
                         });
                     }
-                    $('.stop').each(function (index) {
-                        $(this).removeClass("stop").addClass("szk");
-                    });
-
                     
+                    
+                    
+                    
+                    
+                    
+                    
+
+
                     //alert($(obj > div).html());
 
-                    var obj = $('.szk', $(this).parent().parent().parent());
 
-                    
-                    $(obj).fadeOut("fast", function () {
-                        obj.removeClass("szk").addClass("stop");
-                        $(obj).fadeIn("fast", function () {
 
+                    if (!$(this).hasClass("paused")) {
+                        $('.stop').each(function (index) {
+                            $(this).removeClass("stop").addClass("szk");
                         });
-                    });
+                        var obj = $('.szk', $(this).parent().parent().parent());
+                        $(obj).fadeOut("fast", function() {
+                            obj.removeClass("szk").addClass("stop");
+                            $(obj).fadeIn("fast", function() {
+
+                            });
+                        });
+                    }
 
 
                     $("#jpId").jPlayer("play");
@@ -116,11 +125,11 @@
                         $(this).removeClass("play");
                         $(this).addClass("pause");
                         $(this).fadeIn("fast", function () {
-                            
+
                         });
                     });
 
-                    
+
 
                     //$(this).removeClass("play");
                     //$(this).addClass("pause");
@@ -146,6 +155,12 @@
                         $(this).removeClass("paused");
                         $(this).addClass("play");
                     });
+                    
+                    $('.play').each(function (index) {
+                        $(this).removeClass("pause");
+                        $(this).removeClass("paused");
+                    });
+                    
                 }
             });
 
