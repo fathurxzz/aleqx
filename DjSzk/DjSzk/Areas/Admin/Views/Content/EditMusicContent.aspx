@@ -51,7 +51,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            <a href="#" onclick="javascript:history.back();">Отмена</a>
+           <a href="javascript:history.back();">Отмена</a>
         </div>
     </div>
     <% } %>
