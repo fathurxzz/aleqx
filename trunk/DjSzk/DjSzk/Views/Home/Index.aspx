@@ -16,21 +16,34 @@
       { %>
     <%=Html.ActionLink("редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })%>
     <% } %>
+
     <%if (!string.IsNullOrEmpty(Model.Text))
       { %>
     <div class="descriptionContainer">
         <%=Model.Text%>
     </div>
-    <% } %>
-    <% foreach (var mc in Model.MusicContent.OrderBy(c => c.SortOrder))
-       {
-           Html.RenderPartial("MusicItem", mc);
-       } %>
-    <%if (Request.IsAuthenticated)
+    <% }
+        
+
+        if (Model.MusicContent.Count > 0)
+        {
+            %>
+            <div class="separator"></div>
+            <% 
+        }
+                %>
+                 <%if (Request.IsAuthenticated)
       { %>
     <%=Html.ActionLink("добавить музыкальный контент", "AddMusicContent", "Content",
                                                    new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})%>
     <% } %>
+                <%
+         
+       foreach (var mc in Model.MusicContent.OrderBy(c => c.SortOrder))
+       {
+           Html.RenderPartial("MusicItem", mc);
+       } %>
+   
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="Includes">
     <script type="text/javascript">
