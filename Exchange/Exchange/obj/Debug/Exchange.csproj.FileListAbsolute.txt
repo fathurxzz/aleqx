@@ -1,0 +1,15 @@
+D:\Exchange\Exchange\bin\Exchange.dll
+D:\Exchange\Exchange\bin\Exchange.pdb
+D:\Exchange\Exchange\obj\Debug\ResolveAssemblyReference.cache
+D:\Exchange\Exchange\obj\Debug\Exchange.dll
+D:\Exchange\Exchange\obj\Debug\Exchange.pdb
+D:\Exchange\Exchange\bin\Sybase.AdoNet2.AseClient.dll
+D:\Exchange\Exchange\bin\ja\Sybase.AdoNet2.AseClient.resources.dll
+D:\Exchange\Exchange\bin\zh-CHS\Sybase.AdoNet2.AseClient.resources.dll
+D:\Exchange\Exchange\bin\DbExtensions.dll
+D:\Exchange\Exchange\bin\DbExtensions.pdb
+D:\Exchange\Exchange\bin\DbExtensions.xml
+D:\Exchange\Exchange\bin\ExchangeExtensions.dll
+D:\Exchange\Exchange\bin\ExchangeExtensions.xml
+D:\Exchange\Exchange\bin\System.Web.Mvc.dll
+D:\Exchange\Exchange\bin\System.Web.Mvc.xml

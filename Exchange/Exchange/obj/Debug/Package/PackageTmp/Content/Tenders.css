@@ -1,0 +1,154 @@
+﻿.item0
+{
+    background-color: #f6f8f3;
+}
+.item1
+{
+    background-color: #ffffff;
+}
+
+
+table.tenders td
+{
+    border-color:silver;
+    border-left: none;
+    border-right: none;
+}
+
+table.tenders th
+{
+    font-weight:bold;
+}
+
+
+
+.tendersSummary
+{
+    font-size: 12px;
+}
+
+.tendersSummary td
+{
+    padding: 1px 5px;
+    border: 1px dotted #999999;
+}
+
+.tendersSummary th
+{
+    font-weight: normal;
+}
+
+.tendersSummary .amount
+{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container
+{
+    /*border-left:1px solid #888;*/ /*border-right:1px solid #888;*/
+    padding: 0 7px;
+}
+
+.resetSelector a
+{
+    font-size: 10px;
+}
+
+
+/*
+.toolsContainer
+{
+    border:none;
+    float:left;
+    margin-bottom:5px;
+}
+
+.toolsContainer td
+{
+    border:none;
+    border-right:1px solid #888;
+    vertical-align:top;
+}
+*/
+
+#formNewTender
+{
+}
+
+#formNewTender input[type="text"], #formNewTender select, #formNewTender textarea
+{
+    border: 1px solid #a79f90;
+    width: 200px;
+    margin: 8px 0;
+}
+
+#formNewTender textarea
+{
+    height: 50px;
+}
+
+#formNewTender div
+{
+    width: 600px;
+    margin: 0 auto;
+    border: none;
+    margin-top: 30px;
+}
+
+#formNewTender label
+{
+    width: 150px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 8px 0;
+}
+
+#formNewTender label.error
+{
+    margin-left: 10px;
+    width: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#formNewTender p
+{
+    border-top: 1px solid #a79f90; /*height:45px;*/
+}
+
+#formNewTender p.title
+{
+    border-top: none;
+    height: 15px;
+    font-weight: bold;
+}
+
+
+
+
+#sOkpo, #sCntrCode, #sClientName
+{
+    font-weight: bold;
+    color: #33cc00; /*font-style:italic;*/
+}
+
+
+.notIncudeInTotal
+{
+    background-color: yellow;
+}

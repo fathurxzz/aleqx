@@ -1,0 +1,2282 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">True</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Selectors.css" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Validation.css" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Tenders.css" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:SiteRoles.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:TendersController.cs" caret="0" fromTop="0" />
+      <File id="256FEC00-C0CF-426A-8500-DB0049360FC2/f:Office.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/f:Office.cs" caret="0" fromTop="0" />
+      <File id="256FEC00-C0CF-426A-8500-DB0049360FC2/f:User.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:SignersController.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:CentreDealsController.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:AccountsController.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/f:User.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/f:Web.config" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/f:Order.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:OrdersController.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Factories/f:OrderFactory.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/f:ExchangeSettings.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:SettingsController.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Factories/f:DealFactory.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Factories/f:PaymentFactory.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:PayController.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/f:Payment.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:Tender.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:Currency.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Enum/f:ExchangeMarket.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:Helper.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:OsFile.cs" caret="0" fromTop="0" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Scripts/f:Exchange.js" caret="299" fromTop="8" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Recipients.ascx" caret="667" fromTop="16" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Conversations.css" caret="1051" fromTop="8" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Shared/f:Site.Master" caret="1754" fromTop="23" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="2479" fromTop="42" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:ConversationsController.cs" caret="1971" fromTop="17" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Scripts/f:Exchange.js" caret="967" fromTop="34" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:SendMessage.ascx" caret="1354" fromTop="4" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:Html.cs" caret="6801" fromTop="22" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Models/d:Helpers/f:Html.cs" caret="7002" fromTop="26" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:SendMessage.ascx" caret="1354" fromTop="21" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:SendMessage.ascx" caret="1354" fromTop="11" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:SendMessage.ascx" caret="1354" fromTop="35" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="2445" fromTop="30" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Recipients.ascx" caret="1658" fromTop="34" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Site.css" caret="2364" fromTop="26" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Site.css" caret="2739" fromTop="45" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Site.css" caret="2450" fromTop="24" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Site.css" caret="2790" fromTop="26" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="404" fromTop="8" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Controllers/f:ConversationsController.cs" caret="2612" fromTop="32" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Recipients.ascx" caret="2215" fromTop="26" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:SendMessage.ascx" caret="1171" fromTop="25" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:SendMessage.ascx" caret="1337" fromTop="37" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="608" fromTop="6" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="615" fromTop="37" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="615" fromTop="10" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="2093" fromTop="24" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="2500" fromTop="38" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="615" fromTop="4" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Views/d:Conversations/f:Index.aspx" caret="1723" fromTop="32" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Scripts/f:Exchange.js" caret="310" fromTop="8" />
+      <File id="4A3487A0-F701-40C1-8190-5A67B6349DA8/d:Content/f:Conversations.css" caret="1051" fromTop="8" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="451" />
+      <Item value="int" priority="179" />
+      <Item value="string" priority="282" />
+      <Item value="decimal" priority="80" />
+      <Item value="TenderDealEntity`0" priority="8" />
+      <Item value="DateTime`0" priority="77" />
+      <Item value="enum" priority="14" />
+      <Item value="EnumOperSign`0" priority="6" />
+      <Item value="EnumSellType`0" priority="4" />
+      <Item value="bool" priority="98" />
+      <Item value="EnumOperation`0" priority="9" />
+      <Item value="ExchangeMarket`0" priority="9" />
+      <Item value="static" priority="88" />
+      <Item value="return" priority="235" />
+      <Item value="Math`0" priority="0" />
+      <Item value="d" priority="38" />
+      <Item value="decimals" priority="0" />
+      <Item value="AwayFromZero" priority="0" />
+      <Item value="override" priority="11" />
+      <Item value="private" priority="83" />
+      <Item value="abstract" priority="3" />
+      <Item value="ActionResult`0" priority="36" />
+      <Item value="RedirectToAction`0" priority="14" />
+      <Item value="partial" priority="17" />
+      <Item value="IList" priority="17" />
+      <Item value="new" priority="221" />
+      <Item value="List&lt;Tender&gt;" priority="2" />
+      <Item value="tender" priority="52" />
+      <Item value="IEnumerable" priority="68" />
+      <Item value="View`0" priority="21" />
+      <Item value="User`0" priority="38" />
+      <Item value="BaseUser`0" priority="0" />
+      <Item value="UserEntity`0" priority="0" />
+      <Item value="List" priority="61" />
+      <Item value="Int32`0" priority="1" />
+      <Item value="_userRoleId" priority="2" />
+      <Item value="value" priority="3" />
+      <Item value="if" priority="226" />
+      <Item value="null" priority="79" />
+      <Item value="this" priority="31" />
+      <Item value="result" priority="20" />
+      <Item value="_userRoleIds" priority="2" />
+      <Item value="User" priority="15" />
+      <Item value="user" priority="66" />
+      <Item value="Authorize" priority="0" />
+      <Item value="Roles" priority="0" />
+      <Item value="SiteRoles`0" priority="20" />
+      <Item value="Moderator" priority="4" />
+      <Item value="Exchange" priority="11" />
+      <Item value="Models" priority="13" />
+      <Item value="Certificate`0" priority="0" />
+      <Item value="UserInfo" priority="6" />
+      <Item value="cert" priority="3" />
+      <Item value="UserRoleIds" priority="3" />
+      <Item value="void" priority="59" />
+      <Item value="Convert`0" priority="31" />
+      <Item value="len" priority="1" />
+      <Item value="econGroup" priority="0" />
+      <Item value="podrid" priority="11" />
+      <Item value="tabNum" priority="2" />
+      <Item value="userName" priority="1" />
+      <Item value="foreach" priority="83" />
+      <Item value="MVC" priority="0" />
+      <Item value="roleId" priority="2" />
+      <Item value="Helper`0" priority="29" />
+      <Item value="AdminCentre" priority="2" />
+      <Item value="userList" priority="0" />
+      <Item value="base" priority="4" />
+      <Item value="UserPresentation`0" priority="3" />
+      <Item value="OfficeId" priority="6" />
+      <Item value="officeId" priority="12" />
+      <Item value="Group" priority="0" />
+      <Item value="WebSession`0" priority="106" />
+      <Item value="System" priority="3" />
+      <Item value="Collections" priority="0" />
+      <Item value="Generic" priority="0" />
+      <Item value="List&lt;User&gt;" priority="0" />
+      <Item value="UserPresentation" priority="0" />
+      <Item value="up" priority="0" />
+      <Item value="officeName" priority="1" />
+      <Item value="OfficeName" priority="0" />
+      <Item value="userFactory" priority="11" />
+      <Item value="UserFactory" priority="3" />
+      <Item value="using" priority="38" />
+      <Item value="var" priority="82" />
+      <Item value="DbConnector`0" priority="12" />
+      <Item value="conn" priority="75" />
+      <Item value="UserCurrency`0" priority="7" />
+      <Item value="_conn" priority="42" />
+      <Item value="ref" priority="3" />
+      <Item value="query" priority="51" />
+      <Item value="CurId" priority="24" />
+      <Item value="r" priority="137" />
+      <Item value="AllowedProcessing" priority="2" />
+      <Item value="userCode" priority="4" />
+      <Item value="userId" priority="14" />
+      <Item value="GetUser`0" priority="3" />
+      <Item value="CreateUser`0" priority="0" />
+      <Item value="LoadUserAttributes`0" priority="0" />
+      <Item value="ValueType`0" priority="6" />
+      <Item value="IDbConnection`0" priority="16" />
+      <Item value="UserCode" priority="2" />
+      <Item value="Name" priority="9" />
+      <Item value="Podrid" priority="4" />
+      <Item value="TabNum" priority="1" />
+      <Item value="GetUserRoles`0" priority="2" />
+      <Item value="InitUser`0" priority="0" />
+      <Item value="List&lt;int&gt;" priority="4" />
+      <Item value="protected" priority="1" />
+      <Item value="IDataRecord`0" priority="5" />
+      <Item value="virtual" priority="3" />
+      <Item value="u" priority="5" />
+      <Item value="LastActivityDate" priority="1" />
+      <Item value="dr" priority="10" />
+      <Item value="UserIdOdb" priority="0" />
+      <Item value="EnumOfficeLevel`0" priority="2" />
+      <Item value="OfficeLevel" priority="2" />
+      <Item value="ParentOfficeId" priority="4" />
+      <Item value="IsAutorized" priority="0" />
+      <Item value="DateClose" priority="0" />
+      <Item value="Language" priority="0" />
+      <Item value="userRoles" priority="3" />
+      <Item value="AdminBranch" priority="2" />
+      <Item value="SiteRolesManager`0" priority="0" />
+      <Item value="UserRole`0" priority="5" />
+      <Item value="IisTraceListener`0" priority="0" />
+      <Item value="currentUser" priority="2" />
+      <Item value="Id" priority="11" />
+      <Item value="ur" priority="0" />
+      <Item value="ViewData" priority="32" />
+      <Item value="userRolesToAssign" priority="0" />
+      <Item value="Html" priority="148" />
+      <Item value="role" priority="5" />
+      <Item value="Model" priority="59" />
+      <Item value="ResourcesHelper`0" priority="0" />
+      <Item value="sg" priority="1" />
+      <Item value="ToList`1" priority="0" />
+      <Item value="SettingsGroupDescriptionAttribute`0" priority="0" />
+      <Item value="Select`2" priority="4" />
+      <Item value="SiteRoleIds" priority="2" />
+      <Item value="officeLevel" priority="3" />
+      <Item value="FormCollection`0" priority="15" />
+      <Item value="FormMethod`0" priority="1" />
+      <Item value="HttpPost" priority="14" />
+      <Item value="UserFactory`0" priority="1" />
+      <Item value="ActiveTime" priority="2" />
+      <Item value="activeTime" priority="0" />
+      <Item value="quert" priority="0" />
+      <Item value="DbType`0" priority="15" />
+      <Item value="form" priority="29" />
+      <Item value="KeyValuePair" priority="5" />
+      <Item value="control" priority="0" />
+      <Item value="StringSplitOptions`0" priority="1" />
+      <Item value="KeyValuePair&lt;int,bool&gt;" priority="1" />
+      <Item value="keys" priority="0" />
+      <Item value="Dictionary" priority="5" />
+      <Item value="Dictionary&lt;int,bool&gt;" priority="0" />
+      <Item value="values" priority="0" />
+      <Item value="class" priority="15" />
+      <Item value="PostData`0" priority="5" />
+      <Item value="PostData" priority="0" />
+      <Item value="key" priority="6" />
+      <Item value="controlIdPrefix" priority="0" />
+      <Item value="itemId" priority="1" />
+      <Item value="item" priority="61" />
+      <Item value="Save`0" priority="5" />
+      <Item value="UpdateUserRights`0" priority="0" />
+      <Item value="false" priority="75" />
+      <Item value="CurrencyList" priority="1" />
+      <Item value="Currency`0" priority="14" />
+      <Item value="CurDef" priority="4" />
+      <Item value="CurName" priority="3" />
+      <Item value="currency" priority="14" />
+      <Item value="currecies" priority="0" />
+      <Item value="postData" priority="4" />
+      <Item value="itemProcess" priority="1" />
+      <Item value="process" priority="1" />
+      <Item value="true" priority="70" />
+      <Item value="UserCurrency" priority="0" />
+      <Item value="itemView" priority="0" />
+      <Item value="updateUserCurrency" priority="0" />
+      <Item value="UpdateUserCurrency`0" priority="0" />
+      <Item value="currencies" priority="0" />
+      <Item value="curId" priority="28" />
+      <Item value="AccountFactory`0" priority="3" />
+      <Item value="connection" priority="9" />
+      <Item value="Account`0" priority="7" />
+      <Item value="throw" priority="11" />
+      <Item value="NotImplementedException`0" priority="0" />
+      <Item value="a" priority="20" />
+      <Item value="InitAccount`0" priority="0" />
+      <Item value="Account" priority="1" />
+      <Item value="accountFactory" priority="5" />
+      <Item value="AccountFactory" priority="1" />
+      <Item value="accounts" priority="2" />
+      <Item value="Office`0" priority="13" />
+      <Item value="o" priority="53" />
+      <Item value="InitOffice`0" priority="0" />
+      <Item value="Office" priority="0" />
+      <Item value="ParamArrayAttribute`0" priority="1" />
+      <Item value="offices" priority="11" />
+      <Item value="showClosed" priority="1" />
+      <Item value="hideClosed" priority="0" />
+      <Item value="GetOffices`0" priority="3" />
+      <Item value="showNonbalance" priority="0" />
+      <Item value="accId" priority="1" />
+      <Item value="model" priority="43" />
+      <Item value="SelectListItem`0" priority="11" />
+      <Item value="officeList" priority="0" />
+      <Item value="SelectListItem" priority="13" />
+      <Item value="Selected" priority="17" />
+      <Item value="Text" priority="24" />
+      <Item value="office" priority="7" />
+      <Item value="Value" priority="14" />
+      <Item value="currencyList" priority="2" />
+      <Item value="Exception" priority="1" />
+      <Item value="Enum`0" priority="3" />
+      <Item value="params" priority="0" />
+      <Item value="excludeOfficeIds" priority="2" />
+      <Item value="Length" priority="2" />
+      <Item value="account" priority="9" />
+      <Item value="tran" priority="14" />
+      <Item value="linkText" priority="1" />
+      <Item value="actionName" priority="1" />
+      <Item value="conrollerName" priority="1" />
+      <Item value="helper" priority="1" />
+      <Item value="MvcHtmlString`0" priority="0" />
+      <Item value="id" priority="20" />
+      <Item value="BackOfficeDealerBranch" priority="0" />
+      <Item value="else" priority="24" />
+      <Item value="Exception`0" priority="2" />
+      <Item value="DisplayName" priority="0" />
+      <Item value="DisplayFormat" priority="0" />
+      <Item value="ComponentModel" priority="0" />
+      <Item value="DisplayNameAttribute`0" priority="0" />
+      <Item value="GetAccounts`0" priority="1" />
+      <Item value="BranchAccounts" priority="0" />
+      <Item value="Moderator`0" priority="5" />
+      <Item value="m" priority="5" />
+      <Item value="InitUserPresentation`0" priority="0" />
+      <Item value="set" priority="3" />
+      <Item value="moderators" priority="1" />
+      <Item value="ModeratorOfficeIdList" priority="1" />
+      <Item value="selectListItems" priority="1" />
+      <Item value="moderatorsOffices" priority="1" />
+      <Item value="List&lt;SelectListItem&gt;" priority="8" />
+      <Item value="updateModeratorOfficeIdList" priority="1" />
+      <Item value="updateMainData" priority="0" />
+      <Item value="Helpers" priority="6" />
+      <Item value="FrontOfficeDealerBranch" priority="1" />
+      <Item value="FrontOfficeDealerCentre" priority="1" />
+      <Item value="signerFactory" priority="4" />
+      <Item value="SignerFactory" priority="0" />
+      <Item value="signers" priority="1" />
+      <Item value="Signer`0" priority="3" />
+      <Item value="s" priority="9" />
+      <Item value="signer" priority="2" />
+      <Item value="Tender`0" priority="55" />
+      <Item value="t" priority="151" />
+      <Item value="TenderPresentation`0" priority="2" />
+      <Item value="struct" priority="0" />
+      <Item value="Tender" priority="1" />
+      <Item value="tenderFactory" priority="17" />
+      <Item value="TenderFactory" priority="3" />
+      <Item value="userCurrencies" priority="2" />
+      <Item value="c" priority="11" />
+      <Item value="userCurrencyList" priority="0" />
+      <Item value="operSign" priority="11" />
+      <Item value="accountList" priority="1" />
+      <Item value="operId" priority="7" />
+      <Item value="Created" priority="3" />
+      <Item value="Sell" priority="4" />
+      <Item value="catch" priority="0" />
+      <Item value="AbandonedMutexException" priority="0" />
+      <Item value="ex" priority="7" />
+      <Item value="Client`0" priority="5" />
+      <Item value="clients" priority="1" />
+      <Item value="okpo" priority="3" />
+      <Item value="contrCode" priority="2" />
+      <Item value="Okpo" priority="1" />
+      <Item value="Response" priority="4" />
+      <Item value="routes" priority="1" />
+      <Item value="clientList" priority="0" />
+      <Item value="CntrCode" priority="0" />
+      <Item value="SubjId" priority="0" />
+      <Item value="name" priority="2" />
+      <Item value="StringBuilder" priority="0" />
+      <Item value="char" priority="0" />
+      <Item value="asrt" priority="0" />
+      <Item value="HttpUtility`0" priority="0" />
+      <Item value="ClientCash" priority="2" />
+      <Item value="GetResourceString`0" priority="3" />
+      <Item value="resourceName" priority="2" />
+      <Item value="TenderFactory`0" priority="5" />
+      <Item value="docSum" priority="8" />
+      <Item value="EnumStatus`0" priority="0" />
+      <Item value="RequirementSale" priority="0" />
+      <Item value="course" priority="20" />
+      <Item value="Insert`0" priority="1" />
+      <Item value="Update`0" priority="2" />
+      <Item value="FormAction`0" priority="18" />
+      <Item value="switch" priority="8" />
+      <Item value="case" priority="15" />
+      <Item value="IndexOutOfRangeException" priority="0" />
+      <Item value="formAction" priority="5" />
+      <Item value="break" priority="11" />
+      <Item value="tenderIds" priority="9" />
+      <Item value="Status" priority="16" />
+      <Item value="out" priority="23" />
+      <Item value="message" priority="13" />
+      <Item value="MS" priority="2" />
+      <Item value="msg" priority="7" />
+      <Item value="errMsg" priority="1" />
+      <Item value="succMsg" priority="0" />
+      <Item value="MessageType`0" priority="16" />
+      <Item value="messageType" priority="0" />
+      <Item value="type" priority="0" />
+      <Item value="CustomMessage`0" priority="9" />
+      <Item value="list" priority="2" />
+      <Item value="MulticastDelegate`0" priority="0" />
+      <Item value="ArgumentNullException" priority="1" />
+      <Item value="messages" priority="8" />
+      <Item value="List&lt;CustomMessage&gt;" priority="3" />
+      <Item value="CustomMessage" priority="10" />
+      <Item value="Type" priority="10" />
+      <Item value="i" priority="2" />
+      <Item value="Type`0" priority="0" />
+      <Item value="typeof" priority="0" />
+      <Item value="GetTenderList`0" priority="0" />
+      <Item value="Sent" priority="5" />
+      <Item value="SendDate" priority="1" />
+      <Item value="Cancelled" priority="1" />
+      <Item value="TenderDate" priority="0" />
+      <Item value="TenderStatus`0" priority="10" />
+      <Item value="Deleted" priority="4" />
+      <Item value="tList" priority="43" />
+      <Item value="GetTender`0" priority="3" />
+      <Item value="WasEdited" priority="1" />
+      <Item value="Delete`0" priority="1" />
+      <Item value="_errorMessage" priority="14" />
+      <Item value="onclickAttribute" priority="0" />
+      <Item value="client" priority="9" />
+      <Item value="Client" priority="0" />
+      <Item value="ClientCode" priority="3" />
+      <Item value="ClientName" priority="2" />
+      <Item value="ContrCode" priority="0" />
+      <Item value="object" priority="5" />
+      <Item value="status" priority="21" />
+      <Item value="Operation`0" priority="46" />
+      <Item value="GetCurrency`0" priority="0" />
+      <Item value="List&lt;Currency&gt;" priority="1" />
+      <Item value="cList" priority="12" />
+      <Item value="Currency" priority="4" />
+      <Item value="selectedCurrency" priority="0" />
+      <Item value="IEquatable" priority="0" />
+      <Item value="Oper" priority="6" />
+      <Item value="oper" priority="9" />
+      <Item value="roleses" priority="0" />
+      <Item value="Linq" priority="0" />
+      <Item value="hasRole" priority="2" />
+      <Item value="userRoleId" priority="0" />
+      <Item value="roles" priority="0" />
+      <Item value="SiteRoles" priority="0" />
+      <Item value="Status`0" priority="18" />
+      <Item value="TotalVolumeInfoEntity`0" priority="1" />
+      <Item value="AverageCourse" priority="0" />
+      <Item value="TotalSum" priority="0" />
+      <Item value="dateTime" priority="0" />
+      <Item value="date" priority="14" />
+      <Item value="TotalDocSum" priority="0" />
+      <Item value="TotalRest" priority="0" />
+      <Item value="AverageCourseByDocSum" priority="0" />
+      <Item value="AverageCourseByRest" priority="0" />
+      <Item value="InitTotalVolumeInfoEntity`0" priority="0" />
+      <Item value="TotalVolumeInfoEntity" priority="0" />
+      <Item value="SumValue`0" priority="0" />
+      <Item value="field" priority="5" />
+      <Item value="DocSum" priority="6" />
+      <Item value="Rest" priority="2" />
+      <Item value="ViewDataDictionary`0" priority="2" />
+      <Item value="viewDataDictionary" priority="1" />
+      <Item value="ViewDataInfo`0" priority="0" />
+      <Item value="viewDataInfo" priority="0" />
+      <Item value="Controller`0" priority="1" />
+      <Item value="ViewDataDictionary" priority="2" />
+      <Item value="KeyValuePair&lt;string,object&gt;" priority="3" />
+      <Item value="showCourses" priority="1" />
+      <Item value="Buy" priority="7" />
+      <Item value="ExecuteSign" priority="0" />
+      <Item value="IncludeInTotal" priority="0" />
+      <Item value="sList" priority="3" />
+      <Item value="List&lt;Status&gt;" priority="1" />
+      <Item value="Index`0" priority="1" />
+      <Item value="TempData" priority="3" />
+      <Item value="Tenders" priority="2" />
+      <Item value="GetTenders`0" priority="2" />
+      <Item value="OperationSelector" priority="0" />
+      <Item value="TenderTotalsSummary`0" priority="0" />
+      <Item value="Pair`0" priority="1" />
+      <Item value="Pair" priority="0" />
+      <Item value="Hashtable" priority="0" />
+      <Item value="h" priority="2" />
+      <Item value="SumPair`0" priority="3" />
+      <Item value="tmp" priority="2" />
+      <Item value="sumPair" priority="3" />
+      <Item value="SumPair" priority="0" />
+      <Item value="sum" priority="1" />
+      <Item value="totals" priority="1" />
+      <Item value="TenderTotalsSummary" priority="0" />
+      <Item value="entry" priority="1" />
+      <Item value="AmountBuy" priority="0" />
+      <Item value="AmountSell" priority="0" />
+      <Item value="nderTotalsSummary" priority="0" />
+      <Item value="dateFrom" priority="5" />
+      <Item value="dateTo" priority="4" />
+      <Item value="date1" priority="2" />
+      <Item value="_messages" priority="10" />
+      <Item value="routeValues" priority="0" />
+      <Item value="htmlAttributes" priority="0" />
+      <Item value="MasterAdmin" priority="0" />
+      <Item value="CollectObjectIds`0" priority="0" />
+      <Item value="OfficeLevel`0" priority="4" />
+      <Item value="Key" priority="1" />
+      <Item value="vdd" priority="0" />
+      <Item value="Execute`0" priority="1" />
+      <Item value="default" priority="0" />
+      <Item value="FormatException`0" priority="0" />
+      <Item value="Execute" priority="0" />
+      <Item value="AjaxHelper`0" priority="1" />
+      <Item value="tenders" priority="13" />
+      <Item value="ids" priority="5" />
+      <Item value="tFactory" priority="6" />
+      <Item value="Order`0" priority="38" />
+      <Item value="number" priority="4" />
+      <Item value="OrderFactory`0" priority="8" />
+      <Item value="oFactory" priority="15" />
+      <Item value="orderNumber" priority="1" />
+      <Item value="order" priority="96" />
+      <Item value="Order" priority="3" />
+      <Item value="Deal`0" priority="47" />
+      <Item value="deal" priority="88" />
+      <Item value="Deal" priority="6" />
+      <Item value="ownDeal" priority="2" />
+      <Item value="ExistDeal`0" priority="0" />
+      <Item value="existedDeal" priority="1" />
+      <Item value="Deals" priority="2" />
+      <Item value="tenderId" priority="0" />
+      <Item value="GetDeal`0" priority="0" />
+      <Item value="MergeDeal`0" priority="0" />
+      <Item value="HttpGet" priority="2" />
+      <Item value="x" priority="21" />
+      <Item value="TenderExecute`0" priority="2" />
+      <Item value="Views" priority="1" />
+      <Item value="TenderIds" priority="0" />
+      <Item value="RemoveEmptyEntries" priority="0" />
+      <Item value="errMessage" priority="4" />
+      <Item value="OrderDate" priority="1" />
+      <Item value="operation" priority="5" />
+      <Item value="List&lt;Deal&gt;" priority="0" />
+      <Item value="TenderId" priority="1" />
+      <Item value="Auction" priority="1" />
+      <Item value="CreateDate" priority="2" />
+      <Item value="Course" priority="5" />
+      <Item value="CourseOrient" priority="0" />
+      <Item value="UserId" priority="2" />
+      <Item value="Number" priority="1" />
+      <Item value="IsNew" priority="1" />
+      <Item value="_isNew" priority="2" />
+      <Item value="ErrorMessage" priority="0" />
+      <Item value="ValidateOrder`0" priority="0" />
+      <Item value="OperSign`0" priority="15" />
+      <Item value="ital" priority="0" />
+      <Item value="OperSign" priority="15" />
+      <Item value="customMessage" priority="1" />
+      <Item value="ExecuteType`0" priority="1" />
+      <Item value="ExchangeMarket" priority="5" />
+      <Item value="Add`0" priority="0" />
+      <Item value="exchangeMarket" priority="0" />
+      <Item value="try" priority="9" />
+      <Item value="ArgumentOutOfRangeException`0" priority="0" />
+      <Item value="ArgumentOutOfRangeException" priority="0" />
+      <Item value="DealFactory`0" priority="3" />
+      <Item value="dealFactory" priority="2" />
+      <Item value="DealFactory" priority="2" />
+      <Item value="ParentFactory`0" priority="0" />
+      <Item value="InsertDeal`0" priority="0" />
+      <Item value="updateDeals" priority="1" />
+      <Item value="SaveDeal`0" priority="1" />
+      <Item value="UpdateDeal`0" priority="0" />
+      <Item value="newDeal" priority="9" />
+      <Item value="loadDeals" priority="2" />
+      <Item value="orderList" priority="1" />
+      <Item value="deals" priority="0" />
+      <Item value="LoadDeals`0" priority="1" />
+      <Item value="OrderStatus`0" priority="6" />
+      <Item value="OrderId" priority="2" />
+      <Item value="DealStatus`0" priority="3" />
+      <Item value="Equivalent" priority="1" />
+      <Item value="ExCode" priority="2" />
+      <Item value="CourseClient" priority="1" />
+      <Item value="Operation" priority="9" />
+      <Item value="Nls" priority="2" />
+      <Item value="Commission" priority="2" />
+      <Item value="ExtraCommissionSum" priority="2" />
+      <Item value="CommonEntity`0" priority="1" />
+      <Item value="obj" priority="2" />
+      <Item value="orderFactory" priority="6" />
+      <Item value="OrderFactory" priority="4" />
+      <Item value="DealsCount" priority="0" />
+      <Item value="GetOrders`0" priority="0" />
+      <Item value="GetOrder`0" priority="1" />
+      <Item value="NotImplementedException" priority="2" />
+      <Item value="ClientCntrCode" priority="1" />
+      <Item value="ClientCurrNls" priority="1" />
+      <Item value="ClientUahPodrid" priority="1" />
+      <Item value="ClientCurrPodrid" priority="1" />
+      <Item value="ClientSubjId" priority="1" />
+      <Item value="ClientUahNls" priority="1" />
+      <Item value="CourseClientRecommend" priority="0" />
+      <Item value="SumField`0" priority="0" />
+      <Item value="Items" priority="0" />
+      <Item value="ParentPodrid" priority="0" />
+      <Item value="_deleted" priority="2" />
+      <Item value="dealIds" priority="0" />
+      <Item value="DeleteDeal`0" priority="0" />
+      <Item value="orderId" priority="2" />
+      <Item value="global" priority="0" />
+      <Item value="operator" priority="0" />
+      <Item value="tex" priority="8" />
+      <Item value="ValidateDeal`0" priority="0" />
+      <Item value="_errMessage" priority="1" />
+      <Item value="newCourse" priority="1" />
+      <Item value="ExecuteMethod`0" priority="5" />
+      <Item value="executeMethod" priority="16" />
+      <Item value="ByCourse" priority="2" />
+      <Item value="Single" priority="2" />
+      <Item value="Multiply" priority="3" />
+      <Item value="ExecuteMethod" priority="0" />
+      <Item value="Request" priority="0" />
+      <Item value="Currencies" priority="1" />
+      <Item value="dFactory" priority="1" />
+      <Item value="SplitDeal`0" priority="2" />
+      <Item value="splitDeal" priority="0" />
+      <Item value="SplitDeal" priority="0" />
+      <Item value="DealId" priority="0" />
+      <Item value="OldSum" priority="0" />
+      <Item value="OrderNumbers" priority="0" />
+      <Item value="matchedOrders" priority="1" />
+      <Item value="MatchedOrders" priority="0" />
+      <Item value="CurrentOrder" priority="1" />
+      <Item value="newSum" priority="3" />
+      <Item value="currentDeal" priority="2" />
+      <Item value="FilterStatus`0" priority="11" />
+      <Item value="statuses" priority="2" />
+      <Item value="SentToBranch" priority="1" />
+      <Item value="SetValue`0" priority="0" />
+      <Item value="orders" priority="3" />
+      <Item value="TryUpdateModel`1" priority="1" />
+      <Item value="GetDeals`0" priority="1" />
+      <Item value="IFormatProvider`0" priority="0" />
+      <Item value="CourseMor" priority="0" />
+      <Item value="dList" priority="1" />
+      <Item value="T`0" priority="0" />
+      <Item value="currentOper" priority="2" />
+      <Item value="courseMor" priority="0" />
+      <Item value="sealed" priority="0" />
+      <Item value="CurrencyEntity`0" priority="1" />
+      <Item value="Entities" priority="4" />
+      <Item value="oList" priority="7" />
+      <Item value="DealPresentation`0" priority="8" />
+      <Item value="interface" priority="0" />
+      <Item value="IExchangeFilter`0" priority="6" />
+      <Item value="tp" priority="0" />
+      <Item value="Delegate`0" priority="0" />
+      <Item value="p" priority="15" />
+      <Item value="ICurrency`0" priority="12" />
+      <Item value="IOperation`0" priority="8" />
+      <Item value="IOperSign`0" priority="0" />
+      <Item value="Enum" priority="5" />
+      <Item value="Oper`0" priority="0" />
+      <Item value="OperId" priority="3" />
+      <Item value="OperName" priority="1" />
+      <Item value="Ioperation" priority="0" />
+      <Item value="Operation1`0" priority="2" />
+      <Item value="moderatorId" priority="0" />
+      <Item value="TransactionFactory`0" priority="5" />
+      <Item value="Transaction`0" priority="16" />
+      <Item value="get" priority="0" />
+      <Item value="trFactory" priority="10" />
+      <Item value="trList" priority="3" />
+      <Item value="Web" priority="0" />
+      <Item value="Mvc" priority="0" />
+      <Item value="transactions" priority="5" />
+      <Item value="odbConn" priority="4" />
+      <Item value="ownTransactions" priority="4" />
+      <Item value="odbTransaction" priority="4" />
+      <Item value="List&lt;Transaction&gt;" priority="0" />
+      <Item value="ownTransaction" priority="1" />
+      <Item value="isMatch" priority="2" />
+      <Item value="diffTransactions" priority="1" />
+      <Item value="odbTransactions" priority="1" />
+      <Item value="ot" priority="0" />
+      <Item value="odbTrans" priority="1" />
+      <Item value="from" priority="1" />
+      <Item value="join" priority="0" />
+      <Item value="on" priority="0" />
+      <Item value="odb" priority="0" />
+      <Item value="equals" priority="0" />
+      <Item value="own" priority="0" />
+      <Item value="select" priority="1" />
+      <Item value="where" priority="0" />
+      <Item value="LoadTransactions`0" priority="1" />
+      <Item value="_odbConn" priority="3" />
+      <Item value="odbConnection" priority="2" />
+      <Item value="Matching`0" priority="2" />
+      <Item value="transaction" priority="18" />
+      <Item value="IsMatch`0" priority="0" />
+      <Item value="transactionList" priority="1" />
+      <Item value="matchedTransactionsCount" priority="2" />
+      <Item value="cnt" priority="5" />
+      <Item value="_matchedTrnCount" priority="0" />
+      <Item value="matching" priority="1" />
+      <Item value="en" priority="1" />
+      <Item value="currentDate" priority="0" />
+      <Item value="transactionStatus" priority="1" />
+      <Item value="TransactionStatus" priority="1" />
+      <Item value="tr" priority="0" />
+      <Item value="transactionMatchingInterval" priority="0" />
+      <Item value="ICourseFilter`0" priority="1" />
+      <Item value="source" priority="2" />
+      <Item value="courses" priority="0" />
+      <Item value="sourse" priority="0" />
+      <Item value="other" priority="0" />
+      <Item value="MfoSelector" priority="0" />
+      <Item value="StatusUpdater`0" priority="0" />
+      <Item value="su" priority="0" />
+      <Item value="FilterValuesUpdater`0" priority="1" />
+      <Item value="FilterValuesUpdater" priority="1" />
+      <Item value="DateFrom" priority="0" />
+      <Item value="DateTo" priority="0" />
+      <Item value="Date" priority="0" />
+      <Item value="IOperationFilter`0" priority="2" />
+      <Item value="OldTender`0" priority="1" />
+      <Item value="Init`0" priority="0" />
+      <Item value="OldTender" priority="0" />
+      <Item value="takePartInAuction" priority="0" />
+      <Item value="Console`0" priority="0" />
+      <Item value="IOperSignFilter`0" priority="1" />
+      <Item value="fvu" priority="1" />
+      <Item value="EOperSign`0" priority="0" />
+      <Item value="OperSignSelector" priority="0" />
+      <Item value="OperationSign`0" priority="1" />
+      <Item value="OperSignName" priority="2" />
+      <Item value="SentToBranchAndPay" priority="0" />
+      <Item value="ViewContext`0" priority="0" />
+      <Item value="AcceptDeal`0" priority="0" />
+      <Item value="Payment`0" priority="9" />
+      <Item value="PaymentFactory`0" priority="0" />
+      <Item value="paymentFactory" priority="1" />
+      <Item value="PaymentFactory" priority="0" />
+      <Item value="payments" priority="4" />
+      <Item value="group" priority="0" />
+      <Item value="by" priority="0" />
+      <Item value="Info" priority="0" />
+      <Item value="g" priority="1" />
+      <Item value="EOperation`0" priority="0" />
+      <Item value="Paid" priority="0" />
+      <Item value="ExMarket" priority="0" />
+      <Item value="payment" priority="1" />
+      <Item value="DealCurId" priority="0" />
+      <Item value="paymentsHasSaved" priority="1" />
+      <Item value="Payment" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Math">
+      <Item value="Round`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.BaseUser">
+      <Item value="GetUserRole`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.User">
+      <Item value="CurrentUser" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.User">
+      <Item value="UserRoleId" priority="0" />
+      <Item value="UserInfo" priority="1" />
+      <Item value="RoleIds" priority="0" />
+      <Item value="Id" priority="368" />
+      <Item value="Podrid" priority="56" />
+      <Item value="Name" priority="27" />
+      <Item value="UserRoleIds" priority="42" />
+      <Item value="OfficeName" priority="28" />
+      <Item value="TabNum" priority="0" />
+      <Item value="CurrencyList" priority="8" />
+      <Item value="ModeratorOfficeIdList" priority="8" />
+      <Item value="GetUsefFromBase`0" priority="0" />
+      <Item value="RdId" priority="1" />
+      <Item value="InitUser`0" priority="0" />
+      <Item value="OfficeId" priority="229" />
+      <Item value="Language" priority="1" />
+      <Item value="Phone" priority="4" />
+      <Item value="UserIdOdb" priority="2" />
+      <Item value="ParentOfficeId" priority="4" />
+      <Item value="IsAutorized" priority="29" />
+      <Item value="DateClose" priority="0" />
+      <Item value="Okpo" priority="0" />
+      <Item value="SiteRoleIds" priority="0" />
+      <Item value="HasRole`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Count" priority="16" />
+      <Item value="Add`0" priority="310" />
+      <Item value="ToArray`0" priority="82" />
+      <Item value="ToList`1" priority="27" />
+      <Item value="Contains`0" priority="2" />
+      <Item value="First`1" priority="29" />
+      <Item value="FindLast`0" priority="0" />
+      <Item value="Distinct`1" priority="0" />
+      <Item value="Insert`0" priority="0" />
+      <Item value="AddRange`0" priority="2" />
+      <Item value="Clear`0" priority="0" />
+      <Item value="Any`1" priority="2" />
+      <Item value="Sum`1" priority="1" />
+      <Item value="OrderBy`2" priority="55" />
+      <Item value="Where`1" priority="116" />
+      <Item value="RemoveAt`0" priority="0" />
+      <Item value="RemoveAll`0" priority="0" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="Indexer" priority="0" />
+      <Item value="Select`2" priority="109" />
+      <Item value="AsReadOnly`0" priority="0" />
+      <Item value="GroupBy`4" priority="3" />
+      <Item value="GroupBy`2" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.UserEntity">
+      <Item value="DepId" priority="0" />
+      <Item value="Podrid" priority="2" />
+      <Item value="Name" priority="1" />
+      <Item value="Email" priority="0" />
+      <Item value="TabNum" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.MVC.SiteRoles">
+      <Item value="AdminBranch" priority="1" />
+      <Item value="DealerBranch" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.Certificate">
+      <Item value="UserName" priority="0" />
+      <Item value="Email" priority="0" />
+      <Item value="Podrid" priority="0" />
+      <Item value="TabNum" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToInt32`0" priority="211" />
+      <Item value="ToBoolean`0" priority="32" />
+      <Item value="ToDecimal`0" priority="0" />
+      <Item value="ToInt16`0" priority="0" />
+      <Item value="ToDateTime`0" priority="27" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="ChangeType`0" priority="49" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.MVC.SiteRoles">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Helpers.Helper">
+      <Item value="SiteRoleNames" priority="0" />
+      <Item value="GetId`0" priority="3" />
+      <Item value="ResourceString`0" priority="29" />
+      <Item value="GetResourceString`0" priority="101" />
+      <Item value="Round`0" priority="2" />
+      <Item value="GetCentreStatuses`0" priority="0" />
+      <Item value="ExtractOperation`0" priority="0" />
+      <Item value="GetTransactionStatuses`0" priority="0" />
+      <Item value="ExctractCourse`0" priority="0" />
+      <Item value="GetExchangeMarketNameF`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Helpers.SiteRoles">
+      <Item value="AdminBranch" priority="2" />
+      <Item value="AdminCentre" priority="2" />
+      <Item value="DealerBranch" priority="0" />
+      <Item value="FrontOfficeDealerBranch" priority="31" />
+      <Item value="MasterAdmin" priority="35" />
+      <Item value="Moderator" priority="3" />
+      <Item value="BackOfficeDealerCentre" priority="28" />
+      <Item value="BackOfficeDealerBranch" priority="28" />
+      <Item value="FrontOfficeDealerCentre" priority="56" />
+      <Item value="DealerFrontOfficeBranch" priority="223" />
+      <Item value="DealerBackOfficeBranch" priority="111" />
+      <Item value="DealerBackOffice" priority="251" />
+      <Item value="DealerFrontOffice" priority="223" />
+      <Item value="DealerRegion" priority="26" />
+      <Item value="AdminCurrencyControler" priority="53" />
+      <Item value="AdminBackOffice" priority="108" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.UserPresentation">
+      <Item value="TabNum" priority="0" />
+      <Item value="OfficeName" priority="56" />
+      <Item value="IsAutorized" priority="0" />
+      <Item value="Id" priority="83" />
+      <Item value="ParentOfficeId" priority="0" />
+      <Item value="Podrid" priority="135" />
+      <Item value="Name" priority="81" />
+      <Item value="OfficeId" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.WebSession">
+      <Item value="CurrentUser" priority="463" />
+      <Item value="SelectedCurrency" priority="71" />
+      <Item value="Status" priority="11" />
+      <Item value="Date" priority="32" />
+      <Item value="Operation" priority="176" />
+      <Item value="DateFrom" priority="5" />
+      <Item value="DateTo" priority="3" />
+      <Item value="OperSign" priority="112" />
+      <Item value="Podrid" priority="59" />
+      <Item value="SetValues`0" priority="28" />
+      <Item value="TransactionStatus" priority="1" />
+      <Item value="Course" priority="9" />
+      <Item value="ExchangeSettings" priority="107" />
+      <Item value="UserName" priority="77" />
+    </ItemStatistics>
+    <ItemStatistics item="JetBrains.ReSharper.Feature.Services.Asp.CodeCompletion.AspBasicCodeCompletionContext">
+      <Item value="ctx" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Helpers.DbConnector">
+      <Item value="Connection" priority="173" />
+      <Item value="GetCustomConnection`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.UserFactory">
+      <Item value="GetUsers`0" priority="108" />
+      <Item value="GetUser`0" priority="85" />
+      <Item value="SaveChanges`0" priority="2" />
+      <Item value="GetModerators`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbConnection">
+      <Item value="ReadAsList`1" priority="206" />
+      <Item value="ExecuteScalar`1" priority="25" />
+      <Item value="ExecuteNonQuery`0" priority="291" />
+      <Item value="ReadToCollection`1" priority="54" />
+      <Item value="BeginTransaction`0" priority="30" />
+      <Item value="ExecuteScalar`0" priority="54" />
+      <Item value="ExecuteReader`0" priority="26" />
+      <Item value="CreateCommand`0" priority="22" />
+      <Item value="ExecuteProcedure`0" priority="22" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDataRecord">
+      <Item value="GetValue`0" priority="1382" />
+      <Item value="ContainsColumn`0" priority="32" />
+      <Item value="GetValue`1" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Nullable`1">
+      <Item value="HasValue" priority="57" />
+      <Item value="Value" priority="127" />
+      <Item value="With`0" priority="171" />
+      <Item value="ToString`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDataReader">
+      <Item value="GetValue`0" priority="0" />
+      <Item value="Read`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.SiteRolesManager">
+      <Item value="GetRolesByUserPermissions`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="Select`2" priority="28" />
+      <Item value="Clear`0" priority="3" />
+      <Item value="Add`0" priority="3" />
+      <Item value="Contains`0" priority="61" />
+      <Item value="Where`1" priority="36" />
+      <Item value="First`1" priority="28" />
+      <Item value="SelectMany`3" priority="0" />
+      <Item value="ToArray`1" priority="1" />
+      <Item value="FirstOrDefault`1" priority="28" />
+      <Item value="ToList`1" priority="2" />
+      <Item value="GetType`0" priority="1" />
+      <Item value="GetMessageType`0" priority="0" />
+      <Item value="OrderBy`2" priority="27" />
+      <Item value="In`1" priority="0" />
+      <Item value="Remove`0" priority="26" />
+      <Item value="Take`1" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="Where`1" priority="136" />
+      <Item value="ToList`1" priority="763" />
+      <Item value="Select`2" priority="94" />
+      <Item value="ToString`0" priority="5" />
+      <Item value="Count`1" priority="36" />
+      <Item value="Concat`1" priority="2" />
+      <Item value="First`1" priority="31" />
+      <Item value="GetEnumerator`0" priority="3" />
+      <Item value="Distinct`1" priority="33" />
+      <Item value="Aggregate`3" priority="0" />
+      <Item value="GetTenderTotalSumByCurrency`0" priority="0" />
+      <Item value="TenderIdsToString`0" priority="2" />
+      <Item value="ToArray`1" priority="29" />
+      <Item value="Any`1" priority="5" />
+      <Item value="ValidateTendersBeforeExecute`0" priority="0" />
+      <Item value="FirstOrDefault`1" priority="1" />
+      <Item value="ApplyCentreStatusFilter`0" priority="0" />
+      <Item value="OrderBy`2" priority="275" />
+      <Item value="Cast`1" priority="1" />
+      <Item value="Except`1" priority="0" />
+      <Item value="Contains`1" priority="0" />
+      <Item value="Sum`1" priority="2" />
+      <Item value="All`1" priority="27" />
+      <Item value="ToDictionary`2" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.UserRole">
+      <Item value="In`1" priority="27" />
+      <Item value="Id" priority="56" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.UserRole">
+      <Item value="GetRolesByCurrentUserPermissions`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.HtmlHelper`1">
+      <Item value="Encode`0" priority="10" />
+      <Item value="CheckBox`0" priority="62" />
+      <Item value="CheckBoxFor`1" priority="60" />
+      <Item value="ResourceString`0" priority="122" />
+      <Item value="LabelFor`2" priority="27" />
+      <Item value="LabelForModel`0" priority="0" />
+      <Item value="HiddenFor`2" priority="69" />
+      <Item value="DisplayTextFor`2" priority="6" />
+      <Item value="DisplayText`0" priority="1" />
+      <Item value="TextBoxFor`2" priority="32" />
+      <Item value="DropDownListFor`2" priority="5" />
+      <Item value="DropDownList`0" priority="119" />
+      <Item value="ValidationSummary`0" priority="1" />
+      <Item value="ActionLink`0" priority="84" />
+      <Item value="ResourceActionLink`0" priority="64" />
+      <Item value="ResourceSubmitButton`0" priority="83" />
+      <Item value="BeginForm`0" priority="75" />
+      <Item value="Hidden`0" priority="70" />
+      <Item value="Label`0" priority="0" />
+      <Item value="TextAreaFor`2" priority="1" />
+      <Item value="EditorFor`2" priority="0" />
+      <Item value="TextBox`0" priority="87" />
+      <Item value="ResourceLabel`0" priority="1" />
+      <Item value="RenderPartial`0" priority="5" />
+      <Item value="TextArea`0" priority="27" />
+      <Item value="RegisterCss`0" priority="0" />
+      <Item value="DisplayFor`2" priority="26" />
+      <Item value="ResourceMenuActionLink`0" priority="82" />
+      <Item value="RegisterJS`0" priority="26" />
+      <Item value="ResourceButton`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.ua.com.pib.base.webaccess.Struct_Roles3">
+      <Item value="ROLE_ID" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.Mvc.FormMethod">
+      <Item value="Post" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="MinValue" priority="1" />
+      <Item value="Now" priority="213" />
+      <Item value="Parse`0" priority="0" />
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="93" />
+      <Item value="Format`0" priority="60" />
+      <Item value="IsNullOrEmpty`0" priority="193" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Data.DbType">
+      <Item value="DateTime" priority="85" />
+      <Item value="Date" priority="1" />
+      <Item value="Int32" priority="56" />
+      <Item value="Decimal" priority="31" />
+      <Item value="Int16" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.FormCollection">
+      <Item value="Keys" priority="0" />
+      <Item value="Cast`1" priority="0" />
+      <Item value="ProcessPostData`0" priority="2" />
+      <Item value="GetFormAction`0" priority="1" />
+      <Item value="CollectObjectIds`0" priority="31" />
+      <Item value="GetObjectData`0" priority="1" />
+      <Item value="CollectObjectIds`1" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Substring`0" priority="28" />
+      <Item value="StartsWith`0" priority="1" />
+      <Item value="Split`0" priority="82" />
+      <Item value="Contains`0" priority="54" />
+      <Item value="ToString`0" priority="31" />
+      <Item value="With`0" priority="0" />
+      <Item value="Replace`0" priority="34" />
+      <Item value="Select`2" priority="0" />
+      <Item value="SafeTrim`0" priority="0" />
+      <Item value="Equals`0" priority="1" />
+      <Item value="CompareCourses`0" priority="0" />
+      <Item value="Match`0" priority="1" />
+      <Item value="Length" priority="26" />
+      <Item value="PadLeft`0" priority="26" />
+      <Item value="PadRight`0" priority="26" />
+      <Item value="ToLower`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.StringSplitOptions">
+      <Item value="RemoveEmptyEntries" priority="27" />
+      <Item value="None" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.Dictionary`2">
+      <Item value="Add`0" priority="82" />
+      <Item value="Contains`1" priority="27" />
+      <Item value="ContainsKey`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.PostData">
+      <Item value="Add`0" priority="2" />
+      <Item value="Where`1" priority="0" />
+      <Item value="GetTenderIds`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Value" priority="112" />
+      <Item value="Key" priority="141" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.DateTime">
+      <Item value="ToShortDateString`0" priority="38" />
+      <Item value="Date" priority="88" />
+      <Item value="ToShortTimeString`0" priority="81" />
+      <Item value="ToOsFileDate`0" priority="27" />
+      <Item value="Year" priority="26" />
+      <Item value="Hour" priority="26" />
+      <Item value="Minute" priority="26" />
+      <Item value="Second" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.UserCurrency">
+      <Item value="GetAllCurrencies`0" priority="0" />
+      <Item value="CheckForView`0" priority="0" />
+      <Item value="CheckForProcessing`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Currency">
+      <Item value="CurName" priority="2" />
+      <Item value="CurId" priority="5" />
+      <Item value="CurDef" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.UserCurrency">
+      <Item value="CurId" priority="5" />
+      <Item value="AllowedProcessing" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Account">
+      <Item value="OfficeId" priority="4" />
+      <Item value="OperId" priority="5" />
+      <Item value="Id" priority="3" />
+      <Item value="CurId" priority="3" />
+      <Item value="Nls" priority="6" />
+      <Item value="CurNls" priority="2" />
+      <Item value="OperSign" priority="3" />
+      <Item value="OfficeName" priority="1" />
+      <Item value="Podrid" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.AccountFactory">
+      <Item value="GetAccounts`0" priority="2" />
+      <Item value="Save`0" priority="0" />
+      <Item value="Delete`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Office">
+      <Item value="OfficeId" priority="197" />
+      <Item value="Podrid" priority="138" />
+      <Item value="OfficeName" priority="113" />
+      <Item value="OfficeLevel" priority="58" />
+      <Item value="DateClose" priority="57" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Office">
+      <Item value="GetOffices`0" priority="58" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="In`1" priority="57" />
+      <Item value="ToString`0" priority="263" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Currency">
+      <Item value="GetAllCurrencies`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.EnumOperSign">
+      <Item value="ToString`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.EnumOperSign">
+      <Item value="CurrencyPosition" priority="2" />
+      <Item value="ClientCash" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.EnumOperation">
+      <Item value="Buy" priority="1" />
+      <Item value="Sell" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.EnumOperation">
+      <Item value="ToString`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbTransaction">
+      <Item value="Commit`0" priority="33" />
+      <Item value="Rollback`0" priority="7" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.HtmlHelper">
+      <Item value="ActionLink`0" priority="1" />
+      <Item value="DropDownList`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Boolean">
+      <Item value="ToString`0" priority="1" />
+      <Item value="GetHashCode`0" priority="30" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Moderator">
+      <Item value="ModeratorOfficeCount" priority="0" />
+      <Item value="ParentOfficeName" priority="0" />
+      <Item value="OfficeId" priority="0" />
+      <Item value="ParentOfficeId" priority="0" />
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Moderator">
+      <Item value="InitModerator`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.SelectListItem">
+      <Item value="Text" priority="1" />
+      <Item value="Value" priority="3" />
+      <Item value="Selected" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Signer">
+      <Item value="GetOfficialsByOfficeId`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.SignerFactory">
+      <Item value="GetOfficialsByOfficeId`0" priority="0" />
+      <Item value="SaveChanges`0" priority="1" />
+      <Item value="GetSigner`0" priority="0" />
+      <Item value="Delete`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Signer">
+      <Item value="OfficeId" priority="0" />
+      <Item value="Id" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.TenderPresentation">
+      <Item value="UserName" priority="0" />
+      <Item value="OfficeName" priority="0" />
+      <Item value="ParentOfficeName" priority="0" />
+      <Item value="Podrid" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Tender">
+      <Item value="InitTender`0" priority="0" />
+      <Item value="GetTotalVolumeInfo`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Tender">
+      <Item value="OfficeId" priority="3" />
+      <Item value="ParentOfficeId" priority="4" />
+      <Item value="InitSum" priority="2" />
+      <Item value="Rest" priority="65" />
+      <Item value="DocSum" priority="9" />
+      <Item value="CourseOrient" priority="84" />
+      <Item value="Course" priority="5" />
+      <Item value="TenderDate" priority="4" />
+      <Item value="Auction" priority="2" />
+      <Item value="UserId" priority="2" />
+      <Item value="Status" priority="67" />
+      <Item value="CreateDate" priority="2" />
+      <Item value="Oper" priority="12" />
+      <Item value="SellType" priority="4" />
+      <Item value="OperSign" priority="89" />
+      <Item value="CurId" priority="47" />
+      <Item value="Nls" priority="2" />
+      <Item value="CourseMorSign" priority="4" />
+      <Item value="SendDate" priority="1" />
+      <Item value="InfoFromBranch" priority="1" />
+      <Item value="InfoForBranch" priority="1" />
+      <Item value="CancelInfo" priority="2" />
+      <Item value="ExecuteSign" priority="5" />
+      <Item value="IncludeInTotal" priority="55" />
+      <Item value="IsLabeled" priority="28" />
+      <Item value="Purpose" priority="1" />
+      <Item value="KvDate" priority="10" />
+      <Item value="CourseClientRecommend" priority="1" />
+      <Item value="Commission" priority="2" />
+      <Item value="ExtraCommissionSum" priority="2" />
+      <Item value="ClientCode" priority="4" />
+      <Item value="ClientName" priority="4" />
+      <Item value="ClientSubjId" priority="3" />
+      <Item value="ClientCntrCode" priority="3" />
+      <Item value="ClientUahPodrid" priority="1" />
+      <Item value="ClientUahNls" priority="1" />
+      <Item value="ClientCurrPodrid" priority="1" />
+      <Item value="ClientCurrNls" priority="1" />
+      <Item value="Id" priority="14" />
+      <Item value="GetHashCode`0" priority="0" />
+      <Item value="CurDef" priority="2" />
+      <Item value="CurName" priority="1" />
+      <Item value="OfficeName" priority="1" />
+      <Item value="ParentOfficeName" priority="0" />
+      <Item value="OperName" priority="0" />
+      <Item value="StatusName" priority="1" />
+      <Item value="SendToCentre`0" priority="0" />
+      <Item value="WasEdited" priority="0" />
+      <Item value="Delete`0" priority="0" />
+      <Item value="Cancel`0" priority="1" />
+      <Item value="CreateDeal`0" priority="27" />
+      <Item value="Operation" priority="30" />
+      <Item value="Init`0" priority="0" />
+      <Item value="Podrid" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.TenderFactory">
+      <Item value="Save`0" priority="2" />
+      <Item value="GetTenders`0" priority="33" />
+      <Item value="GetTender`0" priority="2" />
+      <Item value="ErrorMessage" priority="2" />
+      <Item value="GetCurrencyIds`0" priority="0" />
+      <Item value="GetTendersByModerator`0" priority="0" />
+      <Item value="UpdateMatched`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.EnumSellType">
+      <Item value="StrongRequirementSale" priority="0" />
+      <Item value="RequirementSale" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Exception">
+      <Item value="Message" priority="88" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.EnumSellType">
+      <Item value="With`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Client">
+      <Item value="GetClientsFromOdb`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.HtmlControls.HtmlTableCell">
+      <Item value="input" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpResponse">
+      <Item value="Write`0" priority="139" />
+      <Item value="Redirect`0" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Routing.RouteCollection">
+      <Item value="MapRoute`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Client">
+      <Item value="ClientName" priority="3" />
+      <Item value="ContrCode" priority="2" />
+      <Item value="SubjId" priority="1" />
+      <Item value="ClientCode" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="Append`0" priority="1" />
+      <Item value="AppendFormat`0" priority="1" />
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.ClientsSelectListItem">
+      <Item value="Value" priority="0" />
+      <Item value="SubjId" priority="0" />
+      <Item value="CntrCode" priority="0" />
+      <Item value="Text" priority="0" />
+      <Item value="Selected" priority="0" />
+      <Item value="Okpo" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.HttpUtility">
+      <Item value="HtmlEncode`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Decimal">
+      <Item value="ToString`0" priority="42" />
+      <Item value="With`0" priority="29" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Decimal">
+      <Item value="TryParse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Helpers.FormAction">
+      <Item value="None" priority="0" />
+      <Item value="Send" priority="2" />
+      <Item value="Delete" priority="34" />
+      <Item value="Cancel" priority="4" />
+      <Item value="Execute" priority="5" />
+      <Item value="SendToBranch" priority="2" />
+      <Item value="SendToBranchAndPayment" priority="2" />
+      <Item value="Print" priority="0" />
+      <Item value="BackToCreatedStatus" priority="2" />
+      <Item value="Update" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.FormAction">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.CustomMessage">
+      <Item value="Type" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.MessageType">
+      <Item value="Info" priority="82" />
+      <Item value="Error" priority="37" />
+      <Item value="Warning" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Enum">
+      <Item value="GetValues`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.TenderStatus">
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.TenderStatus">
+      <Item value="Created" priority="1" />
+      <Item value="Cancelled" priority="1" />
+      <Item value="Sent" priority="55" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Operation">
+      <Item value="Buy" priority="9" />
+      <Item value="Sell" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Operation">
+      <Item value="ToString`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Web.Mvc.MvcHtmlString">
+      <Item value="Empty" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="ToString`0" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Status">
+      <Item value="Id" priority="0" />
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.TotalVolumeInfoEntity">
+      <Item value="TotalSum" priority="3" />
+      <Item value="AverageCourse" priority="1" />
+      <Item value="Amount" priority="0" />
+      <Item value="CurId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Controllers.TendersController">
+      <Item value="RedirectToAction`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.SumPair">
+      <Item value="Buy" priority="2" />
+      <Item value="Sell" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Hashtable">
+      <Item value="Add`0" priority="0" />
+      <Item value="ContainsKey`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.DictionaryEntry">
+      <Item value="Key" priority="0" />
+      <Item value="Value" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.OfficeLevel">
+      <Item value="Centre" priority="2" />
+      <Item value="Branch" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.Mvc.ViewDataDictionary">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.OrderFactory">
+      <Item value="GetOrder`0" priority="34" />
+      <Item value="Save`0" priority="4" />
+      <Item value="GetOrders`0" priority="3" />
+      <Item value="Delete`0" priority="0" />
+      <Item value="GetMaxOrderNumber`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Deal">
+      <Item value="DocSum" priority="25" />
+      <Item value="TenderDate" priority="0" />
+      <Item value="TenderId" priority="10" />
+      <Item value="Equivalent" priority="10" />
+      <Item value="Course" priority="41" />
+      <Item value="CurId" priority="8" />
+      <Item value="Oper" priority="2" />
+      <Item value="OperSign" priority="58" />
+      <Item value="Id" priority="39" />
+      <Item value="OrderId" priority="5" />
+      <Item value="Status" priority="5" />
+      <Item value="CreateDate" priority="1" />
+      <Item value="ExCode" priority="4" />
+      <Item value="UserId" priority="1" />
+      <Item value="Rest" priority="0" />
+      <Item value="OfficeName" priority="2" />
+      <Item value="Nls" priority="0" />
+      <Item value="Podrid" priority="1" />
+      <Item value="Deleted" priority="7" />
+      <Item value="Operation" priority="34" />
+      <Item value="DeltaSum" priority="2" />
+      <Item value="TenderCourse" priority="1" />
+      <Item value="CourseClient" priority="54" />
+      <Item value="Commission" priority="0" />
+      <Item value="TenderCourseOrient" priority="1" />
+      <Item value="InfoForBranch" priority="0" />
+      <Item value="OrderDate" priority="0" />
+      <Item value="CurName" priority="0" />
+      <Item value="OfficeId" priority="0" />
+      <Item value="ParentOfficeId" priority="0" />
+      <Item value="CourseMor" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Order">
+      <Item value="Deals" priority="29" />
+      <Item value="ExistDeal`0" priority="0" />
+      <Item value="AddDealToOrder`0" priority="0" />
+      <Item value="CurId" priority="9" />
+      <Item value="OperSign" priority="32" />
+      <Item value="Oper" priority="2" />
+      <Item value="IsNew" priority="0" />
+      <Item value="Id" priority="76" />
+      <Item value="DocSum" priority="30" />
+      <Item value="Course" priority="13" />
+      <Item value="Equivalent" priority="32" />
+      <Item value="ExchangeMarket" priority="5" />
+      <Item value="Number" priority="86" />
+      <Item value="Status" priority="37" />
+      <Item value="CreateDate" priority="1" />
+      <Item value="Info" priority="1" />
+      <Item value="InfoForPay" priority="1" />
+      <Item value="InfoForBranch" priority="1" />
+      <Item value="DealWithNBU" priority="2" />
+      <Item value="IsFakeOrder" priority="0" />
+      <Item value="RemoveDealFromOrder`0" priority="1" />
+      <Item value="DealsCount" priority="28" />
+      <Item value="OperName" priority="0" />
+      <Item value="SendDate" priority="3" />
+      <Item value="Operation" priority="62" />
+      <Item value="ErrorMessage" priority="0" />
+      <Item value="UpdateCourse`0" priority="0" />
+      <Item value="SendToBranch`0" priority="0" />
+      <Item value="SendToBranchAndPay`0" priority="0" />
+      <Item value="SetStatus`0" priority="0" />
+      <Item value="CurDef" priority="0" />
+      <Item value="CreatePayments`0" priority="0" />
+      <Item value="PaymentsCount" priority="27" />
+      <Item value="PaymentsPaidCount" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:ExecutePageVM">
+      <Item value="Tenders" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Views.TenderExecute">
+      <Item value="OrderNumber" priority="3" />
+      <Item value="Tenders" priority="3" />
+      <Item value="TenderIds" priority="3" />
+      <Item value="OrderDate" priority="28" />
+      <Item value="ExecuteType" priority="1" />
+      <Item value="ExchangeMarket" priority="28" />
+      <Item value="DocSum" priority="3" />
+      <Item value="CurId" priority="113" />
+      <Item value="OperSign" priority="82" />
+      <Item value="Oper" priority="1" />
+      <Item value="OperId" priority="109" />
+      <Item value="ExecuteMethod" priority="4" />
+      <Item value="Currencies" priority="6" />
+      <Item value="SelectedCurrency" priority="2" />
+      <Item value="Course" priority="1" />
+      <Item value="Operation" priority="28" />
+      <Item value="ExistedOrders" priority="1" />
+      <Item value="Courses" priority="76" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Enum.OrderStatus">
+      <Item value="Created" priority="31" />
+      <Item value="SentToBranchAndPay" priority="4" />
+      <Item value="SentToBranch" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Views.ExecuteType">
+      <Item value="Single" priority="1" />
+      <Item value="Multiply" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.ExchangeMarket">
+      <Item value="MVRU" priority="28" />
+      <Item value="VVR" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Order">
+      <Item value="GetExchangeMarketFromOrderNumber`0" priority="0" />
+      <Item value="InitTender`0" priority="0" />
+      <Item value="InitOrder`0" priority="1" />
+      <Item value="GetOrderNumber`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.ExchangeMarket">
+      <Item value="In`1" priority="0" />
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Deal">
+      <Item value="InitDeal`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.CommonEntity">
+      <Item value="CurId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Enum.OrderStatus">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.OperSign">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Views.ExecuteMethod">
+      <Item value="ByCourse" priority="58" />
+      <Item value="Single" priority="2" />
+      <Item value="Multiply" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Views.ExecuteMethod">
+      <Item value="In`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpRequestBase">
+      <Item value="Form" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.DealFactory">
+      <Item value="Insert`0" priority="0" />
+      <Item value="GetDeals`0" priority="28" />
+      <Item value="GetDeal`0" priority="0" />
+      <Item value="Save`0" priority="26" />
+      <Item value="Update`0" priority="27" />
+      <Item value="ErrorMessage" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Views.SplitDeal">
+      <Item value="OldSum" priority="4" />
+      <Item value="DealId" priority="2" />
+      <Item value="MatchedOrders" priority="1" />
+      <Item value="NewOrderNumber" priority="0" />
+      <Item value="NewOrderDealSum" priority="2" />
+      <Item value="CurrentOrder" priority="2" />
+      <Item value="OrderId" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.FilterStatus">
+      <Item value="All" priority="0" />
+      <Item value="Recived" priority="3" />
+      <Item value="ReadyForExecute" priority="1" />
+      <Item value="NotMatched" priority="2" />
+      <Item value="Cancelled" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.FilterStatus">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.DealStatus">
+      <Item value="Sent" priority="27" />
+      <Item value="Created" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.TenderDealEntity">
+      <Item value="CurId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.DealPresentation">
+      <Item value="OrderDate" priority="1" />
+      <Item value="SendDate" priority="0" />
+      <Item value="OrderNumber" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.IExchangeFilter">
+      <Item value="Operation" priority="2" />
+      <Item value="OperSign" priority="0" />
+      <Item value="OperName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Operation1">
+      <Item value="Operation" priority="1" />
+      <Item value="OperName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Transaction">
+      <Item value="TenderId" priority="8" />
+      <Item value="TrId" priority="6" />
+      <Item value="TrDate" priority="10" />
+      <Item value="CurId" priority="7" />
+      <Item value="Delete`0" priority="1" />
+      <Item value="Detail" priority="2" />
+      <Item value="TrSum" priority="2" />
+      <Item value="KvSum" priority="4" />
+      <Item value="Podrid" priority="5" />
+      <Item value="GetHashCode`0" priority="0" />
+      <Item value="Id" priority="5" />
+      <Item value="KvDate" priority="6" />
+      <Item value="CurDef" priority="2" />
+      <Item value="Deleted" priority="9" />
+      <Item value="OfficeName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.TransactionFactory">
+      <Item value="LoadTransactionsFromOdb`0" priority="0" />
+      <Item value="GetTransactionsFromOdb`0" priority="0" />
+      <Item value="ErrorMessage" priority="1" />
+      <Item value="GetTransactions`0" priority="1" />
+      <Item value="InsertTransactions`0" priority="0" />
+      <Item value="LoadTransactions`0" priority="0" />
+      <Item value="Update`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Data.IDbDataParameter">
+      <Item value="With`0" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Transaction">
+      <Item value="Matching`0" priority="0" />
+      <Item value="ErrorMessage" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerator`1">
+      <Item value="MoveNext`0" priority="0" />
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Configuration.ConfigurationManager">
+      <Item value="AppSettings" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Int32">
+      <Item value="TryParse`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.ICourseFilter">
+      <Item value="CourseOrient" priority="1" />
+      <Item value="CourseMorSign" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.StatusUpdater">
+      <Item value="OperId" priority="0" />
+      <Item value="CurId" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="Write`0" priority="0" />
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.OperationSign">
+      <Item value="OperSign" priority="2" />
+      <Item value="OperSignName" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Helpers.FilterValuesUpdater">
+      <Item value="OperSign" priority="1" />
+      <Item value="UserName" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.IOperSignFilter">
+      <Item value="OperSign" priority="1" />
+      <Item value="OperSignName" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.PaymentFactory">
+      <Item value="Save`0" priority="0" />
+      <Item value="GetPayments`0" priority="81" />
+      <Item value="Update`0" priority="53" />
+      <Item value="ErrorMessage" priority="26" />
+      <Item value="Delete`0" priority="26" />
+      <Item value="UnPaid`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IGrouping`2">
+      <Item value="Sum`1" priority="0" />
+      <Item value="Count`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Payment">
+      <Item value="OrderId" priority="1" />
+      <Item value="CreateDate" priority="55" />
+      <Item value="Paid" priority="108" />
+      <Item value="CurId" priority="83" />
+      <Item value="DocSum" priority="28" />
+      <Item value="Operation" priority="83" />
+      <Item value="DealCurId" priority="56" />
+      <Item value="Course" priority="54" />
+      <Item value="ExCode" priority="55" />
+      <Item value="OfficeId" priority="28" />
+      <Item value="Equivalent" priority="28" />
+      <Item value="Id" priority="54" />
+      <Item value="PayDate" priority="81" />
+      <Item value="OsFileName" priority="81" />
+      <Item value="UserId" priority="54" />
+      <Item value="OperSign" priority="53" />
+      <Item value="Podrid" priority="53" />
+      <Item value="DocNlsK" priority="72" />
+      <Item value="DocNls" priority="107" />
+      <Item value="Edrpou" priority="26" />
+      <Item value="OfficeName" priority="55" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.Payment">
+      <Item value="InitPayment`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="public" priority="2461" />
+      <Item value="ActionResult`0" priority="383" />
+      <Item value="int" priority="1185" />
+      <Item value="HttpRequestValidationException`0" priority="31" />
+      <Item value="new" priority="1919" />
+      <Item value="PaymentFactory" priority="88" />
+      <Item value="conn" priority="917" />
+      <Item value="pFactory" priority="255" />
+      <Item value="PaymentsCount" priority="32" />
+      <Item value="return" priority="1562" />
+      <Item value="View`0" priority="351" />
+      <Item value="payments" priority="128" />
+      <Item value="Html" priority="816" />
+      <Item value="item" priority="1376" />
+      <Item value="null" priority="506" />
+      <Item value="p" priority="831" />
+      <Item value="r" priority="1655" />
+      <Item value="DateTime`0" priority="603" />
+      <Item value="decimal" priority="351" />
+      <Item value="EOperation`0" priority="386" />
+      <Item value="string" priority="3738" />
+      <Item value="ExchangeMarket`0" priority="219" />
+      <Item value="UserId" priority="162" />
+      <Item value="WebSession`0" priority="1088" />
+      <Item value="PaymentsPaidCount" priority="32" />
+      <Item value="exchangeMarket" priority="324" />
+      <Item value="model" priority="289" />
+      <Item value="FormCollection`0" priority="223" />
+      <Item value="form" priority="385" />
+      <Item value="Convert`0" priority="347" />
+      <Item value="FilterValuesUpdater" priority="28" />
+      <Item value="out" priority="63" />
+      <Item value="_messages" priority="223" />
+      <Item value="tList" priority="223" />
+      <Item value="TenderFactory`0" priority="31" />
+      <Item value="tFactory" priority="31" />
+      <Item value="t" priority="634" />
+      <Item value="curId" priority="64" />
+      <Item value="oper" priority="64" />
+      <Item value="Dictionary" priority="217" />
+      <Item value="SchemaSerializationMode`0" priority="31" />
+      <Item value="sDictionary" priority="32" />
+      <Item value="EOperSign`0" priority="215" />
+      <Item value="x" priority="127" />
+      <Item value="foreach" priority="863" />
+      <Item value="KeyValuePair" priority="188" />
+      <Item value="List" priority="383" />
+      <Item value="KeyValuePair&lt;string,string&gt;" priority="29" />
+      <Item value="OperSign" priority="119" />
+      <Item value="CourseOrient" priority="26" />
+      <Item value="_conn" priority="351" />
+      <Item value="query" priority="479" />
+      <Item value="date" priority="64" />
+      <Item value="var" priority="1304" />
+      <Item value="oFactory" priority="31" />
+      <Item value="static" priority="445" />
+      <Item value="number" priority="63" />
+      <Item value="maxOrderNumber" priority="63" />
+      <Item value="Order`0" priority="128" />
+      <Item value="Deal" priority="28" />
+      <Item value="else" priority="191" />
+      <Item value="tex" priority="255" />
+      <Item value="pair" priority="160" />
+      <Item value="Course" priority="32" />
+      <Item value="tender" priority="95" />
+      <Item value="if" priority="1375" />
+      <Item value="courses" priority="31" />
+      <Item value="course" priority="96" />
+      <Item value="operSign" priority="64" />
+      <Item value="executeMethod" priority="31" />
+      <Item value="ExecuteMethod`0" priority="63" />
+      <Item value="true" priority="449" />
+      <Item value="T`0" priority="63" />
+      <Item value="IConvertible`0" priority="63" />
+      <Item value="object" priority="350" />
+      <Item value="where" priority="31" />
+      <Item value="IServiceProvider`0" priority="31" />
+      <Item value="TenderStatus`0" priority="63" />
+      <Item value="OrderStatus`0" priority="31" />
+      <Item value="using" priority="414" />
+      <Item value="DbConnector`0" priority="92" />
+      <Item value="IEnumerable" priority="801" />
+      <Item value="Payment`0" priority="218" />
+      <Item value="List&lt;Payment&gt;" priority="28" />
+      <Item value="pList" priority="63" />
+      <Item value="id" priority="128" />
+      <Item value="paymentIds" priority="223" />
+      <Item value="Select`2" priority="26" />
+      <Item value="GetPayment`0" priority="32" />
+      <Item value="RedirectToAction`0" priority="127" />
+      <Item value="Details" priority="98" />
+      <Item value="ViewData" priority="511" />
+      <Item value="orderId" priority="127" />
+      <Item value="Create`0" priority="31" />
+      <Item value="GenerateOs" priority="32" />
+      <Item value="this" priority="128" />
+      <Item value="String`0" priority="31" />
+      <Item value="StringBuilder" priority="28" />
+      <Item value="PaymentList" priority="28" />
+      <Item value="payment" priority="160" />
+      <Item value="ExchangeExtensions" priority="28" />
+      <Item value="OsFile" priority="52" />
+      <Item value="Payment" priority="25" />
+      <Item value="Exchange" priority="95" />
+      <Item value="AlexK" priority="31" />
+      <Item value="PIB" priority="26" />
+      <Item value="Extensions" priority="26" />
+      <Item value="Models" priority="58" />
+      <Item value="partial" priority="30" />
+      <Item value="switch" priority="31" />
+      <Item value="case" priority="63" />
+      <Item value="VVR" priority="16" />
+      <Item value="break" priority="63" />
+      <Item value="default" priority="31" />
+      <Item value="Helper`0" priority="161" />
+      <Item value="d" priority="129" />
+      <Item value="Count`1" priority="26" />
+      <Item value="Update`0" priority="192" />
+      <Item value="DbType`0" priority="191" />
+      <Item value="bool" priority="511" />
+      <Item value="private" priority="256" />
+      <Item value="throw" priority="31" />
+      <Item value="Exception" priority="28" />
+      <Item value="order" priority="95" />
+      <Item value="CustomMessage" priority="172" />
+      <Item value="volatile" priority="31" />
+      <Item value="void" priority="282" />
+      <Item value="PaymentFactory`0" priority="31" />
+      <Item value="paymetId" priority="31" />
+      <Item value="controllerName" priority="31" />
+      <Item value="actionName" priority="95" />
+      <Item value="htmlAttributes" priority="63" />
+      <Item value="currentActionName" priority="63" />
+      <Item value="currentControllerName" priority="63" />
+      <Item value="conrollerName" priority="63" />
+      <Item value="className" priority="63" />
+      <Item value="ImageField`0" priority="31" />
+      <Item value="currentEntityValues" priority="31" />
+      <Item value="Dictionary&lt;string,string&gt;" priority="57" />
+      <Item value="dict" priority="63" />
+      <Item value="Int32`0" priority="65" />
+      <Item value="as" priority="31" />
+      <Item value="Request" priority="191" />
+      <Item value="Response" priority="282" />
+      <Item value="OrderFactory`0" priority="31" />
+      <Item value="orderFactory" priority="32" />
+      <Item value="GetOsFileName`0" priority="31" />
+      <Item value="n" priority="31" />
+      <Item value="osFileName" priority="63" />
+      <Item value="HttpPost" priority="95" />
+      <Item value="FormAction`0" priority="31" />
+      <Item value="Getpayments`0" priority="31" />
+      <Item value="UnPaid`0" priority="31" />
+      <Item value="paymentId" priority="31" />
+      <Item value="u" priority="550" />
+      <Item value="DealFactory" priority="29" />
+      <Item value="Deal`0" priority="127" />
+      <Item value="ids" priority="31" />
+      <Item value="GetDeal`0" priority="32" />
+      <Item value="dFactory" priority="96" />
+      <Item value="dealIds" priority="31" />
+      <Item value="deal" priority="159" />
+      <Item value="courseMor" priority="31" />
+      <Item value="deals" priority="31" />
+      <Item value="false" priority="287" />
+      <Item value="CurDef" priority="31" />
+      <Item value="CurName" priority="31" />
+      <Item value="OperSignName" priority="31" />
+      <Item value="message" priority="160" />
+      <Item value="UnfilledCourseMorCount`0" priority="31" />
+      <Item value="IDbConnection`0" priority="31" />
+      <Item value="List&lt;CustomMessage&gt;" priority="28" />
+      <Item value="unfilledCourseMorCnt" priority="31" />
+      <Item value="messages" priority="321" />
+      <Item value="Text" priority="224" />
+      <Item value="Type" priority="125" />
+      <Item value="MessageType`0" priority="125" />
+      <Item value="DealStatus`0" priority="31" />
+      <Item value="ExchangeSettings`0" priority="191" />
+      <Item value="ExchangeSettings" priority="91" />
+      <Item value="settings" priority="191" />
+      <Item value="System" priority="30" />
+      <Item value="Data" priority="26" />
+      <Item value="List&lt;KeyValuePair&lt;string,string&gt;&gt;" priority="28" />
+      <Item value="ConvertRecordToObject&lt;KeyValuePair&lt;string,string&gt;&gt;" priority="28" />
+      <Item value="ref" priority="63" />
+      <Item value="setting" priority="95" />
+      <Item value="Hashtable" priority="28" />
+      <Item value="ht" priority="95" />
+      <Item value="typeof" priority="95" />
+      <Item value="while" priority="31" />
+      <Item value="BindingFlags`0" priority="63" />
+      <Item value="result" priority="127" />
+      <Item value="exchangeSettings" priority="161" />
+      <Item value="property" priority="63" />
+      <Item value="ExecutionEngineException`0" priority="31" />
+      <Item value="try" priority="95" />
+      <Item value="errorMessage" priority="63" />
+      <Item value="ex" priority="95" />
+      <Item value="Title" priority="91" />
+      <Item value="DateTime" priority="28" />
+      <Item value="limitTime" priority="26" />
+      <Item value="RedirectResult`0" priority="31" />
+      <Item value="Office`0" priority="245" />
+      <Item value="offices" priority="128" />
+      <Item value="SelectListItem" priority="113" />
+      <Item value="o" priority="291" />
+      <Item value="Value" priority="126" />
+      <Item value="officeList" priority="31" />
+      <Item value="SelectListItem`0" priority="95" />
+      <Item value="UserPresentation`0" priority="31" />
+      <Item value="officeId" priority="95" />
+      <Item value="GetUsers`0" priority="31" />
+      <Item value="User`0" priority="31" />
+      <Item value="userId" priority="159" />
+      <Item value="users" priority="127" />
+      <Item value="userFactory" priority="127" />
+      <Item value="userList" priority="31" />
+      <Item value="User" priority="31" />
+      <Item value="Index" priority="32" />
+      <Item value="Home" priority="32" />
+      <Item value="SiteRoles`0" priority="287" />
+      <Item value="role" priority="31" />
+      <Item value="from" priority="31" />
+      <Item value="Office" priority="28" />
+      <Item value="OfficeId" priority="64" />
+      <Item value="DateClose" priority="27" />
+      <Item value="OfficeLevel" priority="32" />
+      <Item value="Podrid" priority="32" />
+      <Item value="TendersTransfer" priority="31" />
+      <Item value="office" priority="416" />
+      <Item value="conn1" priority="31" />
+      <Item value="cnt" priority="31" />
+      <Item value="user" priority="192" />
+      <Item value="Selected" priority="32" />
+      <Item value="selectedOffices" priority="31" />
+      <Item value="List&lt;SiteRoles&gt;" priority="28" />
+      <Item value="roles" priority="159" />
+      <Item value="ur" priority="95" />
+      <Item value="UserName" priority="97" />
+      <Item value="username" priority="32" />
+      <Item value="fvu" priority="63" />
+      <Item value="Message`0" priority="223" />
+      <Item value="_errorMessage" priority="63" />
+      <Item value="Save`0" priority="31" />
+      <Item value="tran" priority="31" />
+      <Item value="m" priority="703" />
+      <Item value="Message" priority="115" />
+      <Item value="UserFactory`0" priority="31" />
+      <Item value="MessageFactory" priority="86" />
+      <Item value="mFactory" priority="191" />
+      <Item value="Id" priority="58" />
+      <Item value="Date" priority="32" />
+      <Item value="OfficeName" priority="98" />
+      <Item value="OfficeNameRcv" priority="32" />
+      <Item value="OfficeRcv" priority="32" />
+      <Item value="ParentId" priority="32" />
+      <Item value="Read" priority="64" />
+      <Item value="TenderId" priority="32" />
+      <Item value="UserRcv" priority="32" />
+      <Item value="UserNameRcv" priority="65" />
+      <Item value="UserFactory" priority="28" />
+      <Item value="Conversations" priority="60" />
+      <Item value="MessageFactory`0" priority="31" />
+      <Item value="messageFactory" priority="64" />
+      <Item value="CustomMessage`0" priority="31" />
+      <Item value="UserMessage" priority="29" />
+      <Item value="userMessage" priority="65" />
+      <Item value="url" priority="31" />
+      <Item value="absUri" priority="63" />
+      <Item value="StringSplitOptions`0" priority="95" />
+      <Item value="absPath" priority="69" />
+      <Item value="Length" priority="26" />
+      <Item value="ResolveClientUrl`0" priority="31" />
+      <Item value="Model" priority="63" />
+      <Item value="UnreadCount" priority="32" />
+      <Item value="Recepient`0" priority="63" />
+      <Item value="mask" priority="95" />
+      <Item value="Recepient" priority="28" />
+      <Item value="Name" priority="32" />
+      <Item value="Recipients" priority="32" />
+      <Item value="recepients" priority="31" />
+      <Item value="List&lt;Recepient&gt;" priority="28" />
+      <Item value="enum" priority="30" />
+      <Item value="RecipientType`0" priority="63" />
+      <Item value="List&lt;Message&gt;" priority="28" />
+      <Item value="SendMsg" priority="32" />
+      <Item value="script" priority="31" />
+    </ItemStatistics>
+    <ItemStatistics item="AspCodeCompletionContext">
+      <Item value="tr" priority="83" />
+      <Item value="td" priority="153" />
+      <Item value="br" priority="55" />
+      <Item value="align" priority="6" />
+      <Item value="left" priority="84" />
+      <Item value="style" priority="99" />
+      <Item value="text-align" priority="31" />
+      <Item value="id" priority="69" />
+      <Item value="acccountsContent" priority="13" />
+      <Item value="table" priority="34" />
+      <Item value="hr" priority="6" />
+      <Item value="colspan" priority="20" />
+      <Item value="div" priority="259" />
+      <Item value="alignment-adjust" priority="15" />
+      <Item value="span" priority="34" />
+      <Item value="class" priority="178" />
+      <Item value="th" priority="20" />
+      <Item value="input" priority="34" />
+      <Item value="type" priority="48" />
+      <Item value="checkbox" priority="13" />
+      <Item value="disabled" priority="20" />
+      <Item value="sum" priority="6" />
+      <Item value="DocNlsK" priority="5" />
+      <Item value="clear" priority="41" />
+      <Item value="a" priority="13" />
+      <Item value="href" priority="20" />
+      <Item value="margin-top" priority="7" />
+      <Item value="title" priority="6" />
+      <Item value="UserName" priority="9" />
+      <Item value="userMessageListItem" priority="6" />
+      <Item value="text" priority="13" />
+      <Item value="float" priority="15" />
+      <Item value="right" priority="9" />
+      <Item value="margin-left" priority="15" />
+      <Item value="newMessageLink" priority="6" />
+      <Item value="userName" priority="13" />
+      <Item value="width" priority="15" />
+      <Item value="officeNameTitle" priority="6" />
+      <Item value="base" priority="6" />
+      <Item value="script" priority="20" />
+      <Item value="text/javascript" priority="20" />
+      <Item value="&lt;" priority="6" />
+      <Item value="recipientList" priority="6" />
+      <Item value="autocomplete" priority="13" />
+      <Item value="item" priority="9" />
+      <Item value="OfficeName" priority="7" />
+      <Item value="border" priority="9" />
+      <Item value="height" priority="9" />
+      <Item value="background-color" priority="9" />
+      <Item value="red" priority="9" />
+      <Item value="button" priority="6" />
+      <Item value="onclick" priority="6" />
+      <Item value="UIButton" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="CssCodeCompletionContext">
+      <Item value="text-align" priority="9" />
+      <Item value="left" priority="44" />
+      <Item value="alignment-adjust" priority="1" />
+      <Item value="margin-left" priority="37" />
+      <Item value="color" priority="35" />
+      <Item value="darkgreen" priority="5" />
+      <Item value="span" priority="5" />
+      <Item value="warning" priority="4" />
+      <Item value="background-color" priority="36" />
+      <Item value="white" priority="6" />
+      <Item value="font-weight" priority="11" />
+      <Item value="bold" priority="13" />
+      <Item value="background" priority="5" />
+      <Item value="display" priority="27" />
+      <Item value="table" priority="19" />
+      <Item value="margin-top" priority="12" />
+      <Item value="z-index" priority="5" />
+      <Item value="padding-top" priority="11" />
+      <Item value="menu" priority="9" />
+      <Item value="padding-left" priority="11" />
+      <Item value="margin-right" priority="11" />
+      <Item value="a" priority="17" />
+      <Item value="selected" priority="9" />
+      <Item value="width" priority="19" />
+      <Item value="min-width" priority="5" />
+      <Item value="block" priority="16" />
+      <Item value="inline-block" priority="21" />
+      <Item value="flexbox" priority="4" />
+      <Item value="inline-flexbox" priority="4" />
+      <Item value="run-in" priority="5" />
+      <Item value="table-row" priority="4" />
+      <Item value="yellow" priority="10" />
+      <Item value="word-spacing" priority="5" />
+      <Item value="word-wrap" priority="5" />
+      <Item value="white-space" priority="3" />
+      <Item value="nowrap" priority="6" />
+      <Item value="inline" priority="6" />
+      <Item value="padding" priority="21" />
+      <Item value="hover" priority="14" />
+      <Item value="border" priority="30" />
+      <Item value="border-top" priority="3" />
+      <Item value="officeName" priority="4" />
+      <Item value="messageText" priority="4" />
+      <Item value="userName" priority="4" />
+      <Item value="float" priority="41" />
+      <Item value="right" priority="22" />
+      <Item value="margin-bottom" priority="11" />
+      <Item value="font-style" priority="11" />
+      <Item value="italic" priority="13" />
+      <Item value="margin" priority="9" />
+      <Item value="date" priority="4" />
+      <Item value="div" priority="5" />
+      <Item value="font-size" priority="11" />
+      <Item value="height" priority="18" />
+      <Item value="padding-right" priority="9" />
+      <Item value="position" priority="17" />
+      <Item value="absolute" priority="13" />
+      <Item value="padding-bottom" priority="11" />
+      <Item value="office" priority="5" />
+      <Item value="unreadCnt" priority="4" />
+      <Item value="top" priority="5" />
+      <Item value="td" priority="5" />
+      <Item value="cursor" priority="17" />
+      <Item value="default" priority="6" />
+      <Item value="pointer" priority="20" />
+      <Item value="none" priority="27" />
+      <Item value="border-left" priority="5" />
+      <Item value="border-right" priority="5" />
+      <Item value="wheat" priority="4" />
+      <Item value="violet" priority="4" />
+      <Item value="recItem" priority="4" />
+      <Item value="steelblue" priority="4" />
+      <Item value="border-style" priority="5" />
+      <Item value="dashed" priority="4" />
+      <Item value="dotted" priority="4" />
+      <Item value="red" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.EOperation">
+      <Item value="Buy" priority="134" />
+      <Item value="Sell" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="JavaScriptSpecificContext">
+      <Item value="$" priority="149" />
+      <Item value="function" priority="109" />
+      <Item value="var" priority="120" />
+      <Item value="i" priority="21" />
+      <Item value="alert" priority="153" />
+      <Item value="Number" priority="10" />
+      <Item value="ExchangeScripts" priority="32" />
+      <Item value="this" priority="65" />
+      <Item value="data" priority="10" />
+      <Item value="absPath" priority="5" />
+      <Item value="$get" priority="9" />
+      <Item value="url" priority="10" />
+      <Item value="mask" priority="32" />
+      <Item value="obj" priority="21" />
+      <Item value="return" priority="10" />
+      <Item value="recepients" priority="32" />
+      <Item value="recipientsIds" priority="54" />
+      <Item value="id" priority="10" />
+      <Item value="if" priority="54" />
+      <Item value="Type" priority="10" />
+      <Item value="else" priority="32" />
+      <Item value="officeIds" priority="21" />
+      <Item value="recType" priority="21" />
+      <Item value="true" priority="43" />
+      <Item value="false" priority="21" />
+    </ItemStatistics>
+    <ItemStatistics item="JavaScriptSpecificContextQualified">
+      <Item value="change" priority="7" />
+      <Item value="val" priority="38" />
+      <Item value="toFixed" priority="8" />
+      <Item value="initialize" priority="8" />
+      <Item value="queryMessage" priority="8" />
+      <Item value="keydown" priority="8" />
+      <Item value="getRecepient" priority="8" />
+      <Item value="click" priority="9" />
+      <Item value="attr" priority="17" />
+      <Item value="html" priority="16" />
+      <Item value="replace" priority="9" />
+      <Item value="focus" priority="7" />
+      <Item value="get" priority="8" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:AlexK.PIB.Extensions.OsFile.PaymentList">
+      <Item value="GetContent`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.EOperSign">
+      <Item value="ClientCash" priority="27" />
+      <Item value="CurrencyPosition" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpRequest">
+      <Item value="QueryString" priority="80" />
+      <Item value="IsAuthenticated" priority="26" />
+      <Item value="Url" priority="103" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.EOperSign">
+      <Item value="ToString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.ExchangeSettings">
+      <Item value="LoadSettings`0" priority="26" />
+      <Item value="GetType`0" priority="26" />
+      <Item value="CheckingCourseMorTime" priority="80" />
+      <Item value="TransactionMatchingInterval" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="GetProperty`0" priority="26" />
+      <Item value="InvokeMember`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.PropertyInfo">
+      <Item value="SetValue`0" priority="26" />
+      <Item value="PropertyType" priority="26" />
+      <Item value="GetValue`0" priority="26" />
+      <Item value="Name" priority="22" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Reflection.BindingFlags">
+      <Item value="Instance" priority="26" />
+      <Item value="SetProperty" priority="22" />
+      <Item value="Public" priority="22" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.ExchangeSettings">
+      <Item value="LoadSettings`0" priority="26" />
+      <Item value="SaveSettings`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Linq.IOrderedEnumerable`1">
+      <Item value="OrderBy`2" priority="26" />
+      <Item value="ToList`1" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpResponseBase">
+      <Item value="Redirect`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@TendersTransfer.Office">
+      <Item value="GetOffices`0" priority="26" />
+      <Item value="Update`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Message">
+      <Item value="Id" priority="80" />
+      <Item value="Text" priority="108" />
+      <Item value="OfficeId" priority="80" />
+      <Item value="OfficeRcv" priority="53" />
+      <Item value="UserId" priority="191" />
+      <Item value="ParentId" priority="27" />
+      <Item value="Read" priority="107" />
+      <Item value="UserRcv" priority="157" />
+      <Item value="Date" priority="161" />
+      <Item value="TenderId" priority="27" />
+      <Item value="UserName" priority="80" />
+      <Item value="OfficeName" priority="55" />
+      <Item value="UserNameRcv" priority="26" />
+      <Item value="ReadMessage`0" priority="22" />
+      <Item value="UnreadCount" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Factories.MessageFactory">
+      <Item value="Send`0" priority="26" />
+      <Item value="ErrorMessage" priority="26" />
+      <Item value="GetAllMessages`0" priority="26" />
+      <Item value="GetMessagesByUser`0" priority="22" />
+      <Item value="GetUnreadMessages`0" priority="26" />
+      <Item value="Update`0" priority="27" />
+      <Item value="GetRecepients`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Uri">
+      <Item value="AbsolutePath" priority="82" />
+      <Item value="LocalPath" priority="27" />
+      <Item value="AbsoluteUri" priority="26" />
+      <Item value="Segments" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.UserMessage">
+      <Item value="UserId" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Exchange.Models.Recepient">
+      <Item value="OfficeName" priority="51" />
+      <Item value="Id" priority="26" />
+      <Item value="Name" priority="26" />
+      <Item value="Type" priority="54" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Exchange.Models.RecipientType">
+      <Item value="User" priority="26" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

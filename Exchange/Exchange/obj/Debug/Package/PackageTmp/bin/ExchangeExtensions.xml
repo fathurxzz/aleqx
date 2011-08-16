@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExchangeExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:ExchangeExtensions.OsFile.DopParameter">
+            <summary>
+            Додатковий параметр поводки
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.DopParameter.Identify">
+            <summary>
+            Iдентифiкатор додаткового параметра. Реквiзит бов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.DopParameter.Gr">
+            <summary>
+            Ознака групи Д/К. Реквiзит бов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.DopParameter.KeyTitleId">
+            <summary>
+            Код групи додаткового параметра визначається виходячи з балансового рахунку.Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.DopParameter.KeyFieldId">
+            <summary>
+            Код додатково параметра. Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.DopParameter.DocDk">
+            <summary>
+            Значення додаткового параметра. Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="T:ExchangeExtensions.OsFile.PaymentList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ExchangeExtensions.OsFile.PaymentList.GetContent">
+            <summary>
+            Повертає контент для запису у ОС-файл
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ExchangeExtensions.OsFile.Payment">
+            <summary>
+             Клас проводки
+            </summary>
+        </member>
+        <member name="F:ExchangeExtensions.OsFile.Payment.DopParams">
+            <summary>
+            Список додаткових параметрів
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.TaskId">
+            <summary>
+            Iдентифiкатор задачi, з якої вiдправлений цей документ. Проставляється згiдно довiдника КОДИ ЗАДАЧ info.task. Реквiзит необов'язковий. 
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.TaskUniqueCode">
+            <summary>
+            Унiкальний iдентифiкатор док-ту. Службове поле. Використовується для прийняття додаткових параметрiв. Iнформацiя, що передається в цьому полi, iгноруєтся.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNm">
+            <summary>
+            Номер макета. Проставляється: 
+            1 - документ в однiй фiлiї; 
+            2 - документ мiж пiдроздiлами банкiв; 
+            4 - касовi документи.
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNp">
+            <summary>
+            Номер пачки, в якiй введено документ. Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocDk">
+            <summary>
+            Признак документу: 
+            0 - дебетовий; 
+            1 - кредитовий.
+            Для касових: 
+            0 - прихiд; 
+            1 - видаток.
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocVob">
+            <summary>
+            Вид обробки документу. Проставляється згiдно довiдника ВИДИ ОБРОБКИ" info.kind_operation. 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNd">
+            <summary>
+            Номер документу. Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocMFO">
+            <summary>
+            Номер МФО (для українських банкiв) або bic банка - для iноземних. Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNls">
+            <summary>
+            Номер свого особового рахунку (в випадку "чужої каси", тоб-то макет-4 i МФО не анкетне, проставляється рахунок в чужому банку). 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.KodCountryNls">
+            <summary>
+            Код країни для свого особового рахунку. Проставляється згiдно довiдника КОДИ КРАЇН info.kl_k040. 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNlsk">
+            <summary>
+            Номер особового рахунку кореспондента (для касових документiв - символ касового плана). 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.KodCountryNlsk">
+            <summary>
+            Код країни для особового рахунку кореспондента. 
+            Проставляється згiдно довiдника КОДИ КРАЇН info.kl_k040. Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocOkpoPol">
+            <summary>
+            ЄДРПОУ отримувача. 
+            Реквiзит обов'язковий - для проводок 2-м макетом i для проводок 4-м макетом - "Чужа каса". 
+            Реквiзит необов'язковий - для проводок 1-м макетом i для проводок 4-м макетом - "Своя каса". 
+            Для даних проводок ЄДРПОУ береться автоматично з анкети клiєнта.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNaimpol">
+            <summary>
+            Назва отримувача. 
+            Реквiзит обов'язковий - для проводок 2-м макетом i для проводок 4-м макетом - "Чужа каса". 
+            Реквiзит необов'язковий - для проводок 1-м макетом i для проводок 4-м макетом - "Своя каса". 
+            Для даних проводок ЄДРПОУ береться автоматично з анкети клiєнта.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocS">
+            <summary>
+            Сума в валютi документу. Сума в валютi - для валютних проводок, сума в гривнi - для проводок в гривнi. 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.CurId">
+            <summary>
+            Код валюти, в якiй введена сума документу. Проставляється згiдно довiдника КОДИ ВАЛЮТ info.kl_r030. 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocSnac">
+            <summary>
+            Сума в нацiональнiй валютi. Якщо cur_id - гривня, то doc_s i doc_snac спiвпадають. 
+            Якщо cur_id - не гривня, то doc_snac - гривнєвий эквiвалент сумми doc_s. 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.SummaKomiss">
+            <summary>
+            Cума комiсiї.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocDataa">
+            <summary>
+            Дата документу (вводиться в форматi ДДММРРРР). 
+            Реквiзит обов'язковий. Якщо не проставлено, заноситься поточна дата.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocData">
+            <summary>
+            Дата валютування (вводиться в форматi ДДММРРРР). 
+            Реквiзит необов'язковий (для касових документiв дата валютування є датою оплати чека, реквiзит обов'язковий). 
+            Якщо не проставлено, заноситься поточна дата.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocReceiveinbank">
+            <summary>
+            Дата надходження в банк А (вводиться в форматi ДДММРРРР). 
+            Реквiзит обов'язковий. Якщо не проставлено, заноситься поточна дата.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocSkp">
+            <summary>
+            Поле не використовується.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.K040A">
+            <summary>
+            Код країни клiєнта. 
+            Проставляється згiдно довiдника КОДИ КРАЇН info.kl_k040. 
+            Якщо поле не заповнене, то код країни береться з анкети клiєнта. 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.K040B">
+            <summary>
+            Код країни кореспондента. 
+            Проставляється згiдно довiдника КОДИ КРАЇН info.kl_k040. 
+            Якщо поле не заповнене, то береться код країни - Україна (804). 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.K2R9929">
+            <summary>
+            Форма R9929. 
+            Проставляється обов'язково тiльки для картотечних документiв згiдно довiдника ФОРМА R9929 info.r9929.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:ExchangeExtensions.OsFile.Payment.DocType" -->
+        <member name="P:ExchangeExtensions.OsFile.Payment.BjVidpl">
+            <summary>
+            Поле не використовується.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.BjParag">
+            <summary>
+            Основний код. 
+            Проставляється згiдно довiдника info.body i 1 в полi doc_type. 
+            Реквiзит необов'язковий
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.BjRazdel">
+            <summary>
+            Додатковий код (для експортно-iмпортних). 
+            Проставляється згiдно довiдника info.body i 1 в полi doc_type. 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocNplat">
+            <summary>
+            Призначення платежа. 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocRow">
+            <summary>
+            Порядковый номер запису в текстовому файлi, в якому передається даний документ, (для першого запису: 1 i т.д.). 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocHighRow">
+            <summary>
+            Використовується для атомарних проводок. 
+            Для основного документу - проставляється: 0 (нуль), для атомарної проводки на документ - проставляється doc_row основного документу. 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.Doc_9803_9806">
+            <summary>
+            Позабалансовий рахунок для К-2.
+            Проставляється тiльки для картотечних документiв i може приймати значення (9803 або 9806). 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.FlagZo">
+            <summary>
+            Ознака проводки по ZO (0-нi/1-так). 
+            Проставляється тiльки для макетiв-1,2. 
+            Заборонена для картотечних документiв.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.CodBanka">
+            <summary>
+            Код українського банка. 
+            Проставляється згiдно довiдника КОДИ БАНКIВ info.bopbank. 
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.PltId">
+            <summary>
+            Тип платежа (для контроля основного i додаткового кода). Може приймати значення: 
+            2 - експортно-iмпортнi операцiї; 
+            0 або пробiл - iншi.
+            Проставляється для контроля полей: bj_razdel, bj_parag: 
+            2 - реквiзити bj_razdel, bj_parag перевiряються на наявнiсть в довiднику info.body; 
+            3, 0 або пробiл - реквiзити bj_razdel, bj_parag не контролюються.
+            Реквiзит обов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.Creator">
+            <summary>
+            Iдентифiкатор користувача. 
+            Проставляється згiдно таблицi oplata.ispol. 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.TimeReceiveinbank">
+            <summary>
+            Час надходження в банк A вводиться в форматi (ГГХХ). 
+            Реквiзит необов'язковий.
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.DocTaskSwitch">
+            <summary>
+            Код стану документа. Може приймати значення: 
+            32 - податок брати; 
+            0 або пробiл - iншi.
+            Реквiзит необов'язковий. 
+            </summary>
+        </member>
+        <member name="P:ExchangeExtensions.OsFile.Payment.Rezerv">
+            <summary>
+            резерв
+            </summary>
+        </member>
+    </members>
+</doc>
