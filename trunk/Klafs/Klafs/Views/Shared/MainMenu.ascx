@@ -30,28 +30,16 @@
         foreach (var item in contentItems)
         {
             i++;
-            
-            
     %>
-
-    
-
     <div class="menuItem m<%=item.Id%>">
         <%if (Request.IsAuthenticated)
-{%>
-<div class="adminLinksContainder">
-                <%=Html.ActionLink("[IMAGE]", "EditContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit white marg", title = "Редактировать" }).ToString().Replace("[IMAGE]","")%>
-                <%=Html.ActionLink("[IMAGE]", "AddPhoto", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink add white marg", title = "Добавить фото" }).ToString().Replace("[IMAGE]", "")%>
-                <%=Html.ActionLink("[IMAGE]", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLinkSubItem addSubItem white", title = "Добавить подраздел" }).ToString().Replace("[IMAGE]", "")%>
- </div>
- <%}%>
-
-
-
-
-
-
-
+        {%>
+        <div class="adminLinksContainder">
+                        <%=Html.ActionLink("[IMAGE]", "EditContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit white marg", title = "Редактировать" }).ToString().Replace("[IMAGE]","")%>
+                        <%=Html.ActionLink("[IMAGE]", "AddPhoto", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLink add white marg", title = "Добавить фото" }).ToString().Replace("[IMAGE]", "")%>
+                        <%=Html.ActionLink("[IMAGE]", "AddContent", "Content", new { area = "Admin", id = item.Id }, new { @class = "pictureLinkSubItem addSubItem white", title = "Добавить подраздел" }).ToString().Replace("[IMAGE]", "")%>
+         </div>
+         <%}%>
 
  <%if ((string)ViewData["contentName"] != item.Name)
    { %>
@@ -108,7 +96,7 @@
             %>
           <div class="clear"></div>
     </div>
-    <div>  
+    <div style="width:663px; margin:0 auto;">  
             <% 
         }
             
