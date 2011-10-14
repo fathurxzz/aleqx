@@ -9,7 +9,7 @@
 %>
 <div id="headerMenu">
     <div>
-        &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
+        &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
             foreach (var item in headerMenuItems.Where(c => c.ContentType == 2))
             {
@@ -33,7 +33,7 @@
               <span class="sortOrder"><%=item.SortOrder %></span>
             <%} %>
 
-        &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
+        &nbsp;:&nbsp;:&nbsp;:&nbsp;:&nbsp;
         <%
             }
         %>
