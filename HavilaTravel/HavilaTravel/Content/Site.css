@@ -43,7 +43,7 @@ body
 
 #mainMenu a
 {
-    color: #6f6f6f;
+    color: inherit;
 }
 
 #mainMenu a:hover
@@ -63,11 +63,14 @@ body
 #mainMenu table td
 {
     padding: 22px 20px 22px 20px;
+    vertical-align: text-top;
+    color: #6f6f6f;
 }
 
 #mainMenu table td:hover
 {
-    background-color: #ccc;
+    color: #999999;
+    /*background-color: #ccc;*/
 }
 
 /*
