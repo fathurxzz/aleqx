@@ -1,8 +1,76 @@
-﻿/*----------------------------------------------------------
-The base color for this template is #5c87b2. If you'd like
-to use a different color start by replacing all instances of
-#5c87b2 with your new color.
-----------------------------------------------------------*/
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #f0f0e4;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+#header
+{
+    background-image: url('img/main-bg.gif');
+    background-repeat: no-repeat;
+    min-width: 1200px;
+    width: auto;
+    background-position: 50% 0px;
+    height: 710px;
+    padding-top: 1px;
+}
+
+#page 
+{
+    width: 1200px;
+}
+
+#mainMenu
+{
+    background-image: url('img/main-menu-bg.gif');
+    width: 892px;
+    height: 120px;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 340px auto 0px auto;
+    padding-top: 1px;
+    font-family: Georgia;
+    font-size: 17px;
+    color: #6f6f6f;
+}
+
+#mainMenu a
+{
+    color: #6f6f6f;
+}
+
+#mainMenu a:hover
+{
+    color: #999999;
+}
+
+#mainMenu table
+{
+    margin-top: 21px;
+    margin-left: 8px;
+    width: 881px;
+    /*border: 1px solid black;*/
+    border-collapse: collapse;
+}
+
+#mainMenu table td
+{
+    padding: 22px 20px 22px 20px;
+}
+
+#mainMenu table td:hover
+{
+    background-color: #ccc;
+}
+
+/*
 body {
     background-color: #5c87b2;
     font-size: .85em;
@@ -42,8 +110,7 @@ section {
     display: block;
 }
 
-/* HEADINGS   
-----------------------------------------------------------*/
+
 h1, h2, h3, h4, h5, h6 {
     font-size: 1.5em;
     color: #000;
@@ -71,11 +138,7 @@ h5, h6 {
     font-size: 1em;
 }
 
-/* PRIMARY LAYOUT ELEMENTS   
-----------------------------------------------------------*/
 
-/* you can specify a greater or lesser percentage for the 
-page width. Or, you can specify an exact pixel width. */
 .page {
     width: 90%;
     margin-left: auto;
@@ -122,8 +185,7 @@ footer,
     -moz-border-radius: 0 0 4px 4px;
 }
 
-/* TAB MENU   
-----------------------------------------------------------*/
+
 ul#menu {
     border-bottom: 1px #5C87B2 solid;
     padding: 0 0 2px;
@@ -172,8 +234,7 @@ ul#menu li.selected a {
     color: #000;
 }
 
-/* FORM LAYOUT ELEMENTS   
-----------------------------------------------------------*/
+
 
 fieldset {
     border: 1px solid #ddd;
@@ -211,8 +272,7 @@ input[type="submit"] {
     padding: 5px;
 }
 
-/* TABLE
-----------------------------------------------------------*/
+
 
 table {
     border: solid 1px #e8eef4;
@@ -231,8 +291,6 @@ table th {
     border: solid 1px #e8eef4;
 }
 
-/* MISC  
-----------------------------------------------------------*/
 .clear {
     clear: both;
 }
@@ -275,8 +333,7 @@ div#title {
     text-decoration: none;
 }
 
-/* Styles for validation helpers
------------------------------------------------------------*/
+
 .field-validation-error {
     color: #ff0000;
 }
@@ -299,8 +356,7 @@ div#title {
     display: none;
 }
 
-/* Styles for editor and display helpers
-----------------------------------------------------------*/
+
 .display-label, 
 .editor-label {
     margin: 1em 0 0 0;
@@ -322,3 +378,4 @@ div#title {
 .tri-state {
     width: 6em;
 }
+*/
