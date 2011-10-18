@@ -53,7 +53,7 @@ body
 
 #mainMenu table
 {
-    margin-top: 21px;
+    margin-top: 22px;
     margin-left: 8px;
     width: 881px;
     /*border: 1px solid black;*/
@@ -70,7 +70,11 @@ body
 #mainMenu table td:hover
 {
     color: #999999;
+    
     /*background-color: #ccc;*/
+
+    background-image: url('img/menu-selected-item-bg.gif');
+    background-repeat: repeat-x;
 }
 
 /*
