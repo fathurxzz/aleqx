@@ -1,51 +1,56 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>ХАВІЛА TRAVEL</title>
-    <style type="text/css">
-    body
-    {
-        background-color: #000;
-        background-image: url('comingsoon.gif');
-        background-position: 50% 0;
-        background-repeat: no-repeat;
-    }
-    .sign
-    {
-        position: relative;
-        margin: 620px auto 0px auto;
-        text-align: center;
-        color: #fff;
-        font-family: Arial;
-        font-size: 14px;
-    }
-    
-    .sign span
-    {
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>Прижимаем футер к низу с помощью css</title> 
+    <style type="text/css"> 
+        html, body{ 
+            padding:0; 
+            margin:0; 
+            height:100%; /* Задаём 100% высоту для html и body */ 
+            position:relative; /* Если этого не задать, в Опере почему-то футер не прижимается сразу, 
+            прижимается только после ресайза окна, какой-то странный глюк*/ 
+        } 
+        #container{ 
+            background:#000; /* Просто, чтобы было видно контейнер */ 
+            min-height:100%; /* Задаем минимальную высоту 100% */ 
+            _height:100%; /* Задаем высоту 100% в ИЕ6 с помощью хака */ 
+        } 
+         
+        #footer{ 
+            
+            height:699px; /* высота футера */ 
+            margin-top:-700px; /* отрицательный маргин, равный высоте футера */ 
+            position:relative; /* Чтобы футер "всплыл" из под дива #container, если этого не сделать, 
+                                то ссылки в футере не кликабельны и нельзя выделить текст*/ 
+                                text-align: center;
+                                background-image: url('comingsoon.gif');
+                                background-position:50% 0;
+                                background-repeat: no-repeat;
+                              padding-top: 1px;  
+        } 
+        .copy
+        {
+            /*margin-top: 20px;
+            padding-top: 20px;*/
+            font-family: Arial;
+            font-size: 12px;
+            color: #fff;
+            margin-top: 660px;
+        }
         
-    }
-    
-    .copy
-    {
-        margin-top: 20px;
-        padding-top: 20px;
-        font-family: Arial;
-        font-size: 11px;
-    }
-    
-    a
-    {
-        font-family: Arial;
-        font-size: 11px;
-        color: #ffcc33;
-    }
-    </style>
-</head>
-<body>
-    <div class="sign">
-        Скоро.
+        .copy a
+        {
+            color: #ffcc33;
+        }
+    </style> 
+</head> 
+<body> 
+     <div id="container"> 
         
-        <div class="copy">Сайт создаётся в <a href="http://m-brand.com.ua">Студии Евгения Миллера</a> </div>
-    </div>
-</body>
+     </div> 
+    <div id="footer"> 
+    <div class="copy">Сайт создаётся в <a href="http://m-brand.com.ua">Студии Евгения Миллера</a> </div>    
+    </div> 
+</body> 
 </html>
