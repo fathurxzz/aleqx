@@ -9,6 +9,7 @@ body
     margin: 0;
     padding: 0;
     color: #000;
+    font-family: Trebuchet MS, Tahoma, Verdana;
 }
 
 #header
@@ -82,6 +83,7 @@ body
     background-image: url('img/footer-bg.gif');
     background-repeat: repeat-x;
     height: 280px;
+    
 }
 
 #innerFooter
@@ -92,6 +94,24 @@ body
     width: 1200px;
     position: relative;
     margin: 0 auto;
+}
+
+#footer #innerFooter
+{
+    padding-top: 1px;
+}
+
+#footer #innerFooter #sign
+{
+    text-align: center;
+    margin-top: 221px;
+}
+
+#footer #innerFooter #sign, #footer #innerFooter #sign a
+{
+    color: #f0f0e4;
+    font-size: 12px;
+    
 }
 
 /*
