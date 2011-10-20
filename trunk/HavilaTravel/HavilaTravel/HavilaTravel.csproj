@@ -77,6 +77,9 @@
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\main-bg.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\menu-selected-item-bg-left.gif" />
+    <Content Include="Content\img\menu-selected-item-bg-right.gif" />
+    <Content Include="Content\img\menu-selected-item-bg.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
