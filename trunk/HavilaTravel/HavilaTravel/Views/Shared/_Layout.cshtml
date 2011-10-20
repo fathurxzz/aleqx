@@ -7,19 +7,9 @@
 </head>
 <body>
     <div id="header">
-            <div id="mainMenu">
-            <table>
-            <tr>
-                <td style="white-space: nowrap"><a href="#">О нас</a></td>
-                <td><a href="#">Тематические туры</a></td>
-                <td><a href="#">Страны</a></td>
-                <td><a href="#">Авиабилеты</a></td>
-                <td><a href="#">Новости</a></td>
-                <td><a href="#">For Foreigners</a></td>
-                <td><a href="#">Контактная информация</a></td>
-            </tr>
-            </table>
-            </div>    
+
+            @Html.Partial("MainMenu")
+            
     </div>
     <div id="page">
     @RenderBody()
