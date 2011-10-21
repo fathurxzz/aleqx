@@ -6,38 +6,41 @@
         <tr>
             @{
                 int cnt = 0;
-                foreach (var item in menuItems)
+                if(menuItems!=null)
                 {
-                    cnt++;
-
-                    string selected = ViewBag.CurrentContentId == item.Name ? "selected" : "";
-
-                    if (cnt == 1)
+                    foreach (var item in menuItems)
                     {
-                        <td class="firstMenuItem @selected">
-                        </td>
-                    }
+                        cnt++;
 
-                    var style = cnt == 1 ? "white-space: nowrap" : "";
+                        string selected = ViewBag.CurrentContentId == item.Name ? "selected" : "";
 
-                    <td style="@style" class="@selected">
-                        @if (ViewBag.CurrentContentId!=item.Name)
+                        if (cnt == 1)
                         {
-                            @Html.ActionLink(item.MenuTitle,"Index","Home",new{id=item.Name},null)
+                            <td class="firstMenuItem @selected">
+                            </td>
                         }
-                        else
-                        {
-                            @item.MenuTitle
-                        }
-                    </td>
-           
-                    if (cnt == menuItems.Count())
-                    {
-                        <td class="lastMenuItem @selected">
-                            &nbsp;
+
+                        var style = cnt == 1 ? "white-space: nowrap" : "";
+
+                        <td style="@style" class="@selected">
+                            @if (ViewBag.CurrentContentId != item.Name)
+                            {
+                                @Html.ActionLink(item.MenuTitle, "Index", "Home", new {id = item.Name}, null)
+                            }
+                            else
+                            {
+                                @item.MenuTitle
+                            }
                         </td>
+
+                        if (cnt == menuItems.Count())
+                        {
+                            <td class="lastMenuItem @selected">
+                                &nbsp;
+                            </td>
+                        }
                     }
-                 }
+                }
             }
         </tr>
     </table>

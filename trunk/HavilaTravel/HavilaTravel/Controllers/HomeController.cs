@@ -16,6 +16,7 @@ namespace HavilaTravel.Controllers
             using(var context = new ContentStorage())
             {
                 var mainMenuItems = context.Content.Where(m => m.ContentType == 1).Select(m => m).ToList();
+                
                 ViewBag.MainMenuItems = mainMenuItems;
 
                 ViewBag.CurrentContentId = id;
