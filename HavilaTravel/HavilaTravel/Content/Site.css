@@ -101,6 +101,22 @@ body
     background-repeat: repeat-x;
 }
 
+#subMenu .leftSide, #subMenu .rightSide
+{
+    height: 42px;
+    width: 10px;
+}
+
+#subMenu .leftSide
+{
+    background-image: url('img/submenu-bg-left.png');
+}
+
+#subMenu .rightSide
+{
+    background-image: url('img/submenu-bg-right.png');
+}
+
 #footer 
 {
     background-image: url('img/footer-bg.gif');
