@@ -10,7 +10,10 @@
 
             @Html.Partial("MainMenu")
             
+            @RenderSection("ContentTitle",false)
+
     </div>
+
     <div id="page">
     @RenderBody()
     </div>
