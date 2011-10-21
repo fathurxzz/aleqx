@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="havilaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="havilaModelStoreContainer">
+          <EntitySet Name="content" EntityType="havilaModel.Store.content" store:Type="Tables" Schema="havila" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentLevel" Type="utinyint" Nullable="false" />
+          <Property Name="ContentType" Type="utinyint" Nullable="false" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="ParentId" Type="uint" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Title" Type="varchar" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="havilaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ContentStorage" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Content" EntityType="havilaModel.Content" />
+          <AssociationSet Name="ContentContent" Association="havilaModel.ContentContent">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Content1" EntitySet="Content" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ContentLevel" Type="Byte" Nullable="false" />
+          <Property Name="ContentType" Type="Byte" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" />
+          <Property Name="Title" Type="String" />
+          <NavigationProperty Name="Children" Relationship="havilaModel.ContentContent" FromRole="Content" ToRole="Content1" />
+          <NavigationProperty Name="Parent" Relationship="havilaModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <Property Type="String" Name="MenuTitle" />
+        </EntityType>
+        <Association Name="ContentContent">
+          <End Type="havilaModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="havilaModel.Content" Role="Content1" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="havilaModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="havilaModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
+            <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="havilaModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="havilaModel.Content" Width="1.5" PointX="0.625" PointY="0.625" Height="3.0714322916666665" IsExpanded="true" />
+        <AssociationConnector Association="havilaModel.ContentContent">
+          <ConnectorPoint PointX="1.1569230769230767" PointY="3.6964322916666665" />
+          <ConnectorPoint PointX="1.1569230769230767" PointY="3.9464322916666665" />
+          <ConnectorPoint PointX="1.6034615384615383" PointY="3.9464322916666665" />
+          <ConnectorPoint PointX="1.6034615384615383" PointY="3.6964322916666665" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
