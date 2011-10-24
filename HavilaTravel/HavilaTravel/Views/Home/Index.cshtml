@@ -1,11 +1,8 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model HavilaTravel.Models.Content
 
-<h2>@ViewBag.Message</h2>
-<p>
-    
-</p>
+
+@Html.Raw(Model.Text)
+
 
 
 @section ContentTitle{

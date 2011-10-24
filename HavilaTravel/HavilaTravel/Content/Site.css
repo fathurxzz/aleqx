@@ -26,6 +26,8 @@ body
 #page 
 {
     width: 1200px;
+    position: relative;
+    margin: 0 auto;
 }
 
 #mainMenu
@@ -101,10 +103,46 @@ body
     background-repeat: repeat-x;
 }
 
+
+#subMenu {
+
+    margin-top: 10px;
+}
+
+#subMenu table {
+    position: relative;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#subMenu td
+{
+    background-image: url('img/submenu-bg.png');
+    background-repeat: repeat-x;
+    font-family: Georgia;
+    padding: 0 20px;
+}
+
+#subMenu td a
+{
+    color: #6f6f6f;
+    font-style: italic;
+}
+
+
+#subMenu .separator
+{
+    background-image: url('img/submenu-bg.png');
+    background-repeat: repeat-x;
+    width: 50px;
+    padding: 0 !important;
+}
+
 #subMenu .leftSide, #subMenu .rightSide
 {
     height: 42px;
     width: 10px;
+    padding: 0 !important;
 }
 
 #subMenu .leftSide
@@ -161,6 +199,13 @@ body
     font-size: 20px;
     text-align: center;
     padding-top: 35px;
+}
+
+
+.adminLink
+{
+    font-size: 10px;
+    color: #ff0000 !important;
 }
 
 
@@ -426,7 +471,7 @@ div#title {
     color: white;
     text-decoration: none;
 }
-
+*/
 
 .field-validation-error {
     color: #ff0000;
@@ -472,4 +517,52 @@ div#title {
 .tri-state {
     width: 6em;
 }
-*/
+
+
+
+
+.adminEditContentContainer
+{
+	margin-top:5px;
+	/*border:solid 1px #999999;*/
+	padding:10px;
+	/*margin-bottom:30px;*/
+	width:550px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	z-index:1;
+}
+
+.adminEditContentTable
+{
+	width:550px;
+}
+
+.adminEditContentTable td
+{
+	padding-left:20px;
+	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+	/*border:solid 1px #999999;*/
+	
+}
+
+.adminEditContentTable td input
+{
+    width: 350px;
+}
+
+.adminEditContentTable td span
+{
+	font-size: 11px;
+	font-weight:normal;
+	
+}
+
+.buttonsContainer
+{
+    text-align:center;
+    margin-top: 10px;
+}

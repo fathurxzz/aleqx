@@ -1,15 +1,39 @@
-﻿
-@{
-    
-    
-}
+﻿@{
+    var menuItems = (List<HavilaTravel.Models.Content>)ViewBag.SubMenuItems;
 
-<div id="subMenu">
-    <table>
-    <tr>
-    <td class="leftSide"></td>
-    <td></td>
-    <td class="rightSide"></td>
-    </tr>
-    </table>
-</div>
+    if (menuItems!=null && menuItems.Count > 0)
+    {
+    <div id="subMenu">
+        <table>
+            <tr>
+                <td class="leftSide">
+                </td>
+                <td class="separator">
+                </td>
+                
+
+                @foreach (var item in menuItems)
+                {
+                <td>
+                    <a href="#">Countries</a>
+                </td>
+                <td>
+                    <a href="#">Hotels</a>
+                </td>
+                <td>
+                    <a href="#">Cities</a>
+                </td>
+                <td>
+                    <a href="#">Entertainment</a>
+                </td>
+                }
+                <td class="separator">
+                </td>
+                <td class="rightSide">
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    }
+}
