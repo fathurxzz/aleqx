@@ -54,7 +54,27 @@ namespace HavilaTravel.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddSubmenu(int parentId, FormCollection form)
         {
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            using (var context = new ContentStorage())
+            {
+                var parentContent = context.Content.Where(c => c.Id == parentId).First();
+                var content = new Content();
+                TryUpdateModel(content, new[]
+                                            {
+                                                "Name",
+                                                "Title",
+                                                "MenuTitle",
+                                                "PageTitle",
+                                                "SortOrder",
+                                                "SeoDescription",
+                                                "SeoKeywords"
+                                            });
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.Parent = parentContent;
+                context.AddToContent(content);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new {id = content.Name, area = ""});
+            }
         }
 
     }

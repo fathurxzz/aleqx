@@ -1,0 +1,14 @@
+﻿<div id="headerLeftMenu">
+    @{
+        var menuItems = (List<HavilaTravel.Models.Content>)ViewBag.HeaderLeftMenuItems;
+    }
+    <ul>
+        @{if (menuItems != null)
+          {
+              foreach (var m in menuItems)
+              {
+                <li>&raquo; @Html.ActionLink(m.MenuTitle, "Index", "Home", new { id = m.Name }, null)</li>
+              }
+          }}
+    </ul>
+</div>
