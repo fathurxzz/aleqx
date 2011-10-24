@@ -26,6 +26,13 @@
                             @if (ViewBag.CurrentContentId != item.Name)
                             {
                                 @Html.ActionLink(item.MenuTitle, "Index", "Home", new {id = item.Name}, null)
+                                if(Request.IsAuthenticated)
+                                {
+                                    <br />
+                                    @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    <br />
+                                    @Html.ActionLink("AddSubmenu", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                }
                             }
                             else
                             {
@@ -33,8 +40,8 @@
                             }
                         </td>
 
-                        if (cnt == menuItems.Count())
-                        {
+                            if (cnt == menuItems.Count())
+                            {
                             <td class="lastMenuItem @selected">
                                 &nbsp;
                             </td>
