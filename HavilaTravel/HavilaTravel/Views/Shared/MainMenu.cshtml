@@ -16,40 +16,40 @@
 
                         if (cnt == 1)
                         {
-                            <td class="firstMenuItem @selected">
-                            </td>
+                <td class="firstMenuItem @selected">
+                </td>
                         }
 
                         var style = cnt == 1 ? "white-space: nowrap" : "";
 
-                        <td style="@style" class="@selected">
-                            @if (ViewBag.CurrentContentId != item.Name)
-                            {
-                                @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
-                           if (Request.IsAuthenticated)
-                           {
-                                    <br />
-                                    @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    <br />
-                                    @Html.ActionLink("AddSubmenu", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                           }
-                            }
-                            else
-                            {
-                                @item.MenuTitle
-                                <br />
-                                    @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    <br />
-                                    @Html.ActionLink("AddSubmenu", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                            }
-                        </td>
+                <td style="@style" class="@selected">
+                    @if (ViewBag.CurrentContentId != item.Name)
+                    {
+                        @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
+                        if (Request.IsAuthenticated)
+                        {
+                            <br />
+                            @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            @Html.Raw("&nbsp")
+                            @Html.ActionLink("AddSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        }
+                    }
+                    else
+                    {
+                        @item.MenuTitle
+                        <br />
+                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+                        @Html.Raw("&nbsp")
+                        @Html.ActionLink("AddSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    }
+                </td>
 
-                            if (cnt == menuItems.Count())
-                            {
-                            <td class="lastMenuItem @selected">
-                                &nbsp;
-                            </td>
-                            }
+                    if (cnt == menuItems.Count())
+                    {
+                <td class="lastMenuItem @selected">
+                    &nbsp;
+                </td>
+                    }
                     }
                 }
             }

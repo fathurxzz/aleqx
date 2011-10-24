@@ -16,12 +16,17 @@ namespace HavilaTravel.Controllers
             using (var context = new ContentStorage())
             {
                 var mainMenuItems = context.Content.Where(m => m.ContentType == 1).Select(m => m).ToList();
+                var headerLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
+                ViewBag.HeaderLeftMenuItems = headerLeftMenuItems;
 
                 ViewBag.MainMenuItems = mainMenuItems;
 
                 ViewBag.CurrentContentId = id;
 
                 var content = context.Content.Include("Children").Where(c => c.Name == id || c.ContentType == 0).First();
+
+                
+
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
                 ViewBag.SubMenuItems = content.Children.ToList();

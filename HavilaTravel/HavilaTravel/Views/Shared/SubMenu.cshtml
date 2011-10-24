@@ -10,21 +10,18 @@
                 </td>
                 <td class="separator">
                 </td>
-                
 
                 @foreach (var item in menuItems)
                 {
                 <td>
-                    <a href="#">Countries</a>
-                </td>
-                <td>
-                    <a href="#">Hotels</a>
-                </td>
-                <td>
-                    <a href="#">Cities</a>
-                </td>
-                <td>
-                    <a href="#">Entertainment</a>
+                    @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
+                    @{
+                        if (Request.IsAuthenticated)
+                        {
+                            <br />
+                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        }
+                    }
                 </td>
                 }
                 <td class="separator">
