@@ -6,7 +6,7 @@
         <tr>
             @{
                 int cnt = 0;
-                if(menuItems!=null)
+                if (menuItems != null)
                 {
                     foreach (var item in menuItems)
                     {
@@ -25,18 +25,22 @@
                         <td style="@style" class="@selected">
                             @if (ViewBag.CurrentContentId != item.Name)
                             {
-                                @Html.ActionLink(item.MenuTitle, "Index", "Home", new {id = item.Name}, null)
-                                if(Request.IsAuthenticated)
-                                {
+                                @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
+                           if (Request.IsAuthenticated)
+                           {
                                     <br />
                                     @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     <br />
                                     @Html.ActionLink("AddSubmenu", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                }
+                           }
                             }
                             else
                             {
                                 @item.MenuTitle
+                                <br />
+                                    @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    <br />
+                                    @Html.ActionLink("AddSubmenu", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                             }
                         </td>
 
@@ -45,7 +49,7 @@
                             <td class="lastMenuItem @selected">
                                 &nbsp;
                             </td>
-                        }
+                            }
                     }
                 }
             }

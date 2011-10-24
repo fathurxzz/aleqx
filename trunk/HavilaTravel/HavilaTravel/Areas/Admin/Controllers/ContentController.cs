@@ -30,16 +30,15 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 var content = context.Content.Where(c => c.Id == id).First();
                 TryUpdateModel(content, new[]
                                             {
-                                                "Name"
-                                                //,
-                                                //"Title",
-                                                //"MenuTitle",
-                                                //"PageTitle",
-                                                //"SortOrder",
-                                                //"SeoDescription",
-                                                //"SeoKeywords"
+                                                "Name",
+                                                "Title",
+                                                "MenuTitle",
+                                                "PageTitle",
+                                                "SortOrder",
+                                                "SeoDescription",
+                                                "SeoKeywords"
                                             });
-                /*content.Text = HttpUtility.HtmlDecode(form["Text"]);*/
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.SaveChanges();
 
                 return RedirectToAction("Index", "Home", new {id = content.Name, area = ""});
