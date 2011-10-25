@@ -18,7 +18,7 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("havilaModel", "ContentContent", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HavilaTravel.Models.Content), "Content1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HavilaTravel.Models.Content))]
+[assembly: EdmRelationshipAttribute("havilaModel", "ContentContent", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(HavilaTravel.Models.Content), "Content1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HavilaTravel.Models.Content))]
 
 #endregion
 

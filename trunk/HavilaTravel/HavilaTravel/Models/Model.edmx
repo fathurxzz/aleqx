@@ -56,7 +56,7 @@
           <NavigationProperty Name="Parent" Relationship="havilaModel.ContentContent" FromRole="Content1" ToRole="Content" />
         </EntityType>
         <Association Name="ContentContent">
-          <End Type="havilaModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="havilaModel.Content" Role="Content" Multiplicity="0..1" />
           <End Type="havilaModel.Content" Role="Content1" Multiplicity="*" />
         </Association>
       </Schema>
@@ -85,6 +85,7 @@
             <EndProperty Name="Content1">
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
+            <Condition ColumnName="ParentId" IsNull="false" />
           </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
