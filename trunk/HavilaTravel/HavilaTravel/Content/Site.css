@@ -243,7 +243,7 @@ body
 
 #contentContainer
 {
-    border: 1px solid green;
+    /*border: 1px solid green;*/
     margin-top: -70px;
 }
 
@@ -279,10 +279,49 @@ body
 
 #accordionContainer
 {
-    
+    text-align: center;
+    margin-top: 50px;
 }
 
+.accordion
+{
+    text-align: center;
+}
 
+.accordion table
+{
+    border-collapse: collapse;
+    margin: 0 auto;
+   
+}
+
+.accordion .leftPattern, .accordion .rightPattern
+{
+    width: 38px;
+    height: 19px;
+}
+
+.accordion .leftPattern
+{
+    
+    background-image: url('img/pattern-left.png');
+}
+
+.accordion .rightPattern
+{
+    background-image: url('img/pattern-right.png');
+}
+
+.accordion .title
+{
+    color: #000;
+    text-decoration: underline;
+    font-style: italic;
+    padding: 0 8px;
+    font-size: 15px;
+    font-family: Georgia;
+    font-weight: bold;
+}
 
 
 .field-validation-error {
