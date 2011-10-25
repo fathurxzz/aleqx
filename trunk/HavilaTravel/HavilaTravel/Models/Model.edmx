@@ -4,10 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="havilaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="havilaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="havilaModelStoreContainer">
+          <EntitySet Name="accordionimage" EntityType="havilaModel.Store.accordionimage" store:Type="Tables" Schema="havila" />
           <EntitySet Name="content" EntityType="havilaModel.Store.content" store:Type="Tables" Schema="havila" />
         </EntityContainer>
+        <EntityType Name="accordionimage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AccordionId" Type="uint" Nullable="false" />
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+        </EntityType>
         <EntityType Name="content">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,8 +36,7 @@
           <Property Name="Text" Type="text" />
           <Property Name="Title" Type="varchar" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="havilaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -35,6 +45,12 @@
           <AssociationSet Name="ContentContent" Association="havilaModel.ContentContent">
             <End Role="Content" EntitySet="Content" />
             <End Role="Content1" EntitySet="Content" />
+          </AssociationSet>
+          <EntitySet Name="Accordion" EntityType="havilaModel.Accordion" />
+          <EntitySet Name="AccordionImage" EntityType="havilaModel.AccordionImage" />
+          <AssociationSet Name="ContentAccordion" Association="havilaModel.ContentAccordion">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="Accordion" EntitySet="Accordion" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Content">
@@ -54,10 +70,35 @@
           <Property Name="Title" Type="String" />
           <NavigationProperty Name="Children" Relationship="havilaModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="havilaModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <NavigationProperty Name="Accordions" Relationship="havilaModel.ContentAccordion" FromRole="Content" ToRole="Accordion" />
         </EntityType>
         <Association Name="ContentContent">
           <End Type="havilaModel.Content" Role="Content" Multiplicity="0..1" />
           <End Type="havilaModel.Content" Role="Content1" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Accordion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Text" />
+          <Property Type="String" Name="Title" />
+          <NavigationProperty Name="Content" Relationship="havilaModel.ContentAccordion" FromRole="Accordion" ToRole="Content" />
+        </EntityType>
+        <EntityType Name="AccordionImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="AccordionId" Nullable="false" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Title" />
+        </EntityType>
+        <Association Name="ContentAccordion">
+          <End Type="havilaModel.Content" Role="Content" Multiplicity="1" />
+          <End Type="havilaModel.Accordion" Role="Accordion" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -87,6 +128,17 @@
             </EndProperty>
             <Condition ColumnName="ParentId" IsNull="false" />
           </AssociationSetMapping>
+          <EntitySetMapping Name="AccordionImage">
+            <EntityTypeMapping TypeName="havilaModel.AccordionImage">
+              <MappingFragment StoreEntitySet="accordionimage">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccordionId" ColumnName="AccordionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -114,6 +166,12 @@
           <ConnectorPoint PointX="1.2819230769230767" PointY="4.0714322916666656" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="4.0714322916666656" />
           <ConnectorPoint PointX="1.7284615384615383" PointY="3.8214322916666661" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="havilaModel.Accordion" Width="1.5" PointX="3.375" PointY="0.75" Height="1.7566536458333339" />
+        <EntityTypeShape EntityType="havilaModel.AccordionImage" Width="1.5" PointX="3.375" PointY="3.75" Height="1.7566536458333326" />
+        <AssociationConnector Association="havilaModel.ContentAccordion">
+          <ConnectorPoint PointX="2.25" PointY="1.628326822916667" />
+          <ConnectorPoint PointX="3.375" PointY="1.628326822916667" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
