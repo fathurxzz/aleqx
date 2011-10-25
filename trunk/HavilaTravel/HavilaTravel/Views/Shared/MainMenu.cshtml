@@ -8,7 +8,7 @@
                 int cnt = 0;
                 if (menuItems != null)
                 {
-                    foreach (var item in menuItems)
+                    foreach (var item in menuItems.OrderBy(m=>m.SortOrder))
                     {
                         cnt++;
 
@@ -29,9 +29,9 @@
                         if (Request.IsAuthenticated)
                         {
                             <br />
-                            @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                             @Html.Raw("&nbsp")
-                            @Html.ActionLink("AddSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                         }
                     }
                     else

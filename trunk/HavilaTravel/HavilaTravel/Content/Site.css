@@ -241,7 +241,46 @@ body
     padding-top: 35px;
 }
 
+#contentContainer
+{
+    border: 1px solid green;
+    margin-top: -70px;
+}
 
+#centerContent
+{
+    width: 640px;
+}
+
+#leftContent, #rightContent
+{
+    vertical-align: top;
+}
+
+#leftContent
+{
+    width: 280px;
+}
+
+#rightContent
+{
+    width: 280px; text-align: right
+}
+
+#pattern
+{
+    width: 69px;
+    height: 13px;
+    position: relative;
+    margin: 25px auto;
+    background-image: url('img/pattern.png');
+    background-repeat: no-repeat;
+}
+
+#accordionContainer
+{
+    
+}
 
 
 
@@ -344,4 +383,5 @@ body
 {
     font-size: 10px !important;
     color: #ff0000 !important;
+    font-family: Tahoma, Verdana !important;
 }

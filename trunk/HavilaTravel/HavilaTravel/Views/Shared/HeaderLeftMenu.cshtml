@@ -5,7 +5,7 @@
     <ul>
         @{if (menuItems != null)
           {
-              foreach (var m in menuItems)
+              foreach (var m in menuItems.OrderBy(m=>m.SortOrder))
               {
             <li>&raquo; @Html.ActionLink(m.MenuTitle, "Index", "Home", new { id = m.Name }, null) @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })</li>
             
@@ -15,7 +15,7 @@
     @{
         if (Request.IsAuthenticated)
         {
-        @Html.ActionLink("Add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+        @Html.ActionLink("add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
         }
     }
 </div>
