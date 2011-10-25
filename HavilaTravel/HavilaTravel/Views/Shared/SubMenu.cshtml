@@ -11,7 +11,7 @@
                 <td class="separator">
                 </td>
 
-                @foreach (var item in menuItems)
+                @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
                 {
                 <td>
                     @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)

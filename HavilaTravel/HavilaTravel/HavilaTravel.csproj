@@ -100,6 +100,9 @@
     <Content Include="Content\img\menu-selected-item-bg-left.gif" />
     <Content Include="Content\img\menu-selected-item-bg-right.gif" />
     <Content Include="Content\img\menu-selected-item-bg.gif" />
+    <Content Include="Content\img\pattern-left.png" />
+    <Content Include="Content\img\pattern-right.png" />
+    <Content Include="Content\img\pattern.png" />
     <Content Include="Content\img\submenu-bg-left.png" />
     <Content Include="Content\img\submenu-bg-right.png" />
     <Content Include="Content\img\submenu-bg.png" />

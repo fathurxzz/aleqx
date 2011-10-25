@@ -16,16 +16,22 @@
         @Html.Partial("MainMenu")
         @RenderSection("ContentTitle", false)
         @Html.Partial("SubMenu")
+        <div id="pattern"></div>
     </div>
     <div id="page">
         <table>
             <tr>
-                <td style="width: 300px;">
+                <td id="leftContent">
+                    left banner
                 </td>
-                <td style="width: 600px;">
-                    @RenderBody()
+                <td id="centerContent">
+                    <div id="contentContainer">
+                        @RenderBody()
+                        <div id="accordionContainer"></div>
+                    </div>
                 </td>
-                <td style="width: 300px;">
+                <td id="rightContent">
+                    right banner
                 </td>
             </tr>
         </table>
