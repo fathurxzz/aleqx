@@ -1,0 +1,32 @@
+﻿@model IEnumerable<HavilaTravel.Models.Accordion>
+<div class="accordion">
+    @foreach (var item in Model.OrderBy(a => a.SortOrder))
+    {
+        <table>
+            <tr>
+                <td class="leftPattern">
+                </td>
+                <td class="title">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="rightPattern">
+                </td>
+            </tr>
+        </table>
+        if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("edit", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+        }
+        <div style="margin-bottom: 50px;">
+            @Html.Raw(item.Text)
+        </div>
+    }
+    @{
+        if (Request.IsAuthenticated)
+        {
+        <p>
+            @Html.ActionLink("Create New", "Create", "Accordion", new { Area = "Admin", id = ViewBag.CurrentContentId }, new { @class = "adminLink" })
+        </p>        
+        }
+    }
+</div>

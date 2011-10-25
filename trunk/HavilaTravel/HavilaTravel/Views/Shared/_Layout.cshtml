@@ -11,12 +11,13 @@
 <body>
     <div id="header">
         <div id="innerHeader">
-           @Html.Partial("HeaderLeftMenu")
+            @Html.Partial("HeaderLeftMenu")
         </div>
         @Html.Partial("MainMenu")
         @RenderSection("ContentTitle", false)
         @Html.Partial("SubMenu")
-        <div id="pattern"></div>
+        <div id="pattern">
+        </div>
     </div>
     <div id="page">
         <table>
@@ -27,28 +28,7 @@
                 <td id="centerContent">
                     <div id="contentContainer">
                         @RenderBody()
-                        <div id="accordionContainer">
-                            <div class="accordion">
-                            <table>
-                            <tr>
-                                <td class="leftPattern"></td>
-                                <td class="title">Фотогалерея</td>
-                                <td class="rightPattern"></td>
-                            </tr>
-                            <tr>
-                                <td class="leftPattern"></td>
-                                <td class="title">Фотогалерея</td>
-                                <td class="rightPattern"></td>
-                            </tr>
-                            <tr>
-                                <td class="leftPattern"></td>
-                                <td class="title">Фотогалерея</td>
-                                <td class="rightPattern"></td>
-                            </tr>
-                            </table>
-                            </div>
-
-                        </div>
+                        @RenderSection("Accordion", false)
                     </div>
                 </td>
                 <td id="rightContent">
