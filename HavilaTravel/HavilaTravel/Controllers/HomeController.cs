@@ -21,10 +21,12 @@ namespace HavilaTravel.Controllers
 
                 ViewBag.MainMenuItems = mainMenuItems;
 
-                ViewBag.CurrentContentId = id;
+                ViewBag.CurrentContentName = id;
 
-                var content = context.Content.Include("Children").Where(c => c.Name == id || c.ContentType == 0).First();
 
+
+                var content = context.Content.Include("Children").Include("Accordions").Where(c => c.Name == id || c.ContentType == 0).First();
+                ViewBag.CurrentContentId = content.Id;
                 
 
                 ViewBag.SeoDescription = content.SeoDescription;

@@ -12,7 +12,7 @@
                     {
                         cnt++;
 
-                        string selected = ViewBag.CurrentContentId == item.Name ? "selected" : "";
+                        string selected = ViewBag.CurrentContentName == item.Name ? "selected" : "";
 
                         if (cnt == 1)
                         {
@@ -23,7 +23,7 @@
                         var style = cnt == 1 ? "white-space: nowrap" : "";
 
                 <td style="@style" class="@selected">
-                    @if (ViewBag.CurrentContentId != item.Name)
+                    @if (ViewBag.CurrentContentName != item.Name)
                     {
                         @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
                         if (Request.IsAuthenticated)

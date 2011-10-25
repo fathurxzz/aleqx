@@ -117,5 +117,8 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }
         }
+
+       
+
     }
 }

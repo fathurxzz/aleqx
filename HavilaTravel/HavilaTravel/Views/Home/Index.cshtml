@@ -10,3 +10,10 @@
 @ViewBag.Title
 </div>
 }
+
+@section Accordion
+{
+<div id="accordionContainer">
+    @Html.Partial("Accordion",Model.Accordions)
+</div>
+}
