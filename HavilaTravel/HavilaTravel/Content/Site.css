@@ -424,3 +424,13 @@ body
     color: #ff0000 !important;
     font-family: Tahoma, Verdana !important;
 }
+
+.sortOrderInput
+{
+    width: 30px;
+}
+
+.photoTotleInput
+{
+    width: 300px;
+}

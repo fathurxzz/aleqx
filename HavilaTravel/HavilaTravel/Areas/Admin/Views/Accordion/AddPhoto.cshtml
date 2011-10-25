@@ -12,7 +12,7 @@
     @Html.ValidationSummary(true)
     @Html.Hidden("parentId")
 
-    
+    <div class="adminEditContentContainer">
     <table>
         <tr>
             <td>
@@ -30,10 +30,10 @@
                 <input type="file" name="fileUpload[0]" />
             </td>
             <td>
-                <input type="text" name="fileTitles[0]" />
+                <input type="text" name="fileTitles[0]" class="photoTotleInput"  />
             </td>
             <td>
-                <input type="text" name="sortOrder[0]" />
+                <input type="text" name="sortOrder[0]" class="sortOrderInput" />
             </td>
         </tr>
         <tr>
@@ -41,10 +41,10 @@
                 <input type="file" name="fileUpload[1]" />
             </td>
             <td>
-                <input type="text" name="fileTitles[1]" />
+                <input type="text" name="fileTitles[1]" class="photoTotleInput"  />
             </td>
             <td>
-                <input type="text" name="sortOrder[1]" />
+                <input type="text" name="sortOrder[1]"  class="sortOrderInput" />
             </td>
         </tr>
         <tr>
@@ -52,10 +52,10 @@
                 <input type="file" name="fileUpload[2]" />
             </td>
             <td>
-                <input type="text" name="fileTitles[2]" />
+                <input type="text" name="fileTitles[2]" class="photoTotleInput"  />
             </td>
             <td>
-                <input type="text" name="sortOrder[2]" />
+                <input type="text" name="sortOrder[2]"  class="sortOrderInput" />
             </td>
         </tr>
         <tr>
@@ -63,10 +63,10 @@
                 <input type="file" name="fileUpload[3]" />
             </td>
             <td>
-                <input type="text" name="fileTitles[3]" />
+                <input type="text" name="fileTitles[3]" class="photoTotleInput"  />
             </td>
             <td>
-                <input type="text" name="sortOrder[3]" />
+                <input type="text" name="sortOrder[3]"  class="sortOrderInput" />
             </td>
         </tr>
         <tr>
@@ -74,13 +74,16 @@
                 <input type="file" name="fileUpload[4]" />
             </td>
             <td>
-                <input type="text" name="fileTitles[4]" />
+                <input type="text" name="fileTitles[4]" class="photoTotleInput" />
             </td>
             <td>
-                <input type="text" name="sortOrder[4]" />
+                <input type="text" name="sortOrder[4]" class="sortOrderInput"  />
             </td>
         </tr>
     </table>
-    
-    <input type="submit" name="Submit" id="SubmitMultiply" value="Upload" />
+    <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            <a href="#" onclick="javascript:history.back();">Отмена</a>
+        </div>
+     </div>
 }
