@@ -62,5 +62,10 @@ namespace HavilaTravel.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult AddPhoto(int id)
+        {
+            return View();
+        }
+
     }
 }
