@@ -8,6 +8,7 @@
                 </td>
                 <td class="title">
                     @Html.DisplayFor(modelItem => item.Title)
+                    
                 </td>
                 <td class="rightPattern">
                 </td>
@@ -16,6 +17,8 @@
         if (Request.IsAuthenticated)
         {
             @Html.ActionLink("edit", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("addPhotos","")
         }
         <div style="margin-bottom: 50px;">
             @Html.Raw(item.Text)
