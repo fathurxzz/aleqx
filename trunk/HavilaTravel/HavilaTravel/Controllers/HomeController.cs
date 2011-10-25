@@ -15,7 +15,7 @@ namespace HavilaTravel.Controllers
 
             using (var context = new ContentStorage())
             {
-                var mainMenuItems = context.Content.Where(m => m.ContentType == 1).Select(m => m).ToList();
+                var mainMenuItems = context.Content.Where(m => m.ContentType == 1 &&m.ContentLevel==1).Select(m => m).ToList();
                 var headerLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
                 ViewBag.HeaderLeftMenuItems = headerLeftMenuItems;
 
