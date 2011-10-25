@@ -18,7 +18,7 @@
         {
             @Html.ActionLink("edit", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
             @Html.Raw("&nbsp;")
-            @Html.ActionLink("addPhotos","")
+            @Html.ActionLink("addPhotos", "AddPhoto","Accordion",new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
         }
         <div style="margin-bottom: 50px;">
             @Html.Raw(item.Text)

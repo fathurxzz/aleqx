@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HavilaTravel.Helpers;
 using HavilaTravel.Models;
 
 namespace HavilaTravel.Areas.Admin.Controllers
@@ -64,7 +66,43 @@ namespace HavilaTravel.Areas.Admin.Controllers
 
         public ActionResult AddPhoto(int id)
         {
+            ViewBag.parentId = id;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddPhoto(int parentId, IEnumerable<HttpPostedFileBase> fileUpload, IList<string> fileTitles )
+        {
+            using (var context = new ContentStorage())
+            {
+                var accordion = context.Accordion.Include("Content").Where(a => a.Id == parentId).First();
+
+
+                int titleIndex = 0;
+                foreach (var file in fileUpload)
+                {
+                    
+                    if (file == null) continue;
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Photos", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Photos");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+
+                    context.AddToAccordionImage(new AccordionImage
+                                                    {
+                                                        ImageSource = fileName,
+                                                        Accordion = accordion,
+                                                        Title = fileTitles[titleIndex]
+                                                    });
+                    context.SaveChanges();
+                    titleIndex++;
+                }
+                
+
+
+                return RedirectToAction("Index", "Home", new {id = accordion.Content.Name, area = ""});
+            }
         }
 
     }
