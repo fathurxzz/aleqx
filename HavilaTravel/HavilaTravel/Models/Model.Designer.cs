@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("havilaModel", "ContentContent", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(HavilaTravel.Models.Content), "Content1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HavilaTravel.Models.Content))]
+[assembly: EdmRelationshipAttribute("havilaModel", "ContentAccordion", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HavilaTravel.Models.Content), "Accordion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HavilaTravel.Models.Accordion))]
 
 #endregion
 
@@ -85,6 +86,38 @@ namespace HavilaTravel.Models
             }
         }
         private ObjectSet<Content> _Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Accordion> Accordion
+        {
+            get
+            {
+                if ((_Accordion == null))
+                {
+                    _Accordion = base.CreateObjectSet<Accordion>("Accordion");
+                }
+                return _Accordion;
+            }
+        }
+        private ObjectSet<Accordion> _Accordion;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<AccordionImage> AccordionImage
+        {
+            get
+            {
+                if ((_AccordionImage == null))
+                {
+                    _AccordionImage = base.CreateObjectSet<AccordionImage>("AccordionImage");
+                }
+                return _AccordionImage;
+            }
+        }
+        private ObjectSet<AccordionImage> _AccordionImage;
 
         #endregion
         #region AddTo Methods
@@ -96,6 +129,22 @@ namespace HavilaTravel.Models
         {
             base.AddObject("Content", content);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Accordion EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAccordion(Accordion accordion)
+        {
+            base.AddObject("Accordion", accordion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the AccordionImage EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAccordionImage(AccordionImage accordionImage)
+        {
+            base.AddObject("AccordionImage", accordionImage);
+        }
 
         #endregion
     }
@@ -104,6 +153,331 @@ namespace HavilaTravel.Models
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="havilaModel", Name="Accordion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Accordion : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Accordion object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Accordion CreateAccordion(global::System.Int64 id, global::System.Int32 sortOrder)
+        {
+            Accordion accordion = new Accordion();
+            accordion.Id = id;
+            accordion.SortOrder = sortOrder;
+            return accordion;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("havilaModel", "ContentAccordion", "Content")]
+        public Content Content
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("havilaModel.ContentAccordion", "Content").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("havilaModel.ContentAccordion", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("havilaModel.ContentAccordion", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Content>("havilaModel.ContentAccordion", "Content", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="havilaModel", Name="AccordionImage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AccordionImage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new AccordionImage object.
+        /// </summary>
+        /// <param name="accordionId">Initial value of the AccordionId property.</param>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static AccordionImage CreateAccordionImage(global::System.Int64 accordionId, global::System.Int64 id, global::System.Int32 sortOrder)
+        {
+            AccordionImage accordionImage = new AccordionImage();
+            accordionImage.AccordionId = accordionId;
+            accordionImage.Id = id;
+            accordionImage.SortOrder = sortOrder;
+            return accordionImage;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 AccordionId
+        {
+            get
+            {
+                return _AccordionId;
+            }
+            set
+            {
+                OnAccordionIdChanging(value);
+                ReportPropertyChanging("AccordionId");
+                _AccordionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AccordionId");
+                OnAccordionIdChanged();
+            }
+        }
+        private global::System.Int64 _AccordionId;
+        partial void OnAccordionIdChanging(global::System.Int64 value);
+        partial void OnAccordionIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+
+        #endregion
+    
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -464,6 +838,28 @@ namespace HavilaTravel.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Content>("havilaModel.ContentContent", "Content", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("havilaModel", "ContentAccordion", "Accordion")]
+        public EntityCollection<Accordion> Accordions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Accordion>("havilaModel.ContentAccordion", "Accordion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Accordion>("havilaModel.ContentAccordion", "Accordion", value);
                 }
             }
         }
