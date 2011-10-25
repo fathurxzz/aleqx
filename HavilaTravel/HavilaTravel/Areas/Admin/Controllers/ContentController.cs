@@ -111,8 +111,6 @@ namespace HavilaTravel.Areas.Admin.Controllers
                                                 "ContentLevel"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                content.Parent = null;
-                content.Children = null;
                 context.AddToContent(content);
                 context.SaveChanges();
 
