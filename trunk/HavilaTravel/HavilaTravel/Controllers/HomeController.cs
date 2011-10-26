@@ -24,8 +24,16 @@ namespace HavilaTravel.Controllers
                 ViewBag.CurrentContentName = id;
 
 
-
                 var content = context.Content.Include("Children").Include("Accordions").Where(c => c.Name == id || c.ContentType == 0).First();
+
+                
+                foreach (var accordion in content.Accordions)
+                {
+                    accordion.AccordionImages.Load();
+                }
+                
+
+
                 ViewBag.CurrentContentId = content.Id;
                 
 

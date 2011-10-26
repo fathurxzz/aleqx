@@ -38,9 +38,9 @@
                     {
                         @item.MenuTitle
                         <br />
-                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+                        @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
                         @Html.Raw("&nbsp")
-                        @Html.ActionLink("AddSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                     }
                 </td>
 
