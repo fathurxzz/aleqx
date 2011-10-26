@@ -1,19 +1,23 @@
 ﻿@using Dev.Mvc.Helpers
 @model IEnumerable<HavilaTravel.Models.Accordion>
-<div class="accordion">
+<div class="accordion" id="accordion1">
     @foreach (var item in Model.OrderBy(a => a.SortOrder))
     {
-        <table>
+        <table style="margin-top: 30px;">
             <tr>
                 <td class="leftPattern">
                 </td>
                 <td class="title">
-                    @Html.DisplayFor(modelItem => item.Title)
+                    <a href="#">@Html.DisplayFor(modelItem => item.Title)</a> 
                 </td>
                 <td class="rightPattern">
                 </td>
             </tr>
         </table>
+        
+        <div>
+        
+        @{
                if (Request.IsAuthenticated)
                {
         @Html.ActionLink("edit", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
@@ -28,34 +32,36 @@
                         @Html.Raw(item.Text)
                     </div>
                }
-         
+    }
         
        
            <table>
            <tr>
             @{
-                int cnt = 0;
-                foreach (var image in item.AccordionImages)
-                {
+                   int cnt = 0;
+                   foreach (var image in item.AccordionImages)
+                   {
                     <td>
                     <div class="accordionPicture">
+                        <a rel="@Html.Raw("group" + item.Id)" href="../../Content/Photos/@image.ImageSource" class="fancy">
                         @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
+                        </a>
                     </div>
                     <div class="accordionPictureTitle">
                         @image.Title
                     </div>
                     </td>
-                    cnt++;
-                    if(cnt%3==0)
-                    {
+                   cnt++;
+                   if (cnt % 3 == 0)
+                   {
                         @Html.Raw("</tr><tr>")
-                    }
+                   }
 
-                }
+                   }
             }
             </tr>
             </table> 
-
+            </div>
         
         
     }
@@ -68,3 +74,5 @@
         }
     }
 </div>
+
+
