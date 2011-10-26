@@ -83,6 +83,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
@@ -95,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="comingsoon.gif" />
+    <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\footer-bg-center.gif" />
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\main-bg.gif" />
@@ -183,6 +185,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\Photos\" />
+    <Folder Include="ImageCache\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
