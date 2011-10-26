@@ -1,19 +1,44 @@
 ﻿@model HavilaTravel.Models.Content
-
-
 @Html.Raw(Model.Text)
-
-
-
 @section ContentTitle{
-<div id="contentTitle">
-@ViewBag.Title
-</div>
+    <div id="contentTitle">
+        @ViewBag.Title
+    </div>
 }
-
 @section Accordion
 {
-<div id="accordionContainer">
-    @Html.Partial("Accordion",Model.Accordions)
-</div>
+    <div id="accordionContainer">
+        @Html.Partial("Accordion", Model.Accordions)
+    </div>
+}
+@section Includes
+{
+    <script type="text/javascript">
+
+        $(function () {
+            $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+
+
+            $("#accordion1").accordion(
+            {
+                animated: 'slide',
+                collapsible: true,
+                autoHeight: false,
+                active: false,
+                change: function (event, ui) {
+                    ui.newHeader.css("color", "#cc0000");
+                    //ui.newHeader.css("text-decoration", "none");
+                    ui.oldHeader.css("color", "#a3a3a3");
+                    //ui.oldHeader.css("text-decoration", "underline");
+                }
+
+
+            });
+
+            $("#accordion1 table").click(function () {
+                this.blur();
+            });
+
+        });
+    </script>
 }
