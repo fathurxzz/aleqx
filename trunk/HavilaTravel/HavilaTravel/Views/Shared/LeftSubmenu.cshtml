@@ -1,0 +1,49 @@
+﻿@using HavilaTravel.Models
+@{
+    if (ViewBag.MenuList != null)
+    {
+        var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 3).Select(m => m).FirstOrDefault();
+        if (menuItems != null)
+        {
+    <div id="leftSubmenu">
+        <div id="top">
+        </div>
+        <div id="content">
+            @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+            {
+
+
+                if (item.Selected)
+                {
+                <div class="menuItem selected">
+                    @item.Title
+                    @if (Request.IsAuthenticated)
+                    {
+                        
+                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    }
+                </div>
+                }
+                else
+                {
+                <div class="menuItem">
+                    @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                    @if (Request.IsAuthenticated)
+                    {
+                        
+                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    }
+                </div>    
+                }
+
+
+
+
+            }
+        </div>
+        <div id="bottom">
+        </div>
+    </div>
+        }
+    }
+}

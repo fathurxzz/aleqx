@@ -1,63 +1,70 @@
 ﻿@using HavilaTravel.Models
 @{
     <div id="mainMenu">
-    @if (ViewBag.MenuList != null)
-    {
-        var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
-        int cnt = 0;
-        if (menuItems != null)
+        @if (ViewBag.MenuList != null)
         {
+            var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+            int cnt = 0;
+            if (menuItems != null)
+            {
     
-        <table>
-            <tr>
-                @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
-                {
-                    cnt++;
-
-                    string selected = item.Selected ? "selected" : "";
-
-                    if (cnt == 1)
+            <table>
+                <tr>
+                    @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
                     {
-                    <td class="firstMenuItem @selected">
-                    </td>
+                        cnt++;
+
+                        string selected = item.Selected ? "selected" : "";
+
+                        if (cnt == 1)
+                        {
+                        <td class="firstMenuItem @selected">
+                        </td>
+                        }
+
+                        var style = cnt == 1 ? "white-space: nowrap" : "";
+
+                        <td style="@style" class="@selected">
+                            @if (!item.Selected)
+                            {
+                                @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                                if (Request.IsAuthenticated)
+                                {
+                                    <br />
+                                    @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    @Html.Raw("&nbsp")
+                                    @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                }
+                            }
+                            else
+                            {
+                                if(item.Current)
+                                {
+                                    @item.Title    
+                                }
+                                else
+                                {
+                                    @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                                }
+
+                                <br />
+                                @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+                                @Html.Raw("&nbsp")
+                                @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            }
+                        </td>
+
+                            if (cnt == menuItems.Count())
+                            {
+                        <td class="lastMenuItem @selected">
+                            &nbsp;
+                        </td>
+                            }
                     }
-
-                    var style = cnt == 1 ? "white-space: nowrap" : "";
-
-                    <td style="@style" class="@selected">
-                        @if (!item.Selected)
-                        {
-                            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
-                       if (Request.IsAuthenticated)
-                       {
-                            <br />
-                            @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                            @Html.Raw("&nbsp")
-                            @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                       }
-                        }
-                        else
-                        {
-                            @item.Title
-                            <br />
-                            @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
-                            @Html.Raw("&nbsp")
-                            @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                        }
-                    </td>
-
-                        if (cnt == menuItems.Count())
-                        {
-                    <td class="lastMenuItem @selected">
-                        &nbsp;
-                    </td>
-                        }
-                }
-                
-            </tr>
-        </table>
+                </tr>
+            </table>
     
+            }
         }
-    }
     </div>
 }

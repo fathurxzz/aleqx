@@ -36,6 +36,8 @@
                                     {
                                         <br />
                                         @Html.ActionLink("Edit", "Edit", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                        @Html.Raw("&nbsp")
+                                        @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     }
                                 }
                             </td>
