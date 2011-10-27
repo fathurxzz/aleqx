@@ -11,9 +11,11 @@ namespace HavilaTravel.Models
     {
         public int MenuLevel { get; set; }
 
+        private static string _contentName;
 
         public static List<Menu> GetMenuList(string contentName, ContentStorage context)
         {
+            _contentName = contentName;
             var result = new List<Menu>();
             string selectedItemName = null;
             var content = context.Content.Include("Parent").Include("Children").Where(c => c.Name == contentName).FirstOrDefault();
@@ -21,7 +23,7 @@ namespace HavilaTravel.Models
             {
                 if (content.Children.Count > 0)
                 {
-                    result.Add(GetMenuFromContext(content.Children, null));
+                    result.Add(GetMenuFromContext(content.Children.ToList(), null));
                 }
 
                 while (content.Parent != null)
@@ -29,18 +31,17 @@ namespace HavilaTravel.Models
                     selectedItemName = content.Name;
                     var parentId = content.Parent.Id;
                     content = context.Content.Include("Parent").Include("Children").Where(c => c.Id == parentId).First();
-                    result.Add(GetMenuFromContext(content.Children, selectedItemName));
+                    result.Add(GetMenuFromContext(content.Children.ToList(), selectedItemName));
                 }
                 selectedItemName = content.Name;
             }
-
 
             result.Add(GetTopLevelMenu(context, selectedItemName));
 
             return result;
         }
 
-        public static Menu GetMenuFromContext(EntityCollection<Content> contents, string selectedItemName)
+        public static Menu GetMenuFromContext(List<Content> contents, string selectedItemName)
         {
             var menu = new Menu();
             menu.AddRange(
@@ -50,7 +51,8 @@ namespace HavilaTravel.Models
                     Name = c.Name,
                     Selected = selectedItemName == c.Name,
                     Title = c.Title,
-                    SortOrder = c.SortOrder
+                    SortOrder = c.SortOrder,
+                    Current = c.Name == _contentName
                 }));
             menu.MenuLevel = (int)contents.First().ContentLevel;
             return menu;
@@ -58,17 +60,8 @@ namespace HavilaTravel.Models
 
         public static Menu GetTopLevelMenu(ContentStorage context, string selectedItemName)
         {
-            var menu = new Menu();
             var contents = context.Content.Where(m => m.ContentType == 1 && m.ContentLevel == 1).Select(m => m).ToList();
-            menu.AddRange(contents.Select(c => new MenuItem
-            {
-                Id = (int)c.Id,
-                Name = c.Name,
-                Selected = selectedItemName == c.Name,
-                Title = c.Title,
-                SortOrder = c.SortOrder
-            }));
-            menu.MenuLevel = (int)contents.First().ContentLevel;
+            var menu = GetMenuFromContext(contents, selectedItemName);
             return menu;
         }
     }
@@ -80,5 +73,6 @@ namespace HavilaTravel.Models
         public int Id { get; set; }
         public bool Selected { get; set; }
         public int SortOrder { get; set; }
+        public bool Current { get; set; }
     }
 }

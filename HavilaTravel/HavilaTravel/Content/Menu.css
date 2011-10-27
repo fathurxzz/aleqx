@@ -1,0 +1,200 @@
+﻿#headerLeftMenu
+{
+    width: 150px;
+    margin-left: 850px;
+    margin-top: 70px;
+    /*border: 1px solid black;*/
+    /*position: absolute;*/
+    /*margin-top: 100px;*/
+}
+
+#headerLeftMenu li
+{
+    color: #ffcc33;
+    list-style-type: none;
+    
+}
+
+#headerLeftMenu a
+{
+    font-size: 13px;
+    color: #ffcc33;
+}
+
+#headerLeftMenu a:hover
+{
+    color: #999999;
+}
+
+#mainMenu
+{
+    background-image: url('img/main-menu-bg.gif');
+    width: 892px;
+    height: 120px;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 5px auto 0px auto;
+    padding-top: 1px;
+    font-family: Georgia;
+    font-size: 17px;
+    color: #6f6f6f;
+}
+
+#mainMenu a
+{
+    color: #6f6f6f;
+}
+
+#mainMenu a:hover
+{
+    color: #999999;
+}
+
+#mainMenu table
+{
+    margin-top: 22px;
+    margin-left: 8px;
+    width: 881px;
+    /*border: 1px solid black;*/
+    border-collapse: collapse;
+}
+
+#mainMenu table td
+{
+    padding: 22px 20px 22px 20px;
+    vertical-align: text-top;
+    color: #000;
+}
+
+#mainMenu table a:hover
+{
+    color: #999999;
+    /*background-color: #ccc;*/
+}
+
+.firstMenuItem, .lastMenuItem
+{
+    width: 15px;    
+    padding: 0 !important;
+}
+
+.firstMenuItem.selected
+{
+    background-image: url('img/menu-selected-item-bg-left.gif') !important;
+    background-repeat: no-repeat !important;
+    padding: 0 !important;
+}
+
+.lastMenuItem.selected
+{
+    background-image: url('img/menu-selected-item-bg-right.gif') !important;
+    background-repeat: no-repeat !important;
+    background-position: right;
+    padding: 0 !important;
+}
+
+#mainMenu .selected
+{
+    background-image: url('img/menu-selected-item-bg.gif');
+    background-repeat: repeat-x;
+}
+
+
+#subMenu {
+
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+#subMenu table {
+    position: relative;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+#subMenu td
+{
+    background-image: url('img/submenu-bg.png');
+    background-repeat: repeat-x;
+    font-family: Georgia;
+    padding: 0 20px;
+    font-style: italic;
+}
+
+#subMenu td a
+{
+    color: #6f6f6f;
+    font-style: italic;
+}
+
+
+#subMenu .separator
+{
+    background-image: url('img/submenu-bg.png');
+    background-repeat: repeat-x;
+    width: 50px;
+    padding: 0 !important;
+}
+
+#subMenu .leftSide, #subMenu .rightSide
+{
+    height: 42px;
+    width: 10px;
+    padding: 0 !important;
+}
+
+#subMenu .leftSide
+{
+    background-image: url('img/submenu-bg-left.png');
+}
+
+#subMenu .rightSide
+{
+    background-image: url('img/submenu-bg-right.png');
+}
+
+
+#leftSubmenu
+{
+    font-size: 13px;
+    margin-top: 100px;
+    color: #000;
+}
+
+#leftSubmenu a
+{
+    color: #000;
+}
+
+#leftSubmenu .menuItem
+{
+    padding: 5px 10px;
+}
+
+#leftSubmenu .menuItem.selected
+{
+    font-weight: bold;
+}
+
+#leftSubmenu #top, #leftSubmenu #bottom
+{
+    width: 172px;
+    height: 10px;
+}
+
+#leftSubmenu #top
+{
+    background-image: url('img/left-submenu-top.gif');
+}
+
+#leftSubmenu #content
+{
+    width: 170px;
+    border-left: 1px solid #fdbe3f;
+    border-right: 1px solid #fdbe3f;
+}
+
+#leftSubmenu #bottom
+{
+    background-image: url('img/left-submenu-bottom.gif');
+}
