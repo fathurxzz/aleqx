@@ -7,7 +7,12 @@
           {
               foreach (var m in menuItems.OrderBy(m=>m.SortOrder))
               {
-            <li>&raquo; @Html.ActionLink(m.MenuTitle, "Index", "Home", new { id = m.Name }, null) @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })</li>
+            <li>&raquo; @Html.ActionLink(m.MenuTitle, "Index", "Home", new { id = m.Name }, null) 
+         @if (Request.IsAuthenticated)
+            {   
+            @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
+            }   
+            </li>
             
               }
           }}

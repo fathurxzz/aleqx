@@ -23,7 +23,12 @@ namespace HavilaTravel.Controllers
 
                 var content = context.Content
                     .Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c => c.Name == id || c.ContentType == 0)
+                    .Where(c => c.Name == id)
+                    .FirstOrDefault();
+                if(content==null)
+                content = context.Content
+                    .Include("Parent").Include("Children").Include("Accordions")
+                    .Where(c =>c.ContentType == 0)
                     .First();
 
                 foreach (var accordion in content.Accordions)

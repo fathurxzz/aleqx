@@ -3,6 +3,7 @@
     width: 150px;
     margin-left: 850px;
     margin-top: 70px;
+    position: absolute;
     /*border: 1px solid black;*/
     /*position: absolute;*/
     /*margin-top: 100px;*/
@@ -33,7 +34,7 @@
     height: 120px;
     background-repeat: no-repeat;
     position: relative;
-    margin: 5px auto 0px auto;
+    margin: 50px auto 0px auto;
     padding-top: 1px;
     font-family: Georgia;
     font-size: 17px;
@@ -125,6 +126,12 @@
 {
     color: #6f6f6f;
     font-style: italic;
+}
+
+#subMenu td a.current
+{
+    color: #000;
+    text-decoration: none;
 }
 
 
