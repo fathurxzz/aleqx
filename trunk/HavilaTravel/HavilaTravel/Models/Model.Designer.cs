@@ -119,6 +119,22 @@ namespace HavilaTravel.Models
             }
         }
         private ObjectSet<Content> _Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Banner> Banner
+        {
+            get
+            {
+                if ((_Banner == null))
+                {
+                    _Banner = base.CreateObjectSet<Banner>("Banner");
+                }
+                return _Banner;
+            }
+        }
+        private ObjectSet<Banner> _Banner;
 
         #endregion
         #region AddTo Methods
@@ -145,6 +161,14 @@ namespace HavilaTravel.Models
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Banner EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBanner(Banner banner)
+        {
+            base.AddObject("Banner", banner);
         }
 
         #endregion
@@ -515,6 +539,159 @@ namespace HavilaTravel.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="havilaModel", Name="Banner")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Banner : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Banner object.
+        /// </summary>
+        /// <param name="bannerType">Initial value of the BannerType property.</param>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static Banner CreateBanner(global::System.Boolean bannerType, global::System.Int32 id)
+        {
+            Banner banner = new Banner();
+            banner.BannerType = bannerType;
+            banner.Id = id;
+            return banner;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean BannerType
+        {
+            get
+            {
+                return _BannerType;
+            }
+            set
+            {
+                OnBannerTypeChanging(value);
+                ReportPropertyChanging("BannerType");
+                _BannerType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BannerType");
+                OnBannerTypeChanged();
+            }
+        }
+        private global::System.Boolean _BannerType;
+        partial void OnBannerTypeChanging(global::System.Boolean value);
+        partial void OnBannerTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private global::System.String _Price;
+        partial void OnPriceChanging(global::System.String value);
+        partial void OnPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+
+        #endregion
+    
     }
     
     /// <summary>
