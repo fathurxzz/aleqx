@@ -121,6 +121,9 @@
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\footer-bg-center.gif" />
     <Content Include="Content\img\footer-bg.gif" />
+    <Content Include="Content\img\hotel1.gif" />
+    <Content Include="Content\img\hotel2.gif" />
+    <Content Include="Content\img\hotel3.gif" />
     <Content Include="Content\img\left-submenu-bottom.gif" />
     <Content Include="Content\img\left-submenu-top.gif" />
     <Content Include="Content\img\main-bg.gif" />
@@ -131,6 +134,7 @@
     <Content Include="Content\img\pattern-left.png" />
     <Content Include="Content\img\pattern-right.png" />
     <Content Include="Content\img\pattern.png" />
+    <Content Include="Content\img\png-ramka.png" />
     <Content Include="Content\img\submenu-bg-left.png" />
     <Content Include="Content\img\submenu-bg-right.png" />
     <Content Include="Content\img\submenu-bg.png" />

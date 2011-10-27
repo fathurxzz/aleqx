@@ -17,6 +17,13 @@
 <body>
     <div id="header">
         <div id="innerHeader">
+            <div id="mainBanner">
+
+                @RenderSection("MainBanner",false)
+
+                <div id="ramka"></div>
+
+            </div>
             @Html.Partial("HeaderLeftMenu")
         </div>
         @Html.Partial("MainMenu")

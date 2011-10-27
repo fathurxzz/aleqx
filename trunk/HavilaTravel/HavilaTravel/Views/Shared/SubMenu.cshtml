@@ -21,11 +21,18 @@
                                 @{
                                     if (item.Selected)
                                     {
-                                        @item.Title
+                                        if(item.Current)
+                                        {
+                                            @item.Title
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, new{@class="current"})
+                                        }
                                     }
                                     else
                                     {
-                                        @Html.ActionLink(item.Title, "Index", "Home", new {id = item.Name}, null)
+                                        @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
                                     }
                                 }
 
@@ -35,7 +42,7 @@
                                     if (Request.IsAuthenticated)
                                     {
                                         <br />
-                                        @Html.ActionLink("Edit", "Edit", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         @Html.Raw("&nbsp")
                                         @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     }
