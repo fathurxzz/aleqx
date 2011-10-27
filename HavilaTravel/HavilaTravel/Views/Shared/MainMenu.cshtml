@@ -1,58 +1,63 @@
-﻿<div id="mainMenu">
-    @{
-        var menuItems = (List<HavilaTravel.Models.Content>)ViewBag.MainMenuItems;
-    }
-    <table>
-        <tr>
-            @{
-                int cnt = 0;
-                if (menuItems != null)
+﻿@using HavilaTravel.Models
+@{
+    <div id="mainMenu">
+    @if (ViewBag.MenuList != null)
+    {
+        var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+        int cnt = 0;
+        if (menuItems != null)
+        {
+    
+        <table>
+            <tr>
+                @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
                 {
-                    foreach (var item in menuItems.OrderBy(m=>m.SortOrder))
+                    cnt++;
+
+                    string selected = item.Selected ? "selected" : "";
+
+                    if (cnt == 1)
                     {
-                        cnt++;
+                    <td class="firstMenuItem @selected">
+                    </td>
+                    }
 
-                        string selected = ViewBag.CurrentContentName == item.Name ? "selected" : "";
+                    var style = cnt == 1 ? "white-space: nowrap" : "";
 
-                        if (cnt == 1)
+                    <td style="@style" class="@selected">
+                        @if (!item.Selected)
                         {
-                <td class="firstMenuItem @selected">
-                </td>
-                        }
-
-                        var style = cnt == 1 ? "white-space: nowrap" : "";
-
-                <td style="@style" class="@selected">
-                    @if (ViewBag.CurrentContentName != item.Name)
-                    {
-                        @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
-                        if (Request.IsAuthenticated)
-                        {
+                            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                       if (Request.IsAuthenticated)
+                       {
                             <br />
                             @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                             @Html.Raw("&nbsp")
                             @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                       }
                         }
-                    }
-                    else
-                    {
-                        @item.MenuTitle
-                        <br />
-                        @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
-                        @Html.Raw("&nbsp")
-                        @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                    }
-                </td>
+                        else
+                        {
+                            @item.Title
+                            <br />
+                            @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+                            @Html.Raw("&nbsp")
+                            @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        }
+                    </td>
 
-                    if (cnt == menuItems.Count())
-                    {
-                <td class="lastMenuItem @selected">
-                    &nbsp;
-                </td>
-                    }
-                    }
+                        if (cnt == menuItems.Count())
+                        {
+                    <td class="lastMenuItem @selected">
+                        &nbsp;
+                    </td>
+                        }
                 }
-            }
-        </tr>
-    </table>
-</div>
+                
+            </tr>
+        </table>
+    
+        }
+    }
+    </div>
+}
