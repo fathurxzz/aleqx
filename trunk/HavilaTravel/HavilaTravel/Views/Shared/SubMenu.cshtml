@@ -1,36 +1,53 @@
-﻿@{
-    var menuItems = (List<HavilaTravel.Models.Content>)ViewBag.SubMenuItems;
-
-    if (menuItems!=null && menuItems.Count > 0)
+﻿@using HavilaTravel.Models
+@{
+    if(ViewBag.MenuList!=null)
     {
-    <div id="subMenu">
-        <table>
-            <tr>
-                <td class="leftSide">
-                </td>
-                <td class="separator">
-                </td>
+        var menuItems = ((List<Menu>) ViewBag.MenuList).Where(m => m.MenuLevel == 2).Select(m => m).FirstOrDefault();
 
-                @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
-                {
-                <td>
-                    @Html.ActionLink(item.MenuTitle, "Index", "Home", new { id = item.Name }, null)
-                    @{
-                        if (Request.IsAuthenticated)
+        if (menuItems != null && menuItems.Count > 0)
+        {
+            <div id="subMenu">
+                <table>
+                    <tr>
+                        <td class="leftSide">
+                        </td>
+                        <td class="separator">
+                        </td>
+
+                        @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
                         {
-                            <br />
-                        @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            <td>
+                    
+                                @{
+                                    if (item.Selected)
+                                    {
+                                        @item.Title
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(item.Title, "Index", "Home", new {id = item.Name}, null)
+                                    }
+                                }
+
+                    
+                    
+                                @{
+                                    if (Request.IsAuthenticated)
+                                    {
+                                        <br />
+                                        @Html.ActionLink("Edit", "Edit", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                    }
+                                }
+                            </td>
                         }
-                    }
-                </td>
-                }
-                <td class="separator">
-                </td>
-                <td class="rightSide">
-                </td>
-            </tr>
-        </table>
-    </div>
-    
+                        <td class="separator">
+                        </td>
+                        <td class="rightSide">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        }
     }
 }
