@@ -25,6 +25,7 @@ namespace HavilaTravel.Controllers
                     .Include("Parent").Include("Children").Include("Accordions")
                     .Where(c => c.Name == id)
                     .FirstOrDefault();
+
                 if(content==null)
                 content = context.Content
                     .Include("Parent").Include("Children").Include("Accordions")
@@ -35,6 +36,10 @@ namespace HavilaTravel.Controllers
                 {
                     accordion.AccordionImages.Load();
                 }
+
+
+                var banners = context.Banner.ToList();
+                ViewBag.Banners = banners;
 
                 ViewBag.Title = content.Title;
                 ViewBag.SeoDescription = content.SeoDescription;

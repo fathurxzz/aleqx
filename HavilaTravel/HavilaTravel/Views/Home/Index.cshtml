@@ -1,4 +1,5 @@
-﻿@model HavilaTravel.Models.Content
+﻿@using HavilaTravel.Models
+@model HavilaTravel.Models.Content
 @Html.Raw(Model.Text)
 @section ContentTitle{
     <div id="contentTitle">
@@ -39,11 +40,42 @@
                 this.blur();
             });
 
+
+            /*$('#slideshow').cycle('stop').remove();*/
+
+            $('#slideshow').cycle(
+            {
+                fx: 'fade',
+                after: onAfter,
+                sync: true,
+                timeout: 5000,
+			    delay:  -1000
+            });
+
+            function onAfter(curr, next, opts) {
+                //var msg = 'Slide ' + (opts.currSlide + 1) + ' of ' + opts.slideCount;
+                $('#leftCaption').html(next.alt);
+                $('#rightCaption').html(next.price);
+                //alert();
+            };
+
+
         });
     </script>
 }
-
 @section MainBanner
 {
-    <img src="../Content/img/hotel1.gif" alt=""/>
+    
+    @{
+        var banners = ((List<Banner>) ViewBag.Banners).Where(b=>b.BannerType==1);
+    }
+
+    <div id="slideshow">
+
+        @foreach (var banner in banners)
+        {
+        <img src="../Content/Banners/@banner.ImageSource" alt="@banner.Title" price="@banner.Price" />
+        
+        }
+    </div>
 }
