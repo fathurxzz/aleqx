@@ -55,14 +55,63 @@ body
     height: 297px;
     position: absolute;
     background-image: url('img/png-ramka.png');
+    z-index: 1001;
 }
 
+#caption
+{
+    z-index: 1002;
+    height: 20px;
+    width: 500px;
+   /* background-color: black;*/
+    margin-top: 270px;
+    margin-left: 65px;
+    font-size: 14px;
+    color: #996633;
+ }
+ 
+ #leftCaption
+ {
+     float: left;
+ }
+
+#rightCaption
+{
+    float: right;
+    text-align: right;
+    font-weight: bold;
+}
 #mainBanner img
 {
     margin-left: 3px;
     margin-top: 3px;
     position: absolute;
+    top: 0;
+    left: 0;
 }
+
+
+#slideshow
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 642px;
+    height: 297px;
+}
+
+
+
+/*
+#slideshow img {
+    width: 635px;
+    height: 250px;
+    top: 0;
+    left: 0;
+}*/
+
+
+
 
 #page 
 {
@@ -270,4 +319,26 @@ body
     width: 300px;
 }
 
+#logOffLinkContainer
+{
+    position: absolute;
+    margin-left: 400px;
+    margin-top: -25px;
+}
 
+.logOnForm
+{
+	position:relative;
+	margin:0 auto;
+	width:220px;
+}
+
+.logOnForm table td
+{
+	line-height:30px;
+}
+
+.adminTable td
+{
+    padding: 3px;
+}

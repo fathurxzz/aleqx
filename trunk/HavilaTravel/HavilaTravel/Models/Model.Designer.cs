@@ -556,7 +556,7 @@ namespace HavilaTravel.Models
         /// </summary>
         /// <param name="bannerType">Initial value of the BannerType property.</param>
         /// <param name="id">Initial value of the Id property.</param>
-        public static Banner CreateBanner(global::System.Boolean bannerType, global::System.Int32 id)
+        public static Banner CreateBanner(global::System.Int32 bannerType, global::System.Int32 id)
         {
             Banner banner = new Banner();
             banner.BannerType = bannerType;
@@ -572,7 +572,7 @@ namespace HavilaTravel.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean BannerType
+        public global::System.Int32 BannerType
         {
             get
             {
@@ -587,8 +587,8 @@ namespace HavilaTravel.Models
                 OnBannerTypeChanged();
             }
         }
-        private global::System.Boolean _BannerType;
-        partial void OnBannerTypeChanging(global::System.Boolean value);
+        private global::System.Int32 _BannerType;
+        partial void OnBannerTypeChanging(global::System.Int32 value);
         partial void OnBannerTypeChanged();
     
         /// <summary>
