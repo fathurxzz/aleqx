@@ -31,14 +31,14 @@
                                 if (Request.IsAuthenticated)
                                 {
                                     <br />
-                                    @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    @Html.Raw("&nbsp")
-                                    @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    <br />
+                                    @Html.ActionLink("добавить подпункт", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                 }
                             }
                             else
                             {
-                                if(item.Current)
+                                if (item.Current)
                                 {
                                     @item.Title    
                                 }
@@ -48,9 +48,9 @@
                                 }
 
                                 <br />
-                                @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
-                                @Html.Raw("&nbsp")
-                                @Html.ActionLink("addSub", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+                                <br />
+                                @Html.ActionLink("добавить подпункт", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                             }
                         </td>
 

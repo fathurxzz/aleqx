@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HavilaTravel.Helpers;
 using HavilaTravel.Models;
 
 namespace HavilaTravel.Areas.Admin.Controllers
@@ -118,7 +119,34 @@ namespace HavilaTravel.Areas.Admin.Controllers
             }
         }
 
-       
+       public ActionResult Delete(int id)
+       {
+           using (var context = new ContentStorage())
+           {
+               var content = context.Content.Include("Children").Where(c => c.Id == id).First();
+
+               foreach (var child in content.Children)
+               {
+                   child.Accordions.Load();
+                   foreach (var accordion in child.Accordions)
+                   {
+                       accordion.AccordionImages.Load();
+                       
+                       foreach (var image in accordion.AccordionImages)
+                       {
+                           IOHelper.DeleteFile("~/Content/Photos", image.ImageSource);
+                       }
+                       
+                       while (accordion.AccordionImages.Any())
+                       {
+                           context.DeleteObject(accordion.AccordionImages.First());
+                       }
+                   }
+               }
+           }
+           return RedirectToAction("Index", "Home", new { area = "" });
+       }
+
 
     }
 }
