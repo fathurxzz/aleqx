@@ -35,6 +35,13 @@
 
                 <div id="ramka">
                     <div id="caption">
+                     @{
+            if(Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Администрирование баннеров","Index","Banner",new{Area="Admin"},new{@class="adminLink bannersLink"})
+            }
+            
+        }
                         <div id="leftCaption"></div>
                         <div id="rightCaption"></div>
                     </div>

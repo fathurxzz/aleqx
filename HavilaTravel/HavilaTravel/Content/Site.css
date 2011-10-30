@@ -342,3 +342,9 @@ body
 {
     padding: 3px;
 }
+
+.bannersLink
+{
+	position: absolute;
+	margin-left: 200px;
+}

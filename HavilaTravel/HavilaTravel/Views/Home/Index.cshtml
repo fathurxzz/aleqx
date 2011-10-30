@@ -55,7 +55,7 @@
             function onAfter(curr, next, opts) {
                 //var msg = 'Slide ' + (opts.currSlide + 1) + ' of ' + opts.slideCount;
                 $('#leftCaption').html(next.alt);
-                $('#rightCaption').html(next.price);
+                $('#rightCaption').html(next.id);
                 //alert();
             };
 
@@ -71,10 +71,10 @@
     }
 
     <div id="slideshow">
-
+       
         @foreach (var banner in banners)
         {
-        <img src="../Content/Banners/@banner.ImageSource" alt="@banner.Title" price="@banner.Price" />
+        <img src="../Content/Banners/@banner.ImageSource" id="@banner.Price" alt="@banner.Title" />
         
         }
     </div>

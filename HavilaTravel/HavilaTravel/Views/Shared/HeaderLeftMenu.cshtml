@@ -10,7 +10,7 @@
             <li>&raquo; @Html.ActionLink(m.MenuTitle, "Index", "Home", new { id = m.Name }, null) 
          @if (Request.IsAuthenticated)
             {   
-            @Html.ActionLink("edit", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
             }   
             </li>
             
@@ -20,7 +20,7 @@
     @{
         if (Request.IsAuthenticated)
         {
-        @Html.ActionLink("add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+        @Html.ActionLink("добавить подпункт", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
         }
     }
 </div>

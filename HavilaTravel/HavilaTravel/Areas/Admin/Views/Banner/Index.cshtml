@@ -8,7 +8,7 @@
 <h2>Баннеры</h2>
 
 <p>
-    @Html.ActionLink("Добавить", "Create")
+    @Html.ActionLink("Добавить", "Create",null,new{@class="adminLink"})
 </p>
 <table class="adminTable">
     <tr>
@@ -56,8 +56,8 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("редактировать", "Edit", new { id = item.Id },new{@class="adminLink"}) |
+            @Html.ActionLink("удалить", "Delete", new { id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить изображение?')" })
         </td>
     </tr>
 }

@@ -53,7 +53,53 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 }
 
             }
-            return RedirectToAction("Index", "Home",new{Area=""});
+            return RedirectToAction("Index", "Banner", new { Area = "Admin" });
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var banner = context.Banner.Where(b => b.Id == id).First();
+                return View(banner);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Banner model, FormCollection form, HttpPostedFileBase fileUpload)
+        {
+            using (var context = new ContentStorage())
+            {
+                var banner = context.Banner.Where(b => b.Id == model.Id).First();
+                string fileName = banner.ImageSource;
+
+                if (fileUpload != null)
+                {
+                    IOHelper.DeleteFile("~/Content/Banners", banner.ImageSource);
+
+                    fileName = IOHelper.GetUniqueFileName("~/Content/Banners", fileUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Banners");
+                    filePath = Path.Combine(filePath, fileName);
+                    fileUpload.SaveAs(filePath);
+                }
+                TryUpdateModel(banner, new[] { "Price", "Title" });
+                banner.BannerType = Convert.ToInt32(form["BannerType"]);
+                banner.ImageSource = fileName;
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Banner", new { Area = "Admin" });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var banner = context.Banner.Where(b => b.Id == id).First();
+                IOHelper.DeleteFile("~/Content/Banners", banner.ImageSource);
+                context.DeleteObject(banner);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Banner", new { Area = "Admin" });
         }
 
     }
