@@ -128,20 +128,21 @@ namespace HavilaTravel.Areas.Admin.Controllers
                foreach (var child in content.Children)
                {
                    child.Accordions.Load();
-                   foreach (var accordion in child.Accordions)
+
+                   while (child.Accordions.Any())
                    {
+                       var accordion = child.Accordions.First();
                        accordion.AccordionImages.Load();
-                       
-                       foreach (var image in accordion.AccordionImages)
-                       {
-                           IOHelper.DeleteFile("~/Content/Photos", image.ImageSource);
-                       }
-                       
                        while (accordion.AccordionImages.Any())
                        {
-                           context.DeleteObject(accordion.AccordionImages.First());
+                           var image = accordion.AccordionImages.First();
+                           IOHelper.DeleteFile("~/Content/Photos", image.ImageSource);
+                           context.DeleteObject(image);
                        }
+                       context.DeleteObject(accordion);
                    }
+                   
+                   context.SaveChanges();
                }
            }
            return RedirectToAction("Index", "Home", new { area = "" });

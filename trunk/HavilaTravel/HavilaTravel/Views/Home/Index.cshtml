@@ -79,3 +79,26 @@
         }
     </div>
 }
+
+@section SmallBannerLeft
+{
+    @{
+        Banner leftBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
+
+        if(leftBanner!=null)
+        {
+            @Html.Partial("BannerSmall", leftBanner)
+        }
+    }
+}
+
+@section SmallBannerRight
+{
+    @{
+        Banner rightBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
+        if (rightBanner != null)
+        {
+            @Html.Partial("BannerSmall", rightBanner)
+        }
+    }
+}

@@ -1,0 +1,36 @@
+﻿@model HavilaTravel.Models.Banner
+
+
+
+    <div class="smallBanner">
+        <div class="topTitle">@Model.Title </div>
+        <div class="picture">
+            <img src="../Content/Banners/@Model.ImageSource" alt="" />
+        </div>
+        <div class="bottomTitle">@Model.Title</div>
+    </div>
+
+@*<fieldset>
+    <legend>Banner</legend>
+
+    <div class="display-label">BannerType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BannerType)
+    </div>
+
+    <div class="display-label">ImageSource</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ImageSource)
+    </div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</fieldset>*@
+
