@@ -3,6 +3,20 @@
 
 
     <div class="smallBanner">
+        <div class="header banner@{@Model.BannerType }">
+        
+        @if (Model.BannerType == 3)
+        {
+            <div class="hotTour"><span>Горящий тур</span>:</div>
+        }
+        else if (Model.BannerType == 2)
+        {
+            <div class="topicTour">Ближайший<br /><span>тематический тур</span>:</div>
+        }
+        
+        
+        
+        </div>
         <div class="topTitle">@Model.Title </div>
         <div class="picture">
             <img src="../Content/Banners/@Model.ImageSource" alt="" />

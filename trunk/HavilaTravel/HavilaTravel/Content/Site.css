@@ -178,10 +178,9 @@ body
 #centerContent
 {
     width: 640px;
-    vertical-align: top;
 }
 
-#leftContent, #rightContent
+#leftContent, #rightContent, #centerContent
 {
     vertical-align: top;
 }
@@ -354,11 +353,43 @@ body
 .smallBanner
 {
     width: 166px;
-    height: 200px;
-    padding: 60px 37px;
+    height: 260px;
+    padding: 0 37px 60px 37px;
     background-image: url('img/banner_small_bg.gif');
     margin-top: 40px;
 }
+
+.smallBanner .header
+{
+    padding-top: 15px;
+    height: 45px;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+
+.smallBanner .header.banner2
+{
+    padding-top: 0px !important;
+    padding-bottom: 15px !important;
+}
+
+.smallBanner .header span
+{
+    text-decoration: underline;
+}
+
+.smallBanner .header .hotTour span
+{
+    color: #ff3333;
+}
+
+.smallBanner .header .topicTour span
+{
+    color: #0066cc;
+}
+
 
 .smallBanner .topTitle
 {
