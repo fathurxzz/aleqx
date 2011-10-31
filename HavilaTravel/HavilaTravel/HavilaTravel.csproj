@@ -128,6 +128,8 @@
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\banner_small_bg.gif" />
+    <Content Include="Content\img\booking-icon.png" />
+    <Content Include="Content\img\chat-icon.png" />
     <Content Include="Content\img\footer-bg-center.gif" />
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\hotel1.gif" />
@@ -143,6 +145,7 @@
     <Content Include="Content\img\pattern-left.png" />
     <Content Include="Content\img\pattern-right.png" />
     <Content Include="Content\img\pattern.png" />
+    <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\png-ramka.png" />
     <Content Include="Content\img\submenu-bg-left.png" />
     <Content Include="Content\img\submenu-bg-right.png" />

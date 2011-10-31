@@ -356,7 +356,7 @@ body
     height: 200px;
     padding: 60px 37px;
     background-image: url('img/banner_small_bg.gif');
-    margin-top: 200px;
+    margin-top: 40px;
 }
 
 .smallBanner .topTitle
@@ -386,4 +386,51 @@ body
 {
     width: 163px;
     height: 108px;
+}
+
+#chat, #booking
+{
+    text-align: left;
+    padding-left: 40px;
+    
+}
+
+#chat a, #booking a
+{
+    color: #000;
+    font-size: 14px;
+}
+
+#chat .time
+{
+    font-size: 10px;
+    color: #999999;
+    line-height: 10px;
+    padding-top: 5px;
+}
+
+
+#chat
+{
+    background-image: url('img/chat-icon.png');
+    background-repeat: no-repeat;
+    
+}
+
+#booking
+{
+    background-image: url('img/booking-icon.png');
+    background-repeat: no-repeat;
+    height: 28px;
+    margin-top: 40px;
+}
+
+.rootLink
+{
+    display:block;
+	position:absolute;
+    width: 140px;
+    height: 155px;
+    margin-top: 58px;
+    margin-left: 23px;
 }
