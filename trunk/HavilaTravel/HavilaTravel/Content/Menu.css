@@ -58,6 +58,8 @@
     width: 881px;
     /*border: 1px solid black;*/
     border-collapse: collapse;
+    /*display: block;*/
+    
 }
 
 #mainMenu table td
@@ -65,7 +67,9 @@
     padding: 22px 20px 22px 20px;
     vertical-align: text-top;
     color: #000;
-    
+    height: 39px;
+    vertical-align: text-top;
+    /*display: inline-block;*/
 }
 
 #mainMenu table a:hover
@@ -84,6 +88,7 @@
 {
     background-image: url('img/menu-selected-item-bg-left.gif') !important;
     background-repeat: no-repeat !important;
+    background-position: left top;
     padding: 0 !important;
     
 }
@@ -92,15 +97,16 @@
 {
     background-image: url('img/menu-selected-item-bg-right.gif') !important;
     background-repeat: no-repeat !important;
-    background-position: right;
+    background-position: right top;
     padding: 0 !important;
+    
 }
 
 #mainMenu .selected
 {
     background-image: url('img/menu-selected-item-bg.gif');
     background-repeat: repeat-x;
-    height: 100px;
+    /*height: 57px;*/
 }
 
 

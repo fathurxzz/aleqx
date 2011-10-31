@@ -50,7 +50,7 @@ namespace HavilaTravel.Models
                     Id = (int)c.Id,
                     Name = c.Name,
                     Selected = selectedItemName == c.Name,
-                    Title = c.Title,
+                    Title = c.MenuTitle,
                     SortOrder = c.SortOrder,
                     Current = c.Name == _contentName
                 }));
