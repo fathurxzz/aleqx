@@ -346,5 +346,44 @@ body
 .bannersLink
 {
 	position: absolute;
-	margin-left: 200px;
+	margin-left: 100px;
+}
+
+
+.smallBanner
+{
+    width: 166px;
+    height: 200px;
+    padding: 60px 37px;
+    background-image: url('img/banner_small_bg.gif');
+    margin-top: 200px;
+}
+
+.smallBanner .topTitle
+{
+    height: 40px;
+    text-align: center;
+    
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.smallBanner .bottomTitle
+{
+    text-align: left;
+    
+    color: #666666;
+}
+
+.smallBanner .topTitle, .smallBanner .bottomTitle
+{
+    font-size: 12px;
+    padding-left: 5px;
+    width: 150px;
+}
+
+.smallBanner .picture
+{
+    width: 163px;
+    height: 108px;
 }
