@@ -19,6 +19,11 @@
         </div>
         <div class="topTitle">@Model.Title </div>
         <div class="picture">
+            
+            <div class="price price@{@Model.BannerType }">
+                @Model.Price
+            </div>
+
             <img src="../Content/Banners/@Model.ImageSource" alt="" />
         </div>
         <div class="bottomTitle">@Model.Title</div>
