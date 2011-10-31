@@ -178,6 +178,7 @@ body
 #centerContent
 {
     width: 640px;
+    vertical-align: top;
 }
 
 #leftContent, #rightContent

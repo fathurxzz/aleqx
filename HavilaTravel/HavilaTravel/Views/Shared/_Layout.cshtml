@@ -26,7 +26,7 @@
                 </div>
                 }
             }
-            @if (!ViewBag.IsRoot){
+            @if ( ViewBag.IsRoot!=null && !ViewBag.IsRoot){
                 <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
             }
             
