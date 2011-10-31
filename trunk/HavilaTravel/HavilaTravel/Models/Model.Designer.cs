@@ -689,6 +689,54 @@ namespace HavilaTravel.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ContentName
+        {
+            get
+            {
+                return _ContentName;
+            }
+            set
+            {
+                OnContentNameChanging(value);
+                ReportPropertyChanging("ContentName");
+                _ContentName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ContentName");
+                OnContentNameChanged();
+            }
+        }
+        private global::System.String _ContentName;
+        partial void OnContentNameChanging(global::System.String value);
+        partial void OnContentNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Title2
+        {
+            get
+            {
+                return _Title2;
+            }
+            set
+            {
+                OnTitle2Changing(value);
+                ReportPropertyChanging("Title2");
+                _Title2 = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Title2");
+                OnTitle2Changed();
+            }
+        }
+        private global::System.String _Title2;
+        partial void OnTitle2Changing(global::System.String value);
+        partial void OnTitle2Changed();
 
         #endregion
     

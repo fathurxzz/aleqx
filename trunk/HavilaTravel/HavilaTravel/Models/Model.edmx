@@ -36,10 +36,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="BannerType" Type="int" Nullable="false" />
+          <Property Name="ContentName" Type="varchar" />
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageSource" Type="varchar" />
           <Property Name="Price" Type="varchar" MaxLength="100" />
           <Property Name="Title" Type="varchar" />
+          <Property Name="Title2" Type="varchar" />
         </EntityType>
         <EntityType Name="content">
           <Key>
@@ -141,6 +143,8 @@
           <Property Type="String" Name="ImageSource" />
           <Property Type="String" Name="Price" />
           <Property Type="String" Name="Title" />
+          <Property Type="String" Name="ContentName" />
+          <Property Type="String" Name="Title2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -201,6 +205,8 @@
           <EntitySetMapping Name="Banner">
             <EntityTypeMapping TypeName="havilaModel.Banner">
               <MappingFragment StoreEntitySet="banner">
+                <ScalarProperty Name="Title2" ColumnName="Title2" />
+                <ScalarProperty Name="ContentName" ColumnName="ContentName" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
