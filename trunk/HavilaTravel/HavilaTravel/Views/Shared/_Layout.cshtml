@@ -22,7 +22,7 @@
                 if (Request.IsAuthenticated)
                 {
                 <div id="logOffLinkContainer">
-                    @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", null, new { @class = "adminLink" })
+                    @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new{Area=""}, new { @class = "adminLink" })
                 </div>
                 }
             }
