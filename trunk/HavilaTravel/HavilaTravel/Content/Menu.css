@@ -65,6 +65,7 @@
     padding: 22px 20px 22px 20px;
     vertical-align: text-top;
     color: #000;
+    
 }
 
 #mainMenu table a:hover
@@ -84,6 +85,7 @@
     background-image: url('img/menu-selected-item-bg-left.gif') !important;
     background-repeat: no-repeat !important;
     padding: 0 !important;
+    
 }
 
 .lastMenuItem.selected
@@ -98,6 +100,7 @@
 {
     background-image: url('img/menu-selected-item-bg.gif');
     background-repeat: repeat-x;
+    height: 39px;
 }
 
 

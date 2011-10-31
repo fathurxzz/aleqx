@@ -9,6 +9,7 @@ using HavilaTravel.Models;
 
 namespace HavilaTravel.Areas.Admin.Controllers
 {
+    [Authorize]
     public class BannerController : Controller
     {
         //
