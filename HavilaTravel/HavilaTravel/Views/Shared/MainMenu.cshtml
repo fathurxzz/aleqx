@@ -46,11 +46,13 @@
                                 {
                                     @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
                                 }
-
-                                <br />
-                                @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
-                                <br />
-                                @Html.ActionLink("добавить подпункт", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                if (Request.IsAuthenticated)
+                                {
+                                    <br />
+                                    @Html.ActionLink("редактировать", "Edit", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                    <br />
+                                    @Html.ActionLink("добавить подпункт", "AddSubmenu", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                }
                             }
                         </td>
 
