@@ -418,12 +418,42 @@ body
 {
     width: 163px;
     height: 108px;
+    
 }
+
+.smallBanner .price
+{
+    width: 63px;
+    height: 19px;
+    
+    position: absolute;
+
+    margin-top: 83px;
+    margin-left: 96px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 2px;
+}
+
+.smallBanner .price2
+{
+    background-image: url('img/price-bg-yellow.png');
+    color: #cc0000;
+}
+
+.smallBanner .price3
+{
+    background-image: url('img/price-bg-red.png');
+    color: #fff;
+}
+
 
 #chat, #booking
 {
     text-align: left;
     padding-left: 40px;
+    
     
 }
 
