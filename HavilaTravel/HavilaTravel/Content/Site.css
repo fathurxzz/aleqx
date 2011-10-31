@@ -256,11 +256,8 @@ body
 
 .adminEditContentContainer
 {
-	margin-top:5px;
-	/*border:solid 1px #999999;*/
-	padding:10px;
-	/*margin-bottom:30px;*/
-	width:550px;
+	
+	width:600px;
 	margin-left:auto;
 	margin-right:auto;
 	position:relative;
@@ -269,7 +266,7 @@ body
 
 .adminEditContentTable
 {
-	width:550px;
+	width:600px;
 }
 
 .adminEditContentTable td
@@ -395,23 +392,25 @@ body
 {
     height: 40px;
     text-align: center;
-    
+    padding-left: 5px;
     font-weight: bold;
     color: #0066cc;
+    width: 150px;
 }
 
 .smallBanner .bottomTitle
 {
     text-align: left;
-    
+    padding: 10px 15px;
     color: #666666;
+    width: 130px;
 }
 
 .smallBanner .topTitle, .smallBanner .bottomTitle
 {
     font-size: 12px;
-    padding-left: 5px;
-    width: 150px;
+    
+    
 }
 
 .smallBanner .picture

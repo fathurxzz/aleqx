@@ -66,10 +66,10 @@ Html.EnableClientValidation();
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     @Html.LabelFor(model => model.Text)
-                </td>
-                <td>@Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
+                    <br/>
+                    @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.Text)
                 </td>
             </tr>
