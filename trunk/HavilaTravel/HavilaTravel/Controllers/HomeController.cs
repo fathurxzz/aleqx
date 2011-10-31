@@ -37,6 +37,7 @@ namespace HavilaTravel.Controllers
                     accordion.AccordionImages.Load();
                 }
 
+                ViewBag.IsRoot = content.Id == 8;
 
                 var banners = context.Banner.ToList();
                 ViewBag.Banners = banners;
