@@ -27,16 +27,10 @@
                 }
             }
             
-            @if (ViewBag.IsRoot == null)
+            @if (ViewBag.IsRoot == null || !ViewBag.IsRoot)
             {
                 <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
             }
-            else if (!ViewBag.IsRoot)
-            {
-                <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
-            }
-            
-
             <div id="mainBanner">
                 @RenderSection("MainBanner", false)
                 <div id="ramka">
@@ -46,7 +40,6 @@
                             {
                             @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink bannersLink" })
                             }
-            
                         }
                         <div id="leftCaption">
                         </div>
@@ -63,6 +56,10 @@
         <table>
             <tr>
                 <td id="leftContent">
+                @if (/*ViewBag.IsRoot == null || !ViewBag.IsRoot*/1==1)
+                {
+                @Html.Partial("QuickSearch")
+                }
                     @Html.Partial("LeftSubmenu")
                     @RenderSection("SmallBannerLeft", false)
                 </td>
