@@ -47,6 +47,22 @@
                     @Html.ValidationMessageFor(model => model.Title)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    Нижний текст (для маленьких баннеров)
+                </td>
+                <td>@Html.EditorFor(model => model.Title2)
+                    @Html.ValidationMessageFor(model => model.Title2)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Веб-имя страницы, на которую ссылается баннер
+                </td>
+                <td>@Html.EditorFor(model => model.ContentName)
+                    @Html.ValidationMessageFor(model => model.ContentName)
+                </td>
+            </tr>
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Загрузить" />

@@ -42,11 +42,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                     fileUpload.SaveAs(filePath);
 
                     var banner = new Banner();
-                    TryUpdateModel(banner, new[]
-                                               {
-                                                   "Price",
-                                                   "Title"
-                                               });
+                    TryUpdateModel(banner, new[] { "Price", "Title", "Title2", "ContentName" });
                     banner.BannerType = Convert.ToInt32(form["BannerType"]);
                     banner.ImageSource = fileName;
                     context.AddToBanner(banner);
@@ -83,7 +79,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                     filePath = Path.Combine(filePath, fileName);
                     fileUpload.SaveAs(filePath);
                 }
-                TryUpdateModel(banner, new[] { "Price", "Title" });
+                TryUpdateModel(banner, new[] { "Price", "Title", "Title2", "ContentName" });
                 banner.BannerType = Convert.ToInt32(form["BannerType"]);
                 banner.ImageSource = fileName;
                 context.SaveChanges();

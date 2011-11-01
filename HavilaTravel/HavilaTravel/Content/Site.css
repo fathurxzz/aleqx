@@ -398,6 +398,11 @@ body
     width: 150px;
 }
 
+.smallBanner .topTitle a
+{
+    color: inherit;
+}
+
 .smallBanner .bottomTitle
 {
     text-align: left;

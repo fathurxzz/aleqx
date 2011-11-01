@@ -26,7 +26,13 @@
                 </div>
                 }
             }
-            @if ( ViewBag.IsRoot!=null && !ViewBag.IsRoot){
+            
+            @if (ViewBag.IsRoot == null)
+            {
+                <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
+            }
+            else if (!ViewBag.IsRoot)
+            {
                 <a href="/" class="rootLink"><img src="../../Content/img/pixel.gif" /></a>
             }
             
@@ -77,7 +83,7 @@
                 <td id="rightContent">
                     <div id="chat"><a href="#">Чат с оператором</a><br/><div class="time">(с 10:00 до 19:00, кроме<br/>выходных)</div></div>
                     <div id="booking"><a href="#">Онлайн бронирование</a></div>
-                    @RenderSection("SmallBannerRight",false)
+                    @RenderSection("SmallBannerRight", false)
                 </td>
             </tr>
         </table>
