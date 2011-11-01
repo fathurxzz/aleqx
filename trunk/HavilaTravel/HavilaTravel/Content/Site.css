@@ -306,6 +306,11 @@ body
     font-weight: normal !important;
 }
 
+.adminLink:hover
+{
+	color: #cc0000 !important;
+}
+
 .sortOrderInput
 {
     width: 30px;

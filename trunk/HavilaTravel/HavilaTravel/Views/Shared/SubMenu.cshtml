@@ -41,13 +41,12 @@
                                 @{
                                     if (Request.IsAuthenticated)
                                     {
-                                        <div>
-                                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                        <br/>
-                                        @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         <br />
-                                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
-                                        </div>
+                                        @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                        <br/>
+                                        @Html.ActionLink("добавить подпункт", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                        <br />
+                                        @Html.ActionLink("удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
                                     }
                                 }
                             </td>
