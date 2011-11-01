@@ -149,6 +149,9 @@
     <Content Include="Content\img\png-ramka.png" />
     <Content Include="Content\img\price-bg-red.png" />
     <Content Include="Content\img\price-bg-yellow.png" />
+    <Content Include="Content\img\quicksearch-icon.png" />
+    <Content Include="Content\img\quicksearchfield-bg-left.png" />
+    <Content Include="Content\img\quicksearchfield-bg-right.png" />
     <Content Include="Content\img\submenu-bg-left.png" />
     <Content Include="Content\img\submenu-bg-right.png" />
     <Content Include="Content\img\submenu-bg.png" />
@@ -293,6 +296,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\BannerSmall.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\QuickSearch.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
