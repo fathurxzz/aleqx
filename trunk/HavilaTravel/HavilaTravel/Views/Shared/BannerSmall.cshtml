@@ -7,11 +7,11 @@
         
         @if (Model.BannerType == 3)
         {
-            <div class="hotTour"><span>Горящий тур</span>:</div>
+            <div class="hotTour">@Html.ActionLink("Горящий тур","Index","Home",new{id=Model.ContentName},null):</div>
         }
         else if (Model.BannerType == 2)
         {
-            <div class="topicTour">Ближайший<br /><span>тематический тур</span>:</div>
+            <div class="topicTour">Ближайший<br /> @Html.ActionLink("тематический тур","Index","Home",new{id=Model.ContentName},null):</div>
         }
         
         
