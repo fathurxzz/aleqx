@@ -524,7 +524,7 @@ body
 {
     width: 8px;
     height: 17px;
-    display: block;
+    /*display: block;*/
     background-repeat: no-repeat;
 }
 
@@ -536,16 +536,21 @@ body
 #quicksearchinputcontainer td.right
 {
     background-image: url('img/quicksearchfield-bg-right.png');
-   
+}
+
+#quicksearchinputcontainer td.center
+{
+	background-image: url('img/quicksearchfield-bg-center.gif');
+	background-repeat: repeat-x;
 }
 
 #qsearch
 {
-    border-top:1px solid #ff9d0a;
+    /*border-top:1px solid #ff9d0a;
     border-left: none;
     border-bottom:1px solid #ff9d0a;
-    border-right: none; 
-    height: 15px;
+    border-right: none; */
+	border: none;
+    height: 14px;
     width: 130px;
 }
-

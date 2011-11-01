@@ -150,6 +150,7 @@
     <Content Include="Content\img\price-bg-red.png" />
     <Content Include="Content\img\price-bg-yellow.png" />
     <Content Include="Content\img\quicksearch-icon.png" />
+    <Content Include="Content\img\quicksearchfield-bg-center.gif" />
     <Content Include="Content\img\quicksearchfield-bg-left.png" />
     <Content Include="Content\img\quicksearchfield-bg-right.png" />
     <Content Include="Content\img\submenu-bg-left.png" />
