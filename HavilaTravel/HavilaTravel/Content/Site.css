@@ -372,17 +372,12 @@ body
     padding-bottom: 15px !important;
 }
 
-.smallBanner .header span
-{
-    text-decoration: underline;
-}
-
-.smallBanner .header .hotTour span
+.smallBanner .header .hotTour a
 {
     color: #ff3333;
 }
 
-.smallBanner .header .topicTour span
+.smallBanner .header .topicTour a
 {
     color: #0066cc;
 }
