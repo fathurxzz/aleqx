@@ -35,12 +35,7 @@
                 @RenderSection("MainBanner", false)
                 <div id="ramka">
                     <div id="caption">
-                        @{
-                            if (Request.IsAuthenticated)
-                            {
-                            @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink bannersLink" })
-                            }
-                        }
+                        
                         <div id="leftCaption">
                         </div>
                         <div id="rightCaption">
@@ -67,7 +62,10 @@
                     <div id="contentContainer">
                         @if (Request.IsAuthenticated)
                         {
-                            @Html.ActionLink("редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = "8" }, new { @class = "adminLink" })
+                            @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = "8" }, new { @class = "adminLink" })
+                            <br />
+                            @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink" })
+                         
                         }
                         @RenderSection("ContentTitle", false)
                         <div id="pattern">
