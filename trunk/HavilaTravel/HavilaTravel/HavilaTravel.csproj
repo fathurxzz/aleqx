@@ -104,7 +104,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="comingsoon.gif" />
     <Content Include="Content\fancybox\blank.gif" />
     <Content Include="Content\fancybox\fancybox-x.png" />
     <Content Include="Content\fancybox\fancybox-y.png" />
