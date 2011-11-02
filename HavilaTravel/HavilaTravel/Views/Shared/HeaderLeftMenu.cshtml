@@ -11,7 +11,8 @@
          @if (Request.IsAuthenticated)
             {   
             @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
-            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+            @Html.Raw("&nbsp;")
+             @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
             }   
             </li>
             
