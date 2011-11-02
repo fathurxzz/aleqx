@@ -30,10 +30,12 @@
                                 @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
                                 if (Request.IsAuthenticated)
                                 {
-                                    <br />
+                                    <div class="adminLinkContainer">
                                     @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    <br />
+                                    </div>
+                                    <div class="adminLinkContainer">
                                     @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    </div>
                                 }
                             }
                             else
@@ -49,10 +51,12 @@
                                 
                                 if (Request.IsAuthenticated)
                                 {
-                                    <br />
+                                    <div class="adminLinkContainer">
                                     @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    <br />
+                                    </div>
+                                    <div class="adminLinkContainer">
                                     @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                    </div>
                                 }
                             }
                         </td>

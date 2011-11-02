@@ -345,6 +345,12 @@ body
     padding: 3px;
 }
 
+.adminLinkContainer
+{
+    line-height: 10px;
+    padding-bottom: 7px;
+}
+
 .bannersLink
 {
 	position: absolute;
