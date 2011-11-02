@@ -125,10 +125,10 @@ namespace HavilaTravel.Areas.Admin.Controllers
            {
                var content = context.Content.Include("Children").Where(c => c.Id == id).First();
 
-               foreach (var child in content.Children)
+               while (content.Children.Any())
                {
+                   var child = content.Children.First();
                    child.Accordions.Load();
-
                    while (child.Accordions.Any())
                    {
                        var accordion = child.Accordions.First();
@@ -141,9 +141,10 @@ namespace HavilaTravel.Areas.Admin.Controllers
                        }
                        context.DeleteObject(accordion);
                    }
-                   
-                   context.SaveChanges();
+                   context.DeleteObject(child);
                }
+               context.DeleteObject(content);
+               context.SaveChanges();
            }
            return RedirectToAction("Index", "Home", new { area = "" });
        }
