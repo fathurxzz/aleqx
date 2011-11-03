@@ -60,6 +60,11 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 var accordion = context.Accordion.Include("Content").Where(a => a.Id == id).First();
                 var content = accordion.Content;
 
+                TryUpdateModel(accordion, new[] {"Title", "SortOrder"});
+                accordion.Text = HttpUtility.HtmlDecode(form["Text"]);
+
+                context.SaveChanges();
+
                 return RedirectToAction("Index", "Home", new {id = content.Name, area = ""});
             }
         }
