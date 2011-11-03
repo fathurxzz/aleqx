@@ -20,9 +20,9 @@
         @{
                if (Request.IsAuthenticated)
                {
-        @Html.ActionLink("edit", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+        @Html.ActionLink("Редактировать", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
         @Html.Raw("&nbsp;")
-        @Html.ActionLink("addPhotos", "AddPhoto", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+        @Html.ActionLink("Добавить фотографии", "AddPhoto", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                }
 
 
