@@ -23,6 +23,7 @@
                 }
                 @if (Request.IsAuthenticated)
                 {
+                    <br />
                     @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                     <br />
                     @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
