@@ -43,7 +43,7 @@
 
 .adminLink
 {
-    font-size: 10px !important;
+    font-size: 11px !important;
     color: #ff0000 !important;
     font-family: Tahoma, Verdana !important;
     font-style: normal !important;
@@ -59,3 +59,8 @@
 {
     width: 30px;
 }
+
+.adminMenuItem
+{
+    height: 90px !important;
+} 

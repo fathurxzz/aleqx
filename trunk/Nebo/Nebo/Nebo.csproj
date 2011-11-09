@@ -82,6 +82,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -168,6 +169,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="ImageCache\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

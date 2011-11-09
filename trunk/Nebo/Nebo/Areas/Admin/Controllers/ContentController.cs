@@ -26,7 +26,18 @@ namespace Nebo.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var content = new Content();
+
+                var content = new Content { ContentLevel = 1 };
+
+                if (form["parentId"] != null)
+                {
+                    int parentId = Convert.ToInt32(form["parentId"]);
+                    var parent = context.Content.Where(c => c.Id == parentId).First();
+                    content.Parent = parent;
+                    content.ContentLevel = parent.ContentLevel + 1;
+                }
+
+
                 TryUpdateModel(content, new[]
                                             {
                                                 "Name",
@@ -36,8 +47,8 @@ namespace Nebo.Areas.Admin.Controllers
                                                 "SeoKeywords"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                
-                if(fileUpload!=null)
+
+                if (fileUpload != null)
                 {
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
@@ -54,7 +65,10 @@ namespace Nebo.Areas.Admin.Controllers
             }
         }
 
-        
+
+
+
+
         public ActionResult Edit(int id)
         {
             using (var context = new ContentStorage())
@@ -99,6 +113,13 @@ namespace Nebo.Areas.Admin.Controllers
 
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+
+            return RedirectToAction("Index", "Home", new { Area = "" });
         }
 
     }

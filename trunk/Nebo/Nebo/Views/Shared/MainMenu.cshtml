@@ -1,25 +1,39 @@
 ﻿@using Nebo.Models
+
 @{
     <div id="menu">
         @if (ViewBag.MenuList != null)
         {
             var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
-            int cnt = 0;
             if (menuItems != null)
             {
                 foreach (var item in menuItems.OrderBy(m => m.SortOrder))
                 {
-            <div class="menuItem">
-                <a href="#">@item.Title</a>
+                    string selected = item.Selected ? "selected" : "";
+                    string isAdmin = Request.IsAuthenticated ? "adminMenuItem" : "";
+                    
+            <div class="menuItem @selected @isAdmin">
+
+                @if (item.Current)
+                {
+                    @item.Title
+                }else
+                {
+                    @Html.ActionLink(item.Title, "Index", "Home", new {id = item.Name}, null)
+                }
                 @if (Request.IsAuthenticated)
                 {
-                    @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    <br />
+                    @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
+                    <br />
+                    @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                 }
             </div>
                 }
                 if (Request.IsAuthenticated)
                 {
-            @Html.ActionLink("Add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+            @Html.ActionLink("Добавить", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink", style = "margin-left:20px" })
                 }
             }
         }
