@@ -1,4 +1,5 @@
-﻿@model Nebo.Models.Content
+﻿@using Nebo.Helpers
+@model Nebo.Models.Content
 @if (Request.IsAuthenticated)
 {
     <br />
@@ -6,7 +7,63 @@
     <br />
     <br />
 }
+@foreach (var child in Model.Children)
+{
+    <div class="contentSubItem">
+
+        <table>
+        <tr>
+        <td>
+        <div class="contentSubItemPicture">
+            @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Home", new { id = child.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", child.ImageSource, "thumbnail1", child.ImageSource)))
+
+        </div></td>
+        <td class="contentSubItemText">
+        @Html.ActionLink(child.Title, "Index", "Home", new { id = child.Name }, null)
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink" })
+            <br />
+    
+        }
+        </td>
+        </tr>
+        </table>
+
+        
+        
+        
+        
+        <div class="clear">
+        </div>
+    </div>
+}
+
+
+@if (Model.ImageSource!=null)
+{
+    <table>
+    <tr>
+        <td class="contentDetailsImage">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", Model.ImageSource))
+        </td>
+        <td class="contentDetailsTitle">
+        @Model.Title
+        </td>
+    </tr>
+    </table>
+}else
+{
+    <div class="contentDetailsTitle">
+    @Model.Title
+    </div>
+}
+
+<div id="contentText">
 @Html.Raw(Model.Text)
+</div>
+
 @section ContentTitle
 {
     <h1>@Model.Title</h1>

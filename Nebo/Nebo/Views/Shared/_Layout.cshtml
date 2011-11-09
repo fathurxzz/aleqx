@@ -19,7 +19,10 @@
         @Html.Partial("MainMenu")
         </div>
         <div id="content">
-
+        @if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{Area=""},new{@class="adminLink"})
+}
             
             @RenderSection("ContentTitle",false)
 
