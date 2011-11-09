@@ -1,9 +1,10 @@
 ﻿<div id="menu">
-
-    
-    
     <div class="menuItem">
         <a href="#">Лена Небосклонова</a>
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = 1 }, new { @class = "adminLink" })
+        }
     </div>
     <div class="menuItem selected">
         <a href="#">О тебе</a>
@@ -17,19 +18,8 @@
     <div class="menuItem">
         <a href="#">Контактные сведения</a>
     </div>
-
-
-    <ul>
-    <li>
-    <a href="#">Лена Небосклонова</a>
-    </li>
-    <li class="selected">
-    <a href="#">О тебе</a>
-    </li>
-    <li>
-    <a href="#">Мои заметки</a>
-    </li>
-    </ul>
-
-    
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+    }
 </div>

@@ -1,0 +1,61 @@
+﻿.adminEditContentContainer
+{
+	
+	width:600px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	z-index:1;
+}
+
+.adminEditContentTable
+{
+	width:600px;
+}
+
+.adminEditContentTable td
+{
+	padding-left:20px;
+	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+	/*border:solid 1px #999999;*/
+	
+}
+
+.adminEditContentTable td input
+{
+    width: 350px;
+}
+
+.adminEditContentTable td span
+{
+	font-size: 11px;
+	font-weight:normal;
+	
+}
+
+.buttonsContainer
+{
+    text-align:center;
+    margin-top: 10px;
+}
+
+.adminLink
+{
+    font-size: 10px !important;
+    color: #ff0000 !important;
+    font-family: Tahoma, Verdana !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+}
+
+.adminLink:hover
+{
+	color: #cc0000 !important;
+}
+
+.sortOrderInput
+{
+    width: 30px;
+}
