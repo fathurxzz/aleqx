@@ -4,25 +4,98 @@
     padding: 0;
 }
 
-
-#mainMenuContainer
+body
 {
-    /*position: relative;
-    margin: 0 auto;*/
-    width: 150px;
-    background-color: deepskyblue;
+    font-family: Arial;
 }
 
 
-#leftSide, #rightSide, #mainMenuContainer
+
+#page
 {
-    display: inline-table;
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/background.gif') repeat-y;
 }
 
-#leftSide
+#leftContent
 {
-    background-color: red;
+    position: absolute;
 }
 
-#rightSide
-{background-color: yellow}
+#content
+{
+    width: 480px;
+    position: relative;
+    margin-right: 0px;
+    margin-left: auto; /*padding: 70px 20px 70px 0px;*/
+    padding-top: 70px;
+    padding-right: 30px;
+}
+
+#menuContainer
+{
+    position: absolute;
+    width: 100px;
+    left: 492px;
+    padding: 115px 20px 20px 20px;
+}
+
+#menu
+{
+    position: fixed;
+    color: #fff;
+    font-size: 12px;
+    width: 100px;
+}
+
+.menuItem
+{
+    margin: 30px 0;
+}
+
+#menu a
+{
+    color: inherit;
+    font-size: inherit;
+}
+
+#footer
+{
+    position: relative;
+}
+
+#sign
+{
+    width: 140px;
+    margin-left: 492px;
+    text-align: center;
+    padding-bottom: 25px;
+    color: #fff;
+    font-size: 12px;
+}
+
+#sign a
+{
+    font-size: 13px;
+    font-weight: bold;
+    color: inherit;
+    letter-spacing: 1px;
+}
+
+.separator
+{
+    height: 1px;
+    background-color: #ccc;
+    margin: 40px 0;
+}
+
+h1
+{
+    color: #ccc;
+    text-align: center;
+    font-size: 40px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
