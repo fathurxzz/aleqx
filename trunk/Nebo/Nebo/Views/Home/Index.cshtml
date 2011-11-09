@@ -2,7 +2,12 @@
     ViewBag.Title = "Home Page";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+@ViewBag.Message
+
+
+@section ContentTitle
+{
+
+<h1>Вступление</h1>
+<div class="separator"></div>
+}
