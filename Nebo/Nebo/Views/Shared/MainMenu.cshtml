@@ -1,25 +1,27 @@
-﻿<div id="menu">
-    <div class="menuItem">
-        <a href="#">Лена Небосклонова</a>
-        @if (Request.IsAuthenticated)
+﻿@using Nebo.Models
+@{
+    <div id="menu">
+        @if (ViewBag.MenuList != null)
         {
-            @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = 1 }, new { @class = "adminLink" })
+            var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+            int cnt = 0;
+            if (menuItems != null)
+            {
+                foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+                {
+            <div class="menuItem">
+                <a href="#">@item.Title</a>
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Edit", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                }
+            </div>
+                }
+                if (Request.IsAuthenticated)
+                {
+            @Html.ActionLink("Add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                }
+            }
         }
     </div>
-    <div class="menuItem selected">
-        <a href="#">О тебе</a>
-    </div>
-    <div class="menuItem">
-        <a href="#">Вопрос-ответ</a>
-    </div>
-    <div class="menuItem">
-        <a href="#">Мои заметки</a>
-    </div>
-    <div class="menuItem">
-        <a href="#">Контактные сведения</a>
-    </div>
-    @if (Request.IsAuthenticated)
-    {
-        @Html.ActionLink("Add", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
-    }
-</div>
+}

@@ -3,30 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Nebo.Models;
 
 namespace Nebo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            for (int i = 0; i < 300; i++)
+            using (var context = new ContentStorage())
             {
-                ViewBag.Message += " content";
+                var menuList = Menu.GetMenuList(id, context);
+                ViewBag.MenuList = menuList;
+
+                var content = context.Content
+                    .Include("Parent").Include("Children")
+                    .Where(c => c.Name == id)
+                    .FirstOrDefault();
+
+                if (content == null)
+                    content = context.Content
+                        .Include("Parent").Include("Children")
+                        .Where(c => c.ContentLevel == 0)
+                        .First();
+
+                ViewBag.Title = content.Title;
+                ViewBag.SeoDescription = content.SeoDescription;
+                ViewBag.SeoKeywords = content.SeoKeywords;
+
+                return View(content);
             }
-
-
-
-
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
         }
     }
 }

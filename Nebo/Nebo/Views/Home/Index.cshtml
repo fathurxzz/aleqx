@@ -1,23 +1,15 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model Nebo.Models.Content
+@if (Request.IsAuthenticated)
+{
+    <br />
+    @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = 11 }, new { @class = "adminLink" })
+    <br />
+    <br />
 }
-
-@ViewBag.Message
-
-
-
-
-<span style="width: 100px">
-a a a a a a a a a a a a a a a a a a a a a a a a a a 
-a a a a a a a a a a a a a a a a a a a a a a a a a a 
-a a a a a a a a a a a a a a a a a a a a a a a a 
-</span>
-
-
-
+@Html.Raw(Model.Text)
 @section ContentTitle
 {
-
-<h1>Вступление</h1>
-<div class="separator"></div>
+    <h1>@Model.Title</h1>
+    <div class="separator">
+    </div>
 }
