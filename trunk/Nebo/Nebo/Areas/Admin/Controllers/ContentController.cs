@@ -36,7 +36,6 @@ namespace Nebo.Areas.Admin.Controllers
                                                 "SeoKeywords"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                content.ContentLevel = 1;
                 
                 if(fileUpload!=null)
                 {
@@ -47,21 +46,60 @@ namespace Nebo.Areas.Admin.Controllers
                     content.ImageSource = fileName;
                 }
 
-                //context.AddToContent(content);
+                context.AddToContent(content);
 
-                //context.SaveChanges();
+                context.SaveChanges();
 
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }
         }
 
-        /*
+        
         public ActionResult Edit(int id)
         {
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Where(c => c.Id == id).First();
+                return View(content);
+            }
+        }
 
-            return View();
-        }*/
+        [HttpPost]
+        public ActionResult Edit(Content model, FormCollection form, HttpPostedFileBase fileUpload)
+        {
 
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Where(c => c.Id == model.Id).First();
+
+                TryUpdateModel(content, new[]
+                                            {
+                                                "Name",
+                                                "Title",
+                                                "SortOrder",
+                                                "SeoDescription",
+                                                "SeoKeywords",
+                                            });
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+
+                if (fileUpload != null)
+                {
+                    if (content.ImageSource != null)
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", content.ImageSource);
+                    }
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    fileUpload.SaveAs(filePath);
+                    content.ImageSource = fileName;
+                }
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
+            }
+        }
 
     }
 }
