@@ -37,9 +37,9 @@ body
 #menuContainer
 {
     position: absolute;
-    width: 100px;
+    width: 140px;
     left: 492px;
-    padding: 115px 20px 20px 20px;
+    padding-top: 145px;
 }
 
 #menu
@@ -48,11 +48,23 @@ body
     color: #fff;
     font-size: 12px;
     width: 100px;
+    
 }
 
 .menuItem
 {
-    margin: 30px 0;
+    height: 46px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100px;
+    position: relative;
+    
+}
+
+
+.menuItem.selected
+{
+    background: url('img/menu-selected-bg.gif');
 }
 
 #menu a
@@ -98,4 +110,26 @@ h1
     font-size: 40px;
     font-weight: normal;
     text-transform: uppercase;
+}
+
+
+
+#menu ul
+{
+    list-style: none;
+}
+
+li
+{
+    height: 46px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100px;
+    vertical-align: middle;
+    border: 1px sold black;
+}
+
+li.selected
+{
+    background: url('img/menu-selected-bg.gif'); 
 }
