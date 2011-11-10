@@ -1,7 +1,6 @@
 ﻿@using Nebo.Models
-
 @{
-    <div id="menu">
+    <table id="menu">
         @if (ViewBag.MenuList != null)
         {
             var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
@@ -11,26 +10,28 @@
                 {
                     string selected = item.Selected ? "selected" : "";
                     string isAdmin = Request.IsAuthenticated ? "adminMenuItem" : "";
-                    
-            <div class="menuItem @selected @isAdmin">
-
-                @if (item.Current)
-                {
-                    @item.Title
-                }else
-                {
-                    @Html.ActionLink(item.Title, "Index", "Home", new {id = item.Name}, null)
-                }
-                @if (Request.IsAuthenticated)
-                {
-                    <br />
-                    @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                    <br />
-                    @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
-                    <br />
-                    @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                }
-            </div>
+            <tr>
+                <td class="menuItem @selected @isAdmin">
+                    @if (item.Current)
+                    {
+                        @item.Title
+                    }
+                    else
+                    {
+                        @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="sortOrder">@item.SortOrder</span>
+                        <br />
+                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                    }
+                </td>
+            </tr>
                 }
                 if (Request.IsAuthenticated)
                 {
@@ -38,5 +39,5 @@
                 }
             }
         }
-    </div>
+    </table>
 }

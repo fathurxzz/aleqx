@@ -22,8 +22,11 @@
         @Html.ActionLink(child.Title, "Index", "Home", new { id = child.Name }, null)
         @if (Request.IsAuthenticated)
         {
+            <span class="sortOrder">@child.SortOrder</span>
             <br />
             @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink" })
+            <br />
+            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
             <br />
     
         }
@@ -41,7 +44,7 @@
 }
 
 
-@if (Model.ImageSource!=null)
+@if (Model.ImageSource != null)
 {
     <table>
     <tr>
@@ -53,7 +56,8 @@
         </td>
     </tr>
     </table>
-}else
+}
+else
 {
     <div class="contentDetailsTitle">
     @Model.Title

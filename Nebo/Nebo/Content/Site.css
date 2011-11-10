@@ -60,9 +60,10 @@ body
     position: fixed;
     color: #fff;
     font-size: 12px;
-    width: 100px;
-    
+    border-collapse: collapse;
 }
+
+
 
 .menuItem
 {

@@ -1,7 +1,7 @@
 ﻿.adminEditContentContainer
 {
 	
-	width:600px;
+	width:500px;
 	margin-left:auto;
 	margin-right:auto;
 	position:relative;
@@ -10,7 +10,7 @@
 
 .adminEditContentTable
 {
-	width:600px;
+	width:500px;
 }
 
 .adminEditContentTable td
@@ -64,3 +64,20 @@
 {
     height: 90px !important;
 } 
+
+.logOnForm
+{
+	position:relative;
+	margin:0 auto;
+	width:220px;
+}
+
+.logOnForm table td
+{
+	line-height:30px;
+}
+
+.sortOrder
+{
+    color: saddlebrown;
+}
