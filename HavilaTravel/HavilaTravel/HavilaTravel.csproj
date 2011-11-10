@@ -130,6 +130,9 @@
     <Content Include="Content\img\banner_small_bg.gif" />
     <Content Include="Content\img\booking-icon.png" />
     <Content Include="Content\img\chat-icon.png" />
+    <Content Include="Content\img\countrybox-bg-bottom.png" />
+    <Content Include="Content\img\countrybox-bg-center.png" />
+    <Content Include="Content\img\countrybox-bg-top.png" />
     <Content Include="Content\img\footer-bg-center.gif" />
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\hotel1.gif" />
