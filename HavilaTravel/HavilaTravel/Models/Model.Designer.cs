@@ -1040,6 +1040,30 @@ namespace HavilaTravel.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> ContentModel
+        {
+            get
+            {
+                return _ContentModel;
+            }
+            set
+            {
+                OnContentModelChanging(value);
+                ReportPropertyChanging("ContentModel");
+                _ContentModel = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentModel");
+                OnContentModelChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _ContentModel;
+        partial void OnContentModelChanging(Nullable<global::System.Int64> value);
+        partial void OnContentModelChanged();
 
         #endregion
     

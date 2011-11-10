@@ -15,50 +15,51 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ContentId" Type="uint" Nullable="false" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SortOrder" Type="int" Nullable="false" />
-          <Property Name="Text" Type="text" />
+          <Property Name="ContentId" Type="uint" Nullable="false" />
           <Property Name="Title" Type="varchar" />
+          <Property Name="Text" Type="text" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="accordionimage">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="AccordionId" Type="uint" Nullable="false" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccordionId" Type="uint" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
           <Property Name="ImageSource" Type="varchar" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
-          <Property Name="Title" Type="varchar" />
         </EntityType>
         <EntityType Name="banner">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Price" Type="varchar" MaxLength="100" />
+          <Property Name="ImageSource" Type="varchar" />
           <Property Name="BannerType" Type="int" Nullable="false" />
           <Property Name="ContentName" Type="varchar" />
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ImageSource" Type="varchar" />
-          <Property Name="Price" Type="varchar" MaxLength="100" />
-          <Property Name="Title" Type="varchar" />
           <Property Name="Title2" Type="varchar" />
         </EntityType>
         <EntityType Name="content">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ContentLevel" Type="uint" Nullable="false" />
-          <Property Name="ContentType" Type="uint" Nullable="false" />
           <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MenuTitle" Type="varchar" />
-          <Property Name="Name" Type="varchar" Nullable="false" />
-          <Property Name="PageTitle" Type="varchar" />
           <Property Name="ParentId" Type="uint" />
+          <Property Name="ContentType" Type="uint" Nullable="false" />
+          <Property Name="ContentLevel" Type="uint" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="Text" Type="text" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="SeoDescription" Type="varchar" />
           <Property Name="SeoKeywords" Type="varchar" />
-          <Property Name="SortOrder" Type="int" Nullable="false" />
-          <Property Name="Text" Type="text" />
-          <Property Name="Title" Type="varchar" />
+          <Property Name="ContentModel" Type="uint" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -121,6 +122,7 @@
           <NavigationProperty Name="Children" Relationship="havilaModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="havilaModel.ContentContent" FromRole="Content1" ToRole="Content" />
           <NavigationProperty Name="Accordions" Relationship="havilaModel.ContentAccordion" FromRole="Content" ToRole="Accordion" />
+          <Property Type="Int64" Name="ContentModel" />
         </EntityType>
         <Association Name="ContentContent">
           <End Type="havilaModel.Content" Role="Content" Multiplicity="0..1" />
@@ -165,7 +167,8 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="havilaModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
+            <ScalarProperty Name="ContentModel" ColumnName="ContentModel" />
+                <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
             <ScalarProperty Name="ContentType" ColumnName="ContentType" />
             <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />

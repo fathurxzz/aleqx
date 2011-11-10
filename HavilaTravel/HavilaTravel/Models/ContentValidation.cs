@@ -21,6 +21,10 @@ namespace HavilaTravel.Models
         [DisplayName("Веб-имя страницы")]
         public string Name { get; set; }
 
+        
+        [DisplayName("Тип контента")]
+        public string ContentModel { get; set; }
+
         [DisplayName("Заголовок в шапке обозревателя")]
         public string PageTitle { get; set; }
 

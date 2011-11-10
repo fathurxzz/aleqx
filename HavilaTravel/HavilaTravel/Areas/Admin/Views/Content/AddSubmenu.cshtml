@@ -32,6 +32,13 @@ Html.EnableClientValidation();
                 </td>
             </tr>
             <tr>
+                <td>@Html.LabelFor(model => model.ContentModel)</td>
+                <td>
+
+                    @Html.DropDownList("ContentModel", new List<SelectListItem> {new SelectListItem { Text = "---", Value = "0" }, new SelectListItem { Text = "Страна", Value = "1" }, new SelectListItem { Text = "Город", Value = "2" }, new SelectListItem { Text = "Отель", Value = "3" }, new SelectListItem { Text = "SPA-курорт", Value = "4" } })
+                    </td>
+            </tr>
+            <tr>
                 <td>
                     @Html.LabelFor(model => model.PageTitle)
                 </td>
