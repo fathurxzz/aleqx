@@ -32,6 +32,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 TryUpdateModel(content, new[]
                                             {
                                                 "Name",
+                                                "ContentModel",
                                                 "Title",
                                                 "MenuTitle",
                                                 "PageTitle",
@@ -70,6 +71,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 TryUpdateModel(content, new[]
                                             {
                                                 "Name",
+                                                "ContentModel",
                                                 "Title",
                                                 "MenuTitle",
                                                 "PageTitle",
@@ -103,6 +105,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                                             {
                                                 "Name",
                                                 "Title",
+                                                "ContentModel",
                                                 "MenuTitle",
                                                 "PageTitle",
                                                 "SortOrder",
