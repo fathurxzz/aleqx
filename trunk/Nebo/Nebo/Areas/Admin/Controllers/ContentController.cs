@@ -18,7 +18,7 @@ namespace Nebo.Areas.Admin.Controllers
         public ActionResult Add(int? parentId)
         {
             ViewData["parentId"] = parentId;
-            return View();
+            return View(new Content { SortOrder = 0 });
         }
 
         [HttpPost]
@@ -79,7 +79,7 @@ namespace Nebo.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Content model, FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(Content model, FormCollection form, HttpPostedFileBase fileUpload, bool deleteImage)
         {
 
             using (var context = new ContentStorage())
@@ -95,6 +95,15 @@ namespace Nebo.Areas.Admin.Controllers
                                                 "SeoKeywords",
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
+
+                if (deleteImage)
+                {
+                    if(content.ImageSource!=null)
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", content.ImageSource);
+                        content.ImageSource = null;
+                    }
+                }
 
                 if (fileUpload != null)
                 {
@@ -118,8 +127,31 @@ namespace Nebo.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Include("Children").Include("Parent").Where(c => c.Id == id).First();
+                
+                while (content.Children.Any())
+                {
+                    var child = content.Children.First();
+                    if(child.ImageSource!=null)
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", child.ImageSource);
+                    }
+                    context.DeleteObject(child);
+                }
 
-            return RedirectToAction("Index", "Home", new { Area = "" });
+                if (content.ImageSource != null)
+                {
+                    IOHelper.DeleteFile("~/Content/Images", content.ImageSource);
+                }
+                context.DeleteObject(content);
+
+                context.SaveChanges();
+                
+
+                return RedirectToAction("Index", "Home", new { Area = "" });
+            }
         }
 
     }
