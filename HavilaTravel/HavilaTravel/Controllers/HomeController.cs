@@ -42,9 +42,10 @@ namespace HavilaTravel.Controllers
                 var banners = context.Banner.ToList();
                 ViewBag.Banners = banners;
 
-                ViewBag.Title = content.PageTitle;
+                ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
+                ViewBag.CurrentContentId = content.Id;
 
                 return View(content);
             }
