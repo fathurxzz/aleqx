@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateAccordion</h2>
+<h2>Создание гармошки</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -18,7 +18,7 @@
         <table class="adminEditContentTable">
             <tr>
                 <td>
-                    @Html.LabelFor(model => model.Title)
+                    Заголовок
                 </td>
                 <td>
                     @Html.EditorFor(model => model.Title)
@@ -28,7 +28,7 @@
            
             <tr>
                 <td>
-                    @Html.LabelFor(model => model.SortOrder)
+                    Порядок отображения
                 </td>
                 <td>@Html.EditorFor(model => model.SortOrder)
                     @Html.ValidationMessageFor(model => model.SortOrder)
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.LabelFor(model => model.Text)
+                   Текст
                 </td>
                 <td>@Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.Text)
