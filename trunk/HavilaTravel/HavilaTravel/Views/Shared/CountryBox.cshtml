@@ -1,0 +1,28 @@
+﻿@using HavilaTravel.Models
+@{
+    var menuItems = (List<Content>)ViewBag.SelectCountryMenu;
+}
+@if (menuItems != null && menuItems.Count() > 0)
+{
+
+    <div id="countryBox">
+        <div id="countryBoxTop">
+        </div>
+        <div id="countryBoxCenter">
+            @foreach (var countryItem in menuItems.Where(m=>m.ContentModel==1).OrderBy(m=>m.SortOrder))
+            {
+                
+                
+                @countryItem.MenuTitle
+                <br />
+                foreach (var cityItem in menuItems.Where(m=>m.ContentModel==2&&m.Parent==countryItem).OrderBy(m=>m.SortOrder))
+                 {
+                     @Html.Raw("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") @cityItem.MenuTitle
+                     <br />
+                 }
+            }
+        </div>
+        <div id="countryBoxBottom">
+        </div>
+    </div>
+}
