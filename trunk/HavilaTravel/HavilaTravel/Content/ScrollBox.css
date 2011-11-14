@@ -1,0 +1,77 @@
+﻿#scrollbar1 { width: 300px; clear: both; margin: 0px 0 10px; }
+#scrollbar1 .viewport { width: 280px; height: 250px; overflow: hidden; position: relative; }
+#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; }
+#scrollbar1 .thumb .end,
+#scrollbar1 .thumb { background-color: #003D5D; }
+#scrollbar1 .scrollbar { position: relative; float: right; width: 15px; }
+#scrollbar1 .track { background-color: #D8EEFD; height: 100%; width:13px; position: relative; padding: 0 1px;background: url('img/countrybox-track-bg.gif') repeat-y;background-position: 1px 0; }
+#scrollbar1 .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0;background: url('img/countrybox-track-thumb.gif') no-repeat; }
+/*#scrollbar1 .thumb .end { overflow: hidden; height: 5px; width: 13px; }*/
+#scrollbar1 .disable{ display: none; }
+
+#countryBox
+{
+	position: absolute;
+	z-index: 100;
+    width: 403px;
+    /*position: relative;*/
+    /*margin: 0 auto;*/
+
+	margin-left: 120px;
+	/*margin-bottom: 50px;*/
+	
+}
+
+#countryBoxCenter
+{
+    background: url('img/countrybox-bg-center.png') repeat-y;
+    padding: 10px 30px;
+    width: 343px;
+    height: 320px;
+    
+
+    
+}
+
+#countryBoxContent
+{
+	padding: 10px 30px;
+	
+}
+
+#countryBoxTop
+{
+    height: 22px;
+    width: 403px;
+    background: url('img/countrybox-bg-top.png') repeat-y;
+}
+
+#countryBoxBottom
+{
+    height: 30px;
+    width: 403px;
+    background: url('img/countrybox-bg-bottom.png') repeat-y;
+}
+
+
+
+.patternTop, .patternBottom
+{
+	width: 182px;
+	height: 14px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.patternBottom
+{
+	background: url('img/countrybox-pattern-bottom.gif') no-repeat;
+	/*padding-top: 20px;*/
+	/*margin-top: 10px;*/
+}
+
+.patternTop
+{
+	background: url('img/countrybox-pattern-top.gif') no-repeat;
+	padding-bottom: 10px;
+}
