@@ -47,6 +47,14 @@ namespace HavilaTravel.Controllers
                 ViewBag.SeoKeywords = content.SeoKeywords;
                 ViewBag.CurrentContentId = content.Id;
 
+
+                if(content.ContentModel==1)
+                {
+                    var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0).ToList();
+                    ViewBag.SelectCountryMenu = selectCountryMenu;
+                }
+
+
                 return View(content);
             }
         }

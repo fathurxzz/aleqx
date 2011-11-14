@@ -33,17 +33,15 @@ body
 #innerHeader
 {
     width: 1000px;
-    height:265px;
+    height: 265px;
     position: relative;
-    margin: 25px auto 0 auto;
-    /*border: 1px solid black;*/
+    margin: 25px auto 0 auto; /*border: 1px solid black;*/
 }
 
 #mainBanner
 {
     width: 642px;
-    height: 297px;
-    /*border: 1px solid black;*/
+    height: 297px; /*border: 1px solid black;*/
     position: absolute;
     margin-left: 185px;
 }
@@ -62,18 +60,17 @@ body
 {
     z-index: 1002;
     height: 20px;
-    width: 500px;
-   /* background-color: black;*/
+    width: 500px; /* background-color: black;*/
     margin-top: 270px;
     margin-left: 65px;
     font-size: 14px;
     color: #996633;
- }
- 
- #leftCaption
- {
-     float: left;
- }
+}
+
+#leftCaption
+{
+    float: left;
+}
 
 #rightCaption
 {
@@ -113,7 +110,7 @@ body
 
 
 
-#page 
+#page
 {
     width: 1200px;
     position: relative;
@@ -123,12 +120,11 @@ body
 
 
 
-#footer 
+#footer
 {
     background-image: url('img/footer-bg.gif');
     background-repeat: repeat-x;
     height: 280px;
-    
 }
 
 #innerFooter
@@ -156,7 +152,6 @@ body
 {
     color: #f0f0e4;
     font-size: 12px;
-    
 }
 
 #contentTitle
@@ -165,14 +160,12 @@ body
     font-weight: bold;
     font-style: italic;
     font-size: 20px;
-    text-align: center;
-    /*padding-top: 35px;*/
+    text-align: center; /*padding-top: 35px;*/
 }
 
 #contentContainer
 {
-    /*border: 1px solid green;*/
-    /*margin-top: -70px;*/
+    /*border: 1px solid green;*/ /*margin-top: -70px;*/
 }
 
 #centerContent
@@ -192,7 +185,8 @@ body
 
 #rightContent
 {
-    width: 280px; text-align: right
+    width: 280px;
+    text-align: right;
 }
 
 #pattern
@@ -206,48 +200,56 @@ body
 }
 
 
-.field-validation-error {
+.field-validation-error
+{
     color: #ff0000;
 }
 
-.field-validation-valid {
+.field-validation-valid
+{
     display: none;
 }
 
-.input-validation-error {
+.input-validation-error
+{
     border: 1px solid #ff0000;
     background-color: #ffeeee;
 }
 
-.validation-summary-errors {
+.validation-summary-errors
+{
     font-weight: bold;
     color: #ff0000;
 }
 
-.validation-summary-valid {
+.validation-summary-valid
+{
     display: none;
 }
 
 
-.display-label, 
-.editor-label {
+.display-label, .editor-label
+{
     margin: 1em 0 0 0;
 }
 
-.display-field, 
-.editor-field {
+.display-field, .editor-field
+{
     margin: 0.5em 0 0 0;
 }
 
-.text-box {
+.text-box
+{
     width: 30em;
 }
 
-.text-box.multi-line {
+.text-box.multi-line
+{
     height: 6.5em;
 }
 
-.tri-state {
+.tri-state
+{
     width: 6em;
 }
 
@@ -256,27 +258,24 @@ body
 
 .adminEditContentContainer
 {
-	
-	width:600px;
-	margin-left:auto;
-	margin-right:auto;
-	position:relative;
-	z-index:1;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .adminEditContentTable
 {
-	width:600px;
+    width: 600px;
 }
 
 .adminEditContentTable td
 {
-	padding-left:20px;
-	padding-top:10px;
-	font-size:13px;
-	font-weight:bold;
-	/*border:solid 1px #999999;*/
-	
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+    font-weight: bold; /*border:solid 1px #999999;*/
 }
 
 .adminEditContentTable td input
@@ -286,14 +285,13 @@ body
 
 .adminEditContentTable td span
 {
-	font-size: 11px;
-	font-weight:normal;
-	
+    font-size: 11px;
+    font-weight: normal;
 }
 
 .buttonsContainer
 {
-    text-align:center;
+    text-align: center;
     margin-top: 10px;
 }
 
@@ -308,7 +306,7 @@ body
 
 .adminLink:hover
 {
-	color: #cc0000 !important;
+    color: #cc0000 !important;
 }
 
 .sortOrderInput
@@ -330,14 +328,14 @@ body
 
 .logOnForm
 {
-	position:relative;
-	margin:0 auto;
-	width:220px;
+    position: relative;
+    margin: 0 auto;
+    width: 220px;
 }
 
 .logOnForm table td
 {
-	line-height:30px;
+    line-height: 30px;
 }
 
 .adminTable td
@@ -414,24 +412,19 @@ body
 .smallBanner .topTitle, .smallBanner .bottomTitle
 {
     font-size: 12px;
-    
-    
 }
 
 .smallBanner .picture
 {
     width: 163px;
     height: 108px;
-    
 }
 
 .smallBanner .price
 {
     width: 63px;
     height: 19px;
-    
     position: absolute;
-
     margin-top: 83px;
     margin-left: 96px;
     text-align: center;
@@ -457,8 +450,6 @@ body
 {
     text-align: left;
     padding-left: 40px;
-    
-    
 }
 
 #chat a, #booking a
@@ -480,7 +471,6 @@ body
 {
     background-image: url('img/chat-icon.png');
     background-repeat: no-repeat;
-    
 }
 
 #booking
@@ -493,8 +483,8 @@ body
 
 .rootLink
 {
-    display:block;
-	position:absolute;
+    display: block;
+    position: absolute;
     width: 140px;
     height: 155px;
     margin-top: 58px;
@@ -524,19 +514,16 @@ body
     border-collapse: collapse;
 }
 
-#quicksearchinputcontainer td.left, 
-#quicksearchinputcontainer td.right
+#quicksearchinputcontainer td.left, #quicksearchinputcontainer td.right
 {
     width: 8px;
-    height: 17px;
-    /*display: block;*/
+    height: 17px; /*display: block;*/
     background-repeat: no-repeat;
 }
 
 #quicksearchinputcontainer td.left
 {
     background-image: url('img/quicksearchfield-bg-left.png');
-   
 }
 #quicksearchinputcontainer td.right
 {
@@ -545,17 +532,43 @@ body
 
 #quicksearchinputcontainer td.center
 {
-	background-image: url('img/quicksearchfield-bg-center.gif');
-	background-repeat: repeat-x;
+    background-image: url('img/quicksearchfield-bg-center.gif');
+    background-repeat: repeat-x;
 }
 
 #qsearch
 {
-    /*border-top:1px solid #ff9d0a;
-    border-left: none;
-    border-bottom:1px solid #ff9d0a;
-    border-right: none; */
-	border: none;
+    /*border-top:1px solid #ff9d0a;     border-left: none;     border-bottom:1px solid #ff9d0a;     border-right: none; */
+    border: none;
     height: 14px;
     width: 130px;
+}
+
+
+#countryBox
+{
+    width: 403px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#countryBoxCenter
+{
+    background: url('img/countrybox-bg-center.png') repeat-y;
+    padding: 0 30px;
+    width: 343px;
+}
+
+#countryBoxTop
+{
+    height: 22px;
+    width: 403px;
+    background: url('img/countrybox-bg-top.png') repeat-y;
+}
+
+#countryBoxBottom
+{
+    height: 30px;
+    width: 403px;
+    background: url('img/countrybox-bg-bottom.png') repeat-y;
 }

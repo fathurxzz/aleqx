@@ -70,7 +70,10 @@
                         @RenderSection("ContentTitle", false)
                         <div id="pattern">
                         </div>
+                         @Html.Partial("CountryBox")
+
                         @Html.Partial("SubMenu")
+
                         @RenderBody()
                         @RenderSection("Accordion", false)
                     </div>
