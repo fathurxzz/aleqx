@@ -110,5 +110,20 @@ namespace HavilaTravel.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult DeletePhoto(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var image = context.AccordionImage.Include("Accordion").Where(i => i.Id == id).First();
+                var accordion = image.Accordion;
+
+                IOHelper.DeleteFile("~/Content/Photos", image.ImageSource);
+                context.DeleteObject(image);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { id = accordion.Content.Name, area = "" });
+            }
+        }
+
     }
 }

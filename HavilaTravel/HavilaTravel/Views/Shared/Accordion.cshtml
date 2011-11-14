@@ -42,6 +42,10 @@
                    foreach (var image in item.AccordionImages)
                    {
                     <td>
+                    @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Удалить", "DeletePhoto", "Accordion", new { Area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                        }
                     <div class="accordionPicture">
                         <a rel="@Html.Raw("group" + item.Id)" href="../../Content/Photos/@image.ImageSource" class="fancy">
                         @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
