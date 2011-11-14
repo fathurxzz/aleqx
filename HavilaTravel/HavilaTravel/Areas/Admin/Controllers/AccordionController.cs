@@ -69,6 +69,29 @@ namespace HavilaTravel.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var accordion = context.Accordion.Include("Content").Include("AccordionImages").Where(a => a.Id == id).First();
+                var content = accordion.Content;
+
+                while (accordion.AccordionImages.Any())
+                {
+                    var image = accordion.AccordionImages.First();
+                    IOHelper.DeleteFile("~/Content/Photos", image.ImageSource);
+                    context.DeleteObject(image);
+                }
+                
+                context.DeleteObject(accordion);
+                
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
+            }
+
+        }
+
         public ActionResult AddPhoto(int id)
         {
             ViewBag.parentId = id;
