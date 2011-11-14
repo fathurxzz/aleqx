@@ -22,7 +22,11 @@
                {
         @Html.ActionLink("Редактировать", "Edit", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
         @Html.Raw("&nbsp;")
+        @Html.Raw("&nbsp;")
         @Html.ActionLink("Добавить фотографии", "AddPhoto", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+        @Html.Raw("&nbsp;")
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("Удалить", "Delete", "Accordion", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить гармошку?')" })
                }
 
 
@@ -38,14 +42,14 @@
            <table>
            <tr>
             @{
-                   int cnt = 0;
-                   foreach (var image in item.AccordionImages)
-                   {
+               int cnt = 0;
+               foreach (var image in item.AccordionImages)
+               {
                     <td>
                     @if (Request.IsAuthenticated)
-                        {
+                    {
                             @Html.ActionLink("Удалить", "DeletePhoto", "Accordion", new { Area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
-                        }
+                    }
                     <div class="accordionPicture">
                         <a rel="@Html.Raw("group" + item.Id)" href="../../Content/Photos/@image.ImageSource" class="fancy">
                         @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
@@ -61,7 +65,7 @@
                         @Html.Raw("</tr><tr>")
                    }
 
-                   }
+               }
             }
             </tr>
             </table> 
@@ -73,8 +77,8 @@
 </div>
 
 @{
-        if (Request.IsAuthenticated)
-        {
+    if (Request.IsAuthenticated)
+    {
         <p>
             @Html.ActionLink("Добавить гармошку", "Create", "Accordion", new { Area = "Admin", id = ViewBag.CurrentContentId }, new { @class = "adminLink" })
         </p>        
