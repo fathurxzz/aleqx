@@ -11,17 +11,27 @@ namespace Dev.Mvc.Helpers
 {
     public static class GraphicsHelper
     {
-        private static readonly Dictionary<string, int> LimitHeight = new Dictionary<string, int>();
-        private static readonly Dictionary<string, int> LimitWidth = new Dictionary<string, int>();
+        private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
+        private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
         static GraphicsHelper()
         {
-            LimitWidth.Add("thumbnail1", 150);
-            LimitHeight.Add("thumbnail1", 150);
+            limitWidth.Add("thumbnail1", 150);
+            limitHeight.Add("thumbnail1", 150);
+
+            limitWidth.Add("mainBanner", 635);
+            limitHeight.Add("mainBanner", 260);
+
+            //LimitWidth.Add("mainBanner", 260);
+            //LimitHeight.Add("mainBanner", 635);
+
+            limitWidth.Add("tourBanner", 163);
+            limitHeight.Add("tourBanner", 108);
+
         }
 
-       
-        private static Rectangle CalculateDestRect(string name, Size sourceImage)
+
+        private static Rectangle CalculateDestRect(int limWidth, int limHeight, Size imageSize)
         {
             /*
             // вписывание в заданные параметры
@@ -49,42 +59,68 @@ namespace Dev.Mvc.Helpers
             }
 
             
-            
-
-
-
-
 
             
             return new Rectangle(0, 0, resultWidth, resultHeight);
               
             */
 
-            return new Rectangle(0, 0, LimitHeight[name], LimitHeight[name]);
+            //return new Rectangle(0, 0, LimitWidth[name], LimitHeight[name]);
+
+            return imageSize.Width < imageSize.Height ? new Rectangle(0, 0, limHeight, limWidth) : new Rectangle(0, 0, limWidth, limHeight);
 
 
         }
-    
+
         private static Rectangle CalculateSourceRect(string name, Size sourceImage)
         {
-            int max = sourceImage.Width > sourceImage.Height ? sourceImage.Height : sourceImage.Width;
+            int previewHeight;
+            int previewWidth;
 
-            return new Rectangle(0, 0, max, max);
+            if (sourceImage.Width > sourceImage.Height)
+            {
+                previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
+                previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            }
+            else
+            {
+                previewWidth = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
+                previewHeight = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            }
 
-            //return new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
+            int resultWidth;
+            int resultHeight;
+
+            double wRatio = (double)sourceImage.Width / (double)previewWidth;
+            double hRatio = (double)sourceImage.Height / (double)previewHeight;
+
+            double coef = (double)previewHeight / (double)previewWidth;
+
+            if (wRatio < hRatio)
+            {
+                resultWidth = sourceImage.Width;
+                resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
+            }
+            else
+            {
+                resultHeight = sourceImage.Height;
+                resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
+            }
+
+            return new Rectangle(0, 0, resultWidth, resultHeight);
         }
 
-        public static void ScaleImage(string name, Bitmap sourceImage, int limitWidth, int limitHeight, Stream saveTo)
+        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
-            Rectangle sourceRect = CalculateSourceRect(name, sourceImage.Size);
+            Rectangle sourceRect = CalculateSourceRect(name, image.Size);
 
-            Rectangle destRect = CalculateDestRect(name, sourceImage.Size);
-            
+            Rectangle destRect = CalculateDestRect(limWidth, limHeight, image.Size);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             Graphics graphics = Graphics.FromImage(thumbnailImage);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            graphics.DrawImage(sourceImage, destRect, sourceRect, GraphicsUnit.Pixel);
+            graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
 
 
             thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -140,7 +176,7 @@ namespace Dev.Mvc.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, LimitWidth[cacheFolder], LimitHeight[cacheFolder], stream);
+                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream);
             }
         }
 
@@ -150,6 +186,16 @@ namespace Dev.Mvc.Helpers
             string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
 
             sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt);
+
+            return sb.ToString();
+        }
+
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, string alt, string id)
+        {
+            StringBuilder sb = new StringBuilder();
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" id=\"{2}\" />";
+
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt, id);
 
             return sb.ToString();
         }
