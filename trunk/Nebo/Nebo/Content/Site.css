@@ -166,9 +166,10 @@ li.selected
 
 .contentSubItemPicture
 {
-    
     margin:25px 50px 25px 20px;
 }
+
+.contentSubItemPicture img{border: 2px solid #3399ff}
 
 .contentSubItemText
 {

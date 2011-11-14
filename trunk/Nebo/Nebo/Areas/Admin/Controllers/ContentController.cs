@@ -29,7 +29,7 @@ namespace Nebo.Areas.Admin.Controllers
 
                 var content = new Content { ContentLevel = 1 };
 
-                if (form["parentId"] != null)
+                if (!string.IsNullOrEmpty(form["parentId"]))
                 {
                     int parentId = Convert.ToInt32(form["parentId"]);
                     var parent = context.Content.Where(c => c.Id == parentId).First();
