@@ -1,13 +1,10 @@
 ﻿@using Dev.Mvc.Helpers
 @using HavilaTravel.Models
 @model IEnumerable<HavilaTravel.Models.Article>
-
 @if (Request.IsAuthenticated)
 {
-    @Html.ActionLink("Добавить новость","Add","Articles",new{Area="Admin"},new{@class="adminLink"})
+    @Html.ActionLink("Добавить новость", "Add", "Articles", new { Area = "Admin" }, new { @class = "adminLink" })
 }
-
-
 @foreach (var item in Model)
 {
 
@@ -15,19 +12,17 @@
     
     <div class="article">
         <div class="date">@Html.DisplayFor(modelItem => item.Date)</div>
-        
         @if (Request.IsAuthenticated)
         {
             <div>
-            @Html.ActionLink("Редактировать", "Edit", "Articles", new { Area = "Admin", id=item.Id }, new { @class = "adminLink" })
-            @Html.Raw("&nbsp;&nbsp;")
-            @Html.ActionLink("Удалить", "Delete", "Articles", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить новость?')" })
+                @Html.ActionLink("Редактировать", "Edit", "Articles", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                @Html.Raw("&nbsp;&nbsp;")
+                @Html.ActionLink("Удалить", "Delete", "Articles", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить новость?')" })
             </div>
         }
         <div class="title">@Html.DisplayFor(modelItem => item.Title)</div>
         <div class="text">@Html.Raw(item.Text)</div>
-        <div class="details">
-        </div>
+        <div class="details">@Html.ActionLink("Полный текст", "Details", "Articles", new { Area = "", id = item.Id }, null)</div>
     </div>   
             
             
@@ -38,42 +33,36 @@
         Новости
     </div>
 }
-
 @section MainBanner
 {
-    
     @{
-        var banners = ((List<Banner>) ViewBag.Banners).Where(b=>b.BannerType==1);
+        var banners = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 1);
     }
-
     <div id="slideshow">
-       
         @foreach (var banner in banners)
         {
-                @Html.Raw(Html.CachedImage("~/Content/Banners/",banner.ImageSource,"mainBanner",banner.Title,banner.Price))
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
         }
     </div>
 }
-
 @section SmallBannerLeft
 {
     @{
-        Banner leftBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
+        Banner leftBanner = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
 
-        if(leftBanner!=null)
+        if (leftBanner != null)
         {
-            @Html.Partial("BannerSmall", leftBanner)
+        @Html.Partial("BannerSmall", leftBanner)
         }
     }
 }
-
 @section SmallBannerRight
 {
     @{
-        Banner rightBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
+        Banner rightBanner = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
         if (rightBanner != null)
         {
-            @Html.Partial("BannerSmall", rightBanner)
+        @Html.Partial("BannerSmall", rightBanner)
         }
     }
 }
