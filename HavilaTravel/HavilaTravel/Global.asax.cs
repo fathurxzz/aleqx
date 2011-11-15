@@ -22,6 +22,13 @@ namespace HavilaTravel
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Articles", // Route name
+                "Articles/{id}", // URL with parameters
+                new { controller = "Articles", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
+                new string[1]{"HavilaTravel.Controllers"}
+            );
+
+            routes.MapRoute(
                 "Default1", // Route name
                 "{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults

@@ -11,6 +11,9 @@ namespace HavilaTravel.Controllers
     public class HomeController : Controller
     {
 
+
+        
+
         public ActionResult Index(string id)
         {
             using (var context = new ContentStorage())
