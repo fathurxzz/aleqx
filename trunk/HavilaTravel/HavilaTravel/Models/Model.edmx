@@ -8,6 +8,7 @@
         <EntityContainer Name="havilaModelStoreContainer">
           <EntitySet Name="accordion" EntityType="havilaModel.Store.accordion" store:Type="Tables" Schema="havila" />
           <EntitySet Name="accordionimage" EntityType="havilaModel.Store.accordionimage" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="article" EntityType="havilaModel.Store.article" store:Type="Tables" Schema="havila" />
           <EntitySet Name="banner" EntityType="havilaModel.Store.banner" store:Type="Tables" Schema="havila" />
           <EntitySet Name="content" EntityType="havilaModel.Store.content" store:Type="Tables" Schema="havila" />
         </EntityContainer>
@@ -30,6 +31,15 @@
           <Property Name="Title" Type="varchar" />
           <Property Name="ImageSource" Type="varchar" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Text" Type="text" />
         </EntityType>
         <EntityType Name="banner">
           <Key>
@@ -82,6 +92,7 @@
             <End Role="AccordionImage" EntitySet="AccordionImage" />
           </AssociationSet>
           <EntitySet Name="Banner" EntityType="havilaModel.Banner" />
+          <EntitySet Name="Article" EntityType="havilaModel.Article" />
         </EntityContainer>
         <EntityType Name="Accordion">
           <Key>
@@ -147,6 +158,15 @@
           <Property Type="String" Name="Title" />
           <Property Type="String" Name="ContentName" />
           <Property Type="String" Name="Title2" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Title" />
+          <Property Type="String" Name="Text" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -218,6 +238,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="havilaModel.Article">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -257,6 +287,7 @@
           <ConnectorPoint PointX="2.75" PointY="1.628326822916667" />
         </AssociationConnector>
         <EntityTypeShape EntityType="havilaModel.Banner" Width="1.5" PointX="3.375" PointY="3.75" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="havilaModel.Article" Width="1.5" PointX="5.375" PointY="0.75" Height="1.5923063151041674" />
       </Diagram>
     </Diagrams>
   </Designer>

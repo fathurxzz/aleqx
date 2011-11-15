@@ -1,0 +1,29 @@
+﻿.article
+{
+    
+}
+
+.article .date
+{
+    font-size: 13px;
+    color: #999;
+}
+
+.article .title
+{
+    font-size: 19px;
+    color: #000;
+    font-weight: bold;
+}
+
+.article .text
+{
+    padding-top: 10px;
+    font-size: 13px;
+    color: #000;
+}
+
+.article .details
+{
+    
+}
