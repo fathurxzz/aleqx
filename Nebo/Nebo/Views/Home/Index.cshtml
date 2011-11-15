@@ -70,7 +70,7 @@
 
 @section ContentTitle
 {
-    <h1>@Model.Title</h1>
+    <h1>@(Model.ContentLevel == 2 ? Model.Parent.Title : Model.Title)</h1>
     <div class="separator">
     </div>
 }
