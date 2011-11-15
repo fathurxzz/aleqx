@@ -14,7 +14,7 @@ namespace Nebo.Models
 
     }
 
-    [Bind(Exclude = "Id")]
+   
     public class ContentValidation
     {
         [Required(ErrorMessage = "* Введите веб-имя страницы")]
