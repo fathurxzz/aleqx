@@ -21,9 +21,23 @@
     padding-top: 10px;
     font-size: 13px;
     color: #000;
+    margin-bottom: 20px;
 }
 
 .article .details
 {
+    width: 605px;
+    /*height: 24px;*/
+    background: url('img/articles-details-link-bg.gif') no-repeat;
+    padding-left: 35px;
+    padding-top: 3px;
+    padding-bottom: 70px;
     
 }
+
+.article .details a
+{
+    color: #cc9900;
+    font-size: 11px;
+}
+

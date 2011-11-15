@@ -23,9 +23,16 @@ namespace HavilaTravel
 
             routes.MapRoute(
                 "Articles", // Route name
-                "Articles/{id}", // URL with parameters
+                "Articles", // URL with parameters
                 new { controller = "Articles", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
                 new string[1]{"HavilaTravel.Controllers"}
+            );
+
+            routes.MapRoute(
+                "ArticleDetails", // Route name
+                "Articles/{id}", // URL with parameters
+                new { controller = "Articles", action = "Details", id = UrlParameter.Optional }, // Parameter defaults
+                new string[1] { "HavilaTravel.Controllers" }
             );
 
             routes.MapRoute(
