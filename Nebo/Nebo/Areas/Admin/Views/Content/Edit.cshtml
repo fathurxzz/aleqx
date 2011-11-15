@@ -1,18 +1,16 @@
 ﻿@model Nebo.Models.Content
-
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Редактирование страницы</h2>
-
+<h2>
+    Редактирование страницы</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm("Edit", "Content", FormMethod.Post, new { enctype = "multipart/form-data" })){
+@using (Html.BeginForm("Edit", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.ValidationSummary(true)
-       @Html.HiddenFor(model=>model.Id)
+    @Html.HiddenFor(model => model.Id)
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
             <tr>
@@ -53,12 +51,14 @@
                 </td>
                 <td>
                     <input type="file" name="fileUpload" />
-                    
                 </td>
             </tr>
             <tr>
-                <td>Удалить изображение</td>
-                <td style="text-align: left !important">@Html.CheckBox("deleteImage",false,new{style="width:20px"}) </td>
+                <td>
+                    Удалить изображение
+                </td>
+                <td style="text-align: left !important">@Html.CheckBox("deleteImage", false, new { style = "width:20px" })
+                </td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center">
@@ -84,12 +84,11 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            <a href="#" onclick="javascript:history.back();">Отмена</a>
+            @Html.ActionLink("Отмена", "Index", "Home", new { Area = "", id = Model.Name }, null)
         </div>
     </div>
    
 }
-
 @section Includes
 {
     <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>

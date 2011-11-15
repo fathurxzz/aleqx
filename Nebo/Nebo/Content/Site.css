@@ -121,7 +121,8 @@ body
 
 h1
 {
-    color: #ccc;
+    font-family: Century Gothic;
+    color: #999999;
     text-align: center;
     font-size: 40px;
     font-weight: normal;

@@ -80,7 +80,13 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            <a href="#" onclick="javascript:history.back();">Отмена</a>
+            @if (ViewData["parentId"] != null)
+            {
+                @Html.ActionLink("Отмена", "Index", "Home", new { Area = "", id = ViewData["parentId"] }, null)
+            }else
+            {
+                @Html.ActionLink("Отмена", "Index", "Home", new { Area = "" }, null)
+            }
         </div>
     </div>
    
