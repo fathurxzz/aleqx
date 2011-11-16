@@ -1,31 +1,8 @@
 ﻿@model HavilaTravel.Models.Article
 
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Article</legend>
-
-    <div class="display-label">Date</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Date)
-    </div>
-
-    <div class="display-label">Title</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
-    </div>
-
-    <div class="display-label">Text</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Text)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="article">
+        <div class="date">@Model.Date</div>
+        <div class="title">@Model.Title</div>
+        <div class="text">@Html.Raw(Model.Text)</div>
+        <div class="details">&laquo; @Html.ActionLink("К новостям", "Index", "Articles", new { Area = "" }, null)</div>
+    </div>   
