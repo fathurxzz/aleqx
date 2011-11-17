@@ -11,15 +11,15 @@
 
 #countryBox
 {
-	position: absolute;
+    
+    /*********************/
+	/*position: absolute;*/
+    position: relative;
+	/*********************/
+	
 	z-index: 100;
     width: 403px;
-    /*position: relative;*/
-    /*margin: 0 auto;*/
-
 	margin-left: 120px;
-	/*margin-bottom: 50px;*/
-	
 }
 
 #countryBoxCenter

@@ -913,7 +913,8 @@ namespace HavilaTravel.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Content CreateContent(global::System.Int64 contentLevel, global::System.Int64 contentType, global::System.Int64 id, global::System.String name, global::System.Int32 sortOrder)
+        /// <param name="placeKind">Initial value of the PlaceKind property.</param>
+        public static Content CreateContent(global::System.Int64 contentLevel, global::System.Int64 contentType, global::System.Int64 id, global::System.String name, global::System.Int32 sortOrder, global::System.Int32 placeKind)
         {
             Content content = new Content();
             content.ContentLevel = contentLevel;
@@ -921,6 +922,7 @@ namespace HavilaTravel.Models
             content.Id = id;
             content.Name = name;
             content.SortOrder = sortOrder;
+            content.PlaceKind = placeKind;
             return content;
         }
 
@@ -1217,6 +1219,30 @@ namespace HavilaTravel.Models
         private Nullable<global::System.Int64> _ContentModel;
         partial void OnContentModelChanging(Nullable<global::System.Int64> value);
         partial void OnContentModelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PlaceKind
+        {
+            get
+            {
+                return _PlaceKind;
+            }
+            set
+            {
+                OnPlaceKindChanging(value);
+                ReportPropertyChanging("PlaceKind");
+                _PlaceKind = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PlaceKind");
+                OnPlaceKindChanged();
+            }
+        }
+        private global::System.Int32 _PlaceKind;
+        partial void OnPlaceKindChanging(global::System.Int32 value);
+        partial void OnPlaceKindChanged();
 
         #endregion
     

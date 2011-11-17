@@ -70,6 +70,7 @@
           <Property Name="SeoDescription" Type="varchar" />
           <Property Name="SeoKeywords" Type="varchar" />
           <Property Name="ContentModel" Type="uint" />
+          <Property Name="PlaceKind" Type="int" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -134,6 +135,7 @@
           <NavigationProperty Name="Parent" Relationship="havilaModel.ContentContent" FromRole="Content1" ToRole="Content" />
           <NavigationProperty Name="Accordions" Relationship="havilaModel.ContentAccordion" FromRole="Content" ToRole="Accordion" />
           <Property Type="Int64" Name="ContentModel" />
+          <Property Type="Int32" Name="PlaceKind" Nullable="false" />
         </EntityType>
         <Association Name="ContentContent">
           <End Type="havilaModel.Content" Role="Content" Multiplicity="0..1" />
@@ -187,7 +189,8 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="havilaModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="ContentModel" ColumnName="ContentModel" />
+            <ScalarProperty Name="PlaceKind" ColumnName="PlaceKind" />
+                <ScalarProperty Name="ContentModel" ColumnName="ContentModel" />
                 <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
             <ScalarProperty Name="ContentType" ColumnName="ContentType" />
             <ScalarProperty Name="Id" ColumnName="Id" />

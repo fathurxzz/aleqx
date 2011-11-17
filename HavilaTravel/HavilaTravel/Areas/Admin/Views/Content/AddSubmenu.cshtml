@@ -19,7 +19,7 @@ Html.EnableClientValidation();
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.ContentType)
     @Html.HiddenFor(model => model.ContentLevel)
-
+    @Html.HiddenFor(model => model.PlaceKind)
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
             <tr>
@@ -31,13 +31,13 @@ Html.EnableClientValidation();
                     @Html.ValidationMessageFor(model => model.Name)
                 </td>
             </tr>
-            <tr>
+            @*<tr>
                 <td>@Html.LabelFor(model => model.ContentModel)</td>
                 <td>
 
-                    @Html.DropDownList("ContentModel", new List<SelectListItem> {new SelectListItem { Text = "---", Value = "0" }, new SelectListItem { Text = "Страна", Value = "1" }, new SelectListItem { Text = "Город", Value = "2" }, new SelectListItem { Text = "Отель", Value = "3" }, new SelectListItem { Text = "SPA-курорт", Value = "4" } })
+                    @Html.DropDownList("ContentModel", new List<SelectListItem> { new SelectListItem { Text = "---", Value = "0" }, new SelectListItem { Text = "Страна", Value = "1" }, new SelectListItem { Text = "Город", Value = "2" }, new SelectListItem { Text = "Отель", Value = "3" }, new SelectListItem { Text = "SPA-курорт", Value = "4" } })
                     </td>
-            </tr>
+            </tr>*@
             <tr>
                 <td>
                     @Html.LabelFor(model => model.PageTitle)

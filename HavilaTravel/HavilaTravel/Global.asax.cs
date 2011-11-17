@@ -36,6 +36,20 @@ namespace HavilaTravel
             );
 
             routes.MapRoute(
+                "Countries", // Route name
+                "Countries", // URL with parameters
+                new { controller = "Place", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
+                new string[1] { "HavilaTravel.Controllers" }
+            );
+
+            routes.MapRoute(
+                "Places", // Route name
+                "Places/{id}", // URL with parameters
+                new { controller = "Place", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
+                new string[1] { "HavilaTravel.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Default1", // Route name
                 "{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults

@@ -16,6 +16,65 @@
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     @RenderSection("Includes", false)
+
+
+    <script type="text/javascript">
+
+        $(function () {
+            $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+
+            $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
+
+
+            //            $("#countryBox").click(function () {
+            //                
+            //                $(this).css("display", "none");
+            //            });
+
+            $("#accordion1").accordion(
+            {
+                animated: 'slide',
+                collapsible: true,
+                autoHeight: false,
+                active: false,
+                change: function (event, ui) {
+                    ui.newHeader.css("color", "#cc0000");
+                    //ui.newHeader.css("text-decoration", "none");
+                    ui.oldHeader.css("color", "#a3a3a3");
+                    //ui.oldHeader.css("text-decoration", "underline");
+                }
+
+
+            });
+
+            $("#accordion1 table").click(function () {
+                this.blur();
+            });
+
+
+            /*$('#slideshow').cycle('stop').remove();*/
+
+            $('#slideshow').cycle(
+            {
+                fx: 'fade',
+                after: onAfter,
+                sync: true,
+                timeout: 5000,
+                delay: -1000
+            });
+
+            function onAfter(curr, next, opts) {
+                //var msg = 'Slide ' + (opts.currSlide + 1) + ' of ' + opts.slideCount;
+                $('#leftCaption').html(next.alt);
+                $('#rightCaption').html(next.id);
+                //alert();
+            };
+
+
+        });
+    </script>
+
+
 </head>
 <body>
     <div id="header">
@@ -70,7 +129,7 @@
                             @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink" })
                          
                         }
-                                                 @*@Html.Partial("CountryBox")*@
+                                                
                         @RenderSection("ContentTitle", false)
 
 
@@ -78,7 +137,12 @@
                         </div>
                         
 
-                        @Html.Partial("SubMenu")
+                        @RenderSection("CountryBox",false)
+
+
+                        @RenderSection("SubMenu",false)
+
+                        
 
                         @RenderBody()
                         @RenderSection("Accordion", false)
