@@ -1,26 +1,21 @@
 ﻿@model HavilaTravel.Models.Content
+
 @{
-    ViewBag.Title = "EditContent";
+    ViewBag.Title = "AddRegion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>
-    Редактирование страницы</h2>
+
+<h2>AddRegion</h2>
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-@{
-Html.EnableClientValidation();
-    }
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
-    @Html.HiddenFor(model => model.Id)
-    @Html.HiddenFor(model => model.ContentType)
-    @Html.HiddenFor(model => model.ContentLevel)
-    @Html.HiddenFor(model=>model.PlaceKind)
 
-    <div class="adminEditContentContainer">
+      <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
             <tr>
                 <td>@Html.LabelFor(model => model.Name)<br />
@@ -31,13 +26,6 @@ Html.EnableClientValidation();
                     @Html.ValidationMessageFor(model => model.Name)
                 </td>
             </tr>
-         @*   <tr>
-                <td>@Html.LabelFor(model => model.ContentModel)</td>
-                <td>
-
-                    @Html.DropDownList("ContentModel", new List<SelectListItem> {new SelectListItem { Text = "---", Value = "0" }, new SelectListItem { Text = "Страна", Value = "1" }, new SelectListItem { Text = "Город", Value = "2" }, new SelectListItem { Text = "Отель", Value = "3" }, new SelectListItem { Text = "SPA-курорт", Value = "4" } })
-                    </td>
-            </tr>*@
             <tr>
                 <td>
                     @Html.LabelFor(model => model.PageTitle)
@@ -75,7 +63,7 @@ Html.EnableClientValidation();
             </tr>
             <tr>
                 <td colspan="2">
-                    @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
+                @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.Text)
                 </td>
             </tr>
@@ -106,15 +94,8 @@ Html.EnableClientValidation();
             <a href="#" onclick="javascript:history.back();">Отмена</a>
         </div>
     </div>
-    
-
-
-    
-
-    
-
-    
 }
+
 @section Includes
 {
     <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
