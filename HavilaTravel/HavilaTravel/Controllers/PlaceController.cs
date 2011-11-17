@@ -12,6 +12,15 @@ namespace HavilaTravel.Controllers
         //
         // GET: /Place/
 
+        private Dictionary<string,int> _contentTitlesChain = new Dictionary<string, int>();
+
+
+        public void FillChain(Content content)
+        {
+
+        }
+
+
         public ActionResult Index(string id)
         {
             using (var context = new ContentStorage())
@@ -24,11 +33,15 @@ namespace HavilaTravel.Controllers
                 {
                     id = "Countries";
                 }
+                
+                
                 var content = context.Content
                     .Include("Parent").Include("Children").Include("Accordions")
                     .Where(c => c.Name == id)
                     .FirstOrDefault();
 
+                _contentTitlesChain.Add(content.Title);
+                
 
 
                 var banners = context.Banner.ToList();
