@@ -13,10 +13,10 @@
 {
     
     /*********************/
-	/*position: absolute;*/
-    position: relative;
+	position: absolute;
+    /*position: relative;*/
 	/*********************/
-	
+    display: none;
 	z-index: 100;
     width: 403px;
 	margin-left: 120px;

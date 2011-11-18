@@ -1,7 +1,9 @@
 ﻿@using Dev.Mvc.Helpers
 @using HavilaTravel.Models
 @model HavilaTravel.Models.Content
-@Html.Raw(Model.Text)
+
+@(ViewBag.Spa != null ? Html.Raw(((Content) ViewBag.Spa).Text) : Html.Raw(Model.Text))
+    
 @section ContentTitle{
     <div id="contentTitle">
         @Model.Title
@@ -10,7 +12,14 @@
 @section Accordion
 {
     <div id="accordionContainer">
+    @if (ViewBag.Spa != null)
+    {
+        @Html.Partial("Accordion", ((Content) ViewBag.Spa).Accordions)
+    }
+    else
+    {
         @Html.Partial("Accordion", Model.Accordions)
+    }
     </div>
 }
 
@@ -20,14 +29,14 @@
 {
     
     @{
-        var banners = ((List<Banner>) ViewBag.Banners).Where(b=>b.BannerType==1);
+        var banners = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 1);
     }
 
     <div id="slideshow">
        
         @foreach (var banner in banners)
         {
-                @Html.Raw(Html.CachedImage("~/Content/Banners/",banner.ImageSource,"mainBanner",banner.Title,banner.Price))
+                @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
         }
     </div>
 }
@@ -35,9 +44,9 @@
 @section SmallBannerLeft
 {
     @{
-        Banner leftBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
+        Banner leftBanner = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
 
-        if(leftBanner!=null)
+        if (leftBanner != null)
         {
             @Html.Partial("BannerSmall", leftBanner)
         }
@@ -47,7 +56,7 @@
 @section SmallBannerRight
 {
     @{
-        Banner rightBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
+        Banner rightBanner = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
         if (rightBanner != null)
         {
             @Html.Partial("BannerSmall", rightBanner)
@@ -57,11 +66,17 @@
 
 @section SubMenu
 {
+    @Html.Partial("PlacesMap")
     @Html.Partial("PlacesSubMenu", Model)
 }
 
 
 @section CountryBox
 {
- @Html.Partial("CountryBox")
+    @Html.Partial("CountryBox")
+}
+
+@section LeftSubMenu
+{
+    @Html.Partial("PlacesLestSubMenu")
 }
