@@ -12,16 +12,22 @@ namespace HavilaTravel.Controllers
         //
         // GET: /Place/
 
-        private Dictionary<string,int> _contentTitlesChain = new Dictionary<string, int>();
+        private Dictionary<string, int> _placesMap = new Dictionary<string, int>();
 
 
-        public void FillChain(Content content)
+        public void FillPlacesMap(Content content, ContentStorage context)
         {
-
+            _placesMap.Add(content.Title, (int)content.ContentLevel);
+            if (content.Parent != null)
+            {
+                var parentId = content.Parent.Id;
+                content = context.Content.Include("Parent").Where(c => c.Id == parentId).First();
+                FillPlacesMap(content, context);
+            }
         }
 
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string id, bool? showSpa)
         {
             using (var context = new ContentStorage())
             {
@@ -29,29 +35,51 @@ namespace HavilaTravel.Controllers
                 var menuList = Menu.GetMenuList("countries", context);
                 ViewBag.MenuList = menuList;
 
-                if(string.IsNullOrEmpty(id))
+                if (string.IsNullOrEmpty(id))
                 {
                     id = "Countries";
                 }
-                
-                
+
                 var content = context.Content
                     .Include("Parent").Include("Children").Include("Accordions")
                     .Where(c => c.Name == id)
-                    .FirstOrDefault();
+                    .First();
 
-                _contentTitlesChain.Add(content.Title);
-                
-
+                FillPlacesMap(content, context);
+                ViewBag.PlacesMap = _placesMap;
 
                 var banners = context.Banner.ToList();
                 ViewBag.Banners = banners;
 
+                var regionsAndCountries = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
+                ViewBag.SelectCountryMenu = regionsAndCountries;
 
-                var regions = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
-                ViewBag.SelectCountryMenu = regions;
 
 
+                var spa = content.Children.Where(c => c.PlaceKind == 6).FirstOrDefault();
+                if (spa != null && showSpa.HasValue && showSpa.Value)
+                {
+                    var spaId = spa.Id;
+                    spa = context.Content
+                    .Include("Accordions")
+                    .Where(c => c.Id == spaId)
+                    .First();
+                    ViewBag.Spa = spa;
+                }
+
+
+
+                var placesLeftSubMenu = content.Children
+                    .Where(p => p.PlaceKind != 6 && (p.PlaceKind == 5 && showSpa.HasValue || (!showSpa.HasValue && p.PlaceKind == 3 || !showSpa.HasValue && p.PlaceKind == 4)))
+                    .Select(child => new MenuItem
+                                                                             {
+                                                                                 Id = (int)child.Id,
+                                                                                 Name = child.Name,
+                                                                                 SortOrder = child.SortOrder,
+                                                                                 Title = child.Title
+                                                                             }).ToList();
+                if (placesLeftSubMenu.Count > 0)
+                    ViewBag.PlacesLeftSubMenu = placesLeftSubMenu;
 
 
                 return View(content);

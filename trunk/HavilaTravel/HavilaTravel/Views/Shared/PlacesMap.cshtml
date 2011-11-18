@@ -1,0 +1,16 @@
+﻿@{
+
+    var map = ((Dictionary<string, int>)ViewBag.PlacesMap).ToList();
+    if (map.Count > 1)
+    {
+    <table>
+        <tr>
+            @foreach (var keyValuePair in map.OrderBy(m => m.Value))
+            {
+                <td>@keyValuePair.Key &raquo;
+                </td>
+            }
+        </tr>
+    </table>
+    }
+}

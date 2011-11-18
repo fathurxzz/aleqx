@@ -11,16 +11,16 @@
                 @switch (Model.PlaceKind)
                 {
                     case (int)PlaceKind.Region:
-                    @Html.ActionLink("Обзор стран", "Index", "Place")
-               break;
+                    <a href="#">Обзор стран</a>
+                        break;
 
                     case (int)PlaceKind.Country:
-                    @Html.ActionLink("Обзор городов", "Index", "Place")
-               break;
+                    <a href="#">Обзор городов</a>
+                               break;
 
                     case (int)PlaceKind.City:
-                    @Html.ActionLink("Обзор мест", "Index", "Place")
-               break;
+                    <a href="#">Обзор мест</a>
+                               break;
                 }
                 @{
                     if (Request.IsAuthenticated)
@@ -43,40 +43,33 @@
                     }
                 }
             </td>
-
-
-
-
-
-
-
             <td>
-                
-                
-
-
-                
-                @if (Model.PlaceKind == (int)PlaceKind.City)
-                {
-               
-                    @Html.ActionLink("СПА-отели", "Index", "Place")
-                }
-                else
-                {
-                    @Html.ActionLink("СПА-курорты", "Index", "Place")
-                }
                 @{
-                    if (Request.IsAuthenticated)
+                    var spa = Model.Children.Where(c => c.PlaceKind == 6).FirstOrDefault();
+                    if (spa != null)
                     {
+                        if (Model.PlaceKind == (int)PlaceKind.City)
+                        {
+                    @Html.ActionLink("СПА-отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
+                        }
+                        else
+                        {
+                    @Html.ActionLink("СПА-курорты", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
+                        }
+
+                        if (Request.IsAuthenticated)
+                        {
                     <div class="adminLinkContainer">
-                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = spa.Id }, new { @class = "adminLink" })
                     </div>
+                        }
+
+                    }
+                    else
+                    {
+                    @Html.ActionLink("+SPA", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
                     }
                 }
-
-
-
-
             </td>
             <td class="separator">
             </td>

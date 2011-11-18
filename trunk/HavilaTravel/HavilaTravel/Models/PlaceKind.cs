@@ -7,10 +7,11 @@ namespace HavilaTravel.Models
 {
     public enum PlaceKind
     {
-        Region=1,
-        Country=2,
-        City=3,
-        Hotel=4,
-        Spa=5
+        Region = 1,
+        Country = 2,
+        City = 3,
+        Hotel = 4,
+        Spa = 5,
+        SpaInfo = 6
     }
 }
