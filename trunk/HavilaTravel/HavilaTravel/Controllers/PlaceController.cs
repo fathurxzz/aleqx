@@ -12,12 +12,12 @@ namespace HavilaTravel.Controllers
         //
         // GET: /Place/
 
-        private Dictionary<string, int> _placesMap = new Dictionary<string, int>();
+        private List<MenuItem> _placesMap = new List<MenuItem>();
 
 
         public void FillPlacesMap(Content content, ContentStorage context)
         {
-            _placesMap.Add(content.Title, (int)content.ContentLevel);
+            _placesMap.Add(new MenuItem(){Name = content.Name,Title = content.Title,SortOrder = (int)content.ContentLevel});
             if (content.Parent != null)
             {
                 var parentId = content.Parent.Id;
@@ -81,6 +81,20 @@ namespace HavilaTravel.Controllers
                 if (placesLeftSubMenu.Count > 0)
                     ViewBag.PlacesLeftSubMenu = placesLeftSubMenu;
 
+
+                var placesSelectorContent = content.Children
+                    .Where(p => p.PlaceKind == 2 || p.PlaceKind == 3 || p.PlaceKind == 4)
+                    .Select(child => new MenuItem
+                    {
+                        Id = (int)child.Id,
+                        Name = child.Name,
+                        SortOrder = child.SortOrder,
+                        Title = child.Title
+                    }).ToList();
+                ViewBag.PlacesSelectorContent = placesSelectorContent;
+
+
+                ViewBag.ShowSpa = (showSpa.HasValue && showSpa.Value);
 
                 return View(content);
             }

@@ -1,13 +1,16 @@
-﻿@{
+﻿@using HavilaTravel.Models
+@{
 
-    var map = ((Dictionary<string, int>)ViewBag.PlacesMap).ToList();
+    var map = (List<MenuItem>)ViewBag.PlacesMap;
     if (map.Count > 1)
     {
     <table>
         <tr>
-            @foreach (var keyValuePair in map.OrderBy(m => m.Value))
+            @foreach (var item in map.OrderBy(m => m.SortOrder))
             {
-                <td>@keyValuePair.Key &raquo;
+                <td>
+                    @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
+                    &raquo;
                 </td>
             }
         </tr>
