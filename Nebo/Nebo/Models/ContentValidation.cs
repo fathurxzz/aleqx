@@ -21,6 +21,7 @@ namespace Nebo.Models
         [DisplayName("Веб-имя страницы")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "* Введите заголовок")]
         [DisplayName("Заголовок")]
         public string Title { get; set; }
 
