@@ -31,19 +31,19 @@
                                 if (Request.IsAuthenticated)
                                 {
                                     
-                                    if(item.Name.ToLower()=="countries")
-                                    {
-                                        <div class="adminLinkContainer">
-                                            @Html.ActionLink("Добавить регион", "AddRegion", "Content", new { Area = "Admin"}, new { @class = "adminLink" })
-                                        </div>
-                                    }
-                                    else
-                                    {
+                                    
+                                    
+                                    
                                         <div class="adminLinkContainer">
                                             @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
                                         <div class="adminLinkContainer">
                                             @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                        </div>
+                                    if(item.Name.ToLower()=="countries")
+                                    {
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
                                         </div>
                                     }
                                 }
@@ -67,6 +67,12 @@
                                     <div class="adminLinkContainer">
                                     @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     </div>
+                                if(item.Name.ToLower()=="countries")
+                                    {
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                                        </div>
+                                    }
                                 }
                             }
                         </td>

@@ -7,13 +7,13 @@
 
     <a href="#" id="countrySelector">Выбрать страну</a>    
     
-    <div id="countryBox">
-        <div id="countryBoxTop">
+    <div class="placesSelector" id="countryBox">
+        <div class="placesSelectorTop">
         </div>
-        <div id="countryBoxCenter">
+        <div class="placesSelectorCenter">
             <div class="patternTop">
             </div>
-            <div id="countryBoxContent">
+            <div class="placesSelectorContent">
                 <div id="scrollbar1">
                     <div class="scrollbar">
                         <div class="track">
@@ -47,6 +47,14 @@
                                 </div>
                                     }
                             }
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div>
+                                @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                                </div>
+                            }
+                            
                         </div>
                     </div>
                 </div>
@@ -66,7 +74,7 @@
             <div class="patternBottom">
             </div>
         </div>
-        <div id="countryBoxBottom">
+        <div class="placesSelectorBottom">
         </div>
     </div>
 }
