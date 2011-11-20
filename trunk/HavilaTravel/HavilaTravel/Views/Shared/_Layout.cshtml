@@ -46,7 +46,7 @@
             $(".reviewLink").click(function () {
 
                 $("#citiesSelector").css("display", "block");
-                $("#citiesSelector").css("margin-top", "-200px");
+                /*$("#citiesSelector").css("margin-top", "-100px");*/
             });
 
 
@@ -152,7 +152,7 @@
                             @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink" })
                          
                         }
-                        <div>
+                        <div style="height:80px;">
                             @RenderSection("CountrySelector", false)
                             @RenderSection("CountryBox", false)
                         </div>
