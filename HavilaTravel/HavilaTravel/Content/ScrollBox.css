@@ -9,31 +9,47 @@
 /*#scrollbar1 .thumb .end { overflow: hidden; height: 5px; width: 13px; }*/
 #scrollbar1 .disable{ display: none; }
 
+
+#countryBox
+{
+	display: none;
+	position: absolute;
+}
+
 .placesSelector
 {
     
     /*********************/
-	position: absolute;
+	/*position: absolute;*/
     /*position: relative;*/
 	/*********************/
-    display: none;
+    
 	z-index: 100;
     width: 403px;
 	margin-left: 120px;
 }
 
+#countryBox .placesSelector
+{
+	/*position: absolute;*/
+}
+
+
+
 .placesSelectorCenter
 {
     background: url('img/countrybox-bg-center.png') repeat-y;
-    padding: 10px 30px;
+    padding: 0px 30px;
     width: 343px;
-    height: 320px;
-    
-
-    
 }
 
-.placesSelectorContent
+#countryBox .placesSelectorCenter
+{
+	padding: 10px 30px;
+	height: 320px;
+}
+
+#countryBox .placesSelectorContent
 {
 	padding: 10px 30px;
 	
@@ -74,4 +90,27 @@
 {
 	background: url('img/countrybox-pattern-top.gif') no-repeat;
 	padding-bottom: 10px;
+}
+
+
+#countrySelector
+{
+	display:block;
+	background:url('img/places-selector-arrow.gif') no-repeat right;
+	height:16px;
+	cursor:pointer;
+	
+	font-family:Georgia;
+	font-style:italic;
+	font-size:19px;
+	color:#999999;
+	/*height:22px;*/
+	/*padding-top:-5px;*/
+	background-position:right 5px;
+	padding-bottom:5px;
+}
+
+#countryBox1
+{
+	position:absolute;
 }
