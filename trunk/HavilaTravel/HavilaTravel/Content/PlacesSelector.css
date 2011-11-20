@@ -1,0 +1,98 @@
+﻿.plcesSelectorFixed
+{
+	width:645px;
+	position: absolute;
+	z-index: 100;
+	display: none;
+}
+
+.plcesSelectorFixedTop
+{
+	background:url('img/places-selector-bg-top.png') no-repeat;
+	width:645px;
+	height:13px;	
+}
+
+
+.plcesSelectorFixedBottom
+{
+	background:url('img/places-selector-bg-bottom.png') no-repeat;
+	width:645px;
+	height:20px;	
+}
+
+.plcesSelectorFixedMiddle
+{
+	background:url('img/places-selector-bg-middle.png') repeat-y;
+	width:605px;
+	padding: 0px 20px 20px 20px;
+}
+
+.plcesSelectorFixed .content
+{
+	/*padding:30px;*/
+}
+
+.plcesSelectorFixedItem
+{
+	float:left;
+	padding:15px;
+}
+
+.plcesSelectorFixedItem a
+{
+	color:#000;
+	font-family:Georgia;
+	font-size:11px;
+}
+
+.plcesSelectorFixed .closeButtonContainer
+{
+	height:26px;
+}
+
+.plcesSelectorFixed .closeButton
+{
+	width:29px;
+	height:26px;
+	background:url('img/places-selector-close-button.gif') no-repeat;
+	float:right;
+	cursor:pointer;
+}
+
+.patternsContaiter table
+{
+	margin:0 auto;
+}
+
+.patternsContaiter .leftPattern
+{
+	width:38px;
+	height:19px;
+	background:url('img/places-selector-pattern-left.gif') no-repeat;
+}
+
+.patternsContaiter .rightPattern
+{
+	width:38px;
+	height:19px;
+	background:url('img/places-selector-pattern-right.gif') no-repeat;
+}
+
+.patternsContaiter .title
+{
+	padding:0 10px;
+	font-family:Georgia;
+	font-size:15px;
+	font-weight:bold;
+	color:#000;
+}
+
+.plcesSelectorFixed .patternBottom
+{
+	width:69px;
+	height:11px;
+	background:url('img/places-selector-pattern-bottom.gif') no-repeat;
+	position:relative;
+	margin:0 auto;
+	}

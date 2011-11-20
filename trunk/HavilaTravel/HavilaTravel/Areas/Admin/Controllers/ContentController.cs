@@ -190,6 +190,22 @@ namespace HavilaTravel.Areas.Admin.Controllers
         }
 
 
+        /*
+        public ActionResult EditRegion(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var content = context.Content.Where(c => c.Id == id).First();
+                return View(content);
+            }
+        }
+
+        public ActionResult EditRegion(int id,FormCollection form)
+        {
+
+        }
+        */
+
         //public ActionResult AddSpa()
         //{
 

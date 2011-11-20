@@ -1,40 +1,40 @@
 ﻿@using HavilaTravel.Models
-<div class="placesSelector" id="citiesSelector">
-    <div class="placesSelectorTop">
+<div class="plcesSelectorFixed" id="citiesSelector">
+    <div class="plcesSelectorFixedTop">
     </div>
-    <div class="placesSelectorCenter">
-        <div class="patternTop">
-        </div>
-        <div class="placesSelectorContent">
-            <div id="scrollbar1">
-                <div class="scrollbar">
-                    <div class="track">
-                        <div class="thumb">
-                            <div class="end">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="viewport">
-                    <div class="overview">
-                        @{
-                            var places = (List<MenuItem>)ViewBag.PlacesSelectorContent;
-
-
-                            foreach (var item in places)
-                            {
-                            <div>
-                                @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
-                            </div>
-                            }
-                        }
-                    </div>
-                </div>
+    <div class="plcesSelectorFixedMiddle">
+        <div class="closeButtonContainer">
+            <div class="closeButton">
             </div>
         </div>
-        <div class="patternBottom">
+
+        <div class="patternsContaiter">
+        <table>
+        <tr>
+        <td class="leftPattern"></td>
+        <td class="title">Выберите страну/город</td>
+        <td class="rightPattern"></td>
+        </tr>
+        </table>
         </div>
+
+        <div class="content">
+        @{
+            var places = (List<MenuItem>)ViewBag.PlacesSelectorContent;
+
+
+            foreach (var item in places)
+            {
+            <div class="plcesSelectorFixedItem">
+                @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
+            </div>
+            }
+            <div class="clear"></div>
+        }
+        </div>
+
+        <div class="patternBottom"></div>
     </div>
-    <div class="placesSelectorBottom">
+    <div class="plcesSelectorFixedBottom">
     </div>
 </div>
