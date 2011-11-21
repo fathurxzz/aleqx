@@ -545,3 +545,17 @@ body
 }
 
 
+#placesMap
+{
+    font-family: Georgia;
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+}
+
+#placesMap a
+{
+    font-size: 20px;
+    font-style: italic;
+    color: #666;
+}

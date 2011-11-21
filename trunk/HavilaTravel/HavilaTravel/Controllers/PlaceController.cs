@@ -27,7 +27,7 @@ namespace HavilaTravel.Controllers
         }
 
 
-        public ActionResult Index(string id, bool? showSpa)
+        public ActionResult Index(string id, bool? showSpa, bool? showPlacesReview)
         {
             using (var context = new ContentStorage())
             {
@@ -68,6 +68,21 @@ namespace HavilaTravel.Controllers
                 }
 
 
+                var review = content.Children.Where(c => c.PlaceKind == 7).FirstOrDefault();
+                if (review != null && showPlacesReview.HasValue && showPlacesReview.Value)
+                {
+                    var reviewId = review.Id;
+                    review = context.Content
+                    .Include("Accordions")
+                    .Where(c => c.Id == reviewId)
+                    .First();
+                    ViewBag.Review = review;
+                }
+
+
+
+
+
 
                 var placesLeftSubMenu = content.Children
                     .Where(p => p.PlaceKind != 6 && (p.PlaceKind == 5 && showSpa.HasValue || (!showSpa.HasValue && p.PlaceKind == 3 || !showSpa.HasValue && p.PlaceKind == 4)))
@@ -78,8 +93,31 @@ namespace HavilaTravel.Controllers
                                                                                  SortOrder = child.SortOrder,
                                                                                  Title = child.Title
                                                                              }).ToList();
+                //if (placesLeftSubMenu.Count > 0)
+                //{
+                //    ViewBag.PlacesLeftSubMenu = placesLeftSubMenu;
+                //}
+
+                if (content.PlaceKind == 5 || content.PlaceKind == 4)
+                {
+                    var parentId = content.Parent.Id;
+                    var parent = context.Content.Include("Children").Where(c => c.Id == parentId).First();
+                    placesLeftSubMenu = parent.Children
+                        .Where(p => p.PlaceKind == 5 || p.PlaceKind == 4).Select(child => new MenuItem
+                        {
+                            Id = (int)child.Id,
+                            Name = child.Name,
+                            SortOrder = child.SortOrder,
+                            Title = child.Title,
+                            Selected = child.Id==content.Id
+                        }).ToList();
+                }
+
                 if (placesLeftSubMenu.Count > 0)
+                {
                     ViewBag.PlacesLeftSubMenu = placesLeftSubMenu;
+                }
+
 
 
                 var placesSelectorContent = content.Children

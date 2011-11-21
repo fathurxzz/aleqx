@@ -12,6 +12,7 @@ namespace HavilaTravel.Models
         City = 3,
         Hotel = 4,
         Spa = 5,
-        SpaInfo = 6
+        SpaInfo = 6,
+        PlacesReview = 7
     }
 }

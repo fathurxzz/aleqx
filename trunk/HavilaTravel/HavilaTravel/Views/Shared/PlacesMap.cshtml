@@ -1,19 +1,34 @@
 ﻿@using HavilaTravel.Models
 @{
 
+    
+    
     var map = (List<MenuItem>)ViewBag.PlacesMap;
+    var cnt = 0;
     if (map.Count > 1)
     {
-    <table>
-        <tr>
-            @foreach (var item in map.OrderBy(m => m.SortOrder))
-            {
-                <td>
-                    @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
-                    &raquo;
-                </td>
-            }
-        </tr>
-    </table>
+    <div id="placesMap">
+        <table>
+            <tr>
+                @foreach (var item in map.OrderBy(m => m.SortOrder))
+                {
+                    cnt++;
+                    <td>
+                        @if (cnt!=map.Count)
+                        {
+                            @Html.ActionLink(item.Title, "Index", "Place", new {id = item.Name}, null)
+                            @Html.Raw("&nbsp;")
+                            @Html.Raw("&raquo;")
+                        }
+                        else
+                        {
+                            @Html.Raw(item.Title)
+                        }
+                    </td>
+                }
+            </tr>
+        </table>
+    </div>
+       
     }
 }
