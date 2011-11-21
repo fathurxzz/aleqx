@@ -17,6 +17,9 @@
                     @item.Title
                     @if (Request.IsAuthenticated)
                     {
+                        @Html.Raw("&nbsp;")
+                        <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
+                        @Html.Raw("&nbsp;")
                         @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                         @Html.Raw("&nbsp;")
                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
@@ -29,6 +32,9 @@
                     @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
                     @if (Request.IsAuthenticated)
                     {
+                        @Html.Raw("&nbsp;")
+                        <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
+                        @Html.Raw("&nbsp;")
                         @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                         @Html.Raw("&nbsp;")
                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })

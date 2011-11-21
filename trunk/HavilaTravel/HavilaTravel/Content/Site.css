@@ -314,6 +314,11 @@ body
     width: 30px;
 }
 
+.sortOrder
+{
+    color: #dd00dd;
+}
+
 .photoTotleInput
 {
     width: 300px;
