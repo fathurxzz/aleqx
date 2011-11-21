@@ -96,3 +96,29 @@
 	position:relative;
 	margin:0 auto;
 	}
+	
+	
+	.placesSelectorItem
+	{
+	    padding: 3px 0;
+	}
+	
+	.placesSelectorItem a
+	{
+	    font-family: Trebuchet MS;
+	    font-size: 14px;
+	    color: #666;
+	}
+	
+	.placesSelectorSubItem
+	{
+	    
+	    padding: 3px 0 3px 30px;
+	}
+	
+	.placesSelectorSubItem a
+	{
+	    font-family: Trebuchet MS;
+	    font-size: 12px;
+	    color: #666;
+	}
