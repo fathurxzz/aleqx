@@ -1,4 +1,5 @@
-﻿@model HavilaTravel.Models.Banner
+﻿@using Dev.Mvc.Helpers
+@model HavilaTravel.Models.Banner
 
 
 
@@ -19,12 +20,10 @@
         </div>
         <div class="topTitle">@Html.ActionLink(Model.Title,"Index","Home",new{id=Model.ContentName},null)</div>
         <div class="picture">
-            
             <div class="price price@{@Model.BannerType }">
                 @Model.Price
             </div>
-
-            <img src="../Content/Banners/@Model.ImageSource" alt="" />
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", Model.ImageSource, "tourBanner", "", ""))
         </div>
         <div class="bottomTitle">@Model.Title2</div>
     </div>
