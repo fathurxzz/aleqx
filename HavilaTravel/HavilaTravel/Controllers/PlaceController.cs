@@ -48,6 +48,10 @@ namespace HavilaTravel.Controllers
                 FillPlacesMap(content, context);
                 ViewBag.PlacesMap = _placesMap;
 
+                ViewBag.PageTitle = content.PageTitle;
+                ViewBag.SeoDescription = content.SeoDescription;
+                ViewBag.SeoKeywords = content.SeoKeywords;
+
                 var banners = context.Banner.ToList();
                 ViewBag.Banners = banners;
 
@@ -78,9 +82,6 @@ namespace HavilaTravel.Controllers
                     .First();
                     ViewBag.Review = review;
                 }
-
-
-
 
 
 
