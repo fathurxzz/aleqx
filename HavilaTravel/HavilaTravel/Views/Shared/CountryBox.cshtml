@@ -27,7 +27,7 @@
                         <div class="overview">
                             @foreach (var region in menuItems.OrderBy(m => m.SortOrder))
                             {
-                                <div>
+                                <div class="placesSelectorItem">
                                     @Html.ActionLink(region.MenuTitle, "Index", "Place", new { id = region.Name }, null)
                                     @if (Request.IsAuthenticated)
                                     {
@@ -39,8 +39,8 @@
                                 </div>
                                     foreach (var country in region.Children.OrderBy(m => m.SortOrder))
                                     {
-                                <div style="padding-left: 30px;">
-                                    @Html.ActionLink(country.MenuTitle, "Index", "Place", new { id = country.Name }, null)
+                                <div class="placesSelectorSubItem">
+                                    &raquo; @Html.ActionLink(country.MenuTitle, "Index", "Place", new { id = country.Name }, null)
                                     @if (Request.IsAuthenticated)
                                     {
                                         @Html.Raw("&nbsp;&nbsp;")
