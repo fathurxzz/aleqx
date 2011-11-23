@@ -169,12 +169,20 @@ namespace Nebo.Areas.Admin.Controllers
                     {
                         IOHelper.DeleteFile("~/Content/Images", child.ImageSource);
                     }
+                    if (child.Banner != null)
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", child.Banner);
+                    }
                     context.DeleteObject(child);
                 }
 
                 if (content.ImageSource != null)
                 {
                     IOHelper.DeleteFile("~/Content/Images", content.ImageSource);
+                }
+                if (content.Banner != null)
+                {
+                    IOHelper.DeleteFile("~/Content/Images", content.Banner);
                 }
                 context.DeleteObject(content);
 
