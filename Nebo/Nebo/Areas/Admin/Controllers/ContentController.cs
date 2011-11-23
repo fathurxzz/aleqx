@@ -22,7 +22,7 @@ namespace Nebo.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Add(FormCollection form, HttpPostedFileBase fileUpload, HttpPostedFileBase fileBannerUpload)
         {
             using (var context = new ContentStorage())
             {
@@ -57,6 +57,15 @@ namespace Nebo.Areas.Admin.Controllers
                     content.ImageSource = fileName;
                 }
 
+                if (fileBannerUpload != null)
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileBannerUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    fileBannerUpload.SaveAs(filePath);
+                    content.Banner = fileName;
+                }
+
                 context.AddToContent(content);
 
                 context.SaveChanges();
@@ -79,7 +88,7 @@ namespace Nebo.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Content model, FormCollection form, HttpPostedFileBase fileUpload, bool deleteImage)
+        public ActionResult Edit(Content model, FormCollection form, HttpPostedFileBase fileUpload, HttpPostedFileBase fileBannerUpload, bool deleteImage, bool deleteBannerImage)
         {
 
             using (var context = new ContentStorage())
@@ -104,6 +113,15 @@ namespace Nebo.Areas.Admin.Controllers
                         content.ImageSource = null;
                     }
                 }
+                
+                if (deleteBannerImage)
+                {
+                    if (content.Banner != null)
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", content.Banner);
+                        content.Banner = null;
+                    }
+                }
 
                 if (fileUpload != null)
                 {
@@ -116,6 +134,19 @@ namespace Nebo.Areas.Admin.Controllers
                     filePath = Path.Combine(filePath, fileName);
                     fileUpload.SaveAs(filePath);
                     content.ImageSource = fileName;
+                }
+
+                if (fileBannerUpload != null)
+                {
+                    if (content.Banner != null)
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", content.Banner);
+                    }
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileBannerUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    fileBannerUpload.SaveAs(filePath);
+                    content.Banner = fileName;
                 }
 
                 context.SaveChanges();

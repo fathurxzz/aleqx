@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="neboModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="neboModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="neboModelStoreContainer">
           <EntitySet Name="content" EntityType="neboModel.Store.content" store:Type="Tables" Schema="nebo" />
         </EntityContainer>
@@ -22,9 +22,9 @@
           <Property Name="SeoDescription" Type="varchar" />
           <Property Name="SeoKeywords" Type="varchar" />
           <Property Name="ImageSource" Type="varchar" />
+          <Property Name="Banner" Type="varchar" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="neboModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -50,6 +50,7 @@
           <Property Name="ImageSource" Type="String" />
           <NavigationProperty Name="Children" Relationship="neboModel.ContentContent" FromRole="Content" ToRole="Content1" />
           <NavigationProperty Name="Parent" Relationship="neboModel.ContentContent" FromRole="Content1" ToRole="Content" />
+          <Property Type="String" Name="Banner" />
         </EntityType>
         <Association Name="ContentContent">
           <End Type="neboModel.Content" Role="Content" Multiplicity="0..1" />
@@ -62,7 +63,8 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="neboModelStoreContainer" CdmEntityContainer="ContentStorage">
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="neboModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Banner" ColumnName="Banner" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Title" ColumnName="Title" />

@@ -53,11 +53,27 @@
                     <input type="file" name="fileUpload" />
                 </td>
             </tr>
+            
             <tr>
                 <td>
                     Удалить изображение
                 </td>
                 <td style="text-align: left !important">@Html.CheckBox("deleteImage", false, new { style = "width:20px" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Баннер слева
+                </td>
+                <td>
+                    <input type="file" name="fileBannerUpload" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Удалить баннер слева
+                </td>
+                <td style="text-align: left !important">@Html.CheckBox("deleteBannerImage", false, new { style = "width:20px" })
                 </td>
             </tr>
             <tr>
@@ -95,4 +111,15 @@
     <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
+
+
+@section Banner
+{
+    @if(!string.IsNullOrEmpty(Model.Banner))
+    {
+        <div id="banner">
+            <img src="../../Content/Images/@Model.Banner" alt="" />
+        </div>
+    }
 }

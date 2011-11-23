@@ -57,6 +57,14 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    Баннер слева
+                </td>
+                <td>
+                    <input type="file" name="fileBannerUpload" />
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" style="text-align: center">
                     Для поисковых систем
                 </td>
@@ -98,4 +106,14 @@
     <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
+
+@section Banner
+{
+     @if(!string.IsNullOrEmpty(Model.Banner))
+    {
+        <div id="banner">
+            <img src="../../Content/Images/@Model.Banner" alt="" />
+        </div>
+    }
 }

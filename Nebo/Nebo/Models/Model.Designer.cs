@@ -353,6 +353,30 @@ namespace Nebo.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Banner
+        {
+            get
+            {
+                return _Banner;
+            }
+            set
+            {
+                OnBannerChanging(value);
+                ReportPropertyChanging("Banner");
+                _Banner = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Banner");
+                OnBannerChanged();
+            }
+        }
+        private global::System.String _Banner;
+        partial void OnBannerChanging(global::System.String value);
+        partial void OnBannerChanged();
 
         #endregion
     
