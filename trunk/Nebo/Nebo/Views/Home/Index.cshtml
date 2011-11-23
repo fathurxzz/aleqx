@@ -10,51 +10,43 @@
 @foreach (var child in Model.Children)
 {
     <div class="contentSubItem">
-
         <table>
-        <tr>
-        <td>
-        <div class="contentSubItemPicture">
-            @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Home", new { id = child.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", child.ImageSource, "thumbnail1", child.ImageSource)))
-
-        </div></td>
-        <td class="contentSubItemText">
-        @Html.ActionLink(child.Title, "Index", "Home", new { id = child.Name }, null)
-        @if (Request.IsAuthenticated)
-        {
-            <span class="sortOrder">@child.SortOrder</span>
-            <br />
-            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink" })
-            <br />
-            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
-            <br />
+            <tr>
+                <td>
+                    <div class="contentSubItemPicture">
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Home", new { id = child.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", child.ImageSource, "thumbnail1", child.ImageSource)))
+                    </div>
+                </td>
+                <td class="contentSubItemText">
+                    @Html.ActionLink(child.Title, "Index", "Home", new { id = child.Name }, null)
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="sortOrder">@child.SortOrder</span>
+                        <br />
+                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = child.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                        <br />
     
-        }
-        </td>
-        </tr>
+                    }
+                </td>
+            </tr>
         </table>
-
-        
-        
-        
-        
         <div class="clear">
         </div>
     </div>
 }
-
-
 @if (Model.ImageSource != null)
 {
     <table>
-    <tr>
-        <td class="contentDetailsImage">
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", Model.ImageSource))
-        </td>
-        <td class="contentDetailsTitle">
-        @Model.Title
-        </td>
-    </tr>
+        <tr>
+            <td class="contentDetailsImage">
+                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", Model.ImageSource))
+            </td>
+            <td class="contentDetailsTitle">
+                @Model.Title
+            </td>
+        </tr>
     </table>
 }
 @*else
@@ -63,14 +55,21 @@
     @Model.Title
     </div>
 }*@
-
 <div id="contentText">
-@Html.Raw(Model.Text)
+    @Html.Raw(Model.Text)
 </div>
-
 @section ContentTitle
 {
     <h1>@(Model.ContentLevel == 2 ? Model.Parent.Title : Model.Title)</h1>
     <div class="separator">
     </div>
+}
+@section Banner
+{
+     @if(!string.IsNullOrEmpty(Model.Banner))
+    {
+        <div id="banner">
+            <img src="../../Content/Images/@Model.Banner" alt="" />
+        </div>
+    }
 }
