@@ -35,8 +35,8 @@ body
 #leftContent
 {
 	margin-top: 50px;
-   /*position: absolute;*/
-   position: fixed;
+   position: absolute;
+   /*position: fixed;*/
 	/*float: left;*/
 	width: 492px;
 	height: 850px;
