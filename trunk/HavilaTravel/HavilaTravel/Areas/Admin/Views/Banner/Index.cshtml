@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HavilaTravel.Models.Banner>
+﻿@using Dev.Mvc.Helpers
+@model IEnumerable<HavilaTravel.Models.Banner>
 
 @{
     ViewBag.Title = "Index";
@@ -47,7 +48,7 @@
             }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageSource)
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", item.ImageSource, "bannerPreview", "", ""))
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)

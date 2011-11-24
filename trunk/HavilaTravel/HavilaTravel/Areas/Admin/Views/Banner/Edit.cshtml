@@ -1,4 +1,5 @@
-﻿@model HavilaTravel.Models.Banner
+﻿@using Dev.Mvc.Helpers
+@model HavilaTravel.Models.Banner
 
 @{
     ViewBag.Title = "Edit";
@@ -17,12 +18,15 @@
    <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
             <tr>
+                <td colspan="2">
+                @Html.Raw(Html.CachedImage("~/Content/Banners/", Model.ImageSource, "bannerPreview", "", ""))
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Тип баннера
                 </td>
                 <td>
-                
-                    *основной баннер должен быть размером 635 х 260 px<br/>
                     @Html.DropDownList("BannerType", new List<SelectListItem> { new SelectListItem { Text = "Основной", Value = "1" }, new SelectListItem { Text = "Тематический тур", Value = "2" }, new SelectListItem { Text = "Горящий тур", Value = "3" } })
                 </td>
             </tr>
@@ -69,7 +73,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Загрузить" />
-            <a href="#" onclick="javascript:history.back();">Отмена</a>
+            @Html.ActionLink("Назад", "Index", "Banner", new { Area = "Admin" }, null)
         </div>
     </div>
 }
