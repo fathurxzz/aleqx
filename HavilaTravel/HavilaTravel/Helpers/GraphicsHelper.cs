@@ -28,6 +28,9 @@ namespace Dev.Mvc.Helpers
             limitWidth.Add("tourBanner", 163);
             limitHeight.Add("tourBanner", 108);
 
+            limitWidth.Add("bannerPreview", 150);
+            limitHeight.Add("bannerPreview", 100);
+
         }
 
 

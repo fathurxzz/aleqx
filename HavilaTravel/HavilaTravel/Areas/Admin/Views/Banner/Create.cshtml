@@ -17,9 +17,6 @@
                     Тип баннера
                 </td>
                 <td>
-                
-                    *Основной баннер должен быть размером 635 х 260 px<br/>
-                    *Тематический тур и Горящий тур - 163 х 108 px<br/>
                     @Html.DropDownList("BannerType", new List<SelectListItem> { new SelectListItem { Text = "Основной", Value = "1" }, new SelectListItem { Text = "Тематический тур", Value = "2" }, new SelectListItem { Text = "Горящий тур", Value = "3" } })
                 </td>
             </tr>
@@ -66,7 +63,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Загрузить" />
-            <a href="#" onclick="javascript:history.back();">Отмена</a>
+            @Html.ActionLink("Назад", "Index", "Banner", new { Area = "Admin" }, null)
         </div>
     </div>
     
