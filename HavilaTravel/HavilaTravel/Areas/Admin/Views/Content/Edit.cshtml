@@ -103,7 +103,7 @@ Html.EnableClientValidation();
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            <a href="#" onclick="javascript:history.back();">Отмена</a>
+            @Html.ActionLink("Назад", "Index", "Place", new { Area = "", id=Model.Name }, null)
         </div>
     </div>
     
