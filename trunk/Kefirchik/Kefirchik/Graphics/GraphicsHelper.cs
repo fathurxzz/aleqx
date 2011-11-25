@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Kefirchik
+namespace Kefirchik.Graphics
 {
     public static class GraphicsHelper
     {
@@ -17,25 +17,10 @@ namespace Kefirchik
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
 
-
-
         static GraphicsHelper()
         {
-            limitWidth.Add("thumbnail1", 150);
-            limitHeight.Add("thumbnail1", 150);
-
-            limitWidth.Add("mainBanner", 635);
-            limitHeight.Add("mainBanner", 260);
-
-            //LimitWidth.Add("mainBanner", 260);
-            //LimitHeight.Add("mainBanner", 635);
-
-            limitWidth.Add("tourBanner", 163);
-            limitHeight.Add("tourBanner", 108);
-
-            limitWidth.Add("bannerPreview", 150);
-            limitHeight.Add("bannerPreview", 100);
-
+            //limitWidth.Add("thumb1", 150);
+            //limitHeight.Add("thumb1", 100);
         }
 
 
@@ -121,16 +106,11 @@ namespace Kefirchik
         private static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
             Rectangle sourceRect = CalculateSourceRect(name, image.Size);
-
             Rectangle destRect = CalculateDestRect(limWidth, limHeight, image.Size);
-
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
-            Graphics graphics = Graphics.FromImage(thumbnailImage);
+            var graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
-
-
-
             thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
             saveTo.Position = 0;
         }
@@ -146,6 +126,12 @@ namespace Kefirchik
                     return null;
                 }
             }
+
+            //if(!Directory.Exists(HttpContext.Current.Server.MapPath("~/ImageCache")))
+            //{
+
+            //}
+
             string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
 
@@ -198,6 +184,22 @@ namespace Kefirchik
             return sb.ToString();
         }
 
+        public static string CachedImage(this HtmlHelper helper, ThumbnailDimensions thumbnailDimensions, string originalPath, string fileName, string cacheFolder, string alt)
+        {
+            StringBuilder sb = new StringBuilder();
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
+            
+
+           
+
+            limitHeight.Add(cacheFolder,thumbnailDimensions.Height);
+            limitWidth.Add(cacheFolder,thumbnailDimensions.Width);
+
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt);
+
+            return sb.ToString();
+        }
+        
         #endregion
 
         /*private static void SaveCachedImage(string originalPath, string fileName, string cacheFolder)
