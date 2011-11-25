@@ -10,10 +10,7 @@ namespace Kefirchik.Graphics
     {
 
 
-        public static ThumbnailParameters GetThumnailParameters(string key)
-        {
-
-        }
+        
 
     }
 }
