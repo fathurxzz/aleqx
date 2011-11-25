@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kefirchik", "Kefirchik\Kefirchik.csproj", "{5B1EAA6F-1740-4753-94E6-4E6B82B7D74B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "TestSite\TestSite.csproj", "{788DEE1F-6D5C-49C0-96BB-3EF08CFEFEE3}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B1EAA6F-1740-4753-94E6-4E6B82B7D74B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1EAA6F-1740-4753-94E6-4E6B82B7D74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1EAA6F-1740-4753-94E6-4E6B82B7D74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1EAA6F-1740-4753-94E6-4E6B82B7D74B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{788DEE1F-6D5C-49C0-96BB-3EF08CFEFEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{788DEE1F-6D5C-49C0-96BB-3EF08CFEFEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{788DEE1F-6D5C-49C0-96BB-3EF08CFEFEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{788DEE1F-6D5C-49C0-96BB-3EF08CFEFEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
