@@ -184,16 +184,22 @@ namespace Kefirchik.Graphics
             return sb.ToString();
         }
 
-        public static string CachedImage(this HtmlHelper helper, ThumbnailDimensions thumbnailDimensions, string originalPath, string fileName, string cacheFolder, string alt)
+        public static string CachedImage(this HtmlHelper helper, ThumbnailParameters thumbnailparams, string originalPath, string fileName, string cacheFolder, string alt)
         {
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
             
+            
+
+
 
            
-
+            /*
             limitHeight.Add(cacheFolder,thumbnailDimensions.Height);
             limitWidth.Add(cacheFolder,thumbnailDimensions.Width);
+            */
+
+
 
             sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt);
 
