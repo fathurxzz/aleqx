@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraphicsHelper.cs" />
+    <Compile Include="Graphics\GraphicsHelper.cs" />
+    <Compile Include="Graphics\ThumbnailDimension.cs" />
     <Compile Include="IOHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
