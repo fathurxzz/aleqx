@@ -11,10 +11,16 @@ namespace TestSite
     {
         public static Dictionary<string, ThumbnailDimensions> Thumbnails = new Dictionary<string, ThumbnailDimensions>();
 
+        public static Dictionary<string, ThumbnailParameters> ThumbnailParams = new Dictionary<string, ThumbnailParameters>();
 
         static SiteSettings()
         {
-            Thumbnails.Add("thumb1", new ThumbnailDimensions {Height = 100, Width = 150});
+            ThumbnailParams.Add("thumb1",new ThumbnailParameters{});
+        }
+
+        public static ThumbnailParameters GetThumnailParameters(string key)
+        {
+
         }
 
 

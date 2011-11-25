@@ -7,7 +7,7 @@
 
     <div style="margin: 50px;">
         
-        <%=Html.CachedImage(SiteSettings.Thumbnails["thumb1"], "~/Content/Images", "1.jpg", "thumb", "alt")%>
+        <%=Html.CachedImage(SiteSettings.GetThumnailParameters("thumb1"), "~/Content/Images", "1.jpg", "thumb", "alt")%>
     </div>
 </asp:Content>
 
