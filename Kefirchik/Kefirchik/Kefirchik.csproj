@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Graphics\GraphicsHelper.cs" />
     <Compile Include="Graphics\ThumbnailDimension.cs" />
+    <Compile Include="Graphics\ThumbnailsParameters.cs" />
     <Compile Include="IOHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
