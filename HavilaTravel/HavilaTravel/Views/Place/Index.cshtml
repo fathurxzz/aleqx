@@ -14,9 +14,7 @@ else
     @Html.Raw(Model.Text)
 }
 @section ContentTitle{
-    <div id="contentTitle">
-        @Model.Title
-    </div>
+
 }
 @section Accordion
 {
@@ -71,12 +69,16 @@ else
 @section SubMenu
 {
     @Html.Partial("PlacesMap")
+     <div id="contentTitle">
+        @Model.Title
+    </div>
     @Html.Partial("PlacesSubMenu", Model)
 }
 @section CountryBox
 {
     @Html.Partial("CountryBox")
     @Html.Partial("PlacesSelector")
+    
 }
 @section LeftSubMenu
 {

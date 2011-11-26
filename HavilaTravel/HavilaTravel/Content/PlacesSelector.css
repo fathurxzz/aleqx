@@ -30,6 +30,7 @@
 
 .plcesSelectorFixed .content
 {
+	padding:20px;
 	/*padding:30px;*/
 }
 
@@ -63,6 +64,7 @@
 .patternsContaiter table
 {
 	margin:0 auto;
+	
 }
 
 .patternsContaiter .leftPattern
