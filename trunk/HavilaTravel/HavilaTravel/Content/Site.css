@@ -158,9 +158,11 @@ body
 {
     color: #000;
     font-weight: bold;
-    font-style: italic;
-    font-size: 20px;
+    /*font-style: italic;*/
+    font-size: 25px;
     text-align: center; /*padding-top: 35px;*/
+    font-family:Georgia;
+    margin-bottom:30px;
 }
 
 #contentContainer
@@ -555,12 +557,29 @@ body
     font-family: Georgia;
     font-size: 16px;
     color: #000;
-    font-weight: bold;
+    letter-spacing:1px;
+    /*margin:20px 0;*/
+    margin-top:30px;
+    margin-bottom:5px;
+}
+
+#placesMap table
+{
+	position:relative;
+	margin:0 auto;
 }
 
 #placesMap a
 {
-    font-size: 20px;
+    font-size: 12px;
     font-style: italic;
     color: #666;
+    font-weight: bold;
+}
+
+.reviewLink
+{
+	text-decoration:none;
+	border-bottom-width:1px;
+	border-bottom-style:dashed;
 }
