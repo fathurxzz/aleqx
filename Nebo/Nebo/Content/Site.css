@@ -115,10 +115,9 @@ body
 
 #sign a
 {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     color: inherit;
-    letter-spacing: 1px;
 }
 
 .separator
