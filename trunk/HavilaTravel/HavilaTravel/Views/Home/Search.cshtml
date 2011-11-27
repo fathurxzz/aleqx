@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HavilaTravel.Models.Content>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ContentTitle{
+    <div id="contentTitle" class="search">
+        Результат поиска
+    </div>
+}
+@section Submenu
+{
+    <div class="subMenu">
+        <table>
+            <tr>
+                <td class="leftSide">
+                </td>
+                <td class="separator">
+                </td>
+                <td class="searchQuery">
+                    Ваш запрос: <span>@ViewBag.SearchQuery</span>
+                </td>
+                <td class="separator">
+                </td>
+                <td class="rightSide">
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<div class="searchResults">
+    @foreach (var item in Model)
+    {
+        <div class="item">
+            <div class="picture">
+            </div>
+            <div class="title">@item.Title</div>
+            @Html.Raw(item.Text)
+        </div>
+    
+    }
+</div>

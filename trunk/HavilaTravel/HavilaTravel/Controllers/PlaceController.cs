@@ -27,6 +27,9 @@ namespace HavilaTravel.Controllers
         }
 
 
+        
+
+
         public ActionResult Index(string id, bool? showSpa, bool? showPlacesReview)
         {
             using (var context = new ContentStorage())
@@ -45,12 +48,18 @@ namespace HavilaTravel.Controllers
                     .Where(c => c.Name == id)
                     .First();
 
+                foreach (var accordion in content.Accordions)
+                {
+                    accordion.AccordionImages.Load();
+                }
+
                 FillPlacesMap(content, context);
                 ViewBag.PlacesMap = _placesMap;
 
                 ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
+                ViewBag.CurrentContentId = content.Id;
 
                 var banners = context.Banner.ToList();
                 ViewBag.Banners = banners;

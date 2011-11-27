@@ -39,6 +39,8 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 context.AddToAccordion(accordion);
                 context.SaveChanges();
 
+                if(content.PlaceKind>0)
+                    return RedirectToAction("Index", "Place", new { id = content.Name, area = "" });
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }
         }
@@ -64,7 +66,8 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 accordion.Text = HttpUtility.HtmlDecode(form["Text"]);
 
                 context.SaveChanges();
-
+                if (content.PlaceKind > 0)
+                    return RedirectToAction("Index", "Place", new { id = content.Name, area = "" });
                 return RedirectToAction("Index", "Home", new {id = content.Name, area = ""});
             }
         }
@@ -86,7 +89,8 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 context.DeleteObject(accordion);
                 
                 context.SaveChanges();
-
+                if (content.PlaceKind > 0)
+                    return RedirectToAction("Index", "Place", new { id = content.Name, area = "" });
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }
 
@@ -126,9 +130,10 @@ namespace HavilaTravel.Areas.Admin.Controllers
                     context.SaveChanges();
                     titleIndex++;
                 }
-                
 
 
+                if (accordion.Content.PlaceKind > 0)
+                    return RedirectToAction("Index", "Place", new { id = accordion.Content.Name, area = "" });
                 return RedirectToAction("Index", "Home", new {id = accordion.Content.Name, area = ""});
             }
         }
@@ -143,7 +148,8 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 IOHelper.DeleteFile("~/Content/Photos", image.ImageSource);
                 context.DeleteObject(image);
                 context.SaveChanges();
-
+                if (accordion.Content.PlaceKind > 0)
+                    return RedirectToAction("Index", "Place", new { id = accordion.Content.Name, area = "" });
                 return RedirectToAction("Index", "Home", new { id = accordion.Content.Name, area = "" });
             }
         }
