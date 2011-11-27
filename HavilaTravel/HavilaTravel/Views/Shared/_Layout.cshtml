@@ -37,9 +37,9 @@
 
                 $("#countryBox").css("display", "block");
                 $("#countryBox").css("position", "absolute");
-                
+
                 /*$("#countryBox1").css("display", "none");*/
-                
+
                 /*$("#countryBox").css("margin-top", "-87px");*/
             });
 
@@ -95,6 +95,12 @@
                 //alert();
             };
 
+            $('#bellboy').animate({
+                left:0
+                
+            }, 5000, function () {
+                // Animation complete.
+            })
 
 
 
@@ -152,14 +158,11 @@
                             @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink" })
                          
                         }
-                        <div style="height:80px;">
+                        <div style="height: 80px;">
                             @RenderSection("CountrySelector", false)
                             @RenderSection("CountryBox", false)
                         </div>
-
-
                         @RenderSection("ContentTitle", false)
-                        
                         @RenderSection("SubMenu", false)
                         <div id="pattern">
                         </div>
@@ -182,6 +185,18 @@
         </table>
     </div>
     <div id="footer">
+        <div id="bellboyContainer">
+            <div id="bellboy">
+                <div class="text">
+                    &mdash;Изволите<br />
+                    <a href="#" class="firstSign">Талассотерапию</a>,<br />
+                    <div style="margin-top: 10px;">
+                        или<br />
+                        <a href="#" class="secondSign">что-то другое</a>?
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="innerFooter">
             <div id="sign">
                 &copy; @DateTime.Now.Year Хавила Тревел<br />

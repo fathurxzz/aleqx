@@ -135,6 +135,7 @@
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\articles-details-link-bg.gif" />
     <Content Include="Content\img\banner_small_bg.gif" />
+    <Content Include="Content\img\bellboy.png" />
     <Content Include="Content\img\booking-icon.png" />
     <Content Include="Content\img\chat-icon.png" />
     <Content Include="Content\img\countrybox-bg-bottom.png" />

@@ -583,3 +583,51 @@ body
 	border-bottom-width:1px;
 	border-bottom-style:dashed;
 }
+
+
+#bellboyContainer
+{
+	width:275px;
+	height:375px;
+	position:relative;
+	float:right;
+	margin-top:-95px;
+	z-index:1101;
+}
+
+
+#bellboy
+{
+	width:275px;
+	height:375px;
+	background-image: url('img/bellboy.png');
+	/*top:-375px;*/
+	left:200px;
+}
+
+
+#bellboyContainer .text
+{
+	padding-left:110px;
+	font-family:Georgia;
+	font-style:italic;
+	font-size:12px;
+	line-height:15px;
+}
+
+#bellboyContainer .text a
+{
+	color:#0078fe;
+}
+
+#bellboyContainer .text a.firstSign
+{
+	color:#0078fe;
+	font-weight:bold;
+}
+
+#bellboyContainer .text a.secondSign
+{
+	color:#0078fe;
+	font-size:11px;
+}
