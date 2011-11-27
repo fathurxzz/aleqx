@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HavilaTravel.Models.Content>
+﻿@using Dev.Mvc.Helpers
+@model IEnumerable<HavilaTravel.Models.Content>
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,13 +30,26 @@
     </div>
 }
 <div class="searchResults">
-    @foreach (var item in Model)
+    @foreach (var content in Model)
     {
         <div class="item">
-            <div class="picture">
+        @{
+        var accordion = content.Accordions.FirstOrDefault();
+        if (accordion != null)
+        {
+            var image = accordion.AccordionImages.FirstOrDefault();
+            if (image != null)
+            {
+                 <div class="picture">
+                    @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
+            </div> 
+            }
+        }
+            }
+            <div class="title">
+            @Html.ActionLink(content.Title, "Index", "Place", new { id=content.Name},null)
             </div>
-            <div class="title">@item.Title</div>
-            @Html.Raw(item.Text)
+            @Html.Raw(content.Text)
         </div>
     
     }
