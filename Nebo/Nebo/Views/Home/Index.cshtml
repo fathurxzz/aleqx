@@ -1,12 +1,5 @@
 ﻿@using Nebo.Helpers
 @model Nebo.Models.Content
-@if (Request.IsAuthenticated)
-{
-    <br />
-    @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = 11 }, new { @class = "adminLink" })
-    <br />
-    <br />
-}
 @foreach (var child in Model.Children)
 {
     <div class="contentSubItem">
