@@ -672,9 +672,19 @@ body
 	
 }
 
+
+
 .searchResults .item .picture
 {
+	padding:0 20px 10px 0px;
 	float:left;
 	width:150px;
 	height:150px;
+}
+
+.searchResults .item .title a
+{
+	font-family:Trebuchet MS;
+	font-size:17px;
+	color:#666666;
 }

@@ -66,8 +66,15 @@ namespace HavilaTravel.Controllers
 
             using (var context = new ContentStorage())
             {
-                var content = context.Content.Where(c => c.PlaceKind>1&& c.Title == mSearch).ToList();
-                return View(content);
+                var contentItems = context.Content.Include("Accordions").Where(c => c.PlaceKind > 1 && c.Title.Contains(mSearch)).ToList();
+                foreach (var content in contentItems)
+                {
+                    foreach (var accordion in content.Accordions)
+                    {
+                        accordion.AccordionImages.Load();
+                    }
+                }
+                return View(contentItems);
             }
         }
     }
