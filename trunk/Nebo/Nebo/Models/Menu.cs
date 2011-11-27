@@ -47,10 +47,10 @@ namespace Nebo.Models
                 {
                     Id = (int)c.Id,
                     Name = c.Name,
-                    Selected = selectedItemName == c.Name,
+                    Selected = selectedItemName == c.Name || _contentName == null && c.ContentLevel == 0,
                     Title = c.Title,
                     SortOrder = c.SortOrder,
-                    Current = c.Name == _contentName
+                    Current = c.Name == _contentName||_contentName==null&& c.ContentLevel==0
                 }));
             menu.MenuLevel = (int)contents.First().ContentLevel;
             return menu;
@@ -58,7 +58,7 @@ namespace Nebo.Models
 
         public static Menu GetTopLevelMenu(ContentStorage context, string selectedItemName)
         {
-            var contents = context.Content.Where(m => m.ContentLevel == 1).Select(m => m).ToList();
+            var contents = context.Content.Where(m => m.ContentLevel == 1 || m.ContentLevel == 0).Select(m => m).ToList();
             var menu = GetMenuFromContext(contents, selectedItemName);
             return menu;
         }

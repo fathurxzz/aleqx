@@ -3,7 +3,7 @@
     <table id="menu">
         @if (ViewBag.MenuList != null)
         {
-            var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+            var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1 || m.MenuLevel == 0).Select(m => m).FirstOrDefault();
             if (menuItems != null)
             {
                 foreach (var item in menuItems.OrderBy(m => m.SortOrder))
