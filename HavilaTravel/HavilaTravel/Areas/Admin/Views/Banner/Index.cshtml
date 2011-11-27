@@ -23,7 +23,10 @@
             Цена
         </th>
         <th>
-            Заголовок
+            Текст (Верхний текст для маленьких баннеров)
+        </th>
+        <th>
+            Нижний текст для маленьких баннеров
         </th>
         <th></th>
     </tr>
@@ -55,6 +58,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title2)
         </td>
         <td>
             @Html.ActionLink("редактировать", "Edit", new { id = item.Id },new{@class="adminLink"}) |

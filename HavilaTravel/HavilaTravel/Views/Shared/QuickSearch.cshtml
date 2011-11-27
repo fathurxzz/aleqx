@@ -7,7 +7,10 @@
                 &nbsp;&nbsp;
             </td>
             <td class="center">
-                <input type="text" id="qsearch" />
+                @using (Html.BeginForm("Search", "Home"))
+                {
+                    @Html.TextBox("mSearch", "", new { @class = "qsearch" })
+                }
             </td>
             <td class="right">&nbsp;&nbsp;
             </td>

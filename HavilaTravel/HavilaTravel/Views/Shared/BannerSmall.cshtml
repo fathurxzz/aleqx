@@ -23,7 +23,10 @@
             <div class="price price@{@Model.BannerType }">
                 @Model.Price
             </div>
-            @Html.Raw(Html.CachedImage("~/Content/Banners/", Model.ImageSource, "tourBanner", "", ""))
+
+            @Html.Raw( Html.ActionLink("[Image]", "Index", "Home", new { id = Model.ContentName }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Banners/", Model.ImageSource, "tourBanner", "", "")))
+
+            
         </div>
         <div class="bottomTitle">@Model.Title2</div>
     </div>
