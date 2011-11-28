@@ -2,7 +2,7 @@
 @model HavilaTravel.Models.Bellboy
 <div id="bellboyContainer">
     <div id="bellboy">
-    @Html.Raw(Html.CachedImage("~/Content/Bellboy/", Model.ImageSource, "bellboy", "", "bellboy1"))
+    <img src="/Content/Bellboy/@Model.ImageSource" alt="" id="bellboy1" />
     @if (Request.IsAuthenticated)
     {
         @Html.ActionLink("Администрирование фуцыка","Index","Bellboy",new{Area="Admin"},new{@class="adminLink"})
