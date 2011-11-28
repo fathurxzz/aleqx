@@ -21,8 +21,15 @@ namespace HavilaTravel.Controllers
                 var menuList = Menu.GetMenuList(id, context);
                 ViewBag.MenuList = menuList;
 
-                var bellboy = context.Bellboy.FirstOrDefault();
-                ViewBag.Bellboy = bellboy;
+
+
+                var bellboyCnt = context.Bellboy.Count();
+                var r = new Random();
+                var value = r.Next(0, bellboyCnt);
+                var bellboy = context.Bellboy.ToArray();
+                ViewBag.Bellboy = bellboy[value];
+
+
 
                 var headerLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
                 ViewBag.HeaderLeftMenuItems = headerLeftMenuItems;
