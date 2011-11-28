@@ -75,14 +75,22 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CaptchaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Captcha\CaptchaAttribute.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaAttributeAdapter.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaExtensions.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaImage.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaImageHandler.cs" />
+    <Compile Include="Helpers\Captcha\CaptchaValidationAttribute.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\FeedbackFormModel.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -134,6 +142,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\MvcCaptchaValidation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -192,6 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\FeedbackForm.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
