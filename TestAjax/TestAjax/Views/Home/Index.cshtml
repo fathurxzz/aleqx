@@ -1,0 +1,14 @@
+﻿
+
+@{
+    ViewBag.Title = "MyForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register Online - @DateTime.Now.ToString()</h2>
+
+<div id="formContent">
+    @{Html.RenderPartial("FormContent");}
+</div>
+
+
