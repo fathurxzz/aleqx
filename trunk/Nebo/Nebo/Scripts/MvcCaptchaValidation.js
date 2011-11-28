@@ -15,7 +15,7 @@
         //        var newUrl = ((url.indexOf('?') < 0) ? (url + '?') : (url + '&'))
         //                     + encodeURIComponent(parameterName) + '=' + encodeURIComponent(value);
 
-        var captchaGuid = document.getElementById("captcha-guid").value;
+        var captchaGuid = document.getElementById("captcha_guid").value;
 
         var body = encodeURIComponent(parameterName) + '=' + encodeURIComponent(value);
         body += "&captcha-guid=" + captchaGuid;
