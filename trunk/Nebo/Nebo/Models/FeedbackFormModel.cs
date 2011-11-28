@@ -21,7 +21,7 @@ namespace Nebo.Models
         public string Text { get; set; }
         [Captcha("ValidateCaptcha", "Captcha", "value", ErrorMessage = "Неправильные символы!")]
         [Required(ErrorMessage = "Введите символы с картинки")]
-        [DisplayName("")]
+        [DisplayName("Введите символы с картинки")]
         public string Captcha { get; set; }
     }
 }
