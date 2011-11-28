@@ -34,5 +34,17 @@ namespace Nebo.Controllers
                 return View(content);
             }
         }
+
+
+        public ActionResult FeedbackForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FeedbackForm(FeedbackFormModel feedbackFormModel)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

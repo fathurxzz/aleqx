@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Shop.Helpers.Validation;
 
 namespace Nebo
 {
@@ -20,7 +21,9 @@ namespace Nebo
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+            routes.IgnoreRoute("captcha.ashx");
+
+
             routes.MapRoute(
                             "Default1", // Route name
                             "{id}", // URL with parameters
@@ -41,6 +44,8 @@ namespace Nebo
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            //DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(CaptchaAttribute), typeof(CaptchaAttributeAdapter));
         }
     }
 }
