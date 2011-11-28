@@ -1,0 +1,57 @@
+﻿@using Dev.Mvc.Helpers
+@model IEnumerable<HavilaTravel.Models.Bellboy>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Администрирование фуцыка</h2>
+<p>
+    @Html.ActionLink("Добавить запись", "Create",new{area="Admin"},new{@class="adminLink"})
+</p>
+<table class="adminContentPreview">
+    <tr>
+        <th>
+            Текст верхней ссылки
+        </th>
+        <th>
+            Адрес верхней ссылки
+        </th>
+        <th>
+            Текст нижней ссылки
+        </th>
+        <th>
+            Адрес нижней ссылки
+        </th>
+        <th>
+            Изображение
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BottomText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BottomLink)
+            </td>
+            <td>
+                @Html.Raw(Html.CachedImage("~/Content/Bellboy/", item.ImageSource, "bellboyPreview", "", ""))
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @class = "adminLink" })
+                |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+    }
+</table>

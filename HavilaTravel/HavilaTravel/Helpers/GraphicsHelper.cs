@@ -31,6 +31,15 @@ namespace Dev.Mvc.Helpers
             limitWidth.Add("bannerPreview", 150);
             limitHeight.Add("bannerPreview", 100);
 
+            limitWidth.Add("bellboyPreview", 100);
+            limitHeight.Add("bellboyPreview", 150);
+
+            limitWidth.Add("bellboy", 275);
+            limitHeight.Add("bellboy", 375);
+
+
+            
+
         }
 
 

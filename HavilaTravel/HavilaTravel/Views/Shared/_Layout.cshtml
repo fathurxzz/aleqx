@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using HavilaTravel.Models
+<!DOCTYPE html>
 <html>
 <head>
     <title>HAVILA TRAVEL - @ViewBag.PageTitle</title>
@@ -187,7 +188,10 @@
         </table>
     </div>
     <div id="footer">
-        @Html.Partial("Bellboy")
+        @if (ViewBag.Bellboy != null)
+        {
+            @Html.Partial("Bellboy", (Bellboy) ViewBag.Bellboy)
+        }
         <div id="innerFooter">
             <div id="sign">
                 &copy; @DateTime.Now.Year Хавила Тревел<br />
