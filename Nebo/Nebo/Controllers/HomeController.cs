@@ -42,9 +42,10 @@ namespace Nebo.Controllers
         }
 
         [HttpPost]
-        public ActionResult FeedbackForm(FeedbackFormModel feedbackFormModel)
+        public string FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            return RedirectToAction("Index");
+            return feedbackFormModel.Name;
+            //return PartialView("FeedbackForm", feedbackFormModel);
         }
     }
 }

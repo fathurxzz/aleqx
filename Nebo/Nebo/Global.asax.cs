@@ -45,7 +45,7 @@ namespace Nebo
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            //DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(CaptchaAttribute), typeof(CaptchaAttributeAdapter));
+            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(CaptchaAttribute), typeof(CaptchaAttributeAdapter));
         }
     }
 }

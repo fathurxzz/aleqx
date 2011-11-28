@@ -1,6 +1,7 @@
 ﻿@using Nebo.Helpers
 @using Nebo.Models
 @model Nebo.Models.Content
+           
 @foreach (var child in Model.Children)
 {
     <div class="contentSubItem">
@@ -53,7 +54,11 @@
     @Html.Raw(Model.Text)
 </div>
 
-@Html.Partial("FeedbackForm",new FeedbackFormModel())
+@if (Model.Name.ToLower() == "contacts")
+{
+
+@Html.Partial("FeedbackForm", new FeedbackFormModel())
+}
 
 @section ContentTitle
 {
@@ -76,4 +81,5 @@
 {
     <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <script type="text/javascript" src="/Scripts/MvcCaptchaValidation.js"></script>
 }
