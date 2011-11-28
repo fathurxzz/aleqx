@@ -10,6 +10,7 @@
           <EntitySet Name="accordionimage" EntityType="havilaModel.Store.accordionimage" store:Type="Tables" Schema="havila" />
           <EntitySet Name="article" EntityType="havilaModel.Store.article" store:Type="Tables" Schema="havila" />
           <EntitySet Name="banner" EntityType="havilaModel.Store.banner" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="bellboy" EntityType="havilaModel.Store.bellboy" store:Type="Tables" Schema="havila" />
           <EntitySet Name="content" EntityType="havilaModel.Store.content" store:Type="Tables" Schema="havila" />
         </EntityContainer>
         <EntityType Name="accordion">
@@ -53,6 +54,17 @@
           <Property Name="ContentName" Type="varchar" />
           <Property Name="Title2" Type="varchar" />
         </EntityType>
+        <EntityType Name="bellboy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TopText" Type="varchar" />
+          <Property Name="TopLink" Type="varchar" />
+          <Property Name="BottomText" Type="varchar" />
+          <Property Name="BottomLink" Type="varchar" />
+          <Property Name="ImageSource" Type="varchar" />
+        </EntityType>
         <EntityType Name="content">
           <Key>
             <PropertyRef Name="Id" />
@@ -94,6 +106,7 @@
           </AssociationSet>
           <EntitySet Name="Banner" EntityType="havilaModel.Banner" />
           <EntitySet Name="Article" EntityType="havilaModel.Article" />
+          <EntitySet Name="Bellboy" EntityType="havilaModel.Bellboy" />
         </EntityContainer>
         <EntityType Name="Accordion">
           <Key>
@@ -169,6 +182,17 @@
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Title" />
           <Property Type="String" Name="Text" />
+        </EntityType>
+        <EntityType Name="Bellboy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TopText" />
+          <Property Type="String" Name="TopLink" />
+          <Property Type="String" Name="BottomText" />
+          <Property Type="String" Name="BottomLink" />
+          <Property Type="String" Name="ImageSource" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -251,6 +275,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Bellboy">
+            <EntityTypeMapping TypeName="havilaModel.Bellboy">
+              <MappingFragment StoreEntitySet="bellboy">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="BottomLink" ColumnName="BottomLink" />
+                <ScalarProperty Name="BottomText" ColumnName="BottomText" />
+                <ScalarProperty Name="TopLink" ColumnName="TopLink" />
+                <ScalarProperty Name="TopText" ColumnName="TopText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -291,6 +327,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="havilaModel.Banner" Width="1.5" PointX="3.375" PointY="3.75" Height="1.7566536458333335" />
         <EntityTypeShape EntityType="havilaModel.Article" Width="1.5" PointX="5.375" PointY="0.75" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="havilaModel.Bellboy" Width="1.5" PointX="5.375" PointY="3.75" Height="1.9210009765624996" />
       </Diagram>
     </Diagrams>
   </Designer>

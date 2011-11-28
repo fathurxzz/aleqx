@@ -298,6 +298,25 @@ body
     font-weight: normal;
 }
 
+table.adminContentPreview
+{
+    border-collapse: collapse;
+}
+
+
+
+table.adminContentPreview td, table.adminContentPreview th
+{
+    padding: 3px;
+    text-align: center;
+    border: 1px solid #666;
+}
+
+table.adminContentPreview th
+{
+    background-color: #ccc;
+}
+
 .buttonsContainer
 {
     text-align: center;
@@ -312,6 +331,8 @@ body
     font-style: normal !important;
     font-weight: normal !important;
 }
+
+
 
 .adminLink:hover
 {
@@ -610,9 +631,17 @@ body
 {
 	width:275px;
 	height:375px;
-	background-image: url('img/bellboy.png');
+	/*background-image: url('img/bellboy.png');*/
 	position:relative;
 	left:275px;
+}
+
+#bellboy1
+{
+    width:275px;
+	height:375px;
+    position: absolute;
+    z-index: -1;
 }
 
 

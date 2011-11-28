@@ -151,6 +151,22 @@ namespace HavilaTravel.Models
             }
         }
         private ObjectSet<Article> _Article;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Bellboy> Bellboy
+        {
+            get
+            {
+                if ((_Bellboy == null))
+                {
+                    _Bellboy = base.CreateObjectSet<Bellboy>("Bellboy");
+                }
+                return _Bellboy;
+            }
+        }
+        private ObjectSet<Bellboy> _Bellboy;
 
         #endregion
         #region AddTo Methods
@@ -193,6 +209,14 @@ namespace HavilaTravel.Models
         public void AddToArticle(Article article)
         {
             base.AddObject("Article", article);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Bellboy EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBellboy(Bellboy bellboy)
+        {
+            base.AddObject("Bellboy", bellboy);
         }
 
         #endregion
@@ -890,6 +914,181 @@ namespace HavilaTravel.Models
         private global::System.String _Title2;
         partial void OnTitle2Changing(global::System.String value);
         partial void OnTitle2Changed();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="havilaModel", Name="Bellboy")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Bellboy : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Bellboy object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static Bellboy CreateBellboy(global::System.Int64 id)
+        {
+            Bellboy bellboy = new Bellboy();
+            bellboy.Id = id;
+            return bellboy;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TopText
+        {
+            get
+            {
+                return _TopText;
+            }
+            set
+            {
+                OnTopTextChanging(value);
+                ReportPropertyChanging("TopText");
+                _TopText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TopText");
+                OnTopTextChanged();
+            }
+        }
+        private global::System.String _TopText;
+        partial void OnTopTextChanging(global::System.String value);
+        partial void OnTopTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TopLink
+        {
+            get
+            {
+                return _TopLink;
+            }
+            set
+            {
+                OnTopLinkChanging(value);
+                ReportPropertyChanging("TopLink");
+                _TopLink = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TopLink");
+                OnTopLinkChanged();
+            }
+        }
+        private global::System.String _TopLink;
+        partial void OnTopLinkChanging(global::System.String value);
+        partial void OnTopLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BottomText
+        {
+            get
+            {
+                return _BottomText;
+            }
+            set
+            {
+                OnBottomTextChanging(value);
+                ReportPropertyChanging("BottomText");
+                _BottomText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BottomText");
+                OnBottomTextChanged();
+            }
+        }
+        private global::System.String _BottomText;
+        partial void OnBottomTextChanging(global::System.String value);
+        partial void OnBottomTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BottomLink
+        {
+            get
+            {
+                return _BottomLink;
+            }
+            set
+            {
+                OnBottomLinkChanging(value);
+                ReportPropertyChanging("BottomLink");
+                _BottomLink = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BottomLink");
+                OnBottomLinkChanged();
+            }
+        }
+        private global::System.String _BottomLink;
+        partial void OnBottomLinkChanging(global::System.String value);
+        partial void OnBottomLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     

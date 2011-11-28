@@ -1,12 +1,20 @@
-﻿<div id="bellboyContainer">
+﻿@using Dev.Mvc.Helpers
+@model HavilaTravel.Models.Bellboy
+<div id="bellboyContainer">
     <div id="bellboy">
+    @Html.Raw(Html.CachedImage("~/Content/Bellboy/", Model.ImageSource, "bellboy", "", "bellboy1"))
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Администрирование фуцыка","Index","Bellboy",new{Area="Admin"},new{@class="adminLink"})
+    }
         <div class="text">
             &mdash;Изволите<br />
-            <a href="#" class="firstSign">Талассотерапию</a>,<br />
+            <a href="@Model.TopLink" class="firstSign">@Model.TopText</a>,<br />
             <div style="margin-top: 10px;">
                 или<br />
-                <a href="#" class="secondSign">что-то другое</a>?
+                <a href="@Model.BottomLink" class="secondSign">@Model.BottomText</a>?
             </div>
         </div>
+        
     </div>
 </div>
