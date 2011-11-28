@@ -146,6 +146,8 @@ body
 {
     text-align: center;
     margin-top: 221px;
+    width: 1200px;
+    position: absolute;
 }
 
 #footer #innerFooter #sign, #footer #innerFooter #sign a
@@ -659,6 +661,7 @@ body
 	font-style:italic;
 	color:#cccccc;
 	border:none;
+    background: none;
 }
 
 
