@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Nebo.Models;
+using Nebo.Helpers;
+using System.Net.Mail;
 
 namespace Nebo.Controllers
 {
@@ -36,16 +38,20 @@ namespace Nebo.Controllers
         }
 
 
-        public ActionResult FeedbackForm()
-        {
-            return View();
-        }
 
         [HttpPost]
-        public string FeedbackForm(FeedbackFormModel feedbackFormModel)
+        public PartialViewResult FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            return feedbackFormModel.Name;
-            //return PartialView("FeedbackForm", feedbackFormModel);
+            if (ModelState.IsValid)
+            {
+                MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+
+                return PartialView("Success");
+            }
+            else
+            {
+                return PartialView("FeedbackForm", feedbackFormModel);
+            }
         }
     }
 }
