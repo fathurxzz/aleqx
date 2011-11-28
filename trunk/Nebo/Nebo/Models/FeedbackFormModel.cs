@@ -19,7 +19,7 @@ namespace Nebo.Models
         [DisplayName("Текст")]
         public string Text { get; set; }
 
-        [DisplayName("Антиспам-тест: сколько будет два плюс два (вводите цифрой)")]
+        [DisplayName("Антиспам-тест: сколько будет два плюс два? (вводите цифрой)")]
         [Required(ErrorMessage = "Введите ответ!")]
         public string AntiSpamAnswer { get; set; }
 
