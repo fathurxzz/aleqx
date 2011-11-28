@@ -215,3 +215,17 @@ div.contentDetailsTitle
 	font-family: Times New Roman;
 	font-size: 15px;
 }
+
+
+.feedBackForm
+{
+	border:1px solid #5194c8;
+	padding:20px;
+	margin-top:20px;
+	font-size:13px;
+}
+
+.feedBackForm table td
+{
+	padding:5px;
+}
