@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using HavilaTravel.Helpers;
 using HavilaTravel.Models;
@@ -47,8 +43,8 @@ namespace HavilaTravel.Controllers
 
                 var banners = context.Banner.ToList();
                 ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
-                ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).ToList().GetRandomItem();
-                ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).ToList().GetRandomItem();
+                ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
+                ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
 
 
 
