@@ -64,7 +64,7 @@ namespace HavilaTravel.Helpers
             if (count == 0)
                 return source.FirstOrDefault();
             var index = new Random().Next(0, count);
-            return source.ToArray()[index];
+            return source.ToList().ElementAt(index);
         }
 
         public static T GetRandomItem<T>(this IEnumerable<T> source)
@@ -74,7 +74,7 @@ namespace HavilaTravel.Helpers
             if (count == 0)
                 return source.FirstOrDefault();
             var index = new Random().Next(0, count);
-            return source.ToArray()[index];
+            return source.ElementAt(index);
         }
 
 
