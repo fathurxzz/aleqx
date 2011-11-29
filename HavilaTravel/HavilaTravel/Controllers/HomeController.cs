@@ -4,6 +4,7 @@ using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HavilaTravel.Helpers;
 using HavilaTravel.Models;
 
 namespace HavilaTravel.Controllers
@@ -21,15 +22,7 @@ namespace HavilaTravel.Controllers
                 var menuList = Menu.GetMenuList(id, context);
                 ViewBag.MenuList = menuList;
 
-
-
-                var bellboyCnt = context.Bellboy.Count();
-                var r = new Random();
-                var value = r.Next(0, bellboyCnt);
-                var bellboy = context.Bellboy.ToArray();
-                ViewBag.Bellboy = bellboy[value];
-
-
+                ViewBag.Bellboy = context.Bellboy.GetRandomItem();
 
                 var headerLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
                 ViewBag.HeaderLeftMenuItems = headerLeftMenuItems;
@@ -53,7 +46,11 @@ namespace HavilaTravel.Controllers
                 ViewBag.IsRoot = content.Id == 8;
 
                 var banners = context.Banner.ToList();
-                ViewBag.Banners = banners;
+                ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
+                ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).ToList().GetRandomItem();
+                ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).ToList().GetRandomItem();
+
+
 
                 ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
