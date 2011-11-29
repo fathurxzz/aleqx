@@ -13,70 +13,52 @@
         @Html.Partial("Accordion", Model.Accordions)
     </div>
 }
-
 @section MainBanner
 {
-    
     @{
-        var banners = ((List<Banner>) ViewBag.Banners).Where(b=>b.BannerType==1);
+        var banners = ((List<Banner>)ViewBag.MainBanners);
     }
-
     <div id="slideshow">
-       
         @foreach (var banner in banners)
         {
                 
-                @Html.Raw(Html.CachedImage("~/Content/Banners/",banner.ImageSource,"mainBanner",banner.Title,banner.Price))
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
                 
         }
     </div>
 }
-
 @section SmallBannerLeft
 {
-    @{
-        Banner leftBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
-
-        if(leftBanner!=null)
-        {
-            @Html.Partial("BannerSmall", leftBanner)
-        }
+    @if (ViewBag.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
     }
 }
-
 @section SmallBannerRight
 {
-    @{
-        Banner rightBanner = ((List<Banner>) ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
-        if (rightBanner != null)
-        {
-            @Html.Partial("BannerSmall", rightBanner)
-        }
+    @if (ViewBag.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
     }
 }
-
-
 @section SubMenu
 {
     @Html.Partial("SubMenu")
 }
-
 @section LeftSubMenu
 {
     @Html.Partial("LeftSubmenu")
 }
-
 @section MainSearch
 {
     @if (ViewBag.IsRoot != null && ViewBag.IsRoot)
     {
-        
-        using( Html.BeginForm("Search","Home"))
-        {
-    <div id="mainSearchBox">
-        @Html.TextBox("mSearch", "Франкфурт-на-Майне", new { @class = "mainsearch" })
-    </div>
-        }
-   }
-}
 
+        using (Html.BeginForm("Search", "Home"))
+        {
+        <div id="mainSearchBox">
+            @Html.TextBox("mSearch", "Франкфурт-на-Майне", new { @class = "mainsearch" })
+        </div>
+        }
+    }
+}

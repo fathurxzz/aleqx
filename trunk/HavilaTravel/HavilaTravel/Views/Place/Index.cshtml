@@ -36,34 +36,29 @@ else
 @section MainBanner
 {
     @{
-        var banners = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 1);
+        var banners = ((List<Banner>)ViewBag.MainBanners);
     }
     <div id="slideshow">
         @foreach (var banner in banners)
         {
+                
             @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
+                
         }
     </div>
 }
 @section SmallBannerLeft
 {
-    @{
-        Banner leftBanner = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 2).Select(b => b).FirstOrDefault();
-
-        if (leftBanner != null)
-        {
-        @Html.Partial("BannerSmall", leftBanner)
-        }
+    @if (ViewBag.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
     }
 }
 @section SmallBannerRight
 {
-    @{
-        Banner rightBanner = ((List<Banner>)ViewBag.Banners).Where(b => b.BannerType == 3).FirstOrDefault();
-        if (rightBanner != null)
-        {
-        @Html.Partial("BannerSmall", rightBanner)
-        }
+    @if (ViewBag.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
     }
 }
 @section SubMenu

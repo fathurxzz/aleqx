@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HavilaTravel.Helpers;
 using HavilaTravel.Models;
 
 namespace HavilaTravel.Controllers
@@ -62,7 +63,9 @@ namespace HavilaTravel.Controllers
                 ViewBag.CurrentContentId = content.Id;
 
                 var banners = context.Banner.ToList();
-                ViewBag.Banners = banners;
+                ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
+                ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).ToList().GetRandomItem();
+                ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).ToList().GetRandomItem();
 
                 var regionsAndCountries = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
                 ViewBag.SelectCountryMenu = regionsAndCountries;
