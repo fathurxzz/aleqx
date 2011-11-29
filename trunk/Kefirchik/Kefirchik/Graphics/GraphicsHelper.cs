@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -10,12 +9,12 @@ namespace Kefirchik.Graphics
 {
     public static class GraphicsHelper
     {
-        private static Rectangle CalculateDestRect(int limWidth, int limHeight, Size imageSize)
+        private static Rectangle CalculateDestRect(int limWidth, int limHeight)
         {
             return new Rectangle(0, 0, limWidth, limHeight);
         }
 
-        private static Rectangle CalculateSourceRect(string name, Size sourceImage, int previewWidth, int previewHeight)
+        private static Rectangle CalculateSourceRect(Size sourceImage, int previewWidth, int previewHeight)
         {
             int resultWidth;
             int resultHeight;
@@ -39,10 +38,10 @@ namespace Kefirchik.Graphics
             return new Rectangle(0, 0, resultWidth, resultHeight);
         }
 
-        private static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
+        private static void ScaleImage(Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
-            Rectangle sourceRect = CalculateSourceRect(name, image.Size,limWidth,limHeight);
-            Rectangle destRect = CalculateDestRect(limWidth, limHeight, image.Size);
+            Rectangle sourceRect = CalculateSourceRect(image.Size,limWidth,limHeight);
+            Rectangle destRect = CalculateDestRect(limWidth, limHeight);
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             var graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
@@ -101,7 +100,7 @@ namespace Kefirchik.Graphics
 
             using (var stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, width, height, stream);
+                ScaleImage(image, width, height, stream);
             }
         }
 

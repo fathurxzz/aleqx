@@ -13,7 +13,7 @@ namespace TestSite
         
         static SiteSettings()
         {
-            ThumbOptions.Add("thumb", new ThumbnailOptions { OriginalPath = "~/Content/Images", Width = 250, Height = 200, CacheFolder = "thumb" });
+            ThumbOptions.Add("thumb", new ThumbnailOptions { OriginalPath = "~/Content/Images", Width = 150, Height = 250, CacheFolder = "thumb" });
         }
     }
 }
