@@ -45,9 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Graphics\GraphicsHelper.cs" />
-    <Compile Include="Graphics\ThumbnailsOptions.cs" />
-    <Compile Include="IO\IOHelper.cs" />
+    <Compile Include="GraphicsHelper.cs" />
+    <Compile Include="ThumbnailsOptions.cs" />
+    <Compile Include="IOHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
