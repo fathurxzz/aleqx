@@ -10,77 +10,13 @@ namespace Kefirchik.Graphics
 {
     public static class GraphicsHelper
     {
-
-        #region privateMethods
-
-        private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
-        private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
-
-
-        static GraphicsHelper()
-        {
-            //limitWidth.Add("thumb1", 150);
-            //limitHeight.Add("thumb1", 100);
-        }
-
-
         private static Rectangle CalculateDestRect(int limWidth, int limHeight, Size imageSize)
         {
-            /*
-            // вписывание в заданные параметры
-            int previewHeight = LimitHeight[name];
-            int previewWidth = LimitWidth[name];
-
-            int resultWidth;
-            int resultHeight;
-
-            if (sourceImage.Width > sourceImage.Height)
-            {
-                double coef = (double) sourceImage.Width/(double) previewWidth;
-
-                resultHeight = (int) Math.Truncate(sourceImage.Height/coef);
-
-                resultWidth = previewWidth;
-            }
-            else
-            {
-                double coef = (double)sourceImage.Height / (double)previewHeight;
-
-                resultWidth = (int)Math.Truncate(sourceImage.Width / coef);
-
-                resultHeight = previewHeight;
-            }
-
-            
-
-            
-            return new Rectangle(0, 0, resultWidth, resultHeight);
-              
-            */
-
-            //return new Rectangle(0, 0, LimitWidth[name], LimitHeight[name]);
-
-            return imageSize.Width < imageSize.Height ? new Rectangle(0, 0, limHeight, limWidth) : new Rectangle(0, 0, limWidth, limHeight);
-
-
+            return new Rectangle(0, 0, limWidth, limHeight);
         }
 
-        private static Rectangle CalculateSourceRect(string name, Size sourceImage)
+        private static Rectangle CalculateSourceRect(string name, Size sourceImage, int previewWidth, int previewHeight)
         {
-            int previewHeight;
-            int previewWidth;
-
-            if (sourceImage.Width > sourceImage.Height)
-            {
-                previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-                previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
-            }
-            else
-            {
-                previewWidth = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-                previewHeight = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
-            }
-
             int resultWidth;
             int resultHeight;
 
@@ -105,7 +41,7 @@ namespace Kefirchik.Graphics
 
         private static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
         {
-            Rectangle sourceRect = CalculateSourceRect(name, image.Size);
+            Rectangle sourceRect = CalculateSourceRect(name, image.Size,limWidth,limHeight);
             Rectangle destRect = CalculateDestRect(limWidth, limHeight, image.Size);
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
             var graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
@@ -115,7 +51,7 @@ namespace Kefirchik.Graphics
             saveTo.Position = 0;
         }
 
-        private static string GetCachedImage(string originalPath, string fileName, string cacheFolder)
+        private static string GetCachedImage(string originalPath, string fileName, string cacheFolder, int width,int height)
         {
             if (string.IsNullOrEmpty(fileName) ||
                 !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
@@ -126,11 +62,6 @@ namespace Kefirchik.Graphics
                     return null;
                 }
             }
-
-            //if(!Directory.Exists(HttpContext.Current.Server.MapPath("~/ImageCache")))
-            //{
-
-            //}
 
             string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
@@ -146,21 +77,21 @@ namespace Kefirchik.Graphics
             {
                 try
                 {
-                    CacheImage(originalPath, fileName, cacheFolder);
+                    CacheImage(originalPath, fileName, cacheFolder,width,height);
                 }
                 catch
                 {
-                    return GetCachedImage(originalPath, "nophoto.gif", cacheFolder);
+                    return GetCachedImage(originalPath, "nophoto.gif", cacheFolder,width,height);
                 }
                 return result;
             }
         }
 
-        private static void CacheImage(string originalPath, string fileName, string cacheFolder)
+        private static void CacheImage(string originalPath, string fileName, string cacheFolder, int width, int height)
         {
             string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName);
             Bitmap image;
-            using (FileStream stream = new FileStream(sourcePath, FileMode.Open))
+            using (var stream = new FileStream(sourcePath, FileMode.Open))
             {
                 image = new Bitmap(stream);
             }
@@ -168,49 +99,23 @@ namespace Kefirchik.Graphics
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
             string cachedImagePath = Path.Combine(cachePath, fileName);
 
-            using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
+            using (var stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream);
+                ScaleImage(cacheFolder, image, width, height, stream);
             }
         }
 
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, string alt)
+        public static string CachedImage(this HtmlHelper helper, ThumbnailOptions options, string fileName, string alt)
         {
-            StringBuilder sb = new StringBuilder();
-            string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
-
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt);
-
-            return sb.ToString();
+            return CachedImage(helper, options.OriginalPath, options.Width, options.Height, options.CacheFolder, fileName, alt);
         }
 
-        public static string CachedImage(this HtmlHelper helper, ThumbnailParameters thumbnailparams, string originalPath, string fileName, string cacheFolder, string alt)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, int width, int height,  string cacheFolder, string fileName, string alt)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
-            
-            
-
-
-
-           
-            /*
-            limitHeight.Add(cacheFolder,thumbnailDimensions.Height);
-            limitWidth.Add(cacheFolder,thumbnailDimensions.Width);
-            */
-
-
-
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt);
-
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder,width,height), alt);
             return sb.ToString();
         }
-        
-        #endregion
-
-        /*private static void SaveCachedImage(string originalPath, string fileName, string cacheFolder)
-        {
-            CacheImage(originalPath, fileName, cacheFolder);
-        }*/
     }
 }

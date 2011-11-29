@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Web;
 
-namespace Kefirchik
+namespace Kefirchik.IO
 {
     public static class IOHelper
     {

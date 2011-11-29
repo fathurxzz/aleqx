@@ -6,8 +6,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div style="margin: 50px;">
-        
-        <%=Html.CachedImage(SiteSettings.GetThumnailParameters("thumb1"), "~/Content/Images", "1.jpg", "thumb", "alt")%>
+        <%=Html.CachedImage(SiteSettings.ThumbOptions["thumb"], "1.jpg", "alt")%>
+        <%=Html.CachedImage(SiteSettings.ThumbOptions["thumb"], "2.jpg", "alt")%>
+        <%=Html.CachedImage(SiteSettings.ThumbOptions["thumb"], "blank19.gif", "alt")%>
+        <%=Html.CachedImage(SiteSettings.ThumbOptions["thumb"], "Fiberglass_Geo_Grids.jpg", "alt")%>
+        <%=Html.CachedImage(SiteSettings.ThumbOptions["thumb"], "grid.gif", "alt")%>
     </div>
 </asp:Content>
 
