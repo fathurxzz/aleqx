@@ -104,11 +104,30 @@ namespace Kefirchik
             }
         }
 
+        /// <summary>
+        /// Gets picture from the cache folder
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="options"></param>
+        /// <param name="fileName"></param>
+        /// <param name="alt"></param>
+        /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, ThumbnailOptions options, string fileName, string alt)
         {
             return CachedImage(helper, options.OriginalPath, options.Width, options.Height, options.CacheFolder, fileName, alt);
         }
 
+        /// <summary>
+        /// Gets picture from the cache folder
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="originalPath"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="cacheFolder"></param>
+        /// <param name="fileName"></param>
+        /// <param name="alt"></param>
+        /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, string originalPath, int width, int height,  string cacheFolder, string fileName, string alt)
         {
             var sb = new StringBuilder();
