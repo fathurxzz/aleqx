@@ -9,20 +9,11 @@ namespace TestSite
 {
     public static class SiteSettings
     {
-        public static Dictionary<string, ThumbnailDimensions> Thumbnails = new Dictionary<string, ThumbnailDimensions>();
-
-        public static Dictionary<string, ThumbnailParameters> ThumbnailParams = new Dictionary<string, ThumbnailParameters>();
-
+        public static Dictionary<string,ThumbnailOptions> ThumbOptions = new Dictionary<string, ThumbnailOptions>(); 
+        
         static SiteSettings()
         {
-            ThumbnailParams.Add("thumb1",new ThumbnailParameters{});
+            ThumbOptions.Add("thumb", new ThumbnailOptions { OriginalPath = "~/Content/Images", Width = 250, Height = 200, CacheFolder = "thumb" });
         }
-
-        public static ThumbnailParameters GetThumnailParameters(string key)
-        {
-
-        }
-
-
     }
 }
