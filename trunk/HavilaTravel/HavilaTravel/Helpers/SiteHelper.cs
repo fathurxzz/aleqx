@@ -67,14 +67,16 @@ namespace HavilaTravel.Helpers
             return source.ToArray()[index];
         }
 
-        public static T GetRandomItem<T>(this List<T> source)
+        public static T GetRandomItem<T>(this IEnumerable<T> source)
         {
+            source = source.ToList();
             var count = source.Count();
             if (count == 0)
                 return source.FirstOrDefault();
             var index = new Random().Next(0, count);
             return source.ToArray()[index];
         }
+
 
     }
 }
