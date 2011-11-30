@@ -6,5 +6,11 @@ using System.Text;
 
 namespace Kefirchik
 {
-   
+    public class ThumbnailOptions
+    {
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public string CacheFolder { get; set; }
+        public string OriginalPath { get; set; }
+    }
 }
