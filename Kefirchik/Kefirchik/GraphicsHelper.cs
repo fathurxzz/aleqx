@@ -9,6 +9,15 @@ namespace Kefirchik
 {
     public static class GraphicsHelper
     {
+        public class ThumbnailOptions
+        {
+            public int Width { get; set; }
+            public int Height { get; set; }
+            public string CacheFolder { get; set; }
+            public string OriginalPath { get; set; }
+        }
+
+
         private static Rectangle CalculateDestRect(int limWidth, int limHeight)
         {
             return new Rectangle(0, 0, limWidth, limHeight);
