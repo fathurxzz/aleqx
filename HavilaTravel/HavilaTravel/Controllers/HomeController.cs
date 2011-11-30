@@ -8,8 +8,17 @@ namespace HavilaTravel.Controllers
     public class HomeController : Controller
     {
 
+        [HttpPost]
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public PartialViewResult GetBellboy()
+        {
+            using (var context = new ContentStorage())
+            {
+                var bellboy = context.Bellboy.GetRandomItem();
+                return PartialView("Bellboy", bellboy);
+            }
+        }
 
-        
 
         public ActionResult Index(string id)
         {

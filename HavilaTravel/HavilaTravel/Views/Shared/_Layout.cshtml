@@ -15,10 +15,14 @@
     <script src="@Url.Content("~/Scripts/jquery-ui-1.8.11.custom.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.cycle.all.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.tinyscrollbar.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     @RenderSection("Includes", false)
     <script type="text/javascript">
+
+        
+       
 
         $(function () {
             $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
@@ -38,11 +42,11 @@
 
                 $("#countryBox").css("display", "block");
                 $("#countryBox").css("position", "absolute");
+                $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
 
-                /*$("#countryBox1").css("display", "none");*/
-
-                /*$("#countryBox").css("margin-top", "-87px");*/
             });
+
+
 
             $(".reviewLink").click(function () {
 
@@ -56,6 +60,8 @@
                 $(this).css("display", "none");
                 $("#countryBox1").css("display", "block");
             });
+
+
 
             $("#accordion1").accordion(
             {
@@ -105,6 +111,21 @@
                 $(this).css("color", "#000");
                 /*alert("aaa");*/
             });
+
+
+
+            $("#changeBellboyLink").click(function () {
+                //$(this).attr('form').submit();
+
+                //alert("call");
+
+                //$("#bellboyForm").submit();
+
+
+                /*$("#bellboy").delay(1000).animate({ "left": "-=275px" }, 1000);*/
+            });
+            
+            
 
         });
     </script>
@@ -190,7 +211,9 @@
     <div id="footer">
         @if (ViewBag.Bellboy != null)
         {
+            <div id="bellboyContainer">
             @Html.Partial("Bellboy", (Bellboy) ViewBag.Bellboy)
+            </div>
         }
         <div id="innerFooter">
             <div id="sign">
