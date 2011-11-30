@@ -655,7 +655,7 @@ table.adminContentPreview th
 	line-height:15px;
 }
 
-#bellboyContainer .text a
+#bellboyContainer .text a, #bellboyContainer .text span
 {
 	color:#0078fe;
 }
@@ -666,10 +666,12 @@ table.adminContentPreview th
 	font-weight:bold;
 }
 
-#bellboyContainer .text a.secondSign
+#bellboyContainer .text span.secondSign
 {
 	color:#0078fe;
 	font-size:11px;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 #mainSearchBox
