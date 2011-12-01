@@ -671,7 +671,8 @@ table.adminContentPreview th
 	color:#0078fe;
 	font-size:11px;
     cursor: pointer;
-    text-decoration: underline;
+    border-bottom-style:dashed;
+    border-bottom-width:1px;
 }
 
 #mainSearchBox

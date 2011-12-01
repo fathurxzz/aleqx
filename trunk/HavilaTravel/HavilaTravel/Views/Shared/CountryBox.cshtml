@@ -32,10 +32,7 @@
                                     @if (Request.IsAuthenticated)
                                     {
                                         @Html.Raw("&nbsp;")
-                                        <span class="sortOrder">
-                                        @Html.Raw(region.SortOrder.ToString())
-                                        </span>
-                                        @Html.Raw("&nbsp;&nbsp;")
+                                        
                                         @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = region.Id }, new { @class = "adminLink" })
                                         @Html.Raw("&nbsp;&nbsp;")
                                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = region.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить регион?')" })
@@ -48,8 +45,7 @@
                                     @if (Request.IsAuthenticated)
                                     {
                                         @Html.Raw("&nbsp;")
-                                        <span class="sortOrder">@Html.Raw(country.SortOrder.ToString())</span>
-                                        @Html.Raw("&nbsp;&nbsp;")
+                                        
                                         @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = country.Id }, new { @class = "adminLink" })
                                         @Html.Raw("&nbsp;&nbsp;")
                                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = region.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить страну?')" })

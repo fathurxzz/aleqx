@@ -37,12 +37,15 @@
 .accordion .title a
 {
     color: #000;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    text-decoration:none;
     font-style: italic;
-    padding: 0 8px;
+    margin: 0 8px;
     font-size: 15px;
     font-family: Georgia;
     font-weight: bold;
+    border-bottom-style:dashed;
+    border-bottom-width:1px;
 }
 
 
