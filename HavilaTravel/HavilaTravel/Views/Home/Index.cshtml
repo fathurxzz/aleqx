@@ -54,7 +54,7 @@
     @if (ViewBag.IsRoot != null && ViewBag.IsRoot)
     {
 
-        using (Html.BeginForm("Search", "Home"))
+        using (Html.BeginForm("Search", "Home",FormMethod.Get))
         {
         <div id="mainSearchBox">
             @Html.TextBox("mSearch", "Франкфурт-на-Майне", new { @class = "mainsearch" })
