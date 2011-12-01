@@ -25,7 +25,7 @@
                     </div>
                     <div class="viewport">
                         <div class="overview">
-                            @foreach (var region in menuItems.OrderBy(m => m.SortOrder))
+                            @foreach (var region in menuItems.OrderBy(m => m.MenuTitle))
                             {
                                 <div class="placesSelectorItem">
                                     @Html.ActionLink(region.MenuTitle, "Index", "Place", new { id = region.Name }, null)
@@ -41,7 +41,7 @@
                                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = region.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить регион?')" })
                                     }
                                 </div>
-                                    foreach (var country in region.Children.OrderBy(m => m.SortOrder))
+                                foreach (var country in region.Children.OrderBy(m => m.MenuTitle))
                                     {
                                 <div class="placesSelectorSubItem">
                                     &raquo; @Html.ActionLink(country.MenuTitle, "Index", "Place", new { id = country.Name }, null)
