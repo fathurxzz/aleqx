@@ -22,18 +22,25 @@ namespace HavilaTravel.Controllers
             }
         }
 
+        public void GetAddData(string id,  ContentStorage context)
+        {
+            var menuList = Menu.GetMenuList(id, context);
+            ViewBag.MenuList = menuList;
+            ViewBag.Bellboy = context.Bellboy.GetRandomItem();
+            ViewBag.HeaderLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
+
+            var banners = context.Banner.ToList();
+            ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
+            ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
+            ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
+        }
 
         public ActionResult Index(string id)
         {
             using (var context = new ContentStorage())
             {
-                var menuList = Menu.GetMenuList(id, context);
-                ViewBag.MenuList = menuList;
 
-                ViewBag.Bellboy = context.Bellboy.GetRandomItem();
-
-                var headerLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
-                ViewBag.HeaderLeftMenuItems = headerLeftMenuItems;
+                GetAddData(id, context);
 
                 var content = context.Content
                     .Include("Parent").Include("Children").Include("Accordions")
@@ -52,13 +59,6 @@ namespace HavilaTravel.Controllers
                 }
 
                 ViewBag.IsRoot = content.Id == 8;
-
-                var banners = context.Banner.ToList();
-                ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
-                ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
-                ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
-
-
 
                 ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
@@ -81,6 +81,9 @@ namespace HavilaTravel.Controllers
 
             using (var context = new ContentStorage())
             {
+
+                GetAddData("countries", context);
+
                 var contentItems = context.Content.Include("Accordions").Where(c => c.PlaceKind > 1 && c.Title.Contains(mSearch)).ToList();
                 foreach (var content in contentItems)
                 {
