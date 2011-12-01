@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using HavilaTravel.Helpers;
 using HavilaTravel.Models;
+using System.Web;
 
 namespace HavilaTravel.Controllers
 {
@@ -83,9 +84,10 @@ namespace HavilaTravel.Controllers
                 var contentItems = context.Content.Include("Accordions").Where(c => c.PlaceKind > 1 && c.Title.Contains(mSearch)).ToList();
                 foreach (var content in contentItems)
                 {
-                    content.Text = Regex.Replace(content.Text, @"<[^>]+>", String.Empty);
+                    content.Text = HttpUtility.HtmlDecode(content.Text);
+                    content.Text = Regex.Replace(content.Text, @"<[^>]+>", String.Empty).Replace("\r", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty);
                     int strLength = content.Text.Length;
-                    if (strLength > 100) strLength = 100;
+                    if (strLength > 500) strLength = 500;
                     content.Text = content.Text.Substring(1, strLength);
                     foreach (var accordion in content.Accordions)
                     {
