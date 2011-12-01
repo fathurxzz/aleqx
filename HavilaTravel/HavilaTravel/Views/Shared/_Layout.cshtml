@@ -21,8 +21,8 @@
     @RenderSection("Includes", false)
     <script type="text/javascript">
 
-        
-       
+
+
 
         $(function () {
             $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
@@ -38,28 +38,36 @@
 
 
 
-            $("#countrySelector").click(function () {
+            $("#countrySelector").click(function (e) {
 
                 $("#countryBox").css("display", "block");
                 $("#countryBox").css("position", "absolute");
                 $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
-
+                e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
             });
 
 
 
             $(".reviewLink").click(function () {
-
                 $("#citiesSelector").css("display", "block");
-                /*$("#citiesSelector").css("margin-top", "-100px");*/
             });
 
-
+            $("body").click(function () {
+                
+                if ($("#countryBox").css("display") == "block") {
+                    $("#countryBox").css("display", "none");
+                    $("#countryBox1").css("display", "block");
+                }
+            });
 
             $("#countryBox").click(function () {
                 $(this).css("display", "none");
                 $("#countryBox1").css("display", "block");
             });
+
+
+
+
 
 
 
@@ -124,8 +132,8 @@
 
                 /*$("#bellboy").delay(1000).animate({ "left": "-=275px" }, 1000);*/
             });
-            
-            
+
+
 
         });
     </script>
