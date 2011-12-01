@@ -2,7 +2,7 @@
 @using Nebo.Models
 @model Nebo.Models.Content
            
-@foreach (var child in Model.Children)
+@foreach (var child in Model.Children.OrderBy(x=>x.SortOrder))
 {
     <div class="contentSubItem">
         <table>
