@@ -76,19 +76,24 @@ namespace HavilaTravel.Controllers
             }
         }
 
-        public ActionResult Search(string mSearch)
+        public ActionResult Search(string query)
         {
-            ViewBag.SearchQuery = mSearch;
+            ViewBag.SearchQuery = query;
 
-            if (string.IsNullOrEmpty(mSearch))
+
+            if (string.IsNullOrEmpty(query))
                 return View(new List<Content>());
+
+            query = query.ToLower();
 
             using (var context = new ContentStorage())
             {
 
+                var result = new List<Content>();
+
                 GetAddData("countries", context);
 
-                var contentItems = context.Content.Include("Parent").Include("Accordions").Where(c => c.PlaceKind > 1 && (c.Title.Contains(mSearch) || c.MenuTitle.Contains(mSearch) || c.Text.Contains(mSearch))).ToList();
+                var contentItems = context.Content.Include("Parent").Include("Accordions").Where(c => c.PlaceKind > 1).ToList();
                 foreach (var content in contentItems)
                 {
                     content.Text = HttpUtility.HtmlDecode(content.Text);
@@ -101,8 +106,11 @@ namespace HavilaTravel.Controllers
                         accordion.AccordionImages.Load();
                     }
 
+                    if (content.Title.ToLower().Contains(query) || content.MenuTitle.ToLower().Contains(query) || content.Text.ToLower().Contains(query))
+                        result.Add(content);
+
                 }
-                return View(contentItems);
+                return View(result);
             }
         }
     }
