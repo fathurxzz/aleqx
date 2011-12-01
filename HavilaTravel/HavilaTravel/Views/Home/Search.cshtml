@@ -34,28 +34,38 @@
     @foreach (var content in Model)
     {
         <div class="item">
-        @{
+            @{
         var accordion = content.Accordions.FirstOrDefault();
         if (accordion != null)
         {
             var image = accordion.AccordionImages.FirstOrDefault();
             if (image != null)
             {
-                 <div class="picture">
+                <div class="picture">
                     @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
-            </div> 
+                </div> 
             }
         }
             }
             <div class="title">
-            @Html.ActionLink(content.Title, "Index", "Place", new { id=content.Name},null)
+                @if (content.PlaceKind == 6)
+                {
+                    @Html.ActionLink(content.Title, "Index", "Place", new { id = content.Parent.Name, showSpa = "True" }, null)
+                }
+                else if (content.PlaceKind == 7)
+                {
+                    @Html.ActionLink(content.Title, "Index", "Place", new { id = content.Parent.Name, showPlacesReview = "True" }, null)
+                }
+                else
+                {
+                    @Html.ActionLink(content.Title, "Index", "Place", new { id = content.Name }, null)
+                }
             </div>
             @Html.Raw(content.Text)
         </div>
     
     }
 </div>
-
 @section MainBanner
 {
     @{
@@ -70,7 +80,6 @@
         }
     </div>
 }
-
 @section SmallBannerLeft
 {
     @if (ViewBag.LeftBanner != null)

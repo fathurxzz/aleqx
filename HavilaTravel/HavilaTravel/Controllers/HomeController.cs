@@ -88,7 +88,7 @@ namespace HavilaTravel.Controllers
 
                 GetAddData("countries", context);
 
-                var contentItems = context.Content.Include("Accordions").Where(c => c.PlaceKind > 1 && (c.Title.Contains(mSearch) || c.MenuTitle.Contains(mSearch) || c.Text.Contains(mSearch))).ToList();
+                var contentItems = context.Content.Include("Parent").Include("Accordions").Where(c => c.PlaceKind > 1 && (c.Title.Contains(mSearch) || c.MenuTitle.Contains(mSearch) || c.Text.Contains(mSearch))).ToList();
                 foreach (var content in contentItems)
                 {
                     content.Text = HttpUtility.HtmlDecode(content.Text);
