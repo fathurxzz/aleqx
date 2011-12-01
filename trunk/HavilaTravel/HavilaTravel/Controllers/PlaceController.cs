@@ -62,6 +62,8 @@ namespace HavilaTravel.Controllers
                 ViewBag.SeoKeywords = content.SeoKeywords;
                 ViewBag.CurrentContentId = content.Id;
 
+                ViewBag.HeaderLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
+
                 ViewBag.Bellboy = context.Bellboy.GetRandomItem();
 
                 var banners = context.Banner.ToList();

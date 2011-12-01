@@ -7,7 +7,7 @@
                 &nbsp;&nbsp;
             </td>
             <td class="center">
-                @using (Html.BeginForm("Search", "Home"))
+                @using (Html.BeginForm("Search", "Home",FormMethod.Get))
                 {
                     @Html.TextBox("mSearch", "", new { @class = "qsearch" })
                 }
