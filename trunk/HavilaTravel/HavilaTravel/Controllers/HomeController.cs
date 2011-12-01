@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
@@ -79,19 +80,22 @@ namespace HavilaTravel.Controllers
         {
             ViewBag.SearchQuery = mSearch;
 
+            if (string.IsNullOrEmpty(mSearch))
+                return View(new List<Content>());
+
             using (var context = new ContentStorage())
             {
 
                 GetAddData("countries", context);
 
-                var contentItems = context.Content.Include("Accordions").Where(c => c.PlaceKind > 1 && c.Title.Contains(mSearch)).ToList();
+                var contentItems = context.Content.Include("Accordions").Where(c => c.PlaceKind > 1 && (c.Title.Contains(mSearch) || c.MenuTitle.Contains(mSearch) || c.Text.Contains(mSearch))).ToList();
                 foreach (var content in contentItems)
                 {
                     content.Text = HttpUtility.HtmlDecode(content.Text);
                     content.Text = Regex.Replace(content.Text, @"<[^>]+>", String.Empty).Replace("\r", String.Empty).Replace("\n", String.Empty).Replace("\t", String.Empty);
                     int strLength = content.Text.Length;
                     if (strLength > 500) strLength = 500;
-                    content.Text = content.Text.Substring(1, strLength);
+                    content.Text = content.Text.Substring(0, strLength);
                     foreach (var accordion in content.Accordions)
                     {
                         accordion.AccordionImages.Load();
