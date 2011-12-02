@@ -526,6 +526,17 @@ table.adminContentPreview th
     margin-left: 23px;
 }
 
+#spaLink {
+    position: absolute;
+    font-size:12px;
+    color: #666;
+    margin-top: 240px;
+    margin-left: 45px;
+    text-align: center;
+}
+#spaLink a {
+    color: #0066cc;
+}
 
 #quicksearch
 {
