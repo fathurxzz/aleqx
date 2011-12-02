@@ -28,7 +28,7 @@
             $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
 
-            $(".closeButton").click(function () {
+            $("#closeButtonPlaces").click(function () {
 
                 $("#citiesSelector").css("display", "none");
             });
@@ -37,9 +37,10 @@
             $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
 
 
+            
+
 
             $("#countrySelector").click(function (e) {
-
                 $("#countryBox").css("display", "block");
                 $("#countryBox").css("position", "absolute");
                 $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
@@ -53,15 +54,19 @@
             });
 
             $("body").click(function () {
-                
                 if ($("#countryBox").css("display") == "block") {
                     $("#countryBox").css("display", "none");
                     $("#countryBox1").css("display", "block");
                 }
             });
 
-            $("#countryBox").click(function () {
-                $(this).css("display", "none");
+
+            $("#countryBox").click(function (e) {
+                e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
+            });
+            
+            $("#closeButtonCountries").click(function () {
+                $("#countryBox").css("display", "none");
                 $("#countryBox1").css("display", "block");
             });
 

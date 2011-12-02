@@ -52,13 +52,18 @@
 	height:26px;
 }
 
-.plcesSelectorFixed .closeButton
+.plcesSelectorFixed .closeButton, .placesSelectorCenter .closeButton
 {
 	width:29px;
 	height:26px;
 	background:url('img/places-selector-close-button.gif') no-repeat;
 	float:right;
 	cursor:pointer;
+}
+
+.placesSelectorCenter .closeButton
+{
+    margin-right: 5px;
 }
 
 .patternsContaiter table
