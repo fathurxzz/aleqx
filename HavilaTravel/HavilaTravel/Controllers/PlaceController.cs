@@ -73,6 +73,7 @@ namespace HavilaTravel.Controllers
 
                 var regionsAndCountries = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
                 ViewBag.SelectCountryMenu = regionsAndCountries;
+                ViewBag.SelectedCountryItem = content.Name;
 
 
 

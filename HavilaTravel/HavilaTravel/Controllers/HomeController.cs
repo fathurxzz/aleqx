@@ -70,6 +70,7 @@ namespace HavilaTravel.Controllers
                 {
                     var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0&&c.ContentLevel>1).ToList();
                     ViewBag.SelectCountryMenu = selectCountryMenu;
+                    
                 }
 
                 return View(content);

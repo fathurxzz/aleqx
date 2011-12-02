@@ -11,8 +11,11 @@
         <div class="placesSelectorTop">
         </div>
         <div class="placesSelectorCenter">
+            <div class="closeButton" id="closeButtonCountries">
+            </div>
             <div class="patternTop">
             </div>
+            
             <div class="placesSelectorContent">
                 <div id="scrollbar1">
                     <div class="scrollbar">
@@ -28,7 +31,14 @@
                             @foreach (var region in menuItems.OrderBy(m => m.MenuTitle))
                             {
                                 <div class="placesSelectorItem">
-                                    @Html.ActionLink(region.MenuTitle, "Index", "Place", new { id = region.Name }, null)
+                                    @if (region.Name == ViewBag.SelectedCountryItem)
+                                    {
+                                        @region.MenuTitle
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(region.MenuTitle, "Index", "Place", new {id = region.Name}, null)
+                                    }
                                     @if (Request.IsAuthenticated)
                                     {
                                         @Html.Raw("&nbsp;")
@@ -41,7 +51,14 @@
                                 foreach (var country in region.Children.OrderBy(m => m.MenuTitle))
                                     {
                                 <div class="placesSelectorSubItem">
-                                    &raquo; @Html.ActionLink(country.MenuTitle, "Index", "Place", new { id = country.Name }, null)
+                                    &raquo; 
+                                    @if (country.Name == ViewBag.SelectedCountryItem)
+                                    {
+                                        @country.MenuTitle
+                                    }else
+                                    {
+                                        @Html.ActionLink(country.MenuTitle, "Index", "Place", new {id = country.Name}, null)
+                                    }
                                     @if (Request.IsAuthenticated)
                                     {
                                         @Html.Raw("&nbsp;")
