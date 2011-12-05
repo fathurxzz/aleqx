@@ -18,13 +18,13 @@
     @{
         var banners = ((List<Banner>)ViewBag.MainBanners);
     }
+     
     <div id="slideshow">
         @foreach (var banner in banners)
         {
-                
             @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
-                
         }
+       
     </div>
 }
 @section SmallBannerLeft
@@ -54,7 +54,7 @@
     @if (ViewBag.IsRoot != null && ViewBag.IsRoot)
     {
 
-        using (Html.BeginForm("Search", "Home",FormMethod.Get))
+        using (Html.BeginForm("Search", "Home", FormMethod.Get))
         {
         <div id="mainSearchBox">
             @Html.TextBox("query", "Бали", new { @class = "mainsearch" })
