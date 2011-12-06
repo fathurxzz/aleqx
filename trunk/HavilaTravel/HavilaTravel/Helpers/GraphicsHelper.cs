@@ -212,6 +212,16 @@ namespace Dev.Mvc.Helpers
             return sb.ToString();
         }
 
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, string alt, string id, string title)
+        {
+            StringBuilder sb = new StringBuilder();
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" id=\"{2}\" title=\"{3}\" />";
+
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), alt, id, title);
+
+            return sb.ToString();
+        }
+
         public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder)
         {
             CacheImage(originalPath, fileName, cacheFolder);

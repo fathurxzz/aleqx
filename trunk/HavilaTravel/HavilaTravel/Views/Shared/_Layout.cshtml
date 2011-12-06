@@ -37,7 +37,7 @@
             $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
 
 
-            
+
 
 
             $("#countrySelector").click(function (e) {
@@ -64,7 +64,7 @@
             $("#countryBox").click(function (e) {
                 e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
             });
-            
+
             $("#closeButtonCountries").click(function () {
                 $("#countryBox").css("display", "none");
                 $("#countryBox1").css("display", "block");
@@ -112,7 +112,7 @@
                 //var msg = 'Slide ' + (opts.currSlide + 1) + ' of ' + opts.slideCount;
                 $('#leftCaption').html(next.alt);
                 $('#rightCaption').html(next.id);
-                //alert();
+                $('#slideshowLink').attr('href', 'http://havila-travel.com/places/' + next.title);
             };
 
 
@@ -123,6 +123,7 @@
                 $(this).val("");
                 $(this).css("color", "#000");
                 /*alert("aaa");*/
+                
             });
 
 
@@ -170,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+                <a id="slideshowLink" href=""><img src="../../Content/img/pixel.gif" /></a>
             </div>
             
             @Html.Partial("HeaderLeftMenu")

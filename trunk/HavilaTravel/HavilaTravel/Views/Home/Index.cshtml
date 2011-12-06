@@ -19,13 +19,15 @@
         var banners = ((List<Banner>)ViewBag.MainBanners);
     }
      
+     
     <div id="slideshow">
         @foreach (var banner in banners)
         {
-            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName  ))
         }
        
     </div>
+    
 }
 @section SmallBannerLeft
 {
