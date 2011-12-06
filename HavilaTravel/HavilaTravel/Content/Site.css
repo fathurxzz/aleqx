@@ -97,6 +97,15 @@ body
     height: 297px;
 }
 
+#slideshowLink
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 642px;
+    height: 297px;
+    z-index: 1005;
+}
 
 
 /*
