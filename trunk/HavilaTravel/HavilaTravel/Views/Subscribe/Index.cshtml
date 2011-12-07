@@ -1,4 +1,6 @@
-﻿@model HavilaTravel.Models.Customers
+﻿@using Dev.Mvc.Helpers
+@using HavilaTravel.Models
+@model HavilaTravel.Models.Customers
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +20,40 @@ Html.EnableClientValidation();
 Подписка на новостную рассылку
 </div>
 }
-
+@section MainBanner
+{
+    @{
+        var banners = ((List<Banner>)ViewBag.MainBanners);
+    }
+     
+     
+    <div id="slideshow">
+        @foreach (var banner in banners)
+        {
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName  ))
+        }
+       
+    </div>
+    
+}
+@section SmallBannerLeft
+{
+    @if (ViewBag.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
+    }
+}
+@section SmallBannerRight
+{
+    @if (ViewBag.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
+    }
+}
+@section LeftSubMenu
+{
+    @Html.Partial("LeftSubmenu")
+}
 @using (Html.BeginForm("Subscribe", "Subscribe", FormMethod.Post, new { id = "subscrForm" }))
 {
     @Html.ValidationSummary(true)
