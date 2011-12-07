@@ -123,7 +123,7 @@
                 $(this).val("");
                 $(this).css("color", "#000");
                 /*alert("aaa");*/
-                
+
             });
 
 
@@ -160,7 +160,13 @@
                 <a href="/" class="rootLink">
                     <img src="../../Content/img/pixel.gif" /></a>
             }
-            <div id="spaLink">Посетите наш<br/><a href="http://www.havila.com.ua">спа-клуб "ХА-ВИ"</a></div>
+            <div id="spaLink">
+                Посетите наш<br />
+                <a href="http://www.havila.com.ua">спа-клуб "ХА-ВИ"</a></div>
+            <div id="subscribeLink">
+                @Html.ActionLink("Подписаться", "Index", "Subscribe", new { Area = "" }, null)
+                <br/>на рассылку новостей
+            </div>
             <div id="mainBanner">
                 @RenderSection("MainBanner", false)
                 <div id="ramka">
@@ -171,9 +177,9 @@
                         </div>
                     </div>
                 </div>
-                <a id="slideshowLink" href=""><img src="../../Content/img/pixel.gif" /></a>
+                <a id="slideshowLink" href="">
+                    <img src="../../Content/img/pixel.gif" /></a>
             </div>
-            
             @Html.Partial("HeaderLeftMenu")
         </div>
         @Html.Partial("MainMenu")
@@ -198,10 +204,11 @@
                             @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink" })
                          
                         }
-                        <div style="height: 80px;">
-                            @RenderSection("CountrySelector", false)
-                            @RenderSection("CountryBox", false)
-                        </div>
+                        
+                        @RenderSection("CountrySelectors",false)
+                        
+
+
                         @RenderSection("ContentTitle", false)
                         @RenderSection("SubMenu", false)
                         <div id="pattern">
@@ -229,7 +236,7 @@
         @if (ViewBag.Bellboy != null)
         {
             <div id="bellboyContainer">
-            @Html.Partial("Bellboy", (Bellboy) ViewBag.Bellboy)
+                @Html.Partial("Bellboy", (Bellboy)ViewBag.Bellboy)
             </div>
         }
         <div id="innerFooter">

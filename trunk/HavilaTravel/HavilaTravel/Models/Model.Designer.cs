@@ -167,6 +167,22 @@ namespace HavilaTravel.Models
             }
         }
         private ObjectSet<Bellboy> _Bellboy;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Customers> Customers
+        {
+            get
+            {
+                if ((_Customers == null))
+                {
+                    _Customers = base.CreateObjectSet<Customers>("Customers");
+                }
+                return _Customers;
+            }
+        }
+        private ObjectSet<Customers> _Customers;
 
         #endregion
         #region AddTo Methods
@@ -217,6 +233,14 @@ namespace HavilaTravel.Models
         public void AddToBellboy(Bellboy bellboy)
         {
             base.AddObject("Bellboy", bellboy);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Customers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCustomers(Customers customers)
+        {
+            base.AddObject("Customers", customers);
         }
 
         #endregion
@@ -1530,6 +1554,139 @@ namespace HavilaTravel.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="havilaModel", Name="Customers")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Customers : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Customers object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        /// <param name="subscribeType">Initial value of the SubscribeType property.</param>
+        public static Customers CreateCustomers(global::System.Int64 id, global::System.String name, global::System.String email, global::System.SByte subscribeType)
+        {
+            Customers customers = new Customers();
+            customers.Id = id;
+            customers.Name = name;
+            customers.Email = email;
+            customers.SubscribeType = subscribeType;
+            return customers;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.SByte SubscribeType
+        {
+            get
+            {
+                return _SubscribeType;
+            }
+            set
+            {
+                OnSubscribeTypeChanging(value);
+                ReportPropertyChanging("SubscribeType");
+                _SubscribeType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SubscribeType");
+                OnSubscribeTypeChanged();
+            }
+        }
+        private global::System.SByte _SubscribeType;
+        partial void OnSubscribeTypeChanging(global::System.SByte value);
+        partial void OnSubscribeTypeChanged();
+
+        #endregion
+    
     }
 
     #endregion

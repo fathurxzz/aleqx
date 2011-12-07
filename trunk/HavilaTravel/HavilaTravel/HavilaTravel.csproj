@@ -86,6 +86,7 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
+    <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -94,6 +95,7 @@
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\CustomerValidation.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -139,6 +141,8 @@
     <Content Include="Content\img\banner_small_bg.gif" />
     <Content Include="Content\img\bellboy.png" />
     <Content Include="Content\img\booking-icon.png" />
+    <Content Include="Content\img\button-send-active.png" />
+    <Content Include="Content\img\button-send-inactive.png" />
     <Content Include="Content\img\chat-icon.png" />
     <Content Include="Content\img\countrybox-bg-bottom.png" />
     <Content Include="Content\img\countrybox-bg-center.png" />
@@ -172,6 +176,7 @@
     <Content Include="Content\img\places-selector-pattern-bottom.gif" />
     <Content Include="Content\img\places-selector-pattern-left.gif" />
     <Content Include="Content\img\places-selector-pattern-right.gif" />
+    <Content Include="Content\img\subscribe-form-bg.gif" />
     <Content Include="Content\PlacesSelector.css" />
     <Content Include="Content\img\png-ramka.png" />
     <Content Include="Content\img\price-bg-red.png" />
@@ -387,6 +392,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Success.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscribe\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscribe\ThankYou.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
