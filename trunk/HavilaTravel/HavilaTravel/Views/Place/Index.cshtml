@@ -20,8 +20,10 @@ else
 @section CountrySelectors
 {
 <div style="height: 80px;">
-    @RenderSection("CountrySelector", false)
-    @RenderSection("CountryBox", false)
+    @Html.Partial("CountrySelector")
+
+    @Html.Partial("CountryBox")
+    @Html.Partial("PlacesSelector")
 </div>
 }
 
@@ -78,17 +80,9 @@ else
     </div>
     @Html.Partial("PlacesSubMenu", Model)
 }
-@section CountryBox
-{
-    @Html.Partial("CountryBox")
-    @Html.Partial("PlacesSelector")
-    
-}
+
 @section LeftSubMenu
 {
     @Html.Partial("PlacesLestSubMenu")
 }
-@section CountrySelector
-{
-    @Html.Partial("CountrySelector")
-}
+
