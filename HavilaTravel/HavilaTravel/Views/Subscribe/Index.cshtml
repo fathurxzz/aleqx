@@ -1,0 +1,76 @@
+﻿@model HavilaTravel.Models.Customers
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@{
+Html.EnableClientValidation();
+    }
+
+
+@section ContentTitle
+{
+ <div id="contentTitleSubscribe">
+Подписка на новостную рассылку
+</div>
+}
+
+@using (Html.BeginForm("Subscribe", "Subscribe", FormMethod.Post, new { id = "subscrForm" }))
+{
+    @Html.ValidationSummary(true)
+
+    
+    <text>
+    Подписка на рассылку новостей позволит вам быть в курсе всех акций, скидок и интересных предложений “Хавилы Тревел”
+    <br/>
+    <br/>
+    Пожалуйста, заполните анкету:
+    
+    </text>
+    
+    
+    <div id="subscribeForm">
+        <div class="name">
+        @Html.EditorFor(model => model.Name) 
+        <br/>
+        
+        @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="email">
+        @Html.EditorFor(model => model.Email)
+        <br/>
+         @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="subscribe">
+            @Html.RadioButtonFor(model => model.SubscribeType,1) Я турагент 
+            <br/>
+            @Html.RadioButtonFor(model => model.SubscribeType,2) Я турист
+            <br/>
+            @Html.ValidationMessageFor(model => model.SubscribeType)
+        </div>
+
+         <div id="sendButton"></div>
+        
+    </div>
+}
+
+@section Includes
+{
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#sendButton").click(function () {
+
+                $("#subscrForm").submit();
+            });
+        });
+    </script>
+}
