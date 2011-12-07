@@ -82,7 +82,10 @@ namespace HavilaTravel.Controllers
                 TryUpdateModel(subscriber, new[] { "Name", "Email", "SubscribeType" });
                 context.AddToCustomers(subscriber);
                 context.SaveChanges();
+
+                GetAddData(null, context);
             }
+            
             return View("ThankYou");
         }
     }
