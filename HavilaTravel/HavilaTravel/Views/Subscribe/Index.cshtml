@@ -1,6 +1,6 @@
 ﻿@using Dev.Mvc.Helpers
 @using HavilaTravel.Models
-@model HavilaTravel.Models.Customers
+@model HavilaTravel.Models.SiteViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -22,76 +22,30 @@ Html.EnableClientValidation();
 }
 @section MainBanner
 {
-    @{
-        var banners = ((List<Banner>)ViewBag.MainBanners);
-    }
-     
-     
     <div id="slideshow">
-        @foreach (var banner in banners)
+        @foreach (var banner in Model.MainBanners)
         {
-            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName  ))
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
         }
-       
     </div>
-    
 }
 @section SmallBannerLeft
 {
-    @if (ViewBag.LeftBanner != null)
+    @if (Model.LeftBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
+        @Html.Partial("BannerSmall", Model.LeftBanner)
     }
 }
 @section SmallBannerRight
 {
-    @if (ViewBag.RightBanner != null)
+    @if (Model.RightBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
+        @Html.Partial("BannerSmall", Model.RightBanner)
     }
 }
-@section LeftSubMenu
-{
-    @Html.Partial("LeftSubmenu")
-}
-@using (Html.BeginForm("Subscribe", "Subscribe", FormMethod.Post, new { id = "subscrForm" }))
-{
-    @Html.ValidationSummary(true)
 
-    
-    <text>
-    Подписка на рассылку новостей позволит вам быть в курсе всех акций, скидок и интересных предложений “Хавилы Тревел”
-    <br/>
-    <br/>
-    Пожалуйста, заполните анкету:
-    
-    </text>
-    
-    
-    <div id="subscribeForm">
-        <div class="name">
-        @Html.EditorFor(model => model.Name) 
-        <br/>
-        
-        @Html.ValidationMessageFor(model => model.Name)
-        </div>
-        <div class="email">
-        @Html.EditorFor(model => model.Email)
-        <br/>
-         @Html.ValidationMessageFor(model => model.Email)
-        </div>
-        <div class="subscribe">
-            @Html.RadioButtonFor(model => model.SubscribeType,1) Я турагент 
-            <br/>
-            @Html.RadioButtonFor(model => model.SubscribeType,2) Я турист
-            <br/>
-            @Html.ValidationMessageFor(model => model.SubscribeType)
-        </div>
 
-         <div id="sendButton"></div>
-        
-    </div>
-}
+@Html.Partial("SubscribeForm",new Customers())
 
 @section Includes
 {
@@ -108,4 +62,33 @@ Html.EnableClientValidation();
             });
         });
     </script>
+}
+
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
+    }
+}
+
+@section HeaderLeftMenu
+{
+    @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
 }

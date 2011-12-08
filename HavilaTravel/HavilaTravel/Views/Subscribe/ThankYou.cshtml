@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Dev.Mvc.Helpers
+@using HavilaTravel.Models
+@model HavilaTravel.Models.SiteViewModel
+
+@{
     ViewBag.Title = "ThankYou";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,3 +12,57 @@
     
     @Html.ActionLink("Перейти на главную","Index","Home")
 </div>
+
+
+@section MainBanner
+{
+    <div id="slideshow">
+        @foreach (var banner in Model.MainBanners)
+        {
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
+        }
+    </div>
+}
+@section SmallBannerLeft
+{
+    @if (Model.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.LeftBanner)
+    }
+}
+@section SmallBannerRight
+{
+    @if (Model.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.RightBanner)
+    }
+}
+
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
+    }
+}
+
+@section HeaderLeftMenu
+{
+    @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
+}

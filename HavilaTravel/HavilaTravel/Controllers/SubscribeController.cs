@@ -13,61 +13,13 @@ namespace HavilaTravel.Controllers
         //
         // GET: /Subscribe/
 
-        public void GetAddData(string id, ContentStorage context)
-        {
-            var menuList = Menu.GetMenuList(id, context);
-            ViewBag.MenuList = menuList;
-            ViewBag.Bellboy = context.Bellboy.GetRandomItem();
-            ViewBag.HeaderLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
-
-            var banners = context.Banner.ToList();
-            ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
-            ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
-            ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
-        }
-
-
 
         public ActionResult Index()
         {
             using (var context = new ContentStorage())
             {
-                
-                string id = null;
-
-                GetAddData(id, context);
-                /*
-                var content = context.Content
-                    .Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c => c.Name == id)
-                    .FirstOrDefault();
-
-                if (content == null)
-                    content = context.Content
-                        .Include("Parent").Include("Children").Include("Accordions")
-                        .Where(c => c.ContentType == 0)
-                        .First();
-
-                foreach (var accordion in content.Accordions)
-                {
-                    accordion.AccordionImages.Load();
-                }
-
-                ViewBag.IsRoot = content.Id == 8;
-
-                ViewBag.PageTitle = content.PageTitle;
-                ViewBag.SeoDescription = content.SeoDescription;
-                ViewBag.SeoKeywords = content.SeoKeywords;
-                ViewBag.CurrentContentId = content.Id;
-
-                if (content.ContentModel == 1)
-                {
-                    var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0 && c.ContentLevel > 1).ToList();
-                    ViewBag.SelectCountryMenu = selectCountryMenu;
-
-                }
-                */
-                return View();
+                var model = new SiteViewModel(null, context, false);
+                return View(model);
             }
         }
 
@@ -82,11 +34,18 @@ namespace HavilaTravel.Controllers
                 TryUpdateModel(subscriber, new[] { "Name", "Email", "SubscribeType" });
                 context.AddToCustomers(subscriber);
                 context.SaveChanges();
-
-                GetAddData(null, context);
             }
             
-            return View("ThankYou");
+            return RedirectToAction("ThankYou");
+        }
+
+        public ActionResult ThankYou()
+        {
+            using (var context = new ContentStorage())
+            {
+                var model = new SiteViewModel(null, context, false);
+                return View(model);
+            }
         }
     }
 }
