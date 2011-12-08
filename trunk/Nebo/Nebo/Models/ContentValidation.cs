@@ -25,6 +25,10 @@ namespace Nebo.Models
         [DisplayName("Заголовок")]
         public string Title { get; set; }
 
+        [Required(ErrorMessage = "* Введите заголовок")]
+        [DisplayName("Заголовок в шапке обозревателя")]
+        public string PageTitle { get; set; }
+
         [Required(ErrorMessage = "* Введите порядок отображения (целое число)")]
         [DisplayName("Порядок отбражения")]
         public string SortOrder { get; set; }

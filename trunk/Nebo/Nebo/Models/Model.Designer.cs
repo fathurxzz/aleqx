@@ -239,6 +239,30 @@ namespace Nebo.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public global::System.String PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                OnPageTitleChanging(value);
+                ReportPropertyChanging("PageTitle");
+                _PageTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PageTitle");
+                OnPageTitleChanged();
+            }
+        }
+        private global::System.String _PageTitle;
+        partial void OnPageTitleChanging(global::System.String value);
+        partial void OnPageTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Text
         {
             get

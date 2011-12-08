@@ -42,6 +42,7 @@ namespace Nebo.Areas.Admin.Controllers
                                             {
                                                 "Name",
                                                 "Title",
+                                                "PageTitle",
                                                 "SortOrder",
                                                 "SeoDescription",
                                                 "SeoKeywords"
@@ -99,6 +100,7 @@ namespace Nebo.Areas.Admin.Controllers
                                             {
                                                 "Name",
                                                 "Title",
+                                                "PageTitle",
                                                 "SortOrder",
                                                 "SeoDescription",
                                                 "SeoKeywords",

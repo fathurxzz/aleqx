@@ -30,6 +30,7 @@ namespace Nebo.Controllers
                         .First();
 
                 ViewBag.Title = content.Title;
+                ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
 
@@ -44,7 +45,7 @@ namespace Nebo.Controllers
         {
             if (ModelState.IsValid)
             {
-                MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("nebosklo@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
 
                 return PartialView("Success");
             }
