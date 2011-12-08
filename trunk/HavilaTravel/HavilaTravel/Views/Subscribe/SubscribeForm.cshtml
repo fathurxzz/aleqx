@@ -1,0 +1,41 @@
+﻿@model HavilaTravel.Models.Customers
+
+@using (Html.BeginForm("Subscribe", "Subscribe", FormMethod.Post, new { id = "subscrForm" }))
+{
+    @Html.ValidationSummary(true)
+
+    
+    <text>
+    Подписка на рассылку новостей позволит вам быть в курсе всех акций, скидок и интересных предложений “Хавилы Тревел”
+    <br/>
+    <br/>
+    Пожалуйста, заполните анкету:
+    
+    </text>
+    
+    
+    
+    <div id="subscribeForm">
+        <div class="name">
+        @Html.EditorFor(model => model.Name) 
+        <br/>
+        
+        @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="email">
+        @Html.EditorFor(model => model.Email)
+        <br/>
+         @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div class="subscribe">
+            @Html.RadioButtonFor(model => model.SubscribeType,1) Я турагент 
+            <br/>
+            @Html.RadioButtonFor(model => model.SubscribeType,2) Я турист
+            <br/>
+            @Html.ValidationMessageFor(model => model.SubscribeType)
+        </div>
+
+         <div id="sendButton"></div>
+        
+    </div>
+}
