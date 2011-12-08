@@ -1,12 +1,5 @@
 ﻿@using HavilaTravel.Models
-@{
-    var menuItems = (List<Content>)ViewBag.SelectCountryMenu;
-}
-@if (menuItems != null && menuItems.Count() > 0)
-{
-
-       
-    
+@model List<Content>
     <div class="placesSelector" id="countryBox">
         <div class="placesSelectorTop">
         </div>
@@ -28,7 +21,7 @@
                     </div>
                     <div class="viewport">
                         <div class="overview">
-                            @foreach (var region in menuItems.OrderBy(m => m.MenuTitle))
+                            @foreach (var region in Model.OrderBy(m => m.MenuTitle))
                             {
                                 <div class="placesSelectorItem">
                                     @if (region.Name == ViewBag.SelectedCountryItem)
@@ -100,4 +93,3 @@
         <div class="placesSelectorBottom">
         </div>
     </div>
-}

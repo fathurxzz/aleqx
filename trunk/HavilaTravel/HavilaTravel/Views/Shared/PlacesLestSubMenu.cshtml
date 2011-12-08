@@ -1,15 +1,11 @@
-﻿@using HavilaTravel.Models
+﻿@model List<MenuItem>
+@using HavilaTravel.Models
 @{
-    if (ViewBag.PlacesLeftSubMenu != null)
-    {
-        var menuItems = (List<MenuItem>)ViewBag.PlacesLeftSubMenu;
-        if (menuItems != null)
-        {
     <div id="leftSubmenu">
         <div id="top">
         </div>
         <div id="content">
-            @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+            @foreach (var item in Model.OrderBy(m => m.SortOrder))
             {
                 if (item.Selected)
                 {
@@ -46,6 +42,4 @@
         <div id="bottom">
         </div>
     </div>
-        }
-    }
 }

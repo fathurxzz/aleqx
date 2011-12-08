@@ -13,146 +13,47 @@ namespace HavilaTravel.Controllers
         //
         // GET: /Place/
 
-        private List<MenuItem> _placesMap = new List<MenuItem>();
-
-
-        public void FillPlacesMap(Content content, ContentStorage context)
-        {
-            _placesMap.Add(new MenuItem(){Name = content.Name,Title = content.Title,SortOrder = (int)content.ContentLevel});
-            if (content.Parent != null)
-            {
-                var parentId = content.Parent.Id;
-                content = context.Content.Include("Parent").Where(c => c.Id == parentId).First();
-                FillPlacesMap(content, context);
-            }
-        }
-
-
-        
-
+        //private List<MenuItem> _placesMap = new List<MenuItem>();
 
         public ActionResult Index(string id, bool? showSpa, bool? showPlacesReview)
         {
             using (var context = new ContentStorage())
             {
-
-                var menuList = Menu.GetMenuList("countries", context);
-                ViewBag.MenuList = menuList;
-
                 if (string.IsNullOrEmpty(id))
-                {
                     id = "Countries";
-                }
+                PlaceViewModel model = new PlaceViewModel(id, context, showSpa, showPlacesReview);
+                ViewBag.PageTitle = model.Content.PageTitle;
+                ViewBag.SeoDescription = model.Content.SeoDescription;
+                ViewBag.SeoKeywords = model.Content.SeoKeywords;
 
-                var content = context.Content
-                    .Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c => c.Name == id)
-                    .First();
+                //if (string.IsNullOrEmpty(id))
+                //{
+                //    id = "Countries";
+                //}
 
-                foreach (var accordion in content.Accordions)
-                {
-                    accordion.AccordionImages.Load();
-                }
+                //var content = context.Content
+                //    .Include("Parent").Include("Children").Include("Accordions")
+                //    .Where(c => c.Name == id)
+                //    .First();
+                //FillPlacesMap(model.Content, context);
+                //ViewBag.PlacesMap = model.PlacesMap;
 
-                FillPlacesMap(content, context);
-                ViewBag.PlacesMap = _placesMap;
+                //ViewBag.Bellboy = context.Bellboy.GetRandomItem();
 
-                ViewBag.PageTitle = content.PageTitle;
-                ViewBag.SeoDescription = content.SeoDescription;
-                ViewBag.SeoKeywords = content.SeoKeywords;
-                ViewBag.CurrentContentId = content.Id;
-
-                ViewBag.HeaderLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
-
-                ViewBag.Bellboy = context.Bellboy.GetRandomItem();
-
-                var banners = context.Banner.ToList();
+                /*var banners = context.Banner.ToList();
                 ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
                 ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).ToList().GetRandomItem();
                 ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).ToList().GetRandomItem();
+                */
+                
+                //var regionsAndCountries = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
+                //ViewBag.SelectCountryMenu = regionsAndCountries;
+                
+                ViewBag.SelectedCountryItem = model.Content.Name;
 
-                var regionsAndCountries = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
-                ViewBag.SelectCountryMenu = regionsAndCountries;
-                ViewBag.SelectedCountryItem = content.Name;
+                //ViewBag.ShowSpa = (showSpa.HasValue && showSpa.Value);
 
-
-
-                var spa = content.Children.Where(c => c.PlaceKind == 6).FirstOrDefault();
-                if (spa != null && showSpa.HasValue && showSpa.Value)
-                {
-                    var spaId = spa.Id;
-                    spa = context.Content
-                    .Include("Accordions")
-                    .Where(c => c.Id == spaId)
-                    .First();
-                    ViewBag.Spa = spa;
-                }
-
-
-                var review = content.Children.Where(c => c.PlaceKind == 7).FirstOrDefault();
-                if (review != null && showPlacesReview.HasValue && showPlacesReview.Value)
-                {
-                    var reviewId = review.Id;
-                    review = context.Content
-                    .Include("Accordions")
-                    .Where(c => c.Id == reviewId)
-                    .First();
-                    ViewBag.Review = review;
-                }
-
-
-
-                var placesLeftSubMenu = content.Children
-                    .Where(p => p.PlaceKind != 6 && (p.PlaceKind == 5 && showSpa.HasValue || (!showSpa.HasValue && p.PlaceKind == 3 || !showSpa.HasValue && p.PlaceKind == 4)))
-                    .Select(child => new MenuItem
-                                                                             {
-                                                                                 Id = (int)child.Id,
-                                                                                 Name = child.Name,
-                                                                                 SortOrder = child.SortOrder,
-                                                                                 Title = child.Title
-                                                                             }).ToList();
-                //if (placesLeftSubMenu.Count > 0)
-                //{
-                //    ViewBag.PlacesLeftSubMenu = placesLeftSubMenu;
-                //}
-
-                if (content.PlaceKind == 5 || content.PlaceKind == 4)
-                {
-                    var parentId = content.Parent.Id;
-                    var parent = context.Content.Include("Children").Where(c => c.Id == parentId).First();
-                    placesLeftSubMenu = parent.Children
-                        .Where(p => p.PlaceKind == 5 || p.PlaceKind == 4).Select(child => new MenuItem
-                        {
-                            Id = (int)child.Id,
-                            Name = child.Name,
-                            SortOrder = child.SortOrder,
-                            Title = child.Title,
-                            Selected = child.Id==content.Id
-                        }).ToList();
-                }
-
-                if (placesLeftSubMenu.Count > 0)
-                {
-                    ViewBag.PlacesLeftSubMenu = placesLeftSubMenu;
-                }
-
-
-
-                var placesSelectorContent = content.Children
-                    .Where(p => p.PlaceKind == 2 || p.PlaceKind == 3 || p.PlaceKind == 4)
-                    .Select(child => new MenuItem
-                    {
-                        Id = (int)child.Id,
-                        Name = child.Name,
-                        SortOrder = child.SortOrder,
-                        Title = child.Title
-                    }).ToList();
-                ViewBag.PlacesSelectorContent = placesSelectorContent;
-
-
-                ViewBag.ShowSpa = (showSpa.HasValue && showSpa.Value);
-
-                return View(content);
+                return View(model);
             }
         }
 

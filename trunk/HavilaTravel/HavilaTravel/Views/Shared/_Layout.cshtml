@@ -135,13 +135,13 @@
             </div>
             @Html.Partial("HeaderLeftMenu")
         </div>
-        @RenderSection("MainMenu")
+        @RenderSection("MainMenu",false)
     </div>
     <div id="page">
         <table>
             <tr>
                 <td id="leftContent">
-                    @RenderSection("QuickSearch")
+                    @RenderSection("QuickSearch",false)
                     @RenderSection("LeftSubMenu", false)
                     @RenderSection("SmallBannerLeft", false)
                 </td>

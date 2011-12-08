@@ -27,39 +27,17 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = SiteViewModel.FetchData(id, context);
+                SiteViewModel model = new SiteViewModel(id, context);
 
-                var content = context.Content
-                    .Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c => c.Name == id)
-                    .FirstOrDefault();
+                ViewBag.PageTitle = model.Content.PageTitle;
+                ViewBag.SeoDescription = model.Content.SeoDescription;
+                ViewBag.SeoKeywords = model.Content.SeoKeywords;
 
-                if (content == null)
-                    content = context.Content
-                        .Include("Parent").Include("Children").Include("Accordions")
-                        .Where(c => c.ContentType == 0)
-                        .First();
-
-                foreach (var accordion in content.Accordions)
-                {
-                    accordion.AccordionImages.Load();
-                }
-
-                model.IsRoot = content.Id == 8;
-                model.CurrentContentId = (int)content.Id;
-
-                ViewBag.PageTitle = content.PageTitle;
-                ViewBag.SeoDescription = content.SeoDescription;
-                ViewBag.SeoKeywords = content.SeoKeywords;
-
-                if (content.ContentModel == 1)
-                {
-                    var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0 && c.ContentLevel > 1).ToList();
-                    ViewBag.SelectCountryMenu = selectCountryMenu;
-
-                }
-
-                model.Content = content;
+                //if (model.Content.ContentModel == 1)
+                //{
+                //    var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0 && c.ContentLevel > 1).ToList();
+                //    ViewBag.SelectCountryMenu = selectCountryMenu;
+                //}
 
                 return View(model);
             }
@@ -69,9 +47,11 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = SiteViewModel.FetchData("countries", context);
-                model.SearchResult = new List<Content>();
-                model.SearchQuery = query;
+                SiteViewModel model = new SiteViewModel("countries", context)
+                                          {
+                                              SearchResult = new List<Content>(), 
+                                              SearchQuery = query
+                                          };
 
                 ViewBag.PageTitle = "Результат поиска";
 
