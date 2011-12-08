@@ -59,3 +59,12 @@
 {
     @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
 }
+@section BellBoy
+{
+    @if (Model.Bellboy != null)
+    {
+        <div id="bellboyContainer">
+            @Html.Partial("Bellboy", Model.Bellboy)
+        </div>
+    }
+}
