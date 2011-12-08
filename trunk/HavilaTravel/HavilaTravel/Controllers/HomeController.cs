@@ -23,76 +23,64 @@ namespace HavilaTravel.Controllers
             }
         }
 
-        public void GetAddData(string id,  ContentStorage context)
-        {
-            var menuList = Menu.GetMenuList(id, context);
-            ViewBag.MenuList = menuList;
-            ViewBag.Bellboy = context.Bellboy.GetRandomItem();
-            ViewBag.HeaderLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
-
-            var banners = context.Banner.ToList();
-            ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
-            ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
-            ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
-        }
-
         public ActionResult Index(string id)
         {
             using (var context = new ContentStorage())
             {
-
-                GetAddData(id, context);
+                SiteViewModel model = SiteViewModel.FetchData(id, context);
 
                 var content = context.Content
                     .Include("Parent").Include("Children").Include("Accordions")
                     .Where(c => c.Name == id)
                     .FirstOrDefault();
 
-                if(content==null)
-                content = context.Content
-                    .Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c =>c.ContentType == 0)
-                    .First();
+                if (content == null)
+                    content = context.Content
+                        .Include("Parent").Include("Children").Include("Accordions")
+                        .Where(c => c.ContentType == 0)
+                        .First();
 
                 foreach (var accordion in content.Accordions)
                 {
                     accordion.AccordionImages.Load();
                 }
 
-                ViewBag.IsRoot = content.Id == 8;
+                model.IsRoot = content.Id == 8;
+                model.CurrentContentId = (int)content.Id;
 
                 ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
-                ViewBag.CurrentContentId = content.Id;
 
-                if(content.ContentModel==1)
+                if (content.ContentModel == 1)
                 {
-                    var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0&&c.ContentLevel>1).ToList();
+                    var selectCountryMenu = context.Content.Include("Parent").Where(c => c.ContentModel > 0 && c.ContentLevel > 1).ToList();
                     ViewBag.SelectCountryMenu = selectCountryMenu;
-                    
+
                 }
 
-                return View(content);
+                model.Content = content;
+
+                return View(model);
             }
         }
 
         public ActionResult Search(string query)
         {
-            ViewBag.SearchQuery = query;
-
-
-            if (string.IsNullOrEmpty(query))
-                return View(new List<Content>());
-
-            query = query.ToLower();
-
             using (var context = new ContentStorage())
             {
+                SiteViewModel model = SiteViewModel.FetchData("countries", context);
+                model.SearchResult = new List<Content>();
+                model.SearchQuery = query;
 
-                var result = new List<Content>();
+                ViewBag.PageTitle = "Результат поиска";
 
-                GetAddData("countries", context);
+                if (string.IsNullOrEmpty(query))
+                {
+                    return View(model);
+                }
+
+                query = query.ToLower();
 
                 var contentItems = context.Content.Include("Parent").Include("Accordions").Where(c => c.PlaceKind > 1).ToList();
                 foreach (var content in contentItems)
@@ -108,10 +96,10 @@ namespace HavilaTravel.Controllers
                     }
 
                     if (content.Title.ToLower().Contains(query) || content.MenuTitle.ToLower().Contains(query) || content.Text.ToLower().Contains(query))
-                        result.Add(content);
+                        model.SearchResult.Add(content);
 
                 }
-                return View(result);
+                return View(model);
             }
         }
     }

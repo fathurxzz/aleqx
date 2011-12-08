@@ -1,6 +1,5 @@
 ﻿@using Dev.Mvc.Helpers
-@using HavilaTravel.Models
-@model IEnumerable<HavilaTravel.Models.Content>
+@model HavilaTravel.Models.SiteViewModel
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,7 +19,7 @@
                 <td class="separator">
                 </td>
                 <td class="searchQuery">
-                    Ваш запрос: <span>@ViewBag.SearchQuery</span>
+                    Ваш запрос: <span>@Model.SearchQuery</span>
                 </td>
                 <td class="separator">
                 </td>
@@ -31,7 +30,7 @@
     </div>
 }
 <div class="searchResults">
-    @foreach (var content in Model)
+    @foreach (var content in Model.SearchResult)
     {
         <div class="item">
             @{
@@ -68,11 +67,8 @@
 </div>
 @section MainBanner
 {
-    @{
-        var banners = ((List<Banner>)ViewBag.MainBanners);
-    }
     <div id="slideshow">
-        @foreach (var banner in banners)
+        @foreach (var banner in Model.MainBanners)
         {
                 
             @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
@@ -82,15 +78,46 @@
 }
 @section SmallBannerLeft
 {
-    @if (ViewBag.LeftBanner != null)
+    @if (Model.LeftBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
+        @Html.Partial("BannerSmall", Model.LeftBanner)
     }
 }
 @section SmallBannerRight
 {
-    @if (ViewBag.RightBanner != null)
+    @if (Model.RightBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
+        @Html.Partial("BannerSmall", Model.RightBanner)
+    }
+}
+@section BellBoy
+{
+    @if (Model.Bellboy != null)
+    {
+        <div id="bellboyContainer">
+            @Html.Partial("Bellboy", Model.Bellboy)
+        </div>
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
     }
 }
