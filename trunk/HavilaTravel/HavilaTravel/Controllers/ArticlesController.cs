@@ -17,10 +17,10 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = new SiteViewModel("articles", context, false)
-                                          {
-                                              Articles = context.Article.OrderBy(a => a.Date).ToList()
-                                          };
+                var model = new SiteViewModel("articles", context, false)
+                {
+                    Articles = context.Article.OrderBy(a => a.Date).ToList()
+                };
                 return View(model);
             }
         }
@@ -29,11 +29,10 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = new SiteViewModel("articles", context, false)
+                var model = new SiteViewModel("articles", context, false)
                 {
                     Article = context.Article.Where(a => a.Id == id).First()
                 };
-
                 return View(model);
             }
         }
