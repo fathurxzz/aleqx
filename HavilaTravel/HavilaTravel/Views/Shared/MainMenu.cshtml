@@ -1,16 +1,11 @@
-﻿@using HavilaTravel.Models
+﻿@model HavilaTravel.Models.Menu
 @{
     <div id="mainMenu">
-        @if (ViewBag.MenuList != null)
-        {
-            var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+        @{
             int cnt = 0;
-            if (menuItems != null)
-            {
-    
             <table>
                 <tr>
-                    @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+                    @foreach (var item in Model.OrderBy(m => m.SortOrder))
                     {
                         cnt++;
 
@@ -77,7 +72,7 @@
                             }
                         </td>
 
-                            if (cnt == menuItems.Count())
+                        if (cnt == Model.Count())
                             {
                         <td class="lastMenuItem @selected">
                             &nbsp;
@@ -87,7 +82,7 @@
                 </tr>
             </table>
     
-            }
+            
         }
     </div>
 }

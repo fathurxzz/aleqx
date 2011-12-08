@@ -1,46 +1,39 @@
 ﻿@using Dev.Mvc.Helpers
 @using HavilaTravel.Models
-@model HavilaTravel.Models.Content
-@Html.Raw(Model.Text)
+@model HavilaTravel.Models.SiteViewModel
+@Html.Raw(Model.Content.Text)
 @section ContentTitle{
     <div id="contentTitle">
-        @Model.Title
+        @Model.Content.Title
     </div>
 }
 @section Accordion
 {
     <div id="accordionContainer">
-        @Html.Partial("Accordion", Model.Accordions)
+        @Html.Partial("Accordion", Model.Content.Accordions)
     </div>
 }
 @section MainBanner
 {
-    @{
-        var banners = ((List<Banner>)ViewBag.MainBanners);
-    }
-     
-     
     <div id="slideshow">
-        @foreach (var banner in banners)
+        @foreach (var banner in Model.MainBanners)
         {
-            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName  ))
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
         }
-       
     </div>
-    
 }
 @section SmallBannerLeft
 {
-    @if (ViewBag.LeftBanner != null)
+    @if (Model.LeftBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
+        @Html.Partial("BannerSmall", Model.LeftBanner)
     }
 }
 @section SmallBannerRight
 {
-    @if (ViewBag.RightBanner != null)
+    @if (Model.RightBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
+        @Html.Partial("BannerSmall", Model.RightBanner)
     }
 }
 @section SubMenu
@@ -53,7 +46,7 @@
 }
 @section MainSearch
 {
-    @if (ViewBag.IsRoot != null && ViewBag.IsRoot)
+    @if (Model.IsRoot)
     {
 
         using (Html.BeginForm("Search", "Home", FormMethod.Get))
@@ -62,5 +55,37 @@
             @Html.TextBox("query", "Бали", new { @class = "mainsearch" })
         </div>
         }
+    }
+}
+@section BellBoy
+{
+    @if (Model.Bellboy != null)
+    {
+        <div id="bellboyContainer">
+            @Html.Partial("Bellboy", Model.Bellboy)
+        </div>
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
     }
 }

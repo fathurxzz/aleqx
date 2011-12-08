@@ -20,25 +20,15 @@
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     @RenderSection("Includes", false)
     <script type="text/javascript">
-
-
-
-
         $(function () {
             $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
-
 
             $("#closeButtonPlaces").click(function () {
 
                 $("#citiesSelector").css("display", "none");
             });
 
-
             $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
-
-
-
-
 
             $("#countrySelector").click(function (e) {
                 $("#countryBox").css("display", "block");
@@ -46,8 +36,6 @@
                 $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
                 e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
             });
-
-
 
             $(".reviewLink").click(function () {
                 $("#citiesSelector").css("display", "block");
@@ -60,7 +48,6 @@
                 }
             });
 
-
             $("#countryBox").click(function (e) {
                 e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
             });
@@ -70,12 +57,6 @@
                 $("#countryBox1").css("display", "block");
             });
 
-
-
-
-
-
-
             $("#accordion1").accordion(
             {
                 animated: 'slide',
@@ -84,20 +65,13 @@
                 active: false,
                 change: function (event, ui) {
                     ui.newHeader.css("color", "#cc0000");
-                    //ui.newHeader.css("text-decoration", "none");
                     ui.oldHeader.css("color", "#a3a3a3");
-                    //ui.oldHeader.css("text-decoration", "underline");
                 }
-
-
             });
 
             $("#accordion1 table").click(function () {
                 this.blur();
             });
-
-
-            /*$('#slideshow').cycle('stop').remove();*/
 
             $('#slideshow').cycle(
             {
@@ -109,38 +83,20 @@
             });
 
             function onAfter(curr, next, opts) {
-                //var msg = 'Slide ' + (opts.currSlide + 1) + ' of ' + opts.slideCount;
                 $('#leftCaption').html(next.alt);
                 $('#rightCaption').html(next.id);
                 $('#slideshowLink').attr('href', 'http://havila-travel.com/places/' + next.title);
             };
-
-
 
             $("#bellboy").delay(1000).animate({ "left": "-=275px" }, 1000);
 
             $("#query").focus(function () {
                 $(this).val("");
                 $(this).css("color", "#000");
-                /*alert("aaa");*/
-
             });
-
-
 
             $("#changeBellboyLink").click(function () {
-                //$(this).attr('form').submit();
-
-                //alert("call");
-
-                //$("#bellboyForm").submit();
-
-
-                /*$("#bellboy").delay(1000).animate({ "left": "-=275px" }, 1000);*/
             });
-
-
-
         });
     </script>
 </head>
@@ -155,17 +111,14 @@
                 </div>
                 }
             }
-            @if (ViewBag.IsRoot == null || !ViewBag.IsRoot)
-            {
-                <a href="/" class="rootLink">
-                    <img src="../../Content/img/pixel.gif" /></a>
-            }
+            @RenderSection("RootLogoLink")
             <div id="spaLink">
                 Посетите наш<br />
                 <a href="http://www.havila.com.ua">спа-клуб "ХА-ВИ"</a></div>
             <div id="subscribeLink">
                 @Html.ActionLink("Подписаться", "Index", "Subscribe", new { Area = "" }, null)
-                <br/>на рассылку новостей
+                <br />
+                на рассылку новостей
             </div>
             <div id="mainBanner">
                 @RenderSection("MainBanner", false)
@@ -182,16 +135,13 @@
             </div>
             @Html.Partial("HeaderLeftMenu")
         </div>
-        @Html.Partial("MainMenu")
+        @RenderSection("MainMenu")
     </div>
     <div id="page">
         <table>
             <tr>
                 <td id="leftContent">
-                    @if (ViewBag.IsRoot == null || !ViewBag.IsRoot)
-                    {
-                        @Html.Partial("QuickSearch")
-                    }
+                    @RenderSection("QuickSearch")
                     @RenderSection("LeftSubMenu", false)
                     @RenderSection("SmallBannerLeft", false)
                 </td>
@@ -204,11 +154,7 @@
                             @Html.ActionLink("Администрирование баннеров", "Index", "Banner", new { Area = "Admin" }, new { @class = "adminLink" })
                          
                         }
-                        
-                        @RenderSection("CountrySelectors",false)
-                        
-
-
+                        @RenderSection("CountrySelectors", false)
                         @RenderSection("ContentTitle", false)
                         @RenderSection("SubMenu", false)
                         <div id="pattern">
@@ -233,12 +179,7 @@
         </table>
     </div>
     <div id="footer">
-        @if (ViewBag.Bellboy != null)
-        {
-            <div id="bellboyContainer">
-                @Html.Partial("Bellboy", (Bellboy)ViewBag.Bellboy)
-            </div>
-        }
+        @RenderSection("BellBoy", false)
         <div id="innerFooter">
             <div id="sign">
                 &copy; @DateTime.Now.Year Хавила Тревел<br />
