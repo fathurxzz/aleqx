@@ -18,6 +18,7 @@ namespace HavilaTravel.Models
         public List<Content> SearchResult { get; set; }
         public string SearchQuery { get; set; }
         public List<Article> Articles { get; set; }
+        public Article Article { get; set; }
 
         protected readonly ContentStorage Context;
 

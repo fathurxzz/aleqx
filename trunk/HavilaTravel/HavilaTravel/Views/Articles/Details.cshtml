@@ -1,8 +1,61 @@
-﻿@model HavilaTravel.Models.Article
+﻿@using Dev.Mvc.Helpers
+@using HavilaTravel.Models
+@model SiteViewModel
 
 <div class="article">
-        <div class="date">@Model.Date</div>
-        <div class="title">@Model.Title</div>
-        <div class="text">@Html.Raw(Model.Text)</div>
+        <div class="date">@Model.Article.Date</div>
+        <div class="title">@Model.Article.Title</div>
+        <div class="text">@Html.Raw(Model.Article.Text)</div>
         <div class="details">&laquo; @Html.ActionLink("К новостям", "Index", "Articles", new { Area = "" }, null)</div>
     </div>   
+
+@section MainBanner
+{
+    <div id="slideshow">
+        @foreach (var banner in Model.MainBanners)
+        {
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
+        }
+    </div>
+}
+@section SmallBannerLeft
+{
+    @if (Model.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.LeftBanner)
+    }
+}
+@section SmallBannerRight
+{
+    @if (Model.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.RightBanner)
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
+    }
+}
+@section HeaderLeftMenu
+{
+    @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
+}

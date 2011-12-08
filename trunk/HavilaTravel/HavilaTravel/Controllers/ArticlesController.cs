@@ -29,8 +29,12 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var article = context.Article.Where(a => a.Id == id).First();
-                return View(article);
+                SiteViewModel model = new SiteViewModel("articles", context, false)
+                {
+                    Article = context.Article.Where(a => a.Id == id).First()
+                };
+
+                return View(model);
             }
         }
 
