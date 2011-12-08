@@ -26,8 +26,9 @@ namespace HavilaTravel.Models
         public SiteViewModel(string id, ContentStorage context, bool loadContent=true)
         {
             Context = context;
-            var menuList = Menu.GetMenuList(id, Context);
-            MenuList = menuList;
+            
+            MenuList = Menu.GetMenuList(id, Context);
+            
             Bellboy = Context.Bellboy.GetRandomItem();
             
             HeaderLeftMenuItems = Context.Content
@@ -38,7 +39,6 @@ namespace HavilaTravel.Models
                                     Title = c.Title,
                                     Name = c.Name
                                 }).ToList();
-
             
             var banners = Context.Banner.ToList();
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();
