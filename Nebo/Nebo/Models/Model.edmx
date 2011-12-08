@@ -17,6 +17,7 @@
           <Property Name="ContentLevel" Type="uint" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" />
           <Property Name="Title" Type="varchar" />
+          <Property Name="PageTitle" Type="varchar" />
           <Property Name="Text" Type="text" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
           <Property Name="SeoDescription" Type="varchar" />
@@ -43,6 +44,7 @@
           <Property Name="ContentLevel" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Title" Type="String" />
+          <Property Name="PageTitle" Type="String" />
           <Property Name="Text" Type="String" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
           <Property Name="SeoDescription" Type="String" />
@@ -68,6 +70,7 @@
             <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
             <ScalarProperty Name="Text" ColumnName="Text" />
             <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
             <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
