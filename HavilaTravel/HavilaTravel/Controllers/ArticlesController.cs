@@ -17,21 +17,11 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var menuList = Menu.GetMenuList("articles", context);
-                ViewBag.MenuList = menuList;
-
-
-                var headerLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
-                ViewBag.HeaderLeftMenuItems = headerLeftMenuItems;
-
-                var banners = context.Banner.ToList();
-                ViewBag.Banners = banners;
-
-
-
-
-                var articles = context.Article.OrderBy(a => a.Date).ToList();
-                return View(articles);
+                SiteViewModel model = new SiteViewModel("articles", context, false)
+                                          {
+                                              Articles = context.Article.OrderBy(a => a.Date).ToList()
+                                          };
+                return View(model);
             }
         }
 

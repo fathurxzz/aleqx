@@ -103,6 +103,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PlaceKind.cs" />
+    <Compile Include="Models\PlaceViewModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetCookie.aspx.cs">

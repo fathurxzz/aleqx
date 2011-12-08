@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using HavilaTravel.Helpers;
 
 namespace HavilaTravel.Models
@@ -15,31 +13,43 @@ namespace HavilaTravel.Models
         public Banner LeftBanner { get; set; }
         public Banner RightBanner { get; set; }
         public Content Content { get; set; }
-        public string PageTitle { get; set; }
-        public string SeoDescription { get; set; }
-        public string SeoKeywords { get; set; }
         public int CurrentContentId { get; set; }
         public bool IsRoot { get; set; }
         public List<Content> SearchResult { get; set; }
         public string SearchQuery { get; set; }
+        public List<Article> Articles { get; set; }
 
+        protected readonly ContentStorage Context;
 
+        
 
-        public static SiteViewModel FetchData(string id, ContentStorage context)
+        public SiteViewModel(string id, ContentStorage context, bool loadContent=true)
         {
-            var model = new SiteViewModel();
+            Context = context;
+            var menuList = Menu.GetMenuList(id, Context);
+            MenuList = menuList;
+            Bellboy = Context.Bellboy.GetRandomItem();
+            HeaderLeftMenuItems = Context.Content.Where(m => m.ContentType == 10).ToList();
+            var banners = Context.Banner.ToList();
+            MainBanners = banners.Where(b => b.BannerType == 1).ToList();
+            LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
+            RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
 
-            var menuList = Menu.GetMenuList(id, context);
+            if (loadContent)
+            {
+                Content = Context.Content
+                    .Include("Parent").Include("Children").Include("Accordions")
+                    .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 0) || c.Name == id)
+                    .First();
+                
+                foreach (var accordion in Content.Accordions)
+                {
+                    accordion.AccordionImages.Load();
+                }
 
-            model.MenuList = menuList;
-            model.Bellboy = context.Bellboy.GetRandomItem();
-            model.HeaderLeftMenuItems = context.Content.Where(m => m.ContentType == 10).ToList();
-
-            var banners = context.Banner.ToList();
-            model.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
-            model.LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
-            model.RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
-            return model;
+                IsRoot = Content.ContentType == 0;
+                CurrentContentId = (int) Content.Id;
+            }
         }
     }
 }

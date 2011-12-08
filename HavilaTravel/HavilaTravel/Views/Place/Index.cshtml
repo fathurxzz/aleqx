@@ -1,32 +1,34 @@
 ﻿@using Dev.Mvc.Helpers
 @using HavilaTravel.Models
-@model HavilaTravel.Models.Content
-@if (ViewBag.Spa != null)
+@model HavilaTravel.Models.PlaceViewModel
+@if (Model.Spa != null)
 {
-    @Html.Raw(((Content)ViewBag.Spa).Text)
+    @Html.Raw(Model.Spa.Text)
 }
-else if (ViewBag.Review != null)
+else if (Model.PlaceReview != null)
 {
-    @Html.Raw(((Content)ViewBag.Review).Text)
+    @Html.Raw(Model.PlaceReview.Text)
 }
 else
 {
-    @Html.Raw(Model.Text)
+    @Html.Raw(Model.Content.Text)
 }
 @section ContentTitle{
-
 }
-
 @section CountrySelectors
 {
-<div style="height: 80px;">
-    @Html.Partial("CountrySelector")
-
-    @Html.Partial("CountryBox")
-    @Html.Partial("PlacesSelector")
-</div>
+    <div style="height: 80px;">
+        @Html.Partial("CountrySelector")
+        @if (Model.RegionsAndCountries.Count > 0)
+        {
+            @Html.Partial("CountryBox", Model.RegionsAndCountries)
+        }
+        @if (Model.PlacesForSelector != null && Model.PlacesForSelector.Count > 0)
+        {
+            @Html.Partial("PlacesSelector", Model.PlacesForSelector)
+        }
+    </div>
 }
-
 @section Accordion
 {
     <div id="accordionContainer">
@@ -40,21 +42,16 @@ else
         }
         else
         {
-            @Html.Partial("Accordion", Model.Accordions)
+            @Html.Partial("Accordion", Model.Content.Accordions)
         }
     </div>
 }
 @section MainBanner
 {
-    @{
-        var banners = ((List<Banner>)ViewBag.MainBanners);
-    }
     <div id="slideshow">
-        @foreach (var banner in banners)
+        @foreach (var banner in Model.MainBanners)
         {
-                
-            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
-                
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
         }
     </div>
 }
@@ -74,15 +71,39 @@ else
 }
 @section SubMenu
 {
-    @Html.Partial("PlacesMap")
-     <div id="contentTitle">
-        @Model.Title
+    @Html.Partial("PlacesMap", Model.PlacesMap)
+    <div id="contentTitle">
+        @Model.Content.Title
     </div>
-    @Html.Partial("PlacesSubMenu", Model)
+    @Html.Partial("PlacesSubMenu", Model.Content)
 }
-
 @section LeftSubMenu
 {
-    @Html.Partial("PlacesLestSubMenu")
+    @if (Model.LeftSubMenuItems != null && Model.LeftSubMenuItems.Count > 0)
+    {
+        @Html.Partial("PlacesLestSubMenu", Model.LeftSubMenuItems)
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
 }
 
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
+    }
+}

@@ -1,4 +1,5 @@
-﻿@using HavilaTravel.Models
+﻿@model List<MenuItem>
+@using HavilaTravel.Models
 <div class="plcesSelectorFixed" id="citiesSelector">
     <div class="plcesSelectorFixedTop">
     </div>
@@ -20,10 +21,7 @@
 
         <div class="content">
         @{
-            var places = (List<MenuItem>)ViewBag.PlacesSelectorContent;
-
-
-            foreach (var item in places)
+            foreach (var item in Model)
             {
             <div class="plcesSelectorFixedItem">
                 @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
