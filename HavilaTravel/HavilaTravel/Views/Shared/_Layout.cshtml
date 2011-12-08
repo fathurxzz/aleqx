@@ -133,7 +133,8 @@
                 <a id="slideshowLink" href="">
                     <img src="../../Content/img/pixel.gif" /></a>
             </div>
-            @Html.Partial("HeaderLeftMenu")
+            @RenderSection("HeaderLeftMenu",false)
+            
         </div>
         @RenderSection("MainMenu",false)
     </div>
