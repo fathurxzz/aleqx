@@ -57,16 +57,16 @@ else
 }
 @section SmallBannerLeft
 {
-    @if (ViewBag.LeftBanner != null)
+    @if (Model.LeftBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.LeftBanner)
+        @Html.Partial("BannerSmall", Model.LeftBanner)
     }
 }
 @section SmallBannerRight
 {
-    @if (ViewBag.RightBanner != null)
+    @if (Model.RightBanner != null)
     {
-        @Html.Partial("BannerSmall", (Banner)ViewBag.RightBanner)
+        @Html.Partial("BannerSmall", Model.RightBanner)
     }
 }
 @section SubMenu
