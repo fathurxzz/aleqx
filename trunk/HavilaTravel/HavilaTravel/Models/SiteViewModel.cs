@@ -8,7 +8,7 @@ namespace HavilaTravel.Models
     {
         public List<Menu> MenuList { get; set; }
         public Bellboy Bellboy { get; set; }
-        public List<Content> HeaderLeftMenuItems { get; set; }
+        public List<MenuItem> HeaderLeftMenuItems { get; set; }
         public List<Banner> MainBanners { get; set; }
         public Banner LeftBanner { get; set; }
         public Banner RightBanner { get; set; }
@@ -29,7 +29,17 @@ namespace HavilaTravel.Models
             var menuList = Menu.GetMenuList(id, Context);
             MenuList = menuList;
             Bellboy = Context.Bellboy.GetRandomItem();
-            HeaderLeftMenuItems = Context.Content.Where(m => m.ContentType == 10).ToList();
+            
+            HeaderLeftMenuItems = Context.Content
+                .Where(m => m.ContentType == 10)
+                .Select(c=> new MenuItem
+                                {
+                                    Id = (int)c.Id,
+                                    Title = c.Title,
+                                    Name = c.Name
+                                }).ToList();
+
+            
             var banners = Context.Banner.ToList();
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();
             LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
