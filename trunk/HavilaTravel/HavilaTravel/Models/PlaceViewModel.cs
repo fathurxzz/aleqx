@@ -75,7 +75,7 @@ namespace HavilaTravel.Models
         private List<MenuItem> GetLeftSubMenuItems()
         {
             var placesLeftSubMenu = Content.Children
-                    .Where(p => p.PlaceKind != 6 && (p.PlaceKind == (int)PlaceKind.Spa && _showSpa.HasValue || (!_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.City || !_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.Hotel)))
+                    .Where(p => p.PlaceKind != 6 && (p.PlaceKind == (int)PlaceKind.Spa && _showSpa.HasValue || (/*!_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.City ||*/ !_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.Hotel)))
                     .Select(child => new MenuItem
                     {
                         Id = (int)child.Id,
