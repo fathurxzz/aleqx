@@ -22,23 +22,15 @@ namespace HavilaTravel.Models
 
         protected readonly ContentStorage Context;
 
-        
-
-        public SiteViewModel(string id, ContentStorage context, bool loadContent=true)
+        public SiteViewModel(string id, ContentStorage context, bool loadSibs, bool loadContent = true)
         {
             Context = context;
             Content content;
-            MenuList = Menu.GetMenuList(id, Context, out content);
-            
+            MenuList = Menu.GetMenuList(id, Context, loadSibs, out content);
+
             Bellboy = Context.Bellboy.GetRandomItem();
 
-
             HeaderLeftMenuItems = MenuList.Where(menu => menu.ContentType == 10).First();
-
-            /*foreach (Menu menu in MenuList.Where(menu => menu.ContentType == 10))
-            {
-                HeaderLeftMenuItems = menu;
-            }*/
 
             var banners = Context.Banner.ToList();
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();
@@ -65,7 +57,7 @@ namespace HavilaTravel.Models
                 }
 
                 IsRoot = Content.ContentType == 0;
-                CurrentContentId = (int) Content.Id;
+                CurrentContentId = (int)Content.Id;
             }
         }
     }
