@@ -23,6 +23,15 @@ namespace HavilaTravel.Controllers
             }
         }
 
+        public ActionResult NotFound()
+        {
+            using (var context = new ContentStorage())
+            {
+                SiteViewModel model = new SiteViewModel(null, context, true);
+                return View(model);
+            }
+        }
+
         public ActionResult Index(string id)
         {
             using (var context = new ContentStorage())

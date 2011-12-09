@@ -1,0 +1,70 @@
+﻿@using Dev.Mvc.Helpers
+@model HavilaTravel.Models.SiteViewModel
+
+@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ <div id="contentTitle">
+        Страница не найдена :(
+    </div>
+
+@section MainBanner
+{
+    <div id="slideshow">
+        @foreach (var banner in Model.MainBanners)
+        {
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
+        }
+    </div>
+}
+@section SmallBannerLeft
+{
+    @if (Model.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.LeftBanner)
+    }
+}
+@section SmallBannerRight
+{
+    @if (Model.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.RightBanner)
+    }
+}
+@section BellBoy
+{
+    @if (Model.Bellboy != null)
+    {
+        <div id="bellboyContainer">
+            @Html.Partial("Bellboy", Model.Bellboy)
+        </div>
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+@section MainMenu
+{
+    @{
+        var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu", menu)
+    }
+}
+
+@section HeaderLeftMenu
+{
+    @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
+}
