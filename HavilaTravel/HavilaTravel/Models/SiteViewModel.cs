@@ -31,16 +31,15 @@ namespace HavilaTravel.Models
             MenuList = Menu.GetMenuList(id, Context, out content);
             
             Bellboy = Context.Bellboy.GetRandomItem();
-            
-            HeaderLeftMenuItems = Context.Content
-                .Where(m => m.ContentType == 10)
-                .Select(c=> new MenuItem
-                                {
-                                    Id = (int)c.Id,
-                                    Title = c.Title,
-                                    Name = c.Name
-                                }).ToList();
-            
+
+
+            HeaderLeftMenuItems = MenuList.Where(menu => menu.ContentType == 10).First();
+
+            /*foreach (Menu menu in MenuList.Where(menu => menu.ContentType == 10))
+            {
+                HeaderLeftMenuItems = menu;
+            }*/
+
             var banners = Context.Banner.ToList();
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();
             LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
