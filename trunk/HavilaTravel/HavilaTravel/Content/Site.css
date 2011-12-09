@@ -644,6 +644,8 @@ table.adminContentPreview th
 	text-decoration:none;
 	border-bottom-width:1px;
 	border-bottom-style:dashed;
+	color: #6f6f6f;
+    cursor: pointer;
 }
 
 
