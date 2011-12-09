@@ -26,32 +26,7 @@ namespace HavilaTravel.Controllers
                 ViewBag.SeoDescription = model.Content.SeoDescription;
                 ViewBag.SeoKeywords = model.Content.SeoKeywords;
 
-                //if (string.IsNullOrEmpty(id))
-                //{
-                //    id = "Countries";
-                //}
-
-                //var content = context.Content
-                //    .Include("Parent").Include("Children").Include("Accordions")
-                //    .Where(c => c.Name == id)
-                //    .First();
-                //FillPlacesMap(model.Content, context);
-                //ViewBag.PlacesMap = model.PlacesMap;
-
-                //ViewBag.Bellboy = context.Bellboy.GetRandomItem();
-
-                /*var banners = context.Banner.ToList();
-                ViewBag.MainBanners = banners.Where(b => b.BannerType == 1).ToList();
-                ViewBag.LeftBanner = banners.Where(b => b.BannerType == 2).ToList().GetRandomItem();
-                ViewBag.RightBanner = banners.Where(b => b.BannerType == 3).ToList().GetRandomItem();
-                */
-                
-                //var regionsAndCountries = context.Content.Include("Children").Where(c => c.PlaceKind == 1).ToList();
-                //ViewBag.SelectCountryMenu = regionsAndCountries;
-                
                 ViewBag.SelectedCountryItem = model.Content.Name;
-
-                //ViewBag.ShowSpa = (showSpa.HasValue && showSpa.Value);
 
                 return View(model);
             }

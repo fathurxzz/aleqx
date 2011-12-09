@@ -27,7 +27,7 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = new SiteViewModel(id, context);
+                SiteViewModel model = new SiteViewModel(id, context, true);
 
                 ViewBag.PageTitle = model.Content.PageTitle;
                 ViewBag.SeoDescription = model.Content.SeoDescription;
@@ -41,7 +41,7 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = new SiteViewModel("countries", context)
+                SiteViewModel model = new SiteViewModel("countries", context, false)
                                           {
                                               SearchResult = new List<Content>(), 
                                               SearchQuery = query
