@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using HavilaTravel.Helpers;
 
 namespace HavilaTravel.Models
@@ -41,10 +44,17 @@ namespace HavilaTravel.Models
             {
                 if (content == null)
                 {
-                    Content = Context.Content
+                    try
+                    {
+                        Content = Context.Content
                         .Include("Parent").Include("Children").Include("Accordions")
                         .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 0) || c.Name == id)
                         .First();
+                    }
+                    catch
+                    {
+                        throw new HttpNotFoundException();
+                    }
                 }
                 else
                 {
