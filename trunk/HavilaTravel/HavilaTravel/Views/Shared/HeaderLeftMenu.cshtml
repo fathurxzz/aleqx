@@ -4,9 +4,20 @@
     <ul>
         @foreach (var m in Model.OrderBy(m => m.SortOrder))
         {
-            <li>&raquo; @Html.ActionLink(m.Title, "Index", "Home", new { id = m.Name }, null)
+            <li>&raquo; 
+            
+            
+            @if(m.Current)
+            {
+                @m.Title
+            }
+            else
+            {
+                @Html.ActionLink(m.Title, "Index", "Home", new {id = m.Name}, null)
+            }
                 @if (Request.IsAuthenticated)
-                {   
+                {
+                    @Html.Raw("&nbsp;")
                     @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
                     @Html.Raw("&nbsp;")
                     @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })

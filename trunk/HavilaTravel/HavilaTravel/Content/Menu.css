@@ -11,9 +11,9 @@
 
 #headerLeftMenu li
 {
-    color: #ffcc33;
+    color: #cc9933;
     list-style-type: none;
-    
+    font-size: 13px;
 }
 
 #headerLeftMenu a

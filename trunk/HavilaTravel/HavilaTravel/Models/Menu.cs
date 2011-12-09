@@ -10,6 +10,7 @@ namespace HavilaTravel.Models
     public class Menu : List<MenuItem>
     {
         public int MenuLevel { get; set; }
+        public int ContentType { get; set; }
 
         private static string _contentName;
 
@@ -21,7 +22,7 @@ namespace HavilaTravel.Models
             Content content = null;
             if (!string.IsNullOrEmpty(contentName))
             {
-                content = context.Content.Include("Parent").Include("Children")
+                content = context.Content.Include("Parent").Include("Children").Include("Accordions")
                     .Where(c => c.Name == contentName).FirstOrDefault();
                 if (content != null)
                 {
@@ -41,12 +42,23 @@ namespace HavilaTravel.Models
                 }
             }
 
-            result.Add(GetTopLevelMenu(context, selectedItemName));
+
+            var menuMainLevels = GetMenuMainLevels(context);
+            result.Add(GetTopLevelMenu(menuMainLevels, selectedItemName));
+            result.Add(GetHeaderLeftMenu(menuMainLevels, selectedItemName));
+
             possibleCurrentContent = content;
             return result;
         }
 
-        public static Menu GetMenuFromContext(List<Content> contents, string selectedItemName)
+
+        private static List<Content> GetMenuMainLevels(ContentStorage context)
+        {
+            return context.Content.Where(m => m.ContentType == 1 && m.ContentLevel == 1 || m.ContentType == 10).Select(m => m).ToList();
+        }
+
+
+        private static Menu GetMenuFromContext(List<Content> contents, string selectedItemName)
         {
             var menu = new Menu();
             menu.AddRange(
@@ -60,15 +72,25 @@ namespace HavilaTravel.Models
                     Current = c.Name == _contentName
                 }));
             menu.MenuLevel = (int)contents.First().ContentLevel;
+            menu.ContentType = (int)contents.First().ContentType;
             return menu;
         }
 
-        public static Menu GetTopLevelMenu(ContentStorage context, string selectedItemName)
+        private static Menu GetTopLevelMenu(List<Content> contents, string selectedItemName)
         {
-            var contents = context.Content.Where(m => m.ContentType == 1 && m.ContentLevel == 1).Select(m => m).ToList();
+            contents = contents.Where(m => m.ContentType == 1 && m.ContentLevel == 1).Select(m => m).ToList();
             var menu = GetMenuFromContext(contents, selectedItemName);
             return menu;
         }
+
+        private static Menu GetHeaderLeftMenu(List<Content> contents, string selectedItemName)
+        {
+            contents = contents.Where(m => m.ContentType == 10).Select(m => m).ToList();
+            var menu = GetMenuFromContext(contents, selectedItemName);
+            return menu;
+        }
+
+
     }
 
     public class MenuItem
