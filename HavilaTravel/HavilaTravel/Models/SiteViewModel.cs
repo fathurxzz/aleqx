@@ -27,8 +27,8 @@ namespace HavilaTravel.Models
         public SiteViewModel(string id, ContentStorage context, bool loadContent=true)
         {
             Context = context;
-            
-            MenuList = Menu.GetMenuList(id, Context);
+            Content content;
+            MenuList = Menu.GetMenuList(id, Context, out content);
             
             Bellboy = Context.Bellboy.GetRandomItem();
             
@@ -48,11 +48,18 @@ namespace HavilaTravel.Models
 
             if (loadContent)
             {
-                Content = Context.Content
-                    .Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 0) || c.Name == id)
-                    .First();
-                
+                if (content == null)
+                {
+                    Content = Context.Content
+                        .Include("Parent").Include("Children").Include("Accordions")
+                        .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 0) || c.Name == id)
+                        .First();
+                }
+                else
+                {
+                    Content = content;
+                }
+
                 foreach (var accordion in Content.Accordions)
                 {
                     accordion.AccordionImages.Load();
