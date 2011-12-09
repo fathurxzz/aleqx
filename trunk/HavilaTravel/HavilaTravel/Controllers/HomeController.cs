@@ -27,7 +27,10 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                SiteViewModel model = new SiteViewModel(null, context, true);
+                SiteViewModel model = new SiteViewModel(null, context, true)
+                                          {
+                                              IsRoot = false
+                                          };
                 return View(model);
             }
         }
