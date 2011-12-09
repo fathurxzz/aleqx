@@ -13,31 +13,36 @@ namespace HavilaTravel.Models
 
         private static string _contentName;
 
-        public static List<Menu> GetMenuList(string contentName, ContentStorage context)
+        public static List<Menu> GetMenuList(string contentName, ContentStorage context, out Content possibleCurrentContent)
         {
             _contentName = contentName;
             var result = new List<Menu>();
             string selectedItemName = null;
-            var content = context.Content.Include("Parent").Include("Children").Where(c => c.Name == contentName).FirstOrDefault();
-            if (content != null)
+            Content content = null;
+            if (!string.IsNullOrEmpty(contentName))
             {
-                if (content.Children.Count > 0)
+                content = context.Content.Include("Parent").Include("Children")
+                    .Where(c => c.Name == contentName).FirstOrDefault();
+                if (content != null)
                 {
-                    result.Add(GetMenuFromContext(content.Children.ToList(), null));
-                }
+                    if (content.Children.Count > 0)
+                    {
+                        result.Add(GetMenuFromContext(content.Children.ToList(), null));
+                    }
 
-                while (content.Parent != null)
-                {
+                    while (content.Parent != null)
+                    {
+                        selectedItemName = content.Name;
+                        var parentId = content.Parent.Id;
+                        content = context.Content.Include("Parent").Include("Children").Where(c => c.Id == parentId).First();
+                        result.Add(GetMenuFromContext(content.Children.ToList(), selectedItemName));
+                    }
                     selectedItemName = content.Name;
-                    var parentId = content.Parent.Id;
-                    content = context.Content.Include("Parent").Include("Children").Where(c => c.Id == parentId).First();
-                    result.Add(GetMenuFromContext(content.Children.ToList(), selectedItemName));
                 }
-                selectedItemName = content.Name;
             }
 
             result.Add(GetTopLevelMenu(context, selectedItemName));
-
+            possibleCurrentContent = content;
             return result;
         }
 
