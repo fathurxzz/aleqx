@@ -25,6 +25,7 @@ namespace HavilaTravel.Controllers
                 ViewBag.PageTitle = model.Content.PageTitle;
                 ViewBag.SeoDescription = model.Content.SeoDescription;
                 ViewBag.SeoKeywords = model.Content.SeoKeywords;
+                ViewBag.CurrentContentId = model.CurrentContentId;
 
                 ViewBag.SelectedCountryItem = model.Content.Name;
 
