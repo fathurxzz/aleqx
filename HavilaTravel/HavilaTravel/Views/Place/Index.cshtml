@@ -32,13 +32,13 @@ else
 @section Accordion
 {
     <div id="accordionContainer">
-        @if (ViewBag.Spa != null)
+        @if (Model.Spa != null)
         {
-            @Html.Partial("Accordion", ((Content)ViewBag.Spa).Accordions)
+            @Html.Partial("Accordion", Model.Spa.Accordions)
         }
-        else if (ViewBag.Review != null)
+        else if (Model.PlaceReview != null)
         {
-            @Html.Partial("Accordion", ((Content)ViewBag.Review).Accordions)
+            @Html.Partial("Accordion", Model.PlaceReview.Accordions)
         }
         else
         {
