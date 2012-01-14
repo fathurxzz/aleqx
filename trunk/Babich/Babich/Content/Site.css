@@ -62,11 +62,12 @@ body
 #mainContent
 {
     background-color:#cccccc;
-    width:877px;
+    width:777px;
     margin-right:56px;
     margin-left:auto;
     min-height:400px;
-    padding:20px 40px;
+    padding:0px 90px;
+    
     /*border:1px solid red;*/
 }
 
