@@ -1,163 +1,150 @@
 ﻿*
 {
-    margin:0;
-    padding:0;
+	margin: 0;
+	padding: 0;
 }
 
 body
 {
-    font-family:Arial;
+	font-family: Arial;
 }
 
 .clear
 {
-    clear:both;
+	clear: both;
 }
 
 #page
 {
-    width:1265px;
-    margin-right:0px;
-    margin-left:auto;
+	width: 1265px;
+	margin-right: 0px;
+	margin-left: auto;
 }
 
 #logo
 {
-    background:url('img/logo.gif');
-    width:212px;
-    height:122px;
-    float:left;
-    margin-right:0px;
-    margin-left:3px;
+	background: url('img/logo.gif');
+	width: 212px;
+	height: 122px;
+	float: left;
+	margin-right: 0px;
+	margin-left: 3px;
 }
 
 #languageSelector
 {
-    float:left;
-    color:#000;
-    font-size:11px;
-    font-weight:bold;
-    margin-top:10px;
+	float: left;
+	color: #000;
+	font-size: 11px;
+	font-weight: bold;
+	margin-top: 10px;
 }
 
 #languageSelector a
 {
-    font-weight:normal;
-    color:#cc0000;
+	font-weight: normal;
+	color: #cc0000;
 }
 
 #gContent
 {
-    min-height:300px;
-    background-color:#a8a8a8;
-    width:938px;
-    margin-right:66px;
-    margin-left:auto;
-    /*border:1px solid black;*/
-    /*padding-bottom:10px;*/
-    margin-top:1px;
-    
+	min-height: 300px;
+	background-color: #a8a8a8;
+	width: 938px;
+	margin-right: 66px;
+	margin-left: auto; /*border:1px solid black;*/ /*padding-bottom:10px;*/
+	margin-top: 1px;
 }
 
 #mainContent
 {
-    background-color:#cccccc;
-    width:777px;
-    margin-right:56px;
-    margin-left:auto;
-    min-height:400px;
-    padding:0px 90px;
-    
-    /*border:1px solid red;*/
+	background-color: #cccccc;
+	width: 777px;
+	margin-right: 56px;
+	margin-left: auto;
+	min-height: 400px;
+	padding: 0px 90px; /*border:1px solid red;*/
 }
 
 #mainContentFooter
 {
-    background-color:#cccccc;
-    width:957px;
-    margin-right:56px;
-    margin-left:auto;
-    height:48px;
+	background-color: #cccccc;
+	width: 957px;
+	margin-right: 56px;
+	margin-left: auto;
+	height: 48px;
 }
 
 #contactsContainer
 {
-	margin-top:40px;
-	margin-left:23px;
-	width:200px;
-	float:left;
-	font-size:11px;
-	color:#666666;
+	margin-top: 40px;
+	margin-left: 23px;
+	width: 200px;
+	float: left;
+	font-size: 11px;
+	color: #666666;
 }
 
 #footer
 {
-	height:49px;
-	background-color:#777777;
-	/*margin-top:-69px;*/
+	height: 49px;
+	background-color: #777777; /*margin-top:-69px;*/
 }
 
 #gContentOuter
 {
-    background-image:url('img/babich_v.gif');
-    background-repeat:no-repeat;
-    background-position:right bottom;
+	background-image: url('img/babich_v.gif');
+	background-repeat: no-repeat;
+	background-position: right bottom;
 }
 
 
 
 #backFooter
 {
-    background-color:#cccccc;
-    width:957px;
-    margin-right:56px;
-    margin-left:auto;
-    height:20px;
+	background-color: #cccccc;
+	width: 957px;
+	margin-right: 56px;
+	margin-left: auto;
+	height: 20px;
 }
 
 
 
 .sign
 {
-    /*
-	margin-right:110px;
-	margin-left:auto;
-	text-align:right;
-
-	line-height:17px;
-	padding-top:8px;
-*/
-	color:#fff;
-	font-size:12px;
+	/* 	margin-right:110px; 	margin-left:auto; 	text-align:right; 	line-height:17px; 	padding-top:8px; */
+	color: #fff;
+	font-size: 12px;
 }
 
 .sign a
 {
-	color:#fff;
-	font-size:12px;
-	font-weight:bold;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
 }
 
 #leftSign
 {
-    font-size:11px;
-    margin-right:1033px;
-    margin-left:auto;
-    position:relative;
-    width:200px;
-    padding-top:4px;
+	font-size: 11px;
+	margin-right: 1033px;
+	margin-left: auto;
+	position: relative;
+	width: 200px;
+	padding-top: 4px;
 }
 
 #rightSign
 {
-    float:right;
-    margin-right:63px;
-	font-size:12px;
-	padding-top:20px;
+	float: right;
+	margin-right: 63px;
+	font-size: 12px;
+	padding-top: 20px;
 }
 #rightSign a
 {
-    font-size:inherit;
+	font-size: inherit;
 }
 
 
@@ -165,68 +152,100 @@ body
 
 #titleLine
 {
-	height:66px;
-	padding-top:40px;
-    background-color:#cccccc;
-    width:957px;
-    margin-right:56px;
-    margin-left:auto;
-    letter-spacing:1px;
-    /*font-weight:bold;*/
-    font-size:25px;
-    text-align:center;
-    white-space:nowrap;
-    color:#cc0000;
-    
+	height: 66px;
+	padding-top: 40px;
+	background-color: #cccccc;
+	width: 957px;
+	margin-right: 56px;
+	margin-left: auto;
+	letter-spacing: 1px; /*font-weight:bold;*/
+	font-size: 25px;
+	text-align: center;
+	white-space: nowrap;
+	color: #cc0000;
 }
 
 #skatch
 {
 	/*border:1px solid black;*/
-	width:608px;
-	height:427px;
-	
-	/*margin-right:100px;*/
-	margin-left:-400px;
-	margin-top:-430px;
-	position:absolute;
-	z-index:-1;
-    display: block;
+	width: 608px;
+	height: 427px; /*margin-right:100px;*/
+	margin-left: -400px;
+	margin-top: -430px;
+	position: absolute;
+	z-index: -1;
+	display: block;
 }
 
-.skatch1{background:url('img/skatch/s1.gif');}
-.skatch2{background:url('img/skatch/s2.gif');}
-.skatch3{background:url('img/skatch/s3.gif');}
-.skatch4{background:url('img/skatch/s4.gif');}
-.skatch5{background:url('img/skatch/s5.gif');}
-.skatch6{background:url('img/skatch/s6.gif');}
-.skatch7{background:url('img/skatch/s7.gif');}
+.skatch1
+{
+	background: url('img/skatch/s1.gif');
+}
+.skatch2
+{
+	background: url('img/skatch/s2.gif');
+}
+.skatch3
+{
+	background: url('img/skatch/s3.gif');
+}
+.skatch4
+{
+	background: url('img/skatch/s4.gif');
+}
+.skatch5
+{
+	background: url('img/skatch/s5.gif');
+}
+.skatch6
+{
+	background: url('img/skatch/s6.gif');
+}
+.skatch7
+{
+	background: url('img/skatch/s7.gif');
+}
 
 
 #babich_h
 {
-	float:left;
-	width:197px;
-	height:15px;
-	margin-left:-250px;
-	margin-top:-63px;
-	/*position:absolute;*/
-	background:url('img/babich_h.png');
+	float: left;
+	width: 197px;
+	height: 15px;
+	margin-left: -250px;
+	margin-top: -63px; /*position:absolute;*/
+	background: url('img/babich_h.png');
 }
 
 
 .rootLink
 {
-	display:block;
-	position:absolute;
-	width:170px;
-    height:95px;
-	margin-left:20px;
+	display: block;
+	position: absolute;
+	width: 170px;
+	height: 95px;
+	margin-left: 20px;
 }
 
 .rootLink img
 {
-    width:170px;
-    height:95px;
-	border:none;
+	width: 170px;
+	height: 95px;
+	border: none;
+}
+
+.mapLink
+{
+	padding-top: 8px;
+	padding-bottom: 15px;
+}
+
+.mailto
+{
+	padding-top: 15px;
+}
+
+.mapLink a, .mailto a
+{
+	color: #3366ff;
 }

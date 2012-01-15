@@ -14,6 +14,7 @@
     <AssemblyName>Babich</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -197,6 +198,7 @@
     <Content Include="Views\Shared\Gallery.ascx" />
     <Content Include="Views\Shared\LanguageSelector.ascx" />
     <Content Include="Views\Shared\MainMenu.ascx" />
+    <Content Include="Views\Shared\Map.ascx" />
     <Content Include="Views\Shared\Paging.ascx" />
     <Content Include="Views\Shared\Projects.ascx" />
     <Content Include="Views\Shared\SubMenu.ascx" />

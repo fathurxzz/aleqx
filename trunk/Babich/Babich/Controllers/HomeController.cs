@@ -82,5 +82,11 @@ namespace Babich.Controllers
             SiteSettings.SetCurrentLanguage(id);
             return RedirectToAction("Index", "Home",new{id=""});
         }
+
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public ActionResult Map()
+        {
+            return View("Map");
+        }
     }
 }

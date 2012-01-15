@@ -1,0 +1,6 @@
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+
+
+<iframe width="640" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=%D0%B3%D0%BE%D1%80%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE+91%2F14&amp;aq=&amp;sll=50.424809,30.515905&amp;sspn=0.002755,0.006968&amp;vpsrc=6&amp;ie=UTF8&amp;hq=&amp;hnear=Hor'koho+St,+91%2F14,+Kiev,+Kyiv+city,+Ukraine&amp;t=h&amp;ll=50.425308,30.515749&amp;spn=0.006562,0.013733&amp;z=16&amp;output=embed"></iframe>
+<br />
+<small><a target="_blank" href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=%D0%B3%D0%BE%D1%80%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE+91%2F14&amp;aq=&amp;sll=50.424809,30.515905&amp;sspn=0.002755,0.006968&amp;vpsrc=6&amp;ie=UTF8&amp;hq=&amp;hnear=Hor'koho+St,+91%2F14,+Kiev,+Kyiv+city,+Ukraine&amp;t=h&amp;ll=50.425308,30.515749&amp;spn=0.006562,0.013733&amp;z=16" style="color:#0000FF;text-align:left">Посмотреть на карте побольше</a></small>
