@@ -1,0 +1,40 @@
+﻿@using Zelenuk.Helpers
+@using Zelenuk.Models
+@model Zelenuk.Models.Gallery
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MainMenu
+{
+ @{
+        var menu = (Menu)ViewBag.Menu;
+        @Html.Partial("MainMenu", menu)
+    
+    }
+}
+
+
+@{
+
+    foreach (var item in Model.GalleryItems)
+    {
+        <div class="galleryItem">
+        
+        <a rel="g1" href="../../Content/Photos/@item.ImageSource" class="fancy">
+        @Html.Raw(Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource))                
+        </a>
+        @Html.ActionLink("Delete", "DeleteImage", "Gallery", new { Area = "Admin", galleryId = Model.Id, id = item.Id }, new { onclick = "return confirm('Удалить изображение?')" })
+        </div>
+        
+    }
+    <div class="clear"></div>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index","Gallery")
+
+    @Html.ActionLink("Add Image To Gallery", "AddImageToGallery","Gallery",new{Area="Admin",galleryId=Model.Id},null)
+</p>

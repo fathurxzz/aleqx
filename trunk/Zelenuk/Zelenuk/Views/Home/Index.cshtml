@@ -1,0 +1,17 @@
+﻿@model Zelenuk.Models.Content
+@using Zelenuk.Models
+@Html.Raw(Model.Text)
+
+@section Title
+{
+    @Model.Title
+}
+
+@section MainMenu
+{
+    @{
+        var menu = (Menu)ViewBag.Menu;
+        @Html.Partial("MainMenu", menu)
+    
+    }
+}

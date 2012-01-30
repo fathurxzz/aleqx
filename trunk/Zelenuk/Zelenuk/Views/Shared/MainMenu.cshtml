@@ -1,0 +1,27 @@
+﻿@model Zelenuk.Models.Menu
+@{
+
+    foreach (var menuItem in Model)
+    {
+        if (menuItem.Selected)
+        {
+    <text>
+    @menuItem.Title
+    </text>
+        }
+        else
+        {
+    @Html.ActionLink(menuItem.Title, "Index", "Home", new { id = menuItem.Url }, null)
+        }
+         //if (Request.IsAuthenticated)
+        //{
+        @Html.ActionLink("edit", "EditContent", "Content", new { Area = "Admin", id=menuItem.Id }, new { @class = "adminLink" })
+        @Html.ActionLink("delete", "Delete", "Content", new { Area = "Admin", id = menuItem.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+        //}
+    }
+
+        //if (Request.IsAuthenticated)
+        //{
+    @Html.ActionLink("add", "AddContent", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+    //}
+}

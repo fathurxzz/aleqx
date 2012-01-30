@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="zelModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="zelModelStoreContainer">
+          <EntitySet Name="content" EntityType="zelModel.Store.content" store:Type="Tables" Schema="zel" />
+          <EntitySet Name="gallery" EntityType="zelModel.Store.gallery" store:Type="Tables" Schema="zel" />
+          <EntitySet Name="galleryitem" EntityType="zelModel.Store.galleryitem" store:Type="Tables" Schema="zel" />
+        </EntityContainer>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="Text" Type="text" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+        </EntityType>
+        <EntityType Name="gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="galleryitem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryId" Type="int" Nullable="false" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zelModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ContentStorage" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Content" EntityType="zelModel.Content" />
+          <EntitySet Name="Gallery" EntityType="zelModel.Gallery" />
+          <EntitySet Name="Galleryitem" EntityType="zelModel.Galleryitem" />
+          <AssociationSet Name="GalleryGalleryitem" Association="zelModel.GalleryGalleryitem">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="Galleryitem" EntitySet="Galleryitem" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="Text" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="SeoDescription" Type="String" />
+          <Property Name="SeoKeywords" Type="String" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Title" Type="String" />
+          <Property Name="PageTitle" Type="String" />
+          <Property Name="ImageSource" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GalleryItems" Relationship="zelModel.GalleryGalleryitem" FromRole="Gallery" ToRole="Galleryitem" />
+        </EntityType>
+        <EntityType Name="Galleryitem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageSource" Type="String" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gallery" Relationship="zelModel.GalleryGalleryitem" FromRole="Galleryitem" ToRole="Gallery" />
+        </EntityType>
+        <Association Name="GalleryGalleryitem">
+          <End Type="zelModel.Gallery" Role="Gallery" Multiplicity="1" />
+          <End Type="zelModel.Galleryitem" Role="Galleryitem" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="zelModelStoreContainer" CdmEntityContainer="ContentStorage">
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="zelModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Gallery"><EntityTypeMapping TypeName="zelModel.Gallery"><MappingFragment StoreEntitySet="gallery">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Galleryitem"><EntityTypeMapping TypeName="zelModel.Galleryitem"><MappingFragment StoreEntitySet="galleryitem">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="GalleryGalleryitem" TypeName="zelModel.GalleryGalleryitem" StoreEntitySet="galleryitem">
+            <EndProperty Name="Galleryitem">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Gallery">
+              <ScalarProperty Name="Id" ColumnName="GalleryId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="zelModel.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" IsExpanded="true" />
+        <EntityTypeShape EntityType="zelModel.Gallery" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9210009765624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="zelModel.Galleryitem" Width="1.5" PointX="0.75" PointY="3.75" Height="1.5923063151041665" IsExpanded="true" />
+        <AssociationConnector Association="zelModel.GalleryGalleryitem">
+          <ConnectorPoint PointX="3.5" PointY="2.835348307291667" />
+          <ConnectorPoint PointX="3.5" PointY="4.5461531575520837" />
+          <ConnectorPoint PointX="2.25" PointY="4.5461531575520837" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

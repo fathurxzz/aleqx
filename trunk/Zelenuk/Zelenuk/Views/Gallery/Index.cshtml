@@ -1,0 +1,36 @@
+﻿@using Zelenuk.Helpers
+@using Zelenuk.Models
+@model IEnumerable<Zelenuk.Models.Gallery>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section MainMenu
+{
+    @{
+        var menu = (Menu)ViewBag.Menu;
+        @Html.Partial("MainMenu", menu)
+    
+    }
+}
+<h2>
+    Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Add", "Gallery", new { Area = "Admin" }, null)
+</p>
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title) 
+                @Html.DisplayFor(modelItem => item.SortOrder)
+                <br/>
+                @Html.Raw(@Html.ActionLink("[IMAGE]", "Details", new { id = item.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Photos/", item.ImageSource, "thumbnail", item.ImageSource)))
+                <br/>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteGallery","Gallery",  new { id = item.Id, Area="Admin" }, new { onclick = "return confirm('Удалить галерею?')" })
+            </td>
+        </tr>
+    }
+</table>
