@@ -3,7 +3,7 @@
 03150, Україна, м. Київ<br />
 вул. Горького, 91/14, оф. 139
 <div class="mapLink">
-<%=Html.ActionLink("Схема проїзду", "Map", "Home", null, new { @class = "fancyMap iframe" })%>
+<%=Html.ActionLink("Схема проїзду", "Map", "Home", null, new { @class = "fancyMap iframe" })%><br />
 </div>
 (044) 247-44-29<br/>
 (044) 206-21-25
@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".fancyMap").fancybox({ hideOnContentClick: false, showCloseButton: true, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true, height:520, width:650 });
+        $(".fancyMap").fancybox({ hideOnContentClick: false, showCloseButton: true, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true, height:370, width:470 });
     });
 </script>
 
