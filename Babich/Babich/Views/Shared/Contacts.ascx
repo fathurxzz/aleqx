@@ -6,10 +6,9 @@
 <%=Html.ActionLink("Схема проїзду", "Map", "Home", null, new { @class = "fancyMap iframe" })%>
 </div>
 (044) 247-44-29<br/>
-(044) 206-21-25<br/>
-(093) 505-12-37
+(044) 206-21-25
 <div class="mailto">
-<a href="mailto:c.a.w.babich@gmail.com">c.a.w.babich@gmail.com</a>
+<a href="mailto:arch.babich@gmail.com">arch.babich@gmail.com</a>
 </div>
 
 <script type="text/javascript">
