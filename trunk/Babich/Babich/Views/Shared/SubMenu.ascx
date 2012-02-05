@@ -16,6 +16,7 @@
             {%>
     <%=item.TitleEng%>
     <%
+               
 }
                     else
                     {%>
@@ -42,6 +43,11 @@
 
                 if (Request.IsAuthenticated)
                 {
+
+                %>
+                <%=item.SortOrder %>
+                <%
+
     %>
     <%=Html.ActionLink("[IMAGE]", "Delete", "Content", new { area = "Admin", id = item.Id },
                                       new
