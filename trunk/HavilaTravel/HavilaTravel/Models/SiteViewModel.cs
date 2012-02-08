@@ -48,7 +48,7 @@ namespace HavilaTravel.Models
                     {
                         Content = Context.Content
                         .Include("Parent").Include("Children").Include("Accordions")
-                        .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 0) || c.Name == id)
+                        .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 100) || c.Name == id)
                         .First();
                     }
                     catch
@@ -66,7 +66,7 @@ namespace HavilaTravel.Models
                     accordion.AccordionImages.Load();
                 }
 
-                IsRoot = Content.ContentType == 0;
+                IsRoot = Content.ContentType == 100;
                 CurrentContentId = (int)Content.Id;
             }
         }
