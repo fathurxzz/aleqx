@@ -1,8 +1,10 @@
-﻿@using HavilaTravel.Models
+﻿@model List<Menu>
+           
+@using HavilaTravel.Models
 @{
-    if(ViewBag.MenuList!=null)
+    if(Model!=null)
     {
-        var menuItems = ((List<Menu>) ViewBag.MenuList).Where(m => m.MenuLevel == 2).Select(m => m).FirstOrDefault();
+        var menuItems = ((List<Menu>)Model).Where(m => m.MenuLevel == 2).Select(m => m).FirstOrDefault();
 
         if (menuItems != null && menuItems.Count > 0)
         {
