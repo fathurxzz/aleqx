@@ -58,7 +58,7 @@
                                         
                                         @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = country.Id }, new { @class = "adminLink" })
                                         @Html.Raw("&nbsp;&nbsp;")
-                                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = region.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить страну?')" })
+                                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = country.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить страну?')" })
                                     }
                                 </div>
                                     }
