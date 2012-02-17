@@ -23,7 +23,7 @@ namespace Shop.Controllers
 
                 category.Products.Add(product);
 
-                context.AddToCategories(category);
+                context.AddToCategory(category);
 
                 context.SaveChanges();
             }
