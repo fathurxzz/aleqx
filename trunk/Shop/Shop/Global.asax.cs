@@ -24,9 +24,12 @@ namespace Shop
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new string[1] { "Shop.Controllers" }
             );
 
+
+             
         }
 
         protected void Application_Start()
