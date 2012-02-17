@@ -250,18 +250,16 @@ namespace Shop.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
         /// <param name="isNew">Initial value of the IsNew property.</param>
         /// <param name="isSpecialOffer">Initial value of the IsSpecialOffer property.</param>
         /// <param name="published">Initial value of the Published property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String description, global::System.Boolean isNew, global::System.Boolean isSpecialOffer, global::System.Boolean published, global::System.Int32 sortOrder, global::System.Int32 categoryId)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.Boolean isNew, global::System.Boolean isSpecialOffer, global::System.Boolean published, global::System.Int32 sortOrder, global::System.Int32 categoryId)
         {
             Product product = new Product();
             product.Id = id;
             product.Name = name;
-            product.Description = description;
             product.IsNew = isNew;
             product.IsSpecialOffer = isSpecialOffer;
             product.Published = published;
@@ -351,7 +349,7 @@ namespace Shop.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -363,7 +361,7 @@ namespace Shop.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }

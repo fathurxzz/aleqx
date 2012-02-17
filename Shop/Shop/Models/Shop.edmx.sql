@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/17/2012 12:55:35
+-- Date Created: 02/17/2012 13:06:39
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -16,12 +16,14 @@
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `Products` DROP CONSTRAINT `FK_CategoryProduct`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Products`;
+    DROP TABLE IF EXISTS `Categories`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -34,7 +36,7 @@ CREATE TABLE `Products` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` mediumtext  NOT NULL,
     `ShortDescription` longtext  NULL,
-    `Description` longtext  NOT NULL,
+    `Description` longtext  NULL,
     `IsNew` bool  NOT NULL,
     `IsSpecialOffer` bool  NOT NULL,
     `Published` bool  NOT NULL,
