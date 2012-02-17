@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/17/2012 15:58:58
+-- Date Created: 02/17/2012 16:20:26
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -25,6 +25,8 @@
 --    ALTER TABLE `ProductAttributeValuesProduct` DROP CONSTRAINT `FK_ProductAttributeValuesProduct_Product`;
 --    ALTER TABLE `ProductImage` DROP CONSTRAINT `FK_ProductProductImage`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_BrandProduct`;
+--    ALTER TABLE `TagProduct` DROP CONSTRAINT `FK_TagProduct_Tag`;
+--    ALTER TABLE `TagProduct` DROP CONSTRAINT `FK_TagProduct_Product`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,8 +38,10 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductAttributeValues`;
     DROP TABLE IF EXISTS `ProductImage`;
     DROP TABLE IF EXISTS `Brand`;
+    DROP TABLE IF EXISTS `Tag`;
     DROP TABLE IF EXISTS `PruductAttributeCategory`;
     DROP TABLE IF EXISTS `ProductAttributeValuesProduct`;
+    DROP TABLE IF EXISTS `TagProduct`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -88,7 +92,7 @@ CREATE TABLE `PruductAttribute` (
 
 CREATE TABLE `ProductAttributeValues` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Value` longtext  NOT NULL,
+    `Value` mediumtext  NOT NULL,
     `SortOrder` int  NOT NULL,
     `PruductAttributeId` int  NOT NULL
 );
@@ -98,7 +102,7 @@ CREATE TABLE `ProductAttributeValues` (
 CREATE TABLE `ProductImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Default` bool  NOT NULL,
-    `ImageSource` longtext  NOT NULL,
+    `ImageSource` mediumtext  NOT NULL,
     `ProductId` int  NOT NULL
 );
 
@@ -106,18 +110,18 @@ CREATE TABLE `ProductImage` (
 
 CREATE TABLE `Brand` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` longtext  NOT NULL,
-    `Logo` longtext  NOT NULL,
-    `Description` longtext  NOT NULL,
-    `SeoDescription` longtext  NOT NULL,
-    `SeoKeywords` longtext  NOT NULL
+    `Name` mediumtext  NOT NULL,
+    `Logo` mediumtext  NULL,
+    `Description` longtext  NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'Tag'
 
 CREATE TABLE `Tag` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Value` longtext  NOT NULL
+    `Value` mediumtext  NOT NULL
 );
 
 -- Creating table 'PruductAttributeCategory'
