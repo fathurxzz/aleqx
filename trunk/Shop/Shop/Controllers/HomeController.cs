@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Models;
 
 namespace Shop.Controllers
 {
@@ -10,7 +11,22 @@ namespace Shop.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            using (var context = new ShopContainer())
+            {
+                var category = new Category {Name = "cat1"
+                };
+                var product = new Product
+                                  {
+                                      Name = "p1",
+
+                                  };
+
+                category.Products.Add(product);
+
+                context.AddToCategories(category);
+
+                context.SaveChanges();
+            }
 
             return View();
         }
