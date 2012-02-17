@@ -1,0 +1,41 @@
+﻿@model Shop.Models.Brand
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Brand</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Logo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Logo)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">SeoDescription</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeoDescription)
+    </div>
+
+    <div class="display-label">SeoKeywords</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeoKeywords)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

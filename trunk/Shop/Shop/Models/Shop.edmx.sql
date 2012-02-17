@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/17/2012 16:20:26
+-- Date Created: 02/17/2012 16:51:22
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
