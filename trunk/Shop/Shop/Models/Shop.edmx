@@ -6,14 +6,62 @@
     <edmx:StorageModels>
     <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
-    <EntitySet Name="Products" EntityType="Shop.Store.Products" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Categories" EntityType="Shop.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Shop.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PruductAttribute" EntityType="Shop.Store.PruductAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductAttributeValues" EntityType="Shop.Store.ProductAttributeValues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductImage" EntityType="Shop.Store.ProductImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Brand" EntityType="Shop.Store.Brand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tag" EntityType="Shop.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PruductAttributeCategory" EntityType="Shop.Store.PruductAttributeCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductAttributeValuesProduct" EntityType="Shop.Store.ProductAttributeValuesProduct" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TagProduct" EntityType="Shop.Store.TagProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Shop.Store.CategoryProduct">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Product" EntitySet="Products" />
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryCategory" Association="Shop.Store.CategoryCategory">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category1" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PruductAttributeCategory_PruductAttribute" Association="Shop.Store.FK_PruductAttributeCategory_PruductAttribute">
+      <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+      <End Role="PruductAttributeCategory" EntitySet="PruductAttributeCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PruductAttributeCategory_Category" Association="Shop.Store.FK_PruductAttributeCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="PruductAttributeCategory" EntitySet="PruductAttributeCategory" />
+    </AssociationSet>
+    <AssociationSet Name="PruductAttributeProductAttributeValues" Association="Shop.Store.PruductAttributeProductAttributeValues">
+      <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+      <End Role="ProductAttributeValues" EntitySet="ProductAttributeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAttributeValuesProduct_ProductAttributeValues" Association="Shop.Store.FK_ProductAttributeValuesProduct_ProductAttributeValues">
+      <End Role="ProductAttributeValues" EntitySet="ProductAttributeValues" />
+      <End Role="ProductAttributeValuesProduct" EntitySet="ProductAttributeValuesProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductAttributeValuesProduct_Product" Association="Shop.Store.FK_ProductAttributeValuesProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductAttributeValuesProduct" EntitySet="ProductAttributeValuesProduct" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductImage" Association="Shop.Store.ProductProductImage">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductImage" EntitySet="ProductImage" />
+    </AssociationSet>
+    <AssociationSet Name="BrandProduct" Association="Shop.Store.BrandProduct">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagProduct_Tag" Association="Shop.Store.FK_TagProduct_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="TagProduct" EntitySet="TagProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagProduct_Product" Association="Shop.Store.FK_TagProduct_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="TagProduct" EntitySet="TagProduct" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Products">
+  <EntityType Name="Product">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -24,23 +72,98 @@
     <Property Name="IsNew" Type="bool" Nullable="false" />
     <Property Name="IsSpecialOffer" Type="bool" Nullable="false" />
     <Property Name="Published" Type="bool" Nullable="false" />
-    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="Price" Type="decimal" Nullable="false" DefaultValue="0" />
     <Property Name="OldPrice" Type="decimal" Nullable="false" DefaultValue="0" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Categories">
+  <EntityType Name="Category">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="mediumtext" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="true" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="PruductAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="mediumtext" Nullable="false" />
+    <Property Name="ValueType" Type="mediumtext" Nullable="false" />
+    <Property Name="ShowInCommonView" Type="bool" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+  </EntityType>
+  <EntityType Name="ProductAttributeValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="longtext" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="PruductAttributeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Default" Type="bool" Nullable="false" />
+    <Property Name="ImageSource" Type="longtext" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+    <Property Name="Logo" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="false" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PruductAttributeCategory">
+    <Key>
+      <PropertyRef Name="PruductAttributes_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="PruductAttributes_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductAttributeValuesProduct">
+    <Key>
+      <PropertyRef Name="ProductAttributeValues_Id" />
+      <PropertyRef Name="Products_Id" />
+    </Key>
+    <Property Name="ProductAttributeValues_Id" Type="int" Nullable="false" />
+    <Property Name="Products_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TagProduct">
+    <Key>
+      <PropertyRef Name="Tags_Id" />
+      <PropertyRef Name="Products_Id" />
+    </Key>
+    <Property Name="Tags_Id" Type="int" Nullable="false" />
+    <Property Name="Products_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="CategoryProduct">
-    <End Role="Category" Type="Shop.Store.Categories" Multiplicity="1" />
-    <End Role="Product" Type="Shop.Store.Products" Multiplicity="*" />
+    <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
         <PropertyRef Name="Id" />
@@ -50,16 +173,169 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CategoryCategory">
+    <End Role="Category" Type="Shop.Store.Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="Shop.Store.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category1">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PruductAttributeProductAttributeValues">
+    <End Role="PruductAttribute" Type="Shop.Store.PruductAttribute" Multiplicity="1" />
+    <End Role="ProductAttributeValues" Type="Shop.Store.ProductAttributeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PruductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAttributeValues">
+        <PropertyRef Name="PruductAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductProductImage">
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="1" />
+    <End Role="ProductImage" Type="Shop.Store.ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandProduct">
+    <End Role="Brand" Type="Shop.Store.Brand" Multiplicity="1" />
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PruductAttributeCategory_PruductAttribute">
+    <End Role="PruductAttribute" Type="Shop.Store.PruductAttribute" Multiplicity="1" />
+    <End Role="PruductAttributeCategory" Type="Shop.Store.PruductAttributeCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PruductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PruductAttributeCategory">
+        <PropertyRef Name="PruductAttributes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PruductAttributeCategory_Category">
+    <End Role="PruductAttributeCategory" Type="Shop.Store.PruductAttributeCategory" Multiplicity="*" />
+    <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PruductAttributeCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAttributeValuesProduct_ProductAttributeValues">
+    <End Role="ProductAttributeValues" Type="Shop.Store.ProductAttributeValues" Multiplicity="1" />
+    <End Role="ProductAttributeValuesProduct" Type="Shop.Store.ProductAttributeValuesProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttributeValues">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAttributeValuesProduct">
+        <PropertyRef Name="ProductAttributeValues_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductAttributeValuesProduct_Product">
+    <End Role="ProductAttributeValuesProduct" Type="Shop.Store.ProductAttributeValuesProduct" Multiplicity="*" />
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAttributeValuesProduct">
+        <PropertyRef Name="Products_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagProduct_Tag">
+    <End Role="Tag" Type="Shop.Store.Tag" Multiplicity="1" />
+    <End Role="TagProduct" Type="Shop.Store.TagProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TagProduct">
+        <PropertyRef Name="Tags_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagProduct_Product">
+    <End Role="TagProduct" Type="Shop.Store.TagProduct" Multiplicity="*" />
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TagProduct">
+        <PropertyRef Name="Products_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Shop" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="ShopContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Products" EntityType="Shop.Product" />
-          <EntitySet Name="Categories" EntityType="Shop.Category" />
+          <EntitySet Name="Product" EntityType="Shop.Product" />
+          <EntitySet Name="Category" EntityType="Shop.Category" />
           <AssociationSet Name="CategoryProduct" Association="Shop.CategoryProduct">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryCategory" Association="Shop.CategoryCategory">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
+          <EntitySet Name="PruductAttribute" EntityType="Shop.PruductAttribute" />
+          <AssociationSet Name="PruductAttributeCategory" Association="Shop.PruductAttributeCategory">
+            <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <EntitySet Name="ProductAttributeValues" EntityType="Shop.ProductAttributeValues" />
+          <AssociationSet Name="PruductAttributeProductAttributeValues" Association="Shop.PruductAttributeProductAttributeValues">
+            <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+            <End Role="ProductAttributeValues" EntitySet="ProductAttributeValues" />
+          </AssociationSet>
+          <AssociationSet Name="ProductAttributeValuesProduct" Association="Shop.ProductAttributeValuesProduct">
+            <End Role="ProductAttributeValues" EntitySet="ProductAttributeValues" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <EntitySet Name="ProductImage" EntityType="Shop.ProductImage" />
+          <AssociationSet Name="ProductProductImage" Association="Shop.ProductProductImage">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImage" EntitySet="ProductImage" />
+          </AssociationSet>
+          <EntitySet Name="Brand" EntityType="Shop.Brand" />
+          <AssociationSet Name="BrandProduct" Association="Shop.BrandProduct">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <EntitySet Name="Tag" EntityType="Shop.Tag" />
+          <AssociationSet Name="TagProduct" Association="Shop.TagProduct">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
@@ -73,13 +349,18 @@
           <Property Type="Boolean" Name="IsNew" Nullable="false" />
           <Property Type="Boolean" Name="IsSpecialOffer" Nullable="false" />
           <Property Type="Boolean" Name="Published" Nullable="false" />
-          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
           <Property Type="Decimal" Name="Price" Nullable="false" DefaultValue="0" />
           <Property Type="Decimal" Name="OldPrice" Nullable="false" DefaultValue="0" />
           <NavigationProperty Name="Category" Relationship="Shop.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.ProductAttributeValuesProduct" FromRole="Product" ToRole="ProductAttributeValues" />
+          <NavigationProperty Name="ProductImages" Relationship="Shop.ProductProductImage" FromRole="Product" ToRole="ProductImage" />
+          <NavigationProperty Name="Brand" Relationship="Shop.BrandProduct" FromRole="Product" ToRole="Brand" />
+          <Property Type="Int32" Name="BrandId" Nullable="false" />
+          <NavigationProperty Name="Tags" Relationship="Shop.TagProduct" FromRole="Product" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -88,6 +369,13 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
           <NavigationProperty Name="Products" Relationship="Shop.CategoryProduct" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Children" Relationship="Shop.CategoryCategory" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Parent" Relationship="Shop.CategoryCategory" FromRole="Category1" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="PruductAttributes" Relationship="Shop.PruductAttributeCategory" FromRole="Category" ToRole="PruductAttribute" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Shop.Category" Role="Category" Multiplicity="1" />
@@ -101,15 +389,128 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CategoryCategory">
+          <End Type="Shop.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="Shop.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PruductAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ValueType" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="ShowInCommonView" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="Categories" Relationship="Shop.PruductAttributeCategory" FromRole="PruductAttribute" ToRole="Category" />
+          <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.PruductAttributeProductAttributeValues" FromRole="PruductAttribute" ToRole="ProductAttributeValues" />
+        </EntityType>
+        <Association Name="PruductAttributeCategory">
+          <End Type="Shop.PruductAttribute" Role="PruductAttribute" Multiplicity="*" />
+          <End Type="Shop.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ProductAttributeValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Value" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
+          <NavigationProperty Name="PruductAttribute" Relationship="Shop.PruductAttributeProductAttributeValues" FromRole="ProductAttributeValues" ToRole="PruductAttribute" />
+          <Property Type="Int32" Name="PruductAttributeId" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Shop.ProductAttributeValuesProduct" FromRole="ProductAttributeValues" ToRole="Product" />
+        </EntityType>
+        <Association Name="PruductAttributeProductAttributeValues">
+          <End Type="Shop.PruductAttribute" Role="PruductAttribute" Multiplicity="1" />
+          <End Type="Shop.ProductAttributeValues" Role="ProductAttributeValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PruductAttribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductAttributeValues">
+              <PropertyRef Name="PruductAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductAttributeValuesProduct">
+          <End Type="Shop.ProductAttributeValues" Role="ProductAttributeValues" Multiplicity="*" />
+          <End Type="Shop.Product" Role="Product" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="Default" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Shop.ProductProductImage" FromRole="ProductImage" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductProductImage">
+          <End Type="Shop.Product" Role="Product" Multiplicity="1" />
+          <End Type="Shop.ProductImage" Role="ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Logo" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" Nullable="false" />
+          <Property Type="String" Name="SeoKeywords" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Shop.BrandProduct" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <Association Name="BrandProduct">
+          <End Type="Shop.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="Shop.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Value" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Shop.TagProduct" FromRole="Tag" ToRole="Product" />
+        </EntityType>
+        <Association Name="TagProduct">
+          <End Type="Shop.Tag" Role="Tag" Multiplicity="*" />
+          <End Type="Shop.Product" Role="Product" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ShopStoreContainer" CdmEntityContainer="ShopContainer">
-    <EntitySetMapping Name="Products">
+    <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="IsTypeOf(Shop.Product)">
-        <MappingFragment StoreEntitySet="Products">
+        <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
@@ -123,17 +524,97 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
+    <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="IsTypeOf(Shop.Category)">
-        <MappingFragment StoreEntitySet="Categories">
+        <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PruductAttribute">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.PruductAttribute)">
+        <MappingFragment StoreEntitySet="PruductAttribute">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="ShowInCommonView" ColumnName="ShowInCommonView" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAttributeValues">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ProductAttributeValues)">
+        <MappingFragment StoreEntitySet="ProductAttributeValues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="PruductAttributeId" ColumnName="PruductAttributeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ProductImage)">
+        <MappingFragment StoreEntitySet="ProductImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.Brand)">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tag">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.Tag)">
+        <MappingFragment StoreEntitySet="Tag">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PruductAttributeCategory" TypeName="Shop.PruductAttributeCategory" StoreEntitySet="PruductAttributeCategory">
+      <EndProperty Name="PruductAttribute">
+        <ScalarProperty Name="Id" ColumnName="PruductAttributes_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductAttributeValuesProduct" TypeName="Shop.ProductAttributeValuesProduct" StoreEntitySet="ProductAttributeValuesProduct">
+      <EndProperty Name="ProductAttributeValues">
+        <ScalarProperty Name="Id" ColumnName="ProductAttributeValues_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Products_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TagProduct" TypeName="Shop.TagProduct" StoreEntitySet="TagProduct">
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="Id" ColumnName="Tags_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Products_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -154,11 +635,46 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Shop" >
-        <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="5.5" PointY="2" Height="2.9070849609374996" />
-        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="2.625" PointY="1.125" Height="1.2636116536458335" />
+        <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="5.125" PointY="0.625" Height="3.8931689453124996" />
+        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="2.578390299479167" />
         <AssociationConnector Association="Shop.CategoryProduct">
-          <ConnectorPoint PointX="4.125" PointY="2.2764794921875" />
-          <ConnectorPoint PointX="5.5" PointY="2.2764794921875" />
+          <ConnectorPoint PointX="2.625" PointY="1.9141951497395837" />
+          <ConnectorPoint PointX="5.125" PointY="1.9141951497395837" />
+        </AssociationConnector>
+        <AssociationConnector Association="Shop.CategoryCategory">
+          <ConnectorPoint PointX="1.125" PointY="1.8496869291239115" />
+          <ConnectorPoint PointX="0.875" PointY="1.8496869291239115" />
+          <ConnectorPoint PointX="0.875" PointY="1.321223814721201" />
+          <ConnectorPoint PointX="1.125" PointY="1.321223814721201" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.PruductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.0853483072916656" />
+        <AssociationConnector Association="Shop.PruductAttributeCategory">
+          <ConnectorPoint PointX="1.916844328278509" PointY="5.25" />
+          <ConnectorPoint PointX="1.916844328278509" PointY="3.203390299479167" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.ProductAttributeValues" Width="2" PointX="4.5" PointY="5.25" Height="1.9210009765624996" />
+        <AssociationConnector Association="Shop.PruductAttributeProductAttributeValues">
+          <ConnectorPoint PointX="3.625" PointY="6.21050048828125" />
+          <ConnectorPoint PointX="4.5" PointY="6.21050048828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Shop.ProductAttributeValuesProduct">
+          <ConnectorPoint PointX="5.8125" PointY="5.25" />
+          <ConnectorPoint PointX="5.8125" PointY="4.5181689453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="7.75" PointY="3.375" Height="1.7566536458333335" />
+        <AssociationConnector Association="Shop.ProductProductImage" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.625" PointY="3.9375" />
+          <ConnectorPoint PointX="7.75" PointY="3.9375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.Brand" Width="1.5" PointX="7.5" PointY="0.625" Height="2.085348307291667" />
+        <AssociationConnector Association="Shop.BrandProduct">
+          <ConnectorPoint PointX="7.5" PointY="1.6676741536458337" />
+          <ConnectorPoint PointX="6.625" PointY="1.6676741536458337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="2.875" PointY="2.75" Height="1.4279589843749996" />
+        <AssociationConnector Association="Shop.TagProduct">
+          <ConnectorPoint PointX="4.375" PointY="3.4639794921875" />
+          <ConnectorPoint PointX="5.125" PointY="3.4639794921875" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
