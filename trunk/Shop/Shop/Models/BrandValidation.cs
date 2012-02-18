@@ -21,5 +21,14 @@ namespace Shop.Models
 
         [DisplayName("Логотип")]
         public string Logo { get; set; }
+
+
+        [DisplayName("Описание (для поисковиков)")]
+        public string SeoDescription { get; set; }
+
+
+        [DisplayName("Ключевые слова (для поисковиков)")]
+        public string SeoKeywords { get; set; }
+
     }
 }
