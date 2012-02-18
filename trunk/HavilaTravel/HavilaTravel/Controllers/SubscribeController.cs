@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using HavilaTravel.Helpers;
@@ -35,7 +37,7 @@ namespace HavilaTravel.Controllers
                 context.AddToCustomers(subscriber);
                 context.SaveChanges();
             }
-            
+
             return RedirectToAction("ThankYou");
         }
 
@@ -57,8 +59,8 @@ namespace HavilaTravel.Controllers
                 return View(model);
             }
         }
-        
-        
+
+
         [Authorize]
         public ActionResult DeleteSubscriber(int id)
         {
@@ -66,6 +68,50 @@ namespace HavilaTravel.Controllers
             {
                 var subscriber = context.Customers.First(c => c.Id == id);
                 context.DeleteObject(subscriber);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("Subscribers");
+        }
+
+        public ActionResult SendEmail(FormCollection form)
+        {
+
+            var mailText = form["MailText"];
+            if (!string.IsNullOrEmpty(mailText))
+            {
+                using (var context = new ContentStorage())
+                {
+
+                    PostData agentsData = form.ProcessPostData("agent");
+                    PostData touristData = form.ProcessPostData("tourist");
+                    
+
+
+                    int[] agentIds = agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
+                    int[] touristIds = touristData.Where(d => bool.Parse(d.Value["tourist"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
+
+                    var customers = context.Customers.ToList();
+                    var agents = (from customer in customers from id in agentIds where customer.Id == id select customer).ToList();
+                    var tourists = (from customer in customers from id in touristIds where customer.Id == id select customer).ToList();
+
+
+                    IEnumerable<Customers> all = agents.Concat(tourists);
+
+                    foreach (var customer in all)
+                    {
+                        try
+                        {
+                            MailHelper.SendMessage(new List<MailAddress> { new MailAddress(customer.Email) }, mailText, "Рассылка Havila-Travel", false);
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+
+
+                }
             }
 
             return RedirectToAction("Subscribers");
