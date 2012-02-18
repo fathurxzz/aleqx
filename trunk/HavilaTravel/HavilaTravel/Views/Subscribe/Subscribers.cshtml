@@ -36,7 +36,12 @@
 
 @using (Html.BeginForm("SendEmail","Subscribe"))
 {
-    
+    if ((int)ViewBag.SentEmails>0)
+    {
+        <div class="sentSubscribenotificationMessage">
+            Сообщение отправлено
+        </div>
+    }
     <table class="subscriberList">
         <tr>
         

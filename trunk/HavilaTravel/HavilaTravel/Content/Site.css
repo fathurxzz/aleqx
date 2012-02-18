@@ -891,3 +891,11 @@ table.adminContentPreview th
     text-align: center;
 }
 
+
+.sentSubscribenotificationMessage 
+{
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #00f;
+}
