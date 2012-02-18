@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Shop.Models.Category>
+﻿@model IEnumerable<Shop.Models.ProductAttribute>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Категории</h2>
+<h2>Атрибуты</h2>
 
 <p>
     @Html.ActionLink("Добавить новую запись", "Create")
@@ -16,10 +16,10 @@
             Название
         </th>
         <th>
-            SeoDescription
+            Тип значения
         </th>
         <th>
-            SeoKeywords
+            ShowInCommonView
         </th>
         <th>
             Порядок отображения
@@ -33,18 +33,18 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SeoDescription)
+            @Html.DisplayFor(modelItem => item.ValueType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SeoKeywords)
+            @Html.DisplayFor(modelItem => item.ShowInCommonView)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SortOrder)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

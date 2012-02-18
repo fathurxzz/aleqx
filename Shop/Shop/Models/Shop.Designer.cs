@@ -20,8 +20,8 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("Shop", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Shop", "CategoryCategory", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Shop.Models.Category), "Category1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Category), true)]
-[assembly: EdmRelationshipAttribute("Shop", "PruductAttributeCategory", "PruductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.PruductAttribute), "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Category))]
-[assembly: EdmRelationshipAttribute("Shop", "PruductAttributeProductAttributeValues", "PruductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.PruductAttribute), "ProductAttributeValues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttributeValues), true)]
+[assembly: EdmRelationshipAttribute("Shop", "PruductAttributeCategory", "PruductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttribute), "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Category))]
+[assembly: EdmRelationshipAttribute("Shop", "PruductAttributeProductAttributeValues", "PruductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.ProductAttribute), "ProductAttributeValues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttributeValues), true)]
 [assembly: EdmRelationshipAttribute("Shop", "ProductAttributeValuesProduct", "ProductAttributeValues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttributeValues), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Product))]
 [assembly: EdmRelationshipAttribute("Shop", "ProductProductImage", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.Product), "ProductImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductImage), true)]
 [assembly: EdmRelationshipAttribute("Shop", "BrandProduct", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.Brand), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Product), true)]
@@ -112,18 +112,18 @@ namespace Shop.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PruductAttribute> PruductAttribute
+        public ObjectSet<ProductAttribute> ProductAttribute
         {
             get
             {
-                if ((_PruductAttribute == null))
+                if ((_ProductAttribute == null))
                 {
-                    _PruductAttribute = base.CreateObjectSet<PruductAttribute>("PruductAttribute");
+                    _ProductAttribute = base.CreateObjectSet<ProductAttribute>("ProductAttribute");
                 }
-                return _PruductAttribute;
+                return _ProductAttribute;
             }
         }
-        private ObjectSet<PruductAttribute> _PruductAttribute;
+        private ObjectSet<ProductAttribute> _ProductAttribute;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -209,11 +209,11 @@ namespace Shop.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PruductAttribute EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ProductAttribute EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPruductAttribute(PruductAttribute pruductAttribute)
+        public void AddToProductAttribute(ProductAttribute productAttribute)
         {
-            base.AddObject("PruductAttribute", pruductAttribute);
+            base.AddObject("ProductAttribute", productAttribute);
         }
     
         /// <summary>
@@ -724,17 +724,17 @@ namespace Shop.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeCategory", "PruductAttribute")]
-        public EntityCollection<PruductAttribute> PruductAttributes
+        public EntityCollection<ProductAttribute> PruductAttributes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PruductAttribute>("Shop.PruductAttributeCategory", "PruductAttribute");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttribute>("Shop.PruductAttributeCategory", "PruductAttribute");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PruductAttribute>("Shop.PruductAttributeCategory", "PruductAttribute", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttribute>("Shop.PruductAttributeCategory", "PruductAttribute", value);
                 }
             }
         }
@@ -1269,6 +1269,210 @@ namespace Shop.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Shop", Name="ProductAttribute")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ProductAttribute : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ProductAttribute object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="valueType">Initial value of the ValueType property.</param>
+        /// <param name="showInCommonView">Initial value of the ShowInCommonView property.</param>
+        public static ProductAttribute CreateProductAttribute(global::System.Int32 id, global::System.String name, global::System.String valueType, global::System.Boolean showInCommonView)
+        {
+            ProductAttribute productAttribute = new ProductAttribute();
+            productAttribute.Id = id;
+            productAttribute.Name = name;
+            productAttribute.ValueType = valueType;
+            productAttribute.ShowInCommonView = showInCommonView;
+            return productAttribute;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ValueType
+        {
+            get
+            {
+                return _ValueType;
+            }
+            set
+            {
+                OnValueTypeChanging(value);
+                ReportPropertyChanging("ValueType");
+                _ValueType = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ValueType");
+                OnValueTypeChanged();
+            }
+        }
+        private global::System.String _ValueType;
+        partial void OnValueTypeChanging(global::System.String value);
+        partial void OnValueTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ShowInCommonView
+        {
+            get
+            {
+                return _ShowInCommonView;
+            }
+            set
+            {
+                OnShowInCommonViewChanging(value);
+                ReportPropertyChanging("ShowInCommonView");
+                _ShowInCommonView = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ShowInCommonView");
+                OnShowInCommonViewChanged();
+            }
+        }
+        private global::System.Boolean _ShowInCommonView;
+        partial void OnShowInCommonViewChanging(global::System.Boolean value);
+        partial void OnShowInCommonViewChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeCategory", "Category")]
+        public EntityCollection<Category> Categories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Shop.PruductAttributeCategory", "Category");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Shop.PruductAttributeCategory", "Category", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeProductAttributeValues", "ProductAttributeValues")]
+        public EntityCollection<ProductAttributeValues> ProductAttributeValues
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttributeValues>("Shop.PruductAttributeProductAttributeValues", "ProductAttributeValues");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttributeValues>("Shop.PruductAttributeProductAttributeValues", "ProductAttributeValues", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Shop", Name="ProductAttributeValues")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1404,15 +1608,15 @@ namespace Shop.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeProductAttributeValues", "PruductAttribute")]
-        public PruductAttribute PruductAttribute
+        public ProductAttribute PruductAttribute
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PruductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PruductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute").Value = value;
             }
         }
         /// <summary>
@@ -1420,17 +1624,17 @@ namespace Shop.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<PruductAttribute> PruductAttributeReference
+        public EntityReference<ProductAttribute> PruductAttributeReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PruductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PruductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute", value);
                 }
             }
         }
@@ -1627,210 +1831,6 @@ namespace Shop.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Product>("Shop.ProductProductImage", "Product", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Shop", Name="PruductAttribute")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class PruductAttribute : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new PruductAttribute object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="valueType">Initial value of the ValueType property.</param>
-        /// <param name="showInCommonView">Initial value of the ShowInCommonView property.</param>
-        public static PruductAttribute CreatePruductAttribute(global::System.Int32 id, global::System.String name, global::System.String valueType, global::System.Boolean showInCommonView)
-        {
-            PruductAttribute pruductAttribute = new PruductAttribute();
-            pruductAttribute.Id = id;
-            pruductAttribute.Name = name;
-            pruductAttribute.ValueType = valueType;
-            pruductAttribute.ShowInCommonView = showInCommonView;
-            return pruductAttribute;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                OnNameChanging(value);
-                ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Name");
-                OnNameChanged();
-            }
-        }
-        private global::System.String _Name;
-        partial void OnNameChanging(global::System.String value);
-        partial void OnNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String ValueType
-        {
-            get
-            {
-                return _ValueType;
-            }
-            set
-            {
-                OnValueTypeChanging(value);
-                ReportPropertyChanging("ValueType");
-                _ValueType = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("ValueType");
-                OnValueTypeChanged();
-            }
-        }
-        private global::System.String _ValueType;
-        partial void OnValueTypeChanging(global::System.String value);
-        partial void OnValueTypeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean ShowInCommonView
-        {
-            get
-            {
-                return _ShowInCommonView;
-            }
-            set
-            {
-                OnShowInCommonViewChanging(value);
-                ReportPropertyChanging("ShowInCommonView");
-                _ShowInCommonView = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ShowInCommonView");
-                OnShowInCommonViewChanged();
-            }
-        }
-        private global::System.Boolean _ShowInCommonView;
-        partial void OnShowInCommonViewChanging(global::System.Boolean value);
-        partial void OnShowInCommonViewChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SortOrder
-        {
-            get
-            {
-                return _SortOrder;
-            }
-            set
-            {
-                OnSortOrderChanging(value);
-                ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SortOrder");
-                OnSortOrderChanged();
-            }
-        }
-        private global::System.Int32 _SortOrder = 0;
-        partial void OnSortOrderChanging(global::System.Int32 value);
-        partial void OnSortOrderChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeCategory", "Category")]
-        public EntityCollection<Category> Categories
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Shop.PruductAttributeCategory", "Category");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Shop.PruductAttributeCategory", "Category", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeProductAttributeValues", "ProductAttributeValues")]
-        public EntityCollection<ProductAttributeValues> ProductAttributeValues
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttributeValues>("Shop.PruductAttributeProductAttributeValues", "ProductAttributeValues");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttributeValues>("Shop.PruductAttributeProductAttributeValues", "ProductAttributeValues", value);
                 }
             }
         }

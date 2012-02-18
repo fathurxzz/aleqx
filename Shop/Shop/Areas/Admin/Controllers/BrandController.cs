@@ -85,10 +85,8 @@ namespace Shop.Areas.Admin.Controllers
             {
                 using (var context = new ShopContainer())
                 {
-                    var brand = context.Brand.Where(b => b.Id == id).First();
-
-                    brand.Name = collection["Name"];
-
+                    var brand = context.Brand.First(b => b.Id == id);
+                    TryUpdateModel(brand, new[] {"Name", "Description", "SeoDescription", "SeoKeywords"});
                     context.SaveChanges();
                 }
 
