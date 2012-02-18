@@ -4,11 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Product" EntityType="Shop.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PruductAttribute" EntityType="Shop.Store.PruductAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductAttribute" EntityType="Shop.Store.ProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValues" EntityType="Shop.Store.ProductAttributeValues" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductImage" EntityType="Shop.Store.ProductImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Brand" EntityType="Shop.Store.Brand" store:Type="Tables" Schema="dbo" />
@@ -25,7 +25,7 @@
       <End Role="Category1" EntitySet="Category" />
     </AssociationSet>
     <AssociationSet Name="FK_PruductAttributeCategory_PruductAttribute" Association="Shop.Store.FK_PruductAttributeCategory_PruductAttribute">
-      <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+      <End Role="PruductAttribute" EntitySet="ProductAttribute" />
       <End Role="PruductAttributeCategory" EntitySet="PruductAttributeCategory" />
     </AssociationSet>
     <AssociationSet Name="FK_PruductAttributeCategory_Category" Association="Shop.Store.FK_PruductAttributeCategory_Category">
@@ -33,7 +33,7 @@
       <End Role="PruductAttributeCategory" EntitySet="PruductAttributeCategory" />
     </AssociationSet>
     <AssociationSet Name="PruductAttributeProductAttributeValues" Association="Shop.Store.PruductAttributeProductAttributeValues">
-      <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+      <End Role="PruductAttribute" EntitySet="ProductAttribute" />
       <End Role="ProductAttributeValues" EntitySet="ProductAttributeValues" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductAttributeValuesProduct_ProductAttributeValues" Association="Shop.Store.FK_ProductAttributeValuesProduct_ProductAttributeValues">
@@ -91,7 +91,7 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
-  <EntityType Name="PruductAttribute">
+  <EntityType Name="ProductAttribute">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -186,7 +186,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="PruductAttributeProductAttributeValues">
-    <End Role="PruductAttribute" Type="Shop.Store.PruductAttribute" Multiplicity="1" />
+    <End Role="PruductAttribute" Type="Shop.Store.ProductAttribute" Multiplicity="1" />
     <End Role="ProductAttributeValues" Type="Shop.Store.ProductAttributeValues" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PruductAttribute">
@@ -222,7 +222,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PruductAttributeCategory_PruductAttribute">
-    <End Role="PruductAttribute" Type="Shop.Store.PruductAttribute" Multiplicity="1" />
+    <End Role="PruductAttribute" Type="Shop.Store.ProductAttribute" Multiplicity="1" />
     <End Role="PruductAttributeCategory" Type="Shop.Store.PruductAttributeCategory" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PruductAttribute">
@@ -308,14 +308,14 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Category1" EntitySet="Category" />
           </AssociationSet>
-          <EntitySet Name="PruductAttribute" EntityType="Shop.PruductAttribute" />
+          <EntitySet Name="ProductAttribute" EntityType="Shop.ProductAttribute" />
           <AssociationSet Name="PruductAttributeCategory" Association="Shop.PruductAttributeCategory">
-            <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+            <End Role="PruductAttribute" EntitySet="ProductAttribute" />
             <End Role="Category" EntitySet="Category" />
           </AssociationSet>
           <EntitySet Name="ProductAttributeValues" EntityType="Shop.ProductAttributeValues" />
           <AssociationSet Name="PruductAttributeProductAttributeValues" Association="Shop.PruductAttributeProductAttributeValues">
-            <End Role="PruductAttribute" EntitySet="PruductAttribute" />
+            <End Role="PruductAttribute" EntitySet="ProductAttribute" />
             <End Role="ProductAttributeValues" EntitySet="ProductAttributeValues" />
           </AssociationSet>
           <AssociationSet Name="ProductAttributeValuesProduct" Association="Shop.ProductAttributeValuesProduct">
@@ -401,7 +401,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PruductAttribute">
+        <EntityType Name="ProductAttribute">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -414,7 +414,7 @@
           <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.PruductAttributeProductAttributeValues" FromRole="PruductAttribute" ToRole="ProductAttributeValues" />
         </EntityType>
         <Association Name="PruductAttributeCategory">
-          <End Type="Shop.PruductAttribute" Role="PruductAttribute" Multiplicity="*" />
+          <End Type="Shop.ProductAttribute" Role="PruductAttribute" Multiplicity="*" />
           <End Type="Shop.Category" Role="Category" Multiplicity="*" />
         </Association>
         <EntityType Name="ProductAttributeValues">
@@ -429,7 +429,7 @@
           <NavigationProperty Name="Products" Relationship="Shop.ProductAttributeValuesProduct" FromRole="ProductAttributeValues" ToRole="Product" />
         </EntityType>
         <Association Name="PruductAttributeProductAttributeValues">
-          <End Type="Shop.PruductAttribute" Role="PruductAttribute" Multiplicity="1" />
+          <End Type="Shop.ProductAttribute" Role="PruductAttribute" Multiplicity="1" />
           <End Type="Shop.ProductAttributeValues" Role="ProductAttributeValues" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PruductAttribute">
@@ -540,9 +540,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PruductAttribute">
-      <EntityTypeMapping TypeName="IsTypeOf(Shop.PruductAttribute)">
-        <MappingFragment StoreEntitySet="PruductAttribute">
+    <EntitySetMapping Name="ProductAttribute">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ProductAttribute)">
+        <MappingFragment StoreEntitySet="ProductAttribute">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ValueType" ColumnName="ValueType" />
@@ -635,11 +635,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Shop" >
-        <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="5.125" PointY="0.625" Height="3.8931689453124996" />
+        <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="7.75" PointY="0.625" Height="4.6725065104166656" />
         <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="2.578390299479167" />
         <AssociationConnector Association="Shop.CategoryProduct">
-          <ConnectorPoint PointX="2.625" PointY="1.9141951497395837" />
-          <ConnectorPoint PointX="5.125" PointY="1.9141951497395837" />
+          <ConnectorPoint PointX="2.625" PointY="1.6562500000000002" />
+          <ConnectorPoint PointX="7.75" PointY="1.6562500000000002" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.CategoryCategory">
           <ConnectorPoint PointX="1.125" PointY="1.8496869291239115" />
@@ -647,7 +647,7 @@
           <ConnectorPoint PointX="0.875" PointY="1.321223814721201" />
           <ConnectorPoint PointX="1.125" PointY="1.321223814721201" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.PruductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.0853483072916656" />
+        <EntityTypeShape EntityType="Shop.ProductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.0853483072916656" />
         <AssociationConnector Association="Shop.PruductAttributeCategory">
           <ConnectorPoint PointX="1.916844328278509" PointY="5.25" />
           <ConnectorPoint PointX="1.916844328278509" PointY="3.203390299479167" />
@@ -658,23 +658,24 @@
           <ConnectorPoint PointX="4.5" PointY="6.21050048828125" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.ProductAttributeValuesProduct">
-          <ConnectorPoint PointX="5.8125" PointY="5.25" />
-          <ConnectorPoint PointX="5.8125" PointY="4.5181689453125" />
+          <ConnectorPoint PointX="6.5" PointY="6.3600477005208322" />
+          <ConnectorPoint PointX="8.5" PointY="6.3600477005208322" />
+          <ConnectorPoint PointX="8.5" PointY="5.2975065104166656" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="7.75" PointY="3.375" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="10.25" PointY="3.375" Height="1.9802864583333335" />
         <AssociationConnector Association="Shop.ProductProductImage" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.625" PointY="3.9375" />
-          <ConnectorPoint PointX="7.75" PointY="3.9375" />
+          <ConnectorPoint PointX="9.25" PointY="4.3362532552083328" />
+          <ConnectorPoint PointX="10.25" PointY="4.3362532552083328" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.Brand" Width="1.5" PointX="7.5" PointY="0.625" Height="2.085348307291667" />
+        <EntityTypeShape EntityType="Shop.Brand" Width="1.5" PointX="10.25" PointY="0.625" Height="2.364889322916667" />
         <AssociationConnector Association="Shop.BrandProduct">
-          <ConnectorPoint PointX="7.5" PointY="1.6676741536458337" />
-          <ConnectorPoint PointX="6.625" PointY="1.6676741536458337" />
+          <ConnectorPoint PointX="10.25" PointY="1.8074446614583337" />
+          <ConnectorPoint PointX="9.25" PointY="1.8074446614583337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="2.875" PointY="2.75" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="2.75" Height="1.5956835937499996" />
         <AssociationConnector Association="Shop.TagProduct">
-          <ConnectorPoint PointX="4.375" PointY="3.4639794921875" />
-          <ConnectorPoint PointX="5.125" PointY="3.4639794921875" />
+          <ConnectorPoint PointX="6.5" PointY="3.547841796875" />
+          <ConnectorPoint PointX="7.75" PointY="3.547841796875" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

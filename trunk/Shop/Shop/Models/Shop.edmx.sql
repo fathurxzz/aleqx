@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/17/2012 16:51:22
+-- Date Created: 02/18/2012 14:32:17
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `toy`;
+CREATE DATABASE `toy`;
+USE `toy`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -78,9 +81,9 @@ CREATE TABLE `Category` (
     `SortOrder` int  NOT NULL
 );
 
--- Creating table 'PruductAttribute'
+-- Creating table 'ProductAttribute'
 
-CREATE TABLE `PruductAttribute` (
+CREATE TABLE `ProductAttribute` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` mediumtext  NOT NULL,
     `ValueType` mediumtext  NOT NULL,
@@ -210,7 +213,7 @@ CREATE INDEX `IX_FK_CategoryCategory`
 ALTER TABLE `PruductAttributeCategory`
 ADD CONSTRAINT `FK_PruductAttributeCategory_PruductAttribute`
     FOREIGN KEY (`PruductAttributes_Id`)
-    REFERENCES `PruductAttribute`
+    REFERENCES `ProductAttribute`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
@@ -234,7 +237,7 @@ CREATE INDEX `IX_FK_PruductAttributeCategory_Category`
 ALTER TABLE `ProductAttributeValues`
 ADD CONSTRAINT `FK_PruductAttributeProductAttributeValues`
     FOREIGN KEY (`PruductAttributeId`)
-    REFERENCES `PruductAttribute`
+    REFERENCES `ProductAttribute`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 

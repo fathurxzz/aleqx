@@ -35,17 +35,28 @@ namespace Shop.Areas.Admin.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Admin/Category/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var context = new ShopContainer())
+                {
+                    var category = new Category
+                    {
+                        Name = form["Name"],
+                        SeoDescription = form["SeoDescription"],
+                        SeoKeywords = form["SeoKeywords"],
+                        SortOrder = Convert.ToInt32(form["SortOrder"])
+                    };
+                    context.AddToCategory(category);
+                    context.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -54,26 +65,35 @@ namespace Shop.Areas.Admin.Controllers
                 return View();
             }
         }
-        
+
         //
         // GET: /Admin/Category/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                var category = context.Category.First(c => c.Id == id);
+                return View(category);
+            }
         }
 
         //
         // POST: /Admin/Category/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection form)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                using (var context = new ShopContainer())
+                {
+                    var category = context.Category.First(c => c.Id == id);
+                    TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder" });
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Index");
+
             }
             catch
             {
@@ -83,7 +103,7 @@ namespace Shop.Areas.Admin.Controllers
 
         //
         // GET: /Admin/Category/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             return View();
@@ -98,7 +118,7 @@ namespace Shop.Areas.Admin.Controllers
             try
             {
                 // TODO: Add delete logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
