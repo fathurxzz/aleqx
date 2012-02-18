@@ -51,10 +51,12 @@ namespace HavilaTravel.Controllers
         }
 
         [Authorize]
-        public ActionResult Subscribers()
+        public ActionResult Subscribers(int? s, int? f)
         {
             using (var context = new ContentStorage())
             {
+                ViewBag.SentEmails = s.HasValue ? s.Value : 0;
+
                 var model = new SiteViewModel(null, context, false) { Customers = context.Customers.ToList() };
                 return View(model);
             }
@@ -76,7 +78,8 @@ namespace HavilaTravel.Controllers
 
         public ActionResult SendEmail(FormCollection form)
         {
-
+            int successedSentEmails = 0;
+            int failedSentEmails = 0;
             var mailText = form["MailText"];
             if (!string.IsNullOrEmpty(mailText))
             {
@@ -85,7 +88,7 @@ namespace HavilaTravel.Controllers
 
                     PostData agentsData = form.ProcessPostData("agent");
                     PostData touristData = form.ProcessPostData("tourist");
-                    
+
 
 
                     int[] agentIds = agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
@@ -95,26 +98,19 @@ namespace HavilaTravel.Controllers
                     var agents = (from customer in customers from id in agentIds where customer.Id == id select customer).ToList();
                     var tourists = (from customer in customers from id in touristIds where customer.Id == id select customer).ToList();
 
-
                     IEnumerable<Customers> all = agents.Concat(tourists);
 
                     foreach (var customer in all)
                     {
-                        try
-                        {
-                            MailHelper.SendMessage(new List<MailAddress> { new MailAddress(customer.Email) }, mailText, "Рассылка Havila-Travel", false);
-                        }
-                        catch
-                        {
-
-                        }
+                        if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText, "Рассылка Havila-Travel", false))
+                            successedSentEmails++;
+                        else
+                            failedSentEmails++;
                     }
-
-
                 }
             }
 
-            return RedirectToAction("Subscribers");
+            return RedirectToAction("Subscribers", new { s = successedSentEmails, f = failedSentEmails });
         }
     }
 }

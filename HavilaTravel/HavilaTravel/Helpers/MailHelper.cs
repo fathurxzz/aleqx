@@ -10,6 +10,26 @@ namespace HavilaTravel.Helpers
 {
     public class MailHelper
     {
+
+        public static bool SendMessage(MailAddress to, string body, string subject, bool isBodyHtml)
+        {
+            var client = new SmtpClient();
+            bool result = true;
+            try
+            {
+                var message = new MailMessage {Body = body, Subject = subject};
+                message.To.Add(to);
+                message.From = new MailAddress("office@havila-travel.com", "HAVILA-TRAVEL");
+                message.IsBodyHtml = isBodyHtml;
+                client.Send(message);
+            }
+            catch
+            {
+                result = false;
+            }
+            return result;
+        }
+
         public static bool SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
             SmtpClient client = new SmtpClient();
@@ -20,7 +40,7 @@ namespace HavilaTravel.Helpers
                 message.Body = body;
                 message.Subject = subject;
                 to.ForEach(t => message.To.Add(t));
-                message.From = new MailAddress("office@havila-travel.com");
+                message.From = new MailAddress("office@havila-travel.com", "HAVILA-TRAVEL");
                 message.IsBodyHtml = isBodyHtml;
                 client.Send(message);
             }
