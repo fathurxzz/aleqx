@@ -381,7 +381,7 @@
     <Content Include="Views\Shared\Bellboy.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Place\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Bellboy\Index.cshtml" />
@@ -406,6 +406,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\NotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscribe\Subscribers.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

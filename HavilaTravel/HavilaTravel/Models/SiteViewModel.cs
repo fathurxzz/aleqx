@@ -22,6 +22,7 @@ namespace HavilaTravel.Models
         public string SearchQuery { get; set; }
         public List<Article> Articles { get; set; }
         public Article Article { get; set; }
+        public List<Customers> Customers { get; set; }
 
         protected readonly ContentStorage Context;
 

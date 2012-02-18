@@ -119,6 +119,13 @@
                 @Html.ActionLink("Подписаться", "Index", "Subscribe", new { Area = "" }, null)
                 <br />
                 на рассылку новостей
+                @{
+                    if(Request.IsAuthenticated)
+                    {
+                        <br/>
+                        @Html.ActionLink("Подписчики на рассылку", "Subscribers", "Subscribe", new { Area = "" }, new{@class="adminLink"})
+                    }
+                }
             </div>
             <div id="mainBanner">
                 @RenderSection("MainBanner", false)
@@ -133,16 +140,16 @@
                 <a id="slideshowLink" href="">
                     <img src="../../Content/img/pixel.gif" /></a>
             </div>
-            @RenderSection("HeaderLeftMenu",false)
+            @RenderSection("HeaderLeftMenu", false)
             
         </div>
-        @RenderSection("MainMenu",false)
+        @RenderSection("MainMenu", false)
     </div>
     <div id="page">
         <table>
             <tr>
                 <td id="leftContent">
-                    @RenderSection("QuickSearch",false)
+                    @RenderSection("QuickSearch", false)
                     @RenderSection("LeftSubMenu", false)
                     @RenderSection("SmallBannerLeft", false)
                 </td>
