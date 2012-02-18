@@ -76,6 +76,7 @@ namespace HavilaTravel.Controllers
             return RedirectToAction("Subscribers");
         }
 
+        [Authorize]
         public ActionResult SendEmail(FormCollection form)
         {
             int successedSentEmails = 0;
