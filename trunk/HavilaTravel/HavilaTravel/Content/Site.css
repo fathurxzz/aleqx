@@ -860,3 +860,23 @@ table.adminContentPreview th
     color: #3366ff;
      font-style: normal;
 }
+
+.subscriberList {
+    border-collapse: collapse;
+}
+
+.subscriberList th, .subscriberList td {
+    text-align: center;
+    padding: 2px 5px;
+    border: 1px dashed #ccc;
+}
+
+.subscriberList .checkbox {
+    /*text-align: right;
+    white-space: nowrap;*/
+}
+
+.checkbox_agent
+{}
+
+.checkbox_tourist{}

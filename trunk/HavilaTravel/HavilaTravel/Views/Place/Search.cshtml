@@ -1,0 +1,123 @@
+﻿@using Dev.Mvc.Helpers
+@model HavilaTravel.Models.SiteViewModel
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ContentTitle{
+    <div id="contentTitle" class="search">
+        Результат поиска
+    </div>
+}
+@section SubMenu
+{
+    <div class="subMenu">
+        <table>
+            <tr>
+                <td class="leftSide">
+                </td>
+                <td class="separator">
+                </td>
+                <td class="searchQuery">
+                    Ваш запрос: <span>@Model.SearchQuery</span>
+                </td>
+                <td class="separator">
+                </td>
+                <td class="rightSide">
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<div class="searchResults">
+    @foreach (var content in Model.SearchResult)
+    {
+        <div class="item">
+            @{
+        var accordion = content.Accordions.FirstOrDefault();
+        if (accordion != null)
+        {
+            var image = accordion.AccordionImages.FirstOrDefault();
+            if (image != null)
+            {
+                <div class="picture">
+                    @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
+                </div> 
+            }
+        }
+            }
+            <div class="title">
+                @if (content.PlaceKind == 6)
+                {
+                    @Html.ActionLink(content.Title, "Index", "Place", new { id = content.Parent.Name, showSpa = "True" }, null)
+                }
+                else if (content.PlaceKind == 7)
+                {
+                    @Html.ActionLink(content.Title, "Index", "Place", new { id = content.Parent.Name, showPlacesReview = "True" }, null)
+                }
+                else
+                {
+                    @Html.ActionLink(content.Title, "Index", "Place", new { id = content.Name }, null)
+                }
+            </div>
+            @Html.Raw(content.Text)
+        </div>
+    
+    }
+</div>
+@section MainBanner
+{
+    <div id="slideshow">
+        @foreach (var banner in Model.MainBanners)
+        {
+                
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price))
+                
+        }
+    </div>
+}
+@section SmallBannerLeft
+{
+    @if (Model.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.LeftBanner)
+    }
+}
+@section SmallBannerRight
+{
+    @if (Model.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.RightBanner)
+    }
+}
+@section BellBoy
+{
+    @if (Model.Bellboy != null)
+    {
+        <div id="bellboyContainer">
+            @Html.Partial("Bellboy", Model.Bellboy)
+        </div>
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+@section MainMenu
+{
+    @{
+    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu",menu)
+    }
+}

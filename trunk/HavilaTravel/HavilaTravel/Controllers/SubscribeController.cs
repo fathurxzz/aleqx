@@ -47,5 +47,28 @@ namespace HavilaTravel.Controllers
                 return View(model);
             }
         }
+
+        [Authorize]
+        public ActionResult Subscribers()
+        {
+            using (var context = new ContentStorage())
+            {
+                var model = new SiteViewModel(null, context, false) { Customers = context.Customers.ToList() };
+                return View(model);
+            }
+        }
+        
+        
+        [Authorize]
+        public ActionResult DeleteSubscriber(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var subscriber = context.Customers.First(c => c.Id == id);
+                context.DeleteObject(subscriber);
+            }
+
+            return RedirectToAction("Subscribers");
+        }
     }
 }
