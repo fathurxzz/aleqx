@@ -861,6 +861,16 @@ table.adminContentPreview th
      font-style: normal;
 }
 
+.subscriberListContainer {
+     margin: 0 auto;
+    position: relative;
+}
+
+.subscriberListContainer td {
+    vertical-align: top;
+    padding: 5px;
+}
+
 .subscriberList {
     border-collapse: collapse;
     margin: 0 auto;
