@@ -126,5 +126,15 @@ namespace Shop.Areas.Admin.Controllers
                 return View();
             }
         }
+
+        public ActionResult Attributes(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                ViewBag.Category = context.Category.First(c => c.Id == id);
+                var attributes = context.ProductAttribute.ToList();
+                return View(attributes);
+            }
+        }
     }
 }
