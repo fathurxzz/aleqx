@@ -28,11 +28,11 @@
                         case (int)PlaceKind.City:
                             if (Request.QueryString["showPlacesReview"] == "True")
                             {
-                                @Html.Raw("Обзор мест")
+                                @Html.Raw("Достопримечательности")
                             }
                             else
                             {
-                                @Html.ActionLink("Обзор мест", "Index", "Place", new { id = Model.Name, showPlacesReview = true }, null)
+                                @Html.ActionLink("Достопримечательности", "Index", "Place", new { id = Model.Name, showPlacesReview = true }, null)
                             }
 
                             if (Request.IsAuthenticated)
@@ -48,7 +48,7 @@
                                 }
                                 else
                                 {
-                                @Html.ActionLink("+Обзор", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 7 }, new { @class = "adminLink" })
+                                @Html.ActionLink("+Достопримечательности", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 7 }, new { @class = "adminLink" })
                                 }
                             }
                         </div>
