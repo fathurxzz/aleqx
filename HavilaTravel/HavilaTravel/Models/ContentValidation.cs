@@ -8,17 +8,33 @@ using System.Web.Mvc;
 
 namespace HavilaTravel.Models
 {
+    public class ValidationController : Controller
+    {
+        public JsonResult IsNameAvailable(string name)
+        {
+            //return Json(true, JsonRequestBehavior.AllowGet);
+            //if (name == "111")
+            //{
+            //    return Json(true, JsonRequestBehavior.AllowGet);
+            //}
+            return Json("Not Allowed Name", JsonRequestBehavior.AllowGet);
+        }
+    }
+
+
     [MetadataType(typeof(ContentValidation))]
     public partial class Content
     {
-
+        
     }
     
     [Bind(Exclude = "Id")]
     public class ContentValidation
     {
-        [Required(ErrorMessage = "* Введите веб-имя страницы")]
-        [DisplayName("Веб-имя страницы")]
+        //[Required(ErrorMessage = "* Введите веб-имя страницы")]
+        //[DisplayName("Веб-имя страницы")]
+        //[Required]
+        [Remote("IsNameAvailable", "Validation")]
         public string Name { get; set; }
 
         
@@ -47,5 +63,7 @@ namespace HavilaTravel.Models
         [DisplayName("Название пункта меню")]
         [Required(ErrorMessage = "* Введите название пункта меню")]
         public string MenuTitle { get; set; }
+
+      
     }
 }
