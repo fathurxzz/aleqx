@@ -41,7 +41,7 @@
                                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = region.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить регион?')" })
                                     }
                                 </div>
-                                foreach (var country in region.Children.OrderBy(m => m.MenuTitle))
+                                foreach (var country in region.Children.OrderBy(m => m.MenuTitle).Where(c=>c.PlaceKind==2))
                                     {
                                 <div class="placesSelectorSubItem">
                                     &raquo; 
