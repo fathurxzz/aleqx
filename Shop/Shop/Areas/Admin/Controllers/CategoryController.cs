@@ -117,7 +117,8 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ViewBag.Category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
+                var category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
+                ViewBag.Category = category;
                 var attributes = context.ProductAttribute.ToList();
                 return View(attributes);
             }
