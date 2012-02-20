@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Helpers;
 using Shop.Models;
 
 namespace Shop.Areas.Admin.Controllers
@@ -34,7 +35,7 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Category());
         }
 
         //
@@ -101,29 +102,14 @@ namespace Shop.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Category/Delete/5
-
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Category/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (var context = new ShopContainer())
             {
-                // TODO: Add delete logic here
-
+                var category = context.Category.Where(c => c.Id == id).First();
+                context.DeleteObject(category);
+                context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
             }
         }
 
@@ -131,9 +117,47 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ViewBag.Category = context.Category.First(c => c.Id == id);
+                ViewBag.Category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
                 var attributes = context.ProductAttribute.ToList();
                 return View(attributes);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Attributes(int categoryId,FormCollection form)
+        {
+            try
+            {
+                using (var context = new ShopContainer())
+                {
+                    var category = context.Category.Include("ProductAttributes").First(c => c.Id == categoryId);
+                    var attributes = context.ProductAttribute.ToList();
+
+                    PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr", "categoryId");
+
+                    foreach (var kvp in postData)
+                    {
+                        var attribute = attributes.First(a => a.Id == kvp.Key);
+                        if(kvp.Value)
+                        {
+                            if(!category.ProductAttributes.Contains(attribute))
+                                category.ProductAttributes.Add(attribute);
+                        }
+                        else
+                        {
+                            if (category.ProductAttributes.Contains(attribute))
+                                category.ProductAttributes.Remove(attribute);
+                        }
+                    }
+
+                    context.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                return View();
             }
         }
     }

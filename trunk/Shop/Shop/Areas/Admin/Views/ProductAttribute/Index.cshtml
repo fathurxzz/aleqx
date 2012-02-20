@@ -4,7 +4,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@{
+    
+    if (ViewBag.ErrorMessage!=null)
+    {
+        <div class="errorMessage">
+        @Html.Raw(ViewBag.ErrorMessage)
+        </div>
+    }
+}
 <h2>Атрибуты</h2>
 
 <p>
@@ -27,7 +35,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(a=>a.SortOrder)) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -36,15 +44,15 @@
             @Html.DisplayFor(modelItem => item.ValueType)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ShowInCommonView)
+            @Html.Raw(item.ShowInCommonView ? "да" : "нет")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SortOrder)
         </td>
         <td>
            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Просмотр", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            @Html.ActionLink("Значения", "ProductAttributeValues", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id },new{onclick="return confirm('Удалить атрибут? При удалении атрибута будут также удалены все значения данного атрибута в т.ч. и в продуктах!')"})
         </td>
     </tr>
 }

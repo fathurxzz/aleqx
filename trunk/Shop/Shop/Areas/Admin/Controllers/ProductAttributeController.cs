@@ -16,14 +16,44 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var productAttributes = context.ProductAttribute.ToList();
+                var productAttributes = context.ProductAttribute.Include("ProductAttributeValues").ToList();
                 return View(productAttributes);
             }
         }
 
         public ActionResult Create()
         {
-            return View();
+            return View(new ProductAttribute());
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
+                return View(productAttribute);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection form)
+        {
+            using (var context = new ShopContainer())
+            {
+                var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
+                try
+                {
+                    TryUpdateModel(productAttribute, new[] { "Name", "SortOrder", "ValueType", "ShowInCommonView" });
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+
+                }
+                return View(productAttribute);
+            }
+
         }
 
         [HttpPost]
@@ -37,9 +67,11 @@ namespace Shop.Areas.Admin.Controllers
                     {
                         Name = form["Name"],
                         SortOrder = Convert.ToInt32(form["SortOrder"]),
-                        ValueType = form["ValueType"],
-                        ShowInCommonView = Convert.ToBoolean(form["ShowInCommonView"])
+                        ValueType = form["ValueType"]
                     };
+
+                    productAttribute.ShowInCommonView = Convert.ToBoolean(form["ShowInCommonView"] == "true,false" ? "true" : form["ShowInCommonView"]);
+
                     context.AddToProductAttribute(productAttribute);
                     context.SaveChanges();
                 }
@@ -49,6 +81,69 @@ namespace Shop.Areas.Admin.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                try
+                {
+                    var attribute = context.ProductAttribute.First(a => a.Id == id);
+                    context.DeleteObject(attribute);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = ex.Message +"<br/>"+ ex.InnerException.Message;
+                    var productAttributes = context.ProductAttribute.Include("ProductAttributeValues").ToList();
+                    return View("Index", productAttributes);
+                }
+            }
+        }
+
+
+        public ActionResult ProductAttributeValues(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+
+                var productAttribute = context.ProductAttribute.Include("ProductAttributeValues").First(pa => pa.Id == id);
+                return View(productAttribute);
+            }
+        }
+
+        public ActionResult DeleteProductAttributeValue(int id, int productAttributeId)
+        {
+            using (var context = new ShopContainer())
+            {
+                var productAttributeValue = context.ProductAttributeValues.Where(pav => pav.Id == id);
+                context.DeleteObject(productAttributeValue);
+                context.SaveChanges();
+                return RedirectToAction("ProductAttributeValues", new { id = productAttributeId });
+            }
+        }
+
+        public ActionResult AddProductAttributeValue(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
+                return View(productAttribute);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddProductAttributeValue(int id, string attributeValue)
+        {
+            using (var context = new ShopContainer())
+            {
+                var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
+                productAttribute.ProductAttributeValues.Add(new ProductAttributeValues { Value = attributeValue });
+                context.SaveChanges();
+                return RedirectToAction("ProductAttributeValues", new { id = id });
             }
         }
     }

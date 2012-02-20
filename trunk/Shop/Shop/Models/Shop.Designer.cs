@@ -20,8 +20,8 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("Shop", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Shop", "CategoryCategory", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Shop.Models.Category), "Category1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Category), true)]
-[assembly: EdmRelationshipAttribute("Shop", "PruductAttributeCategory", "PruductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttribute), "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Category))]
-[assembly: EdmRelationshipAttribute("Shop", "PruductAttributeProductAttributeValues", "PruductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.ProductAttribute), "ProductAttributeValues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttributeValues), true)]
+[assembly: EdmRelationshipAttribute("Shop", "ProductAttributeCategory", "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttribute), "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Category))]
+[assembly: EdmRelationshipAttribute("Shop", "ProductAttributeProductAttributeValues", "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.ProductAttribute), "ProductAttributeValues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttributeValues), true)]
 [assembly: EdmRelationshipAttribute("Shop", "ProductAttributeValuesProduct", "ProductAttributeValues", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductAttributeValues), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Product))]
 [assembly: EdmRelationshipAttribute("Shop", "ProductProductImage", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.Product), "ProductImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.ProductImage), true)]
 [assembly: EdmRelationshipAttribute("Shop", "BrandProduct", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Shop.Models.Brand), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Shop.Models.Product), true)]
@@ -723,18 +723,18 @@ namespace Shop.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeCategory", "PruductAttribute")]
-        public EntityCollection<ProductAttribute> PruductAttributes
+        [EdmRelationshipNavigationPropertyAttribute("Shop", "ProductAttributeCategory", "ProductAttribute")]
+        public EntityCollection<ProductAttribute> ProductAttributes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttribute>("Shop.PruductAttributeCategory", "PruductAttribute");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttribute>("Shop.ProductAttributeCategory", "ProductAttribute");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttribute>("Shop.PruductAttributeCategory", "PruductAttribute", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttribute>("Shop.ProductAttributeCategory", "ProductAttribute", value);
                 }
             }
         }
@@ -1429,18 +1429,18 @@ namespace Shop.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeCategory", "Category")]
+        [EdmRelationshipNavigationPropertyAttribute("Shop", "ProductAttributeCategory", "Category")]
         public EntityCollection<Category> Categories
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Shop.PruductAttributeCategory", "Category");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Shop.ProductAttributeCategory", "Category");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Shop.PruductAttributeCategory", "Category", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Shop.ProductAttributeCategory", "Category", value);
                 }
             }
         }
@@ -1451,18 +1451,18 @@ namespace Shop.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeProductAttributeValues", "ProductAttributeValues")]
+        [EdmRelationshipNavigationPropertyAttribute("Shop", "ProductAttributeProductAttributeValues", "ProductAttributeValues")]
         public EntityCollection<ProductAttributeValues> ProductAttributeValues
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttributeValues>("Shop.PruductAttributeProductAttributeValues", "ProductAttributeValues");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttributeValues>("Shop.ProductAttributeProductAttributeValues", "ProductAttributeValues");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttributeValues>("Shop.PruductAttributeProductAttributeValues", "ProductAttributeValues", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttributeValues>("Shop.ProductAttributeProductAttributeValues", "ProductAttributeValues", value);
                 }
             }
         }
@@ -1607,16 +1607,16 @@ namespace Shop.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Shop", "PruductAttributeProductAttributeValues", "PruductAttribute")]
-        public ProductAttribute PruductAttribute
+        [EdmRelationshipNavigationPropertyAttribute("Shop", "ProductAttributeProductAttributeValues", "ProductAttribute")]
+        public ProductAttribute ProductAttribute
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.ProductAttributeProductAttributeValues", "ProductAttribute").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.ProductAttributeProductAttributeValues", "ProductAttribute").Value = value;
             }
         }
         /// <summary>
@@ -1624,17 +1624,17 @@ namespace Shop.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<ProductAttribute> PruductAttributeReference
+        public EntityReference<ProductAttribute> ProductAttributeReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductAttribute>("Shop.ProductAttributeProductAttributeValues", "ProductAttribute");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductAttribute>("Shop.PruductAttributeProductAttributeValues", "PruductAttribute", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductAttribute>("Shop.ProductAttributeProductAttributeValues", "ProductAttribute", value);
                 }
             }
         }

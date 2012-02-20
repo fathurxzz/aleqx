@@ -1,0 +1,32 @@
+﻿@using Shop.Models
+@model IEnumerable<Shop.Models.ProductAttribute>
+@{
+    ViewBag.Title = "Attributes";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+
+    var category = (Category)ViewBag.Category;
+
+    @Html.Hidden("categoryId", category.Id)
+    <h2>
+        Атрибуты категории "@category.Name"</h2>
+
+                       foreach (var item in Model)
+                       {
+    <div>
+        @Html.CheckBox("attr_" + item.Id, category.ProductAttributes.Contains(item))
+        @Html.DisplayFor(modelItem => item.Name),
+        @Html.DisplayFor(modelItem => item.ValueType)
+    </div>
+                       }
+
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+
+}
+<div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>
