@@ -9,6 +9,10 @@ else if (Model.PlaceReview != null)
 {
     @Html.Raw(Model.PlaceReview.Text)
 }
+else if(Model.PriceTable!=null)
+{
+    @Html.Raw(Model.PriceTable.Text)
+}
 else
 {
     @Html.Raw(Model.Content.Text)
@@ -39,6 +43,10 @@ else
         else if (Model.PlaceReview != null)
         {
             @Html.Partial("Accordion", Model.PlaceReview.Accordions)
+        }
+        else if (Model.PriceTable != null)
+        {
+            @Html.Partial("Accordion", Model.PriceTable.Accordions)
         }
         else
         {
@@ -103,13 +111,13 @@ else
 @section MainMenu
 {
     @{
-    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
-    @Html.Partial("MainMenu",menu)
+        var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu", menu)
     }
 }
 @section HeaderLeftMenu
 {
-    @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
+    @Html.Partial("HeaderLeftMenu", Model.HeaderLeftMenuItems)
 }
 @section BellBoy
 {
