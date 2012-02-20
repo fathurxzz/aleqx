@@ -86,11 +86,11 @@
 
                             if (Request.QueryString["showSpa"] == "True")
                         {
-                                @Html.Raw("СПА-отели")
+                                @Html.Raw("Отели")
                         }
                             else
                             {
-                                @Html.ActionLink("СПА-отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
+                                @Html.ActionLink("Отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
                             }
 
                             if (Request.IsAuthenticated)
@@ -123,7 +123,7 @@
                     {
                         if (Request.IsAuthenticated)
                         {
-                        @Html.ActionLink("+SPA", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
+                        @Html.ActionLink("+Отели", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
                         }
                     }
                     }
