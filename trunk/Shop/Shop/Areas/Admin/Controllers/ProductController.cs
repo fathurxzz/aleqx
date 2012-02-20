@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Models;
 
 namespace Shop.Areas.Admin.Controllers
 {
@@ -13,7 +14,11 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                var products = context.Product.ToList();
+                return View(products);
+            }
         }
 
         //
@@ -29,30 +34,65 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
-        } 
+            using (var context = new ShopContainer())
+            {
+                var categories = context.Category.ToList();
+                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Name, Value = category.Id.ToString() }).ToList();
+                ViewBag.Categories = categoryItems;
+
+                var brands = context.Brand.ToList();
+                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem {Text = b.Name, Value = b.Id.ToString()}).ToList();
+                ViewBag.Brands = brandItems;
+                return View();
+            }
+        }
 
         //
         // POST: /Admin/Product/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int categoryId, int brandId, FormCollection form)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (var context = new ShopContainer())
+                {
+                    var category = context.Category.First(c => c.Id == categoryId);
+                    var brand = context.Brand.First(b => b.Id == brandId);
+                    var product = new Product
+                                      {
+                                          Category = category,
+                                          Brand = brand
+                                      };
+                    TryUpdateModel(product, 
+                        new[]
+                        {
+                            "Name",
+                            "SortOrder",
+                            "Price", 
+                            "OldPrice",
+                            "ShortDescription",
+                            "Description",
+                            "IsNew",
+                            "IsSpecialOffer",
+                            "Published",
+                            "SeoDescription",
+                            "SeoKeywords"
+                        });
+                    context.AddToProduct(product);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
                 return View();
             }
         }
-        
+
         //
         // GET: /Admin/Product/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -67,7 +107,7 @@ namespace Shop.Areas.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
@@ -78,7 +118,7 @@ namespace Shop.Areas.Admin.Controllers
 
         //
         // GET: /Admin/Product/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             return View();
@@ -93,12 +133,28 @@ namespace Shop.Areas.Admin.Controllers
             try
             {
                 // TODO: Add delete logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
+            }
+        }
+
+
+        public ActionResult Attributes(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product.Include("Category").First(p => p.Id == id);
+                product.Category.ProductAttributes.Load();
+                foreach (var attribute in product.Category.ProductAttributes)
+                {
+                    attribute.ProductAttributeValues.Load();
+                }
+
+                return View(product.Category.ProductAttributes);
             }
         }
     }
