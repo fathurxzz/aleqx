@@ -48,6 +48,10 @@ namespace HavilaTravel.Models
                 {
                     var spaId = spa.Id;
                     spa = Context.Content.Include("Accordions").First(c => c.Id == spaId);
+                    foreach (var accordion in spa.Accordions)
+                    {
+                        accordion.AccordionImages.Load();
+                    }
                     CurrentContentId = (int)spa.Id;
                     return spa;
                 }
@@ -64,6 +68,10 @@ namespace HavilaTravel.Models
                 {
                     var priceId = price.Id;
                     price = Context.Content.Include("Accordions").First(c => c.Id == priceId);
+                    foreach (var accordion in price.Accordions)
+                    {
+                        accordion.AccordionImages.Load();
+                    }
                     CurrentContentId = (int)price.Id;
                     return price;
                 }
@@ -81,6 +89,10 @@ namespace HavilaTravel.Models
                 {
                     var reviewId = review.Id;
                     review = Context.Content.Include("Accordions").First(c => c.Id == reviewId);
+                    foreach (var accordion in review.Accordions)
+                    {
+                        accordion.AccordionImages.Load();
+                    }
                     CurrentContentId = (int)review.Id;
                     return review;
                 }
