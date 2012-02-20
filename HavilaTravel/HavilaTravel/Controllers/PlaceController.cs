@@ -15,13 +15,13 @@ namespace HavilaTravel.Controllers
 
         //private List<MenuItem> _placesMap = new List<MenuItem>();
 
-        public ActionResult Index(string id, bool? showSpa, bool? showPlacesReview)
+        public ActionResult Index(string id, bool? showSpa, bool? showPlacesReview, bool? showPrices)
         {
             using (var context = new ContentStorage())
             {
                 if (string.IsNullOrEmpty(id))
                     id = "Countries";
-                PlaceViewModel model = new PlaceViewModel(id, context, showSpa, showPlacesReview);
+                PlaceViewModel model = new PlaceViewModel(id, context, showSpa, showPlacesReview, showPrices);
                 ViewBag.PageTitle = model.Content.PageTitle;
                 ViewBag.SeoDescription = model.Content.SeoDescription;
                 ViewBag.SeoKeywords = model.Content.SeoKeywords;

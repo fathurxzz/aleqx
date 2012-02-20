@@ -8,20 +8,23 @@ namespace HavilaTravel.Models
     {
         private bool? _showSpa;
         private bool? _showPlacesReview;
+        private bool? _showPrices;
 
         public List<MenuItem> PlacesMap { get; set; }
         public List<Content> RegionsAndCountries { get; set; }
         public Content Spa { get; set; }
         public Content PlaceReview { get; set; }
+        public Content PriceTable { get; set; }
         public List<MenuItem> LeftSubMenuItems { get; set; }
         public List<MenuItem> PlacesForSelector { get; set; }
 
 
-        public PlaceViewModel(string id, ContentStorage context, bool? showSpa, bool? showPlacesReview)
+        public PlaceViewModel(string id, ContentStorage context, bool? showSpa, bool? showPlacesReview, bool? showPrices)
             : base(id, context,false, true)
         {
             _showSpa = showSpa;
             _showPlacesReview = showPlacesReview;
+            _showPrices = showPrices;
 
             PlacesMap = FillPlacesMap(Content, Context);
 
@@ -29,6 +32,7 @@ namespace HavilaTravel.Models
 
             Spa = GetSpa();
             PlaceReview = GetPlaceReview();
+            PriceTable = GetPriceTable();
 
             LeftSubMenuItems = GetLeftSubMenuItems();
             PlacesForSelector = GetPlacesForSelector();
@@ -39,15 +43,29 @@ namespace HavilaTravel.Models
         {
             if (_showSpa.HasValue && _showSpa.Value)
             {
-                var spa = Content.Children.Where(c => c.PlaceKind == 6).FirstOrDefault();
+                var spa = Content.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.SpaInfo);
                 if (spa != null)
                 {
                     var spaId = spa.Id;
-                    spa = Context.Content
-                        .Include("Accordions")
-                        .Where(c => c.Id == spaId)
-                        .First();
+                    spa = Context.Content.Include("Accordions").First(c => c.Id == spaId);
+                    CurrentContentId = (int)spa.Id;
                     return spa;
+                }
+            }
+            return null;
+        }
+
+        private Content GetPriceTable()
+        {
+            if (_showPrices.HasValue && _showPrices.Value)
+            {
+                var price = Content.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PriceTable);
+                if (price != null)
+                {
+                    var priceId = price.Id;
+                    price = Context.Content.Include("Accordions").First(c => c.Id == priceId);
+                    CurrentContentId = (int)price.Id;
+                    return price;
                 }
             }
             return null;
@@ -58,14 +76,12 @@ namespace HavilaTravel.Models
         {
             if (_showPlacesReview.HasValue && _showPlacesReview.Value)
             {
-                var review = Content.Children.Where(c => c.PlaceKind == (int)PlaceKind.PlacesReview).FirstOrDefault();
+                var review = Content.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PlacesReview);
                 if (review != null)
                 {
                     var reviewId = review.Id;
-                    review = Context.Content
-                        .Include("Accordions")
-                        .Where(c => c.Id == reviewId)
-                        .First();
+                    review = Context.Content.Include("Accordions").First(c => c.Id == reviewId);
+                    CurrentContentId = (int)review.Id;
                     return review;
                 }
             }
@@ -89,7 +105,7 @@ namespace HavilaTravel.Models
             if (Content.PlaceKind.In(new[] { (int)PlaceKind.Spa, (int)PlaceKind.Hotel }))
             {
                 var parentId = Content.Parent.Id;
-                var parent = Context.Content.Include("Children").Where(c => c.Id == parentId).First();
+                var parent = Context.Content.Include("Children").First(c => c.Id == parentId);
                 placesLeftSubMenu = parent.Children
                     .Where(p => p.PlaceKind == 5 || p.PlaceKind == 4).Select(child => new MenuItem
                     {
@@ -147,7 +163,7 @@ namespace HavilaTravel.Models
             if (content.Parent != null)
             {
                 var parentId = content.Parent.Id;
-                content = context.Content.Include("Parent").Where(c => c.Id == parentId).First();
+                content = context.Content.Include("Parent").First(c => c.Id == parentId);
                 map.Add(new MenuItem
                 {
                     Name = content.Name,
