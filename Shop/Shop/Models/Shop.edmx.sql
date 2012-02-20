@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/18/2012 14:32:17
+-- Date Created: 02/20/2012 17:41:58
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `toy`;
-CREATE DATABASE `toy`;
-USE `toy`;
+DROP DATABASE IF EXISTS `toyplanet`;
+CREATE DATABASE `toyplanet`;
+USE `toyplanet`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -21,9 +21,9 @@ USE `toy`;
 
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
 --    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
---    ALTER TABLE `PruductAttributeCategory` DROP CONSTRAINT `FK_PruductAttributeCategory_PruductAttribute`;
---    ALTER TABLE `PruductAttributeCategory` DROP CONSTRAINT `FK_PruductAttributeCategory_Category`;
---    ALTER TABLE `ProductAttributeValues` DROP CONSTRAINT `FK_PruductAttributeProductAttributeValues`;
+--    ALTER TABLE `ProductAttributeCategory` DROP CONSTRAINT `FK_ProductAttributeCategory_ProductAttribute`;
+--    ALTER TABLE `ProductAttributeCategory` DROP CONSTRAINT `FK_ProductAttributeCategory_Category`;
+--    ALTER TABLE `ProductAttributeValues` DROP CONSTRAINT `FK_ProductAttributeProductAttributeValues`;
 --    ALTER TABLE `ProductAttributeValuesProduct` DROP CONSTRAINT `FK_ProductAttributeValuesProduct_ProductAttributeValues`;
 --    ALTER TABLE `ProductAttributeValuesProduct` DROP CONSTRAINT `FK_ProductAttributeValuesProduct_Product`;
 --    ALTER TABLE `ProductImage` DROP CONSTRAINT `FK_ProductProductImage`;
@@ -37,12 +37,12 @@ USE `toy`;
 SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `Category`;
-    DROP TABLE IF EXISTS `PruductAttribute`;
+    DROP TABLE IF EXISTS `ProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValues`;
     DROP TABLE IF EXISTS `ProductImage`;
     DROP TABLE IF EXISTS `Brand`;
     DROP TABLE IF EXISTS `Tag`;
-    DROP TABLE IF EXISTS `PruductAttributeCategory`;
+    DROP TABLE IF EXISTS `ProductAttributeCategory`;
     DROP TABLE IF EXISTS `ProductAttributeValuesProduct`;
     DROP TABLE IF EXISTS `TagProduct`;
 SET foreign_key_checks = 1;
@@ -127,10 +127,10 @@ CREATE TABLE `Tag` (
     `Value` mediumtext  NOT NULL
 );
 
--- Creating table 'PruductAttributeCategory'
+-- Creating table 'ProductAttributeCategory'
 
-CREATE TABLE `PruductAttributeCategory` (
-    `PruductAttributes_Id` int  NOT NULL,
+CREATE TABLE `ProductAttributeCategory` (
+    `ProductAttributes_Id` int  NOT NULL,
     `Categories_Id` int  NOT NULL
 );
 
@@ -154,11 +154,11 @@ CREATE TABLE `TagProduct` (
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on `PruductAttributes_Id`, `Categories_Id` in table 'PruductAttributeCategory'
+-- Creating primary key on `ProductAttributes_Id`, `Categories_Id` in table 'ProductAttributeCategory'
 
-ALTER TABLE `PruductAttributeCategory`
-ADD CONSTRAINT `PK_PruductAttributeCategory`
-    PRIMARY KEY (`PruductAttributes_Id`, `Categories_Id` );
+ALTER TABLE `ProductAttributeCategory`
+ADD CONSTRAINT `PK_ProductAttributeCategory`
+    PRIMARY KEY (`ProductAttributes_Id`, `Categories_Id` );
 
 -- Creating primary key on `ProductAttributeValues_Id`, `Products_Id` in table 'ProductAttributeValuesProduct'
 
@@ -208,42 +208,42 @@ CREATE INDEX `IX_FK_CategoryCategory`
     ON `Category`
     (`CategoryId`);
 
--- Creating foreign key on `PruductAttributes_Id` in table 'PruductAttributeCategory'
+-- Creating foreign key on `ProductAttributes_Id` in table 'ProductAttributeCategory'
 
-ALTER TABLE `PruductAttributeCategory`
-ADD CONSTRAINT `FK_PruductAttributeCategory_PruductAttribute`
-    FOREIGN KEY (`PruductAttributes_Id`)
+ALTER TABLE `ProductAttributeCategory`
+ADD CONSTRAINT `FK_ProductAttributeCategory_ProductAttribute`
+    FOREIGN KEY (`ProductAttributes_Id`)
     REFERENCES `ProductAttribute`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating foreign key on `Categories_Id` in table 'PruductAttributeCategory'
+-- Creating foreign key on `Categories_Id` in table 'ProductAttributeCategory'
 
-ALTER TABLE `PruductAttributeCategory`
-ADD CONSTRAINT `FK_PruductAttributeCategory_Category`
+ALTER TABLE `ProductAttributeCategory`
+ADD CONSTRAINT `FK_ProductAttributeCategory_Category`
     FOREIGN KEY (`Categories_Id`)
     REFERENCES `Category`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_PruductAttributeCategory_Category'
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductAttributeCategory_Category'
 
-CREATE INDEX `IX_FK_PruductAttributeCategory_Category` 
-    ON `PruductAttributeCategory`
+CREATE INDEX `IX_FK_ProductAttributeCategory_Category` 
+    ON `ProductAttributeCategory`
     (`Categories_Id`);
 
 -- Creating foreign key on `PruductAttributeId` in table 'ProductAttributeValues'
 
 ALTER TABLE `ProductAttributeValues`
-ADD CONSTRAINT `FK_PruductAttributeProductAttributeValues`
+ADD CONSTRAINT `FK_ProductAttributeProductAttributeValues`
     FOREIGN KEY (`PruductAttributeId`)
     REFERENCES `ProductAttribute`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_PruductAttributeProductAttributeValues'
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductAttributeProductAttributeValues'
 
-CREATE INDEX `IX_FK_PruductAttributeProductAttributeValues` 
+CREATE INDEX `IX_FK_ProductAttributeProductAttributeValues` 
     ON `ProductAttributeValues`
     (`PruductAttributeId`);
 

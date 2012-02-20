@@ -5,6 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+
+
+
 <h2>Категории</h2>
 
 <p>
@@ -27,7 +30,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(c=>c.SortOrder)) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)

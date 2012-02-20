@@ -1,0 +1,27 @@
+﻿@model Shop.Models.ProductAttribute
+
+@{
+    ViewBag.Title = "AddProductAttributeValue";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Добавление значения атрибута "@Model.Name"</h2>
+
+@using(Html.BeginForm())
+{
+    @Html.HiddenFor(model=>model.Id)
+    @Html.TextBox("attributeValue")
+    @Html.Raw("&nbsp")
+    @Model.ValueType
+
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    
+}
+
+<div>
+    @Html.ActionLink("Назад к списку значений", "ProductAttributeValues", "ProductAttribute", new { id =Model.Id},null)
+</div>
+
+
