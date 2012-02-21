@@ -33,21 +33,10 @@
                     @Html.DisplayFor(modelItem => item.ValueType)
                 </td>
                 <td>
-                    @{
-                       List<SelectListItem> selectList = new List<SelectListItem>();
-                       selectList.Add(new SelectListItem { Text = "---", Value = "" });
-
-                       var selectedItems = item.ProductAttributeValues.Intersect(productValues).ToList();
-
-                       foreach (var attributeValue in item.ProductAttributeValues)
-                       {
-                           bool selected = selectedItems.Contains(attributeValue);
-                           var selectListItem = new SelectListItem { Text = attributeValue.Value, Value = attributeValue.Value, Selected = selected };
-                           selectList.Add(selectListItem);
-                       }
-
+                    @foreach(var attributeValue in item.ProductAttributeValues.OrderBy(a=>a.Value))
+                    {
+                        @Html.CheckBox("attr_" + attributeValue.Id, productValues.Contains(attributeValue)) @attributeValue.Value @Html.Raw("&nbsp;&nbsp;&nbsp;")
                     }
-                    @Html.DropDownList("attr_" + item.Id, selectList)
                 </td>
             </tr>
         }
