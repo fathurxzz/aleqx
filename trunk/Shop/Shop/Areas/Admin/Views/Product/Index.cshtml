@@ -5,45 +5,45 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Продукты</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить новую запись", "Create")
 </p>
 <table>
     <tr>
         <th>
-            Name
+            Название
         </th>
         <th>
-            ShortDescription
+            Краткое описание
         </th>
         <th>
-            Description
+            Описание
         </th>
         <th>
-            IsNew
+            Новый
+        </th>
+        <th title="Специальное предложение">
+            Спец. предл.
         </th>
         <th>
-            IsSpecialOffer
+            Активный
         </th>
         <th>
-            Published
+            Порядок отображения
         </th>
         <th>
-            SortOrder
+            Описание<br/>(для поисковиков)
         </th>
         <th>
-            SeoDescription
+            Ключевые слова<br/>(для поисковиков)
         </th>
         <th>
-            SeoKeywords
+            Цена
         </th>
         <th>
-            Price
-        </th>
-        <th>
-            OldPrice
+            Старая цена
         </th>
         <th></th>
     </tr>
@@ -60,13 +60,13 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsNew)
+            @Html.Raw(item.IsNew?"да":"нет")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsSpecialOffer)
+            @Html.Raw(item.IsSpecialOffer ? "да" : "нет")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Published)
+            @Html.Raw(item.Published ? "да" : "нет")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SortOrder)
@@ -85,10 +85,9 @@
         </td>
         <td>
 
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Attributes", "Attributes", new { id = item.Id })
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id })|
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{onclick="return confirm('Удалить товар?')"})
         </td>
     </tr>
 }

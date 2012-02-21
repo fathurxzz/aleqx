@@ -1,55 +1,62 @@
-﻿@model IEnumerable<Shop.Models.ProductAttribute>
+﻿@using Shop.Models
+@model IEnumerable<Shop.Models.ProductAttribute>
 @{
     ViewBag.Title = "Attributes";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    var productValues = (IEnumerable<ProductAttributeValues>)ViewBag.ProductAttributeValues;
 }
 <h2>
-    Attributes</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            SortOrder
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            ValueType
-        </th>
-        <th>
-        </th>
-    </tr>
-    @foreach (var item in Model.OrderBy(a => a.SortOrder))
-    {
+    Атрибуты продукта "@ViewBag.ProductName"</h2>
+@using (Html.BeginForm())
+{
+    @Html.Hidden("productId", (int)ViewBag.ProductId)
+    <table>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SortOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValueType)
-            </td>
-            <td>
-                @{
-                   List<SelectListItem> selectList = new List<SelectListItem>();
-                   selectList.Add(new SelectListItem{Text = "---",Value = ""});
-            
-                   foreach (var value in item.ProductAttributeValues)
-                   {
-                        selectList.Add(new SelectListItem{Text = value.Value,Value = value.Value});
-                   }
-                   
-                   
-                }
-
-                @Html.DropDownList("attr_"+item.Id,selectList)
-
-            </td>
+            <th>
+                Название
+            </th>
+            <th>
+                Тип значения
+            </th>
+            <th>
+                Значение
+            </th>
         </tr>
-    }
-</table>
+        @foreach (var item in Model.OrderBy(a => a.SortOrder))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValueType)
+                </td>
+                <td>
+                    @{
+                       List<SelectListItem> selectList = new List<SelectListItem>();
+                       selectList.Add(new SelectListItem { Text = "---", Value = "" });
+
+                       var selectedItems = item.ProductAttributeValues.Intersect(productValues).ToList();
+
+                       foreach (var attributeValue in item.ProductAttributeValues)
+                       {
+                           bool selected = selectedItems.Contains(attributeValue);
+                           var selectListItem = new SelectListItem { Text = attributeValue.Value, Value = attributeValue.Value, Selected = selected };
+                           selectList.Add(selectListItem);
+                       }
+
+                    }
+                    @Html.DropDownList("attr_" + item.Id, selectList)
+                </td>
+            </tr>
+        }
+    </table>
+    
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
+}
+<div>
+    @Html.ActionLink("Назад к списку товаров", "Index")
+</div>

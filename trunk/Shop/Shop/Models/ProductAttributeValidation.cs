@@ -16,11 +16,11 @@ namespace Shop.Models
     public class ProductAttributeValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Имя")]
+        [DisplayName("Название")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName(" Тип значения")]
+        [DisplayName("Тип значения")]
         public string ValueType { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]

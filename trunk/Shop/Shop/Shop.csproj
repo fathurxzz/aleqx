@@ -79,6 +79,8 @@
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ProductAttributeValidation.cs" />
+    <Compile Include="Models\ProductAttributeValues.cs" />
+    <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Shop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -203,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Product\Attributes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
