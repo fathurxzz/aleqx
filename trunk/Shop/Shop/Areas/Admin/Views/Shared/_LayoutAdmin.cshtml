@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+  @if (Request.Cookies["toyplanet"] == null)
+    {
+        Response.Redirect("~/underconstruction.htm");
+    }
+<!DOCTYPE html>
 
 <html>
 <head>
