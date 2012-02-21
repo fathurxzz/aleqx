@@ -13,21 +13,28 @@ namespace Shop.Areas.Admin.Controllers
         //
         // GET: /Admin/Category/
 
+        private void LoadChildren(Category category, int level)
+        {
+            category.Children.Load();
+            foreach (var child in category.Children)
+            {
+                level++;
+                child.Level = level;
+                LoadChildren(child, level);
+                level--;
+            }
+        }
+
         public ActionResult Index()
         {
             using (var context = new ShopContainer())
             {
-                var categories = context.Category.Include("Parent").Include("Children").Where(c=>c.Parent==null).ToList();
+                var categories = context.Category.Where(c => c.Parent == null).ToList();
+                int level = 0;
                 foreach (var category in categories)
                 {
-                    category.Children.Load();
-                    if(category.Children.Count>0)
-                    {
-                        foreach (var child in category.Children)
-                        {
-                            child.Children.Load();
-                        }
-                    }
+                    category.Level = level;
+                    LoadChildren(category, level);
                 }
 
                 return View(categories);
