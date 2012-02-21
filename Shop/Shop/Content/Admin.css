@@ -40,6 +40,14 @@
 }
 
 
+.reviewTable td{
+    text-align: center;
+}
+
+.reviewTable td.digit{
+    text-align: right;
+}
+
 table
 {
     border-collapse: collapse;

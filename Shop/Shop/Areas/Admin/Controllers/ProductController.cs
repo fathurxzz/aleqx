@@ -193,7 +193,7 @@ namespace Shop.Areas.Admin.Controllers
                 ViewBag.ProductId = product.Id;
                 ViewBag.ProductName = product.Name;
 
-                if (!string.IsNullOrEmpty("r_default"))
+                if (!string.IsNullOrEmpty(form["r_default"]))
                 {
                     var defaultImageId = Convert.ToInt32(form["r_default"]);
                     product.ProductImages.ToList().ForEach(p=>p.Default=false);

@@ -1,1 +1,10 @@
-﻿
+﻿*{ margin: 0;padding: 0;}
+
+.page {
+    width: 960px;
+    position: relative;
+    margin: 0 auto;
+    background-color: #FAEBD7;
+    min-height: 800px;
+    padding: 20px;
+}
