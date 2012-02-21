@@ -75,6 +75,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FormCollectionExtender.cs" />
+    <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -90,6 +92,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox-x.png" />
+    <Content Include="Content\fancybox\fancybox-y.png" />
+    <Content Include="Content\fancybox\fancybox.png" />
+    <Content Include="Content\fancybox\fancy_close.png" />
+    <Content Include="Content\fancybox\fancy_loading.png" />
+    <Content Include="Content\fancybox\fancy_nav_left.png" />
+    <Content Include="Content\fancybox\fancy_nav_right.png" />
+    <Content Include="Content\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\fancybox\fancy_title_left.png" />
+    <Content Include="Content\fancybox\fancy_title_main.png" />
+    <Content Include="Content\fancybox\fancy_title_over.png" />
+    <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="Content\fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Content\fancybox\jquery.fancybox-1.3.4.js" />
+    <Content Include="Content\fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Content\old.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Shop.edmx.sql" />
@@ -136,6 +163,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="ImageCache\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -208,6 +237,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Product\Images.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Product\AddImage.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
