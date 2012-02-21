@@ -11,10 +11,10 @@
 <p>
     @Html.ActionLink("Добавить новую запись", "Create")
 </p>
-<table>
+<table class="reviewTable">
     <tr>
         <th>
-            Код товара
+            Код продукта
         </th>
         <th>
             Название
@@ -96,10 +96,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.SeoKeywords)
         </td>
-        <td>
+        <td class="digit">
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
+        <td class="digit">
             @Html.DisplayFor(modelItem => item.OldPrice)
         </td>
         <td>
