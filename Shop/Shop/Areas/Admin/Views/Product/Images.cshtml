@@ -7,39 +7,49 @@
     var productId = (int)ViewBag.ProductId;
 }
 
-<h2>Изображения продукта "@ViewBag.ProductName"</h2>
+@using (Html.BeginForm())
+{
+    <h2>Изображения продукта "@ViewBag.ProductName"</h2>
 
-<p>
-    @Html.ActionLink("Добавить изображение", "AddImage", new { productId = productId})
-</p>
-<table>
-    <tr>
-        <th>
-            Изображение по умолчанию
-        </th>
-        <th>
-            Изображение
-        </th>
-        <th></th>
-    </tr>
+    @Html.Hidden("productId",productId)
+    
+    <p>
+        @Html.ActionLink("Добавить изображение", "AddImage", new {productId = productId})
+    </p>
+    <table>
+        <tr>
+            <th>
+                Изображение по умолчанию
+            </th>
+            <th>
+                Изображение
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Default)
-        </td>
-        <td>
-            <a rel="@Html.Raw("group" + productId)" href="../../../Content/Images/@item.ImageSource" class="fancy">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "thumbnail1", item.ImageSource))
-            </a>
-        </td>
-        <td>
-            @Html.ActionLink("Удалить", "DeleteImage", new { id=item.Id, productId= productId },new{onclick="return confirm('Удалить изображение?')"})
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.RadioButton("r_default", item.Id, item.Default)
+            
+                </td>
+                <td>
+                    <a rel="@Html.Raw("group" + productId)" href="../../../Content/Images/@item.ImageSource" class="fancy">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "thumbnail1", item.ImageSource))
+                    </a>
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "DeleteImage", new {id = item.Id, productId = productId}, new {onclick = "return confirm('Удалить изображение?')"})
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        <input type="submit" value="Сохранить"/>
+    </p>
 }
-
-</table>
 <div>
     @Html.ActionLink("Назад к списку", "Index")
 </div>

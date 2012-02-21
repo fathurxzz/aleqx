@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Shop.Models.Brand>
+﻿@using Shop.Helpers
+@model IEnumerable<Shop.Models.Brand>
 
 @{
     ViewBag.Title = "Index";
@@ -30,13 +31,19 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.OrderBy(b=>b.Name)) {
+@foreach (var item in Model.OrderBy(b => b.Name))
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Logo)
+            @{
+    if (!string.IsNullOrEmpty(item.Logo))
+    {
+        @Html.Raw(Html.CachedImage("~/Content/Images/", item.Logo, "thumbnail0", item.Logo))
+    }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

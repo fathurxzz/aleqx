@@ -25,9 +25,15 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
-    padding: 3px 10px;
+table th  {
+    padding: 3px 3px;
 }
+
+ table td {
+    padding: 3px 7px;
+}
+
+
 
 table th {
     background-color: seashell;

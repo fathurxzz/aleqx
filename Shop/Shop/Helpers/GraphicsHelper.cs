@@ -18,6 +18,9 @@ namespace Shop.Helpers
         {
             limitWidth.Add("thumbnail1", 150);
             limitHeight.Add("thumbnail1", 150);
+
+            limitWidth.Add("thumbnail0", 100);
+            limitHeight.Add("thumbnail0", 100);
         }
 
 
