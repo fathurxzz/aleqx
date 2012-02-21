@@ -17,24 +17,31 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var categories = context.Category.ToList();
+                var categories = context.Category.Include("Parent").Include("Children").Where(c=>c.Parent==null).ToList();
+                foreach (var category in categories)
+                {
+                    category.Children.Load();
+                    if(category.Children.Count>0)
+                    {
+                        foreach (var child in category.Children)
+                        {
+                            child.Children.Load();
+                        }
+                    }
+                }
+
                 return View(categories);
             }
         }
 
-        //
-        // GET: /Admin/Category/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         //
         // GET: /Admin/Category/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int? parentId)
         {
+            if (parentId.HasValue)
+                ViewBag.ParentId = parentId.Value;
             return View(new Category());
         }
 
@@ -42,20 +49,24 @@ namespace Shop.Areas.Admin.Controllers
         // POST: /Admin/Category/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult Create(int? parentId, FormCollection form)
         {
             try
             {
                 using (var context = new ShopContainer())
                 {
-                    var category = new Category
+                    var category = new Category();
+                    TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder" });
+
+                    if (parentId.HasValue)
                     {
-                        Name = form["Name"],
-                        SeoDescription = form["SeoDescription"],
-                        SeoKeywords = form["SeoKeywords"],
-                        SortOrder = Convert.ToInt32(form["SortOrder"])
-                    };
-                    context.AddToCategory(category);
+                        var parent = context.Category.First(c => c.Id == parentId);
+                        parent.Children.Add(category);
+                    }
+                    else
+                    {
+                        context.AddToCategory(category);
+                    }
                     context.SaveChanges();
                 }
 
@@ -125,7 +136,7 @@ namespace Shop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Attributes(int categoryId,FormCollection form)
+        public ActionResult Attributes(int categoryId, FormCollection form)
         {
             try
             {
@@ -139,9 +150,9 @@ namespace Shop.Areas.Admin.Controllers
                     foreach (var kvp in postData)
                     {
                         var attribute = attributes.First(a => a.Id == kvp.Key);
-                        if(kvp.Value)
+                        if (kvp.Value)
                         {
-                            if(!category.ProductAttributes.Contains(attribute))
+                            if (!category.ProductAttributes.Contains(attribute))
                                 category.ProductAttributes.Add(attribute);
                         }
                         else

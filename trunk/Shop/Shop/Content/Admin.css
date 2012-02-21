@@ -1,100 +1,138 @@
-﻿body {
+﻿body
+{
     font-family: Verdana, Helvetica, Sans-Serif;
     margin: 0;
-    padding: 10px 50px;
+    padding: 0px 50px;
     color: #696969;
-    font-size: 14px;
+    font-size: 12px;
 }
-
-
-
-
 
 .adminMenu li
 {
-    display: inline;
-    padding: 10px;
+    display: inline-block;
+    padding: 0px;
+    
+    height: 37px;
+}
+
+.adminMenu li:hover
+{
+   
+    
+}
+
+.adminMenu li a
+{
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+  border: 1px solid #999;
+    padding: 8px;
+}
+
+.adminMenu li a:hover
+{
+    
+  background-color: #eee;
+    
 }
 
 
-
-
-
-
-table {
+table
+{
     border-collapse: collapse;
 }
 
-table th  {
-    padding: 3px 3px;
+table th
+{
+    padding: 3px 2px;
+    font-size: 12px;
 }
 
- table td {
+table td
+{
     padding: 3px 7px;
 }
 
 
 
-table th {
+table th
+{
     background-color: seashell;
 }
 
-table td {
+table td
+{
     border: 1px dashed silver;
 }
 
+a
+{
+    color: #44f;
+}
 
-a:hover {
-     color: #ff0000;
+a:hover
+{
+    color: #ff0000;
 }
 
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
-.field-validation-error {
+.field-validation-error
+{
     color: #ff0000;
 }
 
-.field-validation-valid {
+.field-validation-valid
+{
     display: none;
 }
 
-.input-validation-error {
+.input-validation-error
+{
     border: 1px solid #ff0000;
     background-color: #ffeeee;
 }
 
-.validation-summary-errors {
+.validation-summary-errors
+{
     font-weight: bold;
     color: #ff0000;
 }
 
-.validation-summary-valid {
+.validation-summary-valid
+{
     display: none;
 }
 
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/
-.display-label, 
-.editor-label {
+.display-label, .editor-label
+{
     margin: 1em 0 0 0;
 }
 
-.display-field, 
-.editor-field {
+.display-field, .editor-field
+{
     margin: 0.5em 0 0 0;
 }
 
-.text-box {
+.text-box
+{
     width: 30em;
 }
 
-.text-box.multi-line {
+.text-box.multi-line
+{
     height: 6.5em;
 }
 
-.tri-state {
+.tri-state
+{
     width: 6em;
 }
 
@@ -108,7 +146,6 @@ a:hover {
 
 .editor-table
 {
-    
 }
 
 .editor-table textarea
@@ -118,4 +155,12 @@ a:hover {
 }
 
 img
-{border: none}
+{
+    border: none;
+}
+
+
+.child
+{
+    padding-left: 10px;
+}

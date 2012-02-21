@@ -11,13 +11,14 @@
 <h2>Категории</h2>
 
 <p>
-    @Html.ActionLink("Добавить новую запись", "Create")
+    @Html.ActionLink("Добавить категорию", "Create")
 </p>
 <table>
     <tr>
         <th>
             Название
         </th>
+        <th></th>
         <th>
              Описание<br/>(для поисковиков)
         </th>
@@ -31,27 +32,7 @@
     </tr>
 
 @foreach (var item in Model.OrderBy(c=>c.SortOrder)) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeoDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeoKeywords)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortOrder)
-        </td>
-        <td>
-            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Просмотр", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
-            
-        </td>
-    </tr>
+    @Html.Partial("Category",item)
 }
 
 </table>
