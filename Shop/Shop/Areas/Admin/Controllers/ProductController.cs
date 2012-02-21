@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -154,6 +155,60 @@ namespace Shop.Areas.Admin.Controllers
 
         //
         // GET: /Admin/Product/Delete/5
+
+
+        public ActionResult Images(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product.Include("ProductImages").First(p => p.Id == id);
+                ViewBag.ProductId = product.Id;
+                ViewBag.ProductName = product.Name;
+                return View(product.ProductImages);
+            }
+        }
+
+        public ActionResult AddImage(int productId)
+        {
+            ViewBag.ProductId = productId;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(int productId, FormCollection form, IEnumerable<HttpPostedFileBase> uploadFiles)
+        {
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product.First(p => p.Id == productId);
+
+                foreach (var file in uploadFiles)
+                {
+                    if (file == null) continue;
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    product.ProductImages.Add(new ProductImage {ImageSource = fileName});
+                }
+                context.SaveChanges();
+            }
+            return RedirectToAction("Images", new {id = productId});
+        }
+
+        public ActionResult DeleteImage(int id, int productId)
+        {
+            using (var context = new ShopContainer())
+            {
+                var image = context.ProductImage.First(i => i.Id == id);
+                IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
+                IOHelper.DeleteFile("~/ImageCache/thumbnail1", image.ImageSource);
+                context.DeleteObject(image);
+                context.SaveChanges();
+                return RedirectToAction("Images", new { id = productId });
+            }
+        }
+
+
 
         public ActionResult Delete(int id)
         {
