@@ -99,3 +99,14 @@ a:hover {
     padding: 5px;
     font-weight: bold;
 }
+
+.editor-table
+{
+    
+}
+
+.editor-table textarea
+{
+    width: 400px;
+    height: 80px;
+}

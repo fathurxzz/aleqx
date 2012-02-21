@@ -16,7 +16,7 @@ namespace Shop.Models
     public class BrandValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Имя")]
+        [DisplayName("Название")]
         public string Name { get; set; }
 
         [DisplayName("Логотип")]
