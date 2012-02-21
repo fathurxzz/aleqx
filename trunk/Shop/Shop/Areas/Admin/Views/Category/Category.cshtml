@@ -6,7 +6,7 @@
 
     <tr>
         <td style="padding-left:@styleValue">
-            @Html.DisplayFor(modelItem => Model.Name)
+            @Html.DisplayFor(modelItem => Model.Name) @Model.Level
         </td>
         <td>
             @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { parentId = Model.Id }, null)
@@ -32,7 +32,6 @@
     {
         foreach (var child in Model.Children)
         {
-            child.Level++;
             @Html.Partial("Category", child)
         }
         

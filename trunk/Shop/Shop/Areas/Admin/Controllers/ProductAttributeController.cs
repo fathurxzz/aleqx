@@ -44,6 +44,8 @@ namespace Shop.Areas.Admin.Controllers
                 try
                 {
                     TryUpdateModel(productAttribute, new[] { "Name", "SortOrder", "ValueType", "ShowInCommonView" });
+                    if (productAttribute.ValueType == null)
+                        productAttribute.ValueType = string.Empty;
                     context.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -67,7 +69,7 @@ namespace Shop.Areas.Admin.Controllers
                     {
                         Name = form["Name"],
                         SortOrder = Convert.ToInt32(form["SortOrder"]),
-                        ValueType = form["ValueType"]
+                        ValueType = string.IsNullOrEmpty(form["ValueType"]) ? string.Empty : form["ValueType"]
                     };
 
                     productAttribute.ShowInCommonView = Convert.ToBoolean(form["ShowInCommonView"] == "true,false" ? "true" : form["ShowInCommonView"]);
@@ -119,7 +121,7 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var productAttributeValue = context.ProductAttributeValues.Where(pav => pav.Id == id);
+                var productAttributeValue = context.ProductAttributeValues.First(pav => pav.Id == id);
                 context.DeleteObject(productAttributeValue);
                 context.SaveChanges();
                 return RedirectToAction("ProductAttributeValues", new { id = productAttributeId });

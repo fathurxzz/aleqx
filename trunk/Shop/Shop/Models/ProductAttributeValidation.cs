@@ -19,7 +19,6 @@ namespace Shop.Models
         [DisplayName("Название")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Тип значения")]
         public string ValueType { get; set; }
 
