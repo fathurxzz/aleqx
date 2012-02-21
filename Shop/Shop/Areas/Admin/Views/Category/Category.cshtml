@@ -1,0 +1,39 @@
+﻿@model Shop.Models.Category
+
+    @{
+        string styleValue = (Model.Level*20)+5+"px";
+    }
+
+    <tr>
+        <td style="padding-left:@styleValue">
+            @Html.DisplayFor(modelItem => Model.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { parentId = Model.Id }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.SeoDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.SeoKeywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.SortOrder)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Атрибуты", "Attributes", new { id = Model.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = Model.Id }, new { onclick = "return confirm('Удалить категорию?')" })
+            
+        </td>
+    </tr>
+
+    @if(Model.Children.Count()>0)
+    {
+        foreach (var child in Model.Children)
+        {
+            child.Level++;
+            @Html.Partial("Category", child)
+        }
+        
+    }

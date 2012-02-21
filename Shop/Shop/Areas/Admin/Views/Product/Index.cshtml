@@ -14,6 +14,9 @@
 <table>
     <tr>
         <th>
+            Код товара
+        </th>
+        <th>
             Название
         </th>
         <th>
@@ -54,6 +57,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @item.Id 
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
