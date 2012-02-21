@@ -289,26 +289,21 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var product = context.Product.Include("Category").Include("ProductAttributeValues").First(p => p.Id == productId);
-                product.Category.ProductAttributes.Load();
-                foreach (var attribute in product.Category.ProductAttributes)
-                {
-                    attribute.ProductAttributeValues.Load();
-                }
+                var product = context.Product.Include("ProductAttributeValues").First(p => p.Id == productId);
 
-                PostData postData = form.ProcessPostData("attr", "productId");
+                PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr", "productId");
 
                 product.ProductAttributeValues.Clear();
 
-                foreach (var kvp in postData)
+                foreach (var kvp in cbData)
                 {
-                    var productAttribute = product.Category.ProductAttributes.First(pa => pa.Id == Convert.ToInt32(kvp.Key));
+                    var attributeValueId = kvp.Key;
+                    bool attributeValue = kvp.Value;
 
-                    foreach (var pav in kvp.Value)
+                    if(attributeValue)
                     {
-                        var productAttributeValue = productAttribute.ProductAttributeValues.FirstOrDefault(pv => pv.Value == pav.Value);
-                        if (productAttributeValue != null)
-                            product.ProductAttributeValues.Add(productAttributeValue);
+                        var productAttributeValue = context.ProductAttributeValues.First(pv => pv.Id == attributeValueId);
+                        product.ProductAttributeValues.Add(productAttributeValue);
                     }
                 }
 
