@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Shop.Models.Product>
+﻿@using Shop.Helpers
+@model IEnumerable<Shop.Models.Product>
 
 @{
     ViewBag.Title = "Index";
@@ -14,6 +15,9 @@
     <tr>
         <th>
             Название
+        </th>
+        <th>
+            Изображение
         </th>
         <th>
             Краткое описание
@@ -52,6 +56,15 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @{
+                var image = item.ProductImages.FirstOrDefault(im => im.Default) ?? item.ProductImages.FirstOrDefault();
+                if(image!=null&&image.Default)
+                {
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", image.ImageSource))
+                }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ShortDescription)

@@ -18,7 +18,7 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var products = context.Product.ToList();
+                var products = context.Product.Include("ProductImages").ToList();
                 return View(products);
             }
         }
@@ -28,7 +28,23 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product
+                    .Include("Brand")
+                    .Include("Category")
+                    .Include("ProductAttributeValues")
+                    .Include("ProductImages")
+                    .First(p => p.Id == id);
+
+                product.Category.ProductAttributes.Load();
+                foreach (var attribute in product.Category.ProductAttributes)
+                {
+                    attribute.ProductAttributeValues.Load();
+                }
+
+                return View();
+            }
         }
 
         //
@@ -168,6 +184,28 @@ namespace Shop.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Images(int productId, FormCollection form)
+        {
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product.Include("ProductImages").First(p => p.Id == productId);
+                ViewBag.ProductId = product.Id;
+                ViewBag.ProductName = product.Name;
+
+                if (!string.IsNullOrEmpty("r_default"))
+                {
+                    var defaultImageId = Convert.ToInt32(form["r_default"]);
+                    product.ProductImages.ToList().ForEach(p=>p.Default=false);
+                    product.ProductImages.First(image => image.Id == defaultImageId).Default = true;
+                    context.SaveChanges();
+                }
+
+                return View(product.ProductImages);
+            }
+
+        }
+
         public ActionResult AddImage(int productId)
         {
             ViewBag.ProductId = productId;
@@ -201,6 +239,7 @@ namespace Shop.Areas.Admin.Controllers
             {
                 var image = context.ProductImage.First(i => i.Id == id);
                 IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
+                IOHelper.DeleteFile("~/ImageCache/thumbnail0", image.ImageSource);
                 IOHelper.DeleteFile("~/ImageCache/thumbnail1", image.ImageSource);
                 context.DeleteObject(image);
                 context.SaveChanges();

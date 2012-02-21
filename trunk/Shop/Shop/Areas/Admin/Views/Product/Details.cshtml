@@ -1,0 +1,81 @@
+﻿@model Shop.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">ShortDescription</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShortDescription)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">IsNew</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsNew)
+    </div>
+
+    <div class="display-label">IsSpecialOffer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsSpecialOffer)
+    </div>
+
+    <div class="display-label">Published</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Published)
+    </div>
+
+    <div class="display-label">SortOrder</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SortOrder)
+    </div>
+
+    <div class="display-label">SeoDescription</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeoDescription)
+    </div>
+
+    <div class="display-label">SeoKeywords</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SeoKeywords)
+    </div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">OldPrice</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OldPrice)
+    </div>
+
+    <div class="display-label">CategoryId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryId)
+    </div>
+
+    <div class="display-label">BrandId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BrandId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
