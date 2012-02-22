@@ -8,21 +8,6 @@ using System.Web.Mvc;
 
 namespace HavilaTravel.Models
 {
-    public class ValidationController : Controller
-    {
-        public JsonResult IsNameAvailable(string name)
-        {
-            //return Json(true, JsonRequestBehavior.AllowGet);
-            //if (name == "111")
-            //{
-            //    return Json(true, JsonRequestBehavior.AllowGet);
-            //}
-            //return Json("Not Allowed Name", JsonRequestBehavior.AllowGet);
-            return Json(true, JsonRequestBehavior.AllowGet);
-        }
-    }
-
-
     [MetadataType(typeof(ContentValidation))]
     public partial class Content
     {
