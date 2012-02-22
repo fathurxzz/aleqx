@@ -157,7 +157,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 context.DeleteObject(content);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Home", new { area = "" , id=""});
+            return RedirectToAction("Index", "Home", new { area = "" , id="countries"});
         }
 
 

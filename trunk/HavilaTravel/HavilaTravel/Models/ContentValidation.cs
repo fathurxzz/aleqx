@@ -17,7 +17,8 @@ namespace HavilaTravel.Models
             //{
             //    return Json(true, JsonRequestBehavior.AllowGet);
             //}
-            return Json("Not Allowed Name", JsonRequestBehavior.AllowGet);
+            //return Json("Not Allowed Name", JsonRequestBehavior.AllowGet);
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 
