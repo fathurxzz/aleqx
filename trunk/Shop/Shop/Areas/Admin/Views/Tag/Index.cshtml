@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Shop.Models.Tag>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Теги</h2>
+
+<p>
+    @Html.ActionLink("Добавить тег", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Название
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить тег?')" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -107,6 +107,7 @@
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) <br/>
             @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id })<br/>
             @Html.ActionLink("Изображения", "Images", new { id = item.Id })<br/>
+            @Html.ActionLink("Теги", "Tags", new { id = item.Id })<br/>
             @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{onclick="return confirm('Удалить товар?')"})
         </td>
     </tr>
