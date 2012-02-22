@@ -30,13 +30,8 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var product = context.Product
-                    .Include("Brand")
-                    .Include("Category")
-                    .Include("ProductAttributeValues")
-                    .Include("ProductImages")
-                    .First(p => p.Id == id);
-
+                var product = context.Product.Include("Brand").Include("Category").Include("ProductAttributeValues").Include("ProductImages").First(p => p.Id == id);
+                product.Tags.Load();
                 product.Category.ProductAttributes.Load();
                 foreach (var attribute in product.Category.ProductAttributes)
                 {
