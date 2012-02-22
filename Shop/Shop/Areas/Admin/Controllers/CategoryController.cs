@@ -124,7 +124,8 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var category = context.Category.Where(c => c.Id == id).First();
+                var category = context.Category.Include("ProductAttributes").Where(c => c.Id == id).First();
+                category.ProductAttributes.Clear();
                 context.DeleteObject(category);
                 context.SaveChanges();
                 return RedirectToAction("Index");

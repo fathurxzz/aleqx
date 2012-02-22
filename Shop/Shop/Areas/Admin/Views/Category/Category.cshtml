@@ -6,7 +6,7 @@
 
     <tr>
         <td style="padding-left:@styleValue">
-            @Html.DisplayFor(modelItem => Model.Name) @Model.Level
+            @Html.DisplayFor(modelItem => Model.Name)
         </td>
         <td>
             @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { parentId = Model.Id }, null)

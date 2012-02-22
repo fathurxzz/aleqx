@@ -17,6 +17,9 @@
             Код продукта
         </th>
         <th>
+            Бренд
+        </th>
+        <th>
             Название
         </th>
         <th>
@@ -59,6 +62,9 @@
     <tr>
         <td>
             @item.Id 
+        </td>
+        <td>
+            @item.Brand.Name
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)

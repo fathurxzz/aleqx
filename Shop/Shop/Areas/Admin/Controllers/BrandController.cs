@@ -133,6 +133,12 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var brand = context.Brand.Where(b => b.Id == id).First();
+                if (!string.IsNullOrEmpty(brand.Logo))
+                {
+                    IOHelper.DeleteFile("~/Content/Images", brand.Logo);
+                    IOHelper.DeleteFile("~/ImageCache/thumbnail0", brand.Logo);
+                    IOHelper.DeleteFile("~/ImageCache/thumbnail1", brand.Logo);
+                }
                 context.DeleteObject(brand);
                 context.SaveChanges();
                 return RedirectToAction("Index");
