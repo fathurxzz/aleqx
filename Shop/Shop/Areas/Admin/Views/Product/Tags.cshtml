@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Shop.Models.Tag>
+
+@{
+    ViewBag.Title = "Tags";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    var productTags = (IEnumerable<Shop.Models.Tag>)ViewBag.ProductTags;
+}
+
+<h2>Теги для продукта "@ViewBag.ProductName"</h2>
+
+@using (Html.BeginForm())
+{
+@Html.Hidden("productId",(int)ViewBag.ProductId)
+    <table>
+        <tr>
+            <th></th>
+            <th>
+                Названия
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBox("attr_" + item.Id, productTags.Contains(item))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+            </tr>
+        }
+    </table>
+     <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+}
+<div>
+    @Html.ActionLink("Назад к списку", "Index")
+</div>

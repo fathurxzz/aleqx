@@ -312,5 +312,41 @@ namespace Shop.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        public ActionResult Tags(int id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product.Include("Tags").First(p => p.Id == id);
+                var tags = context.Tag.ToList();
+                ViewBag.ProductTags = product.Tags;
+                ViewBag.ProductId = product.Id;
+                ViewBag.ProductName = product.Name;
+                return View(tags);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Tags(int productId, FormCollection form)
+        {
+            using (var context = new ShopContainer())
+            {
+                var product = context.Product.First(p => p.Id == productId);
+                PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr","productId");
+                product.Tags.Clear();
+                foreach (KeyValuePair<int, bool> kvp in cbData)
+                {
+                    if(kvp.Value)
+                    {
+                        var tagId = kvp.Key;
+                        var tag = context.Tag.First(t => t.Id == tagId);
+                        product.Tags.Add(tag);
+                    }
+                }
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
