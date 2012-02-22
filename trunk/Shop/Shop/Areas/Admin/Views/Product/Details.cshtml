@@ -1,89 +1,152 @@
-﻿@model Shop.Models.Product
+﻿@using Shop.Helpers
+@model Shop.Models.Product
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-}
+    }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 
 <table class="productDetailsTable">
 <tr>
-    <th></th>
-    <th></th>
+    <th colspan="2">Описание</th>
 </tr>
+<tr>
+    <td>Категория</td>
+    <td>@Html.DisplayFor(model => model.Category.Name)</td>
+</tr>
+<tr>
+    <td>Бренд</td>
+    <td>@Html.DisplayFor(model => model.Brand.Name)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.Name)</td>
+    <td>@Html.DisplayFor(model => model.Name)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.ShortDescription)</td>
+    <td>@Html.DisplayFor(model => model.ShortDescription)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.Description)</td>
+    <td>@Html.DisplayFor(model => model.Description)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.IsNew)</td>
+    <td>@Html.Raw(Model.IsNew ? "да" : "")</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.IsSpecialOffer)</td>
+    <td>@Html.Raw(Model.IsSpecialOffer ? "да" : "")</td>
+</tr>
+
+<tr>
+    <td>@Html.LabelFor(model => model.SortOrder)</td>
+    <td>@Html.DisplayFor(model => model.SortOrder)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.Price)</td>
+    <td>@Html.DisplayFor(model => model.Price)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.OldPrice)</td>
+    <td>@Html.DisplayFor(model => model.OldPrice)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.Published)</td>
+    <td>@Html.Raw(Model.Published ? "да" : "нет")</td>
+</tr>
+<tr>
+    <th colspan="2">Атрибуты</th>
+</tr>
+
+    
+    @foreach (var attribute in Model.Category.ProductAttributes)
+    {
+        
+        
+        
+        <tr>
+            <td>@Html.Raw(attribute.Name+  (!string.IsNullOrEmpty(attribute.ValueType)? (", "+attribute.ValueType+":"):"")   )</td>
+            <td>
+            
+            @foreach (var attributeValue in Model.ProductAttributeValues)
+            {
+                if(attribute.ProductAttributeValues.Contains(attributeValue))
+                {
+                    @Html.Raw(attributeValue.Value+"; ")
+                }
+
+            }
+            
+            </td>
+        </tr>
+    }
+
+
+<tr>
+    <th colspan="2">Теги</th>
+</tr>
+<tr>
+    <td colspan="2">
+    @foreach (var tag in Model.Tags)
+    {
+        @Html.Raw(tag.Value+"; ")
+    }
+
+    </td>
+</tr>
+    
+
+<tr>
+
+
+
+<th colspan="2">Изображения</th>
+</tr>
+<tr>
+    <td colspan="2">
+    @{
+        int cnt = 0;
+        foreach (var image in Model.ProductImages)
+        {
+            cnt++;
+         <a rel="@Html.Raw("group" + Model.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail1", image.ImageSource))
+                    </a>
+                   if (cnt % 3 == 0)
+                   {
+            <br/>
+                   }
+
+        }
+     } 
+    </td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.SeoDescription)</td>
+    <td>@Html.DisplayFor(model => model.SeoDescription)</td>
+</tr>
+<tr>
+    <td>@Html.LabelFor(model => model.SeoKeywords)</td>
+    <td>@Html.DisplayFor(model => model.SeoKeywords)</td>
+</tr>
+
 </table>
 
-<fieldset>
-    <legend>Product</legend>
-
-    <div class="display-label">Name</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-
-    <div class="display-label">ShortDescription</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ShortDescription)
-    </div>
-
-    <div class="display-label">Description</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">IsNew</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsNew)
-    </div>
-
-    <div class="display-label">IsSpecialOffer</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsSpecialOffer)
-    </div>
-
-    <div class="display-label">Published</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Published)
-    </div>
-
-    <div class="display-label">SortOrder</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SortOrder)
-    </div>
-
-    <div class="display-label">SeoDescription</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SeoDescription)
-    </div>
-
-    <div class="display-label">SeoKeywords</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SeoKeywords)
-    </div>
-
-    <div class="display-label">Price</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Price)
-    </div>
-
-    <div class="display-label">OldPrice</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.OldPrice)
-    </div>
-
-    <div class="display-label">CategoryId</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CategoryId)
-    </div>
-
-    <div class="display-label">BrandId</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.BrandId)
-    </div>
-</fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+@section
+    Includes
+    {
+<link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".fancy").fancybox({ titlePosition: 'inside', showCloseButton: true, cyclic: false, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+    });
+</script>
+}
