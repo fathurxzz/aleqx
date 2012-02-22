@@ -24,6 +24,9 @@
             Название
         </th>
         <th>
+            Значения
+        </th>
+        <th>
             Тип значения
         </th>
         <th>
@@ -41,6 +44,12 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
+            @foreach (var value in item.ProductAttributeValues)
+            {
+                @Html.Raw(value.Value+"; ")
+            }
+        </td>    
+        <td>
             @Html.DisplayFor(modelItem => item.ValueType)
         </td>
         <td>
@@ -49,7 +58,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.SortOrder)
         </td>
-        <td>
+        <td style="white-space: nowrap">
            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Значения", "ProductAttributeValues", new { id = item.Id }) |
             @Html.ActionLink("Удалить", "Delete", new { id = item.Id },new{onclick="return confirm('Удалить атрибут? При удалении атрибута будут также удалены все значения данного атрибута в т.ч. и в продуктах!')"})

@@ -24,4 +24,12 @@
     @Html.ActionLink("Назад к списку значений", "ProductAttributeValues", "ProductAttribute", new { id =Model.Id},null)
 </div>
 
+@section Includes
+{
+<script type="text/javascript">
 
+    $(function () {
+        $("#attributeValue").focus();
+    })
+</script>
+}

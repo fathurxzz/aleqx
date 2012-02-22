@@ -18,7 +18,7 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var products = context.Product.Include("ProductImages").ToList();
+                var products = context.Product.Include("Brand").Include("ProductImages").ToList();
                 return View(products);
             }
         }
@@ -43,7 +43,7 @@ namespace Shop.Areas.Admin.Controllers
                     attribute.ProductAttributeValues.Load();
                 }
 
-                return View();
+                return View(product);
             }
         }
 
@@ -238,16 +238,19 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var image = context.ProductImage.First(i => i.Id == id);
-                IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
-                IOHelper.DeleteFile("~/ImageCache/thumbnail0", image.ImageSource);
-                IOHelper.DeleteFile("~/ImageCache/thumbnail1", image.ImageSource);
-                context.DeleteObject(image);
+                DeleteImage(image, context);
                 context.SaveChanges();
                 return RedirectToAction("Images", new { id = productId });
             }
         }
 
-
+        private void DeleteImage(ProductImage image, ShopContainer context)
+        {
+            IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
+            IOHelper.DeleteFile("~/ImageCache/thumbnail0", image.ImageSource);
+            IOHelper.DeleteFile("~/ImageCache/thumbnail1", image.ImageSource);
+            context.DeleteObject(image);
+        }
 
         public ActionResult Delete(int id)
         {
@@ -255,6 +258,14 @@ namespace Shop.Areas.Admin.Controllers
             {
                 var product = context.Product.Include("ProductAttributeValues").First(p => p.Id == id);
                 product.ProductAttributeValues.Clear();
+
+                while (product.ProductImages.Any())
+                {
+                    var image = product.ProductImages.First();
+                    DeleteImage(image, context);
+                }
+                
+                product.Tags.Clear();
                 context.DeleteObject(product);
                 context.SaveChanges();
                 return RedirectToAction("Index");

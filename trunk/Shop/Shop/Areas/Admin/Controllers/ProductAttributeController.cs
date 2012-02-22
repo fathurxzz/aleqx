@@ -92,7 +92,14 @@ namespace Shop.Areas.Admin.Controllers
             {
                 try
                 {
-                    var attribute = context.ProductAttribute.First(a => a.Id == id);
+                    var attribute = context.ProductAttribute.Include("ProductAttributeValues").First(a => a.Id == id);
+                    while (attribute.ProductAttributeValues.Any())
+                    {
+                        var pav = attribute.ProductAttributeValues.First();
+                        pav.Products.Clear();
+                        context.DeleteObject(pav);
+                    }
+                    attribute.Categories.Clear();
                     context.DeleteObject(attribute);
                     context.SaveChanges();
                     return RedirectToAction("Index");
