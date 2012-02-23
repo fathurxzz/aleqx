@@ -18,9 +18,9 @@ namespace HavilaTravel.Models
     public class ContentValidation
     {
         //[Required(ErrorMessage = "* Введите веб-имя страницы")]
-        //[DisplayName("Веб-имя страницы")]
-        //[Required]
-        [Remote("IsNameAvailable", "Validation")]
+        [DisplayName("Веб-имя страницы")]
+        [Required]
+        //[Remote("IsNameAvailable", "Validation")]
         public string Name { get; set; }
 
         
