@@ -94,12 +94,12 @@
                         @Html.ActionLink("Отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
                             }
 
-                            if (Request.IsAuthenticated)
+                            @*if (Request.IsAuthenticated)
                             {
                         <div class="adminLinkContainer">
                             @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 5 }, new { @class = "adminLink" })
                         </div>
-                            }
+                            }*@
                         }
                         else
                         {
@@ -124,9 +124,13 @@
                     {
                         if (Request.IsAuthenticated)
                         {
-                            string spaOrHotel= Model.PlaceKind == (int)PlaceKind.City?"+Отели":"+Spa";
                             
-                        @Html.ActionLink(spaOrHotel, "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
+                            //string spaOrHotel= Model.PlaceKind == (int)PlaceKind.City?"+Отели":"+Spa";
+                            if (Model.PlaceKind == (int)PlaceKind.City)
+                            {
+
+                                @Html.ActionLink("+Отели", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
+                            }
                         }
 
                     }
