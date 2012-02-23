@@ -139,13 +139,26 @@
                         var price = Model.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PriceTable);
                         if (price != null)
                         {
-                        @Html.ActionLink("Цены по стране", "Index", "Place", new { id = Model.Name, showPrices = true }, null)
-                   if (Request.IsAuthenticated)
-                   {
+
+                            if (Request.QueryString["showPrices"] == "True")
+                            {
+                                @Html.Raw("Цены по стране")
+                            }
+                            
+                            else
+                            {
+                                @Html.ActionLink("Цены по стране", "Index", "Place", new { id = Model.Name, showPrices = true }, null)
+                            }
+
+
+
+
+                            if (Request.IsAuthenticated)
+                            {
                         <div class="adminLinkContainer">
                             @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = price.Id }, new { @class = "adminLink" })
                         </div>
-                   }
+                            }
                         }
                         else
                         {
