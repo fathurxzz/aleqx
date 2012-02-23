@@ -83,6 +83,12 @@ else
     <div id="contentTitle">
         @Model.Content.Title
     </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div style="text-align:center">
+        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+        </div>
+    }
     @Html.Partial("PlacesSubMenu", Model.Content)
 }
 @section LeftSubMenu

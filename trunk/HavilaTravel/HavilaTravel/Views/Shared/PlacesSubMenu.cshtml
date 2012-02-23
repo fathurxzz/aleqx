@@ -124,7 +124,9 @@
                     {
                         if (Request.IsAuthenticated)
                         {
-                        @Html.ActionLink("+Spa", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
+                            string spaOrHotel= Model.PlaceKind == (int)PlaceKind.City?"+Отели":"+Spa";
+                            
+                        @Html.ActionLink(spaOrHotel, "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
                         }
 
                     }
