@@ -17,11 +17,13 @@ namespace HavilaTravel.Models
         public Content PriceTable { get; set; }
         public List<MenuItem> LeftSubMenuItems { get; set; }
         public List<MenuItem> PlacesForSelector { get; set; }
+        
 
 
         public PlaceViewModel(string id, ContentStorage context, bool? showSpa, bool? showPlacesReview, bool? showPrices)
             : base(id, context,false, true)
         {
+            
             _showSpa = showSpa;
             _showPlacesReview = showPlacesReview;
             _showPrices = showPrices;
@@ -43,6 +45,7 @@ namespace HavilaTravel.Models
         {
             if (_showSpa.HasValue && _showSpa.Value)
             {
+                PlaceKind = PlaceKind.SpaInfo;
                 var spa = Content.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.SpaInfo);
                 if (spa != null)
                 {
@@ -63,6 +66,7 @@ namespace HavilaTravel.Models
         {
             if (_showPrices.HasValue && _showPrices.Value)
             {
+                PlaceKind=PlaceKind.PriceTable;
                 var price = Content.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PriceTable);
                 if (price != null)
                 {
@@ -84,6 +88,7 @@ namespace HavilaTravel.Models
         {
             if (_showPlacesReview.HasValue && _showPlacesReview.Value)
             {
+                PlaceKind=PlaceKind.PlacesReview;
                 var review = Content.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PlacesReview);
                 if (review != null)
                 {

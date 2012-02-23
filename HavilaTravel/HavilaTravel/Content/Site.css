@@ -176,6 +176,10 @@ body
     margin-bottom:30px;
 }
 
+#contentTitle a
+{color: #000;
+}
+
 #contentTitleSubscribe
 {
     color: #000;

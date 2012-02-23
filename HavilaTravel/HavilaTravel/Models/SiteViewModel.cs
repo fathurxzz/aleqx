@@ -23,6 +23,7 @@ namespace HavilaTravel.Models
         public List<Article> Articles { get; set; }
         public Article Article { get; set; }
         public List<Customers> Customers { get; set; }
+        public PlaceKind PlaceKind { get; set; }
 
         protected readonly ContentStorage Context;
 
@@ -34,7 +35,7 @@ namespace HavilaTravel.Models
 
             Bellboy = Context.Bellboy.GetRandomItem();
 
-            HeaderLeftMenuItems = MenuList.Where(menu => menu.ContentType == 10).First();
+            HeaderLeftMenuItems = MenuList.First(menu => menu.ContentType == 10);
 
             var banners = Context.Banner.ToList();
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();
@@ -47,10 +48,7 @@ namespace HavilaTravel.Models
                 {
                     try
                     {
-                        Content = Context.Content
-                        .Include("Parent").Include("Children").Include("Accordions")
-                        .Where(c => (string.IsNullOrEmpty(id) && c.ContentType == 100) || c.Name == id)
-                        .First();
+                        Content = Context.Content.Include("Parent").Include("Children").Include("Accordions").First(c => (string.IsNullOrEmpty(id) && c.ContentType == 100) || c.Name == id);
                     }
                     catch
                     {
@@ -69,6 +67,7 @@ namespace HavilaTravel.Models
 
                 IsRoot = Content.ContentType == 100;
                 CurrentContentId = (int)Content.Id;
+                PlaceKind = (PlaceKind)Content.PlaceKind;
             }
         }
     }

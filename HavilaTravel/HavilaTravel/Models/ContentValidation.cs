@@ -20,7 +20,7 @@ namespace HavilaTravel.Models
         //[Required(ErrorMessage = "* Введите веб-имя страницы")]
         [DisplayName("Веб-имя страницы")]
         [Required]
-        //[Remote("IsNameAvailable", "Validation")]
+        [Remote("IsNameAvailable", "Validation")]
         public string Name { get; set; }
 
         

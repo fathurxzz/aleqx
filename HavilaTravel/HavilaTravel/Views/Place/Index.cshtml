@@ -81,14 +81,25 @@ else
 {
     @Html.Partial("PlacesMap", Model.PlacesMap)
     <div id="contentTitle">
-        @Model.Content.Title
-    </div>
-    @if (Request.IsAuthenticated)
+        
+        
+        @if(Model.PlaceKind==PlaceKind.PriceTable||Model.PlaceKind==PlaceKind.SpaInfo||Model.PlaceKind==PlaceKind.PlacesReview)
+        {
+            @Html.ActionLink(Model.Content.Title, "Index", "Place", new { id = Model.Content.Name }, null)
+        }
+        else
+        {
+            @Model.Content.Title
+        }
+        
+        @if (Request.IsAuthenticated)
     {
         <div style="text-align:center">
         @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
         </div>
     }
+    </div>
+    
     @Html.Partial("PlacesSubMenu", Model.Content)
 }
 @section LeftSubMenu
