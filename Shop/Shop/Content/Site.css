@@ -46,39 +46,25 @@ a
     background: url('img/toy-planet-logo.gif') no-repeat;
 }
 
-#shoppingCart
+#left
 {
-    float: right;
-    width: 180px;
-    height: 80px;
-    /*border: 1px solid brown;*/
-    margin-left: 20px;
-    background: url('img/shopping-cart.jpg') no-repeat left center;
-    margin-top: 10px;
+    width: 220px;
+    margin: 0 20px 0 0;
+    float: left;
 }
 
-#shoppingCart a
+#main
+{
+    margin-top: 20px;
+}
+
+#container
 {
     
 }
 
-#shoppingCart a.showCart
-{
-    font-size: 20px;
-    color: cornflowerblue;
-    display: block;
-    margin-top: 10px;
-    margin-left: 70px
-    
-}
 
 
-#shoppingCartInfo
-{
-    margin-left: 70px;
-    margin-top: 10px;
-    
-}
 
 #mainMenu
 {

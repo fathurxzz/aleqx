@@ -1,8 +1,14 @@
-﻿@{
+﻿@model Shop.Models.SiteViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-@*<p>
-    @Html.ActionLink("Система администрирования","Index","Home",new {Area="Admin"},null)
-</p>
-*@
+@section Categories
+{
+    @Html.Partial("Categories",Model.Categories)
+}
+
+@section Brands
+{
+    @Html.Partial("Brands",Model.Brands)
+}
