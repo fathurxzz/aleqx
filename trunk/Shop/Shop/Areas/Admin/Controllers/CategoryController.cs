@@ -63,7 +63,7 @@ namespace Shop.Areas.Admin.Controllers
                 using (var context = new ShopContainer())
                 {
                     var category = new Category();
-                    TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder" });
+                    TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder","Title" });
 
                     if (parentId.HasValue)
                     {
@@ -108,7 +108,7 @@ namespace Shop.Areas.Admin.Controllers
                 using (var context = new ShopContainer())
                 {
                     var category = context.Category.First(c => c.Id == id);
-                    TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder" });
+                    TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder", "Title" });
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -124,7 +124,7 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var category = context.Category.Include("ProductAttributes").Where(c => c.Id == id).First();
+                var category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
                 category.ProductAttributes.Clear();
                 context.DeleteObject(category);
                 context.SaveChanges();

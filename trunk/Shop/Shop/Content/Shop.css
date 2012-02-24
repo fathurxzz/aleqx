@@ -67,3 +67,14 @@
     color: inherit;
     text-decoration: none;
 }
+
+.itemsContainer ul li a:hover
+{
+  color: #383838
+}
+
+.itemsContainer ul li a.selected
+{
+    font-weight: bold;
+    color: #383838
+}

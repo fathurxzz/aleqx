@@ -6,10 +6,13 @@
 
     <tr>
         <td style="padding-left:@styleValue">
-            @Html.DisplayFor(modelItem => Model.Name)
+            @Html.DisplayFor(modelItem => Model.Title)
         </td>
         <td>
             @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { parentId = Model.Id }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => Model.SeoDescription)
@@ -28,7 +31,7 @@
         </td>
     </tr>
 
-    @if(Model.Children.Count()>0)
+    @if(Model.Children.Any())
     {
         foreach (var child in Model.Children)
         {

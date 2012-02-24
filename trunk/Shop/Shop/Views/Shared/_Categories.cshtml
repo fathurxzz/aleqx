@@ -5,7 +5,7 @@
         string className = item.Selected?"selected":"";
         
         <li>
-            @Html.ActionLink(item.Name, "Categories", "Shop", new { id = item.Id }, new { @class = className })
+            @Html.ActionLink(item.Title, "Categories", "Shop", new { id = item.Name }, new { @class = className })
         </li>
     }
 </ul>

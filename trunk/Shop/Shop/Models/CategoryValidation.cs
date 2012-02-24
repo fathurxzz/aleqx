@@ -16,8 +16,12 @@ namespace Shop.Models
     public class CategoryValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Название")]
+        [DisplayName("Уникальнй идентификатор (выводится в строке адреса)")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Название")]
+        public string Title { get; set; }
 
         [DisplayName("Описание (для поисковиков)")]
         public string SeoDescription { get; set; }
