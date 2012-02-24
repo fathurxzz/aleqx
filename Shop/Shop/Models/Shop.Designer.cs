@@ -473,11 +473,13 @@ namespace Shop.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String name)
+        /// <param name="title">Initial value of the Title property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title)
         {
             Category category = new Category();
             category.Id = id;
             category.Name = name;
+            category.Title = title;
             return category;
         }
 
@@ -630,6 +632,30 @@ namespace Shop.Models
         private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
 
         #endregion
     
@@ -762,7 +788,8 @@ namespace Shop.Models
         /// <param name="published">Initial value of the Published property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="brandId">Initial value of the BrandId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.Boolean isNew, global::System.Boolean isSpecialOffer, global::System.Boolean published, global::System.Int32 categoryId, global::System.Int32 brandId)
+        /// <param name="title">Initial value of the Title property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.Boolean isNew, global::System.Boolean isSpecialOffer, global::System.Boolean published, global::System.Int32 categoryId, global::System.Int32 brandId, global::System.String title)
         {
             Product product = new Product();
             product.Id = id;
@@ -772,6 +799,7 @@ namespace Shop.Models
             product.Published = published;
             product.CategoryId = categoryId;
             product.BrandId = brandId;
+            product.Title = title;
             return product;
         }
 
@@ -1116,6 +1144,30 @@ namespace Shop.Models
         private global::System.Int32 _BrandId;
         partial void OnBrandIdChanging(global::System.Int32 value);
         partial void OnBrandIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
 
         #endregion
     

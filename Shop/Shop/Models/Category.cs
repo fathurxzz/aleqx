@@ -8,5 +8,6 @@ namespace Shop.Models
     public partial class Category
     {
         public int Level { get; set; }
+        public bool Selected { get; set; }
     }
 }

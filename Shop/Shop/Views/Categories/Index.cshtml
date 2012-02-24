@@ -1,0 +1,13 @@
+﻿@model Shop.Models.SiteViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Categories
+{
+    @Html.Partial("Categories", Model.Categories)
+}
+@section Brands
+{
+    @Html.Partial("Brands", Model.Brands)
+}
