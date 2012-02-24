@@ -1,7 +1,7 @@
 ﻿@model Shop.Models.ShopViewModel
 
 @{
-    //ViewBag.Title = "Categories" + ViewBag.Title;
+    ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,9 +15,5 @@
     @Html.Partial("_Brands",Model.Brands)
 }
 
-@foreach(var product in Model.Products)
-{
-    <div>
-        @product.Title
-    </div>
-}
+
+

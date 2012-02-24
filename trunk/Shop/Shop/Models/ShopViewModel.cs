@@ -18,6 +18,9 @@ namespace Shop.Models
                 category.Selected = true;
                 Title +=" - "+ category.Title;
             }
+
+            Products = context.Product.Where(p => p.Category.Name == categoryId).ToList();
+            
         }
     }
 }
