@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Orders.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="OrdersStoreContainer">
+    <EntitySet Name="Order" EntityType="Orders.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderItem" EntityType="Orders.Store.OrderItem" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="OrderOrderItem" Association="Orders.Store.OrderOrderItem">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="mediumtext" Nullable="false" />
+    <Property Name="Phone" Type="mediumtext" Nullable="false" />
+    <Property Name="DeliveryAddress" Type="mediumtext" Nullable="false" />
+    <Property Name="Processed" Type="bool" Nullable="false" />
+    <Property Name="Email" Type="mediumtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="Image" Type="longtext" Nullable="true" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="true" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="OrderOrderItem">
+    <End Role="Order" Type="Orders.Store.Order" Multiplicity="1" />
+    <End Role="OrderItem" Type="Orders.Store.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Orders" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="OrdersContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Order" EntityType="Orders.Order" />
+          <EntitySet Name="OrderItem" EntityType="Orders.OrderItem" />
+          <AssociationSet Name="OrderOrderItem" Association="Orders.OrderOrderItem">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="OrderDate" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DeliveryAddress" Nullable="false" MaxLength="1000" />
+          <NavigationProperty Name="OrderItems" Relationship="Orders.OrderOrderItem" FromRole="Order" ToRole="OrderItem" />
+          <Property Type="Boolean" Name="Processed" Nullable="false" />
+          <Property Type="String" Name="Email" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="Image" />
+          <Property Type="Decimal" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Orders.OrderOrderItem" FromRole="OrderItem" ToRole="Order" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+        </EntityType>
+        <Association Name="OrderOrderItem">
+          <End Type="Orders.Order" Role="Order" Multiplicity="1" />
+          <End Type="Orders.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OrdersStoreContainer" CdmEntityContainer="OrdersContainer">
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="IsTypeOf(Orders.Order)">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Orders.OrderItem)">
+        <MappingFragment StoreEntitySet="OrderItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Orders" >
+        <EntityTypeShape EntityType="Orders.Order" Width="1.5" PointX="4.125" PointY="0.875" Height="2.2496956380208339" />
+        <EntityTypeShape EntityType="Orders.OrderItem" Width="1.5" PointX="6.625" PointY="1" Height="2.085348307291667" />
+        <AssociationConnector Association="Orders.OrderOrderItem">
+          <ConnectorPoint PointX="5.625" PointY="2.0623478190104167" />
+          <ConnectorPoint PointX="6.625" PointY="2.0623478190104167" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
