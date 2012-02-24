@@ -1,2 +1,62 @@
-﻿body {
+﻿#shoppingCart
+{
+    float: right;
+    width: 180px;
+    height: 80px;
+    /*border: 1px solid brown;*/
+    margin-left: 20px;
+    background: url('img/shopping-cart.jpg') no-repeat left center;
+    margin-top: 10px;
+}
+
+#shoppingCart a
+{
+    
+}
+
+#shoppingCart a.showCart
+{
+    font-size: 20px;
+    color: cornflowerblue;
+    display: block;
+    margin-top: 10px;
+    margin-left: 70px
+    
+}
+
+
+#shoppingCartInfo
+{
+    margin-left: 70px;
+    margin-top: 10px;
+    
+}
+
+.itemsContainer
+{
+    margin-bottom: 20px;
+    
+    
+}
+
+.itemsContainer div.title
+{
+    border-left: 1px solid #817a7a;
+    border-bottom: 1px solid #817a7a;
+    padding: 3px 10px 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.itemsContainer ul
+{
+    list-style: none;
+    padding-top: 10px;
+}
+
+.itemsContainer ul li
+{
+    padding-bottom: 5px;
+    font-size: 14px;
 }

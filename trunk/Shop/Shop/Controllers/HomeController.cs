@@ -11,7 +11,11 @@ namespace Shop.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                SiteViewModel model = new SiteViewModel(context);
+                return View(model);
+            }
         }
     }
 }

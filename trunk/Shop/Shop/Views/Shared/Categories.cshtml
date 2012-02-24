@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Shop.Models.Category>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelItem => item.Name)
+        </li>
+    }
+</ul>
