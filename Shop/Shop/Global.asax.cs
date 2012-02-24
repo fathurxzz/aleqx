@@ -21,6 +21,29 @@ namespace Shop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                "Default1", // Route name
+                "", // URL with parameters
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new string[1] { "Shop.Controllers" }
+            );
+            
+            routes.MapRoute(
+                "Categories", // Route name
+                "{id}", // URL with parameters
+                new { controller = "Shop", action = "Categories", id = "" },
+                new string[1] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
+                "Products", // Route name
+                "{category}/{id}", // URL with parameters
+                new { controller = "Shop", action = "Products", id = UrlParameter.Optional },
+                new string[1] { "Shop.Controllers" }
+            );
+
+
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters

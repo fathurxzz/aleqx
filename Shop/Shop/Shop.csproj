@@ -72,7 +72,6 @@
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
@@ -92,7 +91,6 @@
       <DependentUpon>Orders.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductAttributeValidation.cs" />
-    <Compile Include="Models\ProductAttributeValues.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Shop.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -305,13 +303,10 @@
     <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Categories.cshtml" />
+    <Content Include="Views\Shared\_Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Brands.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Shared\_Brands.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shop\Categories.cshtml" />

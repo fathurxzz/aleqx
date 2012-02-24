@@ -81,6 +81,7 @@ namespace Shop.Areas.Admin.Controllers
                         new[]
                         {
                             "Name",
+                            "Title",
                             "SortOrder",
                             "Price", 
                             "OldPrice",
@@ -142,6 +143,7 @@ namespace Shop.Areas.Admin.Controllers
                         new[]
                         {
                             "Name",
+                            "Title",
                             "SortOrder",
                             "Price", 
                             "OldPrice",

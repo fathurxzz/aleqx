@@ -10,9 +10,11 @@ namespace Shop.Models
         public List<Category> Categories { get; set; }
         public List<Brand> Brands { get; set; }
         private readonly ShopContainer _context;
+        public string Title { get; set; }
 
         public SiteViewModel(ShopContainer context)
         {
+            Title = "Магазин детских игрушек Toy-Planet";
             _context = context;
             Categories = _context.Category.ToList();
             Brands = _context.Brand.ToList();
