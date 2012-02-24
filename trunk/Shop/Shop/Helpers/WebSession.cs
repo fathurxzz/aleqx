@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.SessionState;
 using Shop.Models;
-using Shop.Helpers;
 
-
-using Shop.Models;
 
 namespace Shop.Helpers
 {

@@ -2,8 +2,10 @@
 <ul>
     @foreach (var item in Model)
     {
+        string className = item.Selected?"selected":"";
+        
         <li>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Categories", "Shop", new { id = item.Id }, new { @class = className })
         </li>
     }
 </ul>
