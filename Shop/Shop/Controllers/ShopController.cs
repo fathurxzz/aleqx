@@ -24,7 +24,12 @@ namespace Shop.Controllers
 
         public ActionResult Products(string id)
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                ShopViewModel model = new ShopViewModel(context, null, id);
+                ViewBag.Title = model.Title;
+                return View(model);
+            }
         }
 
     }
