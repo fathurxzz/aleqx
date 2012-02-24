@@ -1,10 +1,139 @@
-﻿*{ margin: 0;padding: 0;}
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
 
-.page {
-    width: 960px;
+body
+{
+     font: 12px/1.2em Arial, Helvetica, sans-serif;
+     color: #817a7a;
+}
+
+
+a
+{
+    outline-style: none;
+    outline-color: invert;
+    outline-width: medium;
+    color: #63b4c3;
+    
+}
+
+
+.page
+{
+    width: 940px;
     position: relative;
     margin: 0 auto;
-    background-color: #FAEBD7;
+
     min-height: 800px;
-    padding: 20px;
+}
+
+#header
+{
+    padding: 20px 0;
+    /*border-bottom: 1px solid #ccc;*/
+    height: 100px;
+}
+
+#logo
+{
+    float: left;
+    width: 150px;
+    height: 100px;
+    margin-right: 20px;
+    background: url('img/toy-planet-logo.gif') no-repeat;
+}
+
+#shoppingCart
+{
+    float: right;
+    width: 180px;
+    height: 80px;
+    /*border: 1px solid brown;*/
+    margin-left: 20px;
+    background: url('img/shopping-cart.jpg') no-repeat left center;
+    margin-top: 10px;
+}
+
+#shoppingCart a
+{
+    
+}
+
+#shoppingCart a.showCart
+{
+    font-size: 20px;
+    color: cornflowerblue;
+    display: block;
+    margin-top: 10px;
+    margin-left: 70px
+    
+}
+
+
+#shoppingCartInfo
+{
+    margin-left: 70px;
+    margin-top: 10px;
+    
+}
+
+#mainMenu
+{
+    /*background-color: #777;
+    font-weight: bold;*/
+
+    border-top: 1px solid #817a7a;
+    border-bottom: 1px solid #817a7a;
+    
+}
+
+#mainMenu ul
+{
+
+    list-style-type: none;
+    padding-left: 0px;
+    padding-right: 0px;
+    overflow: hidden;
+    list-style-image: none;
+    padding-top: 5px;
+    
+}
+
+
+#mainMenu li
+{
+    /*display: inline-block;
+    text-transform: uppercase;*/
+    padding: 0px;
+    text-transform: uppercase;
+    width: auto;
+    font: 13px/32px Arial, Helvetica, sans-serif;
+    background: url('img/menu-divider.gif') no-repeat left center;
+    float: left;
+    
+}
+
+#mainMenu li a
+{
+    padding-left: 21px;
+    padding-right: 22px;
+    display: block;
+    background: none transparent scroll repeat 0% 0%;
+    color: #383838;
+    text-decoration: none;
+
+    /*border: 1px solid black;*/
+}
+
+#mainMenu li a:hover
+{
+    color: inherit;
+}
+
+#mainMenu li.first-child
+{
+    background: none transparent scroll repeat 0% 0%;
 }

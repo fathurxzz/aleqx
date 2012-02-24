@@ -8,9 +8,16 @@
 <body>
     <div class="page">
         <div id="header">
-            <div id="title">
-                
+            <div id="logo">
             </div>
+
+            @Html.Partial("SmallShoppingCart")
+
+            @*header header header *@
+
+        </div>
+        <div id="mainMenu">
+            @Html.Partial("Menu")
         </div>
         <div id="main">
             @RenderBody()
