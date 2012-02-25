@@ -82,13 +82,15 @@
 
 .product {
     /*border: 1px solid #817a7a;*/
+    margin-bottom: 20px;
+    
 }
 
 .product .image {
     width: 200px;
     height: 200px;
     float: left;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .product .description 
@@ -110,6 +112,37 @@
 .product .description .title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom:10px;
+    margin-bottom:20px;
     
+}
+
+.shortDescription {
+    margin-bottom:20px;
+}
+
+.price {
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+a.addToCart
+{
+    background-color: #817a7a;
+    color: #fff !important;
+    width: 70px;
+    display: inline-block;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 20px;
+    
+}
+
+a.addToCart:hover {
+     color: #eee !important;
+}
+
+a.details {
+    font-size: 15px;
 }
