@@ -78,3 +78,38 @@
     font-weight: bold;
     color: #383838
 }
+
+
+.product {
+    /*border: 1px solid #817a7a;*/
+}
+
+.product .image {
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-right: 10px;
+}
+
+.product .description 
+{
+    /*border: 1px solid #F00;*/
+    overflow: hidden;   
+}
+
+.product .description a {
+    color: inherit;
+}
+
+.product .description a:hover {
+    color: #383838;
+}
+
+
+
+.product .description .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom:10px;
+    
+}

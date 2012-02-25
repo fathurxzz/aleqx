@@ -9,7 +9,6 @@ namespace Shop.Models
     {
         public List<Product> Products { get; set; }
         
-        
         public ShopViewModel(ShopContainer context, string categoryId, string productId)
             : base(context)
         {
@@ -19,7 +18,7 @@ namespace Shop.Models
                 Title +=" - "+ category.Title;
             }
 
-            Products = context.Product.Where(p => p.Category.Name == categoryId).ToList();
+            Products = context.Product.Include("ProductImages").Where(p => p.Category.Name == categoryId).ToList();
             
         }
     }

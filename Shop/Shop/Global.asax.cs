@@ -39,7 +39,7 @@ namespace Shop
             routes.MapRoute(
                 "Products", // Route name
                 "{category}/{id}", // URL with parameters
-                new { controller = "Shop", action = "Products", id = UrlParameter.Optional },
+                new { controller = "Shop", action = "ProductDetails", id = "" },
                 new string[1] { "Shop.Controllers" }
             );
 

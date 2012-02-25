@@ -16,11 +16,14 @@ namespace Shop.Helpers
 
         static GraphicsHelper()
         {
+            limitWidth.Add("thumbnail0", 100);
+            limitHeight.Add("thumbnail0", 100);
+
             limitWidth.Add("thumbnail1", 150);
             limitHeight.Add("thumbnail1", 150);
 
-            limitWidth.Add("thumbnail0", 100);
-            limitHeight.Add("thumbnail0", 100);
+            limitWidth.Add("thumbnail2", 200);
+            limitHeight.Add("thumbnail2", 200);
         }
 
 
