@@ -22,11 +22,11 @@ namespace Shop.Controllers
             }
         }
 
-        public ActionResult Products(string id)
+        public ActionResult ProductDetails(string id, string category)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, id);
+                ShopViewModel model = new ShopViewModel(context, category, id);
                 ViewBag.Title = model.Title;
                 return View(model);
             }

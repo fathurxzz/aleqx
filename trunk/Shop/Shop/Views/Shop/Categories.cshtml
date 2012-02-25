@@ -17,7 +17,7 @@
 
 @foreach(var product in Model.Products)
 {
-    <div>
-        @product.Title
-    </div>
+    
+    @Html.Partial("_Product",product)
+    
 }

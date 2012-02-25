@@ -1,0 +1,21 @@
+﻿@using Shop.Helpers
+@model Shop.Models.Product
+<div class="product">
+    <div class="image">
+        @{
+            //var image = Model.ProductImages.FirstOrDefault(im => im.Default) != null ? Model.ProductImages.FirstOrDefault(im => im.Default) : Model.ProductImages.FirstOrDefault();
+            //var image = Model.ProductImages.FirstOrDefault();
+            var image = Model.ProductImages.FirstOrDefault(im => im.Default) ?? Model.ProductImages.FirstOrDefault();
+            if(image!=null)
+                {
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail2", image.ImageSource))
+                }
+        }
+    </div>
+    <div class="description">
+        <div class="title">
+            @Html.ActionLink(Model.Title, "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null)
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
