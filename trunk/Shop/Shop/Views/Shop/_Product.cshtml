@@ -16,6 +16,16 @@
         <div class="title">
             @Html.ActionLink(Model.Title, "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null)
         </div>
+        <div class="shortDescription">
+            @Model.ShortDescription
+        </div>
+        <div class="price">
+            @Model.Price.ToString("N") грн.
+        </div>
+        <div class="buttons">
+            @Html.ActionLink("Подробнее", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, new { @class = "details" })
+            @Html.ActionLink("В корзину", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, new{@class="addToCart"})
+        </div>
     </div>
     <div class="clear"></div>
 </div>
