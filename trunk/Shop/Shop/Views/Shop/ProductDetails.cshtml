@@ -17,3 +17,14 @@
 
 
 
+<div class="product">
+    <div class="title">@Model.Product.Title</div>
+    <div class="images"></div>
+    <div class="description">@Model.Product.Description</div>
+    <div class="price">
+        @Model.Product.Price.ToString("N") грн.
+    </div>
+    <div class="buttons">
+            @Html.ActionLink("В корзину", "ProductDetails", "Shop", new { Area = "", category = Model.Product.Category.Name, id = Model.Product.Name }, new { @class = "addToCart" })
+        </div>
+</div>

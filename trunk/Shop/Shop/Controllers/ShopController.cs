@@ -12,12 +12,19 @@ namespace Shop.Controllers
         //
         // GET: /Shop/
 
+        private void SetSeoContent(SiteViewModel model)
+        {
+            ViewBag.Title = model.Title;
+            ViewBag.SeoDescription = model.SeoDescription;
+            ViewBag.SeoKeywords = model.SeoKeywords;
+        }
+
         public ActionResult Categories(string id)
         {
             using (var context = new ShopContainer())
             {
                 ShopViewModel model = new ShopViewModel(context, id, null);
-                ViewBag.Title = model.Title;
+                SetSeoContent(model);
                 return View(model);
             }
         }
@@ -27,7 +34,7 @@ namespace Shop.Controllers
             using (var context = new ShopContainer())
             {
                 ShopViewModel model = new ShopViewModel(context, category, id);
-                ViewBag.Title = model.Title;
+                SetSeoContent(model);
                 return View(model);
             }
         }
