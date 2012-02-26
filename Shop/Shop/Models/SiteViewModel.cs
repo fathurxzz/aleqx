@@ -11,6 +11,8 @@ namespace Shop.Models
         public List<Brand> Brands { get; set; }
         private readonly ShopContainer _context;
         public string Title { get; set; }
+        public string SeoDescription { get; set; }
+        public string SeoKeywords { get; set; }
 
         public SiteViewModel(ShopContainer context)
         {
