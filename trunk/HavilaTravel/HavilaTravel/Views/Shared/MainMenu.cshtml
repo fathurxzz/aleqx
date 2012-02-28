@@ -32,16 +32,22 @@
                                         <div class="adminLinkContainer">
                                             @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
-                                if (item.Name.ToLower() != "countries" && item.Name.ToLower() != "articles" && item.Name.ToLower() != "tickets" && item.Name.ToLower() != "contacts")
+                                    if (item.Name.ToLower() != "countries" && item.Name.ToLower() != "articles" && item.Name.ToLower() != "tickets" && item.Name.ToLower() != "contacts" && item.Name.ToLower() != "spa")
                                 {
                                     <div class="adminLinkContainer">
                                         @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
                                     </div>
                                 }
-                                    if(item.Name.ToLower()=="countries")
+                                    if (item.Name.ToLower() == "countries")
                                     {
                                         <div class="adminLinkContainer">
-                                            @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                                            @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin", placeKind=1 }, new { @class = "adminLink" })
+                                        </div>
+                                    }
+                                    if(item.Name.ToLower()=="spa")
+                                    {
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("+SpaРегион", "AddRegion", "Content", new { Area = "Admin", placeKind = 11 }, new { @class = "adminLink" })
                                         </div>
                                     }
                                 }
@@ -62,29 +68,35 @@
                                     <div class="adminLinkContainer">
                                     @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     </div>
-                                    if (item.Name.ToLower() != "countries" && item.Name.ToLower() != "articles" && item.Name.ToLower() != "tickets" && item.Name.ToLower() != "contacts")
-                                    {
+                                    if (item.Name.ToLower() != "countries" && item.Name.ToLower() != "articles" && item.Name.ToLower() != "tickets" && item.Name.ToLower() != "contacts" && item.Name.ToLower() != "spa")
+                               {
                                         <div class="adminLinkContainer">
-                                            @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                            @Html.ActionLink("+Подраздел в центр", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
-                                    }
-                                    if(item.Name.ToLower()=="countries")
-                                    {
+                               }
+                               if (item.Name.ToLower() == "countries")
+                               {
                                         <div class="adminLinkContainer">
                                             @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                                        </div>
+                               }
+                               if(item.Name.ToLower()=="spa")
+                                    {
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("+SpaРегион", "AddRegion", "Content", new { Area = "Admin", placeKind = 11 }, new { @class = "adminLink" })
                                         </div>
                                     }
                                 }
                             }
                         </td>
 
-                                if (cnt == Model.Count())
-                                {
+                            if (cnt == Model.Count())
+                            {
                         <td class="lastMenuItem @selected">
                             &nbsp;
                         </td>
-                                }
                             }
+                    }
                 </tr>
             </table>
     

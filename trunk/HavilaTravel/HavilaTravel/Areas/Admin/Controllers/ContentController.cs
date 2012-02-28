@@ -161,17 +161,18 @@ namespace HavilaTravel.Areas.Admin.Controllers
         }
 
 
-        public ActionResult AddRegion()
+        public ActionResult AddRegion(int placeKind)
         {
+            ViewBag.PlaceKind = placeKind;
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddRegion(FormCollection form)
+        public ActionResult AddRegion(FormCollection form, int placeKind)
         {
             using (var context = new ContentStorage())
             {
-                var content = new Content { PlaceKind = (int)PlaceKind.Region, ContentLevel = 1 };
+                var content = new Content { PlaceKind = placeKind, ContentLevel = 1 };
                 TryUpdateModel(content,
                                new[]{
                                        "Name", 

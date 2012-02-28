@@ -27,6 +27,7 @@ else
         {
             @Html.Partial("CountryBox", Model.RegionsAndCountries)
         }
+
         @if (Model.PlacesForSelector != null && Model.PlacesForSelector.Count > 0)
         {
             @Html.Partial("PlacesSelector", Model.PlacesForSelector)
