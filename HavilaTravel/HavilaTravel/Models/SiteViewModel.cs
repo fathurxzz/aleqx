@@ -35,7 +35,7 @@ namespace HavilaTravel.Models
 
             Bellboy = Context.Bellboy.GetRandomItem();
 
-            HeaderLeftMenuItems = MenuList.First(menu => menu.ContentType == 10);
+            HeaderLeftMenuItems = MenuList.FirstOrDefault(menu => menu.ContentType == 10) ?? new List<MenuItem>();
 
             var banners = Context.Banner.ToList();
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();

@@ -50,8 +50,14 @@ namespace HavilaTravel.Models
             }
 
             var menuMainLevels = GetMenuMainLevels(context);
-            result.Add(GetTopLevelMenu(menuMainLevels, selectedItemName));
-            result.Add(GetHeaderLeftMenu(menuMainLevels, selectedItemName));
+            Menu menu;
+
+            menu = GetTopLevelMenu(menuMainLevels, selectedItemName);
+            if (menu != null)
+                result.Add(menu);
+            menu = GetHeaderLeftMenu(menuMainLevels, selectedItemName);
+            if (menu != null)
+                result.Add(menu);
             return result;
         }
 
@@ -75,6 +81,10 @@ namespace HavilaTravel.Models
                     SortOrder = c.SortOrder,
                     Current = c.Name == _contentName
                 }));
+            if(!contents.Any())
+            {
+                return null;
+            }
             menu.MenuLevel = (int)contents.First().ContentLevel;
             menu.ContentType = (int)contents.First().ContentType;
             return menu;

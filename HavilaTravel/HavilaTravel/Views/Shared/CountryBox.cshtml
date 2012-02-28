@@ -67,7 +67,7 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <div>
-                                @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                                @Html.ActionLink("+Регион", "AddRegion", "Content", new { Area = "Admin", placeKind = (int)ViewBag.PlaceKind }, new { @class = "adminLink" })
                                 </div>
                             }
                             
