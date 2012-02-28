@@ -1,13 +1,11 @@
 ﻿@using Shop.Helpers
 @model IEnumerable<Shop.Models.Product>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Продукты</h2>
-
+<h2>
+    Продукты</h2>
 <p>
     @Html.ActionLink("Добавить новую запись", "Create")
 </p>
@@ -47,10 +45,12 @@
             Порядок отображения
         </th>
         <th>
-            Описание<br/>(для поисковиков)
+            Описание<br />
+            (для поисковиков)
         </th>
         <th>
-            Ключевые слова<br/>(для поисковиков)
+            Ключевые слова<br />
+            (для поисковиков)
         </th>
         <th>
             Цена
@@ -58,71 +58,83 @@
         <th>
             Старая цена
         </th>
-        <th></th>
+        <th>
+        </th>
     </tr>
+    @foreach (var item in Model)
+    {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @item.Id 
-        </td>
-        <td>
-            @item.Brand.Name
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @{
-                var image = item.ProductImages.FirstOrDefault(im => im.Default) ?? item.ProductImages.FirstOrDefault();
-                if(image!=null&&image.Default)
-                {
+        if (item.Description.Length > 80)
+        {
+            item.Description = item.Description.Substring(0, 80);
+        }
+        
+        if (item.ShortDescription.Length > 80)
+        {
+            item.ShortDescription = item.ShortDescription.Substring(0, 80);
+        }
+
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Brand.Name
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @{
+           var image = item.ProductImages.FirstOrDefault(im => im.Default) ?? item.ProductImages.FirstOrDefault();
+           if (image != null && image.Default)
+           {
                     @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", image.ImageSource))
+           }
                 }
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.Raw(item.IsNew?"да":"нет")
-        </td>
-        <td>
-            @Html.Raw(item.IsSpecialOffer ? "да" : "нет")
-        </td>
-        <td>
-            @Html.Raw(item.Published ? "да" : "нет")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeoDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SeoKeywords)
-        </td>
-        <td class="digit">
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td class="digit">
-            @Html.DisplayFor(modelItem => item.OldPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Просмотр", "Details", new { id = item.Id })<br/>
-            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) <br/>
-            @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id })<br/>
-            @Html.ActionLink("Изображения", "Images", new { id = item.Id })<br/>
-            @Html.ActionLink("Теги", "Tags", new { id = item.Id })<br/>
-            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{onclick="return confirm('Удалить товар?')"})
-        </td>
-    </tr>
-}
-
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.Raw(item.IsNew ? "да" : "нет")
+            </td>
+            <td>
+                @Html.Raw(item.IsSpecialOffer ? "да" : "нет")
+            </td>
+            <td>
+                @Html.Raw(item.Published ? "да" : "нет")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeoDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeoKeywords)
+            </td>
+            <td class="digit">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td class="digit">
+                @Html.DisplayFor(modelItem => item.OldPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Просмотр", "Details", new { id = item.Id })<br />
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id })
+                <br />
+                @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id })<br />
+                @Html.ActionLink("Изображения", "Images", new { id = item.Id })<br />
+                @Html.ActionLink("Теги", "Tags", new { id = item.Id })<br />
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')" })
+            </td>
+        </tr>
+    }
 </table>

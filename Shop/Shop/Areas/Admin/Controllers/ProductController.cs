@@ -50,7 +50,7 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var categories = context.Category.ToList();
-                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Name, Value = category.Id.ToString() }).ToList();
+                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Title, Value = category.Id.ToString() }).ToList();
                 ViewBag.Categories = categoryItems;
 
                 var brands = context.Brand.ToList();

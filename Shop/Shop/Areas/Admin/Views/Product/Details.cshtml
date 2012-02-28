@@ -6,7 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     }
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@Html.DisplayFor(model => model.Title)</h2>
 
 
 <table class="productDetailsTable">
@@ -141,10 +141,9 @@
 </table>
 
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад к списку продуктов", "Index")
 </p>
-@section
-    Includes
+@section Includes
     {
 <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.js")" type="text/javascript"></script>

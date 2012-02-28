@@ -47,7 +47,7 @@ namespace Shop.Models
         [DisplayName("Специальное предложение")]
         public bool IsSpecialOffer { get; set; }
 
-        [DisplayName("Активный")]
+        [DisplayName("Опубликовать")]
         public bool Published { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
