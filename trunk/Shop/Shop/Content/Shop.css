@@ -118,6 +118,7 @@
 
 .shortDescription {
     margin-bottom:20px;
+    height: 90px;
 }
 
 .price {
@@ -135,7 +136,7 @@ a.addToCart
     text-transform: uppercase;
     text-decoration: none;
     font-weight: bold;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     
 }
 
@@ -145,9 +146,30 @@ a.addToCart:hover {
 
 a.details {
     font-size: 15px;
+    margin-right: 20px;
 }
 
 
 .productDetails {
     
+}
+
+.product .attributes
+{
+    margin: 20px 0;
+}
+
+.product .attributes table td.attrTitle
+{
+    padding-right: 20px;
+}
+
+.images
+{
+    margin-bottom: 20px;
+}
+
+img
+{
+    border: none;
 }

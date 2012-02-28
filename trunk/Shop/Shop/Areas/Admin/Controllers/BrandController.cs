@@ -47,14 +47,20 @@ namespace Shop.Areas.Admin.Controllers
         // POST: /Admin/Brand/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection, HttpPostedFileBase uploadFile)
+        public ActionResult Create(FormCollection form, HttpPostedFileBase uploadFile)
         {
             try
             {
                 using (var context = new ShopContainer())
                 {
-                    
-                    var brand = new Brand { Name = collection["Name"] };
+
+                    var brand = new Brand
+                                    {
+                                        Name = form["Name"], 
+                                        Description = form["Description"], 
+                                        SeoDescription = form["SeoDescription"], 
+                                        SeoKeywords = form["SeoKeywords"]
+                                    };
                     if (uploadFile != null)
                     {
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", uploadFile.FileName);
