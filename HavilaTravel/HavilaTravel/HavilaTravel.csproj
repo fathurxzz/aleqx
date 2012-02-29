@@ -97,6 +97,7 @@
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
+    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\CustomerValidation.cs" />

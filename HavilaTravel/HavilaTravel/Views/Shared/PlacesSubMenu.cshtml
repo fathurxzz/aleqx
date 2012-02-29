@@ -2,7 +2,8 @@
 @model HavilaTravel.Models.Content
 @if (Model.PlaceKind == (int)PlaceKind.Region ||
                Model.PlaceKind == (int)PlaceKind.Country ||
-               Model.PlaceKind == (int)PlaceKind.City)
+               Model.PlaceKind == (int)PlaceKind.City |
+               Model.PlaceKind == (int)PlaceKind.SpaRegion)
 {
 
     <div class="subMenu">
@@ -20,13 +21,19 @@
                             Выбрать страну
                         </div>        
                             break;
+                         case (int)PlaceKind.SpaRegion:
+                        <div class="reviewLink">
+                            Выбрать страну
+                        </div>        
+                            break;
 
-                        case (int)PlaceKind.Country:
+                            case (int)PlaceKind.Country:
                         <div class="reviewLink">
                             Выбрать город</div>
                             break;
 
-                        case (int)PlaceKind.City:
+
+                            case (int)PlaceKind.City:
                             if (Request.QueryString["showPlacesReview"] == "True")
                             {
                         @Html.Raw("Достопримечательности")
@@ -62,6 +69,11 @@
                         switch (Model.PlaceKind)
                         {
                             case (int)PlaceKind.Region:
+                        <div class="adminLinkContainer">
+                            @Html.ActionLink("+Страна", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 2 }, new { @class = "adminLink" })
+                        </div>
+                       break;
+                            case (int)PlaceKind.SpaRegion:
                         <div class="adminLinkContainer">
                             @Html.ActionLink("+Страна", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 2 }, new { @class = "adminLink" })
                         </div>
@@ -124,7 +136,7 @@
                     {
                         if (Request.IsAuthenticated)
                         {
-                            
+
                             //string spaOrHotel= Model.PlaceKind == (int)PlaceKind.City?"+Отели":"+Spa";
                             if (Model.PlaceKind == (int)PlaceKind.City)
                             {
@@ -148,7 +160,7 @@
                             {
                                 @Html.Raw("Цены по стране")
                             }
-                            
+
                             else
                             {
                                 @Html.ActionLink("Цены по стране", "Index", "Place", new { id = Model.Name, showPrices = true }, null)

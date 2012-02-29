@@ -20,7 +20,7 @@ namespace HavilaTravel.Models
         
 
 
-        public PlaceViewModel(string id, ContentStorage context, bool? showSpa, bool? showPlacesReview, bool? showPrices,PlaceKind placeKind)
+        public PlaceViewModel(string id, ContentStorage context, bool? showSpa, bool? showPlacesReview, bool? showPrices)
             : base(id, context,false, true)
         {
             
@@ -30,7 +30,7 @@ namespace HavilaTravel.Models
 
             PlacesMap = FillPlacesMap(Content, Context);
 
-            RegionsAndCountries = Context.Content.Include("Children").Where(c => c.PlaceKind == (int)placeKind).ToList();
+            RegionsAndCountries = Context.Content.Include("Children").Where(c => c.PlaceKind == (int)WebSession.PlaceKind).ToList();
 
             Spa = GetSpa();
             PlaceReview = GetPlaceReview();
