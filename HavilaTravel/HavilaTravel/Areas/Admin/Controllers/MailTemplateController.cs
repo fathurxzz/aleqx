@@ -55,5 +55,16 @@ namespace HavilaTravel.Areas.Admin.Controllers
             }
             return RedirectToAction("Subscribers", "Subscribe", new { Area = "" });
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var template = context.MailTemplate.First(t => t.Id == id);
+                context.DeleteObject(template);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Subscribers", "Subscribe", new { Area = "" });
+        }
     }
 }
