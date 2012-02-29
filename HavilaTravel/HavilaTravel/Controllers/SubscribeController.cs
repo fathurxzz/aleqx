@@ -87,7 +87,7 @@ namespace HavilaTravel.Controllers
         {
             int successedSentEmails = 0;
             int failedSentEmails = 0;
-            var mailText = form["MailText"];
+            var mailText = HttpUtility.HtmlDecode(form["MailText"]);
             if (!string.IsNullOrEmpty(mailText))
             {
                 using (var context = new ContentStorage())
