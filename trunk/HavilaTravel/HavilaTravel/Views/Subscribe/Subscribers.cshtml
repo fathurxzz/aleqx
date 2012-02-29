@@ -1,15 +1,19 @@
 ﻿@using Dev.Mvc.Helpers
 @using HavilaTravel.Models
 @model SiteViewModel
-
 @{
     ViewBag.Title = "Subscribers";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var templates = (List<MailTemplate>)ViewBag.MailTemplates;
 }
-
-
 @section Includes
 {
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+
     <script type="text/javascript">
 
         $(function () {
@@ -32,85 +36,116 @@
         });
     </script>
 }
-
-
-@using (Html.BeginForm("SendEmail","Subscribe"))
+@using (Html.BeginForm("SendEmail", "Subscribe"))
 {
-    if ((int)ViewBag.SentEmails>0)
+    if ((int)ViewBag.SentEmails > 0)
     {
-        <script type="text/javascript">
-            alert("Сообщение отправлено");
-        </script>
-        @*<div class="sentSubscribenotificationMessage">
+    <script type="text/javascript">
+        alert("Сообщение отправлено");
+    </script>
+@*<div class="sentSubscribenotificationMessage">
             Сообщение отправлено
         </div>*@
     }
+
+    <table>
+        <tr>
+            <th colspan="2">
+                Шаблоны рассылки
+            </th>
+        </tr>
+        @foreach (var template in templates)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(template.Title, "Subscribers", "Subscribe", new { templateId = template.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("[редактировать]", "Edit", "MailTemplate", new { Area = "Admin", id = template.Id }, new { @class = "adminLink" })
+                </td>
+            </tr>
+        }
+    </table>
+    
+    @Html.ActionLink("Добавить шаблон", "Add", "MailTemplate", new { Area = "Admin" }, new { @class = "adminLink" })
     
     <table class="subscriberListContainer">
         <tr>
             <td>
                 <table class="subscriberList">
-        <tr>
-        
-            <th></th>
-            <th>Имя</th>
-            <th>email</th>
-            <th>удалить</th>
-        </tr>
-        <tr>
-            <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectallagent")</th>
-            <th colspan="3" style="background-color: bisque">Агенты</th>
-        </tr>
-        @foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 1).OrderBy(c => c.Name))
-        {
-            <tr>
-                <td class="checkbox_agent">
-                    @Html.CheckBox("agent_" + subscriber.Id, false, new {@class = "agent"})
-                </td>
-                <td>@subscriber.Name</td>
-                <td>@subscriber.Email</td>
-                <td>@Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить запись?')"})</td>
-            </tr>
-        }
-    
-
-    </table>
-                
-
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            Имя
+                        </th>
+                        <th>
+                            email
+                        </th>
+                        <th>
+                            удалить
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectallagent")
+                        </th>
+                        <th colspan="3" style="background-color: bisque">
+                            Агенты
+                        </th>
+                    </tr>
+                    @foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 1).OrderBy(c => c.Name))
+                    {
+                        <tr>
+                            <td class="checkbox_agent">
+                                @Html.CheckBox("agent_" + subscriber.Id, false, new { @class = "agent" })
+                            </td>
+                            <td>@subscriber.Name
+                            </td>
+                            <td>@subscriber.Email
+                            </td>
+                            <td>@Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                            </td>
+                        </tr>
+                    }
+                </table>
             </td>
             <td>
-                
                 <table class="subscriberList">
-        <tr>
-        
-            <th></th>
-            <th>Имя</th>
-            <th>email</th>
-            <th>удалить</th>
-        </tr>
-     
-        <tr>
-            <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectalltourist")</th>
-            <th colspan="3" style="background-color: bisque">Туристы</th>
-        </tr>
-
-
-        @foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 2).OrderBy(c=>c.Name))
-        {
-            <tr>
-
-                <td class="checkbox_tourist">
-                    @Html.CheckBox("tourist_" + subscriber.Id, false, new {@class = "tourist"})
-                </td>
-                <td>@subscriber.Name</td>
-                <td>@subscriber.Email</td>
-                <td>@Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить запись?')"})</td>
-            </tr>
-        }
-
-    </table>
-                
-
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            Имя
+                        </th>
+                        <th>
+                            email
+                        </th>
+                        <th>
+                            удалить
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectalltourist")
+                        </th>
+                        <th colspan="3" style="background-color: bisque">
+                            Туристы
+                        </th>
+                    </tr>
+                    @foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 2).OrderBy(c => c.Name))
+                    {
+                        <tr>
+                            <td class="checkbox_tourist">
+                                @Html.CheckBox("tourist_" + subscriber.Id, false, new { @class = "tourist" })
+                            </td>
+                            <td>@subscriber.Name
+                            </td>
+                            <td>@subscriber.Email
+                            </td>
+                            <td>@Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                            </td>
+                        </tr>
+                    }
+                </table>
             </td>
         </tr>
     </table>
@@ -118,23 +153,22 @@
    
     
     <div class="sendEmailContainer">
-        
         *отметьте e-mail адреса для отправки сообщения
-        <br/><br/>
-        @Html.TextArea("MailText","",10,50,null)
-        <br/><br/>
-        <input type="submit" value="Отправить"/>
+        <br />
+        <br />
+        @Html.TextArea("MailText", new { @class = "ckeditor" })
+        <br />
+        <br />
+        <input type="submit" value="Отправить" />
     </div>
     
    
 }
-
-
 @section ContentTitle
 {
- <div id="contentTitleSubscribe">
-Список подписчиков на новостную рассылку
-</div>
+    <div id="contentTitleSubscribe">
+        Список подписчиков на новостную рассылку
+    </div>
 }
 @section MainBanner
 {
@@ -159,7 +193,6 @@
         @Html.Partial("BannerSmall", Model.RightBanner)
     }
 }
-
 @section RootLogoLink
 {
     @if (!Model.IsRoot)
@@ -175,16 +208,15 @@
         @Html.Partial("QuickSearch")
     }
 }
-
 @section MainMenu
 {
     @{
         var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
-    @Html.Partial("MainMenu", menu)
+        @Html.Partial("MainMenu", menu)
     }
 }
-
 @section HeaderLeftMenu
 {
-    @Html.Partial("HeaderLeftMenu",Model.HeaderLeftMenuItems)
+    @Html.Partial("HeaderLeftMenu", Model.HeaderLeftMenuItems)
 }
+
