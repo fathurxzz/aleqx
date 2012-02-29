@@ -51,13 +51,19 @@ namespace HavilaTravel.Controllers
         }
 
         [Authorize]
-        public ActionResult Subscribers(int? s, int? f)
+        public ActionResult Subscribers(int? s, int? f, int? templateId)
         {
             using (var context = new ContentStorage())
             {
                 ViewBag.SentEmails = s.HasValue ? s.Value : 0;
 
                 var model = new SiteViewModel(null, context, false) { Customers = context.Customers.ToList() };
+
+                ViewBag.MailTemplates = context.MailTemplate.ToList();
+                if(templateId.HasValue)
+                {
+                    ViewBag.MailText = context.MailTemplate.First(t => t.Id == templateId.Value).Text;
+                }
                 return View(model);
             }
         }
@@ -103,7 +109,7 @@ namespace HavilaTravel.Controllers
 
                     foreach (var customer in all)
                     {
-                        if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText, "Рассылка Havila-Travel", false))
+                        if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText, "Рассылка Havila-Travel", true))
                             successedSentEmails++;
                         else
                             failedSentEmails++;

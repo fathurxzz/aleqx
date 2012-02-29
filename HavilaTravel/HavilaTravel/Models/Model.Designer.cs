@@ -183,6 +183,22 @@ namespace HavilaTravel.Models
             }
         }
         private ObjectSet<Customers> _Customers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MailTemplate> MailTemplate
+        {
+            get
+            {
+                if ((_MailTemplate == null))
+                {
+                    _MailTemplate = base.CreateObjectSet<MailTemplate>("MailTemplate");
+                }
+                return _MailTemplate;
+            }
+        }
+        private ObjectSet<MailTemplate> _MailTemplate;
 
         #endregion
         #region AddTo Methods
@@ -241,6 +257,14 @@ namespace HavilaTravel.Models
         public void AddToCustomers(Customers customers)
         {
             base.AddObject("Customers", customers);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MailTemplate EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMailTemplate(MailTemplate mailTemplate)
+        {
+            base.AddObject("MailTemplate", mailTemplate);
         }
 
         #endregion
@@ -1684,6 +1708,113 @@ namespace HavilaTravel.Models
         private global::System.SByte _SubscribeType;
         partial void OnSubscribeTypeChanging(global::System.SByte value);
         partial void OnSubscribeTypeChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="havilaModel", Name="MailTemplate")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MailTemplate : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MailTemplate object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        public static MailTemplate CreateMailTemplate(global::System.Int64 id, global::System.String title, global::System.String text)
+        {
+            MailTemplate mailTemplate = new MailTemplate();
+            mailTemplate.Id = id;
+            mailTemplate.Title = title;
+            mailTemplate.Text = text;
+            return mailTemplate;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int64 _Id;
+        partial void OnIdChanging(global::System.Int64 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
 
         #endregion
     

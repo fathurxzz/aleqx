@@ -13,6 +13,7 @@
           <EntitySet Name="bellboy" EntityType="havilaModel.Store.bellboy" store:Type="Tables" Schema="havila" />
           <EntitySet Name="content" EntityType="havilaModel.Store.content" store:Type="Tables" Schema="havila" />
           <EntitySet Name="customers" EntityType="havilaModel.Store.customers" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="mailtemplate" EntityType="havilaModel.Store.mailtemplate" store:Type="Tables" Schema="havila" />
         </EntityContainer>
         <EntityType Name="accordion">
           <Key>
@@ -94,6 +95,14 @@
           <Property Name="Email" Type="varchar" Nullable="false" />
           <Property Name="SubscribeType" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="mailtemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" />
+          <Property Name="Text" Type="text" Nullable="false" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -118,6 +127,7 @@
           <EntitySet Name="Article" EntityType="havilaModel.Article" />
           <EntitySet Name="Bellboy" EntityType="havilaModel.Bellboy" />
           <EntitySet Name="Customers" EntityType="havilaModel.Customers" />
+          <EntitySet Name="MailTemplate" EntityType="havilaModel.MailTemplate" />
         </EntityContainer>
         <EntityType Name="Accordion">
           <Key>
@@ -213,6 +223,14 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="SByte" Name="SubscribeType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -317,6 +335,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MailTemplate">
+            <EntityTypeMapping TypeName="havilaModel.MailTemplate">
+              <MappingFragment StoreEntitySet="mailtemplate">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -359,6 +386,7 @@
         <EntityTypeShape EntityType="havilaModel.Article" Width="1.5" PointX="5.375" PointY="0.75" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="havilaModel.Bellboy" Width="1.5" PointX="5.375" PointY="3.75" Height="1.9210009765624996" />
         <EntityTypeShape EntityType="havilaModel.Customers" Width="1.5" PointX="3.375" PointY="6.75" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="havilaModel.MailTemplate" Width="1.5" PointX="5.375" PointY="6.75" Height="1.4279589843749996" />
       </Diagram>
     </Diagrams>
   </Designer>
