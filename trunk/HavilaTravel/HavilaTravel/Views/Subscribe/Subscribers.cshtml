@@ -48,7 +48,7 @@
         </div>*@
     }
 
-    <table>
+    <table class="subscriberList">
         <tr>
             <th colspan="3">
                 Шаблоны рассылки
@@ -57,7 +57,7 @@
         @foreach (var template in templates)
         {
             <tr>
-                <td>
+                <td style="padding-right:10px">
                     @Html.ActionLink(template.Title, "Subscribers", "Subscribe", new { templateId = template.Id }, null)
                 </td>
                 <td>
@@ -68,9 +68,14 @@
                 </td>
             </tr>
         }
+        <tr>
+        <td colspan="3">
+    @Html.ActionLink("Добавить шаблон", "Add", "MailTemplate", new { Area = "Admin" }, new { @class = "adminLink" })    
+        </td>
+        </tr>
     </table>
     
-    @Html.ActionLink("Добавить шаблон", "Add", "MailTemplate", new { Area = "Admin" }, new { @class = "adminLink" })
+    
     
     <table class="subscriberListContainer">
         <tr>
