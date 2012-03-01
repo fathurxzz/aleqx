@@ -10,6 +10,7 @@ namespace Shop.Models
         public List<Category> Categories { get; set; }
         public List<Brand> Brands { get; set; }
         public List<Tag> Tags { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
         private readonly ShopContainer _context;
         public string Title { get; set; }
         public string SeoDescription { get; set; }

@@ -18,9 +18,49 @@ namespace Shop.Controllers
             if (WebSession.OrderItems.Count == 0)
                 return RedirectToAction("Index", "Home", null);
 
-            decimal totalAmount = WebSession.OrderItems.Sum(oi => oi.Value.Price * oi.Value.Quantity);
-            ViewData["totalAmount"] = totalAmount;
-            return View(WebSession.OrderItems.Select(oi => oi.Value).ToList());
+
+            using (var context = new ShopContainer())
+            {
+                decimal totalAmount = WebSession.OrderItems.Sum(oi => oi.Value.Price * oi.Value.Quantity);
+                ViewData["totalAmount"] = totalAmount;
+                var model = new SiteViewModel(context);
+                return View(model);
+            }
+        }
+
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public int Add(int id)
+        {
+            if (WebSession.OrderItems.ContainsKey(id))
+                WebSession.OrderItems[id].Quantity++;
+            else
+            {
+                using (var context = new ShopContainer())
+                {
+                    var product = context.Product.Include("ProductImages").First(p => p.Id == id);
+                    var image = product.ProductImages.Where(i => i.Default).FirstOrDefault();
+                    OrderItem orderItem = new OrderItem
+                                              {
+                                                  Description = product.Description,
+                                                  Image = (image != null) ? image.ImageSource : null,
+                                                  Price = product.Price,
+                                                  ProductId = product.Id,
+                                                  Quantity = 1,
+                                                  Name = product.Title
+                                              };
+
+                    WebSession.OrderItems.Add(product.Id, orderItem);
+                }
+            }
+            return WebSession.OrderItems.Sum(o=>o.Value.Quantity);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            WebSession.OrderItems.Remove(id);
+            if (WebSession.OrderItems.Count == 0)
+                return RedirectToAction("Index", "Home", null);
+            return RedirectToAction("Index");
         }
     }
 }

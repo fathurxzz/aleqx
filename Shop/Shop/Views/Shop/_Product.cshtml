@@ -24,7 +24,8 @@
         </div>
         <div class="buttons">
             @Html.ActionLink("Подробнее", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, new { @class = "details" })
-            @Html.ActionLink("В корзину", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, new{@class="addToCart"})
+            @Html.ActionLink("В корзину", "Add", "Cart", new { Area = "", id = Model.Id }, new{@class="addToCart"})
+            <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Id)">В корзину</a>
         </div>
     </div>
     <div class="clear"></div>

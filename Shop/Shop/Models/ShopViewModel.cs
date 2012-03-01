@@ -64,6 +64,7 @@ namespace Shop.Models
                     attribute.ProductAttributeValues.Load();
                 }
                 Product = product;
+                Title += " - " + product.Title;
                 SeoDescription = product.SeoDescription;
                 SeoKeywords = product.SeoKeywords;
             }
