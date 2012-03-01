@@ -25,7 +25,7 @@ namespace Shop.Controllers
             {
                 ShopViewModel model = new ShopViewModel(context, id, null, null, null);
                 SetSeoContent(model);
-                return View(model);
+                return View("Products", model);
             }
         }
 
@@ -35,7 +35,7 @@ namespace Shop.Controllers
             {
                 ShopViewModel model = new ShopViewModel(context,null, id,null, null);
                 SetSeoContent(model);
-                return View(model);
+                return View("Products", model);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Shop.Controllers
             {
                 ShopViewModel model = new ShopViewModel(context, null, null, id, null);
                 SetSeoContent(model);
-                return View(model);
+                return View("Products", model);
             }
         }
 
