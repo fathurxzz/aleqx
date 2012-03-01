@@ -62,5 +62,43 @@ namespace Shop.Controllers
                 return RedirectToAction("Index", "Home", null);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Clear()
+        {
+            WebSession.OrderItems.Clear();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult CheckOut()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CheckOut(FormCollection form)
+        {
+            using (var context = new OrdersContainer())
+            {
+                Order order = new Order
+                                  {
+                                      DeliveryAddress = form["DeliveryAddress"],
+                                      Email = form["Email"],
+                                      Name = form["Name"],
+                                      OrderDate = DateTime.Now,
+                                      Phone = form["Phone"],
+                                      Processed = false
+                                  };
+
+                foreach (var orderItem in WebSession.OrderItems.Select(o=>o.Value))
+                {
+                    order.OrderItems.Add(orderItem);
+                }
+
+                context.AddToOrder(order);
+                context.SaveChanges();
+            }
+            return View("ThankYou");
+        }
     }
 }
