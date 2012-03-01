@@ -37,6 +37,13 @@ namespace Shop
             );
 
             routes.MapRoute(
+                "Cart1", // Route name
+                "Cart/{action}", // URL with parameters
+                new { controller = "Cart", action = "Index", id = "" },
+                new string[1] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Brands", // Route name
                 "Brands/{id}", // URL with parameters
                 new { controller = "Shop", action = "Brands", id = "" },

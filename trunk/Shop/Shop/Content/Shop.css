@@ -177,5 +177,53 @@ img
 
 .cartTable
 {
-    
+    margin-top: 20px;
+    margin-left: 5px;
+    width: 95%;
+    border-collapse: collapse;
 }
+
+.cartTable td
+{
+    padding: 3px 10px;
+    border: 1px solid silver;
+    text-align: center;
+}
+
+.dec
+{
+    text-align: right !important;
+}
+
+.cartButtons
+{
+    padding: 10px;
+    text-align: right;
+}
+
+#smallShoppingCartItemsCount
+{
+    font-weight: bold;
+}
+
+.checkOutTable
+{
+    margin: 20px 0;
+}
+
+.checkOutTable td
+{
+    padding: 5px;
+}
+
+.checkOutTable td input
+{
+    width: 300px;
+}
+.checkOutTable td textarea
+{
+    width: 300px;
+    height: 70px;
+}
+
+
