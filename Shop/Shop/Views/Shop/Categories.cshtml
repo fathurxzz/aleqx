@@ -15,6 +15,11 @@
     @Html.Partial("_Brands",Model.Brands)
 }
 
+@section Tags
+{
+    @Html.Partial("_Tags",Model.Tags)
+}
+
 @foreach(var product in Model.Products)
 {
     

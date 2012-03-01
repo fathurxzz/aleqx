@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Shop.Models.Tag>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelItem => item.Title)
+        </li>
+    }
+</ul>

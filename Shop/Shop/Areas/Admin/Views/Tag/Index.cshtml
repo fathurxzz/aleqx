@@ -13,6 +13,9 @@
 <table>
     <tr>
         <th>
+            Идентификатор
+        </th>
+        <th>
             Название
         </th>
         <th></th>
@@ -21,7 +24,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Value)
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |

@@ -39,7 +39,7 @@ namespace Shop.Areas.Admin.Controllers
             {
                 using (var context = new ShopContainer())
                 {
-                    var tag = new Tag {Value = form["Value"]};
+                    var tag = new Tag {Name = form["Name"], Title = form["Title"]};
                     context.AddToTag(tag);
                     context.SaveChanges();
                 }
@@ -75,7 +75,7 @@ namespace Shop.Areas.Admin.Controllers
                 using (var context = new ShopContainer())
                 {
                     var tag = context.Tag.First(t => t.Id == id);
-                    TryUpdateModel(tag, new[] {"Value"});
+                    TryUpdateModel(tag, new[] {"Name","Title"});
                     context.SaveChanges();
                     return RedirectToAction("Index");
                 }
