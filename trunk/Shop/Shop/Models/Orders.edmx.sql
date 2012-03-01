@@ -5,25 +5,28 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/24/2012 12:43:14
+-- Date Created: 03/01/2012 22:44:34
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Orders.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `toyplanet`;
-CREATE DATABASE `toyplanet`;
-USE `toyplanet`;
+DROP DATABASE IF EXISTS `toy`;
+CREATE DATABASE `toy`;
+USE `toy`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `OrderItem` DROP CONSTRAINT `FK_OrderOrderItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
+    DROP TABLE IF EXISTS `Order`;
+    DROP TABLE IF EXISTS `OrderItem`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -39,7 +42,8 @@ CREATE TABLE `Order` (
     `Phone` mediumtext  NOT NULL,
     `DeliveryAddress` mediumtext  NOT NULL,
     `Processed` bool  NOT NULL,
-    `Email` mediumtext  NULL
+    `Email` mediumtext  NULL,
+    `Info` mediumtext  NULL
 );
 
 -- Creating table 'OrderItem'

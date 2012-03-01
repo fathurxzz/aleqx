@@ -333,6 +333,30 @@ namespace Shop.Models
         private global::System.String _Email;
         partial void OnEmailChanging(global::System.String value);
         partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Info
+        {
+            get
+            {
+                return _Info;
+            }
+            set
+            {
+                OnInfoChanging(value);
+                ReportPropertyChanging("Info");
+                _Info = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Info");
+                OnInfoChanged();
+            }
+        }
+        private global::System.String _Info;
+        partial void OnInfoChanging(global::System.String value);
+        partial void OnInfoChanged();
 
         #endregion
     
