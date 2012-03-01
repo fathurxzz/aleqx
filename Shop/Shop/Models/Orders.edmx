@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Orders.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Orders.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="OrdersStoreContainer">
     <EntitySet Name="Order" EntityType="Orders.Store.Order" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OrderItem" EntityType="Orders.Store.OrderItem" store:Type="Tables" Schema="dbo" />
@@ -24,6 +24,7 @@
     <Property Name="DeliveryAddress" Type="mediumtext" Nullable="false" />
     <Property Name="Processed" Type="bool" Nullable="false" />
     <Property Name="Email" Type="mediumtext" Nullable="true" />
+    <Property Name="Info" Type="mediumtext" Nullable="true" />
   </EntityType>
   <EntityType Name="OrderItem">
     <Key>
@@ -74,6 +75,7 @@
           <NavigationProperty Name="OrderItems" Relationship="Orders.OrderOrderItem" FromRole="Order" ToRole="OrderItem" />
           <Property Type="Boolean" Name="Processed" Nullable="false" />
           <Property Type="String" Name="Email" MaxLength="100" />
+          <Property Type="String" Name="Info" MaxLength="255" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -117,6 +119,7 @@
           <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
           <ScalarProperty Name="Processed" ColumnName="Processed" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -154,11 +157,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Orders" >
-        <EntityTypeShape EntityType="Orders.Order" Width="1.5" PointX="4.125" PointY="0.875" Height="2.2496956380208339" />
+        <EntityTypeShape EntityType="Orders.Order" Width="1.5" PointX="4.125" PointY="0.875" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Orders.OrderItem" Width="1.5" PointX="6.625" PointY="1" Height="2.085348307291667" />
         <AssociationConnector Association="Orders.OrderOrderItem">
-          <ConnectorPoint PointX="5.625" PointY="2.0623478190104167" />
-          <ConnectorPoint PointX="6.625" PointY="2.0623478190104167" />
+          <ConnectorPoint PointX="5.625" PointY="2.31224609375" />
+          <ConnectorPoint PointX="6.625" PointY="2.31224609375" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
