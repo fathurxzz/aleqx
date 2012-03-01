@@ -16,7 +16,11 @@ namespace Shop.Models
     public class TagValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Идентификатор")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Название")]
-        public string Value { get; set; }
+        public string Title { get; set; }
     }
 }

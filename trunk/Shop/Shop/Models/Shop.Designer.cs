@@ -271,11 +271,13 @@ namespace Shop.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Brand CreateBrand(global::System.Int32 id, global::System.String name)
+        /// <param name="title">Initial value of the Title property.</param>
+        public static Brand CreateBrand(global::System.Int32 id, global::System.String name, global::System.String title)
         {
             Brand brand = new Brand();
             brand.Id = id;
             brand.Name = name;
+            brand.Title = title;
             return brand;
         }
 
@@ -428,6 +430,30 @@ namespace Shop.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
 
         #endregion
     
@@ -1904,12 +1930,14 @@ namespace Shop.Models
         /// Create a new Tag object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="value">Initial value of the Value property.</param>
-        public static Tag CreateTag(global::System.Int32 id, global::System.String value)
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        public static Tag CreateTag(global::System.Int32 id, global::System.String name, global::System.String title)
         {
             Tag tag = new Tag();
             tag.Id = id;
-            tag.Value = value;
+            tag.Name = name;
+            tag.Title = title;
             return tag;
         }
 
@@ -1948,24 +1976,48 @@ namespace Shop.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Value
+        public global::System.String Name
         {
             get
             {
-                return _Value;
+                return _Name;
             }
             set
             {
-                OnValueChanging(value);
-                ReportPropertyChanging("Value");
-                _Value = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Value");
-                OnValueChanged();
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
             }
         }
-        private global::System.String _Value;
-        partial void OnValueChanging(global::System.String value);
-        partial void OnValueChanged();
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
 
         #endregion
     

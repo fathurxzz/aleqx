@@ -16,7 +16,10 @@
     @Html.Partial("_Brands",Model.Brands)
 }
 
-
+@section Tags
+{
+    @Html.Partial("_Tags",Model.Tags)
+}
 
 <div class="product">
     <div class="title">@Model.Product.Title</div>

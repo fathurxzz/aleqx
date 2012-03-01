@@ -10,7 +10,7 @@ namespace Shop.Models
         public List<Product> Products { get; set; }
         public Product Product { get; set; }
 
-        public ShopViewModel(ShopContainer context, string categoryId, string productId)
+        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId)
             : base(context)
         {
             foreach (var category in Categories.Where(category => category.Name == categoryId))

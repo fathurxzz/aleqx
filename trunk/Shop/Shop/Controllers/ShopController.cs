@@ -23,7 +23,27 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, id, null);
+                ShopViewModel model = new ShopViewModel(context, id, null, null, null);
+                SetSeoContent(model);
+                return View(model);
+            }
+        }
+
+        public ActionResult Brands(string id)
+        {
+            using (var context = new ShopContainer())
+            {
+                ShopViewModel model = new ShopViewModel(context,null, id,null, null);
+                SetSeoContent(model);
+                return View(model);
+            }
+        }
+
+        public ActionResult Tags(string id)
+        {
+            using (var context = new ShopContainer())
+            {
+                ShopViewModel model = new ShopViewModel(context, null, null, id, null);
                 SetSeoContent(model);
                 return View(model);
             }
@@ -33,11 +53,13 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, category, id);
+                ShopViewModel model = new ShopViewModel(context, category, null, null, id);
                 SetSeoContent(model);
                 return View(model);
             }
         }
+
+        
 
     }
 }

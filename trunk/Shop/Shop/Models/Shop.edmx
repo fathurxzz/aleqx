@@ -131,13 +131,15 @@
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="Title" Type="mediumtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Value" Type="mediumtext" Nullable="false" />
+    <Property Name="Name" Type="mediumtext" Nullable="false" />
+    <Property Name="Title" Type="mediumtext" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductAttributeCategory">
     <Key>
@@ -481,6 +483,7 @@
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
           <NavigationProperty Name="Products" Relationship="Shop.BrandProduct" FromRole="Brand" ToRole="Product" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
         </EntityType>
         <Association Name="BrandProduct">
           <End Type="Shop.Brand" Role="Brand" Multiplicity="1" />
@@ -499,8 +502,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Value" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" />
           <NavigationProperty Name="Products" Relationship="Shop.TagProduct" FromRole="Tag" ToRole="Product" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
         </EntityType>
         <Association Name="TagProduct">
           <End Type="Shop.Tag" Role="Tag" Multiplicity="*" />
@@ -586,6 +590,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -593,7 +598,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(Shop.Tag)">
         <MappingFragment StoreEntitySet="Tag">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -673,15 +679,15 @@
           <ConnectorPoint PointX="9.25" PointY="4.1109318033854167" />
           <ConnectorPoint PointX="10.25" PointY="4.1109318033854167" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.Brand" Width="1.5" PointX="10.25" PointY="0.625" Height="2.364889322916667" />
+        <EntityTypeShape EntityType="Shop.Brand" Width="1.5" PointX="10.25" PointY="0.625" Height="2.2496956380208339" />
         <AssociationConnector Association="Shop.BrandProduct">
-          <ConnectorPoint PointX="10.25" PointY="1.6676741536458337" />
-          <ConnectorPoint PointX="9.25" PointY="1.6676741536458337" />
+          <ConnectorPoint PointX="10.25" PointY="1.7498478190104168" />
+          <ConnectorPoint PointX="9.25" PointY="1.7498478190104168" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="2.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="2.75" Height="1.5923063151041665" />
         <AssociationConnector Association="Shop.TagProduct">
-          <ConnectorPoint PointX="6.5" PointY="3.4639794921875" />
-          <ConnectorPoint PointX="7.75" PointY="3.4639794921875" />
+          <ConnectorPoint PointX="6.5" PointY="3.5461531575520833" />
+          <ConnectorPoint PointX="7.75" PointY="3.5461531575520833" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

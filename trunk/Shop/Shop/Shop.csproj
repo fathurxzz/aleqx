@@ -83,6 +83,7 @@
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -317,6 +318,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shop\_Product.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Tags.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

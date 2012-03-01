@@ -57,6 +57,7 @@ namespace Shop.Areas.Admin.Controllers
                     var brand = new Brand
                                     {
                                         Name = form["Name"], 
+                                        Title = form["Title"],
                                         Description = form["Description"], 
                                         SeoDescription = form["SeoDescription"], 
                                         SeoKeywords = form["SeoKeywords"]
@@ -103,7 +104,7 @@ namespace Shop.Areas.Admin.Controllers
                 using (var context = new ShopContainer())
                 {
                     var brand = context.Brand.First(b => b.Id == id);
-                    TryUpdateModel(brand, new[] {"Name", "Description", "SeoDescription", "SeoKeywords"});
+                    TryUpdateModel(brand, new[] {"Name","Title", "Description", "SeoDescription", "SeoKeywords"});
 
                     if (uploadFile != null)
                     {
