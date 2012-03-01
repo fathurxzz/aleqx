@@ -64,12 +64,13 @@
     @foreach (var item in Model)
     {
 
-        if (item.Description.Length > 80)
+
+        if (item.Description!=null&&item.Description.Length > 80)
         {
             item.Description = item.Description.Substring(0, 80);
         }
-        
-        if (item.ShortDescription.Length > 80)
+
+        if (item.ShortDescription != null && item.ShortDescription.Length > 80)
         {
             item.ShortDescription = item.ShortDescription.Substring(0, 80);
         }

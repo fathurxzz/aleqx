@@ -78,6 +78,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ControllerExtensions.cs" />
     <Compile Include="Helpers\FormCollectionExtender.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
@@ -147,6 +148,7 @@
     <Content Include="Global.asax" />
     <Content Include="Models\Orders.edmx.sql" />
     <Content Include="Models\Shop.edmx.sql" />
+    <Content Include="Scripts\Cart.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />

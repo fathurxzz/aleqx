@@ -1,6 +1,9 @@
-﻿<div id="shoppingCart">
+﻿@using Shop.Helpers
+<div id="shoppingCart">
     @Html.ActionLink("Корзина", "Index", "Cart", new { Area = "" }, new { @class = "showCart" })
     <div id="shoppingCartInfo">
-        В корзине 0 товаров
+        В корзине <span id="smallShoppingCartItemsCount">
+        @WebSession.OrderItems.Sum(c=>c.Value.Quantity)
+        </span> товаров
     </div>
 </div>
