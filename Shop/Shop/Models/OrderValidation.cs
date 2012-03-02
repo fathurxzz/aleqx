@@ -15,6 +15,12 @@ namespace Shop.Models
     
     public class OrderValidation
     {
+        [DisplayName("Номер заказа")]
+        public int Id { get; set; }
+
+        [DisplayName("Дата заказа")]
+        public DateTime OrderDate { get; set; }
+
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Имя")]
         public string Name { get; set; }

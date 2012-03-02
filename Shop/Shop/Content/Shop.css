@@ -228,3 +228,7 @@ img
 {
     text-align: right !important;
 }
+
+.editOrderItemQuantity input {
+    width: 30px;
+}

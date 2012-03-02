@@ -16,8 +16,8 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new OrdersContainer())
             {
-                var orders = context.Order.Include("OrderItems").ToList().OrderBy(o=>o.OrderDate);
-                return View(orders);    
+                var orders = context.Order.Include("OrderItems").ToList().OrderBy(o => o.OrderDate);
+                return View(orders);
             }
         }
 
@@ -29,6 +29,18 @@ namespace Shop.Areas.Admin.Controllers
                 var order = context.Order.Include("OrderItems").First(o => o.Id == id);
                 return View(order);
             }
+        }
+
+        [HttpPost]
+        public ActionResult Details(int id, FormCollection form)
+        {
+            using (var context = new OrdersContainer())
+            {
+                var order = context.Order.Include("OrderItems").First(o => o.Id == id);
+                TryUpdateModel(order, new[] { "Processed", "Info", "Name", "DeliveryAddress", "Email" });
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

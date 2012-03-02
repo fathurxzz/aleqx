@@ -102,5 +102,30 @@ namespace Shop.Controllers
             }
             return View("ThankYou");
         }
+
+        [HttpPost]
+        public ActionResult Recalculate(FormCollection form)
+        {
+            PostData post = form.ProcessPostData("q");
+
+            foreach (var kvp in post)
+            {
+                int orderItemId = Convert.ToInt32(kvp.Key);
+                foreach (var q in kvp.Value)
+                {
+                    int orderItemQuantity = Convert.ToInt32(q.Value);
+
+                    foreach (var orderItem in WebSession.OrderItems.Select(oi=>oi.Value))
+                    {
+                        if(orderItem.GetHashCode()==orderItemId)
+                        {
+                            orderItem.Quantity = orderItemQuantity;
+                        }
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
