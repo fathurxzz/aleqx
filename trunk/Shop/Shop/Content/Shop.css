@@ -190,10 +190,7 @@ img
     text-align: center;
 }
 
-.dec
-{
-    text-align: right !important;
-}
+
 
 .cartButtons
 {
@@ -227,3 +224,7 @@ img
 }
 
 
+.dec
+{
+    text-align: right !important;
+}

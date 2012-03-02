@@ -329,7 +329,7 @@ namespace Shop.Areas.Admin.Controllers
                 var tags = context.Tag.ToList();
                 ViewBag.ProductTags = product.Tags;
                 ViewBag.ProductId = product.Id;
-                ViewBag.ProductName = product.Name;
+                ViewBag.ProductTitle = product.Title;
                 return View(tags);
             }
         }
