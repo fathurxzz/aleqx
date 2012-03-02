@@ -5,69 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     decimal totalAmount = 0;
 }
-
 @section Categories
 {
-    @Html.Partial("_Categories",Model.Categories)
+    @Html.Partial("_Categories", Model.Categories)
 }
-
 @section Brands
 {
-    @Html.Partial("_Brands",Model.Brands)
+    @Html.Partial("_Brands", Model.Brands)
 }
-
 @section Tags
 {
-    @Html.Partial("_Tags",Model.Tags)
+    @Html.Partial("_Tags", Model.Tags)
 }
+<h2>Корзина</h2>
+
+@using (Html.BeginForm("Recalculate","Cart"))
+{
+
+    <div class="cartButtons">
+        @Html.ActionLink("Осистить", "Clear", "Cart")
+    </div>
 
 
-<h2>
-    Корзина</h2>
-<div class="cartButtons">
-    @Html.ActionLink("Осистить", "Clear", "Cart")
-</div>
-<table class="cartTable">
-    <tr>
-        <th>
-            Продукт
-        </th>
-        <th>
-            Цена
-        </th>
-        <th>
-            Количество
-        </th>
-        <th>
-            Стоимость
-        </th>
-    </tr>
-    @foreach (var order in WebSession.OrderItems.Select(orderItem => orderItem.Value))
-    {
-        
+    <table class="cartTable">
         <tr>
-            <td>@order.Name
+            <th>
+                Продукт
+            </th>
+            <th>
+                Цена
+            </th>
+            <th>
+                Количество
+            </th>
+            <th>
+                Стоимость
+            </th>
+        </tr>
+        @foreach (var order in WebSession.OrderItems.Select(orderItem => orderItem.Value))
+        {
+
+            <tr>
+                <td>@order.Name
+                </td>
+                <td class="dec">@order.Price.ToString("N")
+                </td>
+                <td class="editOrderItemQuantity">
+                    @Html.TextBox("q_" + order.GetHashCode(), order.Quantity)
+                </td>
+                @{
+                    var amount = order.Quantity*order.Price;
+                    totalAmount += amount;
+                }
+                <td class="dec">@amount.ToString("N")
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="3" style="text-align: right">
+                Всего:
             </td>
-            <td class="dec">@order.Price.ToString("N")
-            </td>
-            <td>@order.Quantity
-            </td>
-            @{
-           var amount = order.Quantity * order.Price;
-           totalAmount += amount;
-            }
-            <td class="dec">@amount.ToString("N")
+            <td class="dec">@totalAmount.ToString("N")
             </td>
         </tr>
-    }
-    <tr>
-        <td colspan="3" style="text-align: right">
-            Всего:
-        </td>
-        <td class="dec">@totalAmount.ToString("N")
-        </td>
-    </tr>
-</table>
-<div class="cartButtons">
-    @Html.ActionLink("Пересчитать", "Index", "Cart") &nbsp;|&nbsp; @Html.ActionLink("Оформить заказ", "CheckOut", "Cart")
-</div>
+    </table>
+    <div class="cartButtons">
+        <input type="submit" value="Пересчитать"/> &nbsp;|&nbsp; @Html.ActionLink("Оформить заказ", "CheckOut", "Cart")
+    </div>
+}
