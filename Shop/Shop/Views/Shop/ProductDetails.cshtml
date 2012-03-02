@@ -77,7 +77,7 @@
         @Model.Product.Price.ToString("N") грн.
     </div>
     <div class="buttons">
-            @Html.ActionLink("В корзину", "ProductDetails", "Shop", new { Area = "", category = Model.Product.Category.Name, id = Model.Product.Name }, new { @class = "addToCart" })
+            <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Product.Id)">В корзину</a>
         </div>
 </div>
 
