@@ -97,6 +97,8 @@ namespace Shop.Controllers
 
                 context.AddToOrder(order);
                 context.SaveChanges();
+
+                WebSession.OrderItems.Clear();
             }
             return View("ThankYou");
         }
