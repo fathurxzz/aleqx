@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/01/2012 22:44:34
+-- Date Created: 03/02/2012 09:45:36
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Orders.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `toy`;
-CREATE DATABASE `toy`;
-USE `toy`;
+DROP DATABASE IF EXISTS `toyplanet`;
+CREATE DATABASE `toyplanet`;
+USE `toyplanet`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
