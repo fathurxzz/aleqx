@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Shop.Models.Content>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Контент</h2>
+
+<p>
+    @Html.ActionLink("Создать страницу", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Идентификатор
+        </th>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Заголовок в шапке обозревателя
+        </th>
+        <th>
+            Порядок отображения
+        </th>
+        <th>
+            Опубликован
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(c=>c.SortOrder)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SortOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Published)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить страницу контента?')" })
+        </td>
+    </tr>
+}
+
+</table>

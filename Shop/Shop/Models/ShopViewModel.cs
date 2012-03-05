@@ -11,7 +11,7 @@ namespace Shop.Models
         public Product Product { get; set; }
 
         public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId)
-            : base(context)
+            : base(context,null)
         {
 
 

@@ -28,14 +28,8 @@ namespace Shop
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new string[1] { "Shop.Controllers" }
             );
+            
             /*
-            routes.MapRoute(
-                "Cart", // Route name
-                "Cart", // URL with parameters
-                new { controller = "Cart", action = "Index", id = "" },
-                new string[1] { "Shop.Controllers" }
-            );
-
             routes.MapRoute(
                 "Cart1", // Route name
                 "cart/{action}", // URL with parameters
@@ -64,7 +58,6 @@ namespace Shop
                 new string[1] { "Shop.Controllers" }
             );
 
-
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
@@ -72,7 +65,12 @@ namespace Shop
                 new string[1] { "Shop.Controllers" }
             );
 
-
+            routes.MapRoute(
+              "Content", // Route name
+              "{id}", // URL with parameters
+              new { controller = "Home", action = "Index", id = "" },
+              new string[1] { "Shop.Controllers" }
+          );
              
         }
 
