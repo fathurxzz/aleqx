@@ -30,10 +30,10 @@ namespace Shop.Models
 
             MainMenu = new List<MenuItem>();
 
-            var contents = context.Content.ToList();
+            var contents = context.Content.Where(c=>c.Published).ToList();
             foreach (var content in contents)
             {
-                MainMenu.Add(new MenuItem { Name = content.Name, Title = content.Title, Selected = content.Name == contentId });  
+                MainMenu.Add(new MenuItem { Name = content.Name, Title = content.Title, Selected = content.Name == contentId,SortOrder = content.SortOrder});  
             }
 
             
@@ -62,6 +62,15 @@ namespace Shop.Models
             if (!string.IsNullOrEmpty(contentId))
             {
                 var content = context.Content.FirstOrDefault(c => c.Name == contentId);
+                if (content == null)
+                {
+                    throw new HttpNotFoundException();
+                }
+                Content = content;
+            }
+            else
+            {
+                var content = context.Content.ToList().OrderBy(c => c.SortOrder).FirstOrDefault();
                 if (content == null)
                 {
                     throw new HttpNotFoundException();

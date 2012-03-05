@@ -18,3 +18,7 @@
     @Html.Partial("_Tags",Model.Tags)
 }
 
+@if (Model.Content != null)
+{
+    @Html.Raw(Model.Content.Text)
+}

@@ -22,7 +22,7 @@
         </div>
         <div id="mainMenu">
         
-        @Html.Partial("Menu",(IEnumerable<MenuItem>)ViewBag.MainMenu)
+            @Html.Partial("Menu",(IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
 
         
             
