@@ -71,10 +71,11 @@ namespace Shop.Models
             else
             {
                 var content = context.Content.ToList().OrderBy(c => c.SortOrder).FirstOrDefault();
-                if (content == null)
-                {
-                    throw new HttpNotFoundException();
-                }
+                //if (content == null)
+                //{
+                //    throw new HttpNotFoundException();
+                //}
+                //else
                 Content = content;
             }
         }
