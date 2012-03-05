@@ -23,7 +23,7 @@ namespace Shop.Controllers
             {
                 decimal totalAmount = WebSession.OrderItems.Sum(oi => oi.Value.Price * oi.Value.Quantity);
                 ViewData["totalAmount"] = totalAmount;
-                var model = new SiteViewModel(context);
+                var model = new SiteViewModel(context,null);
                 return View(model);
             }
         }

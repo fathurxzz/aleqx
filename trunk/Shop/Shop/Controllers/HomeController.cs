@@ -10,15 +10,25 @@ namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
-    
-        public ActionResult Index()
+
+        public ActionResult Index(string id)
         {
             using (var context = new ShopContainer())
             {
-                SiteViewModel model = new SiteViewModel(context);
+                SiteViewModel model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
                 return View(model);
             }
         }
+
+        public ActionResult NotFound()
+        {
+            using (var context = new ShopContainer())
+            {
+                SiteViewModel model = new SiteViewModel(context, null);
+                return View(model);
+            }
+        }
+
     }
 }

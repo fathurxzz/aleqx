@@ -1,0 +1,25 @@
+﻿@model Shop.Models.SiteViewModel
+
+@{
+    ViewBag.Title = "Страница не найдена";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Categories
+{
+    @Html.Partial("_Categories",Model.Categories)
+}
+
+@section Brands
+{
+    @Html.Partial("_Brands",Model.Brands)
+}
+
+@section Tags
+{
+    @Html.Partial("_Tags",Model.Tags)
+}
+
+
+<h2>Страница не найдена :(</h2>

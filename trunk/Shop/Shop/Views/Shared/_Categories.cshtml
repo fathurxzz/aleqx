@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Shop.Models.Category>
 <ul>
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(c=>c.Title))
     {
         string className = item.Selected?"selected":"";
         
@@ -10,7 +10,7 @@
 
         if (item.Selected||item.IsParent)
         {
-            foreach (var child in item.Children)
+            foreach (var child in item.Children.OrderBy(c => c.Title))
             {
                 className = child.Selected ? "selected" : "";
                 <li class="child">
