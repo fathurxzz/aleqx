@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Product" EntityType="Shop.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -92,6 +92,7 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="Title" Type="mediumtext" Nullable="false" />
+    <Property Name="ImageSource" Type="mediumtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -382,6 +383,7 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <NavigationProperty Name="ProductAttributes" Relationship="Shop.ProductAttributeCategory" FromRole="Category" ToRole="ProductAttribute" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ImageSource" MaxLength="250" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Shop.Category" Role="Category" Multiplicity="1" />
@@ -547,6 +549,7 @@
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -648,7 +651,7 @@
     <edmx:Diagrams>
       <Diagram Name="Shop" >
         <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="7.75" PointY="0.625" Height="4.2218636067708326" />
-        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="2.7427376302083339" />
+        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="2.9070849609375" />
         <AssociationConnector Association="Shop.CategoryProduct">
           <ConnectorPoint PointX="2.625" PointY="1.65625" />
           <ConnectorPoint PointX="7.75" PointY="1.65625" />
@@ -662,7 +665,7 @@
         <EntityTypeShape EntityType="Shop.ProductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.0853483072916656" />
         <AssociationConnector Association="Shop.ProductAttributeCategory">
           <ConnectorPoint PointX="1.875" PointY="5.25" />
-          <ConnectorPoint PointX="1.875" PointY="3.3677376302083339" />
+          <ConnectorPoint PointX="1.875" PointY="3.5320849609375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ProductAttributeValues" Width="2" PointX="4.5" PointY="5.25" Height="1.9210009765624996" />
         <AssociationConnector Association="Shop.ProductAttributeProductAttributeValues">

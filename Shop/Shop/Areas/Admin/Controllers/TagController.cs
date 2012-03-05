@@ -95,7 +95,9 @@ namespace Shop.Areas.Admin.Controllers
             {
                 using (var context = new ShopContainer())
                 {
-
+                    var tag = context.Tag.First(t => t.Id == id);
+                    context.DeleteObject(tag);
+                    context.SaveChanges();
                 }
 
                 return RedirectToAction("Index");
