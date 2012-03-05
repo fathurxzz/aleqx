@@ -15,7 +15,7 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            using (var context = new ContentContainer())
+            using (var context = new ShopContainer())
             {
                 var contents = context.Content.ToList();
                 return View(contents);
@@ -30,7 +30,7 @@ namespace Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection form)
         {
-            using (var context = new ContentContainer())
+            using (var context = new ShopContainer())
             {
                 var content = new Content();
                 TryUpdateModel(content,
@@ -55,7 +55,7 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var context = new ContentContainer())
+            using (var context = new ShopContainer())
             {
                 var content = context.Content.First(c => c.Id == id);
                 return View(content);
@@ -65,7 +65,7 @@ namespace Shop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection form)
         {
-            using (var context = new ContentContainer())
+            using (var context = new ShopContainer())
             {
                 var content = context.Content.First(c => c.Id == id);
                 TryUpdateModel(content,
@@ -88,7 +88,7 @@ namespace Shop.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var context = new ContentContainer())
+            using (var context = new ShopContainer())
             {
                 var content = context.Content.First(c => c.Id == id);
                 context.DeleteObject(content);

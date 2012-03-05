@@ -100,14 +100,11 @@
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Validation\BrandValidation.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Validation\CategoryValidation.cs" />
-    <Compile Include="Models\Content.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Content.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Validation\ContentValidation.cs" />
     <Compile Include="Models\Orders.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -361,12 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\Content.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Content.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Content\Index.cshtml" />

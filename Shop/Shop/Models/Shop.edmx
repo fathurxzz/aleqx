@@ -13,6 +13,7 @@
     <EntitySet Name="ProductImage" EntityType="Shop.Store.ProductImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Brand" EntityType="Shop.Store.Brand" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tag" EntityType="Shop.Store.Tag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Content" EntityType="Shop.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeCategory" EntityType="Shop.Store.ProductAttributeCategory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValuesProduct" EntityType="Shop.Store.ProductAttributeValuesProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TagProduct" EntityType="Shop.Store.TagProduct" store:Type="Tables" Schema="dbo" />
@@ -145,6 +146,21 @@
     <Property Name="Name" Type="mediumtext" Nullable="false" />
     <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="SeoText" Type="longtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="mediumtext" Nullable="false" />
+    <Property Name="Title" Type="mediumtext" Nullable="false" />
+    <Property Name="PageTitle" Type="mediumtext" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="SeoText" Type="longtext" Nullable="true" />
+    <Property Name="Published" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductAttributeCategory">
     <Key>
@@ -346,6 +362,7 @@
             <End Role="Tag" EntitySet="Tag" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
+          <EntitySet Name="Content" EntityType="Shop.Content" />
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -520,6 +537,21 @@
           <End Type="Shop.Tag" Role="Tag" Multiplicity="*" />
           <End Type="Shop.Product" Role="Product" Multiplicity="*" />
         </Association>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PageTitle" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Text" />
+          <Property Type="String" Name="SeoText" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -618,6 +650,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Content">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.Content)">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SeoText" ColumnName="SeoText" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ProductAttributeCategory" TypeName="Shop.ProductAttributeCategory" StoreEntitySet="ProductAttributeCategory">
       <EndProperty Name="ProductAttribute">
         <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
@@ -704,6 +752,7 @@
           <ConnectorPoint PointX="6.5" PointY="3.6283268229166667" />
           <ConnectorPoint PointX="7.75" PointY="3.6283268229166667" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.Content" Width="1.5" PointX="3.125" PointY="0.5" Height="2.5783902994791656" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

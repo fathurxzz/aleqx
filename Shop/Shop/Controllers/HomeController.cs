@@ -17,6 +17,7 @@ namespace Shop.Controllers
             {
                 SiteViewModel model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
                 return View(model);
             }
         }
@@ -26,6 +27,7 @@ namespace Shop.Controllers
             using (var context = new ShopContainer())
             {
                 SiteViewModel model = new SiteViewModel(context, null);
+                ViewBag.MainMenu = model.MainMenu;
                 return View(model);
             }
         }
