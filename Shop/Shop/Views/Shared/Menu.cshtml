@@ -4,7 +4,14 @@
 @foreach (var item in Model.OrderBy(m=>m.SortOrder))
 {
     <li>
-        @Html.ActionLink(item.Title, "Index", "Home", new { Area = "", id = item.Name }, null)
+        @if (item.Selected)
+        {
+            @item.Title
+        }
+        else
+        {
+            @Html.ActionLink(item.Title, "Index", "Home", new {Area = "", id = item.Name}, null)
+        }
     </li>
 }
 </ul>

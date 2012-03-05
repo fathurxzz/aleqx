@@ -83,7 +83,7 @@ a
 
 #mainMenu li
 {
-    padding: 0px;
+    /*padding: 0px;*/
     text-transform: uppercase;
     width: auto;
     font-size: 14px;
@@ -91,20 +91,21 @@ a
     line-height: 30px;
     float: left;
     margin-left: 10px;
-    color: #fff;
+    color: #E7E7E7;
     background-color: #FB4600;
     font-weight: bold;
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
     -moz-border-radius: 8px 8px 0 0;
+    padding: 0 15px;
 }
 
 #mainMenu li a
 {
-    padding: 0 15px;
+    
     display: block;
     text-decoration: none;
-    color: inherit;
+    color: #fff;
 }
 
 #mainMenu li a:hover
