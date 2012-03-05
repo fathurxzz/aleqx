@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Shop.Models
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -20,7 +21,12 @@
             @*header header header *@
         </div>
         <div id="mainMenu">
-            @Html.Partial("Menu")
+        
+        @Html.Partial("Menu",(IEnumerable<MenuItem>)ViewBag.MainMenu)
+
+        
+            
+            
         </div>
         <div id="mainMenuFooter"></div>
         <div id="main">

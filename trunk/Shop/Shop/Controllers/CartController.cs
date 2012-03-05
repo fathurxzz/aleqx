@@ -24,6 +24,7 @@ namespace Shop.Controllers
                 decimal totalAmount = WebSession.OrderItems.Sum(oi => oi.Value.Price * oi.Value.Quantity);
                 ViewData["totalAmount"] = totalAmount;
                 var model = new SiteViewModel(context,null);
+                ViewBag.MainMenu = model.MainMenu;
                 return View(model);
             }
         }
@@ -72,7 +73,12 @@ namespace Shop.Controllers
 
         public ActionResult CheckOut()
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                var model = new SiteViewModel(context, null);
+                ViewBag.MainMenu = model.MainMenu;
+                return View();
+            }
         }
 
         [HttpPost]

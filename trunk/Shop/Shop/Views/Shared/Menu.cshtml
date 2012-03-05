@@ -1,19 +1,11 @@
-﻿<nav>
+﻿@model IEnumerable<Shop.Models.MenuItem>
+<nav>
 <ul>
+@foreach (var item in Model)
+{
     <li>
-        @Html.ActionLink("О компании", "Index", "Home", new { Area = "" }, null)
+        @Html.ActionLink(item.Title, "Index", "Home", new { Area = "", id = item.Name }, null)
     </li>
-    <li>
-        @Html.ActionLink("Доставка", "Index", "Home", new { Area = "" }, null)
-    </li>
-    <li>
-        @Html.ActionLink("Контакты", "Index", "Home", new { Area = "" }, null)
-    </li>
-    <li>
-        @Html.ActionLink("Акции", "Index", "Home", new { Area = "" }, null)
-    </li>
-    <li>
-        @Html.ActionLink("Услуги", "Index", "Home", new { Area = "" }, null)
-    </li>
+}
 </ul>
 </nav>

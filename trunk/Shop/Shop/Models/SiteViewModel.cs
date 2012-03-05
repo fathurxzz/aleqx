@@ -8,15 +8,16 @@ namespace Shop.Models
 {
     public class SiteViewModel
     {
-        public List<Category> Categories { get; set; }
-        public List<Brand> Brands { get; set; }
-        public List<Tag> Tags { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
+        public IEnumerable<Brand> Brands { get; set; }
+        public IEnumerable<Tag> Tags { get; set; }
+        public IEnumerable<OrderItem> OrderItems { get; set; }
         private readonly ShopContainer _context;
         public string Title { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
         public Content Content { get; set; }
+        public List<MenuItem> MainMenu { get; set; }
 
         public SiteViewModel(ShopContainer context, string contentId)
         {
@@ -27,17 +28,45 @@ namespace Shop.Models
             Brands = _context.Brand.ToList();
             Tags = _context.Tag.ToList();
 
+            MainMenu = new List<MenuItem>();
+
+            var contents = context.Content.ToList();
+            foreach (var content in contents)
+            {
+                MainMenu.Add(new MenuItem { Name = content.Name, Title = content.Title, Selected = content.Name == contentId });  
+            }
+
+            
+
+            /*
+            MainMenu.AddRange(context.Content.Select(c =>
+                new MenuItem
+                {
+                    Title = c.Title,
+                    Name = c.Name,
+                    Selected = c.Name == contentId
+                }).ToList());
+            */
+            /*
+            MainMenu = context.Content.Select(c =>
+                new MenuItem
+                    {
+                        Title = c.Title,
+                        Name = c.Name,
+                        Selected = c.Name == contentId
+                    }).ToList();
+            */
+
+            
+
             if (!string.IsNullOrEmpty(contentId))
             {
-                using (var contentContext = new ContentContainer())
+                var content = context.Content.FirstOrDefault(c => c.Name == contentId);
+                if (content == null)
                 {
-                    var content = contentContext.Content.FirstOrDefault(c => c.Name == contentId);
-                    if (content == null)
-                    {
-                        throw new HttpNotFoundException();
-                    }
-                    Content = content;
+                    throw new HttpNotFoundException();
                 }
+                Content = content;
             }
         }
     }

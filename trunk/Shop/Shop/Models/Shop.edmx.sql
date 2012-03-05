@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/05/2012 12:45:25
+-- Date Created: 03/05/2012 18:18:13
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -131,6 +131,21 @@ CREATE TABLE `Tag` (
     `Name` mediumtext  NOT NULL,
     `Title` mediumtext  NOT NULL,
     `SeoText` longtext  NULL
+);
+
+-- Creating table 'Content'
+
+CREATE TABLE `Content` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` mediumtext  NOT NULL,
+    `Title` mediumtext  NOT NULL,
+    `PageTitle` mediumtext  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL,
+    `SortOrder` int  NOT NULL,
+    `Text` longtext  NULL,
+    `SeoText` longtext  NULL,
+    `Published` bool  NOT NULL
 );
 
 -- Creating table 'ProductAttributeCategory'
