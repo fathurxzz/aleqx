@@ -16,9 +16,8 @@
 <body>
     <div>
         <div>
-            @Html.ActionLink("Выйти","Index","Home",new{Area=""},new{style="float:right"})
+            @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{Area=""},new{style="float:right"})
             @Html.Partial("Menu")
-            
         </div>
 
         @RenderBody()

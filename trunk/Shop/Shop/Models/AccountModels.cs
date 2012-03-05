@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web.Mvc;
@@ -27,18 +28,18 @@ namespace Shop.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LogOnModel
+    public partial class LogOnModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Логин")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Обязательно!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [DisplayName("Пароль")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [DisplayName("Запомнить меня?")]
         public bool RememberMe { get; set; }
     }
 

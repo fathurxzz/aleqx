@@ -100,23 +100,23 @@
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Brand.cs" />
-    <Compile Include="Models\BrandValidation.cs" />
+    <Compile Include="Models\Validation\BrandValidation.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\CategoryValidation.cs" />
+    <Compile Include="Models\Validation\CategoryValidation.cs" />
     <Compile Include="Models\Content.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Content.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\Validation\ContentValidation.cs" />
     <Compile Include="Models\Orders.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Orders.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\OrderValidation.cs" />
-    <Compile Include="Models\ProductAttributeValidation.cs" />
-    <Compile Include="Models\ProductValidation.cs" />
+    <Compile Include="Models\Validation\OrderValidation.cs" />
+    <Compile Include="Models\Validation\ProductAttributeValidation.cs" />
+    <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Models\Shop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,7 +125,7 @@
     <Compile Include="Models\ShopViewModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\TagValidation.cs" />
+    <Compile Include="Models\Validation\TagValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetCookie.aspx.cs">
       <DependentUpon>SetCookie.aspx</DependentUpon>
