@@ -9,5 +9,6 @@ namespace Shop.Models
     {
         public int Level { get; set; }
         public bool Selected { get; set; }
+        public bool IsParent { get; set; }
     }
 }

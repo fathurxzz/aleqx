@@ -232,3 +232,8 @@ img
 .editOrderItemQuantity input {
     width: 30px;
 }
+
+.child
+{
+    padding-left: 10px;
+}

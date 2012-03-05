@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/05/2012 10:30:50
+-- Date Created: 03/05/2012 12:45:25
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `toyplanet`;
-CREATE DATABASE `toyplanet`;
-USE `toyplanet`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -68,7 +65,8 @@ CREATE TABLE `Product` (
     `OldPrice` decimal(10,0)  NOT NULL,
     `CategoryId` int  NOT NULL,
     `BrandId` int  NOT NULL,
-    `Title` mediumtext  NOT NULL
+    `Title` mediumtext  NOT NULL,
+    `SeoText` longtext  NULL
 );
 
 -- Creating table 'Category'
@@ -81,7 +79,8 @@ CREATE TABLE `Category` (
     `SeoKeywords` longtext  NULL,
     `SortOrder` int  NOT NULL,
     `Title` mediumtext  NOT NULL,
-    `ImageSource` mediumtext  NULL
+    `ImageSource` mediumtext  NULL,
+    `SeoText` longtext  NULL
 );
 
 -- Creating table 'ProductAttribute'
@@ -121,7 +120,8 @@ CREATE TABLE `Brand` (
     `Description` longtext  NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
-    `Title` mediumtext  NOT NULL
+    `Title` mediumtext  NOT NULL,
+    `SeoText` longtext  NULL
 );
 
 -- Creating table 'Tag'
@@ -129,7 +129,8 @@ CREATE TABLE `Brand` (
 CREATE TABLE `Tag` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` mediumtext  NOT NULL,
-    `Title` mediumtext  NOT NULL
+    `Title` mediumtext  NOT NULL,
+    `SeoText` longtext  NULL
 );
 
 -- Creating table 'ProductAttributeCategory'

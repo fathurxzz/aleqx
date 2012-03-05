@@ -28,7 +28,7 @@ namespace Shop
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new string[1] { "Shop.Controllers" }
             );
-
+            /*
             routes.MapRoute(
                 "Cart", // Route name
                 "Cart", // URL with parameters
@@ -38,28 +38,28 @@ namespace Shop
 
             routes.MapRoute(
                 "Cart1", // Route name
-                "Cart/{action}", // URL with parameters
+                "cart/{action}", // URL with parameters
                 new { controller = "Cart", action = "Index", id = "" },
                 new string[1] { "Shop.Controllers" }
             );
-
+            */
             routes.MapRoute(
                 "Brands", // Route name
-                "Brands/{id}", // URL with parameters
+                "brands/{id}", // URL with parameters
                 new { controller = "Shop", action = "Brands", id = "" },
                 new string[1] { "Shop.Controllers" }
             );
 
             routes.MapRoute(
                 "Categories", // Route name
-                "{id}", // URL with parameters
+                "categories/{id}", // URL with parameters
                 new { controller = "Shop", action = "Categories", id = "" },
                 new string[1] { "Shop.Controllers" }
             );
 
             routes.MapRoute(
                 "Products", // Route name
-                "{category}/{id}", // URL with parameters
+                "categories/{category}/{id}", // URL with parameters
                 new { controller = "Shop", action = "ProductDetails", id = "" },
                 new string[1] { "Shop.Controllers" }
             );

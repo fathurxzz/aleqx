@@ -20,7 +20,7 @@ namespace Shop.Models
         {
             Title = "Магазин детских игрушек Toy-Planet";
             _context = context;
-            Categories = _context.Category.ToList();
+            Categories = _context.Category.Include("Children").Where(c => c.Parent == null).ToList();
             Brands = _context.Brand.ToList();
             Tags = _context.Tag.ToList();
         }

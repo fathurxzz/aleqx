@@ -11,8 +11,9 @@ namespace Shop.Controllers
         //
         // GET: /Content/
 
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
+
             return View();
         }
 
