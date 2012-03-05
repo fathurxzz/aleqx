@@ -13,13 +13,37 @@ namespace Shop.Models
         public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId)
             : base(context)
         {
-            foreach (var category in Categories.Where(category => category.Name == categoryId))
+
+
+            foreach (var category in Categories)
             {
-                category.Selected = true;
-                Title += " - " + category.Title;
-                SeoDescription = category.SeoDescription;
-                SeoKeywords = category.SeoKeywords;
+                if (category.Name == categoryId)
+                {
+                    category.Selected = true;
+                    Title += " - " + category.Title;
+                    SeoDescription = category.SeoDescription;
+                    SeoKeywords = category.SeoKeywords;
+                }
+
+                foreach (var child in category.Children.Where(child => child.Name==categoryId))
+                {
+                    child.Selected = true;
+                    Title += " - " + child.Title;
+                    SeoDescription = child.SeoDescription;
+                    SeoKeywords = child.SeoKeywords;
+                    category.IsParent = true;
+                }
             }
+
+            //foreach (var category in Categories.Where(category => category.Name == categoryId))
+            //{
+            //    category.Selected = true;
+            //    Title += " - " + category.Title;
+            //    SeoDescription = category.SeoDescription;
+            //    SeoKeywords = category.SeoKeywords;
+            //}
+
+
 
 
             if (!string.IsNullOrEmpty(categoryId))

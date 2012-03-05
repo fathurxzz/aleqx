@@ -7,5 +7,16 @@
         <li>
             @Html.ActionLink(item.Title, "Categories", "Shop", new { id = item.Name }, new { @class = className })
         </li>
+
+        if (item.Selected||item.IsParent)
+        {
+            foreach (var child in item.Children)
+            {
+                className = child.Selected ? "selected" : "";
+                <li class="child">
+                    @Html.ActionLink(child.Title, "Categories", "Shop", new {id = child.Name}, new {@class = className})
+                </li>
+            }
+        }
     }
 </ul>

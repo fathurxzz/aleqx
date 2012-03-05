@@ -454,6 +454,30 @@ namespace Shop.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoText
+        {
+            get
+            {
+                return _SeoText;
+            }
+            set
+            {
+                OnSeoTextChanging(value);
+                ReportPropertyChanging("SeoText");
+                _SeoText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoText");
+                OnSeoTextChanged();
+            }
+        }
+        private global::System.String _SeoText;
+        partial void OnSeoTextChanging(global::System.String value);
+        partial void OnSeoTextChanged();
 
         #endregion
     
@@ -706,6 +730,30 @@ namespace Shop.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoText
+        {
+            get
+            {
+                return _SeoText;
+            }
+            set
+            {
+                OnSeoTextChanging(value);
+                ReportPropertyChanging("SeoText");
+                _SeoText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoText");
+                OnSeoTextChanged();
+            }
+        }
+        private global::System.String _SeoText;
+        partial void OnSeoTextChanging(global::System.String value);
+        partial void OnSeoTextChanged();
 
         #endregion
     
@@ -1218,6 +1266,30 @@ namespace Shop.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoText
+        {
+            get
+            {
+                return _SeoText;
+            }
+            set
+            {
+                OnSeoTextChanging(value);
+                ReportPropertyChanging("SeoText");
+                _SeoText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoText");
+                OnSeoTextChanged();
+            }
+        }
+        private global::System.String _SeoText;
+        partial void OnSeoTextChanging(global::System.String value);
+        partial void OnSeoTextChanged();
 
         #endregion
     
@@ -2042,6 +2114,30 @@ namespace Shop.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoText
+        {
+            get
+            {
+                return _SeoText;
+            }
+            set
+            {
+                OnSeoTextChanging(value);
+                ReportPropertyChanging("SeoText");
+                _SeoText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoText");
+                OnSeoTextChanged();
+            }
+        }
+        private global::System.String _SeoText;
+        partial void OnSeoTextChanging(global::System.String value);
+        partial void OnSeoTextChanged();
 
         #endregion
     
