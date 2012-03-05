@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Shop.Helpers;
 
 namespace Shop.Models
@@ -36,29 +34,6 @@ namespace Shop.Models
                 MainMenu.Add(new MenuItem { Name = content.Name, Title = content.Title, Selected = content.Name == contentId,SortOrder = content.SortOrder});  
             }
 
-            
-
-            /*
-            MainMenu.AddRange(context.Content.Select(c =>
-                new MenuItem
-                {
-                    Title = c.Title,
-                    Name = c.Name,
-                    Selected = c.Name == contentId
-                }).ToList());
-            */
-            /*
-            MainMenu = context.Content.Select(c =>
-                new MenuItem
-                    {
-                        Title = c.Title,
-                        Name = c.Name,
-                        Selected = c.Name == contentId
-                    }).ToList();
-            */
-
-            
-
             if (!string.IsNullOrEmpty(contentId))
             {
                 var content = context.Content.FirstOrDefault(c => c.Name == contentId);
@@ -67,16 +42,13 @@ namespace Shop.Models
                     throw new HttpNotFoundException();
                 }
                 Content = content;
+                Title += " - " + content.Title;
+                SeoDescription = content.SeoDescription;
+                SeoKeywords = content.SeoKeywords;
             }
             else
             {
-                var content = context.Content.ToList().OrderBy(c => c.SortOrder).FirstOrDefault();
-                //if (content == null)
-                //{
-                //    throw new HttpNotFoundException();
-                //}
-                //else
-                Content = content;
+                Content = context.Content.ToList().OrderBy(c => c.SortOrder).FirstOrDefault();
             }
         }
     }
