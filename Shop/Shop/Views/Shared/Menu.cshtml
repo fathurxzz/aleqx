@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Shop.Models.MenuItem>
 <nav>
 <ul>
-@foreach (var item in Model)
+@foreach (var item in Model.OrderBy(m=>m.SortOrder))
 {
     <li>
         @Html.ActionLink(item.Title, "Index", "Home", new { Area = "", id = item.Name }, null)

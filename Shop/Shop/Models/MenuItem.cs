@@ -10,6 +10,6 @@ namespace Shop.Models
         public string Title { get; set; }
         public string Name { get; set; }
         public bool Selected { get; set; }
-        
+        public int SortOrder { get; set; }
     }
 }

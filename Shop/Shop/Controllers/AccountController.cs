@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using Shop.Helpers;
 using Shop.Models;
 
 namespace Shop.Controllers
@@ -17,7 +18,13 @@ namespace Shop.Controllers
 
         public ActionResult LogOn()
         {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                SiteViewModel model = new SiteViewModel(context, null);
+                this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
+                return View();
+            }
         }
 
         //
