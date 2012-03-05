@@ -38,12 +38,12 @@ namespace Shop.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new {Area = "Admin"});
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Неправильный логин или пароль");
                 }
             }
 
