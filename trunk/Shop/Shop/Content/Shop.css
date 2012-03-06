@@ -265,9 +265,10 @@ img
     width: 30px;
 }
 
-.childCategoriesContainer
+.childCategoriesContainer .title
 {
-    
+    padding-bottom: 20px;
+    text-align: center;
 }
 
 .childCategory
