@@ -11,7 +11,14 @@ namespace Shop.Helpers
         public static void DeleteFile(string relativePath, string fileName)
         {
             string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
-            File.Delete(Path.Combine(absolutePath, fileName));
+            try
+            {
+                File.Delete(Path.Combine(absolutePath, fileName));
+            }
+            catch
+            {
+ 
+            }
         }
 
         public static string CreateAbsolutePath(string relativePath, string fileName)
