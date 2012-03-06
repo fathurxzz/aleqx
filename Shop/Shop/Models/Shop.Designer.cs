@@ -909,7 +909,8 @@ namespace Shop.Models
         /// <param name="pageTitle">Initial value of the PageTitle property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
         /// <param name="published">Initial value of the Published property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String pageTitle, global::System.Int32 sortOrder, global::System.Boolean published)
+        /// <param name="mainPage">Initial value of the MainPage property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String pageTitle, global::System.Int32 sortOrder, global::System.Boolean published, global::System.Boolean mainPage)
         {
             Content content = new Content();
             content.Id = id;
@@ -918,6 +919,7 @@ namespace Shop.Models
             content.PageTitle = pageTitle;
             content.SortOrder = sortOrder;
             content.Published = published;
+            content.MainPage = mainPage;
             return content;
         }
 
@@ -1166,6 +1168,30 @@ namespace Shop.Models
         private global::System.Boolean _Published;
         partial void OnPublishedChanging(global::System.Boolean value);
         partial void OnPublishedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean MainPage
+        {
+            get
+            {
+                return _MainPage;
+            }
+            set
+            {
+                OnMainPageChanging(value);
+                ReportPropertyChanging("MainPage");
+                _MainPage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MainPage");
+                OnMainPageChanged();
+            }
+        }
+        private global::System.Boolean _MainPage;
+        partial void OnMainPageChanging(global::System.Boolean value);
+        partial void OnMainPageChanged();
 
         #endregion
     

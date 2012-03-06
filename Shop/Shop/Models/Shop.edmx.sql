@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/05/2012 18:18:13
+-- Date Created: 03/06/2012 10:02:02
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `toyplanet`;
+CREATE DATABASE `toyplanet`;
+USE `toyplanet`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -39,6 +42,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductImage`;
     DROP TABLE IF EXISTS `Brand`;
     DROP TABLE IF EXISTS `Tag`;
+    DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `ProductAttributeCategory`;
     DROP TABLE IF EXISTS `ProductAttributeValuesProduct`;
     DROP TABLE IF EXISTS `TagProduct`;
@@ -145,7 +149,8 @@ CREATE TABLE `Content` (
     `SortOrder` int  NOT NULL,
     `Text` longtext  NULL,
     `SeoText` longtext  NULL,
-    `Published` bool  NOT NULL
+    `Published` bool  NOT NULL,
+    `MainPage` bool  NOT NULL
 );
 
 -- Creating table 'ProductAttributeCategory'
