@@ -71,6 +71,14 @@
             <td>@Html.ValidationMessageFor(model => model.Published)
             </td>
         </tr>
+         <tr>
+            <td class="editor-label">@Html.LabelFor(model => model.MainPage)
+            </td>
+            <td class="editor-field">@Html.EditorFor(model => model.MainPage)
+            </td>
+            <td>@Html.ValidationMessageFor(model => model.MainPage)
+            </td>
+        </tr>
         <tr>
             <th colspan="3">
                 Информация для поисковиков

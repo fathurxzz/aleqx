@@ -46,5 +46,10 @@ namespace Shop.Models
 
         [DisplayName("Текст для поисковиков")]
         public string SeoText { get; set; }
+
+        [DisplayName("Основная страница")]
+        public string MainPage { get; set; }
+
+
     }
 }
