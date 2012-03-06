@@ -96,6 +96,7 @@
     <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="ImageSource" Type="mediumtext" Nullable="true" />
     <Property Name="SeoText" Type="longtext" Nullable="true" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -408,6 +409,7 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="ImageSource" MaxLength="250" />
           <Property Type="String" Name="SeoText" />
+          <Property Type="String" Name="Description" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Shop.Category" Role="Category" Multiplicity="1" />
@@ -594,6 +596,7 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="SeoText" ColumnName="SeoText" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -714,10 +717,10 @@
     <edmx:Diagrams>
       <Diagram Name="Shop" >
         <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="7.75" PointY="0.625" Height="4.3862109375" />
-        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="3.071432291666667" />
+        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="3.2357796223958331" />
         <AssociationConnector Association="Shop.CategoryProduct">
-          <ConnectorPoint PointX="2.625" PointY="1.34375" />
-          <ConnectorPoint PointX="7.75" PointY="1.34375" />
+          <ConnectorPoint PointX="2.625" PointY="1.65625" />
+          <ConnectorPoint PointX="7.75" PointY="1.65625" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.CategoryCategory">
           <ConnectorPoint PointX="1.6569230769230767" PointY="0.625" />
@@ -728,7 +731,7 @@
         <EntityTypeShape EntityType="Shop.ProductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.0853483072916656" />
         <AssociationConnector Association="Shop.ProductAttributeCategory">
           <ConnectorPoint PointX="1.875" PointY="5.25" />
-          <ConnectorPoint PointX="1.875" PointY="3.696432291666667" />
+          <ConnectorPoint PointX="1.875" PointY="3.8607796223958331" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ProductAttributeValues" Width="2" PointX="4.5" PointY="5.25" Height="1.9210009765624996" />
         <AssociationConnector Association="Shop.ProductAttributeProductAttributeValues">
@@ -736,9 +739,9 @@
           <ConnectorPoint PointX="4.5" PointY="6.21050048828125" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.ProductAttributeValuesProduct">
-          <ConnectorPoint PointX="6.5" PointY="5.28125" />
-          <ConnectorPoint PointX="8.34375" PointY="5.28125" />
-          <ConnectorPoint PointX="8.34375" PointY="5.0112109375" />
+          <ConnectorPoint PointX="6.5" PointY="6.2868921855851712" />
+          <ConnectorPoint PointX="8.5" PointY="6.2868921855851712" />
+          <ConnectorPoint PointX="8.5" PointY="5.0112109375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="10.25" PointY="3.375" Height="1.9802864583333335" />
         <AssociationConnector Association="Shop.ProductProductImage" ManuallyRouted="false">

@@ -55,7 +55,7 @@ namespace Shop.Areas.Admin.Controllers
                 ViewBag.Categories = categoryItems;
 
                 var brands = context.Brand.ToList();
-                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Name, Value = b.Id.ToString() }).ToList();
+                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString() }).ToList();
                 ViewBag.Brands = brandItems;
                 return View(new Product());
             }

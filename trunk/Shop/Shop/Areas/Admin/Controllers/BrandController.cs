@@ -112,8 +112,11 @@ namespace Shop.Areas.Admin.Controllers
                         if(!string.IsNullOrEmpty(brand.Logo))
                         {
                             IOHelper.DeleteFile("~/Content/Images", brand.Logo);
-                            IOHelper.DeleteFile("~/ImageCache/thumbnail0", brand.Logo);
-                            IOHelper.DeleteFile("~/ImageCache/thumbnail1", brand.Logo);
+                            
+                            foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                            {
+                                IOHelper.DeleteFile("~/ImageCache/" + folder, brand.Logo);
+                            }
                         }
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", uploadFile.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
@@ -144,8 +147,10 @@ namespace Shop.Areas.Admin.Controllers
                 if (!string.IsNullOrEmpty(brand.Logo))
                 {
                     IOHelper.DeleteFile("~/Content/Images", brand.Logo);
-                    IOHelper.DeleteFile("~/ImageCache/thumbnail0", brand.Logo);
-                    IOHelper.DeleteFile("~/ImageCache/thumbnail1", brand.Logo);
+                    foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                    {
+                        IOHelper.DeleteFile("~/ImageCache/" + folder, brand.Logo);
+                    }
                 }
                 context.DeleteObject(brand);
                 context.SaveChanges();

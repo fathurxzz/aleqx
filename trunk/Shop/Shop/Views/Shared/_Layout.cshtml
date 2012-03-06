@@ -21,43 +21,41 @@
             @*header header header *@
         </div>
         <div id="mainMenu">
-        
-            @Html.Partial("Menu",(IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
-
-        
-            
-            
+            @Html.Partial("Menu", (IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
         </div>
-        <div id="mainMenuFooter"></div>
+        <div id="mainMenuFooter">
+        </div>
         <div id="main">
             <div id="left">
                 <div class="itemsContainer">
                     <div class="title">
                         <h3>
-                        Категории
+                            @Html.ActionLink("Категории", "Categories", "Shop", new { Area = "", id = "" }, null)
                         </h3>
                     </div>
-                    @RenderSection("Categories",false)
+                    @RenderSection("Categories", false)
                 </div>
                 <div class="itemsContainer">
                     <div class="title">
-                        <h3>Бренды</h3>
+                        <h3>
+                            Бренды</h3>
                     </div>
-                    @RenderSection("Brands",false)
+                    @RenderSection("Brands", false)
                 </div>
                 <div class="itemsContainer">
                     <div class="title">
-                        <h3>Теги</h3>
+                        <h3>
+                            Теги</h3>
                     </div>
-                    @RenderSection("Tags",false)
+                    @RenderSection("Tags", false)
                 </div>
-
             </div>
             <div id="container">
-                @RenderBody()    
+                @RenderBody()
             </div>
         </div>
-        <div class="clear"></div>
+        <div class="clear">
+        </div>
         <div id="footer">
             &copy; Интернет-магазин детских игрушек TOY-PLANET
         </div>
