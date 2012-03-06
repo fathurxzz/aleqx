@@ -21,7 +21,7 @@
     @Html.Partial("_Tags",Model.Tags)
 }
 
-<div class="product">
+<div class="product productDetails">
     <div class="title">@Model.Product.Title</div>
     <div class="images">
     
@@ -77,6 +77,7 @@
         @Model.Product.Price.ToString("N") грн.
     </div>
     <div class="buttons">
+            @Html.ActionLink("Назад к списку","Categories","Shop",new{id=Model.Product.Category.Name},new{@class="details"})
             <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Product.Id)">В корзину</a>
         </div>
 </div>

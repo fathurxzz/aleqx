@@ -14,16 +14,19 @@ namespace Shop.Helpers
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
+        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2" };
+
+
         static GraphicsHelper()
         {
-            limitWidth.Add("thumbnail0", 100);
-            limitHeight.Add("thumbnail0", 100);
+            limitWidth.Add(ThumbnailFolders[0], 100);
+            limitHeight.Add(ThumbnailFolders[0], 100);
 
-            limitWidth.Add("thumbnail1", 150);
-            limitHeight.Add("thumbnail1", 150);
+            limitWidth.Add(ThumbnailFolders[1], 150);
+            limitHeight.Add(ThumbnailFolders[1], 150);
 
-            limitWidth.Add("thumbnail2", 200);
-            limitHeight.Add("thumbnail2", 200);
+            limitWidth.Add(ThumbnailFolders[2], 200);
+            limitHeight.Add(ThumbnailFolders[2], 200);
         }
 
 

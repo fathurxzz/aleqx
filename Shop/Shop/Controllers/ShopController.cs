@@ -17,7 +17,7 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, id, null, null, null);
+                ShopViewModel model = new ShopViewModel(context, id, null, null, null, true);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 return View("Products", model);

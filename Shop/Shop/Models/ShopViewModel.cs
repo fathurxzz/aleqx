@@ -9,12 +9,11 @@ namespace Shop.Models
     {
         public List<Product> Products { get; set; }
         public Product Product { get; set; }
+        public IEnumerable<Category> ChildCategories { get; set; }
 
-        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId)
-            : base(context,null)
+        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, bool showChildCategories = false)
+            : base(context, null)
         {
-
-
             foreach (var category in Categories)
             {
                 if (category.Name == categoryId)
@@ -25,7 +24,7 @@ namespace Shop.Models
                     SeoKeywords = category.SeoKeywords;
                 }
 
-                foreach (var child in category.Children.Where(child => child.Name==categoryId))
+                foreach (var child in category.Children.Where(child => child.Name == categoryId))
                 {
                     child.Selected = true;
                     Title += " - " + child.Title;
@@ -34,33 +33,35 @@ namespace Shop.Models
                     category.IsParent = true;
                 }
             }
-
-            //foreach (var category in Categories.Where(category => category.Name == categoryId))
-            //{
-            //    category.Selected = true;
-            //    Title += " - " + category.Title;
-            //    SeoDescription = category.SeoDescription;
-            //    SeoKeywords = category.SeoKeywords;
-            //}
-
-
-
-
+            ChildCategories = new List<Category>();
+            if (showChildCategories)
+            {
+                if (string.IsNullOrEmpty(categoryId))
+                {
+                    ChildCategories = Categories;
+                }
+                else
+                {
+                    ChildCategories = context.Category.Include("Children").Where(c => c.Name == categoryId).First().Children.ToList();
+                }
+            }
+            Products = new List<Product>();
             if (!string.IsNullOrEmpty(categoryId))
+            {
                 Products = context.Product.Include("ProductImages").Where(p => p.Category.Name == categoryId && p.Published).ToList();
-            
+            }
 
             if (!string.IsNullOrEmpty(brandId))
             {
                 Products = context.Product.Include("ProductImages").Where(p => p.Brand.Name == brandId && p.Published).ToList();
-                foreach (var brand in Brands.Where(brand=>brand.Name==brandId))
+                foreach (var brand in Brands.Where(brand => brand.Name == brandId))
                 {
                     brand.Selected = true;
                     Title += " - " + brand.Title;
                 }
             }
 
-            if(!string.IsNullOrEmpty(tagId))
+            if (!string.IsNullOrEmpty(tagId))
             {
                 var tag = context.Tag.Include("Products").First(t => t.Name == tagId);
                 foreach (var product in tag.Products)
@@ -69,7 +70,7 @@ namespace Shop.Models
                 }
 
                 Products = tag.Products.Where(p => p.Published).ToList();
-                foreach (var currentTag in Tags.Where(t=>t.Name==tagId))
+                foreach (var currentTag in Tags.Where(t => t.Name == tagId))
                 {
                     currentTag.Selected = true;
                     Title += " - " + tag.Title;

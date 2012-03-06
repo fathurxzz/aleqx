@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -57,7 +58,7 @@ namespace Shop.Areas.Admin.Controllers
         // POST: /Admin/Category/Create
 
         [HttpPost]
-        public ActionResult Create(int? parentId, FormCollection form)
+        public ActionResult Create(int? parentId, FormCollection form, HttpPostedFileBase uploadFile)
         {
             try
             {
@@ -65,6 +66,16 @@ namespace Shop.Areas.Admin.Controllers
                 {
                     var category = new Category();
                     TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder","Title" });
+
+                    if (uploadFile != null)
+                    {
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", uploadFile.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        uploadFile.SaveAs(filePath);
+                        category.ImageSource = fileName;
+                    }
+
 
                     if (parentId.HasValue)
                     {
@@ -102,7 +113,7 @@ namespace Shop.Areas.Admin.Controllers
         // POST: /Admin/Category/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection form)
+        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase uploadFile)
         {
             try
             {
@@ -110,6 +121,26 @@ namespace Shop.Areas.Admin.Controllers
                 {
                     var category = context.Category.First(c => c.Id == id);
                     TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder", "Title" });
+
+                    if (uploadFile != null)
+                    {
+                        if (!string.IsNullOrEmpty(category.ImageSource))
+                        {
+                            IOHelper.DeleteFile("~/Content/Images", category.ImageSource);
+                            
+                            foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                            {
+                                IOHelper.DeleteFile("~/ImageCache/" + folder, category.ImageSource);
+                            }
+                        }
+
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", uploadFile.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        uploadFile.SaveAs(filePath);
+                        category.ImageSource = fileName;
+                    }
+
                     context.SaveChanges();
                 }
                 return RedirectToAction("Index");
@@ -126,6 +157,15 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
+                if (!string.IsNullOrEmpty(category.ImageSource))
+                {
+                    IOHelper.DeleteFile("~/Content/Images", category.ImageSource);
+
+                    foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                    {
+                        IOHelper.DeleteFile("~/ImageCache/" + folder, category.ImageSource);
+                    }
+                }
                 category.ProductAttributes.Clear();
                 context.DeleteObject(category);
                 context.SaveChanges();

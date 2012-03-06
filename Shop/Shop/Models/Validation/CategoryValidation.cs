@@ -23,6 +23,9 @@ namespace Shop.Models
         [DisplayName("Название")]
         public string Title { get; set; }
 
+        [DisplayName("Изображение")]
+        public string ImageSource { get; set; }
+
         [DisplayName("Описание (для поисковиков)")]
         public string SeoDescription { get; set; }
 

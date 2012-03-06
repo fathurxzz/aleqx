@@ -41,7 +41,7 @@
 {
     
     background-color: #FB4600;
-    color: white;
+    
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -49,10 +49,16 @@
     line-height: 34px;
     margin: 0;
     padding: 0 10px;
-    
+    color: white;
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
     -moz-border-radius: 8px 8px 0 0;
+}
+
+.itemsContainer div.title h3 a
+{
+    color: white;
+    text-decoration: none;
 }
 
 .itemsContainer div.title 
@@ -106,9 +112,15 @@
     
 }
 
+.productDetails .image {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+
 .product .image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     float: left;
     margin-right: 30px;
 }
@@ -120,6 +132,10 @@
 }
 
 .product .description a {
+    color: inherit;
+}
+
+.productDetails a{
     color: inherit;
 }
 
@@ -138,7 +154,7 @@
 
 .shortDescription {
     margin-bottom:20px;
-    height: 90px;
+    height: 40px;
 }
 
 .price {
@@ -170,9 +186,6 @@ a.details {
 }
 
 
-.productDetails {
-    
-}
 
 .product .attributes
 {
@@ -243,7 +256,6 @@ img
     height: 70px;
 }
 
-
 .dec
 {
     text-align: right !important;
@@ -251,4 +263,23 @@ img
 
 .editOrderItemQuantity input {
     width: 30px;
+}
+
+.childCategoriesContainer
+{
+    
+}
+
+.childCategory
+{
+    width: 100px;
+    height: 150px;
+    float: left;
+    margin:0 20px 10px 20px;
+}
+
+.childCategory .title
+{
+    padding-top: 5px;
+    text-align: center;
 }
