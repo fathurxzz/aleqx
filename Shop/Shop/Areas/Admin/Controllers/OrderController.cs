@@ -17,7 +17,7 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new OrdersContainer())
             {
-                var orders = context.Order.Include("OrderItems").ToList().OrderBy(o => o.OrderDate);
+                var orders = context.Order.Include("OrderItems").ToList();
                 return View(orders);
             }
         }

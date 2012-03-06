@@ -41,6 +41,7 @@ namespace Shop.Areas.Admin.Controllers
                                        "PageTitle",
                                        "SortOrder",
                                        "Published",
+                                       "MainPage",
                                        "SeoText",
                                        "SeoDescription",
                                        "SeoKeywords"
@@ -76,6 +77,7 @@ namespace Shop.Areas.Admin.Controllers
                                        "PageTitle",
                                        "SortOrder",
                                        "Published",
+                                       "MainPage",
                                        "SeoText",
                                        "SeoDescription",
                                        "SeoKeywords"

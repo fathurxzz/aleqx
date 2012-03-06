@@ -29,26 +29,32 @@ namespace Shop.Models
             MainMenu = new List<MenuItem>();
 
             var contents = context.Content.Where(c=>c.Published).ToList();
-            foreach (var content in contents)
+            foreach (var c in contents)
             {
-                MainMenu.Add(new MenuItem { Name = content.Name, Title = content.Title, Selected = content.Name == contentId,SortOrder = content.SortOrder});  
+                MainMenu.Add(new MenuItem { Name = c.Name, Title = c.Title, Selected = c.Name == contentId,SortOrder = c.SortOrder});  
             }
 
+            Content content = null;
             if (!string.IsNullOrEmpty(contentId))
             {
-                var content = context.Content.FirstOrDefault(c => c.Name == contentId);
+                content = context.Content.FirstOrDefault(c => c.Name == contentId);
                 if (content == null)
                 {
                     throw new HttpNotFoundException();
                 }
-                Content = content;
-                Title += " - " + content.Title;
-                SeoDescription = content.SeoDescription;
-                SeoKeywords = content.SeoKeywords;
+                
             }
             else
             {
-                Content = context.Content.ToList().OrderBy(c => c.SortOrder).FirstOrDefault();
+                content = context.Content.FirstOrDefault(c => c.MainPage);
+            }
+
+            Content = content;
+            if (content != null)
+            {
+                Title += " - " + content.Title;
+                SeoDescription = content.SeoDescription;
+                SeoKeywords = content.SeoKeywords;
             }
         }
     }
