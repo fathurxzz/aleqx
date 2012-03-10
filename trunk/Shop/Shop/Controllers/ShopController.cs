@@ -57,7 +57,35 @@ namespace Shop.Controllers
             }
         }
 
-        
 
+        public ActionResult Search(string q)
+        {
+            using (var context = new ShopContainer())
+            {
+                ShopViewModel model = new ShopViewModel(context, null, null, null, null);
+                this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
+
+                if(!string.IsNullOrEmpty(q))
+                {
+                    var query = q.Trim();
+                    if(!string.IsNullOrEmpty(query))
+                    {
+                        var products = context.Product.Include("ProductImages").Where(p => p.Title.Contains(query)).ToList();
+                        
+                        if(products.Count==0)
+                        {
+                            ViewBag.Message = "Ничего не найдено";
+                        }
+                        else
+                        {
+                            model.Products.AddRange(products);    
+                        }
+                    }
+                }
+
+                return View("Products", model);
+            }
+        }
     }
 }

@@ -23,7 +23,10 @@
 
 @Html.Partial("_ChildCategories",Model.ChildCategories)
 
-
+@if (ViewBag.Message != null)
+{
+    @ViewBag.Message
+}
 
 
 @foreach(var product in Model.Products)

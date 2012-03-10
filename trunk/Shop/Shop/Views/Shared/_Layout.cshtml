@@ -20,8 +20,11 @@
             @Html.Partial("SmallShoppingCart")
             @*header header header *@
         </div>
-        <div id="mainMenu">
-            @Html.Partial("Menu", (IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
+        <div>
+            @Html.Partial("_Search")
+            <div id="mainMenu">
+                @Html.Partial("Menu", (IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
+            </div>
         </div>
         <div id="mainMenuFooter">
         </div>

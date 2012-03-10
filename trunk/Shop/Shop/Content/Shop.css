@@ -296,3 +296,24 @@ img
 {
     padding-top: 10px;
 }
+
+#search
+{
+    float: left;
+    padding: 7px 10px 0 10px;
+    
+    height: 23px;
+    
+    background-color: #FB4600;
+    color: #fff;
+     border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    
+}
+
+#search input
+{
+    border: 1px solid #e7e7e7;
+    width: 157px;
+}
