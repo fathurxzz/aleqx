@@ -98,8 +98,8 @@
                 @Html.DisplayFor(modelItem => item.OldPrice)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "Product", new { id = item.Id }, null) |
-                @Html.ActionLink("Details", "Details", "Product", new { id = item.Id }, null) |
+                @Html.ActionLink("Редактировать", "Edit", "Product", new { id = item.Id }, null) |
+                @Html.ActionLink("Просмотр", "Details", "Product", new { id = item.Id }, null) |
                 @Html.ActionLink("Удалить", "Delete", "Product", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')" })
             </td>
         </tr>
