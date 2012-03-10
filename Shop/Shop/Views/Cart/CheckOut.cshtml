@@ -1,6 +1,5 @@
-﻿@model Shop.Models.Order
+﻿@model Shop.Models.SiteViewModel
 @{
-    ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>
@@ -15,41 +14,41 @@
     
     <table class="checkOutTable">
         <tr>
-            <td class="editor-field">@Html.LabelFor(model => model.Name)
+            <td class="editor-field">@Html.LabelFor(model => model.Order.Name)
                 <br />
-                @Html.EditorFor(model => model.Name)
+                @Html.EditorFor(model => model.Order.Name)
             </td>
-            <td>@Html.ValidationMessageFor(model => model.Name)
+            <td>@Html.ValidationMessageFor(model => model.Order.Name)
             </td>
         </tr>
         <tr>
             <td class="editor-field">
-                @Html.LabelFor(model => model.Phone)
+                @Html.LabelFor(model => model.Order.Phone)
                 <br />
-                @Html.EditorFor(model => model.Phone)
+                @Html.EditorFor(model => model.Order.Phone)
             </td>
             <td>
-                @Html.ValidationMessageFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Order.Phone)
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(model => model.DeliveryAddress)
+                @Html.LabelFor(model => model.Order.DeliveryAddress)
                 <br />
-                @Html.TextAreaFor(model => model.DeliveryAddress)
+                @Html.TextAreaFor(model => model.Order.DeliveryAddress)
             </td>
             <td>
-                @Html.ValidationMessageFor(model => model.DeliveryAddress)
+                @Html.ValidationMessageFor(model => model.Order.DeliveryAddress)
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(model => model.Email)
+                @Html.LabelFor(model => model.Order.Email)
                 <br />
-                @Html.EditorFor(model => model.Email)
+                @Html.EditorFor(model => model.Order.Email)
             </td>
             <td>
-                @Html.ValidationMessageFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Order.Email)
             </td>
         </tr>
     </table>
@@ -61,3 +60,18 @@
 <div style="margin: 20px 0">
     @Html.ActionLink("Назад к корзине", "Index")
 </div>
+
+@section Categories
+{
+    @Html.Partial("_Categories",Model.Categories)
+}
+
+@section Brands
+{
+    @Html.Partial("_Brands",Model.Brands)
+}
+
+@section Tags
+{
+    @Html.Partial("_Tags",Model.Tags)
+}

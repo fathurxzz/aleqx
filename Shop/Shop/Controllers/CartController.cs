@@ -23,8 +23,11 @@ namespace Shop.Controllers
             {
                 decimal totalAmount = WebSession.OrderItems.Sum(oi => oi.Value.Price * oi.Value.Quantity);
                 ViewData["totalAmount"] = totalAmount;
+
                 var model = new SiteViewModel(context,null);
                 ViewBag.MainMenu = model.MainMenu;
+                model.Title = "Магазин детских игрушек Toy-Planet - Корзина";
+                this.SetSeoContent(model);
                 return View(model);
             }
         }
@@ -77,7 +80,9 @@ namespace Shop.Controllers
             {
                 var model = new SiteViewModel(context, null);
                 ViewBag.MainMenu = model.MainMenu;
-                return View();
+                model.Title = "Магазин детских игрушек Toy-Planet - Оформление заказа";
+                this.SetSeoContent(model);
+                return View(model);
             }
         }
 
@@ -88,11 +93,11 @@ namespace Shop.Controllers
             {
                 Order order = new Order
                                   {
-                                      DeliveryAddress = form["DeliveryAddress"],
-                                      Email = form["Email"],
-                                      Name = form["Name"],
+                                      DeliveryAddress = form["Order.DeliveryAddress"],
+                                      Email = form["Order.Email"],
+                                      Name = form["Order.Name"],
                                       OrderDate = DateTime.Now,
-                                      Phone = form["Phone"],
+                                      Phone = form["Order.Phone"],
                                       Processed = false
                                   };
 
@@ -105,8 +110,17 @@ namespace Shop.Controllers
                 context.SaveChanges();
 
                 WebSession.OrderItems.Clear();
+
+                using (var siteContext = new ShopContainer())
+                {
+                    var model = new SiteViewModel(siteContext, null);
+                    ViewBag.MainMenu = model.MainMenu;
+                    model.Title = "Магазин детских игрушек Toy-Planet - Ваш заказ оформлен";
+                    this.SetSeoContent(model);
+                    return View("ThankYou", model);
+                }
             }
-            return View("ThankYou");
+            
         }
 
         [HttpPost]

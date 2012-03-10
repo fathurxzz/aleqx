@@ -16,6 +16,7 @@ namespace Shop.Models
         public string SeoKeywords { get; set; }
         public Content Content { get; set; }
         public List<MenuItem> MainMenu { get; set; }
+        public Order Order { get; set; }
 
         public SiteViewModel(ShopContainer context, string contentId)
         {

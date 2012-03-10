@@ -1,7 +1,21 @@
-﻿@{
-    ViewBag.Title = "ThankYou";
+﻿@model Shop.Models.SiteViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Спасибо за заказ</h2>
 
+@section Categories
+{
+    @Html.Partial("_Categories",Model.Categories)
+}
+
+@section Brands
+{
+    @Html.Partial("_Brands",Model.Brands)
+}
+
+@section Tags
+{
+    @Html.Partial("_Tags",Model.Tags)
+}
