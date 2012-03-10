@@ -17,6 +17,9 @@
     @Html.Partial("_Tags", Model.Tags)
 }
 <div class="product productDetails">
+<div class="productId">
+        Код товара: @Model.Product.Id
+        </div>
     <div class="title">@Model.Product.Title</div>
     <div class="images">
         @{

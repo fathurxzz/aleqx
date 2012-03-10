@@ -13,6 +13,9 @@
         }
     </div>
     <div class="description">
+        <div class="productId">
+        Код товара: @Model.Id
+        </div>
         <div class="title">
             @Html.ActionLink(Model.Title, "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null)
         </div>
