@@ -1,0 +1,42 @@
+﻿@using Shop.Helpers
+@model IEnumerable<Shop.Models.OrderItem>
+<table>
+    <tr>
+        <th>
+            Название
+        </th>
+        <th>
+            
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Код продукта
+        </th>
+        <th>
+            Количество
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.Image, "thumbnail0", item.Image))
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+        </tr>
+    }
+</table>

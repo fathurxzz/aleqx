@@ -35,6 +35,12 @@ namespace Shop.Models
 
         [DisplayName("Электронная почта (не обязательно)")]
         public string Email { get; set; }
+
+        [DisplayName("Обработан")]
+        public bool Processed { get; set; }
+
+        [DisplayName("Дополнительная информация")]
+        public string Info { get; set; }
     }
 
     

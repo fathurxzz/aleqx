@@ -1,90 +1,99 @@
 ﻿@model Shop.Models.Order
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Заказ № @Model.Id</h2>
-
+<h2>
+    Заказ № @Model.Id</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
-   
-       
+    @Html.HiddenFor(model => model.Id)
 
-        @Html.HiddenFor(model => model.Id)
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Id)
-        </div>
-        <div class="editor-field">
-            @Html.DisplayFor(model => model.Id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.OrderDate)
-        </div>
-        <div class="editor-field">
-            @Html.DisplayFor(model => model.OrderDate)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Phone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Phone)
-            @Html.ValidationMessageFor(model => model.Phone)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DeliveryAddress)
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.DeliveryAddress)
-            @Html.ValidationMessageFor(model => model.DeliveryAddress)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Processed)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Processed)
-            @Html.ValidationMessageFor(model => model.Processed)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Info)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Info)
-            @Html.ValidationMessageFor(model => model.Info)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
- 
+    
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Id)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.OrderDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Name)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Phone)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DeliveryAddress)
+            </td>
+            <td>
+                @Html.TextAreaFor(model => model.DeliveryAddress, 5, 48, null)
+                @Html.ValidationMessageFor(model => model.DeliveryAddress)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Info)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Info)
+                @Html.ValidationMessageFor(model => model.Info)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding:15px 0">
+                @Html.Partial("_OrderItems", Model.OrderItems)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Processed)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Processed)
+                @Html.ValidationMessageFor(model => model.Processed)
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="Сохранить" />
+    </p>
 }
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад к списку заказов", "Index")
 </div>
