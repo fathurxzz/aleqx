@@ -3,8 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-<h2>Поиск</h2>
-
+<h2>
+    Поиск</h2>
 @using (Html.BeginForm("Index", "Search", FormMethod.Get))
 {
     <table>
@@ -24,12 +24,12 @@
                 @Html.TextBox("productName")
             </td>
         </tr>
-        <tr>
+        @*<tr>
             <td>
             </td>
             <td>
             </td>
-        </tr>
+        </tr>*@
     </table>
     <p>
         <input type="submit" value="Поиск" />
@@ -38,43 +38,31 @@
 <table>
     <tr>
         <th>
-            Name
+            Уникальнй идентификатор
         </th>
         <th>
-            IsNew
+            Название
         </th>
         <th>
-            IsSpecialOffer
+            Бренд
         </th>
         <th>
-            Published
+            Категория
         </th>
         <th>
-            SortOrder
+            Новый
         </th>
         <th>
-            SeoDescription
+            Специальное предложение
         </th>
         <th>
-            SeoKeywords
+            Опубликован
         </th>
         <th>
-            Price
+            Цена
         </th>
         <th>
-            OldPrice
-        </th>
-        <th>
-            CategoryId
-        </th>
-        <th>
-            BrandId
-        </th>
-        <th>
-            Title
-        </th>
-        <th>
-            SeoText
+            Старая цена
         </th>
         <th>
         </th>
@@ -86,6 +74,15 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Title)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IsNew)
             </td>
             <td>
@@ -95,36 +92,15 @@
                 @Html.DisplayFor(modelItem => item.Published)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SortOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeoDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeoKeywords)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OldPrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BrandId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeoText)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", "Product", new { id = item.Id },null) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", "Product", new { id = item.Id }, null) |
+                @Html.ActionLink("Details", "Details", "Product", new { id = item.Id }, null) |
+                @Html.ActionLink("Удалить", "Delete", "Product", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')" })
             </td>
         </tr>
     }
