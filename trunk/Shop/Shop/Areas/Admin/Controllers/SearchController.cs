@@ -21,7 +21,7 @@ namespace Shop.Areas.Admin.Controllers
                 {
                     if (productId.HasValue)
                     {
-                        var product = context.Product.FirstOrDefault(p => p.Id == productId);
+                        var product = context.Product.Include("Brand").Include("Category").FirstOrDefault(p => p.Id == productId);
                         if (product != null)
                             result.Add(product);
                     }
@@ -31,7 +31,7 @@ namespace Shop.Areas.Admin.Controllers
                         productName = productName.Trim();
                         if (!string.IsNullOrEmpty(productName))
                         {
-                            var products = context.Product.Where(p => p.Title.Contains(productName)).ToList();
+                            var products = context.Product.Include("Brand").Include("Category").Where(p => p.Title.Contains(productName)).ToList();
                             foreach (var product in products.Where(product => !result.Contains(product)))
                             {
                                 result.Add(product);
