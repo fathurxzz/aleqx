@@ -10,6 +10,9 @@
 <table>
     <tr>
         <th>
+            Обработан
+        </th>
+        <th>
             Дата
         </th>
         <th>
@@ -36,8 +39,11 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(o=>o.Processed)) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Processed)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.OrderDate)
         </td>
@@ -54,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.Raw(item.OrderItems.Count.ToString())
+            @Html.Raw(item.OrderItems.Sum(oi => oi.Quantity).ToString())
         </td>
         <td class="dec">
             @Html.Raw(item.OrderItems.Sum(oi=>oi.Quantity*oi.Price).ToString("N"))
