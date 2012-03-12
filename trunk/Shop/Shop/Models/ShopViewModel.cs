@@ -14,7 +14,7 @@ namespace Shop.Models
         public int TotalProductsCount { get; set; }
         public int Page { get; set; }
 
-        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, bool showChildCategories = false)
+        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, bool showChildCategories = false, string searchQuery=null)
             : base(context, null)
         {
             foreach (var category in Categories)
@@ -86,7 +86,10 @@ namespace Shop.Models
             products = ApplyOrdering(products, "");
             products = ApplyPaging(products, page);
 
-            Products = products.ToList();
+            if (products == null)
+                Products = new List<Product>();
+            else
+                Products = products.ToList();
 
             if (!string.IsNullOrEmpty(productId))
             {
@@ -110,6 +113,8 @@ namespace Shop.Models
 
         IQueryable<Product> ApplyOrdering(IQueryable<Product> products, string orderBy)
         {
+            if (products == null)
+                return null;
             switch (orderBy)
             {
                 case "name":
@@ -123,6 +128,8 @@ namespace Shop.Models
 
         IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page)
         {
+            if (products == null)
+                return null;
             int currentPage = page ?? 0;
             int pageSize = 5;
             if (page < 0)
