@@ -70,13 +70,17 @@ namespace Shop.Controllers
         }
 
 
-        public ActionResult Search(string q)
+        public ActionResult Search(string q, int? page)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, null, null, null, null);
+                ShopViewModel model = new ShopViewModel(context, null, null, null, null, null, false, q);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
+                ViewBag.TotalCount = model.TotalProductsCount;
+                ViewBag.Page = page ?? 0;
+                ViewBag.ActionId = "";
+                ViewBag.ActionName = "Search";
 
                 if (!string.IsNullOrEmpty(q))
                 {
