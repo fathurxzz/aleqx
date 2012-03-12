@@ -18,7 +18,7 @@ namespace Shop.Models
         public List<MenuItem> MainMenu { get; set; }
         public Order Order { get; set; }
 
-        public SiteViewModel(ShopContainer context, string contentId)
+        public SiteViewModel(ShopContainer context, string contentId, bool loadContent = true)
         {
             Title = "Магазин детских игрушек Toy-Planet";
             _context = context;
@@ -29,33 +29,36 @@ namespace Shop.Models
 
             MainMenu = new List<MenuItem>();
 
-            var contents = context.Content.Where(c=>c.Published).ToList();
+            var contents = context.Content.Where(c => c.Published).ToList();
             foreach (var c in contents)
             {
-                MainMenu.Add(new MenuItem { Name = c.Name, Title = c.Title, Selected = c.Name == contentId,SortOrder = c.SortOrder});  
+                MainMenu.Add(new MenuItem { Name = c.Name, Title = c.Title, Selected = c.Name == contentId, SortOrder = c.SortOrder });
             }
 
-            Content content = null;
-            if (!string.IsNullOrEmpty(contentId))
+            if (loadContent)
             {
-                content = context.Content.FirstOrDefault(c => c.Name == contentId);
-                if (content == null)
+                Content content = null;
+                if (!string.IsNullOrEmpty(contentId))
                 {
-                    throw new HttpNotFoundException();
-                }
-                
-            }
-            else
-            {
-                content = context.Content.FirstOrDefault(c => c.MainPage);
-            }
+                    content = context.Content.FirstOrDefault(c => c.Name == contentId);
+                    if (content == null)
+                    {
+                        throw new HttpNotFoundException();
+                    }
 
-            Content = content;
-            if (content != null)
-            {
-                Title += " - " + content.Title;
-                SeoDescription = content.SeoDescription;
-                SeoKeywords = content.SeoKeywords;
+                }
+                else
+                {
+                    content = context.Content.FirstOrDefault(c => c.MainPage);
+                }
+
+                Content = content;
+                if (content != null)
+                {
+                    Title += " - " + content.Title;
+                    SeoDescription = content.SeoDescription;
+                    SeoKeywords = content.SeoKeywords;
+                }
             }
         }
     }

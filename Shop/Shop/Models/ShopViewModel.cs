@@ -14,8 +14,8 @@ namespace Shop.Models
         public int TotalProductsCount { get; set; }
         public int Page { get; set; }
 
-        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, bool showChildCategories = false, string searchQuery=null)
-            : base(context, null)
+        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, bool showChildCategories = false, string searchQuery = null)
+            : base(context, null, false)
         {
             foreach (var category in Categories)
             {
