@@ -16,6 +16,10 @@ namespace Shop.Models
     public class ProductValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Артикул")]
+        public string Articul { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Уникальнй идентификатор (выводится в строке адреса)")]
         public string Name { get; set; }
 

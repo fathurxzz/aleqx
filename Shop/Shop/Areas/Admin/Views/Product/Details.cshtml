@@ -31,11 +31,11 @@
 </tr>
 <tr>
     <td>@Html.LabelFor(model => model.ShortDescription)</td>
-    <td>@Html.DisplayFor(model => model.ShortDescription)</td>
+    <td>@Html.Raw(Model.ShortDescription)</td>
 </tr>
 <tr>
     <td>@Html.LabelFor(model => model.Description)</td>
-    <td>@Html.DisplayFor(model => model.Description)</td>
+    <td>@Html.Raw(Model.Description)</td>
 </tr>
 <tr>
     <td>@Html.LabelFor(model => model.IsNew)</td>

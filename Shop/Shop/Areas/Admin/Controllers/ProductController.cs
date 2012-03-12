@@ -86,14 +86,17 @@ namespace Shop.Areas.Admin.Controllers
                             "SortOrder",
                             "Price", 
                             "OldPrice",
-                            "ShortDescription",
-                            "Description",
                             "IsNew",
                             "IsSpecialOffer",
                             "Published",
                             "SeoDescription",
-                            "SeoKeywords"
+                            "SeoKeywords",
+                            "Articul"
                         });
+
+                    product.ShortDescription = HttpUtility.HtmlDecode(form["ShortDescription"]);
+                    product.Description = HttpUtility.HtmlDecode(form["Description"]);
+                    
                     context.AddToProduct(product);
                     context.SaveChanges();
                     return RedirectToAction("Index");
@@ -114,11 +117,11 @@ namespace Shop.Areas.Admin.Controllers
             {
                 var product = context.Product.Include("Category").Include("Brand").First(p => p.Id == id);
                 var categories = context.Category.ToList();
-                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Name, Value = category.Id.ToString(),Selected = category.Id==product.CategoryId}).ToList();
+                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Title, Value = category.Id.ToString(),Selected = category.Id==product.CategoryId}).ToList();
                 ViewBag.Categories = categoryItems;
 
                 var brands = context.Brand.ToList();
-                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Name, Value = b.Id.ToString(),Selected = b.Id==product.BrandId}).ToList();
+                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString(),Selected = b.Id==product.BrandId}).ToList();
                 ViewBag.Brands = brandItems;
 
                 return View(product);
@@ -129,7 +132,7 @@ namespace Shop.Areas.Admin.Controllers
         // POST: /Admin/Product/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int brandId, int id, FormCollection collection)
+        public ActionResult Edit(int brandId, int id, FormCollection form)
         {
             try
             {
@@ -148,15 +151,17 @@ namespace Shop.Areas.Admin.Controllers
                             "SortOrder",
                             "Price", 
                             "OldPrice",
-                            "ShortDescription",
-                            "Description",
                             "IsNew",
                             "IsSpecialOffer",
                             "Published",
                             "SeoDescription",
-                            "SeoKeywords"
+                            "SeoKeywords",
+                            "Articul"
                         });
-                    
+
+                    product.ShortDescription = HttpUtility.HtmlDecode(form["ShortDescription"]);
+                    product.Description = HttpUtility.HtmlDecode(form["Description"]);
+
                     context.SaveChanges();
                     return RedirectToAction("Index");
                 }

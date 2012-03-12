@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using System.Web;
 
@@ -10,8 +11,10 @@ namespace Shop.Models
         public List<Product> Products { get; set; }
         public Product Product { get; set; }
         public IEnumerable<Category> ChildCategories { get; set; }
+        public int TotalProductsCount { get; set; }
+        public int Page { get; set; }
 
-        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, bool showChildCategories = false)
+        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, bool showChildCategories = false)
             : base(context, null)
         {
             foreach (var category in Categories)
@@ -45,15 +48,16 @@ namespace Shop.Models
                     ChildCategories = context.Category.Include("Children").Where(c => c.Name == categoryId).First().Children.ToList();
                 }
             }
-            Products = new List<Product>();
+            //Products = new List<Product>();
+            IQueryable<Product> products = null;
             if (!string.IsNullOrEmpty(categoryId))
             {
-                Products = context.Product.Include("ProductImages").Where(p => p.Category.Name == categoryId && p.Published).ToList();
+                products = context.Product.Include("ProductImages").Where(p => p.Category.Name == categoryId && p.Published);
             }
 
             if (!string.IsNullOrEmpty(brandId))
             {
-                Products = context.Product.Include("ProductImages").Where(p => p.Brand.Name == brandId && p.Published).ToList();
+                products = context.Product.Include("ProductImages").Where(p => p.Brand.Name == brandId && p.Published);
                 foreach (var brand in Brands.Where(brand => brand.Name == brandId))
                 {
                     brand.Selected = true;
@@ -69,15 +73,20 @@ namespace Shop.Models
                     product.ProductImages.Load();
                 }
 
-                Products = tag.Products.Where(p => p.Published).ToList();
+                products = tag.Products.Where(p => p.Published).ToList().AsQueryable();
                 foreach (var currentTag in Tags.Where(t => t.Name == tagId))
                 {
                     currentTag.Selected = true;
                     Title += " - " + tag.Title;
                 }
             }
+            if (products != null)
+                TotalProductsCount = products.Count();
 
+            products = ApplyOrdering(products, "");
+            products = ApplyPaging(products, page);
 
+            Products = products.ToList();
 
             if (!string.IsNullOrEmpty(productId))
             {
@@ -94,6 +103,31 @@ namespace Shop.Models
                 SeoKeywords = product.SeoKeywords;
             }
 
+
+
+
+        }
+
+        IQueryable<Product> ApplyOrdering(IQueryable<Product> products, string orderBy)
+        {
+            switch (orderBy)
+            {
+                case "name":
+                    return products.OrderBy(p => p.Name);
+                default:
+                    return products.OrderBy(p => p.SortOrder);
+            }
+        }
+
+        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page)
+        {
+            int currentPage = page ?? 0;
+            int pageSize = 5;
+            if (page < 0)
+                return products;
+            return products.Skip(currentPage * pageSize).Take(pageSize);
         }
     }
+
+
 }

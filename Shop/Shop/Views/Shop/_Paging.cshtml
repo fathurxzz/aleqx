@@ -1,0 +1,38 @@
+﻿@{
+    int pageSize = 5;
+    int totalCount = (int)ViewBag.TotalCount;
+    int pageCount = totalCount / pageSize;
+    int page = (int)ViewBag.Page;
+    pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
+}
+@if (totalCount>0)
+{
+<div id="pager">
+    @for (int i = 0; i < pageCount; i++)
+    {
+        if (i == page)
+        {
+        @Html.Raw((i + 1).ToString())
+        }
+        else
+        {
+        @Html.ActionLink((i + 1).ToString(), "Categories", "Shop", new { id = ViewBag.CategoryId,page=i }, null)
+        }
+        if (i + 1 < pageCount)
+        {
+        @Html.Raw(" ... ")
+        }
+    }
+
+    @if (page>-1)
+    {
+        <br/>
+        @Html.ActionLink("весь список", "Categories", "Shop", new { id = ViewBag.CategoryId,page= -1}, null)
+    }else
+    {
+        <br/>
+        <text>весь список</text>
+    }
+    
+</div>
+    }

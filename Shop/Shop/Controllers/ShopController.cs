@@ -13,33 +13,36 @@ namespace Shop.Controllers
         //
         // GET: /Shop/
 
-        public ActionResult Categories(string id)
+        public ActionResult Categories(string id, int? page)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, id, null, null, null, true);
+                ShopViewModel model = new ShopViewModel(context, id, null, null, null,page, true);
+                this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
+                ViewBag.TotalCount = model.TotalProductsCount;
+                ViewBag.Page = page ?? 0;
+                ViewBag.CategoryId = id;
+                return View("Products", model);
+            }
+        }
+
+        public ActionResult Brands(string id, int? page)
+        {
+            using (var context = new ShopContainer())
+            {
+                ShopViewModel model = new ShopViewModel(context,null, id,null, null,null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 return View("Products", model);
             }
         }
 
-        public ActionResult Brands(string id)
+        public ActionResult Tags(string id, int? page)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context,null, id,null, null);
-                this.SetSeoContent(model);
-                ViewBag.MainMenu = model.MainMenu;
-                return View("Products", model);
-            }
-        }
-
-        public ActionResult Tags(string id)
-        {
-            using (var context = new ShopContainer())
-            {
-                ShopViewModel model = new ShopViewModel(context, null, null, id, null);
+                ShopViewModel model = new ShopViewModel(context, null, null, id, null,null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 return View("Products", model);
@@ -50,7 +53,7 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, category, null, null, id);
+                ShopViewModel model = new ShopViewModel(context, category, null, null, id,null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 return View(model);
@@ -62,7 +65,7 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, null, null, null);
+                ShopViewModel model = new ShopViewModel(context, null, null, null, null,null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
 

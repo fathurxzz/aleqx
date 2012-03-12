@@ -31,8 +31,10 @@
 
 @foreach(var product in Model.Products)
 {
-    
     @Html.Partial("_Product",product)
-    
 }
 
+@section Paging
+{
+    @Html.Partial("_Paging")
+}
