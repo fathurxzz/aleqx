@@ -19,7 +19,7 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var products = context.Product.Include("Brand").Include("ProductImages").ToList();
+                var products = context.Product.Include("Brand").Include("Category").Include("ProductImages").ToList();
                 return View(products);
             }
         }
