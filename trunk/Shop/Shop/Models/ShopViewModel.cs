@@ -117,7 +117,7 @@ namespace Shop.Models
                 case "price":
                     return products.OrderBy(p => p.Price);
                 default:
-                    return products.OrderBy(p => p.SortOrder);
+                    return products.OrderBy(p => p.Id);
             }
         }
 
