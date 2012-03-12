@@ -48,7 +48,7 @@ a
 #left
 {
     width: 220px;
-    margin: 0 20px 0 0;
+    margin: 0 40px 0 0;
     float: left;
 }
 
@@ -68,7 +68,7 @@ a
 #mainMenu
 {
     /*background-color: #777;     font-weight: bold;*/ /*border-top: 1px solid #817a7a;*/ /*border-bottom: 1px solid #817a7a;*/
-    padding-left: 230px;
+    padding-left: 250px;
 }
 
 
