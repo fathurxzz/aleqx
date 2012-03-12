@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var brands = (IEnumerable<SelectListItem>)ViewBag.Brands;
+    var categories = (IEnumerable<SelectListItem>)ViewBag.Categories;
 }
 
 <h2>Редактирование продукта</h2>
@@ -39,7 +40,8 @@
     </tr>
     <tr>
         <td class="editor-label">Категория</td>
-        <td class="editor-field">@Html.Raw(Model.Category.Title)</td>
+        @*<td class="editor-field">@Html.Raw(Model.Category.Title)</td>*@
+        <td class="editor-field">@Html.DropDownList("categoryId", categories)</td>
         <td></td>
     </tr>
     <tr>
