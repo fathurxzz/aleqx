@@ -55,14 +55,22 @@
                     <td class="attrTitle">@Html.Raw(attribute.Name + (!string.IsNullOrEmpty(attribute.ValueType) ? (", " + attribute.ValueType + ":") : ""))
                     </td>
                     <td>
-                        @foreach (var attributeValue in Model.Product.ProductAttributeValues)
+                        @{
+                            var cnt = 0;
+                        foreach (var attributeValue in Model.Product.ProductAttributeValues)
                         {
                             if (attribute.ProductAttributeValues.Contains(attributeValue))
                             {
-                            @Html.Raw(attributeValue.Value + "; ")
+                                if(cnt>0)
+                                {
+                                    @Html.Raw(", ")
+                                }
+                                @Html.Raw(attributeValue.Value)
+                           cnt++;
                             }
 
                         }
+            }
                     </td>
                 </tr>
             }
