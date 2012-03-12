@@ -17,12 +17,13 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, id, null, null, null,page, true);
+                ShopViewModel model = new ShopViewModel(context, id, null, null, null, page, true);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.TotalCount = model.TotalProductsCount;
                 ViewBag.Page = page ?? 0;
-                ViewBag.CategoryId = id;
+                ViewBag.ActionId = id;
+                ViewBag.ActionName = "Categories";
                 return View("Products", model);
             }
         }
@@ -31,9 +32,13 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context,null, id,null, null,null);
+                ShopViewModel model = new ShopViewModel(context, null, id, null, null, page);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
+                ViewBag.TotalCount = model.TotalProductsCount;
+                ViewBag.Page = page ?? 0;
+                ViewBag.ActionId = id;
+                ViewBag.ActionName = "Brands";
                 return View("Products", model);
             }
         }
@@ -42,9 +47,13 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, null, id, null,null);
+                ShopViewModel model = new ShopViewModel(context, null, null, id, null, page);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
+                ViewBag.TotalCount = model.TotalProductsCount;
+                ViewBag.Page = page ?? 0;
+                ViewBag.ActionId = id;
+                ViewBag.ActionName = "Tags";
                 return View("Products", model);
             }
         }
@@ -53,7 +62,7 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, category, null, null, id,null);
+                ShopViewModel model = new ShopViewModel(context, category, null, null, id, null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 return View(model);
@@ -65,24 +74,24 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, null, null, null,null);
+                ShopViewModel model = new ShopViewModel(context, null, null, null, null, null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
 
-                if(!string.IsNullOrEmpty(q))
+                if (!string.IsNullOrEmpty(q))
                 {
                     var query = q.Trim();
-                    if(!string.IsNullOrEmpty(query))
+                    if (!string.IsNullOrEmpty(query))
                     {
                         var products = context.Product.Include("ProductImages").Where(p => p.Title.Contains(query)).ToList();
-                        
-                        if(products.Count==0)
+
+                        if (products.Count == 0)
                         {
                             ViewBag.Message = "Ничего не найдено";
                         }
                         else
                         {
-                            model.Products.AddRange(products);    
+                            model.Products.AddRange(products);
                         }
                     }
                 }
