@@ -7,7 +7,7 @@
     var productValues = (IEnumerable<ProductAttributeValues>)ViewBag.ProductAttributeValues;
 }
 <h2>
-    Атрибуты продукта "@ViewBag.ProductName"</h2>
+    Атрибуты продукта "@ViewBag.ProductTitle"</h2>
 @using (Html.BeginForm())
 {
     @Html.Hidden("productId", (int)ViewBag.ProductId)

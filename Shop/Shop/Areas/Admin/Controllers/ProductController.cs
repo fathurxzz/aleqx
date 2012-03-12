@@ -302,7 +302,7 @@ namespace Shop.Areas.Admin.Controllers
                     attribute.ProductAttributeValues.Load();
                 }
 
-                ViewBag.ProductName = product.Name;
+                ViewBag.ProductTitle = product.Title;
                 ViewBag.ProductId = product.Id;
 
                 ViewBag.ProductAttributeValues = product.ProductAttributeValues.ToList();
