@@ -16,7 +16,7 @@
         }
         else
         {
-        @Html.ActionLink((i + 1).ToString(), "Categories", "Shop", new { id = ViewBag.CategoryId,page=i }, null)
+        @Html.ActionLink((i + 1).ToString(), (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = i }, null)
         }
         if (i + 1 < pageCount)
         {
@@ -27,7 +27,7 @@
     @if (page>-1)
     {
         <br/>
-        @Html.ActionLink("весь список", "Categories", "Shop", new { id = ViewBag.CategoryId,page= -1}, null)
+        @Html.ActionLink("весь список", (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = -1 }, null)
     }else
     {
         <br/>
