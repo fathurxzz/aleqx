@@ -81,7 +81,6 @@ namespace Shop.Areas.Admin.Controllers
                     TryUpdateModel(product,
                         new[]
                         {
-                            "Name",
                             "Title",
                             "SortOrder",
                             "Price", 
@@ -94,9 +93,15 @@ namespace Shop.Areas.Admin.Controllers
                             "Articul"
                         });
 
+                    string[] x = form["Name"].Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var s in x)
+                    {
+                        product.Name += s[0].ToString().ToUpper() + s.Substring(1);
+                    }
+
                     product.ShortDescription = HttpUtility.HtmlDecode(form["ShortDescription"]);
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
-                    
+
                     context.AddToProduct(product);
                     context.SaveChanges();
                     return RedirectToAction("Index");
@@ -117,11 +122,11 @@ namespace Shop.Areas.Admin.Controllers
             {
                 var product = context.Product.Include("Category").Include("Brand").First(p => p.Id == id);
                 var categories = context.Category.ToList();
-                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Title, Value = category.Id.ToString(),Selected = category.Id==product.CategoryId}).ToList();
+                List<SelectListItem> categoryItems = categories.Select(category => new SelectListItem { Text = category.Title, Value = category.Id.ToString(), Selected = category.Id == product.CategoryId }).ToList();
                 ViewBag.Categories = categoryItems;
 
                 var brands = context.Brand.ToList();
-                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString(),Selected = b.Id==product.BrandId}).ToList();
+                List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString(), Selected = b.Id == product.BrandId }).ToList();
                 ViewBag.Brands = brandItems;
 
                 return View(product);
@@ -142,7 +147,7 @@ namespace Shop.Areas.Admin.Controllers
 
                     var product = context.Product.First(p => p.Id == id);
                     product.Brand = brand;
-                    
+
                     TryUpdateModel(product,
                         new[]
                         {
@@ -199,7 +204,7 @@ namespace Shop.Areas.Admin.Controllers
                 if (!string.IsNullOrEmpty(form["r_default"]))
                 {
                     var defaultImageId = Convert.ToInt32(form["r_default"]);
-                    product.ProductImages.ToList().ForEach(p=>p.Default=false);
+                    product.ProductImages.ToList().ForEach(p => p.Default = false);
                     product.ProductImages.First(image => image.Id == defaultImageId).Default = true;
                     context.SaveChanges();
                 }
@@ -229,11 +234,11 @@ namespace Shop.Areas.Admin.Controllers
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
                     file.SaveAs(filePath);
-                    product.ProductImages.Add(new ProductImage {ImageSource = fileName});
+                    product.ProductImages.Add(new ProductImage { ImageSource = fileName });
                 }
                 context.SaveChanges();
             }
-            return RedirectToAction("Images", new {id = productId});
+            return RedirectToAction("Images", new { id = productId });
         }
 
         public ActionResult DeleteImage(int id, int productId)
@@ -267,7 +272,7 @@ namespace Shop.Areas.Admin.Controllers
                     var image = product.ProductImages.First();
                     DeleteImage(image, context);
                 }
-                
+
                 product.Tags.Clear();
                 context.DeleteObject(product);
                 context.SaveChanges();
@@ -314,7 +319,7 @@ namespace Shop.Areas.Admin.Controllers
                     var attributeValueId = kvp.Key;
                     bool attributeValue = kvp.Value;
 
-                    if(attributeValue)
+                    if (attributeValue)
                     {
                         var productAttributeValue = context.ProductAttributeValues.First(pv => pv.Id == attributeValueId);
                         product.ProductAttributeValues.Add(productAttributeValue);
@@ -346,11 +351,11 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var product = context.Product.First(p => p.Id == productId);
-                PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr","productId");
+                PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr", "productId");
                 product.Tags.Clear();
                 foreach (KeyValuePair<int, bool> kvp in cbData)
                 {
-                    if(kvp.Value)
+                    if (kvp.Value)
                     {
                         var tagId = kvp.Key;
                         var tag = context.Tag.First(t => t.Id == tagId);
