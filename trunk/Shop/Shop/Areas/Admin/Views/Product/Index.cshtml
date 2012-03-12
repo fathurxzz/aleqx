@@ -128,13 +128,13 @@
                 @Html.DisplayFor(modelItem => item.OldPrice)
             </td>
             <td>
-                @Html.ActionLink("Просмотр", "Details", new { id = item.Id })<br />
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id })
+                @Html.ActionLink("Просм", "Details", new { id = item.Id })<br />
+                @Html.ActionLink("Ред", "Edit", new { id = item.Id })
                 <br />
-                @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id })<br />
-                @Html.ActionLink("Изображения", "Images", new { id = item.Id })<br />
-                @Html.ActionLink("Теги", "Tags", new { id = item.Id })<br />
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')" })
+                @Html.ActionLink("Атр", "Attributes", new { id = item.Id })<br />
+                @Html.ActionLink("Изобр", "Images", new { id = item.Id })<br />
+                @Html.ActionLink("Тег", "Tags", new { id = item.Id })<br />
+                @Html.ActionLink("Удал", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')" })
             </td>
         </tr>
     }
