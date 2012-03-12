@@ -46,7 +46,7 @@
         <div class="clear">
         </div>
     </div>
-    <div class="description">@Model.Product.Description</div>
+    <div class="description">@Html.Raw(Model.Product.Description)</div>
     <div class="attributes">
         <table>
             @foreach (var attribute in Model.Product.Category.ProductAttributes)

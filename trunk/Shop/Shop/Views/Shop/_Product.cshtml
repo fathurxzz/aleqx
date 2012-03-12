@@ -10,6 +10,12 @@
             {
             @Html.Raw(Html.ActionLink("[Image]", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail1", image.ImageSource)))
             }
+            else
+            {
+                <div style="width: inherit; height:inherit; border:1px solid #817a7a; text-align:center; display: table-cell; vertical-align: middle ">
+                Нет изображения
+                </div>
+            }
         }
     </div>
     <div class="description">
@@ -20,7 +26,7 @@
             @Html.ActionLink(Model.Title, "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null)
         </div>
         <div class="shortDescription">
-            @Model.ShortDescription
+            @Html.Raw(Model.ShortDescription)
         </div>
         <div class="buttons">
             <div class="price">

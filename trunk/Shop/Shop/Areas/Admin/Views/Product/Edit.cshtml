@@ -23,6 +23,11 @@
         <th colspan="3">Продукт</th>
     </tr>
      <tr>
+        <td class="editor-label">@Html.LabelFor(model => model.Articul)</td>
+        <td class="editor-field">@Html.EditorFor(model => model.Articul)</td>
+        <td>@Html.ValidationMessageFor(model => model.Articul)</td>
+    </tr>
+     <tr>
         <td class="editor-label">@Html.LabelFor(model => model.Name)</td>
         <td class="editor-field">@Html.EditorFor(model => model.Name)</td>
         <td>@Html.ValidationMessageFor(model => model.Name)</td>
@@ -34,7 +39,7 @@
     </tr>
     <tr>
         <td class="editor-label">Категория</td>
-        <td class="editor-field">@Html.Raw(Model.Category.Name)</td>
+        <td class="editor-field">@Html.Raw(Model.Category.Title)</td>
         <td></td>
     </tr>
     <tr>
@@ -44,12 +49,12 @@
     </tr>
     <tr>
         <td class="editor-label">@Html.LabelFor(model => model.ShortDescription)</td>
-        <td class="editor-field">@Html.TextAreaFor(model => model.ShortDescription)</td>
+        <td class="editor-field">@Html.TextAreaFor(model => model.ShortDescription, new { @class = "ckeditor" })</td>
         <td>@Html.ValidationMessageFor(model => model.ShortDescription)</td>
     </tr>
     <tr>
         <td class="editor-label">@Html.LabelFor(model => model.Description)</td>
-        <td class="editor-field">@Html.TextAreaFor(model => model.Description)</td>
+        <td class="editor-field">@Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })</td>
         <td>@Html.ValidationMessageFor(model => model.Description)</td>
     </tr>
     <tr>
@@ -106,3 +111,8 @@
 <div>
     @Html.ActionLink("Назад к списку", "Index")
 </div>
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

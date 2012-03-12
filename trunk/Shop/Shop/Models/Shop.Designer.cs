@@ -1242,7 +1242,8 @@ namespace Shop.Models
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="brandId">Initial value of the BrandId property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.Boolean isNew, global::System.Boolean isSpecialOffer, global::System.Boolean published, global::System.Int32 categoryId, global::System.Int32 brandId, global::System.String title)
+        /// <param name="articul">Initial value of the Articul property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.Boolean isNew, global::System.Boolean isSpecialOffer, global::System.Boolean published, global::System.Int32 categoryId, global::System.Int32 brandId, global::System.String title, global::System.String articul)
         {
             Product product = new Product();
             product.Id = id;
@@ -1253,6 +1254,7 @@ namespace Shop.Models
             product.CategoryId = categoryId;
             product.BrandId = brandId;
             product.Title = title;
+            product.Articul = articul;
             return product;
         }
 
@@ -1645,6 +1647,30 @@ namespace Shop.Models
         private global::System.String _SeoText;
         partial void OnSeoTextChanging(global::System.String value);
         partial void OnSeoTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Articul
+        {
+            get
+            {
+                return _Articul;
+            }
+            set
+            {
+                OnArticulChanging(value);
+                ReportPropertyChanging("Articul");
+                _Articul = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Articul");
+                OnArticulChanged();
+            }
+        }
+        private global::System.String _Articul;
+        partial void OnArticulChanging(global::System.String value);
+        partial void OnArticulChanged();
 
         #endregion
     
