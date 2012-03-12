@@ -48,7 +48,7 @@ namespace Shop.Models
                     ChildCategories = context.Category.Include("Children").Where(c => c.Name == categoryId).First().Children.ToList();
                 }
             }
-            //Products = new List<Product>();
+
             IQueryable<Product> products = null;
             if (!string.IsNullOrEmpty(categoryId))
             {
@@ -114,6 +114,8 @@ namespace Shop.Models
             {
                 case "name":
                     return products.OrderBy(p => p.Name);
+                case "price":
+                    return products.OrderBy(p => p.Price);
                 default:
                     return products.OrderBy(p => p.SortOrder);
             }
