@@ -12,16 +12,24 @@ namespace Shop.Areas.Admin.Controllers
         //
         // GET: /Admin/Search/
 
-        public ActionResult Index(int? productId, string productName)
+        public ActionResult Index(int? productId, string productName, string articul)
         {
             var result = new List<Product>();
-            if (productId.HasValue || !string.IsNullOrEmpty(productName))
+            
+            if (productId.HasValue || !string.IsNullOrEmpty(productName)||!string.IsNullOrEmpty(articul))
             {
                 using (var context = new ShopContainer())
                 {
                     if (productId.HasValue)
                     {
                         var product = context.Product.Include("Brand").Include("Category").FirstOrDefault(p => p.Id == productId);
+                        if (product != null)
+                            result.Add(product);
+                    }
+                    
+                    if(!string.IsNullOrEmpty(articul))
+                    {
+                        var product = context.Product.Include("Brand").Include("Category").FirstOrDefault(p => p.Articul == articul);
                         if (product != null)
                             result.Add(product);
                     }

@@ -137,16 +137,24 @@ namespace Shop.Areas.Admin.Controllers
         // POST: /Admin/Product/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int brandId, int id, FormCollection form)
+        public ActionResult Edit(int brandId, int categoryId, int id, FormCollection form)
         {
             try
             {
                 using (var context = new ShopContainer())
                 {
                     var brand = context.Brand.First(b => b.Id == brandId);
+                    var category = context.Category.First(c => c.Id == categoryId);
 
-                    var product = context.Product.First(p => p.Id == id);
+                    var product = context.Product.Include("ProductAttributeValues").First(p => p.Id == id);
                     product.Brand = brand;
+
+                    if (product.Category.Id != category.Id)
+                    {
+                        product.ProductAttributeValues.Clear();
+                        product.Category = category;
+                    }
+
 
                     TryUpdateModel(product,
                         new[]
