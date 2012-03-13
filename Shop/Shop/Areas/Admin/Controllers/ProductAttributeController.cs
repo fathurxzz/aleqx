@@ -65,9 +65,8 @@ namespace Shop.Areas.Admin.Controllers
                 var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
                 try
                 {
-                    TryUpdateModel(productAttribute, new[] { "Name", "SortOrder", "ValueType", "ShowInCommonView" ,"Static"});
-                    if (productAttribute.ValueType == null)
-                        productAttribute.ValueType = string.Empty;
+                    TryUpdateModel(productAttribute, new[] { "Name", "SortOrder", "ShowInCommonView" ,"Static"});
+                    productAttribute.ValueType = string.IsNullOrEmpty(productAttribute.ValueType) ? string.Empty : form["ValueType"];
                     context.SaveChanges();
                     return RedirectToAction("Index");
                 }
