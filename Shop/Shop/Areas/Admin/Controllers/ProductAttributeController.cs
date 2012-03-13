@@ -34,6 +34,8 @@ namespace Shop.Areas.Admin.Controllers
             {
                 using (var context = new ShopContainer())
                 {
+                    if (string.IsNullOrEmpty(model.ValueType))
+                        model.ValueType = string.Empty;
                     context.AddToProductAttribute(model);
                     context.SaveChanges();
                 }
