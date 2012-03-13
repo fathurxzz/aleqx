@@ -27,6 +27,39 @@ namespace Shop.Areas.Admin.Controllers
             return View(new ProductAttribute());
         }
 
+        [HttpPost]
+        public ActionResult Create(ProductAttribute model)
+        {
+            try
+            {
+                using (var context = new ShopContainer())
+                {
+                    TryUpdateModel(model, new[] { "Name", "SortOrder", "ValueType", "ShowInCommonView", "Static" });
+                        /*
+                    var productAttribute = new ProductAttribute
+                    {
+                        Name = form["Name"],
+                        SortOrder = Convert.ToInt32(form["SortOrder"]),
+                        ValueType = string.IsNullOrEmpty(form["ValueType"]) ? string.Empty : form["ValueType"]
+                    };
+                        
+                    productAttribute.ShowInCommonView = Convert.ToBoolean(form["ShowInCommonView"] == "true,false" ? "true" : form["ShowInCommonView"]);
+                    productAttribute.Static = Convert.ToBoolean(form["Static"] == "true,false" ? "true" : form["Static"]);
+                    */
+
+                    //context.AddToProductAttribute(productAttribute);
+                    context.AddToProductAttribute(model);
+                    context.SaveChanges();
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public ActionResult Edit(int id)
         {
             using (var context = new ShopContainer())
@@ -59,33 +92,7 @@ namespace Shop.Areas.Admin.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult Create(FormCollection form)
-        {
-            try
-            {
-                using (var context = new ShopContainer())
-                {
-                    var productAttribute = new ProductAttribute
-                    {
-                        Name = form["Name"],
-                        SortOrder = Convert.ToInt32(form["SortOrder"]),
-                        ValueType = string.IsNullOrEmpty(form["ValueType"]) ? string.Empty : form["ValueType"]
-                    };
-
-                    productAttribute.ShowInCommonView = Convert.ToBoolean(form["ShowInCommonView"] == "true,false" ? "true" : form["ShowInCommonView"]);
-
-                    context.AddToProductAttribute(productAttribute);
-                    context.SaveChanges();
-                }
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
 
         public ActionResult Delete(int id)
         {

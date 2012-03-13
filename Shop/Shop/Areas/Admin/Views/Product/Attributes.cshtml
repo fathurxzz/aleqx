@@ -33,9 +33,20 @@
                     @Html.DisplayFor(modelItem => item.ValueType)
                 </td>
                 <td>
-                    @foreach(var attributeValue in item.ProductAttributeValues.OrderBy(a=>a.Value))
+                    @if (item.Static)
                     {
-                        @Html.CheckBox("attr_" + attributeValue.Id, productValues.Contains(attributeValue)) @attributeValue.Value @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                        var attrValue = item.ProductAttributeStaticValues.FirstOrDefault(v => v.ProductId == ViewBag.ProductId);
+                        string value = attrValue != null ? attrValue.Value : "";
+                        @Html.TextBox("tb_"+item.Id, value)
+                    }
+                    else
+                    {
+                        foreach (var attributeValue in item.ProductAttributeValues.OrderBy(a => a.Value))
+                        {
+                            @Html.CheckBox("attr_" + attributeValue.Id, productValues.Contains(attributeValue))
+                            @attributeValue.Value
+                            @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                        }
                     }
                 </td>
             </tr>

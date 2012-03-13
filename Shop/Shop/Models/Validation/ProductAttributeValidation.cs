@@ -28,5 +28,8 @@ namespace Shop.Models
 
         [DisplayName("Отображать в кратком описании")]
         public bool ShowInCommonView { get; set; }
+
+        [DisplayName("Статический")]
+        public bool Static { get; set; }
     }
 }

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/12/2012 10:25:43
+-- Date Created: 03/13/2012 12:32:23
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -93,7 +93,8 @@ CREATE TABLE `ProductAttribute` (
     `Name` mediumtext  NOT NULL,
     `ValueType` mediumtext  NOT NULL,
     `ShowInCommonView` bool  NOT NULL,
-    `SortOrder` int  NOT NULL
+    `SortOrder` int  NOT NULL,
+    `Static` bool  NOT NULL
 );
 
 -- Creating table 'ProductAttributeValues'
@@ -150,6 +151,15 @@ CREATE TABLE `Content` (
     `SeoText` longtext  NULL,
     `Published` bool  NOT NULL,
     `MainPage` bool  NOT NULL
+);
+
+-- Creating table 'ProductAttributeStaticValues'
+
+CREATE TABLE `ProductAttributeStaticValues` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Value` longtext  NOT NULL,
+    `ProductAttributeId` int  NOT NULL,
+    `ProductId` int  NOT NULL
 );
 
 -- Creating table 'ProductAttributeCategory'
@@ -349,6 +359,36 @@ ADD CONSTRAINT `FK_TagProduct_Product`
 CREATE INDEX `IX_FK_TagProduct_Product` 
     ON `TagProduct`
     (`Products_Id`);
+
+-- Creating foreign key on `ProductAttributeId` in table 'ProductAttributeStaticValues'
+
+ALTER TABLE `ProductAttributeStaticValues`
+ADD CONSTRAINT `FK_ProductAttributeProductAttributeStaticValues`
+    FOREIGN KEY (`ProductAttributeId`)
+    REFERENCES `ProductAttribute`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductAttributeProductAttributeStaticValues'
+
+CREATE INDEX `IX_FK_ProductAttributeProductAttributeStaticValues` 
+    ON `ProductAttributeStaticValues`
+    (`ProductAttributeId`);
+
+-- Creating foreign key on `ProductId` in table 'ProductAttributeStaticValues'
+
+ALTER TABLE `ProductAttributeStaticValues`
+ADD CONSTRAINT `FK_ProductAttributeStaticValuesProduct`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductAttributeStaticValuesProduct'
+
+CREATE INDEX `IX_FK_ProductAttributeStaticValuesProduct` 
+    ON `ProductAttributeStaticValues`
+    (`ProductId`);
 
 -- --------------------------------------------------
 -- Script has ended

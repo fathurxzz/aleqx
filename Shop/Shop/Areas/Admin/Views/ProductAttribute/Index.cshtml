@@ -1,20 +1,19 @@
 ﻿@model IEnumerable<Shop.Models.ProductAttribute>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 @{
     
-    if (ViewBag.ErrorMessage!=null)
+    if (ViewBag.ErrorMessage != null)
     {
-        <div class="errorMessage">
+    <div class="errorMessage">
         @Html.Raw(ViewBag.ErrorMessage)
-        </div>
+    </div>
     }
 }
-<h2>Атрибуты</h2>
-
+<h2>
+    Атрибуты</h2>
 <p>
     @Html.ActionLink("Добавить новую запись", "Create")
 </p>
@@ -33,37 +32,47 @@
             Отображать в кратком описании
         </th>
         <th>
+            Статический
+        </th>
+        <th>
             Порядок отображения
         </th>
-        <th></th>
+        <th>
+        </th>
     </tr>
-
-@foreach (var item in Model.OrderBy(a=>a.SortOrder)) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @foreach (var value in item.ProductAttributeValues)
-            {
-                @Html.Raw(value.Value+"; ")
-            }
-        </td>    
-        <td>
-            @Html.DisplayFor(modelItem => item.ValueType)
-        </td>
-        <td>
-            @Html.Raw(item.ShowInCommonView ? "да" : "нет")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortOrder)
-        </td>
-        <td style="white-space: nowrap">
-           @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Значения", "ProductAttributeValues", new { id = item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id = item.Id },new{onclick="return confirm('Удалить атрибут? При удалении атрибута будут также удалены все значения данного атрибута в т.ч. и в продуктах!')"})
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model.OrderBy(a => a.SortOrder))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @foreach (var value in item.ProductAttributeValues)
+                {
+                    @Html.Raw(value.Value + "; ")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValueType)
+            </td>
+            <td>
+                @Html.Raw(item.ShowInCommonView ? "да" : "нет")
+            </td>
+            <td>
+                @Html.Raw(item.Static ? "да" : "нет")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
+            </td>
+            <td style="white-space: nowrap">
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут? При удалении атрибута будут также удалены все значения данного атрибута в т.ч. и в продуктах!')" })
+                @if (!item.Static)
+                {
+                    @Html.Raw("|")
+                    @Html.ActionLink("Значения", "ProductAttributeValues", new {id = item.Id})
+                }
+            </td>
+        </tr>
+    }
 </table>

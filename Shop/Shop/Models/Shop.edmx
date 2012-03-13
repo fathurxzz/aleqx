@@ -14,6 +14,7 @@
     <EntitySet Name="Brand" EntityType="Shop.Store.Brand" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Tag" EntityType="Shop.Store.Tag" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Shop.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductAttributeStaticValues" EntityType="Shop.Store.ProductAttributeStaticValues" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeCategory" EntityType="Shop.Store.ProductAttributeCategory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValuesProduct" EntityType="Shop.Store.ProductAttributeValuesProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TagProduct" EntityType="Shop.Store.TagProduct" store:Type="Tables" Schema="dbo" />
@@ -60,6 +61,14 @@
     <AssociationSet Name="FK_TagProduct_Product" Association="Shop.Store.FK_TagProduct_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="TagProduct" EntitySet="TagProduct" />
+    </AssociationSet>
+    <AssociationSet Name="ProductAttributeProductAttributeStaticValues" Association="Shop.Store.ProductAttributeProductAttributeStaticValues">
+      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+      <End Role="ProductAttributeStaticValues" EntitySet="ProductAttributeStaticValues" />
+    </AssociationSet>
+    <AssociationSet Name="ProductAttributeStaticValuesProduct" Association="Shop.Store.ProductAttributeStaticValuesProduct">
+      <End Role="ProductAttributeStaticValues" EntitySet="ProductAttributeStaticValues" />
+      <End Role="Product" EntitySet="Product" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Product">
@@ -108,6 +117,7 @@
     <Property Name="ValueType" Type="mediumtext" Nullable="false" />
     <Property Name="ShowInCommonView" Type="bool" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Static" Type="bool" Nullable="false" DefaultValue="false" />
   </EntityType>
   <EntityType Name="ProductAttributeValues">
     <Key>
@@ -164,6 +174,15 @@
     <Property Name="SeoText" Type="longtext" Nullable="true" />
     <Property Name="Published" Type="bool" Nullable="false" />
     <Property Name="MainPage" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductAttributeStaticValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="longtext" Nullable="false" />
+    <Property Name="ProductAttributeId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductAttributeCategory">
     <Key>
@@ -246,6 +265,30 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductAttributeProductAttributeStaticValues">
+    <End Role="ProductAttribute" Type="Shop.Store.ProductAttribute" Multiplicity="1" />
+    <End Role="ProductAttributeStaticValues" Type="Shop.Store.ProductAttributeStaticValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAttributeStaticValues">
+        <PropertyRef Name="ProductAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductAttributeStaticValuesProduct">
+    <End Role="ProductAttributeStaticValues" Type="Shop.Store.ProductAttributeStaticValues" Multiplicity="*" />
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAttributeStaticValues">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -366,6 +409,15 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <EntitySet Name="Content" EntityType="Shop.Content" />
+          <EntitySet Name="ProductAttributeStaticValues" EntityType="Shop.ProductAttributeStaticValues" />
+          <AssociationSet Name="ProductAttributeProductAttributeStaticValues" Association="Shop.ProductAttributeProductAttributeStaticValues">
+            <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+            <End Role="ProductAttributeStaticValues" EntitySet="ProductAttributeStaticValues" />
+          </AssociationSet>
+          <AssociationSet Name="ProductAttributeStaticValuesProduct" Association="Shop.ProductAttributeStaticValuesProduct">
+            <End Role="ProductAttributeStaticValues" EntitySet="ProductAttributeStaticValues" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -393,6 +445,7 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="1000" />
           <Property Type="String" Name="SeoText" />
           <Property Type="String" Name="Articul" Nullable="false" MaxLength="100" />
+          <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductAttributeStaticValuesProduct" FromRole="Product" ToRole="ProductAttributeStaticValues" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -448,6 +501,8 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <NavigationProperty Name="Categories" Relationship="Shop.ProductAttributeCategory" FromRole="ProductAttribute" ToRole="Category" />
           <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.ProductAttributeProductAttributeValues" FromRole="ProductAttribute" ToRole="ProductAttributeValues" />
+          <Property Type="Boolean" Name="Static" Nullable="false" DefaultValue="false" />
+          <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductAttributeProductAttributeStaticValues" FromRole="ProductAttribute" ToRole="ProductAttributeStaticValues" />
         </EntityType>
         <Association Name="ProductAttributeCategory">
           <End Type="Shop.ProductAttribute" Role="ProductAttribute" Multiplicity="*" />
@@ -558,6 +613,41 @@
           <Property Type="Boolean" Name="Published" Nullable="false" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProductAttributeStaticValues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Value" Nullable="false" />
+          <NavigationProperty Name="ProductAttribute" Relationship="Shop.ProductAttributeProductAttributeStaticValues" FromRole="ProductAttributeStaticValues" ToRole="ProductAttribute" />
+          <Property Type="Int32" Name="ProductAttributeId" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Shop.ProductAttributeStaticValuesProduct" FromRole="ProductAttributeStaticValues" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductAttributeProductAttributeStaticValues">
+          <End Type="Shop.ProductAttribute" Role="ProductAttribute" Multiplicity="1" />
+          <End Type="Shop.ProductAttributeStaticValues" Role="ProductAttributeStaticValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductAttribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductAttributeStaticValues">
+              <PropertyRef Name="ProductAttributeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductAttributeStaticValuesProduct">
+          <End Type="Shop.ProductAttributeStaticValues" Role="ProductAttributeStaticValues" Multiplicity="*" />
+          <End Type="Shop.Product" Role="Product" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductAttributeStaticValues">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -611,6 +701,7 @@
           <ScalarProperty Name="ValueType" ColumnName="ValueType" />
           <ScalarProperty Name="ShowInCommonView" ColumnName="ShowInCommonView" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Static" ColumnName="Static" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -675,6 +766,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ProductAttributeStaticValues">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ProductAttributeStaticValues)">
+        <MappingFragment StoreEntitySet="ProductAttributeStaticValues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ProductAttributeId" ColumnName="ProductAttributeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ProductAttributeCategory" TypeName="Shop.ProductAttributeCategory" StoreEntitySet="ProductAttributeCategory">
       <EndProperty Name="ProductAttribute">
         <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
@@ -722,8 +823,8 @@
         <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="7.75" PointY="0.625" Height="4.5505582682291656" />
         <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="3.2357796223958331" />
         <AssociationConnector Association="Shop.CategoryProduct">
-          <ConnectorPoint PointX="2.625" PointY="1.6562500000000002" />
-          <ConnectorPoint PointX="7.75" PointY="1.6562500000000002" />
+          <ConnectorPoint PointX="2.625" PointY="1.0312500000000002" />
+          <ConnectorPoint PointX="7.75" PointY="1.0312500000000002" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.CategoryCategory">
           <ConnectorPoint PointX="1.6569230769230767" PointY="0.625" />
@@ -731,19 +832,19 @@
           <ConnectorPoint PointX="2.1034615384615383" PointY="0.375" />
           <ConnectorPoint PointX="2.1034615384615383" PointY="0.625" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.ProductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.0853483072916656" />
+        <EntityTypeShape EntityType="Shop.ProductAttribute" Width="2.5" PointX="1.125" PointY="5.25" Height="2.2496956380208326" />
         <AssociationConnector Association="Shop.ProductAttributeCategory">
           <ConnectorPoint PointX="1.875" PointY="5.25" />
           <ConnectorPoint PointX="1.875" PointY="3.8607796223958331" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.ProductAttributeValues" Width="2" PointX="4.5" PointY="5.25" Height="1.9210009765624996" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValues" Width="2" PointX="4.75" PointY="6" Height="1.9210009765624996" />
         <AssociationConnector Association="Shop.ProductAttributeProductAttributeValues">
-          <ConnectorPoint PointX="3.625" PointY="6.21050048828125" />
-          <ConnectorPoint PointX="4.5" PointY="6.21050048828125" />
+          <ConnectorPoint PointX="3.625" PointY="6.832021484375" />
+          <ConnectorPoint PointX="4.75" PointY="6.832021484375" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.ProductAttributeValuesProduct">
-          <ConnectorPoint PointX="6.5" PointY="6.21050048828125" />
-          <ConnectorPoint PointX="8.5" PointY="6.21050048828125" />
+          <ConnectorPoint PointX="6.75" PointY="6.96050048828125" />
+          <ConnectorPoint PointX="8.5" PointY="6.96050048828125" />
           <ConnectorPoint PointX="8.5" PointY="5.1755582682291656" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="10.25" PointY="4.375" Height="1.9802864583333335" />
@@ -756,12 +857,22 @@
           <ConnectorPoint PointX="10.25" PointY="1.8320214843749998" />
           <ConnectorPoint PointX="9.25" PointY="1.8320214843749998" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="2.75" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="1.5" Height="1.7566536458333335" />
         <AssociationConnector Association="Shop.TagProduct">
-          <ConnectorPoint PointX="6.5" PointY="3.6283268229166667" />
-          <ConnectorPoint PointX="7.75" PointY="3.6283268229166667" />
+          <ConnectorPoint PointX="6.5" PointY="2.3783268229166667" />
+          <ConnectorPoint PointX="7.75" PointY="2.3783268229166667" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.Content" Width="1.5" PointX="12.625" PointY="0.625" Height="2.7427376302083331" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValues" Width="2.375" PointX="4.625" PointY="3.875" Height="1.5923063151041665" />
+        <AssociationConnector Association="Shop.ProductAttributeProductAttributeStaticValues" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.7812525" PointY="5.25" />
+          <ConnectorPoint PointX="2.7812525" PointY="4.5613040552383817" />
+          <ConnectorPoint PointX="4.625" PointY="4.5613040552383817" />
+        </AssociationConnector>
+        <AssociationConnector Association="Shop.ProductAttributeStaticValuesProduct">
+          <ConnectorPoint PointX="7" PointY="4.6074527994791667" />
+          <ConnectorPoint PointX="7.75" PointY="4.6074527994791667" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
