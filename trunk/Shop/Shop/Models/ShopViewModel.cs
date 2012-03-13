@@ -93,12 +93,13 @@ namespace Shop.Models
 
             if (!string.IsNullOrEmpty(productId))
             {
-                var product = context.Product.Include("Brand").Include("Category").Include("ProductAttributeValues").Include("ProductImages").First(p => p.Name == productId);
+                var product = context.Product.Include("Brand").Include("Category").Include("ProductAttributeValues").Include("ProductAttributeStaticValues").Include("ProductImages").First(p => p.Name == productId);
                 product.Tags.Load();
                 product.Category.ProductAttributes.Load();
                 foreach (var attribute in product.Category.ProductAttributes)
                 {
                     attribute.ProductAttributeValues.Load();
+                    attribute.ProductAttributeStaticValues.Load();
                 }
                 Product = product;
                 Title += " - " + product.Title;

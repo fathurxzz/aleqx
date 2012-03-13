@@ -31,12 +31,13 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var product = context.Product.Include("Brand").Include("Category").Include("ProductAttributeValues").Include("ProductImages").First(p => p.Id == id);
+                var product = context.Product.Include("Brand").Include("Category").Include("ProductAttributeValues").Include("ProductAttributeStaticValues").Include("ProductImages").First(p => p.Id == id);
                 product.Tags.Load();
                 product.Category.ProductAttributes.Load();
                 foreach (var attribute in product.Category.ProductAttributes)
                 {
                     attribute.ProductAttributeValues.Load();
+                    attribute.ProductAttributeStaticValues.Load();
                 }
 
                 return View(product);
@@ -272,8 +273,14 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var product = context.Product.Include("ProductAttributeValues").First(p => p.Id == id);
+                var product = context.Product.Include("ProductAttributeValues").Include("ProductAttributeStaticValues").First(p => p.Id == id);
                 product.ProductAttributeValues.Clear();
+
+                while (product.ProductAttributeStaticValues.Any())
+                {
+                    var pav = product.ProductAttributeStaticValues.First();
+                    context.DeleteObject(pav);
+                }
 
                 while (product.ProductImages.Any())
                 {
@@ -295,11 +302,12 @@ namespace Shop.Areas.Admin.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var product = context.Product.Include("Category").Include("ProductAttributeValues").First(p => p.Id == id);
+                var product = context.Product.Include("Category").Include("ProductAttributeValues").Include("ProductAttributeStaticValues").First(p => p.Id == id);
                 product.Category.ProductAttributes.Load();
                 foreach (var attribute in product.Category.ProductAttributes)
                 {
                     attribute.ProductAttributeValues.Load();
+                    attribute.ProductAttributeStaticValues.Load();
                 }
 
                 ViewBag.ProductTitle = product.Title;
@@ -319,6 +327,7 @@ namespace Shop.Areas.Admin.Controllers
                 var product = context.Product.Include("ProductAttributeValues").First(p => p.Id == productId);
 
                 PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr", "productId");
+                PostData staticAttrData = form.ProcessPostData("tb", "productId");
 
                 product.ProductAttributeValues.Clear();
 
@@ -334,7 +343,58 @@ namespace Shop.Areas.Admin.Controllers
                     }
                 }
 
+
+                foreach (var kvp in staticAttrData)
+                {
+                    int attributeId = Convert.ToInt32(kvp.Key);
+                    foreach (var value in kvp.Value)
+                    {
+                        string attributeValue = value.Value;
+
+                        var productAttribute = context.ProductAttribute.Include("ProductAttributeStaticValues").First(pa => pa.Id == attributeId);
+
+                        //productAttribute.ProductAttributeStaticValues.Clear();
+
+                        ProductAttributeStaticValues productAttributeValue = null;
+                        productAttributeValue = context.ProductAttributeStaticValues.FirstOrDefault(
+                                pav => pav.ProductAttribute.Id == productAttribute.Id && pav.Product.Id == product.Id);
+
+
+                        if (string.IsNullOrEmpty(attributeValue))
+                        {
+                            if (productAttributeValue != null)
+                                context.DeleteObject(productAttributeValue);
+                        }
+                        else
+                        {
+                            if (productAttributeValue == null)
+                            {
+
+
+
+                                productAttributeValue = new ProductAttributeStaticValues
+                                                            {
+                                                                Value = attributeValue,
+                                                                ProductAttribute = productAttribute
+                                                            };
+                                product.ProductAttributeStaticValues.Add(productAttributeValue);
+
+                            }
+                            else
+                            {
+                                productAttributeValue.Value = attributeValue;
+                            }
+                        }
+                        //productAttribute.ProductAttributeValues.Add(productAttributeValue);
+
+
+                    }
+                }
+
                 context.SaveChanges();
+
+
+
 
                 return RedirectToAction("Index");
             }

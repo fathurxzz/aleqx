@@ -57,20 +57,40 @@
                     <td>
                         @{
                             var cnt = 0;
-                        foreach (var attributeValue in Model.Product.ProductAttributeValues)
-                        {
-                            if (attribute.ProductAttributeValues.Contains(attributeValue))
-                            {
-                                if(cnt>0)
-                                {
-                                    @Html.Raw(", ")
-                                }
-                                @Html.Raw(attributeValue.Value)
-                           cnt++;
-                            }
 
+                            if (attribute.Static)
+                            {
+                                foreach (var attributeValue in Model.Product.ProductAttributeStaticValues)
+                                {
+                                    if (attribute.ProductAttributeStaticValues.Contains(attributeValue))
+                                    {
+                                        if (cnt > 0)
+                                        {
+                                            @Html.Raw(", ")
+                                        }
+                                        @Html.Raw(attributeValue.Value)
+                                   cnt++;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                foreach (var attributeValue in Model.Product.ProductAttributeValues)
+                                {
+                                    if (attribute.ProductAttributeValues.Contains(attributeValue))
+                                    {
+                                        if (cnt > 0)
+                                        {
+                                            @Html.Raw(", ")
+                                        }
+                                        @Html.Raw(attributeValue.Value)
+                                   cnt++;
+                                    }
+
+                                }
+                            }
                         }
-            }
                     </td>
                 </tr>
             }
