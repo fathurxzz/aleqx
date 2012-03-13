@@ -77,7 +77,7 @@ namespace Shop.Areas.Admin.Controllers
                 var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
                 try
                 {
-                    TryUpdateModel(productAttribute, new[] { "Name", "SortOrder", "ValueType", "ShowInCommonView" });
+                    TryUpdateModel(productAttribute, new[] { "Name", "SortOrder", "ValueType", "ShowInCommonView" ,"Static"});
                     if (productAttribute.ValueType == null)
                         productAttribute.ValueType = string.Empty;
                     context.SaveChanges();
@@ -137,6 +137,7 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var productAttributeValue = context.ProductAttributeValues.First(pav => pav.Id == id);
+                productAttributeValue.Products.Clear();
                 context.DeleteObject(productAttributeValue);
                 context.SaveChanges();
                 return RedirectToAction("ProductAttributeValues", new { id = productAttributeId });
