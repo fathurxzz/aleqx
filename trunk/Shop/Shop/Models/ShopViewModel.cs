@@ -93,8 +93,20 @@ namespace Shop.Models
 
             if (!string.IsNullOrEmpty(productId))
             {
-                var product = context.Product.Include("Brand").Include("Category").Include("ProductAttributeValues").Include("ProductAttributeStaticValues").Include("ProductImages").First(p => p.Name == productId);
+
+                var product = context.Product
+                    .Include("Brand")
+                    .Include("Category")
+                    //.Include("ProductImages")
+                    //.Include("ProductAttributeValues")
+                    //.Include("ProductAttributeStaticValues")
+                    .First(p => p.Name == productId);
+
+                product.ProductImages.Load();
+
                 product.Tags.Load();
+                product.ProductAttributeValues.Load();
+                product.ProductAttributeStaticValues.Load();
                 product.Category.ProductAttributes.Load();
                 foreach (var attribute in product.Category.ProductAttributes)
                 {
