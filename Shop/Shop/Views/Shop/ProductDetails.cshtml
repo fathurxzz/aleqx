@@ -21,6 +21,13 @@
         Код товара: @Model.Product.Id
         </div>
     <div class="title">@Model.Product.Title</div>
+    <div class="buttons">
+        <div class="price">
+            @Model.Product.Price.ToString("N") грн.
+        </div>
+        @Html.ActionLink("Назад к списку", "Categories", "Shop", new { id = Model.Product.Category.Name }, new { @class = "details" })
+        <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Product.Id)">В корзину</a>
+    </div>
     <div class="images">
         @{
         
@@ -47,11 +54,16 @@
         </div>
     </div>
     <div class="description">@Html.Raw(Model.Product.Description)</div>
+    @{
+        int rowCount = 0;
+    }
     <div class="attributes">
         <table>
             @foreach (var attribute in Model.Product.Category.ProductAttributes)
             {
-                <tr>
+                rowCount++;
+                string classname = "attr" + (rowCount % 2);
+                <tr class="@classname">
                     <td class="attrTitle">@Html.Raw(attribute.Name + (!string.IsNullOrEmpty(attribute.ValueType) ? (", " + attribute.ValueType + ":") : ""))
                     </td>
                     <td>
@@ -95,13 +107,7 @@
             }
         </table>
     </div>
-    <div class="buttons">
-        <div class="price">
-            @Model.Product.Price.ToString("N") грн.
-        </div>
-        @Html.ActionLink("Назад к списку", "Categories", "Shop", new { id = Model.Product.Category.Name }, new { @class = "details" })
-        <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Product.Id)">В корзину</a>
-    </div>
+    
 </div>
 @section Includes
     {

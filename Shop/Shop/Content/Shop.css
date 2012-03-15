@@ -195,6 +195,12 @@ a.details
 {
     margin: 20px 0;
 }
+.product .attributes table {
+    width: 100%;
+}
+.product .attributes table tr.attr1 {
+    background-color: #f7f7f7;
+}
 
 .product .attributes table td.attrTitle
 {
@@ -293,6 +299,7 @@ img
 .buttons
 {
     padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 #search
