@@ -106,12 +106,12 @@
                         @Html.ActionLink("Отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
                             }
 
-                            @*if (Request.IsAuthenticated)
+                            if (Request.IsAuthenticated)
                             {
                         <div class="adminLinkContainer">
                             @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 5 }, new { @class = "adminLink" })
                         </div>
-                            }*@
+                            }
                         }
                         else
                         {
