@@ -14,7 +14,7 @@ namespace Shop.Helpers
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
-        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2" };
+        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2","thumbnail3" };
 
 
         static GraphicsHelper()
@@ -25,8 +25,11 @@ namespace Shop.Helpers
             limitWidth.Add(ThumbnailFolders[1], 150);
             limitHeight.Add(ThumbnailFolders[1], 150);
 
-            limitWidth.Add(ThumbnailFolders[2], 200);
-            limitHeight.Add(ThumbnailFolders[2], 200);
+            limitWidth.Add(ThumbnailFolders[2], 298);
+            limitHeight.Add(ThumbnailFolders[2], 298);
+            
+            limitWidth.Add(ThumbnailFolders[3], 53);
+            limitHeight.Add(ThumbnailFolders[3], 53);
         }
 
 

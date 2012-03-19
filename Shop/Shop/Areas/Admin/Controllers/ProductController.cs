@@ -196,7 +196,7 @@ namespace Shop.Areas.Admin.Controllers
             {
                 var product = context.Product.Include("ProductImages").First(p => p.Id == id);
                 ViewBag.ProductId = product.Id;
-                ViewBag.ProductName = product.Name;
+                ViewBag.ProductTitle = product.Title;
                 return View(product.ProductImages);
             }
         }
@@ -207,8 +207,8 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var product = context.Product.Include("ProductImages").First(p => p.Id == productId);
+                ViewBag.ProductTitle = product.Title;
                 ViewBag.ProductId = product.Id;
-                ViewBag.ProductName = product.Name;
 
                 if (!string.IsNullOrEmpty(form["r_default"]))
                 {
@@ -264,8 +264,14 @@ namespace Shop.Areas.Admin.Controllers
         private void DeleteImage(ProductImage image, ShopContainer context)
         {
             IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
-            IOHelper.DeleteFile("~/ImageCache/thumbnail0", image.ImageSource);
-            IOHelper.DeleteFile("~/ImageCache/thumbnail1", image.ImageSource);
+
+            foreach (var folder in GraphicsHelper.ThumbnailFolders)
+            {
+                IOHelper.DeleteFile("~/ImageCache/" + folder, image.ImageSource);
+            }
+
+            //IOHelper.DeleteFile("~/ImageCache/thumbnail0", image.ImageSource);
+            //IOHelper.DeleteFile("~/ImageCache/thumbnail1", image.ImageSource);
             context.DeleteObject(image);
         }
 
