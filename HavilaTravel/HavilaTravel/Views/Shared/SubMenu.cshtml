@@ -53,7 +53,7 @@
                                         @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
                                     <div class="adminLinkContainer">    
-                                    @Html.ActionLink("+Подраздел", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
                                     <div class="adminLinkContainer">
                                         @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
