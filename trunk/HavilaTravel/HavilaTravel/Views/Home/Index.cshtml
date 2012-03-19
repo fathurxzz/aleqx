@@ -43,7 +43,13 @@
 }
 @section LeftSubMenu
 {
-    @Html.Partial("LeftSubmenu")
+    @{
+        var menuItems = Model.MenuList.FirstOrDefault(m => m.MenuLevel == 3);
+        if(menuItems!=null)
+        {
+            @Html.Partial("LeftSubmenu", menuItems)
+        }
+    }
 }
 @section MainSearch
 {
