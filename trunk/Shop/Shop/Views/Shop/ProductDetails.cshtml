@@ -17,44 +17,50 @@
     @Html.Partial("_Tags", Model.Tags)
 }
 <div class="product productDetails">
-<div class="productId">
-        Код товара: @Model.Product.Id
+    <div>
+        <div class="productId">
+            Код товара: @Model.Product.Id
         </div>
-    <div class="title">@Model.Product.Title</div>
-    <div class="buttons">
-        <div class="price">
-            @Model.Product.Price.ToString("N") грн.
-        </div>
-        @Html.ActionLink("Назад к списку", "Categories", "Shop", new { id = Model.Product.Category.Name }, new { @class = "details" })
-        <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Product.Id)">В корзину</a>
+        <div class="title">@Model.Product.Title</div>
     </div>
-    <div class="images">
-        @{
-        
-            var mainImage = Model.Product.ProductImages.FirstOrDefault(im => im.Default) ?? Model.Product.ProductImages.FirstOrDefault();
-            if (mainImage != null)
-            {
-            <div class="image">
-                <a rel="@Html.Raw("group" + Model.Product.Id)" href="../../../Content/Images/@mainImage.ImageSource" class="fancy">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", mainImage.ImageSource, "thumbnail2", mainImage.ImageSource))
-                </a>
+    <div>
+        <div class="images">
+            <div class="buttons">
+                <div class="price">
+                    @Model.Product.Price.ToString("N") грн.
+                </div>
+                <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Product.Id)">В корзину</a>
+                <div class="clear">
+                </div>
             </div>
+            @{
+        
+                var mainImage = Model.Product.ProductImages.FirstOrDefault(im => im.Default) ?? Model.Product.ProductImages.FirstOrDefault();
+                if (mainImage != null)
+                {
+                <div class="image">
+                    <a rel="@Html.Raw("group" + Model.Product.Id)" href="../../../Content/Images/@mainImage.ImageSource" class="fancy">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", mainImage.ImageSource, "thumbnail2", mainImage.ImageSource))
+                    </a>
+                </div>
+                }
+
+                <div class="productPreviewImages">
+                @foreach (var image in Model.Product.ProductImages.Where(im => !im.Default))
+                {
+                <div class="preview">
+                    <a rel="@Html.Raw("group" + Model.Product.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail3", image.ImageSource))
+                    </a>
+                </div>
+                }
+                <div class="clear"></div>
+                </div>
+
             }
-
-
-            foreach (var image in Model.Product.ProductImages.Where(im => !im.Default))
-            {
-            <a rel="@Html.Raw("group" + Model.Product.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", image.ImageSource))
-            </a>
-            }
-
-        }
-        <div class="clear">
-        </div>
-    </div>
-    <div class="description">@Html.Raw(Model.Product.Description)</div>
-    @{
+            <div class="clear">
+            </div>
+            @{
         int rowCount = 0;
     }
     <div class="attributes">
@@ -68,46 +74,55 @@
                     </td>
                     <td>
                         @{
-                            var cnt = 0;
+                                     var cnt = 0;
 
-                            if (attribute.Static)
-                            {
-                                foreach (var attributeValue in Model.Product.ProductAttributeStaticValues)
-                                {
-                                    if (attribute.ProductAttributeStaticValues.Contains(attributeValue))
-                                    {
-                                        if (cnt > 0)
-                                        {
-                                            @Html.Raw(", ")
-                                        }
-                                        @Html.Raw(attributeValue.Value)
-                                   cnt++;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                foreach (var attributeValue in Model.Product.ProductAttributeValues)
-                                {
-                                    if (attribute.ProductAttributeValues.Contains(attributeValue))
-                                    {
-                                        if (cnt > 0)
-                                        {
-                                            @Html.Raw(", ")
-                                        }
-                                        @Html.Raw(attributeValue.Value)
-                                   cnt++;
-                                    }
+                                     if (attribute.Static)
+                                     {
+                                         foreach (var attributeValue in Model.Product.ProductAttributeStaticValues)
+                                         {
+                                             if (attribute.ProductAttributeStaticValues.Contains(attributeValue))
+                                             {
+                                                 if (cnt > 0)
+                                                 {
+                            @Html.Raw(", ")
+                                                 }
+                            @Html.Raw(attributeValue.Value)
+                       cnt++;
+                                             }
+                                         }
+                                     }
+                                     else
+                                     {
+                                         foreach (var attributeValue in Model.Product.ProductAttributeValues)
+                                         {
+                                             if (attribute.ProductAttributeValues.Contains(attributeValue))
+                                             {
+                                                 if (cnt > 0)
+                                                 {
+                            @Html.Raw(", ")
+                                                 }
+                            @Html.Raw(attributeValue.Value)
+                       cnt++;
+                                             }
 
-                                }
-                            }
+                                         }
+                                     }
                         }
                     </td>
                 </tr>
             }
         </table>
     </div>
+     
+        </div>
+        <div class="description">@Html.Raw(Model.Product.Description)</div>
+    </div>
     
+    <div class="clear">
+            </div>
+    <div>
+        @Html.ActionLink("Назад к списку", "Categories", "Shop", new { id = Model.Product.Category.Name }, new { @class = "details" })
+    </div>
 </div>
 @section Includes
     {
