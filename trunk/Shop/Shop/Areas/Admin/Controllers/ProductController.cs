@@ -24,6 +24,77 @@ namespace Shop.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Prices()
+        {
+            using (var context = new ShopContainer())
+            {
+                var products = context.Product.Include("Brand").Include("Category").ToList();
+                return View(products);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Prices(FormCollection form)
+        {
+            using (var context = new ShopContainer())
+            {
+                var products = context.Product.Include("Brand").Include("Category").ToList();
+
+                PostCheckboxesData cbDataNew = form.ProcessPostCheckboxesData("new");
+                PostCheckboxesData cbDataSpec = form.ProcessPostCheckboxesData("special");
+                PostCheckboxesData cbDataPublish = form.ProcessPostCheckboxesData("publish");
+                PostData oldPriceData = form.ProcessPostData("oldprice");
+                PostData priceData = form.ProcessPostData("price");
+
+                foreach (var kvp in cbDataNew)
+                {
+                    var productId = kvp.Key;
+                    bool productValue = kvp.Value;
+
+                    products.First(p => p.Id == productId).IsNew = productValue;
+                }
+
+                foreach (var kvp in cbDataSpec)
+                {
+                    var productId = kvp.Key;
+                    bool productValue = kvp.Value;
+
+                    products.First(p => p.Id == productId).IsSpecialOffer = productValue;
+                }
+
+                foreach (var kvp in cbDataPublish)
+                {
+                    var productId = kvp.Key;
+                    bool productValue = kvp.Value;
+
+                    products.First(p => p.Id == productId).Published = productValue;
+                }
+
+                foreach (var kvp in oldPriceData)
+                {
+                    int productId = Convert.ToInt32(kvp.Key);
+                    foreach (var value in kvp.Value)
+                    {
+                        var productValue = Convert.ToDecimal(value.Value);
+                        products.First(p => p.Id == productId).OldPrice = productValue;
+                    }
+                }
+
+                foreach (var kvp in priceData)
+                {
+                    int productId = Convert.ToInt32(kvp.Key);
+                    foreach (var value in kvp.Value)
+                    {
+                        var productValue = Convert.ToDecimal(value.Value);
+                        products.First(p => p.Id == productId).Price = productValue;
+                    }
+                }
+
+                context.SaveChanges();
+            }
+            return RedirectToAction("Prices");
+        }
+
         //
         // GET: /Admin/Product/Details/5
 
