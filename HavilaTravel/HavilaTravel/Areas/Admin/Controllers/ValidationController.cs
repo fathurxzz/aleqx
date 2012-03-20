@@ -16,7 +16,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var content = context.Content.FirstOrDefault(c => c.Name == name);
+                var content = context.Content.FirstOrDefault(c => c.Name.ToLower() == name.ToLower());
                 if (content !=null)
                 {
                     return Json("Страница с таким именем уже существует, введите другое имя!", JsonRequestBehavior.AllowGet);
