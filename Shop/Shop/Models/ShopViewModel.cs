@@ -144,7 +144,7 @@ namespace Shop.Models
             if (products == null)
                 return null;
             int currentPage = page ?? 0;
-            int pageSize = 5;
+            int pageSize = 10;
             if (page < 0)
                 return products;
             return products.Skip(currentPage * pageSize).Take(pageSize);

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Shop.Models.Product>
+
+@{
+    ViewBag.Title = "Prices";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+<table class="reviewTable">
+    <tr>
+        <th>
+            Код продукта
+        </th>
+        <th>
+            Бренд
+        </th>
+        <th>
+            Категория
+        </th>
+        <th>
+            Название
+        </th>
+        <th>
+            Новый
+        </th>
+        <th>
+            Спец. предложение
+        </th>
+        <th>
+            Опубликован
+        </th>
+        <th>
+            Старая цена
+        </th>
+        <th>
+            Цена
+        </th>
+        <th>
+            Идентификатор
+        </th>
+        <th>
+            Артикул
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.CheckBox("new_" + item.Id, item.IsNew)
+        </td>
+        <td>
+            @Html.CheckBox("special_" + item.Id, item.IsSpecialOffer)
+        </td>
+        <td>
+            @Html.CheckBox("publish_" + item.Id, item.Published)
+        </td>
+        <td>
+            @Html.TextBox("oldprice_" + item.Id, item.OldPrice)
+        </td>
+        <td>
+            @Html.TextBox("price_" + item.Id, item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Articul)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+<input type="submit" value="Сохранить"/>
+</p>
+}
