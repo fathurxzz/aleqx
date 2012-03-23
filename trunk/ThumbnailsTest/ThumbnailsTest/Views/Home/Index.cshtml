@@ -1,0 +1,18 @@
+﻿@using ThumbnailsTest
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+</p>
+
+<div class="imageContainer">
+@for (var i = 1; i <= 4; i++)
+{
+    
+    @Html.Raw(Html.CachedImage("~/Content/Images/", i+".jpg", "thumbnail2"))
+    
+}
+</div>
