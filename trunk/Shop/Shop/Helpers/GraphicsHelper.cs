@@ -15,21 +15,22 @@ namespace Shop.Helpers
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
         public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2","thumbnail3" };
+        public static int[] ThumbnailDimentions = { 100, 150, 298, 53};
 
 
         static GraphicsHelper()
         {
-            limitWidth.Add(ThumbnailFolders[0], 100);
-            limitHeight.Add(ThumbnailFolders[0], 100);
+            limitWidth.Add(ThumbnailFolders[0], ThumbnailDimentions[0]);
+            limitHeight.Add(ThumbnailFolders[0], ThumbnailDimentions[0]);
 
-            limitWidth.Add(ThumbnailFolders[1], 150);
-            limitHeight.Add(ThumbnailFolders[1], 150);
+            limitWidth.Add(ThumbnailFolders[1], ThumbnailDimentions[1]);
+            limitHeight.Add(ThumbnailFolders[1], ThumbnailDimentions[1]);
 
-            limitWidth.Add(ThumbnailFolders[2], 298);
-            limitHeight.Add(ThumbnailFolders[2], 298);
-            
-            limitWidth.Add(ThumbnailFolders[3], 53);
-            limitHeight.Add(ThumbnailFolders[3], 53);
+            limitWidth.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
+            limitHeight.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
+
+            limitWidth.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);
+            limitHeight.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);
         }
 
 
@@ -78,8 +79,6 @@ namespace Shop.Helpers
             Graphics graphics = Graphics.FromImage(thumbnailImage);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
-
-
 
             thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
             saveTo.Position = 0;
