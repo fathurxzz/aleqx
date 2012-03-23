@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,12 @@ using System.Web.Mvc;
 
 namespace ThumbnailsTest
 {
+    public enum ScaleMode
+    {
+        Cut,
+        Insert
+    }
+
     public static class GraphicsHelper
     {
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
@@ -39,44 +46,60 @@ namespace ThumbnailsTest
             return new Rectangle(0, 0, limWidth, limHeight);
         }
 
-        private static Rectangle CalculateSourceRect(string name, Size sourceImage)
+        private static Rectangle CalculateSourceRect(string name, Size sourceImage, ScaleMode scaleMode)
         {
-            int previewHeight;
-            int previewWidth;
-
-            previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-            previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            int previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
+            int previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
 
             int resultWidth;
             int resultHeight;
 
-            double wRatio = (double)sourceImage.Width / (double)previewWidth;
-            double hRatio = (double)sourceImage.Height / (double)previewHeight;
-
-            double coef = (double)previewHeight / (double)previewWidth;
-
-            if (wRatio < hRatio)
+            if (scaleMode == ScaleMode.Cut)
             {
-                resultWidth = sourceImage.Width;
-                resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
+
+                double wRatio = (double)sourceImage.Width / (double)previewWidth;
+                double hRatio = (double)sourceImage.Height / (double)previewHeight;
+
+                double coef = (double)previewHeight / (double)previewWidth;
+
+                if (wRatio < hRatio)
+                {
+                    resultWidth = sourceImage.Width;
+                    resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
+                }
+                else
+                {
+                    resultHeight = sourceImage.Height;
+                    resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
+                }
+
+                return new Rectangle(0, 0, resultWidth, resultHeight);
             }
             else
             {
-                resultHeight = sourceImage.Height;
-                resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
+                if (sourceImage.Width > sourceImage.Height)
+                {
+                    int shift = (int)Math.Truncate((sourceImage.Width - sourceImage.Height) / (double)2);
+                    return new Rectangle(0, -shift, sourceImage.Width, sourceImage.Height + shift * 2);
+                }
+                else
+                {
+                    int shift = (int)Math.Truncate((sourceImage.Height - sourceImage.Width) / (double)2);
+                    return new Rectangle(-shift, 0, sourceImage.Width + shift * 2, sourceImage.Height);
+                }
             }
-
-            return new Rectangle(0, 0, resultWidth, resultHeight);
         }
 
-        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo)
+        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode)
         {
-            Rectangle sourceRect = CalculateSourceRect(name, image.Size);
+            Rectangle sourceRect = CalculateSourceRect(name, image.Size, scaleMode);
 
             Rectangle destRect = CalculateDestRect(limWidth, limHeight, image.Size);
 
             Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
+            
             Graphics graphics = Graphics.FromImage(thumbnailImage);
+            graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
 
@@ -84,7 +107,7 @@ namespace ThumbnailsTest
             saveTo.Position = 0;
         }
 
-        public static string GetCachedImage(string originalPath, string fileName, string cacheFolder)
+        public static string GetCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
             if (string.IsNullOrEmpty(fileName) ||
                 !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
@@ -109,17 +132,17 @@ namespace ThumbnailsTest
             {
                 try
                 {
-                    CacheImage(originalPath, fileName, cacheFolder);
+                    CacheImage(originalPath, fileName, cacheFolder, scaleMode);
                 }
                 catch
                 {
-                    return GetCachedImage(originalPath, "nophoto.gif", cacheFolder);
+                    return GetCachedImage(originalPath, "nophoto.gif", cacheFolder, scaleMode);
                 }
                 return result;
             }
         }
 
-        private static void CacheImage(string originalPath, string fileName, string cacheFolder)
+        private static void CacheImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
             string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName);
             Bitmap image;
@@ -133,21 +156,21 @@ namespace ThumbnailsTest
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream);
+                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream, scaleMode);
             }
         }
 
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder), fileName);
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder, scaleMode), fileName);
             return sb.ToString();
         }
 
-        public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder)
+        public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
-            CacheImage(originalPath, fileName, cacheFolder);
+            CacheImage(originalPath, fileName, cacheFolder, scaleMode);
         }
 
 
