@@ -7,7 +7,7 @@
         @foreach (var category in Model.OrderBy(c=>c.Title))
         {
             <div class="childCategory">
-                @Html.Raw(Html.ActionLink("[Image]", "Categories", "Shop", new { Area = "", id = category.Name }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Images/", category.ImageSource, "thumbnail0", category.ImageSource)))
+                @Html.Raw(Html.ActionLink("[Image]", "Categories", "Shop", new { Area = "", id = category.Name }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Images/", category.ImageSource, "thumbnail0", ScaleMode.Insert)))
                 <div class="title">
                     @Html.ActionLink(category.Title, "Categories", "Shop", new { Area = "", id = category.Name }, null)
                 </div>

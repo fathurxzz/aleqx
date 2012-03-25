@@ -10,25 +10,32 @@
 <div id="pager">
     @for (int i = 0; i < pageCount; i++)
     {
+        
         if (i == page)
         {
+        <div class="current">
         @Html.Raw((i + 1).ToString())
-        }
+        </div>
+    }
         else
         {
+            <div>
         @Html.ActionLink((i + 1).ToString(), (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = i }, null)
-        }
-        if (i + 1 < pageCount)
+        </div>
+            }
+            
+        @*if (i + 1 < pageCount)
         {
         @Html.Raw(" ... ")
-        }
+        }*@
     }
 
-    @if (page>-1)
+    @if (page > -1)
     {
         <br/>
         @Html.ActionLink("весь список", (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = -1 }, null)
-    }else
+    }
+    else
     {
         <br/>
         <text>весь список</text>

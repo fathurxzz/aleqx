@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     <a rel="@Html.Raw("group" + productId)" href="../../../Content/Images/@item.ImageSource" class="fancy">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "thumbnail1", item.ImageSource))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "thumbnail1", ScaleMode.Insert))
                     </a>
                 </td>
                 <td>

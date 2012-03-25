@@ -17,6 +17,7 @@ namespace Shop.Models
         public Content Content { get; set; }
         public List<MenuItem> MainMenu { get; set; }
         public Order Order { get; set; }
+        public bool IsHomePage { get; set; }
 
         public SiteViewModel(ShopContainer context, string contentId, bool loadContent = true)
         {
@@ -50,6 +51,7 @@ namespace Shop.Models
                 else
                 {
                     content = context.Content.FirstOrDefault(c => c.MainPage);
+                    IsHomePage = true;
                 }
 
                 Content = content;

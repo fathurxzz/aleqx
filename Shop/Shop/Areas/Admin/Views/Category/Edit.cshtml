@@ -58,7 +58,7 @@
         @if (!string.IsNullOrEmpty(Model.ImageSource))
         {
             <a rel="@Html.Raw("group")" href="../../../Content/Images/@Model.ImageSource" class="fancy">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", Model.ImageSource))
+                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1",ScaleMode.Insert))
             </a>
             <br/>
         }

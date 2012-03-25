@@ -47,7 +47,7 @@
                 @{
            if (!string.IsNullOrEmpty(item.Logo))
            {
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.Logo, "thumbnail0", item.Logo))
+               @Html.Raw(Html.CachedImage("~/Content/Images/", item.Logo, "thumbnail0",ScaleMode.Insert))
            }
                 }
             </td>
