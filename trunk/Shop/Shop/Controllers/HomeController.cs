@@ -18,6 +18,7 @@ namespace Shop.Controllers
                 SiteViewModel model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
+                ViewBag.isHomePage = model.IsHomePage;
                 return View(model);
             }
         }

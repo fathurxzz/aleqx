@@ -105,7 +105,7 @@
            var image = item.ProductImages.FirstOrDefault(im => im.Default) ?? item.ProductImages.FirstOrDefault();
            if (image != null && image.Default)
            {
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", image.ImageSource))
+               @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", ScaleMode.Insert))
            }
                 }
             </td>

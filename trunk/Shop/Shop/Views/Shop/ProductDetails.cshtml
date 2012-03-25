@@ -40,7 +40,7 @@
                 {
                 <div class="image">
                     <a rel="@Html.Raw("group" + Model.Product.Id)" href="../../../Content/Images/@mainImage.ImageSource" class="fancy">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", mainImage.ImageSource, "thumbnail2", mainImage.ImageSource))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", mainImage.ImageSource, "thumbnail2", ScaleMode.Insert))
                     </a>
                 </div>
                 }
@@ -50,7 +50,7 @@
                 {
                 <div class="preview">
                     <a rel="@Html.Raw("group" + Model.Product.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail3", image.ImageSource))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail3", ScaleMode.Insert))
                     </a>
                 </div>
                 }

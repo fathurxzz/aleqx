@@ -145,7 +145,7 @@
                 {
                     cnt++;
                 <a rel="@Html.Raw("group" + Model.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail1", image.ImageSource))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail1", ScaleMode.Insert))
                 </a>
                if (cnt % 3 == 0)
                {

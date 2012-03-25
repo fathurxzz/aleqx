@@ -161,6 +161,7 @@
     <Content Include="Content\fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="Content\fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Content\img\menu_item_bg.gif" />
     <Content Include="Content\img\shopping-cart.jpg" />
     <Content Include="Content\img\toy-planet-logo.gif" />
     <Content Include="Content\old.css" />
@@ -180,6 +181,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\PageScripts.js" />
     <Content Include="SetCookie.aspx" />
     <Content Include="underconstruction.htm" />
     <Content Include="Web.config">

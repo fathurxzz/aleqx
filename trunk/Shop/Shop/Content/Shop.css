@@ -65,19 +65,31 @@
 .itemsContainer ul
 {
     list-style: none;
+    border: 1px solid #ced1d6;
 }
 
 .itemsContainer ul li
 {
-    border-bottom: 1px solid #E3E3E3;
-    padding: 7px;
+    /*border-bottom: 1px solid #E3E3E3;*/
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 7px;
     font-size: 14px;
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
+    background: url('img/menu_item_bg.gif') repeat-x;
+    height: 15px;
 }
 
 .itemsContainer ul li.child
 {
     padding-left: 20px;
+    background-image: none;
+    border-bottom: 1px solid #E3E3E3;
+    background-color: #f7f7f7;
+    
+    padding-top: 7px;
+    padding-bottom: 7px;
+    
 }
 
 .itemsContainer ul li a
@@ -368,9 +380,25 @@ img
     line-height: 20px;
 }
 
+#pager div {
+    border: 1px solid #e7e7e7;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+#pager div.current {
+   background-color: #f7f7f7;
+}
+
 #pager a
 {
+    display: block;
+    width: inherit;
+    height: inherit;
     
+    text-decoration: none;
 }
 
 
