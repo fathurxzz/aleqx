@@ -8,7 +8,10 @@
             var image = Model.ProductImages.FirstOrDefault(im => im.Default) ?? Model.ProductImages.FirstOrDefault();
             if (image != null)
             {
-                @Html.Raw(Html.ActionLink("[Image]", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail1", ScaleMode.Insert)))
+                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail1", ScaleMode.Insert))
+                <div class="frame">
+                </div>
+                @Html.Raw(@Html.ActionLink("[Image]", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null).ToString().Replace("[Image]", ""))
             }
             else
             {

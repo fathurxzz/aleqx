@@ -406,3 +406,24 @@ img
 {
     width: 310px;
 }
+
+.frame
+{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /*z-index: 1001;*/
+    background: url('img/frame.png');
+    /*background-color: red;*/
+}
+
+.image a
+{
+    display: block;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+}
+
+.image img
+{position: absolute}
