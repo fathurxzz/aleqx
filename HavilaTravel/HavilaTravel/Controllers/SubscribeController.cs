@@ -85,19 +85,19 @@ namespace HavilaTravel.Controllers
         [Authorize]
         public ActionResult SendEmail(FormCollection form)
         {
+
+            
+
             int successedSentEmails = 0;
             int failedSentEmails = 0;
             var mailText = HttpUtility.HtmlDecode(form["MailText"]).Replace("src=\"", "src=\"http://havila-travel.com/");
 
-            if (!string.IsNullOrEmpty(mailText))
-            {
+            
                 using (var context = new ContentStorage())
                 {
 
                     PostData agentsData = form.ProcessPostData("agent");
                     PostData touristData = form.ProcessPostData("tourist");
-
-
 
                     int[] agentIds = agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
                     int[] touristIds = touristData.Where(d => bool.Parse(d.Value["tourist"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
@@ -108,15 +108,37 @@ namespace HavilaTravel.Controllers
 
                     IEnumerable<Customers> all = agents.Concat(tourists);
 
-                    foreach (var customer in all)
+                    string kkey = form.Keys.Cast<string>().Where(key => key.StartsWith("fa")).FirstOrDefault();
+                    if (kkey == "faSaveDefaultSubscribers")
                     {
-                        if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText, "Рассылка Havila-Travel", true))
-                            successedSentEmails++;
-                        else
-                            failedSentEmails++;
+                        foreach (var customer in customers)
+                        {
+                            customer.IsActive = 0;
+                        }
+
+                        foreach (var customer in customers)
+                        {
+                            if (agentIds.Contains(Convert.ToInt32(customer.Id)) || touristIds.Contains(Convert.ToInt32(customer.Id)))
+                                customer.IsActive = 1;
+                        }
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(mailText))
+                        {
+                            foreach (var customer in all)
+                            {
+                                if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
+                                                           "Рассылка Havila-Travel", true))
+                                    successedSentEmails++;
+                                else
+                                    failedSentEmails++;
+                            }
+                        }
                     }
                 }
-            }
+            
 
             return RedirectToAction("Subscribers", new { s = successedSentEmails, f = failedSentEmails });
         }
