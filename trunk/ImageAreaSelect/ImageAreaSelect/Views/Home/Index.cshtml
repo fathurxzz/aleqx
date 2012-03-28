@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#civic').imgAreaSelect({ aspectRatio: '15:10', handles: true, onSelectEnd: function (img, selection) {
+            var x1 = selection.x1;
+            var y1 = selection.y1;
+            var width = selection.width;
+            var height = selection.height;
+
+            //alert("x1:" + x1 + " y1:" + y1 + "\r\n width:" + width + " height:" + height);
+            $("#tbx1").val(x1);
+            $("#tby1").val(y1);
+            $("#tbw").val(width);
+            $("#tbh").val(height);
+        }
+        });
+
+
+    });
+
+</script>
+<h2>
+    Index</h2>
+<br />
+<img id="civic" src="../../Content/Images/civic.jpg" alt="civic" />
+
+
+<table>
+    <tr>
+        <td>x1</td>
+        <td>@Html.TextBox("tbx1")</td>
+    </tr>
+    <tr>
+        <td>y1</td>
+        <td>@Html.TextBox("tby1")</td>
+    </tr>
+    <tr>
+        <td>width</td>
+        <td>@Html.TextBox("tbw")</td>
+    </tr>
+    <tr>
+        <td>height</td>
+        <td>@Html.TextBox("tbh")</td>
+    </tr>
+
+</table>
