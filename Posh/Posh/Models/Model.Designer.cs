@@ -21,6 +21,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Model", "ProductCategory", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Posh.Models.Product), "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Posh.Models.Category))]
 [assembly: EdmRelationshipAttribute("Model", "ProductAlbum", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Posh.Models.Product), "Album", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Posh.Models.Album), true)]
 [assembly: EdmRelationshipAttribute("Model", "ProductElement", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Posh.Models.Product), "Element", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Posh.Models.Element))]
+[assembly: EdmRelationshipAttribute("Model", "ProjectProjectItem", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Posh.Models.Project), "ProjectItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Posh.Models.ProjectItem), true)]
 
 #endregion
 
@@ -151,6 +152,70 @@ namespace Posh.Models
             }
         }
         private ObjectSet<Album> _Album;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Article> Article
+        {
+            get
+            {
+                if ((_Article == null))
+                {
+                    _Article = base.CreateObjectSet<Article>("Article");
+                }
+                return _Article;
+            }
+        }
+        private ObjectSet<Article> _Article;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Project> Project
+        {
+            get
+            {
+                if ((_Project == null))
+                {
+                    _Project = base.CreateObjectSet<Project>("Project");
+                }
+                return _Project;
+            }
+        }
+        private ObjectSet<Project> _Project;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ProjectItem> ProjectItem
+        {
+            get
+            {
+                if ((_ProjectItem == null))
+                {
+                    _ProjectItem = base.CreateObjectSet<ProjectItem>("ProjectItem");
+                }
+                return _ProjectItem;
+            }
+        }
+        private ObjectSet<ProjectItem> _ProjectItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<News> News
+        {
+            get
+            {
+                if ((_News == null))
+                {
+                    _News = base.CreateObjectSet<News>("News");
+                }
+                return _News;
+            }
+        }
+        private ObjectSet<News> _News;
 
         #endregion
         #region AddTo Methods
@@ -194,6 +259,38 @@ namespace Posh.Models
         {
             base.AddObject("Album", album);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Article EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToArticle(Article article)
+        {
+            base.AddObject("Article", article);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Project EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProject(Project project)
+        {
+            base.AddObject("Project", project);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ProjectItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProjectItem(ProjectItem projectItem)
+        {
+            base.AddObject("ProjectItem", projectItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the News EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToNews(News news)
+        {
+            base.AddObject("News", news);
+        }
 
         #endregion
     }
@@ -218,11 +315,15 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Album CreateAlbum(global::System.Int32 id, global::System.String title)
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Album CreateAlbum(global::System.Int32 id, global::System.String title, global::System.String name, global::System.String sortOrder)
         {
             Album album = new Album();
             album.Id = id;
             album.Title = title;
+            album.Name = name;
+            album.SortOrder = sortOrder;
             return album;
         }
 
@@ -279,6 +380,54 @@ namespace Posh.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -312,6 +461,165 @@ namespace Posh.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="Article")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Article : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Article object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Article CreateArticle(global::System.Int32 id, global::System.String title, global::System.String text, global::System.String name, global::System.String sortOrder)
+        {
+            Article article = new Article();
+            article.Id = id;
+            article.Title = title;
+            article.Text = text;
+            article.Name = name;
+            article.SortOrder = sortOrder;
+            return article;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Model", Name="Category")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -324,11 +632,13 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String sortOrder)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
+            category.SortOrder = sortOrder;
             return category;
         }
 
@@ -385,6 +695,30 @@ namespace Posh.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -435,7 +769,8 @@ namespace Posh.Models
         /// <param name="seoText">Initial value of the SeoText property.</param>
         /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
         /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String tittle, global::System.String text, global::System.String seoTitle, global::System.String seoText, global::System.String seoDescription, global::System.String seoKeywords)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String tittle, global::System.String text, global::System.String seoTitle, global::System.String seoText, global::System.String seoDescription, global::System.String seoKeywords, global::System.String sortOrder)
         {
             Content content = new Content();
             content.Id = id;
@@ -445,6 +780,7 @@ namespace Posh.Models
             content.SeoText = seoText;
             content.SeoDescription = seoDescription;
             content.SeoKeywords = seoKeywords;
+            content.SortOrder = sortOrder;
             return content;
         }
 
@@ -621,6 +957,30 @@ namespace Posh.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -641,11 +1001,13 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Element CreateElement(global::System.Int32 id, global::System.String title)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Element CreateElement(global::System.Int32 id, global::System.String title, global::System.String sortOrder)
         {
             Element element = new Element();
             element.Id = id;
             element.Title = title;
+            element.SortOrder = sortOrder;
             return element;
         }
 
@@ -702,6 +1064,30 @@ namespace Posh.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -735,6 +1121,165 @@ namespace Posh.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="News")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class News : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new News object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        public static News CreateNews(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String date, global::System.String text)
+        {
+            News news = new News();
+            news.Id = id;
+            news.Name = name;
+            news.Title = title;
+            news.Date = date;
+            news.Text = text;
+            return news;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.String _Date;
+        partial void OnDateChanging(global::System.String value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="Model", Name="Product")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -749,13 +1294,17 @@ namespace Posh.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="albumId">Initial value of the AlbumId property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.Int32 albumId, global::System.String name)
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.Int32 albumId, global::System.String name, global::System.String imageSource, global::System.String sortOrder)
         {
             Product product = new Product();
             product.Id = id;
             product.Title = title;
             product.AlbumId = albumId;
             product.Name = name;
+            product.ImageSource = imageSource;
+            product.SortOrder = sortOrder;
             return product;
         }
 
@@ -860,6 +1409,54 @@ namespace Posh.Models
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -943,6 +1540,416 @@ namespace Posh.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Element>("Model.ProductElement", "Element", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="Project")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Project : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Project object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="textTop">Initial value of the TextTop property.</param>
+        /// <param name="textBottom">Initial value of the TextBottom property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Project CreateProject(global::System.Int32 id, global::System.String title, global::System.String textTop, global::System.String textBottom, global::System.String imageSource, global::System.String sortOrder)
+        {
+            Project project = new Project();
+            project.Id = id;
+            project.Title = title;
+            project.TextTop = textTop;
+            project.TextBottom = textBottom;
+            project.ImageSource = imageSource;
+            project.SortOrder = sortOrder;
+            return project;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TextTop
+        {
+            get
+            {
+                return _TextTop;
+            }
+            set
+            {
+                OnTextTopChanging(value);
+                ReportPropertyChanging("TextTop");
+                _TextTop = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TextTop");
+                OnTextTopChanged();
+            }
+        }
+        private global::System.String _TextTop;
+        partial void OnTextTopChanging(global::System.String value);
+        partial void OnTextTopChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TextBottom
+        {
+            get
+            {
+                return _TextBottom;
+            }
+            set
+            {
+                OnTextBottomChanging(value);
+                ReportPropertyChanging("TextBottom");
+                _TextBottom = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TextBottom");
+                OnTextBottomChanged();
+            }
+        }
+        private global::System.String _TextBottom;
+        partial void OnTextBottomChanging(global::System.String value);
+        partial void OnTextBottomChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "ProjectProjectItem", "ProjectItem")]
+        public EntityCollection<ProjectItem> ProjectItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProjectItem>("Model.ProjectProjectItem", "ProjectItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProjectItem>("Model.ProjectProjectItem", "ProjectItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="ProjectItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ProjectItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ProjectItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="projectId">Initial value of the ProjectId property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static ProjectItem CreateProjectItem(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 projectId, global::System.String sortOrder)
+        {
+            ProjectItem projectItem = new ProjectItem();
+            projectItem.Id = id;
+            projectItem.Title = title;
+            projectItem.ImageSource = imageSource;
+            projectItem.ProjectId = projectId;
+            projectItem.SortOrder = sortOrder;
+            return projectItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProjectId
+        {
+            get
+            {
+                return _ProjectId;
+            }
+            set
+            {
+                OnProjectIdChanging(value);
+                ReportPropertyChanging("ProjectId");
+                _ProjectId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProjectId");
+                OnProjectIdChanged();
+            }
+        }
+        private global::System.Int32 _ProjectId;
+        partial void OnProjectIdChanging(global::System.Int32 value);
+        partial void OnProjectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.String _SortOrder;
+        partial void OnSortOrderChanging(global::System.String value);
+        partial void OnSortOrderChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "ProjectProjectItem", "Project")]
+        public Project Project
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Model.ProjectProjectItem", "Project").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Model.ProjectProjectItem", "Project").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Project> ProjectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Model.ProjectProjectItem", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("Model.ProjectProjectItem", "Project", value);
                 }
             }
         }
