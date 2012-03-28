@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using HavilaTravel.Helpers;
 using HavilaTravel.Models;
 
 namespace HavilaTravel.Areas.Admin.Controllers
@@ -29,6 +31,14 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 article.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.AddToArticle(article);
                 context.SaveChanges();
+
+                var mailText = article.Text.Replace("src=\"", "src=\"http://havila-travel.com/");
+                var customers = context.Customers.Where(c=>c.IsActive==1).ToList();
+                foreach (var customer in customers)
+                {
+                    MailHelper.SendMessage(new MailAddress(customer.Email), mailText, "Рассылка Havila-Travel", true);
+                }
+
             }
             return RedirectToAction("Index", "Articles", new { Area = "" });
         }
