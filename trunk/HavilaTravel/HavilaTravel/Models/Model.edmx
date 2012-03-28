@@ -94,6 +94,7 @@
           <Property Name="Name" Type="varchar" Nullable="false" />
           <Property Name="Email" Type="varchar" Nullable="false" />
           <Property Name="SubscribeType" Type="tinyint" Nullable="false" />
+          <Property Name="IsActive" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="mailtemplate">
           <Key>
@@ -223,6 +224,7 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="SByte" Name="SubscribeType" Nullable="false" />
+          <Property Type="SByte" Name="IsActive" Nullable="false" />
         </EntityType>
         <EntityType Name="MailTemplate">
           <Key>
@@ -328,6 +330,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="havilaModel.Customers">
               <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="SubscribeType" ColumnName="SubscribeType" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

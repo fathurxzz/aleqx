@@ -1597,13 +1597,15 @@ namespace HavilaTravel.Models
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="subscribeType">Initial value of the SubscribeType property.</param>
-        public static Customers CreateCustomers(global::System.Int64 id, global::System.String name, global::System.String email, global::System.SByte subscribeType)
+        /// <param name="isActive">Initial value of the IsActive property.</param>
+        public static Customers CreateCustomers(global::System.Int64 id, global::System.String name, global::System.String email, global::System.SByte subscribeType, global::System.SByte isActive)
         {
             Customers customers = new Customers();
             customers.Id = id;
             customers.Name = name;
             customers.Email = email;
             customers.SubscribeType = subscribeType;
+            customers.IsActive = isActive;
             return customers;
         }
 
@@ -1708,6 +1710,30 @@ namespace HavilaTravel.Models
         private global::System.SByte _SubscribeType;
         partial void OnSubscribeTypeChanging(global::System.SByte value);
         partial void OnSubscribeTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.SByte IsActive
+        {
+            get
+            {
+                return _IsActive;
+            }
+            set
+            {
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
+            }
+        }
+        private global::System.SByte _IsActive;
+        partial void OnIsActiveChanging(global::System.SByte value);
+        partial void OnIsActiveChanged();
 
         #endregion
     
