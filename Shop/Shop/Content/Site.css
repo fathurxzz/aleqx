@@ -111,7 +111,7 @@ a
     text-decoration: none;
     color: #fff;
     height: 30px;
-    padding: 0 15px;
+    padding: 0 25px;
     /*background-color: #FB4600;*/
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
@@ -124,12 +124,14 @@ a
 
 .color0
 {
-    background-color: #03d82e;
+    /*background-color: #03d82e;*/
+    background-image: url('img/mainmenu-bg0.gif');
 }
 
 .color1
 {
-    background-color: #fb0009;
+    background-image: url('img/mainmenu-bg1.gif');
+    /*background-color: #fb0009;*/
 }
 
 #mainMenu li div.selected
@@ -137,7 +139,7 @@ a
     height: 34px;
     z-index: 1001;
     
-    padding: 0 15px;
+    padding: 0 25px;
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
     -moz-border-radius: 8px 8px 0 0;
