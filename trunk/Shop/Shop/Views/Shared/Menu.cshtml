@@ -1,18 +1,29 @@
 ﻿@model IEnumerable<Shop.Models.MenuItem>
 <nav>
 <ul>
-@foreach (var item in Model.OrderBy(m=>m.SortOrder))
-{
-    <li>
-        @if (item.Selected)
-        {
-            @item.Title
-        }
-        else
-        {
-            @Html.ActionLink(item.Title, "Index", "Home", new {Area = "", id = item.Name}, null)
-        }
-    </li>
+
+@{
+    int cnt = 0;
+    
+    foreach (var item in Model.OrderBy(m => m.SortOrder))
+    {
+        cnt++;
+
+        string className = "color"+ cnt%2;
+        
+        <li>
+            @if (item.Selected)
+            {
+
+                <div class="selected">@item.Title</div>
+
+            }
+            else
+            {
+                @Html.ActionLink(item.Title, "Index", "Home", new {Area = "", id = item.Name}, new{@class = className})
+            }
+        </li>
+    }
 }
 </ul>
 </nav>
