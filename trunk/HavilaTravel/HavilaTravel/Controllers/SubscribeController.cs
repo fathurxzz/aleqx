@@ -86,7 +86,12 @@ namespace HavilaTravel.Controllers
         public ActionResult SendEmail(FormCollection form)
         {
 
-            
+            string mailSubject = "Рассылка Havila-Travel";
+            if (!string.IsNullOrEmpty(form["mailSubject"]))
+            {
+                mailSubject = form["mailSubject"];
+            }
+
 
             int successedSentEmails = 0;
             int failedSentEmails = 0;
@@ -130,7 +135,7 @@ namespace HavilaTravel.Controllers
                             foreach (var customer in all)
                             {
                                 if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
-                                                           "Рассылка Havila-Travel", true))
+                                                           mailSubject, true))
                                     successedSentEmails++;
                                 else
                                     failedSentEmails++;
