@@ -87,21 +87,21 @@ a
 
 #mainMenu li
 {
-    /*padding: 0px;*/
+    
     text-transform: uppercase;
     width: auto;
     font-size: 14px;
-    height: 30px;
+    height: 35px;
     line-height: 30px;
     float: left;
     margin-left: 10px;
     color: #E7E7E7;
-    background-color: #FB4600;
+    
     font-weight: bold;
-    border-radius: 8px 8px 0 0;
-    -webkit-border-radius: 8px 8px 0 0;
-    -moz-border-radius: 8px 8px 0 0;
-    padding: 0 15px;
+    /*width: 120px;*/
+    text-align: center;
+    
+    
 }
 
 #mainMenu li a
@@ -110,17 +110,60 @@ a
     display: block;
     text-decoration: none;
     color: #fff;
+    height: 30px;
+    padding: 0 15px;
+    /*background-color: #FB4600;*/
+    border-radius: 8px 8px 0 0;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+
+    
+    
+   border-bottom: 5px solid #E7E7E7;
 }
+
+.color0
+{
+    background-color: #03d82e;
+}
+
+.color1
+{
+    background-color: #fb0009;
+}
+
+#mainMenu li div.selected
+{
+    height: 34px;
+    z-index: 1001;
+    
+    padding: 0 15px;
+    border-radius: 8px 8px 0 0;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    border: 1px solid #E7E7E7;
+    background-color: #fff;
+    color: #817A7A;
+
+    /*position: absolute;*/
+    border-bottom: none;
+    
+    
+}
+
 
 #mainMenu li a:hover
 {
-    color: #ddd;
+    /*color: #ddd;*/
 }
 
-#mainMenuFooter
+#menuLine
 {
-    background-color: #E7E7E7;
-    height: 5px;
+    position: absolute;
+    width: 940px;
+    border-bottom: 5px solid #E7E7E7;
+    margin-top: 30px;
+    z-index: -1000;
 }
 
 
