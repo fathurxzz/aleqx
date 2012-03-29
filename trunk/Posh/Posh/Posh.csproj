@@ -88,6 +88,7 @@
     <Content Include="Content\img\headerline-right.gif" />
     <Content Include="Content\old.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Model.edmx.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />

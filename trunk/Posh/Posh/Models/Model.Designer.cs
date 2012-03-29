@@ -316,14 +316,12 @@ namespace Posh.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Album CreateAlbum(global::System.Int32 id, global::System.String title, global::System.String name, global::System.String sortOrder)
+        public static Album CreateAlbum(global::System.Int32 id, global::System.String title, global::System.String name)
         {
             Album album = new Album();
             album.Id = id;
             album.Title = title;
             album.Name = name;
-            album.SortOrder = sortOrder;
             return album;
         }
 
@@ -410,7 +408,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -420,13 +418,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -475,15 +473,13 @@ namespace Posh.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Article CreateArticle(global::System.Int32 id, global::System.String title, global::System.String text, global::System.String name, global::System.String sortOrder)
+        public static Article CreateArticle(global::System.Int32 id, global::System.String title, global::System.String text, global::System.String name)
         {
             Article article = new Article();
             article.Id = id;
             article.Title = title;
             article.Text = text;
             article.Name = name;
-            article.SortOrder = sortOrder;
             return article;
         }
 
@@ -594,7 +590,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -604,13 +600,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -632,13 +628,11 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String sortOrder)
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
-            category.SortOrder = sortOrder;
             return category;
         }
 
@@ -701,7 +695,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -711,13 +705,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -764,23 +758,11 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="tittle">Initial value of the Tittle property.</param>
-        /// <param name="text">Initial value of the Text property.</param>
-        /// <param name="seoTitle">Initial value of the SeoTitle property.</param>
-        /// <param name="seoText">Initial value of the SeoText property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String tittle, global::System.String text, global::System.String seoTitle, global::System.String seoText, global::System.String seoDescription, global::System.String seoKeywords, global::System.String sortOrder)
+        public static Content CreateContent(global::System.Int32 id, global::System.String tittle)
         {
             Content content = new Content();
             content.Id = id;
             content.Tittle = tittle;
-            content.Text = text;
-            content.SeoTitle = seoTitle;
-            content.SeoText = seoText;
-            content.SeoDescription = seoDescription;
-            content.SeoKeywords = seoKeywords;
-            content.SortOrder = sortOrder;
             return content;
         }
 
@@ -841,7 +823,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Text
         {
@@ -853,7 +835,7 @@ namespace Posh.Models
             {
                 OnTextChanging(value);
                 ReportPropertyChanging("Text");
-                _Text = StructuralObject.SetValidValue(value, false);
+                _Text = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Text");
                 OnTextChanged();
             }
@@ -865,7 +847,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoTitle
         {
@@ -877,7 +859,7 @@ namespace Posh.Models
             {
                 OnSeoTitleChanging(value);
                 ReportPropertyChanging("SeoTitle");
-                _SeoTitle = StructuralObject.SetValidValue(value, false);
+                _SeoTitle = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoTitle");
                 OnSeoTitleChanged();
             }
@@ -889,7 +871,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoText
         {
@@ -901,7 +883,7 @@ namespace Posh.Models
             {
                 OnSeoTextChanging(value);
                 ReportPropertyChanging("SeoText");
-                _SeoText = StructuralObject.SetValidValue(value, false);
+                _SeoText = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoText");
                 OnSeoTextChanged();
             }
@@ -913,7 +895,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -925,7 +907,7 @@ namespace Posh.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -937,7 +919,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -949,7 +931,7 @@ namespace Posh.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }
@@ -963,7 +945,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -973,13 +955,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -1001,13 +983,11 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Element CreateElement(global::System.Int32 id, global::System.String title, global::System.String sortOrder)
+        public static Element CreateElement(global::System.Int32 id, global::System.String title)
         {
             Element element = new Element();
             element.Id = id;
             element.Title = title;
-            element.SortOrder = sortOrder;
             return element;
         }
 
@@ -1070,7 +1050,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -1080,13 +1060,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -1136,7 +1116,7 @@ namespace Posh.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="date">Initial value of the Date property.</param>
         /// <param name="text">Initial value of the Text property.</param>
-        public static News CreateNews(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String date, global::System.String text)
+        public static News CreateNews(global::System.Int32 id, global::System.String name, global::System.String title, global::System.DateTime date, global::System.String text)
         {
             News news = new News();
             news.Id = id;
@@ -1230,7 +1210,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Date
+        public global::System.DateTime Date
         {
             get
             {
@@ -1240,13 +1220,13 @@ namespace Posh.Models
             {
                 OnDateChanging(value);
                 ReportPropertyChanging("Date");
-                _Date = StructuralObject.SetValidValue(value, false);
+                _Date = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Date");
                 OnDateChanged();
             }
         }
-        private global::System.String _Date;
-        partial void OnDateChanging(global::System.String value);
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
         partial void OnDateChanged();
     
         /// <summary>
@@ -1295,8 +1275,7 @@ namespace Posh.Models
         /// <param name="albumId">Initial value of the AlbumId property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.Int32 albumId, global::System.String name, global::System.String imageSource, global::System.String sortOrder)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.Int32 albumId, global::System.String name, global::System.String imageSource)
         {
             Product product = new Product();
             product.Id = id;
@@ -1304,7 +1283,6 @@ namespace Posh.Models
             product.AlbumId = albumId;
             product.Name = name;
             product.ImageSource = imageSource;
-            product.SortOrder = sortOrder;
             return product;
         }
 
@@ -1439,7 +1417,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -1449,13 +1427,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -1562,19 +1540,13 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="textTop">Initial value of the TextTop property.</param>
-        /// <param name="textBottom">Initial value of the TextBottom property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Project CreateProject(global::System.Int32 id, global::System.String title, global::System.String textTop, global::System.String textBottom, global::System.String imageSource, global::System.String sortOrder)
+        public static Project CreateProject(global::System.Int32 id, global::System.String title, global::System.String imageSource)
         {
             Project project = new Project();
             project.Id = id;
             project.Title = title;
-            project.TextTop = textTop;
-            project.TextBottom = textBottom;
             project.ImageSource = imageSource;
-            project.SortOrder = sortOrder;
             return project;
         }
 
@@ -1635,7 +1607,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String TextTop
         {
@@ -1647,7 +1619,7 @@ namespace Posh.Models
             {
                 OnTextTopChanging(value);
                 ReportPropertyChanging("TextTop");
-                _TextTop = StructuralObject.SetValidValue(value, false);
+                _TextTop = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("TextTop");
                 OnTextTopChanged();
             }
@@ -1659,7 +1631,7 @@ namespace Posh.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String TextBottom
         {
@@ -1671,7 +1643,7 @@ namespace Posh.Models
             {
                 OnTextBottomChanging(value);
                 ReportPropertyChanging("TextBottom");
-                _TextBottom = StructuralObject.SetValidValue(value, false);
+                _TextBottom = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("TextBottom");
                 OnTextBottomChanged();
             }
@@ -1709,7 +1681,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -1719,13 +1691,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
@@ -1774,15 +1746,13 @@ namespace Posh.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="projectId">Initial value of the ProjectId property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static ProjectItem CreateProjectItem(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 projectId, global::System.String sortOrder)
+        public static ProjectItem CreateProjectItem(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 projectId)
         {
             ProjectItem projectItem = new ProjectItem();
             projectItem.Id = id;
             projectItem.Title = title;
             projectItem.ImageSource = imageSource;
             projectItem.ProjectId = projectId;
-            projectItem.SortOrder = sortOrder;
             return projectItem;
         }
 
@@ -1893,7 +1863,7 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -1903,13 +1873,13 @@ namespace Posh.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
