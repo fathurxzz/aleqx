@@ -7,7 +7,7 @@
     
     foreach (var item in Model.OrderBy(m => m.SortOrder))
     {
-        cnt++;
+        
 
         string className = "color"+ cnt%2;
         
@@ -23,6 +23,7 @@
                 @Html.ActionLink(item.Title, "Index", "Home", new {Area = "", id = item.Name}, new{@class = className})
             }
         </li>
+        cnt++;
     }
 }
 </ul>

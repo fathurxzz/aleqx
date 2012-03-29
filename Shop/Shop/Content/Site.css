@@ -111,7 +111,7 @@ a
     text-decoration: none;
     color: #fff;
     height: 30px;
-    padding: 0 25px;
+    
     /*background-color: #FB4600;*/
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
@@ -120,6 +120,10 @@ a
     
     
    border-bottom: 5px solid #E7E7E7;
+}
+
+#mainMenu li a, #mainMenu li div.selected {
+    padding: 0 20px;
 }
 
 .color0
@@ -139,7 +143,7 @@ a
     height: 34px;
     z-index: 1001;
     
-    padding: 0 25px;
+   
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
     -moz-border-radius: 8px 8px 0 0;
