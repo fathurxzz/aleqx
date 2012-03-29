@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Posh.Models;
 
 namespace Posh.Controllers
 {
@@ -10,7 +11,11 @@ namespace Posh.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            using (var context = new ModelContainer())
+            {
+                ViewBag.Categories = context.Category.ToList();
+                ViewBag.Elements = context.Element.ToList();
+            }
 
             return View();
         }

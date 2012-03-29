@@ -10,6 +10,9 @@ body
     font-family: Arial;
     font-size: 12px;
 }
+.clear {
+    clear: both;
+}
 
 #outerHeaderTitle
 {
@@ -142,4 +145,55 @@ body
 .content.bottom
 {
     margin-bottom: 30px;
+}
+
+.selector
+{
+    background-color: #fff;
+}
+
+.selector div
+{
+    text-align: center;
+}
+
+.selector .mainTitle
+{
+    
+}
+
+.category
+{
+    width: 138px;
+    height: 138px;
+    border: 1px solid #000;
+    margin: 13px;
+    float: left;
+    cursor: pointer;
+    background-image: url('img/category-bg.gif');
+}
+
+
+/*.category:hover
+{
+    border: 1px solid red !important;
+}*/
+
+.category img
+{
+    position: absolute;
+}
+
+.category .categoryTitle
+{
+    position: absolute;
+    
+}
+
+.categoryItems
+{
+    width: 830px;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid black;
 }

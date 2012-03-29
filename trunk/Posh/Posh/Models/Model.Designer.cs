@@ -628,11 +628,13 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title)
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String imageSource)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
+            category.ImageSource = imageSource;
             return category;
         }
 
@@ -713,6 +715,30 @@ namespace Posh.Models
         private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     
@@ -758,11 +784,13 @@ namespace Posh.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="tittle">Initial value of the Tittle property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String tittle)
+        /// <param name="static">Initial value of the Static property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String tittle, global::System.Boolean @static)
         {
             Content content = new Content();
             content.Id = id;
             content.Tittle = tittle;
+            content.Static = @static;
             return content;
         }
 
@@ -963,6 +991,30 @@ namespace Posh.Models
         private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Static
+        {
+            get
+            {
+                return _Static;
+            }
+            set
+            {
+                OnStaticChanging(value);
+                ReportPropertyChanging("Static");
+                _Static = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Static");
+                OnStaticChanged();
+            }
+        }
+        private global::System.Boolean _Static;
+        partial void OnStaticChanging(global::System.Boolean value);
+        partial void OnStaticChanged();
 
         #endregion
     
