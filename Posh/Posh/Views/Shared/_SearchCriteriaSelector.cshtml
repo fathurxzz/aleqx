@@ -1,0 +1,47 @@
+﻿@using Posh.Models
+
+<script type="text/javascript">
+
+    $(function () {
+        $(".category").hover(
+            function () {
+                 $(this)
+            }, 
+            function () {
+                
+            });
+    });
+
+</script>
+
+<div class="selector">
+    <div class="mainTitle">
+        Я хочу обустроить</div>
+    <div>
+        Веберите одну или несколько категорий, чтобы отфильтровать продукцию</div>
+    @{
+        var categories = (IEnumerable<Category>)ViewBag.Categories;
+        var elements = (IEnumerable<Element>)ViewBag.Elements;
+    }
+    <div class="categoryItems">
+        @foreach (var category in categories)
+        {
+            @Html.Partial("_Category", category)
+        }
+        <div class="clear"></div>
+        @Html.ActionLink("добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+    </div>
+    <div>
+        В выбранных разделах показывать только...</div>
+    <div>
+        @foreach (var element in elements)
+        {
+
+        }
+    </div>
+    <div>
+        Если не выбрать ни одного компонента, ассортимент будет показан полностью</div>
+        <div>
+    <input type="submit" value="Готово!" />
+    </div>
+</div>
