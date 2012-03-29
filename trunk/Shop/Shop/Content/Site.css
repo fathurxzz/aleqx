@@ -128,14 +128,24 @@ a
 
 .color0
 {
-    /*background-color: #03d82e;*/
-    background-image: url('img/mainmenu-bg0.gif');
+    background-image: url('img/menubg0.gif');
 }
 
 .color1
 {
-    background-image: url('img/mainmenu-bg1.gif');
-    /*background-color: #fb0009;*/
+    background-image: url('img/menubg1.gif');
+}
+.color2
+{
+    background-image: url('img/menubg2.gif');
+}
+.color3
+{
+    background-image: url('img/menubg3.gif');
+}
+.color4
+{
+    background-image: url('img/menubg4.gif');
 }
 
 #mainMenu li div.selected
