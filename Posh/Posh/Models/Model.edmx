@@ -47,7 +47,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Tittle" Type="mediumtext" Nullable="false" />
+    <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SeoTitle" Type="mediumtext" Nullable="true" />
     <Property Name="SeoText" Type="longtext" Nullable="true" />
@@ -55,6 +55,9 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="Static" Type="bool" Nullable="false" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
+    <Property Name="Name" Type="mediumtext" Nullable="false" />
+    <Property Name="PageTitle" Type="mediumtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -258,7 +261,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Tittle" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="Text" Nullable="true" />
           <Property Type="String" Name="SeoTitle" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="SeoText" Nullable="true" />
@@ -266,6 +269,9 @@
           <Property Type="String" Name="SeoKeywords" Nullable="true" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <Property Type="Boolean" Name="Static" Nullable="false" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PageTitle" Nullable="false" MaxLength="500" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -395,7 +401,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model.Content)">
         <MappingFragment StoreEntitySet="Content">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SeoTitle" ColumnName="SeoTitle" />
           <ScalarProperty Name="SeoText" ColumnName="SeoText" />
@@ -403,6 +409,9 @@
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Static" ColumnName="Static" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -529,7 +538,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model" >
-        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="0.75" PointY="0.5" Height="2.41404296875" />
+        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="0.75" PointY="0.5" Height="2.9070849609375" />
         <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="3.375" Height="2.4140429687499996" />
         <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="5.875" PointY="3.375" Height="1.7566536458333335" />
         <EntityTypeShape EntityType="Model.Element" Width="1.5" PointX="0.75" PointY="3.375" Height="1.5923063151041665" />
