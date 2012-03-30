@@ -5,25 +5,39 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/29/2012 12:34:52
+-- Date Created: 03/30/2012 11:18:30
 -- Generated from EDMX file: D:\projects\Posh\Posh\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `posh`;
-CREATE DATABASE `posh`;
-USE `posh`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `ProductCategory` DROP CONSTRAINT `FK_ProductCategory_Product`;
+--    ALTER TABLE `ProductCategory` DROP CONSTRAINT `FK_ProductCategory_Category`;
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_ProductAlbum`;
+--    ALTER TABLE `ProductElement` DROP CONSTRAINT `FK_ProductElement_Product`;
+--    ALTER TABLE `ProductElement` DROP CONSTRAINT `FK_ProductElement_Element`;
+--    ALTER TABLE `ProjectItem` DROP CONSTRAINT `FK_ProjectProjectItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
+    DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `Product`;
+    DROP TABLE IF EXISTS `Category`;
+    DROP TABLE IF EXISTS `Element`;
+    DROP TABLE IF EXISTS `Album`;
+    DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `Project`;
+    DROP TABLE IF EXISTS `ProjectItem`;
+    DROP TABLE IF EXISTS `News`;
+    DROP TABLE IF EXISTS `ProductCategory`;
+    DROP TABLE IF EXISTS `ProductElement`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -34,14 +48,17 @@ SET foreign_key_checks = 1;
 
 CREATE TABLE `Content` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Tittle` mediumtext  NOT NULL,
+    `Title` mediumtext  NOT NULL,
     `Text` longtext  NULL,
     `SeoTitle` mediumtext  NULL,
     `SeoText` longtext  NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
     `SortOrder` int  NOT NULL,
-    `Static` bool  NOT NULL
+    `Static` bool  NOT NULL,
+    `MainPage` bool  NOT NULL,
+    `Name` mediumtext  NOT NULL,
+    `PageTitle` mediumtext  NOT NULL
 );
 
 -- Creating table 'Product'

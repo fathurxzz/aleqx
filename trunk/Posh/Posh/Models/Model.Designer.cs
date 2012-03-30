@@ -783,14 +783,20 @@ namespace Posh.Models
         /// Create a new Content object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="tittle">Initial value of the Tittle property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
         /// <param name="static">Initial value of the Static property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String tittle, global::System.Boolean @static)
+        /// <param name="mainPage">Initial value of the MainPage property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="pageTitle">Initial value of the PageTitle property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String title, global::System.Boolean @static, global::System.Boolean mainPage, global::System.String name, global::System.String pageTitle)
         {
             Content content = new Content();
             content.Id = id;
-            content.Tittle = tittle;
+            content.Title = title;
             content.Static = @static;
+            content.MainPage = mainPage;
+            content.Name = name;
+            content.PageTitle = pageTitle;
             return content;
         }
 
@@ -829,24 +835,24 @@ namespace Posh.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Tittle
+        public global::System.String Title
         {
             get
             {
-                return _Tittle;
+                return _Title;
             }
             set
             {
-                OnTittleChanging(value);
-                ReportPropertyChanging("Tittle");
-                _Tittle = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Tittle");
-                OnTittleChanged();
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
             }
         }
-        private global::System.String _Tittle;
-        partial void OnTittleChanging(global::System.String value);
-        partial void OnTittleChanged();
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1015,6 +1021,78 @@ namespace Posh.Models
         private global::System.Boolean _Static;
         partial void OnStaticChanging(global::System.Boolean value);
         partial void OnStaticChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean MainPage
+        {
+            get
+            {
+                return _MainPage;
+            }
+            set
+            {
+                OnMainPageChanging(value);
+                ReportPropertyChanging("MainPage");
+                _MainPage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MainPage");
+                OnMainPageChanged();
+            }
+        }
+        private global::System.Boolean _MainPage;
+        partial void OnMainPageChanging(global::System.Boolean value);
+        partial void OnMainPageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                OnPageTitleChanging(value);
+                ReportPropertyChanging("PageTitle");
+                _PageTitle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PageTitle");
+                OnPageTitleChanged();
+            }
+        }
+        private global::System.String _PageTitle;
+        partial void OnPageTitleChanging(global::System.String value);
+        partial void OnPageTitleChanged();
 
         #endregion
     
