@@ -22,6 +22,28 @@ namespace Posh
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               "Default1", // Route name
+               "", // URL with parameters
+               new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+               new string[1] { "Shop.Controllers" }
+           );
+
+            routes.MapRoute(
+                "Catalogue", // Route name
+                "catalogue/{id}", // URL with parameters
+                new { controller = "Home", action = "Catalogue", id = "" },
+                new string[1] { "Shop.Controllers" }
+            );
+
+
+            routes.MapRoute(
+              "Content", // Route name
+              "{id}", // URL with parameters
+              new { controller = "Home", action = "Index", id = "" },
+              new string[1] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
