@@ -49,9 +49,5 @@ namespace Posh.Models
         [DisplayName("Основная страница")]
         public string MainPage { get; set; }
 
-        [DisplayName("Статическая страница")]
-        public string Static { get; set; }
-
-
     }
 }

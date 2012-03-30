@@ -34,8 +34,7 @@ namespace Posh.Areas.Admin.Controllers
                                        "MainPage",
                                        "SeoTitle",
                                        "SeoDescription",
-                                       "SeoKeywords",
-                                       "Static"
+                                       "SeoKeywords"
                                    });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.Text = HttpUtility.HtmlDecode(form["SeoText"]);
