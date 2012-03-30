@@ -37,10 +37,44 @@ namespace Posh.Areas.Admin.Controllers
                                        "SeoKeywords"
                                    });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                content.Text = HttpUtility.HtmlDecode(form["SeoText"]);
+                content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.AddToContent(content);
                 context.SaveChanges();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home", new { Area = "" });
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var content = context.Content.First(c => c.Id == id);
+                return View(content);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection form)
+        {
+            using (var context = new ModelContainer())
+            {
+                var content = context.Content.First(c => c.Id == id);
+                TryUpdateModel(content,
+                              new[]
+                                   {
+                                       "Name",
+                                       "Title",
+                                       "PageTitle",
+                                       "SortOrder",
+                                       "MainPage",
+                                       "SeoTitle",
+                                       "SeoDescription",
+                                       "SeoKeywords"
+                                   });
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new { Area = "" });
             }
         }
     }

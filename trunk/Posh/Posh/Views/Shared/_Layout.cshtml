@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Posh.Models
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -18,7 +19,8 @@
                 <div class="headerLineLeft">
                 </div>
                 <div id="mainMenu">
-                    menu</div>
+                    @Html.Partial("_Menu", (IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
+                </div>
                 <div class="headerLineRight">
                 </div>
             </div>
@@ -26,31 +28,18 @@
     </div>
     <div id="main">
         <div class="title">
-            Здравствуйте!
-            </div>
-            <div class="content">
-            Наша компания занимается обустройством частных и коммерческих площадей качественной мебелью и элементами дизайна.
-Вы можете перейти в наш общий каталог продукции, или выбрать интересующую вас категорию продукции в форме ниже
-(тогда вам будут показаны только товары, принадлежащие к выбранной категории):
-            </div>
+            @RenderSection("Title", false)
+        </div>
+        <div class="content">
+            @RenderSection("Content", false)
+        </div>
         @RenderBody()
-
-        <div class="title">
-        Несколько слов о нас
+        <div class="title seo">
+            @RenderSection("SeoTitle", false)
         </div>
-
-        <div class="content bottom">
-        <p>
-        Наша компания основана в 2005 году. Английское слово “POSH” означает “шик” и “роскошь” и мы, оправдывая наше название, несём в каждый дом и шик и роскошь. 
-        </p>
-        <p>
-У нас вы увидите широкий выбор уличной мебели из искусственного ротанга и не только, аксессуаров и интерьерных деталей, которые помогут создать вам уют и комфорт в вашем саду, на террасе и доме.
-</p>
-<p>
-Мы также предлагаем мебель для гостиниц, мебель для кафе, мебель для ресторанов, конференций и мебель для банкетных залов, уличную мебель, шезлонги, лежаки, мебель для сада.  Отличный дизайн, удобство в эксплуатации, высокие стандарты качества,
-</p>
+        <div class="content seo">
+            @RenderSection("SeoContent", false)
         </div>
-
     </div>
     <div id="footer">
         <div id="footerLeft">
