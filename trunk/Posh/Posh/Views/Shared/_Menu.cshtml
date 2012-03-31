@@ -2,10 +2,17 @@
 
 
 <ul>
-    @foreach (var item in Model.OrderBy(m => m.SortOrder))
+    @foreach (var item in Model.OrderBy(m => m.SortOrder).Where(m=>!m.MainPage))
     {
-        string className = item.Selected ? "selected" : "";
-           <li class="@className">
+        //string className = item.Selected ? "selected" : "";
+        <li>
+            
+            @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink mainMenuAdminLink" })
+           @if(!item.Static)
+           {
+               @Html.ActionLink("удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink mainMenuAdminLink deleteMainMenuAdminLink" })
+           }
+
             @if (item.Selected)
             {
                 <div class="selected">@item.Title</div>
@@ -14,13 +21,13 @@
             {
                 @Html.ActionLink(item.Title, "Index", "Home", new { Area = "", id = item.Name }, null)
             }
-            @Html.ActionLink("редактировать","Edit","Content",new{Area="Admin", id=item.Id},new{@class="adminLink"})
+               
         </li>
     }
 
 
     <li>
-    @Html.ActionLink("добавить","Create","Content",new{Area="Admin"},new{@class="adminLink"})    
+    @Html.ActionLink("добавить", "Create", "Content", new { Area = "Admin" }, new { @class = "adminLink mainMenuAdminLink" })    
     </li>
 </ul>
 

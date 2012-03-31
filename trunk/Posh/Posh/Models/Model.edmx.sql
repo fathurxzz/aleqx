@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/30/2012 11:18:30
+-- Date Created: 04/01/2012 00:32:22
 -- Generated from EDMX file: D:\projects\Posh\Posh\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `posh`;
+CREATE DATABASE `posh`;
+USE `posh`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -67,7 +70,6 @@ CREATE TABLE `Product` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` mediumtext  NOT NULL,
     `AlbumId` int  NOT NULL,
-    `Name` mediumtext  NOT NULL,
     `ImageSource` mediumtext  NOT NULL,
     `SortOrder` int  NOT NULL
 );
@@ -95,7 +97,8 @@ CREATE TABLE `Album` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` mediumtext  NOT NULL,
     `Name` mediumtext  NOT NULL,
-    `SortOrder` int  NOT NULL
+    `SortOrder` int  NOT NULL,
+    `ImageSource` mediumtext  NOT NULL
 );
 
 -- Creating table 'Article'

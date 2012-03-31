@@ -14,7 +14,7 @@ namespace Posh.Controllers
         {
             using (var context = new ModelContainer())
             {
-                SiteViewModel model = new SiteViewModel(context, id);
+                SiteViewModel model = new SiteViewModel(context, id,null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;
@@ -30,9 +30,7 @@ namespace Posh.Controllers
         {
             using (var context = new ModelContainer())
             {
-                if (string.IsNullOrEmpty(id))
-                    id = "catalogue";
-                SiteViewModel model = new SiteViewModel(context, id);
+                SiteViewModel model = new SiteViewModel(context, "catalogue", id, true, true);
                 this.SetSeoContent(model);
 
                 ViewBag.MainMenu = model.MainMenu;

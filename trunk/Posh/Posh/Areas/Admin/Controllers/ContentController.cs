@@ -36,11 +36,12 @@ namespace Posh.Areas.Admin.Controllers
                                        "SeoDescription",
                                        "SeoKeywords"
                                    });
+
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.AddToContent(content);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home", new { Area = "" });
+                return RedirectToAction("Index", "Home", new { Area = "", id = content.Name });
             }
         }
 
@@ -62,7 +63,6 @@ namespace Posh.Areas.Admin.Controllers
                 TryUpdateModel(content,
                               new[]
                                    {
-                                       "Name",
                                        "Title",
                                        "PageTitle",
                                        "SortOrder",
@@ -71,11 +71,22 @@ namespace Posh.Areas.Admin.Controllers
                                        "SeoDescription",
                                        "SeoKeywords"
                                    });
+                
+                if (!content.Static)
+                {
+                    content.Name = form["Name"];
+                }
+
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 content.SeoText = HttpUtility.HtmlDecode(form["SeoText"]);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home", new { Area = "" });
+                return RedirectToAction("Index", "Home", new { Area = "", id = content.Name });
             }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return RedirectToAction("Index", "Home", new { Area = "" });
         }
     }
 }
