@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="Content" EntityType="Model.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Product" EntityType="Model.Store.Product" store:Type="Tables" Schema="dbo" />
@@ -66,7 +66,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="AlbumId" Type="int" Nullable="false" />
-    <Property Name="Name" Type="mediumtext" Nullable="false" />
     <Property Name="ImageSource" Type="mediumtext" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
@@ -95,6 +94,7 @@
     <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="Name" Type="mediumtext" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="ImageSource" Type="mediumtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Article">
     <Key>
@@ -283,7 +283,6 @@
           <NavigationProperty Name="Album" Relationship="Model.ProductAlbum" FromRole="Product" ToRole="Album" />
           <Property Type="Int32" Name="AlbumId" Nullable="false" />
           <NavigationProperty Name="Elements" Relationship="Model.ProductElement" FromRole="Product" ToRole="Element" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="500" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
         </EntityType>
@@ -315,6 +314,7 @@
           <NavigationProperty Name="Products" Relationship="Model.ProductAlbum" FromRole="Album" ToRole="Product" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="500" />
         </EntityType>
         <Association Name="ProductCategory">
           <End Type="Model.Product" Role="Product" Multiplicity="*" />
@@ -421,7 +421,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="AlbumId" ColumnName="AlbumId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
@@ -453,6 +452,7 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -538,27 +538,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model" >
-        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="0.75" PointY="0.5" Height="2.9070849609375" />
-        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="3.375" Height="2.4140429687499996" />
+        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="8.5" PointY="0.625" Height="3.326396484375" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="3.375" Height="2.5571907552083326" />
         <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="5.875" PointY="3.375" Height="1.7566536458333335" />
         <EntityTypeShape EntityType="Model.Element" Width="1.5" PointX="0.75" PointY="3.375" Height="1.5923063151041665" />
-        <EntityTypeShape EntityType="Model.Album" Width="1.5" PointX="3" PointY="0.75" Height="1.7566536458333339" />
+        <EntityTypeShape EntityType="Model.Album" Width="1.5" PointX="3" PointY="0.75" Height="2.172587890625" />
         <AssociationConnector Association="Model.ProductCategory">
-          <ConnectorPoint PointX="4.5" PointY="4.2533268229166667" />
-          <ConnectorPoint PointX="5.875" PointY="4.2533268229166667" />
+          <ConnectorPoint PointX="4.5" PointY="4.3651432291666667" />
+          <ConnectorPoint PointX="5.875" PointY="4.3651432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="Model.ProductAlbum">
           <ConnectorPoint PointX="3.75" PointY="3.375" />
-          <ConnectorPoint PointX="3.75" PointY="2.5066536458333339" />
+          <ConnectorPoint PointX="3.75" PointY="2.922587890625" />
         </AssociationConnector>
         <AssociationConnector Association="Model.ProductElement">
-          <ConnectorPoint PointX="3" PointY="4.1711531575520837" />
-          <ConnectorPoint PointX="2.25" PointY="4.1711531575520837" />
+          <ConnectorPoint PointX="3" PointY="4.2689925130208337" />
+          <ConnectorPoint PointX="2.25" PointY="4.2689925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="6.125" PointY="0.75" Height="1.7566536458333331" />
+        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="8.5" PointY="4.25" Height="1.9802864583333331" />
         <EntityTypeShape EntityType="Model.Project" Width="1.5" PointX="0.75" PointY="6.25" Height="2.0853483072916656" />
         <EntityTypeShape EntityType="Model.ProjectItem" Width="1.5" PointX="3.875" PointY="6.375" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="6.375" PointY="6.375" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="8.5" PointY="6.5" Height="1.9802864583333335" />
         <AssociationConnector Association="Model.ProjectProjectItem">
           <ConnectorPoint PointX="2.25" PointY="7.33550048828125" />
           <ConnectorPoint PointX="3.875" PointY="7.33550048828125" />

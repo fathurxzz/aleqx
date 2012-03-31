@@ -6,3 +6,78 @@
     text-decoration: underline !important;
     
 }
+
+a.mainMenuAdminLink
+{
+    position: absolute !important;
+    display: block;
+    padding: 0 !important;
+    height: auto !important;
+}
+
+a.mainMenuAdminLink:hover {
+    background-color: transparent !important;
+}
+
+a.deleteMainMenuAdminLink {
+    margin-top: 13px  !important;
+}
+
+.editor-table
+{
+    margin: 20px 0;
+}
+
+.editor-table textarea
+{
+    width: 400px;
+    height: 80px;
+}
+
+.errorMessage
+{
+    color: #f00;
+    border: 1px solid #f00;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.backLink {
+    margin-top: 20px;
+}
+
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}

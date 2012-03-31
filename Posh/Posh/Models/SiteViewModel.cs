@@ -17,30 +17,46 @@ namespace Posh.Models
         public List<Category> Categories { get; set; }
         public List<Element> Elements { get; set; }
 
+        public Album Album { get; set; }
+        public List<Album> Albums { get; set; }
+
+ 
+
         private readonly ModelContainer _context;
 
-        public SiteViewModel(ModelContainer context, string contentId, bool loadContent = true)
+        public SiteViewModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent = true, bool loadCatalogue = false)
         {
             Title = "Posh. Обустройство вашего заведения";
-            _context = context;
+            _context = dataContext;
 
             Categories = _context.Category.ToList();
             Elements = _context.Element.ToList();
 
             MainMenu = new List<MenuItem>();
 
-            var contents = context.Content.ToList();
+            var contents = _context.Content.ToList();
             foreach (var c in contents)
             {
-                MainMenu.Add(new MenuItem { Id = c.Id, Name = c.Name, Title = c.Title, Selected = c.Name == contentId, SortOrder = c.SortOrder });
+                MainMenu.Add(new MenuItem { Id = c.Id, Name = c.Name, Title = c.Title, Selected = c.Name == contentId, SortOrder = c.SortOrder, Static = c.Static, MainPage = c.MainPage});
             }
+
+            if(loadCatalogue)
+            {
+                Albums = _context.Album.ToList();
+            }
+
+            if(!string.IsNullOrEmpty(albumId))
+            {
+                Album = _context.Album.Include("Products").First(a => a.Name == albumId);
+            }
+
 
             if (loadContent)
             {
                 Content content = null;
                 if (!string.IsNullOrEmpty(contentId))
                 {
-                    content = context.Content.FirstOrDefault(c => c.Name == contentId);
+                    content = _context.Content.FirstOrDefault(c => c.Name == contentId);
                     if (content == null)
                     {
                         throw new HttpNotFoundException();
@@ -48,7 +64,7 @@ namespace Posh.Models
                 }
                 else
                 {
-                    content = context.Content.FirstOrDefault(c => c.MainPage);
+                    content = _context.Content.FirstOrDefault(c => c.MainPage);
                     IsHomePage = true;
                 }
 

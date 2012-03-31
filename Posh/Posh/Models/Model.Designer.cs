@@ -316,12 +316,14 @@ namespace Posh.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Album CreateAlbum(global::System.Int32 id, global::System.String title, global::System.String name)
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static Album CreateAlbum(global::System.Int32 id, global::System.String title, global::System.String name, global::System.String imageSource)
         {
             Album album = new Album();
             album.Id = id;
             album.Title = title;
             album.Name = name;
+            album.ImageSource = imageSource;
             return album;
         }
 
@@ -426,6 +428,30 @@ namespace Posh.Models
         private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     
@@ -1403,15 +1429,13 @@ namespace Posh.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="albumId">Initial value of the AlbumId property.</param>
-        /// <param name="name">Initial value of the Name property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.Int32 albumId, global::System.String name, global::System.String imageSource)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.Int32 albumId, global::System.String imageSource)
         {
             Product product = new Product();
             product.Id = id;
             product.Title = title;
             product.AlbumId = albumId;
-            product.Name = name;
             product.ImageSource = imageSource;
             return product;
         }
@@ -1493,30 +1517,6 @@ namespace Posh.Models
         private global::System.Int32 _AlbumId;
         partial void OnAlbumIdChanging(global::System.Int32 value);
         partial void OnAlbumIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                OnNameChanging(value);
-                ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Name");
-                OnNameChanged();
-            }
-        }
-        private global::System.String _Name;
-        partial void OnNameChanging(global::System.String value);
-        partial void OnNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

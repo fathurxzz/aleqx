@@ -12,5 +12,7 @@ namespace Posh.Models
         public string Name { get; set; }
         public bool Selected { get; set; }
         public int SortOrder { get; set; }
+        public bool Static { get; set; }
+        public bool MainPage { get; set; }
     }
 }
