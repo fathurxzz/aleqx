@@ -29,9 +29,7 @@ namespace Posh.Areas.Admin.Controllers
             using (var context = new ModelContainer())
             {
                 int albumId = Convert.ToInt32(form["AlbumId"]);
-
                 var album = context.Album.First(a => a.Id == albumId);
-
 
                 var product = new Product ();
                 TryUpdateModel(product,
