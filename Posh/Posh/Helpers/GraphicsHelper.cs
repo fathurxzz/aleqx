@@ -11,7 +11,7 @@ namespace Posh.Helpers
 {
     public enum ScaleMode
     {
-        Cut,
+        Corp,
         Insert
     }
 
@@ -21,7 +21,7 @@ namespace Posh.Helpers
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
         public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2", "thumbnail3" };
-        public static int[] ThumbnailDimentions = { 100, 150, 298, 53 };
+        public static int[] ThumbnailDimentions = { 177, 150, 298, 53 };
 
 
         static GraphicsHelper()
@@ -47,7 +47,7 @@ namespace Posh.Helpers
             int resultWidth;
             int resultHeight;
 
-            if (scaleMode == ScaleMode.Cut)
+            if (scaleMode == ScaleMode.Corp)
             {
 
                 double wRatio = (double)sourceImage.Width / (double)previewWidth;
