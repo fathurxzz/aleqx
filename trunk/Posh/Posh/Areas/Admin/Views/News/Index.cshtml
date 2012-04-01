@@ -1,0 +1,18 @@
+﻿@model Posh.Models.SiteViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    <div class="catalogue">
+        <div class="title">
+            @Model.Content.Title
+        </div>
+    </div>
+}
+
+@{
+    foreach (var newsItem in Model.News)
+    {
+    }
+}

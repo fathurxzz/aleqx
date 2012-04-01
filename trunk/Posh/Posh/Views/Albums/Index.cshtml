@@ -45,32 +45,6 @@
     }
 }
 @{
-    if (Model.Album != null)
-    {
-    <div id="productsContainer">
-        <div id="productsAlbumTitle">
-            &raquo; @Model.Album.Title
-        </div>
-        @Html.ActionLink("Новый элемент", "Create", "Product", new { Area = "Admin", id = Model.Album.Id }, new { @class = "adminLink" })
-        <div id="products">
-            @foreach (var image in Model.Album.Products)
-            {
-                <div class="productItem">
-                    <div class="adminLinksContainer">
-                        @Html.ActionLink("Удалить", "Delete", "Product", new { id = image.Id }, new { @class = "adminLink" })
-                        @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new { id = image.Id }, new { @class = "adminLink", onclick="return confirm('Сделать обложкой альбома?')" })
-                    </div>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", ScaleMode.Corp))
-                </div>
-            }
-            <div id="lastProductItem" class="productItem">
-                &raquo; @Html.ActionLink("В меню", "Catalogue", "Home", new { id = "" }, null)
-            </div>
-        </div>
-    </div>
-    }
-    else
-    {
     <div id="catalogueContainer">
         @Html.ActionLink("Новый альбом", "Create", "Album", new { Area = "Admin" }, new { @class = "adminLink" })
         <div class="clear">
@@ -81,5 +55,4 @@
         }
         
     </div>
-    }
 }

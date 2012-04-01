@@ -20,8 +20,8 @@ namespace Posh.Helpers
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
-        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2", "thumbnail3" };
-        public static int[] ThumbnailDimentions = { 177, 150, 298, 53 };
+        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1"};
+        public static int[] ThumbnailDimentions = { 177, 200};
 
 
         static GraphicsHelper()
@@ -32,11 +32,11 @@ namespace Posh.Helpers
             limitWidth.Add(ThumbnailFolders[1], ThumbnailDimentions[1]);
             limitHeight.Add(ThumbnailFolders[1], ThumbnailDimentions[1]);
 
-            limitWidth.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
+            /*limitWidth.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
             limitHeight.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
 
             limitWidth.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);
-            limitHeight.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);
+            limitHeight.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);*/
         }
 
         private static Rectangle CalculateSourceRect(string name, Size sourceImage, ScaleMode scaleMode)

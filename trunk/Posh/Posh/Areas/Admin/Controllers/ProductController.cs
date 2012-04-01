@@ -48,7 +48,23 @@ namespace Posh.Areas.Admin.Controllers
                 album.Products.Add(product);
                 
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home", new { Area = "", id = "catalogue" });
+                return RedirectToAction("Catalogue", "Home", new { Area = "", id = album.Name });
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        public ActionResult SetDefault(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var product = context.Product.Include("Album").First(p => p.Id == id);
+                product.Album.ImageSource = product.ImageSource;
+                context.SaveChanges();
+                return RedirectToAction("Catalogue", "Home", new {Area = "", id = ""});
             }
         }
 

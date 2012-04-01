@@ -19,25 +19,27 @@ namespace Posh.Models
 
         public Album Album { get; set; }
         public List<Album> Albums { get; set; }
+        public List<News> News { get; set; }
 
  
 
         private readonly ModelContainer _context;
 
-        public SiteViewModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent = true, bool loadCatalogue = false)
+        public SiteViewModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent = true, bool loadCatalogue = false, bool loadNews=false)
         {
             Title = "Posh. Обустройство вашего заведения";
             _context = dataContext;
 
             Categories = _context.Category.ToList();
             Elements = _context.Element.ToList();
+            News = _context.News.ToList();
 
             MainMenu = new List<MenuItem>();
 
             var contents = _context.Content.ToList();
             foreach (var c in contents)
             {
-                MainMenu.Add(new MenuItem { Id = c.Id, Name = c.Name, Title = c.Title, Selected = c.Name == contentId, SortOrder = c.SortOrder, Static = c.Static, MainPage = c.MainPage});
+                MainMenu.Add(new MenuItem { Id = c.Id, Name = c.Name, Title = c.Title, Current = c.Name == contentId, Selected = string.IsNullOrEmpty(albumId) && c.Name == contentId, SortOrder = c.SortOrder, Static = c.Static, MainPage = c.MainPage });
             }
 
             if(loadCatalogue)
