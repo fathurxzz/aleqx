@@ -4,15 +4,19 @@
 }
 @section Title
 {
-    <div class="catalogue">
         <div class="title">
             @Model.Content.Title
         </div>
-    </div>
 }
 <div id="newsContainer">
-@foreach (var newsItem in Model.News)
-{
-    @Html.Partial("_News",newsItem)
-}
+    
+    
+    @Html.ActionLink("добавить новость","Create","News",new{Area="Admin"},new{@class="adminLink"})
+    <br/><br/>
+    
+
+    @foreach (var newsItem in Model.News.OrderByDescending(n=>n.Date))
+    {
+        @Html.Partial("_News",newsItem)
+    }
 </div>

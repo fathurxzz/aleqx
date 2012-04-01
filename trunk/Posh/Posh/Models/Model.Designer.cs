@@ -1268,15 +1268,13 @@ namespace Posh.Models
         /// Create a new News object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="date">Initial value of the Date property.</param>
         /// <param name="text">Initial value of the Text property.</param>
-        public static News CreateNews(global::System.Int32 id, global::System.String name, global::System.String title, global::System.DateTime date, global::System.String text)
+        public static News CreateNews(global::System.Int32 id, global::System.String title, global::System.DateTime date, global::System.String text)
         {
             News news = new News();
             news.Id = id;
-            news.Name = name;
             news.Title = title;
             news.Date = date;
             news.Text = text;
@@ -1312,30 +1310,6 @@ namespace Posh.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                OnNameChanging(value);
-                ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Name");
-                OnNameChanged();
-            }
-        }
-        private global::System.String _Name;
-        partial void OnNameChanging(global::System.String value);
-        partial void OnNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
