@@ -15,6 +15,12 @@ a.mainMenuAdminLink
     height: auto !important;
 }
 
+
+.adminLinksContainer {
+    position: absolute;
+}
+
+
 a.mainMenuAdminLink:hover {
     background-color: transparent !important;
 }

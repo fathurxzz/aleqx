@@ -26,22 +26,22 @@ namespace Posh.Controllers
             }
         }
 
-        public ActionResult Catalogue(string id)
-        {
-            using (var context = new ModelContainer())
-            {
-                SiteViewModel model = new SiteViewModel(context, "catalogue", id, true, true);
-                this.SetSeoContent(model);
+        //public ActionResult Catalogue(string id)
+        //{
+        //    using (var context = new ModelContainer())
+        //    {
+        //        SiteViewModel model = new SiteViewModel(context, "catalogue", id, true, true);
+        //        this.SetSeoContent(model);
 
-                ViewBag.MainMenu = model.MainMenu;
-                ViewBag.isHomePage = model.IsHomePage;
+        //        ViewBag.MainMenu = model.MainMenu;
+        //        ViewBag.isHomePage = model.IsHomePage;
 
-                ViewBag.Categories = model.Categories;
-                ViewBag.Elements = model.Elements;
+        //        ViewBag.Categories = model.Categories;
+        //        ViewBag.Elements = model.Elements;
 
-                return View(model);
-            }
-        }
+        //        return View(model);
+        //    }
+        //}
 
         public ActionResult Projects(string id)
         {

@@ -1,48 +1,38 @@
 ﻿@model Posh.Models.SiteViewModel
 @{
-    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@Html.Partial("_SearchCriteriaSelector")
+@if (Model.Content.MainPage)
+{
+    @Html.Partial("_SearchCriteriaSelector")
+}
 @section Title
 {
-<div class="title">
-Здравствуйте!
-</div>
+    <div class="title">
+        @Model.Content.Title
+    </div>
 }
 @section Content
 {
-<div class="content">
-Наша компания занимается обустройством частных и коммерческих площадей качественной
-мебелью и элементами дизайна. Вы можете перейти в наш общий каталог продукции, или
-выбрать интересующую вас категорию продукции в форме ниже (тогда вам будут показаны
-только товары, принадлежащие к выбранной категории):
- </div>
+    <div class="content">
+        @Html.Raw(Model.Content.Text)
+    </div>
 }
 @section SeoTitle
 {
-    <div class="title seo">
-
-    Несколько слов о нас
-    </div>
+    @if (!string.IsNullOrEmpty(Model.Content.SeoTitle))
+    {
+        <div class="title seo">
+            @Model.Content.SeoTitle
+        </div>
+    }
 }
 @section SeoContent
 {
- <div class="content seo">
-    <p>
-        Наша компания основана в 2005 году. Английское слово “POSH” означает “шик” и “роскошь”
-        и мы, оправдывая наше название, несём в каждый дом и шик и роскошь.
-    </p>
-    <p>
-        У нас вы увидите широкий выбор уличной мебели из искусственного ротанга и не только,
-        аксессуаров и интерьерных деталей, которые помогут создать вам уют и комфорт в вашем
-        саду, на террасе и доме.
-    </p>
- <p>
-     Мы также предлагаем мебель для гостиниц, мебель для кафе, мебель для ресторанов,
-     конференций и мебель для банкетных залов, уличную мебель, шезлонги, лежаки, мебель
-     для сада. Отличный дизайн, удобство в эксплуатации, высокие стандарты качества,
- </p>
- </div>
+    @if (!string.IsNullOrEmpty(Model.Content.SeoText))
+    {
+        <div class="content seo">
+            @Html.Raw(Model.Content.SeoText)
+        </div>
+    }
 }

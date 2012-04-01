@@ -57,7 +57,6 @@ body
 .headerLine
 {
     background: url('img/headerline-bg.gif') repeat-x;
-    
 }
 
 .headerLineLeft
@@ -125,6 +124,7 @@ body
 }
 
 
+
 .title
 {
     color: #60605c;
@@ -138,14 +138,21 @@ body
     display: block;
 }
 
-.catalogue .title {
+.catalogue .title
+{
     float: left;
-    
 }
 
-.catalogue .filter {
+.catalogue .title a
+{
+    color: #609dd6;    
+}
+
+
+
+.catalogue .filter
+{
     margin-left: 270px;
-    
 }
 
 
@@ -263,6 +270,9 @@ body
     color: #fff;
 }
 
+#mainMenu li a.current {
+    background-color: #a1d174;
+}
 
 
 #mainMenu li a:hover
@@ -270,11 +280,13 @@ body
     background-color: #a1d174;
 }
 
-#catalogueContainer {
+#catalogueContainer
+{
     margin-top: 30px;
 }
 
-.album {
+.album
+{
     width: 202px;
     height: 209px;
     margin: 10px;
@@ -284,11 +296,12 @@ body
     float: left;
 }
 
-.album img {
+.album img
+{
     border: 1px solid #cecece;
 }
 
-.album-title 
+.album-title
 {
     opacity: 0.3;
     filter: alpha(opacity=30);
@@ -298,24 +311,61 @@ body
     height: 31px;
     margin-top: 169px;
     margin-left: 1px;
+}
+
+.album-title a
+{
+    width: 200px;
+    height: 31px;
+    display: table-cell;
+    vertical-align: middle;
+    color: #fff;
+    text-align: center;
     color: #fff;
 }
 
-.album-title a {
-    color: #fff;
+#productsContainer
+{
+    margin-top: 15px;
 }
 
-#productsContainer {
-     margin-top: 15px;
-}
-
-#productsAlbumTitle {
+#productsAlbumTitle
+{
     color: #619433;
     text-transform: uppercase;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
-#products {
-    
+#products
+{
+    margin-left: 50px;
+    width: 900px;
+}
+
+.productItem
+{
+    width: 177px;
+    height: 177px;
+    float: left;
+    margin-left: 1px;
+    margin-bottom: 1px;
+}
+.productItem img
+{
+    border: none;
+}
+
+#lastProductItem
+{
+    height: 97px !important;
+    background-color: #fff;
+    text-align: center;
+    padding-top: 80px;
+    text-transform: uppercase;
+}
+
+#lastProductItem a
+{
+    color: #619433;
 }

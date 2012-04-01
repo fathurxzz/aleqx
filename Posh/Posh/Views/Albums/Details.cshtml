@@ -7,7 +7,7 @@
 {
     <div class="catalogue">
         <div class="title">
-            @Model.Content.Title
+            @Html.ActionLink(Model.Content.Title, "Index", "Albums", new { id = "" }, null)
         </div>
         <div class="filter">
             Показать категори<br />
@@ -45,8 +45,6 @@
     }
 }
 @{
-    if (Model.Album != null)
-    {
     <div id="productsContainer">
         <div id="productsAlbumTitle">
             &raquo; @Model.Album.Title
@@ -58,28 +56,15 @@
                 <div class="productItem">
                     <div class="adminLinksContainer">
                         @Html.ActionLink("Удалить", "Delete", "Product", new { id = image.Id }, new { @class = "adminLink" })
-                        @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new { id = image.Id }, new { @class = "adminLink", onclick="return confirm('Сделать обложкой альбома?')" })
+                        @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new { id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой альбома?')" })
                     </div>
                     @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", ScaleMode.Corp))
                 </div>
             }
             <div id="lastProductItem" class="productItem">
-                &raquo; @Html.ActionLink("В меню", "Catalogue", "Home", new { id = "" }, null)
+                &raquo; @Html.ActionLink("В меню", "Index", "Albums", new { id = "" }, null)
             </div>
         </div>
     </div>
-    }
-    else
-    {
-    <div id="catalogueContainer">
-        @Html.ActionLink("Новый альбом", "Create", "Album", new { Area = "Admin" }, new { @class = "adminLink" })
-        <div class="clear">
-        </div>
-        @foreach (var album in Model.Albums)
-        {
-            @Html.Partial("_Album", album)
-        }
-        
-    </div>
-    }
+   
 }

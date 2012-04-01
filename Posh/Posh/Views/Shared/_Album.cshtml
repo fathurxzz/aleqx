@@ -1,9 +1,8 @@
-﻿@model Posh.Models.Album
-
+﻿@using Posh.Helpers
+@model Posh.Models.Album
 <div class="album">
     <div class="album-title">
-        @Html.ActionLink(Model.Title,"Catalogue","Home",new{id=Model.Name},null)
+        @Html.ActionLink(Model.Title, "Index", "Albums", new { id = Model.Name }, null)
     </div>
-    <img width="200px" height="200px" src="" alt=""/>
-
+    @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Albums", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", ScaleMode.Corp)))
 </div>
