@@ -10,9 +10,9 @@
         </div>
     </div>
 }
-
-@{
-    foreach (var newsItem in Model.News)
-    {
-    }
+<div id="newsContainer">
+@foreach (var newsItem in Model.News)
+{
+    @Html.Partial("_News",newsItem)
 }
+</div>
