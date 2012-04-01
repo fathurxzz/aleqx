@@ -20,43 +20,40 @@ namespace Posh
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            /*
-            routes.MapRoute(
-               "Default1", // Route name
-               "", // URL with parameters
-               new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-               new string[1] { "Shop.Controllers" }
-           );
-            */
 
             routes.MapRoute(
                 "Catalogue", // Route name
                 "catalogue/{id}", // URL with parameters
-                new { controller = "Albums", action = "Index", id=""},
-                new string[1] { "Shop.Controllers" }
+                new { controller = "Albums", action = "Index", id = "" },
+                new string[1] { "Posh.Controllers" }
             );
 
+            routes.MapRoute(
+                "Projects", // Route name
+                "projects/{id}", // URL with parameters
+                new { controller = "Projects", action = "Index", id = "" },
+                new string[1] { "Posh.Controllers" }
+            );
+
+            routes.MapRoute(
+                "Articles", // Route name
+                "articles/{id}", // URL with parameters
+                new { controller = "Articles", action = "Index", id = "" },
+                new string[1] { "Posh.Controllers" }
+            );
 
             routes.MapRoute(
                 "News", // Route name
                 "news", // URL with parameters
                 new { controller = "News", action = "Index"},
-                new string[1] { "Shop.Controllers" }
+                new string[1] { "Posh.Controllers" }
             );
-
-            //routes.MapRoute(
-            //    "Products", // Route name
-            //    "catalogue/{id}", // URL with parameters
-            //    new { controller = "Albums", action = "Details" },
-            //    new string[1] { "Shop.Controllers" }
-            //);
-
 
             routes.MapRoute(
               "Content", // Route name
               "{id}", // URL with parameters
               new { controller = "Home", action = "Index", id = "" },
-              new string[1] { "Shop.Controllers" }
+              new string[1] { "Posh.Controllers" }
             );
 
             routes.MapRoute(

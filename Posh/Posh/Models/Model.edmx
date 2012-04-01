@@ -132,7 +132,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="mediumtext" Nullable="false" />
     <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="false" />
@@ -374,7 +373,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="500" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
@@ -494,7 +492,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model.News)">
         <MappingFragment StoreEntitySet="News">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Text" ColumnName="Text" />
@@ -558,7 +555,7 @@
         <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="8.5" PointY="4.25" Height="1.9802864583333331" />
         <EntityTypeShape EntityType="Model.Project" Width="1.5" PointX="0.75" PointY="6.25" Height="2.0853483072916656" />
         <EntityTypeShape EntityType="Model.ProjectItem" Width="1.5" PointX="3.875" PointY="6.375" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="8.5" PointY="6.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="8.5" PointY="6.5" Height="1.7879850260416657" />
         <AssociationConnector Association="Model.ProjectProjectItem">
           <ConnectorPoint PointX="2.25" PointY="7.33550048828125" />
           <ConnectorPoint PointX="3.875" PointY="7.33550048828125" />
