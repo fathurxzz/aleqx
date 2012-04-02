@@ -1645,12 +1645,14 @@ namespace Posh.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static Project CreateProject(global::System.Int32 id, global::System.String title, global::System.String imageSource)
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Project CreateProject(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.String name)
         {
             Project project = new Project();
             project.Id = id;
             project.Title = title;
             project.ImageSource = imageSource;
+            project.Name = name;
             return project;
         }
 
@@ -1803,6 +1805,30 @@ namespace Posh.Models
         private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
 
         #endregion
     
