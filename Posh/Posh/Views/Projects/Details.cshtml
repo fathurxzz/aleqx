@@ -12,6 +12,9 @@
         @Html.ActionLink(Model.Content.Title, "Index", "Projects", new { id = "" }, null)
     </div>
 }
+    <div id="projectTitle">
+            &raquo; @Model.Project.Title
+        </div>
 <div id="textTop">
     @Html.Raw(Model.Project.TextTop)
 </div>
