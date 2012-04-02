@@ -17,6 +17,7 @@ namespace Posh.Models
             if(!string.IsNullOrEmpty(articleId))
             {
                 Article = _context.Article.First(a => a.Name == articleId);
+                Title += " - " + Article.Title;
             }
         }
     }

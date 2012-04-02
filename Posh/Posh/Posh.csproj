@@ -116,6 +116,7 @@
     <Content Include="Content\img\headerline-outer-bg.gif" />
     <Content Include="Content\img\headerline-right.gif" />
     <Content Include="Content\img\project-details-bg.gif" />
+    <Content Include="Content\img\submit-button-bg.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\News.css" />
     <Content Include="Content\old.css" />

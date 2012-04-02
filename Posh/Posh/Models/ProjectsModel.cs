@@ -19,6 +19,7 @@ namespace Posh.Models
             if (!string.IsNullOrEmpty(projectId))
             {
                 Project = _context.Project.Include("ProjectItems").First(p => p.Name == projectId);
+                Title += " - " + Project.Title;
             }
         }
     }

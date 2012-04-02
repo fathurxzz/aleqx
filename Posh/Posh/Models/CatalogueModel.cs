@@ -17,6 +17,7 @@ namespace Posh.Models
             if (!string.IsNullOrEmpty(albumId))
             {
                 Album = _context.Album.Include("Products").First(a => a.Name == albumId);
+                Title += " - " + Album.Title;
             }
         }
 
