@@ -10,9 +10,14 @@ namespace Posh.Models
         public List<Article> Articles { get; set; }
         public Article Article { get; set; }
 
-        public ArticlesModel(ModelContainer context, string contentId, string articleId, bool loadContent=true) : base(context, contentId, loadContent)
+        public ArticlesModel(ModelContainer context, string contentId, string articleId, bool loadContent=true) : base(context, contentId, articleId, loadContent)
         {
+            Articles = _context.Article.ToList();
 
+            if(!string.IsNullOrEmpty(articleId))
+            {
+                Article = _context.Article.First(a => a.Name == articleId);
+            }
         }
     }
 }

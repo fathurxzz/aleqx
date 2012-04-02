@@ -9,7 +9,7 @@ namespace Posh.Models
     {
         public List<News> News { get; set; }
 
-        public NewsModel(ModelContainer context, string contentId, bool loadContent=true) : base(context, contentId, loadContent)
+        public NewsModel(ModelContainer context, string contentId, bool loadContent=true) : base(context, contentId, contentId, loadContent)
         {
             News = _context.News.ToList();
         }

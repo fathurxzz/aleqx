@@ -1,5 +1,20 @@
 ﻿@model Posh.Models.ArticlesModel
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Includes
+{
+    <link href="@Url.Content("~/Content/Articles.css")" rel="stylesheet" type="text/css" />
+}
+@section Title
+{
+        <div class="title">
+            @Html.ActionLink(Model.Content.Title, "Index", "Articles", new { id = "" }, null)
+        </div>
+}
+<div class="articleDetailsTitle">
+    &raquo; @Model.Article.Title
+</div>
+<div class="articleDetailsText">
+    @Html.Raw(Model.Article.Text)
+</div>

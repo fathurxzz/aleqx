@@ -22,7 +22,7 @@ namespace Posh.Models
 
 
 
-        public SiteViewModel(ModelContainer context, string contentId, bool loadContent = true)
+        public SiteViewModel(ModelContainer context, string contentId, string currentId, bool loadContent = true)
         {
             Title = "Posh. Обустройство вашего заведения";
             _context = context;
@@ -40,8 +40,8 @@ namespace Posh.Models
                                      Id = c.Id, 
                                      Name = c.Name, 
                                      Title = c.Title, 
-                                     Current = c.Name == contentId, 
-                                     Selected = /*string.IsNullOrEmpty(albumId) &&*/ c.Name == contentId, 
+                                     Current = c.Name == contentId,
+                                     Selected = !string.IsNullOrEmpty(currentId) && c.Name == contentId, 
                                      SortOrder = c.SortOrder, 
                                      Static = c.Static, 
                                      MainPage = c.MainPage

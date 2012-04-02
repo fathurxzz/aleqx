@@ -6,7 +6,7 @@
 }
 
 .newsItem {
-    
+    padding-bottom: 50px;
 }
 
 .newsItemTitle 
@@ -28,5 +28,5 @@
     padding-top:15px;
     font-size: 12px;
     color: #000;
-    padding-bottom: 50px;
+    
 }
