@@ -138,6 +138,10 @@ body
     display: block;
 }
 
+.title a {
+    color: #60a4cd;
+}
+
 
 .content
 {

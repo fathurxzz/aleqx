@@ -10,7 +10,7 @@ namespace Posh.Models
         public Album Album { get; set; }
         public List<Album> Albums { get; set; }
 
-        public CatalogueModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent=true) : base(dataContext, contentId, loadContent)
+        public CatalogueModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent=true) : base(dataContext, contentId, albumId, loadContent)
         {
             Albums = _context.Album.ToList();
 

@@ -11,7 +11,7 @@ namespace Posh.Models
         public Project Project { get; set; }
 
         public ProjectsModel(ModelContainer dataContext, string contentId, string projectId, bool loadContent=true) 
-            : base(dataContext, contentId,loadContent)
+            : base(dataContext, contentId, projectId, loadContent)
         {
 
             Projects = _context.Project.ToList();

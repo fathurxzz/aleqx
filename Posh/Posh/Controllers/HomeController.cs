@@ -14,7 +14,7 @@ namespace Posh.Controllers
         {
             using (var context = new ModelContainer())
             {
-                SiteViewModel model = new SiteViewModel(context, id);
+                SiteViewModel model = new SiteViewModel(context, id, id);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;
