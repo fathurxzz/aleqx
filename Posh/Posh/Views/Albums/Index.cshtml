@@ -1,5 +1,4 @@
-﻿@using Posh.Helpers
-@model Posh.Models.SiteViewModel
+﻿@model Posh.Models.CatalogueModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -31,7 +30,7 @@
     @if (!string.IsNullOrEmpty(Model.Content.SeoText))
     {
         <div class="content seo">
-            @Model.Content.SeoText
+            @Html.Raw(Model.Content.SeoText)
         </div>
     }
 }
@@ -40,7 +39,7 @@
     @if (!string.IsNullOrEmpty(Model.Content.Text))
     {
         <div class="content">
-            @Model.Content.Text
+            @Html.Raw(Model.Content.Text)
         </div>
     }
 }
