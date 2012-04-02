@@ -1,2 +1,8 @@
-﻿@model Posh.Models.Project
-
+﻿@using Posh.Helpers
+@model Posh.Models.Project
+<div class="project">
+    <div class="project-title">
+        @Html.ActionLink(Model.Title, "Index", "Projects", new { id = Model.Name }, null)
+    </div>
+    @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Projects", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", ScaleMode.Corp)))
+</div>
