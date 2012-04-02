@@ -1,8 +1,22 @@
 ﻿@model Posh.Models.ProjectsModel
-
 @{
-    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
+@section Includes
+{
+    <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />
+}
+@section Title
+{
+    <div class="title">
+        @Html.ActionLink(Model.Content.Title, "Index", "Projects", new { id = "" }, null)
+    </div>
+}
+<div id="textTop">
+    @Html.Raw(Model.Project.TextTop)
+</div>
+<div id="projectDetailsContainer">
+</div>
+<div id="textBottom">
+    @Html.Raw(Model.Project.TextBottom)
+</div>

@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Catalogue.css" />
     <Content Include="Content\img\album-bottom-bg.gif" />
     <Content Include="Content\img\category-bg.gif" />
     <Content Include="Content\img\footer-bg.gif" />
@@ -113,7 +114,11 @@
     <Content Include="Content\img\headerline-left.gif" />
     <Content Include="Content\img\headerline-outer-bg.gif" />
     <Content Include="Content\img\headerline-right.gif" />
+    <Content Include="Content\img\project-details-bg.gif" />
+    <Content Include="Content\Menu.css" />
+    <Content Include="Content\News.css" />
     <Content Include="Content\old.css" />
+    <Content Include="Content\Projects.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model.edmx.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -196,7 +201,7 @@
     <Content Include="Areas\Admin\Views\Album\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Album.cshtml" />
+    <Content Include="Views\Albums\_Album.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />

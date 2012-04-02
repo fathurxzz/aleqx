@@ -14,8 +14,12 @@ namespace Posh.Models
             : base(dataContext, contentId,loadContent)
         {
 
-
-
+            Projects = _context.Project.ToList();
+            
+            if (!string.IsNullOrEmpty(projectId))
+            {
+                Project = _context.Project.Include("ProjectItems").First(p => p.Name == projectId);
+            }
         }
     }
 }
