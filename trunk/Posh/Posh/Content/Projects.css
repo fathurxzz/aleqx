@@ -69,3 +69,11 @@
 
 
 
+#projectTitle
+{
+    color: #619433;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
