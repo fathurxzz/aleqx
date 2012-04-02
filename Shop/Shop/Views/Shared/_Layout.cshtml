@@ -46,14 +46,16 @@
                 <div class="itemsContainer">
                     <div class="title">
                         <h3>
-                            Бренды</h3>
+                            @Html.ActionLink("Бренды", "Brands", "Shop", new { Area = "", id = "" }, null)
+                        </h3>
                     </div>
                     @RenderSection("Brands", false)
                 </div>
                 <div class="itemsContainer">
                     <div class="title">
                         <h3>
-                            Теги</h3>
+                            @Html.ActionLink("Теги", "Tags", "Shop", new { Area = "", id = "" }, null)
+                        </h3>
                     </div>
                     @RenderSection("Tags", false)
                 </div>
