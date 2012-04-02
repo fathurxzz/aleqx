@@ -14,42 +14,38 @@ namespace Posh.Models
         public Content Content { get; set; }
         public List<MenuItem> MainMenu { get; set; }
         public bool IsHomePage { get; set; }
+        
         public List<Category> Categories { get; set; }
         public List<Element> Elements { get; set; }
 
-        public Album Album { get; set; }
-        public List<Album> Albums { get; set; }
-        public List<News> News { get; set; }
+        protected readonly ModelContainer _context;
 
- 
 
-        private readonly ModelContainer _context;
 
-        public SiteViewModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent = true, bool loadCatalogue = false, bool loadNews=false)
+        public SiteViewModel(ModelContainer context, string contentId, bool loadContent = true)
         {
             Title = "Posh. Обустройство вашего заведения";
-            _context = dataContext;
+            _context = context;
 
             Categories = _context.Category.ToList();
             Elements = _context.Element.ToList();
-            News = _context.News.ToList();
 
             MainMenu = new List<MenuItem>();
 
             var contents = _context.Content.ToList();
             foreach (var c in contents)
             {
-                MainMenu.Add(new MenuItem { Id = c.Id, Name = c.Name, Title = c.Title, Current = c.Name == contentId, Selected = string.IsNullOrEmpty(albumId) && c.Name == contentId, SortOrder = c.SortOrder, Static = c.Static, MainPage = c.MainPage });
-            }
-
-            if(loadCatalogue)
-            {
-                Albums = _context.Album.ToList();
-            }
-
-            if(!string.IsNullOrEmpty(albumId))
-            {
-                Album = _context.Album.Include("Products").First(a => a.Name == albumId);
+                MainMenu.Add(new MenuItem
+                                 {
+                                     Id = c.Id, 
+                                     Name = c.Name, 
+                                     Title = c.Title, 
+                                     Current = c.Name == contentId, 
+                                     Selected = /*string.IsNullOrEmpty(albumId) &&*/ c.Name == contentId, 
+                                     SortOrder = c.SortOrder, 
+                                     Static = c.Static, 
+                                     MainPage = c.MainPage
+                                 });
             }
 
 

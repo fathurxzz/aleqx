@@ -14,7 +14,7 @@ namespace Posh.Controllers
         {
             using (var context = new ModelContainer())
             {
-                SiteViewModel model = new SiteViewModel(context, id,null);
+                SiteViewModel model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;
@@ -25,23 +25,6 @@ namespace Posh.Controllers
                 return View(model);
             }
         }
-
-        //public ActionResult Catalogue(string id)
-        //{
-        //    using (var context = new ModelContainer())
-        //    {
-        //        SiteViewModel model = new SiteViewModel(context, "catalogue", id, true, true);
-        //        this.SetSeoContent(model);
-
-        //        ViewBag.MainMenu = model.MainMenu;
-        //        ViewBag.isHomePage = model.IsHomePage;
-
-        //        ViewBag.Categories = model.Categories;
-        //        ViewBag.Elements = model.Elements;
-
-        //        return View(model);
-        //    }
-        //}
 
         public ActionResult Projects(string id)
         {
