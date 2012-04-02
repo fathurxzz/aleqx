@@ -1,8 +1,10 @@
 ﻿@model Posh.Models.ArticlesModel
-
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+@section Title
+{
+    <div class="title">
+        @Model.Content.Title
+    </div>
+}

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/01/2012 23:56:29
+-- Date Created: 04/02/2012 16:35:39
 -- Generated from EDMX file: D:\projects\Posh\Posh\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -119,7 +119,8 @@ CREATE TABLE `Project` (
     `TextTop` longtext  NULL,
     `TextBottom` longtext  NULL,
     `ImageSource` mediumtext  NOT NULL,
-    `SortOrder` int  NOT NULL
+    `SortOrder` int  NOT NULL,
+    `Name` mediumtext  NOT NULL
 );
 
 -- Creating table 'ProjectItem'

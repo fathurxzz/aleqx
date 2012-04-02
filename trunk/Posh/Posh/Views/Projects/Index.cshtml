@@ -1,12 +1,40 @@
 ﻿@model Posh.Models.ProjectsModel
-
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section Title
 {
-        <div class="title">
-            @Model.Content.Title
+    <div class="title">
+        @Model.Content.Title
+    </div>
+}
+@section SeoTitle
+{
+    @if (!string.IsNullOrEmpty(Model.Content.SeoTitle))
+    {
+        <div class="title seo">
+            @Model.Content.SeoTitle
         </div>
+    }
+}
+@section SeoContent
+{
+    @if (!string.IsNullOrEmpty(Model.Content.SeoText))
+    {
+        <div class="content seo">
+            @Html.Raw(Model.Content.SeoText)
+        </div>
+    }
+}
+@{
+    <div id="projectsContainer">
+        @Html.ActionLink("Новый проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+        <div class="clear">
+        </div>
+        @foreach (var project in Model.Projects)
+        {
+            @Html.Partial("_Project", project)
+        }
+        
+    </div>
 }
