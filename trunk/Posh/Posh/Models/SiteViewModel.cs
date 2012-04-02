@@ -39,8 +39,8 @@ namespace Posh.Models
                                  {
                                      Id = c.Id, 
                                      Name = c.Name, 
-                                     Title = c.Title, 
-                                     Current = c.Name == contentId,
+                                     Title = c.Title,
+                                     Current = c.Name == contentId && (string.IsNullOrEmpty(currentId) || contentId==currentId),
                                      Selected = !string.IsNullOrEmpty(currentId) && c.Name == contentId, 
                                      SortOrder = c.SortOrder, 
                                      Static = c.Static, 
