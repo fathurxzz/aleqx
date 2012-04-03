@@ -15,7 +15,6 @@
     <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
-
     <script type="text/javascript">
 
         $(function () {
@@ -38,12 +37,8 @@
         });
     </script>
 }
-
-
 @Html.Partial("SubscribeForm2", new Customers())
-<br/>
-
-
+<br />
 @using (Html.BeginForm("SendEmail", "Subscribe"))
 {
     if ((int)ViewBag.SentEmails > 0)
@@ -65,7 +60,7 @@
         @foreach (var template in templates)
         {
             <tr>
-                <td style="padding-right:10px">
+                <td style="padding-right: 10px">
                     @Html.ActionLink(template.Title, "Subscribers", "Subscribe", new { templateId = template.Id }, null)
                 </td>
                 <td>
@@ -77,15 +72,14 @@
             </tr>
         }
         <tr>
-        <td colspan="3">
-    @Html.ActionLink("Добавить шаблон", "Add", "MailTemplate", new { Area = "Admin" }, new { @class = "adminLink" })    
-        </td>
+            <td colspan="3">
+                @Html.ActionLink("Добавить шаблон", "Add", "MailTemplate", new { Area = "Admin" }, new { @class = "adminLink" })
+            </td>
         </tr>
     </table>
     
     
-    
-    
+   
     <table class="subscriberListContainer">
         <tr>
             <td>
@@ -94,39 +88,52 @@
                         <th>
                         </th>
                         <th>
+                        </th>
+                        <th>
                             Имя
                         </th>
                         <th>
                             email
                         </th>
-                        <th>news</th>
+                        <th>
+                            news
+                        </th>
                         <th>
                             удалить
                         </th>
                     </tr>
                     <tr>
+                         <th  style="background-color: bisque">
+                        </th>
                         <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectallagent")
                         </th>
                         <th colspan="4" style="background-color: bisque">
                             Агенты
                         </th>
                     </tr>
-                    @foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 1).OrderBy(c => c.Name))
-                    {
-                        <tr>
-                            <td class="checkbox_agent">
-                                @Html.CheckBox("agent_" + subscriber.Id, false, new { @class = "agent" })
-                            </td>
-                            <td>@subscriber.Name
-                            </td>
-                            <td>@subscriber.Email
-                            </td>
-                            <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
-                            </td>
-                            <td>@Html.ActionLink("редактировать", "EditSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink" })
-                                @Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
-                            </td>
-                        </tr>
+                    @{
+                                                                         int cnt = 0;
+
+                                                                         foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 1).OrderBy(c => c.Name))
+                                                                         {
+                                                                             cnt++;
+                            
+                            <tr>
+                                <td>@cnt</td>
+                                <td class="checkbox_agent">
+                                    @Html.CheckBox("agent_" + subscriber.Id, false, new { @class = "agent" })
+                                </td>
+                                <td>@subscriber.Name
+                                </td>
+                                <td>@subscriber.Email
+                                </td>
+                                <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
+                                </td>
+                                <td>@Html.ActionLink("редактировать", "EditSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink" })
+                                    @Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                                </td>
+                            </tr>
+                                                                         }
                     }
                 </table>
             </td>
@@ -136,57 +143,68 @@
                         <th>
                         </th>
                         <th>
+                        </th>
+                        <th>
                             Имя
                         </th>
                         <th>
                             email
                         </th>
-                        <th>news</th>
+                        <th>
+                            news
+                        </th>
                         <th>
                             удалить
                         </th>
                     </tr>
                     <tr>
+                        <th style="background-color: bisque"></th>
                         <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectalltourist")
                         </th>
                         <th colspan="4" style="background-color: bisque">
                             Туристы
                         </th>
                     </tr>
-                    @foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 2).OrderBy(c => c.Name))
-                    {
-                        <tr>
-                            <td class="checkbox_tourist">
-                                @Html.CheckBox("tourist_" + subscriber.Id, false, new { @class = "tourist" })
-                            </td>
-                            <td>@subscriber.Name
-                            </td>
-                            <td>@subscriber.Email
-                            </td>
-                             <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
-                            </td>
-                            <td>@Html.ActionLink("редактировать", "EditSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink" })
-                                @Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
-                            </td>
-                        </tr>
+                    @{
+                        cnt = 0;
+                        foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 2).OrderBy(c => c.Name))
+                        {
+                            cnt++;
+                            <tr>
+                                <td>@cnt</td>
+                                <td class="checkbox_tourist">
+                                    @Html.CheckBox("tourist_" + subscriber.Id, false, new {@class = "tourist"})
+                                </td>
+                                <td>@subscriber.Name
+                                </td>
+                                <td>@subscriber.Email
+                                </td>
+                                <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
+                                </td>
+                                <td>@Html.ActionLink("редактировать", "EditSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink"})
+                                    @Html.ActionLink("удалить", "DeleteSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить запись?')"})
+                                </td>
+                            </tr>
+                        }
                     }
                 </table>
             </td>
         </tr>
     </table>
     <div style="text-align: center">
-    <input type="submit" name="faSaveDefaultSubscribers" value="Сохранить отмеченные адреса для рассылки новостей" onclick="return confirm('Вы действительно хотите внести изменения в список адресов для рассылки новостей?')"/>
+        <input type="submit" name="faSaveDefaultSubscribers" value="Сохранить отмеченные адреса для рассылки новостей"
+            onclick="return confirm('Вы действительно хотите внести изменения в список адресов для рассылки новостей?')" />
     </div>
    
     
     <div class="sendEmailContainer">
-    
         *отметьте e-mail адреса для отправки сообщения
         <br />
         <br />
         <div style="text-align: left">
-        Тема письма: @Html.TextBox("mailSubject", "", new { style = "width:500px" })<br/><br/>
-        @Html.TextArea("MailText", new { @class = "ckeditor" })
+            Тема письма: @Html.TextBox("mailSubject", "", new { style = "width:500px" })<br />
+            <br />
+            @Html.TextArea("MailText", new { @class = "ckeditor" })
         </div>
         <br />
         <br />
@@ -250,4 +268,3 @@
 {
     @Html.Partial("HeaderLeftMenu", Model.HeaderLeftMenuItems)
 }
-
