@@ -1,4 +1,5 @@
-﻿@using Posh.Models
+﻿@using Posh.Helpers
+@using Posh.Models
 <script type="text/javascript">
 
     $(function () {
@@ -29,10 +30,14 @@
                 }
                 //$(this).toggleClass("categoryBg");
             });
+
+        $("#sbmButton").click(function () {
+            $("#form1").submit();
+        });
     });
 
 </script>
-@using (Html.BeginForm("Index", "Albums", FormMethod.Post))
+@using (Html.BeginForm("Index", "Albums", FormMethod.Post,new{id="form1"}))
 {
     
     <div class="selector">
@@ -65,7 +70,7 @@
             {
                 <div class="element">
                     <div class="elementCheckbox">
-                        @Html.CheckBox("el_" + element.Id)
+                        @Html.CheckBox("el_" + element.Id, WebSession.Elements.Any(e => e.Id == element.Id))
                     </div>
                     @element.Title
                 </div>

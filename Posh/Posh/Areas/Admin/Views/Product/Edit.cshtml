@@ -1,22 +1,22 @@
-﻿@using Posh.Helpers
-@using Posh.Models
+﻿@using Posh.Models
 @model Posh.Models.Product
 
 @{
-    ViewBag.Title = "Добавление изображения в элемент каталога \""+ ViewBag.AlbumTitle+"\"";
+    ViewBag.Title = "Редактирование изображения из элемента каталога \"" + ViewBag.AlbumTitle + "\"";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Добавление изображения в элемент каталога "@ViewBag.AlbumTitle"</h2>
+<h2>Редактирование изображения из элемента каталога "@ViewBag.AlbumTitle"</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
-    @Html.Hidden("AlbumId")
-     <table class="editor-table">
+     @Html.HiddenFor(model => model.Id)
+     @Html.Hidden("AlbumId")
+    <table class="editor-table">
         <tr>
             <td class="editor-label">@Html.LabelFor(model => model.Title)
             </td>
@@ -43,18 +43,18 @@
          <tr>
              <td class="editor-label">Категории</td>
              <td class="editor-field">
-                 @foreach(var category in (List<Category>)ViewBag.Categories)
+                 @foreach (var category in (List<Category>)ViewBag.Categories)
                  {
-                     <div>@Html.CheckBox("category_" + category.Id)   @category.Title </div>
+                     <div>@Html.CheckBox("category_" + category.Id, Model.Categories.Contains(category))   @category.Title </div>
                  }
              </td>
          </tr>
          <tr>
              <td class="editor-label">Элементы</td>
              <td class="editor-field">
-                 @foreach(var element in (List<Element>)ViewBag.Elements)
+                 @foreach (var element in (List<Element>)ViewBag.Elements)
                  {
-                     <div>@Html.CheckBox("element_" + element.Id)   @element.Title</div>
+                     <div>@Html.CheckBox("element_" + element.Id, Model.Elements.Contains(element))   @element.Title</div>
                  }
              </td>
          </tr>
@@ -63,10 +63,6 @@
     <p>
         <input type="submit" value="Сохранить" />
     </p>
-    
-    
-    
-  
 }
 
 <div class="backLink">
