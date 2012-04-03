@@ -1,0 +1,43 @@
+﻿@model HavilaTravel.Models.Customers
+
+@{
+    ViewBag.Title = "EditSubscriber";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditSubscriber</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("EditSubscriber", "Subscribe", FormMethod.Post, new { id = "subscrForm" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.Hidden("redirectUrl","sbscrList")
+    <table class="subscriberList">
+        
+        <tr>
+            <td>Имя</td>
+            <td>Email</td>
+            <td rowspan="2" style="white-space: nowrap">
+                @Html.RadioButtonFor(model => model.SubscribeType, 1) Турагент 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.RadioButtonFor(model => model.SubscribeType, 2) Турист
+
+            </td>
+            <td rowspan="2">
+                <input type="submit" value="Сохранить"/>
+
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.EditorFor(model => model.Name) </td>
+            <td>@Html.EditorFor(model => model.Email)</td>
+        </tr>
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Subscribers","Subscribe")
+</div>

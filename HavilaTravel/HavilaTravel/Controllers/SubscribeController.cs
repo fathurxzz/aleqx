@@ -38,6 +38,9 @@ namespace HavilaTravel.Controllers
                 context.SaveChanges();
             }
 
+            if (!string.IsNullOrEmpty(form["redirectUrl"]) && form["redirectUrl"] == "sbscrList")
+                return RedirectToAction("Subscribers", "Subscribe");
+
             return RedirectToAction("ThankYou");
         }
 
@@ -65,6 +68,28 @@ namespace HavilaTravel.Controllers
                     ViewBag.MailText = context.MailTemplate.First(t => t.Id == templateId.Value).Text;
                 }
                 return View(model);
+            }
+        }
+
+
+        public ActionResult EditSubscriber(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var subscriber = context.Customers.First(c => c.Id == id);
+                return View(subscriber);    
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditSubscriber(int id, FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                var subscriber = context.Customers.First(c => c.Id == id);
+                TryUpdateModel(subscriber, new[] { "Name", "Email", "SubscribeType" });
+                context.SaveChanges();
+                return RedirectToAction("Subscribers", "Subscribe");
             }
         }
 

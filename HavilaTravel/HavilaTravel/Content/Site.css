@@ -274,7 +274,7 @@ body
 
 .text-box
 {
-    width: 30em;
+    width: 20em;
 }
 
 .text-box.multi-line
@@ -912,4 +912,14 @@ table.adminContentPreview th
     text-align: center;
     font-size: 20px;
     color: #00f;
+}
+
+
+.mailtable {
+    border-collapse: collapse;
+    border: 1px solid #800000;
+}
+
+.mailtable td, .mailtable th {
+    border: 1px solid #800000;
 }

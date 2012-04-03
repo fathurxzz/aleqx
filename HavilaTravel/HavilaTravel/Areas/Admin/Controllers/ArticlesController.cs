@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
@@ -47,7 +46,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var article = context.Article.Where(a => a.Id == id).First();
+                var article = context.Article.First(a => a.Id == id);
                 return View(article);
             }
         }
@@ -57,7 +56,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var article = context.Article.Where(a => a.Id == id).First();
+                var article = context.Article.First(a => a.Id == id);
                 TryUpdateModel(article, new[] { "Title", "Date" });
                 article.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.SaveChanges();
@@ -69,7 +68,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var article = context.Article.Where(a => a.Id == id).First();
+                var article = context.Article.First(a => a.Id == id);
                 context.DeleteObject(article);
                 context.SaveChanges();
             }
