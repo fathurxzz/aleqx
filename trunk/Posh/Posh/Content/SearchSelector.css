@@ -1,0 +1,132 @@
+﻿.selector
+{
+    background-color: #fff;
+    margin: 0 55px 50px 55px;
+    border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+}
+
+.selector div
+{
+    text-align: center;
+}
+
+.category
+{
+    width: 138px;
+    height: 138px;
+    color: #b9b7b5;
+    margin: 13px;
+    float: left;
+    cursor: pointer;
+    /*background-image: url('img/category-bg.gif');*/
+    /*background-image: url('Images/category-bg111111111111.gif');*/
+   
+}
+
+.categoryBg
+{
+    background-image: url('img/category-bg.gif') !important;
+    color: #fff !important;
+}
+
+.categoryBgHover {
+    background-image: url('img/category-bg-hover.gif') !important;
+}
+
+.category img
+{
+    position: absolute;
+}
+
+.category .categoryTitle
+{
+    /*position: absolute;*/
+    font-size: 18px;
+    
+    width: 138px;
+    height: 138px;
+    display: table-cell;
+    vertical-align: middle;
+    /*margin-top: 55px;*/
+    
+    text-transform: uppercase;
+}
+
+.categoryItems
+{
+    width: 830px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.subTitle
+{
+    color: #b9b9b9;
+    font-size: 9px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.selector .mainTitle
+{
+    font-size: 20px;
+    color: #333333;
+    padding-top: 20px;
+}
+
+#showOnly
+{
+    color: #333333;
+    font-size: 16px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.elements
+{
+    position: relative;
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+}
+
+#condition
+{
+    color: #89c651;
+    font-size: 9px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.element
+{
+    padding: 5px 20px;
+    float: left;
+    font-size: 10px;
+}
+
+.elementCheckbox
+{
+    float: right;
+    padding-left: 10px;
+    padding-top: 1px;
+}
+
+.searchSubmit
+{
+    padding-bottom: 20px;
+}
+
+#sbmButton
+{
+    border: none;
+    background-color: transparent;
+    background: url('img/submit-button-bg.gif');
+    width: 86px;
+    height: 30px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+}

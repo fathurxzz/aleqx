@@ -1,50 +1,83 @@
 ﻿@using Posh.Models
-
 <script type="text/javascript">
 
     $(function () {
+
+        $(".category").click(function () {
+            var id = $(this).attr("id");
+            if (!$(this).hasClass("categoryBg")) {
+                $(this).removeClass("categoryBgHover");
+                $(this).addClass("categoryBg");
+                $("#h" + id).val("1");
+            } else {
+                $(this).removeClass("categoryBg");
+                $("#h" + id).val("0");
+            }
+        });
+
+
         $(".category").hover(
             function () {
-                 $(this)
-            }, 
+                if (!$(this).hasClass("categoryBg")) {
+                    $(this).addClass("categoryBgHover");
+                }
+                //$(this).css("background-image", "url('Content/img/category-bg.gif')");
+            },
             function () {
-                
+                if (!$(this).hasClass("categoryBg")) {
+                    $(this).removeClass("categoryBgHover");
+                }
+                //$(this).toggleClass("categoryBg");
             });
     });
 
 </script>
-
-<div class="selector">
-    <div class="mainTitle">
-        Я хочу обустроить...</div>
-    <div class="subTitle">
-        Веберите одну или несколько категорий, чтобы отфильтровать продукцию</div>
-    @{
-        var categories = (IEnumerable<Category>)ViewBag.Categories;
-        var elements = (IEnumerable<Element>)ViewBag.Elements;
-    }
-    <div class="categoryItems">
-        @foreach (var category in categories)
-        {
-            @Html.Partial("_Category", category)
+@using (Html.BeginForm("Index", "Albums", FormMethod.Post))
+{
+    
+    <div class="selector">
+        <div class="mainTitle">
+            Я хочу обустроить...</div>
+        <div class="subTitle">
+            Веберите одну или несколько категорий, чтобы отфильтровать продукцию</div>
+        @{
+    var categories = (IEnumerable<Category>)ViewBag.Categories;
+    var elements = (IEnumerable<Element>)ViewBag.Elements;
         }
-        <div class="clear"></div>
-        @Html.ActionLink("добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
-    </div>
-    <div id="showOnly">
-        В выбранных разделах показывать только...</div>
-    <div class="elements">
-        elements
-        @foreach (var element in elements)
-        {
-
-        }
-    </div>
-    <div id="condition">
-        Если не выбрать ни одного компонента, ассортимент будет показан полностью</div>
-        <div class="searchSubmit">
-            @*<input type="submit" id="sbmButton" value="Готово!" />*@
-            <a href="#" id="sbmButton"></a>
-
+        <div class="categoryItems">
+            @Html.ActionLink("добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+            <div class="clear">
+            </div>
+            @foreach (var category in categories.OrderBy(c => c.SortOrder))
+            {
+                @Html.Partial("_Category", category)
+            }
+            <div class="clear">
+            </div>
         </div>
-</div>
+        <div id="showOnly">
+            В выбранных разделах показывать только...</div>
+        <div class="elements">
+            @Html.ActionLink("добавить", "Create", "Element", new { Area = "Admin" }, new { @class = "adminLink" })
+            <div class="clear">
+            </div>
+            @foreach (var element in elements.OrderBy(e => e.SortOrder))
+            {
+                <div class="element">
+                    <div class="elementCheckbox">
+                        @Html.CheckBox("el_" + element.Id)
+                    </div>
+                    @element.Title
+                </div>
+            }
+            <div class="clear">
+            </div>
+        </div>
+        <div id="condition">
+            Если не выбрать ни одного компонента, ассортимент будет показан полностью</div>
+        <div class="searchSubmit">
+            @*<input type="submit" id="sbmButton" value="Готово!" />*@ <a href="#" id="sbmButton">
+            </a>
+        </div>
+    </div>
+}

@@ -20,6 +20,10 @@ a.mainMenuAdminLink
     position: absolute;
 }
 
+.categoryEdit
+{
+    position: absolute;
+}
 
 a.mainMenuAdminLink:hover {
     background-color: transparent !important;

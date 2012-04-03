@@ -1,16 +1,18 @@
-﻿@model Posh.Models.Category
+﻿@model Posh.Models.Element
+
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>
-    Create</h2>
+
+<h2>Create</h2>
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+
+@using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    <table class="editor-table">
+     <table class="editor-table">
         <tr>
             <td class="editor-label">@Html.LabelFor(model => model.Title)
             </td>
@@ -27,20 +29,12 @@
             <td>@Html.ValidationMessageFor(model => model.SortOrder)
             </td>
         </tr>
-        <tr>
-            <td class="editor-label">@Html.LabelFor(model => model.ImageSource)
-            </td>
-            <td class="editor-field"><input type="file" name="uploadFile"/>
-            </td>
-            <td>@Html.ValidationMessageFor(model => model.ImageSource)
-            </td>
-        </tr>
-
     </table>
     <p>
         <input type="submit" value="Сохранить" />
     </p>
 }
+
 <div class="backLink">
-    @Html.ActionLink("Назад", "Index", "Home", new { Area = "" ,id=""}, null)
+    @Html.ActionLink("Назад", "Index", "Home", new { Area = "" }, null)
 </div>
