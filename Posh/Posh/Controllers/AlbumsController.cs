@@ -33,6 +33,38 @@ namespace Posh.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            using (var context = new ModelContainer())
+            {
 
+
+                var model = new CatalogueModel(context, "catalogue", null);
+                this.SetSeoContent(model);
+
+                ViewBag.MainMenu = model.MainMenu;
+                ViewBag.isHomePage = model.IsHomePage;
+
+                ViewBag.Categories = model.Categories;
+
+
+                List<int> checkedCategories = new List<int>();
+                List<int> checkedElements = new List<int>();
+
+                foreach (var category in model.Categories)
+                {
+                    if(form["hcat_"+category.Id]=="true,false")
+                    {
+                        checkedCategories.Add(category.Id);
+                    }
+                }
+
+
+                ViewBag.Elements = model.Elements;
+
+                return View(model);
+            }
+        }
     }
 }

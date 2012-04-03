@@ -1,8 +1,14 @@
 ﻿@using Posh.Helpers
 @model Posh.Models.Category
-<div class="category">
+@{
+    string style = "background-image: url('Content/Images/" + Model.ImageSource + "');";
+    string id ="cat_"+ Model.Id;
+}
+<div class="category" style="@Html.Raw(style)" id="@id">
+    @Html.Hidden("hcat_" + Model.Id, "0")
+    @Html.ActionLink("редактировать", "Edit", "Category", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink categoryEdit" })
     @*@Html.Raw(Html.OriginalImage("Content/Images", Model.ImageSource))*@
     <div class="categoryTitle">
-    @Model.Title
+        @Html.Raw(Model.Title)
     </div>
 </div>
