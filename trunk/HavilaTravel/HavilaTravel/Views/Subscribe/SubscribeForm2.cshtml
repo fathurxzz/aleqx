@@ -1,0 +1,29 @@
+﻿@model HavilaTravel.Models.Customers
+
+@using (Html.BeginForm("Subscribe", "Subscribe", FormMethod.Post, new { id = "subscrForm" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.Hidden("redirectUrl","sbscrList")
+    <table class="subscriberList">
+        
+        <tr>
+            <td>Имя</td>
+            <td>Email</td>
+            <td rowspan="2">
+                @Html.RadioButtonFor(model => model.SubscribeType, 1) Турагент 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.RadioButtonFor(model => model.SubscribeType, 2) Турист
+
+            </td>
+            <td rowspan="2">
+                <input type="submit" value="Добавить"/>
+
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.EditorFor(model => model.Name) </td>
+            <td>@Html.EditorFor(model => model.Email)</td>
+        </tr>
+    </table>
+}
