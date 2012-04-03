@@ -106,3 +106,42 @@
 {
     color: #619433;
 }
+
+.filterItem {
+    float: left;
+    text-transform: uppercase;
+    font-size: 8px;
+    padding: 2px 5px 2px 5px;
+    border: 1px solid #b7b7b6;
+    margin-right: 7px;
+    background-color: #f2f2f3;
+    color: #4da002;
+    
+    
+    border-radius: 7px;
+    -webkit-border-radius:7px;
+    -moz-border-radius:7px;
+}
+
+.filterTable td, .filterTable th {
+    padding-right: 20px;
+    padding-bottom: 7px;
+    font-weight: normal;
+}
+
+
+
+a.changeFilter {
+    color: #0072bc;
+    font-size: 10px;
+}
+
+.showAll {
+    padding: 2px 5px 2px 5px;
+    color: #999999;
+}
+
+.filterTable th, .showAll {
+      font-size: 11px;
+    
+}

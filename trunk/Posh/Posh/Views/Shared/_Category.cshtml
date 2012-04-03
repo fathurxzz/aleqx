@@ -3,9 +3,18 @@
 @{
     string style = "background-image: url('Content/Images/" + Model.ImageSource + "');";
     string id ="cat_"+ Model.Id;
+
+
+    string hValue = "0";
+    string className = "category";
+    if (WebSession.Categories.Any(category => category.Id == Model.Id))
+    {
+        className += " categoryBg";
+        hValue = "1";
+    }
 }
-<div class="category" style="@Html.Raw(style)" id="@id">
-    @Html.Hidden("hcat_" + Model.Id, "0")
+<div class="@className" style="@Html.Raw(style)" id="@id">
+    @Html.Hidden("hcat_" + Model.Id,  hValue)
     @Html.ActionLink("редактировать", "Edit", "Category", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink categoryEdit" })
     @*@Html.Raw(Html.OriginalImage("Content/Images", Model.ImageSource))*@
     <div class="categoryTitle">

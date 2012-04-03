@@ -36,12 +36,18 @@ a.deleteMainMenuAdminLink {
 .editor-table
 {
     margin: 20px 0;
+    border-collapse: collapse;
 }
 
 .editor-table textarea
 {
     width: 400px;
     height: 80px;
+}
+
+.editor-table th, .editor-table td {
+    border: 1px dashed #ccc;
+    padding: 5px;
 }
 
 .errorMessage

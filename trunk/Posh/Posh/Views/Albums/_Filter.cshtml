@@ -1,0 +1,41 @@
+﻿@using Posh.Helpers
+ <table class="filterTable">
+                <tr>
+                    <th>
+                        Показать категории:
+                    </th>
+                    <td>
+                        
+                        @if (WebSession.Categories.Count>0)
+                        {
+                            foreach (var category in WebSession.Categories)
+                            {
+                                <div class="filterItem">@category.Title</div>
+                            }
+                        }else
+                        {
+                            <div class="showAll">(показываются все)</div>
+                        }
+                        
+                    </td>
+                    <td rowspan="2">
+                        @Html.ActionLink("Изменить", "Index", "Home", new { Area = "", id = "" }, new{@class="changeFilter"})
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Показать элементы:
+                    </th>
+                    <td>
+                        @if (WebSession.Elements.Count>0)
+                        {
+                            foreach (var element in WebSession.Elements)
+                            {
+                                <div class="filterItem">@element.Title</div>
+                            }
+                        }else
+                        { <div class="showAll">(показываются все)</div>
+                        }
+                    </td>
+                </tr>
+            </table>

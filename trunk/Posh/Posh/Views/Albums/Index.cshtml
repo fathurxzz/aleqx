@@ -1,13 +1,12 @@
-﻿@model Posh.Models.CatalogueModel
+﻿@using Posh.Helpers
+@model Posh.Models.CatalogueModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section Includes
 {
     <link href="@Url.Content("~/Content/Catalogue.css")" rel="stylesheet" type="text/css" />
 }
-
 @section Title
 {
     <div class="catalogue">
@@ -15,8 +14,7 @@
             @Model.Content.Title
         </div>
         <div class="filter">
-            Показать категори<br />
-            Показать элементы
+           @Html.Partial("_Filter")
         </div>
         <div class="clear">
         </div>
@@ -58,6 +56,5 @@
         {
             @Html.Partial("_Album", album)
         }
-        
     </div>
 }
