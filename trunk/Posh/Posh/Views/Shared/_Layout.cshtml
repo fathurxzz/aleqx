@@ -27,7 +27,7 @@
         <div id="header">
         @if (Request.IsAuthenticated)
         {
-            @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", null, new { @class = "adminLink logOffLink" })
+            @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new{Area=""}, new { @class = "adminLink logOffLink" })
         }
             <div class="headerLine">
                 <div class="headerLineLeft">
@@ -61,7 +61,7 @@
             <div class="subscribe">
                 Чтобы быть в курсе новых<br/>
                 поставок мебели,<br/>
-                <a href="#">подпишитесь на рассылку</a>
+                @Html.ActionLink("подпишитесь на рассылку","Subscribe","News")
                 @if(Request.IsAuthenticated)
                 {
                     <br/>

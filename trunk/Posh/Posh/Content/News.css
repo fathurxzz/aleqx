@@ -30,3 +30,19 @@
     color: #000;
     
 }
+
+.subscribeForm {
+    position: relative;
+    margin:0 auto;
+    padding-top: 50px;
+    width: 350px;
+    
+}
+
+.thankYou 
+{
+    padding-top: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #619433;
+}
