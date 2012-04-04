@@ -7,6 +7,11 @@
     
 }
 
+a.adminLink:hover
+{
+    color: #970000 !important;
+}
+
 a.mainMenuAdminLink
 {
     position: absolute !important;

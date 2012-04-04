@@ -20,17 +20,32 @@ namespace Posh.Helpers
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
-        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1"};
+        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1" };
         public static int[] ThumbnailDimentions = { 177, 200};
 
 
         static GraphicsHelper()
         {
-            limitWidth.Add(ThumbnailFolders[0], ThumbnailDimentions[0]);
-            limitHeight.Add(ThumbnailFolders[0], ThumbnailDimentions[0]);
+            for (int i = 0; i < ThumbnailFolders.Length; i++)
+            {
+                limitWidth.Add(ThumbnailFolders[i], ThumbnailDimentions[i]);
+                limitHeight.Add(ThumbnailFolders[i], ThumbnailDimentions[i]);
+            }
 
+            limitWidth.Add("galleryThumbnail", 131);
+            limitHeight.Add("galleryThumbnail", 96);
+
+            limitWidth.Add("mainView", 641);
+            limitHeight.Add("mainView", 425);
+
+
+            /*
             limitWidth.Add(ThumbnailFolders[1], ThumbnailDimentions[1]);
             limitHeight.Add(ThumbnailFolders[1], ThumbnailDimentions[1]);
+
+            limitWidth.Add(ThumbnailFolders[1], ThumbnailDimentions[2]);
+            limitHeight.Add(ThumbnailFolders[1], ThumbnailDimentions[2]);
+            */
 
             /*limitWidth.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
             limitHeight.Add(ThumbnailFolders[2], ThumbnailDimentions[2]);
