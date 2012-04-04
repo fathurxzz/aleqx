@@ -49,9 +49,12 @@
 }
 @{
     <div id="catalogueContainer">
-        @Html.ActionLink("Новый альбом", "Create", "Album", new { Area = "Admin" }, new { @class = "adminLink" })
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Новый альбом", "Create", "Album", new {Area = "Admin"}, new {@class = "adminLink"})
         <div class="clear">
         </div>
+    }
         @foreach (var album in Model.Albums)
         {
             @Html.Partial("_Album", album)

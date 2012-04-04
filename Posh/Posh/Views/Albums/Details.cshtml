@@ -52,16 +52,23 @@
         <div id="productsAlbumTitle">
             &raquo; @Model.Album.Title
         </div>
-        @Html.ActionLink("Новый элемент", "Create", "Product", new { Area = "Admin", id = Model.Album.Id }, new { @class = "adminLink" })
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Новый элемент", "Create", "Product", new {Area = "Admin", id = Model.Album.Id}, new {@class = "adminLink"})
+        }
         <div id="products">
             @foreach (var image in Model.Album.Products)
             {
                 <div class="productItem">
-                    <div class="adminLinksContainer">
-                        @Html.ActionLink("Редактировать", "Edit", "Product", new {Area="Admin", id = image.Id }, new { @class = "adminLink" })
-                        @Html.ActionLink("Удалить", "Delete", "Product", new { Area = "Admin", id = image.Id }, new { @class = "adminLink" })
-                        @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new { Area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой альбома?')" })
-                    </div>
+                @if (Request.IsAuthenticated)
+                 {
+                     <div class="adminLinksContainer">
+                         @Html.ActionLink("Редактировать", "Edit", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink"})
+                         @Html.ActionLink("Удалить", "Delete", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink"})
+                         @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink", onclick = "return confirm('Сделать обложкой альбома?')"})
+                     </div>
+                 }
+                    
                     @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", ScaleMode.Corp))
                 </div>
             }

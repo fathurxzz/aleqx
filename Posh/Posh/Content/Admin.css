@@ -20,6 +20,19 @@ a.mainMenuAdminLink
     position: absolute;
 }
 
+.abs
+{
+    position: absolute;
+}
+
+.logOffLink
+{
+    position: absolute;
+    top: -30px;
+    font-size: 12px !important;
+}
+
+
 .categoryEdit
 {
     position: absolute;

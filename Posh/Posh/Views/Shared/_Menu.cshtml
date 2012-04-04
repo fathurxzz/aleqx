@@ -4,13 +4,14 @@
     {
         //string className = item.Selected ? "selected" : "";
         <li>
-            @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink mainMenuAdminLink" })
-            @if (!item.Static)
+            @if (Request.IsAuthenticated)
             {
-                @Html.ActionLink("удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink mainMenuAdminLink deleteMainMenuAdminLink" })
+                @Html.ActionLink("редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink mainMenuAdminLink" })
+                if (!item.Static)
+                {
+                     @Html.ActionLink("удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink mainMenuAdminLink deleteMainMenuAdminLink" })
+                }
             }
-            
-
             @if (item.Current)
             {
                 <div class="selected">@item.Title</div>
@@ -18,11 +19,14 @@
             else
             {
                 string className = item.Selected ? "current" : "";
-                @Html.ActionLink(item.Title, "Index", "Home", new { Area = "", id = item.Name }, new{@class=className})
+                @Html.ActionLink(item.Title, "Index", "Home", new { Area = "", id = item.Name }, new { @class = className })
             }
         </li>
     }
-    <li>
-        @Html.ActionLink("добавить", "Create", "Content", new { Area = "Admin" }, new { @class = "adminLink mainMenuAdminLink" })
-    </li>
+    @if (Request.IsAuthenticated)
+    {
+        <li>
+            @Html.ActionLink("добавить", "Create", "Content", new { Area = "Admin" }, new { @class = "adminLink mainMenuAdminLink" })
+        </li>
+    }
 </ul>

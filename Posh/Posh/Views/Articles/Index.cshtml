@@ -15,10 +15,12 @@
 
 <div id="articlesContainer">
     
-    
-    @Html.ActionLink("Добавить статью","Create","Article",new{Area="Admin"},new{@class="adminLink"})
-    <br/><br/>
-    
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить статью", "Create", "Article", new {Area = "Admin"}, new {@class = "adminLink"})
+        <br/>
+        <br/>
+    }
 
     @foreach (var newsItem in Model.Articles.OrderBy(a=>a.SortOrder))
     {

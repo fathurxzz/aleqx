@@ -15,7 +15,10 @@
 }
 <div class="@className" style="@Html.Raw(style)" id="@id">
     @Html.Hidden("hcat_" + Model.Id,  hValue)
-    @Html.ActionLink("редактировать", "Edit", "Category", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink categoryEdit" })
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("редактировать", "Edit", "Category", new {Area = "Admin", id = Model.Id}, new {@class = "adminLink categoryEdit"})
+    }
     @*@Html.Raw(Html.OriginalImage("Content/Images", Model.ImageSource))*@
     <div class="categoryTitle">
         @Html.Raw(Model.Title)

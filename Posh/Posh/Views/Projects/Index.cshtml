@@ -32,9 +32,12 @@
 }
 @{
     <div id="projectsContainer">
-        @Html.ActionLink("Новый проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Новый проект", "Create", "Project", new {Area = "Admin"}, new {@class = "adminLink"})
         <div class="clear">
         </div>
+    }
         @foreach (var project in Model.Projects)
         {
             @Html.Partial("_Project", project)
