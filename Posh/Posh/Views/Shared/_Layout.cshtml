@@ -62,6 +62,11 @@
                 Чтобы быть в курсе новых<br/>
                 поставок мебели,<br/>
                 <a href="#">подпишитесь на рассылку</a>
+                @if(Request.IsAuthenticated)
+                {
+                    <br/>
+                    @Html.ActionLink("Список подписчиков на рассылку","Index","Subscriber",new{Area="Admin"},new{@class="adminLink"})
+                }
             </div>
             <div class="copy">
             &copy; Компания "Posh"<br/>

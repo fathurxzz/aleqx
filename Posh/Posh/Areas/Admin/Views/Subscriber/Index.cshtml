@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Posh.Models.Subscriber>
+
+@{
+    ViewBag.Title = "Список подписчиков на рассылку";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список подписчиков на рассылку</h2>
+<br/>
+<p>
+    @Html.ActionLink("Добавить", "Create")
+</p>
+<br/>
+<table class="subscribersTable">
+    <tr>
+        <th>
+            Имя
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{onclick="return confirm('Удалить этот адрес?')"})
+        </td>
+    </tr>
+}
+
+</table>

@@ -24,5 +24,35 @@ namespace Posh.Controllers
             }
         }
 
+        public ActionResult Subscribe()
+        {
+            using (var context = new ModelContainer())
+            {
+                var model = new NewsModel(context, null,false);
+                this.SetSeoContent(model);
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Subscribe(FormCollection form)
+        {
+            using (var context = new ModelContainer())
+            {
+
+            }
+            return RedirectToAction("ThankYou");
+        }
+
+        public ActionResult ThankYou()
+        {
+            using (var context = new ModelContainer())
+            {
+                var model = new NewsModel(context, null, false);
+                this.SetSeoContent(model);
+                return View(model);
+            }
+        }
+
     }
 }
