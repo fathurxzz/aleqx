@@ -20,6 +20,7 @@
 #catalogueContainer
 {
     margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .album
@@ -78,6 +79,7 @@
 {
     margin-left: 50px;
     width: 900px;
+    margin-bottom: 50px;
 }
 
 .productItem

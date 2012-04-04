@@ -1,10 +1,29 @@
-﻿@model Posh.Models.ProjectsModel
+﻿@using Posh.Helpers
+@model Posh.Models.ProjectsModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Includes
 {
     <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jcarousel.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery.jcarousel.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $('#galleryPreviews').jcarousel({ 'scroll': 1 });
+            $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
+        });
+
+        function setImage(path) {
+            $("#pictureContainer").attr("src", "/ImageCache/mainView/" + path);
+            $("#pictureLink").attr("href", "/Content/Images/" + path);
+        }
+      
+    </script>
 }
 @section Title
 {
@@ -12,13 +31,59 @@
         @Html.ActionLink(Model.Content.Title, "Index", "Projects", new { id = "" }, null)
     </div>
 }
-    <div id="projectTitle">
-            &raquo; @Model.Project.Title
-        </div>
+<div id="projectTitle">
+    &raquo; @Model.Project.Title
+</div>
 <div id="textTop">
     @Html.Raw(Model.Project.TextTop)
 </div>
 <div id="projectDetailsContainer">
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("добавить изображение", "CreateProjectItem", "Project", new { Area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
+    }
+    <div id="galleryViewer">
+        @if (Model.Project.ProjectItems.Count > 0)
+        {
+            <a href="#" id="pictureLink" class="fancy">
+                <img src="" alt="" id="pictureContainer" />
+            </a>    
+        }
+    </div>
+
+    <ul id="galleryPreviews" class="jcarousel-skin-tango">
+    @{
+        var cnt = 0;
+        foreach (var item in Model.Project.ProjectItems)
+        {
+            if(cnt==0)
+            {
+                @Html.Raw(
+            "<script type=\"text/javascript\">" +
+            "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/Images", item.ImageSource, "mainView", ScaleMode.Corp) + "\");" +
+            "$(\"#pictureLink\").attr(\"href\", \"/Content/Images/" + item.ImageSource + "\");" +
+            "</script>");
+            }
+            cnt++;
+            
+            
+        
+            
+            <li>
+            <div class="carouselItem" style="cursor:pointer" onclick="setImage('@item.ImageSource')">
+
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "galleryThumbnail", ScaleMode.Corp))
+
+            </div>
+
+            </li>
+                
+            
+            
+        }
+        
+    }
+    </ul>
 </div>
 <div id="textBottom">
     @Html.Raw(Model.Project.TextBottom)

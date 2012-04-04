@@ -6,6 +6,13 @@
 @section Includes
 {
     <link href="@Url.Content("~/Content/Catalogue.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".fancy").fancybox({ titlePosition: 'inside', showCloseButton: true, cyclic: false, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+        });
+    </script>
 }
 @section Title
 {
@@ -34,7 +41,7 @@
     @if (!string.IsNullOrEmpty(Model.Content.SeoText))
     {
         <div class="content seo">
-            @Model.Content.SeoText
+            @Html.Raw(Model.Content.SeoText)
         </div>
     }
 }
@@ -43,7 +50,7 @@
     @if (!string.IsNullOrEmpty(Model.Content.Text))
     {
         <div class="content">
-            @Model.Content.Text
+            @Html.Raw(Model.Content.Text)
         </div>
     }
 }
@@ -63,18 +70,21 @@
                 @if (Request.IsAuthenticated)
                  {
                      <div class="adminLinksContainer">
-                         @Html.ActionLink("Редактировать", "Edit", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink"})
-                         @Html.ActionLink("Удалить", "Delete", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink"})
+                         @Html.ActionLink("Редактировать", "Edit", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink"})<br/>
+                         @Html.ActionLink("Удалить", "Delete", "Product", new { Area = "Admin", id = image.Id }, new { @class = "adminLink" })<br/>
                          @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink", onclick = "return confirm('Сделать обложкой альбома?')"})
                      </div>
                  }
-                    
+                    <a rel="@Html.Raw("group" + Model.Album.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
                     @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", ScaleMode.Corp))
+                    </a>
                 </div>
             }
             <div id="lastProductItem" class="productItem">
                 &raquo; @Html.ActionLink("В меню", "Index", "Albums", new { id = "" }, null)
             </div>
+            <div class="clear">
+        </div>
         </div>
     </div>
    
