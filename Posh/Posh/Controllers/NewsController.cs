@@ -30,6 +30,8 @@ namespace Posh.Controllers
             {
                 var model = new NewsModel(context, null,false);
                 this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
+                ViewBag.isHomePage = model.IsHomePage;
                 return View(model);
             }
         }
@@ -39,7 +41,10 @@ namespace Posh.Controllers
         {
             using (var context = new ModelContainer())
             {
-
+                var subscriber = new Subscriber();
+                TryUpdateModel(subscriber, new[] { "Name", "Email" });
+                context.AddToSubscriber(subscriber);
+                context.SaveChanges();
             }
             return RedirectToAction("ThankYou");
         }
@@ -50,6 +55,8 @@ namespace Posh.Controllers
             {
                 var model = new NewsModel(context, null, false);
                 this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
+                ViewBag.isHomePage = model.IsHomePage;
                 return View(model);
             }
         }

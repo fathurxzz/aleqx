@@ -1,5 +1,4 @@
-﻿@using Posh.Models
-@model Posh.Models.SiteViewModel
+﻿@model Posh.Models.SiteViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,4 +14,10 @@
     </div>
 }
 
-@Html.Partial("_SubscribeForm",new Subscriber())
+
+@section Content
+{
+    <div class="thankYou">
+        Спасибо. Вы подписаны на рассылку новостей.
+    </div>
+}
