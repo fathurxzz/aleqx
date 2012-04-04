@@ -1,8 +1,11 @@
 ﻿@model Posh.Models.Article
 <div class="article">
     <div class="articleTitle">@Model.Title</div>
-    @Html.ActionLink("редактировать", "Edit", "Article", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
-    @Html.ActionLink("удалить", "Delete", "Article", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить статью?')" })
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("редактировать", "Edit", "Article", new {Area = "Admin", id = Model.Id}, new {@class = "adminLink"})
+        @Html.ActionLink("удалить", "Delete", "Article", new {Area = "Admin", id = Model.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить статью?')"})
+    }
     <div class="articleText">@Html.Raw(Model.Text)</div>
     <div class="articleDetailsLink">
         &raquo; @Html.ActionLink("Статья полностью", "Index", "Articles", new { id = Model.Name }, null)

@@ -2,7 +2,10 @@
 <div class="newsItem">
     <div class="newsItemDate">@Model.Date.ToShortDateString()</div>
     <div class="newsItemTitle">@Model.Title</div>
-    @Html.ActionLink("редактировать", "Edit", "News", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
-    @Html.ActionLink("удалить", "Delete", "News", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить новость?')" })
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("редактировать", "Edit", "News", new {Area = "Admin", id = Model.Id}, new {@class = "adminLink"})
+        @Html.ActionLink("удалить", "Delete", "News", new {Area = "Admin", id = Model.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить новость?')"})
+    }
     <div class="newsItemText">@Html.Raw(Model.Text)</div>
 </div>

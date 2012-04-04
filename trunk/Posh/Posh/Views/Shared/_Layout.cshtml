@@ -21,9 +21,14 @@
     <div id="outerHeader">
         <div id="outerHeaderTitle">
             <div class="headerText">
+            
             </div>
         </div>
         <div id="header">
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", null, new { @class = "adminLink logOffLink" })
+        }
             <div class="headerLine">
                 <div class="headerLineLeft">
                     <div id="logo"></div>
