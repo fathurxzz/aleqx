@@ -29,7 +29,40 @@ namespace Posh.Areas.Admin.Controllers
                 context.AddToElement(element);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var element = context.Element.First(e => e.Id == id);
+                return View(element);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Element model)
+        {
+            using (var context = new ModelContainer())
+            {
+                var element = context.Element.First(e => e.Id == model.Id);
+                TryUpdateModel(element, new[] { "Title", "SortOrder" });
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id="" });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var element = context.Element.First(e => e.Id == id);
+                element.Products.Clear();
+                context.DeleteObject(element);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
         }
 
     }
