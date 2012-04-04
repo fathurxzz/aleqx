@@ -86,7 +86,7 @@ namespace Posh.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("Index", "Home", new { Area = "",id="" });
         }
     }
 }

@@ -84,5 +84,22 @@ namespace Posh.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "Home", new { Area = "", id="" });
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var category = context.Category.First(e => e.Id == id);
+                category.Products.Clear();
+                IOHelper.DeleteFile("~/Content/Images", category.ImageSource);
+                foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                {
+                    IOHelper.DeleteFile("~/ImageCache/" + folder, category.ImageSource);
+                }
+                context.DeleteObject(category);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
+        }
     }
 }
