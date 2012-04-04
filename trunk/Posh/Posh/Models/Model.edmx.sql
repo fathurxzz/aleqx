@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/02/2012 16:35:39
+-- Date Created: 04/04/2012 22:49:11
 -- Generated from EDMX file: D:\projects\Posh\Posh\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -140,6 +140,14 @@ CREATE TABLE `News` (
     `Title` mediumtext  NOT NULL,
     `Date` datetime  NOT NULL,
     `Text` longtext  NOT NULL
+);
+
+-- Creating table 'Subscriber'
+
+CREATE TABLE `Subscriber` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` mediumtext  NOT NULL,
+    `Email` mediumtext  NOT NULL
 );
 
 -- Creating table 'ProductCategory'

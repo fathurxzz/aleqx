@@ -216,6 +216,22 @@ namespace Posh.Models
             }
         }
         private ObjectSet<News> _News;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Subscriber> Subscriber
+        {
+            get
+            {
+                if ((_Subscriber == null))
+                {
+                    _Subscriber = base.CreateObjectSet<Subscriber>("Subscriber");
+                }
+                return _Subscriber;
+            }
+        }
+        private ObjectSet<Subscriber> _Subscriber;
 
         #endregion
         #region AddTo Methods
@@ -290,6 +306,14 @@ namespace Posh.Models
         public void AddToNews(News news)
         {
             base.AddObject("News", news);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Subscriber EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSubscriber(Subscriber subscriber)
+        {
+            base.AddObject("Subscriber", subscriber);
         }
 
         #endregion
@@ -2055,6 +2079,113 @@ namespace Posh.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="Subscriber")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Subscriber : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Subscriber object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        public static Subscriber CreateSubscriber(global::System.Int32 id, global::System.String name, global::System.String email)
+        {
+            Subscriber subscriber = new Subscriber();
+            subscriber.Id = id;
+            subscriber.Name = name;
+            subscriber.Email = email;
+            return subscriber;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+
+        #endregion
+    
     }
 
     #endregion

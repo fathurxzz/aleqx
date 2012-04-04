@@ -85,6 +85,7 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubscriberController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Models\Validation\ProjectItemValidation.cs" />
     <Compile Include="Models\Validation\ProjectValidation.cs" />
+    <Compile Include="Models\Validation\SubscriberValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -314,10 +316,14 @@
     <Content Include="Areas\Admin\Views\Element\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Project\CreateProjectItem.cshtml" />
     <Content Include="Areas\Admin\Views\Project\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\Edit.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
     <Content Include="Views\Albums\_Filter.cshtml" />
+    <Content Include="Views\News\Subscribe.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
