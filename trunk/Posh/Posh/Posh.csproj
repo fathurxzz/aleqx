@@ -100,6 +100,7 @@
     <Compile Include="Helpers\FormCollectionExtender.cs" />
     <Compile Include="Helpers\GraphicsHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ArticlesModel.cs" />
@@ -220,6 +221,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Content\MailTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

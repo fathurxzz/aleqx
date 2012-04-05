@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Posh.Helpers;
@@ -24,6 +25,16 @@ namespace Posh.Areas.Admin.Controllers
                 TryUpdateModel(newsItem, new[] { "Title", "Date" });
                 newsItem.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.AddToNews(newsItem);
+
+                // TODO: change absolute url!!!!!
+                //var mailText = HttpUtility.HtmlDecode(form["Text"]).Replace("src=\"", "src=\"http://havila-travel.com/");
+                //var mailSubject = "Posh. Рассылка новостей.";
+                //var subscribers = context.Subscriber.ToList();
+                //foreach (var subscriber in subscribers)
+                //{
+                //    new MailHelper("mail@mail.com", "POSH").SendMessage(new MailAddress(subscriber.Email), mailText, mailSubject, true);
+                //}
+
                 context.SaveChanges();
             }
             return RedirectToAction("Index", "News", new { Area = "" });
