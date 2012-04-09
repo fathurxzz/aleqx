@@ -82,6 +82,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         @Html.ActionLink("редактировать", "Edit", "Element", new {Area = "Admin", id = element.Id}, new {@class = "adminLink"})
+                        @Html.Raw("&nbsp")
                         @Html.ActionLink("удалить", "Delete", "Element", new {Area = "Admin", id = element.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить элемент? При удалении также будут удалены признаки данного элемента из продуктов')"})
                     }
                 </div>
