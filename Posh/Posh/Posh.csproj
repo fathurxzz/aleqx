@@ -182,6 +182,7 @@
     <Content Include="Content\SearchSelector.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model.edmx.sql" />
+    <Content Include="query.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
