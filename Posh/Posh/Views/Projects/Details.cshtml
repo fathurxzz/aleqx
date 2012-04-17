@@ -38,16 +38,19 @@
     @Html.Raw(Model.Project.TextTop)
 </div>
 <div id="projectDetailsContainer">
+    
     @if (Request.IsAuthenticated)
     {
         @Html.ActionLink("добавить изображение", "CreateProjectItem", "Project", new { Area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
     }
     <div id="galleryViewer">
+    @*<div id="galleryViewerBg"></div>*@
         @if (Model.Project.ProjectItems.Count > 0)
         {
             <a href="#" id="pictureLink" class="fancy">
-                <img src="" alt="" id="pictureContainer" />
             </a>    
+            <img src="" alt="" id="pictureContainer" />
+            
         }
     </div>
 
@@ -56,7 +59,7 @@
         var cnt = 0;
         foreach (var item in Model.Project.ProjectItems)
         {
-            if(cnt==0)
+            if (cnt == 0)
             {
                 @Html.Raw(
             "<script type=\"text/javascript\">" +
@@ -71,7 +74,14 @@
             
             <li>
             <div class="carouselItem" style="cursor:pointer" onclick="setImage('@item.ImageSource')">
-
+            @if (Request.IsAuthenticated)
+             {
+                <div class="abs">
+                 @Html.ActionLink("Удалить", "DeleteProjectItem", "Project", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })<br/>
+                 @Html.ActionLink("Сделать обложкой", "SetDefault", "Project", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой проекта?')" })
+                 </div>
+             }
+                
             @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "galleryThumbnail", ScaleMode.Corp))
 
             </div>

@@ -60,11 +60,25 @@
 
 #projectDetailsContainer
 {
-    width: 642px;
+    width: 641px;
     position: relative;
     margin: 0 auto;
     height: 573px;
-    background-image: url('img/project-details-bg.gif');
+    background-image: url('img/project-details-bg.png');
+}
+
+#pictureLink
+{
+    position: absolute;
+    z-index: 1001;
+    width: 641px;
+    height: 425px;
+    background-image: url('img/project-details-bg.png');
+}
+
+#pictureLink img
+{
+    z-index: 999;
 }
 
 

@@ -171,7 +171,7 @@
     <Content Include="Content\img\headerline-outer-bg.gif" />
     <Content Include="Content\img\headerline-right.gif" />
     <Content Include="Content\img\leftArrow.png" />
-    <Content Include="Content\img\project-details-bg.gif" />
+    <Content Include="Content\img\project-details-bg.png" />
     <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\submit-button-bg.gif" />
     <Content Include="Content\jcarousel.css" />

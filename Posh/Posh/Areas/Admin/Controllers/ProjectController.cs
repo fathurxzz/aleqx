@@ -129,5 +129,25 @@ namespace Posh.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult DeleteProjectItem(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var projectItem = context.ProjectItem.First(pi => pi.Id == id);
+                if (!string.IsNullOrEmpty(projectItem.ImageSource))
+                {
+                    IOHelper.DeleteFile("~/Content/Images", projectItem.ImageSource);
+                    foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                    {
+                        IOHelper.DeleteFile("~/ImageCache/" + folder, projectItem.ImageSource);
+                    }
+                }
+
+                context.DeleteObject(projectItem);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new {Area = "", id = "projects"});
+            }
+        }
+
     }
 }
