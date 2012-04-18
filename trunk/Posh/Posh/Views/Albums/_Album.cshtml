@@ -1,6 +1,13 @@
 ﻿@using Posh.Helpers
 @model Posh.Models.Album
 <div class="album">
+@if(Request.IsAuthenticated)
+{
+    <div class="abs">
+        @Html.ActionLink("Удалить", "Delete", "Album", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить альбом? (удаляются только пустые альбомы)')" })<br/>
+    </div>
+}
+
     <div class="album-title">
         @Html.ActionLink(Model.Title, "Index", "Albums", new { id = Model.Name }, null)
     </div>

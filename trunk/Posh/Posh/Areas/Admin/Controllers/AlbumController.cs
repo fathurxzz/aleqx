@@ -36,5 +36,19 @@ namespace Posh.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Home", new { Area = "", id = "catalogue" });
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var album = context.Album.Include("Products").First(a => a.Id == id);
+                if (!album.Products.Any())
+                {
+                    context.DeleteObject(album);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id = "catalogue" });
+        }
     }
 }
