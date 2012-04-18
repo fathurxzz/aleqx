@@ -72,6 +72,21 @@ namespace Posh.Areas.Admin.Controllers
         }
 
 
+        public ActionResult Delete(int id)
+        {
+            using (var context = new ModelContainer())
+            {
+                var project = context.Project.Include("ProjectItems").First(a => a.Id == id);
+                if (!project.ProjectItems.Any())
+                {
+                    context.DeleteObject(project);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id = "projects" });
+        }
+
+
         public ActionResult SetDefault(int id)
         {
             using (var context = new ModelContainer())
@@ -133,7 +148,8 @@ namespace Posh.Areas.Admin.Controllers
         {
             using (var context = new ModelContainer())
             {
-                var projectItem = context.ProjectItem.First(pi => pi.Id == id);
+                var projectItem = context.ProjectItem.Include("Project").First(pi => pi.Id == id);
+                var projectName = projectItem.Project.Name;
                 if (!string.IsNullOrEmpty(projectItem.ImageSource))
                 {
                     IOHelper.DeleteFile("~/Content/Images", projectItem.ImageSource);
@@ -145,7 +161,7 @@ namespace Posh.Areas.Admin.Controllers
 
                 context.DeleteObject(projectItem);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home", new {Area = "", id = "projects"});
+                return RedirectToAction("Index", "Projects", new {Area = "", id = projectName});
             }
         }
 

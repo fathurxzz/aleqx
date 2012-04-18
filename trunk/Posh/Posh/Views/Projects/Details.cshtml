@@ -37,12 +37,15 @@
 <div id="textTop">
     @Html.Raw(Model.Project.TextTop)
 </div>
+@if (Request.IsAuthenticated)
+    {
+     <div style="padding-left: 180px; padding-bottom:10px;">
+        @Html.ActionLink("добавить изображение", "CreateProjectItem", "Project", new { Area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
+        </div>   
+    }
 <div id="projectDetailsContainer">
     
-    @if (Request.IsAuthenticated)
-    {
-        @Html.ActionLink("добавить изображение", "CreateProjectItem", "Project", new { Area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
-    }
+    
     <div id="galleryViewer">
     @*<div id="galleryViewerBg"></div>*@
         @if (Model.Project.ProjectItems.Count > 0)
@@ -75,12 +78,12 @@
             <li>
             <div class="carouselItem" style="cursor:pointer" onclick="setImage('@item.ImageSource')">
             @if (Request.IsAuthenticated)
-             {
+            {
                 <div class="abs">
                  @Html.ActionLink("Удалить", "DeleteProjectItem", "Project", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })<br/>
                  @Html.ActionLink("Сделать обложкой", "SetDefault", "Project", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой проекта?')" })
                  </div>
-             }
+            }
                 
             @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "galleryThumbnail", ScaleMode.Corp))
 

@@ -1,6 +1,13 @@
 ﻿@using Posh.Helpers
 @model Posh.Models.Project
 <div class="project">
+@if(Request.IsAuthenticated)
+{
+    <div class="abs">
+        @Html.ActionLink("Удалить", "Delete", "Project", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект? (удаляются только пустые проекты)')" })<br/>
+    </div>
+}
+
     <div class="project-title">
         @Html.ActionLink(Model.Title, "Index", "Projects", new { id = Model.Name }, null)
     </div>
