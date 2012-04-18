@@ -76,7 +76,7 @@
                          @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink", onclick = "return confirm('Сделать обложкой альбома?')"})
                      </div>
                  }
-                    <a rel="@Html.Raw("group" + Model.Album.Id)" href="../../../Content/Images/@image.ImageSource" class="fancy">
+                    <a rel="@Html.Raw("group" + Model.Album.Id)" href="../../../Content/Images/@image.ImageSource" title="@image.Title" class="fancy">
                     @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "thumbnail0", ScaleMode.Corp))
                     </a>
                 </div>
