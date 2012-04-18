@@ -186,7 +186,28 @@ namespace Posh.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return RedirectToAction("Index", "Albums", new { Area = "", id = "" });
+
+            using (var context = new ModelContainer())
+            {
+                var product = context.Product.Include("Album").First(p => p.Id == id);
+                var album = product.Album;
+
+                if (!string.IsNullOrEmpty(product.ImageSource))
+                {
+                    IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
+                    foreach (var folder in GraphicsHelper.ThumbnailFolders)
+                    {
+                        IOHelper.DeleteFile("~/ImageCache/" + folder, product.ImageSource);
+                    }
+                }
+
+                product.Categories.Clear();
+                product.Elements.Clear();
+                context.DeleteObject(product);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Albums", new {Area = "", id = album.Name});
+            }
         }
 
         public ActionResult SetDefault(int id)
