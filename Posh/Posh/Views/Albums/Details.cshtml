@@ -62,6 +62,7 @@
         @if (Request.IsAuthenticated)
         {
             @Html.ActionLink("Новый элемент", "Create", "Product", new {Area = "Admin", id = Model.Album.Id}, new {@class = "adminLink"})
+            <br /><br />
         }
         <div id="products">
             @foreach (var image in Model.Album.Products)
@@ -71,7 +72,7 @@
                  {
                      <div class="adminLinksContainer">
                          @Html.ActionLink("Редактировать", "Edit", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink"})<br/>
-                         @Html.ActionLink("Удалить", "Delete", "Product", new { Area = "Admin", id = image.Id }, new { @class = "adminLink" })<br/>
+                         @Html.ActionLink("Удалить", "Delete", "Product", new { Area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })<br/>
                          @Html.ActionLink("Сделать обложкой альбома", "SetDefault", "Product", new {Area = "Admin", id = image.Id}, new {@class = "adminLink", onclick = "return confirm('Сделать обложкой альбома?')"})
                      </div>
                  }
