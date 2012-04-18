@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/04/2012 22:49:11
+-- Date Created: 04/18/2012 11:18:24
 -- Generated from EDMX file: D:\projects\Posh\Posh\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `posh`;
-CREATE DATABASE `posh`;
-USE `posh`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -39,6 +36,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Project`;
     DROP TABLE IF EXISTS `ProjectItem`;
     DROP TABLE IF EXISTS `News`;
+    DROP TABLE IF EXISTS `Subscriber`;
     DROP TABLE IF EXISTS `ProductCategory`;
     DROP TABLE IF EXISTS `ProductElement`;
 SET foreign_key_checks = 1;
