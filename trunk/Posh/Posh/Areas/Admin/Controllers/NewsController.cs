@@ -27,13 +27,13 @@ namespace Posh.Areas.Admin.Controllers
                 context.AddToNews(newsItem);
 
                 // TODO: change absolute url!!!!!
-                //var mailText = HttpUtility.HtmlDecode(form["Text"]).Replace("src=\"", "src=\"http://havila-travel.com/");
-                //var mailSubject = "Posh. Рассылка новостей.";
-                //var subscribers = context.Subscriber.ToList();
-                //foreach (var subscriber in subscribers)
-                //{
-                //    new MailHelper("mail@mail.com", "POSH").SendMessage(new MailAddress(subscriber.Email), mailText, mailSubject, true);
-                //}
+                var mailText = HttpUtility.HtmlDecode(form["Text"]).Replace("src=\"", "src=\"http://posh-net-ua.1gb.ua/");
+                var mailSubject = "Posh. Рассылка новостей.";
+                var subscribers = context.Subscriber.ToList();
+                foreach (var subscriber in subscribers)
+                {
+                    new MailHelper("office@posh.net.ua", "POSH").SendMessage(new MailAddress(subscriber.Email), mailText, mailSubject, true);
+                }
 
                 context.SaveChanges();
             }
