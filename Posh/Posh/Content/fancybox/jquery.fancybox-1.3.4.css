@@ -263,33 +263,26 @@
 #fancybox-title {
 	font-family: Helvetica;
 	z-index: 1102;
-	
-    font-size: 18px;
-    
+    font-size: 25px;
 }
 
 #fancybox-title-inside
 {
     text-align: left;
-    padding-left: 10px;
+    padding-left: 20px;
     color: #fff;
-    height: 35px;
-    padding-top: 10px;
+    height: 55px;
+    padding-top: 20px;
 }
 
 .fancybox-title-inside 
 {
-	
-	
-	/*color: #333;*/
-	/*background: #fff;*/
-	/*position: relative;*/
     position: absolute;
-    margin-top: -45px;
+    margin-top: -75px;
     
     background-color: #333332;
-    opacity: 0.3;
-    filter: alpha(opacity=30);
+    opacity: 0.6;
+    filter: alpha(opacity=60);
 }
 
 .fancybox-title-outside {
