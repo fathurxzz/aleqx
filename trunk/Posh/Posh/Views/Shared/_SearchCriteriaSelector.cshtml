@@ -37,7 +37,7 @@
     });
 
 </script>
-@using (Html.BeginForm("Index", "Albums", FormMethod.Post,new{id="form1"}))
+@using (Html.BeginForm("Index", "Albums", FormMethod.Post, new { id = "form1" }))
 {
     
     <div class="selector">
@@ -50,15 +50,30 @@
     var elements = (IEnumerable<Element>)ViewBag.Elements;
         }
         <div class="categoryItems">
-        @if (Request.IsAuthenticated)
-        {
-            @Html.ActionLink("добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
-            <div class="clear">
-            </div>
-            }
-            @foreach (var category in categories.OrderBy(c => c.SortOrder))
+            @if (Request.IsAuthenticated)
             {
-                @Html.Partial("_Category", category)
+                @Html.ActionLink("добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+                <div class="clear">
+                </div>
+            }
+            @{
+            int cnt = 0;
+                <table>
+                    <tr>
+                        <td style="text-align: center">
+                            @foreach (var category in categories.OrderBy(c => c.SortOrder))
+                            {
+                                
+                                if (cnt % 5 == 0)
+                                {
+                                    @Html.Raw("</td></tr><tr><td>")
+                                }
+                                cnt++;
+                                @Html.Partial("_Category", category)
+                            }
+                        </td>
+                    </tr>
+                </table>
             }
             <div class="clear">
             </div>
@@ -66,12 +81,12 @@
         <div id="showOnly">
             В выбранных разделах показывать только...</div>
         <div class="elements">
-        @if (Request.IsAuthenticated)
-        {
-            @Html.ActionLink("добавить", "Create", "Element", new {Area = "Admin"}, new {@class = "adminLink"})
-            <div class="clear">
-            </div>
-        }
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("добавить", "Create", "Element", new { Area = "Admin" }, new { @class = "adminLink" })
+                <div class="clear">
+                </div>
+            }
             @foreach (var element in elements.OrderBy(e => e.SortOrder))
             {
                 <div class="element">
@@ -81,9 +96,9 @@
                     @element.Title
                     @if (Request.IsAuthenticated)
                     {
-                        @Html.ActionLink("редактировать", "Edit", "Element", new {Area = "Admin", id = element.Id}, new {@class = "adminLink"})
+                        @Html.ActionLink("редактировать", "Edit", "Element", new { Area = "Admin", id = element.Id }, new { @class = "adminLink" })
                         @Html.Raw("&nbsp")
-                        @Html.ActionLink("удалить", "Delete", "Element", new {Area = "Admin", id = element.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить элемент? При удалении также будут удалены признаки данного элемента из продуктов')"})
+                        @Html.ActionLink("удалить", "Delete", "Element", new { Area = "Admin", id = element.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент? При удалении также будут удалены признаки данного элемента из продуктов')" })
                     }
                 </div>
             }
