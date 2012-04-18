@@ -18,11 +18,10 @@
     height: 138px;
     color: #b9b7b5;
     margin: 13px;
-    float: left;
     cursor: pointer;
-    /*background-image: url('img/category-bg.gif');*/
-    /*background-image: url('Images/category-bg111111111111.gif');*/
-   
+    
+    /*float: left;*/
+    display: inline-block;
 }
 
 .categoryBg
@@ -56,7 +55,7 @@
 
 .categoryItems
 {
-    width: 830px;
+    width: 840px;
     position: relative;
     margin: 0 auto;
 }
