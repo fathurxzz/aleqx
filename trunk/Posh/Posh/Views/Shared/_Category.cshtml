@@ -1,7 +1,7 @@
 ﻿@using Posh.Helpers
 @model Posh.Models.Category
 @{
-    string style = "background-image: url('Content/Images/" + Model.ImageSource + "');";
+    string style = "background-image: url('Content/img/category/" + Model.ImageSource + "');";
     string id ="cat_"+ Model.Id;
 
 
@@ -21,6 +21,6 @@
     }
     @*@Html.Raw(Html.OriginalImage("Content/Images", Model.ImageSource))*@
     <div class="categoryTitle">
-        @Html.Raw(Model.Title)
+        @*@Html.Raw(Model.Title)*@
     </div>
 </div>
