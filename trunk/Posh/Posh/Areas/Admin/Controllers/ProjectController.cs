@@ -20,7 +20,7 @@ namespace Posh.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult Create(FormCollection form, HttpPostedFileBase uploadFile)
         {
             using (var context = new ModelContainer())
             {
@@ -32,6 +32,13 @@ namespace Posh.Areas.Admin.Controllers
                                        "Title",
                                        "SortOrder"
                                    });
+
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", uploadFile.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+                filePath = Path.Combine(filePath, fileName);
+                uploadFile.SaveAs(filePath);
+
+                project.ImageSource = fileName;
 
                 project.TextTop = HttpUtility.HtmlDecode(form["TextTop"]);
                 project.TextBottom = HttpUtility.HtmlDecode(form["TextBottom"]);
@@ -51,7 +58,7 @@ namespace Posh.Areas.Admin.Controllers
                 return View(project);
             }
         }
-
+        [HttpPost]
         public ActionResult Edit(int id, FormCollection form)
         {
             using (var context = new ModelContainer())

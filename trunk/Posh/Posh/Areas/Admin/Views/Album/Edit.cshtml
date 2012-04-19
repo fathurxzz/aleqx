@@ -1,19 +1,19 @@
 ﻿@model Posh.Models.Album
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Редактирование альбома";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Создание элемента каталога продукции</h2>
+<h2>Редактирование альбома</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm("Create", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+@using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-   <table class="editor-table">
+    @Html.HiddenFor(model => model.Id)
+        <table class="editor-table">
         <tr>
             <td class="editor-label">@Html.LabelFor(model => model.Name)
             </td>
@@ -38,13 +38,6 @@
             <td>@Html.ValidationMessageFor(model => model.SortOrder)
             </td>
         </tr>
-         <tr>
-             <td class="editor-label">Изображение</td>
-             <td class="editor-field"><input type="file" name="uploadFile"/>
-             </td>
-             <td>@Html.ValidationMessageFor(model => model.SortOrder)
-             </td>
-         </tr>
     </table>
     <p>
         <input type="submit" value="Сохранить" />
@@ -54,3 +47,10 @@
 <div class="backLink">
     @Html.ActionLink("Назад", "Index", "Home", new { Area = "", id = "catalogue" }, null)
 </div>
+
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
+

@@ -4,6 +4,7 @@
 @if(Request.IsAuthenticated)
 {
     <div class="abs">
+        @Html.ActionLink("Редактировать", "Edit", "Album", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })<br/>
         @Html.ActionLink("Удалить", "Delete", "Album", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить альбом? (удаляются только пустые альбомы)')" })<br/>
     </div>
 }
