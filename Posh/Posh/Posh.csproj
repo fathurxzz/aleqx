@@ -333,6 +333,7 @@
     <Content Include="Areas\Admin\Views\Subscriber\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Subscriber\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Subscriber\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Album\Edit.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
