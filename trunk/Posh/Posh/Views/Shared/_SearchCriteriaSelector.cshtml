@@ -49,12 +49,12 @@
     var elements = (IEnumerable<Element>)ViewBag.Elements;
         }
         <div class="categoryItems">
-            @*@if (Request.IsAuthenticated)
+            @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
                 <div class="clear">
                 </div>
-            }*@
+            }
             @{
             int cnt = 0;
                 <table>

@@ -25,13 +25,15 @@ namespace Posh.Areas.Admin.Controllers
                 var category = new Category();
 
                 TryUpdateModel(category, new[] { "Title", "SortOrder" });
-
+                
+                /*
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", uploadFile.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
                 filePath = Path.Combine(filePath, fileName);
                 uploadFile.SaveAs(filePath);
 
                 category.ImageSource = fileName;
+                */
 
                 context.AddToCategory(category);
                 context.SaveChanges();
@@ -59,8 +61,7 @@ namespace Posh.Areas.Admin.Controllers
 
                 category.Title = HttpUtility.HtmlDecode(form["Title"]);
 
-                //string aaa = HttpUtility.HtmlEncode("</br>");
-
+                /*
                 if (uploadFile != null)
                 {
                     if (!string.IsNullOrEmpty(category.ImageSource))
@@ -79,7 +80,7 @@ namespace Posh.Areas.Admin.Controllers
 
                     category.ImageSource = fileName;
                 }
-
+                */
                 context.SaveChanges();
             }
             return RedirectToAction("Index", "Home", new { Area = "", id="" });
