@@ -1,7 +1,7 @@
 ﻿@using Posh.Helpers
 @model Posh.Models.Category
 @{
-    string style = "background-image: url('Content/img/category/" + Model.ImageSource + "');";
+    //string style = "background-image: url('Content/img/category/" + Model.ImageSource + "');";
     string id ="cat_"+ Model.Id;
 
 
@@ -13,7 +13,7 @@
         hValue = "1";
     }
 }
-<div class="@className" style="@Html.Raw(style)" id="@id">
+<div class="@className" id="@id">
     @Html.Hidden("hcat_" + Model.Id,  hValue)
     @if (Request.IsAuthenticated)
     {

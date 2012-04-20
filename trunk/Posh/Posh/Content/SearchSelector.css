@@ -24,21 +24,28 @@
     display: inline-block;
 }
 
+
+#cat_1{ background-image: url('img/category/hotel_.gif');}
 #cat_1.categoryBg{background-image: url('img/category/hotel_selected.gif') !important;}
 #cat_1.categoryBgHover {background-image: url('img/category/hotel_hover.gif') !important;}
 
+#cat_2{ background-image: url('img/category/bar_.gif');}
 #cat_2.categoryBg{background-image: url('img/category/bar_selected.gif') !important;}
 #cat_2.categoryBgHover {background-image: url('img/category/bar_hover.gif') !important;}
 
+#cat_3{ background-image: url('img/category/food_.gif');}
 #cat_3.categoryBg{background-image: url('img/category/food_selected.gif') !important;}
 #cat_3.categoryBgHover {background-image: url('img/category/food_hover.gif') !important;}
 
+#cat_4{ background-image: url('img/category/fitness_.gif');}
 #cat_4.categoryBg{background-image: url('img/category/fitness_selected.gif') !important;}
 #cat_4.categoryBgHover {background-image: url('img/category/fitness_hover.gif') !important;}
 
+#cat_5{ background-image: url('img/category/spa_.gif');}
 #cat_5.categoryBg{background-image: url('img/category/spa_selected.gif') !important;}
 #cat_5.categoryBgHover {background-image: url('img/category/spa_hover.gif') !important;}
 
+#cat_6{ background-image: url('img/category/house_.gif');}
 #cat_6.categoryBg{background-image: url('img/category/house_selected.gif') !important;}
 #cat_6.categoryBgHover {background-image: url('img/category/house_hover.gif') !important;}
 
