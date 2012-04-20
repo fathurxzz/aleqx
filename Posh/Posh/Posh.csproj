@@ -105,6 +105,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ArticlesModel.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -112,6 +113,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProjectsModel.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Models\Validation\AlbumValidation.cs" />

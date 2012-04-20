@@ -14,8 +14,8 @@ namespace Posh.Models
         public CatalogueModel(ModelContainer dataContext, string contentId, string albumId, bool loadContent = true)
             : base(dataContext, contentId, albumId, loadContent)
         {
-            Albums = _context.Album.Include("Products").ToList();
-
+             Albums  = _context.Album.Include("Products").ToList();
+            
             if (!string.IsNullOrEmpty(albumId))
             {
                 Album = _context.Album.Include("Products").First(a => a.Name == albumId);
