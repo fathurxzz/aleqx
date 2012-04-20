@@ -25,21 +25,19 @@ namespace Posh.Controllers
                 return View(model);
             }
         }
-
-        public ActionResult Projects(string id)
+        
+        [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
+        public ActionResult ShowFilter()
         {
-            return View();
+            using (var context = new ModelContainer())
+            {
+                SiteViewModel model = new SiteViewModel(context, null, null);
+                ViewBag.Categories = model.Categories;
+                ViewBag.Elements = model.Elements;
+                return PartialView("_SearchCriteriaSelector");
+            }
         }
 
-        public ActionResult Articles(string id)
-        {
-            return View();
-        }
-
-        public ActionResult News(string id)
-        {
-            return View();
-        }
 
     }
 }
