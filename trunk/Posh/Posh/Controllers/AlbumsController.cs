@@ -26,6 +26,10 @@ namespace Posh.Controllers
                 ViewBag.Categories = model.Categories;
                 ViewBag.Elements = model.Elements;
 
+
+                model.Albums = ApplyFilter(model);
+
+
                 if (model.Album != null)
                     return View("Details",model);
 
@@ -33,13 +37,57 @@ namespace Posh.Controllers
             }
         }
 
+        public List<Album> ApplyFilter(CatalogueModel model)
+        {
+           
+
+
+            if (WebSession.Categories.Count > 0)
+            {
+                foreach (var album in model.Albums)
+                {
+                    foreach (var product in album.Products)
+                    {
+                        if (product.Categories.Intersect(WebSession.Categories).Count() == 0)
+                        {
+                            product.Hidden = true;
+                        }
+                    }
+                }
+            }
+
+            if (WebSession.Elements.Count > 0)
+            {
+                foreach (var album in model.Albums)
+                {
+                    foreach (var product in album.Products)
+                    {
+                        if (product.Elements.Intersect(WebSession.Elements).Count() == 0)
+                        {
+                            product.Hidden = true;
+                        }
+                    }
+                }
+            }
+
+
+            var resultAlbums = new List<Album>();
+
+            foreach (var album in model.Albums)
+            {
+                if (album.Products.Where(p => !p.Hidden).Count() > 0)
+                    resultAlbums.Add(album);
+            }
+
+            return resultAlbums;
+
+        }
+
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
             using (var context = new ModelContainer())
             {
-
-
                 var model = new CatalogueModel(context, "catalogue", null);
                 this.SetSeoContent(model);
 
@@ -53,29 +101,18 @@ namespace Posh.Controllers
                 List<Category> checkedCategories = (from category in model.Categories where form["hcat_" + category.Id] == "1" select category).ToList();
                 List<Element> checkedElements = (from element in model.Elements where form["el_" + element.Id] == "true,false" select element).ToList();
 
-
-                //foreach (var category in model.Categories.Where(category => form["hcat_" + category.Id] == "1"))
-                //{
-                //    WebSession.Categories.Add(category);
-                //}
-
-                //foreach (var element in model.Elements.Where(element => form["el_" + element.Id] == "true,false"))
-                //{
-                //    WebSession.Elements.Add(element);
-                //}
-
-                /*Session["categories"] = checkedCategories;
-                Session["elements"] = checkedElements;*/
-
                 WebSession.Categories.AddRange(checkedCategories);
                 WebSession.Elements.AddRange(checkedElements);
 
-                //model.ApplyFilter(checkedCategories, checkedElements);
+
+                model.Albums = ApplyFilter(model);
+
+                
+
+               
 
 
-                //ViewBag.Categories = checkedCategories;
-                //ViewBag.Elements = checkedElements;
-
+                //return RedirectToAction("Index");
                 return View(model);
             }
         }

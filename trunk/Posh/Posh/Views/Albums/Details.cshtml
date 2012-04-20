@@ -65,7 +65,7 @@
             <br /><br />
         }
         <div id="products">
-            @foreach (var image in Model.Album.Products)
+            @foreach (var image in Model.Album.Products.Where(p=>!p.Hidden))
             {
                 <div class="productItem">
                 @if (Request.IsAuthenticated)
