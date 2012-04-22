@@ -91,14 +91,14 @@ a
     text-transform: uppercase;
     width: auto;
     font-size: 14px;
-    height: 35px;
+    
+    height: 38px;
+    
     line-height: 30px;
     float: left;
     margin-left: 10px;
     color: #E7E7E7;
-    
     font-weight: bold;
-    /*width: 120px;*/
     text-align: center;
     
     
@@ -150,7 +150,7 @@ a
 
 #mainMenu li div.selected
 {
-    height: 34px;
+    height: 37px;
     z-index: 1001;
     
    
@@ -177,7 +177,7 @@ a
 {
     position: absolute;
     width: 940px;
-    border-bottom: 5px solid #E7E7E7;
+    border-bottom: 8px solid #E7E7E7;
     margin-top: 30px;
     z-index: -1000;
 }
