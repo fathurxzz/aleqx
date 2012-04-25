@@ -44,6 +44,26 @@ namespace HavilaTravel.Controllers
             return RedirectToAction("ThankYou");
         }
 
+        public ActionResult Unsubscribe(int id)
+        {
+            using (var context = new ContentStorage())
+            {
+                var customer = context.Customers.First(c => c.Id == id);
+                context.DeleteObject(customer);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Unsubscribed");
+        }
+
+        public ActionResult Unsubscribed()
+        {
+            using (var context = new ContentStorage())
+            {
+                var model = new SiteViewModel(null, context, false);
+                return View(model);
+            }
+        }
+
         public ActionResult ThankYou()
         {
             using (var context = new ContentStorage())
@@ -117,10 +137,14 @@ namespace HavilaTravel.Controllers
                 mailSubject = form["mailSubject"];
             }
 
+            
 
             int successedSentEmails = 0;
             int failedSentEmails = 0;
-            var mailText = HttpUtility.HtmlDecode(form["MailText"]).Replace("src=\"", "src=\"http://havila-travel.com/");
+            
+            
+
+
 
             
                 using (var context = new ContentStorage())
@@ -155,10 +179,19 @@ namespace HavilaTravel.Controllers
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(mailText))
+                        if (!string.IsNullOrEmpty(form["MailText"]))
                         {
                             foreach (var customer in all)
                             {
+
+                                string formMailText = form["MailText"];
+
+                                formMailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по ссылке <br/>";
+                                formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">";
+
+                                var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"", "src=\"http://havila-travel.com/");
+
+
                                 if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
                                                            mailSubject, true))
                                     successedSentEmails++;

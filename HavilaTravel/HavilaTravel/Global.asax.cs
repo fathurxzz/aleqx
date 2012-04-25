@@ -29,6 +29,13 @@ namespace HavilaTravel
             );
 
             routes.MapRoute(
+                "UnSubscribe", // Route name
+                "unsubscribe/{id}", // URL with parameters
+                new { controller = "Subscribe", action = "Unsubscribe", id = UrlParameter.Optional }, // Parameter defaults
+                new string[1] { "HavilaTravel.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Articles", // Route name
                 "Articles", // URL with parameters
                 new { controller = "Articles", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
