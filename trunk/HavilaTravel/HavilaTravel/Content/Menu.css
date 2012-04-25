@@ -2,11 +2,16 @@
 {
     width: 150px;
     margin-left: 850px;
-    margin-top: 70px;
+    margin-top: 45px;
     position: absolute;
     /*border: 1px solid black;*/
     /*position: absolute;*/
     /*margin-top: 100px;*/
+}
+
+#headerLeftMenu table td
+{
+    height: 175px; vertical-align:middle; border:1px solid red;
 }
 
 #headerLeftMenu li
@@ -14,6 +19,8 @@
     color: #cc9933;
     list-style-type: none;
     font-size: 13px;
+    padding: 4px 0;
+    line-height: 13px;
 }
 
 #headerLeftMenu a

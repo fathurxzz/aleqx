@@ -1,35 +1,39 @@
 ﻿@using HavilaTravel.Models
 @model List<MenuItem>
 <div id="headerLeftMenu">
-    <ul>
-        @foreach (var m in Model.OrderBy(m => m.SortOrder))
-        {
-            <li>&raquo; 
+    <table>
+        <tr>
+            <td>
+                <ul>
+                    @foreach (var m in Model.OrderBy(m => m.SortOrder))
+                    {
+                        <li>&raquo;
+                            @if (m.Current)
+                            {
+                                @m.Title
+                            }
+                            else
+                            {
+                                @Html.ActionLink(m.Title, "Index", "Home", new { id = m.Name }, null)
+                            }
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.Raw("&nbsp;")
+                                @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
+                                @Html.Raw("&nbsp;")
+                                @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                            }
+                        </li>
             
-            
-            @if(m.Current)
-            {
-                @m.Title
-            }
-            else
-            {
-                @Html.ActionLink(m.Title, "Index", "Home", new {id = m.Name}, null)
-            }
-                @if (Request.IsAuthenticated)
-                {
-                    @Html.Raw("&nbsp;")
-                    @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink" })
-                    @Html.Raw("&nbsp;")
-                    @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = m.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                    }
+                </ul>
+                @{
+                    if (Request.IsAuthenticated)
+                    {
+                    @Html.ActionLink("Добавить подпункт", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+                    }
                 }
-            </li>
-            
-        }
-    </ul>
-    @{
-        if (Request.IsAuthenticated)
-        {
-        @Html.ActionLink("Добавить подпункт", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
-        }
-    }
+            </td>
+        </tr>
+    </table>
 </div>
