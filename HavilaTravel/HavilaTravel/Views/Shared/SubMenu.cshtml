@@ -8,7 +8,83 @@
 
         if (menuItems != null && menuItems.Count > 0)
         {
-            <div class="subMenu">
+            
+            
+                <table class="sMenu">
+                    <tr>
+                        <td class="topLeft"></td>
+                        <td class="top"></td>
+                        <td class="topRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="middleLeft"></td>
+                        <td class="middleCenter">
+                            
+                            
+                             @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+                        {
+                            <div class="sMenuItem">
+                    
+                                @{
+                            if (item.Selected)
+                            {
+                                if (item.Current)
+                                {
+                                            @item.Title
+                                }
+                                else
+                                {
+                                            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, new { @class = "current" })
+                                }
+                            }
+                            else
+                            {
+                                        @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                            }
+
+                            if (Request.IsAuthenticated)
+                            {
+                                        @Html.Raw(" " + item.SortOrder)
+                            }
+                                    
+                                }
+
+                    
+                    
+                                @{
+                            if (Request.IsAuthenticated)
+                            {
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                        </div>
+                                        <div class="adminLinkContainer">    
+                                            @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                        </div>
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                                        </div>
+                            }
+                                }
+                            </div>
+                        }
+                            
+                            
+                        </td>
+                        <td class="middleRight"></td>
+                    </tr>
+                    <tr>
+                        <td class="bottomLeft"></td>
+                        <td class="bottomCenter"></td>
+                        <td class="bottomRight"></td>
+                    </tr>
+                </table>
+            
+            
+            @*<div class="subMenu">
+                
+            
+                
+
                 <table>
                     <tr>
                         <td class="leftSide">
@@ -21,44 +97,44 @@
                             <td>
                     
                                 @{
-                                    if (item.Selected)
-                                    {
-                                        if(item.Current)
-                                        {
+                            if (item.Selected)
+                            {
+                                if (item.Current)
+                                {
                                             @item.Title
-                                        }
-                                        else
-                                        {
-                                            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, new{@class="current"})
-                                        }
-                                    }
-                                    else
-                                    {
+                                }
+                                else
+                                {
+                                            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, new { @class = "current" })
+                                }
+                            }
+                            else
+                            {
                                         @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
-                                    }
-                                    
-                                    if (Request.IsAuthenticated)
-                                    {
-                                        @Html.Raw(" "+item.SortOrder)
-                                    }
+                            }
+
+                            if (Request.IsAuthenticated)
+                            {
+                                        @Html.Raw(" " + item.SortOrder)
+                            }
                                     
                                 }
 
                     
                     
                                 @{
-                                    if (Request.IsAuthenticated)
-                                    {
+                            if (Request.IsAuthenticated)
+                            {
                                         <div class="adminLinkContainer">
-                                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
-                                    <div class="adminLinkContainer">    
-                                    @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                        <div class="adminLinkContainer">    
+                                            @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                         </div>
-                                    <div class="adminLinkContainer">
-                                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                                        <div class="adminLinkContainer">
+                                            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
                                         </div>
-                                    }
+                            }
                                 }
                             </td>
                         }
@@ -68,7 +144,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div>*@
 
         }
     }
