@@ -23,8 +23,6 @@
         @{
             foreach (var item in Model)
             {
-                if (string.IsNullOrEmpty(item.Title))
-                    item.Title = "---";
             <div class="plcesSelectorFixedItem">
                 @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
                 @if (Request.IsAuthenticated)
