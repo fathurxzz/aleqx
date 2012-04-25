@@ -186,8 +186,8 @@ namespace HavilaTravel.Controllers
 
                                 string formMailText = form["MailText"];
 
-                                formMailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по ссылке <br/>";
-                                formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">";
+                                formMailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
+                                formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">http://havila-travel.com/unsubscribe/"+customer.Id+"</a>";
 
                                 var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"", "src=\"http://havila-travel.com/");
 
