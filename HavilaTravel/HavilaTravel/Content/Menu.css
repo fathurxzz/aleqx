@@ -255,7 +255,6 @@
     margin: 0 auto;
     border-collapse: collapse;
     border: none;
-    max-width: 650px;
 }
 
 .sMenu .topLeft
@@ -285,6 +284,7 @@
 {
     text-align: center;
     padding:0 30px;
+    max-width: 500px;
 }
 
 .sMenu .middleRight
