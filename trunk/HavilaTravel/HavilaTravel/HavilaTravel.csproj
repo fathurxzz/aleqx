@@ -166,6 +166,7 @@
     <Content Include="Content\img\hotel2.gif" />
     <Content Include="Content\img\hotel3.gif" />
     <Content Include="Content\img\left-submenu-bottom.gif" />
+    <Content Include="Content\img\left-submenu-item-bg.png" />
     <Content Include="Content\img\left-submenu-top.gif" />
     <Content Include="Content\img\main-bg.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
