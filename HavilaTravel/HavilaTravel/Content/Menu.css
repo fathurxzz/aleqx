@@ -19,8 +19,10 @@
     color: #cc9933;
     list-style-type: none;
     font-size: 13px;
-    padding: 4px 0;
+    padding: 4px 0 4px 10px;
     line-height: 15px;
+    background: url('img/left-submenu-item-bg.png') no-repeat;
+    background-position: 0px 10px;
 }
 
 #headerLeftMenu a
