@@ -35,6 +35,8 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 var customers = context.Customers.Where(c=>c.IsActive==1).ToList();
                 foreach (var customer in customers)
                 {
+                    mailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
+                    mailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">http://havila-travel.com/unsubscribe/" + customer.Id + "</a>";
                     MailHelper.SendMessage(new MailAddress(customer.Email), mailText, "Рассылка Havila-Travel", true);
                 }
 
