@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Web;
+using HavilaTravel.Helpers;
 
 namespace HavilaTravel.Models
 {
@@ -23,8 +24,7 @@ namespace HavilaTravel.Models
 
             if (!string.IsNullOrEmpty(contentName))
             {
-                Content content = context.Content.Include("Parent").Include("Children").Include("Accordions")
-                    .Where(c => c.Name == contentName).FirstOrDefault();
+                Content content = context.Content.Include("Parent").Include("Children").Include("Accordions").FirstOrDefault(c => c.Name == contentName);
                 if (content != null)
                 {
                     possibleCurrentContent = content;
@@ -39,9 +39,7 @@ namespace HavilaTravel.Models
                         {
                             selectedItemName = content.Name;
                             var parentId = content.Parent.Id;
-                            content =
-                                context.Content.Include("Parent").Include("Children").Where(c => c.Id == parentId).First
-                                    ();
+                            content = context.Content.Include("Parent").Include("Children").First(c => c.Id == parentId);
                             result.Add(GetMenuFromContext(content.Children.ToList(), selectedItemName));
                         }
                     }
@@ -50,9 +48,8 @@ namespace HavilaTravel.Models
             }
 
             var menuMainLevels = GetMenuMainLevels(context);
-            Menu menu;
 
-            menu = GetTopLevelMenu(menuMainLevels, selectedItemName);
+            Menu menu = GetTopLevelMenu(menuMainLevels, selectedItemName);
             if (menu != null)
                 result.Add(menu);
             menu = GetHeaderLeftMenu(menuMainLevels, selectedItemName);
@@ -76,7 +73,7 @@ namespace HavilaTravel.Models
                 {
                     Id = (int)c.Id,
                     Name = c.Name,
-                    Selected = selectedItemName == c.Name,
+                    Selected = selectedItemName == c.Name || (c.Name.ToLower() == "countries" && WebSession.CurrentMenuHighlight == CurrentMenuHighlight.Country) || (c.Name.ToLower() == "spa" && WebSession.CurrentMenuHighlight == CurrentMenuHighlight.Spa),
                     Title = c.MenuTitle,
                     SortOrder = c.SortOrder,
                     Current = c.Name == _contentName

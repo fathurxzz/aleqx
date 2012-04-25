@@ -39,19 +39,20 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
+                WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
                 SiteViewModel model = new SiteViewModel(id, context, true);
-
                 ViewBag.PageTitle = model.Content.PageTitle;
                 ViewBag.SeoDescription = model.Content.SeoDescription;
                 ViewBag.SeoKeywords = model.Content.SeoKeywords;
                 ViewBag.CurrentContentId = model.CurrentContentId;
-
+                
                 return View(model);
             }
         }
 
         public ActionResult Search(string query)
         {
+            WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
             using (var context = new ContentStorage())
             {
                 SiteViewModel model = new SiteViewModel("countries", context, false)

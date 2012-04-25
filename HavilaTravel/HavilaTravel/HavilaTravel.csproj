@@ -101,6 +101,7 @@
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\CurrentMenuHighlight.cs" />
     <Compile Include="Models\CustomerValidation.cs" />
     <Compile Include="Models\MailTemplateValidation.cs" />
     <Compile Include="Models\Menu.cs" />
