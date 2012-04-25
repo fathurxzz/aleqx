@@ -7,7 +7,7 @@
                 <ul>
                     @foreach (var m in Model.OrderBy(m => m.SortOrder))
                     {
-                        <li>&raquo;
+                        <li>
                             @if (m.Current)
                             {
                                 @m.Title
