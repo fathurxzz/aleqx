@@ -3,15 +3,13 @@
     width: 150px;
     margin-left: 850px;
     margin-top: 45px;
-    position: absolute;
-    /*border: 1px solid black;*/
-    /*position: absolute;*/
-    /*margin-top: 100px;*/
+    position: absolute; /*border: 1px solid black;*/ /*position: absolute;*/ /*margin-top: 100px;*/
 }
 
 #headerLeftMenu table td
 {
-    height: 175px; vertical-align:middle;
+    height: 175px;
+    vertical-align: middle;
 }
 
 #headerLeftMenu li
@@ -64,11 +62,8 @@
 {
     margin-top: 22px;
     margin-left: 8px;
-    width: 881px;
-    /*border: 1px solid black;*/
-    border-collapse: collapse;
-    /*display: block;*/
-    
+    width: 881px; /*border: 1px solid black;*/
+    border-collapse: collapse; /*display: block;*/
 }
 
 #mainMenu table td
@@ -77,19 +72,17 @@
     vertical-align: text-top;
     color: #000;
     height: 39px;
-    vertical-align: text-top;
-    /*display: inline-block;*/
+    vertical-align: text-top; /*display: inline-block;*/
 }
 
 #mainMenu table a:hover
 {
-    color: #999999;
-    /*background-color: #ccc;*/
+    color: #999999; /*background-color: #ccc;*/
 }
 
 .firstMenuItem, .lastMenuItem
 {
-    width: 15px;    
+    width: 15px;
     padding: 0 !important;
 }
 
@@ -99,7 +92,6 @@
     background-repeat: no-repeat !important;
     background-position: left top;
     padding: 0 !important;
-    
 }
 
 .lastMenuItem.selected
@@ -108,24 +100,28 @@
     background-repeat: no-repeat !important;
     background-position: right top;
     padding: 0 !important;
-    
 }
 
 #mainMenu .selected
 {
     background-image: url('img/menu-selected-item-bg.gif');
-    background-repeat: repeat-x;
-    /*height: 57px;*/
+    background-repeat: repeat-x; /*height: 57px;*/
 }
 
 
-.subMenu {
 
+
+
+
+
+.subMenu
+{
     margin-top: 15px;
     margin-bottom: 25px;
 }
 
-.subMenu table {
+.subMenu table
+{
     position: relative;
     margin: 0 auto;
     border-collapse: collapse;
@@ -142,15 +138,15 @@
 
 .subMenu td.searchQuery
 {
-	font-weight:bold;
-	font-size:15px;
-	font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    font-style: normal;
 }
 
 .subMenu td.searchQuery span
 {
-	color:#666666;
-	text-decoration:underline;
+    color: #666666;
+    text-decoration: underline;
 }
 
 .subMenu td a
@@ -236,4 +232,102 @@
 #leftSubmenu #bottom
 {
     background-image: url('img/left-submenu-bottom.gif');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sMenu
+{
+    position: relative;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: none;
+    max-width: 650px;
+}
+
+.sMenu .topLeft
+{
+    width: 9px;
+    height: 9px;
+    background: url('img/submenu-bg-top-left.png'); /*background-position: 0 -1px;*/
+}
+.sMenu .top
+{
+    height: 9px;
+    border-top: 1px solid #fac965;
+}
+.sMenu .topRight
+{
+    width: 9px;
+    height: 9px;
+    background: url('img/submenu-bg-top-right.png');
+}
+
+.sMenu .middleLeft
+{
+    border-left: 1px solid #fac965;
+}
+
+.sMenu .middleCenter
+{
+    text-align: center;
+}
+
+.sMenu .middleRight
+{
+    border-right: 1px solid #fac965;
+}
+
+.sMenu .bottomLeft
+{
+    width: 9px;
+    height: 9px;
+    background: url('img/submenu-bg-bottom-left.png');
+}
+
+.sMenu .bottomCenter
+{
+    border-bottom: 1px solid #fac965;
+}
+
+.sMenu .bottomRight
+{
+    width: 9px;
+    height: 9px;
+    background: url('img/submenu-bg-bottom-right.png');
+}
+
+
+
+.sMenu div.sMenuItem {
+    display: inline-block;
+    padding: 5px 15px;
+    font-family: Georgia;
+    font-style: italic;
+}
+
+
+.sMenu a
+{
+    color: #6f6f6f;
+    font-style: italic;
+}
+
+.sMenu a.current
+{
+    color: #000;
+    text-decoration: none;
 }

@@ -186,6 +186,10 @@
     <Content Include="Content\img\places-selector-pattern-bottom.gif" />
     <Content Include="Content\img\places-selector-pattern-left.gif" />
     <Content Include="Content\img\places-selector-pattern-right.gif" />
+    <Content Include="Content\img\submenu-bg-bottom-left.png" />
+    <Content Include="Content\img\submenu-bg-bottom-right.png" />
+    <Content Include="Content\img\submenu-bg-top-left.png" />
+    <Content Include="Content\img\submenu-bg-top-right.png" />
     <Content Include="Content\img\subscribe-form-bg.gif" />
     <Content Include="Content\PlacesSelector.css" />
     <Content Include="Content\img\png-ramka.png" />
