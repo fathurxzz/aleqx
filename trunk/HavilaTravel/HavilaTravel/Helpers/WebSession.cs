@@ -24,6 +24,17 @@ namespace HavilaTravel.Helpers
             }
             set { Session["placeKind"] = value; }
         }
+
+        public static CurrentMenuHighlight CurrentMenuHighlight
+        {
+            get
+            {
+                if (Session["CurrentMenuHighlight"] == null)
+                    Session["CurrentMenuHighlight"] = CurrentMenuHighlight.None;
+                return (CurrentMenuHighlight)Session["CurrentMenuHighlight"];
+            }
+            set { Session["CurrentMenuHighlight"] = value; }
+        }
     }
 
 }
