@@ -11,7 +11,7 @@
 
 #headerLeftMenu table td
 {
-    height: 175px; vertical-align:middle; border:1px solid red;
+    height: 175px; vertical-align:middle;
 }
 
 #headerLeftMenu li
@@ -20,7 +20,7 @@
     list-style-type: none;
     font-size: 13px;
     padding: 4px 0;
-    line-height: 13px;
+    line-height: 15px;
 }
 
 #headerLeftMenu a
