@@ -29,11 +29,11 @@ namespace HavilaTravel.Helpers
         {
             get
             {
-                if (Session["CurrentMenuHighlight"] == null)
-                    Session["CurrentMenuHighlight"] = CurrentMenuHighlight.None;
-                return (CurrentMenuHighlight)Session["CurrentMenuHighlight"];
+                if (Session["cmh"] == null)
+                    Session["cmh"] = CurrentMenuHighlight.None;
+                return (CurrentMenuHighlight)Session["cmh"];
             }
-            set { Session["CurrentMenuHighlight"] = value; }
+            set { Session["cmh"] = value; }
         }
     }
 

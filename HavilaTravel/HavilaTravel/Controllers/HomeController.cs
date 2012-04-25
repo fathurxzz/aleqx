@@ -37,9 +37,10 @@ namespace HavilaTravel.Controllers
 
         public ActionResult Index(string id)
         {
+            WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
             using (var context = new ContentStorage())
             {
-                WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
+                
                 SiteViewModel model = new SiteViewModel(id, context, true);
                 ViewBag.PageTitle = model.Content.PageTitle;
                 ViewBag.SeoDescription = model.Content.SeoDescription;
