@@ -34,8 +34,10 @@ a
 
 #header
 {
-    padding: 20px 0; /*border-bottom: 1px solid #ccc;*/
-    height: 100px;
+    padding: 40px 0; /*border-bottom: 1px solid #ccc;*/
+    height: 200px;
+    background: url('img/header-bg.gif') no-repeat;
+    
 }
 
 #logo
@@ -44,7 +46,7 @@ a
     width: 150px;
     height: 100px;
     margin-right: 20px;
-    background: url('img/toy-planet-logo.gif') no-repeat;
+    /*background: url('img/toy-planet-logo.gif') no-repeat;*/
 }
 
 #left
