@@ -180,7 +180,9 @@
                             выходных)</div>
                     </div>
                     <div id="booking">
-                        <a href="#">Онлайн-бронирование</a></div>
+                            @Html.ActionLink("Онлайн-бронирование", "Index", "Home", new { id = "onlinebooking" }, null)
+                        @*<a href="#">Онлайн-бронирование</a>*@
+                    </div>
                     @RenderSection("SmallBannerRight", false)
                 </td>
             </tr>
