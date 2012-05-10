@@ -75,6 +75,9 @@ namespace Posh.Controllers
 
             foreach (var album in model.Albums)
             {
+                if(Request.IsAuthenticated)
+                    resultAlbums.Add(album);
+                else
                 if (album.Products.Where(p => !p.Hidden).Count() > 0)
                     resultAlbums.Add(album);
             }
