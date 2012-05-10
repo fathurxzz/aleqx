@@ -34,19 +34,43 @@ a
 
 #header
 {
-    padding: 40px 0; /*border-bottom: 1px solid #ccc;*/
+    padding: 20px 0 40px 0; 
+    /*border-bottom: 1px solid #ccc;*/
+    height: 170px;
+}
+
+#header-bg-container {
+    margin-left: 220px;
     height: 200px;
-    background: url('img/header-bg.gif') no-repeat;
+    /*border: 1px solid #ccc;*/
+    width: 720px;
     
+    position: absolute;
+}
+
+
+#header-bg-container.main {
+    background: url('img/header-bg.gif') no-repeat;
+}
+/*
+#header-bg-container.about {
+    background: url('img/about.gif') no-repeat;
+}
+*/
+
+#header-bg-container img {
+    position: relative;
+    margin: 0 auto;
 }
 
 #logo
 {
     float: left;
-    width: 150px;
-    height: 100px;
+    width: 220px;
+    height: 150px;
     margin-right: 20px;
-    /*background: url('img/toy-planet-logo.gif') no-repeat;*/
+    margin-top: 20px;
+    background: url('img/toy-planet-logo.gif') no-repeat;
 }
 
 #left
