@@ -206,3 +206,18 @@ body
 
 
 
+.feedBackForm
+{
+	border:1px solid #89c651;
+	padding:20px;
+	margin-top:20px;
+	font-size:13px;
+    position: relative;
+    margin: 0 auto;
+    width: 480px;
+}
+
+.feedBackForm table td
+{
+	padding:5px;
+}

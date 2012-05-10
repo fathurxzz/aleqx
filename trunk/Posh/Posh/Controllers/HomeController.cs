@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Posh.Helpers;
@@ -35,6 +36,21 @@ namespace Posh.Controllers
                 ViewBag.Categories = model.Categories;
                 ViewBag.Elements = model.Elements;
                 return PartialView("_SearchCriteriaSelector");
+            }
+        }
+
+        [HttpPost]
+        public PartialViewResult FeedbackForm(FeedbackFormModel feedbackFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                MailHelper2.SendTemplate(new List<MailAddress> { new MailAddress("office@posh.net.ua") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+
+                return PartialView("Success");
+            }
+            else
+            {
+                return PartialView("FeedbackForm", feedbackFormModel);
             }
         }
 
