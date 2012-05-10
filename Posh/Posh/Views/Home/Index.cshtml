@@ -1,15 +1,18 @@
-﻿@model Posh.Models.SiteViewModel
+﻿@using Posh.Models
+@model Posh.Models.SiteViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Includes
 {
     <link href="@Url.Content("~/Content/SearchSelector.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
 }
 @if (Model.Content.MainPage)
 {
     <div style="margin-bottom: 50px;">
-    @Html.Partial("_SearchCriteriaSelector")
+        @Html.Partial("_SearchCriteriaSelector")
     </div>
 }
 @section Title
@@ -23,6 +26,12 @@
     <div class="content">
         @Html.Raw(Model.Content.Text)
     </div>
+    @if (Model.Content.Name.ToLower() == "contacts")
+    {
+        <div id="sendFeedbackFormContent">
+            @Html.Partial("FeedbackForm", new FeedbackFormModel())
+        </div>
+    }
 }
 @section SeoTitle
 {
