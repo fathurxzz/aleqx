@@ -877,7 +877,7 @@ table.adminContentPreview th
 
 .subscriberList {
     border-collapse: collapse;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     position: relative;
 }
 

@@ -79,20 +79,19 @@
     </table>
     
     <div class="sendEmailContainer">
-        *отметьте e-mail адреса для отправки сообщения
-        <br />
-        <br />
+        
+        
         <div style="text-align: left">
             Тема письма: @Html.TextBox("mailSubject", "", new { style = "width:500px" })<br />
             <br />
             @Html.TextArea("MailText", new { @class = "ckeditor" })
         </div>
         <br />
-        <br />
         <input type="submit" value="Отправить" />
     </div>
-    
-   
+    <br />
+    <br />
+   <text>*отметьте e-mail адреса для отправки сообщения</text>
     <table class="subscriberListContainer">
         <tr>
             <td>
