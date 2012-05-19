@@ -111,7 +111,7 @@
                 </div>
                 }
             }
-            @RenderSection("RootLogoLink",false)
+            @RenderSection("RootLogoLink", false)
             <div id="spaLink">
                 Посетите наш<br />
                 <a href="http://www.havila.com.ua">спа-клуб "ХА-ВИ"</a></div>
@@ -120,10 +120,10 @@
                 <br />
                 на рассылку новостей
                 @{
-                    if(Request.IsAuthenticated)
+                    if (Request.IsAuthenticated)
                     {
-                        <br/>
-                        @Html.ActionLink("Подписчики на рассылку", "Subscribers", "Subscribe", new { Area = "" }, new{@class="adminLink"})
+                    <br />
+                    @Html.ActionLink("Подписчики на рассылку", "Subscribers", "Subscribe", new { Area = "" }, new { @class = "adminLink" })
                     }
                 }
             </div>
@@ -141,7 +141,6 @@
                     <img src="../../Content/img/pixel.gif" /></a>
             </div>
             @RenderSection("HeaderLeftMenu", false)
-            
         </div>
         @RenderSection("MainMenu", false)
     </div>
@@ -180,7 +179,7 @@
                             выходных)</div>
                     </div>
                     <div id="booking">
-                            @Html.ActionLink("Подбор тура онлайн", "Index", "Home", new { id = "booking" }, null)
+                        @Html.ActionLink("Подбор тура онлайн", "Index", "Home", new { id = "booking" }, null)
                         @*<a href="#">Онлайн-бронирование</a>*@
                     </div>
                     @RenderSection("SmallBannerRight", false)
@@ -189,11 +188,13 @@
         </table>
     </div>
     <div id="footer">
-        @RenderSection("BellBoy", false)
-        <div id="innerFooter">
-            <div id="sign">
-                &copy; @DateTime.Now.Year Хавила Тревел<br />
-                Сайт разработан в <a href="http://m-brand.com.ua">Студии Евгения Миллера</a>
+        <div id="footerNew">
+            @RenderSection("BellBoy", false)
+            <div id="innerFooter">
+                <div id="sign">
+                    &copy; @DateTime.Now.Year Хавила Тревел<br />
+                    Сайт разработан в <a href="http://m-brand.com.ua">Студии Евгения Миллера</a>
+                </div>
             </div>
         </div>
     </div>

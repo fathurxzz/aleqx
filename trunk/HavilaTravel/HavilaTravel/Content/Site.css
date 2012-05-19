@@ -136,9 +136,16 @@ body
     height: 280px;
 }
 
+#footerNew 
+{
+    height: 280px;
+    background-image: url('img/footer_new.jpg');
+    background-position: 50% 0; 
+}
+
 #innerFooter
 {
-    background-image: url('img/footer-bg-center.gif');
+    /*background-image: url('img/footer-bg-center.gif');*/
     background-repeat: no-repeat;
     height: 280px;
     width: 1200px;
