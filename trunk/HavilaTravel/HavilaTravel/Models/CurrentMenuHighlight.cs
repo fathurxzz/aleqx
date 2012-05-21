@@ -5,10 +5,10 @@ using System.Web;
 
 namespace HavilaTravel.Models
 {
-    public enum CurrentMenuHighlight
-    {
-        None,
-        Country,
-        Spa
-    }
+    //public enum CurrentMenuHighlight
+    //{
+    //    None,
+    //    Country,
+    //    Spa
+    //}
 }
