@@ -37,7 +37,7 @@ namespace HavilaTravel.Controllers
 
         public ActionResult Index(string id)
         {
-            WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
+            //WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
             using (var context = new ContentStorage())
             {
                 
@@ -53,7 +53,7 @@ namespace HavilaTravel.Controllers
 
         public ActionResult Search(string query)
         {
-            WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
+            //WebSession.CurrentMenuHighlight = CurrentMenuHighlight.None;
             using (var context = new ContentStorage())
             {
                 SiteViewModel model = new SiteViewModel("countries", context, false)

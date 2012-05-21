@@ -26,11 +26,11 @@ namespace HavilaTravel.Controllers
                     if (placeKind.Value == 11)
                     {
                         id = "Spa";
-                        WebSession.CurrentMenuHighlight = CurrentMenuHighlight.Spa;
+                        //WebSession.CurrentMenuHighlight = CurrentMenuHighlight.Spa;
                     }
                     else
                     {
-                        WebSession.CurrentMenuHighlight = CurrentMenuHighlight.Country;
+                        //WebSession.CurrentMenuHighlight = CurrentMenuHighlight.Country;
                     }
                     WebSession.PlaceKind = (PlaceKind)placeKind.Value;
                 }

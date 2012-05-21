@@ -13,6 +13,7 @@ namespace HavilaTravel.Models
         public int MenuLevel { get; set; }
         public int ContentType { get; set; }
 
+        private static int _placeKind;
         private static string _contentName;
 
         public static List<Menu> GetMenuList(string contentName, ContentStorage context, bool loadSibs, out Content possibleCurrentContent)
@@ -28,6 +29,7 @@ namespace HavilaTravel.Models
                 if (content != null)
                 {
                     possibleCurrentContent = content;
+                    _placeKind = content.PlaceKind;
                     if (content.Children.Count > 0)
                     {
                         result.Add(GetMenuFromContext(content.Children.ToList(), null));
@@ -67,18 +69,21 @@ namespace HavilaTravel.Models
 
         private static Menu GetMenuFromContext(List<Content> contents, string selectedItemName)
         {
+
             var menu = new Menu();
             menu.AddRange(
                 contents.Select(c => new MenuItem
                 {
                     Id = (int)c.Id,
                     Name = c.Name,
-                    Selected = selectedItemName == c.Name || (c.Name.ToLower() == "countries" && WebSession.CurrentMenuHighlight == CurrentMenuHighlight.Country) || (c.Name.ToLower() == "spa" && WebSession.CurrentMenuHighlight == CurrentMenuHighlight.Spa),
+                    Selected = selectedItemName == c.Name 
+                    || (c.Name.ToLower() == "countries" && _placeKind.In(new[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
+                    || (c.Name.ToLower() == "spa" && _placeKind.In(new[] { 11 })),
                     Title = c.MenuTitle,
                     SortOrder = c.SortOrder,
-                    Current = c.Name == _contentName
+                    Current = _contentName != null && c.Name.ToLower() == _contentName.ToLower()
                 }));
-            if(!contents.Any())
+            if (!contents.Any())
             {
                 return null;
             }
