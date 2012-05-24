@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<HavilaTravel.Models.ActualTours>
+           
+
 <div id="actualTour">
             <div id="actualTourHeaderTop"></div>
             <div id="actualTourHeader"></div>
@@ -6,7 +8,7 @@
             
             @if(Request.IsAuthenticated)
             {
-                
+                @Html.ActionLink("Добавить","Create","ActualTours",new{Area="Admin"},new{@class="adminLink"})
             }
 
             @foreach (var item in Model)
