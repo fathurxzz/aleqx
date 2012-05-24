@@ -32,12 +32,12 @@
         <th>
             Изображение
         </th>
-        <th>
+       @* <th>
             Краткое описание
-        </th>
-        <th>
+        </th>*@
+       @* <th>
             Описание
-        </th>
+        </th>*@
         <th>
             Нов
         </th>
@@ -50,14 +50,14 @@
         <th>
             Пор от
         </th>
-        <th>
+      @*  <th>
             Описание<br />
             (для поисковиков)
         </th>
         <th>
             Ключевые слова<br />
             (для поисковиков)
-        </th>
+        </th>*@
         <th>
             Цена
         </th>
@@ -71,15 +71,15 @@
     {
 
 
-        if (item.Description!=null&&item.Description.Length > 50)
-        {
-            item.Description = item.Description.Substring(0, 50);
-        }
+        //if (item.Description!=null&&item.Description.Length > 50)
+        //{
+        //    item.Description = "---";// @Html.Raw(item.Description.Substring(0, 50)).ToString();
+        //}
 
-        if (item.ShortDescription != null && item.ShortDescription.Length > 50)
-        {
-            item.ShortDescription = item.ShortDescription.Substring(0, 50);
-        }
+        //if (item.ShortDescription != null && item.ShortDescription.Length > 50)
+        //{
+        //    item.ShortDescription = "---";// @Html.Raw(item.ShortDescription.Substring(0, 50)).ToString();
+        //}
 
         <tr>
             <td>
@@ -109,12 +109,12 @@
            }
                 }
             </td>
-            <td>
+            @*<td>
                 @Html.Raw(item.ShortDescription)
-            </td>
-            <td>
+            </td>*@
+            @*<td>
                 @Html.Raw(item.Description)
-            </td>
+            </td>*@
             <td>
                 @Html.Raw(item.IsNew ? "да" : "нет")
             </td>
@@ -127,12 +127,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SortOrder)
             </td>
-            <td>
+         @*   <td>
                 @Html.DisplayFor(modelItem => item.SeoDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SeoKeywords)
-            </td>
+            </td>*@
             <td class="digit">
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
