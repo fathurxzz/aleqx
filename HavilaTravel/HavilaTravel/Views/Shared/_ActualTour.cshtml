@@ -1,5 +1,56 @@
-﻿@model HavilaTravel.Models.ActualTours
+﻿@using Dev.Mvc.Helpers
+@model HavilaTravel.Models.ActualTours
 
 <div class="tour">
-
+    <div class="tourImg">
+        @if(Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Редактировать", "Edit", "ActualTours", new { Area = "Admin",id = Model.Id }, new { @class = "adminLink" })
+            <text>&nbsp;</text>
+            @Html.ActionLink("Удалить", "Delete", "ActualTours", new { Area = "Admin",id = Model.Id }, new { @class = "adminLink" , onclick = "return confirm('Вы действительно хотите удалить тур?')"})
+            <br/>
+        }
+        @Html.Raw(Html.ActionLink("[Image]", "TourDetails", "Tour", new { id = Model.Id }, new { @class = "fancy" }).ToString().Replace("[Image]", Html.CachedImage("~/Content/ActualTours/", Model.ImageSource, "tour", Model.Title)))
+    </div>
+    <div class="tourTitle">
+        @Html.ActionLink(Model.Title, "Index", "Home")
+    </div>
+    <div class="tourShortDescription">
+        @Model.Description
+    </div>
+    <div style="height: 12px;"></div>
+    @if (!string.IsNullOrEmpty(Model.Sign1))
+    {
+        <div class="tourSign">
+        @Model.Sign1
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Sign2))
+    {
+        <div class="tourSign">
+        @Model.Sign2
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Sign3))
+    {
+        <div class="tourSign">
+        @Model.Sign3
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Sign4))
+    {
+        <div class="tourSign">
+        @Model.Sign4
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Sign5))
+    {
+        <div class="tourSign">
+        @Model.Sign5
+        </div>
+    }
+    <div class=" tourSign">
+        Специальная цена: <span>@Model.Price $</span>
+    </div>
+    <div style="height: 50px"></div>
 </div>

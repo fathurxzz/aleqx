@@ -39,7 +39,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 }
 
             }
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
         }
 
 
@@ -48,7 +48,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var tour = context.ActualTours.Where(t => t.Id == id).First();
+                var tour = context.ActualTours.First(t => t.Id == id);
                 return View(tour);
             }
         }
@@ -58,7 +58,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var tour = context.ActualTours.Where(t => t.Id == model.Id).First();
+                var tour = context.ActualTours.First(t => t.Id == model.Id);
                 string fileName = tour.ImageSource;
 
                 if (fileUpload != null)
@@ -75,19 +75,19 @@ namespace HavilaTravel.Areas.Admin.Controllers
                 tour.ImageSource = fileName;
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("Index", "Home", new { Area = "",id="" });
         }
 
         public ActionResult Delete(int id)
         {
             using (var context = new ContentStorage())
             {
-                var tour = context.ActualTours.Where(t => t.Id == id).First();
+                var tour = context.ActualTours.First(t => t.Id == id);
                 IOHelper.DeleteFile("~/Content/ActualTours", tour.ImageSource);
                 context.DeleteObject(tour);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
         }
 
 

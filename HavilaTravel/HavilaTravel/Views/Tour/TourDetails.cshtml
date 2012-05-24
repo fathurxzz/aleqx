@@ -1,0 +1,11 @@
+﻿@model HavilaTravel.Models.ActualTours
+
+<div id="tourDetails">
+    <div id="tourDetailsTitle">
+        Актуальный тур: @Model.Title
+    </div>
+    <div id="tourDetailsContent">
+        @Html.Raw(Model.Text)
+    </div>
+    <div id="tourPattern"></div>
+</div>
