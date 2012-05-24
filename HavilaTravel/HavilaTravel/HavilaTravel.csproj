@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccordionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ActualToursController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\BellboyController.cs" />
@@ -444,7 +445,10 @@
     <Content Include="Views\Shared\ResortSelector.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\ActualTour.cshtml" />
+    <Content Include="Views\Shared\ActualTours.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_ActualTour.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

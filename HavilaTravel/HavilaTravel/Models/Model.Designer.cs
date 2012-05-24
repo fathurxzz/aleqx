@@ -679,7 +679,8 @@ namespace HavilaTravel.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="price">Initial value of the Price property.</param>
-        public static ActualTours CreateActualTours(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.String description, global::System.Int32 price)
+        /// <param name="text">Initial value of the Text property.</param>
+        public static ActualTours CreateActualTours(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.String description, global::System.Int32 price, global::System.String text)
         {
             ActualTours actualTours = new ActualTours();
             actualTours.Id = id;
@@ -687,6 +688,7 @@ namespace HavilaTravel.Models
             actualTours.ImageSource = imageSource;
             actualTours.Description = description;
             actualTours.Price = price;
+            actualTours.Text = text;
             return actualTours;
         }
 
@@ -935,6 +937,30 @@ namespace HavilaTravel.Models
         private global::System.String _Sign5;
         partial void OnSign5Changing(global::System.String value);
         partial void OnSign5Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
 
         #endregion
     

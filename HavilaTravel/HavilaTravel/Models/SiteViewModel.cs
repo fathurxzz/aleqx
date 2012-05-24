@@ -24,6 +24,7 @@ namespace HavilaTravel.Models
         public Article Article { get; set; }
         public List<Customers> Customers { get; set; }
         public PlaceKind PlaceKind { get; set; }
+        public List<ActualTours> ActualTours { get; set; }
 
         protected readonly ContentStorage Context;
 
@@ -41,6 +42,8 @@ namespace HavilaTravel.Models
             MainBanners = banners.Where(b => b.BannerType == 1).ToList();
             LeftBanner = banners.Where(b => b.BannerType == 2).GetRandomItem();
             RightBanner = banners.Where(b => b.BannerType == 3).GetRandomItem();
+
+            ActualTours = context.ActualTours.ToList();
 
             if (loadContent)
             {
