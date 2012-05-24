@@ -289,6 +289,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\ActualTours\" />
     <Folder Include="Content\Banners\" />
     <Folder Include="Content\Bellboy\" />
     <Folder Include="Content\Photos\" />
