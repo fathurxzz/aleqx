@@ -1,0 +1,20 @@
+﻿@model IEnumerable<HavilaTravel.Models.ActualTours>
+<div id="actualTour">
+            <div id="actualTourHeaderTop"></div>
+            <div id="actualTourHeader"></div>
+            <div>
+            
+            @if(Request.IsAuthenticated)
+            {
+                
+            }
+
+            @foreach (var item in Model)
+            {
+                @Html.Partial("_ActualTour",item)
+            }
+
+            </div>
+            <div id="actualTourFooter"></div>
+            <div id="actualTourFooterBottom"></div>
+</div>
