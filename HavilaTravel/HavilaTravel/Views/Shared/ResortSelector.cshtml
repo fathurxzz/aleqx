@@ -1,0 +1,47 @@
+﻿@model List<MenuItem>
+@using HavilaTravel.Models
+<div class="plcesSelectorFixed" id="resortsSelector">
+    <div class="plcesSelectorFixedTop">
+    </div>
+    <div class="plcesSelectorFixedMiddle">
+        <div class="closeButtonContainer">
+            <div class="closeButton" id="closeButtonResorts">
+            </div>
+        </div>
+
+        <div class="patternsContaiter">
+        <table>
+        <tr>
+        <td class="leftPattern"></td>
+        <td class="title">Выберите курорт</td>
+        <td class="rightPattern"></td>
+        </tr>
+        </table>
+        </div>
+
+        <div class="content">
+        @{
+            foreach (var item in Model)
+            {
+            <div class="plcesSelectorFixedItem">
+                @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.Raw("&nbsp;")
+                    <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
+                    @Html.Raw("&nbsp;")
+                    @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    @Html.Raw("&nbsp;")
+                    @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                }
+            </div>
+            }
+            <div class="clear"></div>
+        }
+        </div>
+
+        <div class="patternBottom"></div>
+    </div>
+    <div class="plcesSelectorFixedBottom">
+    </div>
+</div>
