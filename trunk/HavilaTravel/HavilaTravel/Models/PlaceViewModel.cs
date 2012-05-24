@@ -17,6 +17,7 @@ namespace HavilaTravel.Models
         public Content PriceTable { get; set; }
         public List<MenuItem> LeftSubMenuItems { get; set; }
         public List<MenuItem> PlacesForSelector { get; set; }
+        public List<MenuItem> ResortsForSelector { get; set; }
         
 
 
@@ -38,6 +39,7 @@ namespace HavilaTravel.Models
 
             LeftSubMenuItems = GetLeftSubMenuItems();
             PlacesForSelector = GetPlacesForSelector();
+            ResortsForSelector = GetResortsSelector();
         }
 
 
@@ -107,8 +109,9 @@ namespace HavilaTravel.Models
 
         private List<MenuItem> GetLeftSubMenuItems()
         {
+            /*
             var placesLeftSubMenu = Content.Children
-                    .Where(p => p.PlaceKind != 6 && (p.PlaceKind == (int)PlaceKind.Spa && _showSpa.HasValue || (/*!_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.City ||*/ !_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.Hotel)))
+                    .Where(p => p.PlaceKind != 6 && (p.PlaceKind == (int)PlaceKind.Spa && _showSpa.HasValue || ( !_showSpa.HasValue && p.PlaceKind == (int)PlaceKind.Hotel)))
                     .Select(child => new MenuItem
                     {
                         Id = (int)child.Id,
@@ -133,6 +136,40 @@ namespace HavilaTravel.Models
                         Selected = child.Id == Content.Id
                     }).ToList();
             }
+            */
+
+            var placesLeftSubMenu = new List<MenuItem>();
+
+            if (Content.PlaceKind.In(new[] { (int)PlaceKind.City, (int)PlaceKind.Resort }))
+            {
+
+                 placesLeftSubMenu = Content.Children
+                    .Select(child => new MenuItem
+                    {
+                        Id = (int)child.Id,
+                        Name = child.Name,
+                        SortOrder = child.SortOrder,
+                        Title = child.Title
+                    }).ToList();
+               
+            }
+
+            if (Content.PlaceKind.In(new[] { (int)PlaceKind.Spa}))
+            {
+                var parentId = Content.Parent.Id;
+                var parent = Context.Content.Include("Children").First(c => c.Id == parentId);
+                placesLeftSubMenu = parent.Children
+                    .Where(p =>p.PlaceKind == 5)
+                    .Select(child => new MenuItem
+                    {
+                        Id = (int)child.Id,
+                        Name = child.Name,
+                        SortOrder = child.SortOrder,
+                        Title = child.Title,
+                        Selected = child.Id == Content.Id
+                    }).ToList();
+            }
+
 
             if (placesLeftSubMenu.Count > 0)
             {
@@ -145,6 +182,20 @@ namespace HavilaTravel.Models
         {
             var placesSelectorContent = Content.Children
                   .Where(p => p.PlaceKind == 2 || p.PlaceKind == 3 || p.PlaceKind == 4)
+                  .Select(child => new MenuItem
+                  {
+                      Id = (int)child.Id,
+                      Name = child.Name,
+                      SortOrder = child.SortOrder,
+                      Title = child.Title
+                  }).ToList();
+            return placesSelectorContent;
+        }
+
+        private List<MenuItem> GetResortsSelector()
+        {
+            var placesSelectorContent = Content.Children
+                  .Where(p => p.PlaceKind == 12)
                   .Select(child => new MenuItem
                   {
                       Id = (int)child.Id,

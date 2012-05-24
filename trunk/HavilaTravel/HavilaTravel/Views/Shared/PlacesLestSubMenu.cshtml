@@ -5,7 +5,7 @@
         <div id="top">
         </div>
         <div id="content">
-            @foreach (var item in Model.OrderBy(m => m.SortOrder))
+            @foreach (var item in Model.OrderBy(m => m.Title))
             {
                 if (item.Selected)
                 {

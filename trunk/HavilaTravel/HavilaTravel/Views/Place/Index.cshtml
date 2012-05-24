@@ -32,6 +32,11 @@ else
         {
             @Html.Partial("PlacesSelector", Model.PlacesForSelector)
         }
+        
+        @if (Model.ResortsForSelector != null && Model.ResortsForSelector.Count > 0)
+        {
+            @Html.Partial("ResortSelector", Model.ResortsForSelector)
+        }
     </div>
 }
 @section Accordion
@@ -106,6 +111,21 @@ else
 }
 @section LeftSubMenu
 {
+
+    @if(Request.IsAuthenticated && Model.Content.PlaceKind==(int)PlaceKind.City)
+        {
+            <div class="adminLinkContainer">
+                 @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Content.Id, placeKind = 5 }, new { @class = "adminLink" })
+            </div>
+        }
+        
+        @if(Request.IsAuthenticated && Model.Content.PlaceKind==(int)PlaceKind.Resort)
+        {
+            <div class="adminLinkContainer">
+                 @Html.ActionLink("+Курорт", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Content.Id, placeKind = 5 }, new { @class = "adminLink" })
+            </div>
+        }
+
     @if (Model.LeftSubMenuItems != null && Model.LeftSubMenuItems.Count > 0)
     {
         @Html.Partial("PlacesLestSubMenu", Model.LeftSubMenuItems)

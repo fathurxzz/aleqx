@@ -22,7 +22,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
 
                 if (!match.Success)
                 {
-                    return Json("Введите только латинские символы и цифры без пробелов!", JsonRequestBehavior.AllowGet);
+                    return Json("Введите только маленькие латинские символы и цифры без пробелов!", JsonRequestBehavior.AllowGet);
                 }
 
                 var content = context.Content.FirstOrDefault(c => c.Name == name);

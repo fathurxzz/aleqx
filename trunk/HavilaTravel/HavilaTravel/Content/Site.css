@@ -650,7 +650,7 @@ table.adminContentPreview th
     font-weight: bold;
 }
 
-.reviewLink
+.reviewLink, .reviewResortLink
 {
 	text-decoration:none;
 	border-bottom-width:1px;
@@ -658,6 +658,13 @@ table.adminContentPreview th
 	color: #6f6f6f;
     cursor: pointer;
 }
+
+.reviewResortLink
+{
+    display: inline-block;
+}
+
+
 
 
 #bellboyContainer

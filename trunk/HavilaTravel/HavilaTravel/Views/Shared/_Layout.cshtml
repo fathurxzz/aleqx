@@ -23,9 +23,9 @@
         $(function () {
             $(".fancy").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
-            $("#closeButtonPlaces").click(function () {
-
+            $("#closeButtonPlaces, #closeButtonResorts").click(function () {
                 $("#citiesSelector").css("display", "none");
+                $("#resortsSelector").css("display", "none");
             });
 
             $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
@@ -39,6 +39,10 @@
 
             $(".reviewLink").click(function () {
                 $("#citiesSelector").css("display", "block");
+            });
+
+            $(".reviewResortLink").click(function () {
+                $("#resortsSelector").css("display", "block");
             });
 
             $("body").click(function () {
@@ -149,8 +153,8 @@
             <tr>
                 <td id="leftContent">
                     @RenderSection("QuickSearch", false)
-                    @RenderSection("LeftSubMenu", false)
                     @RenderSection("SmallBannerLeft", false)
+                    @RenderSection("LeftSubMenu", false)
                 </td>
                 <td id="centerContent">
                     <div id="contentContainer">
@@ -172,12 +176,12 @@
                     </div>
                 </td>
                 <td id="rightContent">
-                    <div id="chat">
+                    @*<div id="chat">
                         <a href="#">Чат с оператором</a><br />
                         <div class="time">
                             (с 10:00 до 19:00, кроме<br />
                             выходных)</div>
-                    </div>
+                    </div>*@
                     <div id="booking">
                         @Html.ActionLink("Подбор тура онлайн", "Index", "Home", new { id = "booking" }, null)
                         @*<a href="#">Онлайн-бронирование</a>*@
