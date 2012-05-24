@@ -147,6 +147,8 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Gallery.css" />
+    <Content Include="Content\img\actual-header-top.png" />
+    <Content Include="Content\img\actual-header.gif" />
     <Content Include="Content\img\articles-details-link-bg.gif" />
     <Content Include="Content\img\banner_small_bg.gif" />
     <Content Include="Content\img\bellboy.png" />
@@ -440,6 +442,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\ResortSelector.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ActualTour.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

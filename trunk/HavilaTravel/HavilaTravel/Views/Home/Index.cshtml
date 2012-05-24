@@ -56,7 +56,7 @@
 }
 @section MainSearch
 {
-    @if (Model.IsRoot)
+    @*@if (Model.IsRoot)
     {
 
         using (Html.BeginForm("Search", "Home", FormMethod.Get))
@@ -65,8 +65,19 @@
             @Html.TextBox("query", "Бали", new { @class = "mainsearch" })
         </div>
         }
-    }
+    }*@
 }
+
+@section ActualTours
+{
+    @if (Model.IsRoot)
+    {
+
+       @Html.Partial("ActualTour")
+    }
+
+}
+
 @section BellBoy
 {
     @if (Model.Bellboy != null)
@@ -86,10 +97,12 @@
 }
 @section QuickSearch
 {
-    @if (!Model.IsRoot)
+    @*@if (!Model.IsRoot)
     {
         @Html.Partial("QuickSearch")
-    }
+    }*@
+
+    @Html.Partial("QuickSearch")
 }
 
 @section MainMenu

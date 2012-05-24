@@ -937,3 +937,25 @@ table.adminContentPreview th
 .mailtable td, .mailtable th {
     border: 1px solid #800000;
 }
+
+#actualTour
+{
+    width: 920px;
+    position: relative;
+    margin: 0 auto;
+    
+}
+
+#actualTourHeaderTop
+{
+    background-image: url('img/actual-header-top.png');
+    height: 16px;
+    width: 920px;
+}
+
+#actualTourHeader
+{
+    background-image: url('img/actual-header.gif');
+    height: 72px;
+    width: 920px;
+}

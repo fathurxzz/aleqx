@@ -8,6 +8,7 @@
         <EntityContainer Name="havilaModelStoreContainer">
           <EntitySet Name="accordion" EntityType="havilaModel.Store.accordion" store:Type="Tables" Schema="havila" />
           <EntitySet Name="accordionimage" EntityType="havilaModel.Store.accordionimage" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="actualtours" EntityType="havilaModel.Store.actualtours" store:Type="Tables" Schema="havila" />
           <EntitySet Name="article" EntityType="havilaModel.Store.article" store:Type="Tables" Schema="havila" />
           <EntitySet Name="banner" EntityType="havilaModel.Store.banner" store:Type="Tables" Schema="havila" />
           <EntitySet Name="bellboy" EntityType="havilaModel.Store.bellboy" store:Type="Tables" Schema="havila" />
@@ -34,6 +35,21 @@
           <Property Name="Title" Type="varchar" />
           <Property Name="ImageSource" Type="varchar" />
           <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="actualtours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Sign1" Type="varchar" MaxLength="50" />
+          <Property Name="Sign2" Type="varchar" MaxLength="50" />
+          <Property Name="Sign3" Type="varchar" MaxLength="50" />
+          <Property Name="Sign4" Type="varchar" MaxLength="50" />
+          <Property Name="Sign5" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="article">
           <Key>
@@ -129,6 +145,7 @@
           <EntitySet Name="Bellboy" EntityType="havilaModel.Bellboy" />
           <EntitySet Name="Customers" EntityType="havilaModel.Customers" />
           <EntitySet Name="MailTemplate" EntityType="havilaModel.MailTemplate" />
+          <EntitySet Name="ActualTours" EntityType="havilaModel.ActualTours" />
         </EntityContainer>
         <EntityType Name="Accordion">
           <Key>
@@ -233,6 +250,21 @@
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActualTours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="Int32" Name="Price" Nullable="false" />
+          <Property Type="String" Name="Sign1" />
+          <Property Type="String" Name="Sign2" />
+          <Property Type="String" Name="Sign3" />
+          <Property Type="String" Name="Sign4" />
+          <Property Type="String" Name="Sign5" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -347,6 +379,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ActualTours">
+            <EntityTypeMapping TypeName="havilaModel.ActualTours">
+              <MappingFragment StoreEntitySet="actualtours">
+                <ScalarProperty Name="Sign5" ColumnName="Sign5" />
+                <ScalarProperty Name="Sign4" ColumnName="Sign4" />
+                <ScalarProperty Name="Sign3" ColumnName="Sign3" />
+                <ScalarProperty Name="Sign2" ColumnName="Sign2" />
+                <ScalarProperty Name="Sign1" ColumnName="Sign1" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -390,6 +438,7 @@
         <EntityTypeShape EntityType="havilaModel.Bellboy" Width="1.5" PointX="5.375" PointY="3.75" Height="1.9210009765624996" />
         <EntityTypeShape EntityType="havilaModel.Customers" Width="1.5" PointX="3.375" PointY="6.75" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="havilaModel.MailTemplate" Width="1.5" PointX="5.375" PointY="6.75" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="havilaModel.ActualTours" Width="1.5" PointX="7.375" PointY="0.75" Height="2.5783902994791674" />
       </Diagram>
     </Diagrams>
   </Designer>
