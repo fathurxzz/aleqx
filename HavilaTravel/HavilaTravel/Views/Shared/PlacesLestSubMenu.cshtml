@@ -5,37 +5,39 @@
         <div id="top">
         </div>
         <div id="content">
+            <div class="leftSubMenuTitle">Отели</div>
+
             @foreach (var item in Model.OrderBy(m => m.Title))
             {
                 if (item.Selected)
                 {
-                <div class="menuItem selected">
-                    @item.Title
-                    @if (Request.IsAuthenticated)
-                    {
-                        @Html.Raw("&nbsp;")
-                        <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
-                        @Html.Raw("&nbsp;")
-                        @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                        @Html.Raw("&nbsp;")
-                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
-                    }
-                </div>
+                    <div class="menuItem selected">
+                        @item.Title
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.Raw("&nbsp;")
+                            <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
+                            @Html.Raw("&nbsp;")
+                            @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            @Html.Raw("&nbsp;")
+                            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                        }
+                    </div>
                 }
                 else
                 {
-                <div class="menuItem">
-                    @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
-                    @if (Request.IsAuthenticated)
-                    {
-                        @Html.Raw("&nbsp;")
-                        <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
-                        @Html.Raw("&nbsp;")
-                        @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                        @Html.Raw("&nbsp;")
-                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
-                    }
-                </div>    
+                    <div class="menuItem">
+                        @Html.ActionLink(item.Title, "Index", "Place", new { id = item.Name }, null)
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.Raw("&nbsp;")
+                            <span class="sortOrder">@Html.Raw(item.SortOrder.ToString())</span>
+                            @Html.Raw("&nbsp;")
+                            @Html.ActionLink("Ред", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            @Html.Raw("&nbsp;")
+                            @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                        }
+                    </div>    
                 }
             }
         </div>

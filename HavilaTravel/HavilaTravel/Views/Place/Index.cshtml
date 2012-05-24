@@ -122,7 +122,7 @@ else
         @if(Request.IsAuthenticated && Model.Content.PlaceKind==(int)PlaceKind.Resort)
         {
             <div class="adminLinkContainer">
-                 @Html.ActionLink("+Курорт", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Content.Id, placeKind = 5 }, new { @class = "adminLink" })
+                 @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Content.Id, placeKind = 5 }, new { @class = "adminLink" })
             </div>
         }
 
