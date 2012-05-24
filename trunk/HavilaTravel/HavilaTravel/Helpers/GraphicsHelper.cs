@@ -37,7 +37,8 @@ namespace Dev.Mvc.Helpers
             limitWidth.Add("bellboy", 275);
             limitHeight.Add("bellboy", 375);
 
-
+            limitWidth.Add("tour", 200);
+            limitHeight.Add("tour", 135);
             
 
         }

@@ -90,6 +90,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaceController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
+    <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -101,6 +102,7 @@
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ActualToursValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\CurrentMenuHighlight.cs" />
     <Compile Include="Models\CustomerValidation.cs" />
@@ -148,8 +150,11 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Gallery.css" />
+    <Content Include="Content\img\actual-footer-bottom.png" />
+    <Content Include="Content\img\actual-footer.gif" />
     <Content Include="Content\img\actual-header-top.png" />
     <Content Include="Content\img\actual-header.gif" />
+    <Content Include="Content\img\actual-middle.jpg" />
     <Content Include="Content\img\articles-details-link-bg.gif" />
     <Content Include="Content\img\banner_small_bg.gif" />
     <Content Include="Content\img\bellboy.png" />
@@ -196,6 +201,9 @@
     <Content Include="Content\img\submenu-bg-top-left.png" />
     <Content Include="Content\img\submenu-bg-top-right.png" />
     <Content Include="Content\img\subscribe-form-bg.gif" />
+    <Content Include="Content\img\tour-check.gif" />
+    <Content Include="Content\img\tour-details-title.gif" />
+    <Content Include="Content\img\tour-pattern.gif" />
     <Content Include="Content\PlacesSelector.css" />
     <Content Include="Content\img\png-ramka.png" />
     <Content Include="Content\img\price-bg-red.png" />
@@ -453,6 +461,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\ActualTours\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tour\TourDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\ActualTours\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

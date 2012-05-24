@@ -222,11 +222,13 @@ body
 #leftContent
 {
     width: 280px;
+    /*width: 130px;*/
 }
 
 #rightContent
 {
     width: 280px;
+    /*width: 130px;*/
     text-align: right;
 }
 
@@ -950,12 +952,117 @@ table.adminContentPreview th
 {
     background-image: url('img/actual-header-top.png');
     height: 16px;
-    width: 920px;
+
 }
 
 #actualTourHeader
 {
     background-image: url('img/actual-header.gif');
     height: 72px;
-    width: 920px;
+
 }
+
+#actualMiddle {
+    background: url('img/actual-middle.jpg') repeat-y;
+    padding: 0 20px;
+
+}
+
+#actualTourFooter {
+    background: url('img/actual-footer.gif');
+    height: 18px;
+}
+
+#actualTourFooterBottom {
+    background: url('img/actual-footer-bottom.png');
+    height: 25px;
+}
+
+
+.tour {
+    float: left;
+    padding:0 9px;
+    font-family: Trebuchet MS;
+    
+}
+
+.tourImg {
+    height: 135px;
+}
+
+.tourImg img {
+    border: 1px solid #000;
+
+}
+.tourTitle a {
+    
+    font-size: 14px;
+    font-weight: bold;
+    color: #0072bc;
+}
+
+.tourTitle {
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+.tourShortDescription {
+    font-size: 10px;
+    color: #000;
+    padding-top: 5px;
+    padding-left: 3px;
+}
+
+.tourSign {
+    font-size: 12px;
+    color: #009966;
+    font-weight: bold;
+    padding-left: 15px;
+    
+    background: url('img/tour-check.gif') no-repeat;
+    background-position: 0px 2px;
+    height: 18px;
+}
+
+.tourSign span
+{
+    color: #cf1111;
+    
+}
+
+#tourDetails {
+    width: 880px;
+    padding: 10px;
+    background-color: rgb(240, 240, 228);
+}
+
+#tourDetailsTitle 
+{
+    
+    background-image: url('img/tour-details-title.gif');
+    width: 694px;
+    height: 41px;
+    position: relative;
+    margin: 50px auto;
+    
+    font-family: Georgia;
+    font-size: 26px;
+    color: #ffb200;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#tourDetailsContent {
+    width: 650px;
+    position: relative;
+    margin: 0 auto;
+    
+}
+
+#tourPattern {
+   background-image: url('img/tour-pattern.gif'); 
+   width: 639px;
+    height: 11px;
+    position: relative;
+   margin: 50px auto 80px auto;
+    }

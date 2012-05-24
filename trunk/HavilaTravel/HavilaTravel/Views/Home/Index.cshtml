@@ -25,16 +25,25 @@
 }
 @section SmallBannerLeft
 {
-    @if (Model.LeftBanner != null)
-    {
-        @Html.Partial("BannerSmall", Model.LeftBanner)
-    }
+@if (!Model.IsRoot)
+{
+    if (Model.LeftBanner != null)
+     {
+         @Html.Partial("BannerSmall", Model.LeftBanner)
+     }
+}else
+{
+    <div style="width: 100px;"></div>
+}
 }
 @section SmallBannerRight
 {
-    @if (Model.RightBanner != null)
+@if (!Model.IsRoot)
+    {
+    if (Model.RightBanner != null)
     {
         @Html.Partial("BannerSmall", Model.RightBanner)
+    }
     }
 }
 @section SubMenu
@@ -54,9 +63,9 @@
         }
     }
 }
-@section MainSearch
+@*@section MainSearch
 {
-    @*@if (Model.IsRoot)
+    @if (Model.IsRoot)
     {
 
         using (Html.BeginForm("Search", "Home", FormMethod.Get))
@@ -65,14 +74,13 @@
             @Html.TextBox("query", "Бали", new { @class = "mainsearch" })
         </div>
         }
-    }*@
-}
+    }
+}*@
 
 @section ActualTours
 {
     @if (Model.IsRoot)
     {
-
        @Html.Partial("ActualTours",Model.ActualTours)
     }
 
@@ -101,8 +109,10 @@
     {
         @Html.Partial("QuickSearch")
     }*@
-
-    @Html.Partial("QuickSearch")
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
 }
 
 @section MainMenu
