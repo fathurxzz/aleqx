@@ -81,7 +81,14 @@
 {
     @if (Model.IsRoot)
     {
-       @Html.Partial("ActualTours",Model.ActualTours)
+        if(Request.IsAuthenticated)
+        {
+            @Html.Partial("ActualTours", Model.ActualTours)
+        }
+        else if(Model.ActualTours.Count>0)
+        {
+            @Html.Partial("ActualTours", Model.ActualTours)
+        }
     }
 
 }
