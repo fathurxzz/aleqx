@@ -154,24 +154,29 @@ a
 
 .color0
 {
-    background-image: url('img/menubg0.gif');
+    /*background-image: url('img/menubg0.gif');*/
+    background-color: #1665a7;
 }
 
 .color1
 {
-    background-image: url('img/menubg1.gif');
+    /*background-image: url('img/menubg1.gif');*/
+    background-color: #1665a7;
 }
 .color2
 {
-    background-image: url('img/menubg2.gif');
+    /*background-image: url('img/menubg2.gif');*/
+    background-color: #1665a7;
 }
 .color3
 {
-    background-image: url('img/menubg3.gif');
+    /*background-image: url('img/menubg3.gif');*/
+    background-color: #1665a7;
 }
 .color4
 {
-    background-image: url('img/menubg4.gif');
+    /*background-image: url('img/menubg4.gif');*/
+    background-color: #1665a7;
 }
 
 #mainMenu li div.selected
