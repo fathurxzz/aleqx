@@ -172,6 +172,7 @@
     <Content Include="Content\img\menubg3.gif" />
     <Content Include="Content\img\menubg4.gif" />
     <Content Include="Content\img\menu_item_bg.gif" />
+    <Content Include="Content\img\menu_item_child_bg.gif" />
     <Content Include="Content\img\promo.gif" />
     <Content Include="Content\img\service.gif" />
     <Content Include="Content\img\shopping-cart.jpg" />
