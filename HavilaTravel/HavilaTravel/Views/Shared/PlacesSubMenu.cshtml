@@ -31,40 +31,9 @@
                         <div class="reviewLink">
                             Выбрать город</div>
                             break;
-
-
-                        case (int)PlaceKind.City:
-                            if (Request.QueryString["showPlacesReview"] == "True")
-                            {
-                        @Html.Raw("Достопримечательности")
-                            }
-                            else
-                            {
-                        @Html.ActionLink("Достопримечательности", "Index", "Place", new { id = Model.Name, showPlacesReview = true }, null)
-                            }
-
-                            if (Request.IsAuthenticated)
-                            {
-                        <div class="adminLinkContainer">
-                            @{
-                                var placeReview = Model.Children.Where(c => c.PlaceKind == 7).FirstOrDefault();
-                                if (placeReview != null)
-                                {
-                                
-                                @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = placeReview.Id }, new { @class = "adminLink" })
-                               
-                                }
-                                else
-                                {
-                                @Html.ActionLink("+Достопримечательности", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 7 }, new { @class = "adminLink" })
-                                }
-                            }
-                        </div>
-                            }
-                            break;
                     }
-                    @{
-                    if (Request.IsAuthenticated)
+                    
+                    @if (Request.IsAuthenticated)
                     {
                         switch (Model.PlaceKind)
                         {
@@ -87,120 +56,161 @@
                         }
 
                     }
-                    }
+                    
                 </td>
+
+
+                @if (Request.IsAuthenticated)
+                {
+                    <td>
+                    @switch (Model.PlaceKind)
+                    {
+                        case (int)PlaceKind.Country:
+                    
+                    <div class="reviewResortLink">
+                        Курорты
+                    </div>
+                    
+                           
+                    <div class="adminLinkContainer">
+                    @Html.ActionLink("+Курорт", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 12 }, new { @class = "adminLink" })
+                    </div>
+                     break;
+                    }
+                    </td>
+                }
+                else
+                {
+                    switch (Model.PlaceKind)
+                    {
+
+                        case (int)PlaceKind.Country:
+                    <td>
+                    <div class="reviewResortLink">
+                        Курорты
+                    </div>
+                    </td>
+                            break;
+                    }
+                }
+
+
+                
+                
+                
+
                 <td>
                     @{
-                    var spa = Model.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.SpaInfo);
-                    if (spa != null)
+                var spa = Model.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.SpaInfo);
+                if (spa != null)
+                {
+                    if (Model.PlaceKind == (int)PlaceKind.City)
                     {
-                        if (Model.PlaceKind == (int)PlaceKind.City)
+
+                        if (Request.QueryString["showSpa"] == "True")
                         {
-
-                            if (Request.QueryString["showSpa"] == "True")
-                            {
                         @Html.Raw("Отели")
-                            }
-                            else
-                            {
-                        @Html.ActionLink("Отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
-                            }
-
-                            if (Request.IsAuthenticated)
-                            {
-                        <div class="adminLinkContainer">
-                            @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 5 }, new { @class = "adminLink" })
-                        </div>
-                            }
                         }
                         else
                         {
-                             if (Request.QueryString["showSpa"] == "True")
-                            {
-                        @Html.Raw("СПА-курорты")
-                            }
-                             else
-                             {
-
-
-                                 @Html.ActionLink("СПА-курорты", "Index", "Place", new {id = Model.Name, showSpa = true}, null)
-                             }
-                            if (Request.IsAuthenticated)
-                       {
-                                <div class="adminLinkContainer">
-                                    @Html.ActionLink("+Курорт", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 5 }, new { @class = "adminLink" })
-                                </div>
-                       }
+                        @Html.ActionLink("Отели", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
                         }
 
                         if (Request.IsAuthenticated)
                         {
                         <div class="adminLinkContainer">
-                            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = spa.Id }, new { @class = "adminLink" })
+                            @Html.ActionLink("+Отель", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 5 }, new { @class = "adminLink" })
                         </div>
                         }
+                    }
+                    @*else
+                    {
+                        if (Request.QueryString["showSpa"] == "True")
+                        {
+                        @Html.Raw("СПА-курорты")
+                        }
+                        else
+                        {
 
+
+                                 @Html.ActionLink("СПА-курорты", "Index", "Place", new { id = Model.Name, showSpa = true }, null)
+                        }
+                        if (Request.IsAuthenticated)
+                        {
+                                <div class="adminLinkContainer">
+                                    @Html.ActionLink("+Курорт", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 5 }, new { @class = "adminLink" })
+                                </div>
+                        }
+                    }
+
+                    if (Request.IsAuthenticated)
+                    {
+                        <div class="adminLinkContainer">
+                            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = spa.Id }, new { @class = "adminLink" })
+                        </div>
+                    }
+*@
+                }
+                else
+                {
+                    if (Request.IsAuthenticated)
+                    {
+
+                        //string spaOrHotel= Model.PlaceKind == (int)PlaceKind.City?"+Отели":"+Spa";
+                        if (Model.PlaceKind == (int)PlaceKind.City)
+                        {
+
+                        @Html.ActionLink("+Отели", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
+                        }
+                        else
+                        {
+                                <div class="adminLinkContainer">
+                                    @Html.ActionLink("+Spa", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
+                                </div>
+                        }
+
+                    }
+
+                }
+                    }
+                </td>
+                <td>
+                    @{
+                if (Model.PlaceKind == (int)PlaceKind.Country)
+                {
+                    var price = Model.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PriceTable);
+                    if (price != null)
+                    {
+
+                        if (Request.QueryString["showPrices"] == "True")
+                        {
+                        @Html.Raw("Цены по стране")
+                        }
+
+                        else
+                        {
+                        @Html.ActionLink("Цены по стране", "Index", "Place", new { id = Model.Name, showPrices = true }, null)
+                        }
+
+
+
+
+                        if (Request.IsAuthenticated)
+                        {
+                        <div class="adminLinkContainer">
+                            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = price.Id }, new { @class = "adminLink" })
+                        </div>
+                        }
                     }
                     else
                     {
                         if (Request.IsAuthenticated)
                         {
-
-                            //string spaOrHotel= Model.PlaceKind == (int)PlaceKind.City?"+Отели":"+Spa";
-                            if (Model.PlaceKind == (int)PlaceKind.City)
-                            {
-
-                        @Html.ActionLink("+Отели", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
-                            }
-                            else
-                            {
-                                <div class="adminLinkContainer">
-                                    @Html.ActionLink("+Spa", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 6 }, new { @class = "adminLink" })
-                                </div>
-                            }
-
-                        }
-
-                    }
-                    }
-                </td>
-                <td>
-                    @{
-                    if (Model.PlaceKind == (int)PlaceKind.Country)
-                    {
-                        var price = Model.Children.FirstOrDefault(c => c.PlaceKind == (int)PlaceKind.PriceTable);
-                        if (price != null)
-                        {
-
-                            if (Request.QueryString["showPrices"] == "True")
-                            {
-                        @Html.Raw("Цены по стране")
-                            }
-
-                            else
-                            {
-                        @Html.ActionLink("Цены по стране", "Index", "Place", new { id = Model.Name, showPrices = true }, null)
-                            }
-
-
-
-
-                            if (Request.IsAuthenticated)
-                            {
-                        <div class="adminLinkContainer">
-                            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = price.Id }, new { @class = "adminLink" })
-                        </div>
-                            }
-                        }
-                        else
-                        {
-                            if (Request.IsAuthenticated)
-                            {
                         @Html.ActionLink("+Цены по стране", "AddSubmenu", "Content", new { Area = "Admin", id = Model.Id, placeKind = 8 }, new { @class = "adminLink" })
-                            }
-
                         }
+
                     }
+                }
                     }
                 </td>
                 <td class="separator">

@@ -44,8 +44,11 @@
 @section LeftSubMenu
 {
     @{
+        
+        
+
         var menuItems = Model.MenuList.FirstOrDefault(m => m.MenuLevel == 3);
-        if(menuItems!=null)
+        if (menuItems != null)
         {
             @Html.Partial("LeftSubmenu", menuItems)
         }
@@ -92,8 +95,8 @@
 @section MainMenu
 {
     @{
-    var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
-    @Html.Partial("MainMenu",menu)
+        var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+    @Html.Partial("MainMenu", menu)
     }
 }
 
