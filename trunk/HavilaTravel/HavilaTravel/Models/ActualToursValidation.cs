@@ -23,23 +23,23 @@ namespace HavilaTravel.Models
         [DisplayName("Краткое описание")]
         public string Description { get; set; }
 
-        [DisplayName("Цена")]
+        [DisplayName("Специальная цена")]
         [Required(ErrorMessage = "* обязательное поле (число)")]
         public string Price { get; set; }
 
-        [DisplayName("Надпись 1")]
+        [DisplayName("Галочка 1")]
         public string Sign1 { get; set; }
 
-        [DisplayName("Надпись 2")]
+        [DisplayName("Галочка 2")]
         public string Sign2 { get; set; }
 
-        [DisplayName("Надпись 3")]
+        [DisplayName("Галочка 3")]
         public string Sign3 { get; set; }
 
-        [DisplayName("Надпись 4")]
+        [DisplayName("Галочка 4")]
         public string Sign4 { get; set; }
 
-        [DisplayName("Надпись 5")]
+        [DisplayName("Галочка 5")]
         public string Sign5 { get; set; }
 
     }
