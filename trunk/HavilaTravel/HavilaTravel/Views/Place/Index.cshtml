@@ -17,6 +17,24 @@ else
 {
     @Html.Raw(Model.Content.Text)
 }
+
+
+@section Includes
+{
+    <script type="text/javascript">
+        $(function () {
+            var hash = location.hash;
+            if (hash.indexOf("exp-") > -1) {
+                var number = hash.split("-")[1] * 1;
+                window.setTimeout(function () {
+                    $(".ui-accordion-header").eq(number - 1).click();
+                    window.scrollTo(0, $(".ui-accordion-header").eq(number - 1).offset().top);
+                }, 500);
+            }
+        })
+    </script>
+}
+
 @section ContentTitle{
 }
 @section CountrySelectors
