@@ -106,13 +106,16 @@
 </head>
 <body>
     <div id="header">
+        <div class="address-bar">
+            Киев, ул. Льва Толстого, 9     +38 (044) 289-32-77
+        </div>
         <div id="innerHeader">
             @{
                 if (Request.IsAuthenticated)
                 {
-                <div id="logOffLinkContainer">
-                    @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { Area = "" }, new { @class = "adminLink" })
-                </div>
+                    <div id="logOffLinkContainer">
+                        @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { Area = "" }, new { @class = "adminLink" })
+                    </div>
                 }
             }
             @RenderSection("RootLogoLink", false)
@@ -126,8 +129,8 @@
                 @{
                     if (Request.IsAuthenticated)
                     {
-                    <br />
-                    @Html.ActionLink("Подписчики на рассылку", "Subscribers", "Subscribe", new { Area = "" }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("Подписчики на рассылку", "Subscribers", "Subscribe", new { Area = "" }, new { @class = "adminLink" })
                     }
                 }
             </div>
