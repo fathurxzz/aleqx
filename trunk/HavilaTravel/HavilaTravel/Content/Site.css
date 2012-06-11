@@ -1076,3 +1076,10 @@ table.adminContentPreview th
     position: relative;
    margin: 50px auto 80px auto;
     }
+    
+    #weatherWidget 
+    {
+        padding-top: 20px;
+        text-align: left;
+        padding-bottom: 20px;
+    }
