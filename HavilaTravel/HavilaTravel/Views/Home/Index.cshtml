@@ -119,7 +119,13 @@
     @if (!Model.IsRoot)
     {
         @Html.Partial("QuickSearch")
+    }else
+    {
+        <div style="margin-left: -100px;">
+        @Html.Partial("QuickSearch")
+        </div>
     }
+
 }
 
 @section MainMenu
