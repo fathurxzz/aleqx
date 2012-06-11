@@ -102,6 +102,7 @@
           <Property Name="SeoKeywords" Type="varchar" />
           <Property Name="ContentModel" Type="uint" />
           <Property Name="PlaceKind" Type="int" Nullable="false" />
+          <Property Name="WeatherScript" Type="text" />
         </EntityType>
         <EntityType Name="customers">
           <Key>
@@ -189,6 +190,7 @@
           <NavigationProperty Name="Accordions" Relationship="havilaModel.ContentAccordion" FromRole="Content" ToRole="Accordion" />
           <Property Type="Int64" Name="ContentModel" />
           <Property Type="Int32" Name="PlaceKind" Nullable="false" />
+          <Property Type="String" Name="WeatherScript" />
         </EntityType>
         <Association Name="ContentContent">
           <End Type="havilaModel.Content" Role="Content" Multiplicity="0..1" />
@@ -287,7 +289,8 @@
             <ScalarProperty Name="Title" ColumnName="Title" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="havilaModel.Content"><MappingFragment StoreEntitySet="content">
-            <ScalarProperty Name="PlaceKind" ColumnName="PlaceKind" />
+            <ScalarProperty Name="WeatherScript" ColumnName="WeatherScript" />
+                <ScalarProperty Name="PlaceKind" ColumnName="PlaceKind" />
                 <ScalarProperty Name="ContentModel" ColumnName="ContentModel" />
                 <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
             <ScalarProperty Name="ContentType" ColumnName="ContentType" />

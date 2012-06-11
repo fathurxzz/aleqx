@@ -1819,6 +1819,30 @@ namespace HavilaTravel.Models
         private global::System.Int32 _PlaceKind;
         partial void OnPlaceKindChanging(global::System.Int32 value);
         partial void OnPlaceKindChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WeatherScript
+        {
+            get
+            {
+                return _WeatherScript;
+            }
+            set
+            {
+                OnWeatherScriptChanging(value);
+                ReportPropertyChanging("WeatherScript");
+                _WeatherScript = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("WeatherScript");
+                OnWeatherScriptChanged();
+            }
+        }
+        private global::System.String _WeatherScript;
+        partial void OnWeatherScriptChanging(global::System.String value);
+        partial void OnWeatherScriptChanged();
 
         #endregion
     
