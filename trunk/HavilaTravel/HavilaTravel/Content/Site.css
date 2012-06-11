@@ -1079,7 +1079,8 @@ table.adminContentPreview th
     
     #weatherWidget 
     {
-        padding-top: 20px;
+        padding-top: 70px;
+        padding-left: 30px;
         text-align: left;
         padding-bottom: 20px;
     }
