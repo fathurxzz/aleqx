@@ -190,6 +190,9 @@
                         @Html.ActionLink("Подбор тура онлайн", "Index", "Home", new { id = "booking" }, null)
                         @*<a href="#">Онлайн-бронирование</a>*@
                     </div>
+                    <div id="weatherWidget">
+                        @RenderSection("WeatherWidget", false)
+                    </div>
                     @RenderSection("SmallBannerRight", false)
                 </td>
             </tr>
