@@ -21,10 +21,10 @@
 #shoppingCart
 {
     float: right;
-    width: 100px;
+    width: 120px;
     height: 100px; 
     
-    margin-left: 850px;
+    margin-left: 815px;
     
     /*background: url('img/shopping-cart.jpg') no-repeat;*/
     
@@ -33,23 +33,35 @@
     position: absolute;
 }
 
+#shoppingCart h3 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#shoppingCart .itemsContainer {
+    
+}
+
 #shoppingCart a
 {
 }
 
-#shoppingCart a.showCart
+/*#shoppingCart a.showCart
 {
     font-size: 20px;
     display: block;
     margin-top: 20px;
     margin-left: 110px;
-}
+}*/
 
 
 #shoppingCartInfo
 {
-    margin-left: 10px;
-    margin-top: 10px;
+    
+    margin-top: 0px;
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 5px;
 }
 
 .itemsContainer
@@ -62,7 +74,8 @@
     background-color: #1665a7;
     display: block;
     font-size: 16px;
-    font-weight: bold;
+    /*font-weight: bold;*/
+    font-weight: normal;
     height: 34px;
     line-height: 34px;
     margin: 0;
@@ -71,6 +84,8 @@
     border-radius: 8px 8px 0 0;
     -webkit-border-radius: 8px 8px 0 0;
     -moz-border-radius: 8px 8px 0 0;
+    font-family: Comic Sans MS;
+    
 }
 
 .itemsContainer div.title h3 a
