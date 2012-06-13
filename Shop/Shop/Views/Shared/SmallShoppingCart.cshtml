@@ -1,13 +1,25 @@
 ﻿@using Shop.Helpers
+
 <div id="shoppingCart">
-    @*@Html.ActionLink("Корзина", "Index", "Cart", new { Area = "" }, new { @class = "showCart" })*@
-    <a href="http://toy-planet.com.ua/cart">
-        <img alt="Корзина" src="../../Content/img/shopping-cart.jpg" />
-    </a>
-    <br/>
-    <div id="shoppingCartInfo">
-        В корзине <span id="smallShoppingCartItemsCount">
-        @WebSession.OrderItems.Sum(c=>c.Value.Quantity)
-        </span> товаров
+    
+    <div class="itemsContainer">
+        <div class="title">
+            <h3>
+                @Html.ActionLink("Корзина", "Index", "Cart", new { Area = "" }, new { @class = "showCart" })
+            </h3>
+        </div>
+        <div style="border: 1px solid rgb(22, 101, 167);">
+        <div style="padding-left: 10px;">
+            <a href="http://toy-planet.com.ua/cart">
+                <img alt="Корзина" src="../../Content/img/shopping-cart.jpg" />
+            </a>
+            </div>
+        
+            <div id="shoppingCartInfo">
+                В корзине <span id="smallShoppingCartItemsCount">
+                              @WebSession.OrderItems.Sum(c=>c.Value.Quantity)
+                          </span> товаров
+            </div>
+            </div>
     </div>
 </div>
