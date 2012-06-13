@@ -17,88 +17,105 @@
     </script>
     @RenderSection("Includes", false)
 </head>
-<body>
-    <div class="page">
-        <div id="header">
-            <div id="logo">
-            </div>
-            @RenderSection("HeaderPicture", false)
-            <div id="contacts">
-                <div id="time">
-                <span>Прием звонков:</span> <br/>
-                Пн-Пт: 09-00: 19.00<br/>
-                Сб: 10-00: 17.00    
+    <body>
+        <div class="topLine">
+            <div class="topLineInnerContainer">
+                <div class="phones">
+                <span>(067) 892 62 77</span>
+                <span>(067) 892 62 77</span>
+                <span>(099) 220 77 65</span>
+                
+                <div class="time">
+                    Прием звонков:
+                        Пн-Пт: 09:00 - 19:00 &nbsp;&nbsp;&nbsp;Сб: 10:00 - 17:00    
                 </div>
-                <div id="phone">
-                   <span> Заказ и консультация:</span><br/>
-(093) 717 27 77 – Life<br/>
-(067) 892 62 77 – Киевстар<br/>
-(099) 220 77 65 – МТС
+
                 </div>
-            </div>
-            @Html.Partial("SmallShoppingCart")
-            @*header header header *@
-        </div>
-        <div>
-            <div id="menuLine">
-            </div>
-            @Html.Partial("_Search")
-            <div id="mainMenu">
-                @Html.Partial("Menu", (IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
+                
+                
             </div>
         </div>
-        <div id="main">
-            <div id="left">
-                <div class="itemsContainer">
-                    <div class="title">
-                        <h3>
-                            @Html.ActionLink("Категории", "Categories", "Shop", new { Area = "", id = "" }, null)
-                        </h3>
+        <div class="page">
+            <div id="header">
+                <div id="logo">
+                </div>
+                @RenderSection("HeaderPicture", false)
+                @*<div id="contacts">
+                    <div id="time">
+                        <span>Прием звонков:</span> <br/>
+                        Пн-Пт: 09-00: 19.00<br/>
+                        Сб: 10-00: 17.00    
                     </div>
-                    @RenderSection("Categories", false)
-                </div>
-                <div class="itemsContainer">
-                    <div class="title">
-                        <h3>
-                            @Html.ActionLink("Бренды", "Brands", "Shop", new { Area = "", id = "" }, null)
-                        </h3>
+                    <div id="phone">
+                        <span> Заказ и консультация:</span><br/>
+                        (093) 717 27 77 – Life<br/>
+                        (067) 892 62 77 – Киевстар<br/>
+                        (099) 220 77 65 – МТС
                     </div>
-                    @RenderSection("Brands", false)
+                </div>*@
+                @Html.Partial("SmallShoppingCart")
+                @*header header header *@
+            </div>
+            <div>
+                <div id="menuLine">
                 </div>
-                <div class="itemsContainer">
-                    <div class="title">
-                        <h3>
-                            @Html.ActionLink("Теги", "Tags", "Shop", new { Area = "", id = "" }, null)
-                        </h3>
-                    </div>
-                    @RenderSection("Tags", false)
+                @Html.Partial("_Search")
+                <div id="mainMenu">
+                    @Html.Partial("Menu", (IEnumerable<MenuItem>)ViewBag.MainMenu ?? new List<MenuItem>())
                 </div>
             </div>
-            <div id="container">
-                @RenderBody()
+            <div id="main">
+                <div id="left">
+                    <div class="itemsContainer">
+                        <div class="title">
+                            <h3>
+                                @Html.ActionLink("Категории", "Categories", "Shop", new { Area = "", id = "" }, null)
+                            </h3>
+                        </div>
+                        @RenderSection("Categories", false)
+                    </div>
+                    <div class="itemsContainer">
+                        <div class="title">
+                            <h3>
+                                @Html.ActionLink("Бренды", "Brands", "Shop", new { Area = "", id = "" }, null)
+                            </h3>
+                        </div>
+                        @RenderSection("Brands", false)
+                    </div>
+                    <div class="itemsContainer">
+                        <div class="title">
+                            <h3>
+                                @Html.ActionLink("Теги", "Tags", "Shop", new { Area = "", id = "" }, null)
+                            </h3>
+                        </div>
+                        @RenderSection("Tags", false)
+                    </div>
+                </div>
+                <div id="container">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            @RenderSection("Paging", false)
+            <div id="footer">
+                &copy; Интернет-магазин детских игрушек TOY-PLANET
             </div>
         </div>
-        <div class="clear">
-        </div>
-        @RenderSection("Paging", false)
-        <div id="footer">
-            &copy; Интернет-магазин детских игрушек TOY-PLANET
-        </div>
-    </div>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-32617641-1']);
-        _gaq.push(['_trackPageview']);
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-32617641-1']);
+            _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+            (function () {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
 
-</script>
+        </script>
 
-</body>
+    </body>
 </html>

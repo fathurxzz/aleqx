@@ -1,6 +1,10 @@
 ﻿@using Shop.Helpers
 <div id="shoppingCart">
-    @Html.ActionLink("Корзина", "Index", "Cart", new { Area = "" }, new { @class = "showCart" })
+    @*@Html.ActionLink("Корзина", "Index", "Cart", new { Area = "" }, new { @class = "showCart" })*@
+    <a href="http://toy-planet.com.ua/cart">
+        <img alt="Корзина" src="../../Content/img/shopping-cart.jpg" />
+    </a>
+    <br/>
     <div id="shoppingCartInfo">
         В корзине <span id="smallShoppingCartItemsCount">
         @WebSession.OrderItems.Sum(c=>c.Value.Quantity)

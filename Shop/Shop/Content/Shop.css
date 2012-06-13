@@ -21,13 +21,14 @@
 #shoppingCart
 {
     float: right;
-    width: 190px;
+    width: 100px;
     height: 100px; 
-    /*border: 1px solid brown;*/
-    margin-left: 750px;
-    background: url('img/shopping-cart.jpg') no-repeat;
     
-    margin-top: 80px;
+    margin-left: 850px;
+    
+    /*background: url('img/shopping-cart.jpg') no-repeat;*/
+    
+    margin-top: 30px;
     
     position: absolute;
 }
@@ -47,7 +48,7 @@
 
 #shoppingCartInfo
 {
-    margin-left: 110px;
+    margin-left: 10px;
     margin-top: 10px;
 }
 
