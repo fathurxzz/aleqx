@@ -23,18 +23,50 @@ a
 }
 
 
-.page
+.page, .topLineInnerContainer
 {
     width: 940px;
     position: relative;
     margin: 0 auto;
-    min-height: 800px;
     
+    
+}
+
+.page {
+    min-height: 800px;
+}
+
+.topLineInnerContainer 
+{
+    padding: 8px 0 13px 0;
+     height: 10px;
+}
+
+.topLine {
+   
+    /*background-color: #e7e7e7;*/
+    background-color: #efefef;
+}
+
+.phones {
+    
+}
+
+.phones span {
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.time {
+    float: right;
+    font-size: 15px;
 }
 
 #header
 {
-    padding: 20px 0 40px 0; 
+    padding: 0 0 40px 0; 
     /*border-bottom: 1px solid #ccc;*/
     height: 170px;
 }
@@ -89,6 +121,7 @@ a
 #container
 {
     overflow: hidden;
+    line-height: 1.5;
 }
 
 

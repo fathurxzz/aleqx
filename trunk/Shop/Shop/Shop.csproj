@@ -177,7 +177,6 @@
     <Content Include="Content\img\service.gif" />
     <Content Include="Content\img\shopping-cart.jpg" />
     <Content Include="Content\img\toy-planet-logo.gif" />
-    <Content Include="Content\old.css" />
     <Content Include="Content\Shop.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Content.edmx.sql" />
