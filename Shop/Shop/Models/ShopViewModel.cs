@@ -53,6 +53,22 @@ namespace Shop.Models
             if (!string.IsNullOrEmpty(categoryId))
             {
                 products = context.Product.Include("ProductImages").Where(p => p.Category.Name == categoryId && p.Published);
+
+                //var arrProductIds = products.Select(p => p.Id).ToArray();
+                //foreach (var pId in arrProductIds)
+                //{
+                //    var pp = context.Product
+                        
+                //        .First(p => p.Id == pId);
+                //    pp.ProductAttributeValues.Load();
+                //    pp.ProductAttributeStaticValues.Load();
+                //    pp.Category.ProductAttributes.Load();
+                //    foreach (var attribute in pp.Category.ProductAttributes)
+                //    {
+                //        attribute.ProductAttributeValues.Load();
+                //        attribute.ProductAttributeStaticValues.Load();
+                //    }
+                //}
             }
 
             if (!string.IsNullOrEmpty(brandId))
