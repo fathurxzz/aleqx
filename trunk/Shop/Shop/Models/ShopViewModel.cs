@@ -45,7 +45,7 @@ namespace Shop.Models
                 }
                 else
                 {
-                    ChildCategories = context.Category.Include("Children").Where(c => c.Name == categoryId).First().Children.ToList();
+                    ChildCategories = context.Category.Include("Children").First(c => c.Name == categoryId).Children.ToList();
                 }
             }
 
