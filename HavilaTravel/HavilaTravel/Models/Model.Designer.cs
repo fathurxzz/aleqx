@@ -678,16 +678,14 @@ namespace HavilaTravel.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="description">Initial value of the Description property.</param>
-        /// <param name="price">Initial value of the Price property.</param>
         /// <param name="text">Initial value of the Text property.</param>
-        public static ActualTours CreateActualTours(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.String description, global::System.Int32 price, global::System.String text)
+        public static ActualTours CreateActualTours(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.String description, global::System.String text)
         {
             ActualTours actualTours = new ActualTours();
             actualTours.Id = id;
             actualTours.Title = title;
             actualTours.ImageSource = imageSource;
             actualTours.Description = description;
-            actualTours.Price = price;
             actualTours.Text = text;
             return actualTours;
         }
@@ -797,9 +795,9 @@ namespace HavilaTravel.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 Price
+        public global::System.String Price
         {
             get
             {
@@ -809,13 +807,13 @@ namespace HavilaTravel.Models
             {
                 OnPriceChanging(value);
                 ReportPropertyChanging("Price");
-                _Price = StructuralObject.SetValidValue(value);
+                _Price = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Price");
                 OnPriceChanged();
             }
         }
-        private global::System.Int32 _Price;
-        partial void OnPriceChanging(global::System.Int32 value);
+        private global::System.String _Price;
+        partial void OnPriceChanging(global::System.String value);
         partial void OnPriceChanged();
     
         /// <summary>
