@@ -97,13 +97,7 @@ Html.EnableClientValidation();
                     @Html.ValidationMessageFor(model => model.SeoKeywords)
                 </td>
             </tr>
-              <tr>
-                <td colspan="2">
-                Код погодного виджета:<br/>
-                    @Html.TextAreaFor(model => model.WeatherScript, new { @class = "ckeditor" })
-                    @Html.ValidationMessageFor(model => model.WeatherScript)
-                </td>
-            </tr>
+              
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />

@@ -88,6 +88,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                                                 "PlaceKind"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.WeatherScript = HttpUtility.HtmlDecode(form["WeatherScript"]);
                 content.Parent = parentContent;
                 context.AddToContent(content);
                 context.SaveChanges();
@@ -124,7 +125,7 @@ namespace HavilaTravel.Areas.Admin.Controllers
                                                 "ContentLevel"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
-                content.WeatherScript = HttpUtility.HtmlDecode(form["WeatherScript"]);
+                
                 context.AddToContent(content);
                 context.SaveChanges();
 
