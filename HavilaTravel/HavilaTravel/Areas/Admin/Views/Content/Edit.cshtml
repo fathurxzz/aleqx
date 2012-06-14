@@ -18,7 +18,7 @@ Html.EnableClientValidation();
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.ContentType)
     @Html.HiddenFor(model => model.ContentLevel)
-    @Html.HiddenFor(model=>model.PlaceKind)
+    @Html.HiddenFor(model => model.PlaceKind)
 
     <div class="adminEditContentContainer">
         <table class="adminEditContentTable">
@@ -100,14 +100,18 @@ Html.EnableClientValidation();
                     @Html.ValidationMessageFor(model => model.SeoKeywords)
                 </td>
             </tr>
-            <tr>
-                <td colspan="2">
+            @{
+    if (Model.PlaceKind == 3)
+    {
+        <tr>
+            <td colspan="2">
                 Код погодного виджета:<br/>
-                    @Html.TextAreaFor(model => model.WeatherScript, new { @class = "ckeditor" })
-                    @Html.ValidationMessageFor(model => model.WeatherScript)
-                </td>
-            </tr>
-
+                @Html.TextAreaFor(model => model.WeatherScript, new {@class = "ckeditor"})
+                @Html.ValidationMessageFor(model => model.WeatherScript)
+            </td>
+        </tr>
+    }
+            }
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />

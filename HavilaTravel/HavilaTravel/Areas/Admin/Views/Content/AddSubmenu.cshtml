@@ -13,7 +13,8 @@
 Html.EnableClientValidation();
     }
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     @Html.Hidden("parentId")
     @Html.HiddenFor(model => model.Id)
@@ -93,6 +94,18 @@ Html.EnableClientValidation();
                     @Html.ValidationMessageFor(model => model.SeoKeywords)
                 </td>
             </tr>
+            @{
+    if (Request.QueryString["placeKind"] == "3")
+    {
+        <tr>
+            <td colspan="2">
+                Код погодного виджета:<br/>
+                @Html.TextAreaFor(model => model.WeatherScript, new {@class = "ckeditor"})
+                @Html.ValidationMessageFor(model => model.WeatherScript)
+            </td>
+        </tr>
+    }
+            }
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
