@@ -35,7 +35,7 @@
             <div class="price">
                 @Model.Price.ToString("N") грн.
             </div>
-            @Html.ActionLink("Подробнее", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, new { @class = "details" })
+            @Html.ActionLink("Подробнее...", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, new { @class = "details" })
             <a href="#" class="addToCart" onclick="Shop.addToCart(@Model.Id)">В корзину</a>
         </div>
     </div>
