@@ -22,35 +22,35 @@
     @if (!string.IsNullOrEmpty(Model.Sign1))
     {
         <div class="tourSign">
-        @Model.Sign1
+        @Html.Raw(Model.Sign1)
         </div>
     }
     @if (!string.IsNullOrEmpty(Model.Sign2))
     {
         <div class="tourSign">
-        @Model.Sign2
+        @Html.Raw(Model.Sign2)
         </div>
     }
     @if (!string.IsNullOrEmpty(Model.Sign3))
     {
         <div class="tourSign">
-        @Model.Sign3
+        @Html.Raw(Model.Sign3)
         </div>
     }
     @if (!string.IsNullOrEmpty(Model.Sign4))
     {
         <div class="tourSign">
-        @Model.Sign4
+        @Html.Raw(Model.Sign4)
         </div>
     }
     @if (!string.IsNullOrEmpty(Model.Sign5))
     {
         <div class="tourSign">
-        @Model.Sign5
+        @Html.Raw(Model.Sign5)
         </div>
     }
     <div class=" tourSign">
-        Специальная цена: <span>@Model.Price</span>
+        Специальная цена: <span>@Html.Raw(Model.Price)</span>
     </div>
     <div style="height: 50px"></div>
 </div>
