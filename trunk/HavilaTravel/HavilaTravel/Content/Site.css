@@ -1031,7 +1031,7 @@ table.adminContentPreview th
     
     background: url('img/tour-check.gif') no-repeat;
     background-position: 0px 2px;
-    height: 18px;
+    /*height: 18px;*/
 }
 
 .tourSign span
