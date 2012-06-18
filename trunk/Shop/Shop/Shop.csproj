@@ -162,6 +162,8 @@
     <Content Include="Content\fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Content\img\about.gif" />
+    <Content Include="Content\img\bg-line-left.gif" />
+    <Content Include="Content\img\bg-line-right.gif" />
     <Content Include="Content\img\contacts.gif" />
     <Content Include="Content\img\delivery.gif" />
     <Content Include="Content\img\frame.png" />
