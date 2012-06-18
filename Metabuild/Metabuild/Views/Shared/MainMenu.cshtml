@@ -1,8 +1,50 @@
-﻿<div class="mainMenuItem">
+﻿@using Metabuild.Models
+@if (ViewBag.MenuList != null)
+        {
+            var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => (m.MenuLevel == 1 || m.MenuLevel == 0)).Select(m => m).FirstOrDefault();
+            if (menuItems != null)
+            {
+                foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+                {
+                    string selected = item.Selected ? "selected" : "";
+            
+                <div class="mainMenuItem @selected">
+                    @if (item.Current)
+                    {
+                        @item.Title
+                    }
+                    else
+                    {
+                        @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                    }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="sortOrder">@item.SortOrder</span>
+                        <br />
+                        @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
+                    }
+                </div>
+            
+                }
+                if (Request.IsAuthenticated)
+                {
+            @Html.ActionLink("Добавить", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink", style = "margin-left:20px" })
+                }
+            }
+        }
+
+
+
+
+@*<div class="mainMenuItem">
         <a href="#">перечень работ</a>
     </div>
     <div class="mainMenuItem">
         <a href="#">ценовая политика</a>
     </div>
-
+*@
 
