@@ -21,7 +21,7 @@
 #shoppingCart
 {
     float: right;
-    width: 120px;
+    width: 123px;
     height: 100px; 
     
     margin-left: 815px;
@@ -165,7 +165,7 @@
 }
 
 #shoppingCart .itemsContainer .title h3 {
-    background-color: #818284;
+    /*background-color: #818284;*/
 }
 
 .product
@@ -226,6 +226,9 @@
     color: #383838;
 }
 
+.productDetails .buttons a.addToCart {
+    margin-left: 105px !important;
+}
 
 
 .product .title
@@ -243,10 +246,11 @@
 
 .price
 {
-    float: left;
+    /*float: left;*/
     /*width: 100px;*/
     font-size: 20px;
     color:  rgb(22, 101, 167);
+    display: inline-block;
 }
 
 .productDetails .buttons
@@ -267,7 +271,8 @@ a.addToCart
     background-color: rgb(22, 101, 167);
     color: #fff !important;
     width: 70px;
-    display: inline-block;
+    position: absolute;
+    margin-left: 140px;
     padding: 5px 10px;
     text-transform: uppercase;
     text-decoration: none;
@@ -287,6 +292,11 @@ a.details
     font-size: 15px;
     margin-right: 20px;
     color: rgb(22, 101, 167) !important;
+    margin-top: 8px;
+    /*display: inline-block;
+    border: 1px solid red;*/
+    position: absolute;
+    
 }
 
 .productList a.details
@@ -391,7 +401,7 @@ img
     -webkit-border-radius: 8px 8px 8px 8px;
     -moz-border-radius: 8px 8px 8px 8px;
     padding-top: 35px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 
@@ -406,7 +416,7 @@ img
     position: absolute;
     margin-top: -50px;
     margin-left: 250px;
-    padding: 10px 0px;
+    padding: 7px 0px;
     width: 150px;
     
     background-color: #cde9f7;
@@ -441,13 +451,14 @@ img
 #search
 {
     float: left;
-    padding: 7px 10px 0 10px;
+    padding: 7px 9px 0 10px;
     height: 23px;
     background-color: #1665a7;
     color: #fff;
     border-radius: 8px 8px 0px 0px;
     -webkit-border-radius: 8px 8px 0px 0px;
     -moz-border-radius: 8px 8px 0px 0px;
+    font-family: Comic Sans MS;
 }
 
 #search input
