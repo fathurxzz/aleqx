@@ -11,6 +11,7 @@
 body 
 {
     background: url('img/top-bg.gif') repeat-x;
+    font-family: Arial;
 }
 
 
@@ -26,12 +27,9 @@ body
 
 #header
 {
-    
-    
     width: 1200px;
     position: relative;
     margin: 58px auto 0 auto;
-    
 }
 
 #mainMenu
@@ -41,6 +39,20 @@ body
     position: relative;
     margin: 0 auto;
     background: url('img/main-menu-bg.png') no-repeat;
+    
+}
+
+#mainMenu, #mainMenu a
+{
+    color: #999999;
+}
+
+
+.mainMenuItem
+{
+    display: inline-block;
+    padding: 12px 55px;
+    text-transform: uppercase;
 }
 
 #logo
@@ -69,9 +81,52 @@ body
     background: url('img/bottom-bg.gif') repeat-x;
 }
 
+
+#footerLine
+{
+    background: url('img/footer-bg.png') no-repeat;
+    height: 45px;
+    width: 1070px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 12px;
+    color: #cccccc;
+}
+
+.copy, .miller
+{
+    /*border: 1px solid red;*/
+    padding-top: 12px;
+}
+
+.copy
+{
+    position: absolute;
+    margin-left: 290px;
+}
+
+
+.miller
+{
+    
+    position: absolute;
+    margin-left: 550px;
+}
+
+.miller a
+{
+    color: #cccccc;
+}
+
+
 #main
 {
     margin-top: 100px;
+}
+
+.contentContainer
+{
+    margin-bottom: -200px;
 }
 
 .contentContainerTop, .contentContainerMiddle, .contentContainerBottom
@@ -108,13 +163,15 @@ body
 .title
 {
     
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: bold;
     text-transform: uppercase;
     margin: 0 auto;
     position: relative;
     text-align: center;
     background: url('img/title-bg.gif') no-repeat;
-    background-position:0 10px;
+    background-position:0 8px;
+    margin-bottom: 50px;
 }
 
 .title span
