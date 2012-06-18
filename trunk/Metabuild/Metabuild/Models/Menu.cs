@@ -62,7 +62,7 @@ namespace Metabuild.Models
 
         public static Menu GetTopLevelMenu(StructureContainer context, string selectedItemName)
         {
-            var contents = context.Content.Where(m => m.ContentLevel == 1 || m.ContentLevel == 0).Select(m => m).ToList();
+            var contents = context.Content.Where(m => m.ContentLevel == 1 || m.ContentLevel == 0).Where(c=>!c.MainPage).Select(m => m).ToList();
             var menu = GetMenuFromContext(contents, selectedItemName);
             return menu;
         }
