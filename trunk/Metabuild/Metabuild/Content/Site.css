@@ -1,0 +1,125 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.clear
+{
+    clear: both;
+}
+body 
+{
+    background: url('img/top-bg.gif') repeat-x;
+}
+
+
+.page
+{
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    min-height: 600px;
+}
+
+
+
+#header
+{
+    
+    
+    width: 1200px;
+    position: relative;
+    margin: 58px auto 0 auto;
+    
+}
+
+#mainMenu
+{
+    width: 549px;
+    height: 45px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/main-menu-bg.png') no-repeat;
+}
+
+#logo
+{
+    float: left;
+    background: url('img/logo.png') no-repeat;
+    width: 228px;
+    height: 45px;
+    margin-top: 2px;
+    margin-left: 50px;
+}
+
+#contacts
+{
+    position: absolute;
+    top: 0;
+    height: 45px;
+    width: 200px;
+    margin-left: 900px;
+    margin-top: 3px;
+}
+
+#footer
+{
+    height: 320px;
+    background: url('img/bottom-bg.gif') repeat-x;
+}
+
+#main
+{
+    margin-top: 100px;
+}
+
+.contentContainerTop, .contentContainerMiddle, .contentContainerBottom
+{
+    width: 700px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.contentContainerTop
+{
+    height: 34px;
+    background: url('img/mainframe-bg-top.png') no-repeat;
+    
+}
+
+.contentContainerMiddle
+{
+    background: url('img/mainframe-bg-middle.png') repeat-y;
+    
+}
+
+.contentContainerBottom
+{
+    height: 35px;
+    background: url('img/mainframe-bg-bottom.png') no-repeat;
+}
+
+.content
+{
+    padding: 30px 70px;
+}
+
+.title
+{
+    
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    background: url('img/title-bg.gif') no-repeat;
+    background-position:0 10px;
+}
+
+.title span
+{
+    
+    padding: 0 20px;
+    background-color: #fff;
+}
