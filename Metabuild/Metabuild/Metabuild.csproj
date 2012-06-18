@@ -70,6 +70,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\bottom-bg.gif" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\main-menu-bg.png" />
+    <Content Include="Content\img\mainframe-bg-bottom.png" />
+    <Content Include="Content\img\mainframe-bg-middle.png" />
+    <Content Include="Content\img\mainframe-bg-top.png" />
+    <Content Include="Content\img\title-bg.gif" />
+    <Content Include="Content\img\top-bg.gif" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
