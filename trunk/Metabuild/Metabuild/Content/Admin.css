@@ -44,10 +44,11 @@
 .adminLink
 {
     font-size: 11px !important;
-    color: #ffcc99 !important;
+    color: #ff0000 !important;
     font-family: Tahoma, Verdana !important;
     font-style: normal !important;
     font-weight: normal !important;
+    text-transform: none;
 }
 
 .adminLink:hover
@@ -60,11 +61,12 @@
     width: 30px;
 }
 
+/*
 .adminMenuItem
 {
     height: 90px !important;
 } 
-
+*/
 .logOnForm
 {
 	position:relative;

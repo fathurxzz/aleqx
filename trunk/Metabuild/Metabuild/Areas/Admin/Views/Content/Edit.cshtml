@@ -1,20 +1,21 @@
 ﻿@model Metabuild.Models.Content
 
 @{
-    ViewBag.Title = "Добавление страницы";
+    ViewBag.Title = "Редактирование страницы";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>
-    Добавление страницы</h2>
+    Редактирование страницы</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
-    @Html.Hidden("parentId")
-
+    @Html.HiddenFor(model => model.Id)
+    
     
     
     <div class="adminEditContentContainer">
@@ -84,14 +85,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @if (ViewData["parentId"] != null)
-            {
-                @Html.ActionLink("Отмена", "Index", "Home", new { Area = "", id = ViewData["parentId"] }, null)
-            }
-            else
-            {
-                @Html.ActionLink("Отмена", "Index", "Home", new { Area = "" }, null)
-            }
+            @Html.ActionLink("Отмена", "Index", "Home", new { Area = "", id = Model.Name }, null)
         </div>
     </div>
 }
@@ -103,4 +97,3 @@
     <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }
-
