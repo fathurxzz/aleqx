@@ -35,6 +35,7 @@ namespace Metabuild.Controllers
                 ViewBag.PageTitle = content.PageTitle;
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
+                ViewBag.isHomePage = content.MainPage;
 
                 return View(content);
             }

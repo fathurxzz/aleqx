@@ -19,21 +19,18 @@
                     }
                     @if (Request.IsAuthenticated)
                     {
-                        <span class="sortOrder">@item.SortOrder</span>
-                        <br />
+                        <br/>
                         @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                        <br />
+                        @Html.Raw("&nbsp;")
                         @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
-                        <br />
-                        @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить этот раздел?')" })
                     }
                 </div>
             
                 }
-                if (Request.IsAuthenticated)
+            @*    if (Request.IsAuthenticated)
                 {
             @Html.ActionLink("Добавить", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink", style = "margin-left:20px" })
-                }
+                }*@
             }
         }
 
