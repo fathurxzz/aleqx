@@ -15,3 +15,15 @@
 }
 
 @Html.Raw(Model.Text)
+
+
+
+
+@if (Request.IsAuthenticated)
+{
+<p>
+    @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+</p>
+}
+
+@Html.Partial("Gallery",Model.ContentImages)

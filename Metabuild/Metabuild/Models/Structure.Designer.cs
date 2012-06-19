@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("Structure", "ContentContent", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Metabuild.Models.Content), "Content1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Metabuild.Models.Content), true)]
+[assembly: EdmRelationshipAttribute("Structure", "ContentImageContent", "ContentImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Metabuild.Models.ContentImage), "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Metabuild.Models.Content), true)]
 
 #endregion
 
@@ -85,6 +86,22 @@ namespace Metabuild.Models
             }
         }
         private ObjectSet<Content> _Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ContentImage> ContentImageSet
+        {
+            get
+            {
+                if ((_ContentImageSet == null))
+                {
+                    _ContentImageSet = base.CreateObjectSet<ContentImage>("ContentImageSet");
+                }
+                return _ContentImageSet;
+            }
+        }
+        private ObjectSet<ContentImage> _ContentImageSet;
 
         #endregion
         #region AddTo Methods
@@ -95,6 +112,14 @@ namespace Metabuild.Models
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ContentImageSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContentImageSet(ContentImage contentImage)
+        {
+            base.AddObject("ContentImageSet", contentImage);
         }
 
         #endregion
@@ -468,6 +493,176 @@ namespace Metabuild.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Content>("Structure.ContentContent", "Content", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Structure", "ContentImageContent", "ContentImage")]
+        public EntityCollection<ContentImage> ContentImages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ContentImage>("Structure.ContentImageContent", "ContentImage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ContentImage>("Structure.ContentImageContent", "ContentImage", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Structure", Name="ContentImage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ContentImage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ContentImage object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="contentId">Initial value of the ContentId property.</param>
+        public static ContentImage CreateContentImage(global::System.Int32 id, global::System.String imageSource, global::System.Int32 contentId)
+        {
+            ContentImage contentImage = new ContentImage();
+            contentImage.Id = id;
+            contentImage.ImageSource = imageSource;
+            contentImage.ContentId = contentId;
+            return contentImage;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ContentId
+        {
+            get
+            {
+                return _ContentId;
+            }
+            set
+            {
+                OnContentIdChanging(value);
+                ReportPropertyChanging("ContentId");
+                _ContentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentId");
+                OnContentIdChanged();
+            }
+        }
+        private global::System.Int32 _ContentId;
+        partial void OnContentIdChanging(global::System.Int32 value);
+        partial void OnContentIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Structure", "ContentImageContent", "Content")]
+        public Content Content
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Structure.ContentImageContent", "Content").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Structure.ContentImageContent", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Structure.ContentImageContent", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Content>("Structure.ContentImageContent", "Content", value);
                 }
             }
         }

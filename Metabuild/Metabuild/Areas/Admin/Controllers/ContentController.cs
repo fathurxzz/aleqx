@@ -84,5 +84,19 @@ namespace Metabuild.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+
+            return RedirectToAction("Index", "Home", new { id = "", area = "" });
+        }
+
+        
+        public ActionResult AddImage()
+        {
+            return View();
+        }
+
+        
     }
 }
