@@ -8,7 +8,7 @@
         
         @if (Model.BannerType == 3)
         {
-            <div class="hotTour">@Html.ActionLink("Горящий тур","Index","Home",new{id=Model.ContentName},null):</div>
+            <div class="hotTour">@Html.ActionLink("Горящий тур","Index","Place",new{id=Model.ContentName},null):</div>
         }
         else if (Model.BannerType == 2)
         {
@@ -18,13 +18,13 @@
         
         
         </div>
-        <div class="topTitle">@Html.ActionLink(Model.Title,"Index","Home",new{id=Model.ContentName},null)</div>
+        <div class="topTitle">@Html.ActionLink(Model.Title,"Index","Place",new{id=Model.ContentName},null)</div>
         <div class="picture">
             <div class="price price@{@Model.BannerType }">
-                @Model.Price
+                @Html.Raw(Model.Price)
             </div>
 
-            @Html.Raw( Html.ActionLink("[Image]", "Index", "Home", new { id = Model.ContentName }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Banners/", Model.ImageSource, "tourBanner", "", "")))
+            @Html.Raw( Html.ActionLink("[Image]", "Index", "Place", new { id = Model.ContentName }, null).ToString().Replace("[Image]", Html.CachedImage("~/Content/Banners/", Model.ImageSource, "tourBanner", "", "")))
 
             
         </div>
