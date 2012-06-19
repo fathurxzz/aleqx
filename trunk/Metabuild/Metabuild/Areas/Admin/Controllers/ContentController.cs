@@ -42,7 +42,10 @@ namespace Metabuild.Areas.Admin.Controllers
                                                 "SeoKeywords"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                
+                context.AddToContent(content);
 
+                context.SaveChanges();
 
                 return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
             }

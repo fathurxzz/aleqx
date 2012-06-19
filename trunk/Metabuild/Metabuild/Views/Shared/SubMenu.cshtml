@@ -1,0 +1,41 @@
+﻿@using Metabuild.Models
+@if (ViewBag.MenuList != null)
+{
+    var menuItems = ((List<Menu>)ViewBag.MenuList).Where(m => m.MenuLevel == 2).Select(m => m).FirstOrDefault();
+    if (menuItems != null)
+    {
+        
+    <div class="clear">
+    </div>
+    
+        <table id="subMenu">
+            <tr>
+                @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
+                {
+                    string selected = item.Selected ? "selected" : "";
+                    <td>
+                        <div class="subMenuItem @selected">
+                            @if (item.Current)
+                            {
+                                @item.Title
+                            }
+                            else
+                            {
+                                @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+                            }
+                            @if (Request.IsAuthenticated)
+                            {
+                                <br />
+                                @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            }
+                        </div>
+                    </td>    
+                }
+                @*    if (Request.IsAuthenticated)
+                {
+            @Html.ActionLink("Добавить", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink", style = "margin-left:20px" })
+                }*@
+            </tr>
+        </table>
+    }
+}
