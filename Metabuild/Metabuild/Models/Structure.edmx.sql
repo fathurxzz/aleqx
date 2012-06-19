@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 06/19/2012 13:39:57
+-- Date Created: 06/19/2012 14:33:03
 -- Generated from EDMX file: D:\projects\Metabuild\Metabuild\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -20,12 +20,14 @@ USE `metalbuild`;
 -- --------------------------------------------------
 
 --    ALTER TABLE `Content` DROP CONSTRAINT `FK_ContentContent`;
+--    ALTER TABLE `ContentImageSet` DROP CONSTRAINT `FK_ContentImageContent`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `ContentImageSet`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -48,9 +50,9 @@ CREATE TABLE `Content` (
     `ContentLevel` int  NOT NULL
 );
 
--- Creating table 'ContentImageSet'
+-- Creating table 'ContentImage'
 
-CREATE TABLE `ContentImageSet` (
+CREATE TABLE `ContentImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `ImageSource` longtext  NOT NULL,
     `ContentId` int  NOT NULL
@@ -83,9 +85,9 @@ CREATE INDEX `IX_FK_ContentContent`
     ON `Content`
     (`ContentId`);
 
--- Creating foreign key on `ContentId` in table 'ContentImageSet'
+-- Creating foreign key on `ContentId` in table 'ContentImage'
 
-ALTER TABLE `ContentImageSet`
+ALTER TABLE `ContentImage`
 ADD CONSTRAINT `FK_ContentImageContent`
     FOREIGN KEY (`ContentId`)
     REFERENCES `Content`
@@ -95,7 +97,7 @@ ADD CONSTRAINT `FK_ContentImageContent`
 -- Creating non-clustered index for FOREIGN KEY 'FK_ContentImageContent'
 
 CREATE INDEX `IX_FK_ContentImageContent` 
-    ON `ContentImageSet`
+    ON `ContentImage`
     (`ContentId`);
 
 -- --------------------------------------------------
