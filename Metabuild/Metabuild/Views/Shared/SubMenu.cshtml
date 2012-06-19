@@ -27,6 +27,8 @@
                             {
                                 <br />
                                 @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                <br />
+                                @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу контента? Таже будут удалены связанные с ней изображения')" })
                             }
                         </div>
                     </td>    
