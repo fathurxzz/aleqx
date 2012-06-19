@@ -3,24 +3,23 @@
 @if (Model.Count() > 0)
 {
     <div id="gallery">
+
         @foreach (var item in Model)
         {
            
             <div class="galleryImage">
-             @if (Request.IsAuthenticated)
-            {
-                @Html.ActionLink("Удалить", "DeleteImage", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                <br />
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Удалить", "DeleteImage", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                    <br />
                 }
-                @*@Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Albums", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, "thumbnail1", ScaleMode.Corp)))*@
-                 
-
-                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@item.ImageSource" class="fancy">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "galleryThumbnail", ScaleMode.Corp))
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@item.ImageSource" class="fancy">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, "galleryThumbnail", ScaleMode.Corp))
                 </a>
             </div>
             
         }
-        <div class="clear"></div>
+        <div class="clear">
+        </div>
     </div>
 }

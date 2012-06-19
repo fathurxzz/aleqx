@@ -89,8 +89,27 @@ namespace Metabuild.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
+            using (var context = new StructureContainer())
+            {
+                var content = context.Content.Include("ContentImages").First(c => c.Id == id);
+                while (content.ContentImages.Any())
+                {
+                    var image = content.ContentImages.First();
+                    if (!string.IsNullOrEmpty(image.ImageSource))
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", image.ImageSource);
 
-            return RedirectToAction("Index", "Home", new { id = "", area = "" });
+                    }
+                    context.DeleteObject(image);
+                }
+
+                context.DeleteObject(content);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new {id = "", area = ""});
+            }
         }
 
 
@@ -135,5 +154,24 @@ namespace Metabuild.Areas.Admin.Controllers
         }
 
         
+        public ActionResult DeleteImage(int id)
+        {
+            using (var context = new StructureContainer())
+            {
+                var image = context.ContentImage.Include("Content").First(ci => ci.Id == id);
+                var content = image.Content;
+                if (!string.IsNullOrEmpty(image.ImageSource))
+                {
+                    IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
+                    IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", image.ImageSource);
+
+                }
+                context.DeleteObject(image);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
+            }
+        }
+
     }
 }
