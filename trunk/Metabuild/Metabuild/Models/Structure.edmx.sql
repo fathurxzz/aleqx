@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 06/18/2012 19:00:58
+-- Date Created: 06/19/2012 13:39:57
 -- Generated from EDMX file: D:\projects\Metabuild\Metabuild\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -48,6 +48,14 @@ CREATE TABLE `Content` (
     `ContentLevel` int  NOT NULL
 );
 
+-- Creating table 'ContentImageSet'
+
+CREATE TABLE `ContentImageSet` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ImageSource` longtext  NOT NULL,
+    `ContentId` int  NOT NULL
+);
+
 
 
 -- --------------------------------------------------
@@ -73,6 +81,21 @@ ADD CONSTRAINT `FK_ContentContent`
 
 CREATE INDEX `IX_FK_ContentContent` 
     ON `Content`
+    (`ContentId`);
+
+-- Creating foreign key on `ContentId` in table 'ContentImageSet'
+
+ALTER TABLE `ContentImageSet`
+ADD CONSTRAINT `FK_ContentImageContent`
+    FOREIGN KEY (`ContentId`)
+    REFERENCES `Content`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ContentImageContent'
+
+CREATE INDEX `IX_FK_ContentImageContent` 
+    ON `ContentImageSet`
     (`ContentId`);
 
 -- --------------------------------------------------

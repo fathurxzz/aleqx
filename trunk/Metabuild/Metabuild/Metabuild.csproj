@@ -176,6 +176,7 @@
     <None Include="Content\fonts\PFBeauSansPro-Reg.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-SeBold.ttf" />
     <Content Include="Views\Shared\SubMenu.cshtml" />
+    <Content Include="Views\Shared\Gallery.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

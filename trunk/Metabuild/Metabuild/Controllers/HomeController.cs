@@ -18,13 +18,13 @@ namespace Metabuild.Controllers
                 ViewBag.MenuList = menuList;
 
 
-                var content = context.Content
+                var content = context.Content.Include("ContentImages")
                     .Include("Parent").Include("Children")
                     .Where(c => c.Name == id)
                     .FirstOrDefault();
 
                 if (content == null)
-                    content = context.Content
+                    content = context.Content.Include("ContentImages")
                         .Include("Parent").Include("Children")
                         .Where(c => c.MainPage)
                         .First();
