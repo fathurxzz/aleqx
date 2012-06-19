@@ -90,18 +90,18 @@ namespace Metabuild.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ContentImage> ContentImageSet
+        public ObjectSet<ContentImage> ContentImage
         {
             get
             {
-                if ((_ContentImageSet == null))
+                if ((_ContentImage == null))
                 {
-                    _ContentImageSet = base.CreateObjectSet<ContentImage>("ContentImageSet");
+                    _ContentImage = base.CreateObjectSet<ContentImage>("ContentImage");
                 }
-                return _ContentImageSet;
+                return _ContentImage;
             }
         }
-        private ObjectSet<ContentImage> _ContentImageSet;
+        private ObjectSet<ContentImage> _ContentImage;
 
         #endregion
         #region AddTo Methods
@@ -115,11 +115,11 @@ namespace Metabuild.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ContentImageSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ContentImage EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToContentImageSet(ContentImage contentImage)
+        public void AddToContentImage(ContentImage contentImage)
         {
-            base.AddObject("ContentImageSet", contentImage);
+            base.AddObject("ContentImage", contentImage);
         }
 
         #endregion

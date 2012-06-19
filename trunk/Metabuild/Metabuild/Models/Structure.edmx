@@ -7,13 +7,13 @@
     <Schema Namespace="Structure.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="StructureStoreContainer">
     <EntitySet Name="Content" EntityType="Structure.Store.Content" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ContentImageSet" EntityType="Structure.Store.ContentImageSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentImage" EntityType="Structure.Store.ContentImage" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ContentContent" Association="Structure.Store.ContentContent">
       <End Role="Content" EntitySet="Content" />
       <End Role="Content1" EntitySet="Content" />
     </AssociationSet>
     <AssociationSet Name="ContentImageContent" Association="Structure.Store.ContentImageContent">
-      <End Role="ContentImage" EntitySet="ContentImageSet" />
+      <End Role="ContentImage" EntitySet="ContentImage" />
       <End Role="Content" EntitySet="Content" />
     </AssociationSet>
   </EntityContainer>
@@ -33,7 +33,7 @@
     <Property Name="ContentId" Type="int" Nullable="true" />
     <Property Name="ContentLevel" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="ContentImageSet">
+  <EntityType Name="ContentImage">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -54,7 +54,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="ContentImageContent">
-    <End Role="ContentImage" Type="Structure.Store.ContentImageSet" Multiplicity="*" />
+    <End Role="ContentImage" Type="Structure.Store.ContentImage" Multiplicity="*" />
     <End Role="Content" Type="Structure.Store.Content" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Content">
@@ -75,9 +75,9 @@
             <End Role="Content" EntitySet="Content" />
             <End Role="Content1" EntitySet="Content" />
           </AssociationSet>
-          <EntitySet Name="ContentImageSet" EntityType="Structure.ContentImage" />
+          <EntitySet Name="ContentImage" EntityType="Structure.ContentImage" />
           <AssociationSet Name="ContentImageContent" Association="Structure.ContentImageContent">
-            <End Role="ContentImage" EntitySet="ContentImageSet" />
+            <End Role="ContentImage" EntitySet="ContentImage" />
             <End Role="Content" EntitySet="Content" />
           </AssociationSet>
         </EntityContainer>
@@ -156,9 +156,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ContentImageSet">
+    <EntitySetMapping Name="ContentImage">
       <EntityTypeMapping TypeName="IsTypeOf(Structure.ContentImage)">
-        <MappingFragment StoreEntitySet="ContentImageSet">
+        <MappingFragment StoreEntitySet="ContentImage">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="ContentId" ColumnName="ContentId" />

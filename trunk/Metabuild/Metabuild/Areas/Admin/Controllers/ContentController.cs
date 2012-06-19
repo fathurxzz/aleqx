@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Metabuild.Helpers;
 using Metabuild.Models;
 
 namespace Metabuild.Areas.Admin.Controllers
@@ -91,10 +93,45 @@ namespace Metabuild.Areas.Admin.Controllers
             return RedirectToAction("Index", "Home", new { id = "", area = "" });
         }
 
-        
-        public ActionResult AddImage()
+
+        public ActionResult AddImage(int id)
         {
-            return View();
+            using (var context = new StructureContainer())
+            {
+                ViewBag.ContentName = context.Content.First(c => c.Id == id).Name;
+                ViewBag.parentId = id;
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(int parentId, IEnumerable<HttpPostedFileBase> fileUpload, IList<string> fileTitles)
+        {
+            using (var context = new StructureContainer())
+            {
+                var content = context.Content.Where(a => a.Id == parentId).First();
+
+
+                foreach (var file in fileUpload)
+                {
+
+                    if (file == null) continue;
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+
+                    content.ContentImages.Add(new ContentImage
+                    {
+                        ImageSource = fileName,
+                    });
+                    context.SaveChanges();
+                }
+
+
+                return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
+            }
         }
 
         
