@@ -11,33 +11,45 @@ namespace Metabuild.Models
 
         private static string _contentName;
 
+        //public static List<Menu> GetMenuList(string contentName, StructureContainer context)
+        //{
+        //    _contentName = contentName;
+        //    var result = new List<Menu>();
+        //    string selectedItemName = null;
+        //    var content = context.Content.Include("Parent").Include("Children").Where(c => c.Name == contentName).FirstOrDefault();
+        //    if (content != null)
+        //    {
+        //        if (content.Children.Count > 0)
+        //        {
+        //            result.Add(GetMenuFromContext(content.Children.ToList(), null));
+        //        }
+
+        //        while (content.Parent != null)
+        //        {
+        //            selectedItemName = content.Name;
+        //            var parentId = content.Parent.Id;
+        //            content = context.Content.Include("Parent").Include("Children").Where(c => c.Id == parentId).First();
+        //            result.Add(GetMenuFromContext(content.Children.ToList(), selectedItemName));
+        //        }
+        //        selectedItemName = content.Name;
+        //    }
+
+        //    result.Add(GetTopLevelMenu(context, selectedItemName));
+
+        //    return result;
+        //}
+
+
         public static List<Menu> GetMenuList(string contentName, StructureContainer context)
         {
             _contentName = contentName;
             var result = new List<Menu>();
-            string selectedItemName = null;
-            var content = context.Content.Include("Parent").Include("Children").Where(c => c.Name == contentName).FirstOrDefault();
-            if (content != null)
-            {
-                if (content.Children.Count > 0)
-                {
-                    result.Add(GetMenuFromContext(content.Children.ToList(), null));
-                }
-
-                while (content.Parent != null)
-                {
-                    selectedItemName = content.Name;
-                    var parentId = content.Parent.Id;
-                    content = context.Content.Include("Parent").Include("Children").Where(c => c.Id == parentId).First();
-                    result.Add(GetMenuFromContext(content.Children.ToList(), selectedItemName));
-                }
-                selectedItemName = content.Name;
-            }
-
-            result.Add(GetTopLevelMenu(context, selectedItemName));
-
+            var submenuItems = context.Content.Where(c => c.ContentLevel == 2);
+            result.Add(GetMenuFromContext(submenuItems.ToList(), null));
+            result.Add(GetTopLevelMenu(context, contentName));
             return result;
         }
+
 
         public static Menu GetMenuFromContext(List<Content> contents, string selectedItemName)
         {

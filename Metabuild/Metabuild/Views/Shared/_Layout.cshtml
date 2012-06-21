@@ -11,7 +11,9 @@
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     <script type="text/javascript">
-        var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+        var isHomePage  =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+        var showSubMenu = @(ViewBag.showSubMenu != null ? (ViewBag.showSubMenu).ToString().ToLowerInvariant() : "false");
+        
         BasePageExtender.initialize();
         
         
