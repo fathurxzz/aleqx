@@ -18,7 +18,7 @@
                         <div class="subMenuItem @selected">
                             @if (item.Current)
                             {
-                                @item.Title
+                                <b>@item.Title</b>
                             }
                             else
                             {
@@ -26,9 +26,9 @@
                             }
                             @if (Request.IsAuthenticated)
                             {
-                                <br />
+@*                                <br />
                                 @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                <br />
+*@                                <br />
                                 @Html.ActionLink("Удалить", "Delete", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу контента? Таже будут удалены связанные с ней изображения')" })
                             }
                         </div>
