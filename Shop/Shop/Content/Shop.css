@@ -416,11 +416,15 @@ img
     position: absolute;
     margin-top: -50px;
     margin-left: 250px;
-    padding: 7px 0px;
-    width: 150px;
     
+    /*padding: 7px 0px;*/
+    height:34px;
+    line-height:34px;
+    
+    width: 150px;
+    font-family: Comic Sans MS;
     background-color: #cde9f7;
-    text-transform: uppercase;
+    
 }
 
 .childCategory
