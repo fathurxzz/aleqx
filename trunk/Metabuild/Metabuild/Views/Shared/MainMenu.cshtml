@@ -25,17 +25,19 @@
         }
         @if (Request.IsAuthenticated)
         {
-            if (item.Id!=2)
-            {
-                <br />
-                @Html.ActionLink("Редактировать", "Edit", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+            <br />
+            @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })    
+            
                 @Html.Raw("&nbsp;")
-                @Html.ActionLink("+Подраздел", "Add", "Content", new {Area = "Admin", parentId = item.Id}, new {@class = "adminLink"})
-            }
-            else
-            {
-                <br /><br />
-            }
+           if (item.Id != 2)
+           {
+
+           @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
+           }
+           else
+           {
+                <br />
+           }
         }
     </div>
             

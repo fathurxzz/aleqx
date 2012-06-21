@@ -7,21 +7,28 @@
     </div>
 }
 
-@if (Request.IsAuthenticated&&Model.MainPage)
+@*@if (Request.IsAuthenticated&&Model.MainPage)
 {
     <div>
     @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
     </div>
-}
+}*@
 
 @Html.Raw(Model.Text)
 
-
-
+@if (Request.IsAuthenticated)
+{
+    <br />
+@Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+    <br/>
+}
 
 @if (Request.IsAuthenticated)
 {
+    
 <p>
+    
+    
     @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { Area = "Admin", id = Model.Id }, new { @class = "adminLink" })
 </p>
 }
