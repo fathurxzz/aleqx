@@ -20,7 +20,21 @@
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
             }
 
+            if (!window.showAllBrandList) {
+                $("#brandsList").css("height", "311px");
+                $("#brandsList").css("overflow", "hidden");
+            } else {
+                $("#moreBrands").css("display", "none");
+            }
+
             //            $("#searchField").watermark({ html: window.wordEnter, cls: "watermark small" });
+
+
+            $("#moreBrands").click(function () {
+                $("#brandsList").css("height", "auto");
+                $("#moreBrands").css("display", "none");
+            });
+
 
         });
     }

@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<Shop.Models.Brand>
-
-<ul>
-    @foreach (var item in Model)
-    {
-        string className = item.Selected ? "selected" : "";
-        <li>
-            @Html.ActionLink(item.Title, "Brands", "Shop", new { id = item.Name }, new { @class = className })
-        </li>
-    }
-</ul>
+<div id="brandsList">
+    <ul>
+        @foreach (var item in Model)
+        {
+            string className = item.Selected ? "selected" : "";
+            <li>
+                @Html.ActionLink(item.Title, "Brands", "Shop", new { id = item.Name }, new { @class = className })
+            </li>
+        }
+    </ul>
+</div>
+<div id="moreBrands">
+    <span>Весь список...</span>
+</div>
