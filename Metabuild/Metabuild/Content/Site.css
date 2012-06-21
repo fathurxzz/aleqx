@@ -258,3 +258,8 @@ body
 {
     display: none;
 }
+
+.sideItem
+{
+    width: 20px;
+}

@@ -10,6 +10,7 @@
     
         <table id="subMenu">
             <tr>
+            <td class="sideItem"></td>
                 @foreach (var item in menuItems.OrderBy(m => m.SortOrder))
                 {
                     string selected = item.Selected ? "selected" : "";
@@ -37,6 +38,7 @@
                 {
             @Html.ActionLink("Добавить", "Add", "Content", new { Area = "Admin" }, new { @class = "adminLink", style = "margin-left:20px" })
                 }*@
+                <td class="sideItem"></td>
             </tr>
         </table>
     }
