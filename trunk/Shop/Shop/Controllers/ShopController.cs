@@ -39,6 +39,7 @@ namespace Shop.Controllers
                 ViewBag.Page = page ?? 0;
                 ViewBag.ActionId = id;
                 ViewBag.ActionName = "Brands";
+                ViewBag.ShowAllBrandsList = true;
                 return View("Products", model);
             }
         }

@@ -13,6 +13,7 @@
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     <script type="text/javascript">
         var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+        var showAllBrandList =  @(ViewBag.ShowAllBrandsList != null ? (ViewBag.ShowAllBrandsList).ToString().ToLowerInvariant() : "false");
         BasePageExtender.initialize();
     </script>
     @RenderSection("Includes", false)
