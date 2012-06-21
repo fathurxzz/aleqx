@@ -15,7 +15,8 @@
 
                 if ($("#subMenu").hasClass("hide")) {
                     $("#subMenu").removeClass("hide");
-                    /*$("#worksLink").css("color", "#fff");*/
+                    $("#worksLink").css("color", "#fff");
+                    $("#worksLink").css("text-decoration", "none");
                     
                     
                 }
