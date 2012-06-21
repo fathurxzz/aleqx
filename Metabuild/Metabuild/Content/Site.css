@@ -203,7 +203,7 @@ body
 
 .bottomLine
 {
-    margin: 50px auto 0 auto;
+    margin: 30px auto 0 auto;
     position: relative;
     background: url('img/title-bg.gif') no-repeat;
     width: 551px;
@@ -246,6 +246,7 @@ body
 #gallery
 {
     margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 .galleryImage
