@@ -5,8 +5,6 @@
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
             }
 
-            //$("#subMenu").css("display", "none");
-
             if (!window.showSubMenu) {
                 $("#subMenu").addClass("hide");
             }
@@ -17,21 +15,9 @@
                     $("#subMenu").removeClass("hide");
                     $("#worksLink").css("color", "#fff");
                     $("#worksLink").css("text-decoration", "none");
-                    
-                    
+                    $("#subMenu").show("blind");
                 }
-                //                else {
-                //                    $("#subMenu").addClass("hide");
-                //                }
-
-
             });
-
-
-
         });
-
-
-
     }
 };
