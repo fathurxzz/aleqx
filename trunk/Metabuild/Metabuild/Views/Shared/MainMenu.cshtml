@@ -15,14 +15,27 @@
         }
         else
         {
-            @Html.ActionLink(item.Title, "Index", "Home", new { id = item.Name }, null)
+            if (item.Id==2)
+            {
+                <a href="#" id="worksLink">перечень работ</a>
+            }else
+            {
+                @Html.ActionLink(item.Title, "Index", "Home", new {id = item.Name}, null)
+            }
         }
         @if (Request.IsAuthenticated)
         {
-            <br />
-            @Html.ActionLink("Редактировать", "Edit", "Content", new { Area = "Admin", id = item.Id }, new { @class = "adminLink" })
-            @Html.Raw("&nbsp;")
-            @Html.ActionLink("+Подраздел", "Add", "Content", new { Area = "Admin", parentId = item.Id }, new { @class = "adminLink" })
+            if (item.Id!=2)
+            {
+                <br />
+                @Html.ActionLink("Редактировать", "Edit", "Content", new {Area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                @Html.Raw("&nbsp;")
+                @Html.ActionLink("+Подраздел", "Add", "Content", new {Area = "Admin", parentId = item.Id}, new {@class = "adminLink"})
+            }
+            else
+            {
+                <br /><br />
+            }
         }
     </div>
             

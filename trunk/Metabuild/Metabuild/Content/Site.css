@@ -253,3 +253,8 @@ body
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
 }
+
+.hide
+{
+    display: none;
+}

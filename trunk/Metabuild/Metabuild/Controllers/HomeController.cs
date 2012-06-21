@@ -36,6 +36,8 @@ namespace Metabuild.Controllers
                 ViewBag.SeoDescription = content.SeoDescription;
                 ViewBag.SeoKeywords = content.SeoKeywords;
                 ViewBag.isHomePage = content.MainPage;
+                
+                ViewBag.showSubMenu = content.ContentLevel == 2;
 
                 return View(content);
             }
