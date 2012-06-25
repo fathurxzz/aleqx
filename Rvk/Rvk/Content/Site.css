@@ -21,18 +21,23 @@ body
     padding-top: 1px;
 }
 
-.highlightbg
-{
-    background-image: url('img/bg-highlighted.jpg') !important;
-}
-
 .content
 {
     /*border: 1px solid #fff;*/
-    height: 747px;
+    height: 748px;
     margin: 95px auto 0 auto;
     width: 1260px;
     position: relative;
+}
+
+#max
+{
+    width: 488px;
+    height: 746px;
+    background-image: url('img/max.jpg');
+    position: absolute;
+    margin-left: 443px;
+    display: none;
 }
 
 #banner-top, #banner-top1, #banner-top2, #banner-top3
