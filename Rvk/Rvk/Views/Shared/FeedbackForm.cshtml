@@ -1,0 +1,50 @@
+﻿@model Rvk.Models.FeedbackFormModel
+
+@using (Html.BeginForm())
+{
+<div class="feedBackForm">
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>@Html.LabelFor(model => model.Name)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Name, new {style="width:280px;" })<br />
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Email, new { style = "width:280px;" })<br />
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Text)
+            </td>
+            <td>
+                @Html.TextAreaFor(model => model.Text, new { rows="10", cols="33" })<br />
+                @Html.ValidationMessageFor(model => model.Text)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-top:20px;">@Html.LabelFor(model => model.AntiSpamAnswer)</td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.AntiSpamAnswer, new { style = "width:280px;" })<br />
+                @Html.ValidationMessageFor(model => model.AntiSpamAnswer)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center; padding-top:10px;">
+                <input type="submit" value="Отправить" />
+            </td>
+        </tr>
+    </table>
+    </div>
+}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Rvk.Models;
 
 namespace Rvk.Controllers
 {
@@ -10,14 +11,25 @@ namespace Rvk.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult FeedbackForm()
         {
-            return View();
+            return PartialView("FeedbackForm");
+        }
+
+        [HttpPost]
+        public ActionResult FeedbackForm(FeedbackFormModel feedbackFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return PartialView("FeedbackForm", feedbackFormModel);
+            }
         }
     }
 }
