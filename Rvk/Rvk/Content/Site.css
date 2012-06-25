@@ -15,6 +15,10 @@ src: url('fonts/PFAgoraSansPro-Italic.ttf');
     padding: 0;
 }
 
+html {
+    background-color: #1c1c1c;
+}
+
 body
 {
     background-color: #1c1c1c;
