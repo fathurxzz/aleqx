@@ -28,12 +28,12 @@
                     </div>
                 </div>
             </div>
-            @RenderBody()
             <div id="banner-bottom">
                 <div id="firstSign">
                     Будьте в курсе событий:</div>
                 <div id="inputContainer">
-                    @Html.TextBox("subscr", "Введите email и нажмите enter")
+                @RenderBody()
+                    
                 </div>
                 <div id="secondSign">
                     Задайте свой вопрос через<br />

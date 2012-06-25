@@ -24,7 +24,7 @@
 Html.EnableClientValidation();
     }
 
-@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "fbclose()" }))
+@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "fbclose()"}))
 {
 <div class="feedBackForm">
     @Html.ValidationSummary(true)

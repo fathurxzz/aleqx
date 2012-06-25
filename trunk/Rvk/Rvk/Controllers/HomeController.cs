@@ -31,5 +31,12 @@ namespace Rvk.Controllers
             
             //Response.Write("<script>window.top.location.href=window.top.location.href</script>");
         }
+
+        [HttpPost]
+        [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
+        public void Subscribe()
+        {
+
+        }
     }
 }
