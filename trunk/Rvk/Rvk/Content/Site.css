@@ -21,6 +21,11 @@ body
     padding-top: 1px;
 }
 
+.highlightbg
+{
+    background-image: url('img/bg-highlighted.jpg') !important;
+}
+
 .content
 {
     /*border: 1px solid #fff;*/
