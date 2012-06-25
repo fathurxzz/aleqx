@@ -13,6 +13,7 @@ namespace Rvk.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Рывок";
             return View();
         }
 
@@ -25,11 +26,7 @@ namespace Rvk.Controllers
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
         public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            //MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
-            
-            //Response.Write("<script>window.top.$.fancybox.close()</script>");
-            
-            //Response.Write("<script>window.top.location.href=window.top.location.href</script>");
+            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("kushko.alex@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
         }
 
         [HttpPost]
