@@ -66,6 +66,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\FeedbackFormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +100,7 @@
     <Content Include="Content\img\banner-top3.jpg" />
     <Content Include="Content\img\bg-highlighted.jpg" />
     <Content Include="Content\img\bg.jpg" />
+    <Content Include="Content\MailTemplates\FeedbackTemplate.htm" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />

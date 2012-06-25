@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Rvk.Models
 {
-    public class FeedbackFormModel : IValidatableObject
+    public class FeedbackFormModel
     {
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Имя")]
@@ -21,15 +21,7 @@ namespace Rvk.Models
 
         [DisplayName("Антиспам-тест: сколько будет два плюс два? (вводите цифрой)")]
         [Required(ErrorMessage = "Введите ответ!")]
+        [RegularExpression(@"4", ErrorMessage = "Введите правильный ответ")]
         public string AntiSpamAnswer { get; set; }
-
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (AntiSpamAnswer != "4")
-            {
-                yield return new ValidationResult("Введите правильный ответ", new string[] { "AntiSpamAnswer" });
-            }
-        }
     }
 }

@@ -30,18 +30,17 @@
             </div>
             @RenderBody()
             <div id="banner-bottom">
-            <div id="firstSign">Будьте в курсе событий:</div>
-            <div id="inputContainer">
-            @Html.TextBox("subscr","Введите email и нажмите enter")
-            </div>
-
-            <div id="secondSign">
-            Задайте свой вопрос через<br/>
-            @Html.ActionLink("форму обратной связи", "FeedbackForm","Home",null,new{@class="fancy"})<br/>
-            или по телефону<br/>
-            <b><span> (067)</span> 781-10-55</b>
-            </div>
-
+                <div id="firstSign">
+                    Будьте в курсе событий:</div>
+                <div id="inputContainer">
+                    @Html.TextBox("subscr", "Введите email и нажмите enter")
+                </div>
+                <div id="secondSign">
+                    Задайте свой вопрос через<br />
+                    @Html.ActionLink("форму обратной связи", "FeedbackForm", "Home", null, new { @class = "fancy" })<br />
+                    или по телефону<br />
+                    <b><span>(067)</span> 781-10-55</b>
+                </div>
             </div>
         </div>
     </div>
