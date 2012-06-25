@@ -67,20 +67,52 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\FeedbackFormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox-x.png" />
+    <Content Include="Content\fancybox\fancybox-y.png" />
+    <Content Include="Content\fancybox\fancybox.png" />
+    <Content Include="Content\fancybox\fancy_close.png" />
+    <Content Include="Content\fancybox\fancy_loading.png" />
+    <Content Include="Content\fancybox\fancy_nav_left.png" />
+    <Content Include="Content\fancybox\fancy_nav_right.png" />
+    <Content Include="Content\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\fancybox\fancy_title_left.png" />
+    <Content Include="Content\fancybox\fancy_title_main.png" />
+    <Content Include="Content\fancybox\fancy_title_over.png" />
+    <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\img\banner-bottom.jpg" />
+    <Content Include="Content\img\banner-top0.jpg" />
+    <Content Include="Content\img\banner-top1.jpg" />
+    <Content Include="Content\img\banner-top2.jpg" />
+    <Content Include="Content\img\banner-top3.jpg" />
+    <Content Include="Content\img\bg-highlighted.jpg" />
+    <Content Include="Content\img\bg.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.21.custom.min.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\PageScripts.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -104,7 +136,6 @@
     <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
@@ -113,9 +144,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\FeedbackForm.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
