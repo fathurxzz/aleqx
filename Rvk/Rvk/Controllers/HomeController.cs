@@ -15,6 +15,12 @@ namespace Rvk.Controllers
         {
             ViewBag.Title = "Рывок";
             return View();
+            //using (var context = new ModelContainer())
+            //{
+            //    var subscribers = context.Subscriber.ToList();
+            //    ViewBag.Title = "Рывок "+subscribers.Count;
+            //    return View();
+            //}
         }
 
         public ActionResult FeedbackForm()
@@ -26,7 +32,7 @@ namespace Rvk.Controllers
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
         public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("kushko.alex@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
         }
 
         [HttpPost]
