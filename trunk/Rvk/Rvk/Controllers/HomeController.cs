@@ -34,9 +34,17 @@ namespace Rvk.Controllers
 
         [HttpPost]
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
-        public void Subscribe()
+        public void Subscribe(string subscr)
         {
+            using (var context = new ModelContainer())
+            {
+                var exist = context.Subscriber.FirstOrDefault(s => s.Email == subscr);
+                if (exist != null) return;
 
+                var subscriber = new Subscriber {Email = subscr};
+                context.AddToSubscriber(subscriber);
+                context.SaveChanges();
+            }
         }
     }
 }

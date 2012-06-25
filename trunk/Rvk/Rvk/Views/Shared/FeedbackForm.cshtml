@@ -8,14 +8,14 @@
     
 
     <script type="text/javascript">
-    
-    function fbclose() {
+        function closeFancyBox() {
         //alert(parent.$.fancybox);
         //$.fancybox.close();
         //this.$.fancybox.close();
         //$(".fancy").css("display","none");
         //parent.$.fancybox.close();
         //parent.$.fn.fancybox.close();
+        parent.$.fancybox.close();
     }    
 
     </script>
@@ -24,7 +24,7 @@
 Html.EnableClientValidation();
     }
 
-@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "fbclose()"}))
+@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "closeFancyBox()" }))
 {
 <div class="feedBackForm">
     @Html.ValidationSummary(true)
