@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using Rvk.Helpers;
 using Rvk.Models;
 
 namespace Rvk.Controllers
@@ -20,16 +22,14 @@ namespace Rvk.Controllers
         }
 
         [HttpPost]
-        public ActionResult FeedbackForm(FeedbackFormModel feedbackFormModel)
+        [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
+        public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return PartialView("FeedbackForm", feedbackFormModel);
-            }
+            //MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+            
+            //Response.Write("<script>window.top.$.fancybox.close()</script>");
+            
+            //Response.Write("<script>window.top.location.href=window.top.location.href</script>");
         }
     }
 }
