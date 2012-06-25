@@ -5,7 +5,7 @@
 
         $(function () {
 
-
+        
             $("#subscr").focus(function () {
                 $("#subscr").val("");
             });
@@ -22,7 +22,9 @@
                             $("#banner-top3").css("visibility", "visible");
                             setTimeout(function () {
                                 $("#banner-bottom").css("visibility", "visible");
-                                $(".page").addClass("highlightbg");
+
+
+                                $("#max").css("display","block");
 
                             }, 1000);
                         }, 1000);
@@ -32,7 +34,7 @@
                 }, 1000);
             }, 1000);
 
-
+            
         });
     }
 };
