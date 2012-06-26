@@ -64,7 +64,13 @@ body
     display: none;
 }
 
-#banner-top, #banner-top1, #banner-top2, #banner-top3
+#banner-top
+{
+    width: 583px;
+    height: 441px;
+}
+
+#banner-top1, #banner-top2, #banner-top3
 {
     width: 341px;
     height: 405px;
@@ -72,7 +78,7 @@ body
 
 #banner-top
 {
-    margin-left: 920px;
+    margin-left: 679px;
     background-image: url('img/banner-top0.jpg');
     position: absolute;
     display: none;
@@ -82,6 +88,7 @@ body
 {
     background-image: url('img/banner-top1.jpg');
     visibility: hidden;
+    float: right;
 }
 
 #banner-top2
