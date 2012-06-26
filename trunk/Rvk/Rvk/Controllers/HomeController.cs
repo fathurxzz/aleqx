@@ -32,7 +32,7 @@ namespace Rvk.Controllers
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
         public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("maxim@eugene-miller.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
         }
 
         [HttpPost]
