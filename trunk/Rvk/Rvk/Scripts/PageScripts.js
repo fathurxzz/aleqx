@@ -2,7 +2,7 @@
     initialize: function BasePageExtender_initialize() {
 
 
-
+    
         $(function () {
 
         
@@ -34,7 +34,8 @@
                 }, 1000);
             }, 1000);
 
-            
+
         });
+        
     }
 };
