@@ -123,12 +123,13 @@ body
     background-image: url('img/banner-bottom.jpg');
     position: absolute;
     margin-top: 502px;
-    
+
     visibility: hidden;
 
     text-align: center;
     font-size: 15px;
     font-family: AgoraMedium;
+    
 }
 
 #firstSign
