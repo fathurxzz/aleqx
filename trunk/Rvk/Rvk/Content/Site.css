@@ -84,11 +84,22 @@ body
     display: none;
 }
 
+#banner-top01
+{
+    background-image: url('img/banner-top01.jpg');
+    visibility: hidden;
+    float: right;
+}
+
 #banner-top1
 {
     background-image: url('img/banner-top1.jpg');
     visibility: hidden;
-    float: right;
+}
+#banner-top11
+{
+    background-image: url('img/banner-top11.jpg');
+    visibility: hidden;
 }
 
 #banner-top2
