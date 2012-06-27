@@ -57,11 +57,12 @@ namespace Rvk.Controllers
             {
                 var feedback = new Feedback
                                    {
-                                       Email = feedbackFormModel.Email+"1111111email",
+                                       Email = feedbackFormModel.Email,
                                        Text = feedbackFormModel.Text,
                                        Title = feedbackFormModel.Name
                                    };
                 context.AddToFeedback(feedback);
+                //context.SaveChanges();
 
 
                 var responseData = MailHelper.SendTemplate(
