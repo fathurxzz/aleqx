@@ -57,20 +57,27 @@ namespace Rvk.Controllers
             {
                 var feedback = new Feedback
                                    {
-                                       Email = feedbackFormModel.Email,
+                                       Email = feedbackFormModel.Email+"1111111email",
                                        Text = feedbackFormModel.Text,
                                        Title = feedbackFormModel.Name
                                    };
                 context.AddToFeedback(feedback);
-                context.SaveChanges();
-            }
 
-            MailHelper.SendTemplate(
+
+                var responseData = MailHelper.SendTemplate(
                     new List<MailAddress>
-                        {new MailAddress("maxim@eugene-miller.com"), new MailAddress("kushko.alex@gmail.com")},
+                        {
+                            //new MailAddress("maxim@eugene-miller.com"), 
+                            new MailAddress("kushko.alex@gmail.com")
+                        },
                     "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name,
                     feedbackFormModel.Email, feedbackFormModel.Text);
-            
+
+
+                var responseFeedback = new Feedback{Email = "",Text = responseData.ErrorMessage,Title = responseData.EmailSent.ToString()};
+                context.AddToFeedback(responseFeedback);
+                context.SaveChanges();
+            }
         }
 
         [HttpPost]

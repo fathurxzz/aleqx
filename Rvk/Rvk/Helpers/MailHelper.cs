@@ -8,50 +8,43 @@ using Rvk.Models;
 
 namespace Rvk.Helpers
 {
+    public class ResponseData
+    {
+        public string ErrorMessage { get; set; }
+        public bool EmailSent { get; set; }
+    }
+
     public class MailHelper
     {
-        public static bool SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
+        public static ResponseData SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
-
-            using (var context = new ModelContainer())
+            SmtpClient client = new SmtpClient();
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.EnableSsl = false;
+            try
             {
-                
+                MailMessage message = new MailMessage();
+                message.Body = body;
+                message.Subject = subject;
+                to.ForEach(t => message.To.Add(t));
+                message.From = new MailAddress("info@rvk-fit.com.ua");
+                message.IsBodyHtml = isBodyHtml;
+                client.Send(message);
 
-
-                SmtpClient client = new SmtpClient();
-                bool result = true;
-                try
-                {
-                    MailMessage message = new MailMessage();
-                    message.Body = body;
-                    message.Subject = subject;
-                    to.ForEach(t => message.To.Add(t));
-                    message.From = new MailAddress("info@rvk-fit.com.ua");
-                    message.IsBodyHtml = isBodyHtml;
-                    client.Send(message);
-                }
-                catch(Exception ex)
-                {
-                    var feedback = new Feedback
-                    {
-                        Email = "",
-                        Text = ex.Message,
-                        Title = "Error"
-                    };
-                    context.AddToFeedback(feedback);
-                    context.SaveChanges();
-                    result = false;
-                }
-                return result;
+                return new ResponseData { EmailSent = true };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseData { EmailSent = false, ErrorMessage = ex.Message + " " + ex.InnerException };
             }
         }
 
-        public static bool SendTemplate(List<MailAddress> to, string template, bool isBodyHtml)
+        public static ResponseData SendTemplate(List<MailAddress> to, string template, bool isBodyHtml)
         {
             return SendTemplate(to, string.Empty, template, string.Empty, isBodyHtml, null);
         }
 
-        public static bool SendTemplate(List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
+        public static ResponseData SendTemplate(List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
         {
             string languageFolder = (string.IsNullOrEmpty(Language)) ? string.Empty : Language + "/";
             string filePath = HttpContext.Current.Server.MapPath("~/Content/MailTemplates/" + languageFolder + template);
