@@ -47,13 +47,44 @@ namespace Rvk.Helpers
 
         public static ResponseData SendTemplate(List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
         {
-            string languageFolder = (string.IsNullOrEmpty(Language)) ? string.Empty : Language + "/";
-            string filePath = HttpContext.Current.Server.MapPath("~/Content/MailTemplates/" + languageFolder + template);
-            FileStream file = new FileStream(filePath, FileMode.Open);
-            StreamReader reader = new StreamReader(file);
-            string body = reader.ReadToEnd();
-            string formattedBody = (replacements != null && replacements.Length > 0) ? string.Format(body, replacements) : body;
-            reader.Close();
+            //string languageFolder = (string.IsNullOrEmpty(Language)) ? string.Empty : Language + "/";
+            //string filePath = HttpContext.Current.Server.MapPath("~/Content/MailTemplates/" + languageFolder + template);
+            //FileStream file = new FileStream(filePath, FileMode.Open);
+            //StreamReader reader = new StreamReader(file);
+            //string body = reader.ReadToEnd();
+            //string formattedBody = (replacements != null && replacements.Length > 0) ? string.Format(body, replacements) : body;
+            //reader.Close();
+
+            string formattedBody =
+                @"<html>
+<head>
+    <title>Обратная связь</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                Имя:            
+            </td>
+            <td>
+                {0}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Электронная почта:            
+            </td>
+            <td>
+                {1}
+            </td>
+        </tr>
+    </table>
+    Текст сообщения:
+    <p>
+        {2}
+    </p>
+</body>
+</html>";
             return SendMessage(to, formattedBody, subject, isBodyHtml);
         }
     }

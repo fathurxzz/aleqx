@@ -20,7 +20,7 @@
 @{
     Html.EnableClientValidation();
 }
-@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnSuccess = "closeFancyBox()", OnFailure = "showError()" }))
+@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "closeFancyBox()" }))
 {
     <div id="feedBackForm" class="feedBackForm">
         @Html.ValidationSummary(true)

@@ -75,9 +75,9 @@ namespace Rvk.Controllers
                     feedbackFormModel.Email, feedbackFormModel.Text);
 
 
-                var responseFeedback = new Feedback{Email = "",Text = responseData.ErrorMessage,Title = responseData.EmailSent.ToString()};
-                context.AddToFeedback(responseFeedback);
-                context.SaveChanges();
+                //var responseFeedback = new Feedback{Email = "",Text = responseData.ErrorMessage,Title = responseData.EmailSent.ToString()};
+                //context.AddToFeedback(responseFeedback);
+                //context.SaveChanges();
             }
         }
 
