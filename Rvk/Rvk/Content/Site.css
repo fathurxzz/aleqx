@@ -28,28 +28,28 @@ body
 {
     background-color: #1c1c1c;
     background: url('img/body-bg.jpg') repeat-x;
-    background-position: 50% 0;
+    background-position: 50% -100px;
 }
 .page
 {
 
     width: 1400px;
-    height: 936px;
+    height: 836px;
     position: relative;
     margin: 0 auto;
     background-image: url('img/bg.jpg');
     background-repeat: no-repeat;
     /*background-image: url('img/bg-highlighted.jpg');*/
     min-width: 1260px;
-    background-position: 50% 0;
-    padding-top: 1px;
+    background-position: 50% -100px;
+    /*padding-top: 1px;*/
 }
 
 .content
 {
     /*border: 1px solid #fff;*/
     height: 748px;
-    margin: 99px auto 0 auto;
+    margin: 0 auto 0 auto;
     width: 1260px;
     position: relative;
 }
@@ -217,11 +217,15 @@ body
     color: inherit;
 }
 
+#footer .fb {
+    width: 100px;
+}
+
 #footer .social {
     display: block;
     float: left;
     width: 100px;
-    margin: auto;
+    margin: auto 10px;
     /*margin-top: 22px;*/
     vertical-align: top;
     /*border:1px solid red;*/
@@ -232,3 +236,15 @@ body
     margin-top: 22px;
     width: 110px;
 }*/
+
+
+#feedbackpanel {
+    position: absolute; 
+    background-color: #fff;
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+#feedbackpanel table td {
+    padding: 5px;
+}

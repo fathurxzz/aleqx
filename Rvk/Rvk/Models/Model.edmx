@@ -7,6 +7,7 @@
     <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="Subscriber" EntityType="Model.Store.Subscriber" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feedback" EntityType="Model.Store.Feedback" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="Subscriber">
     <Key>
@@ -15,12 +16,22 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="longtext" Nullable="false" />
   </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Email" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Subscriber" EntityType="Model.Subscriber" />
+          <EntitySet Name="Feedback" EntityType="Model.Feedback" />
         </EntityContainer>
         <EntityType Name="Subscriber">
           <Key>
@@ -28,6 +39,15 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Email" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" />
+          <Property Type="String" Name="Text" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -40,6 +60,16 @@
         <MappingFragment StoreEntitySet="Subscriber">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedback">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Feedback)">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -64,6 +94,7 @@
     <edmx:Diagrams>
       <Diagram Name="Model" >
         <EntityTypeShape EntityType="Model.Subscriber" Width="1.5" PointX="6.375" PointY="2.625" Height="1.2636116536458335" />
+        <EntityTypeShape EntityType="Model.Feedback" Width="1.5" PointX="10.5" PointY="3.125" Height="1.7879850260416665" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -186,6 +186,8 @@
     <None Include="Content\fonts\PFAgoraSansPro-Italic.ttf" />
     <None Include="Content\fonts\PFAgoraSansPro-Medium.ttf" />
     <None Include="Content\fonts\PFAgoraSansPro-Thin.ttf" />
+    <Content Include="Views\Home\FeedBack.cshtml" />
+    <Content Include="Views\Home\Subscribers.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
