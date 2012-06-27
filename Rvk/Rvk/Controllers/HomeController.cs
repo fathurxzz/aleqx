@@ -62,13 +62,13 @@ namespace Rvk.Controllers
                                        Title = feedbackFormModel.Name
                                    };
                 context.AddToFeedback(feedback);
-                //context.SaveChanges();
+                context.SaveChanges();
 
 
                 var responseData = MailHelper.SendTemplate(
                     new List<MailAddress>
                         {
-                            //new MailAddress("maxim@eugene-miller.com"), 
+                            //new MailAddress("maxim@eugene-miller.com"),
                             new MailAddress("kushko.alex@gmail.com")
                         },
                     "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name,
