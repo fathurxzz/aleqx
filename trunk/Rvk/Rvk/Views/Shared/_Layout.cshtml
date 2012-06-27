@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
@@ -17,24 +17,22 @@
         });
     </script>
 
-        <script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?9" charset="windows-1251"></script>
-    <script>
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-            fjs.parentNode.insertBefore(js, fjs);
-        } (document, 'script', 'facebook-jssdk'));</script>
-    <script>        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
-    
-    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-        { parsetags: 'explicit' } 
-    </script> 
+     <script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?9" charset="windows-1251"></script>
+
+
+     <script>           !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
 
 
 </head>
 <body>
+<div id="fb-root"></div>
+<script>    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));</script>
     <div class="page">
         <div class="content">
             <div id="max">
@@ -71,11 +69,21 @@
             </div>
             <div class="socials">
                 <div id="likeContainer" class="social fb">
+                <fb:like href="http://rvk-fit.com.ua/" send="false" layout="button_count" width="450" show_faces="true"></fb:like>
                 </div>
                 <div class="vk-share social">
+                <script type="text/javascript">
+<!--
+                    document.write(VK.Share.button(false, { type: 'button', text: 'Share' }));
+-->
+</script>
+
+
+
                 </div>
                 <div class="social twitter">
                     <a class="twitter-share-button" href="http://twitter.com/share" data-url="http://rvk-fit.com.ua">Tweet</a>
+                    
                 </div>
                 <div id="plusOne" class="social plusone">
                 </div>
