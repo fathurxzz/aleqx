@@ -20,6 +20,7 @@ namespace Rvk
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("logo.jpg");
 
             routes.MapRoute(
                 "Default", // Route name
