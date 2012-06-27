@@ -19,7 +19,7 @@ namespace Rvk.Helpers
                 message.Body = body;
                 message.Subject = subject;
                 to.ForEach(t => message.To.Add(t));
-                message.From = new MailAddress("m@m-brand.com.ua");
+                message.From = new MailAddress("info@rvk-fit.com.ua");
                 message.IsBodyHtml = isBodyHtml;
                 client.Send(message);
             }
