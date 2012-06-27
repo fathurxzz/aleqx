@@ -23,6 +23,27 @@ namespace Rvk.Controllers
             //}
         }
 
+
+        public ActionResult FeedBack()
+        {
+            using (var context = new ModelContainer())
+            {
+                var feedbacks = context.Feedback.ToList();
+                return View(feedbacks);
+            }
+        }
+
+        public ActionResult Subscribers()
+        {
+            using (var context = new ModelContainer())
+            {
+                var subscr = context.Subscriber.ToList();
+                return View(subscr);
+            }
+        }
+
+
+
         public ActionResult FeedbackForm()
         {
             return PartialView("FeedbackForm");
@@ -32,7 +53,24 @@ namespace Rvk.Controllers
         [OutputCache(NoStore = true, Duration = 1, VaryByParam = "*")]
         public void FeedbackForm(FeedbackFormModel feedbackFormModel)
         {
-            MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("maxim@eugene-miller.com"), new MailAddress("kushko.alex@gmail.com") }, "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+            using (var context = new ModelContainer())
+            {
+                var feedback = new Feedback
+                                   {
+                                       Email = feedbackFormModel.Email,
+                                       Text = feedbackFormModel.Text,
+                                       Title = feedbackFormModel.Name
+                                   };
+                context.AddToFeedback(feedback);
+                context.SaveChanges();
+            }
+
+            MailHelper.SendTemplate(
+                    new List<MailAddress>
+                        {new MailAddress("maxim@eugene-miller.com"), new MailAddress("kushko.alex@gmail.com")},
+                    "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name,
+                    feedbackFormModel.Email, feedbackFormModel.Text);
+            
         }
 
         [HttpPost]

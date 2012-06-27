@@ -1,12 +1,1 @@
-﻿<script type="text/javascript">
-function completeSubscribe() {
-    alert("Ваш email подписан!");
-    $("#subscr").blur();
-}
-</script>
-
-@using (Ajax.BeginForm("Subscribe", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "completeSubscribe" }))
-{
-@Html.TextBox("subscr", "Введите email и нажмите enter")
-}
-
+﻿

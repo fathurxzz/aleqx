@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
+using Rvk.Models;
 
 namespace Rvk.Helpers
 {
@@ -11,23 +12,38 @@ namespace Rvk.Helpers
     {
         public static bool SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
-            SmtpClient client = new SmtpClient();
-            bool result = true;
-            try
+
+            using (var context = new ModelContainer())
             {
-                MailMessage message = new MailMessage();
-                message.Body = body;
-                message.Subject = subject;
-                to.ForEach(t => message.To.Add(t));
-                message.From = new MailAddress("info@rvk-fit.com.ua");
-                message.IsBodyHtml = isBodyHtml;
-                client.Send(message);
+                
+
+
+                SmtpClient client = new SmtpClient();
+                bool result = true;
+                try
+                {
+                    MailMessage message = new MailMessage();
+                    message.Body = body;
+                    message.Subject = subject;
+                    to.ForEach(t => message.To.Add(t));
+                    message.From = new MailAddress("info@rvk-fit.com.ua");
+                    message.IsBodyHtml = isBodyHtml;
+                    client.Send(message);
+                }
+                catch(Exception ex)
+                {
+                    var feedback = new Feedback
+                    {
+                        Email = "",
+                        Text = ex.Message,
+                        Title = "Error"
+                    };
+                    context.AddToFeedback(feedback);
+                    context.SaveChanges();
+                    result = false;
+                }
+                return result;
             }
-            catch
-            {
-                result = false;
-            }
-            return result;
         }
 
         public static bool SendTemplate(List<MailAddress> to, string template, bool isBodyHtml)

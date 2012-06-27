@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Rvk.Models.Subscriber>
+
+@{
+    ViewBag.Title = "Subscribers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="feedbackpanel">
+
+<table>
+    <tr>
+        <th>
+            Email
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+          
+        </tr>
+    }
+
+</table>
+</div>
