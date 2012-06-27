@@ -19,8 +19,9 @@ namespace Rvk.Helpers
         public static ResponseData SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
             SmtpClient client = new SmtpClient();
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.EnableSsl = false;
+            client.UseDefaultCredentials = true;
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.EnableSsl = false;
             try
             {
                 MailMessage message = new MailMessage();

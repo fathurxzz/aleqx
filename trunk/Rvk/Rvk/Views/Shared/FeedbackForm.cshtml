@@ -9,14 +9,18 @@
         setTimeout(function () {
             parent.$.fancybox.close();
         }, 1000);
-        
-    }    
+
+    }
+
+    function showError (parameters) {
+        debugger;
+    }
 
 </script>
 @{
     Html.EnableClientValidation();
 }
-@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnComplete = "closeFancyBox()" }))
+@using (Ajax.BeginForm("FeedbackForm", "Home", new AjaxOptions { HttpMethod = "Post", OnSuccess = "closeFancyBox()", OnFailure = "showError()" }))
 {
     <div id="feedBackForm" class="feedBackForm">
         @Html.ValidationSummary(true)
