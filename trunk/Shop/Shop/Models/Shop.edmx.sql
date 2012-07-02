@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/13/2012 12:32:23
+-- Date Created: 07/02/2012 22:51:38
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -27,6 +27,8 @@
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_BrandProduct`;
 --    ALTER TABLE `TagProduct` DROP CONSTRAINT `FK_TagProduct_Tag`;
 --    ALTER TABLE `TagProduct` DROP CONSTRAINT `FK_TagProduct_Product`;
+--    ALTER TABLE `ProductAttributeStaticValues` DROP CONSTRAINT `FK_ProductAttributeProductAttributeStaticValues`;
+--    ALTER TABLE `ProductAttributeStaticValues` DROP CONSTRAINT `FK_ProductAttributeStaticValuesProduct`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -40,6 +42,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Brand`;
     DROP TABLE IF EXISTS `Tag`;
     DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `ProductAttributeStaticValues`;
     DROP TABLE IF EXISTS `ProductAttributeCategory`;
     DROP TABLE IF EXISTS `ProductAttributeValuesProduct`;
     DROP TABLE IF EXISTS `TagProduct`;
@@ -134,7 +137,8 @@ CREATE TABLE `Tag` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` mediumtext  NOT NULL,
     `Title` mediumtext  NOT NULL,
-    `SeoText` longtext  NULL
+    `SeoText` longtext  NULL,
+    `GroupName` longtext  NULL
 );
 
 -- Creating table 'Content'
@@ -160,6 +164,20 @@ CREATE TABLE `ProductAttributeStaticValues` (
     `Value` longtext  NOT NULL,
     `ProductAttributeId` int  NOT NULL,
     `ProductId` int  NOT NULL
+);
+
+-- Creating table 'Wish'
+
+CREATE TABLE `Wish` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Category` longtext  NULL,
+    `Brand` longtext  NULL,
+    `Title` longtext  NULL,
+    `Size` longtext  NULL,
+    `Color` longtext  NULL,
+    `UserName` longtext  NULL,
+    `Phone` longtext  NULL,
+    `Email` longtext  NULL
 );
 
 -- Creating table 'ProductAttributeCategory'
