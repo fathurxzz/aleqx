@@ -122,9 +122,9 @@
     <Content Include="Content\img\bg.jpg" />
     <Content Include="Content\img\body-bg.jpg" />
     <Content Include="Content\img\max.jpg" />
-    <Content Include="Content\img\vk_ico.gif" />
     <Content Include="Content\MailTemplates\FeedbackTemplate.htm" />
     <Content Include="Global.asax" />
+    <Content Include="logo.jpg" />
     <Content Include="Models\Model.edmx.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -139,6 +139,7 @@
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\PageScripts.js" />
+    <Content Include="vk_ico.gif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
