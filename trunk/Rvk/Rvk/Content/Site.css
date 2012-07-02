@@ -224,11 +224,16 @@ body
 #footer .social {
     display: block;
     float: left;
-    width: 100px;
+    width: 130px;
     margin: auto 10px;
     /*margin-top: 22px;*/
     vertical-align: top;
     /*border:1px solid red;*/
+}
+
+#footer .social.twitter
+{
+    width: 90px;
 }
 /*
 #footer .social.fb 

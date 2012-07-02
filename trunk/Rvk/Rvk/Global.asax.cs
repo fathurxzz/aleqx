@@ -21,6 +21,7 @@ namespace Rvk
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("logo.jpg");
+            routes.IgnoreRoute("vk_ico.gif");
 
             routes.MapRoute(
                 "Default", // Route name

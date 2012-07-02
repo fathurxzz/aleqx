@@ -17,7 +17,7 @@ namespace Rvk.Helpers
     public class MailHelper
     {
         public static ResponseData SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
-        {
+        {   // Your ad could be here
             SmtpClient client = new SmtpClient();
             client.UseDefaultCredentials = true;
             //client.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -85,6 +85,7 @@ namespace Rvk.Helpers
     </p>
 </body>
 </html>";
+            formattedBody = (replacements != null && replacements.Length > 0) ? string.Format(formattedBody, replacements) : formattedBody;
             return SendMessage(to, formattedBody, subject, isBodyHtml);
         }
     }
