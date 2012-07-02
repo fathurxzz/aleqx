@@ -15,6 +15,7 @@
     <EntitySet Name="Tag" EntityType="Shop.Store.Tag" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Shop.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeStaticValues" EntityType="Shop.Store.ProductAttributeStaticValues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Wish" EntityType="Shop.Store.Wish" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeCategory" EntityType="Shop.Store.ProductAttributeCategory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValuesProduct" EntityType="Shop.Store.ProductAttributeValuesProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TagProduct" EntityType="Shop.Store.TagProduct" store:Type="Tables" Schema="dbo" />
@@ -158,6 +159,7 @@
     <Property Name="Name" Type="mediumtext" Nullable="false" />
     <Property Name="Title" Type="mediumtext" Nullable="false" />
     <Property Name="SeoText" Type="longtext" Nullable="true" />
+    <Property Name="GroupName" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -183,6 +185,20 @@
     <Property Name="Value" Type="longtext" Nullable="false" />
     <Property Name="ProductAttributeId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Wish">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="longtext" Nullable="true" />
+    <Property Name="Brand" Type="longtext" Nullable="true" />
+    <Property Name="Title" Type="longtext" Nullable="true" />
+    <Property Name="Size" Type="longtext" Nullable="true" />
+    <Property Name="Color" Type="longtext" Nullable="true" />
+    <Property Name="UserName" Type="longtext" Nullable="true" />
+    <Property Name="Phone" Type="longtext" Nullable="true" />
+    <Property Name="Email" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductAttributeCategory">
     <Key>
@@ -418,6 +434,7 @@
             <End Role="ProductAttributeStaticValues" EntitySet="ProductAttributeStaticValues" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
+          <EntitySet Name="Wish" EntityType="Shop.Wish" />
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -592,6 +609,7 @@
           <NavigationProperty Name="Products" Relationship="Shop.TagProduct" FromRole="Tag" ToRole="Product" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="SeoText" />
+          <Property Type="String" Name="GroupName" />
         </EntityType>
         <Association Name="TagProduct">
           <End Type="Shop.Tag" Role="Tag" Multiplicity="*" />
@@ -648,6 +666,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Wish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Category" />
+          <Property Type="String" Name="Brand" />
+          <Property Type="String" Name="Title" />
+          <Property Type="String" Name="Size" />
+          <Property Type="String" Name="Color" />
+          <Property Type="String" Name="UserName" />
+          <Property Type="String" Name="Phone" />
+          <Property Type="String" Name="Email" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -746,6 +778,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="SeoText" ColumnName="SeoText" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -773,6 +806,21 @@
           <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="ProductAttributeId" ColumnName="ProductAttributeId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wish">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.Wish)">
+        <MappingFragment StoreEntitySet="Wish">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -823,8 +871,8 @@
         <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="7.75" PointY="0.625" Height="4.5505582682291656" />
         <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.125" PointY="0.625" Height="3.2357796223958331" />
         <AssociationConnector Association="Shop.CategoryProduct">
-          <ConnectorPoint PointX="2.625" PointY="1.0312500000000002" />
-          <ConnectorPoint PointX="7.75" PointY="1.0312500000000002" />
+          <ConnectorPoint PointX="2.625" PointY="1.03125" />
+          <ConnectorPoint PointX="7.75" PointY="1.03125" />
         </AssociationConnector>
         <AssociationConnector Association="Shop.CategoryCategory">
           <ConnectorPoint PointX="1.6569230769230767" PointY="0.625" />
@@ -857,10 +905,10 @@
           <ConnectorPoint PointX="10.25" PointY="1.8320214843749998" />
           <ConnectorPoint PointX="9.25" PointY="1.8320214843749998" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="1.5" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="Shop.Tag" Width="1.5" PointX="5" PointY="1.5" Height="2.172587890625" />
         <AssociationConnector Association="Shop.TagProduct">
-          <ConnectorPoint PointX="6.5" PointY="2.3783268229166667" />
-          <ConnectorPoint PointX="7.75" PointY="2.3783268229166667" />
+          <ConnectorPoint PointX="6.5" PointY="2.5862939453125" />
+          <ConnectorPoint PointX="7.75" PointY="2.5862939453125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.Content" Width="1.5" PointX="12.625" PointY="0.625" Height="2.7427376302083331" />
         <EntityTypeShape EntityType="Shop.ProductAttributeStaticValues" Width="2.375" PointX="4.625" PointY="3.875" Height="1.5923063151041665" />
@@ -873,6 +921,7 @@
           <ConnectorPoint PointX="7" PointY="4.6074527994791667" />
           <ConnectorPoint PointX="7.75" PointY="4.6074527994791667" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Shop.Wish" Width="1.5" PointX="9.75" PointY="6.625" Height="2.7494921874999996" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
