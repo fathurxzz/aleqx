@@ -122,6 +122,7 @@
     <Content Include="Content\img\bg.jpg" />
     <Content Include="Content\img\body-bg.jpg" />
     <Content Include="Content\img\max.jpg" />
+    <Content Include="Content\img\vk_ico.gif" />
     <Content Include="Content\MailTemplates\FeedbackTemplate.htm" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model.edmx.sql" />

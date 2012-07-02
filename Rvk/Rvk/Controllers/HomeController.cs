@@ -68,16 +68,16 @@ namespace Rvk.Controllers
                 var responseData = MailHelper.SendTemplate(
                     new List<MailAddress>
                         {
-                            //new MailAddress("maxim@eugene-miller.com"),
+                            new MailAddress("maxim@eugene-miller.com"),
                             new MailAddress("kushko.alex@gmail.com")
                         },
                     "Форма обратной связи RVK", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name,
                     feedbackFormModel.Email, feedbackFormModel.Text);
 
 
-                //var responseFeedback = new Feedback{Email = "",Text = responseData.ErrorMessage,Title = responseData.EmailSent.ToString()};
-                //context.AddToFeedback(responseFeedback);
-                //context.SaveChanges();
+                var responseFeedback = new Feedback{Email = "",Text = responseData.ErrorMessage,Title = responseData.EmailSent.ToString()};
+                context.AddToFeedback(responseFeedback);
+                context.SaveChanges();
             }
         }
 
