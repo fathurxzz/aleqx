@@ -38,7 +38,15 @@ namespace Shop.Controllers
         {
             if (ModelState.IsValid)
             {
+                using (var context = new ShopContainer())
+                {
+                    var wish = new Wish();
+                    TryUpdateModel(wish, new[] { "UserName", "Category", "Brand", "Title", "Size", "Color", "Phone", "Email" });
+                    context.AddToWish(wish);
+                    context.SaveChanges();
+                }
                 return PartialView("Success");
+                
             }
             else
             {
