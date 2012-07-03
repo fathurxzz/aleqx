@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Shop.Models.Wish>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>WishList</h2>
+
+<table>
+    <tr>
+        <th>
+            Идентификатор
+        </th>
+        <th>
+            Категория товара
+        </th>
+        <th>
+            Бренд
+        </th>
+        <th>
+            Наименование товара
+        </th>
+        <th>
+            Размер (точный/примерный)
+        </th>
+        <th>
+            Цвет
+        </th>
+        <th>
+            ФИО
+        </th>
+        <th>
+            Телефон
+        </th>
+        <th>
+            e-mail
+        </th>
+    </tr>
+
+@foreach (var item in Model.OrderBy(item=>item.Id)) {
+    <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+    </tr>
+}
+
+</table>

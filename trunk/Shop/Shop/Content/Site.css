@@ -301,10 +301,27 @@ a
     -moz-border-radius: 8px 8px 8px 8px;
 	padding:20px;
 	margin-top:20px;
+	margin-bottom:20px;
 	font-size:13px;
 }
 
 .addWishForm table td
 {
 	padding:5px;
+}
+
+.addWishForm table td.title
+{
+    color: #ffa500;
+    font-size:16px;
+    text-align: center;
+}
+
+.addWishForm table td.mainTitle
+{
+    font-size:16px;
+    text-align: center;
+    font-weight: bold;
+    
+    /*font-family: Comic Sans MS;*/
 }
