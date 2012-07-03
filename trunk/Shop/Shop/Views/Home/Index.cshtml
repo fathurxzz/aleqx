@@ -1,4 +1,5 @@
-﻿@model Shop.Models.SiteViewModel
+﻿@using Shop.Models
+@model Shop.Models.SiteViewModel
 @{
     
 }
@@ -21,6 +22,14 @@
 @if (Model.Content != null)
 {
     @Html.Raw(Model.Content.Text)
+}
+
+
+@if (Model.Content != null && Model.Content.Name == "servise")
+{
+    <div id="sendWishFormContent">
+        @Html.Partial("_WishForm", new WishFormModel())
+    </div>
 }
 
 @section HeaderPicture
