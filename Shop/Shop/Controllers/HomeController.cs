@@ -33,7 +33,18 @@ namespace Shop.Controllers
             }
         }
 
+        [HttpPost]
+        public PartialViewResult AddWish(WishFormModel wishFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                return PartialView("Success");
+            }
+            else
+            {
+                return PartialView("_WishForm", wishFormModel);
+            }
+        }
 
-        
     }
 }

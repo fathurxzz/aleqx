@@ -293,3 +293,18 @@ a
 }
 
 
+.addWishForm
+{
+	border:1px solid #ffa500;
+	 border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;
+	padding:20px;
+	margin-top:20px;
+	font-size:13px;
+}
+
+.addWishForm table td
+{
+	padding:5px;
+}

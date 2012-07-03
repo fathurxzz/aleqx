@@ -1,0 +1,117 @@
+﻿@model Shop.Models.WishFormModel
+
+
+@{
+    AjaxOptions options = new AjaxOptions{
+        HttpMethod = "Post",
+        UpdateTargetId = "sendWishFormContent"        
+    };        
+    
+}
+
+@using (Ajax.BeginForm("AddWish", "Home", options))
+{
+    <div class="addWishForm">
+     @Html.ValidationSummary(true)
+    <table>
+    <tr>
+    <td colspan="2" class="title">Характеристики:</td>
+    </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Category)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Category, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Category)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Title)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Title, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Title)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Brand)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Brand, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Brand)
+            </td>
+        </tr>
+        <tr>
+        <td colspan="2" style="height: 20px"></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Size)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Size, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Size)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Color)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Color, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Color)
+            </td>
+        </tr>
+        <tr>
+    <td colspan="2" class="title">Контактные данные:</td>
+    </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.UserName, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Phone)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Phone, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Phone)
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Email, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+        @*<tr>
+            <td>@Html.LabelFor(model => model.Text)
+            </td>
+            <td>
+                @Html.TextAreaFor(model => model.Text, new { rows="10", cols="33" })<br />
+                @Html.ValidationMessageFor(model => model.Text)
+            </td>
+        </tr>*@
+        <tr>
+            <td colspan="2" style="padding-top:20px;">@Html.LabelFor(model => model.AntiSpamAnswer)</td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.AntiSpamAnswer, new { style = "width:420px;" })<br />
+                @Html.ValidationMessageFor(model => model.AntiSpamAnswer)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center; padding-top:10px;">
+                <input type="submit" value="Отправить" />
+            </td>
+        </tr>
+    </table>
+    </div>
+}
