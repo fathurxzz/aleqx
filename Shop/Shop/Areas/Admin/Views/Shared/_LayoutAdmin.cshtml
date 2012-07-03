@@ -17,8 +17,10 @@
     <div>
         <div>
             @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{Area=""},new{style="float:right"})
+            <div style="clear: both"></div>
             @Html.Partial("Menu")
         </div>
+
 
         @RenderBody()
     </div>

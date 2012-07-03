@@ -7,6 +7,7 @@ using Shop.Models;
 
 namespace Shop.Areas.Admin.Controllers
 {
+    [Authorize]
     public class SearchController : Controller
     {
         //
