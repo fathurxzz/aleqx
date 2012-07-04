@@ -21,3 +21,9 @@
 {
     color: #c01e2e;
 }
+
+#mainMenu a.selected
+{
+    font-family: PFBeauSansProLight;
+    color: #666;
+}

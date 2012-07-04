@@ -1,0 +1,42 @@
+﻿#categoryFilter
+{
+    margin-top: 30px;
+}
+
+#categoryFilter .categoryFilterTitle
+{
+    text-align: center;
+    font-size: 12px;
+    font-family: PFBeauSansProSemiBold;
+}
+
+#categoryFilter table
+{
+    position: relative;
+    margin: 0 auto;
+    font-size: 12px;    
+}
+
+#categoryFilter table td
+{
+    padding: 0 10px;
+    font-family: PFBeauSansProRegular;
+    
+}
+
+#categoryFilter table a
+{
+    font-family: PFBeauSansProLightItalic;
+
+    color: #cc3333;
+}
+
+#categoryFilter table td span
+{
+    background-color: #c01e2e;
+    color: #fff;
+    padding: 0 10px 2px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+}

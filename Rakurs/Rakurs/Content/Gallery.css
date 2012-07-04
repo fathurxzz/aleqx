@@ -44,9 +44,57 @@
     -webkit-border-radius: 23px 23px 23px 23px;
     -moz-border-radius: 23px 23px 23px 23px;
     height: 46px;
+    
 }
 
 #galleryContent #submenu table td
 {
     padding: 0 17px;
+}
+
+#galleryContent #submenu table td.separator
+{
+    padding: 0 3px;
+}
+
+#galleryContent #submenu table a
+{
+    color: #cc3333;
+}
+
+#gallery
+{
+    width: 630px;
+    position: relative;
+    margin: 50px auto;
+}
+
+.galleryItemContainer
+{
+    width: 189px;
+    height: 240px;
+    background: url('img/gallery-preview-frame.gif') no-repeat top;
+    margin: 10px;
+    float: left;
+}
+
+.galleryItem
+{
+    width: 157px;
+    height: 156px;
+    position: relative;
+    margin: 13px auto;
+}
+
+.galleryItemContainer .sign
+{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.galleryItemContainer .sign a
+{
+    font-family: PFBeauSansProSemiBold;
+    font-size: 15px;
+    color: #0072bc;
 }
