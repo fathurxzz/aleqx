@@ -3,6 +3,16 @@ font-family: "PFBeauSansProItalic";
 src: url('fonts/PFBeauSansPro-Italic.ttf');
 }
 
+@font-face {
+font-family: "PFBeauSansProThin";
+src: url('fonts/PFBeauSansPro-Thin.ttf');
+}
+
+@font-face {
+font-family: "PFBeauSansProLightItalic";
+src: url('fonts/PFBeauSansPro-LightItal.ttf');
+}
+
 *
 {
     margin: 0;
@@ -47,6 +57,7 @@ body {
     width: 250px;
     height: 23px;
     background-color: #000;
+    /*border-top: 1px solid #666;*/
     color: #cccccc;
     position: relative;
     margin: 0 auto;
@@ -60,6 +71,7 @@ body {
     height: 111px;
     background-color: #ccc;
     font-family: Arial;
+    margin-top: 70px;
 }
 
 #footer, #footer a
@@ -107,4 +119,57 @@ body {
     
     
     
+}
+
+.contentText
+{
+    font-family: PFBeauSansProThin;
+    margin: 70px auto 0 auto;
+    font-size: 11px;
+    position: relative;
+    width: 915px;
+}
+
+.contentText .title
+{
+     font-size: 18px;
+     margin-bottom: 10px
+}
+
+.separator
+{
+    background-color: #bcbcbc;
+    height: 1px;
+    width: 50px;
+    margin-bottom: 25px
+}
+
+#galleryFrameContainer
+{
+    width: 1090px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#galleryFrameContainer .border
+{
+    width: 1090px;
+    height: 2px;
+    background: url('img/gallery-frame-border.gif');
+}
+
+#galleryFrame
+{
+    width: 1090px;
+    background: url('img/gallery-frame-bg.gif') repeat-y;
+    height: 514px;
+}
+
+#galleryImageContainer
+{
+    width: 1000px;
+    height: 514px;
+    background-color: #ccc;
+    position: relative;
+    margin: 0 auto;
 }
