@@ -1,0 +1,32 @@
+﻿#galleryContent
+{
+    
+    width: 782px;
+    min-height: 200px;
+    border: 2px solid #c01e2e;
+    border-radius: 17px 17px 17px 17px;
+    -webkit-border-radius: 17px 17px 17px 17px;
+    -moz-border-radius: 17px 17px 17px 17px;
+    position: relative;
+    margin: 70px auto 0 auto;
+    
+}
+
+
+#galleryContent .title
+{
+    width: 226px;
+    height: 36px;
+    background-color: #c01e2e;
+    position: relative;
+    margin: -23px auto 0 auto;
+     border-radius: 23px 23px 23px 23px;
+    -webkit-border-radius: 23px 23px 23px 23px;
+    -moz-border-radius: 23px 23px 23px 23px;
+    text-align: center;
+    color: #fff;
+    font-family: PFBeauSansProLightItalic;
+    font-size: 17px;
+    padding-top: 10px;
+}
+
