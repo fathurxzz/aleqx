@@ -1,0 +1,23 @@
+﻿#mainMenu {
+    height: 35px;
+    background: url('img/main-menu-bg.gif');
+    margin-bottom: 45px;
+    font-family: PFBeauSansProItalic;
+    
+}
+
+#mainMenu table {
+    position: relative;
+    margin: 0 auto;
+    
+}
+
+#mainMenu table td
+{
+    padding: 5px 20px 0 20px;
+}
+
+#mainMenu a
+{
+    color: #c01e2e;
+}

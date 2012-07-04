@@ -1,4 +1,9 @@
-﻿*
+﻿@font-face {
+font-family: "PFBeauSansProItalic";
+src: url('fonts/PFBeauSansPro-Italic.ttf');
+}
+
+*
 {
     margin: 0;
     padding: 0;
@@ -18,12 +23,88 @@ body {
     height: 181px;
 }
 
-#mainMenu {
-    height: 35px;
-    background: url('img/main-menu-bg.gif');
-}
-
-#mainMenu table {
+#logoContainer
+{
+    height: 181px;
+    width: 480px;
+    background-image: url('img/logo.gif');
     position: relative;
     margin: 0 auto;
+}
+
+#logo
+{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    
+    margin-left: 200px;
+    margin-top: 55px;
+}
+
+#slogan
+{
+    width: 250px;
+    height: 23px;
+    background-color: #000;
+    color: #cccccc;
+    position: relative;
+    margin: 0 auto;
+    font-family: PFBeauSansProItalic;
+    text-align: center;
+    font-size: 18px;
+}
+
+#footer
+{
+    height: 111px;
+    background-color: #ccc;
+    font-family: Arial;
+}
+
+#footer, #footer a
+{
+    color: #666;
+}
+
+#footerContent
+{
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#copyRight
+{
+    position: absolute;
+    width: 250px;
+    margin-top: 50px;
+    font-size: 12px;
+}
+
+#miller
+{
+    float: right;
+    width: 150px;
+    text-align: right;
+    margin-top: 35px;
+    font-size: 10px;
+    height: 36px;
+    background: url('img/em-logo.gif') no-repeat right;
+    padding-right: 60px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+#footerLogo
+{
+    width: 69px;
+    height: 66px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/footer-logo.gif') no-repeat bottom;
+    padding-top: 22px;
+    
+    
+    
 }
