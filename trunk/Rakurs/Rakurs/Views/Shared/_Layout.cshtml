@@ -6,6 +6,7 @@
     <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Menu.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Gallery.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Catalogue.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/PageScripts.js")" type="text/javascript"></script>
     <meta name="description" content="@ViewBag.SeoDescription" />
@@ -23,20 +24,17 @@
                 </div>
             </div>
         </div>
-        <div id="mainMenu">
-            @Html.Partial("MainMenu")
-        </div>
+        
+        @Html.Partial("MainMenu")
+        
         <div id="contentContainer">
-            @RenderSection("TopText",false)
+            @RenderSection("TopText", false)
             
             @*@Html.Partial("GalleryFrame")*@
-
             @Html.Partial("GalleryContent")
-
+            
             @RenderBody()
-
-            @RenderSection("BottomText",false)
-
+            @RenderSection("BottomText", false)
         </div>
     </div>
     <div id="footer">
@@ -48,8 +46,8 @@
                 Сайт сделан в<br />
                 <a href="http://www.eugene-miller.com">Студии Евгения Миллера</a>
             </div>
-
-            <div id="footerLogo"></div>
+            <div id="footerLogo">
+            </div>
         </div>
     </div>
 </body>

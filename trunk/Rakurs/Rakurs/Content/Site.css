@@ -13,10 +13,32 @@ font-family: "PFBeauSansProLightItalic";
 src: url('fonts/PFBeauSansPro-LightItal.ttf');
 }
 
+@font-face {
+font-family: "PFBeauSansProLight";
+src: url('fonts/PFBeauSansPro-Light.ttf');
+}
+
+@font-face {
+font-family: "PFBeauSansProSemiBold";
+src: url('fonts/PFBeauSansPro-SeBold.ttf');
+}
+
+@font-face {
+font-family: "PFBeauSansProRegular";
+src: url('fonts/PFBeauSansPro-Reg.ttf');
+}
+
+
+
 *
 {
     margin: 0;
     padding: 0;
+}
+
+.clear
+{
+    clear: both;
 }
 
 body {
@@ -136,7 +158,7 @@ body {
      margin-bottom: 10px
 }
 
-.separator
+.contentText .separator
 {
     background-color: #bcbcbc;
     height: 1px;

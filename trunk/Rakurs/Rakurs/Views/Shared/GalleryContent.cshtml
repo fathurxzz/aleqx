@@ -1,19 +1,18 @@
 ﻿<div id="galleryContent">
     <div class="title">
         Лестничные марши</div>
-    <div id="submenu">
-        <table>
-            <tr>
-                <td>
-                    asdasd
-                </td>
-                <td>
-                    asdasd
-                </td>
-                <td>
-                    asdasd
-                </td>
-            </tr>
-        </table>
+    @Html.Partial("CategorySubMenu")
+    @Html.Partial("CategoryFilter")
+    <div id="gallery">
+        @Html.Partial("GalleryItem")
+        @Html.Partial("GalleryItem")
+        @Html.Partial("GalleryItem")
+        @Html.Partial("GalleryItem")
+        @Html.Partial("GalleryItem")
+
+        
+        
+        <div class="clear">
+        </div>
     </div>
 </div>
