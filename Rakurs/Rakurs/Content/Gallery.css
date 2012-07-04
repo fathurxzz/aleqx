@@ -9,7 +9,7 @@
     -moz-border-radius: 17px 17px 17px 17px;
     position: relative;
     margin: 70px auto 0 auto;
-    
+    font-family: PFBeauSansProLightItalic;
 }
 
 
@@ -20,7 +20,7 @@
     background-color: #c01e2e;
     position: relative;
     margin: -23px auto 0 auto;
-     border-radius: 23px 23px 23px 23px;
+    border-radius: 23px 23px 23px 23px;
     -webkit-border-radius: 23px 23px 23px 23px;
     -moz-border-radius: 23px 23px 23px 23px;
     text-align: center;
@@ -30,3 +30,23 @@
     padding-top: 10px;
 }
 
+#galleryContent #submenu
+{
+    font-size: 14px;
+}
+
+#galleryContent #submenu table
+{
+    background-color: #fff;
+    position: relative;
+    margin: 20px auto 0;
+    border-radius: 23px 23px 23px 23px;
+    -webkit-border-radius: 23px 23px 23px 23px;
+    -moz-border-radius: 23px 23px 23px 23px;
+    height: 46px;
+}
+
+#galleryContent #submenu table td
+{
+    padding: 0 17px;
+}
