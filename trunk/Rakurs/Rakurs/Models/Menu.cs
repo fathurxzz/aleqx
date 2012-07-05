@@ -16,5 +16,6 @@ namespace Rakurs.Models
         public string Name { get; set; }
         public int SortOrder { get; set; }
         public bool IsMainPage { get; set; }
+        public bool Selected { get; set; }
     }
 }

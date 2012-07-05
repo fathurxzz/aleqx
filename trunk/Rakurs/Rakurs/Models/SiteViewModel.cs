@@ -23,7 +23,7 @@ namespace Rakurs.Models
             _context = context;
 
             var contentList = _context.Content.ToList();
-            FetchMainMenuItems(contentList);
+            FetchMainMenuItems(contentList, contentName);
 
             if (loadContent)
             {
@@ -51,10 +51,10 @@ namespace Rakurs.Models
             }
         }
 
-        private void FetchMainMenuItems(IEnumerable<Content> contentList)
+        private void FetchMainMenuItems(IEnumerable<Content> contentList,string contentName)
         {
             MainMenu = new Menu();
-            var menuItems = contentList.Select(c => new MenuItem { Name = c.Name, Title = c.Title, SortOrder = c.SortOrder,IsMainPage = c.MainPage});
+            var menuItems = contentList.Select(c => new MenuItem { Name = c.Name, Title = c.Title, SortOrder = c.SortOrder,IsMainPage = c.MainPage,Selected =c.Name==contentName });
             foreach (var menuItem in menuItems)
             {
                 MainMenu.Add(menuItem);
