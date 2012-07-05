@@ -68,7 +68,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ControllerExtensions.cs" />
+    <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CatalogueViewModel.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +164,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Structure.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Views\Home\NotFound.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
