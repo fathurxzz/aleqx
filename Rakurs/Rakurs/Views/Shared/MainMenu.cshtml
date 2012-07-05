@@ -3,20 +3,17 @@
 <div id="mainMenu">
     <table>
         <tr>
-        @foreach (var item in Model.OrderBy(m=>m.SortOrder))
+        @foreach (var item in Model.Where(m=>!m.IsMainPage).OrderBy(m=>m.SortOrder))
         {
-            
+            <td>
+                @Html.ActionLink(item.Title,"Index","Home",null,new{@class=item.Selected?"selected":""})
+            </td>
         }
 
-            <td>
+            @*<td>
                 <a href="#" class="selected">Готовые интерьеры</a>
-            </td>
-            <td>
-                <a href="#">Наши партнеры</a>
-            </td>
-            <td>
-                <a href="#">Контактные сведения</a>
-            </td>
+            </td>*@
+            
         </tr>
     </table>
 </div>
