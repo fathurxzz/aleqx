@@ -53,7 +53,8 @@ namespace Rakurs.Models
 
         private void FetchMainMenuItems(IEnumerable<Content> contentList)
         {
-            var menuItems = contentList.Select(c => new MenuItem { Name = c.Name, Title = c.Title, SortOrder = c.SortOrder });
+            MainMenu = new Menu();
+            var menuItems = contentList.Select(c => new MenuItem { Name = c.Name, Title = c.Title, SortOrder = c.SortOrder,IsMainPage = c.MainPage});
             foreach (var menuItem in menuItems)
             {
                 MainMenu.Add(menuItem);

@@ -12,6 +12,7 @@ namespace Rakurs.Helpers
         {
 
         }
+
         public HttpNotFoundException(string objectName)
             : base(404, objectName + " not found")
         {
