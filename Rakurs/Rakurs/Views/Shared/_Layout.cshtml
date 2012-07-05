@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Rakurs.Models
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -25,7 +26,7 @@
             </div>
         </div>
         
-        @Html.Partial("MainMenu")
+        @Html.Partial("MainMenu", (Menu)ViewBag.MainMenu ?? new Menu())
         
         <div id="contentContainer">
             @RenderSection("TopText", false)

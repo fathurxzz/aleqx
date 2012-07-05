@@ -3,15 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Rakurs.Helpers;
 using Rakurs.Models;
 
 namespace Rakurs.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            return View();
+            using (var context = new StructureContainer())
+            {
+                var model = new SiteViewModel(context, id);
+                this.SetSeoContent(model);
+                ViewBag.MainMenu = model.MainMenu;
+                ViewBag.isHomePage = model.IsHomePage;
+                return View(model);
+            }
+        }
+
+        public ActionResult NotFound()
+        {
+            using (var context = new StructureContainer())
+            {
+                SiteViewModel model = new SiteViewModel(context, null);
+                ViewBag.MainMenu = model.MainMenu;
+                return View(model);
+            }
         }
     }
 }

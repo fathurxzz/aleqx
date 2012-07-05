@@ -1,6 +1,13 @@
-﻿<div id="mainMenu">
+﻿@model Rakurs.Models.Menu
+           
+<div id="mainMenu">
     <table>
         <tr>
+        @foreach (var item in Model.OrderBy(m=>m.SortOrder))
+        {
+            
+        }
+
             <td>
                 <a href="#" class="selected">Готовые интерьеры</a>
             </td>
