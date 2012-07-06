@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Rakurs.Models.Category>
+<script type="text/javascript">
+    $(function () {
+        $("#customFancyCloseButton").click(function () {
+            parent.$.fancybox.close();
+            //$("#catalogueLink").removeClass("selected");
+        });
+    });
+</script>
+
+<div id="categoriesSelector">
+<div id="customFancyCloseButton"></div>
+<div class="line top">
+<div class="title">
+Выберите категорию интерьеров:
+</div>
+</div>
+@foreach (var item in Model.OrderBy(c=>c.SortOrder))
+{
+    <div class="categotyItem">
+
+        @Html.ActionLink(item.Title,"Index","Home")
+        
+    </div>
+}
+<div class="clear"></div>
+<div class="line bottom">
+</div>
+
+</div>

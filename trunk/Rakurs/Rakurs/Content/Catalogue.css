@@ -40,3 +40,68 @@
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
 }
+
+#categoriesSelector
+{
+    width: 550px;
+    background-color: #fff;
+    padding: 0 75px;
+    
+}
+
+#categoriesSelector .line
+{
+    height: 1px;
+    background-color: #c01e2e;
+}
+
+#categoriesSelector .line.top
+{
+    margin-top: 60px;
+    margin-bottom: 25px;
+}
+
+#categoriesSelector .line.bottom
+{
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.categotyItem
+{
+    float: left;
+    padding: 20px 15px;
+}
+
+.categotyItem a
+{
+    font-family: PFBeauSansProLightItalic;
+    font-size: 15px;
+    color: #448ccb;
+}
+
+#categoriesSelector .title
+{
+    font-family: PFBeauSansProLight;
+    font-size: 18px;
+    color:  #c01e2e;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    width: 300px;
+    margin-left: -150px;
+    height: 26px;
+    margin-top: -13px;
+    background-color: #fff;
+}
+
+#customFancyCloseButton
+{
+    position: absolute;
+    width: 30px;
+    height: 31px;
+    background-image: url('img/fancy-close.gif');
+    top: 10px;
+    cursor: pointer;
+    left: 660px;
+}

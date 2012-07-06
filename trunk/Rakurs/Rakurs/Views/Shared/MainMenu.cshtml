@@ -5,6 +5,8 @@
             @foreach (var item in Model.Where(m => !m.IsMainPage).OrderBy(m => m.SortOrder))
             {
                 <td class="mainMenuItem">
+                    
+                    
                     <div class="adminLinksContainer">
                         @Html.Raw(Html.ActionLink("[Image]", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
                         @if (item.IsGalleryMenuItem)
@@ -17,7 +19,15 @@
                         }
                         
                     </div>
-                    @Html.ActionLink(item.Title, "Index", "Home", new { id = item.ContentName }, new { @class = item.Selected ? "selected" : "" })
+
+                    @if (item.IsGalleryMenuItem)
+                    {
+                        @Html.ActionLink(item.Title, "Categories", "Home", new { id = item.ContentName }, new { @class = "fancy ", id = "catalogueLink" });
+                    }
+                    else
+                    {
+                        @Html.ActionLink(item.Title, "Index", "Home", new { id = item.ContentName }, new { @class = item.Selected ? "selected" : "" })
+                    }
                 </td>
             }
         </tr>

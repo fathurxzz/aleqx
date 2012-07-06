@@ -31,5 +31,14 @@ namespace Rakurs.Controllers
                 return View(model);
             }
         }
+
+        public ActionResult Categories()
+        {
+            using (var context = new StructureContainer())
+            {
+                var categories = context.Category.Where(c => c.CategoryId == null).ToList();
+                return PartialView("Categories", categories);
+            }
+        }
     }
 }
