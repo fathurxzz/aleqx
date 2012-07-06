@@ -45,8 +45,7 @@
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="100" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="255" />
     <Property Name="PageTitle" Type="nchar" Nullable="false" MaxLength="255" />
-    <Property Name="TopText" Type="longtext" Nullable="true" />
-    <Property Name="BottomText" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
@@ -202,8 +201,7 @@
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="100" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="255" />
           <Property Type="String" Name="PageTitle" Nullable="false" FixedLength="true" MaxLength="255" />
-          <Property Type="String" Name="TopText" />
-          <Property Type="String" Name="BottomText" />
+          <Property Type="String" Name="Text" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
@@ -290,8 +288,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
-          <ScalarProperty Name="TopText" ColumnName="TopText" />
-          <ScalarProperty Name="BottomText" ColumnName="BottomText" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
@@ -366,13 +363,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Structure" >
-        <EntityTypeShape EntityType="Structure.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7427376302083331" />
+        <EntityTypeShape EntityType="Structure.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5783902994791665" />
         <EntityTypeShape EntityType="Structure.Category" Width="1.5" PointX="3.125" PointY="0.75" Height="2.41404296875" />
         <AssociationConnector Association="Structure.CategoryCategory">
-          <ConnectorPoint PointX="3.125" PointY="1.5912914663461539" />
-          <ConnectorPoint PointX="2.875" PointY="1.5912914663461539" />
-          <ConnectorPoint PointX="2.875" PointY="2.340167217548077" />
-          <ConnectorPoint PointX="3.125" PointY="2.340167217548077" />
+          <ConnectorPoint PointX="3.6569230769230767" PointY="0.75" />
+          <ConnectorPoint PointX="3.6569230769230767" PointY="0.5" />
+          <ConnectorPoint PointX="4.1034615384615378" PointY="0.5" />
+          <ConnectorPoint PointX="4.1034615384615378" PointY="0.75" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="1.7566536458333339" />
         <AssociationConnector Association="Structure.CategoryProduct">

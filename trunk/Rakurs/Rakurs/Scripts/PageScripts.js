@@ -4,6 +4,7 @@
             if (!window.isHomePage) {
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
             }
+            
         });
     }
 };

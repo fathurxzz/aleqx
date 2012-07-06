@@ -574,48 +574,24 @@ namespace Rakurs.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String TopText
+        public global::System.String Text
         {
             get
             {
-                return _TopText;
+                return _Text;
             }
             set
             {
-                OnTopTextChanging(value);
-                ReportPropertyChanging("TopText");
-                _TopText = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("TopText");
-                OnTopTextChanged();
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
             }
         }
-        private global::System.String _TopText;
-        partial void OnTopTextChanging(global::System.String value);
-        partial void OnTopTextChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String BottomText
-        {
-            get
-            {
-                return _BottomText;
-            }
-            set
-            {
-                OnBottomTextChanging(value);
-                ReportPropertyChanging("BottomText");
-                _BottomText = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("BottomText");
-                OnBottomTextChanged();
-            }
-        }
-        private global::System.String _BottomText;
-        partial void OnBottomTextChanging(global::System.String value);
-        partial void OnBottomTextChanged();
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

@@ -1,1 +1,65 @@
-﻿
+﻿.adminLinkContainer
+{
+    text-align: center;
+}
+
+a.adminLink
+{
+    color:#0000ff !important;
+    font-size:12px;
+    font-weight:normal;
+    font-style:italic;
+    text-decoration:underline;
+}
+
+.adminLinksContainer
+{
+    height: 25px;
+    margin-top: -25px;
+    display: none;
+}
+
+.mainMenuItem
+{
+    
+}
+
+
+
+a.pictureLink
+{
+    width:16px;
+    height:15px;
+    display:inline-block;
+    background-position:0 -15px;
+    text-decoration:none !important;
+    vertical-align: top;
+}
+
+a.pictureLink:hover
+{
+    background-position:0 0;
+    text-decoration:none !important;
+}
+
+a.pictureLinkSubItem
+{
+    width:21px;
+    height:21px;
+    display:inline-block;
+
+    background-position:0 -21px;
+    text-decoration:none !important;
+
+}
+
+a.pictureLinkSubItem:hover
+{
+    background-position:0 0;
+    text-decoration:none !important;
+}
+
+a.add{background-image:url('img/admin/add.gif');}
+a.edit{background-image:url('img/admin/edit.gif');}
+a.delete{background-image:url('img/admin/delete.gif');}
+a.addSubItem{background-image:url('img/admin/add-subitem.gif');}
