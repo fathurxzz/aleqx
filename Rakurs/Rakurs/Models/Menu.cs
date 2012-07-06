@@ -5,17 +5,25 @@ using System.Web;
 
 namespace Rakurs.Models
 {
-    public class Menu:List<MenuItem>
+    public class Menu:List<RakursMenuItem>
     {
 
     }
 
     public class MenuItem
     {
+        public int ContentId { get; set; }
+        public string ContentName { get; set; }
         public string Title { get; set; }
-        public string Name { get; set; }
         public int SortOrder { get; set; }
         public bool IsMainPage { get; set; }
         public bool Selected { get; set; }
+    }
+
+
+    public class RakursMenuItem:MenuItem
+    {
+        public bool IsGalleryMenuItem { get; set; }
+
     }
 }

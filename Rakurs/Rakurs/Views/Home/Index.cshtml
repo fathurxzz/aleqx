@@ -1,19 +1,28 @@
-﻿@{
-    ViewBag.Title = "Ракурс";
-}
-@section BottomText
+﻿@model Rakurs.Models.SiteViewModel
+
+<div class="adminLinkContainer">
+@if (Model.Content.MainPage)
 {
-    <div id="bottomText" class="contentText">
-        <div class="title">
-            Немного о Ракурсе</div>
-            <div class="separator"></div>
-        Компания «Ракурс» ведет свою деятельность с 2002 года. Нашими постоянными партнерами-поставщиками
-        являются ведущие производители Украины. Структура и стиль работы нашей компании
-        организованы таким образом, чтобы создать максимально удобные условия для архитекторов
-        и дизайнеров, решивших воспользоваться нашими услугами. Компания «Ракурс» предлагает
-        следующую продукцию: элитные двери - входные и межкомнатные, паркет, паркетную доску
-        и услуги по устройству полов, художественные витражи, кованые изделия. Для клиентов,
-        самостоятельно создающих интерьер своей квартиры или дома мы поможем произвести
-        необходимые расчеты, выполним эскизы и чертежи изделий.
-    </div>
+    @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new {Area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+}
+</div>
+@section Text
+{
+    @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Title) || !string.IsNullOrEmpty(Model.Content.Text)))
+    {
+        <div id="bottomText" class="contentText">
+            @if (!string.IsNullOrEmpty(Model.Content.Title))
+            {
+                <div class="title">
+                    @Model.Content.Title</div>
+                <div class="separator">
+                </div>
+            }
+            
+            @if (!string.IsNullOrEmpty(Model.Content.Text))
+            {
+                @Html.Raw(Model.Content.Text)
+            }
+        </div>
+    }
 }

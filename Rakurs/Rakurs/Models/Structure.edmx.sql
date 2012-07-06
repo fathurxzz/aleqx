@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/05/2012 14:11:48
+-- Date Created: 07/06/2012 14:13:46
 -- Generated from EDMX file: D:\projects\Rakurs\Rakurs\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -46,8 +46,7 @@ CREATE TABLE `Content` (
     `Name` varchar( 100 )  NOT NULL,
     `Title` varchar( 255 )  NOT NULL,
     `PageTitle` varchar( 255 )  NOT NULL,
-    `TopText` longtext  NULL,
-    `BottomText` longtext  NULL,
+    `Text` longtext  NULL,
     `SortOrder` int  NOT NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
