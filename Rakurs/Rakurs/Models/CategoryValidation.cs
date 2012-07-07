@@ -7,13 +7,13 @@ using System.Web;
 
 namespace Rakurs.Models
 {
-    [MetadataType(typeof(ContentValidation))]
-    public partial class Content
+    [MetadataType(typeof(CategoryValidation))]
+    public partial class Category
     {
-
+         
     }
 
-    public class ContentValidation
+    public class CategoryValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Идентификатор")]
@@ -24,18 +24,8 @@ namespace Rakurs.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Заголовок в шапке обозревателя")]
-        public string PageTitle { get; set; }
-
-        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
-
-        [DisplayName("Описание (для поисковиков)")]
-        public string SeoDescription { get; set; }
-
-        [DisplayName("Ключевые слова (для поисковиков)")]
-        public string SeoKeywords { get; set; }
 
         [DisplayName("Содержимое")]
         public string Text { get; set; }

@@ -10,11 +10,39 @@ namespace Rakurs.Areas.Admin.Controllers
     //[Authorize]
     public class ContentController : Controller
     {
-        
+
         public ActionResult Add()
         {
-            return View();
+            return View(new Content { SortOrder = 0 });
         }
+
+        [HttpPost]
+        public ActionResult Add(FormCollection form)
+        {
+            using (var context = new StructureContainer())
+            {
+                var content = new Content { MainPage = false, IsGallery = false };
+
+                TryUpdateModel(content, new[]
+                                            {
+                                                "Name",
+                                                "Title",
+                                                "PageTitle",
+                                                "SortOrder",
+                                                "SeoDescription",
+                                                "SeoKeywords"
+                                            });
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
+
+                context.AddToContent(content);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { id = content.Name, area = "" });
+            }
+        }
+
+
 
         public ActionResult Edit(int id)
         {
@@ -52,7 +80,7 @@ namespace Rakurs.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return RedirectToAction("Index", "Home", new {Area = ""});
+            return RedirectToAction("Index", "Home", new { Area = "" });
         }
     }
 }

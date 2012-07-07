@@ -30,6 +30,12 @@
                     }
                 </td>
             }
+
+            <td>
+                <div class="adminLinksStaticContainer">
+                    @Html.Raw(Html.ActionLink("[Image]", "Add", "Content", new { area = "Admin" }, new { @class = "pictureLink add", title = "Добавить страницу контента" }).ToString().Replace("[Image]", ""))
+                </div>
+            </td>
         </tr>
     </table>
 </div>

@@ -79,6 +79,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -87,6 +88,7 @@
     <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
+    <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
@@ -198,6 +200,7 @@
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Add.cshtml" />
     <None Include="Content\fonts\PFBeauSansPro-Italic.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-Light.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-LightItal.ttf" />
