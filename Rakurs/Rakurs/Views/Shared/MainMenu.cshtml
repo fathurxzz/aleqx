@@ -36,6 +36,12 @@
                     @Html.Raw(Html.ActionLink("[Image]", "Add", "Content", new { area = "Admin" }, new { @class = "pictureLink add", title = "Добавить страницу контента" }).ToString().Replace("[Image]", ""))
                 </div>
             </td>
+            <td>
+                <div class="adminLinksStaticContainer">
+                    @Html.ActionLink("Список атрибутов","Index","ProductAttributes",new{Area="Admin"},new{@class="adminLink"})
+                </div>
+            </td>
+
         </tr>
     </table>
 </div>

@@ -38,7 +38,11 @@
 </head>
 <body>
     <div id="page">
+        <div class="logOutLink">
+        @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { Area = "" }, new { @class = "adminLink" })
+        </div>
         <div id="header">
+        
             <div id="logoContainer">
                 <div id="logo">
                 </div>
