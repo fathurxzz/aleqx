@@ -998,13 +998,11 @@ namespace Rakurs.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="productId">Initial value of the ProductId property.</param>
-        public static ProductAttribute CreateProductAttribute(global::System.Int32 id, global::System.String title, global::System.Int32 productId)
+        public static ProductAttribute CreateProductAttribute(global::System.Int32 id, global::System.String title)
         {
             ProductAttribute productAttribute = new ProductAttribute();
             productAttribute.Id = id;
             productAttribute.Title = title;
-            productAttribute.ProductId = productId;
             return productAttribute;
         }
 
@@ -1061,30 +1059,6 @@ namespace Rakurs.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ProductId
-        {
-            get
-            {
-                return _ProductId;
-            }
-            set
-            {
-                OnProductIdChanging(value);
-                ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ProductId");
-                OnProductIdChanged();
-            }
-        }
-        private global::System.Int32 _ProductId;
-        partial void OnProductIdChanging(global::System.Int32 value);
-        partial void OnProductIdChanged();
 
         #endregion
     

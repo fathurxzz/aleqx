@@ -78,6 +78,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAttributesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -201,6 +202,9 @@
     <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
     <None Include="Content\fonts\PFBeauSansPro-Italic.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-Light.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-LightItal.ttf" />

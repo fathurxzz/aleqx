@@ -1,4 +1,9 @@
-﻿.field-validation-error
+﻿.logOutLink
+{
+    text-align: center;
+}
+
+.field-validation-error
 {
     color: red;
 }
@@ -11,9 +16,10 @@
 a.adminLink
 {
     color:#0000ff !important;
+    font-family: Tahoma;
     font-size:12px;
     font-weight:normal;
-    font-style:italic;
+    font-style:normal;
     text-decoration:underline;
 }
 

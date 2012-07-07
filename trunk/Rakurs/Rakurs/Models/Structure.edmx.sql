@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/07/2012 13:40:24
+-- Date Created: 07/07/2012 17:35:22
 -- Generated from EDMX file: D:\projects\Rakurs\Rakurs\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -80,8 +80,7 @@ CREATE TABLE `Product` (
 
 CREATE TABLE `ProductAttribute` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 100 )  NOT NULL,
-    `ProductId` int  NOT NULL
+    `Title` varchar( 100 )  NOT NULL
 );
 
 -- Creating table 'CategoryProductAttribute'
