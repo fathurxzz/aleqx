@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/07/2012 09:03:00
+-- Date Created: 07/07/2012 13:40:24
 -- Generated from EDMX file: D:\projects\Rakurs\Rakurs\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `rakurs`;
-CREATE DATABASE `rakurs`;
-USE `rakurs`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -65,7 +62,9 @@ CREATE TABLE `Category` (
     `SortOrder` int  NOT NULL,
     `CategoryId` int  NULL,
     `Text` longtext  NULL,
-    `Name` longtext  NOT NULL
+    `Name` longtext  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'Product'

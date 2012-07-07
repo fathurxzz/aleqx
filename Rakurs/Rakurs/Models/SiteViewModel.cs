@@ -9,7 +9,7 @@ namespace Rakurs.Models
     public class SiteViewModel
     {
         public Content Content { get; set; }
-        public Menu MainMenu { get; set; }
+        public RakursSiteMenu MainMenu { get; set; }
         public bool IsHomePage { get; set; }
         public string Title { get; set; }
         public string SeoDescription { get; set; }
@@ -17,7 +17,7 @@ namespace Rakurs.Models
 
         private readonly StructureContainer _context;
 
-        public SiteViewModel(StructureContainer context, string contentName, bool loadContent = true)
+        public SiteViewModel(StructureContainer context, string contentName)
         {
             Title = "Ракурс";
             _context = context;
@@ -25,41 +25,39 @@ namespace Rakurs.Models
             var contentList = _context.Content.ToList();
             FetchMainMenuItems(contentList, contentName);
 
-            if (loadContent)
+            Content content = null;
+            if (!string.IsNullOrEmpty(contentName))
             {
-                Content content;
-                if (!string.IsNullOrEmpty(contentName))
+                content = contentList.Where(c => c.Name == contentName).FirstOrDefault();
+                if (content == null)
                 {
-                    content = contentList.Where(c => c.Name == contentName).FirstOrDefault();
-                    if (content == null)
-                    {
-                        throw new HttpNotFoundException();
-                    }
-                }
-                else
-                {
-                    content = context.Content.FirstOrDefault(c => c.MainPage);
-                    IsHomePage = true;
-                }
-                Content = content;
-                if (content != null)
-                {
-                    Title += " - " + content.Title;
-                    SeoDescription = content.SeoDescription;
-                    SeoKeywords = content.SeoKeywords;
+                    throw new HttpNotFoundException();
                 }
             }
+            else if (contentName == "")
+            {
+                content = context.Content.FirstOrDefault(c => c.MainPage);
+                IsHomePage = true;
+            }
+
+            Content = content;
+            if (content != null)
+            {
+                Title += " - " + content.Title;
+                SeoDescription = content.SeoDescription;
+                SeoKeywords = content.SeoKeywords;
+            }
+
         }
 
-        private void FetchMainMenuItems(IEnumerable<Content> contentList,string contentName)
+        private void FetchMainMenuItems(IEnumerable<Content> contentList, string contentName)
         {
-            MainMenu = new Menu();
-            var menuItems = contentList.Select(c => new RakursMenuItem { ContentId = c.Id, ContentName = c.Name, Title = c.Title, SortOrder = c.SortOrder,IsMainPage = c.MainPage,Selected =c.Name==contentName,IsGalleryMenuItem = c.IsGallery});
+            MainMenu = new RakursSiteMenu();
+            var menuItems = contentList.Select(c => new RakursMenuItem { ContentId = c.Id, ContentName = c.Name, Title = c.Title, SortOrder = c.SortOrder, IsMainPage = c.MainPage, Selected = c.Name == contentName, IsGalleryMenuItem = c.IsGallery });
             foreach (var menuItem in menuItems)
             {
                 MainMenu.Add(menuItem);
             }
         }
-
     }
 }

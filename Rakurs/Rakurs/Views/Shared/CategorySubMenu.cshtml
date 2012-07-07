@@ -1,17 +1,24 @@
-﻿<div id="submenu">
-        <table>
-            <tr>
-                <td class="separator"></td>
+﻿@model Rakurs.Models.Menu
+<div id="submenu">
+    <table>
+        <tr>
+            <td class="separator">
+            </td>
+            @foreach (var item in Model)
+            {
                 <td>
-                    Входные
+                    @if (item.Selected)
+                    {
+                        @item.Title
+                    }
+                    else
+                    {
+                        @Html.ActionLink(item.Title, "Index", "Catalogue", new { category = @ViewBag.CategoryName, subCategory = item.ContentName },null)
+                    }
                 </td>
-                <td>
-                    <a href="#">Межкомнатные</a>
-                </td>
-                <td>
-                    <a href="#">Еще какие-нибудь</a>
-                </td>
-                <td class="separator"></td>
-            </tr>
-        </table>
-    </div>
+            }
+            <td class="separator">
+            </td>
+        </tr>
+    </table>
+</div>

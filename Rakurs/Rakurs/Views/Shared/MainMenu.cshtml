@@ -1,4 +1,4 @@
-﻿@model Rakurs.Models.Menu
+﻿@model Rakurs.Models.RakursSiteMenu
 <div id="mainMenu">
     <table>
         <tr>
@@ -22,7 +22,7 @@
 
                     @if (item.IsGalleryMenuItem)
                     {
-                        @Html.ActionLink(item.Title, "Categories", "Home", new { id = item.ContentName }, new { @class = "fancy ", id = "catalogueLink" });
+                        @Html.ActionLink(item.Title, "Categories", "Home", new { id = item.ContentName }, new { @class = "fancy "+(item.Selected ? "selected" : ""), id = "catalogueLink" });
                     }
                     else
                     {
