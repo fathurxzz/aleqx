@@ -1,4 +1,9 @@
-﻿.adminLinkContainer
+﻿.field-validation-error
+{
+    color: red;
+}
+
+.adminLinkContainer
 {
     text-align: center;
 }
@@ -17,6 +22,10 @@ a.adminLink
     height: 25px;
     margin-top: -25px;
     display: none;
+}
+
+.adminLinksStaticContainer
+{
 }
 
 .mainMenuItem

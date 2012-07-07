@@ -195,11 +195,13 @@ namespace Rakurs.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title)
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
+            category.Name = name;
             return category;
         }
 
@@ -328,6 +330,30 @@ namespace Rakurs.Models
         private global::System.String _Text;
         partial void OnTextChanging(global::System.String value);
         partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
 
         #endregion
     

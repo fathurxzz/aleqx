@@ -33,11 +33,47 @@ namespace Rakurs.Areas.Admin.Controllers
                     category.Parent = parent;
                 }
 
-                TryUpdateModel(category, new[] { "Title", "SortOrder" });
+                TryUpdateModel(category, new[] {"Name", "Title", "SortOrder" });
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.AddToCategory(category);
                 context.SaveChanges();
             }
+            return RedirectToAction("Index", "Home", new { Area = "" });
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            using (var context = new StructureContainer())
+            {
+                var category = context.Category.Where(c => c.Id == id).First();
+                return View(category);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Category model, FormCollection form)
+        {
+            using (var context = new StructureContainer())
+            {
+                var category = context.Category.Where(c => c.Id == model.Id).First();
+
+                TryUpdateModel(category, new[]
+                                            {
+                                                "Name",
+                                                "Title",
+                                                "SortOrder"
+                                            });
+                category.Text = HttpUtility.HtmlDecode(form["Text"]);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new {Area = "" });
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
 
