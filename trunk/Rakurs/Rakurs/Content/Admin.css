@@ -28,6 +28,18 @@ a.adminLink
 {
 }
 
+.abs
+{
+    
+    position: absolute;
+}
+
+.categotyTitle
+{
+    margin-left: 180px;
+    margin-top: 3px;
+}
+
 .mainMenuItem
 {
     
