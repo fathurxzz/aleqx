@@ -13,9 +13,9 @@ namespace Rakurs.Areas.Admin.Controllers
         //
         // GET: /Admin/Category/
 
-        public ActionResult Add(int? parentId)
+        public ActionResult Add(int? id)
         {
-            ViewData["parentId"] = parentId;
+            ViewData["parentId"] = id;
             return View(new Category{SortOrder = 0});
         }
 
@@ -38,7 +38,7 @@ namespace Rakurs.Areas.Admin.Controllers
                 context.AddToCategory(category);
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return RedirectToAction("Index", "Home", new {Area = "", id = ""});
         }
 
 
@@ -68,7 +68,7 @@ namespace Rakurs.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Home", new {Area = "" });
+                return RedirectToAction("Index", "Home", new { Area = "", id = "" });
             }
         }
 
