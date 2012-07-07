@@ -14,7 +14,7 @@ namespace Rakurs.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var model = new SiteViewModel(context, id);
+                var model = new SiteViewModel(context,  id ?? "");
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;

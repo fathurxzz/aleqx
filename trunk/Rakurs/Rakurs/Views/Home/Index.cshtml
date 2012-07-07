@@ -6,6 +6,7 @@
     @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new {Area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
 }
 </div>
+
 @section Text
 {
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Title) || !string.IsNullOrEmpty(Model.Content.Text)))

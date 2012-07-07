@@ -208,7 +208,6 @@
     <None Include="Content\fonts\PFBeauSansPro-SeBold.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-Thin.ttf" />
     <Content Include="Views\Shared\GalleryFrame.cshtml" />
-    <Content Include="Views\Shared\GalleryContent.cshtml" />
     <Content Include="Views\Shared\CategorySubMenu.cshtml" />
     <Content Include="Views\Shared\CategoryFilter.cshtml" />
     <Content Include="Views\Shared\GalleryItem.cshtml" />
@@ -218,6 +217,7 @@
     </EntityDeploy>
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Shared\Categories.cshtml" />
+    <Content Include="Views\Catalogue\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -5,7 +5,12 @@ using System.Web;
 
 namespace Rakurs.Models
 {
-    public class Menu:List<RakursMenuItem>
+    public class Menu:List<MenuItem>
+    {
+
+    }
+
+    public class RakursSiteMenu : List<RakursMenuItem>
     {
 
     }

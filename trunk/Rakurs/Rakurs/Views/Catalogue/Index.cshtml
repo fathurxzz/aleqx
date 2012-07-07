@@ -1,0 +1,44 @@
+﻿@model Rakurs.Models.CatalogueViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Text
+{
+    @if (Model.Category != null && (!string.IsNullOrEmpty(Model.Category.Title) || !string.IsNullOrEmpty(Model.Category.Text)))
+    {
+        <div id="bottomText" class="contentText">
+            @if (!string.IsNullOrEmpty(Model.Category.Title))
+            {
+                <div class="title">
+                    @Model.Category.Title</div>
+                <div class="separator">
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(Model.Category.Text))
+            {
+                @Html.Raw(Model.Category.Text)
+            }
+        </div>
+    }
+}
+@section Catalogue
+{
+    <div id="galleryContent">
+        <div class="title">@Model.Category.Title</div>
+        @if (Model.SubcategoriesMenu != null && Model.SubcategoriesMenu.Count > 0)
+        {
+            @Html.Partial("CategorySubMenu", Model.SubcategoriesMenu)
+        }
+        @Html.Partial("CategoryFilter")
+        <div id="gallery">
+            @Html.Partial("GalleryItem")
+            @Html.Partial("GalleryItem")
+            @Html.Partial("GalleryItem")
+            @Html.Partial("GalleryItem")
+            @Html.Partial("GalleryItem")
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+}
