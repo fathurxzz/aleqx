@@ -941,6 +941,30 @@ namespace Rakurs.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> ShowOnMainPage
+        {
+            get
+            {
+                return _ShowOnMainPage;
+            }
+            set
+            {
+                OnShowOnMainPageChanging(value);
+                ReportPropertyChanging("ShowOnMainPage");
+                _ShowOnMainPage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ShowOnMainPage");
+                OnShowOnMainPageChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _ShowOnMainPage = false;
+        partial void OnShowOnMainPageChanging(Nullable<global::System.Boolean> value);
+        partial void OnShowOnMainPageChanged();
 
         #endregion
     
