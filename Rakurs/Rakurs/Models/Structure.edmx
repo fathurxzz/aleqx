@@ -74,6 +74,7 @@
     <Property Name="Title" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="ImageSource" Type="longtext" Nullable="false" />
+    <Property Name="ShowOnMainPage" Type="bool" Nullable="true" DefaultValue="false" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -251,6 +252,7 @@
           <Property Type="String" Name="Description" />
           <NavigationProperty Name="ProductAttributes" Relationship="Structure.ProductProductAttribute" FromRole="Product" ToRole="ProductAttribute" />
           <Property Type="String" Name="ImageSource" Nullable="false" />
+          <Property Type="Boolean" Name="ShowOnMainPage" DefaultValue="False" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Structure.Category" Role="Category" Multiplicity="1" />
@@ -325,6 +327,7 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ShowOnMainPage" ColumnName="ShowOnMainPage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -380,10 +383,10 @@
           <ConnectorPoint PointX="4.1034615384615378" PointY="0.5" />
           <ConnectorPoint PointX="4.1034615384615378" PointY="0.75" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="2.0853483072916661" />
+        <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="2.2496956380208331" />
         <AssociationConnector Association="Structure.CategoryProduct">
-          <ConnectorPoint PointX="4.625" PointY="1.7926741536458331" />
-          <ConnectorPoint PointX="6" PointY="1.7926741536458331" />
+          <ConnectorPoint PointX="4.625" PointY="1.8748478190104168" />
+          <ConnectorPoint PointX="6" PointY="1.8748478190104168" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Structure.ProductAttribute" Width="2" PointX="3.125" PointY="4.875" Height="1.5923063151041657" />
         <AssociationConnector Association="Structure.CategoryProductAttribute">
@@ -391,7 +394,7 @@
           <ConnectorPoint PointX="3.875" PointY="4.875" />
         </AssociationConnector>
         <AssociationConnector Association="Structure.ProductProductAttribute">
-          <ConnectorPoint PointX="6.75" PointY="2.8353483072916661" />
+          <ConnectorPoint PointX="6.75" PointY="2.9996956380208331" />
           <ConnectorPoint PointX="6.75" PointY="5.6711531575520828" />
           <ConnectorPoint PointX="5.125" PointY="5.6711531575520828" />
         </AssociationConnector>
