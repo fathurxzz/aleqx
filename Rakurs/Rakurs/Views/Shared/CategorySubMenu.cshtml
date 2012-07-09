@@ -4,16 +4,20 @@
         <tr>
             <td class="separator">
             </td>
-            @foreach (var item in Model.OrderBy(c=>c.SortOrder))
+            @foreach (var item in Model.OrderBy(c => c.SortOrder))
             {
-                <td>
+                <td class="subCategoryItem">
+                    <div class="adminLinksContainer">
+                        @Html.Raw(Html.ActionLink("[Image]", "Edit", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
+                        @Html.Raw(Html.ActionLink("[Image]", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить данную категорию? Будут также удалены все подкатегории и работы.')" }).ToString().Replace("[Image]", ""))
+                    </div>
                     @if (item.Selected)
                     {
                         @item.Title
                     }
                     else
                     {
-                        @Html.ActionLink(item.Title, "Index", "Catalogue", new { category = @ViewBag.CategoryName, subCategory = item.ContentName },null)
+                        @Html.ActionLink(item.Title, "Index", "Catalogue", new { category = @ViewBag.CategoryName, subCategory = item.ContentName }, null)
                     }
                 </td>
             }

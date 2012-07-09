@@ -21,7 +21,7 @@
     </div>
     @foreach (var item in Model.OrderBy(c => c.SortOrder))
     {
-        <div class="categotyItem">
+        <div class="categoryItem">
             <div class="adminLinksContainer">
                 @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", parentId = item.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))
                 @Html.Raw(Html.ActionLink("[Image]", "Edit", "Category", new { area = "Admin", id = item.Id }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))

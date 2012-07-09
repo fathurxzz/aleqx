@@ -1,11 +1,14 @@
 ﻿var AdminBasePageExtender = {
     initialize: function AdminBasePageExtender_initialize() {
         $(function () {
-            $(".categotyItem, .mainMenuItem").hover(function () {
+            $(".subCategoryItem, .categoryItem, .mainMenuItem").hover(function () {
                 $(this).children(".adminLinksContainer").css("display", "block");
             });
 
-            $(".categotyItem, .mainMenuItem").mouseleave(function () {
+
+
+
+            $(".subCategoryItem, .categoryItem, .mainMenuItem").mouseleave(function () {
                 $(".adminLinksContainer").css("display", "none");
             });
         });

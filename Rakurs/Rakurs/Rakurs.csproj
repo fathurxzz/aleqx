@@ -79,6 +79,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="Helpers\ControllerExtensions.cs" />
     <Compile Include="Helpers\Exceptions.cs" />
+    <Compile Include="Helpers\FormCollectionExtender.cs" />
+    <Compile Include="Helpers\GraphicsHelper.cs" />
+    <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -205,6 +209,7 @@
     <Content Include="Areas\Admin\Views\ProductAttributes\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributes\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <None Include="Content\fonts\PFBeauSansPro-Italic.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-Light.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-LightItal.ttf" />
@@ -213,7 +218,7 @@
     <None Include="Content\fonts\PFBeauSansPro-Thin.ttf" />
     <Content Include="Views\Shared\GalleryFrame.cshtml" />
     <Content Include="Views\Shared\CategorySubMenu.cshtml" />
-    <Content Include="Views\Shared\CategoryFilter.cshtml" />
+    <Content Include="Views\Shared\CategoryAttributeFilter.cshtml" />
     <Content Include="Views\Shared\GalleryItem.cshtml" />
     <EntityDeploy Include="Models\Structure.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

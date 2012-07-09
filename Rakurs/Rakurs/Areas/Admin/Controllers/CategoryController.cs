@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Rakurs.Helpers;
 using Rakurs.Models;
 
 namespace Rakurs.Areas.Admin.Controllers
@@ -15,8 +16,14 @@ namespace Rakurs.Areas.Admin.Controllers
 
         public ActionResult Add(int? id)
         {
-            ViewData["parentId"] = id;
-            return View(new Category{SortOrder = 0});
+            using (var context = new StructureContainer())
+            {
+                var attributes = context.ProductAttribute.ToList();
+                ViewBag.Attributes = attributes;
+
+                ViewData["parentId"] = id;
+                return View(new Category {SortOrder = 0});
+            }
         }
 
         [HttpPost]
@@ -24,6 +31,9 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
+                
+
+
                 var category = new Category();
 
                 if (!string.IsNullOrEmpty(form["parentId"]))
@@ -32,6 +42,25 @@ namespace Rakurs.Areas.Admin.Controllers
                     var parent = context.Category.Where(c => c.Id == parentId).First();
                     category.Parent = parent;
                 }
+
+
+                var attributes = context.ProductAttribute.ToList();
+                PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr", "parentId");
+                foreach (var kvp in postData)
+                {
+                    var attribute = attributes.First(a => a.Id == kvp.Key);
+                    if (kvp.Value)
+                    {
+                        if (!category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Add(attribute);
+                    }
+                    else
+                    {
+                        if (category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Remove(attribute);
+                    }
+                }
+
 
                 TryUpdateModel(category, new[] {"Name", "Title", "SortOrder" });
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
@@ -46,7 +75,9 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var category = context.Category.Where(c => c.Id == id).First();
+                var category = context.Category.Include("Parent").Include("ProductAttributes").Where(c => c.Id == id).First();
+                var attributes = context.ProductAttribute.ToList();
+                ViewBag.Attributes = attributes;
                 return View(category);
             }
         }
@@ -56,7 +87,7 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var category = context.Category.Where(c => c.Id == model.Id).First();
+                var category = context.Category.Include("Parent").Where(c => c.Id == model.Id).First();
 
                 TryUpdateModel(category, new[]
                                             {
@@ -66,14 +97,32 @@ namespace Rakurs.Areas.Admin.Controllers
                                             });
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
 
+                var attributes = context.ProductAttribute.ToList();
+                PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr", "parentId");
+                foreach (var kvp in postData)
+                {
+                    var attribute = attributes.First(a => a.Id == kvp.Key);
+                    if (kvp.Value)
+                    {
+                        if (!category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Add(attribute);
+                    }
+                    else
+                    {
+                        if (category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Remove(attribute);
+                    }
+                }
+
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Home", new { Area = "", id = "" });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent!=null? category.Parent.Name:category.Name });
             }
         }
 
         public ActionResult Delete(int id)
         {
+            throw new NotImplementedException("Удаление категорий пока не реализовано");
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
 

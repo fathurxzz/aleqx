@@ -67,13 +67,20 @@
     margin-bottom: 60px;
 }
 
-.categotyItem
+.subCategoryItem
+{
+    
+}
+
+
+
+.categoryItem
 {
     float: left;
     padding: 20px 15px;
 }
 
-.categotyItem a
+.categoryItem a
 {
     font-family: PFBeauSansProLightItalic;
     font-size: 15px;

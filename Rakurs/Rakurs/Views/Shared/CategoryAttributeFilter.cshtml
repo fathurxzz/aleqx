@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Rakurs.Models.ProductAttribute>
+<div id="categoryFilter">
+    <div class="categoryFilterTitle">
+        Показывать только:</div>
+    <table>
+        <tr>
+            @foreach (var item in Model)
+            {
+                if (item.Id == ViewBag.Filter)
+                {
+                <td>
+                    <span>@item.Title</span>
+                </td>
+                }
+                else
+                {
+                <td>
+                    @Html.ActionLink(item.Title, "Index", "Catalogue", new { filter = item.Id }, null)
+                </td>
+                }
+            }
+            
+            @if (ViewBag.Filter == null)
+            {
+                <td>
+                    <span>Все</span>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Все", "Index", "Catalogue")
+                </td>
+            }
+        </tr>
+    </table>
+</div>
