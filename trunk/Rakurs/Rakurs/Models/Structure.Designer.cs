@@ -806,11 +806,13 @@ namespace Rakurs.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId)
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId, global::System.String imageSource)
         {
             Product product = new Product();
             product.Id = id;
             product.CategoryId = categoryId;
+            product.ImageSource = imageSource;
             return product;
         }
 
@@ -915,6 +917,30 @@ namespace Rakurs.Models
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     
