@@ -1,32 +1,23 @@
 ﻿@using Rakurs.Models
 @model Rakurs.Models.Category
+
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>
-    Add</h2>
+
+<h2>Edit</h2>
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-@using (Html.BeginForm())
-{
+
+@using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    @Html.Hidden("parentId")
-
-
-    
-    
-    
-    
     <fieldset>
         <legend>Category</legend>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+
+        @Html.HiddenFor(model => model.Id)
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
         </div>
@@ -34,6 +25,7 @@
             @Html.EditorFor(model => model.Title)
             @Html.ValidationMessageFor(model => model.Title)
         </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.SortOrder)
         </div>
@@ -41,26 +33,24 @@
             @Html.EditorFor(model => model.SortOrder)
             @Html.ValidationMessageFor(model => model.SortOrder)
         </div>
-        <div class="editor-label">
-            Атрибуты
-        </div>
-        <div class="editor-field">
-            @{
-    var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
-       foreach (var item in attributes)
-       {
-                @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;") @item.Title<br />
-       }
-            }
-        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Text)
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
+            @Html.EditorFor(model => model.Text)
             @Html.ValidationMessageFor(model => model.Text)
         </div>
-          <div class="editor-label">
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.SeoDescription)
         </div>
         <div class="editor-field">
@@ -75,14 +65,30 @@
             @Html.EditorFor(model => model.SeoKeywords)
             @Html.ValidationMessageFor(model => model.SeoKeywords)
         </div>
+
+        <div class="editor-label">
+            Атрибуты
+        </div>
+        <div class="editor-field">
+            @{
+    var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+       foreach (var item in attributes)
+       {
+                @Html.CheckBox("attr_" + item.Id, Model.ProductAttributes.Contains(item))@Html.Raw("&nbsp;") @item.Title<br />
+       }
+            }
+        </div>
+
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
+
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","Catalogue",new{Area="",category=Model.Parent!=null?Model.Parent.Name: Model.Name},null)
 </div>
+
 @section Includes
 {
     <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>

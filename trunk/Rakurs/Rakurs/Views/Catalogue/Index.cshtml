@@ -26,17 +26,19 @@
 {
     <div id="galleryContent">
         <div class="title">
-        <div class="adminLinksStaticContainer abs categotyTitle">
-                    @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin",id=Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))
-                </div>
-        @Model.Category.Title
-            
+            <div class="adminLinksStaticContainer abs categotyTitle">
+                @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))
+            </div>
+            @Model.Category.Title
         </div>
         @if (Model.SubcategoriesMenu != null && Model.SubcategoriesMenu.Count > 0)
         {
             @Html.Partial("CategorySubMenu", Model.SubcategoriesMenu)
         }
-        @Html.Partial("CategoryFilter")
+        @if (Model.SubCategory!=null&& Model.SubCategory.ProductAttributes != null && Model.SubCategory.ProductAttributes.Count > 0)
+        {
+            @Html.Partial("CategoryAttributeFilter", Model.SubCategory.ProductAttributes)
+        }
         <div id="gallery">
             @Html.Partial("GalleryItem")
             @Html.Partial("GalleryItem")
