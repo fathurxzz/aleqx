@@ -6,20 +6,21 @@
             {
                 <td class="mainMenuItem">
                     
-                    
-                    <div class="adminLinksContainer">
-                        @Html.Raw(Html.ActionLink("[Image]", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
-                        @if (item.IsGalleryMenuItem)
-                        {
-                            @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin" }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить категорию" }).ToString().Replace("[Image]", ""))
-                        }
-                        else
-                        {
-                            @Html.Raw(Html.ActionLink("[Image]", "Delete", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить страницу')" }).ToString().Replace("[Image]", ""))
-                        }
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div class="adminLinksContainer">
+                            @Html.Raw(Html.ActionLink("[Image]", "Edit", "Content", new {area = "Admin", id = item.ContentId}, new {@class = "pictureLink edit", title = "Редактировать"}).ToString().Replace("[Image]", ""))
+                            @if (item.IsGalleryMenuItem)
+                            {
+                                @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new {area = "Admin"}, new {@class = "pictureLinkSubItem addSubItem", title = "Добавить категорию"}).ToString().Replace("[Image]", ""))
+                            }
+                            else
+                            {
+                                @Html.Raw(Html.ActionLink("[Image]", "Delete", "Content", new {area = "Admin", id = item.ContentId}, new {@class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить страницу')"}).ToString().Replace("[Image]", ""))
+                            }
                         
-                    </div>
-
+                        </div>
+                    }
                     @if (item.IsGalleryMenuItem)
                     {
                         @Html.ActionLink(item.Title, "Categories", "Home", new { id = item.ContentName }, new { @class = "fancy "+(item.Selected ? "selected" : ""), id = "catalogueLink" });
@@ -30,7 +31,8 @@
                     }
                 </td>
             }
-
+            @if (Request.IsAuthenticated)
+            {
             <td>
                 <div class="adminLinksStaticContainer">
                     @Html.Raw(Html.ActionLink("[Image]", "Add", "Content", new { area = "Admin" }, new { @class = "pictureLink add", title = "Добавить страницу контента" }).ToString().Replace("[Image]", ""))
@@ -38,10 +40,10 @@
             </td>
             <td>
                 <div class="adminLinksStaticContainer">
-                    @Html.ActionLink("Список атрибутов","Index","ProductAttributes",new{Area="Admin"},new{@class="adminLink"})
+                    @Html.ActionLink("Список атрибутов", "Index", "ProductAttributes", new { Area = "Admin" }, new { @class = "adminLink" })
                 </div>
             </td>
-
+            }
         </tr>
     </table>
 </div>

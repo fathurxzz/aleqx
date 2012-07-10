@@ -26,9 +26,13 @@
 {
     <div id="galleryContent">
         <div class="title">
+        @if (Request.IsAuthenticated)
+        {
             <div class="adminLinksStaticContainer abs categotyTitle">
                 @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))
             </div>
+            }
+
             @Model.Category.Title
         </div>
         @if (Model.SubcategoriesMenu != null && Model.SubcategoriesMenu.Count > 0)

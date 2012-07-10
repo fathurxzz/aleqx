@@ -9,6 +9,7 @@ using Rakurs.Models;
 
 namespace Rakurs.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
 
