@@ -1,4 +1,7 @@
-﻿.logOutLink
+﻿* {
+    
+}
+.logOutLink
 {
     text-align: center;
 }
@@ -94,4 +97,53 @@ a.addSubItem{background-image:url('img/admin/add-subitem.gif');}
 .galleryItem
 {
 padding-top: 1px;
+}
+
+.adminEditContentTable
+{
+    font-family: Tahoma;
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.adminEditContentTable td
+{
+	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+}
+
+.adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
+{
+    width: 450px;
+}
+
+
+.adminEditContentTable td span
+{
+	font-size: 11px;
+	font-weight:normal;
+}
+
+.buttonsContainer
+{
+    text-align:center;
+    margin-top: 20px;
+    font-family: Verdana;
+}
+
+.adminContentContainer
+{
+    font-family: Tahoma;
+}
+
+.adminContentContainer
+{
+    font-size: 14px;
+}
+
+.adminContentContainer h2
+{
+    font-size: 20px;
 }

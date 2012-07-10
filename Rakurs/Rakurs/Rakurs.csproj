@@ -96,6 +96,8 @@
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\ProductAttributeValidation.cs" />
+    <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Models\Structure.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +214,7 @@
     <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Content\fonts\PFBeauSansPro-Italic.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-Light.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-LightItal.ttf" />

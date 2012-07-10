@@ -5,15 +5,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="adminContentContainer">
 
+<h2>Список атрибутов изображений</h2>
+<br/>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить атрибут", "Create")
 </p>
-<table>
+<table class="adminEditContentTable">
     <tr>
         <th>
-            Title
+            Заголовок
         </th>
         <th></th>
     </tr>
@@ -24,10 +26,11 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id },new{ onclick = "return confirm('Вы действительно хотите удалить страницу')"})
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{ onclick = "return confirm('Внимание! При удалении атрибута будут удалены все ссылки с категорий и товаров на данный атрибут! Вы действительно хотите удалить данный атрибут?')"})
         </td>
     </tr>
 }
 
 </table>
+</div>

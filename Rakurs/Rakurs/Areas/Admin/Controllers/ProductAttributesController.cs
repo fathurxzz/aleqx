@@ -65,7 +65,14 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var productAttribute = context.ProductAttribute.First(pa => pa.Id == id);
+                var productAttribute = context.ProductAttribute
+                    .Include("Categories")
+                    .Include("Products")
+                    .First(pa => pa.Id == id);
+
+                productAttribute.Products.Clear();
+                productAttribute.Categories.Clear();
+
                 context.DeleteObject(productAttribute);
                 context.SaveChanges();
             }
