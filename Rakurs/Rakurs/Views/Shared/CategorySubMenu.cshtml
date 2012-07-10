@@ -7,11 +7,14 @@
             @foreach (var item in Model.OrderBy(c => c.SortOrder))
             {
                 <td class="subCategoryItem">
+                @if (Request.IsAuthenticated)
+                {
                     <div class="adminLinksContainer">
-                        @Html.Raw(Html.ActionLink("[Image]", "Create", "Product", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink add", title = "Добавить продукт" }).ToString().Replace("[Image]", ""))
-                        @Html.Raw(Html.ActionLink("[Image]", "Edit", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
-                        @Html.Raw(Html.ActionLink("[Image]", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Внимание! Приудалении категории будут также удалены все атрибуты даной категории и изображения! Вы действительно хотите удалить данную категорию?')" }).ToString().Replace("[Image]", ""))
+                        @Html.Raw(Html.ActionLink("[Image]", "Create", "Product", new {area = "Admin", id = item.ContentId}, new {@class = "pictureLink add", title = "Добавить продукт"}).ToString().Replace("[Image]", ""))
+                        @Html.Raw(Html.ActionLink("[Image]", "Edit", "Category", new {area = "Admin", id = item.ContentId}, new {@class = "pictureLink edit", title = "Редактировать"}).ToString().Replace("[Image]", ""))
+                        @Html.Raw(Html.ActionLink("[Image]", "Delete", "Category", new {area = "Admin", id = item.ContentId}, new {@class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Внимание! Приудалении категории будут также удалены все атрибуты даной категории и изображения! Вы действительно хотите удалить данную категорию?')"}).ToString().Replace("[Image]", ""))
                     </div>
+                }
                     @if (item.Selected)
                     {
                         @item.Title

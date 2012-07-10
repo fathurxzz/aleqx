@@ -8,7 +8,7 @@ using Rakurs.Models;
 
 namespace Rakurs.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class CategoryController : Controller
     {
         //

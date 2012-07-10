@@ -7,7 +7,7 @@ using Rakurs.Models;
 
 namespace Rakurs.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ContentController : Controller
     {
 

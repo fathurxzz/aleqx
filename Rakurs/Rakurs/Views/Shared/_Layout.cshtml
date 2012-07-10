@@ -4,7 +4,6 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Menu.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Gallery.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Catalogue.css")" rel="stylesheet" type="text/css" />
@@ -12,10 +11,14 @@
     <script src="@Url.Content("~/Scripts/PageScripts.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.fancybox.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/fancybox/jquery.fancybox.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/AdminScripts.js")" type="text/javascript"></script>
-    <script type="text/javascript">
-        AdminBasePageExtender.initialize();
-    </script>
+    @if (Request.IsAuthenticated)
+    {
+        <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/AdminScripts.js")" type="text/javascript"></script>
+        <script type="text/javascript">
+            AdminBasePageExtender.initialize();
+        </script>
+    }
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     <script type="text/javascript">
@@ -34,9 +37,12 @@
 </head>
 <body>
     <div id="page">
-        <div class="logOutLink">
-            @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { Area = "" }, new { @class = "adminLink" })
-        </div>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="logOutLink">
+                @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new {Area = ""}, new {@class = "adminLink"})
+            </div>
+        }
         <div id="header">
             <div id="logoContainer">
                 <div id="logo">
