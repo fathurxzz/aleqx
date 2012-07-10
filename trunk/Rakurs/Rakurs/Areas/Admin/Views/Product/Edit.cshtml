@@ -1,22 +1,28 @@
 ﻿@using Rakurs.Models
 @model Rakurs.Models.Product
+
 @{
-    ViewBag.Title = "Добавление изображения";
+    ViewBag.Title = "Редактирование изображения";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
     @Html.Hidden("CategoryId")
+    @Html.HiddenFor(model => model.Id)
+
     
-    <div>
+    
+      <div>
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
                     <h2>
-                        Добавление изображения</h2>
+                        Редактирование изображения</h2>
                 </td>
             </tr>
             <tr>
@@ -59,7 +65,7 @@
                foreach (var item in attributes)
                {
                 
-                    @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;")@item.Title<br />
+                    @Html.CheckBox("attr_" + item.Id, Model.ProductAttributes.Contains(item))@Html.Raw("&nbsp;")@item.Title<br />
                     
                }
             }
@@ -73,8 +79,6 @@
         @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "", category = ViewBag.CategoryName, subCategory = ViewBag.SubCategoryName }, null)
     </div>
 }
-<div>
-</div>
 @section Includes
 {
     <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
