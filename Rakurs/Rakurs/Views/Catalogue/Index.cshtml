@@ -35,16 +35,15 @@
         {
             @Html.Partial("CategorySubMenu", Model.SubcategoriesMenu)
         }
-        @if (Model.SubCategory!=null&& Model.SubCategory.ProductAttributes != null && Model.SubCategory.ProductAttributes.Count > 0)
+        @if (Model.SubCategory != null && Model.SubCategory.ProductAttributes != null && Model.SubCategory.ProductAttributes.Count > 0)
         {
             @Html.Partial("CategoryAttributeFilter", Model.SubCategory.ProductAttributes)
         }
         <div id="gallery">
-            @Html.Partial("GalleryItem")
-            @Html.Partial("GalleryItem")
-            @Html.Partial("GalleryItem")
-            @Html.Partial("GalleryItem")
-            @Html.Partial("GalleryItem")
+            @foreach (var product in Model.Products)
+            {
+                @Html.Partial("Product", product)
+            }
             <div class="clear">
             </div>
         </div>

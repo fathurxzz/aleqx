@@ -193,8 +193,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -211,6 +211,7 @@
     <Content Include="Areas\Admin\Views\ProductAttributes\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <None Include="Content\fonts\PFBeauSansPro-Italic.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-Light.ttf" />
     <None Include="Content\fonts\PFBeauSansPro-LightItal.ttf" />
@@ -220,7 +221,7 @@
     <Content Include="Views\Shared\GalleryFrame.cshtml" />
     <Content Include="Views\Shared\CategorySubMenu.cshtml" />
     <Content Include="Views\Shared\CategoryAttributeFilter.cshtml" />
-    <Content Include="Views\Shared\GalleryItem.cshtml" />
+    <Content Include="Views\Shared\Product.cshtml" />
     <EntityDeploy Include="Models\Structure.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Structure.Designer.cs</LastGenOutput>

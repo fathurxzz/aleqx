@@ -1,0 +1,73 @@
+﻿@using Rakurs.Models
+@model Rakurs.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("Create","Product",FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.Hidden("CategoryId")
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImageSource)
+        </div>
+        <div class="editor-field">
+           <p>
+                <input type="file" name="fileUpload" />
+            </p>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShowOnMainPage)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.ShowOnMainPage)
+            @Html.ValidationMessageFor(model => model.ShowOnMainPage)
+        </div>
+        <div class="editor-label">
+            Атрибуты
+        </div>
+        <div class="editor-field">
+            @{
+       var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+       foreach (var item in attributes)
+       {
+                @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;") @item.Title<br />
+       }
+            }
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

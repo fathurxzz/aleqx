@@ -16,7 +16,7 @@ namespace Rakurs.Models
         public CatalogueViewModel(StructureContainer context, string categoryName, string subCategoryName, int? filter=null)
             : base(context, null)
         {
-            var category = context.Category
+            var category = Context.Category
                 .Include("Children")
                 //.Include("ProductAttributes")
                 .First(c => c.Name == categoryName);
@@ -55,12 +55,33 @@ namespace Rakurs.Models
             CurrentFilterId = filter;
 
 
-            Products = context.Product.Where(p => p.CategoryId == currentCategory.Id).ToList();
+            //var productAttributes = Context.ProductAttribute.Where(p => !filter.HasValue || p.Id == filter);
+
+            var products = Context.Product.Include("ProductAttributes").Where(p => p.CategoryId == currentCategory.Id).ToList();
+            Products = ApplyFilter(products, filter);
 
 
             Title += " - " + currentCategory.Title;
             SeoDescription = currentCategory.SeoDescription;
             SeoKeywords = currentCategory.SeoKeywords;
+        }
+
+        private IEnumerable<Product> ApplyFilter(IEnumerable<Product> products, int? attributeId)
+        {
+            if (!attributeId.HasValue)
+                return products;
+            else
+            {
+                var productAttribute = Context.ProductAttribute.First(pa => pa.Id == attributeId);
+
+                return products.Where(p => p.ProductAttributes.Contains(productAttribute));
+
+                //var result = new List<Product>();
+                //foreach (var product in products)
+                //{
+
+                //}
+            }
         }
     }
 }
