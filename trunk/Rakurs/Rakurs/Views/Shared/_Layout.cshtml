@@ -52,7 +52,11 @@
         @Html.Partial("MainMenu", (RakursSiteMenu)ViewBag.MainMenu ?? new RakursSiteMenu())
         <div id="contentContainer">
             @RenderSection("TopText", false)
-            @*@Html.Partial("GalleryFrame")*@
+            
+            @RenderSection("GalleryFrame",false)
+
+            
+            
             @RenderSection("Catalogue", false)
             @RenderBody()
             @RenderSection("Text", false)
