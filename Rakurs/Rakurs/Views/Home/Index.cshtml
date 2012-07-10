@@ -4,7 +4,7 @@
     <div class="adminLinkContainer">
         @if (Model.Content.MainPage)
         {
-            @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new {Area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+            @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
         }
     </div>
 }
@@ -20,11 +20,17 @@
                 <div class="separator">
                 </div>
             }
-            
             @if (!string.IsNullOrEmpty(Model.Content.Text))
             {
                 @Html.Raw(Model.Content.Text)
             }
         </div>
+    }
+}
+@section GalleryFrame
+{
+    @if (Model.Content != null && Model.Content.MainPage)
+    {
+        @Html.Partial("GalleryFrame")
     }
 }
