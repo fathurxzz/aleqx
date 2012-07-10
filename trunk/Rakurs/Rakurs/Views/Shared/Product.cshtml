@@ -7,8 +7,9 @@
                         @Html.Raw(Html.ActionLink("[Image]", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
                         @Html.Raw(Html.ActionLink("[Image]", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить изображение')" }).ToString().Replace("[Image]", ""))
                     </div>
-
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.Corp))
+                </a>
             </div>
             <div class="sign">
                 <a href="#">@Model.Title</a>
