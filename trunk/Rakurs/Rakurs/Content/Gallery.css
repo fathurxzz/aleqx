@@ -86,6 +86,11 @@
     margin: 13px auto;
 }
 
+.galleryItem img
+{
+    border: none;
+}
+
 .galleryItemContainer .sign
 {
     text-align: center;
