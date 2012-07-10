@@ -8,7 +8,7 @@
             {
                 <td class="subCategoryItem">
                     <div class="adminLinksContainer">
-                        @Html.Raw(Html.ActionLink("[Image]", "Add", "Product", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink add", title = "Добавить продукт" }).ToString().Replace("[Image]", ""))
+                        @Html.Raw(Html.ActionLink("[Image]", "Create", "Product", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink add", title = "Добавить продукт" }).ToString().Replace("[Image]", ""))
                         @Html.Raw(Html.ActionLink("[Image]", "Edit", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
                         @Html.Raw(Html.ActionLink("[Image]", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить данную категорию? Будут также удалены все подкатегории и работы.')" }).ToString().Replace("[Image]", ""))
                     </div>

@@ -90,3 +90,8 @@ a.add{background-image:url('img/admin/add.gif');}
 a.edit{background-image:url('img/admin/edit.gif');}
 a.delete{background-image:url('img/admin/delete.gif');}
 a.addSubItem{background-image:url('img/admin/add-subitem.gif');}
+
+.galleryItem
+{
+padding-top: 1px;
+}

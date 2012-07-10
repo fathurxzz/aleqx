@@ -945,9 +945,9 @@ namespace Rakurs.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> ShowOnMainPage
+        public global::System.Boolean ShowOnMainPage
         {
             get
             {
@@ -962,8 +962,8 @@ namespace Rakurs.Models
                 OnShowOnMainPageChanged();
             }
         }
-        private Nullable<global::System.Boolean> _ShowOnMainPage = false;
-        partial void OnShowOnMainPageChanging(Nullable<global::System.Boolean> value);
+        private global::System.Boolean _ShowOnMainPage = false;
+        partial void OnShowOnMainPageChanging(global::System.Boolean value);
         partial void OnShowOnMainPageChanged();
 
         #endregion

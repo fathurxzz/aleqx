@@ -15,14 +15,14 @@ namespace Rakurs.Models
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
 
-        private readonly StructureContainer _context;
+        protected StructureContainer Context;
 
         public SiteViewModel(StructureContainer context, string contentName)
         {
             Title = "Ракурс";
-            _context = context;
+            Context = context;
 
-            var contentList = _context.Content.ToList();
+            var contentList = Context.Content.ToList();
             FetchMainMenuItems(contentList, contentName);
 
             Content content = null;

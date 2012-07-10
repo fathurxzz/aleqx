@@ -32,8 +32,8 @@ namespace Rakurs.Helpers
             //    limitHeight.Add(ThumbnailFolders[i], ThumbnailDimentions[i]);
             //}
 
-            limitWidth.Add("galleryThumbnail", 172);
-            limitHeight.Add("galleryThumbnail", 127);
+            limitWidth.Add("galleryThumbnail", 157);
+            limitHeight.Add("galleryThumbnail", 156);
 
 
 
