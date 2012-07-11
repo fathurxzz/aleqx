@@ -103,3 +103,43 @@
     font-size: 15px;
     color: #0072bc;
 }
+
+#galleryImageContainerFooter
+{
+    /*opacity: 0.6;
+    filter: alpha(opacity=30);
+    background-color: #ccc;
+    */
+    background: url('img/frame-bg.png');
+    
+    position: absolute;
+    width: 1000px;
+    height: 42px;
+    margin-top: 472px;
+}
+
+#galleryImageContainerFooter #path
+{
+    font-family: PFBeauSansProLight;
+    padding: 8px 20px;
+     font-size: 18px;
+}
+
+#galleryImageContainerFooter #path, #galleryImageContainerFooter #description
+{
+    color: #fff;
+}
+
+#galleryImageContainerFooter #path a
+{
+    color: #fff;
+}
+
+#galleryImageContainerFooter #description
+{
+    font-size: 12px;
+    font-family: PFBeauSansProRegular;
+    padding: 5px 0 15px 0;
+    position: absolute;
+    margin-left: 500px;
+}

@@ -35,6 +35,9 @@ namespace Rakurs.Helpers
             limitWidth.Add("galleryThumbnail", 157);
             limitHeight.Add("galleryThumbnail", 156);
 
+            limitWidth.Add("mainFrameThumbnail", 1000);
+            limitHeight.Add("mainFrameThumbnail", 514);
+
 
 
 

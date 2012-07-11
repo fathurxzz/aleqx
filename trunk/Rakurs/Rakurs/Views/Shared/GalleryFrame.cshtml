@@ -1,4 +1,9 @@
-﻿<div id="slogan">
+﻿@using Rakurs.Helpers
+@model IEnumerable<Rakurs.Models.Product>
+@{
+    var image = Model.FirstOrDefault();
+}
+<div id="slogan">
     От проекта &mdash; до монтажа:
 </div>
 <div id="galleryFrameContainer">
@@ -6,6 +11,34 @@
     </div>
     <div id="galleryFrame">
         <div id="galleryImageContainer">
+        <div id="leftArrow"></div>
+        <div id="rightArrow"></div>
+            <div id="galleryImageContainerFooter">
+                <div id="description">asdasdasd</div>
+                <div id="path">
+                    @if (image != null)
+                    {
+                        @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
+                        @Html.Raw(" &raquo; ")
+
+                   foreach (var pathItem in image.Path)
+                   {
+                        @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
+                        @Html.Raw(" &raquo; ")
+                   }
+                        <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
+                    }
+                    
+                </div>
+                
+                
+            </div>
+            @{
+                if (image != null)
+                {
+                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Corp))
+                }
+            }
         </div>
     </div>
     <div class="border">

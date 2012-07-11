@@ -29,8 +29,8 @@
 }
 @section GalleryFrame
 {
-    @if (Model.Content != null && Model.Content.MainPage)
+    @if (Model.Content != null && Model.Content.MainPage && Model.GalleryFrameItems != null)
     {
-        @Html.Partial("GalleryFrame")
+        @Html.Partial("GalleryFrame", Model.GalleryFrameItems)
     }
 }
