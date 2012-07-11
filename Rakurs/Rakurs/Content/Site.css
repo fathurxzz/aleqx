@@ -195,3 +195,22 @@ body {
     position: relative;
     margin: 0 auto;
 }
+
+#leftArrow, #rightArrow
+{
+    position: absolute;
+    width: 65px;
+    height: 64px;
+    top: 220px;
+}
+
+#leftArrow 
+{
+    left: 20px;
+    background: url('img/left-arrow.png');
+}
+#rightArrow 
+{
+    left: 915px;
+    background: url('img/right-arrow.png');
+}

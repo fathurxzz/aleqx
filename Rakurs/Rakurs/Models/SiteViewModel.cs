@@ -14,6 +14,8 @@ namespace Rakurs.Models
         public string Title { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
+        public IEnumerable<Product> GalleryFrameItems { get; set; }
+
 
         protected StructureContainer Context;
 
@@ -40,6 +42,11 @@ namespace Rakurs.Models
                 IsHomePage = true;
             }
 
+            if (IsHomePage)
+            {
+                GetGalleryFrameItems();
+            }
+
             Content = content;
             if (content != null)
             {
@@ -48,6 +55,21 @@ namespace Rakurs.Models
                 SeoKeywords = content.SeoKeywords;
             }
 
+        }
+
+        private void GetGalleryFrameItems()
+        {
+            var products = Context.Product.Include("Category").Where(p => p.ShowOnMainPage).ToList();
+            foreach (var product in products)
+            {
+                var cat = Context.Category.Include("Parent").First(c => c.Id == product.Category.Id);
+                product.Path = new List<PathItem>
+                                       {
+                                           new PathItem {Name = "", ParentName = cat.Parent.Name, Title = cat.Parent.Title},
+                                           new PathItem {Name = product.Category.Name, ParentName = cat.Parent.Name, Title = product.Category.Title}
+                                       };
+            }
+            GalleryFrameItems = products;
         }
 
         private void FetchMainMenuItems(IEnumerable<Content> contentList, string contentName)
