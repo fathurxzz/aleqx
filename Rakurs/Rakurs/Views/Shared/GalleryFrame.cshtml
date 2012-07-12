@@ -1,8 +1,13 @@
 ﻿@using Rakurs.Helpers
 @model IEnumerable<Rakurs.Models.Product>
 @{
-    var image = Model.FirstOrDefault();
+                    //var image = Model.FirstOrDefault();
 }
+<script type="text/javascript">
+    $(function () {
+        $('#galleryImageContainer').tinycarousel();
+    });
+</script>
 <div id="slogan">
     От проекта &mdash; до монтажа:
 </div>
@@ -11,34 +16,39 @@
     </div>
     <div id="galleryFrame">
         <div id="galleryImageContainer">
-        <div id="leftArrow"></div>
-        <div id="rightArrow"></div>
-            <div id="galleryImageContainerFooter">
-                <div id="description">asdasdasd</div>
-                <div id="path">
-                    @if (image != null)
-                    {
-                        @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
-                        @Html.Raw(" &raquo; ")
-
-                   foreach (var pathItem in image.Path)
-                   {
-                        @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
-                        @Html.Raw(" &raquo; ")
-                   }
-                        <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
-                    }
-                    
-                </div>
-                
-                
-            </div>
-            @{
-                if (image != null)
+        <a class="buttons prev" href="#"></a>
+        <a class="buttons next" href="#"></a>
+            <ul class="overview">
+                @foreach (var image in Model)
                 {
-                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Corp))
+                    <li>
+                        <div id="galleryImageContainerFooter">
+                            <div id="description">
+                                asdasdasd</div>
+                            <div id="path">
+                                @if (image != null)
+                                {
+                                    @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
+                                    @Html.Raw(" &raquo; ")
+
+                               foreach (var pathItem in image.Path)
+                               {
+                                    @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
+                                    @Html.Raw(" &raquo; ")
+                               }
+                                    <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
+                                }
+                            </div>
+                        </div>
+                        @{
+                                if (image != null)
+                                {
+                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Corp))
+                                }
+                        }
+                    </li>
                 }
-            }
+            </ul>
         </div>
     </div>
     <div class="border">
