@@ -194,23 +194,47 @@ body {
     background-color: #ccc;
     position: relative;
     margin: 0 auto;
+    overflow: hidden;
 }
 
-#leftArrow, #rightArrow
+#galleryFrame .buttons
 {
     position: absolute;
     width: 65px;
     height: 64px;
-    top: 220px;
+    top: 210px;
+    z-index: 100;
+    display: block;
 }
 
-#leftArrow 
+#galleryFrame .prev
 {
     left: 20px;
     background: url('img/left-arrow.png');
 }
-#rightArrow 
+#galleryFrame .next
 {
     left: 915px;
     background: url('img/right-arrow.png');
+}
+
+#galleryFrame .disable { visibility: hidden; }
+
+#galleryImageContainer .overview
+{
+     list-style: none; 
+     position: absolute; 
+     padding: 0; 
+     margin: 0; 
+     /*width: 1000px;*/
+     left: 0; 
+     top: 0;
+}
+#galleryImageContainer .overview li
+{
+     float: left; 
+     margin: 0; 
+     padding: 0; 
+     height: 514px; 
+     width: 1000px;
 }
