@@ -38,10 +38,6 @@ namespace Rakurs.Helpers
             limitWidth.Add("mainFrameThumbnail", 1000);
             limitHeight.Add("mainFrameThumbnail", 514);
 
-
-
-
-
         }
 
         private static Rectangle CalculateSourceRect(string name, Size sourceImage, ScaleMode scaleMode)
@@ -52,39 +48,39 @@ namespace Rakurs.Helpers
             int resultWidth;
             int resultHeight;
 
-            if (scaleMode == ScaleMode.Corp)
+
+            switch (scaleMode)
             {
+                case ScaleMode.Corp:
+                    double wRatio = (double)sourceImage.Width / (double)previewWidth;
+                    double hRatio = (double)sourceImage.Height / (double)previewHeight;
+                    double coef = (double)previewHeight / (double)previewWidth;
+                    if (wRatio < hRatio)
+                    {
+                        resultWidth = sourceImage.Width;
+                        resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
+                    }
+                    else
+                    {
+                        resultHeight = sourceImage.Height;
+                        resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
+                    }
+                    return new Rectangle(0, 0, resultWidth, resultHeight);
 
-                double wRatio = (double)sourceImage.Width / (double)previewWidth;
-                double hRatio = (double)sourceImage.Height / (double)previewHeight;
+                case ScaleMode.Insert:
+                    if (sourceImage.Width > sourceImage.Height)
+                    {
+                        int shift = (int)Math.Truncate((sourceImage.Width - sourceImage.Height) / (double)2);
+                        return new Rectangle(0, -shift, sourceImage.Width, sourceImage.Height + shift * 2);
+                    }
+                    else
+                    {
+                        int shift = (int)Math.Truncate((sourceImage.Height - sourceImage.Width) / (double)2);
+                        return new Rectangle(-shift, 0, sourceImage.Width + shift * 2, sourceImage.Height);
+                    }
 
-                double coef = (double)previewHeight / (double)previewWidth;
-
-                if (wRatio < hRatio)
-                {
-                    resultWidth = sourceImage.Width;
-                    resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
-                }
-                else
-                {
-                    resultHeight = sourceImage.Height;
-                    resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
-                }
-
-                return new Rectangle(0, 0, resultWidth, resultHeight);
-            }
-            else
-            {
-                if (sourceImage.Width > sourceImage.Height)
-                {
-                    int shift = (int)Math.Truncate((sourceImage.Width - sourceImage.Height) / (double)2);
-                    return new Rectangle(0, -shift, sourceImage.Width, sourceImage.Height + shift * 2);
-                }
-                else
-                {
-                    int shift = (int)Math.Truncate((sourceImage.Height - sourceImage.Width) / (double)2);
-                    return new Rectangle(-shift, 0, sourceImage.Width + shift * 2, sourceImage.Height);
-                }
+                default:
+                    throw new NotImplementedException("Неизвестное значение параметра ScaleMode");
             }
         }
 
