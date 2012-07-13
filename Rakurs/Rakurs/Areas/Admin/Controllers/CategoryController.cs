@@ -31,9 +31,6 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                
-
-
                 var category = new Category();
 
                 if (!string.IsNullOrEmpty(form["parentId"]))
@@ -62,12 +59,19 @@ namespace Rakurs.Areas.Admin.Controllers
                 }
 
 
-                TryUpdateModel(category, new[] {"Name", "Title", "SortOrder" });
+                TryUpdateModel(category, new[] {"Name", "Title", "SortOrder"});
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.AddToCategory(category);
                 context.SaveChanges();
+
+                return RedirectToAction("Index", "Catalogue",
+                                        new
+                                            {
+                                                Area = "", 
+                                                category = category.Parent != null ? category.Parent.Name : category.Name,
+                                                subCategory = category.Parent != null ? category.Name:null
+                                            });
             }
-            return RedirectToAction("Index", "Home", new {Area = "", id = ""});
         }
 
 

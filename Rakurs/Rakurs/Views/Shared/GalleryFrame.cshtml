@@ -16,36 +16,25 @@
     </div>
     <div id="galleryFrame">
         <div id="galleryImageContainer">
-        <a class="buttons prev" href="#"></a>
-        <a class="buttons next" href="#"></a>
+            <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
             <ul class="overview">
                 @foreach (var image in Model)
                 {
                     <li>
                         <div id="galleryImageContainerFooter">
                             <div id="description">
-                                asdasdasd</div>
+                                @image.Description
+                            </div>
                             <div id="path">
-                                @if (image != null)
-                                {
-                                    @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
-                                    @Html.Raw(" &raquo; ")
-
-                               foreach (var pathItem in image.Path)
-                               {
-                                    @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
-                                    @Html.Raw(" &raquo; ")
-                               }
-                                    <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
-                                }
+                                @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
+                                @Html.Raw(" &raquo; ")
+                                @foreach (var pathItem in image.Path) {
+                                @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
+                                @Html.Raw(" &raquo; ")
+                                } <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
                             </div>
                         </div>
-                        @{
-                                if (image != null)
-                                {
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Corp))
-                                }
-                        }
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Corp))
                     </li>
                 }
             </ul>
