@@ -50,7 +50,7 @@ namespace Rakurs.Models
             Content = content;
             if (content != null)
             {
-                Title += " - " + content.Title;
+                Title += " - " + content.PageTitle;
                 SeoDescription = content.SeoDescription;
                 SeoKeywords = content.SeoKeywords;
             }

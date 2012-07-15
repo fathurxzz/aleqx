@@ -13,16 +13,19 @@ namespace Rakurs.Models
         public int? CurrentFilterId { get; set; }
         public IEnumerable<Product> Products { get; set; }
 
-        public CatalogueViewModel(StructureContainer context, string categoryName, string subCategoryName, int? filter=null)
+        public CatalogueViewModel(StructureContainer context, string categoryName, string subCategoryName, int? filter = null)
             : base(context, null)
         {
+            var title = "Галерея";
             var category = Context.Category
                 .Include("Children")
                 //.Include("ProductAttributes")
                 .First(c => c.Name == categoryName);
             category.ProductAttributes.Load();
             Category = category;
+
             var currentCategory = category;
+            title += " - " + category.Title;
 
             if (!string.IsNullOrEmpty(subCategoryName))
             {
@@ -30,6 +33,7 @@ namespace Rakurs.Models
                 subCategory.ProductAttributes.Load();
                 SubCategory = subCategory;
                 currentCategory = subCategory;
+                title += " - " + subCategory.Title;
             }
 
             SubcategoriesMenu = new Menu();
@@ -61,7 +65,7 @@ namespace Rakurs.Models
             Products = ApplyFilter(products, filter);
 
 
-            Title += " - " + currentCategory.Title;
+            Title += " - " + title;
             SeoDescription = currentCategory.SeoDescription;
             SeoKeywords = currentCategory.SeoKeywords;
         }
