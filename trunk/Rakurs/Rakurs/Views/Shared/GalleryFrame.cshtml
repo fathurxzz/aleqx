@@ -34,7 +34,7 @@
                                 } <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
                             </div>
                         </div>
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Insert))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Auto))
                     </li>
                 }
             </ul>

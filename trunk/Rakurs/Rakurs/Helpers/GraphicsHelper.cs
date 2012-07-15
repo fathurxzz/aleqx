@@ -12,7 +12,8 @@ namespace Rakurs.Helpers
     public enum ScaleMode
     {
         Corp,
-        Insert
+        Insert,
+        Auto
     }
 
     public static class GraphicsHelper
@@ -40,14 +41,71 @@ namespace Rakurs.Helpers
 
         }
 
-        private static Rectangle CalculateSourceRect(string name, Size sourceImage, ScaleMode scaleMode)
+        private static bool IsHorizontalImage(Size imageSise)
         {
-            int previewHeight = limitHeight.ContainsKey(name) ? limitHeight[name] : 0;
-            int previewWidth = limitWidth.ContainsKey(name) ? limitWidth[name] : 0;
+            return imageSise.Width > imageSise.Height;
+        }
+
+        private static Rectangle CalculateDestRect(Size sourceImage, Size thumbImage, ScaleMode scaleMode)
+        {
+
+            int previewHeight = thumbImage.Height;
+            int previewWidth = thumbImage.Width;
+
+            int resultPreviewImageWidth = 0;
+            int resultPreviewImageHeight = 0;
+            switch (scaleMode)
+            {
+                case ScaleMode.Insert:
+
+                    //int minPreviewImageLength = previewHeight > previewWidth
+                    //    ? previewWidth
+                    //    : previewHeight;
+                    //int maxSourceImageLength = sourceImage.Width > sourceImage.Height
+                    //                               ? sourceImage.Width
+                    //                               : sourceImage.Height;
+
+                    //double ratio = (double)minPreviewImageLength / (double)maxSourceImageLength;
+
+
+                    double hRatio = (double)previewHeight/(double)sourceImage.Height;
+                    double wRatio = (double)previewWidth / (double)sourceImage.Width;
+
+                    double ratio = hRatio < wRatio ? hRatio : wRatio;
+
+                    int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+                    var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+
+
+
+                    if (previewWidth > resultSourceImageWidth)
+                    {
+                        int offset = (previewWidth - resultSourceImageWidth)/2;
+                        return new Rectangle(offset, 0, resultSourceImageWidth, resultSourceImageHeight);
+                    }
+                    else if (previewHeight > resultSourceImageHeight)
+                    {
+                        var offset = (previewHeight - resultSourceImageHeight)/2;
+                        return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
+                    }
+
+                    return new Rectangle(0, 0, resultPreviewImageWidth, resultPreviewImageHeight);
+
+
+
+                default:
+                    return new Rectangle(0, 0, thumbImage.Width, thumbImage.Height);
+            }
+
+        }
+
+        private static Rectangle CalculateSourceRect(Size sourceImage, Size thumbImage, ScaleMode scaleMode)
+        {
+            int previewHeight = thumbImage.Height;
+            int previewWidth = thumbImage.Width;
 
             int resultWidth;
             int resultHeight;
-
 
             switch (scaleMode)
             {
@@ -66,34 +124,32 @@ namespace Rakurs.Helpers
                         resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
                     }
                     return new Rectangle(0, 0, resultWidth, resultHeight);
-
-                case ScaleMode.Insert:
-                    if (sourceImage.Width > sourceImage.Height)
-                    {
-                        int shift = (int)Math.Truncate((sourceImage.Width - sourceImage.Height) / (double)2);
-                        return new Rectangle(0, -shift, sourceImage.Width, sourceImage.Height + shift * 2);
-                    }
-                    else
-                    {
-                        int shift = (int)Math.Truncate((sourceImage.Height - sourceImage.Width) / (double)2);
-                        return new Rectangle(-shift, 0, sourceImage.Width + shift * 2, sourceImage.Height);
-                    }
-
                 default:
-                    throw new NotImplementedException("Неизвестное значение параметра ScaleMode");
+                    return new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
             }
         }
 
+
+
         public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode)
         {
-            Rectangle sourceRect = CalculateSourceRect(name, image.Size, scaleMode);
+            var thumbImage = new Size(limitWidth.ContainsKey(name) ? limitWidth[name] : 0,
+                                      limitHeight.ContainsKey(name) ? limitHeight[name] : 0);
 
-            Rectangle destRect = new Rectangle(0, 0, limWidth, limHeight);
+            if (scaleMode == ScaleMode.Auto)
+            {
+                scaleMode = IsHorizontalImage(image.Size) ? ScaleMode.Corp : ScaleMode.Insert;
+            }
 
-            Bitmap thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
+
+            Rectangle sourceRect = CalculateSourceRect(image.Size, thumbImage, scaleMode);
+            
+            Rectangle destRect = CalculateDestRect(image.Size, thumbImage, scaleMode);
+
+            Bitmap thumbnailImage = new Bitmap(limWidth, limWidth);
 
             Graphics graphics = Graphics.FromImage(thumbnailImage);
-            graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
+            graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
 
