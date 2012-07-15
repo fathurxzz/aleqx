@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -48,25 +47,12 @@ namespace Rakurs.Helpers
 
         private static Rectangle CalculateDestRect(Size sourceImage, Size thumbImage, ScaleMode scaleMode)
         {
-
             int previewHeight = thumbImage.Height;
             int previewWidth = thumbImage.Width;
 
-            int resultPreviewImageWidth = 0;
-            int resultPreviewImageHeight = 0;
             switch (scaleMode)
             {
                 case ScaleMode.Insert:
-
-                    //int minPreviewImageLength = previewHeight > previewWidth
-                    //    ? previewWidth
-                    //    : previewHeight;
-                    //int maxSourceImageLength = sourceImage.Width > sourceImage.Height
-                    //                               ? sourceImage.Width
-                    //                               : sourceImage.Height;
-
-                    //double ratio = (double)minPreviewImageLength / (double)maxSourceImageLength;
-
 
                     double hRatio = (double)previewHeight / (double)sourceImage.Height;
                     double wRatio = (double)previewWidth / (double)sourceImage.Width;
@@ -83,20 +69,14 @@ namespace Rakurs.Helpers
                         int offset = (previewWidth - resultSourceImageWidth) / 2;
                         return new Rectangle(offset, 0, resultSourceImageWidth, resultSourceImageHeight);
                     }
-                    else if (previewHeight > resultSourceImageHeight)
+                    if (previewHeight > resultSourceImageHeight)
                     {
                         var offset = (previewHeight - resultSourceImageHeight) / 2;
                         return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
                     }
-
-                    return new Rectangle(0, 0, resultPreviewImageWidth, resultPreviewImageHeight);
-
-
-
-                default:
-                    return new Rectangle(0, 0, thumbImage.Width, thumbImage.Height);
+                    break;
             }
-
+            return new Rectangle(0, 0, thumbImage.Width, thumbImage.Height);
         }
 
         private static Rectangle CalculateSourceRect(Size sourceImage, Size thumbImage, ScaleMode scaleMode)
@@ -104,15 +84,14 @@ namespace Rakurs.Helpers
             int previewHeight = thumbImage.Height;
             int previewWidth = thumbImage.Width;
 
-            int resultWidth;
-            int resultHeight;
-
             switch (scaleMode)
             {
                 case ScaleMode.Corp:
                     double wRatio = (double)sourceImage.Width / (double)previewWidth;
                     double hRatio = (double)sourceImage.Height / (double)previewHeight;
                     double coef = (double)previewHeight / (double)previewWidth;
+                    int resultWidth;
+                    int resultHeight;
                     if (wRatio < hRatio)
                     {
                         resultWidth = sourceImage.Width;
@@ -162,7 +141,7 @@ namespace Rakurs.Helpers
             saveTo.Position = 0;
         }
 
-        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode)
+        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode, bool useBgImage)
         {
             var thumbImage = new Size(limitWidth.ContainsKey(name) ? limitWidth[name] : 0,
                                       limitHeight.ContainsKey(name) ? limitHeight[name] : 0);
@@ -177,10 +156,31 @@ namespace Rakurs.Helpers
 
             Rectangle destRect = CalculateDestRect(image.Size, thumbImage, scaleMode);
 
-            Bitmap thumbnailImage = new Bitmap(limWidth, limWidth);
+            Bitmap thumbnailImage;
+
+            if (useBgImage)
+            {
+                string backgroundImageSourcePath =
+                    Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/bg"), "bg.jpg");
+                
+                using (FileStream stream = new FileStream(backgroundImageSourcePath, FileMode.Open))
+                {
+                    thumbnailImage = new Bitmap(stream);
+                }
+            }
+            else
+            {
+                thumbnailImage = new Bitmap(limWidth, limWidth);
+            }
+            
+
+            
 
             Graphics graphics = Graphics.FromImage(thumbnailImage);
-            graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
+
+            //graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
+
+
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
 
@@ -188,7 +188,7 @@ namespace Rakurs.Helpers
             saveTo.Position = 0;
         }
 
-        public static string GetCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
+        public static string GetCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode,bool useBgImage)
         {
             if (string.IsNullOrEmpty(fileName) ||
                 !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
@@ -212,16 +212,16 @@ namespace Rakurs.Helpers
 
             try
             {
-                CacheImage(originalPath, fileName, cacheFolder, scaleMode);
+                CacheImage(originalPath, fileName, cacheFolder, scaleMode,useBgImage);
             }
             catch
             {
-                return GetCachedImage(originalPath, "nophoto.gif", cacheFolder, scaleMode);
+                return GetCachedImage(originalPath, "nophoto.gif", cacheFolder, scaleMode,useBgImage);
             }
             return result;
         }
 
-        private static void CacheImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
+        private static void CacheImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode,bool useBgImage)
         {
             string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName);
             Bitmap image;
@@ -235,7 +235,7 @@ namespace Rakurs.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream, scaleMode);
+                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream, scaleMode,useBgImage);
             }
         }
 
@@ -266,9 +266,14 @@ namespace Rakurs.Helpers
 
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
+            return CachedImage(helper, originalPath, fileName, cacheFolder, scaleMode, false);
+        }
+
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode,bool useBgImage)
+        {
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder, scaleMode), fileName);
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder, scaleMode,useBgImage), fileName);
             return sb.ToString();
         }
 
@@ -283,7 +288,7 @@ namespace Rakurs.Helpers
 
         public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
-            CacheImage(originalPath, fileName, cacheFolder, scaleMode);
+            CacheImage(originalPath, fileName, cacheFolder, scaleMode,false);
         }
 
 
