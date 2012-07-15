@@ -13,7 +13,10 @@
              }
                 
                 @{
-                    var fancyTitle = "<div class=\"fancyTitleContainer\"><div class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</div><div class=\"descr\">"+Model.Description+"</div></div>";
+                    //var fancyTitle = "<div class=\"fancyTitleContainer\"><div class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</div><div class=\"descr\">"+Model.Description+"</div></div>";
+                    var fancyTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</td><td class=\"descr\">" + Model.Description + "</td></tr></table>";
+                    
+                    //var fancyTitle = "<div class=\"fancyTitleContainer\"><div class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</div><div class=\"descr\">" + Model.Description + "</div></div>";
                         
                 }
                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage" title="@fancyTitle">
