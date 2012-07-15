@@ -61,7 +61,9 @@ namespace Rakurs.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    fileUpload.SaveAs(filePath);
+                    //fileUpload.SaveAs(filePath);
+                    GraphicsHelper.SaveOriginalImage(filePath,fileName, fileUpload);
+
                     product.ImageSource = fileName;
                 }
 
@@ -136,7 +138,8 @@ namespace Rakurs.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    fileUpload.SaveAs(filePath);
+                    //fileUpload.SaveAs(filePath);
+                    GraphicsHelper.SaveOriginalImage(filePath,fileName, fileUpload);
                     product.ImageSource = fileName;
                 }
 
