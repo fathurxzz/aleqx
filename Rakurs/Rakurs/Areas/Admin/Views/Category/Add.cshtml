@@ -92,7 +92,14 @@
     </table>
     <div class="buttonsContainer">
         <input type="submit" value="Сохранить" />
-        @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "", category = Model.Parent != null ? Model.Parent.Name : Model.Name }, null)
+        @if (Model.Parent != null)
+        {
+            @Html.ActionLink("Назад", "Index", "Catalogue", new {Area = "", category = Model.Parent.Name}, null)
+        }
+        else
+        {
+            @Html.ActionLink("Назад", "Index", "Home", new { Area = "", id="" }, null)
+        }
     </div>
 }
 @section Includes

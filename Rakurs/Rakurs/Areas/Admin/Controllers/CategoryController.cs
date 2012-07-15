@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,11 +17,18 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
+                var category = new Category{SortOrder = 0};
                 var attributes = context.ProductAttribute.ToList();
                 ViewBag.Attributes = attributes;
 
                 ViewData["parentId"] = id;
-                return View(new Category {SortOrder = 0});
+                if(id.HasValue)
+                {
+                    var parent = context.Category.First(c => c.Id == id);
+                    category.Parent = parent;
+                }
+
+                return View(category);
             }
         }
 
@@ -36,7 +42,7 @@ namespace Rakurs.Areas.Admin.Controllers
                 if (!string.IsNullOrEmpty(form["parentId"]))
                 {
                     int parentId = Convert.ToInt32(form["parentId"]);
-                    var parent = context.Category.Where(c => c.Id == parentId).First();
+                    var parent = context.Category.First(c => c.Id == parentId);
                     category.Parent = parent;
                 }
 
@@ -79,7 +85,7 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var category = context.Category.Include("Parent").Include("ProductAttributes").Where(c => c.Id == id).First();
+                var category = context.Category.Include("Parent").Include("ProductAttributes").First(c => c.Id == id);
                 var attributes = context.ProductAttribute.ToList();
                 ViewBag.Attributes = attributes;
                 return View(category);
@@ -91,7 +97,7 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var category = context.Category.Include("Parent").Where(c => c.Id == model.Id).First();
+                var category = context.Category.Include("Parent").First(c => c.Id == model.Id);
 
                 TryUpdateModel(category, new[]
                                             {

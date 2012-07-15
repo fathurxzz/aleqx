@@ -16,7 +16,7 @@ namespace Rakurs.Models
     public class CategoryValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Идентификатор")]
+        [DisplayName("Веб-имя страницы")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
