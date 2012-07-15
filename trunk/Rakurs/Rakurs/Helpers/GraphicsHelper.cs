@@ -54,8 +54,8 @@ namespace Rakurs.Helpers
             {
                 case ScaleMode.Insert:
 
-                    double hRatio = (double)previewHeight / (double)sourceImage.Height;
-                    double wRatio = (double)previewWidth / (double)sourceImage.Width;
+                    double hRatio = (double)previewHeight / sourceImage.Height;
+                    double wRatio = (double)previewWidth / sourceImage.Width;
 
                     double ratio = hRatio < wRatio ? hRatio : wRatio;
 
@@ -87,9 +87,9 @@ namespace Rakurs.Helpers
             switch (scaleMode)
             {
                 case ScaleMode.Corp:
-                    double wRatio = (double)sourceImage.Width / (double)previewWidth;
-                    double hRatio = (double)sourceImage.Height / (double)previewHeight;
-                    double coef = (double)previewHeight / (double)previewWidth;
+                    double wRatio = (double)sourceImage.Width / previewWidth;
+                    double hRatio = (double)sourceImage.Height / previewHeight;
+                    double coef = (double)previewHeight / previewWidth;
                     int resultWidth;
                     int resultHeight;
                     if (wRatio < hRatio)
@@ -122,8 +122,8 @@ namespace Rakurs.Helpers
             }
             else
             {
-                double wRatio = (double)limitLength / (double)image.Width;
-                double hRatio = (double)limitLength / (double)image.Height;
+                double wRatio = (double) limitLength/image.Width;
+                double hRatio = (double) limitLength/image.Height;
                 double ratio = hRatio < wRatio ? hRatio : wRatio;
                 resultSourceImageWidth = (int)(image.Width * ratio);
                 resultSourceImageHeight = (int)(image.Height * ratio);
@@ -160,11 +160,7 @@ namespace Rakurs.Helpers
 
             if (useBgImage)
             {
-                
-                    
                 string backgroundImageSourcePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/bg"), "bg.jpg");
-                
-                
                 using (FileStream stream = new FileStream(backgroundImageSourcePath, FileMode.Open))
                 {
                     thumbnailImage = new Bitmap(stream);
@@ -182,7 +178,7 @@ namespace Rakurs.Helpers
                 thumbnailImage = new Bitmap(limWidth, limWidth);
                 Graphics graphics = Graphics.FromImage(thumbnailImage);
                 graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
-                
+
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
 
@@ -196,11 +192,7 @@ namespace Rakurs.Helpers
         {
             if (string.IsNullOrEmpty(fileName) || !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
             {
-                fileName = "NoImage.jpg";
-                if (!File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
-                {
-                    return null;
-                }
+                return null;
             }
             string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
@@ -213,10 +205,9 @@ namespace Rakurs.Helpers
                 return result;
             }
 
-            if (!CacheImage(originalPath, fileName, cacheFolder, scaleMode, useBgImage))
-                return GetCachedImage(originalPath, "nophoto.gif", cacheFolder, scaleMode, useBgImage);
-
-            return result;
+            return CacheImage(originalPath, fileName, cacheFolder, scaleMode, useBgImage)
+                ? result
+                : null;
         }
 
         private static bool CacheImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode, bool useBgImage)
