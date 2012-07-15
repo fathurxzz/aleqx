@@ -18,6 +18,14 @@ namespace Rakurs.Controllers
             using (var context = new StructureContainer())
             {
                 var model = new CatalogueViewModel(context, category, subCategory, filter);
+
+                if (model.SubCategory == null && model.Category.Products.Count == 0 && model.Category.Children.Count > 0)
+                {
+                    var child = model.Category.Children.First();
+                    return RedirectToAction("Index", new { category = model.Category.Name, subCategory = child.Name });
+                }
+
+
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.CategoryName = model.Category.Name;
