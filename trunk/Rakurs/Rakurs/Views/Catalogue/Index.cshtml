@@ -4,7 +4,7 @@
 }
 @section Text
 {
-    @if (Model.Category != null && (!string.IsNullOrEmpty(Model.Category.Title) || !string.IsNullOrEmpty(Model.Category.Text)))
+    @*@if (Model.Category != null && (!string.IsNullOrEmpty(Model.Category.Title) || !string.IsNullOrEmpty(Model.Category.Text)))
     {
         <div id="bottomText" class="contentText">
             @if (!string.IsNullOrEmpty(Model.Category.Title))
@@ -19,21 +19,44 @@
                 @Html.Raw(Model.Category.Text)
             }
         </div>
-    }
+    }*@
 }
 @section Catalogue
 {
     <div id="galleryContent">
         <div class="title">
-        @if (Request.IsAuthenticated)
-        {
-            <div class="adminLinksStaticContainer abs categotyTitle">
-                @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))
-            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div class="adminLinksStaticContainer abs categotyTitle">
+                    @Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))
+                    @Html.Raw(Html.ActionLink("[Image]", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLink add", title = "Добавить фото и описание" }).ToString().Replace("[Image]", ""))
+                </div>
             }
-
-            @Model.Category.Title
+            @if (Model.SubCategory == null)
+            {
+                @Model.Category.Title
+            }
+            else
+            {
+                @Html.ActionLink(Model.Category.Title, "Index", "Catalogue", new { category = Model.Category.Name, subCategory="" }, null)
+            }
         </div>
+        @if (Model.CurrentCategory != null && (!string.IsNullOrEmpty(Model.CurrentCategory.Title) || !string.IsNullOrEmpty(Model.CurrentCategory.Text)))
+        {
+            <div class="categoryInnerText">
+                @if (!string.IsNullOrEmpty(Model.CurrentCategory.Title))
+                {
+                    <div class="categoryInnerTextTitle">
+                        @Model.CurrentCategory.Title</div>
+                    <div class="separator">
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(Model.CurrentCategory.Text))
+                {
+                    @Html.Raw(Model.CurrentCategory.Text)
+                }
+            </div>
+        }
         @if (Model.SubcategoriesMenu != null && Model.SubcategoriesMenu.Count > 0)
         {
             @Html.Partial("CategorySubMenu", Model.SubcategoriesMenu)

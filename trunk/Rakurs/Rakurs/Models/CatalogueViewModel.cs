@@ -9,6 +9,7 @@ namespace Rakurs.Models
     {
         public Category Category { get; set; }
         public Category SubCategory { get; set; }
+        public Category CurrentCategory { get; set; }
         public Menu SubcategoriesMenu { get; set; }
         public int? CurrentFilterId { get; set; }
         public IEnumerable<Product> Products { get; set; }
@@ -25,6 +26,7 @@ namespace Rakurs.Models
             Category = category;
 
             var currentCategory = category;
+            CurrentCategory = category;
             title += " - " + category.Title;
 
             if (!string.IsNullOrEmpty(subCategoryName))
@@ -33,6 +35,7 @@ namespace Rakurs.Models
                 subCategory.ProductAttributes.Load();
                 SubCategory = subCategory;
                 currentCategory = subCategory;
+                CurrentCategory = subCategory;
                 title += " - " + subCategory.Title;
             }
 

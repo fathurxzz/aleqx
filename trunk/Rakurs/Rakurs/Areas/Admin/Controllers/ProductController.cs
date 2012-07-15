@@ -20,8 +20,15 @@ namespace Rakurs.Areas.Admin.Controllers
                 var category = context.Category.Include("Parent").Include("ProductAttributes").First(c => c.Id == id);
                 ViewBag.CategoryId = category.Id;
                 ViewBag.Attributes = category.ProductAttributes;
-                ViewBag.CategoryName = category.Parent.Name;
-                ViewBag.SubCategoryName = category.Name;
+                if (category.Parent != null)
+                {
+                    ViewBag.CategoryName = category.Parent.Name;
+                    ViewBag.SubCategoryName = category.Name;
+                }
+                else
+                {
+                    ViewBag.CategoryName = category.Name;
+                }
                 return View();
             }
         }
@@ -61,8 +68,7 @@ namespace Rakurs.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    //fileUpload.SaveAs(filePath);
-                    GraphicsHelper.SaveOriginalImage(filePath,fileName, fileUpload);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload);
 
                     product.ImageSource = fileName;
                 }
@@ -71,8 +77,9 @@ namespace Rakurs.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent.Name, subCategory = category.Name });
+                return category.Parent != null 
+                    ? RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent.Name, subCategory = category.Name }) 
+                    : RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
             }
         }
 
@@ -83,9 +90,16 @@ namespace Rakurs.Areas.Admin.Controllers
                 ViewBag.productId = id;
                 var product = context.Product.Include("ProductAttributes").Include("Category").First(p => p.Id == id);
                 var category = context.Category.Include("Parent").Include("ProductAttributes").First(c => c.Id == product.Category.Id);
-                
-                ViewBag.CategoryName = category.Parent.Name;
-                ViewBag.SubCategoryName = category.Name;
+
+                if (category.Parent != null)
+                {
+                    ViewBag.CategoryName = category.Parent.Name;
+                    ViewBag.SubCategoryName = category.Name;
+                }
+                else
+                {
+                    ViewBag.CategoryName = category.Name;
+                }
                 
                 ViewBag.CategoryId = category.Id;
                 ViewBag.Attributes = category.ProductAttributes;
@@ -138,7 +152,6 @@ namespace Rakurs.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    //fileUpload.SaveAs(filePath);
                     GraphicsHelper.SaveOriginalImage(filePath,fileName, fileUpload);
                     product.ImageSource = fileName;
                 }
@@ -146,7 +159,9 @@ namespace Rakurs.Areas.Admin.Controllers
                 context.SaveChanges();
 
 
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent.Name, subCategory = category.Name });
+                return category.Parent != null 
+                    ? RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent.Name, subCategory = category.Name }) 
+                    : RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
             }
         }
 

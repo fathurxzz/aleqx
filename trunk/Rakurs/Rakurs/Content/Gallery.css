@@ -30,6 +30,10 @@
     padding-top: 10px;
 }
 
+#galleryContent .title a {
+    color: #fff;
+}
+
 #galleryContent #submenu
 {
     font-size: 14px;
