@@ -21,20 +21,23 @@
                 @foreach (var image in Model)
                 {
                     <li>
-                        <div id="galleryImageContainerFooter">
-                            <div id="description">
-                                @image.Description
-                            </div>
-                            <div id="path">
-                                @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
-                                @Html.Raw(" &raquo; ")
-                                @foreach (var pathItem in image.Path) {
-                                @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
-                                @Html.Raw(" &raquo; ")
-                                } <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
-                            </div>
-                        </div>
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Auto,true))
+                        <table id="galleryImageContainerFooter">
+                            <tr>
+                                <td id="path">
+                                    @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
+                                    @Html.Raw(" &raquo; ")
+                                    @foreach (var pathItem in image.Path)
+                                    {
+                                        @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
+                                        @Html.Raw(" &raquo; ")
+                                    }
+                                    <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
+                                </td>
+                                <td id="description">@image.Description
+                                </td>
+                            </tr>
+                        </table>
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Auto, true))
                     </li>
                 }
             </ul>
