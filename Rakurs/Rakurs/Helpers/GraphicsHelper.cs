@@ -68,7 +68,7 @@ namespace Rakurs.Helpers
                     //double ratio = (double)minPreviewImageLength / (double)maxSourceImageLength;
 
 
-                    double hRatio = (double)previewHeight/(double)sourceImage.Height;
+                    double hRatio = (double)previewHeight / (double)sourceImage.Height;
                     double wRatio = (double)previewWidth / (double)sourceImage.Width;
 
                     double ratio = hRatio < wRatio ? hRatio : wRatio;
@@ -80,12 +80,12 @@ namespace Rakurs.Helpers
 
                     if (previewWidth > resultSourceImageWidth)
                     {
-                        int offset = (previewWidth - resultSourceImageWidth)/2;
+                        int offset = (previewWidth - resultSourceImageWidth) / 2;
                         return new Rectangle(offset, 0, resultSourceImageWidth, resultSourceImageHeight);
                     }
                     else if (previewHeight > resultSourceImageHeight)
                     {
-                        var offset = (previewHeight - resultSourceImageHeight)/2;
+                        var offset = (previewHeight - resultSourceImageHeight) / 2;
                         return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
                     }
 
@@ -130,6 +130,37 @@ namespace Rakurs.Helpers
         }
 
 
+        private static void ScaleAndSaveOriginalImage(int limitLength, Bitmap image, Stream saveTo)
+        {
+            
+            Rectangle sourceRect = new Rectangle(0,0,image.Width,image.Height);
+            Rectangle destRect;
+            int resultSourceImageWidth = image.Width;
+            int resultSourceImageHeight = image.Height;
+            if (image.Width <= limitLength && image.Height <= limitLength)
+            {
+                destRect = new Rectangle(0, 0, image.Width, image.Height);
+            }
+            else
+            {
+                double wRatio = (double)limitLength / (double)image.Width;
+                double hRatio = (double)limitLength / (double)image.Height;
+                double ratio = hRatio < wRatio ? hRatio : wRatio;
+                resultSourceImageWidth = (int) (image.Width*ratio);
+                resultSourceImageHeight = (int) (image.Height*ratio);
+                destRect = new Rectangle(0, 0, resultSourceImageWidth, resultSourceImageHeight);
+            }
+
+            Bitmap thumbnailImage = new Bitmap(resultSourceImageWidth, resultSourceImageHeight);
+
+            Graphics graphics = Graphics.FromImage(thumbnailImage);
+            graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, resultSourceImageWidth, resultSourceImageHeight);
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
+            thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
+            saveTo.Position = 0;
+        }
 
         public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode)
         {
@@ -143,7 +174,7 @@ namespace Rakurs.Helpers
 
 
             Rectangle sourceRect = CalculateSourceRect(image.Size, thumbImage, scaleMode);
-            
+
             Rectangle destRect = CalculateDestRect(image.Size, thumbImage, scaleMode);
 
             Bitmap thumbnailImage = new Bitmap(limWidth, limWidth);
@@ -206,6 +237,31 @@ namespace Rakurs.Helpers
             {
                 ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream, scaleMode);
             }
+        }
+
+        
+
+        public static void SaveOriginalImage(string filePath, string fileName, HttpPostedFileBase file, int limitLength=1000)
+        {
+
+            string tmpFilePath = HttpContext.Current.Server.MapPath("~/Content/tmpImages");
+            tmpFilePath = Path.Combine(tmpFilePath, fileName);
+            file.SaveAs(tmpFilePath);
+
+            Bitmap image;
+            string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/tmpImages"), fileName);
+            using (FileStream stream = new FileStream(sourcePath, FileMode.Open))
+            {
+                image = new Bitmap(stream);
+            }
+            using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
+            {
+                ScaleAndSaveOriginalImage(limitLength, image, stream);
+            }
+
+            IOHelper.DeleteFile("~/Content/tmpImages", fileName);
+
+            //file.SaveAs(filePath);
         }
 
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
