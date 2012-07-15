@@ -181,8 +181,10 @@ namespace Rakurs.Areas.Admin.Controllers
                 product.ProductAttributes.Clear();
                 context.DeleteObject(product);
                 context.SaveChanges();
-
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent.Name, subCategory = category.Name });
+               
+                return category.Parent != null
+                   ? RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent.Name, subCategory = category.Name })
+                   : RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
             }
         }
     }
