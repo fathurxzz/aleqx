@@ -111,8 +111,8 @@ namespace Rakurs.Helpers
 
         private static void ScaleAndSaveOriginalImage(int limitLength, Bitmap image, Stream saveTo)
         {
-            
-            Rectangle sourceRect = new Rectangle(0,0,image.Width,image.Height);
+
+            Rectangle sourceRect = new Rectangle(0, 0, image.Width, image.Height);
             Rectangle destRect;
             int resultSourceImageWidth = image.Width;
             int resultSourceImageHeight = image.Height;
@@ -125,8 +125,8 @@ namespace Rakurs.Helpers
                 double wRatio = (double)limitLength / (double)image.Width;
                 double hRatio = (double)limitLength / (double)image.Height;
                 double ratio = hRatio < wRatio ? hRatio : wRatio;
-                resultSourceImageWidth = (int) (image.Width*ratio);
-                resultSourceImageHeight = (int) (image.Height*ratio);
+                resultSourceImageWidth = (int)(image.Width * ratio);
+                resultSourceImageHeight = (int)(image.Height * ratio);
                 destRect = new Rectangle(0, 0, resultSourceImageWidth, resultSourceImageHeight);
             }
 
@@ -141,7 +141,7 @@ namespace Rakurs.Helpers
             saveTo.Position = 0;
         }
 
-        public static void ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode, bool useBgImage)
+        public static bool ScaleImage(string name, Bitmap image, int limWidth, int limHeight, Stream saveTo, ScaleMode scaleMode, bool useBgImage)
         {
             var thumbImage = new Size(limitWidth.ContainsKey(name) ? limitWidth[name] : 0,
                                       limitHeight.ContainsKey(name) ? limitHeight[name] : 0);
@@ -160,38 +160,41 @@ namespace Rakurs.Helpers
 
             if (useBgImage)
             {
-                string backgroundImageSourcePath =
-                    Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/bg"), "bg.jpg");
+                
+                    
+                string backgroundImageSourcePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/bg"), "bg.jpg");
+                
                 
                 using (FileStream stream = new FileStream(backgroundImageSourcePath, FileMode.Open))
                 {
                     thumbnailImage = new Bitmap(stream);
+                    Graphics graphics = Graphics.FromImage(thumbnailImage);
+
+                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
+                    thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    saveTo.Position = 0;
                 }
             }
             else
             {
                 thumbnailImage = new Bitmap(limWidth, limWidth);
+                Graphics graphics = Graphics.FromImage(thumbnailImage);
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
+                
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+
+                thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
+                saveTo.Position = 0;
             }
-            
-
-            
-
-            Graphics graphics = Graphics.FromImage(thumbnailImage);
-
-            //graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
-
-
-            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
-
-            thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
-            saveTo.Position = 0;
+            return true;
         }
 
-        public static string GetCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode,bool useBgImage)
+        public static string GetCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode, bool useBgImage)
         {
-            if (string.IsNullOrEmpty(fileName) ||
-                !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
+            if (string.IsNullOrEmpty(fileName) || !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
             {
                 fileName = "NoImage.jpg";
                 if (!File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
@@ -210,18 +213,13 @@ namespace Rakurs.Helpers
                 return result;
             }
 
-            try
-            {
-                CacheImage(originalPath, fileName, cacheFolder, scaleMode,useBgImage);
-            }
-            catch
-            {
-                return GetCachedImage(originalPath, "nophoto.gif", cacheFolder, scaleMode,useBgImage);
-            }
+            if (!CacheImage(originalPath, fileName, cacheFolder, scaleMode, useBgImage))
+                return GetCachedImage(originalPath, "nophoto.gif", cacheFolder, scaleMode, useBgImage);
+
             return result;
         }
 
-        private static void CacheImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode,bool useBgImage)
+        private static bool CacheImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode, bool useBgImage)
         {
             string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName);
             Bitmap image;
@@ -235,13 +233,13 @@ namespace Rakurs.Helpers
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
             {
-                ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream, scaleMode,useBgImage);
+                return ScaleImage(cacheFolder, image, limitWidth[cacheFolder], limitHeight[cacheFolder], stream, scaleMode, useBgImage);
             }
         }
 
-        
 
-        public static void SaveOriginalImage(string filePath, string fileName, HttpPostedFileBase file, int limitLength=1000)
+
+        public static void SaveOriginalImage(string filePath, string fileName, HttpPostedFileBase file, int limitLength = 1000)
         {
 
             string tmpFilePath = HttpContext.Current.Server.MapPath("~/Content/tmpImages");
@@ -269,11 +267,11 @@ namespace Rakurs.Helpers
             return CachedImage(helper, originalPath, fileName, cacheFolder, scaleMode, false);
         }
 
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode,bool useBgImage)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode, bool useBgImage)
         {
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder, scaleMode,useBgImage), fileName);
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, cacheFolder, scaleMode, useBgImage), fileName);
             return sb.ToString();
         }
 
@@ -288,7 +286,7 @@ namespace Rakurs.Helpers
 
         public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder, ScaleMode scaleMode)
         {
-            CacheImage(originalPath, fileName, cacheFolder, scaleMode,false);
+            CacheImage(originalPath, fileName, cacheFolder, scaleMode, false);
         }
 
 
