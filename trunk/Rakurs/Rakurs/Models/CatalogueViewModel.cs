@@ -27,7 +27,7 @@ namespace Rakurs.Models
 
             var currentCategory = category;
             CurrentCategory = category;
-            title += " - " +(SiteSettings.Language==Language.Ru? category.Title:category.TitleEng);
+            title += (SiteSettings.Language==Language.Ru? category.Title:category.TitleEng);
 
             if (!string.IsNullOrEmpty(subCategoryName))
             {
