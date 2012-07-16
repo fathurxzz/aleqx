@@ -1,13 +1,5 @@
 ﻿@model Rakurs.Models.SiteViewModel
-@if (Request.IsAuthenticated)
-{
-    <div class="adminLinkContainer">
-        @if (Model.Content.MainPage)
-        {
-            @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
-        }
-    </div>
-}
+
 @section Text
 {
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Title) || !string.IsNullOrEmpty(Model.Content.Text)))
@@ -29,6 +21,15 @@
 }
 @section GalleryFrame
 {
+@if (Request.IsAuthenticated)
+{
+    <div class="adminLinkContainer">
+        @if (Model.Content.MainPage)
+        {
+            @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+        }
+    </div>
+}
     @if (Model.Content != null && Model.Content.MainPage && Model.GalleryFrameItems != null && Model.GalleryFrameItems.Any())
     {
         @Html.Partial("GalleryFrame", Model.GalleryFrameItems)
