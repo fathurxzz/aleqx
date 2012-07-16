@@ -9,7 +9,7 @@
     });
 </script>
 <div id="slogan">
-    От проекта &mdash; до монтажа:
+    @*От проекта &mdash; до монтажа:*@
 </div>
 <div id="galleryFrameContainer">
     <div class="border">
@@ -24,8 +24,8 @@
                         <table id="galleryImageContainerFooter">
                             <tr>
                                 <td id="path">
-                                    @Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
-                                    @Html.Raw(" &raquo; ")
+                                    @*@Html.ActionLink("Галерея", "Categories", "Home", new { id = "" }, new { @class = "fancy", id = "catalogueLink" })
+                                    @Html.Raw(" &raquo; ")*@
                                     @foreach (var pathItem in image.Path)
                                     {
                                         @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
