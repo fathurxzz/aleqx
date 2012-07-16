@@ -27,12 +27,15 @@ namespace Rakurs.Areas.Admin.Controllers
                                             {
                                                 "Name",
                                                 "Title",
+                                                "TitleEng",
                                                 "PageTitle",
+                                                "PageTitleEng",
                                                 "SortOrder",
                                                 "SeoDescription",
                                                 "SeoKeywords"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.TextEng = HttpUtility.HtmlDecode(form["TextEng"]);
 
                 context.AddToContent(content);
 
@@ -48,7 +51,7 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var content = context.Content.Where(c => c.Id == id).First();
+                var content = context.Content.First(c => c.Id == id);
                 return View(content);
             }
         }
@@ -58,18 +61,21 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var content = context.Content.Where(c => c.Id == model.Id).First();
+                var content = context.Content.First(c => c.Id == model.Id);
 
                 TryUpdateModel(content, new[]
                                             {
-                                                "Name",
+                                               "Name",
                                                 "Title",
+                                                "TitleEng",
                                                 "PageTitle",
+                                                "PageTitleEng",
                                                 "SortOrder",
                                                 "SeoDescription",
-                                                "SeoKeywords",
+                                                "SeoKeywords"
                                             });
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
+                content.TextEng = HttpUtility.HtmlDecode(form["TextEng"]);
 
                 context.SaveChanges();
 

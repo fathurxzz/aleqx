@@ -10,24 +10,28 @@
     @Html.ValidationSummary(true)
     
     <table class="adminEditContentTable">
-    <tr>
-                <td colspan="2">
-                    <h2>
-                        Создание атрибута</h2>
-                </td>
-            </tr>
+        <tr>
+            <td colspan="2">
+                <h2>
+                    Создание атрибута</h2>
+            </td>
+        </tr>
         <tr>
             <td>
-            @Html.LabelFor(model => model.Title)
+                @Html.LabelFor(model => model.Title)
             </td>
-            <td>@Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
+            <td>
+                RU @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+                <br />
+                EN @Html.EditorFor(model => model.TitleEng)
+                @Html.ValidationMessageFor(model => model.TitleEng)
             </td>
         </tr>
     </table>
     <div class="buttonsContainer">
         <input type="submit" value="Сохранить" />
-        @Html.ActionLink("Назад", "Index", "ProductAttributes", new { Area = "Admin"}, null)
+        @Html.ActionLink("Назад", "Index", "ProductAttributes", new { Area = "Admin" }, null)
     </div>
 }
 @section Includes

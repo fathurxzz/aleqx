@@ -249,3 +249,25 @@ body {
      height: 514px; 
      width: 1000px;
 }
+
+
+#languageSelector {
+    position: absolute;
+    left: 985px;
+    top: 58px;
+    font-size: 11px;
+    font-family: PFBeauSansProThin;
+}
+
+
+.languageSwitcherTable td {
+    padding: 0 5px;
+}
+
+#languageSelector a {
+    color: rgb(192, 30, 46);
+}
+
+#languageSelector td.first {
+    border-right: 2px solid rgb(192, 30, 46);
+}

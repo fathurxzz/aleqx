@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Structure.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Structure.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="StructureStoreContainer">
     <EntitySet Name="Content" EntityType="Structure.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Structure.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -51,19 +51,24 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="IsGallery" Type="bool" Nullable="false" DefaultValue="false" />
     <Property Name="MainPage" Type="bool" Nullable="false" DefaultValue="false" />
+    <Property Name="TitleEng" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="PageTitleEng" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="TextEng" Type="longtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="255" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="CategoryId" Type="int" Nullable="true" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="Name" Type="longtext" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="TitleEng" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="TextEng" Type="longtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -75,13 +80,16 @@
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="ImageSource" Type="longtext" Nullable="false" />
     <Property Name="ShowOnMainPage" Type="bool" Nullable="false" DefaultValue="false" />
+    <Property Name="TitleEng" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="DescriptionEng" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="TitleEng" Type="nchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -211,13 +219,16 @@
           <Property Type="String" Name="SeoKeywords" />
           <Property Type="Boolean" Name="IsGallery" Nullable="false" DefaultValue="false" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" DefaultValue="false" />
+          <Property Type="String" Name="TitleEng" Nullable="false" MaxLength="255" FixedLength="true" />
+          <Property Type="String" Name="PageTitleEng" Nullable="false" FixedLength="true" MaxLength="255" />
+          <Property Type="String" Name="TextEng" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="100" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="255" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <NavigationProperty Name="Children" Relationship="Structure.CategoryCategory" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Parent" Relationship="Structure.CategoryCategory" FromRole="Category1" ToRole="Category" />
@@ -228,6 +239,8 @@
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
+          <Property Type="String" Name="TitleEng" Nullable="false" MaxLength="255" FixedLength="true" />
+          <Property Type="String" Name="TextEng" Nullable="false" />
         </EntityType>
         <Association Name="CategoryCategory">
           <End Type="Structure.Category" Role="Category" Multiplicity="0..1" />
@@ -253,6 +266,8 @@
           <NavigationProperty Name="ProductAttributes" Relationship="Structure.ProductProductAttribute" FromRole="Product" ToRole="ProductAttribute" />
           <Property Type="String" Name="ImageSource" Nullable="false" />
           <Property Type="Boolean" Name="ShowOnMainPage" DefaultValue="False" Nullable="false" />
+          <Property Type="String" Name="TitleEng" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="DescriptionEng" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Structure.Category" Role="Category" Multiplicity="1" />
@@ -271,9 +286,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="100" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="255" />
           <NavigationProperty Name="Categories" Relationship="Structure.CategoryProductAttribute" FromRole="ProductAttribute" ToRole="Category" />
           <NavigationProperty Name="Products" Relationship="Structure.ProductProductAttribute" FromRole="ProductAttribute" ToRole="Product" />
+          <Property Type="String" Name="TitleEng" Nullable="false" MaxLength="255" FixedLength="true" />
         </EntityType>
         <Association Name="CategoryProductAttribute">
           <End Type="Structure.Category" Role="Category" Multiplicity="*" />
@@ -302,6 +318,9 @@
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="IsGallery" ColumnName="IsGallery" />
           <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="PageTitleEng" ColumnName="PageTitleEng" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -316,6 +335,8 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -328,6 +349,8 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="ShowOnMainPage" ColumnName="ShowOnMainPage" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -336,6 +359,7 @@
         <MappingFragment StoreEntitySet="ProductAttribute">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -375,28 +399,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Structure" >
-        <EntityTypeShape EntityType="Structure.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5783902994791665" />
-        <EntityTypeShape EntityType="Structure.Category" Width="1.5" PointX="3.125" PointY="0.75" Height="2.9070849609375" />
+        <EntityTypeShape EntityType="Structure.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="Structure.Category" Width="1.5" PointX="3.125" PointY="0.75" Height="3.7109993489583326" />
         <AssociationConnector Association="Structure.CategoryCategory">
           <ConnectorPoint PointX="3.6569230769230767" PointY="0.75" />
-          <ConnectorPoint PointX="3.6569230769230767" PointY="0.5" />
-          <ConnectorPoint PointX="4.1034615384615378" PointY="0.5" />
+          <ConnectorPoint PointX="3.6569230769230767" PointY="0.49999999999999978" />
+          <ConnectorPoint PointX="4.1034615384615378" PointY="0.49999999999999978" />
           <ConnectorPoint PointX="4.1034615384615378" PointY="0.75" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="2.2496956380208331" />
+        <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="2.9417936197916665" />
         <AssociationConnector Association="Structure.CategoryProduct">
-          <ConnectorPoint PointX="4.625" PointY="1.8748478190104168" />
-          <ConnectorPoint PointX="6" PointY="1.8748478190104168" />
+          <ConnectorPoint PointX="4.625" PointY="2.2208968098958333" />
+          <ConnectorPoint PointX="6" PointY="2.2208968098958333" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Structure.ProductAttribute" Width="2" PointX="3.125" PointY="4.875" Height="1.5923063151041657" />
+        <EntityTypeShape EntityType="Structure.ProductAttribute" Width="2" PointX="3.125" PointY="4.875" Height="1.9802864583333326" />
         <AssociationConnector Association="Structure.CategoryProductAttribute">
-          <ConnectorPoint PointX="3.875" PointY="3.6570849609375" />
+          <ConnectorPoint PointX="3.875" PointY="4.4609993489583326" />
           <ConnectorPoint PointX="3.875" PointY="4.875" />
         </AssociationConnector>
         <AssociationConnector Association="Structure.ProductProductAttribute">
-          <ConnectorPoint PointX="6.75" PointY="2.9996956380208331" />
-          <ConnectorPoint PointX="6.75" PointY="5.6711531575520828" />
-          <ConnectorPoint PointX="5.125" PointY="5.6711531575520828" />
+          <ConnectorPoint PointX="6.75" PointY="3.6917936197916665" />
+          <ConnectorPoint PointX="6.75" PointY="5.8651432291666659" />
+          <ConnectorPoint PointX="5.125" PointY="5.8651432291666659" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

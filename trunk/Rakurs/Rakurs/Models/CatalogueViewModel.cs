@@ -17,7 +17,7 @@ namespace Rakurs.Models
         public CatalogueViewModel(StructureContainer context, string categoryName, string subCategoryName, int? filter = null)
             : base(context, null)
         {
-            var title = "Галерея";
+            var title = "";
             var category = Context.Category
                 .Include("Children")
                 //.Include("ProductAttributes")
@@ -27,7 +27,7 @@ namespace Rakurs.Models
 
             var currentCategory = category;
             CurrentCategory = category;
-            title += " - " + category.Title;
+            title += " - " +(SiteSettings.Language==Language.Ru? category.Title:category.TitleEng);
 
             if (!string.IsNullOrEmpty(subCategoryName))
             {
@@ -36,7 +36,7 @@ namespace Rakurs.Models
                 SubCategory = subCategory;
                 currentCategory = subCategory;
                 CurrentCategory = subCategory;
-                title += " - " + subCategory.Title;
+                title += (SiteSettings.Language==Language.Ru? subCategory.Title:subCategory.TitleEng);
             }
 
             SubcategoriesMenu = new Menu();
@@ -50,7 +50,7 @@ namespace Rakurs.Models
                         IsMainPage = false,
                         Selected = c.Name == subCategoryName,
                         SortOrder = c.SortOrder,
-                        Title = c.Title
+                        Title = SiteSettings.Language==Language.Ru? c.Title:c.TitleEng
                     });
             }
 

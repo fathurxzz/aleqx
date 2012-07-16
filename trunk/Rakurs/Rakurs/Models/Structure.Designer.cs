@@ -196,12 +196,16 @@ namespace Rakurs.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name)
+        /// <param name="titleEng">Initial value of the TitleEng property.</param>
+        /// <param name="textEng">Initial value of the TextEng property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name, global::System.String titleEng, global::System.String textEng)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
             category.Name = name;
+            category.TitleEng = titleEng;
+            category.TextEng = textEng;
             return category;
         }
 
@@ -402,6 +406,54 @@ namespace Rakurs.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TitleEng
+        {
+            get
+            {
+                return _TitleEng;
+            }
+            set
+            {
+                OnTitleEngChanging(value);
+                ReportPropertyChanging("TitleEng");
+                _TitleEng = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TitleEng");
+                OnTitleEngChanged();
+            }
+        }
+        private global::System.String _TitleEng;
+        partial void OnTitleEngChanging(global::System.String value);
+        partial void OnTitleEngChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TextEng
+        {
+            get
+            {
+                return _TextEng;
+            }
+            set
+            {
+                OnTextEngChanging(value);
+                ReportPropertyChanging("TextEng");
+                _TextEng = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TextEng");
+                OnTextEngChanged();
+            }
+        }
+        private global::System.String _TextEng;
+        partial void OnTextEngChanging(global::System.String value);
+        partial void OnTextEngChanged();
 
         #endregion
     
@@ -531,13 +583,19 @@ namespace Rakurs.Models
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="pageTitle">Initial value of the PageTitle property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String pageTitle)
+        /// <param name="titleEng">Initial value of the TitleEng property.</param>
+        /// <param name="pageTitleEng">Initial value of the PageTitleEng property.</param>
+        /// <param name="textEng">Initial value of the TextEng property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String pageTitle, global::System.String titleEng, global::System.String pageTitleEng, global::System.String textEng)
         {
             Content content = new Content();
             content.Id = id;
             content.Name = name;
             content.Title = title;
             content.PageTitle = pageTitle;
+            content.TitleEng = titleEng;
+            content.PageTitleEng = pageTitleEng;
+            content.TextEng = textEng;
             return content;
         }
 
@@ -786,6 +844,78 @@ namespace Rakurs.Models
         private global::System.Boolean _MainPage = false;
         partial void OnMainPageChanging(global::System.Boolean value);
         partial void OnMainPageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TitleEng
+        {
+            get
+            {
+                return _TitleEng;
+            }
+            set
+            {
+                OnTitleEngChanging(value);
+                ReportPropertyChanging("TitleEng");
+                _TitleEng = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TitleEng");
+                OnTitleEngChanged();
+            }
+        }
+        private global::System.String _TitleEng;
+        partial void OnTitleEngChanging(global::System.String value);
+        partial void OnTitleEngChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PageTitleEng
+        {
+            get
+            {
+                return _PageTitleEng;
+            }
+            set
+            {
+                OnPageTitleEngChanging(value);
+                ReportPropertyChanging("PageTitleEng");
+                _PageTitleEng = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PageTitleEng");
+                OnPageTitleEngChanged();
+            }
+        }
+        private global::System.String _PageTitleEng;
+        partial void OnPageTitleEngChanging(global::System.String value);
+        partial void OnPageTitleEngChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TextEng
+        {
+            get
+            {
+                return _TextEng;
+            }
+            set
+            {
+                OnTextEngChanging(value);
+                ReportPropertyChanging("TextEng");
+                _TextEng = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TextEng");
+                OnTextEngChanged();
+            }
+        }
+        private global::System.String _TextEng;
+        partial void OnTextEngChanging(global::System.String value);
+        partial void OnTextEngChanged();
 
         #endregion
     
@@ -965,6 +1095,54 @@ namespace Rakurs.Models
         private global::System.Boolean _ShowOnMainPage = false;
         partial void OnShowOnMainPageChanging(global::System.Boolean value);
         partial void OnShowOnMainPageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TitleEng
+        {
+            get
+            {
+                return _TitleEng;
+            }
+            set
+            {
+                OnTitleEngChanging(value);
+                ReportPropertyChanging("TitleEng");
+                _TitleEng = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TitleEng");
+                OnTitleEngChanged();
+            }
+        }
+        private global::System.String _TitleEng;
+        partial void OnTitleEngChanging(global::System.String value);
+        partial void OnTitleEngChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DescriptionEng
+        {
+            get
+            {
+                return _DescriptionEng;
+            }
+            set
+            {
+                OnDescriptionEngChanging(value);
+                ReportPropertyChanging("DescriptionEng");
+                _DescriptionEng = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescriptionEng");
+                OnDescriptionEngChanged();
+            }
+        }
+        private global::System.String _DescriptionEng;
+        partial void OnDescriptionEngChanging(global::System.String value);
+        partial void OnDescriptionEngChanged();
 
         #endregion
     
@@ -1048,11 +1226,13 @@ namespace Rakurs.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static ProductAttribute CreateProductAttribute(global::System.Int32 id, global::System.String title)
+        /// <param name="titleEng">Initial value of the TitleEng property.</param>
+        public static ProductAttribute CreateProductAttribute(global::System.Int32 id, global::System.String title, global::System.String titleEng)
         {
             ProductAttribute productAttribute = new ProductAttribute();
             productAttribute.Id = id;
             productAttribute.Title = title;
+            productAttribute.TitleEng = titleEng;
             return productAttribute;
         }
 
@@ -1109,6 +1289,30 @@ namespace Rakurs.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TitleEng
+        {
+            get
+            {
+                return _TitleEng;
+            }
+            set
+            {
+                OnTitleEngChanging(value);
+                ReportPropertyChanging("TitleEng");
+                _TitleEng = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TitleEng");
+                OnTitleEngChanged();
+            }
+        }
+        private global::System.String _TitleEng;
+        partial void OnTitleEngChanging(global::System.String value);
+        partial void OnTitleEngChanged();
 
         #endregion
     

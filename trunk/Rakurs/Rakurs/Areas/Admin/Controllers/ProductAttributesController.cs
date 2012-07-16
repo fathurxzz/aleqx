@@ -43,7 +43,7 @@ namespace Rakurs.Areas.Admin.Controllers
             using (var context = new StructureContainer())
             {
                 var productAttribute = context.ProductAttribute.First(pa => pa.Id == model.Id);
-                TryUpdateModel(productAttribute, new[] { "Title" });
+                TryUpdateModel(productAttribute, new[] { "Title", "TitleEng" });
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -55,7 +55,7 @@ namespace Rakurs.Areas.Admin.Controllers
             using (var context = new StructureContainer())
             {
                 var pa = new ProductAttribute();
-                TryUpdateModel(pa, new[] { "Title" });
+                TryUpdateModel(pa, new[] { "Title", "TitleEng" });
                 context.AddToProductAttribute(pa);
                 context.SaveChanges();
             }

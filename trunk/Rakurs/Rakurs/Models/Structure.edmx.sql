@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/10/2012 09:43:54
+-- Date Created: 07/16/2012 21:09:38
 -- Generated from EDMX file: D:\projects\Rakurs\Rakurs\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -54,20 +54,25 @@ CREATE TABLE `Content` (
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
     `IsGallery` bool  NOT NULL,
-    `MainPage` bool  NOT NULL
+    `MainPage` bool  NOT NULL,
+    `TitleEng` varchar( 255 )  NOT NULL,
+    `PageTitleEng` varchar( 255 )  NOT NULL,
+    `TextEng` longtext  NOT NULL
 );
 
 -- Creating table 'Category'
 
 CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 100 )  NOT NULL,
+    `Title` varchar( 255 )  NOT NULL,
     `SortOrder` int  NOT NULL,
     `CategoryId` int  NULL,
     `Text` longtext  NULL,
     `Name` longtext  NOT NULL,
     `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL
+    `SeoKeywords` longtext  NULL,
+    `TitleEng` varchar( 255 )  NOT NULL,
+    `TextEng` longtext  NOT NULL
 );
 
 -- Creating table 'Product'
@@ -78,14 +83,17 @@ CREATE TABLE `Product` (
     `Title` TEXT  NULL,
     `Description` longtext  NULL,
     `ImageSource` longtext  NOT NULL,
-    `ShowOnMainPage` bool  NOT NULL
+    `ShowOnMainPage` bool  NOT NULL,
+    `TitleEng` TEXT  NULL,
+    `DescriptionEng` longtext  NULL
 );
 
 -- Creating table 'ProductAttribute'
 
 CREATE TABLE `ProductAttribute` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 100 )  NOT NULL
+    `Title` varchar( 255 )  NOT NULL,
+    `TitleEng` varchar( 255 )  NOT NULL
 );
 
 -- Creating table 'CategoryProductAttribute'
