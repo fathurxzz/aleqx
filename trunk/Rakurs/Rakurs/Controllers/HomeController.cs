@@ -33,6 +33,7 @@ namespace Rakurs.Controllers
             }
         }
 
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
         public ActionResult Categories()
         {
             using (var context = new StructureContainer())
