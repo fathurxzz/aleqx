@@ -1,7 +1,10 @@
-﻿@model IEnumerable<Rakurs.Models.ProductAttribute>
+﻿@using Rakurs.Models
+@model IEnumerable<Rakurs.Models.ProductAttribute>
 <div id="categoryFilter">
     <div class="categoryFilterTitle">
-        Показывать только:</div>
+        @Html.Raw(SiteSettings.Language == Language.Ru ? "Показывать только:" : "Show only:") 
+        
+        </div>
     <table>
         <tr>
             @foreach (var item in Model)
@@ -9,13 +12,13 @@
                 if (item.Id == ViewBag.Filter)
                 {
                 <td>
-                    <span>@item.Title</span>
+                    <span>@Html.Raw(SiteSettings.Language == Language.Ru ?item.Title:item.TitleEng)</span>
                 </td>
                 }
                 else
                 {
                 <td>
-                    @Html.ActionLink(item.Title, "Index", "Catalogue", new { filter = item.Id }, null)
+                    @Html.ActionLink(SiteSettings.Language == Language.Ru ?item.Title:item.TitleEng, "Index", "Catalogue", new { filter = item.Id }, null)
                 </td>
                 }
             }
@@ -23,13 +26,13 @@
             @if (ViewBag.Filter == null)
             {
                 <td>
-                    <span>Все</span>
+                    <span>@Html.Raw(SiteSettings.Language == Language.Ru ? "Все" : "All") </span>
                 </td>
             }
             else
             {
                 <td>
-                    @Html.ActionLink("Все", "Index", "Catalogue")
+                    @Html.ActionLink(SiteSettings.Language == Language.Ru ? "Все" : "All", "Index", "Catalogue")
                 </td>
             }
         </tr>

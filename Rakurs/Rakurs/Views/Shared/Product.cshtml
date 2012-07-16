@@ -1,4 +1,5 @@
 ﻿@using Rakurs.Helpers
+@using Rakurs.Models
 @model Rakurs.Models.Product
 
 <div class="galleryItemContainer">
@@ -14,7 +15,7 @@
                 
                 @{
                     //var fancyTitle = "<div class=\"fancyTitleContainer\"><div class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</div><div class=\"descr\">"+Model.Description+"</div></div>";
-                    var fancyTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</td><td class=\"descr\">" + Model.Description + "</td></tr></table>";
+                    var fancyTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + (SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng) + " &raquo; " + (SiteSettings.Language == Language.Ru ?Model.Title:Model.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ?Model.Description:Model.DescriptionEng) + "</td></tr></table>";
                     
                     //var fancyTitle = "<div class=\"fancyTitleContainer\"><div class=\"path\">" + Model.Category.Title + " &raquo; " + Model.Title + "</div><div class=\"descr\">" + Model.Description + "</div></div>";
                         
@@ -24,6 +25,6 @@
                 </a>
             </div>
             <div class="sign">
-                <a rel="@Html.Raw("group2")" href="../../Content/Images/@Model.ImageSource" class="fancyImage">@Model.Title</a>
+                <a rel="@Html.Raw("group2")" href="../../Content/Images/@Model.ImageSource" class="fancyImage">@Html.Raw(SiteSettings.Language == Language.Ru ?Model.Title:Model.TitleEng)</a>
             </div>
         </div>

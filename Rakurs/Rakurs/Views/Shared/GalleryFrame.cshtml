@@ -1,4 +1,5 @@
 ﻿@using Rakurs.Helpers
+@using Rakurs.Models
 @model IEnumerable<Rakurs.Models.Product>
 @{
                     //var image = Model.FirstOrDefault();
@@ -31,9 +32,9 @@
                                         @Html.ActionLink(pathItem.Title, "Index", "Catalogue", new { category = pathItem.ParentName, subCategory = pathItem.Name }, null)
                                         @Html.Raw(" &raquo; ")
                                     }
-                                    <span style="font-family: PFBeauSansProSemiBold">@image.Title</span>
+                                    <span style="font-family: PFBeauSansProSemiBold">@Html.Raw(SiteSettings.Language == Language.Ru ?image.Title:image.TitleEng)</span>
                                 </td>
-                                <td id="description">@image.Description
+                                <td id="description">@Html.Raw(SiteSettings.Language == Language.Ru ? image.Description:image.DescriptionEng)
                                 </td>
                             </tr>
                         </table>

@@ -65,8 +65,9 @@ namespace Rakurs.Areas.Admin.Controllers
                 }
 
 
-                TryUpdateModel(category, new[] { "Name", "Title", "SortOrder" });
+                TryUpdateModel(category, new[] { "Name", "Title", "TitleEng", "SortOrder" });
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
+                category.TextEng = HttpUtility.HtmlDecode(form["TextEng"]);
                 context.AddToCategory(category);
                 context.SaveChanges();
 
@@ -103,9 +104,11 @@ namespace Rakurs.Areas.Admin.Controllers
                                             {
                                                 "Name",
                                                 "Title",
+                                                "TitleEng",
                                                 "SortOrder"
                                             });
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
+                category.TextEng = HttpUtility.HtmlDecode(form["TextEng"]);
 
                 var attributes = context.ProductAttribute.ToList();
                 PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr", "parentId");

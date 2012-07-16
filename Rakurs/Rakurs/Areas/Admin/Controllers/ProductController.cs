@@ -61,7 +61,7 @@ namespace Rakurs.Areas.Admin.Controllers
                 }
 
 
-                TryUpdateModel(product, new[] { "Title", "Description", "ShowOnMainPage" });
+                TryUpdateModel(product, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "ShowOnMainPage" });
 
                 if (fileUpload != null)
                 {
@@ -135,8 +135,7 @@ namespace Rakurs.Areas.Admin.Controllers
                     }
                 }
 
-
-                TryUpdateModel(product, new[] { "Title", "Description", "ShowOnMainPage" });
+                TryUpdateModel(product, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "ShowOnMainPage" });
 
 
                 

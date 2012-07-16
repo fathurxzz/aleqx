@@ -1,4 +1,5 @@
-﻿@model Rakurs.Models.CatalogueViewModel
+﻿@using Rakurs.Models
+@model Rakurs.Models.CatalogueViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -34,26 +35,27 @@
             }
             @if (Model.SubCategory == null)
             {
-                @Model.Category.Title
+                @Html.Raw(SiteSettings.Language == Language.Ru ? Model.Category.Title:Model.Category.TitleEng)
             }
             else
             {
-                @Html.ActionLink(Model.Category.Title, "Index", "Catalogue", new { category = Model.Category.Name, subCategory="" }, null)
+                @Html.ActionLink(SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng, "Index", "Catalogue", new { category = Model.Category.Name, subCategory = "" }, null)
             }
         </div>
-        @if (Model.CurrentCategory != null && (!string.IsNullOrEmpty(Model.CurrentCategory.Title) || !string.IsNullOrEmpty(Model.CurrentCategory.Text)))
+        @if (Model.CurrentCategory != null && (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Title : Model.CurrentCategory.TitleEng) || !string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Text : Model.CurrentCategory.TextEng)))
         {
             <div class="categoryInnerText">
-                @if (!string.IsNullOrEmpty(Model.CurrentCategory.Title))
+                @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Title : Model.CurrentCategory.TitleEng))
                 {
                     <div class="categoryInnerTextTitle">
-                        @Model.CurrentCategory.Title</div>
+                        @Html.Raw(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Title : Model.CurrentCategory.TitleEng)
+                    </div>
                     <div class="separator">
                     </div>
                 }
-                @if (!string.IsNullOrEmpty(Model.CurrentCategory.Text))
+                @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Text : Model.CurrentCategory.TextEng))
                 {
-                    @Html.Raw(Model.CurrentCategory.Text)
+                    @Html.Raw(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Text : Model.CurrentCategory.TextEng)
                 }
             </div>
         }

@@ -34,8 +34,11 @@
                 @Html.LabelFor(model => model.Title)
             </td>
             <td>
-                @Html.EditorFor(model => model.Title)
+                 <nobr> RU @Html.EditorFor(model => model.Title)</nobr>
                 @Html.ValidationMessageFor(model => model.Title)
+                <br/>
+                <nobr> EN @Html.EditorFor(model => model.TitleEng)</nobr>
+                @Html.ValidationMessageFor(model => model.TitleEng)
             </td>
         </tr>
         <tr>
@@ -62,10 +65,19 @@
                 }
             </td>
         </tr>
+       <tr>
+            <td colspan="2">Текст</td>
+        </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="2">RU<br/>
                 @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                 @Html.ValidationMessageFor(model => model.Text)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">EN<br/>
+                @Html.TextAreaFor(model => model.TextEng, new { @class = "ckeditor" })
+                @Html.ValidationMessageFor(model => model.TextEng)
             </td>
         </tr>
         <tr>
@@ -94,11 +106,11 @@
         <input type="submit" value="Сохранить" />
         @if (Model.Parent != null)
         {
-            @Html.ActionLink("Назад", "Index", "Catalogue", new {Area = "", category = Model.Parent.Name}, null)
+            @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "", category = Model.Parent.Name }, null)
         }
         else
         {
-            @Html.ActionLink("Назад", "Index", "Home", new { Area = "", id="" }, null)
+            @Html.ActionLink("Назад", "Index", "Home", new { Area = "", id = "" }, null)
         }
     </div>
 }

@@ -24,8 +24,14 @@ namespace Rakurs.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
+        public string TitleEng { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок в шапке обозревателя")]
         public string PageTitle { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
+        public string PageTitleEng { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]

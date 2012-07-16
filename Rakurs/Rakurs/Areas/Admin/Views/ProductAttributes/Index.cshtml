@@ -17,6 +17,9 @@
         <th>
             Заголовок
         </th>
+        <th>
+            Заголовок ENG
+        </th>
         <th></th>
     </tr>
 
@@ -24,6 +27,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TitleEng)
         </td>
         <td>
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |

@@ -116,7 +116,7 @@ padding-top: 1px;
 
 .adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
 {
-    width: 450px;
+    width: 400px;
 }
 
 

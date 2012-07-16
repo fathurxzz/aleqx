@@ -30,8 +30,11 @@
                 @Html.LabelFor(model => model.Title)
             </td>
             <td>
-                @Html.EditorFor(model => model.Title)
+                <nobr> RU @Html.EditorFor(model => model.Title)</nobr>
                 @Html.ValidationMessageFor(model => model.Title)
+                <br/>
+                <nobr> EN @Html.EditorFor(model => model.TitleEng)</nobr>
+                @Html.ValidationMessageFor(model => model.TitleEng)
             </td>
         </tr>
         <tr>
@@ -39,8 +42,11 @@
                 @Html.LabelFor(model => model.PageTitle)
             </td>
             <td>
-                @Html.EditorFor(model => model.PageTitle)
+                <nobr> RU @Html.EditorFor(model => model.PageTitle)</nobr>
                 @Html.ValidationMessageFor(model => model.PageTitle)
+                <br/>
+                <nobr> EN @Html.EditorFor(model => model.PageTitleEng)</nobr>
+                @Html.ValidationMessageFor(model => model.PageTitleEng)
             </td>
         </tr>
         <tr>
@@ -52,9 +58,18 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="2">Текст</td>
+        </tr>
+        <tr>
+            <td colspan="2">RU<br/>
                 @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                 @Html.ValidationMessageFor(model => model.Text)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">EN<br/>
+                @Html.TextAreaFor(model => model.TextEng, new { @class = "ckeditor" })
+                @Html.ValidationMessageFor(model => model.TextEng)
             </td>
         </tr>
         <tr>

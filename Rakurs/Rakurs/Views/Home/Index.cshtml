@@ -1,35 +1,35 @@
-﻿@model Rakurs.Models.SiteViewModel
-
+﻿@using Rakurs.Models
+@model Rakurs.Models.SiteViewModel
 @section Text
 {
-    @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Title) || !string.IsNullOrEmpty(Model.Content.Text)))
+    @if (Model.Content != null && (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.Content.Title : Model.Content.TitleEng) || !string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.Content.Text : Model.Content.TextEng)))
     {
         <div id="bottomText" class="contentText">
-            @if (!string.IsNullOrEmpty(Model.Content.Title))
+            @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.Content.Title : Model.Content.TitleEng))
             {
                 <div class="title">
-                    @Model.Content.Title</div>
+                   @Html.Raw(SiteSettings.Language == Language.Ru ? Model.Content.Title : Model.Content.TitleEng)</div>
                 <div class="separator">
                 </div>
             }
-            @if (!string.IsNullOrEmpty(Model.Content.Text))
+            @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.Content.Text : Model.Content.TextEng))
             {
-                @Html.Raw(Model.Content.Text)
+                @Html.Raw(SiteSettings.Language == Language.Ru ? Model.Content.Text : Model.Content.TextEng)
             }
         </div>
     }
 }
 @section GalleryFrame
 {
-@if (Request.IsAuthenticated)
-{
-    <div class="adminLinkContainer">
-        @if (Model.Content.MainPage)
-        {
-            @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
-        }
-    </div>
-}
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+            @if (Model.Content.MainPage)
+            {
+                @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { Area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+            }
+        </div>
+    }
     @if (Model.Content != null && Model.Content.MainPage && Model.GalleryFrameItems != null && Model.GalleryFrameItems.Any())
     {
         @Html.Partial("GalleryFrame", Model.GalleryFrameItems)

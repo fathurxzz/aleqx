@@ -42,5 +42,11 @@ namespace Rakurs.Controllers
                 return PartialView("Categories", categories);
             }
         }
+
+        public ActionResult SetLanguage(string id)
+        {
+            SiteSettings.SetCurrentLanguage(id);
+            return RedirectToAction("Index", "Home", new { id = "" });
+        }
     }
 }

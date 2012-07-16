@@ -30,7 +30,7 @@ namespace Rakurs.Models
             Content content = null;
             if (!string.IsNullOrEmpty(contentName))
             {
-                content = contentList.Where(c => c.Name == contentName).FirstOrDefault();
+                content = contentList.FirstOrDefault(c => c.Name == contentName);
                 if (content == null)
                 {
                     throw new HttpNotFoundException();
@@ -50,7 +50,7 @@ namespace Rakurs.Models
             Content = content;
             if (content != null)
             {
-                Title += " - " + content.PageTitle;
+                Title += " - " + (SiteSettings.Language==Language.Ru? content.PageTitle:content.PageTitleEng);
                 SeoDescription = content.SeoDescription;
                 SeoKeywords = content.SeoKeywords;
             }
@@ -71,14 +71,14 @@ namespace Rakurs.Models
                                          {
                                              Name = "",
                                              ParentName = cat.Parent != null ? cat.Parent.Name : "",
-                                             Title = cat.Parent != null ? cat.Parent.Title : ""
+                                             Title = cat.Parent != null ?  (SiteSettings.Language==Language.Ru? cat.Parent.Title:cat.Parent.TitleEng) : ""
                                          });
                 }
                 product.Path.Add(new PathItem
                                      {
                                          Name = product.Category.Name,
                                          ParentName = cat.Parent != null ? cat.Parent.Name : "",
-                                         Title = product.Category.Title
+                                         Title = SiteSettings.Language == Language.Ru ? product.Category.Title : product.Category.TitleEng
                                      });
 
 
@@ -89,7 +89,16 @@ namespace Rakurs.Models
         private void FetchMainMenuItems(IEnumerable<Content> contentList, string contentName)
         {
             MainMenu = new RakursSiteMenu();
-            var menuItems = contentList.Select(c => new RakursMenuItem { ContentId = c.Id, ContentName = c.Name, Title = c.Title, SortOrder = c.SortOrder, IsMainPage = c.MainPage, Selected = c.Name == contentName, IsGalleryMenuItem = c.IsGallery });
+            var menuItems = contentList.Select(c => new RakursMenuItem
+                                                        {
+                                                            ContentId = c.Id, 
+                                                            ContentName = c.Name, 
+                                                            Title = SiteSettings.Language==Language.Ru? c.Title:c.TitleEng, 
+                                                            SortOrder = c.SortOrder, 
+                                                            IsMainPage = c.MainPage, 
+                                                            Selected = c.Name == contentName, 
+                                                            IsGalleryMenuItem = c.IsGallery
+                                                        });
             foreach (var menuItem in menuItems)
             {
                 MainMenu.Add(menuItem);

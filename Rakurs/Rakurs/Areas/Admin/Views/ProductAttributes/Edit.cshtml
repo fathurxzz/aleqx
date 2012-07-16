@@ -27,8 +27,11 @@
             <td>
             @Html.LabelFor(model => model.Title)
             </td>
-            <td>@Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
+            <td> RU @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+                <br />
+                EN @Html.EditorFor(model => model.TitleEng)
+                @Html.ValidationMessageFor(model => model.TitleEng)
             </td>
         </tr>
     </table>
