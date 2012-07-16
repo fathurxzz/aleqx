@@ -21,7 +21,7 @@ namespace Rakurs.Models
 
         public SiteViewModel(StructureContainer context, string contentName)
         {
-            Title = "Ракурс";
+            Title = SiteSettings.Language == Language.Ru ? "Ракурс" : "Rakurs";
             Context = context;
 
             var contentList = Context.Content.ToList();
