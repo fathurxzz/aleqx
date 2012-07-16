@@ -17,12 +17,12 @@ namespace Rakurs.Areas.Admin.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var category = new Category{SortOrder = 0};
+                var category = new Category { SortOrder = 0 };
                 var attributes = context.ProductAttribute.ToList();
                 ViewBag.Attributes = attributes;
 
                 ViewData["parentId"] = id;
-                if(id.HasValue)
+                if (id.HasValue)
                 {
                     var parent = context.Category.First(c => c.Id == id);
                     category.Parent = parent;
@@ -65,7 +65,7 @@ namespace Rakurs.Areas.Admin.Controllers
                 }
 
 
-                TryUpdateModel(category, new[] {"Name", "Title", "SortOrder"});
+                TryUpdateModel(category, new[] { "Name", "Title", "SortOrder" });
                 category.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.AddToCategory(category);
                 context.SaveChanges();
@@ -73,9 +73,9 @@ namespace Rakurs.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Catalogue",
                                         new
                                             {
-                                                Area = "", 
+                                                Area = "",
                                                 category = category.Parent != null ? category.Parent.Name : category.Name,
-                                                subCategory = category.Parent != null ? category.Name:null
+                                                subCategory = category.Parent != null ? category.Name : null
                                             });
             }
         }
@@ -126,14 +126,56 @@ namespace Rakurs.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent!=null? category.Parent.Name:category.Name });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Parent != null ? category.Parent.Name : category.Name });
             }
         }
 
         public ActionResult Delete(int id)
         {
-            throw new NotImplementedException("Удаление категорий пока не реализовано");
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            using (var context = new StructureContainer())
+            {
+                var category = context.Category.Include("Children").Include("Products").First(c => c.Id == id);
+                while (category.Products.Any())
+                {
+                    var product = category.Products.First();
+                    if (!string.IsNullOrEmpty(product.ImageSource))
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", product.ImageSource);
+                        product.ProductAttributes.Clear();
+                        context.DeleteObject(product);
+                    }
+                }
+                context.SaveChanges();
+
+                while (category.Children.Any())
+                {
+                    int catId = category.Children.First().Id;
+                    var child = context.Category.Include("Products").Include("ProductAttributes").First(c => c.Id == catId);
+                    child.ProductAttributes.Load();
+                    while (child.Products.Any())
+                    {
+                        var product = child.Products.First();
+                        if (!string.IsNullOrEmpty(product.ImageSource))
+                        {
+                            IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
+                            IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", product.ImageSource);
+                            product.ProductAttributes.Clear();
+                            context.DeleteObject(product);
+                            context.SaveChanges();
+                        }
+                    }
+                    child.Products.Clear();
+                    child.ProductAttributes.Clear();
+                    context.DeleteObject(child);
+                    context.SaveChanges();
+                }
+                category.ProductAttributes.Load();
+                category.ProductAttributes.Clear();
+                context.DeleteObject(category);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
         }
 
     }
