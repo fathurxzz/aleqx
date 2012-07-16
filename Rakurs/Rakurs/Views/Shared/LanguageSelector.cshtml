@@ -7,13 +7,13 @@
             <td class="first">По-русски
             </td>
             <td>
-                @Html.ActionLink("In English", "SetLanguage", "Home", new { id = "en-US" }, null)
+                @Html.ActionLink("In English", "SetLanguage", "Home", new {Area="", id = "en-US" }, null)
             </td>
         }
         else
         {
             <td class="first">
-                @Html.ActionLink("По-русски", "SetLanguage", "Home", new { id = "ru-RU" }, null)
+                @Html.ActionLink("По-русски", "SetLanguage", "Home", new { Area = "", id = "ru-RU" }, null)
             </td>
             <td>In English
             </td>
