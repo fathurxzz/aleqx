@@ -63,11 +63,25 @@ namespace Rakurs.Models
             foreach (var product in products)
             {
                 var cat = Context.Category.Include("Parent").First(c => c.Id == product.Category.Id);
-                product.Path = new List<PathItem>
-                                       {
-                                           new PathItem {Name = "", ParentName = cat.Parent.Name, Title = cat.Parent.Title},
-                                           new PathItem {Name = product.Category.Name, ParentName = cat.Parent.Name, Title = product.Category.Title}
-                                       };
+                product.Path = new List<PathItem>();
+
+                if (cat.Parent != null)
+                {
+                    product.Path.Add(new PathItem
+                                         {
+                                             Name = "",
+                                             ParentName = cat.Parent != null ? cat.Parent.Name : "",
+                                             Title = cat.Parent != null ? cat.Parent.Title : ""
+                                         });
+                }
+                product.Path.Add(new PathItem
+                                     {
+                                         Name = product.Category.Name,
+                                         ParentName = cat.Parent != null ? cat.Parent.Name : "",
+                                         Title = product.Category.Title
+                                     });
+
+
             }
             GalleryFrameItems = products;
         }
