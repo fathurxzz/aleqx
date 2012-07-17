@@ -150,3 +150,9 @@
     height: 35px;
     vertical-align: middle;
 }
+
+
+.overview img
+{
+    border: none;
+}
