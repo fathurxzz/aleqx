@@ -9,7 +9,10 @@
         $('#galleryImageContainer').tinycarousel();
     });
 </script>
-<div id="slogan">
+@{
+                string sloganClassName = SiteSettings.Language == Language.Ru ? "" : "en";
+            }
+<div id="slogan" class="@sloganClassName">
     @*От проекта &mdash; до монтажа:*@
 </div>
 <div id="galleryFrameContainer">
