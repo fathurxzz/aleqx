@@ -76,8 +76,8 @@ namespace Rakurs.Models
                 }
                 product.Path.Add(new PathItem
                                      {
-                                         Name = product.Category.Name,
-                                         ParentName = cat.Parent != null ? cat.Parent.Name : "",
+                                         Name = cat.Parent != null ? cat.Parent.Name : "",
+                                         ParentName = product.Category.Name,
                                          Title = SiteSettings.Language == Language.Ru ? product.Category.Title : product.Category.TitleEng
                                      });
 
