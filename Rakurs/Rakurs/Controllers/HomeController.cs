@@ -14,11 +14,13 @@ namespace Rakurs.Controllers
         {
             using (var context = new StructureContainer())
             {
-                var model = new SiteViewModel(context,  id ?? "");
+                var model = new SiteViewModel(context, id ?? "");
 
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;
+                if (model.Content != null)
+                    ViewBag.ContentName = model.Content.Name;
                 return View(model);
             }
         }
@@ -43,9 +45,19 @@ namespace Rakurs.Controllers
             }
         }
 
-        public ActionResult SetLanguage(string id)
+        public ActionResult SetLanguage(string id, string contentName, string categoryName, string subcategoryName, string filter)
         {
             SiteSettings.SetCurrentLanguage(id);
+
+            if (!string.IsNullOrEmpty(contentName))
+            {
+                return RedirectToAction("Index", "Home", new { id = contentName });
+            }
+
+            if (!string.IsNullOrEmpty(categoryName))
+            {
+                return RedirectToAction("Index", "Catalogue", new { category = categoryName, subCategory = subcategoryName, filter=filter });
+            }
             return RedirectToAction("Index", "Home", new { id = "" });
         }
     }

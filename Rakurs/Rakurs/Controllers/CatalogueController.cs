@@ -29,7 +29,12 @@ namespace Rakurs.Controllers
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.CategoryName = model.Category.Name;
+                if (model.SubCategory != null)
+                    ViewBag.SubCategoryName = model.SubCategory.Name;
+                ViewBag.CategoryName = model.Category.Name;
                 ViewBag.Filter = model.CurrentFilterId;
+                if (model.Content != null)
+                    ViewBag.ContentName = model.Content.Name;
                 return View(model);
             }
         }

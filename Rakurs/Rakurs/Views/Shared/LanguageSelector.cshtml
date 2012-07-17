@@ -1,21 +1,23 @@
 ﻿@using Rakurs.Models
-<table class="languageSwitcherTable" >
+<table class="languageSwitcherTable">
     <tr>
         @if (SiteSettings.GetCurrentLanguage == "ru-RU")
         { 
     
-            <td class="first">По-русски
+            <td class="first">
+                По-русски
             </td>
             <td>
-                @Html.ActionLink("In English", "SetLanguage", "Home", new {Area="", id = "en-US" }, null)
+                @Html.ActionLink("In English", "SetLanguage", "Home", new { Area = "", id = "en-US", contentName = ViewBag.ContentName, categoryName = ViewBag.CategoryName, subcategoryName = ViewBag.SubCategoryName, filter = ViewBag.Filter }, null)
             </td>
         }
         else
         {
             <td class="first">
-                @Html.ActionLink("По-русски", "SetLanguage", "Home", new { Area = "", id = "ru-RU" }, null)
+                @Html.ActionLink("По-русски", "SetLanguage", "Home", new { Area = "", id = "ru-RU", contentName = ViewBag.ContentName, categoryName = ViewBag.CategoryName, subcategoryName = ViewBag.SubCategoryName, filter = ViewBag.Filter }, null)
             </td>
-            <td>In English
+            <td>
+                In English
             </td>
         }
     </tr>
