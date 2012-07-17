@@ -98,7 +98,7 @@ body {
 
 #slogan.en
 {
-    background-image: url('img/slogan-en.gif');
+    background-image: url('img/slogan-en.gif') !important;
 }
 
 #footer
