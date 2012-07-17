@@ -64,6 +64,11 @@ body {
     margin: 0 auto;
 }
 
+#logoContainer.en
+{
+    background-image: url('img/logo-en.gif') !important;
+}
+
 #logo
 {
     width: 80px;
@@ -73,6 +78,8 @@ body {
     margin-left: 200px;
     margin-top: 55px;
 }
+
+
 
 #slogan
 {
