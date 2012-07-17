@@ -152,6 +152,7 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\right-arrow.png" />
+    <Content Include="Content\img\slogan-en.gif" />
     <Content Include="Content\img\slogan.gif" />
     <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />

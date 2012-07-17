@@ -96,6 +96,11 @@ body {
     font-size: 18px;
 }
 
+#slogan.en
+{
+    background-image: url('img/slogan-en.gif');
+}
+
 #footer
 {
     height: 111px;
