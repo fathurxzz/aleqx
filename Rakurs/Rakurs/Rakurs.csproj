@@ -134,6 +134,7 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Gallery.css" />
+    <Content Include="Content\Images\bg\bg.jpg" />
     <Content Include="Content\img\admin\add-subitem.gif" />
     <Content Include="Content\img\admin\add.gif" />
     <Content Include="Content\img\admin\delete.gif" />
@@ -206,7 +207,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Content\Images\bg\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
   <ItemGroup>
