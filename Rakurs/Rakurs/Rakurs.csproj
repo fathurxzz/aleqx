@@ -206,7 +206,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Content\Images\bg\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
   <ItemGroup>
