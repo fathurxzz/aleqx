@@ -183,6 +183,7 @@
     <Content Include="Content\img\toy-planet-logo.gif" />
     <Content Include="Content\Shop.css" />
     <Content Include="Global.asax" />
+    <Content Include="logo.jpg" />
     <Content Include="Models\Content.edmx.sql" />
     <Content Include="Models\Orders.edmx.sql" />
     <Content Include="Models\Shop.edmx.sql" />
