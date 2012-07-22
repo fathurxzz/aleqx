@@ -3,6 +3,14 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
+    <meta itemprop="name" content="Toy-Planet">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://toy-planet.com.ua/logo.jpg">
+    <meta property="og:title" content="Магазин детских игрушек Toy-Planet" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://toy-planet.com.ua/" />
+    <meta property="og:image" content="http://toy-planet.com.ua/logo.jpg" />
+    <meta property="og:site_name" content="Toy-Planet" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Shop.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Common.css")" rel="stylesheet" type="text/css" />
@@ -20,8 +28,20 @@
         BasePageExtender.initialize();
     </script>
     @RenderSection("Includes", false)
+    <script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?9" charset="windows-1251"></script>
+    <script>        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+    <link rel="image_src" href="http://toy-planet.com.ua/logo.jpg" />
 </head>
 <body>
+    <div id="fb-root">
+    </div>
+    <script>        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));</script>
     <div class="topLine">
         <div class="topLineInnerContainer">
             <div class="phones">
@@ -97,8 +117,46 @@
                 <div class="clear">
                 </div>
                 @RenderSection("Paging", false)
+                
+                
                 <div id="footer">
+                    <div class="copy">
                     &copy; Интернет-магазин детских игрушек TOY-PLANET
+                    </div>
+                    
+                    <div class="socials">
+                    <div id="likeContainer" class="social fb">
+                        <fb:like href="http://toy-planet.com.ua/" send="false" layout="button_count" width="110"
+                            show_faces="true">
+                    </fb:like>
+                    </div>
+                    <div class="vk-share social">
+                        <script type="text/javascript">
+<!--
+                            document.write(VK.Share.button({ url: 'http://toy-planet.com.ua/', image: 'http://toy-planet.com.ua/logo.jpg' }, { type: 'button', text: 'Сохранить' }));
+                    -->
+                        </script>
+                    </div>
+                    <div class="social twitter">
+                        <a class="twitter-share-button" href="http://twitter.com/share" data-url="http://toy-planet.com.ua">
+                            Tweet</a>
+                    </div>
+                    <div id="plusOne" class="social plusone">
+                        <!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->
+                        <g:plusone size="medium"></g:plusone>
+                        <!-- Поместите этот вызов функции отображения в соответствующее место. -->
+                        <script type="text/javascript">
+                            window.___gcfg = { lang: 'ru' };
+
+                            (function () {
+                                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
+                    </div>
+                </div>
+
                 </div>
             </div>
         </div>
