@@ -20,6 +20,12 @@
     <div>
         <div class="productId">
             Код товара: @Model.Product.Id
+            @if(!string.IsNullOrEmpty(Model.Product.Articul))
+            {
+                <br />
+                @Html.Raw("Артикул: ")
+                @Model.Product.Articul
+            }
         </div>
         <div class="title">@Model.Product.Title</div>
     </div>
@@ -61,7 +67,7 @@
             <div class="clear">
             </div>
             @{
-        int rowCount = 0;
+                int rowCount = 0;
     }
     <div class="attributes">
         <table>
