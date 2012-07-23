@@ -24,6 +24,12 @@
     <div class="description">
         <div class="productId">
         Код товара: @Model.Id
+        @if(!string.IsNullOrEmpty(Model.Articul))
+            {
+                <br />
+                @Html.Raw("Артикул: ")
+                @Model.Articul
+            }
         </div>
         <div class="title">
             @Html.ActionLink(Model.Title, "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null)
