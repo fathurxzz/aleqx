@@ -30,6 +30,8 @@ namespace Rakurs.Models
             Content content = null;
             if (!string.IsNullOrEmpty(contentName))
             {
+                if (contentName ==  "main")
+                    IsHomePage = true;
                 content = contentList.FirstOrDefault(c => c.Name == contentName);
                 if (content == null)
                 {
