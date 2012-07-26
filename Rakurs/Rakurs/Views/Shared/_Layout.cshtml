@@ -28,13 +28,26 @@
     <script type="text/javascript">
         var isHomePage  =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
         BasePageExtender.initialize();
-    
+
+        var currentObj = null;
         
         $(function () {
             $(".fancy").fancybox({ showCloseButton: false, padding: 0, margin: 0 });
-            $(".fancyImage").fancybox({titlePosition: 'inside', showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+            $(".fancyImage").fancybox({titlePosition: 'inside', showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true, onClosed:onClosePicture });
         });
-                
+
+
+        setTitle = function(obj,value) {
+            obj.title = value;
+            currentObj = obj;
+        };
+
+        onClosePicture = function() {
+            currentObj.title = "";
+            currentObj = null;
+        };
+
+        
                 
     </script>
     @RenderSection("Includes", false)

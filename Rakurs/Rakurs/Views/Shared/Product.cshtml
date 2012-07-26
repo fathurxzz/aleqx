@@ -15,7 +15,7 @@
                 @{
                     var fancyTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + (SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng) + " &raquo; " + (SiteSettings.Language == Language.Ru ?Model.Title:Model.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ?Model.Description:Model.DescriptionEng) + "</td></tr></table>";
                 }
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage" title="@fancyTitle">
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage" onclick="setTitle(this, '@fancyTitle')" title="">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.Corp))
                 </a>
             </div>
