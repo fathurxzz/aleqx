@@ -46,9 +46,9 @@
                     var fancyTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" +  image.Path.First().ParentName + " &raquo; " + (SiteSettings.Language == Language.Ru ? image.Title : image.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ? image.Description : image.DescriptionEng) + "</td></tr></table>";
                     
                         }
-                        @*<a rel="@Html.Raw("group1")" href="../../Content/Images/@image.ImageSource" class="fancyImage" title="@fancyTitle">*@
+                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@image.ImageSource" class="fancyImage" onclick="setTitle(this, '@fancyTitle')" title="">
                         @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Auto, true))
-                        @*</a>*@
+                        </a>
                     </li>
                 }
             </ul>
