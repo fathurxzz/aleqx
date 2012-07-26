@@ -96,6 +96,7 @@ namespace Rakurs.Helpers
                     {
                         resultWidth = sourceImage.Width;
                         resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
+                        return new Rectangle(0, sourceImage.Height - resultHeight, resultWidth, resultHeight);
                     }
                     else
                     {
