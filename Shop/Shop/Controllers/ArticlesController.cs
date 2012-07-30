@@ -19,6 +19,7 @@ namespace Shop.Controllers
             {
                 var articles = context.Article.Where(a => a.Published).ToList();
                 SiteViewModel model = new SiteViewModel(context, null, false) { Articles = articles };
+                model.Title += " - Статьи";
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;
@@ -36,6 +37,7 @@ namespace Shop.Controllers
                     throw new HttpNotFoundException();
                 }
                 SiteViewModel model = new SiteViewModel(context, null, false) { Article = article };
+                model.Title += " - Статьи - " + article.Title;
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.isHomePage = model.IsHomePage;

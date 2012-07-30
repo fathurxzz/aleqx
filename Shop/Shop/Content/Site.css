@@ -81,6 +81,7 @@ a
     width: 720px;
     
     position: absolute;
+    background: url('img/header-bg.gif') no-repeat; background-position:33px 20px;
 }
 
 
