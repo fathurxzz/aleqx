@@ -18,6 +18,9 @@ namespace Shop.Models
         public List<MenuItem> MainMenu { get; set; }
         public Order Order { get; set; }
         public bool IsHomePage { get; set; }
+        public List<Article> Articles { get; set; }
+        public Article Article { get; set; }
+
 
         public SiteViewModel(ShopContainer context, string contentId, bool loadContent = true)
         {

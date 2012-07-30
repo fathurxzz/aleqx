@@ -1,0 +1,37 @@
+﻿@using Shop.Models
+@model Shop.Models.SiteViewModel
+@section Categories
+{
+    @Html.Partial("_Categories", Model.Categories)
+}
+@section Brands
+{
+    @Html.Partial("_Brands", Model.Brands)
+}
+@section Tags
+{
+    @Html.Partial("_Tags", Model.Tags)
+}
+@section HeaderPicture
+{
+    @{
+        
+        string style = "background: url('Content/img/header-bg.gif') no-repeat; background-position:33px 20px;";
+        /*var isHomePage =  ViewBag.isHomePage != null ? ViewBag.isHomePage.ToString().ToLowerInvariant() : "false";
+        if(isHomePage=="false")
+        {
+            style = "background: url('Content/img/" + Model.Content.Name.ToLower() + ".gif') no-repeat;";
+        }*/
+    }
+    <div id="header-bg-container" style="@Html.Raw(style)">
+    </div>
+}
+@if (Model.Article != null)
+{
+    <div class="articleContainer">
+        <div class="title">@Model.Article.Title
+        </div>
+        @Html.Raw(Model.Article.Text)
+    </div>
+    @Html.ActionLink("К списку статей","Index","Articles")
+}

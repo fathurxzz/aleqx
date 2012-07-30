@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/02/2012 22:51:38
+-- Date Created: 07/30/2012 09:15:52
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -43,6 +43,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Tag`;
     DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `ProductAttributeStaticValues`;
+    DROP TABLE IF EXISTS `Wish`;
+    DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `ProductAttributeCategory`;
     DROP TABLE IF EXISTS `ProductAttributeValuesProduct`;
     DROP TABLE IF EXISTS `TagProduct`;
@@ -178,6 +180,19 @@ CREATE TABLE `Wish` (
     `UserName` longtext  NULL,
     `Phone` longtext  NULL,
     `Email` longtext  NULL
+);
+
+-- Creating table 'Article'
+
+CREATE TABLE `Article` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `Date` datetime  NOT NULL,
+    `Published` bool  NOT NULL,
+    `Text` longtext  NOT NULL,
+    `Title` TEXT  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'ProductAttributeCategory'

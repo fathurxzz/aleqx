@@ -24,7 +24,7 @@
 {
 
     <div class="cartButtons">
-        @Html.ActionLink("Осистить", "Clear", "Cart")
+        @Html.ActionLink("Очистить", "Clear", "Cart")
     </div>
 
 
@@ -47,7 +47,9 @@
         {
 
             <tr>
-                <td>@order.Name
+                <td>
+                    @Html.ActionLink(order.Name, "ProductDetails", "Shop", new { Area = "", category = order.CategoryName, id = order.ProductName }, new{target="_blank"})
+                    @*@order.Name*@
                 </td>
                 <td class="dec">@order.Price.ToString("N")
                 </td>

@@ -38,14 +38,14 @@ namespace Shop
             );
             */
 
-            
+
             routes.MapRoute(
                 "Cart", // Route name
                 "cart/{action}", // URL with parameters
                 new { controller = "Cart", action = "Index", id = "" },
                 new string[1] { "Shop.Controllers" }
             );
-            
+
 
             routes.MapRoute(
                 "Brands", // Route name
@@ -72,6 +72,20 @@ namespace Shop
                 "Products", // Route name
                 "categories/{category}/{id}", // URL with parameters
                 new { controller = "Shop", action = "ProductDetails", id = "" },
+                new string[1] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
+                "Articles", // Route name
+                "articles", // URL with parameters
+                new { controller = "Articles", action = "Index"},
+                new string[1] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
+                "ArticleDetails", // Route name
+                "articles/{id}", // URL with parameters
+                new { controller = "Articles", action = "Details", id = "" },
                 new string[1] { "Shop.Controllers" }
             );
 

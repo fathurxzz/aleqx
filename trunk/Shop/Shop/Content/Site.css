@@ -369,3 +369,19 @@ a
 #footer .social.vk-share {
     width: 110px;
 }
+
+.articleListTitle
+{
+    padding: 10px;
+}
+
+.articleContainer
+{
+    padding-bottom: 20px;
+}
+
+.articleContainer .title
+{
+    font-size: 18px;
+    padding-bottom: 20px;
+}
