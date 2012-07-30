@@ -41,7 +41,7 @@ namespace Shop.Controllers
             {
                 using (var context = new ShopContainer())
                 {
-                    var product = context.Product.Include("ProductImages").First(p => p.Id == id);
+                    var product = context.Product.Include("Category").Include("ProductImages").First(p => p.Id == id);
                     var image = product.ProductImages.Where(i => i.Default).FirstOrDefault();
                     OrderItem orderItem = new OrderItem
                                               {
@@ -49,8 +49,10 @@ namespace Shop.Controllers
                                                   Image = (image != null) ? image.ImageSource : null,
                                                   Price = product.Price,
                                                   ProductId = product.Id,
+                                                  ProductName = product.Name,
                                                   Quantity = 1,
-                                                  Name = product.Title
+                                                  Name = product.Title,
+                                                  CategoryName = product.Category.Name
                                               };
 
                     WebSession.OrderItems.Add(product.Id, orderItem);

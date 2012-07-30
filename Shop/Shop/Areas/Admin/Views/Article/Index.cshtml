@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Shop.Models.Article>
+
+@{
+    ViewBag.Title = "Статьи";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Статьи</h2>
+
+<p>
+    @Html.ActionLink("Создать статью", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Идентификатор
+        </th>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Опубликован
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Published)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить статью?')" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,14 +1,8 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
-    ViewBag.Title = "Error";
+    ViewBag.Title = "Ошибка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>
-    Sorry, an error occurred while processing your request.
-</h2>
-
-@section HeaderPicture
-{
-    <div id="header-bg-container" class="main"></div>
-}
+<h2>Sorry, an error occurred while processing your request</h2>
