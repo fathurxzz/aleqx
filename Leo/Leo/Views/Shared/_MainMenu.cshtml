@@ -1,9 +1,26 @@
-﻿<div class="mainMenuContainer">
+﻿@model SiteExtensions.Menu
+<div class="mainMenuContainer">
     <div class="mainMenuTop">
-        <div class="menuItem"><a href="#">этаж пейзажей</a></div>
-        <div class="menuItem"><a href="#">этаж портретов</a></div>
-        <div class="menuItem"><a href="#">этаж натюрмортов</a></div>
-        <div class="menuItem"><a href="#">этаж учеников</a></div>
+        @foreach (var item in Model)
+        {
+            <div class="menuItem">
+                @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", category = item.ContentName }, null)
+            </div>
+        }
+        <div class="menuItem">
+            <a href="#">этаж пейзажей</a></div>
+        <div class="menuItem">
+            <a href="#">этаж портретов</a></div>
+        <div class="menuItem">
+            <a href="#">этаж натюрмортов</a></div>
+        <div class="menuItem">
+            <a href="#">этаж учеников</a></div>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+            </div>
+        }
     </div>
     <div class="mainMenuBottom">
     </div>

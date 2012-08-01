@@ -4,11 +4,139 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="Site.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="SiteTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SiteStoreContainer">
+    <EntitySet Name="Category" EntityType="Site.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Site.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductAttribute" EntityType="Site.Store.ProductAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryProductAttribute_Category" Association="Site.Store.FK_CategoryProductAttribute_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryProductAttribute" EntitySet="CategoryProductAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryProductAttribute_ProductAttribute" Association="Site.Store.FK_CategoryProductAttribute_ProductAttribute">
+      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+      <End Role="CategoryProductAttribute" EntitySet="CategoryProductAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductProductAttribute_Product" Association="Site.Store.FK_ProductProductAttribute_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductProductAttribute" EntitySet="ProductProductAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductProductAttribute_ProductAttribute" Association="Site.Store.FK_ProductProductAttribute_ProductAttribute">
+      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+      <End Role="ProductProductAttribute" EntitySet="ProductProductAttribute" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CategoryProductAttribute">
+    <Key>
+      <PropertyRef Name="Categories_Id" />
+      <PropertyRef Name="ProductAttributes_Id" />
+    </Key>
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+    <Property Name="ProductAttributes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductProductAttribute">
+    <Key>
+      <PropertyRef Name="Products_Id" />
+      <PropertyRef Name="ProductAttributes_Id" />
+    </Key>
+    <Property Name="Products_Id" Type="int" Nullable="false" />
+    <Property Name="ProductAttributes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoryProduct">
+    <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
+    <End Role="Product" Type="Site.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryProductAttribute_Category">
+    <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
+    <End Role="CategoryProductAttribute" Type="Site.Store.CategoryProductAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryProductAttribute">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryProductAttribute_ProductAttribute">
+    <End Role="CategoryProductAttribute" Type="Site.Store.CategoryProductAttribute" Multiplicity="*" />
+    <End Role="ProductAttribute" Type="Site.Store.ProductAttribute" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryProductAttribute">
+        <PropertyRef Name="ProductAttributes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductProductAttribute_Product">
+    <End Role="Product" Type="Site.Store.Product" Multiplicity="1" />
+    <End Role="ProductProductAttribute" Type="Site.Store.ProductProductAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductProductAttribute">
+        <PropertyRef Name="Products_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductProductAttribute_ProductAttribute">
+    <End Role="ProductProductAttribute" Type="Site.Store.ProductProductAttribute" Multiplicity="*" />
+    <End Role="ProductAttribute" Type="Site.Store.ProductAttribute" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductProductAttribute">
+        <PropertyRef Name="ProductAttributes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Site" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -87,13 +215,57 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="Site" />
-        <Alias Key="Target" Value="Site.Store" />
-        <EntityContainerMapping CdmEntityContainer="SiteContainer" StorageEntityContainer="SiteTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SiteStoreContainer" CdmEntityContainer="SiteContainer">
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductAttribute">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ProductAttribute)">
+        <MappingFragment StoreEntitySet="ProductAttribute">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoryProductAttribute" TypeName="Site.CategoryProductAttribute" StoreEntitySet="CategoryProductAttribute">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductAttribute">
+        <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductProductAttribute" TypeName="Site.ProductProductAttribute" StoreEntitySet="ProductProductAttribute">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Products_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductAttribute">
+        <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
@@ -106,6 +278,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

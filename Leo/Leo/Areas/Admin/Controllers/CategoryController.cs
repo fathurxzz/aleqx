@@ -15,7 +15,7 @@ namespace Leo.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Category{SortOrder = 0});
         }
 
         //
