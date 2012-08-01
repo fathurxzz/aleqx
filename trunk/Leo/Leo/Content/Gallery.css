@@ -6,7 +6,6 @@
 
 .galleryItem
 {
-    border: 1px solid black;
     background-image: url('img/gallery-container-bg.gif');
     background-position: 50%;
     background-repeat: repeat-y;
@@ -25,17 +24,93 @@
 .imageContainer
 {
     background: url('img/image-container-bg.gif');
-    height: 315px;
-    border: 1px solid red;
     position: relative;
     margin-bottom: 0;
     margin-top: auto;
 }
 
+.galleryItem table td
+{
+    border: none;
+}
 
 .image
 {
     width: 300px;
     height: 315px;
-    background-color: royalblue;
+    border: none;
 }
+
+table
+{
+    border-collapse: collapse;
+}
+
+.border-left, .border-right
+{
+    width: 16px;
+    height: 338px;
+}
+.border-left
+{
+    background-image: url('img/frame-border-left.gif');
+}
+
+.border-right
+{
+    background-image: url('img/frame-border-right.gif');
+}
+
+.border-bottom
+{
+    background: url('img/frame-border-bottom.gif') repeat-x;
+    height: 22px;
+}
+
+.border-bottom-left, .border-bottom-right
+{
+    height: 22px;
+    width: 22px;
+}
+
+.border-bottom-left
+{
+    float: left;
+    background: url('img/frame-border-bottom-left.gif');
+}
+
+.border-bottom-right
+{
+    float: right;
+    background: url('img/frame-border-bottom-right.gif');
+}
+
+.imageSignContainer .title
+{
+    
+    height: 10px;
+    background: url('img/image-title-bg.gif') repeat-x;
+    text-transform: uppercase;
+    font-size: 9px;
+    margin: 12px auto 0;
+    
+}
+
+.imageSignContainer .title .left, .imageSignContainer .title .right
+{
+    height: 27px;
+    width: 10px;
+}
+
+.imageSignContainer .title .left {
+    background: url('img/image-title-left-bg.gif') no-repeat;
+}
+ .imageSignContainer .title .right {
+     background: url('img/image-title-right-bg.gif') no-repeat;
+ }
+ 
+ .imageSignContainer .description
+ {
+     padding: 10px 100px 0;
+     font-size: 9px;
+ }
