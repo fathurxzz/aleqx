@@ -1,8 +1,22 @@
 ﻿@model Leo.Models.CatalogueViewModel
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Index</h2>
+@section CategoryTitle
+{
+    @Model.Category.Title
+этаж натюрмортов
+}
+@section GalleryContent
+{
+    <table>
+        <tr>
+            @foreach (var item in Model.Category.Products)
+            {
+                <td>@Html.Partial("_Product",item)
+                </td>
+            }
+        </tr>
+    </table>
+}
