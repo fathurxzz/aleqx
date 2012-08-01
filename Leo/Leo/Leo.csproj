@@ -76,9 +76,17 @@
     <Content Include="Content\img\catalogue-title-bg.png" />
     <Content Include="Content\img\footer-bottom-bg-center.gif" />
     <Content Include="Content\img\footer-bottom-bg.gif" />
+    <Content Include="Content\img\frame-border-bottom-left.gif" />
+    <Content Include="Content\img\frame-border-bottom-right.gif" />
+    <Content Include="Content\img\frame-border-bottom.gif" />
+    <Content Include="Content\img\frame-border-left.gif" />
+    <Content Include="Content\img\frame-border-right.gif" />
     <Content Include="Content\img\gallery-container-bg.gif" />
     <Content Include="Content\img\gallery-container-top-bg.gif" />
     <Content Include="Content\img\image-container-bg.gif" />
+    <Content Include="Content\img\image-title-bg.gif" />
+    <Content Include="Content\img\image-title-left-bg.gif" />
+    <Content Include="Content\img\image-title-right-bg.gif" />
     <Content Include="Content\img\mainmenu-bg.png" />
     <Content Include="Content\img\mainmenu-bottom-bg.png" />
     <Content Include="Global.asax" />
