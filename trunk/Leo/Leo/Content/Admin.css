@@ -1,1 +1,14 @@
-﻿
+﻿.adminLinkContainer
+{
+    text-align: center;
+}
+
+a.adminLink
+{
+    color:#ff0000 !important;
+    font-family: Tahoma;
+    font-size:12px;
+    font-weight:normal;
+    font-style:normal;
+    text-decoration:underline;
+}

@@ -14,17 +14,17 @@
 </head>
 <body>
     <div class="page">
-        @RenderSection("MainMenu")
+        @RenderSection("MainMenu",false)
         <div class="boardContainer">
             <div class="board">
             </div>
             <div class="catalogue-title">
-                @RenderSection("CategoryTitle")
+                @RenderSection("CategoryTitle",false)
             </div>
         </div>
         <div class="galleryContainer">
 
-            @RenderSection("GalleryContent")
+            @RenderSection("GalleryContent",false)
 
             
         </div>

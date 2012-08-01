@@ -115,6 +115,7 @@
     <Content Include="Content\img\mainmenu-bg.png" />
     <Content Include="Content\img\mainmenu-bottom-bg.png" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Site.edmx.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />

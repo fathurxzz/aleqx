@@ -13,5 +13,15 @@ namespace Leo.Controllers
             ViewBag.Title = "Leo";
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult FeedBack()
+        {
+            return View();
+        }
     }
 }
