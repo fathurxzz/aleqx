@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\arrow.gif" />
+    <Content Include="Content\img\board.png" />
     <Content Include="Content\img\catalogue-title-bg.png" />
     <Content Include="Content\img\footer-bottom-bg-center.gif" />
     <Content Include="Content\img\footer-bottom-bg.gif" />
