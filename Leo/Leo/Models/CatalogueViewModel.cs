@@ -13,7 +13,14 @@ namespace Leo.Models
 
         public CatalogueViewModel(SiteContainer context, string categoryName) : base(context,categoryName)
         {
+            var category = context.Category.Include("Products").FirstOrDefault(c => c.Name == categoryName);
+            if(category==null)
+            {
+                throw new HttpNotFoundException();
+            }
 
+            Category = category;
+            Products = category.Products;
         }
     }
 }

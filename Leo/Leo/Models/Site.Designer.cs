@@ -171,18 +171,12 @@ namespace Leo.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String sortOrder, global::System.String seoDescription, global::System.String seoKeywords)
+        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title)
         {
             Category category = new Category();
             category.Id = id;
             category.Name = name;
             category.Title = title;
-            category.SortOrder = sortOrder;
-            category.SeoDescription = seoDescription;
-            category.SeoKeywords = seoKeywords;
             return category;
         }
 
@@ -269,7 +263,7 @@ namespace Leo.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -279,19 +273,19 @@ namespace Leo.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -303,7 +297,7 @@ namespace Leo.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -315,7 +309,7 @@ namespace Leo.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -327,7 +321,7 @@ namespace Leo.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }
