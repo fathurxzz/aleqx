@@ -72,9 +72,12 @@
   <ItemGroup>
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\arrow.gif" />
-    <Content Include="Content\img\catalogue-title-bg.gif" />
+    <Content Include="Content\img\catalogue-title-bg.png" />
     <Content Include="Content\img\footer-bottom-bg-center.gif" />
     <Content Include="Content\img\footer-bottom-bg.gif" />
+    <Content Include="Content\img\gallery-container-bg.gif" />
+    <Content Include="Content\img\gallery-container-top-bg.gif" />
+    <Content Include="Content\img\image-container-bg.gif" />
     <Content Include="Content\img\mainmenu-bg.png" />
     <Content Include="Content\img\mainmenu-bottom-bg.png" />
     <Content Include="Global.asax" />

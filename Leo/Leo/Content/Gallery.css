@@ -1,9 +1,41 @@
 ﻿.galleryContainer
 {
-    
+    margin-left: 800px;
+    width: 600px;
 }
 
 .galleryItem
 {
-    
+    border: 1px solid black;
+    background-image: url('img/gallery-container-bg.gif');
+    background-position: 50%;
+    background-repeat: repeat-y;
+    margin: 0 100px;
+}
+
+.galleryTop
+{
+    height: 135px;
+    width: 285px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/gallery-container-top-bg.gif') no-repeat;
+}
+
+.imageContainer
+{
+    background: url('img/image-container-bg.gif');
+    height: 315px;
+    border: 1px solid red;
+    position: relative;
+    margin-bottom: 0;
+    margin-top: auto;
+}
+
+
+.image
+{
+    width: 300px;
+    height: 315px;
+    background-color: royalblue;
 }

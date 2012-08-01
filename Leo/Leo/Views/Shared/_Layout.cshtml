@@ -17,11 +17,18 @@
             </div>
         </div>
         <div class="galleryContainer">
-            @Html.Partial("_GalleryItem")
-            @Html.Partial("_GalleryItem")
-            @Html.Partial("_GalleryItem")
-            @Html.Partial("_GalleryItem")
-            @Html.Partial("_GalleryItem")
+            <table>
+                <tr>
+                    <td>@Html.Partial("_GalleryItem")
+                    </td>
+                    <td>@Html.Partial("_GalleryItem")
+                    </td>
+                    <td>@Html.Partial("_GalleryItem")
+                    </td>
+                    <td>@Html.Partial("_GalleryItem")
+                    </td>
+                </tr>
+            </table>
         </div>
         @RenderBody()
     </div>
