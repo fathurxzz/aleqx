@@ -1,4 +1,6 @@
-﻿<div class="galleryItem">
+﻿@model Leo.Models.Product
+           
+<div class="galleryItem">
     <div class="galleryTop">
     </div>
     <div class="imageContainer">
@@ -36,6 +38,7 @@
                             </div>
                         </td>
                         <td>
+                            @Model.Title
                             натюрморт
                         </td>
                         <td>
@@ -46,6 +49,7 @@
                 </table>
                 
                 <div class="description">
+                @Model.Description
                 asdasdas asd asd asd jasd alsdlashdlajsh lajs hdaljshd lasjhd lashd l lasdh lashd lashd lasdhl as jdh alsjdh 
                 </div>
         </div>
