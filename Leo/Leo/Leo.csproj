@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAttributesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
@@ -225,6 +226,10 @@
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\ProductAttributes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <None Include="Content\fonts\Hagin Caps Thin.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

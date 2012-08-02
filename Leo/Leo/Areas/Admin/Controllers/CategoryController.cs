@@ -4,76 +4,136 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Leo.Models;
+using SiteExtensions;
 
 namespace Leo.Areas.Admin.Controllers
 {
     [Authorize]
     public class CategoryController : Controller
     {
-        //
-        // GET: /Admin/Category/Create
-
         public ActionResult Create()
         {
-            return View(new Category{SortOrder = 0});
+            using (var context = new SiteContainer())
+            {
+                var category = new Category { SortOrder = 0 };
+                var attributes = context.ProductAttribute.ToList();
+                ViewBag.Attributes = attributes;
+                return View(category);
+            }
         }
 
-        //
-        // POST: /Admin/Category/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form)
         {
-            try
+            using (var context = new SiteContainer())
             {
                 var category = new Category();
-                TryUpdateModel(category, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
-                using (var context = new SiteContainer())
+
+
+                var attributes = context.ProductAttribute.ToList();
+                PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr");
+                foreach (var kvp in postData)
                 {
-                    context.AddToCategory(category);
-                    context.SaveChanges();
+                    var attribute = attributes.First(a => a.Id == kvp.Key);
+                    if (kvp.Value)
+                    {
+                        if (!category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Add(attribute);
+                    }
+                    else
+                    {
+                        if (category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Remove(attribute);
+                    }
                 }
+
+                TryUpdateModel(category, new[] { 
+                    "Name", 
+                    "Title", 
+                    "SortOrder", 
+                    "SeoDescription", 
+                    "SeoKeywords" });
+
+                context.AddToCategory(category);
+                context.SaveChanges();
 
                 return RedirectToAction("Index", "Catalogue", new { Area = "", id = category.Name });
             }
-            catch
-            {
-                return View();
-            }
         }
-
-        //
-        // GET: /Admin/Category/Edit/5
 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
+                var attributes = context.ProductAttribute.ToList();
+                ViewBag.Attributes = attributes;
+                return View(category);
+            }
         }
-
-        //
-        // POST: /Admin/Category/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Category model, FormCollection form)
         {
-            try
+            using (var context = new SiteContainer())
             {
-                // TODO: Add update logic here
+                var category = context.Category.First(c => c.Id == model.Id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                TryUpdateModel(category, new[]{
+                    "Name",
+                    "Title",
+                    "SortOrder",
+                    "SeoDescription", 
+                    "SeoKeywords"
+                });
+
+                var attributes = context.ProductAttribute.ToList();
+                PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr");
+                foreach (var kvp in postData)
+                {
+                    var attribute = attributes.First(a => a.Id == kvp.Key);
+                    if (kvp.Value)
+                    {
+                        if (!category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Add(attribute);
+                    }
+                    else
+                    {
+                        if (category.ProductAttributes.Contains(attribute))
+                            category.ProductAttributes.Remove(attribute);
+                    }
+                }
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Catalogue", new { Area = "", id = category.Name });
             }
         }
-
-        //
-        // GET: /Admin/Category/Delete/5
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.Include("Products").First(c => c.Id == id);
+                while (category.Products.Any())
+                {
+                    var product = category.Products.First();
+                    if (!string.IsNullOrEmpty(product.ImageSource))
+                    {
+                        IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
+                        IOHelper.DeleteFile("~/ImageCache/galleryThumbnail", product.ImageSource);
+                        product.ProductAttributes.Clear();
+                        context.DeleteObject(product);
+                    }
+                }
+                context.SaveChanges();
+
+                category.ProductAttributes.Load();
+                category.ProductAttributes.Clear();
+                context.DeleteObject(category);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home", new { Area = "", id = "" });
         }
     }
 }

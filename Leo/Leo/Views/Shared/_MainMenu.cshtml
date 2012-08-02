@@ -6,12 +6,26 @@
             <div class="menuItem">
                 @if (item.Current)
                 {
-                    @item.Title
+                    <div class="nowrap">
+                    @item.Title 
+                    
+                    @if (Request.IsAuthenticated)
+                    {
+                    <span class="sortOrder">
+                    @item.SortOrder 
+                    @Html.ActionLink("Редактировать", "Edit", "Category", new { Area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
+                    @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink", onclick = "return confirm('Внимание! Приудалении категории будут также удалены все атрибуты данной категории и изображения! Вы действительно хотите удалить категорию?')" })                   </span> 
+                    }
+                    </div>
                 }
                 else
                 {
                 
-                    @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", id = item.ContentName }, null)
+                    @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", id = item.ContentName }, null) 
+                    if (Request.IsAuthenticated)
+                     {
+                         <span class="sortOrder">@item.SortOrder</span>
+                     }
                 }
             </div>
         }
@@ -19,6 +33,9 @@
         {
             <div class="adminLinkContainer">
                 @Html.ActionLink("Добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+            </div>
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Атрибуты", "Index", "ProductAttributes", new { Area = "Admin" }, new { @class = "adminLink" })
             </div>
         }
     </div>
