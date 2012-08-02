@@ -11,9 +11,16 @@ namespace SiteExtensions
 {
     public enum ScaleMode
     {
+        FixedWidth,
+        FixedHeight,
         Corp,
         Insert,
         Auto
+    }
+
+    public enum FixedDimension
+    {
+        
     }
 
     public static class GraphicsHelper
@@ -51,17 +58,26 @@ namespace SiteExtensions
             int previewHeight = thumbImage.Height;
             int previewWidth = thumbImage.Width;
 
+
+            double hRatio = (double)previewHeight / sourceImage.Height;
+            double wRatio = (double)previewWidth / sourceImage.Width;
+
+            double ratio = hRatio < wRatio ? hRatio : wRatio;
+
+            int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+            var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+
             switch (scaleMode)
             {
                 case ScaleMode.Insert:
 
-                    double hRatio = (double)previewHeight / sourceImage.Height;
-                    double wRatio = (double)previewWidth / sourceImage.Width;
+                    //double hRatio = (double)previewHeight / sourceImage.Height;
+                    //double wRatio = (double)previewWidth / sourceImage.Width;
 
-                    double ratio = hRatio < wRatio ? hRatio : wRatio;
+                    //double ratio = hRatio < wRatio ? hRatio : wRatio;
 
-                    int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
-                    var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+                    //int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+                    //var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
 
 
 
@@ -76,6 +92,22 @@ namespace SiteExtensions
                         return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
                     }
                     break;
+                    
+                case ScaleMode.FixedWidth:
+                    //hRatio = (double)previewHeight / sourceImage.Height;
+                    //wRatio = (double)previewWidth / sourceImage.Width;
+                    //ratio = hRatio < wRatio ? hRatio : wRatio;
+                    //resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+                    //resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+                    return new Rectangle(0, 0, thumbImage.Width, resultSourceImageHeight);
+                 case ScaleMode.FixedHeight:
+                    //hRatio = (double)previewHeight / sourceImage.Height;
+                    //wRatio = (double)previewWidth / sourceImage.Width;
+                    //ratio = hRatio < wRatio ? hRatio : wRatio;
+                    //resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+                    //resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+                    return new Rectangle(0, 0, resultSourceImageWidth, thumbImage.Height);
+                    
             }
             return new Rectangle(0, 0, thumbImage.Width, thumbImage.Height);
         }
