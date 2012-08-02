@@ -13,11 +13,11 @@ namespace Leo.Controllers
         //
         // GET: /Catalogue/
 
-        public ActionResult Index(string category)
+        public ActionResult Index(string id)
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueViewModel(context, category);
+                var model = new CatalogueViewModel(context, id);
                 this.SetSeoContent(model);
                 return View(model);
             }

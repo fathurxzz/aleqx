@@ -33,8 +33,8 @@ namespace SiteExtensions
             //    limitHeight.Add(ThumbnailFolders[i], ThumbnailDimentions[i]);
             //}
 
-            limitWidth.Add("galleryThumbnail", 157);
-            limitHeight.Add("galleryThumbnail", 156);
+            limitWidth.Add("galleryThumbnail", 300);
+            limitHeight.Add("galleryThumbnail", 315);
 
             limitWidth.Add("mainFrameThumbnail", 1000);
             limitHeight.Add("mainFrameThumbnail", 514);
@@ -234,6 +234,8 @@ namespace SiteExtensions
 
         public static void SaveOriginalImage(string filePath, string fileName, HttpPostedFileBase file, int limitLength = 1000)
         {
+
+
 
             string tmpFilePath = HttpContext.Current.Server.MapPath("~/Content/tmpImages");
             tmpFilePath = Path.Combine(tmpFilePath, fileName);

@@ -1,4 +1,14 @@
-﻿.adminLinkContainer
+﻿.field-validation-error
+{
+    color: red !important;
+}
+
+.logOutLink
+{
+    text-align: center;
+}
+
+.adminLinkContainer
 {
     text-align: center;
 }
@@ -11,4 +21,54 @@ a.adminLink
     font-weight:normal;
     font-style:normal;
     text-decoration:underline;
+}
+
+.adminEditContentTable
+{
+    font-family: Tahoma;
+    width: 700px;
+    position: relative;
+    margin: 50px auto 0 400px;
+}
+
+.adminEditContentTable td
+{
+	padding-top:10px;
+	font-size:13px;
+	font-weight:bold;
+}
+
+.adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
+{
+    width: 400px;
+}
+
+
+.adminEditContentTable td span.tip
+{
+	font-size: 11px;
+	font-weight:normal;
+	color: #888;
+}
+
+.buttonsContainer
+{
+    text-align:center;
+    margin-top: 20px;
+    font-family: Verdana;
+}
+
+.adminContentContainer
+{
+    font-family: Tahoma;
+}
+
+.adminContentContainer
+{
+    font-size: 14px;
+}
+
+.adminContentContainer h2
+{
+    font-size: 20px;
 }

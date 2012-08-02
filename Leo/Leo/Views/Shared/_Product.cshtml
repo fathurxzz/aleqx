@@ -1,4 +1,5 @@
-﻿@model Leo.Models.Product
+﻿@using SiteExtensions
+@model Leo.Models.Product
            
 <div class="galleryItem">
     <div class="galleryTop">
@@ -12,6 +13,7 @@
                 </td>
                 <td>
                     <div class="image">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.Corp))
                     </div>
                 </td>
                 <td rowspan="2">
@@ -39,7 +41,6 @@
                         </td>
                         <td>
                             @Model.Title
-                            натюрморт
                         </td>
                         <td>
                             <div class="right">

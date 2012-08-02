@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ControllerExtensions.cs" />
     <Compile Include="Exceptions.cs" />
+    <Compile Include="FormCollectionExtender.cs" />
     <Compile Include="GraphicsHelper.cs" />
     <Compile Include="IOHelper.cs" />
     <Compile Include="ISiteModel.cs" />
