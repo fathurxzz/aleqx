@@ -6,6 +6,9 @@
 .logOutLink
 {
     text-align: center;
+    position: absolute;
+    left: 450px;
+    z-index: 100;
 }
 
 .adminLinkContainer
@@ -17,7 +20,8 @@ a.adminLink
 {
     color: #ff0000 !important;
     font-family: Tahoma;
-    font-size: 12px;
+    font-size: 12px !important;
+    text-transform: none !important;
     font-weight: normal;
     font-style: normal;
     text-decoration: underline;
@@ -71,4 +75,15 @@ a.adminLink
 .adminContentContainer h2
 {
     font-size: 20px;
+}
+
+.sortOrder
+{
+    color: #ff0000;
+    white-space: nowrap;
+}
+
+.nowrap
+{
+    white-space: nowrap;
 }

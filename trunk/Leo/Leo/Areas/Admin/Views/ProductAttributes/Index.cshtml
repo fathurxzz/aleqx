@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Leo.Models.ProductAttribute>
+
+@{
+    ViewBag.Title = "Атрибуты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContentContainer">
+
+<h2>Список атрибутов изображений</h2>
+<br/>
+<p>
+    @Html.ActionLink("Добавить атрибут", "Create")
+</p>
+<table class="adminEditContentTable">
+    <tr>
+        <th>
+            Заголовок
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{ onclick = "return confirm('Внимание! При удалении атрибута будут удалены все ссылки с категорий и товаров на данный атрибут! Вы действительно хотите удалить данный атрибут?')"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

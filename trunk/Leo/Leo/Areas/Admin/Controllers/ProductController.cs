@@ -149,7 +149,7 @@ namespace Leo.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", id = category.Name });
             }
         }
 
@@ -170,7 +170,7 @@ namespace Leo.Areas.Admin.Controllers
                 context.DeleteObject(product);
                 context.SaveChanges();
 
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", id = category.Name });
             }
         }
     }

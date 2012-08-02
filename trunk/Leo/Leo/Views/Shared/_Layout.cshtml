@@ -23,6 +23,12 @@
 </head>
 <body>
     <div class="page">
+    @if (Request.IsAuthenticated)
+        {
+            <div class="logOutLink">
+                @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { Area = "" }, new { @class = "adminLink" })
+            </div>
+        }
         @RenderSection("MainMenu", false)
         @*<div class="boardContainer">*@ @* <div class="board">
             </div>*@ @*@RenderSection("CategoryTitle", false)*@ @* </div>*@
