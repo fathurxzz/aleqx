@@ -17,6 +17,8 @@
 }
 @section GalleryContent
 {
+@if(Model.Category.Products.Any())
+{
     <table>
         <tr>
             @foreach (var item in Model.Category.Products)
@@ -24,8 +26,12 @@
                 <td>@Html.Partial("_Product", item)
                 </td>
             }
+            <td>
+                <div class="logoContainer"></div>
+            </td>
         </tr>
     </table>
+}
 }
 @section MainMenu
 {
