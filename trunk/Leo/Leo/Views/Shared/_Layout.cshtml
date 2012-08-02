@@ -11,23 +11,24 @@
     }
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
-     @RenderSection("Includes", false)
+    @RenderSection("Includes", false)
 </head>
 <body>
     <div class="page">
-        @RenderSection("MainMenu",false)
-        <div class="boardContainer">
-            <div class="board">
-            </div>
-            
-                @RenderSection("CategoryTitle",false)
-            
-        </div>
+        @RenderSection("MainMenu", false)
+        @*<div class="boardContainer">*@ @* <div class="board">
+            </div>*@
+        @*@RenderSection("CategoryTitle", false)*@
+        @* </div>*@
         <div class="galleryContainer">
-
-            @RenderSection("GalleryContent",false)
-
-            
+            <div class="boardContainer">
+                <div class="board">
+                </div>
+                @RenderSection("CategoryTitle", false)
+            </div>
+            <div class="galleryContent">
+                @RenderSection("GalleryContent", false)
+            </div>
         </div>
         @RenderBody()
     </div>
@@ -36,9 +37,19 @@
             <div class="top">
             </div>
             <div class="bottom">
+                
                 <div class="inner">
+                    <div class="copy">
+                    Сделано в<br/>
+                    <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+                    </div>
+                    <div class="footerLinks">
                     <a href="#">об авторе</a> <a href="#">обратная связь</a>
+                    </div>
+                    
+                    
                 </div>
+                
             </div>
         </div>
     </div>
