@@ -177,7 +177,7 @@ namespace SiteExtensions
             }
             else
             {
-                thumbnailImage = new Bitmap(limWidth, limWidth);
+                thumbnailImage = new Bitmap(limWidth, limHeight);
                 Graphics graphics = Graphics.FromImage(thumbnailImage);
                 graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
 

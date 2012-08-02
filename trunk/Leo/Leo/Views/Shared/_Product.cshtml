@@ -12,7 +12,11 @@
                     </div>
                 </td>
                 <td>
-                    <div class="image">@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.Corp))</div>
+                    <div class="image">
+                    <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage"  title="@Model.Title">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.Corp))
+                    </a>
+                    </div>
                 </td>
                 <td rowspan="2">
                     <div class="border-right">
