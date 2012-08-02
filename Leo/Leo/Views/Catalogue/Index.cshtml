@@ -49,6 +49,11 @@
     </div>
 
              </div>
+}else
+{
+    <div style="position: absolute; top: 50px; left: 400px">
+    @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+    </div>
 }
 }
 @section MainMenu

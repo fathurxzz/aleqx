@@ -20,7 +20,7 @@ namespace SiteExtensions
 
     public enum FixedDimension
     {
-        
+
     }
 
     public static class GraphicsHelper
@@ -55,59 +55,36 @@ namespace SiteExtensions
 
         private static Rectangle CalculateDestRect(Size sourceImage, Size thumbImage, ScaleMode scaleMode)
         {
-            int previewHeight = thumbImage.Height;
-            int previewWidth = thumbImage.Width;
-
-
-            double hRatio = (double)previewHeight / sourceImage.Height;
-            double wRatio = (double)previewWidth / sourceImage.Width;
-
-            double ratio = hRatio < wRatio ? hRatio : wRatio;
-
-            int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
-            var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+            double hvr = (double)sourceImage.Width / (double)sourceImage.Height;
 
             switch (scaleMode)
             {
                 case ScaleMode.Insert:
-
-                    //double hRatio = (double)previewHeight / sourceImage.Height;
-                    //double wRatio = (double)previewWidth / sourceImage.Width;
-
-                    //double ratio = hRatio < wRatio ? hRatio : wRatio;
-
-                    //int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
-                    //var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
-
-
-
-                    if (previewWidth > resultSourceImageWidth)
+                    double hRatio = (double)thumbImage.Height / sourceImage.Height;
+                    double wRatio = (double)thumbImage.Width / sourceImage.Width;
+                    double ratio = hRatio < wRatio ? hRatio : wRatio;
+                    int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+                    var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+                    if (thumbImage.Width > resultSourceImageWidth)
                     {
-                        int offset = (previewWidth - resultSourceImageWidth) / 2;
+                        int offset = (thumbImage.Width - resultSourceImageWidth) / 2;
                         return new Rectangle(offset, 0, resultSourceImageWidth, resultSourceImageHeight);
                     }
-                    if (previewHeight > resultSourceImageHeight)
+                    if (thumbImage.Height > resultSourceImageHeight)
                     {
-                        var offset = (previewHeight - resultSourceImageHeight) / 2;
+                        var offset = (thumbImage.Height - resultSourceImageHeight) / 2;
                         return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
                     }
                     break;
-                    
+
                 case ScaleMode.FixedWidth:
-                    //hRatio = (double)previewHeight / sourceImage.Height;
-                    //wRatio = (double)previewWidth / sourceImage.Width;
-                    //ratio = hRatio < wRatio ? hRatio : wRatio;
-                    //resultSourceImageWidth = (int)(sourceImage.Width * ratio);
-                    //resultSourceImageHeight = (int)(sourceImage.Height * ratio);
-                    return new Rectangle(0, 0, thumbImage.Width, resultSourceImageHeight);
-                 case ScaleMode.FixedHeight:
-                    //hRatio = (double)previewHeight / sourceImage.Height;
-                    //wRatio = (double)previewWidth / sourceImage.Width;
-                    //ratio = hRatio < wRatio ? hRatio : wRatio;
-                    //resultSourceImageWidth = (int)(sourceImage.Width * ratio);
-                    //resultSourceImageHeight = (int)(sourceImage.Height * ratio);
-                    return new Rectangle(0, 0, resultSourceImageWidth, thumbImage.Height);
-                    
+                    int destImageHeight = (int)(thumbImage.Width * hvr);
+                    return new Rectangle(0, 0, thumbImage.Width, destImageHeight);
+
+                case ScaleMode.FixedHeight:
+                    int destImageWidth = (int)(thumbImage.Height * hvr);
+                    return new Rectangle(0, 0, destImageWidth, thumbImage.Height);
+
             }
             return new Rectangle(0, 0, thumbImage.Width, thumbImage.Height);
         }
@@ -209,9 +186,9 @@ namespace SiteExtensions
             }
             else
             {
-                thumbnailImage = new Bitmap(limWidth, limHeight);
+                thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
                 Graphics graphics = Graphics.FromImage(thumbnailImage);
-                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, limWidth, limHeight);
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
 
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
