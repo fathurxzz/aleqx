@@ -1,20 +1,20 @@
 ﻿@model SiteExtensions.Menu
 <div class="mainMenuContainer">
     <div class="mainMenuTop">
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderBy(m => m.SortOrder))
         {
             <div class="menuItem">
-                @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", category = item.ContentName }, null)
+                @if (item.Current)
+                {
+                    @item.Title
+                }
+                else
+                {
+                
+                    @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", id = item.ContentName }, null)
+                }
             </div>
         }
-        <div class="menuItem">
-            <a href="#">этаж пейзажей</a></div>
-        <div class="menuItem">
-            <a href="#">этаж портретов</a></div>
-        <div class="menuItem">
-            <a href="#">этаж натюрмортов</a></div>
-        <div class="menuItem">
-            <a href="#">этаж учеников</a></div>
         @if (Request.IsAuthenticated)
         {
             <div class="adminLinkContainer">

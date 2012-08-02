@@ -11,6 +11,7 @@
     }
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
+     @RenderSection("Includes", false)
 </head>
 <body>
     <div class="page">
@@ -18,9 +19,9 @@
         <div class="boardContainer">
             <div class="board">
             </div>
-            <div class="catalogue-title">
+            
                 @RenderSection("CategoryTitle",false)
-            </div>
+            
         </div>
         <div class="galleryContainer">
 

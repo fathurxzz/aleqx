@@ -5,8 +5,15 @@
 }
 @section CategoryTitle
 {
-    @Model.Category.Title
-этаж натюрмортов
+    <div class="catalogue-title">
+        @Model.Category.Title
+    </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+        </div>
+    }
 }
 @section GalleryContent
 {
@@ -14,9 +21,13 @@
         <tr>
             @foreach (var item in Model.Category.Products)
             {
-                <td>@Html.Partial("_Product",item)
+                <td>@Html.Partial("_Product", item)
                 </td>
             }
         </tr>
     </table>
+}
+@section MainMenu
+{
+    @Html.Partial("_MainMenu", Model.Menu)
 }
