@@ -3,9 +3,21 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section CategoryTitle
+
+@section GalleryContent
 {
-    <div class="catalogue-title">
+
+@if(Model.Category.Products.Any())
+{
+<div class="galleryContainer">
+
+<div class="boardContainer">
+                <div class="board">
+                </div>
+                
+
+
+                 <div class="catalogue-title">
         @Model.Category.Title
     </div>
     @if (Request.IsAuthenticated)
@@ -14,23 +26,29 @@
             @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
         </div>
     }
-}
-@section GalleryContent
-{
-@if(Model.Category.Products.Any())
-{
-    <table>
-        <tr>
-            @foreach (var item in Model.Category.Products)
-            {
-                <td>@Html.Partial("_Product", item)
+
+
+
+            </div>
+
+
+
+    <div class="galleryContent">
+        <table>
+            <tr>
+                @foreach (var item in Model.Category.Products)
+                {
+                    <td>@Html.Partial("_Product", item)
+                    </td>
+                }
+                <td>
+                    <div class="logoContainer"></div>
                 </td>
-            }
-            <td>
-                <div class="logoContainer"></div>
-            </td>
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </div>
+
+             </div>
 }
 }
 @section MainMenu

@@ -16,7 +16,7 @@
     @RenderSection("Includes", false)
     <script type="text/javascript">
         $(function () {
-//            $(".fancy").fancybox({ showCloseButton: false, padding: 0, margin: 0 });
+            //            $(".fancy").fancybox({ showCloseButton: false, padding: 0, margin: 0 });
             $(".fancyImage").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
         });
     </script>
@@ -25,19 +25,8 @@
     <div class="page">
         @RenderSection("MainMenu", false)
         @*<div class="boardContainer">*@ @* <div class="board">
-            </div>*@
-        @*@RenderSection("CategoryTitle", false)*@
-        @* </div>*@
-        <div class="galleryContainer">
-            <div class="boardContainer">
-                <div class="board">
-                </div>
-                @RenderSection("CategoryTitle", false)
-            </div>
-            <div class="galleryContent">
-                @RenderSection("GalleryContent", false)
-            </div>
-        </div>
+            </div>*@ @*@RenderSection("CategoryTitle", false)*@ @* </div>*@
+        @RenderSection("GalleryContent", false)
         @RenderBody()
     </div>
     <div class="footerContainer">
@@ -45,19 +34,15 @@
             <div class="top">
             </div>
             <div class="bottom">
-                
                 <div class="inner">
                     <div class="copy">
-                    Сделано в<br/>
-                    <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+                        Сделано в<br />
+                        <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
                     </div>
                     <div class="footerLinks">
-                    <a href="#">об авторе</a> <a href="#">обратная связь</a>
+                        <a href="#">об авторе</a> <a href="#">обратная связь</a>
                     </div>
-                    
-                    
                 </div>
-                
             </div>
         </div>
     </div>
