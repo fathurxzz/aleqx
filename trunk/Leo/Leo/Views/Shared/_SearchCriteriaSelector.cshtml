@@ -8,14 +8,20 @@
 </script>
 <div class="searchCriteriaSelector">
     <div class="search-catalogue-title">@ViewBag.CategoryTitle</div>
+    <div class="showOnly">показывать только:</div>
     @using (Html.BeginForm("Index", "Catalogue", new { id = ViewBag.CategoryName }, FormMethod.Post, new { id = "form1" }))
     {
         foreach (var attribute in Model)
         {
         @Html.Partial("_ProductAttribute", attribute)
         }
-    }
-    <div class="sendBtnContainer">
-        <a href="#" id="sbmButton">Готово!</a>
-    </div>
-</div>
+        <div class="clear"></div>
+        <div class="attribute showAll">
+            @Html.CheckBox("showall") @Html.Raw("Показывать всё")
+        </div>
+            }
+            <div class="clear"></div>
+            <div class="sendBtnContainer">
+                <a href="#" id="sbmButton">Готово!</a>
+            </div>
+        </div>
