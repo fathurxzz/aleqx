@@ -1,0 +1,15 @@
+﻿@using Leo.Helpers
+@using Leo.Models
+@model Leo.Models.ProductAttribute
+<div class="attribute">
+    @{
+
+        bool selected = false;
+        if (WebSession.Categories.ContainsKey((int)ViewBag.CategoryId))
+        {
+            selected = WebSession.Categories[(int) ViewBag.CategoryId].Any(attr => attr.Id == Model.Id);
+        }
+    }
+
+    @Html.CheckBox("attr_" + Model.Id, selected) @Html.Raw(Model.Title)
+</div>

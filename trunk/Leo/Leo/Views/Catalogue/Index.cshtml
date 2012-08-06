@@ -36,7 +36,7 @@
     <div class="galleryContent">
         <table>
             <tr>
-                @foreach (var item in Model.Category.Products)
+                @foreach (var item in Model.Products)
                 {
                     <td>@Html.Partial("_Product", item)
                     </td>
@@ -59,4 +59,11 @@
 @section MainMenu
 {
     @Html.Partial("_MainMenu", Model.Menu)
+}
+
+@section CatalogueFilter
+{
+    <div class="filterLinkContainer">
+                @Html.ActionLink("Фильтровать", "ShowFilter", "Catalogue", new { Area = "", id = Model.Category.Name }, new { @class = "changeFilter fancy" }) эту галерею картин
+    </div>
 }

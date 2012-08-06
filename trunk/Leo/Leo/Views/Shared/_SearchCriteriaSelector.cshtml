@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Leo.Models.ProductAttribute>
+<link href="@Url.Content("~/Content/SearchSelector.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        $("#sbmButton").click(function () {
+            $("#form1").submit();
+        });
+});
+</script>
+<div class="searchCriteriaSelector">
+
+@using (Html.BeginForm("Index", "Catalogue",new{id=ViewBag.CategoryName}, FormMethod.Post, new { id = "form1" }))
+{
+    foreach (var attribute in Model)
+    {
+        @Html.Partial("_ProductAttribute",attribute)
+    }
+}
+
+<a href="#" id="sbmButton">asdasd</a>
+</div>

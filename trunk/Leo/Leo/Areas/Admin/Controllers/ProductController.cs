@@ -104,7 +104,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var product = context.Product.Include("Category").First(p => p.Id == id);
+                var product = context.Product.Include("ProductAttributes").Include("Category").First(p => p.Id == id);
                 var category = context.Category.First(c => c.Id == product.Category.Id);
 
 

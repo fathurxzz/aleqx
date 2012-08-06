@@ -123,3 +123,17 @@ table
     padding: 10px 100px 0;
     font-size: 9px;
 }
+
+.filterLinkContainer
+{
+    font-size: 11px;
+    font-style: italic;
+    color: #666666;
+    padding-left: 190px;
+    padding-top: 13px;
+}
+
+.filterLinkContainer a
+{
+    color: #448ccb;
+}
