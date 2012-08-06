@@ -10,6 +10,7 @@
     <EntitySet Name="Product" EntityType="Site.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttribute" EntityType="Site.Store.ProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Feedback" EntityType="Site.Store.Feedback" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
@@ -68,6 +69,17 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="100" />
     <Property Name="Text" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="ErrorMessage" Type="longtext" Nullable="true" />
+    <Property Name="Sent" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -166,6 +178,7 @@
             <End Role="ProductAttribute" EntitySet="ProductAttribute" />
           </AssociationSet>
           <EntitySet Name="Content" EntityType="Site.Content" />
+          <EntitySet Name="Feedback" EntityType="Site.Feedback" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -229,6 +242,17 @@
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="100" />
           <Property Type="String" Name="Text" Nullable="false" />
         </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="ErrorMessage" />
+          <Property Type="Boolean" Name="Sent" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -272,6 +296,18 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedback">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Feedback)">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="Sent" ColumnName="Sent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -328,6 +364,7 @@
           <ConnectorPoint PointX="4.875" PointY="6.4211531575520828" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="9.125" PointY="1.75" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Site.Feedback" Width="1.5" PointX="8.875" PointY="4.75" Height="2.1725878906249996" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

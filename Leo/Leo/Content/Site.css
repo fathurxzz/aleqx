@@ -194,3 +194,21 @@ body
 .about .text {
     
 }
+
+.feedBackForm
+{
+	border:1px solid #999999;
+	padding:20px;
+	
+	font-size:13px;
+}
+
+.feedBackForm table td
+{
+	padding:5px;
+}
+
+.field-validation-error
+{
+    color: red;
+}

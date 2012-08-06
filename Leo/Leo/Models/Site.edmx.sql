@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/06/2012 22:31:51
+-- Date Created: 08/06/2012 23:44:25
 -- Generated from EDMX file: D:\projects\Leo\Leo\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `leo`;
-CREATE DATABASE `leo`;
-USE `leo`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -32,6 +29,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Category`;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `ProductAttribute`;
+    DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `Feedback`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductProductAttribute`;
 SET foreign_key_checks = 1;
@@ -74,6 +73,17 @@ CREATE TABLE `Content` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 100 )  NOT NULL,
     `Text` longtext  NOT NULL
+);
+
+-- Creating table 'Feedback'
+
+CREATE TABLE `Feedback` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Email` longtext  NULL,
+    `Text` longtext  NOT NULL,
+    `Title` longtext  NOT NULL,
+    `ErrorMessage` longtext  NULL,
+    `Sent` bool  NOT NULL
 );
 
 -- Creating table 'CategoryProductAttribute'
