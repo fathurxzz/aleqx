@@ -1,4 +1,5 @@
-﻿@model Leo.Models.Product
+﻿@using Leo.Models
+@model Leo.Models.Product
 
 @{
     ViewBag.Title = "Edit";
@@ -38,6 +39,25 @@
                 @Html.ValidationMessageFor(model => model.Description)
             </td>
         </tr>
+        <tr>
+            <td>
+                Атрибуты
+            </td>
+            <td>
+                @{
+           var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+           if (attributes != null)
+           {
+               foreach (var item in attributes)
+               {
+
+                   @Html.CheckBox("attr_" + item.Id, Model.ProductAttributes.Contains(item))@Html.Raw("&nbsp;")@item.Title<br />
+
+               }
+           }
+                }
+            </td>
+        </tr>
          <tr>
                 <td>@Html.LabelFor(model => model.ImageSource)
                 </td>
@@ -51,7 +71,7 @@
         
    <div class="buttonsContainer">
         <input type="submit" value="Сохранить" />
-        @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "", category = ViewBag.CategoryName }, null)
+        @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "", id = ViewBag.CategoryName }, null)
     </div>
 }
 

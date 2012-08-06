@@ -85,6 +85,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -141,6 +142,7 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\mainmenu-bg.png" />
     <Content Include="Content\img\mainmenu-bottom-bg.png" />
+    <Content Include="Content\SearchSelector.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -233,6 +235,8 @@
     <None Include="Content\fonts\Hagin Caps Thin.otf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Views\Shared\_SearchCriteriaSelector.cshtml" />
+    <Content Include="Views\Shared\_ProductAttribute.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
