@@ -1,10 +1,40 @@
 ﻿.searchCriteriaSelector
 {
-    width: 500px;
-    height: 500px;
+    width: 350px;
+    padding: 15px 60px 60px 60px;
+    border: 3px solid #00a850;
+    margin: 5px;
+    border-radius: 17px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
 }
 
 .attribute
 {
     
+}
+
+.sendBtnContainer
+{
+    text-align: center;
+}
+
+.sendBtnContainer a
+{
+    color: #448ccb;
+    font-size: 14px;
+}
+
+.search-catalogue-title
+{
+    width: 162px;
+    height: 31px;
+    background: url('img/catalogue-title-bg.png') no-repeat;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding-top: 17px;
+    padding-left: 38px;
+    color: #fff;
+    position: relative;
+    margin: 0 auto;
 }
