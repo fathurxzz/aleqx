@@ -49,6 +49,7 @@
     <Compile Include="GraphicsHelper.cs" />
     <Compile Include="IOHelper.cs" />
     <Compile Include="ISiteModel.cs" />
+    <Compile Include="MailHelper.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
