@@ -56,8 +56,9 @@ namespace Leo.Controllers
             {
                 var model = new CatalogueViewModel(context, id);
                 ViewBag.CategoryName = model.Category.Name;
+                ViewBag.CategoryTitle = model.Category.Title;
                 ViewBag.CategoryId = model.Category.Id;
-                return PartialView("_SearchCriteriaSelector",model.Attributes);
+                return PartialView("_SearchCriteriaSelector", model.Attributes);
             }
             
         }
