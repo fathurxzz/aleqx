@@ -1,7 +1,7 @@
 ﻿.searchCriteriaSelector
 {
     width: 350px;
-    padding: 15px 40px 60px 40px;
+  
     border: 3px solid #00a850;
     margin: 5px;
     border-radius: 17px;
@@ -13,12 +13,13 @@
 {
     padding: 20px;
     float: left;
+    text-align: center;
 }
 
 .sendBtnContainer
 {
     text-align: center;
-    margin-top: 50px;
+    margin: 20px 0 50px 0;
 }
 
 .sendBtnContainer a
@@ -39,13 +40,13 @@
     padding-left: 38px;
     color: #fff;
     position: relative;
-    margin: 0 auto;
+    margin: 15px  auto 0 auto;
 }
 
 .showOnly 
 {
     margin-top: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     font-family: Hagin;
     font-size: 20px;
     text-transform: uppercase;
@@ -55,4 +56,17 @@
 .showAll {
     text-align: center;
     float: none;
+}
+
+.closeButton {
+    float: right;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    margin: 5px;
+    background-image: url('img/close-button.png');
+}
+
+.attributesContainer {
+      padding: 0px 40px 0px 40px;
 }
