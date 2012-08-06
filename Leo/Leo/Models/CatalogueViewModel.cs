@@ -21,6 +21,7 @@ namespace Leo.Models
             {
                 throw new HttpNotFoundException();
             }
+            Title = category.Title;
             Category = category;
             Products = category.Products;
             Attributes = category.ProductAttributes != null ? category.ProductAttributes.ToList() : new List<ProductAttribute>();
@@ -30,10 +31,8 @@ namespace Leo.Models
         {
             if(!attributes.Any())
                 return;
-
-            List<Product> result = Products.Where(product => product.ProductAttributes.Intersect(attributes).Count() > 0).ToList();
+            List<Product> result = Products.Where(product => product.ProductAttributes.Intersect(attributes).Any()).ToList();
             Products = result;
-            //Products=Products.Where(p=>p.ProductAttributes.Contains())
         }
     }
 }

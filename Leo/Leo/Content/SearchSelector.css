@@ -1,7 +1,7 @@
 ﻿.searchCriteriaSelector
 {
     width: 350px;
-    padding: 15px 60px 60px 60px;
+    padding: 15px 40px 60px 40px;
     border: 3px solid #00a850;
     margin: 5px;
     border-radius: 17px;
@@ -11,18 +11,21 @@
 
 .attribute
 {
-    
+    padding: 20px;
+    float: left;
 }
 
 .sendBtnContainer
 {
     text-align: center;
+    margin-top: 50px;
 }
 
 .sendBtnContainer a
 {
     color: #448ccb;
     font-size: 14px;
+    
 }
 
 .search-catalogue-title
@@ -37,4 +40,19 @@
     color: #fff;
     position: relative;
     margin: 0 auto;
+}
+
+.showOnly 
+{
+    margin-top: 5px;
+    margin-bottom: 50px;
+    font-family: Hagin;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.showAll {
+    text-align: center;
+    float: none;
 }
