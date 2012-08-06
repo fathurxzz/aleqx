@@ -49,7 +49,14 @@
                         <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
                     </div>
                     <div class="footerLinks">
-                        <a href="#">об авторе</a> <a href="#">обратная связь</a>
+                        @if(Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("редактировать","Edit","Content",new{Area="Admin",id=1},new{@class="adminLink",style="position:absolute; margin:25px 0 0 55px"})
+                        }
+                        @Html.ActionLink("об авторе","About","Home",null,new{@class="fancy"})
+                        
+                        
+                        <a href="#">обратная связь</a>
                     </div>
                 </div>
             </div>

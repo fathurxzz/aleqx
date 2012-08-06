@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/01/2012 18:32:37
+-- Date Created: 08/06/2012 22:31:51
 -- Generated from EDMX file: D:\projects\Leo\Leo\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -66,6 +66,14 @@ CREATE TABLE `Product` (
 CREATE TABLE `ProductAttribute` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL
+);
+
+-- Creating table 'Content'
+
+CREATE TABLE `Content` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 100 )  NOT NULL,
+    `Text` longtext  NOT NULL
 );
 
 -- Creating table 'CategoryProductAttribute'
