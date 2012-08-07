@@ -145,7 +145,8 @@
     <Content Include="Content\img\image-title-right-bg.gif" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\mainmenu-bg.png" />
-    <Content Include="Content\img\mainmenu-bottom-bg.png" />
+    <Content Include="Content\img\mainmenu-bottom.png" />
+    <Content Include="Content\img\mainmenu-bottom0.png" />
     <Content Include="Content\SearchSelector.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />
