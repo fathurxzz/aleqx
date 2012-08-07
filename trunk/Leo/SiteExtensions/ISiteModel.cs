@@ -8,7 +8,5 @@ namespace SiteExtensions
         string SeoDescription { get; set; }
         string SeoKeywords { get; set; }
         Menu Menu { get; set; }
-
-        //Menu InitializeMainMenu<T>(IEnumerable<T> contents, string categoryName) where T : class;
     }
 }

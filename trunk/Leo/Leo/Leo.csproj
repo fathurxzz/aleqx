@@ -236,8 +236,11 @@
     <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
-    <None Include="Content\fonts\Hagin Caps Thin.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Content\fonts\HaginCapsMedium.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\fonts\HaginCapsThin.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="Views\Shared\_SearchCriteriaSelector.cshtml" />
     <Content Include="Views\Shared\_ProductAttribute.cshtml" />
