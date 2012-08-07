@@ -19,7 +19,7 @@ namespace Leo.Models
             var category = context.Category.Include("ProductAttributes").Include("Products").FirstOrDefault(c => c.Name == categoryName || categoryName == null);
             if (category == null)
             {
-                throw new HttpNotFoundException();
+                throw new HttpNotFoundException("page " + categoryName);
             }
             Title = category.Title;
             Category = category;
