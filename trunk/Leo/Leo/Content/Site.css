@@ -190,14 +190,44 @@ body
 }
 
 .about {
-    width: 500px;
-    height: 500px;
+    width: 630px;
+    border: 7px solid #ffd965;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    background-color: #fff;
 }
 
-.about .title {
-    
+
+.about .titleContainer
+{
+    width: 485px;
+    position: relative;
+    margin: 0 auto;
+    height: 1px;
+    background-color: #000;
+    margin-top: 100px;
 }
+.about .title {
+    width: 145px;
+    height: 30px;
+    
+    background-color: #fff;
+    position: absolute;
+    /*margin:-15px auto 0 auto;*/
+    margin-top: -20px;
+    margin-left: 160px;
+    text-align: center;
+    font-size: 30px;
+    font-family: HaginMedium;
+    color: #448ccb;
+}
+
+
 .about .text {
+    margin: 70px 100px 0px 100px;
+    font-size: 13px;
+    color: #6c6c6c;
     
 }
 
@@ -205,7 +235,10 @@ body
 {
 	border:1px solid #999999;
 	padding:20px;
-	
+    background-color: #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
 	font-size:13px;
 }
 
@@ -217,4 +250,14 @@ body
 .field-validation-error
 {
     color: red;
+}
+
+.aboutSign
+{
+    width: 486px;
+    height: 28px;
+    position: relative;
+    margin: 60px auto 60px auto;
+    background-image: url('img/about-sign.gif');
+    
 }

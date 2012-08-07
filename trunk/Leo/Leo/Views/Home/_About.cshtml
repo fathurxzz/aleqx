@@ -1,6 +1,8 @@
 ﻿@model Leo.Models.Content
-
 <div class="about">
-    <div class="title">@Model.Title</div>
+    <div class="titleContainer">
+        <div class="title">@Model.Title</div>
+    </div>
     <div class="text">@Html.Raw(Model.Text)</div>
+    <div class="aboutSign"></div>
 </div>

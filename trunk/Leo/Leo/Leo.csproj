@@ -124,6 +124,7 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Gallery.css" />
+    <Content Include="Content\img\about-sign.gif" />
     <Content Include="Content\img\arrow.gif" />
     <Content Include="Content\img\board.png" />
     <Content Include="Content\img\catalogue-title-bg.png" />
