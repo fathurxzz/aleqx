@@ -1,43 +1,72 @@
 ﻿@model SiteExtensions.Menu
+<script type="text/javascript">
+
+    var hidePanel = false;
+
+    $(function () {
+        $(".mainMenuContainer0").slideUp(0);
+
+
+        $(".mainMenuBottom").mouseover(function () {
+            hidePanel = false;
+            $(".mainMenuContainer0").slideDown();
+        });
+
+        $(".mainMenuContainer, .mainMenuTop").mouseover(function () { hidePanel = false; });
+
+        $(".mainMenuContainer, .mainMenuBottom").mouseout(function () {
+            hidePanel = true;
+            window.setTimeout(function () {
+                if (hidePanel) {
+                    $(".mainMenuContainer0").slideUp();
+                }
+            }, 1000);
+        });
+    });
+</script>
 <div class="mainMenuContainer">
-    <div class="mainMenuTop">
-        @foreach (var item in Model.OrderBy(m => m.SortOrder))
-        {
-            <div class="menuItem">
-                @if (item.Current)
-                {
-                    <div class="nowrap">
-                        @item.Title
-                        @if (Request.IsAuthenticated)
-                        {
-                            <span class="sortOrder">
-                                @item.SortOrder
-                                @Html.ActionLink("Редактировать", "Edit", "Category", new { Area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
-                                @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink", onclick = "return confirm('Внимание! Приудалении категории будут также удалены все атрибуты данной категории и изображения! Вы действительно хотите удалить категорию?')" })
-                            </span> 
-                        }
-                    </div>
-                }
-                else
-                {
+    <div class="mainMenuContainer0">
+        <div class="mainMenuTop">
+            @foreach (var item in Model.OrderBy(m => m.SortOrder))
+            {
+                <div class="menuItem">
+                    @if (item.Current)
+                    {
+                        <div class="nowrap">
+                            @item.Title
+                            @if (Request.IsAuthenticated)
+                            {
+                                <span class="sortOrder">
+                                    @item.SortOrder
+                                    @Html.ActionLink("Редактировать", "Edit", "Category", new { Area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
+                                    @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink", onclick = "return confirm('Внимание! Приудалении категории будут также удалены все атрибуты данной категории и изображения! Вы действительно хотите удалить категорию?')" })
+                                </span> 
+                            }
+                        </div>
+                    }
+                    else
+                    {
                 
-                    @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", id = item.ContentName }, null) 
-               if (Request.IsAuthenticated)
-               {
-                    <span class="sortOrder">@item.SortOrder</span>
-               }
-                }
-            </div>
-        }
-        @if (Request.IsAuthenticated)
-        {
-            <div class="adminLinkContainer">
-                @Html.ActionLink("Добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
-            </div>
-            <div class="adminLinkContainer">
-                @Html.ActionLink("Атрибуты", "Index", "ProductAttributes", new { Area = "Admin" }, new { @class = "adminLink" })
-            </div>
-        }
+                        @Html.ActionLink(item.Title, "Index", "Catalogue", new { Area = "", id = item.ContentName }, null) 
+                   if (Request.IsAuthenticated)
+                   {
+                        <span class="sortOrder">@item.SortOrder</span>
+                   }
+                    }
+                </div>
+            }
+            @if (Request.IsAuthenticated)
+            {
+                <div class="adminLinkContainer">
+                    @Html.ActionLink("Добавить", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+                </div>
+                <div class="adminLinkContainer">
+                    @Html.ActionLink("Атрибуты", "Index", "ProductAttributes", new { Area = "Admin" }, new { @class = "adminLink" })
+                </div>
+            }
+        </div>
+        <div class="mainMenuBottom0">
+        </div>
     </div>
     <div class="mainMenuBottom">
     </div>

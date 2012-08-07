@@ -9,12 +9,18 @@
     padding-left: 600px;
 }
 
+.galleryContent table td
+{
+    vertical-align: top;
+}
+
 .galleryItem
 {
     background-image: url('img/gallery-container-bg.gif');
     background-position: 50%;
     background-repeat: repeat-y;
     margin: 0 100px;
+    vertical-align: top;
 }
 
 .galleryTop
@@ -41,6 +47,7 @@
 .galleryItem table td
 {
     border: none;
+    vertical-align: middle;
 }
 
 .image
