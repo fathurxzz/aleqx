@@ -1,6 +1,6 @@
-﻿@using SiteExtensions
+﻿@using Leo
+@using SiteExtensions.Graphics
 @model Leo.Models.Product
-           
 <div class="galleryItem">
     <div class="galleryTop">
     </div>
@@ -13,9 +13,9 @@
                 </td>
                 <td>
                     <div class="image">
-                    <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage"  title="@Model.Title">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.FixedHeight))
-                    </a>
+                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage"  title="@Model.Title">
+                            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("galleryThumbnail"), ScaleMode.FixedHeight))
+                        </a>
                     </div>
                 </td>
                 <td rowspan="2">
@@ -37,30 +37,30 @@
         @if (Request.IsAuthenticated)
         {
             <div>
-                @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" }) &nbsp; 
+                @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                &nbsp;
                 @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение')" })
             </div>
         }
         <div class="imageSignContainer">
-                <table class="title">
-                    <tr>
-                        <td>
-                            <div class="left">
-                            </div>
-                        </td>
-                        <td>
-                            @Model.Title
-                        </td>
-                        <td>
-                            <div class="right">
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                
-                <div class="description">
+            <table class="title">
+                <tr>
+                    <td>
+                        <div class="left">
+                        </div>
+                    </td>
+                    <td>
+                        @Model.Title
+                    </td>
+                    <td>
+                        <div class="right">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="description">
                 @Model.Description
-                </div>
+            </div>
         </div>
     </div>
 </div>
