@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SiteExtensions
+namespace SiteExtensions.Graphics
 {
+    public enum Orientation
+    {
+        Horizontal,
+        Vertical
+    }
+
     public enum ScaleMode
     {
         FixedWidth,
@@ -28,24 +33,15 @@ namespace SiteExtensions
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
-        //public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1" };
-        //public static int[] ThumbnailDimentions = { 177, 200 };
+
+        //private static int _thumbnailWidth;
+        //private static int _thumbnailHeight;
 
 
         static GraphicsHelper()
         {
-            //for (int i = 0; i < ThumbnailFolders.Length; i++)
-            //{
-            //    limitWidth.Add(ThumbnailFolders[i], ThumbnailDimentions[i]);
-            //    limitHeight.Add(ThumbnailFolders[i], ThumbnailDimentions[i]);
-            //}
-
             limitWidth.Add("galleryThumbnail", 300);
             limitHeight.Add("galleryThumbnail", 315);
-
-            limitWidth.Add("mainFrameThumbnail", 1000);
-            limitHeight.Add("mainFrameThumbnail", 514);
-
         }
 
         private static bool IsHorizontalImage(Size imageSise)
@@ -143,7 +139,7 @@ namespace SiteExtensions
 
             Bitmap thumbnailImage = new Bitmap(resultSourceImageWidth, resultSourceImageHeight);
 
-            Graphics graphics = Graphics.FromImage(thumbnailImage);
+            System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
             graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, resultSourceImageWidth, resultSourceImageHeight);
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
@@ -175,7 +171,7 @@ namespace SiteExtensions
                 using (FileStream stream = new FileStream(backgroundImageSourcePath, FileMode.Open))
                 {
                     thumbnailImage = new Bitmap(stream);
-                    Graphics graphics = Graphics.FromImage(thumbnailImage);
+                    System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
 
                     graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                     graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
@@ -187,7 +183,7 @@ namespace SiteExtensions
             else
             {
                 thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
-                Graphics graphics = Graphics.FromImage(thumbnailImage);
+                System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
                 graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
 
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
