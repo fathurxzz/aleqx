@@ -15,11 +15,11 @@ namespace Leo
             _thumbnails.Add("galleryThumbnail", new PictureSize { Height = 315 });
         }
 
-        public static ThumbnailPicture GetThumbnail(string cacheFilder)
+        public static ThumbnailPicture GetThumbnail(string cacheFolder)
         {
-            if (_thumbnails.ContainsKey(cacheFilder))
-                return new ThumbnailPicture {CacheFolder = cacheFilder, PictureSize = _thumbnails[cacheFilder]};
-            throw new Exception("Cannot fount thumbnail " + cacheFilder);
+            if (_thumbnails.ContainsKey(cacheFolder))
+                return new ThumbnailPicture {CacheFolder = cacheFolder, PictureSize = _thumbnails[cacheFolder]};
+            throw new Exception("Cannot fount thumbnail " + cacheFolder);
         }
     }
 }
