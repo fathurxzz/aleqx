@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SiteExtensions.Graphics
 {
-    public class PictureDimensions
+    public class ThumbnailPicture
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public PictureSize PictureSize { get; set; }
+        public string CacheFolder { get; set; }
     }
 }
