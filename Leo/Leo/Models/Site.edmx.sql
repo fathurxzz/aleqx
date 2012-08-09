@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/06/2012 23:44:25
+-- Date Created: 08/09/2012 23:58:35
 -- Generated from EDMX file: D:\projects\Leo\Leo\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `leo`;
+CREATE DATABASE `leo`;
+USE `leo`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -55,7 +58,7 @@ CREATE TABLE `Category` (
 CREATE TABLE `Product` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
-    `Description` longtext  NOT NULL,
+    `Description` longtext  NULL,
     `ImageSource` TEXT  NOT NULL,
     `CategoryId` int  NOT NULL
 );

@@ -732,15 +732,13 @@ namespace Leo.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String description, global::System.String imageSource, global::System.Int32 categoryId)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId)
         {
             Product product = new Product();
             product.Id = id;
             product.Title = title;
-            product.Description = description;
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             return product;
@@ -803,7 +801,7 @@ namespace Leo.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -815,7 +813,7 @@ namespace Leo.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
