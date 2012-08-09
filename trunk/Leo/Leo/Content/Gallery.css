@@ -1,7 +1,8 @@
 ﻿.galleryContainer
 {
     margin-left: 0px;
-    overflow: scroll;
+    /*overflow: scroll;*/
+    overflow: hidden;
     min-height: 600px;
 }
 .galleryContent

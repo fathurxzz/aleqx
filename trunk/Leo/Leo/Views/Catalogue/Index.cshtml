@@ -2,68 +2,75 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section GalleryContent
 {
-
-@if(Model.Category.Products.Any())
-{
-<div class="galleryContainer">
-
-<div class="boardContainer">
-                <div class="board">
-                </div>
-                
-
-
-                 <div class="catalogue-title">
-        @Model.Category.Title
-    </div>
-    @if (Request.IsAuthenticated)
+    @if (Model.Category.Products.Any())
     {
-        <div class="adminLinkContainer">
+        
+        
+        
+        <div id="scrollbar1">
+            <div class="viewport">
+                <div class="overview">
+                    <div class="galleryContainer">
+                        <div class="boardContainer">
+                            <div class="board">
+                            </div>
+                            <div class="catalogue-title">
+                                @Model.Category.Title
+                            </div>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <div class="adminLinkContainer">
+                                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                                </div>
+                            }
+                        </div>
+                        <div class="galleryContent">
+                            <table>
+                                <tr>
+                                    @foreach (var item in Model.Products)
+                                    {
+                                        <td>@Html.Partial("_Product", item)
+                                        </td>
+                                    }
+                                    <td>
+                                        <div class="logoContainer">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="scrollbar">
+                <div class="track">
+                    <div class="thumb">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    }
+    else if (Request.IsAuthenticated)
+    {
+        <div style="position: absolute; top: 50px; left: 400px">
             @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
         </div>
     }
-
-
-
-            </div>
-
-
-
-    <div class="galleryContent">
-        <table>
-            <tr>
-                @foreach (var item in Model.Products)
-                {
-                    <td>@Html.Partial("_Product", item)
-                    </td>
-                }
-                <td>
-                    <div class="logoContainer"></div>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-             </div>
-}else if (Request.IsAuthenticated)
-      {
-          <div style="position: absolute; top: 50px; left: 400px">
-              @Html.ActionLink("Добавить изображение", "Create", "Product", new {area = "Admin", id = Model.Category.Id}, new {@class = "adminLink"})
-          </div>
-      }
-
 }
 @section MainMenu
 {
     @Html.Partial("_MainMenu", Model.Menu)
 }
-
 @section CatalogueFilter
 {
     <div class="filterLinkContainer">
-                @Html.ActionLink("Фильтровать", "ShowFilter", "Catalogue", new { Area = "", id = Model.Category.Name }, new { @class = "changeFilter fancy" }) эту галерею картин
+        @Html.ActionLink("Фильтровать", "ShowFilter", "Catalogue", new { Area = "", id = Model.Category.Name }, new { @class = "changeFilter fancy" })
+        эту галерею картин
     </div>
 }
