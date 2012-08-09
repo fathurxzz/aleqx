@@ -21,6 +21,13 @@ namespace Leo.Models
             {
                 throw new HttpNotFoundException("page " + categoryName);
             }
+
+            if (categoryName == null)
+                foreach (var item in Menu.Where(c => c.ContentId == category.Id))
+                {
+                    item.Current = true;
+                }
+
             Title = category.Title;
             Category = category;
             Products = category.Products;
@@ -29,7 +36,7 @@ namespace Leo.Models
 
         public void ApplyFilterForProducts(List<ProductAttribute> attributes)
         {
-            if(!attributes.Any())
+            if (!attributes.Any())
                 return;
             List<Product> result = Products.Where(product => product.ProductAttributes.Intersect(attributes).Any()).ToList();
             Products = result;
