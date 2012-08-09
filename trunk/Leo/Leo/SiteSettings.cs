@@ -12,7 +12,10 @@ namespace Leo
 
         static SiteSettings()
         {
-            _thumbnails.Add("galleryThumbnail", new PictureSize { Height = 315 });
+            _thumbnails = new Dictionary<string, PictureSize>
+                              {
+                                  {"galleryThumbnail", new PictureSize {Height = 315}}
+                              };
         }
 
         public static ThumbnailPicture GetThumbnail(string cacheFolder)
