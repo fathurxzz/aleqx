@@ -51,7 +51,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
@@ -199,7 +199,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Description" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
           <NavigationProperty Name="Category" Relationship="Site.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />

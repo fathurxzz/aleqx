@@ -15,7 +15,7 @@
 #scrollbar1 .viewport
 {
     width: 100%;
-    min-height: 600px;
+    min-height: 650px;
     overflow: hidden;
     position: relative;
 }

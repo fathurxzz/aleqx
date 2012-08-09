@@ -125,7 +125,7 @@ namespace Leo.Areas.Admin.Controllers
                             product.ProductAttributes.Remove(attribute);
                     }
                 }
-
+                
                 TryUpdateModel(product, new[] { "Title", "Description"});
 
 
