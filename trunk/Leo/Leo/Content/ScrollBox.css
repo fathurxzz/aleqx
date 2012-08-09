@@ -39,19 +39,20 @@
 }
 #scrollbar1 .track
 {
-    background-color: #D8EEFD;
-    height: 13px;
+    
+    height: 9px;
     position: relative;
+    background: url('img/scrollbar-track-bg.gif') repeat-x;
     
 }
 #scrollbar1 .thumb
 {
-    height: 10px;
-    width: 10px !important;
+    height: 31px;
+    width: 26px !important;
     cursor: pointer;
     overflow: hidden;
     position: absolute;
-    top: 0;
-    background-color: #003D5D;
+    top: -10px;
+    background-image: url('img/scrollbar-thumb.png');
 }
 
