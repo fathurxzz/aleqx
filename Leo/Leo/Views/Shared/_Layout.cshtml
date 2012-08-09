@@ -22,6 +22,10 @@
         $(function () {
             $(".fancy").fancybox({ showCloseButton: false, padding: 0, margin: 0 });
             $(".fancyImage").fancybox({ showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+
+            var oScrollbar = $('#scrollbar1');
+
+            oScrollbar.tinyscrollbar({ axis: 'x', sizethumb: 15 });
         });
     </script>
 </head>
