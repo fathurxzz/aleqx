@@ -126,6 +126,7 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\fonts\fonts.css" />
+    <Content Include="Content\fonts\hagincapsmedium.svg" />
     <Content Include="Content\fonts\hagincapsthin.svg" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\about-sign.gif" />
@@ -247,10 +248,12 @@
     <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <None Include="Content\fonts\hagincapsmedium.eot" />
     <None Include="Content\fonts\HaginCapsMedium.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Content\fonts\HaginCapsMedium.ttf" />
+    <None Include="Content\fonts\hagincapsmedium.woff" />
     <None Include="Content\fonts\hagincapsthin.eot" />
     <None Include="Content\fonts\HaginCapsThin.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
