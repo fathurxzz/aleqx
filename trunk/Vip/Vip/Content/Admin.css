@@ -1,0 +1,89 @@
+﻿.field-validation-error
+{
+    color: red !important;
+}
+
+.logOutLink
+{
+    text-align: center;
+    position: absolute;
+    left: 450px;
+    z-index: 100;
+}
+
+.adminLinkContainer
+{
+    text-align: center;
+}
+
+a.adminLink
+{
+    color: #ff0000 !important;
+    font-family: Tahoma;
+    font-size: 12px !important;
+    text-transform: none !important;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.adminEditContentTable
+{
+    font-family: Tahoma;
+    width: 700px;
+    position: relative;
+    margin: 50px auto 0 400px;
+}
+
+.adminEditContentTable td
+{
+    padding-top: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
+{
+    width: 400px;
+}
+
+
+.adminEditContentTable td span.tip
+{
+    font-size: 11px;
+    font-weight: normal;
+    color: #888;
+}
+
+.buttonsContainer
+{
+    text-align: center;
+    margin-top: 20px;
+    font-family: Verdana;
+}
+
+.adminContentContainer
+{
+    font-family: Tahoma;
+}
+
+.adminContentContainer
+{
+    font-size: 14px;
+}
+
+.adminContentContainer h2
+{
+    font-size: 20px;
+}
+
+.sortOrder
+{
+    color: #ff0000;
+    white-space: nowrap;
+}
+
+.nowrap
+{
+    white-space: nowrap;
+}
