@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
 
 namespace SiteExtensions
 {
@@ -14,17 +12,20 @@ namespace SiteExtensions
 
     public class MailHelper
     {
-        public static ResponseData SendMessage(string from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
+        public static ResponseData SendMessage(MailAddress from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
-            SmtpClient client = new SmtpClient {UseDefaultCredentials = true};
+            SmtpClient client = new SmtpClient { UseDefaultCredentials = true };
             try
             {
-                MailMessage message = new MailMessage();
-                message.Body = body;
-                message.Subject = subject;
+                MailMessage message = new MailMessage
+                {
+                    Body = body, 
+                    Subject = subject, 
+                    IsBodyHtml = isBodyHtml
+                };
                 to.ForEach(t => message.To.Add(t));
-                message.From = new MailAddress(from);
-                message.IsBodyHtml = isBodyHtml;
+                if (from != null)
+                    message.From = from;
                 client.Send(message);
 
                 return new ResponseData { EmailSent = true };
@@ -35,17 +36,17 @@ namespace SiteExtensions
             }
         }
 
-        public static ResponseData SendTemplate(string from, List<MailAddress> to, string template, bool isBodyHtml)
-        {
-            return SendTemplate(from, to, string.Empty, template, string.Empty, isBodyHtml, null);
-        }
+        //public static ResponseData SendTemplate(string from, List<MailAddress> to, string template, bool isBodyHtml)
+        //{
+        //    return SendTemplate(from, to, string.Empty, template, string.Empty, isBodyHtml, null);
+        //}
 
-        public static ResponseData SendTemplate(string from, List<MailAddress> to,  params object[] replacements)
-        {
-            return SendTemplate(from, to, string.Empty, null, string.Empty, true, replacements);
-        }
+        //public static ResponseData SendTemplate(string from, List<MailAddress> to,  params object[] replacements)
+        //{
+        //    return SendTemplate(from, to, string.Empty, null, string.Empty, true, replacements);
+        //}
 
-        public static ResponseData SendTemplate(string from, List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
+        public static ResponseData SendTemplate(MailAddress from, List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
         {
             //string languageFolder = (string.IsNullOrEmpty(Language)) ? string.Empty : Language + "/";
             //string filePath = HttpContext.Current.Server.MapPath("~/Content/MailTemplates/" + languageFolder + template);

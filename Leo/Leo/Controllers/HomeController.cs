@@ -38,22 +38,21 @@ namespace Leo.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var responseData = MailHelper.SendTemplate("kushko.alex@gmail.com",
-                    new List<MailAddress>
-                        {
-                            new MailAddress("kushko.alex@gmail.com")
-                        },
-                    "Форма обратной связи", feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
-                
+                var emails = new List<MailAddress>
+                                 {
+                                     new MailAddress("kushko.alex@gmail.com"),
+                                     new MailAddress("leonid@zaborovskiy.com.ua")
+                                 };
+
+                var responseData = MailHelper.SendTemplate(null, emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
                 var responseFeedback = new Feedback
                                            {
-                                               Email = feedbackFormModel.Email, 
+                                               Email = feedbackFormModel.Email,
                                                ErrorMessage = responseData.ErrorMessage,
                                                Text = feedbackFormModel.Text,
                                                Title = feedbackFormModel.Name,
                                                Sent = responseData.EmailSent
                                            };
-
 
                 context.AddToFeedback(responseFeedback);
                 context.SaveChanges();
