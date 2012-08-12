@@ -92,6 +92,7 @@
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\FeedbackFormModel.cs" />
+    <Compile Include="Models\ProductAttributeValidation.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
