@@ -4,6 +4,7 @@
     int pageCount = totalCount / pageSize;
     int page = (int)ViewBag.Page;
     pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
+    
 }
 @if (totalCount>0)
 {
@@ -20,7 +21,7 @@
         else
         {
             <div>
-        @Html.ActionLink((i + 1).ToString(), (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = i }, null)
+        @Html.ActionLink((i + 1).ToString(), (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = i, order = Request.QueryString["order"], direction = Request.QueryString["direction"] }, null)
         </div>
             }
             
@@ -33,7 +34,7 @@
     @if (page > -1)
     {
         <br/>
-        @Html.ActionLink("весь список", (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = -1 }, null)
+        @Html.ActionLink("весь список", (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = -1 , order = Request.QueryString["order"], direction = Request.QueryString["direction"]}, null)
     }
     else
     {

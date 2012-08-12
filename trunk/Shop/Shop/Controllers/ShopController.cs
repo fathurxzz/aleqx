@@ -13,11 +13,11 @@ namespace Shop.Controllers
         //
         // GET: /Shop/
 
-        public ActionResult Categories(string id, int? page)
+        public ActionResult Categories(string id, int? page, string order, string direction)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, id, null, null, null, page, true);
+                ShopViewModel model = new ShopViewModel(context, id, null, null, null, page, order, direction, true);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.TotalCount = model.TotalProductsCount;
@@ -28,11 +28,11 @@ namespace Shop.Controllers
             }
         }
 
-        public ActionResult Brands(string id, int? page)
+        public ActionResult Brands(string id, int? page, string order, string direction)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, id, null, null, page);
+                ShopViewModel model = new ShopViewModel(context, null, id, null, null, page, order, direction);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.TotalCount = model.TotalProductsCount;
@@ -44,11 +44,11 @@ namespace Shop.Controllers
             }
         }
 
-        public ActionResult Tags(string id, int? page)
+        public ActionResult Tags(string id, int? page, string order, string direction)
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, null, id, null, page);
+                ShopViewModel model = new ShopViewModel(context, null, null, id, null, page, order, direction);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.TotalCount = model.TotalProductsCount;
@@ -63,7 +63,7 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, category, null, null, id, null);
+                ShopViewModel model = new ShopViewModel(context, category, null, null, id, null, null, null);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 return View(model);
@@ -75,7 +75,7 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                ShopViewModel model = new ShopViewModel(context, null, null, null, null, null, false, q);
+                ShopViewModel model = new ShopViewModel(context, null, null, null, null, null, null, null, false, q);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.MainMenu;
                 ViewBag.TotalCount = model.TotalProductsCount;
