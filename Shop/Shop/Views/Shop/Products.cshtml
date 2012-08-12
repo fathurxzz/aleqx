@@ -1,46 +1,45 @@
 ﻿@model Shop.Models.ShopViewModel
-
 @{
     
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section Categories
 {
-    @Html.Partial("_Categories",Model.Categories)
+    @Html.Partial("_Categories", Model.Categories)
 }
-
 @section Brands
 {
-    @Html.Partial("_Brands",Model.Brands)
+    @Html.Partial("_Brands", Model.Brands)
 }
-
 @section Tags
 {
-    @Html.Partial("_Tags",Model.Tags)
+    @Html.Partial("_Tags", Model.Tags)
 }
-
-
-@Html.Partial("_ChildCategories",Model.ChildCategories)
-
+@Html.Partial("_ChildCategories", Model.ChildCategories)
 @if (ViewBag.Message != null)
 {
     @ViewBag.Message
 }
-
-<div class="productList">
-@foreach(var product in Model.Products)
-{
-    @Html.Partial("_Product",product)
-}
+<div class="sortOrderSelector">
+    Сортировать: Цена
+    @Html.ActionLink("по возрастанию", (string)ViewBag.ActionName, "Shop", new { order = "price", direction = "asc" }, null)
+    @Html.ActionLink("по убыванию", (string)ViewBag.ActionName, "Shop", new { order = "price", direction = "desc" }, null)
+    Название
+    @Html.ActionLink("по возрастанию", (string)ViewBag.ActionName, "Shop", new { order = "title", direction = "asc" }, null)
+    @Html.ActionLink("по убыванию", (string)ViewBag.ActionName, "Shop", new { order = "title", direction = "desc" }, null)
 </div>
-
+<div class="productList">
+    @foreach (var product in Model.Products)
+    {
+        @Html.Partial("_Product", product)
+    }
+</div>
 @section Paging
 {
     @Html.Partial("_Paging")
 }
-
 @section HeaderPicture
 {
-    <div id="header-bg-container" class="main"></div>
+    <div id="header-bg-container" class="main">
+    </div>
 }

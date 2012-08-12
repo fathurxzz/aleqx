@@ -14,7 +14,7 @@ namespace Shop.Models
         public int TotalProductsCount { get; set; }
         public int Page { get; set; }
 
-        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, bool showChildCategories = false, string searchQuery = null)
+        public ShopViewModel(ShopContainer context, string categoryId, string brandId, string tagId, string productId, int? page, string order, string direction, bool showChildCategories = false, string searchQuery = null)
             : base(context, null, false)
         {
             foreach (var category in Categories)
@@ -99,7 +99,7 @@ namespace Shop.Models
             if (products != null)
                 TotalProductsCount = products.Count();
 
-            products = ApplyOrdering(products, "");
+            products = ApplyOrdering(products, order, direction);
             products = ApplyPaging(products, page);
 
             if (products == null)
@@ -134,22 +134,18 @@ namespace Shop.Models
                 SeoDescription = product.SeoDescription;
                 SeoKeywords = product.SeoKeywords;
             }
-
-
-
-
         }
 
-        IQueryable<Product> ApplyOrdering(IQueryable<Product> products, string orderBy)
+        IQueryable<Product> ApplyOrdering(IQueryable<Product> products, string orderBy, string direction)
         {
             if (products == null)
                 return null;
             switch (orderBy)
             {
-                case "name":
-                    return products.OrderBy(p => p.Name);
+                case "title":
+                    return direction == "desc" ? products.OrderByDescending(p => p.Title) : products.OrderBy(p => p.Title);
                 case "price":
-                    return products.OrderBy(p => p.Price);
+                    return direction == "desc" ? products.OrderByDescending(p => p.Price) : products.OrderBy(p => p.Price);
                 default:
                     return products.OrderBy(p => p.Id);
             }
