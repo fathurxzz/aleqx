@@ -17,11 +17,6 @@
           <EntitySet Name="ProductAttribute" EntityType="Site.ProductAttribute" />
           <EntitySet Name="Category" EntityType="Site.Category" />
           <EntitySet Name="Layout" EntityType="Site.Layout" />
-          <EntitySet Name="LayoutCategory" EntityType="Site.LayoutCategory" />
-          <AssociationSet Name="LayoutCategoryLayout" Association="Site.LayoutCategoryLayout">
-            <End Role="LayoutCategory" EntitySet="LayoutCategory" />
-            <End Role="Layout" EntitySet="Layout" />
-          </AssociationSet>
           <EntitySet Name="Product" EntityType="Site.Product" />
           <AssociationSet Name="LayoutProduct" Association="Site.LayoutProduct">
             <End Role="Layout" EntitySet="Layout" />
@@ -42,6 +37,10 @@
           <AssociationSet Name="MakerProduct" Association="Site.MakerProduct">
             <End Role="Maker" EntitySet="Maker" />
             <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="LayoutLayout" Association="Site.LayoutLayout">
+            <End Role="Layout" EntitySet="Layout" />
+            <End Role="Layout1" EntitySet="Layout" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Maker">
@@ -76,30 +75,11 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" />
-          <NavigationProperty Name="LayoutCategory" Relationship="Site.LayoutCategoryLayout" FromRole="Layout" ToRole="LayoutCategory" />
-          <Property Type="Int32" Name="LayoutCategoryId" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Site.LayoutProduct" FromRole="Layout" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="LayoutCategory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
-          <NavigationProperty Name="Layouts" Relationship="Site.LayoutCategoryLayout" FromRole="LayoutCategory" ToRole="Layout" />
-        </EntityType>
-        <Association Name="LayoutCategoryLayout">
-          <End Type="Site.LayoutCategory" Role="LayoutCategory" Multiplicity="1" />
-          <End Type="Site.Layout" Role="Layout" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LayoutCategory">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Layout">
-              <PropertyRef Name="LayoutCategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+          <NavigationProperty Name="Children" Relationship="Site.LayoutLayout" FromRole="Layout" ToRole="Layout1" />
+          <NavigationProperty Name="Parent" Relationship="Site.LayoutLayout" FromRole="Layout1" ToRole="Layout" />
+          <Property Type="Int32" Name="LayoutId" Nullable="true" />
+          </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
@@ -158,6 +138,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="LayoutLayout">
+          <End Type="Site.Layout" Role="Layout" Multiplicity="0..1" />
+          <End Type="Site.Layout" Role="Layout1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Layout">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Layout1">
+              <PropertyRef Name="LayoutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -189,16 +181,11 @@
         <EntityTypeShape EntityType="Site.Maker" Width="1.5" PointX="6.875" PointY="4.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Site.ProductAttribute" Width="1.5" PointX="2.75" PointY="1.875" Height="1.7566536458333326" />
         <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="1.4279589843749996" />
-        <EntityTypeShape EntityType="Site.Layout" Width="1.5" PointX="2.625" PointY="4.375" Height="1.7566536458333335" />
-        <EntityTypeShape EntityType="Site.LayoutCategory" Width="1.5" PointX="0.625" PointY="4.375" Height="1.427958984375" />
-        <AssociationConnector Association="Site.LayoutCategoryLayout">
-          <ConnectorPoint PointX="2.125" PointY="5.0889794921875" />
-          <ConnectorPoint PointX="2.625" PointY="5.0889794921875" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Layout" Width="1.5" PointX="2.625" PointY="4.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.75" PointY="4.375" Height="2.4140429687499996" />
         <AssociationConnector Association="Site.LayoutProduct">
-          <ConnectorPoint PointX="4.125" PointY="5.2533268229166667" />
-          <ConnectorPoint PointX="4.75" PointY="5.2533268229166667" />
+          <ConnectorPoint PointX="4.125" PointY="5.0889794921875" />
+          <ConnectorPoint PointX="4.75" PointY="5.0889794921875" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProductAttribute">
           <ConnectorPoint PointX="5" PointY="1.2499995" />
@@ -217,6 +204,12 @@
         <AssociationConnector Association="Site.MakerProduct">
           <ConnectorPoint PointX="6.875" PointY="5.0889794921875" />
           <ConnectorPoint PointX="6.25" PointY="5.0889794921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.LayoutLayout">
+          <ConnectorPoint PointX="3.1569230769230767" PointY="6.2960009765625" />
+          <ConnectorPoint PointX="3.1569230769230767" PointY="6.5460009765625" />
+          <ConnectorPoint PointX="3.6034615384615383" PointY="6.5460009765625" />
+          <ConnectorPoint PointX="3.6034615384615383" PointY="6.2960009765625" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

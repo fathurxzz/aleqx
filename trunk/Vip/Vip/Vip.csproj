@@ -163,6 +163,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Layout\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Layout\Create.cshtml" />
     <None Include="Content\fonts\DinCyRg.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
