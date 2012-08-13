@@ -18,12 +18,12 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Site", "LayoutCategoryLayout", "LayoutCategory", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.LayoutCategory), "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Layout), true)]
 [assembly: EdmRelationshipAttribute("Site", "LayoutProduct", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Layout), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product))]
 [assembly: EdmRelationshipAttribute("Site", "CategoryProductAttribute", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Category), "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProductAttribute), true)]
 [assembly: EdmRelationshipAttribute("Site", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Site", "ProductProductAttribute", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProductAttribute))]
 [assembly: EdmRelationshipAttribute("Site", "MakerProduct", "Maker", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Maker), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
+[assembly: EdmRelationshipAttribute("Site", "LayoutLayout", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Vip.Models.Layout), "Layout1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Layout), true)]
 
 #endregion
 
@@ -142,22 +142,6 @@ namespace Vip.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<LayoutCategory> LayoutCategory
-        {
-            get
-            {
-                if ((_LayoutCategory == null))
-                {
-                    _LayoutCategory = base.CreateObjectSet<LayoutCategory>("LayoutCategory");
-                }
-                return _LayoutCategory;
-            }
-        }
-        private ObjectSet<LayoutCategory> _LayoutCategory;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Product> Product
         {
             get
@@ -204,14 +188,6 @@ namespace Vip.Models
         public void AddToLayout(Layout layout)
         {
             base.AddObject("Layout", layout);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the LayoutCategory EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLayoutCategory(LayoutCategory layoutCategory)
-        {
-            base.AddObject("LayoutCategory", layoutCategory);
         }
     
         /// <summary>
@@ -347,13 +323,11 @@ namespace Vip.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="layoutCategoryId">Initial value of the LayoutCategoryId property.</param>
-        public static Layout CreateLayout(global::System.Int32 id, global::System.String title, global::System.Int32 layoutCategoryId)
+        public static Layout CreateLayout(global::System.Int32 id, global::System.String title)
         {
             Layout layout = new Layout();
             layout.Id = id;
             layout.Title = title;
-            layout.LayoutCategoryId = layoutCategoryId;
             return layout;
         }
 
@@ -414,68 +388,30 @@ namespace Vip.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 LayoutCategoryId
+        public Nullable<global::System.Int32> LayoutId
         {
             get
             {
-                return _LayoutCategoryId;
+                return _LayoutId;
             }
             set
             {
-                OnLayoutCategoryIdChanging(value);
-                ReportPropertyChanging("LayoutCategoryId");
-                _LayoutCategoryId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("LayoutCategoryId");
-                OnLayoutCategoryIdChanged();
+                OnLayoutIdChanging(value);
+                ReportPropertyChanging("LayoutId");
+                _LayoutId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LayoutId");
+                OnLayoutIdChanged();
             }
         }
-        private global::System.Int32 _LayoutCategoryId;
-        partial void OnLayoutCategoryIdChanging(global::System.Int32 value);
-        partial void OnLayoutCategoryIdChanged();
+        private Nullable<global::System.Int32> _LayoutId;
+        partial void OnLayoutIdChanging(Nullable<global::System.Int32> value);
+        partial void OnLayoutIdChanged();
 
         #endregion
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutCategoryLayout", "LayoutCategory")]
-        public LayoutCategory LayoutCategory
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LayoutCategory>("Site.LayoutCategoryLayout", "LayoutCategory").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LayoutCategory>("Site.LayoutCategoryLayout", "LayoutCategory").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<LayoutCategory> LayoutCategoryReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<LayoutCategory>("Site.LayoutCategoryLayout", "LayoutCategory");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<LayoutCategory>("Site.LayoutCategoryLayout", "LayoutCategory", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -498,90 +434,6 @@ namespace Vip.Models
                 }
             }
         }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="LayoutCategory")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class LayoutCategory : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new LayoutCategory object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="title">Initial value of the Title property.</param>
-        public static LayoutCategory CreateLayoutCategory(global::System.Int32 id, global::System.String title)
-        {
-            LayoutCategory layoutCategory = new LayoutCategory();
-            layoutCategory.Id = id;
-            layoutCategory.Title = title;
-            return layoutCategory;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
-
-        #endregion
-    
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -589,18 +441,56 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutCategoryLayout", "Layout")]
-        public EntityCollection<Layout> Layouts
+        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutLayout", "Layout1")]
+        public EntityCollection<Layout> Children
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Layout>("Site.LayoutCategoryLayout", "Layout");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Layout>("Site.LayoutLayout", "Layout1");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Layout>("Site.LayoutCategoryLayout", "Layout", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Layout>("Site.LayoutLayout", "Layout1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutLayout", "Layout")]
+        public Layout Parent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Layout>("Site.LayoutLayout", "Layout").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Layout>("Site.LayoutLayout", "Layout").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Layout> ParentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Layout>("Site.LayoutLayout", "Layout");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Layout>("Site.LayoutLayout", "Layout", value);
                 }
             }
         }
