@@ -15,16 +15,16 @@ body {
 }
 
 .outerPage {
-    background: url('img/site-bg.gif');
+    background: url('img/site-bg.jpg');
     background-position: 50% 0;
     min-width: 1200px;
 }
 
 .page {
-    background-image: url('img/page-head-bg.gif');
+    background-image: url('img/page-head-bg.jpg');
     background-repeat: no-repeat;
     background-position: 50% 0;
-    min-height: 600px;
+    min-height: 475px;
     width: 1200px;
     position: relative;
     margin: 0 auto;
@@ -61,11 +61,13 @@ body {
 
 
 .footer {
-    
+    background-image: url('img/footer-bg-bottom.jpg');
+    background-position: bottom;
+    background-repeat: repeat-x;
 }
 
 .footer .inner {
-    background-image: url('img/footer-bg-center.gif');
+    background-image: url('img/footer-bg-center.jpg');
     background-position: 50% 0;
     height: 312px;
     background-repeat: no-repeat;
