@@ -95,12 +95,12 @@
     <Content Include="Content\fancybox\fancy_title_main.png" />
     <Content Include="Content\fancybox\fancy_title_over.png" />
     <Content Include="Content\fancybox\fancy_title_right.png" />
-    <Content Include="Content\img\footer-bg-center.gif" />
+    <Content Include="Content\img\footer-bg-bottom.jpg" />
+    <Content Include="Content\img\footer-bg-center.jpg" />
     <Content Include="Content\img\main-menu-bg.gif" />
-    <Content Include="Content\img\page-head-bg.gif" />
-    <Content Include="Content\img\page-head-bg.png" />
-    <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\page-head-bg.jpg" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
