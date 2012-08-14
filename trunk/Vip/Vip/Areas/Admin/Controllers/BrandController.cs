@@ -9,9 +9,6 @@ namespace Vip.Areas.Admin.Controllers
 {
     public class BrandController : Controller
     {
-        //
-        // GET: /Admin/Brand/
-
         public ActionResult Index()
         {
             using (var context = new SiteContainer())
@@ -21,20 +18,9 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Brand/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /Admin/Brand/Create
-
         public ActionResult Create()
         {
-            return View();
+            return View(new Brand());
         } 
 
         //
@@ -45,7 +31,13 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var context = new SiteContainer())
+                {
+                    var brand = new Brand();
+                    TryUpdateModel(brand, new[] { "Title"});
+                    context.AddToBrand(brand);
+                    context.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -55,24 +47,28 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
         
-        //
-        // GET: /Admin/Brand/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var brand = context.Brand.First(l => l.Id == id);
+                return View(brand);
+            }
         }
 
-        //
-        // POST: /Admin/Brand/Edit/5
-
+ 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                using (var context = new SiteContainer())
+                {
+                    var brand = context.Brand.First(l => l.Id == id);
+                    TryUpdateModel(brand, new[] { "Title" });
+                    context.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
             catch
@@ -81,30 +77,15 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Brand/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Brand/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (var context = new SiteContainer())
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+                var brand = context.Brand.First(l => l.Id == id);
+                context.DeleteObject(brand);
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

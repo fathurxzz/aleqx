@@ -9,9 +9,6 @@ namespace Vip.Areas.Admin.Controllers
 {
     public class MakerController : Controller
     {
-        //
-        // GET: /Admin/Maker/
-
         public ActionResult Index()
         {
             using (var context = new SiteContainer())
@@ -21,31 +18,23 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Maker/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /Admin/Maker/Create
-
         public ActionResult Create()
         {
-            return View();
+            return View(new Maker());
         } 
-
-        //
-        // POST: /Admin/Maker/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var context = new SiteContainer())
+                {
+                    var maker = new Maker();
+                    TryUpdateModel(maker, new[] { "Title" });
+                    context.AddToMaker(maker);
+                    context.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -55,24 +44,27 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
         
-        //
-        // GET: /Admin/Maker/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var maker = context.Maker.First(m => m.Id == id);
+                return View(maker);
+            }
         }
-
-        //
-        // POST: /Admin/Maker/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                using (var context = new SiteContainer())
+                {
+                    var maker = context.Maker.First(m => m.Id == id);
+                    TryUpdateModel(maker, new[] { "Title" });
+                    context.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
             catch
@@ -81,30 +73,15 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Maker/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Maker/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (var context = new SiteContainer())
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+                var maker = context.Maker.First(m => m.Id == id);
+                context.DeleteObject(maker);
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

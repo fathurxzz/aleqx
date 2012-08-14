@@ -5,30 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="adminContentContainer">
+    <table class="adminEditContentTable">
+        <tr>
+            <td colspan="2">
+                <h2>
+                    Страны-производители</h2>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Заголовок
+            </th>
+            <th>
+            </th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Title
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данную страну-производителя?')" })
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">
+                <p>
+                    @Html.ActionLink("Добавить страну-производителя", "Create")
+                </p>
+            </td>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    </table>
 
-</table>
+</div>
