@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Vip.Models.ProductAttribute>
+
+@{
+    ViewBag.Title = "Атрибуты разделов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContentContainer">
+    <table class="adminEditContentTable">
+        <tr>
+            <td colspan="2">
+                <h2>
+                    Атрибуты разделов</h2>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Заголовок
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный атрибут?')" }) 
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">
+                <p>
+                    @Html.ActionLink("Добавить атрибут", "Create")
+                </p>
+            </td>
+        </tr>
+
+    </table>
+
+</div>

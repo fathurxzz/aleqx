@@ -28,7 +28,10 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var context = new SiteContainer())
+                {
+
+                }
 
                 return RedirectToAction("Index");
             }

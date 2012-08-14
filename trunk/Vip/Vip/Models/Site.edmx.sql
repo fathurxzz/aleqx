@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/14/2012 15:03:05
+-- Date Created: 08/14/2012 15:22:52
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -55,8 +55,7 @@ CREATE TABLE `Maker` (
 
 CREATE TABLE `ProductAttribute` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `CategoryId` int  NOT NULL
+    `Title` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'Category'
@@ -110,6 +109,13 @@ CREATE TABLE `ProductProductAttribute` (
     `ProductAttributes_Id` int  NOT NULL
 );
 
+-- Creating table 'CategoryProductAttribute'
+
+CREATE TABLE `CategoryProductAttribute` (
+    `Categories_Id` int  NOT NULL,
+    `ProductAttributes_Id` int  NOT NULL
+);
+
 
 
 -- --------------------------------------------------
@@ -127,6 +133,12 @@ ADD CONSTRAINT `PK_LayoutProduct`
 ALTER TABLE `ProductProductAttribute`
 ADD CONSTRAINT `PK_ProductProductAttribute`
     PRIMARY KEY (`Products_Id`, `ProductAttributes_Id` );
+
+-- Creating primary key on `Categories_Id`, `ProductAttributes_Id` in table 'CategoryProductAttribute'
+
+ALTER TABLE `CategoryProductAttribute`
+ADD CONSTRAINT `PK_CategoryProductAttribute`
+    PRIMARY KEY (`Categories_Id`, `ProductAttributes_Id` );
 
 
 
@@ -157,21 +169,6 @@ ADD CONSTRAINT `FK_LayoutProduct_Product`
 CREATE INDEX `IX_FK_LayoutProduct_Product` 
     ON `LayoutProduct`
     (`Products_Id`);
-
--- Creating foreign key on `CategoryId` in table 'ProductAttribute'
-
-ALTER TABLE `ProductAttribute`
-ADD CONSTRAINT `FK_CategoryProductAttribute`
-    FOREIGN KEY (`CategoryId`)
-    REFERENCES `Category`
-        (`Id`)
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CategoryProductAttribute'
-
-CREATE INDEX `IX_FK_CategoryProductAttribute` 
-    ON `ProductAttribute`
-    (`CategoryId`);
 
 -- Creating foreign key on `CategoryId` in table 'Product'
 
@@ -256,6 +253,30 @@ ADD CONSTRAINT `FK_BrandProduct`
 CREATE INDEX `IX_FK_BrandProduct` 
     ON `Product`
     (`BrandId`);
+
+-- Creating foreign key on `Categories_Id` in table 'CategoryProductAttribute'
+
+ALTER TABLE `CategoryProductAttribute`
+ADD CONSTRAINT `FK_CategoryProductAttribute_Category`
+    FOREIGN KEY (`Categories_Id`)
+    REFERENCES `Category`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating foreign key on `ProductAttributes_Id` in table 'CategoryProductAttribute'
+
+ALTER TABLE `CategoryProductAttribute`
+ADD CONSTRAINT `FK_CategoryProductAttribute_ProductAttribute`
+    FOREIGN KEY (`ProductAttributes_Id`)
+    REFERENCES `ProductAttribute`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryProductAttribute_ProductAttribute'
+
+CREATE INDEX `IX_FK_CategoryProductAttribute_ProductAttribute` 
+    ON `CategoryProductAttribute`
+    (`ProductAttributes_Id`);
 
 -- --------------------------------------------------
 -- Script has ended
