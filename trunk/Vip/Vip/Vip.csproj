@@ -41,6 +41,9 @@
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SiteExtensions">
+      <HintPath>..\..\..\..\Dropbox\libs\SiteExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -68,18 +71,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\LayoutController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MakerController.cs" />
+    <Compile Include="Controllers\CatalogueController.cs" />
+    <Compile Include="Models\MakerValidation.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BrandValidation.cs" />
+    <Compile Include="Models\LayoutValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Site.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +123,7 @@
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Site.edmx.sql" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
