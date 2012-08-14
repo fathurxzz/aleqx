@@ -103,6 +103,7 @@
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\header-bg.gif" />
     <Content Include="Content\img\listen.gif" />
+    <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\old_logo.gif" />
     <Content Include="Content\img\main-content-bottom-bg.gif" />
     <Content Include="Content\img\main-content-top-bg.gif" />
