@@ -1,36 +1,64 @@
 ﻿@model IEnumerable<Vip.Models.Layout>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="adminContentContainer">
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Title
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model) {
+    <table class="adminEditContentTable">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <td colspan="2">
+                <h2>
+                    Разделы</h2>
             </td>
         </tr>
-    }
-
-</table>
+        <tr>
+            <th>
+                Заголовок
+            </th>
+            <th>
+                Порядок отображения
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model.Where(l => l.Parent == null).OrderBy(l => l.SortOrder))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SortOrder)
+                </td>
+                <td>
+                    
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Внимание! При удалении раздела будут удалены все существующие в нем подразделы! Вы действительно хотите удалить данный раздел?')" }) |
+                    @Html.ActionLink("Добавить подраздел", "Create", new { parentId = item.Id }) 
+                </td>
+            </tr>
+               foreach (var child in item.Children.OrderBy(l => l.SortOrder))
+               {
+            <tr>
+                <td class="childitem">
+                    @Html.DisplayFor(modelItem => child.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => child.SortOrder)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = child.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = child.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный подраздел?')" }) |
+                </td>
+            </tr>
+               }
+        }
+        <tr>
+            <td colspan="2">
+                <p>
+                    @Html.ActionLink("Добавить раздел", "Create")
+                </p>
+            </td>
+        </tr>
+    </table>
 </div>

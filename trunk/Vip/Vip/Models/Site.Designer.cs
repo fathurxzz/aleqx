@@ -445,24 +445,24 @@ namespace Vip.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 SOrtOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
-                return _SOrtOrder;
+                return _SortOrder;
             }
             set
             {
-                OnSOrtOrderChanging(value);
-                ReportPropertyChanging("SOrtOrder");
-                _SOrtOrder = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SOrtOrder");
-                OnSOrtOrderChanged();
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
             }
         }
-        private global::System.Int32 _SOrtOrder = 0;
-        partial void OnSOrtOrderChanging(global::System.Int32 value);
-        partial void OnSOrtOrderChanged();
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -619,9 +619,9 @@ namespace Vip.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -636,8 +636,8 @@ namespace Vip.Models
                 OnSortOrderChanged();
             }
         }
-        private Nullable<global::System.Int32> _SortOrder = 0;
-        partial void OnSortOrderChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _SortOrder = 0;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion

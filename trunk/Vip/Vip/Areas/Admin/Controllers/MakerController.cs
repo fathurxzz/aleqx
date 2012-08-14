@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
 {
@@ -13,7 +14,11 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var makers = context.Maker.ToList();
+                return View(makers);
+            }
         }
 
         //

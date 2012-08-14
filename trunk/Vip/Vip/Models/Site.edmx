@@ -73,7 +73,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="SOrtOrder" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
   <EntityType Name="Layout">
     <Key>
@@ -82,7 +82,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="LayoutId" Type="int" Nullable="true" />
-    <Property Name="SortOrder" Type="int" Nullable="true" DefaultValue="0" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -293,7 +293,7 @@
           <NavigationProperty Name="Products" Relationship="Site.CategoryProduct" FromRole="Category" ToRole="Product" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="Int32" Name="SOrtOrder" Nullable="false" DefaultValue="0" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
         </EntityType>
         <EntityType Name="Layout">
           <Key>
@@ -305,7 +305,7 @@
           <NavigationProperty Name="Children" Relationship="Site.LayoutLayout" FromRole="Layout" ToRole="Layout1" />
           <NavigationProperty Name="Parent" Relationship="Site.LayoutLayout" FromRole="Layout1" ToRole="Layout" />
           <Property Type="Int32" Name="LayoutId" Nullable="true" />
-          <Property Type="Int32" Name="SortOrder" DefaultValue="0" />
+          <Property Type="Int32" Name="SortOrder" DefaultValue="0" Nullable="false" />
           </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -428,7 +428,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="SOrtOrder" ColumnName="SOrtOrder" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
