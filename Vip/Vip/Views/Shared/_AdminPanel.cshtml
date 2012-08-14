@@ -30,6 +30,8 @@
 <div id="adminPanel">
     <div class="links">
         @Html.ActionLink("Layouts", "Index", "Layout", new { Area = "Admin" }, null)
+        @Html.ActionLink("Страны производители", "Index", "Maker", new { Area = "Admin" }, null)
+        @Html.ActionLink("Бренды", "Index", "Brand", new { Area = "Admin" }, null)
         @Html.ActionLink("Выход", "LogOff", "Account", new { Area = "" }, null)
     </div>
     <div class="handle">

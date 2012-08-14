@@ -24,6 +24,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Site", "ProductProductAttribute", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProductAttribute))]
 [assembly: EdmRelationshipAttribute("Site", "MakerProduct", "Maker", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Maker), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Site", "LayoutLayout", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Vip.Models.Layout), "Layout1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Layout), true)]
+[assembly: EdmRelationshipAttribute("Site", "BrandProduct", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Brand), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
 
 #endregion
 
@@ -154,6 +155,22 @@ namespace Vip.Models
             }
         }
         private ObjectSet<Product> _Product;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Brand> Brand
+        {
+            get
+            {
+                if ((_Brand == null))
+                {
+                    _Brand = base.CreateObjectSet<Brand>("Brand");
+                }
+                return _Brand;
+            }
+        }
+        private ObjectSet<Brand> _Brand;
 
         #endregion
         #region AddTo Methods
@@ -197,6 +214,14 @@ namespace Vip.Models
         {
             base.AddObject("Product", product);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Brand EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBrand(Brand brand)
+        {
+            base.AddObject("Brand", brand);
+        }
 
         #endregion
     }
@@ -205,6 +230,112 @@ namespace Vip.Models
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Brand")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Brand : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Brand object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        public static Brand CreateBrand(global::System.Int32 id, global::System.String title)
+        {
+            Brand brand = new Brand();
+            brand.Id = id;
+            brand.Title = title;
+            return brand;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandProduct", "Product")]
+        public EntityCollection<Product> Products
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Site.BrandProduct", "Product");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Site.BrandProduct", "Product", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -622,7 +753,8 @@ namespace Vip.Models
         /// <param name="makerId">Initial value of the MakerId property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId, global::System.Int32 makerId, global::System.String title, global::System.String imageSource)
+        /// <param name="brandId">Initial value of the BrandId property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId, global::System.Int32 makerId, global::System.String title, global::System.String imageSource, global::System.Int32 brandId)
         {
             Product product = new Product();
             product.Id = id;
@@ -630,6 +762,7 @@ namespace Vip.Models
             product.MakerId = makerId;
             product.Title = title;
             product.ImageSource = imageSource;
+            product.BrandId = brandId;
             return product;
         }
 
@@ -758,6 +891,30 @@ namespace Vip.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BrandId
+        {
+            get
+            {
+                return _BrandId;
+            }
+            set
+            {
+                OnBrandIdChanging(value);
+                ReportPropertyChanging("BrandId");
+                _BrandId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BrandId");
+                OnBrandIdChanged();
+            }
+        }
+        private global::System.Int32 _BrandId;
+        partial void OnBrandIdChanging(global::System.Int32 value);
+        partial void OnBrandIdChanged();
 
         #endregion
     
@@ -879,6 +1036,44 @@ namespace Vip.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Maker>("Site.MakerProduct", "Maker", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandProduct", "Brand")]
+        public Brand Brand
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandProduct", "Brand").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandProduct", "Brand").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Brand> BrandReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandProduct", "Brand");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Brand>("Site.BrandProduct", "Brand", value);
                 }
             }
         }

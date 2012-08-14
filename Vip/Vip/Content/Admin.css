@@ -56,12 +56,13 @@ a.adminLink
 
 .adminContentContainer
 {
+    padding-top: 120px;
     font-family: Tahoma;
+    font-size: 12px;
+    color: #fff;
 }
-
-.adminContentContainer
-{
-    font-size: 14px;
+.adminContentContainer a {
+    color: #fff;
 }
 
 .adminContentContainer h2
@@ -97,6 +98,7 @@ a.adminLink
     color: White;
     font-size: 12px;
     font-family: Arial;
+    margin: 0 10px;
 }
 #adminPanel .handle
 {
