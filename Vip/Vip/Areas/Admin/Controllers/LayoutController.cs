@@ -9,9 +9,6 @@ namespace Vip.Areas.Admin.Controllers
 {
     public class LayoutController : Controller
     {
-        //
-        // GET: /Admin/Layout/
-
         public ActionResult Index()
         {
             using (var context = new SiteContainer())
@@ -21,18 +18,12 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Layout/Create
-
         public ActionResult Create(int? parentId)
         {
             if (parentId.HasValue)
                 ViewBag.ParentId = parentId.Value;
             return View(new Layout());
-        } 
-
-        //
-        // POST: /Admin/Layout/Create
+        }
 
         [HttpPost]
         public ActionResult Create(int? parentId, FormCollection form)
@@ -42,7 +33,14 @@ namespace Vip.Areas.Admin.Controllers
                 using (var context = new SiteContainer())
                 {
                     var layout = new Layout();
-                    TryUpdateModel(layout, new[] { "Title" });
+
+                    if (parentId.HasValue)
+                    {
+                        var parent = context.Layout.First(l => l.Id == parentId);
+                        layout.Parent = parent;
+                    }
+
+                    TryUpdateModel(layout, new[] { "Title", "SortOrder" });
                     context.AddToLayout(layout);
                     context.SaveChanges();
                 }
@@ -54,25 +52,28 @@ namespace Vip.Areas.Admin.Controllers
                 return View();
             }
         }
-        
-        //
-        // GET: /Admin/Layout/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var layout = context.Layout.First(l => l.Id == id);
+                return View(layout);
+            }
         }
-
-        //
-        // POST: /Admin/Layout/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
- 
+                using (var context = new SiteContainer())
+                {
+                    var layout = context.Layout.First(l => l.Id == id);
+                    TryUpdateModel(layout, new[] { "Title", "SortOrder" });
+                    context.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
             catch
@@ -81,30 +82,20 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Layout/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/Layout/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (var context = new SiteContainer())
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+                var layout = context.Layout.Include("Children").First(l => l.Id == id);
+                if (layout.Children.Any())
+                {
+                    var l = layout.Children.First();
+                    context.DeleteObject(l);
+                }
+                context.DeleteObject(layout);
+                context.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

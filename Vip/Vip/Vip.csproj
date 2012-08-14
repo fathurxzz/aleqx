@@ -178,6 +178,9 @@
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Layout\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Layout\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Layout\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Maker\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
     <None Include="Content\fonts\DinCyRg.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

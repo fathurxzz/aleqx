@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/14/2012 10:50:38
+-- Date Created: 08/14/2012 10:52:44
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -65,7 +65,7 @@ CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `SOrtOrder` int  NOT NULL
+    `SortOrder` int  NOT NULL
 );
 
 -- Creating table 'Layout'
@@ -74,7 +74,7 @@ CREATE TABLE `Layout` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
     `LayoutId` int  NULL,
-    `SortOrder` int  NULL
+    `SortOrder` int  NOT NULL
 );
 
 -- Creating table 'Product'

@@ -67,7 +67,9 @@ a.adminLink
 
 .adminContentContainer h2
 {
-    font-size: 20px;
+    font-size: 18px;
+    padding: 10px;
+    
 }
 
 .sortOrder
@@ -111,4 +113,8 @@ a.adminLink
     text-align: center;
     font-size: 13px;
     font-family: Arial;
+}
+
+.childitem {
+    padding-left: 30px;
 }

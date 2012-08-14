@@ -13,5 +13,9 @@ namespace Vip.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок")]
         public string Title { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Порядок отображения")]
+        public int SortOrder { get; set; }
     }
 }
