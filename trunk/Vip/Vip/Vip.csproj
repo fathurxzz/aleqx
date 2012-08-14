@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Models\SiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
@@ -193,6 +194,7 @@
     <Content Include="Areas\Admin\Views\ProductAttribute\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttribute\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttribute\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <None Include="Content\fonts\DinCyRg.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
