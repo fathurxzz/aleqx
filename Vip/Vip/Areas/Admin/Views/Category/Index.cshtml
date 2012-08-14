@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Vip.Models.Category>
+﻿@using SiteExtensions.Graphics
+@using Vip
+@model IEnumerable<Vip.Models.Category>
 @{
     ViewBag.Title = "Разделы";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,7 +15,16 @@
         </tr>
         <tr>
             <th>
+                Изображение
+            </th>
+            <th>
                 Заголовок
+            </th>
+            <th>
+                Веб-имя страницы
+            </th>
+            <th>
+                Порядок отображения
             </th>
             <th>
             </th>
@@ -22,8 +33,18 @@
         {
             <tr>
                 <td>
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("adminCategoryThumbnail"), ScaleMode.Corp))
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SortOrder)
+                </td>
+
                 <td>
                     @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный раздел?')" })

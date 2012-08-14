@@ -26,5 +26,8 @@ namespace Vip.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
+
+        [DisplayName("Изображение")]
+        public int ImageSource { get; set; }
     }
 }
