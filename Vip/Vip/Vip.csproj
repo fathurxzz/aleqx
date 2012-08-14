@@ -75,7 +75,9 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\LayoutController.cs" />
     <Compile Include="Areas\Admin\Controllers\MakerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
+    <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\MakerValidation.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\LayoutValidation.cs" />
+    <Compile Include="Models\ProductAttributeValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -187,6 +190,9 @@
     <Content Include="Areas\Admin\Views\Maker\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttribute\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttribute\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttribute\Edit.cshtml" />
     <None Include="Content\fonts\DinCyRg.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

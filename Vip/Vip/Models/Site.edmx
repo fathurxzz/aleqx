@@ -14,6 +14,7 @@
     <EntitySet Name="Brand" EntityType="Site.Store.Brand" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LayoutProduct" EntityType="Site.Store.LayoutProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_LayoutProduct_Layout" Association="Site.Store.FK_LayoutProduct_Layout">
       <End Role="Layout" EntitySet="Layout" />
       <End Role="LayoutProduct" EntitySet="LayoutProduct" />
@@ -21,10 +22,6 @@
     <AssociationSet Name="FK_LayoutProduct_Product" Association="Site.Store.FK_LayoutProduct_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="LayoutProduct" EntitySet="LayoutProduct" />
-    </AssociationSet>
-    <AssociationSet Name="CategoryProductAttribute" Association="Site.Store.CategoryProductAttribute">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
     </AssociationSet>
     <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
@@ -50,6 +47,14 @@
       <End Role="Brand" EntitySet="Brand" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
+    <AssociationSet Name="FK_CategoryProductAttribute_Category" Association="Site.Store.FK_CategoryProductAttribute_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryProductAttribute" EntitySet="CategoryProductAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryProductAttribute_ProductAttribute" Association="Site.Store.FK_CategoryProductAttribute_ProductAttribute">
+      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+      <End Role="CategoryProductAttribute" EntitySet="CategoryProductAttribute" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Maker">
     <Key>
@@ -64,7 +69,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -119,18 +123,14 @@
     <Property Name="Products_Id" Type="int" Nullable="false" />
     <Property Name="ProductAttributes_Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="CategoryProductAttribute">
-    <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
-    <End Role="ProductAttribute" Type="Site.Store.ProductAttribute" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ProductAttribute">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="CategoryProductAttribute">
+    <Key>
+      <PropertyRef Name="Categories_Id" />
+      <PropertyRef Name="ProductAttributes_Id" />
+    </Key>
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+    <Property Name="ProductAttributes_Id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
     <End Role="Product" Type="Site.Store.Product" Multiplicity="*" />
@@ -227,6 +227,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_CategoryProductAttribute_Category">
+    <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
+    <End Role="CategoryProductAttribute" Type="Site.Store.CategoryProductAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryProductAttribute">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryProductAttribute_ProductAttribute">
+    <End Role="CategoryProductAttribute" Type="Site.Store.CategoryProductAttribute" Multiplicity="*" />
+    <End Role="ProductAttribute" Type="Site.Store.ProductAttribute" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryProductAttribute">
+        <PropertyRef Name="ProductAttributes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -240,10 +264,6 @@
           <AssociationSet Name="LayoutProduct" Association="Site.LayoutProduct">
             <End Role="Layout" EntitySet="Layout" />
             <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="CategoryProductAttribute" Association="Site.CategoryProductAttribute">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="ProductAttribute" EntitySet="ProductAttribute" />
           </AssociationSet>
           <AssociationSet Name="CategoryProduct" Association="Site.CategoryProduct">
             <End Role="Category" EntitySet="Category" />
@@ -266,6 +286,10 @@
             <End Role="Brand" EntitySet="Brand" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
+          <AssociationSet Name="CategoryProductAttribute" Association="Site.CategoryProductAttribute">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Maker">
           <Key>
@@ -281,21 +305,20 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
-          <NavigationProperty Name="Category" Relationship="Site.CategoryProductAttribute" FromRole="ProductAttribute" ToRole="Category" />
-          <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Site.ProductProductAttribute" FromRole="ProductAttribute" ToRole="Product" />
+          <NavigationProperty Name="Categories" Relationship="Site.CategoryProductAttribute" FromRole="ProductAttribute" ToRole="Category" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ProductAttributes" Relationship="Site.CategoryProductAttribute" FromRole="Category" ToRole="ProductAttribute" />
           <NavigationProperty Name="Products" Relationship="Site.CategoryProduct" FromRole="Category" ToRole="Product" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <NavigationProperty Name="ProductAttributes" Relationship="Site.CategoryProductAttribute" FromRole="Category" ToRole="ProductAttribute" />
         </EntityType>
         <EntityType Name="Layout">
           <Key>
@@ -328,18 +351,6 @@
         <Association Name="LayoutProduct">
           <End Type="Site.Layout" Role="Layout" Multiplicity="*" />
           <End Type="Site.Product" Role="Product" Multiplicity="*" />
-        </Association>
-        <Association Name="CategoryProductAttribute">
-          <End Type="Site.Category" Role="Category" Multiplicity="1" />
-          <End Type="Site.ProductAttribute" Role="ProductAttribute" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductAttribute">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -401,6 +412,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CategoryProductAttribute">
+          <End Type="Site.Category" Role="Category" Multiplicity="*" />
+          <End Type="Site.ProductAttribute" Role="ProductAttribute" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -420,7 +435,6 @@
         <MappingFragment StoreEntitySet="ProductAttribute">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -481,6 +495,14 @@
         <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="CategoryProductAttribute" TypeName="Site.CategoryProductAttribute" StoreEntitySet="CategoryProductAttribute">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductAttribute">
+        <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -502,7 +524,7 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Maker" Width="1.5" PointX="6.875" PointY="4.375" Height="1.4279589843749996" />
-        <EntityTypeShape EntityType="Site.ProductAttribute" Width="1.5" PointX="2.75" PointY="1.875" Height="1.7566536458333326" />
+        <EntityTypeShape EntityType="Site.ProductAttribute" Width="1.5" PointX="2.75" PointY="1.875" Height="1.427958984375" />
         <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="2.0853483072916661" />
         <EntityTypeShape EntityType="Site.Layout" Width="1.5" PointX="2.625" PointY="4.375" Height="2.0853483072916665" />
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.75" PointY="4.375" Height="2.4140429687499996" />
@@ -510,18 +532,14 @@
           <ConnectorPoint PointX="4.125" PointY="5.4176741536458337" />
           <ConnectorPoint PointX="4.75" PointY="5.4176741536458337" />
         </AssociationConnector>
-        <AssociationConnector Association="Site.CategoryProductAttribute">
-          <ConnectorPoint PointX="5" PointY="2.2926741536458328" />
-          <ConnectorPoint PointX="4.25" PointY="2.2926741536458328" />
-        </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProduct">
           <ConnectorPoint PointX="5.625" PointY="2.7103483072916661" />
           <ConnectorPoint PointX="5.625" PointY="4.375" />
         </AssociationConnector>
         <AssociationConnector Association="Site.ProductProductAttribute">
           <ConnectorPoint PointX="4.84375" PointY="4.375" />
-          <ConnectorPoint PointX="4.84375" PointY="3.2022509765624991" />
-          <ConnectorPoint PointX="4.25" PointY="3.2022509765624991" />
+          <ConnectorPoint PointX="4.84375" PointY="2.9557299804687496" />
+          <ConnectorPoint PointX="4.25" PointY="2.9557299804687496" />
         </AssociationConnector>
         <AssociationConnector Association="Site.MakerProduct">
           <ConnectorPoint PointX="6.875" PointY="5.0889794921875" />
@@ -538,6 +556,10 @@
           <ConnectorPoint PointX="1.375" PointY="5.677958984375" />
           <ConnectorPoint PointX="1.375" PointY="6.91404296875" />
           <ConnectorPoint PointX="4.75" PointY="6.91404296875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.CategoryProductAttribute">
+          <ConnectorPoint PointX="5" PointY="2.2926741536458328" />
+          <ConnectorPoint PointX="4.25" PointY="2.2926741536458328" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
