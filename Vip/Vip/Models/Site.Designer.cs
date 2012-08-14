@@ -353,12 +353,14 @@ namespace Vip.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name)
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name, global::System.String imageSource)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
             category.Name = name;
+            category.ImageSource = imageSource;
             return category;
         }
 
@@ -463,6 +465,30 @@ namespace Vip.Models
         private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     

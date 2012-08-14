@@ -181,6 +181,12 @@
     <Content Include="Areas\Admin\Views\Layout\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Maker\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Brand\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Maker\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Maker\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <None Include="Content\fonts\DinCyRg.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

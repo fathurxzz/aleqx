@@ -3,37 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        //
-        // GET: /Admin/Category/
-
         public ActionResult Index()
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var categories = context.Category.ToList();
+                return View(categories);
+            }
         }
-
-        //
-        // GET: /Admin/Category/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /Admin/Category/Create
 
         public ActionResult Create()
         {
-            return View();
+            return View(new Category());
         } 
-
-        //
-        // POST: /Admin/Category/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -50,16 +38,10 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
         
-        //
-        // GET: /Admin/Category/Edit/5
- 
         public ActionResult Edit(int id)
         {
             return View();
         }
-
-        //
-        // POST: /Admin/Category/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -76,16 +58,10 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Category/Delete/5
- 
         public ActionResult Delete(int id)
         {
             return View();
         }
-
-        //
-        // POST: /Admin/Category/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

@@ -1,17 +1,14 @@
-﻿@model IEnumerable<Vip.Models.Brand>
-
+﻿@model IEnumerable<Vip.Models.Category>
 @{
-    ViewBag.Title = "Бренды";
+    ViewBag.Title = "Разделы";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 <div class="adminContentContainer">
     <table class="adminEditContentTable">
         <tr>
             <td colspan="2">
                 <h2>
-                    Бренды</h2>
+                    Разделы</h2>
             </td>
         </tr>
         <tr>
@@ -21,26 +18,24 @@
             <th>
             </th>
         </tr>
-
-        @foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')" }) 
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный раздел?')" })
                 </td>
             </tr>
         }
         <tr>
             <td colspan="2">
                 <p>
-                    @Html.ActionLink("Добавить бренд", "Create")
+                    @Html.ActionLink("Добавить раздел", "Create")
                 </p>
             </td>
         </tr>
-
     </table>
-
 </div>

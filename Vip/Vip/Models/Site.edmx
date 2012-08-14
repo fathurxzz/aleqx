@@ -74,6 +74,7 @@
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
   </EntityType>
   <EntityType Name="Layout">
     <Key>
@@ -294,6 +295,7 @@
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
         </EntityType>
         <EntityType Name="Layout">
           <Key>
@@ -429,6 +431,7 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -500,7 +503,7 @@
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Maker" Width="1.5" PointX="6.875" PointY="4.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Site.ProductAttribute" Width="1.5" PointX="2.75" PointY="1.875" Height="1.7566536458333326" />
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="1.9210009765625" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="2.0853483072916661" />
         <EntityTypeShape EntityType="Site.Layout" Width="1.5" PointX="2.625" PointY="4.375" Height="2.0853483072916665" />
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.75" PointY="4.375" Height="2.4140429687499996" />
         <AssociationConnector Association="Site.LayoutProduct">
@@ -508,17 +511,17 @@
           <ConnectorPoint PointX="4.75" PointY="5.4176741536458337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProductAttribute">
-          <ConnectorPoint PointX="5" PointY="2.21050048828125" />
-          <ConnectorPoint PointX="4.25" PointY="2.21050048828125" />
+          <ConnectorPoint PointX="5" PointY="2.2926741536458328" />
+          <ConnectorPoint PointX="4.25" PointY="2.2926741536458328" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="5.625" PointY="2.5460009765625" />
+          <ConnectorPoint PointX="5.625" PointY="2.7103483072916661" />
           <ConnectorPoint PointX="5.625" PointY="4.375" />
         </AssociationConnector>
         <AssociationConnector Association="Site.ProductProductAttribute">
           <ConnectorPoint PointX="4.84375" PointY="4.375" />
-          <ConnectorPoint PointX="4.84375" PointY="3.1200773111979165" />
-          <ConnectorPoint PointX="4.25" PointY="3.1200773111979165" />
+          <ConnectorPoint PointX="4.84375" PointY="3.2022509765624991" />
+          <ConnectorPoint PointX="4.25" PointY="3.2022509765624991" />
         </AssociationConnector>
         <AssociationConnector Association="Site.MakerProduct">
           <ConnectorPoint PointX="6.875" PointY="5.0889794921875" />
