@@ -5,25 +5,39 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/14/2012 10:07:34
+-- Date Created: 08/14/2012 10:50:38
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `vip`;
-CREATE DATABASE `vip`;
-USE `vip`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `LayoutProduct` DROP CONSTRAINT `FK_LayoutProduct_Layout`;
+--    ALTER TABLE `LayoutProduct` DROP CONSTRAINT `FK_LayoutProduct_Product`;
+--    ALTER TABLE `ProductAttribute` DROP CONSTRAINT `FK_CategoryProductAttribute`;
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
+--    ALTER TABLE `ProductProductAttribute` DROP CONSTRAINT `FK_ProductProductAttribute_Product`;
+--    ALTER TABLE `ProductProductAttribute` DROP CONSTRAINT `FK_ProductProductAttribute_ProductAttribute`;
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_MakerProduct`;
+--    ALTER TABLE `Layout` DROP CONSTRAINT `FK_LayoutLayout`;
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_BrandProduct`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
+    DROP TABLE IF EXISTS `Maker`;
+    DROP TABLE IF EXISTS `ProductAttribute`;
+    DROP TABLE IF EXISTS `Category`;
+    DROP TABLE IF EXISTS `Layout`;
+    DROP TABLE IF EXISTS `Product`;
+    DROP TABLE IF EXISTS `Brand`;
+    DROP TABLE IF EXISTS `LayoutProduct`;
+    DROP TABLE IF EXISTS `ProductProductAttribute`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -34,29 +48,33 @@ SET foreign_key_checks = 1;
 
 CREATE TABLE `Maker` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL
+    `Title` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'ProductAttribute'
 
 CREATE TABLE `ProductAttribute` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
     `CategoryId` int  NOT NULL
 );
 
 -- Creating table 'Category'
 
 CREATE TABLE `Category` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `SOrtOrder` int  NOT NULL
 );
 
 -- Creating table 'Layout'
 
 CREATE TABLE `Layout` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL,
-    `LayoutId` int  NULL
+    `Title` varchar( 200 )  NOT NULL,
+    `LayoutId` int  NULL,
+    `SortOrder` int  NULL
 );
 
 -- Creating table 'Product'
@@ -65,8 +83,8 @@ CREATE TABLE `Product` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `CategoryId` int  NOT NULL,
     `MakerId` int  NOT NULL,
-    `Title` longtext  NOT NULL,
-    `ImageSource` longtext  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `ImageSource` TEXT  NOT NULL,
     `BrandId` int  NOT NULL
 );
 
@@ -74,7 +92,7 @@ CREATE TABLE `Product` (
 
 CREATE TABLE `Brand` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL
+    `Title` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'LayoutProduct'

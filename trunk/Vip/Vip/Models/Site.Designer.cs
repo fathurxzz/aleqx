@@ -351,10 +351,14 @@ namespace Vip.Models
         /// Create a new Category object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static Category CreateCategory(global::System.Int32 id)
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name)
         {
             Category category = new Category();
             category.Id = id;
+            category.Title = title;
+            category.Name = name;
             return category;
         }
 
@@ -387,6 +391,78 @@ namespace Vip.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SOrtOrder
+        {
+            get
+            {
+                return _SOrtOrder;
+            }
+            set
+            {
+                OnSOrtOrderChanging(value);
+                ReportPropertyChanging("SOrtOrder");
+                _SOrtOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SOrtOrder");
+                OnSOrtOrderChanged();
+            }
+        }
+        private global::System.Int32 _SOrtOrder = 0;
+        partial void OnSOrtOrderChanging(global::System.Int32 value);
+        partial void OnSOrtOrderChanged();
 
         #endregion
     
@@ -539,6 +615,30 @@ namespace Vip.Models
         private Nullable<global::System.Int32> _LayoutId;
         partial void OnLayoutIdChanging(Nullable<global::System.Int32> value);
         partial void OnLayoutIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _SortOrder = 0;
+        partial void OnSortOrderChanging(Nullable<global::System.Int32> value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
