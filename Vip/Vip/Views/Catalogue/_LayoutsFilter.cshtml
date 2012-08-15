@@ -1,30 +1,28 @@
-﻿@model Vip.Models.LayoutFilter
+﻿@using Vip.Helpers
+@model Vip.Models.LayoutFilter
 <div class="layoutFilterContainer">
-    <div class="sign">вы выбрали:</div>
+    <div class="sign">
+        вы выбрали:</div>
     <div class="changeLayoutLinkContainer">
-        @Html.ActionLink("Изменить","Index","Catalogue")
+        @Html.ActionLink("Изменить", "ShowLayoutsSelector", "Catalogue", null, new { @class = "fancy" })
     </div>
     <div class="layoutInner">
         <div class="attributes">
-            
-            @foreach(var item in Model.Parents.Where(l=>l.Parent==null))
+            @foreach (var item in Model.Parents.Where(l => l.Parent == null))
             {
-                @Html.Raw(item.Title+" ")
-                
-                if (item.Children.Count > 0)
-                {
-                    var cnt = 0;
-                    foreach (var child in item.Children)
-                    {
-                        cnt++;
-                        <span>@child.Title@Html.Raw(cnt != item.Children.Count ? ", " : " ")</span>
-                    }
-                }else
-                {
+                @Html.Raw(item.Title + " ")
+               if (item.Children.Any(child => WebSession.Layouts.Any(l => l.Id == child.Id)))
+               {
+                   foreach (var child in item.Children.Where(child => WebSession.Layouts.Any(l => l.Id == child.Id)))
+                   {
+                        <span>@child.Title</span>
+                   }
+               }
+               else
+               {
                     <span>все</span>
-                }
+               }
             }
         </div>
     </div>
-    
 </div>

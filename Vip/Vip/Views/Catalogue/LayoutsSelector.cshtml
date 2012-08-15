@@ -1,0 +1,40 @@
+﻿@using Vip.Helpers
+@model IEnumerable<Vip.Models.Layout>
+<script type="text/javascript">
+    $(function () {
+        $("#sbmButton").click(function () {
+            $("#form1").submit();
+        });
+    });
+</script>
+<div class="layoutSelector">
+    @using (Html.BeginForm("Index", "Catalogue", FormMethod.Post, new { id = "form1" }))
+    {
+
+        foreach (var item in Model.Where(l => l.Parent == null))
+        {
+        <div class="layout">
+            <div class="title">
+                @item.Title
+            </div>
+            @if (item.Children.Count > 0)
+            {
+                <div class="layouts">
+                    @foreach (var child in item.Children)
+                    {
+                        <div class="attribute">
+                            @child.Title @Html.CheckBox("layout_" + child.Id, WebSession.Layouts.Any(l => l.Id == child.Id))
+                        </div>
+
+                    }
+                    <div class="clear">
+                    </div>
+                </div>
+            }
+            <div class="clear">
+            </div>
+        </div>
+        }
+        <a href="#" id="sbmButton">Показать! &raquo;</a>
+    }
+</div>

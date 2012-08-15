@@ -21,6 +21,13 @@ namespace Vip
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+                "LayoutsFilter", // Route name
+                "catalogue/ShowLayoutsSelector", // URL with parameters
+                new { controller = "Catalogue", action = "ShowLayoutsSelector" } // Parameter defaults
+            );
+
             routes.MapRoute(
                 "Catalogue", // Route name
                 "catalogue/{category}", // URL with parameters
