@@ -10,11 +10,18 @@
             @foreach(var item in Model.Parents.Where(l=>l.Parent==null))
             {
                 @Html.Raw(item.Title+" ")
-                var cnt = 0;
-                foreach(var child in item.Children)
+                
+                if (item.Children.Count > 0)
                 {
-                    cnt++;
-                    <span>@child.Title@Html.Raw(cnt!=item.Children.Count?", ":" ")</span>
+                    var cnt = 0;
+                    foreach (var child in item.Children)
+                    {
+                        cnt++;
+                        <span>@child.Title@Html.Raw(cnt != item.Children.Count ? ", " : " ")</span>
+                    }
+                }else
+                {
+                    <span>все</span>
                 }
             }
         </div>
