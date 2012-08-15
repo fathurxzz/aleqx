@@ -14,7 +14,8 @@ namespace Vip
         {
             Thumbnails = new Dictionary<string, PictureSize>
                               {
-                                  {"adminCategoryThumbnail", new PictureSize {Height = 100,Width = 100}}
+                                  {"adminCategoryThumbnail", new PictureSize {Height = 100,Width = 100}},
+                                  {"catalogueThumbnail", new PictureSize {Height = 202,Width = 202}}
                               };
         }
 

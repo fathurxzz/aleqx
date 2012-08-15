@@ -1,0 +1,36 @@
+﻿@using SiteExtensions.Graphics
+@using Vip
+@model Vip.Models.CatalogueViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="catalogue">
+    @Html.Partial("_LayoutsFilter",Model.LayoutFilter)
+    
+
+    @if (Model.Categories != null)
+    {
+        <div class="mainTitle">
+        </div>
+        <div class="categoriesContainer">
+            @foreach (var item in Model.Categories)
+            {
+                <div class="category">
+                    <div class="img-container">
+                        <div class="sign">
+                            @item.Title
+                        </div>
+                        @Html.Raw(Html.ActionLink("[IMAGE]","Index","Catalogue",new{category=item.Name},null).ToString().Replace("[IMAGE]",Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp)))
+                    </div>
+                </div>
+            }
+            <div class="clear">
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.Partial("_AttributesFilter", Model.AttributesFilter)
+    }
+</div>
