@@ -4,6 +4,18 @@
     src: url('fonts/DinCyRg.ttf');
 }
 
+@font-face
+{
+    font-family: "DinCyBk";
+    src: url('fonts/DinCyBk.ttf');
+}
+
+@font-face
+{
+    font-family: "DinCyBd";
+    src: url('fonts/DinCyBd.ttf');
+}
+
 
 *{
     margin: 0;
@@ -12,6 +24,10 @@
 
 body {
 
+}
+
+.clear {
+    clear: both;
 }
 
 .outerPage {

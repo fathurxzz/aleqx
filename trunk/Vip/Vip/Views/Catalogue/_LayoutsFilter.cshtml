@@ -1,0 +1,23 @@
+﻿@model Vip.Models.LayoutFilter
+<div class="layoutFilterContainer">
+    <div class="sign">вы выбрали:</div>
+    <div class="changeLayoutLinkContainer">
+        @Html.ActionLink("Изменить","Index","Catalogue")
+    </div>
+    <div class="layoutInner">
+        <div class="attributes">
+            
+            @foreach(var item in Model.Parents.Where(l=>l.Parent==null))
+            {
+                @Html.Raw(item.Title+" ")
+                var cnt = 0;
+                foreach(var child in item.Children)
+                {
+                    cnt++;
+                    <span>@child.Title@Html.Raw(cnt!=item.Children.Count?", ":" ")</span>
+                }
+            }
+        </div>
+    </div>
+    
+</div>

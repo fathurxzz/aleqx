@@ -1,0 +1,155 @@
+﻿.catalogue {
+    width: 776px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 200px;
+ 
+}
+
+.catalogue .mainTitle {
+    background: url('img/catalogue-title-main.png');
+    width: 107px;
+    height: 53px;
+}
+
+.category img 
+{
+    border: none;
+    
+}
+
+.category 
+{
+    background-image: url('img/catalogue-thumb-bg.png');
+    margin: 20px;
+    width: 216px;
+    height: 216px;
+    float: left;
+}
+
+.category .img-container {
+    padding-left: 9px;
+    width: 203px;
+    height: 212px;
+}
+
+.category .sign {
+    width: 187px;
+    height: 33px;
+    position: absolute;
+    background-image: url('img/catalogue-thumb-sign-bg.png');
+    margin-top: 157px;
+    font-size: 17px;
+    color: #fff;
+    font-family: DinCyBk;
+    text-transform: uppercase;
+    padding-left: 15px;
+    padding-top: 12px;
+}
+
+.catalogue .filters .filterItem {
+    background-image: url('img/filter-item-bg.png');
+    padding-top: 13px; 
+    height: 17px;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.filterItemLine {
+    background-image: url('img/filter-item-bg-line.gif');
+    height: 17px;
+    background-repeat: no-repeat;
+    
+}
+
+
+.filterItem table {
+    border-collapse: collapse;
+    margin-left: 50px;
+}
+
+.filterItem table td 
+{
+    
+    background: url('img/filter-item-bg-line-center.gif') repeat-x;
+    margin-left: 50px;
+    height: 17px;
+    padding-right:10px;
+    padding-left: 3px;
+    font-size:11px;
+    font-family: DinCyRg;
+    color: #fff;
+}
+
+.filterItem table td.end
+{
+    background-image: url('img/filter-item-bg-line-end.png');
+    height: 17px;
+    width: 4px;
+    padding: 0;
+}
+
+.first .filterItemLine {
+    background-image: url('img/filter-item-bg-line-arrow.gif') !important;
+}
+
+.first a{
+    color: #6dcff6;
+}
+
+.filterTitle {
+    color: #919293 !important;
+}
+
+.layoutInner {
+    width: 443px;
+    height: 51px;
+    background: url('img/layout-filter-bg.png');
+    position: relative;
+    margin: 0 auto;
+}
+
+.layoutFilterContainer .sign 
+{
+    padding-top: 17px;
+    color: #b9cad6;
+    float: left;
+    width: 105px;
+    padding-left: 57px;
+    font-family: DinCyBd;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.layoutFilterContainer .attributes {
+    font-size:11px;
+    font-family: DinCyRg;
+    vertical-align: middle;
+    height: 40px;
+    display: table-cell;
+    padding: 5px 0px 5px 35px;
+    width: 400px;
+    color: #666666;
+}
+
+.layoutFilterContainer .attributes span {
+    color: #fff;
+}
+
+.changeLayoutLinkContainer {
+    width: 82px;
+    margin-top: 10px;
+    margin-right: 70px;
+    padding-top: 3px;
+    height: 27px;
+    
+    background: url('img/change-layout-link.png');
+    float: right;
+    font-family: DinCyRg;
+    text-align: center;
+}
+
+.changeLayoutLinkContainer a {
+    color: #6dcff6;
+    font-size: 11px;
+}
