@@ -77,6 +77,7 @@
     <Compile Include="Areas\Admin\Controllers\MakerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
+    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AttributeFilter.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -221,6 +222,7 @@
     <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Catalogue\_AttributesFilter.cshtml" />
     <Content Include="Views\Catalogue\_LayoutsFilter.cshtml" />
+    <Content Include="Views\Catalogue\_LayoutsSelector.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
