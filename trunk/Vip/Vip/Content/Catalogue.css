@@ -153,3 +153,31 @@
     color: #6dcff6;
     font-size: 11px;
 }
+
+.layoutSelector {
+    width: 500px;
+    height: 500px;
+
+}
+.layoutSelector .layout 
+{
+    border: 1px solid red;
+    padding: 5px;
+}
+.layoutSelector .layout .title
+{
+    float: left;
+    width: 150px;
+}
+
+.layoutSelector .layout .layouts {
+    
+    margin-left: 160px;
+    border: 1px solid blue;
+}
+
+.layoutSelector .layout .layouts .attribute 
+{
+    float: left;
+    width: 100px;
+}

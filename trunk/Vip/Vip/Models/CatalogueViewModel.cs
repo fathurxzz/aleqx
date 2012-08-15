@@ -11,12 +11,13 @@ namespace Vip.Models
         public IEnumerable<Category> Categories { get; set; }
         public AttributeFilter AttributesFilter { get; set; }
         public LayoutFilter LayoutFilter { get; set; }
+        public IEnumerable<Layout> Layouts { get; set; }
 
         public CatalogueViewModel(SiteContainer context, string category)
             : base(context)
         {
 
-            
+            Layouts = context.Layout.Include("Parent").Include("Children").ToList();
 
             if (string.IsNullOrEmpty(category))
             {
