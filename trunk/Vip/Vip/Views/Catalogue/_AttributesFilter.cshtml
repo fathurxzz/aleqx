@@ -21,7 +21,7 @@
                         <td class="filterTitle">@item.Title:
                         </td>
                         <td>
-                            @if (item.Attributes == null)
+                            @if (item.Attributes == null||!item.Attributes.Any())
                             {
                                 @Html.Raw("Все")
                             }
@@ -39,7 +39,7 @@
                         <td class="end">
                         </td>
                         <td class="changeFilterLink">
-                            @Html.ActionLink("Изменить", "ShowSelector", "Catalogue", new { Area = "", selector = item.Selector }, new { @class = "fancy" })
+                            @Html.ActionLink("Изменить", "ShowSelector", "Catalogue", new { Area = "", selector = item.Selector, category = ViewBag.CategoryName }, new { @class = "fancy" })
                         </td>
                     </tr>
                 </table>

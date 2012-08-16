@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.SessionState;
 using Vip.Models;
@@ -17,15 +15,7 @@ namespace Vip.Helpers
             }
         }
 
-        public static Dictionary<int, List<ProductAttribute>> Categories
-        {
-            get
-            {
-                if (Session["attributes"] == null)
-                    Session["attributes"] = new Dictionary<int, List<ProductAttribute>>();
-                return (Dictionary<int, List<ProductAttribute>>)Session["attributes"];
-            }
-        }
+        
 
 
         public static List<Layout> Layouts
@@ -35,6 +25,36 @@ namespace Vip.Helpers
                 if (Session["layouts"] == null)
                     Session["layouts"] = new List<Layout>();
                 return (List<Layout>) Session["layouts"];
+            }
+        }
+
+        public static List<ProductAttribute> Attributes
+        {
+            get
+            {
+                if (Session["attributes"] == null)
+                    Session["attributes"] = new List<ProductAttribute>();
+                return (List<ProductAttribute>)Session["attributes"];
+            }
+        }
+
+        public static List<Brand> Brands
+        {
+            get
+            {
+                if (Session["brands"] == null)
+                    Session["brands"] = new List<Brand>();
+                return (List<Brand>)Session["brands"];
+            }
+        }
+
+        public static List<Maker> Makers
+        {
+            get
+            {
+                if (Session["makers"] == null)
+                    Session["makers"] = new List<Maker>();
+                return (List<Maker>)Session["makers"];
             }
         }
 

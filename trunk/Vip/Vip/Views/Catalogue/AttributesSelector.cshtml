@@ -10,9 +10,20 @@
 <div class="layoutSelector">
     <div class="header showonly">
     </div>
-    @using (Html.BeginForm("Index", "Catalogue", FormMethod.Post, new { id = "form1" }))
+    @using (Html.BeginForm("Index", "Catalogue", new { selector = "attribute", category = ViewBag.CategoryName }, FormMethod.Post, new { id = "form1" }))
     {
 
+        <div class="layout">
+            @foreach (var item in Model)
+            {
+                <div class="attribute">
+                    @item.Title &nbsp; @Html.CheckBox("attr_" + item.Id, WebSession.Attributes.Any(a => a.Id == item.Id))
+                </div>
+            }
+            <div class="clear">
+                    </div>
+        </div>
+        
         <div class="submitContainer">
             <a href="#" id="sbmButton">Показать! &raquo;</a>
         </div>

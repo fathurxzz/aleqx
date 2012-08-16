@@ -10,7 +10,7 @@
 <div class="layoutSelector">
     <div class="header whatlookingfor">
     </div>
-    @using (Html.BeginForm("Index", "Catalogue", FormMethod.Post, new { id = "form1" }))
+    @using (Html.BeginForm("Index", "Catalogue", new { selector = "layout", category = ViewBag.CategoryName }, FormMethod.Post, new { id = "form1" }))
     {
 
         foreach (var item in Model.Where(l => l.Parent == null))
