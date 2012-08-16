@@ -14,6 +14,7 @@ namespace Vip.Models
     {
         public string Title { get; set; }
         public List<ProductAttribute> Attributes { get; set; }
+        public string Selector { get; set; }
     }
 
 

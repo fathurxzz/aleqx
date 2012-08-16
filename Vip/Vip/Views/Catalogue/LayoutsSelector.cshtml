@@ -8,7 +8,7 @@
     });
 </script>
 <div class="layoutSelector">
-    <div class="header showonly">
+    <div class="header whatlookingfor">
     </div>
     @using (Html.BeginForm("Index", "Catalogue", FormMethod.Post, new { id = "form1" }))
     {
@@ -25,7 +25,7 @@
                     @foreach (var child in item.Children)
                     {
                         <div class="attribute">
-                            @child.Title @Html.CheckBox("layout_" + child.Id, WebSession.Layouts.Any(l => l.Id == child.Id))
+                            @child.Title &nbsp; @Html.CheckBox("layout_" + child.Id, WebSession.Layouts.Any(l => l.Id == child.Id))
                         </div>
 
                     }

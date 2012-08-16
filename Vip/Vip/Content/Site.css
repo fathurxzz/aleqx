@@ -16,6 +16,12 @@
     src: url('fonts/DinCyBd.ttf');
 }
 
+@font-face
+{
+    font-family: "DinCyLt";
+    src: url('fonts/DinCyLt.ttf');
+}
+
 
 *{
     margin: 0;
