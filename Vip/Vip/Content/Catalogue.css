@@ -154,3 +154,13 @@
     font-size: 11px;
 }
 
+.filters .changeFilterLink {
+    background: none;
+    padding-left: 20px;
+}
+
+.filters .changeFilterLink a {
+    font-family: DinCyRg;
+    font-size: 11px;
+    color: #6dcff6;
+}
