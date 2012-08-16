@@ -9,6 +9,7 @@
 .layoutSelector .header {
     width: 785px;
     height: 108px;
+    margin-bottom: 30px;
 }
 
 .layoutSelector .showonly {
@@ -16,7 +17,7 @@
 }
 
 .layoutSelector .whatlookingfor {
-    
+    background: url('img/filter-selector-bg-top-chto.gif');
 }
 
 .layoutSelector .pattern {
@@ -38,12 +39,18 @@
 
 .layoutSelector .layout 
 {
+    margin: 0 70px;
     padding: 5px;
 }
 .layoutSelector .layout .title
 {
     float: left;
     width: 150px;
+    font-size: 11px;
+    font-family: DinCyBd;
+    text-transform: uppercase;
+    color: #fff;
+    padding-top: 3px;
 }
 
 .layoutSelector .layout .layouts {
@@ -55,6 +62,9 @@
 {
     float: left;
     width: 100px;
+    font-family: DinCyLt;
+    font-size: 12px;
+    color: #fff;
 }
 
 

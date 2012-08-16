@@ -27,9 +27,9 @@ namespace Vip.Models
             {
                 Category = context.Category.First(c => c.Name == category);
                 var filter = new AttributeFilter { CurrentCategoryTitle = Category.Title };
-                filter.Add(new FilterItem { Title = "Показывать категории", Attributes = new List<ProductAttribute> { new ProductAttribute { Title = "Корпусная" }, new ProductAttribute { Title = "Мягкая" } } });
-                filter.Add(new FilterItem { Title = "Показывать бренды" });
-                filter.Add(new FilterItem { Title = "Страна производитель", Attributes = new List<ProductAttribute> { new ProductAttribute { Title = "Италия" }, new ProductAttribute { Title = "Германия" } } });
+                filter.Add(new FilterItem { Selector = "attribute", Title = "Показывать категории", Attributes = new List<ProductAttribute> { new ProductAttribute { Title = "Корпусная" }, new ProductAttribute { Title = "Мягкая" } } });
+                filter.Add(new FilterItem { Selector = "brand", Title = "Показывать бренды" });
+                filter.Add(new FilterItem { Selector = "maker", Title = "Страна производитель", Attributes = new List<ProductAttribute> { new ProductAttribute { Title = "Италия" }, new ProductAttribute { Title = "Германия" } } });
                 AttributesFilter = filter;
             }
 
@@ -37,8 +37,8 @@ namespace Vip.Models
 
 
 
-            LayoutFilter = new LayoutFilter { Parents = layouts};
-            
+            LayoutFilter = new LayoutFilter { Parents = layouts };
+
         }
     }
 }

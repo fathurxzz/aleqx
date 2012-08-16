@@ -25,7 +25,7 @@ namespace Vip
             routes.MapRoute(
                 "LayoutsFilter", // Route name
                 "catalogue/ShowLayoutsSelector", // URL with parameters
-                new { controller = "Catalogue", action = "ShowLayoutsSelector" } // Parameter defaults
+                new { controller = "Catalogue", action = "ShowSelector" } // Parameter defaults
             );
 
             routes.MapRoute(
