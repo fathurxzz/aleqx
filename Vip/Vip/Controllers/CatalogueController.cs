@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Vip.Helpers;
 using Vip.Models;
@@ -15,30 +14,62 @@ namespace Vip.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new CatalogueViewModel(context, category);
+                if (model.Category != null)
+                    ViewBag.CategoryName = model.Category.Name;
+                model.SetFilters();
                 return View(model);
             }
         }
 
         [HttpPost]
-        public ActionResult Index(FormCollection form)
+        public ActionResult Index(FormCollection form, string selector, string category)
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueViewModel(context, null);
+                var model = new CatalogueViewModel(context, category);
+                if (model.Category != null)
+                    ViewBag.CategoryName = model.Category.Name;
+                switch (selector)
+                {
+                    case "layout":
+                        WebSession.Layouts.Clear();
+                        List<Layout> checkedLayouts = (from layout in model.Layouts where form["layout_" + layout.Id] == "true,false" select layout).ToList();
+                        WebSession.Layouts.AddRange(checkedLayouts);
+                        break;
+                    case "brand":
+                        WebSession.Brands.Clear();
+                        List<Brand> checkedBrands = (from brand in model.Brands where form["brand_" + brand.Id] == "true,false" select brand).ToList();
+                        WebSession.Brands.AddRange(checkedBrands);
+                        break;
+                    case "maker":
+                        WebSession.Makers.Clear();
+                        List<Maker> checkedMakers = (from maker in model.Makers where form["maker_" + maker.Id] == "true,false" select maker).ToList();
+                        WebSession.Makers.AddRange(checkedMakers);
+                        break;
+                    case "attribute":
+                        WebSession.Attributes.Clear();
+                        List<ProductAttribute> checkedAttributes = (from attr in model.Attributes where form["attr_" + attr.Id] == "true,false" select attr).ToList();
+                        WebSession.Attributes.AddRange(checkedAttributes);
+                        break;
+                }
 
-                WebSession.Layouts.Clear();
-                List<Layout> checkedLayouts = (from layout in model.Layouts where form["layout_" + layout.Id] == "true,false" select layout).ToList();
-                WebSession.Layouts.AddRange(checkedLayouts);
+                model.SetFilters();
 
                 return View(model);
             }
         }
 
         [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
-        public ActionResult ShowSelector(string selector)
+        public ActionResult ShowSelector(string selector, string category)
         {
             using (var context = new SiteContainer())
             {
+                Category cat=null;
+                if (category != null)
+                {
+                    cat = context.Category.Include("ProductAttributes").First(c => c.Name == category);
+                    ViewBag.CategoryName = cat.Name;
+                }
                 switch (selector)
                 {
                     case "layout":
@@ -51,8 +82,7 @@ namespace Vip.Controllers
                         var makers = context.Maker.ToList();
                         return PartialView("MakersSelector", makers);
                     case "attribute":
-                        var attributes = context.ProductAttribute.ToList();
-                        return PartialView("AttributesSelector", attributes);
+                        return PartialView("AttributesSelector", cat.ProductAttributes);
                 }
                 throw new Exception("unknown selector type");
             }

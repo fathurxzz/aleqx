@@ -13,8 +13,14 @@ namespace Vip.Models
     public class FilterItem
     {
         public string Title { get; set; }
-        public List<ProductAttribute> Attributes { get; set; }
+        public List<FilterAttribute> Attributes { get; set; }
         public string Selector { get; set; }
+    }
+
+    public class FilterAttribute
+    {
+        public string Title { get; set; }
+        public int Id { get; set; }
     }
 
 
