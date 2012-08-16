@@ -1,0 +1,85 @@
+﻿
+.layoutSelector {
+    width: 785px;
+    background-image: url('img/filter-selector-bg.gif');
+    background-repeat: repeat-y;
+    background-position: 0 -22px;
+}
+
+.layoutSelector .header {
+    width: 785px;
+    height: 108px;
+}
+
+.layoutSelector .showonly {
+    background: url('img/filter-selector-bg-top.gif');
+}
+
+.layoutSelector .whatlookingfor {
+    
+}
+
+.layoutSelector .pattern {
+    width: 486px;
+    height: 28px;
+    background-image: url('img/filter-selector-pattern.png');
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    
+}
+
+.layoutSelector .bottom {
+    height: 19px;
+    width: 785px;
+    background: url('img/filter-selector-bg-bottom.png');
+}
+
+.layoutSelector .layout 
+{
+    padding: 5px;
+}
+.layoutSelector .layout .title
+{
+    float: left;
+    width: 150px;
+}
+
+.layoutSelector .layout .layouts {
+    
+    margin-left: 160px;
+}
+
+.layoutSelector .layout .layouts .attribute 
+{
+    float: left;
+    width: 100px;
+}
+
+
+.submitContainer {
+    height: 27px;
+    width: 88px;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 3px;
+    
+    background-color: #22303c;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    
+    border-radius: 17px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+
+}
+
+.submitContainer a {
+    color: #6dcff6;
+    font-size: 11px;
+    font-family: DinCyRg;
+}

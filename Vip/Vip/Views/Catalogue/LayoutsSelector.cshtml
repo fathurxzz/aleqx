@@ -8,6 +8,8 @@
     });
 </script>
 <div class="layoutSelector">
+    <div class="header showonly">
+    </div>
     @using (Html.BeginForm("Index", "Catalogue", FormMethod.Post, new { id = "form1" }))
     {
 
@@ -35,6 +37,12 @@
             </div>
         </div>
         }
-        <a href="#" id="sbmButton">Показать! &raquo;</a>
+        <div class="submitContainer">
+            <a href="#" id="sbmButton">Показать! &raquo;</a>
+        </div>
     }
+    <div class="pattern">
+    </div>
+    <div class="bottom">
+    </div>
 </div>
