@@ -22,6 +22,7 @@
                         @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Catalogue", new { category = item.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp)))
                     </div>
                 </div>
+                
             }
             <div class="clear">
             </div>
@@ -32,9 +33,23 @@
     else
     {
         @Html.Partial("_AttributesFilter", Model.AttributesFilter)
-            <div>
+        <div>
             @Html.ActionLink("Добавить изображение", "Create", "Product", new { Area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
         </div>
-
+        <div class="productsContainer">
+        @foreach (var item in Model.Products)
+        {
+            <div class="product">
+                <div class="img-container">
+                    <a rel="@Html.Raw("group1")" href="../../Content/Images/@item.ImageSource" class="fancyImage"  title="@Model.Title">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp))
+                    </a>
+                </div>
+            </div>
+        }
+        <div class="clear">
+        </div>
+    </div>
     }
+    
 </div>

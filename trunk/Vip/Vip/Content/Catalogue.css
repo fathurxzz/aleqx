@@ -18,7 +18,20 @@
     
 }
 
-.category 
+.product {
+    width: 202px;
+    float: left;
+    margin: 20px;
+  }
+  
+  .product .img-container {
+      width: 202px;
+      height: 202px;
+  }
+img {
+    border: none;
+}
+.category
 {
     background-image: url('img/catalogue-thumb-bg.png');
     margin: 20px;

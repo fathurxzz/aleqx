@@ -16,6 +16,7 @@ namespace Vip.Models
         public List<Brand> Brands { get; set; }
         public List<Maker> Makers { get; set; }
         public List<ProductAttribute> Attributes { get; set; }
+        public List<Product> Products { get; set; }
 
         public CatalogueViewModel(SiteContainer context, string category)
             : base(context)
@@ -31,8 +32,9 @@ namespace Vip.Models
             }
             else
             {
-                Category = context.Category.Include("ProductAttributes").First(c => c.Name == category);
+                Category = context.Category.Include("ProductAttributes").Include("Products").First(c => c.Name == category);
                 Attributes = Category.ProductAttributes.ToList();
+                Products = Category.Products.ToList();
             }
 
             var layouts = context.Layout.Include("Parent").Include("Children").ToList();
