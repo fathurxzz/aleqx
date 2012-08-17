@@ -6,9 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="catalogue">
-    @Html.Partial("_LayoutsFilter",Model.LayoutFilter)
-    
-
+    @Html.Partial("_LayoutsFilter", Model.LayoutFilter)
     @if (Model.Categories != null)
     {
         <div class="mainTitle">
@@ -21,16 +19,22 @@
                         <div class="sign">
                             @item.Title
                         </div>
-                        @Html.Raw(Html.ActionLink("[IMAGE]","Index","Catalogue",new{category=item.Name},null).ToString().Replace("[IMAGE]",Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp)))
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Catalogue", new { category = item.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp)))
                     </div>
                 </div>
             }
             <div class="clear">
             </div>
         </div>
+        
+        
     }
     else
     {
         @Html.Partial("_AttributesFilter", Model.AttributesFilter)
+            <div>
+            @Html.ActionLink("Добавить изображение", "Create", "Product", new { Area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+        </div>
+
     }
 </div>
