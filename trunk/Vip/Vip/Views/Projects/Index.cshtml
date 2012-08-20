@@ -1,21 +1,43 @@
-﻿@model Vip.Models.ProjectViewModel
+﻿@using SiteExtensions.Graphics
+@using Vip
+@using Vip.Models
+@model Vip.Models.ProjectViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="projects">
-    @if (Model.Projects != null)
-    {
-        @Html.Partial("_ProjectsTitle",string.Empty)
-         if (Request.IsAuthenticated)
-       {
-            <div>
-                @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+    @Html.Partial("_ProjectsTitle", new Project())
+    @if (Request.IsAuthenticated) {
+    <div>
+        @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+    </div>
+    }
+    <div>
+        @foreach (var item in Model.Projects)
+        {
+            <div class="product">
+                @if (Request.IsAuthenticated)
+                {
+                    <div>
+                        @Html.ActionLink("редактировать", "Edit", "Project", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    </div>
+                }
+                <div class="img-container">
+                    @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Projects", new { project = item.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp)))
+                </div>
+                <div class="sign">
+                    <span class="title">
+                        @item.Title
+                    </span>
+                </div>
             </div>
-       }
-    }
-    else
-    {
-        @Html.Partial("_ProjectsTitle", Model.Project.Title)
-       
-    }
+        }
+        <div class="clear">
+        </div>
+    </div>
 </div>
+
+@section Includes
+{
+    <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />
+}

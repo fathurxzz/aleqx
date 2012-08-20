@@ -20,7 +20,7 @@ namespace Vip.Models
             }
             else
             {
-                Project = context.Project.First(c => c.Name == project);
+                Project = context.Project.Include("ProjectImages").First(c => c.Name == project);
                 Title += " - " + Project.Title;
             }
 

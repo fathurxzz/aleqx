@@ -62,7 +62,7 @@ img {
     padding-top: 12px;
 }
 
-.catalogue .filters .filterItem {
+.catalogue .filters .filterItem, .projects .filters .filterItem {
     background-image: url('img/filter-item-bg.png');
     padding-top: 13px; 
     height: 17px;
@@ -74,7 +74,6 @@ img {
     background-image: url('img/filter-item-bg-line.gif');
     height: 17px;
     background-repeat: no-repeat;
-    
 }
 
 
@@ -109,6 +108,15 @@ img {
 }
 
 .first a{
+    color: #6dcff6;
+}
+
+.manager {
+    color: #919293
+}
+.manager a
+{
+    margin-left: 20px;
     color: #6dcff6;
 }
 
