@@ -35,6 +35,12 @@ namespace Vip
             );
 
             routes.MapRoute(
+                "Projects", // Route name
+                "projects/{project}", // URL with parameters
+                new { controller = "Projects", action = "Index", project = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults

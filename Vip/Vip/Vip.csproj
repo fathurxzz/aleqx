@@ -86,7 +86,9 @@
     <Compile Include="Areas\Admin\Controllers\MakerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AttributeFilter.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
@@ -103,6 +105,8 @@
     <Compile Include="Models\LayoutValidation.cs" />
     <Compile Include="Models\ProductAttributeValidation.cs" />
     <Compile Include="Models\ProductValidation.cs" />
+    <Compile Include="Models\ProjectValidation.cs" />
+    <Compile Include="Models\ProjectViewModel.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -230,6 +234,7 @@
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Create.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
@@ -247,6 +252,8 @@
     <Content Include="Views\Catalogue\AttributesSelector.cshtml" />
     <Content Include="Views\Catalogue\BrandsSelector.cshtml" />
     <Content Include="Views\Catalogue\MakersSelector.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Projects\_ProjectsTitle.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

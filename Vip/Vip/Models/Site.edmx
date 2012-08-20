@@ -12,6 +12,8 @@
     <EntitySet Name="Layout" EntityType="Site.Store.Layout" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Product" EntityType="Site.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Brand" EntityType="Site.Store.Brand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="Site.Store.Project" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectImage" EntityType="Site.Store.ProjectImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LayoutProduct" EntityType="Site.Store.LayoutProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
@@ -54,6 +56,10 @@
     <AssociationSet Name="FK_CategoryProductAttribute_ProductAttribute" Association="Site.Store.FK_CategoryProductAttribute_ProductAttribute">
       <End Role="ProductAttribute" EntitySet="ProductAttribute" />
       <End Role="CategoryProductAttribute" EntitySet="CategoryProductAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProjectImage" Association="Site.Store.ProjectProjectImage">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectImage" EntitySet="ProjectImage" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Maker">
@@ -106,6 +112,27 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Manager" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ProjectId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="LayoutProduct">
     <Key>
@@ -176,6 +203,18 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProjectImage">
+    <End Role="Project" Type="Site.Store.Project" Multiplicity="0..1" />
+    <End Role="ProjectImage" Type="Site.Store.ProjectImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectImage">
+        <PropertyRef Name="ProjectId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -289,6 +328,12 @@
           <AssociationSet Name="CategoryProductAttribute" Association="Site.CategoryProductAttribute">
             <End Role="Category" EntitySet="Category" />
             <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+          </AssociationSet>
+          <EntitySet Name="Project" EntityType="Site.Project" />
+          <EntitySet Name="ProjectImage" EntityType="Site.ProjectImage" />
+          <AssociationSet Name="ProjectProjectImage" Association="Site.ProjectProjectImage">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectImage" EntitySet="ProjectImage" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Maker">
@@ -416,6 +461,41 @@
           <End Type="Site.Category" Role="Category" Multiplicity="*" />
           <End Type="Site.ProductAttribute" Role="ProductAttribute" Multiplicity="*" />
         </Association>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="DescriptionTitle" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="Manager" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="ProjectImages" Relationship="Site.ProjectProjectImage" FromRole="Project" ToRole="ProjectImage" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="Project" Relationship="Site.ProjectProjectImage" FromRole="ProjectImage" ToRole="Project" />
+          <Property Type="Int32" Name="ProjectId" Nullable="true" />
+        </EntityType>
+        <Association Name="ProjectProjectImage">
+          <End Type="Site.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="Site.ProjectImage" Role="ProjectImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectImage">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -476,6 +556,29 @@
         <MappingFragment StoreEntitySet="Brand">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Project)">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ProjectImage)">
+        <MappingFragment StoreEntitySet="ProjectImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -560,6 +663,12 @@
         <AssociationConnector Association="Site.CategoryProductAttribute">
           <ConnectorPoint PointX="5" PointY="2.2926741536458328" />
           <ConnectorPoint PointX="4.25" PointY="2.2926741536458328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="8.5" PointY="1" Height="2.41404296875" />
+        <EntityTypeShape EntityType="Site.ProjectImage" Width="1.5" PointX="10.875" PointY="1.25" Height="1.2636116536458335" />
+        <AssociationConnector Association="Site.ProjectProjectImage">
+          <ConnectorPoint PointX="10" PointY="2.0461531575520837" />
+          <ConnectorPoint PointX="10.875" PointY="2.0461531575520837" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
