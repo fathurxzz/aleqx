@@ -1,0 +1,35 @@
+﻿@using SiteExtensions.Graphics
+@using Vip
+@model Vip.Models.ProjectViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="projects">
+    @Html.Partial("_ProjectsTitle", Model.Project)
+    <div class="projectDetailsContainer">
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Html.ActionLink("Добавить изображение", "AddImage", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
+            </div>
+        }
+        <div class="title">
+        </div>
+        <div class="picture">
+        </div>
+        <div class="previews">
+            <div class="previewsContainer">
+                @foreach (var item in Model.Project.ProjectImages)
+                {
+                    <div class="preview">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Includes
+{
+    <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />
+}

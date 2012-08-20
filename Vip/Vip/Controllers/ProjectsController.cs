@@ -19,7 +19,7 @@ namespace Vip.Controllers
             {
                 var model = new ProjectViewModel(context, project);
                 this.SetSeoContent(model);
-                return View(model);
+                return model.Project != null ? View("Details", model) : View(model);
             }
         }
 

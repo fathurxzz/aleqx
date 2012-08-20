@@ -1,0 +1,46 @@
+﻿.projectDetailsContainer
+{
+    margin-top: 50px;
+}
+
+.projectDetailsContainer .title
+{
+    width: 774px;
+    height: 30px;
+    background: url('img/project-details-title.gif');
+}
+
+.projectDetailsContainer .picture
+{
+    width: 774px;
+    height: 580px;
+}
+
+.projectDetailsContainer .previews
+{
+    width: 774px;
+    height: 133px;
+    background: url('img/project-details-previews-bg.gif');
+}
+
+
+.projectDetailsContainer .previews .preview
+{
+    width: 96px;
+    height: 97px;
+    background-image: url('img/project-preview-shadow.png');
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.projectDetailsContainer .previews .preview img
+{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.projectDetailsContainer .previews .previewsContainer
+{
+    height: 100px;
+    position: absolute;
+    margin-top: 20px;
+}

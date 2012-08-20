@@ -161,7 +161,11 @@
     <Content Include="Content\img\page-head-bg.jpg" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\img\product-sign-bg.png" />
+    <Content Include="Content\img\project-details-previews-bg.gif" />
+    <Content Include="Content\img\project-details-title.gif" />
+    <Content Include="Content\img\project-preview-shadow.png" />
     <Content Include="Content\img\site-bg.jpg" />
+    <Content Include="Content\Projects.css" />
     <Content Include="Content\Selectors.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />
@@ -235,6 +239,7 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Project\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\AddImage.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
@@ -254,6 +259,7 @@
     <Content Include="Views\Catalogue\MakersSelector.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\_ProjectsTitle.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

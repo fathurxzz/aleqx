@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SiteExtensions;
 using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
@@ -22,12 +24,36 @@ namespace Vip.Areas.Admin.Controllers
         // POST: /Admin/Project/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
             {
+                using (var context = new SiteContainer())
+                {
+                    var project = new Project();
+                    TryUpdateModel(project, new[]
+                                                {
+                                                    "Name", 
+                                                    "Title", 
+                                                    "DescriptionTitle",
+                                                    "SortOrder",
+                                                    "Manager"
+                                                });
 
-                return RedirectToAction("Index");
+                    if (fileUpload != null)
+                    {
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        fileUpload.SaveAs(filePath);
+                        project.ImageSource = fileName;
+                    }
+
+                    project.Description = HttpUtility.HtmlDecode(form["Text"]);
+                    context.AddToProject(project);
+                    context.SaveChanges();
+                    return RedirectToAction("Index", "Projects", new { Area = "", project = project.Name });
+                }
             }
             catch
             {
@@ -67,6 +93,46 @@ namespace Vip.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             return View();
+        }
+
+        public ActionResult AddImage(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == id);
+                ViewBag.ProjectId = project.Id;
+                ViewBag.ProjectName = project.Name;
+                return View();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(int projectId, HttpPostedFileBase fileUpload)
+        {
+            try
+            {
+                using (var context = new SiteContainer())
+                {
+                    var project = context.Project.First(p => p.Id == projectId);
+                    if (fileUpload != null)
+                    {
+                        
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        fileUpload.SaveAs(filePath);
+                        var projectImage = new ProjectImage {ImageSource = fileName};
+                        project.ProjectImages.Add(projectImage);
+                        context.SaveChanges();
+                    }
+                    return RedirectToAction("Index", "Projects", new {area = "", project = project.Name});
+                }
+            }
+            catch
+            {
+                return View();
+            }
+            
         }
     }
 }
