@@ -38,7 +38,7 @@ namespace Rakurs.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Content model, FormCollection form)
+        public ActionResult Edit(ProductAttribute model, FormCollection form)
         {
             using (var context = new StructureContainer())
             {
