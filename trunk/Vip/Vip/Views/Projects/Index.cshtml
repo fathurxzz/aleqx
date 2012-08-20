@@ -1,0 +1,21 @@
+﻿@model Vip.Models.ProjectViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="projects">
+    @if (Model.Projects != null)
+    {
+        @Html.Partial("_ProjectsTitle",string.Empty)
+         if (Request.IsAuthenticated)
+       {
+            <div>
+                @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+            </div>
+       }
+    }
+    else
+    {
+        @Html.Partial("_ProjectsTitle", Model.Project.Title)
+       
+    }
+</div>

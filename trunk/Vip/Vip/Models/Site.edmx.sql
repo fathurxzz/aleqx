@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/14/2012 15:22:52
+-- Date Created: 08/20/2012 11:05:00
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -18,13 +18,15 @@
 
 --    ALTER TABLE `LayoutProduct` DROP CONSTRAINT `FK_LayoutProduct_Layout`;
 --    ALTER TABLE `LayoutProduct` DROP CONSTRAINT `FK_LayoutProduct_Product`;
---    ALTER TABLE `ProductAttribute` DROP CONSTRAINT `FK_CategoryProductAttribute`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
 --    ALTER TABLE `ProductProductAttribute` DROP CONSTRAINT `FK_ProductProductAttribute_Product`;
 --    ALTER TABLE `ProductProductAttribute` DROP CONSTRAINT `FK_ProductProductAttribute_ProductAttribute`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_MakerProduct`;
 --    ALTER TABLE `Layout` DROP CONSTRAINT `FK_LayoutLayout`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_BrandProduct`;
+--    ALTER TABLE `CategoryProductAttribute` DROP CONSTRAINT `FK_CategoryProductAttribute_Category`;
+--    ALTER TABLE `CategoryProductAttribute` DROP CONSTRAINT `FK_CategoryProductAttribute_ProductAttribute`;
+--    ALTER TABLE `ProjectImage` DROP CONSTRAINT `FK_ProjectProjectImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,8 +38,11 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Layout`;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `Brand`;
+    DROP TABLE IF EXISTS `Project`;
+    DROP TABLE IF EXISTS `ProjectImage`;
     DROP TABLE IF EXISTS `LayoutProduct`;
     DROP TABLE IF EXISTS `ProductProductAttribute`;
+    DROP TABLE IF EXISTS `CategoryProductAttribute`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -93,6 +98,27 @@ CREATE TABLE `Product` (
 CREATE TABLE `Brand` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL
+);
+
+-- Creating table 'Project'
+
+CREATE TABLE `Project` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `DescriptionTitle` varchar( 200 )  NULL,
+    `Description` longtext  NULL,
+    `ImageSource` TEXT  NOT NULL,
+    `Manager` varchar( 200 )  NULL,
+    `SortOrder` int  NOT NULL
+);
+
+-- Creating table 'ProjectImage'
+
+CREATE TABLE `ProjectImage` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL,
+    `ProjectId` int  NULL
 );
 
 -- Creating table 'LayoutProduct'
@@ -277,6 +303,21 @@ ADD CONSTRAINT `FK_CategoryProductAttribute_ProductAttribute`
 CREATE INDEX `IX_FK_CategoryProductAttribute_ProductAttribute` 
     ON `CategoryProductAttribute`
     (`ProductAttributes_Id`);
+
+-- Creating foreign key on `ProjectId` in table 'ProjectImage'
+
+ALTER TABLE `ProjectImage`
+ADD CONSTRAINT `FK_ProjectProjectImage`
+    FOREIGN KEY (`ProjectId`)
+    REFERENCES `Project`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProjectImage'
+
+CREATE INDEX `IX_FK_ProjectProjectImage` 
+    ON `ProjectImage`
+    (`ProjectId`);
 
 -- --------------------------------------------------
 -- Script has ended

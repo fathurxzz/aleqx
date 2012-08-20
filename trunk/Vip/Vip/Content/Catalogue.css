@@ -1,10 +1,12 @@
-﻿.catalogue {
+﻿.catalogue, .projects {
     width: 776px;
     position: relative;
     margin: 0 auto;
     padding-top: 200px;
  
 }
+
+
 
 .catalogue .mainTitle {
     background: url('img/catalogue-title-main.png');

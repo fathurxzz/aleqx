@@ -1,0 +1,16 @@
+﻿@model string
+
+<div class="filters">
+            <div class="filterItem first">
+                <div class="filterItemLine">
+                    <table>
+                        <tr>
+                            <td>@Html.ActionLink("Проекты", "Index", "Projects", new {category = ""}, null) @if(!string.IsNullOrEmpty(Model)){@Html.Raw(" &raquo; ") @Model}
+                            </td>
+                            <td class="end">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>

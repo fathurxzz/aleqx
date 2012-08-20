@@ -21,7 +21,7 @@ namespace Vip.Models
         public CatalogueViewModel(SiteContainer context, string category)
             : base(context)
         {
-
+            Title = "Каталог";
             Layouts = context.Layout.Include("Parent").Include("Children").ToList();
             Makers = context.Maker.ToList();
             Brands = context.Brand.ToList();
@@ -29,12 +29,14 @@ namespace Vip.Models
             if (string.IsNullOrEmpty(category))
             {
                 Categories = context.Category.Include("Products").ToList();
+                Title += " - Разделы";
             }
             else
             {
                 Category = context.Category.Include("ProductAttributes").Include("Products").First(c => c.Name == category);
                 Attributes = Category.ProductAttributes.ToList();
                 Products = Category.Products.ToList();
+                Title += " - " + Category.Title;
             }
 
             var layouts = context.Layout.Include("Parent").Include("Children").ToList();
@@ -45,7 +47,7 @@ namespace Vip.Models
 
         public void SetFilters()
         {
-            if(Category==null)
+            if (Category == null)
                 return;
 
             var filter = new AttributeFilter { CurrentCategoryTitle = Category.Title };

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using SiteExtensions;
 using Vip.Helpers;
 using Vip.Models;
 
@@ -17,6 +18,7 @@ namespace Vip.Controllers
                 if (model.Category != null)
                     ViewBag.CategoryName = model.Category.Name;
                 model.SetFilters();
+                this.SetSeoContent(model);
                 return View(model);
             }
         }
