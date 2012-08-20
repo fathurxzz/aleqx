@@ -9,6 +9,7 @@ using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         public ActionResult Index()

@@ -177,3 +177,21 @@ img {
     font-size: 11px;
     color: #6dcff6;
 }
+
+.product .sign {
+    background: url('img/product-sign-bg.png') no-repeat;
+    height: 13px;
+    background-position: 0 8px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.product .sign .title
+{
+    background-color: #000;
+    color: #fff;
+    padding: 0 5px;
+    font-family: DinCyRg;
+    font-size: 9px;
+    text-transform: uppercase;
+}

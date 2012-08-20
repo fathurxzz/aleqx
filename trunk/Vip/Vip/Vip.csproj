@@ -156,6 +156,7 @@
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\page-head-bg.jpg" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\img\product-sign-bg.png" />
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\Selectors.css" />
     <Content Include="Global.asax" />
@@ -228,6 +229,7 @@
     <Content Include="Areas\Admin\Views\ProductAttribute\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
