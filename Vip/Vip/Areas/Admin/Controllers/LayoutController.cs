@@ -7,6 +7,7 @@ using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
 {
+    [Authorize]
     public class LayoutController : Controller
     {
         public ActionResult Index()

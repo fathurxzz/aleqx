@@ -7,6 +7,7 @@ using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
 {
+    [Authorize]
     public class MakerController : Controller
     {
         public ActionResult Index()
