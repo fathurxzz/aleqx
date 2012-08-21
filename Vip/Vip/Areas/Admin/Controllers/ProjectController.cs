@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SiteExtensions;
+using SiteExtensions.Graphics;
 using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
@@ -121,6 +122,12 @@ namespace Vip.Areas.Admin.Controllers
                         string filePath = Server.MapPath("~/Content/Images");
                         filePath = Path.Combine(filePath, fileName);
                         fileUpload.SaveAs(filePath);
+
+                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName,  SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Corp);
+                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp);
+                        
+                        
+                        
                         var projectImage = new ProjectImage {ImageSource = fileName};
                         project.ProjectImages.Add(projectImage);
                         context.SaveChanges();
