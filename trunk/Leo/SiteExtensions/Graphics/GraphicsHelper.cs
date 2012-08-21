@@ -280,9 +280,9 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
-        public static void SaveCachedImage(string originalPath, string fileName, string cacheFolder, PictureSize thumbnailImageSize, ScaleMode scaleMode)
+        public static void SaveCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
         {
-            CacheImage(originalPath, fileName, cacheFolder, thumbnailImageSize, scaleMode, false);
+            CacheImage(originalPath, fileName, thumbnail.CacheFolder, thumbnail.PictureSize, scaleMode, false);
         }
 
 
