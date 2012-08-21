@@ -24,13 +24,17 @@
 }
 
 
+
+
 .projectDetailsContainer .previews .preview
 {
     width: 96px;
     height: 97px;
     background-image: url('img/project-preview-shadow.png');
     background-repeat: no-repeat;
-    float: left;
+    cursor: pointer;
+    
+    /*float: left;*/
 }
 
 .projectDetailsContainer .previews .preview img

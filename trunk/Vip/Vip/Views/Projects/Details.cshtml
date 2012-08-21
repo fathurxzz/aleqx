@@ -16,15 +16,22 @@
         <div class="title">
         </div>
         <div class="picture">
+            <a href="#" id="pictureLink" class="fancyImage">
+            </a>    
+            <img src="" alt="" id="pictureContainer" />
         </div>
         <div class="previews">
-            <div class="previewsContainer">
-                @foreach (var item in Model.Project.ProjectImages)
-                {
-                    <div class="preview">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
-                    </div>
-                }
+            <div class="previewsContainer" id="galleryPreviews">
+                <ul>
+                    
+                    @foreach (var item in Model.Project.ProjectImages)
+                    {<li>
+                     <div class="preview"  onclick="setImage('@item.ImageSource')">
+                         @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
+                     </div>
+                     </li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
@@ -32,4 +39,17 @@
 @section Includes
 {
     <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />
+     <script type="text/javascript">
+
+         $(function () {
+             //$('#galleryPreviews').jcarousel({ 'scroll': 1 });
+             //$(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
+         });
+
+         function setImage(path) {
+             $("#pictureContainer").attr("src", "/ImageCache/projectBigImage/" + path);
+             $("#pictureLink").attr("href", "/Content/Images/" + path);
+         }
+      
+    </script>
 }
