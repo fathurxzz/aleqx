@@ -18,8 +18,8 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View(new Project{SortOrder = 0});
-        } 
+            return View(new Project { SortOrder = 0 });
+        }
 
         //
         // POST: /Admin/Project/Create
@@ -61,10 +61,10 @@ namespace Vip.Areas.Admin.Controllers
                 return View();
             }
         }
-        
+
         //
         // GET: /Admin/Project/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             return View();
@@ -79,7 +79,7 @@ namespace Vip.Areas.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
- 
+
                 return RedirectToAction("Index");
             }
             catch
@@ -90,7 +90,7 @@ namespace Vip.Areas.Admin.Controllers
 
         //
         // GET: /Admin/Project/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             return View();
@@ -117,29 +117,51 @@ namespace Vip.Areas.Admin.Controllers
                     var project = context.Project.First(p => p.Id == projectId);
                     if (fileUpload != null)
                     {
-                        
+
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
                         filePath = Path.Combine(filePath, fileName);
                         fileUpload.SaveAs(filePath);
 
-                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName,  SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Corp);
+                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Corp);
                         GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp);
-                        
-                        
-                        
-                        var projectImage = new ProjectImage {ImageSource = fileName};
+
+
+
+                        var projectImage = new ProjectImage { ImageSource = fileName };
                         project.ProjectImages.Add(projectImage);
                         context.SaveChanges();
                     }
-                    return RedirectToAction("Index", "Projects", new {area = "", project = project.Name});
+                    return RedirectToAction("Index", "Projects", new { area = "", project = project.Name });
                 }
             }
             catch
             {
                 return View();
             }
-            
+
         }
+
+        public ActionResult DeleteImage(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var image = context.ProjectImage.Include("Project").First(pi => pi.Id == id);
+                var projectName = image.Project.Name;
+
+                IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
+                foreach (var thumbnail in SiteSettings.Thumbnails)
+                {
+                    IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, image.ImageSource);
+                }
+
+                context.DeleteObject(image);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Projects", new { area = "", project = projectName });
+            }
+        }
+
+
     }
 }

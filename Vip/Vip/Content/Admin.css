@@ -118,3 +118,8 @@ a.adminLink
 .childitem {
     padding-left: 30px;
 }
+
+.abs {
+    position: absolute;
+    
+}
