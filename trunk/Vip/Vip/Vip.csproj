@@ -158,6 +158,7 @@
     <Content Include="Content\img\footer-bg-center.jpg" />
     <Content Include="Content\img\handleBg.gif" />
     <Content Include="Content\img\layout-filter-bg.png" />
+    <Content Include="Content\img\leftArrow.png" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\page-head-bg.jpg" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
@@ -165,7 +166,9 @@
     <Content Include="Content\img\project-details-previews-bg.gif" />
     <Content Include="Content\img\project-details-title.gif" />
     <Content Include="Content\img\project-preview-shadow.png" />
+    <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\site-bg.jpg" />
+    <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Projects.css" />
     <Content Include="Content\Selectors.css" />
     <Content Include="Global.asax" />
@@ -176,6 +179,7 @@
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.jcarousel.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

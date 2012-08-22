@@ -17,19 +17,33 @@
         </div>
         <div class="picture">
             <a href="#" id="pictureLink" class="fancyImage">
+                <img src="" alt="" id="pictureContainer" />
             </a>    
-            <img src="" alt="" id="pictureContainer" />
+            
         </div>
         <div class="previews">
             <div class="previewsContainer" id="galleryPreviews">
-                <ul>
+                <ul class="jcarousel-skin-tango">
                     
-                    @foreach (var item in Model.Project.ProjectImages)
-                    {<li>
-                     <div class="preview"  onclick="setImage('@item.ImageSource')">
-                         @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
-                     </div>
-                     </li>
+                    @{
+                        var cnt = 0;
+                        foreach (var item in Model.Project.ProjectImages)
+                        {
+                            if (cnt == 0)
+                            {
+                                @Html.Raw(
+                            "<script type=\"text/javascript\">" +
+                                 "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Corp,false) + "\");" +
+                            "$(\"#pictureLink\").attr(\"href\", \"/Content/Images/" + item.ImageSource + "\");" +
+                            "</script>");
+                            }
+                            cnt++;
+                            <li>
+                                <div class="preview"  onclick="setImage('@item.ImageSource')">
+                                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
+                                </div>
+                            </li>
+                        }
                     }
                 </ul>
             </div>
@@ -38,12 +52,15 @@
 </div>
 @section Includes
 {
-    <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css"></link>
+    <link href="@Url.Content("~/Content/jcarousel.css")" rel="stylesheet" type="text/css"></link>
+    <script src="@Url.Content("~/Scripts/jquery.jcarousel.min.js")" type="text/javascript"></script>
+
      <script type="text/javascript">
 
          $(function () {
-             //$('#galleryPreviews').jcarousel({ 'scroll': 1 });
-             //$(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
+             $('#galleryPreviews').jcarousel({ 'scroll': 1 });
+             $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
          });
 
          function setImage(path) {
