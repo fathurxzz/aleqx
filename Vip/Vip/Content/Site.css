@@ -93,3 +93,77 @@ body {
     height: 312px;
     background-repeat: no-repeat;
 }
+
+.aboutFrameContainer {
+    background-image: url('img/about-top.gif');
+    background-repeat: repeat-y;
+    background-position: bottom;
+}
+
+.aboutFrame {
+    background-image: url('img/about-bottom.gif');
+    background-repeat: no-repeat;
+    background-position: bottom;
+
+    padding: 40px 70px;
+    font-family: DinCyRg;
+    font-size: 12px;
+    color: #99b7cf;
+}
+
+.about {
+    margin-bottom: -120px;
+    margin-top: 100px;
+}
+
+.about .footer {
+    height: 20px;
+    background: none;
+}
+
+.about .footer .shadowLeft, .about .footer .shadowRight {
+    width: 8px;
+    height: 20px;
+    position: absolute;
+}
+
+.about .footer .shadowLeft {
+    background-image: url('img/about-footer-shadow-left.png');
+    
+}
+
+.about .footer .shadowRight {
+    background-image: url('img/about-footer-shadow-right.png');
+    margin-left: 767px;
+    
+}
+
+.about .titleContainer .title .titleText {
+    text-align: center;
+    font-size: 22px;
+    font-family: DinCyBd;
+    color: #87a1b2;
+    padding-bottom: 11px;
+}
+
+.about .titleContainer .title .line {
+    width: 104px;
+    height: 2px;
+    background-color: #8d98ba;
+    position: relative;
+    margin: 0 auto;
+}
+
+.about .titleContainer .title {
+    
+    background-image: url('img/about-title-shadow-right.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+
+.about .titleContainer {
+    background-image: url('img/about-title-shadow-left.png');
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}

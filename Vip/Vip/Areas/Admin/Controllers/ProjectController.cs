@@ -41,7 +41,7 @@ namespace Vip.Areas.Admin.Controllers
                                                     "SortOrder",
                                                     "Manager"
                                                 });
-                    project.Description = HttpUtility.HtmlDecode(form["Text"]);
+                    project.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                     if (fileUpload != null)
                     {
@@ -95,7 +95,7 @@ namespace Vip.Areas.Admin.Controllers
                                                     "SortOrder",
                                                     "Manager"
                                                 });
-                    project.Description = HttpUtility.HtmlDecode(form["Text"]);
+                    project.Description = HttpUtility.HtmlDecode(form["Description"]);
 
 
                     if (fileUpload != null)

@@ -92,6 +92,7 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
+    <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AttributeFilter.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -141,6 +142,12 @@
     <Content Include="Content\fancybox\fancy_title_main.png" />
     <Content Include="Content\fancybox\fancy_title_over.png" />
     <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\img\about-bottom.gif" />
+    <Content Include="Content\img\about-footer-shadow-left.png" />
+    <Content Include="Content\img\about-footer-shadow-right.png" />
+    <Content Include="Content\img\about-title-shadow-left.png" />
+    <Content Include="Content\img\about-title-shadow-right.png" />
+    <Content Include="Content\img\about-top.gif" />
     <Content Include="Content\img\catalogue-thumb-bg.png" />
     <Content Include="Content\img\catalogue-thumb-sign-bg.png" />
     <Content Include="Content\img\catalogue-title-main.png" />
@@ -269,6 +276,7 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\_ProjectsTitle.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Shared\AboutModel.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
