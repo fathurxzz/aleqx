@@ -1,6 +1,6 @@
 ﻿.projectDetailsContainer
 {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .projectDetailsContainer .title
@@ -25,7 +25,6 @@
     width: 774px;
     height: 133px;
     background: url('img/project-details-previews-bg.gif');
-    
 }
 
 
@@ -53,4 +52,23 @@
     position: absolute;
     margin-top: 20px;
     text-align: center;
+}
+
+.projectDetailsContainer .shadowLeft, .projectDetailsContainer .shadowRight {
+    width: 14px;
+    height: 786px;
+    position: absolute;
+}
+
+.projectDetailsContainer .shadowLeft {
+    background-image: url('img/project-big-image-shadow-left.png');
+}
+
+.projectDetailsContainer .shadowRight {
+    background-image: url('img/project-big-image-shadow-right.png');
+    margin-left: 760px;
+}
+
+.projectDetailsContainer .separator {
+    height: 20px;
 }

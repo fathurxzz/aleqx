@@ -164,6 +164,8 @@
     <Content Include="Content\img\page-head-bg.jpg" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\img\product-sign-bg.png" />
+    <Content Include="Content\img\project-big-image-shadow-left.png" />
+    <Content Include="Content\img\project-big-image-shadow-right.png" />
     <Content Include="Content\img\project-details-previews-bg.gif" />
     <Content Include="Content\img\project-details-title.gif" />
     <Content Include="Content\img\project-preview-shadow.png" />
