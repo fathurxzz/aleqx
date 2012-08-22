@@ -185,7 +185,7 @@ namespace SiteExtensions.Graphics
             return true;
         }
 
-        private static string GetCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
+        public static string GetCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
         {
             if (string.IsNullOrEmpty(fileName) || !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
             {
@@ -223,6 +223,7 @@ namespace SiteExtensions.Graphics
             }
 
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
+            if (!Directory.Exists(cachePath)) Directory.CreateDirectory(cachePath);
             string cachedImagePath = Path.Combine(cachePath, fileName);
 
             using (FileStream stream = new FileStream(cachedImagePath, FileMode.CreateNew))
