@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using SiteExtensions;
 using SiteExtensions.Graphics;
+using Vip.Helpers;
 using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
@@ -40,6 +41,7 @@ namespace Vip.Areas.Admin.Controllers
                                                     "SortOrder",
                                                     "Manager"
                                                 });
+                    project.Description = HttpUtility.HtmlDecode(form["Text"]);
 
                     if (fileUpload != null)
                     {
@@ -50,7 +52,7 @@ namespace Vip.Areas.Admin.Controllers
                         project.ImageSource = fileName;
                     }
 
-                    project.Description = HttpUtility.HtmlDecode(form["Text"]);
+
                     context.AddToProject(project);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Projects", new { Area = "", project = project.Name });
@@ -67,20 +69,48 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == id);
+                return View(project);
+            }
         }
 
         //
         // POST: /Admin/Project/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
             {
-                // TODO: Add update logic here
+                using (var context = new SiteContainer())
+                {
+                    var project = context.Project.First(p => p.Id == id);
+                    TryUpdateModel(project, new[]
+                                                {
+                                                    "Name", 
+                                                    "Title", 
+                                                    "DescriptionTitle",
+                                                    "SortOrder",
+                                                    "Manager"
+                                                });
+                    project.Description = HttpUtility.HtmlDecode(form["Text"]);
 
-                return RedirectToAction("Index");
+
+                    if (fileUpload != null)
+                    {
+                        ImageHelper.DeleteImage(project.ImageSource);
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        fileUpload.SaveAs(filePath);
+                        project.ImageSource = fileName;
+                    }
+
+                    context.SaveChanges();
+                    return RedirectToAction("Index", "Projects", new { Area = "" });
+                }
             }
             catch
             {
@@ -93,7 +123,22 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.Include("ProjectImages").First(p => p.Id == id);
+                while (project.ProjectImages.Any())
+                {
+                    var image = project.ProjectImages.First();
+                    ImageHelper.DeleteImage(image.ImageSource);
+                    context.DeleteObject(image);
+                }
+
+                ImageHelper.DeleteImage(project.ImageSource);
+                context.DeleteObject(project);
+
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Projects", new { Area = "" });
         }
 
         public ActionResult AddImage(int id)
@@ -149,11 +194,7 @@ namespace Vip.Areas.Admin.Controllers
                 var image = context.ProjectImage.Include("Project").First(pi => pi.Id == id);
                 var projectName = image.Project.Name;
 
-                IOHelper.DeleteFile("~/Content/Images", image.ImageSource);
-                foreach (var thumbnail in SiteSettings.Thumbnails)
-                {
-                    IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, image.ImageSource);
-                }
+                ImageHelper.DeleteImage(image.ImageSource);
 
                 context.DeleteObject(image);
                 context.SaveChanges();

@@ -8,6 +8,10 @@
     width: 774px;
     height: 30px;
     background: url('img/project-details-title.gif');
+    text-align: center;
+    font-family: DinCyRg;
+    font-size: 22px;
+    color: #fff;
 }
 
 .projectDetailsContainer .picture
@@ -21,6 +25,7 @@
     width: 774px;
     height: 133px;
     background: url('img/project-details-previews-bg.gif');
+    
 }
 
 

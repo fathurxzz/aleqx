@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SiteExtensions;
+using Vip.Helpers;
 using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
@@ -133,15 +134,7 @@ namespace Vip.Areas.Admin.Controllers
 
                     if (fileUpload != null)
                     {
-                        if (!string.IsNullOrEmpty(category.ImageSource))
-                        {
-
-                            IOHelper.DeleteFile("~/Content/Images", category.ImageSource);
-                            foreach (var thumbnail in SiteSettings.Thumbnails)
-                            {
-                                IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, category.ImageSource);
-                            }
-                        }
+                        ImageHelper.DeleteImage(category.ImageSource);
 
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
@@ -166,21 +159,6 @@ namespace Vip.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
