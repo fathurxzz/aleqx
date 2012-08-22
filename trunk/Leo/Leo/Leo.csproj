@@ -223,12 +223,6 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SiteExtensions\SiteExtensions.csproj">
-      <Project>{E8799590-D816-480D-9C7C-79C994263BA5}</Project>
-      <Name>SiteExtensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Catalogue\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
