@@ -90,6 +90,7 @@
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AttributeFilter.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
@@ -245,6 +246,7 @@
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Project\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Project\AddImage.cshtml" />
+    <Content Include="Areas\Admin\Views\Project\Edit.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
