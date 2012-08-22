@@ -1,10 +1,13 @@
-﻿@model Vip.Models.Product
+﻿@using Vip.Models
+@model Vip.Models.Product
 
 @{
     ViewBag.Title = "Редактирование изображения";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var brands = (IEnumerable<SelectListItem>)ViewBag.Brands;
     var makers = (IEnumerable<SelectListItem>)ViewBag.Makers;
+    var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
+    
 }
 
 
@@ -21,6 +24,25 @@
                 <td colspan="2">
                     <h2>
                         Редактироавание изображения для категории "@Model.Category.Title"</h2>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    Категории
+                </td>
+                <td>
+                    @foreach (var item in layouts.Where(l => l.Parent == null).OrderBy(i => i.SortOrder))
+                    {
+                        <div class="parent">
+                            @item.Title
+                            @foreach(var child in item.Children.OrderBy(i=>i.SortOrder))
+                            {
+                                <div class="child">
+                                    @Html.CheckBox("lyt_" + child.Id, Model.Layouts.Contains(child)) @child.Title
+                                </div>
+                            }
+                        </div>
+                    }
                 </td>
             </tr>
             <tr>
