@@ -1,5 +1,6 @@
 ﻿@using SiteExtensions.Graphics
 @using Vip
+@using Vip.Models
 @model Vip.Models.ProjectViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,9 +8,12 @@
 <div class="projects">
     @Html.Partial("_ProjectsTitle", Model.Project)
     <div class="projectDetailsContainer">
-        <div class="shadowLeft"></div>
-        <div class="shadowRight"></div>
-        <div class="separator"></div>
+        <div class="shadowLeft">
+        </div>
+        <div class="shadowRight">
+        </div>
+        <div class="separator">
+        </div>
         @if (Request.IsAuthenticated)
         {
             <div>
@@ -33,28 +37,29 @@
                         {
                             if (cnt == 0)
                             {
-                                @Html.Raw(
+                        @Html.Raw(
                                     "<script type=\"text/javascript\">" +
                                     "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Corp, false) + "\");" +
                                     "$(\"#pictureLink\").attr(\"href\", \"/Content/Images/" + item.ImageSource + "\");" +
                                     "</script>");
                             }
                             cnt++;
-                            <li>
-                                <div class="preview"  onclick="setImage('@item.ImageSource')">
-                                    @if (Request.IsAuthenticated)
-                                    {
-                                        @Html.ActionLink("Удалить", "DeleteImage", "Project", new { area = "Admin", id = item.Id }, new { @class = "adminLink abs", onclick = "return confirm('Удалить изображение?')" })
-                                    }
-                                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
-                                </div>
-                            </li>
+                        <li>
+                            <div class="preview"  onclick="setImage('@item.ImageSource')">
+                                @if (Request.IsAuthenticated)
+                                {
+                                    @Html.ActionLink("Удалить", "DeleteImage", "Project", new { area = "Admin", id = item.Id }, new { @class = "adminLink abs", onclick = "return confirm('Удалить изображение?')" })
+                                }
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp))
+                            </div>
+                        </li>
                         }
                     }
                 </ul>
             </div>
         </div>
     </div>
+    @Html.Partial("AboutModel", new AboutModel { Title = Model.Project.DescriptionTitle, Text = Model.Project.Description })
 </div>
 @section Includes
 {
