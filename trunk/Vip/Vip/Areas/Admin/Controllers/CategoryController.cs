@@ -158,7 +158,20 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.Include("Products").Include("ProductAttributes").First(c => c.Id == id);
+                if (!category.Products.Any())
+                {
+                    category.ProductAttributes.Clear();
+                    ImageHelper.DeleteImage(category.ImageSource);
+
+                    context.DeleteObject(category);
+                    context.SaveChanges();
+
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

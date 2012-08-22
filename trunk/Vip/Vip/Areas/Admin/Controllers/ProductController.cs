@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SiteExtensions;
+using Vip.Helpers;
 using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
@@ -23,6 +24,8 @@ namespace Vip.Areas.Admin.Controllers
                 var makers = context.Maker.ToList();
                 List<SelectListItem> makerItems = makers.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString() }).ToList();
                 ViewBag.Makers = makerItems;
+                var layouts = context.Layout.Include("Parent").Include("Children").ToList();
+                ViewBag.Layouts = layouts;
                 return View(new Product { Category = category });
             }
         }
@@ -39,12 +42,25 @@ namespace Vip.Areas.Admin.Controllers
                     var maker = context.Maker.First(m => m.Id == makerId);
 
                     var product = new Product
-                                      {
-                                          Category = category,
-                                          Brand = brand,
-                                          Maker = maker,
-                                          Title = form["Title"]
-                                      };
+                    {
+                        Category = category,
+                        Brand = brand,
+                        Maker = maker,
+                        Title = form["Title"]
+                    };
+
+                    PostCheckboxesData cbData = form.ProcessPostCheckboxesData("lyt");
+                    foreach (var kvp in cbData)
+                    {
+                        var layoutId = kvp.Key;
+                        bool layoutValue = kvp.Value;
+                        if (layoutValue)
+                        {
+                            var layout = context.Layout.First(l => l.Id == layoutId);
+                            product.Layouts.Add(layout);
+                        }
+                    }
+
 
                     if (fileUpload != null)
                     {
@@ -77,7 +93,9 @@ namespace Vip.Areas.Admin.Controllers
                 var makers = context.Maker.ToList();
                 List<SelectListItem> makerItems = makers.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString() }).ToList();
                 ViewBag.Makers = makerItems;
-                var product = context.Product.Include("Category").Include("Maker").Include("Brand").First(p => p.Id == id);
+                var product = context.Product.Include("Layouts").Include("Category").Include("Maker").Include("Brand").First(p => p.Id == id);
+                var layouts = context.Layout.Include("Parent").Include("Children").ToList();
+                ViewBag.Layouts = layouts;
                 return View(product);
             }
         }
@@ -98,6 +116,20 @@ namespace Vip.Areas.Admin.Controllers
                     product.Title = form["Title"];
                     product.Brand = brand;
                     product.Maker = maker;
+
+                    product.Layouts.Clear();
+                    PostCheckboxesData cbData = form.ProcessPostCheckboxesData("lyt");
+                    foreach (var kvp in cbData)
+                    {
+                        var layoutId = kvp.Key;
+                        bool layoutValue = kvp.Value;
+                        if (layoutValue)
+                        {
+                            var layout = context.Layout.First(l => l.Id == layoutId);
+                            product.Layouts.Add(layout);
+                        }
+                    }
+
 
                     if (fileUpload != null)
                     {
@@ -130,7 +162,16 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var product = context.Product.Include("Category").Include("Brand").Include("Maker").First(p => p.Id == id);
+                var categotyName = product.Category.Name;
+                product.Layouts.Clear();
+                ImageHelper.DeleteImage(product.ImageSource);
+                context.DeleteObject(product);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Catalogue", new { Area = "", category = categotyName });
+            }
         }
     }
 }

@@ -46,6 +46,7 @@
                     {
                         <div>
                             @Html.ActionLink("редактировать", "Edit", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            @Html.ActionLink("удалить", "Delete", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить изображение?')" })
                         </div>
                     }
                     <div class="img-container">

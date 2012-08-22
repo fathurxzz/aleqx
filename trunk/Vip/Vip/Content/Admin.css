@@ -123,3 +123,12 @@ a.adminLink
     position: absolute;
     
 }
+
+.parent {
+    padding-bottom: 10px;
+}
+
+.child 
+{
+    padding: 2px 2px 2px 10px;
+}

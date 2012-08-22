@@ -47,7 +47,7 @@
 
                 <td>
                     @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный раздел?')" })
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удаление раздела возможно только если в нем нет изображений. Вы действительно хотите удалить данный раздел?')" })
                 </td>
             </tr>
         }
