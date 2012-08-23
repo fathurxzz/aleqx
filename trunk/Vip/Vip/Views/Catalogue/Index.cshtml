@@ -6,6 +6,12 @@
 }
 <div class="catalogue">
     @Html.Partial("_LayoutsFilter", Model.LayoutFilter)
+        @if (Request.IsAuthenticated) {
+    <div>
+        @Html.ActionLink("Добавить проект", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+    </div>
+    }
+
     @if (Model.Categories != null)
     {
         <div class="mainTitle">
