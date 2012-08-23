@@ -21,6 +21,9 @@ namespace Vip.Models
             if (contentName != null)
             {
                 Content = context.Content.First(c => c.Name == contentName || c.MainPage);
+                Title = Content.Title;
+                SeoDescription = Content.SeoDescription;
+                SeoKeywords = Content.SeoKeywords;
                 if (Content.MainPage)
                 {
                     IsHomePage = true;

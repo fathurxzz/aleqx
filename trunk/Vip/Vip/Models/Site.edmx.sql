@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/23/2012 09:49:22
+-- Date Created: 08/23/2012 12:57:23
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -133,7 +133,10 @@ CREATE TABLE `Content` (
     `DescriptionTitle` varchar( 200 )  NULL,
     `Description` longtext  NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `MainPage` bool  NOT NULL
+    `MainPage` bool  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL,
+    `SortOrder` int  NOT NULL
 );
 
 -- Creating table 'LayoutProduct'

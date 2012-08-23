@@ -22,9 +22,9 @@ a.adminLink
 .adminEditContentTable
 {
     font-family: Tahoma;
-    width: 700px;
+    width: 900px;
     position: relative;
-    margin: 50px auto 0 400px;
+    margin: 0 auto;
 }
 
 .adminEditContentTable td
@@ -36,7 +36,7 @@ a.adminLink
 
 .adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
 {
-    width: 400px;
+    width: 800px;
 }
 
 
