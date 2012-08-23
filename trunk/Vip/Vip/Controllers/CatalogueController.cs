@@ -18,6 +18,7 @@ namespace Vip.Controllers
                 if (model.Category != null)
                     ViewBag.CategoryName = model.Category.Name;
                 model.SetFilters();
+                ViewBag.MainMenu = model.Menu;
                 this.SetSeoContent(model);
                 return View(model);
             }
