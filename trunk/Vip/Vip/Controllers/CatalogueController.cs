@@ -18,6 +18,7 @@ namespace Vip.Controllers
                 if (model.Category != null)
                     ViewBag.CategoryName = model.Category.Name;
                 model.SetFilters();
+                model.ApplyFilers();
                 ViewBag.MainMenu = model.Menu;
                 this.SetSeoContent(model);
                 return View(model);
@@ -57,7 +58,7 @@ namespace Vip.Controllers
                 }
 
                 model.SetFilters();
-
+                model.ApplyFilers();
                 return View(model);
             }
         }

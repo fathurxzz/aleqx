@@ -17,7 +17,7 @@
             @foreach (var item in Model)
             {
                 <div class="attribute">
-                    @item.Title &nbsp; @Html.CheckBox("maker_" + item.Id, WebSession.Brands.Any(a => a.Id == item.Id))
+                    @item.Title &nbsp; @Html.CheckBox("maker_" + item.Id, WebSession.Makers.Any(a => a.Id == item.Id))
                 </div>
             }
             <div class="clear">
