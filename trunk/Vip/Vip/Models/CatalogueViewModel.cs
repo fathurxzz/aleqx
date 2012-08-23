@@ -19,7 +19,7 @@ namespace Vip.Models
         public List<Product> Products { get; set; }
 
         public CatalogueViewModel(SiteContainer context, string category)
-            : base(context)
+            : base(context,null)
         {
             Title = "Каталог";
             Layouts = context.Layout.Include("Parent").Include("Children").ToList();

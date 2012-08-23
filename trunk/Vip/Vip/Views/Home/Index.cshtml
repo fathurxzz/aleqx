@@ -1,1 +1,15 @@
-﻿
+﻿@using Vip.Models
+@model Vip.Models.SiteViewModel
+
+<div class="mainPageContainer">
+    @if (Model.Content != null && Model.Content.MainPage)
+    {
+        @Html.Partial("LayoutsSelector", (IEnumerable<Vip.Models.Layout>) ViewBag.Layouts)
+    }
+    
+    
+    @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
+    {
+        @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+    }
+</div>

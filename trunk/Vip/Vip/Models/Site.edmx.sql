@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/20/2012 11:05:00
+-- Date Created: 08/23/2012 09:49:22
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -40,6 +40,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Brand`;
     DROP TABLE IF EXISTS `Project`;
     DROP TABLE IF EXISTS `ProjectImage`;
+    DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `LayoutProduct`;
     DROP TABLE IF EXISTS `ProductProductAttribute`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
@@ -70,7 +71,9 @@ CREATE TABLE `Category` (
     `Title` varchar( 200 )  NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
     `SortOrder` int  NOT NULL,
-    `ImageSource` TEXT  NOT NULL
+    `ImageSource` TEXT  NOT NULL,
+    `DescriptionTitle` varchar( 200 )  NULL,
+    `Description` longtext  NULL
 );
 
 -- Creating table 'Layout'
@@ -119,6 +122,18 @@ CREATE TABLE `ProjectImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `ImageSource` varchar( 200 )  NOT NULL,
     `ProjectId` int  NULL
+);
+
+-- Creating table 'Content'
+
+CREATE TABLE `Content` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Text` longtext  NULL,
+    `DescriptionTitle` varchar( 200 )  NULL,
+    `Description` longtext  NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `MainPage` bool  NOT NULL
 );
 
 -- Creating table 'LayoutProduct'
