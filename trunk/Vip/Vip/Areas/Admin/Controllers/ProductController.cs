@@ -17,7 +17,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var category = context.Category.First(c => c.Id == id);
+                var category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
                 var brands = context.Brand.ToList();
                 List<SelectListItem> brandItems = brands.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString() }).ToList();
                 ViewBag.Brands = brandItems;
@@ -26,6 +26,7 @@ namespace Vip.Areas.Admin.Controllers
                 ViewBag.Makers = makerItems;
                 var layouts = context.Layout.Include("Parent").Include("Children").ToList();
                 ViewBag.Layouts = layouts;
+                ViewBag.Attributes = category.ProductAttributes;
                 return View(new Product { Category = category });
             }
         }
@@ -37,7 +38,7 @@ namespace Vip.Areas.Admin.Controllers
             {
                 using (var context = new SiteContainer())
                 {
-                    var category = context.Category.First(c => c.Id == categoryId);
+                    var category = context.Category.Include("ProductAttributes").First(c => c.Id == categoryId);
                     var brand = context.Brand.First(b => b.Id == brandId);
                     var maker = context.Maker.First(m => m.Id == makerId);
 
@@ -58,6 +59,18 @@ namespace Vip.Areas.Admin.Controllers
                         {
                             var layout = context.Layout.First(l => l.Id == layoutId);
                             product.Layouts.Add(layout);
+                        }
+                    }
+
+                    cbData = form.ProcessPostCheckboxesData("attr");
+                    foreach (var kvp in cbData)
+                    {
+                        var attrId = kvp.Key;
+                        bool attrValue = kvp.Value;
+                        if (attrValue)
+                        {
+                            var attribute = context.ProductAttribute.First(at => at.Id == attrId);
+                            product.ProductAttributes.Add(attribute);
                         }
                     }
 
@@ -93,9 +106,11 @@ namespace Vip.Areas.Admin.Controllers
                 var makers = context.Maker.ToList();
                 List<SelectListItem> makerItems = makers.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString() }).ToList();
                 ViewBag.Makers = makerItems;
-                var product = context.Product.Include("Layouts").Include("Category").Include("Maker").Include("Brand").First(p => p.Id == id);
+                var product = context.Product.Include("ProductAttributes").Include("Layouts").Include("Category").Include("Maker").Include("Brand").First(p => p.Id == id);
                 var layouts = context.Layout.Include("Parent").Include("Children").ToList();
                 ViewBag.Layouts = layouts;
+                var category = context.Category.Include("ProductAttributes").First(c => c.Id == product.Category.Id);
+                ViewBag.Attributes = category.ProductAttributes;
                 return View(product);
             }
         }
@@ -127,6 +142,19 @@ namespace Vip.Areas.Admin.Controllers
                         {
                             var layout = context.Layout.First(l => l.Id == layoutId);
                             product.Layouts.Add(layout);
+                        }
+                    }
+
+                    product.ProductAttributes.Clear();
+                    cbData = form.ProcessPostCheckboxesData("attr");
+                    foreach (var kvp in cbData)
+                    {
+                        var attrId = kvp.Key;
+                        bool attrValue = kvp.Value;
+                        if (attrValue)
+                        {
+                            var attribute = context.ProductAttribute.First(at => at.Id == attrId);
+                            product.ProductAttributes.Add(attribute);
                         }
                     }
 
@@ -167,6 +195,7 @@ namespace Vip.Areas.Admin.Controllers
                 var product = context.Product.Include("Category").Include("Brand").Include("Maker").First(p => p.Id == id);
                 var categotyName = product.Category.Name;
                 product.Layouts.Clear();
+                product.ProductAttributes.Clear();
                 ImageHelper.DeleteImage(product.ImageSource);
                 context.DeleteObject(product);
                 context.SaveChanges();
