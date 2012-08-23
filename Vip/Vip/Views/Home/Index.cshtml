@@ -13,7 +13,12 @@
         @Html.ActionLink("Редактировать страницу","Edit","Content",new{area="Admin",id=(Model.Content!=null? Model.Content.Id:0)},new{@class="adminLink"})
         </div>
     }
-
+    @if (Model.Content != null&&!Model.IsHomePage)
+    {
+        <div class="contentContainer">
+        @Html.Raw(Model.Content.Text)
+        </div>
+    }
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })

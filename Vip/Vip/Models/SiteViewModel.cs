@@ -18,9 +18,23 @@ namespace Vip.Models
 
         public SiteViewModel(SiteContainer context,string contentName)
         {
+            var contents = context.Content.Where(c => !c.MainPage).ToList();
+            Menu = new Menu();
+            foreach (var content in contents)
+            {
+                Menu.Add(new MenuItem
+                             {
+                                 ContentId = content.Id,
+                                 ContentName = content.Name,
+                                 Current = content.Name==contentName,
+                                 SortOrder = content.SortOrder,
+                                 Title = content.Title
+                             });
+            }
+
             if (contentName != null)
             {
-                Content = context.Content.First(c => c.Name == contentName || c.MainPage);
+                Content = context.Content.FirstOrDefault(c => c.Name == contentName) ?? context.Content.First(c => c.MainPage);
                 Title = Content.Title;
                 SeoDescription = Content.SeoDescription;
                 SeoKeywords = Content.SeoKeywords;
