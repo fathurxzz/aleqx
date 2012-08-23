@@ -14,6 +14,7 @@
     <EntitySet Name="Brand" EntityType="Site.Store.Brand" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Project" EntityType="Site.Store.Project" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProjectImage" EntityType="Site.Store.ProjectImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LayoutProduct" EntityType="Site.Store.LayoutProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
@@ -85,6 +86,8 @@
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="Layout">
     <Key>
@@ -133,6 +136,18 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="ProjectId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="LayoutProduct">
     <Key>
@@ -335,6 +350,7 @@
             <End Role="Project" EntitySet="Project" />
             <End Role="ProjectImage" EntitySet="ProjectImage" />
           </AssociationSet>
+          <EntitySet Name="Content" EntityType="Site.Content" />
         </EntityContainer>
         <EntityType Name="Maker">
           <Key>
@@ -364,6 +380,8 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
           <NavigationProperty Name="ProductAttributes" Relationship="Site.CategoryProductAttribute" FromRole="Category" ToRole="ProductAttribute" />
+          <Property Type="String" Name="DescriptionTitle" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" />
         </EntityType>
         <EntityType Name="Layout">
           <Key>
@@ -496,6 +514,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Text" />
+          <Property Type="String" Name="DescriptionTitle" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -526,6 +556,8 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -582,6 +614,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Content">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Content)">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="LayoutProduct" TypeName="Site.LayoutProduct" StoreEntitySet="LayoutProduct">
       <EndProperty Name="Layout">
         <ScalarProperty Name="Id" ColumnName="Layouts_Id" />
@@ -628,7 +673,7 @@
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Maker" Width="1.5" PointX="6.875" PointY="4.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Site.ProductAttribute" Width="1.5" PointX="2.75" PointY="1.875" Height="1.427958984375" />
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="2.0853483072916661" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="2.41404296875" />
         <EntityTypeShape EntityType="Site.Layout" Width="1.5" PointX="2.625" PointY="4.375" Height="2.0853483072916665" />
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.75" PointY="4.375" Height="2.4140429687499996" />
         <AssociationConnector Association="Site.LayoutProduct">
@@ -636,13 +681,13 @@
           <ConnectorPoint PointX="4.75" PointY="5.4176741536458337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="5.625" PointY="2.7103483072916661" />
+          <ConnectorPoint PointX="5.625" PointY="3.03904296875" />
           <ConnectorPoint PointX="5.625" PointY="4.375" />
         </AssociationConnector>
         <AssociationConnector Association="Site.ProductProductAttribute">
           <ConnectorPoint PointX="4.84375" PointY="4.375" />
-          <ConnectorPoint PointX="4.84375" PointY="2.9557299804687496" />
-          <ConnectorPoint PointX="4.25" PointY="2.9557299804687496" />
+          <ConnectorPoint PointX="4.84375" PointY="3.2844246419270831" />
+          <ConnectorPoint PointX="4.25" PointY="3.2844246419270831" />
         </AssociationConnector>
         <AssociationConnector Association="Site.MakerProduct">
           <ConnectorPoint PointX="6.875" PointY="5.0889794921875" />
@@ -661,8 +706,8 @@
           <ConnectorPoint PointX="4.75" PointY="6.91404296875" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProductAttribute">
-          <ConnectorPoint PointX="5" PointY="2.2926741536458328" />
-          <ConnectorPoint PointX="4.25" PointY="2.2926741536458328" />
+          <ConnectorPoint PointX="5" PointY="2.457021484375" />
+          <ConnectorPoint PointX="4.25" PointY="2.457021484375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="8.5" PointY="1" Height="2.41404296875" />
         <EntityTypeShape EntityType="Site.ProjectImage" Width="1.5" PointX="10.875" PointY="1.25" Height="1.2636116536458335" />
@@ -670,6 +715,7 @@
           <ConnectorPoint PointX="10" PointY="2.0461531575520837" />
           <ConnectorPoint PointX="10.875" PointY="2.0461531575520837" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="9.875" PointY="4.25" Height="2.0853483072916665" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
