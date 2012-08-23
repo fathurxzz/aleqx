@@ -148,6 +148,9 @@
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="MainPage" Type="bool" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="LayoutProduct">
     <Key>
@@ -525,6 +528,9 @@
           <Property Type="String" Name="Description" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -624,6 +630,9 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -715,7 +724,7 @@
           <ConnectorPoint PointX="10" PointY="2.0461531575520837" />
           <ConnectorPoint PointX="10.875" PointY="2.0461531575520837" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="9.875" PointY="4.25" Height="2.0853483072916665" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="9.875" PointY="4.25" Height="2.5783902994791656" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

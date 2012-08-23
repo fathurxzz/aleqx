@@ -7,7 +7,13 @@
         @Html.Partial("LayoutsSelector", (IEnumerable<Vip.Models.Layout>) ViewBag.Layouts)
     }
     
-    
+    @if(Request.IsAuthenticated)
+    {
+        <div style="text-align: center">
+        @Html.ActionLink("Редактировать страницу","Edit","Content",new{area="Admin",id=(Model.Content!=null? Model.Content.Id:0)},new{@class="adminLink"})
+        </div>
+    }
+
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })

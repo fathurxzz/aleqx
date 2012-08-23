@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Vip.Helpers;
 
 namespace Vip.Models
@@ -12,7 +10,7 @@ namespace Vip.Models
         public IEnumerable<Category> Categories { get; set; }
         public AttributeFilter AttributesFilter { get; set; }
         public LayoutFilter LayoutFilter { get; set; }
-        public IEnumerable<Layout> Layouts { get; set; }
+        public new IEnumerable<Layout> Layouts { get; set; }
         public List<Brand> Brands { get; set; }
         public List<Maker> Makers { get; set; }
         public List<ProductAttribute> Attributes { get; set; }

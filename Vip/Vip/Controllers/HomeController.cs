@@ -16,7 +16,6 @@ namespace Vip.Controllers
             {
                 var model = new SiteViewModel(context, id??"");
                 this.SetSeoContent(model);
-
                 if (model.Content != null && model.Layouts != null)
                     ViewBag.Layouts = model.Layouts;
                 ViewBag.isHomePage = model.IsHomePage;
