@@ -80,7 +80,10 @@ namespace Vip.Models
                 result.Clear();
                 result.AddRange(from id in layoutIds from product in Products where product.Id == id select product);
                 Products.Clear();
-                Products = result.ToList();
+                foreach (var product in result.Where(product => !Products.Contains(product)))
+                {
+                    Products.Add(product);
+                }
             }
 
             var attrIds = new List<int>();
@@ -90,7 +93,11 @@ namespace Vip.Models
                 result.Clear();
                 result.AddRange(from id in attrIds from product in Products where product.Id == id select product);
                 Products.Clear();
-                Products = result.ToList();
+                foreach (var product in result.Where(product => !Products.Contains(product)))
+                {
+                    Products.Add(product);
+                }
+                
             }
 
             var brandIds = new List<int>();
@@ -100,7 +107,10 @@ namespace Vip.Models
                 result.Clear();
                 result.AddRange(from id in brandIds from product in Products where product.Id == id select product);
                 Products.Clear();
-                Products = result.ToList();
+                foreach (var product in result.Where(product => !Products.Contains(product)))
+                {
+                    Products.Add(product);
+                }
                 
             }
 
@@ -110,7 +120,10 @@ namespace Vip.Models
                 makerIds.AddRange(from product in Products from maker in WebSession.Makers where product.Maker.Id == maker.Id select product.Id);
                 result.Clear();
                 result.AddRange(from id in makerIds from product in Products where product.Id == id select product);
-                Products = result.ToList();
+                foreach (var product in result.Where(product => !Products.Contains(product)))
+                {
+                    Products.Add(product);
+                }
             }
         }
     }
