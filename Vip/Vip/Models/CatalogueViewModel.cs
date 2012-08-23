@@ -23,7 +23,7 @@ namespace Vip.Models
             Layouts = context.Layout.Include("Parent").Include("Children").ToList();
             Makers = context.Maker.ToList();
             Brands = context.Brand.ToList();
-
+            Products = context.Product.Include("ProductAttributes").Include("Layouts").Include("Brand").Include("Maker").ToList();
             if (string.IsNullOrEmpty(category))
             {
                 Categories = context.Category.Include("Products").ToList();
@@ -34,6 +34,10 @@ namespace Vip.Models
                 Category = context.Category.Include("ProductAttributes").Include("Products").First(c => c.Name == category);
                 Attributes = Category.ProductAttributes.ToList();
                 Products = Category.Products.ToList();
+                foreach (var product in Products)
+                {
+                    product.Layouts.Load();
+                }
                 Title += " - " + Category.Title;
             }
 
@@ -63,6 +67,51 @@ namespace Vip.Models
             filter.Add(new FilterItem { Selector = "maker", Title = "Страна производитель", Attributes = filterAttributesMaker });
 
             AttributesFilter = filter;
+        }
+
+        public void ApplyFilers()
+        {
+            var result = new List<Product>();
+
+            var layoutIds = new List<int>();
+            if (WebSession.Layouts.Any())
+            {
+                layoutIds.AddRange(from product in Products from layout in product.Layouts from layout1 in WebSession.Layouts where layout.Id == layout1.Id select product.Id);
+                result.Clear();
+                result.AddRange(from id in layoutIds from product in Products where product.Id == id select product);
+                Products.Clear();
+                Products = result.ToList();
+            }
+
+            var attrIds = new List<int>();
+            if (WebSession.Attributes.Any())
+            {
+                attrIds.AddRange(from product in Products from attr in product.ProductAttributes from attribute in WebSession.Attributes where attr.Id == attribute.Id select product.Id);
+                result.Clear();
+                result.AddRange(from id in attrIds from product in Products where product.Id == id select product);
+                Products.Clear();
+                Products = result.ToList();
+            }
+
+            var brandIds = new List<int>();
+            if(WebSession.Brands.Any())
+            {
+                brandIds.AddRange(from product in Products from brand in WebSession.Brands where product.Brand.Id == brand.Id select product.Id);
+                result.Clear();
+                result.AddRange(from id in brandIds from product in Products where product.Id == id select product);
+                Products.Clear();
+                Products = result.ToList();
+                
+            }
+
+            var makerIds = new List<int>();
+            if (WebSession.Makers.Any())
+            {
+                makerIds.AddRange(from product in Products from maker in WebSession.Makers where product.Maker.Id == maker.Id select product.Id);
+                result.Clear();
+                result.AddRange(from id in makerIds from product in Products where product.Id == id select product);
+                Products = result.ToList();
+            }
         }
     }
 }
