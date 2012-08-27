@@ -11,6 +11,7 @@ namespace Vip.Models
 
         public ArticlesViewModel(SiteContainer context, string contentName) : base(context, contentName)
         {
+            Title = "Новости";
             Articles = context.Article.ToList();
         }
     }
