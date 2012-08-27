@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
@@ -88,11 +89,14 @@
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AboutModel.cs" />
+    <Compile Include="Models\ArticlesViewModel.cs" />
+    <Compile Include="Models\ArticleValidation.cs" />
     <Compile Include="Models\AttributeFilter.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
@@ -122,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Articles.css" />
     <Content Include="Content\Catalogue.css" />
     <Content Include="Content\fancybox\blank.gif" />
     <Content Include="Content\fancybox\fancybox-x.png" />
@@ -149,6 +154,9 @@
     <Content Include="Content\img\about-title-shadow-left.png" />
     <Content Include="Content\img\about-title-shadow-right.png" />
     <Content Include="Content\img\about-top.gif" />
+    <Content Include="Content\img\article-item-bg.gif" />
+    <Content Include="Content\img\articles-shadow-left.png" />
+    <Content Include="Content\img\articles-shadow-right.png" />
     <Content Include="Content\img\catalogue-thumb-bg.png" />
     <Content Include="Content\img\catalogue-thumb-sign-bg.png" />
     <Content Include="Content\img\catalogue-title-main.png" />
@@ -261,6 +269,8 @@
     <Content Include="Areas\Admin\Views\Project\AddImage.cshtml" />
     <Content Include="Areas\Admin\Views\Project\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
@@ -283,6 +293,8 @@
     <Content Include="Views\Projects\_ProjectsTitle.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Shared\AboutModel.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Catalogue\_LayoutsSelector.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
