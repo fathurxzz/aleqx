@@ -76,6 +76,8 @@
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    
+    /*padding-top: 12px;*/
     padding-top: 3px;
     
     background-color: #22303c;
@@ -93,3 +95,10 @@
     font-size: 11px;
     font-family: DinCyRg;
 }
+
+.submitContainer {
+    font-size: 11px;
+    font-family: DinCyRg;
+    color: #ccc;
+}
+

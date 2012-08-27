@@ -59,6 +59,7 @@ namespace Vip.Controllers
 
                 model.SetFilters();
                 model.ApplyFilers();
+                ViewBag.MainMenu = model.Menu;
                 return View(model);
             }
         }
