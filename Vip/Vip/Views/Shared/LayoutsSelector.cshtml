@@ -6,6 +6,12 @@
             $("#form1").submit();
         });
     });
+
+    function aaaa() {
+        $("#sbmButton").css("display", "block");
+        $("#sbmText").css("display", "none");
+    }
+    
 </script>
 <div class="layoutSelector">
     <div class="header whatlookingfor">
@@ -25,7 +31,7 @@
                     @foreach (var child in item.Children)
                     {
                         <div class="attribute">
-                            @child.Title &nbsp; @Html.CheckBox("layout_" + child.Id, WebSession.Layouts.Any(l => l.Id == child.Id))
+                            @child.Title &nbsp; @Html.CheckBox("layout_" + child.Id, WebSession.Layouts.Any(l => l.Id == child.Id), new { onclick = "aaaa()" })
                         </div>
 
                     }
@@ -37,8 +43,21 @@
             </div>
         </div>
         }
-        <div class="submitContainer">
+        <div class="submitContainer" id="submitContainer">
             <a href="#" id="sbmButton">Показать! &raquo;</a>
+            <span id="sbmText">Показать! &raquo;</span>
+            @if (WebSession.Attributes.Any() || WebSession.Brands.Any() || WebSession.Layouts.Any() || WebSession.Makers.Any())
+            {
+                <script type="text/javascript">
+                    $("#sbmText").css("display", "none")
+                </script>
+            }
+            else
+            {
+                <script type="text/javascript">
+                    $("#sbmButton").css("display", "none")
+                </script>
+            }
         </div>
     }
     <div class="pattern">
