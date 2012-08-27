@@ -1,0 +1,57 @@
+﻿.articlesContainer {
+    padding-top: 200px;
+    position: relative;
+    margin: 0 auto;
+    width: 785px;
+}
+
+.articleContainer {
+    padding-bottom: 50px;
+    background: url('img/articles-shadow-left.png') repeat-y;
+    
+    
+}
+
+.articleContainerRight {
+    background: url('img/articles-shadow-right.png') repeat-y;
+    background-position: right;
+}
+
+.articleItemContaiter {
+    background: url('img/article-item-bg.gif');
+    
+}
+
+
+.article 
+{
+    padding: 40px 60px;
+    background: url('img/articles-shadow-left.png') repeat-y;
+    background-position: 0 -25px;
+}
+
+.alricleRight {
+    background: url('img/articles-shadow-right.png') repeat-y;
+    background-position: right;
+}
+
+.article .title {
+    float: left;
+    width: 250px;
+    color: #fff;
+    font-family: DinCyLt;
+    font-size: 20px;
+}
+
+.article .title .date {
+    font-family: DinCyBd;
+    font-size: 15px;
+    color: #999999;
+}
+
+.article .text {
+    margin-left: 285px;
+    color: #99b7cf;
+    font-size: 12px;
+    font-family: DinCyRg;
+}

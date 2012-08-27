@@ -2,13 +2,13 @@
 <div class="mainMenu">
             <ul>
                 <li>
-                    @Html.ActionLink("каталог","Index","Catalogue",new{Area="",category=""},null)
+                    @Html.ActionLink("каталог","Index","Catalogue",new{area="",category=""},null)
                 </li>
                 <li>
-                    <a href="#">новости</a>
+                    @Html.ActionLink("новости","Index","Articles",new{area=""},null)
                 </li>
                 <li>
-                    @Html.ActionLink("проекты", "Index", "Projects", new { Area = "", project = "" }, null)
+                    @Html.ActionLink("проекты", "Index", "Projects", new { area = "", project = "" }, null)
                 </li>
                 
                 @{
