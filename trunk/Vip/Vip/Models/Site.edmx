@@ -15,6 +15,7 @@
     <EntitySet Name="Project" EntityType="Site.Store.Project" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProjectImage" EntityType="Site.Store.ProjectImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LayoutProduct" EntityType="Site.Store.LayoutProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
@@ -151,6 +152,15 @@
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
   </EntityType>
   <EntityType Name="LayoutProduct">
     <Key>
@@ -354,6 +364,7 @@
             <End Role="ProjectImage" EntitySet="ProjectImage" />
           </AssociationSet>
           <EntitySet Name="Content" EntityType="Site.Content" />
+          <EntitySet Name="Article" EntityType="Site.Article" />
         </EntityContainer>
         <EntityType Name="Maker">
           <Key>
@@ -532,6 +543,15 @@
           <Property Type="String" Name="SeoKeywords" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -636,6 +656,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="LayoutProduct" TypeName="Site.LayoutProduct" StoreEntitySet="LayoutProduct">
       <EndProperty Name="Layout">
         <ScalarProperty Name="Id" ColumnName="Layouts_Id" />
@@ -725,6 +755,7 @@
           <ConnectorPoint PointX="10.875" PointY="2.0461531575520837" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="9.875" PointY="4.25" Height="2.5783902994791656" />
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="0.75" PointY="0.875" Height="1.592306315104167" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

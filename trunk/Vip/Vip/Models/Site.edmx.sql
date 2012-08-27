@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/23/2012 12:57:23
+-- Date Created: 08/27/2012 12:35:02
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -137,6 +137,15 @@ CREATE TABLE `Content` (
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
     `SortOrder` int  NOT NULL
+);
+
+-- Creating table 'Article'
+
+CREATE TABLE `Article` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Date` datetime  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Text` longtext  NOT NULL
 );
 
 -- Creating table 'LayoutProduct'

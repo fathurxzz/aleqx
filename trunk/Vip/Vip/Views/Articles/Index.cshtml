@@ -1,0 +1,48 @@
+﻿@model Vip.Models.ArticlesViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Includes
+{
+    <link href="@Url.Content("~/Content/Articles.css")" rel="stylesheet" type="text/css" />
+}
+<div class="articlesContainer">
+    @if (Request.IsAuthenticated)
+    {
+        <div>
+            @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
+            <br />
+            <br />
+        </div>
+    }
+    @foreach (var item in Model.Articles)
+    {
+        if (Request.IsAuthenticated)
+        {
+        <div>
+            @Html.ActionLink("Редактировать", "Edit", "Article", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Удалить", "Delete", "Article", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить новость?')" })
+        </div>
+        }   
+        <div class="articleContainerRight">
+            <div class="articleContainer">
+                <div class="articleItemContaiter">
+                    <div class="alricleRight">
+                        <div class="article">
+                            <div class="title">
+                                <div class="date">
+                                    @item.Date
+                                </div>
+                                @item.Title
+                            </div>
+                            <div class="text">
+                                @Html.Raw(item.Text)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
