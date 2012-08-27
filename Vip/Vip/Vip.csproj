@@ -265,6 +265,7 @@
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
+    <None Include="Content\fonts\DinCyMd.ttf" />
     <None Include="Content\fonts\DinCyRg.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
