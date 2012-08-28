@@ -92,6 +92,7 @@ table.player .bg
     margin-top: 39px;
     width: 26px;
     height: 46px;
+    cursor: pointer;
 }
 
 .playpauseContainer .play, .playpauseContainer .pause
