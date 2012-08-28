@@ -155,6 +155,8 @@
     <Content Include="Content\img\about-title-shadow-right.png" />
     <Content Include="Content\img\about-top.gif" />
     <Content Include="Content\img\article-item-bg.gif" />
+    <Content Include="Content\img\articles-bottom-bg-left.png" />
+    <Content Include="Content\img\articles-bottom-bg-right.png" />
     <Content Include="Content\img\articles-shadow-left.png" />
     <Content Include="Content\img\articles-shadow-right.png" />
     <Content Include="Content\img\catalogue-thumb-bg.png" />

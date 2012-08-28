@@ -8,8 +8,21 @@
 .articleContainer {
     padding-bottom: 50px;
     background: url('img/articles-shadow-left.png') repeat-y;
-    
-    
+}
+
+.articleContainer.last {
+    padding-bottom: 0px !important;
+}
+
+.articlesContainer .separator {
+    height: 45px;
+    background: url('img/articles-bottom-bg-left.png') no-repeat;
+}
+
+.articlesContainer .separatorRight {
+    height: 45px;
+    background: url('img/articles-bottom-bg-right.png') no-repeat;
+    background-position: right;
 }
 
 .articleContainerRight {
@@ -54,4 +67,36 @@
     color: #99b7cf;
     font-size: 12px;
     font-family: DinCyRg;
+}
+
+
+.articlesContainer .titleContainer .title .titleText {
+    text-align: center;
+    font-size: 22px;
+    font-family: DinCyBd;
+    color: #87a1b2;
+    padding-bottom: 11px;
+    text-transform: uppercase;
+}
+
+.articlesContainer .titleContainer .title .line {
+    width: 104px;
+    height: 2px;
+    background-color: #8d98ba;
+    position: relative;
+    margin: 0 auto;
+}
+
+.articlesContainer .titleContainer .title {
+    
+    background-image: url('img/about-title-shadow-right.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+
+.articlesContainer .titleContainer {
+    background-image: url('img/about-title-shadow-left.png');
+    background-repeat: no-repeat;
+    background-position: bottom left;
 }

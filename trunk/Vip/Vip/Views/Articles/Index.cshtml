@@ -15,8 +15,26 @@
             <br />
         </div>
     }
+    <div class="titleContainer">
+        <div class="title">
+            <div class="titleText">
+                Новости
+            </div>
+            <div class="line">
+            </div>
+        </div>
+    </div>
+    @{
+        var cnt = 0;
+        var className = "";
+    }
     @foreach (var item in Model.Articles)
     {
+        cnt++;
+        if (cnt == Model.Articles.Count())
+        {
+            className = "last";
+        }
         if (Request.IsAuthenticated)
         {
         <div>
@@ -25,7 +43,7 @@
         </div>
         }   
         <div class="articleContainerRight">
-            <div class="articleContainer">
+            <div class="articleContainer @className">
                 <div class="articleItemContaiter">
                     <div class="alricleRight">
                         <div class="article">
@@ -43,5 +61,12 @@
                 </div>
             </div>
         </div>
+        if (cnt == Model.Articles.Count())
+        {
+            <div class="separator">
+                <div class="separatorRight">
+                </div>
+            </div>
+        }
     }
 </div>
