@@ -41,45 +41,17 @@
          
        foreach (var mc in Model.MusicContent.OrderBy(c => c.SortOrder))
        {
-           Html.RenderPartial("MusicItem", mc);
+           Html.RenderPartial("MusicItemNew", mc);
        } %>
    
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="Includes">
     <script type="text/javascript">
-        /*
-        $(function () {
-
-
-        $("#playPause").click(function () {
-        $("#mPlayer").attr("src", "");
-        alert("playPause");
-        });
-
-        $("#stop").click(function () {
-        $("#mPlayer").attr("src", "");
-        alert("stop");
-        $("#mPlayer").removeAttr("src");
-        });
-
-        });
-        */
-
         $(function () {
 
             $("#jpId").jPlayer({
                 swfPath: "../Content",
-                backgroundColor: "#f1f1f1"/*,
-                ready: function () {
-
-                    
-                    $(this).jPlayer("setMedia", {
-                    mp3: "../Content/Files/01.mp3" // Defines the mp3 url
-
-                    });
-                    
-
-                }*/
+                backgroundColor: "#f1f1f1"
             });
 
             $(".play").click(function () {
@@ -93,18 +65,6 @@
                         });
                     }
                     
-                    
-                    
-                    
-                    
-                    
-                    
-
-
-                    //alert($(obj > div).html());
-
-
-
                     if (!$(this).hasClass("paused")) {
                         $('.stop').each(function (index) {
                             $(this).removeClass("stop").addClass("szk");
@@ -125,13 +85,6 @@
                         $(this).removeClass("paused");
                         $(this).addClass("play");
                     });
-                    /*
-                    $(this).fadeIn('slow', function () {
-
-                    });
-                    */
-                    //$(this).fadeTo("slow", 0.1);
-
 
                     $(this).fadeOut("fast", function () {
                         //alert('ok');
@@ -141,11 +94,6 @@
 
                         });
                     });
-
-
-
-                    //$(this).removeClass("play");
-                    //$(this).addClass("pause");
                 }
                 else if ($(this).hasClass("pause")) {
                     $("#jpId").jPlayer("pause");
@@ -159,23 +107,23 @@
 
 
 
-            $(".stopbutton").click(function () {
-                if ($(this).hasClass("stop")) {
-                    $("#jpId").jPlayer("stop");
-                    $(this).removeClass("stop").addClass("szk");
-                    $('.pause').each(function (index) {
-                        $(this).removeClass("pause");
-                        $(this).removeClass("paused");
-                        $(this).addClass("play");
-                    });
-                    
-                    $('.play').each(function (index) {
-                        $(this).removeClass("pause");
-                        $(this).removeClass("paused");
-                    });
-                    
-                }
-            });
+//            $(".stopbutton").click(function () {
+//                if ($(this).hasClass("stop")) {
+//                    $("#jpId").jPlayer("stop");
+//                    $(this).removeClass("stop").addClass("szk");
+//                    $('.pause').each(function (index) {
+//                        $(this).removeClass("pause");
+//                        $(this).removeClass("paused");
+//                        $(this).addClass("play");
+//                    });
+//                    
+//                    $('.play').each(function (index) {
+//                        $(this).removeClass("pause");
+//                        $(this).removeClass("paused");
+//                    });
+//                    
+//                }
+//            });
 
         });
 
