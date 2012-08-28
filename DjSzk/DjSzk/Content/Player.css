@@ -21,20 +21,20 @@ table.player div.play, table.player div.stop, table.player div.pause, table.play
     display: block;
 }
 
-.buttonLeft 
+.buttonLeft
 {
-	width: 40px;
+    width: 40px;
     height: 40px;
     display: block;
-	background: url('img/player/button-empty-left.gif') no-repeat;
+    background: url('img/player/button-empty-left.gif') no-repeat;
 }
 
 .buttonRight
 {
-	width: 40px;
+    width: 40px;
     height: 40px;
     display: block;
-	background: url('img/player/button-empty-right.gif') no-repeat;
+    background: url('img/player/button-empty-right.gif') no-repeat;
 }
 
 
@@ -70,4 +70,40 @@ table.player .bg
     padding-left: 10px;
     padding-right: 10px;
     white-space: nowrap;
+}
+
+
+
+
+
+
+.mItem
+{
+    width: 343px;
+    height: 277px;
+    margin: 0 auto;
+    position: relative;
+    background: url('img/player/music1.gif');
+}
+
+.playpauseContainer {
+    position: absolute;
+    margin-left: 282px;
+    margin-top: 39px;
+    width: 26px;
+    height: 46px;
+}
+
+.playpauseContainer .play, .playpauseContainer .pause
+{
+    width: 26px;
+    height: 46px;
+}
+
+.playpauseContainer .play {
+     background: url('img/player/play_new.gif') no-repeat;
+}
+
+.playpauseContainer .pause {
+     background: url('img/player/pause_new.gif') no-repeat;
 }
