@@ -109,15 +109,15 @@ table.player .bg
      background: url('img/player/pause_new.gif') no-repeat;
 }
 
-.mItem19
+.mItem21
 {
-    background: url('img/player/music3.gif');
+    background: url('img/player/music1.gif');
 }
-.mItem15
+.mItem22
 {
     background: url('img/player/music2.gif');
 }
-.mItem20
+.mItem23
 {
-    background: url('img/player/music1.gif');
+    background: url('img/player/music3.gif');
 }
