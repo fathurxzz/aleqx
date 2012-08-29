@@ -108,3 +108,16 @@ table.player .bg
 .playpauseContainer .pause {
      background: url('img/player/pause_new.gif') no-repeat;
 }
+
+.mItem19
+{
+    background: url('img/player/music3.gif');
+}
+.mItem15
+{
+    background: url('img/player/music2.gif');
+}
+.mItem20
+{
+    background: url('img/player/music1.gif');
+}
