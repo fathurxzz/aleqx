@@ -126,6 +126,7 @@
     <Content Include="Scripts\hobo_std_medium.typeface.js" />
     <Content Include="Scripts\jquery.jplayer.min.js" />
     <Content Include="Scripts\lucida_sans_unicode_regular.typeface.js" />
+    <Content Include="Scripts\pf_din_text_comp_pro_regular.typeface.js" />
     <Content Include="Scripts\typeface-0.15.js" />
     <Content Include="Views\Shared\MainMenu.ascx" />
     <Content Include="Views\Shared\MusicItem.ascx" />
