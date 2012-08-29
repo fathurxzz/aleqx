@@ -76,11 +76,17 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
+            try
+            {
             using (var context = new SiteContainer())
             {
                 var maker = context.Maker.First(m => m.Id == id);
                 context.DeleteObject(maker);
                 context.SaveChanges();
+            }
+            }
+            catch
+            {
             }
             return RedirectToAction("Index");
         }
