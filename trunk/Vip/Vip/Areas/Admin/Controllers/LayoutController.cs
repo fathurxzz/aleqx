@@ -85,16 +85,23 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var context = new SiteContainer())
+            try
             {
-                var layout = context.Layout.Include("Children").First(l => l.Id == id);
-                if (layout.Children.Any())
+                using (var context = new SiteContainer())
                 {
-                    var l = layout.Children.First();
-                    context.DeleteObject(l);
+                    var layout = context.Layout.Include("Children").First(l => l.Id == id);
+                    if (layout.Children.Any())
+                    {
+                        var l = layout.Children.First();
+                        context.DeleteObject(l);
+                    }
+                    context.DeleteObject(layout);
+                    context.SaveChanges();
                 }
-                context.DeleteObject(layout);
-                context.SaveChanges();
+            }
+            catch
+            {
+
             }
             return RedirectToAction("Index");
         }

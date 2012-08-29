@@ -158,6 +158,10 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
+            try
+            {
+
+            
             using (var context = new SiteContainer())
             {
                 var category = context.Category.Include("Products").Include("ProductAttributes").First(c => c.Id == id);
@@ -170,6 +174,10 @@ namespace Vip.Areas.Admin.Controllers
                     context.SaveChanges();
 
                 }
+            }
+            }
+            catch
+            {
             }
             return RedirectToAction("Index");
         }

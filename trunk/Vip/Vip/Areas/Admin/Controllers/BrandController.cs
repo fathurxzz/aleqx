@@ -80,12 +80,16 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var context = new SiteContainer())
+            try
             {
-                var brand = context.Brand.First(l => l.Id == id);
-                context.DeleteObject(brand);
-                context.SaveChanges();
+                using (var context = new SiteContainer())
+                {
+                    var brand = context.Brand.First(l => l.Id == id);
+                    context.DeleteObject(brand);
+                    context.SaveChanges();
+                }
             }
+            catch{}
             return RedirectToAction("Index");
         }
     }
