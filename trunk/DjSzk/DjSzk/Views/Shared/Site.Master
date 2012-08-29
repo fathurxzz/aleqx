@@ -6,6 +6,9 @@
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
+    <meta property="og:title" content="DJ-SZK" />
+    <meta property="og:image" content="http://dj-szk.com.ua/Content/img/logo.jpg" />
+    <meta property="og:url" content="http://dj-szk.com.ua/" />
     <meta name="description" content="<%=ViewData["seoDescription"]%>" />
     <meta name="keywords" content="<%=ViewData["seoKeywords"]%>" />
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
