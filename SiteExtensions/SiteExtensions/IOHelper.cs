@@ -8,7 +8,17 @@ namespace SiteExtensions
         public static void DeleteFile(string relativePath, string fileName)
         {
             string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
-            File.Delete(Path.Combine(absolutePath, fileName));
+            string path = Path.Combine(absolutePath, fileName);
+            if (File.Exists(path))
+                File.Delete(path);
+        }
+
+        public static void DeleteFiles(string relativePath, string[] fileNames)
+        {
+            foreach (var fileName in fileNames)
+            {
+                DeleteFile(relativePath, fileName);
+            }
         }
 
         public static string CreateAbsolutePath(string relativePath, string fileName)
