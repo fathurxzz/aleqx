@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -13,26 +12,51 @@ namespace SiteExtensions.Graphics
 
     //}
 
-    public enum Orientation
-    {
-        Horizontal,
-        Vertical
-    }
+    //public enum Orientation
+    //{
+    //    Horizontal,
+    //    Vertical
+    //}
 
+    /// <summary>
+    /// Метод масштабирования
+    /// </summary>
     public enum ScaleMode
     {
+        /// <summary>
+        /// Фиксированная ширина, произвольная высота
+        /// </summary>
         FixedWidth,
+
+        /// <summary>
+        /// Фиксированная высота, произвольная ширина
+        /// </summary>
         FixedHeight,
-        Corp/*,
+
+        /// <summary>
+        /// Обрезка лишнего
+        /// </summary>
+        Corp,
+
+        /// <summary>
+        /// Вписать изображение в превью полностью
+        /// </summary>
         Insert,
-        Auto*/
+
+        /// <summary>
+        /// Автоматический, либо обрезка лишнего либо вписывание изображения в превью полностью
+        /// </summary>
+        Auto
     }
 
-    public enum FixedDimension
-    {
+    //public enum FixedDimension
+    //{
 
-    }
+    //}
 
+    /// <summary>
+    /// Графический хелпер
+    /// </summary>
     public static class GraphicsHelper
     {
 
@@ -47,23 +71,23 @@ namespace SiteExtensions.Graphics
 
             switch (scaleMode)
             {
-                //case ScaleMode.Insert:
-                //    double hRatio = (double)thumbImage.Height / sourceImage.Height;
-                //    double wRatio = (double)thumbImage.Width / sourceImage.Width;
-                //    double ratio = hRatio < wRatio ? hRatio : wRatio;
-                //    int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
-                //    var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
-                //    if (thumbImage.Width > resultSourceImageWidth)
-                //    {
-                //        int offset = (thumbImage.Width - resultSourceImageWidth) / 2;
-                //        return new Rectangle(offset, 0, resultSourceImageWidth, resultSourceImageHeight);
-                //    }
-                //    if (thumbImage.Height > resultSourceImageHeight)
-                //    {
-                //        var offset = (thumbImage.Height - resultSourceImageHeight) / 2;
-                //        return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
-                //    }
-                //    break;
+                case ScaleMode.Insert:
+                    double hRatio = (double)thumbImage.Height / sourceImage.Height;
+                    double wRatio = (double)thumbImage.Width / sourceImage.Width;
+                    double ratio = hRatio < wRatio ? hRatio : wRatio;
+                    int resultSourceImageWidth = (int)(sourceImage.Width * ratio);
+                    var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
+                    if (thumbImage.Width > resultSourceImageWidth)
+                    {
+                        int offset = (thumbImage.Width - resultSourceImageWidth) / 2;
+                        return new Rectangle(offset, 0, resultSourceImageWidth, resultSourceImageHeight);
+                    }
+                    if (thumbImage.Height > resultSourceImageHeight)
+                    {
+                        var offset = (thumbImage.Height - resultSourceImageHeight) / 2;
+                        return new Rectangle(0, offset, resultSourceImageWidth, resultSourceImageHeight);
+                    }
+                    break;
 
                 case ScaleMode.FixedWidth:
                     int destImageHeight = (int)(thumbImage.Width / hvr);
@@ -94,15 +118,15 @@ namespace SiteExtensions.Graphics
                     {
                         resultWidth = sourceImage.Width;
                         resultHeight = (int)Math.Truncate(sourceImage.Width * coef);
-                        return new Rectangle(0,(sourceImage.Height - resultHeight)/ 2, resultWidth, resultHeight);
+                        return new Rectangle(0, (sourceImage.Height - resultHeight) / 2, resultWidth, resultHeight);
                     }
                     else
                     {
                         resultHeight = sourceImage.Height;
                         resultWidth = (int)Math.Truncate(sourceImage.Height / coef);
-                        return new Rectangle((sourceImage.Width-resultWidth)/2, 0, resultWidth, resultHeight);
+                        return new Rectangle((sourceImage.Width - resultWidth) / 2, 0, resultWidth, resultHeight);
                     }
-                    
+
                 default:
                     return new Rectangle(0, 0, sourceImage.Width, sourceImage.Height);
             }
@@ -141,12 +165,22 @@ namespace SiteExtensions.Graphics
             saveTo.Position = 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="image"></param>
+        /// <param name="thumbImage"></param>
+        /// <param name="saveTo"></param>
+        /// <param name="scaleMode"></param>
+        /// <param name="useBgImage"></param>
+        /// <returns></returns>
         public static bool ScaleImage(string name, Bitmap image, Size thumbImage, Stream saveTo, ScaleMode scaleMode, bool useBgImage)
         {
-            //if (scaleMode == ScaleMode.Auto)
-            //{
-            //    scaleMode = IsHorizontalImage(image.Size) ? ScaleMode.Corp : ScaleMode.Insert;
-            //}
+            if (scaleMode == ScaleMode.Auto)
+            {
+                scaleMode = IsHorizontalImage(image.Size) ? ScaleMode.Corp : ScaleMode.Insert;
+            }
 
             Rectangle sourceRect = CalculateSourceRect(image.Size, thumbImage, scaleMode);
 
@@ -171,10 +205,16 @@ namespace SiteExtensions.Graphics
             }
             else
             {
-                thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
-                System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
-                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
+                if (scaleMode == ScaleMode.Insert)
+                    thumbnailImage = new Bitmap(thumbImage.Width, thumbImage.Height);
+                else
+                    thumbnailImage = new Bitmap(destRect.Width, destRect.Height);
 
+                System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
+                if (scaleMode == ScaleMode.Insert)
+                    graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, thumbImage.Width, thumbImage.Height);
+                else
+                    graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, destRect.Width, destRect.Height);
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
 
@@ -184,6 +224,15 @@ namespace SiteExtensions.Graphics
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="originalPath"></param>
+        /// <param name="fileName"></param>
+        /// <param name="thumbnail"></param>
+        /// <param name="scaleMode"></param>
+        /// <param name="useBgImage"></param>
+        /// <returns></returns>
         public static string GetCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
         {
             if (string.IsNullOrEmpty(fileName) || !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
@@ -191,7 +240,7 @@ namespace SiteExtensions.Graphics
                 return null;
             }
             string cacheFolder = thumbnail.CacheFolder;
-            
+
 
             string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
@@ -209,7 +258,7 @@ namespace SiteExtensions.Graphics
                 : null;
         }
 
-        private static bool CacheImage(string originalPath, string fileName, string cacheFolder,PictureSize thumbnailImageSize, ScaleMode scaleMode, bool useBgImage)
+        private static bool CacheImage(string originalPath, string fileName, string cacheFolder, PictureSize thumbnailImageSize, ScaleMode scaleMode, bool useBgImage)
         {
             string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName);
             Bitmap image;
@@ -229,7 +278,13 @@ namespace SiteExtensions.Graphics
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="fileName"></param>
+        /// <param name="file"></param>
+        /// <param name="limitLength"></param>
         public static void SaveOriginalImage(string filePath, string fileName, HttpPostedFileBase file, int limitLength = 1000)
         {
             string tmpFilePath = HttpContext.Current.Server.MapPath("~/Content/tmpImages");
@@ -249,11 +304,30 @@ namespace SiteExtensions.Graphics
             IOHelper.DeleteFile("~/Content/tmpImages", fileName);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="originalPath"></param>
+        /// <param name="fileName"></param>
+        /// <param name="thumbnail"></param>
+        /// <param name="scaleMode"></param>
+        /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
         {
             return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode, false);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="originalPath"></param>
+        /// <param name="fileName"></param>
+        /// <param name="thumbnail"></param>
+        /// <param name="scaleMode"></param>
+        /// <param name="useBgImage"></param>
+        /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
         {
             StringBuilder sb = new StringBuilder();
@@ -262,6 +336,13 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="originalPath"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string OriginalImage(this HtmlHelper helper, string originalPath, string fileName)
         {
             StringBuilder sb = new StringBuilder();
@@ -271,6 +352,13 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="originalPath"></param>
+        /// <param name="fileName"></param>
+        /// <param name="thumbnail"></param>
+        /// <param name="scaleMode"></param>
         public static void SaveCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
         {
             CacheImage(originalPath, fileName, thumbnail.CacheFolder, thumbnail.PictureSize, scaleMode, false);

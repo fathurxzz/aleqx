@@ -3,8 +3,16 @@ using System.Web;
 
 namespace SiteExtensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class IOHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="relativePath"></param>
+        /// <param name="fileName"></param>
         public static void DeleteFile(string relativePath, string fileName)
         {
             string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
@@ -13,6 +21,11 @@ namespace SiteExtensions
                 File.Delete(path);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="relativePath"></param>
+        /// <param name="fileNames"></param>
         public static void DeleteFiles(string relativePath, string[] fileNames)
         {
             foreach (var fileName in fileNames)
@@ -20,12 +33,24 @@ namespace SiteExtensions
                 DeleteFile(relativePath, fileName);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="relativePath"></param>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static string CreateAbsolutePath(string relativePath, string fileName)
         {
             return Path.Combine(HttpContext.Current.Server.MapPath(relativePath), fileName);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="relativePath"></param>
+        /// <param name="initialName"></param>
+        /// <returns></returns>
         public static string GetUniqueFileName(string relativePath, string initialName)
         {
             string result = initialName;

@@ -5,9 +5,18 @@ using System.Text;
 
 namespace SiteExtensions.Graphics
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ThumbnailPicture
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public PictureSize PictureSize { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public string CacheFolder { get; set; }
     }
 }
