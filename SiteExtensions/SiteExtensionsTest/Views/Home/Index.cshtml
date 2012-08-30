@@ -5,7 +5,7 @@
 }
 
 <table>
-    <tr>
+    @*  <tr>
         @for (int i = 1; i <= 7; i++ )
         {
             string filename = i + ".jpg";
@@ -16,4 +16,81 @@
             </td>
         }
     </tr>
-</table>
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb2"), ScaleMode.Corp))
+                </a>
+            </td>
+        }
+    </tr>
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb3"), ScaleMode.FixedHeight))
+                </a>
+            </td>
+        }
+    </tr>
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb4"), ScaleMode.FixedWidth))
+                </a>
+            </td>
+        }
+    </tr>
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb5"), ScaleMode.Insert))
+                </a>
+            </td>
+        }
+    </tr>
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb6"), ScaleMode.Insert))
+                </a>
+            </td>
+        }
+    </tr>*@
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb7"), ScaleMode.Auto))
+                </a>
+            </td>
+        }
+    </tr>
+@*    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb8"), ScaleMode.Auto))
+                </a>
+            </td>
+        }
+    </tr>
+*@</table>

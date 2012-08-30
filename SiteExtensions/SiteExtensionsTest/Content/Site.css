@@ -1,3 +1,5 @@
-﻿img{ border: none;}
+﻿img{ border: 1px solid #ccc;}
 table td
-{ padding: 5px;}
+{ padding: 5px;
+    vertical-align: top;
+  }
