@@ -1,8 +1,19 @@
-﻿@{
+﻿@using SiteExtensions.Graphics
+@using SiteExtensionsTest
+@{
     ViewBag.Title = "Home Page";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+<table>
+    <tr>
+        @for (int i = 1; i <= 7; i++ )
+        {
+            string filename = i + ".jpg";
+            <td>
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb"), ScaleMode.Corp))
+                </a>
+            </td>
+        }
+    </tr>
+</table>
