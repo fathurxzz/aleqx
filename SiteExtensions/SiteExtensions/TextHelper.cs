@@ -5,8 +5,16 @@ using System.Text;
 
 namespace SiteExtensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class TextHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string Transliterate(string source)
         {
             string[] russian = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя"

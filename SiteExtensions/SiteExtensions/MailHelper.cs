@@ -4,14 +4,35 @@ using System.Net.Mail;
 
 namespace SiteExtensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ResponseData
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string ErrorMessage { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool EmailSent { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class MailHelper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="body"></param>
+        /// <param name="subject"></param>
+        /// <param name="isBodyHtml"></param>
+        /// <returns></returns>
         public static ResponseData SendMessage(MailAddress from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
             SmtpClient client = new SmtpClient { UseDefaultCredentials = true };
@@ -46,6 +67,17 @@ namespace SiteExtensions
         //    return SendTemplate(from, to, string.Empty, null, string.Empty, true, replacements);
         //}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <param name="subject"></param>
+        /// <param name="template"></param>
+        /// <param name="Language"></param>
+        /// <param name="isBodyHtml"></param>
+        /// <param name="replacements"></param>
+        /// <returns></returns>
         public static ResponseData SendTemplate(MailAddress from, List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
         {
             //string languageFolder = (string.IsNullOrEmpty(Language)) ? string.Empty : Language + "/";

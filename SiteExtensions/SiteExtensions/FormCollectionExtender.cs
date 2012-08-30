@@ -6,18 +6,34 @@ using System.Web.Mvc;
 
 namespace SiteExtensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class PostData : Dictionary<string, Dictionary<string, string>>
     {
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class PostCheckboxesData : Dictionary<int, bool>
     {
 
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public static class FormCollectionExtender
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="prefix"></param>
+        /// <param name="excludeFields"></param>
+        /// <returns></returns>
         public static PostCheckboxesData ProcessPostCheckboxesData(this FormCollection form, string prefix = "", params string[] excludeFields)
         {
             PostCheckboxesData result = new PostCheckboxesData();
@@ -64,6 +80,14 @@ namespace SiteExtensions
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="prefix"></param>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <returns></returns>
         public static Dictionary<TKey, TValue> GetDictionary<TKey, TValue>(this FormCollection form, string prefix)
         {
             string[] items = form.AllKeys.Where(k => k.StartsWith(prefix)).ToArray();
