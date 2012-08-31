@@ -22,7 +22,7 @@
 }
 
 .adminMenu {
-    
+    margin: 0;
 }
 
 .adminMenu li a
@@ -160,6 +160,11 @@ img
     text-align: right !important;
 }
 
+.logoutLinks {
+    margin-bottom: 0;
+}
 
-
-
+.logoutLinks li {
+    display: inline;
+    padding: 0 20px;
+}
