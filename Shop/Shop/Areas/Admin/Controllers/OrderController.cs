@@ -43,5 +43,23 @@ namespace Shop.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new OrdersContainer())
+            {
+                var order = context.Order.Include("OrderItems").First(o => o.Id == id);
+
+                while (order.OrderItems.Any())
+                {
+                    var item = order.OrderItems.First();
+                    context.DeleteObject(item);
+                }
+                
+                context.DeleteObject(order);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
