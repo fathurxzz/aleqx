@@ -10,12 +10,12 @@
 <body>
     <div>
         <div>
-            @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{Area=""},new{style="float:right"})
-            <div style="clear: both"></div>
+            <ul class="logoutLinks">
+                <li>@Html.ActionLink("На сайт","Index","Home",new{area=""},null)</li>
+                <li>@Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{Area=""},null)</li>
+            </ul>
             @Html.Partial("Menu")
         </div>
-
-
         @RenderBody()
     </div>
 </body>
