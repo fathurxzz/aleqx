@@ -108,10 +108,13 @@ namespace Shop.Controllers
                     order.OrderItems.Add(orderItem);
                 }
 
-                context.AddToOrder(order);
-                context.SaveChanges();
 
-                WebSession.OrderItems.Clear();
+                if (order.OrderItems.Any())
+                {
+                    context.AddToOrder(order);
+                    context.SaveChanges();
+                    WebSession.OrderItems.Clear();
+                }
 
                 using (var siteContext = new ShopContainer())
                 {
