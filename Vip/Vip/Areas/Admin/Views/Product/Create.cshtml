@@ -7,8 +7,8 @@
 
     var brands = (IEnumerable<SelectListItem>)ViewBag.Brands;
     var makers = (IEnumerable<SelectListItem>)ViewBag.Makers;
-    var layouts = (IEnumerable<Layout>) ViewBag.Layouts;
-    var attributes = (IEnumerable<ProductAttribute>) ViewBag.Attributes;
+    var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
+    var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -33,7 +33,7 @@
                     {
                         <div class="parent">
                             @item.Title
-                            @foreach(var child in item.Children)
+                            @foreach (var child in item.Children)
                             {
                                 <div class="child">
                                     @Html.CheckBox("lyt_" + child.Id) @child.Title
@@ -44,9 +44,11 @@
                 </td>
             </tr>
             <tr>
-                <td>Аттрибуты раздела</td>
                 <td>
-                    @foreach(var item in attributes)
+                    Аттрибуты раздела
+                </td>
+                <td>
+                    @foreach (var item in attributes)
                     {
                         <div>
                             @Html.CheckBox("attr_" + item.Id) @item.Title
@@ -71,19 +73,29 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    @Html.LabelFor(model => model.Title)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.Title)
-                    @Html.ValidationMessageFor(model => model.Title)
-                </td>
-            </tr>
-            <tr>
                 <td>@Html.LabelFor(model => model.ImageSource)
                 </td>
                 <td>
-                    <input type="file" name="fileUpload" />
+                    Заголовок / Файл:<input type="text" name="fileTitles[0]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[0]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[1]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[1]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[2]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[2]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[3]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[3]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[4]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[4]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[5]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[5]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[6]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[6]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[7]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[7]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[8]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[8]" class="photoFileInput" /><br />
+                    Заголовок / Файл:<input type="text" name="fileTitles[9]" class="photoTitleInput" /><input
+                        type="file" name="fileUpload[9]" class="photoFileInput" /><br />
                     @Html.ValidationMessageFor(model => model.ImageSource)
                 </td>
             </tr>

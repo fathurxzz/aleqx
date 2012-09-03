@@ -32,7 +32,7 @@ namespace Vip.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection form, int categoryId, int brandId, int makerId, HttpPostedFileBase fileUpload)
+        public ActionResult Create(FormCollection form, int categoryId, int brandId, int makerId, IEnumerable<HttpPostedFileBase> fileUpload, IList<string> fileTitles)
         {
             try
             {
@@ -42,13 +42,10 @@ namespace Vip.Areas.Admin.Controllers
                     var brand = context.Brand.First(b => b.Id == brandId);
                     var maker = context.Maker.First(m => m.Id == makerId);
 
-                    var product = new Product
-                    {
-                        Category = category,
-                        Brand = brand,
-                        Maker = maker,
-                        Title = form["Title"]
-                    };
+                    
+
+                    var productLayouts = new List<Layout>();
+                    var productAttributes = new List<ProductAttribute>();
 
                     PostCheckboxesData cbData = form.ProcessPostCheckboxesData("lyt");
                     foreach (var kvp in cbData)
@@ -58,7 +55,7 @@ namespace Vip.Areas.Admin.Controllers
                         if (layoutValue)
                         {
                             var layout = context.Layout.First(l => l.Id == layoutId);
-                            product.Layouts.Add(layout);
+                            productLayouts.Add(layout);
                         }
                     }
 
@@ -70,21 +67,43 @@ namespace Vip.Areas.Admin.Controllers
                         if (attrValue)
                         {
                             var attribute = context.ProductAttribute.First(at => at.Id == attrId);
-                            product.ProductAttributes.Add(attribute);
+                            productAttributes.Add(attribute);
                         }
                     }
 
-
-                    if (fileUpload != null)
+                    int titleIndex = 0;
+                    foreach (var file in fileUpload)
                     {
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-                        product.ImageSource = fileName;
+                        if (file != null)
+                        {
+                            var product = new Product
+                            {
+                                Category = category,
+                                Brand = brand,
+                                Maker = maker,
+                                Title = fileTitles[titleIndex]
+                            };
+
+                            string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                            string filePath = Server.MapPath("~/Content/Images");
+                            filePath = Path.Combine(filePath, fileName);
+                            file.SaveAs(filePath);
+                            product.ImageSource = fileName;
+
+                            foreach (var productAttribute in productAttributes)
+                            {
+                                product.ProductAttributes.Add(productAttribute);
+                            }
+
+                            foreach (var productLayout in productLayouts)
+                            {
+                                product.Layouts.Add(productLayout);
+                            }
+                            context.AddToProduct(product);
+                            titleIndex++;
+                        }
                     }
                     
-                    context.AddToProduct(product);
                     context.SaveChanges();
                     
                     return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
