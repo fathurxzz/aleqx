@@ -10,19 +10,17 @@
     <table class="adminEditContentTable">
         <tr>
             <td colspan="2">
-                <h2>
-                    Бренды</h2>
+                <h2>Бренды</h2>
             </td>
         </tr>
         <tr>
             <th>
-                Заголовок
             </th>
             <th>
             </th>
         </tr>
 
-        @foreach (var item in Model) {
+        @foreach (var item in Model.OrderBy(b=>b.Title)) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
