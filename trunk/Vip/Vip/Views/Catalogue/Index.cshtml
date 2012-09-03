@@ -8,7 +8,7 @@
     @Html.Partial("_LayoutsFilter", Model.LayoutFilter)
         @if (Request.IsAuthenticated) {
     <div>
-        @Html.ActionLink("Добавить проект", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
+        @Html.ActionLink("Добавить раздел", "Create", "Category", new { Area = "Admin" }, new { @class = "adminLink" })
     </div>
     }
 
