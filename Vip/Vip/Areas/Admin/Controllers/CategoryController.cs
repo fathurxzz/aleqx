@@ -65,7 +65,9 @@ namespace Vip.Areas.Admin.Controllers
                     "Title", 
                     "SortOrder",
                     "SeoDescription",
-                    "SeoKeywords"
+                    "SeoKeywords",
+                    "Description",
+                    "DescriptionTitle"
                     });
 
                     if (fileUpload != null)
@@ -81,9 +83,10 @@ namespace Vip.Areas.Admin.Controllers
 
                     context.AddToCategory(category);
                     context.SaveChanges();
+                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
                 }
 
-                return RedirectToAction("Index");
+                
             }
             catch
             {
@@ -116,7 +119,9 @@ namespace Vip.Areas.Admin.Controllers
                     "Title",
                     "SortOrder",
                     "SeoDescription",
-                    "SeoKeywords"
+                    "SeoKeywords",
+                    "Description",
+                    "DescriptionTitle"
                 });
 
                     var attributes = context.ProductAttribute.ToList();
@@ -150,8 +155,7 @@ namespace Vip.Areas.Admin.Controllers
 
 
                     context.SaveChanges();
-
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
                 }
             }
             catch

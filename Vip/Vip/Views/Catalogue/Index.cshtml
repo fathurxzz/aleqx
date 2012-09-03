@@ -1,5 +1,6 @@
 ﻿@using SiteExtensions.Graphics
 @using Vip
+@using Vip.Models
 @model Vip.Models.CatalogueViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -74,4 +75,16 @@
             </div>
         </div>
     }
+    
+     @if (!string.IsNullOrEmpty(Model.Category.Description) || !string.IsNullOrEmpty(Model.Category.DescriptionTitle))
+    {
+        @Html.Partial("AboutModel", new AboutModel { Title = Model.Category.DescriptionTitle, Text = Model.Category.Description })
+    }
+    @if (Request.IsAuthenticated)
+    {
+        <div style="text-align: center; margin-top: 100px;">
+        @Html.ActionLink("Редактировать страницу", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+        </div>
+    }
+
 </div>

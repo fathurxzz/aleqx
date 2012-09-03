@@ -36,6 +36,17 @@
         <div class="clear">
         </div>
     </div>
+    
+     @if (!string.IsNullOrEmpty(Model.Project.Description) || !string.IsNullOrEmpty(Model.Project.DescriptionTitle))
+    {
+        @Html.Partial("AboutModel", new AboutModel { Title = Model.Project.DescriptionTitle, Text = Model.Project.Description })
+    }
+    @if (Request.IsAuthenticated)
+    {
+        <div style="text-align: center; margin-top: 100px;">
+        @Html.ActionLink("Редактировать страницу", "Edit", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
+        </div>
+    }
 </div>
 
 @section Includes

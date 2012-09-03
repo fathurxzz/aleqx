@@ -29,7 +29,8 @@ namespace Vip.Models
             Products = context.Product.Include("ProductAttributes").Include("Layouts").Include("Brand").Include("Maker").ToList();
             if (string.IsNullOrEmpty(category))
             {
-                Categories = context.Category.Include("Products").ToList();
+                Categories = context.Category.Include("Products").Where(c=>!c.MainPage).ToList();
+                Category = context.Category.First(c => c.MainPage);
                 Title += " - Разделы";
             }
             else
@@ -42,9 +43,10 @@ namespace Vip.Models
                     product.Layouts.Load();
                 }
                 Title += " - " + Category.Title;
-                SeoDescription = Category.SeoDescription;
-                SeoKeywords = Category.SeoKeywords;
             }
+
+            SeoDescription = Category.SeoDescription;
+            SeoKeywords = Category.SeoKeywords;
 
             var layouts = context.Layout.Include("Parent").Include("Children").ToList();
 
@@ -58,7 +60,7 @@ namespace Vip.Models
 
         public void SetFilters()
         {
-            if (Category == null)
+            if (Category.MainPage)
                 return;
 
             var filter = new AttributeFilter { CurrentCategoryTitle = Category.Title };

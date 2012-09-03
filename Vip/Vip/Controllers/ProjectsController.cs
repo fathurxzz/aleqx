@@ -20,7 +20,7 @@ namespace Vip.Controllers
                 var model = new ProjectViewModel(context, project);
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.Menu;
-                return model.Project != null ? View("Details", model) : View(model);
+                return !model.Project.MainPage ? View("Details", model) : View(model);
             }
         }
 

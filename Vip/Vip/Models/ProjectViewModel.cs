@@ -16,7 +16,8 @@ namespace Vip.Models
 
             if (string.IsNullOrEmpty(project))
             {
-                Projects = context.Project.ToList();
+                Projects = context.Project.Where(p=>!p.MainPage).ToList();
+                Project = context.Project.First(p => p.MainPage);
             }
             else
             {
