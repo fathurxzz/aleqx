@@ -1,5 +1,6 @@
-﻿@{
-    int pageSize = 3;
+﻿@using System.Configuration
+@{
+    int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
     int totalCount = (int)ViewBag.TotalCount;
     int pageCount = totalCount / pageSize;
     int page = (int)ViewBag.Page;

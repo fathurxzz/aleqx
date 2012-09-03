@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using Vip.Helpers;
 
@@ -138,7 +140,7 @@ namespace Vip.Models
             if (products == null)
                 return null;
             int currentPage = page ?? 0;
-            int pageSize = 3;
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             if (page < 0)
                 return products;
             return products.Skip(currentPage * pageSize).Take(pageSize).ToList();
