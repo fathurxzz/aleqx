@@ -29,5 +29,11 @@ namespace Vip.Models
 
         [DisplayName("Изображение")]
         public int ImageSource { get; set; }
+
+        [DisplayName("Описание")]
+        public string Description { get; set; }
+
+        [DisplayName("Заголовок описания")]
+        public string DescriptionTitle { get; set; }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Vip.Models;
 
@@ -22,7 +19,7 @@ namespace Vip.Areas.Admin.Controllers
         public ActionResult Create()
         {
             return View(new Maker());
-        } 
+        }
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -44,7 +41,7 @@ namespace Vip.Areas.Admin.Controllers
                 return View();
             }
         }
-        
+
         public ActionResult Edit(int id)
         {
             using (var context = new SiteContainer())
@@ -78,12 +75,12 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-            using (var context = new SiteContainer())
-            {
-                var maker = context.Maker.First(m => m.Id == id);
-                context.DeleteObject(maker);
-                context.SaveChanges();
-            }
+                using (var context = new SiteContainer())
+                {
+                    var maker = context.Maker.First(m => m.Id == id);
+                    context.DeleteObject(maker);
+                    context.SaveChanges();
+                }
             }
             catch
             {

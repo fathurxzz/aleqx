@@ -46,19 +46,37 @@
             </td>
             <td>
                 @{
-           var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
-           if (attributes != null)
-           {
-               foreach (var item in attributes)
-               {
+                    var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+                    if (attributes != null)
+                    {
+                        foreach (var item in attributes)
+                        {
 
-                   @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;")@item.Title<br />
+                            @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;")@item.Title<br />
 
-               }
-           }
+                        }
+                    }
                 }
             </td>
         </tr>
+         <tr>
+                <td>
+                    @Html.LabelFor(model => model.DescriptionTitle)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DescriptionTitle)
+                    @Html.ValidationMessageFor(model => model.DescriptionTitle)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
         <tr>
             <td>
                 @Html.LabelFor(model => model.SortOrder)

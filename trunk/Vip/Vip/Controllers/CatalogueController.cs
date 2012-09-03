@@ -15,7 +15,7 @@ namespace Vip.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new CatalogueViewModel(context, category,page);
-                if (model.Category != null)
+                if (!model.Category.MainPage)
                     ViewBag.CategoryName = model.Category.Name;
                 model.SetFilters();
                 model.ApplyFilers();
