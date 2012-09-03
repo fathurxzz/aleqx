@@ -61,10 +61,11 @@
 .layoutSelector .layout .attribute 
 {
     float: left;
-    width: 100px;
     font-family: DinCyLt;
     font-size: 12px;
     color: #fff;
+    white-space: nowrap;
+    padding: 10px 15px;
 }
 
 
