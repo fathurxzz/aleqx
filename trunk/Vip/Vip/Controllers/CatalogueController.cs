@@ -10,15 +10,17 @@ namespace Vip.Controllers
 {
     public class CatalogueController : Controller
     {
-        public ActionResult Index(string category)
+        public ActionResult Index(string category, int? page)
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueViewModel(context, category);
+                var model = new CatalogueViewModel(context, category,page);
                 if (model.Category != null)
                     ViewBag.CategoryName = model.Category.Name;
                 model.SetFilters();
                 model.ApplyFilers();
+                ViewBag.TotalCount = model.TotalProductsCount;
+                ViewBag.Page = page ?? 0;
                 ViewBag.MainMenu = model.Menu;
                 this.SetSeoContent(model);
                 return View(model);
@@ -26,11 +28,11 @@ namespace Vip.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(FormCollection form, string selector, string category)
+        public ActionResult Index(FormCollection form, string selector, string category, int? page)
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueViewModel(context, category);
+                var model = new CatalogueViewModel(context, category, page);
                 if (model.Category != null)
                     ViewBag.CategoryName = model.Category.Name;
                 switch (selector)
