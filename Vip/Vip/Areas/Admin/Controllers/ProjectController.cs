@@ -39,7 +39,9 @@ namespace Vip.Areas.Admin.Controllers
                                                     "Title", 
                                                     "DescriptionTitle",
                                                     "SortOrder",
-                                                    "Manager"
+                                                    "Manager",
+                                                    "SeoDescription",
+                                                    "SeoKeywords"
                                                 });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
 
@@ -93,7 +95,9 @@ namespace Vip.Areas.Admin.Controllers
                                                     "Title", 
                                                     "DescriptionTitle",
                                                     "SortOrder",
-                                                    "Manager"
+                                                    "Manager",
+                                                    "SeoDescription",
+                                                    "SeoKeywords"
                                                 });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
 

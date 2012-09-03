@@ -42,6 +42,8 @@ namespace Vip.Models
                     product.Layouts.Load();
                 }
                 Title += " - " + Category.Title;
+                SeoDescription = Category.SeoDescription;
+                SeoKeywords = Category.SeoKeywords;
             }
 
             var layouts = context.Layout.Include("Parent").Include("Children").ToList();
@@ -52,7 +54,6 @@ namespace Vip.Models
                 TotalProductsCount = Products.Count();
 
             Products = ApplyPaging(Products, page);
-
         }
 
         public void SetFilters()

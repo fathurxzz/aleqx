@@ -22,6 +22,8 @@ namespace Vip.Models
             {
                 Project = context.Project.Include("ProjectImages").First(c => c.Name == project);
                 Title += " - " + Project.Title;
+                SeoDescription = Project.SeoDescription;
+                SeoKeywords = Project.SeoKeywords;
             }
 
 
