@@ -205,3 +205,33 @@ img {
     font-size: 9px;
     text-transform: uppercase;
 }
+
+
+
+#pager
+{
+    margin: 10px 0 0 0;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 8px 8px 8px 8px;
+    font-family: DinCyRg;
+    font-size: 14px;
+    color: #99b7cf;
+}
+
+#pager span {
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    background-color: #081720;
+    padding: 8px 16px;
+}
+
+#pager a
+{
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
