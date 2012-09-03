@@ -56,7 +56,7 @@
                         </div>
                     }
                     <div class="img-container">
-                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@item.ImageSource" class="fancyImage"  title="@Model.Title">
+                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@item.ImageSource" class="fancyImage"  >
                             @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp))
                         </a>
                     </div>
