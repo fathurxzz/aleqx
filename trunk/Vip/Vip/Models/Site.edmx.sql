@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/27/2012 12:35:02
+-- Date Created: 09/03/2012 13:39:55
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -41,6 +41,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Project`;
     DROP TABLE IF EXISTS `ProjectImage`;
     DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `LayoutProduct`;
     DROP TABLE IF EXISTS `ProductProductAttribute`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
@@ -73,7 +74,9 @@ CREATE TABLE `Category` (
     `SortOrder` int  NOT NULL,
     `ImageSource` TEXT  NOT NULL,
     `DescriptionTitle` varchar( 200 )  NULL,
-    `Description` longtext  NULL
+    `Description` longtext  NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'Layout'
@@ -113,7 +116,9 @@ CREATE TABLE `Project` (
     `Description` longtext  NULL,
     `ImageSource` TEXT  NOT NULL,
     `Manager` varchar( 200 )  NULL,
-    `SortOrder` int  NOT NULL
+    `SortOrder` int  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'ProjectImage'

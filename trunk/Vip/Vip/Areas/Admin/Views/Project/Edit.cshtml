@@ -82,6 +82,27 @@
                     @Html.ValidationMessageFor(model => model.ImageSource)
                 </td>
             </tr>
+             <tr>
+                <td colspan="2" style="text-align: center">
+                    Для поисковых систем
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.SeoDescription)
+                </td>
+                <td>@Html.TextAreaFor(model => model.SeoDescription)
+                    @Html.ValidationMessageFor(model => model.SeoDescription)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.SeoKeywords)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.SeoKeywords)
+                    @Html.ValidationMessageFor(model => model.SeoKeywords)
+                </td>
+            </tr>
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />

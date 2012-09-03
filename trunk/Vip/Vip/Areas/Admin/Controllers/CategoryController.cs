@@ -63,7 +63,9 @@ namespace Vip.Areas.Admin.Controllers
                     TryUpdateModel(category, new[] { 
                     "Name", 
                     "Title", 
-                    "SortOrder"
+                    "SortOrder",
+                    "SeoDescription",
+                    "SeoKeywords"
                     });
 
                     if (fileUpload != null)
@@ -112,7 +114,9 @@ namespace Vip.Areas.Admin.Controllers
                     TryUpdateModel(category, new[]{
                     "Name",
                     "Title",
-                    "SortOrder"
+                    "SortOrder",
+                    "SeoDescription",
+                    "SeoKeywords"
                 });
 
                     var attributes = context.ProductAttribute.ToList();
