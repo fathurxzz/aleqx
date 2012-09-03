@@ -91,6 +91,7 @@
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="Layout">
     <Key>
@@ -133,6 +134,7 @@
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectImage">
     <Key>
@@ -402,6 +404,7 @@
           <Property Type="String" Name="Description" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
         </EntityType>
         <EntityType Name="Layout">
           <Key>
@@ -514,6 +517,7 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
         </EntityType>
         <EntityType Name="ProjectImage">
           <Key>
@@ -594,6 +598,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -640,6 +645,7 @@
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -724,21 +730,23 @@
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Maker" Width="1.5" PointX="6.875" PointY="4.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Site.ProductAttribute" Width="1.5" PointX="2.75" PointY="1.875" Height="1.427958984375" />
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="2.7427376302083331" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="5" PointY="0.625" Height="2.9070849609374996" />
         <EntityTypeShape EntityType="Site.Layout" Width="1.5" PointX="2.625" PointY="4.375" Height="2.0853483072916665" />
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.75" PointY="4.375" Height="2.4140429687499996" />
         <AssociationConnector Association="Site.LayoutProduct">
           <ConnectorPoint PointX="4.125" PointY="5.4176741536458337" />
+          <ConnectorPoint PointX="4.135416666666667" PointY="5.4176741536458328" />
+          <ConnectorPoint PointX="4.302083333333333" PointY="5.4176741536458337" />
           <ConnectorPoint PointX="4.75" PointY="5.4176741536458337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="5.625" PointY="3.3677376302083331" />
+          <ConnectorPoint PointX="5.625" PointY="3.5320849609374996" />
           <ConnectorPoint PointX="5.625" PointY="4.375" />
         </AssociationConnector>
         <AssociationConnector Association="Site.ProductProductAttribute">
-          <ConnectorPoint PointX="4.84375" PointY="4.375" />
-          <ConnectorPoint PointX="4.84375" PointY="3.44877197265625" />
-          <ConnectorPoint PointX="4.25" PointY="3.44877197265625" />
+          <ConnectorPoint PointX="4.75" PointY="6.6165983072916674" />
+          <ConnectorPoint PointX="4.21875" PointY="6.6165983072916674" />
+          <ConnectorPoint PointX="4.21875" PointY="3.4673063151041665" />
         </AssociationConnector>
         <AssociationConnector Association="Site.MakerProduct">
           <ConnectorPoint PointX="6.875" PointY="5.0889794921875" />
@@ -757,10 +765,10 @@
           <ConnectorPoint PointX="4.75" PointY="6.91404296875" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryProductAttribute">
-          <ConnectorPoint PointX="5" PointY="2.6213688151041667" />
-          <ConnectorPoint PointX="4.25" PointY="2.6213688151041667" />
+          <ConnectorPoint PointX="5" PointY="2.6711531575520833" />
+          <ConnectorPoint PointX="4.25" PointY="2.6711531575520833" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="8.5" PointY="1" Height="2.7427376302083335" />
+        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="8.5" PointY="1" Height="2.9070849609374996" />
         <EntityTypeShape EntityType="Site.ProjectImage" Width="1.5" PointX="10.875" PointY="1.25" Height="1.2636116536458335" />
         <AssociationConnector Association="Site.ProjectProjectImage">
           <ConnectorPoint PointX="10" PointY="2.0461531575520837" />
