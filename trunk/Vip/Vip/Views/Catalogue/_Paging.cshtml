@@ -1,9 +1,9 @@
 ﻿@using System.Configuration
 @{
     int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
-    int totalCount = (int)ViewBag.TotalCount;
+    int totalCount = (int)(ViewBag.TotalCount ?? 0);
     int pageCount = totalCount / pageSize;
-    int page = (int)ViewBag.Page;
+    int page = (int)(ViewBag.Page ?? 0);
     pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
     
 }
@@ -11,36 +11,36 @@
 {
     <div id="pager">
         <span>
-        @for (int i = 0; i < pageCount; i++)
-        {
-            if (i == page)
+            @for (int i = 0; i < pageCount; i++)
             {
+                if (i == page)
+                {
                 @Html.Raw((i + 1).ToString())
+                }
+                else
+                {
+                @Html.ActionLink((i + 1).ToString(), "Index", "Catalogue", new { page = i }, null)
+                }
+
+                if (i + 1 < pageCount)
+                {
+                @Html.Raw(" ... ")
+                }
+            }
+            @if (page > -1)
+            {
+                @Html.Raw("&nbsp;")
+                @Html.Raw("&nbsp;")
+           
+                @Html.ActionLink("весь список", "Index", "Catalogue", new { page = -1 }, null)
             }
             else
             {
-                @Html.ActionLink((i + 1).ToString(), "Index", "Catalogue", new { page = i }, null)
-            }
-
-            if (i + 1 < pageCount)
-            {
-                @Html.Raw(" ... ")
-            }
-        }
-        @if (page > -1)
-        {
-            @Html.Raw("&nbsp;")
-            @Html.Raw("&nbsp;")
-           
-            @Html.ActionLink("весь список", "Index", "Catalogue", new { page = -1 }, null)
-        }
-        else
-        {
             
-            @Html.Raw("&nbsp;")
-            @Html.Raw("&nbsp;")
-            <text>весь список</text>
-        }
+                @Html.Raw("&nbsp;")
+                @Html.Raw("&nbsp;")
+                <text>весь список</text>
+            }
         </span>
     </div>
 }
