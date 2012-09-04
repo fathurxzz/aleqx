@@ -93,6 +93,7 @@
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\ArticlesViewModel.cs" />
@@ -190,6 +191,7 @@
     <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\jcarousel.css" />
+    <Content Include="Content\Paging.css" />
     <Content Include="Content\Projects.css" />
     <Content Include="Content\Selectors.css" />
     <Content Include="Global.asax" />

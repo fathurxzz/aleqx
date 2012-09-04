@@ -1,5 +1,6 @@
 ﻿@using SiteExtensions.Graphics
 @using Vip
+@using Vip.Helpers
 @using Vip.Models
 @model Vip.Models.CatalogueViewModel
 @{
@@ -53,7 +54,7 @@
                     {
                         <div>
                             @Html.ActionLink("редактировать", "Edit", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                            @Html.ActionLink("удалить", "Delete", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить изображение?')" })
+                            @Html.ActionLink("удалить", "Delete", "Product", new { area = "Admin", id = item.Id, page = ViewBag.Page }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить изображение?')" })
                         </div>
                     }
                     <div class="img-container">
@@ -70,7 +71,7 @@
             }
             <div class="clear">
             </div>
-            @Html.Partial("_Paging")
+            @Html.Partial("_Paging", new Pager(Model.TotalProductsCount, SiteSettings.PageSize, (int)ViewBag.Page))
             <div class="clear">
             </div>
         </div>

@@ -207,7 +207,7 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int? page)
         {
             using (var context = new SiteContainer())
             {
@@ -218,7 +218,7 @@ namespace Vip.Areas.Admin.Controllers
                 ImageHelper.DeleteImage(product.ImageSource);
                 context.DeleteObject(product);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Catalogue", new { Area = "", category = categotyName });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", category = categotyName, page = page });
             }
         }
     }

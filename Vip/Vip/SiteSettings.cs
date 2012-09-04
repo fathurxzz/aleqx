@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using SiteExtensions.Graphics;
@@ -10,6 +11,8 @@ namespace Vip
     {
         public static Dictionary<string, PictureSize> Thumbnails { get; private set; }
 
+        public static int PageSize { get; private set; }
+
         static SiteSettings()
         {
             Thumbnails = new Dictionary<string, PictureSize>
@@ -19,6 +22,17 @@ namespace Vip
                                   {"projectDetailsPreviewThumbnail", new PictureSize {Height = 79,Width = 79}},
                                   {"projectBigImage", new PictureSize {Height = 580,Width = 774}}
                               };
+
+            PageSize = GetPageSize();
+        }
+
+        private static int GetPageSize()
+        {
+            if (ConfigurationManager.AppSettings["PageSize"] == null)
+            {
+                throw new Exception("Невозможно получить кофигурацию пейджинга. В appsettings должен быть параметр с именем PageSize");
+            }
+            return Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
         }
 
         public static ThumbnailPicture GetThumbnail(string cacheFolder)

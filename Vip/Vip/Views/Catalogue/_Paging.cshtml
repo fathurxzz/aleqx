@@ -1,11 +1,10 @@
-﻿@using System.Configuration
+﻿@model Vip.Helpers.Pager
 @{
-    int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
-    int totalCount = (int)(ViewBag.TotalCount ?? 0);
+    int totalCount = Model.TotalCount;
+    int pageSize = Model.PageSize;
     int pageCount = totalCount / pageSize;
     int page = (int)(ViewBag.Page ?? 0);
     pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
-    
 }
 @if (totalCount > 0)
 {
@@ -15,28 +14,29 @@
             {
                 if (i == page)
                 {
-                @Html.Raw((i + 1).ToString())
+                    @Html.Raw((i + 1).ToString())
                 }
                 else
                 {
-                @Html.ActionLink((i + 1).ToString(), "Index", "Catalogue", new { page = i }, null)
+                    @Html.ActionLink((i + 1).ToString(), "Index", "Catalogue", new { page = i }, null)
                 }
 
                 if (i + 1 < pageCount)
                 {
-                @Html.Raw(" ... ")
+                    @Html.Raw(" ... ")
                 }
             }
-            @if (page > -1)
+            
+
+            @if (page >= 0)
             {
+                
                 @Html.Raw("&nbsp;")
                 @Html.Raw("&nbsp;")
-           
                 @Html.ActionLink("весь список", "Index", "Catalogue", new { page = -1 }, null)
             }
             else
             {
-            
                 @Html.Raw("&nbsp;")
                 @Html.Raw("&nbsp;")
                 <text>весь список</text>
