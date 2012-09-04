@@ -12,6 +12,7 @@ namespace Vip
         public static Dictionary<string, PictureSize> Thumbnails { get; private set; }
 
         public static int PageSize { get; private set; }
+        public static int PageRange { get; private set; }
 
         static SiteSettings()
         {
@@ -24,6 +25,7 @@ namespace Vip
                               };
 
             PageSize = GetPageSize();
+            PageRange = GetPageRange();
         }
 
         private static int GetPageSize()
@@ -33,6 +35,15 @@ namespace Vip
                 throw new Exception("Невозможно получить кофигурацию пейджинга. В appsettings должен быть параметр с именем PageSize");
             }
             return Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+        }
+
+        private static int GetPageRange()
+        {
+            if (ConfigurationManager.AppSettings["PageRange"] == null)
+            {
+                throw new Exception("Невозможно получить кофигурацию пейджинга. В appsettings должен быть параметр с именем PageRange");
+            }
+            return Convert.ToInt32(ConfigurationManager.AppSettings["PageRange"]);
         }
 
         public static ThumbnailPicture GetThumbnail(string cacheFolder)
