@@ -19,7 +19,6 @@ namespace Vip.Controllers
                     ViewBag.CategoryName = model.Category.Name;
                 model.SetFilters();
                 model.ApplyFilers();
-                ViewBag.TotalCount = model.TotalProductsCount;
                 ViewBag.Page = page ?? 0;
                 ViewBag.MainMenu = model.Menu;
                 this.SetSeoContent(model);
@@ -62,7 +61,6 @@ namespace Vip.Controllers
                 model.SetFilters();
                 model.ApplyFilers();
                 ViewBag.MainMenu = model.Menu;
-                ViewBag.TotalCount = model.TotalProductsCount;
                 ViewBag.Page = page ?? 0;
                 return View(model);
             }
