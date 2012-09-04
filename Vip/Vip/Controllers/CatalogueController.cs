@@ -62,6 +62,8 @@ namespace Vip.Controllers
                 model.SetFilters();
                 model.ApplyFilers();
                 ViewBag.MainMenu = model.Menu;
+                ViewBag.TotalCount = model.TotalProductsCount;
+                ViewBag.Page = page ?? 0;
                 return View(model);
             }
         }

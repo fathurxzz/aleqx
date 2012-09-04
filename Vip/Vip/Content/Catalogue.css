@@ -216,7 +216,7 @@ img {
     border-radius: 8px 8px 8px 8px;
     font-family: DinCyRg;
     font-size: 14px;
-    color: #99b7cf;
+    color: #fff;
 }
 
 #pager span {
@@ -233,5 +233,5 @@ img {
     height: inherit;
     font-family: inherit;
     font-size: inherit;
-    color: inherit;
+    color: #99b7cf;
 }
