@@ -2,45 +2,32 @@
 @{
     int totalCount = Model.TotalCount;
     int pageSize = Model.PageSize;
-    int pageCount = totalCount / pageSize;
-    int page = (int)(ViewBag.Page ?? 0);
-    pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
+    int pageCount = Model.PageCount;
+    int page = Model.Page;
 }
-@if (totalCount > 0)
+@if (totalCount > 0 && totalCount > pageSize)
 {
     <div id="pager">
-        <span>
-            @for (int i = 0; i < pageCount; i++)
+        @foreach (var i in Model.Sequence)
+        {
+            if (i!=0)
             {
-                if (i == page)
-                {
-                    @Html.Raw((i + 1).ToString())
-                }
-                else
-                {
-                    @Html.ActionLink((i + 1).ToString(), "Index", "Catalogue", new { page = i }, null)
-                }
+                @(i == -1 ? Html.Raw("...") : Html.Raw(". "))
+            }
 
-                if (i + 1 < pageCount)
-                {
-                    @Html.Raw(" ... ")
-                }
+            if (i == page)
+            {
+                @Html.Raw((i + 1).ToString())
             }
-            
+            else if (i != -1)
+            {
+                @Html.ActionLink((i + 1).ToString(), "Index", "Catalogue", new { page = i }, null)
+            }
 
-            @if (page >= 0)
+            if (i + 1 < pageCount)
             {
-                
-                @Html.Raw("&nbsp;")
-                @Html.Raw("&nbsp;")
-                @Html.ActionLink("весь список", "Index", "Catalogue", new { page = -1 }, null)
+                @(i == -1 ? Html.Raw("..") : Html.Raw(" .."))
             }
-            else
-            {
-                @Html.Raw("&nbsp;")
-                @Html.Raw("&nbsp;")
-                <text>весь список</text>
-            }
-        </span>
+        }
     </div>
 }
