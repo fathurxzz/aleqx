@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace Vip.Helpers
 {
@@ -13,7 +10,7 @@ namespace Vip.Helpers
         public int PageCount { get; private set; }
         public List<int> Sequence { get; private set; }
         private int _k;
-        private const int Range = 4;
+        
 
         public Pager(int totalCount, int pageSize, int page)
         {
@@ -29,7 +26,7 @@ namespace Vip.Helpers
 
             for (int i = 0; i < PageCount; i++)
             {
-                if (IsValueInRange(PageCount, i, Range, page))
+                if (IsValueInRange(PageCount, i, SiteSettings.PageRange, page))
                     Sequence.Add(i);
                 else if (i == PageCount - 2)
                 {
