@@ -31,7 +31,7 @@ namespace Vip.Helpers
             {
                 if (IsValueInRange(PageCount, i, Range, page))
                     Sequence.Add(i);
-                else if (i == PageCount-2)
+                else if (i == PageCount - 2)
                 {
                     if (!Sequence.Contains(_k))
                         Sequence.Add(_k);
@@ -54,8 +54,7 @@ namespace Vip.Helpers
         {
             if (value == 0 || value == count - 1)
                 return true;
-
-            if (value >= (currentPosition - range) && value <= (currentPosition + range))
+            if ((value >= (currentPosition - range) && value <= (currentPosition + range)) || (currentPosition == -1 && (value >= (count - range) && value <= (count + range))))
             {
                 _k = -2;
                 return true;
