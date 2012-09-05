@@ -40,24 +40,21 @@
     else
     {
         @Html.Partial("_AttributesFilter", Model.AttributesFilter)
-   if (Request.IsAuthenticated)
-   {
-        <div>
-            @Html.ActionLink("Добавить изображение", "Create", "Product", new { Area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
-        </div>
-   }
+   
         <div class="productsContainer">
             @using (Html.BeginForm("EditMany", "Product", new { area = "Admin" }, FormMethod.Post))
             {
-                @Html.Hidden("categoryId",Model.Category.Id)
-                if (Request.IsAuthenticated)
-                {
-                    <div>
-                        <a href="#" class="adminLink" onclick="javascript:document.forms[0].submit();">Пакетное редактирование</a>
-                    </div>
-                }
-                foreach (var item in Model.Products)
-                {
+                @Html.Hidden("categoryId", Model.Category.Id)
+           if (Request.IsAuthenticated)
+           {
+                <div style="padding-top: 30px; padding-bottom: 20px;">
+                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { Area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                    <a style="padding-left: 30px;" href="#" class="adminLink" onclick="javascript:document.forms[0].submit();">Групповое
+                        редактирование</a>
+                </div>
+           }
+           foreach (var item in Model.Products)
+           {
                 <div class="product">
                     @if (Request.IsAuthenticated)
                     {
@@ -78,7 +75,7 @@
                         </span>
                     </div>
                 </div>
-                }
+           }
                 <div class="clear">
                 </div>
                 @Html.Partial("_Paging", new Pager(Model.TotalProductsCount, SiteSettings.PageSize, (int)ViewBag.Page))
