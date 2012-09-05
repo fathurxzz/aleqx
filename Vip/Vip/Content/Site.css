@@ -218,3 +218,34 @@ body {
 .alert {
     color: #f00;
 }
+
+.errorContainer 
+{
+    padding: 250px 20px 20px 20px;
+    color: #dadada;
+    font-family: DinCyRg;
+    text-align: center; 
+    text-transform: uppercase;
+    font-size: 15px;
+    line-height: 20px;
+    width: 900px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.errorContainer a {
+    color: #5fb5d9;
+    font-family: DinCyRg;
+}
+
+.somethingWrong {
+    font-size: 35px;
+    font-family: DinCyBk;
+    line-height: 55px;
+    padding-bottom: 20px;
+    padding-top: 100px;
+}
+
+.errorContainer .oopsPage {
+    text-transform: none;
+}

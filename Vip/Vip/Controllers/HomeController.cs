@@ -14,7 +14,7 @@ namespace Vip.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var model = new SiteViewModel(context, id??"");
+                var model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
                 if (model.Content != null && model.Layouts != null)
                     ViewBag.Layouts = model.Layouts;
@@ -25,6 +25,11 @@ namespace Vip.Controllers
         }
 
         public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult ErrorPage()
         {
             return View();
         }
