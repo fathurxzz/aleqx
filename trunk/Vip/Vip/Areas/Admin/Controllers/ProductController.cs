@@ -242,7 +242,7 @@ namespace Vip.Areas.Admin.Controllers
         }
 
 
-        public ActionResult EditManyProcess(string productIds, FormCollection form, string categoryName, int brandId, int makerId)
+        public ActionResult EditManyProcess(string productIds, FormCollection form, string categoryName, int brandId, int makerId, bool delete)
         {
             int[] ids = productIds.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(c => Convert.ToInt32(c))
@@ -255,15 +255,36 @@ namespace Vip.Areas.Admin.Controllers
 
                 var products = ids.Select(id => context.Product.First(p => p.Id == id)).ToList();
 
-                foreach (var product in products)
+                if (delete)
                 {
-                    if (brand != null)
-                        product.Brand = brand;
-                    if (maker != null)
-                        product.Maker = maker;
 
-                    if (!string.IsNullOrEmpty(form["ProductTitle"]))
-                        product.Title = form["ProductTitle"];
+                    foreach (var product in products)
+                    {
+                        product.Layouts.Clear();
+                        product.ProductAttributes.Clear();
+                        context.DeleteObject(product);
+                    }
+
+                    //while (products.Any())
+                    //{
+                    //    var product = products.First();
+                    //    product.Layouts.Clear();
+                    //    product.ProductAttributes.Clear();
+                    //    context.DeleteObject(product);
+                    //}
+                }
+                else
+                {
+                    foreach (var product in products)
+                    {
+                        if (brand != null)
+                            product.Brand = brand;
+                        if (maker != null)
+                            product.Maker = maker;
+
+                        if (!string.IsNullOrEmpty(form["ProductTitle"]))
+                            product.Title = form["ProductTitle"];
+                    }
                 }
 
                 context.SaveChanges();
