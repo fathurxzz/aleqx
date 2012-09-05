@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace SiteExtensions
@@ -33,7 +35,7 @@ namespace SiteExtensions
                 DeleteFile(relativePath, fileName);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -49,11 +51,21 @@ namespace SiteExtensions
         /// 
         /// </summary>
         /// <param name="relativePath"></param>
-        /// <param name="initialName"></param>
+        /// <param name="clientPath"> </param>
         /// <returns></returns>
-        public static string GetUniqueFileName(string relativePath, string initialName)
+        public static string GetUniqueFileName(string relativePath, string clientPath)
         {
+            string initialName = Path.GetFileName(clientPath);
+
+            if (initialName == null)
+            {
+                throw new Exception("Невозможно определить имя файла " + clientPath);
+            }
+
+            initialName = Regex.Replace(initialName, @"[^a-zA-Z0-9._]", "");
+
             string result = initialName;
+
             string filePath = HttpContext.Current.Server.MapPath(relativePath);
 
             filePath = Path.Combine(filePath, initialName);
