@@ -50,8 +50,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\Connector NET 6.4.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
     </Reference>
-    <Reference Include="SiteExtensions">
-      <HintPath>..\..\..\Dropbox\libs\SiteExtensions.dll</HintPath>
+    <Reference Include="SiteExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Dropbox\libs\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -93,6 +94,7 @@
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\LinqHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AboutModel.cs" />
@@ -275,6 +277,7 @@
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\EditMany.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />

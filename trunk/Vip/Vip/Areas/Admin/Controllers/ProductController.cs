@@ -42,7 +42,7 @@ namespace Vip.Areas.Admin.Controllers
                     var brand = context.Brand.First(b => b.Id == brandId);
                     var maker = context.Maker.First(m => m.Id == makerId);
 
-                    
+
 
                     var productLayouts = new List<Layout>();
                     var productAttributes = new List<ProductAttribute>();
@@ -103,9 +103,9 @@ namespace Vip.Areas.Admin.Controllers
                             titleIndex++;
                         }
                     }
-                    
+
                     context.SaveChanges();
-                    
+
                     return RedirectToAction("Index", "Catalogue", new { Area = "", category = category.Name });
                 }
             }
@@ -205,6 +205,70 @@ namespace Vip.Areas.Admin.Controllers
             {
                 return View();
             }
+        }
+
+
+        [HttpPost]
+        public ActionResult EditMany(FormCollection form, int categoryId)
+        {
+            var productIds = form.GetArray<int>("prod_");
+            string sequence = productIds.Aggregate(string.Empty, (current, pid) => current + (pid + ","));
+            ViewBag.ProductIds = sequence;
+
+
+            using (var context = new SiteContainer())
+            {
+                var brands = context.Brand.ToList();
+                List<SelectListItem> brandItems = new List<SelectListItem> { new SelectListItem { Text = "", Value = "0", Selected = true } };
+                brandItems.AddRange(brands.Select(brand => new SelectListItem { Text = brand.Title, Value = brand.Id.ToString() }));
+                ViewBag.Brands = brandItems;
+
+                var makers = context.Maker.ToList();
+                List<SelectListItem> makerItems = new List<SelectListItem> { new SelectListItem { Text = "", Value = "0", Selected = true } };
+                makerItems.AddRange(makers.Select(b => new SelectListItem { Text = b.Title, Value = b.Id.ToString() }));
+                ViewBag.Makers = makerItems;
+
+                //var product = context.Product.Include("ProductAttributes").Include("Layouts").Include("Category").Include("Maker").Include("Brand").First(p => p.Id == id);
+                //var layouts = context.Layout.Include("Parent").Include("Children").ToList();
+                //ViewBag.Layouts = layouts;
+                var category = context.Category.Include("ProductAttributes").First(c => c.Id == categoryId);
+                ViewBag.CategoryName = category.Name;
+                ViewBag.CategoryTitle = category.Title;
+                ViewBag.Attributes = category.ProductAttributes;
+                //return View(product);
+            }
+
+            return View();
+        }
+
+
+        public ActionResult EditManyProcess(string productIds, FormCollection form, string categoryName, int brandId, int makerId)
+        {
+            int[] ids = productIds.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(c => Convert.ToInt32(c))
+                .ToArray();
+
+            using (var context = new SiteContainer())
+            {
+                var brand = context.Brand.FirstOrDefault(b => b.Id == brandId);
+                var maker = context.Maker.FirstOrDefault(m => m.Id == makerId);
+
+                var products = ids.Select(id => context.Product.First(p => p.Id == id)).ToList();
+
+                foreach (var product in products)
+                {
+                    if (brand != null)
+                        product.Brand = brand;
+                    if (maker != null)
+                        product.Maker = maker;
+
+                    if (!string.IsNullOrEmpty(form["ProductTitle"]))
+                        product.Title = form["ProductTitle"];
+                }
+
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Catalogue", new { Area = "", category = categoryName });
         }
 
         public ActionResult Delete(int id, int? page)
