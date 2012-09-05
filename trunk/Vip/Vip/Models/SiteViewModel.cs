@@ -32,10 +32,23 @@ namespace Vip.Models
                              });
             }
 
-            if (contentName != null)
+
+            if (contentName == null)
             {
-                Content = context.Content.FirstOrDefault(c => c.Name == contentName) ?? context.Content.First(c => c.MainPage);
-                Title = Content.Title;
+                Content = context.Content.First(c => c.MainPage);
+            }
+            else
+            {
+                Content = context.Content.FirstOrDefault(c => c.Name == contentName);
+                if (Content==null)
+                {
+                    throw new HttpNotFoundException();
+                }
+            }
+
+
+
+            Title = Content.Title;
                 SeoDescription = Content.SeoDescription;
                 SeoKeywords = Content.SeoKeywords;
                 if (Content.MainPage)
@@ -44,7 +57,7 @@ namespace Vip.Models
                     Layouts = context.Layout.Include("Parent").Include("Children").ToList();
                 }
 
-            }
+            
         }
     }
 }

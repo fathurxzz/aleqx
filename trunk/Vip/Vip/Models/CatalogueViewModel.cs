@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using SiteExtensions;
 using Vip.Helpers;
 
 namespace Vip.Models
@@ -20,7 +21,7 @@ namespace Vip.Models
         public int TotalProductsCount { get; set; }
 
         public CatalogueViewModel(SiteContainer context, string category, int? page)
-            : base(context,null)
+            : base(context, null)
         {
             Title = "Каталог";
             Layouts = context.Layout.Include("Parent").Include("Children").ToList();
@@ -29,13 +30,17 @@ namespace Vip.Models
             Products = context.Product.Include("ProductAttributes").Include("Layouts").Include("Brand").Include("Maker").ToList();
             if (string.IsNullOrEmpty(category))
             {
-                Categories = context.Category.Include("Products").Where(c=>!c.MainPage).ToList();
+                Categories = context.Category.Include("Products").Where(c => !c.MainPage).ToList();
                 Category = context.Category.First(c => c.MainPage);
                 Title += " - Разделы";
             }
             else
             {
-                Category = context.Category.Include("ProductAttributes").Include("Products").First(c => c.Name == category);
+                Category = context.Category.Include("ProductAttributes").Include("Products").FirstOrDefault(c => c.Name == category);
+                if (Category == null)
+                {
+                    throw new HttpNotFoundException();
+                }
                 Attributes = Category.ProductAttributes.ToList();
                 Products = Category.Products.ToList();
                 foreach (var product in Products)
@@ -108,11 +113,11 @@ namespace Vip.Models
                 {
                     Products.Add(product);
                 }
-                
+
             }
 
             var brandIds = new List<int>();
-            if(WebSession.Brands.Any())
+            if (WebSession.Brands.Any())
             {
                 brandIds.AddRange(from product in Products from brand in WebSession.Brands where product.Brand.Id == brand.Id select product.Id);
                 result.Clear();
@@ -122,7 +127,7 @@ namespace Vip.Models
                 {
                     Products.Add(product);
                 }
-                
+
             }
 
             var makerIds = new List<int>();
