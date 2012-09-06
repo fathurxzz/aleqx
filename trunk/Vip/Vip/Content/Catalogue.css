@@ -208,3 +208,15 @@ img {
 
 
 
+
+.customTitle {
+    text-align: center;
+    color: #ababab;
+    font-family: DinCyRg;
+    font-size: 12px;
+    height: 21px;
+}
+
+.customTitle span {
+    color: #69cff8;
+}
