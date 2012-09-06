@@ -67,7 +67,7 @@
                     <div class="img-container">
                         @{
                             //var customTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" +  image.Path.First().ParentName + " &raquo; " + (SiteSettings.Language == Language.Ru ? image.Title : image.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ? image.Description : image.DescriptionEng) + "</td></tr></table>";
-               var customTitle = "<div class=\"customTitle\">Каталог &raquo; " + item.Category.Name + " &raquo; <span>"+item.Title+"</span>"+"</div>";
+               var customTitle = "<div class=\"customTitle\">Каталог &raquo; " + item.Category.Title + " &raquo; <span>"+item.Title+"</span>"+"</div>";
                         }
                         <a rel="@Html.Raw("group1")" href="../../Content/Images/@item.ImageSource" class="fancyImage" customtitle="@customTitle"  >
                             @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp))
