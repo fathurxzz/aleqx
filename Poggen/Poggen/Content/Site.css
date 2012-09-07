@@ -1,0 +1,109 @@
+﻿*
+{
+    padding: 0;
+    margin: 0;
+}
+
+body
+{
+    background-color: #000;
+    color: #fff;
+    font-family: Arial;
+}
+
+a
+{
+    color: #ff9200;
+}
+
+.page
+{
+    min-height: 700px;
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.header
+{
+    padding-top: 200px;
+}
+
+#logo
+{
+    width: 168px;
+    height: 118px;
+    background: url('img/logo.gif') no-repeat;
+    float: left;
+}
+
+.mainMenu
+{
+    margin-left: 80px;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 20px;
+    padding-top: 10px;
+    width: 150px;
+    
+    float: left;
+}
+
+.mainMenu ul li
+{
+    list-style: none;
+}
+
+
+.categoriesSelector {
+    margin-left: 450px;
+    border: 1px solid #ff9200;
+    width: 500px;
+    padding: 10px 0;
+    margin-top: 11px;
+}
+
+.categorySelector, .subCategorySelector 
+{
+    padding: 9px;
+    text-align: center;
+}
+
+.categoriesSelector select {
+    font-style: italic;
+    font-size: 11px;
+    color: #7e7e7e;
+    width: 200px;
+}
+
+.footerContainer
+{
+    background-color: #331d00;
+    height: 77px;
+}
+
+.footer
+{
+    padding-top: 30px;
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+.copy
+{
+    float: left;
+    width: 300px;
+}
+
+.emLink
+{
+    float: right;
+    width: 300px;
+    text-align: right;
+}
+
+
+
+

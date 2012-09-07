@@ -1,0 +1,8 @@
+﻿<div class="categoriesSelector">
+                <div class="categorySelector">
+                    @Html.DropDownList("category",new List<SelectListItem>{new SelectListItem{Text = "Выберите категорию..."}})
+                </div>
+                <div class="subCategorySelector">
+                    @Html.DropDownList("subCategory", new List<SelectListItem> { new SelectListItem { Text = "Выберите тип..." } })
+                </div>
+            </div>
