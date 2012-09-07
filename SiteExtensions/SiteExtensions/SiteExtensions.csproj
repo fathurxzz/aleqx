@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerExtensions.cs" />
+    <Compile Include="MVCHelper.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="FormCollectionExtender.cs" />
     <Compile Include="Graphics\GraphicsHelper.cs" />
