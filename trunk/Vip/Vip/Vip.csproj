@@ -50,7 +50,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\Connector NET 6.4.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
     </Reference>
-    <Reference Include="SiteExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SiteExtensions, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Dropbox\libs\SiteExtensions.dll</HintPath>
     </Reference>

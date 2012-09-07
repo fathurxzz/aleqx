@@ -45,6 +45,7 @@
             @using (Html.BeginForm("EditMany", "Product", new { area = "Admin" }, FormMethod.Post))
             {
                 @Html.Hidden("categoryId", Model.Category.Id)
+                @Html.Hidden("page", (int)ViewBag.Page)
            if (Request.IsAuthenticated)
            {
                 <div style="padding-top: 30px; padding-bottom: 20px;">
