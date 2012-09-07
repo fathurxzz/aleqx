@@ -209,12 +209,12 @@ namespace Vip.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult EditMany(FormCollection form, int categoryId)
+        public ActionResult EditMany(FormCollection form, int categoryId, int? page)
         {
             var productIds = form.GetArray<int>("prod_");
             string sequence = productIds.Aggregate(string.Empty, (current, pid) => current + (pid + ","));
             ViewBag.ProductIds = sequence;
-
+            ViewBag.Page = page;
 
             using (var context = new SiteContainer())
             {
@@ -242,7 +242,7 @@ namespace Vip.Areas.Admin.Controllers
         }
 
 
-        public ActionResult EditManyProcess(string productIds, FormCollection form, string categoryName, int brandId, int makerId, bool delete)
+        public ActionResult EditManyProcess(string productIds, FormCollection form, string categoryName, int brandId, int makerId, bool delete,int? page)
         {
             int[] ids = productIds.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(c => Convert.ToInt32(c))
@@ -289,7 +289,7 @@ namespace Vip.Areas.Admin.Controllers
 
                 context.SaveChanges();
             }
-            return RedirectToAction("Index", "Catalogue", new { Area = "", category = categoryName });
+            return RedirectToAction("Index", "Catalogue", new { Area = "", category = categoryName, page= page.HasValue?page:0 });
         }
 
         public ActionResult Delete(int id, int? page)
