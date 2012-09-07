@@ -1,9 +1,20 @@
-﻿<div class="mainMenu">
-                <ul>
-                    <li>Продукция </li>
-                    <li><a href="#">Бренды</a> </li>
-                    <li><a href="#">Проектирование</a> </li>
-                    <li><a href="#">О компании</a> </li>
-                    <li><a href="#">Обратная связь</a> </li>
-                </ul>
-            </div>
+﻿@using Poggen.Helpers
+
+<div class="mainMenu">
+    <ul>
+        <li>
+            @if (Html.IsCurrentController("Catalogue"))
+            {
+                <text>Продукция</text>
+            }
+            else
+            {
+                @Html.ActionLink("Продукция", "Index", "Catalogue")
+            }
+        </li>
+        <li><a href="#">Бренды</a></li>
+        <li><a href="#">Проектирование</a> </li>
+        <li><a href="#">О компании</a> </li>
+        <li><a href="#">Обратная связь</a> </li>
+    </ul>
+</div>
