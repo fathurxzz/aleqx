@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Poggen.Models;
+using SiteExtensions;
 
 namespace Poggen.Controllers
 {
@@ -10,14 +12,12 @@ namespace Poggen.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var model = new SiteViewModel(context,null);
+                this.SetSeoContent(model);
+                return View();
+            }
         }
     }
 }

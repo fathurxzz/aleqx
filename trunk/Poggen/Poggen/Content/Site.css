@@ -18,10 +18,11 @@ a
 
 .page
 {
-    min-height: 700px;
+    min-height: 780px;
     width: 1000px;
     position: relative;
     margin: 0 auto;
+    background: url('img/site-bg.gif') no-repeat bottom;
 }
 
 .header
@@ -107,3 +108,22 @@ a
 
 
 
+.contentContainer {
+    margin-left: 270px;
+    width: 580px;
+    background-color: #000;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    
+    padding:120px 50px 50px 50px;
+    
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.contentContainer .title {
+    color: #ff9200;
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 50px;
+}
