@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/07/2012 15:25:04
+-- Date Created: 09/10/2012 11:59:58
 -- Generated from EDMX file: D:\AlexK\projects\Poggen\Poggen\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -36,26 +36,28 @@ SET foreign_key_checks = 1;
 
 CREATE TABLE `Content` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
     `Text` longtext  NOT NULL,
-    `Name` longtext  NOT NULL,
-    `MainPage` longtext  NOT NULL,
-    `SeoDescription` longtext  NOT NULL,
-    `SeoKeywords` longtext  NOT NULL,
-    `SortOrder` longtext  NOT NULL
+    `Name` varchar( 200 )  NOT NULL,
+    `MainPage` bool  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL,
+    `SortOrder` int  NOT NULL
 );
 
 -- Creating table 'Category'
 
 CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` longtext  NOT NULL,
-    `Title` longtext  NOT NULL,
-    `SortOrder` longtext  NOT NULL,
-    `SeoDescription` longtext  NOT NULL,
-    `SeoKeywords` longtext  NOT NULL,
-    `Text` longtext  NOT NULL,
-    `MainPage` longtext  NOT NULL
+    `Name` varchar( 200 )  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL,
+    `Text` longtext  NULL,
+    `MainPage` bool  NOT NULL,
+    `CategoryId` int  NULL,
+    `CategoryType` int  NOT NULL
 );
 
 
@@ -69,6 +71,21 @@ CREATE TABLE `Category` (
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
+
+-- Creating foreign key on `CategoryId` in table 'Category'
+
+ALTER TABLE `Category`
+ADD CONSTRAINT `FK_CategoryCategory`
+    FOREIGN KEY (`CategoryId`)
+    REFERENCES `Category`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryCategory'
+
+CREATE INDEX `IX_FK_CategoryCategory` 
+    ON `Category`
+    (`CategoryId`);
 
 -- --------------------------------------------------
 -- Script has ended

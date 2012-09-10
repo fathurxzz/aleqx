@@ -1,4 +1,4 @@
-﻿@using Poggen.Helpers
+﻿@using SiteExtensions
 
 <div class="mainMenu">
     <ul>
@@ -9,7 +9,7 @@
             }
             else
             {
-                @Html.ActionLink("Продукция", "Index", "Catalogue")
+                @Html.ActionLink("Продукция", "Index", "Catalogue",new{area=""},null)
             }
         </li>
         <li><a href="#">Бренды</a></li>

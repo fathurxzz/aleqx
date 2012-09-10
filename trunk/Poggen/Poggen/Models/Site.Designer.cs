@@ -16,6 +16,11 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("Site", "CategoryCategory", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Poggen.Models.Category), "Category1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Poggen.Models.Category), true)]
+
+#endregion
 
 namespace Poggen.Models
 {
@@ -141,21 +146,17 @@ namespace Poggen.Models
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
-        /// <param name="text">Initial value of the Text property.</param>
         /// <param name="mainPage">Initial value of the MainPage property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String sortOrder, global::System.String seoDescription, global::System.String seoKeywords, global::System.String text, global::System.String mainPage)
+        /// <param name="categoryType">Initial value of the CategoryType property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Boolean mainPage, global::System.Int32 categoryType)
         {
             Category category = new Category();
             category.Id = id;
             category.Name = name;
             category.Title = title;
             category.SortOrder = sortOrder;
-            category.SeoDescription = seoDescription;
-            category.SeoKeywords = seoKeywords;
-            category.Text = text;
             category.MainPage = mainPage;
+            category.CategoryType = categoryType;
             return category;
         }
 
@@ -242,7 +243,7 @@ namespace Poggen.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -252,19 +253,19 @@ namespace Poggen.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -276,7 +277,7 @@ namespace Poggen.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -288,7 +289,7 @@ namespace Poggen.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -300,7 +301,7 @@ namespace Poggen.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }
@@ -312,7 +313,7 @@ namespace Poggen.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Text
         {
@@ -324,7 +325,7 @@ namespace Poggen.Models
             {
                 OnTextChanging(value);
                 ReportPropertyChanging("Text");
-                _Text = StructuralObject.SetValidValue(value, false);
+                _Text = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Text");
                 OnTextChanged();
             }
@@ -338,7 +339,7 @@ namespace Poggen.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String MainPage
+        public global::System.Boolean MainPage
         {
             get
             {
@@ -348,17 +349,128 @@ namespace Poggen.Models
             {
                 OnMainPageChanging(value);
                 ReportPropertyChanging("MainPage");
-                _MainPage = StructuralObject.SetValidValue(value, false);
+                _MainPage = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("MainPage");
                 OnMainPageChanged();
             }
         }
-        private global::System.String _MainPage;
-        partial void OnMainPageChanging(global::System.String value);
+        private global::System.Boolean _MainPage;
+        partial void OnMainPageChanging(global::System.Boolean value);
         partial void OnMainPageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CategoryId
+        {
+            get
+            {
+                return _CategoryId;
+            }
+            set
+            {
+                OnCategoryIdChanging(value);
+                ReportPropertyChanging("CategoryId");
+                _CategoryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryId");
+                OnCategoryIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CategoryId;
+        partial void OnCategoryIdChanging(Nullable<global::System.Int32> value);
+        partial void OnCategoryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CategoryType
+        {
+            get
+            {
+                return _CategoryType;
+            }
+            set
+            {
+                OnCategoryTypeChanging(value);
+                ReportPropertyChanging("CategoryType");
+                _CategoryType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryType");
+                OnCategoryTypeChanged();
+            }
+        }
+        private global::System.Int32 _CategoryType;
+        partial void OnCategoryTypeChanging(global::System.Int32 value);
+        partial void OnCategoryTypeChanged();
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryCategory", "Category1")]
+        public EntityCollection<Category> Children
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Site.CategoryCategory", "Category1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Site.CategoryCategory", "Category1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryCategory", "Category")]
+        public Category Parent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryCategory", "Category").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryCategory", "Category").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Category> ParentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryCategory", "Category");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Category>("Site.CategoryCategory", "Category", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -379,10 +491,8 @@ namespace Poggen.Models
         /// <param name="text">Initial value of the Text property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="mainPage">Initial value of the MainPage property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String title, global::System.String text, global::System.String name, global::System.String mainPage, global::System.String seoDescription, global::System.String seoKeywords, global::System.String sortOrder)
+        public static Content CreateContent(global::System.Int32 id, global::System.String title, global::System.String text, global::System.String name, global::System.Boolean mainPage, global::System.Int32 sortOrder)
         {
             Content content = new Content();
             content.Id = id;
@@ -390,8 +500,6 @@ namespace Poggen.Models
             content.Text = text;
             content.Name = name;
             content.MainPage = mainPage;
-            content.SeoDescription = seoDescription;
-            content.SeoKeywords = seoKeywords;
             content.SortOrder = sortOrder;
             return content;
         }
@@ -503,7 +611,7 @@ namespace Poggen.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String MainPage
+        public global::System.Boolean MainPage
         {
             get
             {
@@ -513,19 +621,19 @@ namespace Poggen.Models
             {
                 OnMainPageChanging(value);
                 ReportPropertyChanging("MainPage");
-                _MainPage = StructuralObject.SetValidValue(value, false);
+                _MainPage = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("MainPage");
                 OnMainPageChanged();
             }
         }
-        private global::System.String _MainPage;
-        partial void OnMainPageChanging(global::System.String value);
+        private global::System.Boolean _MainPage;
+        partial void OnMainPageChanging(global::System.Boolean value);
         partial void OnMainPageChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -537,7 +645,7 @@ namespace Poggen.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -549,7 +657,7 @@ namespace Poggen.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -561,7 +669,7 @@ namespace Poggen.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }
@@ -575,7 +683,7 @@ namespace Poggen.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SortOrder
+        public global::System.Int32 SortOrder
         {
             get
             {
@@ -585,13 +693,13 @@ namespace Poggen.Models
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value, false);
+                _SortOrder = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
         }
-        private global::System.String _SortOrder;
-        partial void OnSortOrderChanging(global::System.String value);
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
 
         #endregion
