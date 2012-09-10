@@ -1,0 +1,58 @@
+﻿.adminLinkContainer
+{
+    text-align: center;
+}
+
+a.adminLink {
+    color: #f00;
+    font-size: 12px;
+}
+
+.field-validation-error
+{
+    color: red !important;
+}
+
+.adminEditContentTable
+{
+    font-family: DinCyRg;
+    width: 500px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.adminEditContentTable td
+{
+    padding-top: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
+{
+    width: 500px;
+}
+
+
+.adminEditContentTable td span.tip
+{
+    font-size: 11px;
+    font-weight: normal;
+    color: #888;
+}
+
+.buttonsContainer
+{
+    text-align: center;
+    margin-top: 20px;
+    font-family: Verdana;
+}
+
+.adminContentContainer
+{
+    font-size: 12px;
+    color: #fff;
+}
+.adminContentContainer a {
+    color: #fff;
+}

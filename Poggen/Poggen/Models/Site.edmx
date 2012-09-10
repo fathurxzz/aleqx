@@ -8,33 +8,51 @@
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Site.Store.Category" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoryCategory" Association="Site.Store.CategoryCategory">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category1" EntitySet="Category" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Content">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Text" Type="longtext" Nullable="false" />
-    <Property Name="Name" Type="longtext" Nullable="false" />
-    <Property Name="MainPage" Type="longtext" Nullable="false" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="false" />
-    <Property Name="SeoKeywords" Type="longtext" Nullable="false" />
-    <Property Name="SortOrder" Type="longtext" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="longtext" Nullable="false" />
-    <Property Name="Title" Type="longtext" Nullable="false" />
-    <Property Name="SortOrder" Type="longtext" Nullable="false" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="false" />
-    <Property Name="SeoKeywords" Type="longtext" Nullable="false" />
-    <Property Name="Text" Type="longtext" Nullable="false" />
-    <Property Name="MainPage" Type="longtext" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="true" />
+    <Property Name="CategoryType" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="CategoryCategory">
+    <End Role="Category" Type="Site.Store.Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="Site.Store.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category1">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -42,33 +60,53 @@
         <EntityContainer Name="SiteContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Content" EntityType="Site.Content" />
           <EntitySet Name="Category" EntityType="Site.Category" />
+          <AssociationSet Name="CategoryCategory" Association="Site.CategoryCategory">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Content">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Text" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="MainPage" Nullable="false" />
-          <Property Type="String" Name="SeoDescription" Nullable="false" />
-          <Property Type="String" Name="SeoKeywords" Nullable="false" />
-          <Property Type="String" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="Title" Nullable="false" />
-          <Property Type="String" Name="SortOrder" Nullable="false" />
-          <Property Type="String" Name="SeoDescription" Nullable="false" />
-          <Property Type="String" Name="SeoKeywords" Nullable="false" />
-          <Property Type="String" Name="Text" Nullable="false" />
-          <Property Type="String" Name="MainPage" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="String" Name="Text" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="Site.CategoryCategory" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Parent" Relationship="Site.CategoryCategory" FromRole="Category1" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Int32" Name="CategoryType" Nullable="false" />
         </EntityType>
+        <Association Name="CategoryCategory">
+          <End Type="Site.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="Site.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -100,6 +138,8 @@
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -124,7 +164,13 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" />
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="2.75" PointY="0.75" Height="2.2496956380208331" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9070849609374996" />
+        <AssociationConnector Association="Site.CategoryCategory">
+          <ConnectorPoint PointX="3.2819230769230767" PointY="3.6570849609374996" />
+          <ConnectorPoint PointX="3.2819230769230767" PointY="3.9070849609374996" />
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.9070849609374996" />
+          <ConnectorPoint PointX="3.7284615384615383" PointY="3.6570849609374996" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

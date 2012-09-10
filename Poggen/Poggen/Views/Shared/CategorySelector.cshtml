@@ -1,8 +1,25 @@
-﻿<div class="categoriesSelector">
-                <div class="categorySelector">
-                    @Html.DropDownList("category",new List<SelectListItem>{new SelectListItem{Text = "Выберите категорию..."}})
-                </div>
-                <div class="subCategorySelector">
-                    @Html.DropDownList("subCategory", new List<SelectListItem> { new SelectListItem { Text = "Выберите тип..." } })
-                </div>
-            </div>
+﻿@model IEnumerable<Poggen.Models.Category>
+@{
+    var categories = new List<SelectListItem> { new SelectListItem { Text = "Выберите категорию...", Value = "" } };
+    categories.AddRange(Model.Select(category => new SelectListItem { Text = category.Title, Value = category.Name }));
+
+    var subcategories = new List<SelectListItem> { new SelectListItem { Text = "Выберите тип...", Value = "" } };
+    var subCategories = Model.Where(c => c.Id == ViewBag.CategoryId).SelectMany(c => c.Children);
+    subcategories.AddRange(subCategories.Select(category => new SelectListItem { Text = category.Title, Value = category.Name }));
+}
+<div class="categoriesSelector">
+    <div class="categorySelector">
+        @Html.DropDownList("category", categories)
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Добавить категорию", "Create", "Category", new { area = "Admin", categoryType = 0 }, new { @class = "adminLink" })
+        }
+    </div>
+    <div class="subCategorySelector">
+        @Html.DropDownList("subcategory", subcategories)
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Добавить тип", "Create", "Category", new { area = "Admin", parentId = ViewBag.CategoryId, categoryType = 0 }, new { @class = "adminLink" })
+        }
+    </div>
+</div>

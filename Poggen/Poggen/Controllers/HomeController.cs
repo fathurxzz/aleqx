@@ -16,6 +16,7 @@ namespace Poggen.Controllers
             {
                 var model = new SiteViewModel(context,null);
                 this.SetSeoContent(model);
+                ViewBag.isHomePage = model.IsHomePage;
                 return View();
             }
         }
