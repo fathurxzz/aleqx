@@ -66,9 +66,9 @@ namespace Vip.Areas.Admin.Controllers
                     "SortOrder",
                     "SeoDescription",
                     "SeoKeywords",
-                    "Description",
                     "DescriptionTitle"
                     });
+                    category.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                     if (fileUpload != null)
                     {
@@ -86,7 +86,7 @@ namespace Vip.Areas.Admin.Controllers
                     return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
                 }
 
-                
+
             }
             catch
             {
@@ -120,9 +120,9 @@ namespace Vip.Areas.Admin.Controllers
                     "SortOrder",
                     "SeoDescription",
                     "SeoKeywords",
-                    "Description",
                     "DescriptionTitle"
                 });
+                    category.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                     var attributes = context.ProductAttribute.ToList();
                     PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr");
@@ -155,7 +155,7 @@ namespace Vip.Areas.Admin.Controllers
 
 
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
+                    return RedirectToAction("Index", "Catalogue", new { area = "", category = !category.MainPage? category.Name :""});
                 }
             }
             catch
@@ -169,20 +169,20 @@ namespace Vip.Areas.Admin.Controllers
             try
             {
 
-            
-            using (var context = new SiteContainer())
-            {
-                var category = context.Category.Include("Products").Include("ProductAttributes").First(c => c.Id == id);
-                if (!category.Products.Any())
+
+                using (var context = new SiteContainer())
                 {
-                    category.ProductAttributes.Clear();
-                    ImageHelper.DeleteImage(category.ImageSource);
+                    var category = context.Category.Include("Products").Include("ProductAttributes").First(c => c.Id == id);
+                    if (!category.Products.Any())
+                    {
+                        category.ProductAttributes.Clear();
+                        ImageHelper.DeleteImage(category.ImageSource);
 
-                    context.DeleteObject(category);
-                    context.SaveChanges();
+                        context.DeleteObject(category);
+                        context.SaveChanges();
 
+                    }
                 }
-            }
             }
             catch
             {

@@ -11,56 +11,56 @@
 
 <div class="adminContentContainer">
 
-@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.ValidationSummary(true)
-    @Html.HiddenFor(model => model.Id)
+    @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
     
-    <table class="adminEditContentTable">
-        <tr>
-            <td colspan="2">
-                <h2>
-                    Редактирование раздела</h2>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.Title)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.Title)
-                @Html.ValidationMessageFor(model => model.Title)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.Name)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Атрибуты
-            </td>
-            <td>
-                @{
-                    var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
-                    if (attributes != null)
-                    {
-                        foreach (var item in attributes)
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Редактирование раздела</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Атрибуты
+                </td>
+                <td>
+                    @{
+                        var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+                        if (attributes != null)
                         {
+                            foreach (var item in attributes)
+                            {
 
-                            @Html.CheckBox("attr_" + item.Id, Model.ProductAttributes.Contains(item))@Html.Raw("&nbsp;")@item.Title<br />
+                                @Html.CheckBox("attr_" + item.Id, Model.ProductAttributes.Contains(item))@Html.Raw("&nbsp;")@item.Title<br />
 
+                            }
                         }
                     }
-                }
-            </td>
-        </tr>
-         <tr>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     @Html.LabelFor(model => model.DescriptionTitle)
                 </td>
@@ -78,24 +78,24 @@
                     @Html.ValidationMessageFor(model => model.Description)
                 </td>
             </tr>
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.SortOrder)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.SortOrder)
-                @Html.ValidationMessageFor(model => model.SortOrder)
-            </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.ImageSource)
-            </td>
-            <td>
-                <input type="file" name="fileUpload" />
-                @Html.ValidationMessageFor(model => model.ImageSource)
-            </td>
-        </tr>
-         <tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.SortOrder)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SortOrder)
+                    @Html.ValidationMessageFor(model => model.SortOrder)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.ImageSource)
+                </td>
+                <td>
+                    <input type="file" name="fileUpload" />
+                    @Html.ValidationMessageFor(model => model.ImageSource)
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" style="text-align: center">
                     Для поисковых систем
                 </td>
@@ -116,10 +116,16 @@
                     @Html.ValidationMessageFor(model => model.SeoKeywords)
                 </td>
             </tr>
-    </table>
-       <div class="buttonsContainer">
-        <input type="submit" value="Сохранить" />
-        @Html.ActionLink("Назад", "Index", "Category", new { Area = "Admin" }, null)
-    </div>
-}
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Category", new { Area = "Admin" }, null)
+        </div>
+    }
 </div>
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
+
