@@ -39,8 +39,10 @@
     }
     else
     {
-        @Html.Partial("_AttributesFilter", Model.AttributesFilter)
-   
+         if (Model.AttributesFilter != null)
+         {
+             @Html.Partial("_AttributesFilter", Model.AttributesFilter)
+         }
         <div class="productsContainer">
             @using (Html.BeginForm("EditMany", "Product", new { area = "Admin" }, FormMethod.Post))
             {
