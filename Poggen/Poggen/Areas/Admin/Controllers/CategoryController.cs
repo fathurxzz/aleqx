@@ -51,16 +51,35 @@ namespace Poggen.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.First(c => c.Id == id);
+                return View(category);
+            }
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection form)
         {
             try
             {
 
-                return RedirectToAction("Index");
+                using (var context = new SiteContainer())
+                {
+                    var category = context.Category.Include("Parent").First(c => c.Id == id);
+
+                    TryUpdateModel(category, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+                    category.Text = HttpUtility.HtmlDecode(form["Text"]);
+
+                    context.SaveChanges();
+
+                    if (category.MainPage)
+                        return RedirectToAction("Index", "Catalogue", new {area = ""});
+
+                    return category.Parent != null
+                     ? RedirectToAction("Index", "Catalogue", new { area = "", category = category.Parent.Name, subcategory = category.Name })
+                     : RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
+                }
             }
             catch
             {
