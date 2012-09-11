@@ -38,7 +38,7 @@
 
 .article 
 {
-    padding: 40px 60px;
+    padding: 30px 60px;
     background: url('img/articles-shadow-left.png') repeat-y;
     background-position: 0 -25px;
 }
@@ -50,7 +50,7 @@
 
 .article .title {
     float: left;
-    width: 250px;
+    width: 200px;
     color: #fff;
     font-family: DinCyLt;
     font-size: 20px;
@@ -63,7 +63,7 @@
 }
 
 .article .text {
-    margin-left: 285px;
+    margin-left: 235px;
     color: #99b7cf;
     font-size: 12px;
     font-family: DinCyRg;
