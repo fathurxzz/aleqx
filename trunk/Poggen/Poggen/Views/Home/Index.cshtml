@@ -1,1 +1,16 @@
-﻿
+﻿@model Poggen.Models.SiteViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    @Model.Content.Title
+}
+
+@if (Request.IsAuthenticated)
+{
+    <div>
+        @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+    </div>
+}
+@Html.Raw(Model.Content.Text)
