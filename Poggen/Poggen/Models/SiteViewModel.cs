@@ -13,11 +13,15 @@ namespace Poggen.Models
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
+        public Content Content { get; set; }
 
         public SiteViewModel(SiteContainer context, string contentName)
         {
             Title = "Poggenpohl";
             IsHomePage = true;
+            if (contentName != null)
+                Content = context.Content.First(c => c.Name == contentName);
+            Content
         }
     }
 }

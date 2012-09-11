@@ -1,5 +1,4 @@
 ﻿@using SiteExtensions
-
 <div class="mainMenu">
     <ul>
         <li>
@@ -9,12 +8,30 @@
             }
             else
             {
-                @Html.ActionLink("Продукция", "Index", "Catalogue",new{area=""},null)
+                @Html.ActionLink("Продукция", "Index", "Catalogue", new { area = "" }, null)
             }
         </li>
         <li><a href="#">Бренды</a></li>
-        <li><a href="#">Проектирование</a> </li>
-        <li><a href="#">О компании</a> </li>
-        <li><a href="#">Обратная связь</a> </li>
+        <li><a href="#">Проектирование</a></li>
+        <li>
+            @if (Html.IsCurrentController("Home") && ViewBag.ContentName == "about")
+            {
+                <text>О компании</text>
+            }
+            else
+            {
+                @Html.ActionLink("О компании", "Index", "Home", new { area = "", id = "about" }, null)
+            }
+        </li>
+        <li>
+            @if (Html.IsCurrentController("Home") && ViewBag.ContentName == "contacts")
+            {
+                <text>Обратная связь</text>
+            }
+            else
+            {
+                @Html.ActionLink("Обратная связь", "Index", "Home", new { area = "", id = "contacts" }, null)
+            }
+        </li>
     </ul>
 </div>

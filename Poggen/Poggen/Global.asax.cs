@@ -24,13 +24,19 @@ namespace Poggen
             routes.MapRoute(
                 "Catalogue", // Route name
                 "catalogue/{category}", // URL with parameters
-                new { controller = "catalogue", action = "index", category = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(
                 "Catalogue1", // Route name
                 "catalogue/{category}/{subcategory}", // URL with parameters
                 new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, subcategory = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Content", // Route name
+                "{id}", // URL with parameters
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(
