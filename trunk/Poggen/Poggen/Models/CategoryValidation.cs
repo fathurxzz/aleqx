@@ -20,7 +20,7 @@ namespace Poggen.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Название")]
+        [DisplayName("Заголовок")]
         public string Title { get; set; }
 
         [DisplayName("Описание (для поисковиков)")]
