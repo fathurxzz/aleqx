@@ -229,8 +229,10 @@ namespace Vip.Areas.Admin.Controllers
                 ViewBag.Makers = makerItems;
 
                 //var product = context.Product.Include("ProductAttributes").Include("Layouts").Include("Category").Include("Maker").Include("Brand").First(p => p.Id == id);
-                //var layouts = context.Layout.Include("Parent").Include("Children").ToList();
-                //ViewBag.Layouts = layouts;
+                
+                var layouts = context.Layout.Include("Parent").Include("Children").ToList();
+                ViewBag.Layouts = layouts;
+
                 var category = context.Category.Include("ProductAttributes").First(c => c.Id == categoryId);
                 ViewBag.CategoryName = category.Name;
                 ViewBag.CategoryTitle = category.Title;
@@ -264,17 +266,13 @@ namespace Vip.Areas.Admin.Controllers
                         product.ProductAttributes.Clear();
                         context.DeleteObject(product);
                     }
-
-                    //while (products.Any())
-                    //{
-                    //    var product = products.First();
-                    //    product.Layouts.Clear();
-                    //    product.ProductAttributes.Clear();
-                    //    context.DeleteObject(product);
-                    //}
                 }
                 else
                 {
+
+                    
+
+
                     foreach (var product in products)
                     {
                         if (brand != null)
@@ -284,6 +282,40 @@ namespace Vip.Areas.Admin.Controllers
 
                         if (!string.IsNullOrEmpty(form["ProductTitle"]))
                             product.Title = form["ProductTitle"];
+
+                        PostCheckboxesData cbData;
+
+                        if (form["editCategory"] == "true,false")
+                        {
+                            product.Layouts.Clear();
+                            cbData = form.ProcessPostCheckboxesData("lyt");
+                            foreach (var kvp in cbData)
+                            {
+                                var layoutId = kvp.Key;
+                                bool layoutValue = kvp.Value;
+                                if (layoutValue)
+                                {
+                                    var layout = context.Layout.First(l => l.Id == layoutId);
+                                    product.Layouts.Add(layout);
+                                }
+                            }
+                        }
+
+                        if (form["editAttributes"] == "true,false")
+                        {
+                            product.ProductAttributes.Clear();
+                            cbData = form.ProcessPostCheckboxesData("attr");
+                            foreach (var kvp in cbData)
+                            {
+                                var attrId = kvp.Key;
+                                bool attrValue = kvp.Value;
+                                if (attrValue)
+                                {
+                                    var attribute = context.ProductAttribute.First(at => at.Id == attrId);
+                                    product.ProductAttributes.Add(attribute);
+                                }
+                            }
+                        }
                     }
                 }
 
