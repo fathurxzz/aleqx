@@ -47,36 +47,42 @@
                     @Html.Editor("ProductTitle")
                 </td>
             </tr>
+
              <tr>
-                <td>
-                    Категории @Html.CheckBox("editCategory")
-                </td>
-                <td>
-                    @foreach (var item in layouts.Where(l => l.Parent == null).OrderBy(i => i.SortOrder))
-                    {
-                        <div class="parent">
-                            @item.Title
-                            @foreach(var child in item.Children.OrderBy(i=>i.SortOrder))
-                            {
-                                <div class="child">
-                                    @Html.CheckBox("lyt_" + child.Id) @child.Title
-                                </div>
-                            }
-                        </div>
-                    }
-                </td>
+                 <td colspan="2">
+                     <div style="border: 1px solid #fff; padding: 5px;">
+                     <div style="padding-bottom: 10px; color: #f00">@Html.CheckBox("editCategory") Отметьте для редактирования категорий </div>
+                     
+                     @foreach (var item in layouts.Where(l => l.Parent == null).OrderBy(i => i.SortOrder))
+                     {
+                         <div class="parent">
+                             @item.Title
+                             @foreach(var child in item.Children.OrderBy(i=>i.SortOrder))
+                             {
+                                 <div class="child">
+                                     @Html.CheckBox("lyt_" + child.Id) @child.Title
+                                 </div>
+                             }
+                         </div>
+                     }
+                     </div>
+                 </td>
             </tr>
              <tr>
-                 <td>Аттрибуты раздела @Html.CheckBox("editAttributes")
+                 
+                 <td colspan="2">
+                     <div style="border: 1px solid #fff; padding: 5px;">
+                     <div style="padding-bottom: 10px; color: #f00">
+                         @Html.CheckBox("editAttributes") Отметьте для редактирования атрибутов раздела
+                     </div>
+                     
+                     @foreach(var item in attributes)
+                     {
+                         <div>
+                             @Html.CheckBox("attr_" + item.Id) @item.Title
+                         </div>
+                     }</div>
                  </td>
-                <td>
-                    @foreach(var item in attributes)
-                    {
-                        <div>
-                            @Html.CheckBox("attr_" + item.Id) @item.Title
-                        </div>
-                    }
-                </td>
             </tr>
 
             <tr>
