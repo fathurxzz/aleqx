@@ -18,10 +18,16 @@ namespace Poggen.Models
         public SiteViewModel(SiteContainer context, string contentName)
         {
             Title = "Poggenpohl";
-            IsHomePage = true;
+
             if (contentName != null)
-                Content = context.Content.First(c => c.Name == contentName);
-            Content
+            {
+                Content = contentName != ""
+                              ? context.Content.First(c => c.Name == contentName)
+                              : context.Content.First(c => c.MainPage);
+                SeoDescription = Content.SeoDescription;
+                SeoKeywords = Content.SeoKeywords;
+                IsHomePage = true;
+            }
         }
     }
 }

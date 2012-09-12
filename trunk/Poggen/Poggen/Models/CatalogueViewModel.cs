@@ -37,6 +37,8 @@ namespace Poggen.Models
             if (subcategory != null)
                 Title += " > " + subcategory.Title;
             Category = subcategory ?? category;
+            SeoDescription = Category.SeoDescription;
+            SeoKeywords = Category.SeoKeywords;
         }
     }
 }

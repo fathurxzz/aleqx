@@ -19,7 +19,7 @@ namespace Poggen.Controllers
                 ViewBag.isHomePage = model.IsHomePage;
                 if (model.Content != null)
                     ViewBag.ContentName = model.Content.Name;
-                return View();
+                return View(model);
             }
         }
     }
