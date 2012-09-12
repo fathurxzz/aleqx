@@ -488,16 +488,14 @@ namespace Poggen.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="text">Initial value of the Text property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="mainPage">Initial value of the MainPage property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String title, global::System.String text, global::System.String name, global::System.Boolean mainPage, global::System.Int32 sortOrder)
+        public static Content CreateContent(global::System.Int32 id, global::System.String title, global::System.String name, global::System.Boolean mainPage, global::System.Int32 sortOrder)
         {
             Content content = new Content();
             content.Id = id;
             content.Title = title;
-            content.Text = text;
             content.Name = name;
             content.MainPage = mainPage;
             content.SortOrder = sortOrder;
@@ -561,7 +559,7 @@ namespace Poggen.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Text
         {
@@ -573,7 +571,7 @@ namespace Poggen.Models
             {
                 OnTextChanging(value);
                 ReportPropertyChanging("Text");
-                _Text = StructuralObject.SetValidValue(value, false);
+                _Text = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Text");
                 OnTextChanged();
             }

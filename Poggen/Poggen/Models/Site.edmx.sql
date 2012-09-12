@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/10/2012 11:59:58
+-- Date Created: 09/12/2012 08:57:24
 -- Generated from EDMX file: D:\AlexK\projects\Poggen\Poggen\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -19,6 +19,7 @@ USE `poggen`;
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -37,7 +38,7 @@ SET foreign_key_checks = 1;
 CREATE TABLE `Content` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
-    `Text` longtext  NOT NULL,
+    `Text` longtext  NULL,
     `Name` varchar( 200 )  NOT NULL,
     `MainPage` bool  NOT NULL,
     `SeoDescription` longtext  NULL,

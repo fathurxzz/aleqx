@@ -19,7 +19,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="MainPage" Type="bool" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
@@ -71,7 +71,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Text" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
