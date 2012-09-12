@@ -103,12 +103,20 @@ namespace Poggen.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Category/Delete/5
-
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.Include("Children").First(c => c.Id == id);
+                var categoryType = category.CategoryType;
+                if (!category.Children.Any())
+                {
+                    context.DeleteObject(category);
+                    context.SaveChanges();
+                }
+                string controllerName = GetControllerNameByCategoryType(categoryType);
+                return RedirectToAction("Index", controllerName, new { area = "" });
+            }
         }
     }
 }

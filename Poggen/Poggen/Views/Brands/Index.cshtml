@@ -11,6 +11,10 @@
 {
     <div>
         @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+        @if (!Model.Category.MainPage)
+        {
+            @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить бренд?')" })
+        }
     </div>
 }
 @Html.Raw(Model.Category.Text)
