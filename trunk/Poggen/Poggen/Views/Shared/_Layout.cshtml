@@ -24,7 +24,13 @@
             </div>
             @Html.Partial("MainMenu")
             @RenderSection("CategorySelector",false)
+            <div class="clear"></div>
         </div>
+        
+        <div class="brandsMenu">
+            @RenderSection("Brands",false)
+        </div>
+
         <div class="contentContainer">
             <div class="title">
                 @RenderSection("Title",false)

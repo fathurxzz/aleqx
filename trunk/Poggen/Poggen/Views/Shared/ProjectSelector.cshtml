@@ -1,14 +1,14 @@
 ﻿@model Poggen.Models.CategoriesSelectorData
 <div class="categoriesSelector">
     <div class="categorySelector">
-        @Html.DropDownList("category", Model.Categories)
+        @Html.DropDownList("project", Model.Categories)
         @if (Request.IsAuthenticated)
         {
             @Html.ActionLink("Добавить категорию", "Create", "Category", new { area = "Admin", categoryType = ViewBag.CategoryType }, new { @class = "adminLink" })
         }
     </div>
     <div class="subCategorySelector">
-        @Html.DropDownList("subcategory", Model.SubCategories)
+        @Html.DropDownList("subproject", Model.SubCategories)
         @if (Request.IsAuthenticated)
         {
             @Html.ActionLink("Добавить тип", "Create", "Category", new { area = "Admin", parentId = ViewBag.CategoryId, categoryType = ViewBag.CategoryType }, new { @class = "adminLink" })

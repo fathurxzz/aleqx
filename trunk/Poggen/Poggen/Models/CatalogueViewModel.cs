@@ -21,12 +21,12 @@ namespace Poggen.Models
         private readonly List<SelectListItem> _subcategories = new List<SelectListItem> { new SelectListItem { Text = "Выберите тип...", Value = "" } };
 
 
-        public CatalogueViewModel(SiteContainer context, string categoryName, string subcategoryName)
+        public CatalogueViewModel(SiteContainer context, string categoryName, string subcategoryName, int categoryType)
             : base(context, null)
         {
-            var categories = context.Category.Include("Children").Where(c => c.Parent == null).ToList();
-            var subcategories = context.Category.Where(c => c.Name == categoryName).SelectMany(c => c.Children).ToList();
-            _categories.AddRange(categories.Where(c=> !c.MainPage).Select(c => new SelectListItem { Text = c.Title, Value = c.Name, Selected = c.Name == categoryName }));
+            var categories = context.Category.Include("Children").Where(c => c.Parent == null && c.CategoryType == categoryType).ToList();
+            var subcategories = context.Category.Where(c => c.Name == categoryName && c.CategoryType == categoryType).SelectMany(c => c.Children).ToList();
+            _categories.AddRange(categories.Where(c => !c.MainPage).Select(c => new SelectListItem { Text = c.Title, Value = c.Name, Selected = c.Name == categoryName }));
             _subcategories.AddRange(subcategories.Select(c => new SelectListItem { Text = c.Title, Value = c.Name, Selected = c.Name == subcategoryName }));
             CategoriesSelectorData = new CategoriesSelectorData { Categories = _categories, SubCategories = _subcategories };
 

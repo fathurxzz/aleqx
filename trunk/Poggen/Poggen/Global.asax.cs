@@ -28,10 +28,30 @@ namespace Poggen
             );
 
             routes.MapRoute(
+                "Project", // Route name
+                "project/{category}", // URL with parameters
+                new { controller = "Project", action = "Index", category = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Brands", // Route name
+                "brands/{category}", // URL with parameters
+                new { controller = "Brands", action = "Index", category = UrlParameter.Optional } // Parameter defaults
+            );
+
+
+            routes.MapRoute(
                 "Catalogue1", // Route name
                 "catalogue/{category}/{subcategory}", // URL with parameters
                 new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, subcategory = UrlParameter.Optional } // Parameter defaults
             );
+
+            routes.MapRoute(
+                "Project1", // Route name
+                "project/{category}/{subcategory}", // URL with parameters
+                new { controller = "Project", action = "Index", category = UrlParameter.Optional, subcategory = UrlParameter.Optional } // Parameter defaults
+            );
+
 
             routes.MapRoute(
                 "Content", // Route name

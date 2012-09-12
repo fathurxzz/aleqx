@@ -1,0 +1,23 @@
+﻿@model Poggen.Models.CategoriesSelectorData
+@if (Model.Categories.Any())
+{
+    <ul>
+        @foreach (var item in Model.Categories.Where(c=>c.Value!=""))
+        {
+            <li>
+                @if (item.Value == ViewBag.CategoryName)
+                {
+                    <text>@item.Text</text>
+                }
+                else
+                {
+                    @Html.ActionLink(item.Text, "Index", "Brands", new {category = item.Value}, null)
+                }
+            </li>
+        }
+    </ul>
+}
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Добавить бренд", "Create", "Category", new { area = "Admin", categoryType = ViewBag.CategoryType }, new { @class = "adminLink" })
+}

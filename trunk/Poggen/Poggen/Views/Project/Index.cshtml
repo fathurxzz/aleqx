@@ -1,0 +1,19 @@
+﻿@model Poggen.Models.CatalogueViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    @Model.Title
+}
+@section CategorySelector
+{
+    @Html.Partial("ProjectSelector", Model.CategoriesSelectorData)
+}
+@if (Request.IsAuthenticated)
+{
+    <div>
+        @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+    </div>
+}
+@Html.Raw(Model.Category.Text)

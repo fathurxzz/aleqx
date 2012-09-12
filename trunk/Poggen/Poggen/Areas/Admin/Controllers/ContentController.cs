@@ -28,7 +28,7 @@ namespace Poggen.Areas.Admin.Controllers
                 {
                     var content = context.Content.First(c => c.Id == id);
 
-                    TryUpdateModel(content, new[] {"Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+                    TryUpdateModel(content, new[] {"Title", "SeoDescription", "SeoKeywords" });
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home", new {area = "", id = content.Name});
