@@ -6,8 +6,8 @@
 
     var brands = (IEnumerable<SelectListItem>)ViewBag.Brands;
     var makers = (IEnumerable<SelectListItem>)ViewBag.Makers;
-    //var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
-    //var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+    var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
+    var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -47,6 +47,38 @@
                     @Html.Editor("ProductTitle")
                 </td>
             </tr>
+             <tr>
+                <td>
+                    Категории @Html.CheckBox("editCategory")
+                </td>
+                <td>
+                    @foreach (var item in layouts.Where(l => l.Parent == null).OrderBy(i => i.SortOrder))
+                    {
+                        <div class="parent">
+                            @item.Title
+                            @foreach(var child in item.Children.OrderBy(i=>i.SortOrder))
+                            {
+                                <div class="child">
+                                    @Html.CheckBox("lyt_" + child.Id) @child.Title
+                                </div>
+                            }
+                        </div>
+                    }
+                </td>
+            </tr>
+             <tr>
+                 <td>Аттрибуты раздела @Html.CheckBox("editAttributes")
+                 </td>
+                <td>
+                    @foreach(var item in attributes)
+                    {
+                        <div>
+                            @Html.CheckBox("attr_" + item.Id) @item.Title
+                        </div>
+                    }
+                </td>
+            </tr>
+
             <tr>
                 <td colspan="2">
                     @Html.CheckBox("delete") Удалить выбранные фотографии
