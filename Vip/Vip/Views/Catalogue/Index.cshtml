@@ -23,10 +23,11 @@
             {
                 <div class="category">
                     <div class="img-container">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp))
                         <div class="sign">
                             @item.Title
                         </div>
-                        @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Catalogue", new { category = item.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueThumbnail"), ScaleMode.Corp)))
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "Index", "Catalogue", new { category = item.Name }, null).ToString().Replace("[IMAGE]", ""))
                     </div>
                 </div>
                 

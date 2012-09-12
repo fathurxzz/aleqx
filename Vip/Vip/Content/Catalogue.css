@@ -47,6 +47,19 @@ img {
     width: 203px;
     height: 212px;
 }
+.category .img-container img {
+    position: absolute;
+}
+
+.category .img-container a
+{
+    display: block;
+    height: 202px;
+    width: 202px;
+    position: absolute;
+    background: url('img/pixel.gif');
+}
+
 
 .category .sign {
     width: 187px;
