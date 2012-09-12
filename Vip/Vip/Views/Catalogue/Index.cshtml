@@ -50,11 +50,12 @@
                 @Html.Hidden("page", (int)ViewBag.Page)
            if (Request.IsAuthenticated)
            {
-                <div style="padding-top: 30px; padding-bottom: 20px;">
-                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { Area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
-                    <a style="padding-left: 30px;" href="#" class="adminLink" onclick="javascript:document.forms[0].submit();">Групповое
-                        редактирование</a>
-                </div>
+               <div style="padding-top: 30px; padding-bottom: 20px;">
+                   @Html.ActionLink("Добавить изображение", "Create", "Product", new { Area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                   <a style="padding-left: 30px;" href="#" class="adminLink" onclick="javascript:document.forms[0].submit();">Групповое
+                       редактирование</a>
+               </div>
+                <div style="color:#f00; font-family: DinCyRg;font-size: 12px !important;">@Html.CheckBox("selectAll") @Html.Raw("Пометить весь разворот")</div>
            }
            foreach (var item in Model.Products)
            {
@@ -62,7 +63,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         <div>
-                            @Html.CheckBox("prod_" + item.Id)
+                            @Html.CheckBox("prod_" + item.Id,false,new{@class="cbx"})
                             @Html.ActionLink("редактировать", "Edit", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
                             @Html.ActionLink("удалить", "Delete", "Product", new { area = "Admin", id = item.Id, page = ViewBag.Page }, new { @class = "adminLink", onclick = "return confirm('Вы действительно хотите удалить изображение?')" })
                         </div>
