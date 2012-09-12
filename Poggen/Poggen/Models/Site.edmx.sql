@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/12/2012 08:57:24
+-- Date Created: 09/12/2012 08:59:37
 -- Generated from EDMX file: D:\AlexK\projects\Poggen\Poggen\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `poggen`;
-CREATE DATABASE `poggen`;
-USE `poggen`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -42,8 +39,7 @@ CREATE TABLE `Content` (
     `Name` varchar( 200 )  NOT NULL,
     `MainPage` bool  NOT NULL,
     `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL,
-    `SortOrder` int  NOT NULL
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'Category'

@@ -9,6 +9,18 @@ namespace Poggen.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
+        private static string GetControllerNameByCategoryType(int categoryType)
+        {
+            switch (categoryType)
+            {
+                case 1:
+                    return "Brands";
+                case 2:
+                    return "Project";
+            }
+            return "Catalogue";
+        }
+
         public ActionResult Create(int categoryType, int? parentId)
         {
             if (parentId.HasValue)
@@ -38,9 +50,13 @@ namespace Poggen.Areas.Admin.Controllers
                         context.AddToCategory(category);
                     }
                     context.SaveChanges();
+
+                    string controllerName = GetControllerNameByCategoryType(categoryType);
+
+
                     return parent != null
-                        ? RedirectToAction("Index", "Catalogue", new { area = "", category = parent.Name, subcategory = category.Name })
-                        : RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
+                        ? RedirectToAction("Index", controllerName, new { area = "", category = parent.Name, subcategory = category.Name })
+                        : RedirectToAction("Index", controllerName, new { area = "", category = category.Name });
                 }
             }
             catch
@@ -74,11 +90,11 @@ namespace Poggen.Areas.Admin.Controllers
                     context.SaveChanges();
 
                     if (category.MainPage)
-                        return RedirectToAction("Index", "Catalogue", new {area = ""});
-
+                        return RedirectToAction("Index", "Catalogue", new { area = "" });
+                    string controllerName = GetControllerNameByCategoryType(category.CategoryType);
                     return category.Parent != null
-                     ? RedirectToAction("Index", "Catalogue", new { area = "", category = category.Parent.Name, subcategory = category.Name })
-                     : RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
+                     ? RedirectToAction("Index", controllerName, new { area = "", category = category.Parent.Name, subcategory = category.Name })
+                     : RedirectToAction("Index", controllerName, new { area = "", category = category.Name });
                 }
             }
             catch

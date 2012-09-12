@@ -26,10 +26,6 @@ namespace Poggen.Models
         [DisplayName("Ключевые слова (для поисковиков)")]
         public string SeoKeywords { get; set; }
 
-        [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Порядок отображения")]
-        public int SortOrder { get; set; }
-
         [DisplayName("Текст")]
         public string Text { get; set; }
     }

@@ -24,7 +24,6 @@
     <Property Name="MainPage" Type="bool" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
-    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -76,7 +75,6 @@
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
-          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -123,7 +121,6 @@
           <ScalarProperty Name="MainPage" ColumnName="MainPage" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
-          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -163,7 +160,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site" >
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.2496956380208331" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="0.75" PointY="0.75" Height="2.085348307291667" />
         <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9070849609374996" />
         <AssociationConnector Association="Site.CategoryCategory">
           <ConnectorPoint PointX="3.2819230769230767" PointY="3.6570849609374996" />

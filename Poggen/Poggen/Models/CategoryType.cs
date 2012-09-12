@@ -9,6 +9,6 @@ namespace Poggen.Models
     {
         Category = 0,
         Brand = 1,
-        Product = 2
+        Project = 2
     }
 }
