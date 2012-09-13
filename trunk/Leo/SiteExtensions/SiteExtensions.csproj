@@ -47,7 +47,6 @@
     <Compile Include="ControllerExtensions.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="FormCollectionExtender.cs" />
-    <Compile Include="Graphics\GraphicsHelper.cs" />
     <Compile Include="Graphics\PictureSize.cs" />
     <Compile Include="Graphics\ThumbnailPicture.cs" />
     <Compile Include="IOHelper.cs" />
