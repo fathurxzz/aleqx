@@ -5,6 +5,14 @@
     <div class="galleryTop">
     </div>
     <div class="imageContainer">
+         @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                &nbsp;
+                @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение')" })
+            </div>
+        }
         <table>
             <tr>
                 <td rowspan="2">
@@ -34,14 +42,7 @@
                 </td>
             </tr>
         </table>
-        @if (Request.IsAuthenticated)
-        {
-            <div>
-                @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
-                &nbsp;
-                @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение')" })
-            </div>
-        }
+       
         <div class="imageSignContainer">
             <table class="title">
                 <tr>

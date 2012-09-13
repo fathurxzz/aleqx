@@ -16,7 +16,7 @@ namespace Leo.Models
     public class ProductValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Заголовок")]
+        [DisplayName("Название картины")]
         public string Title { get; set; }
 
         [DisplayName("Описание")]
