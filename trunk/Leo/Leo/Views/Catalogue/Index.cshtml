@@ -22,7 +22,7 @@
                             @if (Request.IsAuthenticated)
                             {
                                 <div class="adminLinkContainer">
-                                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                                    @Html.ActionLink("Добавить картину", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
                                 </div>
                             }
                         </div>
@@ -59,7 +59,7 @@
     else if (Request.IsAuthenticated)
     {
         <div style="position: absolute; top: 50px; left: 400px">
-            @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Добавить картину", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
         </div>
     }
 }
