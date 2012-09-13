@@ -12,7 +12,8 @@ namespace Leo.Models
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
-        
+        public bool IsHomePage { get; set; }
+
         public SiteViewModel(SiteContainer context, string categoryName)
         {
             var categories = context.Category;
