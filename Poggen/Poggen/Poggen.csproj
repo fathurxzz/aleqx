@@ -47,7 +47,7 @@
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.4.4\Assemblies\v2.0\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="SiteExtensions">
-      <HintPath>C:\Users\Alex\Dropbox\libs\SiteExtensions.dll</HintPath>
+      <HintPath>..\..\..\Dropbox\libs\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />

@@ -26,7 +26,7 @@ namespace Poggen.Models
                               : context.Content.First(c => c.MainPage);
                 SeoDescription = Content.SeoDescription;
                 SeoKeywords = Content.SeoKeywords;
-                IsHomePage = true;
+                IsHomePage = Content.MainPage;
             }
         }
     }
