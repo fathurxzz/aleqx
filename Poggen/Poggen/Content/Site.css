@@ -144,3 +144,19 @@ a
     font-size: 12px;
     line-height: 18px;
   }
+  
+  .feedBackForm {
+      padding-top: 50px;
+  }
+  
+  .feedBackForm.success {
+      font-size: 16px;
+      font-weight: bold;
+  }
+  
+  .errorMessage {
+      text-align: center;
+      color: #f00;
+      border: 2px solid #f00;
+      padding: 5px;
+  }
