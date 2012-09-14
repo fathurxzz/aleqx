@@ -1,4 +1,5 @@
-﻿@model Poggen.Models.SiteViewModel
+﻿@using Poggen.Models
+@model Poggen.Models.SiteViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -14,3 +15,11 @@
     </div>
 }
 @Html.Raw(Model.Content.Text)
+
+
+    @if (Model.Content.Name.ToLower() == "contacts")
+    {
+        <div id="sendFeedbackFormContent">
+            @Html.Partial("_FeedbackForm", new FeedbackFormModel())
+        </div>
+    }
