@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Product" EntityType="Shop.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -17,6 +17,7 @@
     <EntitySet Name="ProductAttributeStaticValues" EntityType="Shop.Store.ProductAttributeStaticValues" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Wish" EntityType="Shop.Store.Wish" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Article" EntityType="Shop.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comment" EntityType="Shop.Store.Comment" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeCategory" EntityType="Shop.Store.ProductAttributeCategory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValuesProduct" EntityType="Shop.Store.ProductAttributeValuesProduct" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TagProduct" EntityType="Shop.Store.TagProduct" store:Type="Tables" Schema="dbo" />
@@ -71,6 +72,10 @@
     <AssociationSet Name="ProductAttributeStaticValuesProduct" Association="Shop.Store.ProductAttributeStaticValuesProduct">
       <End Role="ProductAttributeStaticValues" EntitySet="ProductAttributeStaticValues" />
       <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="CommentComment" Association="Shop.Store.CommentComment">
+      <End Role="Comment" EntitySet="Comment" />
+      <End Role="Comment1" EntitySet="Comment" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Product">
@@ -214,6 +219,20 @@
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
   </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Email" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Phone" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsAdmin" Type="bool" Nullable="false" />
+    <Property Name="CommentId" Type="int" Nullable="true" />
+  </EntityType>
   <EntityType Name="ProductAttributeCategory">
     <Key>
       <PropertyRef Name="ProductAttributes_Id" />
@@ -319,6 +338,18 @@
       </Principal>
       <Dependent Role="ProductAttributeStaticValues">
         <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentComment">
+    <End Role="Comment" Type="Shop.Store.Comment" Multiplicity="0..1" />
+    <End Role="Comment1" Type="Shop.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment1">
+        <PropertyRef Name="CommentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -450,6 +481,11 @@
           </AssociationSet>
           <EntitySet Name="Wish" EntityType="Shop.Wish" />
           <EntitySet Name="Article" EntityType="Shop.Article" />
+          <EntitySet Name="Comment" EntityType="Shop.Comment" />
+          <AssociationSet Name="CommentComment" Association="Shop.CommentComment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Comment1" EntitySet="Comment" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -708,6 +744,34 @@
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
         </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" FixedLength="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Boolean" Name="IsAdmin" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="Shop.CommentComment" FromRole="Comment" ToRole="Comment1" />
+          <NavigationProperty Name="Parent" Relationship="Shop.CommentComment" FromRole="Comment1" ToRole="Comment" />
+          <Property Type="Int32" Name="CommentId" Nullable="true" />
+        </EntityType>
+        <Association Name="CommentComment">
+          <End Type="Shop.Comment" Role="Comment" Multiplicity="0..1" />
+          <End Type="Shop.Comment" Role="Comment1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -866,6 +930,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.Comment)">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ProductAttributeCategory" TypeName="Shop.ProductAttributeCategory" StoreEntitySet="ProductAttributeCategory">
       <EndProperty Name="ProductAttribute">
         <ScalarProperty Name="Id" ColumnName="ProductAttributes_Id" />
@@ -965,6 +1044,13 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.Wish" Width="1.5" PointX="9.75" PointY="6.625" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Shop.Article" Width="1.5" PointX="12.625" PointY="4.75" Height="2.2496956380208326" />
+        <EntityTypeShape EntityType="Shop.Comment" Width="1.5" PointX="14.875" PointY="0.75" Height="2.5571907552083331" />
+        <AssociationConnector Association="Shop.CommentComment">
+          <ConnectorPoint PointX="15.406923076923077" PointY="3.8840950520833331" />
+          <ConnectorPoint PointX="15.406923076923077" PointY="4.1340950520833335" />
+          <ConnectorPoint PointX="15.853461538461538" PointY="4.1340950520833335" />
+          <ConnectorPoint PointX="15.853461538461538" PointY="3.8840950520833331" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

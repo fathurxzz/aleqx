@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/30/2012 09:15:52
+-- Date Created: 09/17/2012 22:21:46
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -45,6 +45,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductAttributeStaticValues`;
     DROP TABLE IF EXISTS `Wish`;
     DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `Comment`;
     DROP TABLE IF EXISTS `ProductAttributeCategory`;
     DROP TABLE IF EXISTS `ProductAttributeValuesProduct`;
     DROP TABLE IF EXISTS `TagProduct`;
@@ -193,6 +194,20 @@ CREATE TABLE `Article` (
     `Title` TEXT  NOT NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL
+);
+
+-- Creating table 'Comment'
+
+CREATE TABLE `Comment` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NULL,
+    `Title` varchar( 200 )  NULL,
+    `Date` datetime  NOT NULL,
+    `Text` longtext  NOT NULL,
+    `Email` varchar( 200 )  NOT NULL,
+    `Phone` varchar( 200 )  NOT NULL,
+    `IsAdmin` bool  NOT NULL,
+    `CommentId` int  NULL
 );
 
 -- Creating table 'ProductAttributeCategory'
@@ -422,6 +437,21 @@ ADD CONSTRAINT `FK_ProductAttributeStaticValuesProduct`
 CREATE INDEX `IX_FK_ProductAttributeStaticValuesProduct` 
     ON `ProductAttributeStaticValues`
     (`ProductId`);
+
+-- Creating foreign key on `CommentId` in table 'Comment'
+
+ALTER TABLE `Comment`
+ADD CONSTRAINT `FK_CommentComment`
+    FOREIGN KEY (`CommentId`)
+    REFERENCES `Comment`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CommentComment'
+
+CREATE INDEX `IX_FK_CommentComment` 
+    ON `Comment`
+    (`CommentId`);
 
 -- --------------------------------------------------
 -- Script has ended
