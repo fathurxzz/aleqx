@@ -54,5 +54,24 @@ namespace Shop.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult AddComment(CommentFormModel commentFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var context = new ShopContainer())
+                {
+
+                }
+                //return PartialView("Success");
+                return RedirectToAction("Index", "Home", new {id = "about"});
+            }
+            else
+            {
+                //return PartialView("_CommentForm", commentFormModel);
+                return RedirectToAction("Index", "Home", new { id = "about" });
+            }
+        }
+
     }
 }

@@ -103,6 +103,7 @@
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CommentFormModel.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Validation\ArticleValidation.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -234,6 +235,7 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\_CommentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

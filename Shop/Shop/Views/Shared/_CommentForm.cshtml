@@ -1,0 +1,59 @@
+﻿@model Shop.Models.CommentFormModel
+           
+           @{
+    //AjaxOptions options = new AjaxOptions{
+    //    HttpMethod = "Post",
+    //    UpdateTargetId = "addCommentFormContent"
+    //};        
+    
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@*@using (Ajax.BeginForm("AddComment", "Home", options))*@
+@using (Html.BeginForm("AddComment", "Home"))
+{
+    @Html.ValidationSummary(true)
+    <div class="commentTitle">
+        Книга пожеланий
+    </div>
+    <div class="addComment">
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <br />
+            @Html.TextBoxFor(model => model.Name, new { style = "width:620px;" })<br />
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Title)
+            <br />
+            @Html.TextBoxFor(model => model.Title, new { style = "width:620px;" })<br />
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Email)
+            <br />
+            @Html.TextBoxFor(model => model.Email, new { style = "width:620px;" })<br />
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Phone)
+            <br />
+            @Html.TextBoxFor(model => model.Phone, new { style = "width:620px;" })<br />
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Text)
+            <br />
+            @Html.TextAreaFor(model => model.Text, new { style = "width:620px;", rows = "10" })<br />
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.AntiSpamAnswer)
+            @Html.TextBoxFor(model => model.AntiSpamAnswer, new { style = "width:20px;" })<br />
+                @Html.ValidationMessageFor(model => model.AntiSpamAnswer)
+        </div>
+    </div>
+    <div class="addCommentButton">
+        <input type="submit" value="Добавить коментарий"/>
+    </div>
+}
