@@ -1,0 +1,25 @@
+﻿@model Shop.Models.Comment
+<div class="comment">
+    <div class="name">@Model.Name</div>
+    @if (!string.IsNullOrEmpty(Model.Title))
+    {
+        <div>@Model.Title</div>
+    }
+    @if (Request.IsAuthenticated)
+    {
+        if (!string.IsNullOrEmpty(Model.Email))
+        {
+        <div>@Model.Email</div>
+        }
+
+        if (!string.IsNullOrEmpty(Model.Phone))
+        {
+        <div>@Model.Phone</div>
+        }
+    }
+    <div>@Model.Text</div>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Удалить", "Delete", "Comment", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick="return confirm('Удалить коментарий?')" })
+    }
+</div>

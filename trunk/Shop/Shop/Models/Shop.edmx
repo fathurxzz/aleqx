@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Product" EntityType="Shop.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -224,12 +224,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="false" />
-    <Property Name="Email" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Phone" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Email" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Phone" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="IsAdmin" Type="bool" Nullable="false" />
     <Property Name="CommentId" Type="int" Nullable="true" />
   </EntityType>
@@ -749,12 +749,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Name" FixedLength="true" MaxLength="200" Nullable="false" />
           <Property Type="String" Name="Title" FixedLength="true" MaxLength="200" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
-          <Property Type="String" Name="Email" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="String" Name="Phone" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Email" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" FixedLength="true" MaxLength="200" />
           <Property Type="Boolean" Name="IsAdmin" Nullable="false" />
           <NavigationProperty Name="Children" Relationship="Shop.CommentComment" FromRole="Comment" ToRole="Comment1" />
           <NavigationProperty Name="Parent" Relationship="Shop.CommentComment" FromRole="Comment1" ToRole="Comment" />

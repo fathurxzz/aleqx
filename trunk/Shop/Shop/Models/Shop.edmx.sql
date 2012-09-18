@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/17/2012 22:21:46
+-- Date Created: 09/18/2012 12:03:28
 -- Generated from EDMX file: D:\projects\Shop\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `toyplanet`;
+CREATE DATABASE `toyplanet`;
+USE `toyplanet`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -29,6 +32,7 @@
 --    ALTER TABLE `TagProduct` DROP CONSTRAINT `FK_TagProduct_Product`;
 --    ALTER TABLE `ProductAttributeStaticValues` DROP CONSTRAINT `FK_ProductAttributeProductAttributeStaticValues`;
 --    ALTER TABLE `ProductAttributeStaticValues` DROP CONSTRAINT `FK_ProductAttributeStaticValuesProduct`;
+--    ALTER TABLE `Comment` DROP CONSTRAINT `FK_CommentComment`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -200,12 +204,12 @@ CREATE TABLE `Article` (
 
 CREATE TABLE `Comment` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` varchar( 200 )  NULL,
+    `Name` varchar( 200 )  NOT NULL,
     `Title` varchar( 200 )  NULL,
     `Date` datetime  NOT NULL,
     `Text` longtext  NOT NULL,
-    `Email` varchar( 200 )  NOT NULL,
-    `Phone` varchar( 200 )  NOT NULL,
+    `Email` varchar( 200 )  NULL,
+    `Phone` varchar( 200 )  NULL,
     `IsAdmin` bool  NOT NULL,
     `CommentId` int  NULL
 );

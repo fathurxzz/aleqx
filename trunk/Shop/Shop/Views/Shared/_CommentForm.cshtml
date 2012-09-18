@@ -1,20 +1,22 @@
 ﻿@model Shop.Models.CommentFormModel
            
            @{
-    //AjaxOptions options = new AjaxOptions{
-    //    HttpMethod = "Post",
-    //    UpdateTargetId = "addCommentFormContent"
-    //};        
+               AjaxOptions options = new AjaxOptions
+               {
+                   HttpMethod = "Post",
+                   UpdateTargetId = "lastComment",
+                   OnSuccess = "hideAddCommentPanel"
+               };        
     
 }
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@*@using (Ajax.BeginForm("AddComment", "Home", options))*@
-@using (Html.BeginForm("AddComment", "Home"))
+@using (Ajax.BeginForm("AddComment", "Home", options))
 {
     @Html.ValidationSummary(true)
+    
     <div class="commentTitle">
         Книга пожеланий
     </div>
@@ -49,7 +51,7 @@
         </div>
         <div>
             @Html.LabelFor(model => model.AntiSpamAnswer)
-            @Html.TextBoxFor(model => model.AntiSpamAnswer, new { style = "width:20px;" })<br />
+            @Html.TextBoxFor(model => model.AntiSpamAnswer, new { style = "width:20px;" })
                 @Html.ValidationMessageFor(model => model.AntiSpamAnswer)
         </div>
     </div>
