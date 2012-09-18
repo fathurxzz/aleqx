@@ -1260,19 +1260,17 @@ namespace Shop.Models
         /// Create a new Comment object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
         /// <param name="date">Initial value of the Date property.</param>
         /// <param name="text">Initial value of the Text property.</param>
-        /// <param name="email">Initial value of the Email property.</param>
-        /// <param name="phone">Initial value of the Phone property.</param>
         /// <param name="isAdmin">Initial value of the IsAdmin property.</param>
-        public static Comment CreateComment(global::System.Int32 id, global::System.DateTime date, global::System.String text, global::System.String email, global::System.String phone, global::System.Boolean isAdmin)
+        public static Comment CreateComment(global::System.Int32 id, global::System.String name, global::System.DateTime date, global::System.String text, global::System.Boolean isAdmin)
         {
             Comment comment = new Comment();
             comment.Id = id;
+            comment.Name = name;
             comment.Date = date;
             comment.Text = text;
-            comment.Email = email;
-            comment.Phone = phone;
             comment.IsAdmin = isAdmin;
             return comment;
         }
@@ -1310,7 +1308,7 @@ namespace Shop.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Name
         {
@@ -1322,7 +1320,7 @@ namespace Shop.Models
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
+                _Name = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1406,7 +1404,7 @@ namespace Shop.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Email
         {
@@ -1418,7 +1416,7 @@ namespace Shop.Models
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, false);
+                _Email = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -1430,7 +1428,7 @@ namespace Shop.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Phone
         {
@@ -1442,7 +1440,7 @@ namespace Shop.Models
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, false);
+                _Phone = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }

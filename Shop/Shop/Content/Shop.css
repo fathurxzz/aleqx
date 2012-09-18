@@ -563,3 +563,13 @@ img
     text-align: center;
     padding: 10px 0;
 }
+
+.comment {
+    border: 1px dashed #ccc;
+    padding: 5px;
+    margin: 10px;
+}
+
+.comment .name {
+    font-weight: bold;
+}

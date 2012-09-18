@@ -43,10 +43,10 @@ namespace Shop.Controllers
                     var wish = new Wish();
                     TryUpdateModel(wish, new[] { "UserName", "Category", "Brand", "Title", "Size", "Color", "Phone", "Email" });
                     context.AddToWish(wish);
-                    context.SaveChanges();
+                    //context.SaveChanges();
                 }
                 return PartialView("Success");
-                
+
             }
             else
             {
@@ -55,22 +55,36 @@ namespace Shop.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddComment(CommentFormModel commentFormModel)
+        public PartialViewResult AddComment(CommentFormModel commentFormModel)
         {
             if (ModelState.IsValid)
             {
                 using (var context = new ShopContainer())
                 {
+                    try
+                    {
+                        Comment comment = new Comment
+                                              {
+                                                  Date = DateTime.Now,
+                                                  Email = commentFormModel.Email,
+                                                  IsAdmin = false,
+                                                  Name = commentFormModel.Name,
+                                                  Phone = commentFormModel.Phone,
+                                                  Title = commentFormModel.Title,
+                                                  Text = commentFormModel.Text
+                                              };
 
+                        context.AddToComment(comment);
+                        context.SaveChanges();
+                        return PartialView("_Comment", comment);
+                    }
+                    catch (Exception)
+                    {
+                        return PartialView("_CommentForm", commentFormModel);
+                    }
                 }
-                //return PartialView("Success");
-                return RedirectToAction("Index", "Home", new {id = "about"});
             }
-            else
-            {
-                //return PartialView("_CommentForm", commentFormModel);
-                return RedirectToAction("Index", "Home", new { id = "about" });
-            }
+            return PartialView("_CommentForm", commentFormModel);
         }
 
     }

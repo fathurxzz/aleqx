@@ -20,6 +20,7 @@ namespace Shop.Models
         public bool IsHomePage { get; set; }
         public List<Article> Articles { get; set; }
         public Article Article { get; set; }
+        public List<Comment> Comments { get; set; }
 
 
         public SiteViewModel(ShopContainer context, string contentId, bool loadContent = true)
@@ -64,6 +65,8 @@ namespace Shop.Models
                     SeoDescription = content.SeoDescription;
                     SeoKeywords = content.SeoKeywords;
                 }
+
+                Comments = context.Comment.Include("Children").ToList();
             }
         }
     }

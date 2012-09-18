@@ -27,9 +27,22 @@
 }
 @if (Model.Content != null && Model.Content.Name == "about")
 {
+    <script type="text/javascript">
+        function hideAddCommentPanel() {
+            $("#addCommentFormContent").css("display", "none");
+        }
+    </script>
     <div id="addCommentFormContent">
         @Html.Partial("_CommentForm", new CommentFormModel())
     </div>
+    <div id="lastComment"></div>
+    <div class="comments">
+    @foreach (var comment in Model.Comments.OrderBy(c=>c.Date))
+    {
+        @Html.Partial("_Comment", comment)
+    }    
+    </div>
+    
 }
 @section HeaderPicture
 {

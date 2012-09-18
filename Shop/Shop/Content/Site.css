@@ -386,3 +386,16 @@ a
     font-size: 18px;
     padding-bottom: 20px;
 }
+
+.adminLink {
+    color: #f00;
+}
+
+.adminLinkContainer {
+    position: absolute;
+    padding: 5px;
+}
+
+.adminLinkContainer a {
+    color: #f00;
+}
