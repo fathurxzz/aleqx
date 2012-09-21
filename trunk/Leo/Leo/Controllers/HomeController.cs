@@ -40,8 +40,7 @@ namespace Leo.Controllers
             {
                 var emails = new List<MailAddress>
                                  {
-                                     new MailAddress("kushko.alex@gmail.com"),
-                                     new MailAddress("leonid@zaborovskiy.com.ua")
+                                     new MailAddress("leo@zaborovskiy.com.ua")
                                  };
 
                 var responseData = MailHelper.SendTemplate(null, emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
