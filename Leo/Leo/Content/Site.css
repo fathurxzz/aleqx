@@ -60,15 +60,18 @@ body
 
 .footerContainer
 {
-    position: absolute;
-    top: 100%; /*height: 133px;*/
-    width: 100%;
+    /*position: absolute;
+    top: 100%; */
+    
+    /**/
+    padding-top: 30px;
+    /**/
 }
 
 .footerContainer .footer
 {
-    position: absolute;
-    top: -133px;
+    /*position: absolute;*/
+    /*top: -133px;*/
     height: 133px;
     width: 100%;
     background-color: #0a0404;
