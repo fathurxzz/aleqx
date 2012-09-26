@@ -1,0 +1,33 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+.page, .header {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #f6f6f6;
+}
+
+.header {
+    height: 94px;
+}
+
+
+.header-bottom-line {
+    height: 1px;
+    background: url('img/header-bottom-line.gif') repeat-x;
+}
+
+.logo {
+    width: 285px;
+    height: 29px;
+    background: url('img/logo.gif') no-repeat;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 145px;
+}
