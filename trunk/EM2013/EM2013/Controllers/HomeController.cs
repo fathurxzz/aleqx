@@ -18,7 +18,9 @@ namespace EM2013.Controllers
                 this.SetSeoContent(model);
                 ViewBag.isHomePage = model.IsHomePage;
                 if (model.Content != null)
-                    ViewBag.ContentName = model.Content.Name;
+                {
+                    return View("Content", model);
+                }
                 return View(model);
             }
         }

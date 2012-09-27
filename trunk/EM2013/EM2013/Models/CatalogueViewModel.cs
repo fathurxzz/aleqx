@@ -7,9 +7,10 @@ namespace EM2013.Models
 {
     public class CatalogueViewModel:SiteViewModel
     {
-        public CatalogueViewModel(SiteContext context, string category, string product) : base(context, "")
+        public CatalogueViewModel(SiteContext context, string category, string product)
+            : base(context, category)
         {
-
+            
 
         }
     }
