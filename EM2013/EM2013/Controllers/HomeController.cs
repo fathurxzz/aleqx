@@ -27,7 +27,12 @@ namespace EM2013.Controllers
 
         public ActionResult SecretLink()
         {
-            return View("Index");
+            using (var context = new SiteContext())
+            {
+                var model = new SiteViewModel(context, "secretlink", null);
+                ViewBag.isHomePage = false;
+                return View("Content",model);
+            }
         }
     }
 }

@@ -6,7 +6,14 @@
     @Html.Partial("_MainMenu", Model.Menu)
 }
 
+@if(Request.IsAuthenticated)
+{
+    @Html.ActionLink("редактировать","Edit","Content",new{area="Admin",id=Model.Content.Id},new{@class="adminLink"})
+}
+
 @Html.Partial("_ContentDescription", new ContentDescription {Text = Model.Content.Text, Title = Model.Content.Title})
+
+
 
 @section Footer
 {
