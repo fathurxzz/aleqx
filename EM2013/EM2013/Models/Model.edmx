@@ -41,6 +41,7 @@
     <Property Name="SeoDescription" Type="nvarchar" Nullable="true" MaxLength="1000" />
     <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="1000" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -126,12 +127,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="255" />
+          <Property Type="String" Name="Title" FixedLength="true" MaxLength="255" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="255" />
           <NavigationProperty Name="Products" Relationship="Model.CategoryProduct" FromRole="Category" ToRole="Product" />
           <Property Type="String" Name="SeoDescription" FixedLength="true" MaxLength="1000" />
           <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="1000" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Description" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -213,6 +215,7 @@
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -264,11 +267,11 @@
     <edmx:Diagrams>
       <Diagram Name="Model" >
         <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="3.5" PointY="1.25" Height="2.085348307291667" />
-        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="6.375" PointY="1.25" Height="2.085348307291667" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="6.375" PointY="1.25" Height="2.2496956380208339" />
         <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="9" PointY="1.25" Height="2.7427376302083331" />
         <AssociationConnector Association="Model.CategoryProduct">
-          <ConnectorPoint PointX="7.875" PointY="2.2926741536458337" />
-          <ConnectorPoint PointX="9" PointY="2.2926741536458337" />
+          <ConnectorPoint PointX="7.875" PointY="2.3748478190104167" />
+          <ConnectorPoint PointX="9" PointY="2.3748478190104167" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.ProductItem" Width="1.5" PointX="11.375" PointY="1.25" Height="2.085348307291667" />
         <AssociationConnector Association="Model.ProductProductItem">

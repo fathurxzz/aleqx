@@ -22,6 +22,18 @@ namespace EM2013
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "SecretLink", // Route name
+                "secretlink", // URL with parameters
+                new { controller = "Home", action = "SecretLink" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Category", // Route name
+                "{category}", // URL with parameters
+                new { controller = "Home", action = "Index", category = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
