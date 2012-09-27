@@ -4,11 +4,94 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="ModelTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Content" EntityType="Model.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="Model.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Model.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductItem" EntityType="Model.Store.ProductItem" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoryProduct" Association="Model.Store.CategoryProduct">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductItem" Association="Model.Store.ProductProductItem">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductItem" EntitySet="ProductItem" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HomePage" Type="bool" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="true" MaxLength="255" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="Name" Type="nchar" Nullable="true" MaxLength="255" />
+    <Property Name="SeoDescription" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="SeoDescription" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="SeoDescription" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="false" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="ProductItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoryProduct">
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductProductItem">
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="1" />
+    <End Role="ProductItem" Type="Model.Store.ProductItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -35,6 +118,8 @@
           <Property Type="String" Name="Title" FixedLength="true" MaxLength="255" />
           <Property Type="String" Name="Text" />
           <Property Type="String" Name="Name" FixedLength="true" MaxLength="255" />
+          <Property Type="String" Name="SeoDescription" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -44,6 +129,9 @@
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="255" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="255" />
           <NavigationProperty Name="Products" Relationship="Model.CategoryProduct" FromRole="Category" ToRole="Product" />
+          <Property Type="String" Name="SeoDescription" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="1000" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -58,6 +146,8 @@
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="ProductItems" Relationship="Model.ProductProductItem" FromRole="Product" ToRole="ProductItem" />
+          <Property Type="String" Name="SeoDescription" Nullable="false" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoKeywords" Nullable="false" FixedLength="true" MaxLength="1000" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Model.Category" Role="Category" Multiplicity="1" />
@@ -81,6 +171,7 @@
           <Property Type="String" Name="Text" />
           <NavigationProperty Name="Product" Relationship="Model.ProductProductItem" FromRole="ProductItem" ToRole="Product" />
           <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <Association Name="ProductProductItem">
           <End Type="Model.Product" Role="Product" Multiplicity="1" />
@@ -98,13 +189,62 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="Model" />
-        <Alias Key="Target" Value="Model.Store" />
-        <EntityContainerMapping CdmEntityContainer="SiteContext" StorageEntityContainer="ModelTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="SiteContext">
+    <EntitySetMapping Name="Content">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Content)">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductItem)">
+        <MappingFragment StoreEntitySet="ProductItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
@@ -123,17 +263,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Model" >
-        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="3.5" PointY="1.25" Height="1.7566536458333331" />
-        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="6.375" PointY="1.25" Height="1.427958984375" />
-        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="9" PointY="1.25" Height="2.2496956380208339" />
+        <EntityTypeShape EntityType="Model.Content" Width="1.5" PointX="3.5" PointY="1.25" Height="2.085348307291667" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="6.375" PointY="1.25" Height="2.085348307291667" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="9" PointY="1.25" Height="2.7427376302083331" />
         <AssociationConnector Association="Model.CategoryProduct">
-          <ConnectorPoint PointX="7.875" PointY="2.0461531575520837" />
-          <ConnectorPoint PointX="9" PointY="2.0461531575520837" />
+          <ConnectorPoint PointX="7.875" PointY="2.2926741536458337" />
+          <ConnectorPoint PointX="9" PointY="2.2926741536458337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Model.ProductItem" Width="1.5" PointX="11.375" PointY="1.25" Height="1.592306315104167" />
+        <EntityTypeShape EntityType="Model.ProductItem" Width="1.5" PointX="11.375" PointY="1.25" Height="2.085348307291667" />
         <AssociationConnector Association="Model.ProductProductItem">
-          <ConnectorPoint PointX="10.5" PointY="2.21050048828125" />
-          <ConnectorPoint PointX="11.375" PointY="2.21050048828125" />
+          <ConnectorPoint PointX="10.5" PointY="2.2926741536458337" />
+          <ConnectorPoint PointX="11.375" PointY="2.2926741536458337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
