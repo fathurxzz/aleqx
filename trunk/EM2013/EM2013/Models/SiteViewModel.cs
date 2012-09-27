@@ -19,7 +19,7 @@ namespace EM2013.Models
         public Content Content { get; set; }
 
 
-        public SiteViewModel(SiteContext context, string categoryName)
+        public SiteViewModel(SiteContext context, string contentName, string categoryName)
         {
             var categories = context.Category;
             Menu = InitializeMainMenu(categories, categoryName);
@@ -29,6 +29,7 @@ namespace EM2013.Models
                 IsHomePage = true;
                 Content = context.Content.First(c => c.HomePage);
             }
+
         }
 
         private static Menu InitializeMainMenu(IEnumerable<Category> categories, string categoryName)
