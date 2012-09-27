@@ -194,12 +194,14 @@ namespace EM2013.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name, global::System.Int32 sortOrder)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
             category.Name = name;
+            category.SortOrder = sortOrder;
             return category;
         }
 
@@ -280,6 +282,78 @@ namespace EM2013.Models
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
     
@@ -458,6 +532,54 @@ namespace EM2013.Models
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
 
         #endregion
     
@@ -482,7 +604,9 @@ namespace EM2013.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 sortOrder)
+        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
+        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 sortOrder, global::System.String seoDescription, global::System.String seoKeywords)
         {
             Product product = new Product();
             product.Id = id;
@@ -491,6 +615,8 @@ namespace EM2013.Models
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             product.SortOrder = sortOrder;
+            product.SeoDescription = seoDescription;
+            product.SeoKeywords = seoKeywords;
             return product;
         }
 
@@ -667,6 +793,54 @@ namespace EM2013.Models
         private global::System.Int32 _SortOrder;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
 
         #endregion
     
@@ -750,11 +924,13 @@ namespace EM2013.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="productId">Initial value of the ProductId property.</param>
-        public static ProductItem CreateProductItem(global::System.Int32 id, global::System.Int32 productId)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static ProductItem CreateProductItem(global::System.Int32 id, global::System.Int32 productId, global::System.Int32 sortOrder)
         {
             ProductItem productItem = new ProductItem();
             productItem.Id = id;
             productItem.ProductId = productId;
+            productItem.SortOrder = sortOrder;
             return productItem;
         }
 
@@ -883,6 +1059,30 @@ namespace EM2013.Models
         private global::System.Int32 _ProductId;
         partial void OnProductIdChanging(global::System.Int32 value);
         partial void OnProductIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
     

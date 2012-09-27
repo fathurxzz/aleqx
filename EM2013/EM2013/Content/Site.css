@@ -39,7 +39,7 @@ body
     background: url('img/header-bottom-line.gif') repeat-x;
 }
 
-.logo
+#logo
 {
     width: 285px;
     height: 29px;
