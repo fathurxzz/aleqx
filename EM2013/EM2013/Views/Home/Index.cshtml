@@ -1,11 +1,25 @@
 ﻿@using EM2013.Models
 @using SiteExtensions
+@model SiteViewModel
 @section MainMenu
 {
-    @Html.Partial("_MainMenu", new Menu())
+    @Html.Partial("_MainMenu", Model.Menu)
+}
+@{
+    var contentDescription = new ContentDescription
+                                 {
+                                     Title = Model.Title,
+                                     Text = Model.Description
+                                 };
+
+    if (Model.Content != null)
+    {
+        contentDescription.Text = Model.Content.Text;
+        contentDescription.Title = Model.Content.Title;
+    }
 }
 
-@Html.Partial("_ContentDescription", new ContentDescription { Title = "ЗДРАВСТВУЙТЕ!", Text = "dfsdfs dfsdf sdf sdf " })
+@Html.Partial("_ContentDescription", contentDescription)
 
 @section Footer
 {

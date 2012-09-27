@@ -1,0 +1,18 @@
+﻿@using EM2013.Models
+@model EM2013.Models.SiteViewModel
+
+@section MainMenu
+{
+    @Html.Partial("_MainMenu", Model.Menu)
+}
+
+@Html.Partial("_ContentDescription", new ContentDescription {Text = Model.Content.Text, Title = Model.Content.Title})
+
+@section Footer
+{
+    <div class="footer">
+        <div class="logo">
+        </div>
+    </div>
+}
+

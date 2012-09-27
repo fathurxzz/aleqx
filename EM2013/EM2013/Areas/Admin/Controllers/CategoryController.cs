@@ -43,7 +43,6 @@ namespace EM2013.Areas.Admin.Controllers
             {
                 var category = context.Category.First(c => c.Id == id);
                 TryUpdateModel(category, new[] { "Name", "Title", "Description", "SeoDescription", "SeoKeywords", "SortOrder" });
-                context.AddToCategory(category);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home", new { area = "", category = category.Name });
             }
