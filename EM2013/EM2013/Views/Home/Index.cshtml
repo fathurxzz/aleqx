@@ -1,1 +1,16 @@
-﻿
+﻿@using EM2013.Models
+@using SiteExtensions
+@section MainMenu
+{
+    @Html.Partial("_MainMenu", new Menu())
+}
+
+@Html.Partial("_ContentDescription", new ContentDescription { Title = "ЗДРАВСТВУЙТЕ!", Text = "dfsdfs dfsdf sdf sdf " })
+
+@section Footer
+{
+    <div class="footer">
+        <div class="logo">
+        </div>
+    </div>
+}
