@@ -14,5 +14,12 @@ namespace EM2013.Models
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
 
+        public Content Content { get; set; }
+
+
+        public SiteViewModel(SiteContext context, string id)
+        {
+
+        }
     }
 }

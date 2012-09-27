@@ -4,6 +4,18 @@
     padding: 0;
 }
 
+body
+{
+    background-color: #f6f6f6;
+    color: #706d6e;
+    font-family: Myriad Pro;
+}
+
+img {
+    border: none;
+}
+
+
 .page, .header
 {
     width: 900px;
@@ -20,12 +32,7 @@
     padding-right: 150px;
 }
 
-body
-{
-    background-color: #f6f6f6;
-    color: #706d6e;
-    font-family: Myriad Pro;
-}
+
 
 .header
 {
@@ -153,15 +160,13 @@ body
 .mainMenu ul li
 {
     list-style: none;
+    margin-bottom: 15px;
 }
 
 .mainMenu ul li a
 {
     color: inherit;
-    margin-bottom: 15px;
-    display: block;
     text-transform: uppercase;
-    
 }
 
 .mainMenu ul li a.current

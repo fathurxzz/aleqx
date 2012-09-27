@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EM2013.Models;
+using SiteExtensions;
 
 namespace EM2013.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string category, string product)
         {
-            ViewBag.Title = "EM2013";
-            return View();
+            using (var context = new SiteContext())
+            {
+                var model = new CatalogueViewModel(context, category ?? "", product);
+                this.SetSeoContent(model);
+                ViewBag.isHomePage = model.IsHomePage;
+                if (model.Content != null)
+                    ViewBag.ContentName = model.Content.Name;
+                return View(model);
+            }
         }
 
- 
+        public ActionResult SecretLink()
+        {
+            return View("Index");
+        }
     }
 }

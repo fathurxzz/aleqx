@@ -20,11 +20,11 @@
 <body>
     @Html.Partial("_Header")
     <div class="page">
-        @RenderSection("MainMenu")
+        @RenderSection("MainMenu",false)
         <div class="content">
             @RenderBody()
             
-            @RenderSection("Footer")
+            @RenderSection("Footer",false)
 
             
 

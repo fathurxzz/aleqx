@@ -1,1 +1,56 @@
-﻿
+﻿.adminLink {
+    color: #f00;
+    font-size: 12px;
+}
+
+.field-validation-error
+{
+    color: red !important;
+}
+.adminEditContentTable
+{
+    width: 500px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.adminEditContentTable td
+{
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+.adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
+{
+    width: 500px;
+}
+
+.adminEditContentTable td span.tip
+{
+    font-size: 11px;
+    font-weight: normal;
+    color: #888;
+}
+.buttonsContainer
+{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.adminContentContainer
+{
+    font-size: 12px;
+}
+
+
+.adminLinkImage {
+    width: 16px;
+    height: 15px;
+    background: url('img/admin/edit.gif');
+    display: inline-block;
+    background-position: 0 15px;
+}
+.adminLinkImage:hover {
+    background-position: 0 0;
+}

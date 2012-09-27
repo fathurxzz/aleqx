@@ -1,9 +1,20 @@
 ﻿@model SiteExtensions.Menu
-
- <div class="mainMenu">
-            <ul>
-                <li><a href="#" class="current">Сайты</a></li>
-                <li><a href="#">Фирменные стили</a></li>
-                <li><a href="#">Рекламные материалы</a></li>
-            </ul>
-        </div>
+<div class="mainMenu">
+    <ul>
+        <li>
+            @Html.ActionLink("Сайты", "Index", "Home", new { category = "sites" }, new { @class = "current" })
+            @if (Request.IsAuthenticated)
+            {
+                <span>
+                    @Html.Raw(Html.ActionLink("[IMAGE]", "Edit", "Category", new { area = "Admin", id = 1 }, new { @class = "adminLink adminLinkImage" }).ToString().Replace("[IMAGE]", ""))
+                </span>
+            }
+        </li>
+        <li><a href="#">Фирменные стили</a></li>
+        <li><a href="#">Рекламные материалы</a></li>
+    </ul>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("добавить раздел", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
+    }
+</div>
