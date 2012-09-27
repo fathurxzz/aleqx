@@ -1,33 +1,172 @@
-﻿* {
+﻿*
+{
     margin: 0;
     padding: 0;
 }
 
-.page, .header {
-    width: 1200px;
+.page, .header
+{
+    width: 900px;
     position: relative;
     margin: 0 auto;
 }
 
-body {
-    background-color: #f6f6f6;
+
+
+.page
+{
+    padding-top: 35px;
+    padding-left: 150px;
+    padding-right: 150px;
 }
 
-.header {
+body
+{
+    background-color: #f6f6f6;
+    color: #706d6e;
+    font-family: Myriad Pro;
+}
+
+.header
+{
     height: 94px;
 }
 
 
-.header-bottom-line {
+.header-bottom-line
+{
     height: 1px;
     background: url('img/header-bottom-line.gif') repeat-x;
 }
 
-.logo {
+.logo
+{
     width: 285px;
     height: 29px;
     background: url('img/logo.gif') no-repeat;
     position: absolute;
     margin-top: 30px;
+}
+
+.feedback-container
+{
+    float: right;
+    margin-top: 37px;
+    width: 100px;
+    height: 30px;
+    background: url('img/feedback-cloud.gif') no-repeat;
+}
+
+.feedback-container .link
+{
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.feedback-container .link a
+{
+    color: #706d6e;
+    font-size: 11px;
+}
+
+
+.content
+{
+    width: 666px;
     margin-left: 145px;
 }
+
+.description .title
+{
+    height: 20px;
+    background-color: #706d6e;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+.description .text
+{
+    position: relative;
+    margin: 0 auto;
+    padding: 40px;
+    width: 566px;
+    background-color: #fff;
+    font-size: 11px;
+}
+
+.description .bottom {
+    height: 2px;
+    background-color: #706d6e;
+}
+
+
+.footer
+{
+    margin-top: 50px;
+    background: url('img/bottom-line.gif') no-repeat;
+    height: 40px;
+    background-position: 0 18px;
+}
+
+.footer .logo {
+    width: 39px;
+    height: 40px;
+    background: url('img/bottom-logo.gif') no-repeat;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+.em {
+    width: 133px;
+    height: 34px;
+    position: relative;
+    margin: 40px auto 0;
+    background: url('img/em.gif') no-repeat;
+}
+
+.secret-link 
+{
+    position: absolute;
+    width: 100px;
+    margin-left: 580px;
+    margin-top: 3px;
+}
+
+.secret-link a {
+    font-size: 10px;
+    color: #706d6e;
+}
+
+
+
+/*** mainmenu ***/
+
+.mainMenu
+{
+    width: 120px;
+    font-size: 14px;
+    float: left;
+}
+
+.mainMenu ul li
+{
+    list-style: none;
+}
+
+.mainMenu ul li a
+{
+    color: inherit;
+    margin-bottom: 15px;
+    display: block;
+    text-transform: uppercase;
+    
+}
+
+.mainMenu ul li a.current
+{
+    color: #bcbcbc;
+}
+
+/******/
