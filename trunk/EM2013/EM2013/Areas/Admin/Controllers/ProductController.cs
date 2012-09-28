@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EM2013.Helpers;
 using EM2013.Models;
 using SiteExtensions;
 
@@ -13,8 +14,12 @@ namespace EM2013.Areas.Admin.Controllers
     {
         public ActionResult Create(int id)
         {
-            ViewBag.CategoryId = id;
-            return View(new Product());
+            using (var context = new SiteContext())
+            {
+                ViewBag.CategoryId = id;
+                var max = context.Product.Max(p => p.SortOrder);
+                return View(new Product {SortOrder = max + 1});
+            }
         }
 
         [HttpPost]
@@ -85,7 +90,19 @@ namespace EM2013.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContext())
+            {
+                var product = context.Product.Include("Category").Include("ProductItems").First(c => c.Id == id);
+                var categoryName = product.Category.Name;
+                if (!product.ProductItems.Any())
+                {
+                    ImageHelper.DeleteImage(product.ImageSource);
+
+                    context.DeleteObject(product);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Home", new { area = "", category = categoryName });
+            }
         }
     }
 }

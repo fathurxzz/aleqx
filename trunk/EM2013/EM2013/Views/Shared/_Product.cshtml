@@ -7,6 +7,8 @@
     @if(Request.IsAuthenticated)
     {
         @Html.ActionLink("редактировать","Edit","Product",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("удалить", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick="return confirm('Удалить объект?')" })
     }
     <div class="title">
         @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.Category.Name, product = Model.Name }, null)

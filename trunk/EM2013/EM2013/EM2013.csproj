@@ -87,6 +87,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HtmlHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
