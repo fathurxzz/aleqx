@@ -123,9 +123,11 @@ img {
 
 .footer
 {
-    margin-top: 50px;
+    margin: 50px auto 0 auto;
     background: url('img/bottom-line.gif') no-repeat;
     height: 40px;
+    width: 666px;
+    position: relative;
     background-position: 0 18px;
 }
 

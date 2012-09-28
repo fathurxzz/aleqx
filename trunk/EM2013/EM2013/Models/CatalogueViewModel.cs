@@ -19,15 +19,20 @@ namespace EM2013.Models
             if(!string.IsNullOrEmpty(category))
             {
                 Category = context.Category.Include("Products").First(c => c.Name == category);
+                PageTitle += " - " + Category.Title;
+                SeoDescription = Category.SeoDescription;
+                SeoKeywords = Category.SeoKeywords;
                 Title = Category.Title;
-
             }
 
             if(!string.IsNullOrEmpty(product))
             {
                 Product = context.Product.Include("Category").Include("ProductItems").First(p => p.Name == product);
+                SeoDescription = Product.SeoDescription;
+                SeoKeywords = Product.SeoKeywords;
+                PageTitle += " - " + Product.Title;
+                Title = Product.Title;
             }
-
         }
 
         private void UpdateMainMenu(string category, string product)

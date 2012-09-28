@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web.Mvc;
@@ -29,19 +30,18 @@ namespace EM2013.Models
 
     public class LogOnModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Логин")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Обязательно!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [DisplayName("Пароль")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [DisplayName("Запомнить меня?")]
         public bool RememberMe { get; set; }
     }
-
     public class RegisterModel
     {
         [Required]

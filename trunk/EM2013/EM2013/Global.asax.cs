@@ -27,6 +27,12 @@ namespace EM2013
                 new { controller = "Home", action = "SecretLink" } // Parameter defaults
             );
 
+            routes.MapRoute(
+                "Account", // Route name
+                "account/logon", // URL with parameters
+                new { controller = "Account", action = "LogOn" } // Parameter defaults
+            );
+
             //routes.MapRoute(
             //    "Category", // Route name
             //    "{category}", // URL with parameters

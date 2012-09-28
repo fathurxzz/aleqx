@@ -13,6 +13,7 @@ namespace EM2013.Models
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
+        public string PageTitle { get; set; }
 
         public string Description { get; set; }
 
@@ -21,6 +22,7 @@ namespace EM2013.Models
 
         public SiteViewModel(SiteContext context, string contentName)
         {
+            PageTitle = "Студия Евгения Миллера";
             var categories = context.Category;
             Menu = InitializeMainMenu(categories);
 
@@ -32,6 +34,14 @@ namespace EM2013.Models
             {
                 Content = context.Content.First(c => c.HomePage);
                 IsHomePage = true;
+            }
+            
+            if(Content!=null)
+            {
+                PageTitle += " - " + Content.Title;
+                SeoDescription = Content.SeoDescription;
+                SeoKeywords = Content.SeoKeywords;
+                Title = Content.Title;
             }
 
         }
