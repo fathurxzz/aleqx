@@ -1,4 +1,10 @@
-﻿*
+﻿@font-face
+{
+    font-family: "Myriad Pro";
+    src: url('fonts/PFHandbookPro-Regular.ttf');
+}
+
+*
 {
     margin: 0;
     padding: 0;
@@ -11,11 +17,13 @@ body
     font-family: Myriad Pro;
 }
 
-img {
+img
+{
     border: none;
 }
 
-.clear {
+.clear
+{
     clear: both;
 }
 .page, .header
@@ -85,7 +93,8 @@ img {
     margin-left: 130px;
 }
 
-.content .description {
+.content .description
+{
     width: 666px;
     position: relative;
     margin: 0 auto;
@@ -100,7 +109,8 @@ img {
     font-size: 14px;
 }
 
-.description .title a {
+.description .title a
+{
     color: inherit;
     text-transform: uppercase;
 }
@@ -115,7 +125,8 @@ img {
     font-size: 11px;
 }
 
-.description .bottom {
+.description .bottom
+{
     height: 2px;
     background-color: #706d6e;
 }
@@ -131,7 +142,8 @@ img {
     background-position: 0 18px;
 }
 
-.footer .logo {
+.footer .logo
+{
     width: 39px;
     height: 40px;
     background: url('img/bottom-logo.gif') no-repeat;
@@ -140,7 +152,8 @@ img {
 }
 
 
-.em {
+.em
+{
     width: 133px;
     height: 34px;
     position: relative;
@@ -148,7 +161,7 @@ img {
     background: url('img/em.gif') no-repeat;
 }
 
-.secret-link 
+.secret-link
 {
     position: absolute;
     width: 100px;
@@ -156,7 +169,8 @@ img {
     margin-top: 3px;
 }
 
-.secret-link a {
+.secret-link a
+{
     font-size: 10px;
     color: #706d6e;
 }
@@ -178,9 +192,9 @@ img {
     margin-bottom: 15px;
 }
 
-.mainMenu ul li {
-    text-transform: uppercase;
-    /*font-weight: bold;*/
+.mainMenu ul li
+{
+    text-transform: uppercase; /*font-weight: bold;*/
 }
 
 .mainMenu ul li a
@@ -189,7 +203,8 @@ img {
     font-weight: normal;
 }
 
-.mainMenu ul li {
+.mainMenu ul li
+{
     color: #bcbcbc;
 }
 
@@ -201,38 +216,45 @@ img {
 /******/
 
 
-.products, .productItems {
+.products, .productItems
+{
     padding-top: 50px;
 }
 
-.product {
+.product
+{
     width: 165px;
     float: left;
     height: 240px;
     margin: 0 36px;
 }
 
-.product .preview {
+.product .preview
+{
     width: 165px;
     height: 165px;
 }
 
-.product .title {
+.product .title
+{
     font-size: 10px;
     text-align: center;
     padding-top: 10px;
 }
 
-.product .title a {
+.product .title a
+{
     color: inherit;
 }
 
 
-.productItem {
+.productItem
+{
     padding-bottom: 40px;
 }
 
-.productItem .description {
+.productItem .description
+{
     font-style: italic;
     font-size: 11px;
     text-align: center;
