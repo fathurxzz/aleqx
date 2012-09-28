@@ -11,7 +11,11 @@ namespace EM2013.Areas.Admin.Controllers
     {
         public ActionResult Create()
         {
-            return View(new Category());
+            using (var context = new SiteContext())
+            {
+                var max = context.Category.Max(c => c.SortOrder);
+                return View(new Category {SortOrder = max + 1});
+            }
         }
 
         [HttpPost]
