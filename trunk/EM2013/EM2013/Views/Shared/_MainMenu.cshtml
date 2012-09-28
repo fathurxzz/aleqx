@@ -1,28 +1,26 @@
 ﻿@model SiteExtensions.Menu
 <div class="mainMenu">
     <ul>
-    @foreach(var item in Model)
-    {
-        <li>
-            @if (item.Current)
-            {
-                @Html.Raw(item.Title)
-            }
-            else
-            {
-                @Html.ActionLink(item.Title, "Index", "Home", new {category = item.ContentName}, new {@class = item.Selected ? "selected" : ""})
-            }
-
-            @if (Request.IsAuthenticated)
-            {
-                <span>
-                    @Html.Raw(Html.ActionLink("[IMAGE]", "Edit", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink adminLinkImage" }).ToString().Replace("[IMAGE]", ""))
-                </span>
-            }
-        </li>
-    }
+        @foreach (var item in Model)
+        {
+            <li>
+                @if (item.Current)
+                {
+                    @Html.Raw(item.Title)
+                }
+                else
+                {
+                    @Html.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName, product = "" }, new { @class = item.Selected ? "selected" : "" })
+                }
+                @if (Request.IsAuthenticated)
+                {
+                    <span>
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "Edit", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink adminLinkImage" }).ToString().Replace("[IMAGE]", ""))
+                    </span>
+                }
+            </li>
+        }
     </ul>
-    
     @*<ul>
         <li>
             @Html.ActionLink("Сайты", "Index", "Home", new { category = "sites" }, new { @class = "current" })
@@ -36,6 +34,9 @@
         <li><a href="#">Фирменные стили</a></li>
         <li><a href="#">Рекламные материалы</a></li>
     </ul>*@
+    
+    
+
     @if (Request.IsAuthenticated)
     {
         @Html.ActionLink("добавить раздел", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })

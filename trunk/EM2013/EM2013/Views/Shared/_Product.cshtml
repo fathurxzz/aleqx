@@ -1,2 +1,14 @@
-﻿@model EM2013.Models.Product
-
+﻿@using EM2013.Helpers
+@model EM2013.Models.Product
+<div class="product">
+    <div class="preview">
+        @Html.ImageActionLink("Content/Images/", Model.ImageSource, "Index", "Home", new { category = Model.Category.Name, product = Model.Name }, null, 165, 165)
+    </div>
+    @if(Request.IsAuthenticated)
+    {
+        @Html.ActionLink("редактировать","Edit","Product",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+    }
+    <div class="title">
+        @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.Category.Name, product = Model.Name }, null)
+    </div>
+</div>
