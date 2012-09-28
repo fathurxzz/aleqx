@@ -1,6 +1,6 @@
 ﻿@using EM2013.Models
 @using SiteExtensions
-@model SiteViewModel
+@model CatalogueViewModel
 @section MainMenu
 {
     @Html.Partial("_MainMenu", Model.Menu)
@@ -20,6 +20,20 @@
 }
 
 @Html.Partial("_ContentDescription", contentDescription)
+
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("добавить объект", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+}
+
+<div class="products">
+
+@foreach(var product in Model.Category.Products)
+{
+    @Html.Partial("_Product",product)
+}
+
+</div>
 
 @section Footer
 {

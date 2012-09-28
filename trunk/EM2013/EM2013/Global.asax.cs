@@ -34,6 +34,12 @@ namespace EM2013
             );
 
             routes.MapRoute(
+                "CategoryProduct", // Route name
+                "{category}/{product}", // URL with parameters
+                new { controller = "Home", action = "Index", category = UrlParameter.Optional, product = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults

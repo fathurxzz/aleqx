@@ -6,7 +6,7 @@ using SiteExtensions;
 
 namespace EM2013.Models
 {
-    public class SiteViewModel:ISiteModel 
+    public class SiteViewModel : ISiteModel
     {
         public string Title { get; set; }
         public string SeoDescription { get; set; }
@@ -19,20 +19,24 @@ namespace EM2013.Models
         public Content Content { get; set; }
 
 
-        public SiteViewModel(SiteContext context, string contentName, string categoryName)
+        public SiteViewModel(SiteContext context, string contentName)
         {
             var categories = context.Category;
-            Menu = InitializeMainMenu(categories, categoryName);
+            Menu = InitializeMainMenu(categories);
 
-            if (string.IsNullOrEmpty(categoryName))
+            if (!string.IsNullOrEmpty(contentName))
             {
-                IsHomePage = true;
+                Content = context.Content.First(c => c.Name == contentName);
+            }
+            else if (contentName == "")
+            {
                 Content = context.Content.First(c => c.HomePage);
+                IsHomePage = true;
             }
 
         }
 
-        private static Menu InitializeMainMenu(IEnumerable<Category> categories, string categoryName)
+        private static Menu InitializeMainMenu(IEnumerable<Category> categories)
         {
             var menu = new Menu();
             var menuItems = categories.Select(c => new MenuItem
@@ -40,8 +44,7 @@ namespace EM2013.Models
                 ContentId = c.Id,
                 ContentName = c.Name,
                 Title = c.Title,
-                SortOrder = c.SortOrder,
-                Current = c.Name == categoryName
+                SortOrder = c.SortOrder
             });
             menu.AddRange(menuItems);
             return menu;

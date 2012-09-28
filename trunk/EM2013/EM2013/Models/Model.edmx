@@ -54,8 +54,8 @@
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
-    <Property Name="SeoDescription" Type="nvarchar" Nullable="false" MaxLength="1000" />
-    <Property Name="SeoKeywords" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SeoDescription" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="1000" />
   </EntityType>
   <EntityType Name="ProductItem">
     <Key>
@@ -148,8 +148,8 @@
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="ProductItems" Relationship="Model.ProductProductItem" FromRole="Product" ToRole="ProductItem" />
-          <Property Type="String" Name="SeoDescription" Nullable="false" FixedLength="true" MaxLength="1000" />
-          <Property Type="String" Name="SeoKeywords" Nullable="false" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoDescription" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="1000" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Model.Category" Role="Category" Multiplicity="1" />

@@ -163,13 +163,18 @@ img {
     margin-bottom: 15px;
 }
 
+.mainMenu ul li {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .mainMenu ul li a
 {
     color: inherit;
-    text-transform: uppercase;
+    font-weight: normal;
 }
 
-.mainMenu ul li a.current
+.mainMenu ul li a.selected
 {
     color: #bcbcbc;
 }
