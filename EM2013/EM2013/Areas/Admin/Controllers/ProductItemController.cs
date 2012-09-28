@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EM2013.Helpers;
 using EM2013.Models;
 using SiteExtensions;
 
@@ -13,8 +14,16 @@ namespace EM2013.Areas.Admin.Controllers
     {
         public ActionResult Create(int id)
         {
-            ViewBag.ProductId = id;
-            return View(new ProductItem());
+            using (var context = new SiteContext())
+            {
+                ViewBag.ProductId = id;
+                var max = context.ProductItem.Max(p => p.SortOrder);
+                var product = context.Product.Include("Category").First(p => p.Id == id);
+                ViewBag.ProductName = product.Name;
+                ViewBag.CategoryName = product.Category.Name;
+
+                return View(new ProductItem { SortOrder = max + 1 });
+            }
         } 
 
         [HttpPost]
@@ -46,17 +55,46 @@ namespace EM2013.Areas.Admin.Controllers
         
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContext())
+            {
+                var pi = context.ProductItem.Include("Product").First(p => p.Id == id);
+                var productId = pi.Product.Id;
+                var product = context.Product.Include("Category").First(p => p.Id == productId);
+                ViewBag.ProductName = product.Name;
+                ViewBag.CategoryName = product.Category.Name;
+                return View(pi);
+            }
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection, HttpPostedFileBase fileUpload)
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                using (var context = new SiteContext())
+                {
+                    var pi = context.ProductItem.Include("Product").First(p => p.Id == id);
+                    var productId = pi.Product.Id;
+                    var product = context.Product.Include("Category").First(p => p.Id == productId);
+                    TryUpdateModel(pi, new[] { "Description", "SortOrder" });
+                    if (fileUpload != null)
+                    {
+                        if (!string.IsNullOrEmpty(pi.ImageSource))
+                        {
+                            ImageHelper.DeleteImage(pi.ImageSource);
+                        }
+
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload);
+                        fileUpload.SaveAs(filePath);
+                        pi.ImageSource = fileName;
+                    }
+                    context.SaveChanges();
+
+                    return RedirectToAction("Index", "Home", new { area = "", category = product.Category.Name, product = pi.Product.Name });
+                }
             }
             catch
             {
@@ -66,21 +104,17 @@ namespace EM2013.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            using (var context = new SiteContext())
+            {
+                var pi = context.ProductItem.Include("Product").First(p => p.Id == id);
+                var productId = pi.Product.Id;
+                var product = context.Product.Include("Category").First(p => p.Id == productId);
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                ImageHelper.DeleteImage(pi.ImageSource);
+                context.DeleteObject(pi);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new { area = "", category = product.Category.Name, product = product.Name });
             }
         }
     }

@@ -17,6 +17,7 @@ namespace EM2013.Areas.Admin.Controllers
             using (var context = new SiteContext())
             {
                 ViewBag.CategoryId = id;
+                ViewBag.CategoryName = context.Category.First(c => c.Id == id).Name;
                 var max = context.Product.Max(p => p.SortOrder);
                 return View(new Product {SortOrder = max + 1});
             }
