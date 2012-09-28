@@ -19,6 +19,7 @@ namespace Vip.Models
         public List<ProductAttribute> Attributes { get; set; }
         public List<Product> Products { get; set; }
         public int TotalProductsCount { get; set; }
+        private int? _page;
 
         public CatalogueViewModel(SiteContainer context, string category, int? page)
             : base(context, null)
@@ -60,7 +61,9 @@ namespace Vip.Models
             if (Products != null)
                 TotalProductsCount = Products.Count();
 
-            Products = ApplyPaging(Products, page);
+
+            _page = page;
+            //Products = ApplyPaging(Products, page);
         }
 
         public void SetFilters()
@@ -141,6 +144,10 @@ namespace Vip.Models
                     Products.Add(product);
                 }
             }
+            
+            if (Products != null)
+                TotalProductsCount = Products.Count();
+
         }
 
         List<Product> ApplyPaging(List<Product> products, int? page)
@@ -152,6 +159,13 @@ namespace Vip.Models
             if (page < 0)
                 return products;
             return products.Skip(currentPage * pageSize).Take(pageSize).ToList();
+        }
+
+        public void ApplyPaging()
+        {
+            Products = ApplyPaging(Products, _page);
+            
+
         }
     }
 }
