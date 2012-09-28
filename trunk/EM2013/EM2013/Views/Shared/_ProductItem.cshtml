@@ -1,2 +1,11 @@
-﻿@model EM2013.Models.ProductItem
+﻿@using EM2013
+@using SiteExtensions.Graphics
+@model EM2013.Models.ProductItem
 
+
+<div class="productItem">
+    <div class="description">
+        @Model.Description
+    </div>
+    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productItem"), ScaleMode.FixedWidth))
+</div>
