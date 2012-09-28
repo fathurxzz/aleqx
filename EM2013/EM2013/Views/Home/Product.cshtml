@@ -8,18 +8,13 @@
 
 @Html.Partial("_ContentDescription", new ContentDescription { Title = Model.Title, Text = Model.Description })
 
-@if (Request.IsAuthenticated)
-{
-    @Html.ActionLink("добавить объект", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
-}
-<div class="products">
-    @foreach (var product in Model.Category.Products)
+<div class="productItems">
+    @foreach (var item in Model.Product.ProductItems)
     {
-        @Html.Partial("_Product", product)
+        @Html.Partial("_ProductItem", item)
     }
-    <div class="clear">
-    </div>
 </div>
+
 @section Footer
 {
     <div class="footer">
