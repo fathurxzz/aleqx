@@ -7,5 +7,13 @@
     <div class="description">
         @Model.Description
     </div>
+    @if(Request.IsAuthenticated)
+    {
+        <div>
+        @Html.ActionLink("редактировать", "Edit", "ProductItem", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("удалить", "Delete", "ProductItem", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить объект?')" })
+        </div>
+    }
     @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productItem"), ScaleMode.FixedWidth))
 </div>

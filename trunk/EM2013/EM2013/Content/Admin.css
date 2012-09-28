@@ -25,6 +25,10 @@
     width: 500px;
 }
 
+.adminEditContentTable td textarea {
+    height: 100px;
+}
+
 .adminEditContentTable td span.tip
 {
     font-size: 11px;
