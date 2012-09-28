@@ -29,7 +29,7 @@ namespace EM2013.Controllers
         {
             using (var context = new SiteContext())
             {
-                var model = new SiteViewModel(context, "secretlink", null);
+                var model = new SiteViewModel(context, "secretlink");
                 ViewBag.isHomePage = false;
                 return View("Content",model);
             }

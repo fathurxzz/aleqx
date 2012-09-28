@@ -7,10 +7,33 @@ namespace EM2013.Models
 {
     public class CatalogueViewModel : SiteViewModel
     {
-        public CatalogueViewModel(SiteContext context, string category, string product): base(context, null, category)
+        public Category Category { get; set; }
+
+
+        public CatalogueViewModel(SiteContext context, string category, string product)
+            : base(context, category == "" ? "" : null)
         {
+            UpdateMainMenu(category, product);
 
 
+            if(!string.IsNullOrEmpty(category))
+            {
+                Category = context.Category.Include("Products").First(c => c.Name == category);
+                Title = Category.Title;
+
+            }
+
+        }
+
+        private void UpdateMainMenu(string category, string product)
+        {
+            foreach (var item in Menu.Where(item => item.ContentName == category))
+            {
+                if (string.IsNullOrEmpty(product))
+                    item.Current = true;
+                else
+                    item.Selected = true;
+            }
         }
     }
 }

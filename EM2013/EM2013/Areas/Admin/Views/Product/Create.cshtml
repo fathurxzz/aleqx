@@ -1,21 +1,19 @@
-﻿@model EM2013.Models.Category
+﻿@model EM2013.Models.Product
 @{
-    ViewBag.Title = "Редактирование категории";
+    ViewBag.Title = "Создание объекта";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <div class="adminContentContainer">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-    
-        @Html.HiddenFor(model => model.Id)
-
+        @Html.Hidden("categoryId", (int)ViewBag.CategoryId)
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
                     <h2>
-                        Создание категории</h2>
+                        Создание объекта</h2>
                 </td>
             </tr>
             <tr>
@@ -55,6 +53,14 @@
                 </td>
             </tr>
             <tr>
+                <td>@Html.LabelFor(model => model.ImageSource)
+                </td>
+                <td>
+                    <input type="file" name="fileUpload" />
+                    @Html.ValidationMessageFor(model => model.ImageSource)
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" style="text-align: center">
                     Для поисковых систем
                 </td>
@@ -78,7 +84,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "Home", new { Area = "", category = Model.Name }, null)
+            @Html.ActionLink("Назад", "Index", "Home", new { Area = "" }, null)
         </div>
     }
 </div>

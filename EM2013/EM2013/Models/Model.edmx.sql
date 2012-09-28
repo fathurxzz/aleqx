@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/27/2012 19:38:18
+-- Date Created: 09/28/2012 09:52:24
 -- Generated from EDMX file: D:\AlexK\projects\EM2013\EM2013\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `em2013`;
+CREATE DATABASE `em2013`;
+USE `em2013`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -67,8 +70,8 @@ CREATE TABLE `Product` (
     `ImageSource` TEXT  NOT NULL,
     `CategoryId` int  NOT NULL,
     `SortOrder` int  NOT NULL,
-    `SeoDescription` TEXT  NOT NULL,
-    `SeoKeywords` TEXT  NOT NULL
+    `SeoDescription` TEXT  NULL,
+    `SeoKeywords` TEXT  NULL
 );
 
 -- Creating table 'ProductItem'

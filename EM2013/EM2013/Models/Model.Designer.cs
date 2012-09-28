@@ -628,9 +628,7 @@ namespace EM2013.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 sortOrder, global::System.String seoDescription, global::System.String seoKeywords)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 sortOrder)
         {
             Product product = new Product();
             product.Id = id;
@@ -639,8 +637,6 @@ namespace EM2013.Models
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             product.SortOrder = sortOrder;
-            product.SeoDescription = seoDescription;
-            product.SeoKeywords = seoKeywords;
             return product;
         }
 
@@ -821,7 +817,7 @@ namespace EM2013.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -833,7 +829,7 @@ namespace EM2013.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -845,7 +841,7 @@ namespace EM2013.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -857,7 +853,7 @@ namespace EM2013.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }

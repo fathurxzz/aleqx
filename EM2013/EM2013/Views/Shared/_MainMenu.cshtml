@@ -3,9 +3,16 @@
     <ul>
     @foreach(var item in Model)
     {
-        
         <li>
-            @Html.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName }, new { @class = item.Current? "current":"" })
+            @if (item.Current)
+            {
+                @Html.Raw(item.Title)
+            }
+            else
+            {
+                @Html.ActionLink(item.Title, "Index", "Home", new {category = item.ContentName}, new {@class = item.Selected ? "selected" : ""})
+            }
+
             @if (Request.IsAuthenticated)
             {
                 <span>
@@ -13,7 +20,6 @@
                 </span>
             }
         </li>
-        
     }
     </ul>
     
