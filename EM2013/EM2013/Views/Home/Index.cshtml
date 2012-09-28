@@ -6,7 +6,7 @@
     @Html.Partial("_MainMenu", Model.Menu)
 }
 
-@Html.Partial("_ContentDescription", new ContentDescription { Title = Model.Title, Text = Model.Description })
+@Html.Partial("_ContentDescription", new ContentDescription { Title = Model.Category.Title, Text = Model.Category.Description })
 
 @if (Request.IsAuthenticated)
 {

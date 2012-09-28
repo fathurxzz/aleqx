@@ -16,6 +16,7 @@ namespace EM2013.Controllers
             {
                 var model = new CatalogueViewModel(context, category ?? "", product);
                 this.SetSeoContent(model);
+                ViewBag.PageTitle = model.PageTitle;
                 ViewBag.isHomePage = model.IsHomePage;
                 
                 if (model.Content != null)
@@ -37,6 +38,8 @@ namespace EM2013.Controllers
             using (var context = new SiteContext())
             {
                 var model = new SiteViewModel(context, "secretlink");
+                this.SetSeoContent(model);
+                ViewBag.PageTitle = model.PageTitle;
                 ViewBag.isHomePage = false;
                 return View("Content",model);
             }
