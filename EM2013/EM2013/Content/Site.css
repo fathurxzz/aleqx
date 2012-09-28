@@ -81,8 +81,14 @@ img {
 
 .content
 {
+    width: 712px;
+    margin-left: 130px;
+}
+
+.content .description {
     width: 666px;
-    margin-left: 145px;
+    position: relative;
+    margin: 0 auto;
 }
 
 .description .title
@@ -92,6 +98,11 @@ img {
     text-align: center;
     color: #fff;
     font-size: 14px;
+}
+
+.description .title a {
+    color: inherit;
+    text-transform: uppercase;
 }
 
 .description .text
@@ -196,7 +207,7 @@ img {
     width: 165px;
     float: left;
     height: 240px;
-    margin: 0 28px;
+    margin: 0 36px;
 }
 
 .product .preview {
@@ -213,3 +224,17 @@ img {
 .product .title a {
     color: inherit;
 }
+
+
+.productItem {
+    padding-bottom: 40px;
+}
+
+.productItem .description {
+    font-style: italic;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px;
+}
+
+

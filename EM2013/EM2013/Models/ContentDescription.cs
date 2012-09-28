@@ -7,6 +7,7 @@ namespace EM2013.Models
 {
     public class ContentDescription
     {
+        public string CategoryTitle { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }
     }

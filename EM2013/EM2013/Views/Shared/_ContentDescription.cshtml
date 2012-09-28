@@ -2,6 +2,12 @@
 
 <div class="description">
     <div class="title">
+        @if (!string.IsNullOrEmpty(Model.CategoryTitle))
+        {
+            @Html.Raw(Model.CategoryTitle)
+            @Html.Raw(" &raquo; ")
+        }
+        
         @Model.Title
     </div>
     <div class="text">
