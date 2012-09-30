@@ -213,6 +213,7 @@
     <Content Include="Areas\Admin\Views\ProductItem\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\fonts\MyriadPro-Regular.otf" />
     <None Include="Content\fonts\PFHandbookPro-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
