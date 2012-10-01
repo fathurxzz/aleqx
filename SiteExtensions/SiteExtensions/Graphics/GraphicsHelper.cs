@@ -315,6 +315,21 @@ namespace SiteExtensions.Graphics
         /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
         {
+            return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode, false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="originalPath"></param>
+        /// <param name="fileName"></param>
+        /// <param name="thumbnail"></param>
+        /// <param name="scaleMode"></param>
+        /// <param name="useBgImage"></param>
+        /// <returns></returns>
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
+        {
             return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode, false, null);
         }
 
@@ -327,6 +342,7 @@ namespace SiteExtensions.Graphics
         /// <param name="thumbnail"></param>
         /// <param name="scaleMode"></param>
         /// <param name="useBgImage"></param>
+        /// <param name="className"> </param>
         /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage, string className)
         {
