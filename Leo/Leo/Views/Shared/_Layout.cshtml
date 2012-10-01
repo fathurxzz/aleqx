@@ -30,6 +30,10 @@
             var oScrollbar = $('#scrollbar1');
 
             oScrollbar.tinyscrollbar({ axis: 'x', sizethumb: 26 });
+
+            window.setTimeout(function () {
+                oScrollbar.tinyscrollbar_update();
+            }, 10000);
         });
     </script>
 </head>
