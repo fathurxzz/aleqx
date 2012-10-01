@@ -28,7 +28,7 @@
             <tr>
                 <td>@Html.LabelFor(model => model.Text)
                 </td>
-                <td>@Html.TextAreaFor(model => model.Text)
+                <td>@Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.Text)
                 </td>
             </tr>
@@ -55,3 +55,9 @@
         </div>
     }
 </div>
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
+

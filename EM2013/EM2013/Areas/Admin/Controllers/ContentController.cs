@@ -19,12 +19,13 @@ namespace EM2013.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection form)
         {
             using (var context = new SiteContext())
             {
                 var content = context.Content.First(c => c.Id == id);
-                TryUpdateModel(content, new[] {"Title", "Text", "SeoDescription", "SeoKeywords"});
+                TryUpdateModel(content, new[] {"Title", "SeoDescription", "SeoKeywords"});
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.SaveChanges();
                 return RedirectToAction("Index","Home",new{area=""});
             }
