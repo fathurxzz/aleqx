@@ -4,19 +4,42 @@
     ViewBag.Title = "Home Page";
 }
 
-@*<table>
-      <tr>
-        @for (int i = 1; i <= 7; i++ )
+
+<script type="text/javascript">
+
+    $(function () {
+        
+        $('img.aaa').load(function () {
+            alert("1");
+        });
+
+    });
+
+    
+
+//    $('.gimage -> img').load(function () {
+//        //oScrollbar.tinyscrollbar_update();
+//        alert("1");
+//    });
+
+    </script>
+
+<table>
+    <tr>
+        
+        @*<img src="../../Content/Images/1.jpg"/>*@
+
+        @for (int i = 1; i <= 3; i++ )
         {
             string filename = i + ".jpg";
             <td>
                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb"), ScaleMode.Corp))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb"), ScaleMode.Corp,false,"aaa"))
                 </a>
             </td>
         }
     </tr>
-    <tr>
+   @* <tr>
         @for (int i = 1; i <= 7; i++ )
         {
             string filename = i + ".jpg";
@@ -94,15 +117,17 @@
                 </a>
             </td>
         }
-    </tr>
-</table>*@
+    </tr>*@
+</table>
 
 
 
-<div>
+@*<div>
     @using(Html.BeginForm("UploadFile","Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
     {
         <input type="file" name="uploadFile"/><input type="submit" value="submit"/>
     }
 
-</div>
+</div>*@
+
+

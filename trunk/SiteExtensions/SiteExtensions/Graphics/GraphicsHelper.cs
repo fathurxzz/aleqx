@@ -315,7 +315,7 @@ namespace SiteExtensions.Graphics
         /// <returns></returns>
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
         {
-            return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode, false);
+            return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode, false, null);
         }
 
         /// <summary>
@@ -328,11 +328,11 @@ namespace SiteExtensions.Graphics
         /// <param name="scaleMode"></param>
         /// <param name="useBgImage"></param>
         /// <returns></returns>
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage, string className)
         {
             StringBuilder sb = new StringBuilder();
-            string formatString = "<img src=\"{0}\" alt=\"{1}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail, scaleMode, useBgImage), fileName);
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail, scaleMode, useBgImage), fileName, className);
             return sb.ToString();
         }
 
