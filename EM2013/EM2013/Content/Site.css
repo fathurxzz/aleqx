@@ -1,7 +1,13 @@
 ﻿@font-face
 {
     font-family: "Myriad Pro";
-    src: url('fonts/MyriadPro-Regular.otf');
+    src: url('fonts/myriad-web-pro.ttf');
+}
+
+@font-face
+{
+    font-family: "PFHandbookPro";
+    src: url('fonts/PFHandbookPro-Regular.ttf');
 }
 
 *
@@ -107,12 +113,14 @@ img
     text-align: center;
     color: #fff;
     font-size: 14px;
+    font-family: PFHandbookPro;
 }
 
 .description .title a
 {
     color: inherit;
     text-transform: uppercase;
+    font-family: PFHandbookPro;
 }
 
 .description .text
@@ -184,6 +192,7 @@ img
     width: 120px;
     font-size: 14px;
     float: left;
+    font-family: PFHandbookPro;
 }
 
 .mainMenu ul li
