@@ -16,6 +16,10 @@ namespace Leo.Models
         public CatalogueViewModel(SiteContainer context, string categoryName)
             : base(context, categoryName)
         {
+            // TODO: сделать дефолтный пункт меню
+            if (categoryName == null)
+                categoryName = "sceneries";
+            //
             var category = context.Category.Include("ProductAttributes").Include("Products").FirstOrDefault(c => c.Name == categoryName || categoryName == null);
             if (category == null)
             {
