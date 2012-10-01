@@ -30,7 +30,8 @@ namespace EM2013.Areas.Admin.Controllers
             {
                 var category = context.Category.First(c => c.Id == categoryId);
                 var product = new Product();
-                TryUpdateModel(product, new[] { "Name", "Title", "Description", "SortOrder", "SeoDescription", "SeoKeywords" });
+                TryUpdateModel(product, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+                product.Description = HttpUtility.HtmlDecode(form["Description"]);
                 product.Category = category;
 
                 if (fileUpload != null)
@@ -56,20 +57,21 @@ namespace EM2013.Areas.Admin.Controllers
             using (var context = new SiteContext())
             {
                 var product = context.Product.Include("Category").First(p => p.Id == id);
-                TryUpdateModel(product, new[] { "Name", "Title", "Description", "SortOrder", "SeoDescription", "SeoKeywords" });
+                //TryUpdateModel(product, new[] { "Name", "Title", "Description", "SortOrder", "SeoDescription", "SeoKeywords" });
 
-                context.SaveChanges();
+                //context.SaveChanges();
                 return View(product);
             }
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
             using (var context = new SiteContext())
             {
                 var product = context.Product.Include("Category").First(p => p.Id == id);
-                TryUpdateModel(product, new[] { "Name", "Title", "Description", "SortOrder", "SeoDescription", "SeoKeywords" });
+                TryUpdateModel(product, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+                product.Description = HttpUtility.HtmlDecode(form["Description"]);
                 if (fileUpload != null)
                 {
                     if (!string.IsNullOrEmpty(product.ImageSource))
