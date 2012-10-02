@@ -628,7 +628,8 @@ namespace EM2013.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 sortOrder)
+        /// <param name="date">Initial value of the Date property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 sortOrder, global::System.DateTime date)
         {
             Product product = new Product();
             product.Id = id;
@@ -637,6 +638,7 @@ namespace EM2013.Models
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             product.SortOrder = sortOrder;
+            product.Date = date;
             return product;
         }
 
@@ -861,6 +863,30 @@ namespace EM2013.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
 
         #endregion
     

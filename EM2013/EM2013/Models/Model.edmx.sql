@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/28/2012 09:52:24
--- Generated from EDMX file: D:\AlexK\projects\EM2013\EM2013\Models\Model.edmx
+-- Date Created: 10/02/2012 20:32:49
+-- Generated from EDMX file: D:\projects\EM2013\EM2013\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
@@ -71,7 +71,8 @@ CREATE TABLE `Product` (
     `CategoryId` int  NOT NULL,
     `SortOrder` int  NOT NULL,
     `SeoDescription` TEXT  NULL,
-    `SeoKeywords` TEXT  NULL
+    `SeoKeywords` TEXT  NULL,
+    `Date` datetime  NOT NULL
 );
 
 -- Creating table 'ProductItem'

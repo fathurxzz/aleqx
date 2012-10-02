@@ -53,7 +53,6 @@ namespace EM2013.Controllers
         {
             if (ModelState.IsValid)
             {
-                ResponseData responseData;
                 try
                 {
                     string defaultMailAddress = ConfigurationManager.AppSettings["feedbackEmail"];
@@ -61,7 +60,7 @@ namespace EM2013.Controllers
                                  {
                                      new MailAddress(defaultMailAddress)
                                  };
-                    responseData = MailHelper.SendTemplate(null, emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    ResponseData responseData = MailHelper.SendTemplate(new MailAddress("m@m-brand.com.ua"), emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
                     if (responseData.EmailSent)
                         return PartialView("Success");
                     feedbackFormModel.ErrorMessage = "Ошибка: " + responseData.ErrorMessage;
