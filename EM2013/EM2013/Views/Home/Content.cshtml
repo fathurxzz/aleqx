@@ -1,19 +1,22 @@
 ﻿@using EM2013.Models
 @model EM2013.Models.SiteViewModel
-
 @section MainMenu
 {
     @Html.Partial("_MainMenu", Model.Menu)
 }
-
-@if(Request.IsAuthenticated)
+@if (Request.IsAuthenticated)
 {
-    @Html.ActionLink("редактировать","Edit","Content",new{area="Admin",id=Model.Content.Id},new{@class="adminLink"})
+    @Html.ActionLink("редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
 }
+@Html.Partial("_ContentDescription", new ContentDescription { Text = Model.Content.Text, Title = Model.Content.Title })
 
-@Html.Partial("_ContentDescription", new ContentDescription {Text = Model.Content.Text, Title = Model.Content.Title})
-
-
+@if (Model.Content.Name == "feedback")
+{
+    
+    <div id="sendFeedbackFormContent">
+        @Html.Partial("FeedbackForm", new FeedbackFormModel())
+    </div>
+}
 
 @section Footer
 {

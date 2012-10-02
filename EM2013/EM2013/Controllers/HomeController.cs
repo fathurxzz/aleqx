@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using EM2013.Models;
@@ -33,16 +35,43 @@ namespace EM2013.Controllers
             }
         }
 
-        public ActionResult SecretLink()
+
+        public ActionResult SiteContent(string id)
         {
             using (var context = new SiteContext())
             {
-                var model = new SiteViewModel(context, "secretlink");
+                var model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
                 ViewBag.PageTitle = model.PageTitle;
                 ViewBag.isHomePage = false;
-                return View("Content",model);
+                return View("Content", model);
             }
+        }
+
+        [HttpPost]
+        public ActionResult Feedback(FeedbackFormModel feedbackFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                ResponseData responseData;
+                try
+                {
+                    string defaultMailAddress = ConfigurationManager.AppSettings["feedbackEmail"];
+                    var emails = new List<MailAddress>
+                                 {
+                                     new MailAddress(defaultMailAddress)
+                                 };
+                    responseData = MailHelper.SendTemplate(null, emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    if (responseData.EmailSent)
+                        return PartialView("Success");
+                    feedbackFormModel.ErrorMessage = "Ошибка: " + responseData.ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    feedbackFormModel.ErrorMessage = ex.Message;
+                }
+            }
+            return PartialView("FeedbackForm", feedbackFormModel);
         }
     }
 }

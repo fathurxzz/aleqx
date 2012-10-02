@@ -92,6 +92,7 @@
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentDescription.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\FeedbackFormModel.cs" />
     <Compile Include="Models\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,6 +216,8 @@
     <None Include="Content\fonts\myriad-web-italic.ttf" />
     <None Include="Content\fonts\myriad-web-pro.ttf" />
     <None Include="Content\fonts\PFHandbookPro-Regular.ttf" />
+    <Content Include="Views\Shared\FeedbackForm.cshtml" />
+    <Content Include="Views\Shared\Success.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
