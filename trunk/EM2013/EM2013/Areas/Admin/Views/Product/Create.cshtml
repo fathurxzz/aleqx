@@ -18,6 +18,15 @@
             </tr>
             <tr>
                 <td>
+                    @Html.LabelFor(model => model.Date)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Date)
+                    @Html.ValidationMessageFor(model => model.Date)
+                </td>
+            </tr>
+            <tr>
+                <td>
                     @Html.LabelFor(model => model.Name)
                 </td>
                 <td>

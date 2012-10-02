@@ -19,7 +19,7 @@ namespace EM2013.Areas.Admin.Controllers
                 ViewBag.CategoryId = id;
                 ViewBag.CategoryName = context.Category.First(c => c.Id == id).Name;
                 var max = context.Product.Max(p => p.SortOrder);
-                return View(new Product {SortOrder = max + 1});
+                return View(new Product {SortOrder = max + 1,Date = DateTime.Now});
             }
         }
 
@@ -30,7 +30,7 @@ namespace EM2013.Areas.Admin.Controllers
             {
                 var category = context.Category.First(c => c.Id == categoryId);
                 var product = new Product();
-                TryUpdateModel(product, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+                TryUpdateModel(product, new[] { "Name","Date", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
                 product.Description = HttpUtility.HtmlDecode(form["Description"]);
                 product.Category = category;
 
@@ -70,7 +70,7 @@ namespace EM2013.Areas.Admin.Controllers
             using (var context = new SiteContext())
             {
                 var product = context.Product.Include("Category").First(p => p.Id == id);
-                TryUpdateModel(product, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+                TryUpdateModel(product, new[] { "Name", "Date", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
                 product.Description = HttpUtility.HtmlDecode(form["Description"]);
                 if (fileUpload != null)
                 {

@@ -18,6 +18,10 @@ namespace EM2013.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Уникальнй идентификатор (выводится в строке адреса)")]
         public string Name { get; set; }
+        
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Дата")]
+        public string Date { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок")]
