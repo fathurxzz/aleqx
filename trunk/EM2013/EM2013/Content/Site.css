@@ -75,7 +75,7 @@ img
 {
     float: right;
     margin-top: 37px;
-    width: 100px;
+    width: 110px;
     height: 30px;
     background: url('img/feedback-cloud.gif') no-repeat;
 }
@@ -271,3 +271,62 @@ img
 }
 
 
+.feedBackForm
+{
+    padding:20px;
+	border:1px solid #706d6e;
+	position: relative;
+    margin: 40px auto auto;
+    width: 480px;
+    font-size: 14px;
+}
+
+  .feedBackForm.success {
+      font-size: 16px;
+      font-weight: bold;
+  }
+  
+  .errorMessage {
+      text-align: center;
+      color: #f00;
+      border: 2px solid #f00;
+      padding: 5px;
+  }
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+.subscribersTable {
+    border-collapse: collapse;
+}
+
+.subscribersTable td {
+    border: 1px dashed #ccc;
+    padding: 2px;
+}
