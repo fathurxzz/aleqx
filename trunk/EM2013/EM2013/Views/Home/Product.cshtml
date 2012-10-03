@@ -6,6 +6,10 @@
     @Html.Partial("_MainMenu", Model.Menu)
 }
 @Html.Partial("_ContentDescription", new ContentDescription { CategoryTitle = Html.ActionLink(Model.Category.Title, "Index", "Home", new { area = "", category = Model.Category.Name, product = "" }, null).ToString(), Title = Model.Product.Title, Text = Model.Product.Description })
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Product.Id}, new { @class = "adminLink" })
+}
 <div class="productItems">
     @foreach (var item in Model.Product.ProductItems.OrderBy(pi=>pi.SortOrder))
     {
