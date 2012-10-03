@@ -13,7 +13,9 @@ namespace EM2013.Areas.Admin.Controllers
         {
             using (var context = new SiteContext())
             {
-                var max = context.Category.Max(c => c.SortOrder);
+                int max=0;
+                if(context.Category.Any())
+                max = context.Category.Max(c => c.SortOrder);
                 return View(new Category {SortOrder = max + 1});
             }
         }
