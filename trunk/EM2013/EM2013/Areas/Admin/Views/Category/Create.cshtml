@@ -8,6 +8,8 @@
 <div class="adminContentContainer">
     @using (Html.BeginForm())
     {
+        @Html.ValidationSummary(true)
+
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
