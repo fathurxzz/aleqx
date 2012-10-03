@@ -1,19 +1,22 @@
 ﻿@using EM2013
+@using EM2013.Helpers
 @using SiteExtensions.Graphics
 @model EM2013.Models.ProductItem
-
-
 <div class="productItem">
     <div class="description">
         @Model.Description
     </div>
-    @if(Request.IsAuthenticated)
+    @if (Request.IsAuthenticated)
     {
         <div>
-        @Html.ActionLink("редактировать", "Edit", "ProductItem", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
-        @Html.Raw("&nbsp;")
-        @Html.ActionLink("удалить", "Delete", "ProductItem", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить объект?')" })
+            @Html.ActionLink("редактировать", "Edit", "ProductItem", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("удалить", "Delete", "ProductItem", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить объект?')" })
         </div>
     }
-    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productItem"), ScaleMode.FixedWidth))
+    
+    @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productItem"), ScaleMode.FixedWidth))*@
+    @*@Html.Image("~/Content/Images/", Model.ImageSource)*@
+        @Html.Raw(Html.OriginalImage("/Content/Images/", Model.ImageSource))
+
 </div>
