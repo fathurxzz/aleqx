@@ -23,5 +23,15 @@ namespace EM2013.Helpers
             sb.AppendFormat(formatString, Path.Combine(originalPath, fileName), fileName, imageWidth, imageHeight);
             return new MvcHtmlString(helper.ActionLink("[IMAGE]", actionName, controllerName, routeValues, htmlAttributes).ToString().Replace("[IMAGE]", sb.ToString()));
         }
+
+
+        //public static MvcHtmlString Image(this System.Web.Mvc.HtmlHelper helper, string originalPath, string fileName)
+        //{
+        //    string formatString = "<img src=\"{0}\" alt=\"\" />";
+        //    //string imagePath = HttpContext.Current.Server.MapPath(originalPath);
+        //    string imagePath = 
+
+        //    return new MvcHtmlString(string.Format(formatString, Path.Combine(imagePath, fileName), fileName));
+        //}
     }
 }
