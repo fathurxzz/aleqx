@@ -39,5 +39,9 @@ namespace EM2013.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Дата")]
+        public string Date { get; set; }
     }
 }
