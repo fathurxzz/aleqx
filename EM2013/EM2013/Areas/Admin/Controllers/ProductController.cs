@@ -87,7 +87,7 @@ namespace EM2013.Areas.Admin.Controllers
                     product.ImageSource = fileName;
                 }
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home", new { area = "", category = product.Category.Name });
+                return RedirectToAction("Index", "Home", new { area = "", category = product.Category.Name, product=product.Name });
             }
         }
 
