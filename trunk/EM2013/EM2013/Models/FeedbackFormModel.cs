@@ -10,16 +10,16 @@ namespace EM2013.Models
     public class FeedbackFormModel : IValidatableObject
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Имя")]
+        [DisplayName("Ваше имя:")]
         public string Name { get; set; }
-        [DisplayName("Электронная почта")]
+        [DisplayName("Электронная почта:")]
         [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Неверно введен адрес почты. Формат: name@domain.com")]
         public string Email { get; set; }
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Текст")]
+        [DisplayName("Текст сообщения:")]
         public string Text { get; set; }
 
-        [DisplayName("Антиспам-тест: сколько будет два плюс два? (вводите цифрой)")]
+        [DisplayName("Сколько будет 2+2 (цифрой):")]
         [Required(ErrorMessage = "Введите ответ!")]
         public string AntiSpamAnswer { get; set; }
 

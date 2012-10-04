@@ -315,12 +315,21 @@ img
 .feedBackForm
 {
     padding:20px;
-	border:1px solid #706d6e;
 	position: relative;
     margin: 40px auto auto;
     width: 480px;
-    font-size: 14px;
+    font-size: 12px;
 }
+
+.feedBackForm input[type='text'] {
+    width: 300px;
+}
+
+.feedBackForm textarea {
+    width: 260px;
+    height: 100px;
+}
+
 
   .feedBackForm.success {
       font-size: 16px;
@@ -400,7 +409,7 @@ img
 
 .logOffLinkContainer {
     position: relative;
-    width: 1000px;
+    width: 1100px;
     height: 0px;
     margin: 0 auto;
 }
