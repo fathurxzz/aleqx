@@ -7,9 +7,15 @@
     @Html.Partial("_MainMenu", Model.Menu)
 }
 @Html.Partial("_ContentDescription", new ContentDescription { Title = Model.Category.Title, Text = Model.Category.Description })
+
+
 @if (Request.IsAuthenticated)
 {
-    @Html.ActionLink("добавить объект", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+    @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+    <br/>
+    <br/>
+    <br/>
+    @Html.ActionLink("Добавить объект", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
 }
 <div class="products">
     @*@foreach (var product in Model.Category.Products.OrderBy(p=>p.Date))*@
