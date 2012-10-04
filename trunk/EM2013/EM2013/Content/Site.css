@@ -436,6 +436,12 @@ table.cloud td.bottom-right {
     height: 5px;
 }
 
+table.cloud td.left {
+    width: 5px;
+    background: url('img/cloud-bg-left.gif') repeat-y left;
+}
+
+
 table.cloud td.top,
 table.cloud td.bottom {
     height: 5px;
@@ -464,7 +470,7 @@ table.cloud td.bottom {
 
 table.cloud td.center {
     padding: 16px;
-    background: url('img/cloud-bg-left.gif') repeat-y left;
+    
     background-color: #fff;
 }
 
