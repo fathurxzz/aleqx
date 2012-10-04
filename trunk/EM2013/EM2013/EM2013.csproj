@@ -113,6 +113,9 @@
     <Content Include="Content\img\feedback-cloud.gif" />
     <Content Include="Content\img\header-bottom-line.gif" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\pager-center.gif" />
+    <Content Include="Content\img\pager-left.gif" />
+    <Content Include="Content\img\pager-right.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -240,6 +243,7 @@
     <None Include="Content\fonts\PFHandbookPro-Regular.ttf" />
     <Content Include="Views\Shared\FeedbackForm.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
+    <Content Include="Views\Shared\_Paging.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

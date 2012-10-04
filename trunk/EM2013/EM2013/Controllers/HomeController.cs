@@ -12,15 +12,16 @@ namespace EM2013.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string category, string product)
+        public ActionResult Index(string category, string product, int? page)
         {
             using (var context = new SiteContext())
             {
-                var model = new CatalogueViewModel(context, category ?? "", product);
+                var model = new CatalogueViewModel(context, category ?? "", product, page);
+                ViewBag.Page = page ?? 0;
                 this.SetSeoContent(model);
                 ViewBag.PageTitle = model.PageTitle;
                 ViewBag.isHomePage = model.IsHomePage;
-                
+
                 if (model.Content != null)
                 {
                     return View("Content", model);

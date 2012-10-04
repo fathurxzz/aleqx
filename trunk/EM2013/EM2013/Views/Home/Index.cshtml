@@ -1,19 +1,19 @@
-﻿@using EM2013.Models
+﻿@using EM2013
+@using EM2013.Models
 @using SiteExtensions
 @model CatalogueViewModel
 @section MainMenu
 {
     @Html.Partial("_MainMenu", Model.Menu)
 }
-
 @Html.Partial("_ContentDescription", new ContentDescription { Title = Model.Category.Title, Text = Model.Category.Description })
-
 @if (Request.IsAuthenticated)
 {
     @Html.ActionLink("добавить объект", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
 }
 <div class="products">
-    @foreach (var product in Model.Category.Products.OrderBy(p=>p.Date))
+    @*@foreach (var product in Model.Category.Products.OrderBy(p=>p.Date))*@
+    @foreach (var product in Model.Products.OrderBy(p => p.Date))
     {
         @Html.Partial("_Product", product)
     }
@@ -23,7 +23,22 @@
 @section Footer
 {
     <div class="footer">
-        <div class="logo">
-        </div>
+        @if (Model.TotalProductsCount > 0 && Model.TotalProductsCount > SiteSettings.PageSize)
+        {
+            <div class="pagerContainer">
+                <table>
+                    <tr>
+                        <td class="left"></td>
+                        <td class="center">@Html.Partial("_Paging", new Pager(Model.TotalProductsCount, SiteSettings.PageSize, (int)ViewBag.Page, SiteSettings.PageRange))</td>
+                        <td class="right"></td>
+                    </tr>
+                </table>
+                </div>
+        }
+        else
+        {
+            <div class="logo">
+            </div>
+        }
     </div>
 }

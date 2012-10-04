@@ -1,0 +1,50 @@
+﻿@model SiteExtensions.Pager
+@{
+    int totalCount = Model.TotalCount;
+    int pageSize = Model.PageSize;
+    int pageCount = Model.PageCount;
+    int page = Model.Page;
+}
+@if (totalCount > 0 && totalCount > pageSize)
+{
+    <div id="pager">
+        @foreach (var i in Model.Sequence)
+        {
+            if (i != 0)
+            {
+                @(i == -1 ? Html.Raw("...") : Html.Raw(". "))
+            }
+
+            
+            if (i == page)
+            {
+                if (page != -1)
+                {
+                    @Html.Raw((i + 1).ToString())
+                }
+            }
+            else if (i != -1)
+            {
+                @Html.ActionLink((i + 1).ToString(), "Index", "Home", new {page = i}, null)
+            }
+            
+
+            if (i + 1 < pageCount)
+            {
+                @(i == -1 ? Html.Raw("..") : Html.Raw(" .."))
+            }
+        }
+        
+        @Html.Raw("&nbsp;")
+        @Html.Raw("&nbsp;")
+        
+        @*@if (page >= 0)
+        {
+            @Html.ActionLink("показать все", "Index", "Home", new { page = -1 }, null)
+        }
+        else
+        {
+            <text>показать все</text>
+        }*@
+    </div>
+}
