@@ -97,13 +97,17 @@ namespace EM2013.Areas.Admin.Controllers
             {
                 var product = context.Product.Include("Category").Include("ProductItems").First(c => c.Id == id);
                 var categoryName = product.Category.Name;
-                if (!product.ProductItems.Any())
-                {
-                    ImageHelper.DeleteImage(product.ImageSource);
 
-                    context.DeleteObject(product);
-                    context.SaveChanges();
+                while (product.ProductItems.Any())
+                {
+                    var productItem = product.ProductItems.First();
+                    ImageHelper.DeleteImage(productItem.ImageSource);
+                    context.DeleteObject(productItem);
                 }
+                ImageHelper.DeleteImage(product.ImageSource);
+
+                context.DeleteObject(product);
+                context.SaveChanges();
                 return RedirectToAction("Index", "Home", new { area = "", category = categoryName });
             }
         }
