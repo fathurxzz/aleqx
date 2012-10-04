@@ -35,7 +35,8 @@ namespace SiteExtensions
         /// <returns></returns>
         public static ResponseData SendMessage(MailAddress from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
-            SmtpClient client = new SmtpClient { UseDefaultCredentials = true };
+            //SmtpClient client = new SmtpClient { UseDefaultCredentials = true };
+            SmtpClient client = new SmtpClient();
             try
             {
                 MailMessage message = new MailMessage
