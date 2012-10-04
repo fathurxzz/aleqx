@@ -159,6 +159,9 @@ img
     position: relative;
 }
 
+.footerBottom {
+    padding-bottom: 40px;
+}
 
 .em
 {

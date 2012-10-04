@@ -30,7 +30,7 @@
         <div class="content">
             @RenderBody()
             @RenderSection("Footer", false)
-            <div>
+            <div class="footerBottom">
                 <div class="secret-link">
                     @Html.ActionLink("Секретная ссылка", "SiteContent", "Home", new { id = "secretlink" }, null)
                 </div>
