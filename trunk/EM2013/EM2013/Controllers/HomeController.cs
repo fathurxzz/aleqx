@@ -59,17 +59,17 @@ namespace EM2013.Controllers
                     string defaultMailAddressFrom = ConfigurationManager.AppSettings["feedbackEmailFrom"];
                     string defaultMailAddresses = ConfigurationManager.AppSettings["feedbackEmailsTo"];
 
-                    var emailFrom = new MailAddress(defaultMailAddressFrom);
+                    var emailFrom = new MailAddress(defaultMailAddressFrom, "Студия Евгения Миллера");
 
                     var emailsTo = defaultMailAddresses
                         .Split(new[] { ";", " ", "," }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => new MailAddress(s))
                         .ToList();
 
-                    ResponseData responseData = MailHelper.SendTemplate(emailFrom, emailsTo, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
-                    if (responseData.EmailSent)
+                    var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    if (result.EmailSent)
                         return PartialView("Success");
-                    feedbackFormModel.ErrorMessage = "Ошибка: " + responseData.ErrorMessage;
+                    feedbackFormModel.ErrorMessage = "Ошибка: " + result.ErrorMessage;
                 }
                 catch (Exception ex)
                 {

@@ -9,33 +9,37 @@ namespace EM2013.Helpers
 {
     public class MailHelper
     {
-        public static bool SendMessage(List<MailAddress> to, string body, string subject, bool isBodyHtml)
+        public class MailSendingResult
+        {
+            public string ErrorMessage { get; set; }
+            public bool EmailSent { get; set; }
+        }
+
+        public static MailSendingResult SendMessage(MailAddress from, List<MailAddress> to, string body, string subject, bool isBodyHtml)
         {
             SmtpClient client = new SmtpClient();
-            bool result = true;
             try
             {
-                MailMessage message = new MailMessage();
-                message.Body = body;
-                message.Subject = subject;
+                MailMessage message = new MailMessage
+                {
+                    Body = body,
+                    Subject = subject,
+                    IsBodyHtml = isBodyHtml
+                };
                 to.ForEach(t => message.To.Add(t));
-                message.From = new MailAddress("m@m-brand.com.ua");
-                message.IsBodyHtml = isBodyHtml;
+                if (from != null)
+                    message.From = from;
                 client.Send(message);
+
+                return new MailSendingResult { EmailSent = true };
             }
-            catch
+            catch (Exception ex)
             {
-                result = false;
+                return new MailSendingResult { EmailSent = false, ErrorMessage = ex.Message + " " + ex.InnerException };
             }
-            return result;
         }
 
-        public static bool SendTemplate(List<MailAddress> to, string template, bool isBodyHtml)
-        {
-            return SendTemplate(to, string.Empty, template, string.Empty, isBodyHtml, null);
-        }
-
-        public static bool SendTemplate(List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
+        public static MailSendingResult SendTemplate(MailAddress from, List<MailAddress> to, string subject, string template, string Language, bool isBodyHtml, params object[] replacements)
         {
             string languageFolder = (string.IsNullOrEmpty(Language)) ? string.Empty : Language + "/";
             string filePath = HttpContext.Current.Server.MapPath("~/Content/MailTemplates/" + languageFolder + template);
@@ -44,7 +48,7 @@ namespace EM2013.Helpers
             string body = reader.ReadToEnd();
             string formattedBody = (replacements != null && replacements.Length > 0) ? string.Format(body, replacements) : body;
             reader.Close();
-            return SendMessage(to, formattedBody, subject, isBodyHtml);
+            return SendMessage(from, to, formattedBody, subject, isBodyHtml);
         }
     }
 }
