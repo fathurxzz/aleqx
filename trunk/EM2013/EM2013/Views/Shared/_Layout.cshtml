@@ -23,21 +23,22 @@
     </script>
     @RenderSection("Includes", false)
 </head>
-<body>
-    @Html.Partial("_Header")
-    <div class="page">
-        @RenderSection("MainMenu", false)
-        <div class="content">
-            @RenderBody()
-            @RenderSection("Footer", false)
-            <div class="footerBottom">
-                <div class="secret-link">
-                    @Html.ActionLink("Секретная ссылка", "SiteContent", "Home", new { id = "secretlink" }, null)
-                </div>
-                <div class="em">
+    <body>
+        @RenderSection("LanguageSwitcher",false)
+        @Html.Partial("_Header")
+        <div class="page">
+            @RenderSection("MainMenu", false)
+            <div class="content">
+                @RenderBody()
+                @RenderSection("Footer", false)
+                <div class="footerBottom">
+                    <div class="secret-link">
+                        @Html.ActionLink("Секретная ссылка", "SiteContent", "Home", new { id = "secretlink" }, null)
+                    </div>
+                    <div class="em">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

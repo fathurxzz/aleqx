@@ -1,0 +1,37 @@
+﻿@using EM2013.Models
+@model EM2013.Models.SiteViewModel
+
+@section MainMenu
+{
+    @Html.Partial("_MainMenu", Model.Menu)
+}
+
+<div class="description">
+    <div class="title">
+        HELLO!
+    </div>
+    <div class="text learnRussian">
+            
+    </div>
+    <div class="bottom">
+    </div>
+</div>
+
+
+
+@section Footer
+{
+    <div class="footer">
+        <div class="logo">
+        </div>
+    </div>
+}
+
+@section LanguageSwitcher
+{
+<div class="langContainer">
+<div class="lang">
+   @Html.ActionLink("Рус","Index","Home") | Eng
+</div>
+</div>
+}
