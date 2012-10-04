@@ -111,6 +111,14 @@
     <Content Include="Content\img\admin\edit.gif" />
     <Content Include="Content\img\bottom-line.gif" />
     <Content Include="Content\img\bottom-logo.gif" />
+    <Content Include="Content\img\cloud-arrow.gif" />
+    <Content Include="Content\img\cloud-bg-bottom-left.gif" />
+    <Content Include="Content\img\cloud-bg-bottom-right.gif" />
+    <Content Include="Content\img\cloud-bg-bottom.gif" />
+    <Content Include="Content\img\cloud-bg-left.gif" />
+    <Content Include="Content\img\cloud-bg-top-left.gif" />
+    <Content Include="Content\img\cloud-bg-top-right.gif" />
+    <Content Include="Content\img\cloud-bg-top.gif" />
     <Content Include="Content\img\em.gif" />
     <Content Include="Content\img\feedback-cloud.gif" />
     <Content Include="Content\img\header-bottom-line.gif" />
