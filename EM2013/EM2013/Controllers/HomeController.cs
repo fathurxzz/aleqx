@@ -56,7 +56,7 @@ namespace EM2013.Controllers
             {
                 try
                 {
-                    string defaultMailAddress = ConfigurationManager.AppSettings["feedbackEmail"];
+                    /*string defaultMailAddress = ConfigurationManager.AppSettings["feedbackEmail"];
                     var emails = new List<MailAddress>
                                  {
                                      new MailAddress(defaultMailAddress)
@@ -64,7 +64,11 @@ namespace EM2013.Controllers
                     ResponseData responseData = MailHelper.SendTemplate(new MailAddress("m@m-brand.com.ua"), emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
                     if (responseData.EmailSent)
                         return PartialView("Success");
-                    feedbackFormModel.ErrorMessage = "Ошибка: " + responseData.ErrorMessage;
+                    feedbackFormModel.ErrorMessage = "Ошибка: " + responseData.ErrorMessage;*/
+                    //Helpers.MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+
+                    Helpers.MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("kushko.alex@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    return PartialView("Success");
                 }
                 catch (Exception ex)
                 {
