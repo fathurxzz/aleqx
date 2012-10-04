@@ -48,6 +48,12 @@ namespace EM2013
             );
 
             routes.MapRoute(
+                "AccountLogOff", // Route name
+                "account/logoff", // URL with parameters
+                new { controller = "Account", action = "LogOff" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "FeedbackForm", // Route name
                 "Home/Feedback", // URL with parameters
                 new { controller = "Home", action = "Feedback" } // Parameter defaults

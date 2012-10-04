@@ -393,7 +393,14 @@ img
 
 .langContainer {
     position: relative;
-    width: 990px;
+    width: 1000px;
+    height: 0px;
+    margin: 0 auto;
+}
+
+.logOffLinkContainer {
+    position: relative;
+    width: 1000px;
     height: 0px;
     margin: 0 auto;
 }
