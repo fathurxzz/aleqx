@@ -313,7 +313,7 @@ img
     font-style: italic;
     font-size: 11px;
     text-align: center;
-    padding: 5px;
+    padding: 5px 5px 0 5px;
 }
 
 
@@ -418,4 +418,61 @@ img
     width: 1100px;
     height: 0px;
     margin: 0 auto;
+}
+
+
+
+table.cloud {
+    position: relative;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table.cloud td.top-left,
+table.cloud td.top-right,
+table.cloud td.bottom-left,
+table.cloud td.bottom-right {
+    width: 5px;
+    height: 5px;
+}
+
+table.cloud td.top,
+table.cloud td.bottom {
+    height: 5px;
+}
+
+table.cloud td.top-left {
+    background: url('img/cloud-bg-top-left.gif');
+}
+table.cloud td.top-right {
+    background: url('img/cloud-bg-top-right.gif');
+}
+table.cloud td.bottom-left {
+    background: url('img/cloud-bg-bottom-left.gif');
+}
+table.cloud td.bottom-right {
+    background: url('img/cloud-bg-bottom-right.gif');
+}
+
+table.cloud td.top {
+    background: url('img/cloud-bg-top.gif') repeat-x;
+}
+
+table.cloud td.bottom {
+    background: url('img/cloud-bg-bottom.gif') repeat-x;
+}
+
+table.cloud td.center {
+    padding: 16px;
+    background: url('img/cloud-bg-left.gif') repeat-y left;
+    background-color: #fff;
+}
+
+.cloud-arrow {
+    width: 17px;
+    height: 13px;
+    background: url('img/cloud-arrow.gif');
+    position: relative;
+    margin: -2px auto -3px auto;
+    
 }
