@@ -26,7 +26,7 @@ namespace EM2013.Areas.Admin.Controllers
             using (var context = new SiteContext())
             {
                 var category = new Category();
-                TryUpdateModel(category, new[] { "Name", "Title", "SeoDescription", "SeoKeywords", "SortOrder" });
+                TryUpdateModel(category, new[] { "Name", "Title", "TitleToCategory", "SeoDescription", "SeoKeywords", "SortOrder" });
                 category.Description = HttpUtility.HtmlDecode(form["Description"]);
                 context.AddToCategory(category);
                 context.SaveChanges();
@@ -49,7 +49,7 @@ namespace EM2013.Areas.Admin.Controllers
             using (var context = new SiteContext())
             {
                 var category = context.Category.First(c => c.Id == id);
-                TryUpdateModel(category, new[] { "Name", "Title", "SeoDescription", "SeoKeywords", "SortOrder" });
+                TryUpdateModel(category, new[] { "Name", "Title", "TitleToCategory", "SeoDescription", "SeoKeywords", "SortOrder" });
                 category.Description = HttpUtility.HtmlDecode(form["Description"]);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home", new { area = "", category = category.Name });

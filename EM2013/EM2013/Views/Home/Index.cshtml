@@ -7,14 +7,12 @@
     @Html.Partial("_MainMenu", Model.Menu)
 }
 @Html.Partial("_ContentDescription", new ContentDescription { Title = Model.Category.Title, Text = Model.Category.Description })
-
-
 @if (Request.IsAuthenticated)
 {
     @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
     @Html.ActionLink("Добавить объект", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
 }
 <div class="products">
@@ -34,12 +32,15 @@
             <div class="pagerContainer">
                 <table>
                     <tr>
-                        <td class="left"></td>
-                        <td class="center">@Html.Partial("_Paging", new Pager(Model.TotalProductsCount, SiteSettings.PageSize, (int)ViewBag.Page, SiteSettings.PageRange))</td>
-                        <td class="right"></td>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Html.Partial("_Paging", new Pager(Model.TotalProductsCount, SiteSettings.PageSize, (int)ViewBag.Page, SiteSettings.PageRange))
+                        </td>
+                        <td class="right">
+                        </td>
                     </tr>
                 </table>
-                </div>
+            </div>
         }
         else
         {
@@ -50,9 +51,9 @@
 }
 @section LanguageSwitcher
 {
-<div class="langContainer">
-<div class="lang">
-    Рус | @Html.ActionLink("Eng","English","Home")
-</div>
-</div>
+    <div class="langContainer">
+        <div class="lang">
+            Рус | @Html.ActionLink("Eng", "English", "Home")
+        </div>
+    </div>
 }

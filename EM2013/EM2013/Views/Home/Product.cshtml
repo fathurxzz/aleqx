@@ -23,8 +23,21 @@
 @section Footer
 {
     <div class="footer">
-        <div class="logo">
-        </div>
+        <div class="pagerContainer">
+                <table>
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">
+                            <div style="margin-top: -4px;">
+                            &laquo; @Html.ActionLink(Model.Category.TitleToCategory??"Назад","Index","Home",new{area="",category=Model.Category.Name,product=""},null)
+                            </div>
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
+            </div>
     </div>
 }
 @section LanguageSwitcher

@@ -148,6 +148,11 @@ img
     width: 666px;
     position: relative;
     background-position: 0 18px;
+    color: #ccc;
+}
+.footer a {
+    color: #ccc;
+     font-size: 12px;
 }
 
 .footer .logo

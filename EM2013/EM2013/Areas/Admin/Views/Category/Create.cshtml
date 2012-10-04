@@ -37,6 +37,15 @@
             </tr>
             <tr>
                 <td>
+                    @Html.LabelFor(model => model.TitleToCategory)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.TitleToCategory)
+                    @Html.ValidationMessageFor(model => model.TitleToCategory)
+                </td>
+            </tr>
+            <tr>
+                <td>
                     @Html.LabelFor(model => model.Description)
                 </td>
                 <td>

@@ -378,6 +378,30 @@ namespace EM2013.Models
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TitleToCategory
+        {
+            get
+            {
+                return _TitleToCategory;
+            }
+            set
+            {
+                OnTitleToCategoryChanging(value);
+                ReportPropertyChanging("TitleToCategory");
+                _TitleToCategory = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TitleToCategory");
+                OnTitleToCategoryChanged();
+            }
+        }
+        private global::System.String _TitleToCategory;
+        partial void OnTitleToCategoryChanging(global::System.String value);
+        partial void OnTitleToCategoryChanged();
 
         #endregion
     
