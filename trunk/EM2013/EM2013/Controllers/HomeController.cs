@@ -58,9 +58,9 @@ namespace EM2013.Controllers
                 {
                     string defaultMailAddressFrom = ConfigurationManager.AppSettings["feedbackEmailFrom"];
                     string defaultMailAddresses = ConfigurationManager.AppSettings["feedbackEmailsTo"];
-                    
+
                     var emailFrom = new MailAddress(defaultMailAddressFrom);
-                    
+
                     var emailsTo = defaultMailAddresses
                         .Split(new[] { ";", " ", "," }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => new MailAddress(s))
@@ -70,12 +70,6 @@ namespace EM2013.Controllers
                     if (responseData.EmailSent)
                         return PartialView("Success");
                     feedbackFormModel.ErrorMessage = "Ошибка: " + responseData.ErrorMessage;
-                    
-                    
-                    //Helpers.MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("miller.kak.miller@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
-
-                    //Helpers.MailHelper.SendTemplate(new List<MailAddress> { new MailAddress("kushko.alex@gmail.com") }, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
-                    //return PartialView("Success");
                 }
                 catch (Exception ex)
                 {
