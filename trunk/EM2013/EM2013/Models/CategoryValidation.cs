@@ -24,6 +24,10 @@ namespace EM2013.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок")]
         public string Title { get; set; }
+        
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Заголовок ссылки возврата")]
+        public string TitleToCategory { get; set; }
 
         [DisplayName("Описание")]
         public string Description { get; set; }

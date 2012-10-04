@@ -13,6 +13,7 @@ namespace EM2013.Models
         public Product Product { get; set; }
         public List<Product> Products { get; set; }
         public int TotalProductsCount { get; set; }
+        public string TitleToCategory { get; set; }
 
         public CatalogueViewModel(SiteContext context, string category, string product, int? page)
             : base(context, category == "" ? "" : null)
@@ -26,6 +27,8 @@ namespace EM2013.Models
                 SeoDescription = Category.SeoDescription;
                 SeoKeywords = Category.SeoKeywords;
                 Title = Category.Title;
+                TitleToCategory = Category.TitleToCategory;
+
                 TotalProductsCount = Category.Products.Count();
                 Products = ApplyPaging(Category.Products, page).ToList();
             }
