@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Web;
 
@@ -17,8 +18,7 @@ namespace EM2013.Models
             : base(context, category == "" ? "" : null)
         {
             UpdateMainMenu(category, product);
-
-
+            
             if(!string.IsNullOrEmpty(category))
             {
                 Category = context.Category.Include("Products").First(c => c.Name == category);
@@ -27,7 +27,7 @@ namespace EM2013.Models
                 SeoKeywords = Category.SeoKeywords;
                 Title = Category.Title;
                 TotalProductsCount = Category.Products.Count();
-                Products = ApplyPaging(Category.Products.ToList(), page);
+                Products = ApplyPaging(Category.Products, page).ToList();
             }
 
             if(!string.IsNullOrEmpty(product))
@@ -38,8 +38,6 @@ namespace EM2013.Models
                 PageTitle += " - " + Product.Title;
                 Title = Product.Title;
             }
-
-            
         }
 
         private void UpdateMainMenu(string category, string product)
@@ -53,7 +51,7 @@ namespace EM2013.Models
             }
         }
 
-        List<Product> ApplyPaging(List<Product> products, int? page)
+        IEnumerable<Product> ApplyPaging(IEnumerable<Product> products, int? page)
         {
             if (products == null)
                 return null;
@@ -61,7 +59,7 @@ namespace EM2013.Models
             int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             if (page < 0)
                 return products;
-            return products.Skip(currentPage * pageSize).Take(pageSize).ToList();
+            return products.Skip(currentPage * pageSize).Take(pageSize);
         }
     }
 }
