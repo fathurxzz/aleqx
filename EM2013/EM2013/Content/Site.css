@@ -159,6 +159,44 @@ img
     position: relative;
 }
 
+.footer table {
+    margin: 0 auto;
+    position: relative;
+    border-collapse: collapse;
+}
+
+.footer table td.left {
+    width: 13px;
+    height: 29px;
+    background: url('img/pager-left.gif') no-repeat;
+}
+
+.footer table td.right {
+    width: 13px;
+    height: 29px;
+    background: url('img/pager-right.gif') no-repeat;
+}
+
+.footer table td.center 
+{
+    height: 29px;
+    background: url('img/pager-center.gif') repeat-x;
+}
+
+.pagerContainer {
+    padding-top: 5px;
+}
+
+#pager {
+    color: #ccc;
+    padding-left: 8px;
+    font-size: 12px;
+}
+
+#pager a {
+    color: #fff;
+}
+
 .footerBottom {
     padding-bottom: 40px;
 }
