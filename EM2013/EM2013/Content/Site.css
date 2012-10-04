@@ -371,3 +371,29 @@ img
     border: 1px dashed #ccc;
     padding: 2px;
 }
+
+.learnRussian {
+    height: 320px;
+    background-image: url('img/learnrussian.gif');
+    background-repeat: no-repeat;
+    background-position: 115px 150px;
+}
+
+
+.lang {
+    font-size: 10px;
+    position: absolute;
+    top: 30px;
+    color: #000;
+}
+
+.lang a {
+    color: #525252;
+}
+
+.langContainer {
+    position: relative;
+    width: 990px;
+    height: 0px;
+    margin: 0 auto;
+}

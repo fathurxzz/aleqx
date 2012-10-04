@@ -73,5 +73,16 @@ namespace EM2013.Controllers
             }
             return PartialView("FeedbackForm", feedbackFormModel);
         }
+
+        public ActionResult English()
+        {
+            using (var context = new SiteContext())
+            {
+                var model = new SiteViewModel(context, null);
+                ViewBag.PageTitle = model.PageTitle;
+                ViewBag.isHomePage = false;
+                return View(model);
+            }
+        }
     }
 }

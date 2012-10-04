@@ -20,8 +20,12 @@ namespace EM2013
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
 
+            routes.MapRoute(
+                "English", // Route name
+                "en", // URL with parameters
+                new { controller = "Home", action = "English" } // Parameter defaults
+            );
 
             routes.MapRoute(
                 "SecretLink", // Route name
