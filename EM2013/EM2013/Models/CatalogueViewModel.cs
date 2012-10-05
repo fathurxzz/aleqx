@@ -62,7 +62,7 @@ namespace EM2013.Models
             int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
             if (page < 0)
                 return products;
-            return products.Skip(currentPage * pageSize).Take(pageSize);
+            return products.OrderByDescending(p=>p.Date).Skip(currentPage * pageSize).Take(pageSize);
         }
     }
 }
