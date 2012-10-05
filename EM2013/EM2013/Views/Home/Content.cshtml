@@ -32,6 +32,12 @@
         @foreach(var imageSet in Model.SecretImages)
         {
             <div class="secretImage">
+                @if(Request.IsAuthenticated)
+                {
+                    <div>
+                        @Html.ActionLink("Удалить", "Delete", "SecretImage", new { area = "Admin",id=imageSet.Id }, new { @class = "adminLink", onclick="return confirm('Удалить изображение?')" })
+                    </div>
+                }
                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@imageSet.ImageSource" class="fancyImage">
                     @Html.Raw(Html.OriginalImage("/Content/Images/", imageSet.PreviewImageSource))
                 </a>
