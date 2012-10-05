@@ -461,7 +461,8 @@ table.cloud td.bottom-left {
     background: url('img/cloud-bg-bottom-left.gif');
 }
 table.cloud td.bottom-right {
-    background: url('img/cloud-bg-bottom-right.gif');
+    background: url('img/cloud-bg-bottom-right.gif') no-repeat right;
+    
 }
 
 table.cloud td.top {
@@ -471,6 +472,7 @@ table.cloud td.top {
 table.cloud td.bottom {
     background: url('img/cloud-bg-bottom.gif') repeat-x;
     line-height: 0px;
+    
 }
 
 table.cloud td.center {
@@ -492,8 +494,7 @@ table.cloud td.center {
     width: 180px;
     height: 180px;
     float: left;
-    margin-right:20px; 
-    margin-bottom:20px; 
+    margin: 10px;
 }
 
 .secretImage a 
@@ -501,4 +502,8 @@ table.cloud td.center {
     width: 180px;
     height: 180px;
     border: 1px solid #ccc;
+}
+
+.secretImagesContainer {
+    padding-top: 50px;
 }

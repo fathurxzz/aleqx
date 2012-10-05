@@ -1,4 +1,6 @@
-﻿@using EM2013.Models
+﻿@using EM2013
+@using EM2013.Models
+@using SiteExtensions.Graphics
 @model EM2013.Models.SiteViewModel
 @section MainMenu
 {
@@ -15,6 +17,22 @@
     
     <div id="sendFeedbackFormContent">
         @Html.Partial("FeedbackForm", new FeedbackFormModel())
+    </div>
+}
+
+@if(Model.Content.Name=="secretlink")
+{
+    <div class="secretImagesContainer">
+        @foreach(var imageSet in Model.SecretImages)
+        {
+            <div class="secretImage">
+                <a rel="@Html.Raw("group1")" href="../../Content/Images/@imageSet.ImageSource" class="fancyImage">
+                    @Html.Raw(Html.OriginalImage("/Content/Images/", imageSet.PreviewImageSource))
+                </a>
+            </div>
+            
+        }
+        <div class="clear"></div>
     </div>
 }
 

@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/04/2012 21:58:02
--- Generated from EDMX file: D:\projects\EM2013\EM2013\Models\Model.edmx
+-- Date Created: 10/05/2012 09:03:28
+-- Generated from EDMX file: D:\AlexK\projects\EM2013\EM2013\Models\Model.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
@@ -27,6 +27,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Category`;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `ProductItem`;
+    DROP TABLE IF EXISTS `SecretImage`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -82,6 +83,14 @@ CREATE TABLE `ProductItem` (
     `Text` longtext  NULL,
     `ProductId` int  NOT NULL,
     `SortOrder` int  NOT NULL
+);
+
+-- Creating table 'SecretImage'
+
+CREATE TABLE `SecretImage` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ImageSource` varchar( 255 )  NOT NULL,
+    `PreviewImageSource` varchar( 255 )  NOT NULL
 );
 
 
