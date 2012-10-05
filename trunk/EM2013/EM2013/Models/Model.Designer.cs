@@ -134,6 +134,22 @@ namespace EM2013.Models
             }
         }
         private ObjectSet<ProductItem> _ProductItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SecretImage> SecretImage
+        {
+            get
+            {
+                if ((_SecretImage == null))
+                {
+                    _SecretImage = base.CreateObjectSet<SecretImage>("SecretImage");
+                }
+                return _SecretImage;
+            }
+        }
+        private ObjectSet<SecretImage> _SecretImage;
 
         #endregion
         #region AddTo Methods
@@ -168,6 +184,14 @@ namespace EM2013.Models
         public void AddToProductItem(ProductItem productItem)
         {
             base.AddObject("ProductItem", productItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SecretImage EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSecretImage(SecretImage secretImage)
+        {
+            base.AddObject("SecretImage", secretImage);
         }
 
         #endregion
@@ -1197,6 +1221,113 @@ namespace EM2013.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="SecretImage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SecretImage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SecretImage object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="previewImageSource">Initial value of the PreviewImageSource property.</param>
+        public static SecretImage CreateSecretImage(global::System.Int32 id, global::System.String imageSource, global::System.String previewImageSource)
+        {
+            SecretImage secretImage = new SecretImage();
+            secretImage.Id = id;
+            secretImage.ImageSource = imageSource;
+            secretImage.PreviewImageSource = previewImageSource;
+            return secretImage;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PreviewImageSource
+        {
+            get
+            {
+                return _PreviewImageSource;
+            }
+            set
+            {
+                OnPreviewImageSourceChanging(value);
+                ReportPropertyChanging("PreviewImageSource");
+                _PreviewImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PreviewImageSource");
+                OnPreviewImageSourceChanged();
+            }
+        }
+        private global::System.String _PreviewImageSource;
+        partial void OnPreviewImageSourceChanging(global::System.String value);
+        partial void OnPreviewImageSourceChanged();
+
+        #endregion
+    
     }
 
     #endregion

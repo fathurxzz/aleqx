@@ -18,7 +18,7 @@ namespace EM2013.Models
         public string Description { get; set; }
 
         public Content Content { get; set; }
-
+        public List<SecretImage> SecretImages { get; set; }
 
         public SiteViewModel(SiteContext context, string contentName)
         {
@@ -42,6 +42,11 @@ namespace EM2013.Models
                 SeoDescription = Content.SeoDescription;
                 SeoKeywords = Content.SeoKeywords;
                 Title = Content.Title;
+            }
+
+            if (contentName=="secretlink")
+            {
+                SecretImages = context.SecretImage.ToList();
             }
 
         }
