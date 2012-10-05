@@ -29,7 +29,8 @@
                     @Html.LabelFor(model => model.Date)
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.Date)
+                    @*@Html.EditorFor(model => model.Date)*@
+                    @Html.TextBox("Date", Model.Date.ToShortDateString())
                     @Html.ValidationMessageFor(model => model.Date)
                 </td>
             </tr>
