@@ -17,7 +17,7 @@
 }
 <div class="products">
     @*@foreach (var product in Model.Category.Products.OrderBy(p=>p.Date))*@
-    @foreach (var product in Model.Products.OrderBy(p => p.Date))
+    @foreach (var product in Model.Products.OrderByDescending(p => p.Date))
     {
         @Html.Partial("_Product", product)
     }
