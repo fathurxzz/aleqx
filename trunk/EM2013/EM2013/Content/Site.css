@@ -454,7 +454,8 @@ table.cloud td.top-left {
     background: url('img/cloud-bg-top-left.gif');
 }
 table.cloud td.top-right {
-    background: url('img/cloud-bg-top-right.gif');
+    background: url('img/cloud-bg-top-right.gif') no-repeat right;
+    background-color: #fff;
 }
 table.cloud td.bottom-left {
     background: url('img/cloud-bg-bottom-left.gif');
@@ -469,6 +470,7 @@ table.cloud td.top {
 
 table.cloud td.bottom {
     background: url('img/cloud-bg-bottom.gif') repeat-x;
+    line-height: 0px;
 }
 
 table.cloud td.center {
@@ -484,4 +486,19 @@ table.cloud td.center {
     position: relative;
     margin: -2px auto -3px auto;
     
+}
+
+.secretImage {
+    width: 180px;
+    height: 180px;
+    float: left;
+    margin-right:20px; 
+    margin-bottom:20px; 
+}
+
+.secretImage a 
+{
+    width: 180px;
+    height: 180px;
+    border: 1px solid #ccc;
 }
