@@ -30,8 +30,8 @@
                         </td>
                         <td class="center">
                             <div style="margin-top: -4px;">
-                                &laquo; @*@Html.ActionLink(Model.Category.TitleToCategory??"Назад","Index","Home",new{area="",category=Model.Category.Name,product=""},null)*@
-                                <a href="javascript:history.back();">@(Model.Category.TitleToCategory??"Назад")</a>
+                                &laquo; @Html.ActionLink(Model.Category.TitleToCategory??"Назад","Index","Home",new{area="",category=Model.Category.Name,product=""},null)
+                                @*<a href="javascript:history.back();">@(Model.Category.TitleToCategory??"Назад")</a>*@
                             </div>
                         </td>
                         <td class="right">
