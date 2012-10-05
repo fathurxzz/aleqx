@@ -316,6 +316,9 @@ img
     padding: 5px 5px 0 5px;
 }
 
+.feedBackForm table td {
+    padding-bottom: 15px;
+}
 
 .feedBackForm
 {
