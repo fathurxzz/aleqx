@@ -491,16 +491,16 @@ table.cloud td.center {
 }
 
 .secretImage {
-    width: 180px;
-    height: 180px;
+    width: 182px;
+    height: 182px;
     float: left;
-    margin: 10px;
+    margin: 27px;
 }
 
 .secretImage img 
 {
-    width: 180px;
-    height: 180px;
+    width: 182px;
+    height: 182px;
     border: 1px solid #ccc;
 }
 
