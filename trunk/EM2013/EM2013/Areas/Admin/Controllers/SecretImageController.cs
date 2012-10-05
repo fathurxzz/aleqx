@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EM2013.Helpers;
 using EM2013.Models;
 using SiteExtensions;
 
@@ -58,7 +59,15 @@ namespace EM2013.Areas.Admin.Controllers
         
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContext())
+            {
+                var image = context.SecretImage.First(i => i.Id == id);
+                ImageHelper.DeleteImage(image.ImageSource);
+                ImageHelper.DeleteImage(image.PreviewImageSource);
+                context.DeleteObject(image);
+                context.SaveChanges();
+                return RedirectToAction("SiteContent", "Home", new { id = "secretlink", area = "" });
+            }
         }
 
     }
