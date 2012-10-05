@@ -20,9 +20,18 @@
     font-size: 13px;
 }
 
+
+
 .adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
 {
     width: 500px;
+}
+
+.secretLink td input[type='file'] {
+    width: 300px;
+}
+.secretLink td {
+    padding-left: 10px; 
 }
 
 .adminEditContentTable td textarea {

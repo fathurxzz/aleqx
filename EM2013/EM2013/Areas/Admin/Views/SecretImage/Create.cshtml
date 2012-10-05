@@ -9,7 +9,8 @@
     @using (Html.BeginForm("Create", "SecretImage", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
-        <table class="adminEditContentTable">
+
+        <table class="adminEditContentTable secretLink">
             <tr>
                 <td colspan="2">
                     <h2>

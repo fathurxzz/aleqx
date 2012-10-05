@@ -23,6 +23,12 @@
 @if(Model.Content.Name=="secretlink")
 {
     <div class="secretImagesContainer">
+        @if(Request.IsAuthenticated)
+        {
+            <div>
+            @Html.ActionLink("Добавить изображение","Create","SecretImage",new{area="Admin"},new{@class="adminLink"})
+            </div>
+        }
         @foreach(var imageSet in Model.SecretImages)
         {
             <div class="secretImage">
