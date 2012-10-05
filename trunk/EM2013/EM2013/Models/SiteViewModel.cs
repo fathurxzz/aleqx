@@ -38,7 +38,7 @@ namespace EM2013.Models
             
             if(Content!=null)
             {
-                PageTitle += " - " + Content.Title;
+                PageTitle += " » " + Content.Title;
                 SeoDescription = Content.SeoDescription;
                 SeoKeywords = Content.SeoKeywords;
                 Title = Content.Title;

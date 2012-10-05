@@ -23,7 +23,7 @@ namespace EM2013.Models
             if(!string.IsNullOrEmpty(category))
             {
                 Category = context.Category.Include("Products").First(c => c.Name == category);
-                PageTitle += " - " + Category.Title;
+                PageTitle += " » " + Category.Title;
                 SeoDescription = Category.SeoDescription;
                 SeoKeywords = Category.SeoKeywords;
                 Title = Category.Title;
@@ -38,7 +38,7 @@ namespace EM2013.Models
                 Product = context.Product.Include("Category").Include("ProductItems").First(p => p.Name == product);
                 SeoDescription = Product.SeoDescription;
                 SeoKeywords = Product.SeoKeywords;
-                PageTitle += " - " + Product.Title;
+                PageTitle += " » " + Product.Title;
                 Title = Product.Title;
             }
         }
