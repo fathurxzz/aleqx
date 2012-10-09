@@ -15,9 +15,6 @@
         </tr>
         <tr>
             <th>
-                Изображение
-            </th>
-            <th>
                 Заголовок
             </th>
             <th>
@@ -32,9 +29,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("adminCategoryThumbnail"), ScaleMode.Corp))
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>

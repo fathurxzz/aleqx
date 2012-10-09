@@ -67,6 +67,10 @@ body {
     z-index: 1000;
 }
 
+
+
+
+
 .mainMenu 
 {
     background-color: #000;
@@ -80,20 +84,38 @@ body {
     text-align: center;
 }
 
-.mainMenu ul {
-    padding-top: 7px;
+.mainMenu table {
+    position: relative;
+    margin: 0 auto;
 }
 
-
-.mainMenu ul li {
-    display: inline;
-    text-transform: uppercase;
+.mainMenu table td {
     padding: 0 20px;
+    text-transform: uppercase;
+    padding-top: 7px;
 }
 
 .mainMenu a {
     color: #6dcff6;
 }
+
+.mainMenu .categories {
+    color: #fff;
+    position: absolute;
+    width: 100px;
+    background-color: rgba(0,0,200,0.5);
+    z-index: 1000;
+}
+
+.mainMenu .categories ul {
+    margin-top: 10px;
+}
+.mainMenu .categories ul li {
+    list-style: none;
+}
+
+
+
 
 
 .footer {

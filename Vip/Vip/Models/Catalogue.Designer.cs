@@ -18,14 +18,11 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Site", "LayoutProduct", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Layout), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product))]
-[assembly: EdmRelationshipAttribute("Site", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
-[assembly: EdmRelationshipAttribute("Site", "ProductProductAttribute", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProductAttribute))]
-[assembly: EdmRelationshipAttribute("Site", "MakerProduct", "Maker", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Maker), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
-[assembly: EdmRelationshipAttribute("Site", "LayoutLayout", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Vip.Models.Layout), "Layout1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Layout), true)]
-[assembly: EdmRelationshipAttribute("Site", "BrandProduct", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Brand), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
-[assembly: EdmRelationshipAttribute("Site", "CategoryProductAttribute", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Category), "ProductAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProductAttribute))]
-[assembly: EdmRelationshipAttribute("Site", "ProjectProjectImage", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Vip.Models.Project), "ProjectImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProjectImage), true)]
+[assembly: EdmRelationshipAttribute("Catalogue", "BrandProduct", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Brand), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Product), true)]
+[assembly: EdmRelationshipAttribute("Catalogue", "CategoryBrand", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Vip.Models.Category), "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Brand), true)]
+[assembly: EdmRelationshipAttribute("Catalogue", "CategoryCategoryAttribute", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Category), "CategoryAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.CategoryAttribute))]
+[assembly: EdmRelationshipAttribute("Catalogue", "BrandCategoryAttribute", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.Brand), "CategoryAttribute", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.CategoryAttribute))]
+[assembly: EdmRelationshipAttribute("Catalogue", "ProjectProjectImage", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Vip.Models.Project), "ProjectImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Vip.Models.ProjectImage), true)]
 
 #endregion
 
@@ -36,32 +33,32 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class SiteContainer : ObjectContext
+    public partial class CatalogueContainer : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new SiteContainer object using the connection string found in the 'SiteContainer' section of the application configuration file.
+        /// Initializes a new CatalogueContainer object using the connection string found in the 'CatalogueContainer' section of the application configuration file.
         /// </summary>
-        public SiteContainer() : base("name=SiteContainer", "SiteContainer")
+        public CatalogueContainer() : base("name=CatalogueContainer", "CatalogueContainer")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new SiteContainer object.
+        /// Initialize a new CatalogueContainer object.
         /// </summary>
-        public SiteContainer(string connectionString) : base(connectionString, "SiteContainer")
+        public CatalogueContainer(string connectionString) : base(connectionString, "CatalogueContainer")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new SiteContainer object.
+        /// Initialize a new CatalogueContainer object.
         /// </summary>
-        public SiteContainer(EntityConnection connection) : base(connection, "SiteContainer")
+        public CatalogueContainer(EntityConnection connection) : base(connection, "CatalogueContainer")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -80,38 +77,6 @@ namespace Vip.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Maker> Maker
-        {
-            get
-            {
-                if ((_Maker == null))
-                {
-                    _Maker = base.CreateObjectSet<Maker>("Maker");
-                }
-                return _Maker;
-            }
-        }
-        private ObjectSet<Maker> _Maker;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<ProductAttribute> ProductAttribute
-        {
-            get
-            {
-                if ((_ProductAttribute == null))
-                {
-                    _ProductAttribute = base.CreateObjectSet<ProductAttribute>("ProductAttribute");
-                }
-                return _ProductAttribute;
-            }
-        }
-        private ObjectSet<ProductAttribute> _ProductAttribute;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Category> Category
         {
             get
@@ -124,22 +89,6 @@ namespace Vip.Models
             }
         }
         private ObjectSet<Category> _Category;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Layout> Layout
-        {
-            get
-            {
-                if ((_Layout == null))
-                {
-                    _Layout = base.CreateObjectSet<Layout>("Layout");
-                }
-                return _Layout;
-            }
-        }
-        private ObjectSet<Layout> _Layout;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -172,6 +121,38 @@ namespace Vip.Models
             }
         }
         private ObjectSet<Brand> _Brand;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CategoryAttribute> CategoryAttribute
+        {
+            get
+            {
+                if ((_CategoryAttribute == null))
+                {
+                    _CategoryAttribute = base.CreateObjectSet<CategoryAttribute>("CategoryAttribute");
+                }
+                return _CategoryAttribute;
+            }
+        }
+        private ObjectSet<CategoryAttribute> _CategoryAttribute;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Article> Article
+        {
+            get
+            {
+                if ((_Article == null))
+                {
+                    _Article = base.CreateObjectSet<Article>("Article");
+                }
+                return _Article;
+            }
+        }
+        private ObjectSet<Article> _Article;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -220,41 +201,9 @@ namespace Vip.Models
             }
         }
         private ObjectSet<Content> _Content;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Article> Article
-        {
-            get
-            {
-                if ((_Article == null))
-                {
-                    _Article = base.CreateObjectSet<Article>("Article");
-                }
-                return _Article;
-            }
-        }
-        private ObjectSet<Article> _Article;
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Maker EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToMaker(Maker maker)
-        {
-            base.AddObject("Maker", maker);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the ProductAttribute EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToProductAttribute(ProductAttribute productAttribute)
-        {
-            base.AddObject("ProductAttribute", productAttribute);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the Category EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -262,14 +211,6 @@ namespace Vip.Models
         public void AddToCategory(Category category)
         {
             base.AddObject("Category", category);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Layout EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToLayout(Layout layout)
-        {
-            base.AddObject("Layout", layout);
         }
     
         /// <summary>
@@ -286,6 +227,22 @@ namespace Vip.Models
         public void AddToBrand(Brand brand)
         {
             base.AddObject("Brand", brand);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CategoryAttribute EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCategoryAttribute(CategoryAttribute categoryAttribute)
+        {
+            base.AddObject("CategoryAttribute", categoryAttribute);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Article EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToArticle(Article article)
+        {
+            base.AddObject("Article", article);
         }
     
         /// <summary>
@@ -311,14 +268,6 @@ namespace Vip.Models
         {
             base.AddObject("Content", content);
         }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Article EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToArticle(Article article)
-        {
-            base.AddObject("Article", article);
-        }
 
         #endregion
     }
@@ -331,7 +280,7 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Article")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="Article")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Article : EntityObject
@@ -464,7 +413,7 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Brand")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="Brand")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Brand : EntityObject
@@ -476,11 +425,15 @@ namespace Vip.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Brand CreateBrand(global::System.Int32 id, global::System.String title)
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="categoryId">Initial value of the CategoryId property.</param>
+        public static Brand CreateBrand(global::System.Int32 id, global::System.String title, global::System.String name, global::System.Int32 categoryId)
         {
             Brand brand = new Brand();
             brand.Id = id;
             brand.Title = title;
+            brand.Name = name;
+            brand.CategoryId = categoryId;
             return brand;
         }
 
@@ -537,6 +490,54 @@ namespace Vip.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CategoryId
+        {
+            get
+            {
+                return _CategoryId;
+            }
+            set
+            {
+                OnCategoryIdChanging(value);
+                ReportPropertyChanging("CategoryId");
+                _CategoryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryId");
+                OnCategoryIdChanged();
+            }
+        }
+        private global::System.Int32 _CategoryId;
+        partial void OnCategoryIdChanging(global::System.Int32 value);
+        partial void OnCategoryIdChanged();
 
         #endregion
     
@@ -548,18 +549,78 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandProduct", "Product")]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "BrandProduct", "Product")]
         public EntityCollection<Product> Products
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Site.BrandProduct", "Product");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Catalogue.BrandProduct", "Product");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Site.BrandProduct", "Product", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Catalogue.BrandProduct", "Product", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "CategoryBrand", "Category")]
+        public Category Category
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Catalogue.CategoryBrand", "Category").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Catalogue.CategoryBrand", "Category").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Category> CategoryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Catalogue.CategoryBrand", "Category");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Category>("Catalogue.CategoryBrand", "Category", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "BrandCategoryAttribute", "CategoryAttribute")]
+        public EntityCollection<CategoryAttribute> CategoryAttributes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CategoryAttribute>("Catalogue.BrandCategoryAttribute", "CategoryAttribute");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CategoryAttribute>("Catalogue.BrandCategoryAttribute", "CategoryAttribute", value);
                 }
             }
         }
@@ -570,7 +631,7 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Category")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="Category")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Category : EntityObject
@@ -583,16 +644,14 @@ namespace Vip.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        /// <param name="mainPage">Initial value of the MainPage property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name, global::System.String imageSource, global::System.Boolean mainPage)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String name, global::System.Int32 sortOrder)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
             category.Name = name;
-            category.ImageSource = imageSource;
-            category.MainPage = mainPage;
+            category.SortOrder = sortOrder;
             return category;
         }
 
@@ -694,33 +753,9 @@ namespace Vip.Models
                 OnSortOrderChanged();
             }
         }
-        private global::System.Int32 _SortOrder = 0;
+        private global::System.Int32 _SortOrder;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String ImageSource
-        {
-            get
-            {
-                return _ImageSource;
-            }
-            set
-            {
-                OnImageSourceChanging(value);
-                ReportPropertyChanging("ImageSource");
-                _ImageSource = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("ImageSource");
-                OnImageSourceChanged();
-            }
-        }
-        private global::System.String _ImageSource;
-        partial void OnImageSourceChanging(global::System.String value);
-        partial void OnImageSourceChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -817,30 +852,6 @@ namespace Vip.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean MainPage
-        {
-            get
-            {
-                return _MainPage;
-            }
-            set
-            {
-                OnMainPageChanging(value);
-                ReportPropertyChanging("MainPage");
-                _MainPage = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("MainPage");
-                OnMainPageChanged();
-            }
-        }
-        private global::System.Boolean _MainPage;
-        partial void OnMainPageChanging(global::System.Boolean value);
-        partial void OnMainPageChanged();
 
         #endregion
     
@@ -852,18 +863,18 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryProduct", "Product")]
-        public EntityCollection<Product> Products
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "CategoryBrand", "Brand")]
+        public EntityCollection<Brand> Brands
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Site.CategoryProduct", "Product");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Brand>("Catalogue.CategoryBrand", "Brand");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Site.CategoryProduct", "Product", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Brand>("Catalogue.CategoryBrand", "Brand", value);
                 }
             }
         }
@@ -874,18 +885,18 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryProductAttribute", "ProductAttribute")]
-        public EntityCollection<ProductAttribute> ProductAttributes
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "CategoryCategoryAttribute", "CategoryAttribute")]
+        public EntityCollection<CategoryAttribute> CategoryAttributes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttribute>("Site.CategoryProductAttribute", "ProductAttribute");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CategoryAttribute>("Catalogue.CategoryCategoryAttribute", "CategoryAttribute");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttribute>("Site.CategoryProductAttribute", "ProductAttribute", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CategoryAttribute>("Catalogue.CategoryCategoryAttribute", "CategoryAttribute", value);
                 }
             }
         }
@@ -896,7 +907,161 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Content")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="CategoryAttribute")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CategoryAttribute : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CategoryAttribute object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        public static CategoryAttribute CreateCategoryAttribute(global::System.Int32 id, global::System.String name, global::System.String title)
+        {
+            CategoryAttribute categoryAttribute = new CategoryAttribute();
+            categoryAttribute.Id = id;
+            categoryAttribute.Name = name;
+            categoryAttribute.Title = title;
+            return categoryAttribute;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "CategoryCategoryAttribute", "Category")]
+        public EntityCollection<Category> Categories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Catalogue.CategoryCategoryAttribute", "Category");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Catalogue.CategoryCategoryAttribute", "Category", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "BrandCategoryAttribute", "Brand")]
+        public EntityCollection<Brand> Brands
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Brand>("Catalogue.BrandCategoryAttribute", "Brand");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Brand>("Catalogue.BrandCategoryAttribute", "Brand", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="Content")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Content : EntityObject
@@ -1175,327 +1340,7 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Layout")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Layout : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Layout object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="title">Initial value of the Title property.</param>
-        public static Layout CreateLayout(global::System.Int32 id, global::System.String title)
-        {
-            Layout layout = new Layout();
-            layout.Id = id;
-            layout.Title = title;
-            return layout;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> LayoutId
-        {
-            get
-            {
-                return _LayoutId;
-            }
-            set
-            {
-                OnLayoutIdChanging(value);
-                ReportPropertyChanging("LayoutId");
-                _LayoutId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("LayoutId");
-                OnLayoutIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _LayoutId;
-        partial void OnLayoutIdChanging(Nullable<global::System.Int32> value);
-        partial void OnLayoutIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SortOrder
-        {
-            get
-            {
-                return _SortOrder;
-            }
-            set
-            {
-                OnSortOrderChanging(value);
-                ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SortOrder");
-                OnSortOrderChanged();
-            }
-        }
-        private global::System.Int32 _SortOrder = 0;
-        partial void OnSortOrderChanging(global::System.Int32 value);
-        partial void OnSortOrderChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutProduct", "Product")]
-        public EntityCollection<Product> Products
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Site.LayoutProduct", "Product");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Site.LayoutProduct", "Product", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutLayout", "Layout1")]
-        public EntityCollection<Layout> Children
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Layout>("Site.LayoutLayout", "Layout1");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Layout>("Site.LayoutLayout", "Layout1", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutLayout", "Layout")]
-        public Layout Parent
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Layout>("Site.LayoutLayout", "Layout").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Layout>("Site.LayoutLayout", "Layout").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Layout> ParentReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Layout>("Site.LayoutLayout", "Layout");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Layout>("Site.LayoutLayout", "Layout", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Maker")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Maker : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Maker object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="title">Initial value of the Title property.</param>
-        public static Maker CreateMaker(global::System.Int32 id, global::System.String title)
-        {
-            Maker maker = new Maker();
-            maker.Id = id;
-            maker.Title = title;
-            return maker;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "MakerProduct", "Product")]
-        public EntityCollection<Product> Products
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Site.MakerProduct", "Product");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Site.MakerProduct", "Product", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Product")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="Product")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Product : EntityObject
@@ -1506,17 +1351,13 @@ namespace Vip.Models
         /// Create a new Product object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        /// <param name="makerId">Initial value of the MakerId property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="brandId">Initial value of the BrandId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId, global::System.Int32 makerId, global::System.String title, global::System.String imageSource, global::System.Int32 brandId)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 brandId)
         {
             Product product = new Product();
             product.Id = id;
-            product.CategoryId = categoryId;
-            product.MakerId = makerId;
             product.Title = title;
             product.ImageSource = imageSource;
             product.BrandId = brandId;
@@ -1552,54 +1393,6 @@ namespace Vip.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 CategoryId
-        {
-            get
-            {
-                return _CategoryId;
-            }
-            set
-            {
-                OnCategoryIdChanging(value);
-                ReportPropertyChanging("CategoryId");
-                _CategoryId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CategoryId");
-                OnCategoryIdChanged();
-            }
-        }
-        private global::System.Int32 _CategoryId;
-        partial void OnCategoryIdChanging(global::System.Int32 value);
-        partial void OnCategoryIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 MakerId
-        {
-            get
-            {
-                return _MakerId;
-            }
-            set
-            {
-                OnMakerIdChanging(value);
-                ReportPropertyChanging("MakerId");
-                _MakerId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("MakerId");
-                OnMakerIdChanged();
-            }
-        }
-        private global::System.Int32 _MakerId;
-        partial void OnMakerIdChanging(global::System.Int32 value);
-        partial void OnMakerIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1683,136 +1476,16 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "LayoutProduct", "Layout")]
-        public EntityCollection<Layout> Layouts
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Layout>("Site.LayoutProduct", "Layout");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Layout>("Site.LayoutProduct", "Layout", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryProduct", "Category")]
-        public Category Category
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryProduct", "Category").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryProduct", "Category").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Category> CategoryReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryProduct", "Category");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Category>("Site.CategoryProduct", "Category", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "ProductProductAttribute", "ProductAttribute")]
-        public EntityCollection<ProductAttribute> ProductAttributes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductAttribute>("Site.ProductProductAttribute", "ProductAttribute");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductAttribute>("Site.ProductProductAttribute", "ProductAttribute", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "MakerProduct", "Maker")]
-        public Maker Maker
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Maker>("Site.MakerProduct", "Maker").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Maker>("Site.MakerProduct", "Maker").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Maker> MakerReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Maker>("Site.MakerProduct", "Maker");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Maker>("Site.MakerProduct", "Maker", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandProduct", "Brand")]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "BrandProduct", "Brand")]
         public Brand Brand
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandProduct", "Brand").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Catalogue.BrandProduct", "Brand").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandProduct", "Brand").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Catalogue.BrandProduct", "Brand").Value = value;
             }
         }
         /// <summary>
@@ -1824,13 +1497,13 @@ namespace Vip.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandProduct", "Brand");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Catalogue.BrandProduct", "Brand");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Brand>("Site.BrandProduct", "Brand", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Brand>("Catalogue.BrandProduct", "Brand", value);
                 }
             }
         }
@@ -1841,135 +1514,7 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="ProductAttribute")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class ProductAttribute : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new ProductAttribute object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="title">Initial value of the Title property.</param>
-        public static ProductAttribute CreateProductAttribute(global::System.Int32 id, global::System.String title)
-        {
-            ProductAttribute productAttribute = new ProductAttribute();
-            productAttribute.Id = id;
-            productAttribute.Title = title;
-            return productAttribute;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Int32 _Id;
-        partial void OnIdChanging(global::System.Int32 value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "ProductProductAttribute", "Product")]
-        public EntityCollection<Product> Products
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Site.ProductProductAttribute", "Product");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Site.ProductProductAttribute", "Product", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryProductAttribute", "Category")]
-        public EntityCollection<Category> Categories
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Category>("Site.CategoryProductAttribute", "Category");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Category>("Site.CategoryProductAttribute", "Category", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Project")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="Project")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Project : EntityObject
@@ -2277,18 +1822,18 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "ProjectProjectImage", "ProjectImage")]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "ProjectProjectImage", "ProjectImage")]
         public EntityCollection<ProjectImage> ProjectImages
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProjectImage>("Site.ProjectProjectImage", "ProjectImage");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProjectImage>("Catalogue.ProjectProjectImage", "ProjectImage");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProjectImage>("Site.ProjectProjectImage", "ProjectImage", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProjectImage>("Catalogue.ProjectProjectImage", "ProjectImage", value);
                 }
             }
         }
@@ -2299,7 +1844,7 @@ namespace Vip.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="ProjectImage")]
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="ProjectImage")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class ProjectImage : EntityObject
@@ -2407,16 +1952,16 @@ namespace Vip.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "ProjectProjectImage", "Project")]
+        [EdmRelationshipNavigationPropertyAttribute("Catalogue", "ProjectProjectImage", "Project")]
         public Project Project
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectProjectImage", "Project").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Catalogue.ProjectProjectImage", "Project").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectProjectImage", "Project").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Catalogue.ProjectProjectImage", "Project").Value = value;
             }
         }
         /// <summary>
@@ -2428,13 +1973,13 @@ namespace Vip.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectProjectImage", "Project");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Catalogue.ProjectProjectImage", "Project");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("Site.ProjectProjectImage", "Project", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("Catalogue.ProjectProjectImage", "Project", value);
                 }
             }
         }

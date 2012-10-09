@@ -12,12 +12,14 @@ namespace Vip.Controllers
     {
         public ActionResult Index(string id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var model = new SiteViewModel(context, id);
                 this.SetSeoContent(model);
-                if (model.Content != null && model.Layouts != null)
-                    ViewBag.Layouts = model.Layouts;
+                //if (model.Content != null && model.Layouts != null)
+                //    ViewBag.Layouts = model.Layouts;
+                ViewBag.Categories = model.Categories;
+
                 ViewBag.isHomePage = model.IsHomePage;
                 ViewBag.MainMenu = model.Menu;
                 return View(model);

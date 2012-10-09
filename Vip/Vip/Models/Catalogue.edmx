@@ -1,0 +1,577 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Catalogue.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CatalogueStoreContainer">
+    <EntitySet Name="Category" EntityType="Catalogue.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Catalogue.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Brand" EntityType="Catalogue.Store.Brand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryAttribute" EntityType="Catalogue.Store.CategoryAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Catalogue.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="Catalogue.Store.Project" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectImage" EntityType="Catalogue.Store.ProjectImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Content" EntityType="Catalogue.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryCategoryAttribute" EntityType="Catalogue.Store.CategoryCategoryAttribute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandCategoryAttribute" EntityType="Catalogue.Store.BrandCategoryAttribute" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="BrandProduct" Association="Catalogue.Store.BrandProduct">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryBrand" Association="Catalogue.Store.CategoryBrand">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Brand" EntitySet="Brand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryCategoryAttribute_Category" Association="Catalogue.Store.FK_CategoryCategoryAttribute_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryCategoryAttribute" EntitySet="CategoryCategoryAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryCategoryAttribute_CategoryAttribute" Association="Catalogue.Store.FK_CategoryCategoryAttribute_CategoryAttribute">
+      <End Role="CategoryAttribute" EntitySet="CategoryAttribute" />
+      <End Role="CategoryCategoryAttribute" EntitySet="CategoryCategoryAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BrandCategoryAttribute_Brand" Association="Catalogue.Store.FK_BrandCategoryAttribute_Brand">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="BrandCategoryAttribute" EntitySet="BrandCategoryAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BrandCategoryAttribute_CategoryAttribute" Association="Catalogue.Store.FK_BrandCategoryAttribute_CategoryAttribute">
+      <End Role="CategoryAttribute" EntitySet="CategoryAttribute" />
+      <End Role="BrandCategoryAttribute" EntitySet="BrandCategoryAttribute" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProjectImage" Association="Catalogue.Store.ProjectProjectImage">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectImage" EntitySet="ProjectImage" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryAttribute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Manager" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ProjectId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryCategoryAttribute">
+    <Key>
+      <PropertyRef Name="Categories_Id" />
+      <PropertyRef Name="CategoryAttributes_Id" />
+    </Key>
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+    <Property Name="CategoryAttributes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandCategoryAttribute">
+    <Key>
+      <PropertyRef Name="Brands_Id" />
+      <PropertyRef Name="CategoryAttributes_Id" />
+    </Key>
+    <Property Name="Brands_Id" Type="int" Nullable="false" />
+    <Property Name="CategoryAttributes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="BrandProduct">
+    <End Role="Brand" Type="Catalogue.Store.Brand" Multiplicity="1" />
+    <End Role="Product" Type="Catalogue.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryBrand">
+    <End Role="Category" Type="Catalogue.Store.Category" Multiplicity="1" />
+    <End Role="Brand" Type="Catalogue.Store.Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProjectImage">
+    <End Role="Project" Type="Catalogue.Store.Project" Multiplicity="0..1" />
+    <End Role="ProjectImage" Type="Catalogue.Store.ProjectImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectImage">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryCategoryAttribute_Category">
+    <End Role="Category" Type="Catalogue.Store.Category" Multiplicity="1" />
+    <End Role="CategoryCategoryAttribute" Type="Catalogue.Store.CategoryCategoryAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryCategoryAttribute">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryCategoryAttribute_CategoryAttribute">
+    <End Role="CategoryCategoryAttribute" Type="Catalogue.Store.CategoryCategoryAttribute" Multiplicity="*" />
+    <End Role="CategoryAttribute" Type="Catalogue.Store.CategoryAttribute" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryCategoryAttribute">
+        <PropertyRef Name="CategoryAttributes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BrandCategoryAttribute_Brand">
+    <End Role="Brand" Type="Catalogue.Store.Brand" Multiplicity="1" />
+    <End Role="BrandCategoryAttribute" Type="Catalogue.Store.BrandCategoryAttribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandCategoryAttribute">
+        <PropertyRef Name="Brands_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BrandCategoryAttribute_CategoryAttribute">
+    <End Role="BrandCategoryAttribute" Type="Catalogue.Store.BrandCategoryAttribute" Multiplicity="*" />
+    <End Role="CategoryAttribute" Type="Catalogue.Store.CategoryAttribute" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandCategoryAttribute">
+        <PropertyRef Name="CategoryAttributes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Catalogue" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="CatalogueContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Catalogue.Category" />
+          <EntitySet Name="Product" EntityType="Catalogue.Product" />
+          <EntitySet Name="Brand" EntityType="Catalogue.Brand" />
+          <EntitySet Name="CategoryAttribute" EntityType="Catalogue.CategoryAttribute" />
+          <AssociationSet Name="BrandProduct" Association="Catalogue.BrandProduct">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryBrand" Association="Catalogue.CategoryBrand">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryCategoryAttribute" Association="Catalogue.CategoryCategoryAttribute">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryAttribute" EntitySet="CategoryAttribute" />
+          </AssociationSet>
+          <AssociationSet Name="BrandCategoryAttribute" Association="Catalogue.BrandCategoryAttribute">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="CategoryAttribute" EntitySet="CategoryAttribute" />
+          </AssociationSet>
+          <EntitySet Name="Article" EntityType="Catalogue.Article" />
+          <EntitySet Name="Project" EntityType="Catalogue.Project" />
+          <EntitySet Name="ProjectImage" EntityType="Catalogue.ProjectImage" />
+          <EntitySet Name="Content" EntityType="Catalogue.Content" />
+          <AssociationSet Name="ProjectProjectImage" Association="Catalogue.ProjectProjectImage">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectImage" EntitySet="ProjectImage" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="DescriptionTitle" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <NavigationProperty Name="Brands" Relationship="Catalogue.CategoryBrand" FromRole="Category" ToRole="Brand" />
+          <NavigationProperty Name="CategoryAttributes" Relationship="Catalogue.CategoryCategoryAttribute" FromRole="Category" ToRole="CategoryAttribute" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <NavigationProperty Name="Brand" Relationship="Catalogue.BrandProduct" FromRole="Product" ToRole="Brand" />
+          <Property Type="Int32" Name="BrandId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="Products" Relationship="Catalogue.BrandProduct" FromRole="Brand" ToRole="Product" />
+          <NavigationProperty Name="Category" Relationship="Catalogue.CategoryBrand" FromRole="Brand" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="CategoryAttributes" Relationship="Catalogue.BrandCategoryAttribute" FromRole="Brand" ToRole="CategoryAttribute" />
+        </EntityType>
+        <EntityType Name="CategoryAttribute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="Categories" Relationship="Catalogue.CategoryCategoryAttribute" FromRole="CategoryAttribute" ToRole="Category" />
+          <NavigationProperty Name="Brands" Relationship="Catalogue.BrandCategoryAttribute" FromRole="CategoryAttribute" ToRole="Brand" />
+        </EntityType>
+        <Association Name="BrandProduct">
+          <End Type="Catalogue.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="Catalogue.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryBrand">
+          <End Type="Catalogue.Category" Role="Category" Multiplicity="1" />
+          <End Type="Catalogue.Brand" Role="Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryCategoryAttribute">
+          <End Type="Catalogue.Category" Role="Category" Multiplicity="*" />
+          <End Type="Catalogue.CategoryAttribute" Role="CategoryAttribute" Multiplicity="*" />
+        </Association>
+        <Association Name="BrandCategoryAttribute">
+          <End Type="Catalogue.Brand" Role="Brand" Multiplicity="*" />
+          <End Type="Catalogue.CategoryAttribute" Role="CategoryAttribute" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="String" Name="DescriptionTitle" MaxLength="200" FixedLength="true" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="500" FixedLength="true" />
+          <Property Type="String" Name="Manager" MaxLength="200" FixedLength="true" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <NavigationProperty Name="ProjectImages" Relationship="Catalogue.ProjectProjectImage" FromRole="Project" ToRole="ProjectImage" />
+        </EntityType>
+        <EntityType Name="ProjectImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="Int32" Name="ProjectId" Nullable="true" />
+          <NavigationProperty Name="Project" Relationship="Catalogue.ProjectProjectImage" FromRole="ProjectImage" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="String" Name="Text" />
+          <Property Type="String" Name="DescriptionTitle" MaxLength="200" FixedLength="true" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <Association Name="ProjectProjectImage">
+          <End Type="Catalogue.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="Catalogue.ProjectImage" Role="ProjectImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectImage">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CatalogueStoreContainer" CdmEntityContainer="CatalogueContainer">
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Brand)">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryAttribute">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.CategoryAttribute)">
+        <MappingFragment StoreEntitySet="CategoryAttribute">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Project)">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.ProjectImage)">
+        <MappingFragment StoreEntitySet="ProjectImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Content">
+      <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Content)">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CategoryCategoryAttribute" TypeName="Catalogue.CategoryCategoryAttribute" StoreEntitySet="CategoryCategoryAttribute">
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+      <EndProperty Name="CategoryAttribute">
+        <ScalarProperty Name="Id" ColumnName="CategoryAttributes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="BrandCategoryAttribute" TypeName="Catalogue.BrandCategoryAttribute" StoreEntitySet="BrandCategoryAttribute">
+      <EndProperty Name="Brand">
+        <ScalarProperty Name="Id" ColumnName="Brands_Id" />
+      </EndProperty>
+      <EndProperty Name="CategoryAttribute">
+        <ScalarProperty Name="Id" ColumnName="CategoryAttributes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Site2" >
+        <EntityTypeShape EntityType="Catalogue.Category" Width="1.5" PointX="6.5" PointY="0.625" Height="2.41404296875" />
+        <EntityTypeShape EntityType="Catalogue.Product" Width="1.5" PointX="10" PointY="6.5" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="Catalogue.Brand" Width="1.5" PointX="6.5" PointY="4.25" Height="1.5923063151041665" />
+        <EntityTypeShape EntityType="Catalogue.CategoryAttribute" Width="1.5" PointX="9.25" PointY="1.875" Height="1.427958984375" />
+        <AssociationConnector Association="Catalogue.BrandProduct">
+          <ConnectorPoint PointX="8" PointY="5.0461531575520837" />
+          <ConnectorPoint PointX="10.75" PointY="5.0461531575520837" />
+          <ConnectorPoint PointX="10.75" PointY="6.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="Catalogue.CategoryBrand">
+          <ConnectorPoint PointX="7.25" PointY="3.03904296875" />
+          <ConnectorPoint PointX="7.25" PointY="4.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="Catalogue.CategoryCategoryAttribute">
+          <ConnectorPoint PointX="8" PointY="2.5391951497395828" />
+          <ConnectorPoint PointX="9.25" PointY="2.5391951497395828" />
+        </AssociationConnector>
+        <AssociationConnector Association="Catalogue.BrandCategoryAttribute">
+          <ConnectorPoint PointX="8" PointY="4.8523340128580719" />
+          <ConnectorPoint PointX="10" PointY="4.8523340128580719" />
+          <ConnectorPoint PointX="10" PointY="3.6316536458333331" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Catalogue.Article" Width="1.5" PointX="11.66104913487148" PointY="19.454775595783616" />
+        <EntityTypeShape EntityType="Catalogue.Project" Width="1.5" PointX="8.1932126936471139" PointY="20.391776824552462" />
+        <EntityTypeShape EntityType="Catalogue.ProjectImage" Width="1.5" PointX="11.920529471673317" PointY="23.719778772313045" />
+        <EntityTypeShape EntityType="Catalogue.Content" Width="1.5" PointX="0.74974668247147769" PointY="14.08860348821087" />
+        <AssociationConnector Association="Catalogue.ProjectProjectImage" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -15,7 +15,7 @@ namespace Vip.Controllers
 
         public ActionResult Index(string project)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var model = new ProjectViewModel(context, project);
                 this.SetSeoContent(model);

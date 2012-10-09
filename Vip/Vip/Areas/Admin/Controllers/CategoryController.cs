@@ -15,7 +15,7 @@ namespace Vip.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var categories = context.Category.ToList();
                 return View(categories);
@@ -24,39 +24,39 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var category = new Category { SortOrder = 0 };
-                var attributes = context.ProductAttribute.ToList();
+                var attributes = context.CategoryAttribute.ToList();
                 ViewBag.Attributes = attributes;
                 return View(category);
             }
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Create(FormCollection form)
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var category = new Category();
 
 
-                    var attributes = context.ProductAttribute.ToList();
+                    var attributes = context.CategoryAttribute.ToList();
                     PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr");
                     foreach (var kvp in postData)
                     {
                         var attribute = attributes.First(a => a.Id == kvp.Key);
                         if (kvp.Value)
                         {
-                            if (!category.ProductAttributes.Contains(attribute))
-                                category.ProductAttributes.Add(attribute);
+                            if (!category.CategoryAttributes.Contains(attribute))
+                                category.CategoryAttributes.Add(attribute);
                         }
                         else
                         {
-                            if (category.ProductAttributes.Contains(attribute))
-                                category.ProductAttributes.Remove(attribute);
+                            if (category.CategoryAttributes.Contains(attribute))
+                                category.CategoryAttributes.Remove(attribute);
                         }
                     }
 
@@ -69,17 +69,6 @@ namespace Vip.Areas.Admin.Controllers
                     "DescriptionTitle"
                     });
                     category.Description = HttpUtility.HtmlDecode(form["Description"]);
-
-                    if (fileUpload != null)
-                    {
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload);
-                        fileUpload.SaveAs(filePath);
-
-                        category.ImageSource = fileName;
-                    }
 
                     context.AddToCategory(category);
                     context.SaveChanges();
@@ -96,21 +85,21 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
-                var category = context.Category.Include("ProductAttributes").First(c => c.Id == id);
-                var attributes = context.ProductAttribute.ToList();
+                var category = context.Category.Include("CategoryAttributes").First(c => c.Id == id);
+                var attributes = context.CategoryAttribute.ToList();
                 ViewBag.Attributes = attributes;
                 return View(category);
             }
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(int id, FormCollection form)
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var category = context.Category.First(c => c.Id == id);
 
@@ -124,38 +113,25 @@ namespace Vip.Areas.Admin.Controllers
                 });
                     category.Description = HttpUtility.HtmlDecode(form["Description"]);
 
-                    var attributes = context.ProductAttribute.ToList();
+                    var attributes = context.CategoryAttribute.ToList();
                     PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr");
                     foreach (var kvp in postData)
                     {
                         var attribute = attributes.First(a => a.Id == kvp.Key);
                         if (kvp.Value)
                         {
-                            if (!category.ProductAttributes.Contains(attribute))
-                                category.ProductAttributes.Add(attribute);
+                            if (!category.CategoryAttributes.Contains(attribute))
+                                category.CategoryAttributes.Add(attribute);
                         }
                         else
                         {
-                            if (category.ProductAttributes.Contains(attribute))
-                                category.ProductAttributes.Remove(attribute);
+                            if (category.CategoryAttributes.Contains(attribute))
+                                category.CategoryAttributes.Remove(attribute);
                         }
                     }
 
-                    if (fileUpload != null)
-                    {
-                        ImageHelper.DeleteImage(category.ImageSource);
-
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload);
-                        fileUpload.SaveAs(filePath);
-                        category.ImageSource = fileName;
-                    }
-
-
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Catalogue", new { area = "", category = !category.MainPage? category.Name :""});
+                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name});
                 }
             }
             catch
@@ -168,19 +144,14 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-
-
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
-                    var category = context.Category.Include("Products").Include("ProductAttributes").First(c => c.Id == id);
-                    if (!category.Products.Any())
+                    var category = context.Category.Include("Brands").Include("CategoryAttributes").First(c => c.Id == id);
+                    if (!category.Brands.Any())
                     {
-                        category.ProductAttributes.Clear();
-                        ImageHelper.DeleteImage(category.ImageSource);
-
+                        category.CategoryAttributes.Clear();
                         context.DeleteObject(category);
                         context.SaveChanges();
-
                     }
                 }
             }

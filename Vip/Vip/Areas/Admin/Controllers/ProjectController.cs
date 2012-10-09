@@ -30,7 +30,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var project = new Project();
                     TryUpdateModel(project, new[]
@@ -71,7 +71,7 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var project = context.Project.First(p => p.Id == id);
                 return View(project);
@@ -86,7 +86,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var project = context.Project.First(p => p.Id == id);
                     TryUpdateModel(project, new[]
@@ -127,7 +127,7 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var project = context.Project.Include("ProjectImages").First(p => p.Id == id);
                 while (project.ProjectImages.Any())
@@ -147,7 +147,7 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult AddImage(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var project = context.Project.First(p => p.Id == id);
                 ViewBag.ProjectId = project.Id;
@@ -161,7 +161,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var project = context.Project.First(p => p.Id == projectId);
                     if (fileUpload != null)
@@ -193,7 +193,7 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult DeleteImage(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var image = context.ProjectImage.Include("Project").First(pi => pi.Id == id);
                 var projectName = image.Project.Name;

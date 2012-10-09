@@ -27,9 +27,6 @@ namespace Vip.Models
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
 
-        [DisplayName("Изображение")]
-        public int ImageSource { get; set; }
-
         [DisplayName("Описание")]
         public string Description { get; set; }
 
