@@ -10,7 +10,7 @@
 
 <div class="adminContentContainer">
 
-    @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
 
@@ -42,25 +42,6 @@
             </tr>
             <tr>
                 <td>
-                    Атрибуты
-                </td>
-                <td>
-                    @{
-                        var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
-                        if (attributes != null)
-                        {
-                            foreach (var item in attributes)
-                            {
-
-                                @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;")@item.Title<br />
-
-                            }
-                        }
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>
                     @Html.LabelFor(model => model.DescriptionTitle)
                 </td>
                 <td>
@@ -84,19 +65,6 @@
                 <td>
                     @Html.EditorFor(model => model.SortOrder)
                     @Html.ValidationMessageFor(model => model.SortOrder)
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.ImageSource)
-                </td>
-                <td>
-                    <input type="file" name="fileUpload" />
-                    @Html.ValidationMessageFor(model => model.ImageSource)
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    Для поисковых систем
                 </td>
             </tr>
             <tr>

@@ -10,7 +10,8 @@ namespace Vip.Models
         public Project Project { get; set; }
         public IEnumerable<Project> Projects { get; set; }
 
-        public ProjectViewModel(SiteContainer context, string project) : base(context,null)
+        public ProjectViewModel(CatalogueContainer context, string project)
+            : base(context, null)
         {
             Title = "Проекты";
 

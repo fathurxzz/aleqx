@@ -9,7 +9,7 @@ namespace Vip.Models
     {
         public List<Article> Articles { get; set; }
 
-        public ArticlesViewModel(SiteContainer context) : base(context, null)
+        public ArticlesViewModel(CatalogueContainer context) : base(context, null)
         {
             Title = "Новости";
             Articles = context.Article.ToList();

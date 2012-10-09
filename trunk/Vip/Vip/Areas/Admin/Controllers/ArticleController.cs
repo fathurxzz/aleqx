@@ -22,7 +22,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var article = new Article();
                     TryUpdateModel(article, new[] { "Title", "Date" });
@@ -43,7 +43,7 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var article = context.Article.First(a => a.Id == id);
                 return View(article);
@@ -58,7 +58,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var article = context.Article.First(a => a.Id == id);
                     TryUpdateModel(article, new[] { "Title", "Date" });
@@ -78,7 +78,7 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var article = context.Article.First(a => a.Id == id);
                 context.DeleteObject(article);

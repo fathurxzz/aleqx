@@ -14,10 +14,16 @@ namespace Vip.Models
         public bool IsHomePage { get; set; }
         public Menu Menu { get; set; }
         public Content Content { get; set; }
-        public IEnumerable<Layout> Layouts { get; set; }
 
-        public SiteViewModel(SiteContainer context,string contentName)
+        public Category Category { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
+
+        public SiteViewModel(CatalogueContainer context,string contentName)
         {
+
+            var categories = context.Category.ToList();
+            Categories = categories;
+
             var contents = context.Content.Where(c => !c.MainPage).ToList();
             Menu = new Menu();
             foreach (var content in contents)
@@ -54,7 +60,7 @@ namespace Vip.Models
                 if (Content.MainPage)
                 {
                     IsHomePage = true;
-                    Layouts = context.Layout.Include("Parent").Include("Children").ToList();
+                    //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
                 }
 
             

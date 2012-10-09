@@ -23,49 +23,7 @@
             <tr>
                 <td colspan="2">
                     <h2>
-                        Редактироавание изображения для категории "@Model.Category.Title"</h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Категории
-                </td>
-                <td>
-                    @foreach (var item in layouts.Where(l => l.Parent == null).OrderBy(i => i.SortOrder))
-                    {
-                        <div class="parent">
-                            @item.Title
-                            @foreach(var child in item.Children.OrderBy(i=>i.SortOrder))
-                            {
-                                <div class="child">
-                                    @Html.CheckBox("lyt_" + child.Id, Model.Layouts.Contains(child)) @child.Title
-                                </div>
-                            }
-                        </div>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>Аттрибуты продукта</td>
-                <td>
-                    @foreach(var item in attributes)
-                    {
-                        <div>
-                            @Html.CheckBox("attr_" + item.Id,Model.ProductAttributes.Contains(item)) @item.Title
-                        </div>
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td>Бренд</td>
-                <td>
-                    @Html.DropDownList("brandId",brands)
-                </td>
-            </tr>
-            <tr>
-                <td>Страна производитель</td>
-                <td>
-                    @Html.DropDownList("makerId",makers)
+                        Редактироавание изображения для бренда "@Model.Brand.Title"</h2>
                 </td>
             </tr>
             <tr>
@@ -88,7 +46,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "",category=Model.Category.Name }, null)
+            @*@Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "",category=Model.Category.Name }, null)*@
         </div>
     }
 </div>

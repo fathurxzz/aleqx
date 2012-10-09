@@ -12,7 +12,7 @@ namespace Vip.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var brands = context.Brand.ToList();
                 return View(brands);
@@ -32,7 +32,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var brand = new Brand();
                     TryUpdateModel(brand, new[] { "Title"});
@@ -50,7 +50,7 @@ namespace Vip.Areas.Admin.Controllers
         
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var brand = context.Brand.First(l => l.Id == id);
                 return View(brand);
@@ -63,7 +63,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var brand = context.Brand.First(l => l.Id == id);
                     TryUpdateModel(brand, new[] { "Title" });
@@ -82,7 +82,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var brand = context.Brand.First(l => l.Id == id);
                     context.DeleteObject(brand);

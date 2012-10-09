@@ -11,7 +11,7 @@ namespace Vip.Areas.Admin.Controllers
     {
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
                 var content = context.Content.First(c => c.Id == id);
                 return View(content);
@@ -23,7 +23,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
                     var content = context.Content.First(c => c.Id == id);
                     TryUpdateModel(content, new[] {"Title","DescriptionTitle","SeoDescription","SeoKeywords","SortOrder"});

@@ -1,32 +1,79 @@
 ﻿@using SiteExtensions
+@using Vip.Models
 <div class="mainMenu">
-            <ul>
-                <li>
-                    @Html.ActionLink("каталог","Index","Catalogue",new{area="",category=""},null)
-                </li>
-                <li>
-                    @Html.ActionLink("новости","Index","Articles",new{area=""},null)
-                </li>
-                <li>
-                    @Html.ActionLink("проекты", "Index", "Projects", new { area = "", project = "" }, null)
-                </li>
-                
-                @{
-                    var mainMenu = (Menu) ViewBag.MainMenu;
-                    if(mainMenu!=null)
-                    {
-                        foreach (var item in mainMenu)
-                        {
+    <table>
+        <tr>
+            <td>
+                <a href="#" id="catalogue">каталог</a>
+                <div class="categories">
+                    <ul>
+                        @{
+                            var categories = (IEnumerable<Category>)ViewBag.Categories;
+                            foreach (var category in categories)
+                            {
                             <li>
-                                @Html.ActionLink(item.Title, "Index", "Home", new {area = "", id = item.ContentName}, null)
-                                @if(Request.IsAuthenticated)
-                                {
-                                   @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
-                                }
-                            </li>
+                                @Html.ActionLink(category.Title, "Index", "Catalogue", new { area = "", category = category.Name }, null)
+                            </li>   
+                            }
                         }
+                    </ul>
+                </div>
+            </td>
+        
+            <td>
+                @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
+            </td>
+        
+            <td>
+                @Html.ActionLink("проекты", "Index", "Projects", new { area = "", project = "" }, null)
+            </td>
+        
+        @{
+            var mainMenu = (Menu)ViewBag.MainMenu;
+            if (mainMenu != null)
+            {
+                foreach (var item in mainMenu)
+                {
+            
+                <td>
+                    @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
                     }
+                </td>
+            
                 }
-            </ul>
-
-        </div>
+            }
+        }
+        </tr>
+    </table>
+    @*    <ul>
+        <li>
+            @Html.ActionLink("каталог","Index","Catalogue",new{area="",category=""},null)
+    
+        </li>
+        <li>
+            @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
+        </li>
+        <li>
+            @Html.ActionLink("проекты", "Index", "Projects", new { area = "", project = "" }, null)
+        </li>
+        @{
+            var mainMenu = (Menu)ViewBag.MainMenu;
+            if (mainMenu != null)
+            {
+                foreach (var item in mainMenu)
+                {
+            <li>
+                @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
+                }
+            </li>
+                }
+            }
+        }
+    </ul>
+*@</div>

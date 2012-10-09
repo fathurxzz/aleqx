@@ -8,13 +8,13 @@ using Vip.Models;
 namespace Vip.Areas.Admin.Controllers
 {
     [Authorize]
-    public class ProductAttributeController : Controller
+    public class CategoryAttributeController : Controller
     {
         public ActionResult Index()
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
-                var pa = context.ProductAttribute.ToList();
+                var pa = context.CategoryAttribute.ToList();
                 return View(pa);
             }
         }
@@ -29,11 +29,11 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
-                    var attribute = new ProductAttribute();
+                    var attribute = new CategoryAttribute();
                     TryUpdateModel(attribute, new[] { "Title" });
-                    context.AddToProductAttribute(attribute);
+                    context.AddToCategoryAttribute(attribute);
                     context.SaveChanges();
                 }
 
@@ -47,9 +47,9 @@ namespace Vip.Areas.Admin.Controllers
         
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
-                var attribute = context.ProductAttribute.First(a => a.Id == id);
+                var attribute = context.CategoryAttribute.First(a => a.Id == id);
                 return View(attribute);
             }
         }
@@ -59,9 +59,9 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-                using (var context = new SiteContainer())
+                using (var context = new CatalogueContainer())
                 {
-                    var attribute = context.ProductAttribute.First(a => a.Id == id);
+                    var attribute = context.CategoryAttribute.First(a => a.Id == id);
                     TryUpdateModel(attribute, new[] { "Title" });
                     context.SaveChanges();
                 }
@@ -76,11 +76,11 @@ namespace Vip.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            using (var context = new SiteContainer())
+            using (var context = new CatalogueContainer())
             {
-                var attribute = context.ProductAttribute.First(a => a.Id == id);
+                var attribute = context.CategoryAttribute.First(a => a.Id == id);
                 attribute.Categories.Clear();
-                attribute.Products.Clear();
+                attribute.Brands.Clear();
                 context.DeleteObject(attribute);
                 context.SaveChanges();
             }
