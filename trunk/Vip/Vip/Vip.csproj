@@ -286,18 +286,12 @@
     <Content Include="Views\Shared\_AdminPanel.cshtml" />
     <Content Include="Views\Catalogue\Index.cshtml" />
     <Content Include="Views\Shared\_MainMenu.cshtml" />
-    <Content Include="Views\Catalogue\_AttributesFilter.cshtml" />
-    <Content Include="Views\Catalogue\_LayoutsFilter.cshtml" />
     <Content Include="Views\Shared\LayoutsSelector.cshtml" />
-    <Content Include="Views\Catalogue\AttributesSelector.cshtml" />
-    <Content Include="Views\Catalogue\BrandsSelector.cshtml" />
-    <Content Include="Views\Catalogue\MakersSelector.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\_ProjectsTitle.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Shared\AboutModel.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
-    <Content Include="Views\Catalogue\_Paging.cshtml" />
     <Content Include="Views\Shared\ErrorPage.cshtml" />
     <EntityDeploy Include="Models\Catalogue.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
