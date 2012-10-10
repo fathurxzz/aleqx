@@ -160,5 +160,43 @@ namespace Vip.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Attributes(int id)
+        {
+            using (var context = new CatalogueContainer())
+            {
+                var category = context.Category.Include("CategoryAttributes").First(c => c.Id == id);
+                ViewBag.CategoryId = category.Id;
+                ViewBag.SelectedAttributes = category.CategoryAttributes.ToList();
+                var attributes = context.CategoryAttribute.ToList();
+                return View(attributes);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Attributes(int categoryId ,FormCollection form)
+        {
+            using (var context = new CatalogueContainer())
+            {
+                var category = context.Category.First(c => c.Id == categoryId);
+
+                category.CategoryAttributes.Clear();
+                PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr");
+                foreach (var kvp in cbData)
+                {
+                    var attrId = kvp.Key;
+                    bool attrValue = kvp.Value;
+                    if (attrValue)
+                    {
+                        var attribute = context.CategoryAttribute.First(c => c.Id == attrId);
+                        category.CategoryAttributes.Add(attribute);
+                    }
+                }
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

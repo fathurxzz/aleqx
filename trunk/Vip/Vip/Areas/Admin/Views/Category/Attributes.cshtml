@@ -1,0 +1,37 @@
+﻿@using Vip.Models
+@model IEnumerable<Vip.Models.CategoryAttribute>
+
+@{
+    ViewBag.Title = "Attributes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<CategoryAttribute> attributes = (List<CategoryAttribute>) ViewBag.SelectedAttributes;
+}
+
+<div class="adminContentContainer">
+
+@using(Html.BeginForm("Attributes","Category",FormMethod.Post))
+{
+@Html.Hidden("categoryId",(int)ViewBag.CategoryId)
+    <table  class="adminEditContentTable">
+        <tr>
+            <th>
+                
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBox("attr_" + item.Id, attributes.Contains(item)) @Html.DisplayFor(modelItem => item.Title)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Category", new { Area = "Admin" }, null)
+        </div>
+}
+</div>
