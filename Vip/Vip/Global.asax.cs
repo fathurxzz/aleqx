@@ -35,6 +35,8 @@ namespace Vip
                 new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional } // Parameter defaults
             );
 
+
+
             routes.MapRoute(
                 "Projects", // Route name
                 "projects/{project}", // URL with parameters

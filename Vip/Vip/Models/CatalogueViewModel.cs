@@ -9,7 +9,7 @@ namespace Vip.Models
 {
     public class CatalogueViewModel : SiteViewModel
     {
-        
+
         //public AttributeFilter AttributesFilter { get; set; }
         //public LayoutFilter LayoutFilter { get; set; }
         //public new IEnumerable<Layout> Layouts { get; set; }
@@ -20,10 +20,15 @@ namespace Vip.Models
         //public int TotalProductsCount { get; set; }
         //private int? _page;
 
-        public CatalogueViewModel(CatalogueContainer context, string category)
+        public CatalogueViewModel(CatalogueContainer context, string category, string filter, string brand)
             : base(context, null)
         {
             Title = "Каталог";
+
+            Category = context.Category.Include("CategoryAttributes").FirstOrDefault(c => c.Name == category);
+
+
+
             //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
             //Makers = context.Maker.ToList();
             //Brands = context.Brand.ToList();
@@ -143,7 +148,7 @@ namespace Vip.Models
         //            Products.Add(product);
         //        }
         //    }
-            
+
         //    if (Products != null)
         //        TotalProductsCount = Products.Count();
 
@@ -163,7 +168,7 @@ namespace Vip.Models
         //public void ApplyPaging()
         //{
         //    Products = ApplyPaging(Products, _page);
-            
+
 
         //}
     }
