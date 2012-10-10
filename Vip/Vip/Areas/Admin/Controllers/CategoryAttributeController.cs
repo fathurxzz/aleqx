@@ -22,17 +22,17 @@ namespace Vip.Areas.Admin.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form)
         {
             try
             {
                 using (var context = new CatalogueContainer())
                 {
                     var attribute = new CategoryAttribute();
-                    TryUpdateModel(attribute, new[] { "Title" });
+                    TryUpdateModel(attribute, new[] { "Title", "Name" });
                     context.AddToCategoryAttribute(attribute);
                     context.SaveChanges();
                 }
@@ -44,7 +44,7 @@ namespace Vip.Areas.Admin.Controllers
                 return View();
             }
         }
-        
+
         public ActionResult Edit(int id)
         {
             using (var context = new CatalogueContainer())
@@ -55,14 +55,14 @@ namespace Vip.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection form)
         {
             try
             {
                 using (var context = new CatalogueContainer())
                 {
                     var attribute = context.CategoryAttribute.First(a => a.Id == id);
-                    TryUpdateModel(attribute, new[] { "Title" });
+                    TryUpdateModel(attribute, new[] { "Title", "Name" });
                     context.SaveChanges();
                 }
 
@@ -86,6 +86,5 @@ namespace Vip.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
-
     }
 }

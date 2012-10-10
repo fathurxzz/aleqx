@@ -26,11 +26,20 @@
                     @Html.ValidationMessageFor(model => model.Title)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
         </table>
     
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "ProductAttribute", new { Area = "Admin" }, null)
+            @Html.ActionLink("Назад", "Index", "CategoryAttribute", new { Area = "Admin" }, null)
         </div>
     }
 </div>

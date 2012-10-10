@@ -5,19 +5,28 @@
         <tr>
             <td>
                 <a href="#" id="catalogue">каталог</a>
-                <div class="categories">
-                    <ul>
-                        @{
-                            var categories = (IEnumerable<Category>)ViewBag.Categories;
-                            foreach (var category in categories)
-                            {
-                            <li>
-                                @Html.ActionLink(category.Title, "Index", "Catalogue", new { area = "", category = category.Name }, null)
-                            </li>   
-                            }
-                        }
-                    </ul>
-                </div>
+                @{
+                    var categories = (IEnumerable<Category>) ViewBag.Categories;
+                }
+                    @if(categories!=null)
+                    {
+
+
+                        <div class="categories">
+                            <ul>
+                                @{
+
+                                    foreach (var category in categories)
+                                    {
+                                        <li>
+                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name}, null)
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                
             </td>
         
             <td>
