@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/09/2012 15:51:24
+-- Date Created: 10/10/2012 19:15:55
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Catalogue.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -22,6 +22,7 @@
 --    ALTER TABLE `CategoryCategoryAttribute` DROP CONSTRAINT `FK_CategoryCategoryAttribute_CategoryAttribute`;
 --    ALTER TABLE `BrandCategoryAttribute` DROP CONSTRAINT `FK_BrandCategoryAttribute_Brand`;
 --    ALTER TABLE `BrandCategoryAttribute` DROP CONSTRAINT `FK_BrandCategoryAttribute_CategoryAttribute`;
+--    ALTER TABLE `ProjectImage` DROP CONSTRAINT `FK_ProjectProjectImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -31,6 +32,10 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `Brand`;
     DROP TABLE IF EXISTS `CategoryAttribute`;
+    DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `Project`;
+    DROP TABLE IF EXISTS `ProjectImage`;
+    DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `CategoryCategoryAttribute`;
     DROP TABLE IF EXISTS `BrandCategoryAttribute`;
 SET foreign_key_checks = 1;
@@ -67,7 +72,9 @@ CREATE TABLE `Brand` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `CategoryId` int  NOT NULL
+    `CategoryId` int  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `Href` varchar( 255 )  NULL
 );
 
 -- Creating table 'CategoryAttribute'

@@ -427,13 +427,15 @@ namespace Vip.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static Brand CreateBrand(global::System.Int32 id, global::System.String title, global::System.String name, global::System.Int32 categoryId)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Brand CreateBrand(global::System.Int32 id, global::System.String title, global::System.String name, global::System.Int32 categoryId, global::System.Int32 sortOrder)
         {
             Brand brand = new Brand();
             brand.Id = id;
             brand.Title = title;
             brand.Name = name;
             brand.CategoryId = categoryId;
+            brand.SortOrder = sortOrder;
             return brand;
         }
 
@@ -538,6 +540,54 @@ namespace Vip.Models
         private global::System.Int32 _CategoryId;
         partial void OnCategoryIdChanging(global::System.Int32 value);
         partial void OnCategoryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Href
+        {
+            get
+            {
+                return _Href;
+            }
+            set
+            {
+                OnHrefChanging(value);
+                ReportPropertyChanging("Href");
+                _Href = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Href");
+                OnHrefChanged();
+            }
+        }
+        private global::System.String _Href;
+        partial void OnHrefChanging(global::System.String value);
+        partial void OnHrefChanged();
 
         #endregion
     

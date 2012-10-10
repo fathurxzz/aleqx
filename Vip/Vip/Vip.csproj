@@ -173,6 +173,7 @@
     <Content Include="Content\img\filter-selector-bg-top-chto.gif" />
     <Content Include="Content\img\filter-selector-bg-top.gif" />
     <Content Include="Content\img\filter-selector-bg.gif" />
+    <Content Include="Content\img\filter-selector-pattern-bottom.png" />
     <Content Include="Content\img\filter-selector-pattern.png" />
     <Content Include="Content\img\footer-bg-bottom.jpg" />
     <Content Include="Content\img\footer-bg-center.jpg" />
@@ -257,7 +258,6 @@
     <Content Include="Areas\Admin\Views\Layout\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Layout\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Maker\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Brand\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Maker\Create.cshtml" />

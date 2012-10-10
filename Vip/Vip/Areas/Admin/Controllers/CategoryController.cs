@@ -72,7 +72,7 @@ namespace Vip.Areas.Admin.Controllers
 
                     context.AddToCategory(category);
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
+                    return RedirectToAction("Index", "Category", new { area = "Admin" });
                 }
 
 
