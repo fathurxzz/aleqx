@@ -39,6 +39,11 @@
     margin-top: 50px;
 }
 
+.galleryContainer .gallery {
+    margin-left: 160px;
+    border: 1px solid red;
+    height: 300px;
+}
 
 .filters {
 
@@ -66,12 +71,21 @@
 }
 
 
+ul.brands li {
+    list-style: none;
+}
+
+.brands.left {
+    float: left;
+    width: 150px;
+}
+
 .brands .brand {
     text-align: center;
     
 }
 
-.brands .brand a {
+.brands a {
     color: #66badc;
     font-size: 12px;
     font-family: DinCyRg;
