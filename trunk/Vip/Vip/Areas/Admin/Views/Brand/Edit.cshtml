@@ -1,10 +1,9 @@
-﻿@model Vip.Models.Brand
-
+﻿@using Vip.Models
+@model Vip.Models.Brand
 @{
     ViewBag.Title = "Редактирование бренда";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="adminContentContainer">
     @using (Html.BeginForm())
     {
@@ -26,6 +25,48 @@
                     @Html.ValidationMessageFor(model => model.Title)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Href)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Href)
+                    @Html.ValidationMessageFor(model => model.Href)
+                </td>
+            </tr>
+            <tr>
+                <td>Атрибуты
+                </td>
+                <td>
+                    @{
+                        List<CategoryAttribute> attributes = (List<CategoryAttribute>)ViewBag.SelectedAttributes;
+                    }
+
+                    @foreach (var item in (List<CategoryAttribute>)ViewBag.CategoryAttributes)
+                    {
+                        @Html.CheckBox("attr_" + item.Id, attributes.Contains(item)) @item.Title <br />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.SortOrder)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SortOrder)
+                    @Html.ValidationMessageFor(model => model.SortOrder)
+                </td>
+            </tr>
+
         </table>
     
         <div class="buttonsContainer">
@@ -34,4 +75,3 @@
         </div>
     }
 </div>
-

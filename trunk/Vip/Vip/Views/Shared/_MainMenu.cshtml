@@ -19,7 +19,7 @@
                                     foreach (var category in categories)
                                     {
                                         <li>
-                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name}, null)
+                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name,filter="",brand=""}, null)
                                         </li>
                                     }
                                 }
@@ -57,32 +57,4 @@
         }
         </tr>
     </table>
-    @*    <ul>
-        <li>
-            @Html.ActionLink("каталог","Index","Catalogue",new{area="",category=""},null)
-    
-        </li>
-        <li>
-            @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
-        </li>
-        <li>
-            @Html.ActionLink("проекты", "Index", "Projects", new { area = "", project = "" }, null)
-        </li>
-        @{
-            var mainMenu = (Menu)ViewBag.MainMenu;
-            if (mainMenu != null)
-            {
-                foreach (var item in mainMenu)
-                {
-            <li>
-                @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
-                @if (Request.IsAuthenticated)
-                {
-                    @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
-                }
-            </li>
-                }
-            }
-        }
-    </ul>
-*@</div>
+   </div>

@@ -22,21 +22,13 @@ namespace Vip
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            //routes.MapRoute(
-            //    "LayoutsFilter", // Route name
-            //    "catalogue/ShowLayoutsSelector", // URL with parameters
-            //    new { controller = "Catalogue", action = "ShowSelector" } // Parameter defaults
-            //);
-
-            
             routes.MapRoute(
                 "Catalogue", // Route name
-                "catalogue/{category}", // URL with parameters
-                new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional } // Parameter defaults
+                "catalogue/{category}/{filter}/{brand}", // URL with parameters
+                new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, filter = UrlParameter.Optional, brand = UrlParameter.Optional } // Parameter defaults
             );
 
-
-
+          
             routes.MapRoute(
                 "Projects", // Route name
                 "projects/{project}", // URL with parameters

@@ -7,5 +7,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="catalogue">
-   <div class="titleContainer">asdasd</div>
+    <div class="titleContainer">
+        @Model.Category.Title
+    </div>
+    <div class="patternTop">
+        
+    </div>
+
+    @if (Model.Brand != null)
+    {
+        
+    }
+    else
+    {
+
+        if (Model.Category.CategoryAttributes.Any())
+         {
+             <div class="filters">
+                 @foreach (var attr in Model.Category.CategoryAttributes)
+                 {
+                     <span>
+                         @Html.ActionLink(attr.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, filter = attr.Name}, null)
+                     </span>
+                 }
+                 <span>
+                     @Html.ActionLink("Все", "Index", "Catalogue", new {area = "", category = Model.Category.Name, filter = "all"}, null)
+                 </span>
+             </div>
+         }
+        <div class="brands">
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Добавить бренд", "Create", "Brand", new {area = "Admin", categoryId = Model.Category.Id}, new {@class = "adminLink"})
+            }
+        
+            @if (Model.Brands.Any())
+            {
+                foreach (var brand in Model.Brands.OrderBy(b=>b.SortOrder))
+                {
+                    <div class="brand">
+                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter}, null)
+                        @if(Request.IsAuthenticated)
+                        {
+                            <span class="sortOrder"> @brand.SortOrder</span> @Html.Raw("&nbsp;")
+                            @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
+                            @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
+                        }
+                    </div>
+                }
+            }
+        </div>
+    }
+    <div class="patternBottom">
+        
+    </div>
 </div>

@@ -14,9 +14,12 @@ namespace Vip.Models
         //public LayoutFilter LayoutFilter { get; set; }
         //public new IEnumerable<Layout> Layouts { get; set; }
         public List<Brand> Brands { get; set; }
+        public Brand Brand { get; set; }
+
         //public List<Maker> Makers { get; set; }
         public List<ProductAttribute> Attributes { get; set; }
         public List<Product> Products { get; set; }
+        public string Filter { get; set; }
         //public int TotalProductsCount { get; set; }
         //private int? _page;
 
@@ -24,10 +27,12 @@ namespace Vip.Models
             : base(context, null)
         {
             Title = "Каталог";
+            Filter = filter ?? "all";
+            var cat =context.Category.Include("CategoryAttributes").Include("Brands").FirstOrDefault(c => c.Name == category);
+            
+            Category = cat;
 
-            Category = context.Category.Include("CategoryAttributes").FirstOrDefault(c => c.Name == category);
-
-
+            Brands = cat.Brands.ToList();
 
             //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
             //Makers = context.Maker.ToList();
