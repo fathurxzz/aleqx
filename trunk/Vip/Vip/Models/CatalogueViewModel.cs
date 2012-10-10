@@ -28,11 +28,13 @@ namespace Vip.Models
         {
             Title = "Каталог";
             Filter = filter ?? "all";
-            var cat =context.Category.Include("CategoryAttributes").Include("Brands").FirstOrDefault(c => c.Name == category);
             
+            var cat = context.Category.Include("CategoryAttributes").Include("Brands").First(c => c.Name == category);
             Category = cat;
-
             Brands = cat.Brands.ToList();
+
+            Brand = context.Brand.FirstOrDefault(b => b.Name == brand);
+
 
             //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
             //Makers = context.Maker.ToList();

@@ -16,7 +16,25 @@
 
     @if (Model.Brand != null)
     {
-        
+        <div class="galleryContainer">
+            <div class="brands left">
+                @if (Model.Brands.Any())
+            {
+                <ul class="brands">
+                @foreach (var brand in Model.Brands.OrderBy(b=>b.SortOrder))
+                {
+                    <li>
+                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter}, null)
+                    </li>
+                }
+                </ul>
+            }
+            </div>
+            <div class="gallery">
+                
+            </div>
+            <div class="clear"></div>
+        </div>
     }
     else
     {
