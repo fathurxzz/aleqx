@@ -216,39 +216,52 @@ img
     margin: 0 auto;
 }
 
-#galleryFrame {
+
+
+#galleryFrame, #projectsGalleryFrame {
     overflow: hidden;
-    height: 415px;
-    width: 702px;
     position: relative;
     margin: 0 auto;
 }
 
-#galleryFrame .buttons
-{
-    position: absolute;
+#galleryFrame .buttons, #projectsGalleryFrame .buttons {
+     position: absolute;
+     z-index: 100;
+    display: block;
     width: 48px;
     height: 47px;
     top: 190px;
-    z-index: 100;
-    display: block;
 }
 
-#galleryFrame .prev
+
+
+#galleryFrame {
+    
+    height: 415px;
+    width: 702px;
+    
+}
+
+#galleryFrame .buttons
+{
+    
+}
+
+#projectsGalleryFrame .prev, #galleryFrame .prev
 {
     left: 20px;
     background: url('img/left-arrow.png');
 }
-#galleryFrame .next
+#projectsGalleryFrame .next, #galleryFrame .next
 {
     left: 620px;
     background: url('img/right-arrow.png');
 }
 
-#galleryFrame .disable { visibility: hidden; }
+#projectsGalleryFrame .disable, #galleryFrame .disable { visibility: hidden; }
 
 
-#galleryFrame .overview
+#projectsGalleryFrame .overview, #galleryFrame .overview
 {
      list-style: none; 
      position: absolute; 
@@ -257,11 +270,18 @@ img
      left: 0; 
      top: 0;
 }
-#galleryFrame .overview li
+#projectsGalleryFrame .overview li,  #galleryFrame .overview li
 {
      float: left; 
      margin: 0; 
      padding: 0; 
      height: 415px; 
      width: 702px;
+}
+
+
+
+#projectsGalleryFrame {
+    height: 415px;
+    width: 702px;
 }

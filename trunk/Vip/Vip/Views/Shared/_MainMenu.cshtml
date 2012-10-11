@@ -1,68 +1,103 @@
 ﻿@using SiteExtensions
 @using Vip.Models
-
 <script type="text/javascript">
-    $(function () {
-        $("#catalogue").hover(function (e) {
+    $(function() {
+        $("#categoriesLink").hover(function() {
+            $("#projects").css("display", "none");
             $("#categories").css("display", "block");
-            //e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
         });
 
-        $("body").click(function () {
+        $("#projectsLink").hover(function() {
+            $("#categories").css("display", "none");
+            $("#projects").css("display", "block");
+        });
+
+        $("body").click(function() {
             if ($("#categories").css("display") == "block") {
                 $("#categories").css("display", "none");
             }
+
+            if ($("#projects").css("display") == "block") {
+                $("#projects").css("display", "none");
+            }
         });
 
-    })
+    });
 </script>
-
 <div class="mainMenu">
     <table>
         <tr>
             <td>
-                <a href="#" id="catalogue">каталог</a>
+                <a href="#" id="categoriesLink">каталог</a>
                 @{
-                    var categories = (IEnumerable<Category>) ViewBag.Categories;
+                    var categories = (IEnumerable<Category>)ViewBag.Categories;
                 }
-                    @if(categories!=null)
+                @if (categories != null)
+                {
+                    <div id="categories" class="categories">
+                        <ul>
+                            @{
+                    foreach (var category in categories)
                     {
-                        <div id="categories" class="categories">
-                            <ul>
-                                @{
-                                    foreach (var category in categories)
+                                <li>
+                                    @if (category.Current)
                                     {
-                                        <li>
-                                            @if(category.Current)
-                                            {
-                                                @category.Title
-                                            }
-                                            else
-                                            {
-                                                @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name, filter = "", brand = ""}, null)
-                                            }
-                                        </li>
+                                        @category.Title
                                     }
-                                }
-                            </ul>
-                        </div>
+                                    else
+                                    {
+                                        @Html.ActionLink(category.Title, "Index", "Catalogue", new { area = "", category = category.Name, filter = "", brand = "" }, null)
+                                    }
+                                </li>
                     }
+                            }
+                        </ul>
+                    </div>
+                }
             </td>
-        
             <td>
                 @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
             </td>
-        
             <td>
-                @Html.ActionLink("проекты", "Index", "Projects", new { area = "", project = "" }, null)
+                <a href="#" id="projectsLink">проекты</a>
+                @{
+                    var projects = (IEnumerable<Project>)ViewBag.Projects;
+                }
+                
+                    <div id="projects" class="categories">
+                        <ul>
+                            @if (projects != null)
+                            {
+                                foreach (var project in projects)
+                                {
+                                    <li>
+                                        @if (project.Current)
+                                        {
+                                            @project.Title
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(project.Title, "Index", "Projects", new {area = "", project = project.Name}, null)
+                                        }
+                                    </li>
+                                }
+                                
+                            }
+                            
+                        </ul>
+                        @if(Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+                        }
+                    </div>
+                
             </td>
-        
-        @{
-            var mainMenu = (Menu)ViewBag.MainMenu;
-            if (mainMenu != null)
-            {
-                foreach (var item in mainMenu)
+            @{
+                var mainMenu = (Menu)ViewBag.MainMenu;
+                if (mainMenu != null)
                 {
+                    foreach (var item in mainMenu)
+                    {
             
                 <td>
                     @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
@@ -72,9 +107,9 @@
                     }
                 </td>
             
+                    }
                 }
             }
-        }
         </tr>
     </table>
-   </div>
+</div>

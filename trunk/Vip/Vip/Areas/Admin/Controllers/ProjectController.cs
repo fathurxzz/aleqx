@@ -15,7 +15,7 @@ namespace Vip.Areas.Admin.Controllers
     public class ProjectController : Controller
     {
 
-        //
+   //
         // GET: /Admin/Project/Create
 
         public ActionResult Create()
@@ -134,30 +134,26 @@ namespace Vip.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddImage(int projectId, HttpPostedFileBase fileUpload)
+        public ActionResult AddImage(int projectId, IEnumerable<HttpPostedFileBase> fileUpload)
         {
             try
             {
                 using (var context = new CatalogueContainer())
                 {
                     var project = context.Project.First(p => p.Id == projectId);
-                    if (fileUpload != null)
+                    foreach (var file in fileUpload)
                     {
-
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-
-                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Crop);
-                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Crop);
-
-
-
-                        var projectImage = new ProjectImage { ImageSource = fileName };
-                        project.ProjectImages.Add(projectImage);
-                        context.SaveChanges();
+                        if (file != null)
+                        {
+                            string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                            string filePath = Server.MapPath("~/Content/Images");
+                            filePath = Path.Combine(filePath, fileName);
+                            file.SaveAs(filePath);
+                            project.ProjectImages.Add(new ProjectImage { ImageSource = fileName });
+                            context.SaveChanges();
+                        }
                     }
+
                     return RedirectToAction("Index", "Projects", new { area = "", project = project.Name });
                 }
             }

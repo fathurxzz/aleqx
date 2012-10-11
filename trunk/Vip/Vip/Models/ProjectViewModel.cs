@@ -8,12 +8,16 @@ namespace Vip.Models
     public class ProjectViewModel : SiteViewModel
     {
         public Project Project { get; set; }
-        public IEnumerable<Project> Projects { get; set; }
 
         public ProjectViewModel(CatalogueContainer context, string project)
             : base(context, null)
         {
             Title = "Проекты";
+
+            foreach (var p in Projects.Where(p=>p.Name==project))
+            {
+                p.Current = true;
+            }
 
             if (!string.IsNullOrEmpty(project))
             {

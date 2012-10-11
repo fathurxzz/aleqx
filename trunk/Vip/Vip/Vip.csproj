@@ -117,6 +117,7 @@
     <Compile Include="Models\LayoutValidation.cs" />
     <Compile Include="Models\ProductAttributeValidation.cs" />
     <Compile Include="Models\ProductValidation.cs" />
+    <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectValidation.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
     <Compile Include="Models\Catalogue.Designer.cs">
