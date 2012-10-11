@@ -6,6 +6,12 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script type="text/javascript">
+    $(function () {
+        $('#galleryFrame').tinycarousel();
+    });
+</script>
+
 <div class="catalogue">
     <div class="titleContainer">
         @Model.Category.Title
@@ -24,14 +30,36 @@
                 @foreach (var brand in Model.Brands.OrderBy(b=>b.SortOrder))
                 {
                     <li>
-                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter}, null)
+                        @if (brand.Current)
+                        {
+                            @brand.Title
+                        }
+                        else
+                        {
+                            @Html.ActionLink(brand.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter}, null)
+                        }
                     </li>
                 }
                 </ul>
             }
+            
+            @if(Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Добавить изображение","Create","Product",new{area="Admin",id=Model.Brand.Id},new{@class="adminLink"})
+            }
             </div>
-            <div class="gallery">
-                
+            <div id="gallery">
+                <div id="galleryFrame">
+                <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
+                <ul class="overview">
+                    @foreach(var product in Model.Brand.Products)
+                    {
+                        <li>
+                            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
+                        </li>
+                    }
+                </ul>
+                </div>
             </div>
             <div class="clear"></div>
         </div>
@@ -40,32 +68,36 @@
     {
 
         if (Model.Category.CategoryAttributes.Any())
-         {
+        {
              <div class="filters">
                  @foreach (var attr in Model.Category.CategoryAttributes)
                  {
                      <span>
-                         @Html.ActionLink(attr.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, filter = attr.Name}, null)
+                         @if(attr.Current)
+                         {
+                             @attr.Title
+                         }
+                         else
+                         {
+                             @Html.ActionLink(attr.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, filter = attr.Name}, null)
+                         }
                      </span>
                  }
-                 <span>
-                     @Html.ActionLink("Все", "Index", "Catalogue", new {area = "", category = Model.Category.Name, filter = "all"}, null)
-                 </span>
              </div>
-         }
+        }
         <div class="brands">
             @if (Request.IsAuthenticated)
             {
-                @Html.ActionLink("Добавить бренд", "Create", "Brand", new {area = "Admin", categoryId = Model.Category.Id}, new {@class = "adminLink"})
+                @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
             }
         
             @if (Model.Brands.Any())
             {
-                foreach (var brand in Model.Brands.OrderBy(b=>b.SortOrder))
+                foreach (var brand in Model.Brands.OrderBy(b => b.SortOrder))
                 {
                     <div class="brand">
-                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter}, null)
-                        @if(Request.IsAuthenticated)
+                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter }, null)
+                        @if (Request.IsAuthenticated)
                         {
                             <span class="sortOrder"> @brand.SortOrder</span> @Html.Raw("&nbsp;")
                             @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")

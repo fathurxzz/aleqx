@@ -172,8 +172,8 @@ namespace Vip.Areas.Admin.Controllers
                         filePath = Path.Combine(filePath, fileName);
                         fileUpload.SaveAs(filePath);
 
-                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Corp);
-                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Corp);
+                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectBigImage"), ScaleMode.Crop);
+                        GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectDetailsPreviewThumbnail"), ScaleMode.Crop);
 
 
 

@@ -29,19 +29,14 @@ namespace Vip.Areas.Admin.Controllers
             {
                 using (var context = new CatalogueContainer())
                 {
-                    var brand = context.Brand.First(b => b.Id == brandId);
+                    var brand = context.Brand.Include("Category").First(b => b.Id == brandId);
 
                     int titleIndex = 0;
                     foreach (var file in fileUpload)
                     {
                         if (file != null)
                         {
-                            var product = new Product
-                            {
-                                Brand = brand,
-                                Title = fileTitles[titleIndex]
-                            };
-
+                            var product = new Product { Brand = brand };
                             string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                             string filePath = Server.MapPath("~/Content/Images");
                             filePath = Path.Combine(filePath, fileName);
@@ -55,7 +50,7 @@ namespace Vip.Areas.Admin.Controllers
 
                     context.SaveChanges();
 
-                    return RedirectToAction("Index", "Catalogue", new { Area = "", brand = brand.Name });
+                    return RedirectToAction("Index", "Catalogue", new { Area = "", brand = brand.Name, category=brand.Category.Name });
                 }
             }
             catch
@@ -78,14 +73,9 @@ namespace Vip.Areas.Admin.Controllers
         {
             try
             {
-
-
                 using (var context = new CatalogueContainer())
                 {
                     var product = context.Product.Include("Brand").First(p => p.Id == id);
-
-                    product.Title = form["Title"];
-
                     if (fileUpload != null)
                     {
                         if (!string.IsNullOrEmpty(product.ImageSource))

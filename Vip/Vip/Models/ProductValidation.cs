@@ -15,9 +15,7 @@ namespace Vip.Models
 
     public class ProductValidation
     {
-        [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Заголовок")]
-        public string Title { get; set; }
+        
 
         [DisplayName("Изображение")]
         public int ImageSource { get; set; }

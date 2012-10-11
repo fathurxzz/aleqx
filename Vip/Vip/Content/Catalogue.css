@@ -5,7 +5,7 @@
 
 .catalogue, .projects
 {
-    width: 776px;
+    width: 1000px;
     position: relative;
     margin: 0 auto;
     padding-top: 200px;
@@ -39,18 +39,13 @@
     margin-top: 50px;
 }
 
-.galleryContainer .gallery {
-    margin-left: 160px;
-    border: 1px solid red;
-    height: 300px;
-}
+
 
 .filters {
 
     padding-top: 10px;
     text-align: center;
-    
-    
+    padding-bottom: 40px;
 }
 
 .filters span {
@@ -73,10 +68,11 @@
 
 ul.brands li {
     list-style: none;
+    padding: 5px 0px;
 }
 
 .brands.left {
-    float: left;
+    position: absolute;
     width: 150px;
 }
 
@@ -85,13 +81,21 @@ ul.brands li {
     
 }
 
-.brands a {
-    color: #66badc;
+.brands {
     font-size: 12px;
     font-family: DinCyRg;
+    color: #fff;
+}
+
+.brands a {
+    color: #66badc;
 }
 
 
+
+.brand {
+    padding: 5px 0px;
+}
 
 .product
 {
@@ -163,141 +167,75 @@ img
     background-repeat: no-repeat;
 }
 
-.filterItemLine
-{
-    background-image: url('img/filter-item-bg-line.gif');
-    height: 17px;
-    background-repeat: no-repeat;
-}
 
 
-.filterItem table
-{
-    border-collapse: collapse;
-    margin-left: 50px;
-}
 
-.filterItem table td
-{
-    background: url('img/filter-item-bg-line-center.gif') repeat-x;
-    margin-left: 50px;
-    height: 17px;
-    padding-right: 10px;
-    padding-left: 3px;
-    font-size: 11px;
-    font-family: DinCyRg;
-    color: #fff;
-}
 
-.filterItem table td.end
-{
-    background-image: url('img/filter-item-bg-line-end.png');
-    height: 17px;
-    width: 4px;
-    padding: 0;
-}
 
-.first .filterItemLine
-{
-    background-image: url('img/filter-item-bg-line-arrow.gif') !important;
-}
 
-.first a
-{
-    color: #6dcff6;
-}
 
-.manager
-{
-    color: #919293;
-}
-.manager a
-{
-    margin-left: 20px;
-    color: #6dcff6;
-}
 
-.filterTitle
-{
-    color: #919293 !important;
-}
 
-.layoutInner
-{
-    width: 443px;
-    height: 51px;
-    background: url('img/layout-filter-bg.png');
+
+
+
+
+
+#gallery {
+    
+    border: 1px solid #fff;
+    height: 415px;
+    width: 702px;
     position: relative;
     margin: 0 auto;
 }
 
-.layoutFilterContainer .sign
-{
-    padding-top: 17px;
-    color: #b9cad6;
-    float: left;
-    width: 105px;
-    padding-left: 57px;
-    font-family: DinCyBd;
-    font-size: 15px;
-    text-transform: uppercase;
+#galleryFrame {
+    overflow: hidden;
+    height: 415px;
+    width: 702px;
+    position: relative;
+    margin: 0 auto;
 }
 
-.layoutFilterContainer .attributes
+#galleryFrame .buttons
 {
-    font-size: 11px;
-    font-family: DinCyRg;
-    vertical-align: middle;
-    height: 40px;
-    display: table-cell;
-    padding: 5px 0px 5px 35px;
-    width: 400px;
-    color: #666666;
+    position: absolute;
+    width: 48px;
+    height: 47px;
+    top: 190px;
+    z-index: 100;
+    display: block;
 }
 
-.layoutFilterContainer .attributes span
+#galleryFrame .prev
 {
-    color: #fff;
+    left: 20px;
+    background: url('img/left-arrow.png');
+}
+#galleryFrame .next
+{
+    left: 620px;
+    background: url('img/right-arrow.png');
 }
 
+#galleryFrame .disable { visibility: hidden; }
 
 
-
-
-
-.product .sign
+#galleryFrame .overview
 {
-    background: url('img/product-sign-bg.png') no-repeat;
-    height: 13px;
-    background-position: 0 8px;
-    text-align: center;
-    margin-top: 2px;
+     list-style: none; 
+     position: absolute; 
+     padding: 0; 
+     margin: 0; 
+     left: 0; 
+     top: 0;
 }
-
-.product .sign .title
+#galleryFrame .overview li
 {
-    background-color: #000;
-    color: #fff;
-    padding: 0 5px;
-    font-family: DinCyRg;
-    font-size: 9px;
-    text-transform: uppercase;
-}
-
-
-
-
-.customTitle
-{
-    text-align: center;
-    color: #ababab;
-    font-family: DinCyRg;
-    font-size: 12px;
-    height: 21px;
-}
-
-.customTitle span
-{
-    color: #69cff8;
-    text-transform: uppercase;
+     float: left; 
+     margin: 0; 
+     padding: 0; 
+     height: 415px; 
+     width: 702px;
 }

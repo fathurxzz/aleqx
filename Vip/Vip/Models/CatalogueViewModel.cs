@@ -28,12 +28,39 @@ namespace Vip.Models
         {
             Title = "Каталог";
             Filter = filter ?? "all";
-            
-            var cat = context.Category.Include("CategoryAttributes").Include("Brands").First(c => c.Name == category);
-            Category = cat;
-            Brands = cat.Brands.ToList();
 
-            Brand = context.Brand.FirstOrDefault(b => b.Name == brand);
+
+
+            var cat = context.Category.Include("CategoryAttributes").Include("Brands").First(c => c.Name == category);
+            
+            cat.CategoryAttributes.Add(new CategoryAttribute{Title = "все",Name = "all"});
+
+            foreach (var attr in cat.CategoryAttributes.Where(attr => attr.Name == filter))
+            {
+                attr.Current = true;
+            }
+            
+            if (string.IsNullOrEmpty(filter) || filter == "all")
+                cat.CategoryAttributes.First(ca => ca.Name == "all").Current = true;
+
+            Category = cat;
+
+            var attribute = cat.CategoryAttributes.FirstOrDefault(c => c.Name == filter);
+
+            if (attribute!=null &&  attribute.Name != "all")
+            {
+                Brands = cat.Brands.Where(b => b.CategoryAttributes.Contains(attribute)).ToList();
+            }
+            else
+            {
+                Brands = cat.Brands.ToList();
+            }
+
+            
+
+
+
+            Brand = context.Brand.Include("Products").FirstOrDefault(b => b.Name == brand);
 
 
             //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
@@ -75,7 +102,23 @@ namespace Vip.Models
 
             //_page = page;
             //Products = ApplyPaging(Products, page);
+
+
+            SetCurrentValues(category, filter, brand);
         }
+
+        private void SetCurrentValues(string category, string filter, string brand)
+        {
+            foreach (var c in Categories.Where(c => c.Name == category))
+            {
+                c.Current = true;
+            }
+            foreach (var b in Brands.Where(b => b.Name == brand))
+            {
+                b.Current = true;
+            }
+        }
+
 
         //public void SetFilters()
         //{

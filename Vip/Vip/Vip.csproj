@@ -50,7 +50,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\Connector NET 6.4.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
     </Reference>
-    <Reference Include="SiteExtensions, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SiteExtensions, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
     </Reference>
@@ -99,7 +99,10 @@
     <Compile Include="Models\ArticlesViewModel.cs" />
     <Compile Include="Models\ArticleValidation.cs" />
     <Compile Include="Models\AttributeFilter.cs" />
+    <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\CatalogueViewModel.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryAttribute.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\LayoutFilter.cs" />
@@ -179,6 +182,7 @@
     <Content Include="Content\img\footer-bg-center.jpg" />
     <Content Include="Content\img\handleBg.gif" />
     <Content Include="Content\img\layout-filter-bg.png" />
+    <Content Include="Content\img\left-arrow.png" />
     <Content Include="Content\img\leftArrow.png" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\page-head-bg.jpg" />
@@ -190,6 +194,7 @@
     <Content Include="Content\img\project-details-previews-bg.gif" />
     <Content Include="Content\img\project-details-title.gif" />
     <Content Include="Content\img\project-preview-shadow.png" />
+    <Content Include="Content\img\right-arrow.png" />
     <Content Include="Content\img\rightArrow.png" />
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\jcarousel.css" />
@@ -205,6 +210,7 @@
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
+    <Content Include="Scripts\jquery.tinycarousel.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

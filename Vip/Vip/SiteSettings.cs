@@ -21,7 +21,8 @@ namespace Vip
                                   {"adminCategoryThumbnail", new PictureSize {Height = 100,Width = 100}},
                                   {"catalogueThumbnail", new PictureSize {Height = 202,Width = 202}},
                                   {"projectDetailsPreviewThumbnail", new PictureSize {Height = 79,Width = 79}},
-                                  {"projectBigImage", new PictureSize {Height = 580,Width = 774}}
+                                  {"projectBigImage", new PictureSize {Height = 580,Width = 774}},
+                                  {"catalogueMainImage",new PictureSize {Height = 415,Width = 702}}
                               };
 
             PageSize = GetPageSize();

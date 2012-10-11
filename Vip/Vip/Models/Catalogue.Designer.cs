@@ -1401,14 +1401,12 @@ namespace Vip.Models
         /// Create a new Product object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="brandId">Initial value of the BrandId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 brandId)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String imageSource, global::System.Int32 brandId)
         {
             Product product = new Product();
             product.Id = id;
-            product.Title = title;
             product.ImageSource = imageSource;
             product.BrandId = brandId;
             return product;
@@ -1443,30 +1441,6 @@ namespace Vip.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Title
-        {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                OnTitleChanging(value);
-                ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Title");
-                OnTitleChanged();
-            }
-        }
-        private global::System.String _Title;
-        partial void OnTitleChanging(global::System.String value);
-        partial void OnTitleChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
