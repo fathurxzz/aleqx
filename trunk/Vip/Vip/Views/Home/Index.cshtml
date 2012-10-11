@@ -2,18 +2,21 @@
 @model Vip.Models.SiteViewModel
 
 <div class="mainPageContainer">
-    @*@if (Model.Content != null && Model.Content.MainPage)
-    {
-        @Html.Partial("LayoutsSelector", (IEnumerable<Vip.Models.Layout>) ViewBag.Layouts)
-    }*@
     
-    
-    @if (Model.Content != null&&!Model.IsHomePage)
+    @if (Model.Content != null && !Model.IsHomePage)
     {
         <div class="contentContainer">
         @Html.Raw(Model.Content.Text)
         </div>
     }
+    
+   <div class="patternTop">
+    </div>
+
+     <div class="patternBottom">
+    </div>
+    
+
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })

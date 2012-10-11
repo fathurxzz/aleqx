@@ -12,14 +12,14 @@ namespace Vip.Areas.Admin.Controllers
     [Authorize]
     public class BrandController : Controller
     {
-        public ActionResult Create(int categoryId)
+        public ActionResult Create(int id)
         {
             using (var context = new CatalogueContainer())
             {
-                var category = context.Category.Include("CategoryAttributes").First(c => c.Id == categoryId);
+                var category = context.Category.Include("CategoryAttributes").First(c => c.Id == id);
                 ViewBag.CategoryAttributes = category.CategoryAttributes.ToList();
-                ViewBag.CategoryId = categoryId;
-                return View(new Brand());
+                ViewBag.CategoryId = id;
+                return View(new Brand{Category = category});
             }
         }
 
@@ -27,13 +27,13 @@ namespace Vip.Areas.Admin.Controllers
         // POST: /Admin/Brand/Create
 
         [HttpPost]
-        public ActionResult Create(int categoryId, FormCollection form)
+        public ActionResult Create(int id, FormCollection form)
         {
             try
             {
                 using (var context = new CatalogueContainer())
                 {
-                    var category = context.Category.First(c => c.Id == categoryId);
+                    var category = context.Category.First(c => c.Id == id);
                     var brand = new Brand { Category = category };
                     PostCheckboxesData cbData = form.ProcessPostCheckboxesData("attr");
                     foreach (var kvp in cbData)
