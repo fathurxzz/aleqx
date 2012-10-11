@@ -36,7 +36,7 @@ namespace SiteExtensions.Graphics
         /// <summary>
         /// Обрезка лишнего
         /// </summary>
-        Corp,
+        Crop,
 
         /// <summary>
         /// Вписать изображение в превью полностью
@@ -108,7 +108,7 @@ namespace SiteExtensions.Graphics
 
             switch (scaleMode)
             {
-                case ScaleMode.Corp:
+                case ScaleMode.Crop:
                     double wRatio = (double)sourceImage.Width / previewWidth;
                     double hRatio = (double)sourceImage.Height / previewHeight;
                     double coef = (double)previewHeight / previewWidth;
@@ -179,7 +179,7 @@ namespace SiteExtensions.Graphics
         {
             if (scaleMode == ScaleMode.Auto)
             {
-                scaleMode = IsHorizontalImage(image.Size) ? ScaleMode.Corp : ScaleMode.Insert;
+                scaleMode = IsHorizontalImage(image.Size) ? ScaleMode.Crop : ScaleMode.Insert;
             }
 
             Rectangle sourceRect = CalculateSourceRect(image.Size, thumbImage, scaleMode);
