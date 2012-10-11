@@ -15,7 +15,7 @@ namespace Vip.Models
         //public new IEnumerable<Layout> Layouts { get; set; }
         public List<Brand> Brands { get; set; }
         public Brand Brand { get; set; }
-
+        public Category Category { get; set; }
         //public List<Maker> Makers { get; set; }
         public List<ProductAttribute> Attributes { get; set; }
         public List<Product> Products { get; set; }

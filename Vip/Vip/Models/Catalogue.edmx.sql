@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/11/2012 10:32:12
+-- Date Created: 10/11/2012 17:15:44
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Catalogue.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -101,12 +101,9 @@ CREATE TABLE `Project` (
     `Title` varchar( 200 )  NOT NULL,
     `DescriptionTitle` varchar( 200 )  NULL,
     `Description` longtext  NULL,
-    `ImageSource` TEXT  NOT NULL,
-    `Manager` varchar( 200 )  NULL,
     `SortOrder` int  NOT NULL,
     `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL,
-    `MainPage` bool  NOT NULL
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'ProjectImage'

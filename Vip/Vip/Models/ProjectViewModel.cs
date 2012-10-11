@@ -15,12 +15,7 @@ namespace Vip.Models
         {
             Title = "Проекты";
 
-            if (string.IsNullOrEmpty(project))
-            {
-                Projects = context.Project.Where(p=>!p.MainPage).ToList();
-                Project = context.Project.First(p => p.MainPage);
-            }
-            else
+            if (!string.IsNullOrEmpty(project))
             {
                 Project = context.Project.Include("ProjectImages").First(c => c.Name == project);
                 Title += " - " + Project.Title;

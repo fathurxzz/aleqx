@@ -294,8 +294,6 @@
     <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Shared\LayoutsSelector.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\Projects\_ProjectsTitle.cshtml" />
-    <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Shared\AboutModel.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Shared\ErrorPage.cshtml" />

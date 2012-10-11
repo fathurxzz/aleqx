@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using SiteExtensions;
 
 namespace Vip.Models
@@ -15,15 +13,18 @@ namespace Vip.Models
         public Menu Menu { get; set; }
         public Content Content { get; set; }
 
-        public Category Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
+
+        public IEnumerable<Project> Projects { get; set; }
 
         public SiteViewModel(CatalogueContainer context,string contentName)
         {
 
             var categories = context.Category.ToList();
-            
             Categories = categories;
+
+            var projects = context.Project.ToList();
+            Projects = projects;
 
             var contents = context.Content.Where(c => !c.MainPage).ToList();
             Menu = new Menu();

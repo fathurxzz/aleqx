@@ -1551,18 +1551,14 @@ namespace Vip.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        /// <param name="mainPage">Initial value of the MainPage property.</param>
-        public static Project CreateProject(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String imageSource, global::System.Int32 sortOrder, global::System.Boolean mainPage)
+        public static Project CreateProject(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder)
         {
             Project project = new Project();
             project.Id = id;
             project.Name = name;
             project.Title = title;
-            project.ImageSource = imageSource;
             project.SortOrder = sortOrder;
-            project.MainPage = mainPage;
             return project;
         }
 
@@ -1697,54 +1693,6 @@ namespace Vip.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String ImageSource
-        {
-            get
-            {
-                return _ImageSource;
-            }
-            set
-            {
-                OnImageSourceChanging(value);
-                ReportPropertyChanging("ImageSource");
-                _ImageSource = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("ImageSource");
-                OnImageSourceChanged();
-            }
-        }
-        private global::System.String _ImageSource;
-        partial void OnImageSourceChanging(global::System.String value);
-        partial void OnImageSourceChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Manager
-        {
-            get
-            {
-                return _Manager;
-            }
-            set
-            {
-                OnManagerChanging(value);
-                ReportPropertyChanging("Manager");
-                _Manager = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Manager");
-                OnManagerChanged();
-            }
-        }
-        private global::System.String _Manager;
-        partial void OnManagerChanging(global::System.String value);
-        partial void OnManagerChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.Int32 SortOrder
         {
             get
@@ -1811,30 +1759,6 @@ namespace Vip.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean MainPage
-        {
-            get
-            {
-                return _MainPage;
-            }
-            set
-            {
-                OnMainPageChanging(value);
-                ReportPropertyChanging("MainPage");
-                _MainPage = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("MainPage");
-                OnMainPageChanged();
-            }
-        }
-        private global::System.Boolean _MainPage;
-        partial void OnMainPageChanging(global::System.Boolean value);
-        partial void OnMainPageChanged();
 
         #endregion
     

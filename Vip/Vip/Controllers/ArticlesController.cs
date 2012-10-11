@@ -19,6 +19,7 @@ namespace Vip.Controllers
             {
                 var model = new ArticlesViewModel(context);
                 ViewBag.Categories = model.Categories;
+                ViewBag.Projects = model.Projects;
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.Menu;
                 return View(model);

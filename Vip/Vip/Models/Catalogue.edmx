@@ -103,12 +103,9 @@
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="Description" Type="longtext" Nullable="true" />
-    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
-    <Property Name="Manager" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
-    <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="ProjectImage">
     <Key>
@@ -365,12 +362,9 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" FixedLength="true" />
           <Property Type="String" Name="DescriptionTitle" MaxLength="200" FixedLength="true" />
           <Property Type="String" Name="Description" />
-          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="500" FixedLength="true" />
-          <Property Type="String" Name="Manager" MaxLength="200" FixedLength="true" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
-          <Property Type="Boolean" Name="MainPage" Nullable="false" />
           <NavigationProperty Name="ProjectImages" Relationship="Catalogue.ProjectProjectImage" FromRole="Project" ToRole="ProjectImage" />
         </EntityType>
         <EntityType Name="ProjectImage">
@@ -477,12 +471,9 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
-          <ScalarProperty Name="Manager" ColumnName="Manager" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
-          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -547,33 +538,35 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site2" >
-        <EntityTypeShape EntityType="Catalogue.Category" Width="1.5" PointX="6.5" PointY="0.625" Height="2.41404296875" />
-        <EntityTypeShape EntityType="Catalogue.Product" Width="1.5" PointX="10" PointY="6.5" Height="1.5923063151041674" />
-        <EntityTypeShape EntityType="Catalogue.Brand" Width="1.5" PointX="6.5" PointY="4.25" Height="2.4140429687499996" />
-        <EntityTypeShape EntityType="Catalogue.CategoryAttribute" Width="1.5" PointX="9.25" PointY="1.875" Height="1.427958984375" />
+        <EntityTypeShape EntityType="Catalogue.Category" Width="1.5" PointX="3.75" PointY="0.5" Height="2.5783902994791661" />
+        <EntityTypeShape EntityType="Catalogue.Product" Width="1.5" PointX="0.75" PointY="4.75" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="Catalogue.Brand" Width="1.5" PointX="3.75" PointY="4.125" Height="2.4140429687499996" />
+        <EntityTypeShape EntityType="Catalogue.CategoryAttribute" Width="1.5" PointX="6.5" PointY="1.75" Height="1.7566536458333331" />
         <AssociationConnector Association="Catalogue.BrandProduct">
-          <ConnectorPoint PointX="8" PointY="5.7685831645901207" />
-          <ConnectorPoint PointX="10.75" PointY="5.7685831645901207" />
-          <ConnectorPoint PointX="10.75" PointY="6.5" />
+          <ConnectorPoint PointX="3.75" PointY="5.5461531575520837" />
+          <ConnectorPoint PointX="2.25" PointY="5.5461531575520837" />
         </AssociationConnector>
         <AssociationConnector Association="Catalogue.CategoryBrand">
-          <ConnectorPoint PointX="7.25" PointY="3.2033902994791661" />
-          <ConnectorPoint PointX="7.25" PointY="4.25" />
+          <ConnectorPoint PointX="4.5" PointY="3.0783902994791661" />
+          <ConnectorPoint PointX="4.5" PointY="4.125" />
         </AssociationConnector>
         <AssociationConnector Association="Catalogue.CategoryCategoryAttribute">
-          <ConnectorPoint PointX="8" PointY="2.5391951497395828" />
-          <ConnectorPoint PointX="9.25" PointY="2.5391951497395828" />
+          <ConnectorPoint PointX="5.25" PointY="2.4141951497395828" />
+          <ConnectorPoint PointX="6.5" PointY="2.4141951497395828" />
         </AssociationConnector>
         <AssociationConnector Association="Catalogue.BrandCategoryAttribute">
-          <ConnectorPoint PointX="8" PointY="4.9611553167209612" />
-          <ConnectorPoint PointX="9.59375" PointY="4.9611553167209612" />
-          <ConnectorPoint PointX="9.59375" PointY="3.6316536458333331" />
+          <ConnectorPoint PointX="5.25" PointY="5.332021484375" />
+          <ConnectorPoint PointX="7.25" PointY="5.332021484375" />
+          <ConnectorPoint PointX="7.25" PointY="3.5066536458333331" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Catalogue.Article" Width="1.5" PointX="11.66104913487148" PointY="19.454775595783616" />
-        <EntityTypeShape EntityType="Catalogue.Project" Width="1.5" PointX="8.1932126936471139" PointY="20.391776824552462" />
-        <EntityTypeShape EntityType="Catalogue.ProjectImage" Width="1.5" PointX="11.920529471673317" PointY="23.719778772313045" />
-        <EntityTypeShape EntityType="Catalogue.Content" Width="1.5" PointX="0.74974668247147769" PointY="14.08860348821087" />
-        <AssociationConnector Association="Catalogue.ProjectProjectImage" />
+        <EntityTypeShape EntityType="Catalogue.Article" Width="1.5" PointX="8.75" PointY="0.75" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="Catalogue.Project" Width="1.5" PointX="8.75" PointY="3.875" Height="2.4140429687499996" />
+        <EntityTypeShape EntityType="Catalogue.ProjectImage" Width="1.5" PointX="11.625" PointY="4.125" Height="1.592306315104171" />
+        <EntityTypeShape EntityType="Catalogue.Content" Width="1.5" PointX="11" PointY="0.5" Height="2.5783902994791674" />
+        <AssociationConnector Association="Catalogue.ProjectProjectImage" >
+          <ConnectorPoint PointX="10.25" PointY="4.9211531575520855" />
+          <ConnectorPoint PointX="11.625" PointY="4.9211531575520855" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
