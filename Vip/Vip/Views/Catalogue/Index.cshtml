@@ -11,57 +11,64 @@
         $('#galleryFrame').tinycarousel();
     });
 </script>
-
 <div class="catalogue">
     <div class="titleContainer">
-        @Model.Category.Title
+        @if (Model.Brand == null)
+        {
+            <span>@Model.Category.Title</span>
+        }
+        else
+        {
+            @Html.ActionLink(Model.Category.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = "", filter = "" }, null) <span class="brand"> &raquo; @Model.Brand.Title</span>
+        }
     </div>
     <div class="patternTop">
-        
     </div>
-
     @if (Model.Brand != null)
     {
         <div class="galleryContainer">
             <div class="brands left">
                 @if (Model.Brands.Any())
-            {
-                <ul class="brands">
-                @foreach (var brand in Model.Brands.OrderBy(b=>b.SortOrder))
                 {
-                    <li>
-                        @if (brand.Current)
+                    <ul class="brands">
+                        @foreach (var brand in Model.Brands.OrderBy(b => b.SortOrder))
                         {
-                            @brand.Title
+                            <li>
+                                @if (brand.Current)
+                                {
+                                    @brand.Title
+                                }
+                                else
+                                {
+                                    @Html.ActionLink(brand.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter }, null)
+                                }
+                            </li>
                         }
-                        else
-                        {
-                            @Html.ActionLink(brand.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter}, null)
-                        }
-                    </li>
+                    </ul>
                 }
-                </ul>
-            }
-            
-            @if(Request.IsAuthenticated)
-            {
-                @Html.ActionLink("Добавить изображение","Create","Product",new{area="Admin",id=Model.Brand.Id},new{@class="adminLink"})
-            }
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id }, new { @class = "adminLink" })
+                }
             </div>
             <div id="gallery">
                 <div id="galleryFrame">
-                <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
-                <ul class="overview">
-                    @foreach(var product in Model.Brand.Products)
-                    {
-                        <li>
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
-                        </li>
-                    }
-                </ul>
+                    <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
+                    <ul class="overview">
+                        @foreach (var product in Model.Brand.Products)
+                        {
+                            <li>
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
-            <div class="clear"></div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="link">
+            <a href="@Model.Brand.Href">@Model.Brand.Href.Replace("http://", "")</a>
         </div>
     }
     else
@@ -69,46 +76,46 @@
 
         if (Model.Category.CategoryAttributes.Any())
         {
-             <div class="filters">
-                 @foreach (var attr in Model.Category.CategoryAttributes)
-                 {
-                     <span>
-                         @if(attr.Current)
-                         {
-                             @attr.Title
-                         }
-                         else
-                         {
-                             @Html.ActionLink(attr.Title, "Index", "Catalogue", new {area = "", category = Model.Category.Name, filter = attr.Name}, null)
-                         }
-                     </span>
-                 }
-             </div>
+        <div class="filters">
+            @foreach (var attr in Model.Category.CategoryAttributes)
+            {
+                <span>
+                    @if (attr.Current)
+                    {
+                        @attr.Title
+                    }
+                    else
+                    {
+                        @Html.ActionLink(attr.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, filter = attr.Name }, null)
+                    }
+                </span>
+            }
+        </div>
         }
         <div class="brands">
             @if (Request.IsAuthenticated)
             {
-                @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
+                <div style="text-align: center">
+                    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                </div>
             }
-        
             @if (Model.Brands.Any())
             {
                 foreach (var brand in Model.Brands.OrderBy(b => b.SortOrder))
                 {
-                    <div class="brand">
-                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter }, null)
-                        @if (Request.IsAuthenticated)
-                        {
-                            <span class="sortOrder"> @brand.SortOrder</span> @Html.Raw("&nbsp;")
-                            @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
-                            @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
-                        }
-                    </div>
+                <div class="brand">
+                    @Html.ActionLink(brand.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter }, null)
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="sortOrder">@brand.SortOrder</span> @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
+                    }
+                </div>
                 }
             }
         </div>
     }
     <div class="patternBottom">
-        
     </div>
 </div>

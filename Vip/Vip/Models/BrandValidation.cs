@@ -23,7 +23,6 @@ namespace Vip.Models
         [DisplayName("Идентификатор")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Адрес ссылки")]
         public string Href { get; set; }
         

@@ -33,7 +33,14 @@
                                     foreach (var category in categories)
                                     {
                                         <li>
-                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name, filter="", brand=""}, null)
+                                            @if(category.Current)
+                                            {
+                                                @category.Title
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name, filter = "", brand = ""}, null)
+                                            }
                                         </li>
                                     }
                                 }
