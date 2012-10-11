@@ -19,6 +19,7 @@ namespace Vip.Controllers
                 //if (model.Content != null && model.Layouts != null)
                 //    ViewBag.Layouts = model.Layouts;
                 ViewBag.Categories = model.Categories;
+                ViewBag.Projects = model.Projects;
 
                 ViewBag.isHomePage = model.IsHomePage;
                 ViewBag.MainMenu = model.Menu;

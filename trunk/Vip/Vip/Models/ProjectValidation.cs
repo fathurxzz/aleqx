@@ -25,19 +25,11 @@ namespace Vip.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
-
-        [DisplayName("Изображение")]
-        public int ImageSource { get; set; }
-
+        
         [DisplayName("Заголовок описания")]
         public int DescriptionTitle { get; set; }
 
         [DisplayName("Описание")]
         public int Description { get; set; }
-
-        [DisplayName("Менеджер")]
-        public int Manager { get; set; }
-
-
     }
 }

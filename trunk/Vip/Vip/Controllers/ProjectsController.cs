@@ -19,9 +19,10 @@ namespace Vip.Controllers
             {
                 var model = new ProjectViewModel(context, project);
                 ViewBag.Categories = model.Categories;
+                ViewBag.Projects = model.Projects;
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.Menu;
-                return !model.Project.MainPage ? View("Details", model) : View(model);
+                return View(model);
             }
         }
 

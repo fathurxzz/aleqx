@@ -14,6 +14,7 @@ namespace Vip.Areas.Admin.Controllers
     [Authorize]
     public class ProjectController : Controller
     {
+
         //
         // GET: /Admin/Project/Create
 
@@ -26,7 +27,7 @@ namespace Vip.Areas.Admin.Controllers
         // POST: /Admin/Project/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Create(FormCollection form)
         {
             try
             {
@@ -39,21 +40,10 @@ namespace Vip.Areas.Admin.Controllers
                                                     "Title", 
                                                     "DescriptionTitle",
                                                     "SortOrder",
-                                                    "Manager",
                                                     "SeoDescription",
                                                     "SeoKeywords"
                                                 });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
-
-                    if (fileUpload != null)
-                    {
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-                        project.ImageSource = fileName;
-                    }
-
 
                     context.AddToProject(project);
                     context.SaveChanges();
@@ -82,7 +72,7 @@ namespace Vip.Areas.Admin.Controllers
         // POST: /Admin/Project/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(int id, FormCollection form)
         {
             try
             {
@@ -95,22 +85,10 @@ namespace Vip.Areas.Admin.Controllers
                                                     "Title", 
                                                     "DescriptionTitle",
                                                     "SortOrder",
-                                                    "Manager",
                                                     "SeoDescription",
                                                     "SeoKeywords"
                                                 });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
-
-
-                    if (fileUpload != null)
-                    {
-                        ImageHelper.DeleteImage(project.ImageSource);
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-                        project.ImageSource = fileName;
-                    }
 
                     context.SaveChanges();
                     return RedirectToAction("Index", "Projects", new { Area = "" });
@@ -136,8 +114,7 @@ namespace Vip.Areas.Admin.Controllers
                     ImageHelper.DeleteImage(image.ImageSource);
                     context.DeleteObject(image);
                 }
-
-                ImageHelper.DeleteImage(project.ImageSource);
+                
                 context.DeleteObject(project);
 
                 context.SaveChanges();
