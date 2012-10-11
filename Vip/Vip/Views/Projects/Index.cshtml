@@ -11,35 +11,38 @@
     });
 </script>
 <div class="projects">
-    @if (Request.IsAuthenticated) {
-    <div>
-        @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
-        @if (Model.Project != null)
-        {<br/>
-            @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })<br/>
-            @Html.ActionLink("Удалить", "Delete", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект?')" })<br/>
-            @Html.ActionLink("Добавить изображение", "AddImage", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })<br/>
-        }
-    </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div>
+            @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+            @if (Model.Project != null)
+            {<br />
+                @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })<br />
+                @Html.ActionLink("Удалить", "Delete", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект?')" })<br />
+                @Html.ActionLink("Добавить изображение", "AddImage", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })<br />
+            }
+        </div>
     }
-    
-    
-        @if (Model.Project != null)
-        {
-            <div id="projectsGalleryFrame">
-                <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
-                <ul class="overview">
-                    @foreach (var item in Model.Project.ProjectImages)
-                    {
-                        <li>
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
-                        </li>
-                    }
-                </ul>
-            </div>
-        }
-  
-    
+    @if (Model.Project != null)
+    {
+        <div id="projectsGalleryFrame">
+            <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
+            <ul class="overview">
+                @foreach (var item in Model.Project.ProjectImages)
+                {
+                    <li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="manageImageLinkContainer">
+                                @Html.ActionLink("Удалить", "DeleteImage", "Project", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                            </div>
+                        }
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
+                    </li>
+                }
+            </ul>
+        </div>
+    }
     @if (!string.IsNullOrEmpty(Model.Project.Description) || !string.IsNullOrEmpty(Model.Project.DescriptionTitle))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Project.DescriptionTitle, Text = Model.Project.Description })
@@ -47,11 +50,10 @@
     @if (Request.IsAuthenticated)
     {
         <div style="text-align: center; margin-top: 100px;">
-        @Html.ActionLink("Редактировать страницу", "Edit", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Редактировать страницу", "Edit", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })
         </div>
     }
 </div>
-
 @section Includes
 {
     <link href="@Url.Content("~/Content/Projects.css")" rel="stylesheet" type="text/css" />

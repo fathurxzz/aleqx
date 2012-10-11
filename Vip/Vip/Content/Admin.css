@@ -140,3 +140,7 @@ a.adminLink
 .photoFileInput {
      width: 300px !important; 
 }
+
+.manageImageLinkContainer {
+    position: absolute;
+}
