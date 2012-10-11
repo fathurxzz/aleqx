@@ -31,7 +31,6 @@ namespace Vip.Areas.Admin.Controllers
                 {
                     var brand = context.Brand.Include("Category").First(b => b.Id == brandId);
 
-                    int titleIndex = 0;
                     foreach (var file in fileUpload)
                     {
                         if (file != null)
@@ -44,7 +43,6 @@ namespace Vip.Areas.Admin.Controllers
                             product.ImageSource = fileName;
 
                             context.AddToProduct(product);
-                            titleIndex++;
                         }
                     }
 

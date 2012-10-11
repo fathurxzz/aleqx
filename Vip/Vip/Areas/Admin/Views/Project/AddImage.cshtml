@@ -24,7 +24,16 @@
                 <td>@Html.LabelFor(model => model.ImageSource)
                 </td>
                 <td>
-                    <input type="file" name="fileUpload" />
+                    Файл:<input type="file" name="fileUpload[0]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[1]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[2]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[3]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[4]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[5]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[6]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[7]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[8]" class="photoFileInput" /><br />
+                    Файл:<input type="file" name="fileUpload[9]" class="photoFileInput" /><br />
                     @Html.ValidationMessageFor(model => model.ImageSource)
                 </td>
             </tr>
