@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/10/2012 19:15:55
+-- Date Created: 10/11/2012 10:32:12
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Catalogue.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -61,7 +61,6 @@ CREATE TABLE `Category` (
 
 CREATE TABLE `Product` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
     `ImageSource` TEXT  NOT NULL,
     `BrandId` int  NOT NULL
 );

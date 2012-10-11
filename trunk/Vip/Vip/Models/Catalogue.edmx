@@ -63,7 +63,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
     <Property Name="BrandId" Type="int" Nullable="false" />
   </EntityType>
@@ -288,7 +287,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
           <NavigationProperty Name="Brand" Relationship="Catalogue.BrandProduct" FromRole="Product" ToRole="Brand" />
           <Property Type="Int32" Name="BrandId" Nullable="false" />
@@ -435,7 +433,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(Catalogue.Product)">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="BrandId" ColumnName="BrandId" />
         </MappingFragment>
@@ -551,12 +548,12 @@
     <edmx:Diagrams>
       <Diagram Name="Site2" >
         <EntityTypeShape EntityType="Catalogue.Category" Width="1.5" PointX="6.5" PointY="0.625" Height="2.41404296875" />
-        <EntityTypeShape EntityType="Catalogue.Product" Width="1.5" PointX="10" PointY="6.5" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="Catalogue.Product" Width="1.5" PointX="10" PointY="6.5" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="Catalogue.Brand" Width="1.5" PointX="6.5" PointY="4.25" Height="2.4140429687499996" />
         <EntityTypeShape EntityType="Catalogue.CategoryAttribute" Width="1.5" PointX="9.25" PointY="1.875" Height="1.427958984375" />
         <AssociationConnector Association="Catalogue.BrandProduct">
-          <ConnectorPoint PointX="8" PointY="5.734815633441924" />
-          <ConnectorPoint PointX="10.75" PointY="5.734815633441924" />
+          <ConnectorPoint PointX="8" PointY="5.7685831645901207" />
+          <ConnectorPoint PointX="10.75" PointY="5.7685831645901207" />
           <ConnectorPoint PointX="10.75" PointY="6.5" />
         </AssociationConnector>
         <AssociationConnector Association="Catalogue.CategoryBrand">

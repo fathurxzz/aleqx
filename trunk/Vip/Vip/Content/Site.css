@@ -100,11 +100,19 @@ body {
 }
 
 .mainMenu .categories {
+    display: none;
+    
+}
+
+.mainMenu .categories {
     color: #fff;
     position: absolute;
-    width: 100px;
-    background: rgba( 0, 0, 255, 0.5);
+    width: auto;
+    padding: 20px;
+    background: rgba( 7, 13, 25, 0.5);
     z-index: 1000;
+    text-align: left;
+    margin-left: -20px;
 }
 
 .mainMenu .categories ul {
@@ -112,7 +120,19 @@ body {
 }
 .mainMenu .categories ul li {
     list-style: none;
+    font-size: 12px;
+    text-transform: none;
+    color: #b9cad6;
+    font-family: DinCyRg;
+    padding: 3px 0px;
 }
+
+.mainMenu .categories ul li a {
+    color: #b9cad6;
+    
+}
+
+
 
 
 

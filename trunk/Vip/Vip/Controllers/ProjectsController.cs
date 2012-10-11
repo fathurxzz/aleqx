@@ -18,6 +18,7 @@ namespace Vip.Controllers
             using (var context = new CatalogueContainer())
             {
                 var model = new ProjectViewModel(context, project);
+                ViewBag.Categories = model.Categories;
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.Menu;
                 return !model.Project.MainPage ? View("Details", model) : View(model);

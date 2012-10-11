@@ -22,6 +22,7 @@ namespace Vip.Models
         {
 
             var categories = context.Category.ToList();
+            
             Categories = categories;
 
             var contents = context.Content.Where(c => !c.MainPage).ToList();

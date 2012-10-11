@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SiteExtensions;
+using Vip.Helpers;
 using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
@@ -63,7 +64,7 @@ namespace Vip.Areas.Admin.Controllers
         {
             using (var context = new CatalogueContainer())
             {
-                var brand = context.Brand.Include("CategoryAttributes").First(l => l.Id == id);
+                var brand = context.Brand.Include("Category").Include("CategoryAttributes").First(l => l.Id == id);
                 var category = context.Category.Include("CategoryAttributes").First(c => c.Id == brand.CategoryId);
                 ViewBag.CategoryAttributes = category.CategoryAttributes.ToList();
                 ViewBag.SelectedAttributes = brand.CategoryAttributes.ToList();
@@ -110,6 +111,16 @@ namespace Vip.Areas.Admin.Controllers
             {
                 var brand = context.Brand.Include("Category").First(b => b.Id == id);
                 string categoryName = brand.Category.Name;
+
+                brand.CategoryAttributes.Clear();
+                while (brand.Products.Any())
+                {
+                    var product = brand.Products.First();
+                    ImageHelper.DeleteImage(product.ImageSource);
+                    context.DeleteObject(product);
+                }
+
+
                 context.DeleteObject(brand);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Catalogue", new { area = "", category = categoryName });

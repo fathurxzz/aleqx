@@ -1,5 +1,22 @@
 ﻿@using SiteExtensions
 @using Vip.Models
+
+<script type="text/javascript">
+    $(function () {
+        $("#catalogue").hover(function (e) {
+            $("#categories").css("display", "block");
+            //e.stopPropagation(); if (window.event) { window.event.cancelBubbling = true; }
+        });
+
+        $("body").click(function () {
+            if ($("#categories").css("display") == "block") {
+                $("#categories").css("display", "none");
+            }
+        });
+
+    })
+</script>
+
 <div class="mainMenu">
     <table>
         <tr>
@@ -10,23 +27,19 @@
                 }
                     @if(categories!=null)
                     {
-
-
-                        <div class="categories">
+                        <div id="categories" class="categories">
                             <ul>
                                 @{
-
                                     foreach (var category in categories)
                                     {
                                         <li>
-                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name,filter="",brand=""}, null)
+                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new {area = "", category = category.Name, filter="", brand=""}, null)
                                         </li>
                                     }
                                 }
                             </ul>
                         </div>
                     }
-                
             </td>
         
             <td>
