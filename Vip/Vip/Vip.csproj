@@ -186,7 +186,7 @@
     <Content Include="Content\img\leftArrow.png" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
-    <Content Include="Content\img\page-head-bg3.jpg" />
+    <Content Include="Content\img\page-head-bg.jpg" />
     <Content Include="Content\img\pixel.gif" />
     <Content Include="Content\img\product-sign-bg.png" />
     <Content Include="Content\img\project-big-image-shadow-left.png" />
