@@ -68,7 +68,10 @@
             </div>
         </div>
         <div class="link">
-            <a href="@Model.Brand.Href">@Model.Brand.Href.Replace("http://", "")</a>
+            @if (!string.IsNullOrEmpty(Model.Brand.Href))
+            {
+                <a href="@Model.Brand.Href">@Model.Brand.Href.Replace("http://", "")</a>
+            }
         </div>
     }
     else
