@@ -91,7 +91,7 @@ namespace Vip.Areas.Admin.Controllers
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                     context.SaveChanges();
-                    return RedirectToAction("Index", "Projects", new { Area = "" });
+                    return RedirectToAction("Index", "Projects", new { Area = "", project = project.Name });
                 }
             }
             catch
