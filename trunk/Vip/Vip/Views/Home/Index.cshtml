@@ -1,4 +1,6 @@
-﻿@using Vip.Models
+﻿@using SiteExtensions.Graphics
+@using Vip
+@using Vip.Models
 @model Vip.Models.SiteViewModel
 
 <div class="mainPageContainer">
@@ -12,8 +14,27 @@
     
    <div class="patternTop">
     </div>
-
-     <div class="patternBottom">
+    
+    @if(Request.IsAuthenticated)
+    {
+        <div>
+            @Html.ActionLink("Добавить изображение", "AddImage","Content",new{area="Admin"},new{@class="adminLink"})
+        </div>
+    }
+    
+    @if(Model.MainPageImage!=null)
+    {
+        <div class="mainImage">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="manageImageLinkContainer">
+                    @Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink",onclick="return confirm('Удалить изображение?')" })
+                </div>
+            }   
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.Crop))    
+        </div>
+    }
+    <div class="patternBottom">
     </div>
     
 
