@@ -66,6 +66,12 @@
 .mainPageContainer .patternBottom{}
 
 
+.mainImage {
+    width: 1167px;
+    height: 350px;
+    position: relative;
+    margin: 0 auto;
+}
 
 .filters {
 

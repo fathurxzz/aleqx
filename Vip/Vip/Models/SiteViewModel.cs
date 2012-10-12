@@ -12,6 +12,7 @@ namespace Vip.Models
         public bool IsHomePage { get; set; }
         public Menu Menu { get; set; }
         public Content Content { get; set; }
+        public MainPageImage MainPageImage { get; set; }
 
         public IEnumerable<Category> Categories { get; set; }
 
@@ -44,6 +45,7 @@ namespace Vip.Models
             if (contentName == null)
             {
                 Content = context.Content.First(c => c.MainPage);
+                MainPageImage= context.MainPageImage.FirstOrDefault();
             }
             else
             {
