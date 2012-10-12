@@ -23,6 +23,10 @@
             }
         </div>
     }
+     <div class="patternTop">
+    </div>
+
+     
     @if (Model.Project != null)
     {
         <div id="projectsGalleryFrame">
@@ -43,6 +47,8 @@
             </ul>
         </div>
     }
+    <div class="patternBottom">
+    </div>
     @if (!string.IsNullOrEmpty(Model.Project.Description) || !string.IsNullOrEmpty(Model.Project.DescriptionTitle))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Project.DescriptionTitle, Text = Model.Project.Description })

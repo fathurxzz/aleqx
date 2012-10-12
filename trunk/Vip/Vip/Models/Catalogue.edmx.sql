@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/11/2012 19:54:57
--- Generated from EDMX file: D:\projects\Vip\Vip\Models\Catalogue.edmx
+-- Date Created: 10/12/2012 09:49:52
+-- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Catalogue.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `vip`;
-CREATE DATABASE `vip`;
-USE `vip`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -39,6 +36,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Project`;
     DROP TABLE IF EXISTS `ProjectImage`;
     DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `MainPageImage`;
     DROP TABLE IF EXISTS `CategoryCategoryAttribute`;
     DROP TABLE IF EXISTS `BrandCategoryAttribute`;
 SET foreign_key_checks = 1;
@@ -130,6 +128,13 @@ CREATE TABLE `Content` (
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
     `SortOrder` int  NOT NULL
+);
+
+-- Creating table 'MainPageImage'
+
+CREATE TABLE `MainPageImage` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ImageSource` varchar( 255 )  NOT NULL
 );
 
 -- Creating table 'CategoryCategoryAttribute'

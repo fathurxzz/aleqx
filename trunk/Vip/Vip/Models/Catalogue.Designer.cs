@@ -201,6 +201,22 @@ namespace Vip.Models
             }
         }
         private ObjectSet<Content> _Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MainPageImage> MainPageImage
+        {
+            get
+            {
+                if ((_MainPageImage == null))
+                {
+                    _MainPageImage = base.CreateObjectSet<MainPageImage>("MainPageImage");
+                }
+                return _MainPageImage;
+            }
+        }
+        private ObjectSet<MainPageImage> _MainPageImage;
 
         #endregion
         #region AddTo Methods
@@ -267,6 +283,14 @@ namespace Vip.Models
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MainPageImage EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMainPageImage(MainPageImage mainPageImage)
+        {
+            base.AddObject("MainPageImage", mainPageImage);
         }
 
         #endregion
@@ -1382,6 +1406,87 @@ namespace Vip.Models
         private global::System.Int32 _SortOrder;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Catalogue", Name="MainPageImage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MainPageImage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MainPageImage object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static MainPageImage CreateMainPageImage(global::System.Int32 id, global::System.String imageSource)
+        {
+            MainPageImage mainPageImage = new MainPageImage();
+            mainPageImage.Id = id;
+            mainPageImage.ImageSource = imageSource;
+            return mainPageImage;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     
