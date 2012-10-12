@@ -7,16 +7,22 @@ using System.Web;
 
 namespace Vip.Models
 {
-    [MetadataType(typeof(ProductAttributeValidation))]
-    public partial class ProductAttribute
+    [MetadataType(typeof(CategoryAttributeValidation))]
+    public partial class CategoryAttribute
     {
 
     }
 
-    public class ProductAttributeValidation
+    public class CategoryAttributeValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок")]
         public string Title { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Идентификатор (отображается в браузере в строке адреса)")]
+        public string Name { get; set; }
+
+
     }
 }

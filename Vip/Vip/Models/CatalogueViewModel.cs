@@ -17,7 +17,6 @@ namespace Vip.Models
         public Brand Brand { get; set; }
         public Category Category { get; set; }
         //public List<Maker> Makers { get; set; }
-        public List<ProductAttribute> Attributes { get; set; }
         public List<Product> Products { get; set; }
         public string Filter { get; set; }
         //public int TotalProductsCount { get; set; }
@@ -32,8 +31,10 @@ namespace Vip.Models
 
 
             var cat = context.Category.Include("CategoryAttributes").Include("Brands").First(c => c.Name == category);
-            
-            cat.CategoryAttributes.Add(new CategoryAttribute{Title = "все",Name = "all"});
+            if (cat.CategoryAttributes.Any())
+            {
+                cat.CategoryAttributes.Add(new CategoryAttribute {Title = "все", Name = "all"});
+            }
 
             foreach (var attr in cat.CategoryAttributes.Where(attr => attr.Name == filter))
             {
@@ -41,6 +42,7 @@ namespace Vip.Models
             }
             
             if (string.IsNullOrEmpty(filter) || filter == "all")
+                if (cat.CategoryAttributes.Any())
                 cat.CategoryAttributes.First(ca => ca.Name == "all").Current = true;
 
             Category = cat;

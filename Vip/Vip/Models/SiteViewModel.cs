@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SiteExtensions;
+using Vip.Helpers;
 
 namespace Vip.Models
 {
@@ -45,7 +47,10 @@ namespace Vip.Models
             if (contentName == null)
             {
                 Content = context.Content.First(c => c.MainPage);
-                MainPageImage= context.MainPageImage.FirstOrDefault();
+                if (context.MainPageImage.FirstOrDefault() != null)
+                {
+                    MainPageImage = context.MainPageImage.RandomElement(new Random());
+                }
             }
             else
             {

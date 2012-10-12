@@ -44,7 +44,7 @@
     }
     @if (Request.IsAuthenticated)
     {
-        <div style="text-align: center; margin-top: 100px;">
+        <div style="text-align: center; margin-top: 120px;">
         @Html.ActionLink("Редактировать страницу", "Edit", "Content", new { area = "Admin", id = (Model.Content != null ? Model.Content.Id : 0) }, new { @class = "adminLink" })
         </div>
     }
