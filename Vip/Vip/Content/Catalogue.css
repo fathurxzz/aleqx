@@ -53,6 +53,14 @@
     margin-top: 50px;
 }
 
+.projects .patternTop {
+    padding-bottom: 20px;
+}
+
+.projects .patternBottom {
+    margin-top: 20px;
+}
+
 
 .mainPageContainer .patternTop{}
 .mainPageContainer .patternBottom{}
