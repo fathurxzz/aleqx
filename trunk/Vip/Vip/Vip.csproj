@@ -94,7 +94,6 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\LinqHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
-    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\ArticlesViewModel.cs" />
     <Compile Include="Models\ArticleValidation.cs" />

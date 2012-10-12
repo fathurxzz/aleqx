@@ -33,6 +33,12 @@
 }
 
 
+#categoriesLink, #projectsLink {
+    z-index: 200;
+}
+
+
+
 .patternTop, .patternBottom {
     height: 28px;
     width: 486px;    

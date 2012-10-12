@@ -36,7 +36,7 @@ a.adminLink
 
 .adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
 {
-    width: 800px;
+    width: 500px;
 }
 
 
