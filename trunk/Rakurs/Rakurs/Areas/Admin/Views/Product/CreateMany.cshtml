@@ -1,0 +1,136 @@
+﻿@using Rakurs.Models
+@model Rakurs.Models.Product
+@{
+    ViewBag.Title = "Добавление изображения";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm("CreateMany", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.Hidden("CategoryId")
+    
+    <div>
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Добавление изображения</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Атрибуты
+                </td>
+                <td>
+                    @{
+                        var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+                        foreach (var item in attributes)
+                        {
+                
+                            @Html.CheckBox("attr_" + item.Id)@Html.Raw("&nbsp;")@item.Title<br />
+                    
+                        }
+                    }
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <td colspan="2">Заголовок</td>
+                <td colspan="2">Описание</td>
+                <td>Файл</td>
+            </tr>
+            <tr>
+                <td>RU</td>
+                <td>EN</td>
+                <td>RU</td>
+                <td>EN</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[0]"/></td>
+                <td><input type="text" name="titleEN[0]"/></td>
+                <td><input type="text" name="descriptionRU[0]"/></td>
+                <td><input type="text" name="descriptionEN[0]"/></td>
+                <td><input type="file" name="fileUpload[0]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[1]"/></td>
+                <td><input type="text" name="titleEN[1]"/></td>
+                <td><input type="text" name="descriptionRU[1]"/></td>
+                <td><input type="text" name="descriptionEN[1]"/></td>
+                <td><input type="file" name="fileUpload[1]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[2]"/></td>
+                <td><input type="text" name="titleEN[2]"/></td>
+                <td><input type="text" name="descriptionRU[2]"/></td>
+                <td><input type="text" name="descriptionEN[2]"/></td>
+                <td><input type="file" name="fileUpload[2]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[3]"/></td>
+                <td><input type="text" name="titleEN[3]"/></td>
+                <td><input type="text" name="descriptionRU[3]"/></td>
+                <td><input type="text" name="descriptionEN[3]"/></td>
+                <td><input type="file" name="fileUpload[3]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[4]"/></td>
+                <td><input type="text" name="titleEN[4]"/></td>
+                <td><input type="text" name="descriptionRU[4]"/></td>
+                <td><input type="text" name="descriptionEN[4]"/></td>
+                <td><input type="file" name="fileUpload[4]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[5]"/></td>
+                <td><input type="text" name="titleEN[5]"/></td>
+                <td><input type="text" name="descriptionRU[5]"/></td>
+                <td><input type="text" name="descriptionEN[5]"/></td>
+                <td><input type="file" name="fileUpload[5]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[6]"/></td>
+                <td><input type="text" name="titleEN[6]"/></td>
+                <td><input type="text" name="descriptionRU[6]"/></td>
+                <td><input type="text" name="descriptionEN[6]"/></td>
+                <td><input type="file" name="fileUpload[6]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[7]"/></td>
+                <td><input type="text" name="titleEN[7]"/></td>
+                <td><input type="text" name="descriptionRU[7]"/></td>
+                <td><input type="text" name="descriptionEN[7]"/></td>
+                <td><input type="file" name="fileUpload[7]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[8]"/></td>
+                <td><input type="text" name="titleEN[8]"/></td>
+                <td><input type="text" name="descriptionRU[8]"/></td>
+                <td><input type="text" name="descriptionEN[8]"/></td>
+                <td><input type="file" name="fileUpload[8]" /></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="titleRU[9]"/></td>
+                <td><input type="text" name="titleEN[9]"/></td>
+                <td><input type="text" name="descriptionRU[9]"/></td>
+                <td><input type="text" name="descriptionEN[9]"/></td>
+                <td><input type="file" name="fileUpload[9]" /></td>
+            </tr>
+            
+        </table>
+    </div>
+    <div class="buttonsContainer">
+        <input type="submit" value="Сохранить" />
+        @Html.ActionLink("Назад", "Index", "Catalogue", new { Area = "", category = ViewBag.CategoryName, subCategory = ViewBag.SubCategoryName }, null)
+    </div>
+}
+<div>
+</div>
+@section Includes
+{
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+}
