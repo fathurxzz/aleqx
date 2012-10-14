@@ -22,47 +22,47 @@ namespace Vip
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            
+
+
+
+
+
+            //routes.MapRoute(
+            //    "Catalogue", // Route name
+            //    "catalogue/{category}/{filter}/{brand}", // URL with parameters
+            //    new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, filter = UrlParameter.Optional, brand = UrlParameter.Optional } // Parameter defaults
+            //);
+
+            //routes.MapRoute(
+            //    "Catalogue1", // Route name
+            //    "catalogue/{category}/{filter}", // URL with parameters
+            //    new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, filter = UrlParameter.Optional } // Parameter defaults
+            //);
+
+            //routes.MapRoute(
+            //    "Catalogue2", // Route name
+            //    "catalogue/{category}", // URL with parameters
+            //    new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional } // Parameter defaults
+            //);
 
           
+            //routes.MapRoute(
+            //    "Projects", // Route name
+            //    "portfolio/{project}", // URL with parameters
+            //    new { controller = "Projects", action = "Index", project = UrlParameter.Optional } // Parameter defaults
+            //);
 
+            //routes.MapRoute(
+            //    "Articles", // Route name
+            //    "articles", // URL with parameters
+            //    new { controller = "Articles", action = "Index" } // Parameter defaults
+            //);
 
-            routes.MapRoute(
-                "Catalogue", // Route name
-                "catalogue/{category}/{filter}/{brand}", // URL with parameters
-                new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, filter = UrlParameter.Optional, brand = UrlParameter.Optional } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "Catalogue1", // Route name
-                "catalogue/{category}/{filter}", // URL with parameters
-                new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional, filter = UrlParameter.Optional } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "Catalogue2", // Route name
-                "catalogue/{category}", // URL with parameters
-                new { controller = "Catalogue", action = "Index", category = UrlParameter.Optional } // Parameter defaults
-            );
-
-          
-            routes.MapRoute(
-                "Projects", // Route name
-                "portfolio/{project}", // URL with parameters
-                new { controller = "Projects", action = "Index", project = UrlParameter.Optional } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "Articles", // Route name
-                "articles", // URL with parameters
-                new { controller = "Articles", action = "Index" } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "Content", // Route name
-                "{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            //routes.MapRoute(
+            //    "Content", // Route name
+            //    "{id}", // URL with parameters
+            //    new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            //);
 
             routes.MapRoute(
                 "Default", // Route name
