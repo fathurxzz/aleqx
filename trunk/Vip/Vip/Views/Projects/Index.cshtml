@@ -14,7 +14,7 @@
     @if (Request.IsAuthenticated)
     {
         <div>
-            @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+            @*@Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })*@
             @if (Model.Project != null)
             {<br />
                 @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Project.Id }, new { @class = "adminLink" })<br />

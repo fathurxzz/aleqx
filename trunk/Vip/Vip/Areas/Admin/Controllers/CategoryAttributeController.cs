@@ -14,6 +14,8 @@ namespace Vip.Areas.Admin.Controllers
         {
             using (var context = new CatalogueContainer())
             {
+                ViewBag.Categories = context.Category.ToList();
+                ViewBag.Projects = context.Project.ToList();
                 var pa = context.CategoryAttribute.ToList();
                 return View(pa);
             }

@@ -4,14 +4,14 @@
 @model Vip.Models.SiteViewModel
 <script type="text/javascript">
     $(function () {
-//        $(".mainImage img").panorama(
-//            {
-//                viewport_width: 1165,
-//                speed:50000,
-//                mode_360: "true",
-//                control_display: "no"   
-//            }
-//        );
+        //        $(".mainImage img").panorama(
+        //            {
+        //                viewport_width: 1165,
+        //                speed:50000,
+        //                mode_360: "true",
+        //                control_display: "no"   
+        //            }
+        //        );
     })
 </script>
 <div class="mainPageContainer">
@@ -21,7 +21,6 @@
             @Html.Raw(Model.Content.Text)
         </div>
     }
-    
     @if (Model.MainPageImage != null)
     {
         <div class="patternTop">
@@ -32,7 +31,9 @@
         <div>
             @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { area = "Admin" }, new { @class = "adminLink" })
         </div>
-        } 
+        }
+        if (Model.MainPageImage.ImageSource != null)
+        {
         <div class="mainImage">
             @if (Request.IsAuthenticated)
             {
@@ -41,12 +42,12 @@
                 </div>
             }
             @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.Crop))
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.Crop))
         </div>
+        }
         <div class="patternBottom">
         </div>
     }
-    
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })

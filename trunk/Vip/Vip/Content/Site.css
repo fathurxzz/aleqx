@@ -133,7 +133,10 @@ body {
 }
 
 
-
+#categoriesLink, #projectsLink {
+    text-decoration: none;
+    border-bottom: 1px dotted #6dcff6;
+}
 
 
 

@@ -6,7 +6,7 @@ using Vip.Helpers;
 
 namespace Vip.Models
 {
-    public class SiteViewModel:ISiteModel 
+    public class SiteViewModel : ISiteModel
     {
         public string Title { get; set; }
         public string SeoDescription { get; set; }
@@ -20,7 +20,7 @@ namespace Vip.Models
 
         public IEnumerable<Project> Projects { get; set; }
 
-        public SiteViewModel(CatalogueContainer context,string contentName)
+        public SiteViewModel(CatalogueContainer context, string contentName)
         {
 
             var categories = context.Category.ToList();
@@ -37,7 +37,7 @@ namespace Vip.Models
                              {
                                  ContentId = content.Id,
                                  ContentName = content.Name,
-                                 Current = content.Name==contentName,
+                                 Current = content.Name == contentName,
                                  SortOrder = content.SortOrder,
                                  Title = content.Title
                              });
@@ -55,7 +55,7 @@ namespace Vip.Models
             else
             {
                 Content = context.Content.FirstOrDefault(c => c.Name == contentName);
-                if (Content==null)
+                if (Content == null)
                 {
                     throw new HttpNotFoundException();
                 }
@@ -64,15 +64,15 @@ namespace Vip.Models
 
 
             Title = Content.Title;
-                SeoDescription = Content.SeoDescription;
-                SeoKeywords = Content.SeoKeywords;
-                if (Content.MainPage)
-                {
-                    IsHomePage = true;
-                    //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
-                }
+            SeoDescription = Content.SeoDescription;
+            SeoKeywords = Content.SeoKeywords;
+            if (Content.MainPage)
+            {
+                IsHomePage = true;
+                //Layouts = context.Layout.Include("Parent").Include("Children").ToList();
+            }
 
-            
+
         }
     }
 }
