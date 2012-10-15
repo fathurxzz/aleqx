@@ -14,14 +14,14 @@
 
         $("#categories").mouseout(function () {
             //window.setTimeout(function () {
-                $("#categories").css("display", "none");
+            $("#categories").css("display", "none");
             //}, 1000);
             
         });
 
         $("#projects").mouseout(function () {
             //window.setTimeout(function () {
-                $("#projects").css("display", "none");
+            $("#projects").css("display", "none");
             //}, 1000);
             
         });
@@ -38,6 +38,9 @@
 
     });
 </script>
+@{
+    string className = string.Empty;
+}
 <div class="mainMenu">
     <table>
         <tr>
@@ -52,7 +55,10 @@
                 }
             </td>
             <td>
-                <a href="#" id="categoriesLink">каталог</a>
+                @{
+                    className = ViewBag.CataloguePage != null ? "selected" : "";
+                }
+                <a href="#" id="categoriesLink" class="@className">каталог</a>
                 @{
                     var categories = (IEnumerable<Category>)ViewBag.Categories;
                 }
@@ -83,7 +89,10 @@
                 @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
             </td>
             <td>
-                <a href="#" id="projectsLink">наше портфолио</a>
+                @{
+                    className = ViewBag.ProjectsPage != null ? "selected" : "";
+                }
+                <a href="#" id="projectsLink" class="@className">наше портфолио</a>
                 @{
                     var projects = (IEnumerable<Project>)ViewBag.Projects;
                 }

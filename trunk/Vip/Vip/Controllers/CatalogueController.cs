@@ -24,6 +24,7 @@ namespace Vip.Controllers
                 ViewBag.MainMenu = model.Menu;
                 ViewBag.Categories = model.Categories;
                 ViewBag.Projects = model.Projects;
+                ViewBag.CataloguePage = true;
                 this.SetSeoContent(model);
                 return View(model);
             }
