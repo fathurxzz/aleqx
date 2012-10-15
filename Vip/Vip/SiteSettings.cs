@@ -23,7 +23,7 @@ namespace Vip
                                   {"projectDetailsPreviewThumbnail", new PictureSize {Height = 79,Width = 79}},
                                   {"projectBigImage", new PictureSize {Height = 580,Width = 774}},
                                   {"catalogueMainImage",new PictureSize {Height = 415,Width = 702}},
-                                  {"mainPageImage",new PictureSize {Height = 350,Width = 1165}}
+                                  {"mainPageImage",new PictureSize {Height = 350/*,Width = 1165*/}}
                               };
 
             PageSize = GetPageSize();

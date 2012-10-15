@@ -2,6 +2,18 @@
 @using Vip
 @using Vip.Models
 @model Vip.Models.SiteViewModel
+<script type="text/javascript">
+    $(function () {
+        $(".mainImage img").panorama(
+            {
+                viewport_width: 1165,
+                speed:50000,
+                mode_360: "true",
+                control_display: "no"   
+            }
+        );
+    })
+</script>
 <div class="mainPageContainer">
     @if (Model.Content != null && !Model.IsHomePage)
     {
@@ -28,7 +40,7 @@
                     @Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                 </div>
             }
-            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.Crop))
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))
         </div>
         <div class="patternBottom">
         </div>

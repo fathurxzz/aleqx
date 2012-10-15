@@ -22,11 +22,6 @@ namespace Vip
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-
-
-
-
-
             //routes.MapRoute(
             //    "Catalogue", // Route name
             //    "catalogue/{category}/{filter}/{brand}", // URL with parameters

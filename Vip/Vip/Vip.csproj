@@ -199,6 +199,7 @@
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Paging.css" />
+    <Content Include="Content\panorama.css" />
     <Content Include="Content\Projects.css" />
     <Content Include="Content\Selectors.css" />
     <Content Include="Global.asax" />
@@ -210,6 +211,7 @@
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.jcarousel.min.js" />
+    <Content Include="Scripts\jquery.panorama.js" />
     <Content Include="Scripts\jquery.tinycarousel.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
