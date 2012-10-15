@@ -60,6 +60,9 @@ namespace SiteExtensions.Graphics
     public static class GraphicsHelper
     {
 
+        private static int _width;
+        private static int _height;
+
         private static bool IsHorizontalImage(Size imageSise)
         {
             return imageSise.Width > imageSise.Height;
@@ -224,15 +227,14 @@ namespace SiteExtensions.Graphics
             return true;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="originalPath"></param>
-        /// <param name="fileName"></param>
-        /// <param name="thumbnail"></param>
-        /// <param name="scaleMode"></param>
-        /// <param name="useBgImage"></param>
-        /// <returns></returns>
+       
+        private static void GetImageSize(string path)
+        {
+            Bitmap bmp = new Bitmap(HttpContext.Current.Server.MapPath(path));
+            _width = bmp.Width;
+            _height= bmp.Height;
+        }
+
         public static string GetCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage)
         {
             if (string.IsNullOrEmpty(fileName) || !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
@@ -250,12 +252,17 @@ namespace SiteExtensions.Graphics
             string cachedImagePath = Path.Combine(cachePath, fileName);
             if (File.Exists(cachedImagePath))
             {
+                GetImageSize(result);
                 return result;
             }
 
-            return CacheImage(originalPath, fileName, cacheFolder, thumbnail.PictureSize, scaleMode, useBgImage)
-                ? result
-                : null;
+            if(CacheImage(originalPath, fileName, cacheFolder, thumbnail.PictureSize, scaleMode, useBgImage))
+            {
+                GetImageSize(result);
+                return result;
+            }
+
+            return null;
         }
 
         private static bool CacheImage(string originalPath, string fileName, string cacheFolder, PictureSize thumbnailImageSize, ScaleMode scaleMode, bool useBgImage)
@@ -347,8 +354,8 @@ namespace SiteExtensions.Graphics
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage, string className)
         {
             StringBuilder sb = new StringBuilder();
-            string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail, scaleMode, useBgImage), fileName, className);
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail, scaleMode, useBgImage), fileName, className, _width, _height);
             return sb.ToString();
         }
 
