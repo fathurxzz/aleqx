@@ -29,7 +29,7 @@
         var isHomePage  =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
         BasePageExtender.initialize();
 
-        var currentObj = null;
+        //var currentObj = null;
         
         $(function () {
             $(".fancy").fancybox({ showCloseButton: false, padding: 0, margin: 0 });
@@ -37,14 +37,14 @@
         });
 
 
-        setTitle = function(obj,value) {
-            obj.title = value;
-            currentObj = obj;
-        };
+//        setTitle = function(obj,value) {
+//            obj.title = value;
+//            currentObj = obj;
+//        };
 
         onClosePicture = function() {
-            currentObj.title = "";
-            currentObj = null;
+            //currentObj.title = "";
+            //currentObj = null;
         };
 
         
