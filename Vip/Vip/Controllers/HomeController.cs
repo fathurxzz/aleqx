@@ -23,6 +23,7 @@ namespace Vip.Controllers
 
                 ViewBag.isHomePage = model.IsHomePage;
                 ViewBag.MainMenu = model.Menu;
+                ViewBag.MainPage = true;
                 return View(model);
             }
         }
