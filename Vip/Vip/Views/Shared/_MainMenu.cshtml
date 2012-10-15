@@ -1,18 +1,32 @@
 ﻿@using SiteExtensions
 @using Vip.Models
 <script type="text/javascript">
-    $(function() {
-        $("#categoriesLink").hover(function() {
+    $(function () {
+        $("#categoriesLink, #categories").mouseover(function () {
             $("#projects").css("display", "none");
             $("#categories").css("display", "block");
         });
 
-        $("#projectsLink").hover(function() {
+        $("#projectsLink, #projects").mouseover(function () {
             $("#categories").css("display", "none");
             $("#projects").css("display", "block");
         });
 
-        $("body").click(function() {
+        $("#categories").mouseout(function () {
+            window.setTimeout(function () {
+                $("#categories").css("display", "none");
+            }, 1000);
+            
+        });
+
+        $("#projects").mouseout(function () {
+            window.setTimeout(function () {
+                $("#projects").css("display", "none");
+            }, 1000);
+            
+        });
+
+        $("body").click(function () {
             if ($("#categories").css("display") == "block") {
                 $("#categories").css("display", "none");
             }
