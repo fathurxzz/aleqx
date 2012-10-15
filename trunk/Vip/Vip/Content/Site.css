@@ -298,3 +298,27 @@ body {
 
 
 
+.corner {
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    z-index: 1000;
+}
+
+.corner.top-left {
+    background: url('img/corner-top-left.gif');
+    
+}
+.corner.top-right {
+    background: url('img/corner-top-right.gif');
+    left: 1155px;
+}
+.corner.bottom-left {
+    background: url('img/corner-bottom-left.gif');
+    top: 341px;
+}
+.corner.bottom-right {
+    background: url('img/corner-bottom-right.gif');
+    top: 341px;
+    left: 1155px;
+}

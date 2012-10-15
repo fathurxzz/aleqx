@@ -167,6 +167,10 @@
     <Content Include="Content\img\catalogue-thumb-sign-bg.png" />
     <Content Include="Content\img\catalogue-title-main.png" />
     <Content Include="Content\img\change-layout-link.png" />
+    <Content Include="Content\img\corner-bottom-left.gif" />
+    <Content Include="Content\img\corner-bottom-right.gif" />
+    <Content Include="Content\img\corner-top-left.gif" />
+    <Content Include="Content\img\corner-top-right.gif" />
     <Content Include="Content\img\filter-item-bg-line-arrow.gif" />
     <Content Include="Content\img\filter-item-bg-line-center.gif" />
     <Content Include="Content\img\filter-item-bg-line-end.png" />
