@@ -42,6 +42,16 @@
     <table>
         <tr>
             <td>
+                @if(ViewBag.MainPage!=null)
+                {
+                    @Html.Raw("главная")
+                }
+                else
+                {
+                    @Html.ActionLink("главная", "Index", "Home", new {area = "", id = ""}, null)
+                }
+            </td>
+            <td>
                 <a href="#" id="categoriesLink">каталог</a>
                 @{
                     var categories = (IEnumerable<Category>)ViewBag.Categories;
@@ -51,19 +61,19 @@
                     <div id="categories" class="categories">
                         <ul>
                             @{
-                    foreach (var category in categories)
-                    {
-                                <li>
-                                    @if (category.Current)
-                                    {
-                                        @category.Title
-                                    }
-                                    else
-                                    {
-                                        @Html.ActionLink(category.Title, "Index", "Catalogue", new { area = "", category = category.Name, filter = "", brand = "" }, null)
-                                    }
-                                </li>
-                    }
+                                foreach (var category in categories)
+                                {
+                                    <li>
+                                        @if (category.Current)
+                                        {
+                                            @category.Title
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(category.Title, "Index", "Catalogue", new { area = "", category = category.Name, filter = "", brand = "" }, null)
+                                        }
+                                    </li>
+                                }
                             }
                         </ul>
                     </div>
@@ -78,32 +88,32 @@
                     var projects = (IEnumerable<Project>)ViewBag.Projects;
                 }
                 
-                    <div id="projects" class="categories">
-                        <ul>
-                            @if (projects != null)
-                            {
-                                foreach (var project in projects)
-                                {
-                                    <li>
-                                        @if (project.Current)
-                                        {
-                                            @project.Title
-                                        }
-                                        else
-                                        {
-                                            @Html.ActionLink(project.Title, "Index", "Projects", new {area = "", project = project.Name}, null)
-                                        }
-                                    </li>
-                                }
-                                
-                            }
-                            
-                        </ul>
-                        @if(Request.IsAuthenticated)
+                <div id="projects" class="categories">
+                    <ul>
+                        @if (projects != null)
                         {
-                            @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+                            foreach (var project in projects)
+                            {
+                                <li>
+                                    @if (project.Current)
+                                    {
+                                        @project.Title
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink(project.Title, "Index", "Projects", new {area = "", project = project.Name}, null)
+                                    }
+                                </li>
+                            }
+                                
                         }
-                    </div>
+                            
+                    </ul>
+                    @if(Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+                    }
+                </div>
                 
             </td>
             @{
@@ -113,13 +123,13 @@
                     foreach (var item in mainMenu)
                     {
             
-                <td>
-                    @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
-                    @if (Request.IsAuthenticated)
-                    {
-                        @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
-                    }
-                </td>
+                        <td>
+                            @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
+                            }
+                        </td>
             
                     }
                 }
