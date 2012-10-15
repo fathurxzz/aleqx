@@ -16,7 +16,7 @@
 #galleryContent .title
 {
     width: 226px;
-    height: 36px;
+    min-height: 36px;
     background-color: #c01e2e;
     position: relative;
     margin: -23px auto 0 auto;
