@@ -50,6 +50,7 @@
     }
     <div class="patternBottom">
     </div>
+    <div class="pattern"></div>
     @if (!string.IsNullOrEmpty(Model.Project.Description) || !string.IsNullOrEmpty(Model.Project.DescriptionTitle))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Project.DescriptionTitle, Text = Model.Project.Description })

@@ -53,6 +53,9 @@
         <div class="patternBottom">
         </div>
     }
+    
+    <div class="pattern"></div>
+
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })

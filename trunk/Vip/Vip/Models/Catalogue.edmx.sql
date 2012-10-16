@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/12/2012 09:49:52
+-- Date Created: 10/16/2012 10:30:36
 -- Generated from EDMX file: D:\AlexK\projects\Vip\Vip\Models\Catalogue.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `vip`;
+CREATE DATABASE `vip`;
+USE `vip`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -74,7 +77,9 @@ CREATE TABLE `Brand` (
     `Name` varchar( 200 )  NOT NULL,
     `CategoryId` int  NOT NULL,
     `SortOrder` int  NOT NULL,
-    `Href` varchar( 255 )  NULL
+    `Href` varchar( 255 )  NULL,
+    `DescriptionTitle` varchar( 200 )  NULL,
+    `Description` longtext  NULL
 );
 
 -- Creating table 'CategoryAttribute'
