@@ -84,6 +84,9 @@
     <Content Include="Content\img\header-bg-right.png" />
     <Content Include="Content\img\header-bg.png" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\title-bg-center.png" />
+    <Content Include="Content\img\title-bg-left.png" />
+    <Content Include="Content\img\title-bg-right.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />

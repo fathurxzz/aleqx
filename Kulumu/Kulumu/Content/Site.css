@@ -236,3 +236,31 @@ body {
     font-size: 20px;
 }
 
+
+
+table.title {
+    margin: 0 auto;
+    height: 33px;
+    color: #fff;
+    border: none;
+    border-collapse: collapse;
+}
+
+table.title .left {
+    width: 60px;
+    height: 33px;
+    background: url('img/title-bg-left.png');
+}
+
+table.title .center {
+    font-size: 19px;
+    text-transform: uppercase;
+    background: url('img/title-bg-center.png') repeat-x;
+    height: 33px;
+}
+
+table.title .right {
+    height: 33px;
+    width: 80px;
+    background: url('img/title-bg-right.png');
+}
