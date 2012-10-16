@@ -612,6 +612,54 @@ namespace Vip.Models
         private global::System.String _Href;
         partial void OnHrefChanging(global::System.String value);
         partial void OnHrefChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DescriptionTitle
+        {
+            get
+            {
+                return _DescriptionTitle;
+            }
+            set
+            {
+                OnDescriptionTitleChanging(value);
+                ReportPropertyChanging("DescriptionTitle");
+                _DescriptionTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescriptionTitle");
+                OnDescriptionTitleChanged();
+            }
+        }
+        private global::System.String _DescriptionTitle;
+        partial void OnDescriptionTitleChanging(global::System.String value);
+        partial void OnDescriptionTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
 
         #endregion
     

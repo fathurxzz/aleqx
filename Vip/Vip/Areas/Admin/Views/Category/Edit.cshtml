@@ -47,13 +47,13 @@
                 </td>
                 <td>
                     @{
-                        var attributes = (IEnumerable<ProductAttribute>)ViewBag.Attributes;
+                        var attributes = (IEnumerable<CategoryAttribute>)ViewBag.Attributes;
                         if (attributes != null)
                         {
                             foreach (var item in attributes)
                             {
 
-                                @Html.CheckBox("attr_" + item.Id, Model.ProductAttributes.Contains(item))@Html.Raw("&nbsp;")@item.Title<br />
+                                @Html.CheckBox("attr_" + item.Id, Model.CategoryAttributes.Contains(item))@Html.Raw("&nbsp;")@item.Title<br />
 
                             }
                         }
@@ -85,14 +85,6 @@
                 <td>
                     @Html.EditorFor(model => model.SortOrder)
                     @Html.ValidationMessageFor(model => model.SortOrder)
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.ImageSource)
-                </td>
-                <td>
-                    <input type="file" name="fileUpload" />
-                    @Html.ValidationMessageFor(model => model.ImageSource)
                 </td>
             </tr>
             <tr>

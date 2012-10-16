@@ -29,5 +29,11 @@ namespace Vip.Models
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
+
+        [DisplayName("Описание")]
+        public string Description { get; set; }
+
+        [DisplayName("Заголовок описания")]
+        public string DescriptionTitle { get; set; }
     }
 }

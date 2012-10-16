@@ -20,16 +20,6 @@
     background: url('img/filter-selector-bg-top-chto.gif');
 }
 
-.layoutSelector .pattern {
-    width: 486px;
-    height: 28px;
-    background-image: url('img/filter-selector-pattern.png');
-    background-repeat: no-repeat;
-    position: relative;
-    margin: 0 auto;
-    padding-bottom: 20px;
-    
-}
 
 .layoutSelector .bottom {
     height: 19px;

@@ -47,7 +47,8 @@ namespace Vip.Areas.Admin.Controllers
                         }
                     }
 
-                    TryUpdateModel(brand, new[] { "Title", "Name", "SortOrder", "Href" });
+                    TryUpdateModel(brand, new[] { "Title", "Name", "SortOrder", "Href", "DescriptionTitle" });
+                    brand.Description = HttpUtility.HtmlDecode(form["Description"]);
                     context.AddToBrand(brand);
                     context.SaveChanges();
 
@@ -80,7 +81,7 @@ namespace Vip.Areas.Admin.Controllers
             using (var context = new CatalogueContainer())
             {
                 var brand = context.Brand.Include("Category").First(b => b.Id == id);
-                var category = context.Category.Include("CategoryAttributes").First(c => c.Id == brand.CategoryId);
+                //var category = context.Category.Include("CategoryAttributes").First(c => c.Id == brand.CategoryId);
 
 
                 brand.CategoryAttributes.Clear();
@@ -97,7 +98,8 @@ namespace Vip.Areas.Admin.Controllers
                 }
 
                 string categoryName = brand.Category.Name;
-                TryUpdateModel(brand, new[] { "Title", "Name", "SortOrder", "Href" });
+                TryUpdateModel(brand, new[] { "Title", "Name", "SortOrder", "Href", "DescriptionTitle" });
+                brand.Description = HttpUtility.HtmlDecode(form["Description"]);
                 context.SaveChanges();
 
 

@@ -65,6 +65,24 @@
                     @Html.ValidationMessageFor(model => model.SortOrder)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.DescriptionTitle)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DescriptionTitle)
+                    @Html.ValidationMessageFor(model => model.DescriptionTitle)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
@@ -72,3 +90,8 @@
         </div>
     }
 </div>
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
