@@ -86,7 +86,13 @@ namespace Rakurs.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            using (var context = new StructureContainer())
+            {
+                var content = context.Content.First(c => c.Id == id);
+                context.DeleteObject(content);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new {area = "", id = ""});
+            }
         }
     }
 }
