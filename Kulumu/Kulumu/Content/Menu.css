@@ -1,0 +1,45 @@
+﻿.mainMenu {
+    position: absolute;
+    font-family: PTNarrow;
+    font-size: 14px;
+}
+.mainMenu a {
+    
+}
+
+.mainMenu table {
+    border-collapse: collapse;
+    margin-top: 17px;
+}
+
+.mainMenu table td {
+    /*border: 1px solid black;*/
+    text-align: center;
+    vertical-align: middle;
+    
+}
+
+.mainMenu table td.first {
+    width: 200px;
+}
+
+.mainMenu table td.second {
+    width: 80px;
+}
+
+.mainMenu table td.separator {
+    width: 440px;
+}
+
+.mainMenu table td.third {
+    width: 100px;
+}
+.mainMenu table td.fourth {
+    width: 180px;
+    font-size: 12px;
+}
+
+.mainMenu table td.fourth span {
+    font-size: 20px;
+    font-family: PTNarrowBold;
+}

@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kulumu.Models;
+using SiteExtensions;
 
 namespace Kulumu.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                SiteModel model = new SiteModel(context,id);
+                this.SetSeoContent(model);
+
+                ViewBag.isHomePage = model.IsHomePage;
+                return View(model);
+            }
         }
     }
 }
