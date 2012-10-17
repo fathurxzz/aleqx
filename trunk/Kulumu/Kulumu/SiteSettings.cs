@@ -14,7 +14,8 @@ namespace Kulumu
         {
             Thumbnails = new Dictionary<string, PictureSize>
                               {
-                                  {"galleryImage",new PictureSize {Height = 300,Width = 451}}
+                                  {"galleryImage",new PictureSize {Height = 300,Width = 451}},
+                                  {"preview",new PictureSize {Width = 200}}
                               };
         }
         

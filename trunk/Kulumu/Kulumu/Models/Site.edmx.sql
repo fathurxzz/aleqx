@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/17/2012 16:50:56
+-- Date Created: 10/17/2012 19:21:56
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -40,8 +40,8 @@ CREATE TABLE `Product` (
     `Description` TEXT  NULL,
     `ImageSource` varchar( 200 )  NOT NULL,
     `Discount` bool  NOT NULL,
-    `DiscountText` varchar( 200 )  NOT NULL,
-    `Price` varchar( 200 )  NOT NULL,
+    `DiscountText` varchar( 200 )  NULL,
+    `Price` varchar( 200 )  NULL,
     `CategoryId` int  NOT NULL
 );
 

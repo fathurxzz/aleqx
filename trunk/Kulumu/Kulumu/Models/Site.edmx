@@ -24,8 +24,8 @@
     <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Discount" Type="bool" Nullable="false" />
-    <Property Name="DiscountText" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Price" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="DiscountText" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Price" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Article">
@@ -94,8 +94,8 @@
           <Property Type="String" Name="Description" FixedLength="true" MaxLength="500" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Boolean" Name="Discount" Nullable="false" />
-          <Property Type="String" Name="DiscountText" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="String" Name="Price" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="DiscountText" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Price" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="Category" Relationship="Site.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
         </EntityType>
