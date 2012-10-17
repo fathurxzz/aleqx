@@ -5,74 +5,50 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
 </head>
-    <body>
-        <div class="page">
-            <div class="header">
-                <div class="left"></div>    
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="left">
+            </div>
+            <div class="center">
+                @Html.Partial("MainMenu")
+                <div class="logo-container">
+                </div>
+            </div>
+            <div class="right">
+            </div>
+        </div>
+        <div class="content">
+            <div class="add-panel">
+                <div class="left">
+                </div>
                 <div class="center">
-                    
-                    @Html.Partial("MainMenu")
-
-                    <div class="logo-container">
-                        
+                </div>
+                <div class="bottom">
+                </div>
+                <div class="right">
+                </div>
+                <div class="content-panel">
+                    <div class="attention">
                     </div>
                 </div>
-                <div class="right"></div>
-            </div>
-            <div class="content">
-                <div class="add-panel">
-                    <div class="left">
-                        
-                    </div>
-                    <div class="center"></div>
-                    <div class="bottom"></div>
-                    <div class="right"></div>
-                    <div class="content-panel">
-                        
-                        <div class="attention">
-                            
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            @RenderBody()
-        
-        
-        
-            <table class="title">
-                <tr>
-                    <td class="left"></td>
-                    <td class="center">о коврах</td>
-                    <td class="right"></td>
-                </tr>
-            </table>
-            
-            <div class="about">
-                <div class="top">
-                </div>
-                <div class="main">
-                    <div class="left"></div>
-                    <div class="container">
-                    <div class="about-content">
-                        Шелк является неотъемлемой частью жизни и культуры индийцев.                         В Индии производится огромное количество изделий из шелка, среди которых платьевые ткани, шарфы и шали, готовые предметы одежды и, конечно, неповторимые сари.<br/><br/>                        Хотя зачастую слово сари отождествляется со словом шелк, в действительности, сари - это традиционный наряд индийских женщин. <br/><br/>
-                        В литературе Индии можно найти огромное число упоминаний об этом предмете одежды, способ ношения и драпировки которого определяется эпохой, регионом страны, а также самим обладателем сари. 
-                        Шелковые индийские сари являются прекрасным примером великолепной ручной работы ткачей Индии. 
-                    </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-        <div class="footer">
-            <div class="copy">
-                &copy; @DateTime.Now.Year  Сеть магазинов ковров “Килими”
-            </div>
-            <div class="em">
-                Создание сайта &mdash;<br/>
-                <a href="http://eugene-miller.com">Студия Евгения Миллера</a>
             </div>
         </div>
-    </body>
+        @RenderBody()
+        
+
+        @Html.Partial("About")
+        
+
+    </div>
+    <div class="footer">
+        <div class="copy">
+            &copy; @DateTime.Now.Year Сеть магазинов ковров “Килими”
+        </div>
+        <div class="em">
+            Создание сайта &mdash;<br />
+            <a href="http://eugene-miller.com">Студия Евгения Миллера</a>
+        </div>
+    </div>
+</body>
 </html>

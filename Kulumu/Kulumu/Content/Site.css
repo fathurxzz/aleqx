@@ -238,6 +238,12 @@ body {
 
 
 
+.titleContainer {
+    position: absolute;
+    width: 100%;
+    margin-top: -22px;
+}
+
 table.title {
     margin: 0 auto;
     height: 33px;
@@ -246,21 +252,25 @@ table.title {
     border-collapse: collapse;
 }
 
-table.title .left {
-    width: 60px;
+table.title .a-left {
+    width: 63px;
     height: 33px;
     background: url('img/title-bg-left.png');
 }
 
-table.title .center {
+table.title .a-center {
     font-size: 19px;
     text-transform: uppercase;
     background: url('img/title-bg-center.png') repeat-x;
     height: 33px;
 }
 
-table.title .right {
+table.title .a-right {
     height: 33px;
-    width: 80px;
+    width: 125px;
     background: url('img/title-bg-right.png');
+}
+
+table.title .a-center div {
+    margin-right: -55px;
 }
