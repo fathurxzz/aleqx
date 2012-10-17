@@ -8,6 +8,15 @@ body {
     font-family: Arial;
 }
 
+.clear {
+    clear: both;
+}
+
+img {
+    border: none;
+}
+
+
 .page {
     position: relative;
     margin: 0 auto;
@@ -58,8 +67,6 @@ body {
 
 
 .content {
-    height: 500px;
-   
     width: 1003px;
     position: relative;
     margin: 0 auto;
@@ -76,6 +83,9 @@ body {
 .add-panel {
     width: 1003px;
     height: 416px;
+    padding-bottom: 50px;
+    position: relative;
+    margin: 0 auto;
 }
 
 .add-panel .left, .add-panel .right {
@@ -273,4 +283,38 @@ table.title .a-right {
 
 table.title .a-center div {
     margin-right: -55px;
+}
+
+
+.frameContainer {
+    width: 488px;
+    height: 398px;
+    float: left;
+}
+
+.image 
+{
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 19px;
+    width: 451px;
+    height: 300px;
+    background-color: #f00;
+}
+
+.frame {
+    position: absolute;
+    width: 488px;
+    height: 398px;
+    background: url('img/frame.png');
+}
+
+.frames {
+    padding-bottom: 50px;
+}
+
+.frames .separator {
+    float: left;
+    height: 398px;
+    width: 27px;
 }
