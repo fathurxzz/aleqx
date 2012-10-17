@@ -1,1 +1,20 @@
-﻿
+﻿@using Kulumu.Models
+@model SiteModel 
+@section Add
+{
+    @Html.Partial("Ad")
+}
+
+@section About
+{
+    @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+}
+
+
+
+<div class="frames">
+                @Html.Partial("Frame","тренды сезона")
+                <div class="separator"></div>
+                @Html.Partial("Frame","кое-что из ассортимента")
+                <div class="clear"></div>
+            </div>

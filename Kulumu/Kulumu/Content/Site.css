@@ -247,3 +247,14 @@ table.title .a-center div {
     width: 27px;
 }
 
+
+.logOnPanel {
+    position: relative; 
+    margin: 0 auto; 
+    margin-top: 200px; 
+    margin-bottom: 200px;
+    padding: 30px;
+    width: 300px;
+    background-color: #fff;
+    border: 5px solid #ccc;
+}

@@ -1,12 +1,36 @@
 ﻿<div class="mainMenu">
     <table>
         <tr>
-            <td class="first"><a href="#">о производителях</a></td>
-            <td class="second"><a href="#">наши новости</a> </td>
-            <td class="separator"></td>
-            <td class="third"><a href="#">адрес магазина и филиалов</a></td>
-            <td class="fourth"><a href="#"><span>3D-тур</span><br/> по магазину</a></td>
-
+            <td class="first">
+                @Html.ActionLink("о производителях", "Index", "Home", new { area = "", id = "about" }, null)
+                @if (Request.IsAuthenticated)
+                {
+                    <br />
+                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "about" }, new { @class = "adminLink" })
+                }
+            </td>
+            <td class="second">
+                @Html.ActionLink("наши новости", "Index", "Home", new { area = "", id = "articles" }, null)
+                @if (Request.IsAuthenticated)
+                {
+                    <br />
+                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "articles" }, new { @class = "adminLink" })
+                }
+            </td>
+            <td class="separator">
+            </td>
+            <td class="third">
+                @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
+                @if (Request.IsAuthenticated)
+                {
+                    <br />
+                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
+                }
+            </td>
+            <td class="fourth">
+                <a href="#"><span>3D-тур</span><br />
+                    по магазину</a>
+            </td>
         </tr>
     </table>
 </div>

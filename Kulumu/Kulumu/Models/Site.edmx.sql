@@ -5,25 +5,27 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/17/2012 13:36:36
+-- Date Created: 10/17/2012 16:50:56
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `kulumu`;
-CREATE DATABASE `kulumu`;
-USE `kulumu`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
+    DROP TABLE IF EXISTS `Product`;
+    DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `Category`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -54,14 +56,17 @@ CREATE TABLE `Article` (
     `Description` TEXT  NOT NULL
 );
 
--- Creating table 'Conten'
+-- Creating table 'Content'
 
-CREATE TABLE `Conten` (
+CREATE TABLE `Content` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` longtext  NOT NULL,
     `Title` longtext  NOT NULL,
     `Description` longtext  NOT NULL,
-    `DescriptionTitle` longtext  NOT NULL
+    `DescriptionTitle` longtext  NOT NULL,
+    `MainPage` bool  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 -- Creating table 'Category'
