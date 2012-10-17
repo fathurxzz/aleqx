@@ -31,7 +31,6 @@ img {
 
 .header a {
     text-transform: uppercase;
-    font-size: 14px;
     color: #fff;
 }
 
@@ -66,7 +65,7 @@ img {
 
 
 
-.content {
+.main-content {
     width: 1003px;
     position: relative;
     margin: 0 auto;
@@ -83,7 +82,7 @@ img {
 .add-panel {
     width: 1003px;
     height: 416px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     position: relative;
     margin: 0 auto;
 }
@@ -138,6 +137,18 @@ img {
     background-image: url('img/attention.gif');
     position: relative;
     margin: 0 auto;
+}
+
+.add-panel .pattern {
+    background: url('img/ad-pattern.gif');
+    width: 522px;
+    height: 36px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .content {
+    min-height: 280px;
 }
 
 .footer {
@@ -210,17 +221,23 @@ img {
 
 .mainMenu {
     position: absolute;
+    font-family: PTNarrow;
+    font-size: 14px;
+}
+.mainMenu a {
+    
 }
 
 .mainMenu table {
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 17px;
 }
 
 .mainMenu table td {
     /*border: 1px solid black;*/
     text-align: center;
     vertical-align: middle;
+    
 }
 
 .mainMenu table td.first {
@@ -232,18 +249,20 @@ img {
 }
 
 .mainMenu table td.separator {
-    width: 400px;
+    width: 440px;
 }
 
 .mainMenu table td.third {
-    width: 180px;
+    width: 100px;
 }
 .mainMenu table td.fourth {
-    width: 100px;
+    width: 180px;
+    font-size: 12px;
 }
 
 .mainMenu table td.fourth span {
     font-size: 20px;
+    font-family: PTNarrowBold;
 }
 
 
@@ -260,6 +279,7 @@ table.title {
     color: #fff;
     border: none;
     border-collapse: collapse;
+    font-family: PTNarrowBold;
 }
 
 table.title .a-left {
@@ -283,6 +303,7 @@ table.title .a-right {
 
 table.title .a-center div {
     margin-right: -55px;
+    margin-top: -4px;
 }
 
 
@@ -309,8 +330,19 @@ table.title .a-center div {
     background: url('img/frame.png');
 }
 
+.frame .showAll {
+    position: absolute;
+    margin-left: 388px;
+    font-family: PTNarrow;
+    font-size: 12px;
+    color: #0072bc;
+}
+.frame .showAll a {
+    color: inherit;
+}
+
 .frames {
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 }
 
 .frames .separator {
@@ -318,3 +350,4 @@ table.title .a-center div {
     height: 398px;
     width: 27px;
 }
+
