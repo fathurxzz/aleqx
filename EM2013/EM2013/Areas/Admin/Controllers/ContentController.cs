@@ -7,6 +7,7 @@ using EM2013.Models;
 
 namespace EM2013.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         public ActionResult Edit(int id)
