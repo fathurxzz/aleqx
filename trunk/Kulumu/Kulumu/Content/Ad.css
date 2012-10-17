@@ -1,0 +1,71 @@
+﻿.add-panel {
+    width: 1003px;
+    height: 416px;
+    padding-bottom: 60px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .left, .add-panel .right {
+    position: absolute;
+    height: 416px;
+}
+
+.add-panel .left {
+    width: 140px;
+    background: url('img/ad-panel-left.png');
+}
+
+.add-panel .right {
+    width: 73px;
+    background: url('img/ad-panel-right.png');
+    margin-left: 930px;
+}
+
+.add-panel .center {
+    margin-left: 140px;
+    width: 790px;
+    position: absolute;
+    height: 398px;
+    background-color: #fff;
+}
+
+.add-panel .bottom 
+{
+    position: absolute;
+    background-image: url('img/ad-panel-bottom.png');
+    background-repeat: repeat-x;
+    width: 790px;
+    height: 18px;
+    margin-left: 140px;
+    margin-top: 398px;
+}
+
+.add-panel .content-panel {
+    position: absolute;
+    width: 865px;
+    height: 300px;
+    margin-left: 73px;
+    margin-top: 45px;
+    /*border: 1px solid #000;*/
+}
+
+.add-panel .attention {
+    width: 862px;
+    height: 17px;
+    background-image: url('img/attention.gif');
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .pattern {
+    background: url('img/ad-pattern.gif');
+    width: 522px;
+    height: 36px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .content {
+    min-height: 280px;
+}

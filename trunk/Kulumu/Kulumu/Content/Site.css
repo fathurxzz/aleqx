@@ -62,6 +62,15 @@ img {
     z-index: 1;
 }
 
+#logo {
+    position: absolute;
+    width: 250px;
+    height: 60px;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+
 
 
 
@@ -79,77 +88,6 @@ img {
     margin: 0 auto;
 }
 
-.add-panel {
-    width: 1003px;
-    height: 416px;
-    padding-bottom: 60px;
-    position: relative;
-    margin: 0 auto;
-}
-
-.add-panel .left, .add-panel .right {
-    position: absolute;
-    height: 416px;
-}
-
-.add-panel .left {
-    width: 140px;
-    background: url('img/ad-panel-left.png');
-}
-
-.add-panel .right {
-    width: 73px;
-    background: url('img/ad-panel-right.png');
-    margin-left: 930px;
-}
-
-.add-panel .center {
-    margin-left: 140px;
-    width: 790px;
-    position: absolute;
-    height: 398px;
-    background-color: #fff;
-}
-
-.add-panel .bottom 
-{
-    position: absolute;
-    background-image: url('img/ad-panel-bottom.png');
-    background-repeat: repeat-x;
-    width: 790px;
-    height: 18px;
-    margin-left: 140px;
-    margin-top: 398px;
-}
-
-.add-panel .content-panel {
-    position: absolute;
-    width: 865px;
-    height: 300px;
-    margin-left: 73px;
-    margin-top: 45px;
-    /*border: 1px solid #000;*/
-}
-
-.add-panel .attention {
-    width: 862px;
-    height: 17px;
-    background-image: url('img/attention.gif');
-    position: relative;
-    margin: 0 auto;
-}
-
-.add-panel .pattern {
-    background: url('img/ad-pattern.gif');
-    width: 522px;
-    height: 36px;
-    position: relative;
-    margin: 0 auto;
-}
-
-.add-panel .content {
-    min-height: 280px;
-}
 
 .footer {
     width: 1113px;
@@ -219,51 +157,6 @@ img {
     background-repeat: no-repeat;
 }
 
-.mainMenu {
-    position: absolute;
-    font-family: PTNarrow;
-    font-size: 14px;
-}
-.mainMenu a {
-    
-}
-
-.mainMenu table {
-    border-collapse: collapse;
-    margin-top: 17px;
-}
-
-.mainMenu table td {
-    /*border: 1px solid black;*/
-    text-align: center;
-    vertical-align: middle;
-    
-}
-
-.mainMenu table td.first {
-    width: 200px;
-}
-
-.mainMenu table td.second {
-    width: 80px;
-}
-
-.mainMenu table td.separator {
-    width: 440px;
-}
-
-.mainMenu table td.third {
-    width: 100px;
-}
-.mainMenu table td.fourth {
-    width: 180px;
-    font-size: 12px;
-}
-
-.mainMenu table td.fourth span {
-    font-size: 20px;
-    font-family: PTNarrowBold;
-}
 
 
 
@@ -305,6 +198,9 @@ table.title .a-center div {
     margin-right: -55px;
     margin-top: -4px;
 }
+
+
+
 
 
 .frameContainer {
