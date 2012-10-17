@@ -486,7 +486,7 @@ table.cloud td.center {
     height: 13px;
     background: url('img/cloud-arrow.gif');
     position: relative;
-    margin: -2px auto -3px auto;
+    margin: -2px auto 0px auto;
     
 }
 
