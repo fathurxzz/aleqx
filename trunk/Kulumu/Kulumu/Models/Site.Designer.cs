@@ -105,18 +105,18 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Content> Conten
+        public ObjectSet<Content> Content
         {
             get
             {
-                if ((_Conten == null))
+                if ((_Content == null))
                 {
-                    _Conten = base.CreateObjectSet<Content>("Conten");
+                    _Content = base.CreateObjectSet<Content>("Content");
                 }
-                return _Conten;
+                return _Content;
             }
         }
-        private ObjectSet<Content> _Conten;
+        private ObjectSet<Content> _Content;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -154,11 +154,11 @@ namespace Kulumu.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Conten EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Content EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToConten(Content content)
+        public void AddToContent(Content content)
         {
-            base.AddObject("Conten", content);
+            base.AddObject("Content", content);
         }
     
         /// <summary>
@@ -484,7 +484,8 @@ namespace Kulumu.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="descriptionTitle">Initial value of the DescriptionTitle property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String descriptionTitle)
+        /// <param name="mainPage">Initial value of the MainPage property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String descriptionTitle, global::System.Boolean mainPage)
         {
             Content content = new Content();
             content.Id = id;
@@ -492,6 +493,7 @@ namespace Kulumu.Models
             content.Title = title;
             content.Description = description;
             content.DescriptionTitle = descriptionTitle;
+            content.MainPage = mainPage;
             return content;
         }
 
@@ -620,6 +622,78 @@ namespace Kulumu.Models
         private global::System.String _DescriptionTitle;
         partial void OnDescriptionTitleChanging(global::System.String value);
         partial void OnDescriptionTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean MainPage
+        {
+            get
+            {
+                return _MainPage;
+            }
+            set
+            {
+                OnMainPageChanging(value);
+                ReportPropertyChanging("MainPage");
+                _MainPage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MainPage");
+                OnMainPageChanged();
+            }
+        }
+        private global::System.Boolean _MainPage;
+        partial void OnMainPageChanging(global::System.Boolean value);
+        partial void OnMainPageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
 
         #endregion
     

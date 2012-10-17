@@ -1,18 +1,26 @@
 ﻿<div class="add-panel">
-                <div class="left">
+    <div class="left">
+    </div>
+    <div class="center">
+    </div>
+    <div class="bottom">
+    </div>
+    <div class="right">
+    </div>
+    <div class="content-panel">
+    
+    @if(Request.IsAuthenticated)
+            {
+                <div style="position: absolute;  padding-left: 10px; margin-top: -20px;">
+                @Html.ActionLink("Редактировать главную страницу","Edit","Content",new{area="Admin",id="main"},new{@class="adminLink"})
                 </div>
-                <div class="center">
-                </div>
-                <div class="bottom">
-                </div>
-                <div class="right">
-                </div>
-                <div class="content-panel">
-                    <div class="attention">
-                    </div>
-                    <div class="content">
-                        
-                    </div>
-                    <div class="pattern"></div>
-                </div>
-            </div>
+            }
+
+        <div class="attention">
+        </div>
+        <div class="content">
+        </div>
+        <div class="pattern">
+        </div>
+    </div>
+</div>

@@ -33,20 +33,21 @@
 </head>
 <body>
     <div class="page">
-        @Html.Partial("Header")
-        @Html.Partial("Ad")
-        <div class="main-content">
-            
-            <div class="frames">
-                @Html.Partial("Frame","тренды сезона")
-                <div class="separator"></div>
-                @Html.Partial("Frame","кое что из ассортимента")
-                <div class="clear"></div>
+        @if(Request.IsAuthenticated)
+        {
+            <div style="position: absolute; z-index: 100; padding-left: 10px;">
+                @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{area=""},new{@class="adminLink"})
             </div>
-
+        }
+        @Html.Partial("Header")
+        
+        @RenderSection("Add",false)
+        
+        <div class="main-content">
             @RenderBody()
         </div>
-        @Html.Partial("About")
+        @RenderSection("About",false)
+        
     </div>
     <div class="footer">
         <div class="copy">

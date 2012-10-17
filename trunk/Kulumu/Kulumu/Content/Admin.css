@@ -6,12 +6,12 @@
 .adminLinkContainer
 {
     text-align: center;
+    
 }
 
 a.adminLink
 {
     color: #ff0000 !important;
-    font-family: DinCyRg;
     font-size: 12px !important;
     text-transform: none !important;
     font-weight: normal;
@@ -21,7 +21,6 @@ a.adminLink
 
 .adminEditContentTable
 {
-    font-family: DinCyRg;
     width: 900px;
     position: relative;
     margin: 0 auto;
@@ -56,13 +55,13 @@ a.adminLink
 
 .adminContentContainer
 {
-    padding-top: 120px;
-    font-family: DinCyRg;
+    padding-top: 50px;
+    padding-bottom: 50px;
     font-size: 12px;
-    color: #fff;
+    background-color: #fff;
 }
 .adminContentContainer a {
-    color: #fff;
+    
 }
 
 .adminContentContainer h2
@@ -99,7 +98,6 @@ a.adminLink
 {
     color: White;
     font-size: 12px;
-    font-family: DinCyRg;
     margin: 0 10px;
 }
 #adminPanel .handle
