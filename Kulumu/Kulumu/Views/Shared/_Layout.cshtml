@@ -7,39 +7,20 @@
 </head>
 <body>
     <div class="page">
-        <div class="header">
-            <div class="left">
-            </div>
-            <div class="center">
-                @Html.Partial("MainMenu")
-                <div class="logo-container">
-                </div>
-            </div>
-            <div class="right">
-            </div>
-        </div>
+        @Html.Partial("Header")
+        @Html.Partial("Ad")
         <div class="content">
-            <div class="add-panel">
-                <div class="left">
-                </div>
-                <div class="center">
-                </div>
-                <div class="bottom">
-                </div>
-                <div class="right">
-                </div>
-                <div class="content-panel">
-                    <div class="attention">
-                    </div>
-                </div>
+            
+            <div class="frames">
+                @Html.Partial("Frame","тренды сезона")
+                <div class="separator"></div>
+                @Html.Partial("Frame","кое что из ассортимента")
+                <div class="clear"></div>
             </div>
+
+            @RenderBody()
         </div>
-        @RenderBody()
-        
-
         @Html.Partial("About")
-        
-
     </div>
     <div class="footer">
         <div class="copy">
