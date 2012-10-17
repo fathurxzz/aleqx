@@ -8,6 +8,7 @@ using Vip.Models;
 
 namespace Vip.Controllers
 {
+    [Authorize]
     public class CatalogueController : Controller
     {
         public ActionResult Index(string category, string filter, string brand)

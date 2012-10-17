@@ -8,6 +8,7 @@ using Vip.Models;
 
 namespace Vip.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         //
