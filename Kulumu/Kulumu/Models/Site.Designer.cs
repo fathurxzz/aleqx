@@ -716,18 +716,14 @@ namespace Kulumu.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="discount">Initial value of the Discount property.</param>
-        /// <param name="discountText">Initial value of the DiscountText property.</param>
-        /// <param name="price">Initial value of the Price property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Boolean discount, global::System.String discountText, global::System.String price, global::System.Int32 categoryId)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Boolean discount, global::System.Int32 categoryId)
         {
             Product product = new Product();
             product.Id = id;
             product.Title = title;
             product.ImageSource = imageSource;
             product.Discount = discount;
-            product.DiscountText = discountText;
-            product.Price = price;
             product.CategoryId = categoryId;
             return product;
         }
@@ -861,7 +857,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String DiscountText
         {
@@ -873,7 +869,7 @@ namespace Kulumu.Models
             {
                 OnDiscountTextChanging(value);
                 ReportPropertyChanging("DiscountText");
-                _DiscountText = StructuralObject.SetValidValue(value, false);
+                _DiscountText = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("DiscountText");
                 OnDiscountTextChanged();
             }
@@ -885,7 +881,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Price
         {
@@ -897,7 +893,7 @@ namespace Kulumu.Models
             {
                 OnPriceChanging(value);
                 ReportPropertyChanging("Price");
-                _Price = StructuralObject.SetValidValue(value, false);
+                _Price = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Price");
                 OnPriceChanged();
             }

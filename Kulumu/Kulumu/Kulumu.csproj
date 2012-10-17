@@ -86,6 +86,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\AboutModel.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentValidation.cs" />
@@ -220,6 +221,9 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
@@ -244,7 +248,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>40507</DevelopmentServerPort>
+          <DevelopmentServerPort>7220</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
