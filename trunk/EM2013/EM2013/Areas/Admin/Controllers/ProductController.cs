@@ -10,6 +10,7 @@ using SiteExtensions;
 
 namespace EM2013.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         public ActionResult Create(int id)
