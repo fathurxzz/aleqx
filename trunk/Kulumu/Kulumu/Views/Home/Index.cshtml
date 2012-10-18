@@ -2,17 +2,17 @@
 @model SiteModel 
 @section Add
 {
-    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle })
+    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle, DiscountProduct = Model.SingleDiscountProduct })
 }
 @section About
 {
     @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
 <div class="frames">
-    @Html.Partial("Frame", "тренды сезона")
+    @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона" })
     <div class="separator">
     </div>
-    @Html.Partial("Frame", "кое-что из ассортимента")
+    @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 2), Title = "кое-что из ассортимента" })
     <div class="clear">
     </div>
 </div>

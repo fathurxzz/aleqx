@@ -141,8 +141,16 @@
 .discount .discount-frame {
     width: 293px;
     height: 193px;
-    background: url('img/discount-frame.png');
+    
     margin-left: 120px;
+}
+
+.discount .discount-frame .image-frame {
+    position: absolute;
+    width: 293px;
+    height: 193px;
+    background: url('img/discount-frame.png');
+    z-index: 100;
 }
 
 .discount .txt {

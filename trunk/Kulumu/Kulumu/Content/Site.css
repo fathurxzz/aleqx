@@ -209,7 +209,7 @@ table.title .a-center div {
     float: left;
 }
 
-.image 
+.frameContainer .image-container 
 {
     position: absolute;
     margin-top: 16px;

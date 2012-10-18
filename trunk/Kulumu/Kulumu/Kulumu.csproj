@@ -94,6 +94,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AdvertisingPanel.cs" />
     <Compile Include="Models\ArticleValidation.cs" />
+    <Compile Include="Models\CaruselFrame.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">

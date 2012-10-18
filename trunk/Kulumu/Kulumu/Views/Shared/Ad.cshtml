@@ -1,4 +1,6 @@
-﻿@using Kulumu.Helpers
+﻿@using Kulumu
+@using Kulumu.Helpers
+@using SiteExtensions.Graphics
 @model Kulumu.Models.AdvertisingPanel
 <div class="add-panel">
     <div class="left">
@@ -33,32 +35,26 @@
                     @Html.ActionLink("Все новости", "Articles", "Home", new { area = "" }, null) &raquo;
                 </div>
             </div>
-            
             <div class="presentDiscount">
-                
             </div>
-
             <div class="discount">
-                
                 <div class="txt">
-                                        <div class="seal">
+                    <div class="seal">
                         
                     </div>
-
-                    <div class="title">Ковер шелковый "Самолетикус"</div>
-                    <div class="description">
-                        Ручная работа, Индия, Модерн.<br/>
-                        Размеры: от 0,70х1,40 до 2,50х3,50
+                    <div class="title">
+                         @Model.DiscountProduct.Title
                     </div>
-
+                    <div class="description">
+                        @Html.Raw(Model.DiscountProduct.Description)
+                    </div>
                 </div>
                 <div class="discount-frame">
+                    <div class="image-frame"></div>
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.DiscountProduct.ImageSource, SiteSettings.GetThumbnail("discount"), ScaleMode.Crop))
                     
                 </div>
-
             </div>
-            
-            
         </div>
         <div class="pattern">
         </div>

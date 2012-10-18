@@ -1,9 +1,16 @@
-﻿@model string
+﻿@using Kulumu
+@using SiteExtensions.Graphics
+@model Kulumu.Models.CaruselFrame
 <div class="frameContainer">
-    <div class="image">
+    <div class="image-container">
+        @if(Model.Products.Any())
+        {
+            var product = Model.Products.First();
+            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage"), ScaleMode.Crop))
+        }
     </div>
     <div class="frame">
-        @Html.Partial("Title", Model)
+        @Html.Partial("Title", Model.Title)
         <div class="showAll">
             <a href="#">Смотреть все</a> &raquo;
         </div>
