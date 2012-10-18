@@ -176,4 +176,16 @@
     background: url(img/seal.gif);
     position: absolute;
     margin-top: 105px;
+    
+}
+
+.discount .txt .seal .text {
+    color: #fff;
+    padding-top: 24px;
+    width: 40px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: center;
+    font-family: PTNarrow;
 }

@@ -60,7 +60,11 @@ namespace Kulumu.Models
                 RandomArticle = context.Article.RandomElement(new Random());
             }
             Products = context.Product.ToList();
-            SingleDiscountProduct = Products.RandomElement(new Random());
+            
+            if (Products.Any(p => p.Discount))
+            {
+                SingleDiscountProduct = Products.Where(p => p.Discount).RandomElement(new Random());
+            }
         }
     }
 }

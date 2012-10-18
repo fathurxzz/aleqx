@@ -17,6 +17,9 @@
             <div style="position: absolute; padding-left: 10px; margin-top: -20px;">
                 @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
             </div>
+            <div style="position: absolute; padding-left: 650px; margin-top: -20px;">
+                @Html.ActionLink("Администрирование ковров", "Index", "Product", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+            </div>
         }
         <div class="attention">
         </div>
@@ -37,24 +40,29 @@
             </div>
             <div class="presentDiscount">
             </div>
-            <div class="discount">
-                <div class="txt">
-                    <div class="seal">
-                        
+            @if (Model.DiscountProduct != null)
+            {
+                <div class="discount">
+                    <div class="txt">
+                        <div class="seal">
+                            <div class="text">
+                                @Html.Raw(Model.DiscountProduct.Price)
+                            </div>
+                        </div>
+                        <div class="title">
+                            @Model.DiscountProduct.Title
+                        </div>
+                        <div class="description">
+                            @Html.Raw(Model.DiscountProduct.Description)
+                        </div>
                     </div>
-                    <div class="title">
-                         @Model.DiscountProduct.Title
-                    </div>
-                    <div class="description">
-                        @Html.Raw(Model.DiscountProduct.Description)
-                    </div>
-                </div>
-                <div class="discount-frame">
-                    <div class="image-frame"></div>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.DiscountProduct.ImageSource, SiteSettings.GetThumbnail("discount"), ScaleMode.Crop))
+                    <div class="discount-frame">
+                        <div class="image-frame"></div>
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.DiscountProduct.ImageSource, SiteSettings.GetThumbnail("discount"), ScaleMode.Crop))
                     
+                    </div>
                 </div>
-            </div>
+            }
         </div>
         <div class="pattern">
         </div>
