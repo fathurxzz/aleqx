@@ -257,3 +257,9 @@ table.title .a-center div {
     background-color: #fff;
     border: 5px solid #ccc;
 }
+
+
+.field-validation-error
+{
+    color: red !important;
+}

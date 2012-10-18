@@ -44,7 +44,7 @@
                     @Html.LabelFor(model => model.Description)
                 </td>
                 <td>
-                    @Html.TextAreaFor(model => model.Description)
+                    @Html.TextAreaFor(model => model.Description, 5, 40, null)
                     @Html.ValidationMessageFor(model => model.Description)
                 </td>
             </tr>

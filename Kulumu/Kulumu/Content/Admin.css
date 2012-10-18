@@ -78,41 +78,6 @@ a.adminLink
 }
 
 
-#adminPanel
-{
-    width: 300px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 20px;
-    z-index: 200;
-}
-#adminPanel .links
-{
-    background: red;
-    text-align: center;
-    color: White;
-    padding-bottom: 3px;
-}
-#adminPanel .links a
-{
-    color: White;
-    font-size: 12px;
-    margin: 0 10px;
-}
-#adminPanel .handle
-{
-    background: transparent url(img/handleBg.gif) no-repeat;
-    width: 200px;
-    height: 20px;
-    position: relative;
-    margin: 0 auto 0 40px;
-    color: White;
-    text-align: center;
-    font-size: 13px;
-    font-family: Arial;
-}
-
 .childitem {
     padding-left: 30px;
 }
@@ -142,4 +107,8 @@ a.adminLink
 .manageImageLinkContainer {
     position: absolute;
     left: 20px;
+}
+
+#cke_Text {
+    width: 700px;
 }

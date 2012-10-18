@@ -22,10 +22,10 @@ namespace Kulumu.Models
         [DisplayName("Заголовок")]
         public string Title { get; set; }
 
-        [DisplayName("Краткое описание")]
+        [DisplayName("Краткое описание (отображается только в блоке со случайной новостью)")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Текст")]
         public string Text { get; set; }
 
     }
