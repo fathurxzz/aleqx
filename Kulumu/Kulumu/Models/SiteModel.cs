@@ -20,9 +20,11 @@ namespace Kulumu.Models
         public Article Article { get; set; }
         public Article RandomArticle { get; set; }
         public List<Article> Articles { get; set; }
+        public Product SingleDiscountProduct { get; set; }
+        public List<Product> Products { get; set; }
 
 
-        public SiteModel(SiteContainer context, string contentName, bool showArticles=false)
+        public SiteModel(SiteContainer context, string contentName, bool showArticles = false)
         {
             Title = "Килими";
             if (contentName == null)
@@ -37,7 +39,7 @@ namespace Kulumu.Models
                     throw new HttpNotFoundException();
                 }
             }
-            
+
             if (!string.IsNullOrEmpty(Content.Title))
                 Title += " » " + Content.Title;
 
@@ -48,15 +50,17 @@ namespace Kulumu.Models
                 IsHomePage = true;
             }
 
-            if(showArticles)
+            if (showArticles)
             {
                 Articles = context.Article.ToList();
             }
 
-            if(context.Article.FirstOrDefault()!=null)
+            if (context.Article.FirstOrDefault() != null)
             {
                 RandomArticle = context.Article.RandomElement(new Random());
             }
+            Products = context.Product.ToList();
+            SingleDiscountProduct = Products.RandomElement(new Random());
         }
     }
 }
