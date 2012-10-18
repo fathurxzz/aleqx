@@ -24,20 +24,23 @@
         <div class="attention">
         </div>
         <div class="content">
-            <div class="randomArticle">
-                <div class="date">
-                    @Model.Article.Date.ToCustomDate()
+            @if (Model.Article != null)
+            {
+                <div class="randomArticle">
+                    <div class="date">
+                        @Model.Article.Date.ToCustomDate()
+                    </div>
+                    <div class="title">
+                        @Html.ActionLink(Model.Article.Title, "Articles", "Home", new {area = ""}, null)
+                    </div>
+                    <div class="description">
+                        @Model.Article.Description
+                    </div>
+                    <div class="allNewsLink">
+                        @Html.ActionLink("Все новости", "Articles", "Home", new {area = ""}, null) &raquo;
+                    </div>
                 </div>
-                <div class="title">
-                    @Html.ActionLink(Model.Article.Title, "Articles", "Home", new { area = "" }, null)
-                </div>
-                <div class="description">
-                    @Model.Article.Description
-                </div>
-                <div class="allNewsLink">
-                    @Html.ActionLink("Все новости", "Articles", "Home", new { area = "" }, null) &raquo;
-                </div>
-            </div>
+            }
             <div class="presentDiscount">
             </div>
             @if (Model.DiscountProduct != null)
