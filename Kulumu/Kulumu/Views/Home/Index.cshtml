@@ -2,19 +2,17 @@
 @model SiteModel 
 @section Add
 {
-    @Html.Partial("Ad")
+    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle })
 }
-
 @section About
 {
     @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-
-
-
 <div class="frames">
-                @Html.Partial("Frame","тренды сезона")
-                <div class="separator"></div>
-                @Html.Partial("Frame","кое-что из ассортимента")
-                <div class="clear"></div>
-            </div>
+    @Html.Partial("Frame", "тренды сезона")
+    <div class="separator">
+    </div>
+    @Html.Partial("Frame", "кое-что из ассортимента")
+    <div class="clear">
+    </div>
+</div>

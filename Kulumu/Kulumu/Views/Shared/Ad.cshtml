@@ -1,4 +1,6 @@
-﻿<div class="add-panel">
+﻿@using Kulumu.Helpers
+@model Kulumu.Models.AdvertisingPanel
+<div class="add-panel">
     <div class="left">
     </div>
     <div class="center">
@@ -8,17 +10,55 @@
     <div class="right">
     </div>
     <div class="content-panel">
-    
-    @if(Request.IsAuthenticated)
-            {
-                <div style="position: absolute;  padding-left: 10px; margin-top: -20px;">
-                @Html.ActionLink("Редактировать главную страницу","Edit","Content",new{area="Admin",id="main"},new{@class="adminLink"})
-                </div>
-            }
-
+        @if (Request.IsAuthenticated)
+        {
+            <div style="position: absolute; padding-left: 10px; margin-top: -20px;">
+                @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+            </div>
+        }
         <div class="attention">
         </div>
         <div class="content">
+            <div class="randomArticle">
+                <div class="date">
+                    @Model.Article.Date.ToCustomDate()
+                </div>
+                <div class="title">
+                    @Html.ActionLink(Model.Article.Title, "Articles", "Home", new { area = "" }, null)
+                </div>
+                <div class="description">
+                    @Model.Article.Description
+                </div>
+                <div class="allNewsLink">
+                    @Html.ActionLink("Все новости", "Articles", "Home", new { area = "" }, null) &raquo;
+                </div>
+            </div>
+            
+            <div class="presentDiscount">
+                
+            </div>
+
+            <div class="discount">
+                
+                <div class="txt">
+                                        <div class="seal">
+                        
+                    </div>
+
+                    <div class="title">Ковер шелковый "Самолетикус"</div>
+                    <div class="description">
+                        Ручная работа, Индия, Модерн.<br/>
+                        Размеры: от 0,70х1,40 до 2,50х3,50
+                    </div>
+
+                </div>
+                <div class="discount-frame">
+                    
+                </div>
+
+            </div>
+            
+            
         </div>
         <div class="pattern">
         </div>
