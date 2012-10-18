@@ -10,7 +10,7 @@
                 }
             </td>
             <td class="second">
-                @Html.ActionLink("наши новости", "Index", "Home", new { area = "", id = "articles" }, null)
+                @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
                 @if (Request.IsAuthenticated)
                 {
                     <br />

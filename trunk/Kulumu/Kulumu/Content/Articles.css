@@ -1,0 +1,25 @@
+﻿.articles
+{
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.article
+{
+    padding: 20px 0;
+}
+
+.article .date
+{
+    font-style: italic;
+}
+
+.article .title
+{
+    font-weight: bold;
+}
+
+.article .text
+{
+}

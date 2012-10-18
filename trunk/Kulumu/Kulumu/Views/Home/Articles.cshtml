@@ -1,0 +1,32 @@
+﻿@using Kulumu.Helpers
+@using Kulumu.Models
+@model SiteModel
+@section Add
+{
+    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle })
+}
+@section About
+{
+    @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+}
+<div class="articles">
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
+    }
+    @foreach (var item in Model.Articles.OrderByDescending(a => a.Date))
+    {
+        <div class="article">
+            <div class="date">@item.Date.ToCustomDate()</div>
+            <div class="title">@item.Title</div>
+            <div class="text">@Html.Raw(item.Text)</div>
+            @if (Request.IsAuthenticated)
+            {
+                <div>
+                    @Html.ActionLink("Редактировать", "Edit", "Article", new { area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+                    @Html.ActionLink("Удалить", "Delete", "Article", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить новость?')" }) 
+                </div>
+            }
+        </div>
+    }
+</div>

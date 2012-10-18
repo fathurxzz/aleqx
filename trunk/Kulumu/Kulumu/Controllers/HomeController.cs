@@ -21,5 +21,14 @@ namespace Kulumu.Controllers
                 return View(model);
             }
         }
+
+        public ActionResult Articles()
+        {
+            using (var context = new SiteContainer())
+            {
+                SiteModel model = new SiteModel(context, "articles", true);
+                return View(model);
+            }
+        }
     }
 }

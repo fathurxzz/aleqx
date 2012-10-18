@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Kulumu.Helpers;
 using SiteExtensions;
 
 namespace Kulumu.Models
@@ -17,11 +18,11 @@ namespace Kulumu.Models
 
         public Content Content { get; set; }
         public Article Article { get; set; }
-        public Article CustomArticle { get; set; }
+        public Article RandomArticle { get; set; }
         public List<Article> Articles { get; set; }
 
 
-        public SiteModel(SiteContainer context, string contentName)
+        public SiteModel(SiteContainer context, string contentName, bool showArticles=false)
         {
             Title = "Килими";
             if (contentName == null)
@@ -45,6 +46,16 @@ namespace Kulumu.Models
             if (Content.MainPage)
             {
                 IsHomePage = true;
+            }
+
+            if(showArticles)
+            {
+                Articles = context.Article.ToList();
+            }
+
+            if(context.Article.FirstOrDefault()!=null)
+            {
+                RandomArticle = context.Article.RandomElement(new Random());
             }
         }
     }
