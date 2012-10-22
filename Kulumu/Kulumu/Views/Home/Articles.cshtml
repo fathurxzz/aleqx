@@ -9,7 +9,9 @@
 {
     @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-<div class="articles">
+<div class="mainFrame">
+    <div class="top"></div>
+    <div class="middle">
     @if (Request.IsAuthenticated)
     {
         @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
@@ -29,4 +31,6 @@
             }
         </div>
     }
+    </div>
+    <div class="bottom"></div>
 </div>

@@ -4,7 +4,7 @@
 @model Kulumu.Models.CaruselFrame
 <div class="frameContainer">
     <div class="image-container">
-        @if(Model.Products.Any())
+        @if (Model.Products.Any())
         {
             var product = Model.Products.RandomElement(new Random());
             @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage"), ScaleMode.Crop))
@@ -13,7 +13,8 @@
     <div class="frame">
         @Html.Partial("Title", Model.Title)
         <div class="showAll">
-            <a href="#">Смотреть все</a> &raquo;
+            @Html.ActionLink("Смотреть все", "Gallery", "Home", new { area = "", id = Model.CategoryId }, null)
+            &raquo;
         </div>
     </div>
 </div>

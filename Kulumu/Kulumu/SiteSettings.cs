@@ -16,11 +16,12 @@ namespace Kulumu
                               {
                                   {"galleryImage",new PictureSize {Height = 300,Width = 451}},
                                   {"preview",new PictureSize {Width = 200}},
-                                  {"discount",new PictureSize {Width = 293, Height = 193}}
+                                  {"discount",new PictureSize {Width = 293, Height = 193}},
+                                  {"galleryPreview",new PictureSize {Width = 256, Height = 166}}
                               };
         }
-        
-        
+
+
         public static ThumbnailPicture GetThumbnail(string cacheFolder)
         {
             if (Thumbnails.ContainsKey(cacheFolder))

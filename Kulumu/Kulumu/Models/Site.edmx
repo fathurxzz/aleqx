@@ -58,6 +58,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
   </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
@@ -130,6 +131,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Site.CategoryProduct" FromRole="Category" ToRole="Product" />
+          <Property Type="String" Name="Description" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -194,6 +196,7 @@
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -220,10 +223,10 @@
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.25" PointY="0.75" Height="2.4140429687499996" />
         <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="4.25" PointY="3.5" Height="1.9210009765624996" />
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.375" PointY="3.125" Height="2.2496956380208326" />
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="1.375" PointY="0.75" Height="1.427958984375" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="1.375" PointY="0.75" Height="1.592306315104167" />
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="2.875" PointY="1.4639794921875002" />
-          <ConnectorPoint PointX="4.25" PointY="1.4639794921875002" />
+          <ConnectorPoint PointX="2.875" PointY="1.5461531575520835" />
+          <ConnectorPoint PointX="4.25" PointY="1.5461531575520835" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

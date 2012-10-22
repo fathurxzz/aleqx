@@ -1,59 +1,69 @@
-﻿* {
+﻿*
+{
     padding: 0;
     margin: 0;
 }
 
-body {
+body
+{
     background: url('img/bg.gif') repeat;
     font-family: Arial;
 }
 
-.clear {
+.clear
+{
     clear: both;
 }
 
-img {
+img
+{
     border: none;
 }
 
 
-.page {
+.page
+{
     position: relative;
     margin: 0 auto;
     width: 1075px;
 }
 
-.header {
+.header
+{
     width: 1075px;
     height: 76px;
-    
 }
 
-.header a {
+.header a
+{
     text-transform: uppercase;
     color: #fff;
 }
 
-.header .left, .header .right {
+.header .left, .header .right
+{
     width: 35px;
     height: 86px;
     position: absolute;
 }
 
-.header .left {
+.header .left
+{
     position: absolute;
     top: 0;
     left: 0;
     background: url('img/header-bg-left.png');
 }
-.header .right {
+.header .right
+{
     top: 0;
     left: 1039px;
     background: url('img/header-bg-right.png');
 }
 
 
-.header .center {
+.header .center
+{
     position: absolute;
     width: 1004px;
     margin-left: 35px;
@@ -62,7 +72,8 @@ img {
     z-index: 1;
 }
 
-#logo {
+#logo
+{
     position: absolute;
     width: 250px;
     height: 60px;
@@ -74,13 +85,15 @@ img {
 
 
 
-.main-content {
+.main-content
+{
     width: 1003px;
     position: relative;
     margin: 0 auto;
 }
 
-.logo-container {
+.logo-container
+{
     width: 332px;
     height: 113px;
     background: url('img/logo.gif');
@@ -89,7 +102,8 @@ img {
 }
 
 
-.footer {
+.footer
+{
     width: 1113px;
     height: 96px;
     background: url('img/footer-bg.png');
@@ -100,49 +114,54 @@ img {
     color: #fff;
 }
 
-.footer .copy {
+.footer .copy
+{
     position: absolute;
     width: 300px;
     top: 47px;
     left: 57px;
 }
 
-.footer .em {
+.footer .em
+{
     position: absolute;
     width: 200px;
     top: 44px;
     left: 925px;
 }
-.footer .em a {
+.footer .em a
+{
     color: #cecece;
 }
 
 
 
-.about {
+.about
+{
     width: 1003px;
-       position: relative;
+    position: relative;
     margin: 0 auto;
     font-size: 12px;
     font-family: Georgia;
-    
 }
-.about .top {
+.about .top
+{
     background: url('img/about-bg-top.png');
     height: 69px;
 }
 
-.about .main {
+.about .main
+{
     width: 1003px;
     background: url('img/about-bg-main.png') repeat-y;
-    
 }
 
-.about .about-content {
+.about .about-content
+{
     padding: 0 73px 50px 73px;
 }
 
-.about .left 
+.about .left
 {
     position: absolute;
     background: url('img/about-bg-left.gif');
@@ -151,7 +170,8 @@ img {
     margin-left: 3px;
 }
 
-.about .container {
+.about .container
+{
     background-image: url('img/about-bg-right.gif');
     background-position: bottom right;
     background-repeat: no-repeat;
@@ -160,13 +180,15 @@ img {
 
 
 
-.titleContainer {
+.titleContainer
+{
     position: absolute;
     width: 100%;
     margin-top: -22px;
 }
 
-table.title {
+table.title
+{
     margin: 0 auto;
     height: 33px;
     color: #fff;
@@ -175,26 +197,30 @@ table.title {
     font-family: PTNarrowBold;
 }
 
-table.title .a-left {
+table.title .a-left
+{
     width: 63px;
     height: 33px;
     background: url('img/title-bg-left.png');
 }
 
-table.title .a-center {
+table.title .a-center
+{
     font-size: 19px;
     text-transform: uppercase;
     background: url('img/title-bg-center.png') repeat-x;
     height: 33px;
 }
 
-table.title .a-right {
+table.title .a-right
+{
     height: 33px;
     width: 125px;
     background: url('img/title-bg-right.png');
 }
 
-table.title .a-center div {
+table.title .a-center div
+{
     margin-right: -55px;
     margin-top: -4px;
 }
@@ -203,13 +229,14 @@ table.title .a-center div {
 
 
 
-.frameContainer {
+.frameContainer
+{
     width: 488px;
     height: 398px;
     float: left;
 }
 
-.frameContainer .image-container 
+.frameContainer .image-container
 {
     position: absolute;
     margin-top: 16px;
@@ -218,39 +245,45 @@ table.title .a-center div {
     height: 300px;
 }
 
-.frame {
+.frameContainer .frame
+{
     position: absolute;
     width: 488px;
     height: 398px;
     background: url('img/frame.png');
 }
 
-.frame .showAll {
+.frameContainer .frame .showAll
+{
     position: absolute;
     margin-left: 388px;
     font-family: PTNarrow;
     font-size: 12px;
     color: #0072bc;
 }
-.frame .showAll a {
+.frameContainer .frame .showAll a
+{
     color: inherit;
 }
 
-.frames {
+.frames
+{
     padding-bottom: 70px;
 }
 
-.frames .separator {
+.frames .separator
+{
     float: left;
     height: 398px;
     width: 27px;
 }
 
 
-.logOnPanel {
-    position: relative; 
-    margin: 0 auto; 
-    margin-top: 200px; 
+.logOnPanel
+{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 200px;
     margin-bottom: 200px;
     padding: 30px;
     width: 300px;
@@ -263,3 +296,76 @@ table.title .a-center div {
 {
     color: red !important;
 }
+
+
+.mainFrame
+{
+    margin-bottom: 50px;
+}
+
+.mainFrame .middle {
+    padding:30px 70px; 
+}
+
+.mainFrame .top, .mainFrame .bottom
+{
+    width: 1003px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.mainFrame .top
+{
+    height: 153px;
+    background: url('img/gallery-frame-top.png');
+    font-family: Georgia;
+    font-size: 12px;
+}
+
+.mainFrame .bottom
+{
+    height: 117px;
+    background: url('img/gallery-frame-bottom.png');
+}
+
+.mainFrame .middle
+{
+    background: url('img/gallery-frame.gif') repeat-y;
+    width: 863px;
+}
+
+.mainFrame .top .description {
+    padding: 60px 70px 0;
+}
+
+.product {
+    width: 256px;
+    float: left;
+    margin: 23px;
+}
+
+.cont {
+    width: 256px;
+    height: 166px;
+}
+
+.product .image {
+    width: 256px;
+    height: 166px;
+    position: absolute;
+}
+
+.product .frame
+{
+    position: absolute;
+    width: 256px;
+    height: 166px;
+    background: url('img/gallry-image-frame.png');
+}
+
+.products {
+    width: 906px;
+    margin-left: -22px;
+}
+
+
