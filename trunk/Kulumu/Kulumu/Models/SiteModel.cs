@@ -22,6 +22,7 @@ namespace Kulumu.Models
         public List<Article> Articles { get; set; }
         public Product SingleDiscountProduct { get; set; }
         public List<Product> Products { get; set; }
+        public Category Category { get; set; }
 
 
         public SiteModel(SiteContainer context, string contentName, bool showArticles = false)
@@ -59,6 +60,7 @@ namespace Kulumu.Models
             {
                 RandomArticle = context.Article.RandomElement(new Random());
             }
+            
             Products = context.Product.ToList();
             
             if (Products.Any(p => p.Discount))

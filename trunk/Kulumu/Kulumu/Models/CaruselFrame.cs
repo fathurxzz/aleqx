@@ -9,5 +9,6 @@ namespace Kulumu.Models
     {
         public string Title { get; set; }
         public IEnumerable<Product> Products { get; set; }
+        public int CategoryId { get; set; }
     }
 }
