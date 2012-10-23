@@ -1,5 +1,10 @@
 ﻿@{
-    //Response.Redirect("~/soon.htm");
+    
+    if (Request.Cookies["rakurs"] == null)
+    {
+        Response.Redirect("~/soon.htm");
+    }
+
     
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
