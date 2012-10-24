@@ -14,7 +14,7 @@ namespace SiteExtensionsTest
         {
             Thumbnails = new Dictionary<string, PictureSize>
                               {
-                                  {"thumb", new PictureSize {Height = 100,Width = 200}},
+                                  {"thumb", new PictureSize {Height = 200,Width = 500}},
                                   {"thumb2", new PictureSize {Height = 200,Width = 100}},
                                   {"thumb3", new PictureSize {Height = 100,Width = 200}},
                                   {"thumb4", new PictureSize {Height = 100,Width = 200}},
