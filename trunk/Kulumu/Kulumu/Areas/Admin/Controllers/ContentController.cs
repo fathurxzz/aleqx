@@ -26,6 +26,7 @@ namespace Kulumu.Areas.Admin.Controllers
                 var content = context.Content.First(c => c.Name == id);
                 TryUpdateModel(content, new[] {"Title","DescriptionTitle","SeoDescription","SeoKeywords"});
                 content.Description = HttpUtility.HtmlDecode(form["Description"]);
+                content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home", new {area = "", id = content.Name});
             }
