@@ -376,14 +376,16 @@ namespace Kulumu.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="bottomDescriptionTitle">Initial value of the BottomDescriptionTitle property.</param>
-        /// <param name="visible">Initial value of the Visible property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String bottomDescriptionTitle, global::System.Boolean visible)
+        /// <param name="specialCategory">Initial value of the SpecialCategory property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String bottomDescriptionTitle, global::System.Boolean specialCategory, global::System.String name)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
             category.BottomDescriptionTitle = bottomDescriptionTitle;
-            category.Visible = visible;
+            category.SpecialCategory = specialCategory;
+            category.Name = name;
             return category;
         }
 
@@ -518,24 +520,48 @@ namespace Kulumu.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean Visible
+        public global::System.Boolean SpecialCategory
         {
             get
             {
-                return _Visible;
+                return _SpecialCategory;
             }
             set
             {
-                OnVisibleChanging(value);
-                ReportPropertyChanging("Visible");
-                _Visible = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Visible");
-                OnVisibleChanged();
+                OnSpecialCategoryChanging(value);
+                ReportPropertyChanging("SpecialCategory");
+                _SpecialCategory = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SpecialCategory");
+                OnSpecialCategoryChanged();
             }
         }
-        private global::System.Boolean _Visible;
-        partial void OnVisibleChanging(global::System.Boolean value);
-        partial void OnVisibleChanged();
+        private global::System.Boolean _SpecialCategory;
+        partial void OnSpecialCategoryChanging(global::System.Boolean value);
+        partial void OnSpecialCategoryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
 
         #endregion
     
