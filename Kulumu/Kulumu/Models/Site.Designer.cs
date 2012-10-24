@@ -460,6 +460,54 @@ namespace Kulumu.Models
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BottomDescription
+        {
+            get
+            {
+                return _BottomDescription;
+            }
+            set
+            {
+                OnBottomDescriptionChanging(value);
+                ReportPropertyChanging("BottomDescription");
+                _BottomDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BottomDescription");
+                OnBottomDescriptionChanged();
+            }
+        }
+        private global::System.String _BottomDescription;
+        partial void OnBottomDescriptionChanging(global::System.String value);
+        partial void OnBottomDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BottomDescriptionTitle
+        {
+            get
+            {
+                return _BottomDescriptionTitle;
+            }
+            set
+            {
+                OnBottomDescriptionTitleChanging(value);
+                ReportPropertyChanging("BottomDescriptionTitle");
+                _BottomDescriptionTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BottomDescriptionTitle");
+                OnBottomDescriptionTitleChanged();
+            }
+        }
+        private global::System.String _BottomDescriptionTitle;
+        partial void OnBottomDescriptionTitleChanging(global::System.String value);
+        partial void OnBottomDescriptionTitleChanged();
 
         #endregion
     

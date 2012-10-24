@@ -26,6 +26,25 @@
                     @Html.ValidationMessageFor(model => model.Description)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.BottomDescriptionTitle)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.BottomDescriptionTitle)
+                    @Html.ValidationMessageFor(model => model.BottomDescriptionTitle)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.BottomDescription)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.BottomDescription)
+                    @Html.ValidationMessageFor(model => model.BottomDescription)
+                </td>
+            </tr>
+            
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
