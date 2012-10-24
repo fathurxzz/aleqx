@@ -148,6 +148,8 @@
     <Content Include="Content\img\discount-frame.png" />
     <Content Include="Content\img\footer-bg.png" />
     <Content Include="Content\img\frame.png" />
+    <Content Include="Content\img\gallery-frame-bottom.png" />
+    <Content Include="Content\img\gallery-frame-top.png" />
     <Content Include="Content\img\gallery-frame.gif" />
     <Content Include="Content\img\gallry-image-frame.png" />
     <Content Include="Content\img\header-bg-left.png" />
