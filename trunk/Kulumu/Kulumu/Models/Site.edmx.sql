@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/22/2012 11:37:01
+-- Date Created: 10/24/2012 10:05:22
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -77,7 +77,9 @@ CREATE TABLE `Content` (
 CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` longtext  NOT NULL,
-    `Description` longtext  NULL
+    `Description` longtext  NULL,
+    `BottomDescription` longtext  NULL,
+    `BottomDescriptionTitle` longtext  NULL
 );
 
 

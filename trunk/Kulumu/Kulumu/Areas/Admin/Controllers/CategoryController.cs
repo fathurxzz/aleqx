@@ -27,7 +27,7 @@ namespace Kulumu.Areas.Admin.Controllers
                 using (var context = new SiteContainer())
                 {
                     var category = context.Category.First(c => c.Id == id);
-                    TryUpdateModel(category, new[] {"Description"});
+                    TryUpdateModel(category, new[] {"Description","BottomDescription","BottomDescriptionTitle"});
                     context.SaveChanges();
                     return RedirectToAction("Gallery", "Home", new {area = "", id = category.Id});
                 }
