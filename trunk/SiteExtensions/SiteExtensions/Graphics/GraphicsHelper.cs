@@ -236,7 +236,7 @@ namespace SiteExtensions.Graphics
             }
         }
 
-        public static string GetCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, bool useBgImage, int delta)
+        public static string GetCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail)
         {
             if (string.IsNullOrEmpty(fileName) || !File.Exists(Path.Combine(HttpContext.Current.Server.MapPath(originalPath), fileName)))
             {
@@ -257,7 +257,7 @@ namespace SiteExtensions.Graphics
                 return result;
             }
 
-            if (CacheImage(originalPath, fileName, cacheFolder, thumbnail.PictureSize, scaleMode, useBgImage, delta))
+            if (CacheImage(originalPath, fileName, cacheFolder, thumbnail.PictureSize, thumbnail.ScaleMode, thumbnail.UseBackgroundImage, thumbnail.Offset))
             {
                 GetImageSize(result);
                 return result;
@@ -312,33 +312,17 @@ namespace SiteExtensions.Graphics
             IOHelper.DeleteFile("~/Content/tmpImages", fileName);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="originalPath"></param>
-        /// <param name="fileName"></param>
-        /// <param name="thumbnail"></param>
-        /// <param name="scaleMode"></param>
-        /// <returns></returns>
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, int delta)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail)
         {
-            return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode, delta, false);
+            return CachedImage(helper, originalPath, fileName, thumbnail, null);
         }
 
-
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, int delta, bool useBgImage)
-        {
-            return CachedImage(helper, originalPath, fileName, thumbnail, scaleMode,delta, false, null);
-        }
-
-
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode, int delta, bool useBgImage, string className)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, string className)
         {
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
             //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail, scaleMode, useBgImage, delta), fileName, className, _width, _height);
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail), fileName, className, _width, _height);
             return sb.ToString();
         }
 

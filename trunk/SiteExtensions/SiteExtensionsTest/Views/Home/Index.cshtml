@@ -34,7 +34,7 @@
             string filename = i + ".jpg";
             <td>
                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb"), ScaleMode.Insert,5,false,"aaa"))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb")))
                 </a>
             </td>
         }

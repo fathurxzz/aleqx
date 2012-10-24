@@ -10,13 +10,15 @@ namespace SiteExtensions.Graphics
     /// </summary>
     public class ThumbnailPicture
     {
-        /// <summary>
-        /// 
-        /// </summary>
         public PictureSize PictureSize { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         public string CacheFolder { get; set; }
+
+        public int Offset { get; set; }
+
+        public ScaleMode ScaleMode { get; set; }
+
+        public bool UseBackgroundImage { get; set; }
+
     }
 }
