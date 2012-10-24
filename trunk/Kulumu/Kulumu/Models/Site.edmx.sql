@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/24/2012 21:30:21
+-- Date Created: 10/24/2012 21:50:20
 -- Generated from EDMX file: D:\projects\Kulumu\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -78,7 +78,8 @@ CREATE TABLE `Category` (
     `Description` longtext  NULL,
     `BottomDescription` longtext  NULL,
     `BottomDescriptionTitle` varchar( 100 )  NOT NULL,
-    `Visible` bool  NOT NULL
+    `SpecialCategory` bool  NOT NULL,
+    `Name` varchar( 100 )  NOT NULL
 );
 
 
