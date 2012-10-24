@@ -61,7 +61,7 @@
                     </div>
                     <div class="discount-frame">
                         <div class="image-frame"></div>
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.DiscountProduct.ImageSource, SiteSettings.GetThumbnail("discount"), ScaleMode.Crop))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.DiscountProduct.ImageSource, SiteSettings.GetThumbnail("discount")))
                     
                     </div>
                 </div>

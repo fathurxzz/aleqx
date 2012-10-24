@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/24/2012 10:05:22
+-- Date Created: 10/24/2012 18:49:44
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -69,7 +69,8 @@ CREATE TABLE `Content` (
     `DescriptionTitle` longtext  NOT NULL,
     `MainPage` bool  NOT NULL,
     `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL
+    `SeoKeywords` longtext  NULL,
+    `Text` longtext  NULL
 );
 
 -- Creating table 'Category'

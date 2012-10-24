@@ -8,12 +8,29 @@
 {
     @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-
-<div class="frames">
-    @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона",CategoryId = 1})
-    <div class="separator">
+@if (Model.Content.MainPage)
+{
+    <div class="frames">
+        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона", CategoryId = 1 })
+        <div class="separator">
+        </div>
+        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 2), Title = "кое-что из ассортимента", CategoryId = 2 })
+        <div class="clear">
+        </div>
     </div>
-    @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 2), Title = "кое-что из ассортимента",CategoryId = 2})
-    <div class="clear">
+}
+else
+{
+    <div class="mainFrame">
+        <div class="top">
+            @Html.Partial("Title", Model.Content.Title)
+        </div>
+        <div class="middle">
+            <div class="text">
+                @Html.Raw(Model.Content.Text)
+            </div>
+        </div>
+        <div class="bottom">
+        </div>
     </div>
-</div>
+}

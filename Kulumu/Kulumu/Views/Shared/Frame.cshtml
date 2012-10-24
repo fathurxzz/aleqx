@@ -7,7 +7,7 @@
         @if (Model.Products.Any())
         {
             var product = Model.Products.RandomElement(new Random());
-            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage"), ScaleMode.Crop))
+            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
         }
     </div>
     <div class="frame">

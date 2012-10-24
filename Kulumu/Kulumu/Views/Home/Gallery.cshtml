@@ -32,7 +32,7 @@
                 <div class="product">
                     <div class="cont">
                         <div class="image">
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview"), ScaleMode.Crop))
+                            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview")))
                         </div>
                         <div class="frame">
                         </div>

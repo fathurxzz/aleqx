@@ -51,6 +51,7 @@
     <Property Name="MainPage" Type="bool" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -125,6 +126,7 @@
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
+          <Property Type="String" Name="Text" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -192,6 +194,7 @@
           <ScalarProperty Name="MainPage" ColumnName="MainPage" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -228,7 +231,7 @@
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.25" PointY="0.75" Height="2.4140429687499996" />
         <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="4.25" PointY="3.5" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.375" PointY="3.125" Height="2.2496956380208326" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.375" PointY="3.125" Height="2.4140429687499996" />
         <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="1.375" PointY="0.75" Height="1.9210009765625" />
         <AssociationConnector Association="Site.CategoryProduct">
           <ConnectorPoint PointX="2.875" PointY="1.71050048828125" />

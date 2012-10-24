@@ -30,6 +30,15 @@
             </tr>
             <tr>
                 <td>
+                    @Html.LabelFor(model => model.Text)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Text)
+                </td>
+            </tr>
+            <tr>
+                <td>
                     @Html.LabelFor(model => model.Description)
                 </td>
                 <td>

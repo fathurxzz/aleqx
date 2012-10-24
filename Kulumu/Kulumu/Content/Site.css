@@ -334,6 +334,11 @@ table.title .a-center div
     width: 863px;
 }
 
+.mainFrame .middle .text {
+    font-family: Georgia;
+    font-size: 12px;
+}
+
 .mainFrame .top .description {
     padding: 60px 70px 0;
 }
