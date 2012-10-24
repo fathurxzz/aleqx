@@ -7,13 +7,13 @@
 
 <script type="text/javascript">
 
-    $(function () {
-        
-        $('img.aaa').load(function () {
-            alert("1");
-        });
+//    $(function () {
+//        
+//        $('img.aaa').load(function () {
+//            alert("1");
+//        });
 
-    });
+//    });
 
     
 
@@ -29,12 +29,12 @@
         
         @*<img src="../../Content/Images/1.jpg"/>*@
 
-        @for (int i = 1; i <= 3; i++ )
+        @for (int i = 1; i <= 1; i++ )
         {
             string filename = i + ".jpg";
             <td>
                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb"), ScaleMode.Corp,false,"aaa"))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb"), ScaleMode.Insert,5,false,"aaa"))
                 </a>
             </td>
         }
