@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/24/2012 18:49:44
--- Generated from EDMX file: D:\AlexK\projects\Kulumu\Kulumu\Models\Site.edmx
+-- Date Created: 10/24/2012 21:30:21
+-- Generated from EDMX file: D:\projects\Kulumu\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `kulumu`;
-CREATE DATABASE `kulumu`;
-USE `kulumu`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -77,10 +74,11 @@ CREATE TABLE `Content` (
 
 CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
     `Description` longtext  NULL,
     `BottomDescription` longtext  NULL,
-    `BottomDescriptionTitle` longtext  NULL
+    `BottomDescriptionTitle` varchar( 100 )  NOT NULL,
+    `Visible` bool  NOT NULL
 );
 
 

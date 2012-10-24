@@ -18,7 +18,7 @@ namespace Kulumu
                                   {"galleryImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 300,Width = 451}, CacheFolder = "galleryImage", ScaleMode = ScaleMode.Insert, Offset = 12}},
                                   {"preview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 200}, CacheFolder = "preview", ScaleMode = ScaleMode.FixedWidth}},
                                   {"discount",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 293, Height = 193}, CacheFolder = "discount", ScaleMode = ScaleMode.Insert, Offset = 8}},
-                                  {"galleryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 256, Height = 166}, CacheFolder = "galleryPreview", ScaleMode =  ScaleMode.Crop}}
+                                  {"galleryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 256, Height = 166}, CacheFolder = "galleryPreview", ScaleMode =  ScaleMode.Insert, Offset = 5}}
                               };
         }
 

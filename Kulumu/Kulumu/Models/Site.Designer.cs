@@ -375,11 +375,15 @@ namespace Kulumu.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String title)
+        /// <param name="bottomDescriptionTitle">Initial value of the BottomDescriptionTitle property.</param>
+        /// <param name="visible">Initial value of the Visible property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String title, global::System.String bottomDescriptionTitle, global::System.Boolean visible)
         {
             Category category = new Category();
             category.Id = id;
             category.Title = title;
+            category.BottomDescriptionTitle = bottomDescriptionTitle;
+            category.Visible = visible;
             return category;
         }
 
@@ -488,7 +492,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String BottomDescriptionTitle
         {
@@ -500,7 +504,7 @@ namespace Kulumu.Models
             {
                 OnBottomDescriptionTitleChanging(value);
                 ReportPropertyChanging("BottomDescriptionTitle");
-                _BottomDescriptionTitle = StructuralObject.SetValidValue(value, true);
+                _BottomDescriptionTitle = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("BottomDescriptionTitle");
                 OnBottomDescriptionTitleChanged();
             }
@@ -508,6 +512,30 @@ namespace Kulumu.Models
         private global::System.String _BottomDescriptionTitle;
         partial void OnBottomDescriptionTitleChanging(global::System.String value);
         partial void OnBottomDescriptionTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Visible
+        {
+            get
+            {
+                return _Visible;
+            }
+            set
+            {
+                OnVisibleChanging(value);
+                ReportPropertyChanging("Visible");
+                _Visible = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Visible");
+                OnVisibleChanged();
+            }
+        }
+        private global::System.Boolean _Visible;
+        partial void OnVisibleChanging(global::System.Boolean value);
+        partial void OnVisibleChanged();
 
         #endregion
     
