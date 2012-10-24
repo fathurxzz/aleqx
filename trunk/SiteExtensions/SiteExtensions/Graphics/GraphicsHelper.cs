@@ -74,14 +74,12 @@ namespace SiteExtensions.Graphics
         private static Rectangle CalculateDestRect(Size sourceImage, Size thumbImage, ScaleMode scaleMode, int delta)
         {
             double hvr = (double)sourceImage.Width / (double)sourceImage.Height;
-
-            delta = delta*2;
-
+            
             switch (scaleMode)
             {
                 case ScaleMode.Insert:
-                    thumbImage.Width -= delta;
-                    thumbImage.Height -= delta;
+                    thumbImage.Width -= delta*2;
+                    thumbImage.Height -= delta*2;
 
                     double hRatio = (double)thumbImage.Height / sourceImage.Height;
                     double wRatio = (double)thumbImage.Width / sourceImage.Width;
@@ -90,13 +88,13 @@ namespace SiteExtensions.Graphics
                     var resultSourceImageHeight = (int)(sourceImage.Height * ratio);
                     if (thumbImage.Width > resultSourceImageWidth)
                     {
-                        int offset = ((thumbImage.Width + delta) - resultSourceImageWidth) / 2;
-                        return new Rectangle(offset, 0 + delta / 2, resultSourceImageWidth, resultSourceImageHeight);
+                        int offset = ((thumbImage.Width + delta*2) - resultSourceImageWidth) / 2;
+                        return new Rectangle(offset, 0 + delta, resultSourceImageWidth, resultSourceImageHeight);
                     }
                     if (thumbImage.Height > resultSourceImageHeight)
                     {
-                        var offset = ((thumbImage.Height + delta) - resultSourceImageHeight) / 2;
-                        return new Rectangle(0 + delta / 2, offset, resultSourceImageWidth, resultSourceImageHeight);
+                        var offset = ((thumbImage.Height + delta*2) - resultSourceImageHeight) / 2;
+                        return new Rectangle(0 + delta, offset, resultSourceImageWidth, resultSourceImageHeight);
                     }
                     break;
 
