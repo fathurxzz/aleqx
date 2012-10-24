@@ -58,10 +58,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="BottomDescription" Type="longtext" Nullable="true" />
-    <Property Name="BottomDescriptionTitle" Type="longtext" Nullable="true" />
+    <Property Name="BottomDescriptionTitle" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="Visible" Type="bool" Nullable="false" />
   </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
@@ -133,11 +134,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="Products" Relationship="Site.CategoryProduct" FromRole="Category" ToRole="Product" />
           <Property Type="String" Name="Description" />
           <Property Type="String" Name="BottomDescription" />
-          <Property Type="String" Name="BottomDescriptionTitle" />
+          <Property Type="String" Name="BottomDescriptionTitle" Nullable="false" FixedLength="true" MaxLength="100" />
+          <Property Type="Boolean" Name="Visible" Nullable="false" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -206,6 +208,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
           <ScalarProperty Name="BottomDescriptionTitle" ColumnName="BottomDescriptionTitle" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -230,12 +233,12 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="4.25" PointY="0.75" Height="2.4140429687499996" />
-        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="4.25" PointY="3.5" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.375" PointY="3.125" Height="2.4140429687499996" />
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="1.375" PointY="0.75" Height="1.9210009765625" />
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="7.125" PointY="0.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.375" PointY="3.75" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="1.375" PointY="0.75" Height="2.364889322916667" />
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="2.875" PointY="1.71050048828125" />
-          <ConnectorPoint PointX="4.25" PointY="1.71050048828125" />
+          <ConnectorPoint PointX="2.875" PointY="1.9324446614583337" />
+          <ConnectorPoint PointX="4.25" PointY="1.9324446614583337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
