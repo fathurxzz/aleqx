@@ -23,6 +23,7 @@ namespace Kulumu.Models
         public Product SingleDiscountProduct { get; set; }
         public List<Product> Products { get; set; }
         public Category Category { get; set; }
+        public List<Category> Categories { get; set; }
 
 
         public SiteModel(SiteContainer context, string contentName, bool showArticles = false)

@@ -374,3 +374,15 @@ table.title .a-center div
 }
 
 
+.categories {
+    text-align: center;
+    border: 1px solid black;
+    width: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+.categories ul li {
+    list-style: none;
+    display: inline;
+}
