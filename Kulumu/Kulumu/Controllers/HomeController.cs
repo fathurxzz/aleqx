@@ -31,13 +31,23 @@ namespace Kulumu.Controllers
             }
         }
 
-        public ActionResult Gallery(int id)
+        public ActionResult Gallery(string id)
         {
             using (var context = new SiteContainer())
             {
                 SiteModel model = new SiteModel(context, "gallery");
-                model.Products = model.Products.Where(p => p.CategoryId == id).ToList();
-                model.Category = context.Category.First(c => c.Id == id);
+
+                model.Categories = context.Category.Include("Products").ToList();
+
+                if (model.Categories.Any())
+                {
+                    model.Category = !string.IsNullOrEmpty(id)
+                                         ? model.Categories.First(c => c.Name == id)
+                                         : model.Categories.First(c => !c.SpecialCategory);
+                }
+
+                //model.Products = model.Products.Where(p => p.CategoryId == id).ToList();
+                //model.Category = context.Category.First(c => c.Id == id);
                 return View(model);
             }
         }

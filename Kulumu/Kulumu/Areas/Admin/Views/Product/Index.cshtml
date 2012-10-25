@@ -42,7 +42,7 @@
         @foreach (var item in Model.OrderBy(c=>c.CategoryId)) {
             <tr>
                 <td>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("preview"), ScaleMode.FixedWidth))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("preview")))
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.Title)

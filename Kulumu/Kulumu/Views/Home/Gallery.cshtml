@@ -2,17 +2,14 @@
 @using Kulumu.Models
 @using SiteExtensions.Graphics
 @model SiteModel 
-
 @section Add
 {
     @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle, DiscountProduct = Model.SingleDiscountProduct })
 }
-
 @section About
 {
     @Html.Partial("About", new AboutModel { Title = Model.Category.BottomDescriptionTitle, Text = Model.Category.BottomDescription })
 }
-
 <div class="mainFrame">
     <div class="top">
         @Html.Partial("Title", Model.Category.Title)
@@ -27,6 +24,17 @@
     </div>
     <div class="middle">
         <div class="products">
+            
+            @*<div class="categories">
+                <ul>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <li>@category.Title</li>
+                    }
+                </ul>
+            </div>*@
+            
+
             @foreach (var product in Model.Products)
             {
                 <div class="product">
