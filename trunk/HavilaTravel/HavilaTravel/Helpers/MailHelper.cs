@@ -17,7 +17,7 @@ namespace HavilaTravel.Helpers
             bool result = true;
             try
             {
-                var message = new MailMessage {Body = body, Subject = subject};
+                var message = new MailMessage { Body = body, Subject = subject };
                 message.To.Add(to);
                 message.From = new MailAddress("office@havila-travel.com", "HAVILA-TRAVEL");
                 message.IsBodyHtml = isBodyHtml;

@@ -208,61 +208,42 @@ namespace HavilaTravel.Controllers
                 bool sendToTourists = form["tourists"] == "true,false";
                 var sendToAgents = form["agents"] == "true,false";
 
-
-                PostData agentsData = form.ProcessPostData("agent");
-                PostData touristData = form.ProcessPostData("tourist");
-
-                int[] agentIds = agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
-                int[] touristIds = touristData.Where(d => bool.Parse(d.Value["tourist"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
-
-                var customers = context.Customers.ToList();
-                var agents = (from customer in customers from id in agentIds where customer.Id == id select customer).ToList();
-                var tourists = (from customer in customers from id in touristIds where customer.Id == id select customer).ToList();
-
-                IEnumerable<Customers> all = agents.Concat(tourists);
-
-                //string kkey = form.Keys.Cast<string>().Where(key => key.StartsWith("fa")).FirstOrDefault();
-                //if (kkey == "faSaveDefaultSubscribers")
-                //{
-                //    foreach (var customer in customers)
-                //    {
-                //        customer.IsActive = 0;
-                //    }
-
-                //    foreach (var customer in customers)
-                //    {
-                //        if (agentIds.Contains(Convert.ToInt32(customer.Id)) || touristIds.Contains(Convert.ToInt32(customer.Id)))
-                //            customer.IsActive = 1;
-                //    }
-                //    context.SaveChanges();
-                //}
-                //else
-                //{
-                if (!string.IsNullOrEmpty(form["MailText"]))
+                string formMailText = form["MailText"];
+                if (sendToAgents)
                 {
-                    foreach (var customer in all)
-                    {
-
-                        string formMailText = form["MailText"];
-
-                        formMailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
-                        formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">http://havila-travel.com/unsubscribe/" + customer.Id + "</a>";
-
-                        var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"", "src=\"http://havila-travel.com/");
-
-
-                        if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
-                                                   mailSubject, true))
-                            successedSentEmails++;
-                        else
-                            failedSentEmails++;
-                    }
+                    var agents = context.Customers.Where(c => c.SubscribeType == 1);
+                    SendEmails(agents, formMailText, mailSubject, ref successedSentEmails, ref failedSentEmails);
                 }
-                //}
+
+                if (sendToTourists)
+                {
+                    var tourists = context.Customers.Where(c => c.SubscribeType == 2).ToList();
+                    SendEmails(tourists, formMailText, mailSubject, ref successedSentEmails, ref failedSentEmails);
+                }
             }
-
-
             return RedirectToAction("Subscribers", new { s = successedSentEmails, f = failedSentEmails });
+        }
+
+        public void SendEmails(IEnumerable<Customers> customerses, string formMailText, string mailSubject, ref int successedSentEmails, ref int failedSentEmails)
+        {
+            if (string.IsNullOrEmpty(formMailText)) return;
+
+            foreach (var customer in customerses)
+            {
+                formMailText +=
+                    "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
+                formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id +
+                                "\">http://havila-travel.com/unsubscribe/" + customer.Id + "</a>";
+
+                var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"",
+                                                                            "src=\"http://havila-travel.com/");
+
+                if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
+                                           mailSubject, true))
+                    successedSentEmails++;
+                else
+                    failedSentEmails++;
+            }
         }
     }
 }
