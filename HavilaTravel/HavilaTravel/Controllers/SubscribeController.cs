@@ -204,6 +204,11 @@ namespace HavilaTravel.Controllers
 
             using (var context = new ContentStorage())
             {
+
+                bool sendToTourists = form["tourists"] == "true,false";
+                var sendToAgents = form["agents"] == "true,false";
+
+
                 PostData agentsData = form.ProcessPostData("agent");
                 PostData touristData = form.ProcessPostData("tourist");
 

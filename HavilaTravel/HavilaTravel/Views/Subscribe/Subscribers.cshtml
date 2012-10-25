@@ -86,18 +86,16 @@
             <br />
             @Html.TextArea("MailText", new { @class = "ckeditor" })
         </div>
+                <br />
+    <div>
+        @Html.CheckBox("tourists") Туристы &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.CheckBox("agents") Агенты
+    </div>
+
         <br />
         <input type="submit" value="Отправить" />
+
     </div>
-    <br />
-    <br />
    
-    <div>
-        @Html.CheckBox("tourists") Туристы
-    </div>
-    <div>
-        @Html.CheckBox("agents") Агенты
-    </div>
     
    
 }
