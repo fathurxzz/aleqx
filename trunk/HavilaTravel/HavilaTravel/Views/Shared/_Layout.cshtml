@@ -130,7 +130,9 @@
                     if (Request.IsAuthenticated)
                     {
                         <br />
-                        @Html.ActionLink("Подписчики на рассылку", "Subscribers", "Subscribe", new { Area = "" }, new { @class = "adminLink" })
+                        @Html.ActionLink("Рассылка", "Subscribers", "Subscribe", new { Area = "" }, new { @class = "adminLink" })
+                        <br />
+                        @Html.ActionLink("Подписчики на рассылку", "SubscribersList", "Subscribe", new { Area = "" }, new { @class = "adminLink" })
                     }
                 }
             </div>
@@ -175,7 +177,7 @@
                         </div>
                         @RenderBody()
                         @*@RenderSection("MainSearch", false)*@
-                        @RenderSection("ActualTours",false)
+                        @RenderSection("ActualTours", false)
                         @RenderSection("Accordion", false)
                     </div>
                 </td>
