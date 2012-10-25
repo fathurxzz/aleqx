@@ -206,7 +206,6 @@
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\PageScripts.js" />
     <None Include="SetCookie.aspx" />
-    <None Include="underconstruction.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
