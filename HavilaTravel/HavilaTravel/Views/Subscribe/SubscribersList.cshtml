@@ -1,0 +1,197 @@
+﻿@using Dev.Mvc.Helpers
+@using HavilaTravel.Models
+@model SiteViewModel
+@{
+    ViewBag.Title = "SubscribersList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@section Includes
+{
+    <script type="text/javascript" src="/Scripts/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/Scripts/MicrosoftMvcValidation.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+    @*    <script type="text/javascript">
+
+        $(function () {
+            $("#selectallagent").click(function () {
+                if (this.checked) {
+                    $(".agent").attr("checked", "checked");
+                } else {
+                    $(".agent").removeAttr("checked");
+                }
+            });
+
+            $("#selectalltourist").click(function () {
+                if (this.checked) {
+                    $(".tourist").attr("checked", "checked");
+                } else {
+                    $(".tourist").removeAttr("checked");
+                }
+
+            });
+        });
+    </script>
+*@
+}
+
+@using (Html.BeginForm("SaveSubscribersSettings", "Subscribe"))
+{
+    <table class="subscriberListContainer">
+        <tr>
+            <td>
+                <table class="subscriberList">
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                            Имя
+                        </th>
+                        <th>
+                            email
+                        </th>
+                        <th>
+                            news
+                        </th>
+                        <th>
+                            удалить
+                        </th>
+                    </tr>
+                    @{
+                        int cnt = 0;
+
+                        foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 1).OrderBy(c => c.Name))
+                        {
+                            cnt++;
+
+                            <tr>
+                                <td>@cnt
+                                </td>
+                                <td class="checkbox_agent">
+                                    @Html.CheckBox("agent_" + subscriber.Id, false, new {@class = "agent"})
+                                </td>
+                                <td>@subscriber.Name
+                                </td>
+                                <td>@subscriber.Email
+                                </td>
+                                <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
+                                </td>
+                                <td>@Html.ActionLink("ред.", "EditSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink"})
+                                    @Html.ActionLink("уд.", "DeleteSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить запись?')"})
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </td>
+            <td>
+                <table class="subscriberList">
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                            Имя
+                        </th>
+                        <th>
+                            email
+                        </th>
+                        <th>
+                            news
+                        </th>
+                        <th>
+                            удалить
+                        </th>
+                    </tr>
+                    @{
+                        cnt = 0;
+                        foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 2).OrderBy(c => c.Name))
+                        {
+                            cnt++;
+                            <tr>
+                                <td>@cnt
+                                </td>
+                                <td class="checkbox_tourist">
+                                    @Html.CheckBox("tourist_" + subscriber.Id, false, new {@class = "tourist"})
+                                </td>
+                                <td>@subscriber.Name
+                                </td>
+                                <td>@subscriber.Email
+                                </td>
+                                <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
+                                </td>
+                                <td>@Html.ActionLink("ред.", "EditSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink"})
+                                    @Html.ActionLink("уд.", "DeleteSubscriber", "Subscribe", new {id = subscriber.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить запись?')"})
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: center">
+        <input type="submit" name="faSaveDefaultSubscribers" value="Сохранить отмеченные адреса для рассылки новостей"
+               onclick="return confirm('Вы действительно хотите внести изменения в список адресов для рассылки новостей?')" />
+    </div>
+}
+@section ContentTitle
+{
+    <div id="contentTitleSubscribe">
+        Список подписчиков на новостную рассылку
+    </div>
+}
+@section MainBanner
+{
+    <div id="slideshow">
+        @foreach (var banner in Model.MainBanners)
+        {
+            @Html.Raw(Html.CachedImage("~/Content/Banners/", banner.ImageSource, "mainBanner", banner.Title, banner.Price, banner.ContentName))
+        }
+    </div>
+}
+@section SmallBannerLeft
+{
+    @if (Model.LeftBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.LeftBanner)
+    }
+}
+@section SmallBannerRight
+{
+    @if (Model.RightBanner != null)
+    {
+        @Html.Partial("BannerSmall", Model.RightBanner)
+    }
+}
+@section RootLogoLink
+{
+    @if (!Model.IsRoot)
+    {
+        <a href="/" class="rootLink">
+            <img src="../../Content/img/pixel.gif" /></a>
+    }
+}
+@section QuickSearch
+{
+    @if (!Model.IsRoot)
+    {
+        @Html.Partial("QuickSearch")
+    }
+}
+@section MainMenu
+{
+    @{
+        var menu = Model.MenuList.Where(m => m.MenuLevel == 1).Select(m => m).FirstOrDefault();
+        @Html.Partial("MainMenu", menu)
+    }
+}
+@section HeaderLeftMenu
+{
+    @Html.Partial("HeaderLeftMenu", Model.HeaderLeftMenuItems)
+}

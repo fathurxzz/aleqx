@@ -91,125 +91,13 @@
     </div>
     <br />
     <br />
-   <text>*отметьте e-mail адреса для отправки сообщения</text>
-    <table class="subscriberListContainer">
-        <tr>
-            <td>
-                <table class="subscriberList">
-                    <tr>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-                            Имя
-                        </th>
-                        <th>
-                            email
-                        </th>
-                        <th>
-                            news
-                        </th>
-                        <th>
-                            удалить
-                        </th>
-                    </tr>
-                    <tr>
-                         <th  style="background-color: bisque">
-                        </th>
-                        <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectallagent")
-                        </th>
-                        <th colspan="4" style="background-color: bisque">
-                            Агенты
-                        </th>
-                    </tr>
-                    @{
-                                                                         int cnt = 0;
-
-                                                                         foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 1).OrderBy(c => c.Name))
-                                                                         {
-                                                                             cnt++;
-                            
-                            <tr>
-                                <td>@cnt</td>
-                                <td class="checkbox_agent">
-                                    @Html.CheckBox("agent_" + subscriber.Id, false, new { @class = "agent" })
-                                </td>
-                                <td>@subscriber.Name
-                                </td>
-                                <td>@subscriber.Email
-                                </td>
-                                <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
-                                </td>
-                                <td>@Html.ActionLink("ред.", "EditSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink" })
-                                    @Html.ActionLink("уд.", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
-                                </td>
-                            </tr>
-                                                                         }
-                    }
-                </table>
-            </td>
-            <td>
-                <table class="subscriberList">
-                    <tr>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-                            Имя
-                        </th>
-                        <th>
-                            email
-                        </th>
-                        <th>
-                            news
-                        </th>
-                        <th>
-                            удалить
-                        </th>
-                    </tr>
-                    <tr>
-                        <th style="background-color: bisque"></th>
-                        <th class="checkbox" style="background-color: bisque">@Html.CheckBox("selectalltourist")
-                        </th>
-                        <th colspan="4" style="background-color: bisque">
-                            Туристы
-                        </th>
-                    </tr>
-                    @{
-                                                                         cnt = 0;
-                                                                         foreach (var subscriber in Model.Customers.Where(c => c.SubscribeType == 2).OrderBy(c => c.Name))
-                                                                         {
-                                                                             cnt++;
-                            <tr>
-                                <td>@cnt</td>
-                                <td class="checkbox_tourist">
-                                    @Html.CheckBox("tourist_" + subscriber.Id, false, new { @class = "tourist" })
-                                </td>
-                                <td>@subscriber.Name
-                                </td>
-                                <td>@subscriber.Email
-                                </td>
-                                <td>@Html.Raw(subscriber.IsActive == 0 ? "N" : "Y")
-                                </td>
-                                <td>@Html.ActionLink("ред.", "EditSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink" })
-                                    @Html.ActionLink("уд.", "DeleteSubscriber", "Subscribe", new { id = subscriber.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
-                                </td>
-                            </tr>
-                                                                         }
-                    }
-                </table>
-            </td>
-        </tr>
-    </table>
-    <div style="text-align: center">
-        <input type="submit" name="faSaveDefaultSubscribers" value="Сохранить отмеченные адреса для рассылки новостей"
-            onclick="return confirm('Вы действительно хотите внести изменения в список адресов для рассылки новостей?')" />
-    </div>
    
-    
-    
+    <div>
+        @Html.CheckBox("tourists") Туристы
+    </div>
+    <div>
+        @Html.CheckBox("agents") Агенты
+    </div>
     
    
 }
