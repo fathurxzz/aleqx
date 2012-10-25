@@ -34,8 +34,16 @@ namespace HavilaTravel.Controllers
             {
                 var subscriber = new Customers();
                 TryUpdateModel(subscriber, new[] { "Name", "Email", "SubscribeType" });
-                context.AddToCustomers(subscriber);
-                context.SaveChanges();
+
+                var email = form["Email"];
+                byte subscrType = Convert.ToByte(form["SubscribeType"]);
+
+                var existedEmail = context.Customers.FirstOrDefault(c => c.Email == email && c.SubscribeType == subscrType);
+                if (existedEmail == null)
+                {
+                    context.AddToCustomers(subscriber);
+                    context.SaveChanges();
+                }
             }
 
             if (!string.IsNullOrEmpty(form["redirectUrl"]) && form["redirectUrl"] == "sbscrList")
@@ -74,22 +82,31 @@ namespace HavilaTravel.Controllers
         }
 
         [Authorize]
+        public ActionResult SubscribersList()
+        {
+            using (var context = new ContentStorage())
+            {
+                var model = new SiteViewModel(null, context, false);
+                var customers = context
+                    .Customers
+                    //.Take(200)
+                    .ToList();
+
+                model.Customers = customers;
+
+                return View(model);
+            }
+        }
+
+        [Authorize]
         public ActionResult Subscribers(int? s, int? f, int? templateId)
         {
             using (var context = new ContentStorage())
             {
                 ViewBag.SentEmails = s.HasValue ? s.Value : 0;
-
-                var model = new SiteViewModel(null, context, false)
-                    {
-                        Customers = context
-                        .Customers
-                        //.Take(200)
-                        .ToList()
-                    };
-
+                var model = new SiteViewModel(null, context, false);
                 ViewBag.MailTemplates = context.MailTemplate.ToList();
-                if(templateId.HasValue)
+                if (templateId.HasValue)
                 {
                     ViewBag.MailText = context.MailTemplate.First(t => t.Id == templateId.Value).Text;
                 }
@@ -103,7 +120,7 @@ namespace HavilaTravel.Controllers
             using (var context = new ContentStorage())
             {
                 var subscriber = context.Customers.First(c => c.Id == id);
-                return View(subscriber);    
+                return View(subscriber);
             }
         }
 
@@ -133,6 +150,45 @@ namespace HavilaTravel.Controllers
             return RedirectToAction("Subscribers");
         }
 
+
+        [Authorize]
+        public ActionResult SaveSubscribersSettings(FormCollection form)
+        {
+            using (var context = new ContentStorage())
+            {
+                PostData agentsData = form.ProcessPostData("agent");
+                PostData touristData = form.ProcessPostData("tourist");
+
+                int[] agentIds =
+                    agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
+                int[] touristIds =
+                    touristData.Where(d => bool.Parse(d.Value["tourist"])).Select(id => Convert.ToInt32(id.Key)).ToArray
+                        ();
+
+                var customers = context.Customers.ToList();
+                var agents =
+                    (from customer in customers from id in agentIds where customer.Id == id select customer).ToList();
+                var tourists =
+                    (from customer in customers from id in touristIds where customer.Id == id select customer).ToList();
+                IEnumerable<Customers> all = agents.Concat(tourists);
+
+
+                foreach (var customer in customers)
+                {
+                    customer.IsActive = 0;
+                }
+
+                foreach (var customer in customers)
+                {
+                    if (agentIds.Contains(Convert.ToInt32(customer.Id)) || touristIds.Contains(Convert.ToInt32(customer.Id)))
+                        customer.IsActive = 1;
+                }
+                context.SaveChanges();
+            }
+            return RedirectToAction("SubscribersList");
+        }
+
+
         [Authorize]
         public ActionResult SendEmail(FormCollection form)
         {
@@ -143,71 +199,63 @@ namespace HavilaTravel.Controllers
                 mailSubject = form["mailSubject"];
             }
 
-            
-
             int successedSentEmails = 0;
             int failedSentEmails = 0;
-            
-            
 
+            using (var context = new ContentStorage())
+            {
+                PostData agentsData = form.ProcessPostData("agent");
+                PostData touristData = form.ProcessPostData("tourist");
 
+                int[] agentIds = agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
+                int[] touristIds = touristData.Where(d => bool.Parse(d.Value["tourist"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
 
-            
-                using (var context = new ContentStorage())
+                var customers = context.Customers.ToList();
+                var agents = (from customer in customers from id in agentIds where customer.Id == id select customer).ToList();
+                var tourists = (from customer in customers from id in touristIds where customer.Id == id select customer).ToList();
+
+                IEnumerable<Customers> all = agents.Concat(tourists);
+
+                //string kkey = form.Keys.Cast<string>().Where(key => key.StartsWith("fa")).FirstOrDefault();
+                //if (kkey == "faSaveDefaultSubscribers")
+                //{
+                //    foreach (var customer in customers)
+                //    {
+                //        customer.IsActive = 0;
+                //    }
+
+                //    foreach (var customer in customers)
+                //    {
+                //        if (agentIds.Contains(Convert.ToInt32(customer.Id)) || touristIds.Contains(Convert.ToInt32(customer.Id)))
+                //            customer.IsActive = 1;
+                //    }
+                //    context.SaveChanges();
+                //}
+                //else
+                //{
+                if (!string.IsNullOrEmpty(form["MailText"]))
                 {
-
-                    PostData agentsData = form.ProcessPostData("agent");
-                    PostData touristData = form.ProcessPostData("tourist");
-
-                    int[] agentIds = agentsData.Where(d => bool.Parse(d.Value["agent"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
-                    int[] touristIds = touristData.Where(d => bool.Parse(d.Value["tourist"])).Select(id => Convert.ToInt32(id.Key)).ToArray();
-
-                    var customers = context.Customers.ToList();
-                    var agents = (from customer in customers from id in agentIds where customer.Id == id select customer).ToList();
-                    var tourists = (from customer in customers from id in touristIds where customer.Id == id select customer).ToList();
-
-                    IEnumerable<Customers> all = agents.Concat(tourists);
-
-                    string kkey = form.Keys.Cast<string>().Where(key => key.StartsWith("fa")).FirstOrDefault();
-                    if (kkey == "faSaveDefaultSubscribers")
+                    foreach (var customer in all)
                     {
-                        foreach (var customer in customers)
-                        {
-                            customer.IsActive = 0;
-                        }
 
-                        foreach (var customer in customers)
-                        {
-                            if (agentIds.Contains(Convert.ToInt32(customer.Id)) || touristIds.Contains(Convert.ToInt32(customer.Id)))
-                                customer.IsActive = 1;
-                        }
-                        context.SaveChanges();
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrEmpty(form["MailText"]))
-                        {
-                            foreach (var customer in all)
-                            {
+                        string formMailText = form["MailText"];
 
-                                string formMailText = form["MailText"];
+                        formMailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
+                        formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">http://havila-travel.com/unsubscribe/" + customer.Id + "</a>";
 
-                                formMailText += "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
-                                formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Id + "\">http://havila-travel.com/unsubscribe/"+customer.Id+"</a>";
-
-                                var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"", "src=\"http://havila-travel.com/");
+                        var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"", "src=\"http://havila-travel.com/");
 
 
-                                if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
-                                                           mailSubject, true))
-                                    successedSentEmails++;
-                                else
-                                    failedSentEmails++;
-                            }
-                        }
+                        if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
+                                                   mailSubject, true))
+                            successedSentEmails++;
+                        else
+                            failedSentEmails++;
                     }
                 }
-            
+                //}
+            }
+
 
             return RedirectToAction("Subscribers", new { s = successedSentEmails, f = failedSentEmails });
         }
