@@ -80,7 +80,13 @@ namespace HavilaTravel.Controllers
             {
                 ViewBag.SentEmails = s.HasValue ? s.Value : 0;
 
-                var model = new SiteViewModel(null, context, false) { Customers = context.Customers.ToList() };
+                var model = new SiteViewModel(null, context, false)
+                    {
+                        Customers = context
+                        .Customers
+                        //.Take(200)
+                        .ToList()
+                    };
 
                 ViewBag.MailTemplates = context.MailTemplate.ToList();
                 if(templateId.HasValue)
