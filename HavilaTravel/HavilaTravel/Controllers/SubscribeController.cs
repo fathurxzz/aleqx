@@ -56,9 +56,12 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var customer = context.Customers.First(c => c.Guid == id);
-                context.DeleteObject(customer);
-                context.SaveChanges();
+                var customer = context.Customers.FirstOrDefault(c => c.Guid == id);
+                if (customer != null)
+                {
+                    context.DeleteObject(customer);
+                    context.SaveChanges();
+                }
             }
             return RedirectToAction("Unsubscribed");
         }
@@ -230,12 +233,12 @@ namespace HavilaTravel.Controllers
 
             foreach (var customer in customerses)
             {
-                formMailText +=
+                var txt =
                     "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
-                formMailText += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Guid +
+                txt += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Guid +
                                 "\">http://havila-travel.com/unsubscribe/" + customer.Guid + "</a>";
 
-                var mailText = HttpUtility.HtmlDecode(formMailText).Replace("src=\"",
+                var mailText = HttpUtility.HtmlDecode(txt+formMailText).Replace("src=\"",
                                                                             "src=\"http://havila-travel.com/");
 
                 if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
