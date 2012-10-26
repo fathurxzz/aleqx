@@ -44,7 +44,12 @@ namespace Kulumu.Controllers
                     model.Category = !string.IsNullOrEmpty(id)
                                          ? model.Categories.First(c => c.Name == id)
                                          : model.Categories.First(c => !c.SpecialCategory);
+
+                    model.Products = model.Products.Where(p => p.CategoryId == model.Category.Id).ToList();
+
                 }
+
+
 
                 //model.Products = model.Products.Where(p => p.CategoryId == id).ToList();
                 //model.Category = context.Category.First(c => c.Id == id);
