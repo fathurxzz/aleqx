@@ -1949,7 +1949,8 @@ namespace HavilaTravel.Models
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="subscribeType">Initial value of the SubscribeType property.</param>
         /// <param name="isActive">Initial value of the IsActive property.</param>
-        public static Customers CreateCustomers(global::System.Int64 id, global::System.String name, global::System.String email, global::System.SByte subscribeType, global::System.SByte isActive)
+        /// <param name="guid">Initial value of the Guid property.</param>
+        public static Customers CreateCustomers(global::System.Int64 id, global::System.String name, global::System.String email, global::System.SByte subscribeType, global::System.SByte isActive, global::System.String guid)
         {
             Customers customers = new Customers();
             customers.Id = id;
@@ -1957,6 +1958,7 @@ namespace HavilaTravel.Models
             customers.Email = email;
             customers.SubscribeType = subscribeType;
             customers.IsActive = isActive;
+            customers.Guid = guid;
             return customers;
         }
 
@@ -2085,6 +2087,30 @@ namespace HavilaTravel.Models
         private global::System.SByte _IsActive;
         partial void OnIsActiveChanging(global::System.SByte value);
         partial void OnIsActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Guid
+        {
+            get
+            {
+                return _Guid;
+            }
+            set
+            {
+                OnGuidChanging(value);
+                ReportPropertyChanging("Guid");
+                _Guid = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Guid");
+                OnGuidChanged();
+            }
+        }
+        private global::System.String _Guid;
+        partial void OnGuidChanging(global::System.String value);
+        partial void OnGuidChanged();
 
         #endregion
     
