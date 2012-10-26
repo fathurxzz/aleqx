@@ -13,7 +13,7 @@
     <div class="frame">
         @Html.Partial("Title", Model.Title)
         <div class="showAll">
-            @Html.ActionLink("В коллекции", "Gallery", "Home", new { area = ""/*, id = Model.CategoryId*/ }, null)
+            @Html.ActionLink("В коллекции", "Gallery", "Home", new { area = "", id = Model.CategoryName }, null)
             &raquo;
         </div>
     </div>

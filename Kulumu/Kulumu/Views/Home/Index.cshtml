@@ -11,10 +11,10 @@
 @if (Model.Content.MainPage)
 {
     <div class="frames">
-        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона"/*, CategoryId = 1*/ })
+        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона", CategoryName = ViewBag.SpecialCategoryName })
         <div class="separator">
         </div>
-        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 2), Title = "коллекции ковров"/*, CategoryId = 2*/ })
+        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 2), Title = "коллекции ковров", CategoryName = "" })
         <div class="clear">
         </div>
     </div>
