@@ -245,5 +245,20 @@ namespace HavilaTravel.Controllers
                     failedSentEmails++;
             }
         }
+
+
+        public ActionResult UpdateGuid()
+        {
+            using (var context = new ContentStorage())
+            {
+                var customers = context.Customers.ToList();
+                foreach (Customers customer in customers)
+                {
+                    customer.Guid = Guid.NewGuid().ToString();
+                }
+                context.SaveChanges();
+            }
+            return View("SubscribersList");
+        }
     }
 }
