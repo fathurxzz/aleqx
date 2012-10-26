@@ -32,7 +32,7 @@ namespace HavilaTravel.Controllers
         {
             using (var context = new ContentStorage())
             {
-                var subscriber = new Customers();
+                var subscriber = new Customers {Guid = Guid.NewGuid().ToString()};
                 TryUpdateModel(subscriber, new[] { "Name", "Email", "SubscribeType" });
 
                 var email = form["Email"];
