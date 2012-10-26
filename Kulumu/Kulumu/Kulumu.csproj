@@ -145,6 +145,8 @@
     <Content Include="Content\img\ad-pattern.gif" />
     <Content Include="Content\img\attention.gif" />
     <Content Include="Content\img\bg.gif" />
+    <Content Include="Content\img\categories-left.gif" />
+    <Content Include="Content\img\categories-right.gif" />
     <Content Include="Content\img\discount-frame.png" />
     <Content Include="Content\img\footer-bg.png" />
     <Content Include="Content\img\frame.png" />

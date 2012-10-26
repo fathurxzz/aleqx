@@ -303,8 +303,9 @@ table.title .a-center div
     margin-bottom: 50px;
 }
 
-.mainFrame .middle {
-    padding:30px 70px; 
+.mainFrame .middle
+{
+    padding: 30px 70px;
 }
 
 .mainFrame .top, .mainFrame .bottom
@@ -334,27 +335,32 @@ table.title .a-center div
     width: 863px;
 }
 
-.mainFrame .middle .text {
+.mainFrame .middle .text
+{
     font-family: Georgia;
     font-size: 12px;
 }
 
-.mainFrame .top .description {
+.mainFrame .top .description
+{
     padding: 60px 70px 0;
 }
 
-.product {
+.product
+{
     width: 256px;
     float: left;
     margin: 23px;
 }
 
-.cont {
+.cont
+{
     width: 256px;
     height: 166px;
 }
 
-.product .image {
+.product .image
+{
     width: 256px;
     height: 166px;
     position: absolute;
@@ -368,21 +374,67 @@ table.title .a-center div
     background: url('img/gallry-image-frame.png');
 }
 
-.products {
+.products
+{
     width: 906px;
     margin-left: -22px;
 }
 
 
-.categories {
+.categories
+{
     text-align: center;
-    border: 1px solid black;
-    width: auto;
-    position: relative;
-    margin: 0 auto;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    font-family: Georgia;
 }
 
-.categories ul li {
+.categories ul
+{
+    padding: 25px 25px;
+}
+
+.categories ul li
+{
     list-style: none;
     display: inline;
+    padding: 17px;
 }
+
+.categories a
+{
+    font-weight: normal;
+    color: #0072bc;
+}
+
+.containerLeft
+{
+    display: inline-block;
+}
+
+.containerLeft, .containerRight
+{
+    height: 77px;
+}
+
+.containerLeft
+{
+    background: url('img/categories-left.gif') no-repeat;
+}
+
+.containerRight
+{
+    background: url('img/categories-right.gif') no-repeat right;
+}
+
+.containerCenter
+{
+    border-top: 2px solid #adacac;
+    border-bottom: 2px solid #adacac;
+    margin: 0 20px;
+    height: 73px;
+    background-color: #f5f5f5;
+}
+
+
