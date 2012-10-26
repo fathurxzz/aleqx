@@ -5,7 +5,124 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="havilaModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="havilaModelStoreContainer" />
+        <EntityContainer Name="havilaModelStoreContainer">
+          <EntitySet Name="accordion" EntityType="havilaModel.Store.accordion" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="accordionimage" EntityType="havilaModel.Store.accordionimage" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="actualtours" EntityType="havilaModel.Store.actualtours" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="article" EntityType="havilaModel.Store.article" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="banner" EntityType="havilaModel.Store.banner" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="bellboy" EntityType="havilaModel.Store.bellboy" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="content" EntityType="havilaModel.Store.content" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="customers" EntityType="havilaModel.Store.customers" store:Type="Tables" Schema="havila" />
+          <EntitySet Name="mailtemplate" EntityType="havilaModel.Store.mailtemplate" store:Type="Tables" Schema="havila" />
+        </EntityContainer>
+        <EntityType Name="accordion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ContentId" Type="uint" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Text" Type="text" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="accordionimage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccordionId" Type="uint" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="actualtours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Text" Type="text" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="100" />
+          <Property Name="Sign1" Type="varchar" MaxLength="50" />
+          <Property Name="Sign2" Type="varchar" MaxLength="50" />
+          <Property Name="Sign3" Type="varchar" MaxLength="50" />
+          <Property Name="Sign4" Type="varchar" MaxLength="50" />
+          <Property Name="Sign5" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Text" Type="text" />
+        </EntityType>
+        <EntityType Name="banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="Price" Type="varchar" MaxLength="100" />
+          <Property Name="ImageSource" Type="varchar" />
+          <Property Name="BannerType" Type="int" Nullable="false" />
+          <Property Name="ContentName" Type="varchar" />
+          <Property Name="Title2" Type="varchar" />
+        </EntityType>
+        <EntityType Name="bellboy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TopText" Type="varchar" />
+          <Property Name="TopLink" Type="varchar" />
+          <Property Name="BottomText" Type="varchar" />
+          <Property Name="BottomLink" Type="varchar" />
+          <Property Name="ImageSource" Type="varchar" />
+        </EntityType>
+        <EntityType Name="content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="uint" />
+          <Property Name="ContentType" Type="uint" Nullable="false" />
+          <Property Name="ContentLevel" Type="uint" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="Title" Type="varchar" />
+          <Property Name="MenuTitle" Type="varchar" />
+          <Property Name="PageTitle" Type="varchar" />
+          <Property Name="Text" Type="text" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="SeoDescription" Type="varchar" />
+          <Property Name="SeoKeywords" Type="varchar" />
+          <Property Name="ContentModel" Type="uint" />
+          <Property Name="PlaceKind" Type="int" Nullable="false" />
+          <Property Name="WeatherScript" Type="text" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" />
+          <Property Name="Email" Type="varchar" Nullable="false" />
+          <Property Name="SubscribeType" Type="tinyint" Nullable="false" />
+          <Property Name="IsActive" Type="tinyint" Nullable="false" />
+          <Property Name="Guid" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="mailtemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="varchar" Nullable="false" />
+          <Property Name="Text" Type="text" Nullable="false" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -129,7 +246,7 @@
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="SByte" Name="SubscribeType" Nullable="false" />
           <Property Type="SByte" Name="IsActive" Nullable="false" />
-          <Property Type="String" Name="Guid" Nullable="false" FixedLength="true" MaxLength="100" />
+          <Property Type="String" Name="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="MailTemplate">
           <Key>
@@ -161,7 +278,133 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="havilaModelStoreContainer" CdmEntityContainer="ContentStorage">
-          </EntityContainerMapping>
+          <EntitySetMapping Name="Accordion"><EntityTypeMapping TypeName="havilaModel.Accordion"><MappingFragment StoreEntitySet="accordion">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AccordionImage"><EntityTypeMapping TypeName="havilaModel.AccordionImage"><MappingFragment StoreEntitySet="accordionimage">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Content"><EntityTypeMapping TypeName="havilaModel.Content"><MappingFragment StoreEntitySet="content">
+            <ScalarProperty Name="WeatherScript" ColumnName="WeatherScript" />
+                <ScalarProperty Name="PlaceKind" ColumnName="PlaceKind" />
+                <ScalarProperty Name="ContentModel" ColumnName="ContentModel" />
+                <ScalarProperty Name="ContentLevel" ColumnName="ContentLevel" />
+            <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+            <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+            <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+            <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+            <ScalarProperty Name="Text" ColumnName="Text" />
+            <ScalarProperty Name="Title" ColumnName="Title" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="ContentContent" TypeName="havilaModel.ContentContent" StoreEntitySet="content">
+            <EndProperty Name="Content1">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ParentId" />
+            </EndProperty>
+            <Condition ColumnName="ParentId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ContentAccordion" TypeName="havilaModel.ContentAccordion" StoreEntitySet="accordion">
+            <EndProperty Name="Accordion">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Content">
+              <ScalarProperty Name="Id" ColumnName="ContentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AccordionAccordionImage" TypeName="havilaModel.AccordionAccordionImage" StoreEntitySet="accordionimage">
+            <EndProperty Name="AccordionImage">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Accordion">
+              <ScalarProperty Name="Id" ColumnName="AccordionId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Banner">
+            <EntityTypeMapping TypeName="havilaModel.Banner">
+              <MappingFragment StoreEntitySet="banner">
+                <ScalarProperty Name="Title2" ColumnName="Title2" />
+                <ScalarProperty Name="ContentName" ColumnName="ContentName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BannerType" ColumnName="BannerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="havilaModel.Article">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bellboy">
+            <EntityTypeMapping TypeName="havilaModel.Bellboy">
+              <MappingFragment StoreEntitySet="bellboy">
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="BottomLink" ColumnName="BottomLink" />
+                <ScalarProperty Name="BottomText" ColumnName="BottomText" />
+                <ScalarProperty Name="TopLink" ColumnName="TopLink" />
+                <ScalarProperty Name="TopText" ColumnName="TopText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="havilaModel.Customers">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubscribeType" ColumnName="SubscribeType" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailTemplate">
+            <EntityTypeMapping TypeName="havilaModel.MailTemplate">
+              <MappingFragment StoreEntitySet="mailtemplate">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActualTours">
+            <EntityTypeMapping TypeName="havilaModel.ActualTours">
+              <MappingFragment StoreEntitySet="actualtours">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Sign5" ColumnName="Sign5" />
+                <ScalarProperty Name="Sign4" ColumnName="Sign4" />
+                <ScalarProperty Name="Sign3" ColumnName="Sign3" />
+                <ScalarProperty Name="Sign2" ColumnName="Sign2" />
+                <ScalarProperty Name="Sign1" ColumnName="Sign1" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -202,7 +445,7 @@
         <EntityTypeShape EntityType="havilaModel.Banner" Width="1.5" PointX="3.375" PointY="3.75" Height="1.7566536458333335" />
         <EntityTypeShape EntityType="havilaModel.Article" Width="1.5" PointX="5.375" PointY="0.75" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="havilaModel.Bellboy" Width="1.5" PointX="5.375" PointY="3.75" Height="1.9210009765624996" />
-        <EntityTypeShape EntityType="havilaModel.Customers" Width="1.5" PointX="3.375" PointY="6.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="havilaModel.Customers" Width="1.5" PointX="3.375" PointY="6.75" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="havilaModel.MailTemplate" Width="1.5" PointX="5.375" PointY="6.75" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="havilaModel.ActualTours" Width="1.5" PointX="7.375" PointY="0.75" Height="2.5783902994791674" />
       </Diagram>
