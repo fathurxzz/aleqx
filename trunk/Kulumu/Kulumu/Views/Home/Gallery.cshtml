@@ -24,35 +24,38 @@
     </div>
     <div class="middle">
         <div class="products">
-            <div class="categories">
-                
-                <div class="containerLeft">
-                    <div class="containerRight">
-                        <div class="containerCenter">
-                    <ul>
-                    @foreach (var category in Model.Categories)
-                    {
-                        if (Request.IsAuthenticated && category.SpecialCategory || !category.SpecialCategory)
-                        {
-                            <li>
-                                @if(Model.Category.Name==category.Name)
-                                {
-                                    @category.Title
-                                }
-                                else
-                                {
-                                    @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
-                                }
-                            </li>
-                        }
-                    }
-                </ul>
-                </div>
+        
+
+            @if (!Model.Category.SpecialCategory)
+            {
+                <div class="categories">
+                    <div class="containerLeft">
+                        <div class="containerRight">
+                            <div class="containerCenter">
+                                <ul>
+                                    @foreach (var category in Model.Categories)
+                                    {
+                                        if (Request.IsAuthenticated && category.SpecialCategory || !category.SpecialCategory)
+                                        {
+                                            <li>
+                                                @if (Model.Category.Name == category.Name)
+                                                {
+                                                    @category.Title
+                                                }
+                                                else
+                                                {
+                                                    @Html.ActionLink(category.Title, "Gallery", "Home", new {id = category.Name}, null)
+                                                }
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            }
 
-                
-            </div>
             @foreach (var product in Model.Products)
             {
                 <div class="product">
