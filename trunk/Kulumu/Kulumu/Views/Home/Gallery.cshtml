@@ -24,7 +24,13 @@
     </div>
     <div class="middle">
         <div class="products">
-        
+            @if(Request.IsAuthenticated)
+            {
+                <div>
+                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
+                </div>
+            }
+
 
             @if (!Model.Category.SpecialCategory)
             {
