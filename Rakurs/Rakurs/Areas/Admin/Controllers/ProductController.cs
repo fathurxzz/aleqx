@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Rakurs.Helpers;
 using Rakurs.Models;
+using SiteExtensions.Graphics;
 
 namespace Rakurs.Areas.Admin.Controllers
 {

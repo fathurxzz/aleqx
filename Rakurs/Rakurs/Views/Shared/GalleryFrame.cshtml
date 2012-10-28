@@ -1,5 +1,6 @@
 ﻿@using Rakurs.Helpers
 @using Rakurs.Models
+@using SiteExtensions.Graphics
 @model IEnumerable<Rakurs.Models.Product>
 @{
                     //var image = Model.FirstOrDefault();
@@ -47,7 +48,7 @@
                     
                         }
                         <a rel="@Html.Raw("group1")" href="../../Content/Images/@image.ImageSource" class="fancyImage" onclick="setTitle(this, '@fancyTitle')" title="">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, "mainFrameThumbnail", ScaleMode.Auto, true))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("mainFrameThumbnail")))
                         </a>
                     </li>
                 }
