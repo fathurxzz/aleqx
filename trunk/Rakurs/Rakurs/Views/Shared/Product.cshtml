@@ -1,5 +1,6 @@
 ﻿@using Rakurs.Helpers
 @using Rakurs.Models
+@using SiteExtensions.Graphics
 @model Rakurs.Models.Product
 
 <div class="galleryItemContainer">
@@ -16,7 +17,7 @@
                     var customTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + (SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng) + " &raquo; " + (SiteSettings.Language == Language.Ru ? Model.Title : Model.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ? Model.Description : Model.DescriptionEng) + "</td></tr></table>";
                 }
                 <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage"  customtitle="@customTitle"  >
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, "galleryThumbnail", ScaleMode.Corp))
+                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("galleryThumbnail")))
                 </a>
             </div>
             <div class="sign">
