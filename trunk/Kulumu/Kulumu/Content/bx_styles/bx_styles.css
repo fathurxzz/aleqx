@@ -11,10 +11,11 @@
 	top:40%;
 	right:20px;
 	z-index:999;
-	width: 30px;
-	height: 30px;
+	width: 48px;
+	height: 47px;
 	text-indent: -999999px;
-	background: url(gray_next.png) no-repeat 0 -30px;
+	/*background: url(gray_next.png) no-repeat 0 -30px;*/
+    background: url(next.png);
 }
 
 /*previous button*/
@@ -23,10 +24,11 @@
 	top:40%;
 	left:20px;
 	z-index:999;
-	width: 30px;
-	height: 30px;
+	width: 48px;
+	height: 47px;
 	text-indent: -999999px;
-	background: url(gray_prev.png) no-repeat 0 -30px;
+	/*background: url(gray_prev.png) no-repeat 0 -30px;*/
+	background: url(prev.png);
 }
 
 /*pager links*/
@@ -57,10 +59,11 @@
 
 
 /*next/prev button hover state*/
-.bx-next:hover,
+/*.bx-next:hover,
 .bx-prev:hover {
 	background-position: 0 0;
 }
+*/
 
 /*pager links hover and active states*/
 .bx-pager .pager-active,
