@@ -12,9 +12,10 @@
 <div class="mainFrame">
     <div class="top">
     </div>
-    <div class="middle">
+    <div class="middle art">
         <div class="content">
-            <div class="our-news"></div>
+            <div class="our-news">
+            </div>
             @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
@@ -22,8 +23,11 @@
             @foreach (var item in Model.Articles.OrderByDescending(a => a.Date))
             {
                 <div class="article">
-                    <div class="date">@item.Date.ToCustomDate()</div>
-                    <div class="title">@item.Title</div>
+                    <div class="line">
+                        <div class="date">@item.Date.ToCustomDate()</div>
+                        <div class="title">@item.Title</div>
+                        <div class="description">@item.Description</div>
+                    </div>
                     <div class="text">@Html.Raw(item.Text)</div>
                     @if (Request.IsAuthenticated)
                     {
