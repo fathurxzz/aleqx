@@ -13,25 +13,25 @@
 <div class="mainFrame">
     <div class="top">
         @Html.Partial("Title", Model.Category.Title)
-        <div class="description">
-            @if (Request.IsAuthenticated)
-            {
-                @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
-                <br />
-            }
-            @Model.Category.Description
-        </div>
     </div>
     <div class="middle">
-        <div class="products">
-            @if(Request.IsAuthenticated)
+        <div class="content">
+            <div class="description">
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                    <br />
+                }
+                @Model.Category.Description
+                <div class="top-pattern">
+                </div>
+            </div>
+            @if (Request.IsAuthenticated)
             {
                 <div>
                     @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
                 </div>
             }
-
-
             @if (!Model.Category.SpecialCategory)
             {
                 <div class="categories">
@@ -43,16 +43,16 @@
                                     {
                                         if (Request.IsAuthenticated && category.SpecialCategory || !category.SpecialCategory)
                                         {
-                                            <li>
-                                                @if (Model.Category.Name == category.Name)
-                                                {
-                                                    @category.Title
-                                                }
-                                                else
-                                                {
-                                                    @Html.ActionLink(category.Title, "Gallery", "Home", new {id = category.Name}, null)
-                                                }
-                                            </li>
+                                        <li>
+                                            @if (Model.Category.Name == category.Name)
+                                            {
+                                                @category.Title
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
+                                            }
+                                        </li>
                                         }
                                     }
                                 </ul>
@@ -61,7 +61,6 @@
                     </div>
                 </div>
             }
-
             @foreach (var product in Model.Products)
             {
                 <div class="product">
@@ -81,6 +80,8 @@
             }
             <div class="clear">
             </div>
+            <div class="bottom-pattern">
+                </div>
         </div>
     </div>
     <div class="bottom">
