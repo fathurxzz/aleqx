@@ -6,8 +6,14 @@
     <div class="image-container">
         @if (Model.Products.Any())
         {
-            var product = Model.Products.RandomElement(new Random());
-            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
+            <ul id="@Model.Id">
+                @foreach(var product in Model.Products)
+                {
+                    <li>
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
+                    </li>
+                }
+            </ul>
         }
     </div>
     <div class="frame">
