@@ -23,3 +23,11 @@
 .article .text
 {
 }
+
+.our-news {
+    width: 844px;
+    height: 17px;
+    background: url(img/news.gif);
+    position: relative;
+    margin: 0 auto;
+}

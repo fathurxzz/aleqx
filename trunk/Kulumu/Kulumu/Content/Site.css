@@ -319,8 +319,7 @@ table.title .a-center div
 {
     height: 153px;
     background: url('img/gallery-frame-top.png');
-    font-family: Georgia;
-    font-size: 12px;
+    
 }
 
 .mainFrame .bottom
@@ -339,11 +338,12 @@ table.title .a-center div
 {
     font-family: Georgia;
     font-size: 12px;
+    
 }
 
-.mainFrame .top .description
+.mainFrame .content .description
 {
-    padding: 60px 70px 0;
+    /*padding: 60px 70px 0;*/
 }
 
 .product
@@ -386,7 +386,7 @@ table.title .a-center div
     text-align: center;
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     font-family: Georgia;
 }
 
@@ -437,4 +437,28 @@ table.title .a-center div
     background-color: #f5f5f5;
 }
 
+.top-pattern, .bottom-pattern {
+    width: 522px;
+    height: 36px;
+    position: relative;
+}
 
+.top-pattern {
+    margin: 30px auto 50px auto;
+    background: url(img/top-pattern.gif);
+}
+
+.bottom-pattern {
+    background: url(img/bottom-pattern.gif);
+    margin: 0 auto;
+}
+
+.mainFrame .content {
+    font-family: Georgia;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: -130px;
+    margin-bottom: -100px;
+    position: relative;
+    z-index: 100;
+}
