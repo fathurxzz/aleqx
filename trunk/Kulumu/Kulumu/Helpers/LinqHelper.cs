@@ -8,8 +8,7 @@ namespace Kulumu.Helpers
     public static class LinqHelper
     {
 
-        public static T RandomElement<T>(this IEnumerable<T> source,
-                                 Random rng)
+        public static T RandomElement<T>(this IEnumerable<T> source, Random rng)
         {
             T current = default(T);
             int count = 0;

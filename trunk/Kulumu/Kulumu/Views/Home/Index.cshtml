@@ -10,11 +10,18 @@
 }
 @if (Model.Content.MainPage)
 {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bx1').bxSlider();
+            $('#bx2').bxSlider();
+        });
+    </script>
+    
     <div class="frames">
-        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона", CategoryName = ViewBag.SpecialCategoryName })
+        @Html.Partial("Frame", new CaruselFrame { Id = "bx1", Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона", CategoryName = ViewBag.SpecialCategoryName })
         <div class="separator">
         </div>
-        @Html.Partial("Frame", new CaruselFrame { Products = Model.Products.Where(p => p.CategoryId == 2), Title = "коллекции ковров", CategoryName = "" })
+        @Html.Partial("Frame", new CaruselFrame { Id = "bx2", Products = Model.Products.Where(p => p.CategoryId == 2), Title = "коллекции ковров", CategoryName = "" })
         <div class="clear">
         </div>
     </div>
