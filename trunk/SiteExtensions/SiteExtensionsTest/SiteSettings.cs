@@ -14,7 +14,7 @@ namespace SiteExtensionsTest
         {
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
-                                  { "thumb", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 200,Width = 500}, CacheFolder = "thumb", Offset = 5, ScaleMode = ScaleMode.Insert, UseBackgroundImage = false}}
+                                  { "thumb", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 200,Width = 300}, CacheFolder = "thumb", ScaleMode = ScaleMode.Insert, UseBackgroundImage = false}}
                               };
         }
 

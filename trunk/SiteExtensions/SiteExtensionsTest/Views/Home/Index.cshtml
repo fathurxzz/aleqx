@@ -3,131 +3,23 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-
 <script type="text/javascript">
+    $(document).ready(function () {
+        //$('#slider1').bxSlider();
+    });
+</script>
 
-//    $(function () {
-//        
-//        $('img.aaa').load(function () {
-//            alert("1");
-//        });
 
-//    });
 
+<ul id="slider1">
     
-
-//    $('.gimage -> img').load(function () {
-//        //oScrollbar.tinyscrollbar_update();
-//        alert("1");
-//    });
-
-    </script>
-
-<table>
-    <tr>
-        
-        @*<img src="../../Content/Images/1.jpg"/>*@
-
-        @for (int i = 1; i <= 1; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb")))
-                </a>
-            </td>
-        }
-    </tr>
-   @* <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb2"), ScaleMode.Corp))
-                </a>
-            </td>
-        }
-    </tr>
-    <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb3"), ScaleMode.FixedHeight))
-                </a>
-            </td>
-        }
-    </tr>
-    <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb4"), ScaleMode.FixedWidth))
-                </a>
-            </td>
-        }
-    </tr>
-    <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb5"), ScaleMode.Insert))
-                </a>
-            </td>
-        }
-    </tr>
-    
-    <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb6"), ScaleMode.Insert))
-                </a>
-            </td>
-        }
-    </tr>
-
-    <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb7"), ScaleMode.Auto))
-                </a>
-            </td>
-        }
-    </tr>
-        <tr>
-        @for (int i = 1; i <= 7; i++ )
-        {
-            string filename = i + ".jpg";
-            <td>
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb8"), ScaleMode.Auto))
-                </a>
-            </td>
-        }
-    </tr>*@
-</table>
-
-
-
-@*<div>
-    @using(Html.BeginForm("UploadFile","Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
+    @for (int i = 1; i <= 5; i++)
     {
-        <input type="file" name="uploadFile"/><input type="submit" value="submit"/>
+        string filename = i + ".jpg";
+        <li>
+            <a rel="@Html.Raw("group1")" href="../../Content/Images/@filename" class="fancyImage">
+                @Html.Raw(Html.CachedImage("~/Content/Images/", filename, SiteSettings.GetThumbnail("thumb")))
+            </a>
+        </li>
     }
-
-</div>*@
-
-
+</ul>
