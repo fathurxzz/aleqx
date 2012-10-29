@@ -1,27 +1,45 @@
 ﻿.articles
 {
-    margin-bottom: 50px;
-    padding: 20px;
     background-color: #fff;
 }
 
 .article
 {
     padding: 20px 0;
+    font-family: Georgia;
+    
+}
+
+.article .line {
+    background: rgba(200, 200, 200, 0.2);
+    padding: 0 70px;
 }
 
 .article .date
 {
-    font-style: italic;
+    font-family: PTNarrow;
+    color: #a5a5a5;
 }
 
 .article .title
 {
     font-weight: bold;
+    font-family: Georgia;
+    font-size: 14px;
+    color: #006699;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.article .description {
+    font-size: 12px;
 }
 
 .article .text
 {
+     font-size: 12px;
+    padding-top: 10px;
+    margin: 0 70px;
 }
 
 .our-news {
@@ -31,3 +49,9 @@
     position: relative;
     margin: 0 auto;
 }
+
+.mainFrame .middle.art {
+    padding: 0px !important;
+    width: 1003px;
+}
+
