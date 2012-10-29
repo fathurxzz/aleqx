@@ -173,7 +173,7 @@
     <Content Include="Content\img\ad-panel-bottom.png" />
     <Content Include="Content\img\ad-panel-left.png" />
     <Content Include="Content\img\ad-panel-right.png" />
-    <Content Include="Content\img\ad-pattern.gif" />
+    <Content Include="Content\img\bottom-pattern.gif" />
     <Content Include="Content\img\attention.gif" />
     <Content Include="Content\img\bg.gif" />
     <Content Include="Content\img\categories-left.gif" />
@@ -194,6 +194,7 @@
     <Content Include="Content\img\title-bg-center.png" />
     <Content Include="Content\img\title-bg-left.png" />
     <Content Include="Content\img\title-bg-right.png" />
+    <Content Include="Content\img\top-pattern.gif" />
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />
