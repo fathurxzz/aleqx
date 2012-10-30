@@ -233,11 +233,8 @@ namespace HavilaTravel.Controllers
 
             foreach (var customer in customerses)
             {
-                var txt = "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/>";
-                txt += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Guid + "\">http://havila-travel.com/unsubscribe/" + customer.Guid + "</a>";
-
-                var mailText = HttpUtility.HtmlDecode(formMailText + txt).Replace("src=\"",
-                                                                            "src=\"http://havila-travel.com/");
+                var txt = "<br/><br/> Для того, чтобы отписаться от рассылке перейдите пожалуйста по следующей ссылке ссылке <br/><a href=\"http://havila-travel.com/unsubscribe/" + customer.Guid + "\">http://havila-travel.com/unsubscribe/" + customer.Guid + "</a>";
+                var mailText = HttpUtility.HtmlDecode(formMailText + txt).Replace("src=\"", "src=\"http://havila-travel.com/");
 
                 if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
                                            mailSubject, true))
