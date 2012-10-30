@@ -238,7 +238,7 @@ namespace HavilaTravel.Controllers
                 txt += "<a href=\"http://havila-travel.com/unsubscribe/" + customer.Guid +
                                 "\">http://havila-travel.com/unsubscribe/" + customer.Guid + "</a>";
 
-                var mailText = HttpUtility.HtmlDecode(txt+formMailText).Replace("src=\"",
+                var mailText = HttpUtility.HtmlDecode(formMailText + txt).Replace("src=\"",
                                                                             "src=\"http://havila-travel.com/");
 
                 if (MailHelper.SendMessage(new MailAddress(customer.Email), mailText,
