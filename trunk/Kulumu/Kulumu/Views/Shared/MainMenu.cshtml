@@ -1,36 +1,49 @@
 ﻿<div class="mainMenu">
-    <table>
-        <tr>
-            <td class="first">
-                @Html.ActionLink("о нас", "Index", "Home", new { area = "", id = "about" }, null)
-                @if (Request.IsAuthenticated)
-                {
-                    <br />
-                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "about" }, new { @class = "adminLink" })
-                }
-            </td>
-            <td class="second">
-                @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
-                @if (Request.IsAuthenticated)
-                {
-                    <br />
-                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "articles" }, new { @class = "adminLink" })
-                }
-            </td>
-            <td class="separator">
-            </td>
-            <td class="third">
-                @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
-                @if (Request.IsAuthenticated)
-                {
-                    <br />
-                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
-                }
-            </td>
-            <td class="fourth">
-                <a href="#"><span>3D-тур</span><br />
-                    по магазину</a>
-            </td>
-        </tr>
-    </table>
+    @{
+        string className = "";
+        className = ViewBag.CurrentMenuItemName == "about" ? "selected" : "";
+    }
+    
+
+    <div class="first @className">
+        @if (ViewBag.CurrentMenuItemName == "about")
+        {
+            <text>о нас</text>
+        }
+        else
+        {
+            @Html.ActionLink("о нас", "Index", "Home", new { area = "", id = "about" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "about" }, new { @class = "adminLink" })
+        }
+    </div>
+    @{
+        className = ViewBag.CurrentMenuItemName == "articles" ? "selected" : "";
+    }
+    <div class="second @className">
+        @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "articles" }, new { @class = "adminLink" })
+        }
+    </div>
+    @{
+        className = ViewBag.CurrentMenuItemName == "contacts" ? "selected" : "";
+    }
+    <div class="third @className">
+        @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
+        }
+    </div>
+    <div class="fourth">
+        <a href="#"><span>3D-тур</span><br />
+            по магазину</a>
+    </div>
 </div>
