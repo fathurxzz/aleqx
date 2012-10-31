@@ -16,7 +16,6 @@ namespace Kulumu.Controllers
             {
                 SiteModel model = new SiteModel(context,id);
                 this.SetSeoContent(model);
-
                 ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 ViewBag.isHomePage = model.IsHomePage;
