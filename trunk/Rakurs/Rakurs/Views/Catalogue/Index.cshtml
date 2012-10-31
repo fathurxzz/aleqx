@@ -25,24 +25,26 @@
 @section Catalogue
 {
     <div id="galleryContent">
-        <div class="title">
-            @if (Request.IsAuthenticated)
-            {
-                <div class="adminLinksStaticContainer abs categotyTitle">
-                    @*@Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))*@
-                    @Html.Raw(Html.ActionLink("[Image]", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLink add", title = "Добавить фото и описание" }).ToString().Replace("[Image]", ""))
-                    @Html.Raw(Html.ActionLink("[Image]", "CreateMany", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLink add", title = "Добавить несколько фото и описание" }).ToString().Replace("[Image]", ""))
-                </div>
-            }
-            @if (Model.SubCategory == null)
-            {
-                @Html.Raw(SiteSettings.Language == Language.Ru ? Model.Category.Title:Model.Category.TitleEng)
-            }
-            else
-            {
-                @Html.ActionLink(SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng, "Index", "Catalogue", new { category = Model.Category.Name, subCategory = "" }, null)
-            }
-        </div>
+        <div class="titleContainer">
+            <div class="title">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="adminLinksStaticContainer abs categotyTitle">
+                        @*@Html.Raw(Html.ActionLink("[Image]", "Add", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLinkSubItem addSubItem", title = "Добавить подкатегорию" }).ToString().Replace("[Image]", ""))*@
+                        @Html.Raw(Html.ActionLink("[Image]", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLink add", title = "Добавить фото и описание" }).ToString().Replace("[Image]", ""))
+                        @Html.Raw(Html.ActionLink("[Image]", "CreateMany", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "pictureLink add", title = "Добавить несколько фото и описание" }).ToString().Replace("[Image]", ""))
+                    </div>
+                }
+                @if (Model.SubCategory == null)
+                {
+                    @Html.Raw(SiteSettings.Language == Language.Ru ? Model.Category.Title:Model.Category.TitleEng)
+                }
+                else
+                {
+                    @Html.ActionLink(SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng, "Index", "Catalogue", new { category = Model.Category.Name, subCategory = "" }, null)
+                }
+            </div>
+            </div>
         @if (Model.CurrentCategory != null && (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Title : Model.CurrentCategory.TitleEng) || !string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Text : Model.CurrentCategory.TextEng)))
         {
             <div class="categoryInnerText">
