@@ -6,7 +6,7 @@
     
 
     <div class="first @className">
-        @if (ViewBag.CurrentMenuItemName == "about")
+        @if (className == "selected")
         {
             <text>о нас</text>
         }
@@ -24,7 +24,15 @@
         className = ViewBag.CurrentMenuItemName == "articles" ? "selected" : "";
     }
     <div class="second @className">
-        @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
+        @if (className == "selected")
+        {
+            <text>наши новости</text>
+        }
+        else
+        {
+            @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
+        }
+
         @if (Request.IsAuthenticated)
         {
             <br />
@@ -35,7 +43,15 @@
         className = ViewBag.CurrentMenuItemName == "contacts" ? "selected" : "";
     }
     <div class="third @className">
-        @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
+        @if (className == "selected")
+        {
+            <text>адрес магазина и филиалов</text>
+        }
+        else
+        {
+            @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new {area = "", id = "contacts"}, null)
+        }
+
         @if (Request.IsAuthenticated)
         {
             <br />
