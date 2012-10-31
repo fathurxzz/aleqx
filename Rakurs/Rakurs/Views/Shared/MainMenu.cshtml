@@ -27,7 +27,14 @@
                     }
                     else
                     {
-                        @Html.ActionLink(item.Title, "Index", "Home", new { id = item.ContentName }, new { @class = item.Selected ? "selected" : "" })
+                        if (item.Selected)
+                        {
+                            @item.Title
+                        }
+                        else
+                         {
+                             @Html.ActionLink(item.Title, "Index", "Home", new {id = item.ContentName}, new {@class = item.Selected ? "selected" : ""})
+                         }
                     }
                 </td>
             }
