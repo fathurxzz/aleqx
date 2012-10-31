@@ -18,7 +18,7 @@ namespace Kulumu.Controllers
                 this.SetSeoContent(model);
 
                 ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
-
+                ViewBag.CurrentMenuItemName = model.Content.Name;
                 ViewBag.isHomePage = model.IsHomePage;
                 return View(model);
             }
@@ -29,6 +29,7 @@ namespace Kulumu.Controllers
             using (var context = new SiteContainer())
             {
                 SiteModel model = new SiteModel(context, "articles", true);
+                ViewBag.CurrentMenuItemName = model.Content.Name;
                 return View(model);
             }
         }

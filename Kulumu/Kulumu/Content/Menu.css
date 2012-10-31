@@ -3,43 +3,55 @@
     font-family: PTNarrow;
     font-size: 14px;
 }
+
 .mainMenu a {
     
 }
 
-.mainMenu table {
-    border-collapse: collapse;
-    margin-top: 17px;
-}
-
-.mainMenu table td {
-    /*border: 1px solid black;*/
+.mainMenu div 
+{
+    text-transform: uppercase;
+    color: #fff;
     text-align: center;
     vertical-align: middle;
-    
+    height: 55px;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    float: left;
+    padding-top: 20px;
 }
 
-.mainMenu table td.first {
-    width: 200px;
+.mainMenu .first 
+{
+    margin-left: 70px;
+    width: 50px;
+    margin-right: 20px;
+    padding-top: 30px;
+    height: 45px;
 }
 
-.mainMenu table td.second {
+.mainMenu .second {
     width: 80px;
+    margin-left: 60px;
 }
 
-.mainMenu table td.separator {
-    width: 440px;
+.mainMenu .third {
+    width: 140px;
+    margin-left: 410px;
 }
 
-.mainMenu table td.third {
-    width: 100px;
-}
-.mainMenu table td.fourth {
-    width: 180px;
+.mainMenu .fourth {
+    width: 80px;
+    margin-left: 50px;
     font-size: 12px;
 }
 
-.mainMenu table td.fourth span {
+.mainMenu .fourth span {
     font-size: 20px;
     font-family: PTNarrowBold;
+}
+
+.mainMenu .selected {
+    background-color: #4d3824;
+    font-weight: bold;
 }
