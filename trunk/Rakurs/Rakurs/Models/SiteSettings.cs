@@ -46,7 +46,7 @@ namespace Rakurs.Models
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
                                   {"galleryThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 156,Width = 157}, CacheFolder = "galleryThumbnail", ScaleMode = ScaleMode.Insert}},
-                                  {"mainFrameThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 1000, Height = 514}, CacheFolder = "mainFrameThumbnail", ScaleMode = ScaleMode.Crop}}
+                                  {"mainFrameThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 1000, Height = 514}, CacheFolder = "mainFrameThumbnail", ScaleMode = ScaleMode.Insert}}
                               };
         }
 
