@@ -62,7 +62,7 @@ namespace Rakurs.Models
 
         private void GetDiscountBlockItems()
         {
-            DiscountBlockItems = Context.Product.Where(p => p.Discount).ToList();
+            DiscountBlockItems = Context.Product.Include("Category").Where(p => p.Discount).ToList();
         }
 
         private void GetGalleryFrameItems()
