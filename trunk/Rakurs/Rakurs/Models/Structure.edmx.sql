@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/16/2012 21:09:38
+-- Date Created: 11/01/2012 09:40:46
 -- Generated from EDMX file: D:\projects\Rakurs\Rakurs\Models\Structure.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -85,7 +85,9 @@ CREATE TABLE `Product` (
     `ImageSource` longtext  NOT NULL,
     `ShowOnMainPage` bool  NOT NULL,
     `TitleEng` TEXT  NULL,
-    `DescriptionEng` longtext  NULL
+    `DescriptionEng` longtext  NULL,
+    `Discount` bool  NOT NULL,
+    `DiscountText` varchar( 100 )  NULL
 );
 
 -- Creating table 'ProductAttribute'

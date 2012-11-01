@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Structure.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Structure.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="StructureStoreContainer">
     <EntitySet Name="Content" EntityType="Structure.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Structure.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -82,6 +82,8 @@
     <Property Name="ShowOnMainPage" Type="bool" Nullable="false" DefaultValue="false" />
     <Property Name="TitleEng" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="DescriptionEng" Type="longtext" Nullable="true" />
+    <Property Name="Discount" Type="bool" Nullable="false" />
+    <Property Name="DiscountText" Type="nchar" Nullable="true" MaxLength="100" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -268,6 +270,8 @@
           <Property Type="Boolean" Name="ShowOnMainPage" DefaultValue="False" Nullable="false" />
           <Property Type="String" Name="TitleEng" FixedLength="true" MaxLength="500" />
           <Property Type="String" Name="DescriptionEng" />
+          <Property Type="Boolean" Name="Discount" Nullable="false" />
+          <Property Type="String" Name="DiscountText" FixedLength="true" MaxLength="100" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Structure.Category" Role="Category" Multiplicity="1" />
@@ -351,6 +355,8 @@
           <ScalarProperty Name="ShowOnMainPage" ColumnName="ShowOnMainPage" />
           <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
           <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="DiscountText" ColumnName="DiscountText" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -407,10 +413,10 @@
           <ConnectorPoint PointX="4.1034615384615378" PointY="0.49999999999999978" />
           <ConnectorPoint PointX="4.1034615384615378" PointY="0.75" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="2.9417936197916665" />
+        <EntityTypeShape EntityType="Structure.Product" Width="1.5" PointX="6" PointY="0.75" Height="2.9070849609374996" />
         <AssociationConnector Association="Structure.CategoryProduct">
-          <ConnectorPoint PointX="4.625" PointY="2.2208968098958333" />
-          <ConnectorPoint PointX="6" PointY="2.2208968098958333" />
+          <ConnectorPoint PointX="4.625" PointY="2.20354248046875" />
+          <ConnectorPoint PointX="6" PointY="2.20354248046875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Structure.ProductAttribute" Width="2" PointX="3.125" PointY="4.875" Height="1.9802864583333326" />
         <AssociationConnector Association="Structure.CategoryProductAttribute">
@@ -418,9 +424,9 @@
           <ConnectorPoint PointX="3.875" PointY="4.875" />
         </AssociationConnector>
         <AssociationConnector Association="Structure.ProductProductAttribute">
-          <ConnectorPoint PointX="6.75" PointY="3.6917936197916665" />
-          <ConnectorPoint PointX="6.75" PointY="5.8651432291666659" />
-          <ConnectorPoint PointX="5.125" PointY="5.8651432291666659" />
+          <ConnectorPoint PointX="6.75" PointY="3.6570849609374996" />
+          <ConnectorPoint PointX="6.75" PointY="5.7533268229166659" />
+          <ConnectorPoint PointX="5.125" PointY="5.7533268229166659" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

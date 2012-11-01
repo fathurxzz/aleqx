@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Rakurs.Models.Product>
+
+
+<div class="discountItemsContainer">
+    <div class="discountItems">
+        <div class="title">Обратите внимание</div>
+        <div style="padding-top: 10px;"></div>
+        @foreach (var product in Model)
+        {
+            @Html.Partial("Product", product)
+        }
+        <div class="clear">
+        </div>
+    </div>
+</div>

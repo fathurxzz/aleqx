@@ -6,7 +6,7 @@
                     //var image = Model.FirstOrDefault();
 }
 <script type="text/javascript">
-    var globalTitle = "aaaa";
+    //var globalTitle = "aaaa";
     $(function () {
         $('#galleryImageContainer').tinycarousel();
     });
@@ -47,7 +47,7 @@
                     var fancyTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" +  image.Path.First().ParentName + " &raquo; " + (SiteSettings.Language == Language.Ru ? image.Title : image.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ? image.Description : image.DescriptionEng) + "</td></tr></table>";
                     
                         }
-                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@image.ImageSource" class="fancyImage" onclick="setTitle(this, '@fancyTitle')" title="">
+                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@image.ImageSource" class="fancyImage" customtitle="@fancyTitle">
                         @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("mainFrameThumbnail")))
                         </a>
                     </li>

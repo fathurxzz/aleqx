@@ -937,12 +937,14 @@ namespace Rakurs.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId, global::System.String imageSource)
+        /// <param name="discount">Initial value of the Discount property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.Int32 categoryId, global::System.String imageSource, global::System.Boolean discount)
         {
             Product product = new Product();
             product.Id = id;
             product.CategoryId = categoryId;
             product.ImageSource = imageSource;
+            product.Discount = discount;
             return product;
         }
 
@@ -1143,6 +1145,54 @@ namespace Rakurs.Models
         private global::System.String _DescriptionEng;
         partial void OnDescriptionEngChanging(global::System.String value);
         partial void OnDescriptionEngChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Discount
+        {
+            get
+            {
+                return _Discount;
+            }
+            set
+            {
+                OnDiscountChanging(value);
+                ReportPropertyChanging("Discount");
+                _Discount = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Discount");
+                OnDiscountChanged();
+            }
+        }
+        private global::System.Boolean _Discount;
+        partial void OnDiscountChanging(global::System.Boolean value);
+        partial void OnDiscountChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DiscountText
+        {
+            get
+            {
+                return _DiscountText;
+            }
+            set
+            {
+                OnDiscountTextChanging(value);
+                ReportPropertyChanging("DiscountText");
+                _DiscountText = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DiscountText");
+                OnDiscountTextChanged();
+            }
+        }
+        private global::System.String _DiscountText;
+        partial void OnDiscountTextChanging(global::System.String value);
+        partial void OnDiscountTextChanged();
 
         #endregion
     
