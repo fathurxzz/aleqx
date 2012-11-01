@@ -30,8 +30,14 @@
             }
         </div>
     }
+    
     @if (Model.Content != null && Model.Content.MainPage && Model.GalleryFrameItems != null && Model.GalleryFrameItems.Any())
     {
         @Html.Partial("GalleryFrame", Model.GalleryFrameItems)
+    }
+    
+    @if (Model.Content != null && Model.Content.MainPage && Model.DiscountBlockItems != null && Model.DiscountBlockItems.Any())
+    {
+        @Html.Partial("DiscountBlock", Model.DiscountBlockItems)
     }
 }

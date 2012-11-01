@@ -62,7 +62,7 @@ namespace Rakurs.Areas.Admin.Controllers
                 }
 
 
-                TryUpdateModel(product, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "ShowOnMainPage" });
+                TryUpdateModel(product, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "ShowOnMainPage","Discount","DiscountText" });
 
                 if (fileUpload != null)
                 {
@@ -217,7 +217,7 @@ namespace Rakurs.Areas.Admin.Controllers
                     }
                 }
 
-                TryUpdateModel(product, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "ShowOnMainPage" });
+                TryUpdateModel(product, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "ShowOnMainPage", "Discount", "DiscountText" });
 
 
 

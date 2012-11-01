@@ -32,5 +32,12 @@ namespace Rakurs.Models
 
         [DisplayName("Отображать на главной странице")]
         public string ShowOnMainPage { get; set; }
+
+        [DisplayName("Скидка")]
+        public bool Discount { get; set; }
+
+        [DisplayName("Текст скидки")]
+        public string DiscountText { get; set; }
+
     }
 }

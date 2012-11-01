@@ -112,3 +112,60 @@
     cursor: pointer;
     left: 660px;
 }
+
+.discount {
+    position: absolute;
+    width: 157px;
+    height: 16px;
+    background-color: #c01e2e;
+    color: #fff;
+    font-family: PFBeauSansProRegular;
+    font-size: 12px;
+    text-align: center;
+}
+
+.discountItemsContainer 
+{
+    margin-top: 50px;
+
+    text-align: center;
+    
+}
+
+.discountItems {
+    border: 2px solid #c01e2e;
+    
+    border-radius: 17px 17px 17px 17px;
+    -webkit-border-radius: 17px 17px 17px 17px;
+    -moz-border-radius: 17px 17px 17px 17px;
+
+    display: inline-block;
+    padding: 0 30px;
+}
+
+.discountItemsContainer .discountItems .title {
+    position: relative;
+    margin: -20px auto 0 auto;
+    width: 200px;
+    text-align: center;
+    font-family: PFBeauSansProSemiBold;
+    font-size: 15px;
+    /*padding: 10px 20px 5px;*/
+    padding-top: 8px;
+    height: 28px;
+    background-color: #c01e2e;
+    color: #fff;
+    border-radius: 17px 17px 17px 17px;
+    -webkit-border-radius: 17px 17px 17px 17px;
+    -moz-border-radius: 17px 17px 17px 17px;
+    
+}
+
+.discountItemsContainer .discountItems .discount {
+    background-color: #13d708 !important;
+}
+
+
+.discountItemsContainer .discountItems .galleryItemContainer {
+    margin: 17px !important;
+}

@@ -57,11 +57,25 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(model => model.ShowOnMainPage)
-                 <br/>
+                    <br/>
                     <span style="color:#f00">(Фото должно быть горизонтальным)</span>
                 </td>
                 <td>@Html.CheckBoxFor(model => model.ShowOnMainPage)
                     @Html.ValidationMessageFor(model => model.ShowOnMainPage)
+                </td>
+            </tr>
+             <tr>
+                <td>@Html.LabelFor(model => model.Discount)
+                </td>
+                <td>@Html.CheckBoxFor(model => model.Discount)
+                    @Html.ValidationMessageFor(model => model.Discount)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.DiscountText)
+                </td>
+                <td>@Html.EditorFor(model => model.DiscountText)
+                    @Html.ValidationMessageFor(model => model.DiscountText)
                 </td>
             </tr>
             <tr>

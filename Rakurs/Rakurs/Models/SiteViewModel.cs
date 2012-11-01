@@ -15,6 +15,7 @@ namespace Rakurs.Models
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
         public IEnumerable<Product> GalleryFrameItems { get; set; }
+        public IEnumerable<Product> DiscountBlockItems { get; set; }
 
 
         protected StructureContainer Context;
@@ -46,6 +47,7 @@ namespace Rakurs.Models
             if (IsHomePage)
             {
                 GetGalleryFrameItems();
+                GetDiscountBlockItems();
             }
 
             Content = content;
@@ -56,6 +58,11 @@ namespace Rakurs.Models
                 SeoKeywords = content.SeoKeywords;
             }
 
+        }
+
+        private void GetDiscountBlockItems()
+        {
+            DiscountBlockItems = Context.Product.Where(p => p.Discount).ToList();
         }
 
         private void GetGalleryFrameItems()

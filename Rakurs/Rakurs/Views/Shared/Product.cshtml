@@ -2,25 +2,27 @@
 @using Rakurs.Models
 @using SiteExtensions.Graphics
 @model Rakurs.Models.Product
-
 <div class="galleryItemContainer">
-            <div class="galleryItem">
-            @if (Request.IsAuthenticated)
-             {
-                 <div class="adminLinksContainer">
-                     @Html.Raw(Html.ActionLink("[Image]", "Edit", "Product", new {area = "Admin", id = Model.Id}, new {@class = "pictureLink edit", title = "Редактировать"}).ToString().Replace("[Image]", ""))
-                     @Html.Raw(Html.ActionLink("[Image]", "Delete", "Product", new {area = "Admin", id = Model.Id}, new {@class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить изображение')"}).ToString().Replace("[Image]", ""))
-                 </div>
-             }
-                
-                @{
-                    var customTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + (SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng) + " &raquo; " + (SiteSettings.Language == Language.Ru ? Model.Title : Model.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ? Model.Description : Model.DescriptionEng) + "</td></tr></table>";
-                }
-                <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage"  customtitle="@customTitle"  >
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("galleryThumbnail")))
-                </a>
+    <div class="galleryItem">
+        @if (Model.Discount)
+        {
+            <div class="discount">@Html.Raw(Model.DiscountText)</div>
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinksContainer">
+                @Html.Raw(Html.ActionLink("[Image]", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "pictureLink edit", title = "Редактировать" }).ToString().Replace("[Image]", ""))
+                @Html.Raw(Html.ActionLink("[Image]", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "pictureLink delete", title = "Удалить", onclick = "return confirm('Вы действительно хотите удалить изображение')" }).ToString().Replace("[Image]", ""))
             </div>
-            <div class="sign">
-                <a rel="@Html.Raw("group2")" href="../../Content/Images/@Model.ImageSource" class="fancyImage">@Html.Raw(SiteSettings.Language == Language.Ru ?Model.Title:Model.TitleEng)</a>
-            </div>
-        </div>
+        }
+        @{
+            var customTitle = "<table class=\"fancyTitleContainer\"><tr><td class=\"path\">" + (SiteSettings.Language == Language.Ru ? Model.Category.Title : Model.Category.TitleEng) + " &raquo; " + (SiteSettings.Language == Language.Ru ? Model.Title : Model.TitleEng) + "</td><td class=\"descr\">" + (SiteSettings.Language == Language.Ru ? Model.Description : Model.DescriptionEng) + "</td></tr></table>";
+        }
+        <a rel="@Html.Raw("group1")" href="../../Content/Images/@Model.ImageSource" class="fancyImage"  customtitle="@customTitle"  >
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("galleryThumbnail")))
+        </a>
+    </div>
+    <div class="sign">
+        <a rel="@Html.Raw("group2")" href="../../Content/Images/@Model.ImageSource" class="fancyImage">@Html.Raw(SiteSettings.Language == Language.Ru ? Model.Title : Model.TitleEng)</a>
+    </div>
+</div>
