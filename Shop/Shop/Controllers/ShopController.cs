@@ -85,14 +85,14 @@ namespace Shop.Controllers
 
                 if (!string.IsNullOrEmpty(q))
                 {
-                    var query = q.Trim();
+                    var query = q.Trim().ToLower();
                     if (!string.IsNullOrEmpty(query))
                     {
                         var products = context.Product.Include("Category").Include("ProductImages")
                             //.Where(p => p.Title.Contains(query))
                             .ToList();
 
-                        products = products.Where(p => p.Category.Title.Contains(query)||p.Title.Contains(query)).ToList();
+                        products = products.Where(p => p.Category.Title.ToLower().Contains(query)||p.Title.ToLower().Contains(query)).ToList();
 
                         if (products.Count == 0)
                         {
