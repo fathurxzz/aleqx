@@ -348,7 +348,13 @@ a
     width: 110px;
 }
 
-#footer .social {
+.productSocials 
+{
+    margin-top: 50px;
+    height: 20px;
+}
+
+#footer .social, .productSocials .social {
     display: block;
     float: left;
     width: 120px;
@@ -358,16 +364,18 @@ a
     /*border:1px solid red;*/
 }
 
-#footer .social.twitter
+#footer .social.twitter, .productSocials  .social.twitter
 {
     width: 80px;
 }
 
-#footer .social.plusone {
+
+
+#footer .social.plusone, .productSocials .social.plusone {
     width: 70px;
 }
 
-#footer .social.vk-share {
+#footer .social.vk-share, .productSocials .social.vk-share {
     width: 110px;
 }
 

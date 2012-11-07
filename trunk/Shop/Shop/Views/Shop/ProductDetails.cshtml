@@ -81,39 +81,39 @@
                             </td>
                             <td>
                                 @{
-                                             var cnt = 0;
+                        var cnt = 0;
 
-                                             if (attribute.Static)
-                                             {
-                                                 foreach (var attributeValue in Model.Product.ProductAttributeStaticValues)
-                                                 {
-                                                     if (attribute.ProductAttributeStaticValues.Contains(attributeValue))
-                                                     {
-                                                         if (cnt > 0)
-                                                         {
+                        if (attribute.Static)
+                        {
+                            foreach (var attributeValue in Model.Product.ProductAttributeStaticValues)
+                            {
+                                if (attribute.ProductAttributeStaticValues.Contains(attributeValue))
+                                {
+                                    if (cnt > 0)
+                                    {
                                     @Html.Raw(", ")
-                                                         }
+                                    }
                                     @Html.Raw(attributeValue.Value)
-                               cnt++;
-                                                     }
-                                                 }
-                                             }
-                                             else
-                                             {
-                                                 foreach (var attributeValue in Model.Product.ProductAttributeValues)
-                                                 {
-                                                     if (attribute.ProductAttributeValues.Contains(attributeValue))
-                                                     {
-                                                         if (cnt > 0)
-                                                         {
+                                    cnt++;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (var attributeValue in Model.Product.ProductAttributeValues)
+                            {
+                                if (attribute.ProductAttributeValues.Contains(attributeValue))
+                                {
+                                    if (cnt > 0)
+                                    {
                                     @Html.Raw(", ")
-                                                         }
+                                    }
                                     @Html.Raw(attributeValue.Value)
-                               cnt++;
-                                                     }
+                                    cnt++;
+                                }
 
-                                                 }
-                                             }
+                            }
+                        }
                                 }
                             </td>
                         </tr>
@@ -124,7 +124,7 @@
         <div class="description">
             <div class="productBrand">
                 <div style="float: left; padding-right: 20px;">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.Brand.Logo, "brand", ScaleMode.Insert))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.Brand.Logo, "brand", ScaleMode.Insert))
                 </div>
                 @Html.Raw(Model.Product.Brand.Title)
             </div>
@@ -136,6 +136,38 @@
     <div>
         @Html.ActionLink("Назад к списку", "Categories", "Shop", new { id = Model.Product.Category.Name }, new { @class = "details" })
     </div>
+</div>
+<div class="productSocials">
+    <div id="likeContainer" class="social fb">
+        <fb:like href="@Request.Url" send="false" layout="button_count" width="110"
+            show_faces="true">
+                    </fb:like>
+    </div>
+    <div class="vk-share social">
+        <script type="text/javascript">
+<!--
+            document.write(VK.Share.button({ url: '@Request.Url', image: 'http://toy-planet.com.ua/logo.jpg' }, { type: 'button', text: 'Сохранить' }));
+        -->
+        </script>
+    </div>
+    <div class="social twitter">
+        <a class="twitter-share-button" href="http://twitter.com/share" data-url="@Request.Url">
+            Tweet</a>
+    </div>
+    <div id="plusOne" class="social plusone">
+                            <!-- Поместите этот тег туда, где должна отображаться кнопка +1. -->
+                            <g:plusone size="medium"></g:plusone>
+                            <!-- Поместите этот вызов функции отображения в соответствующее место. -->
+                            <script type="text/javascript">
+                                window.___gcfg = { lang: 'ru' };
+
+                                (function () {
+                                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                                    po.src = 'https://apis.google.com/js/plusone.js';
+                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                                })();
+                            </script>
+                        </div>
 </div>
 @section Includes
     {
