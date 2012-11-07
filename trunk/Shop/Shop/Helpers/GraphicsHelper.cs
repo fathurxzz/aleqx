@@ -20,8 +20,8 @@ namespace Shop.Helpers
         private static Dictionary<string, int> limitHeight = new Dictionary<string, int>();
         private static Dictionary<string, int> limitWidth = new Dictionary<string, int>();
 
-        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2", "thumbnail3" };
-        public static int[] ThumbnailDimentions = { 100, 150, 298, 53 };
+        public static string[] ThumbnailFolders = { "thumbnail0", "thumbnail1", "thumbnail2", "thumbnail3", "brand" };
+        public static int[] ThumbnailDimentions = { 100, 150, 298, 53, 70 };
 
 
         static GraphicsHelper()
@@ -37,6 +37,9 @@ namespace Shop.Helpers
 
             limitWidth.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);
             limitHeight.Add(ThumbnailFolders[3], ThumbnailDimentions[3]);
+
+            limitWidth.Add(ThumbnailFolders[4], ThumbnailDimentions[4]);
+            limitHeight.Add(ThumbnailFolders[4], ThumbnailDimentions[4]);
         }
 
         private static Rectangle CalculateSourceRect(string name, Size sourceImage, ScaleMode scaleMode)
