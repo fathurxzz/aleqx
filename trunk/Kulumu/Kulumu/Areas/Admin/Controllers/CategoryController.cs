@@ -14,6 +14,7 @@ namespace Kulumu.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             using (var context = new SiteContainer())
@@ -21,6 +22,7 @@ namespace Kulumu.Areas.Admin.Controllers
                 var category = new Category();
                 TryUpdateModel(category, new[]
                                                  {
+                                                     "Name",
                                                      "Title", 
                                                      "Description", 
                                                      "BottomDescription", 
@@ -28,7 +30,7 @@ namespace Kulumu.Areas.Admin.Controllers
                                                  });
                 context.AddToCategory(category);
                 context.SaveChanges();
-                return RedirectToAction("Gallery", "Home", new { area = "", id = category.Id });
+                return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
             }
         }
 
@@ -52,19 +54,34 @@ namespace Kulumu.Areas.Admin.Controllers
                     var category = context.Category.First(c => c.Id == id);
                     TryUpdateModel(category, new[]
                                                  {
+                                                     "Name",
                                                      "Title", 
                                                      "Description", 
                                                      "BottomDescription", 
                                                      "BottomDescriptionTitle"
                                                  });
                     context.SaveChanges();
-                    return RedirectToAction("Gallery", "Home", new { area = "", id = category.Id });
+                    return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
             }
             catch
             {
                 return View();
             }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.Include("Products").First(c => c.Id == id);
+                if (!category.Products.Any())
+                {
+                    context.DeleteObject(category);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Gallery", "Home", new { area = "" });
         }
     }
 }
