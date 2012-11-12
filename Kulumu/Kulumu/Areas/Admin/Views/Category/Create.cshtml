@@ -18,6 +18,15 @@
             </tr>
             <tr>
                 <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
                     @Html.LabelFor(model => model.Title)
                 </td>
                 <td>
@@ -56,7 +65,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Gallery", "Home", new { area = "", id = Model.Id }, null)
+            @Html.ActionLink("Назад", "Gallery", "Home", new { area = "" }, null)
         </div>
     }
 </div>
