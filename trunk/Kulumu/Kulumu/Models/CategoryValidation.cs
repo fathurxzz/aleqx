@@ -15,6 +15,9 @@ namespace Kulumu.Models
 
     public class CategoryValidation
     {
+        [DisplayName("Заголовок")]
+        public string Title { get; set; }
+
         [DisplayName("Описание (вверху)")]
         public string Description { get; set; }
 
