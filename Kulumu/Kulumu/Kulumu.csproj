@@ -281,6 +281,7 @@
     <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
     <EntityDeploy Include="Models\Site.edmx">
