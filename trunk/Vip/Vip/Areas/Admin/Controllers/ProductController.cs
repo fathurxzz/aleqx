@@ -225,11 +225,14 @@ namespace Vip.Areas.Admin.Controllers
             using (var context = new CatalogueContainer())
             {
                 var product = context.Product.Include("Brand").First(p => p.Id == id);
-                var brandName = product.Brand.Name;
+                var brandId = product.Brand.Id;
+                var brand = context.Brand.Include("Category").First(b => b.Id == brandId);
+                var brandName = brand.Name;
+                var categoryName = brand.Category.Name;
                 ImageHelper.DeleteImage(product.ImageSource);
                 context.DeleteObject(product);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Catalogue", new { Area = "", brand = brandName, page = page });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", brand = brandName, category=categoryName, page = page });
             }
         }
     }
