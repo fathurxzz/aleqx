@@ -42,7 +42,7 @@
                                 @Html.ActionLink("Удалить", "DeleteImage", "Project", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                             </div>
                         }
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage")))
                     </li>
                 }
             </ul>

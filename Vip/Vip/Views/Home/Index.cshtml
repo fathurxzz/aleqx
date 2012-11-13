@@ -47,7 +47,7 @@
                     </div>
                 }
                 @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.Crop))
+                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
             </div>
         }
         <div class="patternBottom">

@@ -19,7 +19,8 @@
         }
         else
         {
-            @Html.ActionLink(Model.Category.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = "", filter = "" }, null) <span class="brand"> &raquo; @Model.Brand.Title</span>
+            @Html.ActionLink(Model.Category.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = "", filter = "" }, null) <span
+                class="brand"> &raquo; @Model.Brand.Title</span>
         }
     </div>
     <div class="patternTop">
@@ -58,7 +59,13 @@
                         @foreach (var product in Model.Brand.Products)
                         {
                             <li>
-                                @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage"), ScaleMode.Crop))
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <div class="manageImageLinkContainer">
+                                        @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                                    </div>
+                                }
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage")))
                             </li>
                         }
                     </ul>
@@ -108,40 +115,37 @@
             {
                 foreach (var brand in Model.Brands.OrderBy(b => b.SortOrder))
                 {
-                    <div class="brand">
-                        @Html.ActionLink(brand.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter }, null)
-                        @if (Request.IsAuthenticated)
-                        {
-                            <span class="sortOrder">@brand.SortOrder</span> @Html.Raw("&nbsp;")
-                            @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
-                            @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
-                        }
-                    </div>
+                <div class="brand">
+                    @Html.ActionLink(brand.Title, "Index", "Catalogue", new { area = "", category = Model.Category.Name, brand = brand.Name, filter = Model.Filter }, null)
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span class="sortOrder">@brand.SortOrder</span> @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
+                    }
+                </div>
                 }
             }
         </div>
          
         
     }
-    
-    
-
     <div class="patternBottom">
     </div>
-     <div class="pattern"></div>
+    <div class="pattern">
+    </div>
     @if (Model.Brand != null)
     {
-         if (!string.IsNullOrEmpty(Model.Brand.Description) || !string.IsNullOrEmpty(Model.Brand.DescriptionTitle))
+        if (!string.IsNullOrEmpty(Model.Brand.Description) || !string.IsNullOrEmpty(Model.Brand.DescriptionTitle))
         {
-            @Html.Partial("AboutModel", new AboutModel { Title = Model.Brand.DescriptionTitle, Text = Model.Brand.Description })
+        @Html.Partial("AboutModel", new AboutModel { Title = Model.Brand.DescriptionTitle, Text = Model.Brand.Description })
         }
     }
     else
     {
         if (!string.IsNullOrEmpty(Model.Category.Description) || !string.IsNullOrEmpty(Model.Category.DescriptionTitle))
         {
-            @Html.Partial("AboutModel", new AboutModel { Title = Model.Category.DescriptionTitle, Text = Model.Category.Description })
+        @Html.Partial("AboutModel", new AboutModel { Title = Model.Category.DescriptionTitle, Text = Model.Category.Description })
         }
     }
-  
 </div>
