@@ -153,6 +153,7 @@
     <Content Include="Content\fancybox\fancy_title_main.png" />
     <Content Include="Content\fancybox\fancy_title_over.png" />
     <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\Images\bg\bg.jpg" />
     <Content Include="Content\img\about-bottom.gif" />
     <Content Include="Content\img\about-footer-shadow-left.png" />
     <Content Include="Content\img\about-footer-shadow-right.png" />
@@ -261,7 +262,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Content\Images\bg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
