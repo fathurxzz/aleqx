@@ -50,7 +50,7 @@
                 @if (Request.IsAuthenticated)
                 {
                     
-                    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", id = Model.Category.Id, filter = Model.Filter }, new { @class = "adminLink" })
                 }
             </div>
             <div id="gallery">
@@ -65,8 +65,8 @@
                                 @if (Request.IsAuthenticated)
                                 {
                                     <div class="manageImageLinkContainer">
-                                        @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id, filter= Model.Filter }, new { @class = "adminLink" })
-                                        @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                                        @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id, filter = Model.Filter }, new { @class = "adminLink" })
+                                        @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id, filter = Model.Filter }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                                     </div>
                                 }
                                 @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage")))
@@ -124,7 +124,7 @@
             @if (Request.IsAuthenticated)
             {
                 <div style="text-align: center">
-                    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin", id = Model.Category.Id, filter = Model.Filter }, new { @class = "adminLink" })
                 </div>
             }
             @if (Model.Brands.Any())
@@ -136,8 +136,8 @@
                     @if (Request.IsAuthenticated)
                     {
                         <span class="sortOrder">@brand.SortOrder</span> @Html.Raw("&nbsp;")
-                        @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
-                        @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
+                        @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = brand.Id, filter = Model.Filter }, new { @class = "adminLink" }) @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = brand.Id, filter = Model.Filter }, new { onclick = "return confirm('Вы действительно хотите удалить данный бренд?')", @class = "adminLink" }) 
                     }
                 </div>
                 }

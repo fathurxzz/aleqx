@@ -8,7 +8,7 @@
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
-    
+        @Html.Hidden("filter", (string)ViewBag.Filter)
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
@@ -48,7 +48,7 @@
                 </td>
                 <td>
                     @{
-                        List<CategoryAttribute> attributes = (List<CategoryAttribute>)ViewBag.SelectedAttributes;
+        List<CategoryAttribute> attributes = (List<CategoryAttribute>)ViewBag.SelectedAttributes;
                     }
 
                     @foreach (var item in (List<CategoryAttribute>)ViewBag.CategoryAttributes)
@@ -89,7 +89,7 @@
     
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "Catalogue", new { area = "" ,category=Model.Category.Name }, null)
+            @Html.ActionLink("Назад", "Index", "Catalogue", new { area = "", category = Model.Category.Name }, null)
         </div>
     }
 </div>
