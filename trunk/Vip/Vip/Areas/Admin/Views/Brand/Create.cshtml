@@ -10,7 +10,7 @@
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
-
+        @Html.Hidden("filter", (string)ViewBag.Filter)
         @Html.Hidden("id", (int)ViewBag.CategoryId)
         <table class="adminEditContentTable">
             <tr>

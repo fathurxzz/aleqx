@@ -58,56 +58,56 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
-        {
-            using (var context = new CatalogueContainer())
-            {
-                var product = context.Product.Include("Brand").First(p => p.Id == id);
-                return View(product);
-            }
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    using (var context = new CatalogueContainer())
+        //    {
+        //        var product = context.Product.Include("Brand").First(p => p.Id == id);
+        //        return View(product);
+        //    }
+        //}
 
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection form, int brandId, int makerId, HttpPostedFileBase fileUpload)
-        {
-            try
-            {
-                using (var context = new CatalogueContainer())
-                {
-                    var product = context.Product.Include("Brand").First(p => p.Id == id);
-                    if (fileUpload != null)
-                    {
-                        if (!string.IsNullOrEmpty(product.ImageSource))
-                        {
+        //[HttpPost]
+        //public ActionResult Edit(int id, FormCollection form, int brandId, int makerId, HttpPostedFileBase fileUpload)
+        //{
+        //    try
+        //    {
+        //        using (var context = new CatalogueContainer())
+        //        {
+        //            var product = context.Product.Include("Brand").First(p => p.Id == id);
+        //            if (fileUpload != null)
+        //            {
+        //                if (!string.IsNullOrEmpty(product.ImageSource))
+        //                {
 
-                            IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
-                            foreach (var thumbnail in SiteSettings.Thumbnails)
-                            {
-                                IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, product.ImageSource);
-                            }
-                        }
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-                        product.ImageSource = fileName;
-                    }
+        //                    IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
+        //                    foreach (var thumbnail in SiteSettings.Thumbnails)
+        //                    {
+        //                        IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, product.ImageSource);
+        //                    }
+        //                }
+        //                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+        //                string filePath = Server.MapPath("~/Content/Images");
+        //                filePath = Path.Combine(filePath, fileName);
+        //                fileUpload.SaveAs(filePath);
+        //                product.ImageSource = fileName;
+        //            }
 
-                    context.SaveChanges();
+        //            context.SaveChanges();
 
-                    return RedirectToAction("Index", "Catalogue", new { Area = "", brand = product.Brand.Name });
-                }
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-
+        //            return RedirectToAction("Index", "Catalogue", new { Area = "", brand = product.Brand.Name });
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
 
-        public ActionResult Delete(int id, int? page)
+
+
+        public ActionResult Delete(int id, int? page, string filter)
         {
             using (var context = new CatalogueContainer())
             {
@@ -119,7 +119,7 @@ namespace Vip.Areas.Admin.Controllers
                 ImageHelper.DeleteImage(product.ImageSource);
                 context.DeleteObject(product);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Catalogue", new { Area = "", brand = brandName, category=categoryName, page = page });
+                return RedirectToAction("Index", "Catalogue", new { Area = "", brand = brandName, category = categoryName, page = page, filter = filter });
             }
         }
     }

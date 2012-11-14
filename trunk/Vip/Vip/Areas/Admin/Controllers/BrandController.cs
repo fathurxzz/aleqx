@@ -12,13 +12,14 @@ namespace Vip.Areas.Admin.Controllers
     [Authorize]
     public class BrandController : Controller
     {
-        public ActionResult Create(int id)
+        public ActionResult Create(int id, string filter)
         {
             using (var context = new CatalogueContainer())
             {
                 var category = context.Category.Include("CategoryAttributes").First(c => c.Id == id);
                 ViewBag.CategoryAttributes = category.CategoryAttributes.ToList();
                 ViewBag.CategoryId = id;
+                ViewBag.Filter = filter;
                 return View(new Brand{Category = category});
             }
         }
@@ -27,7 +28,7 @@ namespace Vip.Areas.Admin.Controllers
         // POST: /Admin/Brand/Create
 
         [HttpPost]
-        public ActionResult Create(int id, FormCollection form)
+        public ActionResult Create(int id, FormCollection form, string filter)
         {
             try
             {
@@ -52,7 +53,7 @@ namespace Vip.Areas.Admin.Controllers
                     context.AddToBrand(brand);
                     context.SaveChanges();
 
-                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name });
+                    return RedirectToAction("Index", "Catalogue", new { area = "", category = category.Name, filter=filter });
                 }
             }
             catch
@@ -61,10 +62,11 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, string filter)
         {
             using (var context = new CatalogueContainer())
             {
+                ViewBag.Filter = filter;
                 var brand = context.Brand.Include("Category").Include("CategoryAttributes").First(l => l.Id == id);
                 var category = context.Category.Include("CategoryAttributes").First(c => c.Id == brand.CategoryId);
                 ViewBag.CategoryAttributes = category.CategoryAttributes.ToList();
@@ -76,7 +78,7 @@ namespace Vip.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection form)
+        public ActionResult Edit(int id, FormCollection form, string filter)
         {
             using (var context = new CatalogueContainer())
             {
@@ -103,11 +105,11 @@ namespace Vip.Areas.Admin.Controllers
                 context.SaveChanges();
 
 
-                return RedirectToAction("Index", "Catalogue", new { area = "", category = categoryName });
+                return RedirectToAction("Index", "Catalogue", new { area = "", category = categoryName,filter=filter });
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, string filter)
         {
             using (var context = new CatalogueContainer())
             {
@@ -125,7 +127,7 @@ namespace Vip.Areas.Admin.Controllers
 
                 context.DeleteObject(brand);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Catalogue", new { area = "", category = categoryName });
+                return RedirectToAction("Index", "Catalogue", new { area = "", category = categoryName,filter=filter });
             }
         }
     }
