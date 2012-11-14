@@ -11,6 +11,7 @@
     {
         @Html.ValidationSummary(true)
         @Html.Hidden("brandId", Model.Brand.Id)
+        @Html.Hidden("filter", (string)ViewBag.Filter)
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">

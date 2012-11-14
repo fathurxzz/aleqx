@@ -65,7 +65,7 @@
                                 @if (Request.IsAuthenticated)
                                 {
                                     <div class="manageImageLinkContainer">
-                                        @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id }, new { @class = "adminLink" })
+                                        @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id, filter= Model.Filter }, new { @class = "adminLink" })
                                         @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                                     </div>
                                 }
