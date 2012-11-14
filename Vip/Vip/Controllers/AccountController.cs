@@ -9,7 +9,6 @@ using Vip.Models;
 
 namespace Vip.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
 

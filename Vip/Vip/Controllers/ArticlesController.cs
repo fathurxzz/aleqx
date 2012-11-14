@@ -8,7 +8,6 @@ using Vip.Models;
 
 namespace Vip.Controllers
 {
-    [Authorize]
     public class ArticlesController : Controller
     {
         //

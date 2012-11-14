@@ -10,6 +10,7 @@ using Vip.Models;
 
 namespace Vip.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         public ActionResult Edit(int id)
