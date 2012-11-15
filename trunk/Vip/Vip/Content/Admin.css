@@ -144,4 +144,5 @@ a.adminLink
 .manageImageLinkContainer {
     position: absolute;
     margin-left: 20px;
+    height: 20px;
 }
