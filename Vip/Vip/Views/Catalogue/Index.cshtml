@@ -8,7 +8,8 @@
 }
 <script type="text/javascript">
     $(function () {
-        $('#galleryFrame').tinycarousel();
+        //$('#galleryFrame').tinycarousel();
+        $('#bx1').bxSlider();
     });
 </script>
 <div class="catalogue">
@@ -55,34 +56,34 @@
             </div>
             <div id="gallery">
                 <div id="galleryFrame">
-                    <a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>
-                    <ul class="overview">
+                    @*<a class="buttons prev" href="#"></a><a class="buttons next" href="#"></a>*@
+                    <ul @*class="overview"*@  id="bx1">
                         @if (Model.Brand.Products.Any())
                         {
                             foreach (var product in Model.Brand.Products)
                             {
                             <li>
-                                @if (Request.IsAuthenticated)
+                                @*@if (Request.IsAuthenticated)
                                 {
                                     <div class="manageImageLinkContainer">
                                         @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id, filter = Model.Filter }, new { @class = "adminLink" })
                                         @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id, filter = Model.Filter }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                                     </div>
-                                }
+                                }*@
                                 @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("catalogueMainImage")))
                             </li>
                             }
                         }
                         else
                         {
-                            if (Request.IsAuthenticated)
+                            @*if (Request.IsAuthenticated)
                             {
                             <li>
                                 <div class="manageImageLinkContainer">
                                     @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "Admin", id = Model.Brand.Id }, new { @class = "adminLink" })
                                 </div>
                             </li>
-                            }
+                            }*@
                         }
                     </ul>
                 </div>
