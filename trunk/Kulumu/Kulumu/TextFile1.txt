@@ -1,5 +1,0 @@
-﻿alter table `Category` add `BottomDescription` longtext  NULL
-
-alter table `Category` add `BottomDescriptionTitle` longtext  NULL
-
-alter table `Content` add `Text` longtext  NULL
