@@ -39,7 +39,7 @@
                     @Html.LabelFor(model => model.Description)
                 </td>
                 <td>
-                    @Html.TextAreaFor(model => model.Description)
+                    @Html.TextAreaFor(model => model.Description, new { rows = 12 })
                     @Html.ValidationMessageFor(model => model.Description)
                 </td>
             </tr>
@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.LabelFor(model => model.BottomDescription)
+                    @Html.LabelFor(model => model.BottomDescription, new { rows = 12 })
                 </td>
                 <td>
                     @Html.TextAreaFor(model => model.BottomDescription)
