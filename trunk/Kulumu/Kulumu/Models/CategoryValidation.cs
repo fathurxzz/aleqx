@@ -16,7 +16,7 @@ namespace Kulumu.Models
     public class CategoryValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Веб-имя страницы (отображается в строке адреса)")]
+        [DisplayName("Веб-имя страницы (отображается в строке адреса) вводите латинскими символами")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
