@@ -14,7 +14,7 @@ namespace Kulumu.Controllers
         {
             using (var context = new SiteContainer())
             {
-                SiteModel model = new SiteModel(context,id);
+                SiteModel model = new SiteModel(context, id);
                 this.SetSeoContent(model);
                 ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
@@ -55,6 +55,21 @@ namespace Kulumu.Controllers
 
                 //model.Products = model.Products.Where(p => p.CategoryId == id).ToList();
                 //model.Category = context.Category.First(c => c.Id == id);
+                return View(model);
+            }
+        }
+
+        public ActionResult Tour(string id)
+        {
+            using (var context = new SiteContainer())
+            {
+                SiteModel model = new SiteModel(context, "tour");
+                this.SetSeoContent(model);
+                ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
+                ViewBag.CurrentMenuItemName = model.Content.Name;
+                ViewBag.isHomePage = model.IsHomePage;
+                ViewBag.FlashId = id;
+                ViewBag.FlashName = id + ".html";
                 return View(model);
             }
         }

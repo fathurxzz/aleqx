@@ -85,6 +85,10 @@
     width: 400px;
     height: 70px;
     background: url('img/present.gif') no-repeat;
+    
+    /* TODO discount */
+    display: none;
+    /*****/
 }
 
 

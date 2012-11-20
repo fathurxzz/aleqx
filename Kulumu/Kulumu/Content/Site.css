@@ -462,3 +462,24 @@ table.title .a-center div
     position: relative;
     z-index: 100;
 }
+
+ul.flash-menu {
+    list-style:none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul.flash-menu li {
+    display: inline;
+    padding: 20px;
+    font-family: PTNarrow;
+    font-size: 20px;
+}
+
+
+iframe {
+    overflow: hidden;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
