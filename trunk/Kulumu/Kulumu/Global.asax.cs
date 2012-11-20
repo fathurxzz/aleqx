@@ -20,7 +20,38 @@ namespace Kulumu
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //routes.IgnoreRoute("flash/1.html");
+
+            routes.MapRoute(
+                "Tour", // Route name
+                "tour/{id}", // URL with parameters
+                new { controller = "Home", action = "Tour", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "Gallery", // Route name
+                "gallery", // URL with parameters
+                new { controller = "Home", action = "Gallery", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "GalleryDetails", // Route name
+                "gallery/{id}", // URL with parameters
+                new { controller = "Home", action = "Gallery", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+
+            routes.MapRoute(
+                "Articles", // Route name
+                "articles", // URL with parameters
+                new { controller = "Home", action = "Articles", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            
+            routes.MapRoute(
+                "Content", // Route name
+                "{id}", // URL with parameters
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
 
             routes.MapRoute(
                 "Default", // Route name
