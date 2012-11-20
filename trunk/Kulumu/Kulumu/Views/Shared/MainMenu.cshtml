@@ -3,8 +3,6 @@
         string className = "";
         className = ViewBag.CurrentMenuItemName == "about" ? "selected" : "";
     }
-    
-
     <div class="first @className">
         @if (className == "selected")
         {
@@ -32,7 +30,6 @@
         {
             @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
         }
-
         @if (Request.IsAuthenticated)
         {
             <br />
@@ -49,17 +46,32 @@
         }
         else
         {
-            @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new {area = "", id = "contacts"}, null)
+            @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
         }
-
         @if (Request.IsAuthenticated)
         {
             <br />
             @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
         }
     </div>
-    <div class="fourth">
-        <a href="#"><span>3D-тур</span><br />
-            по магазину</a>
+    @{
+        className = ViewBag.CurrentMenuItemName == "tour" ? "selected" : "";
+    }
+    <div class="fourth @className">
+        @*<a href="#"><span>3D-тур</span><br />по магазину</a>*@
+        @if (className == "selected")
+        {
+            <text><span>3D-тур</span><br />
+            по магазину</text>
+        }
+        else
+        {
+            @Html.Raw(Html.ActionLink("[IMAGE]", "Tour", "Home", new { area = "", id = 1 }, null).ToString().Replace("[IMAGE]", "<span>3D-тур</span><br />по магазину"))
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "tour" }, new { @class = "adminLink" })
+        }
     </div>
 </div>

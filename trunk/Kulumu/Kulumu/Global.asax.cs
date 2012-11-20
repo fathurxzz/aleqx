@@ -20,6 +20,7 @@ namespace Kulumu
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.IgnoreRoute("flash/1.html");
 
             routes.MapRoute(
                 "Default", // Route name
