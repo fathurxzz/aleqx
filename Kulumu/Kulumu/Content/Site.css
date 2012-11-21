@@ -348,29 +348,37 @@ table.title .a-center div
 
 .product
 {
-    width: 256px;
+    width: 380px;
     float: left;
     margin: 23px;
 }
 
 .cont
 {
+    /*
     width: 256px;
     height: 166px;
+*/
+    width: 380px;
+    height: 245px;
 }
 
 .product .image
 {
-    width: 256px;
-    height: 166px;
+    /*width: 256px;
+    height: 166px;*/
+    width: 380px;
+    height: 245px;
     position: absolute;
 }
 
 .product .frame
 {
     position: absolute;
-    width: 256px;
-    height: 166px;
+    /*width: 256px;
+    height: 166px;*/
+    width: 380px;
+    height: 245px;
     background: url('img/gallry-image-frame.png');
 }
 

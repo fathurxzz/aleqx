@@ -21,7 +21,7 @@
                 {
                     @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" }) 
                     @Html.Raw("&nbsp;")
-                    @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink", onclick="return confirm('Удалить категорию?')" })
+                    @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить категорию?')" })
                     <br />
                 }
                 @Model.Category.Description
@@ -74,10 +74,12 @@
                 <div class="product">
                     <div class="cont">
                         <div class="image">
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview")))
+                            <a rel="@Html.Raw("group1")" href="../../Content/Images/@product.ImageSource" class="fancyImage">
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview")))
+                            </a>
                         </div>
-                        <div class="frame">
-                        </div>
+                        @*<div class="frame">
+                        </div>*@
                     </div>
                     @*<div class="description">
                         <div class="title">
