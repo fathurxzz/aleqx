@@ -1,0 +1,116 @@
+﻿.board {
+position: relative;
+margin: 0 auto;
+min-width: 950px;
+max-width: 4000px;
+height: 820px;
+overflow: hidden;
+}
+.scene {
+position: absolute;
+top: 0;
+left: 0;
+width: 4000px;
+height: 820px;
+overflow: hidden;
+}
+.scene .layer {
+position: absolute;
+background-repeat: no-repeat;
+z-index: 5;
+overflow: hidden;
+}
+.scene .layer1 {
+width: 4000px;
+height: 820px;
+left: -30px;
+top: 0;
+}
+.scene .layer2 {
+width: 222px;
+height: 50px;
+margin-left: 1100px;
+left: -50px;
+top: 0;
+margin-top: 540px;
+}
+.scene .layer3 {
+width: 51px;
+height: 57px;
+margin-left: 960px;
+left: -70px;
+top: 0;
+margin-top: 470px;
+}
+.scene .layer4 {
+width: 338px;
+height: 458px;
+margin-left: 520px;
+left: -150px;
+top: 0;
+margin-top: 350px;
+}
+.scene .layer5 {
+width: 202px;
+height: 111px;
+margin-left: 350px;
+left: -250px;
+top: 0;
+margin-top: 340px;
+}
+.scene .layer6 {
+width: 182px;
+height: 169px;
+margin-left: 650px;
+left: -300px;
+top: 0;
+margin-top: 400px;
+}
+.scene .layer7 {
+width: 476px;
+height: 297px;
+margin-left: 1420px;
+left: -350px;
+top: 0;
+margin-top: 290px;
+}
+.scene .layer8 {
+width: 4500px;
+height: 132px;
+margin-left: 300px;
+left: -400px;
+top: 0;
+margin-top: 690px;
+}
+.board #Scene1 .layer1 {
+background-image: url('yaroslavskoe-vzmorie-promo-bg.jpg');
+background-position: 0 0;
+}
+.board #Scene1 .layer2 {
+background-image: url('yaroslavskoe-vzmorie-promo-plane.png');
+background-position: 0 0;
+}
+.board #Scene1 .layer3 {
+background-image: url('yaroslavskoe-vzmorie-promo-backseagulls.png');
+background-position: 0 0;
+}
+.board #Scene1 .layer4 {
+background-image: url('yaroslavskoe-vzmorie-promo-yacht.png');
+background-position: 0 0;
+}
+.board #Scene1 .layer5 {
+background-image: url('yaroslavskoe-vzmorie-promo-left1seagull.png');
+background-position: 0 0;
+}
+.board #Scene1 .layer6 {
+background-image: url('yaroslavskoe-vzmorie-promo-left2seagull.png');
+background-position: 0 0;
+}
+.board #Scene1 .layer7 {
+background-image: url('yaroslavskoe-vzmorie-promo-rightseagull.png');
+background-position: 0 0;
+}
+.board #Scene1 .layer8 {
+background-image: url('yaroslavskoe-vzmorie-promo-water.png');
+background-position: 0 0;
+}
