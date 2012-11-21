@@ -28,6 +28,7 @@ namespace Kulumu.Controllers
             using (var context = new SiteContainer())
             {
                 SiteModel model = new SiteModel(context, "articles", true);
+                this.SetSeoContent(model);
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 return View(model);
             }
@@ -38,7 +39,7 @@ namespace Kulumu.Controllers
             using (var context = new SiteContainer())
             {
                 SiteModel model = new SiteModel(context, "gallery");
-
+                
                 model.Categories = context.Category.Include("Products").ToList();
 
                 if (model.Categories.Any())
@@ -55,6 +56,7 @@ namespace Kulumu.Controllers
 
                 //model.Products = model.Products.Where(p => p.CategoryId == id).ToList();
                 //model.Category = context.Category.First(c => c.Id == id);
+                this.SetSeoContent(model);
                 return View(model);
             }
         }
