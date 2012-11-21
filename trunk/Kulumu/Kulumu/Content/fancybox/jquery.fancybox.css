@@ -152,7 +152,7 @@
 }
 
 #fancybox-title {
-	/*position: absolute;*/
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	font-family: Arial;
@@ -171,8 +171,6 @@
 	color: #FFF;
 	text-align: center;
 	font-weight: bold;
-    background-color: #000;
-    /*margin-left: 20px;*/
 }
 
 .fancybox-title-over {
@@ -363,5 +361,3 @@
 .fancybox-ie #fancy-bg-sw	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/Content/fancybox/fancy_shadow_sw.png', sizingMethod='scale'); }
 .fancybox-ie #fancy-bg-w	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/Content/fancybox/fancy_shadow_w.png', sizingMethod='scale'); }
 .fancybox-ie #fancy-bg-nw	{ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/Content/fancybox/fancy_shadow_nw.png', sizingMethod='scale'); }
-
-
