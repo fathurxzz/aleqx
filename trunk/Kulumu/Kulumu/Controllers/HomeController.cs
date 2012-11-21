@@ -49,7 +49,7 @@ namespace Kulumu.Controllers
                                          : model.Categories.First(c => !c.SpecialCategory);
 
                     model.Products = model.Products.Where(p => p.CategoryId == model.Category.Id).ToList();
-
+                    model.Title += " » " + model.Category.Title;
                 }
 
 
