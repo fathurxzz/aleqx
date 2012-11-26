@@ -17,17 +17,24 @@
 <div class="mainPageContainer">
     @if (Model.Content != null && !Model.IsHomePage)
     {
+        
+        <div class="titleContainer">
+            <span>@Model.Content.Title</span>
+        </div>
+        <div class="patternTop">
+    </div>
         <div class="contentContainer">
             @Html.Raw(Model.Content.Text)
         </div>
+        <div class="patternBottom">
+    </div>
     }
-    
     @if (Request.IsAuthenticated)
-        {
+    {
         <div>
             @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { area = "Admin" }, new { @class = "adminLink" })
         </div>
-        }
+    }
     @if (Model.MainPageImage != null)
     {
         <div class="patternTop">
@@ -35,27 +42,30 @@
     
         if (Model.MainPageImage.ImageSource != null)
         {
-            <div class="mainImage">
-                <div class="corner top-left"></div>
-                <div class="corner top-right"></div>
-                <div class="corner bottom-left"></div>
-                <div class="corner bottom-right"></div>
-                @if (Request.IsAuthenticated)
-                {
-                    <div class="manageImageLinkContainer">
-                        @Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
-                    </div>
-                }
-                @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
-                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
+        <div class="mainImage">
+            <div class="corner top-left">
             </div>
+            <div class="corner top-right">
+            </div>
+            <div class="corner bottom-left">
+            </div>
+            <div class="corner bottom-right">
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div class="manageImageLinkContainer">
+                    @Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                </div>
+            }
+@*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
+        </div>
         }
         <div class="patternBottom">
         </div>
     }
-    
-    <div class="pattern"></div>
-
+    <div class="pattern">
+    </div>
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
