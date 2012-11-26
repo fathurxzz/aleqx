@@ -11,7 +11,7 @@
     padding-top: 200px;
 }
 
-.catalogue .titleContainer, .projects .titleContainer
+.catalogue .titleContainer, .projects .titleContainer, .mainPageContainer .titleContainer
 {
     text-align: center;
     text-transform: uppercase;
