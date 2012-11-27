@@ -35,8 +35,8 @@
     {
         <div class="item">
             @{
-        var accordion = content.Accordions.FirstOrDefault();
-        if (accordion != null)
+        //var accordion = content.Accordions.FirstOrDefault();
+        @*if (accordion != null)
         {
             var image = accordion.AccordionImages.FirstOrDefault();
             if (image != null)
@@ -45,7 +45,7 @@
                     @Html.Raw(Html.CachedImage("~/Content/Photos/", image.ImageSource, "thumbnail1", image.ImageSource))
                 </div> 
             }
-        }
+        }*@
             }
             <div class="title">
                 @if (content.PlaceKind == (int)PlaceKind.SpaInfo)
