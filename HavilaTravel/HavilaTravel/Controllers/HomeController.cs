@@ -71,7 +71,9 @@ namespace HavilaTravel.Controllers
 
                 query = query.ToLower();
 
-                var contentItems = context.Content.Include("Parent").Include("Accordions").Where(c => c.PlaceKind > 1).ToList();
+                var contentItems = context.Content.Include("Parent")
+                    //.Include("Accordions")
+                    .Where(c => c.PlaceKind > 1).ToList();
                 foreach (var content in contentItems)
                 {
                     content.Text = HttpUtility.HtmlDecode(content.Text);
@@ -79,12 +81,14 @@ namespace HavilaTravel.Controllers
                     int strLength = content.Text.Length;
                     if (strLength > 500) strLength = 500;
                     content.Text = content.Text.Substring(0, strLength);
-                    foreach (var accordion in content.Accordions)
-                    {
-                        accordion.AccordionImages.Load();
-                    }
+                    //foreach (var accordion in content.Accordions)
+                    //{
+                    //    accordion.AccordionImages.Load();
+                    //}
 
-                    if (content.Title.ToLower().Contains(query) || content.MenuTitle.ToLower().Contains(query) || content.Text.ToLower().Contains(query))
+                    if (content.Title != null && content.Title.ToLower().Contains(query) 
+                        || content.MenuTitle != null && content.MenuTitle.ToLower().Contains(query) 
+                        || content.Text != null && content.Text.ToLower().Contains(query))
                         model.SearchResult.Add(content);
 
                 }
