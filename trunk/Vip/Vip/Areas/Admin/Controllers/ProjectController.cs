@@ -44,7 +44,7 @@ namespace Vip.Areas.Admin.Controllers
                                                     "SeoKeywords"
                                                 });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
-
+                    project.Name=project.Name.ToLower().Replace(" ", "");
                     context.AddToProject(project);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Projects", new { Area = "", project = project.Name });
@@ -89,7 +89,7 @@ namespace Vip.Areas.Admin.Controllers
                                                     "SeoKeywords"
                                                 });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
-
+                    project.Name = project.Name.ToLower().Replace(" ", "");
                     context.SaveChanges();
                     return RedirectToAction("Index", "Projects", new { Area = "", project = project.Name });
                 }
