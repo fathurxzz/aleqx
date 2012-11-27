@@ -71,6 +71,7 @@ namespace Vip.Areas.Admin.Controllers
                     "DescriptionTitle"
                     });
                     category.Description = HttpUtility.HtmlDecode(form["Description"]);
+                    category.Name = category.Name.ToLower().Replace(" ", "");
 
                     context.AddToCategory(category);
                     context.SaveChanges();
@@ -114,7 +115,7 @@ namespace Vip.Areas.Admin.Controllers
                     "DescriptionTitle"
                 });
                     category.Description = HttpUtility.HtmlDecode(form["Description"]);
-
+                    category.Name = category.Name.ToLower().Replace(" ", "");
                     var attributes = context.CategoryAttribute.ToList();
                     PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr");
                     foreach (var kvp in postData)

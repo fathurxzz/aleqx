@@ -49,6 +49,7 @@ namespace Vip.Areas.Admin.Controllers
                     }
 
                     TryUpdateModel(brand, new[] { "Title", "Name", "SortOrder", "Href", "DescriptionTitle" });
+                    brand.Name = brand.Name.ToLower().Replace(" ", "");
                     brand.Description = HttpUtility.HtmlDecode(form["Description"]);
                     context.AddToBrand(brand);
                     context.SaveChanges();
@@ -101,6 +102,7 @@ namespace Vip.Areas.Admin.Controllers
 
                 string categoryName = brand.Category.Name;
                 TryUpdateModel(brand, new[] { "Title", "Name", "SortOrder", "Href", "DescriptionTitle" });
+                brand.Name = brand.Name.ToLower().Replace(" ", "");
                 brand.Description = HttpUtility.HtmlDecode(form["Description"]);
                 context.SaveChanges();
 
