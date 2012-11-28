@@ -68,6 +68,8 @@
                         {
                             @Html.ActionLink("редактировать","Edit","Content",new{Area="Admin",id=1},new{@class="adminLink",style="position:absolute; margin:25px 0 0 55px"})
                         }
+                        
+                        @Html.ActionLink("новости","Articles","Home",null,new{@class="fancy"})
                         @Html.ActionLink("об авторе","About","Home",null,new{@class="fancy"})
                         @Html.ActionLink("обратная связь", "FeedbackForm", "Home", null, new { @class = "fancy" })
                     </div>

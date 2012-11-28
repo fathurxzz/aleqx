@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Leo.Models.Article>
+<div class="about">
+    <div class="titleContainer">
+        <div class="title">Новости</div>
+    </div>
+    <div class="text">
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Добавить новость", "Create", "Article", new {area = "Admin"}, new {@class = "adminLink"})
+            <br/>
+            <br/>
+        }
+        @foreach (var item in Model.OrderByDescending(a=>a.Date))
+        {
+            <div class="article">
+                <div class="date">@item.Date.ToShortDateString()</div>
+                <div class="ntitle">@item.Title</div>
+
+                <div class="ntext">
+         @if (Request.IsAuthenticated)
+         {
+            @Html.ActionLink("Редактировать", "Edit", "Article", new { area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+             @Html.Raw("&nbsp;") 
+             @Html.ActionLink("Удалить", "Delete", "Article", new { area = "Admin", id = item.Id }, new { @class = "adminLink",onclick="return confirm('Удалить новость?')" })
+            <br/>
+         }           
+                    @item.Text
+                </div>
+                <div class="separator"></div>
+            </div>
+            
+        }
+    </div>
+    <div class="aboutSign"></div>
+</div>

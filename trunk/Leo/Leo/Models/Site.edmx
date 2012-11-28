@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Category" EntityType="Site.Store.Category" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Product" EntityType="Site.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttribute" EntityType="Site.Store.ProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Feedback" EntityType="Site.Store.Feedback" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Site.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductAttribute" EntityType="Site.Store.ProductProductAttribute" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
@@ -80,6 +81,15 @@
     <Property Name="Title" Type="longtext" Nullable="false" />
     <Property Name="ErrorMessage" Type="longtext" Nullable="true" />
     <Property Name="Sent" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -179,6 +189,7 @@
           </AssociationSet>
           <EntitySet Name="Content" EntityType="Site.Content" />
           <EntitySet Name="Feedback" EntityType="Site.Feedback" />
+          <EntitySet Name="Article" EntityType="Site.Article" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -253,6 +264,15 @@
           <Property Type="String" Name="ErrorMessage" />
           <Property Type="Boolean" Name="Sent" Nullable="false" />
         </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Text" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -311,6 +331,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="CategoryProductAttribute" TypeName="Site.CategoryProductAttribute" StoreEntitySet="CategoryProductAttribute">
       <EndProperty Name="Category">
         <ScalarProperty Name="Id" ColumnName="Categories_Id" />
@@ -365,6 +395,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="9.125" PointY="1.75" Height="1.59568359375" />
         <EntityTypeShape EntityType="Site.Feedback" Width="1.5" PointX="8.875" PointY="4.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="6.25" PointY="0.625" Height="1.592306315104167" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
