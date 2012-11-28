@@ -12,6 +12,11 @@
         //                control_display: "no"   
         //            }
         //        );
+
+
+        $('.slideshow').cycle({
+            fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+        });
     })
 </script>
 <div class="mainPageContainer">
@@ -35,13 +40,12 @@
             @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { area = "Admin" }, new { @class = "adminLink" })
         </div>
     }
-    @if (Model.MainPageImage != null)
+    @if (Model.MainPageImages.Any())
     {
         <div class="patternTop">
         </div>
     
-        if (Model.MainPageImage.ImageSource != null)
-        {
+        
         <div class="mainImage">
             <div class="corner top-left">
             </div>
@@ -54,18 +58,24 @@
             @if (Request.IsAuthenticated)
             {
                 <div class="manageImageLinkContainer">
-                    @Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                    @*@Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })*@
                 </div>
             }
-@*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
-            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
+            @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
+                <div class="slideshow">
+                @foreach (var item in Model.MainPageImages)
+                {
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
+                }
+                </div>
         </div>
-        }
+        
         <div class="patternBottom">
         </div>
-    }
-    <div class="pattern">
+        <div class="pattern">
     </div>
+    }
+    
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
