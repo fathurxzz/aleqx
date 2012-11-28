@@ -248,6 +248,7 @@
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.bxSlider.min.js" />
+    <Content Include="Scripts\jquery.cycle.all.latest.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
     <Content Include="Scripts\jquery.panorama.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
