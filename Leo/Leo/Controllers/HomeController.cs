@@ -53,7 +53,7 @@ namespace Leo.Controllers
                                      new MailAddress("leo@zaborovskiy.com.ua")
                                  };
 
-                var responseData = MailHelper.SendTemplate(null, emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                var responseData = Helpers.MailHelper.SendTemplate(null, emails, "Форма обратной связи", null, null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
                 var responseFeedback = new Feedback
                                            {
                                                Email = feedbackFormModel.Email,

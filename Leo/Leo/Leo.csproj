@@ -14,6 +14,7 @@
     <AssemblyName>Leo</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,9 +43,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.4.4\Assemblies\v4.0\MySql.Web.dll</HintPath>
     </Reference>
-    <Reference Include="SiteExtensions, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="SiteExtensions, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
+      <HintPath>.\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -75,6 +76,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ArticleValidation.cs" />
