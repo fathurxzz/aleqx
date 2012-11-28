@@ -72,12 +72,13 @@
         
         <div class="patternBottom">
         </div>
-        <div class="pattern">
-    </div>
+       
     }
     
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
+         <div class="pattern">
+    </div>
         @Html.Partial("AboutModel", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
     }
     @if (Request.IsAuthenticated)

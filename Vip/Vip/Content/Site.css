@@ -123,9 +123,10 @@ body {
     list-style: none;
     font-size: 12px;
     text-transform: none;
-    color: #b9cad6;
+    /*color: #b9cad6;*/
     font-family: DinCyRg;
     padding: 3px 0px;
+    color: #fff;
 }
 
 .mainMenu .categories ul li a {
