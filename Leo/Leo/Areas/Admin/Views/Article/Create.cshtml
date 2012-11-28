@@ -40,7 +40,7 @@
                 @Html.LabelFor(model => model.Text)
             </td>
             <td>
-                @Html.TextAreaFor(model => model.Text)
+                @Html.TextAreaFor(model => model.Text,10,40,null)
                 @Html.ValidationMessageFor(model => model.Text)
             </td>
         </tr>
