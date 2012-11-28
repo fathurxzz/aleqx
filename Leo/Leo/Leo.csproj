@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributesController.cs" />
@@ -142,6 +143,7 @@
     <Content Include="Content\img\mainmenu-bottom0.png" />
     <Content Include="Content\img\scrollbar-thumb.png" />
     <Content Include="Content\img\scrollbar-track-bg.gif" />
+    <Content Include="Content\img\stars.gif" />
     <Content Include="Content\ScrollBox.css" />
     <Content Include="Content\SearchSelector.css" />
     <Content Include="Global.asax" />
@@ -231,6 +233,8 @@
     <Content Include="Areas\Admin\Views\ProductAttributes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
     <None Include="Content\fonts\hagincapsmedium.eot" />
     <None Include="Content\fonts\HaginCapsMedium.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -249,6 +253,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Content\fonts\HaginCapsThin.ttf" />
     <None Include="Content\fonts\hagincapsthin.woff" />
+    <Content Include="Views\Home\_Articles.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

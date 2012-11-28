@@ -27,6 +27,16 @@ namespace Leo.Controllers
             }
         }
 
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public ActionResult Articles()
+        {
+            using (var context = new SiteContainer())
+            {
+                var articles = context.Article.ToList();
+                return PartialView("_Articles", articles);
+            }
+        }
+
         public ActionResult FeedbackForm()
         {
             return PartialView("FeedbackForm");
