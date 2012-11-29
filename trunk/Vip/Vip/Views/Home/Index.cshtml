@@ -15,7 +15,8 @@
 
 
         $('.slideshow').cycle({
-            fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+            fx: 'fade',
+            timeout: 6000// choose your transition type, ex: fade, scrollUp, shuffle, etc...
         });
     })
 </script>
@@ -40,7 +41,7 @@
             @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { area = "Admin" }, new { @class = "adminLink" })
         </div>
     }
-    @if (Model.MainPageImages.Any())
+    @if (Model.IsHomePage && Model.MainPageImages.Any())
     {
         <div class="patternTop">
         </div>
