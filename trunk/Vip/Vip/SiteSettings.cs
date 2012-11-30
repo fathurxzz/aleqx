@@ -21,7 +21,9 @@ namespace Vip
                                   //{ "projectDetailsPreviewThumbnail", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 79,Width = 79}, CacheFolder = "projectDetailsPreviewThumbnail", ScaleMode = ScaleMode.Crop, UseBackgroundImage = false}},
                                   //{ "projectBigImage", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 580,Width = 774}, CacheFolder = "projectBigImage", ScaleMode = ScaleMode.Crop, UseBackgroundImage = false}},
                                   { "catalogueMainImage", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 415,Width = 702}, CacheFolder = "catalogueMainImage", ScaleMode = ScaleMode.Insert, UseBackgroundImage = true}},
-                                  { "mainPageImage", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 350,Width = 1164}, CacheFolder = "mainPageImage", ScaleMode = ScaleMode.Crop, UseBackgroundImage = false}}
+                                  { "mainPageImage", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 350,Width = 1164}, CacheFolder = "mainPageImage", ScaleMode = ScaleMode.Crop, UseBackgroundImage = false}},
+                                  { "preview", new ThumbnailPicture{ PictureSize = new PictureSize {Height = 200,Width = 600}, CacheFolder = "preview", ScaleMode = ScaleMode.Crop, UseBackgroundImage = false}}
+
                               };
 
             PageSize = GetPageSize();

@@ -1,0 +1,28 @@
+﻿@using SiteExtensions.Graphics
+@using Vip
+@model IEnumerable<Vip.Models.MainPageImage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContentContainer">
+<h2>Изображения на главной странице</h2>
+
+<p>
+    @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { area = "Admin" }, new { @class = "adminLink" })
+</p>
+<table class="adminEditContentTable">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("preview")))
+        </td>
+        <td>
+            @Html.ActionLink("Удалить", "DeleteImage", new { id = item.Id }, new { @class = "adminLink" , onclick="return confirm('Удалить изображение?')" })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
