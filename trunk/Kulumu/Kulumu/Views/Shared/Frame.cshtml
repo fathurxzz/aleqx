@@ -11,6 +11,10 @@
                 {
                     <li>
                         @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
+                        <div class="sign">
+                            <div class="signTitle">@product.Title</div>
+                            <div class="signDescription">@Html.Raw(product.Description)</div>
+                        </div>
                     </li>
                 }
             </ul>
