@@ -13,6 +13,8 @@ namespace Vip.Areas.Admin.Controllers
     [Authorize]
     public class ContentController : Controller
     {
+        
+
         public ActionResult Edit(int id)
         {
             using (var context = new CatalogueContainer())
@@ -43,10 +45,20 @@ namespace Vip.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Index()
+        {
+            using (var context = new CatalogueContainer())
+            {
+                var images = context.MainPageImage.ToList();
+                return View(images);
+            }
+        }
+
         public ActionResult AddImage()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult AddImage(IEnumerable<HttpPostedFileBase> fileUpload)
         {
@@ -77,7 +89,7 @@ namespace Vip.Areas.Admin.Controllers
                 ImageHelper.DeleteImage(image.ImageSource);
                 context.DeleteObject(image);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Home", new { area = "",id="" });
+                return RedirectToAction("Index", "Content", new { area = "Admin",id="" });
             }
         }
     }

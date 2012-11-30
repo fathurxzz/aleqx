@@ -323,6 +323,7 @@
     <Content Include="Areas\Admin\Views\Product\EditMany.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Attributes.cshtml" />
     <Content Include="Areas\Admin\Views\Content\AddImage.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Index.cshtml" />
     <None Include="Content\fonts\DinCyBd.ttf" />
     <None Include="Content\fonts\DinCyBk.ttf" />
     <None Include="Content\fonts\DinCyLt.ttf" />
