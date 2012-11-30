@@ -244,6 +244,9 @@ table.title .a-center div
     width: 451px; /*height: 300px;     height: 400px;*/
 }
 
+
+
+
 .image-container .sign
 {
     z-index: 1001;
@@ -254,12 +257,20 @@ table.title .a-center div
     padding-top: 5px;
 }
 
-.image-container .sign .signTitle
+
+.product .sign {
+    color: #3a220b;
+    font-size: 12px;
+    padding: 5px 30px;
+}
+
+
+.signTitle
 {
     font-family: PTNarrowBold;
 }
 
-.image-container .sign .signDescription
+.signDescription
 {
     font-family: PTNarrow;
 }
