@@ -94,7 +94,13 @@
         <div class="link">
             @if (!string.IsNullOrEmpty(Model.Brand.Href))
             {
-                <a href="@Model.Brand.Href">@Model.Brand.Href.Replace("http://", "")</a>
+                string url = Model.Brand.Href;
+                if (!url.Contains("http://"))
+                {
+                    url = "http://" + url;
+                }
+                
+                <a href="@url">@Model.Brand.Href.Replace("http://", "")</a>
             }
         </div>
         
