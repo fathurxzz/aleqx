@@ -38,7 +38,7 @@
 
 .article 
 {
-    padding: 30px 60px;
+    padding: 40px 80px 40px 60px;
     background: url('img/articles-shadow-left.png') repeat-y;
     background-position: 0 -25px;
 }
@@ -54,6 +54,7 @@
     color: #fff;
     font-family: DinCyLt;
     font-size: 20px;
+    padding-top: 5px;
 }
 
 .article .title .date {
