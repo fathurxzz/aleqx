@@ -86,7 +86,14 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
+                @if (ViewBag.IsArticles != null)
+                {
+                    @Html.Raw("новости")
+                }
+                else
+                {
+                    @Html.ActionLink("новости", "Index", "Articles", new { area = "" }, null)
+                }
             </td>
             <td>
                 @{
@@ -110,15 +117,15 @@
                                     }
                                     else
                                     {
-                                        @Html.ActionLink(project.Title, "Index", "Projects", new {area = "", project = project.Name}, null)
+                                        @Html.ActionLink(project.Title, "Index", "Projects", new { area = "", project = project.Name }, null)
                                     }
                                 </li>
                             }
-                                
+
                         }
                             
                     </ul>
-                    @if(Request.IsAuthenticated)
+                    @if (Request.IsAuthenticated)
                     {
                         @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
                     }
@@ -133,7 +140,14 @@
                     {
             
                         <td>
-                            @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
+                            @if (item.Current)
+                            {
+                                @Html.Raw(item.Title)
+                            }
+                            else
+                            {
+                                @Html.ActionLink(item.Title, "Index", "Home", new { area = "", id = item.ContentName }, null)
+                            }
                             @if (Request.IsAuthenticated)
                             {
                                 @Html.ActionLink("Ред.", "Edit", "Content", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })

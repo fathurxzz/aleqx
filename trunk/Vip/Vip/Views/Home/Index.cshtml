@@ -35,6 +35,12 @@
         <div class="patternBottom">
     </div>
     }
+    @if (Model.Content != null && Model.IsHomePage)
+    {
+        <div class="titleContainer">
+            <span>@Model.Content.Title</span>
+        </div>
+    }
     @if (Request.IsAuthenticated)
     {
         <div>
