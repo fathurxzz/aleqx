@@ -36,6 +36,8 @@ namespace Vip.Areas.Admin.Controllers
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
                     content.Description = HttpUtility.HtmlDecode(form["Description"]);
                     context.SaveChanges();
+                    if(content.MainPage)
+                        return RedirectToAction("Index", "Home", new { area = "", id = "" });
                     return RedirectToAction("Index", "Home", new {area="", id = content.Name});
                 }
             }
