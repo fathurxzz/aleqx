@@ -22,6 +22,7 @@ namespace Vip.Controllers
                 ViewBag.Projects = model.Projects;
                 this.SetSeoContent(model);
                 ViewBag.MainMenu = model.Menu;
+                ViewBag.IsArticles = true;
                 return View(model);
             }
         }
