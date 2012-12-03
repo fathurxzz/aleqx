@@ -11,11 +11,12 @@
 }
 <div class="mainFrame">
     <div class="top">
+        @Html.Partial("Title", "Новости")
     </div>
     <div class="middle art">
         <div class="content">
-            <div class="our-news">
-            </div>
+            @*<div class="our-news">
+            </div>*@
             @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
