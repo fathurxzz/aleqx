@@ -54,4 +54,5 @@
 .mainMenu .selected {
     background-color: #4d3824;
     font-weight: bold;
+    text-decoration: underline;
 }
