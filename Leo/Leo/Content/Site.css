@@ -171,11 +171,6 @@ body
     z-index: 100;
 }
 
-.mainMenuContainer0
-{
-    
-}
-
 .mainMenuTop
 {
     padding-top: 10px;
@@ -257,7 +252,7 @@ body
 
 .about .text
 {
-    margin: 70px 100px 0px 100px;
+    margin: 70px 70px 0 70px;
     font-size: 13px;
     color: #6c6c6c;
 }

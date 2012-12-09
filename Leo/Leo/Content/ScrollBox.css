@@ -1,13 +1,26 @@
-﻿/*#scrollbar1 { width: 300px; clear: both; margin: 0px 0 10px; }
-#scrollbar1 .viewport { width: 280px; height: 250px; overflow: hidden; position: relative; }
-#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; }
-#scrollbar1 .thumb .end,
-#scrollbar1 .thumb { background-color: #003D5D; }
-#scrollbar1 .scrollbar { position: relative; float: right; width: 15px; }
-#scrollbar1 .track { background-color: #D8EEFD; height: 100%; width:13px; position: relative; padding: 0 1px;background: url('img/countrybox-track-bg.gif') repeat-y;background-position: 1px 0; }
-#scrollbar1 .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0;background: url('img/countrybox-track-thumb.gif') no-repeat; }
-#scrollbar1 .thumb .end { overflow: hidden; height: 5px; width: 13px; }
-#scrollbar1 .disable{ display: none; }*/
+﻿#scrollbar2 {width: 100%; clear: both; margin: 0px 0 10px; }
+#scrollbar2 .viewport {width: 450px; height: 500px; overflow: hidden; position: relative; }
+#scrollbar2 .overview { list-style: none; position: absolute; left: 0; top: 0; }
+#scrollbar2 .thumb  
+{
+    height: 15px !important;
+    width: 15px !important;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 6px;
+    background-image: url('img/scrollbar-thumb-about.gif');
+}
+#scrollbar2 .scrollbar { position: relative; float: right; width: 15px; }
+
+#scrollbar2 .track   
+{
+    width: 15px;
+    position: relative;
+    background: url('img/scrollbar-track-about.gif') repeat-y;
+    background-position: 7px 0;
+}
+#scrollbar2 .disable{ display: none; }
 
 
 
