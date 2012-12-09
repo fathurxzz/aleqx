@@ -1,8 +1,38 @@
 ﻿@model Leo.Models.Content
+           
+<script type="text/javascript">
+    $(function () {
+        
+        var sScrollbar = $('#scrollbar2');
+
+        sScrollbar.tinyscrollbar({ sizethumb: 26 });
+        window.setTimeout(function () {
+            sScrollbar.tinyscrollbar_update();
+        }, 100);
+    });
+</script>           
+
 <div class="about">
     <div class="titleContainer">
         <div class="title">@Model.Title</div>
     </div>
-    <div class="text">@Html.Raw(Model.Text)</div>
-    <div class="aboutSign"></div>
+    <div class="text">
+        <div id="scrollbar2">
+            <div class="scrollbar">
+                <div class="track">
+                    <div class="thumb">
+                        <div class="end">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="viewport">
+                <div class="overview">
+                    @Html.Raw(Model.Text)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aboutSign">
+    </div>
 </div>

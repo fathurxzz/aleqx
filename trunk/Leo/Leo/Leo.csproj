@@ -144,7 +144,9 @@
     <Content Include="Content\img\mainmenu-bg.png" />
     <Content Include="Content\img\mainmenu-bottom.png" />
     <Content Include="Content\img\mainmenu-bottom0.png" />
+    <Content Include="Content\img\scrollbar-thumb-about.gif" />
     <Content Include="Content\img\scrollbar-thumb.png" />
+    <Content Include="Content\img\scrollbar-track-about.gif" />
     <Content Include="Content\img\scrollbar-track-bg.gif" />
     <Content Include="Content\img\stars.gif" />
     <Content Include="Content\ScrollBox.css" />
