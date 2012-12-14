@@ -26,9 +26,6 @@
         var vRatio = vOffsetLength / conteinerHeight;
 
         if (left > 0 && left < width && top > 0 && top < height) {
-            //$("#coords").html("x=" + left + " y=" + top);
-            //$("#info").html(image.offset().left);
-
             image.css({ left: -left * hRatio, top: -top * vRatio });
         }
 
