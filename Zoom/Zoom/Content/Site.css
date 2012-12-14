@@ -1,0 +1,22 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+    border: 1px solid black;
+    margin-top: 100px;
+    overflow: hidden;
+}
+
+.image {
+    width: 2000px;
+    height: 1332px;
+    background: url('/Content/IMG_2216.jpg');
+    position: absolute;
+}
+
