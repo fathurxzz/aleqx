@@ -1,26 +1,13 @@
-﻿//Object.prototype.Scene1 = function (elem) {
-//    var t = this;
-//    t.element = elem;
-//    t.id = t.element.attr('id');
-
-//    alert(t.id);
-//    
-//};
-
-var scene = function (elem) {
+﻿var scene = function (elem) {
     var t = this;
     t.element = elem;
     t.id = t.element.attr('id');
-
-
-    //t.range = t.refreshRange();
     var conteinerWidth = elem.width();
     var conteinerHeight = elem.height();
 
     var image = $("#container1 > div");
     var imageWidth = image.width();
     var imageHeight = image.height();
-    //alert(image.width());
 
 
 
@@ -31,14 +18,18 @@ var scene = function (elem) {
         var left = e.pageX - t.element.offset().left;
         var top = e.pageY - t.element.offset().top;
 
-        var hRatio = left / imageWidth;
-        var vRatio = top / imageHeight;
+
+
+        var hOffsetLength = imageWidth - conteinerWidth;
+        var vOffsetLength = imageHeight - conteinerHeight;
+        var hRatio = hOffsetLength / conteinerWidth;
+        var vRatio = vOffsetLength / conteinerHeight;
 
         if (left > 0 && left < width && top > 0 && top < height) {
             //$("#coords").html("x=" + left + " y=" + top);
             //$("#info").html(image.offset().left);
 
-            image.css({ left: -left*hRatio, top: -top*vRatio });
+            image.css({ left: -left * hRatio, top: -top * vRatio });
         }
 
     });
