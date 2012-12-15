@@ -61,17 +61,49 @@ scene.prototype = {
 };
 
 
-var obj = new Object();
-
-obj.function1 = function () {
-    alert("111");
-};
-
 $(function () {
 
-    $(".container").each(function () {
-        new scene($(this));
+//    $(".container").each(function () {
+//        new scene($(this));
+    //    });
+
+
+    var t = this;
+    t.element = $("#container1");
+    t.id = t.element.attr('id');
+
+
+    var conteinerWidth = $("#container1").width();
+    var conteinerHeight = $("#container1").height();
+
+
+
+    var image = $("#image1");
+    var imageWidth = image.width();
+    var imageHeight = image.height();
+
+
+
+
+    $(document).mousemove(function (e) {
+        var width = conteinerWidth;
+        var height = conteinerHeight;
+        var left = e.pageX - t.element.offset().left;
+        var top = e.pageY - t.element.offset().top;
+
+
+
+        var hOffsetLength = imageWidth - conteinerWidth;
+        var vOffsetLength = imageHeight - conteinerHeight;
+        var hRatio = hOffsetLength / conteinerWidth;
+        var vRatio = vOffsetLength / conteinerHeight;
+
+        if (left > 0 && left < width && top > 0 && top < height) {
+            image.css({ left: -left * hRatio, top: -top * vRatio });
+        }
+
     });
+
 
 
 
