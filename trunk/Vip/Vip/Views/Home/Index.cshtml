@@ -3,21 +3,58 @@
 @using Vip.Models
 @model Vip.Models.SiteViewModel
 <script type="text/javascript">
+
     $(function () {
-        //        $(".mainImage img").panorama(
-        //            {
-        //                viewport_width: 1165,
-        //                speed:50000,
-        //                mode_360: "true",
-        //                control_display: "no"   
-        //            }
-        //        );
+
+//        $('.slideshow').cycle({
+//            fx: 'fade',
+//            timeout: 6000// choose your transition type, ex: fade, scrollUp, shuffle, etc...
+//        });
 
 
-        $('.slideshow').cycle({
-            fx: 'fade',
-            timeout: 6000// choose your transition type, ex: fade, scrollUp, shuffle, etc...
+        var t = this;
+        t.element = $("#container1");
+
+        var conteinerWidth = $("#container1").width();
+        var conteinerHeight = $("#container1").height();
+
+        var image = $("#image1");
+        var imageWidth = image.width();
+        var imageHeight = image.height();
+
+
+        $(document).mousemove(function (e) {
+            var width = conteinerWidth;
+            var height = conteinerHeight;
+            var left = e.pageX - t.element.offset().left;
+            var top = e.pageY - t.element.offset().top;
+
+
+
+            var hOffsetLength = imageWidth - conteinerWidth;
+            var vOffsetLength = imageHeight - conteinerHeight;
+            var hRatio = hOffsetLength / conteinerWidth;
+            var vRatio = vOffsetLength / conteinerHeight;
+
+            if (left > 0 && left < width && top > 0 && top < height) {
+                image.css({ left: -left * hRatio, top: -top * vRatio });
+            }
+
         });
+
+
+        $("#container1").mouseover(function () {
+            $("#thumb").css("display", "none");
+            $("#image1").css("display", "block");
+        });
+
+        $("#container1").mouseout(function () {
+            $("#image1").css("display", "none");
+            $("#thumb").css("display", "block");
+            $("#thumb").css("left", "0");
+            $("#thumb").css("top", "0");
+        });
+
     })
 </script>
 <div class="mainPageContainer">
@@ -47,13 +84,14 @@
             @Html.ActionLink("Добавить изображение", "AddImage", "Content", new { area = "Admin" }, new { @class = "adminLink" })
         </div>
     }
-    @if (Model.IsHomePage && Model.MainPageImages.Any())
-    {
+    
+   @* @if (Model.IsHomePage && Model.MainPageImages.Any())
+    {*@
         <div class="patternTop">
         </div>
     
         
-        <div class="mainImage">
+        <div class="mainImage" id="container1">
             <div class="corner top-left">
             </div>
             <div class="corner top-right">
@@ -68,19 +106,25 @@
                     @*@Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = Model.MainPageImage.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })*@
                 </div>
             }
-            @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage"), ScaleMode.FixedHeight))*@
-                <div class="slideshow">
+            
+            
+            @Html.Raw(Html.OriginalImageWithDim("/Content/Images/", Model.MainPageImage.ImageSource, "image", "image1"))
+            
+            <div id="thumb">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainPageImage.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
+            </div>
+                @*<div class="slideshow">
                 @foreach (var item in Model.MainPageImages)
                 {
                     @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("mainPageImage")))
                 }
-                </div>
+                </div>*@
         </div>
         
         <div class="patternBottom">
         </div>
        
-    }
+   @* }*@
     
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
