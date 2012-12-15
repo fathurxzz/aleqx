@@ -1,11 +1,15 @@
 ﻿var scene = function (elem) {
     var t = this;
-    t.element = elem;
+    t.element = $("#container1");
     t.id = t.element.attr('id');
-    var conteinerWidth = elem.width();
-    var conteinerHeight = elem.height();
 
-    var image = $("#container1 > div");
+
+    var conteinerWidth = $("#container1").width();
+    var conteinerHeight = $("#container1").height();
+
+
+
+    var image = $("#image1");
     var imageWidth = image.width();
     var imageHeight = image.height();
 
@@ -64,18 +68,24 @@ obj.function1 = function () {
 };
 
 $(function () {
-    //var sc = new scene($("#container1"));
-
-    //$("#container1").ready(new scene(this));
 
     $(".container").each(function () {
         new scene($(this));
     });
 
-    //.mousemove(scene());
 
 
+    $(".container").mouseover(function () {
+        $("#thumb").css("display", "none");
+        $("#image1").css("display", "block");
+    });
 
+    $(".container").mouseout(function () {
+        $("#image1").css("display", "none");
+        $("#thumb").css("display", "block");
+        $("#thumb").css("left", "0");
+        $("#thumb").css("top", "0");
+    });
 
 
 });
