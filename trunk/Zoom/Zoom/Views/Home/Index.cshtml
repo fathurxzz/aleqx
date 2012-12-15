@@ -1,18 +1,15 @@
-﻿@{
+﻿@using SiteExtensions.Graphics
+@{
     ViewBag.Title = "Home Page";
 }
-
-<script type="text/javascript">
-    
-
-
-</script>
-<div id="coords"></div>
-<div id="info"></div>
-
-
-
+<div id="coords">
+</div>
+<div id="info">
+</div>
 <div class="container" id="container1">
     <div class="image" id="image1">
+    </div>
+    <div id="thumb">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", "IMG_2216.jpg", Zoom.SiteSettings.GetThumbnail("preview")))
     </div>
 </div>
