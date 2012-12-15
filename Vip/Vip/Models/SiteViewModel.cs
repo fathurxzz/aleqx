@@ -15,7 +15,7 @@ namespace Vip.Models
         public Menu Menu { get; set; }
         public Content Content { get; set; }
         public IEnumerable<MainPageImage> MainPageImages { get; set; }
-
+        public MainPageImage MainPageImage { get; set; }
         public IEnumerable<Category> Categories { get; set; }
 
         public IEnumerable<Project> Projects { get; set; }
@@ -49,8 +49,8 @@ namespace Vip.Models
                 Content = context.Content.First(c => c.MainPage);
                 if (context.MainPageImage.FirstOrDefault() != null)
                 {
-                    //MainPageImage = context.MainPageImage.RandomElement(new Random());
-                    MainPageImages = context.MainPageImage.ToList();
+                    MainPageImage = context.MainPageImage.RandomElement(new Random());
+                    //MainPageImages = context.MainPageImage.ToList();
                 }
             }
             else

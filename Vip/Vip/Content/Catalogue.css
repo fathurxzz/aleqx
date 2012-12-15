@@ -78,7 +78,23 @@
     height: 350px;
     position: relative;
     margin: 0 auto;
+    
+     overflow: hidden;
 }
+
+
+.image {
+    /*width: 2000px;
+    height: 1332px;
+    background: url('/Content/IMG_2216.jpg');*/
+    position: absolute;
+}
+
+#thumb
+{
+    position:absolute;
+}
+
 
 .filters {
 
