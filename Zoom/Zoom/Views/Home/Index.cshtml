@@ -7,8 +7,10 @@
 <div id="info">
 </div>
 <div class="container" id="container1">
-    <div class="image" id="image1">
-    </div>
+    @*<div class="image" id="image1">*@
+        @Html.Raw(Html.OriginalImageWithDim("/Content/Images/", "IMG_2216.jpg", "image", "image1"))
+        @*<img src="/Content/IMG_2216.jpg" alt="" id="image1" class="image" width="2000" height="1332" />*@
+    @*</div>*@
     <div id="thumb">
         @Html.Raw(Html.CachedImage("~/Content/Images/", "IMG_2216.jpg", Zoom.SiteSettings.GetThumbnail("preview")))
     </div>

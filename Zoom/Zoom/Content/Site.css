@@ -14,10 +14,15 @@
 }
 
 .image {
-    width: 2000px;
-    height: 1332px;
-    background: url('/Content/IMG_2216.jpg');
+    /*width: 2000px;
+    height: 1332px;*/
+    
+    /*width:auto;*/
+    
+    /*height:auto;*/
+    /*background: url('/Content/IMG_2216.jpg');*/
     position: absolute;
+    
 }
 
 #thumb
