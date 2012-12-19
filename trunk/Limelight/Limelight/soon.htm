@@ -6,8 +6,16 @@
 <meta name="description" content="È Ì ÈÄ Æ - Ñ Ò Ó Ä È ß   LimeLight"/>
     <meta name="keywords" content="È Ì ÈÄ Æ - Ñ Ò Ó Ä È ß   LimeLight   Êèåâ , <<Äðèì Òàóí >>" />
      <script type="text/javascript">
-         function linkClick() {
+         function emClick() {
              location.href = "http://eugene-miller.com/";
+         }
+
+         function fbClick() {
+             location.href = "https://www.facebook.com/limelightimagestudio?fref=ts";
+         }
+
+         function vkClick() {
+             location.href = "http://vk.com/limelightstudio";
          }
     </script>
 <style type="text/css">
@@ -29,34 +37,56 @@
         
         #soon
         {
-            width: 920px;
-            height: 622px;
+            width: 729px;
+            height: 631px;
             background: url('soon.gif') no-repeat top;
             left: 50%;
             position: absolute;
-            margin-left: -460px;
-            top: -311px;
+            margin-left: -365px;
+            top: -315px;
         }
-        #emlink
+        
+        #emlink, #fb, #vk
         {
             position: absolute;
-            margin-top: 580px;
-            margin-left:445px;
             text-align: center;
-            width:130px;
-            height:13px;
             cursor:pointer;
             
         }
         
+        #emlink
+        {
+            margin-top: 573px;
+            margin-left:332px;
+            width:130px;
+            height:13px;
+        }
+        #fb
+        {
+            margin-top: 520px;
+            margin-left:291px;
+            width:49px;
+            height:15px;
+        }
+        
+        #vk
+        {
+            margin-top: 520px;
+            margin-left:364px;
+            width:49px;
+            height:15px;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="soon">
-            <div id="emlink" onclick="linkClick()">
+            <div id="emlink" onclick="emClick()">
                 
             </div>
+            <div id="fb" onclick="fbClick()">
+            </div>
+            <div id="vk" onclick="vkClick()"></div>
         </div>
     </div>
 
