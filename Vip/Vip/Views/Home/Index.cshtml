@@ -107,8 +107,8 @@
         </div>
     }
     
-@* @if (Model.IsHomePage && Model.MainPageImages.Any())
-    {*@
+ @if (Model.IsHomePage)
+    {
     <div class="patternTop">
     </div>
     <div class="mainImage" id="container1">
@@ -139,7 +139,7 @@
     </div>
     <div class="patternBottom">
     </div>
-    @* }*@
+     }
     @if (Model.Content != null && (!string.IsNullOrEmpty(Model.Content.Description) || !string.IsNullOrEmpty(Model.Content.DescriptionTitle)))
     {
         <div class="pattern">
