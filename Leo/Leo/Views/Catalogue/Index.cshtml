@@ -6,9 +6,46 @@
 {
     @if (Model.Category.Products.Any())
     {
+
+        if (Request.UserAgent != null && (Request.UserAgent.ToLower().Contains("ipad") || Request.UserAgent.ToLower().Contains("iphone")))
         
-        
-        
+        {
+        <div class="galleryContainer">
+            <div class="boardContainer">
+                <div class="board">
+                </div>
+                <div class="catalogue-title">
+                    @Model.Category.Title
+                </div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="adminLinkContainer">
+                        @Html.ActionLink("Добавить картину", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+                    </div>
+                }
+            </div>
+            <div class="galleryContent">
+                <table>
+                    <tr>
+                        @foreach (var item in Model.Products)
+                        {
+                            <td>@Html.Partial("_Product", item)
+                            </td>
+                        }
+                        <td>
+                            <div class="logoContainer">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        }
+        else
+        {
+
+
+
         <div id="scrollbar1">
             <div class="viewport">
                 <div class="overview">
@@ -44,17 +81,15 @@
                     </div>
                 </div>
             </div>
-            
-            
             <div class="scrollbar">
                 <div class="track">
                     <div class="thumb">
-                        
                     </div>
                 </div>
             </div>
         </div>
-        
+        }
+
     }
     else if (Request.IsAuthenticated)
     {
@@ -73,4 +108,38 @@
         @Html.ActionLink("Фильтровать", "ShowFilter", "Catalogue", new { Area = "", id = Model.Category.Name }, new { @class = "changeFilter fancy" })
         эту галерею картин
     </div>
+}
+@section Includes
+{
+    @if (Request.UserAgent != null && (Request.UserAgent.ToLower().Contains("ipad") || Request.UserAgent.ToLower().Contains("iphone")))
+    
+    {
+        <style type="text/css">
+            .galleryContainer
+            {
+                overflow: auto !important;
+            }
+        </style>
+    }
+    else
+    {
+        <style type="text/css">
+            .galleryContainer
+            {
+                overflow: hidden;
+            }
+        </style>
+    
+        <script type="text/javascript">
+            $(function () {
+                var oScrollbar = $('#scrollbar1');
+
+                oScrollbar.tinyscrollbar({ axis: 'x', sizethumb: 26 });
+
+                window.setTimeout(function () {
+                    oScrollbar.tinyscrollbar_update();
+                }, 5000);
+            });
+        </script>
+    }
 }
