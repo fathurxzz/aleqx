@@ -1,34 +1,40 @@
-﻿
+﻿@using Filimonov.Models
+<script type="text/ecmascript">
+    $(function () {
+        $(".hideLink1").click(function () {
+            $(".frame1").css("display", "none");
+            $(".menu.item1").css("display", "block");
+        });
 
-<div class="page page-middle">
+        $(".showLink1").click(function () {
+            $(".frame1").css("display", "block");
+            $(".menu.item1").css("display", "none");
+        });
+      
+    });
+</script>
 
-<div class="menu">
-    <div class="circle top-left">
-    </div>
-    <div class="circle top-right">
-    </div>
-    <div class="circle bottom-left">
-    </div>
-    <div class="circle bottom-right">
-    </div>
-    <div class="inner">
-        asdasdasd
-    </div>
+<div class="page" style="height: 50px;" >
 </div>
 
-
-</div>
-
-<div class="main-frame">
-        <div class="top"></div>
-        <div class="middle">
-        
-            asdasd <br/>
-            asdasd <br/>
-            asdasd <br/>
-            asdasd <br/>    
-
+<div class="page">
+    <div class="menu top">
+        <div class="circle top-left">
         </div>
-        
-        <div class="bottom"></div>
+        <div class="circle top-right">
+        </div>
     </div>
+</div>
+
+@Html.Partial("ContentItem", new ContentItem { Title = "о сергее филимонове", Text = "о сергее филимонове" })
+
+@Html.Partial("ContentItem", new ContentItem { Title = "партнеры", Text = "партнеры" })
+
+<div class="page">
+    <div class="menu bottom">
+        <div class="circle bottom-left">
+        </div>
+        <div class="circle bottom-right">
+        </div>
+    </div>
+</div>
