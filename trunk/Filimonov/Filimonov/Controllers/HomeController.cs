@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Filimonov.Models;
+using SiteExtensions;
 
 namespace Filimonov.Controllers
 {
@@ -13,8 +14,17 @@ namespace Filimonov.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var contents = context.Content.ToList();
-                return View(contents);
+                var model = new SiteModel(context);
+                this.SetSeoContent(model);
+                return View(model);
+            }
+        }
+
+        public ActionResult Gallery()
+        {
+            using (var context = new SiteContainer())
+            {
+                return View();
             }
         }
     }

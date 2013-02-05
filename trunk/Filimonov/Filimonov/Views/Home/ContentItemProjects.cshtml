@@ -30,6 +30,20 @@
                     </div>
                 </div>
             </div>
+            
+            
+            @foreach (var project in Model.Projects)
+            {
+                
+            }
+            
+            @if (Request.IsAuthenticated)
+            {
+                <div class="adminLinkContainer">
+                @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
+            </div>
+            }
+
         </div>
         <div class="bottom">
         </div>

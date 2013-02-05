@@ -36,6 +36,7 @@
     <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="ProjectImage">
     <Key>
@@ -44,6 +45,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="MainImage" Type="bool" Nullable="false" />
   </EntityType>
   <Association Name="ProjectProjectImage">
     <End Role="Project" Type="Site.Store.Project" Multiplicity="1" />
@@ -93,6 +95,7 @@
           <Property Type="String" Name="Description" />
           <NavigationProperty Name="ProjectImages" Relationship="Site.ProjectProjectImage" FromRole="Project" ToRole="ProjectImage" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="ImageSource" FixedLength="true" MaxLength="200" />
         </EntityType>
         <EntityType Name="ProjectImage">
           <Key>
@@ -102,6 +105,7 @@
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="Project" Relationship="Site.ProjectProjectImage" FromRole="ProjectImage" ToRole="Project" />
           <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="Boolean" Name="MainImage" Nullable="false" />
         </EntityType>
         <Association Name="ProjectProjectImage">
           <End Type="Site.Project" Role="Project" Multiplicity="1" />
@@ -143,6 +147,7 @@
           <ScalarProperty Name="DescriptionTitle" ColumnName="DescriptionTitle" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -152,6 +157,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="MainImage" ColumnName="MainImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -176,11 +182,11 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="2.5" PointY="1.375" Height="2.3648893229166665" />
-        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="6" PointY="1.5" Height="2.364889322916667" />
-        <EntityTypeShape EntityType="Site.ProjectImage" Width="1.5" PointX="8.625" PointY="2.625" Height="1.4033821614583326" />
+        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="6" PointY="1.5" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="Site.ProjectImage" Width="1.5" PointX="8.625" PointY="2.625" Height="1.9802864583333335" />
         <AssociationConnector Association="Site.ProjectProjectImage">
-          <ConnectorPoint PointX="7.5" PointY="3.2449446614583337" />
-          <ConnectorPoint PointX="8.625" PointY="3.2449446614583337" />
+          <ConnectorPoint PointX="7.5" PointY="3.3410953776041663" />
+          <ConnectorPoint PointX="8.625" PointY="3.3410953776041663" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
