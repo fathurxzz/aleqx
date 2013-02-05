@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Filimonov.Models.Content>
+﻿@model SiteModel
 @using Filimonov.Models
 <script type="text/ecmascript">
     $(function () {
@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-@foreach (var item in Model.OrderBy(m => m.SortOrder))
+@foreach (var item in Model.Contents.OrderBy(m => m.SortOrder))
 {
     switch ((ContentType)item.ContentType)
     {
@@ -41,7 +41,7 @@
     @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text })
 break;
         case ContentType.Projects:
-    @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title })
+    @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title, Projects = Model.Projects})
 break;
     }
 }

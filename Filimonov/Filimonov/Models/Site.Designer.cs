@@ -534,6 +534,30 @@ namespace Filimonov.Models
         private global::System.Int32 _SortOrder;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     
@@ -580,12 +604,14 @@ namespace Filimonov.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="projectId">Initial value of the ProjectId property.</param>
-        public static ProjectImage CreateProjectImage(global::System.Int32 id, global::System.String imageSource, global::System.Int32 projectId)
+        /// <param name="mainImage">Initial value of the MainImage property.</param>
+        public static ProjectImage CreateProjectImage(global::System.Int32 id, global::System.String imageSource, global::System.Int32 projectId, global::System.Boolean mainImage)
         {
             ProjectImage projectImage = new ProjectImage();
             projectImage.Id = id;
             projectImage.ImageSource = imageSource;
             projectImage.ProjectId = projectId;
+            projectImage.MainImage = mainImage;
             return projectImage;
         }
 
@@ -666,6 +692,30 @@ namespace Filimonov.Models
         private global::System.Int32 _ProjectId;
         partial void OnProjectIdChanging(global::System.Int32 value);
         partial void OnProjectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean MainImage
+        {
+            get
+            {
+                return _MainImage;
+            }
+            set
+            {
+                OnMainImageChanging(value);
+                ReportPropertyChanging("MainImage");
+                _MainImage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MainImage");
+                OnMainImageChanged();
+            }
+        }
+        private global::System.Boolean _MainImage;
+        partial void OnMainImageChanging(global::System.Boolean value);
+        partial void OnMainImageChanged();
 
         #endregion
     
