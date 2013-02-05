@@ -2,15 +2,23 @@
 @using Filimonov.Models
 <script type="text/ecmascript">
     $(function () {
-        $(".hideLink1").click(function () {
-            $(".frame1").css("display", "none");
-            $(".menu.item1").css("display", "block");
+
+        $(".hideLink").click(function () {
+            $(this).closest(".frame").animate({ height: 'toggle' }, function () {
+                $(this).closest(".container").find(".menuItem").css("display", "block");
+            });
         });
 
-        $(".showLink1").click(function () {
-            $(".frame1").css("display", "block");
-            $(".menu.item1").css("display", "none");
+        $(".showLink").click(function () {
+            collapseAll();
+            $(this).parent().css("display", "none");
+            $(this).closest(".container").find(".frame").animate({ height: 'toggle' });
         });
+
+        function collapseAll() {
+            $(".frame").css("display", "none");
+            $(".menuItem").css("display", "block");
+        }
 
     });
 </script>
@@ -30,21 +38,21 @@
     {
         case ContentType.Content:
         case ContentType.Feedback:
-                @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text })
-            break;
+    @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text })
+break;
         case ContentType.Projects:
-                @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title })
-            break;
+    @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title })
+break;
     }
-}
-@if (Request.IsAuthenticated)
-{
-    <div class="adminLinkContainer page">
-        @Html.ActionLink("Добавить раздел", "Create", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
-    </div>
 }
 <div class="page">
     <div class="menu bottom">
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Добавить раздел", "Create", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+            </div>
+        }
         <div class="circle bottom-left">
         </div>
         <div class="circle bottom-right">

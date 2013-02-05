@@ -1,41 +1,41 @@
 ﻿@model Filimonov.Models.ContentItemProjects
-
-<div class="page">
-    <div class="menu item1">
-        <a href="#" class="showLink showLink1">@Model.Title</a>
-    </div>
-</div>
-<div class="frame frame1">
-    <div class="top">
-    </div>
-    <div class="middle">
-        <div class="hide">
-            <div class="hideLink hideLink1"></div>
+<div class="container">
+    <div class="page">
+        <div class="menu menuItem">
+            <a href="#" class="showLink">@Model.Title</a>
+            @if (Request.IsAuthenticated)
+            {
+                <div>
+                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                </div>
+            }
         </div>
-        
-        <div class="titleContainer">
-            <div class="inner">
-                <div class="titleContainerLeft">
-                    <div class="titleContainerRight">
-                        <div class="title">
-                            @Model.Title
+    </div>
+    <div class="frame">
+        <div class="top">
+        </div>
+        <div class="middle">
+            <div class="hide">
+                <div class="hideLink">
+                </div>
+            </div>
+            <div class="titleContainer">
+                <div class="inner">
+                    <div class="titleContainerLeft">
+                        <div class="titleContainerRight">
+                            <div class="title">
+                                @Model.Title
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-
-    </div>
-    <div class="bottom">
+        <div class="bottom">
+        </div>
     </div>
 </div>
-
-
-<div class="page" >
+<div class="page">
     <div class="menu" style="height: 50px;">
     </div>
 </div>
