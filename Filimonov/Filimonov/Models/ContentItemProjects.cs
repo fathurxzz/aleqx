@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Filimonov.Models
 {
-    public class ContentItemGallery:ContentItem
+    public class ContentItemProjects:ContentItem
     {
 
     }
