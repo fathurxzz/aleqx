@@ -3,6 +3,12 @@
 <div class="page">
     <div class="menu item1">
         <a href="#" class="showLink showLink1">@Model.Title</a>
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+            </div>
+        }
     </div>
 </div>
 <div class="frame frame1">

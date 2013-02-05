@@ -1,4 +1,5 @@
-﻿@using Filimonov.Models
+﻿@model IEnumerable<Filimonov.Models.Content>
+@using Filimonov.Models
 <script type="text/ecmascript">
     $(function () {
         $(".hideLink1").click(function () {
@@ -10,13 +11,11 @@
             $(".frame1").css("display", "block");
             $(".menu.item1").css("display", "none");
         });
-      
+
     });
 </script>
-
-<div class="page" style="height: 50px;" >
+<div class="page" style="height: 50px;">
 </div>
-
 <div class="page">
     <div class="menu top">
         <div class="circle top-left">
@@ -25,13 +24,25 @@
         </div>
     </div>
 </div>
-
-@Html.Partial("ContentItem", new ContentItem { Title = "О сергее филимонове", Text = "О сергее филимонове" })
-
-@Html.Partial("ContentItem", new ContentItem { Title = "Партнеры", Text = "Партнеры" })
-
-@Html.Partial("ContentItemGallery", new ContentItemGallery { Title = "Проекты" })
-
+@foreach (var item in Model.OrderBy(m => m.SortOrder))
+{
+    switch ((ContentType)item.ContentType)
+    {
+        case ContentType.Content:
+        case ContentType.Feedback:
+                @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text })
+            break;
+        case ContentType.Projects:
+                @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title })
+            break;
+    }
+}
+@if (Request.IsAuthenticated)
+{
+    <div class="adminLinkContainer page">
+        @Html.ActionLink("Добавить раздел", "Create", "Content", new { Area = "Admin" }, new { @class = "adminLink" })
+    </div>
+}
 <div class="page">
     <div class="menu bottom">
         <div class="circle bottom-left">
