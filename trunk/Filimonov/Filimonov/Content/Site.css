@@ -208,3 +208,7 @@ body
     top: 10px;
     cursor: pointer;
 }
+
+.clear {
+    clear: both;
+}

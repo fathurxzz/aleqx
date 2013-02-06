@@ -1,4 +1,6 @@
-﻿@model Filimonov.Models.ContentItemProjects
+﻿@using Filimonov
+@using SiteExtensions.Graphics
+@model Filimonov.Models.ContentItemProjects
 <div class="container">
     <div class="page">
         <div class="menu menuItem">
@@ -14,7 +16,7 @@
     <div class="frame">
         <div class="top">
         </div>
-        <div class="middle">
+        <div class="middle projects">
             <div class="hide">
                 <div class="hideLink">
                 </div>
@@ -34,8 +36,11 @@
             
             @foreach (var project in Model.Projects)
             {
-                
+                <div class="project">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", project.ImageSource, SiteSettings.GetThumbnail("projectPreview")))
+                </div>
             }
+            <div class="clear"></div>
             
             @if (Request.IsAuthenticated)
             {

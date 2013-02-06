@@ -24,11 +24,12 @@ namespace Filimonov.Models
         public string Title { get; set; }
 
         [DisplayName("Заголовок описания")]
-        public string DescriptiontTitle { get; set; }
+        public string DescriptionTitle { get; set; }
 
         [DisplayName("Текст описания")]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public string SortOrder { get; set; }
 

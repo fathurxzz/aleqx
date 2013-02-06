@@ -1,48 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Filimonov.Models;
+using SiteExtensions;
 
 namespace Filimonov.Areas.Admin.Controllers
 {
     public class ProjectController : Controller
     {
-        //
-        // GET: /Admin/Project/
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        //
-        // GET: /Admin/Project/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /Admin/Project/Create
-
+        
         public ActionResult Create()
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var projects = context.Project.ToList();
+                var sortOrder = projects.Any() ? projects.Max(p => p.SortOrder) : 0;
+                return View(new Project {SortOrder = sortOrder + 1});
+            }
         } 
 
-        //
-        // POST: /Admin/Project/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (var context = new SiteContainer())
+                {
+                    var project = new Project();
+                    TryUpdateModel(project, new[] {"Name", "Title", "DescriptionTitle", "SortOrder"});
+                    project.Description = HttpUtility.HtmlDecode(form["Description"]);
+                    if (fileUpload != null)
+                    {
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        fileUpload.SaveAs(filePath);
+                        project.ImageSource = fileName;
+                    }
+                    context.AddToProject(project);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Index", "Home", new { area = "" });
             }
             catch
             {
