@@ -72,3 +72,7 @@ a.adminLink
     padding: 10px;
     
 }
+
+.photoFileInput {
+     width: 500px !important; 
+}

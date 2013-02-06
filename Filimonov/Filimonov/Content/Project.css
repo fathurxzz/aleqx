@@ -1,0 +1,16 @@
+﻿.project {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+    background: url('img/project-frame.gif');
+    padding: 5px;
+}
+
+img {
+    border: none;
+}
+
+.projects {
+    padding-bottom: 50px !important;
+}
