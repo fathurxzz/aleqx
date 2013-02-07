@@ -1,4 +1,4 @@
-﻿@model Filimonov.Models.ProjectModel
+﻿@model ProjectModel
 @using Filimonov.Models
 
 <div class="page" style="height: 50px;">
@@ -20,8 +20,10 @@
     @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text })
 break;
         case ContentType.Projects:
-    @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title, Projects = Model.Projects})
-break;
+            @(Model.Project != null 
+            ? Html.Partial("ProjectDetails", Model.Project) 
+            : Html.Partial("ContentItemProjects", new ContentItemProjects {Title = item.Title, Projects = Model.Projects}))
+            break;
     }
 }
 <div class="page">
@@ -42,5 +44,16 @@ break;
 @section Includes
 {
     <script src="@Url.Content("~/Scripts/PageScripts.js")" type="text/javascript"></script>
+    <style type="text/css">
+        .projectFrame
+        {
+            display: block;
+
+        }
+        .projectMenuItem
+        {
+            display: none;
+        }
+    </style>
 }
 

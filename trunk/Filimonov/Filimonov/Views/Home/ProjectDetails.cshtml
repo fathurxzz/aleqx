@@ -1,10 +1,11 @@
 ﻿@using Filimonov
 @using SiteExtensions.Graphics
-@model Filimonov.Models.ContentItemProjects
+@model Filimonov.Models.Project
+           
 <div class="container">
     <div class="page">
         <div class="menu menuItem projectMenuItem">
-            <a href="#" class="showLink">@Model.Title</a>
+            <a href="#" class="showLink">Проекты</a>
             @if (Request.IsAuthenticated)
             {
                 <div>
@@ -26,7 +27,7 @@
                     <div class="titleContainerLeft">
                         <div class="titleContainerRight">
                             <div class="title">
-                                @Model.Title
+                                @Html.ActionLink("Проекты","Projects","Home",new{id=""},null) &laquo;
                             </div>
                         </div>
                     </div>
@@ -34,20 +35,7 @@
             </div>
             
             
-            @foreach (var project in Model.Projects)
-            {
-                <div class="project">
-                    @Html.Raw(Html.ActionLink("[IMAGE]", "Projects", "Home", new { id = project.Name }, new { @class = "projectDetailsLink" }).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", project.ImageSource, SiteSettings.GetThumbnail("projectPreview"))))
-                </div>
-            }
-            <div class="clear"></div>
-            
-            @if (Request.IsAuthenticated)
-            {
-                <div class="adminLinkContainer">
-                @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })
-            </div>
-            }
+            Project description
 
         </div>
         <div class="bottom">
