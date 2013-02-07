@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SiteExtensions;
+
 
 namespace TestErrorApplication.Controllers
 {
@@ -13,9 +13,10 @@ namespace TestErrorApplication.Controllers
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
 
-            throw new HttpNotFoundException("aaa");
+            //throw new HttpNotFoundException("aaa");
+            throw new ArgumentException("aaaa");
 
-            return View();
+            //return View();
         }
 
         public ActionResult About()
