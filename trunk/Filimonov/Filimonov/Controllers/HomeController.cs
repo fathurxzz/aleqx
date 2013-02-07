@@ -8,6 +8,7 @@ using SiteExtensions;
 
 namespace Filimonov.Controllers
 {
+    
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -20,12 +21,18 @@ namespace Filimonov.Controllers
             }
         }
 
-        public ActionResult Gallery()
+        public ActionResult Projects(string id)
         {
             using (var context = new SiteContainer())
             {
-                return View();
+                var model = new ProjectModel(context, id);
+                return View(model);
             }
+        }
+
+        public ActionResult ErrorPage()
+        {
+            return View();
         }
     }
 }
