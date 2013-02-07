@@ -8,7 +8,7 @@ using SiteExtensions;
 
 namespace Filimonov.Controllers
 {
-    
+    [HandleError()]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -30,9 +30,13 @@ namespace Filimonov.Controllers
             }
         }
 
-        public ActionResult ErrorPage()
+        public ActionResult ProjectDetails(string id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var model = new ProjectModel(context, id);
+                return View(model);
+            }
         }
     }
 }
