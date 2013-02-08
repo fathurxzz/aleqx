@@ -9,9 +9,9 @@ using SiteExtensions;
 
 namespace Filimonov.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProjectController : Controller
     {
-        
         public ActionResult Create()
         {
             using (var context = new SiteContainer())
@@ -51,25 +51,47 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
         
-        //
-        // GET: /Admin/Project/Edit/5
- 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == id);
+                return View(project);
+            }
         }
 
-        //
-        // POST: /Admin/Project/Edit/5
-
+      
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                using (var context = new SiteContainer())
+                {
+                    var project = context.Project.First(p => p.Id == id);
+                    TryUpdateModel(project, new[] { "Name", "Title", "DescriptionTitle", "SortOrder" });
+                    project.Description = HttpUtility.HtmlDecode(form["Description"]);
+                    if (fileUpload != null)
+                    {
+                        if (!string.IsNullOrEmpty(project.ImageSource))
+                        {
+
+                            IOHelper.DeleteFile("~/Content/Images", project.ImageSource);
+                            foreach (var thumbnail in SiteSettings.Thumbnails)
+                            {
+                                IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, project.ImageSource);
+                            }
+                        }
+
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        fileUpload.SaveAs(filePath);
+                        project.ImageSource = fileName;
+                    }
+                    context.SaveChanges();
+                    return RedirectToAction("Projects", "Home", new {area = "", id = project.Name});
+                }
             }
             catch
             {
@@ -77,30 +99,10 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Project/Delete/5
- 
+      
         public ActionResult Delete(int id)
         {
             return View();
-        }
-
-        //
-        // POST: /Admin/Project/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

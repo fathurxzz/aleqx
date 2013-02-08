@@ -14,3 +14,62 @@ img {
 .projects {
     padding-bottom: 50px !important;
 }
+
+.main-view-container {
+    width: 554px;
+    height: 598px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/project-main-view-bg.gif');
+}
+
+.main-view-container .title {
+    text-align: center;
+    color: #5a5a5a;
+    padding-top: 20px;
+}
+
+.main-view-container .picture {
+    width: 528px;
+    height: 528px;
+    position: absolute;
+    left: 13px;
+    top: 56px;
+    
+    background-color: #fff;
+}
+
+.carusel-previews {
+    position: relative;
+    margin: 0 auto;
+    width: 500px;
+    height: 90px;
+    background-color: #fff;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+
+
+.description-title {
+    text-align: center;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+.description-title-line {
+    width: 67px;
+    height: 3px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/descr-title-line.gif');
+}
+
+.description-text {
+    padding-top: 50px;
+    width: 530px;
+    position: relative;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    
+}
