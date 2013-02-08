@@ -1,7 +1,6 @@
 ﻿@using Filimonov
 @using SiteExtensions.Graphics
 @model Filimonov.Models.Project
-           
 <div class="container">
     <div class="page">
         <div class="menu menuItem projectMenuItem">
@@ -27,15 +26,40 @@
                     <div class="titleContainerLeft">
                         <div class="titleContainerRight">
                             <div class="title">
-                                @Html.ActionLink("Проекты","Projects","Home",new{id=""},null) &laquo;
+                                @Html.ActionLink("Проекты", "Projects", "Home", new { id = "" }, null) &laquo;
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="main-view-container">
+                <div class="title">
+                    @Model.Title
+                </div>
+                <div class="picture">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("projectImage")))
+                </div>
+            </div>
             
+            <div class="carusel-previews">
+                
+            </div>
             
-            Project description
+            @if (Request.IsAuthenticated)
+            {
+                <div>
+                    @Html.ActionLink("Редактировать","Edit","Project",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+                </div>
+            }
+
+            <div class="description-title-line"></div>
+            <div class="description-title">
+                @(!string.IsNullOrEmpty(Model.DescriptionTitle) ? Model.DescriptionTitle : "О проекте")
+            </div>
+            <div class="description-title-line"></div>
+            <div class="description-text">
+               @Html.Raw(Model.Description)
+            </div>
 
         </div>
         <div class="bottom">
