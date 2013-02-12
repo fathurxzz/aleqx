@@ -100,3 +100,31 @@ img {
     padding-bottom: 50px;
     
 }
+
+.layer 
+{
+    background: rgba(0, 0, 0, 0.65);
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    display: none;
+    text-align: center;
+    color: #fff;
+    font-family: Verdana;
+    font-size: 10px;
+}
+
+.layer p {
+    position: absolute;
+    vertical-align: middle;
+    display: table-cell;
+    top: 50%;
+    width: 150px;
+}
+
+.layer a {
+    display: block;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+}
