@@ -44,34 +44,15 @@
                         <a href="#" id="pictureLink" class="fancy">
                         </a>    
                         <img src="" alt="" id="pictureContainer" />
-            
                     }
-                        @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("projectImage")))*@
-
                 </div>
             </div>
             <div class="carusel-previews">
-                @{
-                    var cnt = 0;
-    foreach (var image in Model.ProjectImages)
-    {
-        if (cnt == 0)
-            {
-                @Html.Raw(
-            "<script type=\"text/javascript\">" +
-                      "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/Images", image.ImageSource, SiteSettings.GetThumbnail("projectImage")) + "\"); " +
-                      "$(\"#pictureLink\").attr(\"href\", \"/Content/Images/" + image.ImageSource + "\");"
-                      +
-            "</script>")
-            }
-        cnt++;
-        
-        
-        <div class="preview" style="cursor: pointer" onclick=" setImage('@image.ImageSource') ">
-            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("caruselPreview")))
-        </div>
-
-    }
+                @foreach (var image in Model.ProjectImages)
+                {
+                    <div class="preview" style="cursor: pointer" onclick="ProjectCatalogue.changeImage('@image.ImageSource') ">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("caruselPreview")))    
+                    </div>
                 }
                 <div class="clear"></div>
             </div>
@@ -102,3 +83,9 @@
     <div class="menu" style="height: 50px;">
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+    ProjectCatalogue.setFirstImage();
+</script>
