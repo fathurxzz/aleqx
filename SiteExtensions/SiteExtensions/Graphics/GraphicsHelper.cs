@@ -354,16 +354,26 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="originalPath"></param>
-        /// <param name="fileName"></param>
-        /// <param name="thumbnail"></param>
-        /// <param name="scaleMode"></param>
-        public static void SaveCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="originalPath"></param>
+        ///// <param name="fileName"></param>
+        ///// <param name="thumbnail"></param>
+        ///// <param name="scaleMode"></param>
+        //public static void SaveCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail, ScaleMode scaleMode)
+        //{
+        //    CacheImage(originalPath, fileName, thumbnail.CacheFolder, thumbnail.PictureSize, scaleMode, false, 0);
+        //}
+
+        public static void SaveCachedImage(string originalPath, string fileName, ThumbnailPicture thumbnail)
         {
-            CacheImage(originalPath, fileName, thumbnail.CacheFolder, thumbnail.PictureSize, scaleMode, false, 0);
+            string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + thumbnail.CacheFolder);
+            string cachedImagePath = Path.Combine(cachePath, fileName);
+            if (!File.Exists(cachedImagePath))
+            {
+                CacheImage(originalPath, fileName, thumbnail.CacheFolder, thumbnail.PictureSize, thumbnail.ScaleMode, false, 0);
+            }
         }
 
 
