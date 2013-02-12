@@ -122,9 +122,11 @@ img {
     width: 150px;
 }
 
-.layer a {
+.layer a 
+{
     display: block;
     width: 150px;
     height: 150px;
     position: absolute;
 }
+
