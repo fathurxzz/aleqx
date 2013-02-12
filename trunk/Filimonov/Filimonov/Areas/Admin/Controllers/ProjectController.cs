@@ -18,9 +18,9 @@ namespace Filimonov.Areas.Admin.Controllers
             {
                 var projects = context.Project.ToList();
                 var sortOrder = projects.Any() ? projects.Max(p => p.SortOrder) : 0;
-                return View(new Project {SortOrder = sortOrder + 1});
+                return View(new Project { SortOrder = sortOrder + 1 });
             }
-        } 
+        }
 
         [HttpPost]
         public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
@@ -30,7 +30,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 using (var context = new SiteContainer())
                 {
                     var project = new Project();
-                    TryUpdateModel(project, new[] {"Name", "Title", "DescriptionTitle", "SortOrder"});
+                    TryUpdateModel(project, new[] { "Name", "Title", "DescriptionTitle", "SortOrder" });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
                     if (fileUpload != null)
                     {
@@ -50,7 +50,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 return View();
             }
         }
-        
+
         public ActionResult Edit(int id)
         {
             using (var context = new SiteContainer())
@@ -60,7 +60,7 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
-      
+
         [HttpPost]
         public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
@@ -90,7 +90,7 @@ namespace Filimonov.Areas.Admin.Controllers
                         project.ImageSource = fileName;
                     }
                     context.SaveChanges();
-                    return RedirectToAction("Projects", "Home", new {area = "", id = project.Name});
+                    return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
                 }
             }
             catch
@@ -99,10 +99,50 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
-      
-        public ActionResult Delete(int id)
+
+        public ActionResult AddImageToProject(int id)
         {
+            ViewBag.projectId = id;
+
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddImageToProject(int projectId, HttpPostedFileBase fileUpload)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == projectId);
+                if (fileUpload != null)
+                {
+                    var pi = new ProjectImage();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    fileUpload.SaveAs(filePath);
+                    pi.ImageSource = fileName;
+                    project.ProjectImages.Add(pi);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
+
+        public ActionResult DeleteImage(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var projectImage = context.ProjectImage.Include("Project").First(pi => pi.Id == id);
+                var project = projectImage.Project;
+                IOHelper.DeleteFile("~/Content/Images", projectImage.ImageSource);
+                foreach (var thumbnail in SiteSettings.Thumbnails)
+                {
+                    IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, projectImage.ImageSource);
+                }
+                context.DeleteObject(projectImage);
+                context.SaveChanges();
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
         }
     }
 }

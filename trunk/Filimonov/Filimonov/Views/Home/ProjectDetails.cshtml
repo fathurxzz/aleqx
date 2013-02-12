@@ -1,6 +1,7 @@
 ﻿@using Filimonov
 @using SiteExtensions.Graphics
 @model Filimonov.Models.Project
+
 <div class="container">
     <div class="page">
         <div class="menu menuItem projectMenuItem">
@@ -37,30 +38,61 @@
                     @Model.Title
                 </div>
                 <div class="picture">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("projectImage")))
+                    
+                    @if (Model.ProjectImages.Count > 0)
+                    {
+                        <a href="#" id="pictureLink" class="fancy">
+                        </a>    
+                        <img src="" alt="" id="pictureContainer" />
+            
+                    }
+                        @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("projectImage")))*@
+
                 </div>
             </div>
-            
             <div class="carusel-previews">
-                
+                @{
+                    var cnt = 0;
+    foreach (var image in Model.ProjectImages)
+    {
+        if (cnt == 0)
+            {
+                @Html.Raw(
+            "<script type=\"text/javascript\">" +
+                      "$(\"#pictureContainer\").attr(\"src\", \"" + GraphicsHelper.GetCachedImage("~/Content/Images", image.ImageSource, SiteSettings.GetThumbnail("projectImage")) + "\"); " +
+                      "$(\"#pictureLink\").attr(\"href\", \"/Content/Images/" + image.ImageSource + "\");"
+                      +
+            "</script>")
+            }
+        cnt++;
+        
+        
+        <div class="preview" style="cursor: pointer" onclick=" setImage('@image.ImageSource') ">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("caruselPreview")))
+        </div>
+
+    }
+                }
+                <div class="clear"></div>
             </div>
-            
             @if (Request.IsAuthenticated)
             {
                 <div>
-                    @Html.ActionLink("Редактировать","Edit","Project",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+                    @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                    
+                    @Html.ActionLink("Добавить изображение", "AddImageToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
                 </div>
             }
-
-            <div class="description-title-line"></div>
+            <div class="description-title-line">
+            </div>
             <div class="description-title">
                 @(!string.IsNullOrEmpty(Model.DescriptionTitle) ? Model.DescriptionTitle : "О проекте")
             </div>
-            <div class="description-title-line"></div>
-            <div class="description-text">
-               @Html.Raw(Model.Description)
+            <div class="description-title-line">
             </div>
-
+            <div class="description-text">
+                @Html.Raw(Model.Description)
+            </div>
         </div>
         <div class="bottom">
         </div>

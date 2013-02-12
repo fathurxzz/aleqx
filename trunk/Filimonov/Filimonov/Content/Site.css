@@ -1,4 +1,22 @@
-﻿*
+﻿@font-face 
+{
+    font-family: "FreeSetC";
+    src: url('fonts/FreeSetC.otf');
+}
+
+@font-face 
+{
+    font-family: "FreeSetCBold";
+    src: url('fonts/FreeSetC-Bold.otf');
+}
+
+@font-face 
+{
+    font-family: "FreeSetCItalic";
+    src: url('fonts/FreeSetC-Italic.otf');
+}
+
+*
 {
     margin: 0;
     padding: 0;
@@ -8,6 +26,7 @@ body
 {
     background: url('img/site-bg.jpg') no-repeat #27363c;
     background-position: 50% 0;
+    font-family: FreeSetC;
 }
 
 
@@ -211,4 +230,19 @@ body
 
 .clear {
     clear: both;
+}
+
+
+.logOnPanel
+{
+    position: relative;
+    margin: 0 auto;
+    padding: 30px;
+    width: 300px;
+    background-color: #fff;
+    border: 5px solid #607a85;
+}
+
+.logOnPanel h2 {
+    color:  #607a85;
 }
