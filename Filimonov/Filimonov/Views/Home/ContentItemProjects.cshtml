@@ -37,7 +37,12 @@
             @foreach (var project in Model.Projects)
             {
                 <div class="project">
-                    @Html.Raw(Html.ActionLink("[IMAGE]", "Projects", "Home", new { id = project.Name }, new { @class = "projectDetailsLink" }).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", project.ImageSource, SiteSettings.GetThumbnail("projectPreview"))))
+                    <div class="layer">
+                        <p>@project.Title</p>
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "Projects", "Home", new { id = project.Name }, new { @class = "projectDetailsLink" }).ToString().Replace("[IMAGE]", ""))
+                    </div>
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", project.ImageSource, SiteSettings.GetThumbnail("projectPreview")))
+                    @*@Html.Raw(Html.ActionLink("[IMAGE]", "Projects", "Home", new { id = project.Name }, new { @class = "projectDetailsLink" }).ToString().Replace("[IMAGE]", ))*@
                 </div>
             }
             <div class="clear"></div>
