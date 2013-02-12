@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Filimonov.Models;
 using SiteExtensions;
-using SiteExtensions.Graphics;
 
 namespace Filimonov.Controllers
 {
-    [HandleError()]
+    [HandleError]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -41,11 +35,6 @@ namespace Filimonov.Controllers
             }
         }
 
-        [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
-        [HttpPost]
-        public void UpdateProjectImage(string fileName)
-        {
-            GraphicsHelper.SaveCachedImage("~/Content/Images", fileName, SiteSettings.GetThumbnail("projectImage"));
-        }
+       
     }
 }
