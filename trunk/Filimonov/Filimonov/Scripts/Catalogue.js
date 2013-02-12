@@ -5,15 +5,10 @@
         });
     },
 
-
     setFirstImage: function () {
-        //$(function () {
             var fileName = $(".carusel-previews").find("img").attr("alt");
             ProjectCatalogue._updateImageContainer(fileName);
-        //});
-
     },
-
 
     _updateImageContainer: function (fileName) {
         $("#pictureContainer").attr("src", "/ImageCache/projectImage/" + fileName);
@@ -21,7 +16,7 @@
     },
 
     changeImage: function (fileName) {
-        $.post("/Home/UpdateProjectImage?fileName=" + fileName, function () {
+        $.post("/Catalogue/UpdateProjectImage?fileName=" + fileName, function () {
             ProjectCatalogue._updateImageContainer(fileName);
         });
     }
