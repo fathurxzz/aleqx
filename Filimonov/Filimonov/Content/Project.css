@@ -39,14 +39,41 @@ img {
     background-color: #fff;
 }
 
+
+#pictureLink
+{
+    position: absolute;
+    z-index: 1001;
+    width: 528px;
+    height: 528px;
+}
+
+#pictureLink img
+{
+    z-index: 999;
+}
+
+
+
+
 .carusel-previews {
     position: relative;
     margin: 0 auto;
     width: 500px;
-    height: 90px;
-    background-color: #fff;
+    
+    
     margin-top: 10px;
     margin-bottom: 50px;
+    /*border: 1px solid black;*/
+}
+
+.carusel-previews .preview {
+    float: left;
+    width: 73px;
+    height: 73px;
+    padding: 7px;
+    background-image: url('img/carusel-preview-frame.gif');
+    margin: 5px;
 }
 
 

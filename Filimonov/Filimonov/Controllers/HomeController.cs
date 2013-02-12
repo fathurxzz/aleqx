@@ -35,7 +35,7 @@ namespace Filimonov.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new ProjectModel(context, id);
-                return View(model);
+                return View(model.Project);
             }
         }
     }

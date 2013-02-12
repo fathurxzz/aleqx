@@ -15,7 +15,7 @@ namespace Filimonov.Models
         {
             if (!string.IsNullOrEmpty(id))
             {
-                Project = context.Project.FirstOrDefault(p => p.Name == id);
+                Project = context.Project.Include("ProjectImages").FirstOrDefault(p => p.Name == id);
                 if (Project == null)
                 {
                     throw new HttpNotFoundException(string.Format("Project with key {0}", id));
