@@ -99,7 +99,7 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
-
+        [ActionName("AddImageToProject")]
         public ActionResult AddImageToProject(int id)
         {
             using (var context = new SiteContainer())
@@ -113,27 +113,26 @@ namespace Filimonov.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddImageToProject(int projectId, /*HttpPostedFileBase fileUpload*/ IEnumerable<HttpPostedFile> files)
+        [ActionName("AddImageToProject")]
+        public ActionResult AddImageToProject1(int projectId)
         {
             using (var context = new SiteContainer())
             {
                 var project = context.Project.First(p => p.Id == projectId);
 
-
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
                     var file = Request.Files[i];
-                    if (file != null)
-                    {
-                            var pi = new ProjectImage();
-                            string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
-                            string filePath = Server.MapPath("~/Content/Images");
-                            filePath = Path.Combine(filePath, fileName);
-                            file.SaveAs(filePath);
-                            pi.ImageSource = fileName;
-                            project.ProjectImages.Add(pi);
-                            context.SaveChanges();
-                    }
+                    if (file == null) continue;
+
+                    var pi = new ProjectImage();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    pi.ImageSource = fileName;
+                    project.ProjectImages.Add(pi);
+                    context.SaveChanges();
                 }
 
                 
