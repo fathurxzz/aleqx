@@ -102,28 +102,53 @@ namespace Filimonov.Areas.Admin.Controllers
 
         public ActionResult AddImageToProject(int id)
         {
-            ViewBag.projectId = id;
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == id);
 
+                ViewBag.projectId = project.Id;
+                ViewBag.projectName = project.Name;
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddImageToProject(int projectId, HttpPostedFileBase fileUpload)
+        public ActionResult AddImageToProject(int projectId, /*HttpPostedFileBase fileUpload*/ IEnumerable<HttpPostedFile> files)
         {
             using (var context = new SiteContainer())
             {
                 var project = context.Project.First(p => p.Id == projectId);
-                if (fileUpload != null)
+
+
+                for (int i = 0; i < Request.Files.Count; i++)
                 {
-                    var pi = new ProjectImage();
-                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                    string filePath = Server.MapPath("~/Content/Images");
-                    filePath = Path.Combine(filePath, fileName);
-                    fileUpload.SaveAs(filePath);
-                    pi.ImageSource = fileName;
-                    project.ProjectImages.Add(pi);
-                    context.SaveChanges();
+                    var file = Request.Files[i];
+                    if (file != null)
+                    {
+                            var pi = new ProjectImage();
+                            string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                            string filePath = Server.MapPath("~/Content/Images");
+                            filePath = Path.Combine(filePath, fileName);
+                            file.SaveAs(filePath);
+                            pi.ImageSource = fileName;
+                            project.ProjectImages.Add(pi);
+                            context.SaveChanges();
+                    }
                 }
+
+                
+
+                //if (fileUpload != null)
+                //{
+                //    var pi = new ProjectImage();
+                //    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                //    string filePath = Server.MapPath("~/Content/Images");
+                //    filePath = Path.Combine(filePath, fileName);
+                //    fileUpload.SaveAs(filePath);
+                //    pi.ImageSource = fileName;
+                //    project.ProjectImages.Add(pi);
+                //    context.SaveChanges();
+                //}
                 return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
             }
         }

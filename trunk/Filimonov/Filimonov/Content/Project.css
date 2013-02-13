@@ -54,17 +54,10 @@ img {
 }
 
 
-
-
 .carusel-previews {
     position: relative;
     margin: 0 auto;
-    width: 500px;
-    
-    
-    margin-top: 10px;
-    margin-bottom: 50px;
-    /*border: 1px solid black;*/
+    width: 485px;
 }
 
 .carusel-previews .preview {
@@ -75,7 +68,6 @@ img {
     background-image: url('img/carusel-preview-frame.gif');
     margin: 5px;
 }
-
 
 
 .description-title {
