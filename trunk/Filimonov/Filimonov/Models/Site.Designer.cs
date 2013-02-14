@@ -558,6 +558,30 @@ namespace Filimonov.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String VideoSource
+        {
+            get
+            {
+                return _VideoSource;
+            }
+            set
+            {
+                OnVideoSourceChanging(value);
+                ReportPropertyChanging("VideoSource");
+                _VideoSource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("VideoSource");
+                OnVideoSourceChanged();
+            }
+        }
+        private global::System.String _VideoSource;
+        partial void OnVideoSourceChanging(global::System.String value);
+        partial void OnVideoSourceChanged();
 
         #endregion
     
