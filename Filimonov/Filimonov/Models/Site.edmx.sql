@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/05/2013 18:34:19
+-- Date Created: 02/14/2013 08:57:31
 -- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -52,7 +52,8 @@ CREATE TABLE `Project` (
     `DescriptionTitle` varchar( 200 )  NULL,
     `Description` longtext  NULL,
     `SortOrder` int  NOT NULL,
-    `ImageSource` varchar( 200 )  NULL
+    `ImageSource` varchar( 200 )  NULL,
+    `VideoSource` longtext  NULL
 );
 
 -- Creating table 'ProjectImage'

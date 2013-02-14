@@ -37,6 +37,7 @@
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="ImageSource" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="VideoSource" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProjectImage">
     <Key>
@@ -96,6 +97,7 @@
           <NavigationProperty Name="ProjectImages" Relationship="Site.ProjectProjectImage" FromRole="Project" ToRole="ProjectImage" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="ImageSource" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="VideoSource" />
         </EntityType>
         <EntityType Name="ProjectImage">
           <Key>
@@ -148,6 +150,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="VideoSource" ColumnName="VideoSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -182,11 +185,11 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="2.5" PointY="1.375" Height="2.3648893229166665" />
-        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="6" PointY="1.5" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="Site.Project" Width="1.5" PointX="6" PointY="1.5" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Site.ProjectImage" Width="1.5" PointX="8.625" PointY="2.625" Height="1.9802864583333335" />
         <AssociationConnector Association="Site.ProjectProjectImage">
-          <ConnectorPoint PointX="7.5" PointY="3.3410953776041663" />
-          <ConnectorPoint PointX="8.625" PointY="3.3410953776041663" />
+          <ConnectorPoint PointX="7.5" PointY="3.43724609375" />
+          <ConnectorPoint PointX="8.625" PointY="3.43724609375" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
