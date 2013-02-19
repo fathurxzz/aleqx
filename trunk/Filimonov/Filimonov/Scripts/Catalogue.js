@@ -12,6 +12,9 @@
     setFirstImage: function () {
         var fileName = $(".carusel-previews").find("img").attr("alt");
         ProjectCatalogue._updateImageContainer(fileName);
+        //        $.post("/Catalogue/UpdateProjectImage?fileName=" + fileName, function () {
+        //            ProjectCatalogue._updateImageContainer(fileName);
+        //        });
     },
 
     _updateImageContainer: function (fileName) {

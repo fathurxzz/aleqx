@@ -50,6 +50,13 @@
                 @foreach (var image in Model.ProjectImages)
                 {
                     <div class="preview" style="cursor: pointer" onclick="ProjectCatalogue.changeImage('@image.ImageSource') ">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div style="position: absolute">
+                                @Html.ActionLink("Удалить", "DeleteImage","Project",new{area="Admin",id=image.Id},new{@class="adminLink",onclick="return confirm('Удалить изображение?')"})
+                            </div>
+                        }
+
                         @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("caruselPreview")))    
                     </div>
                 }
@@ -61,6 +68,8 @@
                     @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
                     
                     @Html.ActionLink("Добавить изображение", "AddImageToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                    
+                    @Html.ActionLink("Удалить проект", "Delete", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект?')" })
                 </div>
             }
             <div class="description-title-line">
