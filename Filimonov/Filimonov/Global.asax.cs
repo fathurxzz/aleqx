@@ -22,6 +22,12 @@ namespace Filimonov
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "LogOn", // Route name
+                "logon", // URL with parameters
+                new { controller = "Account", action = "LogOn", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Projects", // Route name
                 "projects", // URL with parameters
                 new { controller = "Home", action = "Projects", id = UrlParameter.Optional } // Parameter defaults

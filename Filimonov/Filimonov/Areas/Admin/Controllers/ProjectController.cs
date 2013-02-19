@@ -42,8 +42,8 @@ namespace Filimonov.Areas.Admin.Controllers
                     }
                     context.AddToProject(project);
                     context.SaveChanges();
+                    return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
                 }
-                return RedirectToAction("Index", "Home", new { area = "" });
             }
             catch
             {
@@ -166,6 +166,39 @@ namespace Filimonov.Areas.Admin.Controllers
                 context.DeleteObject(projectImage);
                 context.SaveChanges();
                 return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.Include("ProjectImages").First(p => p.Id == id);
+
+                while (project.ProjectImages.Any())
+                {
+                    var projectImage = project.ProjectImages.First();
+                    IOHelper.DeleteFile("~/Content/Images", projectImage.ImageSource);
+                    foreach (var thumbnail in SiteSettings.Thumbnails)
+                    {
+                        IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, projectImage.ImageSource);
+                    }
+
+                    context.DeleteObject(projectImage);
+                }
+                
+                
+                IOHelper.DeleteFile("~/Content/Images", project.ImageSource);
+                foreach (var thumbnail in SiteSettings.Thumbnails)
+                {
+                    IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, project.ImageSource);
+                }
+
+
+                context.DeleteObject(project);
+                context.SaveChanges();
+
+                return RedirectToAction("Projects", "Home", new { area = "" });
             }
         }
     }
