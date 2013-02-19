@@ -29,6 +29,9 @@
     }
 
 
+    $(".hide").scrollFollow({
+        offset: 0
+    });
 
 
 });
