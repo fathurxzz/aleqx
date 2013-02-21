@@ -1,3 +1,8 @@
 ﻿@{
+    if (Request.Cookies["filinteriors"] == null)
+    {
+        Response.Redirect("~/soon.htm");
+    }
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
