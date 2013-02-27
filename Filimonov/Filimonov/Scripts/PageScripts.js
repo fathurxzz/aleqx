@@ -1,5 +1,15 @@
 ﻿$(function () {
 
+    //    $.scrollingParallax('content/img/site-bg.jpg');
+
+//    $('div.main-page').scrollingParallax({
+//        staticSpeed: .2
+//    });
+
+    $.scrollingParallax('content/img/site-bg.jpg', {
+        staticSpeed: .2
+    });
+
     $(".hideLink").click(function () {
         $(this).closest(".frame").animate({ height: 'toggle' }, function () {
             $(this).closest(".container").find(".menuItem").css("display", "block");
