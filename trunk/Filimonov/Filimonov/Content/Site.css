@@ -24,11 +24,16 @@
 
 body
 {
-    background: url('img/site-bg.jpg') no-repeat #27363c;
-    background-position: 50% 0;
+    /*
+    background: url('img/site-bg.jpg') no-repeat #27363c;*/
+    /*background-position: 50% 0;*/
+
     font-family: FreeSetC;
 }
 
+.main-page {
+    background-color: #27363c;
+}
 
 .page
 {
