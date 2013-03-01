@@ -6,7 +6,7 @@
 //        staticSpeed: .2
 //    });
 
-    $.scrollingParallax('content/img/site-bg.jpg', {
+    $.scrollingParallax('/content/img/site-bg.jpg', {
         staticSpeed: .2
     });
 
