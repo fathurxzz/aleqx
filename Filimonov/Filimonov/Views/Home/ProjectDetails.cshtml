@@ -64,8 +64,8 @@
             </div>
             @if (Request.IsAuthenticated)
             {
-                <div>
-                    @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                <div class="adminLinkContainer">
+                    
                     
                     @Html.ActionLink("Добавить изображение", "AddImageToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
                     
@@ -79,8 +79,21 @@
             </div>
             <div class="description-title-line">
             </div>
+            
+            @if (Request.IsAuthenticated)
+            {
+                <div class="adminLinkContainer">
+                    @Html.ActionLink("Редактировать", "Edit", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                </div>
+            }
             <div class="description-text">
                 @Html.Raw(Model.Description)
+                @if (!string.IsNullOrEmpty(Model.VideoSource))
+                {
+                    <div class="videoContainer">
+                        @Html.Raw(Model.VideoSource)
+                    </div>
+                }
             </div>
         </div>
         <div class="bottom">
