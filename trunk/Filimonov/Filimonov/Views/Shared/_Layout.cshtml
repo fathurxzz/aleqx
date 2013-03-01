@@ -19,8 +19,14 @@
 </head>
     <body>
         <div class="main-page">
-        <div class="page top">
-        </div>
+            <div class="page top">
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="adminLinkContainer">
+                        @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",null,new{@class="adminLink"})
+                    </div>
+                }
+            </div>
         <div id="header">
         </div>
         @RenderBody()

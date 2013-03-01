@@ -28,15 +28,18 @@
                     @Html.ValidationMessageFor(model => model.Title)
                 </td>
             </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.Text)
-                </td>
-                <td>
-                    @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
-                    @Html.ValidationMessageFor(model => model.Text)
-                </td>
-            </tr>
+            @if (Model.ContentType != 1)
+            {
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Text)
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.Text, new {@class = "ckeditor"})
+                        @Html.ValidationMessageFor(model => model.Text)
+                    </td>
+                </tr>
+            }
             <tr>
                 <td colspan="2" style="text-align: center">
                     Для поисковых систем

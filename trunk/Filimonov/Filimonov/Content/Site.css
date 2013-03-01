@@ -145,6 +145,7 @@ body
     margin: 30px;
     text-align: center;
     text-transform: uppercase;
+    color: #000;
 }
 
 .frame
@@ -184,7 +185,9 @@ body
 .frame .middle .titleContainer {
     text-align: center;
     padding-bottom: 50px;
+    
 }
+
 
 .frame .middle .titleContainer .inner {
     background: url('img/title-bg.gif');
@@ -194,6 +197,10 @@ body
 .frame .middle .titleContainer .title {
     padding: 22px;
     text-transform: uppercase;
+}
+
+.frame .middle .titleContainer .title a {
+    color: #000;
 }
 
 .frame .top {
@@ -254,3 +261,6 @@ body
 }
 
 
+.videoContainer {
+    margin-top: 30px;
+}

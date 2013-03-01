@@ -23,6 +23,7 @@ namespace Filimonov.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)] 
         public ActionResult Create(FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
@@ -62,7 +63,9 @@ namespace Filimonov.Areas.Admin.Controllers
         }
 
 
+
         [HttpPost]
+        [ValidateInput(false)] 
         public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
             try

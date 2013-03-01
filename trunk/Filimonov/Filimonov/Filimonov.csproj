@@ -91,6 +91,7 @@
     <Compile Include="Models\ContentType.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\ProjectValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
