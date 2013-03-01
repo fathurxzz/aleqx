@@ -32,6 +32,7 @@ namespace Filimonov.Areas.Admin.Controllers
                     var project = new Project();
                     TryUpdateModel(project, new[] { "Name", "Title", "DescriptionTitle", "SortOrder" });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
+                    project.VideoSource = form["VideoSource"];
                     if (fileUpload != null)
                     {
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
@@ -71,6 +72,7 @@ namespace Filimonov.Areas.Admin.Controllers
                     var project = context.Project.First(p => p.Id == id);
                     TryUpdateModel(project, new[] { "Name", "Title", "DescriptionTitle", "SortOrder" });
                     project.Description = HttpUtility.HtmlDecode(form["Description"]);
+                    project.VideoSource = form["VideoSource"];
                     if (fileUpload != null)
                     {
                         if (!string.IsNullOrEmpty(project.ImageSource))
