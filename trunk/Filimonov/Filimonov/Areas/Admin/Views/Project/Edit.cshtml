@@ -54,6 +54,15 @@
             </tr>
             <tr>
                 <td>
+                    @Html.LabelFor(model => model.VideoSource)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.VideoSource)
+                    @Html.ValidationMessageFor(model => model.VideoSource)
+                </td>
+            </tr>
+            <tr>
+                <td>
                     @Html.LabelFor(model => model.SortOrder)
                 </td>
                 <td>
