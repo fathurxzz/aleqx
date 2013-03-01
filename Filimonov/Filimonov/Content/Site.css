@@ -246,8 +246,11 @@ body
     width: 300px;
     background-color: #fff;
     border: 5px solid #607a85;
+    text-align: center;
 }
 
 .logOnPanel h2 {
     color:  #607a85;
 }
+
+

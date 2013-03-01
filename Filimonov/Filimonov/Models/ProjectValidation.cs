@@ -35,5 +35,8 @@ namespace Filimonov.Models
 
         [DisplayName("Изображение")]
         public string ImageSource { get; set; }
+
+        [DisplayName("Код YouTube-ролика")]
+        public string VideoSource { get; set; }
     }
 }
