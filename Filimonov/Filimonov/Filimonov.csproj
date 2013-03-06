@@ -17,6 +17,7 @@
     <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -79,6 +80,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Presentation\PresentationAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -88,6 +91,25 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentItem.cs" />
     <Compile Include="Models\ContentItemProjects.cs" />
+    <Compile Include="Models\ContentType.cs" />
+    <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\Library.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Library.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Models\ProjectValidation.cs" />
+    <Compile Include="Models\Site.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Site.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="setcookie.aspx.cs">
+      <DependentUpon>setcookie.aspx</DependentUpon>
     <Compile Include="Models\ContentType.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Gallery.cs" />
@@ -147,11 +169,14 @@
     <Content Include="Content\img\main-frame-bottom.png" />
     <Content Include="Content\img\main-frame-middle.png" />
     <Content Include="Content\img\main-frame-top.png" />
+    <Content Include="Content\img\presentation-footer.gif" />
+    <Content Include="Content\img\presentation-header.gif" />
     <Content Include="Content\img\project-frame.gif" />
     <Content Include="Content\img\project-main-view-bg.gif" />
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-side-bg.gif" />
+    <Content Include="Content\Presentation.css" />
     <Content Include="Content\Project.css" />
     <Content Include="Content\ProjectPage.css" />
     <Content Include="em.gif" />
@@ -209,6 +234,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Presentation\Models\" />
     <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
@@ -251,9 +277,16 @@
     <Content Include="Areas\Admin\Views\Project\AddImageToProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Presentation\Views\Web.config" />
+    <Content Include="Areas\Presentation\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Presentation\Views\Home\Index.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
+    <EntityDeploy Include="Models\Library.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Library.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
