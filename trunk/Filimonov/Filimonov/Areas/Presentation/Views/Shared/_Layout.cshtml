@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/Presentation.css")" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="presentation-page">
+            <div class="header"></div>
+            
+            @RenderBody()
+
+            <div class="footer"></div>
+        </div>
+     </body>
+</html>

@@ -1,0 +1,24 @@
+﻿.presentation-page {
+    width: 1155px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.presentation-page .header, .presentation-page .footer {
+    width: 1155px;
+    height: 140px;
+    position: relative;
+    margin: 45px auto;
+}
+
+.presentation-page .header 
+{
+    background: url(img/presentation-header.gif) no-repeat;
+    
+}
+
+.presentation-page .footer 
+{
+    
+    background: url(img/presentation-footer.gif) no-repeat;
+}
