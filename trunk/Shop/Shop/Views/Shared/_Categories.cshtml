@@ -13,7 +13,7 @@
             foreach (var child in item.Children.OrderBy(c => c.Title))
             {
                 className = child.Selected ? "selected" : "";
-                <li class="child">
+                <li class="child @className">
                     @Html.ActionLink(child.Title, "Categories", "Shop", new {id = child.Name}, new {@class = className})
                 </li>
             }
