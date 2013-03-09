@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -119,6 +120,7 @@ namespace Filimonov.Models
         private ObjectSet<ProjectImage> _ProjectImage;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -146,11 +148,11 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -181,6 +183,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -355,6 +358,7 @@ namespace Filimonov.Models
         partial void OnSortOrderChanged();
 
         #endregion
+
     
     }
     
@@ -386,6 +390,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -584,6 +589,7 @@ namespace Filimonov.Models
         partial void OnVideoSourceChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -610,6 +616,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -640,6 +647,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -742,6 +750,7 @@ namespace Filimonov.Models
         partial void OnMainImageChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -784,8 +793,10 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

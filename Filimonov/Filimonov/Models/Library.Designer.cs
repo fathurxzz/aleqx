@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -154,6 +155,7 @@ namespace Filimonov.Models
         private ObjectSet<ProductContainer> _ProductContainer;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -197,11 +199,11 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -230,6 +232,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -308,6 +311,7 @@ namespace Filimonov.Models
         partial void OnTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -334,6 +338,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -362,6 +367,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -440,6 +446,7 @@ namespace Filimonov.Models
         partial void OnTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -466,6 +473,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -494,6 +502,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -572,6 +581,7 @@ namespace Filimonov.Models
         partial void OnTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -598,6 +608,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -630,6 +641,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -756,6 +768,7 @@ namespace Filimonov.Models
         partial void OnProductContainerIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -874,6 +887,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -904,6 +918,7 @@ namespace Filimonov.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1006,6 +1021,7 @@ namespace Filimonov.Models
         partial void OnTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1070,8 +1086,10 @@ namespace Filimonov.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
