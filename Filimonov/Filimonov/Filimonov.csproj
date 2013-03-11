@@ -88,6 +88,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Presentation\Controllers\ClientController.cs" />
     <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
     <Compile Include="Areas\Presentation\PresentationAreaRegistration.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Content\Site-mobile.css" />
     <Content Include="em.gif" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Library.edmx.sql" />
     <Content Include="Models\Site.edmx.sql" />
     <Content Include="Scripts\Catalogue.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -277,6 +279,8 @@
     <Content Include="Areas\Presentation\Views\Home\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Client\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Client\Details.cshtml" />
+    <Content Include="Areas\Presentation\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Category\Index.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
