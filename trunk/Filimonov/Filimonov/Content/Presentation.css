@@ -22,3 +22,16 @@
     
     background: url(img/presentation-footer.gif) no-repeat;
 }
+
+
+.categories {
+    padding: 0 90px;
+}
+
+.categories .category {
+    float: left;
+    width: 300px;
+    height: 225px;
+    margin: 10px;
+    border: 1px solid red;
+}
