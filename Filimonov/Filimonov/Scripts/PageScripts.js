@@ -6,9 +6,9 @@
 //        staticSpeed: .2
 //    });
 
-    $.scrollingParallax('/content/img/site-bg.jpg', {
-        staticSpeed: .2
-    });
+//    $.scrollingParallax('/content/img/site-bg.jpg', {
+//        staticSpeed: .2
+//    });
 
     $(".hideLink").click(function () {
         $(this).closest(".frame").animate({ height: 'toggle' }, function () {
