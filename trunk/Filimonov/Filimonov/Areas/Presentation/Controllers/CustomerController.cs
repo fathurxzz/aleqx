@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
-    public class ClientController : Controller
+    public class CustomerController : Controller
     {
         //
-        // GET: /Presentation/Client/
+        // GET: /Presentation/Customer/
 
         public ActionResult Index()
         {
@@ -17,15 +17,15 @@ namespace Filimonov.Areas.Presentation.Controllers
         }
 
         //
-        // GET: /Presentation/Client/Details/5
+        // GET: /Presentation/Customer/Details/5
 
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             return View();
         }
 
         //
-        // GET: /Presentation/Client/Create
+        // GET: /Presentation/Customer/Create
 
         public ActionResult Create()
         {
@@ -33,7 +33,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         } 
 
         //
-        // POST: /Presentation/Client/Create
+        // POST: /Presentation/Customer/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -51,7 +51,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         }
         
         //
-        // GET: /Presentation/Client/Edit/5
+        // GET: /Presentation/Customer/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -59,7 +59,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         }
 
         //
-        // POST: /Presentation/Client/Edit/5
+        // POST: /Presentation/Customer/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -77,7 +77,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         }
 
         //
-        // GET: /Presentation/Client/Delete/5
+        // GET: /Presentation/Customer/Delete/5
  
         public ActionResult Delete(int id)
         {
@@ -85,7 +85,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         }
 
         //
-        // POST: /Presentation/Client/Delete/5
+        // POST: /Presentation/Customer/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

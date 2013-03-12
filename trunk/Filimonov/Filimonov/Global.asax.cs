@@ -34,6 +34,12 @@ namespace Filimonov
             );
 
             routes.MapRoute(
+                "LogOff", // Route name
+                "logoff", // URL with parameters
+                new { controller = "Account", action = "LogOff", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Projects", // Route name
                 "projects", // URL with parameters
                 new { controller = "Home", action = "Projects", id = UrlParameter.Optional } // Parameter defaults

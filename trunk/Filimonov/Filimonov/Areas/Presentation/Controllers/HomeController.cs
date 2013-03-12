@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        //
-        // GET: /Presentation/Home/
 
         public ActionResult Index()
         {
+            ViewBag.IsHomePage = true;
             return View();
         }
 

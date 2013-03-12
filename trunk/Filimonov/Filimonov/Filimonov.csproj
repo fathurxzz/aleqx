@@ -89,7 +89,7 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Presentation\Controllers\CategoryController.cs" />
-    <Compile Include="Areas\Presentation\Controllers\ClientController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
     <Compile Include="Areas\Presentation\Controllers\LayoutController.cs" />
     <Compile Include="Areas\Presentation\Controllers\ProductController.cs" />
@@ -299,6 +299,8 @@
     <Content Include="Areas\Presentation\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\_LayoutsFilter.cshtml" />
     <Content Include="Areas\Presentation\Views\Shared\_PresentationMenu.cshtml" />
+    <Content Include="Areas\Presentation\Views\Client\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Customer\Index.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

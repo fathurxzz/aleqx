@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/12/2013 12:58:48
+-- Date Created: 03/12/2013 16:47:40
 -- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Library.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `fili`;
-CREATE DATABASE `fili`;
-USE `fili`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -22,7 +19,8 @@ USE `fili`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_LayoutProduct`;
 --    ALTER TABLE `ProductContainer` DROP CONSTRAINT `FK_ClientProductContainer`;
---    ALTER TABLE `Product` DROP CONSTRAINT `FK_ProductContainerProduct`;
+--    ALTER TABLE `ProductProductContainer` DROP CONSTRAINT `FK_ProductProductContainer_Product`;
+--    ALTER TABLE `ProductProductContainer` DROP CONSTRAINT `FK_ProductProductContainer_ProductContainer`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -33,6 +31,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `Client`;
     DROP TABLE IF EXISTS `ProductContainer`;
+    DROP TABLE IF EXISTS `ProductProductContainer`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -66,9 +65,9 @@ CREATE TABLE `Product` (
     `ProductContainerId` int  NOT NULL
 );
 
--- Creating table 'Client'
+-- Creating table 'Customer'
 
-CREATE TABLE `Client` (
+CREATE TABLE `Customer` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
     `Title` varchar( 200 )  NOT NULL
@@ -80,7 +79,8 @@ CREATE TABLE `ProductContainer` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `ClientId` int  NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL
+    `Title` varchar( 200 )  NOT NULL,
+    `CustomerId` int  NOT NULL
 );
 
 -- Creating table 'ProductProductContainer'
@@ -138,21 +138,6 @@ CREATE INDEX `IX_FK_LayoutProduct`
     ON `Product`
     (`LayoutId`);
 
--- Creating foreign key on `ClientId` in table 'ProductContainer'
-
-ALTER TABLE `ProductContainer`
-ADD CONSTRAINT `FK_ClientProductContainer`
-    FOREIGN KEY (`ClientId`)
-    REFERENCES `Client`
-        (`Id`)
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ClientProductContainer'
-
-CREATE INDEX `IX_FK_ClientProductContainer` 
-    ON `ProductContainer`
-    (`ClientId`);
-
 -- Creating foreign key on `Products_Id` in table 'ProductProductContainer'
 
 ALTER TABLE `ProductProductContainer`
@@ -176,6 +161,21 @@ ADD CONSTRAINT `FK_ProductProductContainer_ProductContainer`
 CREATE INDEX `IX_FK_ProductProductContainer_ProductContainer` 
     ON `ProductProductContainer`
     (`ProductContainers_Id`);
+
+-- Creating foreign key on `CustomerId` in table 'ProductContainer'
+
+ALTER TABLE `ProductContainer`
+ADD CONSTRAINT `FK_CustomerProductContainer`
+    FOREIGN KEY (`CustomerId`)
+    REFERENCES `Customer`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CustomerProductContainer'
+
+CREATE INDEX `IX_FK_CustomerProductContainer` 
+    ON `ProductContainer`
+    (`CustomerId`);
 
 -- --------------------------------------------------
 -- Script has ended

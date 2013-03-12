@@ -17,24 +17,30 @@ namespace Filimonov.Areas.Presentation
             context.MapRoute(
                 "Root",
                 "presentation",
-                new { controller = "Category", action = "Index" }
+                new { controller = "Home", action = "Index" }
             );
 
             context.MapRoute(
                 "Clients",
-                "presentation/clients",
-                new { controller = "Client", action = "Index"}
+                "presentation/customers",
+                new { controller = "Customer", action = "Index"}
+            );
+
+            context.MapRoute(
+                "Categories",
+                "presentation/categories",
+                new { controller = "Category", action = "Index" }
             );
 
             context.MapRoute(
                 "ClientDetails",
-                "presentation/client/{id}",
+                "presentation/clients/{id}",
                 new { controller = "Client", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "CategoryDetails",
-                "presentation/category/{id}",
+                "presentation/categories/{id}",
                 new { controller = "Category", action = "Details", id = UrlParameter.Optional }
             );
 
