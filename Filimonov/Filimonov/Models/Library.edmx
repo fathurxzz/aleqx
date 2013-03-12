@@ -9,7 +9,7 @@
     <EntitySet Name="Category" EntityType="Library.Store.Category" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Layout" EntityType="Library.Store.Layout" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Product" EntityType="Library.Store.Product" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Client" EntityType="Library.Store.Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customer" EntityType="Library.Store.Customer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductContainer" EntityType="Library.Store.ProductContainer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductContainer" EntityType="Library.Store.ProductProductContainer" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Library.Store.CategoryProduct">
@@ -20,10 +20,6 @@
       <End Role="Layout" EntitySet="Layout" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="ClientProductContainer" Association="Library.Store.ClientProductContainer">
-      <End Role="Client" EntitySet="Client" />
-      <End Role="ProductContainer" EntitySet="ProductContainer" />
-    </AssociationSet>
     <AssociationSet Name="FK_ProductProductContainer_Product" Association="Library.Store.FK_ProductProductContainer_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductProductContainer" EntitySet="ProductProductContainer" />
@@ -31,6 +27,10 @@
     <AssociationSet Name="FK_ProductProductContainer_ProductContainer" Association="Library.Store.FK_ProductProductContainer_ProductContainer">
       <End Role="ProductContainer" EntitySet="ProductContainer" />
       <End Role="ProductProductContainer" EntitySet="ProductProductContainer" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerProductContainer" Association="Library.Store.CustomerProductContainer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="ProductContainer" EntitySet="ProductContainer" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Category">
@@ -60,7 +60,7 @@
     <Property Name="LayoutId" Type="int" Nullable="false" />
     <Property Name="ProductContainerId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Client">
+  <EntityType Name="Customer">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -76,6 +76,7 @@
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductProductContainer">
     <Key>
@@ -109,15 +110,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ClientProductContainer">
-    <End Role="Client" Type="Library.Store.Client" Multiplicity="1" />
+  <Association Name="CustomerProductContainer">
+    <End Role="Customer" Type="Library.Store.Customer" Multiplicity="1" />
     <End Role="ProductContainer" Type="Library.Store.ProductContainer" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Client">
+      <Principal Role="Customer">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ProductContainer">
-        <PropertyRef Name="ClientId" />
+        <PropertyRef Name="CustomerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -161,14 +162,14 @@
             <End Role="Layout" EntitySet="Layout" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <EntitySet Name="Client" EntityType="Library.Client" />
+          <EntitySet Name="Customer" EntityType="Library.Customer" />
           <EntitySet Name="ProductContainer" EntityType="Library.ProductContainer" />
-          <AssociationSet Name="ClientProductContainer" Association="Library.ClientProductContainer">
-            <End Role="Client" EntitySet="Client" />
-            <End Role="ProductContainer" EntitySet="ProductContainer" />
-          </AssociationSet>
           <AssociationSet Name="ProductProductContainer" Association="Library.ProductProductContainer">
             <End Role="Product" EntitySet="Product" />
+            <End Role="ProductContainer" EntitySet="ProductContainer" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerProductContainer" Association="Library.CustomerProductContainer">
+            <End Role="Customer" EntitySet="Customer" />
             <End Role="ProductContainer" EntitySet="ProductContainer" />
           </AssociationSet>
         </EntityContainer>
@@ -228,41 +229,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Client">
+        <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
-          <NavigationProperty Name="ProductContainers" Relationship="Library.ClientProductContainer" FromRole="Client" ToRole="ProductContainer" />
+          <NavigationProperty Name="ProductContainers" Relationship="Library.CustomerProductContainer" FromRole="Customer" ToRole="ProductContainer" />
         </EntityType>
         <EntityType Name="ProductContainer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Client" Relationship="Library.ClientProductContainer" FromRole="ProductContainer" ToRole="Client" />
           <Property Type="Int32" Name="ClientId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="Products" Relationship="Library.ProductProductContainer" FromRole="ProductContainer" ToRole="Product" />
+          <NavigationProperty Name="Customer" Relationship="Library.CustomerProductContainer" FromRole="ProductContainer" ToRole="Customer" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
         </EntityType>
-        <Association Name="ClientProductContainer">
-          <End Type="Library.Client" Role="Client" Multiplicity="1" />
-          <End Type="Library.ProductContainer" Role="ProductContainer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Client">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductContainer">
-              <PropertyRef Name="ClientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ProductProductContainer">
           <End Type="Library.Product" Role="Product" Multiplicity="*" />
           <End Type="Library.ProductContainer" Role="ProductContainer" Multiplicity="*" />
+        </Association>
+        <Association Name="CustomerProductContainer">
+          <End Type="Library.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Library.ProductContainer" Role="ProductContainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductContainer">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -300,9 +302,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Client">
-      <EntityTypeMapping TypeName="IsTypeOf(Library.Client)">
-        <MappingFragment StoreEntitySet="Client">
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="IsTypeOf(Library.Customer)">
+        <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -316,6 +318,7 @@
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -358,15 +361,15 @@
           <ConnectorPoint PointX="2.625" PointY="2.5189925130208337" />
           <ConnectorPoint PointX="4" PointY="2.5189925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Library.Client" Width="1.5" PointX="6.5" PointY="5.125" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Library.Customer" Width="1.5" PointX="6.5" PointY="5.125" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="Library.ProductContainer" Width="1.5" PointX="4" PointY="5" Height="1.9802864583333335" />
-        <AssociationConnector Association="Library.ClientProductContainer">
-          <ConnectorPoint PointX="6.5" PointY="6.0189925130208337" />
-          <ConnectorPoint PointX="5.5" PointY="6.0189925130208337" />
-        </AssociationConnector>
         <AssociationConnector Association="Library.ProductProductContainer">
           <ConnectorPoint PointX="4.75" PointY="4.1821907552083326" />
           <ConnectorPoint PointX="4.75" PointY="5" />
+        </AssociationConnector>
+        <AssociationConnector Association="Library.CustomerProductContainer">
+          <ConnectorPoint PointX="6.5" PointY="6.0189925130208337" />
+          <ConnectorPoint PointX="5.5" PointY="6.0189925130208337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

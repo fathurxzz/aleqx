@@ -17,7 +17,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             using (var context = new LibraryContainer())
             {
                 var categories = context.Category.ToList();
-                ViewBag.IsHomePage = true;
+                
                 ViewBag.CurrentItem = "picture-lib";
                 return View(categories);
             }
@@ -36,8 +36,6 @@ namespace Filimonov.Areas.Presentation.Controllers
                 ViewBag.Layouts = layouts;
 
                 ViewBag.Layout = layout;
-
-                
 
                 var category = context.Category.Include("Products").First(c => c.Name == id);
 
@@ -74,7 +72,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             {
                 using (var context = new LibraryContainer())
                 {
-                    var category = new Category(){ImageSource = ""};
+                    var category = new Category{ImageSource = ""};
                     TryUpdateModel(category, new[] {"Name", "Title"});
 
                     context.AddToCategory(category);

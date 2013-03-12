@@ -20,8 +20,8 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("Library", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Library", "LayoutProduct", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Layout), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
-[assembly: EdmRelationshipAttribute("Library", "ClientProductContainer", "Client", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Client), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer), true)]
 [assembly: EdmRelationshipAttribute("Library", "ProductProductContainer", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer))]
+[assembly: EdmRelationshipAttribute("Library", "CustomerProductContainer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer), true)]
 
 #endregion
 
@@ -124,18 +124,18 @@ namespace Filimonov.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Client> Client
+        public ObjectSet<Customer> Customer
         {
             get
             {
-                if ((_Client == null))
+                if ((_Customer == null))
                 {
-                    _Client = base.CreateObjectSet<Client>("Client");
+                    _Customer = base.CreateObjectSet<Customer>("Customer");
                 }
-                return _Client;
+                return _Customer;
             }
         }
-        private ObjectSet<Client> _Client;
+        private ObjectSet<Customer> _Customer;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -181,11 +181,11 @@ namespace Filimonov.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Client EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Customer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToClient(Client client)
+        public void AddToCustomer(Customer customer)
         {
-            base.AddObject("Client", client);
+            base.AddObject("Customer", customer);
         }
     
         /// <summary>
@@ -365,26 +365,26 @@ namespace Filimonov.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Library", Name="Client")]
+    [EdmEntityTypeAttribute(NamespaceName="Library", Name="Customer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Client : EntityObject
+    public partial class Customer : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Client object.
+        /// Create a new Customer object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Client CreateClient(global::System.Int32 id, global::System.String name, global::System.String title)
+        public static Customer CreateCustomer(global::System.Int32 id, global::System.String name, global::System.String title)
         {
-            Client client = new Client();
-            client.Id = id;
-            client.Name = name;
-            client.Title = title;
-            return client;
+            Customer customer = new Customer();
+            customer.Id = id;
+            customer.Name = name;
+            customer.Title = title;
+            return customer;
         }
 
         #endregion
@@ -475,18 +475,18 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "ClientProductContainer", "ProductContainer")]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerProductContainer", "ProductContainer")]
         public EntityCollection<ProductContainer> ProductContainers
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductContainer>("Library.ClientProductContainer", "ProductContainer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductContainer>("Library.CustomerProductContainer", "ProductContainer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductContainer>("Library.ClientProductContainer", "ProductContainer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductContainer>("Library.CustomerProductContainer", "ProductContainer", value);
                 }
             }
         }
@@ -903,13 +903,15 @@ namespace Filimonov.Models
         /// <param name="clientId">Initial value of the ClientId property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static ProductContainer CreateProductContainer(global::System.Int32 id, global::System.Int32 clientId, global::System.String name, global::System.String title)
+        /// <param name="customerId">Initial value of the CustomerId property.</param>
+        public static ProductContainer CreateProductContainer(global::System.Int32 id, global::System.Int32 clientId, global::System.String name, global::System.String title, global::System.Int32 customerId)
         {
             ProductContainer productContainer = new ProductContainer();
             productContainer.Id = id;
             productContainer.ClientId = clientId;
             productContainer.Name = name;
             productContainer.Title = title;
+            productContainer.CustomerId = customerId;
             return productContainer;
         }
 
@@ -1014,48 +1016,34 @@ namespace Filimonov.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerId
+        {
+            get
+            {
+                return _CustomerId;
+            }
+            set
+            {
+                OnCustomerIdChanging(value);
+                ReportPropertyChanging("CustomerId");
+                _CustomerId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CustomerId");
+                OnCustomerIdChanged();
+            }
+        }
+        private global::System.Int32 _CustomerId;
+        partial void OnCustomerIdChanging(global::System.Int32 value);
+        partial void OnCustomerIdChanged();
 
         #endregion
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "ClientProductContainer", "Client")]
-        public Client Client
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Client>("Library.ClientProductContainer", "Client").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Client>("Library.ClientProductContainer", "Client").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Client> ClientReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Client>("Library.ClientProductContainer", "Client");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Client>("Library.ClientProductContainer", "Client", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1075,6 +1063,44 @@ namespace Filimonov.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Library.ProductProductContainer", "Product", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerProductContainer", "Customer")]
+        public Customer Customer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductContainer", "Customer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductContainer", "Customer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Customer> CustomerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductContainer", "Customer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("Library.CustomerProductContainer", "Customer", value);
                 }
             }
         }

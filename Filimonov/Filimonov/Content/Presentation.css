@@ -7,6 +7,10 @@
     margin-top: 30px;
 }
 
+.homePageContainer {
+    padding: 130px 0;
+}
+
 .presentation-page {
     width: 1155px;
     position: relative;
