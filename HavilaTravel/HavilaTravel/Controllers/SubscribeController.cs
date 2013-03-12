@@ -30,8 +30,11 @@ namespace HavilaTravel.Controllers
         [HttpPost]
         public ActionResult Subscribe(FormCollection form)
         {
+
+            var alreadySubscribed = false;
             using (var context = new ContentStorage())
             {
+
                 var subscriber = new Customers {Guid = Guid.NewGuid().ToString()};
                 TryUpdateModel(subscriber, new[] { "Name", "Email", "SubscribeType" });
 
@@ -44,12 +47,16 @@ namespace HavilaTravel.Controllers
                     context.AddToCustomers(subscriber);
                     context.SaveChanges();
                 }
+                else
+                {
+                    alreadySubscribed = true;
+                }
             }
 
             if (!string.IsNullOrEmpty(form["redirectUrl"]) && form["redirectUrl"] == "sbscrList")
                 return RedirectToAction("Subscribers", "Subscribe");
 
-            return RedirectToAction("ThankYou");
+            return RedirectToAction(alreadySubscribed ? "AlreadySubscribed" : "ThankYou");
         }
 
         public ActionResult Unsubscribe(string id)
@@ -76,6 +83,15 @@ namespace HavilaTravel.Controllers
         }
 
         public ActionResult ThankYou()
+        {
+            using (var context = new ContentStorage())
+            {
+                var model = new SiteViewModel(null, context, false);
+                return View(model);
+            }
+        }
+
+        public ActionResult AlreadySubscribed()
         {
             using (var context = new ContentStorage())
             {
