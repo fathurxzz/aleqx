@@ -17,6 +17,8 @@ namespace Filimonov.Areas.Presentation.Controllers
             using (var context = new LibraryContainer())
             {
                 var categories = context.Category.ToList();
+                ViewBag.IsHomePage = true;
+                ViewBag.CurrentItem = "picture-lib";
                 return View(categories);
             }
         }
@@ -24,12 +26,33 @@ namespace Filimonov.Areas.Presentation.Controllers
         //
         // GET: /Presentation/Category/Details/5
 
-        public ActionResult Details(string id)
+        public ActionResult Details(string id, string layout)
         {
             using (var context = new LibraryContainer())
             {
+                
+                var layouts = context.Layout.ToList();
+                layouts.Insert(0,new Layout{Name = "",Title = "Все"});
+                ViewBag.Layouts = layouts;
 
-                return View();
+                ViewBag.Layout = layout;
+
+                
+
+                var category = context.Category.Include("Products").First(c => c.Name == id);
+
+                //category.Products.Load();
+
+                //IEnumerable<Product> products = category.Products.Where(p => p.Layout.Name == layout);
+
+                //category.Products.Clear();
+
+                //foreach (var product in products)
+                //{
+                //    category.Products.Add(product);
+                //}
+                
+                return View(category);
             }
         }
 
@@ -39,7 +62,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Presentation/Category/Create
@@ -71,7 +94,11 @@ namespace Filimonov.Areas.Presentation.Controllers
  
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new LibraryContainer())
+            {
+                var category = context.Category.First(c => c.Id == id);
+                return View(category);
+            }
         }
 
         //
@@ -82,9 +109,14 @@ namespace Filimonov.Areas.Presentation.Controllers
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                using (var context = new LibraryContainer())
+                {
+                    var category = context.Category.First(c => c.Id == id);
+                    TryUpdateModel(category, new[] {"Name", "Title"});
+                    context.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -92,30 +124,12 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
-        //
-        // GET: /Presentation/Category/Delete/5
- 
+       
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        //
-        // POST: /Presentation/Category/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }

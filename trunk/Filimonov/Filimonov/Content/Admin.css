@@ -76,3 +76,7 @@ a.adminLink
 .photoFileInput {
      width: 500px !important; 
 }
+
+.abs {
+    position: absolute;
+}
