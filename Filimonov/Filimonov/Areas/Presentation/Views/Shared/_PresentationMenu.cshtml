@@ -1,0 +1,24 @@
+﻿<div class="presentationMenu">
+    <div class="menuItem pictures-lib">
+        <div class="title">
+            @if (ViewBag.CurrentItem == "picture-lib")
+            {
+                @Html.Raw("Библиотека изображений")
+            }
+            else
+            {
+                @Html.ActionLink("Библиотека изображений", "Index", "Category", new {area = "Presentation"}, null)
+            }
+        </div>
+    </div>
+    <div class="menuItem survey-lib">
+        <div class="title inactive">Библиотека опросников</div>
+    </div>
+    <div class="menuItem customer-area">
+        <div class="title inactive">Раздел заказчика</div>
+    </div>
+    <div class="menuItem notes">
+        <div class="title inactive">Мои статьи и записи</div>
+    </div>
+    <div class="clear"></div>
+</div>

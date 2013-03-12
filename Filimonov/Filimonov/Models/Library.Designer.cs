@@ -21,7 +21,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Library", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Library", "LayoutProduct", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Layout), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Library", "ClientProductContainer", "Client", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Client), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer), true)]
-[assembly: EdmRelationshipAttribute("Library", "ProductContainerProduct", "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.ProductContainer), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
+[assembly: EdmRelationshipAttribute("Library", "ProductProductContainer", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer))]
 
 #endregion
 
@@ -867,34 +867,18 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductContainerProduct", "ProductContainer")]
-        public ProductContainer ProductContainer
+        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductProductContainer", "ProductContainer")]
+        public EntityCollection<ProductContainer> ProductContainers
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductContainer>("Library.ProductContainerProduct", "ProductContainer").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductContainer>("Library.ProductContainerProduct", "ProductContainer").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<ProductContainer> ProductContainerReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductContainer>("Library.ProductContainerProduct", "ProductContainer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductContainer>("Library.ProductProductContainer", "ProductContainer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductContainer>("Library.ProductContainerProduct", "ProductContainer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductContainer>("Library.ProductProductContainer", "ProductContainer", value);
                 }
             }
         }
@@ -1079,18 +1063,18 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductContainerProduct", "Product")]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductProductContainer", "Product")]
         public EntityCollection<Product> Products
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Library.ProductContainerProduct", "Product");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Library.ProductProductContainer", "Product");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Library.ProductContainerProduct", "Product", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Library.ProductProductContainer", "Product", value);
                 }
             }
         }

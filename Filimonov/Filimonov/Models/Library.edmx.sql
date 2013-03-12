@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/11/2013 16:17:40
+-- Date Created: 03/12/2013 12:58:48
 -- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Library.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `fili`;
+CREATE DATABASE `fili`;
+USE `fili`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -80,11 +83,24 @@ CREATE TABLE `ProductContainer` (
     `Title` varchar( 200 )  NOT NULL
 );
 
+-- Creating table 'ProductProductContainer'
+
+CREATE TABLE `ProductProductContainer` (
+    `Products_Id` int  NOT NULL,
+    `ProductContainers_Id` int  NOT NULL
+);
+
 
 
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
+
+-- Creating primary key on `Products_Id`, `ProductContainers_Id` in table 'ProductProductContainer'
+
+ALTER TABLE `ProductProductContainer`
+ADD CONSTRAINT `PK_ProductProductContainer`
+    PRIMARY KEY (`Products_Id`, `ProductContainers_Id` );
 
 
 
@@ -137,20 +153,29 @@ CREATE INDEX `IX_FK_ClientProductContainer`
     ON `ProductContainer`
     (`ClientId`);
 
--- Creating foreign key on `ProductContainerId` in table 'Product'
+-- Creating foreign key on `Products_Id` in table 'ProductProductContainer'
 
-ALTER TABLE `Product`
-ADD CONSTRAINT `FK_ProductContainerProduct`
-    FOREIGN KEY (`ProductContainerId`)
+ALTER TABLE `ProductProductContainer`
+ADD CONSTRAINT `FK_ProductProductContainer_Product`
+    FOREIGN KEY (`Products_Id`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating foreign key on `ProductContainers_Id` in table 'ProductProductContainer'
+
+ALTER TABLE `ProductProductContainer`
+ADD CONSTRAINT `FK_ProductProductContainer_ProductContainer`
+    FOREIGN KEY (`ProductContainers_Id`)
     REFERENCES `ProductContainer`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_ProductContainerProduct'
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductProductContainer_ProductContainer'
 
-CREATE INDEX `IX_FK_ProductContainerProduct` 
-    ON `Product`
-    (`ProductContainerId`);
+CREATE INDEX `IX_FK_ProductProductContainer_ProductContainer` 
+    ON `ProductProductContainer`
+    (`ProductContainers_Id`);
 
 -- --------------------------------------------------
 -- Script has ended

@@ -1,0 +1,64 @@
+﻿@using Filimonov
+@using Filimonov.Models
+@using SiteExtensions.Graphics
+@model Filimonov.Models.Category
+@{
+    ViewBag.Title = "Библиотека изображений - " + Model.Title;
+    Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
+}
+@if (Request.IsAuthenticated)
+{
+    <div>
+        @Html.ActionLink("Добавить изображения", "Create", "Product", new { area = "Presentation", id = Model.Id }, new { @class = "adminLink" })
+    </div>
+}
+
+@Html.Partial("_PresentationMenu")
+
+<div class="category-title">
+    <h1>@Model.Title</h1>
+</div>
+<div class="layouts-filter">
+    @{
+        var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
+    }
+
+    <ul>
+        @foreach (var item in layouts)
+        {
+
+            if (ViewBag.Layout == item.Name || (string.IsNullOrEmpty(item.Name) && string.IsNullOrEmpty(ViewBag.Layout)))
+            {
+
+            <li>@item.Title</li>
+            }
+            else
+            {
+            <li>@Html.ActionLink(item.Title, "Details", "Category", new { id = Model.Name, layout = item.Name }, null)
+            </li>
+            }
+
+        }
+    </ul>
+</div>
+<div class="category-details">
+    @foreach (var item in Model.Products)
+    {
+        if (item.Layout.Name == ViewBag.Layout || string.IsNullOrEmpty(ViewBag.Layout))
+        {
+
+        <div class="product">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="abs">
+                    @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой?')" })
+                    @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                </div>
+            }
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
+        </div>
+        }
+    }
+    <div class="clear">
+    </div>
+</div>

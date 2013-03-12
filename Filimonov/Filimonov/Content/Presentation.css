@@ -1,4 +1,13 @@
-﻿.presentation-page {
+﻿#logo {
+    
+    width: 150px;
+    height: 90px;
+    position: absolute;
+    margin-left: 503px;
+    margin-top: 30px;
+}
+
+.presentation-page {
     width: 1155px;
     position: relative;
     margin: 0 auto;
@@ -25,13 +34,69 @@
 
 
 .categories {
-    padding: 0 90px;
+    padding: 0 112px;
+    padding-top: 20px;
 }
 
 .categories .category {
     float: left;
     width: 300px;
     height: 225px;
-    margin: 10px;
-    border: 1px solid red;
+    margin: 5px;
+    
 }
+
+.category-details {
+    padding: 0 112px;
+}
+
+.category-details .product {
+    float: left;
+    width: 300px;
+    height: 225px;
+    margin: 5px;
+    
+}
+
+.category-title {
+    text-align: center;
+    padding: 20px;
+}
+
+.category-title h1 {
+    font-size: 25px;
+}
+
+
+.layouts-filter {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.layouts-filter ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 13px;
+    color: #a4a4a4;
+}
+
+.layouts-filter a {
+    color: #0072bc;
+}
+
+
+.category-preview-title {
+    position: absolute;
+    background-color: #000;
+    text-transform: uppercase;
+    margin-top: 207px;
+    height: 18px;
+}
+
+.category-preview-title a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+

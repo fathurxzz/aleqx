@@ -15,20 +15,32 @@ namespace Filimonov.Areas.Presentation
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
+                "Root",
+                "presentation",
+                new { controller = "Category", action = "Index" }
+            );
+
+            context.MapRoute(
                 "Clients",
-                "Presentation/clients",
+                "presentation/clients",
                 new { controller = "Client", action = "Index"}
             );
 
             context.MapRoute(
                 "ClientDetails",
-                "Presentation/client/{id}",
+                "presentation/client/{id}",
                 new { controller = "Client", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
+                "CategoryDetails",
+                "presentation/category/{id}",
+                new { controller = "Category", action = "Details", id = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
                 "Presentation_default",
-                "Presentation/{controller}/{action}/{id}",
+                "presentation/{controller}/{action}/{id}",
                 new { controller="Home", action = "Index", id = UrlParameter.Optional }
             );
 

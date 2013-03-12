@@ -91,6 +91,8 @@
     <Compile Include="Areas\Presentation\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Presentation\Controllers\ClientController.cs" />
     <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\LayoutController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\ProductController.cs" />
     <Compile Include="Areas\Presentation\PresentationAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentItem.cs" />
     <Compile Include="Models\ContentItemProjects.cs" />
@@ -109,6 +112,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Library.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PresentationMenu.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\ProjectValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
@@ -156,6 +160,7 @@
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Content\img\carusel-preview-frame.gif" />
     <Content Include="Content\img\circle.gif" />
+    <Content Include="Content\img\customer-area.gif" />
     <Content Include="Content\img\descr-title-line.gif" />
     <Content Include="Content\img\footer.png" />
     <Content Include="Content\img\header-bg.png" />
@@ -164,14 +169,18 @@
     <Content Include="Content\img\main-frame-bottom.png" />
     <Content Include="Content\img\main-frame-middle.png" />
     <Content Include="Content\img\main-frame-top.png" />
+    <Content Include="Content\img\notes.gif" />
+    <Content Include="Content\img\pictures-lib.gif" />
     <Content Include="Content\img\presentation-footer.gif" />
     <Content Include="Content\img\presentation-header.gif" />
     <Content Include="Content\img\project-frame.gif" />
     <Content Include="Content\img\project-main-view-bg.gif" />
     <Content Include="Content\img\site-bg.jpg" />
+    <Content Include="Content\img\survey-lib.gif" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-side-bg.gif" />
     <Content Include="Content\Presentation.css" />
+    <Content Include="Content\PresentationMenu.css" />
     <Content Include="Content\Project.css" />
     <Content Include="Content\ProjectPage.css" />
     <Content Include="Content\Site-mobile.css" />
@@ -193,6 +202,7 @@
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\PageScripts.js" />
+    <Content Include="Scripts\Presentation.js" />
     <Content Include="setcookie.aspx" />
     <Content Include="soon.gif" />
     <Content Include="soon.htm" />
@@ -281,6 +291,14 @@
     <Content Include="Areas\Presentation\Views\Client\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Presentation\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Presentation\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Layout\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Layout\Edit.cshtml" />
+    <Content Include="Areas\Presentation\Views\Layout\Index.cshtml" />
+    <Content Include="Areas\Presentation\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Presentation\Views\Category\_LayoutsFilter.cshtml" />
+    <Content Include="Areas\Presentation\Views\Shared\_PresentationMenu.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

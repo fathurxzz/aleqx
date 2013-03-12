@@ -1,0 +1,47 @@
+﻿.presentationMenu {
+    text-align: center;
+    width: 630px;
+    /*border: 1px solid #c4c4c4;*/
+    position: relative;
+    margin: 0 auto;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+
+.presentationMenu .menuItem {
+    float: left;
+    margin: 0 37px;
+    width: 80px;
+    height: 120px;
+    
+}
+
+.presentationMenu .pictures-lib {
+    background: url('img/pictures-lib.gif') no-repeat top center;
+}
+
+.presentationMenu .survey-lib {
+    background: url('img/survey-lib.gif') no-repeat top center;
+}
+.presentationMenu .customer-area {
+    background: url('img/customer-area.gif') no-repeat top center;
+}
+.presentationMenu .notes {
+    background: url('img/notes.gif') no-repeat top center;
+}
+
+.presentationMenu .title {
+    color: #000;
+    font-family: FreeSetCBold;
+    margin-top: 80px;
+}
+
+/*.presentationMenu .title, */
+.presentationMenu .title a {
+    color: #0072bc;
+}
+
+.presentationMenu .menuItem .inactive {
+    color: #c4c4c4;
+}
