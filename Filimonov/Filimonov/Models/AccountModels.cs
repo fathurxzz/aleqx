@@ -65,4 +65,15 @@ namespace Filimonov.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class RegisterNewCustomerModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "User title")]
+        public string UserTitle { get; set; }
+    }
 }

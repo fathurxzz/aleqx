@@ -5,18 +5,16 @@
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Создать пользователя", "Create",null,new {@class="adminLink"})
 </p>
-<table>
+<table class="adminTable">
     <tr>
         <th>
-            Name
+            Логин
         </th>
         <th>
-            Title
+            Имя
         </th>
         <th></th>
     </tr>
@@ -30,9 +28,13 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) 
+            
+            @if (item.Name != "admin")
+            {
+                <text> | </text>
+                @Html.ActionLink("Удалить", "Delete", new {id = item.Id})
+            }
         </td>
     </tr>
 }
