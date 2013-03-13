@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Filimonov.Helpers
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -21,6 +22,10 @@
         <div class="presentation-page">
             <div class="header">
                 <div id="logo"></div>
+                <div class="user-info">
+                    Вы вошли как<br/>
+                    <span>@WebSession.GetUserName(User.Identity.Name)</span>
+                </div>
             </div>
             
             @RenderBody()

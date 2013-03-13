@@ -101,6 +101,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\SiteHelper.cs" />
+    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ContentItem.cs" />
     <Compile Include="Models\ContentItemProjects.cs" />
@@ -301,6 +303,7 @@
     <Content Include="Areas\Presentation\Views\Shared\_PresentationMenu.cshtml" />
     <Content Include="Areas\Presentation\Views\Client\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Presentation\Views\Customer\Create.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

@@ -32,6 +32,16 @@ a.adminLink
     margin: 0 auto;
 }
 
+.adminTable {
+    border-collapse: collapse;
+}
+
+.adminTable td {
+    padding: 5px;
+    border: 1px dashed #c4c4c4;
+    
+}
+
 .adminEditContentTable
 {
     /*width: 700px;*/
