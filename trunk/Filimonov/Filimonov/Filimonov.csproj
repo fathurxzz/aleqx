@@ -93,6 +93,7 @@
     <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
     <Compile Include="Areas\Presentation\Controllers\LayoutController.cs" />
     <Compile Include="Areas\Presentation\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\UserCabinetController.cs" />
     <Compile Include="Areas\Presentation\PresentationAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CatalogueController.cs" />
@@ -303,6 +304,7 @@
     <Content Include="Areas\Presentation\Views\Customer\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Edit.cshtml" />
+    <Content Include="Areas\Presentation\Views\UserCabinet\Details.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

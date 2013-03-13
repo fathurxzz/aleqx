@@ -6,7 +6,7 @@
     ViewBag.Title = "Библиотека изображений - " + Model.Title;
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
-@if (Request.IsAuthenticated)
+@if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div>
         @Html.ActionLink("Добавить изображения", "Create", "Product", new { area = "Presentation", id = Model.Id }, new { @class = "adminLink" })
@@ -42,7 +42,7 @@
         {
 
         <div class="product">
-            @if (Request.IsAuthenticated)
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div class="abs">
                     @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой?')" })

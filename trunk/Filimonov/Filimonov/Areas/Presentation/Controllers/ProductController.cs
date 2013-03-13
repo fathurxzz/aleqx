@@ -10,6 +10,7 @@ using SiteExtensions;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class ProductController : Controller
     {
 
