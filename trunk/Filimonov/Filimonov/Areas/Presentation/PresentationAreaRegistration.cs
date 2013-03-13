@@ -20,11 +20,15 @@ namespace Filimonov.Areas.Presentation
                 new { controller = "Home", action = "Index" }
             );
 
+
+
             context.MapRoute(
-                "Clients",
+                "Customers",
                 "presentation/customers",
                 new { controller = "Customer", action = "Index"}
             );
+
+
 
             context.MapRoute(
                 "Categories",
@@ -33,9 +37,15 @@ namespace Filimonov.Areas.Presentation
             );
 
             context.MapRoute(
+                "ClientAuthentication",
+                "presentation/customerlogon/{id}",
+                new { controller = "Customer", action = "LogOn", id = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
                 "ClientDetails",
                 "presentation/clients/{id}",
-                new { controller = "Client", action = "Details", id = UrlParameter.Optional }
+                new { controller = "Customer", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(

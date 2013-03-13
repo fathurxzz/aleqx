@@ -289,8 +289,6 @@
     <Content Include="Areas\Presentation\Views\Web.config" />
     <Content Include="Areas\Presentation\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Presentation\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Presentation\Views\Client\Index.cshtml" />
-    <Content Include="Areas\Presentation\Views\Client\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\Details.cshtml" />
@@ -301,9 +299,10 @@
     <Content Include="Areas\Presentation\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\Category\_LayoutsFilter.cshtml" />
     <Content Include="Areas\Presentation\Views\Shared\_PresentationMenu.cshtml" />
-    <Content Include="Areas\Presentation\Views\Client\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Customer\Details.cshtml" />
+    <Content Include="Areas\Presentation\Views\Customer\Edit.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
