@@ -7,6 +7,7 @@ using Filimonov.Models;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class LayoutController : Controller
     {
         //

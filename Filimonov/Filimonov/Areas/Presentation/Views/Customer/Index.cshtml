@@ -28,21 +28,28 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @if (item.Name == "admin")
+            {
+                @Html.DisplayFor(modelItem=>item.Title)
+            }
+            else
+            {
+                @Html.ActionLink(item.Title, "Details", "UserCabinet", new { id = item.Name }, null)
+            }
         </td>
         <td>
             @if (item.Name != "admin")
             {
-                @Html.TextBox("link", "http://fil-interiors.com/presentation/customerlogon/" + item.Name, new {@class = "customerlogonlink"})
+                @Html.TextBox("link", "http://fil-interiors.com/presentation/customerlogon/" + item.Name, new { @class = "customerlogonlink" })
             }
         </td>
         <td>
-            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) 
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) 
             
             @if (item.Name != "admin")
             {
                 <text> | </text>
-                @Html.ActionLink("Удалить", "Delete", new {id = item.Id},new{onclick="return confirm('Удалить пользователя?')"})
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить пользователя?')" })
             }
         </td>
     </tr>

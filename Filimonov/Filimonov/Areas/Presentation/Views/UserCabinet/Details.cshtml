@@ -1,0 +1,32 @@
+﻿@using Filimonov.Models
+@model Filimonov.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_PresentationMenu")
+
+<div class="category-title">
+    <h1>@Model.Title</h1>
+</div>
+<div class="layouts-filter">
+    @{
+        var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
+    }
+    <ul>
+        @foreach (var item in layouts)
+        {
+            if (ViewBag.Layout == item.Name || (string.IsNullOrEmpty(item.Name) && string.IsNullOrEmpty(ViewBag.Layout)))
+            {
+            <li>@item.Title</li>
+            }
+            else
+            {
+            <li>@Html.ActionLink(item.Title, "Details", "Category", new { id = Model.Name, layout = item.Name }, null)</li>
+            }
+
+        }
+    </ul>
+</div>

@@ -28,8 +28,6 @@ namespace Filimonov.Areas.Presentation
                 new { controller = "Customer", action = "Index"}
             );
 
-
-
             context.MapRoute(
                 "Categories",
                 "presentation/categories",
@@ -44,8 +42,8 @@ namespace Filimonov.Areas.Presentation
 
             context.MapRoute(
                 "ClientDetails",
-                "presentation/clients/{id}",
-                new { controller = "Customer", action = "Details", id = UrlParameter.Optional }
+                "presentation/usercabinet/{id}",
+                new { controller = "UserCabinet", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(

@@ -7,6 +7,7 @@ using Filimonov.Models;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         //

@@ -19,8 +19,16 @@
         </div>
     }
     <div class="menuItem customer-area">
-        <div class="title inactive">
-            Раздел заказчика</div>
+        <div class="title">
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+            {
+                @Html.ActionLink("Раздел заказчика", "Index", "Customer")
+            }
+            else
+            {
+                @Html.ActionLink("Раздел заказчика", "Details", "UserCabinet", new { id = User.Identity.Name }, null)
+            }
+        </div>
     </div>
     @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
