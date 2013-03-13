@@ -5,7 +5,7 @@
     <div class="page">
         <div class="menu menuItem projectMenuItem">
             <a href="#" class="showLink">@Model.Title</a>
-            @if (Request.IsAuthenticated)
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div>
                     @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
@@ -44,7 +44,7 @@
             }
             <div class="clear">
             </div>
-            @if (Request.IsAuthenticated)
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div class="adminLinkContainer">
                     @Html.ActionLink("Добавить проект", "Create", "Project", new { Area = "Admin" }, new { @class = "adminLink" })

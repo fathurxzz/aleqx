@@ -8,12 +8,13 @@ using Filimonov.Models;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
-    [Authorize(Roles = "Administrators")]
+
     public class CustomerController : Controller
     {
         //
         // GET: /Presentation/Customer/
 
+        [Authorize(Roles = "Administrators")]
         public ActionResult Index()
         {
             using (var context = new LibraryContainer())
@@ -21,7 +22,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
                 var customers = context.Customer.ToList();
 
-                string[] users = Roles.GetUsersInRole("Customers");
+                //string[] users = Roles.GetUsersInRole("Customers");
 
 
                 return View(customers);
@@ -31,7 +32,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         //
         // GET: /Presentation/Customer/Details/5
-
+        [Authorize(Roles = "Administrators")]
         public ActionResult Details(int id)
         {
             return View();
@@ -39,7 +40,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         //
         // GET: /Presentation/Customer/Create
-
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create()
         {
             return View();
@@ -48,6 +49,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         //
         // POST: /Presentation/Customer/Create
 
+        [Authorize(Roles = "Administrators")]
         [HttpPost]
         public ActionResult Create(RegisterNewCustomerModel model)
         {
@@ -62,7 +64,8 @@ namespace Filimonov.Areas.Presentation.Controllers
                     {
                         if (!Roles.RoleExists("Customers"))
                             Roles.CreateRole("Customers");
-                        Roles.AddUserToRole(model.UserName, "Customers");
+                        if (!Roles.IsUserInRole(model.UserName, "Customers"))
+                            Roles.AddUserToRole(model.UserName, "Customers");
 
                         using (var context = new LibraryContainer())
                         {
@@ -128,20 +131,31 @@ namespace Filimonov.Areas.Presentation.Controllers
         //
         // GET: /Presentation/Customer/Edit/5
 
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new LibraryContainer())
+            {
+                var customer = context.Customer.First(c => c.Id == id);
+                return View(customer);
+            }
         }
 
         //
         // POST: /Presentation/Customer/Edit/5
 
+        [Authorize(Roles = "Administrators")]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                using (var context = new LibraryContainer())
+                {
+                    var customer = context.Customer.First(c => c.Id == id);
+                    TryUpdateModel(customer, new[] { "Title" });
+                    context.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -153,11 +167,39 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         //
         // GET: /Presentation/Customer/Delete/5
-
+        [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new LibraryContainer())
+            {
+                var customer = context.Customer.Include("ProductContainers").First(c => c.Id == id);
+                string userName = customer.Name;
+
+                while (customer.ProductContainers.Any())
+                {
+                    var productContainer = customer.ProductContainers.First();
+                    context.DeleteObject(productContainer);
+                    context.SaveChanges();
+                }
+
+                context.DeleteObject(customer);
+
+                Membership.DeleteUser(userName);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
         }
 
+        public ActionResult LogOn(string id)
+        {
+            if (Membership.ValidateUser(id, "cde32wsx") && id != "admin")
+            {
+                FormsAuthentication.SetAuthCookie(id, true);
+            }
+            return RedirectToAction("Index", "Home", new { area = "Presentation" });
+        }
     }
 }

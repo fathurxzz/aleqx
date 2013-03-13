@@ -16,6 +16,9 @@
         <th>
             Имя
         </th>
+        <th>
+            Ссылка для авторизации
+        </th>
         <th></th>
     </tr>
 
@@ -28,12 +31,18 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
+            @if (item.Name != "admin")
+            {
+                @Html.TextBox("link", "http://fil-interiors.com/presentation/customerlogon/" + item.Name, new {@class = "customerlogonlink"})
+            }
+        </td>
+        <td>
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) 
             
             @if (item.Name != "admin")
             {
                 <text> | </text>
-                @Html.ActionLink("Удалить", "Delete", new {id = item.Id})
+                @Html.ActionLink("Удалить", "Delete", new {id = item.Id},new{onclick="return confirm('Удалить пользователя?')"})
             }
         </td>
     </tr>
