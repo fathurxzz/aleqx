@@ -10,11 +10,17 @@
 
         if (item.Selected||item.IsParent)
         {
+            var cnt = 0;
             foreach (var child in item.Children.OrderBy(c => c.Title))
             {
-                className = child.Selected ? "selected" : "";
+                cnt++;
+                className = child.Selected || item.Selected ? "selected" : "";
+                if (cnt == item.Children.Count)
+                {
+                    className += " last";
+                }
                 <li class="child @className">
-                    @Html.ActionLink(child.Title, "Categories", "Shop", new {id = child.Name}, new {@class = className})
+                    @Html.ActionLink(child.Title, "Categories", "Shop", new {id = child.Name}, null)
                 </li>
             }
         }
