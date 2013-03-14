@@ -17,23 +17,25 @@
         if (item.Selected||item.IsParent)
         {
             var cnt = 0;
+            
             foreach (var child in item.Children.OrderBy(c => c.Title))
             {
                 cnt++;
                 className = (child.Selected || item.Selected) ? "selected" : "";
+
                 if (cnt == 1)
                 {
                     className += " first";
                 }
-                if (cnt > 1 && cnt < item.Children.Count)
-                {
-                    className += " middle";
-                }
-
-                if (cnt == item.Children.Count)
+                else if (cnt == item.Children.Count)
                 {
                     className += " last";
                 }
+                else 
+                {
+                    className += " middle";
+                }
+                
                 <li class="child @className">
                     @Html.ActionLink(child.Title, "Categories", "Shop", new {id = child.Name}, null)
                 </li>
