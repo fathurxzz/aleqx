@@ -3,9 +3,15 @@
     @foreach (var item in Model.OrderBy(c=>c.Title))
     {
         string className = item.Selected?"selected":"";
+
         
+        if (item.Selected && item.Children.Any())
+        {
+            className += " parent";
+        }
+
         <li class="@className">
-            @Html.ActionLink(item.Title, "Categories", "Shop", new { id = item.Name }, new { @class = className })
+            @Html.ActionLink(item.Title, "Categories", "Shop", new { id = item.Name }, null)
         </li>
 
         if (item.Selected||item.IsParent)
@@ -14,7 +20,16 @@
             foreach (var child in item.Children.OrderBy(c => c.Title))
             {
                 cnt++;
-                className = child.Selected || item.Selected ? "selected" : "";
+                className = (child.Selected || item.Selected) ? "selected" : "";
+                if (cnt == 1)
+                {
+                    className += " first";
+                }
+                if (cnt > 1 && cnt < item.Children.Count)
+                {
+                    className += " middle";
+                }
+
                 if (cnt == item.Children.Count)
                 {
                     className += " last";
