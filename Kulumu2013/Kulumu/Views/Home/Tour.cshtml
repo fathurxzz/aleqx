@@ -1,0 +1,86 @@
+﻿@using Kulumu.Models
+@model SiteModel 
+@section Add
+{
+    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle, DiscountProduct = Model.SingleDiscountProduct })
+}
+@section About
+{
+    @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+}
+<div class="mainFrame">
+    <div class="top">
+        @Html.Partial("Title", Model.Content.Title)
+    </div>
+    <div class="middle">
+        <div class="content">
+            <div class="text">
+                <div class="categories">
+                    <div class="containerLeft">
+                        <div class="containerRight">
+                            <div class="containerCenter">
+                                <ul>
+                                    @if (ViewBag.FlashId == "1")
+                                    {
+                                        @Html.Raw("Зал 1")
+                                        
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Зал 1", "Tour", "Home", new { id = 1 }, null)</li>
+                                    }
+                                    @if (ViewBag.FlashId == "2")
+                                    {
+                                        @Html.Raw("Зал 2")
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Зал 2", "Tour", "Home", new {id = 2}, null)</li>
+                                    }
+                                    @if (ViewBag.FlashId == "3")
+                                    {
+                                        @Html.Raw("Зал 3")
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Зал 3", "Tour", "Home", new {id = 3}, null)</li>
+                                    }
+                                    @if (ViewBag.FlashId == "4")
+                                    {
+                                        @Html.Raw("Вид на фасад магазина")
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Вид на фасад магазина", "Tour", "Home", new {id = 4}, null)</li>
+                                    }
+                                    @if (ViewBag.FlashId == "5")
+                                    {
+                                        @Html.Raw("Вид с угла здания")
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Вид с угла здания", "Tour", "Home", new {id = 5}, null)</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<ul class="flash-menu">
+                    <li>@Html.ActionLink("Зал 1", "Tour", "Home", new { id = 1 }, null)</li>
+                    <li>@Html.ActionLink("Зал 2", "Tour", "Home", new { id = 2 }, null)</li>
+                    <li>@Html.ActionLink("Зал 3", "Tour", "Home", new { id = 3 }, null)</li>
+                    <li>@Html.ActionLink("Вид на фасад магазина", "Tour", "Home", new { id = 4 }, null)</li>
+                    <li>@Html.ActionLink("Вид с угла здания", "Tour", "Home", new { id = 5 }, null)</li>
+                </ul>*@
+                <div style="padding-top: 30px;">
+                    
+                </div>
+                <iframe scrolling="no" src="../../flash/@ViewBag.FlashName" width="863" height="610">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+    </div>
+</div>

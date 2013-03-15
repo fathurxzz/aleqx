@@ -1,0 +1,30 @@
+﻿@using Kulumu
+@using Kulumu.Helpers
+@using SiteExtensions.Graphics
+@model Kulumu.Models.CaruselFrame
+<div class="frameContainer">
+    <div class="image-container">
+        @if (Model.Products.Any())
+        {
+            <ul id="@Model.Id">
+                @foreach(var product in Model.Products)
+                {
+                    <li>
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
+                        <div class="sign">
+                            <div class="signTitle">@product.Title</div>
+                            <div class="signDescription">@Html.Raw(product.Description)</div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    <div class="frame">
+        @Html.Partial("Title", Model.Title)
+        <div class="showAll">
+            @Html.ActionLink("В коллекции", "Gallery", "Home", new { area = "", id = Model.CategoryName }, null)
+            &raquo;
+        </div>
+    </div>
+</div>
