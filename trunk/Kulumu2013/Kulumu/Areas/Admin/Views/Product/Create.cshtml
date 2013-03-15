@@ -1,0 +1,88 @@
+﻿@model Kulumu.Models.Product
+@{
+    ViewBag.Title = "Добавление изображения";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<div class="adminContentContainer">
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Добавление изображения</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>Категория</td>
+                <td>@Html.DropDownList("categoryId", (List<SelectListItem>)ViewBag.Categories)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.ImageSource)
+                </td>
+                <td>
+                    <input type="file" name="fileUpload" class="photoFileInput" />
+                    @Html.ValidationMessageFor(model => model.ImageSource)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Discount)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Discount)
+                    @Html.ValidationMessageFor(model => model.Discount)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.DiscountText)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DiscountText)
+                    @Html.ValidationMessageFor(model => model.DiscountText)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Price)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </td>
+            </tr>
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Product", new { Area = "Admin" }, null)
+        </div>
+    }
+</div>
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

@@ -1,0 +1,195 @@
+﻿.add-panel {
+    width: 1003px;
+    height: 416px;
+    padding-bottom: 60px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .left, .add-panel .right {
+    position: absolute;
+    height: 416px;
+}
+
+.add-panel .left {
+    width: 140px;
+    background: url('img/ad-panel-left.png');
+}
+
+.add-panel .right {
+    width: 73px;
+    background: url('img/ad-panel-right.png');
+    margin-left: 930px;
+}
+
+.add-panel .center {
+    margin-left: 140px;
+    width: 790px;
+    position: absolute;
+    height: 398px;
+    background-color: #fff;
+}
+
+.add-panel .bottom 
+{
+    position: absolute;
+    background-image: url('img/ad-panel-bottom.png');
+    background-repeat: repeat-x;
+    width: 790px;
+    height: 18px;
+    margin-left: 140px;
+    margin-top: 398px;
+}
+
+.add-panel .content-panel {
+    position: absolute;
+    width: 865px;
+    height: 300px;
+    margin-left: 73px;
+    margin-top: 45px;
+    /*border: 1px solid #000;*/
+}
+
+.add-panel .attention {
+    width: 862px;
+    height: 17px;
+    background-image: url('img/attention.gif');
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .pattern {
+    background: url('img/bottom-pattern.gif');
+    width: 522px;
+    height: 36px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.add-panel .content {
+    min-height: 280px;
+}
+
+
+
+.discount {
+    margin-left: 450px;
+    width: 400px;
+    padding-top: 30px;
+    
+}
+
+.presentDiscount {
+    position: absolute;
+    margin-top: 190px;
+    width: 400px;
+    height: 70px;
+    background: url('img/present.gif') no-repeat;
+    
+    /* TODO discount */
+    display: none;
+    /*****/
+}
+
+
+
+
+.randomArticle
+{
+    width: 380px;
+    padding-top: 30px;
+    font-family: PTNarrow;
+    float: left;
+}
+
+
+.randomArticle .date
+{
+    color: #a7a7a7;
+    font-size: 12px;
+}
+
+.randomArticle .title
+{
+    padding-bottom: 5px;
+}
+
+.randomArticle .title a
+{
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #006699;
+    font-family: Georgia;
+    font-weight: bold;
+}
+
+.randomArticle .description
+{
+    color: #000;
+    font-size: 12px;
+    font-family: Georgia;
+    padding-bottom: 10px;
+}
+
+
+.randomArticle .allNewsLink {
+    font-size: 12px;
+    font-family: Georgia;
+    color: #000;
+}
+.randomArticle .allNewsLink a {
+    color: #006699;
+}
+
+
+.discount .discount-frame {
+    width: 293px;
+    height: 193px;
+    
+    margin-left: 120px;
+}
+
+.discount .discount-frame .image-frame {
+    position: absolute;
+    width: 293px;
+    height: 193px;
+    background: url('img/discount-frame.png');
+    z-index: 100;
+}
+
+.discount .txt {
+    float: left;
+    width: 115px;
+    font-size: 12px;
+}
+
+.discount .txt .title {
+    font-family: PTNarrowBold;
+    
+}
+
+.discount .txt .description {
+    font-family: PTNarrow;
+    
+}
+
+
+.discount .txt .seal {
+    width: 87px;
+    height: 87px;
+    background: url(img/seal.gif);
+    position: absolute;
+    margin-top: 105px;
+    
+}
+
+.discount .txt .seal .text {
+    color: #fff;
+    padding-top: 24px;
+    width: 40px;
+    position: relative;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: center;
+    font-family: PTNarrow;
+}

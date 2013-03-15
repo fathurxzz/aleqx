@@ -1,0 +1,45 @@
+﻿@using Kulumu.Models
+@model SiteModel 
+@section Add
+{
+    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle, DiscountProduct = Model.SingleDiscountProduct })
+}
+@section About
+{
+    @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+}
+@if (Model.Content.MainPage)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bx1').bxSlider();
+            $('#bx2').bxSlider();
+        });
+    </script>
+    
+    <div class="frames">
+        @Html.Partial("Frame", new CaruselFrame { Id = "bx1", Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона", CategoryName = ViewBag.SpecialCategoryName })
+        <div class="separator">
+        </div>
+        @Html.Partial("Frame", new CaruselFrame { Id = "bx2", Products = Model.Products.Where(p => p.CategoryId == 2), Title = "коллекции ковров", CategoryName = "" })
+        <div class="clear">
+        </div>
+    </div>
+}
+else
+{
+    <div class="mainFrame">
+        <div class="top">
+            @Html.Partial("Title", Model.Content.Title)
+        </div>
+        <div class="middle">
+            <div class="content">
+                <div class="text">
+                    @Html.Raw(Model.Content.Text)
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+        </div>
+    </div>
+}

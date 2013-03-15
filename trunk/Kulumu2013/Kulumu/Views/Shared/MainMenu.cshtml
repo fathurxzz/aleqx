@@ -1,0 +1,77 @@
+﻿<div class="mainMenu">
+    @{
+        string className = "";
+        className = ViewBag.CurrentMenuItemName == "about" ? "selected" : "";
+    }
+    <div class="first @className">
+        @if (className == "selected")
+        {
+            <text>о нас</text>
+        }
+        else
+        {
+            @Html.ActionLink("о нас", "Index", "Home", new { area = "", id = "about" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "about" }, new { @class = "adminLink" })
+        }
+    </div>
+    @{
+        className = ViewBag.CurrentMenuItemName == "articles" ? "selected" : "";
+    }
+    <div class="second @className">
+        @if (className == "selected")
+        {
+            <text>наши новости</text>
+        }
+        else
+        {
+            @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "articles" }, new { @class = "adminLink" })
+        }
+    </div>
+    @{
+        className = ViewBag.CurrentMenuItemName == "contacts" ? "selected" : "";
+    }
+    <div class="third @className">
+        @if (className == "selected")
+        {
+            <text>адрес магазина и филиалов</text>
+        }
+        else
+        {
+            @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
+        }
+    </div>
+    @{
+        className = ViewBag.CurrentMenuItemName == "tour" ? "selected" : "";
+    }
+    <div class="fourth @className">
+        @*<a href="#"><span>3D-тур</span><br />по магазину</a>*@
+        @if (className == "selected")
+        {
+            <text><span>3D-тур</span><br />
+            по магазину</text>
+        }
+        else
+        {
+            @Html.Raw(Html.ActionLink("[IMAGE]", "Tour", "Home", new { area = "", id = 1 }, null).ToString().Replace("[IMAGE]", "<span>3D-тур</span><br />по магазину"))
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "tour" }, new { @class = "adminLink" })
+        }
+    </div>
+</div>
