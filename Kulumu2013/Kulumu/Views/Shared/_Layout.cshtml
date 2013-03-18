@@ -42,10 +42,72 @@
             </div>
         }
         @Html.Partial("Header")
-        @RenderSection("Add", false)
-        <div class="main-content">
-            @RenderBody()
+        
+        
+        
+        
+        <div class="add-panel">
+            
+            
+            <div class="top"></div>
+            <div class="middle">
+                @if (Request.IsAuthenticated)
+                {
+                    <div style="position: absolute; padding-left: 10px; margin-top: -20px;">
+                        @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+                    </div>
+                    <div style="position: absolute; margin-left: 650px; margin-top: -20px;">
+                        @Html.ActionLink("Администрирование ковров", "Index", "Product", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+                    </div>
+                }
+                
+
+                @RenderBody()
+
+
+            </div>
+            <div class="bottom"></div>
+            
+           
+           
+            @*<div class="content-panel">
+                @if (Request.IsAuthenticated)
+                {
+                    <div style="position: absolute; padding-left: 10px; margin-top: -20px;">
+                        @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+                    </div>
+                    <div style="position: absolute; margin-left: 650px; margin-top: -20px;">
+                        @Html.ActionLink("Администрирование ковров", "Index", "Product", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+                    </div>
+                }
+                <div class="attention">
+                </div>
+                <div class="content">
+            
+         
+
+
+                </div>
+                <div class="pattern">
+                </div>
+            </div>*@
+            
+
         </div>
+        
+
+
+        @*@RenderSection("Add", false)*@
+        
+
+
+        <div class="main-content">
+        
+        @RenderSection("MainPageGallery",false)
+           
+        </div>
+        
+
         @RenderSection("About", false)
     </div>
     <div class="footer">

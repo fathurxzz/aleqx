@@ -18,10 +18,10 @@ namespace Kulumu.Models
 
         public Content Content { get; set; }
         public Article Article { get; set; }
-        public Article RandomArticle { get; set; }
+        //public Article RandomArticle { get; set; }
         public List<Article> Articles { get; set; }
-        public Product SingleDiscountProduct { get; set; }
-        public List<Product> Products { get; set; }
+        //public Product SingleDiscountProduct { get; set; }
+        //public List<Product> Products { get; set; }
         public Category Category { get; set; }
         public List<Category> Categories { get; set; }
 
@@ -54,20 +54,22 @@ namespace Kulumu.Models
 
             if (showArticles)
             {
-                Articles = context.Article.ToList();
+                Articles = context.Article.OrderByDescending(a=>a.Date).ToList();
             }
 
-            if (context.Article.FirstOrDefault() != null)
-            {
-                RandomArticle = context.Article.RandomElement(new Random());
-            }
+            //if (context.Article.FirstOrDefault() != null)
+            //{
+            //    RandomArticle = context.Article.RandomElement(new Random());
+            //}
+
+            Categories = context.Category.Include("Products").ToList();
+
             
-            Products = context.Product.ToList();
             
-            if (Products.Any(p => p.Discount))
-            {
-                SingleDiscountProduct = Products.Where(p => p.Discount).RandomElement(new Random());
-            }
+            //if (Products.Any(p => p.Discount))
+            //{
+            //    SingleDiscountProduct = Products.Where(p => p.Discount).RandomElement(new Random());
+            //}
         }
     }
 }

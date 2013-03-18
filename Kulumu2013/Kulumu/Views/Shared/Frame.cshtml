@@ -2,6 +2,14 @@
 @using Kulumu.Helpers
 @using SiteExtensions.Graphics
 @model Kulumu.Models.CaruselFrame
+           
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(@Model.Id).bxSlider();
+    });    
+</script>
+
 <div class="frameContainer">
     <div class="image-container">
         @if (Model.Products.Any())
@@ -22,9 +30,9 @@
     </div>
     <div class="frame">
         @Html.Partial("Title", Model.Title)
-        <div class="showAll">
+        @*<div class="showAll">
             @Html.ActionLink("В коллекции", "Gallery", "Home", new { area = "", id = Model.CategoryName }, null)
             &raquo;
-        </div>
+        </div>*@
     </div>
 </div>

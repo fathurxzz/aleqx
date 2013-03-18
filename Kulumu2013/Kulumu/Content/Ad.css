@@ -1,11 +1,30 @@
 ﻿.add-panel {
     width: 1003px;
-    height: 416px;
+    /*height: 416px;*/
     padding-bottom: 60px;
     position: relative;
     margin: 0 auto;
 }
 
+.add-panel .top {
+    height: 124px;
+    background: url('img/main-panel-bg-top.gif');
+}
+
+.add-panel .bottom {
+    height: 118px;
+    background: url('img/main-panel-bg-bottom.png');
+}
+
+.add-panel .middle {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background: url('img/main-panel-bg-middle.gif');
+    background-repeat: repeat-y;
+}
+
+
+/*
 .add-panel .left, .add-panel .right {
     position: absolute;
     height: 416px;
@@ -41,13 +60,15 @@
     margin-top: 398px;
 }
 
+
+
 .add-panel .content-panel {
     position: absolute;
     width: 865px;
-    height: 300px;
+    
     margin-left: 73px;
     margin-top: 45px;
-    /*border: 1px solid #000;*/
+    
 }
 
 .add-panel .attention {
@@ -65,6 +86,8 @@
     position: relative;
     margin: 0 auto;
 }
+*/
+
 
 .add-panel .content {
     min-height: 280px;
