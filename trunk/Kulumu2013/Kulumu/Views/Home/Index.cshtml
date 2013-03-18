@@ -1,27 +1,30 @@
 ﻿@using Kulumu.Models
 @model SiteModel 
-@section Add
-{
-    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle, DiscountProduct = Model.SingleDiscountProduct })
-}
 @section About
 {
     @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-@if (Model.Content.MainPage)
+
+@section MainPageGallery
 {
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#bx1').bxSlider();
-            $('#bx2').bxSlider();
-        });
-    </script>
-    
+    @if (Model.Content.MainPage)
+{
     <div class="frames">
-        @Html.Partial("Frame", new CaruselFrame { Id = "bx1", Products = Model.Products.Where(p => p.CategoryId == 1), Title = "тренды сезона", CategoryName = ViewBag.SpecialCategoryName })
-        <div class="separator">
-        </div>
-        @Html.Partial("Frame", new CaruselFrame { Id = "bx2", Products = Model.Products.Where(p => p.CategoryId == 2), Title = "коллекции ковров", CategoryName = "" })
+        @{
+            var cnt = 1;
+            foreach (var category in Model.Categories)
+            {
+                cnt++;
+                    @Html.Partial("Frame", new CaruselFrame { Id = "bx" + category.Id, Products = category.Products, Title = category.Title, CategoryName = category.Name })
+
+                if (cnt % 2 == 0)
+                {
+                    <div class="separator">
+                    </div>
+                }
+
+            }
+        }
         <div class="clear">
         </div>
     </div>
@@ -43,3 +46,7 @@ else
         </div>
     </div>
 }
+
+}
+
+

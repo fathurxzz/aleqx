@@ -95,7 +95,7 @@ img
 .logo-container
 {
     width: 332px;
-    height: 113px;
+    height: 140px;
     background: url('img/logo.gif');
     position: relative;
     margin: 0 auto;
@@ -234,6 +234,7 @@ table.title .a-center div
     width: 488px;
     height: 398px;
     float: left;
+    margin-bottom: 50px;
 }
 
 .frameContainer .image-container
@@ -313,8 +314,8 @@ table.title .a-center div
 {
     position: relative;
     margin: 0 auto;
-    margin-top: 200px;
-    margin-bottom: 200px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     padding: 30px;
     width: 300px;
     background-color: #fff;
