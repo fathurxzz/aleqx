@@ -93,5 +93,29 @@ namespace Kulumu.Areas.Admin.Controllers
             }
             return RedirectToAction("Gallery", "Home", new { area = "" });
         }
+
+        public ActionResult ProductSize(int categoryId)
+        {
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.First(c => c.Id == categoryId);
+                ViewBag.categoryId = categoryId;
+                ViewBag.categoryName = category.Name;
+                return View();
+            }
+        }
+
+        public ActionResult ProductSize(int categoryId, FormCollection form)
+        {
+            using (var context = new SiteContainer())
+            {
+                var category = context.Category.First(c => c.Id == categoryId);
+                var ps = new ProductSize();
+                TryUpdateModel(ps, new[] {"Size"});
+                category.ProductSizes.Add(ps);
+                context.SaveChanges();
+                return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
+            }
+        }
     }
 }
