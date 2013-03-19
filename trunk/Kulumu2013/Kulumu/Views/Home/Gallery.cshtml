@@ -75,13 +75,21 @@
         </div>
         
         <div class="adminLinkContainer">
-            @Html.ActionLink("Добавить", "Create", "Product", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Добавить размер", "AddProductSize", "Category", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
         </div>
     }
     
+    <div class="description">
+        @Html.Raw(Model.Category.Description)
+    </div>
 
-    
-    
+    <div class="productSizes">
+        @{
+            var sl = new List<SelectListItem> {new SelectListItem {Text = "Доступен в размерах", Value = "avilable"}};
+            sl.AddRange(Model.Category.ProductSizes.Select(ps => new SelectListItem { Text = ps.Size, Value = ps.Size }).ToList());
+        }
+        @Html.DropDownList("ps",sl)
+    </div>
     
     <div>
         @foreach (var product in Model.Category.Products)
