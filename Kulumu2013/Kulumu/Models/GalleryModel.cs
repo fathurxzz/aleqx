@@ -9,7 +9,7 @@ namespace Kulumu.Models
     {
         public Category Category { get; set; }
         public List<Category> Categories { get; set; }
-        public GalleryModel(SiteContainer context, string categoryId) : base(context, "gallery", false)
+        public GalleryModel(SiteContainer context, string categoryId, int productId) : base(context, "gallery", false)
         {
             Categories = context.Category.Include("Children").Where(c => c.Parent == null).ToList();
 
@@ -35,9 +35,33 @@ namespace Kulumu.Models
                 }
             }
 
-            Category = !string.IsNullOrEmpty(categoryId)
-                           ? context.Category.Include("Products").First(c => c.Name == categoryId)
-                           : context.Category.Include("Products").FirstOrDefault();
+
+            //Category = !string.IsNullOrEmpty(categoryId)
+            //               ? context.Category.Include("Products").First(c => c.Name == categoryId)
+            //               : context.Category.Include("Products").FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(categoryId))
+            {
+                Category = context.Category.Include("ProductSizes").Include("Products").First(c => c.Name == categoryId);
+            }
+            else
+            {
+                //Category = context.Category.Include("Products").First();
+
+                var cat = context.Category.FirstOrDefault();
+                if (cat != null)
+                {
+                    var catId = cat.Id;
+                    Category = context.Category.Include("ProductSizes").Include("Products").First(c => c.Id == catId);
+                }
+            }
         }
     }
 }
+
+
+
+
+
+
+

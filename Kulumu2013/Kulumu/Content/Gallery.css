@@ -38,3 +38,13 @@
 .gallery .categories a.parent {
     color: #000;
 }
+
+.gallery .description {
+    padding: 50px;
+    
+    font-family: PTNarrow;
+}
+
+.gallery .productSizes {
+    text-align: center;
+}

@@ -94,7 +94,7 @@ namespace Kulumu.Areas.Admin.Controllers
             return RedirectToAction("Gallery", "Home", new { area = "" });
         }
 
-        public ActionResult ProductSize(int categoryId)
+        public ActionResult AddProductSize(int categoryId)
         {
             using (var context = new SiteContainer())
             {
@@ -105,7 +105,8 @@ namespace Kulumu.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult ProductSize(int categoryId, FormCollection form)
+        [HttpPost]
+        public ActionResult AddProductSize(int categoryId, FormCollection form)
         {
             using (var context = new SiteContainer())
             {

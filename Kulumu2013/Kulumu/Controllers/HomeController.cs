@@ -33,6 +33,14 @@ namespace Kulumu.Controllers
             }
         }
 
+        public ActionResult ProductDetails(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+
+            }
+        }
+
         public ActionResult Gallery(string id)
         {
             using (var context = new SiteContainer())
