@@ -276,6 +276,7 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\ProductSize.cshtml" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
     <Content Include="Views\Home\Articles.cshtml" />
