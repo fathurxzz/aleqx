@@ -485,9 +485,7 @@ namespace Kulumu.Models
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="bottomDescriptionTitle">Initial value of the BottomDescriptionTitle property.</param>
         /// <param name="bottomDescription">Initial value of the BottomDescription property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String bottomDescriptionTitle, global::System.String bottomDescription, global::System.String seoDescription, global::System.String seoKeywords)
+        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String bottomDescriptionTitle, global::System.String bottomDescription)
         {
             Category category = new Category();
             category.Id = id;
@@ -496,8 +494,6 @@ namespace Kulumu.Models
             category.Description = description;
             category.BottomDescriptionTitle = bottomDescriptionTitle;
             category.BottomDescription = bottomDescription;
-            category.SeoDescription = seoDescription;
-            category.SeoKeywords = seoKeywords;
             return category;
         }
 
@@ -654,7 +650,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -666,7 +662,7 @@ namespace Kulumu.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -678,7 +674,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -690,7 +686,7 @@ namespace Kulumu.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }
@@ -853,10 +849,8 @@ namespace Kulumu.Models
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="descriptionTitle">Initial value of the DescriptionTitle property.</param>
         /// <param name="mainPage">Initial value of the MainPage property.</param>
-        /// <param name="seoDescription">Initial value of the SeoDescription property.</param>
-        /// <param name="seoKeywords">Initial value of the SeoKeywords property.</param>
         /// <param name="text">Initial value of the Text property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String descriptionTitle, global::System.Boolean mainPage, global::System.String seoDescription, global::System.String seoKeywords, global::System.String text)
+        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String descriptionTitle, global::System.Boolean mainPage, global::System.String text)
         {
             Content content = new Content();
             content.Id = id;
@@ -865,8 +859,6 @@ namespace Kulumu.Models
             content.Description = description;
             content.DescriptionTitle = descriptionTitle;
             content.MainPage = mainPage;
-            content.SeoDescription = seoDescription;
-            content.SeoKeywords = seoKeywords;
             content.Text = text;
             return content;
         }
@@ -1024,7 +1016,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoDescription
         {
@@ -1036,7 +1028,7 @@ namespace Kulumu.Models
             {
                 OnSeoDescriptionChanging(value);
                 ReportPropertyChanging("SeoDescription");
-                _SeoDescription = StructuralObject.SetValidValue(value, false);
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoDescription");
                 OnSeoDescriptionChanged();
             }
@@ -1048,7 +1040,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String SeoKeywords
         {
@@ -1060,7 +1052,7 @@ namespace Kulumu.Models
             {
                 OnSeoKeywordsChanging(value);
                 ReportPropertyChanging("SeoKeywords");
-                _SeoKeywords = StructuralObject.SetValidValue(value, false);
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("SeoKeywords");
                 OnSeoKeywordsChanged();
             }
@@ -1116,9 +1108,7 @@ namespace Kulumu.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="discount">Initial value of the Discount property.</param>
-        /// <param name="discountText">Initial value of the DiscountText property.</param>
-        /// <param name="price">Initial value of the Price property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String description, global::System.String imageSource, global::System.Int32 categoryId, global::System.Boolean discount, global::System.String discountText, global::System.String price)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String description, global::System.String imageSource, global::System.Int32 categoryId, global::System.Boolean discount)
         {
             Product product = new Product();
             product.Id = id;
@@ -1127,8 +1117,6 @@ namespace Kulumu.Models
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             product.Discount = discount;
-            product.DiscountText = discountText;
-            product.Price = price;
             return product;
         }
 
@@ -1285,7 +1273,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String DiscountText
         {
@@ -1297,7 +1285,7 @@ namespace Kulumu.Models
             {
                 OnDiscountTextChanging(value);
                 ReportPropertyChanging("DiscountText");
-                _DiscountText = StructuralObject.SetValidValue(value, false);
+                _DiscountText = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("DiscountText");
                 OnDiscountTextChanged();
             }
@@ -1309,7 +1297,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Price
         {
@@ -1321,7 +1309,7 @@ namespace Kulumu.Models
             {
                 OnPriceChanging(value);
                 ReportPropertyChanging("Price");
-                _Price = StructuralObject.SetValidValue(value, false);
+                _Price = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Price");
                 OnPriceChanged();
             }

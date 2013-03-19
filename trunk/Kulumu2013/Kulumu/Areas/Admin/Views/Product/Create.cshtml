@@ -18,7 +18,10 @@
             </tr>
             <tr>
                 <td>Категория</td>
-                <td>@Html.DropDownList("categoryId", (List<SelectListItem>)ViewBag.Categories)</td>
+                <td>
+                    @Html.Hidden("categoryId",(int)ViewBag.categoryId)
+                    @Html.DisplayFor(model=>model.Category.Name)
+                </td>
             </tr>
             <tr>
                 <td>

@@ -1,0 +1,40 @@
+﻿.gallery .categories
+{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Georgia;
+}
+
+.gallery .categories ul
+{
+    padding: 15px 15px;
+    border: 2px solid #afaeae;
+    display: inline-block;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+}
+
+.gallery .categories ul li
+{
+    list-style: none;
+    display: inline;
+    padding: 17px;
+}
+
+.gallery .categories a
+{
+    font-weight: normal;
+    color: #0072bc;
+}
+
+.gallery .title {
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.gallery .categories a.parent {
+    color: #000;
+}

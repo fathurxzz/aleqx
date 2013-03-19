@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/18/2013 14:49:09
+-- Date Created: 03/19/2013 13:24:15
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -16,9 +16,9 @@
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
---    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
 --    ALTER TABLE `ProductSize` DROP CONSTRAINT `FK_CategoryProductSize`;
+--    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -44,8 +44,8 @@ CREATE TABLE `Category` (
     `Description` longtext  NOT NULL,
     `BottomDescriptionTitle` varchar( 200 )  NOT NULL,
     `BottomDescription` longtext  NOT NULL,
-    `SeoDescription` longtext  NOT NULL,
-    `SeoKeywords` TEXT  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` TEXT  NULL,
     `CategoryId` int  NULL
 );
 
@@ -58,8 +58,8 @@ CREATE TABLE `Product` (
     `ImageSource` TEXT  NOT NULL,
     `CategoryId` int  NOT NULL,
     `Discount` bool  NOT NULL,
-    `DiscountText` longtext  NOT NULL,
-    `Price` varchar( 100 )  NOT NULL
+    `DiscountText` longtext  NULL,
+    `Price` varchar( 100 )  NULL
 );
 
 -- Creating table 'Content'
@@ -71,8 +71,8 @@ CREATE TABLE `Content` (
     `Description` longtext  NOT NULL,
     `DescriptionTitle` varchar( 200 )  NOT NULL,
     `MainPage` bool  NOT NULL,
-    `SeoDescription` longtext  NOT NULL,
-    `SeoKeywords` TEXT  NOT NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` TEXT  NULL,
     `Text` longtext  NOT NULL
 );
 

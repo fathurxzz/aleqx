@@ -14,9 +14,8 @@ namespace Kulumu.Controllers
         {
             using (var context = new SiteContainer())
             {
-                SiteModel model = new SiteModel(context, id);
+                var model = new SiteModel(context, id);
                 this.SetSeoContent(model);
-                //ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 ViewBag.isHomePage = model.IsHomePage;
                 return View(model);
@@ -27,7 +26,7 @@ namespace Kulumu.Controllers
         {
             using (var context = new SiteContainer())
             {
-                SiteModel model = new SiteModel(context, "articles", true);
+                var model = new SiteModel(context, "articles",true);
                 this.SetSeoContent(model);
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 return View(model);
@@ -38,20 +37,22 @@ namespace Kulumu.Controllers
         {
             using (var context = new SiteContainer())
             {
-                SiteModel model = new SiteModel(context, "gallery");
+                var model = new GalleryModel(context, id);
                 
-                model.Categories = context.Category.Include("Products").ToList();
+                //model.Categories = context.Category.Include("Products").ToList();
 
-                if (model.Categories.Any())
-                {
-                    model.Category = //!string.IsNullOrEmpty(id)
-                        //?
-                        model.Categories.First(c => c.Name == id);
-                                         //: model.Categories.First(c => !c.SpecialCategory);
+                //if (model.Categories.Any())
+                //{
+                //    model.Category = //!string.IsNullOrEmpty(id)
+                //        //?
+                //        model.Categories.First(c => c.Name == id);
+                //                         //: model.Categories.First(c => !c.SpecialCategory);
 
-                    //model.Products = model.Products.Where(p => p.CategoryId == model.Category.Id).ToList();
-                    model.Title += " » " + model.Category.Title;
-                }
+                //    //model.Products = model.Products.Where(p => p.CategoryId == model.Category.Id).ToList();
+                //    model.Title += " » " + model.Category.Title;
+                //}
+
+                
 
 
 
@@ -66,7 +67,7 @@ namespace Kulumu.Controllers
         {
             using (var context = new SiteContainer())
             {
-                SiteModel model = new SiteModel(context, "tour");
+                var model = new SiteModel(context, "tour");
                 this.SetSeoContent(model);
                 //ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
