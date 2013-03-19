@@ -97,8 +97,10 @@
     <Compile Include="Models\AdvertisingPanel.cs" />
     <Compile Include="Models\ArticleValidation.cs" />
     <Compile Include="Models\CaruselFrame.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\GalleryModel.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -166,6 +168,7 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Fonts.css" />
+    <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\about-bg-left.gif" />
     <Content Include="Content\img\about-bg-main.png" />
     <Content Include="Content\img\about-bg-right.gif" />

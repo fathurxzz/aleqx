@@ -21,17 +21,16 @@ namespace Kulumu.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Create(int? categoryId)
+        public ActionResult Create(int categoryId)
         {
             using (var context = new SiteContainer())
             {
-                var categories = context.Category.ToList();
-                ViewBag.Categories = categories.Select(category => new SelectListItem {Text = category.Title, Value = category.Id.ToString()}).ToList();
-                if(categoryId.HasValue)
-                {
-                    ViewBag.categoryId = categoryId;
-                }
-                return View();
+                var category = context.Category.First(c => c.Id == categoryId);
+
+                var product = new Product {Category = category};
+                //ViewBag.Categories = categories.Select(category => new SelectListItem {Text = category.Title, Value = category.Id.ToString()}).ToList();
+                ViewBag.categoryId = categoryId;
+                return View(product);
             }
         } 
 

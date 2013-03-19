@@ -9,13 +9,15 @@ namespace Kulumu.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            if (id.HasValue)
+                ViewBag.ParentId = id.Value;
+            return View(new Category());
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int? parentId, FormCollection collection)
         {
             using (var context = new SiteContainer())
             {
@@ -28,7 +30,15 @@ namespace Kulumu.Areas.Admin.Controllers
                                                      "BottomDescription", 
                                                      "BottomDescriptionTitle"
                                                  });
-                context.AddToCategory(category);
+                if (parentId.HasValue)
+                {
+                    var parent = context.Category.First(c => c.Id == parentId);
+                    parent.Children.Add(category);
+                }
+                else
+                {
+                    context.AddToCategory(category);
+                }
                 context.SaveChanges();
                 return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
             }

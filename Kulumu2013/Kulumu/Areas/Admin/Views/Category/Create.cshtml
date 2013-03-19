@@ -8,7 +8,10 @@
 <div class="adminContentContainer">
     @using (Html.BeginForm())
     {
+        
         @Html.ValidationSummary(true)
+
+        @Html.Hidden("parentId", (int?)ViewBag.ParentId)
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">

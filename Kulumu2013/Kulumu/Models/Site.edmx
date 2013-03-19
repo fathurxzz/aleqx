@@ -34,8 +34,8 @@
     <Property Name="Description" Type="longtext" Nullable="false" />
     <Property Name="BottomDescriptionTitle" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="BottomDescription" Type="longtext" Nullable="false" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="false" />
-    <Property Name="SeoKeywords" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="CategoryId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Product">
@@ -48,8 +48,8 @@
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="Discount" Type="bool" Nullable="false" />
-    <Property Name="DiscountText" Type="longtext" Nullable="false" />
-    <Property Name="Price" Type="nchar" Nullable="false" MaxLength="100" />
+    <Property Name="DiscountText" Type="longtext" Nullable="true" />
+    <Property Name="Price" Type="nchar" Nullable="true" MaxLength="100" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -61,8 +61,8 @@
     <Property Name="Description" Type="longtext" Nullable="false" />
     <Property Name="DescriptionTitle" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="MainPage" Type="bool" Nullable="false" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="false" />
-    <Property Name="SeoKeywords" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="Text" Type="longtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Article">
@@ -156,8 +156,8 @@
           <Property Type="String" Name="Description" Nullable="false" />
           <Property Type="String" Name="BottomDescriptionTitle" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="BottomDescription" Nullable="false" />
-          <Property Type="String" Name="SeoDescription" Nullable="false" />
-          <Property Type="String" Name="SeoKeywords" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="500" />
           <NavigationProperty Name="Products" Relationship="Site.CategoryProduct" FromRole="Category" ToRole="Product" />
           <NavigationProperty Name="ProductSizes" Relationship="Site.CategoryProductSize" FromRole="Category" ToRole="ProductSize" />
           <NavigationProperty Name="Children" Relationship="Site.CategoryCategory" FromRole="Category" ToRole="Category1" />
@@ -175,8 +175,8 @@
           <NavigationProperty Name="Category" Relationship="Site.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Boolean" Name="Discount" Nullable="false" />
-          <Property Type="String" Name="DiscountText" Nullable="false" />
-          <Property Type="String" Name="Price" Nullable="false" FixedLength="true" MaxLength="100" />
+          <Property Type="String" Name="DiscountText" />
+          <Property Type="String" Name="Price" FixedLength="true" MaxLength="100" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -200,8 +200,8 @@
           <Property Type="String" Name="Description" Nullable="false" />
           <Property Type="String" Name="DescriptionTitle" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
-          <Property Type="String" Name="SeoDescription" Nullable="false" />
-          <Property Type="String" Name="SeoKeywords" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="SeoDescription" />
+          <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="500" />
           <Property Type="String" Name="Text" Nullable="false" />
         </EntityType>
         <EntityType Name="Article">

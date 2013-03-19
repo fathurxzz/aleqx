@@ -12,7 +12,7 @@
     <div class="frames">
         @{
             var cnt = 1;
-            foreach (var category in Model.Categories)
+            foreach (var category in Model.MainPageCategories)
             {
                 cnt++;
                     @Html.Partial("Frame", new CaruselFrame { Id = "bx" + category.Id, Products = category.Products, Title = category.Title, CategoryName = category.Name })
