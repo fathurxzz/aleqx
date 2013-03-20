@@ -7,6 +7,7 @@ using Kulumu.Models;
 
 namespace Kulumu.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         public ActionResult Create(int? id)
@@ -116,6 +117,39 @@ namespace Kulumu.Areas.Admin.Controllers
                 category.ProductSizes.Add(ps);
                 context.SaveChanges();
                 return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
+            }
+        }
+
+        public ActionResult EditProductSize(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productSize = context.ProductSize.Include("Category").First(ps => ps.Id == id);
+                ViewBag.categoryName = productSize.Category.Name;
+                return View(productSize);
+            }
+        }
+        [HttpPost]
+        public ActionResult EditProductSize(int id, FormCollection form)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productSize = context.ProductSize.Include("Category").First(ps => ps.Id == id);
+                TryUpdateModel(productSize, new[] {"Size"});
+                context.SaveChanges();
+                return RedirectToAction("Gallery", "Home", new { area = "", id = productSize.Category.Name });
+            }
+        }
+
+        public ActionResult DeleteProductSize(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productSize = context.ProductSize.Include("Category").First(ps => ps.Id == id);
+                var categoryName = productSize.Category.Name;
+                context.DeleteObject(productSize);
+                context.SaveChanges();
+                return RedirectToAction("Gallery", "Home", new { area = "", id = categoryName });
             }
         }
     }

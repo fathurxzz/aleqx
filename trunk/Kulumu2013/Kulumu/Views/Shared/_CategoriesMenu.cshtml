@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Kulumu.Models.Category>
+<ul>
+    @foreach (var category in Model.OrderBy(c => c.Id))
+    {
+        <li>
+            @if (category.Selected)
+            {
+                @category.Title
+            }
+            else if (category.IsParent)
+            {
+                @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, new { @class = "parent" })
+            }
+            else
+            {
+                @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
+            }
+        </li>
+    }
+    @if (Request.IsAuthenticated)
+    {
+        <li>
+            @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
+        </li>
+    }
+</ul>

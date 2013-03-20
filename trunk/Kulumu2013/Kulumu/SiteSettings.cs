@@ -18,8 +18,9 @@ namespace Kulumu
                                   {"galleryImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 300,Width = 451}, CacheFolder = "galleryImage", ScaleMode = ScaleMode.Insert, Offset = 12}},
                                   {"preview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 200}, CacheFolder = "preview", ScaleMode = ScaleMode.FixedWidth}},
                                   {"discount",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 293, Height = 193}, CacheFolder = "discount", ScaleMode = ScaleMode.Insert, Offset = 8}},
-                                  //{"galleryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 256, Height = 166}, CacheFolder = "galleryPreview", ScaleMode =  ScaleMode.Insert, Offset = 5}}
-                                  {"galleryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 380, Height = 245}, CacheFolder = "galleryPreview", ScaleMode =  ScaleMode.Insert, Offset = 5}}
+                                  {"galleryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 255, Height = 166}, CacheFolder = "galleryPreview", ScaleMode =  ScaleMode.Insert}},
+                                  {"productThumb",new ThumbnailPicture{ PictureSize =new PictureSize {Width =70, Height = 70}, CacheFolder = "productThumb", ScaleMode =  ScaleMode.Crop}},
+                                  {"productPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width =378, Height = 245}, CacheFolder = "productPreview", ScaleMode =  ScaleMode.Crop}}
                               };
         }
 

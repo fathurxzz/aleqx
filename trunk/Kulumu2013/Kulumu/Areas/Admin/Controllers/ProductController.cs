@@ -10,6 +10,7 @@ using SiteExtensions;
 
 namespace Kulumu.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         public ActionResult Index()
@@ -21,61 +22,59 @@ namespace Kulumu.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Create(int categoryId)
+        public ActionResult Create(int id)
         {
             using (var context = new SiteContainer())
             {
-                var category = context.Category.First(c => c.Id == categoryId);
+                var category = context.Category.First(c => c.Id == id);
 
-                var product = new Product {Category = category};
+                var product = new Product { Category = category };
                 //ViewBag.Categories = categories.Select(category => new SelectListItem {Text = category.Title, Value = category.Id.ToString()}).ToList();
-                ViewBag.categoryId = categoryId;
+                ViewBag.categoryId = id;
                 return View(product);
             }
-        } 
+        }
 
         [HttpPost]
-        public ActionResult Create(int categoryId, FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Create(int categoryId, FormCollection form)
         {
             try
             {
                 using (var context = new SiteContainer())
                 {
                     var category = context.Category.First(c => c.Id == categoryId);
-                    var product = new Product{Category = category};
-                    TryUpdateModel(product, new[] {"Title", "Discount", "DiscountText", "Price"});
+                    var product = new Product { Category = category };
+                    TryUpdateModel(product, new[] { "Title", "Discount", "DiscountText", "Price" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
-                    if (fileUpload != null)
-                    {
-                        //if (!string.IsNullOrEmpty(product.ImageSource))
-                        //{
 
-                        //    IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
-                        //    foreach (var thumbnail in SiteSettings.Thumbnails)
-                        //    {
-                        //        IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, product.ImageSource);
-                        //    }
-                        //}
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        var file = Request.Files[i];
+                        if (file == null) continue;
+
+                        var pi = new ProductImage();
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
                         filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-                        product.ImageSource = fileName;
+                        file.SaveAs(filePath);
+                        pi.ImageSource = fileName;
+                        product.ProductImages.Add(pi);
+                        if (string.IsNullOrEmpty(product.ImageSource))
+                            product.ImageSource = pi.ImageSource;
                     }
-
+                    
                     context.AddToProduct(product);
-
                     context.SaveChanges();
+                    return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
-                return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
         }
-        
+
         public ActionResult Edit(int id)
         {
             using (var context = new SiteContainer())
@@ -119,8 +118,8 @@ namespace Kulumu.Areas.Admin.Controllers
                         product.ImageSource = fileName;
                     }
                     context.SaveChanges();
+                    return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
-                return RedirectToAction("Index");
             }
             catch
             {

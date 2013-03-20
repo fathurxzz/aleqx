@@ -1,0 +1,22 @@
+﻿@using Kulumu
+@using SiteExtensions.Graphics
+@model IEnumerable<Kulumu.Models.Product>
+@foreach (var product in Model)
+{
+    <div class="product">
+        <div class="cont">
+            <div class="image">
+                <div class="abs">
+                    @Html.ActionLink("Редактировать","Edit","Product",new{area="Admin",id=product.Id},new{@class="adminLink"})
+                </div>
+                @Html.Raw(Html.ActionLink("[IMAGE]", "ProductDetails", "Home", new { area = "", id = product.Id }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview"))))
+            </div>
+        </div>
+        <div class="sign">
+            <div class="signTitle">@product.Title</div>
+            <div class="signDescription">@Html.Raw(product.Description)</div>
+        </div>
+    </div>
+}
+<div class="clear">
+</div>

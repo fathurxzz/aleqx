@@ -6,7 +6,6 @@
 .adminLinkContainer
 {
     text-align: center;
-    
 }
 
 a.adminLink
@@ -56,19 +55,17 @@ a.adminLink
 .adminContentContainer
 {
     padding: 50px 20px;
-    
     font-size: 12px;
     background-color: #fff;
 }
-.adminContentContainer a {
-    
+.adminContentContainer a
+{
 }
 
 .adminContentContainer h2
 {
     font-size: 18px;
     padding: 10px;
-    
 }
 
 .sortOrder
@@ -78,37 +75,51 @@ a.adminLink
 }
 
 
-.childitem {
+.childitem
+{
     padding-left: 30px;
 }
 
-.abs {
+.abs
+{
     position: absolute;
-    
 }
 
-.parent {
+.parent
+{
     padding-bottom: 10px;
 }
 
-.child 
+.child
 {
     padding: 2px 2px 2px 10px;
 }
 
-.photoTitleInput {
-     width: 300px !important; 
+.photoTitleInput
+{
+    width: 300px !important;
 }
 
-.photoFileInput {
-     width: 300px !important; 
+.photoFileInput
+{
+    width: 300px !important;
 }
 
-.manageImageLinkContainer {
+.manageImageLinkContainer
+{
     position: absolute;
     left: 20px;
 }
 
-#cke_Text {
+#cke_Text
+{
     width: 700px;
+}
+
+
+.inputImages .thumb
+{
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
 }

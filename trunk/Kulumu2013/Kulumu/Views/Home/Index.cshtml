@@ -2,7 +2,7 @@
 @model SiteModel 
 @section About
 {
-    @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+    @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
 
 @section MainPageGallery
@@ -33,7 +33,7 @@ else
 {
     <div class="mainFrame">
         <div class="top">
-            @Html.Partial("Title", Model.Content.Title)
+            @Html.Partial("_Title", Model.Content.Title)
         </div>
         <div class="middle">
             <div class="content">

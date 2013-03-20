@@ -22,6 +22,12 @@ namespace Kulumu
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "LogOn", // Route name
+                "logon", // URL with parameters
+                new { controller = "Account", action = "LogOn" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Tour", // Route name
                 "tour/{id}", // URL with parameters
                 new { controller = "Home", action = "Tour", id = UrlParameter.Optional } // Parameter defaults

@@ -7,6 +7,7 @@ using Kulumu.Models;
 
 namespace Kulumu.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         public ActionResult Edit(string id)

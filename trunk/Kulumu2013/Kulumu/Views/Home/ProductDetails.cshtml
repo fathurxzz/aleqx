@@ -1,0 +1,23 @@
+﻿@using Kulumu.Models
+@model GalleryModel
+@section About
+{
+    @Html.Partial("_About", new AboutModel { Title = Model.Category.BottomDescriptionTitle, Text = Model.Category.BottomDescription })
+}
+
+<div class="gallery">
+    <div class="categories">
+       @Html.Partial("_CategoriesMenu", Model.Categories)
+    </div>
+    <div class="title">
+        @Html.Partial("_BigTitleLink", Model.ParentCategory)
+    </div>
+    <div class="categories">
+        @Html.Partial("_SubCategoriesMenu", new SubCategoriesMenu { Categories = Model.Categories, ParentCategoryId = Model.ParentCategory.Id ,SelectedAsLink = true})
+    </div>
+    
+    <div class="productDetails">
+        @Html.Partial("_Product", Model.Product)
+    </div>
+</div>
+

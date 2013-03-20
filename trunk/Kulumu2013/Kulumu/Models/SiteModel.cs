@@ -78,9 +78,10 @@ namespace Kulumu.Models
             //    }
             //}
 
-
-            MainPageCategories = context.Category.Include("Products").Where(c=>c.Parent==null).ToList();
-            
+            if (IsHomePage)
+            {
+                MainPageCategories = context.Category.Include("Products").Where(c => c.Parent == null).ToList();
+            }
 
 
 

@@ -1,0 +1,24 @@
+﻿@using Kulumu
+@using SiteExtensions.Graphics
+@model Kulumu.Models.Product
+
+<div class="productInfo">
+    <div class="title">
+        @Html.Raw(Model.Title)
+    </div>
+    @Html.Raw(Model.Description)
+</div>
+<div class="productImages">
+    <div class="preview">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productPreview")))
+    </div>
+    @foreach (var image in Model.ProductImages)
+    {
+        <div class="productThumb">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productThumb")))
+        </div>
+    }
+    <div class="clear"></div>
+</div>
+
+<div class="clear"></div>

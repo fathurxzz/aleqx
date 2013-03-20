@@ -37,7 +37,9 @@ namespace Kulumu.Controllers
         {
             using (var context = new SiteContainer())
             {
-
+                var model = new GalleryModel(context, null, id);
+                this.SetSeoContent(model);
+                return View(model);
             }
         }
 
@@ -46,26 +48,6 @@ namespace Kulumu.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new GalleryModel(context, id);
-                
-                //model.Categories = context.Category.Include("Products").ToList();
-
-                //if (model.Categories.Any())
-                //{
-                //    model.Category = //!string.IsNullOrEmpty(id)
-                //        //?
-                //        model.Categories.First(c => c.Name == id);
-                //                         //: model.Categories.First(c => !c.SpecialCategory);
-
-                //    //model.Products = model.Products.Where(p => p.CategoryId == model.Category.Id).ToList();
-                //    model.Title += " » " + model.Category.Title;
-                //}
-
-                
-
-
-
-                //model.Products = model.Products.Where(p => p.CategoryId == id).ToList();
-                //model.Category = context.Category.First(c => c.Id == id);
                 this.SetSeoContent(model);
                 return View(model);
             }
