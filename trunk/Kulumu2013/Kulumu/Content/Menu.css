@@ -19,36 +19,54 @@
     border-left: 1px solid #fff;*/
     float: left;
     padding-top: 20px;
+    /*border: 1px solid #fff;*/
 }
 
 .mainMenu .first 
 {
-    margin-left: 70px;
+    margin-left: 20px;
     width: 50px;
     margin-right: 20px;
     padding-top: 30px;
     height: 45px;
+    
 }
 
 .mainMenu .second {
-    width: 80px;
-    margin-left: 60px;
+    width: 120px;
+    padding-top: 30px;
+    height: 45px;
 }
 
 .mainMenu .third {
-    width: 140px;
-    margin-left: 410px;
+    width: 100px;
+    margin-left: 20px;
+    padding-top: 30px;
+    height: 45px;
 }
 
 .mainMenu .fourth {
-    width: 80px;
-    margin-left: 50px;
-    font-size: 12px;
+    width: 100px;
+    margin-left: 350px;
+    padding-top: 30px;
 }
 
-.mainMenu .fourth span {
+.mainMenu .fifth {
+    width: 90px;
+    
+    margin-left: 15px;
+}
+
+.mainMenu .sixth {
+    width: 90px;
+    margin-left: 15px;
+}
+
+.mainMenu .fifth span {
     font-size: 20px;
     font-family: PTNarrowBold;
+    color: #f00;
+    text-decoration: underline;
 }
 
 .mainMenu .selected {

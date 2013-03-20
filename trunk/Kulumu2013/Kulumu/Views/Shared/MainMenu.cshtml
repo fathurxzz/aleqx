@@ -18,17 +18,63 @@
             @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "about" }, new { @class = "adminLink" })
         }
     </div>
+    
+    
+
     @{
-        className = ViewBag.CurrentMenuItemName == "articles" ? "selected" : "";
+        className = ViewBag.CurrentMenuItemName == "gallery" ? "selected" : "";
     }
     <div class="second @className">
         @if (className == "selected")
         {
-            <text>наши новости</text>
+            <text>коллекции ковров</text>
         }
         else
         {
-            @Html.ActionLink("наши новости", "Articles", "Home", new { area = "" }, null)
+            @Html.ActionLink("коллекции ковров", "Gallery", "Home", new { area = "" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "gallery" }, new { @class = "adminLink" })
+        }
+    </div>
+    
+    
+
+    @{
+        className = ViewBag.CurrentMenuItemName == "ourworks" ? "selected" : "";
+    }
+    <div class="third @className">
+        @if (className == "selected")
+        {
+            <text>наши работы</text>
+        }
+        else
+        {
+            @Html.ActionLink("наши работы", "Index", "Home", new { area = "", id = "ourworks" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "ourworks" }, new { @class = "adminLink" })
+        }
+    </div>
+    
+    
+    
+    
+      @{
+        className = ViewBag.CurrentMenuItemName == "articles" ? "selected" : "";
+    }
+    <div class="fourth @className">
+        @if (className == "selected")
+        {
+            <text>акции и скидки</text>
+        }
+        else
+        {
+            @Html.ActionLink("акции и скидки", "Articles", "Home", new { area = "" }, null)
         }
         @if (Request.IsAuthenticated)
         {
@@ -36,33 +82,19 @@
             @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "articles" }, new { @class = "adminLink" })
         }
     </div>
-    @{
-        className = ViewBag.CurrentMenuItemName == "contacts" ? "selected" : "";
-    }
-    <div class="third @className">
-        @if (className == "selected")
-        {
-            <text>адрес магазина и филиалов</text>
-        }
-        else
-        {
-            @Html.ActionLink("адрес магазина и филиалов", "Index", "Home", new { area = "", id = "contacts" }, null)
-        }
-        @if (Request.IsAuthenticated)
-        {
-            <br />
-            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
-        }
-    </div>
+    
+
+    
+
     @{
         className = ViewBag.CurrentMenuItemName == "tour" ? "selected" : "";
     }
-    <div class="fourth @className">
+    <div class="fifth @className">
         @*<a href="#"><span>3D-тур</span><br />по магазину</a>*@
         @if (className == "selected")
         {
             <text><span>3D-тур</span><br />
-            по магазину</text>
+                по магазину</text>
         }
         else
         {
@@ -74,4 +106,28 @@
             @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "tour" }, new { @class = "adminLink" })
         }
     </div>
+    
+    
+    
+   
+    
+     @{
+        className = ViewBag.CurrentMenuItemName == "contacts" ? "selected" : "";
+    }
+    <div class="sixth @className">
+        @if (className == "selected")
+        {
+            <text>контактная информация</text>
+        }
+        else
+        {
+            @Html.ActionLink("контактная информация", "Index", "Home", new { area = "", id = "contacts" }, null)
+        }
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = "contacts" }, new { @class = "adminLink" })
+        }
+    </div>
+
 </div>
