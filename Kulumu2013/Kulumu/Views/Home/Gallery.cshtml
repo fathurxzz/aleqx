@@ -1,236 +1,37 @@
-﻿@using Kulumu
-@using Kulumu.Models
-@using SiteExtensions.Graphics
+﻿@using Kulumu.Models
 @model GalleryModel 
 @section About
 {
-    @Html.Partial("About", new AboutModel { Title = Model.Category.BottomDescriptionTitle, Text = Model.Category.BottomDescription })
+    @Html.Partial("_About", new AboutModel { Title = Model.Category.BottomDescriptionTitle, Text = Model.Category.BottomDescription })
 }
 
-@{
-    int parentCategoryId=0;
-}
 <div class="gallery">
     <div class="categories">
-        <ul>
-            @foreach (var category in Model.Categories)
-            {
-                                        
-                <li>
-                    @if (category.Selected)
-                    {
-                        @category.Title
-                        parentCategoryId = category.Id;
-                    }
-                    else if (category.IsParent)
-                    {
-                        @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, new { @class = "parent" })
-                        parentCategoryId = category.Id;
-                    }
-                    else
-                    {
-                        @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
-                    }
-                </li>
-                                        
-            }
-            @if (Request.IsAuthenticated)
-            {
-                <li>
-                    @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
-                </li>
-            }
-        </ul>
+       @Html.Partial("_CategoriesMenu", Model.Categories)
     </div>
     <div class="title">
-        @Html.Partial("Title", Model.Category.Title)
+        @Html.Partial("_BigTitle", Model.ParentCategory.Title)
     </div>
     <div class="categories">
-        <ul>
-            @foreach (var child in Model.Categories.Where(category => category.Selected || category.IsParent).SelectMany(category => category.Children))
-            {
-                <li>
-                    @if (child.Selected)
-                    {
-                        @child.Title
-                    }
-                    else
-                    {
-                        @Html.ActionLink(child.Title, "Gallery", "Home", new { id = child.Name }, null)
-                    }
-                </li>
-            }
-            @if (Request.IsAuthenticated)
-            {
-                <li>
-                    @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin", id = parentCategoryId }, new { @class = "adminLink" })
-                </li>
-            }
-        </ul>
+        @Html.Partial("_SubCategoriesMenu", new SubCategoriesMenu { Categories = Model.Categories, ParentCategoryId = Model.ParentCategory.Id })
     </div>
     @if (Request.IsAuthenticated)
     {
         <div class="adminLinkContainer">
-            @Html.ActionLink("Добавить", "Create", "Product", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
-        </div>
-        
-        <div class="adminLinkContainer">
-            @Html.ActionLink("Добавить размер", "AddProductSize", "Category", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Редактировать текущую категорию", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Добавить размер для категории", "AddProductSize", "Category", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
         </div>
     }
-    
     <div class="description">
         @Html.Raw(Model.Category.Description)
     </div>
-
+    
     <div class="productSizes">
-        @{
-            var sl = new List<SelectListItem> {new SelectListItem {Text = "Доступен в размерах", Value = "avilable"}};
-            sl.AddRange(Model.Category.ProductSizes.Select(ps => new SelectListItem { Text = ps.Size, Value = ps.Size }).ToList());
-        }
-        @Html.DropDownList("ps",sl)
+        @Html.Partial("_ProductSizeList", Model.Category.ProductSizes)
     </div>
-    
-    <div>
-        @foreach (var product in Model.Category.Products)
-        {
-            <div class="product">
-                <div class="cont">
-                    <div class="image">
-                        <a rel="@Html.Raw("group1")" href="../../Content/Images/@product.ImageSource" class="fancyImage">
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview")))
-                        </a>
-                    </div>
-                </div>
-                <div class="sign">
-                    <div class="signTitle">@product.Title</div>
-                    <div class="signDescription">@Html.Raw(product.Description)</div>
-                </div>
-            </div>
-        }
-        <div class="clear">
-        </div>
-    </div>
-    
-    
 
-</div>
-@*<div class="categories">
-                    <div class="containerLeft">
-                        <div class="containerRight">
-                            <div class="containerCenter">
-                                <ul>
-                                    @foreach (var category in Model.Categories)
-                                    {
-                                        
-                                        <li>
-                                            @if (Model.Category.Name == category.Name)
-                                            {
-                                                @category.Title
-                                            }
-                                            else
-                                            {
-                                                @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
-                                            }
-                                        </li>
-                                        
-                                    }
-                                    @if (Request.IsAuthenticated)
-                                    {
-                                        <li>
-                                            @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-*@ @*
-<div class="mainFrame">
-    <div class="top">
-        @Html.Partial("Title", Model.Category.Title)
-    </div>
-    <div class="middle">
-        <div class="content">
-            <div class="description">
-                @if (Request.IsAuthenticated)
-                {
-                    @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" }) 
-                    @Html.Raw("&nbsp;")
-                    @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить категорию?')" })
-                    <br />
-                }
-                @Model.Category.Description
-                <div class="top-pattern">
-                </div>
-            </div>
-            @if (Request.IsAuthenticated)
-            {
-                <div>
-                    @Html.ActionLink("Добавить изображение", "Create", "Product", new { area = "admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
-                </div>
-            }
-            @if (!Model.Category.SpecialCategory)
-            {
-                <div class="categories">
-                    <div class="containerLeft">
-                        <div class="containerRight">
-                            <div class="containerCenter">
-                                <ul>
-                                    @foreach (var category in Model.Categories)
-                                    {
-                                        if (Request.IsAuthenticated && category.SpecialCategory || !category.SpecialCategory)
-                                        {
-                                        <li>
-                                            @if (Model.Category.Name == category.Name)
-                                            {
-                                                @category.Title
-                                            }
-                                            else
-                                            {
-                                                @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
-                                            }
-                                        </li>
-                                        }
-                                    }
-                                    @if (Request.IsAuthenticated)
-                                    {
-                                        <li>
-                                            @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-            @foreach (var product in Model.Products)
-            {
-                <div class="product">
-                    <div class="cont">
-                        <div class="image">
-                            <a rel="@Html.Raw("group1")" href="../../Content/Images/@product.ImageSource" class="fancyImage">
-                                @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview")))
-                            </a>
-                        </div>
-                    
-                    </div>
-                    <div class="sign">
-                            <div class="signTitle">@product.Title</div>
-                            <div class="signDescription">@Html.Raw(product.Description)</div>
-                        </div>
-                    
-                </div>
-            }
-            <div class="clear">
-            </div>
-            <div class="bottom-pattern">
-            </div>
-        </div>
-    </div>
-    <div class="bottom">
+    <div class="products">
+        @Html.Partial("_ProductList", Model.Category.Products)
     </div>
 </div>
-*@

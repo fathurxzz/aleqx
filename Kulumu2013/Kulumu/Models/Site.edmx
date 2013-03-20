@@ -11,6 +11,7 @@
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSize" EntityType="Site.Store.ProductSize" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductImage" EntityType="Site.Store.ProductImage" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
@@ -22,6 +23,10 @@
     <AssociationSet Name="CategoryCategory" Association="Site.Store.CategoryCategory">
       <End Role="Category" EntitySet="Category" />
       <End Role="Category1" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductImage" Association="Site.Store.ProductProductImage">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductImage" EntitySet="ProductImage" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Category">
@@ -45,7 +50,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Description" Type="longtext" Nullable="false" />
-    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="Discount" Type="bool" Nullable="false" />
     <Property Name="DiscountText" Type="longtext" Nullable="true" />
@@ -87,6 +92,14 @@
     <Property Name="Size" Type="nchar" Nullable="false" MaxLength="50" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
     <End Role="Product" Type="Site.Store.Product" Multiplicity="*" />
@@ -123,6 +136,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductProductImage">
+    <End Role="Product" Type="Site.Store.Product" Multiplicity="1" />
+    <End Role="ProductImage" Type="Site.Store.ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -144,6 +169,11 @@
           <AssociationSet Name="CategoryCategory" Association="Site.CategoryCategory">
             <End Role="Category" EntitySet="Category" />
             <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
+          <EntitySet Name="ProductImage" EntityType="Site.ProductImage" />
+          <AssociationSet Name="ProductProductImage" Association="Site.ProductProductImage">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImage" EntitySet="ProductImage" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
@@ -171,12 +201,13 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Description" Nullable="false" />
-          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="Category" Relationship="Site.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Boolean" Name="Discount" Nullable="false" />
           <Property Type="String" Name="DiscountText" />
           <Property Type="String" Name="Price" FixedLength="true" MaxLength="100" />
+          <NavigationProperty Name="ProductImages" Relationship="Site.ProductProductImage" FromRole="Product" ToRole="ProductImage" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -248,6 +279,27 @@
             </Principal>
             <Dependent Role="Category1">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="Product" Relationship="Site.ProductProductImage" FromRole="ProductImage" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductProductImage">
+          <End Type="Site.Product" Role="Product" Multiplicity="1" />
+          <End Type="Site.ProductImage" Role="ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -325,6 +377,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ProductImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ProductImage)">
+        <MappingFragment StoreEntitySet="ProductImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -363,6 +424,11 @@
           <ConnectorPoint PointX="4.6285576923076928" PointY="5.1436979166666656" />
           <ConnectorPoint PointX="5.2611538461538458" PointY="5.1436979166666656" />
           <ConnectorPoint PointX="5.2611538461538458" PointY="4.8936979166666656" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.ProductImage" Width="1.5" PointX="9.75" PointY="2" Height="1.4033821614583331" />
+        <AssociationConnector Association="Site.ProductProductImage">
+          <ConnectorPoint PointX="8.625" PointY="2.8939925130208337" />
+          <ConnectorPoint PointX="9.75" PointY="2.8939925130208337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

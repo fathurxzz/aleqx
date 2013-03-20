@@ -1,16 +1,12 @@
 ﻿@using Kulumu.Models
 @model SiteModel 
-@section Add
-{
-    @Html.Partial("Ad", new AdvertisingPanel { Article = Model.RandomArticle, DiscountProduct = Model.SingleDiscountProduct })
-}
 @section About
 {
-    @Html.Partial("About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+    @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
 <div class="mainFrame">
     <div class="top">
-        @Html.Partial("Title", Model.Content.Title)
+        @Html.Partial("_Title", Model.Content.Title)
     </div>
     <div class="middle">
         <div class="content">

@@ -180,6 +180,11 @@ img
 
 
 
+
+
+
+
+
 .titleContainer
 {
     position: absolute;
@@ -187,7 +192,7 @@ img
     margin-top: -22px;
 }
 
-table.title
+.titleContainer table.title
 {
     margin: 0 auto;
     height: 33px;
@@ -197,14 +202,14 @@ table.title
     font-family: PTNarrowBold;
 }
 
-table.title .a-left
+.titleContainer table.title .a-left
 {
     width: 63px;
     height: 33px;
     background: url('img/title-bg-left.png');
 }
 
-table.title .a-center
+.titleContainer table.title .a-center
 {
     font-size: 19px;
     text-transform: uppercase;
@@ -212,17 +217,71 @@ table.title .a-center
     height: 33px;
 }
 
-table.title .a-right
+.titleContainer table.title .a-right
 {
     height: 33px;
     width: 125px;
     background: url('img/title-bg-right.png');
 }
 
-table.title .a-center div
+.titleContainer table.title .a-center div
 {
     margin-right: -55px;
     margin-top: -4px;
+}
+
+
+
+
+
+.bigTitleContainer
+{
+    height: 46px;
+    width: 525px;
+    background: url('img/big-title-line.gif') repeat-x;
+    position: relative;
+    margin: 0 auto;
+}
+
+.bigTitleContainer table.title
+{
+    margin: 0 auto;
+    height: 46px;
+    color: #fff;
+    border: none;
+    border-collapse: collapse;
+    font-family: PTNarrowBold;
+}
+
+.bigTitleContainer table.title a
+{
+    color: #fff;
+}
+
+.bigTitleContainer table.title .a-left
+{
+    width: 66px;
+    height: 46px;
+    background: url('img/big-title-left.gif');
+}
+.bigTitleContainer table.title .a-center
+{
+    font-size: 19px;
+    text-transform: uppercase;
+    background: url('img/big-title-center.gif') repeat-x;
+    height: 46px;
+}
+.bigTitleContainer table.title .a-right
+{
+    height: 46px;
+    width: 120px;
+    background: url('img/big-title-right.gif');
+}
+
+.bigTitleContainer table.title .a-center div
+{
+    margin-right: -55px;
+    margin-top: -17px;
 }
 
 
@@ -259,7 +318,8 @@ table.title .a-center div
 }
 
 
-.product .sign {
+.product .sign
+{
     color: #3a220b;
     font-size: 12px;
     padding: 5px 30px;
@@ -377,23 +437,22 @@ table.title .a-center div
 
 .product
 {
-    width: 380px;
+    /*width: 380px;*/
+    width: 256px;
     float: left;
     margin: 23px;
 }
 
 .cont
 {
-    /*     width: 256px;     height: 166px; */
-    width: 380px;
-    height: 245px;
+    /*width: 256px; */
+    height: 166px; /*width: 380px;     height: 245px;*/
 }
 
 .product .image
 {
-    /*width: 256px;     height: 166px;*/
-    width: 380px;
-    height: 245px;
+    /*width: 256px;  */
+    height: 166px; /*width: 380px;     height: 245px;*/
     position: absolute;
 }
 
@@ -407,11 +466,72 @@ table.title .a-center div
 
 .products
 {
-    width: 906px;
-    margin-left: -22px;
+    width: 910px;
+    margin: 0 auto;
+    position: relative;
 }
 
 
+
+
+
+
+
+.top-pattern, .bottom-pattern
+{
+    width: 522px;
+    height: 36px;
+    position: relative;
+}
+
+.top-pattern
+{
+    margin: 30px auto 50px auto;
+    background: url(img/top-pattern.gif);
+}
+
+.bottom-pattern
+{
+    background: url(img/bottom-pattern.gif);
+    margin: 0 auto;
+}
+
+.mainFrame .content
+{
+    font-family: Georgia;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: -130px;
+    margin-bottom: -80px;
+    position: relative;
+    z-index: 100;
+}
+
+ul.flash-menu
+{
+    list-style: none;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul.flash-menu li
+{
+    display: inline;
+    padding: 20px;
+    font-family: PTNarrow;
+    font-size: 20px;
+}
+
+
+iframe
+{
+    overflow: hidden;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+/**********************************************************/
 
 
 /*
@@ -474,59 +594,3 @@ table.title .a-center div
 }
 
 */
-
-
-.top-pattern, .bottom-pattern
-{
-    width: 522px;
-    height: 36px;
-    position: relative;
-}
-
-.top-pattern
-{
-    margin: 30px auto 50px auto;
-    background: url(img/top-pattern.gif);
-}
-
-.bottom-pattern
-{
-    background: url(img/bottom-pattern.gif);
-    margin: 0 auto;
-}
-
-.mainFrame .content
-{
-    font-family: Georgia;
-    font-size: 12px;
-    line-height: 20px;
-    margin-top: -130px;
-    margin-bottom: -80px;
-    position: relative;
-    z-index: 100;
-}
-
-ul.flash-menu
-{
-    list-style: none;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-ul.flash-menu li
-{
-    display: inline;
-    padding: 20px;
-    font-family: PTNarrow;
-    font-size: 20px;
-}
-
-
-iframe
-{
-    overflow: hidden;
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-

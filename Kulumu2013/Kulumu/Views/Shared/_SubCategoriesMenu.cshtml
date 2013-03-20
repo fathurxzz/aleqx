@@ -1,0 +1,30 @@
+﻿@model Kulumu.Models.SubCategoriesMenu
+           
+<ul>
+    @foreach (var child in Model.Categories.Where(category => category.Selected || category.IsParent).SelectMany(category => category.Children).OrderBy(c => c.Id))
+    {
+        <li>
+            @if (child.Selected)
+            {
+                if (Model.SelectedAsLink)
+                {
+                    @Html.ActionLink(HttpUtility.HtmlDecode("&laquo;") + child.Title, "Gallery", "Home", new { id = child.Name }, new { @class = "subCategoryCurrent" })
+                }
+                else
+                {
+                    @child.Title
+                }
+            }
+            else
+            {
+                @Html.ActionLink(child.Title, "Gallery", "Home", new { id = child.Name }, null)
+            }
+        </li>
+    }
+    @if (Request.IsAuthenticated)
+    {
+        <li>
+            @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin", id = Model.ParentCategoryId }, new { @class = "adminLink" })
+        </li>
+    }
+</ul>

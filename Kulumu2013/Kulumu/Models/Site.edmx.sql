@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/19/2013 13:24:15
+-- Date Created: 03/20/2013 09:31:56
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -55,7 +55,7 @@ CREATE TABLE `Product` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
     `Description` longtext  NOT NULL,
-    `ImageSource` TEXT  NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL,
     `CategoryId` int  NOT NULL,
     `Discount` bool  NOT NULL,
     `DiscountText` longtext  NULL,
@@ -96,6 +96,14 @@ CREATE TABLE `ProductSize` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Size` varchar( 50 )  NOT NULL,
     `CategoryId` int  NOT NULL
+);
+
+-- Creating table 'ProductImage'
+
+CREATE TABLE `ProductImage` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL,
+    `ProductId` int  NOT NULL
 );
 
 
@@ -154,6 +162,21 @@ ADD CONSTRAINT `FK_CategoryCategory`
 CREATE INDEX `IX_FK_CategoryCategory` 
     ON `Category`
     (`CategoryId`);
+
+-- Creating foreign key on `ProductId` in table 'ProductImage'
+
+ALTER TABLE `ProductImage`
+ADD CONSTRAINT `FK_ProductProductImage`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductProductImage'
+
+CREATE INDEX `IX_FK_ProductProductImage` 
+    ON `ProductImage`
+    (`ProductId`);
 
 -- --------------------------------------------------
 -- Script has ended
