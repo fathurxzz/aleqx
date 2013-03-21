@@ -48,6 +48,7 @@ namespace Kulumu.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new GalleryModel(context, id);
+                ViewBag.CurrentMenuItemName = model.Content.Name;
                 this.SetSeoContent(model);
                 return View(model);
             }
