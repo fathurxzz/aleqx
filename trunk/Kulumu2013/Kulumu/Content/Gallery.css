@@ -78,10 +78,12 @@
     font-family: Georgia;
     font-size: 16px;
     margin-left: 50px;
+    line-height: 30px;
 }
 .productDetails .productInfo .title {
     font-weight: bold;
     padding: 0;
+    
 }
 
 .productDetails .productImages {

@@ -4,34 +4,33 @@
 {
     @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-
 @section MainPageGallery
 {
     @if (Model.Content.MainPage)
-{
-    <div class="frames">
-        @{
-            var cnt = 1;
-            foreach (var category in Model.MainPageCategories)
+    {
+        <div class="frames">
+            @{
+        var cnt = 1;
+        foreach (var category in Model.MainPageCategories)
+        {
+            cnt++;
+                @Html.Partial("Frame", new CaruselFrame { Id = "bx" + category.Id, Products = category.Products, Title = category.Title, CategoryName = category.Name })
+
+            if (cnt % 2 == 0)
             {
-                cnt++;
-                    @Html.Partial("Frame", new CaruselFrame { Id = "bx" + category.Id, Products = category.Products, Title = category.Title, CategoryName = category.Name })
-
-                if (cnt % 2 == 0)
-                {
-                    <div class="separator">
-                    </div>
-                }
-
+                <div class="separator">
+                </div>
             }
+
         }
-        <div class="clear">
+            }
+            <div class="clear">
+            </div>
         </div>
-    </div>
-}
-else
-{
-    <div class="mainFrame">
+    }
+    else
+    {
+@*<div class="mainFrame">
         <div class="top">
             @Html.Partial("_Title", Model.Content.Title)
         </div>
@@ -44,9 +43,14 @@ else
         </div>
         <div class="bottom">
         </div>
+    </div>*@
+    }
+}
+<div class="content">
+    <div class="title">
+        @Html.Partial("_Title", Model.Content.Title)
     </div>
-}
-
-}
-
-
+    <div class="text">
+        @Html.Raw(Model.Content.Text)
+    </div>
+</div>
