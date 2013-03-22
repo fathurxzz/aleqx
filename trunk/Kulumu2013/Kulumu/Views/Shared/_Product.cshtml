@@ -2,6 +2,8 @@
 @using SiteExtensions.Graphics
 @model Kulumu.Models.Product
 
+
+
 <div class="productInfo">
     <div class="title">
         @Html.Raw(Model.Title)
@@ -10,15 +12,28 @@
 </div>
 <div class="productImages">
     <div class="preview">
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productPreview")))
+        <a href="#" id="pictureLink" class="fancy">
+            <img src="" alt="" id="pictureContainer" />
+        </a>
+        @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productPreview")))*@
     </div>
+    <div id="productPreviews">
     @foreach (var image in Model.ProductImages)
     {
-        <div class="productThumb">
+        <div class="productThumb" onclick="ProjectCatalogue.changeImage('@image.ImageSource') ">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="abs">
+                    @Html.ActionLink("Обложка","SetCoverImage","Product",new{id=image.Id},new{@class="adminLink",onclick="return confirm('Сделать обложкой?')"})
+                    <br/>
+                    @Html.ActionLink("Удалить", "DeleteProductImage", "Product", new { id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                </div>
+            }
             @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productThumb")))
         </div>
     }
-    <div class="clear"></div>
+        <div class="clear"></div>
+        </div>
 </div>
 
 <div class="clear"></div>

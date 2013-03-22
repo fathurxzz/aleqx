@@ -6,14 +6,15 @@
 {
     @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-<div class="mainFrame">
+
+
+
+@*<div class="mainFrame">
     <div class="top">
         @Html.Partial("_Title", "Новости")
     </div>
     <div class="middle art">
         <div class="content">
-            @*<div class="our-news">
-            </div>*@
             @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
@@ -42,3 +43,4 @@
     <div class="bottom">
     </div>
 </div>
+*@
