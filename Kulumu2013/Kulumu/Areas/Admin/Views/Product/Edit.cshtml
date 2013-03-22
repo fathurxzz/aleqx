@@ -1,5 +1,4 @@
 ﻿@model Kulumu.Models.Product
-
 @{
     ViewBag.Title = "Редактирование изображения";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -43,11 +42,10 @@
             </tr>
             <tr>
                 <td>
-                    @Html.LabelFor(model => model.ImageSource)
+                    Добавить изображения
                 </td>
                 <td>
-                    <input type="file" name="fileUpload" class="photoFileInput" />
-                    @Html.ValidationMessageFor(model => model.ImageSource)
+                     @Html.Partial("InputImages")
                 </td>
             </tr>
             <tr>

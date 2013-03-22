@@ -63,7 +63,7 @@ namespace Kulumu.Areas.Admin.Controllers
                         if (string.IsNullOrEmpty(product.ImageSource))
                             product.ImageSource = pi.ImageSource;
                     }
-                    
+
                     context.AddToProduct(product);
                     context.SaveChanges();
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
@@ -80,7 +80,9 @@ namespace Kulumu.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var categories = context.Category.ToList();
-                ViewBag.Categories = categories.Select(category => new SelectListItem { Text = category.Title, Value = category.Id.ToString() }).ToList();
+                ViewBag.Categories =
+                    categories.Select(
+                        category => new SelectListItem { Text = category.Title, Value = category.Id.ToString() }).ToList();
 
                 var product = context.Product.First(p => p.Id == id);
                 return View(product);
@@ -88,7 +90,7 @@ namespace Kulumu.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, int categoryId, FormCollection form, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(int id, int categoryId, FormCollection form)
         {
             try
             {
@@ -100,23 +102,23 @@ namespace Kulumu.Areas.Admin.Controllers
                     TryUpdateModel(product, new[] { "Title", "Discount", "DiscountText", "Price" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
-                    if (fileUpload != null)
-                    {
-                        if (!string.IsNullOrEmpty(product.ImageSource))
-                        {
 
-                            IOHelper.DeleteFile("~/Content/Images", product.ImageSource);
-                            foreach (var thumbnail in SiteSettings.Thumbnails)
-                            {
-                                IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, product.ImageSource);
-                            }
-                        }
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        var file = Request.Files[i];
+                        if (file == null) continue;
+
+                        var pi = new ProductImage();
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
                         filePath = Path.Combine(filePath, fileName);
-                        fileUpload.SaveAs(filePath);
-                        product.ImageSource = fileName;
+                        file.SaveAs(filePath);
+                        pi.ImageSource = fileName;
+                        product.ProductImages.Add(pi);
+                        if (string.IsNullOrEmpty(product.ImageSource))
+                            product.ImageSource = pi.ImageSource;
                     }
+
                     context.SaveChanges();
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
@@ -131,11 +133,51 @@ namespace Kulumu.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var product = context.Product.First(p => p.Id == id);
+                var product = context.Product.Include("Category").Include("ProductImages").First(p => p.Id == id);
+                var categoryName = product.Category.Name;
+                while (product.ProductImages.Any())
+                {
+                    var productImage = product.ProductImages.First();
+                    ImageHelper.DeleteImage(productImage.ImageSource);
+                    context.DeleteObject(productImage);
+                }
+
                 ImageHelper.DeleteImage(product.ImageSource);
                 context.DeleteObject(product);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Gallery", "Home", new { area = "", id = categoryName });
+            }
+        }
+
+        public ActionResult SetCoverImage(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productImage = context.ProductImage.Include("Product").First(pi => pi.Id == id);
+                productImage.Product.ImageSource = productImage.ImageSource;
+                context.SaveChanges();
+                return RedirectToAction("ProductDetails", "Home", new { area = "", id = productImage.Product.Id });
+            }
+        }
+
+        public ActionResult DeleteProductImage(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productImage = context.ProductImage.Include("Product").First(pi => pi.Id == id);
+                var productId = productImage.Product.Id;
+
+                //if (productImage.Product.ImageSource == productImage.ImageSource)
+                //{
+
+                //}
+
+
+                ImageHelper.DeleteImage(productImage.ImageSource);
+                context.DeleteObject(productImage);
+                context.SaveChanges();
+
+                return RedirectToAction("ProductDetails", "Home", new { area = "", id = productId });
             }
         }
 

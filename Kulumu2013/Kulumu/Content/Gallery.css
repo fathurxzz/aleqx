@@ -96,6 +96,12 @@
 .productThumb {
     margin-right: 8px;
     float: left;
+    cursor: pointer;
+}
+
+.productThumb:hover {
+    /*background: rgba(0, 0, 0, 0.65);*/
+    
 }
 
 .productDetails .productImages .preview {

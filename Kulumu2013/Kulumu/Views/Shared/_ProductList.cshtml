@@ -6,9 +6,13 @@
     <div class="product">
         <div class="cont">
             <div class="image">
-                <div class="abs">
-                    @Html.ActionLink("Редактировать","Edit","Product",new{area="Admin",id=product.Id},new{@class="adminLink"})
-                </div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="abs">
+                        @Html.ActionLink("Редактировать", "Edit", "Product", new {area = "Admin", id = product.Id}, new {@class = "adminLink"})
+                        @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
+                    </div>
+                }
                 @Html.Raw(Html.ActionLink("[IMAGE]", "ProductDetails", "Home", new { area = "", id = product.Id }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview"))))
             </div>
         </div>
