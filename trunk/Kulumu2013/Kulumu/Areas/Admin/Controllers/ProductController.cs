@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Kulumu.Helpers;
 using Kulumu.Models;
 using SiteExtensions;
+using SiteExtensions.Graphics;
 
 namespace Kulumu.Areas.Admin.Controllers
 {
@@ -56,8 +57,12 @@ namespace Kulumu.Areas.Admin.Controllers
                         var pi = new ProductImage();
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
+
+
                         filePath = Path.Combine(filePath, fileName);
-                        file.SaveAs(filePath);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                        //file.SaveAs(filePath);
+
                         pi.ImageSource = fileName;
                         product.ProductImages.Add(pi);
                         if (string.IsNullOrEmpty(product.ImageSource))
@@ -112,7 +117,8 @@ namespace Kulumu.Areas.Admin.Controllers
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                         string filePath = Server.MapPath("~/Content/Images");
                         filePath = Path.Combine(filePath, fileName);
-                        file.SaveAs(filePath);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                        //file.SaveAs(filePath);
                         pi.ImageSource = fileName;
                         product.ProductImages.Add(pi);
                         if (string.IsNullOrEmpty(product.ImageSource))
