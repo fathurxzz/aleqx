@@ -205,6 +205,7 @@
     <Content Include="Content\img\main-panel-bg-middle.gif" />
     <Content Include="Content\img\main-panel-bg-top.gif" />
     <Content Include="Content\img\news.gif" />
+    <Content Include="Content\img\popup-bottom.gif" />
     <Content Include="Content\img\present.gif" />
     <Content Include="Content\img\seal.gif" />
     <Content Include="Content\img\title-bg-center.png" />
