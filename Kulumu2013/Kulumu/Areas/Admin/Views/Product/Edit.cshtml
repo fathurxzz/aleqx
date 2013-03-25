@@ -78,7 +78,14 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Gallery", "Home", new { area = "", id = Model.Category.Name }, null)
+             @if (Model.Category.SpecialCategory)
+             {
+                 @Html.ActionLink("Назад", "OurWorks", "Home", new {area = ""}, null)
+             }
+             else
+             {
+                 @Html.ActionLink("Назад", "Gallery", "Home", new {area = "", id = Model.Category.Name}, null)
+             }
         </div>
     }
 </div>
