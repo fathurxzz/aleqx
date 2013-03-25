@@ -88,8 +88,32 @@ namespace Kulumu.Models
 
             if (IsHomePage)
             {
-                MainPageCategories = context.Category.Include("Products").Where(c => c.Parent == null && !c.SpecialCategory).ToList();
+                //MainPageCategories = context.Category.Include("Products").Where(c => c.Parent != null && !c.SpecialCategory).ToList();
+
+
+
+                MainPageCategories = new List<Category>();
+                var allCategories = context.Category.Include("Children").Where(c => c.Parent == null && !c.SpecialCategory).ToList();
+                foreach (var category in allCategories)
+                {
+                    var cat = new Category { Name = category.Name, Title = category.Title, Id = category.Id };
+
+                    foreach (var child in category.Children)
+                    {
+                        child.Products.Load();
+                        foreach (var product in child.Products)
+                        {
+                            var p = new Product { Id = product.Id, ImageSource = product.ImageSource, Title = product.Title, Description = product.Description };
+                            cat.Products.Add(p);
+                        }
+                    }
+
+                    MainPageCategories.Add(cat);
+                }
+
             }
+
+
 
 
 

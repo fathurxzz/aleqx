@@ -2,20 +2,12 @@
 @using Kulumu.Helpers
 @using SiteExtensions.Graphics
 @model Kulumu.Models.CaruselFrame
-           
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(@Model.Id).bxSlider();
-    });    
-</script>
-
 <div class="frameContainer">
     <div class="image-container">
         @if (Model.Products.Any())
         {
             <ul id="@Model.Id">
-                @foreach(var product in Model.Products)
+                @foreach (var product in Model.Products)
                 {
                     <li>
                         @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
@@ -30,9 +22,8 @@
     </div>
     <div class="frame">
         @Html.Partial("_Title", Model.Title)
-        @*<div class="showAll">
-            @Html.ActionLink("В коллекции", "Gallery", "Home", new { area = "", id = Model.CategoryName }, null)
-            &raquo;
-        </div>*@
     </div>
 </div>
+<script type="text/javascript">
+    $('#@Model.Id').bxSlider();
+</script>

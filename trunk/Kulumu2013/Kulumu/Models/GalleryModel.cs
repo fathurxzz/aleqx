@@ -56,9 +56,19 @@ namespace Kulumu.Models
 
             if (productId.HasValue)
             {
-                var product = context.Product.Include("Category").First(p => p.Id == productId);
-                categoryId = product.Category.Name;
+                Product = _context.Product.Include("Category").Include("ProductImages").First(p => p.Id == productId);
+                if (categoryId == null)
+                {
+                    categoryId = Product.Category.Name;
+                }
             }
+
+
+            //if (productId.HasValue)
+            //{
+            //    var product = context.Product.Include("Category").First(p => p.Id == productId);
+            //    categoryId = product.Category.Name;
+            //}
 
             categoryId = GetFirstCategory(categoryId);
 
@@ -77,15 +87,7 @@ namespace Kulumu.Models
 
             Categories = _context.Category.Include("Children").Where(c => c.Parent == null&& !c.SpecialCategory).ToList();
 
-            if (productId.HasValue)
-            {
-                Product = _context.Product.Include("Category").Include("ProductImages").First(p => p.Id == productId);
-                if (categoryId == null)
-                {
-                    categoryId = Product.Category.Name;
-                }
-            }
-
+            
             foreach (var category in Categories)
             {
                 if (category.Name == categoryId)
