@@ -607,3 +607,14 @@ iframe
      font-family: Georgia;
     font-size: 12px;
 }
+
+
+.works .title {
+    padding-bottom: 40px;
+}
+
+.works .workscontent {
+    width: 910px;
+    margin: 0 auto;
+    position: relative;
+}

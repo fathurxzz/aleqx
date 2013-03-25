@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -170,6 +171,7 @@ namespace Kulumu.Models
         private ObjectSet<ProductImage> _ProductImage;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -221,11 +223,11 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -266,6 +268,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -488,6 +491,7 @@ namespace Kulumu.Models
         partial void OnImageSourceChanged();
 
         #endregion
+
     
     }
     
@@ -510,7 +514,8 @@ namespace Kulumu.Models
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="bottomDescriptionTitle">Initial value of the BottomDescriptionTitle property.</param>
         /// <param name="bottomDescription">Initial value of the BottomDescription property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String bottomDescriptionTitle, global::System.String bottomDescription)
+        /// <param name="specialCategory">Initial value of the SpecialCategory property.</param>
+        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String bottomDescriptionTitle, global::System.String bottomDescription, global::System.Boolean specialCategory)
         {
             Category category = new Category();
             category.Id = id;
@@ -519,10 +524,12 @@ namespace Kulumu.Models
             category.Description = description;
             category.BottomDescriptionTitle = bottomDescriptionTitle;
             category.BottomDescription = bottomDescription;
+            category.SpecialCategory = specialCategory;
             return category;
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -743,8 +750,33 @@ namespace Kulumu.Models
         private Nullable<global::System.Int32> _CategoryId;
         partial void OnCategoryIdChanging(Nullable<global::System.Int32> value);
         partial void OnCategoryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean SpecialCategory
+        {
+            get
+            {
+                return _SpecialCategory;
+            }
+            set
+            {
+                OnSpecialCategoryChanging(value);
+                ReportPropertyChanging("SpecialCategory");
+                _SpecialCategory = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SpecialCategory");
+                OnSpecialCategoryChanged();
+            }
+        }
+        private global::System.Boolean _SpecialCategory;
+        partial void OnSpecialCategoryChanging(global::System.Boolean value);
+        partial void OnSpecialCategoryChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -853,6 +885,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -889,6 +922,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1111,6 +1145,7 @@ namespace Kulumu.Models
         partial void OnTextChanged();
 
         #endregion
+
     
     }
     
@@ -1146,6 +1181,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1344,6 +1380,7 @@ namespace Kulumu.Models
         partial void OnPriceChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1408,6 +1445,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1436,6 +1474,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1514,6 +1553,7 @@ namespace Kulumu.Models
         partial void OnProductIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1556,6 +1596,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1584,6 +1625,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1662,6 +1704,7 @@ namespace Kulumu.Models
         partial void OnCategoryIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1704,8 +1747,10 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

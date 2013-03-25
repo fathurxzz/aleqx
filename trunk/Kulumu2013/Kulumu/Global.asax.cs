@@ -34,6 +34,18 @@ namespace Kulumu
             );
 
             routes.MapRoute(
+                "OurWorks", // Route name
+                "works", // URL with parameters
+                new { controller = "Home", action = "OurWorks", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "WorkDetails", // Route name
+                "works/{id}", // URL with parameters
+                new { controller = "Home", action = "WorkDetails", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Gallery", // Route name
                 "gallery", // URL with parameters
                 new { controller = "Home", action = "Gallery", id = UrlParameter.Optional } // Parameter defaults

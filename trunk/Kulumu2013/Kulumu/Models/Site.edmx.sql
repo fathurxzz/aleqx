@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/20/2013 09:31:56
--- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
+-- Date Created: 03/25/2013 12:02:32
+-- Generated from EDMX file: D:\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
@@ -19,6 +19,7 @@
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
 --    ALTER TABLE `ProductSize` DROP CONSTRAINT `FK_CategoryProductSize`;
 --    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
+--    ALTER TABLE `ProductImage` DROP CONSTRAINT `FK_ProductProductImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -29,6 +30,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `ProductSize`;
+    DROP TABLE IF EXISTS `ProductImage`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -46,7 +48,8 @@ CREATE TABLE `Category` (
     `BottomDescription` longtext  NOT NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` TEXT  NULL,
-    `CategoryId` int  NULL
+    `CategoryId` int  NULL,
+    `SpecialCategory` bool  NOT NULL
 );
 
 -- Creating table 'Product'
