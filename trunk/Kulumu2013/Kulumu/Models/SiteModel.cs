@@ -25,7 +25,7 @@ namespace Kulumu.Models
 
         //public Product SingleDiscountProduct { get; set; }
         //public List<Product> Products { get; set; }
-        
+
         public List<Category> MainPageCategories { get; set; }
         //public IEnumerable<Category> ChildCategories { get; set; }
 
@@ -58,7 +58,7 @@ namespace Kulumu.Models
 
             if (showArticles)
             {
-                Articles = context.Article.OrderByDescending(a=>a.Date).ToList();
+                Articles = context.Article.OrderByDescending(a => a.Date).ToList();
             }
 
             if (showOurWorks)
@@ -71,7 +71,7 @@ namespace Kulumu.Models
             //    RandomArticle = context.Article.RandomElement(new Random());
             //}
 
-            
+
 
             //ChildCategories = new List<Category>();
             //if (showChildCategories)
@@ -88,7 +88,7 @@ namespace Kulumu.Models
 
             if (IsHomePage)
             {
-                MainPageCategories = context.Category.Include("Products").Where(c => c.Parent == null).ToList();
+                MainPageCategories = context.Category.Include("Products").Where(c => c.Parent == null && !c.SpecialCategory).ToList();
             }
 
 
