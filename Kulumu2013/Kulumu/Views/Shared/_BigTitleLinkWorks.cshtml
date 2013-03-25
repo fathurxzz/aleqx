@@ -1,0 +1,16 @@
+﻿@model Kulumu.Models.Category 
+<div class="bigTitleContainer">
+    <table class="title">
+        <tr>
+            <td class="a-left">
+            </td>
+            <td class="a-center">
+                <div>
+                    @HttpUtility.HtmlDecode("&laquo;") @Html.ActionLink(Model.Title, "OurWorks", "Home", new { area="" }, null)
+                </div>
+            </td>
+            <td class="a-right">
+            </td>
+        </tr>
+    </table>
+</div>

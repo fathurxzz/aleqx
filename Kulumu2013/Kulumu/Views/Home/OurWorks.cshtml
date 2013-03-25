@@ -1,0 +1,44 @@
+﻿@using Kulumu
+@using Kulumu.Models
+@using SiteExtensions.Graphics
+@model SiteModel
+@section About
+{
+    @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+}
+<div class="works">
+    <div class="title">
+        @Html.Partial("_BigTitle", Model.Content.Title)
+    </div>
+    <div class="workscontent">
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.OurWorks.Id }, new { @class = "adminLink" })
+            </div>   
+        }
+        @foreach (var product in Model.OurWorks.Products)
+        {
+            <div class="product">
+                <div class="cont">
+                    <div class="image">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="abs">
+                                @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink" })
+                                @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
+                            </div>
+                        }
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "WorkDetails", "Home", new { area = "", id = product.Id }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryPreview"))))
+                    </div>
+                </div>
+                <div class="sign">
+                    <div class="signTitle">@product.Title</div>
+                    <div class="signDescription">@Html.Raw(product.Description)</div>
+                </div>
+            </div>
+        }
+        <div class="clear">
+        </div>
+    </div>
+</div>

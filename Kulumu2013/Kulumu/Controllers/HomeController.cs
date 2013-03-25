@@ -43,6 +43,16 @@ namespace Kulumu.Controllers
             }
         }
 
+        public ActionResult WorkDetails(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var model = new WorksModel(context, id);
+                this.SetSeoContent(model);
+                return View(model);
+            }
+        }
+
         public ActionResult Gallery(string id)
         {
             using (var context = new SiteContainer())
@@ -65,6 +75,17 @@ namespace Kulumu.Controllers
                 ViewBag.isHomePage = model.IsHomePage;
                 ViewBag.FlashId = id;
                 ViewBag.FlashName = id + ".html";
+                return View(model);
+            }
+        }
+
+        public ActionResult OurWorks()
+        {
+            using (var context = new SiteContainer())
+            {
+                var model = new SiteModel(context, "ourworks", false, true);
+                this.SetSeoContent(model);
+                ViewBag.CurrentMenuItemName = model.Content.Name;
                 return View(model);
             }
         }

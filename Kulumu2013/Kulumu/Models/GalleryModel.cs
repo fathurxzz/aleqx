@@ -29,7 +29,7 @@ namespace Kulumu.Models
             }
             else
             {
-                category = _context.Category.FirstOrDefault();
+                category = _context.Category.FirstOrDefault(c=>!c.SpecialCategory);
                 if (category != null)
                 {
                     var catId = category.Id;
@@ -69,7 +69,7 @@ namespace Kulumu.Models
 
 
 
-            Categories = _context.Category.Include("Children").Where(c => c.Parent == null).ToList();
+            Categories = _context.Category.Include("Children").Where(c => c.Parent == null&& !c.SpecialCategory).ToList();
 
             if (productId.HasValue)
             {

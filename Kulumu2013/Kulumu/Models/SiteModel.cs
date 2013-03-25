@@ -20,6 +20,9 @@ namespace Kulumu.Models
         public Article Article { get; set; }
         //public Article RandomArticle { get; set; }
         public List<Article> Articles { get; set; }
+
+        public Category OurWorks { get; set; }
+
         //public Product SingleDiscountProduct { get; set; }
         //public List<Product> Products { get; set; }
         
@@ -27,7 +30,7 @@ namespace Kulumu.Models
         //public IEnumerable<Category> ChildCategories { get; set; }
 
 
-        public SiteModel(SiteContainer context, string contentName, bool showArticles = false)
+        public SiteModel(SiteContainer context, string contentName, bool showArticles = false, bool showOurWorks = false)
         {
             Title = "Килими";
             if (contentName == null)
@@ -56,6 +59,11 @@ namespace Kulumu.Models
             if (showArticles)
             {
                 Articles = context.Article.OrderByDescending(a=>a.Date).ToList();
+            }
+
+            if (showOurWorks)
+            {
+                OurWorks = context.Category.Include("Products").First(c => c.Name == "ourworks");
             }
 
             //if (context.Article.FirstOrDefault() != null)

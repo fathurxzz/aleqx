@@ -21,6 +21,7 @@
             @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
             @Html.ActionLink("Редактировать текущую категорию", "Edit", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink" })
             @Html.ActionLink("Добавить размер для категории", "AddProductSize", "Category", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
+            @Html.ActionLink("Удалить категорию", "Delete", "Category", new { area = "Admin", id = Model.Category.Id }, new { @class = "adminLink", onclick="return confirm('Удалить категорию?')" })
         </div>
     }
     <div class="description">

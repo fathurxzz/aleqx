@@ -42,6 +42,7 @@
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="CategoryId" Type="int" Nullable="true" />
+    <Property Name="SpecialCategory" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -193,6 +194,7 @@
           <NavigationProperty Name="Children" Relationship="Site.CategoryCategory" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Parent" Relationship="Site.CategoryCategory" FromRole="Category1" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <Property Type="Boolean" Name="SpecialCategory" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -321,6 +323,7 @@
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SpecialCategory" ColumnName="SpecialCategory" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -406,11 +409,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site" >
-        <EntityTypeShape EntityType="Site.Category" Width="2.125" PointX="3.875" PointY="1.375" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="Site.Category" Width="2.125" PointX="3.875" PointY="1.375" Height="3.7109993489583326" />
         <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="2.7494921874999996" />
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="6" PointY="2.74974609375" />
-          <ConnectorPoint PointX="7.125" PointY="2.74974609375" />
+          <ConnectorPoint PointX="6" PointY="2.8458968098958328" />
+          <ConnectorPoint PointX="7.125" PointY="2.8458968098958328" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1" PointY="4.5" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="9" PointY="5" Height="2.7494921874999996" />
@@ -420,10 +423,10 @@
           <ConnectorPoint PointX="2.25" PointY="2.2689925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.CategoryCategory">
-          <ConnectorPoint PointX="4.6285576923076928" PointY="4.8936979166666656" />
-          <ConnectorPoint PointX="4.6285576923076928" PointY="5.1436979166666656" />
-          <ConnectorPoint PointX="5.2611538461538458" PointY="5.1436979166666656" />
-          <ConnectorPoint PointX="5.2611538461538458" PointY="4.8936979166666656" />
+          <ConnectorPoint PointX="4.6285576923076928" PointY="5.0859993489583326" />
+          <ConnectorPoint PointX="4.6285576923076928" PointY="5.3359993489583326" />
+          <ConnectorPoint PointX="5.2611538461538458" PointY="5.3359993489583326" />
+          <ConnectorPoint PointX="5.2611538461538458" PointY="5.0859993489583326" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.ProductImage" Width="1.5" PointX="9.75" PointY="2" Height="1.4033821614583331" />
         <AssociationConnector Association="Site.ProductProductImage">

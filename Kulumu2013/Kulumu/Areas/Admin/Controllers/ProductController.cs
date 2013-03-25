@@ -44,15 +44,18 @@ namespace Kulumu.Areas.Admin.Controllers
                 using (var context = new SiteContainer())
                 {
                     var category = context.Category.First(c => c.Id == categoryId);
-                    var product = new Product { Category = category };
+                    var product = new Product { Category = category, ImageSource = ""};
                     TryUpdateModel(product, new[] { "Title", "Discount", "DiscountText", "Price" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                     for (int i = 0; i < Request.Files.Count; i++)
                     {
+
                         var file = Request.Files[i];
+
                         if (file == null) continue;
+                        if (string.IsNullOrEmpty(file.FileName)) continue;
 
                         var pi = new ProductImage();
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
@@ -71,6 +74,12 @@ namespace Kulumu.Areas.Admin.Controllers
 
                     context.AddToProduct(product);
                     context.SaveChanges();
+
+                    if (category.SpecialCategory)
+                    {
+                        return RedirectToAction("OurWorks", "Home", new { area = "" });
+                    }
+
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
             }
@@ -112,6 +121,7 @@ namespace Kulumu.Areas.Admin.Controllers
                     {
                         var file = Request.Files[i];
                         if (file == null) continue;
+                        if (string.IsNullOrEmpty(file.FileName)) continue;
 
                         var pi = new ProductImage();
                         string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
@@ -126,6 +136,10 @@ namespace Kulumu.Areas.Admin.Controllers
                     }
 
                     context.SaveChanges();
+                    if (category.SpecialCategory)
+                    {
+                        return RedirectToAction("OurWorks", "Home", new { area = "" });
+                    }
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
             }
@@ -141,6 +155,7 @@ namespace Kulumu.Areas.Admin.Controllers
             {
                 var product = context.Product.Include("Category").Include("ProductImages").First(p => p.Id == id);
                 var categoryName = product.Category.Name;
+                var specialCategory = product.Category.SpecialCategory;
                 while (product.ProductImages.Any())
                 {
                     var productImage = product.ProductImages.First();
@@ -151,6 +166,12 @@ namespace Kulumu.Areas.Admin.Controllers
                 ImageHelper.DeleteImage(product.ImageSource);
                 context.DeleteObject(product);
                 context.SaveChanges();
+
+                if (specialCategory)
+                {
+                    return RedirectToAction("OurWorks", "Home", new { area = "" });
+                }
+
                 return RedirectToAction("Gallery", "Home", new { area = "", id = categoryName });
             }
         }
@@ -161,7 +182,14 @@ namespace Kulumu.Areas.Admin.Controllers
             {
                 var productImage = context.ProductImage.Include("Product").First(pi => pi.Id == id);
                 productImage.Product.ImageSource = productImage.ImageSource;
+                var productId = productImage.Product.Id;
                 context.SaveChanges();
+
+                var product = context.Product.Include("Category").First(p => p.Id == productId);
+                if (product.Category.SpecialCategory)
+                {
+                    return RedirectToAction("WorkDetails", "Home", new { area = "",id=product.Id });
+                }
                 return RedirectToAction("ProductDetails", "Home", new { area = "", id = productImage.Product.Id });
             }
         }
