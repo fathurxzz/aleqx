@@ -43,6 +43,16 @@ namespace Kulumu.Controllers
             }
         }
 
+        public ActionResult ProductDetailsPopUp(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var model = new GalleryModel(context, null, id);
+                this.SetSeoContent(model);
+                return PartialView(model);
+            }
+        }
+
         public ActionResult WorkDetails(int id)
         {
             using (var context = new SiteContainer())

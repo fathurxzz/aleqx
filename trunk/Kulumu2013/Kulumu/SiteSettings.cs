@@ -15,7 +15,7 @@ namespace Kulumu
         {
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
-                                  {"galleryImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 300,Width = 451}, CacheFolder = "galleryImage", ScaleMode = ScaleMode.Insert, Offset = 12}},
+                                  {"galleryImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 300,Width = 440}, CacheFolder = "galleryImage", ScaleMode = ScaleMode.Insert}},
                                   {"preview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 200}, CacheFolder = "preview", ScaleMode = ScaleMode.FixedWidth}},
                                   {"discount",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 293, Height = 193}, CacheFolder = "discount", ScaleMode = ScaleMode.Insert, Offset = 8}},
                                   {"galleryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 255, Height = 166}, CacheFolder = "galleryPreview", ScaleMode =  ScaleMode.Insert}},

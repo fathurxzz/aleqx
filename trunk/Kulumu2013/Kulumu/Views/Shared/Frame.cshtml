@@ -3,6 +3,9 @@
 @using SiteExtensions.Graphics
 @model Kulumu.Models.CaruselFrame
 <div class="frameContainer">
+    <div class="frame">
+        @Html.Partial("_Title", Model.Title)
+    </div>
     <div class="image-container">
         @if (Model.Products.Any())
         {
@@ -10,19 +13,17 @@
                 @foreach (var product in Model.Products)
                 {
                     <li>
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
-                        <div class="sign">
+                        @Html.Raw(Html.ActionLink("[IMAGE]", "ProductDetailsPopUp", "Home", new { id = product.Id }, new { @class = "fancyPopup" }).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage"))))
+                        @*<div class="sign">
                             <div class="signTitle">@product.Title</div>
                             <div class="signDescription">@Html.Raw(product.Description)</div>
-                        </div>
+                        </div>*@
                     </li>
                 }
             </ul>
         }
     </div>
-    <div class="frame">
-        @Html.Partial("_Title", Model.Title)
-    </div>
+    
 </div>
 <script type="text/javascript">
     $('#@Model.Id').bxSlider();
