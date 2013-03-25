@@ -54,6 +54,12 @@ namespace Kulumu.Models
         {
             _context = context;
 
+            if (productId.HasValue)
+            {
+                var product = context.Product.Include("Category").First(p => p.Id == productId);
+                categoryId = product.Category.Name;
+            }
+
             categoryId = GetFirstCategory(categoryId);
 
             if (!string.IsNullOrEmpty(categoryId))

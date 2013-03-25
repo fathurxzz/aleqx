@@ -598,7 +598,7 @@ iframe
 
 .content .title {
 
-    padding-top: 40px;
+    /*padding-top: 40px;*/
     padding-bottom: 40px;
 }
 
@@ -617,4 +617,13 @@ iframe
     width: 910px;
     margin: 0 auto;
     position: relative;
+}
+
+
+.mainPageGalleryTitle {
+    text-align: center;
+    padding-bottom: 60px;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #d70707;
 }
