@@ -534,6 +534,10 @@ iframe
     padding: 0;
 }
 
+
+
+
+
 /**********************************************************/
 
 
@@ -702,3 +706,39 @@ iframe
 }
 
 
+
+
+
+
+
+
+.content .categories
+{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Georgia;
+}
+
+.content .categories ul
+{
+    padding: 15px 15px;
+    border: 2px solid #afaeae;
+    display: inline-block;
+    background-color: #f7f7f7;
+    border-radius: 20px;
+}
+
+.content .categories ul li
+{
+    list-style: none;
+    display: inline;
+    padding: 17px;
+}
+
+.content .categories a
+{
+    font-weight: normal;
+    color: #0072bc;
+}
