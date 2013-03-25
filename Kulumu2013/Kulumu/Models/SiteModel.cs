@@ -90,8 +90,6 @@ namespace Kulumu.Models
             {
                 //MainPageCategories = context.Category.Include("Products").Where(c => c.Parent != null && !c.SpecialCategory).ToList();
 
-
-
                 MainPageCategories = new List<Category>();
                 var allCategories = context.Category.Include("Children").Where(c => c.Parent == null && !c.SpecialCategory).ToList();
                 foreach (var category in allCategories)
@@ -107,15 +105,10 @@ namespace Kulumu.Models
                             cat.Products.Add(p);
                         }
                     }
-
+                    
                     MainPageCategories.Add(cat);
                 }
-
             }
-
-
-
-
 
             //if (Products.Any(p => p.Discount))
             //{

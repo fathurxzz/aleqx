@@ -6,6 +6,7 @@
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
             }
 
+            
 
             $("#selectAll").click(function () {
 

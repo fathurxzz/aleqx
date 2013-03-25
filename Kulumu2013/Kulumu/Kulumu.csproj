@@ -102,6 +102,7 @@
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\GalleryModel.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -170,6 +171,7 @@
     <Content Include="Content\fancybox\fancy_title_over.png" />
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
+    <Content Include="Content\img\main-page-gallery-title.png" />
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\Gallery.css" />
     <Content Include="Content\img\about-bg-left.gif" />
@@ -312,6 +314,7 @@
     <Content Include="Views\Home\OurWorks.cshtml" />
     <Content Include="Views\Home\WorkDetails.cshtml" />
     <Content Include="Views\Shared\_BigTitleLinkWorks.cshtml" />
+    <Content Include="Views\Home\ProductDetailsPopUp.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
