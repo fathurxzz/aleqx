@@ -1,0 +1,44 @@
+﻿@using Kulumu
+@using Kulumu.Models
+@using SiteExtensions.Graphics
+@model Kulumu.Models.SiteModel
+@section About
+{
+    @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
+}
+<div class="articles">
+    <div class="title">
+        @Html.Partial("_BigTitle", Model.Content.Title)
+    </div>
+        <div class="article">
+            <div class="left">
+                <div class="date">@Model.Article.Date.ToShortDateString()</div>
+                <div class="description">@Html.Raw(Model.Article.Text)</div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div>
+                        @Html.ActionLink("Редактировать", "Edit", "Article", new { id = Model.Article.Id, area = "Admin" }, new { @class = "adminLink" })
+                        @Html.ActionLink("Удалить", "Delete", "Article", new { id = Model.Article.Id, area = "Admin" }, new { @class = "adminLink", onclick = "return confirm('Удалить новость?')" })
+                    </div>
+                }
+                <div class="detailsLink">@Html.Raw("&laquo;") @Html.ActionLink("Назад", "Articles", "Home")
+                    </div>
+            </div>
+            <div class="right">
+                <div class="promo">
+                    <div class="oldPrice">
+                        @Model.Article.OldPrice
+                    </div>
+                    <div class="star">
+                        @Model.Article.NewPrice
+                    </div>
+                    
+                </div>
+                <div class="picture">@Html.Raw(Html.CachedImage("~/Content/Images/", Model.Article.ImageSource, SiteSettings.GetThumbnail("articlePreview")))</div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    
+</div>
+

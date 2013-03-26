@@ -33,6 +33,18 @@ namespace Kulumu.Controllers
             }
         }
 
+        public ActionResult ArticleDetails(string id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var model = new SiteModel(context, "articles", true);
+                this.SetSeoContent(model);
+                model.Article = context.Article.First(a => a.Name == id);
+                ViewBag.CurrentMenuItemName = model.Content.Name;
+                return View(model);
+            }
+        }
+
         public ActionResult ProductDetails(int id)
         {
             using (var context = new SiteContainer())

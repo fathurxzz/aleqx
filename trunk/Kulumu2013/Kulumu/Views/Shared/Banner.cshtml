@@ -8,8 +8,11 @@
     @foreach (var item in Model) {
         <li>
             <a href="#">
-            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
             </a>
+            <div class="description">
+                @item.Description asdasdasd
+            </div>
         </li>
     }
 </ul>

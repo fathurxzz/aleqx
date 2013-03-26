@@ -12,6 +12,7 @@ namespace Kulumu.Models
     {
 
     }
+
     public class ArticleValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
@@ -19,14 +20,28 @@ namespace Kulumu.Models
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Веб-имя (отображается в строке адреса, должно быть уникальным)")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Заголовок")]
         public string Title { get; set; }
 
-        [DisplayName("Краткое описание (отображается только в блоке со случайной новостью)")]
+        [DisplayName("Краткое описание (отображается в списке новостей)")]
         public string Description { get; set; }
 
         [DisplayName("Текст")]
         public string Text { get; set; }
 
+        [DisplayName("Старая цена")]
+        [Required(ErrorMessage = "Обязательно!")]
+        public string OldPrice { get; set; }
+
+        [DisplayName("Новая цена")]
+        [Required(ErrorMessage = "Обязательно!")]
+        public string NewPrice { get; set; }
+
+        [DisplayName("Изображение")]
+        public string ImageSource { get; set; }
     }
 }
