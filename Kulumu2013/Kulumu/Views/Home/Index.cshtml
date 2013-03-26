@@ -9,7 +9,6 @@
     @if (Model.Content.MainPage)
     {
         <div class="mainPageGalleryTitle">
-            
         </div>
         
         <div class="frames">
@@ -33,23 +32,23 @@
         </div>
     }
 }
-
-
-
-
 <div class="content">
     <div class="title">
         @Html.Partial("_BigTitle", Model.Content.Title)
     </div>
-    
     @if (!Model.IsHomePage)
     {
         <div class="text">
             @Html.Raw(Model.Content.Text)
         </div>
     }
+    else
+    {
+        <div class="bannerContainer">
+            @Html.Partial("Banner", Model.Banners)
+        </div>
+    }
 </div>
-
 @section Includes
 {
     <link href="@Url.Content("~/Content/bx_styles/bx_styles.css")" rel="stylesheet" type="text/css" />

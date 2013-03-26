@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/25/2013 12:02:32
--- Generated from EDMX file: D:\projects\Kulumu2013\Kulumu\Models\Site.edmx
+-- Date Created: 03/26/2013 14:00:26
+-- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `kulumu2013`;
+CREATE DATABASE `kulumu2013`;
+USE `kulumu2013`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -43,7 +46,7 @@ CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
-    `Description` longtext  NOT NULL,
+    `Description` longtext  NULL,
     `BottomDescriptionTitle` varchar( 200 )  NOT NULL,
     `BottomDescription` longtext  NOT NULL,
     `SeoDescription` longtext  NULL,
@@ -57,7 +60,7 @@ CREATE TABLE `Category` (
 CREATE TABLE `Product` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` varchar( 200 )  NOT NULL,
-    `Description` longtext  NOT NULL,
+    `Description` longtext  NULL,
     `ImageSource` varchar( 200 )  NOT NULL,
     `CategoryId` int  NOT NULL,
     `Discount` bool  NOT NULL,
@@ -107,6 +110,16 @@ CREATE TABLE `ProductImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `ImageSource` varchar( 200 )  NOT NULL,
     `ProductId` int  NOT NULL
+);
+
+-- Creating table 'Banner'
+
+CREATE TABLE `Banner` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL,
+    `Link` varchar( 200 )  NULL,
+    `Description` TEXT  NULL,
+    `Price` varchar( 200 )  NULL
 );
 
 

@@ -1,0 +1,60 @@
+﻿@model Kulumu.Models.Banner
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<div class="adminContentContainer">
+    @using (Html.BeginForm("Create", "Banner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>Добавление баннера</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.ImageSource)
+                </td>
+                <td>
+                    <input type="file" name="fileUpload" class="photoFileInput" />
+                    @Html.ValidationMessageFor(model => model.ImageSource)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Link)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Link)
+                    @Html.ValidationMessageFor(model => model.Link)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Price)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </td>
+            </tr>
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Banner", new { area = "Admin" }, null)
+        </div>
+    }
+</div>

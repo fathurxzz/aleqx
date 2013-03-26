@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -169,9 +168,24 @@ namespace Kulumu.Models
             }
         }
         private ObjectSet<ProductImage> _ProductImage;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Banner> Banner
+        {
+            get
+            {
+                if ((_Banner == null))
+                {
+                    _Banner = base.CreateObjectSet<Banner>("Banner");
+                }
+                return _Banner;
+            }
+        }
+        private ObjectSet<Banner> _Banner;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -221,13 +235,21 @@ namespace Kulumu.Models
         {
             base.AddObject("ProductImage", productImage);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Banner EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBanner(Banner banner)
+        {
+            base.AddObject("Banner", banner);
+        }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -268,7 +290,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -491,7 +512,159 @@ namespace Kulumu.Models
         partial void OnImageSourceChanged();
 
         #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Banner")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Banner : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Banner object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static Banner CreateBanner(global::System.Int32 id, global::System.String imageSource)
+        {
+            Banner banner = new Banner();
+            banner.Id = id;
+            banner.ImageSource = imageSource;
+            return banner;
+        }
 
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Link
+        {
+            get
+            {
+                return _Link;
+            }
+            set
+            {
+                OnLinkChanging(value);
+                ReportPropertyChanging("Link");
+                _Link = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Link");
+                OnLinkChanged();
+            }
+        }
+        private global::System.String _Link;
+        partial void OnLinkChanging(global::System.String value);
+        partial void OnLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Price
+        {
+            get
+            {
+                return _Price;
+            }
+            set
+            {
+                OnPriceChanging(value);
+                ReportPropertyChanging("Price");
+                _Price = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Price");
+                OnPriceChanged();
+            }
+        }
+        private global::System.String _Price;
+        partial void OnPriceChanging(global::System.String value);
+        partial void OnPriceChanged();
+
+        #endregion
     
     }
     
@@ -511,17 +684,15 @@ namespace Kulumu.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
         /// <param name="bottomDescriptionTitle">Initial value of the BottomDescriptionTitle property.</param>
         /// <param name="bottomDescription">Initial value of the BottomDescription property.</param>
         /// <param name="specialCategory">Initial value of the SpecialCategory property.</param>
-        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String description, global::System.String bottomDescriptionTitle, global::System.String bottomDescription, global::System.Boolean specialCategory)
+        public static Category CreateCategory(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String bottomDescriptionTitle, global::System.String bottomDescription, global::System.Boolean specialCategory)
         {
             Category category = new Category();
             category.Id = id;
             category.Name = name;
             category.Title = title;
-            category.Description = description;
             category.BottomDescriptionTitle = bottomDescriptionTitle;
             category.BottomDescription = bottomDescription;
             category.SpecialCategory = specialCategory;
@@ -529,7 +700,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -610,7 +780,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -622,7 +792,7 @@ namespace Kulumu.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -776,7 +946,6 @@ namespace Kulumu.Models
         partial void OnSpecialCategoryChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -885,7 +1054,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -922,7 +1090,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1145,7 +1312,6 @@ namespace Kulumu.Models
         partial void OnTextChanged();
 
         #endregion
-
     
     }
     
@@ -1164,16 +1330,14 @@ namespace Kulumu.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="discount">Initial value of the Discount property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String description, global::System.String imageSource, global::System.Int32 categoryId, global::System.Boolean discount)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String title, global::System.String imageSource, global::System.Int32 categoryId, global::System.Boolean discount)
         {
             Product product = new Product();
             product.Id = id;
             product.Title = title;
-            product.Description = description;
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             product.Discount = discount;
@@ -1181,7 +1345,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1238,7 +1401,7 @@ namespace Kulumu.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -1250,7 +1413,7 @@ namespace Kulumu.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -1380,7 +1543,6 @@ namespace Kulumu.Models
         partial void OnPriceChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1445,7 +1607,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1474,7 +1635,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1553,7 +1713,6 @@ namespace Kulumu.Models
         partial void OnProductIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1596,7 +1755,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1625,7 +1783,6 @@ namespace Kulumu.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1704,7 +1861,6 @@ namespace Kulumu.Models
         partial void OnCategoryIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1747,10 +1903,8 @@ namespace Kulumu.Models
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

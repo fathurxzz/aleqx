@@ -606,7 +606,7 @@ iframe
 .content .title
 {
     /*padding-top: 40px;*/
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .content .text
@@ -671,7 +671,7 @@ iframe
     width: 1132px;
     height: 28px;
     position: relative;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 20px auto;
 }
 
 .popupContent .description .left
@@ -741,4 +741,12 @@ iframe
 {
     font-weight: normal;
     color: #0072bc;
+}
+
+
+.bannerContainer 
+{
+    width: 857px;
+    position: relative;
+    margin: 0 auto;
 }
