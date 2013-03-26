@@ -34,11 +34,9 @@ namespace Kulumu.Models
         public string Text { get; set; }
 
         [DisplayName("Старая цена")]
-        [Required(ErrorMessage = "Обязательно!")]
         public string OldPrice { get; set; }
 
         [DisplayName("Новая цена")]
-        [Required(ErrorMessage = "Обязательно!")]
         public string NewPrice { get; set; }
 
         [DisplayName("Изображение")]

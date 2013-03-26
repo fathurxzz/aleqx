@@ -69,7 +69,7 @@
                     @Html.LabelFor(model => model.OldPrice)
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.OldPrice)
+                    @Html.TextAreaFor(model => model.OldPrice, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.OldPrice)
                 </td>
             </tr>
@@ -78,7 +78,7 @@
                     @Html.LabelFor(model => model.NewPrice)
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.NewPrice)
+                    @Html.TextAreaFor(model => model.NewPrice, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.NewPrice)
                 </td>
             </tr>

@@ -24,8 +24,10 @@ namespace Kulumu.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var article = new Article { Name = "" };
-                TryUpdateModel(article, new[] { "Name", "Title", "Date", "Description","OldPrice","NewPrice" });
+                TryUpdateModel(article, new[] { "Name", "Title", "Date", "Description"});
                 article.Text = HttpUtility.HtmlDecode(form["Text"]);
+                article.OldPrice = HttpUtility.HtmlDecode(form["OldPrice"]);
+                article.NewPrice = HttpUtility.HtmlDecode(form["NewPrice"]);
                 if (fileUpload != null)
                 {
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
@@ -56,7 +58,9 @@ namespace Kulumu.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var article = context.Article.First(a => a.Id == id);
-                TryUpdateModel(article, new[] { "Name", "Title", "Date", "Description", "OldPrice", "NewPrice" });
+                TryUpdateModel(article, new[] { "Name", "Title", "Date", "Description" });
+                article.OldPrice = HttpUtility.HtmlDecode(form["OldPrice"]);
+                article.NewPrice = HttpUtility.HtmlDecode(form["NewPrice"]);
                 article.Text = HttpUtility.HtmlDecode(form["Text"]);
 
                 if (fileUpload != null)

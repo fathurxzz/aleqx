@@ -7,11 +7,14 @@
 <ul id="banner">
     @foreach (var item in Model) {
         <li>
+            <div class="price">
+                @item.Price
+            </div>
             <a href="#">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
             </a>
             <div class="description">
-                @item.Description asdasdasd
+                @item.Description
             </div>
         </li>
     }

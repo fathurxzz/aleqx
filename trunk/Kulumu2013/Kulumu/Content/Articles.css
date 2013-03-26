@@ -107,7 +107,9 @@
     height: 135px;
     width: 100px;
     float: left;
-    
+    font-family: PTNarrow;
+    line-height: 13px;
+    font-size: 13px;
 }
 
 .article .right .picture {
