@@ -1,7 +1,7 @@
 ﻿@model Kulumu.Models.Article
 
 @{
-    ViewBag.Title = "Создание новости";
+    ViewBag.Title = "Редактирование новости";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,14 +11,12 @@
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Name)
         @Html.HiddenFor(model => model.Id)
 
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
-                    <h2>
-                        Редактирование контента</h2>
+                    <h2>Редактирование новости</h2>
                 </td>
             </tr>
             <tr>
@@ -28,6 +26,15 @@
                 <td>
                     @Html.EditorFor(model => model.Date)
                     @Html.ValidationMessageFor(model => model.Date)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
                 </td>
             </tr>
             <tr>
@@ -55,6 +62,33 @@
                 <td>
                     @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.Text)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.OldPrice)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.OldPrice)
+                    @Html.ValidationMessageFor(model => model.OldPrice)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.NewPrice)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.NewPrice)
+                    @Html.ValidationMessageFor(model => model.NewPrice)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.ImageSource)
+                </td>
+                <td>
+                    <input type="file" name="fileUpload" class="photoFileInput" />
+                    @Html.ValidationMessageFor(model => model.ImageSource)
                 </td>
             </tr>
         </table>

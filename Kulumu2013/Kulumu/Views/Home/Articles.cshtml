@@ -1,14 +1,55 @@
-﻿@using Kulumu.Helpers
+﻿@using Kulumu
+@using Kulumu.Helpers
 @using Kulumu.Models
+@using SiteExtensions.Graphics
 @model SiteModel
-
 @section About
 {
     @Html.Partial("_About", new AboutModel { Title = Model.Content.DescriptionTitle, Text = Model.Content.Description })
 }
-
-
-
+<div class="articles">
+    <div class="title">
+        @Html.Partial("_BigTitle", Model.Content.Title)
+    </div>
+    @if (Request.IsAuthenticated)
+    {
+        <div>
+            @Html.ActionLink("Добавить новость", "Create", "Article", new{area="Admin"}, new { @class = "adminLink" })
+        </div>
+    }
+    @foreach (var item in Model.Articles.OrderByDescending(a => a.Date))
+    {
+        <div class="article">
+            <div class="left">
+                <div class="date">@item.Date.ToShortDateString()</div>
+                <div class="description">@item.Description</div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div>
+                        @Html.ActionLink("Редактировать","Edit","Article",new{id=item.Id,area="Admin"},new{@class="adminLink"})
+                        @Html.ActionLink("Удалить","Delete","Article",new{id=item.Id,area="Admin"},new{@class="adminLink",onclick="return confirm('Удалить новость?')"})
+                    </div>
+                }
+                <div class="detailsLink">@Html.ActionLink("Вся новость", "ArticleDetails", "Home", new { id = item.Name }, null)
+                    @Html.Raw("&raquo;")</div>
+            </div>
+            <div class="right">
+                <div class="promo">
+                    <div class="oldPrice">
+                        @item.OldPrice
+                    </div>
+                    <div class="star">
+                        @item.NewPrice
+                    </div>
+                    
+                </div>
+                <div class="picture">@Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articlePreview")))</div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    }
+</div>
 @*<div class="mainFrame">
     <div class="top">
         @Html.Partial("_Title", "Новости")

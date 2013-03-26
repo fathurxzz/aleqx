@@ -70,6 +70,12 @@ namespace Kulumu
                 new { controller = "Home", action = "Articles", id = UrlParameter.Optional } // Parameter defaults
             );
 
+            routes.MapRoute(
+                "ArticleDetails", // Route name
+                "articles/{id}", // URL with parameters
+                new { controller = "Home", action = "ArticleDetails", id = UrlParameter.Optional } // Parameter defaults
+            );
+
 
             routes.MapRoute(
                 "Content", // Route name
