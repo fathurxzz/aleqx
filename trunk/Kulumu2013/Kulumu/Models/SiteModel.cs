@@ -29,6 +29,8 @@ namespace Kulumu.Models
         public List<Category> MainPageCategories { get; set; }
         //public IEnumerable<Category> ChildCategories { get; set; }
 
+        public IEnumerable<Banner> Banners { get; set; }
+
 
         public SiteModel(SiteContainer context, string contentName, bool showArticles = false, bool showOurWorks = false)
         {
@@ -108,6 +110,8 @@ namespace Kulumu.Models
                     
                     MainPageCategories.Add(cat);
                 }
+
+                Banners = context.Banner.ToList();
             }
 
             //if (Products.Any(p => p.Discount))

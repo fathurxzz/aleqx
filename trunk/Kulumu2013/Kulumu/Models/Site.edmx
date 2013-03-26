@@ -12,6 +12,7 @@
     <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSize" EntityType="Site.Store.ProductSize" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductImage" EntityType="Site.Store.ProductImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Banner" EntityType="Site.Store.Banner" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
@@ -36,7 +37,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="BottomDescriptionTitle" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="BottomDescription" Type="longtext" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
@@ -50,7 +51,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="Discount" Type="bool" Nullable="false" />
@@ -100,6 +101,16 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Link" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="Price" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
@@ -176,6 +187,7 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductImage" EntitySet="ProductImage" />
           </AssociationSet>
+          <EntitySet Name="Banner" EntityType="Site.Banner" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -184,7 +196,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Description" />
           <Property Type="String" Name="BottomDescriptionTitle" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="BottomDescription" Nullable="false" />
           <Property Type="String" Name="SeoDescription" />
@@ -202,7 +214,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Description" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="Category" Relationship="Site.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
@@ -305,6 +317,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Link" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="Price" FixedLength="true" MaxLength="200" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -389,6 +411,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Banner">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Banner)">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -433,6 +466,7 @@
           <ConnectorPoint PointX="8.625" PointY="2.8939925130208337" />
           <ConnectorPoint PointX="9.75" PointY="2.8939925130208337" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Banner" Width="1.5" PointX="6.625" PointY="5" Height="1.9802864583333326" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

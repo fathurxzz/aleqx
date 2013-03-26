@@ -14,10 +14,6 @@
                 {
                     <li>
                         @Html.Raw(Html.ActionLink("[IMAGE]", "ProductDetailsPopUp", "Home", new { id = product.Id }, new { @class = "fancyPopup" }).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage"))))
-                        @*<div class="sign">
-                            <div class="signTitle">@product.Title</div>
-                            <div class="signDescription">@Html.Raw(product.Description)</div>
-                        </div>*@
                     </li>
                 }
             </ul>

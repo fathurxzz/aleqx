@@ -1,0 +1,19 @@
+﻿@using Kulumu
+@using SiteExtensions.Graphics
+@model IEnumerable<Kulumu.Models.Banner>
+
+
+
+<ul id="banner">
+    @foreach (var item in Model) {
+        <li>
+            <a href="#">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
+            </a>
+        </li>
+    }
+</ul>
+
+<script type="text/javascript">
+    $('#banner').bxSlider();
+</script>

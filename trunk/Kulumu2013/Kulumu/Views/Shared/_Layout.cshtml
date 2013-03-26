@@ -46,6 +46,11 @@
                 @Html.ActionLink("Выйти из админки", "LogOff", "Account", new { area = "" }, new { @class = "adminLink" })
                 &nbsp; &nbsp;
                 @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id = "main" }, new { @class = "adminLink" })
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                
+                @Html.ActionLink("Редактировать баннеры", "Index", "Banner", new { area = "Admin" }, new { @class = "adminLink" })
             </div>
         }
         @Html.Partial("Header")

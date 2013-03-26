@@ -1,0 +1,57 @@
+﻿@using Kulumu
+@using SiteExtensions.Graphics
+@model IEnumerable<Kulumu.Models.Banner>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContentContainer">
+
+<h2>Баннеры</h2>
+
+<p>
+    @Html.ActionLink("Добавить баннер", "Create",null,new{@class="adminLink"})
+</p>
+<table>
+    <tr>
+        <th>
+            Изображение
+        </th>
+        <th>
+            Ссылка
+        </th>
+        <th>
+            Текст описания
+        </th>
+        <th>
+            Цена
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("bannerPreview")))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @class = "adminLink" }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "adminLink",onclick="return confirm('Удалить баннер?')" })
+        </td>
+    </tr>
+}
+
+</table>
+
+</div>
