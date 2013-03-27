@@ -104,6 +104,7 @@
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\GalleryModel.cs" />
+    <Compile Include="Models\LinkModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
@@ -325,6 +326,7 @@
     <Content Include="Views\Home\ProductDetailsPopUp.cshtml" />
     <Content Include="Views\Shared\Banner.cshtml" />
     <Content Include="Views\Home\ArticleDetails.cshtml" />
+    <Content Include="Views\Shared\_TitleLink.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
