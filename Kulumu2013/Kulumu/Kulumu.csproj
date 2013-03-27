@@ -210,6 +210,7 @@
     <Content Include="Content\img\popup-bottom.gif" />
     <Content Include="Content\img\present.gif" />
     <Content Include="Content\img\seal.gif" />
+    <Content Include="Content\img\smallstar.png" />
     <Content Include="Content\img\star.gif" />
     <Content Include="Content\img\title-bg-center.png" />
     <Content Include="Content\img\title-bg-left.png" />

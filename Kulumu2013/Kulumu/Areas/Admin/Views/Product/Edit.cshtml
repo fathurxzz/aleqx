@@ -62,7 +62,7 @@
                     @Html.LabelFor(model => model.DiscountText)
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.DiscountText)
+                    @Html.TextAreaFor(model => model.DiscountText, new { @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.DiscountText)
                 </td>
             </tr>
