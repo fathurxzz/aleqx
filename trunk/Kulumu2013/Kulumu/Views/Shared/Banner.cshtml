@@ -11,7 +11,7 @@
                     @item.Price
                 </div>
             }
-            <a href="#">
+            <a href="@item.Link">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
             </a>
             <div class="description">

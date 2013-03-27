@@ -310,6 +310,30 @@ img
     display: block;
 }
 
+.promostar {
+    position: absolute;
+    width: 68px;
+    padding-top: 14px;
+    height: 53px;
+    background: url('img/smallstar.png');
+
+    font-family: PTNarrow;
+    color: #fff;
+    text-align: center;
+}
+
+.frameContainer .promostar {
+    
+    margin-left: 350px;
+    margin-top: 20px;
+}
+
+.popupContent .promostar{
+    margin-top: 20px;
+    margin-left: 1100px;
+}
+
+
 .image-container .sign
 {
     z-index: 1001;

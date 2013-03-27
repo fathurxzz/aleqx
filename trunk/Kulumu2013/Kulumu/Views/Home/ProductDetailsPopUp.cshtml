@@ -3,6 +3,12 @@
 @model Kulumu.Models.GalleryModel
 <div class="popupContent">
     <div class="image">
+        @if (Model.Product.Discount)
+                        {
+                            <div class="promostar">
+                                @Html.Raw(Model.Product.DiscountText)
+                            </div>
+                        }
         @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("bigPreview")))
     </div>
     <div class="description">

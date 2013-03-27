@@ -103,7 +103,7 @@ namespace Kulumu.Models
                         child.Products.Load();
                         foreach (var product in child.Products)
                         {
-                            var p = new Product { Id = product.Id, ImageSource = product.ImageSource, Title = product.Title, Description = product.Description };
+                            var p = new Product { Id = product.Id, ImageSource = product.ImageSource, Title = product.Title, Description = product.Description,Discount = product.Discount,DiscountText = product.DiscountText};
                             cat.Products.Add(p);
                         }
                     }
