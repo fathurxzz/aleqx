@@ -1,10 +1,11 @@
 ﻿@using Kulumu
 @using Kulumu.Helpers
+@using Kulumu.Models
 @using SiteExtensions.Graphics
 @model Kulumu.Models.CaruselFrame
 <div class="frameContainer">
     <div class="frame">
-        @Html.Partial("_Title", Model.Title)
+        @Html.Partial("_TitleLink", new LinkModel{Name = Model.CategoryName, Title = Model.Title})
     </div>
     <div class="image-container">
         @if (Model.Products.Any())

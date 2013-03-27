@@ -18,6 +18,7 @@
             </tr>
         }
     </table>
+    @Html.ActionLink("Добавить размер", "AddProductSize", "Category", new { area = "Admin", categoryId = (int)ViewBag.CurrentCategoryId }, new { @class = "adminLink" })
 }
 else
 {

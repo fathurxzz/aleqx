@@ -1,0 +1,16 @@
+﻿@model Kulumu.Models.LinkModel
+<div class="titleContainer">
+    <table class="title">
+        <tr>
+            <td class="a-left">
+            </td>
+            <td class="a-center">
+                <div>
+                    @Html.ActionLink(Model.Title,"Gallery","Home",new{area="",id=Model.Name},null) &raquo;
+                </div>
+            </td>
+            <td class="a-right">
+            </td>
+        </tr>
+    </table>
+</div>
