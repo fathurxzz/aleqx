@@ -778,21 +778,22 @@ iframe
 
 .bannerContainer 
 {
-    width: 857px;
+    width: 800px;
     position: relative;
     margin: 0 auto;
 }
 
-#banner .description {
-    position: absolute;
+#banner .label_skitter p {
+    /*position: absolute;
     top: 233px;
     width: 796px;
-    height: 20px;
+    height: 20px;*/
     background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
     font-family: PTNarrow;
     padding: 10px 30px;
     font-size: 15px;
+    padding: 10px;
 }
 
 #banner .price {

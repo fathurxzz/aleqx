@@ -1,25 +1,47 @@
 ﻿@using Kulumu
 @using SiteExtensions.Graphics
 @model IEnumerable<Kulumu.Models.Banner>
-<ul id="banner">
-    @foreach (var item in Model)
-    {
-        <li>
-            @if (!string.IsNullOrEmpty(item.Price))
+<div class="border_box">
+    <div class="box_skitter box_skitter_large">
+        <ul id="banner">
+            @foreach (var item in Model)
             {
-                <div class="price">
-                    @item.Price
-                </div>
+                <li>
+                    @if (!string.IsNullOrEmpty(item.Price))
+                    {
+                        <div class="price">
+                            @item.Price
+                        </div>
+                    }
+                    <a href="@item.Link">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
+                    </a>
+                    @*<div class="description">
+                        @item.Description
+                    </div>*@
+                    <div class="label_text"><p>@item.Description</p></div>
+                </li>
             }
-            <a href="@item.Link">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("banner")))
-            </a>
-            <div class="description">
-                @item.Description
-            </div>
-        </li>
-    }
-</ul>
+        </ul>
+    </div>
+</div>
 <script type="text/javascript">
-    $('#banner').bxSlider({ randomStart: true, auto:true,pause:5000 });
+    //$('#banner').bxSlider({ randomStart: true, auto: true, pause: 5000 });
+
+    //var options = {};
+    //options['dots'] = false;
+    //options['preview'] = false;
+    
+    //options['animation'] = cubeRandom;
+
+    //$('.box_skitter_large').skitter({ animation: "cubeRandom" });
+
+
+    $('.box_skitter_large').skitter(
+	{
+	    animation: "cubeRandom",
+	    numbers: false
+	}
+	);
+    
 </script>
