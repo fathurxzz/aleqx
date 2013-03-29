@@ -70,11 +70,11 @@
     <div class="fourth @className">
         @if (className == "selected")
         {
-            <text>акции и скидки</text>
+            <text>Акции и новости</text>
         }
         else
         {
-            @Html.ActionLink("акции и скидки", "Articles", "Home", new { area = "" }, null)
+            @Html.ActionLink("Акции и новости", "Articles", "Home", new { area = "" }, null)
         }
         @if (Request.IsAuthenticated)
         {
