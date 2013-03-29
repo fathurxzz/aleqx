@@ -15,11 +15,15 @@
             {
                 @Html.ActionLink(category.Title, "Gallery", "Home", new { id = category.Name }, null)
             }
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("[Ред.]", "Edit", "Category", new { area = "Admin", id = category.Id }, new { @class = "adminLink" })
+            }
         </li>
     }
     @if (Request.IsAuthenticated)
     {
-        <li>
+        <li style="padding: 0 !important">
             @Html.ActionLink("Добавить", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
         </li>
     }
