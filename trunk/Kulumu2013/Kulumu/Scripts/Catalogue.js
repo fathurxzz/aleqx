@@ -1,12 +1,13 @@
 ﻿var ProjectCatalogue = {
     initialize: function () {
         $(function () {
-            
+
         });
     },
 
     setFirstImage: function () {
         var fileName = $("#productPreviews").find("img").attr("alt");
+        //ProjectCatalogue.changeImage(fileName);
         ProjectCatalogue._updateImageContainer(fileName);
     },
 
