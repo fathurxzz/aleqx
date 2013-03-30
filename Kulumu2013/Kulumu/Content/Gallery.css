@@ -22,7 +22,12 @@
 {
     list-style: none;
     display: inline;
-    padding: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
+    /*border: 1px solid red;*/
+    /*padding-bottom: 10px;*/
+    line-height: 25px;
+    
     /*margin: 17px;*/
 }
 
