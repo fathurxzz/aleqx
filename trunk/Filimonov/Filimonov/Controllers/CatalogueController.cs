@@ -7,6 +7,7 @@ using SiteExtensions.Graphics;
 
 namespace Filimonov.Controllers
 {
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
     public class CatalogueController : Controller
     {
         [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]

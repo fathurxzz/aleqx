@@ -35,24 +35,48 @@
         }
     </ul>
 </div>
-<div class="category-details">
-    @foreach (var item in Model.Products)
-    {
-        if (item.Layout.Name == ViewBag.Layout || string.IsNullOrEmpty(ViewBag.Layout))
-        {
+@using (Html.BeginForm("AddProductToSet", "UserCabinet", FormMethod.Post))
+{
 
-        <div class="product">
-            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    @Html.Hidden("categoryId", Model.Name)
+    @Html.Hidden("enablities")
+    
+    <div class="category-details">
+        @foreach (var item in Model.Products)
+        {
+            if (item.Layout.Name == ViewBag.Layout || string.IsNullOrEmpty(ViewBag.Layout))
             {
-                <div class="abs">
-                    @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой?')" })
-                    @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                var id = "p_" + item.Id;
+
+            <div class="product" id="@id">
+                <div class="selectedMarker">
                 </div>
+                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                {
+                    <div class="abs">
+                        @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой?')" })
+                        @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                    </div>
+                }
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
+            </div>
             }
-            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
-        </div>
         }
-    }
-    <div class="clear">
+        <div class="clear">
+        </div>
     </div>
-</div>
+
+        if (!Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+        {
+            <div class="addToProductSetPanel">
+                Куда копировать выбранные изображения?
+                @{
+                    var sl = new List<SelectListItem>();
+                    sl.AddRange(((IEnumerable<ProductSet>)ViewBag.ProductSets).Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString() }).OrderBy(pc=>pc.Value) .ToList());
+                    @Html.DropDownList("productContainers", sl)
+                }
+                <input type="submit" value="Скопировать" onclick=" return PresentationPageExtender.collectChanges() " />
+            </div>
+        }
+
+}

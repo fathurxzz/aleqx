@@ -1,16 +1,26 @@
 ﻿@using Filimonov.Models
 @model Filimonov.Models.Customer
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
-
 @Html.Partial("_PresentationMenu")
-
 <div class="category-title">
     <h1>@Model.Title</h1>
 </div>
+<div>
+    @foreach (var item in Model.ProductSets)
+    {
+        <div>
+            @item.Title
+        </div>
+    }
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
+        @Html.ActionLink("Add product set", "AddProductSet", "UserCabinet", new { id = Model.Name }, new { @class = "adminLink" })
+    }
+</div>
+
 <div class="layouts-filter">
     @{
         var layouts = (IEnumerable<Layout>)ViewBag.Layouts;

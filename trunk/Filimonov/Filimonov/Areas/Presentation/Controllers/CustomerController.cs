@@ -8,7 +8,7 @@ using Filimonov.Models;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
-
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
     public class CustomerController : Controller
     {
         //
@@ -172,12 +172,12 @@ namespace Filimonov.Areas.Presentation.Controllers
         {
             using (var context = new LibraryContainer())
             {
-                var customer = context.Customer.Include("ProductContainers").First(c => c.Id == id);
+                var customer = context.Customer.Include("ProductSets").First(c => c.Id == id);
                 string userName = customer.Name;
 
-                while (customer.ProductContainers.Any())
+                while (customer.ProductSets.Any())
                 {
-                    var productContainer = customer.ProductContainers.First();
+                    var productContainer = customer.ProductSets.First();
                     context.DeleteObject(productContainer);
                     context.SaveChanges();
                 }
