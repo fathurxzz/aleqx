@@ -75,33 +75,6 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
-
-        public ActionResult AddProductToSet(FormCollection form)
-        {
-            using (var context = new LibraryContainer())
-            {
-                var categoryId = form["categoryId"];
-
-                var serializer = new JavaScriptSerializer();
-                if (!string.IsNullOrEmpty(form["enablities"]))
-                {
-                    var enables = serializer.Deserialize<Dictionary<string, int>>(form["enablities"]);
-
-                    foreach (KeyValuePair<string, int> pair in enables)
-                    {
-                        int key = Convert.ToInt32(pair.Key.Split(new[] { "p_" }, StringSplitOptions.None)[1]);
-                        int value = pair.Value;
-
-                    }
-
-                    var userName = WebSession.GetUserName(User.Identity.Name);
-                    var client = context.Customer.First(c => c.Name == userName);
-
-
-                }
-
-                return RedirectToAction("Details", "Category", new { id = categoryId });
-            }
-        }
+        
     }
 }
