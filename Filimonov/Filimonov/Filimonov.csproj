@@ -176,6 +176,7 @@
     <Content Include="Content\img\pictures-lib.gif" />
     <Content Include="Content\img\presentation-footer.gif" />
     <Content Include="Content\img\presentation-header.gif" />
+    <Content Include="Content\img\product-checked.png" />
     <Content Include="Content\img\project-frame.gif" />
     <Content Include="Content\img\project-main-view-bg.gif" />
     <Content Include="Content\img\site-bg.jpg" />
@@ -305,6 +306,7 @@
     <Content Include="Areas\Presentation\Views\Customer\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\UserCabinet\Details.cshtml" />
+    <Content Include="Areas\Presentation\Views\UserCabinet\AddProductSet.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

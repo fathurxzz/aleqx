@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Filimonov.Helpers;
 using Filimonov.Models;
 using SiteExtensions;
@@ -11,6 +12,7 @@ using SiteExtensions;
 namespace Filimonov.Areas.Presentation.Controllers
 {
     [Authorize(Roles = "Administrators")]
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
     public class ProductController : Controller
     {
 
@@ -134,5 +136,7 @@ namespace Filimonov.Areas.Presentation.Controllers
                 return RedirectToAction("Details", "Category", new {id = category.Name});
             }
         }
+
+        
     }
 }

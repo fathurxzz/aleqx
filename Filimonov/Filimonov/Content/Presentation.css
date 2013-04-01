@@ -76,8 +76,23 @@
     width: 300px;
     height: 225px;
     margin: 5px;
-    
+    cursor: pointer;
 }
+
+.category-details .product .selectedMarker {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+.category-details .product .selectedMarker.selected {
+    background-image: url('img/product-checked.png');
+}
+
+
 
 .category-title {
     text-align: center;
@@ -123,4 +138,11 @@
 
 .customerlogonlink {
     width: 450px;
+}
+
+
+.addToProductSetPanel 
+{
+    padding-top: 30px;
+    text-align: center;
 }

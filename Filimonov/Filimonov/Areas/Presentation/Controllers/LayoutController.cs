@@ -8,6 +8,7 @@ using Filimonov.Models;
 namespace Filimonov.Areas.Presentation.Controllers
 {
     [Authorize(Roles = "Administrators")]
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
     public class LayoutController : Controller
     {
         //

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using Filimonov.Helpers;
 using Filimonov.Models;
 
 namespace Filimonov.Areas.Presentation.Controllers
@@ -12,7 +14,8 @@ namespace Filimonov.Areas.Presentation.Controllers
     {
         //
         // GET: /Presentation/UserCabinet/
-        [Authorize(Roles = "Administrators")]
+        //[Authorize(Roles = "Administrators")]
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
         public ActionResult Index()
         {
 
@@ -21,7 +24,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         //
         // GET: /Presentation/UserCabinet/Details/5
-
+        //[Authorize(Roles = "Administrators")]
         public ActionResult Details(string id, string layout)
         {
             if (User.Identity.Name != "admin")
@@ -34,7 +37,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
             using (var context = new LibraryContainer())
             {
-                var customer = context.Customer.Include("ProductContainers").First(c => c.Name == id);
+                var customer = context.Customer.Include("ProductSets").First(c => c.Name == id);
 
                 var layouts = context.Layout.ToList();
                 layouts.Insert(0, new Layout { Name = "", Title = "Все" });
@@ -46,81 +49,58 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
-        //
-        // GET: /Presentation/UserCabinet/Create
-
-        public ActionResult Create()
+        //[Authorize(Roles = "Administrators")]
+        public ActionResult AddProductSet(string id)
         {
+            ViewBag.CustomerId = id;
             return View();
-        } 
-
-        //
-        // POST: /Presentation/UserCabinet/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
+
         
-        //
-        // GET: /Presentation/UserCabinet/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Presentation/UserCabinet/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult AddProductSet(string customerId, FormCollection form)
         {
-            try
+            using (var context = new LibraryContainer())
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var customer = context.Customer.Include("ProductSets").First(c => c.Name == customerId);
+
+                var productSet = new ProductSet();
+
+                TryUpdateModel(productSet, new[] { "Title" });
+                customer.ProductSets.Add(productSet);
+
+                context.SaveChanges();
+
+                return RedirectToAction("Details", new { id = customer.Name });
             }
         }
 
-        //
-        // GET: /Presentation/UserCabinet/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        //
-        // POST: /Presentation/UserCabinet/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult AddProductToSet(FormCollection form)
         {
-            try
+            using (var context = new LibraryContainer())
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var categoryId = form["categoryId"];
+
+                var serializer = new JavaScriptSerializer();
+                if (!string.IsNullOrEmpty(form["enablities"]))
+                {
+                    var enables = serializer.Deserialize<Dictionary<string, int>>(form["enablities"]);
+
+                    foreach (KeyValuePair<string, int> pair in enables)
+                    {
+                        int key = Convert.ToInt32(pair.Key.Split(new[] { "p_" }, StringSplitOptions.None)[1]);
+                        int value = pair.Value;
+
+                    }
+
+                    var userName = WebSession.GetUserName(User.Identity.Name);
+                    var client = context.Customer.First(c => c.Name == userName);
+
+
+                }
+
+                return RedirectToAction("Details", "Category", new { id = categoryId });
             }
         }
     }

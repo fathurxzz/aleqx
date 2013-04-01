@@ -5,8 +5,10 @@ using SiteExtensions;
 namespace Filimonov.Controllers
 {
     [HandleError]
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             using (var context = new SiteContainer())

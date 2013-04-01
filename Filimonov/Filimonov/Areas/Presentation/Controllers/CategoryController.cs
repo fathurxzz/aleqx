@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Filimonov.Helpers;
 using Filimonov.Models;
 
 namespace Filimonov.Areas.Presentation.Controllers
 {
     [Authorize]
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
     public class CategoryController : Controller
     {
         //
@@ -50,7 +52,13 @@ namespace Filimonov.Areas.Presentation.Controllers
                 //{
                 //    category.Products.Add(product);
                 //}
-                
+
+                var client = context.Customer.Include("ProductSets").First(c => c.Name == User.Identity.Name);
+
+                ViewBag.ProductSets = client.ProductSets.ToList();
+
+                //ViewBag.ProductContainers = client.ProductContainers.Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString() }).ToList();
+
                 return View(category);
             }
         }

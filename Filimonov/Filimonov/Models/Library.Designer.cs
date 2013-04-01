@@ -20,8 +20,8 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("Library", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Library", "LayoutProduct", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Layout), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
-[assembly: EdmRelationshipAttribute("Library", "ProductProductContainer", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer))]
-[assembly: EdmRelationshipAttribute("Library", "CustomerProductContainer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "ProductContainer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductContainer), true)]
+[assembly: EdmRelationshipAttribute("Library", "CustomerProductSet", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "ProductSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductSet), true)]
+[assembly: EdmRelationshipAttribute("Library", "ProductProductSet", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), "ProductSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductSet))]
 
 #endregion
 
@@ -140,18 +140,18 @@ namespace Filimonov.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ProductContainer> ProductContainer
+        public ObjectSet<ProductSet> ProductSet
         {
             get
             {
-                if ((_ProductContainer == null))
+                if ((_ProductSet == null))
                 {
-                    _ProductContainer = base.CreateObjectSet<ProductContainer>("ProductContainer");
+                    _ProductSet = base.CreateObjectSet<ProductSet>("ProductSet");
                 }
-                return _ProductContainer;
+                return _ProductSet;
             }
         }
-        private ObjectSet<ProductContainer> _ProductContainer;
+        private ObjectSet<ProductSet> _ProductSet;
 
         #endregion
         #region AddTo Methods
@@ -189,11 +189,11 @@ namespace Filimonov.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ProductContainer EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ProductSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToProductContainer(ProductContainer productContainer)
+        public void AddToProductSet(ProductSet productSet)
         {
-            base.AddObject("ProductContainer", productContainer);
+            base.AddObject("ProductSet", productSet);
         }
 
         #endregion
@@ -475,18 +475,18 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerProductContainer", "ProductContainer")]
-        public EntityCollection<ProductContainer> ProductContainers
+        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerProductSet", "ProductSet")]
+        public EntityCollection<ProductSet> ProductSets
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductContainer>("Library.CustomerProductContainer", "ProductContainer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductSet>("Library.CustomerProductSet", "ProductSet");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductContainer>("Library.CustomerProductContainer", "ProductContainer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductSet>("Library.CustomerProductSet", "ProductSet", value);
                 }
             }
         }
@@ -643,15 +643,13 @@ namespace Filimonov.Models
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="layoutId">Initial value of the LayoutId property.</param>
-        /// <param name="productContainerId">Initial value of the ProductContainerId property.</param>
-        public static Product CreateProduct(global::System.Int32 id, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 layoutId, global::System.Int32 productContainerId)
+        public static Product CreateProduct(global::System.Int32 id, global::System.String imageSource, global::System.Int32 categoryId, global::System.Int32 layoutId)
         {
             Product product = new Product();
             product.Id = id;
             product.ImageSource = imageSource;
             product.CategoryId = categoryId;
             product.LayoutId = layoutId;
-            product.ProductContainerId = productContainerId;
             return product;
         }
 
@@ -756,30 +754,6 @@ namespace Filimonov.Models
         private global::System.Int32 _LayoutId;
         partial void OnLayoutIdChanging(global::System.Int32 value);
         partial void OnLayoutIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ProductContainerId
-        {
-            get
-            {
-                return _ProductContainerId;
-            }
-            set
-            {
-                OnProductContainerIdChanging(value);
-                ReportPropertyChanging("ProductContainerId");
-                _ProductContainerId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ProductContainerId");
-                OnProductContainerIdChanged();
-            }
-        }
-        private global::System.Int32 _ProductContainerId;
-        partial void OnProductContainerIdChanging(global::System.Int32 value);
-        partial void OnProductContainerIdChanged();
 
         #endregion
     
@@ -867,18 +841,18 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductProductContainer", "ProductContainer")]
-        public EntityCollection<ProductContainer> ProductContainers
+        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductProductSet", "ProductSet")]
+        public EntityCollection<ProductSet> ProductSets
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductContainer>("Library.ProductProductContainer", "ProductContainer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductSet>("Library.ProductProductSet", "ProductSet");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductContainer>("Library.ProductProductContainer", "ProductContainer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductSet>("Library.ProductProductSet", "ProductSet", value);
                 }
             }
         }
@@ -889,30 +863,26 @@ namespace Filimonov.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Library", Name="ProductContainer")]
+    [EdmEntityTypeAttribute(NamespaceName="Library", Name="ProductSet")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class ProductContainer : EntityObject
+    public partial class ProductSet : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new ProductContainer object.
+        /// Create a new ProductSet object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="clientId">Initial value of the ClientId property.</param>
-        /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="customerId">Initial value of the CustomerId property.</param>
-        public static ProductContainer CreateProductContainer(global::System.Int32 id, global::System.Int32 clientId, global::System.String name, global::System.String title, global::System.Int32 customerId)
+        public static ProductSet CreateProductSet(global::System.Int32 id, global::System.String title, global::System.Int32 customerId)
         {
-            ProductContainer productContainer = new ProductContainer();
-            productContainer.Id = id;
-            productContainer.ClientId = clientId;
-            productContainer.Name = name;
-            productContainer.Title = title;
-            productContainer.CustomerId = customerId;
-            return productContainer;
+            ProductSet productSet = new ProductSet();
+            productSet.Id = id;
+            productSet.Title = title;
+            productSet.CustomerId = customerId;
+            return productSet;
         }
 
         #endregion
@@ -944,54 +914,6 @@ namespace Filimonov.Models
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ClientId
-        {
-            get
-            {
-                return _ClientId;
-            }
-            set
-            {
-                OnClientIdChanging(value);
-                ReportPropertyChanging("ClientId");
-                _ClientId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ClientId");
-                OnClientIdChanged();
-            }
-        }
-        private global::System.Int32 _ClientId;
-        partial void OnClientIdChanging(global::System.Int32 value);
-        partial void OnClientIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                OnNameChanging(value);
-                ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Name");
-                OnNameChanged();
-            }
-        }
-        private global::System.String _Name;
-        partial void OnNameChanging(global::System.String value);
-        partial void OnNameChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1051,38 +973,16 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductProductContainer", "Product")]
-        public EntityCollection<Product> Products
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Library.ProductProductContainer", "Product");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Library.ProductProductContainer", "Product", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerProductContainer", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerProductSet", "Customer")]
         public Customer Customer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductContainer", "Customer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductSet", "Customer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductContainer", "Customer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductSet", "Customer").Value = value;
             }
         }
         /// <summary>
@@ -1094,13 +994,35 @@ namespace Filimonov.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductContainer", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerProductSet", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("Library.CustomerProductContainer", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("Library.CustomerProductSet", "Customer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductProductSet", "Product")]
+        public EntityCollection<Product> Products
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Product>("Library.ProductProductSet", "Product");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Library.ProductProductSet", "Product", value);
                 }
             }
         }
