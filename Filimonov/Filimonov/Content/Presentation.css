@@ -230,3 +230,20 @@
     font-size: 12px;
     color: #707070;
 }
+
+.survey-details-title {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.survey-details-title h1 {
+     font-size: 25px;
+}
+
+.survey-details-title .description {
+    font-size: 12px;
+}
+
+.survey-details-title .description a {
+    color: #0072bc;
+}

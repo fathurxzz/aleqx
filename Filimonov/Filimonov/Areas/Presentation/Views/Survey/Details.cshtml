@@ -6,3 +6,8 @@
 }
 
 @Html.Partial("_PresentationMenu")
+<div class="survey-details-title">
+    <h1>@Model.SurveyTitle</h1>
+    <div class="description">Создан @Model.SurveyDate.ToShortDateString(), клиент: @Html.ActionLink(Model.Title,"Details","UserCabinet",new{id=Model.Name},null)</div>
+</div>
+
