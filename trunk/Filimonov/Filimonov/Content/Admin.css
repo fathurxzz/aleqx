@@ -46,6 +46,20 @@ a.adminLink:hover {
     
 }
 
+
+.reset {
+    border-collapse: collapse;
+}
+
+.reset td {
+    padding-left: 2px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    white-space: nowrap;
+}
+
+
 .adminEditContentTable
 {
     /*width: 700px;*/

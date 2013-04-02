@@ -1,4 +1,6 @@
-﻿@using Filimonov.Models
+﻿@using Filimonov
+@using Filimonov.Models
+@using SiteExtensions.Graphics
 @model Filimonov.Models.Customer
 @{
     ViewBag.Title = "Details";
@@ -8,27 +10,23 @@
 <div class="category-title">
     <h1>@Model.Title</h1>
 </div>
-<div>
-    @foreach (var item in Model.ProductSets.OrderBy(ps=>ps.Title))
+<div class="peroductSetSelector">
+    @using (Html.BeginForm("Details", "UserCabinet", new { id = Model.Name, layout = ViewBag.Layout }, FormMethod.Get, new { id = "f1" }))
+    {
+        var sl = new List<SelectListItem>();
+        sl.AddRange(Model.ProductSets.Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString(), Selected = pc.Id.ToString() == (string)ViewBag.ProductSetId }).OrderBy(pc => pc.Text).ToList());
+        @Html.DropDownList("set", sl)
+        @Html.Hidden("layout", (string)ViewBag.Layout)
+    }
+    @*@foreach (var item in Model.ProductSets.OrderBy(ps => ps.Title))
     {
         <div>
             @item.Title
-            
-            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
-            {
-                @Html.ActionLink("Редактировать", "EditProductSet", "UserCabinet", new { id = item.Id }, new { @class = "adminLink" })
-                @Html.Raw("&nbsp")
-                @Html.ActionLink("Удалить", "DeleteProductSet", "UserCabinet", new { id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить запись?')" })
-            }
         </div>
-    }
-    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
-    {
-        <br/>
-        @Html.ActionLink("Добавить ассоциативный ряд", "AddProductSet", "UserCabinet", new { id = Model.Name }, new { @class = "adminLink" })
-    }
+    }*@
 </div>
-
+<div>
+</div>
 <div class="layouts-filter">
     @{
         var layouts = (IEnumerable<Layout>)ViewBag.Layouts;
@@ -42,9 +40,43 @@
             }
             else
             {
-            <li>@Html.ActionLink(item.Title, "Details", "Category", new { id = Model.Name, layout = item.Name }, null)</li>
+            <li>@Html.ActionLink(item.Title, "Details", "UserCabinet", new { id = Model.Name, layout = item.Name, set = (string)ViewBag.ProductSetId }, null)</li>
             }
 
         }
     </ul>
+</div>
+<div class="category-details">
+    @{
+        if (ViewBag.ProductSetId != null)
+        {
+            var productSet = Model.ProductSets.First(ps => ps.Id.ToString() == (string) ViewBag.ProductSetId);
+
+            foreach (var item in productSet.Products)
+            {
+                if (item.Layout.Name == ViewBag.Layout || string.IsNullOrEmpty(ViewBag.Layout))
+                {
+                    var id = "p_" + item.Id;
+
+                    <div class="product" id="@id">
+                        @{
+                            string className = item.Selected ? "selected" : "";
+                            <div class="selectedMarker @className">
+                            </div>
+                        }
+                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        {
+                            <div class="abs">
+                                @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new {area = "Presentation", id = item.Id}, new {@class = "adminLink", onclick = "return confirm('Сделать обложкой?')"})
+                                @Html.ActionLink("Удалить", "Delete", "Product", new {area = "Presentation", id = item.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить изображение?')"})
+                            </div>
+                        }
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
+                    </div>
+                }
+            }
+        }
+    }
+    <div class="clear">
+    </div>
 </div>

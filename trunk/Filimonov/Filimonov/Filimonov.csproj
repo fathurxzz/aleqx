@@ -109,7 +109,9 @@
     <Compile Include="Models\ContentItemProjects.cs" />
     <Compile Include="Models\ContentType.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\CustomerValidation.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\LayoutValidation.cs" />
     <Compile Include="Models\Library.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,6 +119,7 @@
     </Compile>
     <Compile Include="Models\PresentationMenu.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductSetValidation.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\ProjectValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
