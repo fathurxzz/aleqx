@@ -19,6 +19,10 @@ a.adminLink
     text-decoration: underline;
 }
 
+a.adminLink:hover {
+    color: #ffaa00 !important;
+}
+
 .adminContentContainer
 {
    /* padding: 50px 20px;

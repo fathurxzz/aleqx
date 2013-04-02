@@ -29,11 +29,11 @@ namespace Filimonov.Areas.Presentation.Controllers
         //
         // GET: /Presentation/Category/Details/5
 
-        public ActionResult Details(string id, string layout)
+        public ActionResult Details(string id, string layout, FormCollection form, string set)
         {
             using (var context = new LibraryContainer())
             {
-                
+                var productSet = set;
                 var layouts = context.Layout.ToList();
                 layouts.Insert(0,new Layout{Name = "",Title = "Все"});
                 ViewBag.Layouts = layouts;
@@ -58,6 +58,51 @@ namespace Filimonov.Areas.Presentation.Controllers
                 ViewBag.ProductSets = client.ProductSets.ToList();
 
                 //ViewBag.ProductContainers = client.ProductContainers.Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString() }).ToList();
+
+                //if (string.IsNullOrEmpty(productSet))
+                //{
+                //    var ps = client.ProductSets.FirstOrDefault();
+                //    if (ps != null)
+                //    {
+                //        productSet = ps.Id.ToString();
+                //    }
+                //}
+
+
+
+                if (!string.IsNullOrEmpty(productSet))
+                {
+                    var productsSet = client.ProductSets.First(ps => ps.Id == Convert.ToInt32(productSet));
+                    var productsInProductSet = context.ProductSet.Include("Products").First(ps => ps.Id == productsSet.Id);
+                    foreach (var product in category.Products)
+                    {
+                        foreach (var p in productsInProductSet.Products)
+                        {
+                            if (product.Id == p.Id)
+                                product.Selected = true;
+                        }
+                    }
+                }
+                else
+                {
+                    var productsSet = client.ProductSets.OrderBy(c=>c.Title).FirstOrDefault();
+                    if (productsSet != null)
+                    {
+                        productSet = productsSet.Id.ToString();
+                        var productsInProductSet = context.ProductSet.Include("Products").First(ps => ps.Id == productsSet.Id);
+                        foreach (var product in category.Products)
+                        {
+                            foreach (var p in productsInProductSet.Products)
+                            {
+                                if (product.Id == p.Id)
+                                    product.Selected = true;
+                            }
+                        }
+                    }
+                }
+
+                ViewBag.ProductSetId = productSet;
+                
 
                 return View(category);
             }

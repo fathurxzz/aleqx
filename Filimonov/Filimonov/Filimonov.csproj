@@ -116,6 +116,7 @@
       <DependentUpon>Library.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PresentationMenu.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\ProjectValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
@@ -163,6 +164,8 @@
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Content\img\carusel-preview-frame.gif" />
     <Content Include="Content\img\circle.gif" />
+    <Content Include="Content\img\copy-button.gif" />
+    <Content Include="Content\img\copy-panel.png" />
     <Content Include="Content\img\customer-area.gif" />
     <Content Include="Content\img\descr-title-line.gif" />
     <Content Include="Content\img\footer.png" />
@@ -307,6 +310,7 @@
     <Content Include="Areas\Presentation\Views\Customer\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\UserCabinet\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\UserCabinet\AddProductSet.cshtml" />
+    <Content Include="Areas\Presentation\Views\UserCabinet\EditProductSet.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
