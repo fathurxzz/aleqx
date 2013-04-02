@@ -11,6 +11,7 @@
     <EntitySet Name="Product" EntityType="Library.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Customer" EntityType="Library.Store.Customer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSet" EntityType="Library.Store.ProductSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Survey" EntityType="Library.Store.Survey" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductSet" EntityType="Library.Store.ProductProductSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Library.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
@@ -31,6 +32,10 @@
     <AssociationSet Name="FK_ProductProductSet_ProductSet" Association="Library.Store.FK_ProductProductSet_ProductSet">
       <End Role="ProductSet" EntitySet="ProductSet" />
       <End Role="ProductProductSet" EntitySet="ProductProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerSurvey" Association="Library.Store.CustomerSurvey">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Survey" EntitySet="Survey" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Category">
@@ -66,6 +71,9 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SurveyTitle" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SurveyDate" Type="datetime" Nullable="false" />
+    <Property Name="SurveyDescription" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductSet">
     <Key>
@@ -73,6 +81,17 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Survey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="longtext" Nullable="true" />
+    <Property Name="Answer" Type="longtext" Nullable="true" />
+    <Property Name="Note" Type="longtext" Nullable="true" />
+    <Property Name="Number" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductProductSet">
@@ -115,6 +134,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ProductSet">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerSurvey">
+    <End Role="Customer" Type="Library.Store.Customer" Multiplicity="1" />
+    <End Role="Survey" Type="Library.Store.Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Survey">
         <PropertyRef Name="CustomerId" />
       </Dependent>
     </ReferentialConstraint>
@@ -168,6 +199,11 @@
           <AssociationSet Name="ProductProductSet" Association="Library.ProductProductSet">
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductSet" EntitySet="ProductSet" />
+          </AssociationSet>
+          <EntitySet Name="Survey" EntityType="Library.Survey" />
+          <AssociationSet Name="CustomerSurvey" Association="Library.CustomerSurvey">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Survey" EntitySet="Survey" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
@@ -233,6 +269,10 @@
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="ProductSets" Relationship="Library.CustomerProductSet" FromRole="Customer" ToRole="ProductSet" />
+          <Property Type="String" Name="SurveyTitle" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="DateTime" Name="SurveyDate" Nullable="false" />
+          <Property Type="String" Name="SurveyDescription" />
+          <NavigationProperty Name="Surveys" Relationship="Library.CustomerSurvey" FromRole="Customer" ToRole="Survey" />
         </EntityType>
         <EntityType Name="ProductSet">
           <Key>
@@ -259,6 +299,30 @@
         <Association Name="ProductProductSet">
           <End Type="Library.Product" Role="Product" Multiplicity="*" />
           <End Type="Library.ProductSet" Role="ProductSet" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Question" />
+          <Property Type="String" Name="Answer" />
+          <Property Type="String" Name="Note" />
+          <Property Type="String" Name="Number" FixedLength="true" MaxLength="200" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Library.CustomerSurvey" FromRole="Survey" ToRole="Customer" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+        </EntityType>
+        <Association Name="CustomerSurvey">
+          <End Type="Library.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Library.Survey" Role="Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -301,6 +365,9 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SurveyTitle" ColumnName="SurveyTitle" />
+          <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
+          <ScalarProperty Name="SurveyDescription" ColumnName="SurveyDescription" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -309,6 +376,18 @@
         <MappingFragment StoreEntitySet="ProductSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Survey">
+      <EntityTypeMapping TypeName="IsTypeOf(Library.Survey)">
+        <MappingFragment StoreEntitySet="Survey">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -352,15 +431,20 @@
           <ConnectorPoint PointX="2.625" PointY="2.5189925130208337" />
           <ConnectorPoint PointX="4" PointY="2.5189925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Library.Customer" Width="1.5" PointX="6.5" PointY="5.125" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Library.Customer" Width="1.5" PointX="6.5" PointY="5.125" Height="2.3648893229166665" />
         <EntityTypeShape EntityType="Library.ProductSet" Width="1.625" PointX="4" PointY="5" Height="1.4033821614583326" />
         <AssociationConnector Association="Library.CustomerProductSet">
-          <ConnectorPoint PointX="6.5" PointY="5.9564925130208337" />
-          <ConnectorPoint PointX="5.625" PointY="5.9564925130208337" />
+          <ConnectorPoint PointX="6.5" PointY="6.0526432291666659" />
+          <ConnectorPoint PointX="5.625" PointY="6.0526432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="Library.ProductProductSet">
           <ConnectorPoint PointX="4.75" PointY="3.989889322916667" />
           <ConnectorPoint PointX="4.75" PointY="5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Library.Survey" Width="1.5" PointX="9.125" PointY="4.625" Height="1.9802864583333326" />
+        <AssociationConnector Association="Library.CustomerSurvey">
+          <ConnectorPoint PointX="8" PointY="6.0574446614583337" />
+          <ConnectorPoint PointX="9.125" PointY="6.0574446614583337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

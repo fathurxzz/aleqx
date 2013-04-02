@@ -11,13 +11,27 @@
             }
         </div>
     </div>
-    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
-    {
+    
         <div class="menuItem survey-lib">
-            <div class="title inactive">
-                Библиотека опросников</div>
+            <div class="title">
+                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                {
+                     if (ViewBag.CurrentItem == "survey")
+                     {
+                         <text>Библиотека опросников</text>
+                     }
+                     else
+                     {
+                         @Html.ActionLink("Библиотека опросников", "Index", "Survey")
+                     }
+                }
+                else
+                {
+                    @*<text>Опросник</text>*@
+                }
+            </div>
         </div>
-    }
+    
     <div class="menuItem customer-area">
         <div class="title">
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))

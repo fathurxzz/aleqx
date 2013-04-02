@@ -16,9 +16,10 @@
         <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
     }
     <script type="text/javascript">
-            var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
-                PresentationPageExtender.initialize();
+        var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+        PresentationPageExtender.initialize();
     </script>
+    @RenderSection("Includes", false)
 </head>
 <body>
     <div class="presentation-page">

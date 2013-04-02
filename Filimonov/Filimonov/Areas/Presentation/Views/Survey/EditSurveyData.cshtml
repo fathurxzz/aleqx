@@ -1,0 +1,52 @@
+﻿@model Filimonov.Models.Customer
+
+@{
+    ViewBag.Title = "EditSurveyData";
+    Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редактирование данных опросника</h2>
+
+@*<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+*@
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+     @Html.HiddenFor(model => model.Id)
+
+    <table class="adminEditContentTable">
+        <tr>
+            <td>@Html.LabelFor(model => model.SurveyTitle)
+            </td>
+            <td>@Html.EditorFor(model => model.SurveyTitle)
+                @Html.ValidationMessageFor(model => model.SurveyTitle)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.SurveyDate)
+            </td>
+            <td>@Html.EditorFor(model => model.SurveyDate)
+                @Html.ValidationMessageFor(model => model.SurveyDate)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.SurveyDescription)
+            </td>
+            <td>@Html.TextAreaFor(model => model.SurveyDescription, new { @class = "ckeditor" })
+                @Html.ValidationMessageFor(model => model.SurveyDescription)
+            </td>
+        </tr>
+    </table>
+    
+    
+       <div class="buttonsContainer">
+        <input type="submit" value="Сохранить" />
+        @Html.ActionLink("Назад", "Index")
+    </div>
+}
+@section Includes
+{
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
