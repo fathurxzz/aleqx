@@ -25,72 +25,71 @@
         {
             if (ViewBag.Layout == item.Name || (string.IsNullOrEmpty(item.Name) && string.IsNullOrEmpty(ViewBag.Layout)))
             {
-                <li>@item.Title</li>
+            <li>@item.Title</li>
             }
             else
             {
-                <li>@Html.ActionLink(item.Title, "Details", "Category", new { id = Model.Name, layout = item.Name, set= (string)ViewBag.ProductSetId }, null)</li>
+            <li>@Html.ActionLink(item.Title, "Details", "Category", new { id = Model.Name, layout = item.Name, set = (string)ViewBag.ProductSetId }, null)</li>
             }
 
         }
     </ul>
 </div>
-
-
-
-
-
 <div class="category-details">
-    
-    @if (!Roles.IsUserInRole(User.Identity.Name, "Administrators") && ((IEnumerable<ProductSet>)ViewBag.ProductSets).Any())
-{
-    <div class="addToProductSetPanel">
+    @if (!Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
         
-        @using (Html.BeginForm("Details", "Category", new { id = Model.Name, layout = ViewBag.Layout }, FormMethod.Get, new { id = "f1" }))
-        {
-            var sl = new List<SelectListItem>();
-            sl.AddRange(((IEnumerable<ProductSet>)ViewBag.ProductSets).Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString(), Selected = pc.Id.ToString() == (string)ViewBag.ProductSetId }).OrderBy(pc => pc.Value).ToList());
-            @Html.DropDownList("set", sl)
-            @Html.Hidden("layout", (string)ViewBag.Layout)
-        }
-    
-        @using (Html.BeginForm("AddProductToSet", "Product", FormMethod.Post, new { id = "f2" }))
-        {
-            @Html.Hidden("categoryId", Model.Name)
-            @Html.Hidden("enablities")
-            @Html.Hidden("set", (string)ViewBag.ProductSetId)
-            @Html.Hidden("layout", (string)ViewBag.Layout)
-            <div class="copy-button"></div>
-        }
-        
-    </div>
-}
-
+        <div class="addToProductSetPanel">
+            @using (Html.BeginForm("Details", "Category", new { id = Model.Name, layout = ViewBag.Layout }, FormMethod.Get, new { id = "f1" }))
+            {
+                var sl = new List<SelectListItem>();
+                sl.AddRange(((IEnumerable<ProductSet>)ViewBag.ProductSets).Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString(), Selected = pc.Id.ToString() == (string)ViewBag.ProductSetId }).OrderBy(pc => pc.Value).ToList());
+                @Html.DropDownList("set", sl)
+                @Html.Hidden("layout", (string)ViewBag.Layout)
+            }
+            @if (((IEnumerable<ProductSet>)ViewBag.ProductSets).Any())
+            {
+                using (Html.BeginForm("AddProductToSet", "Product", FormMethod.Post, new { id = "f2" }))
+                {
+                @Html.Hidden("categoryId", Model.Name)
+                @Html.Hidden("enablities")
+                @Html.Hidden("set", (string)ViewBag.ProductSetId)
+                @Html.Hidden("layout", (string)ViewBag.Layout)
+                <div class="copy-button">
+                </div>
+                }
+            }
+            else
+            {
+                <div class="warning">
+                    Необходимо создать ассоциативный ряд
+                </div>
+            }
+        </div>
+    }
     @foreach (var item in Model.Products)
     {
         if (item.Layout.Name == ViewBag.Layout || string.IsNullOrEmpty(ViewBag.Layout))
         {
             var id = "p_" + item.Id;
 
-            <div class="product" id="@id">
-                @{
-                    string className = item.Selected ? "selected" : "";
-                    <div class="selectedMarker @className">
-                    </div>
-                }
-                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
-                {
-                    <div class="abs">
-                        @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой?')" })
-                        @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
-                    </div>
-                }
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
-            </div>
+        <div class="product" id="@id">
+            @{
+            string className = item.Selected ? "selected" : "";
+                <div class="selectedMarker @className">
+                </div>
+            }
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+            {
+                <div class="abs">
+                    @Html.ActionLink("Сделать обложкой", "MakeDefaultPicture", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Сделать обложкой?')" })
+                    @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                </div>
+            }
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
+        </div>
         }
     }
     <div class="clear">
     </div>
 </div>
-
-

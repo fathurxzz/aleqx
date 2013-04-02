@@ -143,6 +143,7 @@
 
 .addToProductSetPanel 
 {
+    
 }
 
 .addToProductSetPanel {
@@ -169,5 +170,15 @@
 .addToProductSetPanel select {
     width: 135px;
     border: 1px solid #c4c4c4;
+    color:  #aaaaaa;
+    font-style: italic;
     
+}
+
+.addToProductSetPanel .warning 
+{
+    padding-top: 10px;
+    padding-left: 15px;
+    color: #f00;
+    font-size: 12px;
 }
