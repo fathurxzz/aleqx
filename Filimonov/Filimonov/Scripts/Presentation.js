@@ -56,8 +56,9 @@
                 PresentationPageExtender.collectChanges();
                 var form = $("#f2");
                 form.submit();
-                //$(this).form.submit();
             });
+            
+
 
         });
     },

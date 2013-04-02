@@ -20,7 +20,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             using (var context = new LibraryContainer())
             {
 
-                var customers = context.Customer.ToList();
+                var customers = context.Customer.Include("ProductSets").ToList();
 
                 //string[] users = Roles.GetUsersInRole("Customers");
 

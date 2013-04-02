@@ -53,9 +53,9 @@ namespace Filimonov.Areas.Presentation.Controllers
                 //    category.Products.Add(product);
                 //}
 
-                var client = context.Customer.Include("ProductSets").First(c => c.Name == User.Identity.Name);
+                var customer = context.Customer.Include("ProductSets").First(c => c.Name == User.Identity.Name);
 
-                ViewBag.ProductSets = client.ProductSets.ToList();
+                ViewBag.ProductSets = customer.ProductSets.ToList();
 
                 //ViewBag.ProductContainers = client.ProductContainers.Select(pc => new SelectListItem { Text = pc.Title, Value = pc.Id.ToString() }).ToList();
 
@@ -72,7 +72,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
                 if (!string.IsNullOrEmpty(productSet))
                 {
-                    var productsSet = client.ProductSets.First(ps => ps.Id == Convert.ToInt32(productSet));
+                    var productsSet = customer.ProductSets.First(ps => ps.Id == Convert.ToInt32(productSet));
                     var productsInProductSet = context.ProductSet.Include("Products").First(ps => ps.Id == productsSet.Id);
                     foreach (var product in category.Products)
                     {
@@ -85,7 +85,7 @@ namespace Filimonov.Areas.Presentation.Controllers
                 }
                 else
                 {
-                    var productsSet = client.ProductSets.OrderBy(c=>c.Title).FirstOrDefault();
+                    var productsSet = customer.ProductSets.OrderBy(c => c.Title).FirstOrDefault();
                     if (productsSet != null)
                     {
                         productSet = productsSet.Id.ToString();

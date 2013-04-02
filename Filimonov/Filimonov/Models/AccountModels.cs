@@ -69,11 +69,11 @@ namespace Filimonov.Models
     public class RegisterNewCustomerModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Логин")]
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "User title")]
+        [Display(Name = "Имя")]
         public string UserTitle { get; set; }
     }
 }

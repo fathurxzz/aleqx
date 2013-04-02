@@ -25,7 +25,7 @@ namespace Filimonov.Areas.Presentation.Controllers
         //
         // GET: /Presentation/UserCabinet/Details/5
         //[Authorize(Roles = "Administrators")]
-        public ActionResult Details(string id, string layout)
+        public ActionResult Details(string id, string layout,  FormCollection form, string set)
         {
             if (User.Identity.Name != "admin")
             {
@@ -35,15 +35,36 @@ namespace Filimonov.Areas.Presentation.Controllers
                 }
             }
 
+            var productSet = set;
+
             using (var context = new LibraryContainer())
             {
                 var customer = context.Customer.Include("ProductSets").First(c => c.Name == id);
+
+                foreach (var set1 in customer.ProductSets)
+                {
+                    set1.Products.Load();
+                }
 
                 var layouts = context.Layout.ToList();
                 layouts.Insert(0, new Layout { Name = "", Title = "Все" });
                 ViewBag.Layouts = layouts;
 
                 ViewBag.Layout = layout;
+
+
+                if (string.IsNullOrEmpty(productSet))
+                {
+                    var pset = customer.ProductSets.OrderBy(ps => ps.Title).FirstOrDefault();
+                    if (pset != null)
+                    {
+                        productSet = pset.Id.ToString();
+                    }
+                }
+
+
+                ViewBag.ProductSetId = productSet;
+
 
                 return View(customer);
             }
@@ -71,7 +92,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("Details", new { id = customer.Name });
+                return RedirectToAction("Index", "Customer");
             }
         }
 
@@ -94,7 +115,8 @@ namespace Filimonov.Areas.Presentation.Controllers
                 var productSet = context.ProductSet.Include("Customer").First(ps => ps.Id == id);
                 TryUpdateModel(productSet, new[] { "Title" });
                 context.SaveChanges();
-                return RedirectToAction("Details", new { id = productSet.Customer.Name });
+                //return RedirectToAction("Details", new { id = productSet.Customer.Name });
+                return RedirectToAction("Index", "Customer");
             }
         }
 
@@ -108,7 +130,7 @@ namespace Filimonov.Areas.Presentation.Controllers
                 productSet.Products.Clear();
                 context.DeleteObject(productSet);
                 context.SaveChanges();
-                return RedirectToAction("Details", new { id = customerName });
+                return RedirectToAction("Index", "Customer");
             }
         }
 

@@ -5,38 +5,35 @@
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Добавление раздела</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Layout</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+    <table class="adminEditContentTable">
+        <tr>
+            <td>@Html.LabelFor(model => model.Name)
+            </td>
+            <td>@Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Title)
+            </td>
+            <td>@Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </td>
+        </tr>
+    </table>
+    <div class="buttonsContainer">
+        <input type="submit" value="Сохранить" />
+        @Html.ActionLink("Назад", "Index")
+    </div>
+   
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

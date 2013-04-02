@@ -19,6 +19,7 @@
         <th>
             Ссылка для авторизации
         </th>
+        <th>Ассоциативные ряды</th>
         <th></th>
     </tr>
 
@@ -44,12 +45,35 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) 
+            <table class="reset">
+            @foreach (var set in item.ProductSets.OrderBy(ps=>ps.Title))
+            {
+                <tr>
+                    <td>
+                        @set.Title
+                    </td>
+                    <td>
+                        @Html.ActionLink("Редактировать", "EditProductSet", "UserCabinet", new { id = set.Id }, new { @class = "adminLink" }) | 
+                    </td>
+                    <td>
+                    @Html.ActionLink("Удалить", "DeleteProductSet", "UserCabinet", new { id = set.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })
+                    <br/>
+                    </td>
+                </tr>
+            }
+            </table>
+            @if (item.Name != "admin")
+            {
+                @Html.ActionLink("Добавить ассоциативный ряд", "AddProductSet", "UserCabinet", new { id = item.Name }, new { @class = "adminLink" })
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @class = "adminLink" }) 
             
             @if (item.Name != "admin")
             {
                 <text> | </text>
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить пользователя?')" })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить пользователя?')" })
             }
         </td>
     </tr>
