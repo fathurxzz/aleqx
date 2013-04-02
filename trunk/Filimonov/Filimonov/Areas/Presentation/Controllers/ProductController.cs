@@ -144,6 +144,9 @@ namespace Filimonov.Areas.Presentation.Controllers
             using (var context = new LibraryContainer())
             {
                 var categoryId = form["categoryId"];
+                int productSetId = Convert.ToInt32(form["set"]);
+                string layout = form["layout"];
+
 
                 var serializer = new JavaScriptSerializer();
                 if (!string.IsNullOrEmpty(form["enablities"]))
@@ -164,7 +167,7 @@ namespace Filimonov.Areas.Presentation.Controllers
                             productIdsToDelete.Add(key);
                     }
 
-                    int productSetId = Convert.ToInt32(form["productContainers"]);
+                    
 
                     var productSet = context.ProductSet.Include("Products").First(ps => ps.Id == productSetId);
 
@@ -176,13 +179,20 @@ namespace Filimonov.Areas.Presentation.Controllers
                         if (product != null && productSet.Products.Contains(product))
                             productSet.Products.Remove(product);
                     }
-                    asdasd
 
                     foreach (int id in productIds)
                     {
-                        var product = context.Product.First(p => p.Id == id);
-                        if (!productSet.Products.Contains(product))
+                        var product = productSet.Products.FirstOrDefault(p => p.Id == id);
+
+                        if (product == null)
+                        {
+                            var pr = context.Product.First(p => p.Id == id);
+                            productSet.Products.Add(pr);
+                        }
+                        else if(!productSet.Products.Contains(product))
+                        {
                             productSet.Products.Add(product);
+                        }
                     }
 
                     context.SaveChanges();
@@ -191,7 +201,7 @@ namespace Filimonov.Areas.Presentation.Controllers
 
                 }
 
-                return RedirectToAction("Details", "Category", new { id = categoryId });
+                return RedirectToAction("Details", "Category", new { id = categoryId, set = productSetId,layout=layout });
             }
         }
     }

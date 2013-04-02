@@ -9,15 +9,23 @@
     <h1>@Model.Title</h1>
 </div>
 <div>
-    @foreach (var item in Model.ProductSets)
+    @foreach (var item in Model.ProductSets.OrderBy(ps=>ps.Title))
     {
         <div>
             @item.Title
+            
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+            {
+                @Html.ActionLink("Редактировать", "EditProductSet", "UserCabinet", new { id = item.Id }, new { @class = "adminLink" })
+                @Html.Raw("&nbsp")
+                @Html.ActionLink("Удалить", "DeleteProductSet", "UserCabinet", new { id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить запись?')" })
+            }
         </div>
     }
     @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
-        @Html.ActionLink("Add product set", "AddProductSet", "UserCabinet", new { id = Model.Name }, new { @class = "adminLink" })
+        <br/>
+        @Html.ActionLink("Добавить ассоциативный ряд", "AddProductSet", "UserCabinet", new { id = Model.Name }, new { @class = "adminLink" })
     }
 </div>
 

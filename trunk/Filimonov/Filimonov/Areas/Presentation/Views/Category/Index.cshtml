@@ -9,6 +9,8 @@
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     @Html.ActionLink("Добавить категорию", "Create", "Category", new { area = "Presentation" }, new { @class = "adminLink" })
+    @Html.Raw("&nbsp;")
+    @Html.ActionLink("Администрирование разделов","Index","Layout", new { area = "Presentation" }, new { @class = "adminLink" })
 }
 
 @Html.Partial("_PresentationMenu")

@@ -76,5 +76,41 @@ namespace Filimonov.Areas.Presentation.Controllers
         }
 
         
+        public ActionResult EditProductSet(int id)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var productSet = context.ProductSet.Include("Customer").First(ps => ps.Id == id);
+                ViewBag.CustomerId = productSet.Customer.Name;
+                return View(productSet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditProductSet(int id, FormCollection form)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var productSet = context.ProductSet.Include("Customer").First(ps => ps.Id == id);
+                TryUpdateModel(productSet, new[] { "Title" });
+                context.SaveChanges();
+                return RedirectToAction("Details", new { id = productSet.Customer.Name });
+            }
+        }
+
+        public ActionResult DeleteProductSet(int id)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var productSet = context.ProductSet.Include("Products").Include("Customer").First(ps => ps.Id == id);
+                var customerName = productSet.Customer.Name;
+                ViewBag.CustomerId = productSet.Customer.Name;
+                productSet.Products.Clear();
+                context.DeleteObject(productSet);
+                context.SaveChanges();
+                return RedirectToAction("Details", new { id = customerName });
+            }
+        }
+
     }
 }
