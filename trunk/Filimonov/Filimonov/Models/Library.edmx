@@ -11,6 +11,7 @@
     <EntitySet Name="Product" EntityType="Library.Store.Product" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Customer" EntityType="Library.Store.Customer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductSet" EntityType="Library.Store.ProductSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SurveyItem" EntityType="Library.Store.SurveyItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Survey" EntityType="Library.Store.Survey" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductSet" EntityType="Library.Store.ProductProductSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Library.Store.CategoryProduct">
@@ -32,6 +33,10 @@
     <AssociationSet Name="FK_ProductProductSet_ProductSet" Association="Library.Store.FK_ProductProductSet_ProductSet">
       <End Role="ProductSet" EntitySet="ProductSet" />
       <End Role="ProductProductSet" EntitySet="ProductProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="SurveySurveyItem" Association="Library.Store.SurveySurveyItem">
+      <End Role="Survey" EntitySet="Survey" />
+      <End Role="SurveyItem" EntitySet="SurveyItem" />
     </AssociationSet>
     <AssociationSet Name="CustomerSurvey" Association="Library.Store.CustomerSurvey">
       <End Role="Customer" EntitySet="Customer" />
@@ -71,9 +76,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="SurveyTitle" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="SurveyDate" Type="datetime" Nullable="false" />
-    <Property Name="SurveyDescription" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductSet">
     <Key>
@@ -83,7 +85,7 @@
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Survey">
+  <EntityType Name="SurveyItem">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -93,6 +95,17 @@
     <Property Name="Note" Type="longtext" Nullable="true" />
     <Property Name="Number" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Survey">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductProductSet">
     <Key>
@@ -138,6 +151,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="SurveySurveyItem">
+    <End Role="Survey" Type="Library.Store.Survey" Multiplicity="1" />
+    <End Role="SurveyItem" Type="Library.Store.SurveyItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SurveyItem">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="CustomerSurvey">
     <End Role="Customer" Type="Library.Store.Customer" Multiplicity="1" />
     <End Role="Survey" Type="Library.Store.Survey" Multiplicity="*" />
@@ -146,7 +171,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Survey">
-        <PropertyRef Name="CustomerId" />
+        <PropertyRef Name="Customer_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -200,7 +225,12 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductSet" EntitySet="ProductSet" />
           </AssociationSet>
+          <EntitySet Name="SurveyItem" EntityType="Library.SurveyItem" />
           <EntitySet Name="Survey" EntityType="Library.Survey" />
+          <AssociationSet Name="SurveySurveyItem" Association="Library.SurveySurveyItem">
+            <End Role="Survey" EntitySet="Survey" />
+            <End Role="SurveyItem" EntitySet="SurveyItem" />
+          </AssociationSet>
           <AssociationSet Name="CustomerSurvey" Association="Library.CustomerSurvey">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Survey" EntitySet="Survey" />
@@ -269,10 +299,7 @@
           <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="ProductSets" Relationship="Library.CustomerProductSet" FromRole="Customer" ToRole="ProductSet" />
-          <Property Type="String" Name="SurveyTitle" Nullable="false" FixedLength="true" MaxLength="200" />
-          <Property Type="DateTime" Name="SurveyDate" Nullable="false" />
-          <Property Type="String" Name="SurveyDescription" />
-          <NavigationProperty Name="Surveys" Relationship="Library.CustomerSurvey" FromRole="Customer" ToRole="Survey" />
+          <NavigationProperty Name="Survey" Relationship="Library.CustomerSurvey" FromRole="Customer" ToRole="Survey" />
         </EntityType>
         <EntityType Name="ProductSet">
           <Key>
@@ -300,7 +327,7 @@
           <End Type="Library.Product" Role="Product" Multiplicity="*" />
           <End Type="Library.ProductSet" Role="ProductSet" Multiplicity="*" />
         </Association>
-        <EntityType Name="Survey">
+        <EntityType Name="SurveyItem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -309,20 +336,36 @@
           <Property Type="String" Name="Answer" />
           <Property Type="String" Name="Note" />
           <Property Type="String" Name="Number" FixedLength="true" MaxLength="200" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="Library.CustomerSurvey" FromRole="Survey" ToRole="Customer" />
           <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <NavigationProperty Name="Survey" Relationship="Library.SurveySurveyItem" FromRole="SurveyItem" ToRole="Survey" />
+          <Property Type="Int32" Name="SurveyId" Nullable="false" />
         </EntityType>
-        <Association Name="CustomerSurvey">
-          <End Type="Library.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="Library.Survey" Role="Survey" Multiplicity="*" />
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Description" />
+          <NavigationProperty Name="SurveyItems" Relationship="Library.SurveySurveyItem" FromRole="Survey" ToRole="SurveyItem" />
+          <NavigationProperty Name="Customer" Relationship="Library.CustomerSurvey" FromRole="Survey" ToRole="Customer" />
+        </EntityType>
+        <Association Name="SurveySurveyItem">
+          <End Type="Library.Survey" Role="Survey" Multiplicity="1" />
+          <End Type="Library.SurveyItem" Role="SurveyItem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Customer">
+            <Principal Role="Survey">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Survey">
-              <PropertyRef Name="CustomerId" />
+            <Dependent Role="SurveyItem">
+              <PropertyRef Name="SurveyId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerSurvey">
+          <End Type="Library.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Library.Survey" Role="Survey" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -365,9 +408,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="SurveyTitle" ColumnName="SurveyTitle" />
-          <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
-          <ScalarProperty Name="SurveyDescription" ColumnName="SurveyDescription" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -380,15 +420,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Survey">
-      <EntityTypeMapping TypeName="IsTypeOf(Library.Survey)">
-        <MappingFragment StoreEntitySet="Survey">
+    <EntitySetMapping Name="SurveyItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Library.SurveyItem)">
+        <MappingFragment StoreEntitySet="SurveyItem">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Question" ColumnName="Question" />
           <ScalarProperty Name="Answer" ColumnName="Answer" />
           <ScalarProperty Name="Note" ColumnName="Note" />
           <ScalarProperty Name="Number" ColumnName="Number" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Survey">
+      <EntityTypeMapping TypeName="IsTypeOf(Library.Survey)">
+        <MappingFragment StoreEntitySet="Survey">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -398,6 +449,14 @@
       </EndProperty>
       <EndProperty Name="ProductSet">
         <ScalarProperty Name="Id" ColumnName="ProductSets_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CustomerSurvey" TypeName="Library.CustomerSurvey" StoreEntitySet="Survey">
+      <EndProperty Name="Customer">
+        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+      </EndProperty>
+      <EndProperty Name="Survey">
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
@@ -431,7 +490,7 @@
           <ConnectorPoint PointX="2.625" PointY="2.5189925130208337" />
           <ConnectorPoint PointX="4" PointY="2.5189925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Library.Customer" Width="1.5" PointX="6.5" PointY="5.125" Height="2.3648893229166665" />
+        <EntityTypeShape EntityType="Library.Customer" Width="1.5" PointX="6.5" PointY="5.125" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="Library.ProductSet" Width="1.625" PointX="4" PointY="5" Height="1.4033821614583326" />
         <AssociationConnector Association="Library.CustomerProductSet">
           <ConnectorPoint PointX="6.5" PointY="6.0526432291666659" />
@@ -441,10 +500,15 @@
           <ConnectorPoint PointX="4.75" PointY="3.989889322916667" />
           <ConnectorPoint PointX="4.75" PointY="5" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Library.Survey" Width="1.5" PointX="9.125" PointY="4.625" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Library.SurveyItem" Width="1.5" PointX="11.375" PointY="4.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Library.Survey" Width="1.5" PointX="8.75" PointY="4.875" Height="1.7879850260416665" />
+        <AssociationConnector Association="Library.SurveySurveyItem">
+          <ConnectorPoint PointX="10.25" PointY="5.8651432291666667" />
+          <ConnectorPoint PointX="11.375" PointY="5.8651432291666667" />
+        </AssociationConnector>
         <AssociationConnector Association="Library.CustomerSurvey">
-          <ConnectorPoint PointX="8" PointY="6.0574446614583337" />
-          <ConnectorPoint PointX="9.125" PointY="6.0574446614583337" />
+          <ConnectorPoint PointX="8" PointY="6.0862939453125" />
+          <ConnectorPoint PointX="8.75" PointY="6.0862939453125" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

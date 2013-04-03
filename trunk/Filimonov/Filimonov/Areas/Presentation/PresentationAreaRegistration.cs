@@ -29,7 +29,7 @@ namespace Filimonov.Areas.Presentation
 
             context.MapRoute(
                 "SurveyDetails",
-                "presentation/survey/{id}",
+                "presentation/surveys/{id}",
                 new { controller = "Survey", action = "Details", id = UrlParameter.Optional }
             );
 
