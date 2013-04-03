@@ -7,8 +7,7 @@
 
     setFirstImage: function () {
         var fileName = $("#productPreviews").find("img").attr("alt");
-        //ProjectCatalogue.changeImage(fileName);
-        ProjectCatalogue._updateImageContainer(fileName);
+        ProjectCatalogue.changeImage(fileName);
     },
 
     _updateImageContainer: function (fileName) {
