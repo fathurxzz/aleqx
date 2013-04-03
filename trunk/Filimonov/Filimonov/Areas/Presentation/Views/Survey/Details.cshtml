@@ -1,32 +1,115 @@
 ﻿@model Filimonov.Models.Survey
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
-
 @Html.Partial("_PresentationMenu")
 <div class="surveyDetails">
-<div class="title">
-    <h1>@Model.Title</h1>
-    <div class="description">Создан @Model.Date.ToShortDateString(), клиент: @Html.ActionLink(Model.Customer.Title,"Details","UserCabinet",new{id= Model.Customer.Name},null)</div>
-</div>
-<div class="description">
-    @Html.Raw(Model.Description)
+    <div class="title">
+        <h1>@Model.Title</h1>
+        <div class="description">
+            Создан @Model.Date.ToShortDateString(), клиент: @Html.ActionLink(Model.Customer.Title, "Details", "UserCabinet", new { id = Model.Customer.Name }, null)</div>
+    </div>
+    <div class="description">
+        @Html.Raw(Model.Description)
+    </div>
+    <script type="text/javascript">
+
+//        var hiddenControls = true;
+
+//        $(function () {
+
+//            var obj1 = $("#inputNumber");
+//            var obj2 = $("#txtQuestion");
+
+
+
+//            function hideControls() {
+//                hiddenControls = true;
+//                obj1.addClass("hidden");
+//                obj2.addClass("hidden");
+//            }
+
+//            function saveChanges() {
+//                hideControls();
+//                alert("saved!");
+//            }
+
+
+//            $("#newLine").click(function (e) {
+//                if (hiddenControls) {
+//                    obj1.val("");
+//                    obj1.removeClass("hidden");
+//                    obj2.val("");
+//                    obj2.removeClass("hidden");
+
+//                    hiddenControls = false;
+//                }
+
+//                e.stopPropagation();
+//                if (window.event) { window.event.cancelBubbling = true; }
+
+//            });
+
+//            $("body").click(function () {
+//                if (!hiddenControls) {
+//                    saveChanges();
+//                    
+//                }
+//            });
+
+//        });
+
+    </script>
+    <table>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                Вопрос
+            </th>
+            <th>
+                Ответ
+            </th>
+            <th>
+                Примечания
+            </th>
+        </tr>
+        <tr>
+            <td class="first">
+                1
+            </td>
+            <td>
+                Что вы думаете о ситуации в Никарагуа?
+            </td>
+            <td>
+                3
+            </td>
+            <td>
+                4
+            </td>
+        </tr>
+        
+        <tr id="newLine">
+            <td>
+                @Html.TextBox("inputNumber","",new{@class="hidden"})
+            </td>
+            <td>
+                @Html.TextArea("txtQuestion", new { @class = "hidden" })
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
 </div>
 
-<table>
-    <tr>
-        <th>№</th>
-        <th>Вопрос</th>
-        <th>Ответ</th>
-        <th>Примечания</th>
-    </tr>
-    <tr>
-        <td class="first">1</td>
-        <td>Что вы думаете о ситуации в Никарагуа?</td>
-        <td>3</td>
-        <td>4</td>
-    </tr>
-</table>
-</div>
+
+@section Includes
+{
+    <script type="text/javascript">
+        SurveyService.initialize();
+    </script>
+}

@@ -240,6 +240,7 @@
     position: relative;
     margin: 0 auto;
     padding-top: 40px;
+    padding-bottom: 50px;
 }
 
 
@@ -255,6 +256,8 @@
 .surveyDetails .title .description {
     font-size: 12px;
     padding-top: 0;
+    padding-bottom: 0;
+    
 }
 
 .surveyDetails .title .description a {
@@ -288,4 +291,28 @@
 
 
 
+
+
+
+#newLine td {
+    height: 20px;
+    border: 2px solid #d6d6d6;
+    
+}
+
+#newLine #inputNumber {
+    width: 50px;
+}
+
+#newLine #txtQuestion {
+    width: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
 

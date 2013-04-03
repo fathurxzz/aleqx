@@ -127,6 +127,17 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
+        [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
+        [HttpPost]
+        public string CreateSurveyItem(string number,string question)
+        {
+            return question;
+
+            //using (var context = new LibraryContainer())
+            //{
+
+            //}
+        }
 
     }
 }
