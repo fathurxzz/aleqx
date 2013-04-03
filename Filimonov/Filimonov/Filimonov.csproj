@@ -215,6 +215,7 @@
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\PageScripts.js" />
     <Content Include="Scripts\Presentation.js" />
+    <Content Include="Scripts\Survey.js" />
     <Content Include="setcookie.aspx" />
     <Content Include="soon.gif" />
     <Content Include="soon.htm" />
