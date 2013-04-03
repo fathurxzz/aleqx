@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/02/2013 17:56:46
+-- Date Created: 04/03/2013 10:50:06
 -- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Library.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -21,6 +21,7 @@
 --    ALTER TABLE `ProductSet` DROP CONSTRAINT `FK_CustomerProductSet`;
 --    ALTER TABLE `ProductProductSet` DROP CONSTRAINT `FK_ProductProductSet_Product`;
 --    ALTER TABLE `ProductProductSet` DROP CONSTRAINT `FK_ProductProductSet_ProductSet`;
+--    ALTER TABLE `Survey` DROP CONSTRAINT `FK_CustomerSurvey`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -31,6 +32,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `Customer`;
     DROP TABLE IF EXISTS `ProductSet`;
+    DROP TABLE IF EXISTS `Survey`;
     DROP TABLE IF EXISTS `ProductProductSet`;
 SET foreign_key_checks = 1;
 
@@ -69,10 +71,7 @@ CREATE TABLE `Product` (
 CREATE TABLE `Customer` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `SurveyTitle` varchar( 200 )  NOT NULL,
-    `SurveyDate` datetime  NOT NULL,
-    `SurveyDescription` longtext  NULL
+    `Title` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'ProductSet'
@@ -83,15 +82,26 @@ CREATE TABLE `ProductSet` (
     `CustomerId` int  NOT NULL
 );
 
--- Creating table 'Survey'
+-- Creating table 'SurveyItem'
 
-CREATE TABLE `Survey` (
+CREATE TABLE `SurveyItem` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Question` longtext  NULL,
     `Answer` longtext  NULL,
     `Note` longtext  NULL,
     `Number` varchar( 200 )  NOT NULL,
-    `CustomerId` int  NOT NULL
+    `CustomerId` int  NOT NULL,
+    `SurveyId` int  NOT NULL
+);
+
+-- Creating table 'Survey'
+
+CREATE TABLE `Survey` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Date` datetime  NOT NULL,
+    `Description` longtext  NULL,
+    `Customer_Id` int  NOT NULL
 );
 
 -- Creating table 'ProductProductSet'
@@ -188,11 +198,26 @@ CREATE INDEX `IX_FK_ProductProductSet_ProductSet`
     ON `ProductProductSet`
     (`ProductSets_Id`);
 
--- Creating foreign key on `CustomerId` in table 'Survey'
+-- Creating foreign key on `SurveyId` in table 'SurveyItem'
+
+ALTER TABLE `SurveyItem`
+ADD CONSTRAINT `FK_SurveySurveyItem`
+    FOREIGN KEY (`SurveyId`)
+    REFERENCES `Survey`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_SurveySurveyItem'
+
+CREATE INDEX `IX_FK_SurveySurveyItem` 
+    ON `SurveyItem`
+    (`SurveyId`);
+
+-- Creating foreign key on `Customer_Id` in table 'Survey'
 
 ALTER TABLE `Survey`
 ADD CONSTRAINT `FK_CustomerSurvey`
-    FOREIGN KEY (`CustomerId`)
+    FOREIGN KEY (`Customer_Id`)
     REFERENCES `Customer`
         (`Id`)
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -201,7 +226,7 @@ ADD CONSTRAINT `FK_CustomerSurvey`
 
 CREATE INDEX `IX_FK_CustomerSurvey` 
     ON `Survey`
-    (`CustomerId`);
+    (`Customer_Id`);
 
 -- --------------------------------------------------
 -- Script has ended

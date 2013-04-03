@@ -17,9 +17,9 @@ namespace Filimonov.Areas.Presentation.Controllers
         {
             using (var context = new LibraryContainer())
             {
-                var customers = context.Customer.Where(c=>c.Name!="admin").ToList();
+                var survays = context.Survey.Include("Customer").Include("SurveyItems").ToList();
                 ViewBag.CurrentItem = "survey";
-                return View(customers);
+                return View(survays);
             }
         }
 
@@ -32,29 +32,33 @@ namespace Filimonov.Areas.Presentation.Controllers
         {
             using (var context = new LibraryContainer())
             {
-                var customer = context.Customer.Include("Surveys").First(c => c.Name == id);
-                return View(customer);
+                var customer = context.Customer.Include("Survey").First(c => c.Name == id);
+                customer.Survey.SurveyItems.Load();
+                var survey = customer.Survey;
+                return View(survey);
             }
         }
 
 
-        public ActionResult EditSurveyData(string id)
+        public ActionResult Edit(int id)
         {
             using (var context = new LibraryContainer())
             {
-                var customer = context.Customer.Include("Surveys").First(c => c.Name == id);
-                return View(customer);
+                //var customer = context.Customer.Include("Surveys").First(c => c.Name == id);
+                var survay = context.Survey.First(s => s.Id == id);
+                return View(survay);
             }
         }
 
         [HttpPost]
-        public ActionResult EditSurveyData(string id, FormCollection form)
+        public ActionResult Edit(int id, FormCollection form)
         {
             using (var context = new LibraryContainer())
             {
-                var customer = context.Customer.Include("Surveys").First(c => c.Name == id);
-                TryUpdateModel(customer, new[] { "SurveyTitle", "SurveyDate" });
-                customer.SurveyDescription = HttpUtility.HtmlDecode(form["SurveyDescription"]);
+                var survay = context.Survey.First(s => s.Id == id);
+
+                TryUpdateModel(survay, new[] { "Title", "Date" });
+                survay.Description = HttpUtility.HtmlDecode(form["Description"]);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,46 +69,39 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         public ActionResult Create()
         {
-            return View();
-        } 
+            using (var context = new LibraryContainer())
+            {
+                var customers = context.Customer.Include("Survey").Where(c => c.Name != "admin" && c.Survey == null).ToList();
+                ViewBag.Customers = customers;
+                return View();
+            }
+        }
 
         //
         // POST: /Presentation/Survey/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection form, int customerId)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var context = new LibraryContainer())
+                {
+                    var customer = context.Customer.First(c => c.Id == customerId);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /Presentation/Survey/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+                    var survey = new Survey
+                                     {
+                                         Date = DateTime.Now,
+                                         Title = form["Title"],
+                                         Description = HttpUtility.HtmlDecode(form["Description"]),
+                                         Customer = customer
+                                     };
 
-        //
-        // POST: /Presentation/Survey/Edit/5
+                    context.AddToSurvey(survey);
+                    context.SaveChanges();
 
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -112,30 +109,24 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
-        //
-        // GET: /Presentation/Survey/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Presentation/Survey/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (var context = new LibraryContainer())
             {
-                // TODO: Add delete logic here
- 
+                var survey = context.Survey.Include("SurveyItems").First(s => s.Id == id);
+                while (survey.SurveyItems.Any())
+                {
+                    var si = survey.SurveyItems.First();
+                    context.DeleteObject(si);
+                }
+                context.DeleteObject(survey);
+
+                context.SaveChanges();
+
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
         }
+
+
     }
 }

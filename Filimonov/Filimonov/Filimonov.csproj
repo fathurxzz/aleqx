@@ -129,6 +129,7 @@
       <DependentUpon>Site.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Models\SurveyValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="setcookie.aspx.cs">
       <DependentUpon>setcookie.aspx</DependentUpon>
@@ -317,7 +318,8 @@
     <Content Include="Areas\Presentation\Views\UserCabinet\EditProductSet.cshtml" />
     <Content Include="Areas\Presentation\Views\Survey\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Survey\Details.cshtml" />
-    <Content Include="Areas\Presentation\Views\Survey\EditSurveyData.cshtml" />
+    <Content Include="Areas\Presentation\Views\Survey\Edit.cshtml" />
+    <Content Include="Areas\Presentation\Views\Survey\Create.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

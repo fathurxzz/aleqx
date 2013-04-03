@@ -69,12 +69,11 @@ namespace Filimonov.Areas.Presentation.Controllers
 
                         using (var context = new LibraryContainer())
                         {
-                            var customer = new Customer { Name = model.UserName, Title = model.UserTitle };
+                            var customer = new Customer { Name = model.UserName, Title = model.UserTitle};
                             context.AddToCustomer(customer);
                             context.SaveChanges();
                         }
 
-                        //FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                         return RedirectToAction("Index", "Customer", new { area = "Presentation" });
                     }
                     else

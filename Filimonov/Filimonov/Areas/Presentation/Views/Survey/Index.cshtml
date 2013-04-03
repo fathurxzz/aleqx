@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Filimonov.Models.Customer>
+﻿@model IEnumerable<Filimonov.Models.Survey>
 
 @{
     ViewBag.Title = "Index";
@@ -12,28 +12,34 @@
 </div>
 <div class="survey">
     
+    @Html.ActionLink("Добавить опросник", "Create", "Survey", null, new{@class="adminLink"})
+    <br/>
+
     <table> 
-    @foreach (var customer in Model)
+    @foreach (var survey in Model)
     {
         <tr>
-            <td class="date">@customer.SurveyDate.ToShortDateString()</td>
+            <td class="date">@survey.Date.ToShortDateString()</td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td class="title">
-                @Html.ActionLink(customer.SurveyTitle,"Details","Survey",new{id=customer.Name},null)
+                @Html.ActionLink(survey.Title, "Details", "Survey", new { id = survey.Customer.Name }, null)
             </td>
             <td class="title">
-                @Html.ActionLink(customer.Title,"Details","Survey",new{id=customer.Name},null)
+                @Html.ActionLink(survey.Customer.Title, "Details", "Survey", new { id = survey.Customer.Name }, null)
             </td>
-            <td class="description">@Html.Raw(customer.SurveyDescription)</td>
+            <td class="description">@Html.Raw(survey.Description)</td>
             <td style="vertical-align: top">
-                @Html.ActionLink("Редактировать данные", "EditSurveyData", "Survey", new { id = customer.Name }, new{@class="adminLink"})
+                @Html.ActionLink("Редактировать данные", "Edit", "Survey", new { id = survey.Id }, new{@class="adminLink"}) | 
+                @Html.ActionLink("Удалить", "Delete", "Survey", new { id = survey.Id }, new{@class="adminLink",onclick="return confirm('Удалить опросник?')"})
             </td>
         </tr>
     }
     </table>
+    
+    
 
 </div>

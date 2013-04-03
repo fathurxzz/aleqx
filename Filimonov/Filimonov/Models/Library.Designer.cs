@@ -22,7 +22,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Library", "LayoutProduct", "Layout", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Layout), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), true)]
 [assembly: EdmRelationshipAttribute("Library", "CustomerProductSet", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "ProductSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductSet), true)]
 [assembly: EdmRelationshipAttribute("Library", "ProductProductSet", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), "ProductSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductSet))]
-[assembly: EdmRelationshipAttribute("Library", "CustomerSurvey", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "Survey", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Survey), true)]
+[assembly: EdmRelationshipAttribute("Library", "SurveySurveyItem", "Survey", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Survey), "SurveyItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.SurveyItem), true)]
+[assembly: EdmRelationshipAttribute("Library", "CustomerSurvey", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "Survey", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Filimonov.Models.Survey))]
 
 #endregion
 
@@ -157,6 +158,22 @@ namespace Filimonov.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<SurveyItem> SurveyItem
+        {
+            get
+            {
+                if ((_SurveyItem == null))
+                {
+                    _SurveyItem = base.CreateObjectSet<SurveyItem>("SurveyItem");
+                }
+                return _SurveyItem;
+            }
+        }
+        private ObjectSet<SurveyItem> _SurveyItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<Survey> Survey
         {
             get
@@ -211,6 +228,14 @@ namespace Filimonov.Models
         public void AddToProductSet(ProductSet productSet)
         {
             base.AddObject("ProductSet", productSet);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SurveyItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSurveyItem(SurveyItem surveyItem)
+        {
+            base.AddObject("SurveyItem", surveyItem);
         }
     
         /// <summary>
@@ -403,16 +428,12 @@ namespace Filimonov.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="surveyTitle">Initial value of the SurveyTitle property.</param>
-        /// <param name="surveyDate">Initial value of the SurveyDate property.</param>
-        public static Customer CreateCustomer(global::System.Int32 id, global::System.String name, global::System.String title, global::System.String surveyTitle, global::System.DateTime surveyDate)
+        public static Customer CreateCustomer(global::System.Int32 id, global::System.String name, global::System.String title)
         {
             Customer customer = new Customer();
             customer.Id = id;
             customer.Name = name;
             customer.Title = title;
-            customer.SurveyTitle = surveyTitle;
-            customer.SurveyDate = surveyDate;
             return customer;
         }
 
@@ -493,78 +514,6 @@ namespace Filimonov.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String SurveyTitle
-        {
-            get
-            {
-                return _SurveyTitle;
-            }
-            set
-            {
-                OnSurveyTitleChanging(value);
-                ReportPropertyChanging("SurveyTitle");
-                _SurveyTitle = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("SurveyTitle");
-                OnSurveyTitleChanged();
-            }
-        }
-        private global::System.String _SurveyTitle;
-        partial void OnSurveyTitleChanging(global::System.String value);
-        partial void OnSurveyTitleChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.DateTime SurveyDate
-        {
-            get
-            {
-                return _SurveyDate;
-            }
-            set
-            {
-                OnSurveyDateChanging(value);
-                ReportPropertyChanging("SurveyDate");
-                _SurveyDate = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SurveyDate");
-                OnSurveyDateChanged();
-            }
-        }
-        private global::System.DateTime _SurveyDate;
-        partial void OnSurveyDateChanging(global::System.DateTime value);
-        partial void OnSurveyDateChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String SurveyDescription
-        {
-            get
-            {
-                return _SurveyDescription;
-            }
-            set
-            {
-                OnSurveyDescriptionChanging(value);
-                ReportPropertyChanging("SurveyDescription");
-                _SurveyDescription = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SurveyDescription");
-                OnSurveyDescriptionChanged();
-            }
-        }
-        private global::System.String _SurveyDescription;
-        partial void OnSurveyDescriptionChanging(global::System.String value);
-        partial void OnSurveyDescriptionChanged();
 
         #endregion
     
@@ -599,17 +548,33 @@ namespace Filimonov.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerSurvey", "Survey")]
-        public EntityCollection<Survey> Surveys
+        public Survey Survey
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Survey>("Library.CustomerSurvey", "Survey");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Survey>("Library.CustomerSurvey", "Survey").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Survey>("Library.CustomerSurvey", "Survey").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Survey> SurveyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Survey>("Library.CustomerSurvey", "Survey");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Survey>("Library.CustomerSurvey", "Survey", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Survey>("Library.CustomerSurvey", "Survey", value);
                 }
             }
         }
@@ -1167,15 +1132,211 @@ namespace Filimonov.Models
         /// Create a new Survey object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="number">Initial value of the Number property.</param>
-        /// <param name="customerId">Initial value of the CustomerId property.</param>
-        public static Survey CreateSurvey(global::System.Int32 id, global::System.String number, global::System.Int32 customerId)
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        public static Survey CreateSurvey(global::System.Int32 id, global::System.String title, global::System.DateTime date)
         {
             Survey survey = new Survey();
             survey.Id = id;
-            survey.Number = number;
-            survey.CustomerId = customerId;
+            survey.Title = title;
+            survey.Date = date;
             return survey;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "SurveySurveyItem", "SurveyItem")]
+        public EntityCollection<SurveyItem> SurveyItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SurveyItem>("Library.SurveySurveyItem", "SurveyItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SurveyItem>("Library.SurveySurveyItem", "SurveyItem", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerSurvey", "Customer")]
+        public Customer Customer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerSurvey", "Customer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerSurvey", "Customer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Customer> CustomerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerSurvey", "Customer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("Library.CustomerSurvey", "Customer", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Library", Name="SurveyItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SurveyItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SurveyItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="number">Initial value of the Number property.</param>
+        /// <param name="customerId">Initial value of the CustomerId property.</param>
+        /// <param name="surveyId">Initial value of the SurveyId property.</param>
+        public static SurveyItem CreateSurveyItem(global::System.Int32 id, global::System.String number, global::System.Int32 customerId, global::System.Int32 surveyId)
+        {
+            SurveyItem surveyItem = new SurveyItem();
+            surveyItem.Id = id;
+            surveyItem.Number = number;
+            surveyItem.CustomerId = customerId;
+            surveyItem.SurveyId = surveyId;
+            return surveyItem;
         }
 
         #endregion
@@ -1327,6 +1488,30 @@ namespace Filimonov.Models
         private global::System.Int32 _CustomerId;
         partial void OnCustomerIdChanging(global::System.Int32 value);
         partial void OnCustomerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SurveyId
+        {
+            get
+            {
+                return _SurveyId;
+            }
+            set
+            {
+                OnSurveyIdChanging(value);
+                ReportPropertyChanging("SurveyId");
+                _SurveyId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SurveyId");
+                OnSurveyIdChanged();
+            }
+        }
+        private global::System.Int32 _SurveyId;
+        partial void OnSurveyIdChanging(global::System.Int32 value);
+        partial void OnSurveyIdChanged();
 
         #endregion
     
@@ -1338,16 +1523,16 @@ namespace Filimonov.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Library", "CustomerSurvey", "Customer")]
-        public Customer Customer
+        [EdmRelationshipNavigationPropertyAttribute("Library", "SurveySurveyItem", "Survey")]
+        public Survey Survey
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerSurvey", "Customer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Survey>("Library.SurveySurveyItem", "Survey").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerSurvey", "Customer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Survey>("Library.SurveySurveyItem", "Survey").Value = value;
             }
         }
         /// <summary>
@@ -1355,17 +1540,17 @@ namespace Filimonov.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Customer> CustomerReference
+        public EntityReference<Survey> SurveyReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("Library.CustomerSurvey", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Survey>("Library.SurveySurveyItem", "Survey");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("Library.CustomerSurvey", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Survey>("Library.SurveySurveyItem", "Survey", value);
                 }
             }
         }
