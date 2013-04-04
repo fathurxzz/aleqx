@@ -187,6 +187,7 @@
     <Content Include="Content\img\product-checked.png" />
     <Content Include="Content\img\project-frame.gif" />
     <Content Include="Content\img\project-main-view-bg.gif" />
+    <Content Include="Content\img\send-answer.gif" />
     <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\img\survey-lib.gif" />
     <Content Include="Content\img\title-bg.gif" />
@@ -321,6 +322,7 @@
     <Content Include="Areas\Presentation\Views\Survey\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\Survey\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\Survey\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Shared\NewSurveyItem.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

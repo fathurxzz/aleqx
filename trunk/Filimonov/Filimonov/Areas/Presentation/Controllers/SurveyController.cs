@@ -30,6 +30,14 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         public ActionResult Details(string id)
         {
+            if (User.Identity.Name != "admin")
+            {
+                if (User.Identity.Name != id)
+                {
+                    throw new Exception();
+                }
+            }
+
             using (var context = new LibraryContainer())
             {
                 var customer = context.Customer.Include("Survey").First(c => c.Name == id);
@@ -127,16 +135,74 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
+        public ActionResult DeleteSurveyItem(int id)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var surveyItem = context.SurveyItem.Include("Survey").First(si => si.Id == id);
+                var surveyId = surveyItem.Survey.Id;
+                var survey = context.Survey.Include("Customer").First(s => s.Id == surveyId);
+                context.DeleteObject(surveyItem);
+                context.SaveChanges();
+                return RedirectToAction("Details", "Survey", new { id = survey.Customer.Name });
+            }
+        }
+
+
         [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
         [HttpPost]
-        public string CreateSurveyItem(string number,string question)
+        public ActionResult SaveSurvey(FormCollection form)
         {
-            return question;
+            string number = form["inputNumber"];
+            string question = form["txtQuestion"];
+            int surveyId = Convert.ToInt32(form["surveyId"]);
 
-            //using (var context = new LibraryContainer())
-            //{
+            try
+            {
+                if (string.IsNullOrWhiteSpace(number) || string.IsNullOrWhiteSpace(question))
+                    return View("NewSurveyItem");
+                using (var context = new LibraryContainer())
+                {
+                    var survey = context.Survey.FirstOrDefault(s => s.Id == surveyId);
+                    if (survey == null)
+                        return View("NewSurveyItem");
+                    var surveyItem = new SurveyItem { Survey = survey, Number = number, Question = question };
+                    context.AddToSurveyItem(surveyItem);
+                    context.SaveChanges();
+                    return View("NewSurveyItem", surveyItem);
+                }
+            }
+            catch
+            {
+                return View("NewSurveyItem");
+            }
+        }
 
-            //}
+        [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
+        [HttpPost]
+        public bool SaveAnswer(FormCollection form)
+        {
+            int surveyId = Convert.ToInt32(form["surveyId"]);
+
+            try
+            {
+                using (var context = new LibraryContainer())
+                {
+                    var survey = context.Survey.Include("SurveyItems").First(s => s.Id == surveyId);
+                    foreach (var item in survey.SurveyItems)
+                    {
+                        item.Answer = form["taAnswer_" + item.Id];
+                        item.Note = form["taNote_" + item.Id];
+                    }
+                    context.SaveChanges();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
 
     }

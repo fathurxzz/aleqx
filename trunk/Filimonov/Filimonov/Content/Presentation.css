@@ -301,11 +301,12 @@
 }
 
 #newLine #inputNumber {
-    width: 50px;
+    width: 40px;
 }
 
 #newLine #txtQuestion {
-    width: 300px;
+    width: 100%;
+    height: 70px;
 }
 
 .hidden {
@@ -316,3 +317,18 @@
     display: block;
 }
 
+#surveyTable th.admin,
+#surveyTable td.admin {
+    border: none;
+    background-color: transparent;
+    padding-left: 50px;
+}
+
+#sendAnswer {
+    width: 76px;
+    height: 23px;
+    cursor: pointer;
+    position: relative;
+    margin: 30px auto 0 auto;
+    background: url('img/send-answer.gif');
+}

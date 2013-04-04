@@ -11,102 +11,89 @@
             Создан @Model.Date.ToShortDateString(), клиент: @Html.ActionLink(Model.Customer.Title, "Details", "UserCabinet", new { id = Model.Customer.Name }, null)</div>
     </div>
     <div class="description">
-        @Html.Raw(Model.Description)
+        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+        {
+            @Html.Raw(Model.Description)
+        }
     </div>
-    <script type="text/javascript">
-
-//        var hiddenControls = true;
-
-//        $(function () {
-
-//            var obj1 = $("#inputNumber");
-//            var obj2 = $("#txtQuestion");
-
-
-
-//            function hideControls() {
-//                hiddenControls = true;
-//                obj1.addClass("hidden");
-//                obj2.addClass("hidden");
-//            }
-
-//            function saveChanges() {
-//                hideControls();
-//                alert("saved!");
-//            }
-
-
-//            $("#newLine").click(function (e) {
-//                if (hiddenControls) {
-//                    obj1.val("");
-//                    obj1.removeClass("hidden");
-//                    obj2.val("");
-//                    obj2.removeClass("hidden");
-
-//                    hiddenControls = false;
-//                }
-
-//                e.stopPropagation();
-//                if (window.event) { window.event.cancelBubbling = true; }
-
-//            });
-
-//            $("body").click(function () {
-//                if (!hiddenControls) {
-//                    saveChanges();
-//                    
-//                }
-//            });
-
-//        });
-
-    </script>
-    <table>
-        <tr>
-            <th>
-                №
-            </th>
-            <th>
-                Вопрос
-            </th>
-            <th>
-                Ответ
-            </th>
-            <th>
-                Примечания
-            </th>
-        </tr>
-        <tr>
-            <td class="first">
-                1
-            </td>
-            <td>
-                Что вы думаете о ситуации в Никарагуа?
-            </td>
-            <td>
-                3
-            </td>
-            <td>
-                4
-            </td>
-        </tr>
+    <form id="surveyForm" action="/">
+    @Html.Hidden("surveyId", Model.Id)
+        <table id="surveyTable">
+            <tr>
+                <th>
+                    №
+                </th>
+                <th>
+                    Вопрос
+                </th>
+                <th>
+                    Ответ
+                </th>
+                <th>
+                    Примечания
+                </th>
+                <th class="admin">
+                </th>
+            </tr>
+            @foreach (var item in Model.SurveyItems)
+            {
+                <tr>
+                    <td class="first">@item.Number
+                    </td>
+                    <td>@item.Question
+                    </td>
+                    <td>
+                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        {
+                            @Html.Raw(item.Answer)
+                        }
+                        else
+                        {
+                            @Html.TextArea("taAnswer_" + item.Id, item.Answer)
+                        }
+                    </td>
+                    <td>
+                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        {
+                            @Html.Raw(item.Note)
+                        }
+                        else
+                        {
+                            @Html.TextArea("taNote_" + item.Id, item.Note)
+                        }
+                    </td>
+                    <td class="admin">
+                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        {
+                            @Html.ActionLink("Удалить строку", "DeleteSurveyItem", "Survey", new { id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить строку?')" })
+                        }
+                    </td>
+                </tr>
+            }
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+            {
+                <tr id="newLine">
+                    <td>
+                        @Html.TextBox("inputNumber", "", new { @class = "hidden" })
+                    </td>
+                    <td>
+                        @Html.TextArea("txtQuestion", new { @class = "hidden" })
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </table>
+        @if (!Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+        {
+            <div id="sendAnswer">
         
-        <tr id="newLine">
-            <td>
-                @Html.TextBox("inputNumber","",new{@class="hidden"})
-            </td>
-            <td>
-                @Html.TextArea("txtQuestion", new { @class = "hidden" })
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-        </tr>
-    </table>
+            </div>
+        }
+    </form>
 </div>
-
-
 @section Includes
 {
     <script type="text/javascript">
