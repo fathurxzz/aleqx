@@ -11,7 +11,6 @@
             obj1 = $("#inputNumber");
             obj2 = $("#txtQuestion");
 
-
             $("#newLine").click(function (e) {
                 if (hiddenControls) {
                     SurveyService.showControls();
@@ -28,8 +27,19 @@
             $("body").click(function () {
                 if (!hiddenControls) {
                     SurveyService.hideControls();
-                    SurveyService.saveChanges(obj1.val(), obj2.val());
+                    SurveyService.saveChanges();
                 }
+            });
+
+
+            $("#sendAnswer").click(function () {
+                $.post("/presentation/survey/SaveAnswer", $("#surveyForm").serialize(), function (result) {
+                    if (result == "True") {
+                        alert("Данные сохранены");
+                    } else {
+                        alert("Ошибка при сохранении данных");
+                    }
+                });
             });
 
 
@@ -50,18 +60,11 @@
         obj2.removeClass("hidden");
     },
 
-    saveChanges: function (number, question) {
-
-        $.post("/presentation/survey/CreateSurveyItem?number=" + number + "&question=" + question, function (data) {
-            //ProjectCatalogue._updateImageContainer(fileName);
-            alert(data);
+    saveChanges: function () {
+        $.post("/presentation/survey/SaveSurvey", $("#surveyForm").serialize(), function (result) {
+            if (result != null) {
+                $('#surveyTable tr:last').before(result);
+            }
         });
-
-        //alert(number);
-        //alert(question);
-        alert("saved!");
-
-
-
     }
 };

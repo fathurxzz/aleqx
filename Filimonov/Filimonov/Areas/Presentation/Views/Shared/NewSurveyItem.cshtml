@@ -1,0 +1,17 @@
+﻿@model Filimonov.Models.SurveyItem
+@if (Model == null)
+{
+    return;
+}
+<tr>
+    <td class="first">@Model.Number
+    </td>
+    <td>@Model.Question
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td class="admin">@Html.ActionLink("Удалить строку", "DeleteSurveyItem", "Survey", new { id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить строку?')" })
+    </td>
+</tr>
