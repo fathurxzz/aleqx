@@ -24,10 +24,6 @@
 
 body
 {
-    /*
-    background: url('img/site-bg.jpg') no-repeat #27363c;*/
-    /*background-position: 50% 0;*/
-    /*background:rgb(39, 54, 60) ;*/
     font-family: FreeSetC;
 }
 
@@ -42,9 +38,6 @@ body
     margin: 0 auto;
 }
 
-.page
-{
-}
 
 .page.top
 {

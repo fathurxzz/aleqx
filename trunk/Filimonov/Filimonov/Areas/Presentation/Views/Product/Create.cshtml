@@ -24,8 +24,11 @@
     
     <table>
         <tr>
-            <td>Раздел</td>
-            <td>@Html.DropDownList("layoutId",layouts)</td>
+            <td>@Html.LabelFor(model => model.LayoutId)</td>
+            <td>
+                @Html.DropDownListFor(model => model.LayoutId, layouts)
+                @Html.ValidationMessageFor(model => model.LayoutId)
+            </td>
         </tr>
         <tr>
             <td>Изображения</td>
