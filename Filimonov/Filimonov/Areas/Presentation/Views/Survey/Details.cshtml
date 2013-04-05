@@ -4,6 +4,13 @@
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_PresentationMenu")
+
+@if (Model == null)
+{
+    @Html.Raw("Для Вас еще не создан опросник")
+    return;
+}
+
 <div class="surveyDetails">
     <div class="title">
         <h1>@Model.Title</h1>
