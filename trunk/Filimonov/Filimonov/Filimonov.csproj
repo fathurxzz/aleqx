@@ -315,7 +315,6 @@
     <Content Include="Areas\Presentation\Views\Shared\_PresentationMenu.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Create.cshtml" />
-    <Content Include="Areas\Presentation\Views\Customer\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\Customer\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\UserCabinet\Details.cshtml" />
     <Content Include="Areas\Presentation\Views\UserCabinet\AddProductSet.cshtml" />

@@ -1,14 +1,15 @@
-﻿@model IEnumerable<Filimonov.Models.Customer>
+﻿@using Filimonov
+@model IEnumerable<Filimonov.Models.Customer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Список заказчиков";
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 
 
 @Html.Partial("_PresentationMenu")
 <p>
-    @Html.ActionLink("Создать пользователя", "Create",null,new {@class="adminLink"})
+    @Html.ActionLink("Создать заказчика", "Create",null,new {@class="adminLink"})
 </p>
 
 

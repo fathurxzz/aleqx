@@ -1,6 +1,7 @@
-﻿@model Filimonov.Models.Survey
+﻿@using Filimonov
+@model Filimonov.Models.Survey
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Опросник";
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_PresentationMenu")

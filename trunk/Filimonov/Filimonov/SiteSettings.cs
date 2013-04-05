@@ -8,6 +8,8 @@ namespace Filimonov
 {
     public static class SiteSettings
     {
+        public const string PresentationTitle = "FILIMONOV INTERIOR LAB - Презентационная платформа"; 
+
         public static Dictionary<string, ThumbnailPicture> Thumbnails { get; private set; }
 
         static SiteSettings()
