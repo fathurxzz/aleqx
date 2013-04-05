@@ -23,7 +23,8 @@ namespace Filimonov.Areas.Presentation.Controllers
                 var customers = context.Customer.Include("ProductSets").ToList();
 
                 //string[] users = Roles.GetUsersInRole("Customers");
-
+                
+                ViewBag.CurrentItem = "customer";
 
                 return View(customers);
             }

@@ -46,3 +46,7 @@
 .presentationMenu .menuItem .inactive {
     color: #c4c4c4;
 }
+
+.presentationMenu a.selected {
+    color: #000;
+}

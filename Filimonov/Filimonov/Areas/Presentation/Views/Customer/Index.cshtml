@@ -5,9 +5,14 @@
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 
+
+@Html.Partial("_PresentationMenu")
 <p>
     @Html.ActionLink("Создать пользователя", "Create",null,new {@class="adminLink"})
 </p>
+
+
+
 <table class="adminTable">
     <tr>
         <th>
