@@ -260,3 +260,26 @@ body
 .videoContainer {
     margin-top: 30px;
 }
+
+
+
+.em-link {
+    cursor: pointer;
+    position: absolute;
+}
+
+#em-link {
+    
+    width: 120px;
+    height: 10px;
+    margin-top: 90px;
+    margin-left: 590px;
+}
+
+#em-link-presentation 
+{
+    width: 110px;
+    height: 10px;
+    margin-top: 73px;
+    margin-left: 530px;
+}

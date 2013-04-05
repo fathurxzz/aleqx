@@ -3,6 +3,8 @@
     enables: {},
     initialize: function PresentationPageExtender_initialize() {
         $(function () {
+            $(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
+
             if (!window.isHomePage) {
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/presentation"; });
             }

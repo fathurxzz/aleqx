@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    $(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
+
     //    $.scrollingParallax('content/img/site-bg.jpg');
 
 //    $('div.main-page').scrollingParallax({
