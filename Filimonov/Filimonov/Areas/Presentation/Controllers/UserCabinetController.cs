@@ -35,6 +35,8 @@ namespace Filimonov.Areas.Presentation.Controllers
                 }
             }
 
+            ViewBag.CurrentItem = "customer-details";
+            
             var productSet = set;
 
             using (var context = new LibraryContainer())

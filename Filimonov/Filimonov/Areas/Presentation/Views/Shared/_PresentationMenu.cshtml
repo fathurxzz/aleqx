@@ -24,6 +24,10 @@
                     {
                          <text>Библиотека опросников</text>
                     }
+                    else if (ViewBag.CurrentItem == "survey-details")
+                    {
+                        @Html.ActionLink("Библиотека опросников", "Index", "Survey",null, new{@class="selected"})
+                    }
                     else
                     {
                          @Html.ActionLink("Библиотека опросников", "Index", "Survey")
@@ -31,13 +35,13 @@
                 }
                 else
                 {
-                    if (ViewBag.CurrentItem == "survey")
+                    if (ViewBag.CurrentItem == "survey-details")
                     {
                         <text>Опросник</text>
                     }
                     else
                     {
-                        @Html.ActionLink("Опросник", "Details", "Survey", new {id = User.Identity.Name}, null)
+                        @Html.ActionLink("Опросник", "Details", "Survey", new { id = User.Identity.Name }, null)
                     @*<text>Опросник</text>*@
                     }
                 }
@@ -52,6 +56,11 @@
                 {
                     <text>Раздел заказчика</text>
                 }
+                else if (ViewBag.CurrentItem == "customer-details")
+                    {
+                        @Html.ActionLink("Раздел заказчика", "Index", "Customer", null, new { @class = "selected" })
+                    }
+                    
                 else
                 {
                     @Html.ActionLink("Раздел заказчика", "Index", "Customer")
@@ -60,7 +69,14 @@
             }
             else
             {
-                @Html.ActionLink("Раздел заказчика", "Details", "UserCabinet", new { id = User.Identity.Name }, null)
+                if (ViewBag.CurrentItem == "customer-details")
+                {
+                    <text>Раздел заказчика</text>
+                }
+                else
+                {
+                    @Html.ActionLink("Раздел заказчика", "Details", "UserCabinet", new { id = User.Identity.Name }, null)
+                }
             }
         </div>
     </div>
