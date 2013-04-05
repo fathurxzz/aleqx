@@ -26,8 +26,21 @@
 
             $("body").click(function () {
                 if (!hiddenControls) {
-                    SurveyService.hideControls();
-                    SurveyService.saveChanges();
+                    if ((obj1.val() == "" && obj2.val() == "") || (obj1.val() != "" && obj2.val() != "")) {
+                        SurveyService.hideControls();
+                        SurveyService.saveChanges();
+                    } else {
+                        if (obj1.val() == "")
+                            obj1.addClass("error");
+                        else {
+                            obj1.removeClass("error");
+                        }
+                        if (obj2.val() == "")
+                            obj2.addClass("error");
+                        else {
+                            obj2.removeClass("error");
+                        }
+                    }
                 }
             });
 
@@ -54,6 +67,8 @@
 
     showControls: function () {
         hiddenControls = false;
+        obj1.removeClass("error");
+        obj2.removeClass("error");
         obj1.val("");
         obj1.removeClass("hidden");
         obj2.val("");
