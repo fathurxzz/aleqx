@@ -3,6 +3,13 @@
     ViewBag.Title = "Добавление изображения";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    @Html.Raw(ViewBag.ErrorMessage)
+    return;
+}
+
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
