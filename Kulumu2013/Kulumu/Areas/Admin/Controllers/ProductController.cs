@@ -84,9 +84,9 @@ namespace Kulumu.Areas.Admin.Controllers
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                return View(ViewBag.ErrorMessage = ex.Message);
             }
         }
 
