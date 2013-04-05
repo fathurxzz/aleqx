@@ -34,8 +34,8 @@
             </td>
             <td class="description">@Html.Raw(survey.Description)</td>
             <td style="vertical-align: top">
-                @Html.ActionLink("Редактировать данные", "Edit", "Survey", new { id = survey.Id }, new{@class="adminLink"}) | 
-                @Html.ActionLink("Удалить", "Delete", "Survey", new { id = survey.Id }, new{@class="adminLink",onclick="return confirm('Удалить опросник?')"})
+                <span> @Html.ActionLink("Редактировать данные", "Edit", "Survey", new { id = survey.Id }, new { @class = "adminLink" }) </span>
+                <span> @Html.ActionLink("Удалить", "Delete", "Survey", new { id = survey.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить опросник?')" })</span>
             </td>
         </tr>
     }
