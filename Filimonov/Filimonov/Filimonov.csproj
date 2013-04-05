@@ -106,6 +106,7 @@
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\ContentItem.cs" />
     <Compile Include="Models\ContentItemProjects.cs" />
     <Compile Include="Models\ContentType.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="Models\PresentationMenu.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductSetValidation.cs" />
+    <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\ProjectValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">

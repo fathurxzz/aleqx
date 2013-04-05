@@ -4,7 +4,7 @@
     /*border: 1px solid #c4c4c4;*/
     position: relative;
     margin: 0 auto;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 20px;
 }
 
@@ -33,7 +33,8 @@
 
 .presentationMenu .title {
     color: #000;
-    font-family: FreeSetCBold;
+    /*font-family: FreeSetCBold;*/
+    /*font-weight: bold;*/
     margin-top: 80px;
 }
 
