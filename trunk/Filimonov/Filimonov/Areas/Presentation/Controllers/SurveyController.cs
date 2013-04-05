@@ -38,7 +38,7 @@ namespace Filimonov.Areas.Presentation.Controllers
                 }
             }
 
-            ViewBag.CurrentItem = "survey";
+            ViewBag.CurrentItem = "survey-details";
 
             using (var context = new LibraryContainer())
             {
