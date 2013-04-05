@@ -25,7 +25,7 @@
             <span class="category-preview-title">
                 @Html.ActionLink(item.Title, "Details", "Category", new { id = item.Name }, null)
             </span>
-            @if (Request.IsAuthenticated)
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div class="abs">
                     @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Presentation", id = item.Id }, new { @class = "adminLink" })
