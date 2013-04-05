@@ -102,8 +102,8 @@ namespace Filimonov.Areas.Presentation.Controllers
                 }
 
                 ViewBag.ProductSetId = productSet;
-                
 
+                ViewBag.CurrentItem = "picture-lib-details";
                 return View(category);
             }
         }

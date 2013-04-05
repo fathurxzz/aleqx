@@ -5,6 +5,10 @@
             {
                 @Html.Raw("Библиотека изображений")
             }
+            else if (ViewBag.CurrentItem == "picture-lib-details")
+            {
+                @Html.ActionLink("Библиотека изображений", "Index", "Category", new { area = "Presentation" }, new{@class="selected"})
+            }
             else
             {
                 @Html.ActionLink("Библиотека изображений", "Index", "Category", new { area = "Presentation" }, null)
@@ -16,14 +20,14 @@
             <div class="title">
                 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                 {
-                     if (ViewBag.CurrentItem == "survey")
-                     {
+                    if (ViewBag.CurrentItem == "survey")
+                    {
                          <text>Библиотека опросников</text>
-                     }
-                     else
-                     {
+                    }
+                    else
+                    {
                          @Html.ActionLink("Библиотека опросников", "Index", "Survey")
-                     }
+                    }
                 }
                 else
                 {
@@ -37,7 +41,15 @@
         <div class="title">
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
-                @Html.ActionLink("Раздел заказчика", "Index", "Customer")
+                if (ViewBag.CurrentItem == "customer")
+                {
+                    <text>Раздел заказчика</text>
+                }
+                else
+                {
+                    @Html.ActionLink("Раздел заказчика", "Index", "Customer")
+                }
+
             }
             else
             {

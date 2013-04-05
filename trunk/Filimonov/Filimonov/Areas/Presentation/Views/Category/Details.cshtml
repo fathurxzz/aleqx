@@ -6,13 +6,14 @@
     ViewBag.Title = "Библиотека изображений - " + Model.Title;
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
+@Html.Partial("_PresentationMenu")
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div>
         @Html.ActionLink("Добавить изображения", "Create", "Product", new { area = "Presentation", id = Model.Id }, new { @class = "adminLink" })
     </div>
 }
-@Html.Partial("_PresentationMenu")
+
 <div class="category-title">
     <h1>@Model.Title</h1>
 </div>
