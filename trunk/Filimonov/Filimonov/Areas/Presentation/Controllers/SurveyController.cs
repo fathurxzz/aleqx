@@ -38,12 +38,19 @@ namespace Filimonov.Areas.Presentation.Controllers
                 }
             }
 
+            ViewBag.CurrentItem = "survey";
+
             using (var context = new LibraryContainer())
             {
                 var customer = context.Customer.Include("Survey").First(c => c.Name == id);
-                customer.Survey.SurveyItems.Load();
-                var survey = customer.Survey;
-                return View(survey);
+                //customer.Survey.SurveyItems.Load();
+                if (customer.Survey !=null)
+                {
+                    var survey = context.Survey.Include("SurveyItems").FirstOrDefault(s => s.Id == customer.Survey.Id);
+                    return View(survey);
+                }
+
+                return View();
             }
         }
 
