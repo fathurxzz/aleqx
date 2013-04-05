@@ -3,7 +3,7 @@
 @using SiteExtensions.Graphics
 @model Filimonov.Models.Category
 @{
-    ViewBag.Title = "Библиотека изображений - " + Model.Title;
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Библиотека изображений - " + Model.Title;
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_PresentationMenu")

@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Filimonov.Models.Survey>
+﻿@using Filimonov
+@model IEnumerable<Filimonov.Models.Survey>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Библиотека опросников";
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 

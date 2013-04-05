@@ -1,6 +1,7 @@
-﻿@model IEnumerable<Filimonov.Models.Layout>
+﻿@using Filimonov
+@model IEnumerable<Filimonov.Models.Layout>
 @{
-    ViewBag.Title = "Администрирование разделов";
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Администрирование разделов";
     Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
 }
 <h2>
