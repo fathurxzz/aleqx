@@ -30,14 +30,15 @@ namespace EM2013.Areas.Admin.Controllers
         } 
 
         [HttpPost]
-        public ActionResult Create(int productId, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult Create(int productId, FormCollection form, HttpPostedFileBase fileUpload)
         {
             using (var context = new SiteContext())
             {
                 var product = context.Product.Include("Category").First(c => c.Id == productId);
                 
                 var pi = new ProductItem();
-                TryUpdateModel(pi, new[] { "Description", "SortOrder" });
+                TryUpdateModel(pi, new[] { "SortOrder" });
+                pi.Description = HttpUtility.HtmlDecode(form["Description"]);
                 pi.Product = product;
 
                 if (fileUpload != null)
@@ -70,7 +71,7 @@ namespace EM2013.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(int id, FormCollection form, HttpPostedFileBase fileUpload)
         {
             try
             {
@@ -79,7 +80,8 @@ namespace EM2013.Areas.Admin.Controllers
                     var pi = context.ProductItem.Include("Product").First(p => p.Id == id);
                     var productId = pi.Product.Id;
                     var product = context.Product.Include("Category").First(p => p.Id == productId);
-                    TryUpdateModel(pi, new[] { "Description", "SortOrder" });
+                    TryUpdateModel(pi, new[] { "SortOrder" });
+                    pi.Description = HttpUtility.HtmlDecode(form["Description"]);
                     if (fileUpload != null)
                     {
                         if (!string.IsNullOrEmpty(pi.ImageSource))
