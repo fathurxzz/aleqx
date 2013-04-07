@@ -1,8 +1,12 @@
 ﻿@using Kulumu
 @using SiteExtensions.Graphics
 @model IEnumerable<Kulumu.Models.Product>
+           @{
+            int cnt = 0;
+        }
 @foreach (var product in Model)
 {
+    cnt++;
     <div class="product">
         <div class="cont">
             <div class="image">
@@ -21,6 +25,10 @@
             <div class="signDescription">@Html.Raw(product.Description)</div>
         </div>
     </div>
+    if (cnt%3==0)
+            {
+                <div class="clear"></div>
+            }
 }
 <div class="clear">
 </div>

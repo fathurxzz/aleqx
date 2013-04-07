@@ -17,8 +17,13 @@
                 @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.OurWorks.Id }, new { @class = "adminLink" })
             </div>   
         }
+        @{
+            int cnt = 0;
+        }
+
         @foreach (var product in Model.OurWorks.Products)
         {
+            cnt++;
             <div class="product">
                 <div class="cont">
                     <div class="image">
@@ -37,6 +42,10 @@
                     <div class="signDescription">@Html.Raw(product.Description)</div>
                 </div>
             </div>
+            if (cnt%3==0)
+            {
+                <div class="clear"></div>
+            }
         }
         <div class="clear">
         </div>
