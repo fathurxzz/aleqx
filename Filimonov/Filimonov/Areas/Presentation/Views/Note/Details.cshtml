@@ -1,0 +1,21 @@
+﻿@using Filimonov
+@model Filimonov.Models.Note
+
+@{
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Мои статьи и записи - "+Model.Title;
+    Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_PresentationMenu")
+
+<div class="noteDetails">
+    <div class="title">
+        <h1>@Model.Title</h1>
+        <div class="description">
+            Запись создана @Model.Date.ToShortDateString()</div>
+    </div>
+    
+    <div class="text">
+        @Html.Raw(Model.Text)
+    </div>
+</div>

@@ -17,7 +17,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             using (var context = new LibraryContainer())
             {
                 var notes = context.Note.ToList();
-                ViewBag.CurrentItem = "note-details";
+                ViewBag.CurrentItem = "notes";
                 return View(notes);
             }
         }
@@ -27,7 +27,12 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            ViewBag.CurrentItem = "note-details";
+            using (var context = new LibraryContainer())
+            {
+                var note = context.Note.First(n => n.Id == id);
+                return View(note);
+            }
         }
 
         //
