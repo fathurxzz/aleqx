@@ -46,9 +46,23 @@
             @foreach (var item in Model.SurveyItems)
             {
                 <tr>
-                    <td class="first">@item.Number
+                    <td class="first quest">
+                        @Html.TextBox("tbNumber_" + item.Id, item.Number, new { @class = "hidden tbn" })
+                        @{
+                            string nId = "numberText_" + item.Id;
+                        }
+                        <div class="numberText" id="@nId">
+                            @item.Number
+                        </div>
                     </td>
-                    <td>@item.Question
+                    <td class="quest">
+                        @Html.TextArea("taQuestion_" + item.Id, item.Question, new { @class = "hidden taq" })
+                        @{
+                            string qId = "questText_" + item.Id;
+                        }
+                        <div class="questText" id="@qId">
+                            @item.Question
+                        </div>
                     </td>
                     <td>
                         @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))

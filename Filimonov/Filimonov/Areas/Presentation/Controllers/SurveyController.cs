@@ -187,6 +187,20 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
         [HttpPost]
+        public string UpdateSurvey(int id, FormCollection form)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var surveyItem = context.SurveyItem.First(s => s.Id == id);
+                surveyItem.Question = form["taQuestion_" + id];
+                surveyItem.Number = form["tbNumber_" + id];
+                context.SaveChanges();
+                return surveyItem.Number + "###" + surveyItem.Question;
+            }
+        }
+
+        [OutputCache(VaryByParam = "*", NoStore = true, Duration = 1)]
+        [HttpPost]
         public bool SaveAnswer(FormCollection form)
         {
             int surveyId = Convert.ToInt32(form["surveyId"]);
