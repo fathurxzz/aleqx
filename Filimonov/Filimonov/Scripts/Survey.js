@@ -3,6 +3,8 @@
     updateQuestion: false,
     obj1: null,
     obj2: null,
+    editedRow: null,
+
 
     initialize: function () {
 
@@ -25,11 +27,19 @@
             });
 
 
+            $("td.admin").click(function (e) {
+                e.stopPropagation();
+                if (window.event) {
+                    window.event.cancelBubbling = true;
+                }
+            });
+
             $(".quest").click(function (e) {
                 $(this).find(".taq").removeClass("hidden");
                 $(this).find(".tbn").removeClass("hidden");
                 $(this).find(".questText").html("");
                 $(this).find(".numberText").html("");
+                editedRow = $(this);
 
                 updateQuestion = true;
 
@@ -45,11 +55,19 @@
             $("body").click(function () {
 
                 if (updateQuestion) {
-                    var obj = $(this).find(".taq");
-                    var objn = $(this).find(".tbn");
-                    var objtext = $(this).find(".questText");
-                    var objNumber = $(this).find(".numberText");
+
+
+                    var obj = editedRow.find(".taq");
+
+
+                    var objn = editedRow.find(".tbn");
+                    var objtext = editedRow.find(".questText");
+                    var objNumber = editedRow.find(".numberText");
                     var qId = obj.attr("id").split("_")[1];
+
+                    //                    alert(obj.html());
+
+                    //                    alert(obj.html());
 
                     SurveyService.updateChanges(obj, qId, objtext, objn, objNumber);
                     updateQuestion = false;
@@ -110,8 +128,11 @@
         $.post("/presentation/survey/SaveSurvey", $("#surveyForm").serialize(), function (result) {
             if (result != null) {
                 $('#surveyTable tr:last').before(result);
+                SurveyService.initialize();
             }
         });
+
+
     },
 
     updateChanges: function (obj, id, objtext, objn, objNumber) {

@@ -45,8 +45,8 @@
             </tr>
             @foreach (var item in Model.SurveyItems)
             {
-                <tr>
-                    <td class="first quest">
+                <tr class="quest">
+                    <td class="first">
                         @Html.TextBox("tbNumber_" + item.Id, item.Number, new { @class = "hidden tbn" })
                         @{
                             string nId = "numberText_" + item.Id;
@@ -55,7 +55,7 @@
                             @item.Number
                         </div>
                     </td>
-                    <td class="quest">
+                    <td>
                         @Html.TextArea("taQuestion_" + item.Id, item.Question, new { @class = "hidden taq" })
                         @{
                             string qId = "questText_" + item.Id;
