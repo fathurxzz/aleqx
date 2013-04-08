@@ -3,10 +3,23 @@
 {
     return;
 }
-<tr>
-    <td class="first">@Model.Number
+<tr class="quest">
+    <td class="first">
+        @Html.TextBox("tbNumber_" + Model.Id, Model.Number, new { @class = "hidden tbn" })
+        @{
+            string nId = "numberText_" + Model.Id;
+        }
+        <div class="numberText" id="@nId">
+            @Model.Number
+        </div>
     </td>
-    <td>@Model.Question
+    <td>@Html.TextArea("taQuestion_" + Model.Id, Model.Question, new { @class = "hidden taq" })
+        @{
+            string qId = "questText_" + Model.Id;
+        }
+        <div class="questText" id="@qId">
+            @Model.Question
+        </div>
     </td>
     <td>
     </td>
