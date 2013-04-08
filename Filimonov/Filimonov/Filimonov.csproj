@@ -92,6 +92,7 @@
     <Compile Include="Areas\Presentation\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
     <Compile Include="Areas\Presentation\Controllers\LayoutController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\NoteController.cs" />
     <Compile Include="Areas\Presentation\Controllers\ProductController.cs" />
     <Compile Include="Areas\Presentation\Controllers\SurveyController.cs" />
     <Compile Include="Areas\Presentation\Controllers\UserCabinetController.cs" />
@@ -119,6 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Library.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NoteValidation.cs" />
     <Compile Include="Models\PresentationMenu.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductSetValidation.cs" />
@@ -324,6 +326,9 @@
     <Content Include="Areas\Presentation\Views\Survey\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\Survey\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Shared\NewSurveyItem.cshtml" />
+    <Content Include="Areas\Presentation\Views\Note\Index.cshtml" />
+    <Content Include="Areas\Presentation\Views\Note\Create.cshtml" />
+    <Content Include="Areas\Presentation\Views\Note\Edit.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

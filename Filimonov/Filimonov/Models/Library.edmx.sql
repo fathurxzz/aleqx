@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/03/2013 10:50:06
+-- Date Created: 04/08/2013 10:23:23
 -- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Library.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `fili`;
+CREATE DATABASE `fili`;
+USE `fili`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -21,6 +24,7 @@
 --    ALTER TABLE `ProductSet` DROP CONSTRAINT `FK_CustomerProductSet`;
 --    ALTER TABLE `ProductProductSet` DROP CONSTRAINT `FK_ProductProductSet_Product`;
 --    ALTER TABLE `ProductProductSet` DROP CONSTRAINT `FK_ProductProductSet_ProductSet`;
+--    ALTER TABLE `SurveyItem` DROP CONSTRAINT `FK_SurveySurveyItem`;
 --    ALTER TABLE `Survey` DROP CONSTRAINT `FK_CustomerSurvey`;
 
 -- --------------------------------------------------
@@ -32,6 +36,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Product`;
     DROP TABLE IF EXISTS `Customer`;
     DROP TABLE IF EXISTS `ProductSet`;
+    DROP TABLE IF EXISTS `SurveyItem`;
     DROP TABLE IF EXISTS `Survey`;
     DROP TABLE IF EXISTS `ProductProductSet`;
 SET foreign_key_checks = 1;
@@ -102,6 +107,15 @@ CREATE TABLE `Survey` (
     `Date` datetime  NOT NULL,
     `Description` longtext  NULL,
     `Customer_Id` int  NOT NULL
+);
+
+-- Creating table 'Note'
+
+CREATE TABLE `Note` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Date` datetime  NOT NULL,
+    `Text` longtext  NULL
 );
 
 -- Creating table 'ProductProductSet'

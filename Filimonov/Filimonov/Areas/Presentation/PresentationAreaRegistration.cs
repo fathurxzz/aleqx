@@ -40,6 +40,12 @@ namespace Filimonov.Areas.Presentation
             );
 
             context.MapRoute(
+                "Notes",
+                "presentation/notes",
+                new { controller = "Note", action = "Index" }
+            );
+
+            context.MapRoute(
                 "ClientAuthentication",
                 "presentation/customerlogon/{id}",
                 new { controller = "Customer", action = "LogOn", id = UrlParameter.Optional }

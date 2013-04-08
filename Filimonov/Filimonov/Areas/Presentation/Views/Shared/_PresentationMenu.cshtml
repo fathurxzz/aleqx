@@ -83,8 +83,16 @@
     @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
         <div class="menuItem notes">
-            <div class="title inactive">
-                Мои статьи и записи</div>
+            <div class="title">
+                @if (ViewBag.CurrentItem == "note-details")
+                {
+                    <text>Мои статьи и записи</text>
+                }
+                else
+                {
+                    @Html.ActionLink("Мои статьи и записи", "Index", "Note", null, null)
+                }
+            </div>
         </div>
     }
     <div class="clear">
