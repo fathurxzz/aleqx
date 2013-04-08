@@ -13,6 +13,7 @@
     <EntitySet Name="ProductSet" EntityType="Library.Store.ProductSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SurveyItem" EntityType="Library.Store.SurveyItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Survey" EntityType="Library.Store.Survey" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Note" EntityType="Library.Store.Note" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductSet" EntityType="Library.Store.ProductProductSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Library.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
@@ -106,6 +107,15 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="Customer_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductProductSet">
     <Key>
@@ -235,6 +245,7 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Survey" EntitySet="Survey" />
           </AssociationSet>
+          <EntitySet Name="Note" EntityType="Library.Note" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -367,6 +378,15 @@
           <End Type="Library.Customer" Role="Customer" Multiplicity="1" />
           <End Type="Library.Survey" Role="Survey" Multiplicity="0..1" />
         </Association>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Text" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -443,6 +463,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Note">
+      <EntityTypeMapping TypeName="IsTypeOf(Library.Note)">
+        <MappingFragment StoreEntitySet="Note">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ProductProductSet" TypeName="Library.ProductProductSet" StoreEntitySet="ProductProductSet">
       <EndProperty Name="Product">
         <ScalarProperty Name="Id" ColumnName="Products_Id" />
@@ -503,13 +533,14 @@
         <EntityTypeShape EntityType="Library.SurveyItem" Width="1.5" PointX="11.375" PointY="4.625" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="Library.Survey" Width="1.5" PointX="8.75" PointY="4.875" Height="1.7879850260416665" />
         <AssociationConnector Association="Library.SurveySurveyItem">
-          <ConnectorPoint PointX="10.25" PointY="5.8651432291666667" />
-          <ConnectorPoint PointX="11.375" PointY="5.8651432291666667" />
+          <ConnectorPoint PointX="10.25" PointY="6.31443359375" />
+          <ConnectorPoint PointX="11.375" PointY="6.31443359375" />
         </AssociationConnector>
         <AssociationConnector Association="Library.CustomerSurvey">
           <ConnectorPoint PointX="8" PointY="6.0862939453125" />
           <ConnectorPoint PointX="8.75" PointY="6.0862939453125" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Library.Note" Width="1.5" PointX="10.375" PointY="1.75" Height="1.787985026041667" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

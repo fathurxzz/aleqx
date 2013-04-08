@@ -1,0 +1,39 @@
+﻿@using Filimonov
+@model IEnumerable<Filimonov.Models.Note>
+
+@{
+    ViewBag.Title = SiteSettings.PresentationTitle + " - Мои статьи и записи";
+    Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_PresentationMenu")
+
+<div class="notes-title">
+    <h1>Мои статьи и записи</h1>
+</div>
+
+<div class="survey">
+    @Html.ActionLink("Добавить запись", "Create", "Note", null, new{@class="adminLink"})
+    <br/>
+
+    <table> 
+    @foreach (var note in Model.OrderByDescending(n=>n.Date))
+    {
+        <tr>
+            <td class="date">@note.Date.ToShortDateString()</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="title">
+                @Html.ActionLink(note.Title, "Details", "Note", new { id = note.Id }, null)
+            </td>
+            <td class="description">@Html.Raw(note.Text)</td>
+            <td style="vertical-align: top">
+                <span> @Html.ActionLink("Редактировать данные", "Edit", "Note", new { id = note.Id }, new { @class = "adminLink" }) </span>
+                <span> @Html.ActionLink("Удалить запись", "Delete", "Note", new { id = note.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить запись?')" })</span>
+            </td>
+        </tr>
+    }
+    </table>
+</div>
