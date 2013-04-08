@@ -354,3 +354,30 @@
 .notes-title h1 {
     font-size: 25px;
 }
+
+.noteDetails 
+{
+    width: 800px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.noteDetails .text {
+    padding-top: 50px;
+}
+
+
+.noteDetails .title {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.noteDetails .title h1 {
+     font-size: 25px;
+}
+.noteDetails .title .description {
+    font-size: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+}

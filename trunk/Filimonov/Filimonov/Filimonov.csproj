@@ -329,6 +329,7 @@
     <Content Include="Areas\Presentation\Views\Note\Index.cshtml" />
     <Content Include="Areas\Presentation\Views\Note\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Note\Edit.cshtml" />
+    <Content Include="Areas\Presentation\Views\Note\Details.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />

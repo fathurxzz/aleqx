@@ -86,6 +86,10 @@
             <div class="title">
                 @if (ViewBag.CurrentItem == "note-details")
                 {
+                    @Html.ActionLink("Мои статьи и записи", "Index", "Note", null,  new { @class = "selected" })
+                }
+                else if (ViewBag.CurrentItem == "notes")
+                {
                     <text>Мои статьи и записи</text>
                 }
                 else
