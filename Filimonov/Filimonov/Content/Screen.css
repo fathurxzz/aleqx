@@ -1,0 +1,63 @@
+﻿body {
+    font-family: FreeSetC;
+}
+.header, .presentationMenu, .hidden, .admin, #newLine, #aside {
+    display: none;
+}
+
+
+.surveyDetails .description {
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    font-size: 12px;
+}
+
+
+.surveyDetails .title {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.surveyDetails .title h1 {
+     font-size: 25px;
+}
+
+.surveyDetails .title .description {
+    font-size: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+}
+
+.surveyDetails .title .description a {
+    color: #0072bc;
+}
+
+
+.surveyDetails table {
+    position: relative;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.surveyDetails table th {
+    background-color: #d6d6d6;
+    border: 2px solid #000;
+    padding:0 10px  5px  10px;
+}
+
+.surveyDetails table td {
+    padding: 5px;
+    border: 2px solid #000;
+}
+
+.surveyDetails table td.first {
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+

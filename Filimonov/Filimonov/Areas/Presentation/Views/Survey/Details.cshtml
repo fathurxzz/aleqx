@@ -25,7 +25,12 @@
         }
     </div>
     <form id="surveyForm" action="/">
-    @Html.Hidden("surveyId", Model.Id)
+        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+        {
+            @Html.Hidden("isAdmin","1")
+        }
+
+        @Html.Hidden("surveyId", Model.Id)
         <table id="surveyTable">
             <tr>
                 <th>
@@ -115,6 +120,9 @@
             </div>
         }
     </form>
+    <div style="text-align: right" id="aside">
+        
+    </div>
 </div>
 @section Includes
 {

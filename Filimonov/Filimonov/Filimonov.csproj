@@ -180,6 +180,8 @@
     <Content Include="Content\img\footer.png" />
     <Content Include="Content\img\header-bg.png" />
     <Content Include="Content\img\hide.gif" />
+    <Content Include="Content\img\icon-close.png" />
+    <Content Include="Content\img\icon-print.png" />
     <Content Include="Content\img\main-frame-bg.png" />
     <Content Include="Content\img\main-frame-bottom.png" />
     <Content Include="Content\img\main-frame-middle.png" />
@@ -198,8 +200,10 @@
     <Content Include="Content\img\title-side-bg.gif" />
     <Content Include="Content\Presentation.css" />
     <Content Include="Content\PresentationMenu.css" />
+    <Content Include="Content\print-preview.css" />
     <Content Include="Content\Project.css" />
     <Content Include="Content\ProjectPage.css" />
+    <Content Include="Content\Screen.css" />
     <Content Include="Content\Site-mobile.css" />
     <Content Include="em.gif" />
     <Content Include="Global.asax" />
@@ -211,6 +215,7 @@
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.print-preview.js" />
     <Content Include="Scripts\jquery.scrollFollow.js" />
     <Content Include="Scripts\jquery.scrolling-parallax.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
