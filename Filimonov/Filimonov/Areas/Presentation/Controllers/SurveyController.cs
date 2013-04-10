@@ -34,7 +34,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             {
                 if (User.Identity.Name != id)
                 {
-                    throw new Exception();
+                    throw new Exception("invalid user, must be " + User.Identity.Name);
                 }
             }
 
