@@ -92,6 +92,19 @@
     background-image: url('img/product-checked.png');
 }
 
+.category-details .product .bgMarker {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+    margin-left: 250px;
+    margin-top: 10px;
+}
+
+.category-details .product .bgMarker.selected {
+    background-image: url('img/product-checked.png');
+}
+
 
 
 .category-title {

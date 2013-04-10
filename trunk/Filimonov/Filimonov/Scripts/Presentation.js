@@ -3,6 +3,11 @@
     enables: {},
     initialize: function PresentationPageExtender_initialize() {
         $(function () {
+
+            $(function () {
+                $(".fancyImage").fancybox({ hideOnContentClick: true, showCloseButton: true, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+            });
+
             $(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
 
             if (!window.isHomePage) {
@@ -13,31 +18,30 @@
                 offset: 200
             });
 
-            /*
-            $("#selectAll").click(function () {
 
 
-            if ($(this).attr('checked')) {
+//            $(".product").click(function () {
 
-            $(".cbx").each(function () {
-            $(this).attr("checked", "checked");
-            });
-            } else {
-            $(".cbx").each(function () {
-            $(this).removeAttr("checked");
-            });
-            }
+//                var id = $(this).attr("id");
 
-            });
-            */
+//                var obj = $(this).find(".selectedMarker");
+//                if (obj.hasClass("selected")) {
+//                    obj.removeClass("selected");
+//                    PresentationPageExtender.enables[id] = 0;
+//                } else {
+//                    obj.addClass("selected");
+//                    PresentationPageExtender.enables[id] = 1;
+//                }
+
+//            });
 
 
 
-            $(".product").click(function () {
+            $(".bgMarker").click(function () {
 
                 var id = $(this).attr("id");
 
-                var obj = $(this).find(".selectedMarker");
+                var obj = $(this).parent().find(".selectedMarker");
                 if (obj.hasClass("selected")) {
                     obj.removeClass("selected");
                     PresentationPageExtender.enables[id] = 0;
@@ -47,6 +51,17 @@
                 }
 
             });
+
+
+
+            $(".product").hover(function () {
+                var obj = $(this).find(".bgMarker");
+                obj.addClass("selected");
+            }, function () {
+                var obj = $(this).find(".bgMarker");
+                obj.removeClass("selected");
+            });
+
 
 
             $("#set").change(function () {
@@ -59,7 +74,7 @@
                 var form = $("#f2");
                 form.submit();
             });
-            
+
 
 
         });
