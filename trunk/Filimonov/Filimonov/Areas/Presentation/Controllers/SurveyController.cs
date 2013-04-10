@@ -54,7 +54,6 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
-
         public ActionResult Edit(int id)
         {
             using (var context = new LibraryContainer())

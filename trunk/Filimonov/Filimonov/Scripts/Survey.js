@@ -34,18 +34,22 @@
                 }
             });
 
+
             $(".quest").click(function (e) {
-                $(this).find(".taq").removeClass("hidden");
-                $(this).find(".tbn").removeClass("hidden");
-                $(this).find(".questText").html("");
-                $(this).find(".numberText").html("");
-                editedRow = $(this);
 
-                updateQuestion = true;
+                if ($("#isAdmin").val() == "1") {
+                    $(this).find(".taq").removeClass("hidden");
+                    $(this).find(".tbn").removeClass("hidden");
+                    $(this).find(".questText").html("");
+                    $(this).find(".numberText").html("");
+                    editedRow = $(this);
 
-                e.stopPropagation();
-                if (window.event) {
-                    window.event.cancelBubbling = true;
+                    updateQuestion = true;
+
+                    e.stopPropagation();
+                    if (window.event) {
+                        window.event.cancelBubbling = true;
+                    }
                 }
 
                 //alert(id);
@@ -104,6 +108,9 @@
                 });
             });
 
+
+            $('#aside').prepend('<a class="print-preview">Отправить на печать / сгенерировать в pdf</a>');
+            $('a.print-preview').printPreview();
 
         });
     },
