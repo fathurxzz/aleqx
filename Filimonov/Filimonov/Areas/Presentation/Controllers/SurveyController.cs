@@ -30,11 +30,11 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         public ActionResult Details(string id)
         {
-            if (User.Identity.Name != "admin")
+            if (User.Identity.Name.ToLower() != "admin")
             {
                 if (User.Identity.Name != id)
                 {
-                    throw new Exception("invalid user, must be " + User.Identity.Name);
+                    throw new Exception("invalid user, must be " + User.Identity.Name+" id="+id);
                 }
             }
 
