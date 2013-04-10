@@ -204,6 +204,7 @@
     <Content Include="Content\Project.css" />
     <Content Include="Content\ProjectPage.css" />
     <Content Include="Content\Screen.css" />
+    <Content Include="Content\Site-mobile-presentation.css" />
     <Content Include="Content\Site-mobile.css" />
     <Content Include="em.gif" />
     <Content Include="Global.asax" />
