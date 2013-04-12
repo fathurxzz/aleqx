@@ -1,6 +1,6 @@
 ﻿var PresentationPageExtender = {
     favoritesCount: 0,
-    selectedProductsCnt:0,
+    selectedProductsCnt: 0,
     enables: {},
     initialize: function PresentationPageExtender_initialize() {
         $(function () {
@@ -15,16 +15,21 @@
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/platform"; });
             }
 
-            $(".addToProductSetPanel").scrollFollow({
+            //            $(".addToProductSetPanel").scrollFollow({
+            //                offset: 200
+            //            });
+
+            $(".addToProductSetPanelContainer").scrollFollow({
                 offset: 200
             });
 
 
+
             selectedProductsCnt = $("#selectedProducts").val();
 
-            if (selectedProductsCnt > 0) {
-                $(".addToProductSetPanel").removeClass("hidden");
-            }
+            //            if (selectedProductsCnt > 0) {
+            //                $(".addToProductSetPanel").removeClass("hidden");
+            //            }
 
 
             //            $(".product").click(function () {
@@ -43,9 +48,21 @@
             //            });
 
 
+            $(".addToProductSetPanelHidden").click(function () {
+                $(".addToProductSetPanelHidden").addClass("hidden");
+                $(".addToProductSetPanelContainer").removeClass("hidden1");
+                $(".addToProductSetPanel").removeClass("hidden");
+            });
+
+            $("#checkPanelHide").click(function () {
+                $(".addToProductSetPanelHidden").removeClass("hidden");
+                $(".addToProductSetPanelContainer").addClass("hidden1");
+                $(".addToProductSetPanel").addClass("hidden");
+            });
+
 
             $(".bgMarker").click(function () {
-                $(".addToProductSetPanel").removeClass("hidden");
+                //$(".addToProductSetPanel").removeClass("hidden");
                 var id = $(this).attr("id");
 
                 var obj = $(this).parent().find(".selectedMarker");
