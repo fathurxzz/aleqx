@@ -1,5 +1,6 @@
 ﻿var PresentationPageExtender = {
     favoritesCount: 0,
+    selectedProductsCnt:0,
     enables: {},
     initialize: function PresentationPageExtender_initialize() {
         $(function () {
@@ -19,26 +20,32 @@
             });
 
 
+            selectedProductsCnt = $("#selectedProducts").val();
 
-//            $(".product").click(function () {
+            if (selectedProductsCnt > 0) {
+                $(".addToProductSetPanel").removeClass("hidden");
+            }
 
-//                var id = $(this).attr("id");
 
-//                var obj = $(this).find(".selectedMarker");
-//                if (obj.hasClass("selected")) {
-//                    obj.removeClass("selected");
-//                    PresentationPageExtender.enables[id] = 0;
-//                } else {
-//                    obj.addClass("selected");
-//                    PresentationPageExtender.enables[id] = 1;
-//                }
+            //            $(".product").click(function () {
 
-//            });
+            //                var id = $(this).attr("id");
+
+            //                var obj = $(this).find(".selectedMarker");
+            //                if (obj.hasClass("selected")) {
+            //                    obj.removeClass("selected");
+            //                    PresentationPageExtender.enables[id] = 0;
+            //                } else {
+            //                    obj.addClass("selected");
+            //                    PresentationPageExtender.enables[id] = 1;
+            //                }
+
+            //            });
 
 
 
             $(".bgMarker").click(function () {
-
+                $(".addToProductSetPanel").removeClass("hidden");
                 var id = $(this).attr("id");
 
                 var obj = $(this).parent().find(".selectedMarker");
