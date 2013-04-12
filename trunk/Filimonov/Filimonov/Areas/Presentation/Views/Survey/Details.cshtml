@@ -76,7 +76,7 @@
                         }
                         else
                         {
-                            @Html.TextArea("taAnswer_" + item.Id, item.Answer)
+                            @Html.TextArea("taAnswer_" + item.Id, item.Answer,new{cols=40,rows=6})
                         }
                     </td>
                     <td>
@@ -86,7 +86,7 @@
                         }
                         else
                         {
-                            @Html.TextArea("taNote_" + item.Id, item.Note)
+                            @Html.TextArea("taNote_" + item.Id, item.Note, new { cols = 40, rows = 6 })
                         }
                     </td>
                     <td class="admin">
