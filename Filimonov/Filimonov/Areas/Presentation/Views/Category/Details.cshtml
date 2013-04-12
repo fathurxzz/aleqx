@@ -40,7 +40,7 @@
     @if (!Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
         
-        <div class="addToProductSetPanel">
+        <div class="addToProductSetPanel hidden">
             @using (Html.BeginForm("Details", "Category", new { id = Model.Name, layout = ViewBag.Layout }, FormMethod.Get, new { id = "f1" }))
             {
                 var sl = new List<SelectListItem>();
@@ -68,6 +68,10 @@
             }
         </div>
     }
+    
+    @{
+        int selectedProductsCnt = 0;
+    }
     @foreach (var item in Model.Products)
     {
         if (item.Layout.Name == ViewBag.Layout || string.IsNullOrEmpty(ViewBag.Layout))
@@ -78,6 +82,10 @@
             @{
                 if (!Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                 {
+                    if (item.Selected)
+                    {
+                        selectedProductsCnt++;
+                    }
                     string className = item.Selected ? "selected" : "";
                     <div class="selectedMarker @className">
                     </div>
@@ -101,6 +109,7 @@
     <div class="clear">
     </div>
 </div>
+@Html.Hidden("selectedProducts",selectedProductsCnt)
 
 @section Includes
 {
