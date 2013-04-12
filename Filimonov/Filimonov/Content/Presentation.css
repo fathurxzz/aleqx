@@ -154,21 +154,57 @@
 }
 
 
-.addToProductSetPanel 
+
+
+.addToProductSetPanelContainer
 {
+    /*width: 166px;*/
+    /*height: 95px;*/
+    position: absolute;
+    top: 500px;
+    left: 940px;
+    z-index: 1000;
+    /*border: 1px solid black;*/
     
 }
 
+.addToProductSetPanelContainer.hidden1 {
+    left: 1108px;
+}
+
+.addToProductSetPanelContainer .checkPanel{
+    /*border: 1px solid black;*/
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.addToProductSetPanel .checkPanel {
+    margin-left: -50px;
+    margin-top: -10px;
+}
+.addToProductSetPanelHidden .checkPanel 
+{
+    margin-top: 50px;
+    margin-left: 5px;
+}
+
+.addToProductSetPanelHidden {
+    position: absolute;
+    width: 51px;
+    height: 155px;
+    /*margin-left: 169px;*/
+    background-image: url('img/copy-panel-hidden.png');
+}
+
 .addToProductSetPanel {
+    background: url('img/copy-panel.png') no-repeat ;
+    position: absolute;
     width: 166px;
     height: 95px;
     padding-top: 60px;
     padding-left: 55px;
-    background-image: url('img/copy-panel.png');
-    position: absolute;
-    top: 500px;
-    left: 940px;
-    z-index: 1000
 }
 
 .addToProductSetPanel .copy-button {
