@@ -20,7 +20,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             using (var context = new LibraryContainer())
             {
                 var categories = context.Category.ToList();
-                
+
                 ViewBag.CurrentItem = "picture-lib";
                 return View(categories);
             }
@@ -35,7 +35,7 @@ namespace Filimonov.Areas.Presentation.Controllers
             {
                 var productSet = set;
                 var layouts = context.Layout.ToList();
-                layouts.Insert(0,new Layout{Name = "",Title = "Все"});
+                layouts.Insert(0, new Layout { Name = "", Title = "Все" });
                 ViewBag.Layouts = layouts;
 
                 ViewBag.Layout = layout;
@@ -126,8 +126,8 @@ namespace Filimonov.Areas.Presentation.Controllers
             {
                 using (var context = new LibraryContainer())
                 {
-                    var category = new Category{ImageSource = ""};
-                    TryUpdateModel(category, new[] {"Name", "Title"});
+                    var category = new Category { ImageSource = "" };
+                    TryUpdateModel(category, new[] { "Name", "Title" });
 
                     context.AddToCategory(category);
                     context.SaveChanges();
@@ -140,10 +140,10 @@ namespace Filimonov.Areas.Presentation.Controllers
                 return View();
             }
         }
-        
+
         //
         // GET: /Presentation/Category/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             using (var context = new LibraryContainer())
@@ -164,7 +164,7 @@ namespace Filimonov.Areas.Presentation.Controllers
                 using (var context = new LibraryContainer())
                 {
                     var category = context.Category.First(c => c.Id == id);
-                    TryUpdateModel(category, new[] {"Name", "Title"});
+                    TryUpdateModel(category, new[] { "Name", "Title" });
                     context.SaveChanges();
 
                     return RedirectToAction("Index");
@@ -176,12 +176,32 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
-       
+
         public ActionResult Delete(int id)
         {
-            return View();
+
+            using (var context = new LibraryContainer())
+            {
+
+                var category = context.Category.Include("Products").First(c => c.Id == id);
+                while (category.Products.Any())
+                {
+                    var product = category.Products.First();
+                    ImageHelper.DeleteImage(product.ImageSource);
+                    product.Layout = null;
+                    context.DeleteObject(product);
+                }
+
+                ImageHelper.DeleteImage(category.ImageSource);
+                context.DeleteObject(category);
+
+                context.SaveChanges();
+
+            }
+
+            return RedirectToAction("Index");
         }
 
-      
+
     }
 }

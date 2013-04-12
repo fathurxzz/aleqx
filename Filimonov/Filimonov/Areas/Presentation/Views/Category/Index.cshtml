@@ -29,6 +29,7 @@
             {
                 <div class="abs">
                     @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Presentation", id = item.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Presentation", id = item.Id }, new { @class = "adminLink",onclick="return confirm('Удалить категорию?')" })
                 </div>
             }
             @Html.Raw(Html.ActionLink("[IMAGE]", "Details", "Category", new { id = item.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryPreview"))))
