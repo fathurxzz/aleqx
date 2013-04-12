@@ -102,7 +102,7 @@
 }
 
 .category-details .product .bgMarker.selected {
-    background-image: url('img/product-checked.png');
+    background-image: url('img/product-checked-default.png');
 }
 
 
