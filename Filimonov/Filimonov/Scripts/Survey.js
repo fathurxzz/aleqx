@@ -109,7 +109,8 @@
             });
 
 
-            $('#aside').prepend('<a class="print-preview">Отправить на печать / сгенерировать в pdf</a>');
+            //$('#aside').prepend('<a class="print-preview">Отправить на печать / сгенерировать в pdf</a>');
+            $('#aside').html('<a class="print-preview">Отправить на печать / сгенерировать в pdf</a>');
             $('a.print-preview').printPreview();
 
         });
