@@ -1,7 +1,6 @@
 ﻿.presentationMenu {
     text-align: center;
     width: 630px;
-    /*border: 1px solid #c4c4c4;*/
     position: relative;
     margin: 0 auto;
     font-size: 13px;
@@ -15,6 +14,10 @@
     width: 80px;
     height: 120px;
     
+}
+
+.presentationMenu .separator {
+    width: 10px;
 }
 
 .presentationMenu .pictures-lib {

@@ -11,7 +11,7 @@
             $(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
 
             if (!window.isHomePage) {
-                $("#logo").css("cursor", "pointer").click(function () { location.href = "/presentation"; });
+                $("#logo").css("cursor", "pointer").click(function () { location.href = "/platform"; });
             }
 
             $(".addToProductSetPanel").scrollFollow({

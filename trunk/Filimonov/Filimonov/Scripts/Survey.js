@@ -99,7 +99,7 @@
 
 
             $("#sendAnswer").click(function () {
-                $.post("/presentation/survey/SaveAnswer", $("#surveyForm").serialize(), function (result) {
+                $.post("/platform/survey/SaveAnswer", $("#surveyForm").serialize(), function (result) {
                     if (result == "True") {
                         alert("Данные сохранены");
                     } else {
@@ -132,7 +132,7 @@
     },
 
     saveChanges: function () {
-        $.post("/presentation/survey/SaveSurvey", $("#surveyForm").serialize(), function (result) {
+        $.post("/platform/survey/SaveSurvey", $("#surveyForm").serialize(), function (result) {
             if (result != null) {
                 $('#surveyTable tr:last').before(result);
                 SurveyService.initialize();
@@ -143,7 +143,7 @@
     },
 
     updateChanges: function (obj, id, objtext, objn, objNumber) {
-        $.post("/presentation/survey/UpdateSurvey?id=" + id, $("#surveyForm").serialize(), function (result) {
+        $.post("/platform/survey/UpdateSurvey?id=" + id, $("#surveyForm").serialize(), function (result) {
             if (result != null) {
                 //$('#surveyTable tr:last').before(result);
                 obj.addClass("hidden");

@@ -1,4 +1,9 @@
 ﻿<div class="presentationMenu">
+    @if (!Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
+        <div class="menuItem separator">
+        </div>
+    }
     <div class="menuItem pictures-lib">
         <div class="title">
             @if (ViewBag.CurrentItem == "picture-lib")
@@ -7,7 +12,7 @@
             }
             else if (ViewBag.CurrentItem == "picture-lib-details")
             {
-                @Html.ActionLink("Библиотека изображений", "Index", "Category", new { area = "Presentation" }, new{@class="selected"})
+                @Html.ActionLink("Библиотека изображений", "Index", "Category", new { area = "Presentation" }, new { @class = "selected" })
             }
             else
             {
@@ -15,55 +20,53 @@
             }
         </div>
     </div>
-    
-        <div class="menuItem survey-lib">
-            <div class="title">
-                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    <div class="menuItem survey-lib">
+        <div class="title">
+            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+            {
+                if (ViewBag.CurrentItem == "survey")
                 {
-                    if (ViewBag.CurrentItem == "survey")
-                    {
-                         <text>Библиотека опросников</text>
-                    }
-                    else if (ViewBag.CurrentItem == "survey-details")
-                    {
-                        @Html.ActionLink("Библиотека опросников", "Index", "Survey",null, new{@class="selected"})
-                    }
-                    else
-                    {
-                         @Html.ActionLink("Библиотека опросников", "Index", "Survey")
-                    }
+                <text>Библиотека опросников</text>
+                }
+                else if (ViewBag.CurrentItem == "survey-details")
+                {
+                @Html.ActionLink("Библиотека опросников", "Index", "Survey", null, new { @class = "selected" })
                 }
                 else
                 {
-                    if (ViewBag.CurrentItem == "survey-details")
-                    {
-                        <text>Опросник</text>
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Опросник", "Details", "Survey", new { id = User.Identity.Name }, null)
-                    @*<text>Опросник</text>*@
-                    }
+                @Html.ActionLink("Библиотека опросников", "Index", "Survey")
                 }
-            </div>
+            }
+            else
+            {
+                if (ViewBag.CurrentItem == "survey-details")
+                {
+                <text>Опросник</text>
+                }
+                else
+                {
+                @Html.ActionLink("Опросник", "Details", "Survey", new { id = User.Identity.Name }, null)
+@*<text>Опросник</text>*@
+                }
+            }
         </div>
-    
+    </div>
     <div class="menuItem customer-area">
         <div class="title">
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 if (ViewBag.CurrentItem == "customer")
                 {
-                    <text>Раздел заказчика</text>
+                <text>Раздел заказчика</text>
                 }
                 else if (ViewBag.CurrentItem == "customer-details")
-                    {
-                        @Html.ActionLink("Раздел заказчика", "Index", "Customer", null, new { @class = "selected" })
-                    }
-                    
+                {
+                @Html.ActionLink("Раздел заказчика", "Index", "Customer", null, new { @class = "selected" })
+                }
+
                 else
                 {
-                    @Html.ActionLink("Раздел заказчика", "Index", "Customer")
+                @Html.ActionLink("Раздел заказчика", "Index", "Customer")
                 }
 
             }
@@ -71,11 +74,11 @@
             {
                 if (ViewBag.CurrentItem == "customer-details")
                 {
-                    <text>Раздел заказчика</text>
+                <text>Раздел заказчика</text>
                 }
                 else
                 {
-                    @Html.ActionLink("Раздел заказчика", "Details", "UserCabinet", new { id = User.Identity.Name }, null)
+                @Html.ActionLink("Раздел заказчика", "Details", "UserCabinet", new { id = User.Identity.Name }, null)
                 }
             }
         </div>
@@ -86,7 +89,7 @@
             <div class="title">
                 @if (ViewBag.CurrentItem == "note-details")
                 {
-                    @Html.ActionLink("Мои статьи и записи", "Index", "Note", null,  new { @class = "selected" })
+                    @Html.ActionLink("Мои статьи и записи", "Index", "Note", null, new { @class = "selected" })
                 }
                 else if (ViewBag.CurrentItem == "notes")
                 {

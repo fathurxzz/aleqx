@@ -16,57 +16,58 @@ namespace Filimonov.Areas.Presentation
         {
             context.MapRoute(
                 "Root",
-                "presentation",
+                "platform",
                 new { controller = "Home", action = "Index" }
             );
 
             context.MapRoute(
                 "Survey",
-                "presentation/survey",
+                "platform/survey",
                 new { controller = "Survey", action = "Index" }
             );
 
 
             context.MapRoute(
                 "SurveyDetails",
-                "presentation/surveys/{id}",
+                "platform/surveys/{id}",
                 new { controller = "Survey", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Categories",
-                "presentation/categories",
+                "platform/categories",
                 new { controller = "Category", action = "Index" }
             );
 
             context.MapRoute(
                 "Notes",
-                "presentation/notes",
+                "platform/notes",
                 new { controller = "Note", action = "Index" }
             );
 
             context.MapRoute(
                 "ClientAuthentication",
-                "presentation/customerlogon/{id}",
+                "platform/customerlogon/{id}",
                 new { controller = "Customer", action = "LogOn", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "ClientDetails",
-                "presentation/usercabinet/{id}",
+                "platform/usercabinet/{id}",
                 new { controller = "UserCabinet", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "CategoryDetails",
-                "presentation/categories/{id}",
+                "platform/categories/{id}",
                 new { controller = "Category", action = "Details", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Presentation_default",
-                "presentation/{controller}/{action}/{id}",
-                new { controller="Home", action = "Index", id = UrlParameter.Optional }
+                "platform/{controller}/{action}/{id}",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "Filimonov.Areas.Presentation.Controllers" }
             );
 
             

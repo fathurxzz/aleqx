@@ -43,12 +43,14 @@ namespace Filimonov
                 "Projects", // Route name
                 "projects", // URL with parameters
                 new { controller = "Home", action = "Projects", id = UrlParameter.Optional } // Parameter defaults
+                , new[] { "Filimonov.Controllers" }
             );
 
             routes.MapRoute(
                 "ProjectDetails", // Route name
                 "projects/{id}", // URL with parameters
                 new { controller = "Home", action = "Projects", id = UrlParameter.Optional } // Parameter defaults
+                ,new[] { "Filimonov.Controllers" }
             );
 
             routes.MapRoute(
