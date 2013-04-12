@@ -58,6 +58,7 @@ img {
     position: relative;
     margin: 0 auto;
     width: 485px;
+    margin-bottom: 40px;
 }
 
 .carusel-previews .preview {
