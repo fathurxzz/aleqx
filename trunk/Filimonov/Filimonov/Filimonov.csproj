@@ -190,6 +190,7 @@
     <Content Include="Content\img\pictures-lib.gif" />
     <Content Include="Content\img\presentation-footer.gif" />
     <Content Include="Content\img\presentation-header.gif" />
+    <Content Include="Content\img\product-checked-default.png" />
     <Content Include="Content\img\product-checked.png" />
     <Content Include="Content\img\project-frame.gif" />
     <Content Include="Content\img\project-main-view-bg.gif" />
