@@ -312,7 +312,7 @@ img
 {
     font-style: italic;
     font-size: 11px;
-    text-align: center;
+    /*text-align: center;*/
     padding: 5px 5px 0 5px;
 }
 
