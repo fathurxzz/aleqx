@@ -84,6 +84,51 @@
                     @Html.ValidationMessageFor(model => model.Price)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.StockNumber)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.StockNumber)
+                    @Html.ValidationMessageFor(model => model.StockNumber)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Structure)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Structure)
+                    @Html.ValidationMessageFor(model => model.Structure)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Consistence)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Consistence)
+                    @Html.ValidationMessageFor(model => model.Consistence)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Producer)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Producer)
+                    @Html.ValidationMessageFor(model => model.Producer)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Nap)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Nap)
+                    @Html.ValidationMessageFor(model => model.Nap)
+                </td>
+            </tr>
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />

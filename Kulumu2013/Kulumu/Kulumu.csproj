@@ -266,6 +266,7 @@
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\PageScripts.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -357,6 +358,7 @@
     <Content Include="Views\Shared\_TitleLink.cshtml" />
     <Content Include="Views\Shared\FeedbackForm.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
+    <Content Include="Views\Shared\_ProductSizeListAdmin.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

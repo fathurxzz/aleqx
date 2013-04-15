@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 03/26/2013 14:00:26
+-- Date Created: 04/15/2013 15:32:06
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `kulumu2013`;
-CREATE DATABASE `kulumu2013`;
-USE `kulumu2013`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -34,6 +31,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `ProductSize`;
     DROP TABLE IF EXISTS `ProductImage`;
+    DROP TABLE IF EXISTS `Banner`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -65,7 +63,12 @@ CREATE TABLE `Product` (
     `CategoryId` int  NOT NULL,
     `Discount` bool  NOT NULL,
     `DiscountText` longtext  NULL,
-    `Price` varchar( 100 )  NULL
+    `Price` varchar( 100 )  NULL,
+    `StockNumber` varchar( 200 )  NULL,
+    `Structure` longtext  NULL,
+    `Consistence` longtext  NULL,
+    `Producer` longtext  NULL,
+    `Nap` varchar( 200 )  NULL
 );
 
 -- Creating table 'Content'

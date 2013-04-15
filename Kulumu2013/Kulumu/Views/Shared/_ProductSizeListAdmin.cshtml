@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Kulumu.Models.ProductSize>
+@if (Request.IsAuthenticated)
+{
+    <table>
+        <tr>
+            <th colspan="2">
+                Доступен в размерах
+            </th>
+        </tr>
+        @foreach (var ps in Model)
+        {
+            <tr>
+                <td>@ps.Size
+                </td>
+                <td>@Html.ActionLink("Редактировать", "EditProductSize", "Category", new { area = "admin", id = ps.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Удалить", "DeleteProductSize", "Category", new { area = "admin", id = ps.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить размер?')" })
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Добавить размер", "AddProductSize", "Category", new { area = "Admin", categoryId = (int)ViewBag.CurrentCategoryId }, new { @class = "adminLink" })
+}
