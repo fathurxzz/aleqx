@@ -14,23 +14,12 @@ namespace Kulumu.Models
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
-
-
         public Content Content { get; set; }
         public Article Article { get; set; }
-        //public Article RandomArticle { get; set; }
         public List<Article> Articles { get; set; }
-
         public Category OurWorks { get; set; }
-
-        //public Product SingleDiscountProduct { get; set; }
-        //public List<Product> Products { get; set; }
-
         public List<Category> MainPageCategories { get; set; }
-        //public IEnumerable<Category> ChildCategories { get; set; }
-
         public IEnumerable<Banner> Banners { get; set; }
-
 
         public SiteModel(SiteContainer context, string contentName, bool showArticles = false, bool showOurWorks = false)
         {
@@ -68,30 +57,8 @@ namespace Kulumu.Models
                 OurWorks = context.Category.Include("Products").First(c => c.Name == "ourworks");
             }
 
-            //if (context.Article.FirstOrDefault() != null)
-            //{
-            //    RandomArticle = context.Article.RandomElement(new Random());
-            //}
-
-
-
-            //ChildCategories = new List<Category>();
-            //if (showChildCategories)
-            //{
-            //    if (string.IsNullOrEmpty(categoryId))
-            //    {
-            //        ChildCategories = Categories;
-            //    }
-            //    else
-            //    {
-            //        ChildCategories = context.Category.Include("Children").First(c => c.Name == categoryId).Children.ToList();
-            //    }
-            //}
-
             if (IsHomePage)
             {
-                //MainPageCategories = context.Category.Include("Products").Where(c => c.Parent != null && !c.SpecialCategory).ToList();
-
                 MainPageCategories = new List<Category>();
                 var allCategories = context.Category.Include("Children").Where(c => c.Parent == null && !c.SpecialCategory).ToList();
                 foreach (var category in allCategories)
@@ -111,13 +78,10 @@ namespace Kulumu.Models
                     MainPageCategories.Add(cat);
                 }
 
+                
+
                 Banners = context.Banner.ToList();
             }
-
-            //if (Products.Any(p => p.Discount))
-            //{
-            //    SingleDiscountProduct = Products.Where(p => p.Discount).RandomElement(new Random());
-            //}
         }
     }
 }
