@@ -4,38 +4,48 @@
 <div class="popupContent">
     <div class="image">
         @if (Model.Product.Discount)
-                        {
-                            <div class="promostar">
-                                @Html.Raw(Model.Product.DiscountText)
-                            </div>
-                        }
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("bigPreview")))
+        {
+            <div class="promostar">
+                @Html.Raw(Model.Product.DiscountText)
+            </div>
+        }
+        @{
+            var mombileExpression = new System.Text.RegularExpressions.Regex("(ipad)|(iphone)|(android)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            bool isMobile = mombileExpression.IsMatch(Request.UserAgent);
+
+            if (isMobile)
+            {
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("bigPreview-mobile")))
+            }
+            else
+            {
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("bigPreview")))
+            }
+        }
     </div>
     <div class="description">
-        
-            <div class="left">
-                <div class="title">
-                    @Model.Product.Title
-                </div>
-                <div>
-                    @Model.Product.Description
-                </div>
-                <div>
-                    Доступен в размерах:
-                    @{
-                        var sl = new List<SelectListItem>();
-                        sl.AddRange(Model.Category.ProductSizes.Select(ps => new SelectListItem { Text = ps.Size, Value = ps.Size }).ToList());
-                        @Html.DropDownList("ps", sl)
-                    }
-                </div>
+        <div class="left">
+            <div class="title">
+                @Model.Product.Title
             </div>
-            <div class="right">
-                Задайте нам вопрос, заполнив @Html.ActionLink("форму обратной связи", "Index", "Home", null, null, "sendFeedbackFormContent", new { area = "", id = "contacts" }, null),<br/>
-                или позвонив по номеру +38 (044) 593-34-86
+            <div>
+                @Model.Product.Description
             </div>
-            <div class="clear">
+            <div>
+                Доступен в размерах:
+                @{
+                    var sl = new List<SelectListItem>();
+                    sl.AddRange(Model.Category.ProductSizes.Select(ps => new SelectListItem { Text = ps.Size, Value = ps.Size }).ToList());
+                    @Html.DropDownList("ps", sl)
+                }
             </div>
-        
+        </div>
+        <div class="right">
+            Задайте нам вопрос, заполнив @Html.ActionLink("форму обратной связи", "Index", "Home", null, null, "sendFeedbackFormContent", new { area = "", id = "contacts" }, null),<br />
+            или позвонив по номеру +38 (044) 593-34-86
+        </div>
+        <div class="clear">
+        </div>
     </div>
     <div class="popup-bottom">
     </div>

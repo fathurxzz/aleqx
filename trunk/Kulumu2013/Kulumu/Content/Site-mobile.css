@@ -1,0 +1,65 @@
+﻿.popupContent
+{
+    /*width: 1200px;*/
+}
+
+.popupContent .image
+{
+    /*width: 900px;*/
+    /*height: 630px;*/
+}
+
+.popupContent .description
+{
+    /*width: 900px;*/
+    font-family: PTNarrow;
+    font-size: 16px;
+    line-height: 20px;
+    color: #3a220b;
+}
+
+.popupContent .popup-bottom
+{
+    background: url('img/popup-bottom.gif');
+    background-position: -150px 0;
+    width: 832px;
+    height: 28px;
+    position: relative;
+    margin: 0 auto 20px auto;
+}
+
+.popupContent .description .left
+{
+    width: 403px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    border-right: 2px solid #000;
+    padding-right: 20px;
+    float: left;
+}
+
+.popupContent .description .left .title
+{
+    font-family: PTNarrowBold;
+    font-weight: bold;
+}
+
+.popupContent .description .right
+{
+    margin-top: 30px;
+    margin-left: 40px; 
+    float: left;
+    width: 350px;
+}
+
+.popupContent .description .right a {
+    color: #0072bc;
+    font-weight: bold;
+}
+
+
+.popupContent .promostar{
+    margin-top: 20px;
+    margin-left: 800px;
+}
