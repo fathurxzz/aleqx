@@ -28,9 +28,9 @@
         @Html.Raw(Model.Category.Description)
     </div>
     
-    <div class="productSizes">
+    @*<div class="productSizes">
         @Html.Partial("_ProductSizeList", Model.Category.ProductSizes)
-    </div>
+    </div>*@
 
     <div class="products">
         @Html.Partial("_ProductList", Model.Category.Products)

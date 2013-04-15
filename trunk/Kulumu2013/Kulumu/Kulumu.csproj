@@ -108,6 +108,7 @@
     <Compile Include="Models\GalleryModel.cs" />
     <Compile Include="Models\LinkModel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Models\ProductValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
