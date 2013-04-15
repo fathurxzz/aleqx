@@ -1541,6 +1541,126 @@ namespace Kulumu.Models
         private global::System.String _Price;
         partial void OnPriceChanging(global::System.String value);
         partial void OnPriceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String StockNumber
+        {
+            get
+            {
+                return _StockNumber;
+            }
+            set
+            {
+                OnStockNumberChanging(value);
+                ReportPropertyChanging("StockNumber");
+                _StockNumber = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("StockNumber");
+                OnStockNumberChanged();
+            }
+        }
+        private global::System.String _StockNumber;
+        partial void OnStockNumberChanging(global::System.String value);
+        partial void OnStockNumberChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Structure
+        {
+            get
+            {
+                return _Structure;
+            }
+            set
+            {
+                OnStructureChanging(value);
+                ReportPropertyChanging("Structure");
+                _Structure = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Structure");
+                OnStructureChanged();
+            }
+        }
+        private global::System.String _Structure;
+        partial void OnStructureChanging(global::System.String value);
+        partial void OnStructureChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Consistence
+        {
+            get
+            {
+                return _Consistence;
+            }
+            set
+            {
+                OnConsistenceChanging(value);
+                ReportPropertyChanging("Consistence");
+                _Consistence = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Consistence");
+                OnConsistenceChanged();
+            }
+        }
+        private global::System.String _Consistence;
+        partial void OnConsistenceChanging(global::System.String value);
+        partial void OnConsistenceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Producer
+        {
+            get
+            {
+                return _Producer;
+            }
+            set
+            {
+                OnProducerChanging(value);
+                ReportPropertyChanging("Producer");
+                _Producer = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Producer");
+                OnProducerChanged();
+            }
+        }
+        private global::System.String _Producer;
+        partial void OnProducerChanging(global::System.String value);
+        partial void OnProducerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nap
+        {
+            get
+            {
+                return _Nap;
+            }
+            set
+            {
+                OnNapChanging(value);
+                ReportPropertyChanging("Nap");
+                _Nap = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nap");
+                OnNapChanged();
+            }
+        }
+        private global::System.String _Nap;
+        partial void OnNapChanging(global::System.String value);
+        partial void OnNapChanged();
 
         #endregion
     

@@ -53,6 +53,7 @@ namespace Kulumu.Controllers
             {
                 var model = new GalleryModel(context, null, id);
                 this.SetSeoContent(model);
+                ViewBag.CurrentCategoryId = model.Category.Id;
                 return View(model);
             }
         }

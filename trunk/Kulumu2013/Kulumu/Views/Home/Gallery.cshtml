@@ -28,9 +28,12 @@
         @Html.Raw(Model.Category.Description)
     </div>
     
-    @*<div class="productSizes">
-        @Html.Partial("_ProductSizeList", Model.Category.ProductSizes)
-    </div>*@
+    @if (Request.IsAuthenticated)
+    {
+    <div class="productSizes">
+        @Html.Partial("_ProductSizeListAdmin", Model.Category.ProductSizes)
+    </div>
+    }
 
     <div class="products">
         @Html.Partial("_ProductList", Model.Category.Products)

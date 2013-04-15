@@ -57,6 +57,11 @@
     <Property Name="Discount" Type="bool" Nullable="false" />
     <Property Name="DiscountText" Type="longtext" Nullable="true" />
     <Property Name="Price" Type="nchar" Nullable="true" MaxLength="100" />
+    <Property Name="StockNumber" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Structure" Type="longtext" Nullable="true" />
+    <Property Name="Consistence" Type="longtext" Nullable="true" />
+    <Property Name="Producer" Type="longtext" Nullable="true" />
+    <Property Name="Nap" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -222,6 +227,11 @@
           <Property Type="String" Name="DiscountText" />
           <Property Type="String" Name="Price" FixedLength="true" MaxLength="100" />
           <NavigationProperty Name="ProductImages" Relationship="Site.ProductProductImage" FromRole="Product" ToRole="ProductImage" />
+          <Property Type="String" Name="StockNumber" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Structure" />
+          <Property Type="String" Name="Consistence" />
+          <Property Type="String" Name="Producer" />
+          <Property Type="String" Name="Nap" FixedLength="true" MaxLength="200" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -360,6 +370,11 @@
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="DiscountText" ColumnName="DiscountText" />
           <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StockNumber" ColumnName="StockNumber" />
+          <ScalarProperty Name="Structure" ColumnName="Structure" />
+          <ScalarProperty Name="Consistence" ColumnName="Consistence" />
+          <ScalarProperty Name="Producer" ColumnName="Producer" />
+          <ScalarProperty Name="Nap" ColumnName="Nap" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -443,13 +458,13 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Category" Width="2.125" PointX="3.875" PointY="1.375" Height="3.7109993489583326" />
-        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="3.9033007812499987" />
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="6" PointY="2.8458968098958328" />
-          <ConnectorPoint PointX="7.125" PointY="2.8458968098958328" />
+          <ConnectorPoint PointX="6" PointY="3.2304996744791663" />
+          <ConnectorPoint PointX="7.125" PointY="3.2304996744791663" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1" PointY="4.5" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="9" PointY="5" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="9.75" PointY="5" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Site.ProductSize" Width="1.5" PointX="0.75" PointY="1.375" Height="1.4033821614583331" />
         <AssociationConnector Association="Site.CategoryProductSize">
           <ConnectorPoint PointX="3.875" PointY="2.2689925130208337" />
@@ -466,7 +481,7 @@
           <ConnectorPoint PointX="8.625" PointY="2.8939925130208337" />
           <ConnectorPoint PointX="9.75" PointY="2.8939925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Banner" Width="1.5" PointX="6.625" PointY="5" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Site.Banner" Width="1.5" PointX="11.875" PointY="5" Height="1.9802864583333326" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

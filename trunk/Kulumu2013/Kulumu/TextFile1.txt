@@ -1,0 +1,5 @@
+﻿alter table `Product` add `StockNumber` varchar( 200 )  NULL;
+alter table `Product` add `Structure` longtext  NULL;
+alter table `Product` add `Consistence` longtext  NULL;
+alter table `Product` add `Producer` longtext  NULL;
+alter table `Product` add `Nap` longtext  NULL;
