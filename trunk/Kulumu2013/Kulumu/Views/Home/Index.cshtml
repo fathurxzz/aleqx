@@ -41,6 +41,16 @@
         <div class="text">
             @Html.Raw(Model.Content.Text)
         </div>
+
+        if (Model.Content.Name.ToLower() == "contacts")
+        {
+            <div style="text-align: center">
+                <h3>Фотма обратной связи</h3>
+            </div>
+            <div id="sendFeedbackFormContent">
+                @Html.Partial("FeedbackForm", new FeedbackFormModel())
+            </div>
+        }
     }
     else
     {

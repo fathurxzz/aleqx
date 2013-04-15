@@ -810,3 +810,43 @@ iframe
     font-style: italic;
     font-weight: bold;
 }
+
+
+
+
+.feedBackForm table td {
+    padding-bottom: 15px;
+}
+
+.feedBackForm
+{
+    padding:20px;
+	position: relative;
+    margin: 10px auto auto;
+    width: 480px;
+    font-size: 12px;
+    /*height: 250px;*/
+}
+
+.feedBackForm input[type='text'] {
+    width: 300px;
+}
+
+.feedBackForm textarea {
+    width: 260px;
+    height: 100px;
+}
+
+
+  .feedBackForm.success {
+      font-size: 16px;
+      font-weight: bold;
+  }
+  
+  .errorMessage {
+      text-align: center;
+      color: #f00;
+      border: 2px solid #f00;
+      padding: 5px;
+      margin: 0 20px;
+  }
