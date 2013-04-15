@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -186,6 +187,7 @@ namespace Kulumu.Models
         private ObjectSet<Banner> _Banner;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -245,11 +247,11 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -290,6 +292,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -512,6 +515,7 @@ namespace Kulumu.Models
         partial void OnImageSourceChanged();
 
         #endregion
+
     
     }
     
@@ -539,6 +543,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -665,6 +670,7 @@ namespace Kulumu.Models
         partial void OnPriceChanged();
 
         #endregion
+
     
     }
     
@@ -700,6 +706,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -944,8 +951,33 @@ namespace Kulumu.Models
         private global::System.Boolean _SpecialCategory;
         partial void OnSpecialCategoryChanging(global::System.Boolean value);
         partial void OnSpecialCategoryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean ShowOnMainPage
+        {
+            get
+            {
+                return _ShowOnMainPage;
+            }
+            set
+            {
+                OnShowOnMainPageChanging(value);
+                ReportPropertyChanging("ShowOnMainPage");
+                _ShowOnMainPage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ShowOnMainPage");
+                OnShowOnMainPageChanged();
+            }
+        }
+        private global::System.Boolean _ShowOnMainPage = false;
+        partial void OnShowOnMainPageChanging(global::System.Boolean value);
+        partial void OnShowOnMainPageChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1054,6 +1086,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1090,6 +1123,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1312,6 +1346,7 @@ namespace Kulumu.Models
         partial void OnTextChanged();
 
         #endregion
+
     
     }
     
@@ -1345,6 +1380,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1663,6 +1699,7 @@ namespace Kulumu.Models
         partial void OnNapChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1727,6 +1764,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1755,6 +1793,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1833,6 +1872,7 @@ namespace Kulumu.Models
         partial void OnProductIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1875,6 +1915,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1903,6 +1944,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1981,6 +2023,7 @@ namespace Kulumu.Models
         partial void OnCategoryIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2023,8 +2066,10 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

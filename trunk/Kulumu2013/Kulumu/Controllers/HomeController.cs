@@ -17,14 +17,14 @@ namespace Kulumu.Controllers
     {
         public ActionResult Index(string id)
         {
-            var categories = new List<Category>();
-            var conn = DbHelper.Connection;
+            //var categories = new List<Category>();
+            //var conn = DbHelper.Connection;
 
-            using (conn.StateManager())
-            {
-                var query = "select * from category";
-                conn.ReadToCollection(categories, r => Category.InitCategory(new Category(),r), query);
-            }
+            //using (conn.StateManager())
+            //{
+            //    var query = "select * from category";
+            //    conn.ReadToCollection(categories, r => Category.InitCategory(new Category(),r), query);
+            //}
 
             using (var context = new SiteContainer())
             {
