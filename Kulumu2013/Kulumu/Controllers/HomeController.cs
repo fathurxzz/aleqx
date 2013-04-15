@@ -126,15 +126,17 @@ namespace Kulumu.Controllers
                 {
                     string defaultMailAddressFrom = ConfigurationManager.AppSettings["feedbackEmailFrom"];
                     string defaultMailAddresses = ConfigurationManager.AppSettings["feedbackEmailsTo"];
-
-                    var emailFrom = new MailAddress(defaultMailAddressFrom, "Студия Евгения Миллера");
+                    string subject = ConfigurationManager.AppSettings["mailSubject"];
+                    string displayName = ConfigurationManager.AppSettings["displayName"];
+                    
+                    var emailFrom = new MailAddress(defaultMailAddressFrom, displayName);
 
                     var emailsTo = defaultMailAddresses
                         .Split(new[] { ";", " ", "," }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => new MailAddress(s))
                         .ToList();
 
-                    var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, subject, "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
                     if (result.EmailSent)
                         return PartialView("Success");
                     feedbackFormModel.ErrorMessage = "Ошибка: " + result.ErrorMessage;
