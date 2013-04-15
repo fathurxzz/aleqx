@@ -1,5 +1,14 @@
-﻿alter table `Product` add `StockNumber` varchar( 200 )  NULL;
-alter table `Product` add `Structure` longtext  NULL;
-alter table `Product` add `Consistence` longtext  NULL;
-alter table `Product` add `Producer` longtext  NULL;
-alter table `Product` add `Nap` longtext  NULL;
+﻿select 
+	parent.Id as CategoryId,
+	parent.Title as CategoryTitle, 
+	parent.Name as CategoryName,
+	t2.title as ProductTitle,
+	t2.DiscountText as DiscountText,
+	t2.Id as ProductId,
+	t2.ImageSource as ImageSource
+
+from 
+	Category t1
+join Product t2 on t2.CategoryId=t1.Id
+join Category parent on parent.Id=t1.CategoryId
+where 	parent.ShowOnMainPage=1

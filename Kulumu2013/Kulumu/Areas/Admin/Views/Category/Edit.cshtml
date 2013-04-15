@@ -62,6 +62,15 @@
                     @Html.ValidationMessageFor(model => model.BottomDescription)
                 </td>
             </tr>
+             <tr>
+                <td>
+                    @Html.LabelFor(model => model.ShowOnMainPage)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.ShowOnMainPage)
+                    @Html.ValidationMessageFor(model => model.ShowOnMainPage)
+                </td>
+            </tr>
             
         </table>
         <div class="buttonsContainer">

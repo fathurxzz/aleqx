@@ -35,5 +35,7 @@ namespace Kulumu.Models
         [DisplayName("Заголовок описания")]
         public string BottomDescriptionTitle { get; set; }
 
+        [DisplayName("Отображать на главной странице")]
+        public bool ShowOnMainPage { get; set; }
     }
 }

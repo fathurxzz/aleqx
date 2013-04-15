@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/15/2013 15:32:06
--- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
+-- Date Created: 04/15/2013 22:29:57
+-- Generated from EDMX file: D:\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `kulumu2013`;
+CREATE DATABASE `kulumu2013`;
+USE `kulumu2013`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -50,7 +53,8 @@ CREATE TABLE `Category` (
     `SeoDescription` longtext  NULL,
     `SeoKeywords` TEXT  NULL,
     `CategoryId` int  NULL,
-    `SpecialCategory` bool  NOT NULL
+    `SpecialCategory` bool  NOT NULL,
+    `ShowOnMainPage` bool  NOT NULL
 );
 
 -- Creating table 'Product'
