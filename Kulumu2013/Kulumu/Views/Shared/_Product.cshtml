@@ -3,16 +3,23 @@
 @model Kulumu.Models.Product
 
 
-
+@Html.Hidden("productId",Model.Id)
+@Html.Hidden("firstImageId",Model.ProductImages.First().Id)
 <div class="productInfo">
     <div class="title">
         @Html.Raw(Model.Title)
     </div>
     @Html.Raw(Model.Description)
+    <br/>
+    @if (Model.Category.Name != "ourworks")
+    {
+        @Html.Partial("_ProductSizeList", Model.Category.ProductSizes)
+    }
 </div>
 <div class="productImages">
     <div class="preview">
-        <a href="#" id="pictureLink" class="fancy">
+        @*<a href="#" id="pictureLink" class="fancy">*@
+        <a href="#" id="pictureLink" class="fancyPopup">
             <img src="" alt="" id="pictureContainer" />
         </a>
         @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productPreview")))*@
@@ -20,7 +27,7 @@
     <div id="productPreviews">
     @foreach (var image in Model.ProductImages)
     {
-        <div class="productThumb" onclick="ProjectCatalogue.changeImage('@image.ImageSource') ">
+        <div class="productThumb" onclick="ProjectCatalogue.changeImage('@image.ImageSource', @Model.Id, @image.Id)">
             @if (Request.IsAuthenticated)
             {
                 <div class="abs">

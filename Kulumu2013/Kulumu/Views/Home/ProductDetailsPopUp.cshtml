@@ -12,16 +12,21 @@
         @{
             var mombileExpression = new System.Text.RegularExpressions.Regex("(ipad)|(iphone)|(android)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             bool isMobile = mombileExpression.IsMatch(Request.UserAgent);
+            string previewCode = isMobile ? "bigPreview-mobile" : "bigPreview";
+            string productImageSource = "";
 
-            if (isMobile)
+            foreach (var productImage in Model.Product.ProductImages.Where(productImage => productImage.Selected))
             {
-            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("bigPreview-mobile")))
+                productImageSource = productImage.ImageSource;
             }
-            else
+            
+            if (string.IsNullOrEmpty(productImageSource))
             {
-            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("bigPreview")))
+                productImageSource = Model.Product.ImageSource;
             }
         }
+        
+        @Html.Raw(Html.CachedImage("~/Content/Images/", productImageSource, SiteSettings.GetThumbnail(previewCode)))
     </div>
     <div class="description">
         <div class="left">

@@ -49,7 +49,7 @@ namespace Kulumu.Models
             return categoryId;
         }
 
-        public GalleryModel(SiteContainer context, string categoryId, int? productId = null)
+        public GalleryModel(SiteContainer context, string categoryId, int? productId = null, int? productImageId = null)
             : base(context, "gallery", false)
         {
             _context = context;
@@ -57,6 +57,15 @@ namespace Kulumu.Models
             if (productId.HasValue)
             {
                 Product = _context.Product.Include("Category").Include("ProductImages").First(p => p.Id == productId);
+
+                if (productImageId.HasValue)
+                {
+                    foreach (var productImage in Product.ProductImages.Where(productImage => productImage.Id == productImageId))
+                    {
+                        productImage.Selected = true;
+                    }
+                }
+
                 if (categoryId == null)
                 {
                     categoryId = Product.Category.Name;
