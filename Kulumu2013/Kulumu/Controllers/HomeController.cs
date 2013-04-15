@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using Kulumu.Helpers;
 using Kulumu.Models;
 using SiteExtensions;
 
@@ -14,6 +17,15 @@ namespace Kulumu.Controllers
     {
         public ActionResult Index(string id)
         {
+            var categories = new List<Category>();
+            var conn = DbHelper.Connection;
+
+            using (conn.StateManager())
+            {
+                var query = "select * from category";
+                conn.ReadToCollection(categories, r => Category.InitCategory(new Category(),r), query);
+            }
+
             using (var context = new SiteContainer())
             {
                 var model = new SiteModel(context, id);
