@@ -222,6 +222,8 @@
     <Content Include="Content\jcarousel.css" />
     <Content Include="Content\MailTemplates\FeedbackTemplate.htm" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\Site-main.css" />
+    <Content Include="Content\Site-mobile.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\skitter\images\ajax-loader.gif" />
     <Content Include="Content\skitter\images\back-box-label-black.png" />

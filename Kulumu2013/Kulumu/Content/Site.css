@@ -332,10 +332,7 @@ img
     margin-top: 20px;
 }
 
-.popupContent .promostar{
-    margin-top: 20px;
-    margin-left: 1100px;
-}
+
 
 
 .image-container .sign
@@ -677,65 +674,6 @@ iframe
 }
 
 
-.popupContent
-{
-    width: 1200px; /*height: 800px;*/
-}
-
-.popupContent .image
-{
-    width: 1200px;
-    height: 630px;
-}
-
-.popupContent .description
-{
-    width: 1200px;
-    font-family: PTNarrow;
-    font-size: 16px;
-    line-height: 20px;
-    color: #3a220b;
-}
-
-.popupContent .popup-bottom
-{
-    background: url('img/popup-bottom.gif');
-    width: 1132px;
-    height: 28px;
-    position: relative;
-    margin: 0 auto 20px auto;
-}
-
-.popupContent .description .left
-{
-    width: 553px;
-    margin-left: 40px;
-    margin-bottom: 20px;
-    margin-top: 30px;
-    border-right: 2px solid #000;
-    padding-right: 20px;
-    float: left;
-}
-
-.popupContent .description .left .title
-{
-    font-family: PTNarrowBold;
-    font-weight: bold;
-}
-
-.popupContent .description .right
-{
-    margin-top: 30px;
-    margin-left: 40px; 
-    float: left;
-    width: 500px;
-    
-}
-
-.popupContent .description .right a {
-    color: #0072bc;
-    font-weight: bold;
-}
 
 
 
