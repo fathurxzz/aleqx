@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Kulumu.Models;
@@ -112,5 +114,39 @@ namespace Kulumu.Controllers
                 return View(model);
             }
         }
+        
+        
+        
+        [HttpPost]
+        public ActionResult Feedback(FeedbackFormModel feedbackFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string defaultMailAddressFrom = ConfigurationManager.AppSettings["feedbackEmailFrom"];
+                    string defaultMailAddresses = ConfigurationManager.AppSettings["feedbackEmailsTo"];
+
+                    var emailFrom = new MailAddress(defaultMailAddressFrom, "Студия Евгения Миллера");
+
+                    var emailsTo = defaultMailAddresses
+                        .Split(new[] { ";", " ", "," }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(s => new MailAddress(s))
+                        .ToList();
+
+                    var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, "Форма обратной связи", "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    if (result.EmailSent)
+                        return PartialView("Success");
+                    feedbackFormModel.ErrorMessage = "Ошибка: " + result.ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    feedbackFormModel.ErrorMessage = ex.Message;
+                }
+            }
+            return PartialView("FeedbackForm", feedbackFormModel);
+        }
+
+
     }
 }
