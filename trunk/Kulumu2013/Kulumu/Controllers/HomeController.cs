@@ -136,7 +136,7 @@ namespace Kulumu.Controllers
                         .Select(s => new MailAddress(s))
                         .ToList();
 
-                    var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, subject, "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, feedbackFormModel.Email, feedbackFormModel.Text);
+                    var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, subject, "FeedbackTemplate.htm", null, true, feedbackFormModel.Name, string.IsNullOrEmpty(feedbackFormModel.Email) ? "[не указано]" : feedbackFormModel.Email, feedbackFormModel.Text);
                     if (result.EmailSent)
                         return PartialView("Success");
                     feedbackFormModel.ErrorMessage = "Ошибка: " + result.ErrorMessage;
