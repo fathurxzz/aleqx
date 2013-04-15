@@ -60,14 +60,14 @@ namespace Kulumu.Models
             if (IsHomePage)
             {
                 MainPageCategories = new List<Category>();
-                var allCategories = context.Category.Include("Children").Where(c => c.Parent == null && !c.SpecialCategory).ToList();
-                foreach (var category in allCategories)
+                var allCategories = context.Category.Include("Children").Include("Products").ToList();
+                foreach (var category in allCategories.Where(c => c.Parent == null && !c.SpecialCategory))
                 {
                     var cat = new Category { Name = category.Name, Title = category.Title, Id = category.Id };
 
                     foreach (var child in category.Children)
                     {
-                        child.Products.Load();
+                        //child.Products.Load();
                         foreach (var product in child.Products)
                         {
                             var p = new Product { Id = product.Id, ImageSource = product.ImageSource, Title = product.Title, Description = product.Description,Discount = product.Discount,DiscountText = product.DiscountText};
