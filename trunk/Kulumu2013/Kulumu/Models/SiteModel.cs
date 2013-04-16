@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using Kulumu.Helpers;
@@ -60,21 +61,80 @@ namespace Kulumu.Models
             if (IsHomePage)
             {
                 MainPageCategories = new List<Category>();
-                var allCategories = context.Category.Include("Children").Include("Products").Where(c => c.ShowOnMainPage).ToList();
-                foreach (var category in allCategories.Where(c => c.Parent == null && !c.SpecialCategory))
-                {
-                    var cat = new Category { Name = category.Name, Title = category.Title, Id = category.Id };
 
-                    foreach (var child in category.Children)
+
+
+                var categories = new List<CategoryProductPresentation>();
+                var conn = DbHelper.Connection;
+                using (conn.StateManager())
+                {
+                    var query = @"select
+	                                parent.Id as CategoryId,
+	                                parent.Title as CategoryTitle, 
+	                                parent.Name as CategoryName,
+	                                t2.title as ProductTitle,
+	                                t2.DiscountText as DiscountText,
+	                                t2.Id as ProductId,
+	                                t2.ImageSource as ImageSource
+                                from 
+	                                Category t1
+                                join Product t2 on t2.CategoryId=t1.Id
+                                join Category parent on parent.Id=t1.CategoryId
+                                where parent.ShowOnMainPage=1";
+
+                    conn.ReadToCollection(categories, r => CategoryProductPresentation.Init(new CategoryProductPresentation(), r), query);
+
+                    int oldCategoryId = 0;
+                    int newCategoryId;
+                    Category category = null;
+
+                    foreach (var presentation in categories.OrderBy(c => c.CategoryId))
                     {
-                        foreach (var product in child.Products)
+                        newCategoryId = presentation.CategoryId;
+                        if (oldCategoryId != newCategoryId)
                         {
-                            var p = new Product { Id = product.Id, ImageSource = product.ImageSource, Title = product.Title, Description = product.Description, Discount = product.Discount, DiscountText = product.DiscountText };
-                            cat.Products.Add(p);
+                            if (category != null)
+                                MainPageCategories.Add(category);
+
+                            category = new Category
+                                         {
+                                             Id = presentation.CategoryId,
+                                             Title = presentation.CategoryTitle,
+                                             Name = presentation.CategoryName
+                                         };
                         }
+
+                        var p = new Product
+                                    {
+                                        Id = presentation.ProductId,
+                                        Title = presentation.ProductTitle,
+                                        ImageSource = presentation.ProductImageSource,
+                                        DiscountText = presentation.ProductDiscountText
+                                    };
+                        category.Products.Add(p);
+                        oldCategoryId = newCategoryId;
                     }
-                    MainPageCategories.Add(cat);
+                    if (category != null)
+                        MainPageCategories.Add(category);
                 }
+
+
+
+                //var allCategories = context.Category.Include("Children").Include("Products").Where(c => c.ShowOnMainPage).ToList();
+                //foreach (var category in allCategories.Where(c => c.Parent == null && !c.SpecialCategory))
+                //{
+                //    var cat = new Category { Name = category.Name, Title = category.Title, Id = category.Id };
+
+                //    foreach (var child in category.Children)
+                //    {
+                //        foreach (var product in child.Products)
+                //        {
+                //            var p = new Product { Id = product.Id, ImageSource = product.ImageSource, Title = product.Title, Description = product.Description, Discount = product.Discount, DiscountText = product.DiscountText };
+                //            cat.Products.Add(p);
+                //        }
+                //    }
+                //    MainPageCategories.Add(cat);
+                //}
 
 
                 Banners = context.Banner.ToList();

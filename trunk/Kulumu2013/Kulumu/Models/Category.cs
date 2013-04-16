@@ -11,11 +11,7 @@ namespace Kulumu.Models
         public bool Selected { get; set; }
         public bool IsParent { get; set; }
 
-        //public static Category InitCategory(Category c, IDataRecord dr)
-        //{
-        //    c.Id = dr.GetValue<int>("Id");
-        //    return c;
-        //}
+        
 
     }
 
