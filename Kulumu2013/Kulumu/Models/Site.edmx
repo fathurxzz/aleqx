@@ -13,6 +13,7 @@
     <EntitySet Name="ProductSize" EntityType="Site.Store.ProductSize" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductImage" EntityType="Site.Store.ProductImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Banner" EntityType="Site.Store.Banner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="Site.Store.Order" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Site.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
@@ -118,6 +119,17 @@
     <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="Price" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Phone" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Email" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Address" Type="nvarchar" Nullable="true" MaxLength="300" />
+    <Property Name="Size" Type="nchar" Nullable="true" MaxLength="200" />
+  </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
     <End Role="Product" Type="Site.Store.Product" Multiplicity="*" />
@@ -194,6 +206,7 @@
             <End Role="ProductImage" EntitySet="ProductImage" />
           </AssociationSet>
           <EntitySet Name="Banner" EntityType="Site.Banner" />
+          <EntitySet Name="Order" EntityType="Site.Order" />
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -339,6 +352,17 @@
           <Property Type="String" Name="Description" FixedLength="true" MaxLength="500" />
           <Property Type="String" Name="Price" FixedLength="true" MaxLength="200" />
         </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Email" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Address" FixedLength="true" MaxLength="300" />
+          <Property Type="String" Name="Size" FixedLength="true" MaxLength="200" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -440,6 +464,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Order)">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -485,6 +521,7 @@
           <ConnectorPoint PointX="9.75" PointY="2.8939925130208337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Banner" Width="1.5" PointX="11.875" PointY="5" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Site.Order" Width="1.5" PointX="6.75" PointY="6" Height="2.1725878906249996" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

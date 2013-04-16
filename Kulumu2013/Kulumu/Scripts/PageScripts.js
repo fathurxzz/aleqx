@@ -23,7 +23,12 @@
                 }
 
             });
-            
+
+
+            $(".orderLink").click(function () {
+                $("#order").css("display", "block");
+            });
+
         });
     }
 

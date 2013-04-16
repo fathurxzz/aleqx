@@ -17,14 +17,7 @@ namespace Kulumu.Controllers
     {
         public ActionResult Index(string id)
         {
-            //var categories = new List<Category>();
-            //var conn = DbHelper.Connection;
-
-            //using (conn.StateManager())
-            //{
-            //    var query = "select * from category";
-            //    conn.ReadToCollection(categories, r => Category.InitCategory(new Category(),r), query);
-            //}
+            
 
             using (var context = new SiteContainer())
             {
@@ -160,6 +153,63 @@ namespace Kulumu.Controllers
                 }
             }
             return PartialView("FeedbackForm", feedbackFormModel);
+        }
+
+        [HttpPost]
+        public ActionResult Order(OrderFormModel orderFormModel)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var context = new SiteContainer())
+                    {
+                        var order = new Order
+                                        {
+                                            Address = orderFormModel.Address,
+                                            Email = orderFormModel.Email,
+                                            Name = orderFormModel.Name,
+                                            Phone = orderFormModel.Phone,
+                                            Size = orderFormModel.Size
+                                        };
+
+
+                        //var size = orderFormModel.Size.FirstOrDefault(s => s.Selected);
+                        //if (size != null)
+                        //{
+                        //    order.Size = size.Text;
+                        //}
+
+                        context.AddToOrder(order);
+                        context.SaveChanges();
+                    }
+
+                    string defaultMailAddressFrom = ConfigurationManager.AppSettings["feedbackEmailFrom"];
+                    string defaultMailAddresses = ConfigurationManager.AppSettings["feedbackEmailsTo"];
+
+                    string subject = ConfigurationManager.AppSettings["orderMailSubject"];
+                    string displayName = ConfigurationManager.AppSettings["orderDisplayName"];
+
+                    var emailFrom = new MailAddress(defaultMailAddressFrom, displayName);
+
+                    var emailsTo = defaultMailAddresses
+                        .Split(new[] { ";", " ", "," }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(s => new MailAddress(s))
+                        .ToList();
+
+                    var result = Helpers.MailHelper.SendOrderTemplate(emailFrom, emailsTo, subject, "OrderTemplate.htm", null, true, orderFormModel.Name, string.IsNullOrEmpty(orderFormModel.Email) ? "[не указано]" : orderFormModel.Email, orderFormModel.Phone, orderFormModel.Address,orderFormModel.Size,orderFormModel.ProductId,orderFormModel.ProductTitle);
+                    if (result.EmailSent)
+                        return PartialView("SuccessOrder");
+                    orderFormModel.ErrorMessage = "Ошибка: " + result.ErrorMessage;
+                }
+                catch (Exception ex)
+                {
+                    orderFormModel.ErrorMessage = ex.Message;
+                    if (ex.InnerException != null)
+                        orderFormModel.ErrorMessage += " " + ex.InnerException.Message;
+                }
+            }
+            return PartialView("OrderForm", orderFormModel);
         }
 
 

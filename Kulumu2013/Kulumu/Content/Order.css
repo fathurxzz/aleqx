@@ -1,0 +1,17 @@
+﻿.orderContainer {
+    padding-top: 20px;
+}
+
+.orderLink {
+    text-align: center;
+}
+
+.orderLink a {
+    color: #000;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#order {
+    display: none;
+}
