@@ -12,32 +12,50 @@
     </div>
     @Html.Raw(Model.Description)
     <div class="properties">
-    <table>
-        <tr>
-            <td class="title">Артикул:</td>
-            <td>@Model.StockNumber</td>
-        </tr>
-        <tr>
-            <td class="title">Состав:</td>
-            <td>@Model.Structure</td>
-        </tr>
-        <tr>
-            <td class="title">Плотность:</td>
-            <td>@Model.Consistence</td>
-        </tr>
-        <tr>
-            <td class="title">Производитель:</td>
-            <td>@Model.Producer</td>
-        </tr>
-        <tr>
-            <td class="title">Высота ворса:</td>
-            <td>@Model.Nap</td>
-        </tr>
-        <tr>
-            <td class="title">Цена:</td>
-            <td>@Model.Price</td>
-        </tr>
-    </table>
+        <table>
+            @if (!string.IsNullOrEmpty(Model.StockNumber))
+            {
+                <tr>
+                    <td class="title">Артикул:</td>
+                    <td>@Model.StockNumber</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Structure))
+            {
+                <tr>
+                    <td class="title">Состав:</td>
+                    <td>@Model.Structure</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Consistence))
+            {
+                <tr>
+                    <td class="title">Плотность:</td>
+                    <td>@Model.Consistence</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Producer))
+            {
+                <tr>
+                    <td class="title">Производитель:</td>
+                    <td>@Model.Producer</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Nap))
+            {
+                <tr>
+                    <td class="title">Высота ворса:</td>
+                    <td>@Model.Nap</td>
+                </tr>
+            }
+            @if (!string.IsNullOrEmpty(Model.Price))
+            {
+                <tr>
+                    <td class="title">Цена:</td>
+                    <td>@Model.Price</td>
+                </tr>
+            }
+        </table>
     </div>
     @if (Model.Category.Name != "ourworks")
     {
