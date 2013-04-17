@@ -1,0 +1,23 @@
+﻿@using Kulumu
+@using Kulumu.Models
+@using SiteExtensions.Graphics
+@model Kulumu.Models.CaruselFrame
+<div class="frameContainer">
+    <div class="frame">
+        @Html.Partial("_TitleLink", new LinkModel { Name = Model.CategoryName, Title = Model.Title })
+    </div>
+    <div class="image-container">
+        @if (Model.Products.Any())
+        {
+            var product = Model.Products.First();
+
+            if (product.Discount)
+            {
+            <div class="promostar">
+                @Html.Raw(product.DiscountText)
+            </div>
+            }
+            @Html.Raw(Html.ActionLink("[IMAGE]", "Gallery", "Home", new { id = Model.CategoryName }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", product.ImageSource, SiteSettings.GetThumbnail("galleryImage"))))
+        }
+    </div>
+</div>
