@@ -91,7 +91,23 @@
 .productDetails .productInfo .title {
     font-weight: bold;
     padding: 0;
+}
+
+.productDetails .productInfo .properties {
+      font-family: Georgia;
+    font-size: 14px;
+    padding: 20px 0;
+}
+.productDetails .productInfo .properties table td {
     
+    padding-left: 15px;
+  
+}
+.productDetails .productInfo .properties table td.title {
+    font-weight: normal;
+    font-style: italic;
+    color: #808080;
+    padding-left: 0;
 }
 
 .productDetails .productImages {
