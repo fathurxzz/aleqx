@@ -79,8 +79,7 @@ namespace Kulumu.Models
                                 from 
 	                                Category t1
                                 join Product t2 on t2.CategoryId=t1.Id
-                                join Category parent on parent.Id=t1.CategoryId
-                                where parent.ShowOnMainPage=1";
+                                join Category parent on parent.Id=t1.CategoryId";// where parent.ShowOnMainPage=1";
 
                     conn.ReadToCollection(categories, r => CategoryProductPresentation.Init(new CategoryProductPresentation(), r), query);
 
