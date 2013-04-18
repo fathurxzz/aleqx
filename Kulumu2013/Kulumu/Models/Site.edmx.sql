@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/16/2013 09:57:56
+-- Date Created: 04/18/2013 14:43:19
 -- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -17,9 +17,9 @@
 -- --------------------------------------------------
 
 --    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
---    ALTER TABLE `ProductSize` DROP CONSTRAINT `FK_CategoryProductSize`;
 --    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
 --    ALTER TABLE `ProductImage` DROP CONSTRAINT `FK_ProductProductImage`;
+--    ALTER TABLE `ProductSize` DROP CONSTRAINT `FK_ProductProductSize`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -32,6 +32,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductSize`;
     DROP TABLE IF EXISTS `ProductImage`;
     DROP TABLE IF EXISTS `Banner`;
+    DROP TABLE IF EXISTS `Order`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -65,7 +66,6 @@ CREATE TABLE `Product` (
     `Discount` bool  NOT NULL,
     `DiscountText` longtext  NULL,
     `Price` varchar( 100 )  NULL,
-    `StockNumber` varchar( 200 )  NULL,
     `Structure` longtext  NULL,
     `Consistence` longtext  NULL,
     `Producer` longtext  NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `Article` (
 CREATE TABLE `ProductSize` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Size` varchar( 50 )  NOT NULL,
-    `CategoryId` int  NOT NULL
+    `ProductId` int  NOT NULL
 );
 
 -- Creating table 'ProductImage'
@@ -164,21 +164,6 @@ CREATE INDEX `IX_FK_CategoryProduct`
     ON `Product`
     (`CategoryId`);
 
--- Creating foreign key on `CategoryId` in table 'ProductSize'
-
-ALTER TABLE `ProductSize`
-ADD CONSTRAINT `FK_CategoryProductSize`
-    FOREIGN KEY (`CategoryId`)
-    REFERENCES `Category`
-        (`Id`)
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CategoryProductSize'
-
-CREATE INDEX `IX_FK_CategoryProductSize` 
-    ON `ProductSize`
-    (`CategoryId`);
-
 -- Creating foreign key on `CategoryId` in table 'Category'
 
 ALTER TABLE `Category`
@@ -207,6 +192,21 @@ ADD CONSTRAINT `FK_ProductProductImage`
 
 CREATE INDEX `IX_FK_ProductProductImage` 
     ON `ProductImage`
+    (`ProductId`);
+
+-- Creating foreign key on `ProductId` in table 'ProductSize'
+
+ALTER TABLE `ProductSize`
+ADD CONSTRAINT `FK_ProductProductSize`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductProductSize'
+
+CREATE INDEX `IX_FK_ProductProductSize` 
+    ON `ProductSize`
     (`ProductId`);
 
 -- --------------------------------------------------

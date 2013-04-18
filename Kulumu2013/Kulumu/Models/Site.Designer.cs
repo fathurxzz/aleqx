@@ -19,9 +19,9 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("Site", "CategoryProduct", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Kulumu.Models.Category), "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Kulumu.Models.Product), true)]
-[assembly: EdmRelationshipAttribute("Site", "CategoryProductSize", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Kulumu.Models.Category), "ProductSize", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Kulumu.Models.ProductSize), true)]
 [assembly: EdmRelationshipAttribute("Site", "CategoryCategory", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Kulumu.Models.Category), "Category1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Kulumu.Models.Category), true)]
 [assembly: EdmRelationshipAttribute("Site", "ProductProductImage", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Kulumu.Models.Product), "ProductImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Kulumu.Models.ProductImage), true)]
+[assembly: EdmRelationshipAttribute("Site", "ProductProductSize", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Kulumu.Models.Product), "ProductSize", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Kulumu.Models.ProductSize), true)]
 
 #endregion
 
@@ -1025,28 +1025,6 @@ namespace Kulumu.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryProductSize", "ProductSize")]
-        public EntityCollection<ProductSize> ProductSizes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductSize>("Site.CategoryProductSize", "ProductSize");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductSize>("Site.CategoryProductSize", "ProductSize", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryCategory", "Category1")]
         public EntityCollection<Category> Children
         {
@@ -1770,30 +1748,6 @@ namespace Kulumu.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String StockNumber
-        {
-            get
-            {
-                return _StockNumber;
-            }
-            set
-            {
-                OnStockNumberChanging(value);
-                ReportPropertyChanging("StockNumber");
-                _StockNumber = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("StockNumber");
-                OnStockNumberChanged();
-            }
-        }
-        private global::System.String _StockNumber;
-        partial void OnStockNumberChanging(global::System.String value);
-        partial void OnStockNumberChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public global::System.String Structure
         {
             get
@@ -1945,6 +1899,28 @@ namespace Kulumu.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductImage>("Site.ProductProductImage", "ProductImage", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ProductProductSize", "ProductSize")]
+        public EntityCollection<ProductSize> ProductSizes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductSize>("Site.ProductProductSize", "ProductSize");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductSize>("Site.ProductProductSize", "ProductSize", value);
                 }
             }
         }
@@ -2115,13 +2091,13 @@ namespace Kulumu.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="size">Initial value of the Size property.</param>
-        /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static ProductSize CreateProductSize(global::System.Int32 id, global::System.String size, global::System.Int32 categoryId)
+        /// <param name="productId">Initial value of the ProductId property.</param>
+        public static ProductSize CreateProductSize(global::System.Int32 id, global::System.String size, global::System.Int32 productId)
         {
             ProductSize productSize = new ProductSize();
             productSize.Id = id;
             productSize.Size = size;
-            productSize.CategoryId = categoryId;
+            productSize.ProductId = productId;
             return productSize;
         }
 
@@ -2184,24 +2160,24 @@ namespace Kulumu.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CategoryId
+        public global::System.Int32 ProductId
         {
             get
             {
-                return _CategoryId;
+                return _ProductId;
             }
             set
             {
-                OnCategoryIdChanging(value);
-                ReportPropertyChanging("CategoryId");
-                _CategoryId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CategoryId");
-                OnCategoryIdChanged();
+                OnProductIdChanging(value);
+                ReportPropertyChanging("ProductId");
+                _ProductId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProductId");
+                OnProductIdChanged();
             }
         }
-        private global::System.Int32 _CategoryId;
-        partial void OnCategoryIdChanging(global::System.Int32 value);
-        partial void OnCategoryIdChanged();
+        private global::System.Int32 _ProductId;
+        partial void OnProductIdChanging(global::System.Int32 value);
+        partial void OnProductIdChanged();
 
         #endregion
     
@@ -2213,16 +2189,16 @@ namespace Kulumu.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryProductSize", "Category")]
-        public Category Category
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ProductProductSize", "Product")]
+        public Product Product
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryProductSize", "Category").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("Site.ProductProductSize", "Product").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryProductSize", "Category").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("Site.ProductProductSize", "Product").Value = value;
             }
         }
         /// <summary>
@@ -2230,17 +2206,17 @@ namespace Kulumu.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Category> CategoryReference
+        public EntityReference<Product> ProductReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Category>("Site.CategoryProductSize", "Category");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("Site.ProductProductSize", "Product");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Category>("Site.CategoryProductSize", "Category", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Product>("Site.ProductProductSize", "Product", value);
                 }
             }
         }

@@ -18,10 +18,6 @@
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="CategoryProductSize" Association="Site.Store.CategoryProductSize">
-      <End Role="Category" EntitySet="Category" />
-      <End Role="ProductSize" EntitySet="ProductSize" />
-    </AssociationSet>
     <AssociationSet Name="CategoryCategory" Association="Site.Store.CategoryCategory">
       <End Role="Category" EntitySet="Category" />
       <End Role="Category1" EntitySet="Category" />
@@ -29,6 +25,10 @@
     <AssociationSet Name="ProductProductImage" Association="Site.Store.ProductProductImage">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductImage" EntitySet="ProductImage" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductSize" Association="Site.Store.ProductProductSize">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductSize" EntitySet="ProductSize" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Category">
@@ -59,7 +59,6 @@
     <Property Name="Discount" Type="bool" Nullable="false" />
     <Property Name="DiscountText" Type="longtext" Nullable="true" />
     <Property Name="Price" Type="nchar" Nullable="true" MaxLength="100" />
-    <Property Name="StockNumber" Type="nchar" Nullable="true" MaxLength="200" />
     <Property Name="Structure" Type="longtext" Nullable="true" />
     <Property Name="Consistence" Type="longtext" Nullable="true" />
     <Property Name="Producer" Type="longtext" Nullable="true" />
@@ -99,7 +98,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Size" Type="nchar" Nullable="false" MaxLength="50" />
-    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductImage">
     <Key>
@@ -142,18 +141,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CategoryProductSize">
-    <End Role="Category" Type="Site.Store.Category" Multiplicity="1" />
-    <End Role="ProductSize" Type="Site.Store.ProductSize" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ProductSize">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="CategoryCategory">
     <End Role="Category" Type="Site.Store.Category" Multiplicity="0..1" />
     <End Role="Category1" Type="Site.Store.Category" Multiplicity="*" />
@@ -178,6 +165,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductProductSize">
+    <End Role="Product" Type="Site.Store.Product" Multiplicity="1" />
+    <End Role="ProductSize" Type="Site.Store.ProductSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductSize">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -192,10 +191,6 @@
           <EntitySet Name="Content" EntityType="Site.Content" />
           <EntitySet Name="Article" EntityType="Site.Article" />
           <EntitySet Name="ProductSize" EntityType="Site.ProductSize" />
-          <AssociationSet Name="CategoryProductSize" Association="Site.CategoryProductSize">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="ProductSize" EntitySet="ProductSize" />
-          </AssociationSet>
           <AssociationSet Name="CategoryCategory" Association="Site.CategoryCategory">
             <End Role="Category" EntitySet="Category" />
             <End Role="Category1" EntitySet="Category" />
@@ -207,6 +202,10 @@
           </AssociationSet>
           <EntitySet Name="Banner" EntityType="Site.Banner" />
           <EntitySet Name="Order" EntityType="Site.Order" />
+          <AssociationSet Name="ProductProductSize" Association="Site.ProductProductSize">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductSize" EntitySet="ProductSize" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -221,7 +220,6 @@
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="500" />
           <NavigationProperty Name="Products" Relationship="Site.CategoryProduct" FromRole="Category" ToRole="Product" />
-          <NavigationProperty Name="ProductSizes" Relationship="Site.CategoryProductSize" FromRole="Category" ToRole="ProductSize" />
           <NavigationProperty Name="Children" Relationship="Site.CategoryCategory" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Parent" Relationship="Site.CategoryCategory" FromRole="Category1" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="true" />
@@ -242,11 +240,11 @@
           <Property Type="String" Name="DiscountText" />
           <Property Type="String" Name="Price" FixedLength="true" MaxLength="100" />
           <NavigationProperty Name="ProductImages" Relationship="Site.ProductProductImage" FromRole="Product" ToRole="ProductImage" />
-          <Property Type="String" Name="StockNumber" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="Structure" />
           <Property Type="String" Name="Consistence" />
           <Property Type="String" Name="Producer" />
           <Property Type="String" Name="Nap" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="ProductSizes" Relationship="Site.ProductProductSize" FromRole="Product" ToRole="ProductSize" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -294,21 +292,9 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Size" Nullable="false" FixedLength="true" MaxLength="50" />
-          <NavigationProperty Name="Category" Relationship="Site.CategoryProductSize" FromRole="ProductSize" ToRole="Category" />
-          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Site.ProductProductSize" FromRole="ProductSize" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
         </EntityType>
-        <Association Name="CategoryProductSize">
-          <End Type="Site.Category" Role="Category" Multiplicity="1" />
-          <End Type="Site.ProductSize" Role="ProductSize" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductSize">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="CategoryCategory">
           <End Type="Site.Category" Role="Category" Multiplicity="0..1" />
           <End Type="Site.Category" Role="Category1" Multiplicity="*" />
@@ -363,6 +349,18 @@
           <Property Type="String" Name="Address" FixedLength="true" MaxLength="300" />
           <Property Type="String" Name="Size" FixedLength="true" MaxLength="200" />
         </EntityType>
+        <Association Name="ProductProductSize">
+          <End Type="Site.Product" Role="Product" Multiplicity="1" />
+          <End Type="Site.ProductSize" Role="ProductSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductSize">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -397,7 +395,6 @@
           <ScalarProperty Name="Discount" ColumnName="Discount" />
           <ScalarProperty Name="DiscountText" ColumnName="DiscountText" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="StockNumber" ColumnName="StockNumber" />
           <ScalarProperty Name="Structure" ColumnName="Structure" />
           <ScalarProperty Name="Consistence" ColumnName="Consistence" />
           <ScalarProperty Name="Producer" ColumnName="Producer" />
@@ -440,7 +437,7 @@
         <MappingFragment StoreEntitySet="ProductSize">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Size" ColumnName="Size" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -497,31 +494,31 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Category" Width="2.125" PointX="3.875" PointY="1.375" Height="3.9033007812499996" />
-        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="3.9033007812499987" />
+        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="3.9033007812499996" />
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="6" PointY="3.326650390625" />
-          <ConnectorPoint PointX="7.125" PointY="3.326650390625" />
+          <ConnectorPoint PointX="6" PointY="3.2304996744791667" />
+          <ConnectorPoint PointX="7.125" PointY="3.2304996744791667" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1" PointY="4.5" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="9.75" PointY="5" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="Site.ProductSize" Width="1.5" PointX="0.75" PointY="1.375" Height="1.4033821614583331" />
-        <AssociationConnector Association="Site.CategoryProductSize">
-          <ConnectorPoint PointX="3.875" PointY="2.2689925130208337" />
-          <ConnectorPoint PointX="2.25" PointY="2.2689925130208337" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.ProductSize" Width="1.5" PointX="9.75" PointY="1.125" Height="1.59568359375" />
         <AssociationConnector Association="Site.CategoryCategory">
           <ConnectorPoint PointX="4.6285576923076928" PointY="5.27830078125" />
           <ConnectorPoint PointX="4.6285576923076928" PointY="5.52830078125" />
           <ConnectorPoint PointX="5.2611538461538458" PointY="5.52830078125" />
           <ConnectorPoint PointX="5.2611538461538458" PointY="5.27830078125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.ProductImage" Width="1.5" PointX="9.75" PointY="2" Height="1.4033821614583331" />
+        <EntityTypeShape EntityType="Site.ProductImage" Width="1.5" PointX="9.75" PointY="3" Height="1.787985026041667" />
         <AssociationConnector Association="Site.ProductProductImage">
-          <ConnectorPoint PointX="8.625" PointY="2.8939925130208337" />
-          <ConnectorPoint PointX="9.75" PointY="2.8939925130208337" />
+          <ConnectorPoint PointX="8.625" PointY="3.8939925130208337" />
+          <ConnectorPoint PointX="9.75" PointY="3.8939925130208337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Banner" Width="1.5" PointX="11.875" PointY="5" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="Site.Order" Width="1.5" PointX="6.75" PointY="6" Height="2.1725878906249996" />
+        <AssociationConnector Association="Site.ProductProductSize">
+          <ConnectorPoint PointX="8.625" PointY="2.1439925130208337" />
+          <ConnectorPoint PointX="9.75" PointY="2.1439925130208337" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

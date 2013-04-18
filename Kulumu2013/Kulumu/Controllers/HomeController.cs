@@ -58,7 +58,8 @@ namespace Kulumu.Controllers
             {
                 var model = new GalleryModel(context, null, id);
                 this.SetSeoContent(model);
-                ViewBag.CurrentCategoryId = model.Category.Id;
+                //ViewBag.CurrentCategoryId = model.Category.Id;
+                ViewBag.CurrentProductId = model.Product.Id;
                 return View(model);
             }
         }
@@ -89,7 +90,7 @@ namespace Kulumu.Controllers
             {
                 var model = new GalleryModel(context, id);
                 ViewBag.CurrentMenuItemName = model.Content.Name;
-                ViewBag.CurrentCategoryId = model.Category.Id;
+                //ViewBag.CurrentCategoryId = model.Category.Id;
                 this.SetSeoContent(model);
                 return View(model);
             }

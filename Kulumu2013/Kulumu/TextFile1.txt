@@ -12,3 +12,28 @@ from
 join Product t2 on t2.CategoryId=t1.Id
 join Category parent on parent.Id=t1.CategoryId
 where 	parent.ShowOnMainPage=1
+
+
+
+
+DROP TABLE IF EXISTS `ProductSize`;
+
+
+CREATE TABLE `ProductSize` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Size` varchar( 50 )  NOT NULL,
+    `ProductId` int  NOT NULL
+);
+
+
+ALTER TABLE `ProductSize`
+ADD CONSTRAINT `FK_ProductProductSize`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+	CREATE INDEX `IX_FK_ProductProductSize` 
+    ON `ProductSize`
+    (`ProductId`);

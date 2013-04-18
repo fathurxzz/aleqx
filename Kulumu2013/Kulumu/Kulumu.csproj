@@ -329,8 +329,8 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\AddProductSize.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\EditProductSize.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\AddProductSize.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\EditProductSize.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
     <Content Include="Views\Shared\_ProductSizeList.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Index.cshtml" />
@@ -366,7 +366,6 @@
     <Content Include="Views\Shared\_TitleLink.cshtml" />
     <Content Include="Views\Shared\FeedbackForm.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
-    <Content Include="Views\Shared\_ProductSizeListAdmin.cshtml" />
     <Content Include="Views\Shared\OrderForm.cshtml" />
     <Content Include="Views\Shared\SuccessOrder.cshtml" />
     <Content Include="Views\Shared\FrameStatic.cshtml" />
