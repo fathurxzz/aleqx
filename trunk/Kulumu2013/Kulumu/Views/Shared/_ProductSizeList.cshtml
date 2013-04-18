@@ -1,6 +1,29 @@
 ﻿@model IEnumerable<Kulumu.Models.ProductSize>
-@{
-    var sl = new List<SelectListItem> {new SelectListItem {Text = "Доступен в размерах", Value = "avilable"}};
+@if (Request.IsAuthenticated)
+{
+    <table>
+        <tr>
+            <th colspan="2">
+                Доступен в размерах
+            </th>
+        </tr>
+        @foreach (var ps in Model)
+        {
+            <tr>
+                <td>@ps.Size
+                </td>
+                <td>@Html.ActionLink("Редактировать", "EditProductSize", "Product", new {area = "admin", id = ps.Id}, new {@class = "adminLink"})
+                    @Html.ActionLink("Удалить", "DeleteProductSize", "Product", new { area = "admin", id = ps.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить размер?')" })
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Добавить размер", "AddProductSize", "Product", new { area = "Admin", productId = (int)ViewBag.CurrentProductId }, new { @class = "adminLink" })
+}
+else
+{
+        var sl = new List<SelectListItem> {new SelectListItem {Text = "Доступен в размерах", Value = "avilable"}};
     sl.AddRange(Model.Select(ps => new SelectListItem {Text = ps.Size, Value = ps.Size}).ToList());
     @Html.DropDownList("ps", sl)
 }
+

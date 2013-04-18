@@ -44,8 +44,8 @@ namespace Kulumu.Areas.Admin.Controllers
                 using (var context = new SiteContainer())
                 {
                     var category = context.Category.First(c => c.Id == categoryId);
-                    var product = new Product { Category = category, ImageSource = ""};
-                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "StockNumber", "Structure", "Consistence", "Producer", "Nap" });
+                    var product = new Product { Category = category, ImageSource = "" };
+                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "Structure", "Consistence", "Producer", "Nap" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
                     product.DiscountText = HttpUtility.HtmlDecode(form["DiscountText"]);
@@ -84,7 +84,7 @@ namespace Kulumu.Areas.Admin.Controllers
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View(ViewBag.ErrorMessage = ex.Message);
             }
@@ -114,7 +114,7 @@ namespace Kulumu.Areas.Admin.Controllers
                     var category = context.Category.First(c => c.Id == categoryId);
                     var product = context.Product.Include("Category").First(p => p.Id == id);
                     product.Category = category;
-                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "StockNumber", "Structure", "Consistence", "Producer", "Nap" });
+                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "Structure", "Consistence", "Producer", "Nap" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
                     product.DiscountText = HttpUtility.HtmlDecode(form["DiscountText"]);
@@ -190,7 +190,7 @@ namespace Kulumu.Areas.Admin.Controllers
                 var product = context.Product.Include("Category").First(p => p.Id == productId);
                 if (product.Category.SpecialCategory)
                 {
-                    return RedirectToAction("WorkDetails", "Home", new { area = "",id=product.Id });
+                    return RedirectToAction("WorkDetails", "Home", new { area = "", id = product.Id });
                 }
                 return RedirectToAction("ProductDetails", "Home", new { area = "", id = productImage.Product.Id });
             }
@@ -213,6 +213,61 @@ namespace Kulumu.Areas.Admin.Controllers
                 context.DeleteObject(productImage);
                 context.SaveChanges();
 
+                return RedirectToAction("ProductDetails", "Home", new { area = "", id = productId });
+            }
+        }
+
+
+        public ActionResult AddProductSize(int productId)
+        {
+            ViewBag.productId = productId;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddProductSize(int productId, FormCollection form)
+        {
+            using (var context = new SiteContainer())
+            {
+                var product = context.Product.First(c => c.Id == productId);
+                var ps = new ProductSize();
+                TryUpdateModel(ps, new[] { "Size" });
+                product.ProductSizes.Add(ps);
+                context.SaveChanges();
+                return RedirectToAction("ProductDetails", "Home", new { area = "", id = productId });
+            }
+        }
+
+        public ActionResult EditProductSize(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productSize = context.ProductSize.Include("Product").First(ps => ps.Id == id);
+                ViewBag.productId = productSize.Product.Id;
+                return View(productSize);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditProductSize(int id, FormCollection form)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productSize = context.ProductSize.Include("Product").First(ps => ps.Id == id);
+                TryUpdateModel(productSize, new[] { "Size" });
+                context.SaveChanges();
+                return RedirectToAction("ProductDetails", "Home", new { area = "", id = productSize.Product.Id });
+            }
+        }
+
+        public ActionResult DeleteProductSize(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var productSize = context.ProductSize.Include("Product").First(ps => ps.Id == id);
+                var productId = productSize.Product.Id;
+                context.DeleteObject(productSize);
+                context.SaveChanges();
                 return RedirectToAction("ProductDetails", "Home", new { area = "", id = productId });
             }
         }

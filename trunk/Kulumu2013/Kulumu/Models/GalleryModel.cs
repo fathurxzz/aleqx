@@ -56,7 +56,7 @@ namespace Kulumu.Models
 
             if (productId.HasValue)
             {
-                Product = _context.Product.Include("Category").Include("ProductImages").First(p => p.Id == productId);
+                Product = _context.Product.Include("Category").Include("ProductSizes").Include("ProductImages").First(p => p.Id == productId);
 
                 if (productImageId.HasValue)
                 {
@@ -86,7 +86,7 @@ namespace Kulumu.Models
                 Category =
                     _context.Category.Include("Parent")
                             .Include("Products")
-                            .Include("ProductSizes")
+                            //.Include("ProductSizes")
                             .First(c => c.Name == categoryId);
 
                 ParentCategory = Category.Parent ?? Category;

@@ -97,62 +97,6 @@ namespace Kulumu.Areas.Admin.Controllers
             return RedirectToAction("Gallery", "Home", new { area = "" });
         }
 
-        public ActionResult AddProductSize(int categoryId)
-        {
-            using (var context = new SiteContainer())
-            {
-                var category = context.Category.First(c => c.Id == categoryId);
-                ViewBag.categoryId = categoryId;
-                ViewBag.categoryName = category.Name;
-                return View();
-            }
-        }
-
-        [HttpPost]
-        public ActionResult AddProductSize(int categoryId, FormCollection form)
-        {
-            using (var context = new SiteContainer())
-            {
-                var category = context.Category.First(c => c.Id == categoryId);
-                var ps = new ProductSize();
-                TryUpdateModel(ps, new[] { "Size" });
-                category.ProductSizes.Add(ps);
-                context.SaveChanges();
-                return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
-            }
-        }
-
-        public ActionResult EditProductSize(int id)
-        {
-            using (var context = new SiteContainer())
-            {
-                var productSize = context.ProductSize.Include("Category").First(ps => ps.Id == id);
-                ViewBag.categoryName = productSize.Category.Name;
-                return View(productSize);
-            }
-        }
-        [HttpPost]
-        public ActionResult EditProductSize(int id, FormCollection form)
-        {
-            using (var context = new SiteContainer())
-            {
-                var productSize = context.ProductSize.Include("Category").First(ps => ps.Id == id);
-                TryUpdateModel(productSize, new[] { "Size" });
-                context.SaveChanges();
-                return RedirectToAction("Gallery", "Home", new { area = "", id = productSize.Category.Name });
-            }
-        }
-
-        public ActionResult DeleteProductSize(int id)
-        {
-            using (var context = new SiteContainer())
-            {
-                var productSize = context.ProductSize.Include("Category").First(ps => ps.Id == id);
-                var categoryName = productSize.Category.Name;
-                context.DeleteObject(productSize);
-                context.SaveChanges();
-                return RedirectToAction("Gallery", "Home", new { area = "", id = categoryName });
-            }
-        }
+        
     }
 }

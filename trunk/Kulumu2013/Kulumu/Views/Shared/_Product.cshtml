@@ -13,13 +13,6 @@
     @Html.Raw(Model.Description)
     <div class="properties">
         <table>
-            @if (!string.IsNullOrEmpty(Model.StockNumber))
-            {
-                <tr>
-                    <td class="title">Артикул:</td>
-                    <td>@Model.StockNumber</td>
-                </tr>
-            }
             @if (!string.IsNullOrEmpty(Model.Structure))
             {
                 <tr>
@@ -59,8 +52,9 @@
     </div>
     @if (Model.Category.Name != "ourworks")
     {
-        @Html.Partial("_ProductSizeList", Model.Category.ProductSizes)
+        @Html.Partial("_ProductSizeList", Model.ProductSizes)
     }
+    
 </div>
 <div class="productImages">
     <div class="preview">
@@ -95,6 +89,6 @@
     <div class="orderLink"><a href="#order">Заказать</a></div>
     <div class="orderContent" id="order">
         
-        @Html.Partial("OrderForm", new OrderFormModel { ProductId = Model.Id, ProductTitle = Model.Title, ProductSizes = Model.Category.ProductSizes })
+        @Html.Partial("OrderForm", new OrderFormModel { ProductId = Model.Id, ProductTitle = Model.Title, ProductSizes = Model.ProductSizes })
     </div>
 </div>

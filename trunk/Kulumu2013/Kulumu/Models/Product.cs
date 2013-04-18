@@ -7,8 +7,6 @@ namespace Kulumu.Models
 {
     public partial class Product
     {
-        public List<ProductSize> ProductSizes { get; set; }
-
-
+        //public List<ProductSize> ProductSizes { get; set; }
     }
 }
