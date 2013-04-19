@@ -30,9 +30,6 @@ namespace Kulumu.Models
         [DisplayName("Цена")]
         public string Price { get; set; }
 
-        [DisplayName("Артикул")]
-        public string StockNumber { get; set; }
-
         [DisplayName("Состав")]
         public string Structure { get; set; }
 
