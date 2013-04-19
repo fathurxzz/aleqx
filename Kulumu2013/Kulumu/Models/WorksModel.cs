@@ -17,7 +17,7 @@ namespace Kulumu.Models
         {
             _context = context;
 
-            Product = _context.Product.Include("Category").Include("ProductImages").First(p => p.Id == productId);
+            Product = _context.Product.Include("Category").Include("ProductSizes").Include("ProductImages").First(p => p.Id == productId);
             Category = Product.Category;
         }
     }
