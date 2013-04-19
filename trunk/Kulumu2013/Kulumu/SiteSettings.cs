@@ -22,8 +22,8 @@ namespace Kulumu
                                   {"productThumb",new ThumbnailPicture{ PictureSize =new PictureSize {Width =70, Height = 70}, CacheFolder = "productThumb", ScaleMode =  ScaleMode.Insert}},
                                   {"productPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width =378, Height = 245}, CacheFolder = "productPreview", ScaleMode =  ScaleMode.Insert}},
                                   {"workPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 255, Height = 166}, CacheFolder = "workPreview", ScaleMode =  ScaleMode.Crop}},
-                                  {"bigPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 1200, Height = 630}, CacheFolder = "bigPreview", ScaleMode =  ScaleMode.Crop}},
-                                  {"bigPreview-mobile",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 900, Height = 630}, CacheFolder = "bigPreview-mobile", ScaleMode =  ScaleMode.Crop}},
+                                  {"bigPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 1200, Height = 630}, CacheFolder = "bigPreview", ScaleMode =  ScaleMode.Insert}},
+                                  {"bigPreview-mobile",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 900, Height = 630}, CacheFolder = "bigPreview-mobile", ScaleMode =  ScaleMode.Insert}},
                                   {"bannerPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 430, Height = 140}, CacheFolder = "bannerPreview", ScaleMode =  ScaleMode.Crop}},
                                   {"banner",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 800, Height = 300}, CacheFolder = "banner", ScaleMode =  ScaleMode.Crop}},
                                   {"articlePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 200, Height = 135}, CacheFolder = "articlePreview", ScaleMode =  ScaleMode.Crop}}
