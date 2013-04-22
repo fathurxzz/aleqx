@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listelli", "Listelli\Listelli.csproj", "{FBDA6033-99AB-472C-8C36-40F043DE27DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBDA6033-99AB-472C-8C36-40F043DE27DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBDA6033-99AB-472C-8C36-40F043DE27DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBDA6033-99AB-472C-8C36-40F043DE27DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBDA6033-99AB-472C-8C36-40F043DE27DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
