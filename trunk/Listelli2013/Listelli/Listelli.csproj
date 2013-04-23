@@ -71,6 +71,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Fonts.css" />
+    <Content Include="Content\img\content-bottom-bg.gif" />
+    <Content Include="Content\img\content-top-bg.gif" />
+    <Content Include="Content\img\footer-bg.gif" />
+    <Content Include="Content\img\header-bg-layer.png" />
+    <Content Include="Content\img\header-bg.gif" />
+    <Content Include="Content\img\header-bottom-bg.gif" />
+    <Content Include="Content\img\header-bottom-bg2.gif" />
+    <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\title-bg.gif" />
+    <Content Include="Content\img\title-container-bg.gif" />
+    <Content Include="Content\img\title-left.gif" />
+    <Content Include="Content\img\title-right.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -160,7 +174,6 @@
     <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
@@ -174,6 +187,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\fonts\4137643.ttf" />
+    <None Include="Content\fonts\PTN57F.ttf" />
+    <None Include="Content\fonts\PTN77F.ttf" />
+    <None Include="Content\fonts\PTS55F.ttf" />
     <None Include="Scripts\jquery-2.0.0.min.map" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
