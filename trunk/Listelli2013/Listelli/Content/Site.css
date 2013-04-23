@@ -73,6 +73,14 @@ body {
     
 }
 
+.content-container .content-center .line {
+    height: 2px;
+    background-color: #eeeeee;
+    
+    margin:0 125px 100px 125px;
+    
+}
+
 .content-container .content-top {
     height: 13px;
     background: url('img/content-top-bg.gif');
@@ -84,7 +92,7 @@ body {
 }
 
 .content-container .content-center .content {
-    padding:0 125px 125px 125px;
+    padding:0 125px 100px 125px;
     min-height: 250px;
 }
 
@@ -104,8 +112,10 @@ body {
     background: url('img/title-container-bg.gif') repeat-x;
     margin: 50px 125px;
     font-size: 16px;
-    font-family: PragmaticaBlack;
+    /*font-family: PragmaticaBlack;*/
+    font-family: PT;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .title-container table.title {
