@@ -1,22 +1,30 @@
-﻿@model string
-           
-           <div class="title-container">
-        <table class="title">
-            <tr>
-                <td class="separator">
-                </td>
-                <td class="left">
-                </td>
-                <td class="center">
-                    @Model
-                </td>
-                <td class="right">
-                </td>
-                <td class="separator">
-                </td>
-                <td>
-                </td>
-            </tr>
-        </table>
-    </div>
-
+﻿@using Listelli.Models
+@model Listelli.Models.ContentTitleModel
+<div class="title-container">
+    <table class="title">
+        <tr>
+            <td class="separator">
+            </td>
+            <td class="left">
+            </td>
+            <td class="center">
+                @if (Model.Type == TitleType.Link)
+                {
+                    <span>
+                        @Html.Raw("&laquo") @Html.ActionLink(Model.Title, Model.Action, Model.Controller)
+                    </span>
+                }
+                else
+                {
+                    @Model.Title
+                }
+            </td>
+            <td class="right">
+            </td>
+            <td class="separator">
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</div>

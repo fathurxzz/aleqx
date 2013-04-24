@@ -1,9 +1,10 @@
-﻿@{
+﻿@using Listelli.Models
+@{
     ViewBag.Title = "Listelli 2013";
 }
 @section Title
 {
-    @Html.Partial("PageTitle", "галерея брендов")
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "галерея брендов" })
 }
 
 

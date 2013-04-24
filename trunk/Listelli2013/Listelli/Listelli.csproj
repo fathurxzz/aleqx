@@ -68,12 +68,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ContentTitleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BrandsGallery.css" />
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\Images\image.gif" />
+    <Content Include="Content\img\box-bottom.gif" />
+    <Content Include="Content\img\box-middle.gif" />
+    <Content Include="Content\img\box-top.gif" />
     <Content Include="Content\img\content-bottom-bg.gif" />
     <Content Include="Content\img\content-top-bg.gif" />
     <Content Include="Content\img\footer-bg.gif" />
@@ -141,6 +145,7 @@
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
     <None Include="Content\fonts\PTS55F.ttf" />
+    <None Include="Content\fonts\PTS56F_W.ttf" />
     <None Include="Content\fonts\PTS75F_W.ttf" />
     <None Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
