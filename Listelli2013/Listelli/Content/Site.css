@@ -79,7 +79,7 @@ body {
 .content-container .content-center .line {
     height: 2px;
     background-color: #eeeeee;
-    margin:100px 125px 100px 125px;
+    margin:70px 125px 70px 125px;
 }
 
 .content-container .content-top {
@@ -111,7 +111,7 @@ body {
 .title-container {
     height: 70px;
     background: url('img/title-container-bg.gif') repeat-x;
-    margin: 50px 125px;
+    margin: 50px 125px 40px 125px;
     font-size: 16px;
     /*font-family: PragmaticaBlack;*/
     font-family: PTSans;
@@ -150,3 +150,13 @@ body {
     width: 60px;
     background-color: #fff;
 }
+
+
+.title-container table.title td.center span {
+    color: #999999;
+}
+.title-container table.title td.center a {
+    color: inherit;
+    font-weight: bold;
+}
+

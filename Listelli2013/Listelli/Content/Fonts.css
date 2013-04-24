@@ -28,4 +28,8 @@
     src: url('fonts/PTN77F.ttf');
 }
 
-
+@font-face
+{
+    font-family: "PTSansItalic";
+    src: url('fonts/PTS56F_W.ttf');
+}

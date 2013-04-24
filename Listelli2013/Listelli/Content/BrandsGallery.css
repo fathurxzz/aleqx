@@ -46,3 +46,72 @@
     font-family: PTSansBold;
 }
 
+
+
+.brandDetails {
+    /*padding: 0 125px;*/
+    font-family: PTSans;
+    font-size: 15px;
+}
+
+.brandDetails .title {
+    text-align: center;
+    font-family: PTSansBold;
+    font-size: 25px;
+    margin-bottom: 5px;
+    padding: 0 125px;
+}
+
+.brandDetails .description {
+    font-family: PTSansItalic;
+    text-align: center;
+    color: #666666;
+    padding: 0 125px;
+    
+}
+
+.brandDetails .shortLine {
+    height: 2px;
+    background-color: #eeeeee;
+    width: 65px;
+    position: relative;
+    margin: 40px auto 0 auto;
+}
+
+.brandDetails .text {
+    padding: 0 125px;
+}
+
+.brandDetails .text, .brandDetails .box, .brandDetails .images {
+    margin-top: 40px;
+}
+
+.brandDetails .images {
+    padding: 0 125px;
+}
+
+.brandDetails .box {
+    width: 795px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.box .top, .box .bottom {
+    height: 16px;
+}
+
+.box .top {
+    background: url('img/box-top.gif');
+}
+
+.box .bottom {
+    background: url('img/box-bottom.gif');
+}
+
+.box .middle {
+    background: url('img/box-middle.gif') repeat-y;
+    padding: 20px 55px;
+    font-family: PTSansItalic;
+    font-size: 13px;
+}
