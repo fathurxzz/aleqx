@@ -1,0 +1,48 @@
+﻿.brandsGallery {
+    padding: 0 72px;
+}
+
+.brandsGallery .brand {
+    width: 215px;
+    float: left;
+    margin:20px 35px;
+}
+
+.brandsGallery .brand .image {
+    position: absolute;
+    margin-top: 19px;
+    margin-left: 20px;
+}
+
+.brandsGallery .brand .imageContainer {
+    height: 216px;
+}
+
+.brandsGallery .brand .frame {
+    position: absolute;
+    background: url('img/gallery-preview-frame.png');
+    width: 215px;
+    height: 216px;
+}
+
+.brandsGallery .brand .description {
+    font-family: PTSans;
+    font-size: 12px;
+    position: relative;
+    margin: 0 auto;
+    color: #333333;
+    width: 175px;
+}
+
+.brandsGallery .brand .description .title {
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.brandsGallery .brand .description .title a {
+    color: inherit;
+    font-family: PTSansBold;
+}
+

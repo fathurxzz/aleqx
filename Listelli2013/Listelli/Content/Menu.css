@@ -1,0 +1,53 @@
+﻿.mainMenu
+{
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+}
+.mainMenu a
+{
+    color: #fff;
+}
+
+.mainMenu a.selected, .mainMenu div.selected
+{
+    color: #0099fa;
+}
+
+.mainMenu
+{
+}
+
+.mainMenu div
+{
+    margin: 0 50px;
+    float: left;
+    width: 95px;
+    text-align: center;
+    margin-top: 7px;
+}
+
+.mainMenu div.m1
+{
+    margin-left: 250px;
+    padding-top: 10px;
+}
+
+.mainMenu div.m2
+{
+}
+
+.mainMenu div.m3
+{
+    padding-top: 10px;
+    margin-left: 60px;
+    margin-right: 40px;
+}
+
+.mainMenu div.m4
+{
+}
+
+.mainMenu div.m5
+{
+}

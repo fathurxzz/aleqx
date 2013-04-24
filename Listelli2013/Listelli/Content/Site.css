@@ -5,9 +5,12 @@
 
 body {
     background-color: #000;
-    font-family: PT;
+    font-family: PTSans;
 }
 
+.clear {
+    clear: both;
+}
 
 
 .main-page-container {
@@ -25,7 +28,7 @@ body {
     width: 100px;
     color: #0099fa;
     font-size: 10px;
-    font-family: PT;
+    font-family: PTSans;
     position: relative;
     margin: 0 auto;
     padding-top: 10px;
@@ -76,9 +79,7 @@ body {
 .content-container .content-center .line {
     height: 2px;
     background-color: #eeeeee;
-    
-    margin:0 125px 100px 125px;
-    
+    margin:100px 125px 100px 125px;
 }
 
 .content-container .content-top {
@@ -92,7 +93,7 @@ body {
 }
 
 .content-container .content-center .content {
-    padding:0 125px 100px 125px;
+    padding:0 125px;
     min-height: 250px;
 }
 
@@ -113,7 +114,7 @@ body {
     margin: 50px 125px;
     font-size: 16px;
     /*font-family: PragmaticaBlack;*/
-    font-family: PT;
+    font-family: PTSans;
     text-transform: uppercase;
     font-weight: bold;
 }
