@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Listelli 2013";
+}
+@section Title
+{
+    @Html.Partial("PageTitle", "галерея брендов")
+}
+
+
+
+<div class="brandsGallery">
+    
+   @Html.Partial("Brand")
+   @Html.Partial("Brand")
+   @Html.Partial("Brand")
+   <div class="clear"></div>
+@Html.Partial("Brand")
+   @Html.Partial("Brand")
+   @Html.Partial("Brand")
+   <div class="clear"></div>
+@Html.Partial("Brand")
+   @Html.Partial("Brand")
+   @Html.Partial("Brand")
+   <div class="clear"></div>
+@Html.Partial("Brand")
+   @Html.Partial("Brand")
+   @Html.Partial("Brand")
+   <div class="clear"></div>
+
+
+</div>
+
+
+@section Includes
+{
+    <link href="@Url.Content("~/Content/BrandsGallery.css")" rel="stylesheet" type="text/css" />
+}

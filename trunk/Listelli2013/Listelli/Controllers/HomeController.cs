@@ -12,5 +12,17 @@ namespace Listelli.Controllers
         {
             return View();
         }
+
+        public ActionResult Gallery()
+        {
+            ViewBag.CurrentMenuItem = "gallery";
+            return View();
+        }
+
+        public ActionResult BrandDetails()
+        {
+            ViewBag.CurrentMenuItem = "brand-details";
+            return View();
+        }
     }
 }

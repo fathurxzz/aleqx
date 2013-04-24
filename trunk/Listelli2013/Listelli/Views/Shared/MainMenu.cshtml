@@ -1,0 +1,30 @@
+﻿<div class="m1">
+    @Html.ActionLink("о нас", "Index", "Home")
+</div>
+@if (ViewBag.CurrentMenuItem == "gallery")
+{
+    <div class="m2 selected">
+        галерея брендов
+    </div>
+}
+else if (ViewBag.CurrentMenuItem == "brand-details")
+{
+    <div class="m2">
+        @Html.ActionLink("галерея брендов", "Gallery", "Home",null,new{@class="selected"})
+    </div>
+}
+else
+{
+    <div class="m2">
+        @Html.ActionLink("галерея брендов", "Gallery", "Home")
+    </div>
+}
+<div class="m3 selected">
+    @Html.ActionLink("новости", "Index", "Home")
+</div>
+<div class="m4">
+    @Html.ActionLink("каталоги фабрик", "Index", "Home")
+</div>
+<div class="m5">
+    @Html.ActionLink("контактная информация", "Index", "Home")
+</div>
