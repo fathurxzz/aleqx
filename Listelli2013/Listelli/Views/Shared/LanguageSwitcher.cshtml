@@ -1,0 +1,14 @@
+﻿@using System.Threading
+
+@if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+{
+    ViewContext.RouteData.Values["lang"] = "en";
+    <text> По-русски | @Html.RouteLink("In English", ViewContext.RouteData.Values)</text>
+    ViewContext.RouteData.Values["lang"] = "ru";
+}
+else
+{
+    ViewContext.RouteData.Values["lang"] = "ru";
+    <text>@Html.RouteLink("По-русски", ViewContext.RouteData.Values) | In English</text>
+    ViewContext.RouteData.Values["lang"] = "en";
+}

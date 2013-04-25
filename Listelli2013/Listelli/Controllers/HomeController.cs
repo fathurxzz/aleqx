@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Listelli.Models;
 
 namespace Listelli.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : DefaultController
     {
         public ActionResult Index()
         {
+            //using (var context = new SiteContainer())
+            //{
+            //    var lang =  context.Language.First();
+                
+            //}
+
             return View();
         }
 
