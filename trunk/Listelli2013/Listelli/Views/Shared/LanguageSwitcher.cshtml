@@ -1,14 +1,15 @@
 ﻿@using System.Threading
+@using Listelli.Helpers
 
 @if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
 {
-    ViewContext.RouteData.Values["lang"] = "en";
-    <text> По-русски | @Html.RouteLink("In English", ViewContext.RouteData.Values)</text>
-    ViewContext.RouteData.Values["lang"] = "ru";
+    var routeData = ViewContext.RouteData.GetCopy();
+    routeData.Values["lang"] = "en";
+    <text> По-русски | @Html.RouteLink("In English", routeData.Values)</text>
 }
 else
 {
-    ViewContext.RouteData.Values["lang"] = "ru";
-    <text>@Html.RouteLink("По-русски", ViewContext.RouteData.Values) | In English</text>
-    ViewContext.RouteData.Values["lang"] = "en";
+    var routeData = ViewContext.RouteData.GetCopy();
+    routeData.Values["lang"] = "ru";
+    <text>@Html.RouteLink("По-русски", routeData.Values) | In English</text>
 }
