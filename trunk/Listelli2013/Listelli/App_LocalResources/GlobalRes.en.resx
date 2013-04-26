@@ -120,6 +120,9 @@
   <data name="Enter" xml:space="preserve">
     <value>Enter</value>
   </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Enter Password</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
