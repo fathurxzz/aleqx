@@ -36,11 +36,10 @@ namespace Listelli.Models
         public string UserName { get; set; }
 
         //[Required(ErrorMessage = "Обязательно!")]
+
         [DataType(DataType.Password)]
-        [DisplayName("Пароль")]
-
-        //[Display(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword"))]
-
+        [Display(ResourceType = typeof(GlobalRes),Name = "Register")]
+        
         [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword")]
         public string Password { get; set; }
 
