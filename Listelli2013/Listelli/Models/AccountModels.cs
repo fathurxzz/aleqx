@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
+using Listelli.App_LocalResources;
 
 namespace Listelli.Models
 {
@@ -29,16 +31,20 @@ namespace Listelli.Models
 
     public class LogOnModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Обязательно!")]
+        [DisplayName("Логин")]
         public string UserName { get; set; }
 
-        [Required]
+        //[Required(ErrorMessage = "Обязательно!")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [DisplayName("Пароль")]
+
+        //[Display(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword"))]
+
+        [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [DisplayName("Запомнить меня?")]
         public bool RememberMe { get; set; }
     }
 

@@ -120,6 +120,9 @@
   <data name="Enter" xml:space="preserve">
     <value>Вход</value>
   </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>
