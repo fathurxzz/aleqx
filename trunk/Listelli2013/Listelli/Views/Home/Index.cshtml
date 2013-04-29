@@ -1,9 +1,22 @@
-﻿@using Listelli.Models
+﻿@model Listelli.Models.Content
+@using Listelli.Models
 @{
     ViewBag.Title = "Listelli 2013";
 }
 
 <div class="content">
+    
+   
+       @if (!Model.IsCorrectLang)
+       {
+           <div style="border: 1px solid red; color: red; text-align: center; padding: 5px; font-weight: bold;">
+                нужен перевод
+           </div>
+       }
+
+    <br/>
+    <br/>
+
     
     @DateTime.Now.ToString("D")
     
@@ -42,5 +55,5 @@
 
 @section Title
 {
-    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "Добро пожаловать!" })
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = Model.Title })
 }

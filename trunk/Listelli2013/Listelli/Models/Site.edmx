@@ -7,6 +7,16 @@
     <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Language" EntityType="Site.Store.Language" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentLang" EntityType="Site.Store.ContentLang" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ContentContentLang" Association="Site.Store.ContentContentLang">
+      <End Role="Content" EntitySet="Content" />
+      <End Role="ContentLang" EntitySet="ContentLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageContentLang" Association="Site.Store.LanguageContentLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ContentLang" EntitySet="ContentLang" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
     <Key>
@@ -16,12 +26,64 @@
     <Property Name="Code" Type="longtext" Nullable="false" />
     <Property Name="Name" Type="longtext" Nullable="false" />
   </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="ContentId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ContentContentLang">
+    <End Role="Content" Type="Site.Store.Content" Multiplicity="1" />
+    <End Role="ContentLang" Type="Site.Store.ContentLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentLang">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageContentLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="ContentLang" Type="Site.Store.ContentLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Site" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="SiteContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Language" EntityType="Site.Language" />
+          <EntitySet Name="Content" EntityType="Site.Content" />
+          <EntitySet Name="ContentLang" EntityType="Site.ContentLang" />
+          <AssociationSet Name="ContentContentLang" Association="Site.ContentContentLang">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="ContentLang" EntitySet="ContentLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageContentLang" Association="Site.LanguageContentLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ContentLang" EntitySet="ContentLang" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -30,7 +92,53 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Code" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" />
+          <NavigationProperty Name="ContentLangs" Relationship="Site.LanguageContentLang" FromRole="Language" ToRole="ContentLang" />
         </EntityType>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <NavigationProperty Name="ContentLangs" Relationship="Site.ContentContentLang" FromRole="Content" ToRole="ContentLang" />
+        </EntityType>
+        <EntityType Name="ContentLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="Site.ContentContentLang" FromRole="ContentLang" ToRole="Content" />
+          <Property Type="Int32" Name="ContentId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageContentLang" FromRole="ContentLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="ContentContentLang">
+          <End Type="Site.Content" Role="Content" Multiplicity="1" />
+          <End Type="Site.ContentLang" Role="ContentLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentLang">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageContentLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.ContentLang" Role="ContentLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -43,6 +151,26 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Content">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Content)">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ContentLang)">
+        <MappingFragment StoreEntitySet="ContentLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -67,6 +195,16 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Language" Width="1.5" PointX="6.625" PointY="1.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.625" PointY="1.875" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Site.ContentLang" Width="1.5" PointX="4.125" PointY="1.375" Height="1.59568359375" />
+        <AssociationConnector Association="Site.ContentContentLang">
+          <ConnectorPoint PointX="3.125" PointY="2.6151432291666667" />
+          <ConnectorPoint PointX="4.125" PointY="2.6151432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.LanguageContentLang">
+          <ConnectorPoint PointX="6.625" PointY="2.5189925130208337" />
+          <ConnectorPoint PointX="5.625" PointY="2.5189925130208337" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

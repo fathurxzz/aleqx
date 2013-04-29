@@ -22,16 +22,28 @@ namespace Listelli
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
 
-            routes.MapRoute(name: "lang",
-                            url: "{lang}/{controller}/{action}/{id}",
-                            defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional},
-                            constraints: new {lang = @"ru|en"},
-                            namespaces: new[] {"Listelli.Controllers"});
+
+            routes.MapRoute(
+               "Content", // Route name
+               "{lang}/{id}", // URL with parameters
+               new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Listelli.Controllers" }
+           );
+
+            routes.MapRoute(
+                name: "lang",
+                url: "{lang}/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new { lang = @"ru|en" },
+                namespaces: new[] { "Listelli.Controllers" }
+           );
+
 
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang="ru" } // Parameter defaults
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang = "ru" } // Parameter defaults
             );
 
         }
