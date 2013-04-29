@@ -70,6 +70,24 @@ namespace Listelli.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Галерея брендов.
+        /// </summary>
+        public static string BrandGallery {
+            get {
+                return ResourceManager.GetString("BrandGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Контактная информация.
+        /// </summary>
+        public static string Contacts {
+            get {
+                return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вход.
         /// </summary>
         public static string Enter {
@@ -84,6 +102,24 @@ namespace Listelli.App_LocalResources {
         public static string EnterPassword {
             get {
                 return ResourceManager.GetString("EnterPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Каталог фабрик.
+        /// </summary>
+        public static string FactoryCatalogue {
+            get {
+                return ResourceManager.GetString("FactoryCatalogue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Новости.
+        /// </summary>
+        public static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
             }
         }
         

@@ -13,22 +13,22 @@ namespace Listelli.Areas.Admin.Controllers
 {
     public abstract class AdminController : BaseController
     {
-        public Language CurrentLang
-        {
-            get
-            {
-                if (WebSession.CurrentLanguage == null)
-                {
-                    using (var context = new SiteContainer())
-                    {
-                        var lang = context.Language.First(l => l.Code == "ru");
-                        WebSession.CurrentLanguage = lang;
-                        return lang;
-                    }
-                }
-                return WebSession.CurrentLanguage;
-            }
-        }
+        //public Language CurrentLang
+        //{
+        //    get
+        //    {
+        //        if (WebSession.CurrentLanguage == null)
+        //        {
+        //            using (var context = new SiteContainer())
+        //            {
+        //                var lang = context.Language.First(l => l.Code == "ru");
+        //                WebSession.CurrentLanguage = lang;
+        //                return lang;
+        //            }
+        //        }
+        //        return WebSession.CurrentLanguage;
+        //    }
+        //}
 
         //protected override void Initialize(RequestContext requestContext)
         //{

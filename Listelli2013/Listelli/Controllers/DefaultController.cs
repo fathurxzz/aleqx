@@ -29,7 +29,7 @@ namespace Listelli.Controllers
                 using (var context = new SiteContainer())
                 {
                     CurrentLang = context.Language.FirstOrDefault(p => p.Code == CurrentLangCode);
-                    WebSession.CurrentLanguage = CurrentLang;
+                    //WebSession.CurrentLanguage = CurrentLang;
                 }
 
                 var ci = new CultureInfo(CurrentLangCode);
