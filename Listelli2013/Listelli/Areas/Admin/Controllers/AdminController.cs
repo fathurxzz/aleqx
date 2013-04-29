@@ -11,7 +11,7 @@ using Listelli.Models;
 
 namespace Listelli.Areas.Admin.Controllers
 {
-    public abstract class AdminController : BaseController
+    public abstract class AdminController : DefaultController
     {
         //public Language CurrentLang
         //{

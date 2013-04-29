@@ -6,8 +6,11 @@
 
 <div class="content">
     
+    <div class="adminLinkContainer">
+        @Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+    </div>
    
-       @if (!Model.IsCorrectLang)
+    @if (!Model.IsCorrectLang)
        {
            <div style="border: 1px solid red; color: red; text-align: center; padding: 5px; font-weight: bold;">
                 нужен перевод
