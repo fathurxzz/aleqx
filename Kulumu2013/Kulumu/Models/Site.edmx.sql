@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/18/2013 14:43:19
--- Generated from EDMX file: D:\AlexK\projects\Kulumu2013\Kulumu\Models\Site.edmx
+-- Date Created: 04/29/2013 23:39:56
+-- Generated from EDMX file: D:\projects\Kulumu2013\Kulumu\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
@@ -52,7 +52,8 @@ CREATE TABLE `Category` (
     `SeoKeywords` TEXT  NULL,
     `CategoryId` int  NULL,
     `SpecialCategory` bool  NOT NULL,
-    `ShowOnMainPage` bool  NOT NULL
+    `ShowOnMainPage` bool  NOT NULL,
+    `PageTitle` varchar( 200 )  NULL
 );
 
 -- Creating table 'Product'
@@ -69,7 +70,8 @@ CREATE TABLE `Product` (
     `Structure` longtext  NULL,
     `Consistence` longtext  NULL,
     `Producer` longtext  NULL,
-    `Nap` varchar( 200 )  NULL
+    `Nap` varchar( 200 )  NULL,
+    `PageTitle` varchar( 200 )  NULL
 );
 
 -- Creating table 'Content'
@@ -83,7 +85,8 @@ CREATE TABLE `Content` (
     `MainPage` bool  NOT NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` TEXT  NULL,
-    `Text` longtext  NOT NULL
+    `Text` longtext  NOT NULL,
+    `PageTitle` varchar( 200 )  NULL
 );
 
 -- Creating table 'Article'
@@ -97,7 +100,8 @@ CREATE TABLE `Article` (
     `Description` longtext  NOT NULL,
     `OldPrice` varchar( 100 )  NOT NULL,
     `NewPrice` varchar( 100 )  NOT NULL,
-    `ImageSource` longtext  NOT NULL
+    `ImageSource` longtext  NOT NULL,
+    `PageTitle` varchar( 200 )  NULL
 );
 
 -- Creating table 'ProductSize'

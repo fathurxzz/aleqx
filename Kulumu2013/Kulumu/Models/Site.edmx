@@ -46,6 +46,7 @@
     <Property Name="CategoryId" Type="int" Nullable="true" />
     <Property Name="SpecialCategory" Type="bool" Nullable="false" />
     <Property Name="ShowOnMainPage" Type="bool" Nullable="false" DefaultValue="false" />
+    <Property Name="PageTitle" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -63,6 +64,7 @@
     <Property Name="Consistence" Type="longtext" Nullable="true" />
     <Property Name="Producer" Type="longtext" Nullable="true" />
     <Property Name="Nap" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="PageTitle" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -77,6 +79,7 @@
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="PageTitle" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Article">
     <Key>
@@ -91,6 +94,7 @@
     <Property Name="OldPrice" Type="nchar" Nullable="false" MaxLength="100" />
     <Property Name="NewPrice" Type="nchar" Nullable="false" MaxLength="100" />
     <Property Name="ImageSource" Type="longtext" Nullable="false" />
+    <Property Name="PageTitle" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="ProductSize">
     <Key>
@@ -225,6 +229,7 @@
           <Property Type="Int32" Name="CategoryId" Nullable="true" />
           <Property Type="Boolean" Name="SpecialCategory" Nullable="false" />
           <Property Type="Boolean" Name="ShowOnMainPage" Nullable="false" DefaultValue="false" />
+          <Property Type="String" Name="PageTitle" FixedLength="true" MaxLength="200" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -245,6 +250,7 @@
           <Property Type="String" Name="Producer" />
           <Property Type="String" Name="Nap" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="ProductSizes" Relationship="Site.ProductProductSize" FromRole="Product" ToRole="ProductSize" />
+          <Property Type="String" Name="PageTitle" FixedLength="true" MaxLength="200" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -271,6 +277,7 @@
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="500" />
           <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="PageTitle" FixedLength="true" MaxLength="200" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -285,6 +292,7 @@
           <Property Type="String" Name="OldPrice" Nullable="false" FixedLength="true" MaxLength="100" />
           <Property Type="String" Name="NewPrice" Nullable="false" FixedLength="true" MaxLength="100" />
           <Property Type="String" Name="ImageSource" Nullable="false" />
+          <Property Type="String" Name="PageTitle" FixedLength="true" MaxLength="200" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
@@ -381,6 +389,7 @@
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="SpecialCategory" ColumnName="SpecialCategory" />
           <ScalarProperty Name="ShowOnMainPage" ColumnName="ShowOnMainPage" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -399,6 +408,7 @@
           <ScalarProperty Name="Consistence" ColumnName="Consistence" />
           <ScalarProperty Name="Producer" ColumnName="Producer" />
           <ScalarProperty Name="Nap" ColumnName="Nap" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -414,6 +424,7 @@
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -429,6 +440,7 @@
           <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
           <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -494,13 +506,13 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Category" Width="2.125" PointX="3.875" PointY="1.375" Height="3.9033007812499996" />
-        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.125" PointY="1.375" Height="4.0956022135416656" />
         <AssociationConnector Association="Site.CategoryProduct">
-          <ConnectorPoint PointX="6" PointY="3.2304996744791667" />
-          <ConnectorPoint PointX="7.125" PointY="3.2304996744791667" />
+          <ConnectorPoint PointX="6" PointY="3.326650390625" />
+          <ConnectorPoint PointX="7.125" PointY="3.326650390625" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1" PointY="4.5" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="9.75" PointY="5" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1" PointY="4.5" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="9.75" PointY="5" Height="2.9417936197916656" />
         <EntityTypeShape EntityType="Site.ProductSize" Width="1.5" PointX="9.75" PointY="1.125" Height="1.59568359375" />
         <AssociationConnector Association="Site.CategoryCategory">
           <ConnectorPoint PointX="4.6285576923076928" PointY="5.27830078125" />

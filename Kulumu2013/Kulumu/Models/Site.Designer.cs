@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -202,6 +203,7 @@ namespace Kulumu.Models
         private ObjectSet<Order> _Order;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -269,11 +271,11 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -314,6 +316,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -534,8 +537,33 @@ namespace Kulumu.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                OnPageTitleChanging(value);
+                ReportPropertyChanging("PageTitle");
+                _PageTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PageTitle");
+                OnPageTitleChanged();
+            }
+        }
+        private global::System.String _PageTitle;
+        partial void OnPageTitleChanging(global::System.String value);
+        partial void OnPageTitleChanged();
 
         #endregion
+
     
     }
     
@@ -563,6 +591,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -689,6 +718,7 @@ namespace Kulumu.Models
         partial void OnPriceChanged();
 
         #endregion
+
     
     }
     
@@ -724,6 +754,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -992,8 +1023,33 @@ namespace Kulumu.Models
         private global::System.Boolean _ShowOnMainPage = false;
         partial void OnShowOnMainPageChanging(global::System.Boolean value);
         partial void OnShowOnMainPageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                OnPageTitleChanging(value);
+                ReportPropertyChanging("PageTitle");
+                _PageTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PageTitle");
+                OnPageTitleChanged();
+            }
+        }
+        private global::System.String _PageTitle;
+        partial void OnPageTitleChanging(global::System.String value);
+        partial void OnPageTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1080,6 +1136,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1116,6 +1173,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1336,8 +1394,33 @@ namespace Kulumu.Models
         private global::System.String _Text;
         partial void OnTextChanging(global::System.String value);
         partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                OnPageTitleChanging(value);
+                ReportPropertyChanging("PageTitle");
+                _PageTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PageTitle");
+                OnPageTitleChanged();
+            }
+        }
+        private global::System.String _PageTitle;
+        partial void OnPageTitleChanging(global::System.String value);
+        partial void OnPageTitleChanged();
 
         #endregion
+
     
     }
     
@@ -1363,6 +1446,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1513,6 +1597,7 @@ namespace Kulumu.Models
         partial void OnSizeChanged();
 
         #endregion
+
     
     }
     
@@ -1546,6 +1631,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1838,8 +1924,33 @@ namespace Kulumu.Models
         private global::System.String _Nap;
         partial void OnNapChanging(global::System.String value);
         partial void OnNapChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                OnPageTitleChanging(value);
+                ReportPropertyChanging("PageTitle");
+                _PageTitle = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("PageTitle");
+                OnPageTitleChanged();
+            }
+        }
+        private global::System.String _PageTitle;
+        partial void OnPageTitleChanging(global::System.String value);
+        partial void OnPageTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1926,6 +2037,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1954,6 +2066,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2032,6 +2145,7 @@ namespace Kulumu.Models
         partial void OnProductIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2074,6 +2188,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2102,6 +2217,7 @@ namespace Kulumu.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2180,6 +2296,7 @@ namespace Kulumu.Models
         partial void OnProductIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2222,8 +2339,10 @@ namespace Kulumu.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
