@@ -1,6 +1,6 @@
 ﻿@using System.Threading
 <div class="m1">
-    @Html.ActionLink(GlobalRes.About, "Index", "Home", new { id = "main" }, null)
+    @Html.ActionLink(GlobalRes.About, "Index", "Home", new {area="", id = "main" }, null)
 </div>
 @if (ViewBag.CurrentMenuItem == "gallery")
 {
@@ -11,20 +11,20 @@
 else if (ViewBag.CurrentMenuItem == "brand-details")
 {
     <div class="m2">
-        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home",null,new{@class="selected"})
+        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home",new{area=""},new{@class="selected"})
     </div>
 }
 else
 {
     <div class="m2">
-        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home")
+        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home", new { area = "" },null)
     </div>
 }
 <div class="m3 selected">
-    @Html.ActionLink(GlobalRes.News, "Index", "Home")
+    @Html.ActionLink(GlobalRes.News, "Index", "Home", new { area = "" }, null)
 </div>
 <div class="m4">
-    @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Home")
+    @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Home", new { area = "" }, null)
 </div>
 
 @{
