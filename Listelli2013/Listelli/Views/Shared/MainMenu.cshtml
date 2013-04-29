@@ -1,5 +1,5 @@
 ﻿<div class="m1">
-    @Html.ActionLink("о нас", "Index", "Home")
+    @Html.ActionLink(GlobalRes.About, "Index", "Home", new { id = "main" }, null)
 </div>
 @if (ViewBag.CurrentMenuItem == "gallery")
 {
@@ -26,5 +26,5 @@ else
     @Html.ActionLink("каталоги фабрик", "Index", "Home")
 </div>
 <div class="m5">
-    @Html.ActionLink("контактная информация", "Index", "Home")
+    @Html.ActionLink("контактная информация", "Index", "Home", new { id = "contacts" }, null)
 </div>

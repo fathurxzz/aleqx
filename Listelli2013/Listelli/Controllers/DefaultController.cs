@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using Listelli.Models;
 
 namespace Listelli.Controllers
 {
@@ -12,7 +13,7 @@ namespace Listelli.Controllers
     {
         public string CurrentLangCode { get; protected set; }
 
-        //public Language CurrentLang { get; protected set; }
+        public Language CurrentLang { get; protected set; }
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
@@ -24,7 +25,12 @@ namespace Listelli.Controllers
             if (requestContext.RouteData.Values["lang"] != null && requestContext.RouteData.Values["lang"] as string != "null")
             {
                 CurrentLangCode = requestContext.RouteData.Values["lang"] as string;
-                //CurrentLang = Repository.Languages.FirstOrDefault(p => p.Code == CurrentLangCode);
+
+                using (var context = new SiteContainer())
+                {
+                    CurrentLang = context.Language.FirstOrDefault(p => p.Code == CurrentLangCode);
+                    WebSession.CurrentLanguage = CurrentLang;
+                }
 
                 var ci = new CultureInfo(CurrentLangCode);
                 Thread.CurrentThread.CurrentUICulture = ci;

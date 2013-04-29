@@ -9,15 +9,20 @@ namespace Listelli.Controllers
 {
     public class HomeController : DefaultController
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            //using (var context = new SiteContainer())
-            //{
-            //    var lang =  context.Language.First();
-                
-            //}
+            using (var context = new SiteContainer())
+            {
+                Content content = context.Content.FirstOrDefault(c => c.Name == id);
 
-            return View();
+                if (content == null)
+                {
+                    content = context.Content.First(c => c.MainPage); 
+                }
+
+                content.CurrentLang = CurrentLang.Id;
+                return View(content);
+            }
         }
 
         public ActionResult Gallery()
