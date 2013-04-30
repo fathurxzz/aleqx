@@ -23,6 +23,8 @@ namespace Kulumu.Models
         [DisplayName("Заголовок")]
         public string Title { get; set; }
 
+        [DisplayName("Заголовок в шапке браузера")]
+        public string PageTitle { get; set; }
 
         [DisplayName("Описание (вверху)")]
         public string Description { get; set; }

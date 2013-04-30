@@ -45,7 +45,7 @@ namespace Kulumu.Areas.Admin.Controllers
                 {
                     var category = context.Category.First(c => c.Id == categoryId);
                     var product = new Product { Category = category, ImageSource = "" };
-                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "Structure", "Consistence", "Producer", "Nap" });
+                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "Structure", "Consistence", "Producer", "Nap", "PageTitle" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
                     product.DiscountText = HttpUtility.HtmlDecode(form["DiscountText"]);
@@ -114,7 +114,7 @@ namespace Kulumu.Areas.Admin.Controllers
                     var category = context.Category.First(c => c.Id == categoryId);
                     var product = context.Product.Include("Category").First(p => p.Id == id);
                     product.Category = category;
-                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "Structure", "Consistence", "Producer", "Nap" });
+                    TryUpdateModel(product, new[] { "Title", "Discount", "Price", "Structure", "Consistence", "Producer", "Nap", "PageTitle" });
 
                     product.Description = HttpUtility.HtmlDecode(form["Description"]);
                     product.DiscountText = HttpUtility.HtmlDecode(form["DiscountText"]);

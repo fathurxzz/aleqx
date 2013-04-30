@@ -46,6 +46,15 @@
                     @Html.ValidationMessageFor(model => model.Title)
                 </td>
             </tr>
+             <tr>
+                <td>
+                    @Html.LabelFor(model => model.PageTitle)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.PageTitle)
+                    @Html.ValidationMessageFor(model => model.PageTitle)
+                </td>
+            </tr>
             <tr>
                 <td>
                     @Html.LabelFor(model => model.Description)

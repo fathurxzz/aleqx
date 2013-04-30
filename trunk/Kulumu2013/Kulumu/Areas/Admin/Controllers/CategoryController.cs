@@ -30,7 +30,8 @@ namespace Kulumu.Areas.Admin.Controllers
                                                      "Description", 
                                                      "BottomDescription", 
                                                      "BottomDescriptionTitle",
-                                                     "ShowOnMainPage"
+                                                     "ShowOnMainPage",
+                                                     "PageTitle"
                                                  });
                 if (parentId.HasValue)
                 {
@@ -71,7 +72,8 @@ namespace Kulumu.Areas.Admin.Controllers
                                                      "Description", 
                                                      "BottomDescription", 
                                                      "BottomDescriptionTitle",
-                                                     "ShowOnMainPage"
+                                                     "ShowOnMainPage",
+                                                     "PageTitle"
                                                  });
                     context.SaveChanges();
                     return RedirectToAction("Gallery", "Home", new { area = "", id = category.Name });
