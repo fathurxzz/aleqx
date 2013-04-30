@@ -23,6 +23,7 @@ namespace Kulumu.Controllers
             {
                 var model = new SiteModel(context, id);
                 this.SetSeoContent(model);
+                ViewBag.PageTitle = model.PageTitle;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 ViewBag.isHomePage = model.IsHomePage;
                 return View(model);
@@ -34,6 +35,7 @@ namespace Kulumu.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new SiteModel(context, "articles",true);
+                ViewBag.PageTitle = model.PageTitle;
                 this.SetSeoContent(model);
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 return View(model);
@@ -47,6 +49,7 @@ namespace Kulumu.Controllers
                 var model = new SiteModel(context, "articles", true);
                 this.SetSeoContent(model);
                 model.Article = context.Article.First(a => a.Name == id);
+                ViewBag.PageTitle = model.Article.PageTitle;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 return View(model);
             }
@@ -58,6 +61,7 @@ namespace Kulumu.Controllers
             {
                 var model = new GalleryModel(context, null, id);
                 this.SetSeoContent(model);
+                ViewBag.PageTitle = model.PageTitle;
                 //ViewBag.CurrentCategoryId = model.Category.Id;
                 ViewBag.CurrentProductId = model.Product.Id;
                 return View(model);
@@ -92,6 +96,7 @@ namespace Kulumu.Controllers
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 //ViewBag.CurrentCategoryId = model.Category.Id;
                 this.SetSeoContent(model);
+                ViewBag.PageTitle = model.PageTitle;
                 return View(model);
             }
         }
@@ -102,6 +107,7 @@ namespace Kulumu.Controllers
             {
                 var model = new SiteModel(context, "tour");
                 this.SetSeoContent(model);
+                ViewBag.PageTitle = model.PageTitle;
                 //ViewBag.SpecialCategoryName = context.Category.First(c => c.SpecialCategory).Name;
                 ViewBag.CurrentMenuItemName = model.Content.Name;
                 ViewBag.isHomePage = model.IsHomePage;

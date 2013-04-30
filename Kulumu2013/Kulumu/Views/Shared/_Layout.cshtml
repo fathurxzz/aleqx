@@ -5,7 +5,7 @@
         var mombileExpression = new System.Text.RegularExpressions.Regex("(ipad)|(iphone)|(android)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
         bool isMobile = mombileExpression.IsMatch(Request.UserAgent);
     }
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.PageTitle</title>
     <link href="@Url.Content("~/Content/Fonts.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Order.css")" rel="stylesheet" type="text/css" />
