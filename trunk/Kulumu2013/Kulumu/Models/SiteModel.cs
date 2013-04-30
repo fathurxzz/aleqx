@@ -11,6 +11,7 @@ namespace Kulumu.Models
     public class SiteModel : ISiteModel
     {
         public string Title { get; set; }
+        public string PageTitle { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
@@ -40,6 +41,8 @@ namespace Kulumu.Models
 
             if (!string.IsNullOrEmpty(Content.Title))
                 Title += " » " + Content.Title;
+
+            PageTitle = Content.PageTitle;
 
             SeoDescription = Content.SeoDescription;
             SeoKeywords = Content.SeoKeywords;

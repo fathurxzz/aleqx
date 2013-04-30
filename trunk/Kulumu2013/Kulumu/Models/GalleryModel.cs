@@ -70,6 +70,8 @@ namespace Kulumu.Models
                 {
                     categoryId = Product.Category.Name;
                 }
+
+                PageTitle = Product.PageTitle;
             }
 
 
@@ -105,7 +107,8 @@ namespace Kulumu.Models
                     Title += " - " + category.Title;
                     SeoDescription = category.SeoDescription;
                     SeoKeywords = category.SeoKeywords;
-
+                    
+                    PageTitle = category.PageTitle;
                 }
 
                 foreach (var child in category.Children.Where(child => child.Name == categoryId))
@@ -115,6 +118,7 @@ namespace Kulumu.Models
                     SeoDescription = child.SeoDescription;
                     SeoKeywords = child.SeoKeywords;
                     category.IsParent = true;
+                    PageTitle = child.PageTitle;
                 }
             }
 
