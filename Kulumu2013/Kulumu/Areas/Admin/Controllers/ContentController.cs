@@ -25,7 +25,7 @@ namespace Kulumu.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var content = context.Content.First(c => c.Name == id);
-                TryUpdateModel(content, new[] {"Title","DescriptionTitle","SeoDescription","SeoKeywords"});
+                TryUpdateModel(content, new[] { "Title", "DescriptionTitle", "SeoDescription", "SeoKeywords", "PageTitle" });
                 content.Description = HttpUtility.HtmlDecode(form["Description"]);
                 content.Text = HttpUtility.HtmlDecode(form["Text"]);
                 context.SaveChanges();
