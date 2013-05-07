@@ -1,0 +1,28 @@
+﻿@model Shitova.Models.SiteModel 
+@{
+    ViewBag.Title = "Ольга Шитова";
+}
+@section MainMenu
+{
+    @Html.Partial("MainMenu", Model.Menu)
+}
+
+@section Title
+{
+    @Model.Title
+}
+
+@Html.Raw(Model.Content.Text)
+
+
+
+@if (Model.HasContentItems&&Request.IsAuthenticated)
+{
+    @Html.ActionLink("Добавить текстовый блок","AddTextBlock","Content",new{area="Admin"},new{@class="adminLink"})
+    @Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Content", new { area = "Admin" }, new { @class = "adminLink" })
+}
+
+@if (Model.ContentItems != null && Model.ContentItems.Any())
+{
+    
+}
