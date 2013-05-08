@@ -54,13 +54,16 @@
         @foreach (var image in item.ContentItemImages)
         {
             <div class="image">
-                
-                
-                <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@image.ImageSource">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("preview")))
-                </a>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="abs">
+                        @Html.ActionLink("Удалить", "DeleteImage", "Content", new { area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                    </div>
+                }
 
-                
+                <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@image.ImageSource">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("preview")))
+                </a>
             </div>
         }
         <div class="clear">
