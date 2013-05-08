@@ -56,7 +56,7 @@ namespace Shitova.Models
             if (showContentItems)
             {
                 HasContentItems = true;
-                ContentItems = context.ContentItem.OrderBy(ci => ci.SortOrder).ToList();
+                ContentItems = context.ContentItem.Include("ContentItemImages").OrderBy(ci => ci.SortOrder).ToList();
             }
 
             var contents = context.Content.Where(c => !c.MainPage).ToList();

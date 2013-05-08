@@ -1,4 +1,6 @@
-﻿@model Shitova.Models.SiteModel 
+﻿@using Shitova
+@using SiteExtensions.Graphics
+@model Shitova.Models.SiteModel 
 @{
     ViewBag.Title = "Ольга Шитова";
 }
@@ -6,23 +8,64 @@
 {
     @Html.Partial("MainMenu", Model.Menu)
 }
-
 @section Title
 {
     @Model.Title
 }
-
 @Html.Raw(Model.Content.Text)
-
-
-
-@if (Model.HasContentItems&&Request.IsAuthenticated)
+@if (Model.HasContentItems && Request.IsAuthenticated)
 {
-    @Html.ActionLink("Добавить текстовый блок","AddTextBlock","Content",new{area="Admin"},new{@class="adminLink"})
-    @Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Content", new { area = "Admin" }, new { @class = "adminLink" })
+    @Html.ActionLink("Добавить текстовый блок", "AddTextBlock", "Content", new { area = "Admin" }, new { @class = "adminLink" }) 
+    @Html.Raw("&nbsp;&nbsp;&nbsp;")
+    @Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Content", new { area = "Admin" }, new { @class = "adminLink" }) 
 }
-
 @if (Model.ContentItems != null && Model.ContentItems.Any())
 {
-    
+    foreach (var item in Model.ContentItems.OrderBy(c => c.SortOrder))
+    {
+        if (item.ContentType == 1)
+        {
+    <div class="textBlock">
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink(item.SortOrder.ToString(), "EditTextBlock", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink sortOrder" }) 
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("Редактировать", "EditTextBlock", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink" }) 
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("Удалить", "DeleteTextBlock", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить текстовый блок?')" }) 
+            <br />
+        }
+        @Html.Raw(item.Text)
+    </div>
+        }
+        else
+        {
+    <div class="imagesBlock">
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Html.ActionLink(item.SortOrder.ToString(), "EditImagesBlock", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink sortOrder" })
+                @Html.Raw("&nbsp;")
+                @Html.ActionLink("Редактировать", "EditImagesBlock", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                @Html.Raw("&nbsp;")
+                @Html.ActionLink("Удалить", "DeleteImagesBlock", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить блок изображений?')" }) 
+            </div>
+        }
+        @foreach (var image in item.ContentItemImages)
+        {
+            <div class="image">
+                
+                
+                <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@image.ImageSource">
+                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("preview")))
+                </a>
+
+                
+            </div>
+        }
+        <div class="clear">
+        </div>
+    </div>
+        }
+    }
 }

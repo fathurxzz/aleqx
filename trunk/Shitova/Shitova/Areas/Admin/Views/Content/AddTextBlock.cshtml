@@ -1,31 +1,18 @@
-﻿@model Shitova.Models.Content
+﻿@model Shitova.Models.ContentItem
 @{
-    ViewBag.Title = "Редактирование контента";
+    ViewBag.Title = "Добавление текстового блока";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="adminContentContainer">
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
-    
-        @Html.HiddenFor(model => model.Id)
 
-    
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
                     <h2>
-                        Редактирование контента</h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.Title)
-                </td>
-                <td>
-                    @Html.EditorFor(model => model.Title)
-                    @Html.ValidationMessageFor(model => model.Title)
+                        Добавление текстового блока</h2>
                 </td>
             </tr>
             <tr>
@@ -46,38 +33,11 @@
                     @Html.ValidationMessageFor(model => model.SortOrder)
                 </td>
             </tr>
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    Для поисковых систем
-                </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.SeoDescription)
-                </td>
-                <td>@Html.TextAreaFor(model => model.SeoDescription)
-                    @Html.ValidationMessageFor(model => model.SeoDescription)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.SeoKeywords)
-                </td>
-                <td>
-                    @Html.TextAreaFor(model => model.SeoKeywords)
-                    @Html.ValidationMessageFor(model => model.SeoKeywords)
-                </td>
-            </tr>
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "Home", new { Area = "",id=Model.Name }, null)
+            @Html.ActionLink("Назад", "Index", "Home", new { Area = "", id = "look" }, null)
         </div>
-    
-    
-       
-       
-
-      
     }
 </div>
 @section Includes

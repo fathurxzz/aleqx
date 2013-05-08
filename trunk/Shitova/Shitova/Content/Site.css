@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.clear {
+    clear: both;
+}
+
 body {
     background-color: #000;
     font-family: Verdana;
@@ -142,4 +146,38 @@ body {
     list-style: none;
     display: inline;
     padding:0 35px;
+}
+
+
+
+.logOnPanel
+{
+    position: relative;
+    margin: 0 auto;
+    padding: 30px;
+    width: 250px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+}
+
+
+.field-validation-error
+{
+    color: red !important;
+}
+
+
+.textBlock {
+    padding:30px 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+
+.imagesBlock {
+    padding:30px 0;
+}
+
+.imagesBlock .image {
+    float: left;
+    padding: 10px;
 }
