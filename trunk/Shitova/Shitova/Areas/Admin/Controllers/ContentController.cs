@@ -200,5 +200,29 @@ namespace Shitova.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult DeleteImage(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var image = context.ContentItemImage.First(c => c.Id == id);
+                var contentItemId = image.ContentItemId;
+
+                ImageHelper.DeleteImage(image.ImageSource);
+                context.DeleteObject(image);
+                context.SaveChanges();
+                
+                
+                var contentItem = context.ContentItem.Include("ContentItemImages").First(c => c.Id == contentItemId);
+                if (!contentItem.ContentItemImages.Any())
+                {
+                    context.DeleteObject(contentItem);
+                    context.SaveChanges();
+                }
+
+
+            }
+            return RedirectToAction("Index", "Home", new { area = "", id = "look" });
+        }
+
     }
 }
