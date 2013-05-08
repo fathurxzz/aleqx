@@ -3,8 +3,17 @@
 <head>
     <title>@ViewBag.PageTitle</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    
+
     <script src="@Url.Content("~/Scripts/jquery-2.0.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.mousewheel-3.0.6.pack.js")" type="text/javascript"></script>
+    
+    <script src="@Url.Content("~/Content/fancybox/jquery.fancybox.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/fancybox/jquery.fancybox.css")" rel="stylesheet" type="text/css" />
+
+
     <script src="@Url.Content("~/Scripts/PageScripts.js")" type="text/javascript"></script>
+
     @if (Request.IsAuthenticated)
     {
         <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
@@ -15,10 +24,9 @@
             var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
             BasePageExtender.initialize();
         
-//            $(function () {        
-//                $(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
-//                $(".fancyPopup").fancybox({ showCloseButton: true , padding:0});
-//            });
+            
+            
+            
 
     </script>
     @RenderSection("Includes", false)
@@ -40,6 +48,7 @@
                 {
                     <div class="adminLinkContainer">
                         @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id = 1 }, new { @class = "adminLink" })
+                        @Html.Raw("&nbsp;&nbsp;&nbsp;")
                         @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { area = "" }, new { @class = "adminLink" })
                     </div>
                 }

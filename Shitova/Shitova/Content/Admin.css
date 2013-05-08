@@ -15,7 +15,7 @@
 
 a.adminLink
 {
-    color: #ff0000 !important;
+    color: #ff0000;
     font-size: 12px !important;
     text-transform: none !important;
     font-weight: normal;
@@ -75,8 +75,9 @@ a.adminLink
 
 .sortOrder
 {
-    color: #ff0000;
+    color: #0000ff !important;
     white-space: nowrap;
+    font-weight: bold !important;
 }
 
 
@@ -128,3 +129,4 @@ a.adminLink
     border: 1px solid #000;
     margin: 10px 5px 0 0;
 }
+

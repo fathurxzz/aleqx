@@ -1,0 +1,45 @@
+﻿@model Shitova.Models.ContentItem
+@{
+    ViewBag.Title = "AddImagesBlock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContentContainer">
+    @using (Html.BeginForm("AddImagesBlock", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Добавление изображения</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Изображения
+                </td>
+                <td>
+                    @Html.Partial("InputImages")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.SortOrder)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SortOrder)
+                    @Html.ValidationMessageFor(model => model.SortOrder)
+                </td>
+            </tr>
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Home", new { area = "", id = "look" }, null)
+        </div>
+    }
+</div>
+@section Includes
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}

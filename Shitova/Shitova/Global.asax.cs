@@ -23,6 +23,18 @@ namespace Shitova
             routes.IgnoreRoute("favicon.ico");
 
             routes.MapRoute(
+                "LogOn", // Route name
+                "logon", // URL with parameters
+                new { controller = "Account", action = "LogOn" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "LogIn", // Route name
+                "login", // URL with parameters
+                new { controller = "Account", action = "LogOn" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Content", // Route name
                 "{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
