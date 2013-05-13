@@ -1,6 +1,6 @@
 ﻿@model SiteExtensions.Menu
 <ul>
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(m=>m.SortOrder))
     {
         <li>
             @if (item.Current)
