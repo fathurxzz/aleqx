@@ -58,6 +58,14 @@
 </div>
 <div class="productImages">
     <div class="preview">
+        
+                        @if (Model.Discount)
+            {
+            <div class="promostar">
+                @Html.Raw(Model.DiscountText)
+            </div>
+            }
+
         @*<a href="#" id="pictureLink" class="fancy">*@
         <a href="#" id="pictureLink" class="fancyPopup">
             <img src="" alt="" id="pictureContainer" />
