@@ -86,6 +86,7 @@
     font-size: 16px;
     margin-left: 50px;
     line-height: 30px;
+    visibility: hidden;
 }
 .productDetails .productInfo .title {
     font-weight: bold;

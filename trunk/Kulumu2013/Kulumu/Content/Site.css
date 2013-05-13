@@ -332,6 +332,15 @@ img
     margin-top: 20px;
 }
 
+.image .promostar {
+    margin-left: 180px;
+    margin-top: 10px;
+}
+
+.productImages .preview .promostar {
+    margin-left: 300px;
+    margin-top: 10px;
+}
 
 
 
