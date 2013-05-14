@@ -35,6 +35,15 @@ namespace Filimonov.Areas.Presentation.Controllers
             {
                 var product = context.Product.First(p => p.Id == productId);
                 var comment = new Comment {Date = DateTime.Now};
+                TryUpdateModel(comment, new[] {"Text"});
+
+                var customer = context.Customer.First(c => c.Name == User.Identity.Name);
+                
+                comment.CustomerId = customer.Id;
+                comment.CustomerName = customer.Name;
+                comment.CustomerTitle = customer.Title;
+
+
 
                 product.Comments.Add(comment);
                 
