@@ -99,9 +99,8 @@
 
                 <div class="bgMarker" id="@id">
                 </div>
-                <div class="commentsBar">
-                    @Html.ActionLink("Добавить комментарий","Create","Comment",new{area="Presentation", id=item.Id},null)
-                </div>
+                
+                
             }
             }
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
@@ -111,6 +110,11 @@
                     @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Presentation", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                 </div>
             }
+            
+            <div class="commentsBar">
+                    @Html.ActionLink("Комментарии ("+item.Comments.Count+")","Create","Comment",new{area="Presentation", id=item.Id},null)
+                </div>
+
             <a rel="group1" class="fancyImage" href="/Content/Images/@item.ImageSource">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("categoryProduct")))
             </a>

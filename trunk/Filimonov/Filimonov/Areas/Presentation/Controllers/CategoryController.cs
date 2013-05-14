@@ -68,6 +68,10 @@ namespace Filimonov.Areas.Presentation.Controllers
                 //    }
                 //}
 
+                foreach (var product in category.Products)
+                {
+                    product.Comments.Load();
+                }
 
 
                 if (!string.IsNullOrEmpty(productSet))
