@@ -105,6 +105,20 @@
     background-image: url('img/product-checked-default.png');
 }
 
+.category-details .product .commentsBar {
+    position: absolute;
+    display: none;
+    width: 300px;
+    height: 20px;
+    background-color: transparent;
+    margin-top: 205px;
+}
+
+.category-details .product .commentsBar.selected {
+    background-color: rgba(150, 255, 150, .5);
+    display: block;
+}
+
 
 
 .category-title {

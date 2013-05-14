@@ -99,6 +99,9 @@
 
                 <div class="bgMarker" id="@id">
                 </div>
+                <div class="commentsBar">
+                    @Html.ActionLink("Добавить комментарий","Create","Comment",new{area="Presentation", id=item.Id},null)
+                </div>
             }
             }
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))

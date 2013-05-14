@@ -81,9 +81,16 @@
             $(".product").hover(function () {
                 var obj = $(this).find(".bgMarker");
                 obj.addClass("selected");
+
+                var bar = $(this).find(".commentsBar");
+                bar.addClass("selected");
+                
             }, function () {
                 var obj = $(this).find(".bgMarker");
                 obj.removeClass("selected");
+
+                var bar = $(this).find(".commentsBar");
+                bar.removeClass("selected");
             });
 
 

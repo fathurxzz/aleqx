@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 04/08/2013 10:23:23
+-- Date Created: 05/14/2013 13:57:59
 -- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Library.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `fili`;
-CREATE DATABASE `fili`;
-USE `fili`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -38,6 +35,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductSet`;
     DROP TABLE IF EXISTS `SurveyItem`;
     DROP TABLE IF EXISTS `Survey`;
+    DROP TABLE IF EXISTS `Note`;
     DROP TABLE IF EXISTS `ProductProductSet`;
 SET foreign_key_checks = 1;
 
@@ -116,6 +114,18 @@ CREATE TABLE `Note` (
     `Title` varchar( 200 )  NOT NULL,
     `Date` datetime  NOT NULL,
     `Text` longtext  NULL
+);
+
+-- Creating table 'Comment'
+
+CREATE TABLE `Comment` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ProductId` int  NOT NULL,
+    `Text` TEXT  NOT NULL,
+    `Date` datetime  NOT NULL,
+    `CustomerId` int  NOT NULL,
+    `CustomerName` varchar( 200 )  NOT NULL,
+    `CustomerTitle` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'ProductProductSet'
@@ -241,6 +251,21 @@ ADD CONSTRAINT `FK_CustomerSurvey`
 CREATE INDEX `IX_FK_CustomerSurvey` 
     ON `Survey`
     (`Customer_Id`);
+
+-- Creating foreign key on `ProductId` in table 'Comment'
+
+ALTER TABLE `Comment`
+ADD CONSTRAINT `FK_ProductComment`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductComment'
+
+CREATE INDEX `IX_FK_ProductComment` 
+    ON `Comment`
+    (`ProductId`);
 
 -- --------------------------------------------------
 -- Script has ended

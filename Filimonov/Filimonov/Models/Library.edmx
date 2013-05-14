@@ -14,6 +14,7 @@
     <EntitySet Name="SurveyItem" EntityType="Library.Store.SurveyItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Survey" EntityType="Library.Store.Survey" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Note" EntityType="Library.Store.Note" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comment" EntityType="Library.Store.Comment" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductProductSet" EntityType="Library.Store.ProductProductSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryProduct" Association="Library.Store.CategoryProduct">
       <End Role="Category" EntitySet="Category" />
@@ -42,6 +43,10 @@
     <AssociationSet Name="CustomerSurvey" Association="Library.Store.CustomerSurvey">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Survey" EntitySet="Survey" />
+    </AssociationSet>
+    <AssociationSet Name="ProductComment" Association="Library.Store.ProductComment">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Category">
@@ -117,6 +122,18 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="true" />
   </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="CustomerName" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="CustomerTitle" Type="nchar" Nullable="false" MaxLength="200" />
+  </EntityType>
   <EntityType Name="ProductProductSet">
     <Key>
       <PropertyRef Name="Products_Id" />
@@ -185,6 +202,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductComment">
+    <End Role="Product" Type="Library.Store.Product" Multiplicity="1" />
+    <End Role="Comment" Type="Library.Store.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ProductProductSet_Product">
     <End Role="Product" Type="Library.Store.Product" Multiplicity="1" />
     <End Role="ProductProductSet" Type="Library.Store.ProductProductSet" Multiplicity="*" />
@@ -246,6 +275,11 @@
             <End Role="Survey" EntitySet="Survey" />
           </AssociationSet>
           <EntitySet Name="Note" EntityType="Library.Note" />
+          <EntitySet Name="Comment" EntityType="Library.Comment" />
+          <AssociationSet Name="ProductComment" Association="Library.ProductComment">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -277,6 +311,7 @@
           <NavigationProperty Name="Layout" Relationship="Library.LayoutProduct" FromRole="Product" ToRole="Layout" />
           <Property Type="Int32" Name="LayoutId" Nullable="false" />
           <NavigationProperty Name="ProductSets" Relationship="Library.ProductProductSet" FromRole="Product" ToRole="ProductSet" />
+          <NavigationProperty Name="Comments" Relationship="Library.ProductComment" FromRole="Product" ToRole="Comment" />
         </EntityType>
         <Association Name="CategoryProduct">
           <End Type="Library.Category" Role="Category" Multiplicity="1" />
@@ -387,6 +422,31 @@
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Text" />
         </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Product" Relationship="Library.ProductComment" FromRole="Comment" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" FixedLength="true" MaxLength="1000" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <Property Type="String" Name="CustomerName" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="CustomerTitle" Nullable="false" FixedLength="true" MaxLength="200" />
+        </EntityType>
+        <Association Name="ProductComment">
+          <End Type="Library.Product" Role="Product" Multiplicity="1" />
+          <End Type="Library.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -473,6 +533,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="IsTypeOf(Library.Comment)">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerTitle" ColumnName="CustomerTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="ProductProductSet" TypeName="Library.ProductProductSet" StoreEntitySet="ProductProductSet">
       <EndProperty Name="Product">
         <ScalarProperty Name="Id" ColumnName="Products_Id" />
@@ -510,15 +583,15 @@
     <edmx:Diagrams>
       <Diagram Name="Library" >
         <EntityTypeShape EntityType="Library.Category" Width="1.5" PointX="7.125" PointY="1.625" Height="1.9802864583333339" />
-        <EntityTypeShape EntityType="Library.Layout" Width="1.5" PointX="1.125" PointY="1.625" Height="1.787985026041667" />
-        <EntityTypeShape EntityType="Library.Product" Width="1.5" PointX="4" PointY="1.625" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Library.Layout" Width="1.5" PointX="1.125" PointY="0.875" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Library.Product" Width="1.5" PointX="4" PointY="1.625" Height="2.5571907552083335" />
         <AssociationConnector Association="Library.CategoryProduct">
           <ConnectorPoint PointX="7.125" PointY="2.6151432291666667" />
           <ConnectorPoint PointX="5.5" PointY="2.6151432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="Library.LayoutProduct">
-          <ConnectorPoint PointX="2.625" PointY="2.5189925130208337" />
-          <ConnectorPoint PointX="4" PointY="2.5189925130208337" />
+          <ConnectorPoint PointX="2.625" PointY="2.1439925130208337" />
+          <ConnectorPoint PointX="4" PointY="2.1439925130208337" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Library.Customer" Width="1.5" PointX="6.5" PointY="5.125" Height="1.9802864583333326" />
         <EntityTypeShape EntityType="Library.ProductSet" Width="1.625" PointX="4" PointY="5" Height="1.4033821614583326" />
@@ -527,7 +600,7 @@
           <ConnectorPoint PointX="5.625" PointY="6.0526432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="Library.ProductProductSet">
-          <ConnectorPoint PointX="4.75" PointY="3.989889322916667" />
+          <ConnectorPoint PointX="4.75" PointY="4.1821907552083335" />
           <ConnectorPoint PointX="4.75" PointY="5" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Library.SurveyItem" Width="1.5" PointX="11.375" PointY="4.625" Height="2.1725878906249996" />
@@ -541,6 +614,11 @@
           <ConnectorPoint PointX="8.75" PointY="6.0862939453125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Library.Note" Width="1.5" PointX="10.375" PointY="1.75" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Library.Comment" Width="1.5" PointX="1.125" PointY="3.125" Height="2.5571907552083317" />
+        <AssociationConnector Association="Library.ProductComment">
+          <ConnectorPoint PointX="4" PointY="3.6535953776041667" />
+          <ConnectorPoint PointX="2.625" PointY="3.6535953776041667" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

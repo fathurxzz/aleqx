@@ -24,6 +24,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("Library", "ProductProductSet", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Product), "ProductSet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProductSet))]
 [assembly: EdmRelationshipAttribute("Library", "SurveySurveyItem", "Survey", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Survey), "SurveyItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.SurveyItem), true)]
 [assembly: EdmRelationshipAttribute("Library", "CustomerSurvey", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Customer), "Survey", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Filimonov.Models.Survey))]
+[assembly: EdmRelationshipAttribute("Library", "ProductComment", "Product", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Product), "Comment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Comment), true)]
 
 #endregion
 
@@ -202,6 +203,22 @@ namespace Filimonov.Models
             }
         }
         private ObjectSet<Note> _Note;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Comment> Comment
+        {
+            get
+            {
+                if ((_Comment == null))
+                {
+                    _Comment = base.CreateObjectSet<Comment>("Comment");
+                }
+                return _Comment;
+            }
+        }
+        private ObjectSet<Comment> _Comment;
 
         #endregion
         #region AddTo Methods
@@ -268,6 +285,14 @@ namespace Filimonov.Models
         public void AddToNote(Note note)
         {
             base.AddObject("Note", note);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Comment EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToComment(Comment comment)
+        {
+            base.AddObject("Comment", comment);
         }
 
         #endregion
@@ -429,6 +454,258 @@ namespace Filimonov.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Product>("Library.CategoryProduct", "Product", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Library", Name="Comment")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Comment : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Comment object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="productId">Initial value of the ProductId property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="customerId">Initial value of the CustomerId property.</param>
+        /// <param name="customerName">Initial value of the CustomerName property.</param>
+        /// <param name="customerTitle">Initial value of the CustomerTitle property.</param>
+        public static Comment CreateComment(global::System.Int32 id, global::System.Int32 productId, global::System.String text, global::System.DateTime date, global::System.Int32 customerId, global::System.String customerName, global::System.String customerTitle)
+        {
+            Comment comment = new Comment();
+            comment.Id = id;
+            comment.ProductId = productId;
+            comment.Text = text;
+            comment.Date = date;
+            comment.CustomerId = customerId;
+            comment.CustomerName = customerName;
+            comment.CustomerTitle = customerTitle;
+            return comment;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProductId
+        {
+            get
+            {
+                return _ProductId;
+            }
+            set
+            {
+                OnProductIdChanging(value);
+                ReportPropertyChanging("ProductId");
+                _ProductId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProductId");
+                OnProductIdChanged();
+            }
+        }
+        private global::System.Int32 _ProductId;
+        partial void OnProductIdChanging(global::System.Int32 value);
+        partial void OnProductIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerId
+        {
+            get
+            {
+                return _CustomerId;
+            }
+            set
+            {
+                OnCustomerIdChanging(value);
+                ReportPropertyChanging("CustomerId");
+                _CustomerId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CustomerId");
+                OnCustomerIdChanged();
+            }
+        }
+        private global::System.Int32 _CustomerId;
+        partial void OnCustomerIdChanging(global::System.Int32 value);
+        partial void OnCustomerIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CustomerName
+        {
+            get
+            {
+                return _CustomerName;
+            }
+            set
+            {
+                OnCustomerNameChanging(value);
+                ReportPropertyChanging("CustomerName");
+                _CustomerName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CustomerName");
+                OnCustomerNameChanged();
+            }
+        }
+        private global::System.String _CustomerName;
+        partial void OnCustomerNameChanging(global::System.String value);
+        partial void OnCustomerNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CustomerTitle
+        {
+            get
+            {
+                return _CustomerTitle;
+            }
+            set
+            {
+                OnCustomerTitleChanging(value);
+                ReportPropertyChanging("CustomerTitle");
+                _CustomerTitle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CustomerTitle");
+                OnCustomerTitleChanged();
+            }
+        }
+        private global::System.String _CustomerTitle;
+        partial void OnCustomerTitleChanging(global::System.String value);
+        partial void OnCustomerTitleChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductComment", "Product")]
+        public Product Product
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("Library.ProductComment", "Product").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("Library.ProductComment", "Product").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Product> ProductReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Product>("Library.ProductComment", "Product");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Product>("Library.ProductComment", "Product", value);
                 }
             }
         }
@@ -1096,6 +1373,28 @@ namespace Filimonov.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductSet>("Library.ProductProductSet", "ProductSet", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Library", "ProductComment", "Comment")]
+        public EntityCollection<Comment> Comments
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Comment>("Library.ProductComment", "Comment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Comment>("Library.ProductComment", "Comment", value);
                 }
             }
         }
