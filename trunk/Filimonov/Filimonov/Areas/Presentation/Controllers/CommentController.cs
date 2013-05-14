@@ -14,7 +14,11 @@ namespace Filimonov.Areas.Presentation.Controllers
 
         public ActionResult Index(int id)
         {
-            return View();
+            using (var context = new LibraryContainer())
+            {
+                var product = context.Product.Include("Comments").First(p => p.Id == id);
+                return View(product);
+            }
         }
 
         public ActionResult Create(int id)
@@ -43,8 +47,6 @@ namespace Filimonov.Areas.Presentation.Controllers
                 comment.CustomerName = customer.Name;
                 comment.CustomerTitle = customer.Title;
 
-
-
                 product.Comments.Add(comment);
                 
                 context.SaveChanges();
@@ -53,5 +55,37 @@ namespace Filimonov.Areas.Presentation.Controllers
             }
         }
 
+        public ActionResult Edit(int id)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var comment = context.Comment.First(c => c.Id == id);
+                return View(comment);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection form)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var comment = context.Comment.First(c => c.Id == id);
+                TryUpdateModel(comment, new[] {"Text"});
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new LibraryContainer())
+            {
+                var comment = context.Comment.First(c => c.Id == id);
+                context.DeleteObject(comment);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
