@@ -1,0 +1,36 @@
+﻿@model Filimonov.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Presentation/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">Selected</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Selected)
+    </div>
+
+    <div class="display-label">ImageSource</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ImageSource)
+    </div>
+
+    <div class="display-label">CategoryId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryId)
+    </div>
+
+    <div class="display-label">LayoutId</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LayoutId)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
