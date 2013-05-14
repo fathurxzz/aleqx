@@ -89,6 +89,7 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectController.cs" />
     <Compile Include="Areas\Presentation\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Presentation\Controllers\CommentController.cs" />
     <Compile Include="Areas\Presentation\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Presentation\Controllers\HomeController.cs" />
     <Compile Include="Areas\Presentation\Controllers\LayoutController.cs" />
@@ -212,6 +213,7 @@
     <Content Include="Global.asax" />
     <Content Include="Models\Library.edmx.sql" />
     <Content Include="Models\Site.edmx.sql" />
+    <Content Include="query.txt" />
     <Content Include="Scripts\Catalogue.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -338,6 +340,7 @@
     <Content Include="Areas\Presentation\Views\Note\Create.cshtml" />
     <Content Include="Areas\Presentation\Views\Note\Edit.cshtml" />
     <Content Include="Areas\Presentation\Views\Note\Details.cshtml" />
+    <Content Include="Areas\Presentation\Views\Comment\Create.cshtml" />
     <None Include="Content\fonts\FreeSetC-Bold.otf" />
     <None Include="Content\fonts\FreeSetC-Italic.otf" />
     <None Include="Content\fonts\FreeSetC.otf" />
