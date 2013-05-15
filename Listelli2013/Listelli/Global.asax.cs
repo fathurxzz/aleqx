@@ -31,6 +31,14 @@ namespace Listelli
            );
 
             routes.MapRoute(
+               "BrandDetails", // Route name
+               "{lang}/brand/{id}", // URL with parameters
+               new { controller = "Home", action = "BrandDetails", id = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Listelli.Controllers" }
+           );
+
+            routes.MapRoute(
                "Content", // Route name
                "{lang}/{id}", // URL with parameters
                new { controller = "Home", action = "Index", id = UrlParameter.Optional },

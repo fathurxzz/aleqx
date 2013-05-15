@@ -15,7 +15,6 @@ namespace Listelli.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new SiteModel(CurrentLang, context, id);
-                
 
                 this.SetSeoContent(model);
 
@@ -29,16 +28,22 @@ namespace Listelli.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueModel(CurrentLang, context);
+                var model = new CatalogueModel(CurrentLang, context, null);
+                this.SetSeoContent(model);
                 ViewBag.CurrentMenuItem = "gallery";
                 return View(model);
             }
         }
 
-        public ActionResult BrandDetails()
+        public ActionResult BrandDetails(string id)
         {
-            ViewBag.CurrentMenuItem = "brand-details";
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var model = new CatalogueModel(CurrentLang, context, id);
+                this.SetSeoContent(model);
+                ViewBag.CurrentMenuItem = "brand-details";
+                return View(model);
+            }
         }
     }
 }

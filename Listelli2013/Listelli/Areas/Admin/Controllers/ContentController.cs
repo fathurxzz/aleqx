@@ -29,34 +29,22 @@ namespace Listelli.Areas.Admin.Controllers
 
                 if (cache != null)
                 {
-                    //cache.Url = instance.Url;
-                    //Db.Posts.Context.SubmitChanges();
-
-                    //context.SaveChanges();
-
                     var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
                     {
-                        CreateOrChangeContentLang(model, cache, lang);
-                        //return true;
+                        CreateOrChangeContentLang(context, model, cache, lang);
                     }
-                    //return true;
                 }
 
-                //    var content = new Content();
-                //    TryUpdateModel(content, new[] { "Title", "Text" });
-                //    context.AddToContent(content);
-                //    context.SaveChanges();
                 return RedirectToAction("Index", "Home",new{area="",id=cache.Name});
             }
 
             
         }
 
-        private void CreateOrChangeContentLang(Content instance, Content cache, Language lang)
+        private void CreateOrChangeContentLang(SiteContainer context, Content instance, Content cache, Language lang)
         {
-            using (var context = new SiteContainer())
-            {
+           
                 ContentLang contenttLang = null;
                 if (cache != null)
                 {
@@ -83,7 +71,7 @@ namespace Listelli.Areas.Admin.Controllers
                     contenttLang.SeoKeywords = instance.SeoKeywords;
                 }
                 context.SaveChanges();
-            }
+           
         }
 
     }

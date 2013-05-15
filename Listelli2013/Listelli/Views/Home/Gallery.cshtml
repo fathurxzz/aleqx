@@ -1,34 +1,30 @@
 ﻿@using Listelli.Models
-@{
-    ViewBag.Title = "Listelli 2013";
-}
+@model CatalogueModel
+
 @section Title
 {
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "галерея брендов" })
 }
 
-
+<div class="adminLinkContainer">
+    @Html.ActionLink("Добавить бренд","Create","Brand",new{area="Admin"},new{@class="adminLink"})
+</div>
 
 <div class="brandsGallery">
     
-   @Html.Partial("Brand")
-   @Html.Partial("Brand")
-   @Html.Partial("Brand")
-   <div class="clear"></div>
-@Html.Partial("Brand")
-   @Html.Partial("Brand")
-   @Html.Partial("Brand")
-   <div class="clear"></div>
-@Html.Partial("Brand")
-   @Html.Partial("Brand")
-   @Html.Partial("Brand")
-   <div class="clear"></div>
-@Html.Partial("Brand")
-   @Html.Partial("Brand")
-   @Html.Partial("Brand")
-   <div class="clear"></div>
-
-
+    @{
+        int cnt = 0;
+    }
+    @foreach (var brand in Model.Brands)
+    {
+        cnt++;
+        @Html.Partial("Brand",brand)
+        if (cnt%3 == 0)
+        {
+            <div class="clear"></div>
+        }
+    }
+    <div class="clear"></div>
 </div>
 
 
