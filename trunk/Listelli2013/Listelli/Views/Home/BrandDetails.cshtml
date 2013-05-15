@@ -1,7 +1,5 @@
 ﻿@using Listelli.Models
-@{
-    ViewBag.Title = "BrandDetails";
-}
+@model CatalogueModel 
 
 @section Title
 {
@@ -9,8 +7,8 @@
 }
 
 <div class="brandDetails">
-    <div class="title">Kreoo: исскуство и мрамор в творческом единении</div>    
-    <div class="description">Когда мрамор превращается в холст художника</div>
+    <div class="title">@Model.Brand.Title</div>    
+    <div class="description">@Model.Brand.Description</div>
     <div class="shortLine"></div>    
     
     <div class="text">
