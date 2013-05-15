@@ -20,6 +20,12 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("Site", "ContentContentLang", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Content), "ContentLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ContentLang), true)]
 [assembly: EdmRelationshipAttribute("Site", "LanguageContentLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "ContentLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ContentLang), true)]
+[assembly: EdmRelationshipAttribute("Site", "BrandBrandItem", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Brand), "BrandItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.BrandItem), true)]
+[assembly: EdmRelationshipAttribute("Site", "BrandItemBrandItemImage", "BrandItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.BrandItem), "BrandItemImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.BrandItemImage), true)]
+[assembly: EdmRelationshipAttribute("Site", "LanguageBrandLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "BrandLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.BrandLang), true)]
+[assembly: EdmRelationshipAttribute("Site", "BrandBrandLang", "Brand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Brand), "BrandLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.BrandLang), true)]
+[assembly: EdmRelationshipAttribute("Site", "LanguageBrandItemLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "BrandItemLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.BrandItemLang), true)]
+[assembly: EdmRelationshipAttribute("Site", "BrandItemBrandItemLang", "BrandItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.BrandItem), "BrandItemLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.BrandItemLang), true)]
 
 #endregion
 
@@ -118,6 +124,86 @@ namespace Listelli.Models
             }
         }
         private ObjectSet<ContentLang> _ContentLang;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Brand> Brand
+        {
+            get
+            {
+                if ((_Brand == null))
+                {
+                    _Brand = base.CreateObjectSet<Brand>("Brand");
+                }
+                return _Brand;
+            }
+        }
+        private ObjectSet<Brand> _Brand;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BrandItem> BrandItem
+        {
+            get
+            {
+                if ((_BrandItem == null))
+                {
+                    _BrandItem = base.CreateObjectSet<BrandItem>("BrandItem");
+                }
+                return _BrandItem;
+            }
+        }
+        private ObjectSet<BrandItem> _BrandItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BrandItemImage> BrandItemImage
+        {
+            get
+            {
+                if ((_BrandItemImage == null))
+                {
+                    _BrandItemImage = base.CreateObjectSet<BrandItemImage>("BrandItemImage");
+                }
+                return _BrandItemImage;
+            }
+        }
+        private ObjectSet<BrandItemImage> _BrandItemImage;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BrandLang> BrandLang
+        {
+            get
+            {
+                if ((_BrandLang == null))
+                {
+                    _BrandLang = base.CreateObjectSet<BrandLang>("BrandLang");
+                }
+                return _BrandLang;
+            }
+        }
+        private ObjectSet<BrandLang> _BrandLang;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BrandItemLang> BrandItemLang
+        {
+            get
+            {
+                if ((_BrandItemLang == null))
+                {
+                    _BrandItemLang = base.CreateObjectSet<BrandItemLang>("BrandItemLang");
+                }
+                return _BrandItemLang;
+            }
+        }
+        private ObjectSet<BrandItemLang> _BrandItemLang;
 
         #endregion
         #region AddTo Methods
@@ -145,6 +231,46 @@ namespace Listelli.Models
         {
             base.AddObject("ContentLang", contentLang);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Brand EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBrand(Brand brand)
+        {
+            base.AddObject("Brand", brand);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BrandItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBrandItem(BrandItem brandItem)
+        {
+            base.AddObject("BrandItem", brandItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BrandItemImage EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBrandItemImage(BrandItemImage brandItemImage)
+        {
+            base.AddObject("BrandItemImage", brandItemImage);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BrandLang EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBrandLang(BrandLang brandLang)
+        {
+            base.AddObject("BrandLang", brandLang);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BrandItemLang EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBrandItemLang(BrandItemLang brandItemLang)
+        {
+            base.AddObject("BrandItemLang", brandItemLang);
+        }
 
         #endregion
     }
@@ -153,6 +279,974 @@ namespace Listelli.Models
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Brand")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Brand : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Brand object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Brand CreateBrand(global::System.Int32 id, global::System.String name, global::System.Int32 sortOrder)
+        {
+            Brand brand = new Brand();
+            brand.Id = id;
+            brand.Name = name;
+            brand.SortOrder = sortOrder;
+            return brand;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandBrandItem", "BrandItem")]
+        public EntityCollection<BrandItem> BrandItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BrandItem>("Site.BrandBrandItem", "BrandItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BrandItem>("Site.BrandBrandItem", "BrandItem", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandBrandLang", "BrandLang")]
+        public EntityCollection<BrandLang> BrandLangs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BrandLang>("Site.BrandBrandLang", "BrandLang");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BrandLang>("Site.BrandBrandLang", "BrandLang", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BrandItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BrandItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BrandItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="contentType">Initial value of the ContentType property.</param>
+        /// <param name="brandId">Initial value of the BrandId property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static BrandItem CreateBrandItem(global::System.Int32 id, global::System.Int32 contentType, global::System.Int32 brandId, global::System.Int32 sortOrder)
+        {
+            BrandItem brandItem = new BrandItem();
+            brandItem.Id = id;
+            brandItem.ContentType = contentType;
+            brandItem.BrandId = brandId;
+            brandItem.SortOrder = sortOrder;
+            return brandItem;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ContentType
+        {
+            get
+            {
+                return _ContentType;
+            }
+            set
+            {
+                OnContentTypeChanging(value);
+                ReportPropertyChanging("ContentType");
+                _ContentType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentType");
+                OnContentTypeChanged();
+            }
+        }
+        private global::System.Int32 _ContentType;
+        partial void OnContentTypeChanging(global::System.Int32 value);
+        partial void OnContentTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BrandId
+        {
+            get
+            {
+                return _BrandId;
+            }
+            set
+            {
+                OnBrandIdChanging(value);
+                ReportPropertyChanging("BrandId");
+                _BrandId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BrandId");
+                OnBrandIdChanged();
+            }
+        }
+        private global::System.Int32 _BrandId;
+        partial void OnBrandIdChanging(global::System.Int32 value);
+        partial void OnBrandIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandBrandItem", "Brand")]
+        public Brand Brand
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandBrandItem", "Brand").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandBrandItem", "Brand").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Brand> BrandReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandBrandItem", "Brand");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Brand>("Site.BrandBrandItem", "Brand", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandItemBrandItemImage", "BrandItemImage")]
+        public EntityCollection<BrandItemImage> BrandItemImages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BrandItemImage>("Site.BrandItemBrandItemImage", "BrandItemImage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BrandItemImage>("Site.BrandItemBrandItemImage", "BrandItemImage", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandItemBrandItemLang", "BrandItemLang")]
+        public EntityCollection<BrandItemLang> BrandItemLangs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BrandItemLang>("Site.BrandItemBrandItemLang", "BrandItemLang");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BrandItemLang>("Site.BrandItemBrandItemLang", "BrandItemLang", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BrandItemImage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BrandItemImage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BrandItemImage object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="brandItemId">Initial value of the BrandItemId property.</param>
+        public static BrandItemImage CreateBrandItemImage(global::System.Int32 id, global::System.String imageSource, global::System.Int32 brandItemId)
+        {
+            BrandItemImage brandItemImage = new BrandItemImage();
+            brandItemImage.Id = id;
+            brandItemImage.ImageSource = imageSource;
+            brandItemImage.BrandItemId = brandItemId;
+            return brandItemImage;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BrandItemId
+        {
+            get
+            {
+                return _BrandItemId;
+            }
+            set
+            {
+                OnBrandItemIdChanging(value);
+                ReportPropertyChanging("BrandItemId");
+                _BrandItemId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BrandItemId");
+                OnBrandItemIdChanged();
+            }
+        }
+        private global::System.Int32 _BrandItemId;
+        partial void OnBrandItemIdChanging(global::System.Int32 value);
+        partial void OnBrandItemIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandItemBrandItemImage", "BrandItem")]
+        public BrandItem BrandItem
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BrandItem>("Site.BrandItemBrandItemImage", "BrandItem").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BrandItem>("Site.BrandItemBrandItemImage", "BrandItem").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<BrandItem> BrandItemReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BrandItem>("Site.BrandItemBrandItemImage", "BrandItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<BrandItem>("Site.BrandItemBrandItemImage", "BrandItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BrandItemLang")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BrandItemLang : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BrandItemLang object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="languageId">Initial value of the LanguageId property.</param>
+        /// <param name="brandItemId">Initial value of the BrandItemId property.</param>
+        public static BrandItemLang CreateBrandItemLang(global::System.Int32 id, global::System.String text, global::System.Int32 languageId, global::System.Int32 brandItemId)
+        {
+            BrandItemLang brandItemLang = new BrandItemLang();
+            brandItemLang.Id = id;
+            brandItemLang.Text = text;
+            brandItemLang.LanguageId = languageId;
+            brandItemLang.BrandItemId = brandItemId;
+            return brandItemLang;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LanguageId
+        {
+            get
+            {
+                return _LanguageId;
+            }
+            set
+            {
+                OnLanguageIdChanging(value);
+                ReportPropertyChanging("LanguageId");
+                _LanguageId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LanguageId");
+                OnLanguageIdChanged();
+            }
+        }
+        private global::System.Int32 _LanguageId;
+        partial void OnLanguageIdChanging(global::System.Int32 value);
+        partial void OnLanguageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BrandItemId
+        {
+            get
+            {
+                return _BrandItemId;
+            }
+            set
+            {
+                OnBrandItemIdChanging(value);
+                ReportPropertyChanging("BrandItemId");
+                _BrandItemId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BrandItemId");
+                OnBrandItemIdChanged();
+            }
+        }
+        private global::System.Int32 _BrandItemId;
+        partial void OnBrandItemIdChanging(global::System.Int32 value);
+        partial void OnBrandItemIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "LanguageBrandItemLang", "Language")]
+        public Language Language
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Site.LanguageBrandItemLang", "Language").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Site.LanguageBrandItemLang", "Language").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Language> LanguageReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Site.LanguageBrandItemLang", "Language");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Language>("Site.LanguageBrandItemLang", "Language", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandItemBrandItemLang", "BrandItem")]
+        public BrandItem BrandItem
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BrandItem>("Site.BrandItemBrandItemLang", "BrandItem").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BrandItem>("Site.BrandItemBrandItemLang", "BrandItem").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<BrandItem> BrandItemReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BrandItem>("Site.BrandItemBrandItemLang", "BrandItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<BrandItem>("Site.BrandItemBrandItemLang", "BrandItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BrandLang")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BrandLang : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BrandLang object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="languageId">Initial value of the LanguageId property.</param>
+        /// <param name="brandId">Initial value of the BrandId property.</param>
+        public static BrandLang CreateBrandLang(global::System.Int32 id, global::System.String title, global::System.Int32 languageId, global::System.Int32 brandId)
+        {
+            BrandLang brandLang = new BrandLang();
+            brandLang.Id = id;
+            brandLang.Title = title;
+            brandLang.LanguageId = languageId;
+            brandLang.BrandId = brandId;
+            return brandLang;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LanguageId
+        {
+            get
+            {
+                return _LanguageId;
+            }
+            set
+            {
+                OnLanguageIdChanging(value);
+                ReportPropertyChanging("LanguageId");
+                _LanguageId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LanguageId");
+                OnLanguageIdChanged();
+            }
+        }
+        private global::System.Int32 _LanguageId;
+        partial void OnLanguageIdChanging(global::System.Int32 value);
+        partial void OnLanguageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BrandId
+        {
+            get
+            {
+                return _BrandId;
+            }
+            set
+            {
+                OnBrandIdChanging(value);
+                ReportPropertyChanging("BrandId");
+                _BrandId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BrandId");
+                OnBrandIdChanged();
+            }
+        }
+        private global::System.Int32 _BrandId;
+        partial void OnBrandIdChanging(global::System.Int32 value);
+        partial void OnBrandIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "LanguageBrandLang", "Language")]
+        public Language Language
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Site.LanguageBrandLang", "Language").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Site.LanguageBrandLang", "Language").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Language> LanguageReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Language>("Site.LanguageBrandLang", "Language");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Language>("Site.LanguageBrandLang", "Language", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BrandBrandLang", "Brand")]
+        public Brand Brand
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandBrandLang", "Brand").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandBrandLang", "Brand").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Brand> BrandReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Brand>("Site.BrandBrandLang", "Brand");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Brand>("Site.BrandBrandLang", "Brand", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -440,6 +1534,54 @@ namespace Listelli.Models
         private global::System.Int32 _LanguageId;
         partial void OnLanguageIdChanging(global::System.Int32 value);
         partial void OnLanguageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
 
         #endregion
     
@@ -649,6 +1791,50 @@ namespace Listelli.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ContentLang>("Site.LanguageContentLang", "ContentLang", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "LanguageBrandLang", "BrandLang")]
+        public EntityCollection<BrandLang> BrandLangs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BrandLang>("Site.LanguageBrandLang", "BrandLang");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BrandLang>("Site.LanguageBrandLang", "BrandLang", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "LanguageBrandItemLang", "BrandItemLang")]
+        public EntityCollection<BrandItemLang> BrandItemLangs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BrandItemLang>("Site.LanguageBrandItemLang", "BrandItemLang");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BrandItemLang>("Site.LanguageBrandItemLang", "BrandItemLang", value);
                 }
             }
         }

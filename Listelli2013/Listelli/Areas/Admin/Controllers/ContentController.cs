@@ -70,6 +70,8 @@ namespace Listelli.Areas.Admin.Controllers
                                               LanguageId = lang.Id,
                                               Title = instance.Title,
                                               Text = instance.Text,
+                                              SeoDescription = instance.SeoDescription,
+                                              SeoKeywords = instance.SeoKeywords
                                           };
                     context.AddToContentLang(newPostLang);
                 }
@@ -77,6 +79,8 @@ namespace Listelli.Areas.Admin.Controllers
                 {
                     contenttLang.Title = instance.Title;
                     contenttLang.Text = instance.Text;
+                    contenttLang.SeoDescription = instance.SeoDescription;
+                    contenttLang.SeoKeywords = instance.SeoKeywords;
                 }
                 context.SaveChanges();
             }

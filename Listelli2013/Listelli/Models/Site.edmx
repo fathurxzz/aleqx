@@ -9,6 +9,11 @@
     <EntitySet Name="Language" EntityType="Site.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContentLang" EntityType="Site.Store.ContentLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Brand" EntityType="Site.Store.Brand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandItem" EntityType="Site.Store.BrandItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandItemImage" EntityType="Site.Store.BrandItemImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandLang" EntityType="Site.Store.BrandLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandItemLang" EntityType="Site.Store.BrandItemLang" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ContentContentLang" Association="Site.Store.ContentContentLang">
       <End Role="Content" EntitySet="Content" />
       <End Role="ContentLang" EntitySet="ContentLang" />
@@ -16,6 +21,30 @@
     <AssociationSet Name="LanguageContentLang" Association="Site.Store.LanguageContentLang">
       <End Role="Language" EntitySet="Language" />
       <End Role="ContentLang" EntitySet="ContentLang" />
+    </AssociationSet>
+    <AssociationSet Name="BrandBrandItem" Association="Site.Store.BrandBrandItem">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="BrandItem" EntitySet="BrandItem" />
+    </AssociationSet>
+    <AssociationSet Name="BrandItemBrandItemImage" Association="Site.Store.BrandItemBrandItemImage">
+      <End Role="BrandItem" EntitySet="BrandItem" />
+      <End Role="BrandItemImage" EntitySet="BrandItemImage" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageBrandLang" Association="Site.Store.LanguageBrandLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="BrandLang" EntitySet="BrandLang" />
+    </AssociationSet>
+    <AssociationSet Name="BrandBrandLang" Association="Site.Store.BrandBrandLang">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="BrandLang" EntitySet="BrandLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageBrandItemLang" Association="Site.Store.LanguageBrandItemLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="BrandItemLang" EntitySet="BrandItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="BrandItemBrandItemLang" Association="Site.Store.BrandItemBrandItemLang">
+      <End Role="BrandItem" EntitySet="BrandItem" />
+      <End Role="BrandItemLang" EntitySet="BrandItemLang" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
@@ -43,6 +72,52 @@
     <Property Name="Text" Type="longtext" Nullable="false" />
     <Property Name="ContentId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="SeoDescription" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoKeywords" Type="nvarchar" Nullable="true" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContentType" Type="int" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandItemImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="BrandItemId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandItemLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="BrandItemId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ContentContentLang">
     <End Role="Content" Type="Site.Store.Content" Multiplicity="1" />
@@ -68,6 +143,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="BrandBrandItem">
+    <End Role="Brand" Type="Site.Store.Brand" Multiplicity="1" />
+    <End Role="BrandItem" Type="Site.Store.BrandItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandItem">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandItemBrandItemImage">
+    <End Role="BrandItem" Type="Site.Store.BrandItem" Multiplicity="1" />
+    <End Role="BrandItemImage" Type="Site.Store.BrandItemImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandItemImage">
+        <PropertyRef Name="BrandItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageBrandLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="BrandLang" Type="Site.Store.BrandLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandBrandLang">
+    <End Role="Brand" Type="Site.Store.Brand" Multiplicity="1" />
+    <End Role="BrandLang" Type="Site.Store.BrandLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandLang">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageBrandItemLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="BrandItemLang" Type="Site.Store.BrandItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandItemLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandItemBrandItemLang">
+    <End Role="BrandItem" Type="Site.Store.BrandItem" Multiplicity="1" />
+    <End Role="BrandItemLang" Type="Site.Store.BrandItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandItemLang">
+        <PropertyRef Name="BrandItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -84,6 +231,35 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="ContentLang" EntitySet="ContentLang" />
           </AssociationSet>
+          <EntitySet Name="Brand" EntityType="Site.Brand" />
+          <EntitySet Name="BrandItem" EntityType="Site.BrandItem" />
+          <EntitySet Name="BrandItemImage" EntityType="Site.BrandItemImage" />
+          <AssociationSet Name="BrandBrandItem" Association="Site.BrandBrandItem">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="BrandItem" EntitySet="BrandItem" />
+          </AssociationSet>
+          <AssociationSet Name="BrandItemBrandItemImage" Association="Site.BrandItemBrandItemImage">
+            <End Role="BrandItem" EntitySet="BrandItem" />
+            <End Role="BrandItemImage" EntitySet="BrandItemImage" />
+          </AssociationSet>
+          <EntitySet Name="BrandLang" EntityType="Site.BrandLang" />
+          <AssociationSet Name="LanguageBrandLang" Association="Site.LanguageBrandLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="BrandLang" EntitySet="BrandLang" />
+          </AssociationSet>
+          <AssociationSet Name="BrandBrandLang" Association="Site.BrandBrandLang">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="BrandLang" EntitySet="BrandLang" />
+          </AssociationSet>
+          <EntitySet Name="BrandItemLang" EntityType="Site.BrandItemLang" />
+          <AssociationSet Name="LanguageBrandItemLang" Association="Site.LanguageBrandItemLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="BrandItemLang" EntitySet="BrandItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="BrandItemBrandItemLang" Association="Site.BrandItemBrandItemLang">
+            <End Role="BrandItem" EntitySet="BrandItem" />
+            <End Role="BrandItemLang" EntitySet="BrandItemLang" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -93,6 +269,8 @@
           <Property Type="String" Name="Code" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" />
           <NavigationProperty Name="ContentLangs" Relationship="Site.LanguageContentLang" FromRole="Language" ToRole="ContentLang" />
+          <NavigationProperty Name="BrandLangs" Relationship="Site.LanguageBrandLang" FromRole="Language" ToRole="BrandLang" />
+          <NavigationProperty Name="BrandItemLangs" Relationship="Site.LanguageBrandItemLang" FromRole="Language" ToRole="BrandItemLang" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -114,6 +292,8 @@
           <Property Type="Int32" Name="ContentId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="Site.LanguageContentLang" FromRole="ContentLang" ToRole="Language" />
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="String" Name="SeoDescription" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoKeywords" FixedLength="true" MaxLength="1000" />
         </EntityType>
         <Association Name="ContentContentLang">
           <End Type="Site.Content" Role="Content" Multiplicity="1" />
@@ -136,6 +316,132 @@
             </Principal>
             <Dependent Role="ContentLang">
               <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="BrandItems" Relationship="Site.BrandBrandItem" FromRole="Brand" ToRole="BrandItem" />
+          <NavigationProperty Name="BrandLangs" Relationship="Site.BrandBrandLang" FromRole="Brand" ToRole="BrandLang" />
+        </EntityType>
+        <EntityType Name="BrandItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <Property Type="Int32" Name="BrandId" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Site.BrandBrandItem" FromRole="BrandItem" ToRole="Brand" />
+          <NavigationProperty Name="BrandItemImages" Relationship="Site.BrandItemBrandItemImage" FromRole="BrandItem" ToRole="BrandItemImage" />
+          <NavigationProperty Name="BrandItemLangs" Relationship="Site.BrandItemBrandItemLang" FromRole="BrandItem" ToRole="BrandItemLang" />
+        </EntityType>
+        <EntityType Name="BrandItemImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" FixedLength="true" />
+          <Property Type="Int32" Name="BrandItemId" Nullable="false" />
+          <NavigationProperty Name="BrandItem" Relationship="Site.BrandItemBrandItemImage" FromRole="BrandItemImage" ToRole="BrandItem" />
+        </EntityType>
+        <Association Name="BrandBrandItem">
+          <End Type="Site.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="Site.BrandItem" Role="BrandItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandItem">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandItemBrandItemImage">
+          <End Type="Site.BrandItem" Role="BrandItem" Multiplicity="1" />
+          <End Type="Site.BrandItemImage" Role="BrandItemImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandItemImage">
+              <PropertyRef Name="BrandItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BrandLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" FixedLength="true" MaxLength="1000" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageBrandLang" FromRole="BrandLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="Brand" Relationship="Site.BrandBrandLang" FromRole="BrandLang" ToRole="Brand" />
+          <Property Type="Int32" Name="BrandId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageBrandLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.BrandLang" Role="BrandLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandBrandLang">
+          <End Type="Site.Brand" Role="Brand" Multiplicity="1" />
+          <End Type="Site.BrandLang" Role="BrandLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandLang">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BrandItemLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageBrandItemLang" FromRole="BrandItemLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="BrandItem" Relationship="Site.BrandItemBrandItemLang" FromRole="BrandItemLang" ToRole="BrandItem" />
+          <Property Type="Int32" Name="BrandItemId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageBrandItemLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.BrandItemLang" Role="BrandItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandItemLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandItemBrandItemLang">
+          <End Type="Site.BrandItem" Role="BrandItem" Multiplicity="1" />
+          <End Type="Site.BrandItemLang" Role="BrandItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandItemLang">
+              <PropertyRef Name="BrandItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -171,6 +477,57 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="ContentId" ColumnName="ContentId" />
           <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brand">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Brand)">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandItem)">
+        <MappingFragment StoreEntitySet="BrandItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandItemImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandItemImage)">
+        <MappingFragment StoreEntitySet="BrandItemImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="BrandItemId" ColumnName="BrandItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandLang)">
+        <MappingFragment StoreEntitySet="BrandLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandItemLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandItemLang)">
+        <MappingFragment StoreEntitySet="BrandItemLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="BrandItemId" ColumnName="BrandItemId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -194,16 +551,47 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site" >
-        <EntityTypeShape EntityType="Site.Language" Width="1.5" PointX="6.625" PointY="1.625" Height="1.59568359375" />
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="1.625" PointY="1.875" Height="1.59568359375" />
-        <EntityTypeShape EntityType="Site.ContentLang" Width="1.5" PointX="4.125" PointY="1.375" Height="1.59568359375" />
+        <EntityTypeShape EntityType="Site.Language" Width="1.5" PointX="0.875" PointY="2.125" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="5.875" PointY="0.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.ContentLang" Width="1.5" PointX="3.5" PointY="0.5" Height="2.7494921875" />
         <AssociationConnector Association="Site.ContentContentLang">
-          <ConnectorPoint PointX="3.125" PointY="2.6151432291666667" />
-          <ConnectorPoint PointX="4.125" PointY="2.6151432291666667" />
+          <ConnectorPoint PointX="5.875" PointY="1.3939925130208337" />
+          <ConnectorPoint PointX="5" PointY="1.3939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageContentLang">
-          <ConnectorPoint PointX="6.625" PointY="2.5189925130208337" />
-          <ConnectorPoint PointX="5.625" PointY="2.5189925130208337" />
+          <ConnectorPoint PointX="2.375" PointY="2.68724609375" />
+          <ConnectorPoint PointX="3.5" PointY="2.68724609375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Brand" Width="1.5" PointX="5.625" PointY="5.875" Height="1.9802864583333326" />
+        <EntityTypeShape EntityType="Site.BrandItem" Width="1.5" PointX="7.75" PointY="5.875" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="Site.BrandItemImage" Width="1.5" PointX="9.875" PointY="5.875" Height="1.7879850260416674" />
+        <AssociationConnector Association="Site.BrandBrandItem" >
+          <ConnectorPoint PointX="7.125" PointY="6.8651432291666659" />
+          <ConnectorPoint PointX="7.75" PointY="6.8651432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandItemBrandItemImage" >
+          <ConnectorPoint PointX="9.25" PointY="6.7689925130208337" />
+          <ConnectorPoint PointX="9.875" PointY="6.7689925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.BrandLang" Width="1.5" PointX="3.5" PointY="5.875" Height="2.3648893229166656" />
+        <AssociationConnector Association="Site.LanguageBrandLang">
+          <ConnectorPoint PointX="1.625" PointY="4.297587890625" />
+          <ConnectorPoint PointX="1.625" PointY="7.0574446614583328" />
+          <ConnectorPoint PointX="3.5" PointY="7.0574446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandBrandLang">
+          <ConnectorPoint PointX="5.625" PointY="6.8651432291666659" />
+          <ConnectorPoint PointX="5" PointY="6.8651432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.BrandItemLang" Width="1.5" PointX="3.5" PointY="3.5" Height="2.1725878906249996" />
+        <AssociationConnector Association="Site.LanguageBrandItemLang">
+          <ConnectorPoint PointX="2.375" PointY="3.8987939453125" />
+          <ConnectorPoint PointX="3.5" PointY="3.8987939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandItemBrandItemLang" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.5" PointY="5.875" />
+          <ConnectorPoint PointX="8.5" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="5" PointY="4.5862939453125" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
