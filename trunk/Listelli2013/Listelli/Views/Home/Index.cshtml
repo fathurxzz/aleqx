@@ -1,62 +1,35 @@
-﻿@model Listelli.Models.Content
+﻿@model Listelli.Models.SiteModel
 @using Listelli.Models
-@{
-    ViewBag.Title = "Listelli 2013";
-}
-
 <div class="content">
     
     <div class="adminLinkContainer">
-        @Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+        @Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=Model.Content.Id},new{@class="adminLink"})
     </div>
    
-    @if (!Model.IsCorrectLang)
+    @if (!Model.Content.IsCorrectLang)
        {
            <div style="border: 1px solid red; color: red; text-align: center; padding: 5px; font-weight: bold;">
                 нужен перевод
            </div>
        }
 
-    <br/>
-    <br/>
-
     
-    @DateTime.Now.ToString("D")
     
-    <br/>
-    <br/>
+    @*@DateTime.Now.ToString("D")*@
     
-    @GlobalRes.Register
-
-    <br/>
-    <br/>
-
-    Компания Listelli реализовывает интерьеры из дерева и мрамора класса “люкс”, включая
-    полное инженерное сопровождение, гарантийные обязательства и сервиcное обслуживание.
-    Помимо этого, мы занимается оформлением интерьеров хорошим вкусом и безупречным
-    качеством (смотрите каталоги продукции слева).
-    <br />
-    <br />
-    В своей работе мы руководствуемся тремя простыми убеждениями:
-    <br />
-    <br />
-    Уют вашего личного пространства — прежде всего. Создание уюта, мы видим своей главной
-    задачей. К вашим услугам лучшие мировые тренды дизайна интерьеров. В этом вы можете
-    убедиться, посетив нашу Галерею Брендов.
-    <br />
-    <br />
-    Статус отделяет успешного человека от остальных. В каждую создаваемую нами работу,
-    вкладывается безупречный вкус и превосходное качество, превращающее пространство
-    в продолжение его владельца.
-    <br />
-    <br />
-    Мы не понаслышке знаем, что такое ответственность. Мы даём гарантии и обеспечиваем
-    отменный сервис. Всю работу мы выполняем под девизом Надёжность.
+    
+    
+    @*@GlobalRes.Register*@
+    
+    
+    
+@Html.Raw(Model.Content.Text)
+    
 
 
 </div>
 
 @section Title
 {
-    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = Model.Title })
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = Model.Content.Title })
 }

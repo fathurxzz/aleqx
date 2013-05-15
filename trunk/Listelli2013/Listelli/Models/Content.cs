@@ -9,6 +9,8 @@ namespace Listelli.Models
     {
         public string Title { get; set; }
         public string Text { get; set; }
+        public string SeoDescription { get; set; }
+        public string SeoKeywords { get; set; }
 
         public bool IsCorrectLang { get; protected set; }
 
@@ -46,6 +48,8 @@ namespace Listelli.Models
         {
             Title = postLang.Title;
             Text = postLang.Text;
+            SeoDescription = postLang.SeoDescription;
+            SeoKeywords = postLang.SeoKeywords;
         }
     }
 }

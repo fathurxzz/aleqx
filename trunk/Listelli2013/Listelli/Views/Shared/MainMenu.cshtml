@@ -1,7 +1,27 @@
 ﻿@using System.Threading
-<div class="m1">
-    @Html.ActionLink(GlobalRes.About, "Index", "Home", new {area="", id = "main" }, null)
+
+@{
+    string className = "m1";
+    bool selected=false;
+
+    if (ViewBag.CurrentMenuItem == "main")
+    {
+        className += " selected";
+        selected = true;
+    }
+}
+
+<div class="@className">
+@if (selected)
+{
+        @GlobalRes.About
+}
+else
+{
+        @Html.ActionLink(GlobalRes.About, "Index", "Home", new { area = "", id = "main" }, null)
+}
 </div>
+
 @if (ViewBag.CurrentMenuItem == "gallery")
 {
     <div class="m2 selected">
@@ -11,30 +31,83 @@
 else if (ViewBag.CurrentMenuItem == "brand-details")
 {
     <div class="m2">
-        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home",new{area=""},new{@class="selected"})
+        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home", new { area = "" }, new { @class = "selected" })
     </div>
 }
 else
 {
     <div class="m2">
-        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home", new { area = "" },null)
+        @Html.ActionLink(GlobalRes.BrandGallery, "Gallery", "Home", new { area = "" }, null)
     </div>
 }
-<div class="m3 selected">
-    @Html.ActionLink(GlobalRes.News, "Index", "Home", new { area = "" }, null)
-</div>
-<div class="m4">
-    @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Home", new { area = "" }, null)
-</div>
+
 
 @{
-    string className = "m5";
-    if (Thread.CurrentThread.CurrentCulture.Name == "en-US")
+    className = "m3";
+    selected = false;
+    if (ViewBag.CurrentMenuItem == "news")
     {
-        className += " m5en";
+        className += " selected";
+        selected = true;
+    }
+}
+
+
+<div class="@className">
+    @if (selected)
+    {
+        @GlobalRes.News
+    }
+    else
+    {
+        @Html.ActionLink(GlobalRes.News, "Index", "Home", new {area = "", id = "news"}, null)
+    }
+</div>
+
+
+
+@{
+    className = "m4";
+    selected = false;
+    if (ViewBag.CurrentMenuItem == "factory")
+    {
+        className += " selected";
+        selected = true;
     }
 }
 
 <div class="@className">
-    @Html.ActionLink(GlobalRes.Contacts, "Index", "Home", new {area = "", id = "contacts" }, null)
+    @if (selected)
+    {
+        @GlobalRes.FactoryCatalogue
+    }
+    else
+    {
+        @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Home", new {area = "", id = "factory"}, null)
+    }
+</div>
+
+
+@{
+    className = "m5";
+    if (Thread.CurrentThread.CurrentCulture.Name == "en-US")
+    {
+        className += " m5en";
+    }
+    selected = false;
+    if (ViewBag.CurrentMenuItem == "contacts")
+    {
+        className += " selected";
+        selected = true;
+    }
+}
+<div class="@className">
+     @if (selected)
+     {
+         @GlobalRes.Contacts
+     }
+     else
+     {
+         @Html.ActionLink(GlobalRes.Contacts, "Index", "Home", new {area = "", id = "contacts"}, null)
+     }
 </div>

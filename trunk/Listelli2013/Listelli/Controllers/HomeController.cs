@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Listelli.Models;
+using SiteExtensions;
 
 namespace Listelli.Controllers
 {
@@ -13,22 +14,25 @@ namespace Listelli.Controllers
         {
             using (var context = new SiteContainer())
             {
-                Content content = context.Content.FirstOrDefault(c => c.Name == id);
+                var model = new SiteModel(CurrentLang, context, id);
+                
 
-                if (content == null)
-                {
-                    content = context.Content.First(c => c.MainPage); 
-                }
+                this.SetSeoContent(model);
 
-                content.CurrentLang = CurrentLang.Id;
-                return View(content);
+                ViewBag.CurrentMenuItem = model.Content.Name;
+
+                return View(model);
             }
         }
 
         public ActionResult Gallery()
         {
-            ViewBag.CurrentMenuItem = "gallery";
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var model = new CatalogueModel(CurrentLang, context);
+                ViewBag.CurrentMenuItem = "gallery";
+                return View(model);
+            }
         }
 
         public ActionResult BrandDetails()

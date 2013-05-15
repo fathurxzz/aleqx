@@ -38,6 +38,9 @@
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SiteExtensions">
+      <HintPath>..\..\..\AlexK\projects\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -86,13 +89,16 @@
     </Compile>
     <Compile Include="Helpers\WebExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\ContentTitleModel.cs" />
+    <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Site.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebSession.cs" />
   </ItemGroup>
