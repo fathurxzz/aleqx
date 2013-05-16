@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 05/15/2013 12:45:17
+-- Date Created: 05/16/2013 09:49:35
 -- Generated from EDMX file: D:\projects\Listelli2013\Listelli\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -76,7 +76,8 @@ CREATE TABLE `ContentLang` (
 CREATE TABLE `Brand` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `SortOrder` int  NOT NULL
+    `SortOrder` int  NOT NULL,
+    `ImageSource` varchar( 200 )  NULL
 );
 
 -- Creating table 'BrandItem'

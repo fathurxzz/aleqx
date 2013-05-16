@@ -382,6 +382,30 @@ namespace Listelli.Models
         private global::System.Int32 _SortOrder;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
     

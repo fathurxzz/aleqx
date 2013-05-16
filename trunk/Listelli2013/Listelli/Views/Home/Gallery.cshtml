@@ -1,33 +1,29 @@
 ﻿@using Listelli.Models
 @model CatalogueModel
-
 @section Title
 {
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "галерея брендов" })
 }
-
 <div class="adminLinkContainer">
-    @Html.ActionLink("Добавить бренд","Create","Brand",new{area="Admin"},new{@class="adminLink"})
+    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin" }, new { @class = "adminLink" })
 </div>
-
 <div class="brandsGallery">
-    
     @{
         int cnt = 0;
     }
-    @foreach (var brand in Model.Brands)
+    @foreach (var brand in Model.Brands.OrderBy(b => b.SortOrder))
     {
         cnt++;
-        @Html.Partial("Brand",brand)
-        if (cnt%3 == 0)
+        @Html.Partial("Brand", brand)
+        if (cnt % 3 == 0)
         {
-            <div class="clear"></div>
+        <div class="clear">
+        </div>
         }
     }
-    <div class="clear"></div>
+    <div class="clear">
+    </div>
 </div>
-
-
 @section Includes
 {
     <link href="@Url.Content("~/Content/BrandsGallery.css")" rel="stylesheet" type="text/css" />

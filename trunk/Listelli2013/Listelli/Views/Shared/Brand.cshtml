@@ -1,14 +1,21 @@
-﻿@model Listelli.Models.Brand
+﻿@using Listelli
+@using SiteExtensions.Graphics
+@model Listelli.Models.Brand
 <div class="brand">
     <div class="imageContainer">
         <div class="image">
-            <img src="../../Content/Images/image.gif" alt="" />
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("brandPreview")))
+            @*@Html.Raw(Html.ActionLink("[IMAGE]", "BrandDetails", "Home", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("brandPreview"))))*@
         </div>
         <div class="frame">
         </div>
+        <div class="imageLink">
+            @Html.Raw(Html.ActionLink("[IMAGE]", "BrandDetails", "Home", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", ""))
+        </div>
     </div>
     <div class="">
-        @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = 1 }, new { @class = "adminLink" })
+        @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+        <span class="sortOrder">@Html.Raw(Model.SortOrder.ToString())</span>
     </div>
     <div class="description">
         <div class="title">

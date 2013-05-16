@@ -30,17 +30,28 @@
                 @Html.Partial("MainMenu")
             </div>
             <div class="bottom2">
+                
             </div>
         </div>
         <div class="content-container">
+            
             <div class="content-center">
                 <div class="content-top">
+                    
                 </div>
+                
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="adminLinkContainer">
+                        @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new {area = ""}, new {@class = "adminLink"})
+                    </div>
+                }
+
                 @RenderSection("Title",false)
                 
                 
                 
-                    @RenderBody()
+                @RenderBody()
                     
 
                 
