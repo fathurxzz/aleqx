@@ -129,7 +129,21 @@ namespace Listelli.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var brand = context.Brand.Include("BrandLangs").First(b => b.Id == id);
+                ImageHelper.DeleteImage(brand.ImageSource);
+
+                while (brand.BrandLangs.Any())
+                {
+                    var bl = brand.BrandLangs.First();
+                    context.DeleteObject(bl);
+                }
+                context.DeleteObject(brand);
+                context.SaveChanges();
+
+                return RedirectToAction("Gallery", "Home", new { area = "" });
+            }
         }
 
         

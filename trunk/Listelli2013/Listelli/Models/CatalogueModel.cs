@@ -24,8 +24,18 @@ namespace Listelli.Models
             }
             else
             {
-                Brand = context.Brand.First(b => b.Name == brandId);
+                Brand = context.Brand.Include("BrandItems").First(b => b.Name == brandId);
+
                 Brand.CurrentLang = lang.Id;
+
+                foreach (var item in Brand.BrandItems)
+                {
+                    item.CurrentLang = lang.Id;
+                    if (item.ContentType == 3)
+                    {
+                        item.BrandItemImages.Load();
+                    }
+                }
                 Title += " - " + Brand.Title;
             }
 
