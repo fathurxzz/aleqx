@@ -50,6 +50,8 @@
         </ul>
 
     </div>
+    
+@*
     <div class="description">
         <div class="left">
             <div class="title">
@@ -59,44 +61,44 @@
                 @Html.Raw(Model.Product.Description)
             </div>
             <div class="properties">
-        <table>
-            @if (!string.IsNullOrEmpty(Model.Product.Structure))
-            {
-                <tr>
-                    <td class="title">Состав:</td>
-                    <td>@Model.Product.Structure</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.Product.Consistence))
-            {
-                <tr>
-                    <td class="title">Плотность:</td>
-                    <td>@Model.Product.Consistence</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.Product.Producer))
-            {
-                <tr>
-                    <td class="title">Производитель:</td>
-                    <td>@Model.Product.Producer</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.Product.Nap))
-            {
-                <tr>
-                    <td class="title">Высота ворса:</td>
-                    <td>@Model.Product.Nap</td>
-                </tr>
-            }
-            @if (!string.IsNullOrEmpty(Model.Product.Price))
-            {
-                <tr>
-                    <td class="title">Цена:</td>
-                    <td>@Model.Product.Price</td>
-                </tr>
-            }
-        </table>
-    </div>
+                <table>
+                    @if (!string.IsNullOrEmpty(Model.Product.Structure))
+                    {
+                        <tr>
+                            <td class="title">Состав:</td>
+                            <td>@Model.Product.Structure</td>
+                        </tr>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Product.Consistence))
+                    {
+                        <tr>
+                            <td class="title">Плотность:</td>
+                            <td>@Model.Product.Consistence</td>
+                        </tr>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Product.Producer))
+                    {
+                        <tr>
+                            <td class="title">Производитель:</td>
+                            <td>@Model.Product.Producer</td>
+                        </tr>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Product.Nap))
+                    {
+                        <tr>
+                            <td class="title">Высота ворса:</td>
+                            <td>@Model.Product.Nap</td>
+                        </tr>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Product.Price))
+                    {
+                        <tr>
+                            <td class="title">Цена:</td>
+                            <td>@Model.Product.Price</td>
+                        </tr>
+                    }
+                </table>
+            </div>
             <div>
                 Доступен в размерах:
                 @{
@@ -113,6 +115,8 @@
         <div class="clear">
         </div>
     </div>
+    
+*@
     <div class="popup-bottom">
     </div>
 </div>
