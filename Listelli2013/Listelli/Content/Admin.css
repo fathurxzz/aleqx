@@ -70,8 +70,10 @@ a.adminLink
 
 .sortOrder
 {
-    color: #ff0000;
+    color: #0000ff;
     white-space: nowrap;
+    font-weight: bold;
+    
 }
 
 

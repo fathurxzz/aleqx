@@ -23,6 +23,12 @@ namespace Listelli
             routes.IgnoreRoute("favicon.ico");
 
             routes.MapRoute(
+                "LogOn", // Route name
+                "logon", // URL with parameters
+                new { controller = "Account", action = "LogOn" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                "Brands", // Route name
                "{lang}/brands", // URL with parameters
                new { controller = "Home", action = "Gallery", id = UrlParameter.Optional },

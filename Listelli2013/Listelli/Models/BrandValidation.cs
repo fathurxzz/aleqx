@@ -28,5 +28,8 @@ namespace Listelli.Models
 
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
+
+        [DisplayName("Файл изображения")]
+        public string ImageSource { get; set; }
     }
 }

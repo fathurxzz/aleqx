@@ -21,7 +21,7 @@ namespace Listelli.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Content model, FormCollection form, int id)
+        public ActionResult Edit(Content model)
         {
             using (var context = new SiteContainer())
             {
