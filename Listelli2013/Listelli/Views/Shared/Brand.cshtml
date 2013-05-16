@@ -15,6 +15,7 @@
     </div>
     <div class="">
         @Html.ActionLink("Редактировать", "Edit", "Brand", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+        @Html.ActionLink("Удалить", "Delete", "Brand", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить бренд?')" })
         <span class="sortOrder">@Html.Raw(Model.SortOrder.ToString())</span>
     </div>
     <div class="description">

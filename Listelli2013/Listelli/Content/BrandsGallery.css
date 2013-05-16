@@ -86,6 +86,11 @@
     margin-top: 40px;
 }
 
+.brandDetails .images img {
+    float: left;
+    border: 1px solid #ccc;
+}
+
 .brandDetails .images {
     padding: 0 125px;
 }

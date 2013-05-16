@@ -92,6 +92,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Helpers\WebExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\BrandItem.cs" />
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
     <Compile Include="Models\Content.cs" />
@@ -197,6 +199,10 @@
     <Content Include="Areas\Admin\Views\Brand\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Brand\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandItem\CreateTextBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandItem\CreateImagesBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandItem\EditTextBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandItem\EditImagesBlock.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
