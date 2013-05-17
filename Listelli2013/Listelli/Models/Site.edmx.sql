@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 05/16/2013 09:49:35
+-- Date Created: 05/17/2013 14:48:08
 -- Generated from EDMX file: D:\projects\Listelli2013\Listelli\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -114,6 +114,49 @@ CREATE TABLE `BrandItemLang` (
     `Text` longtext  NOT NULL,
     `LanguageId` int  NOT NULL,
     `BrandItemId` int  NOT NULL
+);
+
+-- Creating table 'Category'
+
+CREATE TABLE `Category` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL
+);
+
+-- Creating table 'CategoryLang'
+
+CREATE TABLE `CategoryLang` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `CategoryId` int  NOT NULL,
+    `LanguageId` int  NOT NULL
+);
+
+-- Creating table 'CategoryBrand'
+
+CREATE TABLE `CategoryBrand` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `CategoryId` int  NOT NULL
+);
+
+-- Creating table 'CategoryBrandItem'
+
+CREATE TABLE `CategoryBrandItem` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `CategoryBrandId` int  NOT NULL,
+    `Content` longtext  NULL
+);
+
+-- Creating table 'CategoryBrandItemLang'
+
+CREATE TABLE `CategoryBrandItemLang` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Text` longtext  NULL,
+    `CategoryBrandItemId` int  NOT NULL,
+    `LanguageId` int  NOT NULL
 );
 
 
@@ -247,6 +290,96 @@ ADD CONSTRAINT `FK_BrandItemBrandItemLang`
 CREATE INDEX `IX_FK_BrandItemBrandItemLang` 
     ON `BrandItemLang`
     (`BrandItemId`);
+
+-- Creating foreign key on `CategoryId` in table 'CategoryLang'
+
+ALTER TABLE `CategoryLang`
+ADD CONSTRAINT `FK_CategoryCategoryLang`
+    FOREIGN KEY (`CategoryId`)
+    REFERENCES `Category`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryCategoryLang'
+
+CREATE INDEX `IX_FK_CategoryCategoryLang` 
+    ON `CategoryLang`
+    (`CategoryId`);
+
+-- Creating foreign key on `LanguageId` in table 'CategoryLang'
+
+ALTER TABLE `CategoryLang`
+ADD CONSTRAINT `FK_LanguageCategoryLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageCategoryLang'
+
+CREATE INDEX `IX_FK_LanguageCategoryLang` 
+    ON `CategoryLang`
+    (`LanguageId`);
+
+-- Creating foreign key on `CategoryId` in table 'CategoryBrand'
+
+ALTER TABLE `CategoryBrand`
+ADD CONSTRAINT `FK_CategoryCategoryBrand`
+    FOREIGN KEY (`CategoryId`)
+    REFERENCES `Category`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryCategoryBrand'
+
+CREATE INDEX `IX_FK_CategoryCategoryBrand` 
+    ON `CategoryBrand`
+    (`CategoryId`);
+
+-- Creating foreign key on `CategoryBrandId` in table 'CategoryBrandItem'
+
+ALTER TABLE `CategoryBrandItem`
+ADD CONSTRAINT `FK_CategoryBrandCategoryBrandItem`
+    FOREIGN KEY (`CategoryBrandId`)
+    REFERENCES `CategoryBrand`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryBrandCategoryBrandItem'
+
+CREATE INDEX `IX_FK_CategoryBrandCategoryBrandItem` 
+    ON `CategoryBrandItem`
+    (`CategoryBrandId`);
+
+-- Creating foreign key on `CategoryBrandItemId` in table 'CategoryBrandItemLang'
+
+ALTER TABLE `CategoryBrandItemLang`
+ADD CONSTRAINT `FK_CategoryBrandItemCategoryBrandItemLang`
+    FOREIGN KEY (`CategoryBrandItemId`)
+    REFERENCES `CategoryBrandItem`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryBrandItemCategoryBrandItemLang'
+
+CREATE INDEX `IX_FK_CategoryBrandItemCategoryBrandItemLang` 
+    ON `CategoryBrandItemLang`
+    (`CategoryBrandItemId`);
+
+-- Creating foreign key on `LanguageId` in table 'CategoryBrandItemLang'
+
+ALTER TABLE `CategoryBrandItemLang`
+ADD CONSTRAINT `FK_LanguageCategoryBrandItemLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageCategoryBrandItemLang'
+
+CREATE INDEX `IX_FK_LanguageCategoryBrandItemLang` 
+    ON `CategoryBrandItemLang`
+    (`LanguageId`);
 
 -- --------------------------------------------------
 -- Script has ended

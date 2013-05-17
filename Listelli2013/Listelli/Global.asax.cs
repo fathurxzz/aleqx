@@ -29,12 +29,29 @@ namespace Listelli
             );
 
             routes.MapRoute(
+               "Catalogue", // Route name
+               "{lang}/catalogue", // URL with parameters
+               new { controller = "Category", action = "Index", id = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Listelli.Controllers" }
+            );
+
+            routes.MapRoute(
+               "CategoryDetails", // Route name
+               "{lang}/category/{id}", // URL with parameters
+               new { controller = "Category", action = "Details", id = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Listelli.Controllers" }
+            );
+
+
+            routes.MapRoute(
                "Brands", // Route name
                "{lang}/brands", // URL with parameters
                new { controller = "Home", action = "Gallery", id = UrlParameter.Optional },
                new { lang = @"ru|en" },
                new[] { "Listelli.Controllers" }
-           );
+            );
 
             routes.MapRoute(
                "BrandDetails", // Route name
@@ -42,7 +59,7 @@ namespace Listelli
                new { controller = "Home", action = "BrandDetails", id = UrlParameter.Optional },
                new { lang = @"ru|en" },
                new[] { "Listelli.Controllers" }
-           );
+            );
 
             routes.MapRoute(
                "Content", // Route name
@@ -50,9 +67,9 @@ namespace Listelli
                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                new { lang = @"ru|en" },
                new[] { "Listelli.Controllers" }
-           );
+            );
 
-            
+
 
             routes.MapRoute(
                 name: "lang",
@@ -60,7 +77,7 @@ namespace Listelli
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 constraints: new { lang = @"ru|en" },
                 namespaces: new[] { "Listelli.Controllers" }
-           );
+            );
 
 
             routes.MapRoute(
