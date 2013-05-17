@@ -16,7 +16,7 @@ namespace Listelli.Areas.Admin
         {
             context.MapRoute(
                 "Admin_default",
-                "Admin/{lang}/{controller}/{action}/{id}",
+                "admin/{lang}/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
                 constraints: new { lang = @"ru|en" }
             );

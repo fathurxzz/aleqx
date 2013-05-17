@@ -94,8 +94,12 @@
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
+    <Compile Include="Areas\FactoryCatalogue\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\FactoryCatalogue\FactoryCatalogueAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,6 +192,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\FactoryCatalogue\Models\" />
+    <Folder Include="Areas\FactoryCatalogue\Views\Shared\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +209,8 @@
     <Content Include="Areas\Admin\Views\BrandItem\CreateImagesBlock.cshtml" />
     <Content Include="Areas\Admin\Views\BrandItem\EditTextBlock.cshtml" />
     <Content Include="Areas\Admin\Views\BrandItem\EditImagesBlock.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Web.config" />
+    <Content Include="Areas\FactoryCatalogue\Views\Category\Index.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
