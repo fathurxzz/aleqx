@@ -156,6 +156,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryLang">
     <Key>
@@ -631,6 +632,7 @@
           <NavigationProperty Name="CategoryLangs" Relationship="Site.CategoryCategoryLang" FromRole="Category" ToRole="CategoryLang" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
           <NavigationProperty Name="CategoryBrands" Relationship="Site.CategoryCategoryBrand" FromRole="Category" ToRole="CategoryBrand" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <EntityType Name="CategoryLang">
           <Key>
@@ -840,6 +842,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -944,10 +947,10 @@
           <ConnectorPoint PointX="8.28125" PointY="5.516337890625" />
           <ConnectorPoint PointX="5" PointY="5.516337890625" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="8.875" PointY="0.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="8.875" PointY="0.5" Height="2.172587890625" />
         <EntityTypeShape EntityType="Site.CategoryLang" Width="1.5" PointX="8.875" PointY="3.125" Height="2.1725878906249996" />
         <AssociationConnector Association="Site.CategoryCategoryLang">
-          <ConnectorPoint PointX="9.625" PointY="2.4802864583333335" />
+          <ConnectorPoint PointX="9.625" PointY="2.672587890625" />
           <ConnectorPoint PointX="9.625" PointY="3.125" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageCategoryLang">
@@ -956,8 +959,8 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.CategoryBrand" Width="1.5" PointX="11.125" PointY="0.5" Height="1.4033821614583331" />
         <AssociationConnector Association="Site.CategoryCategoryBrand">
-          <ConnectorPoint PointX="10.375" PointY="1.3939925130208335" />
-          <ConnectorPoint PointX="11.125" PointY="1.3939925130208335" />
+          <ConnectorPoint PointX="10.375" PointY="1.4901432291666668" />
+          <ConnectorPoint PointX="11.125" PointY="1.4901432291666668" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.CategoryBrandItem" Width="1.75" PointX="13.75" PointY="0.5" Height="1.787985026041667" />
         <AssociationConnector Association="Site.CategoryBrandCategoryBrandItem">
@@ -970,15 +973,15 @@
           <ConnectorPoint PointX="14.625" PointY="3.25" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageCategoryBrandItemLang">
-          <ConnectorPoint PointX="2.375" PointY="2.9608740234375" />
-          <ConnectorPoint PointX="3.25" PointY="2.9608740234375" />
+          <ConnectorPoint PointX="2.375" PointY="2.9275915527343748" />
+          <ConnectorPoint PointX="3.25" PointY="2.9275915527343748" />
           <ConnectorPoint PointX="3.25" PointY="3.25" />
           <ConnectorPoint PointX="8.625" PointY="3.25" />
           <ConnectorPoint PointX="8.625" PointY="2.875" />
           <ConnectorPoint PointX="9.5416666666666661" PointY="2.8749999999999996" />
           <ConnectorPoint PointX="9.7083333333333339" PointY="2.875" />
-          <ConnectorPoint PointX="14.13281" PointY="2.875" />
-          <ConnectorPoint PointX="14.13281" PointY="3.25" />
+          <ConnectorPoint PointX="14.1582005" PointY="2.875" />
+          <ConnectorPoint PointX="14.1582005" PointY="3.25" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

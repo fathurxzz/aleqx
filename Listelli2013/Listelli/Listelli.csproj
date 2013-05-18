@@ -93,6 +93,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CategoryController.cs" />
@@ -111,10 +112,13 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\BrandItem.cs" />
     <Compile Include="Models\BrandValidation.cs" />
-    <Compile Include="Models\CatalogueModel.cs" />
+    <Compile Include="Models\BrandCatalogueModel.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\ContentTitleModel.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\FactoryCatalogueModel.cs" />
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,11 +131,13 @@
   <ItemGroup>
     <Content Include="Content\Admin.css" />
     <Content Include="Content\BrandsGallery.css" />
+    <Content Include="Content\FactoryCatalogue.css" />
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\Images\image.gif" />
     <Content Include="Content\img\box-bottom.gif" />
     <Content Include="Content\img\box-middle.gif" />
     <Content Include="Content\img\box-top.gif" />
+    <Content Include="Content\img\cat-prev-frame.gif" />
     <Content Include="Content\img\content-bottom-bg.gif" />
     <Content Include="Content\img\content-top-bg.gif" />
     <Content Include="Content\img\footer-bg.gif" />
@@ -211,6 +217,9 @@
     <Content Include="Areas\Admin\Views\BrandItem\EditImagesBlock.cshtml" />
     <Content Include="Areas\FactoryCatalogue\Views\Web.config" />
     <Content Include="Areas\FactoryCatalogue\Views\Category\Index.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Category\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />

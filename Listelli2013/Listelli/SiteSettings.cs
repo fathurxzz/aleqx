@@ -16,7 +16,8 @@ namespace Listelli
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
                                   {"brandPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 175,Width = 175}, CacheFolder = "brandPreview", ScaleMode = ScaleMode.Crop}},
-                                  {"brandImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 150,Width = 215}, CacheFolder = "brandImagePreview", ScaleMode = ScaleMode.Crop}}
+                                  {"brandImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 150,Width = 215}, CacheFolder = "brandImagePreview", ScaleMode = ScaleMode.Crop}},
+                                  {"factoryCatalogueCategoryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 212,Width = 213}, CacheFolder = "factoryCatalogueCategoryPreview", ScaleMode = ScaleMode.Crop}}
                               };
         }
 

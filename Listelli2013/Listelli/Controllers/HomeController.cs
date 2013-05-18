@@ -28,7 +28,7 @@ namespace Listelli.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueModel(CurrentLang, context, null);
+                var model = new BrandCatalogueModel(CurrentLang, context, null);
                 this.SetSeoContent(model);
                 ViewBag.CurrentMenuItem = "gallery";
                 return View(model);
@@ -39,7 +39,7 @@ namespace Listelli.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var model = new CatalogueModel(CurrentLang, context, id);
+                var model = new BrandCatalogueModel(CurrentLang, context, id);
                 this.SetSeoContent(model);
                 ViewBag.CurrentMenuItem = "brand-details";
                 return View(model);

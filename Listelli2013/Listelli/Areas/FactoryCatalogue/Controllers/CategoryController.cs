@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Listelli.Controllers;
+using Listelli.Models;
+using SiteExtensions;
 
 namespace Listelli.Areas.FactoryCatalogue.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : DefaultController
     {
         //
         // GET: /FactoryCatalogue/Category/
 
         public ActionResult Index()
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var model = new FactoryCatalogueModel(CurrentLang, context, null);
+                this.SetSeoContent(model);
+                ViewBag.CurrentMenuItem = model.Content.Name;
+                return View(model);
+            }
         }
 
         //
