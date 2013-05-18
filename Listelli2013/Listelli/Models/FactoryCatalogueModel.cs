@@ -23,6 +23,7 @@ namespace Listelli.Models
             if (!string.IsNullOrEmpty(categoryId))
             {
                 Category = context.Category.First(c => c.Name == categoryId);
+                Category.CurrentLang = lang.Id;
             }
 
 

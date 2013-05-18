@@ -6,10 +6,11 @@
         <div class="abs">
             @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
             @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = Model.Id }, new { @class = "adminLink",onclick="return confirm('Удалить категорию?')" })
+            <span class="sortOrder">@Model.SortOrder</span>
         </div>
         <div class="title">
             @Model.Title
         </div>
-        @Html.Raw(Html.ActionLink("[IMAGE]", "BrandDetails", "Home", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("factoryCatalogueCategoryPreview"))))
+        @Html.Raw(Html.ActionLink("[IMAGE]", "Details", "Category", new {area="FactoryCatalogue", id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("factoryCatalogueCategoryPreview"))))
     </div>
 </div>

@@ -3,56 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Listelli.Controllers;
 using Listelli.Models;
-using SiteExtensions;
 
-namespace Listelli.Areas.FactoryCatalogue.Controllers
+namespace Listelli.Areas.Admin.Controllers
 {
-    public class CategoryController : DefaultController
+    public class CategoryBrandController : AdminController
     {
-        //
-        // GET: /FactoryCatalogue/Category/
-
-        public ActionResult Index()
+        
+        public ActionResult Create(int categoryId)
         {
+
             using (var context = new SiteContainer())
             {
-                var model = new FactoryCatalogueModel(CurrentLang, context, null);
-                this.SetSeoContent(model);
-                ViewBag.CurrentMenuItem = model.Content.Name;
-                return View(model);
+                int maxSortOrder = context.CategoryBrand.Where(c=>c.CategoryId==categoryId).Max(c => (int?)c.SortOrder) ?? 0;
+                var categoryBrand = new CategoryBrand
+                {
+                    SortOrder = maxSortOrder + 1
+                };
+                return View(categoryBrand);
             }
-        }
-
-        public ActionResult Details(string id)
-        {
-            using (var context = new SiteContainer())
-            {
-                var model = new FactoryCatalogueModel(CurrentLang, context, id);
-                this.SetSeoContent(model);
-                ViewBag.CurrentMenuItem = model.Content.Name;
-                return View(model);
-            }
-        }
-
-        //
-        // GET: /FactoryCatalogue/Category/Create
-
-        public ActionResult Create()
-        {
-            return View();
         } 
 
-        //
-        // POST: /FactoryCatalogue/Category/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
@@ -63,7 +40,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         }
         
         //
-        // GET: /FactoryCatalogue/Category/Edit/5
+        // GET: /Admin/CategoryBrand/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -71,7 +48,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         }
 
         //
-        // POST: /FactoryCatalogue/Category/Edit/5
+        // POST: /Admin/CategoryBrand/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -89,7 +66,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         }
 
         //
-        // GET: /FactoryCatalogue/Category/Delete/5
+        // GET: /Admin/CategoryBrand/Delete/5
  
         public ActionResult Delete(int id)
         {
@@ -97,7 +74,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         }
 
         //
-        // POST: /FactoryCatalogue/Category/Delete/5
+        // POST: /Admin/CategoryBrand/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

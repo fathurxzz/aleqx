@@ -1,0 +1,41 @@
+﻿@using Listelli.App_LocalResources
+@using Listelli.Models
+@model Listelli.Models.FactoryCatalogueModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Link, Title = GlobalRes.FactoryCatalogue,Action = "Index",Controller = "Category"})
+}
+
+<div class="adminLinkContainer">
+    @Html.ActionLink("Добавить бренд", "Create", "CategoryBrand", new { area = "Admin", categoryId=Model.Category.Id }, new { @class = "adminLink" })
+</div>
+
+<div class="categories">
+    <div class="brandsConteiner">
+        <div class="top"></div>
+        <div class="middle">
+            <div class="title">
+                @Model.Category.Title
+            </div>
+            <div class="categoryBrands">
+                <ul>
+                    <li>Mafi</li>
+                    <li><a href="#">Foglie D'oro</a></li>
+                    <li><a href="#">Lemma</a></li>
+                    <li><a href="#">Stile Arti Design</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+</div>
+
+@section Includes
+{
+    <link href="@Url.Content("~/Content/FactoryCatalogue.css")" rel="stylesheet" type="text/css" />
+}
