@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Listelli.Models
 {
-    public class CatalogueModel:SiteModel
+    public class BrandCatalogueModel:SiteModel
     {
         public IEnumerable<Brand> Brands { get; set; }
         public Brand Brand { get; set; }
 
-        public CatalogueModel(Language lang, SiteContainer context, string brandId) : base(lang, context, "gallery")
+        public BrandCatalogueModel(Language lang, SiteContainer context, string brandId) : base(lang, context, "gallery")
         {
             Title += " - Галерея брендов";
 

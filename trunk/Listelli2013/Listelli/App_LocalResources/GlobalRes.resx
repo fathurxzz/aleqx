@@ -133,7 +133,7 @@
     <value>Введите пароль</value>
   </data>
   <data name="FactoryCatalogue" xml:space="preserve">
-    <value>Каталог фабрик</value>
+    <value>Каталоги фабрик</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>

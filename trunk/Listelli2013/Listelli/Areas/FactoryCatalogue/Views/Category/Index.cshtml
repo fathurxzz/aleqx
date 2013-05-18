@@ -1,4 +1,38 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@using Listelli.App_LocalResources
+@using Listelli.Models
+@model FactoryCatalogueModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = GlobalRes.FactoryCatalogue })
+}
+
+<div class="adminLinkContainer">
+    @Html.ActionLink("Добавить категорию", "Create", "Category", new { area = "Admin" }, new { @class = "adminLink" })
+</div>
+<div class="categories">
+    @{
+        int cnt = 0;
+    }
+    @foreach (var category in Model.Categories.OrderBy(c => c.SortOrder))
+    {
+        cnt++;
+        @Html.Partial("Category", category)
+        if (cnt % 3 == 0)
+        {
+        <div class="clear">
+        </div>
+        }
+    }
+    <div class="clear">
+    </div>
+</div>
+
+@section Includes
+{
+    <link href="@Url.Content("~/Content/FactoryCatalogue.css")" rel="stylesheet" type="text/css" />
 }

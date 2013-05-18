@@ -1,0 +1,29 @@
+﻿.categories {
+    padding: 0 72px;
+}
+
+.categories .category {
+    width: 231px;
+    height: 231px;
+    float: left;
+    margin:27px 27px;
+    background: url('img/cat-prev-frame.gif');
+}
+
+.categories .category .image {
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.categories .category .image .title {
+    position: absolute;
+    width: 213px;
+    height: 20px;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 172px;
+}

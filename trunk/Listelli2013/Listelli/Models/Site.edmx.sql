@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 05/17/2013 14:48:08
+-- Date Created: 05/18/2013 09:30:18
 -- Generated from EDMX file: D:\projects\Listelli2013\Listelli\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -24,6 +24,12 @@
 --    ALTER TABLE `BrandLang` DROP CONSTRAINT `FK_BrandBrandLang`;
 --    ALTER TABLE `BrandItemLang` DROP CONSTRAINT `FK_LanguageBrandItemLang`;
 --    ALTER TABLE `BrandItemLang` DROP CONSTRAINT `FK_BrandItemBrandItemLang`;
+--    ALTER TABLE `CategoryLang` DROP CONSTRAINT `FK_CategoryCategoryLang`;
+--    ALTER TABLE `CategoryLang` DROP CONSTRAINT `FK_LanguageCategoryLang`;
+--    ALTER TABLE `CategoryBrand` DROP CONSTRAINT `FK_CategoryCategoryBrand`;
+--    ALTER TABLE `CategoryBrandItem` DROP CONSTRAINT `FK_CategoryBrandCategoryBrandItem`;
+--    ALTER TABLE `CategoryBrandItemLang` DROP CONSTRAINT `FK_CategoryBrandItemCategoryBrandItemLang`;
+--    ALTER TABLE `CategoryBrandItemLang` DROP CONSTRAINT `FK_LanguageCategoryBrandItemLang`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -37,6 +43,11 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `BrandItemImage`;
     DROP TABLE IF EXISTS `BrandLang`;
     DROP TABLE IF EXISTS `BrandItemLang`;
+    DROP TABLE IF EXISTS `Category`;
+    DROP TABLE IF EXISTS `CategoryLang`;
+    DROP TABLE IF EXISTS `CategoryBrand`;
+    DROP TABLE IF EXISTS `CategoryBrandItem`;
+    DROP TABLE IF EXISTS `CategoryBrandItemLang`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -121,7 +132,8 @@ CREATE TABLE `BrandItemLang` (
 CREATE TABLE `Category` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
-    `ImageSource` varchar( 200 )  NOT NULL
+    `ImageSource` varchar( 200 )  NOT NULL,
+    `SortOrder` int  NOT NULL
 );
 
 -- Creating table 'CategoryLang'

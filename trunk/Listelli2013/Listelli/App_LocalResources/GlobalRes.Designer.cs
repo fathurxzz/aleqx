@@ -106,7 +106,7 @@ namespace Listelli.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Каталог фабрик.
+        ///   Looks up a localized string similar to Каталоги фабрик.
         /// </summary>
         public static string FactoryCatalogue {
             get {
