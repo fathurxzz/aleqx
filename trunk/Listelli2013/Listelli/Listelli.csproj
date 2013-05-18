@@ -93,6 +93,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
@@ -138,6 +139,9 @@
     <Content Include="Content\img\box-middle.gif" />
     <Content Include="Content\img\box-top.gif" />
     <Content Include="Content\img\cat-prev-frame.gif" />
+    <Content Include="Content\img\category-brand-bottom.gif" />
+    <Content Include="Content\img\category-brand-middle.gif" />
+    <Content Include="Content\img\category-brand-top.gif" />
     <Content Include="Content\img\content-bottom-bg.gif" />
     <Content Include="Content\img\content-top-bg.gif" />
     <Content Include="Content\img\footer-bg.gif" />
@@ -220,6 +224,7 @@
     <Content Include="Areas\FactoryCatalogue\Views\Category\Category.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Category\Details.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />

@@ -1594,12 +1594,14 @@ namespace Listelli.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
-        public static CategoryBrand CreateCategoryBrand(global::System.Int32 id, global::System.String name, global::System.Int32 categoryId)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static CategoryBrand CreateCategoryBrand(global::System.Int32 id, global::System.String name, global::System.Int32 categoryId, global::System.Int32 sortOrder)
         {
             CategoryBrand categoryBrand = new CategoryBrand();
             categoryBrand.Id = id;
             categoryBrand.Name = name;
             categoryBrand.CategoryId = categoryId;
+            categoryBrand.SortOrder = sortOrder;
             return categoryBrand;
         }
 
@@ -1680,6 +1682,30 @@ namespace Listelli.Models
         private global::System.Int32 _CategoryId;
         partial void OnCategoryIdChanging(global::System.Int32 value);
         partial void OnCategoryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
     

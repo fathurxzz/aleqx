@@ -22,6 +22,14 @@ namespace Listelli.Areas.FactoryCatalogue
             );
 
             context.MapRoute(
+                "FactoryCatalogueCategoryDetails",
+                "{lang}/factorycatalogue/categories/{id}",
+                new { controller = "Category", action = "Details", id = UrlParameter.Optional },
+                constraints: new { lang = @"ru|en" }
+            );
+
+
+            context.MapRoute(
                 "FactoryCatalogue_default",
                 "{lang}/factorycatalogue/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },

@@ -27,3 +27,54 @@
     color: #fff;
     margin-top: 172px;
 }
+
+.categories .brandsConteiner .title {
+    text-align: center;
+    font-size: 25px;
+    font-family: PTSansBold;
+    padding-top: 10px;
+}
+
+.categories .brandsConteiner .categoryBrands {
+    text-align: center;
+    font-size: 15px;
+    font-family: PTSansBold;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    
+}
+
+.categories .brandsConteiner .categoryBrands ul {
+    list-style: none;
+}
+
+.categories .brandsConteiner .categoryBrands ul li {
+    display: inline-block;
+    padding: 5px 20px;
+}
+
+.categories .brandsConteiner .categoryBrands ul li a {
+    color: #999999;
+}
+
+.categories .brandsConteiner {
+    width: 820px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.categories .brandsConteiner .top, .categories .brandsConteiner .bottom {
+    height: 12px;
+}
+
+.categories .brandsConteiner .top {
+    background: url('img/category-brand-top.gif');
+}
+
+.categories .brandsConteiner .bottom {
+    background: url('img/category-brand-bottom.gif');
+}
+
+.categories .brandsConteiner .middle {
+    background: url('img/category-brand-middle.gif') repeat-y;
+}
