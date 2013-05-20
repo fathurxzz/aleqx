@@ -38,7 +38,7 @@ namespace Listelli.Models
         //[Required(ErrorMessage = "Обязательно!")]
 
         [DataType(DataType.Password)]
-        [Display(ResourceType = typeof(GlobalRes),Name = "Register")]
+        [DisplayName("Пароль")]
         
         [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword")]
         public string Password { get; set; }
@@ -56,7 +56,7 @@ namespace Listelli.Models
 
 
         [DataType(DataType.Password)]
-        [Display(ResourceType = typeof(GlobalRes), Name = "Register")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "Password")]
 
         [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword")]
         public string Password { get; set; }
