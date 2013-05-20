@@ -94,6 +94,7 @@
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryBrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryBrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
@@ -108,6 +109,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\WebExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Brand.cs" />
@@ -115,6 +117,9 @@
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\BrandCatalogueModel.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryBrandItem.cs" />
+    <Compile Include="Models\CategoryBrandItemValidation.cs" />
+    <Compile Include="Models\CategoryBrandValidation.cs" />
     <Compile Include="Models\CategoryValidation.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\ContentTitleModel.cs" />
@@ -225,6 +230,11 @@
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\FactoryCatalogue\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBrand\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBrand\Edit.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Brand\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBrandItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryBrandItem\Edit.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />

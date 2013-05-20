@@ -175,6 +175,7 @@
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="CategoryBrandItem">
     <Key>
@@ -183,6 +184,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CategoryBrandId" Type="int" Nullable="false" />
     <Property Name="Content" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryBrandItemLang">
     <Key>
@@ -680,6 +682,7 @@
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <NavigationProperty Name="CategoryBrandItems" Relationship="Site.CategoryBrandCategoryBrandItem" FromRole="CategoryBrand" ToRole="CategoryBrandItem" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
         </EntityType>
         <Association Name="CategoryCategoryBrand">
           <End Type="Site.Category" Role="Category" Multiplicity="1" />
@@ -702,6 +705,7 @@
           <Property Type="Int32" Name="CategoryBrandId" Nullable="false" />
           <Property Type="String" Name="Content" />
           <NavigationProperty Name="CategoryBrandItemLangs" Relationship="Site.CategoryBrandItemCategoryBrandItemLang" FromRole="CategoryBrandItem" ToRole="CategoryBrandItemLang" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
         </EntityType>
         <Association Name="CategoryBrandCategoryBrandItem">
           <End Type="Site.CategoryBrand" Role="CategoryBrand" Multiplicity="1" />
@@ -720,7 +724,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" FixedLength="true" MaxLength="200" Nullable="false" />
           <Property Type="String" Name="Text" />
           <NavigationProperty Name="CategoryBrandItem" Relationship="Site.CategoryBrandItemCategoryBrandItemLang" FromRole="CategoryBrandItemLang" ToRole="CategoryBrandItem" />
           <Property Type="Int32" Name="CategoryBrandItemId" Nullable="false" />
@@ -865,6 +869,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -874,6 +879,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CategoryBrandId" ColumnName="CategoryBrandId" />
           <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -964,19 +970,19 @@
           <ConnectorPoint PointX="3.3333333333333335" PointY="3.40625" />
           <ConnectorPoint PointX="8.875" PointY="3.40625" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.CategoryBrand" Width="1.5" PointX="11.125" PointY="0.5" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Site.CategoryBrand" Width="1.5" PointX="11.125" PointY="0.5" Height="2.3648893229166661" />
         <AssociationConnector Association="Site.CategoryCategoryBrand">
           <ConnectorPoint PointX="10.375" PointY="1.5862939453124998" />
           <ConnectorPoint PointX="11.125" PointY="1.5862939453124998" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.CategoryBrandItem" Width="1.75" PointX="13.75" PointY="0.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.CategoryBrandItem" Width="1.75" PointX="13.75" PointY="0.5" Height="2.172587890625" />
         <AssociationConnector Association="Site.CategoryBrandCategoryBrandItem">
-          <ConnectorPoint PointX="12.625" PointY="1.4901432291666668" />
-          <ConnectorPoint PointX="13.75" PointY="1.4901432291666668" />
+          <ConnectorPoint PointX="12.625" PointY="1.5862939453124998" />
+          <ConnectorPoint PointX="13.75" PointY="1.5862939453124998" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.CategoryBrandItemLang" Width="2" PointX="13.5" PointY="3.25" Height="1.9802864583333335" />
         <AssociationConnector Association="Site.CategoryBrandItemCategoryBrandItemLang">
-          <ConnectorPoint PointX="14.625" PointY="2.4802864583333335" />
+          <ConnectorPoint PointX="14.625" PointY="2.672587890625" />
           <ConnectorPoint PointX="14.625" PointY="3.25" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageCategoryBrandItemLang">

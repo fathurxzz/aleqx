@@ -9,8 +9,9 @@ namespace Listelli.Models
     {
         public IEnumerable<Category> Categories { get; set; }
         public Category Category { get; set; }
+        public CategoryBrand Brand { get; set; }
 
-        public FactoryCatalogueModel(Language lang, SiteContainer context, string categoryId)
+        public FactoryCatalogueModel(Language lang, SiteContainer context, string categoryId, string brandId)
             : base(lang, context, "factory")
         {
             Categories = context.Category.ToList();
@@ -22,9 +23,22 @@ namespace Listelli.Models
 
             if (!string.IsNullOrEmpty(categoryId))
             {
-                Category = context.Category.First(c => c.Name == categoryId);
+                Category = context.Category.Include("CategoryBrands").First(c => c.Name == categoryId);
                 Category.CurrentLang = lang.Id;
+
+                if (!string.IsNullOrEmpty(brandId))
+                {
+                    Brand = Category.CategoryBrands.First(c => c.Name == brandId);
+                    Brand.CategoryBrandItems.Load();
+                    foreach (var item in Brand.CategoryBrandItems)
+                    {
+                        item.CurrentLang = lang.Id;
+                    }
+                }
+
             }
+
+
 
 
         }

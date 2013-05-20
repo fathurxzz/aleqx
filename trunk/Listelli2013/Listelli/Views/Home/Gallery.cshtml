@@ -4,9 +4,12 @@
 {
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = GlobalRes.BrandGallery })
 }
-<div class="adminLinkContainer">
-    @Html.ActionLink("Добавить бренд", "Create", "Brand", new { area = "Admin" }, new { @class = "adminLink" })
-</div>
+@if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+{
+    <div class="adminLinkContainer">
+        @Html.ActionLink("Добавить бренд", "Create", "Brand", new {area = "Admin"}, new {@class = "adminLink"})
+    </div>
+}
 <div class="brandsGallery">
     @{
         int cnt = 0;

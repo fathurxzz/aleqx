@@ -40,7 +40,7 @@
                     
                 </div>
                 
-                @if (Request.IsAuthenticated)
+                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                 {
                     <div class="adminLinkContainer">
                         @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new {area = ""}, new {@class = "adminLink"})

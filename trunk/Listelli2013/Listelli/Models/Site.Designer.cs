@@ -1595,13 +1595,15 @@ namespace Listelli.Models
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
-        public static CategoryBrand CreateCategoryBrand(global::System.Int32 id, global::System.String name, global::System.Int32 categoryId, global::System.Int32 sortOrder)
+        /// <param name="title">Initial value of the Title property.</param>
+        public static CategoryBrand CreateCategoryBrand(global::System.Int32 id, global::System.String name, global::System.Int32 categoryId, global::System.Int32 sortOrder, global::System.String title)
         {
             CategoryBrand categoryBrand = new CategoryBrand();
             categoryBrand.Id = id;
             categoryBrand.Name = name;
             categoryBrand.CategoryId = categoryId;
             categoryBrand.SortOrder = sortOrder;
+            categoryBrand.Title = title;
             return categoryBrand;
         }
 
@@ -1706,6 +1708,30 @@ namespace Listelli.Models
         private global::System.Int32 _SortOrder;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
 
         #endregion
     
@@ -1789,11 +1815,13 @@ namespace Listelli.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="categoryBrandId">Initial value of the CategoryBrandId property.</param>
-        public static CategoryBrandItem CreateCategoryBrandItem(global::System.Int32 id, global::System.Int32 categoryBrandId)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static CategoryBrandItem CreateCategoryBrandItem(global::System.Int32 id, global::System.Int32 categoryBrandId, global::System.Int32 sortOrder)
         {
             CategoryBrandItem categoryBrandItem = new CategoryBrandItem();
             categoryBrandItem.Id = id;
             categoryBrandItem.CategoryBrandId = categoryBrandId;
+            categoryBrandItem.SortOrder = sortOrder;
             return categoryBrandItem;
         }
 
@@ -1874,6 +1902,30 @@ namespace Listelli.Models
         private global::System.String _Content;
         partial void OnContentChanging(global::System.String value);
         partial void OnContentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
     

@@ -11,6 +11,7 @@ using SiteExtensions.Graphics;
 
 namespace Listelli.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class BrandItemController : AdminController
     {
         public ActionResult CreateTextBlock(int brandId, int type)

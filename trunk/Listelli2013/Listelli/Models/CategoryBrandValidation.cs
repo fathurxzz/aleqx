@@ -7,13 +7,13 @@ using System.Web;
 
 namespace Listelli.Models
 {
-    [MetadataType(typeof(CategoryValidation))]
-    public partial class Category
+    [MetadataType(typeof(CategoryBrandValidation))]
+    public partial class CategoryBrand
     {
 
     }
 
-    public class CategoryValidation
+    public class CategoryBrandValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Веб-имя страницы (отображается в строке браузера)")]
@@ -27,7 +27,6 @@ namespace Listelli.Models
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
 
-        [DisplayName("Файл изображения")]
-        public string ImageSource { get; set; }
+        
     }
 }

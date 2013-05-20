@@ -66,7 +66,7 @@ else
 
 
 
-@{
+@*@{
     className = "m4";
     selected = false;
     if (ViewBag.CurrentMenuItem == "factory")
@@ -85,7 +85,35 @@ else
     {
         @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Category", new {area = "FactoryCatalogue"}, null)
     }
-</div>
+</div>*@
+
+
+
+@if (ViewBag.CurrentMenuItem == "factory")
+{
+    <div class="m4 selected">
+        @GlobalRes.FactoryCatalogue
+    </div>
+}
+else if (ViewBag.CurrentMenuItem == "factory-details")
+{
+    <div class="m2">
+        @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Category", new { area = "FactoryCatalogue" }, new { @class = "selected" })
+    </div>
+}
+else
+{
+    <div class="m2">
+        @Html.ActionLink(GlobalRes.FactoryCatalogue, "Index", "Category", new { area = "FactoryCatalogue" }, null)
+    </div>
+}
+
+
+
+
+
+
+
 
 
 @{
