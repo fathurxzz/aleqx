@@ -58,7 +58,7 @@ namespace Listelli.Areas.Admin.Controllers
                                               ContentId = instance.Id,
                                               LanguageId = lang.Id,
                                               Title = instance.Title,
-                                              Text = instance.Text,
+                                              Text = HttpUtility.HtmlDecode(instance.Text),
                                               SeoDescription = instance.SeoDescription,
                                               SeoKeywords = instance.SeoKeywords
                                           };
@@ -67,7 +67,7 @@ namespace Listelli.Areas.Admin.Controllers
                 else
                 {
                     contenttLang.Title = instance.Title;
-                    contenttLang.Text = instance.Text;
+                    contenttLang.Text = HttpUtility.HtmlDecode(instance.Text);
                     contenttLang.SeoDescription = instance.SeoDescription;
                     contenttLang.SeoKeywords = instance.SeoKeywords;
                 }

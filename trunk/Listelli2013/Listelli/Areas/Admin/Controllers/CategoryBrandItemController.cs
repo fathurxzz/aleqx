@@ -156,14 +156,14 @@ namespace Listelli.Areas.Admin.Controllers
                     CategoryBrandItemId = instance.Id,
                     LanguageId = lang.Id,
                     Title = instance.Title,
-                    Text = instance.Text
+                    Text = HttpUtility.HtmlDecode(instance.Text)
                 };
                 context.AddToCategoryBrandItemLang(newPostLang);
             }
             else
             {
                 contenttLang.Title = instance.Title;
-                contenttLang.Text = instance.Text;
+                contenttLang.Text = HttpUtility.HtmlDecode(instance.Text);
             }
             context.SaveChanges();
 
