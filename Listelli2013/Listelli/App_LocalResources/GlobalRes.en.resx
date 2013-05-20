@@ -135,14 +135,26 @@
   <data name="FactoryCatalogue" xml:space="preserve">
     <value>Factory Catalogue</value>
   </data>
+  <data name="LoggedIn" xml:space="preserve">
+    <value>You are logged in as</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
   <data name="News" xml:space="preserve">
     <value>News</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="Roles" xml:space="preserve">
     <value>Roles</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>UserName</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

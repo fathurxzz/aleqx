@@ -115,11 +115,38 @@ namespace Listelli.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы вошли как.
+        /// </summary>
+        public static string LoggedIn {
+            get {
+                return ResourceManager.GetString("LoggedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выйти.
+        /// </summary>
+        public static string LogOut {
+            get {
+                return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Новости.
         /// </summary>
         public static string News {
             get {
                 return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         
@@ -138,6 +165,15 @@ namespace Listelli.App_LocalResources {
         public static string Roles {
             get {
                 return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Имя и фамилия.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
         

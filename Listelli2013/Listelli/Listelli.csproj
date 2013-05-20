@@ -99,6 +99,7 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\FactoryCatalogue\Controllers\CustomerController.cs" />
     <Compile Include="Areas\FactoryCatalogue\FactoryCatalogueAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\WebExtensions.cs" />
+    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\BrandItem.cs" />
@@ -208,7 +210,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\FactoryCatalogue\Models\" />
-    <Folder Include="Areas\FactoryCatalogue\Views\Shared\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +236,10 @@
     <Content Include="Areas\FactoryCatalogue\Views\Brand\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryBrandItem\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CategoryBrandItem\Edit.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Customer\Register.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Customer\LogOn.cshtml" />
+    <Content Include="Areas\FactoryCatalogue\Views\Shared\UserInfo.cshtml" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
