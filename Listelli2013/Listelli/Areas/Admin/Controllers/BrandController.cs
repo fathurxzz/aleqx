@@ -11,6 +11,7 @@ using SiteExtensions.Graphics;
 
 namespace Listelli.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class BrandController : AdminController
     {
         public ActionResult Create()
@@ -36,7 +37,7 @@ namespace Listelli.Areas.Admin.Controllers
                 {
                     var cache = new Brand
                                     {
-                                        Name = model.Name, 
+                                        Name = SiteHelper.UpdatePageWebName(model.Name), 
                                         Description = model.Description,
                                         SortOrder = model.SortOrder
                                     };
@@ -107,7 +108,8 @@ namespace Listelli.Areas.Admin.Controllers
                         }
 
 
-                        TryUpdateModel(cache, new[] {"Name", "Description", "SortOrder"});
+                        TryUpdateModel(cache, new[] {"Description", "SortOrder"});
+                        cache.Name = SiteHelper.UpdatePageWebName(model.Name);
 
                         var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
                         if (lang != null)

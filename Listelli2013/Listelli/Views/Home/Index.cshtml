@@ -1,11 +1,12 @@
 ﻿@model Listelli.Models.SiteModel
 @using Listelli.Models
 <div class="content">
-    
-    <div class="adminLinkContainer">
-        @Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=Model.Content.Id},new{@class="adminLink"})
-    </div>
-   
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Редактировать", "Edit", "Content", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+        </div>
+    }
     @if (!Model.Content.IsCorrectLang)
        {
            <div style="border: 1px solid red; color: red; text-align: center; padding: 5px; font-weight: bold;">
@@ -22,9 +23,7 @@
     @*@GlobalRes.Register*@
     
     
-    
 @Html.Raw(Model.Content.Text)
-    
 
 
 </div>

@@ -26,15 +26,14 @@
                 <ul>
                     @foreach (var brand in Model.Category.CategoryBrands.OrderBy(c => c.SortOrder))
                     {
-                        
                         <li>
                             @if (ViewBag.CurrentBramdName == brand.Name)
                             {
-                                @brand.Name
+                                @brand.Title
                             }
                             else
                             {
-                                @Html.ActionLink(brand.Title, "Details", "Brand", new {area = "FactoryCatalogue", id = brand.Name, categoryId = Model.Category.Name}, null)
+                                @Html.ActionLink(brand.Title, "Details", "Brand", new { area = "FactoryCatalogue", id = brand.Name, categoryId = Model.Category.Name }, null)
                             }
                             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                             {
@@ -43,6 +42,7 @@
                                 @Html.ActionLink("Удалить", "Delete", "CategoryBrand", new {area = "Admin", id = brand.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить бренд?')"})
                             }
                         </li>
+                        
                     }
                 </ul>
             </div>
@@ -51,14 +51,29 @@
         </div>
     </div>
     
+    <div class="categoryBrandItems">
     @if (Model.Brand != null)
     {
-        <div class="adminLinkContainer">
-            @Html.ActionLink("Добавить элемент бренда", "Create", "CategoryBrandItem", new {area = "Admin", brandId = Model.Brand.Id}, new {@class = "adminLink"})
-        </div>
+            if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+             {
+                 <div class="adminLinkContainer">
+                     @Html.ActionLink("Добавить элемент бренда", "Create", "CategoryBrandItem", new {area = "Admin", brandId = Model.Brand.Id}, new {@class = "adminLink"})
+                 </div>
+             }
     }
-    
-
+        @foreach (var item in Model.Brand.CategoryBrandItems)
+        {
+            <div class="categoryBrandItem">
+                <div class="title"><a href="#">@item.Title</a>
+                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                {
+                    @Html.ActionLink("Редактировать", "Edit", "CategoryBrandItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                    @Html.ActionLink("Удалить", "Delete", "CategoryBrandItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить элемент?')"})
+                }
+                </div>
+            </div>
+        }
+    </div>
 </div>
 @section Includes
 {

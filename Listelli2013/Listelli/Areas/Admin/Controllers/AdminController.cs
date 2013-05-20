@@ -11,6 +11,7 @@ using Listelli.Models;
 
 namespace Listelli.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public abstract class AdminController : DefaultController
     {
         //public Language CurrentLang

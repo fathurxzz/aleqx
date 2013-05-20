@@ -3,61 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Listelli.Helpers;
 using Listelli.Models;
 
 namespace Listelli.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class CategoryBrandController : AdminController
     {
-        
         public ActionResult Create(int categoryId)
         {
-
             using (var context = new SiteContainer())
             {
-                int maxSortOrder = context.CategoryBrand.Where(c=>c.CategoryId==categoryId).Max(c => (int?)c.SortOrder) ?? 0;
+                var category = context.Category.First(c => c.Id == categoryId);
+                int maxSortOrder = context.CategoryBrand.Where(c => c.CategoryId == categoryId).Max(c => (int?)c.SortOrder) ?? 0;
                 var categoryBrand = new CategoryBrand
                 {
                     SortOrder = maxSortOrder + 1
                 };
+                ViewBag.CategoryName = category.Name;
                 return View(categoryBrand);
             }
-        } 
-
+        }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CategoryBrand model)
         {
             try
             {
+                using (var context = new SiteContainer())
+                {
+                    var category = context.Category.First(c => c.Id == model.CategoryId);
+                    var cache = new CategoryBrand
+                                    {
+                                        Category = category,
+                                        SortOrder = model.SortOrder,
+                                        Name = SiteHelper.UpdatePageWebName(model.Name),
+                                        Title = model.Title
+                                    };
+                    context.AddToCategoryBrand(cache);
+                    context.SaveChanges();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Details", "Category", new { area = "FactoryCatalogue", id = category.Name });
+                }
             }
             catch
             {
                 return View();
             }
         }
-        
-        //
-        // GET: /Admin/CategoryBrand/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var brand = context.CategoryBrand.Include("Category").First(b => b.Id == id);
+                return View(brand);
+            }
         }
 
-        //
-        // POST: /Admin/CategoryBrand/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(CategoryBrand model)
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                using (var context = new SiteContainer())
+                {
+                    var brand = context.CategoryBrand.Include("Category").First(b => b.Id == model.Id);
+                    TryUpdateModel(brand, new[] { "SortOrder", "Title" });
+                    brand.Name = SiteHelper.UpdatePageWebName(model.Name);
+                    context.SaveChanges();
+                    return RedirectToAction("Details", "Category", new { area = "FactoryCatalogue", id = brand.Category.Name });
+                }
             }
             catch
             {
@@ -65,30 +82,18 @@ namespace Listelli.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/CategoryBrand/Delete/5
- 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        //
-        // POST: /Admin/CategoryBrand/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            using (var context = new SiteContainer())
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var brand = context.CategoryBrand.Include("Category").First(b => b.Id == id);
+                var categoryName = brand.Category.Name;
+                context.DeleteObject(brand);
+                context.SaveChanges();
+                return RedirectToAction("Details", "Category", new { area = "FactoryCatalogue", id = categoryName });
             }
         }
+
+
     }
 }

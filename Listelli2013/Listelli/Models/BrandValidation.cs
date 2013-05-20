@@ -26,6 +26,7 @@ namespace Listelli.Models
         [DisplayName("Описание")]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Порядок отображения")]
         public int SortOrder { get; set; }
 

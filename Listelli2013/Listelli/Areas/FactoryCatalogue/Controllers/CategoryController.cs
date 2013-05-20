@@ -18,7 +18,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var model = new FactoryCatalogueModel(CurrentLang, context, null);
+                var model = new FactoryCatalogueModel(CurrentLang, context, null,null);
                 this.SetSeoContent(model);
                 ViewBag.CurrentMenuItem = model.Content.Name;
                 return View(model);
@@ -29,9 +29,14 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var model = new FactoryCatalogueModel(CurrentLang, context, id);
+                var model = new FactoryCatalogueModel(CurrentLang, context, id,null);
                 this.SetSeoContent(model);
-                ViewBag.CurrentMenuItem = model.Content.Name;
+                ViewBag.CurrentMenuItem = "factory-details";
+                if (model.Category.CategoryBrands.Any())
+                {
+                    var minSortOrder = model.Category.CategoryBrands.Min(c => (int?)c.SortOrder) ?? 0;
+                    return RedirectToAction("Details", "Brand", new {area = "FactoryCatalogue", categoryId=model.Category.Name,id=model.Category.CategoryBrands.First(c=>c.SortOrder==minSortOrder).Name});
+                }
                 return View(model);
             }
         }

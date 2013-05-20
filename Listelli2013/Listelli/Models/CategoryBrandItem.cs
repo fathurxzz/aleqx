@@ -5,12 +5,11 @@ using System.Web;
 
 namespace Listelli.Models
 {
-    public partial class BrandItem
+    public partial class CategoryBrandItem
     {
+        public string Title { get; set; }
         public string Text { get; set; }
-
         public bool IsCorrectLang { get; protected set; }
-
         private int _currentLang;
 
         public int CurrentLang
@@ -23,11 +22,11 @@ namespace Listelli.Models
             set
             {
                 _currentLang = value;
-                var currentLang = BrandItemLangs.FirstOrDefault(p => p.LanguageId == value);
+                var currentLang = CategoryBrandItemLangs.FirstOrDefault(p => p.LanguageId == value);
                 if (currentLang == null)
                 {
                     IsCorrectLang = false;
-                    var anyLang = BrandItemLangs.FirstOrDefault();
+                    var anyLang = CategoryBrandItemLangs.FirstOrDefault();
                     if (anyLang != null)
                     {
                         SetLang(anyLang);
@@ -40,9 +39,10 @@ namespace Listelli.Models
                 }
             }
         }
-        private void SetLang(BrandItemLang lang)
+        private void SetLang(CategoryBrandItemLang lang)
         {
             Text = lang.Text;
+            Title = lang.Title;
         }
     }
 }

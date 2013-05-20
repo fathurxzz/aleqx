@@ -3,11 +3,14 @@
 @model Listelli.Models.Category
 <div class="category">
     <div class="image">
-        <div class="abs">
-            @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
-            @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = Model.Id }, new { @class = "adminLink",onclick="return confirm('Удалить категорию?')" })
-            <span class="sortOrder">@Model.SortOrder</span>
-        </div>
+        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+        {
+            <div class="abs">
+                @Html.ActionLink("Редактировать", "Edit", "Category", new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})
+                @Html.ActionLink("Удалить", "Delete", "Category", new {area = "Admin", id = Model.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить категорию?')"})
+                <span class="sortOrder">@Model.SortOrder</span>
+            </div>
+        }
         <div class="title">
             @Model.Title
         </div>

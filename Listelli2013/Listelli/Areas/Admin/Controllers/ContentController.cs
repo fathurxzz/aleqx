@@ -8,6 +8,7 @@ using Listelli.Models;
 
 namespace Listelli.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class ContentController : AdminController
     {
         public ActionResult Edit(int id)

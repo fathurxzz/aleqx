@@ -78,3 +78,24 @@
 .categories .brandsConteiner .middle {
     background: url('img/category-brand-middle.gif') repeat-y;
 }
+
+
+.categories .categoryBrandItems {
+    padding-top: 50px;
+}
+
+.categories .categoryBrandItems .categoryBrandItem {
+    margin: 20px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.categories .categoryBrandItems .categoryBrandItem .title {
+    text-align: center;
+}
+
+.categories .categoryBrandItems .categoryBrandItem .title a {
+    font-style: italic;
+    font-size: 20px;
+    color: #0066cc;
+}
