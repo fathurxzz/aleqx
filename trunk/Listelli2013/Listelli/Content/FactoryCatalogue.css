@@ -99,3 +99,19 @@
     font-size: 20px;
     color: #0066cc;
 }
+
+.userInfoArea {
+    text-align: center;
+}
+
+.userInfoArea span.userName {
+    font-family: PTSansBold;
+}
+
+.userInfoArea span.logOut {
+    font-size: 11px;
+}
+.userInfoArea span.logOut a {
+    color: #0099fa;
+    font-family: PTSans;
+}

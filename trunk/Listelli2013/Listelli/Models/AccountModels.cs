@@ -47,26 +47,41 @@ namespace Listelli.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterModel
+    public class CustomerLogOnModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+
+        [DataType(DataType.Password)]
+        [Display(ResourceType = typeof(GlobalRes), Name = "Register")]
+
+        [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword")]
+        public string Password { get; set; }
+    }
+
+    public class RegisterModel
+    {
+        //Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "UserName")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "UserName")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email address")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "Password")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
+        //[DataType(DataType.Password)]
+        //[Display(Name = "Confirm password")]
+        //[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        //public string ConfirmPassword { get; set; }
     }
 }

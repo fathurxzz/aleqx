@@ -9,6 +9,7 @@ using SiteExtensions;
 
 namespace Listelli.Areas.FactoryCatalogue.Controllers
 {
+    [Authorize]
     public class CategoryController : DefaultController
     {
         //
