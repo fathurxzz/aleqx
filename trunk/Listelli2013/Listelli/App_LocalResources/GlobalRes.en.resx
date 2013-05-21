@@ -159,4 +159,19 @@
   <data name="Users" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Your email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Enter your password</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>Enter your name</value>
+  </data>
+  <data name="YourPassword" xml:space="preserve">
+    <value>Your password</value>
+  </data>
 </root>

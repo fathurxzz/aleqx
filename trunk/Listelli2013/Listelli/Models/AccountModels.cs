@@ -64,19 +64,19 @@ namespace Listelli.Models
 
     public class RegisterModel
     {
-        //Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "UserName")]
+        [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "UserNameRequired")]
         [Display(ResourceType = typeof(GlobalRes), Name = "UserName")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EmailRequired")]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "PasswordRequired")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(ResourceType = typeof(GlobalRes), Name = "Password")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "YourPassword")]
         public string Password { get; set; }
 
         //[DataType(DataType.Password)]

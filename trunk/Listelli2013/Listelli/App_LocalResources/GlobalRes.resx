@@ -159,4 +159,19 @@
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Ваш email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Введите email</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Введите пароль</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>Введите имя и фамилию</value>
+  </data>
+  <data name="YourPassword" xml:space="preserve">
+    <value>Желаемый пароль</value>
+  </data>
 </root>
