@@ -115,3 +115,23 @@
     color: #0099fa;
     font-family: PTSans;
 }
+
+
+.customerLogOnRegisterForm {
+    padding: 0 120px;   
+}
+
+.customerLogOnRegisterForm .text {
+    margin-bottom: 50px;
+    font-size: 15px;
+}
+
+.customerLogOnRegisterForm .text a, .customerLogOnRegisterForm .text span {
+    color: #0066cc;
+}
+
+.customerLogOnRegisterForm table td {
+    padding-right: 20px;
+    padding-top: 15px;
+    
+}
