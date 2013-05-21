@@ -31,7 +31,7 @@ var scene = function (elem) {
 
         if (t.range && e.pageX >= t.range.left && e.pageX <= t.range.right /*&& e.pageY >= t.range.top && e.pageY <= t.range.bottom*/) {
 
-            t.refreshLayers({ x: ((e.pageX - t.range.left) / 10) - 50, y: 0});
+            t.refreshLayers({ x: ((e.pageX - t.range.left) / 20) - 25, y: 0});
 
         }
 
@@ -52,9 +52,10 @@ scene.prototype = {
 
             //alert(t.height());
 
+            $(".toplayer").html(params.x);
             params.x = params.x * 0.5;
             
-            //$(".toplayer").html(params.x);
+            
 
             var left = params.x;
             var top = params.y;
@@ -82,15 +83,15 @@ scene.prototype = {
     }
 };
 
-$(document).ready(function () {
+//$(document).ready(function () {
 
-    //    $('.scene').each(function () {
-    //        new scene($(this));
-    //    });
+//    //    $('.scene').each(function () {
+//    //        new scene($(this));
+//    //    });
 
-    
-    var obj = $("#Scene1");
-    new scene(obj);
+//    
+//    var obj = $("#Scene1");
+//    new scene(obj);
 
 
-});
+//});
