@@ -38,15 +38,41 @@ body {
 
 .header .middle {
     height: 107px;
-    background: url('img/header-bg.gif');
+    /*background: url('img/header-bg.gif');*/
+    /*width: 1000px;
+    position: relative;
+    margin: 0 auto;*/
     width: 1000px;
     position: relative;
     margin: 0 auto;
 }
 
+#Scene1 {
+    color: #fff;
+    /*border: 1px solid red;*/
+}
+
 .header .middle .layer {
     height: 107px;
+    background: url('img/header-bg.gif');
+    
+    width: 800px;
+    margin-left: 100px;
+    
+    /*width: 1000px;
+    margin-left: 0px;*/
+    
+    /*position: relative;*/
+    /*border: 1px solid #fff;*/
+    position: absolute;
+    background-position: 50%;
+}
+
+.header .middle .toplayer {
+    height: 107px;
     background: url('img/header-bg-layer.png');
+    width: 1000px;
+    position: absolute;
 }
 
 .header .bottom {
