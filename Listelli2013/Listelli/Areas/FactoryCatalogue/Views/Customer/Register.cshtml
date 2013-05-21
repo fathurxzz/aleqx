@@ -12,8 +12,8 @@
 
 <div class="customerLogOnRegisterForm">
     
-     <div class="text">
-    В этом разделе представлены только официальные каталоги фабрик. Чтобы их просматривать, необходимо @Html.ActionLink("авторизоваться", "LogOn", "Customer", new { area = "FactoryCatalogue" },null), или пройти <span>простую форму регистрации</span>.
+    <div class="text">
+        В этом разделе представлены только официальные каталоги фабрик. Чтобы их просматривать, необходимо @Html.ActionLink("авторизоваться", "LogOn", "Customer", new { area = "FactoryCatalogue" },null), или пройти <span>простую форму регистрации</span>.
     </div>
     
     @using (Html.BeginForm())
@@ -28,6 +28,7 @@
                     @Html.EditorFor(model => model.UserName)
                     @Html.ValidationMessageFor(model => model.UserName)
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
@@ -37,6 +38,7 @@
                     @Html.EditorFor(model => model.Email)
                     @Html.ValidationMessageFor(model => model.Email)
                 </td>
+                <td><span class="tip">@GlobalRes.EmailTip</span></td>
             </tr>
             <tr>
                 <td>
@@ -46,10 +48,19 @@
                     @Html.EditorFor(model => model.Password)
                     @Html.ValidationMessageFor(model => model.Password)
                 </td>
+                <td><span class="tip">@GlobalRes.PasswordTip</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: center">
+                    <input type="submit" value="@GlobalRes.Done" />
+                </td>
             </tr>
         </table>
-        <input type="submit" value="Зарегистрироваться" />
+        
     }
+</div>
+<div class="book">
+    
 </div>
 @section Includes
 {

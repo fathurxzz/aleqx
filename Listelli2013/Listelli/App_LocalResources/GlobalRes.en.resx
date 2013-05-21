@@ -174,4 +174,13 @@
   <data name="YourPassword" xml:space="preserve">
     <value>Your password</value>
   </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="EmailTip" xml:space="preserve">
+    <value>email tip</value>
+  </data>
+  <data name="PasswordTip" xml:space="preserve">
+    <value>password tip</value>
+  </data>
 </root>

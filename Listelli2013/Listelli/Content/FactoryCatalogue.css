@@ -135,3 +135,12 @@
     padding-top: 15px;
     
 }
+
+.book {
+    background: url('img/book.gif');
+    position: relative;
+    margin: 0 auto;
+    width: 689px;
+    height: 439px;
+    margin-top: 80px;
+}
