@@ -1,7 +1,7 @@
 var scene = function (elem) {
     var t = this;
     t.element = elem;
-    t.id = t.element.attr('id');
+    //t.id = t.element.attr('id');
 
     t.center = { x: 200, y: 200 };
 
@@ -9,23 +9,13 @@ var scene = function (elem) {
         y: t.element.height() / 2 > t.center.y ? t.element.height() - t.center.y : t.center.y
     };
 
-    //$(".toplayer").html(t.coof.y);
-
     t.range = t.refreshRange();
 
     t.layers = Array();
 
-    //t.layer = new ({ element: $(this), coof: t.coof, p: t });
-
     t.element.find('.layer').each(function () {
         t.layers.push(new t.layer({ element: $(this), coof: t.coof, p: t }));
     });
-
-
-    //t.layer.element = $(".layer");
-
-    //alert($(".layer").height());
-    //alert(t.layer.element.height());
 
     $(document).mousemove(function (e) {
 
@@ -50,7 +40,6 @@ scene.prototype = {
 
         t.move = function (params) {
 
-            //alert(t.height());
 
             //$(".toplayer").html(params.x);
             params.x = params.x * 0.5;
@@ -82,16 +71,3 @@ scene.prototype = {
         for (var i = 0; i < t.layers.length; i++) { t.layers[i].move(params); }
     }
 };
-
-//$(document).ready(function () {
-
-//    //    $('.scene').each(function () {
-//    //        new scene($(this));
-//    //    });
-
-//    
-//    var obj = $("#Scene1");
-//    new scene(obj);
-
-
-//});
