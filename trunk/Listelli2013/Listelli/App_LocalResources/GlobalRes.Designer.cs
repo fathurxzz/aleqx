@@ -88,6 +88,15 @@ namespace Listelli.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Готово.
+        /// </summary>
+        public static string Done {
+            get {
+                return ResourceManager.GetString("Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ваш email.
         /// </summary>
         public static string Email {
@@ -102,6 +111,15 @@ namespace Listelli.App_LocalResources {
         public static string EmailRequired {
             get {
                 return ResourceManager.GetString("EmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Он же будет являться вашим логином.
+        /// </summary>
+        public static string EmailTip {
+            get {
+                return ResourceManager.GetString("EmailTip", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace Listelli.App_LocalResources {
         public static string PasswordRequired {
             get {
                 return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Латинскими символами, маленькими буквами.
+        /// </summary>
+        public static string PasswordTip {
+            get {
+                return ResourceManager.GetString("PasswordTip", resourceCulture);
             }
         }
         

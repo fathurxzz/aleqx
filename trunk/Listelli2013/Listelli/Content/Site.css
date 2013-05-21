@@ -218,3 +218,9 @@ body {
 {
     color: red !important;
 }
+
+.customerLogOnRegisterForm span.tip {
+    font-family: PTSansItalic;
+    color: #999999;
+    font-size: 12px;
+}

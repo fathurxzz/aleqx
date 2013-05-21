@@ -139,6 +139,7 @@
     <Content Include="Content\FactoryCatalogue.css" />
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\Images\image.gif" />
+    <Content Include="Content\img\book.gif" />
     <Content Include="Content\img\box-bottom.gif" />
     <Content Include="Content\img\box-middle.gif" />
     <Content Include="Content\img\box-top.gif" />

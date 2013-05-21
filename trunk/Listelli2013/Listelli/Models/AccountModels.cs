@@ -51,7 +51,7 @@ namespace Listelli.Models
     {
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "Email")]
         public string Email { get; set; }
 
 

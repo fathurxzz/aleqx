@@ -174,4 +174,13 @@
   <data name="YourPassword" xml:space="preserve">
     <value>Желаемый пароль</value>
   </data>
+  <data name="Done" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="EmailTip" xml:space="preserve">
+    <value>Он же будет являться вашим логином</value>
+  </data>
+  <data name="PasswordTip" xml:space="preserve">
+    <value>Латинскими символами, маленькими буквами</value>
+  </data>
 </root>
