@@ -52,7 +52,7 @@ scene.prototype = {
 
             //alert(t.height());
 
-            $(".toplayer").html(params.x);
+            //$(".toplayer").html(params.x);
             params.x = params.x * 0.5;
             
             
