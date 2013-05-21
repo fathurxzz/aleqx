@@ -54,19 +54,22 @@ body {
 
 .header .middle .layer {
     height: 107px;
-    background: url('img/header-bg.gif');
-    
-    width: 900px;
-    margin-left: 50px;
-    
-    /*width: 1000px;
-    margin-left: 0px;*/
-    
-    /*position: relative;*/
-    /*border: 1px solid #fff;*/
+    /*background: url('img/header-bg.gif');*/
     position: absolute;
-    background-position: 50%;
+    /*background-position: 50%;*/
+    width: 1000px;
+    margin-left: 0px;
 }
+
+.header .middle .pattern1 {
+    background: url('img/pattern1.png');
+}
+
+.header .middle .pattern2 
+{
+    background: url('img/pattern2.png');
+}
+
 
 .header .middle .toplayer {
     height: 107px;

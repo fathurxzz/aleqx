@@ -3,10 +3,7 @@ var scene = function (elem) {
     t.element = elem;
     t.id = t.element.attr('id');
 
-
-    //t.center = t.element[0].onclick();
     t.center = { x: 200, y: 200 };
-
 
     t.coof = { x: t.element.width() / 2 > t.center.x ? t.element.width() - t.center.x : t.center.x,
         y: t.element.height() / 2 > t.center.y ? t.element.height() - t.center.y : t.center.y
@@ -17,7 +14,6 @@ var scene = function (elem) {
     t.range = t.refreshRange();
 
     t.layers = Array();
-
 
     //t.layer = new ({ element: $(this), coof: t.coof, p: t });
 
@@ -33,15 +29,14 @@ var scene = function (elem) {
 
     $(document).mousemove(function (e) {
 
-
         if (t.range && e.pageX >= t.range.left && e.pageX <= t.range.right /*&& e.pageY >= t.range.top && e.pageY <= t.range.bottom*/) {
 
-            t.refreshLayers({ x: ((e.pageX - t.range.left)/10)-50 , y: 0 });
+            t.refreshLayers({ x: ((e.pageX - t.range.left) / 10) - 50, y: 0});
+
         }
 
         else return;
     });
-    //$(window).resize(function () { t.range = t.refreshRange(); });
 };
 
 scene.prototype = {
@@ -53,18 +48,13 @@ scene.prototype = {
 
         t.coof = { x: params.coof.x / t.offset.x, y: params.coof.y / t.offset.y };
 
-        //        if (t.element.is('.pointers')) {
-        //            t.pointers = Array();
-        //            t.element.find('.pointer').each(function(){
-        //                t.pointers.push(new params.p.pointer({element: $(this), coof: t.coof}));
-        //            });
-        //        }
         t.move = function (params) {
 
             //alert(t.height());
 
+            params.x = params.x * 0.5;
+            
             //$(".toplayer").html(params.x);
-
 
             var left = params.x;
             var top = params.y;
@@ -88,14 +78,6 @@ scene.prototype = {
 
     refreshLayers: function (params) {
         var t = this;
-
-        //$(".toplayer").html(t.html());
-
-        //t.layer.move(params);
-        //$(".layer").move(params);
-
-
-
         for (var i = 0; i < t.layers.length; i++) { t.layers[i].move(params); }
     }
 };
@@ -106,10 +88,9 @@ $(document).ready(function () {
     //        new scene($(this));
     //    });
 
+    
     var obj = $("#Scene1");
     new scene(obj);
-
-    //$(".layer").scene(obj);
 
 
 });
