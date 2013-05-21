@@ -155,6 +155,8 @@
     <Content Include="Content\img\header-bottom-bg.gif" />
     <Content Include="Content\img\header-bottom-bg2.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
+    <Content Include="Content\img\pattern1.png" />
+    <Content Include="Content\img\pattern2.png" />
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-container-bg.gif" />
