@@ -163,6 +163,7 @@
     <Content Include="Content\img\title-container-bg.gif" />
     <Content Include="Content\img\title-left.gif" />
     <Content Include="Content\img\title-right.gif" />
+    <Content Include="Content\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Content\Site-mobile.css" />
     <Content Include="Global.asax" />
@@ -171,6 +172,7 @@
     <Content Include="Scripts\jquery-2.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />

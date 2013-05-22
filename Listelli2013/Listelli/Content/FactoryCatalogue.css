@@ -86,7 +86,7 @@
 
 .categories .categoryBrandItems .categoryBrandItem {
     margin: 20px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     padding: 5px;
 }
 
@@ -99,6 +99,19 @@
     font-size: 20px;
     color: #0066cc;
 }
+
+.categories .categoryBrandItems .accordion h3
+{  text-align: center;}
+
+.categories .categoryBrandItems .accordion h3 span {
+        font-style: italic;
+    font-size: 20px;
+    color: #0066cc;
+    text-decoration: underline;
+    font-weight: normal;
+  
+}
+
 
 .userInfoArea {
     text-align: center;
