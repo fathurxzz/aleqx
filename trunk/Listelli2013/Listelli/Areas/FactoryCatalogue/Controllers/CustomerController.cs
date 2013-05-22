@@ -22,6 +22,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
 
         public ActionResult LogOn()
         {
+            ViewBag.CurrentMenuItem = "factory";
             return View();
         }
 
@@ -51,6 +52,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
 
         public ActionResult Register()
         {
+            ViewBag.CurrentMenuItem = "factory";
             return View();
         }
 

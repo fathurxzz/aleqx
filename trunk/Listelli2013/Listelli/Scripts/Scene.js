@@ -21,7 +21,7 @@ var scene = function (elem) {
 
         if (t.range && e.pageX >= t.range.left && e.pageX <= t.range.right /*&& e.pageY >= t.range.top && e.pageY <= t.range.bottom*/) {
 
-            t.refreshLayers({ x: ((e.pageX - t.range.left) / 20) - 25, y: 0});
+            t.refreshLayers({ x: ((e.pageX - t.range.left) / 40) - 12, y: 0});
 
         }
 
