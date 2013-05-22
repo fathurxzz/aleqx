@@ -111,6 +111,8 @@ body {
     margin:70px 125px 70px 125px;
 }
 
+
+
 .content-container .content-top {
     height: 13px;
     background: url('img/content-top-bg.gif');
@@ -242,4 +244,15 @@ body {
     height: 100px;
     margin-left: 440px;
     margin-top: 10px;
+}
+
+
+.userInfoArea .shortLine {
+    height: 2px;
+    background-color: #eeeeee;
+    width: 65px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }

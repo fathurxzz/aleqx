@@ -4,6 +4,7 @@
     @GlobalRes.LoggedIn <span class="userName">@WebSession.GetUserName(User.Identity.Name)</span>
     <br/>
     <span class="logOut">
-    ( @Html.ActionLink(@GlobalRes.LogOut, "LogOff", "Customer", new { area = "FactoryCatalogue" }, null) )    
+        ( @Html.ActionLink(@GlobalRes.LogOut, "LogOff", "Customer", new { area = "FactoryCatalogue" }, null) )    
     </span>
+    <div class="shortLine"></div>
 </div>
