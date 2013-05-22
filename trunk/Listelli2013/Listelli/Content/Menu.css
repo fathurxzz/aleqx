@@ -24,34 +24,81 @@
     float: left;
     width: 95px;
     text-align: center;
-    margin-top: 7px;
+    /*margin-top: 7px;*/
+    padding-top: 7px;
+    /*border: 1px solid #fff;*/
+    
+}
+
+.mainMenu div.m1.selected {
+    background: url('img/m1.gif');
+}
+.mainMenu div.m2.selected {
+    background: url('img/m2.gif');
+}
+.mainMenu div.m3.selected {
+    background: url('img/m3.gif');
+}
+.mainMenu div.m4.selected {
+    background: url('img/m4.gif');
+}
+.mainMenu div.m5.selected {
+    background: url('img/m5.gif');
+}
+
+.mainMenu div.m1en.selected {
+    background: url('img/m1en.gif');
+}
+.mainMenu div.m2en.selected {
+    background: url('img/m2en.gif');
+}
+.mainMenu div.m4en.selected {
+    background: url('img/m4en.gif');
+}
+.mainMenu div.m5en.selected {
+    background: url('img/m5en.gif');
 }
 
 .mainMenu div.m1
 {
     margin-left: 250px;
-    padding-top: 10px;
+    padding-top: 17px;
+    height: 30px;
 }
 
 .mainMenu div.m2
 {
+    height: 40px;
 }
 
 .mainMenu div.m3
 {
-    padding-top: 10px;
-    margin-left: 60px;
+    padding-top: 17px;
+    margin-left: 65px;
     margin-right: 40px;
+    height: 30px;
 }
 
 .mainMenu div.m4
 {
+    height: 40px;
+}
+
+.mainMenu div.m4en
+{
+    height: 40px;
+    width: 110px;
 }
 
 .mainMenu div.m5
 {
+    height: 40px;
+    width: 110px;
 }
 
 .mainMenu div.m5en {
-    padding-top: 10px;
+    /*padding-top: 17px;*/
+    /*height: 30px;*/
+    height: 40px;
+    margin-left: 30px;
 }

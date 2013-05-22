@@ -155,6 +155,15 @@
     <Content Include="Content\img\header-bg.gif" />
     <Content Include="Content\img\header-bottom-bg.gif" />
     <Content Include="Content\img\header-bottom-bg2.gif" />
+    <Content Include="Content\img\m1.gif" />
+    <Content Include="Content\img\m1en.gif" />
+    <Content Include="Content\img\m2.gif" />
+    <Content Include="Content\img\m2en.gif" />
+    <Content Include="Content\img\m3.gif" />
+    <Content Include="Content\img\m4.gif" />
+    <Content Include="Content\img\m4en.gif" />
+    <Content Include="Content\img\m5.gif" />
+    <Content Include="Content\img\m5en.gif" />
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\pattern1.png" />
     <Content Include="Content\img\pattern2.png" />
@@ -265,6 +274,7 @@
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

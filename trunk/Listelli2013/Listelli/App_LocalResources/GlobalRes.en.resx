@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>About us</value>
   </data>
   <data name="BrandGallery" xml:space="preserve">
     <value>Brand Gallery</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
+    <value>Contact information</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Enter</value>
@@ -133,7 +133,7 @@
     <value>Enter Password</value>
   </data>
   <data name="FactoryCatalogue" xml:space="preserve">
-    <value>Factory Catalogue</value>
+    <value>Factory Catalogues</value>
   </data>
   <data name="LoggedIn" xml:space="preserve">
     <value>You are logged in as</value>
