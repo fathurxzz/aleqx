@@ -9,7 +9,7 @@ using SiteExtensions;
 
 namespace Listelli.Areas.FactoryCatalogue.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CategoryController : DefaultController
     {
         //
@@ -19,13 +19,22 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
         {
             using (var context = new SiteContainer())
             {
+      
                 var model = new FactoryCatalogueModel(CurrentLang, context, null,null);
+
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("LogOn", "Customer");
+                }
+
+
                 this.SetSeoContent(model);
                 ViewBag.CurrentMenuItem = model.Content.Name;
                 return View(model);
             }
         }
 
+        [Authorize]
         public ActionResult Details(string id)
         {
             using (var context = new SiteContainer())
@@ -39,84 +48,6 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
                     return RedirectToAction("Details", "Brand", new {area = "FactoryCatalogue", categoryId=model.Category.Name,id=model.Category.CategoryBrands.First(c=>c.SortOrder==minSortOrder).Name});
                 }
                 return View(model);
-            }
-        }
-
-        //
-        // GET: /FactoryCatalogue/Category/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        } 
-
-        //
-        // POST: /FactoryCatalogue/Category/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /FactoryCatalogue/Category/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /FactoryCatalogue/Category/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /FactoryCatalogue/Category/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /FactoryCatalogue/Category/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
             }
         }
     }
