@@ -43,7 +43,7 @@
                 @Html.LabelFor(model => model.Content)
             </td>
             <td>
-                @Html.TextAreaFor(model => model.Content)
+                @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
                 @Html.ValidationMessageFor(model => model.Content)
             </td>
         </tr>
