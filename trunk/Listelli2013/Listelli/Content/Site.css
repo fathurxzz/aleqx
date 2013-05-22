@@ -224,3 +224,22 @@ body {
     color: #999999;
     font-size: 12px;
 }
+
+.em-link {
+    cursor: pointer;
+    position: absolute;
+    width: 130px;
+    height: 11px;
+    margin-top: 112px;
+    margin-left: 345px;
+}
+
+
+#logo
+{
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    margin-left: 440px;
+    margin-top: 10px;
+}

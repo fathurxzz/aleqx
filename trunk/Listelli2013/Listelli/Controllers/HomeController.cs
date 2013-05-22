@@ -15,7 +15,7 @@ namespace Listelli.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new SiteModel(CurrentLang, context, id);
-
+                ViewBag.IsHomePage = model.IsHomePage;
                 this.SetSeoContent(model);
 
                 ViewBag.CurrentMenuItem = model.Content.Name;
