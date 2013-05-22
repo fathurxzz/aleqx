@@ -19,6 +19,10 @@
     <EntitySet Name="CategoryBrand" EntityType="Site.Store.CategoryBrand" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryBrandItem" EntityType="Site.Store.CategoryBrandItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryBrandItemLang" EntityType="Site.Store.CategoryBrandItemLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArtilceLang" EntityType="Site.Store.ArtilceLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleItem" EntityType="Site.Store.ArticleItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleItemLang" EntityType="Site.Store.ArticleItemLang" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ContentContentLang" Association="Site.Store.ContentContentLang">
       <End Role="Content" EntitySet="Content" />
       <End Role="ContentLang" EntitySet="ContentLang" />
@@ -74,6 +78,26 @@
     <AssociationSet Name="LanguageCategoryBrandItemLang" Association="Site.Store.LanguageCategoryBrandItemLang">
       <End Role="Language" EntitySet="Language" />
       <End Role="CategoryBrandItemLang" EntitySet="CategoryBrandItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleArtilceLang" Association="Site.Store.ArticleArtilceLang">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArtilceLang" EntitySet="ArtilceLang" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleArticleItem" Association="Site.Store.ArticleArticleItem">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleItem" EntitySet="ArticleItem" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleItemArticleItemLang" Association="Site.Store.ArticleItemArticleItemLang">
+      <End Role="ArticleItem" EntitySet="ArticleItem" />
+      <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageArtilceLang" Association="Site.Store.LanguageArtilceLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ArtilceLang" EntitySet="ArtilceLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageArticleItemLang" Association="Site.Store.LanguageArticleItemLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
@@ -194,6 +218,42 @@
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="CategoryBrandItemId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Published" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArtilceLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="PreviewText" Type="longtext" Nullable="false" />
+    <Property Name="ArticleId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContentType" Type="int" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ArticleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleItemLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="ArticleItemId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ContentContentLang">
@@ -364,6 +424,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ArticleArtilceLang">
+    <End Role="Article" Type="Site.Store.Article" Multiplicity="1" />
+    <End Role="ArtilceLang" Type="Site.Store.ArtilceLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArtilceLang">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleArticleItem">
+    <End Role="Article" Type="Site.Store.Article" Multiplicity="1" />
+    <End Role="ArticleItem" Type="Site.Store.ArticleItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItem">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleItemArticleItemLang">
+    <End Role="ArticleItem" Type="Site.Store.ArticleItem" Multiplicity="1" />
+    <End Role="ArticleItemLang" Type="Site.Store.ArticleItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticleItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItemLang">
+        <PropertyRef Name="ArticleItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageArtilceLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="ArtilceLang" Type="Site.Store.ArtilceLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArtilceLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageArticleItemLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="ArticleItemLang" Type="Site.Store.ArticleItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItemLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -438,6 +558,30 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="CategoryBrandItemLang" EntitySet="CategoryBrandItemLang" />
           </AssociationSet>
+          <EntitySet Name="Article" EntityType="Site.Article" />
+          <EntitySet Name="ArtilceLang" EntityType="Site.ArtilceLang" />
+          <EntitySet Name="ArticleItem" EntityType="Site.ArticleItem" />
+          <EntitySet Name="ArticleItemLang" EntityType="Site.ArticleItemLang" />
+          <AssociationSet Name="ArticleArtilceLang" Association="Site.ArticleArtilceLang">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArtilceLang" EntitySet="ArtilceLang" />
+          </AssociationSet>
+          <AssociationSet Name="ArticleArticleItem" Association="Site.ArticleArticleItem">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleItem" EntitySet="ArticleItem" />
+          </AssociationSet>
+          <AssociationSet Name="ArticleItemArticleItemLang" Association="Site.ArticleItemArticleItemLang">
+            <End Role="ArticleItem" EntitySet="ArticleItem" />
+            <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageArtilceLang" Association="Site.LanguageArtilceLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ArtilceLang" EntitySet="ArtilceLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageArticleItemLang" Association="Site.LanguageArticleItemLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -451,6 +595,8 @@
           <NavigationProperty Name="BrandItemLangs" Relationship="Site.LanguageBrandItemLang" FromRole="Language" ToRole="BrandItemLang" />
           <NavigationProperty Name="CategoryLangs" Relationship="Site.LanguageCategoryLang" FromRole="Language" ToRole="CategoryLang" />
           <NavigationProperty Name="CategoryBrandItemLangs" Relationship="Site.LanguageCategoryBrandItemLang" FromRole="Language" ToRole="CategoryBrandItemLang" />
+          <NavigationProperty Name="ArtilceLangs" Relationship="Site.LanguageArtilceLang" FromRole="Language" ToRole="ArtilceLang" />
+          <NavigationProperty Name="ArticleItemLangs" Relationship="Site.LanguageArticleItemLang" FromRole="Language" ToRole="ArticleItemLang" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -755,6 +901,110 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+          <NavigationProperty Name="ArtilceLangs" Relationship="Site.ArticleArtilceLang" FromRole="Article" ToRole="ArtilceLang" />
+          <NavigationProperty Name="ArticleItems" Relationship="Site.ArticleArticleItem" FromRole="Article" ToRole="ArticleItem" />
+        </EntityType>
+        <EntityType Name="ArtilceLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="PreviewText" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Site.ArticleArtilceLang" FromRole="ArtilceLang" ToRole="Article" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageArtilceLang" FromRole="ArtilceLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticleItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="Article" Relationship="Site.ArticleArticleItem" FromRole="ArticleItem" ToRole="Article" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <NavigationProperty Name="ArticleItemLangs" Relationship="Site.ArticleItemArticleItemLang" FromRole="ArticleItem" ToRole="ArticleItemLang" />
+        </EntityType>
+        <EntityType Name="ArticleItemLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="ArticleItem" Relationship="Site.ArticleItemArticleItemLang" FromRole="ArticleItemLang" ToRole="ArticleItem" />
+          <Property Type="Int32" Name="ArticleItemId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageArticleItemLang" FromRole="ArticleItemLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="ArticleArtilceLang">
+          <End Type="Site.Article" Role="Article" Multiplicity="1" />
+          <End Type="Site.ArtilceLang" Role="ArtilceLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArtilceLang">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ArticleArticleItem">
+          <End Type="Site.Article" Role="Article" Multiplicity="1" />
+          <End Type="Site.ArticleItem" Role="ArticleItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItem">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ArticleItemArticleItemLang">
+          <End Type="Site.ArticleItem" Role="ArticleItem" Multiplicity="1" />
+          <End Type="Site.ArticleItemLang" Role="ArticleItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItemLang">
+              <PropertyRef Name="ArticleItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageArtilceLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.ArtilceLang" Role="ArtilceLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArtilceLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageArticleItemLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.ArticleItemLang" Role="ArticleItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItemLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -894,6 +1144,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArtilceLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ArtilceLang)">
+        <MappingFragment StoreEntitySet="ArtilceLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PreviewText" ColumnName="PreviewText" />
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ArticleItem)">
+        <MappingFragment StoreEntitySet="ArticleItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleItemLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ArticleItemLang)">
+        <MappingFragment StoreEntitySet="ArticleItemLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ArticleItemId" ColumnName="ArticleItemId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -922,10 +1212,10 @@
           <ConnectorPoint PointX="5" PointY="1.3939925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageContentLang">
-          <ConnectorPoint PointX="2.375" PointY="2.4637957763671876" />
-          <ConnectorPoint PointX="3.1666666666666665" PointY="2.4637957763671872" />
-          <ConnectorPoint PointX="3.3333333333333335" PointY="2.4637957763671876" />
-          <ConnectorPoint PointX="3.5" PointY="2.4637957763671876" />
+          <ConnectorPoint PointX="2.375" PointY="2.68724609375" />
+          <ConnectorPoint PointX="3.0416666666666665" PointY="2.6872460937499989" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="2.68724609375" />
+          <ConnectorPoint PointX="3.5" PointY="2.68724609375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Brand" Width="1.5" PointX="5.625" PointY="5.875" Height="2.1725878906249996" />
         <EntityTypeShape EntityType="Site.BrandItem" Width="1.5" PointX="7.75" PointY="5.875" Height="2.3648893229166674" />
@@ -995,6 +1285,56 @@
           <ConnectorPoint PointX="13.125" PointY="5.547587890625" />
           <ConnectorPoint PointX="13.125" PointY="4.4324446614583328" />
           <ConnectorPoint PointX="13.5" PointY="4.4324446614583328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="16.25" PointY="0.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.ArtilceLang" Width="1.5" PointX="16.25" PointY="3.25" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Site.ArticleItem" Width="1.5" PointX="18.625" PointY="0.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Site.ArticleItemLang" Width="1.5" PointX="18.5" PointY="3.25" Height="1.7879850260416665" />
+        <AssociationConnector Association="Site.ArticleArtilceLang">
+          <ConnectorPoint PointX="17.234374" PointY="2.4802864583333335" />
+          <ConnectorPoint PointX="17.234374" PointY="3.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.ArticleArticleItem">
+          <ConnectorPoint PointX="17.75" PointY="1.4901432291666668" />
+          <ConnectorPoint PointX="18.625" PointY="1.4901432291666668" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.ArticleItemArticleItemLang">
+          <ConnectorPoint PointX="19.3125" PointY="2.672587890625" />
+          <ConnectorPoint PointX="19.3125" PointY="3.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.LanguageArtilceLang">
+          <ConnectorPoint PointX="2.031252" PointY="2.125" />
+          <ConnectorPoint PointX="2.031252" PointY="1.859375" />
+          <ConnectorPoint PointX="3.1875" PointY="1.859375" />
+          <ConnectorPoint PointX="3.1875" PointY="3.4994921874999996" />
+          <ConnectorPoint PointX="8.65625" PointY="3.4994921874999996" />
+          <ConnectorPoint PointX="8.65625" PointY="5.485087890625" />
+          <ConnectorPoint PointX="13.25" PointY="5.485087890625" />
+          <ConnectorPoint PointX="13.25" PointY="3" />
+          <ConnectorPoint PointX="14.541666666666666" PointY="2.9999999999999996" />
+          <ConnectorPoint PointX="14.708333333333334" PointY="3" />
+          <ConnectorPoint PointX="15.875" PointY="3" />
+          <ConnectorPoint PointX="15.875" PointY="4.4324446614583328" />
+          <ConnectorPoint PointX="16.25" PointY="4.4324446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.LanguageArticleItemLang">
+          <ConnectorPoint PointX="1.218748" PointY="2.125" />
+          <ConnectorPoint PointX="1.218748" PointY="1.84375" />
+          <ConnectorPoint PointX="3.125" PointY="1.84375" />
+          <ConnectorPoint PointX="3.125" PointY="3.4994921874999996" />
+          <ConnectorPoint PointX="8.625" PointY="3.4994921874999996" />
+          <ConnectorPoint PointX="8.625" PointY="5.485087890625" />
+          <ConnectorPoint PointX="8.6666666666666661" PointY="5.4850878906249987" />
+          <ConnectorPoint PointX="8.8333333333333339" PointY="5.485087890625" />
+          <ConnectorPoint PointX="13.1875" PointY="5.485087890625" />
+          <ConnectorPoint PointX="13.1875" PointY="2.984375" />
+          <ConnectorPoint PointX="14.541666666666666" PointY="2.9843749999999996" />
+          <ConnectorPoint PointX="14.708333333333334" PointY="2.984375" />
+          <ConnectorPoint PointX="17.151040666666667" PointY="2.9843749999999996" />
+          <ConnectorPoint PointX="17.317707333333331" PointY="2.984375" />
+          <ConnectorPoint PointX="18.125" PointY="2.984375" />
+          <ConnectorPoint PointX="18.125" PointY="4.3362939453125" />
+          <ConnectorPoint PointX="18.5" PointY="4.3362939453125" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
