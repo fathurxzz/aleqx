@@ -42,7 +42,7 @@ namespace Listelli.Areas.Admin.Controllers
                     var cache = new CategoryBrandItem
                     {
                         CategoryBrand = brand,
-                        Content = HttpUtility.HtmlDecode(model.Text),
+                        Content = HttpUtility.HtmlDecode(model.Content),
                         SortOrder = model.SortOrder
                     };
 
@@ -99,7 +99,7 @@ namespace Listelli.Areas.Admin.Controllers
 
 
                     TryUpdateModel(brandItem, new[] { "Content", "SortOrder" });
-                    brandItem.Content = HttpUtility.HtmlDecode(brandItem.Text);
+                    brandItem.Content = HttpUtility.HtmlDecode(brandItem.Content);
 
                     var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
