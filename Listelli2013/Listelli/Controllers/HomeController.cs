@@ -51,6 +51,7 @@ namespace Listelli.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new ArticlesModel(CurrentLang, context);
+                ViewBag.CurrentMenuItem = "news";
                 return View(model);
             }
         }
