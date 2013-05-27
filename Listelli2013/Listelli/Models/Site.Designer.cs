@@ -8,13 +8,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -33,11 +32,11 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Site", "CategoryBrandCategoryBrandItem", "CategoryBrand", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.CategoryBrand), "CategoryBrandItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.CategoryBrandItem), true)]
 [assembly: EdmRelationshipAttribute("Site", "CategoryBrandItemCategoryBrandItemLang", "CategoryBrandItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.CategoryBrandItem), "CategoryBrandItemLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.CategoryBrandItemLang), true)]
 [assembly: EdmRelationshipAttribute("Site", "LanguageCategoryBrandItemLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "CategoryBrandItemLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.CategoryBrandItemLang), true)]
-[assembly: EdmRelationshipAttribute("Site", "ArticleArtilceLang", "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Article), "ArtilceLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArtilceLang), true)]
 [assembly: EdmRelationshipAttribute("Site", "ArticleArticleItem", "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Article), "ArticleItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArticleItem), true)]
 [assembly: EdmRelationshipAttribute("Site", "ArticleItemArticleItemLang", "ArticleItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.ArticleItem), "ArticleItemLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArticleItemLang), true)]
-[assembly: EdmRelationshipAttribute("Site", "LanguageArtilceLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "ArtilceLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArtilceLang), true)]
+[assembly: EdmRelationshipAttribute("Site", "LanguageArtilceLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "ArtilceLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArticleLang), true)]
 [assembly: EdmRelationshipAttribute("Site", "LanguageArticleItemLang", "Language", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Language), "ArticleItemLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArticleItemLang), true)]
+[assembly: EdmRelationshipAttribute("Site", "ArticleArticleLang", "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Listelli.Models.Article), "ArticleLang", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Listelli.Models.ArticleLang), true)]
 
 #endregion
 
@@ -316,18 +315,18 @@ namespace Listelli.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ArtilceLang> ArtilceLang
+        public ObjectSet<ArticleLang> ArticleLang
         {
             get
             {
-                if ((_ArtilceLang == null))
+                if ((_ArticleLang == null))
                 {
-                    _ArtilceLang = base.CreateObjectSet<ArtilceLang>("ArtilceLang");
+                    _ArticleLang = base.CreateObjectSet<ArticleLang>("ArticleLang");
                 }
-                return _ArtilceLang;
+                return _ArticleLang;
             }
         }
-        private ObjectSet<ArtilceLang> _ArtilceLang;
+        private ObjectSet<ArticleLang> _ArticleLang;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -362,7 +361,6 @@ namespace Listelli.Models
         private ObjectSet<ArticleItemLang> _ArticleItemLang;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -478,11 +476,11 @@ namespace Listelli.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ArtilceLang EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ArticleLang EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToArtilceLang(ArtilceLang artilceLang)
+        public void AddToArticleLang(ArticleLang articleLang)
         {
-            base.AddObject("ArtilceLang", artilceLang);
+            base.AddObject("ArticleLang", articleLang);
         }
     
         /// <summary>
@@ -502,11 +500,11 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -535,7 +533,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -614,31 +611,8 @@ namespace Listelli.Models
         partial void OnPublishedChanged();
 
         #endregion
-
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "ArticleArtilceLang", "ArtilceLang")]
-        public EntityCollection<ArtilceLang> ArtilceLangs
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ArtilceLang>("Site.ArticleArtilceLang", "ArtilceLang");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ArtilceLang>("Site.ArticleArtilceLang", "ArtilceLang", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -661,9 +635,30 @@ namespace Listelli.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ArticleArticleLang", "ArticleLang")]
+        public EntityCollection<ArticleLang> ArticleLangs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ArticleLang>("Site.ArticleArticleLang", "ArticleLang");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ArticleLang>("Site.ArticleArticleLang", "ArticleLang", value);
+                }
+            }
+        }
 
         #endregion
-
     }
     
     /// <summary>
@@ -683,18 +678,19 @@ namespace Listelli.Models
         /// <param name="contentType">Initial value of the ContentType property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
         /// <param name="articleId">Initial value of the ArticleId property.</param>
-        public static ArticleItem CreateArticleItem(global::System.Int32 id, global::System.Int32 contentType, global::System.String imageSource, global::System.Int32 articleId)
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static ArticleItem CreateArticleItem(global::System.Int32 id, global::System.Int32 contentType, global::System.String imageSource, global::System.Int32 articleId, global::System.Int32 sortOrder)
         {
             ArticleItem articleItem = new ArticleItem();
             articleItem.Id = id;
             articleItem.ContentType = contentType;
             articleItem.ImageSource = imageSource;
             articleItem.ArticleId = articleId;
+            articleItem.SortOrder = sortOrder;
             return articleItem;
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -795,9 +791,32 @@ namespace Listelli.Models
         private global::System.Int32 _ArticleId;
         partial void OnArticleIdChanging(global::System.Int32 value);
         partial void OnArticleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -862,7 +881,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -893,7 +911,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -996,7 +1013,6 @@ namespace Listelli.Models
         partial void OnLanguageIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1077,40 +1093,38 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="Site", Name="ArtilceLang")]
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="ArticleLang")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class ArtilceLang : EntityObject
+    public partial class ArticleLang : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new ArtilceLang object.
+        /// Create a new ArticleLang object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="previewText">Initial value of the PreviewText property.</param>
-        /// <param name="articleId">Initial value of the ArticleId property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
         /// <param name="languageId">Initial value of the LanguageId property.</param>
-        public static ArtilceLang CreateArtilceLang(global::System.Int32 id, global::System.String title, global::System.String previewText, global::System.Int32 articleId, global::System.Int32 languageId)
+        /// <param name="articleId">Initial value of the ArticleId property.</param>
+        public static ArticleLang CreateArticleLang(global::System.Int32 id, global::System.String title, global::System.String description, global::System.Int32 languageId, global::System.Int32 articleId)
         {
-            ArtilceLang artilceLang = new ArtilceLang();
-            artilceLang.Id = id;
-            artilceLang.Title = title;
-            artilceLang.PreviewText = previewText;
-            artilceLang.ArticleId = articleId;
-            artilceLang.LanguageId = languageId;
-            return artilceLang;
+            ArticleLang articleLang = new ArticleLang();
+            articleLang.Id = id;
+            articleLang.Title = title;
+            articleLang.Description = description;
+            articleLang.LanguageId = languageId;
+            articleLang.ArticleId = articleId;
+            return articleLang;
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1169,48 +1183,24 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String PreviewText
+        public global::System.String Description
         {
             get
             {
-                return _PreviewText;
+                return _Description;
             }
             set
             {
-                OnPreviewTextChanging(value);
-                ReportPropertyChanging("PreviewText");
-                _PreviewText = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("PreviewText");
-                OnPreviewTextChanged();
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
             }
         }
-        private global::System.String _PreviewText;
-        partial void OnPreviewTextChanging(global::System.String value);
-        partial void OnPreviewTextChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ArticleId
-        {
-            get
-            {
-                return _ArticleId;
-            }
-            set
-            {
-                OnArticleIdChanging(value);
-                ReportPropertyChanging("ArticleId");
-                _ArticleId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ArticleId");
-                OnArticleIdChanged();
-            }
-        }
-        private global::System.Int32 _ArticleId;
-        partial void OnArticleIdChanging(global::System.Int32 value);
-        partial void OnArticleIdChanged();
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1235,49 +1225,34 @@ namespace Listelli.Models
         private global::System.Int32 _LanguageId;
         partial void OnLanguageIdChanging(global::System.Int32 value);
         partial void OnLanguageIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ArticleId
+        {
+            get
+            {
+                return _ArticleId;
+            }
+            set
+            {
+                OnArticleIdChanging(value);
+                ReportPropertyChanging("ArticleId");
+                _ArticleId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ArticleId");
+                OnArticleIdChanged();
+            }
+        }
+        private global::System.Int32 _ArticleId;
+        partial void OnArticleIdChanging(global::System.Int32 value);
+        partial void OnArticleIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "ArticleArtilceLang", "Article")]
-        public Article Article
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Article>("Site.ArticleArtilceLang", "Article").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Article>("Site.ArticleArtilceLang", "Article").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Article> ArticleReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Article>("Site.ArticleArtilceLang", "Article");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Article>("Site.ArticleArtilceLang", "Article", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1316,9 +1291,46 @@ namespace Listelli.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ArticleArticleLang", "Article")]
+        public Article Article
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Article>("Site.ArticleArticleLang", "Article").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Article>("Site.ArticleArticleLang", "Article").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Article> ArticleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Article>("Site.ArticleArticleLang", "Article");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Article>("Site.ArticleArticleLang", "Article", value);
+                }
+            }
+        }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1347,7 +1359,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1450,7 +1461,6 @@ namespace Listelli.Models
         partial void OnImageSourceChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1499,7 +1509,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1530,7 +1539,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1633,7 +1641,6 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1720,7 +1727,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1749,7 +1755,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1828,7 +1833,6 @@ namespace Listelli.Models
         partial void OnBrandItemIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -1871,7 +1875,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -1902,7 +1905,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2005,7 +2007,6 @@ namespace Listelli.Models
         partial void OnBrandItemIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2086,7 +2087,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2117,7 +2117,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2244,7 +2243,6 @@ namespace Listelli.Models
         partial void OnBrandIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2325,7 +2323,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2356,7 +2353,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2459,7 +2455,6 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2508,7 +2503,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2541,7 +2535,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2668,7 +2661,6 @@ namespace Listelli.Models
         partial void OnTitleChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2733,7 +2725,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2762,7 +2753,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -2865,7 +2855,6 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -2930,7 +2919,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -2961,7 +2949,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3088,7 +3075,6 @@ namespace Listelli.Models
         partial void OnLanguageIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3169,7 +3155,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3200,7 +3185,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3303,7 +3287,6 @@ namespace Listelli.Models
         partial void OnLanguageIdChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3384,7 +3367,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3413,7 +3395,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3492,7 +3473,6 @@ namespace Listelli.Models
         partial void OnMainPageChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3519,7 +3499,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3552,7 +3531,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3727,7 +3705,6 @@ namespace Listelli.Models
         partial void OnSeoKeywordsChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -3808,7 +3785,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
     
     /// <summary>
@@ -3837,7 +3813,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -3916,7 +3891,6 @@ namespace Listelli.Models
         partial void OnNameChanged();
 
         #endregion
-
     
         #region Navigation Properties
     
@@ -4037,17 +4011,17 @@ namespace Listelli.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Site", "LanguageArtilceLang", "ArtilceLang")]
-        public EntityCollection<ArtilceLang> ArtilceLangs
+        public EntityCollection<ArticleLang> ArtilceLangs
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ArtilceLang>("Site.LanguageArtilceLang", "ArtilceLang");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ArticleLang>("Site.LanguageArtilceLang", "ArtilceLang");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ArtilceLang>("Site.LanguageArtilceLang", "ArtilceLang", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ArticleLang>("Site.LanguageArtilceLang", "ArtilceLang", value);
                 }
             }
         }
@@ -4075,10 +4049,8 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
 
     #endregion
-
     
 }

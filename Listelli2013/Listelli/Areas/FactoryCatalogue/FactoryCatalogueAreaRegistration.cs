@@ -27,6 +27,7 @@ namespace Listelli.Areas.FactoryCatalogue
                 new { controller = "Customer", action = "LogOn", id = UrlParameter.Optional },
                 constraints: new { lang = @"ru|en" }
             );
+
             context.MapRoute(
                 "FactoryCatalogueRegister",
                 "{lang}/factorycatalogue/register",

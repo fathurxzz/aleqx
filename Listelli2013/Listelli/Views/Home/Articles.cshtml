@@ -1,0 +1,28 @@
+﻿@using Listelli.Models
+@model ArticlesModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = Model.Content.Title })
+}
+@if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+{
+    <div class="adminLinkContainer">
+        @Html.ActionLink("Добавить новость", "Create", "Article", new { area = "Admin" }, new { @class = "adminLink" })
+    </div>
+}
+<div class="articles">
+    @foreach (var article in Model.Articles.OrderByDescending(b => b.Date))
+    {
+        if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || article.Published)
+        {
+            @Html.Partial("Article", article)
+        }
+    }
+</div>
+@section Includes
+{
+    <link href="@Url.Content("~/Content/Articles.css")" rel="stylesheet" type="text/css" />
+}
