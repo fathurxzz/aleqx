@@ -88,6 +88,8 @@
     </Compile>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryBrandController.cs" />
@@ -111,6 +113,11 @@
     <Compile Include="Helpers\WebExtensions.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleItem.cs" />
+    <Compile Include="Models\ArticleItemValidation.cs" />
+    <Compile Include="Models\ArticlesModel.cs" />
+    <Compile Include="Models\ArticleValidation.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\BrandItem.cs" />
     <Compile Include="Models\BrandValidation.cs" />
@@ -135,10 +142,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Articles.css" />
     <Content Include="Content\BrandsGallery.css" />
     <Content Include="Content\FactoryCatalogue.css" />
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\Images\image.gif" />
+    <Content Include="Content\img\arrow-down.png" />
+    <Content Include="Content\img\arrow-up.png" />
     <Content Include="Content\img\book.gif" />
     <Content Include="Content\img\box-bottom.gif" />
     <Content Include="Content\img\box-middle.gif" />
@@ -253,6 +263,11 @@
     <Content Include="Areas\FactoryCatalogue\Views\Customer\Register.cshtml" />
     <Content Include="Areas\FactoryCatalogue\Views\Customer\LogOn.cshtml" />
     <Content Include="Areas\FactoryCatalogue\Views\Shared\UserInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ArticleItem\CreateTextBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\ArticleItem\CreateImageBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\ArticleItem\EditTextBlock.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
@@ -270,6 +285,8 @@
     <Content Include="Views\Shared\Brand.cshtml" />
     <Content Include="Views\Home\BrandDetails.cshtml" />
     <Content Include="Views\Shared\LanguageSwitcher.cshtml" />
+    <Content Include="Views\Home\Articles.cshtml" />
+    <Content Include="Views\Shared\Article.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">

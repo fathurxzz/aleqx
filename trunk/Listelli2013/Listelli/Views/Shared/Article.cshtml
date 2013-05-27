@@ -1,0 +1,58 @@
+﻿@using Listelli
+@using SiteExtensions.Graphics
+@model Listelli.Models.Article
+<div class="article">
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
+        @Html.ActionLink("Редактировать", "Edit", "Article", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("Удалить", "Delete", "Article", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить новость?')" })
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("Добавить текстовый блок", "CreateTextBlock", "ArticleItem", new { area = "Admin", articleId = Model.Id }, new { @class = "adminLink" })
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("Добавить блок изображений", "CreateImageBlock", "ArticleItem", new { area = "Admin", articleId = Model.Id }, new { @class = "adminLink" })
+        
+        
+        if (!Model.Published)
+        {
+        <div class="notPublished">
+            *** не опубликована ***</div>
+        }
+    }
+    <div class="date">@Model.Date.ToShortDateString()</div>
+    <div class="title">@Model.Title</div>
+    <div class="articleContent">
+        <div class="description">
+            @Html.Raw(Model.Description)
+        </div>
+        <div class="fullContent" id="@Model.Id">
+            @foreach (var item in Model.ArticleItems.OrderBy(a => a.SortOrder))
+            {
+                <div class="articleItem">
+                    @if (item.ContentType == 1)
+                    {
+                        @Html.ActionLink("Редактировать", "EditTextBlock", "ArticleItem", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Удалить", "DeleteTextBlock", "ArticleItem", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить текстовый блок?')" })
+                        @Html.Raw("&nbsp;")
+                        <span class="sortOrder">@item.SortOrder</span>
+                        @Html.Raw(item.Text)
+                    }
+                    else
+                    {
+                        if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        {
+                        <div>
+                            @Html.ActionLink("Удалить", "DeleteImageBlock", "ArticleItem", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                            <span class="sortOrder">@item.SortOrder</span>
+                        </div>
+                        }
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articleImage")))
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="button down">
+    </div>
+</div>

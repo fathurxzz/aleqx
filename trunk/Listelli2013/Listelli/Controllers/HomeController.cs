@@ -46,9 +46,16 @@ namespace Listelli.Controllers
             }
         }
 
-        
+        public ActionResult Articles()
+        {
+            using (var context = new SiteContainer())
+            {
+                var model = new ArticlesModel(CurrentLang, context);
+                return View(model);
+            }
+        }
 
-        
+
 
     }
 }
