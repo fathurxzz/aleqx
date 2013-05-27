@@ -130,11 +130,12 @@ body {
 
 .footer 
 {
-    width: 1600px;
+    width: 1400px;
     position: relative;
     margin: 0 auto;
     height: 200px;
     background: url('img/footer-bg.gif');
+    background-position: 50%;
     /*overflow: hidden;*/
 }
 
