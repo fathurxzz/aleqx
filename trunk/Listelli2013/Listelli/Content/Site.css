@@ -230,9 +230,9 @@ body {
     cursor: pointer;
     position: absolute;
     width: 130px;
-    height: 11px;
-    margin-top: 112px;
-    
+    height: 12px;
+    margin-top: 111px;
+    margin-left: 45px;
 }
 
 
@@ -276,3 +276,9 @@ body {
     text-decoration: underline;
 }
 
+.em-link-container {
+     height: 200px;
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+}

@@ -1,15 +1,13 @@
 ﻿.main-page-container {
-    
     width: 1400px;
+    /*width: auto;
+    min-width: 1000px;*/
+    
 }
 
 .footer 
 {
     width: 1400px;
-    /*overflow: hidden;*/
-}
-
-.em-link {
-    
-    margin-left: 245px;
+    /*width: auto;
+    min-width: 1000px;*/
 }
