@@ -17,6 +17,9 @@ a.adminLink
     font-style: normal;
     text-decoration: underline;
 }
+a.adminLink:hover {
+    color: #ffaa00 !important;
+}
 
 .adminEditContentTable
 {
