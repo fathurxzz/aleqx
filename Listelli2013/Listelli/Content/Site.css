@@ -85,7 +85,7 @@ body {
     background: url('img/header-bottom-bg2.gif');
 }
 
-.header .mainMenu {
+.header .mainMenuContainer {
     height: 48px;
     background: url('img/main-menu-bg.gif');
 }
