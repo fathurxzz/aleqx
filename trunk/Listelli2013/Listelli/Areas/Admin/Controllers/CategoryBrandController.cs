@@ -86,8 +86,25 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.CategoryBrand.Include("Category").First(b => b.Id == id);
+                var brand = context.CategoryBrand.Include("Category").Include("CategoryBrandItems").First(b => b.Id == id);
                 var categoryName = brand.Category.Name;
+
+                foreach (var categoryBrandItem in brand.CategoryBrandItems)
+                {
+                    categoryBrandItem.CategoryBrandItemLangs.Load();
+                }
+
+                while (brand.CategoryBrandItems.Any())
+                {
+                    var cbi = brand.CategoryBrandItems.First();
+                    while (cbi.CategoryBrandItemLangs.Any())
+                    {
+                        var cbil = cbi.CategoryBrandItemLangs.First();
+                        context.DeleteObject(cbil);
+                    }
+                    context.DeleteObject(cbi);
+                }
+
                 context.DeleteObject(brand);
                 context.SaveChanges();
                 return RedirectToAction("Details", "Category", new { area = "FactoryCatalogue", id = categoryName });
