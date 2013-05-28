@@ -96,6 +96,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryBrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CategoryController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CustomerController.cs" />
@@ -270,6 +271,7 @@
     <Content Include="Areas\Admin\Views\ArticleItem\CreateTextBlock.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleItem\CreateImageBlock.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleItem\EditTextBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
@@ -301,6 +303,7 @@
     <EmbeddedResource Include="App_LocalResources\GlobalRes.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.en.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
