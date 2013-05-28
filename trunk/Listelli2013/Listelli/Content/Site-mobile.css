@@ -1,1 +1,23 @@
-﻿
+﻿.main-page-container {
+    width: 1200px;
+}
+
+.header .bottom {
+    background-position: 50%;
+}
+.header .bottom2 {
+ background-position: 50%;
+}
+
+.header .mainMenu {
+ background-position: 50%;
+}
+
+.content-container {
+    background-position: 50%;
+}
+
+.footer 
+{
+    width: 1200px;
+}

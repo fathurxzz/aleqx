@@ -185,6 +185,7 @@
     <Content Include="Content\img\title-right.gif" />
     <Content Include="Content\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\Site-main.css" />
     <Content Include="Content\Site-mobile.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />
