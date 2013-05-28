@@ -6,5 +6,12 @@
     <span class="logOut">
         ( @Html.ActionLink(@GlobalRes.LogOut, "LogOff", "Customer", new { area = "FactoryCatalogue" }, null) )    
     </span>
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+{
+    <div class="adminLinkContainer">
+        @Html.ActionLink("Зарегистрированные пользователи", "Index", "Customer", new {area = "Admin"}, new {@class = "adminLink"})
+    </div>
+}
     <div class="shortLine"></div>
 </div>
+
