@@ -23,7 +23,7 @@
             var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
             BasePageExtender.initialize();</script>
             
-            @if (isMobile)
+            @if (!isMobile)
     {
         <link href="@Url.Content("~/Content/Site-mobile.css")" rel="stylesheet"  type="text/css" />
     }
