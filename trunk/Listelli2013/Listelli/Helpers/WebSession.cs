@@ -45,7 +45,13 @@ namespace Listelli.Helpers
                 //return customer.Title;
             if (string.IsNullOrEmpty(userName))
                 return null;
-                return Membership.GetUser(userName).Email;
+
+            if (Membership.GetUser(userName).UserName == "admin")
+            {
+                return Membership.GetUser(userName).UserName;
+            }
+
+            return Membership.GetUser(userName).Email;
             //}
         }
     }

@@ -1,0 +1,31 @@
+﻿@model MembershipUserCollection
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<table class="users">
+    <tr>
+        <th>Имя и фамилия</th>
+        <th>Email (логин)</th>
+    </tr>
+@foreach (MembershipUser user in Model)
+{
+    if (user.UserName=="admin")
+    {
+        continue;
+    }
+    <tr>
+        <td>
+            @user.Email
+        </td>
+        <td>
+            @user.UserName    
+        </td>
+        
+    </tr>
+}
+
+</table>
