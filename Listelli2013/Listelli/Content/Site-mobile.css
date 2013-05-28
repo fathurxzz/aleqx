@@ -1,10 +1,12 @@
 ﻿.main-page-container {
-    width: 1100px;
+    width: auto;
+    min-width: 1000px;
 }
 
 .header .bottom {
     background-position: 50%;
 }
+
 .header .bottom2 {
  background-position: 50%;
 }
@@ -19,11 +21,6 @@
 
 .footer 
 {
-    width: 1100px;
-}
-
-
-.em-link {
-   
-    margin-left: 95px;
+    width: auto;
+    min-width: 1000px;
 }
