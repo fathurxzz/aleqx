@@ -1,8 +1,17 @@
 ﻿.mainMenu
 {
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+    height: 48px;
+    
     text-transform: uppercase;
     font-size: 14px;
     color: #fff;
+}
+
+.mainMenuContainer {
+    
 }
 .mainMenu a
 {
@@ -61,7 +70,7 @@
 
 .mainMenu div.m1
 {
-    margin-left: 250px;
+    margin-left: 50px;
     padding-top: 17px;
     height: 30px;
 }
