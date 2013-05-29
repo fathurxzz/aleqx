@@ -250,6 +250,15 @@ namespace Listelli.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Неправильный email или пароль..
+        /// </summary>
+        public static string WrongLoginOrPassword {
+            get {
+                return ResourceManager.GetString("WrongLoginOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Желаемый пароль.
         /// </summary>
         public static string YourPassword {

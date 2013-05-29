@@ -183,4 +183,7 @@
   <data name="PasswordTip" xml:space="preserve">
     <value>Латинскими символами, маленькими буквами</value>
   </data>
+  <data name="WrongLoginOrPassword" xml:space="preserve">
+    <value>Неправильный email или пароль.</value>
+  </data>
 </root>

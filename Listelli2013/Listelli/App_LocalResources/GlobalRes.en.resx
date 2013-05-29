@@ -183,4 +183,7 @@
   <data name="PasswordTip" xml:space="preserve">
     <value>password tip</value>
   </data>
+  <data name="WrongLoginOrPassword" xml:space="preserve">
+    <value>Wrong Email Or Password</value>
+  </data>
 </root>
