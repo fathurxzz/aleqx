@@ -1,6 +1,7 @@
 ﻿.main-page-container {
     width: auto;
     min-width: 1000px;
+    max-width: 1400px;
 }
 
 .header .bottom {
@@ -23,4 +24,5 @@
 {
     width: auto;
     min-width: 1000px;
+    max-width: 1400px;
 }

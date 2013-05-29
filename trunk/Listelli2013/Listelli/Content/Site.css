@@ -131,7 +131,7 @@ body {
     width: 1400px;
     position: relative;
     margin: 0 auto;
-    height: 200px;
+    height: 202px;
     background: url('img/footer-bg.gif');
     background-position: 50%;
     /*overflow: hidden;*/
@@ -232,7 +232,8 @@ body {
     width: 130px;
     height: 12px;
     margin-top: 111px;
-    margin-left: 45px;
+    margin-left: 465px;
+    /*border: 1px solid #fff;*/
 }
 
 
