@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Listelli.App_LocalResources;
 using Listelli.Controllers;
 using Listelli.Models;
 
@@ -40,7 +41,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", GlobalRes.WrongLoginOrPassword);
                 }
             }
 
