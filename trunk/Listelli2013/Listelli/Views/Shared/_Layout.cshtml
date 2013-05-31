@@ -72,6 +72,9 @@
             <div class="content-center">
                 <div class="content-top">
                 </div>
+                
+                @RenderSection("UserInfoArea",false)
+
                 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                 {
                     <div class="adminLinkContainer">

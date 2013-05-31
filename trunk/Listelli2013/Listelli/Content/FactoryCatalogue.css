@@ -115,6 +115,10 @@
 
 .userInfoArea {
     text-align: center;
+    position: absolute;
+    
+    width: 200px;
+    margin-left: 750px;
 }
 
 .userInfoArea span.userName {

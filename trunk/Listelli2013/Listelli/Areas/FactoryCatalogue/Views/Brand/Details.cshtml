@@ -4,11 +4,16 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section UserInfoArea
+{
+    @Html.Partial("UserInfo")
+}
+
 @section Title
 {
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Link, Title = GlobalRes.FactoryCatalogue, Action = "Index", Controller = "Category" })
 }
-@Html.Partial("UserInfo")
+
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div class="adminLinkContainer">
@@ -64,7 +69,7 @@
         }
         
         <div class="accordion" id="accordion1">
-            @foreach (var item in Model.Brand.CategoryBrandItems)
+            @foreach (var item in Model.Brand.CategoryBrandItems.OrderBy(b=>b.SortOrder))
             {
                 <h3>
                     <span>@item.Title</span>
@@ -75,6 +80,8 @@
                             @Html.ActionLink("Редактировать", "Edit", "CategoryBrandItem", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
                             @Html.Raw("&nbsp;")
                             @Html.ActionLink("Удалить", "Delete", "CategoryBrandItem", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                            @Html.Raw("&nbsp;")
+                            <span class="sortOrder">@item.SortOrder</span>
                             <br/>
                     }
                     @Html.Raw(item.Content)
