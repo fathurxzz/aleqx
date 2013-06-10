@@ -1,0 +1,17 @@
+﻿@using SiteExtensions
+@model SiteExtensions.Menu
+<ul>
+    @foreach (MenuItem item in Model.OrderBy(m => m.SortOrder))
+    {
+        if (item.Current)
+        {
+            <li>
+                @Html.Raw(item.Title)
+            </li>
+        }
+        else
+        {
+        <li>@Html.ActionLink(HttpUtility.HtmlDecode(item.Title), "Index", "Home", new { id = item.ContentName }, null)</li>
+        }
+    }
+</ul>
