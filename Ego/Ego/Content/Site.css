@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
+.clear {
+    clear: both;
+}
 .header {
     height: 392px;
     background: url('img/header-top.gif') no-repeat;
@@ -96,4 +98,50 @@
     background: url('img/footer.gif') no-repeat;
     background-position: bottom;
     padding-top: 8px;
+}
+
+.productsContainer {
+    margin-bottom: 50px;
+}
+
+.product {
+    width: 316px;
+    float: left;
+}
+
+.product .productImage {
+    height: 446px;
+ 
+}
+
+.productPreviews {
+    /*position: absolute;*/
+    
+    margin-left: 350px;
+    width: 384px;
+}
+
+.productPreview {
+    float: left;
+    width: 118px;
+    height: 168px;
+    margin: 5px;
+}
+
+.pager {
+    padding: 50px;
+    background-color: #f6f6f6;
+    font-size: 18px;
+    font-family: CharterITCBold;
+    color: #000;
+    text-align: center;
+    margin: 5px;
+}
+
+.pager a {
+    color: #a3a3a3;
+}
+
+.productPreview {
+    cursor: pointer;
 }
