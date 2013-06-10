@@ -1,0 +1,14 @@
+﻿@model Ego.Models.SiteModel
+@section MainMenu
+{
+    @Html.Partial("MainMenu", Model.Menu)
+}
+@if (Request.IsAuthenticated)
+{
+    
+    <div class="adminLinkContainer">
+        @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+    </div>
+}
+
+@Html.Raw(Model.Content.Text)
