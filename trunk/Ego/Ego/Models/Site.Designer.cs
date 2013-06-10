@@ -80,6 +80,38 @@ namespace Ego.Models
             }
         }
         private ObjectSet<Content> _Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Product> Product
+        {
+            get
+            {
+                if ((_Product == null))
+                {
+                    _Product = base.CreateObjectSet<Product>("Product");
+                }
+                return _Product;
+            }
+        }
+        private ObjectSet<Product> _Product;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Order> Order
+        {
+            get
+            {
+                if ((_Order == null))
+                {
+                    _Order = base.CreateObjectSet<Order>("Order");
+                }
+                return _Order;
+            }
+        }
+        private ObjectSet<Order> _Order;
 
         #endregion
         #region AddTo Methods
@@ -90,6 +122,22 @@ namespace Ego.Models
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Product EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProduct(Product product)
+        {
+            base.AddObject("Product", product);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Order EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToOrder(Order order)
+        {
+            base.AddObject("Order", order);
         }
 
         #endregion
@@ -326,6 +374,244 @@ namespace Ego.Models
         private global::System.Boolean _MainPage;
         partial void OnMainPageChanging(global::System.Boolean value);
         partial void OnMainPageChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Order")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Order : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Order object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="productId">Initial value of the ProductId property.</param>
+        public static Order CreateOrder(global::System.Int32 id, global::System.String productId)
+        {
+            Order order = new Order();
+            order.Id = id;
+            order.ProductId = productId;
+            return order;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ProductId
+        {
+            get
+            {
+                return _ProductId;
+            }
+            set
+            {
+                OnProductIdChanging(value);
+                ReportPropertyChanging("ProductId");
+                _ProductId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ProductId");
+                OnProductIdChanged();
+            }
+        }
+        private global::System.String _ProductId;
+        partial void OnProductIdChanging(global::System.String value);
+        partial void OnProductIdChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Product")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Product : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Product object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="previewImageSource">Initial value of the PreviewImageSource property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        public static Product CreateProduct(global::System.Int32 id, global::System.String imageSource, global::System.String previewImageSource, global::System.Int32 sortOrder)
+        {
+            Product product = new Product();
+            product.Id = id;
+            product.ImageSource = imageSource;
+            product.PreviewImageSource = previewImageSource;
+            product.SortOrder = sortOrder;
+            return product;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String PreviewImageSource
+        {
+            get
+            {
+                return _PreviewImageSource;
+            }
+            set
+            {
+                OnPreviewImageSourceChanging(value);
+                ReportPropertyChanging("PreviewImageSource");
+                _PreviewImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("PreviewImageSource");
+                OnPreviewImageSourceChanged();
+            }
+        }
+        private global::System.String _PreviewImageSource;
+        partial void OnPreviewImageSourceChanging(global::System.String value);
+        partial void OnPreviewImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
 
         #endregion
     

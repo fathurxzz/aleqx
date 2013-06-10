@@ -1,4 +1,6 @@
-﻿@model Ego.Models.SiteModel
+﻿@using Ego
+@using SiteExtensions.Graphics
+@model Ego.Models.SiteModel
 @section MainMenu
 {
     @Html.Partial("MainMenu", Model.Menu)
@@ -10,5 +12,50 @@
         @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
     </div>
 }
-
 @Html.Raw(Model.Content.Text)
+@if (Request.IsAuthenticated && Model.Content.Name == "gallery")
+{
+    @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin" }, new { @class = "adminLink" })
+}
+@if (Model.Products != null)
+{
+    @Html.Hidden("firstImageId", Model.Products.First().Id)
+    @Html.Hidden("firstImageDescription", Model.Products.First().Description)
+    <div class="productsContainer">
+        <div class="product">
+            <div class="productImage">
+                <a href="#" id="pictureLink" class="fancyPopup">
+                    <img src="" alt="" id="pictureContainer" />
+                </a>
+            </div>
+            <div class="description">
+                
+            </div>
+        </div>
+        <div class="productPreviews">
+            @foreach (var product in Model.Products)
+            {
+                <div class="productPreview" onclick="ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description')">
+                    @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview"), product.Description))
+                </div>
+            }
+            <div class="clear">
+            </div>
+            <div class="pager">
+                1 2 3 4 5 6 7 8 9</div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+}
+@section Includes
+{
+    <script src="@Url.Content("~/Scripts/Catalogue.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        ProjectCatalogue.initialize();
+
+        $(function () {
+            ProjectCatalogue.setFirstImage();
+        });
+    </script>
+}

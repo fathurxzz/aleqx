@@ -7,6 +7,8 @@
     <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Site.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="Site.Store.Order" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="Content">
     <Key>
@@ -21,12 +23,31 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="PreviewImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Description" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="longtext" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Site" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="SiteContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Content" EntityType="Site.Content" />
+          <EntitySet Name="Product" EntityType="Site.Product" />
+          <EntitySet Name="Order" EntityType="Site.Order" />
         </EntityContainer>
         <EntityType Name="Content">
           <Key>
@@ -40,6 +61,23 @@
           <Property Type="String" Name="SeoDescription" />
           <Property Type="String" Name="SeoKeywords" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="PreviewImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="Description" FixedLength="true" MaxLength="500" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ProductId" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -58,6 +96,25 @@
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="MainPage" ColumnName="MainPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="PreviewImageSource" ColumnName="PreviewImageSource" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Order)">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,6 +139,8 @@
     <edmx:Diagrams>
       <Diagram Name="Site" >
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="5.75" PointY="1.625" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="Site.Product" Width="1.5" PointX="7.875" PointY="1.625" Height="1.9802864583333331" />
+        <EntityTypeShape EntityType="Site.Order" Width="1.5" PointX="10" PointY="1.625" Height="1.4033821614583326" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
