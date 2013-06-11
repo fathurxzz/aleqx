@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 06/10/2013 15:28:31
+-- Date Created: 06/11/2013 16:44:28
 -- Generated from EDMX file: D:\projects\Ego\Ego\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -57,7 +57,14 @@ CREATE TABLE `Product` (
 
 CREATE TABLE `Order` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `ProductId` longtext  NOT NULL
+    `ProductId` int  NOT NULL,
+    `Name` varchar( 200 )  NULL,
+    `Phone` varchar( 200 )  NULL,
+    `Email` varchar( 200 )  NULL,
+    `Size` varchar( 200 )  NULL,
+    `Description` varchar( 200 )  NULL,
+    `ProductImageSource` TEXT  NULL,
+    `Date` datetime  NOT NULL
 );
 
 
