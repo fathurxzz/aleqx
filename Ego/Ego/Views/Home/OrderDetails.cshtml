@@ -11,43 +11,35 @@
     @Html.Partial("MainMenu", Model.Menu)
 }
 <h2>
-    OrderDetails</h2>
-<fieldset>
-    <legend>Order</legend>
-    <div class="display-label">
-        Date</div>
-    <div class="display-field">
-        @Model.Order.Date
-    </div>
-   
-    <div class="display-label">
-        Name</div>
-    <div class="display-field">
-        @Model.Order.Name
-    </div>
-    <div class="display-label">
-        Phone</div>
-    <div class="display-field">
-        @Model.Order.Phone
-    </div>
-    <div class="display-label">
-        Email</div>
-    <div class="display-field">
-        @Model.Order.Email
-    </div>
-    <div class="display-label">
-        Size</div>
-    <div class="display-field">
-        @Model.Order.Size
-    </div>
-    <div class="display-label">
-        Description</div>
-    <div class="display-field">
-        @Model.Order.Description
-    </div>
-    <div class="display-label">
-        ProductImageSource</div>
+    Информация о заказе</h2>
+    
+    
+<table>
+    <tr>
+        <td>Дата</td>
+        <td>@Model.Order.Date</td>
+    </tr>
+    <tr>
+        <td>Имя</td>
+        <td>@Model.Order.Name</td>
+    </tr>
+    <tr>
+        <td>Телефон</td>
+        <td>@Model.Order.Phone</td>
+    </tr>
+    <tr>
+        <td>Электропочта</td>
+        <td>@Model.Order.Email</td>
+    </tr>
+    <tr>
+        <td>Размер</td>
+        <td>@Model.Order.Size</td>
+    </tr>
+    <tr>
+        <td>Дополнительный комментарий</td>
+        <td>@Model.Order.Description</td>
+    </tr>
+</table>
     <div class="display-field">
         @Html.Raw(Html.CachedImage("~/Content/Images/", @Model.Order.ProductImageSource, SiteSettings.GetThumbnail("product")))
     </div>
-</fieldset>
