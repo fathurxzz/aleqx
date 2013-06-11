@@ -39,7 +39,7 @@ namespace Ego.Controllers
             using (var context = new SiteContainer())
             {
                 var order = new Order {Date = DateTime.Now};
-                TryUpdateModel(order, new[] {"ProductId", "ProductImageSource", "Name", "Email", "Phone", "Description"});
+                TryUpdateModel(order, new[] {"ProductId", "ProductImageSource", "Name", "Email", "Phone", "Description","Size"});
                 context.AddToOrder(order);
                 context.SaveChanges();
 
