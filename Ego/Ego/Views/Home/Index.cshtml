@@ -29,23 +29,21 @@
                 </a>
             </div>
             <div class="description">
-                
             </div>
         </div>
         <div class="productPreviews">
-            @foreach (var product in Model.Products)
-            {
-                <div class="productPreview" onclick="ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description')">
-                    @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview"), product.Description))
-                </div>
-            }
-            <div class="clear">
+            <div style="height: 360px;">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description') ">
+                        @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview"), product.Description))
+                    </div>
+             
+                }
             </div>
-            <div class="pager">
-                1 2 3 4 5 6 7 8 9</div>
+            @Html.Partial("Paging")
         </div>
-        <div class="clear">
-        </div>
+        <div class="clear"></div>
     </div>
 }
 @section Includes

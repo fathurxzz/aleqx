@@ -6,7 +6,7 @@ using SiteExtensions;
 
 namespace Ego.Models
 {
-    public class SiteModel:ISiteModel 
+    public class SiteModel : ISiteModel
     {
         public string Title { get; set; }
         public string SeoDescription { get; set; }
@@ -16,15 +16,15 @@ namespace Ego.Models
         public Content Content { get; set; }
 
         public IEnumerable<Product> Products { get; set; }
+        public int TotalProductsCount { get; set; }
 
 
-
-        public SiteModel(SiteContainer context, string contentId)
+        public SiteModel(SiteContainer context, string contentId, int? page)
         {
             Title = HttpUtility.HtmlDecode("Я &mdash; ЭГО");
 
 
-            
+
             Content = context.Content.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
 
             var contents = context.Content.ToList();
@@ -47,12 +47,36 @@ namespace Ego.Models
 
             if (Content.Name == "gallery")
             {
-                Products = context.Product.ToList();
+                IQueryable<Product> products = context.Product;
+                TotalProductsCount = products.Count();
+                products = ApplyOrdering(products, "asc");
+                products = ApplyPaging(products, page);
+                Products = products.ToList();
+
             }
 
             SeoDescription = Content.SeoDescription;
             SeoKeywords = Content.SeoKeywords;
             IsHomePage = Content.MainPage;
+        }
+
+        IQueryable<Product> ApplyOrdering(IQueryable<Product> products, string direction)
+        {
+            if (products == null)
+                return null;
+            
+            return direction == "desc" ? products.OrderByDescending(p => p.Id) : products.OrderBy(p => p.Id);
+        }
+
+        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page)
+        {
+            if (products == null)
+                return null;
+            int currentPage = page ?? 0;
+            int pageSize = SiteSettings.PageSize;
+            if (page < 0)
+                return products;
+            return products.Skip(currentPage * pageSize).Take(pageSize);
         }
     }
 }

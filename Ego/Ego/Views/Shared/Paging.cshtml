@@ -1,0 +1,29 @@
+﻿@using Ego
+@{
+    int pageSize = SiteSettings.PageSize;
+    int totalCount = (int)ViewBag.TotalCount;
+    int pageCount = totalCount / pageSize;
+    int page = (int)ViewBag.Page;
+    pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
+    
+}
+<div class="pager">
+    @if (totalCount > 0)
+    {
+        for (int i = 0; i < pageCount; i++)
+        {
+            if (i == page)
+            {
+                <span class="current">
+                    @Html.Raw((i + 1).ToString())
+                </span>
+            }
+            else
+            {
+                <span>
+                    @Html.ActionLink((i + 1).ToString(), "Index", "Home", new { id = "gallery", page = i }, null)
+                </span>
+            }
+        }
+    }
+</div>
