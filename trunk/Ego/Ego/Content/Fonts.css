@@ -9,3 +9,10 @@
     font-family: "CharterITCBold";
     src: url('fonts/CharterITCBold.otf');
 }
+
+@font-face
+{
+    font-family: "CharterITCItalic";
+    src: url('fonts/CharterITCItalic.otf');
+}
+
