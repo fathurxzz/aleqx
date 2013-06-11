@@ -13,7 +13,7 @@
     @Html.HiddenFor(model => model.ProductImageSource)
     <div class="productDetails">
         <div class="productDetailsImage">
-            @Html.Raw(Html.CachedImage("~/Content/Images/", (string)ViewBag.ProductImageSource, SiteSettings.GetThumbnail("product")))
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ProductImageSource, SiteSettings.GetThumbnail("product")))
         </div>
         <div class="orderForm">
             <div>

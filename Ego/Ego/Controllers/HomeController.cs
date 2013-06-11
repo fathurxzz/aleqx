@@ -53,12 +53,21 @@ namespace Ego.Controllers
                     .Select(s => new MailAddress(s))
                     .ToList();
 
-                var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, "Форма обратной связи", "FeedbackTemplate.htm", null, true, form["Name"], form["Email"], form["ProductId"]);
+                var result = Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, "Я - Эго. Форма заказа", "FeedbackTemplate.htm", null, true, form["Name"], form["Email"], form["ProductId"], form["Phone"],order.Id);
 
 
 
 
                 return RedirectToAction("Index", "Home", new {id = "gallery"});
+            }
+        }
+
+        public ActionResult OrderDetails(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var model = new OrderModel(context, id);
+                return View(model);
             }
         }
     }
