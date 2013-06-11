@@ -18,7 +18,7 @@
 {
     @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin" }, new { @class = "adminLink" })
 }
-@if (Model.Products != null)
+@if (Model.Products != null&&Model.Products.Any())
 {
     @Html.Hidden("firstImageId", Model.Products.First().Id)
     @Html.Hidden("firstImageDescription", Model.Products.First().Description)

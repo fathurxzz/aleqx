@@ -1,0 +1,53 @@
+﻿@using Ego
+@using SiteExtensions.Graphics
+@model Ego.Models.OrderModel
+@{
+    ViewBag.Title = "OrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MainMenu
+{
+    @Html.Partial("MainMenu", Model.Menu)
+}
+<h2>
+    OrderDetails</h2>
+<fieldset>
+    <legend>Order</legend>
+    <div class="display-label">
+        Date</div>
+    <div class="display-field">
+        @Model.Order.Date
+    </div>
+   
+    <div class="display-label">
+        Name</div>
+    <div class="display-field">
+        @Model.Order.Name
+    </div>
+    <div class="display-label">
+        Phone</div>
+    <div class="display-field">
+        @Model.Order.Phone
+    </div>
+    <div class="display-label">
+        Email</div>
+    <div class="display-field">
+        @Model.Order.Email
+    </div>
+    <div class="display-label">
+        Size</div>
+    <div class="display-field">
+        @Model.Order.Size
+    </div>
+    <div class="display-label">
+        Description</div>
+    <div class="display-field">
+        @Model.Order.Description
+    </div>
+    <div class="display-label">
+        ProductImageSource</div>
+    <div class="display-field">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", @Model.Order.ProductImageSource, SiteSettings.GetThumbnail("product")))
+    </div>
+</fieldset>
