@@ -101,7 +101,7 @@
 }
 
 .productsContainer {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .product {
@@ -119,6 +119,7 @@
     
     margin-left: 350px;
     width: 384px;
+    
 }
 
 .productPreview {
@@ -129,7 +130,7 @@
 }
 
 .pager {
-    padding: 50px;
+    padding: 30px;
     background-color: #f6f6f6;
     font-size: 18px;
     font-family: CharterITCBold;
@@ -137,6 +138,13 @@
     text-align: center;
     margin: 5px;
 }
+.pager span {
+    padding: 5px;
+}
+
+/*.pager div {
+    float: left;
+}*/
 
 .pager a {
     color: #a3a3a3;

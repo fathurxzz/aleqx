@@ -10,6 +10,7 @@ namespace Ego
     {
         public static Dictionary<string, ThumbnailPicture> Thumbnails { get; private set; }
 
+        public static int PageSize{ get { return 6; } }
 
         static SiteSettings()
         {

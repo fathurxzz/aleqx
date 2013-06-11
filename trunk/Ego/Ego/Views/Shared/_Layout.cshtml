@@ -14,9 +14,12 @@
 </head>
 <body>
     <div class="header">
-        <div class="adminLinkContainer">
-        @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { area = "" }, new { @class = "adminLink" })
-    </div>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new {area = ""}, new {@class = "adminLink"})
+            </div>
+        }
         <div class="top">
             <div class="logo-container">
                 <div class="em-link">
