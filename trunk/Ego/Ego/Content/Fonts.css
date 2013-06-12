@@ -16,3 +16,9 @@
     src: url('fonts/CharterITCItalic.otf');
 }
 
+@font-face
+{
+    font-family: "CharterITCBoldItalic";
+    src: url('fonts/CharterITCBoldItalic.otf');
+}
+
