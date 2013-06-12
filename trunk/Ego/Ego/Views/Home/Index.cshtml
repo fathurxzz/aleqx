@@ -39,7 +39,12 @@
                     <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description') ">
                         @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview"), product.Description))
                     </div>
-             
+                     if (Request.IsAuthenticated)
+                     {
+                         <div class="abs">
+                             @Html.ActionLink("Удалить", "Delete", "Product", new {area = "Admin", id = product.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить продукт?')"})
+                         </div>
+                     }
                 }
             </div>
             @Html.Partial("Paging")

@@ -4,12 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ego.Helpers;
 using Ego.Models;
 using SiteExtensions;
 using SiteExtensions.Graphics;
 
 namespace Ego.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         public ActionResult Create()
@@ -82,7 +84,15 @@ namespace Ego.Areas.Admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var product = context.Product.First(p => p.Id == id);
+                ImageHelper.DeleteImage(product.ImageSource);
+                ImageHelper.DeleteImage(product.PreviewImageSource);
+                context.DeleteObject(product);
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
+            }
         }
     }
 }
