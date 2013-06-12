@@ -49,14 +49,14 @@ body {
     width: 1100px;
     height: 300px;
     background: url('img/logo.gif') no-repeat;
-    background-position: 400px 40px;
+    background-position: 455px 40px;
 }
 
 .em-link {
     width: 265px;
     height: 16px;
     position: absolute;
-    margin: 125px 0 0 720px;
+    margin: 125px 0 0 775px;
     /*border: 1px solid red;*/
     cursor: pointer;
 }
@@ -252,7 +252,9 @@ body {
     height: 22px;
     border-radius: 15px;
     padding-left: 10px;
-    font-family: CharterITCBoldItalic;
+    /*font-family: CharterITCBoldItalic;*/
+    font-family: Georgia;
+    font-style: italic;
     color: #cccccc;
 }
 
@@ -261,7 +263,9 @@ body {
     border-radius: 15px;
     padding-left: 10px;
     padding-top: 5px;
-    font-family: CharterITCBoldItalic;
+    /*font-family: CharterITCBoldItalic;*/
+    font-family: Georgia;
+    font-style: italic;
     color: #cccccc;
 }
 
@@ -278,4 +282,13 @@ table.orders td
 {
     padding:  5px;
     border: 1px dashed #ccc;
+}
+
+
+#logo {
+    width: 175px;
+    height: 220px;
+    position: absolute;
+    margin-left: 455px;
+    margin-top: 45px;
 }
