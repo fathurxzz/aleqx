@@ -62,13 +62,6 @@ namespace Ego.Controllers
             }
         }
 
-        public ActionResult OrderDetails(int id)
-        {
-            using (var context = new SiteContainer())
-            {
-                var model = new OrderModel(context, id);
-                return View(model);
-            }
-        }
+        
     }
 }
