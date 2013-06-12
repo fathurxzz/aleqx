@@ -9,13 +9,11 @@
 {
     @Html.Partial("MainMenu", Model.Menu)
 }
+<div>
+    @Html.ActionLink("Все заказы", "Index", "Order", new { area = "Admin" }, new { @class = "adminLink" })
+</div>
 <h2>
     Информация о заказе</h2>
-    
-    
-<div>
-    @Html.ActionLink("Все заказы","Index","Order",new{area="Admin"},null)
-</div>
 <table>
     <tr>
         <td>
