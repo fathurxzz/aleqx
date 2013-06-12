@@ -326,6 +326,16 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
+        public static string CachedImage2(this HtmlHelper helper, string originalPath, string fileName, string fileName2, ThumbnailPicture thumbnail, string description)
+        {
+            StringBuilder sb = new StringBuilder();
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" description=\"{2}\" width=\"{3}\" height=\"{4}\" />";
+            //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail), fileName2, description, _width, _height);
+            return sb.ToString();
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
