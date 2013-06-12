@@ -26,40 +26,53 @@ namespace Ego.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection, HttpPostedFileBase fileUpload, HttpPostedFileBase previewFileUpload)
         {
-            try
+            using (var context = new SiteContainer())
             {
-                using (var context = new SiteContainer())
+                if (fileUpload != null && previewFileUpload != null)
                 {
-                    if (fileUpload != null && previewFileUpload != null)
-                    {
-                        var product = new Product();
+                    var product = new Product();
 
-                        TryUpdateModel(product, new[] { "SortOrder", "Description" });
+                    TryUpdateModel(product, new[] { "SortOrder", "Description" });
 
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 500);
-                        product.ImageSource = fileName;
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 500);
+                    product.ImageSource = fileName;
 
-                        fileName = IOHelper.GetUniqueFileName("~/Content/Images", previewFileUpload.FileName);
-                        filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        GraphicsHelper.SaveOriginalImage(filePath, fileName, previewFileUpload, 500);
-                        product.PreviewImageSource = fileName;
+                    fileName = IOHelper.GetUniqueFileName("~/Content/Images", previewFileUpload.FileName);
+                    filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, previewFileUpload, 500);
+                    product.PreviewImageSource = fileName;
 
-                        context.AddToProduct(product);
+                    context.AddToProduct(product);
 
-                        context.SaveChanges();
-                    }
-
-                    return RedirectToAction("Index", "Home", new { area="", id = "gallery" });
+                    context.SaveChanges();
                 }
+
+                return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
             }
-            catch
+        }
+
+
+        public ActionResult CustomCreate()
+        {
+            using (var context = new SiteContainer())
             {
-                return View();
+                int maxSortOrder = context.Product.Max(c => (int?)c.SortOrder) ?? 0;
+                return View(new Product { SortOrder = maxSortOrder + 1 });
             }
+        }
+
+        [HttpPost]
+        public ActionResult CustomCreate(FormCollection form, HttpPostedFileBase files)
+        {
+            using (var context = new SiteContainer())
+            {
+
+            }
+            return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
         }
 
         public ActionResult Edit(int id)
@@ -94,5 +107,7 @@ namespace Ego.Areas.Admin.Controllers
                 return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
             }
         }
+
+
     }
 }

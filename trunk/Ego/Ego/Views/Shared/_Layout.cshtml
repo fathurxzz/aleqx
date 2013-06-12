@@ -18,8 +18,11 @@
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     
     <script type="text/javascript">
+        var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
         $(function () {
-           
+           if (!window.isHomePage) {
+                $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
+            }
         });
     </script>
 
@@ -35,6 +38,7 @@
         }
         <div class="top">
             <div class="logo-container">
+                <div id="logo"></div>
                 <div class="em-link">
                 </div>
             </div>

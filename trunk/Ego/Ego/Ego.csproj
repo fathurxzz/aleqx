@@ -128,6 +128,13 @@
     <Content Include="Content\fancybox\fancy_title_right.png" />
     <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\Fonts.css" />
+    <Content Include="Content\imgareaselect\border-anim-h.gif" />
+    <Content Include="Content\imgareaselect\border-anim-v.gif" />
+    <Content Include="Content\imgareaselect\border-h.gif" />
+    <Content Include="Content\imgareaselect\border-v.gif" />
+    <Content Include="Content\imgareaselect\imgareaselect-animated.css" />
+    <Content Include="Content\imgareaselect\imgareaselect-default.css" />
+    <Content Include="Content\imgareaselect\imgareaselect-deprecated.css" />
     <Content Include="Content\img\footer.gif" />
     <Content Include="Content\img\header-bottom.gif" />
     <Content Include="Content\img\header-top.gif" />
@@ -147,6 +154,7 @@
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.imgareaselect.pack.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -204,6 +212,7 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\CustomCreate.cshtml" />
     <None Include="Content\fonts\CharterITC.otf" />
     <None Include="Content\fonts\CharterITCBold.otf" />
     <None Include="Content\fonts\CharterITCBoldItalic.otf" />
