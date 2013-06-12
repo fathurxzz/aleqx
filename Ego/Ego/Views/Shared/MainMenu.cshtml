@@ -11,7 +11,7 @@
         }
         else
         {
-        <li>@Html.ActionLink(HttpUtility.HtmlDecode(item.Title), "Index", "Home", new { id = item.ContentName }, null)</li>
+        <li>@Html.ActionLink(HttpUtility.HtmlDecode(item.Title), "Index", "Home", new {area="", id = item.ContentName }, null)</li>
         }
     }
 </ul>
