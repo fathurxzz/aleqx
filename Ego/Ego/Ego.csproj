@@ -133,6 +133,7 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\menu.png" />
     <Content Include="Content\img\order-bg.gif" />
+    <Content Include="Content\img\order-button.gif" />
     <Content Include="Content\MailTemplates\FeedbackTemplate.htm" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />

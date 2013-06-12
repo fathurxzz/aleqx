@@ -11,23 +11,20 @@
         @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
     </div>
 }
-
-
 @Html.Raw(Model.Content.Text)
 @if (Request.IsAuthenticated && Model.Content.Name == "gallery")
 {
     @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin" }, new { @class = "adminLink" })
 }
-@if (Model.Products != null&&Model.Products.Any())
+@if (Model.Products != null && Model.Products.Any())
 {
     @Html.Hidden("firstImageId", Model.Products.First().Id)
     @Html.Hidden("firstImageDescription", Model.Products.First().Description)
     <div class="productsContainer">
         <div class="product">
             <div class="productImage">
-                <a href="#" id="pictureLink" class="fancyPopUp">
-                    <img src="" alt="" id="pictureContainer" />
-                </a>
+                <img src="" alt="" id="pictureContainer" />
+                <a href="#" id="pictureLink" class="fancyPopUp"></a>
             </div>
             <div class="description">
             </div>
@@ -36,20 +33,24 @@
             <div style="height: 360px;">
                 @foreach (var product in Model.Products)
                 {
-                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description') ">
+                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description',this) ">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="abs">
+                                @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
+                            </div>
+                        }
+                        <div class="selectedArea"></div>
                         @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview"), product.Description))
+                        
                     </div>
-                     if (Request.IsAuthenticated)
-                     {
-                         <div class="abs">
-                             @Html.ActionLink("Удалить", "Delete", "Product", new {area = "Admin", id = product.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить продукт?')"})
-                         </div>
-                     }
+                     
                 }
             </div>
             @Html.Partial("Paging")
         </div>
-        <div class="clear"></div>
+        <div class="clear">
+        </div>
     </div>
 }
 @section Includes
