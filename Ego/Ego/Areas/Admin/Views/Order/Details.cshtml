@@ -2,7 +2,7 @@
 @using SiteExtensions.Graphics
 @model Ego.Models.OrderModel
 @{
-    ViewBag.Title = "OrderDetails";
+    ViewBag.Title = "Информация о заказе";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section MainMenu
@@ -11,6 +11,11 @@
 }
 <h2>
     Информация о заказе</h2>
+    
+    
+<div>
+    @Html.ActionLink("Все заказы","Index","Order",new{area="Admin"},null)
+</div>
 <table>
     <tr>
         <td>
@@ -49,7 +54,7 @@
     </tr>
     <tr>
         <td>
-            Дополнительный комментарий
+            Дополнительные комментарии
         </td>
         <td>@Model.Order.Description
         </td>

@@ -15,7 +15,11 @@ namespace Ego.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var model = new OrderModel(context, null);
+                return View(model);
+            }
         }
 
         public ActionResult Details(int id)

@@ -1,0 +1,45 @@
+﻿@using Ego
+@using SiteExtensions.Graphics
+@model Ego.Models.OrderModel
+
+@{
+    ViewBag.Title = "Заказы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section MainMenu
+{
+    @Html.Partial("MainMenu", Model.Menu)
+}
+
+<h2>Заказы</h2>
+
+<div>
+    <table class="orders">
+        <tr>
+            <th>Номер</th>
+            <th>Дата</th>
+            <th>Имя</th>
+            <th>Телефон</th>
+            <th>Электропочта</th>
+            <th>Размер</th>
+            <th>Дополнительные комментарии</th>
+            <th>Изображение</th>
+        </tr>
+    
+    @foreach (var order in Model.Orders.OrderByDescending(o=>o.Date))
+    {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.Date</td>
+            <td>@order.Name</td>
+            <td>@order.Phone</td>
+            <td>@order.Email</td>
+            <td>@order.Size</td>
+            <td>@order.Description</td>
+            <td>@Html.Raw(Html.CachedImage("~/Content/Images/", order.ProductImageSource, SiteSettings.GetThumbnail("order")))</td>
+        </tr>
+        
+    }
+    </table>
+
+</div>

@@ -17,7 +17,8 @@ namespace Ego
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
                                   {"productPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =168 , Width =118 }, CacheFolder = "productPreview", ScaleMode = ScaleMode.Crop}},
-                                  {"product",new ThumbnailPicture{ PictureSize =new PictureSize {Height =446 , Width = 316}, CacheFolder = "product", ScaleMode = ScaleMode.Crop}}
+                                  {"product",new ThumbnailPicture{ PictureSize =new PictureSize {Height =446 , Width = 316}, CacheFolder = "product", ScaleMode = ScaleMode.Crop}},
+                                  {"order",new ThumbnailPicture{ PictureSize =new PictureSize {Height =200 , Width = 200}, CacheFolder = "order", ScaleMode = ScaleMode.Crop}}
                               };
         }
 
