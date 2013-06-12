@@ -7,6 +7,7 @@ using Ego.Models;
 
 namespace Ego.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         public ActionResult Edit(int id)
