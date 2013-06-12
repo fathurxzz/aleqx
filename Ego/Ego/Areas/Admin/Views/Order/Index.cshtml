@@ -24,6 +24,7 @@
             <th>Размер</th>
             <th>Дополнительные комментарии</th>
             <th>Изображение</th>
+            <th></th>
         </tr>
     
     @foreach (var order in Model.Orders.OrderByDescending(o=>o.Date))
@@ -37,6 +38,7 @@
             <td>@order.Size</td>
             <td>@order.Description</td>
             <td>@Html.Raw(Html.CachedImage("~/Content/Images/", order.ProductImageSource, SiteSettings.GetThumbnail("order")))</td>
+            <td>@Html.ActionLink("Удалить","Delete","Order",new{area="Admin",id=order.Id},new{@class="adminLink",onclick="return confirm('Удалить заказ?')"})</td>
         </tr>
         
     }

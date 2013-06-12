@@ -30,5 +30,16 @@ namespace Ego.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
+         public ActionResult Delete(int id)
+         {
+             using (var context = new SiteContainer())
+             {
+                 var order = context.Order.First(o => o.Id == id);
+                 context.DeleteObject(order);
+                 context.SaveChanges();
+             }
+             return RedirectToAction("Index");
+         }
     }
 }
