@@ -15,11 +15,11 @@ namespace Ego.Models
 
     public class OrderValidation
     {
-        [Required(ErrorMessage = "Обязательно!")]
+        [Required(ErrorMessage = "Ваше имя - обязательное к заполнению поле!")]
         [DisplayName("Ваше имя")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Обязательно!")]
+        [Required(ErrorMessage = "Номер телефона - обязательное к заполнению поле!")]
         [DisplayName("Номер телефона")]
         public string Phone { get; set; }
         
