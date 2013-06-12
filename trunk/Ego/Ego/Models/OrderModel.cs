@@ -15,8 +15,9 @@ namespace Ego.Models
         public bool IsHomePage { get; set; }
 
         public Order Order { get; set; }
+        public IEnumerable<Order> Orders { get; set; } 
 
-        public OrderModel(SiteContainer context, int orderId)
+        public OrderModel(SiteContainer context, int? orderId)
         {
             Title = HttpUtility.HtmlDecode("Я &mdash; ЭГО");
 
@@ -34,7 +35,14 @@ namespace Ego.Models
                 });
             }
 
-            Order = context.Order.First(o => o.Id == orderId);
+            if (orderId.HasValue)
+            {
+                Order = context.Order.First(o => o.Id == orderId);
+            }
+            else
+            {
+                Orders = context.Order.ToList();
+            }
         }
     }
 }

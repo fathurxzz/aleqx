@@ -203,6 +203,7 @@
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="Content\fonts\CharterITC.otf" />
     <None Include="Content\fonts\CharterITCBold.otf" />
     <None Include="Content\fonts\CharterITCBoldItalic.otf" />

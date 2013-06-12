@@ -264,3 +264,18 @@ body {
     font-family: CharterITCBoldItalic;
     color: #cccccc;
 }
+
+table.orders th {
+    padding: 0 10px;
+    border: 1px dashed #ccc;
+    background-color: #eee;
+}
+
+table.orders {
+    border-collapse: collapse;
+}
+table.orders td 
+{
+    padding:  5px;
+    border: 1px dashed #ccc;
+}
