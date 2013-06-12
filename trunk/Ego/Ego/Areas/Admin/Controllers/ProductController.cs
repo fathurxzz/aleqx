@@ -70,7 +70,24 @@ namespace Ego.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
+                if (files!=null)
+                {
+                    var product = new Product();
+                    TryUpdateModel(product, new[] { "SortOrder", "Description" });
 
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", files.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, files, 1200);
+                    product.ImageSource = fileName;
+
+
+                    //TODO: insert saving preview here
+
+
+                    context.AddToProduct(product);
+                    context.SaveChanges();
+                }
             }
             return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
         }
