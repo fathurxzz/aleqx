@@ -2,6 +2,7 @@
     initialize: function () {
         $(function () {
             $(".fancyPopUp").fancybox({ showCloseButton: true, padding: 0 });
+            $(".fancyImage").fancybox({ showCloseButton: false, padding: 0,hideOnContentClick:true });
         });
     },
 
@@ -24,6 +25,8 @@
 
 
         $("#pictureLink").attr("href", "/Home/ProductDetails/" + imageId);
+        $("#zoomPictureLink").attr("href", "/Content/Images/" + fileName);
+
         //alert(description);
 
         $(".description").html("Все майки - 100% коттон, индивидуальный пошив и шелкографическое нанесение. " + description);
