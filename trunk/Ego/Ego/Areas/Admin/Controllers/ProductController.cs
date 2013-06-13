@@ -111,6 +111,7 @@ namespace Ego.Areas.Admin.Controllers
                 var product = context.Product.First(p => p.Id == id);
                 TryUpdateModel(product, new[] { "SortOrder" });
                 product.Description = HttpUtility.HtmlDecode(collection["Description"]);
+                context.SaveChanges();
                 return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
             }
         }
