@@ -296,3 +296,7 @@ table.orders td
     margin-left: 455px;
     margin-top: 45px;
 }
+
+#startSelectAreaBtn {
+    visibility: hidden;
+}
