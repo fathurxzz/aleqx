@@ -41,6 +41,8 @@
                         @if (Request.IsAuthenticated)
                         {
                             <div class="abs">
+                                @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink" })
+                                <br/>
                                 @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
                             </div>
                         }

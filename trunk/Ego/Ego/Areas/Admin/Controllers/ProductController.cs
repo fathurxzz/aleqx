@@ -95,21 +95,23 @@ namespace Ego.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContainer())
+            {
+                var product = context.Product.First(p => p.Id == id);
+               
+                return View(product);
+            }
         }
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            using (var context = new SiteContainer())
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var product = context.Product.First(p => p.Id == id);
+                TryUpdateModel(product, new[] { "SortOrder" });
+                product.Description = HttpUtility.HtmlDecode(collection["Description"]);
+                return RedirectToAction("Index", "Home", new { area = "", id = "gallery" });
             }
         }
 
