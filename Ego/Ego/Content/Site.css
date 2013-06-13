@@ -20,14 +20,18 @@ body {
     background: url('img/menu.png');
     position: relative;
     margin: 0 auto;
-    font-family: CharterITCBold;
-    font-size: 18px;
+    /*font-family: CharterITCBold;*/
+    font-family: CharterITC;
+    font-weight: bold;
+    font-size: 17px;
+    /*font-weight: normal;*/
 }
 
 .menu-line a {
     font-family: CharterITC;
     color: #666666;
     font-size: 17px;
+    font-weight: normal;
 }
 
 .header .top {
@@ -106,7 +110,7 @@ body {
 }
 
 .productsContainer {
-    margin-bottom: 100px;
+    padding-bottom: 100px;
 }
 
 .product {
