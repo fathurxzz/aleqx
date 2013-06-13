@@ -8,10 +8,15 @@
     {
         @Html.ValidationSummary(true)
 
-        <input type="text" id="x1" value="0" />
+        @*<input type="text" id="x1" value="0" />
         <input type="text" id="y1" value="0" />
         <input type="text" id="w" value="0" />
-        <input type="text" id="h" value="0" />
+        <input type="text" id="h" value="0" />*@
+        
+        @Html.Hidden("x1")
+        @Html.Hidden("y1")
+        @Html.Hidden("w")
+        @Html.Hidden("h")
         
         <table class="adminEditContentTable">
             <tr>
@@ -22,15 +27,11 @@
             </tr>
             <tr>
                 <td>
-                    image
+                    Выберите файл для загрузки и создания превьюшки
                 </td>
                 <td>
                     <input type="file" id="files" name="files" />
-                    <br />
-                    <br />
-                    <input type="button" value="Выбрать область для превьюшки" onclick="startSelectArea()" />
-                    <br />
-                    <br />
+                    
                 </td>
             </tr>
             <tr>
@@ -41,6 +42,11 @@
                 <td colspan="2">
                     <div id="outputFile">
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="Выбрать область для сохранения превьюшки" id="startSelectAreaBtn" onclick="startSelectArea()" />
                 </td>
             </tr>
         </table>
@@ -62,17 +68,19 @@
         })(file);
         reader.readAsDataURL(file);
 
-
+        $("#startSelectAreaBtn").css("display", "block");
 
     }
 
-    function startSelectArea() {
+    function startSelectArea(obj) {
         $('img#photo').imgAreaSelect(
             {
                 aspectRatio: '1:1.42',
                 handles: true,
                 onSelectEnd: selectEnd
             });
+
+            $("#startSelectAreaBtn").css("display", "none");
     }
 
     function selectEnd(img, selection) {
