@@ -19,7 +19,7 @@
 @if (Model.Products != null && Model.Products.Any())
 {
     @Html.Hidden("firstImageId", Model.Products.First().Id)
-    @Html.Hidden("firstImageDescription", Model.Products.First().Description)
+    @*@Html.Hidden("firstImageDescription", Model.Products.First().Description)*@
     <div class="productsContainer">
         <div class="product">
             <div class="productImage">
@@ -35,7 +35,7 @@
             <div style="height: 360px;">
                 @foreach (var product in Model.Products)
                 {
-                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@Html.Raw(product.Description)', this) ">
+                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, this) ">
                         
                         <div class="selectedArea"></div>
                         @if (Request.IsAuthenticated)

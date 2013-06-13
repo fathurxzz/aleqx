@@ -8,43 +8,28 @@
 
     setFirstImage: function () {
         var fileName = $(".productPreviews").find("img").attr("alt");
-        //var productId = $("#productId").val();
-        var imageId = $("#firstImageId").val();
-        var description = $("#firstImageDescription").val();
-
+        var productId = $("#firstImageId").val();
         $(".productPreviews").find(".selectedArea").first().addClass("active");
-
-
-
-        ProjectCatalogue.changeImage(fileName, /* productId,*/imageId, description, null);
+        ProjectCatalogue.changeImage(fileName, productId, null);
     },
 
-    _updateImageContainer: function (fileName, /*productId,*/imageId, description) {
-
+    _updateImageContainer: function (fileName, productId) {
         $("#pictureContainer").attr("src", "/ImageCache/product/" + fileName);
-
-
-        $("#pictureLink").attr("href", "/Home/ProductDetails/" + imageId);
+        $("#pictureLink").attr("href", "/Home/ProductDetails/" + productId);
         $("#zoomPictureLink").attr("href", "/Content/Images/" + fileName);
-
-        //alert(description);
-
-        $(".description").html("Все майки - 100% коттон, индивидуальный пошив и шелкографическое нанесение. " + description);
     },
 
-    changeImage: function (fileName, /* productId, */imageId, description, obj) {
-
+    changeImage: function (fileName, productId, obj) {
         if (obj != null) {
-
             $(".selectedArea").each(function () {
                 $(this).removeClass("active");
             });
-
             $(obj).find(".selectedArea").addClass("active");
         }
-
-        $.post("/Catalogue/UpdateProjectImage?fileName=" + fileName, function () {
-            ProjectCatalogue._updateImageContainer(fileName, /* productId,*/imageId, description);
+        
+        $.post("/Catalogue/UpdateProjectImage?productId=" + productId, function (data) {
+            ProjectCatalogue._updateImageContainer(fileName, productId);
+            $(".description").html(data);
         });
     }
 };
