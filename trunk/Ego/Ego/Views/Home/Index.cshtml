@@ -35,7 +35,7 @@
             <div style="height: 360px;">
                 @foreach (var product in Model.Products)
                 {
-                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description',this) ">
+                    <div class="productPreview" onclick=" ProjectCatalogue.changeImage('@product.ImageSource', @product.Id, '@product.Description', this) ">
                         
                         <div class="selectedArea"></div>
                         @if (Request.IsAuthenticated)

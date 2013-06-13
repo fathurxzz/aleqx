@@ -32,7 +32,8 @@ namespace Ego.Areas.Admin.Controllers
                 {
                     var product = new Product();
 
-                    TryUpdateModel(product, new[] { "SortOrder", "Description" });
+                    TryUpdateModel(product, new[] { "SortOrder" });
+                    product.Description = HttpUtility.HtmlDecode(collection["Description"]);
 
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
