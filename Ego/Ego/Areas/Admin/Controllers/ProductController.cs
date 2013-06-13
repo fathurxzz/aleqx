@@ -74,7 +74,8 @@ namespace Ego.Areas.Admin.Controllers
                 if (files!=null)
                 {
                     var product = new Product();
-                    TryUpdateModel(product, new[] { "SortOrder", "Description" });
+                    TryUpdateModel(product, new[] { "SortOrder"});
+                    product.Description = HttpUtility.HtmlDecode(form["Description"]);
 
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", files.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
