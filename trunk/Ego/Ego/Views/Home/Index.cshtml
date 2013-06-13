@@ -14,7 +14,7 @@
 @Html.Raw(Model.Content.Text)
 @if (Request.IsAuthenticated && Model.Content.Name == "gallery")
 {
-    @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin" }, new { @class = "adminLink" })
+    @Html.ActionLink("Добавить продукт", "CustomCreate", "Product", new { area = "Admin" }, new { @class = "adminLink" })
 }
 @if (Model.Products != null && Model.Products.Any())
 {
@@ -46,10 +46,8 @@
                                 @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = product.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
                             </div>
                         }
-                        @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview"), ""))
-                        
+                        @Html.Raw(Html.CachedImage2("~/Content/Images/", product.PreviewImageSource, product.ImageSource, SiteSettings.GetThumbnail("productPreview")))
                     </div>
-                     
                 }
             </div>
             @Html.Partial("Paging")

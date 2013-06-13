@@ -82,8 +82,16 @@ namespace Ego.Areas.Admin.Controllers
                     GraphicsHelper.SaveOriginalImage(filePath, fileName, files, 1200);
                     product.ImageSource = fileName;
 
-
-                    //TODO: insert saving preview here
+                    fileName = IOHelper.GetUniqueFileName("~/Content/Images", files.FileName);
+                    filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    int x1 = Convert.ToInt32(form["x1"]);
+                    int y1 = Convert.ToInt32(form["y1"]);
+                    int w = Convert.ToInt32(form["w"]);
+                    int h = Convert.ToInt32(form["h"]);
+                    
+                    GraphicsHelper.SaveCropPreview(filePath, fileName, files, x1, y1, w, h);
+                    product.PreviewImageSource = fileName;
 
 
                     context.AddToProduct(product);
