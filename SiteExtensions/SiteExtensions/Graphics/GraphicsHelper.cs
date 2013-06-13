@@ -145,6 +145,20 @@ namespace SiteExtensions.Graphics
         }
 
 
+        private static void SaveCropPreview(Bitmap image, Stream saveTo, int x,int y, int previewWidth, int previewHeight)
+        {
+            Rectangle sourceRect = new Rectangle(x, y, previewWidth, previewHeight);
+            Rectangle destRect = new Rectangle(0, 0, previewWidth, previewHeight);
+            Bitmap thumbnailImage = new Bitmap(previewWidth, previewHeight);
+            System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(thumbnailImage);
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            graphics.DrawImage(image, destRect, sourceRect, GraphicsUnit.Pixel);
+            thumbnailImage.Save(saveTo, System.Drawing.Imaging.ImageFormat.Jpeg);
+            saveTo.Position = 0;
+        }
+
+
+
         private static void ScaleAndSaveOriginalImage(int limitLength, Bitmap image, Stream saveTo)
         {
 
@@ -312,6 +326,28 @@ namespace SiteExtensions.Graphics
             IOHelper.DeleteFile("~/Content/tmpImages", fileName);
         }
 
+
+        public static void SaveCropPreview(string filePath, string fileName,HttpPostedFileBase file,int x,int y, int width, int height)
+        {
+            string tmpFilePath = HttpContext.Current.Server.MapPath("~/Content/tmpImages");
+            tmpFilePath = Path.Combine(tmpFilePath, fileName);
+            file.SaveAs(tmpFilePath);
+
+            Bitmap image;
+            string sourcePath = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/tmpImages"), fileName);
+            using (FileStream stream = new FileStream(sourcePath, FileMode.Open))
+            {
+                image = new Bitmap(stream);
+            }
+            using (FileStream stream = new FileStream(filePath, FileMode.CreateNew))
+            {
+                SaveCropPreview(image, stream, x, y, width, height);
+            }
+            IOHelper.DeleteFile("~/Content/tmpImages", fileName);
+        }
+
+
+
         public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail)
         {
             return CachedImage(helper, originalPath, fileName, thumbnail, null);
@@ -326,12 +362,11 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
-        public static string CachedImage2(this HtmlHelper helper, string originalPath, string fileName, string fileName2, ThumbnailPicture thumbnail, string description)
+        public static string CachedImage2(this HtmlHelper helper, string originalPath, string fileName, string fileName2, ThumbnailPicture thumbnail)
         {
             StringBuilder sb = new StringBuilder();
-            string formatString = "<img src=\"{0}\" alt=\"{1}\" description=\"{2}\" width=\"{3}\" height=\"{4}\" />";
-            //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail), fileName2, description, _width, _height);
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" width=\"{2}\" height=\"{3}\" />";
+            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail), fileName2, _width, _height);
             return sb.ToString();
         }
 
