@@ -21,11 +21,11 @@ namespace Ego.Models
 
         public SiteModel(SiteContainer context, string contentId, int? page)
         {
-            Title = HttpUtility.HtmlDecode("Я &mdash; ЭГО");
-
-
+            //Title = HttpUtility.HtmlDecode("Я &mdash; ЭГО");
 
             Content = context.Content.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
+            
+            Title = Content.Title;
 
             var contents = context.Content.ToList();
             Menu = new Menu();
