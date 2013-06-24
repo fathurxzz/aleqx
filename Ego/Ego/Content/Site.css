@@ -233,6 +233,7 @@ body {
     background: url('img/order-button.gif');
     display: block;
 
+/* //TODO comment */
     visibility: hidden;
 }
 

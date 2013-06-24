@@ -15,6 +15,8 @@
 
     _updateImageContainer: function (fileName, productId) {
         $("#pictureContainer").attr("src", "/ImageCache/product/" + fileName);
+        
+        //TODO: uncomment
         //$("#pictureLink").attr("href", "/Home/ProductDetails/" + productId);
         $("#zoomPictureLink").attr("href", "/Content/Images/" + fileName);
     },
