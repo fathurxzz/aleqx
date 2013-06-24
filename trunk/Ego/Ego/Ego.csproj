@@ -49,7 +49,7 @@
     </Reference>
     <Reference Include="SiteExtensions, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\AlexK\projects\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
+      <HintPath>..\..\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
