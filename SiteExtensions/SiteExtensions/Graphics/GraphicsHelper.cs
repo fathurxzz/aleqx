@@ -259,7 +259,7 @@ namespace SiteExtensions.Graphics
             string cacheFolder = thumbnail.CacheFolder;
 
 
-            string result = Path.Combine("/ImageCache/" + cacheFolder + "/", fileName);
+            string result = Path.Combine("~/ImageCache/" + cacheFolder + "/", fileName);
             string cachePath = HttpContext.Current.Server.MapPath("~/ImageCache/" + cacheFolder);
 
             if (!Directory.Exists(cachePath)) Directory.CreateDirectory(cachePath);
@@ -358,7 +358,8 @@ namespace SiteExtensions.Graphics
             StringBuilder sb = new StringBuilder();
             string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
             //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
-            sb.AppendFormat(formatString, GetCachedImage(originalPath, fileName, thumbnail), fileName, className, _width, _height);
+            string imageSrc = GetCachedImage(originalPath, fileName, thumbnail);
+            sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc), fileName, className, _width, _height);
             return sb.ToString();
         }
 
