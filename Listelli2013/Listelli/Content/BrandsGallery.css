@@ -87,13 +87,26 @@
 }
 
 .brandDetails .images img {
-    float: left;
+   /* float: left;*/
     border: 1px solid #ccc;
 }
 
 .brandDetails .images {
     padding: 0 174px;
 }
+
+.brandDetails .images ul {
+    text-align: center;
+}
+
+.brandDetails .images li {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: -5px -3px;
+    
+}
+
 
 .brandDetails .box {
     width: 795px;
