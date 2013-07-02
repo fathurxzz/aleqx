@@ -5,11 +5,11 @@
 {
     var routeData = ViewContext.RouteData.GetCopy();
     routeData.Values["lang"] = "en";
-    <text> По-русски | @Html.RouteLink("In English", routeData.Values)</text>
+    <text> На русском | @Html.RouteLink("In English", routeData.Values)</text>
 }
 else
 {
     var routeData = ViewContext.RouteData.GetCopy();
     routeData.Values["lang"] = "ru";
-    <text>@Html.RouteLink("По-русски", routeData.Values) | In English</text>
+    <text>@Html.RouteLink("На русском", routeData.Values) | In English</text>
 }
