@@ -107,7 +107,8 @@
     font-style: italic;
     font-size: 20px;
     color: #0066cc;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    border-bottom: 1px solid;
     font-weight: normal;
   
 }
