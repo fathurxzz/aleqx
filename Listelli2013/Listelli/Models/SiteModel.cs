@@ -17,7 +17,7 @@ namespace Listelli.Models
 
         public SiteModel(Language lang, SiteContainer context, string contentId)
         {
-            Title = "Listelli 2013";
+            Title = "Listelli";
             
             Content = context.Content.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
             IsHomePage = Content.MainPage;

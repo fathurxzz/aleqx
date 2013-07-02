@@ -68,7 +68,9 @@
                 }
                 @foreach (var image in item.BrandItemImages)
                 {
+                    <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@image.ImageSource">
                     @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("brandImagePreview")))
+                    </a>
                 }
                 <div class="clear">
                 </div>
