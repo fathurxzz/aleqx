@@ -60,18 +60,23 @@
             <div class="images">
                 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                 {
-                    <div class="adminLinkContainer">
+                    <div class="adminLinkContainer" style="margin-bottom: 10px;">
                         @Html.ActionLink("Редактировать", "EditImagesBlock", "BrandItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink"})
                         @Html.ActionLink("Удалить", "DeleteImagesBlock", "BrandItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить блок изображений?')"})
                         <span class="sortOrder">@item.SortOrder</span>
                     </div>
                 }
+                
+                <ul>
                 @foreach (var image in item.BrandItemImages)
                 {
+                    <li>
                     <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@image.ImageSource">
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("brandImagePreview")))
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("brandImagePreview")))
                     </a>
+                    </li>
                 }
+                </ul>
                 <div class="clear">
                 </div>
             </div>
