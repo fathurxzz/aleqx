@@ -96,9 +96,34 @@
     <link href="@Url.Content("~/Content/jquery-ui-1.10.3.custom.min.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-ui-1.10.3.custom.min.js")" type="text/javascript"></script>
     
+
+    
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#accordion1").accordion({ active: false, collapsible:true });
+            $("#accordion1").accordion({
+                active: false,
+                collapsible: true,
+                beforeActivate: function (event, ui) {
+                    //alert(ui.newHeader.html());  // For instance.
+                    //alert(ui.oldHeader.html()); 
+                    //alert(ui); 
+                    ui.newHeader.html("<span style='text-decoration:none; border-bottom:1px dashed'>" + ui.newHeader.text() + "</span>");
+                    ui.oldHeader.html("<span style='text-decoration:underline'>" + ui.oldHeader.text() + "</span>");
+                }
+            });
+
+            //            $("#accordion1").click(function () {
+            //                var header = $('#accordion1').accordion('option', 'header');
+            //                alert(header);    
+            //            });
+
+
+            $('#accordion1').bind('accordionchange', function (event, ui) {
+
+                alert(ui.id);
+            });
+
         });
-        </script>
+        
+    </script>
 }
