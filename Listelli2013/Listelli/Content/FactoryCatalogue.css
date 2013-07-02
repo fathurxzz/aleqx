@@ -104,7 +104,7 @@
 {  text-align: center;}
 
 .categories .categoryBrandItems .accordion h3 span {
-        font-style: italic;
+    font-style: italic;
     font-size: 20px;
     color: #0066cc;
     text-decoration: underline;
@@ -112,13 +112,21 @@
   
 }
 
-
+/*
 .userInfoArea {
     text-align: center;
     position: absolute;
-    
     width: 200px;
     margin-left: 750px;
+}
+*/
+
+.userInfoArea {
+    text-align: center;
+    margin-top: -20px;
+    /*position: absolute;
+    width: 200px;
+    margin-left: 750px;*/
 }
 
 .userInfoArea span.userName {
