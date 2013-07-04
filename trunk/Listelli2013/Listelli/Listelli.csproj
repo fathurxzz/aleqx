@@ -216,6 +216,7 @@
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Scripts\PageScripts.js" />
     <Content Include="Scripts\Scene.js" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

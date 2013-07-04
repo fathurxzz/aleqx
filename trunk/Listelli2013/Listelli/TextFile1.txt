@@ -1,0 +1,1 @@
+﻿D:\projects\Listelli2013\Listelli\Areas\FactoryCatalogue\Views\Brand\Details.cshtml
