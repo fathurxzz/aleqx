@@ -67,7 +67,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Gallery", "Home", new { Area = "" }, null)
+            @Html.ActionLink("Назад", "BrandGroupDetails", "Home", new { Area = "BrandCatalogue", id = Model.BrandGroup.Name }, null)
         </div>
 
     }

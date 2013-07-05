@@ -18,6 +18,8 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
+                var brandGroup = context.BrandGroup.First(b => b.Id == brandId);
+                ViewBag.BrandGroupName = brandGroup.Name;
                 ViewBag.BrandId = brandId;
                 int maxSortOrder = context.Brand.Max(c => (int?)c.SortOrder) ?? 0;
                 var brand = new Brand
@@ -80,7 +82,7 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.Brand.First(c => c.Id == id);
+                var brand = context.Brand.Include("BrandGroup").First(c => c.Id == id);
                 brand.CurrentLang = CurrentLang.Id;
                 return View(brand);
             }
@@ -93,8 +95,7 @@ namespace Listelli.Areas.Admin.Controllers
             {
                 using (var context = new SiteContainer())
                 {
-                    var cache = context.Brand.FirstOrDefault(p => p.Id == model.Id);
-
+                    var cache = context.Brand.Include("BrandGroup").FirstOrDefault(p => p.Id == model.Id);
 
                     if (cache != null)
                     {
@@ -123,9 +124,11 @@ namespace Listelli.Areas.Admin.Controllers
                             CreateOrChangeContentLang(context, model, cache, lang);
                         }
                     }
+
+                    return RedirectToAction("BrandGroupDetails", "Home", new { area = "BrandCatalogue", id = cache.BrandGroup.Name });
                 }
 
-                return RedirectToAction("Gallery", "Home", new { area = "" });
+                
             }
             catch
             {
@@ -139,7 +142,8 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.Brand.Include("BrandLangs").First(b => b.Id == id);
+                var brand = context.Brand.Include("BrandGroup").Include("BrandLangs").First(b => b.Id == id);
+                var bgn = brand.BrandGroup.Name;
                 ImageHelper.DeleteImage(brand.ImageSource);
 
                 while (brand.BrandLangs.Any())
@@ -150,7 +154,7 @@ namespace Listelli.Areas.Admin.Controllers
                 context.DeleteObject(brand);
                 context.SaveChanges();
 
-                return RedirectToAction("Gallery", "Home", new { area = "" });
+                return RedirectToAction("BrandGroupDetails", "Home", new {area = "BrandCatalogue", id = bgn});
             }
         }
 
