@@ -17,6 +17,13 @@
     </div>
 }
 <div class="brandsGallery">
+    <div class="brandDetails">
+        <div class="title">@Model.BrandGroup.Title</div>
+    <div class="description">@Model.BrandGroup.Description</div>
+    <div class="shortLine">
+    </div>
+    </div>
+
     @{
         int cnt = 0;
     }
@@ -26,8 +33,8 @@
         @Html.Partial("Brand", brand)
         if (cnt % 3 == 0)
         {
-        <div class="clear">
-        </div>
+            <div class="clear">
+            </div>
         }
     }
     <div class="clear">
