@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 05/27/2013 12:40:59
+-- Date Created: 07/05/2013 16:48:42
 -- Generated from EDMX file: D:\projects\Listelli2013\Listelli\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -35,6 +35,12 @@
 --    ALTER TABLE `ArticleLang` DROP CONSTRAINT `FK_LanguageArtilceLang`;
 --    ALTER TABLE `ArticleItemLang` DROP CONSTRAINT `FK_LanguageArticleItemLang`;
 --    ALTER TABLE `ArticleLang` DROP CONSTRAINT `FK_ArticleArticleLang`;
+--    ALTER TABLE `Brand` DROP CONSTRAINT `FK_BrangGroupBrand`;
+--    ALTER TABLE `BrandGroupLang` DROP CONSTRAINT `FK_LanguageBrandGroupLang`;
+--    ALTER TABLE `BrandGroupItemLang` DROP CONSTRAINT `FK_LanguageBrandGroupItemLang`;
+--    ALTER TABLE `BrandGroupItemLang` DROP CONSTRAINT `FK_BrandGroupItemBrandGroupItemLang`;
+--    ALTER TABLE `BrandGroupItem` DROP CONSTRAINT `FK_BrandGroupBrandGroupItem`;
+--    ALTER TABLE `BrandGroupLang` DROP CONSTRAINT `FK_BrandGroupBrandGroupLang`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -57,6 +63,10 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ArticleLang`;
     DROP TABLE IF EXISTS `ArticleItem`;
     DROP TABLE IF EXISTS `ArticleItemLang`;
+    DROP TABLE IF EXISTS `BrandGroup`;
+    DROP TABLE IF EXISTS `BrandGroupLang`;
+    DROP TABLE IF EXISTS `BrandGroupItem`;
+    DROP TABLE IF EXISTS `BrandGroupItemLang`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -97,7 +107,8 @@ CREATE TABLE `Brand` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Name` varchar( 200 )  NOT NULL,
     `SortOrder` int  NOT NULL,
-    `ImageSource` varchar( 200 )  NULL
+    `ImageSource` varchar( 200 )  NULL,
+    `BrandGroupId` int  NOT NULL
 );
 
 -- Creating table 'BrandItem'
@@ -218,6 +229,43 @@ CREATE TABLE `ArticleItemLang` (
     `Text` longtext  NOT NULL,
     `ArticleItemId` int  NOT NULL,
     `LanguageId` int  NOT NULL
+);
+
+-- Creating table 'BrandGroup'
+
+CREATE TABLE `BrandGroup` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL
+);
+
+-- Creating table 'BrandGroupLang'
+
+CREATE TABLE `BrandGroupLang` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Description` TEXT  NOT NULL,
+    `LanguageId` int  NOT NULL,
+    `BrandGroupId` int  NOT NULL
+);
+
+-- Creating table 'BrandGroupItem'
+
+CREATE TABLE `BrandGroupItem` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ContentType` int  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `BrandGroupId` int  NOT NULL
+);
+
+-- Creating table 'BrandGroupItemLang'
+
+CREATE TABLE `BrandGroupItemLang` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Text` longtext  NOT NULL,
+    `LanguageId` int  NOT NULL,
+    `BrandGroupItemId` int  NOT NULL
 );
 
 
@@ -516,6 +564,96 @@ ADD CONSTRAINT `FK_ArticleArticleLang`
 CREATE INDEX `IX_FK_ArticleArticleLang` 
     ON `ArticleLang`
     (`ArticleId`);
+
+-- Creating foreign key on `LanguageId` in table 'BrandGroupLang'
+
+ALTER TABLE `BrandGroupLang`
+ADD CONSTRAINT `FK_LanguageBrandGroupLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageBrandGroupLang'
+
+CREATE INDEX `IX_FK_LanguageBrandGroupLang` 
+    ON `BrandGroupLang`
+    (`LanguageId`);
+
+-- Creating foreign key on `LanguageId` in table 'BrandGroupItemLang'
+
+ALTER TABLE `BrandGroupItemLang`
+ADD CONSTRAINT `FK_LanguageBrandGroupItemLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageBrandGroupItemLang'
+
+CREATE INDEX `IX_FK_LanguageBrandGroupItemLang` 
+    ON `BrandGroupItemLang`
+    (`LanguageId`);
+
+-- Creating foreign key on `BrandGroupItemId` in table 'BrandGroupItemLang'
+
+ALTER TABLE `BrandGroupItemLang`
+ADD CONSTRAINT `FK_BrandGroupItemBrandGroupItemLang`
+    FOREIGN KEY (`BrandGroupItemId`)
+    REFERENCES `BrandGroupItem`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BrandGroupItemBrandGroupItemLang'
+
+CREATE INDEX `IX_FK_BrandGroupItemBrandGroupItemLang` 
+    ON `BrandGroupItemLang`
+    (`BrandGroupItemId`);
+
+-- Creating foreign key on `BrandGroupId` in table 'BrandGroupItem'
+
+ALTER TABLE `BrandGroupItem`
+ADD CONSTRAINT `FK_BrandGroupBrandGroupItem`
+    FOREIGN KEY (`BrandGroupId`)
+    REFERENCES `BrandGroup`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BrandGroupBrandGroupItem'
+
+CREATE INDEX `IX_FK_BrandGroupBrandGroupItem` 
+    ON `BrandGroupItem`
+    (`BrandGroupId`);
+
+-- Creating foreign key on `BrandGroupId` in table 'BrandGroupLang'
+
+ALTER TABLE `BrandGroupLang`
+ADD CONSTRAINT `FK_BrandGroupBrandGroupLang`
+    FOREIGN KEY (`BrandGroupId`)
+    REFERENCES `BrandGroup`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BrandGroupBrandGroupLang'
+
+CREATE INDEX `IX_FK_BrandGroupBrandGroupLang` 
+    ON `BrandGroupLang`
+    (`BrandGroupId`);
+
+-- Creating foreign key on `BrandGroupId` in table 'Brand'
+
+ALTER TABLE `Brand`
+ADD CONSTRAINT `FK_BrandGroupBrand`
+    FOREIGN KEY (`BrandGroupId`)
+    REFERENCES `BrandGroup`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BrandGroupBrand'
+
+CREATE INDEX `IX_FK_BrandGroupBrand` 
+    ON `Brand`
+    (`BrandGroupId`);
 
 -- --------------------------------------------------
 -- Script has ended

@@ -18,7 +18,8 @@ namespace Listelli.Areas.FactoryCatalogue
                 "FactoryCatalogue",
                 "{lang}/factorycatalogue",
                 new { controller="Category", action = "Index", id = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { lang = @"ru|en" }
+                
             );
 
             context.MapRoute(

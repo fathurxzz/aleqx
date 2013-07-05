@@ -23,6 +23,10 @@
     <EntitySet Name="ArticleLang" EntityType="Site.Store.ArticleLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArticleItem" EntityType="Site.Store.ArticleItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArticleItemLang" EntityType="Site.Store.ArticleItemLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandGroup" EntityType="Site.Store.BrandGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandGroupLang" EntityType="Site.Store.BrandGroupLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandGroupItem" EntityType="Site.Store.BrandGroupItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BrandGroupItemLang" EntityType="Site.Store.BrandGroupItemLang" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ContentContentLang" Association="Site.Store.ContentContentLang">
       <End Role="Content" EntitySet="Content" />
       <End Role="ContentLang" EntitySet="ContentLang" />
@@ -99,6 +103,30 @@
       <End Role="Article" EntitySet="Article" />
       <End Role="ArticleLang" EntitySet="ArticleLang" />
     </AssociationSet>
+    <AssociationSet Name="LanguageBrandGroupLang" Association="Site.Store.LanguageBrandGroupLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="BrandGroupLang" EntitySet="BrandGroupLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageBrandGroupItemLang" Association="Site.Store.LanguageBrandGroupItemLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="BrandGroupItemLang" EntitySet="BrandGroupItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="BrandGroupItemBrandGroupItemLang" Association="Site.Store.BrandGroupItemBrandGroupItemLang">
+      <End Role="BrandGroupItem" EntitySet="BrandGroupItem" />
+      <End Role="BrandGroupItemLang" EntitySet="BrandGroupItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="BrandGroupBrandGroupItem" Association="Site.Store.BrandGroupBrandGroupItem">
+      <End Role="BrandGroup" EntitySet="BrandGroup" />
+      <End Role="BrandGroupItem" EntitySet="BrandGroupItem" />
+    </AssociationSet>
+    <AssociationSet Name="BrandGroupBrandGroupLang" Association="Site.Store.BrandGroupBrandGroupLang">
+      <End Role="BrandGroup" EntitySet="BrandGroup" />
+      <End Role="BrandGroupLang" EntitySet="BrandGroupLang" />
+    </AssociationSet>
+    <AssociationSet Name="BrandGroupBrand" Association="Site.Store.BrandGroupBrand">
+      <End Role="BrandGroup" EntitySet="BrandGroup" />
+      <End Role="Brand" EntitySet="Brand" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
     <Key>
@@ -136,6 +164,7 @@
     <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="ImageSource" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="BrandGroupId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BrandItem">
     <Key>
@@ -256,6 +285,43 @@
     <Property Name="Text" Type="longtext" Nullable="false" />
     <Property Name="ArticleItemId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="BrandGroupLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="BrandGroupId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandGroupItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContentType" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="BrandGroupId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BrandGroupItemLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="BrandGroupItemId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ContentContentLang">
     <End Role="Content" Type="Site.Store.Content" Multiplicity="1" />
@@ -485,6 +551,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="LanguageBrandGroupLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="BrandGroupLang" Type="Site.Store.BrandGroupLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandGroupLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageBrandGroupItemLang">
+    <End Role="Language" Type="Site.Store.Language" Multiplicity="1" />
+    <End Role="BrandGroupItemLang" Type="Site.Store.BrandGroupItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandGroupItemLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandGroupItemBrandGroupItemLang">
+    <End Role="BrandGroupItem" Type="Site.Store.BrandGroupItem" Multiplicity="1" />
+    <End Role="BrandGroupItemLang" Type="Site.Store.BrandGroupItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandGroupItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandGroupItemLang">
+        <PropertyRef Name="BrandGroupItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandGroupBrandGroupItem">
+    <End Role="BrandGroup" Type="Site.Store.BrandGroup" Multiplicity="1" />
+    <End Role="BrandGroupItem" Type="Site.Store.BrandGroupItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandGroupItem">
+        <PropertyRef Name="BrandGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandGroupBrandGroupLang">
+    <End Role="BrandGroup" Type="Site.Store.BrandGroup" Multiplicity="1" />
+    <End Role="BrandGroupLang" Type="Site.Store.BrandGroupLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BrandGroupLang">
+        <PropertyRef Name="BrandGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BrandGroupBrand">
+    <End Role="BrandGroup" Type="Site.Store.BrandGroup" Multiplicity="1" />
+    <End Role="Brand" Type="Site.Store.Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BrandGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Brand">
+        <PropertyRef Name="BrandGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -583,6 +721,34 @@
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticleLang" EntitySet="ArticleLang" />
           </AssociationSet>
+          <EntitySet Name="BrandGroup" EntityType="Site.BrandGroup" />
+          <EntitySet Name="BrandGroupLang" EntityType="Site.BrandGroupLang" />
+          <AssociationSet Name="LanguageBrandGroupLang" Association="Site.LanguageBrandGroupLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="BrandGroupLang" EntitySet="BrandGroupLang" />
+          </AssociationSet>
+          <EntitySet Name="BrandGroupItem" EntityType="Site.BrandGroupItem" />
+          <EntitySet Name="BrandGroupItemLang" EntityType="Site.BrandGroupItemLang" />
+          <AssociationSet Name="LanguageBrandGroupItemLang" Association="Site.LanguageBrandGroupItemLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="BrandGroupItemLang" EntitySet="BrandGroupItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="BrandGroupItemBrandGroupItemLang" Association="Site.BrandGroupItemBrandGroupItemLang">
+            <End Role="BrandGroupItem" EntitySet="BrandGroupItem" />
+            <End Role="BrandGroupItemLang" EntitySet="BrandGroupItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="BrandGroupBrandGroupItem" Association="Site.BrandGroupBrandGroupItem">
+            <End Role="BrandGroup" EntitySet="BrandGroup" />
+            <End Role="BrandGroupItem" EntitySet="BrandGroupItem" />
+          </AssociationSet>
+          <AssociationSet Name="BrandGroupBrandGroupLang" Association="Site.BrandGroupBrandGroupLang">
+            <End Role="BrandGroup" EntitySet="BrandGroup" />
+            <End Role="BrandGroupLang" EntitySet="BrandGroupLang" />
+          </AssociationSet>
+          <AssociationSet Name="BrandGroupBrand" Association="Site.BrandGroupBrand">
+            <End Role="BrandGroup" EntitySet="BrandGroup" />
+            <End Role="Brand" EntitySet="Brand" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -598,6 +764,8 @@
           <NavigationProperty Name="CategoryBrandItemLangs" Relationship="Site.LanguageCategoryBrandItemLang" FromRole="Language" ToRole="CategoryBrandItemLang" />
           <NavigationProperty Name="ArtilceLangs" Relationship="Site.LanguageArtilceLang" FromRole="Language" ToRole="ArtilceLang" />
           <NavigationProperty Name="ArticleItemLangs" Relationship="Site.LanguageArticleItemLang" FromRole="Language" ToRole="ArticleItemLang" />
+          <NavigationProperty Name="BrandGroupLangs" Relationship="Site.LanguageBrandGroupLang" FromRole="Language" ToRole="BrandGroupLang" />
+          <NavigationProperty Name="BrandGroupItemLangs" Relationship="Site.LanguageBrandGroupItemLang" FromRole="Language" ToRole="BrandGroupItemLang" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -656,6 +824,8 @@
           <NavigationProperty Name="BrandItems" Relationship="Site.BrandBrandItem" FromRole="Brand" ToRole="BrandItem" />
           <NavigationProperty Name="BrandLangs" Relationship="Site.BrandBrandLang" FromRole="Brand" ToRole="BrandLang" />
           <Property Type="String" Name="ImageSource" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="BrandGroup" Relationship="Site.BrandGroupBrand" FromRole="Brand" ToRole="BrandGroup" />
+          <Property Type="Int32" Name="BrandGroupId" Nullable="false" />
         </EntityType>
         <EntityType Name="BrandItem">
           <Key>
@@ -1007,6 +1177,124 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BrandGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="BrandGroupItems" Relationship="Site.BrandGroupBrandGroupItem" FromRole="BrandGroup" ToRole="BrandGroupItem" />
+          <NavigationProperty Name="BrandGroupLangs" Relationship="Site.BrandGroupBrandGroupLang" FromRole="BrandGroup" ToRole="BrandGroupLang" />
+          <NavigationProperty Name="Brands" Relationship="Site.BrandGroupBrand" FromRole="BrandGroup" ToRole="Brand" />
+        </EntityType>
+        <EntityType Name="BrandGroupLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" Nullable="false" FixedLength="true" MaxLength="1000" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageBrandGroupLang" FromRole="BrandGroupLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="BrandGroup" Relationship="Site.BrandGroupBrandGroupLang" FromRole="BrandGroupLang" ToRole="BrandGroup" />
+          <Property Type="Int32" Name="BrandGroupId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageBrandGroupLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.BrandGroupLang" Role="BrandGroupLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandGroupLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BrandGroupItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="BrandGroupItemLangs" Relationship="Site.BrandGroupItemBrandGroupItemLang" FromRole="BrandGroupItem" ToRole="BrandGroupItemLang" />
+          <NavigationProperty Name="BrandGroup" Relationship="Site.BrandGroupBrandGroupItem" FromRole="BrandGroupItem" ToRole="BrandGroup" />
+          <Property Type="Int32" Name="BrandGroupId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandGroupItemLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Site.LanguageBrandGroupItemLang" FromRole="BrandGroupItemLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="BrandGroupItem" Relationship="Site.BrandGroupItemBrandGroupItemLang" FromRole="BrandGroupItemLang" ToRole="BrandGroupItem" />
+          <Property Type="Int32" Name="BrandGroupItemId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageBrandGroupItemLang">
+          <End Type="Site.Language" Role="Language" Multiplicity="1" />
+          <End Type="Site.BrandGroupItemLang" Role="BrandGroupItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandGroupItemLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandGroupItemBrandGroupItemLang">
+          <End Type="Site.BrandGroupItem" Role="BrandGroupItem" Multiplicity="1" />
+          <End Type="Site.BrandGroupItemLang" Role="BrandGroupItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandGroupItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandGroupItemLang">
+              <PropertyRef Name="BrandGroupItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandGroupBrandGroupItem">
+          <End Type="Site.BrandGroup" Role="BrandGroup" Multiplicity="1" />
+          <End Type="Site.BrandGroupItem" Role="BrandGroupItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandGroupItem">
+              <PropertyRef Name="BrandGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandGroupBrandGroupLang">
+          <End Type="Site.BrandGroup" Role="BrandGroup" Multiplicity="1" />
+          <End Type="Site.BrandGroupLang" Role="BrandGroupLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BrandGroupLang">
+              <PropertyRef Name="BrandGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BrandGroupBrand">
+          <End Type="Site.BrandGroup" Role="BrandGroup" Multiplicity="1" />
+          <End Type="Site.Brand" Role="Brand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Brand">
+              <PropertyRef Name="BrandGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1051,6 +1339,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="BrandGroupId" ColumnName="BrandGroupId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1187,6 +1476,47 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BrandGroup">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandGroup)">
+        <MappingFragment StoreEntitySet="BrandGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandGroupLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandGroupLang)">
+        <MappingFragment StoreEntitySet="BrandGroupLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="BrandGroupId" ColumnName="BrandGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandGroupItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandGroupItem)">
+        <MappingFragment StoreEntitySet="BrandGroupItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="BrandGroupId" ColumnName="BrandGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BrandGroupItemLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BrandGroupItemLang)">
+        <MappingFragment StoreEntitySet="BrandGroupItemLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="BrandGroupItemId" ColumnName="BrandGroupItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1207,139 +1537,135 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site" >
-        <EntityTypeShape EntityType="Site.Language" Width="1.5" PointX="0.875" PointY="2.125" Height="2.172587890625" />
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="5.875" PointY="0.5" Height="1.787985026041667" />
-        <EntityTypeShape EntityType="Site.ContentLang" Width="1.5" PointX="3.5" PointY="0.5" Height="2.7494921875" />
+        <EntityTypeShape EntityType="Site.Language" Width="2" PointX="5.625" PointY="0.5" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="11" PointY="0.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.ContentLang" Width="1.5" PointX="8.625" PointY="0.5" Height="2.7494921875" />
         <AssociationConnector Association="Site.ContentContentLang">
-          <ConnectorPoint PointX="5.875" PointY="1.3939925130208337" />
-          <ConnectorPoint PointX="5" PointY="1.3939925130208337" />
+          <ConnectorPoint PointX="11" PointY="1.3939925130208335" />
+          <ConnectorPoint PointX="10.125" PointY="1.3939925130208335" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageContentLang">
-          <ConnectorPoint PointX="2.375" PointY="2.68724609375" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="2.6872460937499989" />
-          <ConnectorPoint PointX="3.3333333333333335" PointY="2.68724609375" />
-          <ConnectorPoint PointX="3.5" PointY="2.68724609375" />
+          <ConnectorPoint PointX="7.625" PointY="1.8747460937499998" />
+          <ConnectorPoint PointX="8.625" PointY="1.8747460937499998" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Brand" Width="1.5" PointX="5.625" PointY="5.875" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="Site.BrandItem" Width="1.5" PointX="7.75" PointY="5.875" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="Site.BrandItemImage" Width="1.5" PointX="9.875" PointY="5.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Site.Brand" Width="1.5" PointX="11" PointY="9.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.BrandItem" Width="1.5" PointX="11" PointY="12.875" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="Site.BrandItemImage" Width="1.5" PointX="13.375" PointY="12.875" Height="1.7879850260416674" />
         <AssociationConnector Association="Site.BrandBrandItem" >
-          <ConnectorPoint PointX="7.125" PointY="6.9612939453125" />
-          <ConnectorPoint PointX="7.75" PointY="6.9612939453125" />
+          <ConnectorPoint PointX="11.75" PointY="11.922587890625" />
+          <ConnectorPoint PointX="11.75" PointY="12.875" />
         </AssociationConnector>
         <AssociationConnector Association="Site.BrandItemBrandItemImage" >
-          <ConnectorPoint PointX="9.25" PointY="6.7689925130208337" />
-          <ConnectorPoint PointX="9.875" PointY="6.7689925130208337" />
+          <ConnectorPoint PointX="12.5" PointY="13.768992513020834" />
+          <ConnectorPoint PointX="13.375" PointY="13.768992513020834" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.BrandLang" Width="1.5" PointX="3.5" PointY="5.875" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="Site.BrandLang" Width="1.5" PointX="8.875" PointY="9.75" Height="2.3648893229166656" />
         <AssociationConnector Association="Site.LanguageBrandLang">
-          <ConnectorPoint PointX="1.625" PointY="4.297587890625" />
-          <ConnectorPoint PointX="1.625" PointY="7.0574446614583328" />
-          <ConnectorPoint PointX="3.5" PointY="7.0574446614583328" />
+          <ConnectorPoint PointX="6.9086197217394911" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="6.9086197217394911" PointY="10.932444661458334" />
+          <ConnectorPoint PointX="8.875" PointY="10.932444661458334" />
         </AssociationConnector>
         <AssociationConnector Association="Site.BrandBrandLang">
-          <ConnectorPoint PointX="5.625" PointY="6.9612939453125" />
-          <ConnectorPoint PointX="5" PointY="6.9612939453125" />
+          <ConnectorPoint PointX="11" PointY="10.8362939453125" />
+          <ConnectorPoint PointX="10.375" PointY="10.8362939453125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.BrandItemLang" Width="1.5" PointX="3.5" PointY="3.5" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.BrandItemLang" Width="1.5" PointX="8.875" PointY="12.875" Height="2.1725878906249996" />
         <AssociationConnector Association="Site.LanguageBrandItemLang">
-          <ConnectorPoint PointX="2.375" PointY="3.8987939453125" />
-          <ConnectorPoint PointX="3.5" PointY="3.8987939453125" />
+          <ConnectorPoint PointX="6.6355711997644322" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="6.6355711997644322" PointY="13.784937575120191" />
+          <ConnectorPoint PointX="8.875" PointY="13.784937575120191" />
         </AssociationConnector>
         <AssociationConnector Association="Site.BrandItemBrandItemLang" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.28125" PointY="5.875" />
-          <ConnectorPoint PointX="8.28125" PointY="5.516337890625" />
-          <ConnectorPoint PointX="5" PointY="5.516337890625" />
+          <ConnectorPoint PointX="11" PointY="13.9612939453125" />
+          <ConnectorPoint PointX="10.375" PointY="13.9612939453125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="8.875" PointY="0.5" Height="2.172587890625" />
-        <EntityTypeShape EntityType="Site.CategoryLang" Width="1.5" PointX="8.875" PointY="3.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.Category" Width="1.5" PointX="0.5" PointY="6.5" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Site.CategoryLang" Width="1.5" PointX="2.75" PointY="6.5" Height="2.1725878906249996" />
         <AssociationConnector Association="Site.CategoryCategoryLang">
-          <ConnectorPoint PointX="9.625" PointY="2.672587890625" />
-          <ConnectorPoint PointX="9.625" PointY="3.125" />
+          <ConnectorPoint PointX="2" PointY="7.5862939453125" />
+          <ConnectorPoint PointX="2.75" PointY="7.5862939453125" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageCategoryLang">
-          <ConnectorPoint PointX="2.375" PointY="3.3432421874999996" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="3.3432421874999987" />
-          <ConnectorPoint PointX="3.3333333333333335" PointY="3.3432421874999996" />
-          <ConnectorPoint PointX="8.875" PointY="3.3432421874999996" />
+          <ConnectorPoint PointX="6.12175643225088" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="6.12175643225088" PointY="7.5862939453125" />
+          <ConnectorPoint PointX="4.25" PointY="7.5862939453125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.CategoryBrand" Width="1.5" PointX="11.125" PointY="0.5" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="Site.CategoryBrand" Width="1.5" PointX="0.5" PointY="9.25" Height="2.3648893229166661" />
         <AssociationConnector Association="Site.CategoryCategoryBrand">
-          <ConnectorPoint PointX="10.375" PointY="1.5862939453124998" />
-          <ConnectorPoint PointX="11.125" PointY="1.5862939453124998" />
+          <ConnectorPoint PointX="1.25" PointY="8.672587890625" />
+          <ConnectorPoint PointX="1.25" PointY="9.25" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.CategoryBrandItem" Width="1.75" PointX="13.75" PointY="0.5" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Site.CategoryBrandItem" Width="1.75" PointX="0.5" PointY="12.5" Height="2.172587890625" />
         <AssociationConnector Association="Site.CategoryBrandCategoryBrandItem">
-          <ConnectorPoint PointX="12.625" PointY="1.5862939453124998" />
-          <ConnectorPoint PointX="13.75" PointY="1.5862939453124998" />
+          <ConnectorPoint PointX="1.25" PointY="11.614889322916666" />
+          <ConnectorPoint PointX="1.25" PointY="12.5" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.CategoryBrandItemLang" Width="2" PointX="13.5" PointY="3.25" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Site.CategoryBrandItemLang" Width="2" PointX="3" PointY="12.5" Height="2.3648893229166656" />
         <AssociationConnector Association="Site.CategoryBrandItemCategoryBrandItemLang">
-          <ConnectorPoint PointX="14.625" PointY="2.672587890625" />
-          <ConnectorPoint PointX="14.625" PointY="3.25" />
+          <ConnectorPoint PointX="2.25" PointY="13.5862939453125" />
+          <ConnectorPoint PointX="3" PointY="13.5862939453125" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageCategoryBrandItemLang">
-          <ConnectorPoint PointX="1.625" PointY="2.125" />
-          <ConnectorPoint PointX="1.625" PointY="1.875" />
-          <ConnectorPoint PointX="3.25" PointY="1.875" />
-          <ConnectorPoint PointX="3.25" PointY="3.4994921874999996" />
-          <ConnectorPoint PointX="8.5625" PointY="3.4994921874999996" />
-          <ConnectorPoint PointX="8.5625" PointY="5.547587890625" />
-          <ConnectorPoint PointX="13" PointY="5.547587890625" />
-          <ConnectorPoint PointX="13" PointY="4.3362944453125" />
-          <ConnectorPoint PointX="13.104166666666666" PointY="4.3362944453124994" />
-          <ConnectorPoint PointX="13.333333333333334" PointY="4.3362944453125" />
-          <ConnectorPoint PointX="13.5" PointY="4.3362944453125" />
+          <ConnectorPoint PointX="6.3712912056536144" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="6.3712912056536144" PointY="13.682444661458334" />
+          <ConnectorPoint PointX="5" PointY="13.682444661458334" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="16.25" PointY="0.5" Height="1.787985026041667" />
-        <EntityTypeShape EntityType="Site.ArticleLang" Width="1.5" PointX="16.25" PointY="3.25" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="Site.ArticleItem" Width="1.5" PointX="18.625" PointY="0.5" Height="2.3648893229166661" />
-        <EntityTypeShape EntityType="Site.ArticleItemLang" Width="1.5" PointX="18.5" PointY="3.25" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="0.5" PointY="0.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Site.ArticleLang" Width="1.5" PointX="2.75" PointY="0.5" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="Site.ArticleItem" Width="1.5" PointX="0.5" PointY="3.5" Height="2.3648893229166661" />
+        <EntityTypeShape EntityType="Site.ArticleItemLang" Width="1.5" PointX="2.75" PointY="3.5" Height="2.1725878906249996" />
         <AssociationConnector Association="Site.ArticleArticleItem">
-          <ConnectorPoint PointX="17.75" PointY="1.4901432291666668" />
-          <ConnectorPoint PointX="18.625" PointY="1.4901432291666668" />
+          <ConnectorPoint PointX="1.25" PointY="2.4802864583333335" />
+          <ConnectorPoint PointX="1.25" PointY="3.5" />
         </AssociationConnector>
         <AssociationConnector Association="Site.ArticleItemArticleItemLang">
-          <ConnectorPoint PointX="19.3125" PointY="2.8648893229166661" />
-          <ConnectorPoint PointX="19.3125" PointY="3.25" />
+          <ConnectorPoint PointX="2" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="2.75" PointY="4.5862939453125" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageArtilceLang">
-          <ConnectorPoint PointX="2.031252" PointY="2.125" />
-          <ConnectorPoint PointX="2.031252" PointY="1.859375" />
-          <ConnectorPoint PointX="3.1875" PointY="1.859375" />
-          <ConnectorPoint PointX="3.1875" PointY="3.4994921874999996" />
-          <ConnectorPoint PointX="8.625" PointY="3.4994921874999996" />
-          <ConnectorPoint PointX="8.625" PointY="5.485087890625" />
-          <ConnectorPoint PointX="13.25" PointY="5.485087890625" />
-          <ConnectorPoint PointX="13.25" PointY="3" />
-          <ConnectorPoint PointX="14.541666666666666" PointY="2.9999999999999996" />
-          <ConnectorPoint PointX="14.708333333333334" PointY="3" />
-          <ConnectorPoint PointX="15.875" PointY="3" />
-          <ConnectorPoint PointX="15.875" PointY="4.3362939453125" />
-          <ConnectorPoint PointX="16.25" PointY="4.3362939453125" />
+          <ConnectorPoint PointX="5.625" PointY="1.7075374050315366" />
+          <ConnectorPoint PointX="5.25" PointY="1.7075374050315366" />
+          <ConnectorPoint PointX="5.25" PointY="1.698134582232981" />
+          <ConnectorPoint PointX="4.25" PointY="1.698134582232981" />
         </AssociationConnector>
         <AssociationConnector Association="Site.LanguageArticleItemLang">
-          <ConnectorPoint PointX="1.218748" PointY="2.125" />
-          <ConnectorPoint PointX="1.218748" PointY="1.84375" />
-          <ConnectorPoint PointX="3.125" PointY="1.84375" />
-          <ConnectorPoint PointX="3.125" PointY="3.4994921874999996" />
-          <ConnectorPoint PointX="8.65625" PointY="3.4994921874999996" />
-          <ConnectorPoint PointX="8.65625" PointY="5.422587890625" />
-          <ConnectorPoint PointX="12.916666666666666" PointY="5.4225878906249987" />
-          <ConnectorPoint PointX="13.083333333333334" PointY="5.422587890625" />
-          <ConnectorPoint PointX="13.1875" PointY="5.422587890625" />
-          <ConnectorPoint PointX="13.1875" PointY="2.984375" />
-          <ConnectorPoint PointX="14.541666666666666" PointY="2.9843749999999996" />
-          <ConnectorPoint PointX="14.708333333333334" PointY="2.984375" />
-          <ConnectorPoint PointX="16.916666666666668" PointY="2.9843749999999996" />
-          <ConnectorPoint PointX="17.083333333333332" PointY="2.984375" />
-          <ConnectorPoint PointX="18.125" PointY="2.984375" />
-          <ConnectorPoint PointX="18.125" PointY="4.3362939453125" />
-          <ConnectorPoint PointX="18.5" PointY="4.3362939453125" />
+          <ConnectorPoint PointX="5.91531852638802" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="5.91531852638802" PointY="4.4992543945312491" />
+          <ConnectorPoint PointX="4.25" PointY="4.4992543945312491" />
         </AssociationConnector>
         <AssociationConnector Association="Site.ArticleArticleLang">
-          <ConnectorPoint PointX="17" PointY="2.4802864583333335" />
-          <ConnectorPoint PointX="17" PointY="3.25" />
+          <ConnectorPoint PointX="2" PointY="2.02362334280303" />
+          <ConnectorPoint PointX="2.75" PointY="2.02362334280303" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.BrandGroup" Width="1.5" PointX="11" PointY="6.875" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.BrandGroupLang" Width="1.625" PointX="8.875" PointY="6.875" Height="1.9802864583333317" />
+        <AssociationConnector Association="Site.LanguageBrandGroupLang">
+          <ConnectorPoint PointX="7.1641311879860687" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="7.1641311879860687" PointY="7.8651432291666659" />
+          <ConnectorPoint PointX="8.875" PointY="7.8651432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.BrandGroupItem" Width="1.5" PointX="11" PointY="4.125" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="Site.BrandGroupItemLang" Width="1.875" PointX="8.5" PointY="4.125" Height="2.1725878906249996" />
+        <AssociationConnector Association="Site.LanguageBrandGroupItemLang">
+          <ConnectorPoint PointX="7.3830361778855895" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="7.3830361778855895" PointY="5.1286720827792553" />
+          <ConnectorPoint PointX="8.5" PointY="5.1286720827792553" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandGroupItemBrandGroupItemLang">
+          <ConnectorPoint PointX="11" PointY="5.0189925130208337" />
+          <ConnectorPoint PointX="10.375" PointY="5.0189925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandGroupBrandGroupItem">
+          <ConnectorPoint PointX="11.75" PointY="6.875" />
+          <ConnectorPoint PointX="11.75" PointY="6.297587890625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandGroupBrandGroupLang">
+          <ConnectorPoint PointX="11" PointY="7.9612939453125" />
+          <ConnectorPoint PointX="10.5" PointY="7.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BrandGroupBrand">
+          <ConnectorPoint PointX="11.75" PointY="9.2398893229166656" />
+          <ConnectorPoint PointX="11.75" PointY="9.75" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

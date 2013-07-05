@@ -24,27 +24,27 @@ namespace Listelli.Controllers
             }
         }
 
-        public ActionResult Gallery()
-        {
-            using (var context = new SiteContainer())
-            {
-                var model = new BrandCatalogueModel(CurrentLang, context, null);
-                this.SetSeoContent(model);
-                ViewBag.CurrentMenuItem = "gallery";
-                return View(model);
-            }
-        }
+        //public ActionResult Gallery()
+        //{
+        //    using (var context = new SiteContainer())
+        //    {
+        //        var model = new BrandCatalogueModel(CurrentLang, context,null, null);
+        //        this.SetSeoContent(model);
+        //        ViewBag.CurrentMenuItem = "gallery";
+        //        return View(model);
+        //    }
+        //}
 
-        public ActionResult BrandDetails(string id)
-        {
-            using (var context = new SiteContainer())
-            {
-                var model = new BrandCatalogueModel(CurrentLang, context, id);
-                this.SetSeoContent(model);
-                ViewBag.CurrentMenuItem = "brand-details";
-                return View(model);
-            }
-        }
+        //public ActionResult BrandDetails(string id)
+        //{
+        //    using (var context = new SiteContainer())
+        //    {
+        //        var model = new BrandCatalogueModel(CurrentLang, context,null, id);
+        //        this.SetSeoContent(model);
+        //        ViewBag.CurrentMenuItem = "brand-details";
+        //        return View(model);
+        //    }
+        //}
 
         public ActionResult Articles()
         {

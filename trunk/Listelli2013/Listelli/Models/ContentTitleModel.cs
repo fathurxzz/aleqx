@@ -18,4 +18,12 @@ namespace Listelli.Models
         public string Action { get; set; }
         public string Controller { get; set; }
     }
+
+    public class ContentTitleModel2 : ContentTitleModel
+    {
+        public string Title2 { get; set; }
+        public string Action2 { get; set; }
+        public string Controller2 { get; set; }
+        public string Id { get; set; }
+    }
 }
