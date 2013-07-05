@@ -28,21 +28,21 @@ namespace Listelli
                 new { controller = "Account", action = "LogOn" } // Parameter defaults
             );
 
-            routes.MapRoute(
-               "Catalogue", // Route name
-               "{lang}/catalogue", // URL with parameters
-               new { controller = "Category", action = "Index", id = UrlParameter.Optional },
-               new { lang = @"ru|en" },
-               new[] { "Listelli.Controllers" }
-            );
+            //routes.MapRoute(
+            //   "Catalogue", // Route name
+            //   "{lang}/catalogue", // URL with parameters
+            //   new { controller = "Category", action = "Index", id = UrlParameter.Optional },
+            //   new { lang = @"ru|en" },
+            //   new[] { "Listelli.Controllers" }
+            //);
 
-            routes.MapRoute(
-               "CategoryDetails", // Route name
-               "{lang}/category/{id}", // URL with parameters
-               new { controller = "Category", action = "Details", id = UrlParameter.Optional },
-               new { lang = @"ru|en" },
-               new[] { "Listelli.Controllers" }
-            );
+            //routes.MapRoute(
+            //   "CategoryDetails", // Route name
+            //   "{lang}/category/{id}", // URL with parameters
+            //   new { controller = "Category", action = "Details", id = UrlParameter.Optional },
+            //   new { lang = @"ru|en" },
+            //   new[] { "Listelli.Controllers" }
+            //);
 
 
             routes.MapRoute(
@@ -92,6 +92,7 @@ namespace Listelli
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang = "ru" } // Parameter defaults
+                , namespaces: new[] { "Listelli.Controllers" }
             );
 
         }

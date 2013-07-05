@@ -1,21 +1,23 @@
-﻿@model Listelli.Models.Brand
+﻿@model Listelli.Models.BrandGroup
 @{
-    ViewBag.Title = "Добавление бренда";
+    ViewBag.Title = "Редактирование бренда";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="adminContentContainer">
-    @using (Html.BeginForm("Create", "Brand", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "BrandGroup", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.CurrentLang)
-        @Html.Hidden("brandId",(int)ViewBag.BrandId)
+
 
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
                     <h2>
-                        Добавление бренда</h2>
+                        Редактирование бренда</h2>
                 </td>
             </tr>
             <tr>
@@ -45,7 +47,7 @@
                     @Html.ValidationMessageFor(model => model.Description)
                 </td>
             </tr>
-             <tr>
+            <tr>
                 <td>
                     @Html.LabelFor(model => model.ImageSource)
                 </td>
@@ -65,8 +67,9 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Gallery", "Home", new { Area = "" }, null)
+            @Html.ActionLink("Назад", "Index", "Home", new { Area = "BrandCatalogue" }, null)
         </div>
+
     }
 </div>
 @section Includes

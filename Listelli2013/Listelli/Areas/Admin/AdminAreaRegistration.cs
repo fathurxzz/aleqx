@@ -23,11 +23,20 @@ namespace Listelli.Areas.Admin
             );
 
             context.MapRoute(
+                "AdminBrand",
+                "{lang}/admin/brand/{brandId}/{action}",
+                new { controller = "Brand", brandId = UrlParameter.Optional },
+                constraints: new { lang = @"ru|en" }
+            );
+
+            context.MapRoute(
                 "AdminCategoryBrand",
                 "{lang}/admin/categorybrand/{category}/{action}",
                 new { controller = "CategoryBrand", category = UrlParameter.Optional},
                 constraints: new { lang = @"ru|en" }
             );
+
+            
 
             context.MapRoute(
                 "Admin_default",

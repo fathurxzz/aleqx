@@ -91,19 +91,21 @@
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\ArticleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BrandGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryBrandItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\BrandCatalogue\BrandCatalogueAreaRegistration.cs" />
+    <Compile Include="Areas\BrandCatalogue\Controllers\HomeController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CategoryController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CustomerController.cs" />
     <Compile Include="Areas\FactoryCatalogue\FactoryCatalogueAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -120,6 +122,7 @@
     <Compile Include="Models\ArticlesModel.cs" />
     <Compile Include="Models\ArticleValidation.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\BrandGroup.cs" />
     <Compile Include="Models\BrandItem.cs" />
     <Compile Include="Models\BrandValidation.cs" />
     <Compile Include="Models\BrandCatalogueModel.cs" />
@@ -251,6 +254,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\BrandCatalogue\Models\" />
+    <Folder Include="Areas\BrandCatalogue\Views\Shared\" />
     <Folder Include="Areas\FactoryCatalogue\Models\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
@@ -287,6 +292,12 @@
     <Content Include="Areas\Admin\Views\ArticleItem\CreateImageBlock.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleItem\EditTextBlock.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\BrandCatalogue\Views\Web.config" />
+    <Content Include="Areas\BrandCatalogue\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandGroup\Create.cshtml" />
+    <Content Include="Areas\BrandCatalogue\Views\Home\BrandGroupDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\BrandGroup\Edit.cshtml" />
+    <Content Include="Areas\BrandCatalogue\Views\Home\BrandDetails.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\PTN57F.ttf" />
     <None Include="Content\fonts\PTN77F.ttf" />
@@ -306,6 +317,8 @@
     <Content Include="Views\Shared\LanguageSwitcher.cshtml" />
     <Content Include="Views\Home\Articles.cshtml" />
     <Content Include="Views\Shared\Article.cshtml" />
+    <Content Include="Views\Shared\BrandGroup.cshtml" />
+    <Content Include="Views\Shared\PageTitle2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">

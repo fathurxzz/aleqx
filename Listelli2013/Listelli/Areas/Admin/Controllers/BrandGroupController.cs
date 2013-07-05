@@ -12,40 +12,36 @@ using SiteExtensions.Graphics;
 namespace Listelli.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Administrators")]
-    public class BrandController : AdminController
+    public class BrandGroupController : AdminController
     {
-        public ActionResult Create(int brandId)
+        public ActionResult Create()
         {
             using (var context = new SiteContainer())
             {
-                ViewBag.BrandId = brandId;
-                int maxSortOrder = context.Brand.Max(c => (int?)c.SortOrder) ?? 0;
-                var brand = new Brand
-                                {
-                                    SortOrder = maxSortOrder + 1,
-                                    CurrentLang = CurrentLang.Id
-                                };
+                int maxSortOrder = context.BrandGroup.Max(c => (int?)c.SortOrder) ?? 0;
+                var brand = new BrandGroup
+                {
+                    SortOrder = maxSortOrder + 1,
+                    CurrentLang = CurrentLang.Id
+                };
                 return View(brand);
-                
             }
         }
 
         [HttpPost]
-        public ActionResult Create(Brand model, HttpPostedFileBase fileUpload, int brandId)
+        public ActionResult Create(BrandGroup model, HttpPostedFileBase fileUpload)
         {
             try
             {
                 using (var context = new SiteContainer())
                 {
-                    var brandGroup = context.BrandGroup.First(b => b.Id == brandId);
+                    var cache = new BrandGroup
+                    {
+                        Name = SiteHelper.UpdatePageWebName(model.Name),
+                        Description = model.Description,
+                        SortOrder = model.SortOrder
+                    };
 
-                    var cache = new Brand
-                                    {
-                                        Name = SiteHelper.UpdatePageWebName(model.Name), 
-                                        Description = model.Description,
-                                        SortOrder = model.SortOrder
-                                    };
-                    
 
                     if (fileUpload != null)
                     {
@@ -57,9 +53,7 @@ namespace Listelli.Areas.Admin.Controllers
                         cache.ImageSource = fileName;
                     }
 
-                    cache.BrandGroup = brandGroup;
-
-                    context.AddToBrand(cache);
+                    context.AddToBrandGroup(cache);
 
                     var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
@@ -67,7 +61,7 @@ namespace Listelli.Areas.Admin.Controllers
                         CreateOrChangeContentLang(context, model, cache, lang);
                     }
 
-                    return RedirectToAction("BrandGroupDetails", "Home", new { area = "BrandCatalogue",id=brandGroup.Name });
+                    return RedirectToAction("Index", "Home", new { area = "BrandCatalogue" });
                 }
             }
             catch
@@ -80,20 +74,21 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.Brand.First(c => c.Id == id);
+                var brand = context.BrandGroup.First(c => c.Id == id);
                 brand.CurrentLang = CurrentLang.Id;
                 return View(brand);
             }
         }
 
+
         [HttpPost]
-        public ActionResult Edit(Brand model, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(BrandGroup model, HttpPostedFileBase fileUpload)
         {
             try
             {
                 using (var context = new SiteContainer())
                 {
-                    var cache = context.Brand.FirstOrDefault(p => p.Id == model.Id);
+                    var cache = context.BrandGroup.FirstOrDefault(p => p.Id == model.Id);
 
 
                     if (cache != null)
@@ -114,7 +109,7 @@ namespace Listelli.Areas.Admin.Controllers
                         }
 
 
-                        TryUpdateModel(cache, new[] {"Description", "SortOrder"});
+                        TryUpdateModel(cache, new[] { "Description", "SortOrder" });
                         cache.Name = SiteHelper.UpdatePageWebName(model.Name);
 
                         var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
@@ -125,7 +120,7 @@ namespace Listelli.Areas.Admin.Controllers
                     }
                 }
 
-                return RedirectToAction("Gallery", "Home", new { area = "" });
+                return RedirectToAction("Index", "Home", new { area = "BrandCatalogue" });
             }
             catch
             {
@@ -133,46 +128,46 @@ namespace Listelli.Areas.Admin.Controllers
             }
         }
 
-       
-
         public ActionResult Delete(int id)
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.Brand.Include("BrandLangs").First(b => b.Id == id);
+                var brand = context.BrandGroup.Include("BrandGroupLangs").First(b => b.Id == id);
                 ImageHelper.DeleteImage(brand.ImageSource);
 
-                while (brand.BrandLangs.Any())
+                while (brand.BrandGroupLangs.Any())
                 {
-                    var bl = brand.BrandLangs.First();
+                    var bl = brand.BrandGroupLangs.First();
                     context.DeleteObject(bl);
                 }
                 context.DeleteObject(brand);
                 context.SaveChanges();
 
-                return RedirectToAction("Gallery", "Home", new { area = "" });
+                return RedirectToAction("Index", "Home", new { area = "BrandCatalogue" });
             }
         }
 
-        
-        private void CreateOrChangeContentLang(SiteContainer context, Brand instance, Brand cache, Language lang)
+
+
+
+        private void CreateOrChangeContentLang(SiteContainer context, BrandGroup instance, BrandGroup cache, Language lang)
         {
 
-            BrandLang contenttLang = null;
+            BrandGroupLang contenttLang = null;
             if (cache != null)
             {
-                contenttLang = context.BrandLang.FirstOrDefault(p => p.BrandId == cache.Id && p.LanguageId == lang.Id);
+                contenttLang = context.BrandGroupLang.FirstOrDefault(p => p.BrandGroupId == cache.Id && p.LanguageId == lang.Id);
             }
             if (contenttLang == null)
             {
-                var newPostLang = new BrandLang
+                var newPostLang = new BrandGroupLang
                 {
-                    BrandId = instance.Id,
+                    BrandGroupId = instance.Id,
                     LanguageId = lang.Id,
                     Title = instance.Title,
                     Description = instance.Description
                 };
-                context.AddToBrandLang(newPostLang);
+                context.AddToBrandGroupLang(newPostLang);
             }
             else
             {

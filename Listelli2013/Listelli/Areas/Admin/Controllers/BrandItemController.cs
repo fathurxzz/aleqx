@@ -18,8 +18,9 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.Brand.First(b => b.Id == brandId);
+                var brand = context.Brand.Include("BrandGroup").First(b => b.Id == brandId);
                 ViewBag.BrandName = brand.Name;
+                ViewBag.BrandGroupName = brand.BrandGroup.Name;
                 int maxSortOrder = context.BrandItem.Where(b => b.BrandId == brand.Id).Max(c => (int?)c.SortOrder) ?? 0;
                 return View(new BrandItem { SortOrder = maxSortOrder + 1, ContentType = type, CurrentLang = CurrentLang.Id, BrandId = brandId });
             }
@@ -32,7 +33,7 @@ namespace Listelli.Areas.Admin.Controllers
             {
                 using (var context = new SiteContainer())
                 {
-                    var brand = context.Brand.First(b => b.Id == model.BrandId);
+                    var brand = context.Brand.Include("BrandGroup").First(b => b.Id == model.BrandId);
                     var cache = new BrandItem
                     {
                         SortOrder = model.SortOrder,
@@ -48,7 +49,7 @@ namespace Listelli.Areas.Admin.Controllers
                         CreateOrChangeContentLang(context, model, cache, lang);
                     }
 
-                    return RedirectToAction("BrandDetails", "Home", new { area = "", id = brand.Name });
+                    return RedirectToAction("BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup=brand.BrandGroup.Name, id = brand.Name });
                 }
             }
             catch
@@ -114,8 +115,9 @@ namespace Listelli.Areas.Admin.Controllers
         {
             using (var context = new SiteContainer())
             {
-                var brand = context.Brand.First(b => b.Id == brandId);
+                var brand = context.Brand.Include("BrandGroup").First(b => b.Id == brandId);
                 ViewBag.BrandName = brand.Name;
+                ViewBag.BrandGroupName = brand.BrandGroup.Name;
                 int maxSortOrder = context.BrandItem.Where(b => b.BrandId == brand.Id).Max(c => (int?)c.SortOrder) ?? 0;
                 return View(new BrandItem { SortOrder = maxSortOrder + 1, BrandId = brandId });
             }

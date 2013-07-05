@@ -1,0 +1,41 @@
+﻿@using Listelli.App_LocalResources
+@using Listelli.Models
+@model BrandCatalogueModel
+@{
+    ViewBag.Title = "BrandGroupDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Link, Title = GlobalRes.BrandGallery, Action = "Index", Controller = "Home" })
+    
+}
+@if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+{
+    <div class="adminLinkContainer">
+        @Html.ActionLink("Добавить элемент бренда", "Create", "Brand", new {brandId=Model.BrandGroup.Id, area = "Admin"}, new {@class = "adminLink"})
+    </div>
+}
+<div class="brandsGallery">
+    @{
+        int cnt = 0;
+    }
+    @foreach (var brand in Model.Brands.OrderBy(b => b.SortOrder))
+    {
+        cnt++;
+        @Html.Partial("Brand", brand)
+        if (cnt % 3 == 0)
+        {
+        <div class="clear">
+        </div>
+        }
+    }
+    <div class="clear">
+    </div>
+</div>
+@section Includes
+{
+    <link href="@Url.Content("~/Content/BrandsGallery.css")" rel="stylesheet" type="text/css" />
+}
+

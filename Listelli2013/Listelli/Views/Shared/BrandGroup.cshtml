@@ -1,6 +1,6 @@
 ﻿@using Listelli
 @using SiteExtensions.Graphics
-@model Listelli.Models.Brand
+@model Listelli.Models.BrandGroup
 <div class="brand">
     <div class="imageContainer">
         <div class="image">
@@ -10,20 +10,20 @@
         <div class="frame">
         </div>
         <div class="imageLink">
-            @Html.Raw(Html.ActionLink("[IMAGE]", "BrandDetails", "Home", new { area="BrandCatalogue", brandGroup=Model.BrandGroup.Name, id = Model.Name }, null).ToString().Replace("[IMAGE]", ""))
+            @Html.Raw(Html.ActionLink("[IMAGE]", "BrandGroupDetails", "Home", new { area = "BrandCatalogue", id = Model.Name }, null).ToString().Replace("[IMAGE]", ""))
         </div>
     </div>
     @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
         <div class="">
-            @Html.ActionLink("Редактировать", "Edit", "Brand", new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})
-            @Html.ActionLink("Удалить", "Delete", "Brand", new {area = "Admin", id = Model.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить бренд?')"})
+            @Html.ActionLink("Редактировать", "Edit", "BrandGroup", new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})
+            @Html.ActionLink("Удалить", "Delete", "BrandGroup", new {area = "Admin", id = Model.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить бренд?')"})
             <span class="sortOrder">@Html.Raw(Model.SortOrder.ToString())</span>
         </div>
     }
     <div class="description">
         <div class="title">
-            @Html.ActionLink(Model.Title, "BrandDetails", "Home", new { id = Model.Name }, null)
+            @Html.ActionLink(Model.Title, "BrandGroupDetails", "Home", new { area = "BrandCatalogue", id = Model.Name }, null)
         </div>
         @Html.Raw(Model.Description)
     </div>

@@ -1,0 +1,30 @@
+﻿@using Listelli.Models
+@model Listelli.Models.ContentTitleModel2
+<div class="title-container">
+    <table class="title">
+        <tr>
+            <td class="separator">
+            </td>
+            <td class="left">
+            </td>
+            <td class="center">
+                @if (Model.Type == TitleType.Link)
+                {
+                    <span>
+                        @Html.Raw("&laquo") @Html.ActionLink(Model.Title, Model.Action, Model.Controller) @Html.Raw("&laquo") @Html.ActionLink(Model.Title2, Model.Action2, Model.Controller2,new{id=Model.Id},null)
+                    </span>
+                }
+                else
+                {
+                    @Model.Title
+                }
+            </td>
+            <td class="right">
+            </td>
+            <td class="separator">
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</div>

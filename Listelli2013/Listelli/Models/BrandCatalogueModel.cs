@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -7,37 +8,70 @@ namespace Listelli.Models
 {
     public class BrandCatalogueModel:SiteModel
     {
-        public IEnumerable<Brand> Brands { get; set; }
         public Brand Brand { get; set; }
+        public IEnumerable<Brand> Brands { get; set; }
 
-        public BrandCatalogueModel(Language lang, SiteContainer context, string brandId) : base(lang, context, "gallery")
+        public BrandGroup BrandGroup { get; set; }
+        public IEnumerable<BrandGroup> BrandGroups { get; set; }
+
+
+        public BrandCatalogueModel(Language lang, SiteContainer context,string brandGroupId, string brandId) : base(lang, context, "gallery")
         {
             Title += " - Галерея брендов";
 
-            if (brandId == null)
+            if (brandGroupId == null)
             {
-                Brands = context.Brand.ToList();
-                foreach (Brand brand in Brands)
+                BrandGroups = context.BrandGroup.ToList();
+                foreach (BrandGroup bg in BrandGroups)
                 {
-                    brand.CurrentLang = lang.Id;
+                    bg.CurrentLang = lang.Id;
                 }
             }
             else
             {
-                Brand = context.Brand.Include("BrandItems").First(b => b.Name == brandId);
+                BrandGroup = context.BrandGroup.Include("Brands").First(b => b.Name == brandGroupId);
+                BrandGroup.CurrentLang = lang.Id;
 
-                Brand.CurrentLang = lang.Id;
 
-                foreach (var item in Brand.BrandItems)
+                if (brandId == null)
                 {
-                    item.CurrentLang = lang.Id;
-                    if (item.ContentType == 3)
+                    foreach (var item in BrandGroup.Brands)
                     {
-                        item.BrandItemImages.Load();
+                        item.CurrentLang = lang.Id;
                     }
+                    Title += " - " + BrandGroup.Title;
+                    Brands = BrandGroup.Brands;
                 }
-                Title += " - " + Brand.Title;
+
+                if (brandId == null)
+                {
+                    //Brands = context.Brand.ToList();
+                    //foreach (Brand brand in Brands)
+                    //{
+                    //    brand.CurrentLang = lang.Id;
+                    //}
+                }
+                else
+                {
+                    Brand = context.Brand.Include("BrandItems").First(b => b.Name == brandId);
+
+                    Brand.CurrentLang = lang.Id;
+
+                    foreach (var item in Brand.BrandItems)
+                    {
+                        item.CurrentLang = lang.Id;
+                        if (item.ContentType == 3)
+                        {
+                            item.BrandItemImages.Load();
+                        }
+                    }
+                    Title += " - " + Brand.Title;
+                }
             }
+
+
+
+            
 
         }
     }
