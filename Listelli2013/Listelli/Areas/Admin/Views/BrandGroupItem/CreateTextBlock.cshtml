@@ -1,4 +1,4 @@
-﻿@model Listelli.Models.BrandItem
+﻿@model Listelli.Models.BrandGroupItem
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,11 +6,10 @@
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.ContentType)
-        @Html.HiddenFor(model => model.BrandId)
+        @Html.HiddenFor(model => model.BrandGroupId)
         @Html.HiddenFor(model => model.CurrentLang)
-        
+
         <table class="adminEditContentTable">
             <tr>
                 <td colspan="2">
@@ -39,7 +38,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "BrandDetails", "Home", new { Area = "", id = ViewBag.BrandName }, null)
+            @Html.ActionLink("Назад", "BrandGroupDetails", "Home", new { Area = "BrandCatalogue", id = ViewBag.BrandGroupName }, null)
         </div>
     }
 </div>
