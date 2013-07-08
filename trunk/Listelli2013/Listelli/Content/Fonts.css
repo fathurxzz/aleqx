@@ -33,3 +33,9 @@
     font-family: "PTSansItalic";
     src: url('fonts/PTS56F_W.ttf');
 }
+
+@font-face
+{
+    font-family: "PragmaticaBook";
+    src: url('fonts/prg55.otf');
+}
