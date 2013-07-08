@@ -17,8 +17,6 @@
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div class="adminLinkContainer">
-        @*@Html.ActionLink("Добавить бренд", "Create", "CategoryBrand", new { area = "Admin", categoryId = Model.Category.Id }, new { @class = "adminLink" })
-        <br />*@
         @Html.ActionLink("Добавить бренд", "Create", "CategoryBrand", new { area = "Admin", category = Model.Category.Name }, new { @class = "adminLink" })
     </div>
 }
@@ -66,6 +64,7 @@
             {
             <div class="adminLinkContainer">
                 @Html.ActionLink("Добавить элемент бренда", "Create", "CategoryBrandItem", new { area = "Admin", brandId = Model.Brand.Id }, new { @class = "adminLink" })
+                
             </div>
             }
         }

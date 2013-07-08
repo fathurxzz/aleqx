@@ -11,11 +11,11 @@ namespace Listelli.Areas.Admin.Controllers
     [Authorize(Roles = "Administrators")]
     public class CategoryBrandController : AdminController
     {
-        public ActionResult Create(string category)
+        public ActionResult Create(int category)
         {
             using (var context = new SiteContainer())
             {
-                var cat = context.Category.First(c => c.Name == category);
+                var cat = context.Category.First(c => c.Id == category);
                 int maxSortOrder = context.CategoryBrand.Where(c => c.CategoryId == cat.Id).Max(c => (int?)c.SortOrder) ?? 0;
                 var categoryBrand = new CategoryBrand
                 {

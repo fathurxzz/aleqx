@@ -13,17 +13,65 @@
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div class="adminLinkContainer">
-        @Html.ActionLink("Добавить элемент бренда", "Create", "Brand", new {brandId=Model.BrandGroup.Id, area = "Admin"}, new {@class = "adminLink"})
+        @Html.ActionLink("Добавить элемент бренда", "Create", "Brand", new { brandId = Model.BrandGroup.Id, area = "Admin" }, new { @class = "adminLink" })
+        @Html.ActionLink("Добавить текстовый блок", "CreateTextBlock", "BrandGroupItem", new { area = "Admin", brandId = Model.BrandGroup.Id, type = 1 }, new { @class = "adminLink" })
+                @Html.ActionLink("Добавить текстовый блок в рамке", "CreateTextBlock", "BrandGroupItem", new { area = "Admin", brandId = Model.BrandGroup.Id, type = 2 }, new { @class = "adminLink" })
     </div>
 }
 <div class="brandsGallery">
     <div class="brandDetails">
         <div class="title">@Model.BrandGroup.Title</div>
-    <div class="description">@Model.BrandGroup.Description</div>
-    <div class="shortLine">
+        <div class="description">@Model.BrandGroup.Description</div>
+        <div class="shortLine">
+        </div>
     </div>
-    </div>
+    
+    
+    @if (Model.BrandGroup.BrandGroupItems.Any())
+    {
 
+        <div class="brandDetails">
+            @foreach (var item in Model.BrandGroup.BrandGroupItems.OrderBy(b => b.SortOrder))
+            {
+                if (item.ContentType == 1)
+                {
+                    <div class="text">
+                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                        {
+                            <div class="adminLinkContainer">
+                                @Html.ActionLink("Редактировать", "EditTextBlock", "BrandGroupItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                @Html.ActionLink("Удалить", "DeleteTextBlock", "BrandGroupItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить текстовый блок?')"})
+                                <span class="sortOrder">@item.SortOrder</span>
+                            </div>
+                        }
+                        @Html.Raw(item.Text)
+                    </div>
+                }
+                else if (item.ContentType == 2)
+                {
+                    <div class="box">
+                        <div class="top">
+                        </div>
+                        <div class="middle">
+                            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                            {
+                                <div class="adminLinkContainer">
+                                    @Html.ActionLink("Редактировать", "EditTextBlock", "BrandGroupItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink"})
+                                    @Html.ActionLink("Удалить", "DeleteTextBlock", "BrandGroupItem", new {area = "Admin", id = item.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить текстовый блок?')"})
+                                    <span class="sortOrder">@item.SortOrder</span>
+                                </div>
+                            }
+                            @Html.Raw(item.Text)
+                        </div>
+                        <div class="bottom">
+                        </div>
+                    </div>
+                }
+            }
+            <div class="shortLine" style="margin-bottom: 30px;">
+            </div>
+        </div>
+    }
     @{
         int cnt = 0;
     }

@@ -29,8 +29,13 @@ namespace Listelli.Models
             }
             else
             {
-                BrandGroup = context.BrandGroup.Include("Brands").First(b => b.Name == brandGroupId);
+                BrandGroup = context.BrandGroup.Include("BrandGroupItems").Include("Brands").First(b => b.Name == brandGroupId);
                 BrandGroup.CurrentLang = lang.Id;
+
+                foreach (var item in BrandGroup.BrandGroupItems)
+                {
+                    item.CurrentLang = lang.Id;
+                }
 
 
                 if (brandId == null)
