@@ -63,6 +63,7 @@ namespace Listelli.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var brandItem = context.BrandItem.Include("Brand").First(b => b.Id == id);
+                
                 ViewBag.BrandName = brandItem.Brand.Name;
                 brandItem.CurrentLang = CurrentLang.Id;
                 return View(brandItem);
@@ -75,7 +76,7 @@ namespace Listelli.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var cache = context.BrandItem.Include("Brand").First(p => p.Id == model.Id);
-
+                var brand = context.Brand.Include("BrandGroup").First(b => b.Id == model.BrandId);
                 model.Text = HttpUtility.HtmlDecode(model.Text);
                 //cache.Text = model.Text;
 
@@ -88,7 +89,7 @@ namespace Listelli.Areas.Admin.Controllers
                 }
 
 
-                return RedirectToAction("BrandDetails", "Home", new { area = "", id = cache.Brand.Name });
+                return RedirectToAction("BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup = brand.BrandGroup.Name, id = cache.Brand.Name });
             }
         }
 
@@ -97,7 +98,8 @@ namespace Listelli.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var brandItem = context.BrandItem.Include("Brand").Include("BrandItemLangs").First(b => b.Id == id);
-                var brandName = brandItem.Brand.Name;
+                var brand = context.Brand.Include("BrandGroup").First(b => b.Id == brandItem.BrandId);
+                
                 while (brandItem.BrandItemLangs.Any())
                 {
                     var bal = brandItem.BrandItemLangs.First();
@@ -105,7 +107,7 @@ namespace Listelli.Areas.Admin.Controllers
                 }
                 context.DeleteObject(brandItem);
                 context.SaveChanges();
-                return RedirectToAction("BrandDetails", "Home", new { area = "", id = brandName });
+                return RedirectToAction("BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup = brand.BrandGroup.Name, id = brand.Name });
             }
         }
 
@@ -151,8 +153,7 @@ namespace Listelli.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-
-                return RedirectToAction("BrandDetails", "Home", new { area = "", id = brand.Name });
+                return RedirectToAction("BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup = brand.BrandGroup.Name, id = brand.Name });
             }
         }
 
@@ -173,7 +174,7 @@ namespace Listelli.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var brandItem = context.BrandItem.Include("Brand").First(b => b.Id == model.Id);
-
+                var brand = context.Brand.Include("BrandGroup").First(b => b.Id == model.BrandId);
                 TryUpdateModel(brandItem, new[] {"SortOrder"});
 
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -195,8 +196,8 @@ namespace Listelli.Areas.Admin.Controllers
                 }
 
                 context.SaveChanges();
-
-                return RedirectToAction("BrandDetails", "Home", new { area = "", id = brandItem.Brand.Name });
+                
+                return RedirectToAction("BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup = brand.BrandGroup.Name, id = brand.Name });
             }
         }
 
@@ -208,7 +209,7 @@ namespace Listelli.Areas.Admin.Controllers
             using (var context = new SiteContainer())
             {
                 var brandItem = context.BrandItem.Include("Brand").Include("BrandItemImages").First(b => b.Id ==id);
-                var brandName = brandItem.Brand.Name;
+                var brand = context.Brand.Include("BrandGroup").First(b => b.Id == brandItem.BrandId);
 
                 while (brandItem.BrandItemImages.Any())
                 {
@@ -220,7 +221,7 @@ namespace Listelli.Areas.Admin.Controllers
                 context.DeleteObject(brandItem);
                 context.SaveChanges();
 
-                return RedirectToAction("BrandDetails", "Home", new { area = "", id = brandName });
+                return RedirectToAction("BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup = brand.BrandGroup.Name, id = brand.Name });
             }
         }
 

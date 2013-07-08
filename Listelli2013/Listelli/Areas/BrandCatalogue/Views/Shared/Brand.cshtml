@@ -23,7 +23,7 @@
     }
     <div class="description">
         <div class="title">
-            @Html.ActionLink(Model.Title, "BrandDetails", "Home", new { id = Model.Name }, null)
+            @Html.ActionLink(Model.Title, "BrandDetails", "Home", new { area = "BrandCatalogue", brandGroup = Model.BrandGroup.Name, id = Model.Name }, null)
         </div>
         @Html.Raw(Model.Description)
     </div>

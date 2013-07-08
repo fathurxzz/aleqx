@@ -149,6 +149,12 @@ body {
     font-weight: bold;
 }
 
+.title-container2 {
+    /*font-family: PragmaticaBook !important;*/
+    /*font-size: 10px;*/
+    text-transform: none;
+}
+
 .title-container table.title {
     position: relative;
     margin: 0 auto;
