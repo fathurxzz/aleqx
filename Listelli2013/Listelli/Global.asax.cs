@@ -28,6 +28,21 @@ namespace Listelli
                 new { controller = "Account", action = "LogOn" } // Parameter defaults
             );
 
+            routes.MapRoute(
+                "NotFoundPage", // Route name
+                "NotFoundPage", // URL with parameters
+                new { controller = "Error", action = "NotFoundPage" }, // Parameter defaults
+                new[] { "Listelli.Controllers" }
+            );
+
+            routes.MapRoute(
+                "ErrorPage", // Route name
+                "Error", // URL with parameters
+                new { controller = "Error", action = "Index" }, // Parameter defaults
+                new[] { "Listelli.Controllers" }
+            );
+
+
             //routes.MapRoute(
             //   "Catalogue", // Route name
             //   "{lang}/catalogue", // URL with parameters

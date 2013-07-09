@@ -108,6 +108,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -323,15 +324,15 @@
     </EntityDeploy>
     <None Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
-    <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Shared\PageTitle.cshtml" />
     <Content Include="Areas\BrandCatalogue\Views\Shared\Brand.cshtml" />
-    <Content Include="Views\Home\BrandDetails.cshtml" />
     <Content Include="Views\Shared\LanguageSwitcher.cshtml" />
     <Content Include="Views\Home\Articles.cshtml" />
     <Content Include="Views\Shared\Article.cshtml" />
     <Content Include="Areas\BrandCatalogue\Views\Shared\BrandGroup.cshtml" />
     <Content Include="Views\Shared\PageTitle2.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFoundPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">

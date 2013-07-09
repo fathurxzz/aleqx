@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
 using System.Web.Mvc;
 
 namespace Listelli.Controllers
@@ -15,6 +12,14 @@ namespace Listelli.Controllers
         protected static string NotFoundPage = "~/NotFoundPage";
 
         protected static string LoginPage = "~/Login";
+
+        public RedirectResult RedirectToErrorPage
+        {
+            get
+            {
+                return Redirect(ErrorPage);
+            }
+        }
 
         public RedirectResult RedirectToNotFoundPage
         {
@@ -43,9 +48,24 @@ namespace Listelli.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            base.OnException(filterContext);
 
-            filterContext.Result = Redirect(ErrorPage);
+            //base.OnException(filterContext);
+
+            if(filterContext.ExceptionHandled)
+                return;
+
+
+
+            if (filterContext.Exception is ObjectNotFoundException)
+                filterContext.Result = Redirect(NotFoundPage);
+            else
+                filterContext.Result = Redirect(ErrorPage);
+
+            filterContext.Controller.TempData["errorMessage"] = filterContext.Exception.Message;
+
+            filterContext.ExceptionHandled = true;
+            filterContext.HttpContext.Response.Clear();
+
         }
     }
 }
