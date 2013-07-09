@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Web;
+using SiteExtensions;
 
 namespace Listelli.Models
 {
@@ -29,7 +31,13 @@ namespace Listelli.Models
             }
             else
             {
-                BrandGroup = context.BrandGroup.Include("BrandGroupItems").Include("Brands").First(b => b.Name == brandGroupId);
+                BrandGroup = context.BrandGroup.Include("BrandGroupItems").Include("Brands").FirstOrDefault(b => b.Name == brandGroupId);
+
+                if (BrandGroup == null)
+                {
+                    throw new ObjectNotFoundException(string.Format("Бренд {0} не найден", brandGroupId));
+                }
+
                 BrandGroup.CurrentLang = lang.Id;
 
                 foreach (var item in BrandGroup.BrandGroupItems)
@@ -58,7 +66,12 @@ namespace Listelli.Models
                 }
                 else
                 {
-                    Brand = context.Brand.Include("BrandItems").First(b => b.Name == brandId);
+                    Brand = context.Brand.Include("BrandItems").FirstOrDefault(b => b.Name == brandId);
+
+                    if (Brand == null)
+                    {
+                        throw new ObjectNotFoundException(string.Format("Элемент бренда {0} не найден", brandId));
+                    }
 
                     Brand.CurrentLang = lang.Id;
 
