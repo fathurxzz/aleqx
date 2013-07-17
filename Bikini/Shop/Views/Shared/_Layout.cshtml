@@ -5,27 +5,18 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-2.0.2.min.js")" type="text/javascript"></script>
 </head>
-<body>
-    <div class="page">
-        <div id="header">
-            <div id="title">
-                <h1>My MVC Application</h1>
-            </div>
-            <div id="logindisplay">
-                @Html.Partial("_LogOnPartial")
-            </div>
-            <div id="menucontainer">
-                <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                </ul>
+    <body>
+        
+        <div class="header">
+            <div class="page">
+                <div class="logo-container"></div>
             </div>
         </div>
-        <div id="main">
-            @RenderBody()
+        <div class="header-bottom">
+            <div class="page">    
+            </div>
         </div>
-        <div id="footer">
-        </div>
-    </div>
-</body>
+            @RenderBody()    
+        
+    </body>
 </html>
