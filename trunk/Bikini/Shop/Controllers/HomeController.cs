@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Models;
+using SiteExtensions;
 
 namespace Shop.Controllers
 {
     public class HomeController : DefaultController
     {
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
+            using (var context = new ShopContainer())
+            {
+                var model = new SiteModel(context, id);
+                ViewBag.IsHomePage = model.IsHomePage;
+                this.SetSeoContent(model);
+                ViewBag.CurrentMenuItem = model.Content.Name;
+                return View(model);
+            }
         }
     }
 }

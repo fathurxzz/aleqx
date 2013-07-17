@@ -3,3 +3,24 @@
     padding: 0;
 }
 
+.page {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.header {
+    height: 64px;
+    background-color: #000;
+}
+
+.header-bottom {
+    height: 66px;
+    background-color: #c8dd49;
+}
+
+.logo-container {
+    width: 335px;
+    height: 64px;
+    background: url('img/logo.gif');
+}
