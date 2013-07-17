@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop", "Shop\Shop.csproj", "{7F510565-B24F-4A4B-B449-16C67BC21761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bikini.Model", "Bikini.Model\Bikini.Model.csproj", "{129CC267-B33A-481B-8A53-D01A4CEEAE25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F510565-B24F-4A4B-B449-16C67BC21761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F510565-B24F-4A4B-B449-16C67BC21761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F510565-B24F-4A4B-B449-16C67BC21761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F510565-B24F-4A4B-B449-16C67BC21761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129CC267-B33A-481B-8A53-D01A4CEEAE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129CC267-B33A-481B-8A53-D01A4CEEAE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129CC267-B33A-481B-8A53-D01A4CEEAE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129CC267-B33A-481B-8A53-D01A4CEEAE25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
