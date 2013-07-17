@@ -41,6 +41,9 @@
     
     @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("productItem"), ScaleMode.FixedWidth))*@
     @*@Html.Image("~/Content/Images/", Model.ImageSource)*@
-        @Html.Raw(Html.OriginalImage("/Content/Images/", Model.ImageSource))
+        @if (!string.IsNullOrEmpty(Model.ImageSource))
+        {
+            @Html.Raw(Html.OriginalImage("/Content/Images/", Model.ImageSource))
+        }
 
 </div>
