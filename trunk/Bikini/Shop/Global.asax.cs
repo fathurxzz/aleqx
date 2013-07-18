@@ -21,7 +21,25 @@ namespace Shop
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
+            routes.MapRoute(
+                "LogOn", // Route name
+                "logon", // URL with parameters
+                new { controller = "Account", action = "LogOn" } // Parameter defaults
+            );
 
+            routes.MapRoute(
+                "NotFoundPage", // Route name
+                "NotFoundPage", // URL with parameters
+                new { controller = "Error", action = "NotFoundPage" }, // Parameter defaults
+                new[] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
+                "ErrorPage", // Route name
+                "Error", // URL with parameters
+                new { controller = "Error", action = "Index" }, // Parameter defaults
+                new[] { "Shop.Controllers" }
+            );
             routes.MapRoute(
                "Content", // Route name
                "{id}", // URL with parameters
