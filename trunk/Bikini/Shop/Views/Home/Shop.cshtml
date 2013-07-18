@@ -1,0 +1,23 @@
+﻿@model Shop.Models.ShopModel
+@using SiteExtensions
+
+
+@section MainMenu
+{
+    @Html.Partial("MainMenu", (Menu)ViewBag.MainMenu ?? new Menu())
+}
+
+@section CatalogueMenu
+{
+    @Html.Partial("CatalogueMenu", (Menu)ViewBag.CatalogueMenu ?? new Menu())
+}
+
+@section Title
+{
+    @Model.Category.Title
+}
+
+
+
+
+

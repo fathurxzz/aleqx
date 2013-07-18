@@ -1,0 +1,10 @@
+﻿@model SiteExtensions.Menu
+@foreach (var item in Model)
+{
+    string className = item.Current ? "current" : "";
+    <ul>
+        <li class="@className">
+            @(item.Current ? Html.Raw(item.Title) : Html.ActionLink(item.Title, "Index", "Home", new {id = item.ContentName}, null))
+        </li>
+    </ul>
+}

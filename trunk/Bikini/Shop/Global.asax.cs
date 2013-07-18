@@ -20,6 +20,21 @@ namespace Shop
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("favicon.ico");
+
+            routes.MapRoute(
+               "Content", // Route name
+               "{id}", // URL with parameters
+               new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+               new[] { "Shop.Controllers" }
+            );
+
+            routes.MapRoute(
+               "Catalogue", // Route name
+               "catalogue/{id}", // URL with parameters
+               new { controller = "Home", action = "Shop", id = UrlParameter.Optional },
+               new[] { "Shop.Controllers" }
+            );
 
             routes.MapRoute(
                 "Default", // Route name

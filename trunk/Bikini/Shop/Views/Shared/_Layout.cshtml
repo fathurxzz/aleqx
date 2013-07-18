@@ -3,20 +3,59 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/jquery-2.0.2.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-2.0.3.min.js")" type="text/javascript"></script>
+    
+    <script src="@Url.Content("~/Scripts/PageScripts.js")" type="text/javascript"></script>
+    
+    <meta name="description" content="@ViewBag.SeoDescription" />
+    <meta name="keywords" content="@ViewBag.SeoKeywords" />
+    
+    <script type="text/javascript">
+        var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+        BasePageExtender.initialize();
+    </script>
+    @RenderSection("Includes", false)
 </head>
     <body>
         
         <div class="header">
             <div class="page">
-                <div class="logo-container"></div>
+                <div class="main-menu">
+                    @RenderSection("MainMenu",false)
+                </div>
+                <div class="logo-container">
+                    <div id="logo"></div>
+                </div>
+                
             </div>
         </div>
         <div class="header-bottom">
-            <div class="page">    
+            <div class="page">
+                <div class="title">
+                    @RenderSection("Title", false)
+                </div>    
             </div>
         </div>
-            @RenderBody()    
+        
+        <div class="page">
+            
+            <div class="catalogue-menu">
+                <div class="title">каталог</div>
+                
+                @RenderSection("CatalogueMenu", false)
+
+                
+                
+            </div>
+            <div class="content-container">
+                @RenderBody()            
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="footer">
+            Сделано в <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+        </div>
         
     </body>
 </html>
