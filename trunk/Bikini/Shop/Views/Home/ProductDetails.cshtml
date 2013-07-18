@@ -1,0 +1,48 @@
+﻿@using Shop
+@using SiteExtensions
+@using SiteExtensions.Graphics
+@model Shop.Models.ShopModel
+@section MainMenu
+{
+    @Html.Partial("MainMenu", (Menu)ViewBag.MainMenu ?? new Menu())
+}
+@section CatalogueMenu
+{
+    @Html.Partial("CatalogueMenu", (Menu)ViewBag.CatalogueMenu ?? new Menu())
+}
+@section Title
+{
+    @Model.Category.Title
+}
+<div class="productDetails">
+    <div class="image">
+        <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@Model.Product.ImageSource">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("productImage")))
+        </a>
+    </div>
+    <div class="info">
+        <div class="backToCatalogue">
+            @Html.ActionLink("Вернуться в каталог","Category","Home",new{area="",id=Model.Category.Name},null)
+        </div>
+        <div class="title">
+            @Model.Product.Title
+        </div>
+        
+        <div class="price">
+            @Model.Product.Price грн
+        </div>
+        
+        <div class="description">
+            @Model.Product.Description
+        </div>
+        
+        <div class="buyButton">
+            
+            <a href="#" onclick="Shop.addToCart(@Model.Product.Id)">Купить</a>
+        </div>
+        
+        
+    </div>
+    
+    <div class="clear"></div>
+</div>

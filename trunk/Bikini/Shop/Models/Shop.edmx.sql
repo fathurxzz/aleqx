@@ -5,25 +5,29 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/17/2013 14:35:10
+-- Date Created: 07/18/2013 18:17:29
 -- Generated from EDMX file: D:\projects\Bikini\Shop\Models\Shop.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `bikini`;
-CREATE DATABASE `bikini`;
-USE `bikini`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
+--    ALTER TABLE `OrderItem` DROP CONSTRAINT `FK_OrderOrderItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
+    DROP TABLE IF EXISTS `Category`;
+    DROP TABLE IF EXISTS `Product`;
+    DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `Order`;
+    DROP TABLE IF EXISTS `OrderItem`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -93,9 +97,13 @@ CREATE TABLE `OrderItem` (
     `Description` longtext  NULL,
     `ImageSource` varchar( 255 )  NOT NULL,
     `Price` decimal(10,0)  NOT NULL,
-    `ProductId` longtext  NOT NULL,
+    `ProductId` int  NOT NULL,
     `Quantity` int  NOT NULL,
-    `OrderId` int  NOT NULL
+    `OrderId` int  NOT NULL,
+    `ProductName` varchar( 200 )  NULL,
+    `ProductTitle` varchar( 200 )  NULL,
+    `CategoryName` varchar( 200 )  NULL,
+    `CategoryTitle` varchar( 200 )  NULL
 );
 
 

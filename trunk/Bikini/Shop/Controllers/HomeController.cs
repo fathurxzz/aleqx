@@ -24,11 +24,24 @@ namespace Shop.Controllers
             }
         }
 
-        public ActionResult Shop(string id)
+        public ActionResult Category(string id)
         {
             using (var context = new ShopContainer())
             {
-                var model = new ShopModel(context, id);
+                var model = new ShopModel(context, id, null);
+                ViewBag.MainMenu = model.Menu;
+                ViewBag.CatalogueMenu = model.CatalogueMenu;
+                this.SetSeoContent(model);
+                ViewBag.CurrentCategoryMenuItem = model.Category.Name;
+                return View(model);
+            }
+        }
+
+        public ActionResult ProductDetails(string categoryId, string id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var model = new ShopModel(context, categoryId,id);
                 ViewBag.MainMenu = model.Menu;
                 ViewBag.CatalogueMenu = model.CatalogueMenu;
                 this.SetSeoContent(model);

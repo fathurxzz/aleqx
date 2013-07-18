@@ -1,0 +1,38 @@
+﻿@model Shop.Models.ShopModel
+@using SiteExtensions
+
+
+@section MainMenu
+{
+    @Html.Partial("MainMenu", (Menu)ViewBag.MainMenu ?? new Menu())
+}
+
+@section CatalogueMenu
+{
+    @Html.Partial("CatalogueMenu", (Menu)ViewBag.CatalogueMenu ?? new Menu())
+}
+
+@section Title
+{
+    @Model.Category.Title
+}
+
+
+
+@if (Request.IsAuthenticated)
+{
+    <div>
+    @Html.ActionLink("Добавить продукт","Create","Product",new{area="Admin",id=Model.Category.Id},new{@class="adminLink"})
+    </div>
+}
+
+
+<div class="products">
+
+@foreach (var product in Model.Category.Products)
+{
+    @Html.Partial("Product",product)
+}
+
+<div class="clear"></div>
+</div>

@@ -84,9 +84,13 @@
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="255" />
     <Property Name="Price" Type="decimal" Nullable="false" />
-    <Property Name="ProductId" Type="longtext" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="ProductTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="CategoryName" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="CategoryTitle" Type="nchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <Association Name="CategoryProduct">
     <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
@@ -210,10 +214,14 @@
           <Property Type="String" Name="Description" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="255" />
           <Property Type="Decimal" Name="Price" Nullable="false" />
-          <Property Type="String" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="Int32" Name="Quantity" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Shop.OrderOrderItem" FromRole="OrderItem" ToRole="Order" />
           <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="String" Name="ProductName" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="ProductTitle" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="CategoryName" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="CategoryTitle" FixedLength="true" MaxLength="200" />
         </EntityType>
         <Association Name="OrderOrderItem">
           <End Type="Shop.Order" Role="Order" Multiplicity="1" />
@@ -303,6 +311,10 @@
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryTitle" ColumnName="CategoryTitle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -334,10 +346,10 @@
           <ConnectorPoint PointX="3.75" PointY="1.6824446614583333" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.Order" Width="1.5" PointX="8.25" PointY="0.5" Height="2.7494921874999996" />
-        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.5" PointX="10.5" PointY="0.5" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.5" PointX="10.5" PointY="0.5" Height="3.3263964843749996" />
         <AssociationConnector Association="Shop.OrderOrderItem">
-          <ConnectorPoint PointX="9.75" PointY="1.7785953776041659" />
-          <ConnectorPoint PointX="10.5" PointY="1.7785953776041659" />
+          <ConnectorPoint PointX="9.75" PointY="1.8747460937499998" />
+          <ConnectorPoint PointX="10.5" PointY="1.8747460937499998" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
