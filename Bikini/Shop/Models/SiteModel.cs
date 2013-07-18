@@ -23,7 +23,6 @@ namespace Shop.Models
 
             Menu = new Menu();
             
-            
 
             Content = context.Content.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
 
