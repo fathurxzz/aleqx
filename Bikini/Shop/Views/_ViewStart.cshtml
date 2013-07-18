@@ -1,3 +1,9 @@
 ﻿@{
+    if (Request.Cookies["bikinioptom"] == null)
+    {
+        Response.Redirect("~/soon.htm");
+    }
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+

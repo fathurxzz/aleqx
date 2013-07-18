@@ -14,10 +14,25 @@ namespace Shop.Controllers
         {
             using (var context = new ShopContainer())
             {
-                var model = new SiteModel(context, id);
+                var model = new SiteModel(context, id??"");
                 ViewBag.IsHomePage = model.IsHomePage;
+                ViewBag.MainMenu = model.Menu;
+                ViewBag.CatalogueMenu = model.CatalogueMenu;
                 this.SetSeoContent(model);
-                ViewBag.CurrentMenuItem = model.Content.Name;
+                //ViewBag.CurrentMenuItem = model.Content.Name;
+                return View(model);
+            }
+        }
+
+        public ActionResult Shop(string id)
+        {
+            using (var context = new ShopContainer())
+            {
+                var model = new ShopModel(context, id);
+                ViewBag.MainMenu = model.Menu;
+                ViewBag.CatalogueMenu = model.CatalogueMenu;
+                this.SetSeoContent(model);
+                ViewBag.CurrentCategoryMenuItem = model.Category.Name;
                 return View(model);
             }
         }

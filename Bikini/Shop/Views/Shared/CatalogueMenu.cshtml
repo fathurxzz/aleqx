@@ -1,0 +1,31 @@
+﻿@model SiteExtensions.Menu
+           
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @if (item.Current)
+            {
+                @Html.Raw(item.Title)
+            }
+            else
+            {
+                @Html.ActionLink(item.Title, "Shop", "Home", new {id = item.ContentName}, null)
+            }
+        </li>
+    }
+    
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить категорию","Create","Category",new{area="Admin"},new{@class="adminLink"})
+    }
+   
+</ul>
+
+           
+
+                
+                
+                
+                
+

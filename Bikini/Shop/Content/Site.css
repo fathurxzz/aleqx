@@ -3,6 +3,17 @@
     padding: 0;
 }
 
+body {
+    font-family: Arial;
+    font-size: 15px;
+    color: #4d4d4d;
+}
+
+.clear {
+    clear: both;
+}
+
+
 .page {
     width: 1200px;
     position: relative;
@@ -23,4 +34,116 @@
     width: 335px;
     height: 64px;
     background: url('img/logo.gif');
+}
+
+#logo {
+    width: 250px;
+    height: 45px;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.main-menu {
+    position: absolute;
+    width: 810px;
+    height: 60px;
+    margin-left: 360px;
+    font-family: Verdana;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.main-menu a {
+    color: #fff;
+    font-size: 11px;
+}
+
+.main-menu .current {
+    color: #ff9933;
+    font-size: 11px;
+}
+
+.main-menu ul {
+    list-style: none;
+    display: inline-block;
+}
+
+.main-menu li {
+    padding: 20px 24px;
+    
+}
+
+.catalogue-menu {
+    float: left;
+    border: 1px solid #ccc;
+    padding: 15px 40px 20px 40px;
+    width: 90px;
+    margin-top: -33px;
+    background-color: #fff;
+    margin-left: 40px;
+    margin-bottom: 50px;
+    color: #e93d5a;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.catalogue-menu .title {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    color: #e93d5a;
+}
+
+.catalogue-menu a {
+    font-family: Arial;
+    font-size: 13px;
+    color: #333333;
+    font-weight: normal;
+}
+
+.catalogue-menu ul {
+    list-style: none;
+}
+
+.catalogue-menu li {
+    padding-bottom: 20px;
+    line-height: 13px;
+}
+
+.content-container {
+    margin-left: 275px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+
+    line-height: 20px;
+}
+
+.header-bottom .title {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 31px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 38px;
+    margin-left: 275px;
+    line-height: 31px;
+}
+
+.footer {
+    height: 47px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-family: Arial;
+    font-size: 11px;
+    padding-top: 35px;
+}
+
+.footer a {
+    color: #ffdc08;
 }
