@@ -41,9 +41,10 @@ namespace Shop.Areas.Admin.Controllers
                     TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder", "Title" });
                     context.AddToCategory(category);
                     context.SaveChanges();
-                }
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Category", "Home", new { area = "", id = category.Name });
+                }
+                
             }
             catch
             {
@@ -71,8 +72,8 @@ namespace Shop.Areas.Admin.Controllers
                     var category = context.Category.First(c => c.Id == id);
                     TryUpdateModel(category, new[] { "Name", "SeoDescription", "SeoKeywords", "SortOrder", "Title" });
                     context.SaveChanges();
+                    return RedirectToAction("Category", "Home", new { area = "", id = category.Name });
                 }
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -88,7 +89,7 @@ namespace Shop.Areas.Admin.Controllers
                 category.Products.Clear();
                 context.DeleteObject(category);
                 context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home", new { area = "" });
             }
         }
 

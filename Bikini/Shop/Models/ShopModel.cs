@@ -8,22 +8,37 @@ namespace Shop.Models
     public class ShopModel : SiteModel
     {
         public Category Category { get; set; }
+        public Product Product { get; set; }
 
-        public ShopModel(ShopContainer context, string categoryId)
+        public ShopModel(ShopContainer context, string categoryId, string productId)
             : base(context, null)
         {
 
-            Category = context.Category.First(c => c.Name == categoryId);
+            Category = context.Category.Include("Products").First(c => c.Name == categoryId);
 
             foreach (var item in CatalogueMenu.Where(item => item.ContentName == Category.Name))
             {
-                item.Current = true;
+                if (productId != null)
+                {
+                    item.Selected = true;
+                }
+                else
+                {
+                    item.Current = true;
+                }
             }
 
             if (!string.IsNullOrEmpty(Category.SeoDescription))
                 SeoDescription = Category.SeoDescription;
             if (!string.IsNullOrEmpty(Category.SeoKeywords))
                 SeoKeywords = Category.SeoKeywords;
+
+
+            if (!string.IsNullOrEmpty(productId))
+            {
+                Product = context.Product.First(p => p.Name == productId);
+            }
+
         }
     }
 }

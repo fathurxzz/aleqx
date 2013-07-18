@@ -7,9 +7,13 @@
             {
                 @Html.Raw(item.Title)
             }
+            else if (item.Selected)
+            {
+                @Html.ActionLink(item.Title, "Category", "Home", new { area = "", id = item.ContentName }, new{@class="selected"})
+            }
             else
             {
-                @Html.ActionLink(item.Title, "Shop", "Home", new { id = item.ContentName }, null)
+                @Html.ActionLink(item.Title, "Category", "Home", new { area = "", id = item.ContentName }, null)
             }
             @if (Request.IsAuthenticated)
             {

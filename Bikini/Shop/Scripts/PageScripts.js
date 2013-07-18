@@ -6,7 +6,7 @@
                 $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
             }
 
-            $(".fancybox").fancybox();
+            $(".fancybox").fancybox({ closeBtn: false,closeClick:true });
 
             $(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
 

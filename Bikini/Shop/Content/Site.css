@@ -98,6 +98,11 @@ body {
     color: #e93d5a;
 }
 
+.catalogue-menu a.selected {
+    color: #e93d5a;
+    font-weight: bold;
+}
+
 .catalogue-menu a {
     font-family: Arial;
     font-size: 13px;
@@ -147,3 +152,114 @@ body {
 .footer a {
     color: #ffdc08;
 }
+
+.products 
+{
+    /*border: 1px solid black;*/
+    width: 890px;
+}
+
+.product {
+    width: 175px;
+    float: left;
+    margin-right: 45px;
+    margin-bottom: 45px;
+    border: 1px solid #ccc;
+}
+
+.product .description {
+    height: 94px;
+    text-align: center;
+    background-color: #f2f2f2;
+    font-family: Verdana;
+    font-size: 12px;
+    color: #000;
+}
+
+.product .image {
+    height: 173px;
+}
+
+.product .description .title {
+    padding-top: 10px;
+}
+
+.product .description .price 
+{
+    padding-top: 10px;
+    font-size: 21px;
+    color: #666666;
+}
+
+
+.productDetails .image {
+    float: left;
+}
+
+.productDetails .image img {
+    border: 11px solid #f5f5f5;
+}
+
+.productDetails .info {
+    margin-left: 450px;
+    padding-top: 15px;
+}
+
+.productDetails .info .title {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 18px;
+    color: #666666;
+}
+
+.productDetails .info .price 
+{
+    font-family: Verdana;
+    font-weight: normal;
+    font-size: 25px;
+    color: #000;
+    padding-top: 35px;
+    
+    
+}
+
+.productDetails .info .description {
+    font-family: Verdana;
+    font-weight: normal;
+    font-size: 12px;
+    color: #000;
+    padding-top: 60px;
+}
+
+ .buyButton {
+     padding-top: 40px;
+ }
+ 
+ .buyButton a {
+     padding: 10px 40px;
+     background-color: #ffea6b;
+     color: #000;
+     font-family: Verdana;
+    font-weight: bold;
+    font-size: 15px;
+     text-decoration: none;
+ }
+ 
+ .backToCatalogue {
+     width: 138px;
+     height: 35px;
+
+     padding-top: 17px;
+     padding-left: 30px;
+     
+     background: url('img/back-to-catalogue.gif');
+     position: absolute;
+     margin-left: 145px;
+     margin-top: 440px;
+     font-family: Verdana;
+     font-size: 11px;
+ }
+ 
+ .backToCatalogue a {
+     color: #666666;
+ }
