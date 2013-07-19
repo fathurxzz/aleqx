@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Helpers;
@@ -127,6 +129,7 @@ namespace Shop.Controllers
                 {
                     context.AddToOrder(order);
                     context.SaveChanges();
+                    SendEmail(order);
                     WebSession.OrderItems.Clear();
                 }
 
@@ -141,6 +144,20 @@ namespace Shop.Controllers
                 }
             }
 
+        }
+
+
+        private void SendEmail(Order order)
+        {
+            string defaultMailAddressFrom = ConfigurationManager.AppSettings["feedbackEmailFrom"];
+            string defaultMailAddresses = ConfigurationManager.AppSettings["feedbackEmailsTo"];
+            var emailFrom = new MailAddress(defaultMailAddressFrom, "BIKINI-OPTOM");
+            var emailsTo = defaultMailAddresses
+                .Split(new[] { ";", " ", "," }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => new MailAddress(s))
+                .ToList();
+
+            Helpers.MailHelper.SendTemplate(emailFrom, emailsTo, "Новый заказ", "OrderTemplate.htm", null, true, order.Name, order.Phone);
         }
 
         [HttpPost]

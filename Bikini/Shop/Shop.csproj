@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Helpers\FormCollectionExtender.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\TextHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
@@ -138,6 +139,7 @@
     <Content Include="Content\img\cart.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\zoom.png" />
+    <Content Include="Content\MailTemplates\OrderTemplate.htm" />
     <Content Include="Global.asax" />
     <Content Include="Models\Shop.edmx.sql" />
     <Content Include="README.jQuery.vsdoc.txt" />
