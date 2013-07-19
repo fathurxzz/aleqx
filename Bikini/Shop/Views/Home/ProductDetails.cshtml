@@ -17,7 +17,9 @@
 <div class="productDetails">
     <div class="image">
         <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@Model.Product.ImageSource">
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("productImage")))
+            <img src="../../Content/img/zoom.png" alt="Увеличить" style="position: absolute; border: none; margin-top: 435px; margin-left: 305px;"/>
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("productImage")))
+        
         </a>
     </div>
     <div class="info">

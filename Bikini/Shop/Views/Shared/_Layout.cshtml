@@ -6,72 +6,67 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Admin.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-2.0.3.min.js")" type="text/javascript"></script>
-    
     <script src="@Url.Content("~/Content/fancybox/jquery.fancybox.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/fancybox/jquery.fancybox.css")" rel="stylesheet" type="text/css" />
-
     <script src="@Url.Content("~/Scripts/PageScripts.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Cart.js")" type="text/javascript"></script>
-    
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
-    
     <script type="text/javascript">
         var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
         BasePageExtender.initialize();
     </script>
     @RenderSection("Includes", false)
 </head>
-    <body>
-        
-        <div class="header">
-            <div class="page">
-                <div class="main-menu">
-                    @RenderSection("MainMenu",false)
-                </div>
-                <div class="logo-container">
-                    <div id="logo"></div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="header-bottom">
-            <div class="page">
-                <div class="title">
-                    @RenderSection("Title", false)
-                </div>    
-            </div>
-        </div>
-        
+<body>
+    <div class="header">
         <div class="page">
-            <div class="left-side-bar">
-                <div class="catalogue-menu">
-                    <div class="title">каталог</div>
-                
-                    @RenderSection("CatalogueMenu", false)
-
-                
-                
-                </div>
-                <div class="smallCart">
-                    <div class="smallCartHeader"></div>
-                    <div class="smallCartInfo">
-                        @if (WebSession.OrderItems.Sum(c => c.Value.Quantity) == 0)
-                        {
-                            @Html.Raw("Пока что пусто")
-                        }
-                    </div>
-                    
-                </div>
-                </div>
-            <div class="content-container">
-                @RenderBody()            
+            
+            <div class="main-menu">
+                @RenderSection("MainMenu", false)
             </div>
-            <div class="clear"></div>
+            <div class="logo-container">
+                <div id="logo">
+                </div>
+            </div>
+            
         </div>
-        <div class="footer">
-            Сделано в <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+    </div>
+    <div class="header-bottom">
+        <div class="page">
+            @if (Request.IsAuthenticated)
+            {
+                <div class="abs" style="">
+                    @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{area=""},new{@class="adminLink"})
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    @Html.ActionLink("Заказы","Index","Order",new{area="Admin"},new{@class="adminLink"})
+                </div>
+            }
+            <div class="title">
+                @RenderSection("Title", false)
+            </div>
         </div>
-        
-    </body>
+    </div>
+    <div class="page">
+        <div class="left-side-bar">
+            <div class="catalogue-menu">
+                <div class="title">
+                    каталог</div>
+                @RenderSection("CatalogueMenu", false)
+            </div>
+            @Html.Partial("SmallCart")
+        </div>
+        <div class="content-container">
+            @RenderBody()
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        Сделано в <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+    </div>
+</body>
 </html>

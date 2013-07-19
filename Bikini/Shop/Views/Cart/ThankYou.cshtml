@@ -1,0 +1,21 @@
+﻿@using Shop.Helpers
+@using SiteExtensions
+@model Shop.Models.SiteModel
+@section MainMenu
+{
+    @Html.Partial("MainMenu", (Menu)ViewBag.MainMenu ?? new Menu())
+}
+
+@section CatalogueMenu
+{
+    @Html.Partial("CatalogueMenu", (Menu)ViewBag.CatalogueMenu ?? new Menu())
+}
+
+@section Title
+{
+    @Html.Raw("Оформление заказа")
+}
+
+
+
+<h2>Спасибо за заказ</h2>

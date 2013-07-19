@@ -11,7 +11,7 @@ using SiteExtensions.Graphics;
 
 namespace Shop.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : AdminController
     {
         
         public ActionResult Create(int id)
