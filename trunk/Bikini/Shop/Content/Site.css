@@ -98,6 +98,10 @@ body {
     color: #e93d5a;
 }
 
+.smallCartInfo a {
+    color: #e93d5a;
+}
+
 .smallCartHeader {
     width: 43px;
     height: 43px;
@@ -105,6 +109,15 @@ body {
     position: relative;
     margin: -21px auto 0 auto; 
 }
+
+.smallShoppingCartItemsCount {
+    display: none;
+}
+
+.smallShoppingCartItemsCount.visible {
+    display: block;
+}
+
 
 .catalogue-menu {
     border: 1px solid #ccc;
@@ -290,3 +303,89 @@ body {
  .backToCatalogue a {
      color: #666666;
  }
+ 
+ 
+ 
+ .cartTable
+{
+    margin-top: 20px;
+    margin-left: 5px;
+    width: 98%;
+    border-collapse: collapse;
+     font-size: 12px;
+     font-family: Arial;
+}
+
+.cartTable a {
+    color: #817a7a;
+}
+
+.cartTable td
+{
+    padding: 3px 10px;
+    border: 1px solid silver;
+    text-align: center;
+}
+
+
+
+.cartButtons
+{
+    padding: 10px;
+    text-align: right;
+    font-size: 12px;
+     font-family: Arial;
+}
+
+.cartButtons a {
+    color: #817a7a;
+}
+
+.checkOutTable
+{
+    margin: 20px 0;
+}
+
+.checkOutTable td
+{
+    padding: 5px;
+}
+
+.checkOutTable td input
+{
+    width: 300px;
+}
+.checkOutTable td textarea
+{
+    width: 300px;
+    height: 70px;
+}
+
+.dec
+{
+    text-align: right !important;
+}
+
+.editOrderItemQuantity input
+{
+    width: 30px;
+}
+
+
+.logOnPanel
+{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 30px;
+    width: 300px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+}
+
+
+.field-validation-error
+{
+    color: red !important;
+}

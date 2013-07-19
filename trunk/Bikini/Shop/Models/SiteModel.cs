@@ -16,6 +16,7 @@ namespace Shop.Models
         public bool IsHomePage { get; set; }
         public Content Content { get; set; }
         public Menu CatalogueMenu { get; set; }
+        public Order Order { get; set; }
 
         public SiteModel(ShopContainer context, string contentId)
         {

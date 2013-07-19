@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Shop.Helpers;
 using Shop.Models;
 using SiteExtensions;
+using TextHelper = Shop.Helpers.TextHelper;
 
 namespace Shop.Controllers
 {
@@ -27,6 +28,7 @@ namespace Shop.Controllers
 
                 var model = new SiteModel(context, null);
                 ViewBag.MainMenu = model.Menu;
+                ViewBag.CatalogueMenu = model.CatalogueMenu;
                 model.Title += " Корзина";
                 this.SetSeoContent(model);
                 return View(model);
@@ -34,8 +36,11 @@ namespace Shop.Controllers
         }
 
         [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
-        public int Add(int id)
+        public string Add(int id)
         {
+
+            const string prefix = "В корзине ";
+
             if (WebSession.OrderItems.ContainsKey(id))
                 WebSession.OrderItems[id].Quantity++;
             else
@@ -59,8 +64,15 @@ namespace Shop.Controllers
                     WebSession.OrderItems.Add(product.Id, orderItem);
                 }
             }
-            return WebSession.OrderItems.Sum(o => o.Value.Quantity);
+
+            int quantity = WebSession.OrderItems.Sum(o => o.Value.Quantity);
+
+            return prefix+" " + quantity +" "+ TextHelper.GetQuantitySufix(quantity);
+            // WebSession.OrderItems.Sum(o => o.Value.Quantity);
         }
+
+        
+
 
         public ActionResult Delete(int id)
         {
@@ -83,6 +95,7 @@ namespace Shop.Controllers
             {
                 var model = new SiteModel(context, null);
                 ViewBag.MainMenu = model.Menu;
+                ViewBag.CatalogueMenu = model.CatalogueMenu;
                 model.Title += " - Оформление заказа";
                 this.SetSeoContent(model);
                 return View(model);
@@ -121,6 +134,7 @@ namespace Shop.Controllers
                 {
                     var model = new SiteModel(siteContext, null);
                     ViewBag.MainMenu = model.Menu;
+                    ViewBag.CatalogueMenu = model.CatalogueMenu;
                     model.Title += " - Ваш заказ оформлен";
                     this.SetSeoContent(model);
                     return View("ThankYou", model);
@@ -153,6 +167,5 @@ namespace Shop.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }

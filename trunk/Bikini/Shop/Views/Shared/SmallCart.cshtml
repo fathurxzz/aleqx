@@ -1,0 +1,28 @@
+﻿@using Shop.Controllers
+@using Shop.Helpers
+<div class="smallCart">
+    <div class="smallCartHeader">
+    </div>
+    <div class="smallCartInfo">
+        @{
+            string cName = "";
+        }
+        @if (WebSession.OrderItems.Sum(c => c.Value.Quantity) == 0)
+        {
+            <div class="emptyCart">
+                @Html.Raw("Пока что пусто")
+            </div>
+        }
+        else
+        {
+            cName = "visible";
+        }
+        <div class="smallShoppingCartItemsCount @cName">
+            <a href="/cart">
+                <span id="smallShoppingCartItemsCount">
+                   @TextHelper.CartPrefix @WebSession.OrderItems.Sum(c => c.Value.Quantity) @TextHelper.GetQuantitySufix(WebSession.OrderItems.Sum(c => c.Value.Quantity))
+                </span>
+                </a>
+        </div>
+    </div>
+</div>

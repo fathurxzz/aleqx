@@ -5,6 +5,12 @@
     <ul>
         <li class="@className">
             @(item.Current ? Html.Raw(item.Title) : Html.ActionLink(item.Title, "Index", "Home", new {id = item.ContentName}, null))
+            
+            @if (Request.IsAuthenticated)
+            {
+                <br/>
+                @Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=item.ContentId},new{@class="adminLink"})
+            }
         </li>
     </ul>
 }

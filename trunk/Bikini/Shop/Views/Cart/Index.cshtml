@@ -45,7 +45,7 @@
 
             <tr>
                 <td>
-                    @Html.ActionLink(order.ProductTitle, "ProductDetails", "Home", new { Area = "", category = order.CategoryName, id = order.ProductName }, new{target="_blank"})
+                    @Html.ActionLink(order.ProductTitle, "ProductDetails", "Home", new { Area = "", categoryId = order.CategoryName, id = order.ProductName }, new{target="_blank"})
                     @*@order.Name*@
                 </td>
                 <td class="dec">@order.Price.ToString("N")
