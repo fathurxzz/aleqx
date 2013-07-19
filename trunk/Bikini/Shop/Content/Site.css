@@ -30,10 +30,14 @@ body {
     background-color: #c8dd49;
 }
 
+.header-bottom.pink {
+    background-color: #e93d5a;
+}
+
 .logo-container {
     width: 335px;
     height: 64px;
-    background: url('img/logo.gif');
+    background: url('img/logo.png');
 }
 
 #logo {
@@ -85,7 +89,7 @@ body {
 .smallCart {
     border: 1px solid #ccc;
      padding: 0px 20px 30px 20px;
-     margin-top: 40px;
+     margin-top: 60px;
 }
 
 .smallCartInfo {
@@ -134,7 +138,7 @@ body {
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
     color: #e93d5a;
 }
 
@@ -174,7 +178,7 @@ body {
     font-size: 31px;
     color: #fff;
     text-transform: uppercase;
-    padding-top: 38px;
+    padding-top: 39px;
     margin-left: 275px;
     line-height: 31px;
 }
