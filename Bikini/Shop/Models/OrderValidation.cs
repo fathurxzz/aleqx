@@ -29,7 +29,7 @@ namespace Shop.Models
         [DisplayName("Контактный телефон")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Обязательно!")]
+        //[Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Адрес доставки")]
         public string DeliveryAddress { get; set; }
 

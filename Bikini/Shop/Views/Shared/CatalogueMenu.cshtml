@@ -19,7 +19,7 @@
             {
                 <br />
                 @Html.ActionLink("Редактировать", "Edit", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })<br />
-                @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink" })
+                @Html.ActionLink("Удалить", "Delete", "Category", new { area = "Admin", id = item.ContentId }, new { @class = "adminLink", onclick="return confirm('Удалить категорию?')" })
             }
         </li>
     }
