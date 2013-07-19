@@ -34,7 +34,7 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var order = context.Order.Include("OrderItems").First(o => o.Id == id);
-                TryUpdateModel(order, new[] { "Complited", "Info", "Name", "DeliveryAddress", "Email" });
+                TryUpdateModel(order, new[] { "Complited", "Info", "Name", "DeliveryAddress", "Email","Phone" });
                 context.SaveChanges();
             }
             return RedirectToAction("Index");
