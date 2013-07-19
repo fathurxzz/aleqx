@@ -74,15 +74,42 @@ body {
     
 }
 
-.catalogue-menu {
+.left-side-bar {
     float: left;
-    border: 1px solid #ccc;
-    padding: 15px 40px 20px 40px;
-    width: 90px;
+    width: 170px;
     margin-top: -33px;
-    background-color: #fff;
     margin-left: 40px;
     margin-bottom: 50px;
+}
+
+.smallCart {
+    border: 1px solid #ccc;
+     padding: 0px 20px 30px 20px;
+     margin-top: 40px;
+}
+
+.smallCartInfo {
+    padding-top: 20px;
+    
+    text-align: center;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    color: #e93d5a;
+}
+
+.smallCartHeader {
+    width: 43px;
+    height: 43px;
+    background: url('img/cart.gif');
+    position: relative;
+    margin: -21px auto 0 auto; 
+}
+
+.catalogue-menu {
+    border: 1px solid #ccc;
+    padding: 15px 40px 20px 40px;
+    background-color: #fff;
     color: #e93d5a;
     font-family: Arial;
     font-size: 13px;

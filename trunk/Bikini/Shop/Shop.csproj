@@ -130,6 +130,7 @@
     <Content Include="Content\fancybox\jquery.fancybox.js" />
     <Content Include="Content\fancybox\jquery.fancybox.pack.js" />
     <Content Include="Content\img\back-to-catalogue.gif" />
+    <Content Include="Content\img\cart.gif" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Global.asax" />
     <Content Include="Models\Shop.edmx.sql" />

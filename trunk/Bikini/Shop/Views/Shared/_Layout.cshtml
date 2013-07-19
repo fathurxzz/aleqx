@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Shop.Helpers
+<!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -43,15 +44,26 @@
         </div>
         
         <div class="page">
-            
-            <div class="catalogue-menu">
-                <div class="title">каталог</div>
+            <div class="left-side-bar">
+                <div class="catalogue-menu">
+                    <div class="title">каталог</div>
                 
-                @RenderSection("CatalogueMenu", false)
+                    @RenderSection("CatalogueMenu", false)
 
                 
                 
-            </div>
+                </div>
+                <div class="smallCart">
+                    <div class="smallCartHeader"></div>
+                    <div class="smallCartInfo">
+                        @if (WebSession.OrderItems.Sum(c => c.Value.Quantity) == 0)
+                        {
+                            @Html.Raw("Пока что пусто")
+                        }
+                    </div>
+                    
+                </div>
+                </div>
             <div class="content-container">
                 @RenderBody()            
             </div>
