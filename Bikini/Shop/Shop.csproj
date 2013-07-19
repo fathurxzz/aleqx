@@ -138,6 +138,7 @@
     <Content Include="Content\img\back-to-catalogue.gif" />
     <Content Include="Content\img\cart.gif" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\zoom.png" />
     <Content Include="Content\MailTemplates\OrderTemplate.htm" />
     <Content Include="Global.asax" />
@@ -154,7 +155,9 @@
     <Content Include="setcookie.aspx" />
     <Content Include="soon.gif" />
     <Content Include="soon.htm" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
