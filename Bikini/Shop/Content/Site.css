@@ -247,10 +247,17 @@ body {
 .productDetails .info {
     margin-left: 450px;
     padding-top: 15px;
+    font-family: Verdana;
+    font-weight: normal;
+    color: #000;
+    font-size: 12px;
+}
+
+.productDetails .info span {
+    font-weight: bold;
 }
 
 .productDetails .info .title {
-    font-family: Verdana;
     font-weight: bold;
     font-size: 18px;
     color: #666666;
@@ -258,25 +265,25 @@ body {
 
 .productDetails .info .price 
 {
-    font-family: Verdana;
-    font-weight: normal;
     font-size: 25px;
-    color: #000;
     padding-top: 35px;
-    
-    
 }
 
+.productDetails .info .size 
+{
+    padding-top: 15px;
+}
+
+
+
+
+
 .productDetails .info .description {
-    font-family: Verdana;
-    font-weight: normal;
-    font-size: 12px;
-    color: #000;
-    padding-top: 60px;
+    padding-top: 35px;
 }
 
  .buyButton {
-     padding-top: 40px;
+     padding-top: 50px;
  }
  
  .buyButton a {

@@ -17,34 +17,49 @@
 <div class="productDetails">
     <div class="image">
         <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@Model.Product.ImageSource">
-            <img src="../../Content/img/zoom.png" alt="Увеличить" style="position: absolute; border: none; margin-top: 435px; margin-left: 305px;"/>
+            <img src="../../Content/img/zoom.png" alt="Увеличить" style="position: absolute;
+                border: none; margin-top: 435px; margin-left: 305px;" />
             @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("productImage")))
-        
         </a>
     </div>
     <div class="info">
         <div class="backToCatalogue">
-            @Html.ActionLink("Вернуться в каталог","Category","Home",new{area="",id=Model.Category.Name},null)
+            @Html.ActionLink("Вернуться в каталог", "Category", "Home", new { area = "", id = Model.Category.Name }, null)
         </div>
         <div class="title">
             @Model.Product.Title
         </div>
-        
+        @if (!string.IsNullOrEmpty(Model.Product.Size))
+        {
+            <div class="size">
+                <span>Размер: </span>@Model.Product.Size
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.Product.Composition))
+        {
+            <div>
+                <span>Состав: </span>@Model.Product.Composition
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.Product.Brand))
+        {
+            <div>
+                <span>Производитель: </span>@Model.Product.Brand
+            </div>
+        }
         <div class="price">
             @Model.Product.Price грн
         </div>
-        
-        <div class="description">
-            @Model.Product.Description
-        </div>
-        
+        @if (!string.IsNullOrWhiteSpace(Model.Product.Description))
+        {
+            <div class="description">
+                @Model.Product.Description
+            </div>
+        }
         <div class="buyButton">
-            
             <a href="#" onclick="Shop.addToCart(@Model.Product.Id)">Купить</a>
         </div>
-        
-        
     </div>
-    
-    <div class="clear"></div>
+    <div class="clear">
+    </div>
 </div>
