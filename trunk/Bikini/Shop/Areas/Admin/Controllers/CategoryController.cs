@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.Helpers;
 using Shop.Models;
 
 namespace Shop.Areas.Admin.Controllers
@@ -87,6 +88,14 @@ namespace Shop.Areas.Admin.Controllers
             using (var context = new ShopContainer())
             {
                 var category = context.Category.Include("Products").First(c => c.Id == id);
+
+                while (category.Products.Any())
+                {
+                    var product = category.Products.First();
+                    ImageHelper.DeleteImage(product.ImageSource);
+                    context.DeleteObject(product);
+                }
+
                 category.Products.Clear();
                 context.DeleteObject(category);
                 context.SaveChanges();
