@@ -125,7 +125,7 @@ body {
 
 .catalogue-menu {
     border: 1px solid #ccc;
-    padding: 15px 40px 20px 40px;
+    padding: 15px 40px 13px 40px;
     background-color: #fff;
     color: #e93d5a;
     font-family: Arial;
@@ -138,7 +138,7 @@ body {
     font-weight: bold;
     font-size: 15px;
     text-transform: uppercase;
-    padding-bottom: 35px;
+    padding-bottom: 30px;
     color: #e93d5a;
 }
 
