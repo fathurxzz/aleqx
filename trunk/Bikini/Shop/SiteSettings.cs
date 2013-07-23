@@ -14,8 +14,8 @@ namespace Shop
         {
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
-                                  {"productPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 173,Width = 175}, CacheFolder = "productPreview", ScaleMode = ScaleMode.Crop}},
-                                  {"productImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 492,Width = 365}, CacheFolder = "productImage", ScaleMode = ScaleMode.Crop}},
+                                  {"productPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 173,Width = 175}, CacheFolder = "productPreview", ScaleMode = ScaleMode.Insert}},
+                                  {"productImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 492,Width = 365}, CacheFolder = "productImage", ScaleMode = ScaleMode.Insert}},
                                   {"thumb0",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 100,Width = 100}, CacheFolder = "thumb0", ScaleMode = ScaleMode.Crop}}
                               };
         }
