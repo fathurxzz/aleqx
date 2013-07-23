@@ -27,12 +27,13 @@ body {
 
 .header-bottom {
     height: 66px;
-    background-color: #c8dd49;
-}
-
-.header-bottom.pink {
+    /*background-color: #c8dd49;*/
     background-color: #e93d5a;
 }
+
+/*.header-bottom.pink {
+    background-color: #e93d5a;
+}*/
 
 .logo-container {
     width: 335px;
