@@ -33,7 +33,7 @@ namespace Shop.Controllers
                 ViewBag.CatalogueMenu = model.CatalogueMenu;
                 this.SetSeoContent(model);
                 ViewBag.CurrentCategoryMenuItem = model.Category.Name;
-                ViewBag.HeaderClassName = "pink";
+                //ViewBag.HeaderClassName = "pink";
                 return View(model);
             }
         }
@@ -47,7 +47,7 @@ namespace Shop.Controllers
                 ViewBag.CatalogueMenu = model.CatalogueMenu;
                 this.SetSeoContent(model);
                 ViewBag.CurrentCategoryMenuItem = model.Category.Name;
-                ViewBag.HeaderClassName = "pink";
+                //ViewBag.HeaderClassName = "pink";
                 return View(model);
             }
         }
