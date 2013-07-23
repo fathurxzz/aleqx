@@ -17,15 +17,14 @@
 <div class="productDetails">
     <div class="image">
         <a data-fancybox-group="gallery" class="fancybox" href="/Content/Images/@Model.Product.ImageSource">
-            <img src="../../Content/img/zoom.png" alt="Увеличить" style="position: absolute;
-                border: none; margin-top: 435px; margin-left: 305px;" />
+            
             @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ImageSource, SiteSettings.GetThumbnail("productImage")))
+            <img src="../../Content/img/zoom.png" alt="Увеличить" style="position: absolute; height: 43px; margin-top: -80px;
+                border: none;  margin-left: 305px;" />
         </a>
     </div>
     <div class="info">
-        <div class="backToCatalogue">
-            @Html.ActionLink("Вернуться в каталог", "Category", "Home", new { area = "", id = Model.Category.Name }, null)
-        </div>
+        
         <div class="title">
             @Model.Product.Title
         </div>
@@ -58,6 +57,9 @@
         }
         <div class="buyButton">
             <a href="#" onclick="Shop.addToCart(@Model.Product.Id)">Купить</a>
+        </div>
+        <div class="backToCatalogue">
+            @Html.ActionLink("Вернуться в каталог", "Category", "Home", new { area = "", id = Model.Category.Name }, null)
         </div>
     </div>
     <div class="clear">

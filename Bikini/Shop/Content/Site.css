@@ -221,7 +221,7 @@ body {
 }
 
 .product .image {
-    height: 173px;
+    height: 116px;
 }
 
 .product .description .title {
@@ -299,16 +299,13 @@ body {
  .backToCatalogue {
      width: 138px;
      height: 35px;
-
      padding-top: 17px;
      padding-left: 30px;
-     
      background: url('img/back-to-catalogue.gif');
-     position: absolute;
      margin-left: 145px;
-     margin-top: 440px;
      font-family: Verdana;
      font-size: 11px;
+     margin-top: 50px;
  }
  
  .backToCatalogue a {
