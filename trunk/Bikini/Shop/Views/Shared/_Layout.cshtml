@@ -37,12 +37,12 @@
             @if (Request.IsAuthenticated)
             {
                 <div class="abs" style="">
-                    @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{area=""},new{@class="adminLink"})
+                    @Html.ActionLink("Выйти из системы администрирования","LogOff","Account",new{area=""},new{@class="adminLink blue"})
                     &nbsp;
                     &nbsp;
                     &nbsp;
                     &nbsp;
-                    @Html.ActionLink("Заказы","Index","Order",new{area="Admin"},new{@class="adminLink"})
+                    @Html.ActionLink("Заказы","Index","Order",new{area="Admin"},new{@class="adminLink blue"})
                 </div>
             }
             <div class="title">
