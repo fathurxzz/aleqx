@@ -22,6 +22,14 @@ a.adminLink:hover {
     color: #ffaa00 !important;
 }
 
+a.adminLink.blue {
+    color: #0000ff !important;
+}
+
+a.adminLink.blue:hover {
+    color: #0000ff !important;
+}
+
 .adminEditContentTable
 {
     width: 900px;

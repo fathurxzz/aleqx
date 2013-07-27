@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Shop.Models.Order>
+﻿@using System.Globalization
+@model IEnumerable<Shop.Models.Order>
 
 @{
     ViewBag.Title = "Index";
@@ -53,7 +54,7 @@
             @Html.DisplayFor(modelItem => item.Complited)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderDate)
+            @item.OrderDate.ToString(CultureInfo.GetCultureInfo("ru-RU"))
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
