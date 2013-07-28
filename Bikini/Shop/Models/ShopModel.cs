@@ -10,7 +10,7 @@ namespace Shop.Models
         public Category Category { get; set; }
         public Product Product { get; set; }
 
-        public ShopModel(ShopContainer context, string categoryId, string productId)
+        public ShopModel(ShopContainer context, string categoryId, int? productId)
             : base(context, null)
         {
 
@@ -34,9 +34,9 @@ namespace Shop.Models
                 SeoKeywords = Category.SeoKeywords;
 
 
-            if (!string.IsNullOrEmpty(productId))
+            if (productId.HasValue)
             {
-                Product = context.Product.First(p => p.Name == productId);
+                Product = context.Product.First(p => p.Id == productId);
             }
 
         }

@@ -38,7 +38,7 @@ namespace Shop.Controllers
             }
         }
 
-        public ActionResult ProductDetails(string categoryId, string id)
+        public ActionResult ProductDetails(string categoryId, int id)
         {
             using (var context = new ShopContainer())
             {
