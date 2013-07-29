@@ -161,3 +161,10 @@
 {
     border: none;
 }
+
+
+a.galleryMenuItem {
+    text-decoration: none;
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+}
