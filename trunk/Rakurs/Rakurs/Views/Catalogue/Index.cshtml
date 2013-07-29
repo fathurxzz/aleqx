@@ -50,11 +50,11 @@
             <div class="categoryInnerText">
                 @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Title : Model.CurrentCategory.TitleEng))
                 {
-                    <div class="categoryInnerTextTitle">
+                    @*<div class="categoryInnerTextTitle">
                         @Html.Raw(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Title : Model.CurrentCategory.TitleEng)
                     </div>
                     <div class="separator">
-                    </div>
+                    </div>*@
                 }
                 @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.CurrentCategory.Text : Model.CurrentCategory.TextEng))
                 {

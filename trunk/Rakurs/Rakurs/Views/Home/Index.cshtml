@@ -7,10 +7,10 @@
         <div id="bottomText" class="contentText">
             @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.Content.Title : Model.Content.TitleEng))
             {
-                <div class="title">
+                @*<div class="title">
                    @Html.Raw(SiteSettings.Language == Language.Ru ? Model.Content.Title : Model.Content.TitleEng)</div>
                 <div class="separator">
-                </div>
+                </div>*@
             }
             @if (!string.IsNullOrEmpty(SiteSettings.Language == Language.Ru ? Model.Content.Text : Model.Content.TextEng))
             {
