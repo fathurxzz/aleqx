@@ -23,7 +23,7 @@
                     }
                     @if (item.IsGalleryMenuItem)
                     {
-                        @Html.ActionLink(item.Title, "Categories", "Home", new { id = item.ContentName }, new { @class = "fancy "+(item.Selected ? "selected" : ""), id = "catalogueLink" });
+                        @Html.ActionLink(item.Title, "Categories", "Home", new { id = item.ContentName }, new { @class = "fancy galleryMenuItem "+(item.Selected ? "selected" : ""), id = "catalogueLink" });
                     }
                     else
                     {
