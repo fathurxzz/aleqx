@@ -1,0 +1,4 @@
+﻿User-Agent: *
+Disallow: /logon
+Disallow: /admin
+Host: listelli.ua

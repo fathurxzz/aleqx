@@ -216,6 +216,7 @@
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />
     <Content Include="README.jQuery.vsdoc.txt" />
+    <Content Include="robots.txt" />
     <Content Include="sc.aspx" />
     <Content Include="Scripts\jquery-2.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
