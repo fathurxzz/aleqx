@@ -16,7 +16,8 @@ namespace Shop
                               {
                                   {"productPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 116,Width = 175}, CacheFolder = "productPreview", ScaleMode = ScaleMode.Crop}},
                                   {"productImage",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 365}, CacheFolder = "productImage", ScaleMode = ScaleMode.FixedWidth}},
-                                  {"thumb0",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 100,Width = 100}, CacheFolder = "thumb0", ScaleMode = ScaleMode.Crop}}
+                                  {"thumb0",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 100,Width = 100}, CacheFolder = "thumb0", ScaleMode = ScaleMode.Crop}},
+                                  {"thumb1",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 100}, CacheFolder = "thumb1", ScaleMode = ScaleMode.FixedHeight}}
                               };
         }
 

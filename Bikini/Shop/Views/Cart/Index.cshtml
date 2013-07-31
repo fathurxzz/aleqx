@@ -48,7 +48,7 @@
 
             <tr>
                 <td>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", order.ImageSource, SiteSettings.GetThumbnail("thumb0")))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", order.ImageSource, SiteSettings.GetThumbnail("thumb1")))
                 </td>
                 <td>
                     @Html.ActionLink(order.ProductTitle, "ProductDetails", "Home", new { Area = "", categoryId = order.CategoryName, id = order.ProductId }, new{target="_blank"})
