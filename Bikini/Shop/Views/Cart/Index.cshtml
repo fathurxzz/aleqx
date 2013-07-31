@@ -1,5 +1,7 @@
-﻿@using Shop.Helpers
+﻿@using Shop
+@using Shop.Helpers
 @using SiteExtensions
+@using SiteExtensions.Graphics
 @model Shop.Models.SiteModel
 @section MainMenu
 {
@@ -27,6 +29,7 @@
 
     <table class="cartTable">
         <tr>
+            <th></th>
             <th>
                 Продукт
             </th>
@@ -45,7 +48,10 @@
 
             <tr>
                 <td>
-                    @Html.ActionLink(order.ProductTitle, "ProductDetails", "Home", new { Area = "", categoryId = order.CategoryName, id = order.ProductName }, new{target="_blank"})
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", order.ImageSource, SiteSettings.GetThumbnail("thumb0")))
+                </td>
+                <td>
+                    @Html.ActionLink(order.ProductTitle, "ProductDetails", "Home", new { Area = "", categoryId = order.CategoryName, id = order.ProductId }, new{target="_blank"})
                     @*@order.Name*@
                 </td>
                 <td class="dec">@order.Price.ToString("N")
@@ -62,7 +68,7 @@
             </tr>
         }
         <tr>
-            <td colspan="3" style="text-align: right">
+            <td colspan="4" style="text-align: right">
                 Всего:
             </td>
             <td class="dec">@totalAmount.ToString("N")
