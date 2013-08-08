@@ -186,4 +186,7 @@
   <data name="WrongLoginOrPassword" xml:space="preserve">
     <value>Неправильный email или пароль.</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомнить меня</value>
+  </data>
 </root>

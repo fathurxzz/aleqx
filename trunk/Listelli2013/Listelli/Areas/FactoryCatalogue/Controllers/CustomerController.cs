@@ -35,7 +35,7 @@ namespace Listelli.Areas.FactoryCatalogue.Controllers
                 if (Membership.ValidateUser(model.Email, model.Password))
                 {
                     //FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    FormsAuthentication.SetAuthCookie(model.Email, false);
+                    FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
 
                     return RedirectToAction("Index", "Category", new { area = "FactoryCatalogue" });
                 }
