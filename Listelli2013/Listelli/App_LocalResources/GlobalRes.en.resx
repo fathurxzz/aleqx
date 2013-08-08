@@ -186,4 +186,7 @@
   <data name="WrongLoginOrPassword" xml:space="preserve">
     <value>Wrong Email Or Password</value>
   </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
 </root>

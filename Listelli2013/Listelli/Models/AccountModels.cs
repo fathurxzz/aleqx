@@ -60,6 +60,9 @@ namespace Listelli.Models
 
         [Required(ErrorMessageResourceType = typeof(GlobalRes), ErrorMessageResourceName = "EnterPassword")]
         public string Password { get; set; }
+
+        [Display(ResourceType = typeof(GlobalRes), Name = "RememberMe")]
+        public bool RememberMe { get; set; }
     }
 
     public class RegisterModel
