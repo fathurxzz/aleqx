@@ -23,13 +23,14 @@ body {
 }
 
 .language-switcher {
-    width: 100px;
+    width: 120px;
     color: #0099fa;
     font-size: 10px;
     font-family: PTSans;
     position: relative;
     margin: 0 auto;
     padding-top: 10px;
+    text-align: center;
 }
 
 .language-switcher a{ color: #fff;}
