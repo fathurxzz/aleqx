@@ -1,0 +1,76 @@
+﻿@model Listelli.Models.Designer
+@{
+    ViewBag.Title = "Добавление дизайнера";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContentContainer">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+    
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Добавление дизайнера</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.DesignerName)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DesignerName)
+                    @Html.ValidationMessageFor(model => model.DesignerName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.DesignerNameF)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DesignerNameF)
+                    @Html.ValidationMessageFor(model => model.DesignerNameF)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.ImageSource)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.ImageSource)
+                    @Html.ValidationMessageFor(model => model.ImageSource)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Home", new { Area = "" }, null)
+        </div>
+    }
+</div>
+@section Includes
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

@@ -99,8 +99,11 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DesignerController.cs" />
     <Compile Include="Areas\BrandCatalogue\BrandCatalogueAreaRegistration.cs" />
     <Compile Include="Areas\BrandCatalogue\Controllers\HomeController.cs" />
+    <Compile Include="Areas\DesignersPortfolio\Controllers\DesignerController.cs" />
+    <Compile Include="Areas\DesignersPortfolio\DesignersPortfolioAreaRegistration.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\BrandController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CategoryController.cs" />
     <Compile Include="Areas\FactoryCatalogue\Controllers\CustomerController.cs" />
@@ -138,6 +141,11 @@
     <Compile Include="Models\ContentTitleModel.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\FactoryCatalogueModel.cs" />
+    <Compile Include="Models\Portfolio.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Portfolio.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +222,7 @@
     <Content Include="Content\Site-main.css" />
     <Content Include="Content\Site-mobile.css" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Portfolio.edmx.sql" />
     <Content Include="Models\Site.edmx.sql" />
     <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="robots.txt" />
@@ -266,6 +275,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\BrandCatalogue\Models\" />
+    <Folder Include="Areas\DesignersPortfolio\Models\" />
+    <Folder Include="Areas\DesignersPortfolio\Views\Shared\" />
     <Folder Include="Areas\FactoryCatalogue\Models\" />
     <Folder Include="Content\tmpImages\" />
   </ItemGroup>
@@ -310,6 +321,8 @@
     <Content Include="Areas\BrandCatalogue\Views\Home\BrandDetails.cshtml" />
     <Content Include="Areas\Admin\Views\BrandGroupItem\CreateTextBlock.cshtml" />
     <Content Include="Areas\Admin\Views\BrandGroupItem\EditTextBlock.cshtml" />
+    <Content Include="Areas\DesignersPortfolio\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Designer\Create.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\prg55.otf" />
     <None Include="Content\fonts\PTN57F.ttf" />
@@ -320,6 +333,10 @@
     <EntityDeploy Include="Models\Site.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Site.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\Portfolio.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Portfolio.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\Shared\MainMenu.cshtml" />

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Portfolio.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="PortfolioStoreContainer">
+    <EntitySet Name="Designer" EntityType="Portfolio.Store.Designer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DesignerContent" EntityType="Portfolio.Store.DesignerContent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DesignerContantImage" EntityType="Portfolio.Store.DesignerContantImage" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DesignerDesignerContent" Association="Portfolio.Store.DesignerDesignerContent">
+      <End Role="Designer" EntitySet="Designer" />
+      <End Role="DesignerContent" EntitySet="DesignerContent" />
+    </AssociationSet>
+    <AssociationSet Name="DesignerContentDesignerContantImage" Association="Portfolio.Store.DesignerContentDesignerContantImage">
+      <End Role="DesignerContent" EntitySet="DesignerContent" />
+      <End Role="DesignerContantImage" EntitySet="DesignerContantImage" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Designer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="longtext" Nullable="false" />
+    <Property Name="DesignerName" Type="longtext" Nullable="false" />
+    <Property Name="DesignerNameF" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="ImageSource" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DesignerContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DesignerId" Type="int" Nullable="false" />
+    <Property Name="RoomType" Type="longtext" Nullable="false" />
+    <Property Name="RoomTitle" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DesignerContantImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DesignerContentId" Type="int" Nullable="false" />
+    <Property Name="ImageSource" Type="longtext" Nullable="false" />
+  </EntityType>
+  <Association Name="DesignerDesignerContent">
+    <End Role="Designer" Type="Portfolio.Store.Designer" Multiplicity="1" />
+    <End Role="DesignerContent" Type="Portfolio.Store.DesignerContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Designer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DesignerContent">
+        <PropertyRef Name="DesignerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DesignerContentDesignerContantImage">
+    <End Role="DesignerContent" Type="Portfolio.Store.DesignerContent" Multiplicity="1" />
+    <End Role="DesignerContantImage" Type="Portfolio.Store.DesignerContantImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DesignerContent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DesignerContantImage">
+        <PropertyRef Name="DesignerContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Portfolio" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="PortfolioContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Designer" EntityType="Portfolio.Designer" />
+          <EntitySet Name="DesignerContent" EntityType="Portfolio.DesignerContent" />
+          <AssociationSet Name="DesignerDesignerContent" Association="Portfolio.DesignerDesignerContent">
+            <End Role="Designer" EntitySet="Designer" />
+            <End Role="DesignerContent" EntitySet="DesignerContent" />
+          </AssociationSet>
+          <EntitySet Name="DesignerContantImage" EntityType="Portfolio.DesignerContantImage" />
+          <AssociationSet Name="DesignerContentDesignerContantImage" Association="Portfolio.DesignerContentDesignerContantImage">
+            <End Role="DesignerContent" EntitySet="DesignerContent" />
+            <End Role="DesignerContantImage" EntitySet="DesignerContantImage" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Designer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="DesignerName" Nullable="false" />
+          <Property Type="String" Name="DesignerNameF" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <NavigationProperty Name="DesignerContents" Relationship="Portfolio.DesignerDesignerContent" FromRole="Designer" ToRole="DesignerContent" />
+        </EntityType>
+        <EntityType Name="DesignerContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Designer" Relationship="Portfolio.DesignerDesignerContent" FromRole="DesignerContent" ToRole="Designer" />
+          <Property Type="Int32" Name="DesignerId" Nullable="false" />
+          <Property Type="String" Name="RoomType" Nullable="false" />
+          <Property Type="String" Name="RoomTitle" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="DesignerContantImages" Relationship="Portfolio.DesignerContentDesignerContantImage" FromRole="DesignerContent" ToRole="DesignerContantImage" />
+        </EntityType>
+        <Association Name="DesignerDesignerContent">
+          <End Type="Portfolio.Designer" Role="Designer" Multiplicity="1" />
+          <End Type="Portfolio.DesignerContent" Role="DesignerContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DesignerContent">
+              <PropertyRef Name="DesignerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DesignerContantImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DesignerContent" Relationship="Portfolio.DesignerContentDesignerContantImage" FromRole="DesignerContantImage" ToRole="DesignerContent" />
+          <Property Type="Int32" Name="DesignerContentId" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" />
+        </EntityType>
+        <Association Name="DesignerContentDesignerContantImage">
+          <End Type="Portfolio.DesignerContent" Role="DesignerContent" Multiplicity="1" />
+          <End Type="Portfolio.DesignerContantImage" Role="DesignerContantImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DesignerContent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DesignerContantImage">
+              <PropertyRef Name="DesignerContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PortfolioStoreContainer" CdmEntityContainer="PortfolioContainer">
+    <EntitySetMapping Name="Designer">
+      <EntityTypeMapping TypeName="IsTypeOf(Portfolio.Designer)">
+        <MappingFragment StoreEntitySet="Designer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DesignerName" ColumnName="DesignerName" />
+          <ScalarProperty Name="DesignerNameF" ColumnName="DesignerNameF" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesignerContent">
+      <EntityTypeMapping TypeName="IsTypeOf(Portfolio.DesignerContent)">
+        <MappingFragment StoreEntitySet="DesignerContent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DesignerId" ColumnName="DesignerId" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="RoomTitle" ColumnName="RoomTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DesignerContantImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Portfolio.DesignerContantImage)">
+        <MappingFragment StoreEntitySet="DesignerContantImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DesignerContentId" ColumnName="DesignerContentId" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Portfolio" >
+        <EntityTypeShape EntityType="Portfolio.Designer" Width="1.5" PointX="3.625" PointY="2.5" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Portfolio.DesignerContent" Width="1.5" PointX="6.125" PointY="2.375" Height="2.1725878906249996" />
+        <AssociationConnector Association="Portfolio.DesignerDesignerContent">
+          <ConnectorPoint PointX="5.125" PointY="3.5237939453125" />
+          <ConnectorPoint PointX="6.125" PointY="3.5237939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Portfolio.DesignerContantImage" Width="1.5" PointX="8.375" PointY="2.5" Height="1.7879850260416665" />
+        <AssociationConnector Association="Portfolio.DesignerContentDesignerContantImage">
+          <ConnectorPoint PointX="7.625" PointY="3.3939925130208333" />
+          <ConnectorPoint PointX="8.375" PointY="3.3939925130208333" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
