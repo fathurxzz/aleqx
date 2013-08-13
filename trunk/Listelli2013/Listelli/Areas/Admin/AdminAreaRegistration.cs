@@ -63,6 +63,12 @@ namespace Listelli.Areas.Admin
                 constraints: new { lang = @"ru|en" }
             );
 
+            context.MapRoute(
+                "Designer",
+                "admin/designer/{action}",
+                new { controller = "Designer"}
+            );
+
             
 
             context.MapRoute(
