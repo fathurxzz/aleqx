@@ -1,0 +1,14 @@
+﻿.header .middle .toplayer {
+    background: url('img/header-bg-layer-portfolio.png');
+}
+
+
+
+.portfolioMenu div{
+    width: 165px;
+   padding-top: 17px;
+}
+
+.portfolioMenu div.first {
+    width: 138px;
+}

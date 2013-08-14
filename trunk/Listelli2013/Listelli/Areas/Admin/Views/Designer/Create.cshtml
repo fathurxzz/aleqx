@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="adminContentContainer">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Designer", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
     
@@ -47,8 +47,7 @@
                     @Html.LabelFor(model => model.ImageSource)
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.ImageSource)
-                    @Html.ValidationMessageFor(model => model.ImageSource)
+                    <input type="file" name="fileUpload" class="photoFileInput" />
                 </td>
             </tr>
             <tr>
@@ -63,7 +62,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "Home", new { Area = "" }, null)
+            @Html.ActionLink("Назад", "Index", "Designer", new { Area = "Admin" }, null)
         </div>
     }
 </div>

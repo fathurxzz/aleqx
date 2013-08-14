@@ -1,0 +1,51 @@
+﻿@using Listelli
+@using SiteExtensions.Graphics
+@model IEnumerable<Listelli.Models.Designer>
+
+@{
+    ViewBag.Title = "Портфолио дизайнеров"; 
+    Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContentContainer">
+
+    <p>
+        @Html.ActionLink("Добавить", "Create","Designer",null,new{@class="adminLink"})
+    </p>
+    
+<table class="adminEditContentTable">
+    <tr>
+         <th>
+        </th>
+        <th>
+            Идентификатор
+        </th>
+        <th>
+            Имя
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+         <td>
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("designerAdminPreview")))
+        </td>
+        <td class="display">
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td  class="display">
+            @Html.DisplayFor(modelItem => item.DesignerName)
+        </td>
+       
+        <td class="display links">
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Просмотр", "Details","Designer",new{area="DesignersPortfolio", id=item.Name}, new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
