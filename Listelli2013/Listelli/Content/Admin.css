@@ -35,6 +35,15 @@ a.adminLink:hover {
     font-weight: bold;
 }
 
+.adminEditContentTable td.display {
+    font-weight: normal;
+    text-align: center;
+}
+
+.adminEditContentTable td.links {
+    text-align: left;
+}
+
 .adminEditContentTable td input[type='text'], .adminEditContentTable td input[type='file'], .adminEditContentTable td textarea
 {
     width: 500px;

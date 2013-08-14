@@ -69,6 +69,12 @@ namespace Listelli.Areas.Admin
                 new { controller = "Designer", id = UrlParameter.Optional }
             );
 
+            context.MapRoute(
+                "Designers",
+                "admin/designers",
+                new { controller = "Designer", action="Index" }
+            );
+
             
 
             context.MapRoute(

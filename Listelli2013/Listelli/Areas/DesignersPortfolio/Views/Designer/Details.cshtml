@@ -1,0 +1,41 @@
+﻿@model Listelli.Models.Designer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Designer</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">DesignerName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DesignerName)
+    </div>
+
+    <div class="display-label">DesignerNameF</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DesignerNameF)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">ImageSource</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ImageSource)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
