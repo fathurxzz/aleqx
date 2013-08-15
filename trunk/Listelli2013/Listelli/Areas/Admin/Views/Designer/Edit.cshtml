@@ -1,12 +1,14 @@
 ﻿@model Listelli.Models.Designer
 @{
-    ViewBag.Title = "Добавление данных о дизайнере";
+    ViewBag.Title = "Редактирование данных о дизайнере";
     Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
 }
+
 <div class="adminContentContainer">
-    @using (Html.BeginForm("Create", "Designer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Edit", "Designer", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
+        @Html.HiddenFor(model=>model.Id)
     
         <table class="adminEditContentTable">
             <tr>

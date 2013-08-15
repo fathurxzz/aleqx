@@ -17,50 +17,43 @@ namespace Listelli.Areas.Admin
             context.MapRoute(
                 "AdminBrandGroupItem",
                 "{lang}/admin/brandgroupitem/{brandId}/{type}/{action}",
-                new { controller = "BrandGroupItem", brandId = UrlParameter.Optional, type = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { controller = "BrandGroupItem", brandId = UrlParameter.Optional, type = UrlParameter.Optional }, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
                 "AdminBrandGroupItemImage",
                 "{lang}/admin/brandgroupitem/{brandId}/{action}",
-                new { controller = "BrandGroupItem", brandId = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { controller = "BrandGroupItem", brandId = UrlParameter.Optional }, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
                 "AdminBrandItem",
                 "{lang}/admin/branditem/{brandId}/{type}/{action}",
-                new { controller = "BrandItem", brandId = UrlParameter.Optional, type=UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { controller = "BrandItem", brandId = UrlParameter.Optional, type=UrlParameter.Optional }, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
                 "AdminBrandItemImage",
                 "{lang}/admin/branditem/{brandId}/{action}",
-                new { controller = "BrandItem", brandId = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { controller = "BrandItem", brandId = UrlParameter.Optional }, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
                 "AdminCategoryBrandItem",
                 "{lang}/admin/categorybranditem/{brandId}/{action}",
-                new { controller = "CategoryBrandItem", brandId = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { controller = "CategoryBrandItem", brandId = UrlParameter.Optional }, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
                 "AdminBrand",
                 "{lang}/admin/brand/{brandId}/{action}",
-                new { controller = "Brand", brandId = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { controller = "Brand", brandId = UrlParameter.Optional }, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
                 "AdminCategoryBrand",
                 "{lang}/admin/categorybrand/{category}/{action}",
-                new { controller = "CategoryBrand", category = UrlParameter.Optional},
-                constraints: new { lang = @"ru|en" }
+                new { controller = "CategoryBrand", category = UrlParameter.Optional}, new { lang = @"ru|en" }
             );
 
             context.MapRoute(
@@ -80,8 +73,7 @@ namespace Listelli.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "admin/{lang}/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" }
+                new { action = "Index", id = UrlParameter.Optional }, new { lang = @"ru|en" }
             );
         }
     }

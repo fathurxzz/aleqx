@@ -94,12 +94,7 @@ namespace Listelli
 
 
 
-            routes.MapRoute(
-                name: "lang",
-                url: "{lang}/{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                constraints: new { lang = @"ru|en" },
-                namespaces: new[] { "Listelli.Controllers" }
+            routes.MapRoute("lang", "{lang}/{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional }, new { lang = @"ru|en" }, new[] { "Listelli.Controllers" }
             );
 
 
@@ -107,7 +102,7 @@ namespace Listelli
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang = "ru" } // Parameter defaults
-                , namespaces: new[] { "Listelli.Controllers" }
+                , new[] { "Listelli.Controllers" }
             );
 
         }

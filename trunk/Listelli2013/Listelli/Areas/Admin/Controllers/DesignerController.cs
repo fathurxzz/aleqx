@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +9,7 @@ using SiteExtensions.Graphics;
 
 namespace Listelli.Areas.Admin.Controllers
 {
+    [Authorize]
     public class DesignerController : Controller
     {
         //
@@ -64,6 +63,25 @@ namespace Listelli.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(int id)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var designer = context.Designer.First(d => d.Id == id);
+                return View(designer);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Designer model, HttpPostedFileBase fileUpload)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var designer = context.Designer.First(d => d.Id == model.Id);
+
+                return RedirectToAction("Details", "Designer", new {area = "DesignersPortfolio", id = designer.Name});
+            }
+        }
 
     }
 }
