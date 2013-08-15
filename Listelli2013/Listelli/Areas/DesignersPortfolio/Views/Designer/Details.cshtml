@@ -1,14 +1,17 @@
-﻿@model Listelli.Models.Designer
+﻿@using Listelli.Models
+@model Designer
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "О дизайнере" })
+}
 
-<fieldset>
-    <legend>Designer</legend>
+<div class="content">
 
     <div class="display-label">Name</div>
     <div class="display-field">
@@ -34,8 +37,12 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.ImageSource)
     </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+    @Html.ActionLink("Редактировать", "Edit","Designer", new {area="Admin", id=Model.Id },new{@class="adminLink"}) |
+    
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("К списку дизайнеров", "Index", "Designer", new { area = "admin" }, new { @class = "adminLink" })
+    }
+</div>
