@@ -12,3 +12,127 @@
 .portfolioMenu div.first {
     width: 138px;
 }
+
+.portfolioMenu span {
+    color:#0099fa;
+}
+
+.designerLogo {
+    width: 100px;
+    position: relative;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    padding-top: 15px;
+}
+
+.designerLogo .name {
+    padding-top: 5px;
+    color: #00aeef;
+}
+
+.designerLogo .name a {
+    color: #00aeef;
+}
+
+.designerInfo .image {
+    position: absolute;
+    margin-top: 19px;
+    margin-left: 20px;
+}
+
+.designerInfo .imageContainer {
+    height: 216px;
+}
+
+.designerInfo .frame {
+    position: absolute;
+    background: url('img/gallery-preview-frame.png');
+    width: 215px;
+    height: 216px;
+}
+
+.designerInfo .right {
+    width: 220px;
+    float: left;
+}
+
+.designerInfo .left {
+    margin-left: 280px;
+    font-size: 15px;
+}
+
+
+
+.roomDetails  .categoryBrandItem {
+    margin: 20px;
+    /*border: 1px solid black;*/
+    padding: 5px;
+}
+
+.roomDetails  .categoryBrandItem .title {
+    text-align: center;
+}
+
+.roomDetails  .categoryBrandItem .title a {
+    font-style: italic;
+    font-size: 20px;
+    color: #0066cc;
+}
+
+.roomDetails  .accordion h3
+{  text-align: center;}
+
+.roomDetails  .accordion h3 span {
+    font-style: italic;
+    font-size: 20px;
+    color: #0066cc;
+    /*text-decoration: underline;*/
+    border-bottom: 1px solid;
+    font-weight: normal;
+  
+}
+
+
+
+
+.roomDetails .box {
+    width: 795px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.box .top, .box .bottom {
+    height: 16px;
+}
+
+.box .top {
+    background: url('img/box-top.gif');
+}
+
+.box .bottom {
+    background: url('img/box-bottom.gif');
+}
+
+.box .middle {
+    background: url('img/box-middle.gif') repeat-y;
+    padding: 20px 55px;
+    font-family: PTSansItalic;
+    font-size: 13px;
+}
+
+.roomDetails .images {
+    padding-top: 50px;
+}
+
+
+.roomDetails .images .frame {
+    width: 222px;
+    height: 224px;
+    margin: 10px;
+    background: url('img/portfolio-image-frame.gif') no-repeat;
+    float: left;
+    padding-left: 10px;
+    padding-top: 8px;
+}

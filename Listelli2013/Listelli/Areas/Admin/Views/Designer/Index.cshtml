@@ -3,9 +3,11 @@
 @model IEnumerable<Listelli.Models.Designer>
 
 @{
-    ViewBag.Title = "Портфолио дизайнеров"; 
-    Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Портфолио дизайнеров";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 
 <div class="adminContentContainer">
 
@@ -42,7 +44,7 @@
         <td class="display links">
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Просмотр", "Details","Designer",new{area="DesignersPortfolio", id=item.Name}, new { id=item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{onclick = "return confirm('Удалить информацию о дизайнере?')"})
         </td>
     </tr>
 }

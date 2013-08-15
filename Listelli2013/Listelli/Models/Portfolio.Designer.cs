@@ -171,16 +171,14 @@ namespace Listelli.Models
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="designerName">Initial value of the DesignerName property.</param>
         /// <param name="designerNameF">Initial value of the DesignerNameF property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static Designer CreateDesigner(global::System.Int32 id, global::System.String name, global::System.String designerName, global::System.String designerNameF, global::System.String description, global::System.String imageSource)
+        public static Designer CreateDesigner(global::System.Int32 id, global::System.String name, global::System.String designerName, global::System.String designerNameF, global::System.String imageSource)
         {
             Designer designer = new Designer();
             designer.Id = id;
             designer.Name = name;
             designer.DesignerName = designerName;
             designer.DesignerNameF = designerNameF;
-            designer.Description = description;
             designer.ImageSource = imageSource;
             return designer;
         }
@@ -290,7 +288,7 @@ namespace Listelli.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -302,7 +300,7 @@ namespace Listelli.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -529,15 +527,13 @@ namespace Listelli.Models
         /// <param name="designerId">Initial value of the DesignerId property.</param>
         /// <param name="roomType">Initial value of the RoomType property.</param>
         /// <param name="roomTitle">Initial value of the RoomTitle property.</param>
-        /// <param name="description">Initial value of the Description property.</param>
-        public static DesignerContent CreateDesignerContent(global::System.Int32 id, global::System.Int32 designerId, global::System.String roomType, global::System.String roomTitle, global::System.String description)
+        public static DesignerContent CreateDesignerContent(global::System.Int32 id, global::System.Int32 designerId, global::System.Int32 roomType, global::System.String roomTitle)
         {
             DesignerContent designerContent = new DesignerContent();
             designerContent.Id = id;
             designerContent.DesignerId = designerId;
             designerContent.RoomType = roomType;
             designerContent.RoomTitle = roomTitle;
-            designerContent.Description = description;
             return designerContent;
         }
 
@@ -600,7 +596,7 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String RoomType
+        public global::System.Int32 RoomType
         {
             get
             {
@@ -610,13 +606,13 @@ namespace Listelli.Models
             {
                 OnRoomTypeChanging(value);
                 ReportPropertyChanging("RoomType");
-                _RoomType = StructuralObject.SetValidValue(value, false);
+                _RoomType = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("RoomType");
                 OnRoomTypeChanged();
             }
         }
-        private global::System.String _RoomType;
-        partial void OnRoomTypeChanging(global::System.String value);
+        private global::System.Int32 _RoomType;
+        partial void OnRoomTypeChanging(global::System.Int32 value);
         partial void OnRoomTypeChanged();
     
         /// <summary>
@@ -646,7 +642,7 @@ namespace Listelli.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Description
         {
@@ -658,7 +654,7 @@ namespace Listelli.Models
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }

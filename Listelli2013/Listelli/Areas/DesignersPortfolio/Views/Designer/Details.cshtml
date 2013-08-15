@@ -1,4 +1,6 @@
-﻿@using Listelli.Models
+﻿@using Listelli
+@using Listelli.Models
+@using SiteExtensions.Graphics
 @model Designer
 
 @{
@@ -11,38 +13,51 @@
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "О дизайнере" })
 }
 
+@section DesignerName
+{
+    @Model.DesignerNameF
+}
+
+
+@section PortfolioMenu
+{
+    @Html.Partial("PortfolioMenu",Model.Name)
+}
+
 <div class="content">
-
-    <div class="display-label">Name</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-
-    <div class="display-label">DesignerName</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DesignerName)
-    </div>
-
-    <div class="display-label">DesignerNameF</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DesignerNameF)
-    </div>
-
-    <div class="display-label">Description</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">ImageSource</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ImageSource)
-    </div>
-
-
-    @Html.ActionLink("Редактировать", "Edit","Designer", new {area="Admin", id=Model.Id },new{@class="adminLink"}) |
     
-    @if (Request.IsAuthenticated)
+    <div class="designerInfo">
+        
+        
+        <div class="right">
+        
+            <div class="imageContainer">
+                <div class="image">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("brandPreview")))
+                    @*@Html.Raw(Html.ActionLink("[IMAGE]", "BrandDetails", "Home", new { id = Model.Name }, null).ToString().Replace("[IMAGE]", Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("brandPreview"))))*@
+                </div>
+                <div class="frame">
+                </div>
+                <div class="imageLink">
+                    @*@Html.Raw(Html.ActionLink("[IMAGE]", "BrandDetails", "Home", new { area="BrandCatalogue", brandGroup=Model.BrandGroup.Name, id = Model.Name }, null).ToString().Replace("[IMAGE]", ""))*@
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="left">
+            
+            @Html.Raw(Model.Description)
+
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
-        @Html.ActionLink("К списку дизайнеров", "Index", "Designer", new { area = "admin" }, new { @class = "adminLink" })
+    @Html.ActionLink("Редактировать", "Edit","Designer", new {area="Admin", id=Model.Id },new{@class="adminLink"}) 
+    @Html.Raw(" | ")
+    @Html.ActionLink("К списку дизайнеров", "Index", "Designer", new { area = "admin" }, new { @class = "adminLink" })
     }
 </div>

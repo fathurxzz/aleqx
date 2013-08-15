@@ -23,11 +23,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="longtext" Nullable="false" />
-    <Property Name="DesignerName" Type="longtext" Nullable="false" />
-    <Property Name="DesignerNameF" Type="longtext" Nullable="false" />
-    <Property Name="Description" Type="longtext" Nullable="false" />
-    <Property Name="ImageSource" Type="longtext" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="DesignerName" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="DesignerNameF" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
   </EntityType>
   <EntityType Name="DesignerContent">
     <Key>
@@ -35,9 +35,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DesignerId" Type="int" Nullable="false" />
-    <Property Name="RoomType" Type="longtext" Nullable="false" />
-    <Property Name="RoomTitle" Type="longtext" Nullable="false" />
-    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="RoomType" Type="int" Nullable="false" />
+    <Property Name="RoomTitle" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="DesignerContantImage">
     <Key>
@@ -45,7 +45,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DesignerContentId" Type="int" Nullable="false" />
-    <Property Name="ImageSource" Type="longtext" Nullable="false" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
   </EntityType>
   <Association Name="DesignerDesignerContent">
     <End Role="Designer" Type="Portfolio.Store.Designer" Multiplicity="1" />
@@ -93,11 +93,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="DesignerName" Nullable="false" />
-          <Property Type="String" Name="DesignerNameF" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" />
-          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="DesignerName" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="DesignerNameF" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
           <NavigationProperty Name="DesignerContents" Relationship="Portfolio.DesignerDesignerContent" FromRole="Designer" ToRole="DesignerContent" />
         </EntityType>
         <EntityType Name="DesignerContent">
@@ -107,9 +107,9 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Designer" Relationship="Portfolio.DesignerDesignerContent" FromRole="DesignerContent" ToRole="Designer" />
           <Property Type="Int32" Name="DesignerId" Nullable="false" />
-          <Property Type="String" Name="RoomType" Nullable="false" />
-          <Property Type="String" Name="RoomTitle" Nullable="false" />
-          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="Int32" Name="RoomType" Nullable="false" />
+          <Property Type="String" Name="RoomTitle" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" />
           <NavigationProperty Name="DesignerContantImages" Relationship="Portfolio.DesignerContentDesignerContantImage" FromRole="DesignerContent" ToRole="DesignerContantImage" />
         </EntityType>
         <Association Name="DesignerDesignerContent">
@@ -131,7 +131,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="DesignerContent" Relationship="Portfolio.DesignerContentDesignerContantImage" FromRole="DesignerContantImage" ToRole="DesignerContent" />
           <Property Type="Int32" Name="DesignerContentId" Nullable="false" />
-          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
         </EntityType>
         <Association Name="DesignerContentDesignerContantImage">
           <End Type="Portfolio.DesignerContent" Role="DesignerContent" Multiplicity="1" />

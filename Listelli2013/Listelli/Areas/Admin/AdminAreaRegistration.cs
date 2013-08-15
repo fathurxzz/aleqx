@@ -14,6 +14,8 @@ namespace Listelli.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+          
+
             context.MapRoute(
                 "AdminBrandGroupItem",
                 "{lang}/admin/brandgroupitem/{brandId}/{type}/{action}",
@@ -57,16 +59,18 @@ namespace Listelli.Areas.Admin
             );
 
             context.MapRoute(
+             "Designers",
+             "admin/designers",
+             new { controller = "Designer", action = "Index" }
+         );
+
+            context.MapRoute(
                 "Designer",
                 "admin/designer/{action}/{id}",
                 new { controller = "Designer", id = UrlParameter.Optional }
             );
 
-            context.MapRoute(
-                "Designers",
-                "admin/designers",
-                new { controller = "Designer", action="Index" }
-            );
+           
 
             
 

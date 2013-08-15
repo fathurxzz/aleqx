@@ -1,0 +1,120 @@
+﻿@using Listelli
+@using Listelli.Models
+@using SiteExtensions.Graphics
+@model Listelli.Models.Designer
+@{
+    ViewBag.Title = "RoomDetails";
+    Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
+}
+@section PortfolioMenu
+{
+    @Html.Partial("PortfolioMenu", Model.Name)
+}
+@section DesignerName
+{
+    @Html.ActionLink(Model.DesignerNameF, "Details", "Designer", new { area = "DesignersPortfolio" }, null)
+}
+
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = ((int)ViewBag.RoomType) == 1 ? "Жилые помещения" : "Нежилые помещения" })
+}
+
+<div>
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Добавить помещение", "CreateRoom", "Designer", new {area = "Admin", id = Model.Id, roomType = ViewBag.RoomType}, new {@class = "adminLink"})
+        </div>
+    }
+    <div class="roomDetails">
+        <div class="accordion" id="accordion1">
+            @foreach (var item in Model.DesignerContents.Where(c => c.RoomType == (int)ViewBag.RoomType))
+            {
+                
+                <h3>
+                    <span>@item.RoomTitle</span>
+                </h3>
+                <div class="categoryBrandItem">
+                    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                    {
+                        @Html.ActionLink("Редактировать", "EditRoom", "Designer", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        @Html.Raw("&nbsp;")
+                        @Html.ActionLink("Удалить", "DeleteRoom", "Designer", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                        @Html.Raw("&nbsp;")
+                        <br />
+                    }
+                    
+                    @if (!string.IsNullOrEmpty(item.Description))
+                    {
+                        <div class="box">
+                            <div class="top">
+                            </div>
+                            <div class="middle">
+                                @Html.Raw(item.Description)
+                            </div>
+                            <div class="bottom">
+                            </div>
+                        </div>
+                    }
+
+                    <div class="images">
+                        @foreach (var image in item.DesignerContantImages)
+                        {
+                            string dfg = "gallery" + item.Id;
+                            
+                            <div class="frame">
+                                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                                 {
+                                     <div class="abs">
+                                     @Html.ActionLink("Удалить", "DeleteImage", "Designer", new { area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                                     </div>
+                                 }
+                                <a data-fancybox-group="@dfg" class="fancybox" href="/Content/Images/@image.ImageSource">
+                                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("portfolioPreview")))
+                                </a>
+                                 
+                                
+                            </div>
+                        }
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Includes
+{
+    <link href="@Url.Content("~/Content/FactoryCatalogue.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.10.3.custom.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.10.3.custom.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#accordion1").accordion({
+                active: false,
+                collapsible: true,
+                beforeActivate: function (event, ui) {
+                    //alert(ui.newHeader.html());  // For instance.
+                    //alert(ui.oldHeader.html()); 
+                    //alert(ui); 
+                    ui.newHeader.html("<span style='border-bottom:1px dashed; color:red; font-style:normal'>" + ui.newHeader.text() + "</span>");
+                    ui.oldHeader.html("<span style='border-bottom:1px solid'>" + ui.oldHeader.text() + "</span>");
+                }
+            });
+
+            //            $("#accordion1").click(function () {
+            //                var header = $('#accordion1').accordion('option', 'header');
+            //                alert(header);    
+            //            });
+
+
+            $('#accordion1').bind('accordionchange', function (event, ui) {
+
+                alert(ui.id);
+            });
+
+        });
+        
+    </script>
+}

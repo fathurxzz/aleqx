@@ -1,8 +1,27 @@
-﻿<div class="first"></div>
+﻿@model string
+
+
+
+<div class="first"></div>
 <div>
-    @Html.ActionLink("Жилые помещения", "Index", "Home", new { area = "", id = "main" }, null)
+    @if (ViewBag.RoomType!=null && (int) ViewBag.RoomType == 1)
+    {
+        <span>Жилые помещения</span>
+    }
+    else
+    {
+        @Html.ActionLink("Жилые помещения", "RoomDetails", "Designer", new {area = "DesignersPortfolio", id = Model, roomType = 1}, null)
+    }
 </div>
 
 <div>
-    @Html.ActionLink("Нежилые помещения", "Index", "Home", new { area = "", id = "main" }, null)
+    
+    @if (ViewBag.RoomType != null && (int)ViewBag.RoomType == 2)
+    {
+        <span>Нежилые помещения</span>
+    }
+    else
+    {
+        @Html.ActionLink("Нежилые помещения", "RoomDetails", "Designer", new { area = "DesignersPortfolio", id = Model, roomType = 2 }, null)
+    }
 </div>

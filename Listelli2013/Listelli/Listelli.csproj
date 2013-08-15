@@ -140,6 +140,7 @@
     <Compile Include="Models\Content.cs" />
     <Compile Include="Models\ContentTitleModel.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\DesignerContentValidation.cs" />
     <Compile Include="Models\DesignerValidation.cs" />
     <Compile Include="Models\FactoryCatalogueModel.cs" />
     <Compile Include="Models\Portfolio.Designer.cs">
@@ -214,6 +215,7 @@
     <Content Include="Content\img\main-menu-bg.gif" />
     <Content Include="Content\img\pattern1.png" />
     <Content Include="Content\img\pattern2.png" />
+    <Content Include="Content\img\portfolio-image-frame.gif" />
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-container-bg.gif" />
@@ -329,6 +331,9 @@
     <Content Include="Areas\DesignersPortfolio\Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\PortfolioMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Designer\Edit.cshtml" />
+    <Content Include="Areas\DesignersPortfolio\Views\Designer\RoomDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Designer\CreateRoom.cshtml" />
+    <Content Include="Areas\Admin\Views\Designer\EditRoom.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\prg55.otf" />
     <None Include="Content\fonts\PTN57F.ttf" />

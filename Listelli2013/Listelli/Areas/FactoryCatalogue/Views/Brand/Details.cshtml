@@ -14,6 +14,7 @@
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Link, Title = GlobalRes.FactoryCatalogue, Action = "Index", Controller = "Category" })
 }
 
+
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div class="adminLinkContainer">
