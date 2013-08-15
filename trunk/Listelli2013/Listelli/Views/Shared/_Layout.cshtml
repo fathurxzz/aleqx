@@ -79,24 +79,25 @@
                 </div>
                 
                 @*@RenderSection("UserInfoArea",false)*@
+                
+                    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                    {
+                        <div class="adminLinkContainer">
+                            @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { area = "" }, new { @class = "adminLink" })
+                            @Html.ActionLink("Портфолио дизайнеров", "Index", "Designer", new {area = "Admin"}, new {@class = "adminLink"})
+                        </div>
+                    }
+                    @RenderSection("Title", false)
 
-                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
-                {
-                    <div class="adminLinkContainer">
-                        @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { area = "" }, new { @class = "adminLink" })
+                    @RenderSection("UserInfoArea",false)
+
+                    @RenderBody()
+                    <div class="line">
                     </div>
-                }
-                @RenderSection("Title", false)
-
-                @RenderSection("UserInfoArea",false)
-
-                @RenderBody()
-                <div class="line">
-                </div>
-                <div class="content-bottom">
+                    <div class="content-bottom">
                     
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
     <div class="footer">

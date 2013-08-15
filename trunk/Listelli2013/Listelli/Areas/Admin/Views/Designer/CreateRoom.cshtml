@@ -1,0 +1,63 @@
+﻿@model Listelli.Models.DesignerContent
+
+@{
+    ViewBag.Title = "Добавление помещения";
+    Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="adminContentContainer">
+@using (Html.BeginForm("CreateRoom", "Designer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+       @Html.ValidationSummary(true)
+    
+    @Html.HiddenFor(model => model.DesignerId)
+     @Html.HiddenFor(model => model.RoomType)
+    
+        <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Добавление @Html.Raw(Model.RoomType==1?"жилого":"нежилого") помещения</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.RoomTitle)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.RoomTitle)
+                    @Html.ValidationMessageFor(model => model.RoomTitle)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    Изображения
+                </td>
+                <td>
+                    @Html.Partial("InputImages")
+                </td>
+            </tr>
+             </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "RoomDetails", "Designer", new { Area = "DesignersPortfolio", id=Model.Designer.Name, roomType=Model.RoomType }, null)
+        </div>
+    }
+</div>
+@section Includes
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

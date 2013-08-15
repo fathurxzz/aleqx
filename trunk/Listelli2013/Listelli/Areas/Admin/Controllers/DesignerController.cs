@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -53,11 +54,8 @@ namespace Listelli.Areas.Admin.Controllers
                     designer.ImageSource = fileName;
                 }
 
-
                 context.AddToDesigner(designer);
-
                 context.SaveChanges();
-                
             }
 
             return RedirectToAction("Index");
@@ -78,10 +76,190 @@ namespace Listelli.Areas.Admin.Controllers
             using (var context = new PortfolioContainer())
             {
                 var designer = context.Designer.First(d => d.Id == model.Id);
+                designer.Name = SiteHelper.UpdatePageWebName(model.Name);
+                designer.Description = HttpUtility.HtmlDecode(model.Description);
+
+                TryUpdateModel(designer, new[] { "DesignerName", "DesignerNameF" });
+
+                if (fileUpload != null)
+                {
+                    if (!string.IsNullOrEmpty(designer.ImageSource))
+                    {
+                        ImageHelper.DeleteImage(designer.ImageSource);
+                    }
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 500);
+                    designer.ImageSource = fileName;
+
+                }
+
+                context.SaveChanges();
 
                 return RedirectToAction("Details", "Designer", new {area = "DesignersPortfolio", id = designer.Name});
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var designer = context.Designer.Include("DesignerContents").First(d => d.Id == id);
+
+                while (designer.DesignerContents.Any())
+                {
+                    var dc = designer.DesignerContents.First();
+                    context.DeleteObject(dc);
+                }
+
+                ImageHelper.DeleteImage(designer.ImageSource);
+
+                context.DeleteObject(designer);
+
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Designer", new { area = "Admin"});
+        }
+
+
+        public ActionResult CreateRoom(int id, int roomType)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var designer = context.Designer.First(d => d.Id == id);
+
+                var dc = new DesignerContent
+                         {
+                             Designer = designer,
+                             RoomType = roomType
+                         };
+
+                return View(dc);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult CreateRoom(DesignerContent model)
+        {
+            using (var context = new PortfolioContainer())
+            {
+
+                var designer = context.Designer.First(d => d.Id == model.DesignerId);
+
+                model.Description = HttpUtility.HtmlDecode(model.Description);
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+
+                    if (file == null) continue;
+                    if (string.IsNullOrEmpty(file.FileName)) continue;
+
+                    var dci = new DesignerContantImage();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                    dci.ImageSource = fileName;
+
+                    model.DesignerContantImages.Add(dci);
+                }
+
+                context.AddToDesignerContent(model);
+
+                context.SaveChanges();
+
+                return RedirectToAction("RoomDetails", "Designer", new { area = "DesignersPortfolio", id=designer.Name,roomType = model.RoomType });
+            }
+        }
+
+        public ActionResult EditRoom(int id)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var dc = context.DesignerContent.Include("Designer").First(d => d.Id == id);
+                return View(dc);
+            }
+        }
+        [HttpPost]
+        public ActionResult EditRoom(DesignerContent model)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var dc = context.DesignerContent.Include("Designer").First(d => d.Id == model.Id);
+
+                dc.Description = HttpUtility.HtmlDecode(model.Description);
+                dc.RoomTitle = model.RoomTitle;
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+
+                    if (file == null) continue;
+                    if (string.IsNullOrEmpty(file.FileName)) continue;
+
+                    var dci = new DesignerContantImage();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+
+                    dci.ImageSource = fileName;
+
+                    dc.DesignerContantImages.Add(dci);
+                }
+
+                context.SaveChanges();
+
+                return RedirectToAction("RoomDetails", "Designer", new { area = "DesignersPortfolio", id = dc.Designer.Name, roomType = dc.RoomType });
+            }
+        }
+
+        public ActionResult DeleteRoom(int id)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var dc = context.DesignerContent.Include("Designer").Include("DesignerContantImages").First(d => d.Id == id);
+                var dn = dc.Designer.Name;
+                var rt = dc.RoomType;
+
+                while (dc.DesignerContantImages.Any())
+                {
+                    var image = dc.DesignerContantImages.First();
+                    ImageHelper.DeleteImage(image.ImageSource);
+                    context.DeleteObject(image);
+                }
+
+                context.DeleteObject(dc);
+                context.SaveChanges();
+
+                return RedirectToAction("RoomDetails", "Designer", new { area = "DesignersPortfolio", id = dn, roomType = rt });
+            }
+        }
+
+
+        public ActionResult DeleteImage(int id)
+        {
+            using (var context = new PortfolioContainer())
+            {
+                var image = context.DesignerContantImage.Include("DesignerContent").First(i => i.Id == id);
+                var dc = context.DesignerContent.Include("Designer").First(d => d.Id == image.DesignerContentId);
+
+                ImageHelper.DeleteImage(image.ImageSource);
+
+                context.DeleteObject(image);
+                context.SaveChanges();
+
+                return RedirectToAction("RoomDetails", "Designer", new { area = "DesignersPortfolio", id = dc.Designer.Name, roomType = dc.RoomType });
+            }
+        }
+
 
     }
 }
