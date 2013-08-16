@@ -1,8 +1,10 @@
 ﻿using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Listelli.Helpers;
 using Listelli.Models;
 using SiteExtensions;
@@ -10,12 +12,12 @@ using SiteExtensions.Graphics;
 
 namespace Listelli.Areas.Admin.Controllers
 {
-    [Authorize]
+
     public class DesignerController : Controller
     {
         //
         // GET: /Admin/Designer/
-
+        [Authorize]
         public ActionResult Index()
         {
             using (var context = new PortfolioContainer())
@@ -24,21 +26,43 @@ namespace Listelli.Areas.Admin.Controllers
                 return View(designers);
             }
         }
-
+        [Authorize]
         public ActionResult Create()
         {
 
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Designer model, HttpPostedFileBase fileUpload)
         {
             using (var context = new PortfolioContainer())
             {
+
+                string designerId = SiteHelper.UpdatePageWebName(model.Name);
+
+
+                if (!Roles.RoleExists("Designers"))
+                    Roles.CreateRole("Designers");
+                if (!Roles.IsUserInRole(designerId, "Designers"))
+                    Roles.AddUserToRole(designerId, "Designers");
+
+
+                FormsAuthentication.SetAuthCookie(designerId, false /* createPersistentCookie */);
+                //using (var context = new LibraryContainer())
+                //{
+                //    var customer = new Customer { Name = model.UserName, Title = model.UserTitle};
+                //    context.AddToCustomer(customer);
+                //    context.SaveChanges();
+                //}
+
+                //return RedirectToAction("Index", "Category", new { area = "FactoryCatalogue" });
+
+
+
                 var designer = new Designer
                                {
-                                   Name = SiteHelper.UpdatePageWebName(model.Name),
+                                   Name = designerId,
                                    Description = HttpUtility.HtmlDecode(model.Description)
                                };
 
@@ -56,6 +80,17 @@ namespace Listelli.Areas.Admin.Controllers
 
                 context.AddToDesigner(designer);
                 context.SaveChanges();
+
+
+
+
+                MembershipCreateStatus createStatus;
+                Membership.CreateUser(designerId, "cde32wsx", designerId, null, null, true, null, out createStatus);
+
+                if (createStatus == MembershipCreateStatus.Success)
+                {
+
+                }
             }
 
             return RedirectToAction("Index");
@@ -98,15 +133,20 @@ namespace Listelli.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("Details", "Designer", new {area = "DesignersPortfolio", id = designer.Name});
+                return RedirectToAction("Details", "Designer", new { area = "DesignersPortfolio", id = designer.Name });
             }
         }
-
+        [Authorize]
         public ActionResult Delete(int id)
         {
             using (var context = new PortfolioContainer())
             {
+
+
+
+
                 var designer = context.Designer.Include("DesignerContents").First(d => d.Id == id);
+                var designerId = designer.Name;
 
                 while (designer.DesignerContents.Any())
                 {
@@ -119,9 +159,13 @@ namespace Listelli.Areas.Admin.Controllers
                 context.DeleteObject(designer);
 
                 context.SaveChanges();
+
+
+                Membership.DeleteUser(designerId, true);
+
             }
 
-            return RedirectToAction("Index", "Designer", new { area = "Admin"});
+            return RedirectToAction("Index", "Designer", new { area = "Admin" });
         }
 
 
@@ -174,7 +218,7 @@ namespace Listelli.Areas.Admin.Controllers
 
                 context.SaveChanges();
 
-                return RedirectToAction("RoomDetails", "Designer", new { area = "DesignersPortfolio", id=designer.Name,roomType = model.RoomType });
+                return RedirectToAction("RoomDetails", "Designer", new { area = "DesignersPortfolio", id = designer.Name, roomType = model.RoomType });
             }
         }
 
