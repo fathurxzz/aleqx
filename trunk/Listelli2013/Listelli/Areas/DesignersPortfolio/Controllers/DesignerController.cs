@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Listelli.App_LocalResources;
 using Listelli.Models;
 
 namespace Listelli.Areas.DesignersPortfolio.Controllers
@@ -32,6 +34,34 @@ namespace Listelli.Areas.DesignersPortfolio.Controllers
                 }
                 return View(designer);
             }
+        }
+
+        public ActionResult LogOn(string id)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Membership.ValidateUser(id, "cde32wsx"))
+                {
+                    //FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                    FormsAuthentication.SetAuthCookie(id, false);
+
+                    return RedirectToAction("Details", new {id = id});
+                }
+                else
+                {
+                    ModelState.AddModelError("", GlobalRes.WrongLoginOrPassword);
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        public ActionResult LogOff(string id)
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Details", new { id = id });
         }
 
     }

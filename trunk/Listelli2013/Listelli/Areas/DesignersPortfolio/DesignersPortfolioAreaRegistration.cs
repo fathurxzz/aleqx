@@ -21,6 +21,12 @@ namespace Listelli.Areas.DesignersPortfolio
             );
 
             context.MapRoute(
+             "DesignerLogon",
+             "portfolio/{id}/logon",
+             new { controller = "Designer", action = "LogOn" }
+            );
+
+            context.MapRoute(
              "DesignerRoomDetails",
              "portfolio/{id}/living",
              new { controller = "Designer", action = "RoomDetails", roomType=1 }

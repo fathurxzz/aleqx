@@ -21,7 +21,7 @@
 }
 
 <div>
-    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "Designers"))
     {
         <div class="adminLinkContainer">
             @Html.ActionLink("Добавить помещение", "CreateRoom", "Designer", new {area = "Admin", id = Model.Id, roomType = ViewBag.RoomType}, new {@class = "adminLink"})
@@ -36,7 +36,7 @@
                     <span>@item.RoomTitle</span>
                 </h3>
                 <div class="categoryBrandItem">
-                    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                    @if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "Designers"))
                     {
                         @Html.ActionLink("Редактировать", "EditRoom", "Designer", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
                         @Html.Raw("&nbsp;")
@@ -64,7 +64,7 @@
                             string dfg = "gallery" + item.Id;
                             
                             <div class="frame">
-                                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                                @if (Roles.IsUserInRole(User.Identity.Name, "Administrators") || Roles.IsUserInRole(User.Identity.Name, "Designers"))
                                  {
                                      <div class="abs">
                                      @Html.ActionLink("Удалить", "DeleteImage", "Designer", new { area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })

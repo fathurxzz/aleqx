@@ -26,6 +26,13 @@
 
 <div class="content">
     
+@if (Roles.IsUserInRole(User.Identity.Name, "Designers"))
+    {
+         <div class="adminLinkContainer" style="padding-bottom: 20px;">
+        @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Designer", new {area = "DesignersPortfolio", id = Model.Name}, new {@class = "adminLink"})
+        </div>
+    }     
+
     <div class="designerInfo">
         
         
@@ -53,10 +60,15 @@
         <div class="clear"></div>
 
     </div>
+    
+    @if (Roles.IsUserInRole(User.Identity.Name, "Designers") || Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+    {
+        @Html.ActionLink("Редактировать", "Edit", "Designer", new {area = "Admin", id = Model.Id}, new {@class = "adminLink"})
+    }
 
     @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
-    @Html.ActionLink("Редактировать", "Edit","Designer", new {area="Admin", id=Model.Id },new{@class="adminLink"}) 
+
     @Html.Raw(" | ")
     @Html.ActionLink("К списку дизайнеров", "Index", "Designer", new { area = "admin" }, new { @class = "adminLink" })
     }
