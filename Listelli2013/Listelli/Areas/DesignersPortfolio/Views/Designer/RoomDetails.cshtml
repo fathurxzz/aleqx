@@ -3,7 +3,7 @@
 @using SiteExtensions.Graphics
 @model Listelli.Models.Designer
 @{
-    ViewBag.Title = "RoomDetails";
+    ViewBag.Title = Model.DesignerName + " " + (((int)ViewBag.RoomType) == 1 ? "Жилые помещения" : "Нежилые помещения");
     Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
 }
 @section PortfolioMenu

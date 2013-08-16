@@ -4,13 +4,13 @@
 @model Designer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "О ДИЗАЙНЕРЕ – " + Model.DesignerName;
     Layout = "~/Areas/DesignersPortfolio/Views/Shared/_Layout.cshtml";
 }
 
 @section Title
 {
-    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "О дизайнере" })
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "О ДИЗАЙНЕРЕ" })
 }
 
 @section DesignerName
