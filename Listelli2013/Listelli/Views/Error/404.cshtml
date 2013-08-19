@@ -1,0 +1,14 @@
+﻿@using Listelli.Models
+@{
+    ViewBag.Title = "Listelli - Страница не найдена";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Title
+{
+    @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = "ОЙ, ЧТО ЭТО" })
+}
+
+
+<div class="notfound404"></div>

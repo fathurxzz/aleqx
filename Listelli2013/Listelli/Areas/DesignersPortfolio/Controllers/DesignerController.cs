@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Listelli.App_LocalResources;
+using Listelli.Controllers;
 using Listelli.Models;
 
 namespace Listelli.Areas.DesignersPortfolio.Controllers
 {
-    public class DesignerController : Controller
+    public class DesignerController : DefaultController
     {
 
         public ActionResult Details(string id)
         {
             using (var context = new PortfolioContainer())
             {
-                var designer = context.Designer.First(d => d.Name == id);
+                var designer = context.Designer.FirstOrDefault(d => d.Name == id);
+                if (designer == null)
+                    throw new ObjectNotFoundException("designer not found");
                 return View(designer);
             }
         }
@@ -45,7 +49,7 @@ namespace Listelli.Areas.DesignersPortfolio.Controllers
                     //FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     FormsAuthentication.SetAuthCookie(id, false);
 
-                    return RedirectToAction("Details", new {id = id});
+                    return RedirectToAction("Details", new { id = id });
                 }
                 else
                 {

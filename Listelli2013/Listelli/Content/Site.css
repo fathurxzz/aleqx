@@ -295,3 +295,13 @@ body {
     position: relative;
     margin: 0 auto;
 }
+
+
+.notfound404 {
+    width: 263px;
+    height: 192px;
+    position: relative;
+    margin: 70px auto 90px auto;
+    background: url('img/404.gif');
+    
+}
