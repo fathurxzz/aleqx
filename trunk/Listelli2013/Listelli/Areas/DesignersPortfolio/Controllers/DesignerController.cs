@@ -21,7 +21,8 @@ namespace Listelli.Areas.DesignersPortfolio.Controllers
             {
                 var designer = context.Designer.FirstOrDefault(d => d.Name == id);
                 if (designer == null)
-                    throw new ObjectNotFoundException("designer not found");
+                    return RedirectToAction("NotFoundPage", "Error",new {area=""});
+                    //throw new ObjectNotFoundException("designer not found");
                 return View(designer);
             }
         }

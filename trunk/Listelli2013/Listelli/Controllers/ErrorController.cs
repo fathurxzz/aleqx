@@ -8,7 +8,7 @@ using Listelli.Models;
 
 namespace Listelli.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorController : DefaultController
     {
         public ActionResult Index()
         {
