@@ -14,34 +14,35 @@ namespace Listelli.Areas.DesignersPortfolio
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+
             context.MapRoute(
              "DesignerDetails",
-             "portfolio/{id}",
+             "to/{id}",
              new { controller = "Designer", action = "Details" }
             );
 
             context.MapRoute(
              "DesignerLogon",
-             "portfolio/{id}/logon",
+             "to/{id}/logon",
              new { controller = "Designer", action = "LogOn" }
             );
 
             context.MapRoute(
              "DesignerRoomDetails",
-             "portfolio/{id}/living",
+             "to/{id}/living",
              new { controller = "Designer", action = "RoomDetails", roomType=1 }
             );
 
             context.MapRoute(
              "DesignerRoomDetails1",
-             "portfolio/{id}/notliving",
+             "to/{id}/notliving",
              new { controller = "Designer", action = "RoomDetails", roomType = 2 }
             );
 
 
             context.MapRoute(
                 "DesignersPortfolio_default",
-                "portfolio/{controller}/{action}/{id}",
+                "to/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
