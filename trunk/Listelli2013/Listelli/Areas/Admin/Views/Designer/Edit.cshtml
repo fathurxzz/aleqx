@@ -64,7 +64,7 @@
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
-            @Html.ActionLink("Назад", "Index", "Designer", new { Area = "Admin" }, null)
+            @Html.ActionLink("Назад", "Details", "Designer", new { Area = "DesignersPortfolio", id=Model.Name }, null)
         </div>
     }
 </div>
