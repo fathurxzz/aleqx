@@ -12,12 +12,12 @@ using SiteExtensions.Graphics;
 
 namespace Listelli.Areas.Admin.Controllers
 {
-
+    [Authorize]
     public class DesignerController : Controller
     {
         //
         // GET: /Admin/Designer/
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Index()
         {
             using (var context = new PortfolioContainer())
@@ -26,13 +26,13 @@ namespace Listelli.Areas.Admin.Controllers
                 return View(designers);
             }
         }
-        [Authorize]
+       [Authorize(Roles = "Administrators")]
         public ActionResult Create()
         {
 
             return View();
         }
-        [Authorize]
+       [Authorize(Roles = "Administrators")]
         [HttpPost]
         public ActionResult Create(Designer model, HttpPostedFileBase fileUpload)
         {
@@ -136,7 +136,8 @@ namespace Listelli.Areas.Admin.Controllers
                 return RedirectToAction("Details", "Designer", new { area = "DesignersPortfolio", id = designer.Name });
             }
         }
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
+        
         public ActionResult Delete(int id)
         {
             using (var context = new PortfolioContainer())
