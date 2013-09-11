@@ -18,7 +18,7 @@
 @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
 {
     <div class="adminLinkContainer">
-        @Html.ActionLink("Добавить бренд", "Create", "CategoryBrand", new { area = "Admin", category = Model.Category.Name }, new { @class = "adminLink" })
+        @Html.ActionLink("Добавить бренд", "Create", "CategoryBrand", new { area = "Admin", category = Model.Category.Id }, new { @class = "adminLink" })
     </div>
 }
 <div class="categories">

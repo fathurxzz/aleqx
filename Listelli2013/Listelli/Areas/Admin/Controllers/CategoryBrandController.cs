@@ -19,7 +19,7 @@ namespace Listelli.Areas.Admin.Controllers
                     SortOrder = maxSortOrder + 1,
                     Category = cat
                 };
-                ViewBag.CategoryName = category;
+                ViewBag.CategoryName = cat.Name;
                 return View(categoryBrand);
             }
         }
