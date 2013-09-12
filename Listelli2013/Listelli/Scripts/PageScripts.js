@@ -55,8 +55,35 @@
             );
 
 
+            $(".subscribe-overlay").click(function () {
+                BasePageExtender.hideSubscribeOverlay();
+
+            });
+
+
+            $(".subscribe-link").click(function() {
+                BasePageExtender.showSubscribeOverlay();
+            });
+
+
         });
     },
+
+
+    showSubscribeOverlay: function () {
+        
+        $(".subscribe-overlay").addClass("subscribe-overlay-fixed");
+        $(".subscribe-cloud").addClass("show");
+        $(".subscribe-button-container").css("z-index", "8001");
+        $("#inputEmail").focus();
+
+    },
+
+    hideSubscribeOverlay: function () {
+        $(".subscribe-cloud").removeClass("show");
+        $(".subscribe-overlay").removeClass("subscribe-overlay-fixed");
+    },
+    
 
     checkEmailAndPassword: function () {
 
