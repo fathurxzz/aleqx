@@ -305,3 +305,81 @@ body {
     background: url('img/404.gif');
     
 }
+
+.subscribe-button-container {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    background: url('img/subscribe.gif');
+    margin-left: 1035px;
+    margin-top: 50px;
+}
+
+.subscribe-link {
+    width: 62px;
+    height: 13px;
+    cursor: pointer;
+    
+    margin-top: 38px;
+    margin-left: 18px;
+}
+
+
+
+.subscribe-overlay {
+    position: absolute;
+    overflow: hidden;
+    display: none;
+    
+    z-index: 8000;
+    background: url('fancybox/fancybox_overlay.png');
+    top: 0;
+    left: 0;
+}
+
+.subscribe-overlay.subscribe-overlay-fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    
+}
+
+.subscribe-cloud 
+{
+    position: absolute;
+    width: 279px;
+    height: 143px;
+    background-color: red;
+    z-index: 8001;
+    margin-left: 750px;
+    margin-top: 25px;
+    background: url('img/subscribe-cloud.png');
+    display: none;
+    
+        font-family: PTSans;
+    font-size: 12px;
+    text-align: center;
+}
+
+.subscribe-cloud.show {
+    display: block;
+}
+
+#subscribeForm 
+{
+    width: 260px;
+    padding-top: 30px;
+    
+
+}
+
+.thankYou {
+    width: 260px;
+    padding-top: 30px;
+}
+
+.inputEmail {
+    margin-top: 20px;
+}
+
+

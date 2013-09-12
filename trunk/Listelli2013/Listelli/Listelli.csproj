@@ -218,6 +218,9 @@
     <Content Include="Content\img\pattern2.png" />
     <Content Include="Content\img\portfolio-image-frame.gif" />
     <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\subscribe-cloud.png" />
+    <Content Include="Content\img\subscribe.gif" />
+    <Content Include="Content\img\subscribed.gif" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-container-bg.gif" />
     <Content Include="Content\img\title-left.gif" />
