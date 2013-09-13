@@ -26,12 +26,18 @@
             @RenderSection("CategorySelector",false)
             <div class="clear"></div>
         </div>
-        
+        @if (Request.IsAuthenticated)
+            {
+                <div>
+                    @Html.ActionLink("Выйти из системы администрирования","Logoff","Account",null,new{@class="adminLink"})
+                </div>
+            }
         <div class="brandsMenu">
             @RenderSection("Brands",false)
         </div>
 
         <div class="contentContainer">
+            
             <div class="title">
                 @RenderSection("Title",false)
             </div>
