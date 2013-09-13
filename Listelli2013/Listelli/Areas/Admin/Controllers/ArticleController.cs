@@ -41,26 +41,28 @@ namespace Listelli.Areas.Admin.Controllers
 
                     
 
-
-                    //var article = context.Article.First(c => c.Id == cache.Id);
-                    //article.CurrentLang = CurrentLang.Id;
                     
-                    //using (var customerContext = new CustomerContainer())
-                    //{
+                    var article = context.Article.First(c => c.Id == cache.Id);
+                    article.CurrentLang = CurrentLang.Id;
 
 
-                    //    string articleText = HttpUtility.HtmlDecode(article.Description)
-                    //        .Replace("src=\"", "src=\"http://listelli.ua");
-                    //    List<MailAddress> addresses = new List<MailAddress>();
-                    //    foreach (var item in customerContext.Subscriber.Where(s => s.Active))
-                    //        addresses.Add(new MailAddress(item.Email));
+                    if (article.Published)
+                    {
+                        using (var customerContext = new CustomerContainer())
+                        {
+                            string articleText = HttpUtility.HtmlDecode(article.Description)
+                                                            .Replace("src=\"", "src=\"http://listelli.ua");
+                            List<MailAddress> addresses = new List<MailAddress>();
+                            foreach (var item in customerContext.Subscriber.Where(s => s.Active))
+                                addresses.Add(new MailAddress(item.Email));
 
-                    //    string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-                    //    var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+                            string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                            var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
 
-                    //    MailHelper.SendTemplate(emailFrom, addresses, article.Title, "Newsletter.htm", null, true, articleText);
-                    //}
-
+                            MailHelper.SendTemplate(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
+                                                    articleText);
+                        }
+                    }
                     return RedirectToAction("Articles","Home",new {area=""});
                 }
             }
@@ -98,6 +100,33 @@ namespace Listelli.Areas.Admin.Controllers
                             CreateOrChangeContentLang(context, model, cache, lang);
                         }
                     }
+
+
+
+
+                    var article = context.Article.First(c => c.Id == cache.Id);
+                    article.CurrentLang = CurrentLang.Id;
+
+
+                    if (article.Published)
+                    {
+                        using (var customerContext = new CustomerContainer())
+                        {
+                            string articleText = HttpUtility.HtmlDecode(article.Description)
+                                                            .Replace("src=\"", "src=\"http://listelli.ua");
+                            List<MailAddress> addresses = new List<MailAddress>();
+                            foreach (var item in customerContext.Subscriber.Where(s => s.Active))
+                                addresses.Add(new MailAddress(item.Email));
+
+                            string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                            var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+
+                            MailHelper.SendTemplate(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
+                                                    articleText);
+                        }
+                    }
+
+
 
                     return RedirectToAction("Articles", "Home", new { area = "" });
                 }

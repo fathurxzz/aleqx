@@ -313,6 +313,7 @@ body {
     background: url('img/subscribe.gif');
     margin-left: 1035px;
     margin-top: 50px;
+    /*display: none;*/
 }
 
 .subscribe-link {
