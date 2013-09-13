@@ -77,6 +77,7 @@
                     <div class="adminLinkContainer">
                         @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", new { area = "" }, new { @class = "adminLink" })
                         @Html.ActionLink("Портфолио дизайнеров", "Index", "Designer", new { area = "Admin" }, new { @class = "adminLink" })
+                        @Html.ActionLink("Подписчики на новости", "Index", "Subscriber", new { area = "Admin" }, new { @class = "adminLink" })
                     </div>
                 }
                 @RenderSection("Title", false)
