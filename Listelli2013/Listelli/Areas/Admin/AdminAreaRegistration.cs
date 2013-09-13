@@ -58,11 +58,19 @@ namespace Listelli.Areas.Admin
                 new { controller = "CategoryBrand", category = UrlParameter.Optional}, new { lang = @"ru|en" }
             );
 
+            
+
             context.MapRoute(
              "Designers",
              "admin/designers",
              new { controller = "Designer", action = "Index" }
          );
+
+            //context.MapRoute(
+            //    "Subscribers",
+            //    "admin/subscribers",
+            //    new { controller = "Subscriber" , action="Index"}
+            //);
 
             context.MapRoute(
                 "Designer",
