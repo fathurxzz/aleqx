@@ -37,49 +37,64 @@ namespace Listelli.Controllers
         [HttpPost]
         public ActionResult Subscribe(SubscribeFormModel subscribeForm)
         {
-            if (ModelState.IsValid)
+            try
             {
-                using (var context = new CustomerContainer())
+                if (ModelState.IsValid)
                 {
-                    var subscriber = context.Subscriber.FirstOrDefault(s => s.Email == subscribeForm.SubscribeEmail);
-                    if (subscriber != null)
+                    using (var context = new CustomerContainer())
                     {
-                        subscribeForm.ErrorMessage = "Этот email уже есть в базе подписчиков" ;
-                        return PartialView("SubscribeForm", subscribeForm);
-                    }
+                        var subscriber = context.Subscriber.FirstOrDefault(s => s.Email == subscribeForm.SubscribeEmail);
+                        if (subscriber != null)
+                        {
+                            subscribeForm.ErrorMessage = "Этот email уже есть в базе подписчиков";
+                            return PartialView("SubscribeForm", subscribeForm);
+                        }
 
-                    subscriber = new Subscriber
-                                 {
-                                     Guid = Guid.NewGuid().ToString(),
-                                     Email = subscribeForm.SubscribeEmail,
-                                     Active = false
-                                 };
+                        subscriber = new Subscriber
+                                         {
+                                             Guid = Guid.NewGuid().ToString(),
+                                             Email = subscribeForm.SubscribeEmail,
+                                             Active = false
+                                         };
 
-                    context.AddToSubscriber(subscriber);
-                    context.SaveChanges();
-
-
-
-                    string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-
-                    var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
-                    var subscriberEmail = new MailAddress(subscriber.Email);
+                        context.AddToSubscriber(subscriber);
+                        
 
 
-                    var result = Helpers.MailHelper.SendTemplate(emailFrom, new List<MailAddress> { subscriberEmail }, "Подтверждение регистрации", "ConfirmSubscribe.htm", null, true, subscriber.Guid);
 
-                    if (result.EmailSent)
+                        string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+
+                        var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+                        var subscriberEmail = new MailAddress(subscriber.Email);
+
+
+                        var result = Helpers.MailHelper.SendTemplate(emailFrom, new List<MailAddress> {subscriberEmail},
+                                                                     "Подтверждение регистрации", "ConfirmSubscribe.htm",
+                                                                     null, true, subscriber.Guid);
+
+                        if (!result.EmailSent)
+                        {
+                            subscribeForm.ErrorMessage = "Ошибка: " + result.ErrorMessage;
+                            return PartialView("SubscribeForm", subscribeForm);
+                        }
+
+                        context.SaveChanges();
+
                         return PartialView("SubscribeSuccess");
-                    else
-                    {
-                        subscribeForm.ErrorMessage = "Ошибка: " + result.ErrorMessage;
-                        return PartialView("SubscribeForm", subscribeForm);
                     }
-
-                    return PartialView("SubscribeSuccess");
                 }
             }
+
+            catch(Exception ex)
+            {
+                if (!string.IsNullOrEmpty(ex.Message))
+                    subscribeForm.ErrorMessage = ex.Message;
+                else if (!string.IsNullOrEmpty(ex.InnerException.Message))
+                    subscribeForm.ErrorMessage = ex.InnerException.Message;
+            }
+
             return PartialView("SubscribeForm", subscribeForm);
+
         }
 
 
