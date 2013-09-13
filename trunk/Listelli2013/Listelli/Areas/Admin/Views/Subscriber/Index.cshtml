@@ -19,7 +19,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(s=>s.Email)) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
@@ -28,7 +28,7 @@
             @Html.DisplayFor(modelItem => item.Active)
         </td>
         <td>
-            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id },new{@class="adminLink"})
         </td>
     </tr>
 }
