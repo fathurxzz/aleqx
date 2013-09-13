@@ -74,10 +74,13 @@ img
 .feedback-container
 {
     float: right;
-    margin-top: 37px;
+    margin-top: 27px;
     width: 120px;
     height: 30px;
-    background: url('img/feedback-cloud.gif') no-repeat;
+    font-size: 10px;
+    color: #525252;
+    
+    /*background: url('img/feedback-cloud.gif') no-repeat;*/
 }
 
 .feedback-container .link
@@ -88,8 +91,9 @@ img
 
 .feedback-container .link a
 {
-    color: #706d6e;
+    color: #525252;
     font-size: 12px;
+    font-weight: bold;
 }
 
 
