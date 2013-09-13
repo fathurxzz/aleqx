@@ -75,7 +75,7 @@ img
 {
     float: right;
     margin-top: 27px;
-    width: 120px;
+    width: 130px;
     height: 30px;
     font-size: 10px;
     color: #525252;
@@ -91,9 +91,10 @@ img
 
 .feedback-container .link a
 {
-    color: #525252;
-    font-size: 12px;
+    color: #706d6e;
+    font-size: 14px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 
