@@ -34,6 +34,138 @@ namespace Listelli.Controllers
             }
         }
 
+
+//        public void S1()
+//        {
+
+//            var emails = new string[]{
+//                "airis-center3@yandex.ru",
+//        "a-kvalitet@mail.ru",
+//"amantevivare@mail.ru",
+//"andreirom@yandex.ru",
+//"anfilada@inet.ua"	,
+//"argabud@inet.ua"	,	
+//"arhigrad.pl@mail.ru",		
+//"asgart_06@mail.ru"		,
+//"astudi@i.ua"			 ,
+//"avrinsky@kan.gt.com.ua",	
+//"babich_L@ua.fm"		 ,
+//"baluti@i.kiev.ua"		 ,
+//"bel-remesla@narod.ru"	,
+//"bestcom2000@ukr.net"	,
+//"brumalucraina@ukr.net"	,
+//"bud-market@i.ua"		 ,
+//"chief@archidom.in"		 ,
+//"contact@d-core.com.ua"	,
+//"creative-plus@i.ua"	 ,
+//"d.velychko@listelli.ua" ,
+//"darel64@mail.ru"		 ,
+//"dd@adstudio.kiev.ua"	 ,
+//"design@listelli.ua"	 ,
+//"dima@new-camelot.com.ua",
+//"dir@oregonmarket.com.ua",
+//"dizajio@mail.ru"		 ,
+//"dom@euroclass.kiev.ua"	 ,
+//"dorohouse@ukr.net"		 ,
+//"d-v23@yandex.ru"		 ,
+//"ekonomika@ianp.com.ua"	,
+//"elena@ideals.com.ua"		    ,
+//"elenabusso@yahoo.it"			,
+//"filonenko@bigmir.net"			,
+//"floorexcl@yandex.ru"			,
+//"gala-project@i.ua"				,
+//"gena@geko.kiev.ua"				,
+//"help@elite-design.com.ua"		,
+//"i.kurilo@saloninterio.com"		,
+//"ideals@voliacable.com"			,
+//"info@anna-design.com.ua"		,
+//"info@artinter.com.ua"			,
+//"info@decoplast.eu"				,
+//"info@venezia.od.ua"			,
+//"interior@etre.com.ua"			,
+//"isaicoluba@mail.ru"			,
+//"kadva@tn.uz.ua"				,
+//"kdesign@promdesign.com.ua"		,
+//"kiev@itisgallery.com"			,
+//"komfort-kiev@mail.ru"			,
+//"kushko.alex@gmail.com"			,
+//"lunapark@bigmir.net"			,
+//"lyka74@list.ru"				,
+//"mail@sevenplan.com"			,
+//"masha-arch@mail.ru"			,
+//"mavel@inbox.ru"				,
+//"mebli-van@yandex.ru"			,
+//"miller.kak.miller@gmail.com"	,
+//"mykola.kosyk@mail.ru"			,
+//"natali_ch@ukr.net"				,
+//"nefedov_design@yahoo.com"		,
+//"neo@art-neo.kiev.ua"			,
+//"nikolay@litokol.kiev.ua"		,
+//"nts1@ua.fm"					,
+//"o.denysyuk@helen-marlen.com"	,	
+//"o.murashko@listelli.ua"		,
+//"office@ccproject.com.ua"		,
+//"office@orlovskiy.com.ua"		,
+//"office@vipsecurity.com.ua"		,
+//"office@vivadesign.com.ua"		,
+//"ofis@vizantiya.com.ua"			,
+//"olesya_room@ukr.net"			,
+//"pavel@art-shutters.com.ua"		,
+//"poldarbud@mail.ru"				,
+//"postavki@vizantiya.com.ua"		,
+//"ppp90@ukr.net"					,
+//"profles@i.ua"					,
+//"ruslan19011@rambler.ru"		,
+//"salon@listelli.com.ua"			,
+//"salon@listelli.ua"				,
+//"sbeast@decorum.com.ua"			,
+//"sdd@voliacable.com"			,
+//"sergbosh@gmail.com"			,
+//"sigma-center@mail.ru"			,
+//"smetaninka@yandex.ru"			,
+//"soesthetic@a.ua"				,
+//"spoltava@mail.ru"				,
+//"sveta_@voliacable.com"           ,
+//"svetadesign@inbox.ru"			  ,
+//"svetlana@artprojektregie.com.ua",		
+//"t.stepanets@gmail.com"			  ,
+//"tam_bagrij@mail.ru"			  ,
+//"tanya_exnova@ukr.net"			  ,
+//"tempest@nbi.com.ua"			  ,
+//"timeandquality@rambler.ru"		  ,
+//"trudes@ukr.net"				  ,
+//"umanec_nataliya@ukr.net"		  ,
+//"v.bukovskiy@fozzy.ua"			  ,
+//"valedeplen@gmail.com"			  ,
+//"vikapro@meta.ua"				  ,
+//"virtual_76@mail.ru"			  ,
+//"vision75@mail.ru"				  ,
+//"vladimir@t-style.com.ua"		  ,
+//"vsedesign@gmail.com"			  ,
+//"xena@aratta-art.com.ua"};
+
+//            using (var context = new CustomerContainer())
+//            {
+//                foreach (var email in emails)
+//                {
+//                    var subscriber = new Subscriber
+//                    {
+//                        Guid = Guid.NewGuid().ToString(),
+//                        Email = email,
+//                        Active = false
+//                    };
+
+//                    context.AddToSubscriber(subscriber);
+
+
+//                }
+
+//                context.SaveChanges();
+
+
+//            }
+//        }
+
         [HttpPost]
         public ActionResult Subscribe(SubscribeFormModel subscribeForm)
         {
@@ -58,7 +190,7 @@ namespace Listelli.Controllers
                                          };
 
                         context.AddToSubscriber(subscriber);
-                        
+
 
 
 
@@ -68,7 +200,7 @@ namespace Listelli.Controllers
                         var subscriberEmail = new MailAddress(subscriber.Email);
 
 
-                        var result = Helpers.MailHelper.SendTemplate(emailFrom, new List<MailAddress> {subscriberEmail},
+                        var result = Helpers.MailHelper.SendTemplate(emailFrom, new List<MailAddress> { subscriberEmail },
                                                                      "Подтверждение регистрации", "ConfirmSubscribe.htm",
                                                                      null, true, subscriber.Guid);
 
@@ -85,7 +217,7 @@ namespace Listelli.Controllers
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (!string.IsNullOrEmpty(ex.Message))
                     subscribeForm.ErrorMessage = ex.Message;
