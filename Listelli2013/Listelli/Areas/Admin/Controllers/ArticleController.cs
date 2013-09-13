@@ -59,7 +59,7 @@ namespace Listelli.Areas.Admin.Controllers
                             string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
                             var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
 
-                            MailHelper.SendTemplate(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
+                            MailHelper.SendTemplateByPortions(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
                                                     articleText);
                         }
                     }
@@ -121,7 +121,7 @@ namespace Listelli.Areas.Admin.Controllers
                             string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
                             var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
 
-                            MailHelper.SendTemplate(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
+                            MailHelper.SendTemplateByPortions(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
                                                     articleText);
                         }
                     }
