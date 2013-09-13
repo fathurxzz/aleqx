@@ -223,6 +223,15 @@ namespace Listelli.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Обязательно.
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Роли.
         /// </summary>
         public static string Roles {
@@ -255,6 +264,15 @@ namespace Listelli.App_LocalResources {
         public static string Users {
             get {
                 return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неверно введен адрес почты. Формат: name@domain.com.
+        /// </summary>
+        public static string WrongEmail {
+            get {
+                return ResourceManager.GetString("WrongEmail", resourceCulture);
             }
         }
         

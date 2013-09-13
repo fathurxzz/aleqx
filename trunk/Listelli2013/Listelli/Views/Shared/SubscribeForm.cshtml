@@ -1,0 +1,20 @@
+﻿@model Listelli.Models.SubscribeFormModel
+@using (Ajax.BeginForm("Subscribe", "Home", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "updateSubscribeContent" }))
+{
+    <div>
+        Введите адрес электронной почты<br />
+        и нажмите &laquo;энтер&raquo;
+    </div>
+    <br />
+
+    @Html.TextBoxFor(model => model.SubscribeEmail)
+    <br />
+    @Html.ValidationMessageFor(model => model.SubscribeEmail)
+    
+    if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+    <div class="errorMessage">
+        @Model.ErrorMessage
+    </div>
+    }
+}
