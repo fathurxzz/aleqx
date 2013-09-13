@@ -1,0 +1,37 @@
+﻿@using Listelli.Models
+ <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@{
+    //Html.EnableClientValidation();
+}
+<div class="subscribe-button-container">
+    <div class="subscribe-link">
+    </div>
+</div>
+<div class="subscribe-cloud">
+    
+
+    <div id="subscribeForm">
+        <div id="updateSubscribeContent">
+            
+            
+            
+            @Html.Partial("SubscribeForm", new SubscribeFormModel())
+            
+
+            
+        </div>   
+    
+    </div>
+</div>
+
+
+
+
+
+
+@*<div>
+        Вы правда хотите отписаться? :(<br/>        Введите адрес электронной почты<br/>        и нажмите «энтер»:<br/>
+        <input type="text" id="inputEmail" class="inputEmail" />
+    </div>*@

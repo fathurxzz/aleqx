@@ -341,7 +341,6 @@ body {
     position: fixed;
     bottom: 0;
     right: 0;
-    
 }
 
 .subscribe-cloud 
@@ -375,11 +374,18 @@ body {
 
 .thankYou {
     width: 260px;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .inputEmail {
     margin-top: 20px;
 }
 
+#SubscribeEmail {
+    margin-top: 20px;
+}
 
+
+.errorMessage {
+    color: red;
+}

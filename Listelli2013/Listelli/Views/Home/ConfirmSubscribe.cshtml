@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (ViewBag.Message != null)
+{
+    @ViewBag.Message
+
+    <a href="tel:1-408-555-5555">1-408-555-5555</a>
+}
+else
+{
+    <div style="text-align: center; padding: 100px;">
+        Теперь вы в курсе<br />
+        наших новостей и событий,<br />
+        спасибо что вы с нами! :)
+    </div>
+    
+    
+    
+}
+

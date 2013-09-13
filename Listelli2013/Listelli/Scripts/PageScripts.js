@@ -75,7 +75,7 @@
         $(".subscribe-overlay").addClass("subscribe-overlay-fixed");
         $(".subscribe-cloud").addClass("show");
         $(".subscribe-button-container").css("z-index", "8001");
-        $("#inputEmail").focus();
+        $("#SubscribeEmail").focus();
 
     },
 

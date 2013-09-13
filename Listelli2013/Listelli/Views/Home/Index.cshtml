@@ -4,34 +4,32 @@
     @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
     {
         <div class="adminLinkContainer">
-            @Html.ActionLink("Редактировать", "Edit", "Content", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+            @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
         </div>
     }
     @if (!Model.Content.IsCorrectLang)
-       {
-           <div style="border: 1px solid red; color: red; text-align: center; padding: 5px; font-weight: bold;">
-                нужен перевод
-           </div>
-       }
+    {
+        <div style="border: 1px solid red; color: red; text-align: center; padding: 5px;
+            font-weight: bold;">
+            нужен перевод
+        </div>
+    }
 
     
     
-    @*@DateTime.Now.ToString("D")*@
+@*@DateTime.Now.ToString("D")*@
     
     
     
-    @*@GlobalRes.Register*@
-    
-    
-@Html.Raw(Model.Content.Text)
-
-
+@*@GlobalRes.Register*@
+    @Html.Raw(Model.Content.Text)
 </div>
-
 @section Title
 {
     @Html.Partial("PageTitle", new ContentTitleModel { Type = TitleType.Text, Title = Model.Content.Title })
 }
 
-
-
+@section Includes
+{
+    
+}

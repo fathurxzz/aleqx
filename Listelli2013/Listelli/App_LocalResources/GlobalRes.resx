@@ -189,4 +189,10 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Запомнить меня</value>
   </data>
+  <data name="Required" xml:space="preserve">
+    <value>Обязательно</value>
+  </data>
+  <data name="WrongEmail" xml:space="preserve">
+    <value>Неверно введен адрес почты. Формат: name@domain.com</value>
+  </data>
 </root>

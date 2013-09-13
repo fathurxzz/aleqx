@@ -189,4 +189,10 @@
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
   </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="WrongEmail" xml:space="preserve">
+    <value>WrongEmail</value>
+  </data>
 </root>

@@ -51,6 +51,13 @@ namespace Listelli
                 new[] { "Listelli.Controllers" }
             );
 
+            routes.MapRoute(
+                "subscribe", // Route name
+                "subscribe/{id}", // URL with parameters
+                new { controller = "Home", action = "ConfirmSubscribe" }, // Parameter defaults
+                new[] { "Listelli.Controllers" }
+            );
+
 
             //routes.MapRoute(
             //   "Catalogue", // Route name
