@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
+using System.Threading;
 using System.Web.Mvc;
 using Listelli.Models;
 using SiteExtensions;
@@ -14,6 +15,10 @@ namespace Listelli.Controllers
     {
         public ActionResult Index(string id)
         {
+
+            Thread tr = (Thread)HttpContext.Application["mailSender"];
+            var aaa = tr.ThreadState;
+
             using (var context = new SiteContainer())
             {
                 var model = new SiteModel(CurrentLang, context, id);
