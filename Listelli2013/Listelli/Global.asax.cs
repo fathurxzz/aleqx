@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -129,6 +130,29 @@ namespace Listelli
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+
+            if (Application["mailSender"] == null)
+            {
+                Thread newThread = new Thread(new ThreadStart(Work.DoWork));
+                
+                newThread.Start();
+
+                Application["mailSender"] = newThread;
+            }
+        }
+
+        class Work
+        {
+            Work() { }
+
+            public static void DoWork()
+            {
+                while (true)
+                {
+                    Thread.Sleep(100);
+                }
+            }
         }
     }
 }
