@@ -17,6 +17,8 @@ namespace Poggen.Models
     {
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Уникальнй идентификатор (выводится в строке адреса)")]
+        [RegularExpression(@"^([a-zA-Z0-9]+)", ErrorMessage = "Неверный формат! Вводите латинские символы без пробелов")]
+        
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Обязательно!")]
