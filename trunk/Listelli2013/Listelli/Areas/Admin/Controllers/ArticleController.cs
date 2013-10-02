@@ -15,7 +15,7 @@ namespace Listelli.Areas.Admin.Controllers
     {
         public ActionResult Create()
         {
-            return View(new Article {CurrentLang = CurrentLang.Id, Date = DateTime.Now});
+            return View(new Article { CurrentLang = CurrentLang.Id, Date = DateTime.Now });
         }
 
         [HttpPost]
@@ -39,9 +39,9 @@ namespace Listelli.Areas.Admin.Controllers
                         CreateOrChangeContentLang(context, model, cache, lang);
                     }
 
-                    
 
-                    
+
+
                     var article = context.Article.First(c => c.Id == cache.Id);
                     article.CurrentLang = CurrentLang.Id;
 
@@ -50,20 +50,39 @@ namespace Listelli.Areas.Admin.Controllers
                     {
                         using (var customerContext = new CustomerContainer())
                         {
-                            string articleText = HttpUtility.HtmlDecode(article.Description)
-                                                            .Replace("src=\"", "src=\"http://listelli.ua");
-                            List<MailAddress> addresses = new List<MailAddress>();
-                            foreach (var item in customerContext.Subscriber.Where(s => s.Active))
-                                addresses.Add(new MailAddress(item.Email));
+                            var activeSubscribers = customerContext.Subscriber.Where(s => s.Active).ToList();
+                            foreach (var subscriber in activeSubscribers)
+                            {
+                                var emailStatus = new SendEmailStatus
+                                          {
+                                              Date = DateTime.Now,
+                                              SendDate = DateTime.Now,
+                                              Status = 0,
+                                              ArticleId = article.Id,
+                                              SubscriberId = subscriber.Id
+                                          };
 
-                            string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-                            var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+                                customerContext.AddToSendEmailStatus(emailStatus);
 
-                            MailHelper.SendTemplateByPortions(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
-                                                    articleText);
+
+                            }
+                            customerContext.SaveChanges();
+
+
+                            //string articleText = HttpUtility.HtmlDecode(article.Description)
+                            //                                .Replace("src=\"", "src=\"http://listelli.ua");
+                            //List<MailAddress> addresses = new List<MailAddress>();
+                            //foreach (var item in customerContext.Subscriber.Where(s => s.Active))
+                            //    addresses.Add(new MailAddress(item.Email));
+
+                            //string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                            //var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+
+                            //MailHelper.SendTemplateByPortions(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
+                            //                        articleText);
                         }
                     }
-                    return RedirectToAction("Articles","Home",new {area=""});
+                    return RedirectToAction("Articles", "Home", new { area = "" });
                 }
             }
             catch
@@ -102,8 +121,6 @@ namespace Listelli.Areas.Admin.Controllers
                     }
 
 
-
-
                     var article = context.Article.First(c => c.Id == cache.Id);
                     article.CurrentLang = CurrentLang.Id;
 
@@ -112,21 +129,33 @@ namespace Listelli.Areas.Admin.Controllers
                     {
                         using (var customerContext = new CustomerContainer())
                         {
-                            string articleText = HttpUtility.HtmlDecode(article.Description)
-                                                            .Replace("src=\"", "src=\"http://listelli.ua");
-                            List<MailAddress> addresses = new List<MailAddress>();
-                            foreach (var item in customerContext.Subscriber.Where(s => s.Active))
-                                addresses.Add(new MailAddress(item.Email));
+                            var existedStatuses = customerContext.SendEmailStatus.Where(s => s.ArticleId == article.Id).ToList();
+                            var activeSubscribers = customerContext.Subscriber.Where(s => s.Active).ToList();
 
-                            string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-                            var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+                            foreach (var subscriber in activeSubscribers)
+                            {
+                                var existedStatus =
+                                    existedStatuses.FirstOrDefault(
+                                        s => s.SubscriberId == subscriber.Id && s.ArticleId == article.Id);
 
-                            MailHelper.SendTemplateByPortions(emailFrom, addresses, article.Title, "Newsletter.htm", null, true,
-                                                    articleText);
+                                if (existedStatus == null)
+                                {
+
+                                    var emailStatus = new SendEmailStatus
+                                                      {
+                                                          Date = DateTime.Now,
+                                                          SendDate = DateTime.Now,
+                                                          Status = 0,
+                                                          ArticleId = article.Id,
+                                                          SubscriberId = subscriber.Id
+                                                      };
+
+                                    customerContext.AddToSendEmailStatus(emailStatus);
+                                }
+                            }
+                            customerContext.SaveChanges();
                         }
                     }
-
-
 
                     return RedirectToAction("Articles", "Home", new { area = "" });
                 }
@@ -161,7 +190,7 @@ namespace Listelli.Areas.Admin.Controllers
                     }
 
                     ImageHelper.DeleteImage(item.ImageSource);
-                    
+
                     context.DeleteObject(articleItem);
                 }
 
@@ -191,7 +220,7 @@ namespace Listelli.Areas.Admin.Controllers
                 };
                 context.AddToArticleLang(newPostLang);
 
-                
+
 
 
             }

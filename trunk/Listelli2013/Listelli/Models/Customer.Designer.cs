@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+
 namespace Listelli.Models
 {
     #region Contexts
@@ -114,7 +114,6 @@ namespace Listelli.Models
         private ObjectSet<SendEmailStatus> _SendEmailStatus;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -142,11 +141,11 @@ namespace Listelli.Models
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -168,7 +167,7 @@ namespace Listelli.Models
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="date">Initial value of the Date property.</param>
         /// <param name="sendDate">Initial value of the SendDate property.</param>
-        public static SendEmailStatus CreateSendEmailStatus(global::System.Int32 id, global::System.String articleId, global::System.String subscriberId, global::System.String status, global::System.String date, global::System.String sendDate)
+        public static SendEmailStatus CreateSendEmailStatus(global::System.Int32 id, global::System.Int32 articleId, global::System.Int32 subscriberId, global::System.Int32 status, global::System.DateTime date, global::System.DateTime sendDate)
         {
             SendEmailStatus sendEmailStatus = new SendEmailStatus();
             sendEmailStatus.Id = id;
@@ -181,7 +180,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -216,7 +214,7 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String ArticleId
+        public global::System.Int32 ArticleId
         {
             get
             {
@@ -226,13 +224,13 @@ namespace Listelli.Models
             {
                 OnArticleIdChanging(value);
                 ReportPropertyChanging("ArticleId");
-                _ArticleId = StructuralObject.SetValidValue(value, false);
+                _ArticleId = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("ArticleId");
                 OnArticleIdChanged();
             }
         }
-        private global::System.String _ArticleId;
-        partial void OnArticleIdChanging(global::System.String value);
+        private global::System.Int32 _ArticleId;
+        partial void OnArticleIdChanging(global::System.Int32 value);
         partial void OnArticleIdChanged();
     
         /// <summary>
@@ -240,7 +238,7 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SubscriberId
+        public global::System.Int32 SubscriberId
         {
             get
             {
@@ -250,13 +248,13 @@ namespace Listelli.Models
             {
                 OnSubscriberIdChanging(value);
                 ReportPropertyChanging("SubscriberId");
-                _SubscriberId = StructuralObject.SetValidValue(value, false);
+                _SubscriberId = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SubscriberId");
                 OnSubscriberIdChanged();
             }
         }
-        private global::System.String _SubscriberId;
-        partial void OnSubscriberIdChanging(global::System.String value);
+        private global::System.Int32 _SubscriberId;
+        partial void OnSubscriberIdChanging(global::System.Int32 value);
         partial void OnSubscriberIdChanged();
     
         /// <summary>
@@ -264,7 +262,7 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Status
+        public global::System.Int32 Status
         {
             get
             {
@@ -274,13 +272,13 @@ namespace Listelli.Models
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value, false);
+                _Status = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
         }
-        private global::System.String _Status;
-        partial void OnStatusChanging(global::System.String value);
+        private global::System.Int32 _Status;
+        partial void OnStatusChanging(global::System.Int32 value);
         partial void OnStatusChanged();
     
         /// <summary>
@@ -288,7 +286,7 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Date
+        public global::System.DateTime Date
         {
             get
             {
@@ -298,13 +296,13 @@ namespace Listelli.Models
             {
                 OnDateChanging(value);
                 ReportPropertyChanging("Date");
-                _Date = StructuralObject.SetValidValue(value, false);
+                _Date = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("Date");
                 OnDateChanged();
             }
         }
-        private global::System.String _Date;
-        partial void OnDateChanging(global::System.String value);
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
         partial void OnDateChanged();
     
         /// <summary>
@@ -312,7 +310,7 @@ namespace Listelli.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String SendDate
+        public global::System.DateTime SendDate
         {
             get
             {
@@ -322,17 +320,16 @@ namespace Listelli.Models
             {
                 OnSendDateChanging(value);
                 ReportPropertyChanging("SendDate");
-                _SendDate = StructuralObject.SetValidValue(value, false);
+                _SendDate = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("SendDate");
                 OnSendDateChanged();
             }
         }
-        private global::System.String _SendDate;
-        partial void OnSendDateChanging(global::System.String value);
+        private global::System.DateTime _SendDate;
+        partial void OnSendDateChanging(global::System.DateTime value);
         partial void OnSendDateChanged();
 
         #endregion
-
     
     }
     
@@ -364,7 +361,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -467,7 +463,6 @@ namespace Listelli.Models
         partial void OnActiveChanged();
 
         #endregion
-
     
     }
     
@@ -495,7 +490,6 @@ namespace Listelli.Models
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -550,11 +544,9 @@ namespace Listelli.Models
         partial void OnDateChanged();
 
         #endregion
-
     
     }
 
     #endregion
-
     
 }

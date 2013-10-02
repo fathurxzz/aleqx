@@ -80,21 +80,5 @@ namespace Listelli.Helpers
             reader.Close();
             return SiteExtensions.MailHelper.SendMessage(from, to, formattedBody, subject, isBodyHtml);
         }
-
-
-        public static void ProcessSendEmail()
-        {
-            while (true)
-            {
-                using (var context = new CustomerContainer())
-                {
-                    var test = new TestTable {Date = DateTime.Now};
-                    context.AddToTestTable(test);
-                    context.SaveChanges();
-                }
-                
-                Thread.Sleep(10000);
-            }
-        }
     }
 }

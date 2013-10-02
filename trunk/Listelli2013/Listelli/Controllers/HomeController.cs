@@ -5,9 +5,11 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading;
+using System.Web;
 using System.Web.Mvc;
 using Listelli.Models;
 using SiteExtensions;
+using MailHelper = Listelli.Helpers.MailHelper;
 
 namespace Listelli.Controllers
 {
@@ -16,8 +18,8 @@ namespace Listelli.Controllers
         public ActionResult Index(string id)
         {
 
-            Thread tr = (Thread)HttpContext.Application["mailSender"];
-            var aaa = tr.ThreadState;
+            //Thread tr = (Thread)HttpContext.Application["mailSender"];
+            //var aaa = tr.ThreadState;
 
             using (var context = new SiteContainer())
             {
@@ -205,7 +207,7 @@ namespace Listelli.Controllers
                         var subscriberEmail = new MailAddress(subscriber.Email);
 
 
-                        var result = Helpers.MailHelper.SendTemplate(emailFrom, new List<MailAddress> { subscriberEmail },
+                        var result = MailHelper.SendTemplate(emailFrom, new List<MailAddress> { subscriberEmail },
                                                                      "Подтверждение регистрации", "ConfirmSubscribe.htm",
                                                                      null, true, subscriber.Guid);
 
@@ -224,9 +226,9 @@ namespace Listelli.Controllers
 
             catch (Exception ex)
             {
-                if (!string.IsNullOrEmpty(ex.Message))
+                if (!String.IsNullOrEmpty(ex.Message))
                     subscribeForm.ErrorMessage = ex.Message;
-                else if (!string.IsNullOrEmpty(ex.InnerException.Message))
+                else if (!String.IsNullOrEmpty(ex.InnerException.Message))
                     subscribeForm.ErrorMessage = ex.InnerException.Message;
             }
 
@@ -255,5 +257,54 @@ namespace Listelli.Controllers
         }
 
 
+
+        public static void ProcessSendEmail()
+        {
+            while (true)
+            {
+                using (var context = new CustomerContainer())
+                {
+                    var emailStatus = context.SendEmailStatus.FirstOrDefault(s => s.Status == 0);
+
+                    if (emailStatus != null)
+                    {
+                        using (var siteContext = new SiteContainer())
+                        {
+                            var article = siteContext.Article.First(c => c.Id == emailStatus.ArticleId);
+
+                            var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
+
+                            var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
+                            if (lng != null)
+                            {
+                                article.CurrentLang = lng.Id;
+                            }
+
+
+                            string articleText = HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua");
+
+                            string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                            var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+                            
+                            MailHelper.SendTemplate(emailFrom, new List<MailAddress>{new MailAddress(subscriber.Email)}, article.Title, "Newsletter.htm", null, true, articleText);
+
+                            emailStatus.Status = 1;
+
+                            
+                        }
+
+
+
+                    }
+
+
+                    //var test = new TestTable { Date = DateTime.Now };
+                    //context.AddToTestTable(test);
+                    context.SaveChanges();
+                }
+
+                Thread.Sleep(5000);
+            }
+        }
     }
 }

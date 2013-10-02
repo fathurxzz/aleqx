@@ -8,6 +8,7 @@
   <EntityContainer Name="CustomerStoreContainer">
     <EntitySet Name="Subscriber" EntityType="Customer.Store.Subscriber" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TestTable" EntityType="Customer.Store.TestTable" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SendEmailStatus" EntityType="Customer.Store.SendEmailStatus" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="Subscriber">
     <Key>
@@ -24,6 +25,17 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SendEmailStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArticleId" Type="int" Nullable="false" />
+    <Property Name="SubscriberId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="SendDate" Type="datetime" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -55,11 +67,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ArticleId" Nullable="false" />
-          <Property Type="String" Name="SubscriberId" Nullable="false" />
-          <Property Type="String" Name="Status" Nullable="false" />
-          <Property Type="String" Name="Date" Nullable="false" />
-          <Property Type="String" Name="SendDate" Nullable="false" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <Property Type="Int32" Name="SubscriberId" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="DateTime" Name="SendDate" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -82,6 +94,18 @@
         <MappingFragment StoreEntitySet="TestTable">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SendEmailStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(Customer.SendEmailStatus)">
+        <MappingFragment StoreEntitySet="SendEmailStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+          <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

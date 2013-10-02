@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Listelli.Areas.BrandCatalogue.Controllers;
 using Listelli.Helpers;
 
 namespace Listelli
@@ -133,12 +134,12 @@ namespace Listelli
             RegisterRoutes(RouteTable.Routes);
 
 
-            if (Application["mailSender"] == null)
-            {
-                var newThread = new Thread(new ThreadStart(MailHelper.ProcessSendEmail));
-                newThread.Start();
-                Application["mailSender"] = newThread;
-            }
+            //if (Application["mailSender"] == null)
+            //{
+            //    var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
+            //    newThread.Start();
+            //    Application["mailSender"] = newThread;
+            //}
         }
     }
 }
