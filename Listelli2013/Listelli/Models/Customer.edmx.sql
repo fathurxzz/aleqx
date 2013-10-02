@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/02/2013 10:12:49
+-- Date Created: 10/02/2013 15:42:23
 -- Generated from EDMX file: D:\projects\Listelli2013\Listelli\Models\Customer.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -22,6 +22,8 @@
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Subscriber`;
+    DROP TABLE IF EXISTS `TestTable`;
+    DROP TABLE IF EXISTS `SendEmailStatus`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -42,6 +44,17 @@ CREATE TABLE `Subscriber` (
 CREATE TABLE `TestTable` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Date` datetime  NOT NULL
+);
+
+-- Creating table 'SendEmailStatus'
+
+CREATE TABLE `SendEmailStatus` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `ArticleId` int  NOT NULL,
+    `SubscriberId` int  NOT NULL,
+    `Status` int  NOT NULL,
+    `Date` datetime  NOT NULL,
+    `SendDate` datetime  NOT NULL
 );
 
 
