@@ -7,6 +7,7 @@
     <Schema Namespace="Customer.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="CustomerStoreContainer">
     <EntitySet Name="Subscriber" EntityType="Customer.Store.Subscriber" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestTable" EntityType="Customer.Store.TestTable" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="Subscriber">
     <Key>
@@ -17,12 +18,21 @@
     <Property Name="Guid" Type="nchar" Nullable="false" MaxLength="50" />
     <Property Name="Active" Type="bool" Nullable="false" />
   </EntityType>
+  <EntityType Name="TestTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Customer" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="CustomerContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Subscriber" EntityType="Customer.Subscriber" />
+          <EntitySet Name="TestTable" EntityType="Customer.TestTable" />
+          <EntitySet Name="SendEmailStatus" EntityType="Customer.SendEmailStatus" />
         </EntityContainer>
         <EntityType Name="Subscriber">
           <Key>
@@ -32,6 +42,24 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="200" FixedLength="true" />
           <Property Type="String" Name="Guid" Nullable="false" FixedLength="true" MaxLength="50" />
           <Property Type="Boolean" Name="Active" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendEmailStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ArticleId" Nullable="false" />
+          <Property Type="String" Name="SubscriberId" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Date" Nullable="false" />
+          <Property Type="String" Name="SendDate" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -46,6 +74,14 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Guid" ColumnName="Guid" />
           <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestTable">
+      <EntityTypeMapping TypeName="IsTypeOf(Customer.TestTable)">
+        <MappingFragment StoreEntitySet="TestTable">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -70,6 +106,8 @@
     <edmx:Diagrams>
       <Diagram Name="Customer" >
         <EntityTypeShape EntityType="Customer.Subscriber" Width="1.5" PointX="3.125" PointY="0.875" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Customer.TestTable" Width="1.5" PointX="3.375" PointY="3.875" Height="1.4033821614583326" />
+        <EntityTypeShape EntityType="Customer.SendEmailStatus" Width="1.5" PointX="6.125" PointY="0.875" Height="2.172587890625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

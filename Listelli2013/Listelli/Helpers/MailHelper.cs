@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
+using System.Threading;
 using System.Web;
+using Listelli.Areas.Admin.Controllers;
+using Listelli.Models;
 using SiteExtensions;
 
 namespace Listelli.Helpers
@@ -76,6 +79,22 @@ namespace Listelli.Helpers
             string formattedBody = (replacements != null && replacements.Length > 0) ? string.Format(body, replacements) : body;
             reader.Close();
             return SiteExtensions.MailHelper.SendMessage(from, to, formattedBody, subject, isBodyHtml);
+        }
+
+
+        public static void ProcessSendEmail()
+        {
+            while (true)
+            {
+                using (var context = new CustomerContainer())
+                {
+                    var test = new TestTable {Date = DateTime.Now};
+                    context.AddToTestTable(test);
+                    context.SaveChanges();
+                }
+                
+                Thread.Sleep(10000);
+            }
         }
     }
 }

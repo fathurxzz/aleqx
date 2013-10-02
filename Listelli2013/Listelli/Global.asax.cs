@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Listelli.Helpers;
 
 namespace Listelli
 {
@@ -134,31 +135,9 @@ namespace Listelli
 
             if (Application["mailSender"] == null)
             {
-                Thread newThread = new Thread(new ThreadStart(Work.DoWork));
-                
+                var newThread = new Thread(new ThreadStart(MailHelper.ProcessSendEmail));
                 newThread.Start();
-
                 Application["mailSender"] = newThread;
-            }
-        }
-
-        class Work
-        {
-            Work() { }
-
-            public static void DoWork()
-            {
-                while (true)
-                {
-
-
-
-
-
-
-
-                    Thread.Sleep(100);
-                }
             }
         }
     }
