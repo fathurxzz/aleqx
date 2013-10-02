@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 namespace Listelli.Models
 {
     #region Contexts
@@ -80,8 +80,41 @@ namespace Listelli.Models
             }
         }
         private ObjectSet<Subscriber> _Subscriber;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TestTable> TestTable
+        {
+            get
+            {
+                if ((_TestTable == null))
+                {
+                    _TestTable = base.CreateObjectSet<TestTable>("TestTable");
+                }
+                return _TestTable;
+            }
+        }
+        private ObjectSet<TestTable> _TestTable;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SendEmailStatus> SendEmailStatus
+        {
+            get
+            {
+                if ((_SendEmailStatus == null))
+                {
+                    _SendEmailStatus = base.CreateObjectSet<SendEmailStatus>("SendEmailStatus");
+                }
+                return _SendEmailStatus;
+            }
+        }
+        private ObjectSet<SendEmailStatus> _SendEmailStatus;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -91,14 +124,217 @@ namespace Listelli.Models
         {
             base.AddObject("Subscriber", subscriber);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TestTable EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTestTable(TestTable testTable)
+        {
+            base.AddObject("TestTable", testTable);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SendEmailStatus EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSendEmailStatus(SendEmailStatus sendEmailStatus)
+        {
+            base.AddObject("SendEmailStatus", sendEmailStatus);
+        }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Customer", Name="SendEmailStatus")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SendEmailStatus : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SendEmailStatus object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="articleId">Initial value of the ArticleId property.</param>
+        /// <param name="subscriberId">Initial value of the SubscriberId property.</param>
+        /// <param name="status">Initial value of the Status property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="sendDate">Initial value of the SendDate property.</param>
+        public static SendEmailStatus CreateSendEmailStatus(global::System.Int32 id, global::System.String articleId, global::System.String subscriberId, global::System.String status, global::System.String date, global::System.String sendDate)
+        {
+            SendEmailStatus sendEmailStatus = new SendEmailStatus();
+            sendEmailStatus.Id = id;
+            sendEmailStatus.ArticleId = articleId;
+            sendEmailStatus.SubscriberId = subscriberId;
+            sendEmailStatus.Status = status;
+            sendEmailStatus.Date = date;
+            sendEmailStatus.SendDate = sendDate;
+            return sendEmailStatus;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ArticleId
+        {
+            get
+            {
+                return _ArticleId;
+            }
+            set
+            {
+                OnArticleIdChanging(value);
+                ReportPropertyChanging("ArticleId");
+                _ArticleId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ArticleId");
+                OnArticleIdChanged();
+            }
+        }
+        private global::System.String _ArticleId;
+        partial void OnArticleIdChanging(global::System.String value);
+        partial void OnArticleIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SubscriberId
+        {
+            get
+            {
+                return _SubscriberId;
+            }
+            set
+            {
+                OnSubscriberIdChanging(value);
+                ReportPropertyChanging("SubscriberId");
+                _SubscriberId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SubscriberId");
+                OnSubscriberIdChanged();
+            }
+        }
+        private global::System.String _SubscriberId;
+        partial void OnSubscriberIdChanging(global::System.String value);
+        partial void OnSubscriberIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Status
+        {
+            get
+            {
+                return _Status;
+            }
+            set
+            {
+                OnStatusChanging(value);
+                ReportPropertyChanging("Status");
+                _Status = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Status");
+                OnStatusChanged();
+            }
+        }
+        private global::System.String _Status;
+        partial void OnStatusChanging(global::System.String value);
+        partial void OnStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.String _Date;
+        partial void OnDateChanging(global::System.String value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SendDate
+        {
+            get
+            {
+                return _SendDate;
+            }
+            set
+            {
+                OnSendDateChanging(value);
+                ReportPropertyChanging("SendDate");
+                _SendDate = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SendDate");
+                OnSendDateChanged();
+            }
+        }
+        private global::System.String _SendDate;
+        partial void OnSendDateChanging(global::System.String value);
+        partial void OnSendDateChanged();
+
+        #endregion
+
+    
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -128,6 +364,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -230,9 +467,94 @@ namespace Listelli.Models
         partial void OnActiveChanged();
 
         #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Customer", Name="TestTable")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TestTable : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TestTable object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        public static TestTable CreateTestTable(global::System.Int32 id, global::System.DateTime date)
+        {
+            TestTable testTable = new TestTable();
+            testTable.Id = id;
+            testTable.Date = date;
+            return testTable;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+
+        #endregion
+
     
     }
 
     #endregion
+
     
 }
