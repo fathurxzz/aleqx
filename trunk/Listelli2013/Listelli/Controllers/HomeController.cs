@@ -268,42 +268,42 @@ namespace Listelli.Controllers
 
                     if (emailStatus != null)
                     {
-                        using (var siteContext = new SiteContainer())
-                        {
-                            var article = siteContext.Article.First(c => c.Id == emailStatus.ArticleId);
+                        //using (var siteContext = new SiteContainer())
+                        //{
+                        //    var article = siteContext.Article.First(c => c.Id == emailStatus.ArticleId);
 
-                            var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
+                        //    var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
 
-                            var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
-                            if (lng != null)
-                            {
-                                article.CurrentLang = lng.Id;
-                            }
+                        //    var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
+                        //    if (lng != null)
+                        //    {
+                        //        article.CurrentLang = lng.Id;
+                        //    }
 
 
-                            string articleText = HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua");
+                        //    string articleText = HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua");
 
-                            string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-                            var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+                        //    string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                        //    var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
                             
-                            MailHelper.SendTemplate(emailFrom, new List<MailAddress>{new MailAddress(subscriber.Email)}, article.Title, "Newsletter.htm", null, true, articleText);
+                        //    MailHelper.SendTemplate(emailFrom, new List<MailAddress>{new MailAddress(subscriber.Email)}, article.Title, "Newsletter.htm", null, true, articleText);
 
-                            emailStatus.Status = 1;
+                        //    emailStatus.Status = 1;
 
                             
-                        }
+                        //}
 
-
-
+                        var test = new TestTable { Date = DateTime.Now };
+                        context.AddToTestTable(test);
+                        context.SaveChanges();
                     }
-
-
-                    //var test = new TestTable { Date = DateTime.Now };
-                    //context.AddToTestTable(test);
-                    context.SaveChanges();
+                    else
+                    {
+                        break;
+                    }
                 }
 
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
             }
         }
     }

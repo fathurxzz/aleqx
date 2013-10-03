@@ -134,12 +134,12 @@ namespace Listelli
             RegisterRoutes(RouteTable.Routes);
 
 
-            //if (Application["mailSender"] == null)
-            //{
-            //    var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
-            //    newThread.Start();
-            //    Application["mailSender"] = newThread;
-            //}
+            if (Application["mailSender"] == null)
+            {
+                var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
+                newThread.Start();
+                Application["mailSender"] = newThread;
+            }
         }
     }
 }
