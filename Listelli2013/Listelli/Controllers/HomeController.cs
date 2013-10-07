@@ -268,34 +268,51 @@ namespace Listelli.Controllers
 
                     if (emailStatus != null)
                     {
-                        //using (var siteContext = new SiteContainer())
-                        //{
-                        //    var article = siteContext.Article.First(c => c.Id == emailStatus.ArticleId);
+                        try
+                        {
 
-                        //    var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
+                        using (var siteContext = new SiteContainer())
+                        {
+                            var article = siteContext.Article.FirstOrDefault(c => c.Id == emailStatus.ArticleId);
+                            if (article != null)
+                            {
 
-                        //    var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
-                        //    if (lng != null)
-                        //    {
-                        //        article.CurrentLang = lng.Id;
-                        //    }
+                                var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
+
+                                var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
+                                if (lng != null)
+                                {
+                                    article.CurrentLang = lng.Id;
+                                }
 
 
-                        //    string articleText = HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua");
+                                string articleText = HttpUtility.HtmlDecode(article.Description)
+                                                                .Replace("src=\"", "src=\"http://listelli.ua");
 
-                        //    string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-                        //    var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
-                            
-                        //    MailHelper.SendTemplate(emailFrom, new List<MailAddress>{new MailAddress(subscriber.Email)}, article.Title, "Newsletter.htm", null, true, articleText);
+                                string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                                var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
 
-                        //    emailStatus.Status = 1;
+                                MailHelper.SendTemplate(emailFrom,
+                                                        new List<MailAddress> {new MailAddress(subscriber.Email)},
+                                                        article.Title, "Newsletter.htm", null, true, articleText);
 
-                            
-                        //}
+                                emailStatus.Status = 1;
 
-                        var test = new TestTable { Date = DateTime.Now };
-                        context.AddToTestTable(test);
-                        context.SaveChanges();
+                                context.SaveChanges();
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        }
+                        catch (Exception ex)
+                        {
+                            break;
+                        }
+                        //var test = new TestTable { Date = DateTime.Now };
+                        //context.AddToTestTable(test);
+                        //context.SaveChanges();
                     }
                     else
                     {
