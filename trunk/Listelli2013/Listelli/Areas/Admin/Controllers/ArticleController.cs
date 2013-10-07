@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Listelli.Helpers;
@@ -67,6 +68,13 @@ namespace Listelli.Areas.Admin.Controllers
 
                             }
                             customerContext.SaveChanges();
+
+
+
+                            var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
+                            newThread.Start();
+                            HttpContext.Application["mailSender"] = newThread;
+
 
 
                             //string articleText = HttpUtility.HtmlDecode(article.Description)
@@ -154,6 +162,13 @@ namespace Listelli.Areas.Admin.Controllers
                                 }
                             }
                             customerContext.SaveChanges();
+
+
+
+                            var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
+                            newThread.Start();
+                            HttpContext.Application["mailSender"] = newThread;
+
                         }
                     }
 
