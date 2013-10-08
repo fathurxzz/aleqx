@@ -302,6 +302,7 @@ namespace Listelli.Controllers
                                 if (result.EmailSent)
                                 {
                                     emailStatus.Status = 1;
+                                    emailStatus.ErrorMessage = "ok";
                                 }
                                 else
                                 {

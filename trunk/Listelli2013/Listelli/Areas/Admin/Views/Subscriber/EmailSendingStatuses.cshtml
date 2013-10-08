@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Listelli.Models.SendEmailStatus>
+
+@{
+    ViewBag.Title = "EmailSendingStatuses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContentContainer">
+
+    <table class="statuses">
+        <tr>
+            <th>
+                ArticleId
+            </th>
+            <th>
+                SubscriberId
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                SendDate
+            </th>
+            <th>
+                ErrorMessage
+            </th>
+            <th>
+                Attempt
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubscriberId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SendDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ErrorMessage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attempt)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

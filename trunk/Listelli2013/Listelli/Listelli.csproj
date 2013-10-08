@@ -353,6 +353,7 @@
     <Content Include="Areas\Admin\Views\Designer\EditRoom.cshtml" />
     <Content Include="Areas\Admin\Views\Subscriber\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Subscriber\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Subscriber\EmailSendingStatuses.cshtml" />
     <None Include="Content\fonts\4137643.ttf" />
     <None Include="Content\fonts\prg55.otf" />
     <None Include="Content\fonts\PTN57F.ttf" />
