@@ -328,6 +328,54 @@ namespace Listelli.Models
         private global::System.DateTime _SendDate;
         partial void OnSendDateChanging(global::System.DateTime value);
         partial void OnSendDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ErrorMessage
+        {
+            get
+            {
+                return _ErrorMessage;
+            }
+            set
+            {
+                OnErrorMessageChanging(value);
+                ReportPropertyChanging("ErrorMessage");
+                _ErrorMessage = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ErrorMessage");
+                OnErrorMessageChanged();
+            }
+        }
+        private global::System.String _ErrorMessage;
+        partial void OnErrorMessageChanging(global::System.String value);
+        partial void OnErrorMessageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Attempt
+        {
+            get
+            {
+                return _Attempt;
+            }
+            set
+            {
+                OnAttemptChanging(value);
+                ReportPropertyChanging("Attempt");
+                _Attempt = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Attempt");
+                OnAttemptChanged();
+            }
+        }
+        private global::System.Int32 _Attempt = 0;
+        partial void OnAttemptChanging(global::System.Int32 value);
+        partial void OnAttemptChanged();
 
         #endregion
     

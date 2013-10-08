@@ -54,21 +54,10 @@ namespace Listelli.Areas.Admin.Controllers
                             var activeSubscribers = customerContext.Subscriber.Where(s => s.Active).ToList();
                             foreach (var subscriber in activeSubscribers)
                             {
-                                var emailStatus = new SendEmailStatus
-                                          {
-                                              Date = DateTime.Now,
-                                              SendDate = DateTime.Now,
-                                              Status = 0,
-                                              ArticleId = article.Id,
-                                              SubscriberId = subscriber.Id
-                                          };
-
+                                var emailStatus = MailHelper.CreateSendEmailStatusInstance(article.Id, subscriber.Id);
                                 customerContext.AddToSendEmailStatus(emailStatus);
-
-
                             }
                             customerContext.SaveChanges();
-
 
 
                             var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
@@ -149,14 +138,7 @@ namespace Listelli.Areas.Admin.Controllers
                                 if (existedStatus == null)
                                 {
 
-                                    var emailStatus = new SendEmailStatus
-                                                      {
-                                                          Date = DateTime.Now,
-                                                          SendDate = DateTime.Now,
-                                                          Status = 0,
-                                                          ArticleId = article.Id,
-                                                          SubscriberId = subscriber.Id
-                                                      };
+                                    var emailStatus = MailHelper.CreateSendEmailStatusInstance(article.Id, subscriber.Id);
 
                                     customerContext.AddToSendEmailStatus(emailStatus);
                                 }
