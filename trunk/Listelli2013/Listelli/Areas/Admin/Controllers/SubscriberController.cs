@@ -72,7 +72,7 @@ namespace Listelli.Areas.Admin.Controllers
             //    HttpContext.Application["mailSender"] = emailSending;
             //}
 
-            if (emailSending!=null && emailSending.IsAlive)
+            if (emailSending!=null)
             {
                 emailSending.Abort();
                 HttpContext.Application["mailSender"] = null;

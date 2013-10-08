@@ -264,7 +264,7 @@ namespace Listelli.Controllers
             {
                 using (var context = new CustomerContainer())
                 {
-                    var emailStatus = context.SendEmailStatus.FirstOrDefault(s => s.Status == 0);
+                    var emailStatus = context.SendEmailStatus.FirstOrDefault(s => s.Status == 0&&s.Attempt<3);
 
                     if (emailStatus != null)
                     {
@@ -292,11 +292,21 @@ namespace Listelli.Controllers
                                 string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
                                 var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
 
-                                MailHelper.SendTemplate(emailFrom,
+                                MailSendingResult result = MailHelper.SendTemplate(emailFrom,
                                                         new List<MailAddress> {new MailAddress(subscriber.Email)},
                                                         article.Title, "Newsletter.htm", null, true, articleText);
 
-                                emailStatus.Status = 1;
+                                emailStatus.SendDate = DateTime.Now;
+                                emailStatus.Attempt++;
+
+                                if (result.EmailSent)
+                                {
+                                    emailStatus.Status = 1;
+                                }
+                                else
+                                {
+                                    emailStatus.ErrorMessage = result.ErrorMessage;
+                                }
 
                                 context.SaveChanges();
                             }

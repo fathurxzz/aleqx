@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/02/2013 15:42:23
+-- Date Created: 10/08/2013 13:00:29
 -- Generated from EDMX file: D:\projects\Listelli2013\Listelli\Models\Customer.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -54,7 +54,9 @@ CREATE TABLE `SendEmailStatus` (
     `SubscriberId` int  NOT NULL,
     `Status` int  NOT NULL,
     `Date` datetime  NOT NULL,
-    `SendDate` datetime  NOT NULL
+    `SendDate` datetime  NOT NULL,
+    `ErrorMessage` TEXT  NULL,
+    `Attempt` int  NOT NULL
 );
 
 

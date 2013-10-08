@@ -36,6 +36,8 @@
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="SendDate" Type="datetime" Nullable="false" />
+    <Property Name="ErrorMessage" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="Attempt" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -72,6 +74,8 @@
           <Property Type="Int32" Name="Status" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="DateTime" Name="SendDate" Nullable="false" />
+          <Property Type="String" Name="ErrorMessage" FixedLength="true" MaxLength="1000" />
+          <Property Type="Int32" Name="Attempt" Nullable="false" DefaultValue="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -106,6 +110,8 @@
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="Attempt" ColumnName="Attempt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -131,7 +137,7 @@
       <Diagram Name="Customer" >
         <EntityTypeShape EntityType="Customer.Subscriber" Width="1.5" PointX="3.125" PointY="0.875" Height="1.787985026041667" />
         <EntityTypeShape EntityType="Customer.TestTable" Width="1.5" PointX="3.375" PointY="3.875" Height="1.4033821614583326" />
-        <EntityTypeShape EntityType="Customer.SendEmailStatus" Width="1.5" PointX="6.125" PointY="0.875" Height="2.172587890625" />
+        <EntityTypeShape EntityType="Customer.SendEmailStatus" Width="1.5" PointX="6.125" PointY="0.875" Height="2.5571907552083331" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
