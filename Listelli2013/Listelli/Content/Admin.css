@@ -150,3 +150,15 @@ table.users td,table.users th {
     border: 1px dashed #ccc;
     padding: 3px 15px;
 }
+
+table.statuses {
+    border-collapse: collapse;
+    position: relative;
+    margin: 50px auto 0 auto;
+}
+
+table.statuses td,table.statuses th {
+    
+    border: 1px dashed #ccc;
+    padding: 3px 15px;
+}

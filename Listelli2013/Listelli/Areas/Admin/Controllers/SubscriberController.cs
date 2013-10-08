@@ -20,8 +20,18 @@ namespace Listelli.Areas.Admin.Controllers
             {
                 var subscribers = context.Subscriber.ToList();
                 Thread emailSending = (Thread)HttpContext.Application["mailSender"];
-                ViewBag.EmailSendingStatus = emailSending != null ? "Active" : "Aborted";
+                ViewBag.EmailSendingStatus = emailSending != null ? emailSending.ThreadState.ToString() : "null";
                 return View(subscribers);
+            }
+        }
+
+
+        public ActionResult EmailSendingStatuses()
+        {
+            using (var context = new CustomerContainer())
+            {
+                var statuses = context.SendEmailStatus.ToList();
+                return View(statuses);
             }
         }
 
@@ -48,30 +58,19 @@ namespace Listelli.Areas.Admin.Controllers
 
         public ActionResult StartEmailSending()
         {
-            //Thread emailSending = (Thread)HttpContext.Application["mailSender"];
-            //if (emailSending.ThreadState == ThreadState.Aborted)
-            //{
-            //    emailSending.Start();
-            //    HttpContext.Application["mailSender"] = emailSending;
-            //}
-
-            var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
-            newThread.Start();
-            HttpContext.Application["mailSender"] = newThread;
-
+            Thread emailSending = (Thread)HttpContext.Application["mailSender"];
+            if (emailSending == null)
+            {
+                var newThread = new Thread(new ThreadStart(Listelli.Controllers.HomeController.ProcessSendEmail));
+                newThread.Start();
+                HttpContext.Application["mailSender"] = newThread;
+            }
             return RedirectToAction("Index");
         }
 
         public ActionResult StopEmailSending()
         {
             Thread emailSending = (Thread)HttpContext.Application["mailSender"];
-            
-            //if (emailSending.ThreadState == ThreadState.Running || emailSending.ThreadState == ThreadState.WaitSleepJoin)
-            //{
-            //    emailSending.Abort();
-            //    HttpContext.Application["mailSender"] = emailSending;
-            //}
-
             if (emailSending!=null)
             {
                 emailSending.Abort();
