@@ -29,5 +29,8 @@ namespace Listelli.Models
 
         [DisplayName("Опубликовать")]
         public bool Published { get; set; }
+
+        [DisplayName("Отправить подписчикам")]
+        public bool SendToSubscribers { get; set; }
     }
 }

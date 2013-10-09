@@ -47,7 +47,7 @@ namespace Listelli.Areas.Admin.Controllers
                     article.CurrentLang = CurrentLang.Id;
 
 
-                    if (article.Published)
+                    if (model.SendToSubscribers)
                     {
                         using (var customerContext = new CustomerContainer())
                         {
@@ -122,7 +122,7 @@ namespace Listelli.Areas.Admin.Controllers
                     article.CurrentLang = CurrentLang.Id;
 
 
-                    if (article.Published)
+                    if (model.SendToSubscribers)
                     {
                         using (var customerContext = new CustomerContainer())
                         {
