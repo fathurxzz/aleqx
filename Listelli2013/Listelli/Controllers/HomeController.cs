@@ -44,136 +44,136 @@ namespace Listelli.Controllers
         }
 
 
-//        public void S1()
-//        {
+        //        public void S1()
+        //        {
 
-//            var emails = new string[]{
-//                "airis-center3@yandex.ru",
-//        "a-kvalitet@mail.ru",
-//"amantevivare@mail.ru",
-//"andreirom@yandex.ru",
-//"anfilada@inet.ua"	,
-//"argabud@inet.ua"	,	
-//"arhigrad.pl@mail.ru",		
-//"asgart_06@mail.ru"		,
-//"astudi@i.ua"			 ,
-//"avrinsky@kan.gt.com.ua",	
-//"babich_L@ua.fm"		 ,
-//"baluti@i.kiev.ua"		 ,
-//"bel-remesla@narod.ru"	,
-//"bestcom2000@ukr.net"	,
-//"brumalucraina@ukr.net"	,
-//"bud-market@i.ua"		 ,
-//"chief@archidom.in"		 ,
-//"contact@d-core.com.ua"	,
-//"creative-plus@i.ua"	 ,
-//"d.velychko@listelli.ua" ,
-//"darel64@mail.ru"		 ,
-//"dd@adstudio.kiev.ua"	 ,
-//"design@listelli.ua"	 ,
-//"dima@new-camelot.com.ua",
-//"dir@oregonmarket.com.ua",
-//"dizajio@mail.ru"		 ,
-//"dom@euroclass.kiev.ua"	 ,
-//"dorohouse@ukr.net"		 ,
-//"d-v23@yandex.ru"		 ,
-//"ekonomika@ianp.com.ua"	,
-//"elena@ideals.com.ua"		    ,
-//"elenabusso@yahoo.it"			,
-//"filonenko@bigmir.net"			,
-//"floorexcl@yandex.ru"			,
-//"gala-project@i.ua"				,
-//"gena@geko.kiev.ua"				,
-//"help@elite-design.com.ua"		,
-//"i.kurilo@saloninterio.com"		,
-//"ideals@voliacable.com"			,
-//"info@anna-design.com.ua"		,
-//"info@artinter.com.ua"			,
-//"info@decoplast.eu"				,
-//"info@venezia.od.ua"			,
-//"interior@etre.com.ua"			,
-//"isaicoluba@mail.ru"			,
-//"kadva@tn.uz.ua"				,
-//"kdesign@promdesign.com.ua"		,
-//"kiev@itisgallery.com"			,
-//"komfort-kiev@mail.ru"			,
-//"kushko.alex@gmail.com"			,
-//"lunapark@bigmir.net"			,
-//"lyka74@list.ru"				,
-//"mail@sevenplan.com"			,
-//"masha-arch@mail.ru"			,
-//"mavel@inbox.ru"				,
-//"mebli-van@yandex.ru"			,
-//"miller.kak.miller@gmail.com"	,
-//"mykola.kosyk@mail.ru"			,
-//"natali_ch@ukr.net"				,
-//"nefedov_design@yahoo.com"		,
-//"neo@art-neo.kiev.ua"			,
-//"nikolay@litokol.kiev.ua"		,
-//"nts1@ua.fm"					,
-//"o.denysyuk@helen-marlen.com"	,	
-//"o.murashko@listelli.ua"		,
-//"office@ccproject.com.ua"		,
-//"office@orlovskiy.com.ua"		,
-//"office@vipsecurity.com.ua"		,
-//"office@vivadesign.com.ua"		,
-//"ofis@vizantiya.com.ua"			,
-//"olesya_room@ukr.net"			,
-//"pavel@art-shutters.com.ua"		,
-//"poldarbud@mail.ru"				,
-//"postavki@vizantiya.com.ua"		,
-//"ppp90@ukr.net"					,
-//"profles@i.ua"					,
-//"ruslan19011@rambler.ru"		,
-//"salon@listelli.com.ua"			,
-//"salon@listelli.ua"				,
-//"sbeast@decorum.com.ua"			,
-//"sdd@voliacable.com"			,
-//"sergbosh@gmail.com"			,
-//"sigma-center@mail.ru"			,
-//"smetaninka@yandex.ru"			,
-//"soesthetic@a.ua"				,
-//"spoltava@mail.ru"				,
-//"sveta_@voliacable.com"           ,
-//"svetadesign@inbox.ru"			  ,
-//"svetlana@artprojektregie.com.ua",		
-//"t.stepanets@gmail.com"			  ,
-//"tam_bagrij@mail.ru"			  ,
-//"tanya_exnova@ukr.net"			  ,
-//"tempest@nbi.com.ua"			  ,
-//"timeandquality@rambler.ru"		  ,
-//"trudes@ukr.net"				  ,
-//"umanec_nataliya@ukr.net"		  ,
-//"v.bukovskiy@fozzy.ua"			  ,
-//"valedeplen@gmail.com"			  ,
-//"vikapro@meta.ua"				  ,
-//"virtual_76@mail.ru"			  ,
-//"vision75@mail.ru"				  ,
-//"vladimir@t-style.com.ua"		  ,
-//"vsedesign@gmail.com"			  ,
-//"xena@aratta-art.com.ua"};
+        //            var emails = new string[]{
+        //                "airis-center3@yandex.ru",
+        //        "a-kvalitet@mail.ru",
+        //"amantevivare@mail.ru",
+        //"andreirom@yandex.ru",
+        //"anfilada@inet.ua"	,
+        //"argabud@inet.ua"	,	
+        //"arhigrad.pl@mail.ru",		
+        //"asgart_06@mail.ru"		,
+        //"astudi@i.ua"			 ,
+        //"avrinsky@kan.gt.com.ua",	
+        //"babich_L@ua.fm"		 ,
+        //"baluti@i.kiev.ua"		 ,
+        //"bel-remesla@narod.ru"	,
+        //"bestcom2000@ukr.net"	,
+        //"brumalucraina@ukr.net"	,
+        //"bud-market@i.ua"		 ,
+        //"chief@archidom.in"		 ,
+        //"contact@d-core.com.ua"	,
+        //"creative-plus@i.ua"	 ,
+        //"d.velychko@listelli.ua" ,
+        //"darel64@mail.ru"		 ,
+        //"dd@adstudio.kiev.ua"	 ,
+        //"design@listelli.ua"	 ,
+        //"dima@new-camelot.com.ua",
+        //"dir@oregonmarket.com.ua",
+        //"dizajio@mail.ru"		 ,
+        //"dom@euroclass.kiev.ua"	 ,
+        //"dorohouse@ukr.net"		 ,
+        //"d-v23@yandex.ru"		 ,
+        //"ekonomika@ianp.com.ua"	,
+        //"elena@ideals.com.ua"		    ,
+        //"elenabusso@yahoo.it"			,
+        //"filonenko@bigmir.net"			,
+        //"floorexcl@yandex.ru"			,
+        //"gala-project@i.ua"				,
+        //"gena@geko.kiev.ua"				,
+        //"help@elite-design.com.ua"		,
+        //"i.kurilo@saloninterio.com"		,
+        //"ideals@voliacable.com"			,
+        //"info@anna-design.com.ua"		,
+        //"info@artinter.com.ua"			,
+        //"info@decoplast.eu"				,
+        //"info@venezia.od.ua"			,
+        //"interior@etre.com.ua"			,
+        //"isaicoluba@mail.ru"			,
+        //"kadva@tn.uz.ua"				,
+        //"kdesign@promdesign.com.ua"		,
+        //"kiev@itisgallery.com"			,
+        //"komfort-kiev@mail.ru"			,
+        //"kushko.alex@gmail.com"			,
+        //"lunapark@bigmir.net"			,
+        //"lyka74@list.ru"				,
+        //"mail@sevenplan.com"			,
+        //"masha-arch@mail.ru"			,
+        //"mavel@inbox.ru"				,
+        //"mebli-van@yandex.ru"			,
+        //"miller.kak.miller@gmail.com"	,
+        //"mykola.kosyk@mail.ru"			,
+        //"natali_ch@ukr.net"				,
+        //"nefedov_design@yahoo.com"		,
+        //"neo@art-neo.kiev.ua"			,
+        //"nikolay@litokol.kiev.ua"		,
+        //"nts1@ua.fm"					,
+        //"o.denysyuk@helen-marlen.com"	,	
+        //"o.murashko@listelli.ua"		,
+        //"office@ccproject.com.ua"		,
+        //"office@orlovskiy.com.ua"		,
+        //"office@vipsecurity.com.ua"		,
+        //"office@vivadesign.com.ua"		,
+        //"ofis@vizantiya.com.ua"			,
+        //"olesya_room@ukr.net"			,
+        //"pavel@art-shutters.com.ua"		,
+        //"poldarbud@mail.ru"				,
+        //"postavki@vizantiya.com.ua"		,
+        //"ppp90@ukr.net"					,
+        //"profles@i.ua"					,
+        //"ruslan19011@rambler.ru"		,
+        //"salon@listelli.com.ua"			,
+        //"salon@listelli.ua"				,
+        //"sbeast@decorum.com.ua"			,
+        //"sdd@voliacable.com"			,
+        //"sergbosh@gmail.com"			,
+        //"sigma-center@mail.ru"			,
+        //"smetaninka@yandex.ru"			,
+        //"soesthetic@a.ua"				,
+        //"spoltava@mail.ru"				,
+        //"sveta_@voliacable.com"           ,
+        //"svetadesign@inbox.ru"			  ,
+        //"svetlana@artprojektregie.com.ua",		
+        //"t.stepanets@gmail.com"			  ,
+        //"tam_bagrij@mail.ru"			  ,
+        //"tanya_exnova@ukr.net"			  ,
+        //"tempest@nbi.com.ua"			  ,
+        //"timeandquality@rambler.ru"		  ,
+        //"trudes@ukr.net"				  ,
+        //"umanec_nataliya@ukr.net"		  ,
+        //"v.bukovskiy@fozzy.ua"			  ,
+        //"valedeplen@gmail.com"			  ,
+        //"vikapro@meta.ua"				  ,
+        //"virtual_76@mail.ru"			  ,
+        //"vision75@mail.ru"				  ,
+        //"vladimir@t-style.com.ua"		  ,
+        //"vsedesign@gmail.com"			  ,
+        //"xena@aratta-art.com.ua"};
 
-//            using (var context = new CustomerContainer())
-//            {
-//                foreach (var email in emails)
-//                {
-//                    var subscriber = new Subscriber
-//                    {
-//                        Guid = Guid.NewGuid().ToString(),
-//                        Email = email,
-//                        Active = false
-//                    };
+        //            using (var context = new CustomerContainer())
+        //            {
+        //                foreach (var email in emails)
+        //                {
+        //                    var subscriber = new Subscriber
+        //                    {
+        //                        Guid = Guid.NewGuid().ToString(),
+        //                        Email = email,
+        //                        Active = false
+        //                    };
 
-//                    context.AddToSubscriber(subscriber);
-
-
-//                }
-
-//                context.SaveChanges();
+        //                    context.AddToSubscriber(subscriber);
 
 
-//            }
-//        }
+        //                }
+
+        //                context.SaveChanges();
+
+
+        //            }
+        //        }
 
         [HttpPost]
         public ActionResult Subscribe(SubscribeFormModel subscribeForm)
@@ -266,86 +266,86 @@ namespace Listelli.Controllers
             {
                 using (var context = new CustomerContainer())
                 {
-                    var emailStatus = context.SendEmailStatus.FirstOrDefault(s => s.Status == 0&&s.Attempt<3);
+                    var emailStatus = context.SendEmailStatus.FirstOrDefault(s => s.Status == 0 && s.Attempt < 3);
 
                     if (emailStatus != null)
                     {
                         try
                         {
 
-                        using (var siteContext = new SiteContainer())
-                        {
-                            var article = siteContext.Article.Include("ArticleItems").FirstOrDefault(c => c.Id == emailStatus.ArticleId);
-                            if (article != null)
+                            using (var siteContext = new SiteContainer())
                             {
-                                
-
-
-
-                                var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
-
-                                var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
-                                if (lng != null)
+                                var article = siteContext.Article.Include("ArticleItems").FirstOrDefault(c => c.Id == emailStatus.ArticleId);
+                                if (article != null)
                                 {
-                                    article.CurrentLang = lng.Id;
 
-                                    foreach (var item in article.ArticleItems)
+
+
+
+                                    var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
+
+                                    var lng = siteContext.Language.FirstOrDefault(p => p.Code == "ru");
+                                    if (lng != null)
                                     {
-                                        item.CurrentLang = lng.Id;
+                                        article.CurrentLang = lng.Id;
+
+                                        foreach (var item in article.ArticleItems)
+                                        {
+                                            item.CurrentLang = lng.Id;
+                                        }
+
                                     }
 
-                                }
 
+                                    StringBuilder sb = new StringBuilder();
 
-                                StringBuilder sb = new StringBuilder();
+                                    sb.Append(HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua"));
 
-                                sb.Append(HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua"));
-
-                                foreach (var item in article.ArticleItems.OrderBy(a => a.SortOrder))
-                                {
-                                    sb.Append("<div class=\"articleItem\">");
-
-                                    if (item.ContentType == 1)
+                                    foreach (var item in article.ArticleItems.OrderBy(a => a.SortOrder))
                                     {
-                                        sb.Append(HttpUtility.HtmlDecode(item.Text));
+                                        sb.Append("<div class=\"articleItem\">");
+
+                                        if (item.ContentType == 1)
+                                        {
+                                            sb.Append(HttpUtility.HtmlDecode(item.Text));
+                                        }
+                                        else
+                                        {
+                                            sb.Append(SiteExtensions.Graphics2.GraphicsHelper.CachedImage(item.ImageSource, SiteSettings.GetThumbnail("articleImage")));
+                                        }
+
+                                        sb.Append("</div>");
+                                    }
+
+                                    string emailText = sb.ToString();
+
+                                    string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
+                                    var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
+
+                                    MailSendingResult result = MailHelper.SendTemplate(emailFrom,
+                                                            new List<MailAddress> { new MailAddress(subscriber.Email) },
+                                                            article.Title, "Newsletter.htm", null, true, emailText);
+
+                                    emailStatus.SendDate = DateTime.Now;
+                                    emailStatus.Attempt++;
+
+                                    if (result.EmailSent)
+                                    {
+                                        emailStatus.Status = 1;
+                                        emailStatus.ErrorMessage = "ok";
                                     }
                                     else
                                     {
-                                        sb.Append(SiteExtensions.Graphics2.GraphicsHelper.CachedImage(item.ImageSource, SiteSettings.GetThumbnail("articleImage")));
+                                        emailStatus.ErrorMessage = "error sending email: " + result.ErrorMessage;
                                     }
 
-                                    sb.Append("</div>");
-                                }
-
-                                string emailText = sb.ToString();
-
-                                string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
-                                var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
-
-                                MailSendingResult result = MailHelper.SendTemplate(emailFrom,
-                                                        new List<MailAddress> {new MailAddress(subscriber.Email)},
-                                                        article.Title, "Newsletter.htm", null, true, emailText);
-
-                                emailStatus.SendDate = DateTime.Now;
-                                emailStatus.Attempt++;
-
-                                if (result.EmailSent)
-                                {
-                                    emailStatus.Status = 1;
-                                    emailStatus.ErrorMessage = "ok";
+                                    context.SaveChanges();
                                 }
                                 else
                                 {
-                                    emailStatus.ErrorMessage = result.ErrorMessage;
+                                    break;
                                 }
-
-                                context.SaveChanges();
                             }
-                            else
-                            {
-                                break;
-                            }
-                        }
                         }
                         catch (Exception ex)
                         {
