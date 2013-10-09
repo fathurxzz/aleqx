@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
+using System.Text;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using Listelli.Helpers;
 using Listelli.Models;
 using SiteExtensions;
 using MailHelper = Listelli.Helpers.MailHelper;
@@ -273,9 +275,12 @@ namespace Listelli.Controllers
 
                         using (var siteContext = new SiteContainer())
                         {
-                            var article = siteContext.Article.FirstOrDefault(c => c.Id == emailStatus.ArticleId);
+                            var article = siteContext.Article.Include("ArticleItems").FirstOrDefault(c => c.Id == emailStatus.ArticleId);
                             if (article != null)
                             {
+                                
+
+
 
                                 var subscriber = context.Subscriber.First(s => s.Id == emailStatus.SubscriberId);
 
@@ -283,18 +288,43 @@ namespace Listelli.Controllers
                                 if (lng != null)
                                 {
                                     article.CurrentLang = lng.Id;
+
+                                    foreach (var item in article.ArticleItems)
+                                    {
+                                        item.CurrentLang = lng.Id;
+                                    }
+
                                 }
 
 
-                                string articleText = HttpUtility.HtmlDecode(article.Description)
-                                                                .Replace("src=\"", "src=\"http://listelli.ua");
+                                StringBuilder sb = new StringBuilder();
+
+                                sb.Append(HttpUtility.HtmlDecode(article.Description).Replace("src=\"", "src=\"http://listelli.ua"));
+
+                                foreach (var item in article.ArticleItems.OrderBy(a => a.SortOrder))
+                                {
+                                    sb.Append("<div class=\"articleItem\">");
+
+                                    if (item.ContentType == 1)
+                                    {
+                                        sb.Append(HttpUtility.HtmlDecode(item.Text));
+                                    }
+                                    else
+                                    {
+                                        sb.Append(SiteExtensions.Graphics2.GraphicsHelper.CachedImage(item.ImageSource, SiteSettings.GetThumbnail("articleImage")));
+                                    }
+
+                                    sb.Append("</div>");
+                                }
+
+                                string emailText = sb.ToString();
 
                                 string subscribeEmailFrom = ConfigurationManager.AppSettings["subscribeEmailFrom"];
                                 var emailFrom = new MailAddress(subscribeEmailFrom, "Listelli");
 
                                 MailSendingResult result = MailHelper.SendTemplate(emailFrom,
                                                         new List<MailAddress> {new MailAddress(subscriber.Email)},
-                                                        article.Title, "Newsletter.htm", null, true, articleText);
+                                                        article.Title, "Newsletter.htm", null, true, emailText);
 
                                 emailStatus.SendDate = DateTime.Now;
                                 emailStatus.Attempt++;

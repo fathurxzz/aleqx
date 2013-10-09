@@ -9,6 +9,7 @@ namespace Listelli.Models
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public bool SendToSubscribers { get; set; }
 
         public bool IsCorrectLang { get; protected set; }
 

@@ -45,13 +45,22 @@
                 @Html.ValidationMessageFor(model => model.Description)
             </td>
         </tr>
-        <tr>
+         <tr>
+             <td>
+                 @Html.LabelFor(model => model.Published)
+             </td>
+             <td>
+                 @Html.EditorFor(model => model.Published)
+                 @Html.ValidationMessageFor(model => model.Published)
+             </td>
+         </tr>
+         <tr>
                 <td>
-                    @Html.LabelFor(model => model.Published)
+                    @Html.LabelFor(model => model.SendToSubscribers)
                 </td>
                 <td>
-                    @Html.EditorFor(model => model.Published)
-                    @Html.ValidationMessageFor(model => model.Published)
+                    @Html.EditorFor(model => model.SendToSubscribers)
+                    @Html.ValidationMessageFor(model => model.SendToSubscribers)
                 </td>
             </tr>
     </table>

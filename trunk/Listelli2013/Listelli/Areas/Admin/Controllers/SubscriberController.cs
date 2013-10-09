@@ -56,6 +56,17 @@ namespace Listelli.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult Delete(int id)
+        {
+            using (var context = new CustomerContainer())
+            {
+                var subscriber = context.Subscriber.First(s => s.Id == id);
+                context.DeleteObject(subscriber);
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
         public ActionResult StartEmailSending()
         {
             Thread emailSending = (Thread)HttpContext.Application["mailSender"];

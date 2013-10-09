@@ -27,6 +27,7 @@
                 Active
             </th>
             <th></th>
+            <th></th>
         </tr>
 
         @foreach (var item in Model.OrderBy(s=>s.Email)) {
@@ -39,6 +40,9 @@
                 </td>
                 <td>
                     @Html.ActionLink("Редактировать", "Edit", new { id=item.Id },new{@class="adminLink"})
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{@class="adminLink", onclick="return confirm('Удалить email адрес?')"})
                 </td>
             </tr>
         }
