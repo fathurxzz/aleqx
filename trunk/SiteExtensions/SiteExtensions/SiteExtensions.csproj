@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphics2\GraphicsHelper.cs" />
     <Compile Include="MVCHelper.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="FormCollectionExtender.cs" />
