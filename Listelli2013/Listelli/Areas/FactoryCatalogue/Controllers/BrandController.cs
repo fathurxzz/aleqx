@@ -8,6 +8,7 @@ using Listelli.Models;
 
 namespace Listelli.Areas.FactoryCatalogue.Controllers
 {
+    [Authorize]
     public class BrandController : DefaultController
     {
 
