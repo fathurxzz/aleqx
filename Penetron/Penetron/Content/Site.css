@@ -1,0 +1,68 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #333333;
+}
+
+
+.page {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+header {
+    height: 117px;
+    background: url('img/header-bg.gif') repeat-x;
+   
+}
+
+#logo {
+    width: 160px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    left: 95px;
+    background: url('img/logo.gif');
+}
+
+#phone {
+    position: absolute;
+    left: 95px;
+    width: 160px;
+    height: 22px;
+    top: 10px;
+    background: url('img/phone.gif');
+}
+
+
+#footer {
+    height: 89px;
+    background: url('img/footer-bg.gif') repeat-x;
+}
+
+.content {
+    min-height: 500px;
+}
+
+#em {
+    position: relative;
+    margin: 0 auto;
+    background: url('img/em.gif') no-repeat;
+    width: 175px;
+    height: 30px;
+    padding-top: 35px;
+    background-position: bottom;
+}
+
+#em-link {
+    position: absolute;
+    width: 140px;
+    height: 12px;
+    cursor: pointer;
+    top: 50px;
+    left: 35px;
+}
