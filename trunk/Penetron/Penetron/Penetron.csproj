@@ -191,11 +191,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\1-reason.png" />
+    <Content Include="Content\img\2-reason.png" />
+    <Content Include="Content\img\3-reason.png" />
+    <Content Include="Content\img\4-reason.png" />
+    <Content Include="Content\img\4-reasons.png" />
     <Content Include="Content\img\em.gif" />
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\header-bg.gif" />
+    <Content Include="Content\img\header-bottom-bg.gif" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\main-page-content-bg.gif" />
     <Content Include="Content\img\phone.gif" />
+    <Content Include="Content\img\main-page-content-bg-half.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
