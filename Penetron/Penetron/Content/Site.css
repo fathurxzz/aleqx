@@ -7,6 +7,9 @@ body {
     color: #333333;
 }
 
+.clear {
+    clear: both;
+}
 
 .page {
     width: 1200px;
@@ -15,10 +18,26 @@ body {
 }
 
 header {
-    height: 117px;
-    background: url('img/header-bg.gif') repeat-x;
-   
 }
+
+    header .top {
+        height: 117px;
+        background: url('img/header-bg.gif') repeat-x;
+    }
+
+    header .middle {
+        height: 337px;
+        background: url('img/header-bottom-bg.gif') repeat-x;
+        background-position: 50% 0;
+    }
+
+    header .bottom {
+        height: 78px;
+        background: url('img/4-reasons.png');
+        position: relative;
+        margin: -11px auto auto;
+        width: 1200px;
+    }
 
 #logo {
     width: 160px;
@@ -44,8 +63,15 @@ header {
     background: url('img/footer-bg.gif') repeat-x;
 }
 
+.main-page-content {
+    margin-top: -15px;
+}
+
 .content {
-    min-height: 500px;
+    min-height: 554px;
+    background-color: #f5f5f5;
+    background: url('img/main-page-content-bg.gif') repeat-x;
+    background-position: 50%;
 }
 
 #em {
@@ -65,4 +91,55 @@ header {
     cursor: pointer;
     top: 50px;
     left: 35px;
+}
+
+
+
+.reasons-container {
+    width: 880px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.reason {
+    float: left;
+    margin: 20px 10px;
+    width: 412px;
+    height: 200px;
+    color: #565656;
+}
+
+.reason1 {
+    background: url('img/1-reason.png');
+}
+
+.reason2 {
+    background: url('img/2-reason.png');
+}
+
+.reason3 {
+    background: url('img/3-reason.png');
+}
+
+.reason4 {
+    background: url('img/4-reason.png');
+}
+
+.reason .title {
+    text-align: center;
+    padding-top: 32px;
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.reason .text {
+    text-align: left;
+    padding: 32px 40px 0 75px;
+
+    font-family: Verdana;
+    font-style: normal;
+    font-size: 11px;
+    
 }
