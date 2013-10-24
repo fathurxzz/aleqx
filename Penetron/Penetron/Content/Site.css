@@ -21,14 +21,17 @@ header {
 }
 
     header .top {
-        height: 117px;
-        background: url('img/header-bg.gif') repeat-x;
+        /*height: 117px;*/
+        height: 124px;
+        /*background: url('img/header-bg.gif') repeat-x;*/
+        background: url('img/header-bg.png') repeat-x;
     }
 
     header .middle {
         height: 337px;
         background: url('img/header-bottom-bg.gif') repeat-x;
         background-position: 50% 0;
+        margin-top: -7px;
     }
 
     header .bottom {
@@ -137,9 +140,35 @@ header {
 .reason .text {
     text-align: left;
     padding: 32px 40px 0 75px;
-
     font-family: Verdana;
     font-style: normal;
     font-size: 11px;
-    
+}
+
+
+
+div#content,
+div#errorContent {
+    text-align: center;
+    position: relative;
+}
+
+.error-description {
+    display: inline-block;
+    width: 375px;
+    margin-top: 186px;
+}
+
+.error-description .description {
+    padding-top: 40px;
+    padding-bottom: 175px;
+    font-size: 14px;
+}
+
+.error-description .description a {
+    color: #8f8f8f;
+}
+
+.highlight {
+    color: #ec5d30;
 }
