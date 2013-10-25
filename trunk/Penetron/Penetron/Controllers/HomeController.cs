@@ -9,20 +9,21 @@ namespace Penetron.Controllers
 {
     public class HomeController : Controller
     {
-        IMessageService _messageService;
-        SiteContext _context;
+        private SiteContext _context;
 
-        public HomeController(IMessageService messageService, SiteContext context)
+        public HomeController(SiteContext context)
         {
-            _messageService = messageService;
             _context = context;
         }
 
         public ActionResult Index()
         {
-            var cat = _context.Category.ToList();
-            ViewBag.Message = _messageService.GetWelcomeMessage();
-            ViewBag.Message2 = cat.Count().ToString();
+            return View();
+        }
+
+        public ActionResult Technologies(string id)
+        {
+
             return View();
         }
 
