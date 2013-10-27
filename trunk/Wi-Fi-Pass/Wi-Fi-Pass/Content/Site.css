@@ -1,0 +1,79 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    background-color: #273340;
+}
+
+
+#page
+{
+    width: 1200px;
+    height: 1000px;
+    position: relative;
+    margin: 0 auto;
+    background: url('img/wi-fi.gif');
+}
+
+.map {
+    width: 984px;
+    height: 759px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.map .inner {
+    width: 984px;
+    height: 759px;
+    margin-left: -1px;
+}
+
+
+.header {
+    position: relative;
+    height: 109px;
+}
+
+
+
+a.adminLink
+{
+    color: #ff0000 !important;
+    font-size: 12px !important;
+    text-transform: none !important;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: underline;
+}
+a.adminLink:hover {
+    color: #ffaa00 !important;
+}
+
+.adminContentContainer
+{
+    padding: 50px 20px;
+    font-size: 12px;
+    background-color: #fff;
+}
+
+.adminLinkContainer
+{
+    text-align: center;
+}
+
+.footer {
+    padding-top: 40px;
+    color: #fff;
+    text-align: center;
+    font-family: Arial;
+    font-size: 11px;
+    line-height: 20px;
+}
+
+.footer a {
+    color: inherit;
+}
