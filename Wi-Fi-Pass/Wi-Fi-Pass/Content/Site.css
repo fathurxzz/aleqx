@@ -77,3 +77,42 @@ a.adminLink:hover {
 .footer a {
     color: inherit;
 }
+
+
+.feedBackForm
+{
+    border: 1px solid #999999;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    font-size: 13px;
+}
+
+.feedBackForm table td
+{
+    padding: 5px;
+}
+
+
+.sendnewpass {
+    position: absolute;
+    width: 100px;
+    margin-left: 1002px;
+    margin-top: 30px;
+     color: #fff;
+     font-family: Arial;
+    font-size: 11px;
+}
+
+.sendnewpass a {
+    color: inherit;
+    
+}
+
+
+.field-validation-error
+{
+    color: red !important;
+}
