@@ -1,0 +1,100 @@
+﻿@model Penetron.Models.Technology
+
+@{
+    ViewBag.Title = "Создание технологии";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContentContainer">
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.Hidden("parentId",(int?)ViewBag.ParentId)
+    
+    <table class="adminEditContentTable">
+            <tr>
+                <td colspan="2">
+                    <h2>
+                        Создание категории</h2>
+                </td>
+            </tr>
+      <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </td>
+            </tr>
+    <tr>
+                <td>
+                    @Html.LabelFor(model => model.SortOrder)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SortOrder)
+                    @Html.ValidationMessageFor(model => model.SortOrder)
+                </td>
+            </tr>
+       <tr>
+                <td>
+                    @Html.LabelFor(model => model.Text)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Text, new { rows = 12 })
+                    @Html.ValidationMessageFor(model => model.Text)
+                </td>
+            </tr>
+
+       
+
+
+    
+    
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.SeoDescription)
+        </td>
+        <td>
+            @Html.TextAreaFor(model => model.SeoDescription, new { rows = 12 })
+            @Html.ValidationMessageFor(model => model.SeoDescription)
+        </td>
+    </tr>
+    
+     <tr>
+                <td>
+                    @Html.LabelFor(model => model.SeoKeywords)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.SeoKeywords, new { rows = 12 })
+                    @Html.ValidationMessageFor(model => model.SeoKeywords)
+                </td>
+            </tr>
+    
+    </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Gallery", "Home", new { area = "" }, null)
+        </div>
+
+
+  
+}
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
