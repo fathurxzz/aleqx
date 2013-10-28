@@ -148,17 +148,15 @@ namespace Penetron.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
         /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="categoryLevel">Initial value of the CategoryLevel property.</param>
         /// <param name="active">Initial value of the Active property.</param>
-        public static Technology CreateTechnology(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Int32 categoryId, global::System.Int32 categoryLevel, global::System.Boolean active)
+        public static Technology CreateTechnology(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 categoryId, global::System.Int32 categoryLevel, global::System.Boolean active)
         {
             Technology technology = new Technology();
             technology.Id = id;
             technology.Name = name;
             technology.Title = title;
-            technology.SortOrder = sortOrder;
             technology.CategoryId = categoryId;
             technology.CategoryLevel = categoryLevel;
             technology.Active = active;
@@ -264,7 +262,7 @@ namespace Penetron.Models
                 OnSortOrderChanged();
             }
         }
-        private global::System.Int32 _SortOrder;
+        private global::System.Int32 _SortOrder = 0;
         partial void OnSortOrderChanging(global::System.Int32 value);
         partial void OnSortOrderChanged();
     

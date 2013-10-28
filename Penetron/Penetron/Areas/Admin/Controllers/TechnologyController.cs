@@ -17,9 +17,11 @@ namespace Penetron.Areas.Admin.Controllers
             _context = context;
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            if (id.HasValue)
+                ViewBag.ParentId = id.Value;
+            return View(new Technology());
         }
 
         [HttpPost]
@@ -28,9 +30,20 @@ namespace Penetron.Areas.Admin.Controllers
             try
             {
                 var technology = new Technology();
-                TryUpdateModel(technology, new[] { "Title", "SeoDescription", "SeoKeywords" });
+                TryUpdateModel(technology, new[] {"Name", "Title","SortOrder", "SeoDescription", "SeoKeywords" });
+                technology.CategoryLevel = 1;
+                technology.Active = true;
                 technology.Text = HttpUtility.HtmlDecode(form["Text"]);
-                _context.AddToTechnology(technology);
+
+                if (parentId.HasValue)
+                {
+                    var parent = _context.Technology.First(c => c.Id == parentId);
+                    parent.Children.Add(technology);
+                }
+                else
+                {
+                    _context.AddToTechnology(technology);
+                }
                 _context.SaveChanges();
                 return RedirectToAction("Technologies", "Home", new { area = "" });
             }

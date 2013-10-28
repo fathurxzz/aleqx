@@ -22,14 +22,15 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="longtext" Nullable="false" />
-    <Property Name="Title" Type="longtext" Nullable="false" />
-    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="CategoryLevel" Type="int" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="Active" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="TechnologyImage">
     <Key>
@@ -37,7 +38,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TechnologyId" Type="int" Nullable="false" />
-    <Property Name="ImageSource" Type="longtext" Nullable="false" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
   </EntityType>
   <Association Name="CategoryCategory">
     <End Role="Category" Type="Site.Store.Technology" Multiplicity="1" />
@@ -84,17 +85,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" />
-          <Property Type="String" Name="Title" Nullable="false" />
-          <Property Type="Int32" Name="SortOrder" Nullable="false" />
-          <Property Type="String" Name="Text" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
+          <Property Type="String" Name="Text" Nullable="true" />
           <NavigationProperty Name="Children" Relationship="Site.CategoryCategory" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Parent" Relationship="Site.CategoryCategory" FromRole="Category1" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
           <NavigationProperty Name="TechnologyImages" Relationship="Site.TechnologyTechnologyImage" FromRole="Technology" ToRole="TechnologyImage" />
-          <Property Type="String" Name="SeoDescription" />
-          <Property Type="String" Name="SeoKeywords" />
+          <Property Type="String" Name="SeoDescription" Nullable="true" />
+          <Property Type="String" Name="SeoKeywords" Nullable="true" />
           <Property Type="Boolean" Name="Active" Nullable="false" />
         </EntityType>
         <Association Name="CategoryCategory">
@@ -116,7 +117,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Technology" Relationship="Site.TechnologyTechnologyImage" FromRole="TechnologyImage" ToRole="Technology" />
           <Property Type="Int32" Name="TechnologyId" Nullable="false" />
-          <Property Type="String" Name="ImageSource" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
         </EntityType>
         <Association Name="TechnologyTechnologyImage">
           <End Type="Site.Technology" Role="Technology" Multiplicity="1" />
@@ -148,6 +149,7 @@
           <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
