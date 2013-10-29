@@ -23,7 +23,9 @@ namespace Penetron
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/site.css", 
+                "~/Content/admin.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/js/common").Include("~/Scripts/site.js"));
 
