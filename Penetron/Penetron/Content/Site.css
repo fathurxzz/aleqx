@@ -1,48 +1,56 @@
-﻿* {
+﻿*
+{
     margin: 0;
     padding: 0;
 }
 
-body {
+body
+{
     color: #333333;
 }
 
-.clear {
+.clear
+{
     clear: both;
 }
 
-.page {
+.page
+{
     width: 1200px;
     position: relative;
     margin: 0 auto;
 }
 
-header {
+.header
+{
 }
 
-    header .top {
-        /*height: 117px;*/
-        height: 124px;
-        /*background: url('img/header-bg.gif') repeat-x;*/
-        background: url('img/header-bg.png') repeat-x;
-    }
+.header .top
+{
+    /*height: 117px;*/
+    height: 124px; /*background: url('img/header-bg.gif') repeat-x;*/
+    background: url('img/header-bg.png') repeat-x;
+}
 
-    header .middle {
-        height: 337px;
-        background: url('img/header-bottom-bg.gif') repeat-x;
-        background-position: 50% 0;
-        margin-top: -7px;
-    }
+.header .middle
+{
+    height: 337px;
+    background: url('img/header-bottom-bg.gif') repeat-x;
+    background-position: 50% 0;
+    margin-top: -7px;
+}
 
-    header .bottom {
-        height: 78px;
-        background: url('img/4-reasons.png');
-        position: relative;
-        margin: -11px auto auto;
-        width: 1200px;
-    }
+.header .bottom
+{
+    height: 78px;
+    background: url('img/4-reasons.png');
+    position: relative;
+    margin: -11px auto auto;
+    width: 1200px;
+}
 
-#logo {
+#logo
+{
     width: 160px;
     height: 40px;
     position: absolute;
@@ -51,7 +59,8 @@ header {
     background: url('img/logo.gif');
 }
 
-#phone {
+#phone
+{
     position: absolute;
     left: 95px;
     width: 160px;
@@ -61,23 +70,27 @@ header {
 }
 
 
-#footer {
+#footer
+{
     height: 89px;
     background: url('img/footer-bg.gif') repeat-x;
 }
 
-.main-page-content {
+.main-page-content
+{
     margin-top: -15px;
 }
 
-.content {
+.content
+{
     min-height: 554px;
     background-color: #f5f5f5;
     background: url('img/main-page-content-bg.gif') repeat-x;
     background-position: 50%;
 }
 
-#em {
+#em
+{
     position: relative;
     margin: 0 auto;
     background: url('img/em.gif') no-repeat;
@@ -87,7 +100,8 @@ header {
     background-position: bottom;
 }
 
-#em-link {
+#em-link
+{
     position: absolute;
     width: 140px;
     height: 12px;
@@ -98,14 +112,16 @@ header {
 
 
 
-.reasons-container {
+.reasons-container
+{
     width: 880px;
     position: relative;
     margin: 0 auto;
     padding-top: 30px;
 }
 
-.reason {
+.reason
+{
     float: left;
     margin: 20px 10px;
     width: 412px;
@@ -113,23 +129,28 @@ header {
     color: #565656;
 }
 
-.reason1 {
+.reason1
+{
     background: url('img/1-reason.png');
 }
 
-.reason2 {
+.reason2
+{
     background: url('img/2-reason.png');
 }
 
-.reason3 {
+.reason3
+{
     background: url('img/3-reason.png');
 }
 
-.reason4 {
+.reason4
+{
     background: url('img/4-reason.png');
 }
 
-.reason .title {
+.reason .title
+{
     text-align: center;
     padding-top: 32px;
     font-family: Georgia;
@@ -137,7 +158,8 @@ header {
     font-size: 16px;
 }
 
-.reason .text {
+.reason .text
+{
     text-align: left;
     padding: 32px 40px 0 75px;
     font-family: Verdana;
@@ -147,28 +169,32 @@ header {
 
 
 
-div#content,
-div#errorContent {
+div#content, div#errorContent
+{
     text-align: center;
     position: relative;
 }
 
-.error-description {
+.error-description
+{
     display: inline-block;
     width: 375px;
     margin-top: 186px;
 }
 
-.error-description .description {
+.error-description .description
+{
     padding-top: 40px;
     padding-bottom: 175px;
     font-size: 14px;
 }
 
-.error-description .description a {
+.error-description .description a
+{
     color: #8f8f8f;
 }
 
-.highlight {
+.highlight
+{
     color: #ec5d30;
 }
