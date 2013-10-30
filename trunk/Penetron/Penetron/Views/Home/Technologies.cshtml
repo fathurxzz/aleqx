@@ -11,12 +11,20 @@
         {
             if (Model.ParentTitle != null)
             {
-                @Model.ParentTitle
-                <br/>
+                <div class="parentTitle">
+                    @Model.ParentTitle /
+                </div>
+            
             }
-
-            @Model.Technology.Title
-
+            
+            <table class="title">
+                <tr>
+                    <td class="left"></td>
+                    <td class="center">@Model.Technology.Title</td>
+                    <td class="right"></td>
+                </tr>
+            </table>
+           
             
         }
     </div>
