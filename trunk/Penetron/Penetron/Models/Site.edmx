@@ -8,13 +8,13 @@
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Technology" EntityType="Site.Store.Technology" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyImage" EntityType="Site.Store.TechnologyImage" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="CategoryCategory" Association="Site.Store.CategoryCategory">
-      <End Role="Category" EntitySet="Technology" />
-      <End Role="Category1" EntitySet="Technology" />
-    </AssociationSet>
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
+    </AssociationSet>
+    <AssociationSet Name="TechnologyTechnology" Association="Site.Store.TechnologyTechnology">
+      <End Role="Technology" EntitySet="Technology" />
+      <End Role="Technology1" EntitySet="Technology" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Technology">
@@ -26,11 +26,11 @@
     <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="Text" Type="longtext" Nullable="true" />
-    <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="CategoryLevel" Type="int" Nullable="false" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="Active" Type="bool" Nullable="false" />
+    <Property Name="TechnologyId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="TechnologyImage">
     <Key>
@@ -40,18 +40,6 @@
     <Property Name="TechnologyId" Type="int" Nullable="false" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
   </EntityType>
-  <Association Name="CategoryCategory">
-    <End Role="Category" Type="Site.Store.Technology" Multiplicity="1" />
-    <End Role="Category1" Type="Site.Store.Technology" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Category1">
-        <PropertyRef Name="CategoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
     <End Role="TechnologyImage" Type="Site.Store.TechnologyImage" Multiplicity="*" />
@@ -64,20 +52,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="TechnologyTechnology">
+    <End Role="Technology" Type="Site.Store.Technology" Multiplicity="0..1" />
+    <End Role="Technology1" Type="Site.Store.Technology" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Technology">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Technology1">
+        <PropertyRef Name="TechnologyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Site" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="SiteContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Technology" EntityType="Site.Technology" />
-          <AssociationSet Name="CategoryCategory" Association="Site.CategoryCategory">
-            <End Role="Category" EntitySet="Technology" />
-            <End Role="Category1" EntitySet="Technology" />
-          </AssociationSet>
           <EntitySet Name="TechnologyImage" EntityType="Site.TechnologyImage" />
           <AssociationSet Name="TechnologyTechnologyImage" Association="Site.TechnologyTechnologyImage">
             <End Role="Technology" EntitySet="Technology" />
             <End Role="TechnologyImage" EntitySet="TechnologyImage" />
+          </AssociationSet>
+          <AssociationSet Name="TechnologyTechnology" Association="Site.TechnologyTechnology">
+            <End Role="Technology" EntitySet="Technology" />
+            <End Role="Technology1" EntitySet="Technology" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Technology">
@@ -89,27 +89,15 @@
           <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" DefaultValue="0" />
           <Property Type="String" Name="Text" Nullable="true" />
-          <NavigationProperty Name="Children" Relationship="Site.CategoryCategory" FromRole="Category" ToRole="Category1" />
-          <NavigationProperty Name="Parent" Relationship="Site.CategoryCategory" FromRole="Category1" ToRole="Category" />
-          <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
           <NavigationProperty Name="TechnologyImages" Relationship="Site.TechnologyTechnologyImage" FromRole="Technology" ToRole="TechnologyImage" />
           <Property Type="String" Name="SeoDescription" Nullable="true" />
           <Property Type="String" Name="SeoKeywords" Nullable="true" />
           <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="Site.TechnologyTechnology" FromRole="Technology" ToRole="Technology1" />
+          <NavigationProperty Name="Parent" Relationship="Site.TechnologyTechnology" FromRole="Technology1" ToRole="Technology" />
+          <Property Type="Int32" Name="TechnologyId" Nullable="true" />
         </EntityType>
-        <Association Name="CategoryCategory">
-          <End Type="Site.Technology" Role="Category" Multiplicity="1" />
-          <End Type="Site.Technology" Role="Category1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Category1">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TechnologyImage">
           <Key>
             <PropertyRef Name="Id" />
@@ -131,6 +119,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="TechnologyTechnology">
+          <End Type="Site.Technology" Role="Technology" Multiplicity="0..1" />
+          <End Type="Site.Technology" Role="Technology1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Technology1">
+              <PropertyRef Name="TechnologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -145,11 +145,11 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Text" ColumnName="Text" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TechnologyId" ColumnName="TechnologyId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -182,17 +182,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site" >
-        <EntityTypeShape EntityType="Site.Technology" Width="1.5" PointX="5.125" PointY="1.25" Height="3.5186979166666656" />
-        <AssociationConnector Association="Site.CategoryCategory">
-          <ConnectorPoint PointX="5.6569230769230767" PointY="4.7686979166666656" />
-          <ConnectorPoint PointX="5.6569230769230767" PointY="5.0186979166666656" />
-          <ConnectorPoint PointX="6.1034615384615378" PointY="5.0186979166666656" />
-          <ConnectorPoint PointX="6.1034615384615378" PointY="4.7686979166666656" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Technology" Width="1.5" PointX="5.125" PointY="1.25" Height="2.9417936197916656" />
         <EntityTypeShape EntityType="Site.TechnologyImage" Width="1.625" PointX="7.625" PointY="1.25" Height="1.787985026041667" />
         <AssociationConnector Association="Site.TechnologyTechnologyImage">
           <ConnectorPoint PointX="6.625" PointY="2.1439925130208337" />
           <ConnectorPoint PointX="7.625" PointY="2.1439925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.TechnologyTechnology">
+          <ConnectorPoint PointX="5.6569230769230767" PointY="4.7686979166666656" />
+          <ConnectorPoint PointX="5.6569230769230767" PointY="5.0186979166666656" />
+          <ConnectorPoint PointX="6.1034615384615378" PointY="5.0186979166666656" />
+          <ConnectorPoint PointX="6.1034615384615378" PointY="4.7686979166666656" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

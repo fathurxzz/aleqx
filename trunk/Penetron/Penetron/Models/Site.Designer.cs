@@ -19,8 +19,8 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Site", "CategoryCategory", "Category", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "Category1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Technology), true)]
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnologyImage", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "TechnologyImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyImage), true)]
+[assembly: EdmRelationshipAttribute("Site", "TechnologyTechnology", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Technology), "Technology1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Technology), true)]
 
 #endregion
 
@@ -148,16 +148,14 @@ namespace Penetron.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="categoryId">Initial value of the CategoryId property.</param>
         /// <param name="categoryLevel">Initial value of the CategoryLevel property.</param>
         /// <param name="active">Initial value of the Active property.</param>
-        public static Technology CreateTechnology(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 categoryId, global::System.Int32 categoryLevel, global::System.Boolean active)
+        public static Technology CreateTechnology(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 categoryLevel, global::System.Boolean active)
         {
             Technology technology = new Technology();
             technology.Id = id;
             technology.Name = name;
             technology.Title = title;
-            technology.CategoryId = categoryId;
             technology.CategoryLevel = categoryLevel;
             technology.Active = active;
             return technology;
@@ -295,30 +293,6 @@ namespace Penetron.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CategoryId
-        {
-            get
-            {
-                return _CategoryId;
-            }
-            set
-            {
-                OnCategoryIdChanging(value);
-                ReportPropertyChanging("CategoryId");
-                _CategoryId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CategoryId");
-                OnCategoryIdChanged();
-            }
-        }
-        private global::System.Int32 _CategoryId;
-        partial void OnCategoryIdChanging(global::System.Int32 value);
-        partial void OnCategoryIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.Int32 CategoryLevel
         {
             get
@@ -409,71 +383,35 @@ namespace Penetron.Models
         private global::System.Boolean _Active;
         partial void OnActiveChanging(global::System.Boolean value);
         partial void OnActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TechnologyId
+        {
+            get
+            {
+                return _TechnologyId;
+            }
+            set
+            {
+                OnTechnologyIdChanging(value);
+                ReportPropertyChanging("TechnologyId");
+                _TechnologyId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TechnologyId");
+                OnTechnologyIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TechnologyId;
+        partial void OnTechnologyIdChanging(Nullable<global::System.Int32> value);
+        partial void OnTechnologyIdChanged();
 
         #endregion
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryCategory", "Category1")]
-        public EntityCollection<Technology> Children
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Technology>("Site.CategoryCategory", "Category1");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Technology>("Site.CategoryCategory", "Category1", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "CategoryCategory", "Category")]
-        public Technology Parent
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.CategoryCategory", "Category").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.CategoryCategory", "Category").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Technology> ParentReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.CategoryCategory", "Category");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Technology>("Site.CategoryCategory", "Category", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -493,6 +431,66 @@ namespace Penetron.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnologyImage>("Site.TechnologyTechnologyImage", "TechnologyImage", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnology", "Technology1")]
+        public EntityCollection<Technology> Children
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Technology>("Site.TechnologyTechnology", "Technology1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Technology>("Site.TechnologyTechnology", "Technology1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnology", "Technology")]
+        public Technology Parent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnology", "Technology").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnology", "Technology").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Technology> ParentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnology", "Technology");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Technology>("Site.TechnologyTechnology", "Technology", value);
                 }
             }
         }

@@ -1,6 +1,53 @@
-﻿.adminContentContainer
+﻿.field-validation-error
+{
+    color: red !important;
+}
+
+.adminContentContainer
 {
     padding: 50px 20px;
-    font-size: 12px;
     background-color: #fff;
+}
+
+.adminLinkContainer
+{
+    text-align: center;
+}
+
+a.adminLink
+{
+    font-family: Verdana;
+    font-size: 11px;
+    color: #ff0000 !important;
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+a.adminLink:hover
+{
+    color: #ffaa00 !important;
+}
+
+.buttonsContainer
+{
+    text-align: center;
+    margin-top: 20px;
+    font-family: Verdana;
+}
+
+.adminContent
+{
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+    padding: 50px;
+    font-family: Verdana;
+    font-size: 12px;
+}
+
+.adminContent table td input[type='text'], .adminContent table td input[type='file'], .adminContent table textarea
+{
+    width: 500px;
 }

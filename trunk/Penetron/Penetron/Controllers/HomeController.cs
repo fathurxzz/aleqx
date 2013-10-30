@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Penetron.Models;
+using SiteExtensions;
 
 namespace Penetron.Controllers
 {
@@ -21,10 +22,13 @@ namespace Penetron.Controllers
             return View();
         }
 
+
         public ActionResult Technologies(string id)
         {
-
-            return View();
+            var model = new TechnologyModel(_context, id);
+            ViewBag.IsHomePage = model.IsHomePage;
+            this.SetSeoContent(model);
+            return View(model);
         }
 
         public ActionResult About()
