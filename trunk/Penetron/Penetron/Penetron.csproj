@@ -213,6 +213,7 @@
     <Compile Include="Models\TechnologyModel.cs" />
     <Compile Include="Models\TechnologyValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteSettings.cs" />
     <Compile Include="Utils\Transliterator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +223,7 @@
     <Content Include="Content\img\3-reason.png" />
     <Content Include="Content\img\4-reason.png" />
     <Content Include="Content\img\4-reasons.png" />
+    <Content Include="Content\img\carusel-frame.png" />
     <Content Include="Content\img\em.gif" />
     <Content Include="Content\img\footer-bg.gif" />
     <Content Include="Content\img\header-bg.gif" />
@@ -233,6 +235,7 @@
     <Content Include="Content\img\main-page-content-bg.gif" />
     <Content Include="Content\img\phone.gif" />
     <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\stars.gif" />
     <Content Include="Content\img\submenu-bg.png" />
     <Content Include="Content\img\title-center.gif" />
     <Content Include="Content\img\title-left.gif" />
@@ -278,7 +281,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Filters\" />
     <Folder Include="Images\" />
   </ItemGroup>
@@ -318,6 +321,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Technology\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Technology\AddImage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

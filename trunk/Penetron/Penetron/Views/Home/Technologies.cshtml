@@ -1,48 +1,59 @@
-﻿@model Penetron.Models.TechnologyModel
-
+﻿@using Penetron
+@using SiteExtensions.Graphics
+@model Penetron.Models.TechnologyModel
 <div class="content-container">
-
-<div class="content">
-    
-    
-
-    <div class="title-container">
-        @if (Model.Technology != null)
-        {
-            if (Model.ParentTitle != null)
+    <div class="content">
+        <div class="title-container">
+            @if (Model.Technology != null)
             {
+                if (Model.ParentTitle != null)
+                {
                 <div class="parentTitle">
                     @Model.ParentTitle /
                 </div>
             
-            }
+                }
             
-            <table class="title">
-                <tr>
-                    <td class="left"></td>
-                    <td class="center">@Model.Technology.Title</td>
-                    <td class="right"></td>
-                </tr>
-            </table>
+                <table class="title">
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Model.Technology.Title
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
            
             
-        }
-    </div>
-    
-    <div class="text-container">
-        @Html.Partial("Menu", Model.TechnologyMenu)    
-        
-        
-        
-        <div class="content-text">
-            @if (Model.Technology != null)
-            {
-                @Html.Raw(Model.Technology.Text)
             }
         </div>
-        
-        <div class="clear"></div>
+        <div class="text-container">
+            @Html.Partial("Menu", Model.TechnologyMenu)
+            <div class="content-text">
+                @if (Model.Technology != null)
+                {
+                    @Html.Raw(Model.Technology.Text)
+                }
+                @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
+                {
+                    <div class="stars">
+                    </div>
+                
+                    <div class="carusel">
+                        @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                        <div class="carusel-frame">
+                            <div class="image">
+                                @Html.Raw(Html.CachedImage("~/Content/Images", Model.Technology.TechnologyImages.First().ImageSource, SiteSettings.GetThumbnail("carusel")))
+                            </div>
+                            <div class="frame">
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="clear">
+            </div>
+        </div>
     </div>
-    
-</div>
 </div>
