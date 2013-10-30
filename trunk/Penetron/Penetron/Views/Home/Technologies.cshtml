@@ -7,11 +7,33 @@
     
 
     <div class="title-container">
-        
+        @if (Model.Technology != null)
+        {
+            if (Model.ParentTitle != null)
+            {
+                @Model.ParentTitle
+                <br/>
+            }
+
+            @Model.Technology.Title
+
+            
+        }
     </div>
     
     <div class="text-container">
-    @Html.Partial("Menu", Model.TechnologyMenu)    
+        @Html.Partial("Menu", Model.TechnologyMenu)    
+        
+        
+        
+        <div class="content-text">
+            @if (Model.Technology != null)
+            {
+                @Html.Raw(Model.Technology.Text)
+            }
+        </div>
+        
+        <div class="clear"></div>
     </div>
     
 </div>
