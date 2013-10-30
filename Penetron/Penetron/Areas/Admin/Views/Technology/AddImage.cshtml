@@ -1,0 +1,24 @@
+﻿@model Penetron.Models.Technology
+
+@{
+    ViewBag.Title = "AddImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContent">
+
+@using (Html.BeginForm("AddImage", "Technology", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.Id)
+
+    @Html.Partial("InputImages")
+    
+    <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Technologies", "Home", new { area = "" }, null)
+        </div>
+    
+}
+
+</div>

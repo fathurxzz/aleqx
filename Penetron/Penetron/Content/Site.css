@@ -393,3 +393,35 @@ div#content, div#errorContent
     background: url('img/title-center.gif') repeat-x;
     padding: 0 20px;
 }
+
+
+.stars {
+    position: relative;
+    margin: 30px auto;
+    height: 13px;
+    width: 102px;
+    background: url(img/stars.gif);
+}
+
+
+
+.carusel-frame {
+    width: 636px;
+    height: 384px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.carusel-frame .image {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+
+.carusel-frame .frame {
+    width: 636px;
+    height: 384px;
+    position: absolute;
+    background: url('img/carusel-frame.png');
+}

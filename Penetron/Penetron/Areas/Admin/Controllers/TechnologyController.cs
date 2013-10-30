@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using Penetron.Models;
+using SiteExtensions;
+using SiteExtensions.Graphics;
 
 namespace Penetron.Areas.Admin.Controllers
 {
@@ -76,5 +79,39 @@ namespace Penetron.Areas.Admin.Controllers
         }
 
 
+        public ActionResult AddImage(int id)
+        {
+            var technology = _context.Technology.First(t => t.Id == id);
+            return View(technology);
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(int id, FormCollection form)
+        {
+            var technology = _context.Technology.First(t => t.Id == id);
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                var file = Request.Files[i];
+
+                if (file == null) continue;
+                if (string.IsNullOrEmpty(file.FileName)) continue;
+
+                var ti = new TechnologyImage();
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+
+                filePath = Path.Combine(filePath, fileName);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                file.SaveAs(filePath);
+
+                ti.ImageSource = fileName;
+
+                technology.TechnologyImages.Add(ti);
+
+                _context.SaveChanges();
+            }
+            
+            return RedirectToAction("Technologies", "Home", new { area = "" });
+        }
     }
 }
