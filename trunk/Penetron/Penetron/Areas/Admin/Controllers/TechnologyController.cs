@@ -65,8 +65,13 @@ namespace Penetron.Areas.Admin.Controllers
         public ActionResult Edit(Technology model)
         {
             var technology = _context.Technology.First(t => t.Id == model.Id);
-
-
+            technology.Name = Utils.Transliterator.Transliterate(model.Name);
+            technology.Title = model.Title;
+            technology.SortOrder = model.SortOrder;
+            technology.Text = HttpUtility.HtmlDecode(model.Text);
+            technology.SeoDescription = model.SeoDescription;
+            technology.SeoKeywords = model.SeoKeywords;
+            _context.SaveChanges();
             return RedirectToAction("Technologies", "Home", new { area = "" });
         }
 

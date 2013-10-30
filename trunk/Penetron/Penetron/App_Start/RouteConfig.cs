@@ -21,6 +21,12 @@ namespace Penetron
             );
 
             routes.MapRoute(
+                "LogOut", // Route name
+                "logout", // URL with parameters
+                new { controller = "Auth", action = "Logout" } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 name: "Technologies",
                 url: "technologies",
                 defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional }

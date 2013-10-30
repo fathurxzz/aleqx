@@ -1,11 +1,11 @@
 ﻿@model Penetron.Models.TechnologyModel
 
+<div class="content-container">
+
 <div class="content">
     
     @Html.Partial("Menu", Model.TechnologyMenu)
 
-    @if (Request.IsAuthenticated)
-    {
-        @Html.ActionLink("add tech", "Create", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
-    }
+    
+</div>
 </div>

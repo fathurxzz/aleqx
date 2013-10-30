@@ -16,7 +16,7 @@
             <tr>
                 <td colspan="2">
                     <h3>
-                        Создание категории</h3>
+                        Редактирование категории</h3>
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                     @Html.LabelFor(model => model.Text)
                 </td>
                 <td>
-                    @Html.TextAreaFor(model => model.Text, new { rows = 12 })
+                    @Html.TextAreaFor(model => model.Text, new { rows = 12, @class = "ckeditor" })
                     @Html.ValidationMessageFor(model => model.Text)
                 </td>
             </tr>
@@ -82,8 +82,9 @@
 </div>
 @section Scripts
 {
+    @Scripts.Render("~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js")
     
-    @Scripts.Render("~/Scripts/jquery.validate.min.js",
-            "~/Scripts/jquery.validate.unobtrusive.min.js")
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 
 }
