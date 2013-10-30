@@ -76,11 +76,8 @@
             <input type="submit" value="Сохранить" />
             @Html.ActionLink("Назад", "Technologies", "Home", new { area = "" }, null)
         </div>
-
-
-  
     }
 </div>
 @section Scripts {
-    @Scripts.Render("jquery.validate.min.js", "jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js")
 }

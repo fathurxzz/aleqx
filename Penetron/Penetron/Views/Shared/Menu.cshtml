@@ -24,4 +24,11 @@
             </li>
         }
     </ul>
+    
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+        @Html.ActionLink("Добавить раздел", "Create", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
+        </div>
+    }
 </div>

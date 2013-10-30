@@ -11,29 +11,26 @@
         @Styles.Render("~/Content/Admin.css")
     }
 </head>
-<body>
-    <div class="header top">
-        <div class="page">
-            <div id="phone">
-            </div>
-            <div id="logo">
-            </div>
-            @Html.Partial("MainMenu")
-        </div>
-    </div>
-    @RenderBody()
-    <div id="footer">
-        <div id="em">
-            <div id="em-link">
+    <body>
+        
+        <div class="header top">
+            <div class="page">
+                <div id="phone">
+                </div>
+                <div id="logo">
+                </div>
+                @Html.Partial("MainMenu")
             </div>
         </div>
-    </div>
-    @*@Scripts.Render("~/bundles/jquery")
-    
-    @Scripts.Render("~/bundles/modernizr")
-    
-    @Scripts.Render("~/bundles/js/jqueryval")*@ @*@Scripts.Render("~/bundles/js/common")*@
-    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/site.js")
-    @RenderSection("Scripts", false)
-</body>
+        @RenderBody()
+        <div id="footer">
+            <div id="em">
+                <div id="em-link">
+                </div>
+            </div>
+        </div>
+        @*@Scripts.Render("~/bundles/jquery")*@
+        @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/site.js")
+        @RenderSection("Scripts", false)
+    </body>
 </html>
