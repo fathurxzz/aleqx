@@ -48,9 +48,16 @@
                     firstChild = false;
                 }
                 <li class="child">
-                    <a href="#">
+                    
+                    @if (item.Current)
+                    {
                         @Html.DisplayFor(modelItem => item.Title)
-                    </a>
+                    }
+                    else
+                    {
+                        @Html.ActionLink(item.Title, "Technologies", "Home", new { id = item.Name }, null)
+                    }
+                    
                     @if (Request.IsAuthenticated)
                     {
                         <br />
@@ -58,7 +65,6 @@
                     }
 
                 </li>
-            
             }
         }
     </ul>

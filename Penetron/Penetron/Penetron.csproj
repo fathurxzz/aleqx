@@ -58,7 +58,7 @@
       <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net40-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="SiteExtensions">
-      <HintPath>..\..\..\AlexK\projects\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
+      <HintPath>..\..\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

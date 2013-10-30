@@ -265,11 +265,20 @@ div#content, div#errorContent
 
 #menu ul li.child
 {
-    width: 135px;
-    padding-bottom: 10px;
-    color: #0072bc;
+    width: 95px;
+    padding-bottom: 12px;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: #f6a636;
+    
     margin-left: 20px;
     background: url('img/submenu-bg.png') repeat-y;
+    
+}
+
+#menu ul li.child a {
+    text-decoration: underline;
+    color: #0072bc;
 }
 
 #menu ul li.separator {
@@ -327,5 +336,14 @@ div#content, div#errorContent
 
 
 .title-container {
-    height: 140px;
+    height: 120px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.content-text {
+    position: relative;
+    margin-left: 115px;
+    margin-right: 100px;
+    
 }
