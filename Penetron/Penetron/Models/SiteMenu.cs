@@ -14,6 +14,7 @@ namespace Penetron.Models
         public bool Active { get; set; }
         public bool Current { get; set; }
         public bool Parent { get; set; }
+        public bool HasChildren { get; set; }
     }
     
 }

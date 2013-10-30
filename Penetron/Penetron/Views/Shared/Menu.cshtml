@@ -1,34 +1,71 @@
 ﻿@model IEnumerable<Penetron.Models.SiteMenuItem>
+
+@{
+    bool firstChild=false;
+}
+
 <div id="menu">
     <ul>
         @foreach (var item in Model)
         {
-            string parent = item.Parent ? "parent" : "";
-            <li class="gradient-div @parent">
-                <div class="arrow1">
-                    <div class="arrow2">
-                        <div class="menucontent">
-                            <a href="#">
-                                @Html.DisplayFor(modelItem => item.Title)
-                            </a>
-                            @if (Request.IsAuthenticated)
-                            {
-                                <br/>
-                                @Html.ActionLink("Редактировать","Edit","Technology",new{area="Admin",id=item.Id},new{@class="adminLink"})
-                                <br/>
-                                @Html.ActionLink("Добавить подраздел", "Create", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                            }
+            
+            if (item.Parent)
+            {
+                
+                <li class="gradient-div parent">
+                    <div class="arrow1">
+                        <div class="arrow2">
+                            <div class="menucontent">
+                                <a href="#">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </a>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <br />
+                                    @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                    <br />
+                                    @Html.ActionLink("Добавить подраздел", "Create", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
+                </li>
+                if (!item.HasChildren)
+                {
+                    <li class="separator"></li>
+                }
+                else
+                {
+                    firstChild = true;
+                }
+
+            }
+            else
+            {
+                if (firstChild)
+                {
+                    <li class="separator child-sep"></li>
+                    firstChild = false;
+                }
+                <li class="child">
+                    <a href="#">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </a>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <br />
+                        @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    }
+
+                </li>
+            
+            }
         }
     </ul>
-    
     @if (Request.IsAuthenticated)
     {
         <div class="adminLinkContainer">
-        @Html.ActionLink("Добавить раздел", "Create", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
+            @Html.ActionLink("Добавить раздел", "Create", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
         </div>
     }
 </div>
