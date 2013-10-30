@@ -233,6 +233,7 @@
     <Content Include="Content\img\main-page-content-bg.gif" />
     <Content Include="Content\img\phone.gif" />
     <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\submenu-bg.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />

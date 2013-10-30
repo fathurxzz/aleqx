@@ -239,13 +239,15 @@ div#content, div#errorContent
 
 #menu {
     position: absolute;
-    margin-top: 10px;
-    margin-left: -100px;
+    
+    margin-left: -90px;
     font-family: Verdana;
 }
 
 #menu ul li {
     list-style: none;
+    text-align: center;
+        font-size: 11px;
 }
 
 
@@ -253,19 +255,34 @@ div#content, div#errorContent
     border: 2px solid #f7941e;
     border-radius: 9px;
     padding: 7px 10px;
-    margin: 10px;
+    margin:0 0px;
     width: 160px;
-    text-align: center;
-    /*background-color: #f2f2f3;*/
-    
     background: moz-linear-gradient(black, white);
-
     font-weight: bold;
-    color: #f6a636;
-    font-size: 11px;
-    
-    
+    /*color: #f6a636;*/
+    color: #808080;
 }
+
+#menu ul li.child
+{
+    width: 135px;
+    padding-bottom: 10px;
+    color: #0072bc;
+    margin-left: 20px;
+    background: url('img/submenu-bg.png') repeat-y;
+}
+
+#menu ul li.separator {
+    height: 10px;
+}
+
+#menu ul li.child-sep 
+{
+    width: 135px;
+    margin-left: 20px;
+    background: url('img/submenu-bg.png') repeat-y;
+}
+
 
 #menu a {
     color: inherit;
@@ -306,4 +323,9 @@ div#content, div#errorContent
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e9ea', endColorstr='#ffffff'); /* IE6 &amp; IE7 */
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e9ea', endColorstr='#ffffff')"; /* IE8+ */
 	background: linear-gradient(#e8e9ea, white); /* the standard */
+}
+
+
+.title-container {
+    height: 140px;
 }
