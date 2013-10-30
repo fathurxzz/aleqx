@@ -12,6 +12,19 @@ namespace Penetron
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("favicon.ico");
+
+            routes.MapRoute(
+                "LogIn", // Route name
+                "login", // URL with parameters
+                new { controller = "Auth", action = "Login" } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                name: "Technologies",
+                url: "technologies",
+                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

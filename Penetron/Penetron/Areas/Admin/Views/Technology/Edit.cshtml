@@ -1,6 +1,6 @@
 ﻿@model Penetron.Models.Technology
 @{
-    ViewBag.Title = "Создание технологии";
+    ViewBag.Title = "Редактирование технологии";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="adminContent">
@@ -8,8 +8,10 @@
     {
         @Html.ValidationSummary(true)
 
-        @Html.Hidden("parentId", (int?)ViewBag.ParentId)
-    
+
+
+        @Html.HiddenFor(model => model.Id)
+
         <table>
             <tr>
                 <td colspan="2">
@@ -76,11 +78,12 @@
             <input type="submit" value="Сохранить" />
             @Html.ActionLink("Назад", "Technologies", "Home", new { area = "" }, null)
         </div>
-
-
-  
     }
 </div>
-@section Scripts {
-    @Scripts.Render("jquery.validate.min.js", "jquery.validate.unobtrusive.min.js")
+@section Scripts
+{
+    
+    @Scripts.Render("~/Scripts/jquery.validate.min.js",
+            "~/Scripts/jquery.validate.unobtrusive.min.js")
+
 }

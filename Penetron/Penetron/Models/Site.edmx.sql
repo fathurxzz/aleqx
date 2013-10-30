@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/28/2013 14:45:09
+-- Date Created: 10/30/2013 13:02:30
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -42,11 +42,11 @@ CREATE TABLE `Technology` (
     `Title` varchar( 200 )  NOT NULL,
     `SortOrder` int  NOT NULL,
     `Text` longtext  NULL,
-    `CategoryId` int  NOT NULL,
     `CategoryLevel` int  NOT NULL,
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
-    `Active` bool  NOT NULL
+    `Active` bool  NOT NULL,
+    `TechnologyId` int  NULL
 );
 
 -- Creating table 'TechnologyImage'
@@ -69,21 +69,6 @@ CREATE TABLE `TechnologyImage` (
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on `CategoryId` in table 'Technology'
-
-ALTER TABLE `Technology`
-ADD CONSTRAINT `FK_CategoryCategory`
-    FOREIGN KEY (`CategoryId`)
-    REFERENCES `Technology`
-        (`Id`)
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CategoryCategory'
-
-CREATE INDEX `IX_FK_CategoryCategory` 
-    ON `Technology`
-    (`CategoryId`);
-
 -- Creating foreign key on `TechnologyId` in table 'TechnologyImage'
 
 ALTER TABLE `TechnologyImage`
@@ -97,6 +82,21 @@ ADD CONSTRAINT `FK_TechnologyTechnologyImage`
 
 CREATE INDEX `IX_FK_TechnologyTechnologyImage` 
     ON `TechnologyImage`
+    (`TechnologyId`);
+
+-- Creating foreign key on `TechnologyId` in table 'Technology'
+
+ALTER TABLE `Technology`
+ADD CONSTRAINT `FK_TechnologyTechnology`
+    FOREIGN KEY (`TechnologyId`)
+    REFERENCES `Technology`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TechnologyTechnology'
+
+CREATE INDEX `IX_FK_TechnologyTechnology` 
+    ON `Technology`
     (`TechnologyId`);
 
 -- --------------------------------------------------

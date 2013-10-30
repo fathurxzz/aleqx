@@ -1,0 +1,47 @@
+﻿@model Penetron.Controllers.LoginModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="content">
+    <div class="login-form">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Name)
+                    </td>
+                    <td>@Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Password)
+                    </td>
+                    <td>@Html.PasswordFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Keep)
+                    </td>
+                    <td>@Html.EditorFor(model => model.Keep)
+                        @Html.ValidationMessageFor(model => model.Keep)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Войти" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    </div>
+</body>
+</html>

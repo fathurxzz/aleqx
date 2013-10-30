@@ -21,18 +21,16 @@ body
     margin: 0 auto;
 }
 
-.header
-{
-}
 
-.header .top
+
+.header.top
 {
     /*height: 117px;*/
     height: 124px; /*background: url('img/header-bg.gif') repeat-x;*/
     background: url('img/header-bg.png') repeat-x;
 }
 
-.header .middle
+.header.middle
 {
     height: 337px;
     background: url('img/header-bottom-bg.gif') repeat-x;
@@ -40,7 +38,7 @@ body
     margin-top: -7px;
 }
 
-.header .bottom
+.header.bottom
 {
     height: 78px;
     background: url('img/4-reasons.png');
@@ -76,18 +74,24 @@ body
     background: url('img/footer-bg.gif') repeat-x;
 }
 
+.content
+{
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+    min-height: 700px;
+}
+
 .main-page-content
 {
     margin-top: -15px;
-}
-
-.content
-{
     min-height: 554px;
     background-color: #f5f5f5;
     background: url('img/main-page-content-bg.gif') repeat-x;
     background-position: 50%;
 }
+
+
 
 #em
 {
@@ -197,4 +201,101 @@ div#content, div#errorContent
 .highlight
 {
     color: #ec5d30;
+}
+
+
+#mainMenu {
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 56px;
+    font-size: 11px;
+}
+
+#mainMenu ul li {
+    display: inline-block;
+    padding: 17px;
+}
+
+#mainMenu a {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: Verdana;
+}
+
+
+.login-form {
+    
+}
+
+
+
+#menu {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -50px;
+    font-family: Verdana;
+}
+
+#menu ul li {
+    list-style: none;
+}
+
+
+#menu ul li.parent {
+    border: 2px solid #f7941e;
+    border-radius: 9px;
+    padding: 7px 10px;
+    margin: 10px;
+    width: 160px;
+    text-align: center;
+    /*background-color: #f2f2f3;*/
+    
+    background: moz-linear-gradient(black, white);
+
+    font-weight: bold;
+    color: #f6a636;
+    font-size: 11px;
+    
+    
+}
+
+#menu a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#menu ul li.parent div.arrow1, #menu ul li.parent div.arrow2 {
+    background: url('img/left-menu-arrow.png') no-repeat;
+}
+
+
+#menu ul li.parent div.arrow1 {
+    background-position: 0px center;
+}
+
+#menu ul li.parent div.arrow2 {
+    background-position: 150px center;
+}
+
+#menu ul li.parent .menucontent {
+    width: 150px;
+    position: relative;
+    margin: 0 auto;
+    
+}
+
+
+
+
+
+
+.gradient-div {
+	background: -moz-linear-gradient(#e8e9ea, white); /* FF 3.6+ */
+	background: -ms-linear-gradient(#e8e9ea, white); /* IE10 */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e8e9ea), color-stop(100%, #ffffff)); /* Safari 4+, Chrome 2+ */
+	background: -webkit-linear-gradient(#e8e9ea, white); /* Safari 5.1+, Chrome 10+ */
+	background: -o-linear-gradient(#e8e9ea, white); /* Opera 11.10 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e9ea', endColorstr='#ffffff'); /* IE6 &amp; IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#e8e9ea', endColorstr='#ffffff')"; /* IE8+ */
+	background: linear-gradient(#e8e9ea, white); /* the standard */
 }

@@ -2,37 +2,38 @@
 <html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
     <title>ПЕНЕТРОН УКРАИНА</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
+    @if (Request.IsAuthenticated)
+    { 
+        @Styles.Render("~/Content/Admin.css")
+    }
 </head>
 <body>
-    <div class="header">
-        <div class="top">
-            <div class="page">
-                <div id="phone"></div>
-                <div id="logo"></div>
+    <div class="header top">
+        <div class="page">
+            <div id="phone">
             </div>
+            <div id="logo">
+            </div>
+            @Html.Partial("MainMenu")
         </div>
-        @RenderSection("Header", required: false)
     </div>
-    
-    
-
     @RenderBody()
-    
-    
     <div id="footer">
         <div id="em">
             <div id="em-link">
             </div>
         </div>
     </div>
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/js/common")
-    @RenderSection("scripts", required: false)
+    
+    @Scripts.Render("~/bundles/js/jqueryval")*@ @*@Scripts.Render("~/bundles/js/common")*@
+    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/site.js")
+    @RenderSection("Scripts", false)
 </body>
 </html>
