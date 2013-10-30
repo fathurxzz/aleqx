@@ -347,3 +347,49 @@ div#content, div#errorContent
     margin-right: 100px;
     
 }
+
+
+.parentTitle {
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 15px;
+    color: #bcbcbc;
+    margin-top: 25px;
+}
+
+
+
+
+
+.title-container table.title {
+    border-collapse: collapse;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 5px;
+
+    font-family: Georgia;
+    font-style: italic;
+    font-weight: bold;
+    color: #000;
+}
+
+.title-container .title .left, .title-container .title .right, .title-container .title .center 
+{
+    height: 32px;
+}
+
+.title-container .title .left 
+{
+    background: url('img/title-left.gif') no-repeat;
+    width: 12px;
+}
+.title-container .title .right 
+{
+    background: url('img/title-right.gif') no-repeat;
+    width: 14px;
+}
+
+.title-container .title .center {
+    background: url('img/title-center.gif') repeat-x;
+    padding: 0 20px;
+}
