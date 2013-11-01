@@ -218,6 +218,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\bx_styles\blue_auto.png" />
+    <Content Include="Content\bx_styles\blue_next.png" />
+    <Content Include="Content\bx_styles\blue_pager.png" />
+    <Content Include="Content\bx_styles\blue_prev.png" />
+    <Content Include="Content\bx_styles\bx_styles.css" />
+    <Content Include="Content\bx_styles\gray_auto.png" />
+    <Content Include="Content\bx_styles\gray_next.png" />
+    <Content Include="Content\bx_styles\gray_pager.png" />
+    <Content Include="Content\bx_styles\gray_prev.png" />
+    <Content Include="Content\bx_styles\green_auto.png" />
+    <Content Include="Content\bx_styles\green_next.png" />
+    <Content Include="Content\bx_styles\green_pager.png" />
+    <Content Include="Content\bx_styles\green_prev.png" />
+    <Content Include="Content\bx_styles\next.png" />
+    <Content Include="Content\bx_styles\orange_auto.png" />
+    <Content Include="Content\bx_styles\orange_next.png" />
+    <Content Include="Content\bx_styles\orange_pager.png" />
+    <Content Include="Content\bx_styles\orange_prev.png" />
+    <Content Include="Content\bx_styles\prev.png" />
+    <Content Include="Content\bx_styles\purple_auto.png" />
+    <Content Include="Content\bx_styles\purple_next.png" />
+    <Content Include="Content\bx_styles\purple_pager.png" />
+    <Content Include="Content\bx_styles\purple_prev.png" />
+    <Content Include="Content\bx_styles\red_auto.png" />
+    <Content Include="Content\bx_styles\red_next.png" />
+    <Content Include="Content\bx_styles\red_pager.png" />
+    <Content Include="Content\bx_styles\red_prev.png" />
+    <Content Include="Content\bx_styles\yellow_auto.png" />
+    <Content Include="Content\bx_styles\yellow_next.png" />
+    <Content Include="Content\bx_styles\yellow_pager.png" />
+    <Content Include="Content\bx_styles\yellow_prev.png" />
     <Content Include="Content\img\1-reason.png" />
     <Content Include="Content\img\2-reason.png" />
     <Content Include="Content\img\3-reason.png" />
@@ -248,6 +279,7 @@
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.bxSlider.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
