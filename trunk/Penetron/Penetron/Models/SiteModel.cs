@@ -16,13 +16,11 @@ namespace Penetron.Models
         public Technology Technology { get; set; }
 
 
-
         public SiteModel(SiteContext context, string contentId)
         {
             Title = "ПЕНЕТРОН УКРАИНА";
 
             
         }
-
     }
 }

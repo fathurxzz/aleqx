@@ -226,10 +226,20 @@ div#content, div#errorContent
     padding: 17px;
 }
 
-#mainMenu a {
+
+
+#mainMenu {
     color: #fff;
     text-transform: uppercase;
     font-family: Verdana;
+}
+
+#mainMenu a {
+    color: inherit;
+}
+
+#mainMenu a.active {
+    font-weight: bold;
 }
 
 
@@ -245,7 +255,7 @@ div#content, div#errorContent
 }
 
 #menu {
-    /*position: absolute;*/
+    position: absolute;
     
     margin-left: -90px;
     font-family: Verdana;

@@ -27,7 +27,14 @@ namespace Penetron.Controllers
         {
             var model = new TechnologyModel(_context, id);
             ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.CategoryLevel = model.Technology.CategoryLevel == 0 ? "technologyRoot" : "technology";
             this.SetSeoContent(model);
+            return View(model);
+        }
+
+        public ActionResult SiteContent(string id)
+        {
+            var model = new SiteModel(_context, id);
             return View(model);
         }
 

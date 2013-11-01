@@ -1,0 +1,41 @@
+﻿@model Penetron.Models.SiteModel
+<div class="content-container">
+    <div class="content">
+        <div class="title-container">
+            @if (Model.Technology != null)
+            {
+@*if (Model.ParentTitle != null)
+                {
+                <div class="parentTitle">
+                    @Model.ParentTitle /
+                </div>
+            
+                }*@
+            
+                <table class="title">
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Model.Title
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
+           
+            
+            }
+        </div>
+        <div class="text-container">
+            @*@Html.Partial("Menu", Model.TechnologyMenu)*@
+            <div class="content-text">
+                @if (Model.Technology != null)
+                {
+                    @Html.Raw(Model.Text)
+                }
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+</div>
