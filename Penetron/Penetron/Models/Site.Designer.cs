@@ -21,6 +21,9 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnologyImage", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "TechnologyImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnology", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Technology), "Technology1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Technology), true)]
+[assembly: EdmRelationshipAttribute("Site", "BuildingBuilding", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Building), "Building1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Building), true)]
+[assembly: EdmRelationshipAttribute("Site", "BuildingBuildingObj", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Building), "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingObj), true)]
+[assembly: EdmRelationshipAttribute("Site", "BuildingObjBuildingImage", "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.BuildingObj), "BuildingImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingImage), true)]
 
 #endregion
 
@@ -103,6 +106,54 @@ namespace Penetron.Models
             }
         }
         private ObjectSet<TechnologyImage> _TechnologyImage;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Building> Building
+        {
+            get
+            {
+                if ((_Building == null))
+                {
+                    _Building = base.CreateObjectSet<Building>("Building");
+                }
+                return _Building;
+            }
+        }
+        private ObjectSet<Building> _Building;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BuildingObj> BuildingObj
+        {
+            get
+            {
+                if ((_BuildingObj == null))
+                {
+                    _BuildingObj = base.CreateObjectSet<BuildingObj>("BuildingObj");
+                }
+                return _BuildingObj;
+            }
+        }
+        private ObjectSet<BuildingObj> _BuildingObj;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BuildingImage> BuildingImage
+        {
+            get
+            {
+                if ((_BuildingImage == null))
+                {
+                    _BuildingImage = base.CreateObjectSet<BuildingImage>("BuildingImage");
+                }
+                return _BuildingImage;
+            }
+        }
+        private ObjectSet<BuildingImage> _BuildingImage;
 
         #endregion
 
@@ -123,6 +174,30 @@ namespace Penetron.Models
         {
             base.AddObject("TechnologyImage", technologyImage);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Building EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBuilding(Building building)
+        {
+            base.AddObject("Building", building);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BuildingObj EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBuildingObj(BuildingObj buildingObj)
+        {
+            base.AddObject("BuildingObj", buildingObj);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BuildingImage EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBuildingImage(BuildingImage buildingImage)
+        {
+            base.AddObject("BuildingImage", buildingImage);
+        }
 
         #endregion
 
@@ -131,6 +206,673 @@ namespace Penetron.Models
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Building")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Building : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Building object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        /// <param name="active">Initial value of the Active property.</param>
+        public static Building CreateBuilding(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Boolean active)
+        {
+            Building building = new Building();
+            building.Id = id;
+            building.Name = name;
+            building.Title = title;
+            building.SortOrder = sortOrder;
+            building.Active = active;
+            return building;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean Active
+        {
+            get
+            {
+                return _Active;
+            }
+            set
+            {
+                OnActiveChanging(value);
+                ReportPropertyChanging("Active");
+                _Active = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Active");
+                OnActiveChanged();
+            }
+        }
+        private global::System.Boolean _Active;
+        partial void OnActiveChanging(global::System.Boolean value);
+        partial void OnActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> BuildingId
+        {
+            get
+            {
+                return _BuildingId;
+            }
+            set
+            {
+                OnBuildingIdChanging(value);
+                ReportPropertyChanging("BuildingId");
+                _BuildingId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BuildingId");
+                OnBuildingIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _BuildingId;
+        partial void OnBuildingIdChanging(Nullable<global::System.Int32> value);
+        partial void OnBuildingIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuilding", "Building1")]
+        public EntityCollection<Building> Children
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Building>("Site.BuildingBuilding", "Building1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Building>("Site.BuildingBuilding", "Building1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuilding", "Building")]
+        public Building Parent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuilding", "Building").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuilding", "Building").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Building> ParentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuilding", "Building");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Building>("Site.BuildingBuilding", "Building", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuildingObj", "BuildingObj")]
+        public EntityCollection<BuildingObj> BuildingObjs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BuildingObj>("Site.BuildingBuildingObj", "BuildingObj");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BuildingObj>("Site.BuildingBuildingObj", "BuildingObj", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BuildingImage")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BuildingImage : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BuildingImage object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="buildingObjId">Initial value of the BuildingObjId property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static BuildingImage CreateBuildingImage(global::System.Int32 id, global::System.Int32 buildingObjId, global::System.String imageSource)
+        {
+            BuildingImage buildingImage = new BuildingImage();
+            buildingImage.Id = id;
+            buildingImage.BuildingObjId = buildingObjId;
+            buildingImage.ImageSource = imageSource;
+            return buildingImage;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BuildingObjId
+        {
+            get
+            {
+                return _BuildingObjId;
+            }
+            set
+            {
+                OnBuildingObjIdChanging(value);
+                ReportPropertyChanging("BuildingObjId");
+                _BuildingObjId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BuildingObjId");
+                OnBuildingObjIdChanged();
+            }
+        }
+        private global::System.Int32 _BuildingObjId;
+        partial void OnBuildingObjIdChanging(global::System.Int32 value);
+        partial void OnBuildingObjIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingObjBuildingImage", "BuildingObj")]
+        public BuildingObj BuildingObj
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BuildingObj>("Site.BuildingObjBuildingImage", "BuildingObj").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BuildingObj>("Site.BuildingObjBuildingImage", "BuildingObj").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<BuildingObj> BuildingObjReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<BuildingObj>("Site.BuildingObjBuildingImage", "BuildingObj");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<BuildingObj>("Site.BuildingObjBuildingImage", "BuildingObj", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BuildingObj")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BuildingObj : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BuildingObj object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="buildingId">Initial value of the BuildingId property.</param>
+        public static BuildingObj CreateBuildingObj(global::System.Int32 id, global::System.String title, global::System.Int32 buildingId)
+        {
+            BuildingObj buildingObj = new BuildingObj();
+            buildingObj.Id = id;
+            buildingObj.Title = title;
+            buildingObj.BuildingId = buildingId;
+            return buildingObj;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BuildingId
+        {
+            get
+            {
+                return _BuildingId;
+            }
+            set
+            {
+                OnBuildingIdChanging(value);
+                ReportPropertyChanging("BuildingId");
+                _BuildingId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BuildingId");
+                OnBuildingIdChanged();
+            }
+        }
+        private global::System.Int32 _BuildingId;
+        partial void OnBuildingIdChanging(global::System.Int32 value);
+        partial void OnBuildingIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuildingObj", "Building")]
+        public Building Building
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingObj", "Building").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingObj", "Building").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Building> BuildingReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingObj", "Building");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Building>("Site.BuildingBuildingObj", "Building", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingObjBuildingImage", "BuildingImage")]
+        public EntityCollection<BuildingImage> BuildingImages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BuildingImage>("Site.BuildingObjBuildingImage", "BuildingImage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BuildingImage>("Site.BuildingObjBuildingImage", "BuildingImage", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.

@@ -8,6 +8,9 @@
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Technology" EntityType="Site.Store.Technology" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyImage" EntityType="Site.Store.TechnologyImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Building" EntityType="Site.Store.Building" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BuildingObj" EntityType="Site.Store.BuildingObj" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BuildingImage" EntityType="Site.Store.BuildingImage" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -15,6 +18,18 @@
     <AssociationSet Name="TechnologyTechnology" Association="Site.Store.TechnologyTechnology">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="Technology1" EntitySet="Technology" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingBuilding" Association="Site.Store.BuildingBuilding">
+      <End Role="Building" EntitySet="Building" />
+      <End Role="Building1" EntitySet="Building" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingBuildingObj" Association="Site.Store.BuildingBuildingObj">
+      <End Role="Building" EntitySet="Building" />
+      <End Role="BuildingObj" EntitySet="BuildingObj" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingObjBuildingImage" Association="Site.Store.BuildingObjBuildingImage">
+      <End Role="BuildingObj" EntitySet="BuildingObj" />
+      <End Role="BuildingImage" EntitySet="BuildingImage" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Technology">
@@ -38,6 +53,36 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TechnologyId" Type="int" Nullable="false" />
+    <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="Active" Type="bool" Nullable="false" />
+    <Property Name="BuildingId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="BuildingObj">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="BuildingId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BuildingImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BuildingObjId" Type="int" Nullable="false" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
   </EntityType>
   <Association Name="TechnologyTechnologyImage">
@@ -64,6 +109,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="BuildingBuilding">
+    <End Role="Building" Type="Site.Store.Building" Multiplicity="0..1" />
+    <End Role="Building1" Type="Site.Store.Building" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Building1">
+        <PropertyRef Name="BuildingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuildingBuildingObj">
+    <End Role="Building" Type="Site.Store.Building" Multiplicity="1" />
+    <End Role="BuildingObj" Type="Site.Store.BuildingObj" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuildingObj">
+        <PropertyRef Name="BuildingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuildingObjBuildingImage">
+    <End Role="BuildingObj" Type="Site.Store.BuildingObj" Multiplicity="1" />
+    <End Role="BuildingImage" Type="Site.Store.BuildingImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BuildingObj">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuildingImage">
+        <PropertyRef Name="BuildingObjId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -78,6 +159,21 @@
           <AssociationSet Name="TechnologyTechnology" Association="Site.TechnologyTechnology">
             <End Role="Technology" EntitySet="Technology" />
             <End Role="Technology1" EntitySet="Technology" />
+          </AssociationSet>
+          <EntitySet Name="Building" EntityType="Site.Building" />
+          <AssociationSet Name="BuildingBuilding" Association="Site.BuildingBuilding">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Building1" EntitySet="Building" />
+          </AssociationSet>
+          <EntitySet Name="BuildingObj" EntityType="Site.BuildingObj" />
+          <EntitySet Name="BuildingImage" EntityType="Site.BuildingImage" />
+          <AssociationSet Name="BuildingBuildingObj" Association="Site.BuildingBuildingObj">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="BuildingObj" EntitySet="BuildingObj" />
+          </AssociationSet>
+          <AssociationSet Name="BuildingObjBuildingImage" Association="Site.BuildingObjBuildingImage">
+            <End Role="BuildingObj" EntitySet="BuildingObj" />
+            <End Role="BuildingImage" EntitySet="BuildingImage" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Technology">
@@ -131,6 +227,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="true" />
+          <Property Type="String" Name="SeoDescription" Nullable="true" />
+          <Property Type="String" Name="SeoKeywords" Nullable="true" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="Site.BuildingBuilding" FromRole="Building" ToRole="Building1" />
+          <NavigationProperty Name="Parent" Relationship="Site.BuildingBuilding" FromRole="Building1" ToRole="Building" />
+          <Property Type="Int32" Name="BuildingId" Nullable="true" />
+          <NavigationProperty Name="BuildingObjs" Relationship="Site.BuildingBuildingObj" FromRole="Building" ToRole="BuildingObj" />
+        </EntityType>
+        <Association Name="BuildingBuilding">
+          <End Type="Site.Building" Role="Building" Multiplicity="0..1" />
+          <End Type="Site.Building" Role="Building1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Building1">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BuildingObj">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="Building" Relationship="Site.BuildingBuildingObj" FromRole="BuildingObj" ToRole="Building" />
+          <Property Type="Int32" Name="BuildingId" Nullable="false" />
+          <NavigationProperty Name="BuildingImages" Relationship="Site.BuildingObjBuildingImage" FromRole="BuildingObj" ToRole="BuildingImage" />
+        </EntityType>
+        <EntityType Name="BuildingImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="BuildingObj" Relationship="Site.BuildingObjBuildingImage" FromRole="BuildingImage" ToRole="BuildingObj" />
+          <Property Type="Int32" Name="BuildingObjId" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+        </EntityType>
+        <Association Name="BuildingBuildingObj">
+          <End Type="Site.Building" Role="Building" Multiplicity="1" />
+          <End Type="Site.BuildingObj" Role="BuildingObj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuildingObj">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BuildingObjBuildingImage">
+          <End Type="Site.BuildingObj" Role="BuildingObj" Multiplicity="1" />
+          <End Type="Site.BuildingImage" Role="BuildingImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BuildingObj">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuildingImage">
+              <PropertyRef Name="BuildingObjId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -162,6 +330,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Building">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Building)">
+        <MappingFragment StoreEntitySet="Building">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildingObj">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BuildingObj)">
+        <MappingFragment StoreEntitySet="BuildingObj">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildingImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BuildingImage)">
+        <MappingFragment StoreEntitySet="BuildingImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BuildingObjId" ColumnName="BuildingObjId" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -182,17 +383,34 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Site" >
-        <EntityTypeShape EntityType="Site.Technology" Width="1.5" PointX="5.125" PointY="1.25" Height="2.9417936197916656" />
-        <EntityTypeShape EntityType="Site.TechnologyImage" Width="1.625" PointX="7.625" PointY="1.25" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.Technology" Width="1.5" PointX="2" PointY="1.25" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="Site.TechnologyImage" Width="1.625" PointX="4.25" PointY="1.25" Height="1.787985026041667" />
         <AssociationConnector Association="Site.TechnologyTechnologyImage">
-          <ConnectorPoint PointX="6.625" PointY="2.1439925130208337" />
-          <ConnectorPoint PointX="7.625" PointY="2.1439925130208337" />
+          <ConnectorPoint PointX="3.5" PointY="2.1439925130208337" />
+          <ConnectorPoint PointX="4.25" PointY="2.1439925130208337" />
         </AssociationConnector>
         <AssociationConnector Association="Site.TechnologyTechnology">
-          <ConnectorPoint PointX="5.6569230769230767" PointY="4.7686979166666656" />
-          <ConnectorPoint PointX="5.6569230769230767" PointY="5.0186979166666656" />
-          <ConnectorPoint PointX="6.1034615384615378" PointY="5.0186979166666656" />
-          <ConnectorPoint PointX="6.1034615384615378" PointY="4.7686979166666656" />
+          <ConnectorPoint PointX="2.5319230769230767" PointY="4.7686979166666656" />
+          <ConnectorPoint PointX="2.5319230769230767" PointY="5.0186979166666656" />
+          <ConnectorPoint PointX="2.9784615384615383" PointY="5.0186979166666656" />
+          <ConnectorPoint PointX="2.9784615384615383" PointY="4.7686979166666656" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Building" Width="1.5" PointX="7" PointY="1.25" Height="3.1340950520833326" />
+        <AssociationConnector Association="Site.BuildingBuilding">
+          <ConnectorPoint PointX="7.5319230769230776" PointY="4.3840950520833326" />
+          <ConnectorPoint PointX="7.5319230769230776" PointY="4.6340950520833326" />
+          <ConnectorPoint PointX="7.9784615384615387" PointY="4.6340950520833326" />
+          <ConnectorPoint PointX="7.9784615384615387" PointY="4.3840950520833326" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.BuildingObj" Width="1.5" PointX="9.5" PointY="1.375" Height="1.4033821614583331" />
+        <EntityTypeShape EntityType="Site.BuildingImage" Width="1.5" PointX="12.25" PointY="1.5" Height="1.787985026041667" />
+        <AssociationConnector Association="Site.BuildingBuildingObj">
+          <ConnectorPoint PointX="8.5" PointY="2.2689925130208337" />
+          <ConnectorPoint PointX="9.5" PointY="2.2689925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="Site.BuildingObjBuildingImage">
+          <ConnectorPoint PointX="11" PointY="2.3939925130208337" />
+          <ConnectorPoint PointX="12.25" PointY="2.3939925130208337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,11 +57,13 @@ namespace Penetron.Controllers
 
     public class LoginModel
     {
-
+        [DisplayName("Запомнить")]
         public bool Keep { get; set; }
 
+        [DisplayName("Логин")]
         public string Name { get; set; }
 
+        [DisplayName("Пароль")]
         public string Password { get; set; }
     }
 }

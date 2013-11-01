@@ -39,16 +39,12 @@
                 {
                     <div class="stars">
                     </div>
-                
-                    <div class="carusel">
+                    @Html.Partial("Carusel", Model.Technology.TechnologyImages)
+                }
+                @if (Model.Technology != null&&Request.IsAuthenticated)
+                {
+                    <div class="adminLinkContainer">
                         @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
-                        <div class="carusel-frame">
-                            <div class="image">
-                                @Html.Raw(Html.CachedImage("~/Content/Images", Model.Technology.TechnologyImages.First().ImageSource, SiteSettings.GetThumbnail("carusel")))
-                            </div>
-                            <div class="frame">
-                            </div>
-                        </div>
                     </div>
                 }
             </div>
@@ -57,3 +53,12 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $('#bx1').bxSlider();
+        });
+
+    </script>
+}
