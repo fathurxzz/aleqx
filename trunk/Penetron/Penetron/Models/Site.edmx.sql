@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/30/2013 13:02:30
+-- Date Created: 11/01/2013 16:44:32
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -19,8 +19,8 @@ USE `penetron`;
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
---    ALTER TABLE `Technology` DROP CONSTRAINT `FK_CategoryCategory`;
 --    ALTER TABLE `TechnologyImage` DROP CONSTRAINT `FK_TechnologyTechnologyImage`;
+--    ALTER TABLE `Technology` DROP CONSTRAINT `FK_TechnologyTechnology`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -54,6 +54,36 @@ CREATE TABLE `Technology` (
 CREATE TABLE `TechnologyImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `TechnologyId` int  NOT NULL,
+    `ImageSource` TEXT  NOT NULL
+);
+
+-- Creating table 'Building'
+
+CREATE TABLE `Building` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `Text` longtext  NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL,
+    `Active` bool  NOT NULL,
+    `BuildingId` int  NULL
+);
+
+-- Creating table 'BuildingObj'
+
+CREATE TABLE `BuildingObj` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `BuildingId` int  NOT NULL
+);
+
+-- Creating table 'BuildingImage'
+
+CREATE TABLE `BuildingImage` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `BuildingObjId` int  NOT NULL,
     `ImageSource` TEXT  NOT NULL
 );
 
@@ -98,6 +128,51 @@ ADD CONSTRAINT `FK_TechnologyTechnology`
 CREATE INDEX `IX_FK_TechnologyTechnology` 
     ON `Technology`
     (`TechnologyId`);
+
+-- Creating foreign key on `BuildingId` in table 'Building'
+
+ALTER TABLE `Building`
+ADD CONSTRAINT `FK_BuildingBuilding`
+    FOREIGN KEY (`BuildingId`)
+    REFERENCES `Building`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BuildingBuilding'
+
+CREATE INDEX `IX_FK_BuildingBuilding` 
+    ON `Building`
+    (`BuildingId`);
+
+-- Creating foreign key on `BuildingId` in table 'BuildingObj'
+
+ALTER TABLE `BuildingObj`
+ADD CONSTRAINT `FK_BuildingBuildingObj`
+    FOREIGN KEY (`BuildingId`)
+    REFERENCES `Building`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BuildingBuildingObj'
+
+CREATE INDEX `IX_FK_BuildingBuildingObj` 
+    ON `BuildingObj`
+    (`BuildingId`);
+
+-- Creating foreign key on `BuildingObjId` in table 'BuildingImage'
+
+ALTER TABLE `BuildingImage`
+ADD CONSTRAINT `FK_BuildingObjBuildingImage`
+    FOREIGN KEY (`BuildingObjId`)
+    REFERENCES `BuildingObj`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BuildingObjBuildingImage'
+
+CREATE INDEX `IX_FK_BuildingObjBuildingImage` 
+    ON `BuildingImage`
+    (`BuildingObjId`);
 
 -- --------------------------------------------------
 -- Script has ended

@@ -75,7 +75,7 @@ namespace Penetron.Areas.Admin.Controllers
             technology.SeoDescription = model.SeoDescription;
             technology.SeoKeywords = model.SeoKeywords;
             _context.SaveChanges();
-            return RedirectToAction("Technologies", "Home", new { area = "" });
+            return RedirectToAction("Technologies", "Home", new { area = "" ,id=technology.Name});
         }
 
 
@@ -111,6 +111,13 @@ namespace Penetron.Areas.Admin.Controllers
                 _context.SaveChanges();
             }
             
+            return RedirectToAction("Technologies", "Home", new { area = "" });
+        }
+
+        public ActionResult DeleteImage(int id)
+        {
+
+
             return RedirectToAction("Technologies", "Home", new { area = "" });
         }
     }

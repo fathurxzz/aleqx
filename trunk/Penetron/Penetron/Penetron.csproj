@@ -231,6 +231,7 @@
     <Content Include="Content\bx_styles\green_next.png" />
     <Content Include="Content\bx_styles\green_pager.png" />
     <Content Include="Content\bx_styles\green_prev.png" />
+    <Content Include="Content\bx_styles\left-shutter.png" />
     <Content Include="Content\bx_styles\next.png" />
     <Content Include="Content\bx_styles\orange_auto.png" />
     <Content Include="Content\bx_styles\orange_next.png" />
@@ -245,6 +246,7 @@
     <Content Include="Content\bx_styles\red_next.png" />
     <Content Include="Content\bx_styles\red_pager.png" />
     <Content Include="Content\bx_styles\red_prev.png" />
+    <Content Include="Content\bx_styles\right-shutter.png" />
     <Content Include="Content\bx_styles\yellow_auto.png" />
     <Content Include="Content\bx_styles\yellow_next.png" />
     <Content Include="Content\bx_styles\yellow_pager.png" />
@@ -359,6 +361,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Carusel.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

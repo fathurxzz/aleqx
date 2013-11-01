@@ -6,7 +6,7 @@
  */
 
 /*next button*/
-.bx-next {
+/*.bx-next {
 	position:absolute;
 	top:40%;
 	right:20px;
@@ -14,12 +14,25 @@
 	width: 48px;
 	height: 47px;
 	text-indent: -999999px;
-	/*background: url(gray_next.png) no-repeat 0 -30px;*/
     background: url(next.png);
 }
+*/
+
+.bx-next {
+	position:absolute;
+    top: 1px;
+	right:0px;
+	z-index:999;
+	width: 34px;
+	height: 358px;
+	text-indent: -999999px;
+    background: url(right-shutter.png);
+}
+
+
 
 /*previous button*/
-.bx-prev {
+/*.bx-prev {
 	position:absolute;
 	top:40%;
 	left:20px;
@@ -27,8 +40,18 @@
 	width: 48px;
 	height: 47px;
 	text-indent: -999999px;
-	/*background: url(gray_prev.png) no-repeat 0 -30px;*/
 	background: url(prev.png);
+}*/
+
+.bx-prev {
+	position:absolute;
+	top: 1px;
+	left:0px;
+	z-index:999;
+	width: 34px;
+	height: 358px;
+	text-indent: -999999px;
+	background: url(left-shutter.png);
 }
 
 /*pager links*/

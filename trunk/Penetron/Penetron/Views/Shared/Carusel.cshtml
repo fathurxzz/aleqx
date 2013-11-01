@@ -1,0 +1,24 @@
+﻿@using Penetron
+@using SiteExtensions.Graphics
+@model IEnumerable<Penetron.Models.TechnologyImage>
+<div class="carusel">
+    <div class="image">
+        <ul id="bx1">
+            @foreach (var item in Model)
+            {
+                <li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div style="position: absolute; padding-left: 40px; z-index: 99999">
+                            @Html.ActionLink("Удалиьть","DeleteImage","Technology",new{area="Admin",id=item.Id},new{@class="adminLink"})
+                        </div>
+                    }
+                    
+                    @Html.Raw(Html.CachedImage("~/Content/Images", item.ImageSource, SiteSettings.GetThumbnail("carusel")))
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="frame">
+    </div>
+</div>
