@@ -266,6 +266,8 @@
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\main-page-content-bg-half.gif" />
     <Content Include="Content\img\main-page-content-bg.gif" />
+    <Content Include="Content\img\object-left.png" />
+    <Content Include="Content\img\object-right.png" />
     <Content Include="Content\img\phone.gif" />
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\stars.gif" />
@@ -364,6 +366,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Carusel.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\SiteContent.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
