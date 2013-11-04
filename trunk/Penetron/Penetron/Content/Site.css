@@ -226,32 +226,15 @@ div#content, div#errorContent
     padding: 17px;
 }
 
-
-
-#mainMenu {
+#mainMenu a {
     color: #fff;
     text-transform: uppercase;
     font-family: Verdana;
 }
 
-#mainMenu a {
-    color: inherit;
-}
-
-#mainMenu a.active {
-    font-weight: bold;
-}
-
 
 .login-form {
-    position: relative;
-    margin: 0 auto;
-    width: 250px;
-    padding-top: 200px;
-}
-
-.login-form table td {
-    padding: 3px 10px;
+    
 }
 
 #menu {
@@ -362,7 +345,6 @@ div#content, div#errorContent
     position: relative;
     margin-left: 115px;
     margin-right: 100px;
-    padding-bottom: 50px;
     
 }
 
@@ -373,6 +355,7 @@ div#content, div#errorContent
     font-size: 15px;
     color: #bcbcbc;
     margin-top: 25px;
+    height: 20px;
 }
 
 
@@ -423,20 +406,21 @@ div#content, div#errorContent
 
 
 
-.carusel {
+.carusel-frame {
     width: 636px;
     height: 384px;
     position: relative;
     margin: 0 auto;
 }
 
-.carusel .image {
+.carusel-frame .image {
     position: absolute;
     top: 12px;
     left: 12px;
 }
 
-.carusel .frame {
+
+.carusel-frame .frame {
     width: 636px;
     height: 384px;
     position: absolute;

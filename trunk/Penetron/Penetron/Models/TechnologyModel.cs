@@ -17,22 +17,36 @@ namespace Penetron.Models
             : base(context, contentId)
         {
             _contentId = contentId;
-
+            
             _technologies = context.Technology.Include("Children").ToList();
 
-            Technology = _technologies.First(t => t.Name == contentId || (contentId == null && t.CategoryLevel == 0));
 
-            if (Technology.Parent != null)
+
+            Technology = _technologies.First(t => t.Name == contentId || t.CategoryLevel == 0);
+            if (Technology.CategoryLevel == 0 && !Technology.Active)
             {
-                ParentTitle = Technology.Parent.Title;
+                Technology = _technologies.FirstOrDefault(t => t.Parent != null);
+                if (Technology != null)
+                {
+                    _contentId = Technology.Name;
+                }
             }
-            SeoDescription = Technology.SeoDescription;
-            SeoKeywords = Technology.SeoKeywords;
 
+
+            if (Technology != null)
+            {
+                if (Technology.Parent != null)
+                {
+                    ParentTitle = Technology.Parent.Title;
+                }
+                SeoDescription = Technology.SeoDescription;
+                SeoKeywords = Technology.SeoKeywords;
+            }
             GetMenu();
         }
 
-        protected void GetMenu()
+
+        private void GetMenu()
         {
             TechnologyMenu = new List<SiteMenuItem>();
             foreach (var technology in _technologies.OrderBy(t => t.SortOrder))

@@ -74,8 +74,16 @@ namespace Penetron.Areas.Admin.Controllers
             technology.Text = HttpUtility.HtmlDecode(model.Text);
             technology.SeoDescription = model.SeoDescription;
             technology.SeoKeywords = model.SeoKeywords;
+            technology.Active = model.Active;
             _context.SaveChanges();
-            return RedirectToAction("Technologies", "Home", new { area = "" ,id=technology.Name});
+            return RedirectToAction("Technologies", "Home", new { area = "" });
+        }
+
+
+        public ActionResult EditMainPage()
+        {
+            var technology = _context.Technology.First(t => t.CategoryLevel==0);
+            return View("Edit",technology);
         }
 
 
@@ -111,13 +119,6 @@ namespace Penetron.Areas.Admin.Controllers
                 _context.SaveChanges();
             }
             
-            return RedirectToAction("Technologies", "Home", new { area = "" });
-        }
-
-        public ActionResult DeleteImage(int id)
-        {
-
-
             return RedirectToAction("Technologies", "Home", new { area = "" });
         }
     }
