@@ -365,10 +365,12 @@
     <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Carusel.cshtml" />
+    <Content Include="Views\Home\SiteContent.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\SiteContent.cshtml" />
+    <Content Include="Views\Shared\Carusel.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
