@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/01/2013 16:44:32
+-- Date Created: 11/04/2013 21:52:38
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -21,6 +21,9 @@ USE `penetron`;
 
 --    ALTER TABLE `TechnologyImage` DROP CONSTRAINT `FK_TechnologyTechnologyImage`;
 --    ALTER TABLE `Technology` DROP CONSTRAINT `FK_TechnologyTechnology`;
+--    ALTER TABLE `Building` DROP CONSTRAINT `FK_BuildingBuilding`;
+--    ALTER TABLE `BuildingObj` DROP CONSTRAINT `FK_BuildingBuildingObj`;
+--    ALTER TABLE `BuildingImage` DROP CONSTRAINT `FK_BuildingObjBuildingImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -28,6 +31,9 @@ USE `penetron`;
 SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Technology`;
     DROP TABLE IF EXISTS `TechnologyImage`;
+    DROP TABLE IF EXISTS `Building`;
+    DROP TABLE IF EXISTS `BuildingObj`;
+    DROP TABLE IF EXISTS `BuildingImage`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -85,6 +91,17 @@ CREATE TABLE `BuildingImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `BuildingObjId` int  NOT NULL,
     `ImageSource` TEXT  NOT NULL
+);
+
+-- Creating table 'Content'
+
+CREATE TABLE `Content` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Text` longtext  NULL,
+    `SeoDescription` longtext  NULL,
+    `SeoKeywords` longtext  NULL
 );
 
 

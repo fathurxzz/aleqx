@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Technology" EntityType="Site.Store.Technology" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyImage" EntityType="Site.Store.TechnologyImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Building" EntityType="Site.Store.Building" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BuildingObj" EntityType="Site.Store.BuildingObj" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BuildingImage" EntityType="Site.Store.BuildingImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -84,6 +85,17 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BuildingObjId" Type="int" Nullable="false" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
+    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
   </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
@@ -372,6 +384,18 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="BuildingObjId" ColumnName="BuildingObjId" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Content">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Content)">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+          <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
