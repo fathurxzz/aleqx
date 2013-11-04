@@ -22,6 +22,11 @@ namespace Penetron.Models
         {
             Title = "ПЕНЕТРОН УКРАИНА";
             Content = context.Content.FirstOrDefault(c => c.Name == contentId);
+            if (Content != null)
+            {
+                SeoDescription = Content.SeoDescription;
+                SeoKeywords = Content.SeoKeywords;
+            }
         }
 
     }

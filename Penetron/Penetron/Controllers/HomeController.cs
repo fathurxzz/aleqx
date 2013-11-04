@@ -10,7 +10,7 @@ namespace Penetron.Controllers
 {
     public class HomeController : Controller
     {
-        private SiteContext _context;
+        private readonly SiteContext _context;
 
         public HomeController(SiteContext context)
         {
@@ -27,7 +27,6 @@ namespace Penetron.Controllers
         {
             var model = new TechnologyModel(_context, id);
             ViewBag.IsHomePage = model.IsHomePage;
-            ViewBag.CategoryLevel = model.Technology.CategoryLevel == 0 ? "technologyRoot" : "technology";
             this.SetSeoContent(model);
             return View(model);
         }
@@ -35,6 +34,8 @@ namespace Penetron.Controllers
         public ActionResult SiteContent(string id)
         {
             var model = new SiteModel(_context, id);
+            ViewBag.IsHomePage = model.IsHomePage;
+            this.SetSeoContent(model);
             return View(model);
         }
 
