@@ -14,13 +14,15 @@ namespace Penetron.Models
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
         public Technology Technology { get; set; }
+        public Content Content { get; set; }
+
 
 
         public SiteModel(SiteContext context, string contentId)
         {
             Title = "ПЕНЕТРОН УКРАИНА";
-
-            
+            Content = context.Content.FirstOrDefault(c => c.Name == contentId);
         }
+
     }
 }
