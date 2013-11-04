@@ -154,6 +154,22 @@ namespace Penetron.Models
             }
         }
         private ObjectSet<BuildingImage> _BuildingImage;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Content> Content
+        {
+            get
+            {
+                if ((_Content == null))
+                {
+                    _Content = base.CreateObjectSet<Content>("Content");
+                }
+                return _Content;
+            }
+        }
+        private ObjectSet<Content> _Content;
 
         #endregion
 
@@ -197,6 +213,14 @@ namespace Penetron.Models
         public void AddToBuildingImage(BuildingImage buildingImage)
         {
             base.AddObject("BuildingImage", buildingImage);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Content EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContent(Content content)
+        {
+            base.AddObject("Content", content);
         }
 
         #endregion
@@ -872,6 +896,187 @@ namespace Penetron.Models
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Content")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Content : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Content object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title)
+        {
+            Content content = new Content();
+            content.Id = id;
+            content.Name = name;
+            content.Title = title;
+            return content;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoDescription
+        {
+            get
+            {
+                return _SeoDescription;
+            }
+            set
+            {
+                OnSeoDescriptionChanging(value);
+                ReportPropertyChanging("SeoDescription");
+                _SeoDescription = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoDescription");
+                OnSeoDescriptionChanged();
+            }
+        }
+        private global::System.String _SeoDescription;
+        partial void OnSeoDescriptionChanging(global::System.String value);
+        partial void OnSeoDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SeoKeywords
+        {
+            get
+            {
+                return _SeoKeywords;
+            }
+            set
+            {
+                OnSeoKeywordsChanging(value);
+                ReportPropertyChanging("SeoKeywords");
+                _SeoKeywords = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SeoKeywords");
+                OnSeoKeywordsChanged();
+            }
+        }
+        private global::System.String _SeoKeywords;
+        partial void OnSeoKeywordsChanging(global::System.String value);
+        partial void OnSeoKeywordsChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>

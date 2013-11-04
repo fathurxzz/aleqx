@@ -175,6 +175,7 @@
             <End Role="BuildingObj" EntitySet="BuildingObj" />
             <End Role="BuildingImage" EntitySet="BuildingImage" />
           </AssociationSet>
+          <EntitySet Name="Content" EntityType="Site.Content" />
         </EntityContainer>
         <EntityType Name="Technology">
           <Key>
@@ -299,6 +300,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Text" Nullable="true" />
+          <Property Type="String" Name="SeoDescription" Nullable="true" />
+          <Property Type="String" Name="SeoKeywords" Nullable="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -412,6 +424,7 @@
           <ConnectorPoint PointX="11" PointY="2.3939925130208337" />
           <ConnectorPoint PointX="12.25" PointY="2.3939925130208337" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="10.5" PointY="4.5" Height="2.1725878906249996" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
