@@ -14,6 +14,7 @@ namespace Penetron.Models
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
         public Technology Technology { get; set; }
+        public Building Building { get; set; }
         public Content Content { get; set; }
 
 

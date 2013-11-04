@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="adminContent">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit","Technology"))
     {
         @Html.ValidationSummary(true)
 
@@ -73,6 +73,16 @@
                     @Html.ValidationMessageFor(model => model.SeoKeywords)
                 </td>
             </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Active)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Active)
+                    @Html.ValidationMessageFor(model => model.Active)
+                </td>
+            </tr>
+
         </table>
         <div class="buttonsContainer">
             <input type="submit" value="Сохранить" />
