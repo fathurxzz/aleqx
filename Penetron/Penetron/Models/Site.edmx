@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Technology" EntityType="Site.Store.Technology" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyImage" EntityType="Site.Store.TechnologyImage" store:Type="Tables" Schema="dbo" />
@@ -69,6 +69,7 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="Active" Type="bool" Nullable="false" />
     <Property Name="BuildingId" Type="int" Nullable="true" />
+    <Property Name="CategoryLevel" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BuildingObj">
     <Key>
@@ -256,6 +257,7 @@
           <NavigationProperty Name="Parent" Relationship="Site.BuildingBuilding" FromRole="Building1" ToRole="Building" />
           <Property Type="Int32" Name="BuildingId" Nullable="true" />
           <NavigationProperty Name="BuildingObjs" Relationship="Site.BuildingBuildingObj" FromRole="Building" ToRole="BuildingObj" />
+          <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
         </EntityType>
         <Association Name="BuildingBuilding">
           <End Type="Site.Building" Role="Building" Multiplicity="0..1" />
@@ -366,6 +368,7 @@
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -431,18 +434,18 @@
           <ConnectorPoint PointX="2.9784615384615383" PointY="5.0186979166666656" />
           <ConnectorPoint PointX="2.9784615384615383" PointY="4.7686979166666656" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Building" Width="1.5" PointX="7" PointY="1.25" Height="3.1340950520833326" />
+        <EntityTypeShape EntityType="Site.Building" Width="1.5" PointX="7" PointY="1.25" Height="3.5186979166666656" />
         <AssociationConnector Association="Site.BuildingBuilding">
-          <ConnectorPoint PointX="7.5319230769230776" PointY="4.3840950520833326" />
-          <ConnectorPoint PointX="7.5319230769230776" PointY="4.6340950520833326" />
-          <ConnectorPoint PointX="7.9784615384615387" PointY="4.6340950520833326" />
-          <ConnectorPoint PointX="7.9784615384615387" PointY="4.3840950520833326" />
+          <ConnectorPoint PointX="7.5319230769230776" PointY="4.7686979166666656" />
+          <ConnectorPoint PointX="7.5319230769230776" PointY="5.0186979166666656" />
+          <ConnectorPoint PointX="7.9784615384615387" PointY="5.0186979166666656" />
+          <ConnectorPoint PointX="7.9784615384615387" PointY="4.7686979166666656" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.BuildingObj" Width="1.5" PointX="9.5" PointY="1.375" Height="1.4033821614583331" />
         <EntityTypeShape EntityType="Site.BuildingImage" Width="1.5" PointX="12.25" PointY="1.5" Height="1.787985026041667" />
         <AssociationConnector Association="Site.BuildingBuildingObj">
-          <ConnectorPoint PointX="8.5" PointY="2.2689925130208337" />
-          <ConnectorPoint PointX="9.5" PointY="2.2689925130208337" />
+          <ConnectorPoint PointX="8.5" PointY="2.3651432291666667" />
+          <ConnectorPoint PointX="9.5" PointY="2.3651432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="Site.BuildingObjBuildingImage">
           <ConnectorPoint PointX="11" PointY="2.3939925130208337" />

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/04/2013 21:52:38
+-- Date Created: 11/05/2013 12:54:02
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -34,6 +34,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Building`;
     DROP TABLE IF EXISTS `BuildingObj`;
     DROP TABLE IF EXISTS `BuildingImage`;
+    DROP TABLE IF EXISTS `Content`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -74,7 +75,8 @@ CREATE TABLE `Building` (
     `SeoDescription` longtext  NULL,
     `SeoKeywords` longtext  NULL,
     `Active` bool  NOT NULL,
-    `BuildingId` int  NULL
+    `BuildingId` int  NULL,
+    `CategoryLevel` int  NOT NULL
 );
 
 -- Creating table 'BuildingObj'

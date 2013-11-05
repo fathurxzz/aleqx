@@ -249,7 +249,8 @@ namespace Penetron.Models
         /// <param name="title">Initial value of the Title property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
         /// <param name="active">Initial value of the Active property.</param>
-        public static Building CreateBuilding(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Boolean active)
+        /// <param name="categoryLevel">Initial value of the CategoryLevel property.</param>
+        public static Building CreateBuilding(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Boolean active, global::System.Int32 categoryLevel)
         {
             Building building = new Building();
             building.Id = id;
@@ -257,6 +258,7 @@ namespace Penetron.Models
             building.Title = title;
             building.SortOrder = sortOrder;
             building.Active = active;
+            building.CategoryLevel = categoryLevel;
             return building;
         }
 
@@ -482,6 +484,30 @@ namespace Penetron.Models
         private Nullable<global::System.Int32> _BuildingId;
         partial void OnBuildingIdChanging(Nullable<global::System.Int32> value);
         partial void OnBuildingIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CategoryLevel
+        {
+            get
+            {
+                return _CategoryLevel;
+            }
+            set
+            {
+                OnCategoryLevelChanging(value);
+                ReportPropertyChanging("CategoryLevel");
+                _CategoryLevel = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CategoryLevel");
+                OnCategoryLevelChanged();
+            }
+        }
+        private global::System.Int32 _CategoryLevel;
+        partial void OnCategoryLevelChanging(global::System.Int32 value);
+        partial void OnCategoryLevelChanged();
 
         #endregion
 
