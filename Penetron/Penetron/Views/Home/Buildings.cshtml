@@ -1,48 +1,45 @@
 ﻿@using Penetron
 @using SiteExtensions.Graphics
-@model Penetron.Models.TechnologyModel
+@model Penetron.Models.BuildingModel
 <div class="content-container">
     <div class="content">
         <div class="title-container">
-            @if (Model.Technology != null)
+            @if (Model.Building != null)
             {
                 
                 <div class="parentTitle">
-                @if (Model.ParentTitle != null)
-                {
-                    @Model.ParentTitle <text>/</text>
-            
+                    @if (Model.ParentTitle != null)
+                    {
+                        @Model.ParentTitle <text>/</text>
                     }
-                    </div>
+                </div>
             
                 <table class="title">
                     <tr>
                         <td class="left">
                         </td>
-                        <td class="center">@Model.Technology.Title
+                        <td class="center">@Model.Building.Title
                         </td>
                         <td class="right">
                         </td>
                     </tr>
                 </table>
-           
-            
             }
         </div>
         <div class="text-container">
             @if (Request.IsAuthenticated)
             {
-                @Html.ActionLink("Редактировать основную страницу объектов","EditMainPage","Technology",new{area="Admin"},new{@class="adminLink"})
+                @Html.ActionLink("Редактировать основную страницу технологий", "EditMainPage", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
                 
             }
-
-            @Html.Partial("Menu", Model.TechnologyMenu)
+            @Html.Partial("Menu", Model.BuildingMenu)
             <div class="content-text">
-                @if (Model.Technology != null)
+                @if (Model.Building != null)
                 {
-                    @Html.Raw(Model.Technology.Text)
+                    @Html.Raw(Model.Building.Text)
                 }
-                @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
+                
+@*@if (Model.Building != null && Model.Building.TechnologyImages.Any())
                 {
                     <div class="stars">
                     </div>
@@ -57,7 +54,7 @@
                             </div>
                         </div>
                     </div>
-                }
+                }*@
             </div>
             <div class="clear">
             </div>

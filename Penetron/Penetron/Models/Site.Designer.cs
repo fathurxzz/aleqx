@@ -940,12 +940,14 @@ namespace Penetron.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title)
+        /// <param name="mainPage">Initial value of the MainPage property.</param>
+        public static Content CreateContent(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Boolean mainPage)
         {
             Content content = new Content();
             content.Id = id;
             content.Name = name;
             content.Title = title;
+            content.MainPage = mainPage;
             return content;
         }
 
@@ -1099,6 +1101,30 @@ namespace Penetron.Models
         private global::System.String _SeoKeywords;
         partial void OnSeoKeywordsChanging(global::System.String value);
         partial void OnSeoKeywordsChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean MainPage
+        {
+            get
+            {
+                return _MainPage;
+            }
+            set
+            {
+                OnMainPageChanging(value);
+                ReportPropertyChanging("MainPage");
+                _MainPage = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MainPage");
+                OnMainPageChanged();
+            }
+        }
+        private global::System.Boolean _MainPage;
+        partial void OnMainPageChanging(global::System.Boolean value);
+        partial void OnMainPageChanged();
 
         #endregion
 

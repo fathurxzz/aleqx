@@ -2,6 +2,10 @@
 <div class="content-container">
     <div class="content">
         <div class="title-container">
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Редактировать контент", "Edit", "Content", new { area = "Admin", id = Model.Content.Name }, new { @class = "adminLink" })
+            }
             @if (Model.Content != null)
             {
 @*if (Model.ParentTitle != null)
@@ -11,25 +15,25 @@
                 </div>
             
                 }*@
-            
-                
+
+
                 <div class="parentTitle">
-                    </div>
-                
-                    <table class="title">
-                        <tr>
-                            <td class="left">
-                            </td>
-                            <td class="center">@Model.Content.Title
-                            </td>
-                            <td class="right">
-                            </td>
-                        </tr>
-                    </table>
-           
-            
-                    }
                 </div>
+
+                <table class="title">
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Model.Content.Title
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
+
+
+            }
+        </div>
         <div class="text-container">
             @*@Html.Partial("Menu", Model.TechnologyMenu)*@
             <div class="content-text">

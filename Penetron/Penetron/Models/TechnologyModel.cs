@@ -23,6 +23,7 @@ namespace Penetron.Models
 
 
             Technology = _technologies.First(t => t.Name == contentId || t.CategoryLevel == 0);
+            
             if (Technology.CategoryLevel == 0 && !Technology.Active)
             {
                 Technology = _technologies.FirstOrDefault(t => t.Parent != null);

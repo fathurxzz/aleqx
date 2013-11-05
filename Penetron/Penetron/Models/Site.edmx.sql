@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/05/2013 12:54:02
+-- Date Created: 11/05/2013 17:57:06
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `penetron`;
-CREATE DATABASE `penetron`;
-USE `penetron`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -103,7 +100,8 @@ CREATE TABLE `Content` (
     `Title` varchar( 200 )  NOT NULL,
     `Text` longtext  NULL,
     `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL
+    `SeoKeywords` longtext  NULL,
+    `MainPage` bool  NOT NULL
 );
 
 

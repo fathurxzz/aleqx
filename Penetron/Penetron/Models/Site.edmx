@@ -97,6 +97,7 @@
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
+    <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
@@ -324,6 +325,7 @@
           <Property Type="String" Name="Text" Nullable="true" />
           <Property Type="String" Name="SeoDescription" Nullable="true" />
           <Property Type="String" Name="SeoKeywords" Nullable="true" />
+          <Property Type="Boolean" Name="MainPage" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -399,6 +401,7 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+          <ScalarProperty Name="MainPage" ColumnName="MainPage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -451,7 +454,7 @@
           <ConnectorPoint PointX="11" PointY="2.3939925130208337" />
           <ConnectorPoint PointX="12.25" PointY="2.3939925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="10.5" PointY="4.5" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="10.5" PointY="4.5" Height="2.3648893229166656" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

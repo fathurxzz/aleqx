@@ -7,23 +7,58 @@
             }
             else
             {
-                @Html.ActionLink("технологии", "Technologies", "Home", new { area = "" }, new { @class = ViewBag.CategoryLevel == "technology"?"active":"" })
+                @Html.ActionLink("технологии", "Technologies", "Home", new { area = "" }, new { @class = ViewBag.CategoryLevel == "technology" ? "active" : "" })
             }
         </li>
         <li>
-            @Html.ActionLink("продукция", "SiteContent", "Home", new { area = "", id = "production" }, null)
+            @if (ViewBag.CurrentPage == "production")
+            {
+                <text>продукция</text>
+            }
+            else
+            {
+                @Html.ActionLink("продукция", "SiteContent", "Home", new { area = "", id = "production" }, null)
+            }
         </li>
         <li>
-            @Html.ActionLink("статьи и документация", "SiteContent", "Home", new { area = "", id = "documents" }, null)
+            @if (ViewBag.CurrentPage == "documents")
+            {
+                <text>статьи и документация</text>
+            }
+            else
+            {
+                @Html.ActionLink("статьи и документация", "SiteContent", "Home", new {area = "", id = "documents"}, null)
+            }
         </li>
         <li>
-            @Html.ActionLink("объекты и решения", "Technologies", "Home", new { area = "" }, null)
+            @if (ViewBag.CategoryLevel == "buildingRoot")
+            {
+                <text>объекты и решения</text>
+            }
+            else
+            {
+                @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "" }, new { @class = ViewBag.CategoryLevel == "building" ? "active" : "" })
+            }
         </li>
         <li>
-            @Html.ActionLink("где купить", "SiteContent", "Home", new { area = "", id = "wheretobuy" }, null)
+            @if (ViewBag.CurrentPage == "wheretobuy")
+            {
+                <text>где купить</text>
+            }
+            else
+            {
+                @Html.ActionLink("где купить", "SiteContent", "Home", new {area = "", id = "wheretobuy"}, null)
+            }
         </li>
         <li>
-            @Html.ActionLink("о компании", "SiteContent", "Home", new { area = "", id = "about" }, null)
+             @if (ViewBag.CurrentPage == "about")
+             {
+                 <text>о компании</text>
+             }
+             else
+             {
+                 @Html.ActionLink("о компании", "SiteContent", "Home", new {area = "", id = "about"}, null)
+             }
         </li>
     </ul>
 </div>
