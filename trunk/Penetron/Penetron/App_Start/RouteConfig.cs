@@ -15,6 +15,12 @@ namespace Penetron
             routes.IgnoreRoute("favicon.ico");
 
             routes.MapRoute(
+           "MainPage", // Route name
+           "", // URL with parameters
+           new { controller = "Home", action = "Index"} // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "LogIn", // Route name
                 "login", // URL with parameters
                 new { controller = "Auth", action = "Login" } // Parameter defaults
@@ -26,19 +32,28 @@ namespace Penetron
                 new { controller = "Auth", action = "Logout" } // Parameter defaults
             );
 
+
+
             routes.MapRoute(
                 name: "Technologies",
                 url: "technologies",
-                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional}
+                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Technology",
                 url: "technology/{id}",
-                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional}
+                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional }
             );
 
-            
+
+
+            routes.MapRoute(
+           "SiteContent", // Route name
+           "{id}", // URL with parameters
+           new { controller = "Home", action = "SiteContent", id = UrlParameter.Optional } // Parameter defaults
+            );
+
 
             routes.MapRoute(
                 name: "Default",

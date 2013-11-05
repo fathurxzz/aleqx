@@ -18,7 +18,16 @@ namespace Penetron.Models
 
             _buildings = context.Building.Include("Children").Include("BuildingObjs").ToList();
 
-            Building = _buildings.FirstOrDefault(t => t.Name == contentId);
+            Building = _buildings.First(t => t.Name == contentId || t.CategoryLevel == 0);
+
+            if (Building.CategoryLevel == 0 && !Building.Active)
+            {
+                Building = _buildings.FirstOrDefault(t => t.Parent != null);
+                if (Building != null)
+                {
+                    _contentId = Building.Name;
+                }
+            }
 
             if (Building != null)
             {

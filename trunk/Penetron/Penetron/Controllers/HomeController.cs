@@ -19,6 +19,8 @@ namespace Penetron.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.IsHomePage = true;
+
             return View();
         }
 
@@ -36,13 +38,18 @@ namespace Penetron.Controllers
         {
             var model = new SiteModel(_context, id);
             ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.CurrentPage = model.Content.Name;
             this.SetSeoContent(model);
             return View(model);
         }
 
-        public ActionResult Buildings()
+        public ActionResult Buildings(string id)
         {
-            return View();
+            var model = new BuildingModel(_context, id);
+            ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "buildingRoot" : "building";
+            this.SetSeoContent(model);
+            return View(model);
         }
 
     }

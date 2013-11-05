@@ -6,7 +6,7 @@ using SiteExtensions;
 
 namespace Penetron.Models
 {
-    public class SiteModel:ISiteModel 
+    public class SiteModel : ISiteModel
     {
         public string Title { get; set; }
         public string SeoDescription { get; set; }
@@ -17,17 +17,12 @@ namespace Penetron.Models
         public Building Building { get; set; }
         public Content Content { get; set; }
 
-
-
         public SiteModel(SiteContext context, string contentId)
         {
             Title = "ПЕНЕТРОН УКРАИНА";
-            Content = context.Content.FirstOrDefault(c => c.Name == contentId);
-            if (Content != null)
-            {
-                SeoDescription = Content.SeoDescription;
-                SeoKeywords = Content.SeoKeywords;
-            }
+            Content = context.Content.First(c => c.Name == contentId || c.MainPage);
+            SeoDescription = Content.SeoDescription;
+            SeoKeywords = Content.SeoKeywords;
         }
 
     }
