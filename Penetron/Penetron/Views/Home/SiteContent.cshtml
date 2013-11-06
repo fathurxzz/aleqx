@@ -4,7 +4,7 @@
         <div class="title-container">
             @if (Request.IsAuthenticated)
             {
-                @Html.ActionLink("Редактировать контент", "Edit", "Content", new { area = "Admin", id = Model.Content.Name }, new { @class = "adminLink" })
+                @Html.ActionLink("Редактировать контент", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
             }
             @if (Model.Content != null)
             {

@@ -7,7 +7,7 @@
             }
             else
             {
-                @Html.ActionLink("технологии", "Technologies", "Home", new { area = "" }, new { @class = ViewBag.CategoryLevel == "technology" ? "active" : "" })
+                @Html.ActionLink("технологии", "Technologies", "Home", new { area = "",categoryId="",subCategoryId="" }, new { @class = ViewBag.CategoryLevel == "technology" ? "active" : "" })
             }
         </li>
         <li>

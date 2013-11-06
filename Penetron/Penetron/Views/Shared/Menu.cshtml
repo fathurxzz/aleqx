@@ -16,11 +16,20 @@
                     <div class="arrow1">
                         <div class="arrow2">
                             <div class="menucontent">
-                                <a href="#">
-                                    @Html.DisplayFor(modelItem => item.Title)
-                                </a>
+                                @if (item.ContentActive)
+                                {
+                                    @Html.ActionLink(item.Title, "Technologies", "Home", new { categoryId = item.Name, subCategoryId="" }, null)
+                                }
+                                else
+                                {
+                                    <a href="#">
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </a>
+                                }
+
                                 @if (Request.IsAuthenticated)
                                 {
+                                    <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
                                     <br />
                                     @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     <br />
@@ -42,29 +51,33 @@
             }
             else
             {
-                if (firstChild)
-                {
-                    <li class="separator child-sep"></li>
-                    firstChild = false;
-                }
-                <li class="child">
+                //if (item.Show)
+                //{
+                    if (firstChild)
+                    {
+                        <li class="separator child-sep"></li>
+                        firstChild = false;
+                    }
+                    <li class="child">
                     
-                    @if (item.Current)
-                    {
-                        @Html.DisplayFor(modelItem => item.Title)
-                    }
-                    else
-                    {
-                        @Html.ActionLink(item.Title, "Technologies", "Home", new { id = item.Name }, null)
-                    }
+                        @if (item.Current)
+                        {
+                            @Html.DisplayFor(modelItem => item.Title)
+                        }
+                        else
+                        {
+                            @Html.ActionLink(item.Title, "Technologies", "Home", new { categoryId = item.ParentId, subCategoryId=item.Name }, null)
+                        }
                     
-                    @if (Request.IsAuthenticated)
-                    {
-                        <br />
-                        @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                    }
+                        @if (Request.IsAuthenticated)
+                        {
+                            <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
+                            <br />
+                            @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        }
 
-                </li>
+                    </li>
+                //}
             }
         }
     </ul>

@@ -30,10 +30,10 @@ namespace Penetron.Utils
                 {
                     transCh = _mReplacementRules[loweredCh];
 
-                    if (char.IsUpper(ch) && transCh != "")
-                    {
-                        transCh = transCh.Replace(transCh[0], char.ToUpper(transCh[0]));
-                    }
+                    //if (char.IsUpper(ch) && transCh != "")
+                    //{
+                    //    transCh = transCh.Replace(transCh[0], char.ToUpper(transCh[0]));
+                    //}
                 }
 
                 _mBuilder.Append(transCh);
