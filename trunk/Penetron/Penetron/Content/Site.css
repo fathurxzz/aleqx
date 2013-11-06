@@ -243,7 +243,14 @@ div#content, div#errorContent
 
 
 .login-form {
-    
+    width: 200px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+.login-form table td {
+    padding: 3px 10px;
 }
 
 #menu {
@@ -354,6 +361,7 @@ div#content, div#errorContent
     position: relative;
     margin-left: 115px;
     margin-right: 100px;
+    padding-bottom: 50px;
     
 }
 
@@ -415,23 +423,96 @@ div#content, div#errorContent
 
 
 
-.carusel-frame {
+.carusel {
     width: 636px;
     height: 384px;
     position: relative;
     margin: 0 auto;
 }
 
-.carusel-frame .image {
+.carusel .image {
     position: absolute;
     top: 12px;
     left: 12px;
 }
 
 
-.carusel-frame .frame {
+.carusel .frame {
     width: 636px;
     height: 384px;
     position: absolute;
     background: url('img/carusel-frame.png');
 }
+
+
+.objects-viewer {
+    width: 636px;
+    height: 384px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.objects-viewer .frame 
+{
+    width: 636px;
+    height: 384px;
+    position: absolute;
+    background: url('img/carusel-frame.png');
+}
+
+.objects-viewer .image-container {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.objects-viewer .image {
+    position: absolute;
+    display: none;
+}
+
+.objects-viewer .links {
+    position: absolute;
+    width: 122px;
+    height: 46px;
+    text-align: center;
+    color: #fff;
+    padding-top: 20px;
+    font-family: Verdana;
+    font-size: 11px;
+}
+.objects-viewer .links a {
+    color: inherit;
+}
+
+.objects-viewer .links.left {
+    background: url('img/object-left.png');
+    left: -70px;
+    padding-right: 25px;
+    padding-left: 5px;
+    
+}
+
+.objects-viewer .links.right {
+    background: url('img/object-right.png');
+    right:-70px;
+    padding-right: 5px;
+    padding-left: 25px;
+}
+
+.objects-viewer .links.link1, .objects-viewer .links.link4 {
+    top: 75px;
+    
+}
+
+.objects-viewer .links.link2, .objects-viewer .links.link5 {
+    top: 175px;
+}
+
+.objects-viewer .links.link3, .objects-viewer .links.link6 {
+    top: 275px;
+}
+
+
+.imageLink
+{}

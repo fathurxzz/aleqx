@@ -202,8 +202,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\BuildingModel.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\ICategoryModel.cs" />
     <Compile Include="Models\IMessageService.cs" />
     <Compile Include="Models\SiteMenu.cs" />
     <Compile Include="Models\MessageService.cs" />
@@ -384,6 +386,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Reasons.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Building\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Building\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\ObjectsViever.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Building\AddImage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -38,19 +38,26 @@
                 
             }
 
-            @Html.Partial("Menu", Model.TechnologyMenu)
+            @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" } })
             <div class="content-text">
                 @if (Model.Technology != null)
                 {
                     @Html.Raw(Model.Technology.Text)
+
+                    if (Request.IsAuthenticated)
+                    {
+                            @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                    }
                 }
+                
+
                 @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
                 {
                     <div class="stars">
                     </div>
                 
-                    <div class="carusel">
-                        @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                    @*<div class="carusel">
+                        
                         <div class="carusel-frame">
                             <div class="image">
                                 @Html.Raw(Html.CachedImage("~/Content/Images", Model.Technology.TechnologyImages.First().ImageSource, SiteSettings.GetThumbnail("carusel")))
@@ -58,7 +65,9 @@
                             <div class="frame">
                             </div>
                         </div>
-                    </div>
+                    </div>*@
+                    
+                    @Html.Partial("Carusel", Model.Technology.TechnologyImages)
                 }
             </div>
             <div class="clear">
@@ -66,3 +75,13 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#bx1").bxSlider();
+        });
+    </script>
+}

@@ -11,14 +11,21 @@ namespace Penetron.Models
         private readonly IList<Building> _buildings;
         public string ParentTitle { get; set; }
         public IList<SiteMenuItem> BuildingMenu { get; protected set; }
+        private readonly string _categoryId;
+        private readonly string _subCategoryId;
 
-        public BuildingModel(SiteContext context, string contentId) : base(context, contentId)
+        public IList<BuildingObj> BuildingObjects { get; set; }
+
+        public BuildingModel(SiteContext context, string categoryId, string subCategoryId)
+            : base(context, null)
         {
-            _contentId = contentId;
+            _categoryId = categoryId;
+            _subCategoryId = subCategoryId;
+            _contentId = subCategoryId ?? categoryId;
 
-            _buildings = context.Building.Include("Children").Include("BuildingObjs").ToList();
+            _buildings = context.Building.Include("Children").ToList();
 
-            Building = _buildings.First(t => t.Name == contentId || t.CategoryLevel == 0);
+            Building = _buildings.First(t => t.Name == _contentId || t.CategoryLevel == 0);
 
             if (Building.CategoryLevel == 0 && !Building.Active)
             {
@@ -39,6 +46,9 @@ namespace Penetron.Models
                 SeoKeywords = Building.SeoKeywords;
             }
             GetMenu();
+
+            BuildingObjects = context.BuildingObj.ToList();
+
         }
 
         private void GetMenu()
@@ -46,13 +56,33 @@ namespace Penetron.Models
             BuildingMenu = new List<SiteMenuItem>();
             foreach (var technology in _buildings.OrderBy(t => t.SortOrder))
             {
-                if (technology.Parent == null)
+                if (technology.Parent == null && technology.CategoryLevel != 0)
                 {
-                    BuildingMenu.Add(new SiteMenuItem { Name = technology.Name, Title = technology.Title, Parent = true, Id = technology.Id, HasChildren = technology.Children.Any() });
+                    BuildingMenu.Add(new SiteMenuItem
+                    {
+                        Name = technology.Name,
+                        Title = technology.Title,
+                        Parent = true,
+                        Id = technology.Id,
+                        HasChildren = technology.Children.Any(),
+                        ContentActive = technology.Active,
+                        SortOrder = technology.SortOrder,
+                        Current = technology.Name == _categoryId
+                    });
 
                     foreach (var child in technology.Children.OrderBy(t => t.SortOrder))
                     {
-                        BuildingMenu.Add(new SiteMenuItem { Name = child.Name, Title = child.Title, Parent = false, Id = child.Id, Current = child.Name == _contentId });
+                        BuildingMenu.Add(new SiteMenuItem
+                        {
+                            Name = child.Name,
+                            Title = child.Title,
+                            Parent = false,
+                            Id = child.Id,
+                            ParentId = technology.Name,
+                            Current = child.Name == _contentId,
+                            Show = (technology.Name == _categoryId),
+                            SortOrder = child.SortOrder,
+                        });
                     }
                 }
             }
