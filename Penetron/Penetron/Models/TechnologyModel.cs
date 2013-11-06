@@ -95,5 +95,14 @@ namespace Penetron.Models
                 }
             }
         }
+
+
+
+        public void Method<T>(T aaa)
+        {
+            
+        }
+
+
     }
 }
