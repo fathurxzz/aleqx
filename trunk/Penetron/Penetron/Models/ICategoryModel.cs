@@ -5,5 +5,8 @@ using System.Text;
 
 namespace Penetron.Models
 {
- 
+    public interface ICategoryModel
+    {
+        string Name { get; set; }
+    }
 }

@@ -8,7 +8,7 @@ using System.Web;
 namespace Penetron.Models
 {
     [MetadataType(typeof(TechnologyValidation))]
-    public partial class Technology
+    public partial class Technology:ICategoryModel
     {
 
     }
