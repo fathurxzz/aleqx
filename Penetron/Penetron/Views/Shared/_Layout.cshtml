@@ -5,6 +5,9 @@
     <title>ПЕНЕТРОН УКРАИНА</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="@ViewBag.SeoDescription" />
+    <meta name="keywords" content="@ViewBag.SeoKeywords" />
+
     @Styles.Render("~/Content/Site.css")
     @Styles.Render("~/Content/bx_styles/bx_styles.css")
 
@@ -22,6 +25,12 @@
         
         <div class="header top">
             <div class="page">
+                 @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Выйти из системы администрирования", "LogOut", "Auth",null,new{@class="adminLink"})
+            </div>
+        }
                 <div id="phone">
                 </div>
                 <div id="logo">
@@ -29,6 +38,8 @@
                 @Html.Partial("MainMenu")
             </div>
         </div>
+       
+        
         @RenderBody()
         <div id="footer">
             <div id="em">

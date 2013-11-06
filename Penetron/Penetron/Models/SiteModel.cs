@@ -20,7 +20,7 @@ namespace Penetron.Models
         public SiteModel(SiteContext context, string contentId)
         {
             Title = "ПЕНЕТРОН УКРАИНА";
-            Content = context.Content.First(c => c.Name == contentId || c.MainPage);
+            Content = context.Content.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
             SeoDescription = Content.SeoDescription;
             SeoKeywords = Content.SeoKeywords;
         }
