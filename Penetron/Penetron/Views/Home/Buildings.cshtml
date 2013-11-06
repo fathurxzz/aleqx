@@ -34,14 +34,14 @@
                 </div>
                 
             }
-            @Html.Partial("Menu", Model.BuildingMenu)
+            @Html.Partial("Menu", Model.BuildingMenu, new ViewDataDictionary { { "category", "Buildings" }, { "categoryAdmin", "Building" } })
             <div class="content-text">
                 @if (Model.Building != null)
                 {
                     @Html.Raw(Model.Building.Text)
                 }
                 
-@*@if (Model.Building != null && Model.Building.TechnologyImages.Any())
+                @*@if (Model.Building != null && Model.Building.TechnologyImages.Any())
                 {
                     <div class="stars">
                     </div>
@@ -58,6 +58,10 @@
                     </div>
                 }*@
             </div>
+            
+            
+            @Html.Partial("ObjectsViever",Model.BuildingObjects)
+
             <div class="clear">
             </div>
         </div>

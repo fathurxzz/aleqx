@@ -1,0 +1,50 @@
+﻿@using Penetron
+@using SiteExtensions.Graphics
+@model IEnumerable<Penetron.Models.BuildingObj>
+
+
+
+
+<div class="objects-viewer">
+    <div class="image-container">
+        @foreach (var obj in Model)
+        {
+            foreach (var item in obj.BuildingImages)
+            {
+                var imageId = "img" + item.Id;
+                var className = "group" + obj.Id;
+                <div id="@imageId" class="image @className">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div style="position: absolute; padding-left: 20px; padding-top: 10px; z-index: 1001">
+                        @Html.ActionLink("Удалить", "DeleteImage", "Building", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                        </div>
+                    }
+                    @Html.Raw(Html.CachedImage("~/Content/Images", item.ImageSource, SiteSettings.GetThumbnail("carusel")))
+                </div>
+            }
+        }
+    </div>
+    <div class="frame">
+    </div>
+    @{
+        var i = 1;
+        foreach (var obj in Model)
+        {
+            string className = "link" + i;
+            string classNamePos = i < 4 ? "left" : "right";
+        <div class="links @className @classNamePos">
+            <a href="#" id="@obj.Id" class="imageLink">@obj.Title</a>
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("Добавить изображение", "AddImage", "Building", new { area = "Admin", id = obj.Id }, new { @class = "adminLink" })
+            }
+        </div>
+            i++;
+        }
+    }
+</div>
+
+
+
+

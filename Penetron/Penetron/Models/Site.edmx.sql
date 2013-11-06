@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/05/2013 17:57:06
+-- Date Created: 11/06/2013 12:11:26
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `penetron`;
+CREATE DATABASE `penetron`;
+USE `penetron`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -80,8 +83,7 @@ CREATE TABLE `Building` (
 
 CREATE TABLE `BuildingObj` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `BuildingId` int  NOT NULL
+    `Title` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'BuildingImage'
@@ -159,21 +161,6 @@ ADD CONSTRAINT `FK_BuildingBuilding`
 
 CREATE INDEX `IX_FK_BuildingBuilding` 
     ON `Building`
-    (`BuildingId`);
-
--- Creating foreign key on `BuildingId` in table 'BuildingObj'
-
-ALTER TABLE `BuildingObj`
-ADD CONSTRAINT `FK_BuildingBuildingObj`
-    FOREIGN KEY (`BuildingId`)
-    REFERENCES `Building`
-        (`Id`)
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_BuildingBuildingObj'
-
-CREATE INDEX `IX_FK_BuildingBuildingObj` 
-    ON `BuildingObj`
     (`BuildingId`);
 
 -- Creating foreign key on `BuildingObjId` in table 'BuildingImage'

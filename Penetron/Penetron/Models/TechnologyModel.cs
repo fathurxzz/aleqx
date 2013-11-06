@@ -25,8 +25,12 @@ namespace Penetron.Models
             
             _technologies = context.Technology.Include("Children").ToList();
 
+
+            if (subCategoryId == null)
+                ParentTitle = _technologies.Single(t => t.CategoryLevel == 0).Title;
             Technology = _technologies.First(t => t.Name == _contentId || t.CategoryLevel == 0);
             
+
 
             if (Technology.CategoryLevel == 0 && !Technology.Active)
             {
@@ -39,7 +43,6 @@ namespace Penetron.Models
 
 
 
-
             if (Technology != null)
             {
                 if (Technology.Parent != null)
@@ -49,7 +52,10 @@ namespace Penetron.Models
                 SeoDescription = Technology.SeoDescription;
                 SeoKeywords = Technology.SeoKeywords;
             }
+
+
             GetMenu();
+
         }
 
 

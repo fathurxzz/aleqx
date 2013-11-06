@@ -22,7 +22,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnologyImage", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "TechnologyImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnology", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Technology), "Technology1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Technology), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingBuilding", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Building), "Building1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Building), true)]
-[assembly: EdmRelationshipAttribute("Site", "BuildingBuildingObj", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Building), "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingObj), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingObjBuildingImage", "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.BuildingObj), "BuildingImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingImage), true)]
 
 #endregion
@@ -573,28 +572,6 @@ namespace Penetron.Models
                 }
             }
         }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuildingObj", "BuildingObj")]
-        public EntityCollection<BuildingObj> BuildingObjs
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BuildingObj>("Site.BuildingBuildingObj", "BuildingObj");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BuildingObj>("Site.BuildingBuildingObj", "BuildingObj", value);
-                }
-            }
-        }
 
         #endregion
 
@@ -766,13 +743,11 @@ namespace Penetron.Models
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="title">Initial value of the Title property.</param>
-        /// <param name="buildingId">Initial value of the BuildingId property.</param>
-        public static BuildingObj CreateBuildingObj(global::System.Int32 id, global::System.String title, global::System.Int32 buildingId)
+        public static BuildingObj CreateBuildingObj(global::System.Int32 id, global::System.String title)
         {
             BuildingObj buildingObj = new BuildingObj();
             buildingObj.Id = id;
             buildingObj.Title = title;
-            buildingObj.BuildingId = buildingId;
             return buildingObj;
         }
 
@@ -830,73 +805,11 @@ namespace Penetron.Models
         private global::System.String _Title;
         partial void OnTitleChanging(global::System.String value);
         partial void OnTitleChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 BuildingId
-        {
-            get
-            {
-                return _BuildingId;
-            }
-            set
-            {
-                OnBuildingIdChanging(value);
-                ReportPropertyChanging("BuildingId");
-                _BuildingId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("BuildingId");
-                OnBuildingIdChanged();
-            }
-        }
-        private global::System.Int32 _BuildingId;
-        partial void OnBuildingIdChanging(global::System.Int32 value);
-        partial void OnBuildingIdChanged();
 
         #endregion
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuildingObj", "Building")]
-        public Building Building
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingObj", "Building").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingObj", "Building").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Building> BuildingReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingObj", "Building");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Building>("Site.BuildingBuildingObj", "Building", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
