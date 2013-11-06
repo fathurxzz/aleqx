@@ -37,7 +37,7 @@
             }
             else
             {
-                @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "" }, new { @class = ViewBag.CategoryLevel == "building" ? "active" : "" })
+                @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "", categoryId = "", subCategoryId = "" }, new { @class = ViewBag.CategoryLevel == "building" ? "active" : "" })
             }
         </li>
         <li>
