@@ -17,7 +17,7 @@ namespace Penetron
             routes.MapRoute(
            "MainPage", // Route name
            "", // URL with parameters
-           new { controller = "Home", action = "Index"} // Parameter defaults
+           new { controller = "Home", action = "Index" } // Parameter defaults
             );
 
             routes.MapRoute(
@@ -32,20 +32,11 @@ namespace Penetron
                 new { controller = "Auth", action = "Logout" } // Parameter defaults
             );
 
-
-
-            routes.MapRoute(
-                name: "Technologies",
-                url: "technologies",
-                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional }
-            );
-
             routes.MapRoute(
                 name: "Technology",
-                url: "technology/{id}",
-                defaults: new { controller = "Home", action = "Technologies", id = UrlParameter.Optional }
+                url: "technologies/{categoryId}/{subCategoryId}",
+                defaults: new { controller = "Home", action = "Technologies", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }
             );
-
 
 
             routes.MapRoute(

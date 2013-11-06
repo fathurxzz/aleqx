@@ -15,6 +15,11 @@ namespace Penetron.Models
         public bool Current { get; set; }
         public bool Parent { get; set; }
         public bool HasChildren { get; set; }
+        public bool Show { get; set; }
+
+        public bool ContentActive { get; set; }
+        public string ParentId { get; set; }
+        public int SortOrder { get; set; }
     }
     
 }

@@ -54,11 +54,31 @@ namespace Penetron.Models
             {
                 if (technology.Parent == null)
                 {
-                    TechnologyMenu.Add(new SiteMenuItem { Name = technology.Name, Title = technology.Title, Parent = true, Id = technology.Id, HasChildren = technology.Children.Any() });
+                    TechnologyMenu.Add(new SiteMenuItem
+                                       {
+                                           Name = technology.Name, 
+                                           Title = technology.Title, 
+                                           Parent = true, 
+                                           Id = technology.Id, 
+                                           HasChildren = technology.Children.Any(), 
+                                           ContentActive = technology.Active,
+                                           SortOrder = technology.SortOrder
+                                       });
 
                     foreach (var child in technology.Children.OrderBy(t => t.SortOrder))
                     {
-                        TechnologyMenu.Add(new SiteMenuItem { Name = child.Name, Title = child.Title, Parent = false, Id = child.Id, Current = child.Name == _contentId });
+                        TechnologyMenu.Add(new SiteMenuItem
+                                           {
+                                               Name = child.Name, 
+                                               Title = child.Title,
+                                               Parent = false,
+                                               Id = child.Id, 
+                                               ParentId = technology.Name, 
+                                               Current = child.Name == _contentId, 
+                                               Show = (child.Parent.Name==Technology.Name),
+                                               SortOrder = child.SortOrder
+
+                                           });
                     }
                 }
             }

@@ -203,6 +203,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BuildingModel.cs" />
+    <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\IMessageService.cs" />
     <Compile Include="Models\SiteMenu.cs" />
     <Compile Include="Models\MessageService.cs" />
