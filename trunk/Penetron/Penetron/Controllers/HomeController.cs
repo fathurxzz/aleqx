@@ -27,8 +27,7 @@ namespace Penetron.Controllers
 
         public ActionResult Technologies(string categoryId, string subCategoryId)
         {
-            string id = subCategoryId ?? categoryId;
-            var model = new TechnologyModel(_context, id);
+            var model = new TechnologyModel(_context, categoryId,subCategoryId);
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.CategoryLevel = model.Technology.CategoryLevel == 0 ? "technologyRoot" : "technology";
             this.SetSeoContent(model);

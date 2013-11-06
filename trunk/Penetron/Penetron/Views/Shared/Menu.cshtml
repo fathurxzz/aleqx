@@ -1,83 +1,68 @@
 ﻿@model IEnumerable<Penetron.Models.SiteMenuItem>
-
-@{
-    bool firstChild=false;
-}
-
 <div id="menu">
     <ul>
         @foreach (var item in Model)
         {
-            
+
             if (item.Parent)
             {
                 
-                <li class="gradient-div parent">
-                    <div class="arrow1">
-                        <div class="arrow2">
-                            <div class="menucontent">
-                                @if (item.ContentActive)
-                                {
-                                    @Html.ActionLink(item.Title, "Technologies", "Home", new { categoryId = item.Name, subCategoryId="" }, null)
-                                }
-                                else
-                                {
-                                    <a href="#">
-                                        @Html.DisplayFor(modelItem => item.Title)
-                                    </a>
-                                }
-
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
-                                    <br />
-                                    @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    <br />
-                                    @Html.ActionLink("Добавить подраздел", "Create", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                }
-                            </div>
+            <li class="gradient-div parent">
+                <div class="arrow1">
+                    <div class="arrow2">
+                        <div class="menucontent">
+                            @if (item.ContentActive)
+                            {
+                                @Html.ActionLink(item.Title, "Technologies", "Home", new { categoryId = item.Name, subCategoryId = "" }, null)
+                            }
+                            else
+                            {
+                                <a href="#">
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </a>
+                            }
+                            @if (Request.IsAuthenticated)
+                            {
+                                <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
+                                <br />
+                                @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                <br />
+                                @Html.ActionLink("Добавить подраздел", "Create", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            }
                         </div>
                     </div>
-                </li>
-                if (!item.HasChildren)
-                {
-                    <li class="separator"></li>
-                }
-                else
-                {
-                    firstChild = true;
-                }
-
+                </div>
+            </li>
+                            if (!item.HasChildren||!item.Current)
+                            {
+            <li class="separator"></li>
+                            }
             }
             else
             {
-                //if (item.Show)
-                //{
-                    if (firstChild)
-                    {
-                        <li class="separator child-sep"></li>
-                        firstChild = false;
-                    }
-                    <li class="child">
+                if (item.Show)
+                {
+                   
+            <li class="separator child-sep"></li>
+                        
                     
-                        @if (item.Current)
-                        {
-                            @Html.DisplayFor(modelItem => item.Title)
-                        }
-                        else
-                        {
-                            @Html.ActionLink(item.Title, "Technologies", "Home", new { categoryId = item.ParentId, subCategoryId=item.Name }, null)
-                        }
-                    
-                        @if (Request.IsAuthenticated)
-                        {
-                            <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
-                            <br />
-                            @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                        }
-
-                    </li>
-                //}
+            <li class="child">
+                @if (item.Current)
+                {
+                    @Html.DisplayFor(modelItem => item.Title)
+                }
+                else
+                {
+                    @Html.ActionLink(item.Title, "Technologies", "Home", new { categoryId = item.ParentId, subCategoryId = item.Name }, null)
+                }
+                @if (Request.IsAuthenticated)
+                {
+                    <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
+                    <br />
+                    @Html.ActionLink("Редактировать", "Edit", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                }
+            </li>
+                }
             }
         }
     </ul>

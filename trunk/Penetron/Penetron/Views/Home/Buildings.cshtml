@@ -29,7 +29,9 @@
         <div class="text-container">
             @if (Request.IsAuthenticated)
             {
-                @Html.ActionLink("Редактировать основную страницу объектов", "EditMainPage", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
+                <div class="adminLinkContainer">
+                    @Html.ActionLink("Редактировать основную страницу объектов", "EditMainPage", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
+                </div>
                 
             }
             @Html.Partial("Menu", Model.BuildingMenu)

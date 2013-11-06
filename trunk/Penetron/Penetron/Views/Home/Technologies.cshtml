@@ -32,7 +32,9 @@
         <div class="text-container">
             @if (Request.IsAuthenticated)
             {
+                <div class="adminLinkContainer">
                 @Html.ActionLink("Редактировать основную страницу технологий","EditMainPage","Technology",new{area="Admin"},new{@class="adminLink"})
+                </div>
                 
             }
 
