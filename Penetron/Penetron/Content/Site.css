@@ -33,11 +33,14 @@ body
     position: relative;
 }
 
+
 .header.middle
 {
     height: 337px;
-    background: url('img/header-bottom-bg.gif') repeat-x;
-    background-position: 50% 0;
+    background: url('img/header-bottom-bg.gif') no-repeat;
+    
+    /*background-position: 50% 0;*/
+    background-size: 100%;
     margin-top: -7px;
 }
 
