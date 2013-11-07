@@ -2,59 +2,60 @@
 @using SiteExtensions.Graphics
 @model Penetron.Models.TechnologyModel
 <div class="content-container">
-    <div class="content">
-        <div class="title-container">
-            @if (Model.Technology != null)
-            {
-                
-                <div class="parentTitle">
-                @if (Model.ParentTitle != null)
-                {
-                    @Model.ParentTitle <text>/</text>
-            
-                    }
-                    </div>
-            
-                <table class="title">
-                    <tr>
-                        <td class="left">
-                        </td>
-                        <td class="center">@Model.Technology.Title
-                        </td>
-                        <td class="right">
-                        </td>
-                    </tr>
-                </table>
-           
-            
-            }
-        </div>
-        <div class="text-container">
-            @if (Request.IsAuthenticated&&Model.Technology!=null&&Model.Technology.CategoryLevel==0)
-            {
-                <div class="adminLinkContainer">
-                @Html.ActionLink("Редактировать основную страницу технологий","EditMainPage","Technology",new{area="Admin"},new{@class="adminLink"})
-                </div>
-                
-            }
-
-            @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" } })
-            <div class="content-text">
+    
+        <div class="content">
+            <div class="title-container">
                 @if (Model.Technology != null)
                 {
-                    @Html.Raw(Model.Technology.Text)
-
-                    if (Request.IsAuthenticated)
-                    {
-                            @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
-                    }
+                
+                    <div class="parentTitle">
+                        @if (Model.ParentTitle != null)
+                        {
+                            @Model.ParentTitle <text>/</text>
+            
+                        }
+                    </div>
+            
+                    <table class="title">
+                        <tr>
+                            <td class="left">
+                            </td>
+                            <td class="center">@Model.Technology.Title
+                            </td>
+                            <td class="right">
+                            </td>
+                        </tr>
+                    </table>
+           
+            
                 }
+            </div>
+            <div class="text-container">
+                @if (Request.IsAuthenticated&&Model.Technology!=null&&Model.Technology.CategoryLevel==0)
+                {
+                    <div class="adminLinkContainer">
+                        @Html.ActionLink("Редактировать основную страницу технологий","EditMainPage","Technology",new{area="Admin"},new{@class="adminLink"})
+                    </div>
+                
+                }
+
+                @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" } })
+                <div class="content-text">
+                    @if (Model.Technology != null)
+                    {
+                        @Html.Raw(Model.Technology.Text)
+
+                        if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                        }
+                    }
                 
 
-                @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
-                {
-                    <div class="stars">
-                    </div>
+                    @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
+                    {
+                        <div class="stars">
+                        </div>
                 
                     @*<div class="carusel">
                         
@@ -67,13 +68,14 @@
                         </div>
                     </div>*@
                     
-                    @Html.Partial("Carusel", Model.Technology.TechnologyImages)
-                }
-            </div>
-            <div class="clear">
+                        @Html.Partial("Carusel", Model.Technology.TechnologyImages)
+                    }
+                </div>
+                <div class="clear">
+                </div>
             </div>
         </div>
-    </div>
+        
 </div>
 
 

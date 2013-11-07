@@ -5,6 +5,8 @@
             @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("Редактировать контент", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+               <text>   &nbsp;</text>
+                @Html.ActionLink("Добавить блока контента", "AddContentItem", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
             }
             @if (Model.Content != null)
             {
@@ -40,6 +42,25 @@
                 @if (Model.Content != null)
                 {
                     @Html.Raw(Model.Content.Text)
+
+
+                    foreach (var item in Model.Content.ContentItems.OrderBy(c=>c.SortOrder))
+                    {
+                        <div class="contentItem">
+                            
+                            @if (Request.IsAuthenticated)
+                            {
+                                <span class="sortOrder"> @item.SortOrder</span>
+                                @Html.ActionLink("Редактировать", "EditContentItem","Content",new{area="Admin", id=item.Id},new{@class="adminLink"})
+                                <text> &nbsp;</text>
+                                 @Html.ActionLink("Удалить", "DeleteContentItem", "Content", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить элемент?')" })
+                            }
+
+                            @Html.Raw(item.Text)
+                           
+                        </div>
+  
+                    }
                 }
             </div>
             <div class="clear">

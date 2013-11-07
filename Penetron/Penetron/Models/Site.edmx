@@ -12,6 +12,7 @@
     <EntitySet Name="BuildingObj" EntityType="Site.Store.BuildingObj" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BuildingImage" EntityType="Site.Store.BuildingImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentItem" EntityType="Site.Store.ContentItem" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -27,6 +28,10 @@
     <AssociationSet Name="BuildingObjBuildingImage" Association="Site.Store.BuildingObjBuildingImage">
       <End Role="BuildingObj" EntitySet="BuildingObj" />
       <End Role="BuildingImage" EntitySet="BuildingImage" />
+    </AssociationSet>
+    <AssociationSet Name="ContentContentItem" Association="Site.Store.ContentContentItem">
+      <End Role="Content" EntitySet="Content" />
+      <End Role="ContentItem" EntitySet="ContentItem" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Technology">
@@ -94,6 +99,15 @@
     <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
     <Property Name="MainPage" Type="bool" Nullable="false" />
   </EntityType>
+  <EntityType Name="ContentItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ContentId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
     <End Role="TechnologyImage" Type="Site.Store.TechnologyImage" Multiplicity="*" />
@@ -142,6 +156,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ContentContentItem">
+    <End Role="Content" Type="Site.Store.Content" Multiplicity="1" />
+    <End Role="ContentItem" Type="Site.Store.ContentItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentItem">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -169,6 +195,11 @@
             <End Role="BuildingImage" EntitySet="BuildingImage" />
           </AssociationSet>
           <EntitySet Name="Content" EntityType="Site.Content" />
+          <EntitySet Name="ContentItem" EntityType="Site.ContentItem" />
+          <AssociationSet Name="ContentContentItem" Association="Site.ContentContentItem">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="ContentItem" EntitySet="ContentItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Technology">
           <Key>
@@ -290,7 +321,30 @@
           <Property Type="String" Name="SeoDescription" Nullable="true" />
           <Property Type="String" Name="SeoKeywords" Nullable="true" />
           <Property Type="Boolean" Name="MainPage" Nullable="false" />
+          <NavigationProperty Name="ContentItems" Relationship="Site.ContentContentItem" FromRole="Content" ToRole="ContentItem" />
         </EntityType>
+        <EntityType Name="ContentItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="Site.ContentContentItem" FromRole="ContentItem" ToRole="Content" />
+          <Property Type="Int32" Name="ContentId" Nullable="false" />
+        </EntityType>
+        <Association Name="ContentContentItem">
+          <End Type="Site.Content" Role="Content" Multiplicity="1" />
+          <End Type="Site.ContentItem" Role="ContentItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentItem">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -368,6 +422,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ContentItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.ContentItem)">
+        <MappingFragment StoreEntitySet="ContentItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -414,6 +478,11 @@
           <ConnectorPoint PointX="12.25" PointY="2.235341796875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="10.5" PointY="4.5" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="Site.ContentItem" Width="1.5" PointX="5.125" PointY="5.625" Height="1.5956835937499996" />
+        <AssociationConnector Association="Site.ContentContentItem">
+          <ConnectorPoint PointX="10.5" PointY="6.3410953776041659" />
+          <ConnectorPoint PointX="6.625" PointY="6.3410953776041659" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

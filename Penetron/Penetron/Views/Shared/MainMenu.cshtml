@@ -22,20 +22,20 @@
                 @Html.ActionLink("продукция", "SiteContent", "Home", new { area = "", id = "production" }, null)</li>
         }
         @if (ViewBag.CurrentPage == "documents")
-        {<li class="selected">статьи и документация</li>
+        {<li class="selected w">статьи и документация</li>
         }
         else
-        {<li>
+        {<li class="w">
             @Html.ActionLink("статьи и документация", "SiteContent", "Home", new { area = "", id = "documents" }, null)
         </li>
         }
         @if (ViewBag.CategoryLevel == "buildingRoot")
-        {<li class="selected">объекты и решения</li>
+        {<li class="selected w">объекты и решения</li>
         }
         else
         {
             className = ViewBag.CategoryLevel == "building" ? "selected" : "";
-            <li class="@className">
+            <li class="@className w">
                 @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)</li>
         }
         @if (ViewBag.CurrentPage == "wheretobuy")

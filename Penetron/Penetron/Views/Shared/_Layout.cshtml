@@ -22,7 +22,8 @@
 
 </head>
     <body>
-        
+        <div id="site">
+        </div>
         <div class="header top">
             <div class="page">
                 <div class="search">
@@ -57,10 +58,26 @@
         @RenderSection("Scripts", false)
         
         <script type="text/javascript">
-//            $(function () {
-//                jQuery('.parallax-layer').parallax();
-//            });
-        </script>
+            $(function () {
+                //                jQuery('.parallax-layer').parallax();
 
+                $(window).bind('scroll', function (e) {
+                    parallaxScroll();
+                });    
+
+                        });
+
+            function parallaxScroll() {
+                //alert("!!!");
+                var scrolled = $(window).scrollTop();
+
+                //alert((0 - (scrolled * .25)) + 'px');
+                $('#site').css('top', (0 - (scrolled * .15)) + 'px');
+                //$('#parallax-bg2').css('top', (0 - (scrolled * .5)) + 'px');
+                //$('#parallax-bg3').css('top', (0 - (scrolled * .75)) + 'px');
+            }
+            
+        </script>
+        
     </body>
 </html>

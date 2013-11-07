@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/06/2013 12:11:26
+-- Date Created: 11/07/2013 23:57:56
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `penetron`;
-CREATE DATABASE `penetron`;
-USE `penetron`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -22,7 +19,6 @@ USE `penetron`;
 --    ALTER TABLE `TechnologyImage` DROP CONSTRAINT `FK_TechnologyTechnologyImage`;
 --    ALTER TABLE `Technology` DROP CONSTRAINT `FK_TechnologyTechnology`;
 --    ALTER TABLE `Building` DROP CONSTRAINT `FK_BuildingBuilding`;
---    ALTER TABLE `BuildingObj` DROP CONSTRAINT `FK_BuildingBuildingObj`;
 --    ALTER TABLE `BuildingImage` DROP CONSTRAINT `FK_BuildingObjBuildingImage`;
 
 -- --------------------------------------------------
@@ -106,6 +102,15 @@ CREATE TABLE `Content` (
     `MainPage` bool  NOT NULL
 );
 
+-- Creating table 'ContentItem'
+
+CREATE TABLE `ContentItem` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Text` longtext  NULL,
+    `SortOrder` int  NOT NULL,
+    `ContentId` int  NOT NULL
+);
+
 
 
 -- --------------------------------------------------
@@ -177,6 +182,21 @@ ADD CONSTRAINT `FK_BuildingObjBuildingImage`
 CREATE INDEX `IX_FK_BuildingObjBuildingImage` 
     ON `BuildingImage`
     (`BuildingObjId`);
+
+-- Creating foreign key on `ContentId` in table 'ContentItem'
+
+ALTER TABLE `ContentItem`
+ADD CONSTRAINT `FK_ContentContentItem`
+    FOREIGN KEY (`ContentId`)
+    REFERENCES `Content`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ContentContentItem'
+
+CREATE INDEX `IX_FK_ContentContentItem` 
+    ON `ContentItem`
+    (`ContentId`);
 
 -- --------------------------------------------------
 -- Script has ended

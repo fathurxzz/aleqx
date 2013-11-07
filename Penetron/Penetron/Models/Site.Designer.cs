@@ -23,6 +23,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnology", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Technology), "Technology1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Technology), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingBuilding", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Building), "Building1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Building), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingObjBuildingImage", "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.BuildingObj), "BuildingImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingImage), true)]
+[assembly: EdmRelationshipAttribute("Site", "ContentContentItem", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Content), "ContentItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.ContentItem), true)]
 
 #endregion
 
@@ -169,6 +170,22 @@ namespace Penetron.Models
             }
         }
         private ObjectSet<Content> _Content;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ContentItem> ContentItem
+        {
+            get
+            {
+                if ((_ContentItem == null))
+                {
+                    _ContentItem = base.CreateObjectSet<ContentItem>("ContentItem");
+                }
+                return _ContentItem;
+            }
+        }
+        private ObjectSet<ContentItem> _ContentItem;
 
         #endregion
 
@@ -220,6 +237,14 @@ namespace Penetron.Models
         public void AddToContent(Content content)
         {
             base.AddObject("Content", content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ContentItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContentItem(ContentItem contentItem)
+        {
+            base.AddObject("ContentItem", contentItem);
         }
 
         #endregion
@@ -1042,6 +1067,207 @@ namespace Penetron.Models
         #endregion
 
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ContentContentItem", "ContentItem")]
+        public EntityCollection<ContentItem> ContentItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ContentItem>("Site.ContentContentItem", "ContentItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ContentItem>("Site.ContentContentItem", "ContentItem", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="ContentItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ContentItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ContentItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        /// <param name="contentId">Initial value of the ContentId property.</param>
+        public static ContentItem CreateContentItem(global::System.Int32 id, global::System.Int32 sortOrder, global::System.Int32 contentId)
+        {
+            ContentItem contentItem = new ContentItem();
+            contentItem.Id = id;
+            contentItem.SortOrder = sortOrder;
+            contentItem.ContentId = contentId;
+            return contentItem;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ContentId
+        {
+            get
+            {
+                return _ContentId;
+            }
+            set
+            {
+                OnContentIdChanging(value);
+                ReportPropertyChanging("ContentId");
+                _ContentId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentId");
+                OnContentIdChanged();
+            }
+        }
+        private global::System.Int32 _ContentId;
+        partial void OnContentIdChanging(global::System.Int32 value);
+        partial void OnContentIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ContentContentItem", "Content")]
+        public Content Content
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Site.ContentContentItem", "Content").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Site.ContentContentItem", "Content").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Content> ContentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Content>("Site.ContentContentItem", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Content>("Site.ContentContentItem", "Content", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
