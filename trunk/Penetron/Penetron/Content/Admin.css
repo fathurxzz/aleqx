@@ -45,6 +45,7 @@ a.adminLink:hover
     padding: 50px;
     font-family: Verdana;
     font-size: 12px;
+    background-color: #fff;
 }
 
 .adminContent table td input[type='text'], .adminContent table td input[type='file'], .adminContent table textarea
@@ -62,4 +63,11 @@ a.adminLink:hover
 .sortOrder {
     color: #f00;
     font-weight: bold;
+}
+
+
+.contentItem {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding-bottom: 10px;
 }

@@ -78,13 +78,45 @@ body
 }
 
 .content-container {
-    background-image: url('img/site-bg.gif');
+    
     margin-top: -6px;
+    /*background-color: #f3f3f3;*/
+}
+
+#parallax-bg1 {
+   /* background-image: url('img/site-bg.gif');*/
+    
+    /*z-index: 3;*/
+    /*position: fixed;*/
+    /*position: relative;*/
+    /*left: 50%; */
+    /*top: 0;
+    width: 940px;
+    margin-left: -470px; */
     
 }
 
+#site {
+    display: block;
+    width: 100%;
+    height: 150%;
+    z-index: -1;
+    position: fixed;
+    
+    background: url('img/site-bg.gif') no-repeat;
+   
+   
+   -moz-background-size: 100%; 
+    -webkit-background-size: 100%;
+    -o-background-size: 100%; 
+    background-size: 100%; 
+    
+    
+    background-size: cover;
+}
+
 body {
-    /*background-image: url('img/site-bg.gif');*/
+    
 }
 
 .content
@@ -232,16 +264,22 @@ div#content, div#errorContent
 
 #mainMenu ul li {
     display: inline-block;
-    padding: 17px;
-    padding-top: 47px;
+    padding: 30px 27px 17px;
     /*border: 1px solid black;*/
-    height: 15px;
+    height: 32px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.w {
+    width: 100px;
 }
 
 #mainMenu ul li.selected {
     background-image: url('img/blink.gif');
     background-repeat: no-repeat;
-    background-position: center 9px;
+    background-position: center -1px;
 }
 
 #mainMenu a {
@@ -546,3 +584,9 @@ div#content, div#errorContent
     margin-left: 25px;
     background-color: #f3f3f3;
 }
+
+
+.contentItem {
+    padding-top: 10px;
+}
+
