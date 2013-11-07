@@ -25,16 +25,20 @@
         
         <div class="header top">
             <div class="page">
-                 @if (Request.IsAuthenticated)
-        {
-            <div class="adminLinkContainer">
-                @Html.ActionLink("Выйти из системы администрирования", "LogOut", "Auth",null,new{@class="adminLink"})
-            </div>
-        }
+                <div class="search">
+                    @Html.Editor("search")
+                </div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div style="position:absolute; width: 300px; left: 500px; ">
+                        @Html.ActionLink("Выйти из системы администрирования", "LogOut", "Auth",null,new{@class="adminLink"})
+                    </div>
+                }
                 <div id="phone">
                 </div>
                 <div id="logo">
                 </div>
+                
                 @Html.Partial("MainMenu")
             </div>
         </div>

@@ -7,6 +7,8 @@
 body
 {
     color: #333333;
+    font-family: Verdana, Georgia;
+    font-size: 14px;
 }
 
 .clear
@@ -217,30 +219,36 @@ div#content, div#errorContent
 #mainMenu {
     position: absolute;
     margin-left: 300px;
-    margin-top: 56px;
+    margin-top: 38px;
     font-size: 11px;
-}
-
-#mainMenu ul li {
-    display: inline-block;
-    padding: 17px;
-}
-
-#mainMenu {
     color: #fff;
     text-transform: uppercase;
     font-family: Verdana;
 }
 
+#mainMenu ul li {
+    display: inline-block;
+    padding: 17px;
+    padding-top: 47px;
+    /*border: 1px solid black;*/
+    height: 15px;
+}
+
+#mainMenu ul li.selected {
+    background-image: url('img/blink.gif');
+    background-repeat: no-repeat;
+    background-position: center 9px;
+}
 
 #mainMenu a {
     color: inherit;
 }
 
+/*
 #mainMenu a.active {
     font-weight: bold;
 }
-
+*/
 
 .login-form {
     width: 200px;
@@ -386,6 +394,7 @@ div#content, div#errorContent
     margin-top: 5px;
 
     font-family: Georgia;
+    font-size: 18px;
     font-style: italic;
     font-weight: bold;
     color: #000;
@@ -516,3 +525,20 @@ div#content, div#errorContent
 
 .imageLink
 {}
+
+.search {
+    width: 146px;
+    height: 17px;
+    background: url('img/search.gif');
+    position: absolute;
+    left: 950px;
+    top: 10px;
+}
+
+
+.search input {
+    border: none;
+    width: 110px;
+    margin-left: 25px;
+    background-color: #f3f3f3;
+}

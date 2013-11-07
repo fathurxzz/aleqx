@@ -1,64 +1,56 @@
-﻿<div id="mainMenu">
+﻿@{
+    string className = "";
+}
+<div id="mainMenu">
     <ul>
-        <li>
-            @if (ViewBag.CategoryLevel == "technologyRoot")
-            {
-                <text>технологии</text>
-            }
-            else
-            {
-                @Html.ActionLink("технологии", "Technologies", "Home", new { area = "",categoryId="",subCategoryId="" }, new { @class = ViewBag.CategoryLevel == "technology" ? "active" : "" })
-            }
+        @if (ViewBag.CategoryLevel == "technologyRoot")
+        {<li class="selected">технологии </li>
+        }
+        else
+        {
+            className = ViewBag.CategoryLevel == "technology" ? "selected" : "";
+            <li class="@className">
+                @Html.ActionLink("технологии", "Technologies", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)
+            </li>
+        }
+        @if (ViewBag.CurrentPage == "production")
+        {<li class="selected">продукция</li>
+        }
+        else
+        {
+            <li>
+                @Html.ActionLink("продукция", "SiteContent", "Home", new { area = "", id = "production" }, null)</li>
+        }
+        @if (ViewBag.CurrentPage == "documents")
+        {<li class="selected">статьи и документация</li>
+        }
+        else
+        {<li>
+            @Html.ActionLink("статьи и документация", "SiteContent", "Home", new { area = "", id = "documents" }, null)
         </li>
-        <li>
-            @if (ViewBag.CurrentPage == "production")
-            {
-                <text>продукция</text>
-            }
-            else
-            {
-                @Html.ActionLink("продукция", "SiteContent", "Home", new { area = "", id = "production" }, null)
-            }
-        </li>
-        <li>
-            @if (ViewBag.CurrentPage == "documents")
-            {
-                <text>статьи и документация</text>
-            }
-            else
-            {
-                @Html.ActionLink("статьи и документация", "SiteContent", "Home", new {area = "", id = "documents"}, null)
-            }
-        </li>
-        <li>
-            @if (ViewBag.CategoryLevel == "buildingRoot")
-            {
-                <text>объекты и решения</text>
-            }
-            else
-            {
-                @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "", categoryId = "", subCategoryId = "" }, new { @class = ViewBag.CategoryLevel == "building" ? "active" : "" })
-            }
-        </li>
-        <li>
-            @if (ViewBag.CurrentPage == "wheretobuy")
-            {
-                <text>где купить</text>
-            }
-            else
-            {
-                @Html.ActionLink("где купить", "SiteContent", "Home", new {area = "", id = "wheretobuy"}, null)
-            }
-        </li>
-        <li>
-             @if (ViewBag.CurrentPage == "about")
-             {
-                 <text>о компании</text>
-             }
-             else
-             {
-                 @Html.ActionLink("о компании", "SiteContent", "Home", new {area = "", id = "about"}, null)
-             }
-        </li>
+        }
+        @if (ViewBag.CategoryLevel == "buildingRoot")
+        {<li class="selected">объекты и решения</li>
+        }
+        else
+        {
+            className = ViewBag.CategoryLevel == "building" ? "selected" : "";
+            <li class="@className">
+                @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)</li>
+        }
+        @if (ViewBag.CurrentPage == "wheretobuy")
+        {<li class="selected">где купить</li>
+        }
+        else
+        {<li>
+            @Html.ActionLink("где купить", "SiteContent", "Home", new { area = "", id = "wheretobuy" }, null)</li>
+        }
+        @if (ViewBag.CurrentPage == "about")
+        { <li class="selected">о компании</li>
+        }
+        else
+        { <li>
+            @Html.ActionLink("о компании", "SiteContent", "Home", new { area = "", id = "about" }, null)</li>
+        }
     </ul>
 </div>

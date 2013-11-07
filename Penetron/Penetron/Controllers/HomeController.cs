@@ -48,6 +48,8 @@ namespace Penetron.Controllers
             var model = new BuildingModel(_context, categoryId, subCategoryId);
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "buildingRoot" : "building";
+            ViewBag.CategoryId = categoryId;
+            ViewBag.SubCategoryId = subCategoryId;
             this.SetSeoContent(model);
             return View(model);
         }
