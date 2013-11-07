@@ -10,7 +10,7 @@
                     @if (Request.IsAuthenticated)
                     {
                         <div style="position: absolute; padding-left: 40px; z-index: 99999">
-                            @Html.ActionLink("Удалить","DeleteImage","Technology",new{area="Admin",id=item.Id},new{@class="adminLink",onclick="return confirm('Удалить изображение?')"})
+                            @Html.ActionLink("Удалить", "DeleteImage", "Technology", new { area = "Admin", id = item.Id, categoryId = ViewBag.CategoryId, subCategoryId = ViewBag.SubCategoryId }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                         </div>
                     }
                     

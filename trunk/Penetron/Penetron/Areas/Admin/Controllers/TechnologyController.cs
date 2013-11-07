@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Penetron.Helpers;
 using Penetron.Models;
 using SiteExtensions;
 using SiteExtensions.Graphics;
@@ -96,7 +97,7 @@ namespace Penetron.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddImage(int id, FormCollection form)
         {
-            var technology = _context.Technology.First(t => t.Id == id);
+            var technology = _context.Technology.Include("Parent").First(t => t.Id == id);
             for (int i = 0; i < Request.Files.Count; i++)
             {
                 var file = Request.Files[i];
@@ -118,8 +119,29 @@ namespace Penetron.Areas.Admin.Controllers
 
                 _context.SaveChanges();
             }
-            
-            return RedirectToAction("Technologies", "Home", new { area = "" });
+
+            string categoryId;
+            string subCategoryId = null;
+            if (technology.Parent == null)
+            {
+                categoryId = technology.Name;
+            }
+            else
+            {
+                categoryId = technology.Parent.Name;
+                subCategoryId = technology.Name;
+            }
+
+            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = categoryId, subCategoryId=subCategoryId });
+        }
+
+        public ActionResult DeleteImage(int id, string categoryId, string subCategoryId)
+        {
+            var image = _context.TechnologyImage.First(i => i.Id == id);
+            ImageHelper.DeleteImage(image.ImageSource);
+            _context.DeleteObject(image);
+            _context.SaveChanges();
+            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = categoryId, subCategoryId = subCategoryId });
         }
     }
 }

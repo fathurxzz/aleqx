@@ -30,7 +30,7 @@
             }
         </div>
         <div class="text-container">
-            @if (Request.IsAuthenticated)
+            @if (Request.IsAuthenticated&&Model.Technology!=null&&Model.Technology.CategoryLevel==0)
             {
                 <div class="adminLinkContainer">
                 @Html.ActionLink("Редактировать основную страницу технологий","EditMainPage","Technology",new{area="Admin"},new{@class="adminLink"})

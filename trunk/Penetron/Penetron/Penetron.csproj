@@ -262,6 +262,7 @@
     <Content Include="Content\img\3-reason.png" />
     <Content Include="Content\img\4-reason.png" />
     <Content Include="Content\img\4-reasons.png" />
+    <Content Include="Content\img\blink.gif" />
     <Content Include="Content\img\carusel-frame.png" />
     <Content Include="Content\img\em.gif" />
     <Content Include="Content\img\footer-bg.gif" />
@@ -275,6 +276,7 @@
     <Content Include="Content\img\object-left.png" />
     <Content Include="Content\img\object-right.png" />
     <Content Include="Content\img\phone.gif" />
+    <Content Include="Content\img\search.gif" />
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\stars.gif" />
     <Content Include="Content\img\submenu-bg.png" />
