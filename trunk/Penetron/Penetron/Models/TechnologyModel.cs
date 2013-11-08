@@ -74,7 +74,8 @@ namespace Penetron.Models
                                            HasChildren = technology.Children.Any(), 
                                            ContentActive = technology.Active,
                                            SortOrder = technology.SortOrder,
-                                           Current = technology.Name==_categoryId
+                                           Current = technology.Name==_categoryId,
+                                           CurrentParent = technology.Name == _contentId
                                        });
 
                     foreach (var child in technology.Children.OrderBy(t => t.SortOrder))

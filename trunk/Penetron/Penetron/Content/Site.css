@@ -106,7 +106,7 @@ body
     z-index: -1;
     position: fixed;
     
-    background: url('img/site-bg.gif') no-repeat;
+    background: url('img/site-bg.jpg') no-repeat;
    
    
    -moz-background-size: 100%; 
@@ -330,6 +330,10 @@ div#content, div#errorContent
     font-weight: bold;
     /*color: #f6a636;*/
     color: #808080;
+}
+
+#menu ul li.parent span {
+    color: #f7941e;
 }
 
 #menu ul li.child
