@@ -44,12 +44,37 @@ namespace Penetron
                 defaults: new { controller = "Home", action = "Buildings", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+              name: "Products",
+              url: "products/{categoryId}/{subCategoryId}",
+              defaults: new { controller = "Home", action = "Products", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }
+          );
+
 
             routes.MapRoute(
-           "SiteContent", // Route name
-           "{id}", // URL with parameters
-           new { controller = "Home", action = "SiteContent", id = UrlParameter.Optional } // Parameter defaults
+                name: "Documents",
+                url: "documents/{categoryId}/{subCategoryId}",
+                defaults: new { controller = "Home", action = "Documents", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "wheretobuy",
+               url: "wheretobuy/{categoryId}/{subCategoryId}",
+               defaults: new { controller = "Home", action = "WhereToBuy", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+              name: "about",
+              url: "about/{categoryId}/{subCategoryId}",
+              defaults: new { controller = "Home", action = "About", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }
+          );
+
+
+           // routes.MapRoute(
+           //"SiteContent", // Route name
+           //"{id}", // URL with parameters
+           //new { controller = "Home", action = "SiteContent", id = UrlParameter.Optional } // Parameter defaults
+           // );
 
 
             routes.MapRoute(

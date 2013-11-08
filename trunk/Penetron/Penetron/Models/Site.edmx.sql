@@ -5,11 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/07/2013 23:57:56
+-- Date Created: 11/08/2013 20:34:41
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
+DROP DATABASE IF EXISTS `penetron`;
+CREATE DATABASE `penetron`;
+USE `penetron`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -20,6 +23,7 @@
 --    ALTER TABLE `Technology` DROP CONSTRAINT `FK_TechnologyTechnology`;
 --    ALTER TABLE `Building` DROP CONSTRAINT `FK_BuildingBuilding`;
 --    ALTER TABLE `BuildingImage` DROP CONSTRAINT `FK_BuildingObjBuildingImage`;
+--    ALTER TABLE `ContentItem` DROP CONSTRAINT `FK_ContentContentItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -31,6 +35,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `BuildingObj`;
     DROP TABLE IF EXISTS `BuildingImage`;
     DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `ContentItem`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -72,7 +77,8 @@ CREATE TABLE `Building` (
     `SeoKeywords` longtext  NULL,
     `Active` bool  NOT NULL,
     `BuildingId` int  NULL,
-    `CategoryLevel` int  NOT NULL
+    `CategoryLevel` int  NOT NULL,
+    `ContentType` int  NOT NULL
 );
 
 -- Creating table 'BuildingObj'

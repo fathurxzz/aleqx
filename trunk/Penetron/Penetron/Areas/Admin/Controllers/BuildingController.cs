@@ -19,11 +19,11 @@ namespace Penetron.Areas.Admin.Controllers
             _context = context;
         }
 
-        public ActionResult Create(int? id)
+        public ActionResult Create(int type, int? id)
         {
             if (id.HasValue)
                 ViewBag.ParentId = id.Value;
-            return View(new Building());
+            return View(new Building() { ContentType = type });
         }
 
         [HttpPost]
@@ -34,7 +34,7 @@ namespace Penetron.Areas.Admin.Controllers
                              {
                                  Name = Utils.Transliterator.Transliterate(form["Name"])
                              };
-            TryUpdateModel(building, new[] { "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+            TryUpdateModel(building, new[] { "Title", "SortOrder", "SeoDescription", "SeoKeywords", "ContentType" });
             building.CategoryLevel = 1;
             building.Active = true;
             building.Text = HttpUtility.HtmlDecode(form["Text"]);
@@ -49,6 +49,16 @@ namespace Penetron.Areas.Admin.Controllers
                 _context.AddToBuilding(building);
             }
             _context.SaveChanges();
+
+
+            switch (form["ContentType"])
+            {
+                case "1": return RedirectToAction("Buildings", "Home", new { area = "" });
+                case "2": return RedirectToAction("Products", "Home", new { area = "" });
+                case "3": return RedirectToAction("Documents", "Home", new { area = "" });
+                case "4": return RedirectToAction("WhereToBuy", "Home", new { area = "" });
+                case "5": return RedirectToAction("About", "Home", new { area = "" });
+            }
             return RedirectToAction("Buildings", "Home", new { area = "" });
         }
 
@@ -73,7 +83,38 @@ namespace Penetron.Areas.Admin.Controllers
             building.SeoKeywords = model.SeoKeywords;
             building.Active = model.Active;
             _context.SaveChanges();
+            switch (model.ContentType)
+            {
+                case 1: return RedirectToAction("Buildings", "Home", new { area = "" });
+                case 2: return RedirectToAction("Products", "Home", new { area = "" });
+                case 3: return RedirectToAction("Documents", "Home", new { area = "" });
+                case 4: return RedirectToAction("WhereToBuy", "Home", new { area = "" });
+                case 5: return RedirectToAction("About", "Home", new { area = "" });
+            }
             return RedirectToAction("Buildings", "Home", new { area = "" });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var technology = _context.Building.First(t => t.Id == id);
+            var ct = technology.ContentType;
+            _context.DeleteObject(technology);
+            _context.SaveChanges();
+            switch (ct)
+            {
+                case 1: return RedirectToAction("Buildings", "Home", new { area = "" });
+                case 2: return RedirectToAction("Products", "Home", new { area = "" });
+                case 3: return RedirectToAction("Documents", "Home", new { area = "" });
+                case 4: return RedirectToAction("WhereToBuy", "Home", new { area = "" });
+                case 5: return RedirectToAction("About", "Home", new { area = "" });
+            }
+            return RedirectToAction("Buildings", "Home", new { area = "" });
+        }
+
+        public ActionResult EditMainPage()
+        {
+            var b = _context.Building.First(t => t.CategoryLevel == 0);
+            return View("Edit", b);
         }
 
 

@@ -39,7 +39,7 @@
                 
                 }
 
-                @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" } })
+                @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" }, { "type", ViewBag.ContentType } })
                 <div class="content-text">
                     @if (Model.Technology != null)
                     {

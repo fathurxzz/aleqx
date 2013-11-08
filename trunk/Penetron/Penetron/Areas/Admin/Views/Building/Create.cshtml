@@ -11,7 +11,7 @@
         @Html.ValidationSummary(true)
 
         @Html.Hidden("parentId", (int?)ViewBag.ParentId)
-    
+    @Html.HiddenFor(model=>model.ContentType)
         <table>
             <tr>
                 <td colspan="2">

@@ -473,10 +473,12 @@ div#content, div#errorContent
 
 .stars {
     position: relative;
-    margin: 30px auto;
+    margin: 0 auto;
+    padding: 30px 0;
     height: 13px;
     width: 102px;
-    background: url(img/stars.gif);
+    background: url(img/stars.gif) no-repeat;
+    background-position: center;
 }
 
 

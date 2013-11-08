@@ -29,6 +29,7 @@ namespace Penetron.Controllers
         {
             var model = new TechnologyModel(_context, categoryId,subCategoryId);
             ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = 0;
             ViewBag.CategoryLevel = model.Technology.CategoryLevel == 0 ? "technologyRoot" : "technology";
             this.SetSeoContent(model);
             return View(model);
@@ -45,14 +46,65 @@ namespace Penetron.Controllers
 
         public ActionResult Buildings(string categoryId, string subCategoryId)
         {
-            var model = new BuildingModel(_context, categoryId, subCategoryId);
+            var model = new BuildingModel(_context, categoryId, subCategoryId,(int)EContentType.Buildings);
             ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = (int) EContentType.Buildings;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "buildingRoot" : "building";
             ViewBag.CategoryId = categoryId;
             ViewBag.SubCategoryId = subCategoryId;
             this.SetSeoContent(model);
             return View(model);
         }
+
+        public ActionResult Products(string categoryId, string subCategoryId)
+        {
+            var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.Products);
+            ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = (int)EContentType.Products;
+            ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "productRoot" : "product";
+            ViewBag.CategoryId = categoryId;
+            ViewBag.SubCategoryId = subCategoryId;
+            this.SetSeoContent(model);
+            return View(model);
+        }
+
+        public ActionResult Documents(string categoryId, string subCategoryId)
+        {
+            var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.Documents);
+            ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = (int)EContentType.Documents;
+            ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "documentRoot" : "document";
+            ViewBag.CategoryId = categoryId;
+            ViewBag.SubCategoryId = subCategoryId;
+            this.SetSeoContent(model);
+            return View(model);
+        }
+
+        public ActionResult WhereToBuy(string categoryId, string subCategoryId)
+        {
+            var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.WhereToBuy);
+            ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = (int)EContentType.WhereToBuy;
+            ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "wheretobuyRoot" : "wheretobuy";
+            ViewBag.CategoryId = categoryId;
+            ViewBag.SubCategoryId = subCategoryId;
+            this.SetSeoContent(model);
+            return View(model);
+        }
+
+        public ActionResult About(string categoryId, string subCategoryId)
+        {
+            var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.About);
+            ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = (int)EContentType.About;
+            ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "aboutRoot" : "about";
+            ViewBag.CategoryId = categoryId;
+            ViewBag.SubCategoryId = subCategoryId;
+            this.SetSeoContent(model);
+            return View(model);
+        }
+
+
 
     }
 }

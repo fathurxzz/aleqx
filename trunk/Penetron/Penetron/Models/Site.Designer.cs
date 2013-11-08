@@ -274,7 +274,8 @@ namespace Penetron.Models
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
         /// <param name="active">Initial value of the Active property.</param>
         /// <param name="categoryLevel">Initial value of the CategoryLevel property.</param>
-        public static Building CreateBuilding(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Boolean active, global::System.Int32 categoryLevel)
+        /// <param name="contentType">Initial value of the ContentType property.</param>
+        public static Building CreateBuilding(global::System.Int32 id, global::System.String name, global::System.String title, global::System.Int32 sortOrder, global::System.Boolean active, global::System.Int32 categoryLevel, global::System.Int32 contentType)
         {
             Building building = new Building();
             building.Id = id;
@@ -283,6 +284,7 @@ namespace Penetron.Models
             building.SortOrder = sortOrder;
             building.Active = active;
             building.CategoryLevel = categoryLevel;
+            building.ContentType = contentType;
             return building;
         }
 
@@ -532,6 +534,30 @@ namespace Penetron.Models
         private global::System.Int32 _CategoryLevel;
         partial void OnCategoryLevelChanging(global::System.Int32 value);
         partial void OnCategoryLevelChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ContentType
+        {
+            get
+            {
+                return _ContentType;
+            }
+            set
+            {
+                OnContentTypeChanging(value);
+                ReportPropertyChanging("ContentType");
+                _ContentType = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentType");
+                OnContentTypeChanged();
+            }
+        }
+        private global::System.Int32 _ContentType;
+        partial void OnContentTypeChanging(global::System.Int32 value);
+        partial void OnContentTypeChanged();
 
         #endregion
 
