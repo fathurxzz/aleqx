@@ -277,7 +277,7 @@
     <Content Include="Content\img\object-right.png" />
     <Content Include="Content\img\phone.gif" />
     <Content Include="Content\img\search.gif" />
-    <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\site-bg.jpg" />
     <Content Include="Content\img\stars.gif" />
     <Content Include="Content\img\submenu-bg.png" />
     <Content Include="Content\img\title-center.gif" />

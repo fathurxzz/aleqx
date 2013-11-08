@@ -15,8 +15,17 @@
                     <div class="arrow1">
                         <div class="arrow2">
                             <div class="menucontent">
-                                @if (item.ContentActive)
+                                
+
+                                @if (item.CurrentParent)
                                 {
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.Title)
+                                    </span>
+                                }
+                                else if (item.ContentActive)
+                                {
+                                    
                                     @Html.ActionLink(item.Title, (string)ViewData["category"], "Home", new { categoryId = item.Name, subCategoryId = "" }, null)
                                 }
                                 else
@@ -37,10 +46,10 @@
                         </div>
                     </div>
                 </li>
-                if (!item.HasChildren||!item.Current)
-                {
+                                if (!item.HasChildren || !item.Current)
+                                {
                     <li class="separator"></li>
-                }
+                                }
             }
             else
             {
