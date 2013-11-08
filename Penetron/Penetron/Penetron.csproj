@@ -205,6 +205,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\BuildingModel.cs" />
     <Compile Include="Models\ContentValidation.cs" />
+    <Compile Include="Models\EContentType.cs" />
     <Compile Include="Models\ICategoryModel.cs" />
     <Compile Include="Models\IMessageService.cs" />
     <Compile Include="Models\SiteMenu.cs" />
@@ -315,8 +316,6 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -407,6 +406,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Content\EditContentItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Products.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Documents.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\WhereToBuy.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

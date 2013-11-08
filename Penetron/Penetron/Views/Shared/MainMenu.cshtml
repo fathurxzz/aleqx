@@ -13,20 +13,23 @@
                 @Html.ActionLink("технологии", "Technologies", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)
             </li>
         }
-        @if (ViewBag.CurrentPage == "production")
+        @if (ViewBag.CategoryLevel == "productRoot")
         {<li class="selected">продукция</li>
         }
         else
         {
-            <li>
-                @Html.ActionLink("продукция", "SiteContent", "Home", new { area = "", id = "production" }, null)</li>
+            className = ViewBag.CategoryLevel == "product" ? "selected" : "";
+            <li class="@className">
+                @Html.ActionLink("продукция", "Products", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)</li>
         }
-        @if (ViewBag.CurrentPage == "documents")
+        @if (ViewBag.CategoryLevel == "documentRoot")
         {<li class="selected w">статьи и документация</li>
         }
         else
-        {<li class="w">
-            @Html.ActionLink("статьи и документация", "SiteContent", "Home", new { area = "", id = "documents" }, null)
+        {
+            className = ViewBag.CategoryLevel == "document" ? "selected" : "";
+            <li class="@className w">
+            @Html.ActionLink("статьи и документация", "Documents", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)
         </li>
         }
         @if (ViewBag.CategoryLevel == "buildingRoot")
@@ -38,19 +41,23 @@
             <li class="@className w">
                 @Html.ActionLink("объекты и решения", "Buildings", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)</li>
         }
-        @if (ViewBag.CurrentPage == "wheretobuy")
+        @if (ViewBag.CategoryLevel == "wheretobuyRoot")
         {<li class="selected">где купить</li>
         }
         else
-        {<li>
-            @Html.ActionLink("где купить", "SiteContent", "Home", new { area = "", id = "wheretobuy" }, null)</li>
+        {
+            className = ViewBag.CategoryLevel == "wheretobuy" ? "selected" : "";
+            <li class="@className">
+            @Html.ActionLink("где купить", "WhereToBuy", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)</li>
         }
-        @if (ViewBag.CurrentPage == "about")
+        @if (ViewBag.CategoryLevel == "aboutRoot")
         { <li class="selected">о компании</li>
         }
         else
-        { <li>
-            @Html.ActionLink("о компании", "SiteContent", "Home", new { area = "", id = "about" }, null)</li>
+        {
+            className = ViewBag.CategoryLevel == "about" ? "selected" : "";
+            <li class="@className">
+            @Html.ActionLink("о компании", "About", "Home", new { area = "", categoryId = "", subCategoryId = "" }, null)</li>
         }
     </ul>
 </div>

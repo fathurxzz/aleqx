@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Technology" EntityType="Site.Store.Technology" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyImage" EntityType="Site.Store.TechnologyImage" store:Type="Tables" Schema="dbo" />
@@ -71,6 +71,7 @@
     <Property Name="Active" Type="bool" Nullable="false" />
     <Property Name="BuildingId" Type="int" Nullable="true" />
     <Property Name="CategoryLevel" Type="int" Nullable="false" />
+    <Property Name="ContentType" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BuildingObj">
     <Key>
@@ -268,6 +269,7 @@
           <NavigationProperty Name="Parent" Relationship="Site.BuildingBuilding" FromRole="Building1" ToRole="Building" />
           <Property Type="Int32" Name="BuildingId" Nullable="true" />
           <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
         </EntityType>
         <Association Name="BuildingBuilding">
           <End Type="Site.Building" Role="Building" Multiplicity="0..1" />
@@ -389,6 +391,7 @@
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
           <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -80,6 +80,14 @@ namespace Penetron.Areas.Admin.Controllers
             return RedirectToAction("Technologies", "Home", new { area = "" });
         }
 
+        public ActionResult Delete(int id)
+        {
+            var technology = _context.Technology.First(t => t.Id == id);
+            _context.DeleteObject(technology);
+            _context.SaveChanges();
+            return RedirectToAction("Technologies", "Home", new { area = "" });
+        }
+
 
         public ActionResult EditMainPage()
         {

@@ -1,34 +1,69 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
-
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
-
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-    <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>
-</aside>
+﻿@using Penetron
+@using SiteExtensions.Graphics
+@model Penetron.Models.BuildingModel
+<div class="content-container">
+    <div class="content">
+        <div class="title-container">
+            @if (Model.Building != null)
+            {
+                
+                <div class="parentTitle">
+                    @if (Model.ParentTitle != null)
+                    {
+                        @Model.ParentTitle <text>/</text>
+                    }
+                </div>
+            
+                <table class="title">
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Model.Building.Title
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div class="text-container">
+            @if (Request.IsAuthenticated && Model.Building != null && Model.Building.CategoryLevel == 0)
+            {
+                <div class="adminLinkContainer">
+                    @Html.ActionLink("Редактировать основную страницу", "EditMainPage", "Building", new { area = "Admin", type = ViewBag.ContentType }, new { @class = "adminLink" })
+                </div>
+                
+            }
+            @Html.Partial("Menu", Model.BuildingMenu, new ViewDataDictionary { { "category", "About" }, { "categoryAdmin", "Building" }, { "type", ViewBag.ContentType } })
+            <div class="content-text">
+                @if (Model.Building != null)
+                {
+                    @Html.Raw(Model.Building.Text)
+                }
+                
+                @*@if (Model.Building != null && Model.Building.TechnologyImages.Any())
+                {
+                    <div class="stars">
+                    </div>
+                
+                    <div class="carusel">
+                        @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                        <div class="carusel-frame">
+                            <div class="image">
+                                @Html.Raw(Html.CachedImage("~/Content/Images", Model.Technology.TechnologyImages.First().ImageSource, SiteSettings.GetThumbnail("carusel")))
+                            </div>
+                            <div class="frame">
+                            </div>
+                        </div>
+                    </div>
+                }*@
+            </div>
+            
+            
+               
+            
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+</div>

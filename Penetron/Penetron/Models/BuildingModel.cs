@@ -16,14 +16,14 @@ namespace Penetron.Models
 
         public IList<BuildingObj> BuildingObjects { get; set; }
 
-        public BuildingModel(SiteContext context, string categoryId, string subCategoryId)
+        public BuildingModel(SiteContext context, string categoryId, string subCategoryId, int contentType)
             : base(context, null)
         {
             _categoryId = categoryId;
             _subCategoryId = subCategoryId;
             _contentId = subCategoryId ?? categoryId;
 
-            _buildings = context.Building.Include("Children").ToList();
+            _buildings = context.Building.Include("Children").Where(b=>b.ContentType==contentType).ToList();
 
             if (categoryId != null)
                 if (subCategoryId == null)
@@ -50,8 +50,10 @@ namespace Penetron.Models
                 SeoKeywords = Building.SeoKeywords;
             }
             GetMenu();
-
-            BuildingObjects = context.BuildingObj.ToList();
+            if (contentType == 1)
+            {
+                BuildingObjects = context.BuildingObj.ToList();
+            }
 
         }
 
