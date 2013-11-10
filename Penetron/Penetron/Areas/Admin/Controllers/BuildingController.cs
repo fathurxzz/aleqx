@@ -10,6 +10,7 @@ using SiteExtensions;
 
 namespace Penetron.Areas.Admin.Controllers
 {
+    [Authorize]
     public class BuildingController : Controller
     {
         private SiteContext _context;
@@ -161,6 +162,119 @@ namespace Penetron.Areas.Admin.Controllers
             _context.DeleteObject(image);
             _context.SaveChanges();
             return RedirectToAction("Buildings", "Home", new { area = "" });
+        }
+
+
+
+
+
+
+        public ActionResult AddContentItem(int id)
+        {
+            var content = _context.Building.Include("Parent").First(c => c.Id == id);
+            ViewBag.ContentId = content.Id;
+            if (content.Parent != null)
+            {
+                ViewBag.CatId = content.Parent.Name;
+                ViewBag.SubCatId = content.Name;
+            }
+            else
+            {
+                ViewBag.CatId = content.Name;
+            }
+            return View(new BuildingItem());
+        }
+
+        [HttpPost]
+        public ActionResult AddContentItem(int contentId, BuildingItem model)
+        {
+            var content = _context.Building.Include("Parent").First(c => c.Id == contentId);
+
+            string catId = "";
+            string subCatId = "";
+            if (content.Parent != null)
+            {
+                catId = content.Parent.Name;
+                subCatId = content.Name;
+            }
+            else
+            {
+                catId = content.Name;
+            }
+
+
+            var ci = new BuildingItem
+            {
+                SortOrder = model.SortOrder,
+                Text = HttpUtility.HtmlDecode(model.Text)
+            };
+            content.BuildingItems.Add(ci);
+            _context.SaveChanges();
+            return RedirectToAction("Buildings", "Home", new { area = "", categoryId = catId, subCategoryId = subCatId });
+        }
+
+
+        public ActionResult EditContentItem(int id)
+        {
+            var ci = _context.BuildingItem.Include("Building").First(c => c.Id == id);
+            var parent = _context.Building.Include("Parent").First(t => t.Id == ci.BuildingId);
+            if (parent.Parent != null)
+            {
+                ViewBag.CatId = parent.Parent.Name;
+                ViewBag.SubCatId = parent.Name;
+            }
+            else
+            {
+                ViewBag.CatId = parent.Name;
+            }
+            return View(ci);
+        }
+
+        [HttpPost]
+        public ActionResult EditContentItem(BuildingItem model)
+        {
+            var ci = _context.BuildingItem.Include("Building").First(c => c.Id == model.Id);
+            ci.SortOrder = model.SortOrder;
+            ci.Text = HttpUtility.HtmlDecode(model.Text);
+            _context.SaveChanges();
+
+            var parent = _context.Building.Include("Parent").First(t => t.Id == ci.BuildingId);
+
+            string catId = "";
+            string subCatId = "";
+            if (parent.Parent != null)
+            {
+                catId = parent.Parent.Name;
+                subCatId = parent.Name;
+            }
+            else
+            {
+                catId = parent.Name;
+            }
+
+            return RedirectToAction("Buildings", "Home", new { area = "", categoryId = catId, subCategoryId = subCatId });
+        }
+
+        public ActionResult DeleteContentItem(int id)
+        {
+            var ci = _context.BuildingItem.Include("Building").First(c => c.Id == id);
+
+            var parent = _context.Building.Include("Parent").First(t => t.Id == ci.BuildingId);
+            string catId = "";
+            string subCatId = "";
+            if (parent.Parent != null)
+            {
+                catId = parent.Parent.Name;
+                subCatId = parent.Name;
+            }
+            else
+            {
+                catId = parent.Name;
+            }
+
+            _context.DeleteObject(ci);
+            _context.SaveChanges();
+            return RedirectToAction("Buildings", "Home", new { area = "", categoryId = catId, subCategoryId = subCatId });
         }
     }
 }

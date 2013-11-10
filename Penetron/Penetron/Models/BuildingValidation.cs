@@ -7,14 +7,13 @@ using System.Web;
 
 namespace Penetron.Models
 {
-    [MetadataType(typeof(TechnologyValidation))]
-    public partial class Technology
+    [MetadataType(typeof(BuildingValidation))]
+    public partial class Building
     {
 
     }
 
-
-    public class TechnologyValidation
+    public class BuildingValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
         [DisplayName("Веб-имя страницы (отображается в строке браузера)")]
@@ -36,6 +35,5 @@ namespace Penetron.Models
 
         [DisplayName("Ключевые слова")]
         public string SeoKeywords { get; set; }
-
     }
 }

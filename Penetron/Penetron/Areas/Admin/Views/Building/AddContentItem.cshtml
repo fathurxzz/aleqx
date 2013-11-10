@@ -1,0 +1,52 @@
+﻿@model Penetron.Models.BuildingItem
+@{
+    ViewBag.Title = "Добавление блока контента";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContent">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        @Html.Hidden("contentId", (int)ViewBag.ContentId)
+    
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h3>Добавление блока контента
+                    </h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.SortOrder)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.SortOrder)
+                    @Html.ValidationMessageFor(model => model.SortOrder)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Text)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Text, new { rows = 12, @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Text)
+                </td>
+            </tr>
+        </table>
+    
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Buildings", "Home", new { area = "", categoryId = ViewBag.CatId, subCategoryId = ViewBag.SubCatId }, null)
+        </div>
+   
+    }
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js")
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

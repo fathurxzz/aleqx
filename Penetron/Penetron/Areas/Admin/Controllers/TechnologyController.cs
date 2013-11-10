@@ -14,6 +14,7 @@ using SiteExtensions.Graphics;
 
 namespace Penetron.Areas.Admin.Controllers
 {
+    [Authorize]
     public class TechnologyController : Controller
     {
         private SiteContext _context;
@@ -91,8 +92,8 @@ namespace Penetron.Areas.Admin.Controllers
 
         public ActionResult EditMainPage()
         {
-            var technology = _context.Technology.First(t => t.CategoryLevel==0);
-            return View("Edit",technology);
+            var technology = _context.Technology.First(t => t.CategoryLevel == 0);
+            return View("Edit", technology);
         }
 
 
@@ -140,7 +141,7 @@ namespace Penetron.Areas.Admin.Controllers
                 subCategoryId = technology.Name;
             }
 
-            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = categoryId, subCategoryId=subCategoryId });
+            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = categoryId, subCategoryId = subCategoryId });
         }
 
         public ActionResult DeleteImage(int id, string categoryId, string subCategoryId)
@@ -151,5 +152,117 @@ namespace Penetron.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("Technologies", "Home", new { area = "", categoryId = categoryId, subCategoryId = subCategoryId });
         }
+
+
+        public ActionResult AddContentItem(int id)
+        {
+            var content = _context.Technology.Include("Parent").First(c => c.Id == id);
+            ViewBag.ContentId = content.Id;
+            
+            if (content.Parent != null)
+            {
+                ViewBag.CatId = content.Parent.Name;
+                ViewBag.SubCatId = content.Name;
+            }
+            else
+            {
+                ViewBag.CatId = content.Name;
+            }
+
+            return View(new TechnologyItem());
+        }
+
+        [HttpPost]
+        public ActionResult AddContentItem(int contentId, TechnologyItem model)
+        {
+            var content = _context.Technology.Include("Parent").First(c => c.Id == contentId);
+
+            string catId = "";
+            string subCatId = "";
+            if (content.Parent != null)
+            {
+                catId = content.Parent.Name;
+                subCatId = content.Name;
+            }
+            else
+            {
+                catId = content.Name;
+            }
+
+
+            var ci = new TechnologyItem
+            {
+                SortOrder = model.SortOrder,
+                Text = HttpUtility.HtmlDecode(model.Text)
+            };
+            content.TechnologyItems.Add(ci);
+            _context.SaveChanges();
+            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = catId, subCategoryId = subCatId });
+        }
+
+
+        public ActionResult EditContentItem(int id)
+        {
+            var ci = _context.TechnologyItem.Include("Technology").First(c => c.Id == id);
+            var parent = _context.Technology.Include("Parent").First(t => t.Id == ci.TechnologyId);
+            if (parent.Parent != null)
+            {
+                ViewBag.CatId = parent.Parent.Name;
+                ViewBag.SubCatId = parent.Name;
+            }
+            else
+            {
+                ViewBag.CatId = parent.Name;
+            }
+            return View(ci);
+        }
+
+        [HttpPost]
+        public ActionResult EditContentItem(ContentItem model)
+        {
+            var ci = _context.TechnologyItem.Include("Technology").First(c => c.Id == model.Id);
+            ci.SortOrder = model.SortOrder;
+            ci.Text = HttpUtility.HtmlDecode(model.Text);
+            _context.SaveChanges();
+
+            var parent = _context.Technology.Include("Parent").First(t => t.Id == ci.TechnologyId);
+
+            string catId = "";
+            string subCatId = "";
+            if (parent.Parent != null)
+            {
+                catId = parent.Parent.Name;
+                subCatId = parent.Name;
+            }
+            else
+            {
+                catId = parent.Name;
+            }
+
+            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = catId, subCategoryId = subCatId });
+        }
+
+        public ActionResult DeleteContentItem(int id)
+        {
+            var ci = _context.TechnologyItem.Include("Technology").First(c => c.Id == id);
+            
+            var parent = _context.Technology.Include("Parent").First(t => t.Id == ci.TechnologyId);
+            string catId = "";
+            string subCatId = "";
+            if (parent.Parent != null)
+            {
+                catId = parent.Parent.Name;
+                subCatId = parent.Name;
+            }
+            else
+            {
+                catId = parent.Name;
+            }
+
+            _context.DeleteObject(ci);
+            _context.SaveChanges();
+            return RedirectToAction("Technologies", "Home", new { area = "", categoryId = catId, subCategoryId = subCatId });
+        }
+
     }
 }
