@@ -22,8 +22,8 @@ namespace Penetron.Models
             _categoryId = categoryId;
             _subCategoryId = subCategoryId;
             _contentId = subCategoryId ?? categoryId;
-            
-            _technologies = context.Technology.Include("Children").ToList();
+
+            _technologies = context.Technology.Include("Children").Include("TechnologyItems").ToList();
 
             if(categoryId!=null)
             if (subCategoryId == null)

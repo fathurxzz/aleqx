@@ -204,6 +204,7 @@
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\BuildingModel.cs" />
+    <Compile Include="Models\BuildingValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\EContentType.cs" />
     <Compile Include="Models\ICategoryModel.cs" />
@@ -418,6 +419,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\About.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Technology\AddContentItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Technology\EditContentItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Building\AddContentItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Building\EditContentItem.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -39,24 +39,34 @@
                 @if (Model.Building != null)
                 {
                     @Html.Raw(Model.Building.Text)
+
+                    
+                    if (Request.IsAuthenticated)
+                    {
+                        <div>
+                        @Html.ActionLink("Добавить блока контента", "AddContentItem", "Building", new { area = "Admin", id = Model.Building.Id }, new { @class = "adminLink" })
+                            
+                            </div>
+                    }
+
+                    foreach (var item in Model.Building.BuildingItems.OrderBy(c => c.SortOrder))
+                    {
+                        <div class="contentItem">
+                            
+                            @if (Request.IsAuthenticated)
+                            {
+                                <span class="sortOrder"> @item.SortOrder</span>
+                                @Html.ActionLink("Редактировать", "EditContentItem", "Building", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                <text> &nbsp;</text>
+                                 @Html.ActionLink("Удалить", "DeleteContentItem", "Building", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                            }
+
+                            @Html.Raw(item.Text)
+                        </div>
+                    }
                 }
                 
-                @*@if (Model.Building != null && Model.Building.TechnologyImages.Any())
-                {
-                    <div class="stars">
-                    </div>
-                
-                    <div class="carusel">
-                        @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
-                        <div class="carusel-frame">
-                            <div class="image">
-                                @Html.Raw(Html.CachedImage("~/Content/Images", Model.Technology.TechnologyImages.First().ImageSource, SiteSettings.GetThumbnail("carusel")))
-                            </div>
-                            <div class="frame">
-                            </div>
-                        </div>
-                    </div>
-                }*@
+               
             </div>
             
            

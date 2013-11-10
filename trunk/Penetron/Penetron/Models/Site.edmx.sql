@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/08/2013 20:34:41
+-- Date Created: 11/10/2013 15:23:23
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -117,6 +117,24 @@ CREATE TABLE `ContentItem` (
     `ContentId` int  NOT NULL
 );
 
+-- Creating table 'TechnologyItem'
+
+CREATE TABLE `TechnologyItem` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Text` longtext  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `TechnologyId` int  NOT NULL
+);
+
+-- Creating table 'BuildingItem'
+
+CREATE TABLE `BuildingItem` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Text` longtext  NOT NULL,
+    `SortOrder` int  NOT NULL,
+    `BuildingId` int  NOT NULL
+);
+
 
 
 -- --------------------------------------------------
@@ -203,6 +221,36 @@ ADD CONSTRAINT `FK_ContentContentItem`
 CREATE INDEX `IX_FK_ContentContentItem` 
     ON `ContentItem`
     (`ContentId`);
+
+-- Creating foreign key on `TechnologyId` in table 'TechnologyItem'
+
+ALTER TABLE `TechnologyItem`
+ADD CONSTRAINT `FK_TechnologyTechnologyItem`
+    FOREIGN KEY (`TechnologyId`)
+    REFERENCES `Technology`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TechnologyTechnologyItem'
+
+CREATE INDEX `IX_FK_TechnologyTechnologyItem` 
+    ON `TechnologyItem`
+    (`TechnologyId`);
+
+-- Creating foreign key on `BuildingId` in table 'BuildingItem'
+
+ALTER TABLE `BuildingItem`
+ADD CONSTRAINT `FK_BuildingBuildingItem`
+    FOREIGN KEY (`BuildingId`)
+    REFERENCES `Building`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BuildingBuildingItem'
+
+CREATE INDEX `IX_FK_BuildingBuildingItem` 
+    ON `BuildingItem`
+    (`BuildingId`);
 
 -- --------------------------------------------------
 -- Script has ended

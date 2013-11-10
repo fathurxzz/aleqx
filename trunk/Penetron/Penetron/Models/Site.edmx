@@ -13,6 +13,8 @@
     <EntitySet Name="BuildingImage" EntityType="Site.Store.BuildingImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContentItem" EntityType="Site.Store.ContentItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TechnologyItem" EntityType="Site.Store.TechnologyItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BuildingItem" EntityType="Site.Store.BuildingItem" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -32,6 +34,14 @@
     <AssociationSet Name="ContentContentItem" Association="Site.Store.ContentContentItem">
       <End Role="Content" EntitySet="Content" />
       <End Role="ContentItem" EntitySet="ContentItem" />
+    </AssociationSet>
+    <AssociationSet Name="TechnologyTechnologyItem" Association="Site.Store.TechnologyTechnologyItem">
+      <End Role="Technology" EntitySet="Technology" />
+      <End Role="TechnologyItem" EntitySet="TechnologyItem" />
+    </AssociationSet>
+    <AssociationSet Name="BuildingBuildingItem" Association="Site.Store.BuildingBuildingItem">
+      <End Role="Building" EntitySet="Building" />
+      <End Role="BuildingItem" EntitySet="BuildingItem" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Technology">
@@ -109,6 +119,24 @@
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="ContentId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TechnologyItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="TechnologyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BuildingItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="BuildingId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
     <End Role="TechnologyImage" Type="Site.Store.TechnologyImage" Multiplicity="*" />
@@ -169,6 +197,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="TechnologyTechnologyItem">
+    <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
+    <End Role="TechnologyItem" Type="Site.Store.TechnologyItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Technology">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TechnologyItem">
+        <PropertyRef Name="TechnologyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuildingBuildingItem">
+    <End Role="Building" Type="Site.Store.Building" Multiplicity="1" />
+    <End Role="BuildingItem" Type="Site.Store.BuildingItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BuildingItem">
+        <PropertyRef Name="BuildingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -201,6 +253,16 @@
             <End Role="Content" EntitySet="Content" />
             <End Role="ContentItem" EntitySet="ContentItem" />
           </AssociationSet>
+          <EntitySet Name="TechnologyItem" EntityType="Site.TechnologyItem" />
+          <AssociationSet Name="TechnologyTechnologyItem" Association="Site.TechnologyTechnologyItem">
+            <End Role="Technology" EntitySet="Technology" />
+            <End Role="TechnologyItem" EntitySet="TechnologyItem" />
+          </AssociationSet>
+          <EntitySet Name="BuildingItem" EntityType="Site.BuildingItem" />
+          <AssociationSet Name="BuildingBuildingItem" Association="Site.BuildingBuildingItem">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="BuildingItem" EntitySet="BuildingItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Technology">
           <Key>
@@ -219,6 +281,7 @@
           <NavigationProperty Name="Children" Relationship="Site.TechnologyTechnology" FromRole="Technology" ToRole="Technology1" />
           <NavigationProperty Name="Parent" Relationship="Site.TechnologyTechnology" FromRole="Technology1" ToRole="Technology" />
           <Property Type="Int32" Name="TechnologyId" Nullable="true" />
+          <NavigationProperty Name="TechnologyItems" Relationship="Site.TechnologyTechnologyItem" FromRole="Technology" ToRole="TechnologyItem" />
         </EntityType>
         <EntityType Name="TechnologyImage">
           <Key>
@@ -270,6 +333,7 @@
           <Property Type="Int32" Name="BuildingId" Nullable="true" />
           <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
           <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <NavigationProperty Name="BuildingItems" Relationship="Site.BuildingBuildingItem" FromRole="Building" ToRole="BuildingItem" />
         </EntityType>
         <Association Name="BuildingBuilding">
           <End Type="Site.Building" Role="Building" Multiplicity="0..1" />
@@ -344,6 +408,50 @@
             </Principal>
             <Dependent Role="ContentItem">
               <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TechnologyItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Technology" Relationship="Site.TechnologyTechnologyItem" FromRole="TechnologyItem" ToRole="Technology" />
+          <Property Type="Int32" Name="TechnologyId" Nullable="false" />
+        </EntityType>
+        <Association Name="TechnologyTechnologyItem">
+          <End Type="Site.Technology" Role="Technology" Multiplicity="1" />
+          <End Type="Site.TechnologyItem" Role="TechnologyItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TechnologyItem">
+              <PropertyRef Name="TechnologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BuildingItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="Site.BuildingBuildingItem" FromRole="BuildingItem" ToRole="Building" />
+          <Property Type="Int32" Name="BuildingId" Nullable="false" />
+        </EntityType>
+        <Association Name="BuildingBuildingItem">
+          <End Type="Site.Building" Role="Building" Multiplicity="1" />
+          <End Type="Site.BuildingItem" Role="BuildingItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BuildingItem">
+              <PropertyRef Name="BuildingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -435,6 +543,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TechnologyItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.TechnologyItem)">
+        <MappingFragment StoreEntitySet="TechnologyItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="TechnologyId" ColumnName="TechnologyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildingItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.BuildingItem)">
+        <MappingFragment StoreEntitySet="BuildingItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -480,11 +608,21 @@
           <ConnectorPoint PointX="11" PointY="2.235341796875" />
           <ConnectorPoint PointX="12.25" PointY="2.235341796875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="10.5" PointY="4.5" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="Site.ContentItem" Width="1.5" PointX="5.125" PointY="5.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Site.Content" Width="1.5" PointX="11.375" PointY="4.5" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="Site.ContentItem" Width="1.5" PointX="9.375" PointY="6.125" Height="1.9802864583333335" />
         <AssociationConnector Association="Site.ContentContentItem">
-          <ConnectorPoint PointX="10.5" PointY="6.3410953776041659" />
-          <ConnectorPoint PointX="6.625" PointY="6.3410953776041659" />
+          <ConnectorPoint PointX="11.375" PointY="6.5910953776041659" />
+          <ConnectorPoint PointX="10.875" PointY="6.5910953776041659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.TechnologyItem" Width="1.5" PointX="2" PointY="5.5" Height="1.9802864583333335" />
+        <AssociationConnector Association="Site.TechnologyTechnologyItem">
+          <ConnectorPoint PointX="2.75" PointY="4.9609993489583326" />
+          <ConnectorPoint PointX="2.75" PointY="5.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Site.BuildingItem" Width="1.5" PointX="7.125" PointY="5.625" Height="1.9802864583333335" />
+        <AssociationConnector Association="Site.BuildingBuildingItem">
+          <ConnectorPoint PointX="7.8125" PointY="4.9609993489583326" />
+          <ConnectorPoint PointX="7.8125" PointY="5.625" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

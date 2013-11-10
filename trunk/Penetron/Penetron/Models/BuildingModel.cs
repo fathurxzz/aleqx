@@ -23,7 +23,7 @@ namespace Penetron.Models
             _subCategoryId = subCategoryId;
             _contentId = subCategoryId ?? categoryId;
 
-            _buildings = context.Building.Include("Children").Where(b=>b.ContentType==contentType).ToList();
+            _buildings = context.Building.Include("Children").Include("BuildingItems").Where(b => b.ContentType == contentType).ToList();
 
             if (categoryId != null)
                 if (subCategoryId == null)

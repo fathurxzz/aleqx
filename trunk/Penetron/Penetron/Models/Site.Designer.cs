@@ -24,6 +24,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Site", "BuildingBuilding", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Building), "Building1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Building), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingObjBuildingImage", "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.BuildingObj), "BuildingImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "ContentContentItem", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Content), "ContentItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.ContentItem), true)]
+[assembly: EdmRelationshipAttribute("Site", "TechnologyTechnologyItem", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "TechnologyItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyItem), true)]
+[assembly: EdmRelationshipAttribute("Site", "BuildingBuildingItem", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Building), "BuildingItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingItem), true)]
 
 #endregion
 
@@ -186,6 +188,38 @@ namespace Penetron.Models
             }
         }
         private ObjectSet<ContentItem> _ContentItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TechnologyItem> TechnologyItem
+        {
+            get
+            {
+                if ((_TechnologyItem == null))
+                {
+                    _TechnologyItem = base.CreateObjectSet<TechnologyItem>("TechnologyItem");
+                }
+                return _TechnologyItem;
+            }
+        }
+        private ObjectSet<TechnologyItem> _TechnologyItem;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<BuildingItem> BuildingItem
+        {
+            get
+            {
+                if ((_BuildingItem == null))
+                {
+                    _BuildingItem = base.CreateObjectSet<BuildingItem>("BuildingItem");
+                }
+                return _BuildingItem;
+            }
+        }
+        private ObjectSet<BuildingItem> _BuildingItem;
 
         #endregion
 
@@ -245,6 +279,22 @@ namespace Penetron.Models
         public void AddToContentItem(ContentItem contentItem)
         {
             base.AddObject("ContentItem", contentItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TechnologyItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTechnologyItem(TechnologyItem technologyItem)
+        {
+            base.AddObject("TechnologyItem", technologyItem);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the BuildingItem EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToBuildingItem(BuildingItem buildingItem)
+        {
+            base.AddObject("BuildingItem", buildingItem);
         }
 
         #endregion
@@ -623,6 +673,28 @@ namespace Penetron.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuildingItem", "BuildingItem")]
+        public EntityCollection<BuildingItem> BuildingItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<BuildingItem>("Site.BuildingBuildingItem", "BuildingItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<BuildingItem>("Site.BuildingBuildingItem", "BuildingItem", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -771,6 +843,183 @@ namespace Penetron.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<BuildingObj>("Site.BuildingObjBuildingImage", "BuildingObj", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="BuildingItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class BuildingItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new BuildingItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        /// <param name="buildingId">Initial value of the BuildingId property.</param>
+        public static BuildingItem CreateBuildingItem(global::System.Int32 id, global::System.String text, global::System.Int32 sortOrder, global::System.Int32 buildingId)
+        {
+            BuildingItem buildingItem = new BuildingItem();
+            buildingItem.Id = id;
+            buildingItem.Text = text;
+            buildingItem.SortOrder = sortOrder;
+            buildingItem.BuildingId = buildingId;
+            return buildingItem;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 BuildingId
+        {
+            get
+            {
+                return _BuildingId;
+            }
+            set
+            {
+                OnBuildingIdChanging(value);
+                ReportPropertyChanging("BuildingId");
+                _BuildingId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("BuildingId");
+                OnBuildingIdChanged();
+            }
+        }
+        private global::System.Int32 _BuildingId;
+        partial void OnBuildingIdChanging(global::System.Int32 value);
+        partial void OnBuildingIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "BuildingBuildingItem", "Building")]
+        public Building Building
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingItem", "Building").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingItem", "Building").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Building> BuildingReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Building>("Site.BuildingBuildingItem", "Building");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Building>("Site.BuildingBuildingItem", "Building", value);
                 }
             }
         }
@@ -1658,6 +1907,28 @@ namespace Penetron.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnologyItem", "TechnologyItem")]
+        public EntityCollection<TechnologyItem> TechnologyItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TechnologyItem>("Site.TechnologyTechnologyItem", "TechnologyItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnologyItem>("Site.TechnologyTechnologyItem", "TechnologyItem", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1806,6 +2077,183 @@ namespace Penetron.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Technology>("Site.TechnologyTechnologyImage", "Technology", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="TechnologyItem")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TechnologyItem : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TechnologyItem object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        /// <param name="sortOrder">Initial value of the SortOrder property.</param>
+        /// <param name="technologyId">Initial value of the TechnologyId property.</param>
+        public static TechnologyItem CreateTechnologyItem(global::System.Int32 id, global::System.String text, global::System.Int32 sortOrder, global::System.Int32 technologyId)
+        {
+            TechnologyItem technologyItem = new TechnologyItem();
+            technologyItem.Id = id;
+            technologyItem.Text = text;
+            technologyItem.SortOrder = sortOrder;
+            technologyItem.TechnologyId = technologyId;
+            return technologyItem;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SortOrder
+        {
+            get
+            {
+                return _SortOrder;
+            }
+            set
+            {
+                OnSortOrderChanging(value);
+                ReportPropertyChanging("SortOrder");
+                _SortOrder = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SortOrder");
+                OnSortOrderChanged();
+            }
+        }
+        private global::System.Int32 _SortOrder;
+        partial void OnSortOrderChanging(global::System.Int32 value);
+        partial void OnSortOrderChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TechnologyId
+        {
+            get
+            {
+                return _TechnologyId;
+            }
+            set
+            {
+                OnTechnologyIdChanging(value);
+                ReportPropertyChanging("TechnologyId");
+                _TechnologyId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TechnologyId");
+                OnTechnologyIdChanged();
+            }
+        }
+        private global::System.Int32 _TechnologyId;
+        partial void OnTechnologyIdChanging(global::System.Int32 value);
+        partial void OnTechnologyIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnologyItem", "Technology")]
+        public Technology Technology
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnologyItem", "Technology").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnologyItem", "Technology").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Technology> TechnologyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnologyItem", "Technology");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Technology>("Site.TechnologyTechnologyItem", "Technology", value);
                 }
             }
         }

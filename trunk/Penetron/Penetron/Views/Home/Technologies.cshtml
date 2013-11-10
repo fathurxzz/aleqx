@@ -2,83 +2,93 @@
 @using SiteExtensions.Graphics
 @model Penetron.Models.TechnologyModel
 <div class="content-container">
-    
-        <div class="content">
-            <div class="title-container">
-                @if (Model.Technology != null)
-                {
+    <div class="content">
+        <div class="title-container">
+            @if (Model.Technology != null)
+            {
                 
-                    <div class="parentTitle">
-                        @if (Model.ParentTitle != null)
-                        {
-                            @Model.ParentTitle <text>/</text>
+                <div class="parentTitle">
+                    @if (Model.ParentTitle != null)
+                    {
+                        @Model.ParentTitle <text>/</text>
             
-                        }
-                    </div>
+                    }
+                </div>
             
-                    <table class="title">
-                        <tr>
-                            <td class="left">
-                            </td>
-                            <td class="center">@Model.Technology.Title
-                            </td>
-                            <td class="right">
-                            </td>
-                        </tr>
-                    </table>
+                <table class="title">
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Model.Technology.Title
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
            
             
-                }
-            </div>
-            <div class="text-container">
-                @if (Request.IsAuthenticated&&Model.Technology!=null&&Model.Technology.CategoryLevel==0)
+            }
+        </div>
+        <div class="text-container">
+            @if (Request.IsAuthenticated && Model.Technology != null && Model.Technology.CategoryLevel == 0)
+            {
+                <div class="adminLinkContainer">
+                    @Html.ActionLink("Редактировать основную страницу технологий", "EditMainPage", "Technology", new { area = "Admin" }, new { @class = "adminLink" })
+                </div>
+                
+            }
+            @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" }, { "type", ViewBag.ContentType } })
+            <div class="content-text">
+                @if (Model.Technology != null)
                 {
-                    <div class="adminLinkContainer">
-                        @Html.ActionLink("Редактировать основную страницу технологий","EditMainPage","Technology",new{area="Admin"},new{@class="adminLink"})
+                    @Html.Raw(Model.Technology.Text)
+
+                        
+                    if (Request.IsAuthenticated)
+                    {
+                        <div>
+                        @Html.ActionLink("Добавить блока контента", "AddContentItem", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                        </div>
+                    }
+
+
+                    foreach (var item in Model.Technology.TechnologyItems.OrderBy(c => c.SortOrder))
+                    {
+                        <div class="contentItem">
+                            
+                            @if (Request.IsAuthenticated)
+                            {
+                                <span class="sortOrder"> @item.SortOrder</span>
+                                @Html.ActionLink("Редактировать", "EditContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                                <text> &nbsp;</text>
+                                 @Html.ActionLink("Удалить", "DeleteContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                            }
+
+                            @Html.Raw(item.Text)
+                        </div>
+                    }
+
+
+
+                    if (Request.IsAuthenticated)
+                    {
+                    @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                    }
+                }
+                @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
+                {
+                    <div class="stars">
                     </div>
                 
-                }
-
-                @Html.Partial("Menu", Model.TechnologyMenu, new ViewDataDictionary { { "category", "Technologies" }, { "categoryAdmin", "Technology" }, { "type", ViewBag.ContentType } })
-                <div class="content-text">
-                    @if (Model.Technology != null)
-                    {
-                        @Html.Raw(Model.Technology.Text)
-
-                        if (Request.IsAuthenticated)
-                        {
-                            @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
-                        }
-                    }
-                
-
-                    @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
-                    {
-                        <div class="stars">
-                        </div>
-                
-                    @*<div class="carusel">
-                        
-                        <div class="carusel-frame">
-                            <div class="image">
-                                @Html.Raw(Html.CachedImage("~/Content/Images", Model.Technology.TechnologyImages.First().ImageSource, SiteSettings.GetThumbnail("carusel")))
-                            </div>
-                            <div class="frame">
-                            </div>
-                        </div>
-                    </div>*@
                     
-                        @Html.Partial("Carusel", Model.Technology.TechnologyImages)
-                    }
-                </div>
-                <div class="clear">
-                </div>
+                    @Html.Partial("Carusel", Model.Technology.TechnologyImages)
+                }
+            </div>
+            <div class="clear">
             </div>
         </div>
-        
+    </div>
 </div>
-
-
 @section Scripts
 {
     <script type="text/javascript">

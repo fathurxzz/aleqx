@@ -7,6 +7,7 @@ using Penetron.Models;
 
 namespace Penetron.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         private SiteContext _context;
