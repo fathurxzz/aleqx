@@ -15,6 +15,7 @@
     <EntitySet Name="ContentItem" EntityType="Site.Store.ContentItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyItem" EntityType="Site.Store.TechnologyItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BuildingItem" EntityType="Site.Store.BuildingItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -136,6 +137,18 @@
     <Property Name="Text" Type="longtext" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="BuildingId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Published" Type="bool" Nullable="false" />
   </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
@@ -263,6 +276,7 @@
             <End Role="Building" EntitySet="Building" />
             <End Role="BuildingItem" EntitySet="BuildingItem" />
           </AssociationSet>
+          <EntitySet Name="Article" EntityType="Site.Article" />
         </EntityContainer>
         <EntityType Name="Technology">
           <Key>
@@ -455,6 +469,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Description" Nullable="false" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -563,6 +589,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -624,6 +663,7 @@
           <ConnectorPoint PointX="7.8125" PointY="4.9609993489583326" />
           <ConnectorPoint PointX="7.8125" PointY="5.625" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="4.75" PointY="4" Height="2.3648893229166656" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
