@@ -23,6 +23,7 @@ a.adminLink
     font-weight: normal;
     font-style: normal;
     text-decoration: underline;
+    display: inline !important;
 }
 
 a.adminLink:hover

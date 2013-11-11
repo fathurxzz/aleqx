@@ -36,7 +36,7 @@
                                 }
                                 @if (Request.IsAuthenticated)
                                 {
-                                    <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
+                                    @Html.DisplayFor(modelItem => item.SortOrder)
                                     <br />
                                     @Html.ActionLink("Редактировать", "Edit", (string)ViewData["categoryAdmin"], new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                     <br/>

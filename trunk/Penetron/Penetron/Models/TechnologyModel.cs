@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 
 namespace Penetron.Models
 {
@@ -14,6 +15,10 @@ namespace Penetron.Models
         private readonly string _categoryId;
         private readonly string _subCategoryId;
 
+        public bool ActiveCategoryNotFound { get; set; }
+        public string RedirectCategoryId { get; set; }
+        public string RedirectSubCategoryId { get; set; }
+
 
 
         public TechnologyModel(SiteContext context, string categoryId, string subCategoryId)
@@ -25,22 +30,36 @@ namespace Penetron.Models
 
             _technologies = context.Technology.Include("Children").Include("TechnologyItems").ToList();
 
-            if(categoryId!=null)
-            if (subCategoryId == null)
-                ParentTitle = _technologies.Single(t => t.CategoryLevel == 0).Title;
-            Technology = _technologies.FirstOrDefault(t => t.Name == _contentId) ?? _technologies.First(t=>t.CategoryLevel == 0);
-            
+            if (categoryId != null)
+                if (subCategoryId == null)
+                    ParentTitle = _technologies.Single(t => t.CategoryLevel == 0).Title;
+            Technology = _technologies.FirstOrDefault(t => t.Name == _contentId) ?? _technologies.First(t => t.CategoryLevel == 0);
 
 
-            if (Technology.CategoryLevel == 0 && !Technology.Active)
+
+            if (!HttpContext.Current.Request.IsAuthenticated)
             {
-                Technology = _technologies.FirstOrDefault(t => t.Parent != null);
+                if (Technology.CategoryLevel == 0 && !Technology.Active)
+                {
+                    Technology = _technologies.FirstOrDefault(t => t.Parent == null && t.CategoryLevel != 0);
+                    if (Technology != null)
+                    {
+                        ActiveCategoryNotFound = true;
+                        RedirectCategoryId = Technology.Name;
+                        return;
+                    }
+                }
                 if (Technology != null)
                 {
-                    _contentId = Technology.Name;
+                    if (Technology.CategoryLevel != 0 && !Technology.Active && Technology.Children.Any())
+                    {
+                        ActiveCategoryNotFound = true;
+                        RedirectCategoryId = Technology.Name;
+                        RedirectSubCategoryId = Technology.Children.First().Name;
+                        return;
+                    }
                 }
             }
-
 
             if (Technology != null)
             {
@@ -63,18 +82,18 @@ namespace Penetron.Models
             TechnologyMenu = new List<SiteMenuItem>();
             foreach (var technology in _technologies.OrderBy(t => t.SortOrder))
             {
-                if (technology.Parent == null&&technology.CategoryLevel!=0)
+                if (technology.Parent == null && technology.CategoryLevel != 0)
                 {
                     TechnologyMenu.Add(new SiteMenuItem
                                        {
-                                           Name = technology.Name, 
-                                           Title = technology.Title, 
-                                           Parent = true, 
-                                           Id = technology.Id, 
-                                           HasChildren = technology.Children.Any(), 
+                                           Name = technology.Name,
+                                           Title = technology.Title,
+                                           Parent = true,
+                                           Id = technology.Id,
+                                           HasChildren = technology.Children.Any(),
                                            ContentActive = technology.Active,
                                            SortOrder = technology.SortOrder,
-                                           Current = technology.Name==_categoryId,
+                                           Current = technology.Name == _categoryId,
                                            CurrentParent = technology.Name == _contentId
                                        });
 
@@ -82,13 +101,13 @@ namespace Penetron.Models
                     {
                         TechnologyMenu.Add(new SiteMenuItem
                                            {
-                                               Name = child.Name, 
+                                               Name = child.Name,
                                                Title = child.Title,
                                                Parent = false,
-                                               Id = child.Id, 
-                                               ParentId = technology.Name, 
-                                               Current = child.Name == _subCategoryId, 
-                                               Show = (technology.Name==_categoryId),
+                                               Id = child.Id,
+                                               ParentId = technology.Name,
+                                               Current = child.Name == _subCategoryId,
+                                               Show = (technology.Name == _categoryId),
                                                SortOrder = child.SortOrder,
                                            });
                     }
@@ -100,7 +119,7 @@ namespace Penetron.Models
 
         public void Method<T>(T aaa)
         {
-            
+
         }
 
 

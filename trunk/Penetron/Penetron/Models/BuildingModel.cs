@@ -14,6 +14,10 @@ namespace Penetron.Models
         private readonly string _categoryId;
         private readonly string _subCategoryId;
 
+        public bool ActiveCategoryNotFound { get; set; }
+        public string RedirectCategoryId { get; set; }
+        public string RedirectSubCategoryId { get; set; }
+
         public IList<BuildingObj> BuildingObjects { get; set; }
 
         public BuildingModel(SiteContext context, string categoryId, string subCategoryId, int contentType)
@@ -31,12 +35,30 @@ namespace Penetron.Models
 
             Building = _buildings.FirstOrDefault(t => t.Name == _contentId) ?? _buildings.First(t => t.CategoryLevel == 0);
 
-            if (Building.CategoryLevel == 0 && !Building.Active)
+
+
+
+            if (!HttpContext.Current.Request.IsAuthenticated)
             {
-                Building = _buildings.FirstOrDefault(t => t.Parent != null);
+                if (Building.CategoryLevel == 0 && !Building.Active)
+                {
+                    Building = _buildings.FirstOrDefault(t => t.Parent == null && t.CategoryLevel != 0);
+                    if (Building != null)
+                    {
+                        ActiveCategoryNotFound = true;
+                        RedirectCategoryId = Building.Name;
+                        return;
+                    }
+                }
                 if (Building != null)
                 {
-                    _contentId = Building.Name;
+                    if (Building.CategoryLevel != 0 && !Building.Active && Building.Children.Any())
+                    {
+                        ActiveCategoryNotFound = true;
+                        RedirectCategoryId = Building.Name;
+                        RedirectSubCategoryId = Building.Children.First().Name;
+                        return;
+                    }
                 }
             }
 
