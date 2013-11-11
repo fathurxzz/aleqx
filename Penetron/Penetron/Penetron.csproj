@@ -285,6 +285,7 @@
     <Content Include="Content\img\title-center.gif" />
     <Content Include="Content\img\title-left.gif" />
     <Content Include="Content\img\title-right.gif" />
+    <Content Include="Content\Menu.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\Site.edmx.sql" />
