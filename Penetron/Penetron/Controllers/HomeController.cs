@@ -28,6 +28,8 @@ namespace Penetron.Controllers
         public ActionResult Technologies(string categoryId, string subCategoryId)
         {
             var model = new TechnologyModel(_context, categoryId,subCategoryId);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("Technologies", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.ContentType = 0;
             ViewBag.CategoryLevel = model.Technology.CategoryLevel == 0 ? "technologyRoot" : "technology";
@@ -47,6 +49,8 @@ namespace Penetron.Controllers
         public ActionResult Buildings(string categoryId, string subCategoryId)
         {
             var model = new BuildingModel(_context, categoryId, subCategoryId,(int)EContentType.Buildings);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("Buildings", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.ContentType = (int) EContentType.Buildings;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "buildingRoot" : "building";
@@ -59,6 +63,8 @@ namespace Penetron.Controllers
         public ActionResult Products(string categoryId, string subCategoryId)
         {
             var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.Products);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("Products", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.ContentType = (int)EContentType.Products;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "productRoot" : "product";
@@ -71,6 +77,8 @@ namespace Penetron.Controllers
         public ActionResult Documents(string categoryId, string subCategoryId)
         {
             var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.Documents);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("Documents", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.ContentType = (int)EContentType.Documents;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "documentRoot" : "document";
@@ -83,6 +91,8 @@ namespace Penetron.Controllers
         public ActionResult WhereToBuy(string categoryId, string subCategoryId)
         {
             var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.WhereToBuy);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("WhereToBuy", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.ContentType = (int)EContentType.WhereToBuy;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "wheretobuyRoot" : "wheretobuy";
@@ -95,6 +105,8 @@ namespace Penetron.Controllers
         public ActionResult About(string categoryId, string subCategoryId)
         {
             var model = new BuildingModel(_context, categoryId, subCategoryId, (int)EContentType.About);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("About", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
             ViewBag.IsHomePage = model.IsHomePage;
             ViewBag.ContentType = (int)EContentType.About;
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "aboutRoot" : "about";

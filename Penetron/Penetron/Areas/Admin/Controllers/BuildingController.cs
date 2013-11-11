@@ -112,10 +112,33 @@ namespace Penetron.Areas.Admin.Controllers
             return RedirectToAction("Buildings", "Home", new { area = "" });
         }
 
-        public ActionResult EditMainPage()
+        public ActionResult EditMainPage(int type)
         {
-            var b = _context.Building.First(t => t.CategoryLevel == 0);
+            var b = _context.Building.First(t => t.CategoryLevel == 0 && t.ContentType==type);
             return View("Edit", b);
+        }
+
+        [HttpPost]
+        public ActionResult EditMainPage(Building model)
+        {
+            var building = _context.Building.First(t => t.Id == model.Id);
+            building.Name = Utils.Transliterator.Transliterate(model.Name);
+            building.Title = model.Title;
+            building.SortOrder = model.SortOrder;
+            building.Text = HttpUtility.HtmlDecode(model.Text);
+            building.SeoDescription = model.SeoDescription;
+            building.SeoKeywords = model.SeoKeywords;
+            building.Active = model.Active;
+            _context.SaveChanges();
+            switch (model.ContentType)
+            {
+                case 1: return RedirectToAction("Buildings", "Home", new { area = "" });
+                case 2: return RedirectToAction("Products", "Home", new { area = "" });
+                case 3: return RedirectToAction("Documents", "Home", new { area = "" });
+                case 4: return RedirectToAction("WhereToBuy", "Home", new { area = "" });
+                case 5: return RedirectToAction("About", "Home", new { area = "" });
+            }
+            return RedirectToAction("Buildings", "Home", new { area = "" });
         }
 
 
