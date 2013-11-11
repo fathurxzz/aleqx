@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/10/2013 15:23:23
+-- Date Created: 11/11/2013 17:40:56
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -24,6 +24,8 @@ USE `penetron`;
 --    ALTER TABLE `Building` DROP CONSTRAINT `FK_BuildingBuilding`;
 --    ALTER TABLE `BuildingImage` DROP CONSTRAINT `FK_BuildingObjBuildingImage`;
 --    ALTER TABLE `ContentItem` DROP CONSTRAINT `FK_ContentContentItem`;
+--    ALTER TABLE `TechnologyItem` DROP CONSTRAINT `FK_TechnologyTechnologyItem`;
+--    ALTER TABLE `BuildingItem` DROP CONSTRAINT `FK_BuildingBuildingItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,6 +38,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `BuildingImage`;
     DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `ContentItem`;
+    DROP TABLE IF EXISTS `TechnologyItem`;
+    DROP TABLE IF EXISTS `BuildingItem`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -133,6 +137,18 @@ CREATE TABLE `BuildingItem` (
     `Text` longtext  NOT NULL,
     `SortOrder` int  NOT NULL,
     `BuildingId` int  NOT NULL
+);
+
+-- Creating table 'Article'
+
+CREATE TABLE `Article` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Name` varchar( 200 )  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL,
+    `Description` TEXT  NOT NULL,
+    `Text` longtext  NOT NULL,
+    `Date` datetime  NOT NULL,
+    `Published` bool  NOT NULL
 );
 
 
