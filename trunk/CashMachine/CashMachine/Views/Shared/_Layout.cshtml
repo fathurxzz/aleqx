@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Cash Machine</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/Site.css")
+    </head>
+    <body>
+        <div class="page">
+            @RenderBody()
+        </div>
+        @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/site.js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
