@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Неверный пин-код";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="error">
+<h2>Неверный пин-код</h2>
+</div>
+
+@Html.ActionLink("Повторить ввод номера карты", "CardNumber","Auth")
