@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CashMachine.Helpers;
 using CashMachine.Models;
+using WebMatrix.WebData;
 
 namespace CashMachine.Controllers
 {
@@ -33,8 +35,14 @@ namespace CashMachine.Controllers
 
         public ActionResult Balance()
         {
+            var card = _storage.GetCard(WebSession.CardId.Value);
+            OperationType otype = _storage.GetOparationType(1);
+            Operation operation = new Operation{Card = card,Amount = 0,OperationType = otype,Date = DateTime.Now};
+            card.Operations.Add(operation);
 
-            return View();
+
+
+            return View(card);
         }
 
         public ActionResult GetCash()
