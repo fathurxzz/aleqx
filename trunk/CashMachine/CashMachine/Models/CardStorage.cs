@@ -66,9 +66,9 @@ namespace CashMachine.Models
             return true;
         }
 
-        public decimal GetBalance(int cardId)
-        {
+        //public decimal GetBalance(int cardId)
+        //{
             
-        }
+        //}
     }
 }

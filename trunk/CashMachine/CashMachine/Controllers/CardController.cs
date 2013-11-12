@@ -37,7 +37,7 @@ namespace CashMachine.Controllers
         {
             var card = _storage.GetCard(WebSession.CardId.Value);
             OperationType otype = _storage.GetOparationType(1);
-            Operation operation = new Operation{Card = card,Amount = 0,OperationType = otype,Date = DateTime.Now};
+            Operation operation = new Operation { Card = card, Amount = card.Balance, OperationType = otype, Date = DateTime.Now };
             card.Operations.Add(operation);
 
 
