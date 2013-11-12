@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Enter card number";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CardPin", "Auth", FormMethod.Post, new { id = "inputCardNumberForm" }))
+{
+    <div class="enter-card-number">
+        Введите номер карты<br />
+        @Html.Editor("cardNumber")
+        @Html.Partial("Numpad")
+        
+        <div class="confirm-buttons card-number">
+            <div class="button clear">
+                Очистить</div>
+            <div class="button ok">
+                OК</div>
+        </div>
+
+    </div>
+}

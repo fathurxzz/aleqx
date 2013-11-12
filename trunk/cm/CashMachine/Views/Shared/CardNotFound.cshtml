@@ -1,0 +1,13 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+
+@{
+    ViewBag.Title = "Карта не найдена";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="error">
+    <h2>@(!string.IsNullOrEmpty(Model.Exception.Message) ? Model.Exception.Message : "Карта не найдена")</h2>
+</div>
+
+@Html.ActionLink("Повторить ввод номера карты", "CardNumber","Auth")
