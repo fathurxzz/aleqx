@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "CardPin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@ViewBag.CardNumber
+@using (Html.BeginForm("CardPin", "Auth", FormMethod.Post, new { id = "inputCardPinForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="enter-card-pin">
+        Введите пин-код<br />
+        @Html.Password("cardPin")
+        @Html.Partial("Numpad")
+        <div class="confirm-buttons card-pin">
+            
+            
+            <div class="button clear">
+                Очистить</div>
+            <div class="button ok">
+                OК</div>
+            @Html.ActionLink("Выход","LogOut","Auth",null,new{@class="button exit"})
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".button.ok").click(function () {
+                $("#inputCardPinForm").submit();
+            });
+        });
+    </script>
+}
