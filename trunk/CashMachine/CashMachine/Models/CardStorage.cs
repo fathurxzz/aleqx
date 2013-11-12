@@ -30,6 +30,12 @@ namespace CashMachine.Models
             return card;
         }
 
+        public OperationType GetOparationType(int id)
+        {
+            var ot = _context.OperationType.FirstOrDefault(o => o.Id == id);
+            return ot;
+        }
+
 
 
         public void AddOperation(Card card, Operation operation)
