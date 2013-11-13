@@ -46,10 +46,15 @@ namespace CashMachine.Api
         {
             var card = _store.Cards.Where(c => !c.Locked).SingleOrDefault(c => c.Number == number);
             if(card == null)
-                throw new ArgumentException("pizdec");
+                throw new ArgumentException("unlocked card not found");
             if (card.Pin != pin)
             {
                 card.PinAttemptsCount++;
+                if (card.PinAttemptsCount >= 3)
+                {
+                    card.Locked = true;
+                }
+                _store.SaveChanges();
                 throw new ValidationException("Invalid pin");
             }
             return true;

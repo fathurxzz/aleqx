@@ -1,0 +1,17 @@
+﻿@model decimal
+
+@{
+    ViewBag.Title = "Withdraw";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+Введите сумму
+<br/>
+
+@using (Html.BeginForm())
+{
+    <div class="withdraw">@Html.Editor("amount")
+        <input type="submit" value="ok" />
+    </div>
+    
+}

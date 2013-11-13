@@ -132,3 +132,8 @@ color: #999;
     width: 35px;
     text-align: center;
 }
+
+.withdraw input[type="submit"] {
+    padding: 1px 10px;
+    
+}

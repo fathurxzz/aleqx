@@ -204,9 +204,11 @@
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\OperationsApiController.cs" />
+    <Compile Include="Controllers\OperationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\WithdrawalRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -266,11 +268,14 @@
     <Content Include="Views\Shared\CardNotFound.cshtml" />
     <Content Include="Views\Shared\InvalidPin.cshtml" />
     <Content Include="Views\Shared\Numpad.cshtml" />
+    <Content Include="Views\Operations\ShowBalance.cshtml" />
+    <Content Include="Views\Shared\OperationError.cshtml" />
+    <Content Include="Views\Operations\Withdraw.cshtml" />
+    <Content Include="Views\Operations\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
