@@ -18,7 +18,6 @@ namespace CashMachine.Controllers
             _repository = repository;
         }
 
-
         public ActionResult ShowBalance()
         {
             var balance = _repository.GetBalance(WebSession.CardNumber);
@@ -27,21 +26,6 @@ namespace CashMachine.Controllers
 
         public ActionResult Withdraw()
         {
-            //try
-            //{
-            //    var result = _repository.Withdraw(request.CardNumber, request.Amount);
-            //    if (result)
-            //        return Request.CreateResponse(HttpStatusCode.OK);
-            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "unknown result");
-            //}
-            //catch (CardException e)
-            //{
-            //    if (e.Error == CardError.InsufficientFunds)
-            //    {
-            //        return Request.CreateErrorResponse(HttpStatusCode.Forbidden, e);
-            //    }
-            //    throw;
-            //}
             return View(0M);
         }
 
@@ -50,7 +34,7 @@ namespace CashMachine.Controllers
         public ActionResult Withdraw(decimal amount)
         {
             _repository.Withdraw(WebSession.CardNumber, amount);
-            return RedirectToAction("Success");
+            return View("Success");
         }
 
     }

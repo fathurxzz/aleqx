@@ -261,7 +261,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Auth\CardNumber.cshtml" />
     <Content Include="Views\Auth\CardPin.cshtml" />
-    <Content Include="Views\Card\Balance.cshtml" />
     <Content Include="Views\Card\GetCash.cshtml" />
     <Content Include="Views\Card\Index.cshtml" />
     <Content Include="Views\Card\Operations.cshtml" />
