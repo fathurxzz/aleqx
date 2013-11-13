@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "InsufficientFunds";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="error">
+    <h2>Введенная сумма превышает остаток карты</h2>
+</div>
+
+@Html.ActionLink("Назад к операциям", "Index", "Card")

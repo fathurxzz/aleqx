@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Security;
 using CashMachine.DataAccess.Entities;
@@ -26,9 +27,6 @@ namespace CashMachine.Controllers
             try
             {
                 var card = _repository.Get(formattedNumber);
-
-                
-
                 return Request.CreateResponse(HttpStatusCode.OK, card);
             }
             catch (CardException e)
@@ -55,6 +53,7 @@ namespace CashMachine.Controllers
                 if (result)
                 {
                     FormsAuthentication.SetAuthCookie(card.Number, false);
+                    //WebSession.CardNumber = card.Number;
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
                 return Request.CreateResponse(HttpStatusCode.Forbidden);
