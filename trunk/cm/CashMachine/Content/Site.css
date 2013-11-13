@@ -61,6 +61,14 @@ ul li {
     text-align: center;
     color: #a1a1a1;
     font-weight: bold;
+
+    
+
+-moz-user-select: -moz-none;
+-o-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
 }
 
 .confirm-buttons.card-number .button {

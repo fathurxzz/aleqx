@@ -62,8 +62,31 @@ AuthController.prototype = {
     }
 };
 
+
+var OperationsController= function () {
+    this._initialize();
+};
+
+OperationsController.prototype = {
+    
+    onSuccess: function(balance) {
+        alert(balance);
+    },
+    
+    onError: function (response) {
+        alert("error: " + response);
+    },
+
+    _initialize: function () {
+        
+    }
+};
+
+
 var AuthControllerInstance = null;
+var OperationsControllerInstance = null;
 
 $(function () {
     AuthControllerInstance = new AuthController();
+    OperationsControllerInstance = new OperationsController();
 });

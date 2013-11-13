@@ -1,13 +1,24 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Operations";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
-
-
-<h2>Welcome</h2>
-
-
-@Html.ActionLink("Завершить работу","LogOut","Auth")
+<h2>
+    Операции
+</h2>
+<ul>
+    <li>
+        @Ajax.ActionLink("Баланс", null, new AjaxOptions
+                                       {
+                                           HttpMethod = "GET",
+                                           Url = Url.Content("~/api/OperationsApi"),
+                                           OnFailure = "OperationsControllerInstance.onError",
+                                           OnSuccess = "OperationsControllerInstance.onSuccess"
+                                       })
+    </li>
+    <li>
+        @Html.ActionLink("Снять сумму", "GetCash", "Card")
+    </li>
+    <li>
+        @Html.ActionLink("Завершить работу", "LogOut", "Auth")
+    </li>
+</ul>

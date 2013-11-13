@@ -7,7 +7,7 @@ namespace CashMachine.Controllers
     {
         //
         // GET: /Card/
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Index(string cardNumber)
         {
             return View();

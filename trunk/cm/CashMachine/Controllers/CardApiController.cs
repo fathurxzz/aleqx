@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Security;
 using CashMachine.DataAccess.Entities;
 using CashMachine.DataAccess.Repositories;
 using CashMachine.Helpers;
@@ -25,6 +26,9 @@ namespace CashMachine.Controllers
             try
             {
                 var card = _repository.Get(formattedNumber);
+
+                
+
                 return Request.CreateResponse(HttpStatusCode.OK, card);
             }
             catch (CardException e)
@@ -49,7 +53,10 @@ namespace CashMachine.Controllers
             {
                 var result =_repository.Validate(card.Number, card.Pin);
                 if (result)
+                {
+                    FormsAuthentication.SetAuthCookie(card.Number, false);
                     return Request.CreateResponse(HttpStatusCode.OK);
+                }
                 return Request.CreateResponse(HttpStatusCode.Forbidden);
             }
             catch (ValidationException e)

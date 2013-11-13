@@ -202,7 +202,8 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CardApiController.cs" />
     <Compile Include="Controllers\CardController.cs" />
-    <Compile Include="Controllers\OperationsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\OperationsApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
