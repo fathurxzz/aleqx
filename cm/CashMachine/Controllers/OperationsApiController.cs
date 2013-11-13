@@ -11,11 +11,11 @@ using CashMachine.Models;
 namespace CashMachine.Controllers
 {
     [Authorize]
-    public class OperationsController : ApiController
+    public class OperationsApiController : ApiController
     {
         private readonly IOperationRepository _repository;
 
-        public OperationsController(IOperationRepository repository)
+        public OperationsApiController(IOperationRepository repository)
         {
             _repository = repository;
         }
