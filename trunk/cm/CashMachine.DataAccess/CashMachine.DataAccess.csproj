@@ -47,6 +47,9 @@
     <Compile Include="Entities\Card.cs" />
     <Compile Include="Entities\Operation.cs" />
     <Compile Include="ICardStore.cs" />
+    <Compile Include="Presentations\BalancePresentation.cs" />
+    <Compile Include="Presentations\OperationResultPresentation.cs" />
+    <Compile Include="Presentations\WithdrawPresentation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICardRepository.cs" />
     <Compile Include="Repositories\IOperationRepository.cs" />

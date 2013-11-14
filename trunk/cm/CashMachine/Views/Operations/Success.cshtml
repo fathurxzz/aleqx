@@ -1,10 +1,21 @@
-﻿@{
+﻿@model CashMachine.DataAccess.Presentations.WithdrawPresentation
+@{
     ViewBag.Title = "Success";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Ок. Возьмите Ваши деньги.</h2>
-
-
+<div class="success"></div>
+Номер карты: <span>@Model.CardNumber</span>
 <br />
-@Html.ActionLink("Назад", "Index", "Card")
+    Дата: <span>@Model.Date</span>
+    <br />
+Снятая сумма: <span>@Model.Amount.ToString("N")</span>
+<br />
+
+Остаток/баланс: <span>@Model.Balance.ToString("N")</span>
+<br />
+<div class="back">
+    @Html.ActionLink("Назад к списку операций", "Index", "Card")
+</div>
+<div class="logout">
+    @Html.ActionLink("Выход", "LogOut", "Auth")
+</div>

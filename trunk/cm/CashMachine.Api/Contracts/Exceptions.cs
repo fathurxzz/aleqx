@@ -10,7 +10,8 @@ namespace CashMachine.Helpers
         Unknown = 0,
         NotFound = 1,
         Locked = 2,
-        InsufficientFunds = 3
+        InsufficientFunds = 3,
+        WrongAmount
     }
 
     public class CardException:Exception

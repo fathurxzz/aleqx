@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using CashMachine.DataAccess.Entities;
 
@@ -11,7 +12,6 @@ namespace CashMachine.DataAccess
     {
         IDbSet<Card> Cards { get; }
         IDbSet<Operation> Operations { get; }
-
         int SaveChanges();
     }
 }
