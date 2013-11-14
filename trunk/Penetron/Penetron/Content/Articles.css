@@ -1,0 +1,46 @@
+﻿
+.articles
+{
+    position: absolute;
+    margin-left: 902px;
+    
+    font-family: Verdana;
+    width: 153px;
+    height: 426px;
+    background-image: url('img/articles-bg.png');
+    padding:20px 20px 20px 20px;
+       font-family: Verdana;
+    overflow: hidden;
+}
+
+
+.article .date {
+ padding-top: 10px;
+    font-weight: bold;
+    font-size: 8px;
+    color: #8e8e8e;
+}
+
+.article .description 
+{
+    padding-top: 5px;
+    font-size: 11px;
+    color: #000;
+    
+}
+
+.article .description.current {
+    color: #ccc;
+}
+
+.article .articleLink 
+{
+    padding-top: 5px;
+    color: #0072bc;
+    font-size: 10px;
+    padding-bottom: 10px;
+}
+
+.article .articleLink a {
+    color: inherit;
+    }

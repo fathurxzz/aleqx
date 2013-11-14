@@ -1,0 +1,86 @@
+﻿@model Penetron.Models.Article
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContent">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model=>model.Id)
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h3>
+                        Добавление новости</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Дата
+                </td>
+                <td>
+                    @Html.TextBox("ArtDate", DateTime.Now.ToShortDateString())
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+              <tr>
+                <td>
+                    @Html.LabelFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Description, new { rows = 6 })
+                    @Html.ValidationMessageFor(model => model.Description)
+                </td>
+            </tr>
+          
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Text)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Text, new { rows = 12, @class = "ckeditor" })
+                    @Html.ValidationMessageFor(model => model.Text)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Published)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Published)
+                    @Html.ValidationMessageFor(model => model.Published)
+                </td>
+            </tr>
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "About", "Home", new { area = "" }, null)
+        </div>
+    }
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js")
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
+

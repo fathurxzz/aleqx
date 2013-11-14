@@ -112,6 +112,23 @@ namespace Penetron.Controllers
             ViewBag.CategoryLevel = model.Building.CategoryLevel == 0 ? "aboutRoot" : "about";
             ViewBag.CategoryId = categoryId;
             ViewBag.SubCategoryId = subCategoryId;
+            model.Articles = _context.Article.OrderBy(a => a.Date).ToList();
+            this.SetSeoContent(model);
+            return View(model);
+        }
+
+        public ActionResult Articles(string id)
+        {
+            var model = new BuildingModel(_context, null, null, (int) EContentType.About, id);
+            if (model.ActiveCategoryNotFound)
+                return RedirectToAction("About", new { categoryId = model.RedirectCategoryId, subCategoryId = model.RedirectSubCategoryId });
+            ViewBag.IsHomePage = model.IsHomePage;
+            ViewBag.ContentType = (int)EContentType.About;
+            ViewBag.CategoryLevel = "about";
+            ViewBag.CategoryId = "";
+            ViewBag.SubCategoryId = "";
+            ViewBag.ArticleId = model.Article != null ? model.Article.Name : "";
+            model.Articles = _context.Article.OrderBy(a => a.Date).ToList();
             this.SetSeoContent(model);
             return View(model);
         }

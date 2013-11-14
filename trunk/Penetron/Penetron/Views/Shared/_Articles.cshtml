@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Penetron.Models.Article>
+
+<div class="articles">
+    
+    @foreach (var item in Model) {
+        @Html.Partial("Article",item)
+    }    
+    
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Добавить новость","Create","Article",new{area="Admin"},new{@class="adminLink"})
+        </div>
+    }
+</div>
+

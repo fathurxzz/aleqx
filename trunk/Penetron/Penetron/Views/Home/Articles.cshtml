@@ -1,0 +1,38 @@
+﻿@model Penetron.Models.BuildingModel
+<div class="content-container">
+    <div class="content">
+        <div class="title-container">
+            @if (Model.Building != null)
+            {
+                
+                <div class="parentTitle">
+                    
+                </div>
+            
+                <table class="title">
+                    <tr>
+                        <td class="left">
+                        </td>
+                        <td class="center">@Model.Article.Title
+                        </td>
+                        <td class="right">
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div class="text-container">
+            @Html.Partial("Menu", Model.BuildingMenu, new ViewDataDictionary { { "category", "Buildings" }, { "categoryAdmin", "Building" }, { "type", ViewBag.ContentType } })
+            @Html.Partial("_Articles", Model.Articles)
+            <div class="content-text">
+                @if (Model.Article != null)
+                {
+                    @Html.Raw(Model.Article.Text)
+                }
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+</div>
+
