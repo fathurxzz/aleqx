@@ -20,18 +20,18 @@ namespace CashMachine.Api
             _store = store;
         }
 
-        public Card Get(string number)
+        public Card GetCard(string number)
         {
             try
             {
-                var card =_store.Cards.SingleOrDefault(c => c.Number == number);
+                var card = _store.Cards.SingleOrDefault(c => c.Number == number);
                 if (card == null)
                 {
-                    throw new CardException("Card not found", CardError.NotFound);
+                    throw new CardException("Карта не найдена", CardError.NotFound);
                 }
                 if (card.Locked)
                 {
-                    throw new CardException("Card is locked", CardError.Locked);
+                    throw new CardException("Карта заблокирована", CardError.Locked);
                 }
 
                 return card;
@@ -45,18 +45,24 @@ namespace CashMachine.Api
         public bool Validate(string number, string pin)
         {
             var card = _store.Cards.Where(c => !c.Locked).SingleOrDefault(c => c.Number == number);
-            if(card == null)
-                throw new ArgumentException("unlocked card not found");
+            if (card == null)
+                throw new CardException("Действующая карта не найдна", CardError.NotFound);
             if (card.Pin != pin)
             {
                 card.PinAttemptsCount++;
-                if (card.PinAttemptsCount >= 3)
+                if (card.PinAttemptsCount >= 4)
                 {
                     card.Locked = true;
                 }
                 _store.SaveChanges();
-                throw new ValidationException("Invalid pin");
+
+                if (card.Locked)
+                    throw new CardException("Карта заблокирована", CardError.Locked);
+
+                throw new ValidationException("Неправильный пин-код");
             }
+            card.PinAttemptsCount = 0;
+            _store.SaveChanges();
             return true;
         }
 

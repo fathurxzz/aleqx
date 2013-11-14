@@ -1,10 +1,12 @@
 ﻿@{
-    ViewBag.Title = "InsufficientFunds";
+    ViewBag.Title = "Ошибка операции";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="error">
-    <h2>Введенная сумма превышает остаток карты</h2>
+    <h2>@(Model.Exception.Message??"Ошибка операции")</h2>
 </div>
 
-@Html.ActionLink("Назад к операциям", "Index", "Card")
+<div class="back">
+    @Html.ActionLink("Назад к списку операций", "Index", "Card")
+</div>

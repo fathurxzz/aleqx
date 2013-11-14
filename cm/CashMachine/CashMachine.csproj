@@ -200,16 +200,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
-    <Compile Include="Controllers\CardApiController.cs" />
     <Compile Include="Controllers\CardController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\OperationsApiController.cs" />
     <Compile Include="Controllers\OperationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\WebSession.cs" />
-    <Compile Include="Models\WithdrawalRequest.cs" />
+    <Compile Include="Models\WithdrawForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,35 +239,20 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Auth\CardNumber.cshtml" />
     <Content Include="Views\Auth\CardPin.cshtml" />
-    <Content Include="Views\Card\GetCash.cshtml" />
     <Content Include="Views\Card\Index.cshtml" />
-    <Content Include="Views\Card\Operations.cshtml" />
-    <Content Include="Views\Shared\CardNotFound.cshtml" />
     <Content Include="Views\Shared\InvalidPin.cshtml" />
     <Content Include="Views\Shared\Numpad.cshtml" />
     <Content Include="Views\Operations\ShowBalance.cshtml" />
     <Content Include="Views\Shared\OperationError.cshtml" />
     <Content Include="Views\Operations\Withdraw.cshtml" />
     <Content Include="Views\Operations\Success.cshtml" />
+    <Content Include="Views\Shared\CardError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

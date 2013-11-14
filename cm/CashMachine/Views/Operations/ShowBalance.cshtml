@@ -1,15 +1,26 @@
-﻿@model decimal
+﻿@model CashMachine.DataAccess.Presentations.BalancePresentation
 
 @{
     ViewBag.Title = "ShowBalance";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ShowBalance</h2>
+<h2>Баланс</h2>
 
+<div class="balance">
+    Номер карты: <span>@Model.CardNumber</span>
+    <br/>
+    Дата: <span>@Model.Date</span>
+    <br/>
 
-Card balance is: @Model.ToString("N")
+    Баланс карты: <span>@Model.Balance.ToString("N")</span>
+    
 
+</div>
 
-<br/>
-@Html.ActionLink("Назад","Index","Card")
+<div class="back">
+    @Html.ActionLink("Назад к списку операций", "Index", "Card")
+</div>
+<div class="logout">
+    @Html.ActionLink("Выход", "LogOut", "Auth")
+</div>

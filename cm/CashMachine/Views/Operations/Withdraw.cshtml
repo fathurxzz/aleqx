@@ -1,4 +1,4 @@
-﻿@model decimal
+﻿@model CashMachine.Models.WithdrawForm
 
 @{
     ViewBag.Title = "Withdraw";
@@ -6,12 +6,48 @@
 }
 
 Введите сумму
-<br/>
+<br />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Withdraw", "Operations", FormMethod.Post, new { id = "inputAmountForm" }))
 {
-    <div class="withdraw">@Html.Editor("amount")
+    <div class="withdraw">
+        @Html.LabelFor(model => model.Amount)
+        @Html.EditorFor(model => model.Amount)
         <input type="submit" value="ok" />
+        <br />
+        @Html.ValidationMessageFor(model => model.Amount)
+
+
+        @*<div class="enter-amount">
+            @Html.Partial("Numpad")
+
+            <div class="confirm-buttons card-number">
+                <div class="button clear">
+                    Очистить
+                </div>
+                <div class="button ok">
+                    OК
+                </div>
+            </div>
+        </div>*@
+
+
     </div>
-    
+
+}
+<div>
+    <div class="back">
+        @Html.ActionLink("Назад к списку операций", "Index", "Card")
+    </div>
+    <div class="logout">
+        @Html.ActionLink("Выход", "LogOut", "Auth")
+    </div>
+</div>
+
+@section scripts
+{
+
+    @Scripts.Render("~/Scripts/jquery.validate.min.js",
+            "~/Scripts/jquery.validate.unobtrusive.min.js")
+
 }

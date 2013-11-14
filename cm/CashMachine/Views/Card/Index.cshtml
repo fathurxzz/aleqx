@@ -7,22 +7,13 @@
 </h2>
 <ul>
     <li>
-        @Ajax.ActionLink("Ajax Баланс", null,null, new AjaxOptions
-                                              {
-                                                  HttpMethod = "GET",
-                                                  Url = Url.Content("~/api/OperationsApi"),
-                                                  OnFailure = "OperationsControllerInstance.onError",
-                                                  OnSuccess = "OperationsControllerInstance.onSuccess"
-                                              },new{cardNumber = "aaa"})
-    </li>
-    
-    <li>
-        @Html.ActionLink("Balance", "ShowBalance","Operations")
+        @Html.ActionLink("Баланс", "ShowBalance", "Operations")
     </li>
     <li>
         @Html.ActionLink("Снять сумму", "Withdraw", "Operations")
     </li>
-    <li>
-        @Html.ActionLink("Завершить работу", "LogOut", "Auth")
-    </li>
 </ul>
+
+<div class="logout">
+    @Html.ActionLink("Выход", "LogOut", "Auth")
+</div>

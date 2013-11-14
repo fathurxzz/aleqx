@@ -31,6 +31,11 @@ ul li {
 
 .error {
     color: #f00;
+    
+}
+
+.back {
+    padding-top: 20px;
 }
 
 .digits, .confirm-buttons {
@@ -129,11 +134,34 @@ color: #999;
     width: 232px;
 }
 .enter-card-pin input[type="password"] {
-    width: 35px;
+    /*width: 35px;*/
     text-align: center;
 }
 
 .withdraw input[type="submit"] {
     padding: 1px 10px;
     
+}
+
+.logout {
+    padding-top: 20px;
+    font-size: 12px;
+}
+
+.logout a {
+    color: #f00;
+}
+
+.balance, .success {
+    padding: 20px;
+}
+
+.balance span, .success span {
+    color: #000;
+    font-weight: bold;
+}
+
+.field-validation-error
+{
+    color: red !important;
 }

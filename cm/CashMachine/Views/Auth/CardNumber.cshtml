@@ -3,8 +3,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("CardPin", "Auth", FormMethod.Post, new { id = "inputCardNumberForm" }))
+@using (Html.BeginForm("CardNumber", "Auth", FormMethod.Post, new { id = "inputCardNumberForm" }))
 {
+    @Html.AntiForgeryToken()
     <div class="enter-card-number">
         Введите номер карты<br />
         @Html.Editor("cardNumber")
