@@ -18,9 +18,13 @@ namespace Penetron.Models
         public string RedirectCategoryId { get; set; }
         public string RedirectSubCategoryId { get; set; }
 
+
         public IList<BuildingObj> BuildingObjects { get; set; }
 
-        public BuildingModel(SiteContext context, string categoryId, string subCategoryId, int contentType)
+        public IList<Article> Articles { get; set; }
+        public Article Article { get; set; }
+
+        public BuildingModel(SiteContext context, string categoryId, string subCategoryId, int contentType, string articleId=null)
             : base(context, null)
         {
             _categoryId = categoryId;
@@ -77,6 +81,9 @@ namespace Penetron.Models
                 BuildingObjects = context.BuildingObj.ToList();
             }
 
+
+            if (articleId != null)
+                Article = context.Article.First(a => a.Name == articleId);
         }
 
         private void GetMenu()

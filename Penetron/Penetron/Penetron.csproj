@@ -204,6 +204,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Models\ArticleValidation.cs" />
     <Compile Include="Models\BuildingModel.cs" />
     <Compile Include="Models\BuildingValidation.cs" />
     <Compile Include="Models\ContentValidation.cs" />
@@ -227,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
+    <Content Include="Content\Articles.css" />
     <Content Include="Content\bx_styles\blue_auto.png" />
     <Content Include="Content\bx_styles\blue_next.png" />
     <Content Include="Content\bx_styles\blue_pager.png" />
@@ -265,6 +267,7 @@
     <Content Include="Content\img\3-reason.png" />
     <Content Include="Content\img\4-reason.png" />
     <Content Include="Content\img\4-reasons.png" />
+    <Content Include="Content\img\articles-bg.png" />
     <Content Include="Content\img\blink.gif" />
     <Content Include="Content\img\carusel-frame.png" />
     <Content Include="Content\img\em.gif" />
@@ -438,6 +441,21 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Building\EditMainPage.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Article\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Articles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Article.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Articles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -454,7 +472,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>11978</DevelopmentServerPort>
+          <DevelopmentServerPort>22142</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

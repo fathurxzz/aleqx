@@ -1,0 +1,32 @@
+﻿@model Penetron.Models.Article
+<div class="article">
+    <div class="date">@Model.Date.ToShortDateString()
+    </div>
+    
+    @{
+        string className = "";
+        if (ViewBag.ArticleId == Model.Name)
+        {
+            className = "current";
+        }
+    }
+    
+    <div class="description @className">@Model.Description</div>
+    
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Редактировать", "Edit", "Article", new { area = "Admin" ,id=Model.Id}, new { @class = "adminLink" })
+        </div>
+    }
+    
+    
+
+    <div class="articleLink">
+        @if (ViewBag.ArticleId != Model.Name)
+        {
+            <text>&laquo;</text>
+            @Html.ActionLink("Вся новость", "Articles", "Home", new { id = Model.Name }, null)
+        }
+    </div>
+</div>
