@@ -17,6 +17,7 @@
     {
         <div class="adminLinkContainer">
             @Html.ActionLink("Редактировать", "Edit", "Article", new { area = "Admin" ,id=Model.Id}, new { @class = "adminLink" })
+            @Html.ActionLink("Удалить", "Delete", "Article", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick="return confirm('Удалить новость?')" })
         </div>
     }
     

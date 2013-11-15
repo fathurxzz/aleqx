@@ -2,7 +2,8 @@
 
 <div class="articles">
     
-    @foreach (var item in Model) {
+    @foreach (var item in Model.Where(a=>a.Published||Request.IsAuthenticated).OrderByDescending(a => a.Date))
+    {
         @Html.Partial("Article",item)
     }    
     
