@@ -58,5 +58,13 @@ namespace Penetron.Areas.Admin.Controllers
             return RedirectToAction("About", "Home", new { area = "" });
         }
 
+        public ActionResult Delete(int id)
+        {
+            var article = _context.Article.First(a => a.Id == id);
+            _context.DeleteObject(article);
+            _context.SaveChanges();
+            return RedirectToAction("About", "Home", new { area = "" });
+        }
+
     }
 }
