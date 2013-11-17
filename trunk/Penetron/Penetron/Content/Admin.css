@@ -31,6 +31,10 @@ a.adminLink:hover
     color: #ffaa00 !important;
 }
 
+a.adminLink2:hover {
+    color: #0000ff !important;
+}
+
 .buttonsContainer
 {
     text-align: center;

@@ -80,7 +80,7 @@
 #menu ul li.parent .menucontent 
 {
     
-    width: 150px;
+    /*width: 150px;*/
     position: relative;
     margin: 0 auto;
     
@@ -88,11 +88,11 @@
 
 #menu ul li.parent a {
     display: block;
-    padding: 7px 10px;
+    padding: 7px 25px;
 }
 
 #menu ul li.parent span {
     color: #f7941e;
     display: block;
-    padding: 7px 10px;
+    padding: 7px 25px;
 }

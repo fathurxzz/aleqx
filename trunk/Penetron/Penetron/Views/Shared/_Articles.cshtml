@@ -1,17 +1,16 @@
 ﻿@model IEnumerable<Penetron.Models.Article>
 
 <div class="articles">
-    
-    @foreach (var item in Model.Where(a=>a.Published||Request.IsAuthenticated).OrderByDescending(a => a.Date))
-    {
-        @Html.Partial("Article",item)
-    }    
-    
     @if (Request.IsAuthenticated)
     {
         <div class="adminLinkContainer">
             @Html.ActionLink("Добавить новость","Create","Article",new{area="Admin"},new{@class="adminLink"})
         </div>
     }
+
+    @foreach (var item in Model.Where(a=>a.Published||Request.IsAuthenticated).OrderByDescending(a => a.Date))
+    {
+        @Html.Partial("Article",item)
+    }    
 </div>
 

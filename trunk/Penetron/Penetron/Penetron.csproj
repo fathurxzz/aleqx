@@ -456,6 +456,12 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Auth\ChangePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Auth\ChangePasswordSuccess.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
