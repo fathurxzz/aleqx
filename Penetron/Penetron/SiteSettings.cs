@@ -14,9 +14,35 @@ namespace Penetron
         static SiteSettings()
         {
             Thumbnails = new Dictionary<string, ThumbnailPicture>
-                              {
-                                  {"carusel",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 359,Width = 610}, CacheFolder = "carusel", ScaleMode = ScaleMode.Crop}}
-                              };
+                         {
+                             {
+                                 "carusel",
+                                 new ThumbnailPicture
+                                 {
+                                     PictureSize = new PictureSize {Height = 359, Width = 610},
+                                     CacheFolder = "carusel",
+                                     ScaleMode = ScaleMode.Crop
+                                 }
+                             },
+                             {
+                                 "slider",
+                                 new ThumbnailPicture
+                                 {
+                                     PictureSize = new PictureSize {Height = 337, Width = 1200},
+                                     CacheFolder = "slider",
+                                     ScaleMode = ScaleMode.Crop
+                                 }
+                             },
+                             {
+                                 "sliderPreview",
+                                 new ThumbnailPicture
+                                 {
+                                     PictureSize = new PictureSize {Height = 85, Width = 300},
+                                     CacheFolder = "sliderPreview",
+                                     ScaleMode = ScaleMode.Crop
+                                 }
+                             }
+                         };
         }
 
 

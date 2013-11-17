@@ -1,9 +1,36 @@
-﻿@model Penetron.Models.SiteModel
+﻿@using Penetron
+@using SiteExtensions.Graphics
+@model Penetron.Models.SiteModel
 <div style="background-color: #fff;">
     <div class="header middle">
-        <div class="right">
-            <div class="left"></div>
+        
+        <div class="main-page-slider">
+            <ul id="bx1">
+                
+                @foreach (var item in Model.Sliders)
+                {
+                    string url = Request.Url.Scheme+"://" + Request.Url.Authority + "/"+item.Url;
+                <li>
+                    <a href="@url">
+                         @Html.Raw(Html.CachedImage("~/Content/Images", item.ImageSource, SiteSettings.GetThumbnail("slider")))
+                    </a>
+                </li>    
+                }
+            </ul>
         </div>
+        
+
+        <div class="left">
+        </div>
+        <div class="right">
+        </div>
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer" style="position: absolute; z-index: 11111">
+                @*@Html.ActionLink("Добавить баннер", "Create", "Slider", new { area = "Admin" }, new { @class = "adminLink" })&nbsp;*@
+                @Html.ActionLink("Редактировать список", "Index", "Slider", new { area = "Admin" }, new { @class = "adminLink" })
+            </div>
+        }
     </div>
     <div class="header bottom">
     </div>
@@ -13,3 +40,18 @@
         @Html.Partial("Reasons", Model.Reasons)
     </div>
 </div>
+
+@section Styles
+{
+    @Styles.Render("~/Content/bx_styles/bx_styles1.css")
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            //$("#bx1").bxSlider({ mode: 'fade' });
+            $("#bx1").bxSlider({mode:'fade', auto:'true',pause:'5000'});
+        });
+    </script>
+}

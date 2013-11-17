@@ -197,6 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\BuildingController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReasonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
     <Compile Include="Areas\Admin\Controllers\TechnologyController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -221,6 +222,7 @@
       <DependentUpon>Site.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Models\SliderValidation.cs" />
     <Compile Include="Models\TechnologyMenuItem.cs" />
     <Compile Include="Models\TechnologyModel.cs" />
     <Compile Include="Models\TechnologyValidation.cs" />
@@ -236,6 +238,7 @@
     <Content Include="Content\bx_styles\blue_pager.png" />
     <Content Include="Content\bx_styles\blue_prev.png" />
     <Content Include="Content\bx_styles\bx_styles.css" />
+    <Content Include="Content\bx_styles\bx_styles1.css" />
     <Content Include="Content\bx_styles\gray_auto.png" />
     <Content Include="Content\bx_styles\gray_next.png" />
     <Content Include="Content\bx_styles\gray_pager.png" />
@@ -472,6 +475,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Reason.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Slider\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Slider\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

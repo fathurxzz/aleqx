@@ -252,6 +252,22 @@ namespace Penetron.Models
             }
         }
         private ObjectSet<Reason> _Reason;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Slider> Slider
+        {
+            get
+            {
+                if ((_Slider == null))
+                {
+                    _Slider = base.CreateObjectSet<Slider>("Slider");
+                }
+                return _Slider;
+            }
+        }
+        private ObjectSet<Slider> _Slider;
 
         #endregion
 
@@ -343,6 +359,14 @@ namespace Penetron.Models
         public void AddToReason(Reason reason)
         {
             base.AddObject("Reason", reason);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Slider EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSlider(Slider slider)
+        {
+            base.AddObject("Slider", slider);
         }
 
         #endregion
@@ -1935,6 +1959,115 @@ namespace Penetron.Models
         private global::System.String _Text;
         partial void OnTextChanging(global::System.String value);
         partial void OnTextChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Slider")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Slider : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Slider object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="url">Initial value of the Url property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static Slider CreateSlider(global::System.Int32 id, global::System.String url, global::System.String imageSource)
+        {
+            Slider slider = new Slider();
+            slider.Id = id;
+            slider.Url = url;
+            slider.ImageSource = imageSource;
+            return slider;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                OnUrlChanging(value);
+                ReportPropertyChanging("Url");
+                _Url = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Url");
+                OnUrlChanged();
+            }
+        }
+        private global::System.String _Url;
+        partial void OnUrlChanging(global::System.String value);
+        partial void OnUrlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
 
         #endregion
 
