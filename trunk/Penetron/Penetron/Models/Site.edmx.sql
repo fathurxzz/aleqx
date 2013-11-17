@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/11/2013 17:40:56
+-- Date Created: 11/17/2013 14:44:35
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `penetron`;
-CREATE DATABASE `penetron`;
-USE `penetron`;
+DROP DATABASE IF EXISTS `gbua_penetron`;
+CREATE DATABASE `gbua_penetron`;
+USE `gbua_penetron`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -40,6 +40,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ContentItem`;
     DROP TABLE IF EXISTS `TechnologyItem`;
     DROP TABLE IF EXISTS `BuildingItem`;
+    DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `Reason`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -97,7 +99,8 @@ CREATE TABLE `BuildingObj` (
 CREATE TABLE `BuildingImage` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `BuildingObjId` int  NOT NULL,
-    `ImageSource` TEXT  NOT NULL
+    `ImageSource` TEXT  NOT NULL,
+    `Title` varchar( 200 )  NOT NULL
 );
 
 -- Creating table 'Content'
@@ -149,6 +152,14 @@ CREATE TABLE `Article` (
     `Text` longtext  NOT NULL,
     `Date` datetime  NOT NULL,
     `Published` bool  NOT NULL
+);
+
+-- Creating table 'Reason'
+
+CREATE TABLE `Reason` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Title` longtext  NOT NULL,
+    `Text` longtext  NOT NULL
 );
 
 

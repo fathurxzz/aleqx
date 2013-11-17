@@ -16,6 +16,8 @@ namespace Penetron.Models
         public Technology Technology { get; set; }
         public Building Building { get; set; }
         public Content Content { get; set; }
+        public IEnumerable<Reason> Reasons { get; set; }
+
 
         public SiteModel(SiteContext context, string contentId)
         {
@@ -23,6 +25,7 @@ namespace Penetron.Models
             Content = context.Content.Include("ContentItems").FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
             SeoDescription = Content.SeoDescription;
             SeoKeywords = Content.SeoKeywords;
+            Reasons = context.Reason.ToList();
         }
 
     }

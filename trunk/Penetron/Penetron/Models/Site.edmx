@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Site.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SiteStoreContainer">
     <EntitySet Name="Technology" EntityType="Site.Store.Technology" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TechnologyImage" EntityType="Site.Store.TechnologyImage" store:Type="Tables" Schema="dbo" />
@@ -16,6 +16,7 @@
     <EntitySet Name="TechnologyItem" EntityType="Site.Store.TechnologyItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BuildingItem" EntityType="Site.Store.BuildingItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reason" EntityType="Site.Store.Reason" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -98,6 +99,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BuildingObjId" Type="int" Nullable="false" />
     <Property Name="ImageSource" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -149,6 +151,14 @@
     <Property Name="Text" Type="longtext" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Published" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reason">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
   </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
@@ -277,6 +287,7 @@
             <End Role="BuildingItem" EntitySet="BuildingItem" />
           </AssociationSet>
           <EntitySet Name="Article" EntityType="Site.Article" />
+          <EntitySet Name="Reason" EntityType="Site.Reason" />
         </EntityContainer>
         <EntityType Name="Technology">
           <Key>
@@ -377,6 +388,7 @@
           <NavigationProperty Name="BuildingObj" Relationship="Site.BuildingObjBuildingImage" FromRole="BuildingImage" ToRole="BuildingObj" />
           <Property Type="Int32" Name="BuildingObjId" Nullable="false" />
           <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="500" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="true" MaxLength="200" />
         </EntityType>
         <Association Name="BuildingObjBuildingImage">
           <End Type="Site.BuildingObj" Role="BuildingObj" Multiplicity="1" />
@@ -481,6 +493,14 @@
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="Boolean" Name="Published" Nullable="false" />
         </EntityType>
+        <EntityType Name="Reason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -543,6 +563,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="BuildingObjId" ColumnName="BuildingObjId" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -602,6 +623,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Reason">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Reason)">
+        <MappingFragment StoreEntitySet="Reason">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -642,7 +672,7 @@
           <ConnectorPoint PointX="7.9784615384615387" PointY="4.7686979166666656" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.BuildingObj" Width="1.5" PointX="9.5" PointY="1.375" Height="1.59568359375" />
-        <EntityTypeShape EntityType="Site.BuildingImage" Width="1.5" PointX="12.25" PointY="1.5" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Site.BuildingImage" Width="1.5" PointX="12.25" PointY="1.5" Height="1.9802864583333339" />
         <AssociationConnector Association="Site.BuildingObjBuildingImage">
           <ConnectorPoint PointX="11" PointY="2.235341796875" />
           <ConnectorPoint PointX="12.25" PointY="2.235341796875" />
@@ -664,6 +694,7 @@
           <ConnectorPoint PointX="7.8125" PointY="5.625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="4.75" PointY="4" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="Site.Reason" Width="1.5" PointX="9.5" PointY="3.75" Height="1.5956835937499996" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

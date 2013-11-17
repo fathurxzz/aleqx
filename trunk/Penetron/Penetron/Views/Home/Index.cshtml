@@ -1,12 +1,15 @@
-﻿<div style="background-color: #fff;">
-<div class="header middle">
+﻿@model Penetron.Models.SiteModel
+<div style="background-color: #fff;">
+    <div class="header middle">
+        <div class="right">
+            <div class="left"></div>
+        </div>
+    </div>
+    <div class="header bottom">
+    </div>
 </div>
-<div class="header bottom">
-</div>
-</div>
-
 <div class="main-page-content">
-<div class="container">
-@Html.Partial("Reasons")
-</div>
+    <div class="container">
+        @Html.Partial("Reasons", Model.Reasons)
+    </div>
 </div>

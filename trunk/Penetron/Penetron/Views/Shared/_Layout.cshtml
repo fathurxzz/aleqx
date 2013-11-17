@@ -7,79 +7,70 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
-
     @Styles.Render("~/Content/Site.css", "~/Content/Menu.css", "~/Content/Articles.css")
     @Styles.Render("~/Content/bx_styles/bx_styles.css")
-
     @if (Request.IsAuthenticated)
     { 
         @Styles.Render("~/Content/Admin.css")
     }
-    
     <script type="text/javascript">
         var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
     </script>
-
 </head>
-    <body>
-        <div id="site">
+<body>
+    <div id="site">
+    </div>
+    <div class="header top">
+        <div class="page">
+            <div class="search">
+                @Html.Editor("search")
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div style="position: absolute; width: 300px; left: 500px;">
+                    @Html.ActionLink("Выйти из системы администрирования", "LogOut", "Auth", new { area = "" }, new { @class = "adminLink adminLink2" })
+                    <br />
+                    @Html.ActionLink("Изменить рароль", "ChangePassword", "Auth", new { area = "" }, new { @class = "adminLink adminLink2" })
+                </div>
+            }
+            <div id="phone">
+            </div>
+            <div id="logo">
+            </div>
+            @Html.Partial("MainMenu")
         </div>
-        <div class="header top">
-            <div class="page">
-                <div class="search">
-                    @Html.Editor("search")
-                </div>
-                @if (Request.IsAuthenticated)
-                {
-                    <div style="position:absolute; width: 300px; left: 500px; ">
-                        @Html.ActionLink("Выйти из системы администрирования", "LogOut", "Auth",new{area=""},new{@class="adminLink adminLink2"})
-                        <br/>
-                        @Html.ActionLink("Изменить рароль", "ChangePassword", "Auth", new { area = "" }, new { @class = "adminLink adminLink2" })
-                    </div>
-                }
-                <div id="phone">
-                </div>
-                <div id="logo">
-                </div>
-                
-                @Html.Partial("MainMenu")
+    </div>
+    @RenderBody()
+    <div id="footer">
+        <div id="em">
+            <div id="em-link">
             </div>
         </div>
-       
-        
-        @RenderBody()
-        <div id="footer">
-            <div id="em">
-                <div id="em-link">
-                </div>
-            </div>
-        </div>
-        @*@Scripts.Render("~/bundles/jquery")*@
-        @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/jquery.bxSlider.min.js", "~/Scripts/site.js", "~/Scripts/jquery.parallax.js")
-        
-        @RenderSection("Scripts", false)
-        
-        <script type="text/javascript">
-            $(function () {
-                //                jQuery('.parallax-layer').parallax();
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/jquery.bxSlider.min.js", "~/Scripts/site.js", "~/Scripts/jquery.parallax.js")
+    @RenderSection("Scripts", false)
+    <script type="text/javascript">
+        $(function () {
+            //                jQuery('.parallax-layer').parallax();
 
+
+            if (isHomePage) {
+                $('#site').css('background', 'none');
+            }
+            else
+            {
                 $(window).bind('scroll', function (e) {
                     parallaxScroll();
-                });    
-
-                        });
-
-            function parallaxScroll() {
-                //alert("!!!");
-                var scrolled = $(window).scrollTop();
-
-                //alert((0 - (scrolled * .25)) + 'px');
-                $('#site').css('top', (0 - (scrolled * .15)) + 'px');
-                //$('#parallax-bg2').css('top', (0 - (scrolled * .5)) + 'px');
-                //$('#parallax-bg3').css('top', (0 - (scrolled * .75)) + 'px');
+                });
             }
+        });
+
+        function parallaxScroll() {
+            var scrolled = $(window).scrollTop();
+            $('#site').css('top', (0 - (scrolled * .15)) + 'px');
+        }
             
-        </script>
-        
-    </body>
+    </script>
+</body>
 </html>
