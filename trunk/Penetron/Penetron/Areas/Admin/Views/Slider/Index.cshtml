@@ -1,0 +1,45 @@
+﻿@using Penetron
+@using SiteExtensions.Graphics
+@model IEnumerable<Penetron.Models.Slider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="adminContent">
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSource)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            @Html.Raw(Html.CachedImage("~/Content/Images", item.ImageSource, SiteSettings.GetThumbnail("sliderPreview")))
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @class = "adminLink" }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{@class="adminLink", onclick="return confirm('Удалть баннер?')"})
+        </td>
+    </tr>
+    
+}
+</table>
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js")
+}

@@ -17,6 +17,7 @@ namespace Penetron.Models
         public Building Building { get; set; }
         public Content Content { get; set; }
         public IEnumerable<Reason> Reasons { get; set; }
+        public IEnumerable<Slider> Sliders { get; set; }
 
 
         public SiteModel(SiteContext context, string contentId)
@@ -26,6 +27,8 @@ namespace Penetron.Models
             SeoDescription = Content.SeoDescription;
             SeoKeywords = Content.SeoKeywords;
             Reasons = context.Reason.ToList();
+            Sliders = context.Slider.ToList();
+
         }
 
     }

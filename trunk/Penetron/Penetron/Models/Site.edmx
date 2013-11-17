@@ -17,6 +17,7 @@
     <EntitySet Name="BuildingItem" EntityType="Site.Store.BuildingItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Article" EntityType="Site.Store.Article" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Reason" EntityType="Site.Store.Reason" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Slider" EntityType="Site.Store.Slider" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="TechnologyTechnologyImage" Association="Site.Store.TechnologyTechnologyImage">
       <End Role="Technology" EntitySet="Technology" />
       <End Role="TechnologyImage" EntitySet="TechnologyImage" />
@@ -160,6 +161,14 @@
     <Property Name="Title" Type="longtext" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="false" />
   </EntityType>
+  <EntityType Name="Slider">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+  </EntityType>
   <Association Name="TechnologyTechnologyImage">
     <End Role="Technology" Type="Site.Store.Technology" Multiplicity="1" />
     <End Role="TechnologyImage" Type="Site.Store.TechnologyImage" Multiplicity="*" />
@@ -288,6 +297,7 @@
           </AssociationSet>
           <EntitySet Name="Article" EntityType="Site.Article" />
           <EntitySet Name="Reason" EntityType="Site.Reason" />
+          <EntitySet Name="Slider" EntityType="Site.Slider" />
         </EntityContainer>
         <EntityType Name="Technology">
           <Key>
@@ -501,6 +511,14 @@
           <Property Type="String" Name="Title" Nullable="false" />
           <Property Type="String" Name="Text" Nullable="false" />
         </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Url" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="ImageSource" Nullable="false" FixedLength="true" MaxLength="200" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -632,6 +650,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Slider">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Slider)">
+        <MappingFragment StoreEntitySet="Slider">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -695,6 +722,7 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Site.Article" Width="1.5" PointX="4.75" PointY="4" Height="2.3648893229166656" />
         <EntityTypeShape EntityType="Site.Reason" Width="1.5" PointX="9.5" PointY="3.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="Site.Slider" Width="1.5" PointX="4.5" PointY="7" Height="1.5956835937499996" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

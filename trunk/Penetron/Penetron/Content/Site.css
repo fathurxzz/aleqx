@@ -40,29 +40,38 @@ a {
 .header.middle
 {
     height: 337px;
-    background: url('img/header-bottom-bg.gif') no-repeat;
+    
     /*background-position: 50% 0;*/
     background-size: 100%;
     margin-top: -7px;
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    
+}
+
+.header.middle .right, .header.middle .left {
+    width: 12px;
+    height: 337px;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 11111;
 }
 
 .header.middle .right {
-    width: 1200px;
-    height: 337px;
     background-image: url('img/slider-right.png');
-    background-position: right;
-    background-repeat: no-repeat;
-}
+    margin-left: 1188px;
+    }
 
 .header.middle .left {
+    background-image: url('img/slider-left.png');
+}
+
+.main-page-slider {
     width: 1200px;
     height: 337px;
-    background-image: url('img/slider-left.png');
-    background-position: left;
-    background-repeat: no-repeat;
+    position: absolute;
+    background: url('img/header-bottom-bg.gif') no-repeat;
 }
 
 .header.bottom

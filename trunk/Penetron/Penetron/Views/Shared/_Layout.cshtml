@@ -8,7 +8,9 @@
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     @Styles.Render("~/Content/Site.css", "~/Content/Menu.css", "~/Content/Articles.css")
-    @Styles.Render("~/Content/bx_styles/bx_styles.css")
+    
+    @RenderSection("Styles", false)
+
     @if (Request.IsAuthenticated)
     { 
         @Styles.Render("~/Content/Admin.css")

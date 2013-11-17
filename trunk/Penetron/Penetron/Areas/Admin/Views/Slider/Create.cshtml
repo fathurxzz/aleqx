@@ -1,0 +1,44 @@
+﻿@model Penetron.Models.Slider
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="adminContent">
+    @using (Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h3>
+                        Добавление баннера</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Url)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.Url)
+                    @Html.ValidationMessageFor(model => model.Url)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Изображение
+                </td>
+                <td>
+                    <input type="file" id="banner" name="banner" />
+                </td>
+            </tr>
+        </table>
+        <div class="buttonsContainer">
+            <input type="submit" value="Сохранить" />
+            @Html.ActionLink("Назад", "Index", "Home", new { area = "" }, null)
+        </div>
+    }
+</div>
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/jquery.validate.min.js", "~/Scripts/jquery.validate.unobtrusive.min.js")
+}

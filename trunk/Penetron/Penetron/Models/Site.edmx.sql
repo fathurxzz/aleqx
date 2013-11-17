@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/17/2013 14:44:35
+-- Date Created: 11/17/2013 18:33:12
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_penetron`;
-CREATE DATABASE `gbua_penetron`;
-USE `gbua_penetron`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -160,6 +157,14 @@ CREATE TABLE `Reason` (
     `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `Title` longtext  NOT NULL,
     `Text` longtext  NOT NULL
+);
+
+-- Creating table 'Slider'
+
+CREATE TABLE `Slider` (
+    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    `Url` varchar( 200 )  NOT NULL,
+    `ImageSource` varchar( 200 )  NOT NULL
 );
 
 

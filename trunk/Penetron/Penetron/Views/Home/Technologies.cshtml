@@ -47,7 +47,7 @@
                     if (Request.IsAuthenticated)
                     {
                         <div>
-                        @Html.ActionLink("Добавить блока контента", "AddContentItem", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                            @Html.ActionLink("Добавить блока контента", "AddContentItem", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
                         </div>
                     }
 
@@ -61,7 +61,7 @@
                                 <span class="sortOrder"> @item.SortOrder</span>
                                 @Html.ActionLink("Редактировать", "EditContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
                                 <text> &nbsp;</text>
-                                 @Html.ActionLink("Удалить", "DeleteContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                                @Html.ActionLink("Удалить", "DeleteContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
                             }
 
                             @Html.Raw(item.Text)
@@ -73,7 +73,7 @@
 
                     if (Request.IsAuthenticated)
                     {
-                    @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                        @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
                     }
                 }
                 @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
@@ -90,10 +90,17 @@
         </div>
     </div>
 </div>
+
+@section Styles
+{
+    @Styles.Render("~/Content/bx_styles/bx_styles.css")
+}
+
 @section Scripts
 {
     <script type="text/javascript">
-        $(function () {
+        $(function() {
+            //$("#bx1").bxSlider({ mode: 'fade' });
             $("#bx1").bxSlider();
         });
     </script>
