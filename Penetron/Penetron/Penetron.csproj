@@ -196,6 +196,7 @@
     <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\BuildingController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReasonController.cs" />
     <Compile Include="Areas\Admin\Controllers\TechnologyController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Models\EContentType.cs" />
     <Compile Include="Models\ICategoryModel.cs" />
     <Compile Include="Models\IMessageService.cs" />
+    <Compile Include="Models\ReasonValidation.cs" />
     <Compile Include="Models\SiteMenu.cs" />
     <Compile Include="Models\MessageService.cs" />
     <Compile Include="Models\Site.Designer.cs">
@@ -267,6 +269,7 @@
     <Content Include="Content\img\3-reason.png" />
     <Content Include="Content\img\4-reason.png" />
     <Content Include="Content\img\4-reasons.png" />
+    <Content Include="Content\img\4reasons-bg.gif" />
     <Content Include="Content\img\articles-bg.png" />
     <Content Include="Content\img\blink.gif" />
     <Content Include="Content\img\carusel-frame.png" />
@@ -284,6 +287,8 @@
     <Content Include="Content\img\phone.gif" />
     <Content Include="Content\img\search.gif" />
     <Content Include="Content\img\site-bg.jpg" />
+    <Content Include="Content\img\slider-left.png" />
+    <Content Include="Content\img\slider-right.png" />
     <Content Include="Content\img\stars.gif" />
     <Content Include="Content\img\submenu-bg.png" />
     <Content Include="Content\img\title-center.gif" />
@@ -461,6 +466,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Auth\ChangePasswordSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Reason\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Reason.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

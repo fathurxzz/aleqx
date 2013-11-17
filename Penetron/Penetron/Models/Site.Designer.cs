@@ -236,6 +236,22 @@ namespace Penetron.Models
             }
         }
         private ObjectSet<Article> _Article;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Reason> Reason
+        {
+            get
+            {
+                if ((_Reason == null))
+                {
+                    _Reason = base.CreateObjectSet<Reason>("Reason");
+                }
+                return _Reason;
+            }
+        }
+        private ObjectSet<Reason> _Reason;
 
         #endregion
 
@@ -319,6 +335,14 @@ namespace Penetron.Models
         public void AddToArticle(Article article)
         {
             base.AddObject("Article", article);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Reason EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToReason(Reason reason)
+        {
+            base.AddObject("Reason", reason);
         }
 
         #endregion
@@ -953,12 +977,14 @@ namespace Penetron.Models
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="buildingObjId">Initial value of the BuildingObjId property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static BuildingImage CreateBuildingImage(global::System.Int32 id, global::System.Int32 buildingObjId, global::System.String imageSource)
+        /// <param name="title">Initial value of the Title property.</param>
+        public static BuildingImage CreateBuildingImage(global::System.Int32 id, global::System.Int32 buildingObjId, global::System.String imageSource, global::System.String title)
         {
             BuildingImage buildingImage = new BuildingImage();
             buildingImage.Id = id;
             buildingImage.BuildingObjId = buildingObjId;
             buildingImage.ImageSource = imageSource;
+            buildingImage.Title = title;
             return buildingImage;
         }
 
@@ -1040,6 +1066,30 @@ namespace Penetron.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
 
         #endregion
 
@@ -1780,6 +1830,115 @@ namespace Penetron.Models
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Reason")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Reason : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Reason object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        public static Reason CreateReason(global::System.Int32 id, global::System.String title, global::System.String text)
+        {
+            Reason reason = new Reason();
+            reason.Id = id;
+            reason.Title = title;
+            reason.Text = text;
+            return reason;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>

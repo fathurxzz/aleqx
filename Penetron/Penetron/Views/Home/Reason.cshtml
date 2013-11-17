@@ -1,0 +1,18 @@
+﻿@model Penetron.Models.Reason
+@{
+    string className = "reason" + Model.Id;
+}
+<div class="reason @className">
+    <div class="title">
+        @Model.Title
+    </div>
+    <div class="text">
+        @Html.Raw(Model.Text)
+        @if (Request.IsAuthenticated)
+        {
+            <div class="adminLinkContainer">
+                @Html.ActionLink("Редактировать","Edit","Reason",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+            </div>
+        }
+    </div>
+</div>

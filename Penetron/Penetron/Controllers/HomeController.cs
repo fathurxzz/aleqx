@@ -19,9 +19,10 @@ namespace Penetron.Controllers
 
         public ActionResult Index()
         {
+            var model = new SiteModel(_context, null);
+            this.SetSeoContent(model);
             ViewBag.IsHomePage = true;
-
-            return View();
+            return View(model);
         }
 
 
