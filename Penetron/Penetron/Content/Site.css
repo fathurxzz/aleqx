@@ -398,8 +398,8 @@ div#content, div#errorContent
     padding: 30px 0;
     height: 13px;
     width: 102px;
-    background: url(img/stars.gif) no-repeat;
-    background-position: center;
+    /*background: url(img/stars.gif) no-repeat;
+    background-position: center;*/
 }
 
 

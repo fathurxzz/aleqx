@@ -69,9 +69,10 @@
                
             </div>
             
-           
-                @Html.Partial("ObjectsViever", Model.BuildingObjects)
-           
+           @if (Model.Building != null && Model.Building.Id == 2)
+           {
+               @Html.Partial("ObjectsViever", Model.BuildingObjects)
+           }
             <div class="clear">
             </div>
         </div>
