@@ -1,0 +1,43 @@
+﻿<div class="inputImages">
+    <input type="file" id="files" name="files[]" multiple />
+    
+    <output id="list">
+       
+    </output>
+    
+    <script type="text/javascript">
+        function handleFileSelect(evt) {
+
+            document.getElementById('list').innerHTML = "";
+
+
+            var files = evt.target.files; // FileList object
+
+            // Loop through the FileList and render image files as thumbnails.
+            for (var i = 0, f; f = files[i]; i++) {
+
+                // Only process image files.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+                var reader = new FileReader();
+
+                // Closure to capture the file information.
+                reader.onload = (function (theFile, idx) {
+                    return function (e) {
+                        // Render thumbnail.
+                        var div = document.createElement('div');
+                        div.innerHTML = ['<img class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/> <br/> <input type="text" name="title[', idx, ']" /> '].join('');
+                        document.getElementById('list').insertBefore(div, null);
+                    };
+                })(f, i);
+
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
+</div>

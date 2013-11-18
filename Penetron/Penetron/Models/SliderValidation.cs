@@ -12,7 +12,7 @@ namespace Penetron.Models
     public class SliderValidation
     {
         [Required(ErrorMessage = "Обязательно!")]
-        [DisplayName("Адрес сраницы (относительно домена)")]
+        [DisplayName("Адрес страницы  (вводить без домена, начиная со слэша)")]
         public string Url { get; set; }
 
         [DisplayName("Изображение")]

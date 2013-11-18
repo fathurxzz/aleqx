@@ -14,10 +14,13 @@
                 var imageId = "img" + item.Id;
                 var className = "group" + obj.Id;
                 <div id="@imageId" class="image @className">
+                    <div style="position: absolute; width: 610px; text-align: center; padding-top: 10px;">
+                        <span class="title">@item.Title</span>
+                        </div>
                     @if (Request.IsAuthenticated)
                     {
                         <div style="position: absolute; padding-left: 20px; padding-top: 10px; z-index: 1001">
-                        @Html.ActionLink("Удалить", "DeleteImage", "Building", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
+                            @Html.ActionLink("Удалить", "DeleteImage", "Building", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                         </div>
                     }
                     @Html.Raw(Html.CachedImage("~/Content/Images", item.ImageSource, SiteSettings.GetThumbnail("carusel")))

@@ -159,7 +159,9 @@ namespace Penetron.Areas.Admin.Controllers
                 if (file == null) continue;
                 if (string.IsNullOrEmpty(file.FileName)) continue;
 
-                var bi = new BuildingImage{Title = ""};
+                var title = form["title[" + i + "]"];
+
+                var bi = new BuildingImage{Title = title};
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
 
