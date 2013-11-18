@@ -1,8 +1,8 @@
 ﻿$(function () {
 
     //alert("aaa");
-    
-    
+
+    $(".image").first().css("display", "block");
 
 
     $("#em-link").click(function () { location.href = "http://eugene-miller.com"; });
