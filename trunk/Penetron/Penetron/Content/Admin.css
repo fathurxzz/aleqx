@@ -60,10 +60,16 @@ a.adminLink2:hover {
 
 .inputImages .thumb
 {
-    height: 75px;
+    width: 150px;
     border: 1px solid #000;
     margin: 10px 5px 0 0;
+    
 }
+
+.inputImages div {
+    
+}
+
 
 .sortOrder {
     color: #f00;

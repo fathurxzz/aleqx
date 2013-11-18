@@ -473,6 +473,20 @@ div#content, div#errorContent
     left: 12px;
 }
 
+.objects-viewer .image-container .image span.title
+{
+    padding: 8px 25px;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    background: url('img/transparent-bg.png');
+    color: #fff;
+    border-radius:0 0 15px 15px;
+    font-family: Georgia;
+    font-style: italic;
+    font-size: 15px;
+}
+
 .objects-viewer .image {
     position: absolute;
     display: none;
