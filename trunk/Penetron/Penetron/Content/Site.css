@@ -589,3 +589,9 @@ div#content, div#errorContent
 .search-results .item a:hover {
     color: #00f;
 }
+
+input[type=text],
+input[type=password],
+textarea {
+  outline: none;
+}
