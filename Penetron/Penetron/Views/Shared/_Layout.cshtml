@@ -25,7 +25,10 @@
     <div class="header top">
         <div class="page">
             <div class="search">
-                @Html.Editor("search")
+                @using (Html.BeginForm("Search", "Home", new { area = "" }, FormMethod.Get))
+                {
+                    @Html.Editor("q")
+                }
             </div>
             @if (Request.IsAuthenticated)
             {

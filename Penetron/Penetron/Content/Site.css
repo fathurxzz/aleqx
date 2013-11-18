@@ -560,3 +560,32 @@ div#content, div#errorContent
     padding-top: 10px;
 }
 
+
+
+.search-results {
+    padding: 50px;
+}
+
+.search-results a {
+    color: #0072bc;
+}
+
+
+.search-results .item {
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+.search-results .item .map {
+    font-size: 12px;
+    color: #f7941e;
+    padding-bottom: 5px;
+}
+
+.search-results .item .map a {
+    color: inherit;
+}
+
+.search-results .item a:hover {
+    color: #00f;
+}

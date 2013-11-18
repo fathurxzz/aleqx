@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Penetron.Models.SearchResultModel>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-container">
+    <div class="content">
+        <div class="search-results">
+            <div style="text-align: center; padding-bottom: 30px;">
+                <h3>
+                    @Html.Raw(Model.Any() ? "Результаты поиска" : "Ничего не найдено :(")
+                </h3>
+            </div>
+            @foreach (var item in Model)
+            {
+                var cnt = 0;
+                <div class="item">
+                    <div class="map">
+                        
+                        @foreach (var mapItem in item.Map)
+                        {
+                            cnt++;
+                            @Html.ActionLink(mapItem.Title, mapItem.ActionName, mapItem.ControllerName, new { area = "", categoryId = mapItem.CategoryId, subCategoryId = mapItem.SubCategoryId }, null)
+
+                            if (item.Map.Count != cnt)
+                            {
+                                <text> / </text>
+                            }
+                        }
+                    </div>
+                    @Html.ActionLink(item.Title, item.ActionName, item.ControllerName, new { area = "", categoryId = item.CategoryId, subCategoryId = item.SubCategoryId }, null)
+                </div>
+            }
+        </div>
+    </div>
+</div>
