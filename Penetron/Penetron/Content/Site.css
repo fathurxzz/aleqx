@@ -553,6 +553,8 @@ div#content, div#errorContent
     width: 110px;
     margin-left: 25px;
     background-color: #f3f3f3;
+    height: 14px;
+    outline: none;
 }
 
 
@@ -593,5 +595,5 @@ div#content, div#errorContent
 input[type=text],
 input[type=password],
 textarea {
-  outline: none;
+  
 }
