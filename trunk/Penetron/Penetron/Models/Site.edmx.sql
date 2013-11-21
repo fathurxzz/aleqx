@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/17/2013 18:33:12
+-- Date Created: 11/21/2013 18:57:25
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -39,139 +39,158 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `BuildingItem`;
     DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `Reason`;
+    DROP TABLE IF EXISTS `Slider`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'Technology'
+CREATE TABLE `Technology`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` char (200) NOT NULL, 
+	`Title` char (200) NOT NULL, 
+	`SortOrder` int NOT NULL, 
+	`Text` varchar (1000), 
+	`CategoryLevel` int NOT NULL, 
+	`SeoDescription` varchar (1000), 
+	`SeoKeywords` varchar (1000), 
+	`Active` bool NOT NULL, 
+	`TechnologyId` int);
 
-CREATE TABLE `Technology` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `SortOrder` int  NOT NULL,
-    `Text` longtext  NULL,
-    `CategoryLevel` int  NOT NULL,
-    `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL,
-    `Active` bool  NOT NULL,
-    `TechnologyId` int  NULL
-);
-
--- Creating table 'TechnologyImage'
-
-CREATE TABLE `TechnologyImage` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `TechnologyId` int  NOT NULL,
-    `ImageSource` TEXT  NOT NULL
-);
-
--- Creating table 'Building'
-
-CREATE TABLE `Building` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `SortOrder` int  NOT NULL,
-    `Text` longtext  NULL,
-    `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL,
-    `Active` bool  NOT NULL,
-    `BuildingId` int  NULL,
-    `CategoryLevel` int  NOT NULL,
-    `ContentType` int  NOT NULL
-);
-
--- Creating table 'BuildingObj'
-
-CREATE TABLE `BuildingObj` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 200 )  NOT NULL
-);
-
--- Creating table 'BuildingImage'
-
-CREATE TABLE `BuildingImage` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `BuildingObjId` int  NOT NULL,
-    `ImageSource` TEXT  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL
-);
-
--- Creating table 'Content'
-
-CREATE TABLE `Content` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `Text` longtext  NULL,
-    `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL,
-    `MainPage` bool  NOT NULL
-);
-
--- Creating table 'ContentItem'
-
-CREATE TABLE `ContentItem` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Text` longtext  NULL,
-    `SortOrder` int  NOT NULL,
-    `ContentId` int  NOT NULL
-);
-
--- Creating table 'TechnologyItem'
-
-CREATE TABLE `TechnologyItem` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Text` longtext  NOT NULL,
-    `SortOrder` int  NOT NULL,
-    `TechnologyId` int  NOT NULL
-);
-
--- Creating table 'BuildingItem'
-
-CREATE TABLE `BuildingItem` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Text` longtext  NOT NULL,
-    `SortOrder` int  NOT NULL,
-    `BuildingId` int  NOT NULL
-);
-
--- Creating table 'Article'
-
-CREATE TABLE `Article` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `Description` TEXT  NOT NULL,
-    `Text` longtext  NOT NULL,
-    `Date` datetime  NOT NULL,
-    `Published` bool  NOT NULL
-);
-
--- Creating table 'Reason'
-
-CREATE TABLE `Reason` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` longtext  NOT NULL,
-    `Text` longtext  NOT NULL
-);
-
--- Creating table 'Slider'
-
-CREATE TABLE `Slider` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Url` varchar( 200 )  NOT NULL,
-    `ImageSource` varchar( 200 )  NOT NULL
-);
+ALTER TABLE `Technology` ADD PRIMARY KEY (Id);
 
 
 
--- --------------------------------------------------
--- Creating all PRIMARY KEY constraints
--- --------------------------------------------------
+
+CREATE TABLE `TechnologyImage`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`TechnologyId` int NOT NULL, 
+	`ImageSource` char (255) NOT NULL);
+
+ALTER TABLE `TechnologyImage` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Building`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` char (200) NOT NULL, 
+	`Title` char (200) NOT NULL, 
+	`SortOrder` int NOT NULL, 
+	`Text` varchar (1000), 
+	`SeoDescription` varchar (1000), 
+	`SeoKeywords` varchar (1000), 
+	`Active` bool NOT NULL, 
+	`BuildingId` int, 
+	`CategoryLevel` int NOT NULL, 
+	`ContentType` int NOT NULL);
+
+ALTER TABLE `Building` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `BuildingObj`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Title` char (200) NOT NULL);
+
+ALTER TABLE `BuildingObj` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `BuildingImage`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`BuildingObjId` int NOT NULL, 
+	`ImageSource` char (255) NOT NULL, 
+	`Title` char (200) NOT NULL);
+
+ALTER TABLE `BuildingImage` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Content`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` char (200) NOT NULL, 
+	`Title` char (200) NOT NULL, 
+	`Text` varchar (1000), 
+	`SeoDescription` varchar (1000), 
+	`SeoKeywords` varchar (1000), 
+	`MainPage` bool NOT NULL);
+
+ALTER TABLE `Content` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ContentItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Text` varchar (1000), 
+	`SortOrder` int NOT NULL, 
+	`ContentId` int NOT NULL);
+
+ALTER TABLE `ContentItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `TechnologyItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Text` varchar (1000) NOT NULL, 
+	`SortOrder` int NOT NULL, 
+	`TechnologyId` int NOT NULL);
+
+ALTER TABLE `TechnologyItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `BuildingItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Text` varchar (1000) NOT NULL, 
+	`SortOrder` int NOT NULL, 
+	`BuildingId` int NOT NULL);
+
+ALTER TABLE `BuildingItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Article`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` char (200) NOT NULL, 
+	`Title` char (200) NOT NULL, 
+	`Description` char (255) NOT NULL, 
+	`Text` varchar (1000) NOT NULL, 
+	`Date` datetime NOT NULL, 
+	`Published` bool NOT NULL);
+
+ALTER TABLE `Article` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Reason`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Title` varchar (1000) NOT NULL, 
+	`Text` varchar (1000) NOT NULL);
+
+ALTER TABLE `Reason` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Slider`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Url` char (200) NOT NULL, 
+	`ImageSource` char (255) NOT NULL);
+
+ALTER TABLE `Slider` ADD PRIMARY KEY (Id);
+
+
+
 
 
 
