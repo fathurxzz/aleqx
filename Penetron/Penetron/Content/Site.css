@@ -109,6 +109,8 @@ a {
 {
     height: 89px;
     background: url('img/footer-bg.gif') repeat-x;
+    position: relative;
+    min-width: 1200px;
 }
 
 .content-container 
