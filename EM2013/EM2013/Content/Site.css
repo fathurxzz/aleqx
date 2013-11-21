@@ -315,8 +315,9 @@ img
 
 .productItem .description
 {
-    font-style: italic;
-    font-size: 11px;
+    /*font-style: italic;*/
+    /*font-size: 11px;*/
+    font-size: 12px;
     /*text-align: center;*/
     padding: 5px 5px 0 5px;
 }
