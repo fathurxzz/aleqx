@@ -1,2 +1,4 @@
 ﻿0a46c4786789
+
+SET SESSION old_passwords = 0 
 SET PASSWORD for gbua_penetron = PASSWORD ( 'a2df8df65ghj' )
