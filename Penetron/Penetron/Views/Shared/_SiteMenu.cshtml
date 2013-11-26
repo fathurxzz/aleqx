@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Penetron.Models.SiteMenuItem>
+<ul>
+    @foreach (var item in Model)
+    {
+        if (item.Parent)
+        {
+        <li class="gradient-div parent">
+            <div class="arrow1">
+                <div class="arrow2">
+                    <div class="menucontent">
+                        @if (item.CurrentParent)
+                        {
+                            <span>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </span>
+                        }
+                        else 
+                        {
+                                    
+                            @Html.ActionLink(item.Title, (string)ViewData["category"], "Home", new { categoryId = item.Name, subCategoryId = "" }, null)
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </li>
+                        if (!item.HasChildren || !item.Current)
+                        {
+        <li class="separator"></li>
+                        }
+        }
+        else
+        {
+            if (item.Show)
+            {
+        <li class="separator child-sep"></li>
+                    
+        <li class="child">
+            @if (item.Current)
+            {
+                @Html.DisplayFor(modelItem => item.Title)
+            }
+            else
+            {
+                @Html.ActionLink(item.Title, (string)ViewData["category"], "Home", new { categoryId = item.ParentId, subCategoryId = item.Name }, null)
+            }
+        </li>
+            }
+        }
+    }
+</ul>

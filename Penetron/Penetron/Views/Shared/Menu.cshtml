@@ -1,93 +1,11 @@
 ﻿@model IEnumerable<Penetron.Models.SiteMenuItem>
-
-
-
 <div id="menu">
-    
-    <ul>
-        @foreach (var item in Model)
-        {
-
-            if (item.Parent)
-            {
-                
-                <li class="gradient-div parent">
-                    <div class="arrow1">
-                        <div class="arrow2">
-                            <div class="menucontent">
-                                
-
-                                @if (item.CurrentParent)
-                                {
-                                    <span>
-                                        @Html.DisplayFor(modelItem => item.Title)
-                                    </span>
-                                }
-                                else if (item.ContentActive)
-                                {
-                                    
-                                    @Html.ActionLink(item.Title, (string)ViewData["category"], "Home", new { categoryId = item.Name, subCategoryId = "" }, null)
-                                }
-                                else
-                                {
-                                    <a href="#">
-                                        @Html.DisplayFor(modelItem => item.Title)
-                                    </a>
-                                }
-                                @if (Request.IsAuthenticated)
-                                {
-                                    @Html.DisplayFor(modelItem => item.SortOrder)
-                                    <br />
-                                    @Html.ActionLink("Редактировать", "Edit", (string)ViewData["categoryAdmin"], new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                    <br/>
-                                    @Html.ActionLink("Удалить", "Delete", (string)ViewData["categoryAdmin"], new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick="return confirm('Удалить раздел?')" })
-                                    <br />
-                                    @Html.ActionLink("Добавить подраздел", "Create", (string)ViewData["categoryAdmin"], new { area = "Admin", id = item.Id, type = ViewData["type"].ToString() }, new { @class = "adminLink" })
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                                if (!item.HasChildren || !item.Current)
-                                {
-                    <li class="separator"></li>
-                                }
-            }
-            else
-            {
-                if (item.Show)
-                {
-                   
-                    <li class="separator child-sep"></li>
-                        
-                    
-                    <li class="child">
-                        @if (item.Current)
-                        {
-                            @Html.DisplayFor(modelItem => item.Title)
-                        }
-                        else
-                        {
-                            @Html.ActionLink(item.Title, (string)ViewData["category"], "Home", new { categoryId = item.ParentId, subCategoryId = item.Name }, null)
-                        }
-                        @if (Request.IsAuthenticated)
-                        {
-                            <span class="sortOrder">@Html.DisplayFor(modelItem => item.SortOrder)</span>
-                            <br />
-                            @Html.ActionLink("Редактировать", "Edit", (string)ViewData["categoryAdmin"], new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                            <br/>
-                            @Html.ActionLink("Удалить", "Delete", (string)ViewData["categoryAdmin"], new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить раздел?')" })
-                                    
-                        }
-                    </li>
-                }
-            }
-        }
-    </ul>
     @if (Request.IsAuthenticated)
     {
-        <div class="adminLinkContainer">
-            @Html.ActionLink("Добавить раздел", "Create", (string)ViewData["categoryAdmin"], new { area = "Admin", type = ViewData["type"].ToString() }, new { @class = "adminLink" })
-        </div>
+        @Html.Partial("_AdminSiteMenu", Model)
+    }
+    else
+    {
+        @Html.Partial("_SiteMenu", Model)
     }
 </div>
