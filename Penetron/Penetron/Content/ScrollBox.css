@@ -5,5 +5,4 @@
 #scrollbar1 .scrollbar { position: relative; float: right; width: 16px; }
 #scrollbar1 .track { height: 100%; width:16px; position: relative; background: url('img/scroll-bg.gif') repeat-y;background-position: 8px 0; }
 #scrollbar1 .thumb { height: 16px; width: 16px; cursor: pointer; overflow: hidden; position: absolute; top: 0; background-image: url('img/thumb.png') }
-/*#scrollbar1 .thumb .end { overflow: hidden; height: 5px; width: 13px; }*/
 #scrollbar1 .disable{ display: none; }
