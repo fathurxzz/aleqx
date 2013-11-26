@@ -30,6 +30,11 @@ namespace Penetron.Models
 
             _technologies = context.Technology.Include("Children").Include("TechnologyItems").ToList();
 
+            foreach (var technologyItem in _technologies.SelectMany(item => item.TechnologyItems))
+            {
+                technologyItem.TechnologyImages.Load();
+            }
+
             if (categoryId != null)
                 if (subCategoryId == null)
                     ParentTitle = _technologies.Single(t => t.CategoryLevel == 0).Title;

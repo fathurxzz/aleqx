@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/21/2013 18:57:25
+-- Date Created: 11/26/2013 12:31:54
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -16,13 +16,13 @@
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
---    ALTER TABLE `TechnologyImage` DROP CONSTRAINT `FK_TechnologyTechnologyImage`;
 --    ALTER TABLE `Technology` DROP CONSTRAINT `FK_TechnologyTechnology`;
 --    ALTER TABLE `Building` DROP CONSTRAINT `FK_BuildingBuilding`;
 --    ALTER TABLE `BuildingImage` DROP CONSTRAINT `FK_BuildingObjBuildingImage`;
 --    ALTER TABLE `ContentItem` DROP CONSTRAINT `FK_ContentContentItem`;
 --    ALTER TABLE `TechnologyItem` DROP CONSTRAINT `FK_TechnologyTechnologyItem`;
 --    ALTER TABLE `BuildingItem` DROP CONSTRAINT `FK_BuildingBuildingItem`;
+--    ALTER TABLE `TechnologyImage` DROP CONSTRAINT `FK_TechnologyItemTechnologyImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -65,8 +65,8 @@ ALTER TABLE `Technology` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `TechnologyImage`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`TechnologyId` int NOT NULL, 
-	`ImageSource` char (255) NOT NULL);
+	`ImageSource` char (255) NOT NULL, 
+	`TechnologyItemId` int NOT NULL);
 
 ALTER TABLE `TechnologyImage` ADD PRIMARY KEY (Id);
 
@@ -138,7 +138,7 @@ ALTER TABLE `ContentItem` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `TechnologyItem`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Text` varchar (1000) NOT NULL, 
+	`Text` varchar (1000), 
 	`SortOrder` int NOT NULL, 
 	`TechnologyId` int NOT NULL);
 
@@ -197,21 +197,6 @@ ALTER TABLE `Slider` ADD PRIMARY KEY (Id);
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on `TechnologyId` in table 'TechnologyImage'
-
-ALTER TABLE `TechnologyImage`
-ADD CONSTRAINT `FK_TechnologyTechnologyImage`
-    FOREIGN KEY (`TechnologyId`)
-    REFERENCES `Technology`
-        (`Id`)
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_TechnologyTechnologyImage'
-
-CREATE INDEX `IX_FK_TechnologyTechnologyImage` 
-    ON `TechnologyImage`
-    (`TechnologyId`);
 
 -- Creating foreign key on `TechnologyId` in table 'Technology'
 
@@ -302,6 +287,21 @@ ADD CONSTRAINT `FK_BuildingBuildingItem`
 CREATE INDEX `IX_FK_BuildingBuildingItem` 
     ON `BuildingItem`
     (`BuildingId`);
+
+-- Creating foreign key on `TechnologyItemId` in table 'TechnologyImage'
+
+ALTER TABLE `TechnologyImage`
+ADD CONSTRAINT `FK_TechnologyItemTechnologyImage`
+    FOREIGN KEY (`TechnologyItemId`)
+    REFERENCES `TechnologyItem`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TechnologyItemTechnologyImage'
+
+CREATE INDEX `IX_FK_TechnologyItemTechnologyImage` 
+    ON `TechnologyImage`
+    (`TechnologyItemId`);
 
 -- --------------------------------------------------
 -- Script has ended

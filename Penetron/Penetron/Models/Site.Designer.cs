@@ -19,13 +19,13 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("Site", "TechnologyTechnologyImage", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "TechnologyImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnology", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Technology), "Technology1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Technology), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingBuilding", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Penetron.Models.Building), "Building1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.Building), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingObjBuildingImage", "BuildingObj", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.BuildingObj), "BuildingImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "ContentContentItem", "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Content), "ContentItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.ContentItem), true)]
 [assembly: EdmRelationshipAttribute("Site", "TechnologyTechnologyItem", "Technology", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Technology), "TechnologyItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyItem), true)]
 [assembly: EdmRelationshipAttribute("Site", "BuildingBuildingItem", "Building", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.Building), "BuildingItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.BuildingItem), true)]
+[assembly: EdmRelationshipAttribute("Site", "TechnologyItemTechnologyImage", "TechnologyItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Penetron.Models.TechnologyItem), "TechnologyImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Penetron.Models.TechnologyImage), true)]
 
 #endregion
 
@@ -2361,28 +2361,6 @@ namespace Penetron.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnologyImage", "TechnologyImage")]
-        public EntityCollection<TechnologyImage> TechnologyImages
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TechnologyImage>("Site.TechnologyTechnologyImage", "TechnologyImage");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnologyImage>("Site.TechnologyTechnologyImage", "TechnologyImage", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnology", "Technology1")]
         public EntityCollection<Technology> Children
         {
@@ -2477,14 +2455,14 @@ namespace Penetron.Models
         /// Create a new TechnologyImage object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="technologyId">Initial value of the TechnologyId property.</param>
         /// <param name="imageSource">Initial value of the ImageSource property.</param>
-        public static TechnologyImage CreateTechnologyImage(global::System.Int32 id, global::System.Int32 technologyId, global::System.String imageSource)
+        /// <param name="technologyItemId">Initial value of the TechnologyItemId property.</param>
+        public static TechnologyImage CreateTechnologyImage(global::System.Int32 id, global::System.String imageSource, global::System.Int32 technologyItemId)
         {
             TechnologyImage technologyImage = new TechnologyImage();
             technologyImage.Id = id;
-            technologyImage.TechnologyId = technologyId;
             technologyImage.ImageSource = imageSource;
+            technologyImage.TechnologyItemId = technologyItemId;
             return technologyImage;
         }
 
@@ -2524,30 +2502,6 @@ namespace Penetron.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TechnologyId
-        {
-            get
-            {
-                return _TechnologyId;
-            }
-            set
-            {
-                OnTechnologyIdChanging(value);
-                ReportPropertyChanging("TechnologyId");
-                _TechnologyId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("TechnologyId");
-                OnTechnologyIdChanged();
-            }
-        }
-        private global::System.Int32 _TechnologyId;
-        partial void OnTechnologyIdChanging(global::System.Int32 value);
-        partial void OnTechnologyIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.String ImageSource
         {
             get
@@ -2566,6 +2520,30 @@ namespace Penetron.Models
         private global::System.String _ImageSource;
         partial void OnImageSourceChanging(global::System.String value);
         partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TechnologyItemId
+        {
+            get
+            {
+                return _TechnologyItemId;
+            }
+            set
+            {
+                OnTechnologyItemIdChanging(value);
+                ReportPropertyChanging("TechnologyItemId");
+                _TechnologyItemId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TechnologyItemId");
+                OnTechnologyItemIdChanged();
+            }
+        }
+        private global::System.Int32 _TechnologyItemId;
+        partial void OnTechnologyItemIdChanging(global::System.Int32 value);
+        partial void OnTechnologyItemIdChanged();
 
         #endregion
 
@@ -2578,16 +2556,16 @@ namespace Penetron.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyTechnologyImage", "Technology")]
-        public Technology Technology
+        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyItemTechnologyImage", "TechnologyItem")]
+        public TechnologyItem TechnologyItem
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnologyImage", "Technology").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TechnologyItem>("Site.TechnologyItemTechnologyImage", "TechnologyItem").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnologyImage", "Technology").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TechnologyItem>("Site.TechnologyItemTechnologyImage", "TechnologyItem").Value = value;
             }
         }
         /// <summary>
@@ -2595,17 +2573,17 @@ namespace Penetron.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Technology> TechnologyReference
+        public EntityReference<TechnologyItem> TechnologyItemReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Technology>("Site.TechnologyTechnologyImage", "Technology");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TechnologyItem>("Site.TechnologyItemTechnologyImage", "TechnologyItem");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Technology>("Site.TechnologyTechnologyImage", "Technology", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TechnologyItem>("Site.TechnologyItemTechnologyImage", "TechnologyItem", value);
                 }
             }
         }
@@ -2628,14 +2606,12 @@ namespace Penetron.Models
         /// Create a new TechnologyItem object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="text">Initial value of the Text property.</param>
         /// <param name="sortOrder">Initial value of the SortOrder property.</param>
         /// <param name="technologyId">Initial value of the TechnologyId property.</param>
-        public static TechnologyItem CreateTechnologyItem(global::System.Int32 id, global::System.String text, global::System.Int32 sortOrder, global::System.Int32 technologyId)
+        public static TechnologyItem CreateTechnologyItem(global::System.Int32 id, global::System.Int32 sortOrder, global::System.Int32 technologyId)
         {
             TechnologyItem technologyItem = new TechnologyItem();
             technologyItem.Id = id;
-            technologyItem.Text = text;
             technologyItem.SortOrder = sortOrder;
             technologyItem.TechnologyId = technologyId;
             return technologyItem;
@@ -2675,7 +2651,7 @@ namespace Penetron.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Text
         {
@@ -2687,7 +2663,7 @@ namespace Penetron.Models
             {
                 OnTextChanging(value);
                 ReportPropertyChanging("Text");
-                _Text = StructuralObject.SetValidValue(value, false);
+                _Text = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("Text");
                 OnTextChanged();
             }
@@ -2783,6 +2759,28 @@ namespace Penetron.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Technology>("Site.TechnologyTechnologyItem", "Technology", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "TechnologyItemTechnologyImage", "TechnologyImage")]
+        public EntityCollection<TechnologyImage> TechnologyImages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TechnologyImage>("Site.TechnologyItemTechnologyImage", "TechnologyImage");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TechnologyImage>("Site.TechnologyItemTechnologyImage", "TechnologyImage", value);
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿#menu {
-    position: absolute;
-    
+    /*position: absolute;*/
+    float: left;
     margin-left: -90px;
     font-family: Verdana;
 }

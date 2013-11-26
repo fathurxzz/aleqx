@@ -99,14 +99,16 @@ namespace Penetron.Areas.Admin.Controllers
 
         public ActionResult AddImage(int id)
         {
-            var technology = _context.Technology.First(t => t.Id == id);
-            return View(technology);
+            var technologyItem = _context.TechnologyItem.First(t => t.Id == id);
+            return View(technologyItem);
         }
 
         [HttpPost]
         public ActionResult AddImage(int id, FormCollection form)
         {
-            var technology = _context.Technology.Include("Parent").First(t => t.Id == id);
+
+            var technologyItem = _context.TechnologyItem.Include("Technology").First(t => t.Id == id);
+            var technology = _context.Technology.Include("Parent").First(t => t.Id == technologyItem.Technology.Id);
             for (int i = 0; i < Request.Files.Count; i++)
             {
                 var file = Request.Files[i];
@@ -124,7 +126,7 @@ namespace Penetron.Areas.Admin.Controllers
 
                 ti.ImageSource = fileName;
 
-                technology.TechnologyImages.Add(ti);
+                technologyItem.TechnologyImages.Add(ti);
 
                 _context.SaveChanges();
             }
@@ -244,7 +246,17 @@ namespace Penetron.Areas.Admin.Controllers
 
         public ActionResult DeleteContentItem(int id)
         {
-            var ci = _context.TechnologyItem.Include("Technology").First(c => c.Id == id);
+            var ci = _context.TechnologyItem.Include("Technology").Include("TechnologyImages").First(c => c.Id == id);
+
+            while (ci.TechnologyImages.Any())
+            {
+                var image = ci.TechnologyImages.First();
+                ImageHelper.DeleteImage(image.ImageSource);
+                _context.DeleteObject(image);
+                _context.SaveChanges();
+            }
+
+
             
             var parent = _context.Technology.Include("Parent").First(t => t.Id == ci.TechnologyId);
             string catId = "";
