@@ -18,6 +18,11 @@ namespace Penetron.Areas.Admin.Controllers
         }
 
 
+        public ActionResult Index()
+        {
+            return View(_context.UserArticle.ToList());
+        }
+
         public ActionResult Create()
         {
             return View(new UserArticle());
@@ -28,13 +33,13 @@ namespace Penetron.Areas.Admin.Controllers
         {
             var article = new UserArticle
                           {
-                              Name = model.Name,
+                              Name =Utils.Transliterator.Transliterate( model.Name),
                               Title = model.Title,
                               Text = HttpUtility.HtmlDecode(model.Text)
                           };
             _context.AddToUserArticle(article);
             _context.SaveChanges();
-            return RedirectToAction("UserArticle", "Home", new {area = "", id = article.Name});
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -47,11 +52,19 @@ namespace Penetron.Areas.Admin.Controllers
         public ActionResult Edit(Content model)
         {
             var article = _context.UserArticle.First(c => c.Id == model.Id);
-            article.Name = model.Name;
+            article.Name = Utils.Transliterator.Transliterate( model.Name);
             article.Title = model.Title;
             article.Text = HttpUtility.HtmlDecode(model.Text);
             _context.SaveChanges();
-            return RedirectToAction("UserArticle", "Home", new { area = "", id = article.Name });
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var article = _context.UserArticle.First(a => a.Id == id);
+            _context.DeleteObject(article);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }
