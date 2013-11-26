@@ -37,7 +37,7 @@
             string className = "link" + i;
             string classNamePos = i < 4 ? "left" : "right";
         <div class="links @className @classNamePos">
-            <a href="#" id="@obj.Id" class="imageLink">@obj.Title</a>
+            <span href="#" id="@obj.Id" class="imageLink">@obj.Title</span>
             @if (Request.IsAuthenticated)
             {
                 @Html.ActionLink("Добавить изображение", "AddImage", "Building", new { area = "Admin", id = obj.Id }, new { @class = "adminLink" })
