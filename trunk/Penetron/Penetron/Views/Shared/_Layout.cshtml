@@ -35,7 +35,9 @@
                 <div style="position: absolute; width: 300px; left: 500px;">
                     @Html.ActionLink("Выйти из системы администрирования", "LogOut", "Auth", new { area = "" }, new { @class = "adminLink adminLink2" })
                     <br />
-                    @Html.ActionLink("Изменить пароль", "ChangePassword", "Auth", new { area = "" }, new { @class = "adminLink adminLink2" })
+                    @Html.ActionLink("Изменить пароль", "ChangePassword", "Auth", new { area = "" }, new { @class = "adminLink adminLink2" }) 
+
+                    @Html.ActionLink("Добавить статью", "Create", "UserArticle", new { area = "Admin" }, new { @class = "adminLink adminLink2" })
                 </div>
             }
             <div id="phone">

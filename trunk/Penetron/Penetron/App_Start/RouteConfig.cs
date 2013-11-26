@@ -45,6 +45,12 @@ namespace Penetron
             );
 
             routes.MapRoute(
+                "UserArticle", // Route name
+                "userarticle/{id}", // URL with parameters
+                new { controller = "Home", action = "UserArticle",id =UrlParameter.Optional} // Parameter defaults
+            );
+
+            routes.MapRoute(
                 name: "Technologies",
                 url: "technologies/{categoryId}/{subCategoryId}",
                 defaults: new { controller = "Home", action = "Technologies", categoryId = UrlParameter.Optional, subCategoryId = UrlParameter.Optional }

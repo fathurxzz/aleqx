@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ПЕНЕТРОН УКРАИНА</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    @Styles.Render("~/Content/Site.css", "~/Content/Menu.css", "~/Content/Articles.css", "~/Content/ScrollBox.css")
+    
+    @RenderSection("Styles", false)
+
+    @if (Request.IsAuthenticated)
+    { 
+        @Styles.Render("~/Content/Admin.css")
+    }
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

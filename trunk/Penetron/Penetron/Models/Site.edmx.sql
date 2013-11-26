@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 11/26/2013 12:31:54
+-- Date Created: 11/26/2013 14:21:12
 -- Generated from EDMX file: D:\projects\Penetron\Penetron\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -40,6 +40,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Article`;
     DROP TABLE IF EXISTS `Reason`;
     DROP TABLE IF EXISTS `Slider`;
+    DROP TABLE IF EXISTS `UserArticle`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -188,6 +189,17 @@ CREATE TABLE `Slider`(
 	`ImageSource` char (255) NOT NULL);
 
 ALTER TABLE `Slider` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `UserArticle`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` char (255) NOT NULL, 
+	`Text` varchar (1000), 
+	`Title` char (255) NOT NULL);
+
+ALTER TABLE `UserArticle` ADD PRIMARY KEY (Id);
 
 
 
