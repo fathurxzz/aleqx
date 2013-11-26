@@ -504,8 +504,10 @@ div#content, div#errorContent
     font-family: Verdana;
     font-size: 11px;
 }
-.objects-viewer .links a {
+.objects-viewer .links span {
     color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .objects-viewer .links.left {
