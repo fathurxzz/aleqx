@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
-    @Styles.Render("~/Content/Site.css", "~/Content/Menu.css", "~/Content/Articles.css")
+    @Styles.Render("~/Content/Site.css", "~/Content/Menu.css", "~/Content/Articles.css", "~/Content/ScrollBox.css")
     
     @RenderSection("Styles", false)
 
@@ -53,7 +53,8 @@
         </div>
     </div>
     @*@Scripts.Render("~/bundles/jquery")*@
-    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/jquery.bxSlider.min.js", "~/Scripts/site.js", "~/Scripts/jquery.parallax.js")
+    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js", "~/Scripts/jquery.bxSlider.min.js", "~/Scripts/site.js", "~/Scripts/jquery.parallax.js", "~/Scripts/jquery.tinyscrollbar.min.js")
+    
     @RenderSection("Scripts", false)
     <script type="text/javascript">
         $(function () {
@@ -69,6 +70,10 @@
                     parallaxScroll();
                 });
             }
+
+
+            $("#scrollbar1").tinyscrollbar({ sizethumb: 15 });
+
         });
 
         function parallaxScroll() {
