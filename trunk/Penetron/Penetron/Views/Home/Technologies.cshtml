@@ -46,62 +46,85 @@
                         
                     if (Request.IsAuthenticated)
                     {
-                        <div>
-                            @Html.ActionLink("Добавить блока контента", "AddContentItem", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
-                        </div>
+                    <div>
+                        @Html.ActionLink("Добавить блок контента", "AddContentItem", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
+                    </div>
                     }
 
 
                     foreach (var item in Model.Technology.TechnologyItems.OrderBy(c => c.SortOrder))
                     {
-                        <div class="contentItem">
-                            
-                            @if (Request.IsAuthenticated)
-                            {
-                                <span class="sortOrder"> @item.SortOrder</span>
-                                @Html.ActionLink("Редактировать", "EditContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                                <text> &nbsp;</text>
-                                @Html.ActionLink("Удалить", "DeleteContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
-                            }
-
-                            @Html.Raw(item.Text)
-                            <div class="clear"></div>
-                        </div>
+                    <div class="contentItem">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <span class="sortOrder">@item.SortOrder</span>
+                            @Html.ActionLink("Редактировать", "EditContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                            <text> &nbsp;</text>
+                            @Html.ActionLink("Удалить", "DeleteContentItem", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                            <text> &nbsp;</text>
+                            @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                        }
+                        @Html.Raw(item.Text)
+                        @if (item.TechnologyImages.Any())
+                        {
+                            @*<div class="stars">
+                            </div>*@
+                
+                    
+                            @Html.Partial("Carusel", item.TechnologyImages)
+                        }
+                        @*<div class="clear">
+                        </div>*@
+                        
+                        
+                    </div>
                     }
 
 
 
-                    if (Request.IsAuthenticated)
+@*if (Request.IsAuthenticated)
                     {
                         @Html.ActionLink("Добавить изображения", "AddImage", "Technology", new { area = "Admin", id = Model.Technology.Id }, new { @class = "adminLink" })
-                    }
+                    }*@
                 }
-                @if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
+                
+                
+@*@if (Model.Technology != null && Model.Technology.TechnologyImages.Any())
                 {
                     <div class="stars">
                     </div>
                 
                     
                     @Html.Partial("Carusel", Model.Technology.TechnologyImages)
-                }
+                }*@
             </div>
             <div class="clear">
             </div>
         </div>
     </div>
 </div>
-
 @section Styles
 {
     @Styles.Render("~/Content/bx_styles/bx_styles.css")
 }
-
 @section Scripts
 {
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             //$("#bx1").bxSlider({ mode: 'fade' });
-            $("#bx1").bxSlider();
+            
+            
+            
+            //$("#bx1").bxSlider();
+
+
+
+            $(".bx").each(function () {
+                $(this).bxSlider();
+            });
+
         });
+
+
     </script>
 }
