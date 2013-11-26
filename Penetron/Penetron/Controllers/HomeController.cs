@@ -135,6 +135,13 @@ namespace Penetron.Controllers
         }
 
 
+        public ActionResult UserArticle(string id)
+        {
+            var article = _context.UserArticle.First(a => a.Name == id);
+            return View(article);
+        }
+
+
         public ActionResult Search(string q)
         {
             if (string.IsNullOrEmpty(q))

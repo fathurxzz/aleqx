@@ -1,0 +1,18 @@
+﻿@model Penetron.Models.UserArticle
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_UserArticleLayout.cshtml";
+}
+
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Редактировать","Edit","UserArticle",new{area="Admin",id=Model.Id},new{@class="adminLink"})
+}
+
+<div style="margin: 0 auto; width: 1000px;">
+
+<h1>@Model.Title</h1>
+
+@Html.Raw(Model.Text)
+</div>
