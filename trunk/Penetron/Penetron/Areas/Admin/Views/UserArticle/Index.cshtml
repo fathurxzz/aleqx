@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Penetron.Models.UserArticle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="adminContent">
+
+<p>
+    @Html.ActionLink("Добавить статью", "Create")
+</p>
+<table class="adminContentTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Просмотр", "UserArticle","Home", new { id = item.Name,area="" },new{target="_blank"}) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{ onclick="return confirm('Удалть статью?')"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

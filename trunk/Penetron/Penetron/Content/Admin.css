@@ -82,3 +82,13 @@ a.adminLink2:hover {
     margin: 10px 0;
     padding-bottom: 10px;
 }
+
+
+.adminContentTable {
+    margin-top: 20px;
+}
+
+.adminContentTable td,.adminContentTable th {
+    padding: 5px;
+    border: 1px dashed #ccc;
+}
