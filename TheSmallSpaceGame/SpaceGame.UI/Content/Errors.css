@@ -1,0 +1,19 @@
+﻿.error {
+    text-align: center;
+    color: #f00;
+    padding: 20px;
+}
+
+.error ul {
+    list-style: none;
+}
+
+.errorMessage {
+    border: 2px solid #f00;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #f00;
+}

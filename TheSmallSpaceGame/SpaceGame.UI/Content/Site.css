@@ -1,0 +1,161 @@
+﻿*
+{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+body
+{
+    font-family: Verdana;
+    color: #fff;
+    font-size: 10px;
+    background: url('img/galaxy.png') no-repeat 50% 0 #000;
+}
+
+a
+{
+    color: #fff;
+}
+
+
+
+.clear
+{
+    clear: both;
+}
+
+.page
+{
+    width: 1000px;
+    margin: 0 auto;
+    color: #008b8b;
+    min-height: 500px;
+}
+
+span
+{
+    color: #778899;
+}
+
+.logo {
+    text-align: center;
+    
+}
+.logo a {
+    text-decoration: none;
+    color: #778899;
+    font-size: 12px;
+}
+
+.loginForm, .registerForm
+{
+    padding-top: 200px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+    .loginForm input[type="submit"], .registerForm input[type="submit"]
+    {
+        background: none;
+        padding: 1px 5px;
+        border: 1px solid #fff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+
+    .registerForm table {
+        width: 200px; margin: 0 auto;
+    }
+
+    .registerForm table td {
+        padding: 5px 2px;
+    }
+
+    .registerForm table td.title {
+        text-align: right;
+    }
+
+.welcome
+{
+    text-align: center;
+    padding-top: 300px;
+    font-size: 14px;
+    line-height: 25px;
+}
+
+.welcome span {
+    font-size: 20px;
+    
+}
+
+.userPanel
+{
+    border-bottom: 1px solid #333;
+    padding: 5px;
+}
+
+.resourcePanel
+{
+    border-bottom: 1px solid #333;
+    padding: 5px;
+    text-align: center;
+}
+
+.leftPanel
+{
+    float: left;
+    width: 180px;
+    padding: 50px 10px 20px 10px;
+}
+
+.rightPanel
+{
+    float: left;
+    width: 200px;
+    padding: 20px 0;
+}
+
+.mainPanel
+{
+    padding: 20px 0;
+    float: left;
+    width: 560px;
+    margin: 0 20px;
+}
+
+
+.footer
+{
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.mainTitle
+{
+    font-size: 16px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+table.mineLevels td
+{
+    padding: 0 5px;
+}
+
+    table.mineLevels td.title
+    {
+        text-align: right;
+        color: #778899;
+        font-weight: normal;
+    }
+
+    table.mineLevels td a:hover
+    {
+        color: #008b8b;
+    }

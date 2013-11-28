@@ -1,0 +1,17 @@
+﻿
+
+ul.leftMenu {
+    list-style: none;
+}
+
+ul.leftMenu li {
+    padding: 5px 10px;
+}
+
+ul.leftMenu li a {
+    color: #008b8b;
+}
+
+ul.leftMenu li a.current {
+    color: #778899;
+}

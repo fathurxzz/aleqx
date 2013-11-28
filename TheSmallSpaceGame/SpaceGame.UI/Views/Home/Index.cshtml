@@ -1,0 +1,13 @@
+﻿@model SpaceGame.UI.Models.GameViewModel
+
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="logo">
+    @Html.ActionLink("The Small Space Game","Index","Home")
+</div>
+<div class="welcome">
+    <span>Welcome to The Small Space Game!</span><br/>
+    Please @Html.ActionLink("sign up","Register","Auth")  or @Html.ActionLink("login","LogIn","Auth")
+</div>
