@@ -46,7 +46,8 @@ namespace Penetron.Models
             {
                 if (Building.CategoryLevel == 0 && !Building.Active)
                 {
-                    Building = _buildings.FirstOrDefault(t => t.Parent == null && t.CategoryLevel != 0);
+                    Building = _buildings.Where(t => t.Parent == null && t.CategoryLevel != 0).Where(t => t.SortOrder == _buildings.Min(c => (int?)c.SortOrder)).FirstOrDefault();
+                    //Building = _buildings.FirstOrDefault(t => t.Parent == null && t.CategoryLevel != 0);
                     if (Building != null)
                     {
                         ActiveCategoryNotFound = true;
