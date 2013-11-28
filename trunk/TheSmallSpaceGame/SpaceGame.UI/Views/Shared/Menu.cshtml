@@ -1,0 +1,8 @@
+﻿<ul class="leftMenu">
+    <li>
+        @Html.ActionLink("Overview", "Overview", "Home", null, new { @class = ViewBag.CurrentMenuItem == "overview" ? "current" : "" })
+    </li>
+    <li>
+        @Html.ActionLink("Resources", "Resources", "Home", null, new { @class = ViewBag.CurrentMenuItem == "resources" ? "current" : "" })
+    </li>
+</ul>

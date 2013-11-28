@@ -1,0 +1,26 @@
+﻿@model SpaceGame.UI.Models.LoginModel
+
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="logo">
+    @Html.ActionLink("The Small Space Game","Index","Home")
+</div>
+<div class="loginForm">
+    <div class="error">
+    @Html.ValidationSummary()
+        </div>
+
+    @using (Html.BeginForm())
+    {
+        <div> Enter your email:
+            @Html.EditorFor(model => model.Email)
+
+            <input type="submit" value="login" />
+        </div>
+    
+    }
+</div>
+
+

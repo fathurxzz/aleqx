@@ -1,0 +1,68 @@
+﻿@using SpaceGame.DataAccess
+@model SpaceGame.UI.Models.ResourceViewModel
+
+@{
+    ViewBag.Title = "Resources";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section Header
+{
+    @Html.Partial("_Header", Model)
+}
+
+@section Title
+{
+    <div class="mainTitle">
+        Resources
+    </div>
+}
+
+
+@section Menu
+{
+    @Html.Partial("Menu")
+}
+
+
+@section Planets
+{
+
+}
+
+@section Footer
+{
+    <div class="footer">
+            footer
+        </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    @Html.Partial("ErrorMessage", Model.ErrorMessage)
+}
+
+<table class="mineLevels">
+    <tr>
+        <td class="title">Metal Mine Level: </td>
+        <td>@Model.ResourceProduceLevelSet.MetalMine</td>
+        <td>upgrade to level @(Model.ResourceProduceLevelSet.MetalMine + 1) costs: @(ResourceProduceLevelSet.UpgradeMetalMineCost((short)(Model.ResourceProduceLevelSet.MetalMine + 1)).Metal) metal and @(ResourceProduceLevelSet.UpgradeMetalMineCost((short)(Model.ResourceProduceLevelSet.MetalMine + 1)).Crystal) crystal</td>
+        <td>
+            @Html.ActionLink("Upgrade", "UpgradeMetalMine", "Resource", new { planet = @Model.CurrentPlanetId }, null)
+        </td>
+    </tr>
+    <tr>
+        <td class="title">Crystal Mine Level: </td>
+        <td>@Model.ResourceProduceLevelSet.CrystalMine</td>
+        <td>upgrade to level @(Model.ResourceProduceLevelSet.CrystalMine + 1) costs: @(ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(Model.ResourceProduceLevelSet.CrystalMine + 1)).Metal) metal and @(ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(Model.ResourceProduceLevelSet.CrystalMine + 1)).Crystal) crystal</td>
+        <td>@Html.ActionLink("Upgrade", "UpgradeCrystalMine", "Resource", new { planet = @Model.CurrentPlanetId }, null)</td>
+    </tr>
+    <tr>
+        <td class="title">Deiterium Generator Level:</td>
+        <td>@Model.ResourceProduceLevelSet.DeiteriumGenerator</td>
+        <td>upgrade to level @(Model.ResourceProduceLevelSet.DeiteriumGenerator + 1) costs: @(ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(Model.ResourceProduceLevelSet.DeiteriumGenerator + 1)).Metal) metal and @(ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(Model.ResourceProduceLevelSet.DeiteriumGenerator + 1)).Crystal) crystal</td>
+        <td>@Html.ActionLink("Upgrade", "UpgradeDeiteriumGenerator", "Resource", new { planet = @Model.CurrentPlanetId }, null)</td>
+    </tr>
+</table>
+

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.DataAccess", "SpaceGame.DataAccess\SpaceGame.DataAccess.csproj", "{D8DBAC8E-9E3D-4708-A65B-802B85927EAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.Api", "SpaceGame.Api\SpaceGame.Api.csproj", "{F00ACB17-241B-40D1-AA59-F288B44764D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.UI", "SpaceGame.UI\SpaceGame.UI.csproj", "{67AB1E07-6744-4DA9-BD2E-562A6C7C5E68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.Data2", "SpaceGame.Data2\SpaceGame.Data2.csproj", "{29C133CE-4335-448A-ADBA-0A85002B1B0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.DataAccess.EntityFramework", "SpaceGame.DataAccess.EntityFramework\SpaceGame.DataAccess.EntityFramework.csproj", "{762532B3-37CC-4148-A737-8E37D7D8AA2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8DBAC8E-9E3D-4708-A65B-802B85927EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DBAC8E-9E3D-4708-A65B-802B85927EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DBAC8E-9E3D-4708-A65B-802B85927EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DBAC8E-9E3D-4708-A65B-802B85927EAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00ACB17-241B-40D1-AA59-F288B44764D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00ACB17-241B-40D1-AA59-F288B44764D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00ACB17-241B-40D1-AA59-F288B44764D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00ACB17-241B-40D1-AA59-F288B44764D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67AB1E07-6744-4DA9-BD2E-562A6C7C5E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67AB1E07-6744-4DA9-BD2E-562A6C7C5E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67AB1E07-6744-4DA9-BD2E-562A6C7C5E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67AB1E07-6744-4DA9-BD2E-562A6C7C5E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C133CE-4335-448A-ADBA-0A85002B1B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C133CE-4335-448A-ADBA-0A85002B1B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C133CE-4335-448A-ADBA-0A85002B1B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C133CE-4335-448A-ADBA-0A85002B1B0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

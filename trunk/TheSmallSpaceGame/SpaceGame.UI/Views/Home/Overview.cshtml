@@ -1,0 +1,36 @@
+﻿@model SpaceGame.UI.Models.GameViewModel
+
+@{
+    ViewBag.Title = "Overview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    <div class="mainTitle">
+        Overview
+    </div>
+}
+
+@section Header
+{
+    @Html.Partial("_Header", Model)
+}
+
+@section Planets
+{
+
+}
+
+@section Menu
+{
+    @Html.Partial("Menu")
+}
+
+
+@section Footer
+{
+    <div class="footer">
+            footer
+        </div>
+}

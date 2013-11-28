@@ -1,0 +1,36 @@
+﻿@model SpaceGame.UI.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="logo">
+    @Html.ActionLink("The Small Space Game","Index","Home")
+</div>
+<div class="registerForm">
+    <div class="error">
+    @Html.ValidationSummary()
+        </div>
+
+    @using (Html.BeginForm())
+    {
+        
+        <table>
+            <tr>
+                <td class="title">@Html.LabelFor(model => model.Email)</td>
+                <td>@Html.EditorFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <td class="title">@Html.LabelFor(model => model.Name)</td>
+                <td>@Html.EditorFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: left; padding-top: 10px;">
+                    <input type="submit" value="register" />        
+                </td>
+            </tr>
+        </table>
+    }
+</div>

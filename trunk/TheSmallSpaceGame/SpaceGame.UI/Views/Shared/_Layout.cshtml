@@ -1,0 +1,47 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - The Small Space Game</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Site.css", "~/Content/Errors.css", "~/Content/Menu.css")
+    @RenderSection("Styles", false)
+    @if (Request.IsAuthenticated)
+    { 
+        @Styles.Render("~/Content/Admin.css")
+    }
+
+</head>
+<body>
+    <div class="page">
+        @RenderSection("Header", false)
+
+        <div class="leftPanel">
+            @RenderSection("Menu",false)
+
+            
+        </div>
+
+
+        <div class="mainPanel">
+            @RenderSection("Title", false)
+
+            @RenderBody()
+        </div>
+
+        <div class="rightPanel">
+            @RenderSection("Planets", false)
+        </div>
+
+
+        <div class="clear"></div>
+
+        
+        @RenderSection("Footer",false)
+
+        
+    </div>
+</body>
+</html>
