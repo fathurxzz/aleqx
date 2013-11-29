@@ -35,7 +35,7 @@ namespace SpaceGame.UI.Controllers
             {
                 try
                 {
-                    var user = _repository.Register(model.Email, model.Name);
+                    var user = _repository.Register(model.Email, model.Name, model.Password);
                     WebSession.User = user;
                     FormsAuthentication.SetAuthCookie(user.Email, false);
                     return RedirectToAction("Overview", "Home");
@@ -76,6 +76,7 @@ namespace SpaceGame.UI.Controllers
             {
                 try
                 {
+                    _repository.ValidateUser(model.Email, model.Password);
                     var user = _repository.GetUser(model.Email);
                     WebSession.User = user;
                     FormsAuthentication.SetAuthCookie(user.Email, false);

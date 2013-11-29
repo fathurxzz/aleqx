@@ -16,6 +16,33 @@ namespace SpaceGame.Api
             _store = store;
         }
 
+        public bool ValidateUser(string email, string password)
+        {
+            try
+            {
+                var user = _store.Users.SingleOrDefault(u => u.Email == email);
+                if (user == null)
+                {
+                    throw new UserException(string.Format("User with {0} email not found", email),
+                        UserError.UserNotFound);
+                }
+                if (user.Password != password)
+                {
+                    throw new UserException("Incorrect login or password",
+                        UserError.IncorrectLoginOrPassword);
+                }
+                return true;
+            }
+            catch (UserException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
+            }
+        }
+
         public User GetUser(string email)
         {
             try
@@ -58,14 +85,14 @@ namespace SpaceGame.Api
             }
         }
 
-        public User Register(string email, string name)
+        public User Register(string email, string name, string password)
         {
 
             try
             {
                 if (!_store.Users.Any(u => u.Email == email))
                 {
-                    var user = new User { Email = email, Name = name, Password = "111" };
+                    var user = new User { Email = email, Name = name, Password = password };
                     _store.Users.Add(user);
                     _store.SaveChanges();
 
@@ -133,5 +160,7 @@ namespace SpaceGame.Api
                 throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
             }
         }
+
+       
     }
 }

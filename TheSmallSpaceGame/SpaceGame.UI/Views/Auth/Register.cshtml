@@ -8,7 +8,7 @@
 <div class="logo">
     @Html.ActionLink("The Small Space Game","Index","Home")
 </div>
-<div class="registerForm">
+<div class="registerForm authorizeForm">
     <div class="error">
     @Html.ValidationSummary()
         </div>
@@ -24,6 +24,10 @@
             <tr>
                 <td class="title">@Html.LabelFor(model => model.Name)</td>
                 <td>@Html.EditorFor(model => model.Name)</td>
+            </tr>
+            <tr>
+                <td class="title">@Html.LabelFor(model => model.Password)</td>
+                <td>@Html.EditorFor(model => model.Password)</td>
             </tr>
             <tr>
                 <td></td>

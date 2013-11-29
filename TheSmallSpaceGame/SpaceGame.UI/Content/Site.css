@@ -4,8 +4,6 @@
     margin: 0;
 }
 
-
-
 body
 {
     font-family: Verdana;
@@ -18,8 +16,6 @@ a
 {
     color: #fff;
 }
-
-
 
 .clear
 {
@@ -39,17 +35,19 @@ span
     color: #778899;
 }
 
-.logo {
+.logo
+{
     text-align: center;
-    
-}
-.logo a {
-    text-decoration: none;
-    color: #778899;
-    font-size: 12px;
 }
 
-.loginForm, .registerForm
+    .logo a
+    {
+        text-decoration: none;
+        color: #778899;
+        font-size: 12px;
+    }
+
+.authorizeForm
 {
     padding-top: 200px;
     text-align: center;
@@ -57,7 +55,7 @@ span
 }
 
 
-    .loginForm input[type="submit"], .registerForm input[type="submit"]
+    .authorizeForm input[type="submit"]
     {
         background: none;
         padding: 1px 5px;
@@ -67,17 +65,21 @@ span
     }
 
 
-    .registerForm table {
-        width: 200px; margin: 0 auto;
+    .authorizeForm table
+    {
+        width: 200px;
+        margin: 0 auto;
     }
 
-    .registerForm table td {
-        padding: 5px 2px;
-    }
+        .authorizeForm table td
+        {
+            padding: 5px 2px;
+        }
 
-    .registerForm table td.title {
-        text-align: right;
-    }
+            .authorizeForm table td.title
+            {
+                text-align: right;
+            }
 
 .welcome
 {
@@ -87,10 +89,10 @@ span
     line-height: 25px;
 }
 
-.welcome span {
-    font-size: 20px;
-    
-}
+    .welcome span
+    {
+        font-size: 20px;
+    }
 
 .userPanel
 {
@@ -159,3 +161,9 @@ table.mineLevels td
     {
         color: #008b8b;
     }
+
+
+.alert
+{
+    color: #f00;
+}

@@ -8,6 +8,6 @@ namespace SpaceGame.UI.Models
 {
     public class ResourceViewModel:GameViewModel
     {
-        public ResourceProduceLevelSet ResourceProduceLevelSet { get; set; }
+        public ResourceProduceLevelSet CurrentResourceProduceLevelSet { get; set; }
     }
 }

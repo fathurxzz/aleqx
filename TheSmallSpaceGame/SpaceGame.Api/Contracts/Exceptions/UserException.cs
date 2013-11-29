@@ -7,7 +7,8 @@ namespace SpaceGame.Api.Contracts.Exceptions
         Unknow = 0,
         UserNotFound = 1,
         InvalidEmail=2,
-        EmailAlreadyExists=3
+        EmailAlreadyExists=3,
+        IncorrectLoginOrPassword=4
     }
 
     public class UserException : Exception

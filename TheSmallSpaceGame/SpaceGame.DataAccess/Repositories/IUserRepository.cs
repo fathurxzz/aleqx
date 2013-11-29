@@ -6,6 +6,7 @@ namespace SpaceGame.DataAccess.Repositories
     {
         User GetUser(string email);
         User GetUser(int id);
-        User Register(string email, string name);
+        User Register(string email, string name,string password);
+        bool ValidateUser(string email, string password);
     }
 }

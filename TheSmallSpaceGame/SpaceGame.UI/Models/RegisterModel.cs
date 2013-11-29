@@ -17,5 +17,10 @@ namespace SpaceGame.UI.Models
         [Required(ErrorMessage = "Required")]
         [DisplayName("NickName:")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [DataType(DataType.Password)]
+        [DisplayName("Password")]
+        public string Password { get; set; }
     }
 }

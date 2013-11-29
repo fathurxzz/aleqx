@@ -10,5 +10,9 @@ namespace SpaceGame.UI.Models
         [DisplayName("Email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Required")]
+        [DataType(DataType.Password)]
+        [DisplayName("Password")]
+        public string Password { get; set; }
     }
 }
