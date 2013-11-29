@@ -7,18 +7,29 @@
 <div class="logo">
     @Html.ActionLink("The Small Space Game","Index","Home")
 </div>
-<div class="loginForm">
+<div class="loginForm authorizeForm">
     <div class="error">
     @Html.ValidationSummary()
         </div>
 
     @using (Html.BeginForm())
     {
-        <div> Enter your email:
-            @Html.EditorFor(model => model.Email)
-
-            <input type="submit" value="login" />
-        </div>
+        <table>
+            <tr>
+                <td class="title">@Html.LabelFor(model => model.Email)</td>
+                <td>@Html.EditorFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <td class="title">@Html.LabelFor(model => model.Password)</td>
+                <td>@Html.EditorFor(model => model.Password)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: left; padding-top: 10px;">
+                    <input type="submit" value="login" />        
+                </td>
+            </tr>
+        </table>
     
     }
 </div>

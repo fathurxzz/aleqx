@@ -40,7 +40,7 @@ namespace SpaceGame.UI.Controllers
             var resourceSet = _repository.GetPlanetResources(currentPlanet.Id);
             var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
             ViewBag.CurrentMenuItem = "overview";
-            return View(new GameViewModel { ResourceSet = resourceSet, Planets = planetList });
+            return View(new GameViewModel { CurrentResourceSet = resourceSet, Planets = planetList });
         }
 
 
@@ -56,9 +56,9 @@ namespace SpaceGame.UI.Controllers
             ViewBag.CurrentMenuItem = "resources";
             return View(new ResourceViewModel
                         {
-                            ResourceSet = resourceSet, 
+                            CurrentResourceSet = resourceSet, 
                             Planets = planetList, 
-                            ResourceProduceLevelSet = mineslevelSet, 
+                            CurrentResourceProduceLevelSet = mineslevelSet, 
                             CurrentPlanetId = currentPlanet.Id,
                             ErrorMessage = (string)TempData["errorMessage"] //GameErrorCodes.GetErrorMessage(errorCode)
                         });

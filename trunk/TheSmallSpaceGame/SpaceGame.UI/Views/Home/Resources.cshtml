@@ -34,8 +34,8 @@
 @section Footer
 {
     <div class="footer">
-            footer
-        </div>
+        footer
+    </div>
 }
 
 @if (!string.IsNullOrEmpty(Model.ErrorMessage))
@@ -43,25 +43,45 @@
     @Html.Partial("ErrorMessage", Model.ErrorMessage)
 }
 
+@{
+    var requiredMetalForUpgradeMetalMine = ResourceProduceLevelSet.UpgradeMetalMineCost((short)(Model.CurrentResourceProduceLevelSet.MetalMine + 1)).Metal;
+    var requiredCrystalForUpgradeMetalMine = ResourceProduceLevelSet.UpgradeMetalMineCost((short)(Model.CurrentResourceProduceLevelSet.MetalMine + 1)).Crystal;
+
+    var requiredMetalForUpgradeCrystallMine = ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(Model.CurrentResourceProduceLevelSet.CrystalMine + 1)).Metal;
+    var requiredCrystalForUpgradeCrystallMine = ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(Model.CurrentResourceProduceLevelSet.CrystalMine + 1)).Crystal;
+
+    var requiredMetalForUpgradeDeiteriumGenerator = ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(Model.CurrentResourceProduceLevelSet.DeiteriumGenerator + 1)).Metal;
+    var requiredCrystalForUpgradeDeiteriumGenerator = ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(Model.CurrentResourceProduceLevelSet.DeiteriumGenerator + 1)).Crystal;
+}
+
 <table class="mineLevels">
     <tr>
         <td class="title">Metal Mine Level: </td>
-        <td>@Model.ResourceProduceLevelSet.MetalMine</td>
-        <td>upgrade to level @(Model.ResourceProduceLevelSet.MetalMine + 1) costs: @(ResourceProduceLevelSet.UpgradeMetalMineCost((short)(Model.ResourceProduceLevelSet.MetalMine + 1)).Metal) metal and @(ResourceProduceLevelSet.UpgradeMetalMineCost((short)(Model.ResourceProduceLevelSet.MetalMine + 1)).Crystal) crystal</td>
+        <td>@Model.CurrentResourceProduceLevelSet.MetalMine</td>
+        <td>upgrade to level @(Model.CurrentResourceProduceLevelSet.MetalMine + 1) costs: 
+            <span class="@(requiredMetalForUpgradeMetalMine > Model.CurrentResourceSet.Metal ? "alert" : "")">@requiredMetalForUpgradeMetalMine </span>metal 
+            and <span class="@(requiredCrystalForUpgradeMetalMine > Model.CurrentResourceSet.Crystal ? "alert" : "")">@requiredCrystalForUpgradeMetalMine</span> crystal
+        </td>
         <td>
             @Html.ActionLink("Upgrade", "UpgradeMetalMine", "Resource", new { planet = @Model.CurrentPlanetId }, null)
         </td>
     </tr>
     <tr>
         <td class="title">Crystal Mine Level: </td>
-        <td>@Model.ResourceProduceLevelSet.CrystalMine</td>
-        <td>upgrade to level @(Model.ResourceProduceLevelSet.CrystalMine + 1) costs: @(ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(Model.ResourceProduceLevelSet.CrystalMine + 1)).Metal) metal and @(ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(Model.ResourceProduceLevelSet.CrystalMine + 1)).Crystal) crystal</td>
+        <td>@Model.CurrentResourceProduceLevelSet.CrystalMine</td>
+        <td>upgrade to level @(Model.CurrentResourceProduceLevelSet.CrystalMine + 1) costs: 
+            <span class="@(requiredMetalForUpgradeCrystallMine > Model.CurrentResourceSet.Metal ? "alert" : "")">@requiredMetalForUpgradeCrystallMine</span> metal 
+            and <span class="@(requiredCrystalForUpgradeCrystallMine > Model.CurrentResourceSet.Crystal ? "alert" : "")">@requiredCrystalForUpgradeCrystallMine</span> crystal
+        </td>
         <td>@Html.ActionLink("Upgrade", "UpgradeCrystalMine", "Resource", new { planet = @Model.CurrentPlanetId }, null)</td>
     </tr>
     <tr>
         <td class="title">Deiterium Generator Level:</td>
-        <td>@Model.ResourceProduceLevelSet.DeiteriumGenerator</td>
-        <td>upgrade to level @(Model.ResourceProduceLevelSet.DeiteriumGenerator + 1) costs: @(ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(Model.ResourceProduceLevelSet.DeiteriumGenerator + 1)).Metal) metal and @(ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(Model.ResourceProduceLevelSet.DeiteriumGenerator + 1)).Crystal) crystal</td>
+        <td>@Model.CurrentResourceProduceLevelSet.DeiteriumGenerator</td>
+        <td>upgrade to level @(Model.CurrentResourceProduceLevelSet.DeiteriumGenerator + 1) costs:
+            <span class="@(requiredMetalForUpgradeDeiteriumGenerator > Model.CurrentResourceSet.Metal ? "alert" : "")">@requiredMetalForUpgradeDeiteriumGenerator</span> metal 
+            and<span class="@(requiredCrystalForUpgradeDeiteriumGenerator > Model.CurrentResourceSet.Crystal ? "alert" : "")"> @requiredCrystalForUpgradeDeiteriumGenerator</span> crystal
+        </td>
         <td>@Html.ActionLink("Upgrade", "UpgradeDeiteriumGenerator", "Resource", new { planet = @Model.CurrentPlanetId }, null)</td>
     </tr>
 </table>
