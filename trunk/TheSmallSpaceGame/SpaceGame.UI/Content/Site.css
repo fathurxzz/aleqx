@@ -145,9 +145,19 @@ span
     padding-bottom: 15px;
 }
 
+table.mineLevels {
+    border-collapse: collapse;
+}
+
 table.mineLevels td
 {
     padding: 0 5px;
+}
+
+table.mineLevels td {
+    border-bottom: 1px dashed #555;
+    border-top: 1px dashed #555;
+    padding: 4px 3px;
 }
 
     table.mineLevels td.title
@@ -166,4 +176,12 @@ table.mineLevels td
 .alert
 {
     color: #f00;
+}
+
+.ok {
+    color: #0f0;
+}
+
+.disabled {
+    color: #555;
 }
