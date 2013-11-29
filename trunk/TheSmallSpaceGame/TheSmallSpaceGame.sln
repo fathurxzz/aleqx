@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.Data2", "SpaceGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.DataAccess.EntityFramework", "SpaceGame.DataAccess.EntityFramework\SpaceGame.DataAccess.EntityFramework.csproj", "{762532B3-37CC-4148-A737-8E37D7D8AA2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceGame.ConsoleTest", "SpaceGame.ConsoleTest\SpaceGame.ConsoleTest.csproj", "{BD871DED-6F3A-4981-817D-2EF149CE5B03}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -41,6 +43,10 @@ Global
 		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{762532B3-37CC-4148-A737-8E37D7D8AA2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD871DED-6F3A-4981-817D-2EF149CE5B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD871DED-6F3A-4981-817D-2EF149CE5B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD871DED-6F3A-4981-817D-2EF149CE5B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD871DED-6F3A-4981-817D-2EF149CE5B03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
