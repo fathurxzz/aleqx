@@ -47,6 +47,7 @@
     <Compile Include="Contracts\Exceptions\ErrorCodes.cs" />
     <Compile Include="Contracts\Exceptions\GameException.cs" />
     <Compile Include="Contracts\Exceptions\UserException.cs" />
+    <Compile Include="FacilityRepository.cs" />
     <Compile Include="PlanetRepository.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

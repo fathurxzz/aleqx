@@ -34,5 +34,21 @@ namespace SpaceGame.UI.Helpers
                 Session["user"] = value;
             }
         }
+
+        public static int PlanetId
+        {
+            get
+            {
+                if (Session["planetid"] != null)
+                {
+                    return (int)Session["planetid"];
+                }
+                return 0;
+            }
+            set
+            {
+                Session["planetid"] = value;
+            }
+        }
     }
 }

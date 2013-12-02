@@ -66,15 +66,15 @@ namespace SpaceGame.Api
 
         public ResourceSet GetPlanetResources(int planetId)
         {
-            var resources = _store.Resources.Where(p => p.PlanetId == planetId);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
 
             RecalculateResources(planetId);
 
             return new ResourceSet
                          {
-                             Metal = (long)resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Metal).Amount,
-                             Crystal = (long)resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Crystal).Amount,
-                             Deiterium = (long)resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Deiterium).Amount
+                             Metal = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Metal).Amount,
+                             Crystal = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal).Amount,
+                             Deiterium = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium).Amount
                          };
         }
 
@@ -104,25 +104,25 @@ namespace SpaceGame.Api
 
         public ResourceProduceLevelSet GetLevelMines(int planetId)
         {
-            var resources = _store.Resources.Where(p => p.PlanetId == planetId);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
 
             return new ResourceProduceLevelSet
                    {
-                       MetalMine = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Metal).MineLevel,
-                       CrystalMine = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Crystal).MineLevel,
-                       DeiteriumGenerator = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Deiterium).MineLevel
+                       MetalMine = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal).MineLevel,
+                       CrystalMine = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal).MineLevel,
+                       DeiteriumGenerator = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium).MineLevel
                    };
         }
 
         public void UpdateMetalMine(int planetId)
         {
-            var resources = _store.Resources.Where(p => p.PlanetId == planetId);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
             RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Crystal);
+            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
+            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
 
-            var needMetalForUpgradeAmout = ResourceProduceLevelSet.UpgradeMetalMineCost((short)(metal.MineLevel + 1)).Metal;
-            var needCrystalForUpgradeAmout = ResourceProduceLevelSet.UpgradeMetalMineCost((short)(metal.MineLevel + 1)).Crystal;
+            var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeMetalMineCost((short)(metal.MineLevel + 1)).Metal;
+            var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeMetalMineCost((short)(metal.MineLevel + 1)).Crystal;
 
             // если хватает средств
             if (metal.Amount >= needMetalForUpgradeAmout && crystal.Amount >= needCrystalForUpgradeAmout)
@@ -140,13 +140,13 @@ namespace SpaceGame.Api
 
         public void UpdateCrystalMine(int planetId)
         {
-            var resources = _store.Resources.Where(p => p.PlanetId == planetId);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
             RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Crystal);
+            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
+            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
 
-            var needMetalForUpgradeAmout = ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(crystal.MineLevel + 1)).Metal;
-            var needCrystalForUpgradeAmout = ResourceProduceLevelSet.UpgradeCrystalMineCost((short)(crystal.MineLevel + 1)).Crystal;
+            var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeCrystalMineCost((short)(crystal.MineLevel + 1)).Metal;
+            var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeCrystalMineCost((short)(crystal.MineLevel + 1)).Crystal;
 
             // если хватает средств
             if (metal.Amount >= needMetalForUpgradeAmout && crystal.Amount >= needCrystalForUpgradeAmout)
@@ -164,14 +164,14 @@ namespace SpaceGame.Api
 
         public void UpdateDeiteriumGenerator(int planetId)
         {
-            var resources = _store.Resources.Where(p => p.PlanetId == planetId);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
             RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Crystal);
-            var deiterium = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Deiterium);
+            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
+            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
+            var deiterium = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
 
-            var needMetalForUpgradeAmout = ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(deiterium.MineLevel + 1)).Metal;
-            var needCrystalForUpgradeAmout = ResourceProduceLevelSet.UpgradeDeiteriumGeneratorCost((short)(deiterium.MineLevel + 1)).Crystal;
+            var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(deiterium.MineLevel + 1)).Metal;
+            var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(deiterium.MineLevel + 1)).Crystal;
 
             // если хватает средств
             if (metal.Amount >= needMetalForUpgradeAmout && crystal.Amount >= needCrystalForUpgradeAmout)
@@ -190,10 +190,10 @@ namespace SpaceGame.Api
         private void RecalculateResources(int planetId)
         {
             var currDate = DateTime.Now;
-            var resources = _store.Resources.Where(p => p.PlanetId == planetId);
-            var metalResource = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Metal);
-            var crystalResource = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Crystal);
-            var deiteriumResource = resources.Single(r => r.ResourceTypeId == (int)ResourceItem.Deiterium);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
+            var metalResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
+            var crystalResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
+            var deiteriumResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
 
             TimeSpan timeSpan = currDate - metalResource.LastUpdate;
             var deltaMetal = GetResourceDelta(ResourceItem.Metal, metalResource.MineLevel, timeSpan.TotalMilliseconds);

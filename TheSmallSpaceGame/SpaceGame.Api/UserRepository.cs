@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SpaceGame.Api.Contracts.Exceptions;
 using SpaceGame.DataAccess;
@@ -10,6 +11,9 @@ namespace SpaceGame.Api
     public class UserRepository : IUserRepository
     {
         private readonly ISpaceStore _store;
+
+        private int _planetId;
+        private DateTime _currentDateTime;
 
         public UserRepository(ISpaceStore store)
         {
@@ -87,69 +91,40 @@ namespace SpaceGame.Api
 
         public User Register(string email, string name, string password)
         {
-
             try
             {
-                if (!_store.Users.Any(u => u.Email == email))
-                {
-                    var user = new User { Email = email, Name = name, Password = password };
-                    _store.Users.Add(user);
-                    _store.SaveChanges();
-
-                    //user.Planets.Add(new Planet {Name = "Planet", UserId = user.Id});
-                    //_store.SaveChanges();
-
-                    DateTime currentDateTime = DateTime.Now;
-
-                    var planet = new Planet
-                    {
-                        UserId = user.Id,
-                        Name = "MainPlanet"
-                    };
-                    _store.Planets.Add(planet);
-                    _store.SaveChanges();
-
-
-
-                    var metal = new Resource
-                    {
-                        Amount = 500,
-                        ResourceTypeId = 1,
-                        LastUpdate = currentDateTime,
-                        MineLevel = 0,
-                        PlanetId = planet.Id
-                    };
-                    _store.Resources.Add(metal);
-
-
-                    var crystal = new Resource
-                    {
-                        Amount = 500,
-                        ResourceTypeId = 2,
-                        LastUpdate = currentDateTime,
-                        MineLevel = 0,
-                        PlanetId = planet.Id
-                    };
-                    _store.Resources.Add(crystal);
-
-                    var deiterium = new Resource
-                    {
-                        Amount = 0,
-                        ResourceTypeId = 3,
-                        LastUpdate = currentDateTime,
-                        MineLevel = 0,
-                        PlanetId = planet.Id
-                    };
-                    _store.Resources.Add(deiterium);
-
-                    _store.SaveChanges();
-
-                    return user;
-                }
-                else
-                {
+                if (_store.Users.Any(u => u.Email == email))
                     throw new UserException("This email already exists", UserError.EmailAlreadyExists);
+
+                var user = new User { Email = email, Name = name, Password = password };
+                _store.Users.Add(user);
+                _store.SaveChanges();
+
+               
+                var planet = new Planet
+                             {
+                                 UserId = user.Id,
+                                 Name = "Homeworld"
+                             };
+                _store.Planets.Add(planet);
+                _store.SaveChanges();
+
+                _currentDateTime = DateTime.Now;
+                _planetId = planet.Id;
+                
+                foreach (var planetResource in InitializePlanetResources())
+                {
+                    _store.PlanetResources.Add(planetResource);
                 }
+                
+                foreach (var planetFacility in InitializeFacilities())
+                {
+                    _store.PlanetFacilities.Add(planetFacility);
+                }
+
+                _store.SaveChanges();
+
+                return user;
             }
             catch (UserException)
             {
@@ -161,6 +136,53 @@ namespace SpaceGame.Api
             }
         }
 
-       
+
+        private IEnumerable<PlanetResource> InitializePlanetResources()
+        {
+            return new List<PlanetResource>
+                   {
+                       InitializePlanetResource(500,ResourceItem.Metal),
+                       InitializePlanetResource(500,ResourceItem.Crystal),
+                       InitializePlanetResource(0,ResourceItem.Deiterium)
+                   };
+        }
+
+        private PlanetResource InitializePlanetResource(double amount, ResourceItem resourceItem)
+        {
+            return new PlanetResource
+            {
+                Amount = amount,
+                ResourceId = (int)resourceItem,
+                LastUpdate = _currentDateTime,
+                MineLevel = 0,
+                PlanetId = _planetId
+            };
+        }
+
+
+        private IEnumerable<PlanetFacility> InitializeFacilities()
+        {
+            return new List<PlanetFacility>
+                         {
+                             InitializeFacility(FacilityItem.RoboticsFactory),
+                             InitializeFacility(FacilityItem.Shipyard),
+                             InitializeFacility(FacilityItem.ResearchLab),
+                             InitializeFacility(FacilityItem.NaniteFactory)
+                         };
+        }
+
+        private PlanetFacility InitializeFacility(FacilityItem facilityItem)
+        {
+            return new PlanetFacility
+            {
+                FacilityId = (int)facilityItem,
+                IsUpdating = false,
+                PlanetId = _planetId,
+                Level = 0,
+                UpdateStart = DateTime.Now
+            };
+        }
+
+
     }
 }

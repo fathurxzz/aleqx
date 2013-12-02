@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace SpaceGame.Data2.Models.Mapping
 {
-    public class ResourceMap : EntityTypeConfiguration<Resource>
+    public class FacilityMap : EntityTypeConfiguration<Facility>
     {
-        public ResourceMap()
+        public FacilityMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
@@ -16,13 +16,15 @@ namespace SpaceGame.Data2.Models.Mapping
                 .HasMaxLength(50);
 
             this.Property(t => t.Description)
-                .IsRequired()
                 .HasMaxLength(65535);
 
             // Table & Column Mappings
-            this.ToTable("Resource", "gbua_space2");
+            this.ToTable("Facility", "gbua_space2");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.MetalCost).HasColumnName("MetalCost");
+            this.Property(t => t.CrystalCost).HasColumnName("CrystalCost");
+            this.Property(t => t.DeiteriumCost).HasColumnName("DeiteriumCost");
             this.Property(t => t.Description).HasColumnName("Description");
         }
     }

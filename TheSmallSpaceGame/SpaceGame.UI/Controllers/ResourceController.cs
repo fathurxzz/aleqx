@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SpaceGame.Api.Contracts.Exceptions;
 using SpaceGame.DataAccess.Repositories;
 using SpaceGame.UI.Helpers;
@@ -19,52 +15,49 @@ namespace SpaceGame.UI.Controllers
             _repository = repository;
         }
 
-        public ActionResult UpgradeMetalMine(int planet)
+        public ActionResult UpgradeMetalMine()
         {
             try
             {
-                _repository.ValidatePlanet(WebSession.User.Id, planet);
-                _repository.UpdateMetalMine(planet);
+                _repository.ValidatePlanet(WebSession.User.Id, WebSession.PlanetId);
+                _repository.UpdateMetalMine(WebSession.PlanetId);
             }
             catch (GameException ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return RedirectToAction("Resources", "Home");
             }
 
-            return RedirectToAction("Resources", "Home", new { planet = planet });
+            return RedirectToAction("Resources", "Home");
         }
 
-        public ActionResult UpgradeCrystalMine(int planet)
+        public ActionResult UpgradeCrystalMine()
         {
             try
             {
-                _repository.ValidatePlanet(WebSession.User.Id, planet);
-                _repository.UpdateCrystalMine(planet);
+                _repository.ValidatePlanet(WebSession.User.Id, WebSession.PlanetId);
+                _repository.UpdateCrystalMine(WebSession.PlanetId);
             }
             catch (GameException ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return RedirectToAction("Resources", "Home");
             }
 
-            return RedirectToAction("Resources", "Home", new { planet = planet });
+            return RedirectToAction("Resources", "Home");
         }
 
-        public ActionResult UpgradeDeiteriumGenerator(int planet)
+        public ActionResult UpgradeDeiteriumGenerator()
         {
             try
             {
-                _repository.ValidatePlanet(WebSession.User.Id, planet);
-                _repository.UpdateDeiteriumGenerator(planet);
+                _repository.ValidatePlanet(WebSession.User.Id, WebSession.PlanetId);
+                _repository.UpdateDeiteriumGenerator(WebSession.PlanetId);
             }
             catch (GameException ex)
             {
                 TempData["errorMessage"] = ex.Message;
-                return RedirectToAction("Resources", "Home");
             }
 
-            return RedirectToAction("Resources", "Home", new { planet = planet });
+            return RedirectToAction("Resources", "Home");
         }
     }
 }

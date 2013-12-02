@@ -185,3 +185,32 @@ table.mineLevels td {
 .disabled {
     color: #555;
 }
+
+
+
+table.facilities {
+    border-collapse: collapse;
+}
+
+table.facilities td
+{
+    padding: 0 5px;
+}
+
+table.facilities td {
+    border-bottom: 1px dashed #555;
+    border-top: 1px dashed #555;
+    padding: 4px 3px;
+}
+
+    table.facilities td.title
+    {
+        text-align: right;
+        color: #778899;
+        font-weight: normal;
+    }
+
+    table.facilities td a:hover
+    {
+        color: #008b8b;
+    }

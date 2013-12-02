@@ -7,13 +7,17 @@ namespace SpaceGame.Data2.Models
     {
         public Planet()
         {
-            this.Resources = new List<Resource>();
+            this.PlanetFacilities = new List<PlanetFacility>();
+            this.PlanetResources = new List<PlanetResource>();
+            this.PlanetShips = new List<PlanetShip>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
         public int UserId { get; set; }
-        public virtual ICollection<Resource> Resources { get; set; }
+        public virtual ICollection<PlanetFacility> PlanetFacilities { get; set; }
+        public virtual ICollection<PlanetResource> PlanetResources { get; set; }
+        public virtual ICollection<PlanetShip> PlanetShips { get; set; }
         public virtual User User { get; set; }
     }
 }

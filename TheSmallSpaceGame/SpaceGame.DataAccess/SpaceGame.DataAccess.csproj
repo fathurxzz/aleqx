@@ -44,19 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Facility.cs" />
+    <Compile Include="Entities\PlanetFacility.cs" />
+    <Compile Include="Entities\PlanetResource.cs" />
+    <Compile Include="Entities\PlanetShip.cs" />
+    <Compile Include="Entities\Ship.cs" />
+    <Compile Include="FacilityItem.cs" />
     <Compile Include="ISpaceStore.cs" />
+    <Compile Include="Repositories\IFacilityRepository.cs" />
     <Compile Include="ResourceProduceLevelSet.cs" />
     <Compile Include="Repositories\IPlanetRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Entities\Planet.cs" />
     <Compile Include="Entities\Resource.cs" />
-    <Compile Include="Entities\ResourceType.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceItem.cs" />
     <Compile Include="ResourceSet.cs" />
+    <Compile Include="UpgradeResourceCost.cs" />
     <Compile Include="UpgradeResourceLevelCost.cs" />
+    <Compile Include="UpgrageFacilityCost.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

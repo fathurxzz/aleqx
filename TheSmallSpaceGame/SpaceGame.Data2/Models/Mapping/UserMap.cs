@@ -24,7 +24,7 @@ namespace SpaceGame.Data2.Models.Mapping
                 .HasMaxLength(50);
 
             // Table & Column Mappings
-            this.ToTable("User", "gbua_space");
+            this.ToTable("User", "gbua_space2");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Email).HasColumnName("Email");
             this.Property(t => t.Password).HasColumnName("Password");

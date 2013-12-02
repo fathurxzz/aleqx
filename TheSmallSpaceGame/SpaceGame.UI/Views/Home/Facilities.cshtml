@@ -1,0 +1,51 @@
+﻿@using SpaceGame.DataAccess
+@using SpaceGame.UI.Helpers
+@model SpaceGame.UI.Models.FacilityViewModel
+
+@{
+    ViewBag.Title = "Facilities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Title
+{
+    <div class="mainTitle">
+        Facilities
+    </div>
+}
+
+@section Header
+{
+    @Html.Partial("_Header", Model)
+}
+
+@section Planets
+{
+
+}
+
+@section Menu
+{
+    @Html.Partial("Menu")
+}
+
+
+@section Footer
+{
+    <div class="footer">
+        footer
+    </div>
+}
+
+<table class="facilities">
+
+    @foreach (var item in Model.PlanetFacilities)
+    {
+        <tr>
+            <td class="title">@item.Facility.Name</td>
+            <td>level:@item.Level</td>
+            <td>upgrage to level @(item.Level+1) costs @UpgrageFacilityCost.Cost((short)(item.Level+1),(long)item.Facility.MetalCost).FormatResourcesAmount() metal @UpgrageFacilityCost.Cost((short)(item.Level+1),(long)item.Facility.CrystalCost).FormatResourcesAmount() crystal @UpgrageFacilityCost.Cost((short)(item.Level+1),(long)item.Facility.DeiteriumCost).FormatResourcesAmount() deiterium</td>
+        </tr>
+    }
+
+</table>
