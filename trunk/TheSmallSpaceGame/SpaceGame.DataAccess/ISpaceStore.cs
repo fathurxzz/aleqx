@@ -7,7 +7,9 @@ namespace SpaceGame.DataAccess
     {
         IDbSet<User> Users { get; }
         IDbSet<Planet> Planets { get; }
-        IDbSet<ResourceType> ResourceTypes { get; }
+        IDbSet<PlanetResource> PlanetResources { get; }
+        IDbSet<PlanetFacility> PlanetFacilities { get; }
+        IDbSet<Facility> Facilities { get; }
         IDbSet<Resource> Resources { get; }
         int SaveChanges();
     }

@@ -45,6 +45,12 @@ namespace SpaceGame.UI
             );
 
             routes.MapRoute(
+                name: "Facilities",
+                url: "facilities",
+                defaults: new { controller = "Home", action = "Facilities" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

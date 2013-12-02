@@ -12,7 +12,7 @@ namespace SpaceGame.UI.Models
     {
         public ResourceSet CurrentResourceSet { get; set; }
         public List<PlanetPresentation> Planets { get; set; }
-        public int CurrentPlanetId { get; set; }
+        //public int CurrentPlanetId { get; set; }
         public string ErrorMessage { get; set; }
 
     }

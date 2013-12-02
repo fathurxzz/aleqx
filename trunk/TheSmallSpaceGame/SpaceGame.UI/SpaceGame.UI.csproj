@@ -141,12 +141,15 @@
   <ItemGroup>
     <Compile Include="App_Start\IocInitializer.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\FacilityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Models\FacilityViewModel.cs" />
     <Compile Include="Models\GameViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PlanetPresentation.cs" />
@@ -238,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\1gb.pubxml" />
+    <Content Include="Views\Home\Facilities.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
