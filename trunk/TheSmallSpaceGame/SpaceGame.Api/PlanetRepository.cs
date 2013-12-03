@@ -79,8 +79,7 @@ namespace SpaceGame.Api
         }
 
 
-
-        public bool ValidatePlanet(int userId, int planetId)
+        private bool ValidatePlanet(int userId, int planetId)
         {
             try
             {
@@ -99,7 +98,6 @@ namespace SpaceGame.Api
             {
                 throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
             }
-
         }
 
         public ResourceProduceLevelSet GetLevelMines(int planetId)

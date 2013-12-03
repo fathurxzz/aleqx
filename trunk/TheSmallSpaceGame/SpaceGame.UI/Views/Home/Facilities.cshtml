@@ -41,10 +41,22 @@
 
     @foreach (var item in Model.PlanetFacilities)
     {
+        var upgradeFacilityCostMetal = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.MetalCost);
+        var upgradeFacilityCostCrystal = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.CrystalCost);
+        var upgradeFacilityCostDeiterium = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.DeiteriumCost);
+        
+        
         <tr>
             <td class="title">@item.Facility.Name</td>
             <td>level:@item.Level</td>
-            <td>upgrage to level @(item.Level+1) costs @UpgrageFacilityCost.Cost((short)(item.Level+1),(long)item.Facility.MetalCost).FormatResourcesAmount() metal @UpgrageFacilityCost.Cost((short)(item.Level+1),(long)item.Facility.CrystalCost).FormatResourcesAmount() crystal @UpgrageFacilityCost.Cost((short)(item.Level+1),(long)item.Facility.DeiteriumCost).FormatResourcesAmount() deiterium</td>
+            <td>upgrage to level @(item.Level + 1) costs: 
+                @upgradeFacilityCostMetal.FormatResourcesAmount() metal 
+                @upgradeFacilityCostCrystal.FormatResourcesAmount() crystal 
+                @upgradeFacilityCostDeiterium.FormatResourcesAmount() deiterium. 
+                Upgrade time: @UpgradeTime.Caclulate(upgradeFacilityCostMetal, upgradeFacilityCostCrystal, 0, 0).FormatUpgradeTime()</td>
+            <td>
+                @Html.ActionLink("Upgrade", "Upgrade", "Facility", new { id = item.FacilityId }, null)
+            </td>
         </tr>
     }
 

@@ -27,7 +27,8 @@ namespace SpaceGame.UI.Helpers
                     return (User) Session["user"];
                 }
                 //throw new UserException("Session has expired",UserError.Unknow);
-                throw new HttpException(401, "Session has expired");
+                //throw new HttpException(401, "Session has expired");
+                return null;
             }
             set
             {
