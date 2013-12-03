@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SpaceGame.DataAccess.Repositories;
+using SpaceGame.UI.Helpers;
 
 namespace SpaceGame.UI.Controllers
 {
@@ -17,7 +18,11 @@ namespace SpaceGame.UI.Controllers
             _repository = repository;
         }
 
-        
+        public ActionResult Upgrade(int id)
+        {
+            _repository.UpdateFacility(id, WebSession.PlanetId);
+            return RedirectToAction("Facilities", "Home");
+        }
 
     }
 }

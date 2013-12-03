@@ -12,7 +12,7 @@ namespace SpaceGame.DataAccess.Repositories
         void UpdateMetalMine(int planetId);
         void UpdateCrystalMine(int planetId);
         void UpdateDeiteriumGenerator(int planetId);
-        bool ValidatePlanet(int userId, int planetId);
+        //bool ValidatePlanet(int userId, int planetId);
 
         ResourceProduceLevelSet GetLevelMines(int planetId);
 

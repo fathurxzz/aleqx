@@ -52,6 +52,7 @@
     <Compile Include="FacilityItem.cs" />
     <Compile Include="ISpaceStore.cs" />
     <Compile Include="Repositories\IFacilityRepository.cs" />
+    <Compile Include="Repositories\IResourceRepository.cs" />
     <Compile Include="ResourceProduceLevelSet.cs" />
     <Compile Include="Repositories\IPlanetRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="ResourceSet.cs" />
     <Compile Include="UpgradeResourceCost.cs" />
     <Compile Include="UpgradeResourceLevelCost.cs" />
+    <Compile Include="UpgradeTime.cs" />
     <Compile Include="UpgrageFacilityCost.cs" />
   </ItemGroup>
   <ItemGroup>

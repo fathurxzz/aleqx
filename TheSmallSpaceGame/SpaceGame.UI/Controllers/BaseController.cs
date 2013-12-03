@@ -25,13 +25,17 @@ namespace SpaceGame.UI.Controllers
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
-            var planets = _repository.GetPlanets(WebSession.User.Id).ToList();
-            var currentPlanet = planets.FirstOrDefault(p => p.Id == WebSession.PlanetId) ?? planets.First();
-            WebSession.PlanetId = currentPlanet.Id;
-            var resourceSet = _repository.GetPlanetResources(currentPlanet.Id);
-            var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
-            CurrentResourceSet = resourceSet;
-            Planets = planetList;
+            if (WebSession.User != null)
+            {
+                var planets = _repository.GetPlanets(WebSession.User.Id).ToList();
+                var currentPlanet = planets.FirstOrDefault(p => p.Id == WebSession.PlanetId) ?? planets.First();
+                WebSession.PlanetId = currentPlanet.Id;
+                var resourceSet = _repository.GetPlanetResources(currentPlanet.Id);
+                var planetList = planets.Select(p => new PlanetPresentation {Id = p.Id, Name = p.Name}).ToList();
+                CurrentResourceSet = resourceSet;
+                Planets = planetList;
+            }
+
             base.Initialize(requestContext);
         }
 

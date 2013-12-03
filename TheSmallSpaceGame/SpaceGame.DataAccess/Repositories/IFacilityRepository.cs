@@ -7,5 +7,6 @@ namespace SpaceGame.DataAccess.Repositories
     {
         IEnumerable<PlanetFacility> GetPlanetFacilities(int planetId);
         IEnumerable<Facility> GetFacilities();
+        void UpdateFacility(int facilityId, int planetId);
     }
 }
