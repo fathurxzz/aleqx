@@ -19,58 +19,17 @@ namespace SpaceGame.Api
             _store = store;
         }
 
-
-        //public ResourceSet GetResourceSet(Planet planet)
-        //{
-
-        //}
-
-
-
-
-        //public Planet GetPlanet(int id, int userId)
-        //{
-        //    try
-        //    {
-        //        var planet = _store.Planets.FirstOrDefault(p => p.Id == id && p.User.Id == userId);
-        //        if (planet == null)
-        //        {
-        //            throw new GameException(string.Format("Planet {0} for user {1} not found", id, userId), GameError.PlanetNotFound);
-        //        }
-
-        //        return planet;
-
-        //    }
-        //    catch (GameException)
-        //    {
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
-        //    }
-
-        //}
-
         public IEnumerable<Planet> GetPlanets(int userId)
         {
             var planets = _store.Planets.Where(p => p.UserId == userId);
             return planets;
         }
 
-
-        //public ResourceType GetResourceType(int resourceTypeId)
-        //{
-        //    return _store.ResourceTypes.First(r => r.Id == resourceTypeId);
-        //}
-
-        public ResourceSet GetPlanetResources(int planetId)
+        public ResourceAmountSet GetPlanetResourceAmounts(int planetId)
         {
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-
             RecalculateResources(planetId);
-
-            return new ResourceSet
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
+            return new ResourceAmountSet
                          {
                              Metal = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Metal).Amount,
                              Crystal = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal).Amount,
@@ -78,8 +37,23 @@ namespace SpaceGame.Api
                          };
         }
 
+        protected ResourceSet GetCurrentResourceValues(int planetId)
+        {
+            RecalculateResources(planetId);
+            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
+            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
+            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
+            var deiterium = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
+            return new ResourceSet
+                   {
+                       Metal = metal,
+                       Crystal =crystal,
+                       Deiterium = deiterium
+                   };
+        }
 
-        private bool ValidatePlanet(int userId, int planetId)
+
+        protected bool ValidatePlanet(int userId, int planetId)
         {
             try
             {
@@ -112,80 +86,9 @@ namespace SpaceGame.Api
                    };
         }
 
-        public void UpdateMetalMine(int planetId)
-        {
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-            RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
+        
 
-            var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeMetalMineCost((short)(metal.MineLevel + 1)).Metal;
-            var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeMetalMineCost((short)(metal.MineLevel + 1)).Crystal;
-
-            // если хватает средств
-            if (metal.Amount >= needMetalForUpgradeAmout && crystal.Amount >= needCrystalForUpgradeAmout)
-            {
-                metal.Amount -= needMetalForUpgradeAmout;
-                crystal.Amount -= needCrystalForUpgradeAmout;
-                metal.MineLevel++;
-                _store.SaveChanges();
-            }
-            else
-            {
-                throw new GameException("Not enough resources for upgrade metal mine", GameError.NotEnoughResources);
-            }
-        }
-
-        public void UpdateCrystalMine(int planetId)
-        {
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-            RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
-
-            var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeCrystalMineCost((short)(crystal.MineLevel + 1)).Metal;
-            var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeCrystalMineCost((short)(crystal.MineLevel + 1)).Crystal;
-
-            // если хватает средств
-            if (metal.Amount >= needMetalForUpgradeAmout && crystal.Amount >= needCrystalForUpgradeAmout)
-            {
-                metal.Amount -= needMetalForUpgradeAmout;
-                crystal.Amount -= needCrystalForUpgradeAmout;
-                crystal.MineLevel++;
-                _store.SaveChanges();
-            }
-            else
-            {
-                throw new GameException("Not enough resources for upgrade crystal mine", GameError.NotEnoughResources);
-            }
-        }
-
-        public void UpdateDeiteriumGenerator(int planetId)
-        {
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-            RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
-            var deiterium = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
-
-            var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(deiterium.MineLevel + 1)).Metal;
-            var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(deiterium.MineLevel + 1)).Crystal;
-
-            // если хватает средств
-            if (metal.Amount >= needMetalForUpgradeAmout && crystal.Amount >= needCrystalForUpgradeAmout)
-            {
-                metal.Amount -= needMetalForUpgradeAmout;
-                crystal.Amount -= needCrystalForUpgradeAmout;
-                deiterium.MineLevel++;
-                _store.SaveChanges();
-            }
-            else
-            {
-                throw new GameException("Not enough resources for upgrade deiterium generator", GameError.NotEnoughResources);
-            }
-        }
-
-        private void RecalculateResources(int planetId)
+        protected void RecalculateResources(int planetId)
         {
             var currDate = DateTime.Now;
             var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);

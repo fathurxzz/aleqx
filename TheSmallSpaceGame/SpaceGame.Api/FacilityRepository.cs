@@ -9,11 +9,12 @@ using SpaceGame.DataAccess.Repositories;
 
 namespace SpaceGame.Api
 {
-    public class FacilityRepository : IFacilityRepository
+    public class FacilityRepository : PlanetRepository, IFacilityRepository
     {
         private readonly ISpaceStore _store;
 
         public FacilityRepository(ISpaceStore store)
+            : base(store)
         {
             _store = store;
         }
@@ -48,30 +49,10 @@ namespace SpaceGame.Api
         {
             var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
             RecalculateResources(planetId);
+            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
+            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
         }
 
-        private void RecalculateResources(int planetId)
-        {
-            var currDate = DateTime.Now;
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-            var metalResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
-            var crystalResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
-            var deiteriumResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
 
-            TimeSpan timeSpan = currDate - metalResource.LastUpdate;
-            var deltaMetal = GetResourceDelta(ResourceItem.Metal, metalResource.MineLevel, timeSpan.TotalMilliseconds);
-            var deltaCrystal = GetResourceDelta(ResourceItem.Crystal, crystalResource.MineLevel, timeSpan.TotalMilliseconds);
-            var deltaDeiterium = GetResourceDelta(ResourceItem.Deiterium, deiteriumResource.MineLevel, timeSpan.TotalMilliseconds);
-
-            metalResource.LastUpdate = currDate;
-            crystalResource.LastUpdate = currDate;
-            deiteriumResource.LastUpdate = currDate;
-
-            metalResource.Amount += deltaMetal;
-            crystalResource.Amount += deltaCrystal;
-            deiteriumResource.Amount += deltaDeiterium;
-
-            _store.SaveChanges();
-        }
     }
 }

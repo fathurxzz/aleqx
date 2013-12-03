@@ -43,14 +43,14 @@ namespace SpaceGame.UI.Controllers
 
             //var planets = _repository.GetPlanets(WebSession.User.Id).ToList();
             //var currentPlanet = planets.FirstOrDefault(p => p.Id == planet) ?? planets.First();
-            //var resourceSet = _repository.GetPlanetResources(currentPlanet.Id);
+            //var resourceSet = _repository.GetPlanetResourceAmounts(currentPlanet.Id);
             //var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
-            //return View(new GameViewModel { CurrentResourceSet = resourceSet, Planets = planetList });
+            //return View(new GameViewModel { CurrentResourceAmountSet = resourceSet, Planets = planetList });
 
 
             return View(new GameViewModel
                         {
-                            CurrentResourceSet = CurrentResourceSet,
+                            CurrentResourceAmountSet = CurrentResourceAmountSet,
                             Planets = Planets,
                             ErrorMessage = (string)TempData["errorMessage"]
                         });
@@ -65,13 +65,13 @@ namespace SpaceGame.UI.Controllers
 
             //var planets = _repository.GetPlanets(WebSession.User.Id).ToList();
             //var currentPlanet = planets.FirstOrDefault(p => p.Id == planet) ?? planets.First();
-            //var resourceSet = _repository.GetPlanetResources(WebSession.PlanetId);
+            //var resourceSet = _repository.GetPlanetResourceAmounts(WebSession.PlanetId);
             //var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
 
             var mineslevelSet = _repository.GetLevelMines(WebSession.PlanetId);
             return View(new ResourceViewModel
                         {
-                            CurrentResourceSet = CurrentResourceSet,
+                            CurrentResourceAmountSet = CurrentResourceAmountSet,
                             Planets = Planets,
                             CurrentResourceProduceLevelSet = mineslevelSet,
                             //CurrentPlanetId = WebSession.PlanetId,
@@ -84,10 +84,10 @@ namespace SpaceGame.UI.Controllers
             ViewBag.CurrentMenuItem = "facilities";
             //var planets = _repository.GetPlanets(WebSession.User.Id).ToList();
             //var currentPlanet = planets.FirstOrDefault(p => p.Id == WebSession.PlanetId) ?? planets.First();
-            //var resourceSet = _repository.GetPlanetResources(currentPlanet.Id);
+            //var resourceSet = _repository.GetPlanetResourceAmounts(currentPlanet.Id);
             //var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
             var facilities = _frepository.GetPlanetFacilities(WebSession.PlanetId).ToList();
-            return View(new FacilityViewModel { CurrentResourceSet = CurrentResourceSet, Planets = Planets, PlanetFacilities = facilities });
+            return View(new FacilityViewModel { CurrentResourceAmountSet = CurrentResourceAmountSet, Planets = Planets, PlanetFacilities = facilities });
         }
 
     }
