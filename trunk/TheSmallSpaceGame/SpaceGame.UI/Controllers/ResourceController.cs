@@ -8,9 +8,9 @@ namespace SpaceGame.UI.Controllers
     [Authorize]
     public class ResourceController : Controller
     {
-        private readonly IPlanetRepository _repository;
+        private readonly IResourceRepository _repository;
 
-        public ResourceController(IPlanetRepository repository)
+        public ResourceController(IResourceRepository repository)
         {
             _repository = repository;
         }

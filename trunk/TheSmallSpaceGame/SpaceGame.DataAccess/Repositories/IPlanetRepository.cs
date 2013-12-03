@@ -8,10 +8,8 @@ namespace SpaceGame.DataAccess.Repositories
         //Planet GetPlanet(int id, int userId);
         IEnumerable<Planet> GetPlanets(int userId);
         //ResourceType GetResourceType(int resourceTypeId);
-        ResourceSet GetPlanetResources(int planetId);
-        void UpdateMetalMine(int planetId);
-        void UpdateCrystalMine(int planetId);
-        void UpdateDeiteriumGenerator(int planetId);
+        ResourceAmountSet GetPlanetResourceAmounts(int planetId);
+        
         //bool ValidatePlanet(int userId, int planetId);
 
         ResourceProduceLevelSet GetLevelMines(int planetId);

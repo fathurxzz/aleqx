@@ -14,7 +14,7 @@ namespace SpaceGame.UI.Controllers
     public class BaseController : Controller
     {
         private readonly IPlanetRepository _repository;
-        public ResourceSet CurrentResourceSet { get; private set; }
+        public ResourceAmountSet CurrentResourceAmountSet { get; private set; }
         public List<PlanetPresentation> Planets { get; private set; }
 
         public BaseController(IPlanetRepository repository)
@@ -30,9 +30,9 @@ namespace SpaceGame.UI.Controllers
                 var planets = _repository.GetPlanets(WebSession.User.Id).ToList();
                 var currentPlanet = planets.FirstOrDefault(p => p.Id == WebSession.PlanetId) ?? planets.First();
                 WebSession.PlanetId = currentPlanet.Id;
-                var resourceSet = _repository.GetPlanetResources(currentPlanet.Id);
+                var resourceSet = _repository.GetPlanetResourceAmounts(currentPlanet.Id);
                 var planetList = planets.Select(p => new PlanetPresentation {Id = p.Id, Name = p.Name}).ToList();
-                CurrentResourceSet = resourceSet;
+                CurrentResourceAmountSet = resourceSet;
                 Planets = planetList;
             }
 
