@@ -27,19 +27,19 @@ namespace SpaceGame.Api
 
         public ResourceAmountSet GetPlanetResourceAmounts(int planetId)
         {
-            RecalculateResources(planetId);
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
+            var values = GetCurrentResourceValues(planetId);
             return new ResourceAmountSet
-                         {
-                             Metal = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Metal).Amount,
-                             Crystal = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal).Amount,
-                             Deiterium = (long)resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium).Amount
-                         };
+                   {
+                       Metal = (long)values.Metal.Amount,
+                       Crystal = (long)values.Crystal.Amount,
+                       Deiterium = (long)values.Deiterium.Amount
+                   };
         }
 
         protected ResourceSet GetCurrentResourceValues(int planetId)
         {
             RecalculateResources(planetId);
+            CheckFacilityStatuses(planetId);
             var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
             var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
             var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
@@ -50,6 +50,28 @@ namespace SpaceGame.Api
                        Crystal =crystal,
                        Deiterium = deiterium
                    };
+        }
+
+        protected FacilitiesSet GetCurrentFacilityLevels(int planetId)
+        {
+            var facilities = _store.PlanetFacilities.Where(p => p.PlanetId == planetId);
+            var roboticsFactory = facilities.Single(r => r.FacilityId == (int) FacilityItem.RoboticsFactory);
+            var shipyard = facilities.Single(r => r.FacilityId == (int)FacilityItem.Shipyard);
+            var researchLab = facilities.Single(r => r.FacilityId == (int)FacilityItem.ResearchLab);
+            var naniteFactory = facilities.Single(r => r.FacilityId == (int)FacilityItem.NaniteFactory);
+            return new FacilitiesSet
+                   {
+                       NaniteFactory = naniteFactory,
+                       ResearchLab = researchLab,
+                       RoboticsFactory = roboticsFactory,
+                       Shipyard = shipyard
+                   };
+
+        }
+
+        protected List<PlanetFacility> GetCurrentFacilities(int planetId)
+        {
+            return _store.PlanetFacilities.Where(p => p.PlanetId == planetId).ToList();
         }
 
 
@@ -88,7 +110,7 @@ namespace SpaceGame.Api
 
         
 
-        protected void RecalculateResources(int planetId)
+        private void RecalculateResources(int planetId)
         {
             var currDate = DateTime.Now;
             var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
@@ -109,6 +131,16 @@ namespace SpaceGame.Api
             crystalResource.Amount += deltaCrystal;
             deiteriumResource.Amount += deltaDeiterium;
 
+            _store.SaveChanges();
+        }
+
+        private void CheckFacilityStatuses(int planetId)
+        {
+            var facility = _store.PlanetFacilities.SingleOrDefault(f => f.PlanetId == planetId && f.IsUpdating);
+            if (facility == null) return;
+            if (facility.UpdateFinish > DateTime.Now) return;
+            facility.Level++;
+            facility.IsUpdating = false;
             _store.SaveChanges();
         }
 

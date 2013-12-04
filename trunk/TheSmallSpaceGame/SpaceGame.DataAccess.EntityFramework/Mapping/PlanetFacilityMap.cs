@@ -16,6 +16,7 @@ namespace SpaceGame.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Level).HasColumnName("Level");
             this.Property(t => t.UpdateStart).HasColumnName("UpdateStart");
+            this.Property(t => t.UpdateFinish).HasColumnName("UpdateFinish");
             this.Property(t => t.IsUpdating).HasColumnName("IsUpdating");
             this.Property(t => t.PlanetId).HasColumnName("PlanetId");
             this.Property(t => t.FacilityId).HasColumnName("FacilityId");

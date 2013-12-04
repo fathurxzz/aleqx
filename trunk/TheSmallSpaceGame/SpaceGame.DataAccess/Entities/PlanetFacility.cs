@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public short Level { get; set; }
         public System.DateTime UpdateStart { get; set; }
+        public System.DateTime UpdateFinish { get; set; }
         public bool IsUpdating { get; set; }
         public int PlanetId { get; set; }
         public int FacilityId { get; set; }

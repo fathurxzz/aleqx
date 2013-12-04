@@ -9,6 +9,26 @@ AuthController.prototype = {
 
         $("#Email").focus();
 
+        setInterval(this._displayRemainingTime(), 1000);
+        //alert("aaa");
+
+        //var today = new Date();
+        //today.getDate();
+
+
+        //alert("now:"+ today + "\r fin : " + finishDate);
+
+        //var span = finishDate - today;
+
+        //$("#remainingTime").html(today);
+
+        //alert(span/1000/60);
+
+        //setInterval(this._displayRemainingTime(), 1000);
+
+        //setInterval(this._aaa(), 1000);
+
+
         //$("#inputCardNumberForm .button.ok").click(function () {
         //    $("#inputCardNumberForm").submit();
         //});
@@ -59,6 +79,27 @@ AuthController.prototype = {
         //});
     },
     
+    _aaa: function () {
+        alert(Date.now());
+    },
+
+    _displayRemainingTime: function () {
+        
+        //var finishDate = new Date();
+        //var finishDateValue = $("#updateFinish").val();
+        //finishDate.setTime(Date.parse(finishDateValue));
+        //var today = Date.now();
+        //var span = finishDate - today;
+        
+
+        //$("#remainingTime").html(span);
+
+        alert("aaa");
+
+        //setInterval(_displayRemainingTime(), 1000);
+
+    },
+
     _onDigitClick: function(evt) {
         //var card = $("#cardNumber").val();
 
