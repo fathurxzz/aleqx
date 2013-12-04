@@ -47,10 +47,62 @@ namespace SpaceGame.Api
 
         public void UpdateFacility(int facilityId, int planetId)
         {
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-            RecalculateResources(planetId);
-            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
+            try
+            {
+                var resourceSet = GetCurrentResourceValues(planetId);
+                var facilities = GetCurrentFacilities(planetId);
+
+                var facility = facilities.SingleOrDefault(f => f.FacilityId == facilityId);
+                if (facility == null)
+                {
+                    throw new GameException(string.Format("Facility {0} doesnt exist", (FacilityItem)facilityId), GameError.FacilityDoesNotExistOrUpdating);
+                }
+
+                if (facility.IsUpdating)
+                {
+                    throw new GameException(string.Format("Facility {0} is updating", (FacilityItem)facilityId), GameError.FacilityDoesNotExistOrUpdating);
+                }
+
+                var needMetalAmountForUpgrade = UpgrageFacilityCost.Cost((short)(facility.Level + 1), facility.Facility.MetalCost);
+                var needCrystalAmountForUpgrade = UpgrageFacilityCost.Cost((short)(facility.Level + 1), facility.Facility.CrystalCost);
+                var needDeiteriumAmountForUpgrade = UpgrageFacilityCost.Cost((short)(facility.Level + 1), facility.Facility.DeiteriumCost);
+
+                if (resourceSet.Metal.Amount < needMetalAmountForUpgrade ||
+                    resourceSet.Crystal.Amount < needCrystalAmountForUpgrade ||
+                    resourceSet.Deiterium.Amount < needDeiteriumAmountForUpgrade)
+                {
+                    throw new GameException(string.Format("Not enough resources for {0} upgrade ", (FacilityItem)facilityId), GameError.NotEnoughResources);
+                }
+
+                var roboticsFactoryLevel = facilities.Single(f => f.FacilityId == (int) FacilityItem.RoboticsFactory).Level;
+                var naniteFactoryLevel = facilities.Single(f => f.FacilityId == (int) FacilityItem.RoboticsFactory).Level;
+
+                var upgradeTime = UpgradeTime.Caclulate(needMetalAmountForUpgrade, needCrystalAmountForUpgrade, roboticsFactoryLevel, naniteFactoryLevel, (short)(facility.Level + 1));
+
+                var startDate = DateTime.Now;
+                var finishDate = startDate.Add(upgradeTime);
+
+                facility.UpdateStart = startDate;
+                facility.UpdateFinish = finishDate;
+                facility.IsUpdating = true;
+                //facility.Level++;
+                
+                //_store.PlanetResources.Where(p => p.PlanetId == planetId).Single(r => r.ResourceId == (int) ResourceItem.Metal).Amount -= needMetalAmountForUpgrade;
+
+                resourceSet.Metal.Amount -= needMetalAmountForUpgrade;
+                resourceSet.Crystal.Amount -= needCrystalAmountForUpgrade;
+                resourceSet.Deiterium.Amount -= needDeiteriumAmountForUpgrade;
+
+                _store.SaveChanges();
+            }
+            catch (GameException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
+            }
         }
 
 

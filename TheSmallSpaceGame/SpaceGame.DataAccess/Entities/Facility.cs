@@ -11,9 +11,9 @@ namespace SpaceGame.DataAccess.Entities
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public double MetalCost { get; set; }
-        public double CrystalCost { get; set; }
-        public double DeiteriumCost { get; set; }
+        public long MetalCost { get; set; }
+        public long CrystalCost { get; set; }
+        public long DeiteriumCost { get; set; }
         public string Description { get; set; }
         public virtual ICollection<PlanetFacility> PlanetFacilities { get; set; }
     }

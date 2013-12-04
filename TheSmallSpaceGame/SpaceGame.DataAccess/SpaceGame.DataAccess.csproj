@@ -49,6 +49,7 @@
     <Compile Include="Entities\PlanetResource.cs" />
     <Compile Include="Entities\PlanetShip.cs" />
     <Compile Include="Entities\Ship.cs" />
+    <Compile Include="FacilitiesSet.cs" />
     <Compile Include="FacilityItem.cs" />
     <Compile Include="ISpaceStore.cs" />
     <Compile Include="Repositories\IFacilityRepository.cs" />

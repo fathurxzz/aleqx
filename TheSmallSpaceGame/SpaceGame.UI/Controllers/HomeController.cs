@@ -87,7 +87,13 @@ namespace SpaceGame.UI.Controllers
             //var resourceSet = _repository.GetPlanetResourceAmounts(currentPlanet.Id);
             //var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
             var facilities = _frepository.GetPlanetFacilities(WebSession.PlanetId).ToList();
-            return View(new FacilityViewModel { CurrentResourceAmountSet = CurrentResourceAmountSet, Planets = Planets, PlanetFacilities = facilities });
+            return View(new FacilityViewModel
+                        {
+                            CurrentResourceAmountSet = CurrentResourceAmountSet,
+                            Planets = Planets,
+                            PlanetFacilities = facilities,
+                            ErrorMessage = (string)TempData["errorMessage"]
+                        });
         }
 
     }

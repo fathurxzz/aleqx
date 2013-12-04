@@ -19,7 +19,6 @@ namespace SpaceGame.UI.Controllers
         {
             try
             {
-                //_repository.ValidatePlanet(WebSession.User.Id, WebSession.PlanetId);
                 _repository.UpdateMetalMine(WebSession.PlanetId);
             }
             catch (GameException ex)
@@ -34,7 +33,6 @@ namespace SpaceGame.UI.Controllers
         {
             try
             {
-                //_repository.ValidatePlanet(WebSession.User.Id, WebSession.PlanetId);
                 _repository.UpdateCrystalMine(WebSession.PlanetId);
             }
             catch (GameException ex)
@@ -49,7 +47,6 @@ namespace SpaceGame.UI.Controllers
         {
             try
             {
-                //_repository.ValidatePlanet(WebSession.User.Id, WebSession.PlanetId);
                 _repository.UpdateDeiteriumGenerator(WebSession.PlanetId);
             }
             catch (GameException ex)

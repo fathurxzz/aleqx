@@ -37,6 +37,11 @@
     </div>
 }
 
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    @Html.Partial("ErrorMessage", Model.ErrorMessage)
+}
+
 <table class="facilities">
 
     @foreach (var item in Model.PlanetFacilities)
@@ -53,9 +58,26 @@
                 @upgradeFacilityCostMetal.FormatResourcesAmount() metal 
                 @upgradeFacilityCostCrystal.FormatResourcesAmount() crystal 
                 @upgradeFacilityCostDeiterium.FormatResourcesAmount() deiterium. 
-                Upgrade time: @UpgradeTime.Caclulate(upgradeFacilityCostMetal, upgradeFacilityCostCrystal, 0, 0).FormatUpgradeTime()</td>
+                Upgrade time: @UpgradeTime.Caclulate(upgradeFacilityCostMetal, upgradeFacilityCostCrystal, 0, 0,(short)(item.Level + 1)).FormatUpgradeTime()</td>
             <td>
-                @Html.ActionLink("Upgrade", "Upgrade", "Facility", new { id = item.FacilityId }, null)
+                @if (item.IsUpdating)
+                {
+                    <span class="disabled">Upgrade</span>
+                }
+                else
+                {
+                    @Html.ActionLink("Upgrade", "Upgrade", "Facility", new { id = item.FacilityId }, null)    
+                }
+                
+            </td>
+            <td>
+                @*@if (item.IsUpdating)
+                {
+                    @Html.Hidden("updateFinish", item.UpdateFinish)
+                }*@
+                
+                <input type="hidden" id="updateFinish" value="@item.UpdateFinish.ToLocalTime().ToString("R")"/>
+                <span id="remainingTime"></span>
             </td>
         </tr>
     }

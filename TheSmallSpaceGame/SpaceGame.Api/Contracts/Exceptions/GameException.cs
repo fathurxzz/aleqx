@@ -10,7 +10,8 @@ namespace SpaceGame.Api.Contracts.Exceptions
     {
         Unknow = 0,
         PlanetNotFound = 1,
-        NotEnoughResources = 2
+        NotEnoughResources = 2,
+        FacilityDoesNotExistOrUpdating=3
     }
 
     public class GameException : Exception
