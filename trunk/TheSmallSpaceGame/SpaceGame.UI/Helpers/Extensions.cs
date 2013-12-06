@@ -33,39 +33,39 @@ namespace SpaceGame.UI.Helpers
 
             if (value.Days/7 != 0)
             {
-                sb.AppendFormat(" {0} weeks", value.Days/7);
+                sb.AppendFormat(" {0} w", value.Days/7);
                 cnt++;
             }
-            if(cnt==3)
+            if(cnt==2)
                 return sb.ToString();
 
             if (value.Days != 0)
             {
-                sb.AppendFormat(" {0} days", value.Days);
+                sb.AppendFormat(" {0} d", value.Days);
                 cnt++;
             }
-            if (cnt == 3)
+            if (cnt == 2)
                 return sb.ToString();
 
             if (value.Hours != 0)
             {
-                sb.AppendFormat(" {0} hours", value.Hours);
+                sb.AppendFormat(" {0} h", value.Hours);
                 cnt++;
             }
-            if (cnt == 3)
+            if (cnt == 2)
                 return sb.ToString();
 
             if (value.Minutes != 0)
             {
-                sb.AppendFormat(" {0} minutes", value.Minutes);
+                sb.AppendFormat(" {0} m", value.Minutes);
                 cnt++;
             }
-            if (cnt == 3)
+            if (cnt == 2)
                 return sb.ToString();
 
             if (value.Seconds != 0)
             {
-                sb.AppendFormat(" {0} seconds", value.Seconds);
+                sb.AppendFormat(" {0} s", value.Seconds);
             }
             
             return sb.ToString();

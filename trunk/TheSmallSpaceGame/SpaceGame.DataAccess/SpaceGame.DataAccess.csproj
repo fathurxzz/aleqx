@@ -66,7 +66,7 @@
     <Compile Include="ResourceAmountSet.cs" />
     <Compile Include="ResourceSet.cs" />
     <Compile Include="UpgradeResourceCost.cs" />
-    <Compile Include="UpgradeResourceLevelCost.cs" />
+    <Compile Include="ResourceValuesSet.cs" />
     <Compile Include="UpgradeTime.cs" />
     <Compile Include="UpgrageFacilityCost.cs" />
   </ItemGroup>

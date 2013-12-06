@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpaceGame.DataAccess
 {
-    public struct UpgradeResourceLevelCost
+    public struct ResourceValuesSet
     {
         public long Metal { get; set; }
         public long Crystal { get; set; }

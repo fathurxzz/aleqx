@@ -87,6 +87,18 @@ namespace SpaceGame.UI.Controllers
             //var resourceSet = _repository.GetPlanetResourceAmounts(currentPlanet.Id);
             //var planetList = planets.Select(p => new PlanetPresentation { Id = p.Id, Name = p.Name }).ToList();
             var facilities = _frepository.GetPlanetFacilities(WebSession.PlanetId).ToList();
+
+            
+
+            foreach (var item in facilities)
+            {
+             
+                //item.UpgradeFacilityCostCrystal = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.CrystalCost);
+                //item.UpgradeFacilityCostDeiterium = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.DeiteriumCost);
+                //item.IsAvailableForUpgrade=
+            }
+
+
             return View(new FacilityViewModel
                         {
                             CurrentResourceAmountSet = CurrentResourceAmountSet,
