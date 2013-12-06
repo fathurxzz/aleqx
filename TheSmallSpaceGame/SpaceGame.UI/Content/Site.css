@@ -110,14 +110,14 @@ span
 .leftPanel
 {
     float: left;
-    width: 180px;
+    width: 150px;
     padding: 50px 10px 20px 10px;
 }
 
 .rightPanel
 {
     float: left;
-    width: 200px;
+    width: 150px;
     padding: 20px 0;
 }
 
@@ -125,7 +125,7 @@ span
 {
     padding: 20px 0;
     float: left;
-    width: 560px;
+    width: 640px;
     margin: 0 20px;
 }
 
@@ -145,32 +145,34 @@ span
     padding-bottom: 15px;
 }
 
-table.mineLevels {
+table.mineLevels
+{
     border-collapse: collapse;
 }
 
-table.mineLevels td
-{
-    padding: 0 5px;
-}
-
-table.mineLevels td {
-    border-bottom: 1px dashed #555;
-    border-top: 1px dashed #555;
-    padding: 4px 3px;
-}
-
-    table.mineLevels td.title
+    table.mineLevels td
     {
-        text-align: right;
-        color: #778899;
-        font-weight: normal;
+        padding: 0 5px;
     }
 
-    table.mineLevels td a:hover
+    table.mineLevels td
     {
-        color: #008b8b;
+        border-bottom: 1px dashed #555;
+        border-top: 1px dashed #555;
+        padding: 4px 3px;
     }
+
+        table.mineLevels td.title
+        {
+            text-align: right;
+            color: #778899;
+            font-weight: normal;
+        }
+
+        table.mineLevels td a:hover
+        {
+            color: #008b8b;
+        }
 
 
 .alert
@@ -178,39 +180,67 @@ table.mineLevels td {
     color: #f00;
 }
 
-.ok {
+.ok
+{
     color: #0f0;
 }
 
-.disabled {
+.disabled
+{
     color: #555;
 }
 
 
 
-table.facilities {
+table.facilities
+{
     border-collapse: collapse;
 }
 
-table.facilities td
+    table.facilities td
+    {
+        padding: 0 5px;
+    }
+
+    table.facilities td
+    {
+        border-bottom: 1px dashed #555;
+        border-top: 1px dashed #555;
+        padding: 4px 3px;
+    }
+
+        table.facilities td.title
+        {
+            text-align: right;
+            color: #778899;
+            font-weight: normal;
+            white-space: nowrap;
+        }
+
+        table.facilities td a:hover
+        {
+            color: #008b8b;
+        }
+
+
+#remainingTime
 {
-    padding: 0 5px;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: bold;
 }
 
-table.facilities td {
-    border-bottom: 1px dashed #555;
-    border-top: 1px dashed #555;
-    padding: 4px 3px;
+.bold
+{
+    font-weight: bold;
 }
 
-    table.facilities td.title
-    {
-        text-align: right;
-        color: #778899;
-        font-weight: normal;
-    }
+.currentLevel {
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+}
 
-    table.facilities td a:hover
-    {
-        color: #008b8b;
-    }
+.nowrap {
+    white-space: nowrap;
+}

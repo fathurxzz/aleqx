@@ -75,7 +75,7 @@ namespace SpaceGame.Api
                 }
 
                 var roboticsFactoryLevel = facilities.Single(f => f.FacilityId == (int) FacilityItem.RoboticsFactory).Level;
-                var naniteFactoryLevel = facilities.Single(f => f.FacilityId == (int) FacilityItem.RoboticsFactory).Level;
+                var naniteFactoryLevel = facilities.Single(f => f.FacilityId == (int) FacilityItem.NaniteFactory).Level;
 
                 var upgradeTime = UpgradeTime.Caclulate(needMetalAmountForUpgrade, needCrystalAmountForUpgrade, roboticsFactoryLevel, naniteFactoryLevel, (short)(facility.Level + 1));
 

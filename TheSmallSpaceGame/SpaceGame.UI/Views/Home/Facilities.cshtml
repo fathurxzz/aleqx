@@ -1,4 +1,5 @@
-﻿@using SpaceGame.DataAccess
+﻿@using System.Web.Optimization
+@using SpaceGame.DataAccess
 @using SpaceGame.UI.Helpers
 @model SpaceGame.UI.Models.FacilityViewModel
 
@@ -44,42 +45,51 @@
 
 <table class="facilities">
 
-    @foreach (var item in Model.PlanetFacilities)
-    {
-        var upgradeFacilityCostMetal = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.MetalCost);
-        var upgradeFacilityCostCrystal = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.CrystalCost);
-        var upgradeFacilityCostDeiterium = UpgrageFacilityCost.Cost((short)(item.Level + 1), (long)item.Facility.DeiteriumCost);
-        
-        
+    @{
+        short roboticsLevel = Model.PlanetFacilities.Single(f => f.FacilityId == (int)FacilityItem.RoboticsFactory).Level;
+        short naniteLevel = Model.PlanetFacilities.Single(f => f.FacilityId == (int)FacilityItem.NaniteFactory).Level;
+
+        foreach (var item in Model.PlanetFacilities)
+        {
         <tr>
             <td class="title">@item.Facility.Name</td>
-            <td>level:@item.Level</td>
+            <td><span class="currentLevel">@item.Level</span></td>
             <td>upgrage to level @(item.Level + 1) costs: 
-                @upgradeFacilityCostMetal.FormatResourcesAmount() metal 
-                @upgradeFacilityCostCrystal.FormatResourcesAmount() crystal 
-                @upgradeFacilityCostDeiterium.FormatResourcesAmount() deiterium. 
-                Upgrade time: @UpgradeTime.Caclulate(upgradeFacilityCostMetal, upgradeFacilityCostCrystal, 0, 0,(short)(item.Level + 1)).FormatUpgradeTime()</td>
+                <span class="@(item.UpgradeFacilityCostMetal > Model.CurrentResourceAmountSet.Metal ? "alert" : "ok")">@item.UpgradeFacilityCostMetal.FormatResourcesAmount()</span> metal 
+                <span class="@(item.UpgradeFacilityCostCrystal > Model.CurrentResourceAmountSet.Crystal ? "alert" : "ok")">@item.UpgradeFacilityCostCrystal.FormatResourcesAmount() </span>crystal 
+                <span class="@(item.UpgradeFacilityCostDeiterium > Model.CurrentResourceAmountSet.Deiterium ? "alert" : "ok")">@item.UpgradeFacilityCostDeiterium.FormatResourcesAmount() </span>deiterium. 
+                     
+            </td>
             <td>
                 @if (item.IsUpdating)
                 {
-                    <span class="disabled">Upgrade</span>
+                    <input type="hidden" id="remainingTimeSeconds" value="@((long)(item.UpdateFinish - DateTime.Now).TotalMilliseconds)"/>
+                    <span id="remainingTime"></span>
+                    
                 }
                 else
                 {
-                    @Html.ActionLink("Upgrade", "Upgrade", "Facility", new { id = item.FacilityId }, null)    
+                    <span class="bold nowrap">@item.CalculateUpgradeTime(roboticsLevel, naniteLevel).FormatUpgradeTime()</span> 
+                    <br />
+
+                    if (Model.PlanetFacilities.Any(pf => pf.IsUpdating))
+                    {
+                        <span class="disabled">Upgrade</span>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Upgrade", "Upgrade", "Facility", new { id = item.FacilityId }, null)
+                    }
                 }
-                
             </td>
-            <td>
-                @*@if (item.IsUpdating)
-                {
-                    @Html.Hidden("updateFinish", item.UpdateFinish)
-                }*@
-                
-                <input type="hidden" id="updateFinish" value="@item.UpdateFinish.ToLocalTime().ToString("R")"/>
-                <span id="remainingTime"></span>
-            </td>
+            <td></td>
         </tr>
+        }
     }
 
 </table>
+
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/facilities.js")
+}

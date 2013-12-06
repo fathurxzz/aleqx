@@ -9,7 +9,7 @@ AuthController.prototype = {
 
         $("#Email").focus();
 
-        setInterval(this._displayRemainingTime(), 1000);
+        //setInterval(this._displayRemainingTime(), 1000);
         //alert("aaa");
 
         //var today = new Date();
@@ -79,11 +79,11 @@ AuthController.prototype = {
         //});
     },
     
-    _aaa: function () {
-        alert(Date.now());
-    },
+    //_aaa: function () {
+    //    alert(Date.now());
+    //},
 
-    _displayRemainingTime: function () {
+    //_displayRemainingTime: function () {
         
         //var finishDate = new Date();
         //var finishDateValue = $("#updateFinish").val();
@@ -94,11 +94,11 @@ AuthController.prototype = {
 
         //$("#remainingTime").html(span);
 
-        alert("aaa");
+        //alert("aaa");
 
         //setInterval(_displayRemainingTime(), 1000);
 
-    },
+    //},
 
     _onDigitClick: function(evt) {
         //var card = $("#cardNumber").val();
