@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using SpaceGame.DataAccess.Helpers;
 
 namespace SpaceGame.DataAccess.Entities
 {
@@ -13,17 +15,18 @@ namespace SpaceGame.DataAccess.Entities
         public int FacilityId { get; set; }
         public virtual Facility Facility { get; set; }
         public virtual Planet Planet { get; set; }
-    }
 
-    public partial class PlanetFacility
-    {
+
+
+
+
         public TimeSpan CalculateUpgradeTime(short roboticsLevel, short naniteLevel)
         {
-            return UpgradeTime.Caclulate(UpgradeFacilityCostMetal, UpgradeFacilityCostCrystal, roboticsLevel, naniteLevel, (short) (Level + 1));
+            return UpgradeTime.Caclulate(UpgradeFacilityCostMetal, UpgradeFacilityCostCrystal, roboticsLevel, naniteLevel, (short)(Level + 1), (GameEntity)((FacilityItem)FacilityId));
         }
 
         public bool IsAvailableForUpgrade { get; set; }
-        
+
         public long UpgradeFacilityCostMetal
         {
             get
@@ -48,6 +51,6 @@ namespace SpaceGame.DataAccess.Entities
             }
         }
 
-        
+
     }
 }

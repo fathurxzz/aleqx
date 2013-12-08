@@ -4,6 +4,10 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
+using SpaceGame.Api;
+using SpaceGame.Api.Helpers;
+using SpaceGame.DataAccess;
+using SpaceGame.DataAccess.Entities;
 
 namespace SpaceGame.UI.Helpers
 {
@@ -31,12 +35,12 @@ namespace SpaceGame.UI.Helpers
             var cnt = 0;
             var sb = new StringBuilder();
 
-            if (value.Days/7 != 0)
+            if (value.Days / 7 != 0)
             {
-                sb.AppendFormat(" {0} w", value.Days/7);
+                sb.AppendFormat(" {0} w", value.Days / 7);
                 cnt++;
             }
-            if(cnt==2)
+            if (cnt == 2)
                 return sb.ToString();
 
             if (value.Days != 0)
@@ -67,8 +71,40 @@ namespace SpaceGame.UI.Helpers
             {
                 sb.AppendFormat(" {0} s", value.Seconds);
             }
-            
+
             return sb.ToString();
         }
+
+
+
+        public static ResourceSet ResourceSet(this IEnumerable<PlanetResource> source)
+        {
+            return ResourceHelper.GetResourceSet(source);
+        }
+
+        public static ResourceAmountSet ResourceAmountSet(this IEnumerable<PlanetResource> source)
+        {
+            var resourceSet = ResourceSet(source);
+            return new ResourceAmountSet
+            {
+                Metal = (long)resourceSet.Metal.Amount,
+                Crystal = (long)resourceSet.Crystal.Amount,
+                Deiterium = (long)resourceSet.Deiterium.Amount
+            };
+        }
+
+        public static ResourceLevelSet ResourceLevelSet(this IEnumerable<PlanetResource> source)
+        {
+
+            var resourceSet = ResourceSet(source);
+            return new ResourceLevelSet
+            {
+                MetalMine = resourceSet.Metal.MineLevel,
+                CrystalMine = resourceSet.Crystal.MineLevel,
+                DeiteriumGenerator = resourceSet.Deiterium.MineLevel
+            };
+            //return ResourceHelper.GetResourceLevelSet(source);
+        }
+
     }
 }

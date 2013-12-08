@@ -1,6 +1,6 @@
 ﻿@using SpaceGame.DataAccess
 @using SpaceGame.UI.Helpers
-@model SpaceGame.UI.Models.ResourceViewModel
+@model SpaceGame.UI.Models.GameViewModel
 
 @{
     ViewBag.Title = "Resources";
@@ -45,25 +45,24 @@
 }
 
 @{
-    var requiredMetalForUpgradeMetalMine = UpgradeResourceCost.UpgradeMetalMineCost((short)(Model.CurrentResourceProduceLevelSet.MetalMine + 1)).Metal;
-    var requiredCrystalForUpgradeMetalMine = UpgradeResourceCost.UpgradeMetalMineCost((short)(Model.CurrentResourceProduceLevelSet.MetalMine + 1)).Crystal;
-
-    var requiredMetalForUpgradeCrystallMine = UpgradeResourceCost.UpgradeCrystalMineCost((short)(Model.CurrentResourceProduceLevelSet.CrystalMine + 1)).Metal;
-    var requiredCrystalForUpgradeCrystallMine = UpgradeResourceCost.UpgradeCrystalMineCost((short)(Model.CurrentResourceProduceLevelSet.CrystalMine + 1)).Crystal;
-
-    var requiredMetalForUpgradeDeiteriumGenerator = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(Model.CurrentResourceProduceLevelSet.DeiteriumGenerator + 1)).Metal;
-    var requiredCrystalForUpgradeDeiteriumGenerator = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(Model.CurrentResourceProduceLevelSet.DeiteriumGenerator + 1)).Crystal;
+    short roboticsLevel = Model.PlanetFacilities.Single(f => f.FacilityId == (int)FacilityItem.RoboticsFactory).Level;
+    short naniteLevel = Model.PlanetFacilities.Single(f => f.FacilityId == (int)FacilityItem.NaniteFactory).Level;
 }
 
 <table class="mineLevels">
     <tr>
-        <td class="title">Metal Mine Level: @Model.CurrentResourceProduceLevelSet.MetalMine</td>
-        <td>upgrade to level @(Model.CurrentResourceProduceLevelSet.MetalMine + 1) costs: 
-            <span class="@(requiredMetalForUpgradeMetalMine > Model.CurrentResourceAmountSet.Metal ? "alert" : "ok")">@requiredMetalForUpgradeMetalMine.FormatResourcesAmount() </span>metal 
-            and <span class="@(requiredCrystalForUpgradeMetalMine > Model.CurrentResourceAmountSet.Crystal ? "alert" : "ok")">@requiredCrystalForUpgradeMetalMine.FormatResourcesAmount()</span> crystal
+        <td class="title">Metal Mine Level: @Model.PlanetResources.ResourceLevelSet().MetalMine</td>
+        <td>upgrade to level @(Model.PlanetResources.ResourceLevelSet().MetalMine + 1) costs: 
+            <span class="@(Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost.Metal > Model.PlanetResources.ResourceAmountSet().Metal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost.Metal.FormatResourcesAmount() </span>metal 
+            and <span class="@(Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost.Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost.Crystal.FormatResourcesAmount()</span> crystal
         </td>
         <td>
-            @if (requiredMetalForUpgradeMetalMine > Model.CurrentResourceAmountSet.Metal || requiredCrystalForUpgradeMetalMine > Model.CurrentResourceAmountSet.Crystal)
+            
+             <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Metal.CalculateUpgradeTime(roboticsLevel,naniteLevel,GameEntity.MetalMine).FormatUpgradeTime()</span> 
+                    <br />
+
+
+            @if (Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost.Metal > Model.PlanetResources.ResourceAmountSet().Metal || Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost.Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
             {
                 <span class="disabled">Upgrade</span>
             }
@@ -74,30 +73,39 @@
         </td>
     </tr>
     <tr>
-        <td class="title">Crystal Mine Level: @Model.CurrentResourceProduceLevelSet.CrystalMine</td>
-        <td>upgrade to level @(Model.CurrentResourceProduceLevelSet.CrystalMine + 1) costs: 
-            <span class="@(requiredMetalForUpgradeCrystallMine > Model.CurrentResourceAmountSet.Metal ? "alert" : "ok")">@requiredMetalForUpgradeCrystallMine.FormatResourcesAmount()</span> metal 
-            and <span class="@(requiredCrystalForUpgradeCrystallMine > Model.CurrentResourceAmountSet.Crystal ? "alert" : "ok")">@requiredCrystalForUpgradeCrystallMine.FormatResourcesAmount()</span> crystal
+        <td class="title">Crystal Mine Level: @Model.PlanetResources.ResourceLevelSet().CrystalMine</td>
+        <td>upgrade to level @(Model.PlanetResources.ResourceLevelSet().CrystalMine + 1) costs: 
+            <span class="@(Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost.Metal > Model.PlanetResources.ResourceAmountSet().Metal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost.Metal.FormatResourcesAmount()</span> metal 
+            and <span class="@(Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost.Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost.Crystal.FormatResourcesAmount()</span> crystal
         </td>
         <td>
-            @if (requiredMetalForUpgradeCrystallMine > Model.CurrentResourceAmountSet.Metal || requiredCrystalForUpgradeCrystallMine > Model.CurrentResourceAmountSet.Crystal)
+             <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Crystal.CalculateUpgradeTime(roboticsLevel,naniteLevel,GameEntity.MetalMine).FormatUpgradeTime()</span> 
+                    <br />
+
+           
+            @if (Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost.Metal > Model.PlanetResources.ResourceAmountSet().Metal || Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost.Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
             {
                 <span class="disabled">Upgrade</span>
             }
             else
             {
+                
                 @Html.ActionLink("Upgrade", "UpgradeCrystalMine", "Resource")
             }
         </td>
     </tr>
     <tr>
-        <td class="title">Deiterium Generator Level: @Model.CurrentResourceProduceLevelSet.DeiteriumGenerator</td>
-        <td>upgrade to level @(Model.CurrentResourceProduceLevelSet.DeiteriumGenerator + 1) costs:
-            <span class="@(requiredMetalForUpgradeDeiteriumGenerator > Model.CurrentResourceAmountSet.Metal ? "alert" : "ok")">@requiredMetalForUpgradeDeiteriumGenerator.FormatResourcesAmount()</span> metal 
-            and<span class="@(requiredCrystalForUpgradeDeiteriumGenerator > Model.CurrentResourceAmountSet.Crystal ? "alert" : "ok")"> @requiredCrystalForUpgradeDeiteriumGenerator.FormatResourcesAmount()</span> crystal
+        <td class="title">Deiterium Generator Level: @Model.PlanetResources.ResourceLevelSet().DeiteriumGenerator</td>
+        <td>upgrade to level @(Model.PlanetResources.ResourceLevelSet().DeiteriumGenerator + 1) costs:
+            <span class="@(Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost.Metal > Model.PlanetResources.ResourceAmountSet().Metal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost.Metal.FormatResourcesAmount()</span> metal 
+            and<span class="@(Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost.Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")"> @Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost.Crystal.FormatResourcesAmount()</span> crystal
         </td>
         <td>
-            @if (requiredMetalForUpgradeDeiteriumGenerator > Model.CurrentResourceAmountSet.Metal || requiredCrystalForUpgradeDeiteriumGenerator > Model.CurrentResourceAmountSet.Crystal)
+            
+             <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Deiterium.CalculateUpgradeTime(roboticsLevel,naniteLevel,GameEntity.MetalMine).FormatUpgradeTime()</span> 
+                    <br />
+
+            @if (Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost.Metal > Model.PlanetResources.ResourceAmountSet().Metal || Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost.Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
             {
                 <span class="disabled">Upgrade</span>
             }

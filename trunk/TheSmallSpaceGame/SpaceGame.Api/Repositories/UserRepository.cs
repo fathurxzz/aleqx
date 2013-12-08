@@ -6,7 +6,7 @@ using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Entities;
 using SpaceGame.DataAccess.Repositories;
 
-namespace SpaceGame.Api
+namespace SpaceGame.Api.Repositories
 {
     public class UserRepository : IUserRepository
     {

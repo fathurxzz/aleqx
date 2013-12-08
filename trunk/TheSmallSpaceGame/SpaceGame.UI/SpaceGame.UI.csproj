@@ -149,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Models\FacilityViewModel.cs" />
     <Compile Include="Models\GameViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />

@@ -8,12 +8,14 @@ namespace SpaceGame.DataAccess.Repositories
         //Planet GetPlanet(int id, int userId);
         IEnumerable<Planet> GetPlanets(int userId);
         //ResourceType GetResourceType(int resourceTypeId);
-        ResourceAmountSet GetPlanetResourceAmounts(int planetId);
+        ResourceAmountSet GetPlanetResourceAmounts(IEnumerable<PlanetResource> resources );
         
         //bool ValidatePlanet(int userId, int planetId);
 
-        ResourceProduceLevelSet GetLevelMines(int planetId);
+        //ResourceLevelSet GetLevelMines(IEnumerable<PlanetResource> resources);
 
+        IEnumerable<PlanetResource> GetPlanetResources(int planetId);
+        IEnumerable<PlanetFacility> GetPlanetFacilities(int planetId);
         //void RecalculateResources(int planetId);
 
     }
