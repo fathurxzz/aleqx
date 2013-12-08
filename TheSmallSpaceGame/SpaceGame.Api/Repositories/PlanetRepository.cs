@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using SpaceGame.Api.Contracts.Exceptions;
+using SpaceGame.Api.Helpers;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Entities;
 using SpaceGame.DataAccess.Repositories;
 
-namespace SpaceGame.Api
+
+namespace SpaceGame.Api.Repositories
 {
     public class PlanetRepository : IPlanetRepository
     {
@@ -25,53 +25,40 @@ namespace SpaceGame.Api
             return planets;
         }
 
-        public ResourceAmountSet GetPlanetResourceAmounts(int planetId)
+        public IEnumerable<PlanetFacility> GetPlanetFacilities(int planetId)
         {
-            var values = GetCurrentResourceValues(planetId);
+            try
+            {
+                return _store.PlanetFacilities.Where(p => p.PlanetId == planetId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
+            }
+        }
+
+        public IEnumerable<PlanetResource> GetPlanetResources(int planetId)
+        {
+            try
+            {
+                CheckFacilityStatuses(planetId);
+                return RecalculateResources(planetId);
+            }
+            catch (Exception ex)
+            {
+                throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
+            }
+        }
+
+        public ResourceAmountSet GetPlanetResourceAmounts(IEnumerable<PlanetResource> resources)
+        {
+            var values = ResourceHelper.GetResourceSet(resources);
             return new ResourceAmountSet
-                   {
-                       Metal = (long)values.Metal.Amount,
-                       Crystal = (long)values.Crystal.Amount,
-                       Deiterium = (long)values.Deiterium.Amount
-                   };
-        }
-
-        protected ResourceSet GetCurrentResourceValues(int planetId)
-        {
-            RecalculateResources(planetId);
-            CheckFacilityStatuses(planetId);
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
-            var metal = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal);
-            var crystal = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
-            var deiterium = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
-            return new ResourceSet
-                   {
-                       Metal = metal,
-                       Crystal =crystal,
-                       Deiterium = deiterium
-                   };
-        }
-
-        protected FacilitiesSet GetCurrentFacilityLevels(int planetId)
-        {
-            var facilities = _store.PlanetFacilities.Where(p => p.PlanetId == planetId);
-            var roboticsFactory = facilities.Single(r => r.FacilityId == (int) FacilityItem.RoboticsFactory);
-            var shipyard = facilities.Single(r => r.FacilityId == (int)FacilityItem.Shipyard);
-            var researchLab = facilities.Single(r => r.FacilityId == (int)FacilityItem.ResearchLab);
-            var naniteFactory = facilities.Single(r => r.FacilityId == (int)FacilityItem.NaniteFactory);
-            return new FacilitiesSet
-                   {
-                       NaniteFactory = naniteFactory,
-                       ResearchLab = researchLab,
-                       RoboticsFactory = roboticsFactory,
-                       Shipyard = shipyard
-                   };
-
-        }
-
-        protected List<PlanetFacility> GetCurrentFacilities(int planetId)
-        {
-            return _store.PlanetFacilities.Where(p => p.PlanetId == planetId).ToList();
+            {
+                Metal = (long)values.Metal.Amount,
+                Crystal = (long)values.Crystal.Amount,
+                Deiterium = (long)values.Deiterium.Amount
+            };
         }
 
 
@@ -96,21 +83,8 @@ namespace SpaceGame.Api
             }
         }
 
-        public ResourceProduceLevelSet GetLevelMines(int planetId)
-        {
-            var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
 
-            return new ResourceProduceLevelSet
-                   {
-                       MetalMine = resources.Single(r => r.ResourceId == (int)ResourceItem.Metal).MineLevel,
-                       CrystalMine = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal).MineLevel,
-                       DeiteriumGenerator = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium).MineLevel
-                   };
-        }
-
-        
-
-        private void RecalculateResources(int planetId)
+        private IEnumerable<PlanetResource> RecalculateResources(int planetId)
         {
             var currDate = DateTime.Now;
             var resources = _store.PlanetResources.Where(p => p.PlanetId == planetId);
@@ -130,8 +104,9 @@ namespace SpaceGame.Api
             metalResource.Amount += deltaMetal;
             crystalResource.Amount += deltaCrystal;
             deiteriumResource.Amount += deltaDeiterium;
-
             _store.SaveChanges();
+
+            return resources.ToList();
         }
 
         private void CheckFacilityStatuses(int planetId)

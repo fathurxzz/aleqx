@@ -1,6 +1,7 @@
-﻿@model SpaceGame.UI.Models.GameViewModel
+﻿@using SpaceGame.UI.Helpers
+@model SpaceGame.UI.Models.GameViewModel
 
 @Html.Partial("_UserPanel")
 
 
-@Html.Partial("_Resources", Model.CurrentResourceAmountSet)
+@Html.Partial("_Resources", Model.PlanetResources.ResourceAmountSet())

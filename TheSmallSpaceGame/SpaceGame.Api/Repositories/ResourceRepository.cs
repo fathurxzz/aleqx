@@ -1,5 +1,6 @@
-﻿using System.Linq;
-using SpaceGame.Api.Contracts.Exceptions;
+﻿using SpaceGame.Api.Contracts.Exceptions;
+using SpaceGame.Api.Helpers;
+using SpaceGame.Api.Repositories;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Repositories;
 
@@ -16,7 +17,9 @@ namespace SpaceGame.Api
 
         public void UpdateMetalMine(int planetId)
         {
-            var resourceSet = GetCurrentResourceValues(planetId);
+
+            var resources = GetPlanetResources(planetId);
+            var resourceSet = ResourceHelper.GetResourceSet(resources);
 
             var needMetalAmountForUpgrade = UpgradeResourceCost.UpgradeMetalMineCost((short)(resourceSet.Metal.MineLevel + 1)).Metal;
             var needCrystalAmountForUpgrade = UpgradeResourceCost.UpgradeMetalMineCost((short)(resourceSet.Metal.MineLevel + 1)).Crystal;
@@ -36,7 +39,8 @@ namespace SpaceGame.Api
 
         public void UpdateCrystalMine(int planetId)
         {
-            var resourceSet = GetCurrentResourceValues(planetId);
+            var resources = GetPlanetResources(planetId);
+            var resourceSet = ResourceHelper.GetResourceSet(resources);
 
             var needMetalAmountForUpgrade = UpgradeResourceCost.UpgradeCrystalMineCost((short)(resourceSet.Crystal.MineLevel + 1)).Metal;
             var needCrystalAmountForUpgrade = UpgradeResourceCost.UpgradeCrystalMineCost((short)(resourceSet.Crystal.MineLevel + 1)).Crystal;
@@ -56,7 +60,8 @@ namespace SpaceGame.Api
 
         public void UpdateDeiteriumGenerator(int planetId)
         {
-            var resourceSet = GetCurrentResourceValues(planetId);
+            var resources = GetPlanetResources(planetId);
+            var resourceSet = ResourceHelper.GetResourceSet(resources);
 
             var needMetalForUpgradeAmout = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(resourceSet.Deiterium.MineLevel + 1)).Metal;
             var needCrystalForUpgradeAmout = UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(resourceSet.Deiterium.MineLevel + 1)).Crystal;

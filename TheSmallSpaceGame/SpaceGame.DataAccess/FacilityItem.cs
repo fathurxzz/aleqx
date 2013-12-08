@@ -2,9 +2,9 @@
 {
     public enum FacilityItem
     {
-        RoboticsFactory = 1,
-        Shipyard = 2,
-        ResearchLab = 3,
-        NaniteFactory = 4
+        RoboticsFactory = 11,
+        Shipyard = 12,
+        ResearchLab = 13,
+        NaniteFactory = 14
     }
 }

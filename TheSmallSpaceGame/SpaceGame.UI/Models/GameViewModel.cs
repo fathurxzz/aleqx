@@ -10,10 +10,9 @@ namespace SpaceGame.UI.Models
 {
     public class GameViewModel
     {
-        public ResourceAmountSet CurrentResourceAmountSet { get; set; }
         public List<PlanetPresentation> Planets { get; set; }
-        //public int CurrentPlanetId { get; set; }
+        public IEnumerable<PlanetResource> PlanetResources { get; set; }
+        public IEnumerable<PlanetFacility> PlanetFacilities { get; set; }
         public string ErrorMessage { get; set; }
-
     }
 }
