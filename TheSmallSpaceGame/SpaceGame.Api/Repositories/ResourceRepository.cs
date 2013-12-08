@@ -1,10 +1,10 @@
-﻿using SpaceGame.Api.Contracts.Exceptions;
+﻿using SpaceGame.Api.Clauses;
+using SpaceGame.Api.Contracts.Exceptions;
 using SpaceGame.Api.Helpers;
-using SpaceGame.Api.Repositories;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Repositories;
 
-namespace SpaceGame.Api
+namespace SpaceGame.Api.Repositories
 {
     public class ResourceRepository:PlanetRepository, IResourceRepository
     {

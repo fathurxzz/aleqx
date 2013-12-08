@@ -22,10 +22,10 @@ namespace SpaceGame.DataAccess.EntityFramework.Mapping
             this.Property(t => t.FacilityId).HasColumnName("FacilityId");
             
             // Not mapped properties
-            this.Ignore(t => t.IsAvailableForUpgrade);
-            this.Ignore(t => t.UpgradeFacilityCostMetal);
-            this.Ignore(t => t.UpgradeFacilityCostCrystal);
-            this.Ignore(t => t.UpgradeFacilityCostDeiterium);
+            //this.Ignore(t => t.IsAvailableForUpgrade);
+            //this.Ignore(t => t.UpgradeFacilityCostMetal);
+            //this.Ignore(t => t.UpgradeFacilityCostCrystal);
+            //this.Ignore(t => t.UpgradeFacilityCostDeiterium);
 
             // Relationships
             this.HasRequired(t => t.Facility)

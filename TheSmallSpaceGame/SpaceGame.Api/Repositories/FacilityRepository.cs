@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SpaceGame.Api.Clauses;
 using SpaceGame.Api.Contracts.Exceptions;
 using SpaceGame.Api.Helpers;
+using SpaceGame.Api.Model.Entities;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Entities;
-using SpaceGame.DataAccess.Helpers;
 using SpaceGame.DataAccess.Repositories;
 
 namespace SpaceGame.Api.Repositories

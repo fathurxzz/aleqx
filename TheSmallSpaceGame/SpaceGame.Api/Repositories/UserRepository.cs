@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SpaceGame.Api.Contracts.Exceptions;
+using SpaceGame.Api.Model.Entities;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Entities;
 using SpaceGame.DataAccess.Repositories;

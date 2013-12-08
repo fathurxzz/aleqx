@@ -1,6 +1,7 @@
 ﻿using System;
+using SpaceGame.Api.Model.Entities;
 
-namespace SpaceGame.DataAccess
+namespace SpaceGame.Api.Clauses
 {
     public class UpgradeTime
     {

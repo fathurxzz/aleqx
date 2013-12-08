@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using SpaceGame.Api;
 using SpaceGame.Api.Helpers;
+using SpaceGame.Api.Model.Entities;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Entities;
 

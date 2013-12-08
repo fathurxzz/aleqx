@@ -16,38 +16,38 @@ namespace SpaceGame.DataAccess.Entities
 
 
 
-        public ResourceValuesSet UpdateToNextLevelCost
-        {
-            get
-            {
-                switch ((ResourceItem)ResourceId)
-                {
-                    case ResourceItem.Metal:
-                        return UpgradeResourceCost.UpgradeMetalMineCost((short)(MineLevel + 1));
-                    case ResourceItem.Crystal:
-                        return UpgradeResourceCost.UpgradeCrystalMineCost((short)(MineLevel + 1));
-                    case ResourceItem.Deiterium:
-                        return UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(MineLevel + 1));
-                }
+        //public ResourceValuesSet UpdateToNextLevelCost
+        //{
+        //    get
+        //    {
+        //        switch ((ResourceItem)ResourceId)
+        //        {
+        //            case ResourceItem.Metal:
+        //                return UpgradeResourceCost.UpgradeMetalMineCost((short)(MineLevel + 1));
+        //            case ResourceItem.Crystal:
+        //                return UpgradeResourceCost.UpgradeCrystalMineCost((short)(MineLevel + 1));
+        //            case ResourceItem.Deiterium:
+        //                return UpgradeResourceCost.UpgradeDeiteriumGeneratorCost((short)(MineLevel + 1));
+        //        }
 
-                throw new InvalidEnumArgumentException();
-            }
-        }
+        //        throw new InvalidEnumArgumentException();
+        //    }
+        //}
 
 
-        public TimeSpan CalculateUpgradeTime(short roboticsLevel, short naniteLevel, GameEntity gameEntity)
-        {
-            switch ((ResourceItem)ResourceId)
-            {
-                case ResourceItem.Metal:
-                    return UpgradeTime.Caclulate(UpdateToNextLevelCost.Metal, UpdateToNextLevelCost.Crystal, roboticsLevel, naniteLevel, (short)(MineLevel + 1), gameEntity);
-                case ResourceItem.Crystal:
-                    return UpgradeTime.Caclulate(UpdateToNextLevelCost.Metal, UpdateToNextLevelCost.Crystal, roboticsLevel, naniteLevel, (short)(MineLevel + 1), gameEntity);
-                case ResourceItem.Deiterium:
-                    return UpgradeTime.Caclulate(UpdateToNextLevelCost.Metal, UpdateToNextLevelCost.Crystal, roboticsLevel, naniteLevel, (short)(MineLevel + 1), gameEntity);
-            }
-            throw new InvalidEnumArgumentException();
-        }
+        //public TimeSpan CalculateUpgradeTime(short roboticsLevel, short naniteLevel, GameEntity gameEntity)
+        //{
+        //    switch ((ResourceItem)ResourceId)
+        //    {
+        //        case ResourceItem.Metal:
+        //            return UpgradeTime.Caclulate(UpdateToNextLevelCost.Metal, UpdateToNextLevelCost.Crystal, roboticsLevel, naniteLevel, (short)(MineLevel + 1), gameEntity);
+        //        case ResourceItem.Crystal:
+        //            return UpgradeTime.Caclulate(UpdateToNextLevelCost.Metal, UpdateToNextLevelCost.Crystal, roboticsLevel, naniteLevel, (short)(MineLevel + 1), gameEntity);
+        //        case ResourceItem.Deiterium:
+        //            return UpgradeTime.Caclulate(UpdateToNextLevelCost.Metal, UpdateToNextLevelCost.Crystal, roboticsLevel, naniteLevel, (short)(MineLevel + 1), gameEntity);
+        //    }
+        //    throw new InvalidEnumArgumentException();
+        //}
     }
 
     

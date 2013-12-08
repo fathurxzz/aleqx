@@ -47,6 +47,11 @@
     <Compile Include="Contracts\Exceptions\ErrorCodes.cs" />
     <Compile Include="Contracts\Exceptions\GameException.cs" />
     <Compile Include="Contracts\Exceptions\UserException.cs" />
+    <Compile Include="Extensions\PlanetFacility.cs" />
+    <Compile Include="Extensions\PlanetResource.cs" />
+    <Compile Include="Model\Entities\FacilitiesSet.cs" />
+    <Compile Include="Model\Entities\FacilityItem.cs" />
+    <Compile Include="Model\Entities\GameEntity.cs" />
     <Compile Include="Repositories\PlanetRepository.cs" />
     <Compile Include="Repositories\FacilityRepository.cs" />
     <Compile Include="Helpers\ResourceHelper.cs" />
@@ -54,6 +59,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ResourceRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Model\Entities\ResourceAmountSet.cs" />
+    <Compile Include="Model\Entities\ResourceItem.cs" />
+    <Compile Include="Model\Entities\ResourceLevelSet.cs" />
+    <Compile Include="Model\Entities\ResourceSet.cs" />
+    <Compile Include="Model\Entities\ResourceValuesSet.cs" />
+    <Compile Include="Clauses\UpgradeResourceCost.cs" />
+    <Compile Include="Clauses\UpgradeTime.cs" />
+    <Compile Include="Clauses\UpgrageFacilityCost.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpaceGame.DataAccess\SpaceGame.DataAccess.csproj">
@@ -65,10 +78,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\Entities\" />
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SpaceGame.DataAccess.Entities;
 
-namespace SpaceGame.DataAccess
+namespace SpaceGame.Api.Model.Entities
 {
     public class FacilitiesSet
     {

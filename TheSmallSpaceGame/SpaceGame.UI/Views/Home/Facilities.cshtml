@@ -1,5 +1,7 @@
 ﻿@using System.Web.Optimization
 @using SpaceGame.Api
+@using SpaceGame.Api.Extensions
+@using SpaceGame.Api.Model.Entities
 @using SpaceGame.DataAccess
 @using SpaceGame.UI.Helpers
 @model SpaceGame.UI.Models.FacilityViewModel
@@ -56,9 +58,9 @@
             <td class="title">@item.Facility.Name</td>
             <td><span class="currentLevel">@item.Level</span></td>
             <td>upgrage to level @(item.Level + 1) costs: 
-                <span class="@(item.UpgradeFacilityCostMetal > Model.PlanetResources.ResourceAmountSet().Metal ? "alert" : "ok")">@item.UpgradeFacilityCostMetal.FormatResourcesAmount()</span> metal 
-                <span class="@(item.UpgradeFacilityCostCrystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@item.UpgradeFacilityCostCrystal.FormatResourcesAmount() </span>crystal 
-                <span class="@(item.UpgradeFacilityCostDeiterium > Model.PlanetResources.ResourceAmountSet().Deiterium ? "alert" : "ok")">@item.UpgradeFacilityCostDeiterium.FormatResourcesAmount() </span>deiterium. 
+                <span class="@(item.UpgradeFacilityCostMetal() > Model.PlanetResources.ResourceAmountSet().Metal ? "alert" : "ok")">@item.UpgradeFacilityCostMetal().FormatResourcesAmount()</span> metal 
+                <span class="@(item.UpgradeFacilityCostCrystal() > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@item.UpgradeFacilityCostCrystal().FormatResourcesAmount() </span>crystal 
+                <span class="@(item.UpgradeFacilityCostDeiterium() > Model.PlanetResources.ResourceAmountSet().Deiterium ? "alert" : "ok")">@item.UpgradeFacilityCostDeiterium().FormatResourcesAmount() </span>deiterium. 
                      
             </td>
             <td>
