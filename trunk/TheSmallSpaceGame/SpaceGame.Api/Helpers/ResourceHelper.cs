@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SpaceGame.DataAccess;
+using SpaceGame.Api.Model.Entities;
 using SpaceGame.DataAccess.Entities;
 
 namespace SpaceGame.Api.Helpers

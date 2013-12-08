@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpaceGame.DataAccess
+namespace SpaceGame.Api.Clauses
 {
     public class UpgrageFacilityCost
     {

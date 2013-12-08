@@ -20,7 +20,7 @@ namespace SpaceGame.DataAccess.EntityFramework.Mapping
             this.Property(t => t.ResourceId).HasColumnName("ResourceId");
             this.Property(t => t.PlanetId).HasColumnName("PlanetId");
 
-            this.Ignore(t => t.UpdateToNextLevelCost);
+            //this.Ignore(t => t.UpdateToNextLevelCost);
 
             // Relationships
             this.HasRequired(t => t.Planet)

@@ -1,4 +1,4 @@
-﻿namespace SpaceGame.DataAccess
+﻿namespace SpaceGame.Api.Model.Entities
 {
     public class ResourceAmountSet
     {

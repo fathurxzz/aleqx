@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SpaceGame.Api.Contracts.Exceptions
+﻿namespace SpaceGame.Api.Contracts.Exceptions
 {
     //public static class GameErrorCodes
     //{

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using SpaceGame.DataAccess.Helpers;
 
 namespace SpaceGame.DataAccess.Entities
 {
@@ -20,36 +18,36 @@ namespace SpaceGame.DataAccess.Entities
 
 
 
-        public TimeSpan CalculateUpgradeTime(short roboticsLevel, short naniteLevel)
-        {
-            return UpgradeTime.Caclulate(UpgradeFacilityCostMetal, UpgradeFacilityCostCrystal, roboticsLevel, naniteLevel, (short)(Level + 1), (GameEntity)((FacilityItem)FacilityId));
-        }
+        //public TimeSpan CalculateUpgradeTime(short roboticsLevel, short naniteLevel)
+        //{
+        //    return UpgradeTime.Caclulate(UpgradeFacilityCostMetal, UpgradeFacilityCostCrystal, roboticsLevel, naniteLevel, (short)(Level + 1), (GameEntity)((FacilityItem)FacilityId));
+        //}
 
-        public bool IsAvailableForUpgrade { get; set; }
+        //public bool IsAvailableForUpgrade { get; set; }
 
-        public long UpgradeFacilityCostMetal
-        {
-            get
-            {
-                return UpgrageFacilityCost.Cost((short)(Level + 1), Facility.MetalCost);
-            }
-        }
+        //public long UpgradeFacilityCostMetal
+        //{
+        //    get
+        //    {
+        //        return UpgrageFacilityCost.Cost((short)(Level + 1), Facility.MetalCost);
+        //    }
+        //}
 
-        public long UpgradeFacilityCostCrystal
-        {
-            get
-            {
-                return UpgrageFacilityCost.Cost((short)(Level + 1), Facility.CrystalCost);
-            }
-        }
+        //public long UpgradeFacilityCostCrystal
+        //{
+        //    get
+        //    {
+        //        return UpgrageFacilityCost.Cost((short)(Level + 1), Facility.CrystalCost);
+        //    }
+        //}
 
-        public long UpgradeFacilityCostDeiterium
-        {
-            get
-            {
-                return UpgrageFacilityCost.Cost((short)(Level + 1), Facility.DeiteriumCost);
-            }
-        }
+        //public long UpgradeFacilityCostDeiterium
+        //{
+        //    get
+        //    {
+        //        return UpgrageFacilityCost.Cost((short)(Level + 1), Facility.DeiteriumCost);
+        //    }
+        //}
 
 
     }

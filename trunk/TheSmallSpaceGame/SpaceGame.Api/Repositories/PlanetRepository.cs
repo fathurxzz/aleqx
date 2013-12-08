@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SpaceGame.Api.Contracts.Exceptions;
 using SpaceGame.Api.Helpers;
+using SpaceGame.Api.Model.Entities;
 using SpaceGame.DataAccess;
 using SpaceGame.DataAccess.Entities;
 using SpaceGame.DataAccess.Repositories;
@@ -50,16 +51,16 @@ namespace SpaceGame.Api.Repositories
             }
         }
 
-        public ResourceAmountSet GetPlanetResourceAmounts(IEnumerable<PlanetResource> resources)
-        {
-            var values = ResourceHelper.GetResourceSet(resources);
-            return new ResourceAmountSet
-            {
-                Metal = (long)values.Metal.Amount,
-                Crystal = (long)values.Crystal.Amount,
-                Deiterium = (long)values.Deiterium.Amount
-            };
-        }
+        //public ResourceAmountSet GetPlanetResourceAmounts(IEnumerable<PlanetResource> resources)
+        //{
+        //    var values = ResourceHelper.GetResourceSet(resources);
+        //    return new ResourceAmountSet
+        //    {
+        //        Metal = (long)values.Metal.Amount,
+        //        Crystal = (long)values.Crystal.Amount,
+        //        Deiterium = (long)values.Deiterium.Amount
+        //    };
+        //}
 
 
         protected bool ValidatePlanet(int userId, int planetId)
