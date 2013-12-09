@@ -13,7 +13,9 @@ namespace SpaceGame.DataAccess.Entities
         public int PlanetId { get; set; }
         public virtual Planet Planet { get; set; }
         public virtual Resource Resource { get; set; }
-
+        public DateTime UpdateStart { get; set; }
+        public DateTime UpdateFinish { get; set; }
+        public bool IsUpdating { get; set; }
 
 
         //public ResourceValuesSet UpdateToNextLevelCost
