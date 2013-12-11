@@ -21,7 +21,6 @@ namespace SpaceGame.Api.Repositories
             _store = store;
         }
 
-        
 
         public IEnumerable<Facility> GetFacilities()
         {
@@ -36,7 +35,7 @@ namespace SpaceGame.Api.Repositories
             }
         }
 
-        protected List<PlanetFacility> GetCurrentFacilities(int planetId)
+        protected List<PlanetFacility> GetPlanetFacilities(int planetId)
         {
             return _store.PlanetFacilities.Where(p => p.PlanetId == planetId).ToList();
         }
@@ -48,7 +47,7 @@ namespace SpaceGame.Api.Repositories
             {
                 var resources = GetPlanetResources(planetId);
                 var resourceSet = ResourceHelper.GetResourceSet(resources);
-                var facilities = GetCurrentFacilities(planetId);
+                var facilities = GetPlanetFacilities(planetId);
 
                 var facility = facilities.SingleOrDefault(f => f.FacilityId == facilityId);
                 if (facility == null)

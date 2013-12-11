@@ -75,7 +75,7 @@
                     <span class="bold nowrap">@item.CalculateUpgradeTime(roboticsLevel, naniteLevel).FormatUpgradeTime()</span> 
                     <br />
 
-                    if (Model.PlanetFacilities.Any(pf => pf.IsUpdating))
+                    if (Model.PlanetFacilities.Any(pf => pf.IsUpdating) || (item.UpgradeFacilityCostMetal() > Model.PlanetResources.ResourceAmountSet().Metal || item.UpgradeFacilityCostCrystal() > Model.PlanetResources.ResourceAmountSet().Crystal || item.UpgradeFacilityCostDeiterium() > Model.PlanetResources.ResourceAmountSet().Deiterium))
                     {
                         <span class="disabled">Upgrade</span>
                     }

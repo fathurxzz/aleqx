@@ -1,4 +1,5 @@
-﻿@using SpaceGame.Api
+﻿@using System.Web.Optimization
+@using SpaceGame.Api
 @using SpaceGame.Api.Extensions
 @using SpaceGame.Api.Model.Entities
 @using SpaceGame.DataAccess
@@ -53,6 +54,50 @@
 }
 
 <table class="mineLevels">
+    @foreach (var item in Model.PlanetResources.ResourceSet())
+    {
+        <tr>
+        <td class="title">@item.Resource.Name Mine Level: @item.MineLevel</td>
+        <td>upgrade to level @(item.MineLevel + 1) costs: 
+            <span class="@(item.UpdateToNextLevelCost().Metal > Model.PlanetResources.ResourceAmountSet().Metal ? "alert" : "ok")">@item.UpdateToNextLevelCost().Metal.FormatResourcesAmount() </span>metal 
+            and <span class="@(item.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@item.UpdateToNextLevelCost().Crystal.FormatResourcesAmount()</span> crystal
+        </td>
+        <td>
+
+
+            @if (item.IsUpdating)
+            {
+                <input type="hidden" id="remainingTimeSeconds" value="@((long)(item.UpdateFinish - DateTime.Now).TotalMilliseconds)"/>
+                <span id="remainingTime"></span>
+            }
+            else
+            {
+                <span class="bold nowrap">@item.CalculateUpgradeTime(roboticsLevel, naniteLevel, GameEntity.MetalMine).FormatUpgradeTime()</span> 
+                <br />
+                if (Model.PlanetResources.ResourceSet().Metal.IsUpdating ||
+                    Model.PlanetResources.ResourceSet().Crystal.IsUpdating ||
+                    Model.PlanetResources.ResourceSet().Deiterium.IsUpdating ||
+                    Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Metal > Model.PlanetResources.ResourceAmountSet().Metal ||
+                    Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
+                {
+                <span class="disabled">Upgrade</span>
+                }
+                else
+                {
+                @Html.ActionLink("Upgrade", "UpgradeResource", "Resource",new{id=item.ResourceId},null)
+                }
+            }
+        </td>
+    </tr>
+    }
+    
+    
+    
+    
+    
+    
+    
+@*
     <tr>
         <td class="title">Metal Mine Level: @Model.PlanetResources.ResourceLevelSet().MetalMine</td>
         <td>upgrade to level @(Model.PlanetResources.ResourceLevelSet().MetalMine + 1) costs: 
@@ -60,18 +105,29 @@
             and <span class="@(Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Crystal.FormatResourcesAmount()</span> crystal
         </td>
         <td>
-            
-             <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Metal.CalculateUpgradeTime(roboticsLevel,naniteLevel,GameEntity.MetalMine).FormatUpgradeTime()</span> 
-                    <br />
 
 
-            @if (Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Metal > Model.PlanetResources.ResourceAmountSet().Metal || Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
+            @if (Model.PlanetResources.ResourceSet().Metal.IsUpdating)
             {
-                <span class="disabled">Upgrade</span>
+                <input type="hidden" id="remainingTimeSeconds" value="@((long)(Model.PlanetResources.ResourceSet().Metal.UpdateFinish - DateTime.Now).TotalMilliseconds)"/>
+                <span id="remainingTime"></span>
             }
             else
             {
+                <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Metal.CalculateUpgradeTime(roboticsLevel, naniteLevel, GameEntity.MetalMine).FormatUpgradeTime()</span> 
+                <br />
+                if (Model.PlanetResources.ResourceSet().Metal.IsUpdating ||
+                    Model.PlanetResources.ResourceSet().Crystal.IsUpdating ||
+                    Model.PlanetResources.ResourceSet().Metal.IsUpdating ||
+                    Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Metal > Model.PlanetResources.ResourceAmountSet().Metal ||
+                    Model.PlanetResources.ResourceSet().Metal.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
+                {
+                <span class="disabled">Upgrade</span>
+                }
+                else
+                {
                 @Html.ActionLink("Upgrade", "UpgradeMetalMine", "Resource")
+                }
             }
         </td>
     </tr>
@@ -82,10 +138,17 @@
             and <span class="@(Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")">@Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost().Crystal.FormatResourcesAmount()</span> crystal
         </td>
         <td>
-             <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Crystal.CalculateUpgradeTime(roboticsLevel,naniteLevel,GameEntity.MetalMine).FormatUpgradeTime()</span> 
-                    <br />
+            
+            
+            
+            
+            
+            
+            
+            <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Crystal.CalculateUpgradeTime(roboticsLevel, naniteLevel, GameEntity.MetalMine).FormatUpgradeTime()</span>
+            <br />
 
-           
+
             @if (Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost().Metal > Model.PlanetResources.ResourceAmountSet().Metal || Model.PlanetResources.ResourceSet().Crystal.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
             {
                 <span class="disabled">Upgrade</span>
@@ -104,9 +167,9 @@
             and<span class="@(Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal ? "alert" : "ok")"> @Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost().Crystal.FormatResourcesAmount()</span> crystal
         </td>
         <td>
-            
-             <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Deiterium.CalculateUpgradeTime(roboticsLevel,naniteLevel,GameEntity.MetalMine).FormatUpgradeTime()</span> 
-                    <br />
+
+            <span class="bold nowrap">@Model.PlanetResources.ResourceSet().Deiterium.CalculateUpgradeTime(roboticsLevel, naniteLevel, GameEntity.MetalMine).FormatUpgradeTime()</span>
+            <br />
 
             @if (Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost().Metal > Model.PlanetResources.ResourceAmountSet().Metal || Model.PlanetResources.ResourceSet().Deiterium.UpdateToNextLevelCost().Crystal > Model.PlanetResources.ResourceAmountSet().Crystal)
             {
@@ -117,6 +180,10 @@
                 @Html.ActionLink("Upgrade", "UpgradeDeiteriumGenerator", "Resource")
             }
         </td>
-    </tr>
+    </tr>*@
 </table>
 
+@section Scripts
+{
+    @Scripts.Render("~/Scripts/facilities.js")
+}

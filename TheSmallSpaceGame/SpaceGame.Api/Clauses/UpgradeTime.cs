@@ -14,7 +14,7 @@ namespace SpaceGame.Api.Clauses
                 reduction = Math.Max(4 - techLevelTo/2.0, 1);
             // Формула ОГейма даёт время в часах - переведём в секунды
             double result = 3600 * (metal + crystal) / (2500.0 * reduction * (robotsLevel + 1.0) * Math.Pow(2.0, nanitesLevel));
-            return TimeSpan.FromSeconds(result);
+            return TimeSpan.FromSeconds(Math.Truncate(result));
         }
     }
 }
