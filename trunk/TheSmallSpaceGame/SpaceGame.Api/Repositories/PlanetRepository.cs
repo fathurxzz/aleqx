@@ -51,6 +51,21 @@ namespace SpaceGame.Api.Repositories
             }
         }
 
+        //public IEnumerable<PlanetFacility> GetCurrentFacilities(int planetId)
+        //{
+        //    try
+        //    {
+        //        CheckFacilityStatuses(planetId);
+        //        return RecalculateResources(planetId);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new GameException("Repository is invalid: " + ex.Message, GameError.Unknow);
+        //    }
+        //}
+
+
+
         //public ResourceAmountSet GetPlanetResourceAmounts(IEnumerable<PlanetResource> resources)
         //{
         //    var values = ResourceHelper.GetResourceSet(resources);
@@ -85,6 +100,32 @@ namespace SpaceGame.Api.Repositories
         }
 
 
+        private void RecalculateResource(ref PlanetResource resource, ResourceItem item, DateTime currDate)
+        {
+            double delta;
+            if (resource.IsUpdating)
+            {
+                if (resource.UpdateFinish < currDate)
+                {
+                    var diff1 = resource.UpdateFinish - resource.LastUpdate;
+                    delta = GetResourceDelta(item, resource.MineLevel, diff1.TotalMilliseconds);
+                    resource.MineLevel++;
+                    resource.IsUpdating = false;
+                    var diff2 = currDate - resource.UpdateFinish;
+                    delta += GetResourceDelta(item, resource.MineLevel, diff2.TotalMilliseconds);
+                    resource.LastUpdate = currDate;
+                    resource.Amount += delta;
+                }
+            }
+            else
+            {
+                var totalTimeDifference = currDate - resource.LastUpdate;
+                delta = GetResourceDelta(item, resource.MineLevel, totalTimeDifference.TotalMilliseconds);
+                resource.LastUpdate = currDate;
+                resource.Amount += delta;
+            }
+        }
+
         private IEnumerable<PlanetResource> RecalculateResources(int planetId)
         {
             var currDate = DateTime.Now;
@@ -93,18 +134,10 @@ namespace SpaceGame.Api.Repositories
             var crystalResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Crystal);
             var deiteriumResource = resources.Single(r => r.ResourceId == (int)ResourceItem.Deiterium);
 
-            TimeSpan timeSpan = currDate - metalResource.LastUpdate;
-            var deltaMetal = GetResourceDelta(ResourceItem.Metal, metalResource.MineLevel, timeSpan.TotalMilliseconds);
-            var deltaCrystal = GetResourceDelta(ResourceItem.Crystal, crystalResource.MineLevel, timeSpan.TotalMilliseconds);
-            var deltaDeiterium = GetResourceDelta(ResourceItem.Deiterium, deiteriumResource.MineLevel, timeSpan.TotalMilliseconds);
+            RecalculateResource(ref metalResource, ResourceItem.Metal, currDate);
+            RecalculateResource(ref crystalResource, ResourceItem.Crystal, currDate);
+            RecalculateResource(ref deiteriumResource, ResourceItem.Deiterium, currDate);
 
-            metalResource.LastUpdate = currDate;
-            crystalResource.LastUpdate = currDate;
-            deiteriumResource.LastUpdate = currDate;
-
-            metalResource.Amount += deltaMetal;
-            crystalResource.Amount += deltaCrystal;
-            deiteriumResource.Amount += deltaDeiterium;
             _store.SaveChanges();
 
             return resources.ToList();

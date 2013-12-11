@@ -2,8 +2,8 @@
 {
     public interface IResourceRepository
     {
-        void UpdateMetalMine(int planetId);
-        void UpdateCrystalMine(int planetId);
-        void UpdateDeiteriumGenerator(int planetId); 
+        void UpdateMetalMine(int planetId, short roboticsLevel, short naniteLevel);
+        void UpdateCrystalMine(int planetId, short roboticsLevel, short naniteLevel);
+        void UpdateDeiteriumGenerator(int planetId, short roboticsLevel, short naniteLevel); 
     }
 }
