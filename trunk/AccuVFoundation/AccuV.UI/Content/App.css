@@ -1,0 +1,157 @@
+﻿/* Place custom styles below */
+
+html,body
+{
+    font-family: Tahoma;
+    font-size: 12px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+}
+
+h3
+{
+	padding:0px;
+	margin:0px;
+	font-weight:normal;
+	font-size:20px;
+}
+
+.abs {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+}
+
+.auth {
+	position:absolute;
+	float:right;
+	right:15px;
+	top:10px;
+}
+
+.pod{
+    /*margin:5px;*/
+    position:relative; 
+    float:left;
+    border-style:none;
+}
+
+.pod .k-loading-image {
+    background-image: none;
+}
+
+.pod .k-loading-color {
+    opacity: 0;
+}
+
+.report {
+    margin:5px;
+    width: auto;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.pod .k-listview {
+    border-style:none;
+}
+
+#podsArea {
+    padding: 40px;
+}
+
+.k-grid-toolbar.k-toolbar {
+	padding-top:5px;
+}
+
+
+
+
+/******************************/
+/***** TABBED VIEW - CELL *****/
+/******************************/
+
+/* Modify an internal class  */
+#cellPropertiesTabstrip-1
+{
+	padding:0px;
+}
+#cellPropertiesTabstrip-2
+{
+	padding:3px;
+}
+
+
+#cellPropertiesTabstrip .k-tabstrip-items
+{
+	padding-left:3px;
+}
+
+
+/******************************/
+/***** TASK COMMENTS AREA *****/
+/******************************/
+.commentItem
+{
+    width: auto;
+    margin: 0;
+    padding: 3px;
+    padding-bottom: 10px;
+    /*border-top: 1px solid rgba(200,200,200,1);*/
+    /*border-right: 1px solid rgba(0,0,0,0.1);*/
+}
+
+/******************************/
+/***** DOC UPLOAD WINDOW ******/
+/******************************/
+
+.blue {
+	text-decoration:none;
+	color: #06c;
+}
+
+.blue:hover {
+	text-decoration:underline;
+}
+
+
+#docWindow table
+{
+	width: 100%;
+}
+#docWindow td
+{
+	vertical-align:top;
+}
+
+#docWindow .currentDocumentItemDiv
+{
+	width:100%;
+	height:22px;
+	float:left;
+	padding-top:5px;
+}
+
+#docWindow .filenameSpan
+{
+	float: left;
+	max-width: 250px;
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 250px;
+}
+
+#docWindow .currentDocumentItemDiv input
+{
+	float: left;
+	width: 40px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: -2px;
+}
+

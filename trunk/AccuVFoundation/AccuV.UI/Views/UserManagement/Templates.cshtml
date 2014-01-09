@@ -1,0 +1,98 @@
+﻿<script type="text/html" id="domain-user-template">
+    <label>User Name: </label>
+    <span data-bind="text: UserName"></span>
+    <br />
+    <label>Display Name: </label>
+    <span data-bind="text: DisplayName"></span>
+    <br />
+    <label>Email: </label>
+    <span data-bind="text: Email"></span>
+</script>
+
+<script type="text/html" id="create-user-template">
+    <input type="hidden" data-bind="value: Id" />
+    <input type="hidden" data-bind="value: UserName" />
+    <input type="hidden" data-bind="value: Email" />
+    <label for="Comp">User company: </label>
+    <input type="text" name="Comp" data-bind="value: Company" />
+    <a href="javascript:void(0)" data-bind="if: $root.NewUser(), click: $root.createUser.bind($root)">Submit</a>
+    <a href="javascript:void(0)" data-bind="if: $root.User(), click: $root.updateUser.bind($root)">Update</a>
+</script>
+
+<script type="text/html" id="user-activities-template">
+    <h4>Assigned activities</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Activity Name
+                </th>
+                <th>
+                    Activity Type
+                </th>
+                <th>
+                    Create
+                </th>
+                <th>
+                    Read
+                </th>
+                <th>
+                    Update
+                </th>
+                <th>
+                    Delete
+                </th>
+                <th>
+                    Approve
+                </th>
+                <th>
+                    Admin
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: $data">
+            <tr>
+                <td data-bind="text: ActivityName"></td>
+                <td data-bind="text: TypeName"></td>
+                <td class="c-align"><input data-bind="checked:AccessCreate" type="checkbox" /></td>
+                <td class="c-align"><input data-bind="checked:AccessRead" type="checkbox" /></td>
+                <td class="c-align"><input data-bind="checked:AccessUpdate" type="checkbox" /></td>
+                <td class="c-align"><input data-bind="checked:AccessDelete" type="checkbox" /></td>
+                <td class="c-align"><input data-bind="checked:AccessApprove" type="checkbox" /></td>
+                <td class="c-align"><input data-bind="checked:AccessAdmin" type="checkbox" /></td>
+                <td>
+                    <a data-bind="click: $root.unassign.bind($root, $data, $index)" href="javascript:void(0)">Unassign</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+
+<script type="text/html" id="available-activities-template">
+    <!-- ko if ($data.length) -->
+    <h4>Available Activities</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Activity Name
+                </th>
+                <th>
+                    Activity Type
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: $data">
+            <tr>
+                <td data-bind="text: ActivityName"></td>
+                <td data-bind="text: TypeName"></td>
+                <td>
+                    <a data-bind="click: $root.assign.bind($root, $data, $index)" href="javascript:void(0)">Assign</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- /ko -->
+</script>

@@ -1,0 +1,75 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+h2 {
+    padding-left: 20px;
+}
+
+.head {
+    padding: 40px;
+}
+
+.head * {
+    vertical-align: top;
+}
+
+.head span {
+    color: #888;
+    font-size: 30px;
+    font-family: "Open Sans", Helvetica, Arial, Tahoma, Verdana, sans-serif;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.head .logout {
+    float: right;
+}
+
+.blockUI.blockMsg {
+    background: transparent url(kendo/Silver/loading-image.gif) 50% 50% no-repeat;
+    width: 48px;
+    height: 48px;
+}
+
+.c-align {
+    text-align: center;
+}
