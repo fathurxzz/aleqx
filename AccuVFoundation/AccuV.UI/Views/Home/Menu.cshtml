@@ -1,0 +1,21 @@
+﻿@model Dictionary<string, IEnumerable<AccuV.DataAccess.Contracts.UserProjectModuleClaim>>
+@(Html.Kendo().Menu()
+        .Name("menu") //The name of the menu is mandatory. It specifies the "id" attribute of the widget.
+        .Items(items =>
+        {
+            string Class = "";
+            foreach (var project in Model)
+            {
+                var builder = items.Add().Text(project.Key).HtmlAttributes(new { @class = "myCustomClass" });
+                builder.Items(menuItems =>
+                {
+                    foreach (var module in project.Value)
+                    {
+                        menuItems.Add().Text(module.Module)
+                            //.Url(Url.Action("Index", module.Module.Replace(" ", "")))
+                            .HtmlAttributes(new Dictionary<string, object> { { "data-project", module.ProjectId }, { "data-module", module.Module } });
+                    }
+                });
+            }
+        })
+    )

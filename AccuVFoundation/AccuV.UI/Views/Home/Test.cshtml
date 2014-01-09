@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "title";
+}
+@section scripts
+{
+    <script>
+        Function.prototype.bindtest = function (context) {
+            var funReference = this;
+            return (function() {
+                funReference.apply(context);
+            });
+        };
+
+        $(function() {
+            $("#btn").click(function() {
+                alert(this.test);
+            }.bindtest({ test: 'hey!' }));
+        });
+    </script>
+}
+<h2>title</h2>
+
+<input type="button" id="btn" value="sdsdsd"/>
+
+

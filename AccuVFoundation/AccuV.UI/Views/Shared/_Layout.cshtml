@@ -1,0 +1,40 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>AccuV</title>
+    
+    @Scripts.Render("~/bundles/scripts")
+    @RenderSection("scripts", required: false)
+    @Styles.Render("~/css/all")
+    @Styles.Render("~/Content/css")
+    @RenderSection("styles", false)
+    <script>
+        var userName = '@User.Identity.Name';
+        var Config =
+        {
+             apiLocation: '@Url.Content("~/api/")'
+        };
+    </script>
+    
+</head>
+<body>
+    <div class="head">
+        @{Html.RenderPartial("Logout");}        
+        <img alt="Nexius" src="@Url.Content("~/Content/Assets/siteIcon.png")" />
+        <span>
+            AccuV
+        </span>
+    </div>
+    @if (Request.IsAuthenticated)
+    {
+        Html.RenderAction("Menu", "Home");
+    }
+    <!-- CONTENT AREA -->
+    <div id="podsArea" class="abs">
+        @RenderBody()
+    </div>
+</body>
+</html>

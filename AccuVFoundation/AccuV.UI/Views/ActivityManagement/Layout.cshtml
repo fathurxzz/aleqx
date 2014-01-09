@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/ko",
+        "~/Scripts/controllers/activityManagement.js"
+        )  
+    @Styles.Render("~/Content/Pages/UserManagement.css")
+    @RenderSection("scripts", false)
+}
+
+@RenderBody()

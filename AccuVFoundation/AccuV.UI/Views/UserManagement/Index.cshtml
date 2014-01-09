@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "User Management";
+}
+<label for="adUser">Select user from active directory: </label>
+@(Html.Kendo()
+    .AutoComplete()
+    .Name("adUser")
+    .DataTextField("UserName")
+    .DataSource(source => source.Read(read => read.Action("DomainUsers", "api")))
+            .Events(events => events.Select("UserManagementController.adUserSelected.bind(UserManagementController)"))
+      )
+
+@{Html.RenderPartial("Templates");}
+
+
+<div id="userDetails" data-bind="template: {name: 'domain-user-template', data: DomainUser, if: DomainUser()}">
+
+</div>
+
+<div data-bind="visible: (!(User()))">
+    No user is created in AccuV database.
+</div>
+
+<div id="createUserContainer" data-bind="template: {name: 'create-user-template', data: NewUser, if: (NewUser())}">
+
+</div>
+
+<div id="updateUserContainer" data-bind="template: {if: User(), name: 'create-user-template', data: User()}">
+
+</div>
+
+
+<div data-bind="if: User()">
+    <input type="button" value="Update User Activities" data-bind="click: $root.updateUserActivities.bind($root)" />
+</div>
+
+
+<div id="availableActivities" data-bind="template: {name: 'available-activities-template', data: AvailableActivities, if: AvailableActivities().length}">
+
+</div>
+
+<div id="userActivities" data-bind="template: {name: 'user-activities-template', data: UserActivities, if:UserActivities().length}">
+
+</div>
+
+
