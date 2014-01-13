@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="Token" EntityType="Model1.Store.Token" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TokenType" EntityType="Model1.Store.TokenType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="Model1.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OtpSms" EntityType="Model1.Store.OtpSms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Session" EntityType="Model1.Store.Session" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TokenTypeToken" Association="Model1.Store.TokenTypeToken">
+      <End Role="TokenType" EntitySet="TokenType" />
+      <End Role="Token" EntitySet="Token" />
+    </AssociationSet>
+    <AssociationSet Name="UserToken" Association="Model1.Store.UserToken">
+      <End Role="User" EntitySet="User" />
+      <End Role="Token" EntitySet="Token" />
+    </AssociationSet>
+    <AssociationSet Name="TokenOtpSms" Association="Model1.Store.TokenOtpSms">
+      <End Role="Token" EntitySet="Token" />
+      <End Role="OtpSms" EntitySet="OtpSms" />
+    </AssociationSet>
+    <AssociationSet Name="SessionToken" Association="Model1.Store.SessionToken">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Token" EntitySet="Token" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+    <Property Name="Ip" Type="nchar" Nullable="false" MaxLength="15" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Content" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="TokenTypeId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="SessionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TokenType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Login" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="PasswordExpireDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OtpSms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Password" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+    <Property Name="TokenId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExpireDate" Type="nvarchar" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <Association Name="TokenTypeToken">
+    <End Role="TokenType" Type="Model1.Store.TokenType" Multiplicity="1" />
+    <End Role="Token" Type="Model1.Store.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TokenType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="TokenTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserToken">
+    <End Role="User" Type="Model1.Store.User" Multiplicity="1" />
+    <End Role="Token" Type="Model1.Store.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TokenOtpSms">
+    <End Role="Token" Type="Model1.Store.Token" Multiplicity="1" />
+    <End Role="OtpSms" Type="Model1.Store.OtpSms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Token">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OtpSms">
+        <PropertyRef Name="TokenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SessionToken">
+    <End Role="Session" Type="Model1.Store.Session" Multiplicity="1" />
+    <End Role="Token" Type="Model1.Store.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Token" EntityType="Model1.Token" />
+          <EntitySet Name="TokenType" EntityType="Model1.TokenType" />
+          <EntitySet Name="User" EntityType="Model1.User" />
+          <AssociationSet Name="TokenTypeToken" Association="Model1.TokenTypeToken">
+            <End Role="TokenType" EntitySet="TokenType" />
+            <End Role="Token" EntitySet="Token" />
+          </AssociationSet>
+          <AssociationSet Name="UserToken" Association="Model1.UserToken">
+            <End Role="User" EntitySet="User" />
+            <End Role="Token" EntitySet="Token" />
+          </AssociationSet>
+          <EntitySet Name="OtpSms" EntityType="Model1.OtpSms" />
+          <AssociationSet Name="TokenOtpSms" Association="Model1.TokenOtpSms">
+            <End Role="Token" EntitySet="Token" />
+            <End Role="OtpSms" EntitySet="OtpSms" />
+          </AssociationSet>
+          <EntitySet Name="Session" EntityType="Model1.Session" />
+          <AssociationSet Name="SessionToken" Association="Model1.SessionToken">
+            <End Role="Session" EntitySet="Session" />
+            <End Role="Token" EntitySet="Token" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="ExpireDate" Nullable="false" />
+          <Property Type="String" Name="Ip" Nullable="false" FixedLength="true" MaxLength="15" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="Content" Nullable="false" FixedLength="true" MaxLength="200" />
+          <NavigationProperty Name="TokenType" Relationship="Model1.TokenTypeToken" FromRole="Token" ToRole="TokenType" />
+          <Property Type="Int32" Name="TokenTypeId" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model1.UserToken" FromRole="Token" ToRole="User" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <NavigationProperty Name="OtpSmses" Relationship="Model1.TokenOtpSms" FromRole="Token" ToRole="OtpSms" />
+          <NavigationProperty Name="Session" Relationship="Model1.SessionToken" FromRole="Token" ToRole="Session" />
+          <Property Type="Int32" Name="SessionId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TokenType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="50" />
+          <NavigationProperty Name="Tokens" Relationship="Model1.TokenTypeToken" FromRole="TokenType" ToRole="Token" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="Login" Nullable="false" FixedLength="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="false" FixedLength="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="true" MaxLength="50" />
+          <NavigationProperty Name="Tokens" Relationship="Model1.UserToken" FromRole="User" ToRole="Token" />
+          <Property Type="DateTime" Name="PasswordExpireDate" Nullable="false" />
+        </EntityType>
+        <Association Name="TokenTypeToken">
+          <End Type="Model1.TokenType" Role="TokenType" Multiplicity="1" />
+          <End Type="Model1.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TokenType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="TokenTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserToken">
+          <End Type="Model1.User" Role="User" Multiplicity="1" />
+          <End Type="Model1.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OtpSms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Content" Nullable="false" FixedLength="true" MaxLength="200" />
+          <Property Type="String" Name="Password" Nullable="false" FixedLength="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ExpireDate" Nullable="false" />
+          <NavigationProperty Name="Token" Relationship="Model1.TokenOtpSms" FromRole="OtpSms" ToRole="Token" />
+          <Property Type="Int32" Name="TokenId" Nullable="false" />
+        </EntityType>
+        <Association Name="TokenOtpSms">
+          <End Type="Model1.Token" Role="Token" Multiplicity="1" />
+          <End Type="Model1.OtpSms" Role="OtpSms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Token">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OtpSms">
+              <PropertyRef Name="TokenId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ExpireDate" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" />
+          <NavigationProperty Name="Tokens" Relationship="Model1.SessionToken" FromRole="Session" ToRole="Token" />
+        </EntityType>
+        <Association Name="SessionToken">
+          <End Type="Model1.Session" Role="Session" Multiplicity="1" />
+          <End Type="Model1.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Session">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Token">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Token)">
+        <MappingFragment StoreEntitySet="Token">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="Ip" ColumnName="Ip" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="TokenTypeId" ColumnName="TokenTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TokenType">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.TokenType)">
+        <MappingFragment StoreEntitySet="TokenType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.User)">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PasswordExpireDate" ColumnName="PasswordExpireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtpSms">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.OtpSms)">
+        <MappingFragment StoreEntitySet="OtpSms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Session">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Session)">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
