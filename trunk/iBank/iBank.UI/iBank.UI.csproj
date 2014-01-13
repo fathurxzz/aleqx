@@ -137,6 +137,7 @@
     <Compile Include="Models\AuthenticateAttribute.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
