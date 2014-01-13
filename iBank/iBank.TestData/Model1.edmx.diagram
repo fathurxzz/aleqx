@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="acfea75ff01e48e5871d21b6b08f2b9a" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Token" Width="1.5" PointX="4.625" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.TokenType" Width="1.5" PointX="7" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="1.875" PointY="0.75" />
+        <AssociationConnector Association="Model1.TokenTypeToken" />
+        <AssociationConnector Association="Model1.UserToken" />
+        <EntityTypeShape EntityType="Model1.OtpSms" Width="1.5" PointX="7" PointY="3" />
+        <AssociationConnector Association="Model1.TokenOtpSms" />
+        <EntityTypeShape EntityType="Model1.Session" Width="1.5" PointX="1.875" PointY="3.5" />
+        <AssociationConnector Association="Model1.SessionToken" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
