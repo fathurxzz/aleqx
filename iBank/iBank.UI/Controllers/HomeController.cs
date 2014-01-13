@@ -10,8 +10,17 @@ namespace iBank.UI.Controllers
     //[Authenticate]
     public class HomeController : Controller
     {
+
+
+        public HomeController()
+        {
+            
+        }
+
         public ActionResult Index()
         {
+            System.Web.HttpContext.Current.Response.SetCookie(new HttpCookie("aaa"));
+
             return View();
         }
     }

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBank.TestData", "iBank.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBank.DataAccess.EntityFramework", "iBank.DataAccess.EntityFramework\iBank.DataAccess.EntityFramework.csproj", "{8689FE6A-8CCC-46DC-86C7-7E94FA838344}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iBank.SecurityServices", "iBank.SecurityServices\iBank.SecurityServices.csproj", "{66446354-37D8-4F5D-A009-19739975EEC8}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -41,6 +43,10 @@ Global
 		{8689FE6A-8CCC-46DC-86C7-7E94FA838344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8689FE6A-8CCC-46DC-86C7-7E94FA838344}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8689FE6A-8CCC-46DC-86C7-7E94FA838344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66446354-37D8-4F5D-A009-19739975EEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66446354-37D8-4F5D-A009-19739975EEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66446354-37D8-4F5D-A009-19739975EEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66446354-37D8-4F5D-A009-19739975EEC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
