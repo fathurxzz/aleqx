@@ -178,6 +178,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iBank.Api\iBank.Api.csproj">
+      <Project>{4f8cfc9d-ddee-4483-8824-fdc84f84ddef}</Project>
+      <Name>iBank.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iBank.DataAccess.EntityFramework\iBank.DataAccess.EntityFramework.csproj">
       <Project>{8689fe6a-8ccc-46dc-86c7-7e94fa838344}</Project>
       <Name>iBank.DataAccess.EntityFramework</Name>

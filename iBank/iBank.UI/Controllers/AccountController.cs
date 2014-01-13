@@ -25,7 +25,7 @@ namespace iBank.UI.Controllers
             _repository = repository;
         }
 
-
+        
         [AllowAnonymous]
         public ActionResult LogIn()
         {
@@ -39,6 +39,7 @@ namespace iBank.UI.Controllers
             {
                 try
                 {
+                    _repository.GetUser(1);
                     //_repository.ValidateUser(model.Login, model.Password);
                 }
                 catch (SecurityException ex)
