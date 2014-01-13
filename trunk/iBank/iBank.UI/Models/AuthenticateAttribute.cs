@@ -7,15 +7,15 @@ namespace iBank.UI.Models
     {
 //        private readonly bool _allowAnonymus;
 
-        public AuthenticateAttribute()
-        {
+        //public AuthenticateAttribute()
+        //{
             
-        }
+        //}
 
-        public AuthenticateAttribute(bool allowAnonymus)
-        {
-  //          _allowAnonymus = allowAnonymus;
-        }
+  //      public AuthenticateAttribute(bool allowAnonymus)
+  //      {
+  ////          _allowAnonymus = allowAnonymus;
+  //      }
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
@@ -25,9 +25,9 @@ namespace iBank.UI.Models
             return base.AuthorizeCore(httpContext);
         }
 
-        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
-        {
-            filterContext.Result = new RedirectResult("/login", false);
-        }
+        //protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        //{
+        //    filterContext.Result = new RedirectResult("/login", false);
+        //}
     }
 }
