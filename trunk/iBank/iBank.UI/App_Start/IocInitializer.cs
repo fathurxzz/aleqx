@@ -1,10 +1,9 @@
 ﻿using System.Reflection;
-using System.Security;
-using System.Web.Http;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using Autofac.Integration.WebApi;
+//using Autofac.Integration.WebApi;
+using iBank.Api.Exceptions;
 using iBank.DataAccess;
 using iBank.DataAccess.EntityFramework;
 using iBank.DataAccess.Repositories;
@@ -22,7 +21,7 @@ namespace iBank.UI
 
             builder.RegisterType<BankStore>().As<IBankStore>().InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(typeof(SecurityException).Assembly)
+            builder.RegisterAssemblyTypes(typeof( SecurityException).Assembly)
                 .Where(t => t.GetInterfaces().Contains(typeof(IRepository)))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
