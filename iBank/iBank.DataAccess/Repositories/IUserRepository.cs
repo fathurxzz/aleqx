@@ -4,6 +4,6 @@ namespace iBank.DataAccess.Repositories
 {
     public interface IUserRepository : IRepository
     {
-        User GetUser(int id);
+        User GetUser(string login, string password);
     }
 }

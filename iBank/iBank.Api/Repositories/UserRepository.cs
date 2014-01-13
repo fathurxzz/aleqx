@@ -1,13 +1,46 @@
-﻿using iBank.DataAccess.Entities;
+﻿using System;
+using System.Linq;
+using iBank.Api.Exceptions;
+using iBank.DataAccess;
+using iBank.DataAccess.Entities;
 using iBank.DataAccess.Repositories;
 
 namespace iBank.Api.Repositories
 {
     public class UserRepository:IUserRepository
     {
-        public User GetUser(int id)
+        private readonly IBankStore _store;
+
+        public UserRepository(IBankStore store)
         {
-            throw new System.NotImplementedException();
+            _store = store;
+        }
+
+        public User GetUser(string login, string password)
+        {
+            try
+            {
+                var user = _store.Users.SingleOrDefault(u => u.Login == login);
+                if (user == null)
+                {
+                    throw new SecurityException(string.Format("User {0} not found", login),
+                        SecurityError.UserNotFound);
+                }
+                if (user.Password != password)
+                {
+                    throw new SecurityException("Incorrect login or password",
+                        SecurityError.IncorrectLoginOrPassword);
+                }
+                return user;
+            }
+            catch (SecurityException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException("Repository is invalid: " + ex.Message, RepositoryError.Unknow);
+            }
         }
     }
 }

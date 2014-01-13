@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace iBank.DataAccess.Entities
 {
-    public class User
+    public class TokenType
     {
+        public TokenType()
+        {
+            this.Token = new List<Token>();
+        }
+
         public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
         public string Name { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime PasswordExpireDate { get; set; }
 
         public virtual ICollection<Token> Token { get; set; }
     }

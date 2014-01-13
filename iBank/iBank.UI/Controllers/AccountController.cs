@@ -4,16 +4,19 @@ using System.Linq;
 using System.Security;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using iBank.Api.Repositories;
+using iBank.DataAccess.EntityFramework;
 using iBank.DataAccess.Repositories;
 using iBank.UI.Models;
 
 namespace iBank.UI.Controllers
 {
-    [Authenticate]
+    //[Authenticate]
     public class AccountController : Controller
     {
         //private ISecurityServiceRepository _repository;
-        private IUserRepository _repository;
+        private IUserRepository _repository;  // = new UserRepository(new BankStore());
 
         //public AccountController(ISecurityServiceRepository repository)
         //{
@@ -26,7 +29,7 @@ namespace iBank.UI.Controllers
         }
 
         
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult LogIn()
         {
             return View();
@@ -39,8 +42,10 @@ namespace iBank.UI.Controllers
             {
                 try
                 {
-                    _repository.GetUser(1);
+                    _repository.GetUser(model.Login, model.Password);
                     //_repository.ValidateUser(model.Login, model.Password);
+
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (SecurityException ex)
                 {

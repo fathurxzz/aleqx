@@ -7,7 +7,7 @@ using iBank.UI.Models;
 
 namespace iBank.UI.Controllers
 {
-    [Authenticate]
+    //[Authenticate]
     public class HomeController : Controller
     {
         public ActionResult Index()
