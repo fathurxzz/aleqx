@@ -4,26 +4,46 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using iBank.Api.Exceptions;
 using iBank.SecurityServices;
+using iBank.SecurityServices.Entities;
 
 namespace iBank.UI.Controllers
 {
-    public class BaseController : Controller
+    public abstract class ControllerBase : Controller
     {
         //
         // GET: /Base/
+        protected IAuthenticationService _AuthenticationService;
 
-        private IAuthenticationService _serviceRepository;
-
-        public BaseController(IAuthenticationService serviceRepository)
+        public ControllerBase(IAuthenticationService authenticationService)
         {
-            _serviceRepository = serviceRepository;
+            _AuthenticationService = authenticationService;
         }
 
-        protected override void Initialize(RequestContext requestContext)
+        public User CurrentUser
         {
-            //requestContext.HttpContext.Request.Cookies
-            base.Initialize(requestContext);
+            get
+            {
+                try
+                {
+                    var cookie = Request.Cookies[SiteSettings.TokenId];
+                    if (cookie == null)
+                        throw new SecurityException("cannot resolve cookie", SecurityError.Unknow);
+                    if (cookie["userName"] == null)
+                        throw new SecurityException("cannot resolve cookie", SecurityError.Unknow);
+                    return new User { Name = cookie["userName"] };
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        protected bool IsAuthenticated
+        {
+            get { return CurrentUser != null; }
         }
     }
 }

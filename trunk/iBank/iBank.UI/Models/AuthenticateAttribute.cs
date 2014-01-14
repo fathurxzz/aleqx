@@ -5,18 +5,16 @@ using iBank.SecurityServices;
 
 namespace iBank.UI.Models
 {
-    public class AuthenticateAttribute:AuthorizeAttribute
+    public class AuthenticateAttribute : AuthorizeAttribute
     {
-        public bool AllowAnonymus { get; set; }
-        public bool AuthenticateAction { get; set; }
+        private readonly bool _allowAnonymus;
+        public bool OnlyAuthenticationToken { get; set; }
 
-        public AuthenticateAttribute()
-        {
-        }
+        
 
         public AuthenticateAttribute(bool allowAnonymus)
         {
-            AllowAnonymus = allowAnonymus;
+            _allowAnonymus = allowAnonymus;
         }
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
@@ -32,17 +30,27 @@ namespace iBank.UI.Models
                 cookie.Path = "/";
                 //System.Web.HttpContext.Current.Response.SetCookie(cookie);
                 httpContext.Response.Cookies.Add(cookie);
-                
+
                 // если мы зашли прямо на страницу авторизации
-                if(AllowAnonymus)
+                if (_allowAnonymus)
                     return true;
 
                 return false;
             }
 
+            if (cookie.Expires > DateTime.Now)
+            {
+                return false;
+            }
+
+
+            // если мы зашли прямо на страницу авторизации
+            if (_allowAnonymus)
+                return true;
+
             if (cookie["sessionToken"] == null)
             {
-                if (AuthenticateAction)
+                if (OnlyAuthenticationToken)
                     return true;
 
                 return false;

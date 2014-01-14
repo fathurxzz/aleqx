@@ -1,43 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using iBank.SecurityServices;
+using iBank.Api.Exceptions;
+using iBank.SecurityServices.Entities;
 using iBank.UI.Models;
 
 namespace iBank.UI.Controllers
 {
-    [Authenticate]
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
-        private IAuthenticationService _serviceRepository; 
 
-        public AccountController(IAuthenticationService serviceRepository)
+        private string Ip
         {
-            _serviceRepository = serviceRepository;
+            get
+            {
+                return Request.UserHostAddress;
+            }
         }
 
-        [Authenticate(AllowAnonymus = true)]
+        public AccountController(IAuthenticationService authenticationService):base(authenticationService)
+        {
+
+        }
+
+        [Authenticate(true)]
         public ActionResult LogIn()
         {
             return View();
         }
 
         [HttpPost]
-        [Authenticate(AuthenticateAction = true)]
+        [Authenticate(false, OnlyAuthenticationToken = true)]
         public ActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var cookie = Request.Cookies[SiteSettings.TokenId];
+                    if (cookie == null)
+                    {
+                        throw new SecurityException("cookie not found", SecurityError.Unknow);
+                    }
+
+                    var authToken = cookie["authToken"];
+                    bool authenticate = _AuthenticationService.Authentification(model.Login, model.Password, Ip, authToken);
+
+                    if (!authenticate)
+                    {
+                        ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                        return View(model);
+                    }
+
                     //_repository.GetUser(model.Login, model.Password);
                     //_repository.ValidateUser(model.Login, model.Password);
-                    //_serviceRepository.GetAuthentificationToken("111");
-                    return RedirectToAction("Index", "Home");
+                    //_authenticationService.GetAuthentificationToken("111");
+
+                    return View("OtpConfirm", new OtpConfirmViewModel ());
                 }
                 catch (SecurityException ex)
                 {
@@ -53,6 +72,70 @@ namespace iBank.UI.Controllers
                 ModelState.AddModelError("", "The user name or password provided is incorrect.");
             }
             return View(model);
+        }
+
+        //[Authenticate(OnlyAuthenticationToken = true)]
+        //public ActionResult OtpConfirm()
+        //{
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        [Authenticate(false,OnlyAuthenticationToken = true)]
+        public ActionResult OtpConfirm(OtpConfirmViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var cookie = Request.Cookies[SiteSettings.TokenId];
+                    if (cookie == null)
+                    {
+                        throw new SecurityException("cookie not found", SecurityError.Unknow);
+                    }
+                    
+
+                    var authToken = cookie["authToken"];
+                    SessionToken sessionToken = _AuthenticationService.OtpAuthentificationConfirm(model.OneTimePassword, Ip, authToken);
+                    cookie["sessionToken"] = sessionToken.SessionTokenValue;
+                    cookie["userName"] = "user_1";
+                    cookie.Expires = sessionToken.ExpireTime;
+                    cookie.Path = "/";
+                    Response.SetCookie(cookie);
+                }
+                catch (SecurityException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            }
+            return View(model);
+        }
+
+
+        public ActionResult LogOff()
+        {
+            var cookie = Request.Cookies[SiteSettings.TokenId];
+            if (cookie == null)
+            {
+                throw new SecurityException("cookie not found", SecurityError.Unknow);
+            }
+
+            cookie.Expires = DateTime.Now.AddYears(-1);
+            cookie.Path = "/";
+            Response.SetCookie(cookie);
+
+            return RedirectToAction("LogIn");
         }
     }
 }

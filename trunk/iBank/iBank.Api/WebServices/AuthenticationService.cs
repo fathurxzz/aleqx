@@ -6,26 +6,29 @@ namespace iBank.Api.WebServices
 {
     public class AuthenticationService : IAuthenticationService
     {
+
         public AuthentificationToken GetAuthentificationToken(string ip)
         {
             return new AuthentificationToken
             {
-                AuthentificationTokenValue = ip + "_token",
-                ExpireTime = DateTime.Now.AddMinutes(5)
+                AuthentificationTokenValue = "authentication_token_" + ip,
+                ExpireTime = DateTime.Now.AddMinutes(15)
             };
         }
 
         public bool Authentification(string login, string password, string ip, string authentificationTokenValue)
         {
-            return true;
+            if (login == "alex" && password == "111")
+                return true;
+            return false;
         }
 
         public SessionToken OtpAuthentificationConfirm(string smsOtp, string ip, string authentificationTokenValue)
         {
             return new SessionToken
             {
-                ExpireTime = DateTime.Now.AddMinutes(5),
-                SessionTokenValue = "333"
+                ExpireTime = DateTime.Now.AddMinutes(15),
+                SessionTokenValue = "session_token_" + ip,
             };
         }
 
