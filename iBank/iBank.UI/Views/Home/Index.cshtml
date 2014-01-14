@@ -4,3 +4,13 @@
 }
 
 <h2>Index</h2>
+
+@if (IsAuthenticated)
+{
+    @Html.Raw("Hello " + User.Name)
+
+    
+    @Html.ActionLink("Log off","LogOff","Account")
+}
+
+

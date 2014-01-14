@@ -136,7 +136,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthenticateAttribute.cs" />
+    <Compile Include="Models\BaseViewPage.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\OtpConfirmViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
   </ItemGroup>
@@ -174,6 +176,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Account\OtpConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

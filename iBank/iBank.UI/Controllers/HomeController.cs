@@ -8,8 +8,8 @@ using iBank.UI.Models;
 
 namespace iBank.UI.Controllers
 {
-    [Authenticate]
-    public class HomeController : Controller
+    [Authenticate(false)]
+    public class HomeController : ControllerBase
     {
         private string Ip
         {
@@ -29,11 +29,12 @@ namespace iBank.UI.Controllers
             }
         }
 
-        private IAuthenticationService _serviceRepository;
+        private IAuthenticationService _authenticationService;
 
-        public HomeController(IAuthenticationService serviceRepository)
+        public HomeController(IAuthenticationService authenticationService)
+            : base(authenticationService)
         {
-            _serviceRepository = serviceRepository;
+            _authenticationService = authenticationService;
         }
 
 
