@@ -4,10 +4,9 @@ using Autofac;
 using Autofac.Integration.Mvc;
 //using Autofac.Integration.WebApi;
 using iBank.Api.Exceptions;
-using iBank.DataAccess;
-using iBank.DataAccess.EntityFramework;
-using iBank.DataAccess.Repositories;
 using System.Linq;
+using iBank.Api.WebServices;
+using iBank.SecurityServices;
 
 namespace iBank.UI
 {
@@ -19,12 +18,12 @@ namespace iBank.UI
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<BankStore>().As<IBankStore>().InstancePerLifetimeScope();
+            builder.RegisterType<AuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(typeof( SecurityException).Assembly)
-                .Where(t => t.GetInterfaces().Contains(typeof(IRepository)))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
+            //builder.RegisterAssemblyTypes(typeof( SecurityException).Assembly)
+            //    .Where(t => t.GetInterfaces().Contains(typeof(IRepository)))
+            //    .AsImplementedInterfaces()
+            //    .InstancePerLifetimeScope();
 
             IContainer container = builder.Build();
             var resolver = new AutofacDependencyResolver(container);
