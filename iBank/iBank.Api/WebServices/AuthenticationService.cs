@@ -4,13 +4,13 @@ using iBank.SecurityServices.Entities;
 
 namespace iBank.Api.WebServices
 {
-    public class SecurityService : IWebServiceSecurity
+    public class AuthenticationService : IAuthenticationService
     {
         public AuthentificationToken GetAuthentificationToken(string ip)
         {
             return new AuthentificationToken
             {
-                AuthentificationTokenValue = "111",
+                AuthentificationTokenValue = ip + "_token",
                 ExpireTime = DateTime.Now.AddMinutes(5)
             };
         }

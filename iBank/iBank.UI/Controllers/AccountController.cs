@@ -5,46 +5,38 @@ using System.Security;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using iBank.Api.Repositories;
-using iBank.DataAccess.EntityFramework;
-using iBank.DataAccess.Repositories;
+using iBank.SecurityServices;
 using iBank.UI.Models;
 
 namespace iBank.UI.Controllers
 {
-    //[Authenticate]
+    [Authenticate]
     public class AccountController : Controller
     {
-        //private ISecurityServiceRepository _repository;
-        private IUserRepository _repository;  // = new UserRepository(new BankStore());
+        private IAuthenticationService _serviceRepository; 
 
-        //public AccountController(ISecurityServiceRepository repository)
-        //{
-        //    _repository = repository;
-        //}
-
-        public AccountController(IUserRepository repository)
+        public AccountController(IAuthenticationService serviceRepository)
         {
-            _repository = repository;
+            _serviceRepository = serviceRepository;
         }
 
-        
-        //[AllowAnonymous]
+        [Authenticate(AllowAnonymus = true)]
         public ActionResult LogIn()
         {
             return View();
         }
 
         [HttpPost]
+        [Authenticate(AuthenticateAction = true)]
         public ActionResult Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _repository.GetUser(model.Login, model.Password);
+                    //_repository.GetUser(model.Login, model.Password);
                     //_repository.ValidateUser(model.Login, model.Password);
-
+                    //_serviceRepository.GetAuthentificationToken("111");
                     return RedirectToAction("Index", "Home");
                 }
                 catch (SecurityException ex)

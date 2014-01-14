@@ -3,7 +3,7 @@ using iBank.SecurityServices.Entities;
 
 namespace iBank.SecurityServices
 {
-    public interface IWebServiceSecurity
+    public interface IAuthenticationService
     {
         AuthentificationToken GetAuthentificationToken(string ip);
         
