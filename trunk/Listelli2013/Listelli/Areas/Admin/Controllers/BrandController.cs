@@ -45,7 +45,7 @@ namespace Listelli.Areas.Admin.Controllers
                                         Description = model.Description,
                                         SortOrder = model.SortOrder
                                     };
-                    
+
 
                     if (fileUpload != null)
                     {
@@ -55,18 +55,17 @@ namespace Listelli.Areas.Admin.Controllers
                         GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 500);
                         //fileUpload.SaveAs(filePath);
                         cache.ImageSource = fileName;
+
+                        cache.BrandGroup = brandGroup;
+
+                        context.AddToBrand(cache);
+
+                        var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
+                        if (lang != null)
+                        {
+                            CreateOrChangeContentLang(context, model, cache, lang);
+                        }
                     }
-
-                    cache.BrandGroup = brandGroup;
-
-                    context.AddToBrand(cache);
-
-                    var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
-                    if (lang != null)
-                    {
-                        CreateOrChangeContentLang(context, model, cache, lang);
-                    }
-
                     return RedirectToAction("BrandGroupDetails", "Home", new { area = "BrandCatalogue",id=brandGroup.Name });
                 }
             }
@@ -110,16 +109,17 @@ namespace Listelli.Areas.Admin.Controllers
                             GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 500);
                             //fileUpload.SaveAs(filePath);
                             cache.ImageSource = fileName;
-                        }
 
 
-                        TryUpdateModel(cache, new[] {"Description", "SortOrder"});
-                        cache.Name = SiteHelper.UpdatePageWebName(model.Name);
 
-                        var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
-                        if (lang != null)
-                        {
-                            CreateOrChangeContentLang(context, model, cache, lang);
+                            TryUpdateModel(cache, new[] {"Description", "SortOrder"});
+                            cache.Name = SiteHelper.UpdatePageWebName(model.Name);
+
+                            var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
+                            if (lang != null)
+                            {
+                                CreateOrChangeContentLang(context, model, cache, lang);
+                            }
                         }
                     }
 
