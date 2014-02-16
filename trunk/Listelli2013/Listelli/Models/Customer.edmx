@@ -15,9 +15,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Email" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Guid" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="char" Nullable="false" MaxLength="200" />
+    <Property Name="Guid" Type="char" Nullable="false" MaxLength="50" />
     <Property Name="Active" Type="bool" Nullable="false" />
+    <Property Name="SentConfirmation" Type="bool" Nullable="false" />
+    <Property Name="SentConfirmationAttempt" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TestTable">
     <Key>
@@ -36,7 +38,7 @@
     <Property Name="Status" Type="int" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="SendDate" Type="datetime" Nullable="false" />
-    <Property Name="ErrorMessage" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="ErrorMessage" Type="char" Nullable="true" MaxLength="255" />
     <Property Name="Attempt" Type="int" Nullable="false" DefaultValue="0" />
   </EntityType>
 </Schema></edmx:StorageModels>
@@ -56,6 +58,8 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="200" FixedLength="true" />
           <Property Type="String" Name="Guid" Nullable="false" FixedLength="true" MaxLength="50" />
           <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Boolean" Name="SentConfirmation" Nullable="false" />
+          <Property Type="Int32" Name="SentConfirmationAttempt" Nullable="false" />
         </EntityType>
         <EntityType Name="TestTable">
           <Key>
@@ -74,7 +78,7 @@
           <Property Type="Int32" Name="Status" Nullable="false" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="DateTime" Name="SendDate" Nullable="false" />
-          <Property Type="String" Name="ErrorMessage" FixedLength="true" MaxLength="1000" />
+          <Property Type="String" Name="ErrorMessage" FixedLength="true" MaxLength="255" />
           <Property Type="Int32" Name="Attempt" Nullable="false" DefaultValue="0" />
         </EntityType>
       </Schema>
@@ -90,6 +94,8 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Guid" ColumnName="Guid" />
           <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="SentConfirmation" ColumnName="SentConfirmation" />
+          <ScalarProperty Name="SentConfirmationAttempt" ColumnName="SentConfirmationAttempt" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -135,7 +141,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="Customer" >
-        <EntityTypeShape EntityType="Customer.Subscriber" Width="1.5" PointX="3.125" PointY="0.875" Height="1.787985026041667" />
+        <EntityTypeShape EntityType="Customer.Subscriber" Width="2.25" PointX="3.125" PointY="0.875" Height="2.172587890625" />
         <EntityTypeShape EntityType="Customer.TestTable" Width="1.5" PointX="3.375" PointY="3.875" Height="1.4033821614583326" />
         <EntityTypeShape EntityType="Customer.SendEmailStatus" Width="1.5" PointX="6.125" PointY="0.875" Height="2.5571907552083331" />
       </Diagram>

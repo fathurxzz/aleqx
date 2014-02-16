@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-
 namespace Listelli.Models
 {
     #region Contexts
@@ -114,6 +114,7 @@ namespace Listelli.Models
         private ObjectSet<SendEmailStatus> _SendEmailStatus;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -141,11 +142,11 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -180,6 +181,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -378,6 +380,7 @@ namespace Listelli.Models
         partial void OnAttemptChanged();
 
         #endregion
+
     
     }
     
@@ -398,17 +401,22 @@ namespace Listelli.Models
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="guid">Initial value of the Guid property.</param>
         /// <param name="active">Initial value of the Active property.</param>
-        public static Subscriber CreateSubscriber(global::System.Int32 id, global::System.String email, global::System.String guid, global::System.Boolean active)
+        /// <param name="sentConfirmation">Initial value of the SentConfirmation property.</param>
+        /// <param name="sentConfirmationAttempt">Initial value of the SentConfirmationAttempt property.</param>
+        public static Subscriber CreateSubscriber(global::System.Int32 id, global::System.String email, global::System.String guid, global::System.Boolean active, global::System.Boolean sentConfirmation, global::System.Int32 sentConfirmationAttempt)
         {
             Subscriber subscriber = new Subscriber();
             subscriber.Id = id;
             subscriber.Email = email;
             subscriber.Guid = guid;
             subscriber.Active = active;
+            subscriber.SentConfirmation = sentConfirmation;
+            subscriber.SentConfirmationAttempt = sentConfirmationAttempt;
             return subscriber;
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -509,8 +517,57 @@ namespace Listelli.Models
         private global::System.Boolean _Active;
         partial void OnActiveChanging(global::System.Boolean value);
         partial void OnActiveChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean SentConfirmation
+        {
+            get
+            {
+                return _SentConfirmation;
+            }
+            set
+            {
+                OnSentConfirmationChanging(value);
+                ReportPropertyChanging("SentConfirmation");
+                _SentConfirmation = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SentConfirmation");
+                OnSentConfirmationChanged();
+            }
+        }
+        private global::System.Boolean _SentConfirmation;
+        partial void OnSentConfirmationChanging(global::System.Boolean value);
+        partial void OnSentConfirmationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SentConfirmationAttempt
+        {
+            get
+            {
+                return _SentConfirmationAttempt;
+            }
+            set
+            {
+                OnSentConfirmationAttemptChanging(value);
+                ReportPropertyChanging("SentConfirmationAttempt");
+                _SentConfirmationAttempt = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SentConfirmationAttempt");
+                OnSentConfirmationAttemptChanged();
+            }
+        }
+        private global::System.Int32 _SentConfirmationAttempt;
+        partial void OnSentConfirmationAttemptChanging(global::System.Int32 value);
+        partial void OnSentConfirmationAttemptChanged();
 
         #endregion
+
     
     }
     
@@ -538,6 +595,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -592,9 +650,11 @@ namespace Listelli.Models
         partial void OnDateChanged();
 
         #endregion
+
     
     }
 
     #endregion
+
     
 }
