@@ -283,3 +283,40 @@ body
     margin-top: 73px;
     margin-left: 530px;
 }
+
+
+.feedBackForm.success {
+      font-size: 16px;
+      font-weight: bold;
+  }
+  
+  
+.feedBackForm table td {
+    padding-bottom: 15px;
+}
+
+.feedBackForm
+{
+    padding:20px;
+	position: relative;
+    margin: 40px auto auto;
+    width: 480px;
+    font-size: 12px;
+    height: 250px;
+}
+
+.feedBackForm input[type='text'] {
+    width: 300px;
+}
+
+.feedBackForm textarea {
+    width: 260px;
+    height: 100px;
+}
+
+  .errorMessage {
+      text-align: center;
+      color: #f00;
+      border: 2px solid #f00;
+      padding: 5px;
+  }

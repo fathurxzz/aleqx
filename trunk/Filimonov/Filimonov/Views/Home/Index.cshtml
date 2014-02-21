@@ -16,7 +16,7 @@
     {
         case ContentType.Content:
         case ContentType.Feedback:
-    @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text, Id=item.Id })
+    @Html.Partial("ContentItem", new ContentItem { Title = item.Title, Text = item.Text, Id=item.Id, ContentType = (ContentType)item.ContentType})
 break;
         case ContentType.Projects:
     @Html.Partial("ContentItemProjects", new ContentItemProjects { Title = item.Title, Projects = Model.Projects, Id = item.Id })
