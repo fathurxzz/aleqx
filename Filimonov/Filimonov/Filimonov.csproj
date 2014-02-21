@@ -102,6 +102,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\WebSession.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Models\ContentType.cs" />
     <Compile Include="Models\ContentValidation.cs" />
     <Compile Include="Models\CustomerValidation.cs" />
+    <Compile Include="Models\FeedbackFormModel.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\LayoutValidation.cs" />
     <Compile Include="Models\Library.Designer.cs">
@@ -198,6 +200,7 @@
     <Content Include="Content\img\survey-lib.gif" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-side-bg.gif" />
+    <Content Include="Content\MailTemplates\FeedbackTemplate.htm" />
     <Content Include="Content\Presentation.css" />
     <Content Include="Content\PresentationMenu.css" />
     <Content Include="Content\print-preview.css" />
@@ -347,6 +350,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Library.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Views\Shared\FeedbackForm.cshtml" />
+    <Content Include="Views\Shared\Success.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
