@@ -43,7 +43,15 @@ img {
 #pictureLink
 {
     position: absolute;
-    z-index: 1001;
+    /*z-index: 1001;*/
+    width: 528px;
+    height: 528px;
+}
+
+.pictureLink1
+{
+    position: absolute;
+    /*z-index: 1001;*/
     width: 528px;
     height: 528px;
 }
@@ -53,7 +61,14 @@ img {
     z-index: 999;
 }
 
+.pictureLink1 img
+{
+    z-index: 999;
+}
 
+.class1001 {
+    z-index: 1001;
+}
 .carusel-previews {
     position: relative;
     margin: 0 auto;

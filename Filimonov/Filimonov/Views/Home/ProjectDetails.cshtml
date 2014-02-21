@@ -40,20 +40,32 @@
                     
                     @if (Model.ProjectImages.Count > 0)
                     {
-                        <a href="#" id="pictureLink" class="fancy">
-                        </a>    
-                        <img src="" alt="" id="pictureContainer" />
+                        var cnt = 1;
+                        foreach (var image in Model.ProjectImages)
+                        {
+                            string imageid = "image" + image.Id;
+                            string class1001 = cnt == 1 ? "class1001" : "";
+                            <a id="@imageid" rel="group1" href="/Content/Images/@image.ImageSource" class="fancy pictureLink1 @class1001">
+                                <img src="/ImageCache/projectImage/@image.ImageSource"/>
+                            </a>
+
+                            cnt++;
+                        }
+                        
+                        @*<a href="#"rel="group1" id="pictureLink" class="fancy">
+                        </a>*@
+                        @*<img src="" alt="" id="pictureContainer" />*@
                     }
                 </div>
             </div>
             <div class="carusel-previews">
                 @foreach (var image in Model.ProjectImages)
                 {
-                    <div class="preview" style="cursor: pointer" onclick="ProjectCatalogue.changeImage('@image.ImageSource') ">
+                    <div class="preview" style="cursor: pointer" onclick="ProjectCatalogue.changeImage(@image.Id) ">
                         @if (Request.IsAuthenticated)
                         {
                             <div style="position: absolute">
-                                @Html.ActionLink("Удалить", "DeleteImage","Project",new{area="Admin",id=image.Id},new{@class="adminLink",onclick="return confirm('Удалить изображение?')"})
+                                @Html.ActionLink("Удалить", "DeleteImage", "Project", new { area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                             </div>
                         }
 
