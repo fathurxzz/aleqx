@@ -4,6 +4,18 @@
             //$(".fancy").fancybox({ hideOnContentClick: true, showCloseButton: false, cyclic: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true });
             $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
             //$(".fancy").fancybox({ showNavArrows: true, showCloseButton: false, cyclic: true });
+
+            $(".fancy, #fancybox-outer").bind("contextmenu", function (e) {
+                //alert("aaa");
+                return false;
+                //$('.alert').fadeToggle();
+            });
+            /* fancybox-wrap */
+//            $("#fancybox-outer").bind("contextmenu", function (e) {
+//                //alert("aaa");
+//                return false;
+//                //$('.alert').fadeToggle();
+//            });
         });
     },
 
