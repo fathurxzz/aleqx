@@ -44,14 +44,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\1\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity">
-      <HintPath>..\..\MySql.Data.Entity.dll</HintPath>
+    <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\1\MySql.Data.Entity.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Web">
-      <HintPath>..\..\MySql.Web.dll</HintPath>
+    <Reference Include="MySql.Web, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\1\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="SiteExtensions">
       <HintPath>..\..\SiteExtensions.dll</HintPath>
