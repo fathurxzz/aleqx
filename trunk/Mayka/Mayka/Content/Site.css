@@ -1,0 +1,159 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+
+}
+
+header, footer, nav, section
+{
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset
+{
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend
+{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea
+{
+    min-height: 75px;
+}
+
+.editor-label
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field
+{
+    margin: 0.5em 0 0 0;
+}
+
+
+
+.clear
+{
+    clear: both;
+}
+
+#page
+{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#left-block
+{
+    width: 260px;
+    text-align: center;
+    background-color: #bf1e2e;
+    color: #fff;
+    float: left;
+}
+
+    #left-block a
+    {
+        color: inherit;
+    }
+
+#logo
+{
+    width: 143px;
+    height: 58px;
+    background: url('img/logo.jpg');
+    position: relative;
+    margin: 50px auto;
+}
+
+#main-content-container
+{
+    margin-left: 310px;
+    padding-top: 70px;
+    padding-left: 10px;
+}
+
+
+.social-line
+{
+    background: url('img/social-line.jpg') repeat-x;
+    background-position: 0 6px;
+    height: 20px;
+}
+
+    .social-line .text
+    {
+        background-color: #bf1e2e;
+        width: 150px;
+        margin: 0 auto;
+        
+    }
+
+.social-icons
+{
+    margin: 30px auto;
+}
+
+.copyright
+{
+    width: 150px;
+    margin: 50px auto;
+}
+
+.social-icons .instagram, .social-icons .facebook {
+    display: block;
+    height: 41px;
+    float: left;
+
+}
+
+.social-icons .instagram {
+    width: 52px;
+    background-image: url('img/instagram.jpg');
+    margin-left: 65px;
+}
+
+.social-icons .facebook {
+    width: 42px;
+    background-image: url('img/facebook.jpg');
+    margin-left: 40px;
+}
+
+.copyright {
+    font-size: 11px;
+    margin-bottom: 70px;
+}
+
+.main-title {
+    font-size: 25px;
+    color: #858585;
+}
+
+.main-text {
+    padding-top: 20px;
+    padding-right: 180px;
+    
+    font-family: "OptimusC";
+    line-height: 22px;
+    font-size: 13px;
+}
