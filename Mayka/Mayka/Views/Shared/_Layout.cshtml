@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="@ViewBag.SeoDescription" />
+    <meta name="keywords" content="@ViewBag.SeoKeywords" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Styles.Render("~/Content/Fonts.css", "~/Content/Site.css", "~/Content/Errors.css", "~/Content/Menu.css")
+    @RenderSection("Styles", false)
+    @if (Request.IsAuthenticated)
+    { 
+        @Styles.Render("~/Content/Admin.css")
+    }
+    <script type="text/javascript">
+
+        var isHomePage = @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+
+        
+    </script>
+</head>
+<body>
+    <div id="page">
+        <div id="left-block">
+            <div id="logo">
+            </div>
+
+            @Html.Partial("Menu")
+
+            <div class="social-line">
+                <div class="text">мы антисоциальны:</div>
+            </div>
+            <div class="social-icons">
+                <a href="/" class="instagram"></a>
+                <a href="/" class="facebook"></a>
+                <div class="clear"></div>
+            </div>
+
+            <div class="social-line">
+            </div>
+
+            <div class="copyright">
+                Сделано с гордостью и примесью лёгкой эйфории в <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+            </div>
+        </div>
+        <div id="main-content-container">
+            @RenderBody()
+        </div>
+        <div class="clear"></div>
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/Scripts/site.js")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
