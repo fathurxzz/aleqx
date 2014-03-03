@@ -100,7 +100,7 @@ namespace Shop.Models
                 TotalProductsCount = products.Count();
 
             products = ApplyOrdering(products, order, direction);
-            products = ApplyPaging(products, page);
+            products = ApplyPaging(products, page, SiteSettings.ProductsPageSize);
 
             if (products == null)
                 Products = new List<Product>();
@@ -151,17 +151,15 @@ namespace Shop.Models
             }
         }
 
-        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page)
+        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page, int pageSize)
         {
             if (products == null)
                 return null;
             int currentPage = page ?? 0;
-            int pageSize = 10;
             if (page < 0)
                 return products;
             return products.Skip(currentPage * pageSize).Take(pageSize);
         }
+        
     }
-
-
 }
