@@ -1,6 +1,6 @@
 ﻿@using Shop
 @{
-    int pageSize = SiteSettings.ProductsPageSize;
+    int pageSize = SiteSettings.AdminProductsPageSize;
     int totalCount = (int)ViewBag.TotalCount;
     int pageCount = totalCount / pageSize;
     int page = (int)ViewBag.Page;
@@ -22,7 +22,7 @@
         else
         {
             <div>
-        @Html.ActionLink((i + 1).ToString(), (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = i, order = Request.QueryString["order"], direction = Request.QueryString["direction"] }, null)
+        @Html.ActionLink((i + 1).ToString(), "Index", "Product", new { area="Admin", id = ViewBag.ActionId, page = i, order = Request.QueryString["order"], direction = Request.QueryString["direction"] }, null)
         </div>
             }
             
@@ -32,7 +32,7 @@
         }*@
     }
 
-    @if (page > -1)
+    @*@if (page > -1)
     {
         <br/>
         @Html.ActionLink("весь список", (string)ViewBag.ActionName, "Shop", new { id = ViewBag.ActionId, page = -1 , order = Request.QueryString["order"], direction = Request.QueryString["direction"]}, null)
@@ -41,7 +41,7 @@
     {
         <br/>
         <text>весь список</text>
-    }
+    }*@
     
 </div>
     }

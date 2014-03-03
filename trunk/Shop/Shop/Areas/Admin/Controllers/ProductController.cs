@@ -15,12 +15,33 @@ namespace Shop.Areas.Admin.Controllers
         //
         // GET: /Admin/Product/
 
-        public ActionResult Index()
+        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page, int pageSize)
+        {
+            if (products == null)
+                return null;
+            int currentPage = page ?? 0;
+            if (page < 0)
+                return products;
+            return products.Skip(currentPage * pageSize).Take(pageSize);
+        }
+
+        public ActionResult Index(int? page)
         {
             using (var context = new ShopContainer())
             {
-                var products = context.Product.Include("Brand").Include("Category").Include("ProductImages").ToList();
-                return View(products);
+                //var products = context.Product.Include("Brand").Include("Category").Include("ProductImages").ToList();
+
+                IQueryable<Product> products = context.Product.Include("Brand").Include("Category").Include("ProductImages");
+                ViewBag.TotalCount = products.Count();
+
+                products = products.OrderBy(p => p.Id);
+
+                products = ApplyPaging(products, page, SiteSettings.AdminProductsPageSize);
+                
+                //List<Product> Products = products.ToList();
+                ViewBag.Page = page ?? 0;
+
+                return View(products.ToList());
             }
         }
 
@@ -490,6 +511,7 @@ namespace Shop.Areas.Admin.Controllers
             }
         }
 
+        
         [HttpPost]
         public ActionResult Tags(int productId, FormCollection form)
         {
