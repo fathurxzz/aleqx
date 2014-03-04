@@ -1,0 +1,13 @@
+﻿@model Mayka.Models.SiteModel
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+
+@section Menu
+{
+    @Html.Partial("Menu", Model.Menu)
+}

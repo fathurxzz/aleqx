@@ -1,13 +1,9 @@
-﻿@model Mayka.Helpers.Menu
+﻿@using Mayka.Helpers
+@model Mayka.Helpers.Menu
 
 <ul id="menu">
-    
     @foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.Title,"Index","Home",new{id=item.ContentName},null) </li>
+        @Html.Partial("_MenuItem", item)
     }
-
-    @*<li><a href="/">почему крутая</a></li>
-    <li><a href="/">встречайте, майкаджексон!</a></li>
-    <li><a href="/">не совсем нормальные люди</a></li>*@
 </ul>

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Mayka.Helpers;
 using Mayka.Models.Entities;
 using SiteExtensions;
 
@@ -9,32 +11,35 @@ namespace Mayka.Models
         public string Title { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
-        public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
         public Content Content { get; set; }
-        public Helpers.Menu SiteMenu { get; set; }
+        public Helpers.Menu Menu { get; set; }
+        protected IQueryable<Content> Contents { get; set; }
 
         public SiteModel(SiteContext context, string contentId)
         {
-            var contents = context.Content.ToList();
+            Contents = context.Content;
             Title = "Майкаджексон";
 
 
-            Content = contents.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.MainPage);
+            Content = Contents.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.ContentType==(int)ContentType.HomePage);
 
-            SiteMenu = new Helpers.Menu();
+            Menu = new Helpers.Menu();
 
-            foreach (var c in contents)
+            foreach (var c in Contents.Where(c=>c.ContentType!=(int)ContentType.HomePage))
             {
-                SiteMenu.Add(new MenuItem
+                Menu.Add(new Helpers.MenuItem
                 {
                     ContentId = c.Id,
                     ContentName = c.Name,
                     Current = c.Name == contentId,
                     SortOrder = c.SortOrder,
-                    Title = c.MenuTitle
+                    Title = c.MenuTitle,
+                    ContentType = (ContentType)c.ContentType
                 });
             }
         }
+
+        
     }
 }
