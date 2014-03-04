@@ -18,7 +18,7 @@ namespace Mayka.Models.Entities
         public string Text { get; set; }
         public string SeoDescription { get; set; }
         public string SeoKeywords { get; set; }
-        public bool MainPage { get; set; }
+        public byte ContentType { get; set; }
         public virtual ICollection<PhotoGalleryItem> PhotoGalleryItems { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }

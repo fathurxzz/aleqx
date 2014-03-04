@@ -1,0 +1,22 @@
+﻿@using Mayka.Helpers
+@model Mayka.Helpers.MenuItem
+
+@if (Model.Current)
+{
+    <li>@Model.Title</li>
+}
+else
+{
+    switch (Model.ContentType)
+    {
+        case ContentType.Content:
+    <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null) </li>        
+            break;
+        case ContentType.Gallery:
+    <li>@Html.ActionLink(Model.Title, "Gallery", "Home", new { id = Model.ContentName }, null) </li>        
+            break;
+        case ContentType.Products:
+    <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, null) </li>        
+            break;
+    }
+}

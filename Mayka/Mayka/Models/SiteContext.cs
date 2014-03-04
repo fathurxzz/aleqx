@@ -1,14 +1,14 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Mayka.Models.Entities;
-using Mayka.Models.Mapping;
+using Mayka.Models.Entities.Mapping;
 
 namespace Mayka.Models
 {
     public partial class SiteContext:DbContext
     {
         public SiteContext()
-            : base("name=SiteContainer")
+            : base("name=gbua_mayka")
         {
             
         }
