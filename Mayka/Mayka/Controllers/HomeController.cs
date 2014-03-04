@@ -13,13 +13,12 @@ namespace Mayka.Controllers
 
         public ActionResult Index(string id)
         {
-            //using (var context = new SiteContext())
-            //{
-            //    var model = new SiteModel( context, id);
-            //    this.SetSeoContent(model);
-            //    return View(model);
-            //}
-            return View();
+            using (var context = new SiteContext())
+            {
+                var model = new SiteModel(context, id);
+                this.SetSeoContent(model);
+                return View(model);
+            }
         }
 
     }
