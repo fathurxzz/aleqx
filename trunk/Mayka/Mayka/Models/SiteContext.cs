@@ -1,20 +1,24 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Mayka.Models.Entities;
+using Mayka.Models.Mapping;
 
 namespace Mayka.Models
 {
-    public class SiteContext:DbContext
+    public partial class SiteContext:DbContext
     {
         public SiteContext()
-            : base("name=ModelContainer")
+            : base("name=SiteContainer")
         {
             
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Configurations.Add(new ContentMap());
+            modelBuilder.Configurations.Add(new PhotoGalleryItemMap());
+            modelBuilder.Configurations.Add(new ProductMap());
+            modelBuilder.Configurations.Add(new ProductImageMap());
         }
 
 
