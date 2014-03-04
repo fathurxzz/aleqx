@@ -10,12 +10,12 @@ namespace Mayka.Models
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
-        public Content Content { get; set; }
+        //public Content Content { get; set; }
 
-        public SiteModel(SiteContext context, string contentId)
-        {
-            Title = "Майкаджексон";
-            Content = context.Contents.FirstOrDefault(c => c.Name == contentId) ?? context.Contents.First(c => c.MainPage);
-        }
+        //public SiteModel(SiteContext context, string contentId)
+        //{
+        //    Title = "Майкаджексон";
+        //    Content = context.Contents.FirstOrDefault(c => c.Name == contentId) ?? context.Contents.First(c => c.MainPage);
+        //}
     }
 }
