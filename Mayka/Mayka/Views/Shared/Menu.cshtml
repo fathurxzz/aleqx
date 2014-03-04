@@ -1,5 +1,13 @@
-﻿<ul id="menu">
-    <li><a href="/">почему крутая</a></li>
+﻿@model Mayka.Helpers.Menu
+
+<ul id="menu">
+    
+    @foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.Title,"Index","Home",new{id=item.ContentName},null) </li>
+    }
+
+    @*<li><a href="/">почему крутая</a></li>
     <li><a href="/">встречайте, майкаджексон!</a></li>
-    <li><a href="/">не совсем нормальные люди</a></li>
+    <li><a href="/">не совсем нормальные люди</a></li>*@
 </ul>

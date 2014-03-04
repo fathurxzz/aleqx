@@ -149,10 +149,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Models\Entities\Content.cs" />
     <Compile Include="Models\Entities\PhotoGalleryItem.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\ProductImage.cs" />
+    <Compile Include="Models\Mapping\ContentMap.cs" />
+    <Compile Include="Models\Mapping\PhotoGalleryItemMap.cs" />
+    <Compile Include="Models\Mapping\ProductImageMap.cs" />
+    <Compile Include="Models\Mapping\ProductMap.cs" />
     <Compile Include="Models\SiteContext.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
