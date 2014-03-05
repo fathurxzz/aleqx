@@ -25,7 +25,7 @@ namespace SiteExtensions
         /// <summary>
         /// Меню
         /// </summary>
-        Menu Menu { get; set; }
+        //Menu Menu { get; set; }
 
         /// <summary>
         /// Главная страница
