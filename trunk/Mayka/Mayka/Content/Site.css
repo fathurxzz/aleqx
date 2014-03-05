@@ -19,6 +19,16 @@ header, footer, nav, section
 }
 
 
+.loginForm {
+    margin: 100px auto auto;
+    width: 200px;
+}
+
+.loginForm p {
+    padding-top: 10px;
+    text-align: center;
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset
