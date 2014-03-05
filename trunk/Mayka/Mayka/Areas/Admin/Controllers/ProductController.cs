@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mayka.Models;
 
 namespace Mayka.Areas.Admin.Controllers
 {
     [Authorize]
     public class ProductController : Controller
     {
-        //
-        // GET: /Admin/Product/
+       private readonly SiteContext _context;
 
-        public ActionResult Edit()
+       public ProductController(SiteContext context)
         {
-            return View();
+            _context = context;
         }
+
+       
 
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Mayka.Models.Entities;
-using Mayka.Models.Entities.Mapping;
 
 namespace Mayka.Models
 {

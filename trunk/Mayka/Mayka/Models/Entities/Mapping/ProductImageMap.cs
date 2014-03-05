@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity.ModelConfiguration;
 
-namespace Mayka.Models.Entities.Mapping
+namespace Mayka.Models.Entities
 {
     public class ProductImageMap : EntityTypeConfiguration<ProductImage>
     {

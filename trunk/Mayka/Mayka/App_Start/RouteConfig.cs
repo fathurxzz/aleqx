@@ -31,7 +31,7 @@ namespace Mayka
             routes.MapRoute(
                 name: "ContentItem",
                 url: "content/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index"}
             );
 
             routes.MapRoute(

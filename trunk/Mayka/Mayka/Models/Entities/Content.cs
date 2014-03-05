@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Mayka.Models.Entities;
 
-namespace Mayka.Models.Entities
+namespace Mayka.Models
 {
     public partial class Content
     {

@@ -8,3 +8,14 @@
     font-size: 12px !important;
     font-weight: bold;
 }
+
+.adminContent input[type="text"],
+.adminContent input[type="number"],
+.adminContent textarea
+ {
+    width: 500px;
+}
+
+.adminContent {
+    padding-bottom: 30px;
+}

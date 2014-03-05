@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using Mayka.Models;
-using Mayka.Models.Entities;
 
 namespace Mayka.Areas.Admin.Controllers
 {
     [Authorize]
     public class ContentController : Controller
     {
-        //
-        // GET: /Admin/Content/
+        private readonly SiteContext _context;
+
+        public ContentController(SiteContext context)
+        {
+            _context = context;
+        }
 
         public ActionResult Create()
         {
@@ -23,10 +23,8 @@ namespace Mayka.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Content model)
         {
-            using (var context = new SiteContext())
-            {
-                var content = new Content();
-                TryUpdateModel(content, new[] {
+            var content = new Content();
+            TryUpdateModel(content, new[] {
                     "Title",
                     "Name",
                     "MenuTitle",
@@ -35,33 +33,25 @@ namespace Mayka.Areas.Admin.Controllers
                     "SeoKeywords",
                     "ContentType"
                 });
-                content.Text = HttpUtility.HtmlDecode(model.Text);
+            content.Text = HttpUtility.HtmlDecode(model.Text);
 
-                context.Content.Add(content);
+            _context.Content.Add(content);
 
-                context.SaveChanges();
-                
-                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
-            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
         }
 
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContext())
-            {
-                var content = context.Content.First(c => c.Id == id);
-                return View(content);
-            }
+            return View(_context.Content.First(c => c.Id == id));
         }
 
         [HttpPost]
         public ActionResult Edit(Content model)
         {
-            using (var context = new SiteContext())
-            {
-                var content = context.Content.First(c => c.Id == model.Id);
-
-                TryUpdateModel(content, new[]
+            var content = _context.Content.First(c => c.Id == model.Id);
+            TryUpdateModel(content, new[]
                 {
                     "Title",
                     "Name",
@@ -72,11 +62,17 @@ namespace Mayka.Areas.Admin.Controllers
                     "ContentType"
                 });
 
-                content.Text = HttpUtility.HtmlDecode(model.Text);
-                context.SaveChanges();
+            content.Text = HttpUtility.HtmlDecode(model.Text);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+        }
 
-                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
-            }
+        public ActionResult Delete(int id)
+        {
+            var content = _context.Content.First(c => c.Id == id);
+            _context.Content.Remove(content);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
     }

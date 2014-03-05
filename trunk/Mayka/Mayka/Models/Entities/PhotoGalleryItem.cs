@@ -1,4 +1,4 @@
-﻿namespace Mayka.Models.Entities
+﻿namespace Mayka.Models
 {
     public partial class PhotoGalleryItem
     {

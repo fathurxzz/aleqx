@@ -18,6 +18,15 @@ else
     switch (Model.ContentType)
     {
             case ContentType.HomePage:
+            if (Request.IsAuthenticated)
+            {
+                <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null)
+                    <span class="sortOrder">@Model.SortOrder </span>
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+
+                </li>
+            }
+            break;
         case ContentType.Content:
             <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null) 
                 
