@@ -13,7 +13,7 @@ namespace Mayka.Models
         public string SeoKeywords { get; set; }
         public bool IsHomePage { get; set; }
         public Content Content { get; set; }
-        public Helpers.Menu Menu { get; set; }
+        public List<Helpers.MenuItem> Menu  { get; set; }
         protected IQueryable<Content> Contents { get; set; }
 
         public SiteModel(SiteContext context, string contentId)

@@ -3,20 +3,46 @@
 
 @if (Model.Current)
 {
-    <li>@Model.Title</li>
+    <li>@Model.Title
+
+        @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+        }
+    </li>
 }
 else
 {
     switch (Model.ContentType)
     {
+            case ContentType.HomePage:
         case ContentType.Content:
-    <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null) </li>        
+            <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null) 
+                
+                @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+        }
+            </li>        
             break;
         case ContentType.Gallery:
-    <li>@Html.ActionLink(Model.Title, "Gallery", "Home", new { id = Model.ContentName }, null) </li>        
+            <li>@Html.ActionLink(Model.Title, "Gallery", "Home", new { id = Model.ContentName }, null) 
+                @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+        }
+
+            </li>        
             break;
         case ContentType.Products:
-    <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, null) </li>        
+            <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, null) 
+                @if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+        }
+
+            </li>        
             break;
     }
 }
+

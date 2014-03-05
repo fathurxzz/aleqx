@@ -1,3 +1,4 @@
 ﻿.adminLink {
-    color: #f00;
+    color: #f00 !important;
+    font-size: 12px !important;
 }
