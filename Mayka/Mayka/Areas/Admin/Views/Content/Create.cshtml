@@ -1,4 +1,5 @@
-﻿@model Mayka.Models.Entities.Content
+﻿@using Mayka.Helpers
+@model Mayka.Models.Entities.Content
 
 @{
     ViewBag.Title = "Create";
@@ -58,7 +59,7 @@
             @Html.LabelFor(model => model.SeoDescription)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SeoDescription)
+            @Html.TextAreaFor(model => model.SeoDescription)
             @Html.ValidationMessageFor(model => model.SeoDescription)
         </div>
 
@@ -66,15 +67,16 @@
             @Html.LabelFor(model => model.SeoKeywords)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SeoKeywords)
+            @Html.TextAreaFor(model => model.SeoKeywords)
             @Html.ValidationMessageFor(model => model.SeoKeywords)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ContentType)
         </div>
+        
         <div class="editor-field">
-            @Html.EditorFor(model => model.ContentType)
+            @Html.DropDownListFor(model => model.ContentType,UIHelper.GetContentTypes())
             @Html.ValidationMessageFor(model => model.ContentType)
         </div>
 

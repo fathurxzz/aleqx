@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using SiteExtensions;
 
 namespace Mayka.Helpers
@@ -31,5 +34,35 @@ namespace Mayka.Helpers
         Content = 1,
         Gallery = 2,
         Products = 3
+    }
+
+    
+
+
+    public class UIHelper
+    {
+        public static string[] ContentTypeNames =
+        {
+            "Домашняя страница", 
+            "Страница контента",
+            "Галерея",
+            "Каталог товаров"
+        };
+
+        public static List<SelectListItem> GetContentTypes(byte? selectedItem)
+        {
+            var result = new List<SelectListItem>();
+            var array = Enum.GetValues(typeof(ContentType)).Cast<ContentType>().ToArray();
+            foreach (var contentType in array)
+            {
+                result.Add(new SelectListItem { Text = ContentTypeNames[(byte)contentType], Value = ((byte)contentType).ToString(), Selected = selectedItem == (byte)contentType });
+            }
+            return result;
+        }
+
+        public static List<SelectListItem> GetContentTypes()
+        {
+            return GetContentTypes(null);
+        }
     }
 }
