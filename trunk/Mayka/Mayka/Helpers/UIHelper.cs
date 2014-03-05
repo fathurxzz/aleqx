@@ -3,6 +3,12 @@ using SiteExtensions;
 
 namespace Mayka.Helpers
 {
+    public class ContentHeaderModel
+    {
+        public string Title { get; set; }
+        public string Text { get; set; }
+    }
+
     public class UIMenuItem
     {
 
@@ -25,10 +31,5 @@ namespace Mayka.Helpers
         Content = 1,
         Gallery = 2,
         Products = 3
-    }
-
-    public class Menu : List<MenuItem>
-    {
-
     }
 }

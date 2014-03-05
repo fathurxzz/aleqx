@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Mayka.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         //

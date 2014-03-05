@@ -10,28 +10,7 @@
     @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id=Model.Content.Id }, new { @class = "adminLink" })
 }
 
-<div class="main-title">
-    @Model.Content.Title
-</div>
-
-
-<div class="main-text">
-    @Html.Raw(Model.Content.Text)
-
-
-    @*Майкаджексон — это футболка-статус, посредством которой люди передают состояние своего мира окружающим.
-   
-    <br />
-    <br />
-    Поскольку Майкаджексон создана не совсем нормальными людьми,
-    нормальные люди — это не совсем те, на ком мы бы хотели увидеть
-    Майкуджексон. :) 
-   
-    <br />
-    <br />
-    Кстати, Майкаджексон (с небольшим исключением) называется и транслируется только на родном языке. То есть, все наши принты написаны не на английском. А название непременно склоняется («Майкуджексон», «Маекджексон» и т д). Это вообще «вау».*@
-
-</div>
+@Html.Partial("_ContentHeader",new ContentHeaderModel{Title = Model.Content.Title, Text = Model.Content.Text})
 
 @section Menu
 {

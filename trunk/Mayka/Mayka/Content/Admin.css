@@ -2,3 +2,9 @@
     color: #f00 !important;
     font-size: 12px !important;
 }
+
+.sortOrder {
+    color: #f00 !important;
+    font-size: 12px !important;
+    font-weight: bold;
+}

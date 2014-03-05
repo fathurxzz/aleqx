@@ -1,10 +1,14 @@
-﻿@model Mayka.Models.SiteModel
+﻿@using Mayka.Helpers
+@model Mayka.Models.SiteModel
 @{
     ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Gallery</h2>
+
+
+@Html.Partial("_ContentHeader",new ContentHeaderModel{Title = Model.Content.Title, Text = Model.Content.Text})
+
 
 @section Menu
 {

@@ -1,9 +1,14 @@
-﻿@using Mayka.Helpers
-@model Mayka.Helpers.Menu
+﻿@model List<Mayka.Helpers.MenuItem>
 
 <ul id="menu">
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(m=>m.SortOrder))
     {
         @Html.Partial("_MenuItem", item)
     }
+    
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Добавить", "Create", "Content", new { area = "Admin"}, new { @class = "adminLink" })
+    }
+
 </ul>
