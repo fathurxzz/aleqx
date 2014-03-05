@@ -8,10 +8,41 @@ using Mayka.Models.Entities;
 
 namespace Mayka.Areas.Admin.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
         //
         // GET: /Admin/Content/
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Content model)
+        {
+            using (var context = new SiteContext())
+            {
+                var content = new Content();
+                TryUpdateModel(content, new[] {
+                    "Title",
+                    "Name",
+                    "MenuTitle",
+                    "SortOrder",
+                    "SeoDescription",
+                    "SeoKeywords",
+                    "ContentType"
+                });
+                content.Text = HttpUtility.HtmlDecode(model.Text);
+
+                context.Content.Add(content);
+
+                context.SaveChanges();
+                
+                return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+            }
+        }
 
         public ActionResult Edit(int id)
         {

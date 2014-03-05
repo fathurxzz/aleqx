@@ -23,6 +23,30 @@ namespace Mayka
             );
 
             routes.MapRoute(
+                name: "LogOff",
+                url: "logoff",
+                defaults: new { controller = "Auth", action = "Logout", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "ContentItem",
+                url: "content/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "GalleryItem",
+                url: "gallery/{id}",
+                defaults: new { controller = "Home", action = "Gallery", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Product",
+                url: "products/{id}",
+                defaults: new { controller = "Home", action = "Products", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -7,6 +7,8 @@
 
         @if (Request.IsAuthenticated)
         {
+            <span class="sortOrder">@Model.SortOrder </span>
+            
             @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
         }
     </li>
@@ -21,6 +23,7 @@ else
                 
                 @if (Request.IsAuthenticated)
         {
+            <span class="sortOrder">@Model.SortOrder </span>
             @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
         }
             </li>        
@@ -29,6 +32,7 @@ else
             <li>@Html.ActionLink(Model.Title, "Gallery", "Home", new { id = Model.ContentName }, null) 
                 @if (Request.IsAuthenticated)
         {
+            <span class="sortOrder">@Model.SortOrder </span>
             @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
         }
 
@@ -38,6 +42,9 @@ else
             <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, null) 
                 @if (Request.IsAuthenticated)
         {
+            <span class="sortOrder">@Model.SortOrder </span>
+            
+            
             @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
         }
 

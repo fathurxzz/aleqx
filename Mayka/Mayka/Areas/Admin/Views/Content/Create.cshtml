@@ -1,0 +1,93 @@
+﻿@model Mayka.Models.Entities.Content
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Content</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MenuTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MenuTitle)
+            @Html.ValidationMessageFor(model => model.MenuTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SortOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SortOrder)
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeoDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeoDescription)
+            @Html.ValidationMessageFor(model => model.SeoDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeoKeywords)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeoKeywords)
+            @Html.ValidationMessageFor(model => model.SeoKeywords)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContentType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContentType)
+            @Html.ValidationMessageFor(model => model.ContentType)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -24,7 +24,7 @@ namespace Mayka.Models
 
             Content = Contents.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.ContentType==(int)ContentType.HomePage);
 
-            Menu = new Helpers.Menu();
+            Menu = new List<Helpers.MenuItem>();
 
             foreach (var c in Contents.Where(c=>c.ContentType!=(int)ContentType.HomePage))
             {
