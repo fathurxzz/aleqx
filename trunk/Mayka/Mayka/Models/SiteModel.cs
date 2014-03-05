@@ -38,6 +38,9 @@ namespace Mayka.Models
                     ContentType = (ContentType)c.ContentType
                 });
             }
+
+            SeoDescription = Content.SeoDescription;
+            SeoKeywords = Content.SeoKeywords;
         }
 
         
