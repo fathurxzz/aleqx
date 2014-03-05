@@ -12,6 +12,15 @@ namespace Mayka
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("favicon.ico");
+            routes.IgnoreRoute("robots.txt");
+
+
+            routes.MapRoute(
+                name: "LogOn",
+                url: "logon",
+                defaults: new { controller = "Auth", action = "LogIn", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "Default",

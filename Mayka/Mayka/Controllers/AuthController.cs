@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,8 +10,11 @@ namespace Mayka.Controllers
 {
     public class LoginModel
     {
+        [Display(Name = "Запомнить")]
         public bool Keep { get; set; }
+        [Display(Name = "Логин")]
         public string Name { get; set; }
+        [Display(Name = "Пароль")]
         public string Password { get; set; }
     }
 
