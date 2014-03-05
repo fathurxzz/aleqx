@@ -7,7 +7,7 @@
 
 @if (Request.IsAuthenticated && Model.Content.ContentType == (int)ContentType.HomePage)
 {
-    @Html.ActionLink("Редактировать главную страницу", "Index", "Content", new { area = "Admin" }, new { @class = "adminLink" })
+    @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id=Model.Content.Id }, new { @class = "adminLink" })
 }
 
 <div class="main-title">

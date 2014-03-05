@@ -1,0 +1,97 @@
+﻿@model Mayka.Models.Entities.Content
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Content</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MenuTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MenuTitle)
+            @Html.ValidationMessageFor(model => model.MenuTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SortOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SortOrder)
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeoDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeoDescription)
+            @Html.ValidationMessageFor(model => model.SeoDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SeoKeywords)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SeoKeywords)
+            @Html.ValidationMessageFor(model => model.SeoKeywords)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContentType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContentType)
+            @Html.ValidationMessageFor(model => model.ContentType)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index","Home",new{area=""},null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}
