@@ -12,11 +12,6 @@ namespace Mayka.Helpers
         public string Text { get; set; }
     }
 
-    public class UIMenuItem
-    {
-
-    }
-
     public class MenuItem
     {
         public string Title { get; set; }
@@ -52,8 +47,14 @@ namespace Mayka.Helpers
         public static List<SelectListItem> GetContentTypes(byte? selectedItem)
         {
             var result = new List<SelectListItem>();
-            var array = Enum.GetValues(typeof(ContentType)).Cast<ContentType>().ToArray();
-            foreach (var contentType in array)
+            
+            //        Enum.GetValues(typeof(SomeEnum))
+            //.Cast<SomeEnum>()
+            //.Select(v => v.ToString())
+            //.ToList();
+
+            var enumArray = Enum.GetValues(typeof(ContentType)).Cast<ContentType>().ToArray();
+            foreach (var contentType in enumArray)
             {
                 result.Add(new SelectListItem { Text = ContentTypeNames[(byte)contentType], Value = ((byte)contentType).ToString(), Selected = selectedItem == (byte)contentType });
             }
