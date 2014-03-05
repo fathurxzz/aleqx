@@ -26,7 +26,9 @@ namespace Mayka.Models
 
             Menu = new List<Helpers.MenuItem>();
 
-            foreach (var c in Contents.Where(c=>c.ContentType!=(int)ContentType.HomePage))
+            foreach (var c in Contents
+                //.Where(c=>c.ContentType!=(int)ContentType.HomePage)
+                )
             {
                 Menu.Add(new Helpers.MenuItem
                 {

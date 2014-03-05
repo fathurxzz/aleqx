@@ -1,12 +1,13 @@
-﻿@model Mayka.Models.Entities.Content
+﻿@using Mayka.Helpers
+@model Mayka.Models.Content
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
 
+<div class="adminContent">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -15,7 +16,13 @@
         <legend>Content</legend>
 
         @Html.HiddenFor(model => model.Id)
-
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContentType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ContentType,UIHelper.GetContentTypes(Model.ContentType))
+            @Html.ValidationMessageFor(model => model.ContentType)
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -72,24 +79,19 @@
             @Html.ValidationMessageFor(model => model.SeoKeywords)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ContentType)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ContentType)
-            @Html.ValidationMessageFor(model => model.ContentType)
-        </div>
+        
 
         <p>
-            <input type="submit" value="Save" />
+            <br/>
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index","Home",new{area=""},null)
+    @Html.ActionLink("Назад", "Index","Home",new{area="",id=Model.Name},null)
 </div>
-
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
