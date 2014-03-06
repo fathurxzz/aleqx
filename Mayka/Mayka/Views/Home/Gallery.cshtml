@@ -18,10 +18,28 @@
         </div>
     }
 
-    @foreach (var item in Model.Content.PhotoGalleryItems)
+@*@foreach (var item in Model.Content.PhotoGalleryItems)
     {
         @Html.Raw(Html.OriginalImage("/Content/Images/", item.ImageSource))
-    }
+    }*@
+    
+   <div class="slider-controls">
+        <div>
+            <div id="slider-prev"></div>
+            <div id="slider-next"></div>
+            <div class="clear"></div>
+        </div>
+   </div> 
+
+    <ul class="bxslider">
+        @foreach (var item in Model.Content.PhotoGalleryItems)
+        {
+            <li>@Html.Raw(Html.OriginalImageWitTitleAttribute("/Content/Images/", item.ImageSource, HttpUtility.HtmlEncode("<a target=\"_blank\" href=\""+item.Url+"\">"+item.Title+"</a>")))</li>
+        }
+    </ul>
+    
+   
+
 </div>
 
 
