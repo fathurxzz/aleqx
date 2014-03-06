@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteExtensions", "SiteExtensions\SiteExtensions.csproj", "{445C44D4-D01C-4F9D-9CEE-7DE47BBA1CE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteExtensionsTest", "SiteExtensionsTest\SiteExtensionsTest.csproj", "{467CDBA1-4D37-4C1B-A75E-6F88B1C41E9A}"
