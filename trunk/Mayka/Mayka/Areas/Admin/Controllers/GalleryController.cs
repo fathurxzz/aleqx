@@ -39,7 +39,7 @@ namespace Mayka.Areas.Admin.Controllers
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
                 filePath = Path.Combine(filePath, fileName);
-                GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload);
+                GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 680);
                 //fileUpload.SaveAs(filePath);
                 pgi.ImageSource = fileName;
             }

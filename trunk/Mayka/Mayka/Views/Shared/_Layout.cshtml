@@ -9,7 +9,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    @Styles.Render("~/Content/Fonts.css", "~/Content/Site.css", "~/Content/Errors.css", "~/Content/Menu.css")
+    @Styles.Render("~/Content/Fonts.css", "~/Content/Site.css", "~/Content/Errors.css", "~/Content/Menu.css","~/Content/jquery.bxslider.css")
     @RenderSection("Styles", false)
     @if (Request.IsAuthenticated)
     { 
@@ -55,8 +55,10 @@
 
     </div>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.bxslider.min.js")
 
     @Scripts.Render("~/Scripts/site.js")
+    
 
     @RenderSection("scripts", required: false)
 </body>

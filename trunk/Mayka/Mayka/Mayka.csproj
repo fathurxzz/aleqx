@@ -178,15 +178,22 @@
     <Compile Include="Models\SiteContext.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin.css" />
     <Content Include="Content\Errors.css" />
     <Content Include="Content\Fonts.css" />
+    <Content Include="Content\img\bx_loader.gif" />
+    <Content Include="Content\img\controls.png" />
     <Content Include="Content\img\facebook.jpg" />
     <Content Include="Content\img\instagram.jpg" />
+    <Content Include="Content\img\left-arrow.png" />
     <Content Include="Content\img\logo.jpg" />
+    <Content Include="Content\img\name.png" />
+    <Content Include="Content\img\right-arrow.png" />
     <Content Include="Content\img\social-line.jpg" />
+    <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -203,6 +210,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.bxslider.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -239,6 +247,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
