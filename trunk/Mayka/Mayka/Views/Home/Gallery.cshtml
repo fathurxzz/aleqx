@@ -1,16 +1,37 @@
 ﻿@using Mayka.Helpers
+@using SiteExtensions.Graphics
 @model Mayka.Models.SiteModel
 @{
-    ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 
-@Html.Partial("_ContentHeader",new ContentHeaderModel{Title = Model.Content.Title, Text = Model.Content.Text})
+@Html.Partial("_ContentHeader", new ContentHeaderModel { Title = Model.Content.Title, Text = Model.Content.Text })
+
+
+<div class="galleryContainer">
+    @if (Request.IsAuthenticated)
+    {
+        <div>
+            @Html.ActionLink("Добавить изображение", "Create", "Gallery", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+        </div>
+    }
+
+    @foreach (var item in Model.Content.PhotoGalleryItems)
+    {
+        @Html.Raw(Html.OriginalImage("/Content/Images/", item.ImageSource))
+    }
+</div>
+
+
+
 
 
 @section Menu
 {
     @Html.Partial("Menu", Model.Menu)
 }
+
+
+
