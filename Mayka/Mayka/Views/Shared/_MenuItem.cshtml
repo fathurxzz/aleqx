@@ -9,7 +9,9 @@
         {
             <span class="sortOrder">@Model.SortOrder </span>
             
-            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
     </li>
 }
@@ -17,48 +19,57 @@ else
 {
     switch (Model.ContentType)
     {
-            case ContentType.HomePage:
+        case ContentType.HomePage:
             if (Request.IsAuthenticated)
             {
-                <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null)
-                    <span class="sortOrder">@Model.SortOrder </span>
-            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+    <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null)
+        <span class="sortOrder">@Model.SortOrder </span>
+        @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
+        @Html.Raw("&nbsp;")
+        @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
 
-                </li>
+
+    </li>
             }
             break;
         case ContentType.Content:
-            <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null) 
-                
-                @if (Request.IsAuthenticated)
+    <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null)
+
+        @if (Request.IsAuthenticated)
         {
             <span class="sortOrder">@Model.SortOrder </span>
-            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
-            </li>        
-            break;
+    </li>        
+        break;
         case ContentType.Gallery:
-            <li>@Html.ActionLink(Model.Title, "Gallery", "Home", new { id = Model.ContentName }, null) 
-                @if (Request.IsAuthenticated)
+    <li>@Html.ActionLink(Model.Title, "Gallery", "Home", new { id = Model.ContentName }, null)
+        @if (Request.IsAuthenticated)
         {
             <span class="sortOrder">@Model.SortOrder </span>
-            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
 
-            </li>        
-            break;
+    </li>        
+        break;
         case ContentType.Products:
-            <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, null) 
-                @if (Request.IsAuthenticated)
+    <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, null)
+        @if (Request.IsAuthenticated)
         {
             <span class="sortOrder">@Model.SortOrder </span>
             
             
-            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id=Model.ContentId }, new { @class = "adminLink" })
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
 
-            </li>        
-            break;
+    </li>        
+        break;
     }
 }
 
