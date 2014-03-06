@@ -388,6 +388,15 @@ namespace SiteExtensions.Graphics
             return sb.ToString();
         }
 
+        public static string OriginalImageWitTitleAttribute(this HtmlHelper helper, string originalPath, string fileName,string title)
+        {
+            StringBuilder sb = new StringBuilder();
+            string formatString = "<img src=\"{0}\" title=\"{1}\" />";
+
+            sb.AppendFormat(formatString, Path.Combine(originalPath, fileName), title);
+            return sb.ToString();
+        }
+
         public static string OriginalImageWithDim(this HtmlHelper helper, string originalPath, string fileName, string className, string id)
         {
             StringBuilder sb = new StringBuilder();
