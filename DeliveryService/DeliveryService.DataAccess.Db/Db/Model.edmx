@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="City" EntityType="Model.Store.City" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Company" EntityType="Model.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Model.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Category" EntityType="Model.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MasterCategory" EntityType="Model.Store.MasterCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductLocalInfo" EntityType="Model.Store.ProductLocalInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyLocalInfo" EntityType="Model.Store.CompanyLocalInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Criteria" EntityType="Model.Store.Criteria" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Quality" EntityType="Model.Store.Quality" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryLocalInfo" EntityType="Model.Store.CategoryLocalInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyCategory" EntityType="Model.Store.CompanyCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CityMasterCategory" EntityType="Model.Store.CityMasterCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MasterCategoryCompany" EntityType="Model.Store.MasterCategoryCompany" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductCategory" EntityType="Model.Store.ProductCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CityCompany" EntityType="Model.Store.CityCompany" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QualityCompany" EntityType="Model.Store.QualityCompany" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CriteriaCompanyLocalInfo" EntityType="Model.Store.CriteriaCompanyLocalInfo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CompanyProduct" Association="Model.Store.CompanyProduct">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyCategory_Company" Association="Model.Store.FK_CompanyCategory_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyCategory" EntitySet="CompanyCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyCategory_Category" Association="Model.Store.FK_CompanyCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CompanyCategory" EntitySet="CompanyCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityMasterCategory_City" Association="Model.Store.FK_CityMasterCategory_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="CityMasterCategory" EntitySet="CityMasterCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityMasterCategory_MasterCategory" Association="Model.Store.FK_CityMasterCategory_MasterCategory">
+      <End Role="MasterCategory" EntitySet="MasterCategory" />
+      <End Role="CityMasterCategory" EntitySet="CityMasterCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterCategoryCompany_MasterCategory" Association="Model.Store.FK_MasterCategoryCompany_MasterCategory">
+      <End Role="MasterCategory" EntitySet="MasterCategory" />
+      <End Role="MasterCategoryCompany" EntitySet="MasterCategoryCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MasterCategoryCompany_Company" Association="Model.Store.FK_MasterCategoryCompany_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="MasterCategoryCompany" EntitySet="MasterCategoryCompany" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductLocalInfo" Association="Model.Store.ProductProductLocalInfo">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductLocalInfo" EntitySet="ProductLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyCompanyLocalInfo" Association="Model.Store.CompanyCompanyLocalInfo">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CompanyLocalInfo" EntitySet="CompanyLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="CityCompanyLocalInfo" Association="Model.Store.CityCompanyLocalInfo">
+      <End Role="City" EntitySet="City" />
+      <End Role="CompanyLocalInfo" EntitySet="CompanyLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="CityProductLocalInfo" Association="Model.Store.CityProductLocalInfo">
+      <End Role="City" EntitySet="City" />
+      <End Role="ProductLocalInfo" EntitySet="ProductLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategory_Product" Association="Model.Store.FK_ProductCategory_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCategory_Category" Association="Model.Store.FK_ProductCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="ProductCategory" EntitySet="ProductCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityCompany_City" Association="Model.Store.FK_CityCompany_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="CityCompany" EntitySet="CityCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CityCompany_Company" Association="Model.Store.FK_CityCompany_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="CityCompany" EntitySet="CityCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QualityCompany_Quality" Association="Model.Store.FK_QualityCompany_Quality">
+      <End Role="Quality" EntitySet="Quality" />
+      <End Role="QualityCompany" EntitySet="QualityCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QualityCompany_Company" Association="Model.Store.FK_QualityCompany_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="QualityCompany" EntitySet="QualityCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CriteriaCompanyLocalInfo_Criteria" Association="Model.Store.FK_CriteriaCompanyLocalInfo_Criteria">
+      <End Role="Criteria" EntitySet="Criteria" />
+      <End Role="CriteriaCompanyLocalInfo" EntitySet="CriteriaCompanyLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CriteriaCompanyLocalInfo_CompanyLocalInfo" Association="Model.Store.FK_CriteriaCompanyLocalInfo_CompanyLocalInfo">
+      <End Role="CompanyLocalInfo" EntitySet="CompanyLocalInfo" />
+      <End Role="CriteriaCompanyLocalInfo" EntitySet="CriteriaCompanyLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="CityCategoryLocalInfo" Association="Model.Store.CityCategoryLocalInfo">
+      <End Role="City" EntitySet="City" />
+      <End Role="CategoryLocalInfo" EntitySet="CategoryLocalInfo" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryCategoryLocalInfo" Association="Model.Store.CategoryCategoryLocalInfo">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryLocalInfo" EntitySet="CategoryLocalInfo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="IsActive" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MasterCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ProductLocalInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyLocalInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkTime" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="DeliveryCost" Type="decimal" Nullable="false" />
+    <Property Name="MinOrderAmount" Type="longtext" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Criteria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Quality">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="CategoryLocalInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyCategory">
+    <Key>
+      <PropertyRef Name="Companies_Id" />
+      <PropertyRef Name="Categories_Id" />
+    </Key>
+    <Property Name="Companies_Id" Type="int" Nullable="false" />
+    <Property Name="Categories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CityMasterCategory">
+    <Key>
+      <PropertyRef Name="Cities_Id" />
+      <PropertyRef Name="MasterCategories_Id" />
+    </Key>
+    <Property Name="Cities_Id" Type="int" Nullable="false" />
+    <Property Name="MasterCategories_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MasterCategoryCompany">
+    <Key>
+      <PropertyRef Name="MasterCategories_Id" />
+      <PropertyRef Name="Companies_Id" />
+    </Key>
+    <Property Name="MasterCategories_Id" Type="int" Nullable="false" />
+    <Property Name="Companies_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+      <PropertyRef Name="Category_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="Category_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CityCompany">
+    <Key>
+      <PropertyRef Name="Cities_Id" />
+      <PropertyRef Name="Companies_Id" />
+    </Key>
+    <Property Name="Cities_Id" Type="int" Nullable="false" />
+    <Property Name="Companies_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QualityCompany">
+    <Key>
+      <PropertyRef Name="Qualities_Id" />
+      <PropertyRef Name="Companies_Id" />
+    </Key>
+    <Property Name="Qualities_Id" Type="int" Nullable="false" />
+    <Property Name="Companies_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CriteriaCompanyLocalInfo">
+    <Key>
+      <PropertyRef Name="Criteria_Id" />
+      <PropertyRef Name="CompanyLocalInfo_Id" />
+    </Key>
+    <Property Name="Criteria_Id" Type="int" Nullable="false" />
+    <Property Name="CompanyLocalInfo_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CompanyProduct">
+    <End Role="Company" Type="Model.Store.Company" Multiplicity="1" />
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductProductLocalInfo">
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="1" />
+    <End Role="ProductLocalInfo" Type="Model.Store.ProductLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductLocalInfo">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyCompanyLocalInfo">
+    <End Role="Company" Type="Model.Store.Company" Multiplicity="1" />
+    <End Role="CompanyLocalInfo" Type="Model.Store.CompanyLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyLocalInfo">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityCompanyLocalInfo">
+    <End Role="City" Type="Model.Store.City" Multiplicity="1" />
+    <End Role="CompanyLocalInfo" Type="Model.Store.CompanyLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyLocalInfo">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityProductLocalInfo">
+    <End Role="City" Type="Model.Store.City" Multiplicity="1" />
+    <End Role="ProductLocalInfo" Type="Model.Store.ProductLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductLocalInfo">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityCategoryLocalInfo">
+    <End Role="City" Type="Model.Store.City" Multiplicity="1" />
+    <End Role="CategoryLocalInfo" Type="Model.Store.CategoryLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLocalInfo">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryCategoryLocalInfo">
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <End Role="CategoryLocalInfo" Type="Model.Store.CategoryLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLocalInfo">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyCategory_Company">
+    <End Role="Company" Type="Model.Store.Company" Multiplicity="1" />
+    <End Role="CompanyCategory" Type="Model.Store.CompanyCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyCategory">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyCategory_Category">
+    <End Role="CompanyCategory" Type="Model.Store.CompanyCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyCategory">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityMasterCategory_City">
+    <End Role="City" Type="Model.Store.City" Multiplicity="1" />
+    <End Role="CityMasterCategory" Type="Model.Store.CityMasterCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CityMasterCategory">
+        <PropertyRef Name="Cities_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityMasterCategory_MasterCategory">
+    <End Role="CityMasterCategory" Type="Model.Store.CityMasterCategory" Multiplicity="*" />
+    <End Role="MasterCategory" Type="Model.Store.MasterCategory" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="MasterCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CityMasterCategory">
+        <PropertyRef Name="MasterCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterCategoryCompany_MasterCategory">
+    <End Role="MasterCategory" Type="Model.Store.MasterCategory" Multiplicity="1" />
+    <End Role="MasterCategoryCompany" Type="Model.Store.MasterCategoryCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MasterCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MasterCategoryCompany">
+        <PropertyRef Name="MasterCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MasterCategoryCompany_Company">
+    <End Role="MasterCategoryCompany" Type="Model.Store.MasterCategoryCompany" Multiplicity="*" />
+    <End Role="Company" Type="Model.Store.Company" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MasterCategoryCompany">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategory_Product">
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="1" />
+    <End Role="ProductCategory" Type="Model.Store.ProductCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductCategory">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCategory_Category">
+    <End Role="ProductCategory" Type="Model.Store.ProductCategory" Multiplicity="*" />
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductCategory">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityCompany_City">
+    <End Role="City" Type="Model.Store.City" Multiplicity="1" />
+    <End Role="CityCompany" Type="Model.Store.CityCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CityCompany">
+        <PropertyRef Name="Cities_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CityCompany_Company">
+    <End Role="CityCompany" Type="Model.Store.CityCompany" Multiplicity="*" />
+    <End Role="Company" Type="Model.Store.Company" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CityCompany">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QualityCompany_Quality">
+    <End Role="Quality" Type="Model.Store.Quality" Multiplicity="1" />
+    <End Role="QualityCompany" Type="Model.Store.QualityCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quality">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QualityCompany">
+        <PropertyRef Name="Qualities_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QualityCompany_Company">
+    <End Role="QualityCompany" Type="Model.Store.QualityCompany" Multiplicity="*" />
+    <End Role="Company" Type="Model.Store.Company" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QualityCompany">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CriteriaCompanyLocalInfo_Criteria">
+    <End Role="Criteria" Type="Model.Store.Criteria" Multiplicity="1" />
+    <End Role="CriteriaCompanyLocalInfo" Type="Model.Store.CriteriaCompanyLocalInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Criteria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CriteriaCompanyLocalInfo">
+        <PropertyRef Name="Criteria_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CriteriaCompanyLocalInfo_CompanyLocalInfo">
+    <End Role="CriteriaCompanyLocalInfo" Type="Model.Store.CriteriaCompanyLocalInfo" Multiplicity="*" />
+    <End Role="CompanyLocalInfo" Type="Model.Store.CompanyLocalInfo" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CompanyLocalInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CriteriaCompanyLocalInfo">
+        <PropertyRef Name="CompanyLocalInfo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Model.City" />
+          <EntitySet Name="Company" EntityType="Model.Company" />
+          <EntitySet Name="Product" EntityType="Model.Product" />
+          <EntitySet Name="Category" EntityType="Model.Category" />
+          <AssociationSet Name="CompanyProduct" Association="Model.CompanyProduct">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyCategory" Association="Model.CompanyCategory">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <EntitySet Name="MasterCategory" EntityType="Model.MasterCategory" />
+          <AssociationSet Name="CityMasterCategory" Association="Model.CityMasterCategory">
+            <End Role="City" EntitySet="City" />
+            <End Role="MasterCategory" EntitySet="MasterCategory" />
+          </AssociationSet>
+          <AssociationSet Name="MasterCategoryCompany" Association="Model.MasterCategoryCompany">
+            <End Role="MasterCategory" EntitySet="MasterCategory" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <EntitySet Name="ProductLocalInfo" EntityType="Model.ProductLocalInfo" />
+          <AssociationSet Name="ProductProductLocalInfo" Association="Model.ProductProductLocalInfo">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductLocalInfo" EntitySet="ProductLocalInfo" />
+          </AssociationSet>
+          <EntitySet Name="CompanyLocalInfo" EntityType="Model.CompanyLocalInfo" />
+          <AssociationSet Name="CompanyCompanyLocalInfo" Association="Model.CompanyCompanyLocalInfo">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyLocalInfo" EntitySet="CompanyLocalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="CityCompanyLocalInfo" Association="Model.CityCompanyLocalInfo">
+            <End Role="City" EntitySet="City" />
+            <End Role="CompanyLocalInfo" EntitySet="CompanyLocalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="CityProductLocalInfo" Association="Model.CityProductLocalInfo">
+            <End Role="City" EntitySet="City" />
+            <End Role="ProductLocalInfo" EntitySet="ProductLocalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="ProductCategory" Association="Model.ProductCategory">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="CityCompany" Association="Model.CityCompany">
+            <End Role="City" EntitySet="City" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <EntitySet Name="Criteria" EntityType="Model.Criteria" />
+          <EntitySet Name="Quality" EntityType="Model.Quality" />
+          <AssociationSet Name="QualityCompany" Association="Model.QualityCompany">
+            <End Role="Quality" EntitySet="Quality" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="CriteriaCompanyLocalInfo" Association="Model.CriteriaCompanyLocalInfo">
+            <End Role="Criteria" EntitySet="Criteria" />
+            <End Role="CompanyLocalInfo" EntitySet="CompanyLocalInfo" />
+          </AssociationSet>
+          <EntitySet Name="CategoryLocalInfo" EntityType="Model.CategoryLocalInfo" />
+          <AssociationSet Name="CityCategoryLocalInfo" Association="Model.CityCategoryLocalInfo">
+            <End Role="City" EntitySet="City" />
+            <End Role="CategoryLocalInfo" EntitySet="CategoryLocalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryCategoryLocalInfo" Association="Model.CategoryCategoryLocalInfo">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryLocalInfo" EntitySet="CategoryLocalInfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <NavigationProperty Name="MasterCategories" Relationship="Model.CityMasterCategory" FromRole="City" ToRole="MasterCategory" />
+          <NavigationProperty Name="CompanyLocalInfo" Relationship="Model.CityCompanyLocalInfo" FromRole="City" ToRole="CompanyLocalInfo" />
+          <NavigationProperty Name="ProductLocalInfo" Relationship="Model.CityProductLocalInfo" FromRole="City" ToRole="ProductLocalInfo" />
+          <NavigationProperty Name="Companies" Relationship="Model.CityCompany" FromRole="City" ToRole="Company" />
+          <NavigationProperty Name="CategoryLocalInfo" Relationship="Model.CityCategoryLocalInfo" FromRole="City" ToRole="CategoryLocalInfo" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Products" Relationship="Model.CompanyProduct" FromRole="Company" ToRole="Product" />
+          <NavigationProperty Name="Categories" Relationship="Model.CompanyCategory" FromRole="Company" ToRole="Category" />
+          <NavigationProperty Name="MasterCategories" Relationship="Model.MasterCategoryCompany" FromRole="Company" ToRole="MasterCategory" />
+          <NavigationProperty Name="CompanyLocalInfo" Relationship="Model.CompanyCompanyLocalInfo" FromRole="Company" ToRole="CompanyLocalInfo" />
+          <NavigationProperty Name="Cities" Relationship="Model.CityCompany" FromRole="Company" ToRole="City" />
+          <NavigationProperty Name="Qualities" Relationship="Model.QualityCompany" FromRole="Company" ToRole="Quality" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Model.CompanyProduct" FromRole="Product" ToRole="Company" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="ProductLocalInfo" Relationship="Model.ProductProductLocalInfo" FromRole="Product" ToRole="ProductLocalInfo" />
+          <NavigationProperty Name="Category" Relationship="Model.ProductCategory" FromRole="Product" ToRole="Category" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Companies" Relationship="Model.CompanyCategory" FromRole="Category" ToRole="Company" />
+          <NavigationProperty Name="Product" Relationship="Model.ProductCategory" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="CategoryLocalInfo" Relationship="Model.CategoryCategoryLocalInfo" FromRole="Category" ToRole="CategoryLocalInfo" />
+        </EntityType>
+        <Association Name="CompanyProduct">
+          <End Type="Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyCategory">
+          <End Type="Model.Company" Role="Company" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <EntityType Name="MasterCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Cities" Relationship="Model.CityMasterCategory" FromRole="MasterCategory" ToRole="City" />
+          <NavigationProperty Name="Companies" Relationship="Model.MasterCategoryCompany" FromRole="MasterCategory" ToRole="Company" />
+        </EntityType>
+        <Association Name="CityMasterCategory">
+          <End Type="Model.City" Role="City" Multiplicity="*" />
+          <End Type="Model.MasterCategory" Role="MasterCategory" Multiplicity="*" />
+        </Association>
+        <Association Name="MasterCategoryCompany">
+          <End Type="Model.MasterCategory" Role="MasterCategory" Multiplicity="*" />
+          <End Type="Model.Company" Role="Company" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ProductLocalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="Price" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Model.ProductProductLocalInfo" FromRole="ProductLocalInfo" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Model.CityProductLocalInfo" FromRole="ProductLocalInfo" ToRole="City" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductProductLocalInfo">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.ProductLocalInfo" Role="ProductLocalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductLocalInfo">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CompanyLocalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="WorkTime" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Company" Relationship="Model.CompanyCompanyLocalInfo" FromRole="CompanyLocalInfo" ToRole="Company" />
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Model.CityCompanyLocalInfo" FromRole="CompanyLocalInfo" ToRole="City" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="DeliveryCost" Nullable="false" />
+          <Property Type="String" Name="MinOrderAmount" Nullable="false" />
+          <NavigationProperty Name="Criteria" Relationship="Model.CriteriaCompanyLocalInfo" FromRole="CompanyLocalInfo" ToRole="Criteria" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <Association Name="CompanyCompanyLocalInfo">
+          <End Type="Model.Company" Role="Company" Multiplicity="1" />
+          <End Type="Model.CompanyLocalInfo" Role="CompanyLocalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyLocalInfo">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CityCompanyLocalInfo">
+          <End Type="Model.City" Role="City" Multiplicity="1" />
+          <End Type="Model.CompanyLocalInfo" Role="CompanyLocalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyLocalInfo">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CityProductLocalInfo">
+          <End Type="Model.City" Role="City" Multiplicity="1" />
+          <End Type="Model.ProductLocalInfo" Role="ProductLocalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductLocalInfo">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductCategory">
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="*" />
+        </Association>
+        <Association Name="CityCompany">
+          <End Type="Model.City" Role="City" Multiplicity="*" />
+          <End Type="Model.Company" Role="Company" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Criteria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="CompanyLocalInfo" Relationship="Model.CriteriaCompanyLocalInfo" FromRole="Criteria" ToRole="CompanyLocalInfo" />
+        </EntityType>
+        <EntityType Name="Quality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Companies" Relationship="Model.QualityCompany" FromRole="Quality" ToRole="Company" />
+        </EntityType>
+        <Association Name="QualityCompany">
+          <End Type="Model.Quality" Role="Quality" Multiplicity="*" />
+          <End Type="Model.Company" Role="Company" Multiplicity="*" />
+        </Association>
+        <Association Name="CriteriaCompanyLocalInfo">
+          <End Type="Model.Criteria" Role="Criteria" Multiplicity="*" />
+          <End Type="Model.CompanyLocalInfo" Role="CompanyLocalInfo" Multiplicity="*" />
+        </Association>
+        <EntityType Name="CategoryLocalInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Model.CityCategoryLocalInfo" FromRole="CategoryLocalInfo" ToRole="City" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Model.CategoryCategoryLocalInfo" FromRole="CategoryLocalInfo" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+        </EntityType>
+        <Association Name="CityCategoryLocalInfo">
+          <End Type="Model.City" Role="City" Multiplicity="1" />
+          <End Type="Model.CategoryLocalInfo" Role="CategoryLocalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryLocalInfo">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryCategoryLocalInfo">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.CategoryLocalInfo" Role="CategoryLocalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryLocalInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.City)">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Company)">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterCategory">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.MasterCategory)">
+        <MappingFragment StoreEntitySet="MasterCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductLocalInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductLocalInfo)">
+        <MappingFragment StoreEntitySet="ProductLocalInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyLocalInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.CompanyLocalInfo)">
+        <MappingFragment StoreEntitySet="CompanyLocalInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WorkTime" ColumnName="WorkTime" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeliveryCost" ColumnName="DeliveryCost" />
+          <ScalarProperty Name="MinOrderAmount" ColumnName="MinOrderAmount" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Criteria">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Criteria)">
+        <MappingFragment StoreEntitySet="Criteria">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quality">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Quality)">
+        <MappingFragment StoreEntitySet="Quality">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryLocalInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.CategoryLocalInfo)">
+        <MappingFragment StoreEntitySet="CategoryLocalInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CompanyCategory" TypeName="Model.CompanyCategory" StoreEntitySet="CompanyCategory">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Companies_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Categories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CityMasterCategory" TypeName="Model.CityMasterCategory" StoreEntitySet="CityMasterCategory">
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="Cities_Id" />
+      </EndProperty>
+      <EndProperty Name="MasterCategory">
+        <ScalarProperty Name="Id" ColumnName="MasterCategories_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MasterCategoryCompany" TypeName="Model.MasterCategoryCompany" StoreEntitySet="MasterCategoryCompany">
+      <EndProperty Name="MasterCategory">
+        <ScalarProperty Name="Id" ColumnName="MasterCategories_Id" />
+      </EndProperty>
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Companies_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductCategory" TypeName="Model.ProductCategory" StoreEntitySet="ProductCategory">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Product_Id" />
+      </EndProperty>
+      <EndProperty Name="Category">
+        <ScalarProperty Name="Id" ColumnName="Category_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CityCompany" TypeName="Model.CityCompany" StoreEntitySet="CityCompany">
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="Cities_Id" />
+      </EndProperty>
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Companies_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="QualityCompany" TypeName="Model.QualityCompany" StoreEntitySet="QualityCompany">
+      <EndProperty Name="Quality">
+        <ScalarProperty Name="Id" ColumnName="Qualities_Id" />
+      </EndProperty>
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Companies_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CriteriaCompanyLocalInfo" TypeName="Model.CriteriaCompanyLocalInfo" StoreEntitySet="CriteriaCompanyLocalInfo">
+      <EndProperty Name="Criteria">
+        <ScalarProperty Name="Id" ColumnName="Criteria_Id" />
+      </EndProperty>
+      <EndProperty Name="CompanyLocalInfo">
+        <ScalarProperty Name="Id" ColumnName="CompanyLocalInfo_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42353fadc8344232a792d23d22423572" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model.City" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="Model.Company" Width="1.75" PointX="7.25" PointY="2.625" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.625" PointX="12.25" PointY="1.75" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.625" PointX="9.75" PointY="3" />
+        <AssociationConnector Association="Model.CompanyProduct" />
+        <AssociationConnector Association="Model.CompanyCategory" />
+        <EntityTypeShape EntityType="Model.MasterCategory" Width="1.5" PointX="3.625" PointY="3.875" />
+        <AssociationConnector Association="Model.CityMasterCategory" />
+        <AssociationConnector Association="Model.MasterCategoryCompany" />
+        <EntityTypeShape EntityType="Model.ProductLocalInfo" Width="1.625" PointX="12.25" PointY="4.75" />
+        <AssociationConnector Association="Model.ProductProductLocalInfo" />
+        <EntityTypeShape EntityType="Model.CompanyLocalInfo" Width="2" PointX="7.125" PointY="8.125" />
+        <AssociationConnector Association="Model.CompanyCompanyLocalInfo" />
+        <AssociationConnector Association="Model.CityCompanyLocalInfo" />
+        <AssociationConnector Association="Model.CityProductLocalInfo" ></AssociationConnector>
+        <AssociationConnector Association="Model.ProductCategory" />
+        <AssociationConnector Association="Model.CityCompany" />
+        <EntityTypeShape EntityType="Model.Criteria" Width="1.5" PointX="10" PointY="9.875" />
+        <EntityTypeShape EntityType="Model.Quality" Width="1.5" PointX="4.25" PointY="0.5" />
+        <AssociationConnector Association="Model.QualityCompany" />
+        <AssociationConnector Association="Model.CriteriaCompanyLocalInfo" />
+        <EntityTypeShape EntityType="Model.CategoryLocalInfo" Width="1.625" PointX="9.875" PointY="7" />
+        <AssociationConnector Association="Model.CityCategoryLocalInfo" />
+        <AssociationConnector Association="Model.CategoryCategoryLocalInfo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
