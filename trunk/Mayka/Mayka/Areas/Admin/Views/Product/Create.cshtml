@@ -11,6 +11,8 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
+        @Html.HiddenFor(model => model.ContentId)
+    
     <fieldset>
         <legend>Product</legend>
 
@@ -18,7 +20,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -26,19 +28,11 @@
             @Html.LabelFor(model => model.PreviewImageSource)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PreviewImageSource)
+            <input type="file" name="fileUpload" class="photoFileInput" />
             @Html.ValidationMessageFor(model => model.PreviewImageSource)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ContentId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ContentId)
-            @Html.ValidationMessageFor(model => model.ContentId)
-        </div>
-
         <p>
+            <br />
             <input type="submit" value="Create" />
         </p>
     </fieldset>
@@ -50,4 +44,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }
