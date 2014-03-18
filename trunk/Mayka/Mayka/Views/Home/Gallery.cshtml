@@ -34,7 +34,14 @@
     <ul class="bxslider">
         @foreach (var item in Model.Content.PhotoGalleryItems)
         {
-            <li>@Html.Raw(Html.OriginalImageWitTitleAttribute("/Content/Images/", item.ImageSource, HttpUtility.HtmlEncode("<a target=\"_blank\" href=\""+item.Url+"\">"+item.Title+"</a>")))</li>
+            if (string.IsNullOrEmpty(item.Url))
+            {
+                <li>@Html.Raw(Html.OriginalImageWitTitleAttribute("/Content/Images/", item.ImageSource, item.Title))</li>
+            }
+            else
+            {
+                <li>@Html.Raw(Html.OriginalImageWitTitleAttribute("/Content/Images/", item.ImageSource, HttpUtility.HtmlEncode("<a target=\"_blank\" href=\"" + item.Url + "\">" + item.Title + "</a>")))</li>
+            }
         }
     </ul>
     
