@@ -1,15 +1,19 @@
-﻿@model Mayka.Models.SiteModel
+﻿@using Mayka.Helpers
+@model Mayka.Models.SiteModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Products</h2>
-
 
 @section Menu
 {
     @Html.Partial("Menu", Model.Menu)
 }
+
+
+<div class="main-title">
+    @Model.Content.Title
+</div>
+
 
 <div class="productsContainer">
     @if (Request.IsAuthenticated)

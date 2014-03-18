@@ -178,6 +178,7 @@
     <Compile Include="Models\SiteContext.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\Validation\PhotoGalleryItemValidation.cs" />
+    <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
   </ItemGroup>
