@@ -192,9 +192,9 @@
 
 .bx-wrapper .bx-caption span {
 	color: #000;
-	font-family: Arial;
+	font-family: "Trebuchet MS";
 	display: block;
-	font-size: .85em;
+    font-size: 15px;
     text-align: center;
     padding-top: 20px;
 }

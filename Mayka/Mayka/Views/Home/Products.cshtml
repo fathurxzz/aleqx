@@ -10,3 +10,13 @@
 {
     @Html.Partial("Menu", Model.Menu)
 }
+
+<div class="productsContainer">
+    @if (Request.IsAuthenticated)
+    {
+        <div>
+            @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
+        </div>
+    }
+
+</div>
