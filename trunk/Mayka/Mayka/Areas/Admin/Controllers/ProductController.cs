@@ -45,11 +45,12 @@ namespace Mayka.Areas.Admin.Controllers
                 product.PreviewImageSource = fileName;
             }
 
+            
             _context.Product.Add(product);
             _context.SaveChanges();
 
 
-            return RedirectToAction("Gallery", "Home", new { area = "", id = content.Name });
+            return RedirectToAction("Products", "Home", new { area = "", id = content.Name });
         }
 
     }

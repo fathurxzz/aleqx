@@ -13,16 +13,25 @@ namespace Mayka.Models
         public string SeoKeywords { get; set; }
         public bool IsHomePage { get; set; }
         public Content Content { get; set; }
+        public Product Product { get; set; }
         public List<Helpers.MenuItem> Menu  { get; set; }
         protected IQueryable<Content> Contents { get; set; }
 
-        public SiteModel(SiteContext context, string contentId)
+        public SiteModel(SiteContext context, string contentId, int? productId = null)
         {
             Contents = context.Content;
             Title = "Майкаджексон";
 
-
-            Content = Contents.FirstOrDefault(c => c.Name == contentId) ?? context.Content.First(c => c.ContentType==(int)ContentType.HomePage);
+            if (contentId == null)
+            {
+                Product = context.Product.First(p => p.Id == productId);
+                Content = Product.Content;
+            }
+            else
+            {
+                Content = Contents.FirstOrDefault(c => c.Name == contentId) ??
+                          context.Content.First(c => c.ContentType == (int) ContentType.HomePage);
+            }
 
             Menu = new List<Helpers.MenuItem>();
 

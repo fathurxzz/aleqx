@@ -35,5 +35,11 @@ namespace Mayka.Controllers
             this.SetSeoContent(model);
             return View(model);
         }
+
+        public ActionResult ProductDetails(int id)
+        {
+            var model = new SiteModel(_context, null, id);
+            return View(model);
+        }
     }
 }
