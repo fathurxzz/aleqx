@@ -1,0 +1,14 @@
+﻿@model Mayka.Models.SiteModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Menu
+{
+    @Html.Partial("Menu", Model.Menu)
+}
+
+<div class="main-title">
+    @Model.Content.Title
+</div>
