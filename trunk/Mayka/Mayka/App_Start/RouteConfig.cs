@@ -41,9 +41,15 @@ namespace Mayka
             );
 
             routes.MapRoute(
-                name: "Product",
+                name: "Products",
                 url: "products/{id}",
                 defaults: new { controller = "Home", action = "Products", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Product",
+                url: "product/{id}",
+                defaults: new { controller = "Home", action = "ProductDetails", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
