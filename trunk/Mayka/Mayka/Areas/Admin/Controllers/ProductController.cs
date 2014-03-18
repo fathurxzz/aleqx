@@ -40,8 +40,8 @@ namespace Mayka.Areas.Admin.Controllers
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
                 filePath = Path.Combine(filePath, fileName);
-                GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
-                //fileUpload.SaveAs(filePath);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
+                fileUpload.SaveAs(filePath);
                 product.PreviewImageSource = fileName;
             }
 
