@@ -11,6 +11,14 @@ namespace Mayka.Models
 
     public class ProductValidation
     {
-         
+        [Display(Name = "Описание")]
+        public string Description { get; set; }
+
+        [Display(Name = "Превьюшка")]
+        public string PreviewImageSource { get; set; }
+
+        [Display(Name = "Порядок отображения")]
+        [Required(ErrorMessage = "Введите порядок отображения")]
+        public int SortOrder { get; set; }
     }
 }

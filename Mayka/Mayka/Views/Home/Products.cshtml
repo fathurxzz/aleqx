@@ -22,11 +22,11 @@
             @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
         </div>
     }
-    
-    
-    @foreach (var item in Model.Content.Products)
+
+
+    @foreach (var item in Model.Content.Products.OrderBy(p => p.SortOrder))
     {
-        @Html.Partial("Product",item)
+        @Html.Partial("Product", item)
     }
 
 </div>
