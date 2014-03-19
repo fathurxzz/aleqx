@@ -54,7 +54,18 @@
         </div>
         
         <div class="productImage">
-            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ProductImages.First().ImageSource, SiteSettings.GetThumbnail("productImage")))
+
+            @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ProductImages.First().ImageSource, SiteSettings.GetThumbnail("productImage")))*@
+            
+            @foreach (var item in Model.Product.ProductImages.OrderByDescending(i=>i.SortOrder))
+            {
+                <div class="image">
+                    <a href="/Content/Images/@item.ImageSource" rel="group1" class="fancy">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("productImage")))
+                    </a>
+                    </div>
+            }
+
         </div>
         
     }

@@ -9,6 +9,7 @@ HomeController.prototype = {
             $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
         }
 
+        $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
         
 

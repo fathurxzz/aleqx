@@ -250,6 +250,10 @@ textarea
     border: 11px solid #f4f4f4;
 }
 
+.productImage .image {
+    position: absolute;
+}
+
 .productDescription {
     position: absolute;
     margin-left: 430px;
