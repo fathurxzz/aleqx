@@ -20,3 +20,12 @@
     padding-bottom: 30px;
 }
 
+.productImagesAdminView {
+}
+
+.productImagesAdminView .image {
+    height: 250px;
+}
+
+.productImagesAdminView .imageInfo {
+}

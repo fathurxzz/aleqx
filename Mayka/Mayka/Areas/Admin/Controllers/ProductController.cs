@@ -83,5 +83,42 @@ namespace Mayka.Areas.Admin.Controllers
             return RedirectToAction("ProductDetails", "Home", new { area = "", id = product.Id });
         }
 
+        public ActionResult ChangeImageOrder(int productId, int imageId, string order)
+        {
+            var product = _context.Product.First(p => p.Id == productId);
+
+            
+
+            if (order == "down")
+            {
+                var image = product.ProductImages.First(i => i.Id == imageId);
+                var nextImage = product.ProductImages.FirstOrDefault(i => i.SortOrder == image.SortOrder + 1);
+                image.SortOrder += 1;
+                if (nextImage != null)
+                {
+                    nextImage.SortOrder -= 1;
+                }
+            }
+            else if (order == "up")
+            {
+                var image = product.ProductImages.First(i => i.Id == imageId);
+                var nextImage = product.ProductImages.FirstOrDefault(i => i.SortOrder == image.SortOrder - 1);
+                image.SortOrder -= 1;
+                if (nextImage != null)
+                {
+                    nextImage.SortOrder += 1;
+                }
+            }
+
+            //foreach (var image in product.ProductImages.OrderBy(p=>p.SortOrder))
+            //{
+                
+            //}
+
+            _context.SaveChanges();
+
+            return RedirectToAction("ProductDetails", "Home", new { area = "", id = product.Id });
+        }
+
     }
 }

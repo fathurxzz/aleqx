@@ -9,6 +9,9 @@ HomeController.prototype = {
             $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
         }
 
+
+        
+
         $('.bxslider').bxSlider({
             mode: 'fade',
             captions: true,
@@ -20,7 +23,75 @@ HomeController.prototype = {
             prevSelector: '#slider-prev',
             nextText: '',
             prevText: ''
+        });        
+
+
+        $("#phone").inputmask("9999999999", {
+            oncomplete: function () {
+                $(".phone a").removeAttr("disabled");
+            },
+            onclear: function () {
+                $(".phone a").attr("disabled", "disabled");
+            },
+            onincomplete: function () {
+                $(".phone a").attr("disabled", "disabled");
+            },
+
+            clearIncomplete: true
         });
+        
+
+        $(".phone a").click(function () {
+            if ($(".phone a").attr("disabled") != null) {
+                return;
+            }
+
+            $(".phone a").hide(0);
+            $(".phone input").hide(0);
+
+            var url = window.location.href;
+            var phone = escape(document.getElementById("phone").value);
+
+            //alert(url);
+            //alert(phone);
+
+
+            $.ajax({
+                url: "/api/Service/NotifyMiller?url=" + url + "&phone=" + phone,
+                    contentType: "application/json",
+                    accepts: "application/json",
+                    type: "POST",
+                    success: function () {
+                        $(".phone span").show(0);
+                        //alert("ok");
+                    },
+                    error: function (err) {
+                        //alert("Введите номер телефона.");
+                        $(".phone a").show(0);
+                        $(".phone span").hide(0);
+                        //alert("error");
+                    }
+            });
+
+            //$.ajax({
+            //    url: "/api/Items/NotifyMiller?url=" + url + "&phone=" + phone,
+            //    contentType: "application/json",
+            //    accepts: "application/json",
+            //    type: "POST",
+            //    success: function () {
+            //        $(".phone span").show(0);
+            //    },
+            //    error: function (err) {
+            //        alert("Введите номер телефона.");
+            //        $(".phone a").show(0);
+            //        $(".phone span").hide(0);
+            //    }
+            //})
+            //  .always(function () {
+            //      $(".phone a").css("visibility", "visible");
+            //  });
+        });
+
 
     }
 };
