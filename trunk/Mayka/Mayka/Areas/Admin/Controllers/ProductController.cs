@@ -4,6 +4,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Http.WebHost;
 using System.Web.Mvc;
 using Mayka.Helpers;
 using Mayka.Models;
@@ -87,6 +88,22 @@ namespace Mayka.Areas.Admin.Controllers
 
             _context.SaveChanges();
 
+            return RedirectToAction("Products", "Home", new { area = "", id = content.Name });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var product = _context.Product.First(p => p.Id == id);
+            var content = product.Content;
+
+            while (product.ProductImages.Any())
+            {
+                var image = product.ProductImages.First();
+                ImageHelper.DeleteImage(image.ImageSource);
+                _context.ProductImage.Remove(image);
+                
+            }
+            _context.SaveChanges();
             return RedirectToAction("Products", "Home", new { area = "", id = content.Name });
         }
 
