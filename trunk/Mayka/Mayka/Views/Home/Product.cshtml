@@ -2,9 +2,16 @@
 @model Mayka.Models.Product
 
 <div class="product">
-    
-    
-                    @*@Html.Raw(@Html.ActionLink("[Image]", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null).ToString().Replace("[Image]", ""))*@
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Редактировать","Edit","Product",new{area="Admin", id=Model.Id},new{@class="adminLink"})
+
+        </div>
+    }
+
+
+    @*@Html.Raw(@Html.ActionLink("[Image]", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null).ToString().Replace("[Image]", ""))*@
     
     @Html.Raw(@Html.ActionLink("[IMAGE]", "ProductDetails", "Home",new{id=Model.Id},null).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.PreviewImageSource)))
 

@@ -29,3 +29,8 @@
 
 .productImagesAdminView .imageInfo {
 }
+
+
+.adminLinkContainer {
+    position: absolute;
+}
