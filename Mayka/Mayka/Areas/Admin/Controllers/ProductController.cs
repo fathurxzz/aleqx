@@ -103,6 +103,10 @@ namespace Mayka.Areas.Admin.Controllers
                 _context.ProductImage.Remove(image);
                 
             }
+            
+            ImageHelper.DeleteImage(product.PreviewImageSource);
+            _context.Product.Remove(product);
+
             _context.SaveChanges();
             return RedirectToAction("Products", "Home", new { area = "", id = content.Name });
         }
