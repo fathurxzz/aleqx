@@ -12,8 +12,7 @@
 }
 
 <div class="main-title">
-    @Html.ActionLink(Model.Content.Title,"Products","Home",new{id=Model.Content.Name},null)
-    
+    @Html.ActionLink(Model.Content.Title, "Products", "Home", new { id = Model.Content.Name }, null)
 </div>
 
 
@@ -25,19 +24,36 @@
 
     @if (Request.IsAuthenticated)
     {
-        foreach (var image in Model.Product.ProductImages)
+        foreach (var image in Model.Product.ProductImages.OrderBy(i => i.SortOrder))
         {
-        <div>
-            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("adminPreviewProductImage")))
+        <div class="productImagesAdminView">
+            <div class="image">
+                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("adminPreviewProductImage")))
+                <div class="imageInfo">
+                    <span class="sortOrder">@image.SortOrder</span>
+                    @Html.ActionLink("up", "ChangeImageOrder", "Product", new { area="Admin", productId = Model.Product.Id, imageId = image.Id, order="up" }, new { @class = "adminLink" })
+                    @Html.ActionLink("down", "ChangeImageOrder", "Product", new { area="Admin", productId = Model.Product.Id, imageId = image.Id, order="down" }, new { @class = "adminLink" })
+                </div>
+            </div>
         </div>
         }
     }
     else if (Model.Product.ProductImages.Any())
     {
+        <div class="productDescription">
+            @Html.Raw(Model.Product.Description)
+            <div class="phone">
+                <span>До связи!</span>
+                <input type="text" id="phone"/>
+                <a href="javascript:void(0)" disabled></a>
+            </div>
+        </div>
+        
         <div class="productImage">
             @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ProductImages.First().ImageSource, SiteSettings.GetThumbnail("productImage")))
         </div>
+        
     }
 
-
+    <div class="clear"></div>
 </div>
