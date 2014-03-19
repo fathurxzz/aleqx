@@ -44,6 +44,7 @@ namespace Mayka.Models
                     ContentId = c.Id,
                     ContentName = c.Name,
                     Current = c.Name == contentId,
+                    Selected = c.Name==Content.Name,
                     SortOrder = c.SortOrder,
                     Title = c.MenuTitle,
                     ContentType = (ContentType)c.ContentType

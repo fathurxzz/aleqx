@@ -1,4 +1,6 @@
-﻿@model Mayka.Models.SiteModel
+﻿@using Mayka
+@using SiteExtensions.Graphics
+@model Mayka.Models.SiteModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,5 +12,32 @@
 }
 
 <div class="main-title">
-    @Model.Content.Title
+    @Html.ActionLink(Model.Content.Title,"Products","Home",new{id=Model.Content.Name},null)
+    
+</div>
+
+
+<div class="productDetails">
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("add images", "AddProductImages", "Product", new { area = "Admin", id = Model.Product.Id }, new { @class = "adminLink" })
+    }
+
+    @if (Request.IsAuthenticated)
+    {
+        foreach (var image in Model.Product.ProductImages)
+        {
+        <div>
+            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("adminPreviewProductImage")))
+        </div>
+        }
+    }
+    else if (Model.Product.ProductImages.Any())
+    {
+        <div class="productImage">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ProductImages.First().ImageSource, SiteSettings.GetThumbnail("productImage")))
+        </div>
+    }
+
+
 </div>

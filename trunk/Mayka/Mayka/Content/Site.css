@@ -225,3 +225,15 @@ textarea
     float: left;
     margin:0 50px 50px 0;
 }
+
+.productDetails {
+    /*width: 350px;
+    height: 390px;
+    border: 11px solid #f4f4f4;*/
+}
+
+.productImage {
+    width: 350px;
+    height: 390px;
+    border: 11px solid #f4f4f4;
+}

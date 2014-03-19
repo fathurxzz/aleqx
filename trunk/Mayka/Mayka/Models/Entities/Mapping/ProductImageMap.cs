@@ -19,6 +19,7 @@ namespace Mayka.Models.Entities
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
             this.Property(t => t.ProductId).HasColumnName("ProductId");
+            this.Property(t => t.SortOrder).HasColumnName("SortOrder");
 
             // Relationships
             this.HasRequired(t => t.Product)

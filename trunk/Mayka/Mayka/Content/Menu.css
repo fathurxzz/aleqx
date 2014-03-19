@@ -11,3 +11,8 @@
     margin: 30px auto;
     line-height: 18px;
 }
+
+
+a.selected {
+    color: #999 !important;
+}

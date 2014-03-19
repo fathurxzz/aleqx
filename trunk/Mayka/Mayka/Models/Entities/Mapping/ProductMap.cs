@@ -21,6 +21,7 @@ namespace Mayka.Models.Entities
             this.ToTable("Product", "gbua_mayka");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.PreviewImageSource).HasColumnName("PreviewImageSource");
             this.Property(t => t.ContentId).HasColumnName("ContentId");
 
