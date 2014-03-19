@@ -1,0 +1,59 @@
+﻿@model Mayka.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ContentId)
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Description, new { @class = "ckeditor" })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PreviewImageSource)
+        </div>
+        <div class="editor-field">
+            <input type="file" name="fileUpload" class="photoFileInput" />
+            @Html.ValidationMessageFor(model => model.PreviewImageSource)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SortOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SortOrder)
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+
+        <p>
+            <br />
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Products", "Home", new { area = "", id = Model.Content.Name }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mayka.Helpers;
 using Mayka.Models;
 using SiteExtensions;
 using SiteExtensions.Graphics;
@@ -53,6 +54,38 @@ namespace Mayka.Areas.Admin.Controllers
             _context.Product.Add(product);
             _context.SaveChanges();
 
+
+            return RedirectToAction("Products", "Home", new { area = "", id = content.Name });
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            var product = _context.Product.First(p => p.Id == id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product model, HttpPostedFileBase fileUpload)
+        {
+            var content = _context.Content.First(c => c.Id == model.ContentId);
+
+            var product = _context.Product.First(p => p.Id == model.Id);
+            TryUpdateModel(product, new[] {"SortOrder"});
+            product.Description = HttpUtility.HtmlDecode(model.Description);
+            if (fileUpload != null)
+            {
+                ImageHelper.DeleteImage(product.PreviewImageSource);
+
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+                filePath = Path.Combine(filePath, fileName);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
+                fileUpload.SaveAs(filePath);
+                product.PreviewImageSource = fileName;
+            }
+
+            _context.SaveChanges();
 
             return RedirectToAction("Products", "Home", new { area = "", id = content.Name });
         }
