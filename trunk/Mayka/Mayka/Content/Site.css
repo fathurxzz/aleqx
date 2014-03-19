@@ -161,6 +161,15 @@ textarea
     color: #858585;
 }
 
+.main-title span {
+    padding-right: 30px;
+    background: url('img/link-arrows.gif') no-repeat right;
+}
+
+.main-title a {
+    color: #0072bc;
+}
+
 .main-text {
     padding-top: 20px;
     padding-right: 180px;

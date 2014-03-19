@@ -193,6 +193,7 @@
     <Content Include="Content\img\facebook.jpg" />
     <Content Include="Content\img\instagram.jpg" />
     <Content Include="Content\img\left-arrow.png" />
+    <Content Include="Content\img\link-arrows.gif" />
     <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\img\name.png" />
     <Content Include="Content\img\right-arrow.png" />
