@@ -21,7 +21,8 @@
 <div class="productDetails">
     @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink("add images", "AddProductImages", "Product", new { area = "Admin", id = Model.Product.Id }, new { @class = "adminLink" })
+        @Html.ActionLink("Добавить изображения", "AddProductImages", "Product", new { area = "Admin", id = Model.Product.Id }, new { @class = "adminLink" })
+        <br/>
     }
 
     @if (Request.IsAuthenticated)
@@ -35,6 +36,7 @@
                     <span class="sortOrder">@image.SortOrder</span>
                     @Html.ActionLink("up", "ChangeImageOrder", "Product", new { area="Admin", productId = Model.Product.Id, imageId = image.Id, order="up" }, new { @class = "adminLink" })
                     @Html.ActionLink("down", "ChangeImageOrder", "Product", new { area="Admin", productId = Model.Product.Id, imageId = image.Id, order="down" }, new { @class = "adminLink" })
+                    @Html.ActionLink("delete","DeleteProductImage","Product",new{area="Admin", id=image.Id}, new { @class = "adminLink" })
                 </div>
             </div>
         </div>

@@ -93,7 +93,13 @@ namespace Mayka.Areas.Admin.Controllers
         public ActionResult AddProductImages(int id)
         {
             var product = _context.Product.First(p => p.Id == id);
-            return View(new ProductImage { ProductId = product.Id, SortOrder = product.ProductImages.Max(p=>p.SortOrder)+1 });
+            var sortOrder = 0;
+            if (product.ProductImages.Any())
+            {
+                sortOrder = product.ProductImages.Max(p => p.SortOrder) + 1;
+            }
+
+            return View(new ProductImage { ProductId = product.Id, SortOrder = sortOrder });
         }
 
         [HttpPost]
@@ -112,6 +118,16 @@ namespace Mayka.Areas.Admin.Controllers
                 image.ImageSource = fileName;
             }
             product.ProductImages.Add(image);
+            _context.SaveChanges();
+            return RedirectToAction("ProductDetails", "Home", new { area = "", id = product.Id });
+        }
+
+        public ActionResult DeleteProductImage(int id)
+        {
+            var image = _context.ProductImage.First(pi => pi.Id == id);
+            var product = image.Product;
+            ImageHelper.DeleteImage(image.ImageSource);
+            _context.ProductImage.Remove(image);
             _context.SaveChanges();
             return RedirectToAction("ProductDetails", "Home", new { area = "", id = product.Id });
         }
