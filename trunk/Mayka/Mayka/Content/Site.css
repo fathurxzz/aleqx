@@ -254,6 +254,10 @@ textarea
     position: absolute;
 }
 
+.productImage .image.first {
+    z-index: 1001;
+}
+
 .productDescription {
     position: absolute;
     margin-left: 430px;
