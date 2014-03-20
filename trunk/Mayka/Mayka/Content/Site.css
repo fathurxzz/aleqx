@@ -130,10 +130,12 @@ textarea
 
 .copyright
 {
-    width: 150px;
+    width: 160px;
     margin: 50px auto;
     line-height: 20px;
     font-size: 11px;
+    /*letter-spacing: 0.1em;*/
+    letter-spacing: 1px;
 }
 
 .social-icons .instagram, .social-icons .facebook {
@@ -311,4 +313,10 @@ textarea
 .phone span {
     display: none;
     font-size: 25px;
+}
+
+
+.productsDescription {
+    margin-top: -10px;
+    padding-bottom: 30px;
 }

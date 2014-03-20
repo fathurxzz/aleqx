@@ -9,6 +9,12 @@
     @Html.Partial("Menu", Model.Menu)
 }
 
+@if (!string.IsNullOrEmpty(Model.Content.Text))
+{
+    <div class="productsDescription">
+        @Html.Raw(Model.Content.Text)
+    </div>
+}
 
 <div class="main-title">
     @Model.Content.Title
