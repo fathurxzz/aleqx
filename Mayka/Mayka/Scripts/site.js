@@ -50,8 +50,10 @@ HomeController.prototype = {
             $(".phone a").hide(0);
             $(".phone input").hide(0);
 
-            var url = window.location.href;
+            //var url = window.location.href;
             var phone = escape(document.getElementById("phone").value);
+
+            var url = "http://maika.1gb.ua/content/images/" + document.getElementById("previewImageFileName").value;
 
             //alert(url);
             //alert(phone);
