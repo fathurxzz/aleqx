@@ -45,6 +45,7 @@
     else if (Model.Product.ProductImages.Any())
     {
         <div class="productDescription">
+            <input type="text" id="previewImageFileName" style="display: none" value="@Model.Product.PreviewImageSource"/>
             @Html.Raw(Model.Product.Description)
             <div class="phone">
                 <span>До связи!</span>
