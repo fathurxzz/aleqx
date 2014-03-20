@@ -16,7 +16,7 @@ namespace Mayka.Controllers
             message.To.Add("kushko.alex@gmail.com");
             //message.To.Add("miller.kak.miller@gmail.com");
             message.Subject = "m-j - Перезвони по футболке";
-            message.Body = string.Format("<div>Телефон: {0}</div><div><a href=\"{1}\">тыц!</a></div>", phone, url);
+            message.Body = string.Format("<div>Телефон: {0}</div><div><img src=\"{1}\" /></div>", phone, url);
             message.IsBodyHtml = true;
             client.Send(message);
             message.Dispose();
