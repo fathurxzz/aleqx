@@ -43,7 +43,7 @@ namespace Mayka.Models
                 {
                     ContentId = c.Id,
                     ContentName = c.Name,
-                    Current = c.Name == contentId,
+                    Current = c.Name == contentId ||contentId==""&&(ContentType)c.ContentType==ContentType.HomePage,
                     Selected = c.Name==Content.Name,
                     SortOrder = c.SortOrder,
                     Title = c.MenuTitle,
