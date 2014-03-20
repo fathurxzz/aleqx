@@ -229,6 +229,7 @@
     <Content Include="Content\img\social-line.jpg" />
     <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\Menu.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\fonts\OptimusC.otf" />

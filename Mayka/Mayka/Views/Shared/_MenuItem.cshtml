@@ -20,17 +20,16 @@ else
     switch (Model.ContentType)
     {
         case ContentType.HomePage:
-            if (Request.IsAuthenticated)
-            {
     <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null)
-        <span class="sortOrder">@Model.SortOrder </span>
-        @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
-        @Html.Raw("&nbsp;")
-        @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
-
-
+        @if (Request.IsAuthenticated)
+        {
+    
+            <span class="sortOrder">@Model.SortOrder </span>
+            @Html.ActionLink("ред", "Edit", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink" })
+            @Html.Raw("&nbsp;")
+            @Html.ActionLink("удал", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
+        }
     </li>
-            }
             break;
         case ContentType.Content:
     <li>@Html.ActionLink(Model.Title, "Index", "Home", new { id = Model.ContentName }, null)
@@ -57,8 +56,8 @@ else
     </li>        
         break;
         case ContentType.Products:
-            string className = Model.Selected?"selected":"";
-            <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, new{@class=className})
+        string className = Model.Selected ? "selected" : "";
+    <li>@Html.ActionLink(Model.Title, "Products", "Home", new { id = Model.ContentName }, new { @class = className })
         @if (Request.IsAuthenticated)
         {
             <span class="sortOrder">@Model.SortOrder </span>

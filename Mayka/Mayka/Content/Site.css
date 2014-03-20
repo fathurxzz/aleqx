@@ -6,7 +6,7 @@
 
 body
 {
-    font-size: .85em;
+    /*font-size: .85em;*/
     font-family: "Trebuchet MS", "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
@@ -116,9 +116,11 @@ textarea
     .social-line .text
     {
         background-color: #bf1e2e;
-        width: 150px;
+        width: 130px;
         margin: 0 auto;
-        
+        font-size: 10px;
+        text-transform: uppercase;
+        padding-top: 3px;
     }
 
 .social-icons
@@ -130,6 +132,8 @@ textarea
 {
     width: 150px;
     margin: 50px auto;
+    line-height: 20px;
+    font-size: 11px;
 }
 
 .social-icons .instagram, .social-icons .facebook {
