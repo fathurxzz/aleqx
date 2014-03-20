@@ -18,11 +18,11 @@ namespace Mayka
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/sitescripts").Include(
-                "~/Scripts/jquery.bxslider.min.js",
-                "~/Scripts/jquery.inputmask-2.3.51.min.js",
-                "~/Content/fancybox/jquery.fancybox-1.3.4.js",
-                "~/Scripts/site.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/sitescripts").Include(
+            //    "~/Scripts/jquery.bxslider.min.js",
+            //    "~/Scripts/jquery.inputmask-2.3.51.min.js",
+            //    "~/Content/fancybox/jquery.fancybox-1.3.4.js",
+            //    "~/Scripts/site.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
