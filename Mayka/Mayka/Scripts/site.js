@@ -27,7 +27,7 @@ HomeController.prototype = {
         });        
 
 
-        $("#phone").inputmask("9999999999", {
+        $("#phone").inputmask("(999)9999999", {
             oncomplete: function () {
                 $(".phone a").removeAttr("disabled");
             },
