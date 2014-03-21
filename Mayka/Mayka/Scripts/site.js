@@ -66,14 +66,15 @@ HomeController.prototype = {
             //var url = window.location.href;
             var phone = escape(document.getElementById("phone").value);
 
-            var url = "http://maika.1gb.ua/content/images/" + document.getElementById("previewImageFileName").value;
+            //var url = "http://maika.1gb.ua/content/images/" + document.getElementById("previewImageFileName").value;
+            var filename = document.getElementById("previewImageFileName").value;
 
             //alert(url);
             //alert(phone);
 
 
             $.ajax({
-                url: "/api/Service/NotifyMiller?url=" + url + "&phone=" + phone,
+                url: "/api/Service/NotifyMiller?filename=" + filename + "&phone=" + phone,
                     contentType: "application/json",
                     accepts: "application/json",
                     type: "POST",
