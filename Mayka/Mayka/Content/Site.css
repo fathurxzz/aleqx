@@ -125,7 +125,7 @@ textarea
     .social-line .text
     {
         background-color: #bf1e2e;
-        width: 130px;
+        width: 150px;
         margin: 0 auto;
         font-size: 10px;
         text-transform: uppercase;
@@ -137,19 +137,18 @@ textarea
     margin: 30px auto;
 }
 
-.copyright
-{
-    width: 160px;
+.copyright {
+    width: 200px;
     margin: 50px auto;
     line-height: 19px;
     font-size: 11px;
     /*letter-spacing: 0.1em;*/
     letter-spacing: 1px;
     /*position: absolute;
-    bottom: 0;
-    left: 50px;*/
+    bottom: 0;*/
+    left: 50px;
+    margin-bottom: 70px;
 }
-
 
 
 
@@ -172,10 +171,7 @@ textarea
     margin-left: 40px;
 }
 
-.copyright {
-    font-size: 11px;
-    margin-bottom: 70px;
-}
+
 
 .main-title {
     font-size: 25px;
@@ -275,13 +271,13 @@ textarea
     border: 11px solid #f4f4f4;
 }
 
-.productImage .image {
+/*.productImage .image {
     position: absolute;
-}
+}*/
 
-.productImage .image.first {
+/*.productImage .image.first {
     z-index: 1001;
-}
+}*/
 
 .productDescription {
     position: absolute;
