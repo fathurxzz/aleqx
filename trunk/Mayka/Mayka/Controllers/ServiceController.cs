@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System.Configuration;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Http;
 
@@ -7,10 +8,12 @@ namespace Mayka.Controllers
     public class ServiceController : ApiController
     {
         [AllowAnonymous]
-        public void NotifyMiller(string phone, string url)
+        public void NotifyMiller(string phone, string filename)
         {
-            if (string.IsNullOrEmpty(url) || string.IsNullOrEmpty(phone))
+            string previewUrl = ConfigurationManager.AppSettings["previewUrl"];
+            if (string.IsNullOrEmpty(filename) || string.IsNullOrEmpty(phone) || string.IsNullOrEmpty(previewUrl))
                 throw new HttpException(400, "Phone and url are required");
+            string url = previewUrl + filename;
             SmtpClient client = new SmtpClient();
             MailMessage message = new MailMessage();
             message.To.Add("kushko.alex@gmail.com");
