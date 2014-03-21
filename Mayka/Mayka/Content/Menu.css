@@ -10,6 +10,11 @@
     width: 140px;
     margin: 30px auto;
     line-height: 18px;
+    color: #b4a4a4;
+}
+
+#menu li a {
+    color: #fff;
 }
 
 
