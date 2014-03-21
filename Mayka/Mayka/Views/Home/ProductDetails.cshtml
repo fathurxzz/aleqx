@@ -13,7 +13,7 @@
 
 <div class="main-title">
     <span>
-    @Html.ActionLink(Model.Content.Title, "Products", "Home", new { id = Model.Content.Name }, null)
+        @Html.ActionLink(Model.Content.Title, "Products", "Home", new { id = Model.Content.Name }, null)
     </span>
 </div>
 
@@ -22,7 +22,7 @@
     @if (Request.IsAuthenticated)
     {
         @Html.ActionLink("Добавить изображения", "AddProductImages", "Product", new { area = "Admin", id = Model.Product.Id }, new { @class = "adminLink" })
-        <br/>
+        <br />
     }
 
     @if (Request.IsAuthenticated)
@@ -34,9 +34,9 @@
                 @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("adminPreviewProductImage")))
                 <div class="imageInfo">
                     <span class="sortOrder">@image.SortOrder</span>
-                    @Html.ActionLink("up", "ChangeImageOrder", "Product", new { area="Admin", productId = Model.Product.Id, imageId = image.Id, order="up" }, new { @class = "adminLink" })
-                    @Html.ActionLink("down", "ChangeImageOrder", "Product", new { area="Admin", productId = Model.Product.Id, imageId = image.Id, order="down" }, new { @class = "adminLink" })
-                    @Html.ActionLink("delete","DeleteProductImage","Product",new{area="Admin", id=image.Id}, new { @class = "adminLink",onclick="return confirm('Удалить изображение?')" })
+                    @Html.ActionLink("up", "ChangeImageOrder", "Product", new { area = "Admin", productId = Model.Product.Id, imageId = image.Id, order = "up" }, new { @class = "adminLink" })
+                    @Html.ActionLink("down", "ChangeImageOrder", "Product", new { area = "Admin", productId = Model.Product.Id, imageId = image.Id, order = "down" }, new { @class = "adminLink" })
+                    @Html.ActionLink("delete", "DeleteProductImage", "Product", new { area = "Admin", id = image.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить изображение?')" })
                 </div>
             </div>
         </div>
@@ -49,33 +49,23 @@
             @Html.Raw(Model.Product.Description)
             <div class="phone">
                 <span>До связи!</span>
-                <input type="text" id="phone"/>
+                <input type="text" id="phone" />
                 <a href="javascript:void(0)" disabled></a>
             </div>
         </div>
         
         <div class="productImage">
-            
-
-            @*@Html.Raw(Html.CachedImage("~/Content/Images/", Model.Product.ProductImages.First().ImageSource, SiteSettings.GetThumbnail("productImage")))*@
-            
-            @{
-                int cnt = 0;
-            }
-            @foreach (var item in Model.Product.ProductImages.OrderBy(c=>c.SortOrder))
+            <ul class="bxsliderProducts">
+            @foreach (var item in Model.Product.ProductImages.OrderBy(c => c.SortOrder))
             {
-                cnt++;
-                string className = cnt == 1 ? "first" : "";
-                <div class="image @className">
-                    <a href="/Content/Images/@item.ImageSource" rel="group1" class="fancy">
+                <li>
+                    @*<a href="/Content/Images/@item.ImageSource" rel="group1" class="fancy">*@
                         @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("productImage")))
-                    </a>
-                    </div>
+                    @*</a>*@
+                </li>
             }
-
+                </ul>
         </div>
-        
     }
-
     <div class="clear"></div>
 </div>
