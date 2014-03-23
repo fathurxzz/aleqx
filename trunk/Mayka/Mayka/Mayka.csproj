@@ -336,6 +336,8 @@
     <Content Include="Content\img\social-line.jpg" />
     <Content Include="Content\jquery.bxslider.css" />
     <Content Include="Content\Menu.css" />
+    <Content Include="Content\Site-main.css" />
+    <Content Include="Content\Site-mobile.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
