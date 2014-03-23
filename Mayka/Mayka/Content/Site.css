@@ -82,7 +82,7 @@ a {
     margin: 0 auto;
     position: relative;
     background: url('img/site-bg.gif') repeat-y;
-    height: 100%;
+    
 }
 
 #left-block
@@ -91,7 +91,7 @@ a {
     text-align: center;
     color: #fff;
     float: left;
-    height: 100%;
+ 
     letter-spacing: 1px;
 }
 
