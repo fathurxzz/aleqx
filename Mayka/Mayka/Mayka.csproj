@@ -328,6 +328,7 @@
     <Content Include="Content\img\left-arrow.png" />
     <Content Include="Content\img\link-arrows.gif" />
     <Content Include="Content\img\logo.jpg" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\name.png" />
     <Content Include="Content\img\right-arrow.png" />
     <Content Include="Content\img\send-active.gif" />
@@ -421,6 +422,7 @@
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\ProductDetails.cshtml" />
     <Content Include="Views\BackloadDemo\Index.cshtml" />
+    <Content Include="Views\Shared\FacebookMetaTags.cshtml" />
     <None Include="Web.Backload.Default.config" />
     <None Include="Web.Backload.xsd">
       <SubType>Designer</SubType>
