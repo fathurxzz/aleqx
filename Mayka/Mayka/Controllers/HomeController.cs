@@ -21,14 +21,15 @@ namespace Mayka.Controllers
             var model = new SiteModel(_context, id ?? "");
             //ViewBag.isHomePage = model.Content.ContentType == (int)ContentType.HomePage;
             this.SetSeoContent(model);
+
             if (model.Content.ContentType != 1)
             {
                 switch (model.Content.ContentType)
                 {
                     case 2:
-                        return RedirectToAction("Gallery", new {id = model.Content.Name});
+                        return View("Gallery", model);
                     case 3:
-                        return RedirectToAction("Products", new { id = model.Content.Name });
+                        return View("Products", model);
                 }
             }
 
