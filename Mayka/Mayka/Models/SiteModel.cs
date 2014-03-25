@@ -14,13 +14,19 @@ namespace Mayka.Models
         public bool IsHomePage { get; set; }
         public Content Content { get; set; }
         public Product Product { get; set; }
-        public List<Helpers.MenuItem> Menu  { get; set; }
+        public List<Helpers.MenuItem> Menu { get; set; }
         protected IQueryable<Content> Contents { get; set; }
 
         public SiteModel(SiteContext context, string contentId, int? productId = null)
         {
             Contents = context.Content;
             Title = "Майкаджексон";
+            var minSortorder = Contents.Min(c => c.SortOrder);
+            foreach (var content in Contents.Where(content => content.SortOrder == minSortorder))
+            {
+                content.IsHomepage = true;
+                break;
+            }
 
             if (contentId == null)
             {
@@ -30,21 +36,21 @@ namespace Mayka.Models
             else
             {
                 Content = Contents.FirstOrDefault(c => c.Name == contentId) ??
-                          context.Content.First(c => c.ContentType == (int) ContentType.HomePage);
+                          context.Content.OrderBy(c => c.SortOrder).First();
             }
+
+            
 
             Menu = new List<Helpers.MenuItem>();
 
-            foreach (var c in Contents
-                //.Where(c=>c.ContentType!=(int)ContentType.HomePage)
-                )
+            foreach (var c in Contents)
             {
                 Menu.Add(new Helpers.MenuItem
                 {
                     ContentId = c.Id,
                     ContentName = c.Name,
-                    Current = c.Name == contentId ||contentId==""&&(ContentType)c.ContentType==ContentType.HomePage,
-                    Selected = c.Name==Content.Name,
+                    Current = c.Name == contentId || contentId == "" && c.IsHomepage,
+                    Selected = c.Name == Content.Name,
                     SortOrder = c.SortOrder,
                     Title = c.MenuTitle,
                     ContentType = (ContentType)c.ContentType
@@ -55,6 +61,6 @@ namespace Mayka.Models
             SeoKeywords = Content.SeoKeywords;
         }
 
-        
+
     }
 }

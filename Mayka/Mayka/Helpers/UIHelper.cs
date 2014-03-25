@@ -25,7 +25,7 @@ namespace Mayka.Helpers
 
     public enum ContentType
     {
-        HomePage = 0,
+        //HomePage = 0,
         Content = 1,
         Gallery = 2,
         Products = 3

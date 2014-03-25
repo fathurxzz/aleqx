@@ -25,10 +25,10 @@ else
 {
     switch (Model.ContentType)
     {
-        case ContentType.HomePage:
+        //case ContentType.HomePage:
             
 
-    <li>
+    @*<li>
         @if (Request.IsAuthenticated)
         {
             <span class="sortOrder">@Model.SortOrder </span>    
@@ -44,8 +44,10 @@ else
             @Html.Raw("&nbsp;")
             @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('xить страницу?')" })
         }
-    </li>
-        break;
+    </li>*@
+        //break;
+        
+        
         case ContentType.Content:
         
     <li>
@@ -62,7 +64,7 @@ else
             @Html.Raw("&nbsp;")
             @Html.Raw("&nbsp;")
             @Html.Raw("&nbsp;")
-            @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('xить страницу?')" })
+            @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
     </li>        
         break;
@@ -81,7 +83,7 @@ else
             @Html.Raw("&nbsp;")
             @Html.Raw("&nbsp;")
             @Html.Raw("&nbsp;")
-            @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('xить страницу?')" })
+            @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
 
     </li>        
@@ -104,7 +106,7 @@ else
             @Html.Raw("&nbsp;")
             @Html.Raw("&nbsp;")
             @Html.Raw("&nbsp;")
-            @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('xить страницу?')" })
+            @Html.ActionLink("x", "Delete", "Content", new { area = "Admin", id = Model.ContentId }, new { @class = "adminLink", onclick = "return confirm('Удалить страницу?')" })
         }
 
     </li>        
