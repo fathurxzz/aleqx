@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
         @{Html.RenderPartial("FacebookMetaTags");}
     <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" href="/favicon.ico?v=1.1" type="image/x-icon"> 
+    <link rel="shortcut icon" href="/favicon.ico?v=1.2" type="image/x-icon"> 
     <meta name="description" content="@ViewBag.SeoDescription" />
     <meta name="keywords" content="@ViewBag.SeoKeywords" />
     <title>@ViewBag.Title</title>
@@ -18,6 +18,9 @@
     @Styles.Render("~/Content/Fonts.css", "~/Content/Site.css", "~/Content/Errors.css", "~/Content/Menu.css","~/Content/jquery.bxslider.css")
     <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
     
+    
+    <link href='http://fonts.googleapis.com/css?family=Yeseva+One|Tenor+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
 
     @RenderSection("Styles", false)
     @if (Request.IsAuthenticated)
