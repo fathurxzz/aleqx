@@ -28,18 +28,23 @@ namespace Mayka.Models
                 break;
             }
 
+            // в случае заходи на страницу продукта
             if (contentId == null)
             {
                 Product = context.Product.First(p => p.Id == productId);
                 Content = Product.Content;
             }
+            else if (contentId == "")
+            {
+                //Content = Contents.First(c => c.IsHomepage==true);
+                Content = Contents.First(content => content.SortOrder == minSortorder);
+            }
             else
             {
-                Content = Contents.FirstOrDefault(c => c.Name == contentId) ??
-                          context.Content.OrderBy(c => c.SortOrder).First();
+                Content = Contents.FirstOrDefault(c => c.Name == contentId);
             }
 
-            
+
 
             Menu = new List<Helpers.MenuItem>();
 
