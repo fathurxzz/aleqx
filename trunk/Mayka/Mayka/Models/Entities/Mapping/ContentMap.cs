@@ -31,6 +31,8 @@ namespace Mayka.Models.Entities
             this.Property(t => t.SeoKeywords)
                 .HasMaxLength(65535);
 
+            this.Ignore(t=>t.IsHomepage);
+
             // Table & Column Mappings
             this.ToTable("Content", "gbua_mayka");
             this.Property(t => t.Id).HasColumnName("Id");

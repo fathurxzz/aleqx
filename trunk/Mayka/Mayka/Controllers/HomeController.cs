@@ -19,8 +19,19 @@ namespace Mayka.Controllers
         public ActionResult Index(string id)
         {
             var model = new SiteModel(_context, id ?? "");
-            ViewBag.isHomePage = model.Content.ContentType == (int)ContentType.HomePage;
+            //ViewBag.isHomePage = model.Content.ContentType == (int)ContentType.HomePage;
             this.SetSeoContent(model);
+            if (model.Content.ContentType != 1)
+            {
+                switch (model.Content.ContentType)
+                {
+                    case 2:
+                        return RedirectToAction("Gallery", new {id = model.Content.Name});
+                    case 3:
+                        return RedirectToAction("Products", new { id = model.Content.Name });
+                }
+            }
+
             return View(model);
         }
 

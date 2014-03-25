@@ -22,5 +22,6 @@ namespace Mayka.Models
         public byte ContentType { get; set; }
         public virtual ICollection<PhotoGalleryItem> PhotoGalleryItems { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        public virtual bool IsHomepage { get; set; }
     }
 }
