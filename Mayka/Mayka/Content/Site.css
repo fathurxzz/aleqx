@@ -81,12 +81,13 @@ a {
     width: 1200px;
     margin: 0 auto;
     position: relative;
-    background: url('img/site-bg.gif') repeat-y;
+    /*background: url('img/site-bg.gif') repeat-y;*/
     
 }
 
 #left-block
 {
+    background: url('img/site-bg.gif') repeat-y;
     width: 260px;
     text-align: center;
     color: #fff;
