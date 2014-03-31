@@ -16,7 +16,7 @@ namespace Mayka.Controllers
             string url = previewUrl + filename;
             SmtpClient client = new SmtpClient();
             MailMessage message = new MailMessage();
-            message.To.Add("kushko.alex@gmail.com");
+            //message.To.Add("kushko.alex@gmail.com");
             message.To.Add("miller.kak.miller@gmail.com");
             message.Subject = "m-j - Перезвони по футболке";
             message.Body = string.Format("<div>Телефон: {0}</div><div><img src=\"{1}\" /></div>", phone, url);
