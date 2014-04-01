@@ -16,6 +16,10 @@ namespace Mayka.Models.Entities
             this.Property(t => t.PreviewImageSource)
                 .IsRequired()
                 .HasMaxLength(255);
+            
+            this.Property(t => t.PreviewImageSourceIpad)
+                .IsRequired()
+                .HasMaxLength(255);
 
             // Table & Column Mappings
             this.ToTable("Product", "gbua_mayka");
@@ -23,6 +27,7 @@ namespace Mayka.Models.Entities
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.PreviewImageSource).HasColumnName("PreviewImageSource");
+            this.Property(t => t.PreviewImageSourceIpad).HasColumnName("PreviewImageSourceIpad");
             this.Property(t => t.ContentId).HasColumnName("ContentId");
 
             // Relationships

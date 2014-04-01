@@ -12,6 +12,7 @@ namespace Mayka.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public string PreviewImageSource { get; set; }
+        public string PreviewImageSourceIpad { get; set; }
         public int ContentId { get; set; }
         public int SortOrder { get; set; }
 

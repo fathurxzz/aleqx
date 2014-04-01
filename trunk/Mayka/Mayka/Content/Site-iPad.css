@@ -1,0 +1,52 @@
+﻿body {
+}
+
+
+#page {
+    width: 768px;
+}
+
+
+#header {
+    height: 48px;
+    background: url('img-ipad/menu-bg.gif') repeat-x;
+}
+
+#logo {
+    width: 99px;
+    height: 37px;
+    background: url('img-ipad/logo.gif') no-repeat;
+    position: absolute;
+    left: 25px;
+    top: 5px;
+}
+
+#menu {
+    /*padding-top: 5px;*/
+    margin-left: 170px;
+    font-family: 'Yeseva One', cursive;
+    font-size: 12px;
+    color: #fff;
+}
+
+
+#menu ul {
+
+}
+
+#menu ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px 25px;
+    width: 90px;
+    text-align: center;
+}
+
+
+.product {
+    width: 228px;
+    height: 228px;
+    float: left;
+    background-color: beige;
+    margin: 14px;
+}
