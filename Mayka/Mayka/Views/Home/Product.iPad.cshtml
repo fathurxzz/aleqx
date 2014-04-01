@@ -1,0 +1,13 @@
+﻿@using SiteExtensions.Graphics
+@model Mayka.Models.Product
+<div class="product">
+    ipad
+    @if (Request.IsAuthenticated)
+    {
+        <div class="adminLinkContainer">
+            @Html.ActionLink("Редактировать","Edit","Product",new{area="Admin", id=Model.Id},new{@class="adminLink"})
+            @Html.ActionLink("Удалить","Delete","Product",new{area="Admin", id=Model.Id},new{@class="adminLink", onclick="return confirm('Удалить продукт?')" })
+        </div>
+    }
+    @Html.Raw(@Html.ActionLink("[IMAGE]", "ProductDetails", "Home",new{id=Model.Id},null).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.PreviewImageSourceIpad??Model.PreviewImageSource)))
+</div>

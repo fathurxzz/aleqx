@@ -25,9 +25,9 @@ namespace Mayka
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             IocInitializer.InitializeIoc();
 
-            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("iPhone")
+            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("iPad")
             {
-                ContextCondition = context => context.Request.UserAgent != null && context.Request.UserAgent.IndexOf("iPhone", StringComparison.OrdinalIgnoreCase) >= 0
+                ContextCondition = context => context.Request.UserAgent != null && context.Request.UserAgent.IndexOf("iPad", StringComparison.OrdinalIgnoreCase) >= 0
             });
 
 

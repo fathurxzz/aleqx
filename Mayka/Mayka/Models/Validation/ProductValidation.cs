@@ -14,8 +14,11 @@ namespace Mayka.Models
         [Display(Name = "Описание")]
         public string Description { get; set; }
 
-        [Display(Name = "Превьюшка")]
+        [Display(Name = "Превьюшка 140х140")]
         public string PreviewImageSource { get; set; }
+
+        [Display(Name = "Превьюшка для айпада 228х228")]
+        public string PreviewImageSourceIpad { get; set; }
 
         [Display(Name = "Порядок отображения")]
         [Required(ErrorMessage = "Введите порядок отображения")]

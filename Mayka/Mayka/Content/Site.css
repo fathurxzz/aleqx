@@ -1,21 +1,4 @@
-﻿*
-{
-    margin: 0;
-    padding: 0;
-}
-
-body
-{
-    /*font-size: .85em;*/
-    font-family: "Trebuchet MS", "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
-
-
-
-}
-
-html, body {
+﻿html, body {
     height: 100%;
 }
 
@@ -23,7 +6,6 @@ header, footer, nav, section
 {
     display: block;
 }
-
 
 .loginForm {
     margin: 100px auto auto;

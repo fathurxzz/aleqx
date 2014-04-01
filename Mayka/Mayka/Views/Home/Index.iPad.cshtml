@@ -2,7 +2,7 @@
 @model Mayka.Models.SiteModel
 @{
     
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @*@if (Request.IsAuthenticated && Model.Content.ContentType == (int)ContentType.HomePage)
@@ -10,11 +10,9 @@
     @Html.ActionLink("Редактировать главную страницу", "Edit", "Content", new { area = "Admin", id=Model.Content.Id }, new { @class = "adminLink" })
 }*@
 
-asdasdasdas dasd asd 
+@*@Html.Partial("_ContentHeader",new ContentHeaderModel{Title = Model.Content.Title, Text = Model.Content.Text})*@
 
-@Html.Partial("_ContentHeader",new ContentHeaderModel{Title = Model.Content.Title, Text = Model.Content.Text})
-
-@section Menu
+@*@section Menu
 {
     @Html.Raw("asdasdasdas")
-}
+}*@
