@@ -10,7 +10,10 @@ body
     font-family: "Trebuchet MS", "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
+}
 
 
-
+.clear
+{
+    clear: both;
 }

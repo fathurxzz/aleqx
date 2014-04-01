@@ -12,7 +12,9 @@
 
 @*@Html.Partial("_ContentHeader",new ContentHeaderModel{Title = Model.Content.Title, Text = Model.Content.Text})*@
 
-@*@section Menu
+@section Menu
 {
-    @Html.Raw("asdasdasdas")
-}*@
+    @Html.Partial("Menu",Model.Menu)
+}
+
+
