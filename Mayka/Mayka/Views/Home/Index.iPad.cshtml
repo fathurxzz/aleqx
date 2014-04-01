@@ -14,7 +14,15 @@
 
 @section Menu
 {
-    @Html.Partial("Menu",Model.Menu)
+    @Html.Partial("Menu.iPad",Model.Menu)
 }
 
 
+<div class="main-title">
+    @Model.Content.Title
+</div>
+<div class="line"></div>
+
+<div class="main-text">
+    @Html.Raw(Model.Content.Text)
+</div>
