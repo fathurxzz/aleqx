@@ -304,6 +304,7 @@
     <Content Include="Views\Home\Products.iPad.cshtml" />
     <Content Include="Views\Home\Product.iPad.cshtml" />
     <Content Include="Views\Shared\Menu.iPad.cshtml" />
+    <Content Include="Views\Home\ProductDetails.iPad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
