@@ -38,6 +38,13 @@
             <input type="file" name="fileUpload" class="photoFileInput" />
             @Html.ValidationMessageFor(model => model.PreviewImageSource)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PreviewImageSourceIpad)
+        </div>
+        <div class="editor-field">
+            <input type="file" name="fileUploadPreviewIpad" class="photoFileInput" />
+            @Html.ValidationMessageFor(model => model.PreviewImageSourceIpad)
+        </div>
         <p>
             <br />
             <input type="submit" value="Create" />

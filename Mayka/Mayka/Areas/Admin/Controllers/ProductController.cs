@@ -32,7 +32,7 @@ namespace Mayka.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product model, HttpPostedFileBase fileUpload)
+        public ActionResult Create(Product model, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUploadPreviewIpad)
         {
             var content = _context.Content.First(c => c.Id == model.ContentId);
 
@@ -51,6 +51,16 @@ namespace Mayka.Areas.Admin.Controllers
                 product.PreviewImageSource = fileName;
             }
 
+            if (fileUploadPreviewIpad != null)
+            {
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUploadPreviewIpad.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+                filePath = Path.Combine(filePath, fileName);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
+                fileUploadPreviewIpad.SaveAs(filePath);
+                product.PreviewImageSourceIpad = fileName;
+            }
+
 
             _context.Product.Add(product);
             _context.SaveChanges();
@@ -67,7 +77,7 @@ namespace Mayka.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product model, HttpPostedFileBase fileUpload)
+        public ActionResult Edit(Product model, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUploadPreviewIpad)
         {
             var content = _context.Content.First(c => c.Id == model.ContentId);
 
@@ -84,6 +94,18 @@ namespace Mayka.Areas.Admin.Controllers
                 //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
                 fileUpload.SaveAs(filePath);
                 product.PreviewImageSource = fileName;
+            }
+
+            if (fileUploadPreviewIpad != null)
+            {
+                ImageHelper.DeleteImage(product.PreviewImageSourceIpad);
+
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUploadPreviewIpad.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+                filePath = Path.Combine(filePath, fileName);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
+                fileUploadPreviewIpad.SaveAs(filePath);
+                product.PreviewImageSourceIpad = fileName;
             }
 
             _context.SaveChanges();
