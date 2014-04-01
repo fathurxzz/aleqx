@@ -28,16 +28,15 @@
     <div id="page">
         <div id="header">
             <div id="logo"></div>
-            <div id="menu">
-                <ul>
-                    <li>Каталог Маекджексон</li>
-                    <li>Несколько дерзских слов</li>
-                    <li>Размерная сетка</li>
-                    <li>Шоурум</li>
-                </ul>
-            </div>
+            @RenderSection("Menu")
+            
         </div>
         @RenderBody()
+        <div id="footer">
+            <div id="copyright">
+                Сделано с гордостью и примесью легкой эйфории в <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+            </div>
+        </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
     

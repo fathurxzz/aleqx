@@ -9,7 +9,23 @@
 
 #header {
     height: 48px;
-    background: url('img-ipad/menu-bg.gif') repeat-x;
+    background: url('img-ipad/header-bg.gif') repeat-x;
+}
+
+#footer {
+    height: 50px;
+    background: url('img-ipad/footer-bg.gif') repeat-x;
+}
+
+#footer #copyright {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 11px;
+    color: #fff;
+}
+
+#footer #copyright a {
+    color: inherit;
 }
 
 #logo {

@@ -1,7 +1,7 @@
 ﻿@using Mayka.Helpers
 @model Mayka.Models.SiteModel
 @{
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+        //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @*@section Menu
@@ -36,8 +36,16 @@
     }
 
 </div>*@
-
+<div>
     @foreach (var item in Model.Content.Products.OrderBy(p => p.SortOrder))
     {
         @Html.Partial("Product", item)
     }
+    <div class="clear"></div>
+</div>
+
+
+@section Menu
+{
+    @Html.Partial("Menu",Model.Menu)
+}
