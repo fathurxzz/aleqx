@@ -3,14 +3,12 @@ using System.Linq;
 
 namespace ConsoleApplication1
 {
-    public class GraphicsHelper
+    public abstract class Graphics
     {
-        protected Thumbnails Thumbnails;
+        public Thumbnails Thumbnails;
 
-        public virtual void Initialize()
-        {
-
-        }
+        public abstract void Initialize();
+       
 
         public Thumbnail GetThumbnail(string name)
         {

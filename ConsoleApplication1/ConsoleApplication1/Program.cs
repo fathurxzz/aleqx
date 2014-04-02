@@ -11,15 +11,21 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             
-            SiteGraphics graphics = new SiteGraphics();
-            graphics.Initialize();
+            //SiteGraphics graphics = new SiteGraphics();
+            //graphics.Initialize();
 
 
-            var thumbnail = graphics.GetThumbnail("SmallPreview");
+            
+
+            //Thumbnail thumbnail = graphics.GetThumbnail("SmallPreview");
+
+
 
 
             //var thumbnail1 = graphics.GetThumbnail(ThumbnailNames.BigPreview);
 
+
+            Thumbnail thumbnail = SiteSettings.GetThumbnail("SmallPreview1");
 
             Console.WriteLine(thumbnail);
 
