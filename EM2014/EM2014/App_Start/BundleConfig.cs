@@ -23,7 +23,7 @@ namespace EM2014
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/common.css", "~/Content/site.css", "~/Content/em.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/fonts.css","~/Content/common.css", "~/Content/menu.css", "~/Content/site.css", "~/Content/em.css"));
 
 
         }

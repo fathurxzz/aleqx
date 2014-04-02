@@ -1,5 +1,6 @@
 ﻿body {
     background: url('img/site-bg.gif');
+    font-family: PTSans;
 }
 
 .page {
@@ -27,6 +28,20 @@
     margin: 0 auto;
 }
 
+
+
+
+
 .site-content {
-    border-top: 1px solid #000;
+    padding: 50px 0;
+}
+
+.footer {
+    border-top: 2px solid #000;
+    padding-top: 18px;
+    padding-bottom: 55px;
+    text-align: center;
+    font-family: PTSansNarrow;
+    font-size: 18px;
+    color: #8c8c8c;
 }

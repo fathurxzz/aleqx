@@ -1,0 +1,42 @@
+﻿
+#menu {
+    font-family: PTSansNarrowBold;
+    color: #999999;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+
+
+#menu a {
+    font-family: PTSansNarrow;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 0px 3px;
+}
+
+#menu ul {
+    text-align: center;
+    display: table;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 40px;
+    background: url('img/menu-bg.gif') repeat-x;
+
+}
+
+#menu ul li {
+    list-style: none;
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    vertical-align: top;
+    padding: 18px 50px 0 50px;
+}
+
+#menu ul li.current {
+    background: url('img/menu-current-bg.gif') no-repeat;
+    background-position: center top;
+}
+
