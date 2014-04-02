@@ -1,0 +1,32 @@
+﻿body {
+    background: url('img/site-bg.gif');
+}
+
+.page {
+    width: 920px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.header {
+    padding-top: 42px;
+}
+
+.slogan {
+    height: 114px;
+    background-image: url('img/slogan.gif');
+    background-position: center 30px;
+    background-repeat: no-repeat;
+}
+
+#logo {
+    width: 154px;
+    height: 107px;
+    background: url('img/logo.gif') no-repeat;
+    position: relative;
+    margin: 0 auto;
+}
+
+.site-content {
+    border-top: 1px solid #000;
+}
