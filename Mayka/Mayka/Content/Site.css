@@ -318,3 +318,7 @@ a {
     margin-top: -10px;
     padding-bottom: 30px;
 }
+
+.productDetails .bx-prev, .productDetails .bx-next {
+    display: none;
+}
