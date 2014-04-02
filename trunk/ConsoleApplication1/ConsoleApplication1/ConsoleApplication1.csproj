@@ -45,6 +45,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteGraphics.cs" />
+    <Compile Include="SiteSettings.cs" />
     <Compile Include="Thumbnail.cs" />
     <Compile Include="ThumbnailNames.cs" />
   </ItemGroup>
