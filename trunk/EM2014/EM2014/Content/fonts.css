@@ -1,0 +1,29 @@
+﻿@font-face
+{
+    font-family: "PTSans";
+    src: url('fonts/PTSans.ttf');
+}
+
+@font-face
+{
+    font-family: "PTSansBold";
+    src: url('fonts/PTSansBold.ttf');
+}
+
+@font-face
+{
+    font-family: "PTSansNarrow";
+    src: url('fonts/PTSansNarrow.ttf');
+}
+
+@font-face
+{
+    font-family: "PTSansNarrowBold";
+    src: url('fonts/PTSansNarrowBold.ttf');
+}
+
+@font-face
+{
+    font-family: "PTSansItalic";
+    src: url('fonts/PTSansItalic.ttf');
+}

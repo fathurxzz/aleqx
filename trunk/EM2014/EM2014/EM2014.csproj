@@ -135,11 +135,21 @@
   <ItemGroup>
     <Content Include="Content\common.css" />
     <Content Include="Content\em.css" />
+    <Content Include="Content\fonts.css" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\menu-bg.gif" />
+    <Content Include="Content\img\menu-current-bg.gif" />
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\slogan.gif" />
+    <Content Include="Content\menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\Fonts\PTSans.ttf" />
+    <Content Include="Content\Fonts\PTSansBold.ttf" />
+    <Content Include="Content\Fonts\PTSansItalic.ttf" />
+    <Content Include="Content\Fonts\PTSansNarrow.ttf" />
+    <Content Include="Content\Fonts\PTSansNarrowBold.ttf" />
+    <None Include="Properties\PublishProfiles\1gb.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
