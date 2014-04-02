@@ -27,7 +27,7 @@ HomeController.prototype = {
         });
         
         $('.bxsliderProducts').bxSlider({
-            //mode: 'fade',
+            mode: 'fade',
             //captions: false,
             auto: true,
             pause: 5000,
