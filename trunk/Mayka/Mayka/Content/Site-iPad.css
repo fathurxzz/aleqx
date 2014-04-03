@@ -7,11 +7,15 @@
 }
 
 
+#header, #footer {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
 #header {
     height: 48px;
     background: url('img-ipad/header-bg.gif') repeat-x;
-    position: fixed;
-    width: 100%;
     top: 0;
 }
 
@@ -22,10 +26,10 @@
 #footer {
     height: 50px;
     background: url('img-ipad/footer-bg.gif') repeat-x;
-    position: fixed;
-    width: 100%;
     bottom: 0;
 }
+
+
 
 #footer #copyright {
     text-align: center;
