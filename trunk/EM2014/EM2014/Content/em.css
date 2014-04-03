@@ -1,5 +1,5 @@
 ﻿body {
-    background: url('img/site-bg.gif');
+    background: url('img/site-bg.png');
     font-family: PTSans;
 }
 
@@ -15,7 +15,7 @@
 
 .slogan {
     height: 114px;
-    background-image: url('img/slogan.gif');
+    background-image: url('img/slogan.png');
     background-position: center 30px;
     background-repeat: no-repeat;
 }
@@ -23,7 +23,7 @@
 #logo {
     width: 154px;
     height: 107px;
-    background: url('img/logo.gif') no-repeat;
+    background: url('img/logo.png') no-repeat;
     position: relative;
     margin: 0 auto;
 }

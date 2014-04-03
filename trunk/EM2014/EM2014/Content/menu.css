@@ -23,7 +23,7 @@
     position: relative;
     margin: 0 auto;
     padding: 0 40px;
-    background: url('img/menu-bg.gif') repeat-x;
+    background: url('img/menu-bg.png') repeat-x;
 
 }
 
@@ -37,7 +37,7 @@
 }
 
 #menu ul li.current {
-    background: url('img/menu-current-bg.gif') no-repeat;
+    background: url('img/menu-current-bg.png') no-repeat;
     background-position: center top;
 }
 
