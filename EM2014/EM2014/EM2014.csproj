@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SiteExtensions">
+      <HintPath>..\..\SiteExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -131,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\common.css" />
@@ -142,10 +146,15 @@
     <Content Include="Content\Fonts\PTSansNarrow.ttf" />
     <Content Include="Content\Fonts\PTSansNarrowBold.ttf" />
     <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\menu-bg.gif" />
+    <Content Include="Content\img\menu-bg.png" />
     <Content Include="Content\img\menu-current-bg.gif" />
+    <Content Include="Content\img\menu-current-bg.png" />
     <Content Include="Content\img\site-bg.gif" />
+    <Content Include="Content\img\site-bg.png" />
     <Content Include="Content\img\slogan.gif" />
+    <Content Include="Content\img\slogan.png" />
     <Content Include="Content\menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
