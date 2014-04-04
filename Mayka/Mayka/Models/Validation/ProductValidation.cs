@@ -14,6 +14,9 @@ namespace Mayka.Models
         [Display(Name = "Описание")]
         public string Description { get; set; }
 
+        [Display(Name = "Еще одно описание")]
+        public string DescriptionBottom { get; set; }
+
         [Display(Name = "Превьюшка 140х140")]
         public string PreviewImageSource { get; set; }
 

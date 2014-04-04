@@ -41,6 +41,7 @@ namespace Mayka.Areas.Admin.Controllers
             TryUpdateModel(product, new[] { "SortOrder" });
 
             product.Description = HttpUtility.HtmlDecode(model.Description);
+            product.DescriptionBottom = HttpUtility.HtmlDecode(model.DescriptionBottom);
             if (fileUpload != null)
             {
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
@@ -84,6 +85,7 @@ namespace Mayka.Areas.Admin.Controllers
             var product = _context.Product.First(p => p.Id == model.Id);
             TryUpdateModel(product, new[] {"SortOrder"});
             product.Description = HttpUtility.HtmlDecode(model.Description);
+            product.DescriptionBottom = HttpUtility.HtmlDecode(model.DescriptionBottom);
             if (fileUpload != null)
             {
                 ImageHelper.DeleteImage(product.PreviewImageSource);

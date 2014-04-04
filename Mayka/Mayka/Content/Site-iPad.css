@@ -141,7 +141,7 @@ a.selected {
 }
 
 .phone {
-    margin-top: 20px;
+    margin: 20px 0;
     border: 3px solid #ccc;
     height: 35px;
     width: 240px;
