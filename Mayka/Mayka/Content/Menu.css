@@ -10,7 +10,8 @@
     width: 140px;
     margin: 30px auto;
     line-height: 18px;
-    color: #b4a4a4;
+    /*color: #b4a4a4;*/
+    color: #fff568;
 }
 
 #menu li a {
@@ -19,5 +20,6 @@
 
 
 a.selected {
-    color: #b4a4a4 !important;
+    /*color: #b4a4a4 !important;*/
+    color: #fff568 !important;
 }
