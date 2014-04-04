@@ -13,6 +13,9 @@ namespace Mayka.Models.Entities
             this.Property(t => t.Description)
                 .HasMaxLength(65535);
 
+            this.Property(t => t.DescriptionBottom)
+                .HasMaxLength(65535);
+
             this.Property(t => t.PreviewImageSource)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -25,6 +28,7 @@ namespace Mayka.Models.Entities
             this.ToTable("Product", "gbua_mayka");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DescriptionBottom).HasColumnName("DescriptionBottom");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.PreviewImageSource).HasColumnName("PreviewImageSource");
             this.Property(t => t.PreviewImageSourceIpad).HasColumnName("PreviewImageSourceIpad");
