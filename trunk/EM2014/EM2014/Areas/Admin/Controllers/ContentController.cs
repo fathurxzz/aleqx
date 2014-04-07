@@ -12,15 +12,28 @@ namespace EM2014.Areas.Admin.Controllers
         //
         // GET: /Admin/Content/
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            using (var context = new SiteContext())
+            {
+                var content = context.Contents.First(c => c.Id == id);
+                return View(content);
+            }
+            
         }
 
         [HttpPost]
         public ActionResult Edit(Content model)
         {
-            return View();
+            using (var context = new SiteContext())
+            {
+                var content = context.Contents.First(c => c.Id == model.Id);
+                TryUpdateModel(content, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home", new {area = "", category = content.Name});
+            }
         }
 
     }

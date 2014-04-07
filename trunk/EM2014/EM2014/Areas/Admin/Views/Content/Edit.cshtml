@@ -1,12 +1,14 @@
 ﻿@model EM2014.Models.Content
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -43,7 +45,7 @@
             @Html.LabelFor(model => model.Text)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Text)
+            @Html.TextAreaFor(model => model.Text)
             @Html.ValidationMessageFor(model => model.Text)
         </div>
 
@@ -51,7 +53,7 @@
             @Html.LabelFor(model => model.SeoDescription)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SeoDescription)
+            @Html.TextAreaFor(model => model.SeoDescription)
             @Html.ValidationMessageFor(model => model.SeoDescription)
         </div>
 
@@ -59,16 +61,8 @@
             @Html.LabelFor(model => model.SeoKeywords)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.SeoKeywords)
+            @Html.TextAreaFor(model => model.SeoKeywords)
             @Html.ValidationMessageFor(model => model.SeoKeywords)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.IsHomepage)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsHomepage)
-            @Html.ValidationMessageFor(model => model.IsHomepage)
         </div>
 
         <p>
@@ -78,7 +72,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Home", new { area = "", category = Model.Name }, null)
 </div>
 
 @section Scripts {

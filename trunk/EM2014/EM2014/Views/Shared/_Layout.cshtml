@@ -6,6 +6,14 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
+    <script type="text/javascript">
+
+        var isHomePage = @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+
+        
+    </script>
+
 </head>
     <body>
         <div class="phoneLine">
@@ -15,20 +23,9 @@
             
             <div id="logo"></div>
             <div class="slogan"></div>
-            <div class="menu-container">
-                <div id="menu">
-                    <ul>
-                        <li class="current">Сайты</li>
-                        <li>
-                            <a href="#">Фирменные стили</a>
-                        </li>
-                        <li>
-                            <a href="#">Рекламные штуки    
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                </div>
+            
+            @RenderSection("Menu",false)
+            
         </div>
         <div class="page">
             
@@ -42,6 +39,6 @@
             </div>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/Scripts/site.js")
-        @RenderSection("scripts", required: false)
+        @RenderSection("Scripts", required: false)
     </body>
 </html>

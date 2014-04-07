@@ -16,6 +16,7 @@ namespace EM2014.Models
         public int ContentId { get; set; }
         public string Text { get; set; }
         public string Title { get; set; }
+        public string Name { get; set; }
         public virtual Content Content { get; set; }
         public virtual ICollection<ProductItem> ProductItems { get; set; }
     }

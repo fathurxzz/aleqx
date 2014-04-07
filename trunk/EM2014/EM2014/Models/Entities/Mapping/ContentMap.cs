@@ -28,6 +28,8 @@ namespace EM2014.Models.Mapping
             this.Property(t => t.SeoKeywords)
                 .HasMaxLength(1073741823);
 
+            this.Ignore(t=>t.IsHomepage);
+
             // Table & Column Mappings
             this.ToTable("Content", "gbua_em2014");
             this.Property(t => t.Id).HasColumnName("Id");
@@ -37,7 +39,8 @@ namespace EM2014.Models.Mapping
             this.Property(t => t.Text).HasColumnName("Text");
             this.Property(t => t.SeoDescription).HasColumnName("SeoDescription");
             this.Property(t => t.SeoKeywords).HasColumnName("SeoKeywords");
-            this.Property(t => t.IsHomepage).HasColumnName("IsHomepage");
+            
+            //this.Property(t => t.IsHomepage).HasColumnName("IsHomepage");
         }
     }
 }

@@ -1,0 +1,12 @@
+﻿@model EM2014.Helpers.MenuItem
+
+@if (Model.Current)
+{
+    <li class="current">@Model.Title</li>
+}
+else
+{
+    <li>
+        @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.ContentName }, null)
+    </li>
+}

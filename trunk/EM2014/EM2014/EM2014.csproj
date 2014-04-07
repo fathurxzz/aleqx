@@ -40,8 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SiteExtensions">
-      <HintPath>..\..\SiteExtensions.dll</HintPath>
+    <Reference Include="SiteExtensions, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -137,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Models\Entities\Content.cs" />
     <Compile Include="Models\gbua_em2014Context.cs" />
     <Compile Include="Models\Entities\Mapping\ContentMap.cs" />
@@ -145,10 +147,13 @@
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\ProductItem.cs" />
     <Compile Include="Models\SiteContext.cs" />
+    <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin.css" />
     <Content Include="Content\common.css" />
     <Content Include="Content\em.css" />
     <Content Include="Content\fonts.css" />
@@ -205,6 +210,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_MenuItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
