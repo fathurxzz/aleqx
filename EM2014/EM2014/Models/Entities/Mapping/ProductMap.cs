@@ -22,6 +22,10 @@ namespace EM2014.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(255);
 
+            this.Property(t => t.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
             // Table & Column Mappings
             this.ToTable("Product", "gbua_em2014");
             this.Property(t => t.Id).HasColumnName("Id");
@@ -30,6 +34,7 @@ namespace EM2014.Models.Mapping
             this.Property(t => t.ContentId).HasColumnName("ContentId");
             this.Property(t => t.Text).HasColumnName("Text");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.Name).HasColumnName("Name");
 
             // Relationships
             this.HasRequired(t => t.Content)
