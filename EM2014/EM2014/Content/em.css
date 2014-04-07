@@ -1,16 +1,45 @@
 ﻿body {
-    background: url('img/site-bg.png');
+    /*background: url('img/site-bg.png');*/
     font-family: PTSans;
 }
 
-.page {
+/*.page {
     width: 920px;
     position: relative;
     margin: 0 auto;
+}*/
+
+.page {
+    width: 920px;
+    /*position: relative;*/
+    /*padding-top: 26px;*/
+    margin: 0 auto 121px auto;
+    /*background-color: #fff;*/
 }
 
+.phoneLine {
+    
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    height: 26px;
+    background: url('img/phone-bg.png') repeat-x;
+}
+
+.phone {
+    text-align: center;
+    padding-top: 4px;
+}
+
+
+
 .header {
-    padding-top: 42px;
+    /*padding-top: 42px;*/
+    /*margin-top: 26px;*/
+    padding-top: 68px;
+    background: url('img/header-footer-bg.png') repeat;
+    
+
 }
 
 .slogan {
@@ -33,15 +62,25 @@
 
 
 .site-content {
-    padding: 50px 0;
+    padding-top:50px;
+    padding-bottom:50px;
 }
 
 .footer {
     border-top: 2px solid #000;
-    padding-top: 18px;
-    padding-bottom: 55px;
+    /*padding-top: 18px;
+    padding-bottom: 55px;*/
     text-align: center;
     font-family: PTSansNarrow;
     font-size: 18px;
     color: #8c8c8c;
+    
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: url('img/header-footer-bg.png') repeat;
+    height: 121px;
+    bottom: 0;
 }
+
+
