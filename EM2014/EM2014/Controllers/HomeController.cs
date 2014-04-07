@@ -18,10 +18,9 @@ namespace EM2014.Controllers
 
             using (var context = new SiteContext())
             {
-                var content = context.Contents.FirstOrDefault();
+                var content = context.Contents.FirstOrDefault(c => c.IsHomepage);
+                return View(content);
             }
-
-            return View();
         }
 
     }
