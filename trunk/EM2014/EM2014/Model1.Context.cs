@@ -26,5 +26,7 @@ namespace EM2014
         }
     
         public DbSet<Content> Content { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductItem> ProductItem { get; set; }
     }
 }

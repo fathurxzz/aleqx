@@ -12,22 +12,21 @@ namespace EM2014
     using System;
     using System.Collections.Generic;
     
-    public partial class Content
+    public partial class Product
     {
-        public Content()
+        public Product()
         {
-            this.Products = new HashSet<Product>();
+            this.ProductItems = new HashSet<ProductItem>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Title { get; set; }
+        public string ImageSource { get; set; }
         public int SortOrder { get; set; }
+        public int ContentId { get; set; }
         public string Text { get; set; }
-        public string SeoDescription { get; set; }
-        public string SeoKeywords { get; set; }
-        public bool IsHomepage { get; set; }
+        public string Title { get; set; }
     
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual Content Content { get; set; }
+        public virtual ICollection<ProductItem> ProductItems { get; set; }
     }
 }
