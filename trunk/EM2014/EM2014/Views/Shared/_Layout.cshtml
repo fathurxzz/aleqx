@@ -7,32 +7,41 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="page">
+    <body>
+        <div class="phoneLine">
+            <div class="phone">+38 (067) 443-55-30</div>
+        </div>
         <div class="header">
+            
             <div id="logo"></div>
             <div class="slogan"></div>
-            <div id="menu">
-                <ul>
-                    <li class="current">Сайты</li>
-                    <li>
-                        <a href="#">Фирменные стили</a>
-                    </li>
-                    <li>
-                        <a href="#">Рекламные штуки    
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <div class="menu-container">
+                <div id="menu">
+                    <ul>
+                        <li class="current">Сайты</li>
+                        <li>
+                            <a href="#">Фирменные стили</a>
+                        </li>
+                        <li>
+                            <a href="#">Рекламные штуки    
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
         </div>
-        <div class="site-content">
-            @RenderBody()
+        <div class="page">
+            
+            <div class="site-content">
+                @RenderBody()
+            </div>
+            
         </div>
         <div class="footer">
-            Вот уже 5 лет принимаем вопросы по телефону +38 (067) 443-55-30
-        </div>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-</body>
+                Вот уже 5 лет принимаем вопросы по телефону +38 (067) 443-55-30
+            </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Scripts/site.js")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

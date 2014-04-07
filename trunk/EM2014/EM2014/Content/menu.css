@@ -5,6 +5,8 @@
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
+    height: 102px;
+    border-bottom: 2px solid #000;
 }
 
 
@@ -15,6 +17,7 @@
     background-color: #000;
     text-decoration: none;
     padding: 0px 3px;
+
 }
 
 #menu ul {
@@ -41,3 +44,16 @@
     background-position: center top;
 }
 
+.menu-container {
+    height: 102px;
+    background: url('img/header-footer-bg.png') repeat;
+    
+}
+
+#menu.fixed {
+    position: fixed;
+    width: 100%;
+    top: 26px;
+    /*background-color: #fff;*/
+    background: url('img/header-footer-bg.png') repeat;
+} 
