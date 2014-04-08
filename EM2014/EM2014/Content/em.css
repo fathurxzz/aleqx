@@ -7,7 +7,7 @@
     width: 921px;
     /*position: relative;*/
     /*padding-top: 26px;*/
-    margin: 0 auto 121px auto;
+    margin: 0 auto;
     /*background-color: #fff;*/
 }
 
@@ -65,12 +65,15 @@
     font-size: 18px;
     color: #8c8c8c;
     
+    /*
     position: fixed;
     width: 100%;
     z-index: 1000;
+    bottom: 0;
+    */
     background: url('img/header-footer-bg.png') repeat;
     height: 121px;
-    bottom: 0;
+    
 }
 
 

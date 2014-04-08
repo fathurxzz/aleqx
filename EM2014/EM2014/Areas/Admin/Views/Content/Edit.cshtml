@@ -2,10 +2,8 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование";
 }
-
-<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
@@ -13,7 +11,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Content</legend>
+        <legend>Редактирование</legend>
 
         @Html.HiddenFor(model => model.Id)
 
@@ -64,9 +62,9 @@
             @Html.TextAreaFor(model => model.SeoKeywords)
             @Html.ValidationMessageFor(model => model.SeoKeywords)
         </div>
-
+        <br/>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
