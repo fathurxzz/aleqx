@@ -66,7 +66,7 @@ namespace EM2014.Areas.Admin.Controllers
             var content = _context.Contents.First(c => c.Id == model.ContentId);
 
             var product = _context.Products.First(p => p.Id == model.Id);
-            TryUpdateModel(product, new[] { "SortOrder" });
+            TryUpdateModel(product, new[] { "SortOrder", "Title", "Name" });
             product.Text = HttpUtility.HtmlDecode(model.Text);
             if (fileUpload != null)
             {
@@ -82,7 +82,7 @@ namespace EM2014.Areas.Admin.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+            return RedirectToAction("Index", "Home", new { area = "",category= content.Name, product = "" });
         }
 
         public ActionResult Delete(int id)
@@ -142,13 +142,13 @@ namespace EM2014.Areas.Admin.Controllers
 
         public ActionResult EditProductItem(int id)
         {
-            return View(_context.ProductItems.First(p=>p.Id==id));
+            return View(_context.ProductItems.First(p => p.Id == id));
         }
 
         public ActionResult EditProductItem(ProductItem model, HttpPostedFileBase fileUpload)
         {
             var productItem = _context.ProductItems.First(p => p.Id == model.Id);
-            TryUpdateModel(productItem, new[] {"SortOrder"});
+            TryUpdateModel(productItem, new[] { "SortOrder" });
             productItem.Text = HttpUtility.HtmlDecode(model.Text);
             if (fileUpload != null)
             {
@@ -161,7 +161,7 @@ namespace EM2014.Areas.Admin.Controllers
                 fileUpload.SaveAs(filePath);
                 productItem.ImageSource = fileName;
             }
-            
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home", new { area = "", category = productItem.Product.Content.Name, product = productItem.Product.Name });
@@ -172,7 +172,7 @@ namespace EM2014.Areas.Admin.Controllers
             var productItem = _context.ProductItems.First(p => p.Id == id);
             var product = productItem.Product;
             if (!string.IsNullOrEmpty(productItem.ImageSource))
-            ImageHelper.DeleteImage(productItem.ImageSource);
+                ImageHelper.DeleteImage(productItem.ImageSource);
 
             _context.ProductItems.Remove(productItem);
             _context.SaveChanges();
