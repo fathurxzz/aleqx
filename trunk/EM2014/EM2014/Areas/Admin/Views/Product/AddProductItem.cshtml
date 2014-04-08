@@ -1,11 +1,9 @@
 ﻿@model EM2014.Models.ProductItem
 
 @{
-    ViewBag.Title = "AddProductItem";
+    ViewBag.Title = "Добавление элемента продукта";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>AddProductItem</h2>
 
 @using (Html.BeginForm("AddProductItem", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -14,7 +12,7 @@
     @Html.HiddenFor(model => model.ProductId)
 
     <fieldset>
-        <legend>ProductItem</legend>
+        <legend>Добавление элемента продукта</legend>
         
         <div class="editor-label">
             @Html.LabelFor(model => model.Text)
@@ -38,15 +36,15 @@
             @Html.EditorFor(model => model.SortOrder)
             @Html.ValidationMessageFor(model => model.SortOrder)
         </div>
-
+        <br/>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад", "Index","Home",new{area="",category=Model.Product.Content.Name,product=Model.Product.Name},null)
 </div>
 
 @section Scripts {

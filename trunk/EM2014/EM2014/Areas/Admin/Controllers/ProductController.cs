@@ -92,15 +92,15 @@ namespace EM2014.Areas.Admin.Controllers
 
             while (product.ProductItems.Any())
             {
-                //var image = product.ProductImages.First();
-                //ImageHelper.DeleteImage(image.ImageSource);
-                //_context.ProductImage.Remove(image);
-
+                var productItem = product.ProductItems.First();
+                if (string.IsNullOrEmpty(productItem.ImageSource))
+                    ImageHelper.DeleteImage(productItem.ImageSource);
+                _context.ProductItems.Remove(productItem);
             }
 
-            //ImageHelper.DeleteImage(product.PreviewImageSource);
-            //_context.Product.Remove(product);
+            ImageHelper.DeleteImage(product.ImageSource);
 
+            _context.Products.Remove(product);
             _context.SaveChanges();
             return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
         }
@@ -114,7 +114,7 @@ namespace EM2014.Areas.Admin.Controllers
             {
                 sortOrder = product.ProductItems.Max(p => p.SortOrder) + 1;
             }
-            return View(new ProductItem {Product = product, ProductId = product.Id, SortOrder = sortOrder});
+            return View(new ProductItem { Product = product, ProductId = product.Id, SortOrder = sortOrder });
         }
 
         [HttpPost]
@@ -122,7 +122,7 @@ namespace EM2014.Areas.Admin.Controllers
         {
             var product = _context.Products.First(c => c.Id == model.ProductId);
             var productItem = new ProductItem { Product = product };
-            TryUpdateModel(productItem, new[] {"SortOrder"});
+            TryUpdateModel(productItem, new[] { "SortOrder" });
             productItem.Text = HttpUtility.HtmlDecode(model.Text);
             if (fileUpload != null)
             {
@@ -136,9 +136,49 @@ namespace EM2014.Areas.Admin.Controllers
 
             _context.ProductItems.Add(productItem);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home", new {area="", category = product.Content.Name, product = product.Name});
+            return RedirectToAction("Index", "Home", new { area = "", category = product.Content.Name, product = product.Name });
 
         }
+
+        public ActionResult EditProductItem(int id)
+        {
+            return View(_context.ProductItems.First(p=>p.Id==id));
+        }
+
+        public ActionResult EditProductItem(ProductItem model, HttpPostedFileBase fileUpload)
+        {
+            var productItem = _context.ProductItems.First(p => p.Id == model.Id);
+            TryUpdateModel(productItem, new[] {"SortOrder"});
+            productItem.Text = HttpUtility.HtmlDecode(model.Text);
+            if (fileUpload != null)
+            {
+                ImageHelper.DeleteImage(productItem.ImageSource);
+
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+                filePath = Path.Combine(filePath, fileName);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
+                fileUpload.SaveAs(filePath);
+                productItem.ImageSource = fileName;
+            }
+            
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home", new { area = "", category = productItem.Product.Content.Name, product = productItem.Product.Name });
+        }
+
+        public ActionResult DeleteProductItem(int id)
+        {
+            var productItem = _context.ProductItems.First(p => p.Id == id);
+            var product = productItem.Product;
+            if (!string.IsNullOrEmpty(productItem.ImageSource))
+            ImageHelper.DeleteImage(productItem.ImageSource);
+
+            _context.ProductItems.Remove(productItem);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Home", new { area = "", category = product.Content.Name, product = product.Name });
+        }
+
 
     }
 }
