@@ -4,7 +4,7 @@
 <div class="product">
     @if (Request.IsAuthenticated)
     {
-        <div class="adminLinkContainer">
+        <div>
             @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
             @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
         </div>

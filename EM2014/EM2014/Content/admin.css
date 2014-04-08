@@ -7,11 +7,8 @@
     font-weight: bold;
 }
 
-#left-block .adminLink, #left-block .sortOrder {
-    color: #fff02a !important;
-    font-size: 10px !important;
-    text-transform: uppercase;
-    font-weight: bold;
+.adminLink:hover {
+    color: #900 !important;
 }
 
 .adminContent input[type="text"],
@@ -36,6 +33,12 @@
 }
 
 
-.adminLinkContainer {
+/*.adminLinkContainer {
     position: absolute;
+}*/
+
+.border {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
 }

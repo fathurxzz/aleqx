@@ -1,28 +1,28 @@
 ﻿@model EM2014.Models.Product
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Добавление продукта";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" })){
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.ContentId)
+    @Html.HiddenFor(model => model.ContentId)
 
     <fieldset>
-        <legend>Product</legend>
-        
-         <div class="editor-label">
+        <legend>Добавление продукта</legend>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-        
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
         </div>
@@ -54,19 +54,19 @@
             @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
             @Html.ValidationMessageFor(model => model.Text)
         </div>
-
+        <br />
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад", "Index", "Home", new { area = "" }, null)
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }

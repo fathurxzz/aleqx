@@ -51,6 +51,11 @@
 
 }
 
+#menu ul li.selected {
+    /*font-family: PTSansNarrow;*/
+
+}
+
 #menu ul li.current {
     background: url('img/menu-current-bg.png') no-repeat;
     background-position: center top;

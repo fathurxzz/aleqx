@@ -1,22 +1,35 @@
 ﻿@model EM2014.Models.Product
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование продукта";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" })){
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model => model.ContentId)
     <fieldset>
-        <legend>Product</legend>
+        <legend>Редактирование продукта</legend>
 
         @Html.HiddenFor(model => model.Id)
+        
+           <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
 
-      <div class="editor-label">
+        <div class="editor-label">
             @Html.LabelFor(model => model.ImageSource)
         </div>
         <div class="editor-field">
@@ -41,30 +54,18 @@
             @Html.ValidationMessageFor(model => model.Text)
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
+    
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
+        <br/>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Сохранить" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад", "Index", "Home", new { area = "" }, null)
 </div>
 
 @section Scripts {
