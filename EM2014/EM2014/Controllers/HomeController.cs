@@ -10,21 +10,22 @@ namespace EM2014.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
+        private readonly SiteContext _context;
+
+        public HomeController(SiteContext context)
+        {
+            _context = context;
+        }
 
         public ActionResult Index(string category, string product)
         {
-            using (var context = new SiteContext())
-            {
-                var model = new SiteModel(context, category ?? "", product);
-                this.SetSeoContent(model);
-                ViewBag.isHomePage = model.Content.IsHomepage;
-
-                ViewBag.Title = model.Title;
-                return View(model);
-            }
+            var model = new SiteModel(_context, category ?? "", product);
+            this.SetSeoContent(model);
+            ViewBag.isHomePage = model.Content.IsHomepage;
+            ViewBag.Title = model.Title;
+            if (model.Product != null)
+                return View("Product", model);
+            return View(model);
         }
-
     }
 }
