@@ -2,8 +2,18 @@
 
 @section Menu
 {
-    @Html.Partial("_Menu",Model.Menu)
+    <div class="menu-container">
+        @Html.Partial("_Menu", Model.Menu)
+    </div>
 }
-
-
-@Html.ActionLink("Редактировать","Edit","Content",new{area="Admin",id=Model.Content.Id},new{@class="adminLink"})
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Редактировать", "Edit", "Content", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+    @Html.ActionLink("Добавить продукт", "Create", "Product", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+}
+<div class="products clearfix">
+    @foreach (var item in Model.Content.Products)
+    {
+        @Html.Partial("_Product", item)
+    }
+</div>

@@ -1,15 +1,20 @@
-﻿
-#menu {
+﻿#menu {
     font-family: PTSansNarrowBold;
     color: #999999;
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
     height: 102px;
-    border-bottom: 2px solid #000;
+    
 }
 
+.menu-container #menu{
+    border-bottom: none;
+}
 
+.menu-container.product-details #menu{
+    border-bottom: 2px solid #000;
+}
 
 #menu a {
     font-family: PTSansNarrow;
@@ -37,6 +42,13 @@
     text-align: center;
     vertical-align: top;
     padding: 18px 50px 0 50px;
+}
+
+#menu ul li.selected a {
+    background-color: #fff200;
+    color: #000;
+    font-family: PTSansNarrowBold;
+
 }
 
 #menu ul li.current {

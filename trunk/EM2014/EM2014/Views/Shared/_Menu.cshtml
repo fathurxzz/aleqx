@@ -1,7 +1,7 @@
 ﻿@model List<EM2014.Helpers.MenuItem>
 
 
-<div class="menu-container">
+
     <div id="menu">
         <ul>
             @foreach (var item in Model.OrderBy(m => m.SortOrder))
@@ -11,4 +11,4 @@
             }
         </ul>
     </div>
-</div>
+

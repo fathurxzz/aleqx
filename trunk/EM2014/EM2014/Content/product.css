@@ -1,0 +1,71 @@
+﻿.products {
+     color: #000;
+}
+
+.product {
+    float: left;
+    margin: 1px;
+    width: 305px;
+    height: 375px;
+}
+
+.product .image {
+    
+}
+
+.product .title {
+    font-family: PTSansNarrowBold;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000;
+    padding: 15px 0;
+}
+
+.product .description {
+    padding-top: 15px;
+    font-family: PTSansItalic;
+    font-size: 15px;
+}
+
+
+.productDetails .title {
+    text-align: center;
+}
+
+.productDetails .title span {
+    background-color: #fff200;
+    font-family: PTSansNarrowBold;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 1px 10px;
+    vertical-align: middle;
+}
+
+.productDetails .text {
+    padding-top: 40px;
+}
+
+.productDetails .image {
+    padding-top: 40px;
+    width: 720px;
+    /*position: relative;*/
+    margin: 0 auto;
+}
+
+.productDetails .title .inner {
+    display: inline-block;
+    
+    background-repeat: no-repeat;
+}
+
+.productDetails .title .inner.left {
+    background-image: url('img/bracket-left.png');
+    background-position: left;
+}
+
+.productDetails .title .inner.right {
+    background-image: url('img/bracket-right.png');
+    background-position: right;
+    height: 38px;
+    padding: 20px 2px 0 2px;
+}

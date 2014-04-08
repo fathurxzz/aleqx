@@ -4,6 +4,12 @@
 {
     <li class="current">@Model.Title</li>
 }
+else if (Model.Selected)
+{
+    <li class="selected current">
+        @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.ContentName, product="" },null)
+    </li>
+}
 else
 {
     <li>

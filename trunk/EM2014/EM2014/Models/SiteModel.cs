@@ -26,8 +26,8 @@ namespace EM2014.Models
                 content.IsHomepage = true;
                 break;
             }
-            // в случае заходи на страницу продукта
-            if (contentId == null)
+            
+            if (productId != null)
             {
                 Product = context.Products.First(p => p.Name == productId);
                 Content = Product.Content;
@@ -50,7 +50,7 @@ namespace EM2014.Models
                 {
                     ContentId = c.Id,
                     ContentName = c.Name,
-                    Current = c.Name == contentId || contentId == "" && c.IsHomepage,
+                    Current = (c.Name == contentId || contentId == "" && c.IsHomepage)&&Product==null,
                     Selected = c.Name == Content.Name,
                     SortOrder = c.SortOrder,
                     Title = c.Title
