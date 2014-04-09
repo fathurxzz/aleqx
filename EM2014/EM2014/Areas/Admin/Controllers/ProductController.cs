@@ -38,15 +38,17 @@ namespace EM2014.Areas.Admin.Controllers
             var product = new Product { Content = content };
             TryUpdateModel(product, new[] { "SortOrder", "Title", "Name" });
             product.Text = HttpUtility.HtmlDecode(model.Text);
-            if (fileUpload != null)
+            if (fileUpload == null)
             {
-                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                string filePath = Server.MapPath("~/Content/Images");
-                filePath = Path.Combine(filePath, fileName);
-                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
-                fileUpload.SaveAs(filePath);
-                product.ImageSource = fileName;
+                return View(model);
             }
+
+            string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+            string filePath = Server.MapPath("~/Content/Images");
+            filePath = Path.Combine(filePath, fileName);
+            //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 140);
+            fileUpload.SaveAs(filePath);
+            product.ImageSource = fileName;
 
             _context.Products.Add(product);
             _context.SaveChanges();
@@ -82,7 +84,7 @@ namespace EM2014.Areas.Admin.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home", new { area = "",category= content.Name, product = "" });
+            return RedirectToAction("Index", "Home", new { area = "", category = content.Name, product = "" });
         }
 
         public ActionResult Delete(int id)

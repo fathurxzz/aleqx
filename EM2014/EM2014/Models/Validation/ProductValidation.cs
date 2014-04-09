@@ -12,15 +12,18 @@ namespace EM2014.Models
     public class ProductValidation
     {
         [Display(Name = "Адрес страницы")]
+        [Required]
         public string Name { get; set; }
 
         [Display(Name = "Заголовок")]
+        [Required]
         public string Title { get; set; }
 
         [Display(Name = "Описание")]
         public string Text { get; set; }
 
         [Display(Name = "Превьюшка 305х172")]
+        [Required]
         public string ImageSource { get; set; }
 
         //[Display(Name = "Превьюшка для айпада 228х228")]
