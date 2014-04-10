@@ -216,7 +216,6 @@
     <Content Include="Areas\Admin\Views\Product\EditProductItem.cshtml" />
     <None Include="Properties\PublishProfiles\1gb.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="script.sql" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -250,6 +249,8 @@
     <Content Include="Views\Home\_Product.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Home\_IndexPartial.cshtml" />
+    <Content Include="Views\Shared\_AjaxMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
