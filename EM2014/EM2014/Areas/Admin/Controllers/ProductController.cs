@@ -147,6 +147,7 @@ namespace EM2014.Areas.Admin.Controllers
             return View(_context.ProductItems.First(p => p.Id == id));
         }
 
+        [HttpPost]
         public ActionResult EditProductItem(ProductItem model, HttpPostedFileBase fileUpload)
         {
             var productItem = _context.ProductItems.First(p => p.Id == model.Id);
