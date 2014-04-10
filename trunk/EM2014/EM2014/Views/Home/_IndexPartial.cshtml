@@ -1,0 +1,6 @@
+﻿@model IEnumerable<EM2014.Models.Product>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_Product", item)
+}
