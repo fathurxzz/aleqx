@@ -39,8 +39,10 @@ function changeMenuStateBegin(obj) {
     //$(obj).parent().addClass("current");
 
     //obj).removeClass("current");
-    $(".current-bg").fadeOut();
+    $(".current-bg").fadeOut(100);
     //$("#productsContainer").fadeOut(200);
+    //$("#ajaxUpdatePanel").animate();
+
 }
 
 function changeMenuStateEnd(obj) {
@@ -54,6 +56,8 @@ function changeMenuStateEnd(obj) {
     $(id + " > div.current-bg-container > div.current-bg").fadeIn();
     
     $(".menu-container").removeClass("product-details");
+    //$("#ajaxUpdatePanel").fadeIn();
+    //$("#ajaxUpdatePanel").animate();
 }
 
 
