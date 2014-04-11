@@ -28,14 +28,5 @@ namespace EM2014.Controllers
                 return View("Product", model);
             return View(model);
         }
-
-
-        //public ActionResult PartialContent(string category, string product)
-        //{
-        //    var model = new SiteModel(_context, category ?? "", product);
-        //    this.SetSeoContent(model);
-        //    ViewBag.isHomePage = model.Content.IsHomepage;
-        //    return PartialView("_IndexPartial", model.Content.Products);
-        //}
     }
 }

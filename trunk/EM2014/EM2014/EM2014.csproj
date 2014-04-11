@@ -249,8 +249,6 @@
     <Content Include="Views\Home\_Product.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Home\_IndexPartial.cshtml" />
-    <Content Include="Views\Shared\_AjaxMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
