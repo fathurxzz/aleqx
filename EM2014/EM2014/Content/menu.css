@@ -41,8 +41,7 @@
     width: 80px;
     text-align: center;
     vertical-align: top;
-    padding: 0px 50px 0 50px;
-    /*padding: 18px 50px 0 50px;*/
+    padding: 18px 50px 0 50px;
 }
 
 #menu ul li.selected a {
@@ -53,8 +52,8 @@
 }
 
 #menu ul li.current {
-    /*background: url('img/menu-current-bg.png') no-repeat;
-    background-position: center top;*/
+    background: url('img/menu-current-bg.png') no-repeat;
+    background-position: center top;
 }
 
 .menu-container {
@@ -75,7 +74,7 @@
 
 
 
-
+/*
 #menu .current-bg-container {
     height: 18px;
 }
@@ -90,3 +89,4 @@
     background: url('img/menu-current-bg.png') no-repeat;
     background-position: center top;
 }
+    */
