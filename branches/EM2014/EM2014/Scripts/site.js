@@ -20,7 +20,7 @@
 });
 
 
-function beginreq(obj) {
+function changeMenuStateBegin(obj) {
     //$(obj).parent().addClass("current");
 
     //obj).removeClass("current");
@@ -28,8 +28,24 @@ function beginreq(obj) {
     //$("#productsContainer").fadeOut(200);
 }
 
-function endreq(obj) {
+function changeMenuStateEnd(obj) {
+    
     var id = "#" + $(obj).attr("id");
+    //alert(id);
+
+    $(".menuitemclass").removeClass("selected");
+    //$(".menuitemclass").remove("&laquo;");
+
     $(id + " > div.current-bg-container > div.current-bg").fadeIn();
-    //$("#productsContainer").fadeIn(200);
+}
+
+
+function showProduct(contentname) {
+    var menuid = "#menuitem_" + contentname;
+    //alert(param);
+    $(".menu-container").addClass("product-details");
+
+    $(menuid).addClass("selected");
+        //.append("&laquo;");
+    
 }

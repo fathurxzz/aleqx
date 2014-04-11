@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<EM2014.Models.Product>
 
+<div id="productsContainer" class="products clearfix">
 @foreach (var item in Model)
 {
     @Html.Partial("_Product", item)
 }
+    </div>

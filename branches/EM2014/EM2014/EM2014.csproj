@@ -251,6 +251,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Home\_IndexPartial.cshtml" />
     <Content Include="Views\Shared\_AjaxMenu.cshtml" />
+    <Content Include="Views\Home\_ProductPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

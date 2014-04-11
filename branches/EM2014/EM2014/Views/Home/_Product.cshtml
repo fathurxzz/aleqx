@@ -13,7 +13,8 @@
 
 @*@Html.Raw(@Html.ActionLink("[Image]", "ProductDetails", "Shop", new { Area = "", category = Model.Category.Name, id = Model.Name }, null).ToString().Replace("[Image]", ""))*@
     <div class="image">
-        @Html.Raw(@Html.ActionLink("[IMAGE]", "Index", "Home", new { category = Model.Content.Name, product = Model.Name }, null).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.ImageSource)))
+        @*@Html.Raw(@Html.ActionLink("[IMAGE]", "Index", "Home", new { category = Model.Content.Name, product = Model.Name }, null).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.ImageSource)))*@
+        @Html.Raw(@Ajax.ActionLink("[IMAGE]", "Index", "Home", new { category = Model.Content.Name, product = Model.Name }, new AjaxOptions {HttpMethod = "Get", UpdateTargetId = "ajaxUpdatePanel", OnComplete = "showProduct('"+Model.Content.Name+"')"}).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.ImageSource)))
     </div>
     <div class="title">
         @Model.Title
