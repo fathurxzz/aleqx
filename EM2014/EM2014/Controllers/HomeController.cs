@@ -24,9 +24,6 @@ namespace EM2014.Controllers
             ViewBag.isHomePage = model.Content.IsHomepage;
             ViewBag.Title = model.Title;
 
-            if (Request.IsAjaxRequest())
-                return PartialView("_IndexPartial", model.Content.Products);
-
             if (model.Product != null)
                 return View("Product", model);
             return View(model);
