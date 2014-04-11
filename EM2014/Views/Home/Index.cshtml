@@ -14,9 +14,12 @@
     @Html.ActionLink("Добавить продукт", "Create", "Product", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
     </div>
 }
-<div id="productsContainer" class="products clearfix">
+
+<div id="ajaxUpdatePanel">
+<div  class="products clearfix">
     @foreach (var item in Model.Content.Products)
     {
         @Html.Partial("_Product", item)
     }
 </div>
+    </div>

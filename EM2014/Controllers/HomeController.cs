@@ -25,7 +25,12 @@ namespace EM2014.Controllers
             ViewBag.Title = model.Title;
 
             if (Request.IsAjaxRequest())
+            {
+                if (model.Product != null)
+                    return PartialView("_ProductPartial", model.Product);
                 return PartialView("_IndexPartial", model.Content.Products);
+            }
+            
 
             if (model.Product != null)
                 return View("Product", model);

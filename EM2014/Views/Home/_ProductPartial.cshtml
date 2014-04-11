@@ -1,38 +1,19 @@
 ﻿@using SiteExtensions.Graphics
-@model EM2014.Models.SiteModel
-
-@section Menu
-{
-    <div class="menu-container product-details">
-        @Html.Partial("_AjaxMenu", Model.Menu)
-    </div>
-}
-
-@*@Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
-@Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })*@
-
-@*<div class="products clearfix">
-    @foreach (var item in Model.Content.Products)
-    {
-        @Html.Partial("_Product", item)
-    }
-</div>*@
-
-
+@model EM2014.Models.Product
 <div id="productContainer" class="productDetails">
-    <div class="title">
+<div class="title">
         <div class="inner left">
             <div class="inner right">
-                <span>@Model.Product.Title</span>
+                <span>@Model.Title</span>
             </div>
         </div>
     </div>
     @if (Request.IsAuthenticated)
     {
-        @Html.ActionLink("Добавить элемент", "AddProductItem", "Product", new { area = "Admin", id = Model.Product.Id }, new { @class = "adminLink" })
+        @Html.ActionLink("Добавить элемент", "AddProductItem", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
     }
 
-    @foreach (var item in Model.Product.ProductItems.OrderBy(p => p.SortOrder))
+    @foreach (var item in Model.ProductItems.OrderBy(p => p.SortOrder))
     {
         string className = Request.IsAuthenticated ? "border" : "";
         
@@ -66,5 +47,4 @@
         
         
     }
-
-</div>
+ </div>

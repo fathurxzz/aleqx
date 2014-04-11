@@ -6,13 +6,13 @@
             foreach (var item in Model.OrderBy(m => m.SortOrder))
             {
                 cnt++;
-                string menuitemid = "menuitem" + cnt;
+                string menuitemid = "menuitem_" + item.ContentName;
                 string className = item.Current ? "current" : "";
                 <li id="@menuitemid" class="menuitemclass">
                     <div class="current-bg-container">
                             <div class="current-bg @className"></div>
                     </div>
-                    @Ajax.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName }, new AjaxOptions {HttpMethod = "Get", UpdateTargetId = "productsContainer", OnBegin = "beginreq("+menuitemid+")", OnComplete = "endreq("+menuitemid+")"})
+                    @Ajax.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "ajaxUpdatePanel", OnBegin = "changeMenuStateBegin("+menuitemid+")", OnComplete = "changeMenuStateEnd("+menuitemid+")"})
                 </li>
             }
         }
