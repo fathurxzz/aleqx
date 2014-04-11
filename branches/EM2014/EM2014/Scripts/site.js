@@ -16,6 +16,21 @@
     }
 
     $(".current-bg.current").css("display", "block");
+    
+
+
+
+    $('a').address();
+
+
+    $.address.change(function (event) {
+        //alert(event.value);
+        $("#ajaxUpdatePanel").load(event.value);
+    });
+
+    //$('a').address(function () {
+    //    return $(this).attr('href').replace(/^#/, '');
+    //});
 
 });
 
@@ -37,6 +52,8 @@ function changeMenuStateEnd(obj) {
     //$(".menuitemclass").remove("&laquo;");
 
     $(id + " > div.current-bg-container > div.current-bg").fadeIn();
+    
+    $(".menu-container").removeClass("product-details");
 }
 
 
