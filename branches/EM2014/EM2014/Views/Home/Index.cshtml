@@ -1,0 +1,22 @@
+﻿@model EM2014.Models.SiteModel
+
+@section Menu
+{
+    <div class="menu-container">
+        @Html.Partial("_AjaxMenu", Model.Menu)
+    </div>
+}
+@if (Request.IsAuthenticated)
+{
+    <div style=" border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
+    @Html.ActionLink("Редактировать страницу", "Edit", "Content", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"}) 
+    <br/>
+    @Html.ActionLink("Добавить продукт", "Create", "Product", new {area = "Admin", id = Model.Content.Id}, new {@class = "adminLink"})
+    </div>
+}
+<div id="productsContainer" class="products clearfix">
+    @foreach (var item in Model.Content.Products)
+    {
+        @Html.Partial("_Product", item)
+    }
+</div>

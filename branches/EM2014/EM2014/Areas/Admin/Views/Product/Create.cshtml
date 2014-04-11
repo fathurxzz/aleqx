@@ -1,0 +1,72 @@
+﻿@model EM2014.Models.Product
+
+@{
+    ViewBag.Title = "Добавление продукта";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ContentId)
+
+    <fieldset>
+        <legend>Добавление продукта</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImageSource)
+        </div>
+        <div class="editor-field">
+            <input type="file" name="fileUpload" class="photoFileInput" />
+            @Html.ValidationMessageFor(model => model.ImageSource)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SortOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SortOrder)
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+        <br />
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index", "Home", new { area = "" }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
+}

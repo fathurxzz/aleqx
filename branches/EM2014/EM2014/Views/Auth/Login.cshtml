@@ -1,0 +1,40 @@
+﻿@model EM2014.Controllers.LoginModel
+@{
+    Layout = null;
+}
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Вход в админку</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/login.css" />
+    @Scripts.Render("~/Scripts/jquery-1.8.2.min.js")
+</head>
+<body class="login-page">
+    <div class="login-box">
+        <h3 class="page-title">Вход в админку</h3>
+        @using (Html.BeginForm("Login","Auth",FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <input type="text" class="form-control top" placeholder="Username" id="Name" name="Name" />
+            <input type="password" class="form-control bottom" placeholder="Password" id="Password" name="Password" />
+            <label class="checkbox">
+                @Html.EditorFor(model => model.Keep) @Html.LabelFor(model => model.Keep)
+            </label>
+            <p>
+                <input type="submit" class="btn-login btn" value="Войти" />
+            </p>
+        }
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#Name").focus();
+        })
+    </script>
+</body>
+</html>
