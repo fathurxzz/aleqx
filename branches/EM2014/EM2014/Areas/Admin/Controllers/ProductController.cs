@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using EM2014.Helpers;
 using EM2014.Models;
 using SiteExtensions;
-using SiteExtensions.Graphics;
 
 namespace EM2014.Areas.Admin.Controllers
 {
@@ -47,8 +46,8 @@ namespace EM2014.Areas.Admin.Controllers
             string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
             string filePath = Server.MapPath("~/Content/Images");
             filePath = Path.Combine(filePath, fileName);
-            GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 305);
-            //fileUpload.SaveAs(filePath);
+            //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 305);
+            fileUpload.SaveAs(filePath);
             product.ImageSource = fileName;
 
             _context.Products.Add(product);
@@ -78,8 +77,8 @@ namespace EM2014.Areas.Admin.Controllers
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
                 filePath = Path.Combine(filePath, fileName);
-                GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 305);
-                //fileUpload.SaveAs(filePath);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 305);
+                fileUpload.SaveAs(filePath);
                 product.ImageSource = fileName;
             }
 
@@ -132,8 +131,8 @@ namespace EM2014.Areas.Admin.Controllers
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
                 filePath = Path.Combine(filePath, fileName);
-                GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 2000);
-                //fileUpload.SaveAs(filePath);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 2000);
+                fileUpload.SaveAs(filePath);
                 productItem.ImageSource = fileName;
             }
 
@@ -161,8 +160,8 @@ namespace EM2014.Areas.Admin.Controllers
                 string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
                 string filePath = Server.MapPath("~/Content/Images");
                 filePath = Path.Combine(filePath, fileName);
-                GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 2000);
-                //fileUpload.SaveAs(filePath);
+                //GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 2000);
+                fileUpload.SaveAs(filePath);
                 productItem.ImageSource = fileName;
             }
 
