@@ -8,6 +8,11 @@
     </div>
 }
 
+@section BackLink
+{
+    @Html.Raw(Html.ActionLink("[IMAGE]","Index","Home",new{product="",category=Model.Content.Name},null).ToString().Replace("[IMAGE]","<div id=\"back-link\"></div>"))
+}
+
 @*@Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })
 @Html.ActionLink("Добавить продукт", "Create", "Product", new { area = "Admin", id = Model.Content.Id }, new { @class = "adminLink" })*@
 
