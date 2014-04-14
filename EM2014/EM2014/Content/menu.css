@@ -5,7 +5,7 @@
     font-size: 13px;
     letter-spacing: 1px;
     height: 102px;
-    
+    min-width: 921px;
 }
 
 .menu-container #menu{
@@ -94,6 +94,7 @@
 
 #menu.small {
     font-size: 9px;
+     min-width: 921px;
 }
 
 #menu.small a {
