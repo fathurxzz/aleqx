@@ -45,7 +45,7 @@
     padding-top: 68px;
     background: url('img/header-footer-bg.png') repeat;
     
-
+    min-width: 921px;
 }
 
 .slogan {
@@ -98,7 +98,8 @@
     */
     background: url('img/header-footer-bg.png') repeat;
     height: 121px;
-    
+
+    min-width: 921px;
 }
 
 

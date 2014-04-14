@@ -19,7 +19,7 @@ namespace EM2014.Models
         public SiteModel(SiteContext context, string contentId, string productId)
         {
             Contents = context.Contents;
-            Title = "EM2014";
+            Title = "Студия Евгения Миллера";
             var minSortorder = Contents.Min(c => c.SortOrder);
             foreach (var content in Contents.Where(content => content.SortOrder == minSortorder))
             {
@@ -57,7 +57,7 @@ namespace EM2014.Models
                 });
             }
 
-            Title += " " + Content.Title;
+            Title += " » " + Content.Title;
 
             SeoDescription = Content.SeoDescription;
             SeoKeywords = Content.SeoKeywords;
