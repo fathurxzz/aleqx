@@ -93,8 +93,9 @@
 
 
 #menu.small {
+    /*font-size: 13px;*/
     font-size: 9px;
-     min-width: 921px;
+    min-width: 921px;
 }
 
 #menu.small a {
@@ -102,9 +103,11 @@
 }
 
 #menu.small {
-    height: 55px;
+    /* height: 102px;*/
+    /*height: 55px;*/
 }
 
 #menu.small li {
-    width: 50px;
+    /*width: 80px;*/
+    /*width: 50px;*/
 }
