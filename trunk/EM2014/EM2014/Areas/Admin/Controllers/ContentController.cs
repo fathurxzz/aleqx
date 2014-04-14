@@ -27,6 +27,7 @@ namespace EM2014.Areas.Admin.Controllers
         {
             var content = _context.Contents.First(c => c.Id == model.Id);
             TryUpdateModel(content, new[] { "Name", "Title", "SortOrder", "SeoDescription", "SeoKeywords" });
+            content.Text = HttpUtility.HtmlDecode(model.Text);
             _context.SaveChanges();
             return RedirectToAction("Index", "Home", new { area = "", category = content.Name });
         }

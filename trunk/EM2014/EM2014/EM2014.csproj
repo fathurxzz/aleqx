@@ -164,6 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Models\Entities\Content.cs" />
     <Compile Include="Models\gbua_em2014Context.cs" />
@@ -195,6 +196,7 @@
     <Content Include="Content\img\header-footer-bg.png" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logo.svg" />
     <Content Include="Content\img\menu-bg.gif" />
     <Content Include="Content\img\menu-bg.png" />
     <Content Include="Content\img\menu-current-bg.gif" />
@@ -233,6 +235,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="test.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
