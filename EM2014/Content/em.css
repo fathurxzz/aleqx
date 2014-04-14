@@ -3,6 +3,18 @@
     font-family: PTSans;
 }
 
+#page-container {
+    
+}
+
+#page-container #back-link {
+    position: fixed;
+    top: 500px;
+    width: 43px;
+    height: 87px;
+    background: url('img/back-arrow.png') no-repeat;
+}
+
 .page {
     width: 921px;
     /*position: relative;*/

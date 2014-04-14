@@ -189,6 +189,7 @@
     <Content Include="Content\Fonts\PTSansItalic.ttf" />
     <Content Include="Content\Fonts\PTSansNarrow.ttf" />
     <Content Include="Content\Fonts\PTSansNarrowBold.ttf" />
+    <Content Include="Content\img\back-arrow.png" />
     <Content Include="Content\img\bracket-left.png" />
     <Content Include="Content\img\bracket-right.png" />
     <Content Include="Content\img\header-footer-bg.png" />

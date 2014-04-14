@@ -1,7 +1,7 @@
 ﻿@using SiteExtensions.Graphics
 @model EM2014.Models.Product
 <div id="productContainer" class="productDetails">
-<div class="title">
+    <div class="title">
         <div class="inner left">
             <div class="inner right">
                 <span>@Model.Title</span>
@@ -20,24 +20,24 @@
         <div class="@className">    
         
             @if (Request.IsAuthenticated)
-        {
-            <div>
-                @Html.ActionLink("Редактировать", "EditProductItem", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
-                @Html.ActionLink("Удалить", "DeleteProductItem", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
-            </div>
+            {
+                <div>
+                    @Html.ActionLink("Редактировать", "EditProductItem", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Удалить", "DeleteProductItem", "Product", new { area = "Admin", id = item.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить элемент?')" })
+                </div>
             }
 
-        @if (!string.IsNullOrEmpty(item.Text))
-        {
-        <div class="text">@Html.Raw(item.Text)</div>
+            @if (!string.IsNullOrEmpty(item.Text))
+            {
+                <div class="text">@Html.Raw(item.Text)</div>
             }
 
 
-        @if (!string.IsNullOrEmpty(item.ImageSource))
-        {
-        <div class="image">
-            @Html.Raw(Html.OriginalImage("/Content/Images", item.ImageSource))
-        </div>
+            @if (!string.IsNullOrEmpty(item.ImageSource))
+            {
+                <div class="image">
+                    @Html.Raw(Html.OriginalImage("/Content/Images", item.ImageSource))
+                </div>
             }
 
             
@@ -47,4 +47,11 @@
         
         
     }
- </div>
+</div>
+
+
+
+@section BackLink
+{
+    @Html.Raw(Html.ActionLink("[IMAGE]","Index","Home",new{product="",category=Model.Content.Name},null).ToString().Replace("[IMAGE]","<div id=\"back-link\"></div>"))
+}
