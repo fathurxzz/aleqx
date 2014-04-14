@@ -3,10 +3,10 @@
     $(window).scroll(function () {
         if ($(this).scrollTop() > 262) {
             //$('a.topLink').fadeIn();
-            $("#menu").addClass("fixed");
+            $("#menu").addClass("fixed").addClass("small");
 
         } else {
-            $("#menu").removeClass("fixed");
+            $("#menu").removeClass("fixed").removeClass("small");
         }
     });
     

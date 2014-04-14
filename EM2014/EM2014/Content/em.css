@@ -7,13 +7,13 @@
     
 }
 
-#page-container #back-link {
+/*#page-container #back-link {
     position: fixed;
     top: 500px;
     width: 43px;
     height: 87px;
     background: url('img/back-arrow.png') no-repeat;
-}
+}*/
 
 .page {
     width: 921px;
@@ -56,7 +56,7 @@
 }
 
 .slogan .text {
-    font-size: 8px;
+    font-size: 9px;
     text-align: center;
     padding-top: 26px;
     text-transform: uppercase;
@@ -64,12 +64,14 @@
     letter-spacing: 2px;
     line-height: 15px;
     /*font-weight: bold;*/
+    font-family: 'PT Sans Caption', sans-serif;
+    font-weight: 700;
 }
 
 #logo {
     width: 154px;
     height: 107px;
-    background: url('img/logo.png') no-repeat;
+    background: url('img/logo.svg') no-repeat;
     position: relative;
     margin: 0 auto;
 }

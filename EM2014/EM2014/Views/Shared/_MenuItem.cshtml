@@ -1,4 +1,5 @@
-﻿@model EM2014.Helpers.MenuItem
+﻿@using EM2014.Helpers
+@model MenuItem
 
 @if (Model.Current)
 {
@@ -13,6 +14,6 @@ else if (Model.Selected)
 else
 {
     <li>
-        @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.ContentName }, null)
+        @Html.ActionLink(Model.Title.ToSpecificmenuTitle(), "Index", "Home", new { category = Model.ContentName }, null)
     </li>
 }
