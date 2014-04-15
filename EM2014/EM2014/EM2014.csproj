@@ -203,6 +203,7 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\product.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Areas\Admin\Views\Web.config" />
