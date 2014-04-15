@@ -14,8 +14,7 @@
     z-index: 1000;
     height: 26px;
     background: url('img/phone-bg.png') repeat-x;
-    min-width: 921px;
-    padding: 0 20px;
+    min-width: 941px;
 }
 
 .phone {
