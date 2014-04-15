@@ -22,7 +22,7 @@
 }
 
 <div id="productsContainer" class="products clearfix">
-    @foreach (var item in Model.Content.Products)
+    @foreach (var item in Model.Content.Products.OrderBy(p=>p.SortOrder))
     {
         @Html.Partial("_Product", item)
     }
