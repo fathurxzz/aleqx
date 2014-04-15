@@ -33,9 +33,9 @@
     });
     
 
-    if (!window.isHomePage) {
-        $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
-    }
+    //if (!window.isHomePage) {
+    //    $("#logo").css("cursor", "pointer").click(function () { location.href = "/"; });
+    //}
 
     $(".current-bg.current").css("display", "block");
 
