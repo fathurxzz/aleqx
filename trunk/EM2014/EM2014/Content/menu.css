@@ -43,6 +43,7 @@
     text-align: center;
     vertical-align: top;
     padding: 18px 50px 0 50px;
+    line-height: 16px;
 }
 
 #menu ul li.selected a {
