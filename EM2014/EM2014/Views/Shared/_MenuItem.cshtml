@@ -8,7 +8,7 @@
 else if (Model.Selected)
 {
     <li class="selected current">
-        &nbsp; @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.ContentName, product="" },null) &laquo;
+        @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.ContentName, product="" },null) &laquo;
     </li>
 }
 else
