@@ -48,16 +48,17 @@
 
 .productDetails .text {
     padding-top: 40px;
-    font-family: 'PT Serif Caption', serif;
-    font-style: italic;
+    font-family: 'PT Sans', serif;
+    
+    /*font-style: italic;*/
     color: #666;
     font-size: 13px;
 }
 
-.productDetails .text em {
+/*.productDetails .text em {
     font-family: 'PT Serif Caption', sans-serif;
     font-style: normal;
-}
+}*/
 
 
 
