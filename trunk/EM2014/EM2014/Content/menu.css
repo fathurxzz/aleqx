@@ -1,5 +1,6 @@
 ﻿#menu {
-    font-family: PTSansNarrowBold;
+     font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
     color: #999999;
     text-transform: uppercase;
     font-size: 13px;
@@ -17,12 +18,12 @@
 }
 
 #menu a {
-    font-family: PTSansNarrow;
+    font-family: 'PT Sans Narrow', sans-serif;
     color: #fff;
     background-color: #000;
     text-decoration: none;
     padding: 0px 3px;
-
+    font-weight: normal;
 }
 
 #menu ul {
@@ -47,7 +48,8 @@
 #menu ul li.selected a {
     background-color: #fff200;
     color: #000;
-    font-family: PTSansNarrowBold;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
     text-decoration: underline;
 }
 
