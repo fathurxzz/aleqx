@@ -54,7 +54,7 @@ namespace EM2014.Areas.Admin.Controllers
             _context.Products.Add(product);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home", new { area = "",category=content.Name,product="" });
         }
 
         public ActionResult Edit(int id)
@@ -105,7 +105,7 @@ namespace EM2014.Areas.Admin.Controllers
 
             _context.Products.Remove(product);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home", new { area = "", id = content.Name });
+            return RedirectToAction("Index", "Home", new { area = "", category = content.Name, product="" });
         }
 
 
