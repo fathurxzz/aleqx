@@ -54,6 +54,13 @@
     font-size: 13px;
 }
 
+.productDetails .text em {
+    font-family: 'PT Serif Caption', sans-serif;
+    font-style: normal;
+}
+
+
+
 .productDetails .image {
     padding-top: 40px;
     width: 720px;
