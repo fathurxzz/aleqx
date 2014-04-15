@@ -7,6 +7,7 @@
         <div>
             @Html.ActionLink("Редактировать", "Edit", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
             @Html.ActionLink("Удалить", "Delete", "Product", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить продукт?')" })
+            <span>@Model.SortOrder</span>
         </div>
     }
 
