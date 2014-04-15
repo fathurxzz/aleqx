@@ -16,10 +16,10 @@
         @Html.Raw(@Html.ActionLink("[IMAGE]", "Index", "Home", new { category = Model.Content.Name, product = Model.Name }, null).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.ImageSource)))
     </div>
     <div class="title">
-        @Model.Title
+        @Html.ActionLink(Model.Title, "Index", "Home", new { category = Model.Content.Name, product = Model.Name }, null)
     </div>
     <div class="description">
-        @Html.Raw(Model.Text)
+        <a href="@Url.Action("Index", "Home", new { category = Model.Content.Name, product = Model.Name })">@Html.Raw(Model.Text)</a>
     </div>
     @*@Html.Raw(Html.OriginalImage("/Content/Images",Model.PreviewImageSource))*@
 </div>

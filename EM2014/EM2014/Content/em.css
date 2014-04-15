@@ -1,36 +1,21 @@
 ﻿body {
-    /*background: url('img/site-bg.png');*/
     font-family: 'PT Sans', sans-serif;
 }
 
-#page-container {
-    
-}
-
-/*#page-container #back-link {
-    position: fixed;
-    top: 500px;
-    width: 43px;
-    height: 87px;
-    background: url('img/back-arrow.png') no-repeat;
-}*/
-
 .page {
     width: 921px;
-    /*position: relative;*/
-    /*padding-top: 26px;*/
+    padding: 0 20px;
     margin: 0 auto;
-    /*background-color: #fff;*/
 }
 
 .phoneLine {
-    
     position: fixed;
     width: 100%;
     z-index: 1000;
     height: 26px;
     background: url('img/phone-bg.png') repeat-x;
     min-width: 921px;
+    padding: 0 20px;
 }
 
 .phone {
@@ -41,17 +26,13 @@
 
 
 .header {
-    /*padding-top: 42px;*/
-    /*margin-top: 26px;*/
-    padding-top: 68px;
     background: url('img/header-footer-bg.png') repeat;
-    
     min-width: 921px;
+    padding:68px 20px 0 20px;
 }
 
 .slogan {
     height: 114px;
-    /*background-image: url('img/slogan.png');*/
     background-position: center 30px;
     background-repeat: no-repeat;
 }
@@ -102,6 +83,7 @@
     height: 121px;
 
     min-width: 921px;
+    padding: 0 20px;
 }
 
 
