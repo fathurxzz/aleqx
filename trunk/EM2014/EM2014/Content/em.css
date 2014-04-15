@@ -70,7 +70,8 @@
     font-family: 'PT Sans Narrow', sans-serif;
     /*font-family: PTSansNarrow;*/
     font-size: 18px;
-    color: #8c8c8c;
+    color: #000;
+    font-weight: bold;
     
     /*
     position: fixed;
@@ -82,7 +83,8 @@
     height: 121px;
 
     min-width: 921px;
-    padding: 0 20px;
+
+    padding:10px 0 20px 0;
 }
 
 
