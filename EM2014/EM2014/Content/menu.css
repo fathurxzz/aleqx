@@ -68,10 +68,16 @@
 #menu.fixed {
     position: fixed;
     width: 100%;
+    /*min-width: 921px;*/
     top: 26px;
     /*background-color: #fff;*/
     background: url('img/header-footer-bg.png') repeat;
+
 } 
+
+#menu.fixed li {
+    line-height: normal;
+}
 
 
 
@@ -98,7 +104,8 @@
 #menu.small {
     /*font-size: 13px;*/
     font-size: 9px;
-    min-width: 921px;
+    /*min-width: 921px;*/
+    
 }
 
 #menu.small a {

@@ -2,10 +2,10 @@
 
     $(window).scroll(function () {
         if ($(this).scrollTop() > 262) {
-            $("#menu").addClass("fixed").addClass("small");
+            $("#menu").addClass("fixed"); //.addClass("small");
 
         } else {
-            $("#menu").removeClass("fixed").removeClass("small");
+            $("#menu").removeClass("fixed"); //.removeClass("small");
         }
 
         var scrollValue = $(this).scrollTop() - 263;
