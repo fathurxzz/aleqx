@@ -28,5 +28,11 @@ namespace EM2014.Controllers
                 return View("Product", model);
             return View(model);
         }
+
+        public ActionResult NotFound()
+        {
+            var model = new SiteModel(_context, "", null, true);
+            return View(model);
+        }
     }
 }

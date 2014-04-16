@@ -14,17 +14,23 @@ namespace EM2014
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("robots.txt");
+            
+            routes.MapRoute(
+              name: "NotFound",
+              url: "notfound",
+              defaults: new { controller = "Home", action = "NotFound" }
+            );
 
             routes.MapRoute(
               name: "LogOn",
               url: "logon",
-              defaults: new { controller = "Auth", action = "LogIn", id = UrlParameter.Optional }
+              defaults: new { controller = "Auth", action = "LogIn"}
             );
 
             routes.MapRoute(
                 name: "LogOff",
                 url: "logoff",
-                defaults: new { controller = "Auth", action = "Logout", id = UrlParameter.Optional }
+                defaults: new { controller = "Auth", action = "Logout"}
             );
 
             routes.MapRoute(
