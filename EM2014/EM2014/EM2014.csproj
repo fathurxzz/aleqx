@@ -187,6 +187,7 @@
     <Content Include="Content\img\back-arrow.png" />
     <Content Include="Content\img\bracket-left.png" />
     <Content Include="Content\img\bracket-right.png" />
+    <Content Include="Content\img\emlogo.png" />
     <Content Include="Content\img\header-footer-bg.png" />
     <Content Include="Content\img\logo.gif" />
     <Content Include="Content\img\logo.png" />
