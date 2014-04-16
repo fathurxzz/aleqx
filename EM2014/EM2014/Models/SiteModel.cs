@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using SiteExtensions;
 
 namespace EM2014.Models
@@ -16,7 +17,7 @@ namespace EM2014.Models
         public List<Helpers.MenuItem> Menu { get; set; }
         protected IQueryable<Content> Contents { get; set; }
 
-        public SiteModel(SiteContext context, string contentId, string productId)
+        public SiteModel(SiteContext context, string contentId, string productId, bool notFound = false)
         {
             Contents = context.Contents;
             Title = "Студия Евгения Миллера";
@@ -26,10 +27,14 @@ namespace EM2014.Models
                 content.IsHomepage = true;
                 break;
             }
-            
+
             if (productId != null)
             {
-                Product = context.Products.First(p => p.Name == productId);
+                Product = context.Products.FirstOrDefault(p => p.Name == productId);
+                if (Product == null)
+                {
+                    throw new HttpException(404, "page not found");
+                }
                 Content = Product.Content;
             }
             else if (contentId == "")
@@ -42,6 +47,13 @@ namespace EM2014.Models
                 Content = Contents.FirstOrDefault(c => c.Name == contentId);
             }
 
+            if (Content == null)
+            {
+                throw new HttpException(404, "page not found");
+            }
+
+            var contentName = Content.Name;
+
             Menu = new List<Helpers.MenuItem>();
 
             foreach (var c in Contents)
@@ -50,8 +62,8 @@ namespace EM2014.Models
                 {
                     ContentId = c.Id,
                     ContentName = c.Name,
-                    Current = (c.Name == contentId || contentId == "" && c.IsHomepage)&&Product==null,
-                    Selected = c.Name == Content.Name,
+                    Current = !notFound && ((c.Name == contentId || contentId == "" && c.IsHomepage) && Product == null),
+                    Selected = !notFound && c.Name == contentName,
                     SortOrder = c.SortOrder,
                     Title = c.Title
                 });

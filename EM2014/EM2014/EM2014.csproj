@@ -184,6 +184,7 @@
     <Content Include="Content\admin.css" />
     <Content Include="Content\common.css" />
     <Content Include="Content\em.css" />
+    <Content Include="Content\img\404.png" />
     <Content Include="Content\img\back-arrow.png" />
     <Content Include="Content\img\bracket-left.png" />
     <Content Include="Content\img\bracket-right.png" />
@@ -250,6 +251,7 @@
     <Content Include="Views\Home\_Product.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Home\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
