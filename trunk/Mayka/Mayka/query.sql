@@ -65,6 +65,7 @@ ALTER TABLE `PhotoGalleryItem` ADD PRIMARY KEY (Id);
 CREATE TABLE `Product`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Description` text null, 
+	`DescriptionBottom` text null, 
 	`PreviewImageSource` varchar (255) NOT NULL, 
 	`ContentId` int NOT NULL);
 

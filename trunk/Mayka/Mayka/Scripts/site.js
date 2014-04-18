@@ -26,18 +26,18 @@ HomeController.prototype = {
             prevText: ''
         });
         
-        $('.bxsliderProducts').bxSlider({
-            mode: 'fade',
-            //captions: false,
-            auto: true,
-            pause: 5000,
-            speed: 500,
-            pager: false,
-            //nextSelector: '#slider-next',
-            //prevSelector: '#slider-prev',
-            //nextText: '',
-            //prevText: ''
-        });
+        //$('.bxsliderProducts').bxSlider({
+        //    mode: 'fade',
+        //    //captions: false,
+        //    auto: true,
+        //    pause: 5000,
+        //    speed: 500,
+        //    pager: false,
+        //    //nextSelector: '#slider-next',
+        //    //prevSelector: '#slider-prev',
+        //    //nextText: '',
+        //    //prevText: ''
+        //});
 
 
         $("#phone").inputmask("(999)9999999", {

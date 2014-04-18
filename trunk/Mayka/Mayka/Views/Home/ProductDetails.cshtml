@@ -77,3 +77,25 @@
     }
     <div class="clear"></div>
 </div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+       var autostart = @(Model.Product.ProductImages.Count > 1 ? "true" : "false")
+       //alert(autostart);
+
+        $('.bxsliderProducts').bxSlider({
+            mode: 'fade',
+            //captions: false,
+            auto:  autostart,
+            pause: 5000,
+            speed: 500,
+            pager: false,
+            //nextSelector: '#slider-next',
+            //prevSelector: '#slider-prev',
+            //nextText: '',
+            //prevText: ''
+        });
+    </script>
+}
