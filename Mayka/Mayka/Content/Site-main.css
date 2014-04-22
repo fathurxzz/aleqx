@@ -1,11 +1,12 @@
-﻿#page {
-    /*height: 100%;*/
+﻿#left-block
+{
+    /*position: fixed;
+    top: 0;
+    bottom: 0;*/
+    min-height: 100%;
 }
 
-#left-block
-{
-       /*height: 100%;*/
-    position: fixed;
-    top: 0;
-    bottom: 0;
+#page {
+    min-height: 100%;
+    background: url('img/site-bg.gif') repeat-y;
 }
