@@ -67,8 +67,8 @@
 #menu ul li {
     list-style: none;
     display: inline-block;
-    padding: 8px 25px 0 25px;
-    width: 90px;
+    padding: 8px 0 0 0;
+    width: 95px;
     text-align: center;
     vertical-align: middle;
 }
