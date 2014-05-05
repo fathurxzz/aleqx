@@ -230,6 +230,7 @@
     <Content Include="Content\img\link-arrows.gif" />
     <Content Include="Content\img\logo.jpg" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logo.svg" />
     <Content Include="Content\img\name.png" />
     <Content Include="Content\img\right-arrow.png" />
     <Content Include="Content\img\send-active.gif" />
