@@ -45,8 +45,8 @@ namespace Edoki.Controllers
             var client = new SmtpClient();
             var message = new MailMessage();
             message.To.Add("kushko.alex@gmail.com");
-            //message.To.Add("miller.kak.miller@gmail.com");
-            //message.To.Add("irenepinchuk@gmail.com");
+            message.To.Add("miller.kak.miller@gmail.com");
+            message.To.Add("irenepinchuk@gmail.com");
             message.Subject = string.Format("Edoki - Заказ - {0}", fromPage);
             message.Body = string.Format("<div>Телефон: {0}</div><div>Страница: {1}</div>", phone, fromPage);
             message.IsBodyHtml = true;
