@@ -11,9 +11,18 @@ namespace Edoki
         {
             config.Routes.MapHttpRoute(
                 name: "EdokiApi",
-                routeTemplate: "api/makeorder/{phone}",
-                defaults: new { controller = "Service", action = "MakeOrder", phone = RouteParameter.Optional }
+                routeTemplate: "api/makeorder",
+                defaults: new { controller = "Service", action = "MakeOrder"}
             );
+
+
+            //config.Routes.MapHttpRoute(
+            //    name: "EdokiApi",
+            //    routeTemplate: "api/makeorder",
+            //    defaults: new { controller = "Service", action = "MakeOrder" }
+            //);
+
+
             //config.Routes.MapHttpRoute(
             //    name: "ActionApi",
             //    routeTemplate: "api/{controller}/{action}/{id}",
