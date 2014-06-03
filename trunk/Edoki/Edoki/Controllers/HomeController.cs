@@ -13,7 +13,7 @@ namespace Edoki.Controllers
 
         public ActionResult Index()
         {
-            string FilePath = Server.MapPath("~/index.html");
+            string FilePath = Server.MapPath("~/matafuku/index.html");
             // You can add other conditions also here
             if (System.IO.File.Exists(FilePath))
             {
