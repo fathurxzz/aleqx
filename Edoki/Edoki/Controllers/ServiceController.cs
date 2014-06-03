@@ -8,7 +8,7 @@ namespace Edoki.Controllers
     public class ServiceController : ApiController
     {
         [HttpPost]
-        public void MakeOrder(string phone)
+        public void MakeOrder(string phone, string from)
         {
             if (string.IsNullOrEmpty(phone))
                 throw new HttpException(400, "Phone is required");
@@ -18,7 +18,7 @@ namespace Edoki.Controllers
             message.To.Add("miller.kak.miller@gmail.com");
             message.To.Add("irenepinchuk@gmail.com");
             message.Subject = "Edoki - Заказ";
-            message.Body = string.Format("<div>Телефон: {0}</div>", phone);
+            message.Body = string.Format("<div>Телефон: {0}</div><div>Страница: {1}</div>", phone, from);
             message.IsBodyHtml = true;
             client.Send(message);
             message.Dispose();
