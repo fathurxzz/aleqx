@@ -109,17 +109,14 @@ namespace Listelli.Areas.Admin.Controllers
                             GraphicsHelper.SaveOriginalImage(filePath, fileName, fileUpload, 500);
                             //fileUpload.SaveAs(filePath);
                             cache.ImageSource = fileName;
+                        }
+                        TryUpdateModel(cache, new[] { "Description", "SortOrder" });
+                        cache.Name = SiteHelper.UpdatePageWebName(model.Name);
 
-
-
-                            TryUpdateModel(cache, new[] {"Description", "SortOrder"});
-                            cache.Name = SiteHelper.UpdatePageWebName(model.Name);
-
-                            var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
-                            if (lang != null)
-                            {
-                                CreateOrChangeContentLang(context, model, cache, lang);
-                            }
+                        var lang = context.Language.FirstOrDefault(p => p.Id == model.CurrentLang);
+                        if (lang != null)
+                        {
+                            CreateOrChangeContentLang(context, model, cache, lang);
                         }
                     }
 
