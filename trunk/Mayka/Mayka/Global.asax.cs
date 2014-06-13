@@ -30,6 +30,11 @@ namespace Mayka
                 ContextCondition = context => context.Request.UserAgent != null && context.Request.UserAgent.IndexOf("iPad", StringComparison.OrdinalIgnoreCase) >= 0
             });
 
+            //DisplayModeProvider.Instance.Modes.Insert(1, new DefaultDisplayMode("iPhone")
+            //{
+            //    ContextCondition = context => context.Request.UserAgent != null && context.Request.UserAgent.IndexOf("iPhone", StringComparison.OrdinalIgnoreCase) >= 0
+            //});
+
 
 
         }
