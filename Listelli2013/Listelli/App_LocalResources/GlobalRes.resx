@@ -195,4 +195,10 @@
   <data name="WrongEmail" xml:space="preserve">
     <value>Неверно введен адрес почты. Формат: name@domain.com</value>
   </data>
+  <data name="FactoryCatalogueDescription" xml:space="preserve">
+    <value>В этом разделе представлены только официальные каталоги фабрик. Чтобы их просматривать, необходимо авторизоваться, или пройти</value>
+  </data>
+  <data name="RegisterLinkText" xml:space="preserve">
+    <value>простую форму регистрации</value>
+  </data>
 </root>
