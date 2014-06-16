@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -431,6 +432,7 @@ namespace Listelli.Models
         private ObjectSet<BrandGroupItemLang> _BrandGroupItemLang;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -602,11 +604,11 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -635,6 +637,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -713,6 +716,7 @@ namespace Listelli.Models
         partial void OnPublishedChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -761,6 +765,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -793,6 +798,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -919,6 +925,7 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -983,6 +990,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1013,6 +1021,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1115,6 +1124,7 @@ namespace Listelli.Models
         partial void OnLanguageIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1195,6 +1205,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1227,6 +1238,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1353,6 +1365,7 @@ namespace Listelli.Models
         partial void OnArticleIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1433,6 +1446,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1463,6 +1477,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1589,6 +1604,7 @@ namespace Listelli.Models
         partial void OnBrandGroupIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1675,6 +1691,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1705,6 +1722,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1807,6 +1825,7 @@ namespace Listelli.Models
         partial void OnImageSourceChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1877,6 +1896,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1907,6 +1927,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2009,6 +2030,7 @@ namespace Listelli.Models
         partial void OnBrandGroupIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2073,6 +2095,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2103,6 +2126,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2205,6 +2229,7 @@ namespace Listelli.Models
         partial void OnBrandGroupItemIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2285,6 +2310,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2317,6 +2343,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2443,6 +2470,7 @@ namespace Listelli.Models
         partial void OnBrandGroupIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2523,6 +2551,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2553,6 +2582,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2655,6 +2685,7 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2741,6 +2772,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2769,6 +2801,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -2847,6 +2880,7 @@ namespace Listelli.Models
         partial void OnBrandItemIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -2889,6 +2923,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2919,6 +2954,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3021,6 +3057,7 @@ namespace Listelli.Models
         partial void OnBrandItemIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3101,6 +3138,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3131,6 +3169,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3257,6 +3296,7 @@ namespace Listelli.Models
         partial void OnBrandIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3337,6 +3377,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3367,6 +3408,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3469,6 +3511,7 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3517,6 +3560,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3549,6 +3593,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3675,6 +3720,7 @@ namespace Listelli.Models
         partial void OnTitleChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3739,6 +3785,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3767,6 +3814,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -3869,6 +3917,7 @@ namespace Listelli.Models
         partial void OnSortOrderChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -3933,6 +3982,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -3963,6 +4013,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4089,6 +4140,7 @@ namespace Listelli.Models
         partial void OnLanguageIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4169,6 +4221,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4199,6 +4252,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4301,6 +4355,7 @@ namespace Listelli.Models
         partial void OnLanguageIdChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4381,6 +4436,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4409,6 +4465,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4487,6 +4544,7 @@ namespace Listelli.Models
         partial void OnMainPageChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4513,6 +4571,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4545,6 +4604,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4719,6 +4779,7 @@ namespace Listelli.Models
         partial void OnSeoKeywordsChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -4799,6 +4860,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4827,6 +4889,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -4905,6 +4968,7 @@ namespace Listelli.Models
         partial void OnNameChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -5107,8 +5171,10 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }

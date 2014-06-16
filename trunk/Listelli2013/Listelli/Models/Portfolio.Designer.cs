@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -120,6 +121,7 @@ namespace Listelli.Models
         private ObjectSet<DesignerContantImage> _DesignerContantImage;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -147,11 +149,11 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -184,6 +186,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -334,6 +337,7 @@ namespace Listelli.Models
         partial void OnImageSourceChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -360,6 +364,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -388,6 +393,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -466,6 +472,7 @@ namespace Listelli.Models
         partial void OnImageSourceChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -508,6 +515,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -538,6 +546,7 @@ namespace Listelli.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -664,6 +673,7 @@ namespace Listelli.Models
         partial void OnDescriptionChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -728,8 +738,10 @@ namespace Listelli.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
