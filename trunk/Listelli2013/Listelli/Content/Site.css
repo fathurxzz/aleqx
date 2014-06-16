@@ -133,11 +133,34 @@ body {
     position: relative;
     margin: 0 auto;
     height: 202px;
-    background: url('img/footer-bg.gif');
+    background: url('img/footer-bg.png');
     background-position: 50%;
     /*overflow: hidden;*/
 }
 
+.em-link-container {
+    height: 200px;
+    width: 1000px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.em-link-container .em-link {
+    width: 180px;
+    height: 28px;
+    margin: 0 auto 0 auto;
+    
+    background: url('img/em-logo.png') no-repeat;
+    color: #fff;
+    padding-left: 38px;
+    padding-top:100px;
+    background-position:0 104px;
+    font-size: 12px;
+}
+
+.em-link-container .em-link a {
+    color: #fff02a;
+}
 
 .title-container {
     height: 70px;
@@ -280,27 +303,7 @@ body {
     text-decoration: underline;
 }
 
-.em-link-container {
-    height: 200px;
-    width: 1000px;
-    position: relative;
-    margin: 0 auto;
-}
 
-.em-link-container .em-link {
-    width: 180px;
-    height: 28px;
-    margin: 100px auto 0 auto;
-    border: 1px solid #fff;
-    background: url('img/em-logo.png') no-repeat;
-    color: #fff;
-    padding-left: 38px;
-    font-size: 12px;
-}
-
-.em-link-container .em-link a {
-    color: #fff02a;
-}
 
 
 .notfound404 {
