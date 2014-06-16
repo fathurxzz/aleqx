@@ -290,7 +290,7 @@ body {
 .em-link-container .em-link {
     width: 180px;
     height: 28px;
-    margin: 0 auto;
+    margin: 100px auto 0 auto;
     border: 1px solid #fff;
     background: url('img/em-logo.png') no-repeat;
     color: #fff;
