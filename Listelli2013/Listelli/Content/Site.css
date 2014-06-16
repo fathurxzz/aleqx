@@ -233,15 +233,6 @@ body {
     font-size: 12px;
 }
 
-.em-link {
-    cursor: pointer;
-    position: absolute;
-    width: 130px;
-    height: 12px;
-    margin-top: 111px;
-    margin-left: 465px;
-    /*border: 1px solid #fff;*/
-}
 
 
 #logo
@@ -290,10 +281,24 @@ body {
 }
 
 .em-link-container {
-     height: 200px;
+    height: 200px;
     width: 1000px;
     position: relative;
     margin: 0 auto;
+}
+
+.em-link-container .em-link {
+    width: 130px;
+    height: 24px;
+    margin: 0 auto;
+    border: 1px solid #fff;
+    background: url('img/em-logo.png') no-repeat;
+    color: #fff;
+    padding-left: 38px;
+}
+
+.em-link-container .em-link a {
+    color: #fff02a;
 }
 
 

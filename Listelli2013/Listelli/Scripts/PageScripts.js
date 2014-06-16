@@ -8,7 +8,7 @@
 
             //$(".fancybox").fancybox();
 
-            $(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
+            //$(".em-link").click(function () { location.href = "http://eugene-miller.com"; });
 
 
             $(".button").click(function () {
