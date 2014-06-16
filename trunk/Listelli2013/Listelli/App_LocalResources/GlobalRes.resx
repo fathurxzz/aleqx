@@ -201,4 +201,10 @@
   <data name="RegisterLinkText" xml:space="preserve">
     <value>простую форму регистрации</value>
   </data>
+  <data name="DesignedBy" xml:space="preserve">
+    <value>Сделано в</value>
+  </data>
+  <data name="EmStudio" xml:space="preserve">
+    <value>Студии Евгения Миллера</value>
+  </data>
 </root>
