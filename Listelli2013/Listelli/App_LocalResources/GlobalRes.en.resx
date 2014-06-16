@@ -202,9 +202,9 @@
     <value>простую форму регистрации</value>
   </data>
   <data name="DesignedBy" xml:space="preserve">
-    <value>Сделано в</value>
+    <value>Designed by</value>
   </data>
   <data name="EmStudio" xml:space="preserve">
-    <value>Студии Евгения Миллера</value>
+    <value>Eugene Miller Studio</value>
   </data>
 </root>
