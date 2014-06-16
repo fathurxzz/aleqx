@@ -288,13 +288,14 @@ body {
 }
 
 .em-link-container .em-link {
-    width: 130px;
-    height: 24px;
+    width: 180px;
+    height: 28px;
     margin: 0 auto;
     border: 1px solid #fff;
     background: url('img/em-logo.png') no-repeat;
     color: #fff;
     padding-left: 38px;
+    font-size: 12px;
 }
 
 .em-link-container .em-link a {
