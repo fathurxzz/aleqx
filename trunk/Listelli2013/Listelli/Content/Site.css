@@ -319,7 +319,7 @@ body {
     position: absolute;
     width: 96px;
     height: 96px;
-    background: url('img/subscribe.gif');
+    background: url('img/subscribe.png');
     margin-left: 1035px;
     margin-top: 50px;
     /*display: none;*/
@@ -329,7 +329,7 @@ body {
     width: 62px;
     height: 13px;
     cursor: pointer;
-    
+    border:1px solid #fff;
     margin-top: 38px;
     margin-left: 18px;
 }
