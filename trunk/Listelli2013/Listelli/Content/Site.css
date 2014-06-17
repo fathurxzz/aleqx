@@ -321,7 +321,7 @@ body {
     height: 96px;
     background: url('img/subscribe.png');
     margin-left: 1035px;
-    margin-top: 50px;
+    margin-top: 40px;
     /*display: none;*/
 }
 
@@ -329,9 +329,12 @@ body {
     width: 62px;
     height: 13px;
     cursor: pointer;
-    border:1px solid #fff;
     margin-top: 38px;
     margin-left: 18px;
+    color:#fff;
+    font-size:11px;
+    line-height:14px;
+    text-align:center;
 }
 
 

@@ -2,8 +2,7 @@
 @using (Ajax.BeginForm("Subscribe", "Home", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "updateSubscribeContent" }))
 {
     <div>
-        Введите адрес электронной почты<br />
-        и нажмите &laquo;энтер&raquo;
+        @Html.Raw(GlobalRes.EnterEmailAndPressEnter)
     </div>
     <br />
 

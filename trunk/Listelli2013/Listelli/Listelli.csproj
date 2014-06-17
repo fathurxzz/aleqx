@@ -25,6 +25,10 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -240,6 +244,7 @@
     <Content Include="Content\img\site-bg.gif" />
     <Content Include="Content\img\subscribe-cloud.png" />
     <Content Include="Content\img\subscribe.gif" />
+    <Content Include="Content\img\subscribe.png" />
     <Content Include="Content\img\subscribed.gif" />
     <Content Include="Content\img\title-bg.gif" />
     <Content Include="Content\img\title-container-bg.gif" />
@@ -385,6 +390,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Customer.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\local_pub.pubxml" />
     <None Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="Views\Shared\MainMenu.cshtml" />

@@ -207,4 +207,16 @@
   <data name="EmStudio" xml:space="preserve">
     <value>Студии Евгения Миллера</value>
   </data>
+  <data name="SubscribeToNews" xml:space="preserve">
+    <value>Подписаться на новости</value>
+  </data>
+  <data name="EnterEmailAndPressEnter" xml:space="preserve">
+    <value>Введите адрес электронной почты&lt;br /&gt;и нажмите &amp;laquo;энтер&amp;raquo;</value>
+  </data>
+  <data name="Subscribed" xml:space="preserve">
+    <value>В ближайшее время&lt;br /&gt;
+    Вам будет отправлено письмо
+    для подтверждения подписки&lt;br /&gt;
+    на рассылку</value>
+  </data>
 </root>
