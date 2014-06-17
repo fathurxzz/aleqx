@@ -207,4 +207,14 @@
   <data name="EmStudio" xml:space="preserve">
     <value>Eugene Miller Studio</value>
   </data>
+  <data name="SubscribeToNews" xml:space="preserve">
+    <value>Subscribe to news</value>
+  </data>
+  <data name="EnterEmailAndPressEnter" xml:space="preserve">
+    <value>Enter e-mail&lt;br /&gt;and press enter</value>
+  </data>
+  <data name="Subscribed" xml:space="preserve">
+    <value>The subscribing confirmation&lt;br /&gt;will be send to you&lt;br /&gt;
+at the nearest time</value>
+  </data>
 </root>
