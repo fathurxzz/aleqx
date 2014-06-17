@@ -200,21 +200,21 @@ a {
 
 
 
-.slider-controls {
+.galleryContainer .slider-controls {
     width: 142px;
     position: absolute;
     z-index: 100;
     margin-top: 73px;
 }
 
-.slider-controls .name {
+.galleryContainer .slider-controls .name {
     width: 135px;
     height: 73px;
     background: url('img/name.png');
     margin: 3px;
 }
 
-.slider-controls #slider-prev {
+.galleryContainer .slider-controls #slider-prev {
     float: left;
     width: 66px;
     height: 73px;
@@ -223,7 +223,7 @@ a {
 
 }
 
-.slider-controls #slider-next {
+.galleryContainer .slider-controls #slider-next {
     float: left;
     width: 66px;
     height: 73px;
@@ -231,11 +231,52 @@ a {
     margin-left: 3px;
 }
 
-.slider-controls #slider-prev a, .slider-controls #slider-next a{
+.galleryContainer .slider-controls #slider-prev a, .slider-controls #slider-next a{
     display: block;
     width: 100%;
     height: 100%;
 }
+
+
+.productImage .slider-controls {
+    width: 350px;
+    position: absolute;
+    z-index: 100;
+    margin-top: 180px;
+}
+
+.productImage .slider-controls .name {
+    width: 135px;
+    height: 73px;
+    background: url('img/name.png');
+    margin: 3px;
+}
+
+.productImage .slider-controls #slider-prev {
+    float: left;
+    width: 14px;
+    height: 20px;
+    background: url('img/pager-arrow-left.png');
+    margin-left: 30px;
+}
+
+.productImage .slider-controls #slider-next {
+    float: left;
+    width: 14px;
+    height: 20px;
+    background: url('img/pager-arrow-right.png');
+    margin-left: 260px;
+    
+}
+
+.productImage .slider-controls #slider-prev a, .slider-controls #slider-next a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
 
 
 .product {
