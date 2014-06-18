@@ -18,6 +18,7 @@ namespace Mayka.Controllers
             MailMessage message = new MailMessage();
             //message.To.Add("kushko.alex@gmail.com");
             message.To.Add("miller.kak.miller@gmail.com");
+            message.To.Add("irenepinchuk@gmail.com");
             message.Subject = "m-j - Перезвони по футболке";
             message.Body = string.Format("<div>Телефон: {0}</div><div><img src=\"{1}\" /></div>", phone, url);
             message.IsBodyHtml = true;
