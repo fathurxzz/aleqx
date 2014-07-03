@@ -7,7 +7,7 @@ namespace Leo.Models
     {
         public Category()
         {
-            this.Category1 = new List<Category>();
+            this.Children = new List<Category>();
             this.CategoryImages = new List<CategoryImage>();
             this.CategoryLangs = new List<CategoryLang>();
         }
@@ -16,8 +16,8 @@ namespace Leo.Models
         public string Name { get; set; }
         public int SortOrder { get; set; }
         public Nullable<int> CategoryId { get; set; }
-        public virtual ICollection<Category> Category1 { get; set; }
-        public virtual Category Category2 { get; set; }
+        public virtual ICollection<Category> Children { get; set; }
+        public virtual Category Parent { get; set; }
         public virtual ICollection<CategoryImage> CategoryImages { get; set; }
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
 

@@ -10,16 +10,18 @@ namespace Leo.Areas.Admin.Controllers
 {
     public class CategoryController : AdminController
     {
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             using (var context = new SiteContext())
             {
-                int maxSortOrder = context.Categories.Max(c => (int?)c.SortOrder) ?? 0;
+
+                //int maxSortOrder = context.Categories.Max(c => (int?)c.SortOrder) ?? 0;
                 var category = new Category
-                {
-                    SortOrder = maxSortOrder + 1,
-                    CurrentLang = CurrentLang.Id
-                };
+                    {
+                        //SortOrder = maxSortOrder + 1,
+                        CurrentLang = CurrentLang.Id,
+                        Parent = id.HasValue ? context.Categories.FirstOrDefault(c=>c.Id==id):null
+                    };
                 return View(category);
             }
         }
