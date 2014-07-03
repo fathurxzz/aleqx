@@ -11,6 +11,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model=>model.CurrentLang)
+    @Html.HiddenFor(model=>model.CategoryId)
     <fieldset>
         <legend>Category</legend>
 
