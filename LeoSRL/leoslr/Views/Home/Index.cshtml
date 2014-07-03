@@ -1,0 +1,16 @@
+﻿@model Leo.Models.CategoryModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@foreach (var item in Model.Categories)
+{
+    <div>
+        @item.Id @item.Name @item.Title @item.Text @Html.ActionLink("edit", "Edit", "Category", new { area = "Admin", id = item.Id }, null)
+    </div>
+}

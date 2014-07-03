@@ -1,0 +1,15 @@
+﻿@using System.Threading
+@using Leo.Helpers
+
+@if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+{
+    var routeData = ViewContext.RouteData.GetCopy();
+    routeData.Values["lang"] = "en";
+    <text> На русском | @Html.RouteLink("In English", routeData.Values)</text>
+}
+else
+{
+    var routeData = ViewContext.RouteData.GetCopy();
+    routeData.Values["lang"] = "ru";
+    <text>@Html.RouteLink("На русском", routeData.Values) | In English</text>
+}
