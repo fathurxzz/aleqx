@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Model.Store.Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Language" EntityType="Model.Store.Language" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryLang" EntityType="Model.Store.CategoryLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Article" EntityType="Model.Store.Article" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleLang" EntityType="Model.Store.ArticleLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleItem" EntityType="Model.Store.ArticleItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleItemImage" EntityType="Model.Store.ArticleItemImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleItemLang" EntityType="Model.Store.ArticleItemLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Product" EntityType="Model.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductImage" EntityType="Model.Store.ProductImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductLang" EntityType="Model.Store.ProductLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryImage" EntityType="Model.Store.CategoryImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SpecialContent" EntityType="Model.Store.SpecialContent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SpecialContentLang" EntityType="Model.Store.SpecialContentLang" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoryCategoryLang" Association="Model.Store.CategoryCategoryLang">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryLang" EntitySet="CategoryLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageCategoryLang" Association="Model.Store.LanguageCategoryLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="CategoryLang" EntitySet="CategoryLang" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleArticleLang" Association="Model.Store.ArticleArticleLang">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleLang" EntitySet="ArticleLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageArticleLang" Association="Model.Store.LanguageArticleLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ArticleLang" EntitySet="ArticleLang" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleArticleItem" Association="Model.Store.ArticleArticleItem">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleItem" EntitySet="ArticleItem" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleItemArticleItemImage" Association="Model.Store.ArticleItemArticleItemImage">
+      <End Role="ArticleItem" EntitySet="ArticleItem" />
+      <End Role="ArticleItemImage" EntitySet="ArticleItemImage" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryCategory" Association="Model.Store.CategoryCategory">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category1" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="ArticleItemArticleItemLang" Association="Model.Store.ArticleItemArticleItemLang">
+      <End Role="ArticleItem" EntitySet="ArticleItem" />
+      <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageArticleItemLang" Association="Model.Store.LanguageArticleItemLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductImage" Association="Model.Store.ProductProductImage">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductImage" EntitySet="ProductImage" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageProductLang" Association="Model.Store.LanguageProductLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ProductLang" EntitySet="ProductLang" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductLang" Association="Model.Store.ProductProductLang">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductLang" EntitySet="ProductLang" />
+    </AssociationSet>
+    <AssociationSet Name="CategoryCategoryImage" Association="Model.Store.CategoryCategoryImage">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryImage" EntitySet="CategoryImage" />
+    </AssociationSet>
+    <AssociationSet Name="SpecialContentSpecialContentLang" Association="Model.Store.SpecialContentSpecialContentLang">
+      <End Role="SpecialContent" EntitySet="SpecialContent" />
+      <End Role="SpecialContentLang" EntitySet="SpecialContentLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageSpecialContentLang" Association="Model.Store.LanguageSpecialContentLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="SpecialContentLang" EntitySet="SpecialContentLang" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="CategoryId" Type="int" Nullable="true" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CategoryLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Published" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="false" />
+    <Property Name="ArticleId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ArticleId" Type="int" Nullable="false" />
+    <Property Name="ContentType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleItemImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ArticleItemId" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleItemLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="ArticleItemId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecialContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageImageSource" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ContentImageSource" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="SpecialContentLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="SpecialContentId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoryCategoryLang">
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <End Role="CategoryLang" Type="Model.Store.CategoryLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLang">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageCategoryLang">
+    <End Role="Language" Type="Model.Store.Language" Multiplicity="1" />
+    <End Role="CategoryLang" Type="Model.Store.CategoryLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleArticleLang">
+    <End Role="Article" Type="Model.Store.Article" Multiplicity="1" />
+    <End Role="ArticleLang" Type="Model.Store.ArticleLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleLang">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageArticleLang">
+    <End Role="Language" Type="Model.Store.Language" Multiplicity="1" />
+    <End Role="ArticleLang" Type="Model.Store.ArticleLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleArticleItem">
+    <End Role="Article" Type="Model.Store.Article" Multiplicity="1" />
+    <End Role="ArticleItem" Type="Model.Store.ArticleItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItem">
+        <PropertyRef Name="ArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleItemArticleItemImage">
+    <End Role="ArticleItem" Type="Model.Store.ArticleItem" Multiplicity="1" />
+    <End Role="ArticleItemImage" Type="Model.Store.ArticleItemImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticleItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItemImage">
+        <PropertyRef Name="ArticleItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryCategory">
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="Model.Store.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category1">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticleItemArticleItemLang">
+    <End Role="ArticleItem" Type="Model.Store.ArticleItem" Multiplicity="1" />
+    <End Role="ArticleItemLang" Type="Model.Store.ArticleItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticleItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItemLang">
+        <PropertyRef Name="ArticleItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageArticleItemLang">
+    <End Role="Language" Type="Model.Store.Language" Multiplicity="1" />
+    <End Role="ArticleItemLang" Type="Model.Store.ArticleItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ArticleItemLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductProductImage">
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="1" />
+    <End Role="ProductImage" Type="Model.Store.ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageProductLang">
+    <End Role="Language" Type="Model.Store.Language" Multiplicity="1" />
+    <End Role="ProductLang" Type="Model.Store.ProductLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductProductLang">
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="1" />
+    <End Role="ProductLang" Type="Model.Store.ProductLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductLang">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CategoryCategoryImage">
+    <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
+    <End Role="CategoryImage" Type="Model.Store.CategoryImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryImage">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SpecialContentSpecialContentLang">
+    <End Role="SpecialContent" Type="Model.Store.SpecialContent" Multiplicity="1" />
+    <End Role="SpecialContentLang" Type="Model.Store.SpecialContentLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SpecialContent">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecialContentLang">
+        <PropertyRef Name="SpecialContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageSpecialContentLang">
+    <End Role="Language" Type="Model.Store.Language" Multiplicity="1" />
+    <End Role="SpecialContentLang" Type="Model.Store.SpecialContentLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SpecialContentLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Model.Category" />
+          <EntitySet Name="Language" EntityType="Model.Language" />
+          <EntitySet Name="CategoryLang" EntityType="Model.CategoryLang" />
+          <AssociationSet Name="CategoryCategoryLang" Association="Model.CategoryCategoryLang">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryLang" EntitySet="CategoryLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageCategoryLang" Association="Model.LanguageCategoryLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="CategoryLang" EntitySet="CategoryLang" />
+          </AssociationSet>
+          <EntitySet Name="Article" EntityType="Model.Article" />
+          <EntitySet Name="ArticleLang" EntityType="Model.ArticleLang" />
+          <AssociationSet Name="ArticleArticleLang" Association="Model.ArticleArticleLang">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleLang" EntitySet="ArticleLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageArticleLang" Association="Model.LanguageArticleLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ArticleLang" EntitySet="ArticleLang" />
+          </AssociationSet>
+          <EntitySet Name="ArticleItem" EntityType="Model.ArticleItem" />
+          <AssociationSet Name="ArticleArticleItem" Association="Model.ArticleArticleItem">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleItem" EntitySet="ArticleItem" />
+          </AssociationSet>
+          <EntitySet Name="ArticleItemImage" EntityType="Model.ArticleItemImage" />
+          <AssociationSet Name="ArticleItemArticleItemImage" Association="Model.ArticleItemArticleItemImage">
+            <End Role="ArticleItem" EntitySet="ArticleItem" />
+            <End Role="ArticleItemImage" EntitySet="ArticleItemImage" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryCategory" Association="Model.CategoryCategory">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
+          <EntitySet Name="ArticleItemLang" EntityType="Model.ArticleItemLang" />
+          <AssociationSet Name="ArticleItemArticleItemLang" Association="Model.ArticleItemArticleItemLang">
+            <End Role="ArticleItem" EntitySet="ArticleItem" />
+            <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageArticleItemLang" Association="Model.LanguageArticleItemLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ArticleItemLang" EntitySet="ArticleItemLang" />
+          </AssociationSet>
+          <EntitySet Name="Product" EntityType="Model.Product" />
+          <EntitySet Name="ProductImage" EntityType="Model.ProductImage" />
+          <AssociationSet Name="ProductProductImage" Association="Model.ProductProductImage">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImage" EntitySet="ProductImage" />
+          </AssociationSet>
+          <EntitySet Name="ProductLang" EntityType="Model.ProductLang" />
+          <AssociationSet Name="LanguageProductLang" Association="Model.LanguageProductLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ProductLang" EntitySet="ProductLang" />
+          </AssociationSet>
+          <AssociationSet Name="ProductProductLang" Association="Model.ProductProductLang">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductLang" EntitySet="ProductLang" />
+          </AssociationSet>
+          <EntitySet Name="CategoryImage" EntityType="Model.CategoryImage" />
+          <AssociationSet Name="CategoryCategoryImage" Association="Model.CategoryCategoryImage">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoryImage" EntitySet="CategoryImage" />
+          </AssociationSet>
+          <EntitySet Name="SpecialContent" EntityType="Model.SpecialContent" />
+          <EntitySet Name="SpecialContentLang" EntityType="Model.SpecialContentLang" />
+          <AssociationSet Name="SpecialContentSpecialContentLang" Association="Model.SpecialContentSpecialContentLang">
+            <End Role="SpecialContent" EntitySet="SpecialContent" />
+            <End Role="SpecialContentLang" EntitySet="SpecialContentLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageSpecialContentLang" Association="Model.LanguageSpecialContentLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="SpecialContentLang" EntitySet="SpecialContentLang" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="false" MaxLength="200" />
+          <NavigationProperty Name="CategoryLangs" Relationship="Model.CategoryCategoryLang" FromRole="Category" ToRole="CategoryLang" />
+          <NavigationProperty Name="Children" Relationship="Model.CategoryCategory" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Parent" Relationship="Model.CategoryCategory" FromRole="Category1" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="true" />
+          <NavigationProperty Name="CategoryImages" Relationship="Model.CategoryCategoryImage" FromRole="Category" ToRole="CategoryImage" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="2" FixedLength="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="CategoryLangs" Relationship="Model.LanguageCategoryLang" FromRole="Language" ToRole="CategoryLang" />
+          <NavigationProperty Name="ArticleLangs" Relationship="Model.LanguageArticleLang" FromRole="Language" ToRole="ArticleLang" />
+          <NavigationProperty Name="ArticleItemLangs" Relationship="Model.LanguageArticleItemLang" FromRole="Language" ToRole="ArticleItemLang" />
+          <NavigationProperty Name="ProductLangs" Relationship="Model.LanguageProductLang" FromRole="Language" ToRole="ProductLang" />
+          <NavigationProperty Name="SpecialContentLangs" Relationship="Model.LanguageSpecialContentLang" FromRole="Language" ToRole="SpecialContentLang" />
+        </EntityType>
+        <EntityType Name="CategoryLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" FixedLength="false" MaxLength="200" />
+          <NavigationProperty Name="Category" Relationship="Model.CategoryCategoryLang" FromRole="CategoryLang" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Model.LanguageCategoryLang" FromRole="CategoryLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
+        <Association Name="CategoryCategoryLang">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.CategoryLang" Role="CategoryLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryLang">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageCategoryLang">
+          <End Type="Model.Language" Role="Language" Multiplicity="1" />
+          <End Type="Model.CategoryLang" Role="CategoryLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Boolean" Name="Published" Nullable="false" />
+          <NavigationProperty Name="ArticleLangs" Relationship="Model.ArticleArticleLang" FromRole="Article" ToRole="ArticleLang" />
+          <NavigationProperty Name="ArticleItems" Relationship="Model.ArticleArticleItem" FromRole="Article" ToRole="ArticleItem" />
+        </EntityType>
+        <EntityType Name="ArticleLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Model.ArticleArticleLang" FromRole="ArticleLang" ToRole="Article" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Model.LanguageArticleLang" FromRole="ArticleLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="ArticleArticleLang">
+          <End Type="Model.Article" Role="Article" Multiplicity="1" />
+          <End Type="Model.ArticleLang" Role="ArticleLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleLang">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageArticleLang">
+          <End Type="Model.Language" Role="Language" Multiplicity="1" />
+          <End Type="Model.ArticleLang" Role="ArticleLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ArticleItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Model.ArticleArticleItem" FromRole="ArticleItem" ToRole="Article" />
+          <Property Type="Int32" Name="ArticleId" Nullable="false" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <NavigationProperty Name="ArticleItemImages" Relationship="Model.ArticleItemArticleItemImage" FromRole="ArticleItem" ToRole="ArticleItemImage" />
+          <NavigationProperty Name="ArticleItemLangs" Relationship="Model.ArticleItemArticleItemLang" FromRole="ArticleItem" ToRole="ArticleItemLang" />
+        </EntityType>
+        <Association Name="ArticleArticleItem">
+          <End Type="Model.Article" Role="Article" Multiplicity="1" />
+          <End Type="Model.ArticleItem" Role="ArticleItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItem">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ArticleItemImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="ArticleItem" Relationship="Model.ArticleItemArticleItemImage" FromRole="ArticleItemImage" ToRole="ArticleItem" />
+          <Property Type="Int32" Name="ArticleItemId" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <Association Name="ArticleItemArticleItemImage">
+          <End Type="Model.ArticleItem" Role="ArticleItem" Multiplicity="1" />
+          <End Type="Model.ArticleItemImage" Role="ArticleItemImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItemImage">
+              <PropertyRef Name="ArticleItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryCategory">
+          <End Type="Model.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="Model.Category" Role="Category1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ArticleItemLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="ArticleItem" Relationship="Model.ArticleItemArticleItemLang" FromRole="ArticleItemLang" ToRole="ArticleItem" />
+          <Property Type="Int32" Name="ArticleItemId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Model.LanguageArticleItemLang" FromRole="ArticleItemLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="ArticleItemArticleItemLang">
+          <End Type="Model.ArticleItem" Role="ArticleItem" Multiplicity="1" />
+          <End Type="Model.ArticleItemLang" Role="ArticleItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItemLang">
+              <PropertyRef Name="ArticleItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageArticleItemLang">
+          <End Type="Model.Language" Role="Language" Multiplicity="1" />
+          <End Type="Model.ArticleItemLang" Role="ArticleItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticleItemLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProductImages" Relationship="Model.ProductProductImage" FromRole="Product" ToRole="ProductImage" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="ProductLangs" Relationship="Model.ProductProductLang" FromRole="Product" ToRole="ProductLang" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="Product" Relationship="Model.ProductProductImage" FromRole="ProductImage" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductProductImage">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.ProductImage" Role="ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Language" Relationship="Model.LanguageProductLang" FromRole="ProductLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Model.ProductProductLang" FromRole="ProductLang" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Text" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageProductLang">
+          <End Type="Model.Language" Role="Language" Multiplicity="1" />
+          <End Type="Model.ProductLang" Role="ProductLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductProductLang">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.ProductLang" Role="ProductLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductLang">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CategoryImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="Category" Relationship="Model.CategoryCategoryImage" FromRole="CategoryImage" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+        </EntityType>
+        <Association Name="CategoryCategoryImage">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.CategoryImage" Role="CategoryImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoryImage">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SpecialContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PageImageSource" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ContentImageSource" Nullable="false" MaxLength="255" />
+          <NavigationProperty Name="SpecialContentLangs" Relationship="Model.SpecialContentSpecialContentLang" FromRole="SpecialContent" ToRole="SpecialContentLang" />
+        </EntityType>
+        <EntityType Name="SpecialContentLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="SpecialContent" Relationship="Model.SpecialContentSpecialContentLang" FromRole="SpecialContentLang" ToRole="SpecialContent" />
+          <Property Type="Int32" Name="SpecialContentId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Model.LanguageSpecialContentLang" FromRole="SpecialContentLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="SpecialContentSpecialContentLang">
+          <End Type="Model.SpecialContent" Role="SpecialContent" Multiplicity="1" />
+          <End Type="Model.SpecialContentLang" Role="SpecialContentLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecialContent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialContentLang">
+              <PropertyRef Name="SpecialContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageSpecialContentLang">
+          <End Type="Model.Language" Role="Language" Multiplicity="1" />
+          <End Type="Model.SpecialContentLang" Role="SpecialContentLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecialContentLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Category)">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Language">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Language)">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.CategoryLang)">
+        <MappingFragment StoreEntitySet="CategoryLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Article)">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ArticleLang)">
+        <MappingFragment StoreEntitySet="ArticleLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ArticleItem)">
+        <MappingFragment StoreEntitySet="ArticleItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleItemImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ArticleItemImage)">
+        <MappingFragment StoreEntitySet="ArticleItemImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ArticleItemId" ColumnName="ArticleItemId" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticleItemLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ArticleItemLang)">
+        <MappingFragment StoreEntitySet="ArticleItemLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ArticleItemId" ColumnName="ArticleItemId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Product)">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductImage)">
+        <MappingFragment StoreEntitySet="ProductImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductLang)">
+        <MappingFragment StoreEntitySet="ProductLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.CategoryImage)">
+        <MappingFragment StoreEntitySet="CategoryImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialContent">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.SpecialContent)">
+        <MappingFragment StoreEntitySet="SpecialContent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PageImageSource" ColumnName="PageImageSource" />
+          <ScalarProperty Name="ContentImageSource" ColumnName="ContentImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpecialContentLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.SpecialContentLang)">
+        <MappingFragment StoreEntitySet="SpecialContentLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SpecialContentId" ColumnName="SpecialContentId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

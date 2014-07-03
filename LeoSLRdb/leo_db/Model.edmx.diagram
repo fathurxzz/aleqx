@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a8cd2805bdc497b8f029d8f680009ad" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="2.625" PointY="1" />
+        <EntityTypeShape EntityType="Model.Language" Width="1.5" PointX="7.625" PointY="1" />
+        <EntityTypeShape EntityType="Model.CategoryLang" Width="1.5" PointX="5.125" PointY="1" />
+        <AssociationConnector Association="Model.CategoryCategoryLang" />
+        <AssociationConnector Association="Model.LanguageCategoryLang" />
+        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="2.625" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.ArticleLang" Width="1.5" PointX="5.125" PointY="3.5" />
+        <AssociationConnector Association="Model.ArticleArticleLang" />
+        <AssociationConnector Association="Model.LanguageArticleLang" />
+        <EntityTypeShape EntityType="Model.ArticleItem" Width="1.5" PointX="2.625" PointY="6.375" />
+        <AssociationConnector Association="Model.ArticleArticleItem" />
+        <EntityTypeShape EntityType="Model.ArticleItemImage" Width="1.5" PointX="2.625" PointY="9.25" />
+        <AssociationConnector Association="Model.ArticleItemArticleItemImage" />
+        <AssociationConnector Association="Model.CategoryCategory" />
+        <EntityTypeShape EntityType="Model.ArticleItemLang" Width="1.5" PointX="5.125" PointY="6.375" />
+        <AssociationConnector Association="Model.ArticleItemArticleItemLang" />
+        <AssociationConnector Association="Model.LanguageArticleItemLang" ></AssociationConnector>
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="12.75" PointY="1" />
+        <EntityTypeShape EntityType="Model.ProductImage" Width="1.5" PointX="14.75" PointY="1" />
+        <AssociationConnector Association="Model.ProductProductImage" />
+        <EntityTypeShape EntityType="Model.ProductLang" Width="1.5" PointX="10" PointY="1" />
+        <AssociationConnector Association="Model.LanguageProductLang" />
+        <AssociationConnector Association="Model.ProductProductLang" />
+        <EntityTypeShape EntityType="Model.CategoryImage" Width="1.5" PointX="0.5" PointY="1" />
+        <AssociationConnector Association="Model.CategoryCategoryImage" />
+        <EntityTypeShape EntityType="Model.SpecialContent" Width="1.75" PointX="12.5" PointY="3.5" />
+        <EntityTypeShape EntityType="Model.SpecialContentLang" Width="1.75" PointX="9.875" PointY="3.5" />
+        <AssociationConnector Association="Model.SpecialContentSpecialContentLang" />
+        <AssociationConnector Association="Model.LanguageSpecialContentLang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
