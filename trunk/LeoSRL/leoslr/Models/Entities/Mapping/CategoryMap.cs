@@ -29,8 +29,8 @@ namespace Leo.Models.Mapping
             this.Ignore(t => t.CurrentLang);
 
             // Relationships
-            this.HasOptional(t => t.Category2)
-                .WithMany(t => t.Category1)
+            this.HasOptional(t => t.Parent)
+                .WithMany(t => t.Children)
                 .HasForeignKey(d => d.CategoryId);
 
         }

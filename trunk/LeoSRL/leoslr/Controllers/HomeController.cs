@@ -10,14 +10,20 @@ namespace Leo.Controllers
 {
     public class HomeController : DefaultController
     {
+        private readonly SiteContext _context;
+
+        public HomeController(SiteContext context)
+        {
+            _context = context;
+        }
+
         public ActionResult Index()
         {
-            using (var context = new SiteContext())
-            {
-                var model = new CategoryModel(CurrentLang, context, null);
+         
+                var model = new CategoryModel(CurrentLang, _context, null);
                 this.SetSeoContent(model);
                 return View(model);
-            }
+            
             
         }
     }

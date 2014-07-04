@@ -1,0 +1,39 @@
+﻿.adminLink, .sortOrder {
+    color: #f00 !important;
+    font-size: 10px !important;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#left-block .adminLink, #left-block .sortOrder {
+    color: #fff02a !important;
+    font-size: 10px !important;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.adminContent input[type="text"],
+.adminContent input[type="number"],
+.adminContent textarea
+ {
+    width: 500px;
+}
+
+.adminContent {
+    padding-bottom: 30px;
+}
+
+.productImagesAdminView {
+}
+
+.productImagesAdminView .image {
+    height: 250px;
+}
+
+.productImagesAdminView .imageInfo {
+}
+
+
+.adminLinkContainer {
+    position: absolute;
+}

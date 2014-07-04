@@ -4,16 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Fonts.css", "~/Content/Common.css", "~/Content/Site.css", "~/Content/Errors.css"//, "~/Content/Menu.css"
+            //,"~/Content/jquery.bxslider.css"
+    )
     @Scripts.Render("~/bundles/modernizr")
+    @if (Request.IsAuthenticated)
+    { 
+        @Styles.Render("~/Content/Admin.css")
+    }
 </head>
-    <body>
-        
-        @Html.Partial("LanguageSwitcher")
+<body>
 
-        @RenderBody()
+    @Html.Partial("LanguageSwitcher")
+    @if (Request.IsAuthenticated)
+    { 
+        @Html.ActionLink("administration", "Index", "SpecialContent", new { area = "Admin" }, new{@class="adminLink"})
+    }
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

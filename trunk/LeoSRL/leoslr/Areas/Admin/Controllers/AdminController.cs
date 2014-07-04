@@ -7,9 +7,9 @@ using Leo.Controllers;
 
 namespace Leo.Areas.Admin.Controllers
 {
+    [Authorize]
     public class AdminController : DefaultController
     {
     
-
     }
 }
