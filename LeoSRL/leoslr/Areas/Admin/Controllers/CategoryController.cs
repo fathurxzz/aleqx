@@ -10,53 +10,62 @@ namespace Leo.Areas.Admin.Controllers
 {
     public class CategoryController : AdminController
     {
+        private readonly SiteContext _context;
+
+        public CategoryController(SiteContext context)
+        {
+            _context = context;
+        }
+
         public ActionResult Create(int? id)
         {
-            using (var context = new SiteContext())
-            {
-
+        
                 //int maxSortOrder = context.Categories.Max(c => (int?)c.SortOrder) ?? 0;
+
+
+
                 var category = new Category
                     {
                         //SortOrder = maxSortOrder + 1,
-                        CurrentLang = CurrentLang.Id,
-                        Parent = id.HasValue ? context.Categories.FirstOrDefault(c=>c.Id==id):null
+                        CurrentLang = CurrentLang.Id
+                        
                     };
+
+                category.Parent = id.HasValue ? _context.Categories.First(c => c.Id == id) : null;
+
                 return View(category);
-            }
+        
         }
 
         [HttpPost]
         public ActionResult Create(Category model)
         {
-            using (var context = new SiteContext())
-            {
+           
                 var cache = new Category
                 {
                     Name = SiteHelper.UpdatePageWebName(model.Name),
                     SortOrder = model.SortOrder
                 };
 
-                context.Categories.Add(cache);
+                _context.Categories.Add(cache);
 
-                var lang = context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                 if (lang != null)
                 {
-                    CreateOrChangeContentLang(context, model, cache, lang);
+                    CreateOrChangeContentLang(_context, model, cache, lang);
                 }
 
                 return RedirectToAction("Index", "Home", new { area = "" });
-            }
+            
         }
 
         public ActionResult Edit(int id)
         {
-            using (var context = new SiteContext())
-            {
-                var category = context.Categories.First(c => c.Id == id);
+            
+                var category = _context.Categories.First(c => c.Id == id);
                 category.CurrentLang = CurrentLang.Id;
                 return View(category);
-            }
+            
         }
 
 
@@ -64,22 +73,21 @@ namespace Leo.Areas.Admin.Controllers
         public ActionResult Edit(Category model)
         {
 
-            using (var context = new SiteContext())
-            {
-                var cache = context.Categories.FirstOrDefault(p => p.Id == model.Id);
+           
+                var cache = _context.Categories.FirstOrDefault(p => p.Id == model.Id);
 
                 if (cache != null)
                 {
                     TryUpdateModel(cache, new[] { "SortOrder" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
 
-                    var lang = context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                    var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
                     {
-                        CreateOrChangeContentLang(context, model, cache, lang);
+                        CreateOrChangeContentLang(_context, model, cache, lang);
                     }
                 }
-            }
+            
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }

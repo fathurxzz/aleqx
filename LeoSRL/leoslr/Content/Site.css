@@ -1,5 +1,9 @@
-﻿* {
-    margin: 0;
-    padding: 0;
+﻿.loginForm {
+    margin: 100px auto auto;
+    width: 200px;
 }
 
+.loginForm p {
+    padding-top: 10px;
+    text-align: center;
+}

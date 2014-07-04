@@ -28,7 +28,7 @@ namespace Leo.Controllers
 
                 using (var context = new SiteContext())
                 {
-                    CurrentLang = context.Languages.FirstOrDefault(p => p.Code == CurrentLangCode);
+                    CurrentLang = context.Languages.First(p => p.Code == CurrentLangCode);
                 }
 
                 var ci = new CultureInfo(CurrentLangCode);
