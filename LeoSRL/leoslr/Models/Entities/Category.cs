@@ -15,6 +15,7 @@ namespace Leo.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int SortOrder { get; set; }
+        public int CategoryLevel { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public virtual ICollection<Category> Children { get; set; }
         public virtual Category Parent { get; set; }

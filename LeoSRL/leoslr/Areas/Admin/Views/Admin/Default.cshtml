@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Система администрирования</h3>
+
+
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li>@Html.ActionLink("Контент главной страницы", "Index", "SpecialContent", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+    </ul>
+}
+

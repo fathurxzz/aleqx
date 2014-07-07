@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Leo.Helpers;
 using Leo.Models;
+using SiteExtensions;
 
 namespace Leo.Areas.Admin.Controllers
 {
@@ -17,79 +18,105 @@ namespace Leo.Areas.Admin.Controllers
             _context = context;
         }
 
+
+        public ActionResult Index()
+        {
+            var categories = _context.Categories.ToList();
+            foreach (var category in categories)
+            {
+                category.CurrentLang = CurrentLang.Id;
+            }
+            return View(categories);
+        }
+
+
         public ActionResult Create(int? id)
         {
-        
-                //int maxSortOrder = context.Categories.Max(c => (int?)c.SortOrder) ?? 0;
-
-
-
-                var category = new Category
-                    {
-                        //SortOrder = maxSortOrder + 1,
-                        CurrentLang = CurrentLang.Id
-                        
-                    };
-
-                category.Parent = id.HasValue ? _context.Categories.First(c => c.Id == id) : null;
-
-                return View(category);
-        
+            return View(new Category { CategoryId = id, CurrentLang = CurrentLang.Id });
         }
 
         [HttpPost]
         public ActionResult Create(Category model)
         {
-           
-                var cache = new Category
-                {
-                    Name = SiteHelper.UpdatePageWebName(model.Name),
-                    SortOrder = model.SortOrder
-                };
+            //ModelState.Clear();
 
-                _context.Categories.Add(cache);
+            model.Id = 0;
+            Category parent = null;
+            int categoryLevel = 0;
+            if (model.CategoryId != null)
+            {
+                parent = _context.Categories.First(c => c.Id == model.CategoryId);
+                categoryLevel = parent.CategoryLevel + 1;
+            }
 
-                var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
-                if (lang != null)
-                {
-                    CreateOrChangeContentLang(_context, model, cache, lang);
-                }
+            var cache = new Category
+            {
+                Name = SiteHelper.UpdatePageWebName(model.Name),
+                SortOrder = model.SortOrder,
+                Parent = parent,
+                CategoryLevel = categoryLevel,
+                //CategoryId = model.CategoryId
+            };
 
-                return RedirectToAction("Index", "Home", new { area = "" });
-            
+            model.Text = model.Text ?? "";
+
+            _context.Categories.Add(cache);
+            //_context.SaveChanges();
+
+            var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+            if (lang != null)
+            {
+                CreateOrChangeContentLang(_context, model, cache, lang);
+            }
+
+            return RedirectToAction("Index");
+
         }
 
         public ActionResult Edit(int id)
         {
-            
-                var category = _context.Categories.First(c => c.Id == id);
-                category.CurrentLang = CurrentLang.Id;
-                return View(category);
-            
-        }
 
+            var category = _context.Categories.First(c => c.Id == id);
+            category.CurrentLang = CurrentLang.Id;
+            return View(category);
+
+        }
 
         [HttpPost]
         public ActionResult Edit(Category model)
         {
 
-           
-                var cache = _context.Categories.FirstOrDefault(p => p.Id == model.Id);
 
-                if (cache != null)
+            var cache = _context.Categories.FirstOrDefault(p => p.Id == model.Id);
+
+            if (cache != null)
+            {
+                TryUpdateModel(cache, new[] { "SortOrder" });
+                cache.Name = SiteHelper.UpdatePageWebName(model.Name);
+                model.Text = model.Text ?? "";
+                var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                if (lang != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder" });
-                    cache.Name = SiteHelper.UpdatePageWebName(model.Name);
-
-                    var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
-                    if (lang != null)
-                    {
-                        CreateOrChangeContentLang(_context, model, cache, lang);
-                    }
+                    CreateOrChangeContentLang(_context, model, cache, lang);
                 }
-            
+            }
 
-            return RedirectToAction("Index", "Home", new { area = "" });
+
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            var category = _context.Categories.First(p => p.Id == id);
+            while (category.CategoryLangs.Any())
+            {
+                var lang = category.CategoryLangs.First();
+                _context.CategoryLangs.Remove(lang);
+            }
+            _context.Categories.Remove(category);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
