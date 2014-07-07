@@ -10,6 +10,9 @@ namespace Leo.Areas.Admin.Controllers
     [Authorize]
     public class AdminController : DefaultController
     {
-    
+        public ActionResult Default()
+        {
+            return View();
+        }
     }
 }

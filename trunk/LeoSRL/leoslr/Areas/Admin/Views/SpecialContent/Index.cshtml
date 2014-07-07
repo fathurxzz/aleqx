@@ -1,14 +1,26 @@
-﻿@model IEnumerable<Leo.Models.SpecialContent>
+﻿@using Leo
+@using SiteExtensions.Graphics
+@model IEnumerable<Leo.Models.SpecialContent>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">@Html.ActionLink("Контент главной страницы", "Index", "SpecialContent", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+    </ul>
+}
+
+<h3>Контент главной страницы</h3>
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Создать", "Create")
 </p>
-<table>
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -34,15 +46,15 @@
             @Html.DisplayFor(modelItem => item.Text)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PageImageSource)
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.PageImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContentImageSource)
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ContentImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) | *@ 
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id },new{onclick="return confirm('Удалить объект?')"})
         </td>
     </tr>
 }

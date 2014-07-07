@@ -25,6 +25,10 @@ namespace Leo.Areas.Admin.Controllers
         {
 
             var content = _context.SpecialContents.ToList();
+            foreach (var specialContent in content)
+            {
+                specialContent.CurrentLang = CurrentLang.Id;
+            }
             return View(content);
 
         }
@@ -53,7 +57,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
-
+                model.Id = 0;
                 var cache = new SpecialContent
                 {
                     ContentImageSource = "",
@@ -105,18 +109,53 @@ namespace Leo.Areas.Admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var content = _context.SpecialContents.First(c => c.Id == id);
+            content.CurrentLang = CurrentLang.Id;
+            return View(content);
         }
 
         //
         // POST: /Admin/SpecialContent/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SpecialContent model, HttpPostedFileBase pageImage, HttpPostedFileBase contentImage)
         {
             try
             {
-                // TODO: Add update logic here
+                var cache = _context.SpecialContents.First(c => c.Id == model.Id);
+                if (cache != null)
+                {
+                    if (pageImage != null)
+                    {
+                        ImageHelper.DeleteImage(cache.PageImageSource);
+
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", pageImage.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, pageImage, 1200);
+                        //fileUpload.SaveAs(filePath);
+                        cache.PageImageSource = fileName;
+                    }
+
+                    if (contentImage != null)
+                    {
+                        ImageHelper.DeleteImage(cache.ContentImageSource);
+
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", contentImage.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+                        filePath = Path.Combine(filePath, fileName);
+                        GraphicsHelper.SaveOriginalImage(filePath, fileName, contentImage, 1200);
+                        //fileUpload.SaveAs(filePath);
+                        cache.ContentImageSource = fileName;
+                    }
+
+
+                    var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                    if (lang != null)
+                    {
+                        CreateOrChangeContentLang(_context, model, cache, lang);
+                    }
+                }
 
                 return RedirectToAction("Index");
             }

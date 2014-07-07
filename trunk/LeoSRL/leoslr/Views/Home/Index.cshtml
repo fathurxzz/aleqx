@@ -11,6 +11,6 @@
 @foreach (var item in Model.Categories)
 {
     <div>
-        @item.Id @item.Name @item.Title @item.Text @Html.ActionLink("edit", "Edit", "Category", new { area = "Admin", id = item.Id }, null)
+        @item.Id @item.Name @item.Title @item.Text
     </div>
 }

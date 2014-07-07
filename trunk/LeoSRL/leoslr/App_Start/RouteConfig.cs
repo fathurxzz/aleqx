@@ -14,6 +14,12 @@ namespace Leo
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
 
+            routes.MapRoute(
+                "Login",
+                "login",
+                new { controller = "Auth", action = "Login"},
+                new[] { "Leo.Controllers" }
+            );
 
             routes.MapRoute(
                 "Category",

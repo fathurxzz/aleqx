@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/Fonts.css", "~/Content/Common.css", "~/Content/Site.css", "~/Content/Errors.css"//, "~/Content/Menu.css"
+  
+    ,"~/Content/bootstrap.min.css"
             //,"~/Content/jquery.bxslider.css"
     )
-    @Scripts.Render("~/bundles/modernizr")
     @if (Request.IsAuthenticated)
     { 
         @Styles.Render("~/Content/Admin.css")
     }
 </head>
 <body>
-
+    
+    
     @Html.Partial("LanguageSwitcher")
     @if (Request.IsAuthenticated)
     { 
-        @Html.ActionLink("administration", "Index", "SpecialContent", new { area = "Admin" }, new{@class="adminLink"})
+        <div style="margin-bottom: 20px">
+            @Html.ActionLink("Администрирование", "Default", "Admin", new { area = "Admin" }, new{@class="adminLink"})
+        </div>
+        
+
+        
+        @RenderSection("AdminNavigation",false)
     }
 
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -21,6 +21,7 @@ namespace Leo.Models.Mapping
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.CategoryId).HasColumnName("CategoryId");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
+            this.Property(t => t.CategoryLevel).HasColumnName("CategoryLevel");
 
             // Ignored
             this.Ignore(t=>t.Title);
