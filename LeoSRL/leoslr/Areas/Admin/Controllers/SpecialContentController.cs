@@ -34,14 +34,6 @@ namespace Leo.Areas.Admin.Controllers
         }
 
         //
-        // GET: /Admin/SpecialContent/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
         // GET: /Admin/SpecialContent/Create
 
         public ActionResult Create()
@@ -104,8 +96,6 @@ namespace Leo.Areas.Admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/SpecialContent/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -164,9 +154,6 @@ namespace Leo.Areas.Admin.Controllers
                 return View();
             }
         }
-
-        //
-        // GET: /Admin/SpecialContent/Delete/5
 
         public ActionResult Delete(int id)
         {
