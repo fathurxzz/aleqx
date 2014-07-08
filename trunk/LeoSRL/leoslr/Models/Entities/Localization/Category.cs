@@ -11,7 +11,10 @@ namespace Leo.Models
         public string Text { get; set; }
         public bool IsCorrectLang { get; protected set; }
 
-        
+        public override string ToString()
+        {
+            return Name;
+        }
 
 
         private int _currentLang;

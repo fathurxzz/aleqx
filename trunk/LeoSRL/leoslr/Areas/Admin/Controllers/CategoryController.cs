@@ -25,8 +25,13 @@ namespace Leo.Areas.Admin.Controllers
             foreach (var category in categories)
             {
                 category.CurrentLang = CurrentLang.Id;
+
+                foreach (var product in category.Products)
+                {
+                    product.CurrentLang = CurrentLang.Id;
+                }
             }
-            return View(categories);
+            return View(ApplySorting(categories));
         }
 
 
@@ -148,7 +153,30 @@ namespace Leo.Areas.Admin.Controllers
 
         }
 
+        private IEnumerable<Category> ApplySorting(IEnumerable<Category> source)
+        {
+            foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.Id))
+            {
+                Visit(item);
+            }
 
+            return _result;
+        }
+
+        private List<Category> _result = new List<Category>();
+
+        private void Visit(Category node)
+        {
+            _result.Add(node);
+            if (node.Children == null || node.Children.Count == 0)
+            {
+                return;
+            }
+            foreach (var child in node.Children)
+            {
+                Visit(child);
+            }
+        }
 
     }
 }

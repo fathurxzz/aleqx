@@ -53,22 +53,22 @@ namespace Leo.Controllers
         protected override void OnException(ExceptionContext filterContext)
         {
 
-            //base.OnException(filterContext);
+            base.OnException(filterContext);
 
-            if (filterContext.ExceptionHandled)
-                return;
+            //if (filterContext.ExceptionHandled)
+            //    return;
 
 
 
-            if (filterContext.Exception is ObjectNotFoundException)
-                filterContext.Result = Redirect(NotFoundPage);
-            else
-                filterContext.Result = Redirect(ErrorPage);
+            //if (filterContext.Exception is ObjectNotFoundException)
+            //    filterContext.Result = Redirect(NotFoundPage);
+            //else
+            //    filterContext.Result = Redirect(ErrorPage);
 
-            filterContext.Controller.TempData["errorMessage"] = filterContext.Exception.Message;
+            //filterContext.Controller.TempData["errorMessage"] = filterContext.Exception.Message;
 
-            filterContext.ExceptionHandled = true;
-            filterContext.HttpContext.Response.Clear();
+            //filterContext.ExceptionHandled = true;
+            //filterContext.HttpContext.Response.Clear();
 
         }
 

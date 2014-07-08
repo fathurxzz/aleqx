@@ -25,6 +25,7 @@ namespace Leo.Models.Mapping
             this.ToTable("Product", "gbua_Leo");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.CategoryId).HasColumnName("CategoryId");
             
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
         }
