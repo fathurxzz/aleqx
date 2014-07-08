@@ -1,16 +1,5 @@
 ﻿@model Leo.Models.CategoryModel
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Leo";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
-
-
-@foreach (var item in Model.Categories)
-{
-    <div>
-        @item.Id @item.Name @item.Title @item.Text
-    </div>
 }

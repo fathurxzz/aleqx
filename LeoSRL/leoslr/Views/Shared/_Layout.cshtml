@@ -20,7 +20,7 @@
     @Html.Partial("LanguageSwitcher")
     @if (Request.IsAuthenticated)
     { 
-        <div style="margin-bottom: 20px">
+        <div style="margin-bottom: 20px; margin-top: 20px">
             @Html.ActionLink("Администрирование", "Default", "Admin", new { area = "Admin" }, new{@class="adminLink"})
         </div>
         

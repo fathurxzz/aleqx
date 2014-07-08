@@ -33,6 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCorrectLang)
+        </th>
         <th></th>
     </tr>
 
@@ -58,6 +61,16 @@
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
+                @if (!item.IsCorrectLang)
+                {
+                    <span class="label label-danger">!</span>
+                }
+                else
+                {
+                    <span class="label label-success">ok</span>
+                }
+            </td>
+            <td>
                 @Html.ActionLink("Редактировать", "Edit", "Category", new { id = item.Id }, null) |
                 @if (!item.Children.Any())
                 {
@@ -75,6 +88,16 @@
                 <td>@product.SortOrder</td>
                 <td>@product.Title</td>
                 <td>@product.Text</td>
+                <td>
+                @if (!item.IsCorrectLang)
+                {
+                    <span class="label label-danger">!</span>
+                }
+                else
+                {
+                    <span class="label label-success">ok</span>
+                }
+            </td>
                 <td>
                     @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
                     @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
