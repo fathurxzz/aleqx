@@ -10,6 +10,8 @@ namespace Leo.Models
             this.Children = new List<Category>();
             this.CategoryImages = new List<CategoryImage>();
             this.CategoryLangs = new List<CategoryLang>();
+            this.Products = new List<Product>();
+
         }
 
         public int Id { get; set; }
