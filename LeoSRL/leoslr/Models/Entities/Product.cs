@@ -14,7 +14,11 @@ namespace Leo.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int SortOrder { get; set; }
+        public int CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
+
     }
 }

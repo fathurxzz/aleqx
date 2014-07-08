@@ -10,13 +10,14 @@
     <ul class="nav nav-tabs" role="tablist">
         <li>@Html.ActionLink("Контент главной страницы", "Index", "SpecialContent", new { area = "Admin" }, null)</li>
         <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
     </ul>
 }
 
 <h3>Категории</h3>
 
 <p>
-    @Html.ActionLink("Создать", "Create")
+    @Html.ActionLink("Добавить категорию", "Create")
 </p>
 <table class="table table-striped">
     <tr>
@@ -37,8 +38,14 @@
 
     @foreach (var item in Model)
     {
+        
         <tr>
             <td>
+                @if (item.CategoryLevel > 0)
+                {
+                    string categoryLevel = "level" + item.CategoryLevel;
+                    <span class="category-level-indicator @categoryLevel"></span>
+                }
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
@@ -51,11 +58,30 @@
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-                @Html.ActionLink("Add subitem", "Create", new { id = item.Id })
+                @Html.ActionLink("Редактировать", "Edit", "Category", new { id = item.Id }, null) |
+                @if (!item.Children.Any())
+                {
+                    @Html.ActionLink("Удалить", "Delete", "Category", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" }) <text>|</text>
+                }
+                @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) |
+                @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null)
             </td>
         </tr>
+
+        foreach (var product in item.Products)
+        {
+            <tr>
+                <td><span class="category-level-indicator"></span><span class="product-indicator label label-info">product</span> @product.Name</td>
+                <td>@product.SortOrder</td>
+                <td>@product.Title</td>
+                <td>@product.Text</td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
+                    @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
+                </td>
+            </tr>
+  
+        }
     }
 
 </table>

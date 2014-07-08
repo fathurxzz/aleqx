@@ -18,6 +18,7 @@ namespace Leo.Models
         public int CategoryLevel { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public virtual ICollection<Category> Children { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         public virtual Category Parent { get; set; }
         public virtual ICollection<CategoryImage> CategoryImages { get; set; }
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }

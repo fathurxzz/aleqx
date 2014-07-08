@@ -40,3 +40,53 @@
 .adminLinkContainer {
     position: absolute;
 }
+
+
+.category-level-indicator {
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 15px;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-top: -8px;
+}
+
+.category-level-indicator.level2 {
+    margin-left: 20px;
+}
+
+.category-level-indicator.level3 {
+    margin-left: 40px;
+}
+
+.category-level-indicator.level4 {
+    margin-left: 60px;
+}
+
+.category-level-indicator.level5 {
+    margin-left: 80px;
+}
+
+.category-level-indicator.level6 {
+    margin-left: 100px;
+}
+
+.category-level-indicator.level7 {
+    margin-left: 120px;
+}
+
+.category-level-indicator.level8 {
+    margin-left: 140px;
+}
+
+.category-level-indicator.level9 {
+    margin-left: 160px;
+}
+
+.product-indicator {
+    display: block;
+    float: left;
+    margin-top: 3px;
+    margin-right: 10px;
+}
