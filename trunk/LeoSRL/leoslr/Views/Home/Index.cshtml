@@ -61,7 +61,7 @@
             
             @foreach (var category in Model.Categories)
             {
-                <div class="item"><a href="#">@category.Name</a></div>
+                <div class="item"><a href="#">@category.Title</a></div>
             }
 
             @*<div class="item"><a href="#">Документация</a></div>
@@ -83,11 +83,10 @@
     </div>
 
     
-    <div class="language-switcher">
-        <span>
-            <a href="#">in english</a>
-        </span>
-    </div>
+
+    @Html.Partial("LanguageSwitcher")
+
+    
 
     <div id="contentFrameWrapper">
         <div id="contentFrame">
