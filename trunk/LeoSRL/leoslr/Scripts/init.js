@@ -17,11 +17,6 @@ $(function () {
     var i = 0;
     var delay = 5000;
 
-
-
-
-
-
     var changeImage = function () {
         $("#bg-layer").animate({opacity: 0}, 'slow', function () {
             if (i == LEO.settings.specialContent.items.length) {
@@ -57,7 +52,6 @@ $(function () {
                 $("#text").html(item.text);
                 $("#contentFrame").css("background-image", contentbg);
             });
-
     };
 
     changeImageFadeInOnly();
