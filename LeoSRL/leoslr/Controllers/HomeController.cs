@@ -17,14 +17,21 @@ namespace Leo.Controllers
             _context = context;
         }
 
-        public ActionResult Index()
+        public ActionResult Intro()
         {
-         
-                var model = new CategoryModel(CurrentLang, _context, null);
-                this.SetSeoContent(model);
-                return View(model);
-            
-            
+            var model = new CategoryModel(CurrentLang, _context, intro: true);
+            this.SetSeoContent(model);
+            return View(model);
+        }
+
+        public ActionResult Index(string category, string subcategory, string product)
+        {
+            var model = new CategoryModel(CurrentLang, _context, category, subcategory );
+
+
+
+            this.SetSeoContent(model);
+            return View(model);
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Admin.css", "~/Content/bootstrap.min.css" ,"~/Content/jquery-ui.min.css" ,"~/Content/jquery-ui.structure.min.css")
+</head>
+<body>
+    @Html.Partial("LanguageSwitcher")
+    
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    @Html.ActionLink("На сайт","Index","Home",new{area=""},null)
+
+    @RenderSection("AdminNavigation",false)
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

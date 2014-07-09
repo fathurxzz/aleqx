@@ -1,0 +1,47 @@
+﻿@model Leo.Models.CategoryModel
+
+@{
+    ViewBag.Title = "Intro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page">
+    <div class="intro-container">
+        <div class="intro-content">
+
+            @foreach (var category in Model.Categories.OrderBy(c => c.SortOrder))
+            {
+                <a href="#" class="block" id="@category.Name">
+                    <div>
+                        @category.Title
+                    </div>
+                </a>
+            }
+
+            @*<a href="#" class="block">
+                <div>
+                    Вы инвестируете / строите
+                </div>
+            </a>
+
+            <a href="#" class="block">
+                <div>
+                    Вы продаете / создаете
+                </div>
+            </a>*@
+
+            <div class="logo-intro"></div>
+        </div>
+    </div>
+    <div class="imagine">
+        Представьте себе<br>
+        надежного партнера
+    </div>
+</div>
+<div id="hiddencontent">
+    @foreach (var item in Model.SpecialContents)
+    {
+        <img src="~/Content/Images/@item.PageImageSource">
+        <img src="~/Content/Images/@item.ContentImageSource">
+    }
+</div>
