@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -44,34 +45,47 @@ namespace Leo.Areas.Admin.Controllers
         public ActionResult Create(Category model)
         {
             //ModelState.Clear();
-
-            model.Id = 0;
-            Category parent = null;
-            int categoryLevel = 0;
-            if (model.CategoryId != null)
+            try
             {
-                parent = _context.Categories.First(c => c.Id == model.CategoryId);
-                categoryLevel = parent.CategoryLevel + 1;
+                model.Id = 0;
+                Category parent = null;
+                int categoryLevel = 0;
+                if (model.CategoryId != null)
+                {
+                    parent = _context.Categories.First(c => c.Id == model.CategoryId);
+                    categoryLevel = parent.CategoryLevel + 1;
+                }
+
+                var cache = new Category
+                {
+                    Name = SiteHelper.UpdatePageWebName(model.Name),
+                    SortOrder = model.SortOrder,
+                    Parent = parent,
+                    CategoryLevel = categoryLevel,
+                    Title = model.Title,
+                    Text = model.Text
+                    //CategoryId = model.CategoryId
+                };
+
+                model.Text = model.Text ?? "";
+
+                _context.Categories.Add(cache);
+                //_context.SaveChanges();
+
+                var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                if (lang != null)
+                {
+                    CreateOrChangeContentLang(_context, model, cache, lang);
+                }
+
             }
-
-            var cache = new Category
+            catch (DbEntityValidationException ex)
             {
-                Name = SiteHelper.UpdatePageWebName(model.Name),
-                SortOrder = model.SortOrder,
-                Parent = parent,
-                CategoryLevel = categoryLevel,
-                //CategoryId = model.CategoryId
-            };
-
-            model.Text = model.Text ?? "";
-
-            _context.Categories.Add(cache);
-            //_context.SaveChanges();
-
-            var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
-            if (lang != null)
+                return View(model);
+            }
+            catch (Exception ex)
             {
-                CreateOrChangeContentLang(_context, model, cache, lang);
+                return View(model);
             }
 
             return RedirectToAction("Index");
