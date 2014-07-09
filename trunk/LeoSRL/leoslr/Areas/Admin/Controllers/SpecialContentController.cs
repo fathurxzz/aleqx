@@ -64,8 +64,8 @@ namespace Leo.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", pageImage.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, pageImage, 1200);
-                    //fileUpload.SaveAs(filePath);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, pageImage, 1200);
+                    pageImage.SaveAs(filePath);
                     cache.PageImageSource = fileName;
                 }
 
@@ -74,8 +74,8 @@ namespace Leo.Areas.Admin.Controllers
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", contentImage.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
                     filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, contentImage, 1200);
-                    //fileUpload.SaveAs(filePath);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, contentImage, 1200);
+                    contentImage.SaveAs(filePath);
                     cache.ContentImageSource = fileName;
                 }
 
