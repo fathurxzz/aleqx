@@ -104,22 +104,31 @@ namespace Leo.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Category model)
         {
-
-
-            var cache = _context.Categories.FirstOrDefault(p => p.Id == model.Id);
-
-            if (cache != null)
+            try
             {
-                TryUpdateModel(cache, new[] { "SortOrder" });
-                cache.Name = SiteHelper.UpdatePageWebName(model.Name);
-                model.Text = model.Text ?? "";
-                var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
-                if (lang != null)
+
+                var cache = _context.Categories.FirstOrDefault(p => p.Id == model.Id);
+
+                if (cache != null)
                 {
-                    CreateOrChangeContentLang(_context, model, cache, lang);
+                    TryUpdateModel(cache, new[] { "SortOrder","Title","Text" });
+                    cache.Name = SiteHelper.UpdatePageWebName(model.Name);
+                    model.Text = model.Text ?? "";
+                    var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                    if (lang != null)
+                    {
+                        CreateOrChangeContentLang(_context, model, cache, lang);
+                    }
                 }
             }
-
+            catch (DbEntityValidationException ex)
+            {
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                return View(model);
+            }
 
             return RedirectToAction("Index");
         }

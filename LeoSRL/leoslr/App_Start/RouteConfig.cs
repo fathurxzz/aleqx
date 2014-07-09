@@ -21,6 +21,8 @@ namespace Leo
                 new[] { "Leo.Controllers" }
             );
 
+
+
             routes.MapRoute(
                 "CategoryParent",
                 "{lang}/{category}",

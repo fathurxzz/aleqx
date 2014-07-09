@@ -14,6 +14,13 @@ namespace Leo.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+            context.MapRoute(
+               "Admin",
+               "admin",
+               new { controller = "Admin", action = "Default", lang = "ru" },
+               new { lang = @"ru|en" },
+               new[] { "Leo.Areas.Admin.Controllers" }
+           );
 
             context.MapRoute(
                "Admin_Category",

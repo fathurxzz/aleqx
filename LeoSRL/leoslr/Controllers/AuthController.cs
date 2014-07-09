@@ -29,7 +29,7 @@ namespace Leo.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Intro", "Home");
         }
 
         [HttpPost]
@@ -59,7 +59,7 @@ namespace Leo.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin", new { area = "Admin" });
             }
         }
 
