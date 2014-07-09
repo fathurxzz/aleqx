@@ -21,6 +21,7 @@ namespace Leo.Models
         public string Title { get; set; }
 
         [Display(Name = "Текст страницы")]
+        [Required(ErrorMessage = "Введите текст")]
         public string Text { get; set; }
 
         [Display(Name = "Фон страницы")]

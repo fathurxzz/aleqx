@@ -18,15 +18,17 @@ namespace Leo.Areas.Admin
             context.MapRoute(
                "Admin_Category",
                "{lang}/admin/{controller}/{action}/{id}",
-               new { id = UrlParameter.Optional }, 
-               new { lang = @"ru|en" }
+               new { controller = "Admin", action = "Default", id = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Leo.Areas.Admin.Controllers" }
            );
 
-            context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+            //context.MapRoute(
+            //    "Admin_default",
+            //    "admin/{controller}/{action}/{id}",
+            //    new { controller = "Admin", action = "Default", id = UrlParameter.Optional},
+            //    new[] { "Leo.Areas.Admin.Controllers" }
+            //);
         }
     }
 }

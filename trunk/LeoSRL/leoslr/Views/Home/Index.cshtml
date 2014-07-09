@@ -1,5 +1,113 @@
 ﻿@model Leo.Models.CategoryModel
+
 @{
-    ViewBag.Title = "Leo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@section scripts
+{
+    <script type="text/javascript">
+        (function (leo) {
+
+            var settings;
+
+            if (leo.settings === null) {
+                leo.settings = settings = {};
+            } else {
+                settings = leo.settings;
+            }
+
+            if (!('specialContent' in settings)) {
+
+
+
+                //settings.specialContent = {
+
+                //    imagePath: '/content/images/',
+
+                //    items: [
+                //        {
+                //            imageFileName: 'bg.png',
+                //            title: 'результат, поражающий воображение',
+                //            text: '12 дней, чтобы организовать и завезти нужные материалы. Несколько часов, чтобы разбудить гномиков. И сутки на застройку. <br> Интерьер готов, кто бы что не говорил!'
+                //        },
+                //        {
+                //            imageFileName: 'bg2.png',
+                //            title: 'второй заголовок',
+                //            text: 'Текст под вторым заголовком!'
+                //        }
+                //    ]
+                //}
+
+
+                @Html.Raw(Model.SpecialContentJson)
+                    
+                
+
+            }
+
+        })(LEO);
+    </script>
+}
+
+<div id="page">
+    <div id="bg-layer"></div>
+    <div class="navigation-container">
+        <div class="categories-title">
+            <span>Я создаю</span>
+        </div>
+        <div class="menu">
+            <div class="logo"></div>
+            
+            @foreach (var category in Model.Categories)
+            {
+                <div class="item"><a href="#">@category.Name</a></div>
+            }
+
+            @*<div class="item"><a href="#">Документация</a></div>
+            <div class="item"><a href="#">Сделано</a></div>
+            <div class="item"><a href="#">События и новости</a></div>
+            <div class="item"><a href="#">Простой алгоритм партнерства</a></div>*@
+        </div>
+    </div>
+    <div class="category-title">
+        Сделано
+    </div>
+    <div class="product-selector-container">
+        <select class="product-selector">
+            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
+            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
+            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
+            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
+        </select>
+    </div>
+
+    
+    <div class="language-switcher">
+        <span>
+            <a href="#">in english</a>
+        </span>
+    </div>
+
+    <div id="contentFrameWrapper">
+        <div id="contentFrame">
+            <div id="contentContainer">
+                <div id="title">
+                    <!--результат, поражающий воображение-->
+                </div>
+                <div id="text">
+                    <!--12 дней, чтобы организовать и завезти нужные материалы. Несколько часов, чтобы разбудить гномиков. И-->
+                    <!--сутки на застройку. <br>-->
+                    <!--Интерьер готов, кто бы что не говорил!-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="footer">
+    <div class="copy">&copy; 2014 LeoSLR. Все права защищены</div>
+    <div class="em">Сайт создан в<br><a href="http://eugene-miller.com">Студии Евгения Миллера</a></div>
+</div>
+
+

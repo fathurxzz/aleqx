@@ -4,7 +4,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 @section AdminNavigation
@@ -47,10 +47,16 @@
             @Html.DisplayFor(modelItem => item.Text)
         </td>
         <td>
-            @Html.Raw(Html.CachedImage("~/Content/Images/", item.PageImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
+            @if (!string.IsNullOrEmpty(item.PageImageSource))
+            {
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.PageImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
+            }
         </td>
         <td>
-            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ContentImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
+            @if (!string.IsNullOrEmpty(item.ContentImageSource))
+            {
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ContentImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
+            }
         </td>
         <td>
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |

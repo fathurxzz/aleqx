@@ -4,35 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/Fonts.css", "~/Content/Common.css", "~/Content/Site.css", "~/Content/Errors.css" //, "~/Content/Menu.css"
-  
-    ,"~/Content/bootstrap.min.css"
             //,"~/Content/jquery.bxslider.css"
+            ,"~/Content/intro.css"
+            ,"~/Content/jquery-ui.min.css"
+            ,"~/Content/jquery-ui.structure.min.css"
+            ,"~/Content/tmp.css"
     )
-    @if (Request.IsAuthenticated)
-    { 
-        @Styles.Render("~/Content/Admin.css")
-    }
 </head>
 <body>
-    
-    
-    @Html.Partial("LanguageSwitcher")
-    @if (Request.IsAuthenticated)
-    { 
-        <div style="margin-bottom: 20px; margin-top: 20px">
-            @Html.ActionLink("Администрирование", "Default", "Admin", new { area = "Admin" }, new{@class="adminLink"})
-        </div>
-        
-
-        
-        @RenderSection("AdminNavigation",false)
-    }
-
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    
+    @Scripts.Render("~/Scripts/jquery-ui.min.js")
+
+    @Scripts.Render("~/Scripts/leo.js")
+
+    @*@Scripts.Render("~/Scripts/data.js")*@
+
+    @Scripts.Render("~/Scripts/init.js")
 
     @RenderSection("scripts", required: false)
 </body>

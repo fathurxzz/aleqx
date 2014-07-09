@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -53,9 +54,10 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = new SpecialContent
                 {
                     ContentImageSource = "",
-                    PageImageSource = ""
+                    PageImageSource = "",
+                    Title = model.Title ?? "",
+                    Text = model.Text ?? ""
                 };
-
 
                 if (pageImage != null)
                 {
@@ -79,14 +81,11 @@ namespace Leo.Areas.Admin.Controllers
 
                 _context.SpecialContents.Add(cache);
 
-
-
                 var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                 if (lang != null)
                 {
                     CreateOrChangeContentLang(_context, model, cache, lang);
                 }
-
 
                 return RedirectToAction("Index");
             }
@@ -113,41 +112,45 @@ namespace Leo.Areas.Admin.Controllers
             try
             {
                 var cache = _context.SpecialContents.First(c => c.Id == model.Id);
-                if (cache != null)
+                cache.CurrentLang = CurrentLang.Id;
+
+                if (pageImage != null)
                 {
-                    if (pageImage != null)
-                    {
-                        ImageHelper.DeleteImage(cache.PageImageSource);
+                    ImageHelper.DeleteImage(cache.PageImageSource);
 
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", pageImage.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        GraphicsHelper.SaveOriginalImage(filePath, fileName, pageImage, 1200);
-                        //fileUpload.SaveAs(filePath);
-                        cache.PageImageSource = fileName;
-                    }
-
-                    if (contentImage != null)
-                    {
-                        ImageHelper.DeleteImage(cache.ContentImageSource);
-
-                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", contentImage.FileName);
-                        string filePath = Server.MapPath("~/Content/Images");
-                        filePath = Path.Combine(filePath, fileName);
-                        GraphicsHelper.SaveOriginalImage(filePath, fileName, contentImage, 1200);
-                        //fileUpload.SaveAs(filePath);
-                        cache.ContentImageSource = fileName;
-                    }
-
-
-                    var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
-                    if (lang != null)
-                    {
-                        CreateOrChangeContentLang(_context, model, cache, lang);
-                    }
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", pageImage.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, pageImage, 1200);
+                    pageImage.SaveAs(filePath);
+                    cache.PageImageSource = fileName;
                 }
 
+                if (contentImage != null)
+                {
+                    ImageHelper.DeleteImage(cache.ContentImageSource);
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", contentImage.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+                    filePath = Path.Combine(filePath, fileName);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, contentImage, 1200);
+                    contentImage.SaveAs(filePath);
+                    cache.ContentImageSource = fileName;
+                }
+
+
+                var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
+                if (lang != null)
+                {
+                    CreateOrChangeContentLang(_context, model, cache, lang);
+                }
+
+
                 return RedirectToAction("Index");
+            }
+            catch (DbEntityValidationException ex)
+            {
+                return View(model);
             }
             catch
             {
