@@ -59,8 +59,20 @@
         <div class="menu">
             <div class="logo"></div>
             
-            @Html.Partial("Menu",Model.SiteMenu)
+            @*@Html.Partial("Menu",Model.SiteMenu)*@
+            
+            
+            @foreach (var item in Model.Categories)
+{
+    <div class="item">
+        @Html.ActionLink(item.Title, "Index", "Home", new { category = item.Name }, null)
+    </div>
+}
 
+@*<div class="item"><a href="#">Документация</a></div>
+            <div class="item"><a href="#">Сделано</a></div>
+            <div class="item"><a href="#">События и новости</a></div>
+            <div class="item"><a href="#">Простой алгоритм партнерства</a></div>*@
            
         </div>
     </div>

@@ -14,7 +14,7 @@ namespace Leo.Models
         public IEnumerable<SpecialContent> SpecialContents { get; set; }
         public string SpecialContentJson { get; set; }
         //private IEnumerable<MenuItem> UnsortedMenu { get; set; }
-        //public List<MenuItem> SiteMenu { get; set; }
+        public List<MenuItem> SiteMenu { get; set; }
 
 
         public CategoryModel(Language lang, SiteContext context, string categoryName =null, string subcategoryName=null, bool intro = false)
@@ -29,6 +29,7 @@ namespace Leo.Models
             }
 
             Categories = context.Categories.ToList();
+
             //UnsortedMenu = CreateMenu(Categories);
            
 
@@ -56,7 +57,7 @@ namespace Leo.Models
             {
                 category.CurrentLang = lang.Id;
             }
-
+            
              //ApplySorting(UnsortedMenu);
 
             //foreach (var item in SiteMenu)
@@ -82,37 +83,37 @@ namespace Leo.Models
         }
 
 
-        //private void ApplySorting(IEnumerable<MenuItem> source)
-        //{
-        //    foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.ContentId))
-        //    {
-        //        Visit(item);
-        //    }
-            
-        //}
+        private void ApplySorting(IEnumerable<MenuItem> source)
+        {
+            foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.ContentId))
+            {
+                Visit(item);
+            }
 
-        //private void Visit(MenuItem node)
-        //{
-        //    SiteMenu.Add(node);
-        //    if (node.Children == null || node.Children.Count == 0)
-        //    {
-        //        return;
-        //    }
-        //    foreach (var child in node.Children)
-        //    {
-        //        Visit(child);
-        //    }
-        //}
+        }
 
-        //private static IEnumerable<MenuItem> CreateMenu(IEnumerable<Category> categories)
-        //{
-        //    return categories.Select(category => new MenuItem
-        //    {
-        //        Title = category.Title, 
-        //        ContentId = category.Id, 
-        //        ContentName = category.Name, 
-        //        SortOrder = category.SortOrder
-        //    });
-        //}
+        private void Visit(MenuItem node)
+        {
+            //SiteMenu.Add(node);
+            if (node.Children == null || node.Children.Count == 0)
+            {
+                return;
+            }
+            foreach (var child in node.Children)
+            {
+                Visit(child);
+            }
+        }
+
+        private static IEnumerable<MenuItem> CreateMenu(IEnumerable<Category> categories)
+        {
+            return categories.Select(category => new MenuItem
+            {
+                Title = category.Title,
+                ContentId = category.Id,
+                ContentName = category.Name,
+                SortOrder = category.SortOrder
+            });
+        }
     }
 }
