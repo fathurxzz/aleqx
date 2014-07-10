@@ -110,3 +110,10 @@
 </div>
 
 
+<div id="hiddencontent">
+    @foreach (var item in Model.SpecialContents)
+    {
+        <img src="~/Content/Images/@item.PageImageSource">
+        <img src="~/Content/Images/@item.ContentImageSource">
+    }
+</div>
