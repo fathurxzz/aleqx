@@ -359,7 +359,9 @@ namespace SiteExtensions.Graphics
             string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
             //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
             string imageSrc = GetCachedImage(originalPath, fileName, thumbnail);
-            sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc), fileName, className, _width, _height);
+            if (string.IsNullOrEmpty(imageSrc))
+                return "image file not found";
+            sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc??""), fileName, className??"", _width, _height);
             return sb.ToString();
         }
 
