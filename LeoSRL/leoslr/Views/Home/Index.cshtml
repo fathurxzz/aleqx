@@ -59,15 +59,9 @@
         <div class="menu">
             <div class="logo"></div>
             
-            @foreach (var category in Model.Categories)
-            {
-                <div class="item"><a href="#">@category.Title</a></div>
-            }
+            @Html.Partial("Menu",Model.SiteMenu)
 
-            @*<div class="item"><a href="#">Документация</a></div>
-            <div class="item"><a href="#">Сделано</a></div>
-            <div class="item"><a href="#">События и новости</a></div>
-            <div class="item"><a href="#">Простой алгоритм партнерства</a></div>*@
+           
         </div>
     </div>
     <div class="category-title">

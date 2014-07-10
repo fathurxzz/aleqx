@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SiteExtensions.MenuItem>
+
+@foreach (var item in Model)
+{
+    <div class="item">
+        @Html.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName }, null)
+    </div>
+}
+
+@*<div class="item"><a href="#">Документация</a></div>
+            <div class="item"><a href="#">Сделано</a></div>
+            <div class="item"><a href="#">События и новости</a></div>
+            <div class="item"><a href="#">Простой алгоритм партнерства</a></div>*@
