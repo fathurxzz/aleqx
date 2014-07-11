@@ -42,5 +42,20 @@ namespace SiteExtensions
         /// 
         /// </summary>
         public int SortOrder { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<MenuItem> Children { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public MenuItem Parent { get; set; }
+
+        public int Level { get; set; }
+
+        public override string ToString()
+        {
+            return ContentName + " " + Title;
+        }
     }
 }
