@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>AddImage</h2>
+<div class="admin-container">
 
 @using (Html.BeginForm("AddImage", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -14,22 +14,17 @@
 
     @Html.Hidden("productId",(int)ViewBag.ProductId)
     <fieldset>
-        <legend>ProductImage</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ImageSource)
-        </div>
+        <legend>Добавить изображение</legend>
         <div class="editor-field">
             <input type="file" name="fileUpload" class="photoFileInput" />
         </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="admin-buttons">
+                <input type="submit" value="Сохранить" />
+                @Html.ActionLink("Назад", "Index", "Category", new { area = "Admin" }, null)
+            </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index","Category",new{area="Admin"},null)
 </div>
 
 @section Scripts {

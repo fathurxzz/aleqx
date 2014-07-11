@@ -31,12 +31,11 @@
 
 #productFrameWrapper{
     padding: 8px;
-    width: 584px;
+    width: 300px;
     background-color: rgba(0,0,0,0.5);
     position: absolute;
-    top: 220px;
-    right: 0;
-    display: none;
+    top: 320px;
+    left: 500px;
     cursor: move;
 }
 
@@ -51,9 +50,8 @@
 
 #productFrameWrapper #productFrame #productContainer
 {
-    width: 385px;
-    padding-left: 30px;
-    padding-top: 60px;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 #productFrameWrapper #productFrame #productContainer #productTitle
@@ -62,10 +60,10 @@
     font-size: 22px;
 }
 
-#productFrameWrapper #productFrame #productContainer #productTitle
+#productFrameWrapper #productFrame #productContainer #productText
 {
     font-size: 13px;
-    padding-top: 20px;
+    padding-top: 5px;
     line-height: 22px;
     padding-bottom: 50px;
 }

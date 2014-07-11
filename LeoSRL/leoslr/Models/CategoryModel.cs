@@ -50,7 +50,6 @@ namespace Leo.Models
             }
 
 
-
             Categories = _context.Categories.ToList();
             
             var currentCategoryName = subcategoryName ?? categoryName;
@@ -102,8 +101,28 @@ namespace Leo.Models
             Categories = currentCategory.Children;
 
 
+            if (Product != null && Product.ProductImages.Any())
+            {
+                var specialContentJsonModel = new SpecialContentJsonModel()
+                {
+                    imagePath = "/content/images/",
+                    items = new List<item>()
+                };
 
-          
+                foreach (var img in Product.ProductImages)
+                {
+                    specialContentJsonModel.items.Add(new item
+                    {
+                        contentImageSource = null,
+                        pageImageSource = img.ImageSource
+                    });
+                }
+
+                SpecialContentJson = "settings.specialContent = " + JsonConvert.SerializeObject(specialContentJsonModel);
+            }
+
+
+
 
         }
 

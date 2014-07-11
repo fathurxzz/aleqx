@@ -16,13 +16,24 @@
     </ul>
 }
 
+@if (TempData["errorMessage"] != null)
+{
+    <div style="text-align: center">
+    <h4><span class="label label-danger"> @TempData["errorMessage"]</span>    </h4>
+        </div>
+}
+
+
+   
+
+
 <h3>Категории</h3>
 
 <p>
     @Html.ActionLink("Добавить категорию", "Create")
 </p>
 <table class="table table-striped">
-@*<table class="table">*@
+    @*<table class="table">*@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -111,14 +122,14 @@
         </tr>
         <tr>
             <td colspan="6">
-                
-                    @foreach (var image in product.ProductImages)
-                    {
-                        <div style="float: left; margin:0 3px">
+                @foreach (var image in product.ProductImages)
+                {
+                    <div style="float: left; margin: 0 3px">
                         @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImagePreview")))
-                            </div>
-                    }
-                
+                        <br />
+                        @Html.ActionLink("Удалить", "DeleteImage", "Product", new { id = image.Id }, new { onclick = "return confirm('Удалить изображение?')" })
+                    </div>
+                }
             </td>
         </tr>
   
