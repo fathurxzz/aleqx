@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Leo.Models.Category>
+﻿@using Leo
+@using SiteExtensions.Graphics
+@model IEnumerable<Leo.Models.Category>
 
 @{
     ViewBag.Title = "Index";
@@ -20,6 +22,7 @@
     @Html.ActionLink("Добавить категорию", "Create")
 </p>
 <table class="table table-striped">
+@*<table class="table">*@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -81,14 +84,16 @@
             </td>
         </tr>
 
-        foreach (var product in item.Products)
-        {
-            <tr>
-                <td><span class="category-level-indicator"></span><span class="product-indicator label label-info">product</span> @product.Name</td>
-                <td>@product.SortOrder</td>
-                <td>@product.Title</td>
-                <td>@product.Text</td>
-                <td>
+                foreach (var product in item.Products)
+                {
+        <tr>
+            <td>
+                <span class="category-level-indicator level2"></span><span class="product-indicator label label-info">product</span> @product.Name
+            </td>
+            <td>@product.SortOrder</td>
+            <td>@product.Title</td>
+            <td>@product.Text</td>
+            <td>
                 @if (!item.IsCorrectLang)
                 {
                     <span class="label label-danger">!</span>
@@ -98,13 +103,26 @@
                     <span class="label label-success">ok</span>
                 }
             </td>
-                <td>
-                    @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
+                    @Html.ActionLink("Добавить изображение", "AddImage", "Product", new { id = product.Id }, null) |
                     @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
-                </td>
-            </tr>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                
+                    @foreach (var image in product.ProductImages)
+                    {
+                        <div style="float: left; margin:0 3px">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImagePreview")))
+                            </div>
+                    }
+                
+            </td>
+        </tr>
   
-        }
+                }
     }
 
 </table>

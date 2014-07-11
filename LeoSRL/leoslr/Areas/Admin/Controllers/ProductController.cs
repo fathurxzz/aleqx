@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Leo.Helpers;
 using Leo.Models;
+using SiteExtensions;
 
 namespace Leo.Areas.Admin.Controllers
 {
@@ -40,7 +40,10 @@ namespace Leo.Areas.Admin.Controllers
                 {
                     Name = SiteHelper.UpdatePageWebName(model.Name),
                     SortOrder = model.SortOrder,
-                    Category = category
+                    Category = category,
+                    Title = model.Title,
+                    Text = model.Text
+                    
                 };
 
                 _context.Products.Add(cache);
@@ -80,7 +83,7 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = _context.Products.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder" });
+                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
@@ -135,6 +138,33 @@ namespace Leo.Areas.Admin.Controllers
             }
             context.SaveChanges();
 
+        }
+
+        public ActionResult AddImage(int id)
+        {
+            ViewBag.ProductId = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(int productId, HttpPostedFileBase fileUpload)
+        {
+            var product = _context.Products.First(p => p.Id == productId);
+            if (fileUpload != null)
+            {
+                string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                string filePath = Server.MapPath("~/Content/Images");
+                filePath = Path.Combine(filePath, fileName);
+                fileUpload.SaveAs(filePath);
+                var pi = new ProductImage
+                {
+                    ImageSource = fileName
+                };
+                product.ProductImages.Add(pi);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Category", new {area = "Admin"});
         }
     }
 }

@@ -8,8 +8,7 @@
 @{
     Html.EnableClientValidation();
           }
-<h2>Create</h2>
-
+<div class="admin-container">
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     
@@ -17,7 +16,7 @@
     @Html.HiddenFor(model=>model.CurrentLang)
     @Html.HiddenFor(model=>model.CategoryId)
     <fieldset>
-        <legend>Category</legend>
+        <legend>Добавить категорию</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -50,16 +49,15 @@
             @Html.EditorFor(model => model.SortOrder)
             @Html.ValidationMessageFor(model => model.SortOrder)
         </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="admin-buttons">
+                <input type="submit" value="Сохранить" />
+                @Html.ActionLink("Назад", "Index", "Category", new { area = "Admin" }, null)
+            </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
+    </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

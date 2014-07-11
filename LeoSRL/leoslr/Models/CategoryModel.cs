@@ -8,65 +8,89 @@ using SiteExtensions;
 
 namespace Leo.Models
 {
-    public class CategoryModel:SiteModel
+    public class CategoryModel : SiteModel
     {
         public IEnumerable<Category> Categories { get; set; }
+        public Category Category { get; set; }
+        public IEnumerable<Product> Products { get; set; }
+        public Product Product { get; set; }
         public IEnumerable<SpecialContent> SpecialContents { get; set; }
         public string SpecialContentJson { get; set; }
-        //private IEnumerable<MenuItem> UnsortedMenu { get; set; }
-        public List<MenuItem> SiteMenu { get; set; }
 
-
-        public CategoryModel(Language lang, SiteContext context, string categoryName =null, string subcategoryName=null, bool intro = false)
+        public CategoryModel(Language lang, SiteContext context, string categoryName = null, string subcategoryName = null, string productName=null, bool intro = false)
             : base(lang, context, categoryName)
         {
-            Title = "Leo";
-            //SiteMenu = new List<MenuItem>();
-            SpecialContents = context.SpecialContents.ToList();
-            foreach (var specialContent in SpecialContents)
+
+            if (subcategoryName == null)
             {
-                specialContent.CurrentLang = lang.Id;
-            }
-
-            Categories = context.Categories.ToList();
-
-            //UnsortedMenu = CreateMenu(Categories);
-           
-
-            var specialContentJsonModel = new SpecialContentJsonModel()
-            {
-                imagePath = "/content/images/",
-                items = new List<item>()
-            };
-
-            foreach (var content in SpecialContents)
-            {
-                specialContentJsonModel.items.Add(new item
+                SpecialContents = _context.SpecialContents.ToList();
+                foreach (var specialContent in SpecialContents)
                 {
-                    contentImageSource = content.ContentImageSource,
-                    pageImageSource = content.PageImageSource,
-                    title = content.Title,
-                    text = content.Text
-                });
+                    specialContent.CurrentLang = lang.Id;
+                }
+
+                var specialContentJsonModel = new SpecialContentJsonModel()
+                {
+                    imagePath = "/content/images/",
+                    items = new List<item>()
+                };
+
+                foreach (var content in SpecialContents)
+                {
+                    specialContentJsonModel.items.Add(new item
+                    {
+                        contentImageSource = content.ContentImageSource,
+                        pageImageSource = content.PageImageSource,
+                        title = content.Title,
+                        text = content.Text
+                    });
+                }
+
+                SpecialContentJson = "settings.specialContent = " + JsonConvert.SerializeObject(specialContentJsonModel);
             }
 
-            SpecialContentJson = "settings.specialContent = "+ JsonConvert.SerializeObject(specialContentJsonModel);
 
 
+            Categories = _context.Categories.ToList();
+            
+            var currentCategoryName = subcategoryName ?? categoryName;
+            Category = Categories.FirstOrDefault(c => c.Name == currentCategoryName);
+
+            if (Category != null)
+            {
+                Products = Category.Products.ToList();
+                foreach (var product in Products)
+                {
+                    product.CurrentLang = lang.Id;
+                }
+                
+                if (productName != null)
+                {
+                    Product = Category.Products.First(p => p.Name == productName);
+                }
+                else if (subcategoryName != null && Products.Any())
+                {
+                    Product = Category.Products.First();
+                }
+            }
+            
             foreach (var category in Categories)
             {
                 category.CurrentLang = lang.Id;
             }
-            
-             //ApplySorting(UnsortedMenu);
 
-            //foreach (var item in SiteMenu)
-            //{
-            //    if (item.ContentName == categoryName || item.ContentName == subcategoryName)
-            //    {
-            //        item.Current = true;
-            //    }
-            //}
+            SiteMenu = CreateSiteMenu(Categories);
+
+            if (categoryName != null)
+            {
+                var menu = SiteMenu.First(m => m.ContentName == categoryName);
+                SiteMenu = menu.Children.ToList();
+            }
+
+            foreach (var item in SiteMenu.Where(item => item.ContentName == categoryName || item.ContentName == subcategoryName))
+            {
+                item.Current = true;
+            }
 
             if (intro)
             {
@@ -75,45 +99,54 @@ namespace Leo.Models
             }
 
             var currentCategory = Categories.First(c => c.Name == categoryName);
-
             Categories = currentCategory.Children;
 
-            //var menu = SiteMenu.First(c => c.ContentName == categoryName);
-            //SiteMenu = menu.Children;
+
+
+          
+
         }
 
-
-        private void ApplySorting(IEnumerable<MenuItem> source)
+        private static List<MenuItem> CreateSiteMenu(IEnumerable<Category> categories)
         {
-            foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.ContentId))
+            var result = new List<MenuItem>();
+            foreach (var category in categories.Where(c => c.Parent == null).OrderBy(c => c.Id))
             {
-                Visit(item);
+                var parent = CreateMenuItem(category,null, 0);
+                Visit(category, parent, 0);
+                result.Add(parent);
             }
-
+            return result;
         }
 
-        private void Visit(MenuItem node)
+        private static void Visit(Category node, MenuItem parent, int level)
         {
-            //SiteMenu.Add(node);
             if (node.Children == null || node.Children.Count == 0)
             {
                 return;
             }
-            foreach (var child in node.Children)
+            foreach (var item in node.Children)
             {
-                Visit(child);
+                var child = CreateMenuItem(item,parent, level+1);
+                parent.Children.Add(child);
+                Visit(item, child, level + 1);
             }
         }
 
-        private static IEnumerable<MenuItem> CreateMenu(IEnumerable<Category> categories)
+        private static MenuItem CreateMenuItem(Category category, MenuItem parent, int level)
         {
-            return categories.Select(category => new MenuItem
+            return new MenuItem
             {
                 Title = category.Title,
                 ContentId = category.Id,
                 ContentName = category.Name,
-                SortOrder = category.SortOrder
-            });
+                SortOrder = category.SortOrder,
+                Level = level,
+                Parent = parent,
+                Children = new List<MenuItem>()
+            };
         }
+
+       
     }
 }

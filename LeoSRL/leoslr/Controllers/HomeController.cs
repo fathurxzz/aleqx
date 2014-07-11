@@ -26,7 +26,7 @@ namespace Leo.Controllers
 
         public ActionResult Index(string category, string subcategory, string product)
         {
-            var model = new CategoryModel(CurrentLang, _context, category, subcategory );
+            var model = new CategoryModel(CurrentLang, _context, category, subcategory, product );
 
 
 

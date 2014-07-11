@@ -41,8 +41,8 @@
 
 
                 @Html.Raw(Model.SpecialContentJson)
-                    
-                
+
+
 
             }
 
@@ -58,68 +58,96 @@
         </div>
         <div class="menu">
             <div class="logo"></div>
-            
-            @*@Html.Partial("Menu",Model.SiteMenu)*@
-            
-            
-            @foreach (var item in Model.Categories)
+
+            @Html.Partial("Menu", Model.SiteMenu)
+
+
+            @*    @foreach (var item in Model.Categories)
 {
     <div class="item">
         @Html.ActionLink(item.Title, "Index", "Home", new { category = item.Name }, null)
     </div>
-}
+}*@
 
-@*<div class="item"><a href="#">Документация</a></div>
+            @*<div class="item"><a href="#">Документация</a></div>
             <div class="item"><a href="#">Сделано</a></div>
             <div class="item"><a href="#">События и новости</a></div>
             <div class="item"><a href="#">Простой алгоритм партнерства</a></div>*@
-           
+
         </div>
     </div>
-    <div class="category-title">
-        Сделано
-    </div>
-    <div class="product-selector-container">
-        <select class="product-selector">
-            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
-            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
-            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
-            <option value="1">ТЦ &laquo;Аль Шаппоне&raquo;</option>
-        </select>
-    </div>
 
-    
+
+    @if (Model.Category != null)
+    {
+        <div class="category-title">
+            @Model.Category.Title
+        </div>
+
+
+        if (Model.Category.Products.Any())
+        {
+        <div class="product-selector-container">
+            <select class="product-selector">
+                @foreach (var product in Model.Category.Products)
+                {
+                    <option value="@product.Name">@product.Title</option>
+                }
+            </select>
+        </div>
+        }
+    }
 
     @Html.Partial("LanguageSwitcher")
-
     
-
-    <div id="contentFrameWrapper">
-        <div id="contentFrame">
-            <div id="contentContainer">
-                <div id="title">
-                    <!--результат, поражающий воображение-->
-                </div>
-                <div id="text">
-                    <!--12 дней, чтобы организовать и завезти нужные материалы. Несколько часов, чтобы разбудить гномиков. И-->
-                    <!--сутки на застройку. <br>-->
-                    <!--Интерьер готов, кто бы что не говорил!-->
+    
+    @if (Model.SpecialContents != null && Model.SpecialContents.Any())
+    {
+        <div id="contentFrameWrapper">
+            <div id="contentFrame">
+                <div id="contentContainer">
+                    <div id="title">
+                    </div>
+                    <div id="text">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+
+    @if (Model.Product!=null)
+    {
+        <div id="productFrameWrapper">
+            <div id="productFrame">
+                <div id="productContainer">
+                    <div id="productTitle">
+                        @Html.Raw(Model.Product.Title)
+                    </div>
+                    <div id="productText">
+                         @Html.Raw(Model.Product.Text)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 
 </div>
 <div class="footer">
     <div class="copy">&copy; 2014 LeoSLR. Все права защищены</div>
-    <div class="em">Сайт создан в<br><a href="http://eugene-miller.com">Студии Евгения Миллера</a></div>
+    <div class="em">
+        Сайт создан в<br>
+        <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+    </div>
 </div>
 
-
-<div id="hiddencontent">
-    @foreach (var item in Model.SpecialContents)
-    {
-        <img src="~/Content/Images/@item.PageImageSource">
-        <img src="~/Content/Images/@item.ContentImageSource">
-    }
-</div>
+@if (Model.SpecialContents != null && Model.SpecialContents.Any())
+{
+    <div id="hiddencontent">
+        @foreach (var item in Model.SpecialContents)
+        {
+            <img src="~/Content/Images/@item.PageImageSource">
+            <img src="~/Content/Images/@item.ContentImageSource">
+        }
+    </div>
+}
+    

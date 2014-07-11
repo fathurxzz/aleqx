@@ -91,3 +91,60 @@
     margin-top: 3px;
     margin-right: 10px;
 }
+
+
+
+
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset
+{
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend
+{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"] {
+    min-width: 500px;
+}
+
+textarea
+{
+    min-height: 100px;
+    min-width: 500px;
+}
+
+.editor-label
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field
+{
+    margin: 0 0 0 0;
+}
+
+.admin-buttons {
+    padding-top: 20px;
+    text-align: center;
+
+}
+
+.admin-buttons input {
+    margin-right: 10px;
+}
+
+.admin-container {
+    width: 500px;
+    margin: 0 auto;
+    
+}
+
