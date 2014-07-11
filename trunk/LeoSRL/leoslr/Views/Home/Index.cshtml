@@ -46,6 +46,13 @@
 
             }
 
+
+            settings.language = '@ViewBag.Language';
+            settings.category = '@ViewBag.Category';
+            settings.subcategory = '@ViewBag.SubCategory';
+
+
+
         })(LEO);
     </script>
 }
@@ -88,10 +95,18 @@
         if (Model.Category.Products.Any())
         {
         <div class="product-selector-container">
-            <select class="product-selector">
+            <select class="product-selector" id="productSelector">
                 @foreach (var product in Model.Category.Products)
                 {
-                    <option value="@product.Name">@product.Title</option>
+                    if (Model.Product.Name == product.Name)
+                    {
+                        <option value="@product.Name" selected>@product.Title</option>
+                    }
+                    else
+                    {
+                        <option value="@product.Name">@product.Title</option>
+                    }
+                    
                 }
             </select>
         </div>
