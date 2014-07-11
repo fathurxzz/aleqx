@@ -3,6 +3,9 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+@{
+    Html.EnableClientValidation();
+          }
 <div class="admin-container">
     @using (Html.BeginForm())
     {

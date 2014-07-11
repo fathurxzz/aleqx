@@ -22,6 +22,7 @@ namespace Leo.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
+
             var categories = _context.Categories.ToList();
             foreach (var category in categories)
             {
@@ -137,6 +138,15 @@ namespace Leo.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var category = _context.Categories.First(p => p.Id == id);
+
+
+
+            if (category.Products.Any())
+            {
+                TempData["errorMessage"] = "Невозможно удалить категорию, если в ней есть продукты. Сначала удалите продукты.";
+                return RedirectToAction("Index");
+            }
+
             while (category.CategoryLangs.Any())
             {
                 var lang = category.CategoryLangs.First();

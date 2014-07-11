@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -107,6 +108,14 @@ namespace Leo.Areas.Admin.Controllers
                 var lang = product.ProductLangs.First();
                 _context.ProductLangs.Remove(lang);
             }
+
+            while (product.ProductImages.Any())
+            {
+                var image = product.ProductImages.First();
+                ImageHelper.DeleteImage(image.ImageSource);
+                _context.ProductImages.Remove(image);
+            }
+
             _context.Products.Remove(product);
             _context.SaveChanges();
             return RedirectToAction("Index", "Category");
@@ -165,6 +174,15 @@ namespace Leo.Areas.Admin.Controllers
             }
 
             return RedirectToAction("Index", "Category", new {area = "Admin"});
+        }
+
+        public ActionResult DeleteImage(int id)
+        {
+            var productImage = _context.ProductImages.First(pi => pi.Id == id);
+            ImageHelper.DeleteImage(productImage.ImageSource);
+            _context.ProductImages.Remove(productImage);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
     }
 }
