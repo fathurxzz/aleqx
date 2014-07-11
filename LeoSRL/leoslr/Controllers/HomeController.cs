@@ -28,10 +28,14 @@ namespace Leo.Controllers
         {
             var model = new CategoryModel(CurrentLang, _context, category, subcategory, product );
 
-
+            ViewBag.Language = CurrentLang.Code;
+            ViewBag.Category = category;
+            ViewBag.SubCategory = subcategory;
 
             this.SetSeoContent(model);
             return View(model);
         }
+
+
     }
 }

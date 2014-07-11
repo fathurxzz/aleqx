@@ -75,4 +75,9 @@ $(function () {
         });
 
 
+    $("#productSelector").change(function() {
+        window.location.href = '/' + LEO.settings.language + '/' + LEO.settings.category + '/' + LEO.settings.subcategory + '/' + this.value;
+    });
+
+
 });
