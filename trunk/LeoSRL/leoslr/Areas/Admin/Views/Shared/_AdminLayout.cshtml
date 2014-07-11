@@ -7,15 +7,11 @@
     @Styles.Render("~/Content/Admin.css", "~/Content/bootstrap.min.css" ,"~/Content/jquery-ui.min.css" ,"~/Content/jquery-ui.structure.min.css")
 </head>
 <body>
-    @Html.Partial("LanguageSwitcher")
+    @Html.Partial("LanguageSwitcher") 
     
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    @Html.ActionLink("На сайт","Intro","Home",new{area=""},null)
+    @Html.ActionLink("На сайт","Intro","Home",new{area=""},null)    
+    
+    
 
     @RenderSection("AdminNavigation",false)
 

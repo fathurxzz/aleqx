@@ -1,60 +1,57 @@
 ﻿@model Leo.Models.Product
-
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+<div class="admin-container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CategoryId)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CurrentLang)
 
-<h2>Edit</h2>
+        <fieldset>
+            <legend>редактировать продукт</legend>
+              <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    @Html.HiddenFor(model => model.CategoryId)
-    @Html.HiddenFor(model => model.Id)
-    @Html.HiddenFor(model => model.CurrentLang)
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Text)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Text)
+                @Html.ValidationMessageFor(model => model.Text)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SortOrder)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.SortOrder)
+                @Html.ValidationMessageFor(model => model.SortOrder)
+            </div>
 
-    <fieldset>
-        <legend>Product</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
+            <div class="admin-buttons">
+                <input type="submit" value="Сохранить" />
+                @Html.ActionLink("Назад", "Index", "Category", new { area = "Admin" }, null)
+            </div>
+        </fieldset>
+    }
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Text)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Text)
-            @Html.ValidationMessageFor(model => model.Text)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.SortOrder)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.SortOrder)
-            @Html.ValidationMessageFor(model => model.SortOrder)
-        </div>
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {

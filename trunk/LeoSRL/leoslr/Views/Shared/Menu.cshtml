@@ -3,7 +3,19 @@
 @foreach (var item in Model)
 {
     <div class="item">
-        @Html.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName }, null)
+        
+        @if (item.Current)
+        {
+            @Html.Raw(item.Title)
+        }else if (item.Level == 0)
+        {
+            @Html.ActionLink(item.Title, "Index", "Home", new { category = item.ContentName }, null)
+        }
+        else if (item.Level == 1)
+        {
+            @Html.ActionLink(item.Title, "Index", "Home", new { category = item.Parent.ContentName, subcategory = item.ContentName }, null)
+        }
+        
     </div>
 }
 
