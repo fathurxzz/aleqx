@@ -20,6 +20,13 @@ namespace Leo
                 new { controller = "Auth", action = "Login"},
                 new[] { "Leo.Controllers" }
             );
+            
+            routes.MapRoute(
+                "LogOut",
+                "logout",
+                new { controller = "Auth", action = "Logout" },
+                new[] { "Leo.Controllers" }
+            );
 
             routes.MapRoute(
                "Product",
