@@ -464,6 +464,14 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="SpecialContentLang" EntitySet="SpecialContentLang" />
           </AssociationSet>
+          <AssociationSet Name="CategoryProduct" Association="Model.CategoryProduct">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="CategoryArticle" Association="Model.CategoryArticle">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -477,6 +485,8 @@
           <Property Type="Int32" Name="CategoryId" Nullable="true" />
           <NavigationProperty Name="CategoryImages" Relationship="Model.CategoryCategoryImage" FromRole="Category" ToRole="CategoryImage" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Model.CategoryProduct" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Articles" Relationship="Model.CategoryArticle" FromRole="Category" ToRole="Article" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -536,6 +546,8 @@
           <Property Type="Boolean" Name="Published" Nullable="false" />
           <NavigationProperty Name="ArticleLangs" Relationship="Model.ArticleArticleLang" FromRole="Article" ToRole="ArticleLang" />
           <NavigationProperty Name="ArticleItems" Relationship="Model.ArticleArticleItem" FromRole="Article" ToRole="ArticleItem" />
+          <NavigationProperty Name="Category" Relationship="Model.CategoryArticle" FromRole="Article" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
         </EntityType>
         <EntityType Name="ArticleLang">
           <Key>
@@ -675,6 +687,9 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <NavigationProperty Name="ProductLangs" Relationship="Model.ProductProductLang" FromRole="Product" ToRole="ProductLang" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Model.CategoryProduct" FromRole="Product" ToRole="Category" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -796,6 +811,30 @@
             </Principal>
             <Dependent Role="SpecialContentLang">
               <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryProduct">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CategoryArticle">
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
