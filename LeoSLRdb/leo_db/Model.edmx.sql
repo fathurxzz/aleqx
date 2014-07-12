@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/03/2014 18:52:51
--- Generated from EDMX file: D:\projects\leo_db\leo_db\Model.edmx
+-- Date Created: 07/13/2014 00:15:53
+-- Generated from EDMX file: C:\vsp\LeoSLRdb\leo_db\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -95,7 +95,8 @@ ALTER TABLE `CategoryLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Article`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Date` datetime NOT NULL, 
-	`Published` bool NOT NULL);
+	`Published` bool NOT NULL, 
+	`CategoryId` int NOT NULL);
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
@@ -150,7 +151,9 @@ ALTER TABLE `ArticleItemLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Product`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Name` varchar (200) NOT NULL, 
-	`SortOrder` int NOT NULL);
+	`SortOrder` int NOT NULL, 
+	`CategoryId` int NOT NULL, 
+	`ContentType` int NOT NULL);
 
 ALTER TABLE `Product` ADD PRIMARY KEY (Id);
 
@@ -441,6 +444,36 @@ ADD CONSTRAINT `FK_LanguageSpecialContentLang`
 CREATE INDEX `IX_FK_LanguageSpecialContentLang` 
     ON `SpecialContentLang`
     (`LanguageId`);
+
+-- Creating foreign key on `CategoryId` in table 'Product'
+
+ALTER TABLE `Product`
+ADD CONSTRAINT `FK_CategoryProduct`
+    FOREIGN KEY (`CategoryId`)
+    REFERENCES `Category`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryProduct'
+
+CREATE INDEX `IX_FK_CategoryProduct` 
+    ON `Product`
+    (`CategoryId`);
+
+-- Creating foreign key on `CategoryId` in table 'Article'
+
+ALTER TABLE `Article`
+ADD CONSTRAINT `FK_CategoryArticle`
+    FOREIGN KEY (`CategoryId`)
+    REFERENCES `Category`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CategoryArticle'
+
+CREATE INDEX `IX_FK_CategoryArticle` 
+    ON `Article`
+    (`CategoryId`);
 
 -- --------------------------------------------------
 -- Script has ended
