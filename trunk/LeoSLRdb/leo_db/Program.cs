@@ -11,13 +11,7 @@ namespace leo_db
         static void Main(string[] args)
         {
 
-            using (var context = new ModelContainer())
-            {
-                
-
-
-
-            }
+          
         }
     }
 }

@@ -19,6 +19,8 @@ namespace leo_db
             this.CategoryLangs = new HashSet<CategoryLang>();
             this.Children = new HashSet<Category>();
             this.CategoryImages = new HashSet<CategoryImage>();
+            this.Products = new HashSet<Product>();
+            this.Articles = new HashSet<Article>();
         }
     
         public int Id { get; set; }
@@ -30,5 +32,7 @@ namespace leo_db
         public virtual ICollection<Category> Children { get; set; }
         public virtual Category Parent { get; set; }
         public virtual ICollection<CategoryImage> CategoryImages { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
     }
 }
