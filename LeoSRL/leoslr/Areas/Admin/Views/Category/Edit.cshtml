@@ -48,7 +48,13 @@
             @Html.EditorFor(model => model.SortOrder)
             @Html.ValidationMessageFor(model => model.SortOrder)
         </div>
-
+         <div class="editor-label">
+            Категория новостей
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.CategoryType)
+            @Html.ValidationMessageFor(model => model.CategoryType)
+        </div>
        <div class="admin-buttons">
                 <input type="submit" value="Сохранить" />
                 @Html.ActionLink("Назад", "Index", "Category", new { area = "Admin" }, null)

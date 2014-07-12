@@ -16,6 +16,7 @@ namespace Leo.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Date).HasColumnName("Date");
             this.Property(t => t.Published).HasColumnName("Published");
+            this.Property(t => t.CategoryId).HasColumnName("CategoryId");
 
             // Ignored
             this.Ignore(t => t.Title);
