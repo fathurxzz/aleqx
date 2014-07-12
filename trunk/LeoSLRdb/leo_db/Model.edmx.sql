@@ -5,14 +5,11 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/13/2014 00:15:53
+-- Date Created: 07/13/2014 00:45:10
 -- Generated from EDMX file: C:\vsp\LeoSLRdb\leo_db\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_leoslr`;
-CREATE DATABASE `gbua_leoslr`;
-USE `gbua_leoslr`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -34,6 +31,8 @@ USE `gbua_leoslr`;
 --    ALTER TABLE `CategoryImage` DROP CONSTRAINT `FK_CategoryCategoryImage`;
 --    ALTER TABLE `SpecialContentLang` DROP CONSTRAINT `FK_SpecialContentSpecialContentLang`;
 --    ALTER TABLE `SpecialContentLang` DROP CONSTRAINT `FK_LanguageSpecialContentLang`;
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
+--    ALTER TABLE `Article` DROP CONSTRAINT `FK_CategoryArticle`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -63,7 +62,9 @@ CREATE TABLE `Category`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Name` varchar (200) NOT NULL, 
 	`CategoryId` int, 
-	`SortOrder` int NOT NULL);
+	`SortOrder` int NOT NULL, 
+	`CategoryLevel` int NOT NULL, 
+	`CategoryType` int NOT NULL);
 
 ALTER TABLE `Category` ADD PRIMARY KEY (Id);
 
