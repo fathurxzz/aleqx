@@ -97,6 +97,8 @@
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="CategoryId" Type="int" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="CategoryLevel" Type="int" Nullable="false" />
+    <Property Name="CategoryType" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Language">
     <Key>
@@ -522,6 +524,8 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Model.CategoryProduct" FromRole="Category" ToRole="Product" />
           <NavigationProperty Name="Articles" Relationship="Model.CategoryArticle" FromRole="Category" ToRole="Article" />
+          <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
+          <Property Type="Int32" Name="CategoryType" Nullable="false" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -886,6 +890,8 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
