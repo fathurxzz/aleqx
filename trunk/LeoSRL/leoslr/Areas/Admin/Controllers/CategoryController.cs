@@ -64,7 +64,9 @@ namespace Leo.Areas.Admin.Controllers
                     Parent = parent,
                     CategoryLevel = categoryLevel,
                     Title = model.Title,
-                    Text = model.Text
+                    Text = model.Text,
+                    CategoryType = model.CategoryType
+                    
                     //CategoryId = model.CategoryId
                 };
 
@@ -112,7 +114,7 @@ namespace Leo.Areas.Admin.Controllers
 
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder","Title","Text" });
+                    TryUpdateModel(cache, new[] { "SortOrder","Title","Text","CategoryType" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
                     model.Text = model.Text ?? "";
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
@@ -191,7 +193,7 @@ namespace Leo.Areas.Admin.Controllers
 
         private IEnumerable<Category> ApplySorting(IEnumerable<Category> source)
         {
-            foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.Id))
+            foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.SortOrder))
             {
                 Visit(item);
             }
@@ -208,7 +210,7 @@ namespace Leo.Areas.Admin.Controllers
             {
                 return;
             }
-            foreach (var child in node.Children)
+            foreach (var child in node.Children.OrderBy(c => c.SortOrder))
             {
                 Visit(child);
             }

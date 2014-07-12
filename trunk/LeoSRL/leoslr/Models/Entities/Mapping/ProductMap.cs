@@ -26,7 +26,7 @@ namespace Leo.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.CategoryId).HasColumnName("CategoryId");
-            
+            this.Property(t => t.ContentType).HasColumnName("ContentType");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
         }
     }

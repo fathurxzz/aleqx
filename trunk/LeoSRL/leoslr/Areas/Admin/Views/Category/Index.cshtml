@@ -63,6 +63,10 @@
                     string categoryLevel = "level" + item.CategoryLevel;
                     <span class="category-level-indicator @categoryLevel"></span>
                 }
+                @if (item.CategoryType)
+                {
+                    <span class="label label-info">news</span>
+                }
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>

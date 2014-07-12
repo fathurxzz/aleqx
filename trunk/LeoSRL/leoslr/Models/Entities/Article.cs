@@ -14,6 +14,8 @@ namespace Leo.Models
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
         public bool Published { get; set; }
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         public virtual ICollection<ArticleItem> ArticleItems { get; set; }
         public virtual ICollection<ArticleLang> ArticleLangs { get; set; }
     }
