@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,400' rel='stylesheet' type='text/css'>
-    @Styles.Render("~/Content/Fonts.css", "~/Content/Common.css", "~/Content/Site.css","~/Content/SpecialContent.css","~/Content/product.css",  "~/Content/Errors.css" //, "~/Content/Menu.css"
-            //,"~/Content/jquery.bxslider.css"
-            ,"~/Content/intro.css"
-            ,"~/Content/jquery-ui.min.css"
-            ,"~/Content/jquery-ui.structure.min.css"
-            ,"~/Content/tmp.css"
-    )
+    @Styles.Render("~/bundles/css")
 </head>
 <body>
     @RenderBody()

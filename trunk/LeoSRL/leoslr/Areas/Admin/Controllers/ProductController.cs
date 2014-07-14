@@ -45,7 +45,7 @@ namespace Leo.Areas.Admin.Controllers
                     Category = category,
                     Title = model.Title,
                     Text = model.Text,
-                    ContentType = model.ContentType
+                    IsContentPage = model.IsContentPage
                     
                 };
 
@@ -103,7 +103,7 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = _context.Products.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text","ContentType" });
+                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text", "IsContentPage" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
 
                     for (int i = 0; i < Request.Files.Count; i++)

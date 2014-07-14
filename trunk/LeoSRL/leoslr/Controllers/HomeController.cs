@@ -24,9 +24,9 @@ namespace Leo.Controllers
             return View(model);
         }
 
-        public ActionResult Index(string category, string subcategory, string product)
+        public ActionResult Index(string category, string subcategory, string product, int? articleId)
         {
-            var model = new CategoryModel(CurrentLang, _context, category, subcategory, product );
+            var model = new CategoryModel(CurrentLang, _context, category, subcategory, product, articleId);
 
             ViewBag.Language = CurrentLang.Code;
             ViewBag.Category = category;

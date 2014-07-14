@@ -87,35 +87,73 @@
 
     @if (Model.Category != null)
     {
+        if (Model.Category.IsNewsCategory)
+        {
+        
+            <div class="article-content-container">
+                @if (Model.Article != null)
+                {
+                    <div class="category-title articles">
+                        @Model.Category.Title
+                    </div>
+                    <div class="article-separator"></div>
+                    
+                    
+                    TODO:
+                    
+                    
+                    
+                    <div class="article-separator"></div>
+                }
+                else
+                {
+                    <div class="category-title articles">
+                        @Model.Category.Title
+                    </div>
+                    <div class="article-separator"></div>
+                    foreach (var article in Model.Category.Articles)
+                    {
+                        @Html.Partial("Article", article)
+                    }
+                <div class="pager"><a href="#">1</a>..2..<a href="#">3</a></div>
+
+                }
+            </div>
+
+        }
+        else
+        {
         <div class="category-title">
             @Model.Category.Title
         </div>
-
-
-        if (Model.Category.Products.Any())
-        {
+        
+            if (Model.Category.Products.Any())
+            {
         <div class="product-selector-container">
             <select class="product-selector" id="productSelector">
                 @foreach (var product in Model.Category.Products)
                 {
                     if (Model.Product.Name == product.Name)
                     {
-                        <option value="@product.Name" selected>@product.Title</option>
+                    <option value="@product.Name" selected>@product.Title</option>
                     }
                     else
                     {
-                        <option value="@product.Name">@product.Title</option>
+                    <option value="@product.Name">@product.Title</option>
                     }
-                    
+
                 }
             </select>
         </div>
+            }
         }
     }
 
     @Html.Partial("LanguageSwitcher")
-    
-    
+
+
+
+
     @if (Model.SpecialContents != null && Model.SpecialContents.Any())
     {
         <div id="contentFrameWrapper">
@@ -130,7 +168,7 @@
         </div>
     }
 
-    @if (Model.Product!=null)
+    @if (Model.Product != null)
     {
         <div id="productFrameWrapper">
             <div id="productFrame">
@@ -139,7 +177,7 @@
                         @Html.Raw(Model.Product.Title)
                     </div>
                     <div id="productText">
-                         @Html.Raw(Model.Product.Text)
+                        @Html.Raw(Model.Product.Text)
                     </div>
                 </div>
             </div>
@@ -165,4 +203,4 @@
         }
     </div>
 }
-    
+

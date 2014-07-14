@@ -20,7 +20,7 @@ namespace Leo.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.CategoryId).HasColumnName("CategoryId");
-            this.Property(t => t.CategoryType).HasColumnName("CategoryType");
+            this.Property(t => t.IsNewsCategory).HasColumnName("CategoryType");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.CategoryLevel).HasColumnName("CategoryLevel");
 

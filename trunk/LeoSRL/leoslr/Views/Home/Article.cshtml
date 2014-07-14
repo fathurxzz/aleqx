@@ -1,0 +1,13 @@
+﻿@model Leo.Models.Article
+<div class="article">
+    <div class="date">@Model.Date.ToShortDateString()</div>
+    <div class="title">@Model.Title</div>
+    <div class="description">@Model.Description</div>
+    <div class="link">
+
+        @Html.ActionLink("Показать всё", "Index", "Home", new { category = ViewBag.Category, subcategory=ViewBag.SubCategory, articleId=Model.Id }, null)
+
+        &nbsp;&raquo;
+    </div>
+</div>
+<div class="article-separator"></div>
