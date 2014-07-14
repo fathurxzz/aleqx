@@ -11,6 +11,7 @@ namespace Leo.Models
             this.CategoryImages = new List<CategoryImage>();
             this.CategoryLangs = new List<CategoryLang>();
             this.Products = new List<Product>();
+            this.Articles = new List<Article>();
 
         }
 
@@ -22,6 +23,7 @@ namespace Leo.Models
         public bool CategoryType { get; set; }
         public virtual ICollection<Category> Children { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
         public virtual Category Parent { get; set; }
         public virtual ICollection<CategoryImage> CategoryImages { get; set; }
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }

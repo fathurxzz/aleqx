@@ -19,10 +19,8 @@ namespace Leo.Areas.Admin.Controllers
             _context = context;
         }
 
-
         public ActionResult Index()
         {
-
             var categories = _context.Categories.ToList();
             foreach (var category in categories)
             {
@@ -31,6 +29,15 @@ namespace Leo.Areas.Admin.Controllers
                 foreach (var product in category.Products)
                 {
                     product.CurrentLang = CurrentLang.Id;
+                }
+
+                foreach (var article in category.Articles)
+                {
+                    article.CurrentLang = CurrentLang.Id;
+                    foreach (var articleItem in article.ArticleItems)
+                    {
+                        articleItem.CurrentLang = CurrentLang.Id;
+                    }
                 }
             }
             return View(ApplySorting(categories));
