@@ -210,6 +210,8 @@
     <Compile Include="Models\Entities\SpecialContent.cs" />
     <Compile Include="Models\Entities\SpecialContentLang.cs" />
     <Compile Include="Models\SiteModel.cs" />
+    <Compile Include="Models\Validation\ArticleItemValidation.cs" />
+    <Compile Include="Models\Validation\ArticleValidation.cs" />
     <Compile Include="Models\Validation\CategoryValidation.cs" />
     <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Models\Validation\SpecialContentValidation.cs" />

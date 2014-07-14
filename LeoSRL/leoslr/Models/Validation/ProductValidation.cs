@@ -29,6 +29,13 @@ namespace Leo.Models
         [Required(ErrorMessage = "Введите текст")]
         public string Text { get; set; }
 
+        [Display(Name = "Порядок отображения")]
+        [Required(ErrorMessage = "Введите порядок отображения")]
+        public int SortOrder { get; set; }
+
+        [Display(Name = "Страница контента")]
+        public bool ContentType { get; set; }
+
 
     }
 }

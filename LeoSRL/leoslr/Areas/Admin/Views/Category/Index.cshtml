@@ -3,7 +3,7 @@
 @model IEnumerable<Leo.Models.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title += "Категории";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
     <ul class="nav nav-tabs" role="tablist">
         <li>@Html.ActionLink("Контент главной страницы", "Index", "SpecialContent", new { area = "Admin" }, null)</li>
         <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
-        <li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
+        @*<li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>*@
     </ul>
 }
 
@@ -39,7 +39,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SortOrder)
+            @*@Html.DisplayNameFor(model => model.SortOrder)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -48,7 +48,7 @@
             @Html.DisplayNameFor(model => model.Text)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsCorrectLang)
+            @*@Html.DisplayNameFor(model => model.IsCorrectLang)*@
         </th>
         <th></th>
     </tr>
@@ -67,16 +67,16 @@
                 {
                     <span class="label label-info">Категория новостей</span>
                 }
-                @Html.DisplayFor(modelItem => item.Name)
+                @item.Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SortOrder)
+                @item.SortOrder
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @item.Title 
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Text)
+                <div class="adminTextContainer">@item.Text</div>
             </td>
             <td>
                 @if (!item.IsCorrectLang)
@@ -94,11 +94,16 @@
                 {
                     @Html.ActionLink("Удалить", "Delete", "Category", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" }) <text>|</text>
                 }
-                @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) |
-                @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null) |
+                
+                
                 @if (item.CategoryType)
                 {
                     @Html.ActionLink("Добавить новость", "Create", "Article", new { id = item.Id }, null)
+                }
+                else
+                {
+                    @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) 
+                    @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null) 
                 }
             </td>
         </tr>
@@ -106,14 +111,18 @@
                 foreach (var product in item.Products)
                 {
                     <tr>
-                        <td>
-                            <span class="category-level-indicator level2"></span><span class="product-indicator label label-info">product</span> @product.Name
+                        <td style="white-space: nowrap">
+                            <span class="category-level-indicator level2"></span>@if (product.ContentType){<span class="product-indicator label label-primary">@product.Name</span>}else{<span class="product-indicator label label-info">@product.Name</span>} 
                         </td>
                         <td>@product.SortOrder</td>
                         <td>@product.Title</td>
-                        <td>@product.Text</td>
                         <td>
-                            @if (!item.IsCorrectLang)
+                            <div class="adminTextContainer">
+                                @product.Text
+                            </div>
+                        </td>
+                        <td>
+                            @if (!product.IsCorrectLang)
                             {
                                 <span class="label label-danger">!</span>
                             }
@@ -124,8 +133,7 @@
                         </td>
                         <td>
                             @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
-                                @Html.ActionLink("Добавить изображение", "AddImage", "Product", new { id = product.Id }, null) |
-                                @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
+                            @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
                         </td>
                     </tr>
                     <tr>
@@ -148,19 +156,24 @@
                 {
                     <tr>
                         <td>
-                            <span class="category-level-indicator level2"></span><span class="product-indicator label label-success">Новость</span> @article.Date.ToShortDateString()
-                        </td>
-                        <td>@if (!article.Published)
+                            <span class="category-level-indicator level2"></span>
+                            @if (article.Published)
                             {
-                                <span class="label label-danger">Не опубликована</span>
+                                <span class="product-indicator label label-success">@article.Date.ToShortDateString()</span>
                             }
                             else
                             {
-                                <span class="label label-success">Опубликована</span>
+                                <span class="product-indicator label label-danger">@article.Date.ToShortDateString()</span>
                             }
                         </td>
+                        <td>
+                        </td>
                         <td>@article.Title</td>
-                        <td>@article.Description</td>
+                        <td>
+                            <div class="adminTextContainer">
+                                @article.Description
+                            </div>
+                        </td>
                         <td>
                             @if (!article.IsCorrectLang)
                             {
@@ -184,10 +197,11 @@
                         <tr>
                             <td></td>
                             <td>@articleItem.SortOrder</td>
-                            <td></td>
-                            <td>
+                            
+                            <td colspan="2">
                                 <div>
-                                    @articleItem.Text
+                                    <div class="adminTextContainer">@articleItem.Text</div>
+                                    
                                 </div>
                                 <div>
                                     @foreach (var image in articleItem.ArticleItemImages)
