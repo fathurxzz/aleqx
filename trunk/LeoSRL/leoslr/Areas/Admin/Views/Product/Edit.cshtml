@@ -7,7 +7,7 @@
     Html.EnableClientValidation();
           }
 <div class="admin-container">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
@@ -46,7 +46,19 @@
                 @Html.EditorFor(model => model.SortOrder)
                 @Html.ValidationMessageFor(model => model.SortOrder)
             </div>
-
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ContentType)
+            </div>
+            <div class="editor-field">
+                @Html.CheckBoxFor(model => model.ContentType)
+                @Html.ValidationMessageFor(model => model.ContentType)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SortOrder)
+            </div>
+            <div>
+                @Html.Partial("InputImages")
+            </div>
 
             <div class="admin-buttons">
                 <input type="submit" value="Сохранить" />
@@ -54,7 +66,6 @@
             </div>
         </fieldset>
     }
-
 </div>
 
 @section Scripts {

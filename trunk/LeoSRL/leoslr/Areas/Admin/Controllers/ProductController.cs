@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Leo.Helpers;
 using Leo.Models;
 using SiteExtensions;
+using SiteExtensions.Graphics;
 
 namespace Leo.Areas.Admin.Controllers
 {
@@ -43,9 +44,27 @@ namespace Leo.Areas.Admin.Controllers
                     SortOrder = model.SortOrder,
                     Category = category,
                     Title = model.Title,
-                    Text = model.Text
+                    Text = model.Text,
+                    ContentType = model.ContentType
                     
                 };
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    if (file == null) continue;
+                    if (string.IsNullOrEmpty(file.FileName)) continue;
+                    var pi = new ProductImage();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    pi.ImageSource = fileName;
+                    cache.ProductImages.Add(pi);
+                }
+
 
                 _context.Products.Add(cache);
 
@@ -84,8 +103,26 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = _context.Products.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text" });
+                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text","ContentType" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
+
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        var file = Request.Files[i];
+                        if (file == null) continue;
+                        if (string.IsNullOrEmpty(file.FileName)) continue;
+                        var pi = new ProductImage();
+                        string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                        string filePath = Server.MapPath("~/Content/Images");
+
+                        filePath = Path.Combine(filePath, fileName);
+                        file.SaveAs(filePath);
+                        //GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                        pi.ImageSource = fileName;
+                        cache.ProductImages.Add(pi);
+                    }
+
+
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
                     {

@@ -30,6 +30,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Id = 0;
                 var article = _context.Articles.First(a => a.Id == model.ArticleId);
 
                 var cache = new ArticleItem
@@ -128,6 +129,25 @@ namespace Leo.Areas.Admin.Controllers
                 TempData["errorMessage"] = ex.Message;
                 return View(model);
             }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var articleItem = _context.ArticleItems.First(a => a.Id == id);
+            while (articleItem.ArticleItemImages.Any())
+            {
+                var image = articleItem.ArticleItemImages.First();
+                ImageHelper.DeleteImage(image.ImageSource);
+                _context.ArticleItemImages.Remove(image);
+            }
+            while (articleItem.ArticleItemLangs.Any())
+            {
+                var lang = articleItem.ArticleItemLangs.First();
+                _context.ArticleItemLangs.Remove(lang);
+            }
+            _context.ArticleItems.Remove(articleItem);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Category");
         }
 
         public ActionResult DeleteImage(int id)
