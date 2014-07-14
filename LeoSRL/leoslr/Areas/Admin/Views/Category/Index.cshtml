@@ -63,7 +63,7 @@
                     string categoryLevel = "level" + item.CategoryLevel;
                     <span class="category-level-indicator @categoryLevel"></span>
                 }
-                @if (item.CategoryType)
+                @if (item.IsNewsCategory)
                 {
                     <span class="label label-info">Категория новостей</span>
                 }
@@ -96,7 +96,7 @@
                 }
                 
                 
-                @if (item.CategoryType)
+                @if (item.IsNewsCategory)
                 {
                     @Html.ActionLink("Добавить новость", "Create", "Article", new { id = item.Id }, null)
                 }
@@ -112,7 +112,15 @@
                 {
                     <tr>
                         <td style="white-space: nowrap">
-                            <span class="category-level-indicator level2"></span>@if (product.ContentType){<span class="product-indicator label label-primary">@product.Name</span>}else{<span class="product-indicator label label-info">@product.Name</span>} 
+                            <span class="category-level-indicator level2"></span>
+                            @if (product.IsContentPage)
+                            {
+                                <span class="product-indicator label label-primary">@product.Name</span>
+                            }
+                            else
+                            {
+                                <span class="product-indicator label label-info">@product.Name</span>
+                            } 
                         </td>
                         <td>@product.SortOrder</td>
                         <td>@product.Title</td>

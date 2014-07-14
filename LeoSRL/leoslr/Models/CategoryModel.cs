@@ -16,11 +16,12 @@ namespace Leo.Models
         public Product Product { get; set; }
         public IEnumerable<SpecialContent> SpecialContents { get; set; }
         public string SpecialContentJson { get; set; }
+        public Article Article { get; set; }
 
-        public CategoryModel(Language lang, SiteContext context, string categoryName = null, string subcategoryName = null, string productName=null, bool intro = false)
+        public CategoryModel(Language lang, SiteContext context, string categoryName = null, string subcategoryName = null, string productName=null, int? articleId=null, bool intro = false)
             : base(lang, context, categoryName)
         {
-
+            
             if (subcategoryName == null)
             {
                 SpecialContents = _context.SpecialContents.ToList();
@@ -57,6 +58,17 @@ namespace Leo.Models
 
             if (Category != null)
             {
+                foreach (var article in Category.Articles)
+                {
+                    article.CurrentLang = lang.Id;
+                }
+
+                if (articleId.HasValue)
+                {
+                    Article = Category.Articles.First(a => a.Id == articleId);
+                    Article.CurrentLang = lang.Id;
+                }
+
                 Products = Category.Products.ToList();
                 foreach (var product in Products)
                 {

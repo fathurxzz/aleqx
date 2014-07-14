@@ -29,6 +29,14 @@ namespace Leo
             );
 
             routes.MapRoute(
+               "ArticleDetails",
+               "{lang}/{category}/{subcategory}/article/{articleId}",
+               new { controller = "Home", action = "Index" },
+               new { lang = @"ru|en" },
+               new[] { "Leo.Controllers" }
+           );
+
+            routes.MapRoute(
                "Product",
                "{lang}/{category}/{subcategory}/{product}",
                new { controller = "Home", action = "Index", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, product = UrlParameter.Optional },

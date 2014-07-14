@@ -72,7 +72,7 @@ namespace Leo.Areas.Admin.Controllers
                     CategoryLevel = categoryLevel,
                     Title = model.Title,
                     Text = model.Text,
-                    CategoryType = model.CategoryType
+                    IsNewsCategory = model.IsNewsCategory
                     
                     //CategoryId = model.CategoryId
                 };
@@ -121,7 +121,7 @@ namespace Leo.Areas.Admin.Controllers
 
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder","Title","Text","CategoryType" });
+                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text", "IsNewsCategory" });
                     cache.Name = SiteHelper.UpdatePageWebName(model.Name);
                     model.Text = model.Text ?? "";
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);

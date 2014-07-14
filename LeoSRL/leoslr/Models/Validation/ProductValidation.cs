@@ -34,7 +34,7 @@ namespace Leo.Models
         public int SortOrder { get; set; }
 
         [Display(Name = "Страница контента")]
-        public bool ContentType { get; set; }
+        public bool IsContentPage { get; set; }
 
 
     }
