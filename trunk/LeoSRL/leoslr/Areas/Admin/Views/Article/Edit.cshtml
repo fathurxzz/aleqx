@@ -1,23 +1,20 @@
 ﻿@model Leo.Models.Article
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="admin-container">
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-    
-        @Html.HiddenFor(model => model.CurrentLang)
-        @Html.HiddenFor(model => model.CategoryId)
-    
         <fieldset>
-            <legend>Добавить новость</legend>
-
+            <legend>Редактировать новость</legend>
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.CategoryId)
+            @Html.HiddenFor(model => model.CurrentLang)
             <div class="editor-label">
                 @Html.LabelFor(model => model.Published)
             </div>
@@ -25,7 +22,6 @@
                 @Html.EditorFor(model => model.Published)
                 @Html.ValidationMessageFor(model => model.Published)
             </div>
-
             <div class="editor-label">
                 @Html.LabelFor(model => model.Title)
             </div>
@@ -41,7 +37,6 @@
                 @Html.TextAreaFor(model => model.Description)
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
-
             <div class="admin-buttons">
                 <input type="submit" value="Сохранить" />
                 @Html.ActionLink("Назад", "Index", "Category", new { area = "Admin" }, null)

@@ -65,7 +65,7 @@
                 }
                 @if (item.CategoryType)
                 {
-                    <span class="label label-info">news</span>
+                    <span class="label label-info">Категория новостей</span>
                 }
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -95,48 +95,128 @@
                     @Html.ActionLink("Удалить", "Delete", "Category", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" }) <text>|</text>
                 }
                 @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) |
-                @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null)
+                @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null) |
+                @if (item.CategoryType)
+                {
+                    @Html.ActionLink("Добавить новость", "Create", "Article", new { id = item.Id }, null)
+                }
             </td>
         </tr>
 
                 foreach (var product in item.Products)
                 {
-        <tr>
-            <td>
-                <span class="category-level-indicator level2"></span><span class="product-indicator label label-info">product</span> @product.Name
-            </td>
-            <td>@product.SortOrder</td>
-            <td>@product.Title</td>
-            <td>@product.Text</td>
-            <td>
-                @if (!item.IsCorrectLang)
-                {
-                    <span class="label label-danger">!</span>
-                }
-                else
-                {
-                    <span class="label label-success">ok</span>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
-                    @Html.ActionLink("Добавить изображение", "AddImage", "Product", new { id = product.Id }, null) |
-                    @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6">
-                @foreach (var image in product.ProductImages)
-                {
-                    <div style="float: left; margin: 0 3px">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImagePreview")))
-                        <br />
-                        @Html.ActionLink("Удалить", "DeleteImage", "Product", new { id = image.Id }, new { onclick = "return confirm('Удалить изображение?')" })
-                    </div>
-                }
-            </td>
-        </tr>
+                    <tr>
+                        <td>
+                            <span class="category-level-indicator level2"></span><span class="product-indicator label label-info">product</span> @product.Name
+                        </td>
+                        <td>@product.SortOrder</td>
+                        <td>@product.Title</td>
+                        <td>@product.Text</td>
+                        <td>
+                            @if (!item.IsCorrectLang)
+                            {
+                                <span class="label label-danger">!</span>
+                            }
+                            else
+                            {
+                                <span class="label label-success">ok</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
+                                @Html.ActionLink("Добавить изображение", "AddImage", "Product", new { id = product.Id }, null) |
+                                @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            @foreach (var image in product.ProductImages)
+                            {
+                                <div style="float: left; margin: 0 3px">
+                                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImagePreview")))
+                                    <br />
+                                    @Html.ActionLink("Удалить", "DeleteImage", "Product", new { id = image.Id }, new { onclick = "return confirm('Удалить изображение?')" })
+                                </div>
+                            }
+                        </td>
+                    </tr>
   
+                }
+
+
+                foreach (var article in item.Articles.OrderBy(a=>a.Date))
+                {
+                    <tr>
+                        <td>
+                            <span class="category-level-indicator level2"></span><span class="product-indicator label label-success">Новость</span> @article.Date.ToShortDateString()
+                        </td>
+                        <td>@if (!article.Published)
+                            {
+                                <span class="label label-danger">Не опубликована</span>
+                            }
+                            else
+                            {
+                                <span class="label label-success">Опубликована</span>
+                            }
+                        </td>
+                        <td>@article.Title</td>
+                        <td>@article.Description</td>
+                        <td>
+                            @if (!article.IsCorrectLang)
+                            {
+                                <span class="label label-danger">!</span>
+                            }
+                            else
+                            {
+                                <span class="label label-success">ok</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Редактировать", "Edit", "Article", new { id = article.Id }, null) |
+                            @Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = article.Id }, null) |
+                            @*@Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Article", new { id = article.Id }, null) |*@
+                            @Html.ActionLink("Удалить", "Delete", "Article", new { id = article.Id }, new { onclick = "return confirm('Удалить новость?')" })
+                        </td>
+                    </tr>
+
+                    foreach (var articleItem in article.ArticleItems.OrderBy(i=>i.SortOrder))
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@articleItem.SortOrder</td>
+                            <td></td>
+                            <td>
+                                <div>
+                                    @articleItem.Text
+                                </div>
+                                <div>
+                                    @foreach (var image in articleItem.ArticleItemImages)
+                                          {
+                                              <div style="float: left; margin: 0 3px">
+                                                  @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleItemImagePreview")))
+                                                  <br />
+                                                  @Html.ActionLink("Удалить", "DeleteImage", "ArticleItem", new { id = image.Id }, new { onclick = "return confirm('Удалить изображение?')" })
+                                              </div>
+                                          }
+                                </div>
+                            </td>
+                            <td>
+                            @if (!articleItem.IsCorrectLang)
+                            {
+                                <span class="label label-danger">!</span>
+                            }
+                            else
+                            {
+                                <span class="label label-success">ok</span>
+                            }
+                        </td>
+                            <td>
+                                @Html.ActionLink("Редактировать", "Edit", "ArticleItem", new { id = articleItem.Id }, null) |
+                                @Html.ActionLink("Удалить", "Delete", "ArticleItem", new { id = articleItem.Id }, new { onclick = "return confirm('Удалить блок?')" })
+                            </td>
+                        </tr>
+  
+                    }
                 }
     }
 
