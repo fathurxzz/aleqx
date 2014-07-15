@@ -30,7 +30,7 @@
                 @Html.LabelFor(model => model.Text)
             </div>
             <div class="editor-field">
-                @Html.TextAreaFor(model => model.Text)
+                @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                 @Html.ValidationMessageFor(model => model.Text)
             </div>
             <div class="editor-label">
@@ -57,4 +57,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }

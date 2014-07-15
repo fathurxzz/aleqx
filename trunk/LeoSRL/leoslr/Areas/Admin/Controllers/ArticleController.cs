@@ -46,6 +46,8 @@ namespace Leo.Areas.Admin.Controllers
                 model.Id = 0;
                 var category = _context.Categories.First(c => c.Id == model.CategoryId);
 
+                model.Description = HttpUtility.HtmlDecode(model.Description);
+
                 var cache = new Article
                 {
                     Category = category,
@@ -84,10 +86,12 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Description = HttpUtility.HtmlDecode(model.Description);
                 var cache = _context.Articles.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "Title", "Description", "Published" });
+                    TryUpdateModel(cache, new[] { "Title", "Published" });
+                    cache.Description = model.Description;
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
                     {

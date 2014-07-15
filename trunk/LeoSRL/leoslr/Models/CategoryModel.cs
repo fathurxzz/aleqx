@@ -117,7 +117,7 @@ namespace Leo.Models
             Categories = currentCategory.Children;
 
 
-            if (Product != null && Product.ProductImages.Any())
+            if (Product != null && Product.ProductImages.Any()&&!Product.IsContentPage)
             {
                 var specialContentJsonModel = new SpecialContentJsonModel()
                 {

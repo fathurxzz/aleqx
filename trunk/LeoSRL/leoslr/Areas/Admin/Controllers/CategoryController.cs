@@ -55,6 +55,7 @@ namespace Leo.Areas.Admin.Controllers
             //ModelState.Clear();
             try
             {
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 model.Id = 0;
                 Category parent = null;
                 int categoryLevel = 0;
@@ -116,7 +117,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
-
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 var cache = _context.Categories.FirstOrDefault(p => p.Id == model.Id);
 
                 if (cache != null)
