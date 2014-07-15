@@ -123,14 +123,13 @@
                     <div class="date">@Model.Article.Date.ToShortDateString()</div>
                     <div class="title">@Model.Article.Title</div>
 
-
-
-                    @foreach (var item in Model.Article.ArticleItems)
+                    @foreach (var item in Model.Article.ArticleItems.OrderBy(c=>c.SortOrder))
                     {
                         if (!string.IsNullOrEmpty(item.Text))
                         {
-                        <div class="description">
-                        </div>
+                            <div class="description">
+                                @Html.Raw(item.Text)
+                            </div>
                         }
                         if (item.ArticleItemImages.Any())
                         {
@@ -155,6 +154,7 @@
                         </div>
                         }
                     }
+                    <div class="article-separator"></div>
 
                 </div>
                     
