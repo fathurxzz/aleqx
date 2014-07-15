@@ -1,4 +1,6 @@
-﻿@model Leo.Models.CategoryModel
+﻿@using Leo
+@using SiteExtensions.Graphics
+@model Leo.Models.CategoryModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -51,9 +53,28 @@
             settings.category = '@ViewBag.Category';
             settings.subcategory = '@ViewBag.SubCategory';
 
-
-
+            $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+            
         })(LEO);
+    </script>
+    
+    
+  <script type="text/javascript">
+
+      @*//var autostart = @(Model.Product.ProductImages.Count > 1 ? "true" : "false")*@
+      //alert(autostart);
+
+       $('.bxsliderArticleItemImages').bxSlider({
+           mode: 'fade',
+           //auto: autostart,
+           pause: 5000,
+           speed: 500,
+           pager: false,
+           nextSelector: '#slider-next',
+           prevSelector: '#slider-prev',
+           nextText: '',
+           prevText: ''
+       });
     </script>
 }
 
@@ -94,16 +115,53 @@
                 @if (Model.Article != null)
                 {
                     <div class="category-title articles">
-                        @Model.Category.Title
+                        @Html.ActionLink(Model.Category.Title,"Index","Home")
                     </div>
                     <div class="article-separator"></div>
                     
+                    <div class="article article-details">
+                        <div class="date">@Model.Article.Date.ToShortDateString()</div>
+                        <div class="title">@Model.Article.Title</div>
                     
-                    TODO:
+                        
+                        
+                        @foreach (var item in Model.Article.ArticleItems)
+                        {
+                            if (!string.IsNullOrEmpty(item.Text))
+                            {
+                                <div class="description">
+                                </div>
+                            }
+                            if (item.ArticleItemImages.Any())
+                            {
+                                
+                                <div class="slider-container">
+                                    <div class="slider-image-wrapper">
+                                        <div class="slider-controls">
+                                            <div>
+                                                <div id="slider-prev"></div>
+                                                <div id="slider-next"></div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+                                
+                                        <ul class="bxsliderArticleItemImages">
+                                            @foreach (var image in item.ArticleItemImages)
+                                            {
+                                                <li>
+                                                    <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        }    
+                        
+                    </div>
                     
-                    
-                    
-                    <div class="article-separator"></div>
                 }
                 else
                 {
