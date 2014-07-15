@@ -35,23 +35,25 @@ namespace Leo
                 , "~/Content/jquery-ui.min.css"
                 , "~/Content/jquery-ui.structure.min.css"
                 , "~/Content/tmp.css"
+                , "~/Content/jquery.bxslider.css"
+                , "~/Content/fancybox/jquery.fancybox-1.3.4.css"
                 
                 
                 ));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
+            //bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+            //            "~/Content/themes/base/jquery.ui.core.css",
+            //            "~/Content/themes/base/jquery.ui.resizable.css",
+            //            "~/Content/themes/base/jquery.ui.selectable.css",
+            //            "~/Content/themes/base/jquery.ui.accordion.css",
+            //            "~/Content/themes/base/jquery.ui.autocomplete.css",
+            //            "~/Content/themes/base/jquery.ui.button.css",
+            //            "~/Content/themes/base/jquery.ui.dialog.css",
+            //            "~/Content/themes/base/jquery.ui.slider.css",
+            //            "~/Content/themes/base/jquery.ui.tabs.css",
+            //            "~/Content/themes/base/jquery.ui.datepicker.css",
+            //            "~/Content/themes/base/jquery.ui.progressbar.css",
+            //            "~/Content/themes/base/jquery.ui.theme.css"));
         }
     }
 }
