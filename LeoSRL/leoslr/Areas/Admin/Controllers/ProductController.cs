@@ -36,6 +36,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 model.Id = 0;
                 var category = _context.Categories.First(c => c.Id == model.CategoryId);
                 var cache = new Product
@@ -100,6 +101,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 var cache = _context.Products.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {

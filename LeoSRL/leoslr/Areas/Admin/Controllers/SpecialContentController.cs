@@ -50,6 +50,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 model.Id = 0;
                 var cache = new SpecialContent
                 {
@@ -111,6 +112,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 var cache = _context.SpecialContents.First(c => c.Id == model.Id);
                 cache.CurrentLang = CurrentLang.Id;
 

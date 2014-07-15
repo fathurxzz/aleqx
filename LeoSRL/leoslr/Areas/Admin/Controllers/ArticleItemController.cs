@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Leo.Helpers;
 using Leo.Models;
@@ -32,7 +33,7 @@ namespace Leo.Areas.Admin.Controllers
             {
                 model.Id = 0;
                 var article = _context.Articles.First(a => a.Id == model.ArticleId);
-
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 var cache = new ArticleItem
                 {
                     Article = article,
@@ -95,6 +96,7 @@ namespace Leo.Areas.Admin.Controllers
         {
             try
             {
+                model.Text = HttpUtility.HtmlDecode(model.Text);
                 var cache = _context.ArticleItems.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {

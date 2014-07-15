@@ -1,6 +1,6 @@
 ﻿@using Leo
 @using SiteExtensions.Graphics
-@model IEnumerable<Leo.Models.SpecialContent>
+@model System.Collections.Generic.IEnumerable<Leo.Models.SpecialContent>
 
 @{
     ViewBag.Title = "Контент главной страницы";
@@ -41,10 +41,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @item.Title
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Text)
+            @Html.Raw(item.Text)
         </td>
         <td>
             @if (!string.IsNullOrEmpty(item.PageImageSource))

@@ -1,6 +1,7 @@
-﻿@using Leo
+﻿@using System.Linq
+@using Leo
 @using SiteExtensions.Graphics
-@model IEnumerable<Leo.Models.Category>
+@model System.Collections.Generic.IEnumerable<Leo.Models.Category>
 
 @{
     ViewBag.Title += "Категории";
@@ -76,7 +77,7 @@
                 @item.Title 
             </td>
             <td>
-                <div class="adminTextContainer">@item.Text</div>
+                <div class="adminTextContainer">@Html.Raw(item.Text)</div>
             </td>
             <td>
                 @if (!item.IsCorrectLang)
@@ -102,7 +103,7 @@
                 }
                 else
                 {
-                    @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) 
+                    @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) <text>|</text>
                     @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null) 
                 }
             </td>
@@ -126,7 +127,7 @@
                         <td>@product.Title</td>
                         <td>
                             <div class="adminTextContainer">
-                                @product.Text
+                                @Html.Raw(product.Text)
                             </div>
                         </td>
                         <td>
@@ -179,7 +180,7 @@
                         <td>@article.Title</td>
                         <td>
                             <div class="adminTextContainer">
-                                @article.Description
+                                @Html.Raw(article.Description)
                             </div>
                         </td>
                         <td>
@@ -196,7 +197,11 @@
                             @Html.ActionLink("Редактировать", "Edit", "Article", new { id = article.Id }, null) |
                             @Html.ActionLink("Добавить блок новостей", "Create", "ArticleItem", new { id = article.Id }, null) |
                             @*@Html.ActionLink("Добавить блок изображений", "AddImagesBlock", "Article", new { id = article.Id }, null) |*@
-                            @Html.ActionLink("Удалить", "Delete", "Article", new { id = article.Id }, new { onclick = "return confirm('Удалить новость?')" })
+                            
+                            @if (!article.ArticleItems.Any())
+                            {
+                                @Html.ActionLink("Удалить", "Delete", "Article", new { id = article.Id }, new { onclick = "return confirm('Удалить новость?')" })
+                            }
                         </td>
                     </tr>
 
@@ -208,7 +213,7 @@
                             
                             <td colspan="2">
                                 <div>
-                                    <div class="adminTextContainer">@articleItem.Text</div>
+                                    <div class="adminTextContainer">@Html.Raw(articleItem.Text)</div>
                                     
                                 </div>
                                 <div>

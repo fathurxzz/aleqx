@@ -1,4 +1,5 @@
-﻿@using Leo
+﻿@using System.Linq
+@using Leo
 @using SiteExtensions.Graphics
 @model Leo.Models.CategoryModel
 
@@ -176,12 +177,47 @@
         else if (Model.Category.HasContentPages && Model.Product!=null)
         {
             <div class="site-content-container">
-                <div class="category-title">
+                <div class="category-title articles">
                     @Model.Category.Title
                 </div>
                 <div class="article-separator"></div>
                 <div class="title">@Model.Product.Title</div>
-                <div>@Html.Raw(Model.Product.Text)</div>
+                <div class="text">@Html.Raw(Model.Product.Text)</div>
+                
+                
+                
+                
+                
+                @if (Model.Product.ProductImages.Any())
+                            {
+                                
+                            <div class="slider-container">
+                                <div class="slider-image-wrapper">
+                                
+                                    <div id="slider-prev"></div>
+                                    <div id="slider-next"></div>
+                                    <ul class="bxsliderArticleItemImages">
+                                        @foreach (var image in Model.Product.ProductImages)
+                                        {
+                                            <li>
+                                                <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                                    <div class="zoom"></div>
+                                                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            }
+                
+                
+                
+                
+                
+
+              
+
             </div>
             
         }
@@ -230,7 +266,7 @@
         </div>
     }
 
-    @if (Model.Product != null)
+    @if (Model.Product != null && !Model.Category.HasContentPages)
     {
         <div id="productFrameWrapper">
             <div id="productFrame">
