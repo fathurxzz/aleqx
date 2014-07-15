@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Leo.Models
 {
@@ -28,5 +29,14 @@ namespace Leo.Models
         public virtual ICollection<CategoryImage> CategoryImages { get; set; }
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
 
+
+
+        public bool HasContentPages
+        {
+            get
+            {
+                return Products != null && Products.Any(p => p.IsContentPage);
+            }
+        }
     }
 }

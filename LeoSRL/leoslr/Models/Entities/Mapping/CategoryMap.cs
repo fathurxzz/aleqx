@@ -25,10 +25,11 @@ namespace Leo.Models.Mapping
             this.Property(t => t.CategoryLevel).HasColumnName("CategoryLevel");
 
             // Ignored
-            this.Ignore(t=>t.Title);
+            this.Ignore(t => t.Title);
             this.Ignore(t => t.Text);
             this.Ignore(t => t.IsCorrectLang);
             this.Ignore(t => t.CurrentLang);
+            this.Ignore(t => t.HasContentPages);
 
             // Relationships
             this.HasOptional(t => t.Parent)

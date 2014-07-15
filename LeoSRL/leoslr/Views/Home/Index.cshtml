@@ -110,102 +110,110 @@
     {
         if (Model.Category.IsNewsCategory)
         {
-        
-        <div class="article-content-container">
-            @if (Model.Article != null)
-            {
-                <div class="category-title articles">
-                    @Html.ActionLink(Model.Category.Title, "Index", "Home")
-                </div>
-                <div class="article-separator"></div>
-                    
-                <div class="article article-details">
-                    <div class="date">@Model.Article.Date.ToShortDateString()</div>
-                    <div class="title">@Model.Article.Title</div>
-
-                    @foreach (var item in Model.Article.ArticleItems.OrderBy(c=>c.SortOrder))
-                    {
-                        if (!string.IsNullOrEmpty(item.Text))
-                        {
-                            <div class="description">
-                                @Html.Raw(item.Text)
-                            </div>
-                        }
-                        if (item.ArticleItemImages.Any())
-                        {
-                                
-                        <div class="slider-container">
-                            <div class="slider-image-wrapper">
-                                
-                                <div id="slider-prev"></div>
-                                <div id="slider-next"></div>
-                                <ul class="bxsliderArticleItemImages">
-                                    @foreach (var image in item.ArticleItemImages)
-                                    {
-                                        <li>
-                                            <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
-                                                <div class="zoom"></div>
-                                                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        }
-                    }
+            <div class="article-content-container">
+                @if (Model.Article != null)
+                {
+                    <div class="category-title articles">
+                        @Html.ActionLink(Model.Category.Title, "Index", "Home")
+                    </div>
                     <div class="article-separator"></div>
-
-                </div>
                     
-            }
-            else
-            {
-                <div class="category-title articles">
+                    <div class="article article-details">
+                        <div class="date">@Model.Article.Date.ToShortDateString()</div>
+                        <div class="title">@Model.Article.Title</div>
+
+                        @foreach (var item in Model.Article.ArticleItems.OrderBy(c=>c.SortOrder))
+                        {
+                            if (!string.IsNullOrEmpty(item.Text))
+                            {
+                                <div class="description">
+                                    @Html.Raw(item.Text)
+                                </div>
+                            }
+                            if (item.ArticleItemImages.Any())
+                            {
+                                
+                            <div class="slider-container">
+                                <div class="slider-image-wrapper">
+                                
+                                    <div id="slider-prev"></div>
+                                    <div id="slider-next"></div>
+                                    <ul class="bxsliderArticleItemImages">
+                                        @foreach (var image in item.ArticleItemImages)
+                                        {
+                                            <li>
+                                                <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                                    <div class="zoom"></div>
+                                                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                            }
+                        }
+                        <div class="article-separator"></div>
+
+                    </div>
+                    
+                }
+                else
+                {
+                    <div class="category-title articles">
+                        @Model.Category.Title
+                    </div>
+                    <div class="article-separator"></div>
+                    foreach (var article in Model.Category.Articles)
+                    {
+                        @Html.Partial("Article", article)
+                    }
+                    <div class="pager"><a href="#">1</a>..2..<a href="#">3</a></div>
+
+                }
+            </div>
+        }
+        else if (Model.Category.HasContentPages && Model.Product!=null)
+        {
+            <div class="site-content-container">
+                <div class="category-title">
                     @Model.Category.Title
                 </div>
                 <div class="article-separator"></div>
-                foreach (var article in Model.Category.Articles)
-                {
-                @Html.Partial("Article", article)
-                }
-                <div class="pager"><a href="#">1</a>..2..<a href="#">3</a></div>
-
-            }
-        </div>
-
+                <div class="title">@Model.Product.Title</div>
+                <div>@Html.Raw(Model.Product.Text)</div>
+            </div>
+            
         }
         else
         {
-        <div class="category-title">
-            @Model.Category.Title
-        </div>
+            <div class="category-title">
+                @Model.Category.Title
+            </div>
         
             if (Model.Category.Products.Any())
             {
-        <div class="product-selector-container">
-            <select class="product-selector" id="productSelector">
-                @foreach (var product in Model.Category.Products)
-                {
-                    if (Model.Product.Name == product.Name)
-                    {
-                    <option value="@product.Name" selected>@product.Title</option>
-                    }
-                    else
-                    {
-                    <option value="@product.Name">@product.Title</option>
-                    }
+                <div class="product-selector-container">
+                    <select class="product-selector" id="productSelector">
+                        @foreach (var product in Model.Category.Products)
+                        {
+                            if (Model.Product.Name == product.Name)
+                            {
+                            <option value="@product.Name" selected>@product.Title</option>
+                            }
+                            else
+                            {
+                            <option value="@product.Name">@product.Title</option>
+                            }
 
-                }
-            </select>
-        </div>
+                        }
+                    </select>
+                </div>
             }
         }
     }
 
     @Html.Partial("LanguageSwitcher")
-
-
 
 
     @if (Model.SpecialContents != null && Model.SpecialContents.Any())
