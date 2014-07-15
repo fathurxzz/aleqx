@@ -61,6 +61,10 @@ namespace Leo.Models
                 foreach (var article in Category.Articles)
                 {
                     article.CurrentLang = lang.Id;
+                    foreach (var articleItem in article.ArticleItems)
+                    {
+                        articleItem.CurrentLang = lang.Id;
+                    }
                 }
 
                 if (articleId.HasValue)
