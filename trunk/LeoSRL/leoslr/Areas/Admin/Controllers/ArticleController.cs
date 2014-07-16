@@ -51,7 +51,7 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = new Article
                 {
                     Category = category,
-                    Published = false,
+                    Published = model.Published,
                     Date = DateTime.Now,
                     Title = model.Title,
                     Description = model.Description

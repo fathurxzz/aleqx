@@ -165,7 +165,7 @@
                         @Model.Category.Title
                     </div>
                     <div class="article-separator"></div>
-                    foreach (var article in Model.Category.Articles)
+                    foreach (var article in Model.Category.Articles.Where(a=>a.Published).OrderByDescending(a=>a.Date))
                     {
                         @Html.Partial("Article", article)
                     }
