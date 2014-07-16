@@ -2,7 +2,7 @@
 <div class="article">
     <div class="date">@Model.Date.ToShortDateString()</div>
     <div class="title">@Model.Title</div>
-    <div class="description">@Model.Description</div>
+    <div class="description">@Html.Raw(Model.Description)</div>
     <div class="link">
 
         @Html.ActionLink("Показать всё", "Index", "Home", new { category = ViewBag.Category, subcategory=ViewBag.SubCategory, articleId=Model.Id }, null)
