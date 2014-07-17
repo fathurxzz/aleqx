@@ -28,20 +28,20 @@ body {
 }
 
 .intro-container {
-    width: 1200px;
-    height: 797px;
+    width: 1000px;
+    height: 780px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -250px;
-    margin-left: -400px;
+    margin-top: -390px;
+    margin-left: -500px;
     background:url('img/intro.png');
 }
 
 .intro-content {
     width: 320px;
     height: 320px;
-    margin: 100px auto;
+    margin: 300px auto;
 }
 
 a.block {
