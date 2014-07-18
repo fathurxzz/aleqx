@@ -46,7 +46,8 @@
                             string imageid = "image" + image.Id;
                             string class1001 = cnt == 1 ? "class1001" : "";
                             <a id="@imageid" rel="group1" href="/Content/Images/@image.ImageSource" class="fancy pictureLink1 @class1001">
-                                <img src="/ImageCache/projectImage/@image.ImageSource"/>
+                                @*<img src="/ImageCache/projectImage/@image.ImageSource"/>*@
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("projectImage"))) 
                             </a>
 
                             cnt++;
