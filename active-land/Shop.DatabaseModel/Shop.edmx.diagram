@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d024be69eb344561b03b7bd7207527b7" Name="Diagram1" ZoomLevel="24" >
+        <EntityTypeShape EntityType="Shop.Language" Width="1.5" PointX="0.75" PointY="9.875" />
+        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="1.5" PointY="21.25" />
+        <EntityTypeShape EntityType="Shop.CategoryLang" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="1.5" PointY="28.375" />
+        <EntityTypeShape EntityType="Shop.ProductAttribute" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="3.75" PointY="32.25" />
+        <EntityTypeShape EntityType="Shop.ProductLang" Width="1.5" PointX="6" PointY="9.75" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeLang" Width="1.5" PointX="3" PointY="17.25" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValue" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueLang" Width="1.5" PointX="3" PointY="6.125" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueTag" Width="1.5" PointX="1.5" PointY="25.25" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueTagLang" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValue" Width="1.5" PointX="3.75" PointY="29.125" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValueLang" Width="1.5" PointX="6" PointY="6.125" />
+        <AssociationConnector Association="Shop.LanguageCategoryLang" />
+        <AssociationConnector Association="Shop.LanguageProductLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeValueTagLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeValueLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeStaticValueLang" />
+        <AssociationConnector Association="Shop.CategoryCategory" />
+        <AssociationConnector Association="Shop.CategoryCategoryLang" />
+        <AssociationConnector Association="Shop.CategoryProduct" />
+        <AssociationConnector Association="Shop.CategoryProductAttribute" />
+        <AssociationConnector Association="Shop.ProductProductImage" />
+        <AssociationConnector Association="Shop.ProductProductLang" />
+        <AssociationConnector Association="Shop.ProductAttributeProductAttributeValue" />
+        <AssociationConnector Association="Shop.ProductAttributeValueTagProductAttributeValue" />
+        <AssociationConnector Association="Shop.ProductAttributeValueProductAttributeValueLang" />
+        <AssociationConnector Association="Shop.ProductAttributeValueProduct" />
+        <AssociationConnector Association="Shop.ProductAttributeValueTagProductAttributeValueTagLang" />
+        <AssociationConnector Association="Shop.ProductAttributeProductAttributeStaticValue" />
+        <AssociationConnector Association="Shop.ProductProductAttributeStaticValue" />
+        <AssociationConnector Association="Shop.ProductAttributeStaticValueProductAttributeStaticValueLang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
