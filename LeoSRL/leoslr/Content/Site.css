@@ -153,6 +153,10 @@ a.block {
     text-transform: uppercase;
 }
 
+.menu .item.selected a {
+    text-decoration: none;
+}
+
 .footer {
     height: 110px;
     width: 1200px;
