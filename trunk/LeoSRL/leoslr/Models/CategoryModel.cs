@@ -72,7 +72,7 @@ namespace Leo.Models
 
             if (Category != null)
             {
-                if (Category.IsNewsCategory)
+                if (Category.IsNewsCategory||Category.HasContentPages)
                 {
                     if (_context.ProductImages.Any())
                     {
@@ -131,7 +131,7 @@ namespace Leo.Models
                 if (Article != null)
                     item.Selected = true;
                 else
-                item.Current = true;
+                    item.Current = true;
             }
 
             if (intro)
