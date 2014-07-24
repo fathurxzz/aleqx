@@ -22,6 +22,7 @@ namespace Shop.WebSite
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            IocInitializer.InitializeIoc();
         }
     }
 }
