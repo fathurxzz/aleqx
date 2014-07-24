@@ -5,7 +5,41 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="23807c8e2704466eaa1a02708dbb1190" Name="Diagram1" >
-        <EntityTypeShape EntityType="Shop.Language" Width="1.5" PointX="4.625" PointY="1.125" />
+        <EntityTypeShape EntityType="Shop.Language" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="4.75" PointY="0.5" />
+        <AssociationConnector Association="Shop.CategoryCategory" />
+        <EntityTypeShape EntityType="Shop.CategoryLang" Width="1.5" PointX="2.625" PointY="0.5" />
+        <AssociationConnector Association="Shop.LanguageCategoryLang" />
+        <AssociationConnector Association="Shop.CategoryCategoryLang" />
+        <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="7.75" PointY="11.5" />
+        <AssociationConnector Association="Shop.CategoryProduct" />
+        <EntityTypeShape EntityType="Shop.ProductAttribute" Width="1.625" PointX="8.125" PointY="0.5" />
+        <AssociationConnector Association="Shop.CategoryProductAttribute" />
+        <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="12.125" PointY="8.5" />
+        <AssociationConnector Association="Shop.ProductProductImage" />
+        <EntityTypeShape EntityType="Shop.ProductLang" Width="1.5" PointX="0.625" PointY="12" />
+        <AssociationConnector Association="Shop.ProductProductLang" />
+        <AssociationConnector Association="Shop.LanguageProductLang" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeLang" Width="2.125" PointX="2.375" PointY="4" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeLang" />
+        <AssociationConnector Association="Shop.ProductAttributeProductAttributeLang" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValue" Width="2.375" PointX="7.875" PointY="4.125" />
+        <AssociationConnector Association="Shop.ProductAttributeProductAttributeValue" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueLang" Width="2.125" PointX="5.25" PointY="4.75" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueTag" Width="2.125" PointX="12.375" PointY="0.75" />
+        <AssociationConnector Association="Shop.ProductAttributeValueTagProductAttributeValue" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueTagLang" Width="2.625" PointX="11.125" PointY="3.125" />
+        <AssociationConnector Association="Shop.ProductAttributeValueTagProductAttributeValueTagLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeValueTagLang" />
+        <AssociationConnector Association="Shop.ProductAttributeValueProductAttributeValueLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeValueLang" />
+        <AssociationConnector Association="Shop.ProductAttributeValueProduct" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValue" Width="2.25" PointX="8" PointY="8.25" />
+        <AssociationConnector Association="Shop.ProductAttributeProductAttributeStaticValue" />
+        <AssociationConnector Association="Shop.ProductProductAttributeStaticValue" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeStaticValueLang" Width="2.625" PointX="3.25" PointY="8.25" />
+        <AssociationConnector Association="Shop.ProductAttributeStaticValueProductAttributeStaticValueLang" />
+        <AssociationConnector Association="Shop.LanguageProductAttributeStaticValueLang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

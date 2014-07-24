@@ -14,8 +14,25 @@ namespace Data
     
     public partial class Language
     {
+        public Language()
+        {
+            this.CategoryLangs = new HashSet<CategoryLang>();
+            this.ProductLangs = new HashSet<ProductLang>();
+            this.ProductAttributeLangs = new HashSet<ProductAttributeLang>();
+            this.ProductAttributeValueTagLangs = new HashSet<ProductAttributeValueTagLang>();
+            this.ProductAttributeValueLangs = new HashSet<ProductAttributeValueLang>();
+            this.ProductAttributeStaticValueLangs = new HashSet<ProductAttributeStaticValueLang>();
+        }
+    
         public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+    
+        public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
+        public virtual ICollection<ProductLang> ProductLangs { get; set; }
+        public virtual ICollection<ProductAttributeLang> ProductAttributeLangs { get; set; }
+        public virtual ICollection<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
+        public virtual ICollection<ProductAttributeValueLang> ProductAttributeValueLangs { get; set; }
+        public virtual ICollection<ProductAttributeStaticValueLang> ProductAttributeStaticValueLangs { get; set; }
     }
 }
