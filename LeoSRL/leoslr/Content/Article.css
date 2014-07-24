@@ -21,6 +21,11 @@
     font-weight: bold;
 }
 
+.category-title.articles a{
+    color: #006699;
+}
+
+
 .article-content-container {
     width: 780px;
     position: relative;

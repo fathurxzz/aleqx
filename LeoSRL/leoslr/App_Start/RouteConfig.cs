@@ -30,8 +30,8 @@ namespace Leo
 
             routes.MapRoute(
                "ArticleDetails",
-               "{lang}/{category}/{subcategory}/article/{articleId}",
-               new { controller = "Home", action = "Index" },
+               "{lang}/{category}/{subcategory}/article/{artId}",
+               new { controller = "Home", action = "Index", artId = UrlParameter.Optional },
                new { lang = @"ru|en" },
                new[] { "Leo.Controllers" }
            );

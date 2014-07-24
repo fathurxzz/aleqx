@@ -16,7 +16,10 @@ namespace Leo.Models
         public Product Product { get; set; }
         public IEnumerable<SpecialContent> SpecialContents { get; set; }
         public string SpecialContentJson { get; set; }
+        public string RandomImageFromProductImages { get; set; }
         public Article Article { get; set; }
+        public string NextCategoryName { get; set; }
+        public string NextCategoryTitle { get; set; }
 
         public CategoryModel(Language lang, SiteContext context, string categoryName = null, string subcategoryName = null, string productName=null, int? articleId=null, bool intro = false)
             : base(lang, context, categoryName)
@@ -50,14 +53,35 @@ namespace Leo.Models
                 SpecialContentJson = "settings.specialContent = " + JsonConvert.SerializeObject(specialContentJsonModel);
             }
 
+           
+
 
             Categories = _context.Categories.ToList();
             
             var currentCategoryName = subcategoryName ?? categoryName;
             Category = Categories.FirstOrDefault(c => c.Name == currentCategoryName);
 
+            var nextCategory = Categories.FirstOrDefault(c => c.Parent == null && c.Name != categoryName);
+            if (nextCategory != null)
+            {
+                nextCategory.CurrentLang = lang.Id;
+                NextCategoryName = nextCategory.Name;
+                NextCategoryTitle = nextCategory.Title;
+            }
+
+
             if (Category != null)
             {
+                if (Category.IsNewsCategory)
+                {
+                    if (_context.ProductImages.Any())
+                    {
+                        var productImages = _context.ProductImages.ToList();
+                        var randomInage = productImages.OrderBy(x => Guid.NewGuid()).Take(1).First().ImageSource;
+                        RandomImageFromProductImages = "settings.randomImageFromProductImages = '" + randomInage + "'";
+                    }
+                }
+
                 foreach (var article in Category.Articles)
                 {
                     article.CurrentLang = lang.Id;
@@ -104,6 +128,9 @@ namespace Leo.Models
 
             foreach (var item in SiteMenu.Where(item => item.ContentName == categoryName || item.ContentName == subcategoryName))
             {
+                if (Article != null)
+                    item.Selected = true;
+                else
                 item.Current = true;
             }
 

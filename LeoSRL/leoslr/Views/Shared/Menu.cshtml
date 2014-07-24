@@ -13,7 +13,7 @@
         }
         else if (item.Level == 1)
         {
-            @Html.ActionLink(item.Title, "Index", "Home", new { category = item.Parent.ContentName, subcategory = item.ContentName }, null)
+            @Html.ActionLink(item.Title, "Index", "Home", new { category = item.Parent.ContentName, subcategory = item.ContentName, artId="" }, null)
         }
         
     </div>
