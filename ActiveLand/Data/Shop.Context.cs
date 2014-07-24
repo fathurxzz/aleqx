@@ -26,5 +26,18 @@ namespace Data
         }
     
         public DbSet<Language> Language { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<CategoryLang> CategoryLang { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductAttribute> ProductAttribute { get; set; }
+        public DbSet<ProductImage> ProductImage { get; set; }
+        public DbSet<ProductLang> ProductLang { get; set; }
+        public DbSet<ProductAttributeLang> ProductAttributeLang { get; set; }
+        public DbSet<ProductAttributeValue> ProductAttributeValue { get; set; }
+        public DbSet<ProductAttributeValueLang> ProductAttributeValueLang { get; set; }
+        public DbSet<ProductAttributeValueTag> ProductAttributeValueTag { get; set; }
+        public DbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLang { get; set; }
+        public DbSet<ProductAttributeStaticValue> ProductAttributeStaticValue { get; set; }
+        public DbSet<ProductAttributeStaticValueLang> ProductAttributeStaticValueLang { get; set; }
     }
 }
