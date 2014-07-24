@@ -68,6 +68,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Web.dll</HintPath>
     </Reference>
+    <Reference Include="SiteExtensions, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SiteExtensions\SiteExtensions\bin\Release\SiteExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -364,12 +368,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SiteExtensions\SiteExtensions.csproj">
-      <Project>{ba2726e3-4c11-4d4c-9c24-210d792fe557}</Project>
-      <Name>SiteExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
