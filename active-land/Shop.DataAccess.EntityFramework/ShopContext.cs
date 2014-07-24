@@ -4,7 +4,7 @@ using Shop.DataAccess.EntityFramework.Mapping;
 
 namespace Shop.DataAccess.EntityFramework
 {
-    class ShopContext:DbContext
+    public class ShopContext:DbContext
     {
         static ShopContext()
         {
