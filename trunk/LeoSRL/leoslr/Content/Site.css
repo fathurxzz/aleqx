@@ -64,9 +64,16 @@ a.block {
     margin: 95px auto 0;
 }
 
-.imagine {
-    display: none;
+
+
+.imaginelogo {
+    height: 63px;
     background: url("img/logo-intro-big.png") no-repeat bottom center;
+    margin-top: 117px;
+}
+
+.imagine, .imaginelogo {
+    display: none;
     width: 360px;
     height: 180px;
     position: absolute;
@@ -104,6 +111,10 @@ a.block {
 
 .categories-title span {
     border-bottom: 1px dashed #ffffff;
+}
+
+.categories-title span a {
+    text-decoration: none;
 }
 
 .category-title{
