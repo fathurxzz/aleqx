@@ -64,9 +64,11 @@ namespace Leo.Models
             var nextCategory = Categories.FirstOrDefault(c => c.Parent == null && c.Name != categoryName);
             if (nextCategory != null)
             {
+                string[] titlesRu = {"","Я инвестирую / строю", "Я продаю / создаю"};
+                string[] titlesEn = {"", "Invest / Build", "Sell / Create"};
                 nextCategory.CurrentLang = lang.Id;
                 NextCategoryName = nextCategory.Name;
-                NextCategoryTitle = nextCategory.Title;
+                NextCategoryTitle = lang.Id == 1 ? titlesRu[nextCategory.Id] : titlesEn[nextCategory.Id];
             }
 
 
