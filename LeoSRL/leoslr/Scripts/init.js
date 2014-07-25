@@ -4,11 +4,20 @@ $(function () {
         $(".intro-container").fadeOut(1000, function () {
             $(".imagine").fadeIn(2000, function () {
                 $(".imaginelogo").fadeIn(1000, function () {
-                    setTimeout(function () {
-                        $(".imagine").fadeOut(1000, function () {
-                            location.href = 'ru/' + contentName;
+                    $(".imagine").fadeOut(1000, function () {
+                        $(".hand-container").fadeIn(1000, function () {
+                            $(".hand").animate({ left: "-=80", top: "+=12" }, function () {
+                                $(".hand-wrapper").css("background-image", "url(/content/img/logo-menu-intro.png)");
+                                $(".hand").fadeOut(1000, function () {
+                                    setTimeout(function () {
+                                        $(".imagine").fadeOut(1000, function () {
+                                            location.href = 'ru/' + contentName;
+                                        });
+                                    }, 2000);
+                                });
+                            });
                         });
-                    }, 2000);
+                    });
                 });
             });
         });
@@ -24,34 +33,16 @@ $(function () {
         }
 
 
-//console.log(LEO.settings.specialContent);
+        //console.log(LEO.settings.specialContent);
 
 
-        
 
-            var i = 0;
-            var delay = 5000;
 
-            var changeImage = function() {
-                $("#bg-layer").animate({ opacity: 0 }, 'slow', function() {
-                    if (i == LEO.settings.specialContent.items.length) {
-                        i = 0;
-                    }
-                    console.log(i);
-                    var item = LEO.settings.specialContent.items[i];
-                    console.log(item);
-                    var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
-                    var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
-                    i++;
-                    $(this).css({ 'background-image': pagebg }).animate({ opacity: 1 });
-                    $("#title").html(item.title);
-                    $("#text").html(item.text);
-                    $("#contentFrame").css("background-image", contentbg);
+        var i = 0;
+        var delay = 5000;
 
-                });
-            };
-
-            var changeImageFadeInOnly = function() {
+        var changeImage = function () {
+            $("#bg-layer").animate({ opacity: 0 }, 'slow', function () {
                 if (i == LEO.settings.specialContent.items.length) {
                     i = 0;
                 }
@@ -61,18 +52,36 @@ $(function () {
                 var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
                 var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
                 i++;
-                $("#bg-layer").css({ 'background-image': pagebg }).animate({ opacity: 1 }, 'slow', function() {
-                    $("#contentFrameWrapper").css("display", "block");
-                    $("#title").html(item.title);
-                    $("#text").html(item.text);
-                    $("#contentFrame").css("background-image", contentbg);
-                });
-            };
+                $(this).css({ 'background-image': pagebg }).animate({ opacity: 1 });
+                $("#title").html(item.title);
+                $("#text").html(item.text);
+                $("#contentFrame").css("background-image", contentbg);
 
-            changeImageFadeInOnly();
-            setInterval(changeImage, delay);
+            });
+        };
 
-      
+        var changeImageFadeInOnly = function () {
+            if (i == LEO.settings.specialContent.items.length) {
+                i = 0;
+            }
+            console.log(i);
+            var item = LEO.settings.specialContent.items[i];
+            console.log(item);
+            var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
+            var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
+            i++;
+            $("#bg-layer").css({ 'background-image': pagebg }).animate({ opacity: 1 }, 'slow', function () {
+                $("#contentFrameWrapper").css("display", "block");
+                $("#title").html(item.title);
+                $("#text").html(item.text);
+                $("#contentFrame").css("background-image", contentbg);
+            });
+        };
+
+        changeImageFadeInOnly();
+        setInterval(changeImage, delay);
+
+
     }
 
 

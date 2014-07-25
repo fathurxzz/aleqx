@@ -88,6 +88,32 @@ a.block {
     font-weight: 100;
 }
 
+.hand-container {
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    height: 900px;
+    display: none;
+    overflow: hidden;
+}
+
+.hand-wrapper {
+    width: 216px;
+    height: 397px;
+    background-repeat: no-repeat;
+    /*background: url('img/logo-menu-intro.png') no-repeat;*/
+    background-position: 7px 57px;
+    position: absolute;
+}
+
+.hand {
+    width: 216px;
+    height: 397px;
+    background: url('img/hand.png') no-repeat;
+    position: absolute;
+}
+
+
 .navigation-container {
     width: 128px;
     position: absolute;
