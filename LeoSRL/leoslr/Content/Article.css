@@ -10,10 +10,6 @@
     src: url('fonts/Lato-Italic.ttf');
 }
 
-
-
-
-
 .category-title.articles{
     color: #000000;
     background-image: none;
@@ -78,7 +74,8 @@
 
 .article .description {
     /*font-family: 'LatoItalic';*/
-    font-family: 'PT Sans';
+    /*font-family: 'PT Sans';*/
+    font-family: Arial;
     padding-top: 10px;
     font-size: 13px;
     font-style: italic;
