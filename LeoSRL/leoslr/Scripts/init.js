@@ -1,37 +1,19 @@
 $(function () {
 
-
-
     $(".block").click(function () {
         var contentName = $(this).attr("id");
         $(".intro-container").fadeOut(1000, function () {
             $(".imagine").fadeIn(2000, function () {
                 $(".imaginelogo").fadeIn(1000, function () {
                     $(".imagine").fadeOut(1000, function () {
-
-
                         $(".hand-container").css("display", "block");
-
                         $(".hand-wrapper").animate({ left: "+=260" }, function () {
                             setTimeout(function () {
-
-
-
-
                                 $(".hand").animate({ left: "-=260" }, function () {
-
-
                                     setTimeout(function () {
-
-                                        location.href = 'ru/' + contentName;
-
+                                        location.href = 'ru/' + contentName+"?fadein=1";
                                     }, 1000);
-
                                 });
-
-
-
-
                             }, 300);
                         });
                     });
@@ -40,6 +22,10 @@ $(function () {
         });
     });
 
+
+    $("#page").fadeIn(1000, function () {
+
+    });
 
     //$(".hand-wrapper").animate({ left: "+=250" }, function () {
     //    setTimeout(function () {

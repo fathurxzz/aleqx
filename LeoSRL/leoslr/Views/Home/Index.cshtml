@@ -7,10 +7,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+@section Includes
+{
+    <link href="@Url.Content("~/Content/index.css?v=" + SiteSettings.Version)" rel="stylesheet" type="text/css" />
+}
+
 @section scripts
 {
     <script type="text/javascript">
-        (function (leo) {
+        (function(leo) {
             var settings;
             if (leo.settings === null) {
                 leo.settings = settings = {};
@@ -42,6 +48,18 @@
             prevText: ''
         });
     </script>
+    
+    <script type="text/javascript">
+
+        $(function() {
+        
+        })
+
+        
+
+
+    </script>
+
 }
 
 
@@ -219,8 +237,6 @@
         }
     }
 }
-
-
 
 
 @if (Model.SpecialContents != null && Model.SpecialContents.Any())

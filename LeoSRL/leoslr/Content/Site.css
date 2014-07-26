@@ -65,6 +65,8 @@ body {
     right: 0;
     bottom: 0;
     opacity: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .navigation-container {
