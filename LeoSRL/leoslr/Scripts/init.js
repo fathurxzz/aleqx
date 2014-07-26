@@ -1,27 +1,55 @@
 $(function () {
+
+
+
     $(".block").click(function () {
         var contentName = $(this).attr("id");
         $(".intro-container").fadeOut(1000, function () {
             $(".imagine").fadeIn(2000, function () {
                 $(".imaginelogo").fadeIn(1000, function () {
                     $(".imagine").fadeOut(1000, function () {
-                        $(".hand-container").fadeIn(1000, function () {
-                            $(".hand").animate({ left: "-=80", top: "+=12" }, function () {
-                                $(".hand-wrapper").css("background-image", "url(/content/img/logo-menu-intro.png)");
-                                $(".hand").fadeOut(1000, function () {
+
+
+                        $(".hand-container").css("display", "block");
+
+                        $(".hand-wrapper").animate({ left: "+=260" }, function () {
+                            setTimeout(function () {
+
+
+
+
+                                $(".hand").animate({ left: "-=260" }, function () {
+
+
                                     setTimeout(function () {
-                                        $(".imagine").fadeOut(1000, function () {
-                                            location.href = 'ru/' + contentName;
-                                        });
-                                    }, 2000);
+
+                                        location.href = 'ru/' + contentName;
+
+                                    }, 1000);
+
                                 });
-                            });
+
+
+
+
+                            }, 300);
                         });
                     });
                 });
             });
         });
     });
+
+
+    //$(".hand-wrapper").animate({ left: "+=250" }, function () {
+    //    setTimeout(function () {
+    //        $(".hand").animate({ left: "-=250" }, function () {
+
+    //        });
+    //    }, 300);
+    //});
+
+
 
 
     if (LEO.settings != null) {

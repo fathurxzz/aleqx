@@ -5,7 +5,7 @@
     background-color: rgba(0,0,0,0.5);
     position: absolute;
     top: 220px;
-    right: 0;
+    right: 100px;
     display: none;
     cursor: move;
 }

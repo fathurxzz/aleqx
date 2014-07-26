@@ -10,3 +10,95 @@ body {
 }
 
 
+
+.intro-container {
+    width: 1000px;
+    height: 780px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -390px;
+    margin-left: -500px;
+    background:url('img/intro.png');
+}
+
+.intro-content {
+    width: 320px;
+    height: 320px;
+    margin: 300px auto;
+}
+
+
+a.block {
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 65px;
+    padding: 20px 0;
+    font-weight: 100;
+}
+
+.logo-intro {
+    background: url("img/logo-intro.png") no-repeat;
+    width: 108px;
+    height: 41px;
+    margin: 95px auto 0;
+}
+
+
+.imaginelogo {
+    height: 63px;
+    background: url("img/logo-intro-big.png") no-repeat bottom center;
+    margin-top: 117px;
+}
+
+.imagine, .imaginelogo {
+    display: none;
+    width: 360px;
+    height: 180px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -90px;
+    margin-left: -180px;
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    line-height: 45px;
+    font-weight: 100;
+}
+
+
+.hand-container {
+    position: relative;
+    height: 900px;
+    display: none;
+    overflow: hidden;
+}
+
+.hand-wrapper {
+    width: 216px;
+    height: 397px;
+    margin-top: 11px;
+    background-repeat: no-repeat;
+    background-image: url('img/logo-menu-intro.png');
+    background-position: 88px 45px;
+    position: absolute;
+    margin-left: -250px;
+    overflow: hidden;
+}
+
+.hand {
+    width: 216px;
+    height: 397px;
+    background: url('img/hand.png') no-repeat;
+    position: absolute;
+}
+
+#page {
+    padding: 0 !important;
+}
