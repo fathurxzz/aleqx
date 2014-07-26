@@ -11,124 +11,24 @@ body {
 }
 
 #page {
-    width: 1200px;
-    margin: 0 auto;
+    /*width: 1200px;
+    margin: 0 auto;*/
     min-height: 900px;
     position: relative;
+    
 }
 
-#bg-layer
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
+#page, .footer {
+    min-width: 800px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
-.intro-container {
-    width: 1000px;
-    height: 780px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -390px;
-    margin-left: -500px;
-    background:url('img/intro.png');
-}
-
-.intro-content {
-    width: 320px;
-    height: 320px;
-    margin: 300px auto;
-}
-
-a.block {
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    background-color: #000;
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-bottom: 65px;
-    padding: 20px 0;
-    font-weight: 100;
-}
-
-.logo-intro {
-    background: url("img/logo-intro.png") no-repeat;
-    width: 108px;
-    height: 41px;
-    margin: 95px auto 0;
-}
-
-
-
-.imaginelogo {
-    height: 63px;
-    background: url("img/logo-intro-big.png") no-repeat bottom center;
-    margin-top: 117px;
-}
-
-.imagine, .imaginelogo {
-    display: none;
-    width: 360px;
-    height: 180px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -90px;
-    margin-left: -180px;
-    color: #fff;
-    text-align: center;
-    font-size: 25px;
-    line-height: 45px;
-    font-weight: 100;
-}
-
-
-
-.hand-container {
-    width: 1200px;
+.header {
     position: relative;
-    margin: 0 auto;
-    height: 900px;
-    display: none;
-    overflow: hidden;
 }
 
-.hand-wrapper {
-    width: 216px;
-    height: 397px;
-    background-repeat: no-repeat;
-    /*background: url('img/logo-menu-intro.png') no-repeat;*/
-    background-position: 7px 57px;
-    position: absolute;
-}
-
-.hand {
-    width: 216px;
-    height: 397px;
-    background: url('img/hand.png') no-repeat;
-    position: absolute;
-}
-
-
-.navigation-container {
-    width: 128px;
-    position: absolute;
-    margin-left: 15px;
-    font-size: 9px;
-
-}
-
-.navigation-container, .navigation-container a {
-    color: #ffffff;
-}
-
-.categories-title {
+ .categories-title {
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     padding: 10px 0 14px 0;
@@ -141,11 +41,11 @@ a.block {
     border-bottom: 1px dashed #ffffff;
 }
 
-.categories-title span a {
+ .categories-title span a {
     text-decoration: none;
 }
 
-.category-title{
+ .category-title{
     text-align: center;
     padding: 38px 0 16px 0;
     text-transform: uppercase;
@@ -154,15 +54,30 @@ a.block {
     position: relative;
     margin: 0 auto;
     font-size: 11px;
-    /*background-color: rgba(0, 0, 0, 0.3);*/
     background: url("img/select-bg.png");
 }
 
-
-
-.menu {
-
+#bg-layer
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
 }
+
+.navigation-container {
+    width: 128px;
+    position: absolute;
+    font-size: 9px;
+}
+
+.navigation-container, .navigation-container a {
+    color: #ffffff;
+}
+
+
 
 .menu .logo {
     height: 80px;
@@ -185,20 +100,21 @@ a.block {
     text-decoration: none;
 }
 
+
+
+
 .footer {
     height: 110px;
-    width: 1200px;
-    margin: 0 auto;
+    /*width: 1200px;
+    margin: 0 auto;*/
     font-size: 12px;
     color: #ffffff;
-    /*font-family: 'Lato Light', sans-serif;*/
 
 }
 
 .footer .copy {
     float: left;
     margin-top: 50px;
-    margin-left: 20px;
 }
 
 .footer .em {
@@ -208,9 +124,7 @@ a.block {
     background: url("img/em.png") no-repeat left 3px;
     text-align: left;
     margin-top: 40px;
-    margin-right: 20px;
     line-height: 14px;
-
 }
 
 .footer .em a {
@@ -220,17 +134,14 @@ a.block {
 .language-switcher {
     width: 92px;
     height: 33px;
-    position: absolute;
-    /*border: 1px solid #e3e8ed;*/
     border: 2px solid rgba(255, 255, 255, 0.5);
-
     background-color: rgba(0, 0, 0, 0.3);
     top: 16px;
     text-align: center;
     padding-top: 7px;
     text-transform: uppercase;
     color: #ffffff;
-    margin-left: 1085px;
+    float: right;
 }
 
 .language-switcher span {
