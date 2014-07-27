@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using Shop.DataAccess.Entities;
 
-namespace Shop.DataAccess.EntityFramework.Mapping
+namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 {
     public class CategoryMap : EntityTypeConfiguration<Category>
     {
@@ -41,15 +40,6 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.HasOptional(t => t.Category2)
                 .WithMany(t => t.Category1)
                 .HasForeignKey(d => d.CategoryId);
-
-
-            // Ignored
-            this.Ignore(t => t.Title);
-            this.Ignore(t => t.SeoDescription);
-            this.Ignore(t => t.SeoKeywords);
-            this.Ignore(t => t.SeoText);
-            this.Ignore(t => t.IsCorrectLang);
-            this.Ignore(t => t.CurrentLang);
 
         }
     }

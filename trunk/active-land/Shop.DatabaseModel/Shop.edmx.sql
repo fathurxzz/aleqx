@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/24/2014 17:27:50
--- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 07/27/2014 13:47:18
+-- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -19,11 +19,50 @@ USE `gbua_active_dev`;
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `CategoryLang` DROP CONSTRAINT `FK_LanguageCategoryLang`;
+--    ALTER TABLE `ProductLang` DROP CONSTRAINT `FK_LanguageProductLang`;
+--    ALTER TABLE `ProductAttributeLang` DROP CONSTRAINT `FK_LanguageProductAttributeLang`;
+--    ALTER TABLE `ProductAttributeValueTagLang` DROP CONSTRAINT `FK_LanguageProductAttributeValueTagLang`;
+--    ALTER TABLE `ProductAttributeValueLang` DROP CONSTRAINT `FK_LanguageProductAttributeValueLang`;
+--    ALTER TABLE `ProductAttributeStaticValueLang` DROP CONSTRAINT `FK_LanguageProductAttributeStaticValueLang`;
+--    ALTER TABLE `Category` DROP CONSTRAINT `FK_CategoryCategory`;
+--    ALTER TABLE `CategoryLang` DROP CONSTRAINT `FK_CategoryCategoryLang`;
+--    ALTER TABLE `Product` DROP CONSTRAINT `FK_CategoryProduct`;
+--    ALTER TABLE `CategoryProductAttribute` DROP CONSTRAINT `FK_CategoryProductAttribute_Category`;
+--    ALTER TABLE `CategoryProductAttribute` DROP CONSTRAINT `FK_CategoryProductAttribute_ProductAttribute`;
+--    ALTER TABLE `ProductImage` DROP CONSTRAINT `FK_ProductProductImage`;
+--    ALTER TABLE `ProductLang` DROP CONSTRAINT `FK_ProductProductLang`;
+--    ALTER TABLE `ProductAttributeValue` DROP CONSTRAINT `FK_ProductAttributeProductAttributeValue`;
+--    ALTER TABLE `ProductAttributeValue` DROP CONSTRAINT `FK_ProductAttributeValueTagProductAttributeValue`;
+--    ALTER TABLE `ProductAttributeValueLang` DROP CONSTRAINT `FK_ProductAttributeValueProductAttributeValueLang`;
+--    ALTER TABLE `ProductAttributeValueProduct` DROP CONSTRAINT `FK_ProductAttributeValueProduct_ProductAttributeValue`;
+--    ALTER TABLE `ProductAttributeValueProduct` DROP CONSTRAINT `FK_ProductAttributeValueProduct_Product`;
+--    ALTER TABLE `ProductAttributeValueTagLang` DROP CONSTRAINT `FK_ProductAttributeValueTagProductAttributeValueTagLang`;
+--    ALTER TABLE `ProductAttributeStaticValue` DROP CONSTRAINT `FK_ProductAttributeProductAttributeStaticValue`;
+--    ALTER TABLE `ProductAttributeStaticValue` DROP CONSTRAINT `FK_ProductProductAttributeStaticValue`;
+--    ALTER TABLE `ProductAttributeStaticValueLang` DROP CONSTRAINT `FK_ProductAttributeStaticValueProductAttributeStaticValueLang`;
+--    ALTER TABLE `ProductAttributeLang` DROP CONSTRAINT `FK_ProductAttributeProductAttributeLang`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
+    DROP TABLE IF EXISTS `Language`;
+    DROP TABLE IF EXISTS `Category`;
+    DROP TABLE IF EXISTS `CategoryLang`;
+    DROP TABLE IF EXISTS `Product`;
+    DROP TABLE IF EXISTS `ProductAttribute`;
+    DROP TABLE IF EXISTS `ProductImage`;
+    DROP TABLE IF EXISTS `ProductLang`;
+    DROP TABLE IF EXISTS `ProductAttributeLang`;
+    DROP TABLE IF EXISTS `ProductAttributeValue`;
+    DROP TABLE IF EXISTS `ProductAttributeValueLang`;
+    DROP TABLE IF EXISTS `ProductAttributeValueTag`;
+    DROP TABLE IF EXISTS `ProductAttributeValueTagLang`;
+    DROP TABLE IF EXISTS `ProductAttributeStaticValue`;
+    DROP TABLE IF EXISTS `ProductAttributeStaticValueLang`;
+    DROP TABLE IF EXISTS `CategoryProductAttribute`;
+    DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -535,6 +574,21 @@ ADD CONSTRAINT `FK_ProductAttributeStaticValueProductAttributeStaticValueLang`
 CREATE INDEX `IX_FK_ProductAttributeStaticValueProductAttributeStaticValueLang` 
     ON `ProductAttributeStaticValueLang`
     (`ProductAttributeStaticValueId`);
+
+-- Creating foreign key on `ProductAttributeId` in table 'ProductAttributeLang'
+
+ALTER TABLE `ProductAttributeLang`
+ADD CONSTRAINT `FK_ProductAttributeProductAttributeLang`
+    FOREIGN KEY (`ProductAttributeId`)
+    REFERENCES `ProductAttribute`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductAttributeProductAttributeLang'
+
+CREATE INDEX `IX_FK_ProductAttributeProductAttributeLang` 
+    ON `ProductAttributeLang`
+    (`ProductAttributeId`);
 
 -- --------------------------------------------------
 -- Script has ended

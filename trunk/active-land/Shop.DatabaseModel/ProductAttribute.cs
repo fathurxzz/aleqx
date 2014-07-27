@@ -19,6 +19,7 @@ namespace Shop.DatabaseModel
             this.Categories = new HashSet<Category>();
             this.ProductAttributeValues = new HashSet<ProductAttributeValue>();
             this.ProductAttributeStaticValues = new HashSet<ProductAttributeStaticValue>();
+            this.ProductAttributeLangs = new HashSet<ProductAttributeLang>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,6 @@ namespace Shop.DatabaseModel
         public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
         public virtual ICollection<ProductAttributeStaticValue> ProductAttributeStaticValues { get; set; }
+        public virtual ICollection<ProductAttributeLang> ProductAttributeLangs { get; set; }
     }
 }

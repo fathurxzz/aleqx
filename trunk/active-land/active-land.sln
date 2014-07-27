@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.DataAccess.EntityFrame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Api", "Shop.Api\Shop.Api.csproj", "{3F386C20-1785-4897-888B-A62FC3E0271B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.DatabaseModel.DataAccess", "Shop.DatabaseModel.DataAccess\Shop.DatabaseModel.DataAccess.csproj", "{69485C0D-61A2-4DBA-8835-4D53FE9BDE06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.SiteExtensions", "Shop.SiteExtensions\Shop.SiteExtensions.csproj", "{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -41,6 +45,14 @@ Global
 		{3F386C20-1785-4897-888B-A62FC3E0271B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F386C20-1785-4897-888B-A62FC3E0271B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F386C20-1785-4897-888B-A62FC3E0271B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69485C0D-61A2-4DBA-8835-4D53FE9BDE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69485C0D-61A2-4DBA-8835-4D53FE9BDE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69485C0D-61A2-4DBA-8835-4D53FE9BDE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69485C0D-61A2-4DBA-8835-4D53FE9BDE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7B9B66-6615-4A38-BCA0-2AAB21632DAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
