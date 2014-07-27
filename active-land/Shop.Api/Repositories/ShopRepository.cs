@@ -20,12 +20,14 @@ namespace Shop.Api.Repositories
 
         public IEnumerable<Category> GetCategories(int langId)
         {
-            var categories = _store.Categories;
-            foreach (var category in categories)
-            {
-                category.CurrentLang = langId;
-            }
-            return categories;
+            
+                var categories = _store.Categories.ToList();
+                foreach (var category in categories)
+                {
+                    category.CurrentLang = langId;
+                }
+                return categories;
+            
         }
 
         public void UpdateCategory(int categoryId)
