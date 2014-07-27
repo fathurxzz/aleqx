@@ -4,6 +4,25 @@ using Shop.DataAccess.EntityFramework.Mapping;
 
 namespace Shop.DataAccess.EntityFramework
 {
+
+    public class ShopStore : IShopStore
+    {
+        readonly ShopContext _context = new ShopContext();
+
+
+        public IDbSet<Category> Categories
+        {
+            get { return _context.Categories; }
+            set { throw new System.NotImplementedException(); }
+        }
+
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
+    }
+
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class ShopContext:DbContext
     {
         static ShopContext()
@@ -12,7 +31,7 @@ namespace Shop.DataAccess.EntityFramework
         }
 
         public ShopContext()
-            : base("Name=gbua_active_devContext")
+            : base("Name=ShopContext")
         {
             
         }

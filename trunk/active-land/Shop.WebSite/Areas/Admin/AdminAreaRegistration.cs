@@ -15,10 +15,20 @@ namespace Shop.WebSite.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+                  "Admin",
+                  "admin",
+                  new { controller = "Admin", action = "Default", lang = "ru" },
+                  new { lang = @"ru|en" },
+                  new[] { "Shop.WebSite.Areas.Admin.Controllers" }
+              );
+
+            context.MapRoute(
+               "Admin_Category",
+               "{lang}/admin/{controller}/{action}/{id}",
+               new { controller = "Admin", action = "Default", id = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Shop.WebSite.Areas.Admin.Controllers" }
+           );
         }
     }
 }
