@@ -14,7 +14,12 @@ namespace Shop.WebSite.Controllers
     {
         public string CurrentLangCode { get; protected set; }
 
-        public Language CurrentLang { get; protected set; }
+        //public Language CurrentLang { get; protected set; }
+        protected int CurrentLangId { get; set; }
+
+        private readonly Dictionary<string, int> _langs = new Dictionary<string, int> {{"ru", 1}, {"en", 2}};
+
+
 
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
@@ -27,10 +32,14 @@ namespace Shop.WebSite.Controllers
             {
                 CurrentLangCode = requestContext.RouteData.Values["lang"] as string;
 
-                using (var context = new ShopContext())
-                {
-                    CurrentLang = context.Languages.First(p => p.Code == CurrentLangCode);
-                }
+                //using (var context = new ShopContext())
+                //{
+                //    CurrentLang = context.Languages.First(p => p.Code == CurrentLangCode);
+                //    CurrentLangId = CurrentLang.Id;
+
+                //}
+
+                CurrentLangId = _langs[CurrentLangCode];
 
                 var ci = new CultureInfo(CurrentLangCode);
                 Thread.CurrentThread.CurrentUICulture = ci;

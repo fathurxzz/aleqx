@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Admin.css", "~/Content/bootstrap.min.css" ,"~/Content/jquery-ui.min.css" ,"~/Content/jquery-ui.structure.min.css")
+</head>
+    <body>
+        @Html.Partial("LanguageSwitcher") 
+
+        @RenderSection("AdminNavigation",false)
+        @RenderBody()
+    
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
