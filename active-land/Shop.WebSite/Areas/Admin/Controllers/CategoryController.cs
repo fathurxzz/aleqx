@@ -7,7 +7,7 @@ using Shop.DataAccess.EntityFramework;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : AdminController
     {
 
         private readonly ShopContext _context;
@@ -20,7 +20,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var categories = _context.Categories.ToList();
-
+            foreach (var category in categories)
+            {
+                category.CurrentLang = CurrentLang.Id;
+            }
             return View(categories);
         }
 

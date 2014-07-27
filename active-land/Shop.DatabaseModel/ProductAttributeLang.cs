@@ -21,5 +21,6 @@ namespace Shop.DatabaseModel
         public int ProductAttributeId { get; set; }
     
         public virtual Language Language { get; set; }
+        public virtual ProductAttribute ProductAttribute { get; set; }
     }
 }

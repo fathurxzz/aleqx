@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -109,6 +109,10 @@
     <AssociationSet Name="ProductAttributeStaticValueProductAttributeStaticValueLang" Association="Shop.Store.ProductAttributeStaticValueProductAttributeStaticValueLang">
       <End Role="ProductAttributeStaticValue" EntitySet="ProductAttributeStaticValue" />
       <End Role="ProductAttributeStaticValueLang" EntitySet="ProductAttributeStaticValueLang" />
+    </AssociationSet>
+    <AssociationSet Name="ProductAttributeProductAttributeLang" Association="Shop.Store.ProductAttributeProductAttributeLang">
+      <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+      <End Role="ProductAttributeLang" EntitySet="ProductAttributeLang" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
@@ -479,6 +483,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductAttributeProductAttributeLang">
+    <End Role="ProductAttribute" Type="Shop.Store.ProductAttribute" Multiplicity="1" />
+    <End Role="ProductAttributeLang" Type="Shop.Store.ProductAttributeLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductAttribute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductAttributeLang">
+        <PropertyRef Name="ProductAttributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CategoryProductAttribute_Category">
     <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
     <End Role="CategoryProductAttribute" Type="Shop.Store.CategoryProductAttribute" Multiplicity="*" />
@@ -626,6 +642,10 @@
             <End Role="ProductAttributeStaticValue" EntitySet="ProductAttributeStaticValue" />
             <End Role="ProductAttributeStaticValueLang" EntitySet="ProductAttributeStaticValueLang" />
           </AssociationSet>
+          <AssociationSet Name="ProductAttributeProductAttributeLang" Association="Shop.ProductAttributeProductAttributeLang">
+            <End Role="ProductAttribute" EntitySet="ProductAttribute" />
+            <End Role="ProductAttributeLang" EntitySet="ProductAttributeLang" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -701,6 +721,7 @@
           <NavigationProperty Name="Categories" Relationship="Shop.CategoryProductAttribute" FromRole="ProductAttribute" ToRole="Category" />
           <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.ProductAttributeProductAttributeValue" FromRole="ProductAttribute" ToRole="ProductAttributeValue" />
           <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductAttributeProductAttributeStaticValue" FromRole="ProductAttribute" ToRole="ProductAttributeStaticValue" />
+          <NavigationProperty Name="ProductAttributeLangs" Relationship="Shop.ProductAttributeProductAttributeLang" FromRole="ProductAttribute" ToRole="ProductAttributeLang" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -735,8 +756,9 @@
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="UnitTitle" Nullable="false" MaxLength="200" />
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
-          <Property Type="Int32" Name="ProductAttributeId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageProductAttributeLang" FromRole="ProductAttributeLang" ToRole="Language" />
+          <NavigationProperty Name="ProductAttribute" Relationship="Shop.ProductAttributeProductAttributeLang" FromRole="ProductAttributeLang" ToRole="ProductAttribute" />
+          <Property Type="Int32" Name="ProductAttributeId" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductAttributeValue">
           <Key>
@@ -1024,6 +1046,18 @@
             </Principal>
             <Dependent Role="ProductAttributeStaticValueLang">
               <PropertyRef Name="ProductAttributeStaticValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductAttributeProductAttributeLang">
+          <End Type="Shop.ProductAttribute" Role="ProductAttribute" Multiplicity="1" />
+          <End Type="Shop.ProductAttributeLang" Role="ProductAttributeLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductAttribute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductAttributeLang">
+              <PropertyRef Name="ProductAttributeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
