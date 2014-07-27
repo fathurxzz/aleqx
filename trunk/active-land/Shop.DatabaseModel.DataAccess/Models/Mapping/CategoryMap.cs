@@ -37,8 +37,8 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
                         m.MapRightKey("ProductAttributes_Id");
                     });
 
-            this.HasOptional(t => t.Category2)
-                .WithMany(t => t.Category1)
+            this.HasOptional(t => t.Parent)
+                .WithMany(t => t.Children)
                 .HasForeignKey(d => d.CategoryId);
 
         }

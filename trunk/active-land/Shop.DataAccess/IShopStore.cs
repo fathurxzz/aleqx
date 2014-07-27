@@ -10,7 +10,7 @@ namespace Shop.DataAccess
 {
     public interface IShopStore
     {
-        IDbSet<Category> Categories { get; set; }
+        IDbSet<Category> Categories { get; }
         int SaveChanges();
     }
 }
