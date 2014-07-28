@@ -8,9 +8,13 @@ using Shop.DataAccess.Entities;
 
 namespace Shop.DataAccess.Repositories
 {
-    public interface IShopRepository:IRepository
+    public interface IShopRepository : IRepository
     {
-        IEnumerable<Category> GetCategories(int currentLangId);
-        void UpdateCategory(int categoryId);
+        int LangId { get; set; }
+        IEnumerable<Category> GetCategories();
+        Category GetCategory(int id);
+        int AddCategory(Category category);
+        
+        void Save(Category category);
     }
 }

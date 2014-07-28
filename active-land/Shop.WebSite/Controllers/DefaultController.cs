@@ -20,27 +20,12 @@ namespace Shop.WebSite.Controllers
         private readonly Dictionary<string, int> _langs = new Dictionary<string, int> {{"ru", 1}, {"en", 2}};
 
 
-
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
-            if (requestContext.HttpContext.Request.Url != null)
-            {
-                HostName = requestContext.HttpContext.Request.Url.Authority;
-            }
-
             if (requestContext.RouteData.Values["lang"] != null && requestContext.RouteData.Values["lang"] as string != "null")
             {
                 CurrentLangCode = requestContext.RouteData.Values["lang"] as string;
-
-                //using (var context = new ShopContext())
-                //{
-                //    CurrentLang = context.Languages.First(p => p.Code == CurrentLangCode);
-                //    CurrentLangId = CurrentLang.Id;
-
-                //}
-
                 CurrentLangId = _langs[CurrentLangCode];
-
                 var ci = new CultureInfo(CurrentLangCode);
                 Thread.CurrentThread.CurrentUICulture = ci;
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);

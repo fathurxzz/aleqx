@@ -9,6 +9,15 @@
         @Html.Partial("LanguageSwitcher") 
 
         @RenderSection("AdminNavigation",false)
+        
+        
+        @if (TempData["errorMessage"] != null)
+        {
+                <div style="text-align: center">
+                <h4><span class="label label-danger"> @TempData["errorMessage"]</span>    </h4>
+                </div>
+            }
+
         @RenderBody()
     
         @Scripts.Render("~/bundles/jquery")

@@ -15,10 +15,12 @@ namespace Shop.DataAccess.EntityFramework
 
         public IDbSet<Category> Categories
         {
-            get
-            {
-                return _context.Categories;
-            }
+            get { return _context.Categories; }
+        }
+
+        public IDbSet<CategoryLang> CategoryLangs
+        {
+            get { return _context.CategoryLangs; }
         }
 
         public int SaveChanges()
