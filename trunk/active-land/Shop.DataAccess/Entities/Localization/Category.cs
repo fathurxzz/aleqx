@@ -44,12 +44,17 @@ namespace Shop.DataAccess.Entities
             }
         }
 
-        private void SetLang(CategoryLang postLang)
+        private void SetLang(CategoryLang entityLang)
         {
-            Title = postLang.Title;
-            SeoDescription = postLang.SeoDescription;
-            SeoKeywords = postLang.SeoKeywords;
-            SeoText = postLang.SeoText;
+            Title = entityLang.Title;
+            SeoDescription = entityLang.SeoDescription;
+            SeoKeywords = entityLang.SeoKeywords;
+            SeoText = entityLang.SeoText;
+        }
+
+        public override string ToString()
+        {
+            return Title;
         }
     }
 }

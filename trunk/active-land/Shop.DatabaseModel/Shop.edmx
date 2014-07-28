@@ -130,7 +130,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
-    <Property Name="CategoryLevel" Type="longtext" Nullable="false" />
+    <Property Name="CategoryLevel" Type="int" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="CategoryLang">
@@ -668,7 +668,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
-          <Property Type="String" Name="CategoryLevel" Nullable="false" />
+          <Property Type="Int32" Name="CategoryLevel" Nullable="false" />
           <Property Type="Int32" Name="CategoryId" Nullable="true" />
           <NavigationProperty Name="Children" Relationship="Shop.CategoryCategory" FromRole="Category" ToRole="Category1" />
           <NavigationProperty Name="Parent" Relationship="Shop.CategoryCategory" FromRole="Category1" ToRole="Category" />

@@ -16,7 +16,7 @@ namespace Shop.DataAccess.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public int SortOrder { get; set; }
-        public string CategoryLevel { get; set; }
+        public int CategoryLevel { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public virtual ICollection<Category> Children { get; set; }
         public virtual Category Parent { get; set; }

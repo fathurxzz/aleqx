@@ -17,8 +17,8 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .HasMaxLength(200);
 
             this.Property(t => t.CategoryLevel)
-                .IsRequired()
-                .HasMaxLength(1073741823);
+                .IsRequired();
+                //.HasMaxLength(1073741823);
 
             // Table & Column Mappings
             this.ToTable("Category", "gbua_active_dev");

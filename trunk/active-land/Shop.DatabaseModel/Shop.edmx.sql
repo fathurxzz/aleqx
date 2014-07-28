@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/27/2014 13:47:18
+-- Date Created: 07/28/2014 23:22:15
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -83,7 +83,7 @@ CREATE TABLE `Category`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Name` varchar (200) NOT NULL, 
 	`SortOrder` int NOT NULL, 
-	`CategoryLevel` longtext NOT NULL, 
+	`CategoryLevel` int NOT NULL, 
 	`CategoryId` int);
 
 ALTER TABLE `Category` ADD PRIMARY KEY (Id);

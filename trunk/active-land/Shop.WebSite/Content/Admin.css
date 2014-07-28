@@ -1,2 +1,3 @@
-﻿body {
+﻿.adminTextContainer {
+    max-height: 100px; overflow: hidden; max-width: 800px
 }

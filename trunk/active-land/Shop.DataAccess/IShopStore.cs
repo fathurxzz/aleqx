@@ -11,6 +11,9 @@ namespace Shop.DataAccess
     public interface IShopStore
     {
         IDbSet<Category> Categories { get; }
+        IDbSet<CategoryLang> CategoryLangs { get; }
+
+
         int SaveChanges();
     }
 }

@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Contracts\Exceptions\UserException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ShopRepository.cs" />
   </ItemGroup>
   <ItemGroup>

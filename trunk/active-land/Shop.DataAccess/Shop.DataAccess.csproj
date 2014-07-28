@@ -63,7 +63,6 @@
     <Compile Include="Entities\ProductLang.cs" />
     <Compile Include="IShopStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IShopRepository.cs" />
   </ItemGroup>

@@ -8,8 +8,6 @@ namespace Shop.WebSite.Controllers
 {
     public class BaseController : Controller
     {
-        public static string HostName = string.Empty;
-
         protected static string ErrorPage = "~/Error";
 
         protected static string NotFoundPage = "~/NotFoundPage";
@@ -38,15 +36,6 @@ namespace Shop.WebSite.Controllers
             {
                 return Redirect(LoginPage);
             }
-        }
-
-        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
-        {
-            if (requestContext.HttpContext.Request.Url != null)
-            {
-                HostName = requestContext.HttpContext.Request.Url.Authority;
-            }
-            base.Initialize(requestContext);
         }
 
         protected override void OnException(ExceptionContext filterContext)

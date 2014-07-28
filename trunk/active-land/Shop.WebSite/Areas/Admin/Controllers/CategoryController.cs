@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.DataAccess.Entities;
 using Shop.DataAccess.EntityFramework;
 using Shop.DataAccess.Repositories;
+using Shop.WebSite.Helpers;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class CategoryController : AdminController
     {
-
-        //private readonly ShopContext _context;
-
-        //public CategoryController(ShopContext context)
-        //{
-        //    _context = context;
-        //}
 
         private readonly IShopRepository _repository;
 
@@ -27,17 +23,91 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            //var categories = _context.Categories.ToList();
-            //foreach (var category in categories)
-            //{
-            //    category.CurrentLang = CurrentLang.Id;
-            //}
-            
-            var categories = _repository.GetCategories(CurrentLangId);
-
-
-
+            _repository.LangId = CurrentLangId;
+            var categories = _repository.GetCategories();
             return View(categories);
+        }
+
+        public ActionResult Create(int? id)
+        {
+            _repository.LangId = CurrentLangId;
+            return View(new Category { CategoryId = id, CurrentLang = CurrentLangId });
+        }
+
+        [HttpPost]
+        public ActionResult Create(Category model)
+        {
+            _repository.LangId = CurrentLangId;
+
+            try
+            {
+                model.Id = 0;
+                Category parent = null;
+                int categoryLevel = 0;
+                if (model.CategoryId != null)
+                {
+                    parent = _repository.GetCategory((int)model.CategoryId);
+                    categoryLevel = parent.CategoryLevel + 1;
+                }
+
+                var category = new Category
+                {
+                    Name = SiteHelper.UpdatePageWebName(model.Name),
+                    SortOrder = model.SortOrder,
+                    Parent = parent,
+                    CategoryLevel = categoryLevel,
+                    
+                    Title = model.Title,
+                    SeoDescription = model.SeoDescription,
+                    SeoKeywords = model.SeoKeywords,
+                    SeoText = model.SeoText
+                };
+
+                _repository.AddCategory(category);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                var category = _repository.GetCategory(id);
+                return View(category);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+            }
+            return View(new Category());
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Category model)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                var category = _repository.GetCategory(model.Id);
+                category.Name = SiteHelper.UpdatePageWebName(model.Name);
+                TryUpdateModel(category, new[] { "SortOrder", "CategoryLevel", "Title", "SeoDescription", "SeoKeywords", "SeoText" });
+                _repository.Save(category);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(model);
+            }
+            return RedirectToAction("Index");
         }
 
     }
