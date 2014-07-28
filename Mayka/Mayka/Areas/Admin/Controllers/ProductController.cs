@@ -23,8 +23,6 @@ namespace Mayka.Areas.Admin.Controllers
             _context = context;
         }
 
-
-
         public ActionResult Create(int id)
         {
             var content = _context.Content.First(c => c.Id == id);
