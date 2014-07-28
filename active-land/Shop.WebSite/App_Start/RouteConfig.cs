@@ -15,9 +15,11 @@ namespace Shop.WebSite
             routes.IgnoreRoute("favicon.ico");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                "Default",
+                "{controller}/{action}/{id}",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang = "ru" },
+                new { lang = @"ru|en" },
+                new[] { "Shop.WebSite.Controllers" }
             );
         }
     }
