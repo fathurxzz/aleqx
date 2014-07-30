@@ -23,9 +23,6 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SortOrder)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CategoryLevel)
         </th>
         <th>
@@ -43,9 +40,6 @@
         <th>
             @Html.DisplayNameFor(model => model.IsCorrectLang)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CurrentLang)
-        </th>
         <th></th>
     </tr>
 
@@ -54,9 +48,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SortOrder)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryLevel)
@@ -82,9 +73,6 @@
                 {
                     <span class="label label-success">ok</span>
                 }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurrentLang)
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
