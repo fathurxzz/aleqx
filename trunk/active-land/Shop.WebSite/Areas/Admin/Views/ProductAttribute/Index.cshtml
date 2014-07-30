@@ -17,7 +17,7 @@
     @Html.ActionLink("Добавить", "Create")
 </p>
 
-<table>
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -27,12 +27,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsCorrectLang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CurrentLang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SortOrder)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsStatic)
@@ -54,15 +48,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.UnitTitle)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsCorrectLang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CurrentLang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortOrder)
-        </td>
+            <td>
+                @if (!item.IsCorrectLang)
+                {
+                    <span class="label label-danger">!</span>
+                }
+                else
+                {
+                    <span class="label label-success">ok</span>
+                }
+            </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsStatic)
         </td>

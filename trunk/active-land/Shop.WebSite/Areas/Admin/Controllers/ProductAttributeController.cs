@@ -31,7 +31,64 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return View(new ProductAttribute(){CurrentLang = CurrentLangId});
         }
 
-        
+        [HttpPost]
+        public ActionResult Create(ProductAttribute model)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                model.Id = 0;
+                var productAttibute = new ProductAttribute()
+                {
+                    Title = model.Title,
+                    UnitTitle = model.UnitTitle,
+                    IsStatic = model.IsStatic,
+                    DisplayOnPreview = model.DisplayOnPreview,
+                    IsFilterable = model.IsFilterable,
+                    SortOrder = 0
+                };
+                _repository.AddProductAttribute(productAttibute);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(model);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                var productAttribute = _repository.GetProductAttribute(id);
+                return View(productAttribute);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+            }
+            return View(new ProductAttribute());
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ProductAttribute model)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                var productAttribute = _repository.GetProductAttribute(model.Id);
+                TryUpdateModel(productAttribute, new[] { "Title", "UnitTitle", "IsStatic", "DisplayOnPreview", "IsFilterable" });
+                _repository.SaveProductAttribute(productAttribute);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(model);
+            }
+            return RedirectToAction("Index");
+        }
 
     }
 }

@@ -31,5 +31,9 @@ namespace Shop.DataAccess.Entities
 
         [Display(Name = "Фильтровать по данному атрибуту")]
         public bool IsFilterable { get; set; }
+
+        [Display(Name = "Доступность на текущем языке")]
+        public bool IsCorrectLang { get; set; }
+
     }
 }
