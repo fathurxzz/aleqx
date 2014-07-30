@@ -5,11 +5,18 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+@section AdminNavigation
+{
+        <ul class="nav nav-tabs" role="tablist">
+        <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    </ul>
+}
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить", "Create")
 </p>
+
 <table class="table table-striped">
     <tr>
         <th>
@@ -42,31 +49,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SortOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryLevel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td class="adminTextContainer">
-            @Html.DisplayFor(modelItem => item.SeoDescription)
-        </td>
-        <td class="adminTextContainer">
-            @Html.DisplayFor(modelItem => item.SeoKeywords)
-        </td>
-        <td class="adminTextContainer">
-            @Html.DisplayFor(modelItem => item.SeoText)
-        </td>
-        <td>
-            @if (!item.IsCorrectLang)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td class="adminTextContainer">
+                @Html.DisplayFor(modelItem => item.SeoDescription)
+            </td>
+            <td class="adminTextContainer">
+                @Html.DisplayFor(modelItem => item.SeoKeywords)
+            </td>
+            <td class="adminTextContainer">
+                @Html.DisplayFor(modelItem => item.SeoText)
+            </td>
+            <td>
+                @if (!item.IsCorrectLang)
                 {
                     <span class="label label-danger">!</span>
                 }
@@ -74,16 +82,16 @@
                 {
                     <span class="label label-success">ok</span>
                 }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CurrentLang)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentLang)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" })
+            </td>
+        </tr>
+    }
 
 </table>

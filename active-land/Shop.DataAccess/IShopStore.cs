@@ -13,6 +13,9 @@ namespace Shop.DataAccess
         IDbSet<Category> Categories { get; }
         IDbSet<CategoryLang> CategoryLangs { get; }
 
+        IDbSet<ProductAttribute> ProductAttributes { get; }
+        IDbSet<ProductAttributeLang> ProductAttributeLangs { get; }
+
 
         int SaveChanges();
     }

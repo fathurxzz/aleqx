@@ -100,7 +100,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var category = _repository.GetCategory(model.Id);
                 category.Name = SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(category, new[] { "SortOrder", "CategoryLevel", "Title", "SeoDescription", "SeoKeywords", "SeoText" });
-                _repository.Save(category);
+                _repository.SaveCategory(category);
             }
             catch (Exception ex)
             {
@@ -108,6 +108,25 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 return View(model);
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                _repository.DeleteCategory(id);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Attributes(int id)
+        {
+            var productAttributes = _repository.GetProductAttributes();
+            return View(productAttributes);
         }
 
     }
