@@ -19,6 +19,12 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.IsStatic).HasColumnName("IsStatic");
             this.Property(t => t.DisplayOnPreview).HasColumnName("DisplayOnPreview");
             this.Property(t => t.IsFilterable).HasColumnName("IsFilterable");
+
+            // Ignored
+            this.Ignore(t => t.Title);
+            this.Ignore(t => t.UnitTitle);
+            this.Ignore(t => t.IsCorrectLang);
+            this.Ignore(t => t.CurrentLang);
         }
     }
 }

@@ -23,11 +23,21 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.CategoryLangs; }
         }
 
+        public IDbSet<ProductAttribute> ProductAttributes
+        {
+            get { return _context.ProductAttributes; }
+        }
+        public IDbSet<ProductAttributeLang> ProductAttributeLangs
+        {
+            get { return _context.ProductAttributeLangs; }
+        }
+
+
         public int SaveChanges()
         {
             return _context.SaveChanges();
         }
 
-        
+
     }
 }

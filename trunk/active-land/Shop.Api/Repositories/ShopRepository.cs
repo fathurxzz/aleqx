@@ -39,6 +39,39 @@ namespace Shop.Api.Repositories
             return category;
         }
 
+        public void DeleteCategory(int id)
+        {
+            var category = _store.Categories.SingleOrDefault(c => c.Id == id);
+
+            if (category==null)
+            {
+                throw new Exception(string.Format("Category with id={0} doesn't found", id));
+            }
+
+            while (category.CategoryLangs.Any())
+            {
+                var categoryLang = category.CategoryLangs.First();
+                _store.CategoryLangs.Remove(categoryLang);
+            }
+
+            while (category.ProductAttributes.Any())
+            {
+                var pa = category.ProductAttributes.First();
+
+                while (pa.ProductAttributeLangs.Any())
+                {
+                    var pal = pa.ProductAttributeLangs.First();
+                    pa.ProductAttributeLangs.Remove(pal);
+                }
+
+                _store.ProductAttributes.Remove(pa);
+            }
+
+            _store.Categories.Remove(category);
+            _store.SaveChanges();
+
+        }
+
         public int AddCategory(Category category)
         {
             if (_store.Categories.Any(c => c.Name == category.Name))
@@ -54,7 +87,7 @@ namespace Shop.Api.Repositories
             return category.Id;
         }
 
-        public void Save(Category category)
+        public void SaveCategory(Category category)
         {
             var cache = _store.Categories.Single(c => c.Id == category.Id);
             //if (cache.Name != category.Name)
@@ -74,6 +107,47 @@ namespace Shop.Api.Repositories
             CreateOrChangeEntityLanguage(cache);
             _store.SaveChanges();
         }
+
+        public IEnumerable<ProductAttribute> GetProductAttributes()
+        {
+            var productAttributes = _store.ProductAttributes.ToList();
+            foreach (var productAttribute in productAttributes)
+            {
+                productAttribute.CurrentLang = LangId;
+            }
+            return productAttributes;
+        }
+
+        public IEnumerable<ProductAttribute> GetProductAttributes(int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProductAttribute GetProductAttribute(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteProductAttribute(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddProductAttribute(ProductAttribute productAttribute)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveProductAttribute(ProductAttribute productAttribute)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+
 
         private void CreateOrChangeEntityLanguage(Category cache)
         {

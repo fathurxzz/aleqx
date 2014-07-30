@@ -11,10 +11,25 @@ namespace Shop.DataAccess.Repositories
     public interface IShopRepository : IRepository
     {
         int LangId { get; set; }
+
+        // Categories
+        
         IEnumerable<Category> GetCategories();
         Category GetCategory(int id);
+        void DeleteCategory(int id);
         int AddCategory(Category category);
+        void SaveCategory(Category category);
+
+
+        // ProductAttributes
         
-        void Save(Category category);
+        IEnumerable<ProductAttribute> GetProductAttributes();
+        IEnumerable<ProductAttribute> GetProductAttributes(int categoryId);
+        ProductAttribute GetProductAttribute(int id);
+        void DeleteProductAttribute(int id);
+        int AddProductAttribute(ProductAttribute productAttribute);
+        void SaveProductAttribute(ProductAttribute productAttribute);
+
+
     }
 }

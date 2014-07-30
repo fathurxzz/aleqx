@@ -1,3 +1,9 @@
 ﻿.adminTextContainer {
     max-height: 100px; overflow: hidden; max-width: 800px
 }
+
+.admin-container {
+    width: 800px;
+    margin: 0 auto;
+    
+}

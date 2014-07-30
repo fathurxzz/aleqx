@@ -152,6 +152,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -176,6 +177,72 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttribute\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Attributes.cshtml" />
+    <Content Include="CodeTemplates\AddView\CSHTML\Create.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Create.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Delete.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Delete.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Details.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Details.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Edit.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Edit.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Empty.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Empty.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\List.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>List.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Create.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Create.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Delete.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delete.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Details.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Details.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Edit.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\Empty.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Empty.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\List.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\CreateShop.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CreateShop.cshtml</LastGenOutput>
+    </Content>
+    <Content Include="CodeTemplates\AddView\CSHTML\CreateShop.cshtml">
+      <DependentUpon>CreateShop.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Content>
+    <Content Include="Areas\Admin\Views\ProductAttribute\Create.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -226,6 +293,9 @@
       <Project>{13387c10-cfde-4eaa-bbd7-22c980a31164}</Project>
       <Name>Shop.DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
