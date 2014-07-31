@@ -46,7 +46,21 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(int id)
+        {
+            _repository.LangId = CurrentLangId;
+            var productAttributeValueTag = _repository.GetProductAttributeValueTag(id);
+            return View(productAttributeValueTag);
+        }
 
+        public ActionResult Edit(ProductAttributeValueTag model)
+        {
+            _repository.LangId = CurrentLangId;
+            var productAttributeValueTag = _repository.GetProductAttributeValueTag(model.Id);
+            TryUpdateModel(productAttributeValueTag, new[] { "Title" });
+            _repository.SaveProductAttributeValueTag(productAttributeValueTag);
+            return RedirectToAction("Index");
+        }
 
     }
 }

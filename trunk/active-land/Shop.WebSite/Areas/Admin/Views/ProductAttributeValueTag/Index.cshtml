@@ -10,12 +10,12 @@
     <ul class="nav nav-tabs" role="tablist">
         <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
         <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
-        <li class="active">@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
     </ul>
 }
 
 <p class="addEntity">
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить", "Create")
 </p>
 <table class="table table-striped">
     <tr>

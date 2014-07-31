@@ -15,6 +15,11 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             // Table & Column Mappings
             this.ToTable("ProductAttributeValueTag", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
+
+            // Ignored
+            this.Ignore(t => t.Title);
+            this.Ignore(t => t.IsCorrectLang);
+            this.Ignore(t => t.CurrentLang);
         }
     }
 }

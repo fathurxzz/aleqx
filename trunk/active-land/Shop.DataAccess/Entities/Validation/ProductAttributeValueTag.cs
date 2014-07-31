@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.DataAccess.Entities.Validation
+namespace Shop.DataAccess.Entities
 {
     [MetadataType(typeof(ProductAttributeValueTagValidation))]
     partial class ProductAttributeValueTag
@@ -18,5 +18,9 @@ namespace Shop.DataAccess.Entities.Validation
         [Display(Name = "Заголовок")]
         [Required(ErrorMessage = "Введите заголовок")]
         public string Title { get; set; }
+
+        [Display(Name = "Доступность на текущем языке")]
+        public bool IsCorrectLang { get; set; }
+
     }
 }
