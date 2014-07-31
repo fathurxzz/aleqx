@@ -30,19 +30,33 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Create(int id)
         {
             _repository.LangId = CurrentLangId;
+            var tags = _repository.GetProductAttributeValueTags();
+            ViewBag.Tags = tags;
             return View(new ProductAttributeValue {ProductAttributeId = id, CurrentLang = CurrentLangId});
         }
 
         [HttpPost]
-        public ActionResult Create(ProductAttributeValue model)
+        public ActionResult Create(ProductAttributeValue model, FormCollection form)
         {
+            int tagId = int.Parse(form["tag"]);
+            var tag = _repository.GetProductAttributeValueTag(tagId);
+
             _repository.LangId = CurrentLangId;
+            var productAttributeValue = new ProductAttributeValue()
+            {
+                CurrentLang = model.CurrentLang,
+                ProductAttributeId = model.ProductAttributeId,
+                Title = model.Title,
+                ProductAttributeValueTag = tag
+            };
 
-            var productAttribute = _repository.GetProductAttribute(model.ProductAttributeId);
-            model.ProductAttribute = productAttribute;
-            _repository.AddProductAttributeValue(model);
+            
+            
+            
+            //model.ProductAttribute = productAttribute;
+            _repository.AddProductAttributeValue(productAttributeValue);
 
-            return RedirectToAction("Index", new {id = productAttribute.Id});
+            return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId});
         }
 
         public ActionResult Edit(int id)
@@ -51,6 +65,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 var pav = _repository.GetProductAttributeValue(id);
+                var tags = _repository.GetProductAttributeValueTags();
+                ViewBag.Tags = tags;
                 return View(pav);
             }
             catch (Exception ex)
@@ -61,15 +77,19 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ProductAttributeValue model)
+        public ActionResult Edit(ProductAttributeValue model, FormCollection form)
         {
+            int tagId = int.Parse(form["tag"]);
+            var tag = _repository.GetProductAttributeValueTag(tagId);
+
             _repository.LangId = CurrentLangId;
             try
             {
                 var productAttributeValue = _repository.GetProductAttributeValue(model.Id);
                 TryUpdateModel(productAttributeValue, new[] { "Title"});
+                productAttributeValue.ProductAttributeValueTag = tag;
                 _repository.SaveProductAttributeValue(productAttributeValue);
-                return RedirectToAction("Index", new { id = productAttributeValue .ProductAttributeId});
+                return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId});
             }
             catch (Exception ex)
             {

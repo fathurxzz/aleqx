@@ -35,10 +35,13 @@
         <th>
             @Html.DisplayNameFor(model => model.DisplayOnPreview)
         </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.IsFilterable)
         </th>
+        <th>Значения</th>
         <th></th>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -69,6 +72,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsFilterable)
             </td>
+             <td>
+                @if (!item.IsStatic)
+                {
+                     foreach (var value in item.ProductAttributeValues)
+                     {
+                         @Html.Raw(value.Title+", ")
+                     }
+                }
+            </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут?')" }) 
@@ -77,6 +89,7 @@
                     <text>|</text> @Html.ActionLink("Значения", "Index", "ProductAttributeValue", new {area = "Admin", id = item.Id}, null)
                 }
             </td>
+           
         </tr>
     }
 
