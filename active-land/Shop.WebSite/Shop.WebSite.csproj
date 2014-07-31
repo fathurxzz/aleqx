@@ -261,6 +261,7 @@
     <Content Include="Areas\Admin\Views\ProductAttributeValue\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributeValueTag\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributeValueTag\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributeValueTag\Edit.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

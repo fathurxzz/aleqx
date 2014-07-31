@@ -35,11 +35,18 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsCorrectLang)
+                @if (!item.IsCorrectLang)
+                {
+                    <span class="label label-danger">!</span>
+                }
+                else
+                {
+                    <span class="label label-success">ok</span>
+                }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить тег?')" })
             </td>
         </tr>
     }
