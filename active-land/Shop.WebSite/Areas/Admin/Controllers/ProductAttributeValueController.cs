@@ -78,10 +78,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int productAttributeId)
         {
-
-            return RedirectToAction("Index");
+            _repository.DeleteProductAttributeValue(id);
+            return RedirectToAction("Index",new{id=productAttributeId});
         }
 
     }

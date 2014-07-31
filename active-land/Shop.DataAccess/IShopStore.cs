@@ -22,6 +22,9 @@ namespace Shop.DataAccess
         IDbSet<ProductAttributeStaticValue> ProductAttributeStaticValues { get; }
         IDbSet<ProductAttributeStaticValueLang> ProductAttributeStaticValueLangs { get; }
 
+        IDbSet<ProductAttributeValueTag> ProductAttributeValueTags { get; }
+        IDbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; }
+
         IDbSet<Product> Products { get; }
         IDbSet<ProductLang> ProductLangs { get; }
 

@@ -154,7 +154,7 @@ namespace Shop.Api.Repositories
 
             if (productAttribute == null)
             {
-                throw new Exception(string.Format("Category with id={0} doesn't found", id));
+                throw new Exception(string.Format("ProductAttribute with id={0} not found", id));
             }
 
             while (productAttribute.ProductAttributeLangs.Any())
@@ -215,6 +215,78 @@ namespace Shop.Api.Repositories
             return productAttibuteValue;
         }
 
+        public void DeleteProductAttributeValue(int id)
+        {
+            var productAttributeValue = _store.ProductAttributeValues.SingleOrDefault(c => c.Id == id);
+            if (productAttributeValue == null)
+            {
+                throw new Exception(string.Format("Category with id={0} not found", id));
+            }
+
+            while (productAttributeValue.ProductAttributeValueLangs.Any())
+            {
+                var productAttributeValueLang = productAttributeValue.ProductAttributeValueLangs.First();
+                _store.ProductAttributeValueLangs.Remove(productAttributeValueLang);
+            }
+            _store.ProductAttributeValues.Remove(productAttributeValue);
+            _store.SaveChanges();
+        }
+
+        public IEnumerable<ProductAttributeValueTag> GetProductAttributeValueTags()
+        {
+            var productAttributeValueTags = _store.ProductAttributeValueTags.ToList();
+            foreach (var pavt in productAttributeValueTags)
+            {
+                pavt.CurrentLang = LangId;
+            }
+            return (productAttributeValueTags);
+        }
+
+        public ProductAttributeValueTag GetProductAttributeValueTag(int id)
+        {
+            var pavt = _store.ProductAttributeValueTags.SingleOrDefault(c => c.Id == id);
+            if (pavt == null)
+            {
+                throw new Exception(string.Format("ProductAttributeValueTag with id={0} not found", id));
+            }
+            pavt.CurrentLang = LangId;
+            return pavt;
+        }
+
+        public void DeleteProductAttributeValueTag(int id)
+        {
+            var pavt = _store.ProductAttributeValueTags.SingleOrDefault(c => c.Id == id);
+
+            if (pavt == null)
+            {
+                throw new Exception(string.Format("ProductAttributeValueTag with id={0} doesn't found", id));
+            }
+
+            while (pavt.ProductAttributeValueTagLangs.Any())
+            {
+                var pavtLang = pavt.ProductAttributeValueTagLangs.First();
+                _store.ProductAttributeValueTagLangs.Remove(pavtLang);
+            }
+            _store.ProductAttributeValueTags.Remove(pavt);
+            _store.SaveChanges();
+
+        }
+
+        public int AddProductAttributeValueTag(ProductAttributeValueTag productAttributeValueTag)
+        {
+            _store.ProductAttributeValueTags.Add(productAttributeValueTag);
+            CreateOrChangeEntityLanguage(productAttributeValueTag);
+            _store.SaveChanges();
+            return productAttributeValueTag.Id;
+        }
+
+        public void SaveProductAttributeValueTag(ProductAttributeValueTag productAttributeValueTag)
+        {
+            var cache = _store.ProductAttributeValueTags.Single(c => c.Id == productAttributeValueTag.Id);
+            CreateOrChangeEntityLanguage(cache);
+            _store.SaveChanges();
+        }
+
 
         private void CreateOrChangeEntityLanguage(Category cache)
         {
@@ -242,7 +314,6 @@ namespace Shop.Api.Repositories
             }
 
         }
-
         private void CreateOrChangeEntityLanguage(ProductAttribute cache)
         {
             var categoryLang = _store.ProductAttributeLangs.FirstOrDefault(r => r.ProductAttributeId == cache.Id && r.LanguageId == LangId);
@@ -265,7 +336,6 @@ namespace Shop.Api.Repositories
             }
 
         }
-
         private void CreateOrChangeEntityLanguage(ProductAttributeValue cache)
         {
             var categoryLang = _store.ProductAttributeValueLangs.FirstOrDefault(r => r.ProductAttributeValueId == cache.Id && r.LanguageId == LangId);
@@ -279,6 +349,26 @@ namespace Shop.Api.Repositories
                     Title = cache.Title,
                 };
                 _store.ProductAttributeValueLangs.Add(entityLang);
+            }
+            else
+            {
+                categoryLang.Title = cache.Title;
+            }
+
+        }
+        private void CreateOrChangeEntityLanguage(ProductAttributeValueTag cache)
+        {
+            var categoryLang = _store.ProductAttributeValueTagLangs.FirstOrDefault(r => r.ProductAttributeValueTagId == cache.Id && r.LanguageId == LangId);
+            if (categoryLang == null)
+            {
+                var entityLang = new ProductAttributeValueTagLang
+                {
+                    ProductAttributeValueTagId = cache.Id,
+                    LanguageId = LangId,
+
+                    Title = cache.Title,
+                };
+                _store.ProductAttributeValueTagLangs.Add(entityLang);
             }
             else
             {

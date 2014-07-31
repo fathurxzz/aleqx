@@ -154,6 +154,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeValueController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAttributeValueTagController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -258,6 +259,8 @@
     <Content Include="Areas\Admin\Views\ProductAttributeValue\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributeValue\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttributeValue\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributeValueTag\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAttributeValueTag\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
