@@ -53,12 +53,19 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return View(productAttributeValueTag);
         }
 
+        [HttpPost]
         public ActionResult Edit(ProductAttributeValueTag model)
         {
             _repository.LangId = CurrentLangId;
             var productAttributeValueTag = _repository.GetProductAttributeValueTag(model.Id);
             TryUpdateModel(productAttributeValueTag, new[] { "Title" });
             _repository.SaveProductAttributeValueTag(productAttributeValueTag);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            _repository.DeleteProductAttributeValueTag(id);
             return RedirectToAction("Index");
         }
 
