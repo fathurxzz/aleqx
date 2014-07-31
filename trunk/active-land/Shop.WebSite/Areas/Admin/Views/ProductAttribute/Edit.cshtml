@@ -5,6 +5,14 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
+    </ul>
+}
 <div class="container">
     <h3>Редактирование атрибута</h3>
     @using (Html.BeginForm("Edit", "ProductAttribute", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))

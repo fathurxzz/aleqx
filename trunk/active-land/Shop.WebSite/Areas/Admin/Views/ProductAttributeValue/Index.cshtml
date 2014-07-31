@@ -10,6 +10,7 @@
     <ul class="nav nav-tabs" role="tablist">
         <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
         <li class="active">@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
     </ul>
 }
 
@@ -26,6 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
+        <th>
+            Тег
+        </th>
         <th></th>
     </tr>
     
@@ -33,6 +37,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @if (item.ProductAttributeValueTag != null)
+                {
+                    @Html.Raw(item.ProductAttributeValueTag.Title);
+                }
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id=item.Id}) | 

@@ -122,6 +122,11 @@ namespace Shop.Api.Repositories
             foreach (var productAttribute in productAttributes)
             {
                 productAttribute.CurrentLang = LangId;
+
+                foreach (var value in productAttribute.ProductAttributeValues)
+                {
+                    value.CurrentLang = LangId;
+                }
             }
             return productAttributes;
         }
@@ -143,6 +148,11 @@ namespace Shop.Api.Repositories
             foreach (var pav in productAttibute.ProductAttributeValues)
             {
                 pav.CurrentLang = LangId;
+
+                if (pav.ProductAttributeValueTag != null)
+                {
+                    pav.ProductAttributeValueTag.CurrentLang = LangId;
+                }
             }
 
             return productAttibute;
@@ -212,6 +222,12 @@ namespace Shop.Api.Repositories
                 throw new Exception(string.Format("ProductAttibuteValue with id={0} not found", id));
             }
             productAttibuteValue.CurrentLang = LangId;
+
+            if (productAttibuteValue.ProductAttributeValueTag != null)
+            {
+                productAttibuteValue.ProductAttributeValueTag.CurrentLang = LangId;
+            }
+
             return productAttibuteValue;
         }
 
@@ -247,7 +263,7 @@ namespace Shop.Api.Repositories
             var pavt = _store.ProductAttributeValueTags.SingleOrDefault(c => c.Id == id);
             if (pavt == null)
             {
-                throw new Exception(string.Format("ProductAttributeValueTag with id={0} not found", id));
+                return null;
             }
             pavt.CurrentLang = LangId;
             return pavt;

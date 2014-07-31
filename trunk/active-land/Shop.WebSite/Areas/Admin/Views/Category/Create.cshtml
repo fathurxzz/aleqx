@@ -5,6 +5,15 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+@section AdminNavigation
+{
+        <ul class="nav nav-tabs" role="tablist">
+        <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    </ul>
+}
+
 <div class="container">
     <h3>Добавление категории</h3>
     @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))

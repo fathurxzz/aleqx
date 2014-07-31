@@ -5,11 +5,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
-
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
+    </ul>
+}
 
 <div class="container">
-
+<h3>Создание тега</h3>
     @using (Html.BeginForm("Create", "ProductAttributeValueTag", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
     {
         @Html.AntiForgeryToken()
@@ -19,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                @Html.EditorFor(model => model.Title)
+                <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок" value="@Model.Title">
             </div>
             @Html.ValidationMessageFor(model => model.Title)
         </div>
