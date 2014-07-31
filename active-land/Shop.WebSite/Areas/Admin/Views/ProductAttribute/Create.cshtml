@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок">
+                <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок" value="@Model.Title">
             </div>
             @Html.ValidationMessageFor(model => model.Title)
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.UnitTitle, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="UnitTitle" id="UnitTitle" placeholder="Введите заголовок">
+                <input type="text" class="form-control" name="UnitTitle" id="UnitTitle" placeholder="Введите заголовок" value="@Model.UnitTitle">
             </div>
             @Html.ValidationMessageFor(model => model.UnitTitle)
         </div>
@@ -34,7 +34,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox"> @Html.LabelFor(model => model.IsStatic)
+                        @Html.CheckBoxFor(model=>model.IsStatic) @Html.LabelFor(model => model.IsStatic)
                     </label>
                 </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox"> @Html.LabelFor(model => model.DisplayOnPreview)
+                       @Html.CheckBoxFor(model=>model.DisplayOnPreview) @Html.LabelFor(model => model.DisplayOnPreview)
                     </label>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox"> @Html.LabelFor(model => model.IsFilterable)
+                        @Html.CheckBoxFor(model=>model.IsFilterable) @Html.LabelFor(model => model.IsFilterable)
                     </label>
                 </div>
             </div>

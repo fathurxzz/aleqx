@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -197,7 +197,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="UnitTitle" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="UnitTitle" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
     <Property Name="ProductAttributeId" Type="int" Nullable="false" />
   </EntityType>
@@ -754,7 +754,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="UnitTitle" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="UnitTitle" MaxLength="200" Nullable="true" />
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageProductAttributeLang" FromRole="ProductAttributeLang" ToRole="Language" />
           <NavigationProperty Name="ProductAttribute" Relationship="Shop.ProductAttributeProductAttributeLang" FromRole="ProductAttributeLang" ToRole="ProductAttribute" />

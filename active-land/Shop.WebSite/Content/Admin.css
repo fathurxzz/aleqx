@@ -1,9 +1,31 @@
-﻿.adminTextContainer {
-    max-height: 100px; overflow: hidden; max-width: 800px
+﻿body {
+    padding: 5px 10px; 
+}
+.adminTextContainer div {
+    max-height: 20px; 
+    overflow: hidden;
+    max-width: 400px;
 }
 
 .admin-container {
     width: 800px;
     margin: 0 auto;
     
+}
+
+.subcategory {
+    padding-left: 40px !important;
+}
+
+.language-switcher {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.language-switcher a {
+    text-decoration: none !important;
+}
+
+p.addEntity {
+    padding-top: 10px;
 }

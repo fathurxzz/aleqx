@@ -25,7 +25,7 @@ namespace Shop.Api.Repositories
             {
                 category.CurrentLang = LangId;
             }
-            return categories;
+            return ApplySorting(categories);
         }
 
         public Category GetCategory(int id)
@@ -36,6 +36,11 @@ namespace Shop.Api.Repositories
                 throw new Exception(string.Format("Category with id={0} not found", id));
             }
             category.CurrentLang = LangId;
+
+            foreach (var productAttribute in category.ProductAttributes)
+            {
+                productAttribute.CurrentLang = LangId;
+            }
             return category;
         }
 
@@ -43,7 +48,7 @@ namespace Shop.Api.Repositories
         {
             var category = _store.Categories.SingleOrDefault(c => c.Id == id);
 
-            if (category==null)
+            if (category == null)
             {
                 throw new Exception(string.Format("Category with id={0} doesn't found", id));
             }
@@ -97,14 +102,17 @@ namespace Shop.Api.Repositories
             //        throw new Exception(string.Format("Category {0} already exists", category.Name));
             //    }
             //}
-            cache.Name = category.Name;
-            cache.SortOrder = category.SortOrder;
-            cache.Title = category.Title;
-            cache.SeoDescription = category.SeoDescription;
-            cache.SeoKeywords = category.SeoKeywords;
-            cache.SeoText = category.SeoText;
-            
+
+
+            //cache.Name = category.Name;
+            //cache.SortOrder = category.SortOrder;
+            //cache.Title = category.Title;
+            //cache.SeoDescription = category.SeoDescription;
+            //cache.SeoKeywords = category.SeoKeywords;
+            //cache.SeoText = category.SeoText;
+
             CreateOrChangeEntityLanguage(cache);
+
             _store.SaveChanges();
         }
 
@@ -131,6 +139,12 @@ namespace Shop.Api.Repositories
                 throw new Exception(string.Format("ProductAttibute with id={0} not found", id));
             }
             productAttibute.CurrentLang = LangId;
+
+            foreach (var pav in productAttibute.ProductAttributeValues)
+            {
+                pav.CurrentLang = LangId;
+            }
+
             return productAttibute;
         }
 
@@ -166,17 +180,40 @@ namespace Shop.Api.Repositories
         public void SaveProductAttribute(ProductAttribute productAttribute)
         {
             var cache = _store.ProductAttributes.Single(c => c.Id == productAttribute.Id);
-            cache.UnitTitle = productAttribute.UnitTitle;
-            cache.SortOrder = productAttribute.SortOrder;
-            cache.Title = productAttribute.Title;
+        
+            //cache.UnitTitle = productAttribute.UnitTitle;
+            //cache.SortOrder = productAttribute.SortOrder;
+            //cache.Title = productAttribute.Title;
+            
             CreateOrChangeEntityLanguage(cache);
             _store.SaveChanges();
         }
 
+        public int AddProductAttributeValue(ProductAttributeValue productAttributeValue)
+        {
+            _store.ProductAttributeValues.Add(productAttributeValue);
+            CreateOrChangeEntityLanguage(productAttributeValue);
+            _store.SaveChanges();
+            return productAttributeValue.Id;
+        }
 
+        public void SaveProductAttributeValue(ProductAttributeValue productAttributeValue)
+        {
+            var cache = _store.ProductAttributeValues.Single(c => c.Id == productAttributeValue.Id);
+            CreateOrChangeEntityLanguage(cache);
+            _store.SaveChanges();
+        }
 
-
-
+        public ProductAttributeValue GetProductAttributeValue(int id)
+        {
+            var productAttibuteValue = _store.ProductAttributeValues.SingleOrDefault(c => c.Id == id);
+            if (productAttibuteValue == null)
+            {
+                throw new Exception(string.Format("ProductAttibuteValue with id={0} not found", id));
+            }
+            productAttibuteValue.CurrentLang = LangId;
+            return productAttibuteValue;
+        }
 
 
         private void CreateOrChangeEntityLanguage(Category cache)
@@ -188,7 +225,7 @@ namespace Shop.Api.Repositories
                 {
                     CategoryId = cache.Id,
                     LanguageId = LangId,
-                    
+
                     Title = cache.Title,
                     SeoDescription = cache.SeoDescription,
                     SeoKeywords = cache.SeoKeywords,
@@ -227,6 +264,51 @@ namespace Shop.Api.Repositories
                 categoryLang.UnitTitle = cache.UnitTitle;
             }
 
+        }
+
+        private void CreateOrChangeEntityLanguage(ProductAttributeValue cache)
+        {
+            var categoryLang = _store.ProductAttributeValueLangs.FirstOrDefault(r => r.ProductAttributeValueId == cache.Id && r.LanguageId == LangId);
+            if (categoryLang == null)
+            {
+                var entityLang = new ProductAttributeValueLang
+                {
+                    ProductAttributeValueId = cache.Id,
+                    LanguageId = LangId,
+
+                    Title = cache.Title,
+                };
+                _store.ProductAttributeValueLangs.Add(entityLang);
+            }
+            else
+            {
+                categoryLang.Title = cache.Title;
+            }
+
+        }
+
+
+        private List<Category> _result = new List<Category>();
+        private IEnumerable<Category> ApplySorting(IEnumerable<Category> source)
+        {
+            foreach (var item in source.Where(c => c.Parent == null).OrderBy(c => c.SortOrder))
+            {
+                Visit(item);
+            }
+
+            return _result;
+        }
+        private void Visit(Category node)
+        {
+            _result.Add(node);
+            if (node.Children == null || node.Children.Count == 0)
+            {
+                return;
+            }
+            foreach (var child in node.Children.OrderBy(c => c.SortOrder))
+            {
+                Visit(child);
+            }
         }
     }
 }

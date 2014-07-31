@@ -34,7 +34,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="IsStatic" id="IsStatic"> @Html.LabelFor(model => model.IsStatic)
+                        @Html.CheckBoxFor(model=>model.IsStatic) @Html.LabelFor(model => model.IsStatic)
                     </label>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="DisplayOnPreview" id="DisplayOnPreview"> @Html.LabelFor(model => model.DisplayOnPreview)
+                        @Html.CheckBoxFor(model=>model.DisplayOnPreview) @Html.LabelFor(model => model.DisplayOnPreview)
                     </label>
                 </div>
             </div>
@@ -53,7 +53,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="IsFilterable" id="IsFilterable"> @Html.LabelFor(model => model.IsFilterable)
+                        @Html.CheckBoxFor(model=>model.IsFilterable) @Html.LabelFor(model => model.IsFilterable)
                     </label>
                 </div>
             </div>

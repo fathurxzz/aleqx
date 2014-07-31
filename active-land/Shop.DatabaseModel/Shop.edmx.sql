@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/28/2014 23:22:15
--- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 07/31/2014 11:35:05
+-- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -162,7 +162,7 @@ ALTER TABLE `ProductLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `ProductAttributeLang`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Title` varchar (200) NOT NULL, 
-	`UnitTitle` varchar (200) NOT NULL, 
+	`UnitTitle` varchar (200), 
 	`LanguageId` int NOT NULL, 
 	`ProductAttributeId` int NOT NULL);
 

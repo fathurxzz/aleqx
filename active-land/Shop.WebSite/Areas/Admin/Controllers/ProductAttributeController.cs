@@ -90,5 +90,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(int id)
+        {
+            _repository.DeleteProductAttribute(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Shop.DataAccess.Entities.Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Категории";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -13,7 +13,7 @@
     </ul>
 }
 
-<p>
+<p class="addEntity">
     @Html.ActionLink("Добавить", "Create")
 </p>
 
@@ -21,9 +21,6 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryLevel)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -37,7 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.SeoText)
         </th>
-        <th>
+        <th style="width: 1px">
             @Html.DisplayNameFor(model => model.IsCorrectLang)
         </th>
         <th></th>
@@ -45,24 +42,28 @@
 
     @foreach (var item in Model)
     {
+        string categoryLevel = item.CategoryLevel > 0 ? "subcategory" : "";
         <tr>
-            <td>
+            <td class="@categoryLevel">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryLevel)
-            </td>
-            <td>
+            <td class="@categoryLevel">
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td class="adminTextContainer">
-                @Html.DisplayFor(modelItem => item.SeoDescription)
+                <div>
+                    @Html.DisplayFor(modelItem => item.SeoDescription)
+                </div>
             </td>
             <td class="adminTextContainer">
-                @Html.DisplayFor(modelItem => item.SeoKeywords)
+                <div>
+                    @Html.DisplayFor(modelItem => item.SeoKeywords)
+                </div>
             </td>
             <td class="adminTextContainer">
-                @Html.DisplayFor(modelItem => item.SeoText)
+                <div>
+                    @Html.DisplayFor(modelItem => item.SeoText)
+                </div>
             </td>
             <td>
                 @if (!item.IsCorrectLang)
@@ -75,9 +76,10 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id }) |
-            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" })
+                @Html.ActionLink("Доб. подкат.", "Create", new { id = item.Id }) |
+                @Html.ActionLink("Ред.", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Атр.", "Attributes", new { id = item.Id }) |
+                @Html.ActionLink("Удал.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" })
             </td>
         </tr>
     }

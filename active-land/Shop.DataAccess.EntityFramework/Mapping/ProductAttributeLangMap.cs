@@ -17,7 +17,6 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .HasMaxLength(200);
 
             this.Property(t => t.UnitTitle)
-                .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
