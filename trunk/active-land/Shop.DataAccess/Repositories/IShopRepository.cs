@@ -13,7 +13,6 @@ namespace Shop.DataAccess.Repositories
         int LangId { get; set; }
 
         // Categories
-        
         IEnumerable<Category> GetCategories();
         Category GetCategory(int id);
         void DeleteCategory(int id);
@@ -22,7 +21,6 @@ namespace Shop.DataAccess.Repositories
 
 
         // ProductAttributes
-        
         IEnumerable<ProductAttribute> GetProductAttributes();
         IEnumerable<ProductAttribute> GetProductAttributes(int categoryId);
         ProductAttribute GetProductAttribute(int id);
@@ -30,6 +28,11 @@ namespace Shop.DataAccess.Repositories
         int AddProductAttribute(ProductAttribute productAttribute);
         void SaveProductAttribute(ProductAttribute productAttribute);
 
+        
+        // ProductAttributeValues
+        int AddProductAttributeValue(ProductAttributeValue productAttributeValue);
+        void SaveProductAttributeValue(ProductAttributeValue productAttributeValue);
+        ProductAttributeValue GetProductAttributeValue(int id);
 
     }
 }

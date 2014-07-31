@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Shop.DataAccess.Entities.ProductAttributeValue>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    </ul>
+}
+
+<p class="addEntity">
+    <h3>Значения атрибута &laquo;@ViewBag.ProductAttributeTitle&raquo; </h3>
+</p>
+
+<p class="addEntity">
+    @Html.ActionLink("Добавить", "Create", new{id=(int)ViewBag.ProductAttributeId})
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id=item.Id}) | 
+                @Html.ActionLink("Удалить", "Delete", new { id=item.Id }, new { onclick = "return confirm('Удалить значение атрибута?')" })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Назад к списку атрибутов","Index","ProductAttribute")

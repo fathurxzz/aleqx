@@ -51,6 +51,8 @@
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Localization\Category.cs" />
     <Compile Include="Entities\Localization\ProductAttribute.cs" />
+    <Compile Include="Entities\Localization\ProductAttributeValue.cs" />
+    <Compile Include="Entities\Partials\ProductAttribute.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductAttribute.cs" />
     <Compile Include="Entities\ProductAttributeLang.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Entities\ProductLang.cs" />
     <Compile Include="Entities\Validation\Category.cs" />
     <Compile Include="Entities\Validation\ProductAttribute.cs" />
+    <Compile Include="Entities\Validation\ProductAttributeValue.cs" />
     <Compile Include="IShopStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />

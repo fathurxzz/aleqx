@@ -16,6 +16,14 @@ namespace Shop.DataAccess
         IDbSet<ProductAttribute> ProductAttributes { get; }
         IDbSet<ProductAttributeLang> ProductAttributeLangs { get; }
 
+        IDbSet<ProductAttributeValue> ProductAttributeValues { get; }
+        IDbSet<ProductAttributeValueLang> ProductAttributeValueLangs { get; }
+
+        IDbSet<ProductAttributeStaticValue> ProductAttributeStaticValues { get; }
+        IDbSet<ProductAttributeStaticValueLang> ProductAttributeStaticValueLangs { get; }
+
+        IDbSet<Product> Products { get; }
+        IDbSet<ProductLang> ProductLangs { get; }
 
         int SaveChanges();
     }

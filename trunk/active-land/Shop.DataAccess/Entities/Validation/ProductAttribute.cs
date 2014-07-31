@@ -20,7 +20,6 @@ namespace Shop.DataAccess.Entities
         public string Title { get; set; }
 
         [Display(Name = "Заголовок значения")]
-        [Required(ErrorMessage = "Введите заголовок значения")]
         public string UnitTitle { get; set; }
 
         [Display(Name = "Статический")]

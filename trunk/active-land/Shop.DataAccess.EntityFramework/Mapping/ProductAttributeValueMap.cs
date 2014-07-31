@@ -27,6 +27,10 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .WithMany(t => t.ProductAttributeValues)
                 .HasForeignKey(d => d.ProductAttributeValueTagId);
 
+            // Ignored
+            this.Ignore(t => t.Title);
+            this.Ignore(t => t.IsCorrectLang);
+            this.Ignore(t => t.CurrentLang);
         }
     }
 }

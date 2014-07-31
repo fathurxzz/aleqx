@@ -1,19 +1,44 @@
 ﻿@using System.Threading
 @using Shop.WebSite.Helpers
-<div class="language-switcher">
-    <span>
+@*<div class="language-switcher">
+    <ul class="nav nav-pills">
         @if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
         {
             var routeData = ViewContext.RouteData.GetCopy();
             routeData.Values["lang"] = "en";
-            <span>На русском | </span>@Html.RouteLink("In English", routeData.Values)
+            <li class="active"><a href="#">На русском</a></li>
+            <li>@Html.RouteLink("In English", routeData.Values)</li>
         }
         else
         {
             var routeData = ViewContext.RouteData.GetCopy();
             routeData.Values["lang"] = "ru";
-            @Html.RouteLink("На русском", routeData.Values)<span> | In English</span>
+            <li>@Html.RouteLink("На русском", routeData.Values)</li>
+            <li class="active"><a href="#">In English</a></li>
         }
-    </span>
-</div>
+    </ul>
+</div>*@
+@*<div class="btn-group btn-group-xs">
+    <button type="button" class="btn btn-link btn-default"><a href="#">Left</a> </button>
+    <button type="button" class="btn btn-default">Middle</button>
+    <button type="button" class="btn btn-default">Right</button>
+</div>*@
 
+<div class="language-switcher">
+    <div class="btn-group btn-group-xs">
+        @if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+        {
+            var routeData = ViewContext.RouteData.GetCopy();
+            routeData.Values["lang"] = "en";
+            <button type="button" class="btn btn-success btn-default">На русском</button>
+            <button type="button" class="btn btn-default">@Html.RouteLink("In English", routeData.Values)</button>
+        }
+        else
+        {
+            var routeData = ViewContext.RouteData.GetCopy();
+            routeData.Values["lang"] = "ru";
+            <button type="button" class="btn btn-default">@Html.RouteLink("На русском", routeData.Values)</button>
+            <button type="button" class="btn btn-success btn-default">In English</button>
+        }
+    </div>
+</div>

@@ -27,9 +27,40 @@ namespace Shop.DataAccess.EntityFramework
         {
             get { return _context.ProductAttributes; }
         }
+
         public IDbSet<ProductAttributeLang> ProductAttributeLangs
         {
             get { return _context.ProductAttributeLangs; }
+        }
+
+        public IDbSet<ProductAttributeValue> ProductAttributeValues
+        {
+            get { return _context.ProductAttributeValues; }
+        }
+
+        public IDbSet<ProductAttributeValueLang> ProductAttributeValueLangs
+        {
+            get { return _context.ProductAttributeValueLangs; }
+        }
+
+        public IDbSet<ProductAttributeStaticValue> ProductAttributeStaticValues
+        {
+            get { return _context.ProductAttributeStaticValues; }
+        }
+
+        public IDbSet<ProductAttributeStaticValueLang> ProductAttributeStaticValueLangs
+        {
+            get { return _context.ProductAttributeStaticValueLangs; }
+        }
+
+        public IDbSet<Product> Products
+        {
+            get { return _context.Products; }
+        }
+
+        public IDbSet<ProductLang> ProductLangs
+        {
+            get { return _context.ProductLangs; }
         }
 
 

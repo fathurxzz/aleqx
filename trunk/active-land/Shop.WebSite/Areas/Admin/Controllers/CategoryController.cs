@@ -125,9 +125,47 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
         public ActionResult Attributes(int id)
         {
+            var category = _repository.GetCategory(id);
+            ViewBag.CategoryId = id;
             var productAttributes = _repository.GetProductAttributes();
+            foreach (var productAttribute in productAttributes)
+            {
+                if (category.ProductAttributes.Contains(productAttribute))
+                {
+                    productAttribute.Selected = true;
+                }
+            }
             return View(productAttributes);
         }
 
+
+        [HttpPost]
+        public ActionResult Attributes(int categoryId, FormCollection form)
+        {
+            _repository.LangId = CurrentLangId;
+            var category = _repository.GetCategory(categoryId);
+            var attributes = _repository.GetProductAttributes().ToList();
+            PostCheckboxesData postData = form.ProcessPostCheckboxesData("attr", "categoryId");
+
+            foreach (var kvp in postData)
+            {
+                var attribute = attributes.First(a => a.Id == kvp.Key);
+                if (kvp.Value)
+                {
+                    if (!category.ProductAttributes.Contains(attribute))
+                        category.ProductAttributes.Add(attribute);
+                }
+                else
+                {
+                    if (category.ProductAttributes.Contains(attribute))
+                        category.ProductAttributes.Remove(attribute);
+                }
+            }
+
+            _repository.SaveCategory(category);
+
+
+            return RedirectToAction("Index");
+        }
     }
 }
