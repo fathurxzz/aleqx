@@ -303,6 +303,36 @@ namespace Shop.Api.Repositories
             _store.SaveChanges();
         }
 
+        public IEnumerable<Product> GetProducts()
+        {
+            var products = _store.Products.ToList();
+            foreach (var product in products)
+            {
+                product.CurrentLang = LangId;
+            }
+            return products;
+        }
+
+        public Product GetProduct(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteProduct(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
 
         private void CreateOrChangeEntityLanguage(Category cache)
         {

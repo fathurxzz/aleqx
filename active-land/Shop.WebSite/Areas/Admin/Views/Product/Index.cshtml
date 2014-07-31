@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Shop.DataAccess.Entities.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    <ul class="nav nav-tabs" role="tablist">
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Продукты", "Index", "Product", new { area = "Admin" }, null)</li>
+    </ul>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeoDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeoKeywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeoText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCorrectLang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentLang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsNew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDiscount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsTopSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OldPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeoDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeoKeywords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeoText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCorrectLang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsNew)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDiscount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsTopSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OldPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
