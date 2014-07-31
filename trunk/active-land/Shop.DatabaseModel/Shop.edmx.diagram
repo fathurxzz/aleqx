@@ -13,9 +13,9 @@
         <EntityTypeShape EntityType="Shop.ProductImage" Width="1.5" PointX="14.875" PointY="8.125" />
         <EntityTypeShape EntityType="Shop.ProductLang" Width="1.5" PointX="3.625" PointY="16.25" />
         <EntityTypeShape EntityType="Shop.ProductAttributeLang" Width="1.875" PointX="3.625" PointY="4" />
-        <EntityTypeShape EntityType="Shop.ProductAttributeValue" Width="1.875" PointX="9.25" PointY="10.875" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValue" Width="2.375" PointX="9.25" PointY="10.875" />
         <EntityTypeShape EntityType="Shop.ProductAttributeValueLang" Width="2.125" PointX="3.625" PointY="10.625" />
-        <EntityTypeShape EntityType="Shop.ProductAttributeValueTag" Width="2.25" PointX="9.125" PointY="14.125" />
+        <EntityTypeShape EntityType="Shop.ProductAttributeValueTag" Width="2.625" PointX="9.125" PointY="14.125" />
         <EntityTypeShape EntityType="Shop.ProductAttributeValueTagLang" Width="2.375" PointX="3.625" PointY="13.625" />
         <EntityTypeShape EntityType="Shop.ProductAttributeStaticValue" Width="2.375" PointX="7.125" PointY="7.75" />
         <EntityTypeShape EntityType="Shop.ProductAttributeStaticValueLang" Width="2.625" PointX="3.625" PointY="7.625" />

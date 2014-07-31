@@ -36,7 +36,7 @@
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id=item.Id}) | 
-                @Html.ActionLink("Удалить", "Delete", new { id=item.Id }, new { onclick = "return confirm('Удалить значение атрибута?')" })
+                @Html.ActionLink("Удалить", "Delete", new { id=item.Id,productAttributeId=item.ProductAttributeId }, new { onclick = "return confirm('Удалить значение атрибута?')" })
             </td>
         </tr>
     }

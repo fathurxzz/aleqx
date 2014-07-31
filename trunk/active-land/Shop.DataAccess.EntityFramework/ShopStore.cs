@@ -53,6 +53,16 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.ProductAttributeStaticValueLangs; }
         }
 
+        public IDbSet<ProductAttributeValueTag> ProductAttributeValueTags
+        {
+            get { return _context.ProductAttributeValueTags; }
+        }
+
+        public IDbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLangs
+        {
+            get { return _context.ProductAttributeValueTagLangs; }
+        }
+
         public IDbSet<Product> Products
         {
             get { return _context.Products; }

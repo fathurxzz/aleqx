@@ -70,8 +70,11 @@
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут?')" }) |
-                @Html.ActionLink("Значения", "Index", "ProductAttributeValue", new { area = "Admin",  id = item.Id }, null)
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут?')" }) 
+                @if (!item.IsStatic)
+                {
+                    <text>|</text> @Html.ActionLink("Значения", "Index", "ProductAttributeValue", new {area = "Admin", id = item.Id}, null)
+                }
             </td>
         </tr>
     }
