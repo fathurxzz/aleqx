@@ -18,8 +18,7 @@ namespace Shop.DataAccess.Repositories
         void DeleteCategory(int id);
         int AddCategory(Category category);
         void SaveCategory(Category category);
-
-
+        
         // ProductAttributes
         IEnumerable<ProductAttribute> GetProductAttributes();
         IEnumerable<ProductAttribute> GetProductAttributes(int categoryId);
@@ -27,7 +26,6 @@ namespace Shop.DataAccess.Repositories
         void DeleteProductAttribute(int id);
         int AddProductAttribute(ProductAttribute productAttribute);
         void SaveProductAttribute(ProductAttribute productAttribute);
-
         
         // ProductAttributeValues
         int AddProductAttributeValue(ProductAttributeValue productAttributeValue);
@@ -36,12 +34,18 @@ namespace Shop.DataAccess.Repositories
         void DeleteProductAttributeValue(int id);
 
         // ProductAttributeValueTags
-
         IEnumerable<ProductAttributeValueTag> GetProductAttributeValueTags();
         ProductAttributeValueTag GetProductAttributeValueTag(int id);
         void DeleteProductAttributeValueTag(int id);
         int AddProductAttributeValueTag(ProductAttributeValueTag productAttributeValueTag);
         void SaveProductAttributeValueTag(ProductAttributeValueTag productAttributeValueTag);
+
+        // Products
+        IEnumerable<Product> GetProducts();
+        Product GetProduct(int id);
+        void DeleteProduct(int id);
+        int AddProduct(Product product);
+        void SaveProduct(Product product);
 
     }
 }
