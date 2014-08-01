@@ -52,8 +52,10 @@
     <Compile Include="Entities\Localization\Category.cs" />
     <Compile Include="Entities\Localization\Product.cs" />
     <Compile Include="Entities\Localization\ProductAttribute.cs" />
+    <Compile Include="Entities\Localization\ProductAttributeStaticValue.cs" />
     <Compile Include="Entities\Localization\ProductAttributeValue.cs" />
     <Compile Include="Entities\Localization\ProductAttributeValueTag.cs" />
+    <Compile Include="Entities\Partials\Category.cs" />
     <Compile Include="Entities\Partials\ProductAttribute.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ProductAttribute.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Entities\ProductLang.cs" />
     <Compile Include="Entities\Validation\CategoryValidation.cs" />
     <Compile Include="Entities\Validation\ProductAttribute.cs" />
+    <Compile Include="Entities\Validation\ProductAttributeStaticValue.cs" />
     <Compile Include="Entities\Validation\ProductAttributeValue.cs" />
     <Compile Include="Entities\Validation\ProductAttributeValueTag.cs" />
     <Compile Include="Entities\Validation\ProductValidation.cs" />

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop.Api.Contracts.Exceptions
+namespace Shop.DataAccess.Entities
 {
-    public class UserException : Exception
+    partial class Category
     {
-
+        public bool Selected { get; set; }
     }
 }
-  

@@ -41,6 +41,15 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .WithMany(t => t.Products)
                 .HasForeignKey(d => d.CategoryId);
 
+            // Ignored
+            this.Ignore(t => t.Title);
+            this.Ignore(t => t.SeoDescription);
+            this.Ignore(t => t.SeoKeywords);
+            this.Ignore(t => t.SeoText);
+            this.Ignore(t => t.Description);
+            this.Ignore(t => t.IsCorrectLang);
+            this.Ignore(t => t.CurrentLang);
+
         }
     }
 }

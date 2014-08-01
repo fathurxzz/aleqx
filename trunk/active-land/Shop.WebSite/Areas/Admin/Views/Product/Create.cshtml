@@ -1,0 +1,158 @@
+﻿@using Shop.DataAccess.Entities
+@model Shop.DataAccess.Entities.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Product")
+}
+
+<div class="container">
+    <h3>Добавление продукта</h3>
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CurrentLang)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @{
+                    var categories = ((IEnumerable<Category>) ViewBag.Categories).ToList();
+                    if (categories.Any())
+                    {
+                        <select name="categoryId">
+                            @foreach (var category in categories)
+                            {
+                                if (category.Selected)
+                                {
+                                    <option selected value="@category.Id">@category.Title</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.Id">@category.Title</option>
+                                }
+                                
+                            }
+                        </select>
+                    }
+                }
+            </div>
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Name" id="Name" placeholder="Введите идентификатор" value="@Model.Name">
+                <p class="help-block">Отображается как часть адреса в строке браузера. Должен быть уникальным.</p>
+            </div>
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок" value="@Model.Title">
+            </div>
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="Description">@Model.Description</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SeoDescription, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="SeoDescription">@Model.SeoDescription</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SeoKeywords, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="SeoKeywords">@Model.SeoKeywords</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SeoText, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" name="SeoText">@Model.SeoText</textarea>
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model=>model.IsNew) @Html.LabelFor(model => model.IsNew)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model=>model.IsDiscount) @Html.LabelFor(model => model.IsDiscount)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model=>model.IsTopSale) @Html.LabelFor(model => model.IsTopSale)
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.Price)
+            </div>
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OldPrice, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.OldPrice)
+            </div>
+            @Html.ValidationMessageFor(model => model.OldPrice)
+        </div>
+        
+        
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model=>model.IsActive) @Html.LabelFor(model => model.IsActive)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Product", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-default">Сохранить</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

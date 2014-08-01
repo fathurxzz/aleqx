@@ -24,7 +24,6 @@ namespace Shop.DataAccess.Entities
         //public string SortOrder { get; set; }
 
         [Display(Name = "Идентификатор")]
-        [Required(ErrorMessage = "Введите идентификатор")]
         public string Name { get; set; }
 
         [Display(Name = "Доступность на текущем языке")]
@@ -57,7 +56,9 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Старая цена")]
         public decimal OldPrice { get; set; }
 
-        
+        [Display(Name = "Активный")]
+        public bool IsActive { get; set; }
+
     }
 
 }

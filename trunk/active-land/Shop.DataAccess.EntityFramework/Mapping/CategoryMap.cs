@@ -50,6 +50,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Ignore(t => t.SeoText);
             this.Ignore(t => t.IsCorrectLang);
             this.Ignore(t => t.CurrentLang);
+            this.Ignore(t => t.Selected);
 
         }
     }

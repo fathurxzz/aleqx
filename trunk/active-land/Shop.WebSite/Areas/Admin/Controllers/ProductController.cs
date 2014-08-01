@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
+using Shop.WebSite.Helpers;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
@@ -12,7 +14,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
     {
         private readonly IShopRepository _repository;
 
-        public ProductController(IShopRepository repository) : base(repository)
+        public ProductController(IShopRepository repository)
+            : base(repository)
         {
             _repository = repository;
         }
@@ -25,10 +28,201 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         }
 
 
-        public ActionResult Create(int id)
+        public ActionResult Create(int? id)
         {
             _repository.LangId = CurrentLangId;
-            return View(new Product {CategoryId = id});
+
+            var categories = _repository.GetCategories();
+            if (id.HasValue)
+            {
+                foreach (var category in categories.Where(category => category.Id == id))
+                {
+                    category.Selected = true;
+                }
+            }
+
+            ViewBag.Categories = categories;
+
+            return View(new Product { CategoryId = id ?? 0 });
+        }
+
+        [HttpPost]
+        public ActionResult Create(Product model, FormCollection form)
+        {
+            _repository.LangId = CurrentLangId;
+            try
+            {
+                model.Id = 0;
+
+                int categoryId = int.Parse(form["categoryId"]);
+
+
+                var product = new Product
+                {
+                    Name = string.IsNullOrEmpty(model.Name)
+                        ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
+                        : SiteHelper.UpdatePageWebName(model.Name),
+                    CategoryId = categoryId,
+                    Title = model.Title,
+                    SeoDescription = model.SeoDescription,
+                    SeoKeywords = model.SeoKeywords,
+                    SeoText = model.SeoText,
+                    Description = model.Description,
+                    IsActive = model.IsActive,
+                    IsDiscount = model.IsDiscount,
+                    IsNew = model.IsNew,
+                    IsTopSale = model.IsTopSale,
+                    OldPrice = model.OldPrice,
+                    Price = model.Price
+                };
+
+                _repository.AddProduct(product);
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            _repository.LangId = CurrentLangId;
+
+            try
+            {
+                var product = _repository.GetProduct(id);
+                var categories = _repository.GetCategories();
+                foreach (var category in categories.Where(category => category.Id == product.CategoryId))
+                {
+                    category.Selected = true;
+                }
+                ViewBag.Categories = categories;
+
+                return View(product);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product model, FormCollection form)
+        {
+            _repository.LangId = CurrentLangId;
+
+            try
+            {
+                var product = _repository.GetProduct(model.Id);
+
+                var categories = _repository.GetCategories();
+
+                foreach (var category in categories.Where(category => category.Id == product.CategoryId))
+                {
+                    category.Selected = true;
+                }
+
+                ViewBag.Categories = categories;
+
+
+                product.Name = SiteHelper.UpdatePageWebName(model.Name);
+                TryUpdateModel(product, new[] { "Title", "Description", "SeoDescription", "SeoKeywords", "SeoText", "IsActive", "IsDiscount", "IsNew", "IsTopSale" });
+                int categoryId = int.Parse(form["categoryId"]);
+                product.Price = decimal.Parse(form["Price"]);
+                product.OldPrice = decimal.Parse(form["OldPrice"]);
+                product.CategoryId = categoryId;
+                _repository.SaveProduct(product);
+
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View(model);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Attributes(int id)
+        {
+            _repository.LangId = CurrentLangId;
+            var product = _repository.GetProduct(id);
+            var productAttributes = _repository.GetProductAttributes(product.CategoryId);
+            ViewBag.ProductAttributeValues = product.ProductAttributeValues.ToList();
+            ViewBag.ProductId = product.Id;
+            return View(productAttributes);
+        }
+
+        [HttpPost]
+        public ActionResult Attributes(int productId, FormCollection form)
+        {
+            _repository.LangId = CurrentLangId;
+            var product = _repository.GetProduct(productId);
+            PostCheckboxesData attrData = form.ProcessPostCheckboxesData("attr", "productId");
+            PostData staticAttrData = form.ProcessPostData("tb", "productId");
+            
+            product.ProductAttributeValues.Clear();
+
+            foreach (var kvp in attrData)
+            {
+                var attributeValueId = kvp.Key;
+                bool attributeValue = kvp.Value;
+
+                if (attributeValue)
+                {
+                    var productAttributeValue = _repository.GetProductAttributeValue(attributeValueId);
+                    product.ProductAttributeValues.Add(productAttributeValue);
+                }
+            }
+
+            foreach (var kvp in staticAttrData)
+            {
+                int attributeId = Convert.ToInt32(kvp.Key);
+                foreach (var value in kvp.Value)
+                {
+                    string attributeValue = value.Value;
+
+                    var productAttribute = _repository.GetProductAttribute(attributeId);
+
+                    //productAttribute.ProductAttributeStaticValues.Clear();
+
+                    ProductAttributeStaticValue productAttributeValue = null;
+                    productAttributeValue = _repository.GetProductAttributeStaticValue(productAttribute.Id, product.Id);
+
+
+                    if (string.IsNullOrEmpty(attributeValue))
+                    {
+                        if (productAttributeValue != null)
+                            _repository.DeleteProductAttributeStaticValue(productAttributeValue.Id);
+                    }
+                    else
+                    {
+                        if (productAttributeValue == null)
+                        {
+                            productAttributeValue = new ProductAttributeStaticValue
+                            {
+                                Title = attributeValue,
+                                ProductAttribute = productAttribute,
+                                ProductId = product.Id
+                            };
+                            _repository.AddProductAttributeStaticValue(productAttributeValue);
+                        }
+                        else
+                        {
+                            productAttributeValue.Title = attributeValue;
+                            _repository.SaveProductAttributeStaticValue(productAttributeValue);
+                        }
+                    }
+                }
+            }
+
+            _repository.SaveProduct(product);
+
+            return RedirectToAction("Index");
+
         }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model string
+
+<ul class="nav nav-tabs" role="tablist">
+    @if (Model == "Category")
+    {
+        <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "ProductAttribute")
+    {
+        <li class="active">@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "ProductAttributeValueTag")
+    {
+        <li class="active">@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "Product")
+    {
+        <li class="active">@Html.ActionLink("Продукты", "Index", "Product", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Продукты", "Index", "Product", new { area = "Admin" }, null)</li>
+    }
+        
+    
+</ul>
