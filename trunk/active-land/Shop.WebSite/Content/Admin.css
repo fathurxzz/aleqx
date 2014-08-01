@@ -26,6 +26,19 @@
     text-decoration: none !important;
 }
 
-p.addEntity {
-    padding-top: 10px;
+.menu {
+    margin-bottom: 15px;
 }
+
+.btn a:hover {
+    text-decoration: none !important;
+}
+
+.btn a, .btn a:hover {
+    color: #fff;
+}
+
+.btn.btn-default a, .btn.btn-default a:hover {
+    color: #000;
+}
+
