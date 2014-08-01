@@ -1,0 +1,135 @@
+﻿@using Shop.DataAccess.Entities
+@model IEnumerable<Shop.DataAccess.Entities.ProductAttribute>
+
+@{
+    ViewBag.Title = "Attributes";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    
+    var productValues = ((IEnumerable<ProductAttributeValue>)ViewBag.ProductAttributeValues).ToList();
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Product")
+}
+
+<p class="addEntity">
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("productId", (int)ViewBag.ProductId)
+    <table class="table table-striped">
+        <tr>
+            @*  <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCorrectLang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentLang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Selected)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsStatic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayOnPreview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFilterable)
+        </th>
+        <th></th>*@
+        
+            <th>
+                Название
+            </th>
+            <th>
+                Тип значения
+            </th>
+            <th>
+                Значение
+            </th>
+        
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    @*
+        <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCorrectLang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentLang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Selected)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SortOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsStatic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayOnPreview)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFilterable)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>*@
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitTitle)
+                </td>
+                <td>
+                    @if (item.IsStatic)
+                    {
+                        var attrValue = item.ProductAttributeStaticValues.FirstOrDefault(v => v.ProductId == ViewBag.ProductId);
+                        string value = attrValue != null ? attrValue.Title : "";
+                        @Html.TextBox("tb_" + item.Id, value, new {@class = "form-control"})
+                    }
+                    else
+                    {
+                        foreach (var attributeValue in item.ProductAttributeValues.OrderBy(a => a.Title))
+                        {
+                            @Html.CheckBox("attr_" + attributeValue.Id, productValues.Contains(attributeValue))
+                            @attributeValue.Title
+                            @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+@Html.ActionLink("Назад к продуктам","Index")    <button type="submit" class="btn btn-default">Сохранить</button>
+}
+

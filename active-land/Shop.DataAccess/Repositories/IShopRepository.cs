@@ -33,6 +33,13 @@ namespace Shop.DataAccess.Repositories
         ProductAttributeValue GetProductAttributeValue(int id);
         void DeleteProductAttributeValue(int id);
 
+        // ProductAttributeStaticValues
+        int AddProductAttributeStaticValue(ProductAttributeStaticValue productAttributeStaticValue);
+        void SaveProductAttributeStaticValue(ProductAttributeStaticValue productAttributeStaticValue);
+        ProductAttributeStaticValue GetProductAttributeStaticValue(int id);
+        ProductAttributeStaticValue GetProductAttributeStaticValue(int productAttributeId, int productId);
+        void DeleteProductAttributeStaticValue(int id);
+
         // ProductAttributeValueTags
         IEnumerable<ProductAttributeValueTag> GetProductAttributeValueTags();
         ProductAttributeValueTag GetProductAttributeValueTag(int id);

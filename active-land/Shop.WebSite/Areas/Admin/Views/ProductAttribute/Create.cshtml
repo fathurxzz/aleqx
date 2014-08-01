@@ -7,11 +7,7 @@
 
 @section AdminNavigation
 {
-    <ul class="nav nav-tabs" role="tablist">
-        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
-        <li class="active">@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
-        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
-    </ul>
+    @Html.Partial("Menu","ProductAttribute")
 }
 <div class="container">
     <h3>Создание атрибута</h3>

@@ -133,7 +133,17 @@ namespace Shop.Api.Repositories
 
         public IEnumerable<ProductAttribute> GetProductAttributes(int categoryId)
         {
-            throw new NotImplementedException();
+            var category = _store.Categories.Single(c => c.Id == categoryId);
+            foreach (var productAttribute in category.ProductAttributes)
+            {
+                productAttribute.CurrentLang = LangId;
+
+                foreach (var value in productAttribute.ProductAttributeValues)
+                {
+                    value.CurrentLang = LangId;
+                }
+            }
+            return category.ProductAttributes;
         }
 
         public ProductAttribute GetProductAttribute(int id)
@@ -154,6 +164,12 @@ namespace Shop.Api.Repositories
                     pav.ProductAttributeValueTag.CurrentLang = LangId;
                 }
             }
+
+            foreach (var pasv in productAttibute.ProductAttributeStaticValues)
+            {
+                pasv.CurrentLang = LangId;
+            }
+
 
             return productAttibute;
         }
@@ -236,7 +252,7 @@ namespace Shop.Api.Repositories
             var productAttributeValue = _store.ProductAttributeValues.SingleOrDefault(c => c.Id == id);
             if (productAttributeValue == null)
             {
-                throw new Exception(string.Format("Category with id={0} not found", id));
+                throw new Exception(string.Format("ProductAttributeValue with id={0} not found", id));
             }
 
             while (productAttributeValue.ProductAttributeValueLangs.Any())
@@ -245,6 +261,60 @@ namespace Shop.Api.Repositories
                 _store.ProductAttributeValueLangs.Remove(productAttributeValueLang);
             }
             _store.ProductAttributeValues.Remove(productAttributeValue);
+            _store.SaveChanges();
+        }
+
+        public int AddProductAttributeStaticValue(ProductAttributeStaticValue productAttributeStaticValue)
+        {
+            _store.ProductAttributeStaticValues.Add(productAttributeStaticValue);
+            CreateOrChangeEntityLanguage(productAttributeStaticValue);
+            _store.SaveChanges();
+            return productAttributeStaticValue.Id;
+        }
+
+        public void SaveProductAttributeStaticValue(ProductAttributeStaticValue productAttributeStaticValue)
+        {
+            var cache = _store.ProductAttributeStaticValues.Single(c => c.Id == productAttributeStaticValue.Id);
+            CreateOrChangeEntityLanguage(cache);
+            _store.SaveChanges();
+        }
+
+        public ProductAttributeStaticValue GetProductAttributeStaticValue(int productAttributeId, int productId)
+        {
+            var productAttibuteStaticValue = _store.ProductAttributeStaticValues.SingleOrDefault(c => c.ProductAttributeId == productAttributeId&&c.ProductId==productId);
+            if (productAttibuteStaticValue != null)
+            {
+                productAttibuteStaticValue.CurrentLang = LangId;
+                return productAttibuteStaticValue;
+            }
+            return null;
+        }
+
+        public ProductAttributeStaticValue GetProductAttributeStaticValue(int id)
+        {
+            var productAttibuteStaticValue = _store.ProductAttributeStaticValues.SingleOrDefault(c => c.Id == id);
+            if (productAttibuteStaticValue == null)
+            {
+                throw new Exception(string.Format("ProductAttibuteStaticValue with id={0} not found", id));
+            }
+            productAttibuteStaticValue.CurrentLang = LangId;
+            return productAttibuteStaticValue;
+        }
+
+        public void DeleteProductAttributeStaticValue(int id)
+        {
+            var productAttributeStaticValue = _store.ProductAttributeStaticValues.SingleOrDefault(c => c.Id == id);
+            if (productAttributeStaticValue == null)
+            {
+                throw new Exception(string.Format("ProductAttributeStaticValue with id={0} not found", id));
+            }
+
+            while (productAttributeStaticValue.ProductAttributeStaticValueLangs.Any())
+            {
+                var productAttributeStaticValueLang = productAttributeStaticValue.ProductAttributeStaticValueLangs.First();
+                _store.ProductAttributeStaticValueLangs.Remove(productAttributeStaticValueLang);
+            }
+            _store.ProductAttributeStaticValues.Remove(productAttributeStaticValue);
             _store.SaveChanges();
         }
 
@@ -309,13 +379,31 @@ namespace Shop.Api.Repositories
             foreach (var product in products)
             {
                 product.CurrentLang = LangId;
+                product.Category.CurrentLang = LangId;
             }
             return products;
         }
 
         public Product GetProduct(int id)
         {
-            throw new NotImplementedException();
+            var product = _store.Products.SingleOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                throw new Exception(string.Format("Product with id={0} not found", id));
+            }
+            product.CurrentLang = LangId;
+
+            foreach (var productAttributeValue in product.ProductAttributeValues)
+            {
+                productAttributeValue.CurrentLang = LangId;
+            }
+
+            foreach (var productAttributeStaticValue in product.ProductAttributeStaticValues)
+            {
+                productAttributeStaticValue.CurrentLang = LangId;
+            }
+
+            return product;
         }
 
         public void DeleteProduct(int id)
@@ -325,12 +413,41 @@ namespace Shop.Api.Repositories
 
         public int AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            if (_store.Products.Any(c => c.Name == product.Name))
+            {
+                throw new Exception(string.Format("Category {0} already exists", product.Name));
+            }
+
+            _store.Products.Add(product);
+
+            CreateOrChangeEntityLanguage(product);
+
+            _store.SaveChanges();
+            return product.Id;
         }
 
         public void SaveProduct(Product product)
         {
-            throw new NotImplementedException();
+            var cache = _store.Products.Single(c => c.Id == product.Id);
+            //if (cache.Name != category.Name)
+            //{
+            //    if (_store.Categories.Any(c => c.Name == category.Name))
+            //    {
+            //        throw new Exception(string.Format("Category {0} already exists", category.Name));
+            //    }
+            //}
+
+
+            //cache.Name = category.Name;
+            //cache.SortOrder = category.SortOrder;
+            //cache.Title = category.Title;
+            //cache.SeoDescription = category.SeoDescription;
+            //cache.SeoKeywords = category.SeoKeywords;
+            //cache.SeoText = category.SeoText;
+
+            CreateOrChangeEntityLanguage(cache);
+
+            _store.SaveChanges();
         }
 
 
@@ -402,6 +519,26 @@ namespace Shop.Api.Repositories
             }
 
         }
+        private void CreateOrChangeEntityLanguage(ProductAttributeStaticValue cache)
+        {
+            var categoryLang = _store.ProductAttributeStaticValueLangs.FirstOrDefault(r => r.ProductAttributeStaticValueId == cache.Id && r.LanguageId == LangId);
+            if (categoryLang == null)
+            {
+                var entityLang = new ProductAttributeStaticValueLang
+                {
+                    ProductAttributeStaticValueId = cache.Id,
+                    LanguageId = LangId,
+
+                    Title = cache.Title,
+                };
+                _store.ProductAttributeStaticValueLangs.Add(entityLang);
+            }
+            else
+            {
+                categoryLang.Title = cache.Title;
+            }
+
+        }
         private void CreateOrChangeEntityLanguage(ProductAttributeValueTag cache)
         {
             var categoryLang = _store.ProductAttributeValueTagLangs.FirstOrDefault(r => r.ProductAttributeValueTagId == cache.Id && r.LanguageId == LangId);
@@ -419,6 +556,35 @@ namespace Shop.Api.Repositories
             else
             {
                 categoryLang.Title = cache.Title;
+            }
+
+        }
+
+        private void CreateOrChangeEntityLanguage(Product cache)
+        {
+            var categoryLang = _store.ProductLangs.FirstOrDefault(r => r.ProductId == cache.Id && r.LanguageId == LangId);
+            if (categoryLang == null)
+            {
+                var entityLang = new ProductLang
+                {
+                    ProductId = cache.Id,
+                    LanguageId = LangId,
+
+                    Title = cache.Title,
+                    Description = cache.Description,
+                    SeoDescription = cache.SeoDescription,
+                    SeoKeywords = cache.SeoKeywords,
+                    SeoText = cache.SeoText,
+                };
+                _store.ProductLangs.Add(entityLang);
+            }
+            else
+            {
+                categoryLang.Title = cache.Title;
+                categoryLang.Description = cache.Description;
+                categoryLang.SeoDescription = cache.SeoDescription;
+                categoryLang.SeoKeywords = cache.SeoKeywords;
+                categoryLang.SeoText = cache.SeoText;
             }
 
         }
