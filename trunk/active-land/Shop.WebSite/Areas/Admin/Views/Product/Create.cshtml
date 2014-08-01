@@ -13,7 +13,7 @@
 
 <div class="container">
     <h3>Добавление продукта</h3>
-    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
@@ -23,24 +23,24 @@
             @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 @{
-                    var categories = ((IEnumerable<Category>) ViewBag.Categories).ToList();
-                    if (categories.Any())
-                    {
-                        <select name="categoryId">
-                            @foreach (var category in categories)
+        var categories = ((IEnumerable<Category>)ViewBag.Categories).ToList();
+        if (categories.Any())
+        {
+                    <select name="categoryId">
+                        @foreach (var category in categories)
+                        {
+                            if (category.Selected)
                             {
-                                if (category.Selected)
-                                {
-                                    <option selected value="@category.Id">@category.Title</option>
-                                }
-                                else
-                                {
-                                    <option value="@category.Id">@category.Title</option>
-                                }
-                                
+                            <option selected value="@category.Id">@category.Title</option>
                             }
-                        </select>
-                    }
+                            else
+                            {
+                            <option value="@category.Id">@category.Title</option>
+                            }
+
+                        }
+                    </select>
+        }
                 }
             </div>
             @Html.ValidationMessageFor(model => model.Title)
@@ -91,7 +91,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(model=>model.IsNew) @Html.LabelFor(model => model.IsNew)
+                        @Html.CheckBoxFor(model => model.IsNew) @Html.LabelFor(model => model.IsNew)
                     </label>
                 </div>
             </div>
@@ -100,7 +100,7 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(model=>model.IsDiscount) @Html.LabelFor(model => model.IsDiscount)
+                        @Html.CheckBoxFor(model => model.IsDiscount) @Html.LabelFor(model => model.IsDiscount)
                     </label>
                 </div>
             </div>
@@ -109,40 +109,42 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(model=>model.IsTopSale) @Html.LabelFor(model => model.IsTopSale)
+                        @Html.CheckBoxFor(model => model.IsTopSale) @Html.LabelFor(model => model.IsTopSale)
                     </label>
                 </div>
             </div>
         </div>
-        
-        
-        
         <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                @Html.EditorFor(model => model.Price)
+                <input type="text" class="form-control" name="Price" id="Price" placeholder="Введите идентификатор" value="@Model.Price">
             </div>
             @Html.ValidationMessageFor(model => model.Price)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.OldPrice, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                @Html.EditorFor(model => model.OldPrice)
+                <input type="text" class="form-control" name="OldPrice" id="OldPrice" placeholder="Введите идентификатор" value="@Model.OldPrice">
             </div>
             @Html.ValidationMessageFor(model => model.OldPrice)
         </div>
-        
-        
-        
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
-                        @Html.CheckBoxFor(model=>model.IsActive) @Html.LabelFor(model => model.IsActive)
+                        @Html.CheckBoxFor(model => model.IsActive) @Html.LabelFor(model => model.IsActive)
                     </label>
                 </div>
             </div>
         </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Изображения</label>
+            <div class="col-sm-10">
+                @Html.Partial("InputImages")
+            </div>
+        </div>
+        
         <div class="form-group">
             @Html.ActionLink("Назад", "Index", "Product", null, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
