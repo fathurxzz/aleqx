@@ -55,6 +55,9 @@
             @Html.DisplayNameFor(model => model.OldPrice)
         </th>
         <th>
+            Кол-во изобр.
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th></th>
@@ -116,6 +119,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OldPrice)
+            </td>
+            <td>
+                @item.ProductImages.Count()
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

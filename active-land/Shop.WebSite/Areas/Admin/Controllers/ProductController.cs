@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.Ajax.Utilities;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers;
+using Shop.WebSite.Helpers.Graphics;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
@@ -76,6 +78,21 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     Price = model.Price
                 };
 
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    if (file == null) continue;
+                    if (string.IsNullOrEmpty(file.FileName)) continue;
+                    
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    var productImage = new ProductImage{ImageSource = fileName};
+                    product.ProductImages.Add(productImage);
+                }
+
                 _repository.AddProduct(product);
 
             }
@@ -135,6 +152,25 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 product.Price = decimal.Parse(form["Price"]);
                 product.OldPrice = decimal.Parse(form["OldPrice"]);
                 product.CategoryId = categoryId;
+
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    if (file == null) continue;
+                    if (string.IsNullOrEmpty(file.FileName)) continue;
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    var productImage = new ProductImage { ImageSource = fileName };
+                    product.ProductImages.Add(productImage);
+                }
+
+
+
                 _repository.SaveProduct(product);
 
             }
