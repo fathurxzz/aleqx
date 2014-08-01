@@ -408,7 +408,34 @@ namespace Shop.Api.Repositories
 
         public void DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            var product = _store.Products.SingleOrDefault(c => c.Id == id);
+
+            if (product == null)
+            {
+                throw new Exception(string.Format("Product with id={0} not found", id));
+            }
+
+            while (product.ProductLangs.Any())
+            {
+                var productLang = product.ProductLangs.First();
+                _store.ProductLangs.Remove(productLang);
+            }
+
+            while (product.ProductAttributeValues.Any())
+            {
+                var pav = product.ProductAttributeValues.First();
+
+                while (pav.ProductAttributeValueLangs.Any())
+                {
+                    var pavl = pav.ProductAttributeValueLangs.First();
+                    pav.ProductAttributeValueLangs.Remove(pavl);
+                }
+
+                _store.ProductAttributeValues.Remove(pav);
+            }
+
+            _store.Products.Remove(product);
+            _store.SaveChanges();
         }
 
         public int AddProduct(Product product)
