@@ -10,20 +10,17 @@
        @Html.Partial("Menu","Category")
 }
 
-<h2>Attributes</h2>
-@using (Html.BeginForm())
+<div class="container">
+@using (Html.BeginForm("Attributes", "Category", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
 {
     @Html.Hidden("categoryId",(int)ViewBag.CategoryId)
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
+    <table class="table table-striped">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Selected)
+                Выбрать
             </th>
         </tr>
 
@@ -42,5 +39,11 @@
 
     </table>
     
-    <input type="submit" value="Save"/>
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Category", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
 }
+    </div>

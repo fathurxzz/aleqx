@@ -10,12 +10,12 @@
    @Html.Partial("Menu","ProductAttribute")
 }
 
-<p class="addEntity">
+<p>
     <h3>Значения атрибута &laquo;@ViewBag.ProductAttributeTitle&raquo; </h3>
 </p>
 
-<p class="addEntity">
-    @Html.ActionLink("Добавить", "Create", new{id=(int)ViewBag.ProductAttributeId})
+<p>
+    <button type="button" class="btn btn-success btn-sm">@Html.ActionLink("Добавить", "Create", new{id=(int)ViewBag.ProductAttributeId})</button>
 </p>
 
 <table class="table table-striped">

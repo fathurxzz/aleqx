@@ -30,7 +30,7 @@
         {
             var routeData = ViewContext.RouteData.GetCopy();
             routeData.Values["lang"] = "en";
-            <button type="button" class="btn btn-success btn-default">На русском</button>
+            <button type="button" class="btn btn-primary btn-default">На русском</button>
             <button type="button" class="btn btn-default">@Html.RouteLink("In English", routeData.Values)</button>
         }
         else
@@ -38,7 +38,7 @@
             var routeData = ViewContext.RouteData.GetCopy();
             routeData.Values["lang"] = "ru";
             <button type="button" class="btn btn-default">@Html.RouteLink("На русском", routeData.Values)</button>
-            <button type="button" class="btn btn-success btn-default">In English</button>
+            <button type="button" class="btn btn-primary btn-default">In English</button>
         }
     </div>
 </div>
