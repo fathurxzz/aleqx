@@ -477,6 +477,28 @@ namespace Shop.Api.Repositories
             _store.SaveChanges();
         }
 
+        public ProductImage GetProductImage(int id)
+        {
+            var productImage = _store.ProductImages.SingleOrDefault(p => p.Id == id);
+            if (productImage == null)
+            {
+                throw new Exception(string.Format("ProductImage with id={0} not found", id));
+            }
+            return productImage;
+        }
+
+        public void DeleteProductImage(int id)
+        {
+            var productImage = _store.ProductImages.SingleOrDefault(p => p.Id == id);
+            if (productImage == null)
+            {
+                throw new Exception(string.Format("ProductImage with id={0} not found", id));
+            }
+
+            _store.ProductImages.Remove(productImage);
+            _store.SaveChanges();
+        }
+
 
         private void CreateOrChangeEntityLanguage(Category cache)
         {

@@ -15,8 +15,7 @@
 </p>
 <table class="table table-striped">
     <tr>
-        <th>
-            Категория
+        <th>Категория
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -54,8 +53,7 @@
         <th>
             @Html.DisplayNameFor(model => model.OldPrice)
         </th>
-        <th>
-            Кол-во изобр.
+        <th>Кол-во изобр.
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
@@ -129,6 +127,7 @@
             <td>
                 @Html.ActionLink("Ред.", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Атр.", "Attributes", new { id = item.Id }) |
+                @Html.ActionLink("Изобр.", "Index", "ProductImage", new { id = item.Id }, null) |
                 @Html.ActionLink("Удал.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить продукт?')" })
             </td>
         </tr>
