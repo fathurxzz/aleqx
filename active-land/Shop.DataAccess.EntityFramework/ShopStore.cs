@@ -73,6 +73,11 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.ProductLangs; }
         }
 
+        public IDbSet<ProductImage> ProductImages
+        {
+            get { return _context.ProductImages; }
+        }
+
 
         public int SaveChanges()
         {

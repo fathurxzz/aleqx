@@ -54,5 +54,9 @@ namespace Shop.DataAccess.Repositories
         int AddProduct(Product product);
         void SaveProduct(Product product);
 
+        // ProductImages
+        ProductImage GetProductImage(int id);
+        void DeleteProductImage(int id);
+
     }
 }

@@ -1,0 +1,37 @@
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model IEnumerable<Shop.DataAccess.Entities.ProductImage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Product")
+}
+
+<div class="container">
+    <h3>Изображения продукта</h3>
+    <p>
+        @Html.ActionLink("Добавить", "Create", new { id = (int)ViewBag.ProductId })
+    </p>
+
+    @foreach (var item in Model)
+    {
+        <div class="adminProductImage">
+            <div>
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить изображение?')" })
+            </div>
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
+        </div>
+    }
+    
+    <div style="clear: both"></div>
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Назад к продуктам", "Index", "Product")
+    </div>
+
+</div>
+
+
