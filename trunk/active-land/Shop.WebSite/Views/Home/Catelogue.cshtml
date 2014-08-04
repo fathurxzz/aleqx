@@ -1,6 +1,120 @@
-﻿@model Shop.WebSite.Models.CatalogueModel
+﻿@using Shop.WebSite.Models
+@model Shop.WebSite.Models.CatalogueModel
 
 @{
     ViewBag.Title = "Catelogue";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<div id="menu-panel">
+    @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
+    <div id="menu-items">
+        <ul>
+            <li class="catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")</li>
+            <li><a href="#">Новости и события</a></li>
+            <li><a href="#">Гарантия, оплата и доставка</a></li>
+            <li class="rent"><a href="#">Вело-прокат</a></li>
+            <li><a href="#">Мастерская</a></li>
+            <li><a href="#">Прямой контакт</a></li>
+        </ul>
+
+    </div>
+</div>
+<div id="main-banner">
+</div>
+
+
+
+<div class="site-title">
+    <div class="container clearfix block">
+        <div class="block first-block">
+            <!--<span>-->
+            <!--<a href="#">Велосипеды</a> &raquo;-->
+            <!--</span>-->
+
+        </div>
+        <div class="block first-block-tail"></div>
+        <div class="block title">Детские и подростковые</div>
+        <div class="block bike"></div>
+        <div class="block">
+            <div class="stretch-element">
+                <div class="table-cell after-bike">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block after-bike-fading"></div>
+</div>
+
+
+
+
+<div id="catalogue">
+    <div id="filters-container">
+
+        <div id="price-sort-selector" class="selector">
+            <select>
+                <option>Сначала дорогие</option>
+            </select>
+        </div>
+        <div id="brand-selector" class="selector checkbox-selector">
+            <div class="title">Бренды:</div>
+            <div class="selectors">
+                <ul>
+                    <li>
+                        <input type="checkbox">
+                        felt</li>
+                    <li>
+                        <input type="checkbox">
+                        comanche</li>
+                    <li>
+                        <input type="checkbox">
+                        hydra</li>
+                    <li>
+                        <input type="checkbox">
+                        tycoon</li>
+
+                </ul>
+            </div>
+
+
+        </div>
+        <div id="price-range-selector" class="selector">
+        </div>
+        <div id="category-selector" class="selector checkbox-selector">
+            <div class="title">Категории:</div>
+            <div class="selectors">
+                <ul>
+                    <li>
+                        <input type="checkbox">
+                        горный</li>
+                    <li>
+                        <input type="checkbox">
+                        городской</li>
+                    <li>
+                        <input type="checkbox">
+                        детский</li>
+                    <li>
+                        <input type="checkbox">
+                        женский</li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div id="products">
+        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew, Price = "2,330", ImageSource = "bike-image.png" })
+        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale, Price = "2,330", ImageSource = "bike-image.png" })
+        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount, Price = "2,330", ImageSource = "bike-image.png" })
+        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None, Price = "2,330", ImageSource = "bike-image.png" })
+        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew, Price = "2,330", ImageSource = "bike-image.png" })
+        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale, Price = "2,330", ImageSource = "bike-image.png" })
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+
+<div style="height: 50px"></div>

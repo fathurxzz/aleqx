@@ -29,12 +29,22 @@ namespace Shop.WebSite
             );
 
             routes.MapRoute(
+              "Main",
+              "{lang}",
+              new { controller = "Home", action = "Index"},
+              new { lang = @"ru|en" },
+              new[] { "Shop.WebSite.Controllers" }
+          );
+
+            routes.MapRoute(
                "Catalogue",
                "{lang}/catalogue/{category}/{subcategory}/{product}",
-               new { controller = "Home", action = "Index", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, product = UrlParameter.Optional },
+               new { controller = "Home", action = "Catelogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, product = UrlParameter.Optional },
                new { lang = @"ru|en" },
-               new[] { "Leo.Controllers" }
+               new[] { "Shop.WebSite.Controllers" }
            );
+
+            
 
             routes.MapRoute(
                 "Default",
