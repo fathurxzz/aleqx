@@ -17,15 +17,14 @@
 {
 
 }
-<div id="page">
+
 
 <div id="main-page-banner">
     <div id="menu-panel-main-page">
         @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
-        @*<a id="logo" href="/"></a>*@
         <div id="menu-items">
             <ul>
-                <li class="catalog">@Html.ActionLink("Вело-каталог","Index","Home")</li>
+                <li class="catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")</li>
                 <li><a href="#">Новости и события</a></li>
                 <li class="delivery"><a href="#">Гарантия, оплата и доставка</a></li>
                 <li class="rent"><a href="#">Вело-прокат</a></li>
@@ -99,7 +98,7 @@
     имеющее два колеса или более и приводимое в движение мускульной силой людей, находящихся на нём»
 </div>
 
- </div>
+
 
 
 
