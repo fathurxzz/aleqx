@@ -59,6 +59,9 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Активный")]
         public bool IsActive { get; set; }
 
+        [Display(Name = "Категория")]
+        public bool Category { get; set; }
+
     }
 
 }

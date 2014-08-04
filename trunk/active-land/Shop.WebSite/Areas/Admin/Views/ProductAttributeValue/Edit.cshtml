@@ -31,7 +31,7 @@
                 <div class="form-group">
             <label class="col-sm-2 control-label">Тег</label>
             <div class="col-sm-10">
-                <select name="tag">
+                <select class="selectpicker" name="tag">
                     @{
                         var tags = (IEnumerable<ProductAttributeValueTag>)ViewBag.Tags;
                         <option value="0">---</option>
@@ -65,4 +65,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+ 
 }

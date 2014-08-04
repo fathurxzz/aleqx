@@ -196,7 +196,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                _repository.DeleteProduct(id);
+                _repository.DeleteProduct(id, ImageHelper.DeleteImage);
             }
             catch (Exception ex)
             {

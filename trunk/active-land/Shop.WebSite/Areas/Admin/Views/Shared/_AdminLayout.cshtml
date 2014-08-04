@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Active Land &mdash; Система администрирования &mdash; @ViewBag.Title</title>
-    @Styles.Render("~/Content/Admin.css", "~/Content/bootstrap.min.css" ,"~/Content/jquery-ui.min.css" ,"~/Content/jquery-ui.structure.min.css")
+    @Styles.Render("~/Content/Admin.css", "~/Content/bootstrap.min.css","~/Content/bootstrap-select.min.css" ,"~/Content/jquery-ui.min.css" ,"~/Content/jquery-ui.structure.min.css")
 </head>
     <body>
         @Html.Partial("LanguageSwitcher") 
@@ -22,8 +22,15 @@
     
         @Scripts.Render("~/bundles/jquery")
         
-        @Scripts.Render("~/Scripts/bootstrap.min.js")
+        @Scripts.Render("~/Scripts/bootstrap.min.js","~/Scripts/bootstrap-select.js")
 
         @RenderSection("scripts", required: false)
+        
+        <script type="text/javascript">
+            $(function () {
+                $('.selectpicker').selectpicker();
+            })
+    </script>
+
     </body>
 </html>
