@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Shop.DataAccess.Repositories;
+using Shop.WebSite.Helpers;
 using Shop.WebSite.Models;
 
 namespace Shop.WebSite.Controllers
@@ -21,8 +22,15 @@ namespace Shop.WebSite.Controllers
         {
             _repository.LangId = CurrentLangId;
             var model = new SiteModel(_repository);
+            this.SetSeoContent(model);
             return View(model);
         }
 
+        public ActionResult Catelogue(string category, string subcategory, string product)
+        {
+            _repository.LangId = CurrentLangId;
+            var model = new CatalogueModel(_repository);
+            return View(model);
+        }
     }
 }

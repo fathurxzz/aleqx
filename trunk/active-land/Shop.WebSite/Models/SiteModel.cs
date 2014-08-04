@@ -21,6 +21,7 @@ namespace Shop.WebSite.Models
 
         public SiteModel(IShopRepository repository)
         {
+            Title = "Active Land";
             Categories = repository.GetCategories();
         }
     
