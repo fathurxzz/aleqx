@@ -20,22 +20,22 @@
         @Html.HiddenFor(model => model.CurrentLang)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+            @Html.LabelFor(model => model.Category, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
                 @{
         var categories = ((IEnumerable<Category>)ViewBag.Categories).ToList();
         if (categories.Any())
         {
-                    <select name="categoryId">
+                    <select class="selectpicker" name="categoryId">
                         @foreach (var category in categories)
                         {
                             if (category.Selected)
                             {
-                            <option selected value="@category.Id">@category.Title</option>
+                                <option selected value="@category.Id">@category.Title</option>
                             }
                             else
                             {
-                            <option value="@category.Id">@category.Title</option>
+                                <option value="@category.Id">@category.Title</option>
                             }
 
                         }

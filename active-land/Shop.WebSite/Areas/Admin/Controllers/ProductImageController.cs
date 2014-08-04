@@ -70,14 +70,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index", new {id = productId});
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int productId)
         {
-            var productImage = _repository.GetProductImage(id);
-            var productId = productImage.ProductId;
-
-            ImageHelper.DeleteImage(productImage.ImageSource);
-            _repository.DeleteProductImage(id);
-
+            _repository.DeleteProductImage(id, ImageHelper.DeleteImage);
             return RedirectToAction("Index", new {id = productId});
         }
     }

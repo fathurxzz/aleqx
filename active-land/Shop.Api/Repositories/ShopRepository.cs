@@ -206,11 +206,11 @@ namespace Shop.Api.Repositories
         public void SaveProductAttribute(ProductAttribute productAttribute)
         {
             var cache = _store.ProductAttributes.Single(c => c.Id == productAttribute.Id);
-        
+
             //cache.UnitTitle = productAttribute.UnitTitle;
             //cache.SortOrder = productAttribute.SortOrder;
             //cache.Title = productAttribute.Title;
-            
+
             CreateOrChangeEntityLanguage(cache);
             _store.SaveChanges();
         }
@@ -281,7 +281,7 @@ namespace Shop.Api.Repositories
 
         public ProductAttributeStaticValue GetProductAttributeStaticValue(int productAttributeId, int productId)
         {
-            var productAttibuteStaticValue = _store.ProductAttributeStaticValues.SingleOrDefault(c => c.ProductAttributeId == productAttributeId&&c.ProductId==productId);
+            var productAttibuteStaticValue = _store.ProductAttributeStaticValues.SingleOrDefault(c => c.ProductAttributeId == productAttributeId && c.ProductId == productId);
             if (productAttibuteStaticValue != null)
             {
                 productAttibuteStaticValue.CurrentLang = LangId;
@@ -406,7 +406,7 @@ namespace Shop.Api.Repositories
             return product;
         }
 
-        public void DeleteProduct(int id)
+        public void DeleteProduct(int id, Action<String> deleteImages)
         {
             var product = _store.Products.SingleOrDefault(c => c.Id == id);
 
@@ -432,6 +432,15 @@ namespace Shop.Api.Repositories
                 }
 
                 _store.ProductAttributeValues.Remove(pav);
+            }
+
+            while (product.ProductImages.Any())
+            {
+                var pi = product.ProductImages.First();
+                deleteImages(pi.ImageSource);
+                //var images = deleteImages;
+                //images(pi.ImageSource);
+                _store.ProductImages.Remove(pi);
             }
 
             _store.Products.Remove(product);
@@ -487,14 +496,14 @@ namespace Shop.Api.Repositories
             return productImage;
         }
 
-        public void DeleteProductImage(int id)
+        public void DeleteProductImage(int id, Action<String> deleteImage)
         {
             var productImage = _store.ProductImages.SingleOrDefault(p => p.Id == id);
             if (productImage == null)
             {
                 throw new Exception(string.Format("ProductImage with id={0} not found", id));
             }
-
+            deleteImage(productImage.ImageSource);
             _store.ProductImages.Remove(productImage);
             _store.SaveChanges();
         }
