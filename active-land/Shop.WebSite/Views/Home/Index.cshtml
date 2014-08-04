@@ -1,6 +1,47 @@
-﻿@{
+﻿@model Shop.WebSite.Models.SiteModel
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.ActionLink("Админка", "Default", "Admin", new { area = "Admin" }, null)
+
+@section includes
+{
+    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">*@
+    <style>
+  .ui-menu {
+    width: 200px;
+  }
+  </style>
+}
+
+@section scripts
+{
+    
+    @*<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>*@
+    @*<script type="text/javascript">
+        $(function () {
+                $("#menu").menu();
+            })
+    </script>*@
+}
+
+<ul id="menu">
+    @foreach (var item in Model.Categories.Where(c=>c.Parent==null))
+    {
+        <li>
+            @item.Title
+            @if (item.Children.Any())
+            {
+                <ul class="subcategory">
+                    @foreach (var child in item.Children)
+                    {
+                        <li>@child.Title</li>
+                    }
+                </ul>
+            }
+        </li>
+    }
+</ul>
+
