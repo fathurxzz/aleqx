@@ -1,0 +1,46 @@
+#footer
+{
+    height: 90px;
+    position: relative;
+    background-color: #00aeef;
+    color: #ffffff;
+    font-family: 'PT Sans Caption', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+#footer-inner
+{
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#copyright
+{
+    background: url("../img/logo-big.png") no-repeat;
+    position: absolute;
+    height: 49px;
+    width: auto;
+    margin-top: 13px;
+    padding-left: 80px;
+    /*border: 1px solid black;*/
+    padding-top: 15px;
+}
+
+#em-studio
+{
+    height: 37px;
+    padding-left: 62px;
+    position: absolute;
+    right: 0;
+    margin-top: 25px;
+    width: auto;
+    background: url("../img/em-sudio.png") no-repeat;
+}
+
+#em-studio a
+{
+    color: inherit;
+}

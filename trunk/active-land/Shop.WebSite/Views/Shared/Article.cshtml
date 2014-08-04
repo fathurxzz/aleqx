@@ -1,0 +1,17 @@
+﻿@model Shop.WebSite.TempData.Article
+
+<div class="article-preview">
+        <img src="content/img/tmp/article-image.png" class="preview-image">
+
+        <div class="content">
+            <div class="date">@Model.Date</div>
+            <div class="title">@Model.Title</div>
+            <div class="text">
+                @Html.Raw(Model.Text)
+            </div>
+            <div class="all-article-link">
+                <a href="#">Вся новость</a> &raquo;
+            </div>
+        </div>
+    </div>
+

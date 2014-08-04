@@ -1,0 +1,46 @@
+﻿@using Shop.WebSite.Models
+@model Shop.WebSite.Models.ProductPreview
+
+<div class="product-preview">
+    <div class="image">
+        <img src="content/img/tmp/@Model.ImageSource">
+    </div>
+    
+    @{
+        switch (Model.Label)
+        {
+            case ProductPreviewLabel.WowNew:
+                <div class="wow-new"></div>
+            break;            
+            case ProductPreviewLabel.TopSale:
+                <div class="top-sale"></div>
+            break;
+            case ProductPreviewLabel.Discount:
+                <div class="discount"></div>
+            break;
+        }
+    }
+    
+        <div class="title-price">
+            <div class="title">
+                <span>
+                    <a href="#">@Model.Title</a>
+                </span>
+            </div>
+            
+            <div class="price">
+                @if (!string.IsNullOrEmpty(Model.OldPrice))
+                {
+                    <span>
+                    <s>@Model.OldPrice</s><sup>грн</sup><br>
+                    <b>@Model.Price<sup>грн</sup></b>
+                </span>
+                }
+                else
+                {
+                    <span>@Model.Price<sup>грн</sup>
+                    </span>
+                }
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,26 @@
+#support
+{
+    background: url("../img/avatar-support.png") no-repeat;
+    height: 62px;
+    padding-top: 17px;
+    padding-left: 72px;
+    margin-top: 40px;
+    color: #585858;
+    font-family: 'PT Sans', serif;
+    font-size: 15px;
+}
+
+#support .info
+{
+    width: 364px;
+    height: 42px;
+    background: url("../img/support-info.png");
+    padding-top: 13px;
+    padding-left: 40px;
+}
+
+#support .info a
+{
+    color: #0072bc;
+
+}

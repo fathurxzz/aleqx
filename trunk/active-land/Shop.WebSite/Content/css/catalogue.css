@@ -1,0 +1,56 @@
+#catalogue
+{
+    margin-top: 50px;
+}
+
+#catalogue #filters-container
+{
+    width: 285px;
+    float: left;
+}
+
+#catalogue #products
+{
+    float: left;
+    margin-left: 5px;
+    width: 924px;
+    margin-right: -19px;
+}
+
+.checkbox-selector
+{
+    border: 1px solid #b5b5b5;
+    /*color: #b5b5b5;*/
+    border-radius: 4px;
+    width: 204px;
+    text-transform: uppercase;
+}
+
+.checkbox-selector .title
+{
+    text-align: center;
+    font-family: 'PT Sans Caption',serif;
+    font-weight: 700;
+    font-size: 16px;
+
+    color: #00aeef;
+    padding-top: 14px;
+    padding-bottom: 15px;
+}
+
+.checkbox-selector .selectors{
+    color: #878787;
+    padding: 0 18px;
+    margin-bottom: 20px;
+}
+
+
+.selector
+{
+    margin-bottom: 40px;
+}
+
+.checkbox-selector ul li{
+    list-style: none;
+    padding: 3px 0;
+}

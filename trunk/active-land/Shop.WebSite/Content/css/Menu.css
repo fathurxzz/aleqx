@@ -1,0 +1,85 @@
+#menu-panel {
+    height: 75px;
+    background-color: #ababab;
+    position: relative;
+}
+
+#menu-panel-main-page {
+    height: 70px;
+    position: relative;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#logo {
+    position: absolute;
+    width: 174px;
+    height: 40px;
+    background: url("../img/logo.png");
+    margin-left: 20px;
+    margin-top: 22px;
+    display: block;
+}
+
+#menu-items {
+    margin-left: 225px;
+    padding-top: 15px;
+}
+
+#menu-items ul {
+
+}
+
+#menu-items ul li {
+    display: table-cell;
+    height: 100%;
+    /*border: 1px solid red;*/
+    text-align: center;
+    vertical-align: middle;
+    width: 75px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-family: 'PT Sans', serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 0 35px;
+    letter-spacing: 1px;
+}
+
+#menu-items ul li a {
+    color: inherit;
+}
+
+#menu-items ul li a:hover {
+    text-decoration: none;
+}
+
+#menu-panel #menu-items ul li.catalog {
+    width: 100px;
+}
+
+#menu-panel #menu-items ul li.rent {
+    width: 90px;
+}
+
+#menu-panel-main-page #menu-items ul li.catalog {
+    width: 100px;
+}
+
+#menu-panel-main-page #menu-items ul li.rent {
+    width: 90px;
+}
+
+#menu-panel-main-page #menu-items ul li.delivery
+{
+    width: 150px;
+}
+
+#menu-panel-main-page #menu-items ul li
+{
+    padding: 0 30px;
+}
+
+#menu-panel-main-page #menu-items {
+    margin-left: 225px;
+    padding-top: 23px;
+}
