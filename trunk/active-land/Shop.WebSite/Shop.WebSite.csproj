@@ -168,9 +168,13 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\Graphics\PictureSize.cs" />
+    <Compile Include="Helpers\ISiteModel.cs" />
+    <Compile Include="Helpers\MenuItem.cs" />
+    <Compile Include="Helpers\MVCHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\Graphics\ThumbnailPicture.cs" />
     <Compile Include="Helpers\WebExtensions.cs" />
+    <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
   </ItemGroup>
@@ -180,6 +184,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\Menu.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Areas\Admin\Views\Web.config" />
@@ -315,7 +320,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Content\tmpImages\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
