@@ -1,0 +1,143 @@
+.order-fields {
+    margin-top: 50px;
+    margin-bottom: 60px;
+
+}
+
+.order-fields .field {
+    margin-bottom: 28px;
+}
+
+.order-fields .title {
+    font-family: 'PT Sans', serif;
+    font-weight: 700;
+    font-style: italic;
+    color: #00aeef;
+    font-size: 14px;
+    text-transform: uppercase;
+    float: left;
+    width: 154px;
+    height: 28px;
+    padding-top: 12px;
+}
+
+.order-fields .title.double-row {
+    padding-top: 2px;
+    height: 38px;
+}
+
+.order-fields .title span {
+    font-family: 'PT Sans', serif;
+    font-size: 11px;
+    color: #c1c1c1;
+    text-transform: none;
+    font-style: normal;
+    font-weight: 400;
+    position: absolute;
+}
+
+.order-fields .input {
+    float: left;
+    height: 40px;
+    width: 393px;
+    text-align: left;
+
+}
+
+.order-fields .radio {
+    float: left;
+    height: 40px;
+    width: 400px;
+    text-align: left;
+    font-family: 'PT Sans', serif;
+    font-size: 14px;
+}
+
+.order-fields .radio.subscribe {
+    padding-left: 50px;
+}
+
+.order-fields .radio ul li {
+    list-style: none;
+    display: inline-block;
+    height: 40px;
+    vertical-align: top;
+}
+
+.order-fields .radio ul li.r {
+    padding-top: 10px;
+    height: 30px;
+}
+
+.order-fields .radio ul li.radio-title {
+    margin-right: 50px;
+    padding-left: 7px;
+}
+
+.order-fields .radio ul li.radio-title.one-line {
+    padding-top: 10px;
+    height: 30px;
+}
+
+.order-fields .order-value
+{
+    height: 41px;
+    padding: 0 11px;
+    font-family: 'PT Sans', serif;
+    font-size: 19px;
+    color: #606060;
+    float: left;
+    width: 393px;
+    text-align: left;
+    line-height: 40px;
+}
+
+.order-fields .input input {
+    height: 41px;
+    border: 1px solid #b5b5b5;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 11px;
+    font-family: 'PT Sans', serif;
+    font-size: 19px;
+    color: #606060;
+    width: 370px;
+}
+
+#subscribe-radio {
+
+}
+
+.radiobutton {
+    height: 20px;
+    width: 20px;
+}
+
+#order-done-wrapper {
+    background: url("../img/total.png") repeat-x 0 23px;
+    margin-top: 45px;
+    height: 40px;
+    margin-bottom: 50px;
+}
+
+#order-done {
+    width: 176px;
+    height: 46px;
+    position: relative;
+    margin-left: 130px;
+    padding: 0 20px;
+    background: #f5f5f5;
+}
+
+#order-done a {
+    display: block;
+    width: 176px;
+    height: 46px;
+    text-align: center;
+    font-family: 'PT Sans Caption', serif;
+    font-size: 20px;
+    color: #ffffff;
+    background: url("../img/order-done.png");
+    text-decoration: none;
+    line-height: 44px;
+}

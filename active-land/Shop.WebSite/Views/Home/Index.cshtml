@@ -1,47 +1,106 @@
-﻿@model Shop.WebSite.Models.SiteModel
+﻿@using Shop.WebSite.Models
+@model Shop.WebSite.Models.SiteModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.ActionLink("Админка", "Default", "Admin", new { area = "Admin" }, null)
+
+
 
 @section includes
 {
-    @*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">*@
-    <style>
-  .ui-menu {
-    width: 200px;
-  }
-  </style>
+
 }
 
 @section scripts
 {
-    
-    @*<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>*@
-    @*<script type="text/javascript">
-        $(function () {
-                $("#menu").menu();
-            })
-    </script>*@
-}
 
-<ul id="menu">
-    @foreach (var item in Model.Categories.Where(c=>c.Parent==null))
+}
+<div id="page">
+
+<div id="main-page-banner">
+    <div id="menu-panel-main-page">
+        @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
+        @*<a id="logo" href="/"></a>*@
+        <div id="menu-items">
+            <ul>
+                <li class="catalog">@Html.ActionLink("Вело-каталог","Index","Home")</li>
+                <li><a href="#">Новости и события</a></li>
+                <li class="delivery"><a href="#">Гарантия, оплата и доставка</a></li>
+                <li class="rent"><a href="#">Вело-прокат</a></li>
+                <li><a href="#">Мастерская</a></li>
+                <li><a href="#">Прямой контакт</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="about">
+    <div id="avatar"></div>
+    <div class="text">
+        Привет! Я &mdash; Григорий Войтишин, создатель &laquo;Эктив Лэнда&raquo;. Велосипеды &mdash; моё давнее
+        пристрастие, поэтому, всё что ты здесь увидишь, отобрано в ходе большого опыта, проб, ошибок,
+        падений &mdash; и подъемов :)
+    </div>
+    <div id="glad-to-see-you">Рад тебя видеть и с удовольствием помогу тебе</div>
+</div>
+
+<div id="chose-your-bike"></div>
+
+<div id="banners">
+    <div class="banner" id="banner1"></div>
+    <div class="banner" id="banner2"></div>
+</div>
+
+
+
+
+@Html.Partial("SiteTitle","Специальные предложения")
+<div id="special-offers">
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = "2,330",ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = "2,330",ImageSource = "bike-image.png",OldPrice = "5,550"})
+    <div class="clearfix"></div>
+</div>
+
+
+
+@Html.Partial("SiteTitle","Новости и события")
+<div id="articles">
+   
+    @foreach (var article in Shop.WebSite.TempData.Article.GetArticles())
     {
-        <li>
-            @item.Title
-            @if (item.Children.Any())
-            {
-                <ul class="subcategory">
-                    @foreach (var child in item.Children)
-                    {
-                        <li>@child.Title</li>
-                    }
-                </ul>
-            }
-        </li>
+        @Html.Partial("Article",article)
     }
-</ul>
+    <div class="clearfix"></div>
+</div>
+
+
+
+@Html.Partial("SiteTitle","О подборе байка")
+<div id="about-bike-choosing">
+    Велосипе́д (стар. фр. vélocipède, от лат. vēlōx «быстрый» и pēs «нога») — колёсное транспортное средство,
+    приводимое в движение мускульной силой человека через ножные педали или (крайне редко) через ручные рычаги.
+    Наиболее распространены велосипеды с двумя колесами, но бывают также одноколёсные и трёхколёсные велосипеды, а
+    также велосипеды с большим количеством колёс.
+    <br>
+    <br>
+    Правила дорожного движения России определяют велосипед как «транспортное средство, кроме инвалидных колясок,
+    имеющее два колеса или более и приводимое в движение мускульной силой людей, находящихся на нём»
+</div>
+
+ </div>
+
+
+
 

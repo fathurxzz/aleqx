@@ -1,0 +1,97 @@
+.site-title {
+    /*margin-top: 50px;*/
+    height: 27px;
+    font-family: 'PT Sans', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+    text-transform: uppercase;
+    /*background: url("../img/title-bottom-line.png") repeat-x bottom;*/
+}
+
+
+.site-title .block
+{
+    float: left;
+    height: 27px;
+}
+
+.site-title .first-block
+{
+    background: url("../img/title.png") repeat-x bottom;
+    color: #ffffff;
+    font-family: Arial ,serif;
+    text-transform: none;
+    line-height: 35px;
+    padding: 0 5px;
+    font-style: normal;
+    font-size: 11px;
+}
+
+.site-title .first-block span
+{
+    padding: 0 10px 0 5px;
+}
+
+
+.site-title .first-block a
+{
+    color: inherit;
+}
+
+.site-title .first-block-tail
+{
+    width: 4px;
+    background: url("../img/title-first-block-right.png") repeat-x bottom;
+}
+
+.site-title .title
+{
+    line-height: 36px;
+    padding: 0 14px 0 9px;
+    color: #00aeef;
+}
+
+
+.site-title .bike
+{
+    background: url("../img/title-bike.png");
+    width: 103px;
+    height: 27px;
+}
+
+.site-title .after-bike
+{
+    background: url("../img/title-bottom-line.png") repeat-x bottom;
+    height: 27px;
+    /*width: 100px;*/
+    /*float: left;*/
+    /*width: auto;*/
+}
+
+.site-title .after-bike-fading
+{
+    width: 504px;
+    background: url("../img/title-bottom-line-right.png") no-repeat bottom;
+    float: right;
+}
+
+
+
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 691px;
+}
+
+.stretch-element {
+    position: absolute;
+    height: 27px;
+    overflow: hidden;
+}
+
+.table-cell {
+    display: table-cell;
+    width: 1%;
+    height: 27px;
+}

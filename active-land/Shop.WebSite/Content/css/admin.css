@@ -1,0 +1,62 @@
+﻿body {
+    padding: 5px 10px; 
+}
+.adminTextContainer div {
+    max-height: 20px; 
+    overflow: hidden;
+    max-width: 400px;
+}
+
+.admin-container {
+    width: 800px;
+    margin: 0 auto;
+    
+}
+
+.subcategory {
+    padding-left: 40px !important;
+}
+
+.logout-button-container {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    float: left;
+    padding-right: 50px;
+}
+
+.language-switcher {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.language-switcher a {
+    text-decoration: none !important;
+}
+
+.menu {
+    margin-bottom: 15px;
+}
+
+.btn a:hover {
+    text-decoration: none !important;
+}
+
+.btn a, .btn a:hover {
+    color: #fff;
+}
+
+.btn.btn-default a, .btn.btn-default a:hover {
+    color: #000;
+}
+
+.inputImages .thumb
+{
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+.adminProductImage {
+    float: left;
+    margin: 10px;
+}

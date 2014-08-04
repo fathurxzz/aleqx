@@ -1,0 +1,109 @@
+#special-offers {
+    margin: 40px -19px 90px;
+}
+
+ .product-preview {
+    width: 276px;
+    height: 275px;
+    background: url("../img/bike-preview-frame.png");
+    float: left;
+    margin: 0 16px 32px 16px;
+
+}
+
+ .product-preview .image {
+    position: absolute;
+    margin: 3px 4px 0 4px;
+    height: 215px;
+    width: 268px;
+
+}
+ .product-preview .image img
+{
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+ .product-preview .title-price {
+    margin-top: 218px;
+    height: 50px;
+}
+
+ .product-preview .title-price {
+    height: 50px;
+}
+
+ .product-preview .title-price .title,
+ .product-preview .title-price .price {
+    height: 50px;
+    float: left;
+}
+
+ .product-preview .title-price .title {
+    font-family: 'PT Sans Narrow', serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: left;
+    width: 66%;
+
+}
+
+ .product-preview .title-price .price {
+    font-family: Trebuchet MS, serif;
+    font-size: 20px;
+    width: 33%;
+}
+
+ .product-preview .title-price .title span {
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+    padding-left: 15px;
+}
+
+ .product-preview .title-price .price span {
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+    line-height: 18px;
+}
+
+ .product-preview .title-price .price span sup {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+ .product-preview .title a {
+
+    color: #0076a3;
+}
+
+ .product-preview .title-price .price span b
+{
+    font-weight: normal;
+    color: #ed1c24;
+}
+
+.wow-new,
+.top-sale,
+.discount {
+    position: absolute;
+    width: 107px;
+    height: 106px;
+
+    margin-left: 165px;
+    margin-top: 2px;
+}
+
+.wow-new {
+    background: url("../img/wow-new.png");
+}
+
+.top-sale {
+    background: url("../img/top-sale.png");
+}
+
+.discount {
+    background: url("../img/discount.png");
+}
+

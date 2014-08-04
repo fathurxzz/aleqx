@@ -4,13 +4,76 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/Menu.css")
-    
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    @Styles.Render(
+    "~/Content/css/menu.css",
+    "~/Content/css/main.css",
+    "~/Content/css/site.css",
+    "~/Content/css/header.css",
+    "~/Content/css/menu.css",
+    "~/Content/css/menu-categories.css",
+    "~/Content/css/site-title.css",
+    "~/Content/css/special-offer.css",
+    "~/Content/css/article.css",
+    "~/Content/css/catalogue.css",
+    "~/Content/css/footer.css")
+
+
+    @Scripts.Render(
+    "~/Scripts/jquery-1.11.1.min.js",
+    "~/Scripts/jquery-ui.min.js",
+    "~/Scripts/main.js")
+
+    @RenderSection("scripts", required: false)
+
     @RenderSection("includes", required: false)
 </head>
-<body>
-    @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
-</body>
+    <body>
+        
+        <div id="header-outer">
+      
+            <div style="position: absolute; padding: 10px">
+                @Html.ActionLink("Админка", "Default", "Admin", new { area = "Admin" }, null)    
+            </div>
+
+            <div id="header-inner">
+                <div id="header">
+                    <div id="logo-small"></div>
+                    <div id="user-greeting">Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!</div>
+                    <a href="cart.html" id="cart-icon">
+                        <div id="cart-items-count">3</div>
+                    </a>
+                    <div class="socials">
+                        <div class="social instagram"></div>
+                        <div class="social fb"></div>
+                        <div class="social vk"></div>
+                    </div>
+                    <div id="search-wrapper">
+                        <div id="search-icon"></div>
+                        <input id="search-input" name="search-input" type="text" placeholder="Я ищу...">
+                    </div>
+                    <div id="phone-panel">
+                        (044) 123-45-67, (067) 202-39-99
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @RenderBody()
+
+        <div id="footer">
+            <div id="footer-inner">
+                <div id="copyright">
+                    &copy; 2014<br>
+                    Веломагазин Григория Войтишина
+                </div>
+                <div id="em-studio">
+                    Сделано в
+                    <br>
+                    <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

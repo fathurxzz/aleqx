@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: 'PT Sans Narrow', sans-serif;
+    /*font-family: 'PT Sans', sans-serif;*/
+    font-weight: 400;
+
+}
+
+#page {
+    position: relative;
+    margin: -7px auto 0 auto;
+    width: 1195px;
+    min-height: 740px;
+}
+
+#main-banner {
+    height: 233px;
+    background: url("../img/main-banner.png") no-repeat;
+    margin-bottom: 50px;
+}
+
+#main-page-banner
+{
+    height: 478px;
+    background: url("../img/main-page-banner.png");
+}
+
+#about {
+    height: 170px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    margin-top: 50px;
+}
+
+#about .text {
+    position: relative;
+    margin-left: 220px;
+    padding-top: 45px;
+    font-size: 17px;
+    font-family: 'PT Sans', serif;
+    margin-right: 40px;
+}
+
+#about #glad-to-see-you {
+    font-family: 'PT Sans', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #00aeef;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#about #avatar{
+    width: 181px;
+    height: 181px;
+    background: url("../img/avatar.png");
+    position: absolute;
+    margin-top: -5px;
+    margin-left: 7px;
+}
+
+#chose-your-bike {
+    width: 313px;
+    height: 78px;
+    position: relative;
+    margin: -35px auto 0 auto;
+    background: url("../img/chose-your-bike.png");
+    cursor: pointer;
+}
+
+#banners {
+    height: 132px;
+    margin-top: 40px;
+    margin-bottom: 90px;
+}
+
+#banners .banner {
+    width: 558px;
+    height: 132px;
+}
+
+#banners #banner1 {
+    float: left;
+    background: url("../img/tmp/banner1.png");
+}
+
+#banners #banner2 {
+    float: right;
+    background: url("../img/tmp/banner2.png");
+}
+
+
+
+
+#about-bike-choosing
+{
+    margin-top: 40px;
+    margin-bottom: 140px;
+    font-family: 'PT Sans' serif;
+    font-size: 15px;
+}
