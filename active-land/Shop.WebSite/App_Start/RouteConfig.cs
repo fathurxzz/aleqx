@@ -13,6 +13,28 @@ namespace Shop.WebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
+            
+            routes.MapRoute(
+                "Login",
+                "login",
+                new { controller = "Auth", action = "Login" },
+                new[] { "Shop.WebSite.Controllers" }
+            );
+
+            routes.MapRoute(
+                "LogOut",
+                "logout",
+                new { controller = "Auth", action = "Logout" },
+                new[] { "Shop.WebSite.Controllers" }
+            );
+
+            routes.MapRoute(
+               "Catalogue",
+               "{lang}/catalogue/{category}/{subcategory}/{product}",
+               new { controller = "Home", action = "Index", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, product = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Leo.Controllers" }
+           );
 
             routes.MapRoute(
                 "Default",
