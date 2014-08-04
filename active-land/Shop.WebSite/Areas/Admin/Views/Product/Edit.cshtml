@@ -29,16 +29,16 @@
                     var categories = ((IEnumerable<Category>) ViewBag.Categories).ToList();
                     if (categories.Any())
                     {
-                        <select name="categoryId">
+                        <select class="selectpicker" name="categoryId">
                             @foreach (var category in categories)
                             {
                                 if (category.Selected)
                                 {
-                                    <option selected value="@category.Id">@category.Title</option>
+                                    <option selected value="@category.Id"> @Html.Raw(category.CategoryLevel>0?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;":"") @category.Title</option>
                                 }
                                 else
                                 {
-                                    <option value="@category.Id">@category.Title</option>
+                                    <option value="@category.Id"> @Html.Raw(category.CategoryLevel>0?"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;":"")@category.Title</option>
                                 }
                                 
                             }
