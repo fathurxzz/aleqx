@@ -23,13 +23,13 @@
     <div id="menu-panel-main-page">
         @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
         <div id="menu-items">
-            <ul>
-                <li class="catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")</li>
-                <li><a href="#">Новости и события</a></li>
-                <li class="delivery"><a href="#">Гарантия, оплата и доставка</a></li>
-                <li class="rent"><a href="#">Вело-прокат</a></li>
-                <li><a href="#">Мастерская</a></li>
-                <li><a href="#">Прямой контакт</a></li>
+            <ul class="main-menu-items">
+                <li class="main-menu-item catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")</li>
+                <li class="main-menu-item"><a href="#">Новости и события</a></li>
+                <li class="main-menu-item delivery"><a href="#">Гарантия, оплата и доставка</a></li>
+                <li class="main-menu-item rent"><a href="#">Вело-прокат</a></li>
+                <li class="main-menu-item"><a href="#">Мастерская</a></li>
+                <li class="main-menu-item"><a href="#">Прямой контакт</a></li>
             </ul>
 
         </div>
