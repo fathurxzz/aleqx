@@ -78,19 +78,19 @@
 
 
 
-.container {
+.site-title .site-title-container {
     position: relative;
     overflow: hidden;
     width: 691px;
 }
 
-.stretch-element {
+.site-title .stretch-element {
     position: absolute;
     height: 27px;
     overflow: hidden;
 }
 
-.table-cell {
+.site-title .table-cell {
     display: table-cell;
     width: 1%;
     height: 27px;

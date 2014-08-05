@@ -29,7 +29,7 @@
 
 }
 
-#menu-items ul li {
+#menu-items ul.main-menu-items li.main-menu-item {
     display: table-cell;
     height: 100%;
     /*border: 1px solid red;*/
@@ -45,36 +45,36 @@
     letter-spacing: 1px;
 }
 
-#menu-items ul li a {
+#menu-items ul.main-menu-items li.main-menu-item a {
     color: inherit;
 }
 
-#menu-items ul li a:hover {
+#menu-items ul.main-menu-items li.main-menu-item a:hover {
     text-decoration: none;
 }
 
-#menu-panel #menu-items ul li.catalog {
+#menu-panel #menu-items ul.main-menu-items li.catalog {
     width: 100px;
 }
 
-#menu-panel #menu-items ul li.rent {
+#menu-panel #menu-items ul.main-menu-item li.rent {
     width: 90px;
 }
 
-#menu-panel-main-page #menu-items ul li.catalog {
+#menu-panel-main-page #menu-items ul.main-menu-items li.catalog {
     width: 100px;
 }
 
-#menu-panel-main-page #menu-items ul li.rent {
+#menu-panel-main-page #menu-items ul.main-menu-items li.rent {
     width: 90px;
 }
 
-#menu-panel-main-page #menu-items ul li.delivery
+#menu-panel-main-page #menu-items ul.main-menu-items li.delivery
 {
     width: 150px;
 }
 
-#menu-panel-main-page #menu-items ul li
+#menu-panel-main-page #menu-items ul.main-menu-items li
 {
     padding: 0 30px;
 }
