@@ -48,6 +48,13 @@
   <ItemGroup>
     <Compile Include="Contracts\Exceptions\UserException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Category.cs" />
+    <Compile Include="Repositories\Product.cs" />
+    <Compile Include="Repositories\ProductAttribute.cs" />
+    <Compile Include="Repositories\ProductAttributeStaticValue.cs" />
+    <Compile Include="Repositories\ProductAttributeValue.cs" />
+    <Compile Include="Repositories\ProductAttributeValueTag.cs" />
+    <Compile Include="Repositories\ProductImage.cs" />
     <Compile Include="Repositories\ShopRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,10 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         @Styles.Render(
-            "~/Content/css/menu.css",
+
+                 //"~/Content/css/bootstrap.min.css",
+                 //             "~/Content/css/bootstrap-select.min.css",
+        
             "~/Content/css/main.css",
             "~/Content/css/site.css",
             "~/Content/css/header.css",
@@ -17,17 +20,30 @@
             "~/Content/css/special-offer.css",
             "~/Content/css/article.css",
             "~/Content/css/catalogue.css",
-            "~/Content/css/footer.css")
 
+                   
+
+            "~/Content/css/footer.css"
+            )
 
         @Scripts.Render(
             "~/Scripts/jquery-1.11.1.min.js",
             "~/Scripts/jquery-ui.min.js",
+                     "~/Scripts/bootstrap.min.js",
+                     "~/Scripts/bootstrap-select.js",
             "~/Scripts/main.js")
 
-        @RenderSection("scripts", required: false)
-
         @RenderSection("includes", required: false)
+        
+        @RenderSection("scripts", required: false)
+        
+       @* <script type="text/javascript">
+               $(function () {
+                   
+                   $('.selectpicker').selectpicker();
+               })
+        </script>*@
+
     </head>
     
 
@@ -79,5 +95,6 @@
                 </div>
             </div>
         </div>
+         
     </body>
 </html>

@@ -1,3 +1,8 @@
+.category-menu {
+    position: absolute;
+    color: #000000;
+}
+
 #category-menu, #category-menu ul
 {
     border: 2px solid #25aae1;

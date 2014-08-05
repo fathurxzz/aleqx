@@ -9,13 +9,59 @@
 <div id="menu-panel">
     @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
     <div id="menu-items">
-        <ul>
-            <li class="catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")</li>
-            <li><a href="#">Новости и события</a></li>
-            <li><a href="#">Гарантия, оплата и доставка</a></li>
-            <li class="rent"><a href="#">Вело-прокат</a></li>
-            <li><a href="#">Мастерская</a></li>
-            <li><a href="#">Прямой контакт</a></li>
+        <ul class="main-menu-items">
+            <li class="main-menu-item" class="catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")
+                
+                <div class="category-menu">
+                    <div class="menu-group-wrapper">
+                        <ul id="category-menu">
+                            <li class="main">
+                                <div class="arrow top"></div>
+                                <a href="#">Велосипеды</a>
+                                <div class="menu-group-wrapper sub-menu">
+                                    <ul>
+                                        <li><div class="arrow left"></div> <a href="#">Горные</a></li>
+                                        <li><a href="#">Городские</a></li>
+                                        <li><a href="#">BMX</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main"><a href="#">Запчасти</a>
+                                <div class="menu-group-wrapper sub-menu">
+                                    <ul>
+                                        <li><div class="arrow left"></div><a href="#">Вилки</a></li>
+                                        <li><a href="#">Замки</a></li>
+                                        <li><a href="#">Звонки</a></li>
+                                        <li><a href="#">Крылья</a></li>
+                                        <li><a href="#">Покрышки</a></li>
+                                        <li><a href="#">Педали</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main"><a href="#">Одежда и защита</a>
+                                <div class="menu-group-wrapper sub-menu">
+                                    <ul>
+                                        <li><div class="arrow left"></div><a href="#">Шорты</a></li>
+                                        <li><a href="#">Носки</a></li>
+                                        <li><a href="#">Очки</a></li>
+                                        <li><a href="#">Шлемы</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main"><a href="#">Рюкзаки и сумки</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
+
+
+            </li>
+            <li class="main-menu-item"><a href="#">Новости и события</a></li>
+            <li class="main-menu-item"><a href="#">Гарантия, оплата и доставка</a></li>
+            <li class="main-menu-item" class="rent"><a href="#">Вело-прокат</a></li>
+            <li class="main-menu-item"><a href="#">Мастерская</a></li>
+            <li class="main-menu-item"><a href="#">Прямой контакт</a></li>
         </ul>
 
     </div>
@@ -25,7 +71,9 @@
 
 
 
-<div class="site-title">
+@Html.Partial("SiteTitle","Детские и подростковые")
+
+@*<div class="site-title">
     <div class="container clearfix block">
         <div class="block first-block">
             <!--<span>-->
@@ -45,7 +93,7 @@
         </div>
     </div>
     <div class="block after-bike-fading"></div>
-</div>
+</div>*@
 
 
 
@@ -54,26 +102,32 @@
     <div id="filters-container">
 
         <div id="price-sort-selector" class="selector">
-            <select>
+            <select class="selectpicker" name="priceOrder">
                 <option>Сначала дорогие</option>
+                <option>Сначала дешевые</option>
             </select>
         </div>
+
         <div id="brand-selector" class="selector checkbox-selector">
             <div class="title">Бренды:</div>
             <div class="selectors">
                 <ul>
                     <li>
-                        <input type="checkbox">
-                        felt</li>
+                        <input type="checkbox" id="brand1">
+                        <label for="brand1">felt</label>
+                    </li>
                     <li>
-                        <input type="checkbox">
-                        comanche</li>
+                        <input type="checkbox" id="brand2">
+                        <label for="brand2">comanche</label>
+                        </li>
                     <li>
-                        <input type="checkbox">
-                        hydra</li>
+                        <input type="checkbox" id="brand3">
+                        <label for="brand3">hydra</label>
+                        </li>
                     <li>
-                        <input type="checkbox">
-                        tycoon</li>
+                        <input type="checkbox" id="brand4">
+                        <label for="brand4">tycoon</label>
+                        </li>
 
                 </ul>
             </div>
