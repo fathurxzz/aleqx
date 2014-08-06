@@ -407,6 +407,7 @@
     <Content Include="Views\Shared\SiteTitle.cshtml" />
     <Content Include="Views\Shared\Article.cshtml" />
     <Content Include="Views\Shared\ProductPreview.cshtml" />
+    <Content Include="Views\Shared\CategoriesMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
