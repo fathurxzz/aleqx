@@ -38,12 +38,19 @@ namespace Shop.WebSite
 
             routes.MapRoute(
                "Catalogue",
-               "{lang}/catalogue/{category}/{subcategory}/{product}",
-               new { controller = "Home", action = "Catelogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, product = UrlParameter.Optional },
+               "{lang}/catalogue/{category}/{subcategory}",
+               new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional },
                new { lang = @"ru|en" },
                new[] { "Shop.WebSite.Controllers" }
            );
 
+            routes.MapRoute(
+               "Product",
+               "{lang}/product/{product}",
+               new { controller = "Home", action = "ProductDetails", product = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Shop.WebSite.Controllers" }
+           );
             
 
             routes.MapRoute(

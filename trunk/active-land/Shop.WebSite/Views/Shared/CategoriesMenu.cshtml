@@ -12,7 +12,7 @@
                     {
                         <div class="arrow top"></div>
                     }
-                    <a href="#">@category.Title</a>
+                    @Html.ActionLink(category.Title,"Catalogue","Home",new{category=category.Name,subcategory=""},null)
                     @if (category.Children.Any())
                     {
                         var childCnt = 0;
@@ -26,7 +26,7 @@
                                         {
                                             <div class="arrow left"></div>
                                         }
-                                        <a href="#">@child.Title</a>
+                                        @Html.ActionLink(child.Title,"Catalogue","Home",new{category=category.Name,subcategory=child.Name},null)
                                     </li>
                                 }
                             </ul>

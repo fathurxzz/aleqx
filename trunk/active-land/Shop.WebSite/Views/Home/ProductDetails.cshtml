@@ -1,0 +1,99 @@
+﻿@using Shop.WebSite.Models
+@model CatalogueModel
+
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="menu-panel">
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    <div id="menu-items">
+        <ul class="main-menu-items">
+            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
+
+                @Html.Partial("CategoriesMenu", Model.Categories)
+
+            </li>
+            <li class="main-menu-item"><a href="#">Новости и события</a></li>
+            <li class="main-menu-item"><a href="#">Гарантия, оплата и доставка</a></li>
+            <li class="main-menu-item rent"><a href="#">Вело-прокат</a></li>
+            <li class="main-menu-item"><a href="#">Мастерская</a></li>
+            <li class="main-menu-item"><a href="#">Прямой контакт</a></li>
+        </ul>
+
+    </div>
+</div>
+<div id="main-banner">
+</div>
+
+
+@Html.Partial("SiteTitle", new BreadCrumbs
+{
+    new BreadCrumb()
+    {
+        Title = Model.Product.Category.Parent.Title, 
+        Name = Model.Product.Category.Parent.Name
+    }, 
+    new BreadCrumb()
+    {
+        Title = Model.Product.Category.Title, 
+        Name = Model.Product.Category.Name
+    },
+    new BreadCrumb()
+    {
+        Title = Model.Product.Title
+    }
+})
+
+
+@Html.Partial("_ProductDetails",Model.Product)
+
+
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb(){Title = "К покупке пригодяться:"}  })
+
+<div id="tying-products">
+    
+    @foreach (var product in Model.Products)
+        {
+            @Html.Partial("ProductPreview", new ProductPreview
+            {
+                Title = product.Title,
+                Label =
+                product.IsNew ? ProductPreviewLabel.WowNew
+                : product.IsTopSale ? ProductPreviewLabel.TopSale
+                : product.IsDiscount ? ProductPreviewLabel.Discount
+                : ProductPreviewLabel.None,
+                Price = product.Price,
+                OldPrice = product.OldPrice,
+                ImageSource = product.ImageSource,
+                Name = product.Name
+            })
+        }
+
+    @*<div class="product-preview">
+        <div class="image">
+            <img src="img/tmp/bike-image.png">
+        </div>
+        <div class="discount"></div>
+        <div class="title-price">
+            <div class="title">
+                <span>
+                    <a href="#">Marin Supersized 14"</a>
+                </span>
+            </div>
+            <div class="price">
+                <span>2,330<sup>грн</sup>
+                </span>
+            </div>
+        </div>
+    </div>*@
+
+    <div class="clearfix"></div>
+</div>
+
+<div id="banners">
+    <div class="banner" id="banner1"></div>
+    <div class="banner" id="banner2"></div>
+</div>

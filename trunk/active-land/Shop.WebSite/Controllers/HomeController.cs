@@ -26,10 +26,17 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult Catelogue(string category, string subcategory, string product)
+        public ActionResult Catalogue(string category, string subcategory)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository);
+            var model = new CatalogueModel(_repository, category, subcategory);
+            return View(model);
+        }
+
+        public ActionResult ProductDetails(string product)
+        {
+            _repository.LangId = CurrentLangId;
+            var model = new CatalogueModel(_repository, productName: product);
             return View(model);
         }
     }

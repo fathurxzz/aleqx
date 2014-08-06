@@ -1,0 +1,170 @@
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model Shop.DataAccess.Entities.Product
+
+<div id="product-details">
+    <div id="product-images-section">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage")))
+
+        <div id="product-previews">
+            @foreach (var image in Model.ProductImages)
+            {
+                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
+            }
+        </div>
+        <div id="support">
+            <div class="info">
+                Есть вопросы? &mdash; Я на связи: <a href="#">написать</a> / <a href="#">позвонить</a>
+            </div>
+        </div>
+    </div>
+    <div id="product-info">
+        <div class="socials">
+            <div class="social instagram"></div>
+            <div class="social fb"></div>
+            <div class="social vk"></div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="title-price-in-cart-section">
+            <div class="title">@Model.Title</div>
+            <div class="in-cart">товар в <a href="#">корзине</a></div>
+            <div class="price">@Model.Price.ToString("###,###") <sup>грн</sup></div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="description">
+            @Html.Raw(Model.Description)
+
+            @*Этот стильный беговел позволит ребенку развивать способность поддерживать баланс, отработать
+            двигательные навыки и технику координации движений.
+            Езда на беговеле принесет много удовольствия. Ваш ребенок сможет поддерживать себя ногами в таком же
+            положении как и на обычном велосипеде,
+            тем самым сохраняя равновесие.*@
+        </div>
+        <div id="product-attributes">
+
+            @foreach (var pruductAttribute in Model.Category.ProductAttributes)
+            {
+                <div class="attribute">
+                    <div class="title">@pruductAttribute.Title @Html.Raw(!string.IsNullOrEmpty(pruductAttribute.UnitTitle) ? ", " + pruductAttribute.UnitTitle : "")</div>
+                    <div class="value">
+
+                        
+                        
+                        <div class="value-text">
+                            @if (pruductAttribute.IsStatic)
+                            {
+                                foreach (var pav in Model.ProductAttributeStaticValues)
+                                {
+                                    if (pav.ProductAttributeId == pruductAttribute.Id)
+                                    {
+                                        @pav.Title
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var cnt = 0;
+                                foreach (var pav in Model.ProductAttributeValues)
+                                {
+                                    if (pav.ProductAttributeId == pruductAttribute.Id)
+                                    {
+                                        if (cnt != 0)
+                                        {
+                                            @Html.Raw(", ")
+                                        }
+                                        else
+                                        {
+                                            if (pav.ProductAttributeValueTag != null)
+                                            {
+                                                switch (pav.ProductAttributeValueTag.Id)
+                                                {
+                                                    case 1:
+                                                    {
+                                                        <span class="tag base">@pav.ProductAttributeValueTag.Title</span>
+                                                    }
+                                                    break;
+                                                    case 2:
+                                                    {
+                                                        <span class="tag middle">@pav.ProductAttributeValueTag.Title</span>
+                                                    }
+                                                    break;
+                                                    case 3:
+                                                    {
+                                                        <span class="tag prof">@pav.ProductAttributeValueTag.Title</span>
+                                                    }
+                                                    break;
+                                                }
+                                                
+                                            }
+                                        }
+                                        cnt++;
+                                        @pav.Title
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @* <div class="attribute">
+                <div class="title">Размер колеса, дюймы</div>
+                <div class="value">
+                    <span class="tag base">Базовый</span>
+                    <div class="value-text">20</div>
+                </div>
+            </div>
+            <div class="attribute alternative-item">
+                <div class="title">Цепь</div>
+                <div class="value">
+                    <span class="tag middle">Средний</span>
+                    <div class="value-text">KMZ-1000</div>
+                </div>
+            </div>
+            <div class="attribute">
+                <div class="title">Колеса</div>
+                <div class="value">
+                    <span class="tag prof">Профи</span>
+                    <div class="value-text">GOODYEAR</div>
+                </div>
+            </div>
+            <div class="attribute alternative-item">
+                <div class="title">Втулки</div>
+                <div class="value">
+                    <span class="tag base">Базовый</span>
+                    <div class="value-text">Megathrone XZ</div>
+                </div>
+            </div>
+            <div class="attribute">
+                <div class="title">Рама</div>
+                <div class="value">
+                    <span class="tag middle">Средний</span>
+                    <div class="value-text">BULLdoggio</div>
+                </div>
+            </div>
+            <div class="attribute alternative-item">
+                <div class="title">Покрышки</div>
+                <div class="value">
+                    <span class="tag prof">Профи</span>
+                    <div class="value-text">Kenda 20110</div>
+                </div>
+            </div>
+            <div class="attribute alternative-item">
+                <div class="title">Седло</div>
+                <div class="value">
+                    <span class="tag prof">Профи</span>
+                    <div class="value-text">Vedlo</div>
+                </div>
+            </div>
+            <div class="attribute alternative-item">
+                <div class="title">Дополнительно</div>
+                <div class="value">
+                    + семь аксессуаров на выбор
+                </div>
+            </div>*@
+
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
