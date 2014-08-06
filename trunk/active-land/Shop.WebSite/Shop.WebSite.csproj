@@ -279,30 +279,30 @@
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductAttribute\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Attributes.cshtml" />
-    <Content Include="CodeTemplates\AddView\CSHTML\Create.tt">
+    <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
-    </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\Delete.tt">
+    </None>
+    <None Include="CodeTemplates\AddView\CSHTML\Delete.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Delete.cshtml</LastGenOutput>
-    </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\Details.tt">
+    </None>
+    <None Include="CodeTemplates\AddView\CSHTML\Details.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Details.cshtml</LastGenOutput>
-    </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\Edit.tt">
+    </None>
+    <None Include="CodeTemplates\AddView\CSHTML\Edit.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Edit.cshtml</LastGenOutput>
-    </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\Empty.tt">
+    </None>
+    <None Include="CodeTemplates\AddView\CSHTML\Empty.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Empty.cshtml</LastGenOutput>
-    </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\List.tt">
+    </None>
+    <None Include="CodeTemplates\AddView\CSHTML\List.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>List.cshtml</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="CodeTemplates\AddView\CSHTML\Create.cshtml">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -333,20 +333,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>List.tt</DependentUpon>
     </Content>
-    <Content Include="CodeTemplates\AddView\CSHTML\CreateShop.tt">
+    <None Include="CodeTemplates\AddView\CSHTML\CreateShop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CreateShop.cshtml</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="CodeTemplates\AddView\CSHTML\CreateShop.cshtml">
       <DependentUpon>CreateShop.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
     <Content Include="Areas\Admin\Views\ProductAttribute\Create.cshtml" />
-    <Content Include="CodeTemplates\AddView\CSHTML\EditShop.tt">
+    <None Include="CodeTemplates\AddView\CSHTML\EditShop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EditShop.cshtml</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="CodeTemplates\AddView\CSHTML\EditShop.cshtml">
       <DependentUpon>EditShop.tt</DependentUpon>
       <AutoGen>True</AutoGen>
