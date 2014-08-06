@@ -1,6 +1,9 @@
 .category-menu {
     position: absolute;
     color: #000000;
+    padding-top: 40px;
+    visibility: hidden;
+    margin-left: -40px;
 }
 
 #category-menu, #category-menu ul
@@ -26,6 +29,7 @@
     color: #008abd;
     border-bottom: 1px solid #a8ddf3;
     margin: 0 3px;
+    text-align: left;
 }
 
 #category-menu li a
@@ -38,7 +42,7 @@
 
 #category-menu li a:hover
 {
-    text-decoration: underline;
+    text-decoration: underline !important;
 
 }
 
@@ -88,6 +92,5 @@
     height: 11px;
     background: url("../img/menu-item-arrow-top.png");
     display: block;
-    margin-left: 65px;
-    margin-top: -11px;
+    margin: -11px auto 0 auto;
 }
