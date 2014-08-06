@@ -1,20 +1,20 @@
 $(function () {
 
-    
+    $(".categories-menu-link").mousemove(function() {
+        $(".category-menu").css("visibility", "visible");
+    });
 
     var obj = $("#category-menu");
     if (obj[0] != undefined) {
         var width = obj[0].offsetWidth;
 
         $("html").click(function() {
-            $(".sub-menu").each(function() {
-                $(this).removeClass("show");
-            });
+            $(".category-menu").css("visibility", "hidden");
         });
 
 
         $(".sub-menu").each(function() {
-            $(this).css("left", width + 20 + "px");
+            $(this).css("left", width + 1 + "px");
         });
 
         $("#category-menu").find("li.main").mouseenter(function() {
