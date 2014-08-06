@@ -49,6 +49,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Ignore(t => t.Description);
             this.Ignore(t => t.IsCorrectLang);
             this.Ignore(t => t.CurrentLang);
+            this.Ignore(t => t.ImageSource);
 
         }
     }

@@ -18,11 +18,15 @@ namespace Shop.WebSite.Models
         public bool IsHomePage { get; set; }
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<MenuItem> MenuItems { get; set; }
+        public IEnumerable<Product> SpecialOffers { get; set; }
+        public IEnumerable<Product> AllProducts { get; set; }
 
         public SiteModel(IShopRepository repository)
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
+            AllProducts = repository.GetProducts();
+            SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
         }
     
     }

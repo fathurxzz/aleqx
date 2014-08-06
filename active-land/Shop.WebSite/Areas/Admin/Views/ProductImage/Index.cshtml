@@ -23,7 +23,7 @@
             <div>
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id, productId = item.ProductId }, new { onclick = "return confirm('Удалить изображение?')" })
             </div>
-            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
+            @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("adminProductPreview")))
         </div>
     }
     

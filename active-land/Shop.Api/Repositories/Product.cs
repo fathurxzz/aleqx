@@ -17,6 +17,12 @@ namespace Shop.Api.Repositories
             {
                 product.CurrentLang = LangId;
                 product.Category.CurrentLang = LangId;
+
+                if (product.ProductImages.Any())
+                {
+                    var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
+                    product.ImageSource = pi.ImageSource;
+                }
             }
             return products;
         }
