@@ -46,10 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Article.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleLang.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="CategoryLang.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Content.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContentLang.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Language.cs">

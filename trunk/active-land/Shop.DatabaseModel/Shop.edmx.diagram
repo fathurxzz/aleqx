@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d024be69eb344561b03b7bd7207527b7" Name="Diagram1" ZoomLevel="98" >
-        <EntityTypeShape EntityType="Shop.Language" Width="1.5" PointX="0.875" PointY="8.5" />
+        <EntityTypeShape EntityType="Shop.Language" Width="2.5" PointX="0.5" PointY="8.5" />
         <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="8.625" PointY="0.5" />
         <EntityTypeShape EntityType="Shop.CategoryLang" Width="1.5" PointX="3.625" PointY="0.5" />
         <EntityTypeShape EntityType="Shop.Product" Width="1.5" PointX="12.375" PointY="8" />
@@ -40,6 +40,14 @@
         <AssociationConnector Association="Shop.ProductProductAttributeStaticValue" />
         <AssociationConnector Association="Shop.ProductAttributeStaticValueProductAttributeStaticValueLang" />
         <AssociationConnector Association="Shop.ProductAttributeProductAttributeLang" />
+        <EntityTypeShape EntityType="Shop.Content" Width="1.5" PointX="9.375" PointY="20.125" />
+        <EntityTypeShape EntityType="Shop.ContentLang" Width="1.5" PointX="3.625" PointY="19.875" />
+        <AssociationConnector Association="Shop.LanguageContentLang" />
+        <AssociationConnector Association="Shop.ContentContentLang" />
+        <EntityTypeShape EntityType="Shop.Article" Width="1.5" PointX="9.375" PointY="23.25" />
+        <EntityTypeShape EntityType="Shop.ArticleLang" Width="1.5" PointX="3.625" PointY="23.625" />
+        <AssociationConnector Association="Shop.LanguageArticleLang" />
+        <AssociationConnector Association="Shop.ArticleArticleLang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
