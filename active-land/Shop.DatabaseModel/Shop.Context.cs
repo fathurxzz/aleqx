@@ -39,5 +39,9 @@ namespace Shop.DatabaseModel
         public DbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLang { get; set; }
         public DbSet<ProductAttributeStaticValue> ProductAttributeStaticValue { get; set; }
         public DbSet<ProductAttributeStaticValueLang> ProductAttributeStaticValueLang { get; set; }
+        public DbSet<Content> Content { get; set; }
+        public DbSet<ContentLang> ContentLang { get; set; }
+        public DbSet<Article> Article { get; set; }
+        public DbSet<ArticleLang> ArticleLang { get; set; }
     }
 }

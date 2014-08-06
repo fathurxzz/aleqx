@@ -22,6 +22,8 @@ namespace Shop.DatabaseModel
             this.ProductAttributeValueTagLangs = new HashSet<ProductAttributeValueTagLang>();
             this.ProductAttributeValueLangs = new HashSet<ProductAttributeValueLang>();
             this.ProductAttributeStaticValueLangs = new HashSet<ProductAttributeStaticValueLang>();
+            this.ContentLangs = new HashSet<ContentLang>();
+            this.ArticleLangs = new HashSet<ArticleLang>();
         }
     
         public int Id { get; set; }
@@ -34,5 +36,7 @@ namespace Shop.DatabaseModel
         public virtual ICollection<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
         public virtual ICollection<ProductAttributeValueLang> ProductAttributeValueLangs { get; set; }
         public virtual ICollection<ProductAttributeStaticValueLang> ProductAttributeStaticValueLangs { get; set; }
+        public virtual ICollection<ContentLang> ContentLangs { get; set; }
+        public virtual ICollection<ArticleLang> ArticleLangs { get; set; }
     }
 }
