@@ -11,7 +11,7 @@
         @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
         <div id="menu-items">
             <ul class="main-menu-items">
-                <li class="main-menu-item catalog">@Html.ActionLink("Вело-каталог","Catelogue","Home")</li>
+                <li class="main-menu-item catalog">@Html.ActionLink("Вело-каталог","Catalogue","Home")</li>
                 <li class="main-menu-item"><a href="#">Новости и события</a></li>
                 <li class="main-menu-item delivery"><a href="#">Гарантия, оплата и доставка</a></li>
                 <li class="main-menu-item rent"><a href="#">Вело-прокат</a></li>
@@ -43,7 +43,7 @@
 
 
 
-@Html.Partial("SiteTitle","Специальные предложения")
+@Html.Partial("SiteTitle",new BreadCrumbs{new BreadCrumb(){ Title =  "Специальные предложения"}})
 <div id="special-offers">
     @foreach (var product in Model.SpecialOffers)
     {
@@ -74,7 +74,7 @@
 
 
 
-@Html.Partial("SiteTitle","Новости и события")
+@Html.Partial("SiteTitle",new BreadCrumbs{ new BreadCrumb(){Title = "Новости и события"}})
 <div id="articles">
    
     @foreach (var article in Shop.WebSite.TempData.Article.GetArticles())
@@ -86,7 +86,7 @@
 
 
 
-@Html.Partial("SiteTitle","О подборе байка")
+@Html.Partial("SiteTitle",new BreadCrumbs{new BreadCrumb(){Title = "О подборе байка"}})
 <div id="about-bike-choosing">
     Велосипе́д (стар. фр. vélocipède, от лат. vēlōx «быстрый» и pēs «нога») — колёсное транспортное средство,
     приводимое в движение мускульной силой человека через ножные педали или (крайне редко) через ручные рычаги.

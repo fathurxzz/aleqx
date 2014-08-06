@@ -30,6 +30,11 @@
 
 .site-title .first-block span
 {
+    padding: 0 0 0 5px;
+}
+
+.site-title .first-block span.separator
+{
     padding: 0 10px 0 5px;
 }
 

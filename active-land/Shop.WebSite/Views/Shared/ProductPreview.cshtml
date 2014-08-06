@@ -28,7 +28,12 @@
         <div class="title-price">
             <div class="title">
                 <span>
-                    <a href="#">@Model.Title</a>
+                    @Html.ActionLink(Model.Title,"ProductDetails","Home",new
+                    {
+                        //category=Model.CategoryName,
+                        //subcategory=Model.SubCategoryName , 
+                        product=Model.Name
+                    },null)
                 </span>
             </div>
             
@@ -36,13 +41,13 @@
                 @if (Model.Label==ProductPreviewLabel.Discount)
                 {
                     <span>
-                    <s>@Model.OldPrice</s><sup>грн</sup><br>
-                    <b>@Model.Price<sup>грн</sup></b>
+                    <s>@Model.OldPrice.ToString("###,###")</s><sup>грн</sup><br>
+                    <b>@Model.Price.ToString("###,###")<sup>грн</sup></b>
                     </span>
                 }
                 else
                 {
-                    <span>@Model.Price<sup>грн</sup>
+                    <span>@Model.Price.ToString("###,###")<sup>грн</sup>
                     </span>
                 }
             </div>

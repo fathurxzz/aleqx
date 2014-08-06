@@ -7,12 +7,12 @@
 }
 
 <div id="menu-panel">
-    @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
     <div id="menu-items">
         <ul class="main-menu-items">
-            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог","Catelogue","Home") 
-                
-                @Html.Partial("CategoriesMenu",Model.Categories)
+            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
+
+                @Html.Partial("CategoriesMenu", Model.Categories)
 
             </li>
             <li class="main-menu-item"><a href="#">Новости и события</a></li>
@@ -29,7 +29,7 @@
 
 
 
-@Html.Partial("SiteTitle","Детские и подростковые")
+@Html.Partial("SiteTitle", new BreadCrumbs{new BreadCrumb(){Title =  "Детские и подростковые"} })
 
 @*<div class="site-title">
     <div class="container clearfix block">
@@ -66,7 +66,28 @@
             </select>
         </div>
 
-        <div id="brand-selector" class="selector checkbox-selector">
+
+
+        @foreach (var productAttribute in Model.ProductAttributes)
+        {
+            <div class="selector checkbox-selector">
+                <div class="title">@productAttribute.Title:</div>
+                <div class="selectors">
+                    <ul>
+                        @foreach (var categoryValue in productAttribute.ProductAttributeValues)
+                        {
+                            <li>
+                                <input type="checkbox" id="cb_@categoryValue.Id">
+                                <label for="cb_@categoryValue.Id">@categoryValue.Title</label>
+                            </li>   
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+
+
+        @*<div id="brand-selector" class="selector checkbox-selector">
             <div class="title">Бренды:</div>
             <div class="selectors">
                 <ul>
@@ -77,23 +98,23 @@
                     <li>
                         <input type="checkbox" id="brand2">
                         <label for="brand2">comanche</label>
-                        </li>
+                    </li>
                     <li>
                         <input type="checkbox" id="brand3">
                         <label for="brand3">hydra</label>
-                        </li>
+                    </li>
                     <li>
                         <input type="checkbox" id="brand4">
                         <label for="brand4">tycoon</label>
-                        </li>
+                    </li>
 
                 </ul>
             </div>
-
-
         </div>
+
         <div id="price-range-selector" class="selector">
         </div>
+
         <div id="category-selector" class="selector checkbox-selector">
             <div class="title">Категории:</div>
             <div class="selectors">
@@ -113,7 +134,7 @@
 
                 </ul>
             </div>
-        </div>
+        </div>*@
 
     </div>
     <div id="products">
@@ -121,18 +142,19 @@
         {
             @Html.Partial("ProductPreview", new ProductPreview
             {
-                Title = product.Title, 
-                Label = 
-                product.IsNew ? ProductPreviewLabel.WowNew 
+                Title = product.Title,
+                Label =
+                product.IsNew ? ProductPreviewLabel.WowNew
                 : product.IsTopSale ? ProductPreviewLabel.TopSale
                 : product.IsDiscount ? ProductPreviewLabel.Discount
-                : ProductPreviewLabel.None, 
+                : ProductPreviewLabel.None,
                 Price = product.Price,
                 OldPrice = product.OldPrice,
-                ImageSource = product.ImageSource
+                ImageSource = product.ImageSource,
+                Name = product.Name
             })
         }
-        
+
         @*@Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale, Price = "2,330", ImageSource = "bike-image.png" })
         @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount, Price = "2,330", ImageSource = "bike-image.png" })
         @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None, Price = "2,330", ImageSource = "bike-image.png" })

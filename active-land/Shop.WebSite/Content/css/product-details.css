@@ -29,7 +29,7 @@
 #product-details #product-images-section #product-previews img {
     width: 88px;
     height: 88px;
-    margin-right: 9px;
+    margin-right: 11px;
     margin-bottom: 9px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -145,22 +145,7 @@
     padding-left: 11px;
 }
 
-.tag {
-    /*padding-top: 10px;*/
-    display: inline-block;
-    height: 17px;
-    font-family: Verdana, serif;
-    font-size: 9px;
-    background-repeat: repeat-x;
-    line-height: 16px;
-    padding: 0 3px;
-    border-radius: 6px;
-    color: #ffffff;
-    font-weight: 400;
-    margin-right: 10px;
-    position: absolute;
-    margin-top: 10px;
-}
+
 
 .tag.base {
     background: url("../img/tag-base.png");
@@ -178,7 +163,24 @@
 #product-attributes .attribute .value .value-text
 {
     position: absolute;
-    margin-left: 60px;
+    margin-left: 0px;
+}
+#product-attributes .attribute .value .value-text .tag {
+    /*padding-top: 10px;*/
+    /*display: inline-block;*/
+    display: inline-block;
+    height: 17px;
+    font-family: Verdana, serif;
+    font-size: 9px;
+    background-repeat: repeat-x;
+    line-height: 16px;
+    padding: 0 3px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 400;
+    margin-right: 10px;
+    /*position: absolute;*/
+    /*margin-top: 10px;*/
 }
 
 #tying-products {

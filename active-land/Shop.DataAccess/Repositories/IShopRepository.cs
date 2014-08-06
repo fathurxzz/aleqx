@@ -50,6 +50,7 @@ namespace Shop.DataAccess.Repositories
         // Products
         IEnumerable<Product> GetProducts();
         Product GetProduct(int id);
+        Product GetProduct(string name);
         void DeleteProduct(int id, Action<String> deleteImages);
         int AddProduct(Product product);
         void SaveProduct(Product product);

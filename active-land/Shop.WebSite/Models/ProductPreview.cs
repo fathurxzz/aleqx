@@ -12,5 +12,10 @@ namespace Shop.WebSite.Models
         public decimal OldPrice { get; set; }
         public decimal Price { get; set; }
         public string ImageSource { get; set; }
+        public string Name { get; set; }
+        public string CategoryName { get; set; }
+        public string SubCategoryName { get; set; }
+
+
     }
 }
