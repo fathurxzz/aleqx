@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Shop.DataAccess.Entities.Category>
+<div class="category-menu">
+    <div class="menu-group-wrapper">
+        <ul id="category-menu">
+            @{
+                var cnt = 0;
+                foreach (var category in Model.Where(c => c.Parent == null))
+                {
+                    cnt++;
+                <li class="main">
+                    @if (cnt == 1)
+                    {
+                        <div class="arrow top"></div>
+                    }
+                    <a href="#">@category.Title</a>
+                    @if (category.Children.Any())
+                    {
+                        var childCnt = 0;
+                        <div class="menu-group-wrapper sub-menu">
+                            <ul>
+                                @foreach (var child in category.Children)
+                                {
+                                    childCnt++;
+                                    <li>
+                                        @if (childCnt == 1)
+                                        {
+                                            <div class="arrow left"></div>
+                                        }
+                                        <a href="#">@child.Title</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+
+                </li>
+                }
+            }
+
+            @*<li class="main">
+                                <div class="arrow top"></div>
+                                <a href="#">Велосипеды</a>
+                                <div class="menu-group-wrapper sub-menu">
+                                    <ul>
+                                        <li><div class="arrow left"></div> <a href="#">Горные</a></li>
+                                        <li><a href="#">Городские</a></li>
+                                        <li><a href="#">BMX</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main"><a href="#">Запчасти</a>
+                                <div class="menu-group-wrapper sub-menu">
+                                    <ul>
+                                        <li><div class="arrow left"></div><a href="#">Вилки</a></li>
+                                        <li><a href="#">Замки</a></li>
+                                        <li><a href="#">Звонки</a></li>
+                                        <li><a href="#">Крылья</a></li>
+                                        <li><a href="#">Покрышки</a></li>
+                                        <li><a href="#">Педали</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main"><a href="#">Одежда и защита</a>
+                                <div class="menu-group-wrapper sub-menu">
+                                    <ul>
+                                        <li><div class="arrow left"></div><a href="#">Шорты</a></li>
+                                        <li><a href="#">Носки</a></li>
+                                        <li><a href="#">Очки</a></li>
+                                        <li><a href="#">Шлемы</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main"><a href="#">Рюкзаки и сумки</a></li>*@
+        </ul>
+    </div>
+</div>
