@@ -1,9 +1,13 @@
-﻿@using Shop.WebSite.Models
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@using Shop.WebSite.Models
 @model Shop.WebSite.Models.ProductPreview
 
 <div class="product-preview">
     <div class="image">
-        <img src="~/content/img/tmp/@Model.ImageSource">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductPreview")))
+
+        @*<img src="~/content/img/tmp/@Model.ImageSource">*@
     </div>
     
     @{
@@ -29,12 +33,12 @@
             </div>
             
             <div class="price">
-                @if (!string.IsNullOrEmpty(Model.OldPrice))
+                @if (Model.Label==ProductPreviewLabel.Discount)
                 {
                     <span>
                     <s>@Model.OldPrice</s><sup>грн</sup><br>
                     <b>@Model.Price<sup>грн</sup></b>
-                </span>
+                    </span>
                 }
                 else
                 {

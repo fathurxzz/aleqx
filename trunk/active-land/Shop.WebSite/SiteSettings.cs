@@ -15,12 +15,8 @@ namespace Shop.WebSite
         {
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
-                                  {"specialContentPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 150,Width = 200}, CacheFolder = "specialContentPreview", ScaleMode = ScaleMode.Crop}},
-                                  {"productImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 120,Width = 90}, CacheFolder = "productImagePreview", ScaleMode = ScaleMode.Crop}},
-                                  {"articleItemImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 100,Width = 100}, CacheFolder = "articleItemImagePreview", ScaleMode = ScaleMode.Crop}},
-                                  {"articleCaruselItem",new ThumbnailPicture{ PictureSize =new PictureSize {Height =391 ,Width = 522 }, CacheFolder = "articleCaruselItem", ScaleMode = ScaleMode.Crop}},
-
-                                  {"adminProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =200 ,Width = 200 }, CacheFolder = "adminProductPreview", ScaleMode = ScaleMode.Crop}},
+                                    {"adminProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =200 ,Width = 200 }, CacheFolder = "adminProductPreview", ScaleMode = ScaleMode.Crop}},
+                                    {"siteProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =215 ,Width = 268 }, CacheFolder = "siteProductPreview", ScaleMode = ScaleMode.Crop}},
 
 
                                   //{"adminPreviewProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 200,Width = 200}, CacheFolder = "adminPreviewProductImage", ScaleMode = ScaleMode.Crop}},

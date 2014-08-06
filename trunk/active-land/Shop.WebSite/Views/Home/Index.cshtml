@@ -61,14 +61,30 @@
 
 @Html.Partial("SiteTitle","Специальные предложения")
 <div id="special-offers">
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = "2,330",ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = "2,330",ImageSource = "bike-image.png",OldPrice = "5,550"})
+    @foreach (var product in Model.SpecialOffers)
+    {
+        @Html.Partial("ProductPreview", new ProductPreview
+            {
+                Title = product.Title, 
+                Label = 
+                product.IsNew ? ProductPreviewLabel.WowNew 
+                : product.IsTopSale ? ProductPreviewLabel.TopSale
+                : product.IsDiscount ? ProductPreviewLabel.Discount
+                : ProductPreviewLabel.None, 
+                Price = product.Price,
+                OldPrice = product.OldPrice,
+                ImageSource = product.ImageSource
+            })
+    }
+
+   @* @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew, Price = 2.300M ,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = 2.300M,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = 2.300M,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = 2.300M,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew,Price = 2.300M,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = 2.300M,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = 2.300M,ImageSource = "bike-image.png"})
+    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = 2.300M,ImageSource = "bike-image.png",OldPrice = 5.550M})*@
     <div class="clearfix"></div>
 </div>
 
