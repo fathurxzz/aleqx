@@ -3,22 +3,19 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 {
-    public class ProductAttributeValueTagMap : EntityTypeConfiguration<ProductAttributeValueTag>
+    public class ArticleMap : EntityTypeConfiguration<Article>
     {
-        public ProductAttributeValueTagMap()
+        public ArticleMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.Name)
-                .IsRequired()
-                .HasMaxLength(50);
-
             // Table & Column Mappings
-            this.ToTable("ProductAttributeValueTag", "gbua_active_dev");
+            this.ToTable("Article", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.Date).HasColumnName("Date");
+            this.Property(t => t.IsActive).HasColumnName("IsActive");
         }
     }
 }

@@ -12,18 +12,20 @@ namespace Shop.DatabaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class ContentLang
+    public partial class ArticleItem
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public int LanguageId { get; set; }
-        public int ContentId { get; set; }
-        public string Text { get; set; }
-        public string SeoDescription { get; set; }
-        public string SeoKeywords { get; set; }
-        public string SeoText { get; set; }
+        public ArticleItem()
+        {
+            this.ArticleItemLangs = new HashSet<ArticleItemLang>();
+            this.ArticleItemImages = new HashSet<ArticleItemImage>();
+        }
     
-        public virtual Language Language { get; set; }
-        public virtual Content Content { get; set; }
+        public int Id { get; set; }
+        public int SortOrder { get; set; }
+        public int ArticleId { get; set; }
+    
+        public virtual Article Article { get; set; }
+        public virtual ICollection<ArticleItemLang> ArticleItemLangs { get; set; }
+        public virtual ICollection<ArticleItemImage> ArticleItemImages { get; set; }
     }
 }

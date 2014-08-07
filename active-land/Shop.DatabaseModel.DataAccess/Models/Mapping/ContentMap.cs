@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 {
-    public class ProductAttributeValueTagMap : EntityTypeConfiguration<ProductAttributeValueTag>
+    public class ContentMap : EntityTypeConfiguration<Content>
     {
-        public ProductAttributeValueTagMap()
+        public ContentMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
@@ -13,12 +13,13 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
             // Properties
             this.Property(t => t.Name)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(200);
 
             // Table & Column Mappings
-            this.ToTable("ProductAttributeValueTag", "gbua_active_dev");
+            this.ToTable("Content", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.IsCatalogue).HasColumnName("IsCatalogue");
         }
     }
 }

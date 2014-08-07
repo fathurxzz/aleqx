@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 {
-    public class ProductAttributeLangMap : EntityTypeConfiguration<ProductAttributeLang>
+    public class ContentLangMap : EntityTypeConfiguration<ContentLang>
     {
-        public ProductAttributeLangMap()
+        public ContentLangMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
@@ -15,24 +15,25 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.UnitTitle)
-                .HasMaxLength(200);
+            this.Property(t => t.Text)
+                .IsRequired()
+                .HasMaxLength(1073741823);
 
             // Table & Column Mappings
-            this.ToTable("ProductAttributeLang", "gbua_active_dev");
+            this.ToTable("ContentLang", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Title).HasColumnName("Title");
-            this.Property(t => t.UnitTitle).HasColumnName("UnitTitle");
             this.Property(t => t.LanguageId).HasColumnName("LanguageId");
-            this.Property(t => t.ProductAttributeId).HasColumnName("ProductAttributeId");
+            this.Property(t => t.ContentId).HasColumnName("ContentId");
+            this.Property(t => t.Text).HasColumnName("Text");
 
             // Relationships
+            this.HasRequired(t => t.Content)
+                .WithMany(t => t.ContentLangs)
+                .HasForeignKey(d => d.ContentId);
             this.HasRequired(t => t.Language)
-                .WithMany(t => t.ProductAttributeLangs)
+                .WithMany(t => t.ContentLangs)
                 .HasForeignKey(d => d.LanguageId);
-            this.HasRequired(t => t.ProductAttribute)
-                .WithMany(t => t.ProductAttributeLangs)
-                .HasForeignKey(d => d.ProductAttributeId);
 
         }
     }

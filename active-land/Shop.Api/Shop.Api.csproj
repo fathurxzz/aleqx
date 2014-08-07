@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="Contracts\Exceptions\UserException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Article.cs" />
+    <Compile Include="Repositories\ArticleItem.cs" />
+    <Compile Include="Repositories\ArticleItemImage.cs" />
     <Compile Include="Repositories\Category.cs" />
     <Compile Include="Repositories\Product.cs" />
     <Compile Include="Repositories\ProductAttribute.cs" />
