@@ -21,6 +21,7 @@ namespace Shop.DatabaseModel
         }
     
         public int Id { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
         public virtual ICollection<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }

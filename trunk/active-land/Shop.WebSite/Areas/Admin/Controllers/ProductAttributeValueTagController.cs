@@ -58,7 +58,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             _repository.LangId = CurrentLangId;
             var productAttributeValueTag = _repository.GetProductAttributeValueTag(model.Id);
-            TryUpdateModel(productAttributeValueTag, new[] { "Title" });
+            TryUpdateModel(productAttributeValueTag, new[] { "Title" ,"Name"});
             _repository.SaveProductAttributeValueTag(productAttributeValueTag);
             return RedirectToAction("Index");
         }
