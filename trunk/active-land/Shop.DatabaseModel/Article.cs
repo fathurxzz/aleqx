@@ -17,6 +17,7 @@ namespace Shop.DatabaseModel
         public Article()
         {
             this.ArticleLangs = new HashSet<ArticleLang>();
+            this.ArticleItems = new HashSet<ArticleItem>();
         }
     
         public int Id { get; set; }
@@ -24,5 +25,6 @@ namespace Shop.DatabaseModel
         public bool IsActive { get; set; }
     
         public virtual ICollection<ArticleLang> ArticleLangs { get; set; }
+        public virtual ICollection<ArticleItem> ArticleItems { get; set; }
     }
 }

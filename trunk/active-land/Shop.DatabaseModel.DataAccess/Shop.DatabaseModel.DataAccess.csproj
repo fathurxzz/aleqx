@@ -47,12 +47,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ArticleItem.cs" />
+    <Compile Include="Models\ArticleItemImage.cs" />
+    <Compile Include="Models\ArticleItemLang.cs" />
+    <Compile Include="Models\ArticleLang.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryLang.cs" />
+    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\ContentLang.cs" />
     <Compile Include="Models\gbua_active_devContext.cs" />
     <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\Mapping\ArticleItemImageMap.cs" />
+    <Compile Include="Models\Mapping\ArticleItemLangMap.cs" />
+    <Compile Include="Models\Mapping\ArticleItemMap.cs" />
+    <Compile Include="Models\Mapping\ArticleLangMap.cs" />
+    <Compile Include="Models\Mapping\ArticleMap.cs" />
     <Compile Include="Models\Mapping\CategoryLangMap.cs" />
     <Compile Include="Models\Mapping\CategoryMap.cs" />
+    <Compile Include="Models\Mapping\ContentLangMap.cs" />
+    <Compile Include="Models\Mapping\ContentMap.cs" />
     <Compile Include="Models\Mapping\LanguageMap.cs" />
     <Compile Include="Models\Mapping\ProductAttributeLangMap.cs" />
     <Compile Include="Models\Mapping\ProductAttributeMap.cs" />

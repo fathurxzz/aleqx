@@ -16,8 +16,15 @@ namespace Shop.DatabaseModel.DataAccess.Models
         {
         }
 
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleItem> ArticleItems { get; set; }
+        public DbSet<ArticleItemImage> ArticleItemImages { get; set; }
+        public DbSet<ArticleItemLang> ArticleItemLangs { get; set; }
+        public DbSet<ArticleLang> ArticleLangs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryLang> CategoryLangs { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<ContentLang> ContentLangs { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
@@ -33,8 +40,15 @@ namespace Shop.DatabaseModel.DataAccess.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new ArticleMap());
+            modelBuilder.Configurations.Add(new ArticleItemMap());
+            modelBuilder.Configurations.Add(new ArticleItemImageMap());
+            modelBuilder.Configurations.Add(new ArticleItemLangMap());
+            modelBuilder.Configurations.Add(new ArticleLangMap());
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new CategoryLangMap());
+            modelBuilder.Configurations.Add(new ContentMap());
+            modelBuilder.Configurations.Add(new ContentLangMap());
             modelBuilder.Configurations.Add(new LanguageMap());
             modelBuilder.Configurations.Add(new ProductMap());
             modelBuilder.Configurations.Add(new ProductAttributeMap());

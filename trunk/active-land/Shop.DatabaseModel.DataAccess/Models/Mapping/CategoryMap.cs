@@ -15,10 +15,6 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.CategoryLevel)
-                .IsRequired()
-                .HasMaxLength(1073741823);
-
             // Table & Column Mappings
             this.ToTable("Category", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
@@ -37,8 +33,8 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
                         m.MapRightKey("ProductAttributes_Id");
                     });
 
-            this.HasOptional(t => t.Parent)
-                .WithMany(t => t.Children)
+            this.HasOptional(t => t.Category2)
+                .WithMany(t => t.Category1)
                 .HasForeignKey(d => d.CategoryId);
 
         }

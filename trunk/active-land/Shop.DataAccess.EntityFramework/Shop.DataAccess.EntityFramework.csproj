@@ -58,8 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\ArticleItemImageMap.cs" />
+    <Compile Include="Mapping\ArticleItemLangMap.cs" />
+    <Compile Include="Mapping\ArticleItemMap.cs" />
+    <Compile Include="Mapping\ArticleLangMap.cs" />
+    <Compile Include="Mapping\ArticleMap.cs" />
     <Compile Include="Mapping\CategoryLangMap.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
+    <Compile Include="Mapping\ContentMap.cs" />
     <Compile Include="Mapping\LanguageMap.cs" />
     <Compile Include="Mapping\ProductAttributeLangMap.cs" />
     <Compile Include="Mapping\ProductAttributeMap.cs" />

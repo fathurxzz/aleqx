@@ -49,6 +49,15 @@
     <Compile Include="Article.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArticleItem.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleItemImage.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleItemLang.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="ArticleLang.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>

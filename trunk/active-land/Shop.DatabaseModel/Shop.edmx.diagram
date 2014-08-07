@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d024be69eb344561b03b7bd7207527b7" Name="Diagram1" ZoomLevel="98" >
+      <Diagram DiagramId="d024be69eb344561b03b7bd7207527b7" Name="Diagram1" ZoomLevel="111" >
         <EntityTypeShape EntityType="Shop.Language" Width="2.5" PointX="0.5" PointY="8.5" />
         <EntityTypeShape EntityType="Shop.Category" Width="1.5" PointX="8.625" PointY="0.5" />
         <EntityTypeShape EntityType="Shop.CategoryLang" Width="1.5" PointX="3.625" PointY="0.5" />
@@ -48,6 +48,13 @@
         <EntityTypeShape EntityType="Shop.ArticleLang" Width="1.5" PointX="3.625" PointY="23.625" />
         <AssociationConnector Association="Shop.LanguageArticleLang" />
         <AssociationConnector Association="Shop.ArticleArticleLang" />
+        <EntityTypeShape EntityType="Shop.ArticleItem" Width="1.5" PointX="9.25" PointY="27.125" />
+        <AssociationConnector Association="Shop.ArticleArticleItem" />
+        <EntityTypeShape EntityType="Shop.ArticleItemLang" Width="1.5" PointX="3.625" PointY="27.25" />
+        <AssociationConnector Association="Shop.ArticleItemArticleItemLang" />
+        <AssociationConnector Association="Shop.LanguageArticleItemLang" />
+        <EntityTypeShape EntityType="Shop.ArticleItemImage" Width="1.5" PointX="9.25" PointY="30.375" />
+        <AssociationConnector Association="Shop.ArticleItemArticleItemImage" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
