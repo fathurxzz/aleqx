@@ -46,10 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Article.cs" />
+    <Compile Include="Entities\ArticleItem.cs" />
+    <Compile Include="Entities\ArticleItemImage.cs" />
+    <Compile Include="Entities\ArticleItemLang.cs" />
+    <Compile Include="Entities\ArticleLang.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\CategoryLang.cs" />
+    <Compile Include="Entities\Content.cs" />
+    <Compile Include="Entities\ContentLang.cs" />
     <Compile Include="Entities\Language.cs" />
+    <Compile Include="Entities\Localization\Article.cs" />
     <Compile Include="Entities\Localization\Category.cs" />
+    <Compile Include="Entities\Localization\Content.cs" />
     <Compile Include="Entities\Localization\Product.cs" />
     <Compile Include="Entities\Localization\ProductAttribute.cs" />
     <Compile Include="Entities\Localization\ProductAttributeStaticValue.cs" />
