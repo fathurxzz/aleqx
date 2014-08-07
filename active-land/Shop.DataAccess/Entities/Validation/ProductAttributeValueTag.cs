@@ -18,6 +18,10 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Заголовок")]
         [Required(ErrorMessage = "Введите заголовок")]
         public string Title { get; set; }
+        
+        [Display(Name = "Идентификатор")]
+        [Required(ErrorMessage = "Введите Идентификатор")]
+        public string Name { get; set; }
 
         [Display(Name = "Доступность на текущем языке")]
         public bool IsCorrectLang { get; set; }

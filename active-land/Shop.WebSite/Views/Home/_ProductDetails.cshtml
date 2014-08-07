@@ -76,25 +76,7 @@
                                         {
                                             if (pav.ProductAttributeValueTag != null)
                                             {
-                                                switch (pav.ProductAttributeValueTag.Id)
-                                                {
-                                                    case 1:
-                                                    {
-                                                        <span class="tag base">@pav.ProductAttributeValueTag.Title</span>
-                                                    }
-                                                    break;
-                                                    case 2:
-                                                    {
-                                                        <span class="tag middle">@pav.ProductAttributeValueTag.Title</span>
-                                                    }
-                                                    break;
-                                                    case 3:
-                                                    {
-                                                        <span class="tag prof">@pav.ProductAttributeValueTag.Title</span>
-                                                    }
-                                                    break;
-                                                }
-                                                
+                                                <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
                                             }
                                         }
                                         cnt++;

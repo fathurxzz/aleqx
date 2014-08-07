@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/06/2014 17:41:56
+-- Date Created: 08/07/2014 08:33:20
 -- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -42,6 +42,10 @@ USE `gbua_active_dev`;
 --    ALTER TABLE `ProductAttributeStaticValue` DROP CONSTRAINT `FK_ProductProductAttributeStaticValue`;
 --    ALTER TABLE `ProductAttributeStaticValueLang` DROP CONSTRAINT `FK_ProductAttributeStaticValueProductAttributeStaticValueLang`;
 --    ALTER TABLE `ProductAttributeLang` DROP CONSTRAINT `FK_ProductAttributeProductAttributeLang`;
+--    ALTER TABLE `ContentLang` DROP CONSTRAINT `FK_LanguageContentLang`;
+--    ALTER TABLE `ContentLang` DROP CONSTRAINT `FK_ContentContentLang`;
+--    ALTER TABLE `ArticleLang` DROP CONSTRAINT `FK_LanguageArticleLang`;
+--    ALTER TABLE `ArticleLang` DROP CONSTRAINT `FK_ArticleArticleLang`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -61,6 +65,10 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ProductAttributeValueTagLang`;
     DROP TABLE IF EXISTS `ProductAttributeStaticValue`;
     DROP TABLE IF EXISTS `ProductAttributeStaticValueLang`;
+    DROP TABLE IF EXISTS `Content`;
+    DROP TABLE IF EXISTS `ContentLang`;
+    DROP TABLE IF EXISTS `Article`;
+    DROP TABLE IF EXISTS `ArticleLang`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
@@ -194,7 +202,8 @@ ALTER TABLE `ProductAttributeValueLang` ADD PRIMARY KEY (Id);
 
 
 CREATE TABLE `ProductAttributeValueTag`(
-	`Id` int NOT NULL AUTO_INCREMENT UNIQUE);
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` varchar (50) NOT NULL);
 
 ALTER TABLE `ProductAttributeValueTag` ADD PRIMARY KEY (Id);
 
