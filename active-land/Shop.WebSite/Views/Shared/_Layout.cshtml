@@ -54,9 +54,12 @@
             
         <div id="header-outer">
       
-            <div style="position: absolute; padding: 10px">
-                @Html.ActionLink("Админка", "Default", "Admin", new { area = "Admin" }, null)    
-            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div style="position: absolute; padding: 10px">
+                    @Html.ActionLink("Админка", "Index", "Category", new {area = "Admin"}, null)    
+                </div>
+            }
 
             <div id="header-inner">
                 <div id="header">

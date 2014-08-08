@@ -9,6 +9,7 @@ using Shop.WebSite.Controllers;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
+    [Authorize]
     public class AdminController : DefaultController
     {
 

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Shop.DataAccess.Entities;
-using Shop.DataAccess.EntityFramework;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers;
 
