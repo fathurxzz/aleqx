@@ -52,6 +52,7 @@
     <Compile Include="Repositories\ArticleItem.cs" />
     <Compile Include="Repositories\ArticleItemImage.cs" />
     <Compile Include="Repositories\Category.cs" />
+    <Compile Include="Repositories\Content.cs" />
     <Compile Include="Repositories\Product.cs" />
     <Compile Include="Repositories\ProductAttribute.cs" />
     <Compile Include="Repositories\ProductAttributeStaticValue.cs" />

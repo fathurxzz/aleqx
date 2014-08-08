@@ -55,6 +55,9 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryLang.cs" />
     <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\ContentItem.cs" />
+    <Compile Include="Models\ContentItemImage.cs" />
+    <Compile Include="Models\ContentItemLang.cs" />
     <Compile Include="Models\ContentLang.cs" />
     <Compile Include="Models\gbua_active_devContext.cs" />
     <Compile Include="Models\Language.cs" />
@@ -65,6 +68,9 @@
     <Compile Include="Models\Mapping\ArticleMap.cs" />
     <Compile Include="Models\Mapping\CategoryLangMap.cs" />
     <Compile Include="Models\Mapping\CategoryMap.cs" />
+    <Compile Include="Models\Mapping\ContentItemImageMap.cs" />
+    <Compile Include="Models\Mapping\ContentItemLangMap.cs" />
+    <Compile Include="Models\Mapping\ContentItemMap.cs" />
     <Compile Include="Models\Mapping\ContentLangMap.cs" />
     <Compile Include="Models\Mapping\ContentMap.cs" />
     <Compile Include="Models\Mapping\LanguageMap.cs" />

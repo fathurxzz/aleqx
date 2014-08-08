@@ -24,6 +24,9 @@ namespace Shop.DatabaseModel.DataAccess.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryLang> CategoryLangs { get; set; }
         public DbSet<Content> Contents { get; set; }
+        public DbSet<ContentItem> ContentItems { get; set; }
+        public DbSet<ContentItemImage> ContentItemImages { get; set; }
+        public DbSet<ContentItemLang> ContentItemLangs { get; set; }
         public DbSet<ContentLang> ContentLangs { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -48,6 +51,9 @@ namespace Shop.DatabaseModel.DataAccess.Models
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new CategoryLangMap());
             modelBuilder.Configurations.Add(new ContentMap());
+            modelBuilder.Configurations.Add(new ContentItemMap());
+            modelBuilder.Configurations.Add(new ContentItemImageMap());
+            modelBuilder.Configurations.Add(new ContentItemLangMap());
             modelBuilder.Configurations.Add(new ContentLangMap());
             modelBuilder.Configurations.Add(new LanguageMap());
             modelBuilder.Configurations.Add(new ProductMap());

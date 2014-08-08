@@ -65,6 +65,10 @@
     <Compile Include="Mapping\ArticleMap.cs" />
     <Compile Include="Mapping\CategoryLangMap.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
+    <Compile Include="Mapping\ContentItemImageMap.cs" />
+    <Compile Include="Mapping\ContentItemLangMap.cs" />
+    <Compile Include="Mapping\ContentItemMap.cs" />
+    <Compile Include="Mapping\ContentLangMap.cs" />
     <Compile Include="Mapping\ContentMap.cs" />
     <Compile Include="Mapping\LanguageMap.cs" />
     <Compile Include="Mapping\ProductAttributeLangMap.cs" />
