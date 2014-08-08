@@ -42,7 +42,6 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     category.Selected = true;
                 }
             }
-
             ViewBag.Categories = categories;
 
             return View(new Product { CategoryId = id ?? 0 });
@@ -55,9 +54,17 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 model.Id = 0;
+                var categories = _repository.GetCategories();
+
 
                 int categoryId = int.Parse(form["categoryId"]);
 
+                foreach (var category in categories.Where(category => category.Id == categoryId))
+                {
+                    category.Selected = true;
+                }
+
+                ViewBag.Categories = categories;
 
                 var product = new Product
                 {
@@ -83,15 +90,18 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     var file = Request.Files[i];
                     if (file == null) continue;
                     if (string.IsNullOrEmpty(file.FileName)) continue;
-                    
+
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
 
                     filePath = Path.Combine(filePath, fileName);
                     GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
-                    var productImage = new ProductImage{ImageSource = fileName};
+                    var productImage = new ProductImage { ImageSource = fileName };
                     product.ProductImages.Add(productImage);
                 }
+
+
+
 
                 _repository.AddProduct(product);
 
@@ -137,6 +147,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var product = _repository.GetProduct(model.Id);
 
                 var categories = _repository.GetCategories();
+                foreach (var category in categories.Where(category => category.Id == product.CategoryId))
+                {
+                    category.Selected = true;
+                }
+                ViewBag.Categories = categories;
 
                 foreach (var category in categories.Where(category => category.Id == product.CategoryId))
                 {
@@ -212,7 +227,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             var product = _repository.GetProduct(productId);
             PostCheckboxesData attrData = form.ProcessPostCheckboxesData("attr", "productId");
             PostData staticAttrData = form.ProcessPostData("tb", "productId");
-            
+
             product.ProductAttributeValues.Clear();
 
             foreach (var kvp in attrData)
