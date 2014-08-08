@@ -40,19 +40,19 @@ HomeController.prototype = {
         //});
 
 
-        $("#phone").inputmask("(999)9999999", {
-            oncomplete: function () {
-                $(".phone a").removeAttr("disabled");
-            },
-            onclear: function () {
-                $(".phone a").attr("disabled", "disabled");
-            },
-            onincomplete: function () {
-                $(".phone a").attr("disabled", "disabled");
-            },
+        //$("#phone").inputmask("(999)9999999", {
+        //    oncomplete: function () {
+        //        $(".phone a").removeAttr("disabled");
+        //    },
+        //    onclear: function () {
+        //        $(".phone a").attr("disabled", "disabled");
+        //    },
+        //    onincomplete: function () {
+        //        $(".phone a").attr("disabled", "disabled");
+        //    },
 
-            clearIncomplete: true
-        });
+        //    clearIncomplete: true
+        //});
         
 
         $(".phone a").click(function () {
