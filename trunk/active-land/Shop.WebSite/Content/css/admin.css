@@ -60,3 +60,11 @@
     float: left;
     margin: 10px;
 }
+
+.nav.nav-tabs a {
+    text-decoration: underline !important;
+}
+
+.nav.nav-tabs .active a {
+    text-decoration: none !important;
+}
