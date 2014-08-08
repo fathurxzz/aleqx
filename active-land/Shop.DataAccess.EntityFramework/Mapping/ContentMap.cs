@@ -21,7 +21,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.IsCatalogue).HasColumnName("IsCatalogue");
+            this.Property(t => t.ContentType).HasColumnName("ContentType");
 
             // Ignored
             this.Ignore(t => t.Title);

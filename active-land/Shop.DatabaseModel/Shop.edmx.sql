@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/08/2014 22:57:32
+-- Date Created: 08/09/2014 00:13:22
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -259,7 +259,7 @@ ALTER TABLE `ProductAttributeStaticValueLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Content`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Name` varchar (200) NOT NULL, 
-	`IsCatalogue` bool NOT NULL, 
+	`ContentType` int NOT NULL, 
 	`SortOrder` int NOT NULL);
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);

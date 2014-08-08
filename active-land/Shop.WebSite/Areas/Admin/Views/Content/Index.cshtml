@@ -25,7 +25,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsCatalogue)
+            @Html.DisplayNameFor(model => model.ContentType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SortOrder)
@@ -60,7 +60,21 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsCatalogue)
+                @{
+                    switch (item.ContentType)
+                    {
+                        case 0:@Html.Raw("Главная");
+                        break;
+                        case 1:@Html.Raw("Каталог");
+                        break;
+                        case 2:@Html.Raw("Новости");
+                        break;
+                        case 3:@Html.Raw("Контакты");
+                        break;
+                        case 4:@Html.Raw("Контент");
+                        break;
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SortOrder)

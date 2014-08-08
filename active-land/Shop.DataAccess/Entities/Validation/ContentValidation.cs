@@ -29,8 +29,8 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Доступность на текущем языке")]
         public bool IsCorrectLang { get; set; }
 
-        [Display(Name = "Это страница каталога товаров")]
-        public bool IsCatalogue { get; set; }
+        [Display(Name = "Тип страницы")]
+        public bool ContentType { get; set; }
 
         [Display(Name = "Порядок отображения")]
         public int SortOrder { get; set; }
