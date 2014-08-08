@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/08/2014 09:01:01
--- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 08/08/2014 21:08:29
+-- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -96,7 +96,7 @@ ALTER TABLE `Language` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Category`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Name` varchar (200) NOT NULL, 
+	`Name` varchar (200) NOT NULL UNIQUE, 
 	`SortOrder` int NOT NULL, 
 	`CategoryLevel` int NOT NULL, 
 	`CategoryId` int);
@@ -123,7 +123,7 @@ ALTER TABLE `CategoryLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Product`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`CategoryId` int NOT NULL, 
-	`Name` varchar (200) NOT NULL, 
+	`Name` varchar (200) NOT NULL UNIQUE, 
 	`IsNew` bool NOT NULL, 
 	`IsDiscount` bool NOT NULL, 
 	`IsTopSale` bool NOT NULL, 
@@ -251,7 +251,7 @@ ALTER TABLE `ProductAttributeStaticValueLang` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Content`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Name` varchar (200) NOT NULL, 
+	`Name` varchar (200) NOT NULL UNIQUE, 
 	`IsCatalogue` bool NOT NULL);
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);
@@ -277,7 +277,7 @@ ALTER TABLE `ContentLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Article`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Date` datetime NOT NULL, 
-	`Name` varchar (200) NOT NULL, 
+	`Name` varchar (200) NOT NULL UNIQUE, 
 	`IsActive` bool NOT NULL, 
 	`ImageSource` varchar (200) NOT NULL);
 
@@ -327,6 +327,37 @@ CREATE TABLE `ArticleItemImage`(
 	`ArticleItemId` int NOT NULL);
 
 ALTER TABLE `ArticleItemImage` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ContentItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`SortOrder` int NOT NULL, 
+	`ContentId` int NOT NULL);
+
+ALTER TABLE `ContentItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ContentItemImage`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ContentItemId` int NOT NULL, 
+	`ImageSource` varchar (200) NOT NULL);
+
+ALTER TABLE `ContentItemImage` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ContentItemLang`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Text` longtext NOT NULL, 
+	`ContentItemId` int NOT NULL, 
+	`LanguageId` int NOT NULL);
+
+ALTER TABLE `ContentItemLang` ADD PRIMARY KEY (Id);
 
 
 
@@ -807,6 +838,66 @@ ADD CONSTRAINT `FK_ArticleItemArticleItemImage`
 CREATE INDEX `IX_FK_ArticleItemArticleItemImage` 
     ON `ArticleItemImage`
     (`ArticleItemId`);
+
+-- Creating foreign key on `ContentId` in table 'ContentItem'
+
+ALTER TABLE `ContentItem`
+ADD CONSTRAINT `FK_ContentContentItem`
+    FOREIGN KEY (`ContentId`)
+    REFERENCES `Content`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ContentContentItem'
+
+CREATE INDEX `IX_FK_ContentContentItem` 
+    ON `ContentItem`
+    (`ContentId`);
+
+-- Creating foreign key on `ContentItemId` in table 'ContentItemLang'
+
+ALTER TABLE `ContentItemLang`
+ADD CONSTRAINT `FK_ContentItemContentItemLang`
+    FOREIGN KEY (`ContentItemId`)
+    REFERENCES `ContentItem`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ContentItemContentItemLang'
+
+CREATE INDEX `IX_FK_ContentItemContentItemLang` 
+    ON `ContentItemLang`
+    (`ContentItemId`);
+
+-- Creating foreign key on `LanguageId` in table 'ContentItemLang'
+
+ALTER TABLE `ContentItemLang`
+ADD CONSTRAINT `FK_LanguageContentItemLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageContentItemLang'
+
+CREATE INDEX `IX_FK_LanguageContentItemLang` 
+    ON `ContentItemLang`
+    (`LanguageId`);
+
+-- Creating foreign key on `ContentItemId` in table 'ContentItemImage'
+
+ALTER TABLE `ContentItemImage`
+ADD CONSTRAINT `FK_ContentItemContentItemImage`
+    FOREIGN KEY (`ContentItemId`)
+    REFERENCES `ContentItem`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ContentItemContentItemImage'
+
+CREATE INDEX `IX_FK_ContentItemContentItemImage` 
+    ON `ContentItemImage`
+    (`ContentItemId`);
 
 -- --------------------------------------------------
 -- Script has ended
