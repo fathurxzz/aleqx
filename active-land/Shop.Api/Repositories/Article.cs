@@ -81,7 +81,7 @@ namespace Shop.Api.Repositories
         {
             if (_store.Articles.Any(c => c.Name == article.Name))
             {
-                throw new Exception(string.Format("Category {0} already exists", article.Name));
+                throw new Exception(string.Format("Article {0} already exists", article.Name));
             }
 
             _store.Articles.Add(article);
