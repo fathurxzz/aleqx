@@ -21,6 +21,11 @@ namespace Shop.DataAccess.EntityFramework
             
         }
 
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleItem> ArticleItems { get; set; }
+        public DbSet<ArticleItemImage> ArticleItemImages { get; set; }
+        public DbSet<ArticleItemLang> ArticleItemLangs { get; set; }
+        public DbSet<ArticleLang> ArticleLangs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryLang> CategoryLangs { get; set; }
         public DbSet<Language> Languages { get; set; }
@@ -35,9 +40,15 @@ namespace Shop.DataAccess.EntityFramework
         public DbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductLang> ProductLangs { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new ArticleMap());
+            modelBuilder.Configurations.Add(new ArticleItemMap());
+            modelBuilder.Configurations.Add(new ArticleItemImageMap());
+            modelBuilder.Configurations.Add(new ArticleItemLangMap());
+            modelBuilder.Configurations.Add(new ArticleLangMap());
             modelBuilder.Configurations.Add(new CategoryMap());
             modelBuilder.Configurations.Add(new CategoryLangMap());
             modelBuilder.Configurations.Add(new LanguageMap());

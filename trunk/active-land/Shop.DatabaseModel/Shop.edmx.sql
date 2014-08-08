@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/07/2014 18:38:30
+-- Date Created: 08/08/2014 09:01:01
 -- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -277,7 +277,9 @@ ALTER TABLE `ContentLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Article`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Date` datetime NOT NULL, 
-	`IsActive` bool NOT NULL);
+	`Name` varchar (200) NOT NULL, 
+	`IsActive` bool NOT NULL, 
+	`ImageSource` varchar (200) NOT NULL);
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 

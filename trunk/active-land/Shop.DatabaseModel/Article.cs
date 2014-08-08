@@ -22,7 +22,9 @@ namespace Shop.DatabaseModel
     
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
+        public string Name { get; set; }
         public bool IsActive { get; set; }
+        public string ImageSource { get; set; }
     
         public virtual ICollection<ArticleLang> ArticleLangs { get; set; }
         public virtual ICollection<ArticleItem> ArticleItems { get; set; }
