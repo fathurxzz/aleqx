@@ -1,0 +1,32 @@
+﻿@model Shop.DataAccess.Entities.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Article")
+}
+
+<div class="container">
+
+    <h3>@Model.Title</h3>
+    <div class="">
+        @foreach (var articleItem in Model.ArticleItems)
+        {
+            <div style="border: 1px solid silver; margin: 10px 0; padding: 10px">@articleItem.Text</div>
+        }
+    </div>
+    <p>
+
+        @Html.ActionLink("Добавить блок", "Create", "ArticleItem", new { id = Model.Id }, null)
+    </p>
+
+    <p>
+        @Html.ActionLink("Назад к списку", "Index", "Article")
+    </p>
+</div>
+
+

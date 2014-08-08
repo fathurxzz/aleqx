@@ -66,5 +66,12 @@ namespace Shop.DataAccess.Repositories
         void DeleteArticle(int id, Action<string> deleteImages);
         int AddArticle(Article article);
         void SaveArticle(Article article);
+
+        // ArticleItems
+
+        ArticleItem GetArticleItem(int id);
+        void DeleteArticleItem(int id, Action<string> deleteImages);
+        void SaveArticleItem(ArticleItem articleItem);
+        int AddArticleItem(ArticleItem articleItem);
     }
 }

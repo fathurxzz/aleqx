@@ -23,6 +23,11 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .WithMany(t => t.ArticleItems)
                 .HasForeignKey(d => d.ArticleId);
 
+
+            // Ignored
+            this.Ignore(t => t.Text);
+            this.Ignore(t => t.IsCorrectLang);
+            this.Ignore(t => t.CurrentLang);
         }
     }
 }
