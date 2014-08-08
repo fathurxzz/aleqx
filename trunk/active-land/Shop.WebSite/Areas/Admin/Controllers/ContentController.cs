@@ -48,7 +48,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                         : SiteHelper.UpdatePageWebName(model.Name),
                     Title = model.Title,
                     SeoDescription = model.SeoDescription,
-                    IsCatalogue = model.IsCatalogue,
+                    ContentType = model.ContentType,
                     SeoKeywords = model.SeoKeywords,
                     Text = model.Text??"",
                     SeoText = model.SeoText,
@@ -89,7 +89,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             {
                 var content = _repository.GetContent(model.Id);
                 content.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(content, new[] {"Name", "Title", "SeoDescription", "IsCatalogue", "SeoKeywords", "Text", "Seotext","SortOrder"});
+                TryUpdateModel(content, new[] { "Name", "Title", "SeoDescription", "ContentType", "SeoKeywords", "Seotext", "SortOrder" });
+                content.Text = model.Text ?? "";
                 _repository.SaveContent(content);
             }
             catch (Exception ex)

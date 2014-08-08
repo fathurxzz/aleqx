@@ -57,6 +57,9 @@
             @if (Request.IsAuthenticated)
             {
                 <div style="position: absolute; padding: 10px">
+                    @*<div class="btn-group btn-group-xs">
+                        <button type="button" class="btn btn-info">@Html.ActionLink("В админку", "Index", "Category", new { area = "Admin" }, null)</button>
+                    </div>*@
                     @Html.ActionLink("Админка", "Index", "Category", new {area = "Admin"}, null)    
                 </div>
             }

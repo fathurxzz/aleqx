@@ -74,14 +74,19 @@
                 <textarea class="form-control" rows="3" name="SeoText">@Model.SeoText</textarea>
             </div>
         </div>
-         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label>
-                        @Html.CheckBoxFor(model => model.IsCatalogue) @Html.LabelFor(model => model.IsCatalogue)
-                    </label>
-                </div>
+         
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentType, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <select class="selectpicker" name="ContentType">
+                    <option value="0" @Html.Raw(Model.ContentType==0?"selected":"")>Главная</option>    
+                    <option value="1" @Html.Raw(Model.ContentType==1?"selected":"")>Каталог</option>    
+                    <option value="2" @Html.Raw(Model.ContentType==2?"selected":"")>Новости</option>    
+                    <option value="3" @Html.Raw(Model.ContentType==3?"selected":"")>Контакты</option>      
+                    <option value="4" @Html.Raw(Model.ContentType==4?"selected":"")>Контент</option>      
+                </select>
             </div>
+            @Html.ValidationMessageFor(model => model.ContentType)
         </div>
        
         <div class="form-group">

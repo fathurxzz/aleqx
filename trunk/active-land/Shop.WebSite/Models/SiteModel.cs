@@ -20,6 +20,7 @@ namespace Shop.WebSite.Models
         public IEnumerable<MenuItem> MenuItems { get; set; }
         public IEnumerable<Product> SpecialOffers { get; set; }
         public IEnumerable<Product> AllProducts { get; set; }
+        public IEnumerable<DataAccess.Entities.Content> Contents { get; set; }
 
         public SiteModel(IShopRepository repository)
         {
@@ -27,6 +28,7 @@ namespace Shop.WebSite.Models
             Categories = repository.GetCategories();
             AllProducts = repository.GetProducts();
             SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
+            Contents = repository.GetContents();
         }
     
     }

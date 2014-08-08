@@ -10,16 +10,32 @@
     @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
     <div id="menu-items">
         <ul class="main-menu-items">
-            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
+            
 
+            @*<li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
                 @Html.Partial("CategoriesMenu", Model.Categories)
+            </li>*@
+            
+                @foreach (var item in Model.Contents.Where(c=>c.ContentType>0).OrderBy(c=>c.SortOrder))
+                {
+                    if (item.ContentType == 1)
+                    {
+                        <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
+                            @Html.Partial("CategoriesMenu", Model.Categories)
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="main-menu-item"><a href="#">@item.Title</a></li>
+                    }
+                }
+            
 
-            </li>
-            <li class="main-menu-item"><a href="#">Новости и события</a></li>
+            @*<li class="main-menu-item"><a href="#">Новости и события</a></li>
             <li class="main-menu-item"><a href="#">Гарантия, оплата и доставка</a></li>
             <li class="main-menu-item rent"><a href="#">Вело-прокат</a></li>
             <li class="main-menu-item"><a href="#">Мастерская</a></li>
-            <li class="main-menu-item"><a href="#">Прямой контакт</a></li>
+            <li class="main-menu-item"><a href="#">Прямой контакт</a></li>*@
         </ul>
 
     </div>

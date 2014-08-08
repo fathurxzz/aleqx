@@ -316,7 +316,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="IsCatalogue" Type="bool" Nullable="false" />
+    <Property Name="ContentType" Type="int" Nullable="false" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ContentLang">
@@ -1427,7 +1427,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
-          <Property Type="Boolean" Name="IsCatalogue" Nullable="false" />
+          <Property Type="Int32" Name="ContentType" Nullable="false" />
           <NavigationProperty Name="ContentLangs" Relationship="Shop.ContentContentLang" FromRole="Content" ToRole="ContentLang" />
           <NavigationProperty Name="ContentItems" Relationship="Shop.ContentContentItem" FromRole="Content" ToRole="ContentItem" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
@@ -1841,7 +1841,7 @@
         <MappingFragment StoreEntitySet="Content">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="IsCatalogue" ColumnName="IsCatalogue" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
       </EntityTypeMapping>
