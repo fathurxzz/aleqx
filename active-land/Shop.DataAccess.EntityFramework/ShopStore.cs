@@ -94,6 +94,23 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.ArticleItemImages; }
         }
 
+        public IDbSet<Content> Contents {
+            get { return _context.Contents; }
+        }
+        public IDbSet<ContentLang> ContentLangs {
+            get { return _context.ContentLangs; }
+        }
+
+        public IDbSet<ContentItem> ContentItems {
+            get { return _context.ContentItems; }
+        }
+        public IDbSet<ContentItemLang> ContentItemLangs {
+            get { return _context.ContentItemLangs; }
+        }
+        public IDbSet<ContentItemImage> ContentItemImages {
+            get { return _context.ContentItemImages; }
+        }
+
         public int SaveChanges()
         {
             return _context.SaveChanges();

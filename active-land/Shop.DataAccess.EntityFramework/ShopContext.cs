@@ -40,6 +40,12 @@ namespace Shop.DataAccess.EntityFramework
         public DbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductLang> ProductLangs { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<ContentItem> ContentItems { get; set; }
+        public DbSet<ContentItemImage> ContentItemImages { get; set; }
+        public DbSet<ContentItemLang> ContentItemLangs { get; set; }
+        public DbSet<ContentLang> ContentLangs { get; set; }
+
         
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -63,6 +69,12 @@ namespace Shop.DataAccess.EntityFramework
             modelBuilder.Configurations.Add(new ProductAttributeValueTagLangMap());
             modelBuilder.Configurations.Add(new ProductImageMap());
             modelBuilder.Configurations.Add(new ProductLangMap());
+            modelBuilder.Configurations.Add(new ContentMap());
+            modelBuilder.Configurations.Add(new ContentItemMap());
+            modelBuilder.Configurations.Add(new ContentItemImageMap());
+            modelBuilder.Configurations.Add(new ContentItemLangMap());
+            modelBuilder.Configurations.Add(new ContentLangMap());
+
         }
     }
 }

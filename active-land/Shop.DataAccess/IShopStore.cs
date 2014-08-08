@@ -33,6 +33,14 @@ namespace Shop.DataAccess
 
         IDbSet<ArticleItemImage> ArticleItemImages { get; }
 
+        IDbSet<Content> Contents { get; }
+        IDbSet<ContentLang> ContentLangs { get; }
+
+        IDbSet<ContentItem> ContentItems { get; }
+        IDbSet<ContentItemLang> ContentItemLangs { get; }
+
+        IDbSet<ContentItemImage> ContentItemImages { get; }
+
         int SaveChanges();
     }
 }

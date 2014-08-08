@@ -45,6 +45,15 @@
     {
         <li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
     }
+    
+    @if (Model == "Content")
+    {
+        <li class="active">@Html.ActionLink("Страницы контента", "Index", "Content", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Страницы контента", "Index", "Content", new { area = "Admin" }, null)</li>
+    }
         
     
 </ul>

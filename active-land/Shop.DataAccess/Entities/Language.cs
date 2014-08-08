@@ -11,6 +11,7 @@ namespace Shop.DataAccess.Entities
             this.ArticleLangs = new List<ArticleLang>();
             this.ArticleItemLangs = new List<ArticleItemLang>();
             this.CategoryLangs = new List<CategoryLang>();
+            this.ContentItemLangs = new List<ContentItemLang>();
             this.ContentLangs = new List<ContentLang>();
             this.ProductAttributeLangs = new List<ProductAttributeLang>();
             this.ProductAttributeStaticValueLangs = new List<ProductAttributeStaticValueLang>();
@@ -25,6 +26,7 @@ namespace Shop.DataAccess.Entities
         public virtual ICollection<ArticleItemLang> ArticleItemLangs { get; set; }
         public virtual ICollection<ArticleLang> ArticleLangs { get; set; }
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
+        public virtual ICollection<ContentItemLang> ContentItemLangs { get; set; }
         public virtual ICollection<ContentLang> ContentLangs { get; set; }
         public virtual ICollection<ProductAttributeLang> ProductAttributeLangs { get; set; }
         public virtual ICollection<ProductAttributeStaticValueLang> ProductAttributeStaticValueLangs { get; set; }

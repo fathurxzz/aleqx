@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/08/2014 21:08:29
+-- Date Created: 08/08/2014 22:57:32
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -50,6 +50,10 @@ USE `gbua_active_dev`;
 --    ALTER TABLE `ArticleItemLang` DROP CONSTRAINT `FK_ArticleItemArticleItemLang`;
 --    ALTER TABLE `ArticleItemLang` DROP CONSTRAINT `FK_LanguageArticleItemLang`;
 --    ALTER TABLE `ArticleItemImage` DROP CONSTRAINT `FK_ArticleItemArticleItemImage`;
+--    ALTER TABLE `ContentItem` DROP CONSTRAINT `FK_ContentContentItem`;
+--    ALTER TABLE `ContentItemLang` DROP CONSTRAINT `FK_ContentItemContentItemLang`;
+--    ALTER TABLE `ContentItemLang` DROP CONSTRAINT `FK_LanguageContentItemLang`;
+--    ALTER TABLE `ContentItemImage` DROP CONSTRAINT `FK_ContentItemContentItemImage`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -76,6 +80,9 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ArticleItem`;
     DROP TABLE IF EXISTS `ArticleItemLang`;
     DROP TABLE IF EXISTS `ArticleItemImage`;
+    DROP TABLE IF EXISTS `ContentItem`;
+    DROP TABLE IF EXISTS `ContentItemImage`;
+    DROP TABLE IF EXISTS `ContentItemLang`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
@@ -96,7 +103,7 @@ ALTER TABLE `Language` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Category`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Name` varchar (200) NOT NULL UNIQUE, 
+	`Name` varchar (200) NOT NULL, 
 	`SortOrder` int NOT NULL, 
 	`CategoryLevel` int NOT NULL, 
 	`CategoryId` int);
@@ -123,7 +130,7 @@ ALTER TABLE `CategoryLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Product`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`CategoryId` int NOT NULL, 
-	`Name` varchar (200) NOT NULL UNIQUE, 
+	`Name` varchar (200) NOT NULL, 
 	`IsNew` bool NOT NULL, 
 	`IsDiscount` bool NOT NULL, 
 	`IsTopSale` bool NOT NULL, 
@@ -251,8 +258,9 @@ ALTER TABLE `ProductAttributeStaticValueLang` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Content`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Name` varchar (200) NOT NULL UNIQUE, 
-	`IsCatalogue` bool NOT NULL);
+	`Name` varchar (200) NOT NULL, 
+	`IsCatalogue` bool NOT NULL, 
+	`SortOrder` int NOT NULL);
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);
 
@@ -277,7 +285,7 @@ ALTER TABLE `ContentLang` ADD PRIMARY KEY (Id);
 CREATE TABLE `Article`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Date` datetime NOT NULL, 
-	`Name` varchar (200) NOT NULL UNIQUE, 
+	`Name` varchar (200) NOT NULL, 
 	`IsActive` bool NOT NULL, 
 	`ImageSource` varchar (200) NOT NULL);
 

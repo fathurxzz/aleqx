@@ -1,7 +1,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
+using Shop.DataAccess.Entities;
 
-namespace Shop.DatabaseModel.DataAccess.Models.Mapping
+namespace Shop.DataAccess.EntityFramework.Mapping
 {
     public class ContentLangMap : EntityTypeConfiguration<ContentLang>
     {

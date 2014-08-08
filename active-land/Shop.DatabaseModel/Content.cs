@@ -23,6 +23,7 @@ namespace Shop.DatabaseModel
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsCatalogue { get; set; }
+        public int SortOrder { get; set; }
     
         public virtual ICollection<ContentLang> ContentLangs { get; set; }
         public virtual ICollection<ContentItem> ContentItems { get; set; }

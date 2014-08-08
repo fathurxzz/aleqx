@@ -3,24 +3,25 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 {
-    public class ContentMap : EntityTypeConfiguration<Content>
+    public class ContentItemMap : EntityTypeConfiguration<ContentItem>
     {
-        public ContentMap()
+        public ContentItemMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.Name)
-                .IsRequired()
-                .HasMaxLength(200);
-
             // Table & Column Mappings
-            this.ToTable("Content", "gbua_active_dev");
+            this.ToTable("ContentItem", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.IsCatalogue).HasColumnName("IsCatalogue");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
+            this.Property(t => t.ContentId).HasColumnName("ContentId");
+
+            // Relationships
+            this.HasRequired(t => t.Content)
+                .WithMany(t => t.ContentItems)
+                .HasForeignKey(d => d.ContentId);
+
         }
     }
 }

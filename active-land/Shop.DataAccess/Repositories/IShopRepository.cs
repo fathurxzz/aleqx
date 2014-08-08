@@ -73,5 +73,14 @@ namespace Shop.DataAccess.Repositories
         void DeleteArticleItem(int id, Action<string> deleteImages);
         void SaveArticleItem(ArticleItem articleItem);
         int AddArticleItem(ArticleItem articleItem);
+
+        // Content
+        IEnumerable<Content> GetContents();
+        Content GetContent(int id);
+        Content GetContent(string name);
+        void DeleteContent(int id);
+        void SaveContent(Content content);
+        int AddContent(Content content);
+
     }
 }
