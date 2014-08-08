@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -27,6 +27,9 @@
     <EntitySet Name="ArticleItem" EntityType="Shop.Store.ArticleItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArticleItemLang" EntityType="Shop.Store.ArticleItemLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ArticleItemImage" EntityType="Shop.Store.ArticleItemImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentItem" EntityType="Shop.Store.ContentItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentItemImage" EntityType="Shop.Store.ContentItemImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContentItemLang" EntityType="Shop.Store.ContentItemLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LanguageCategoryLang" Association="Shop.Store.LanguageCategoryLang">
@@ -152,6 +155,22 @@
     <AssociationSet Name="ArticleItemArticleItemImage" Association="Shop.Store.ArticleItemArticleItemImage">
       <End Role="ArticleItem" EntitySet="ArticleItem" />
       <End Role="ArticleItemImage" EntitySet="ArticleItemImage" />
+    </AssociationSet>
+    <AssociationSet Name="ContentContentItem" Association="Shop.Store.ContentContentItem">
+      <End Role="Content" EntitySet="Content" />
+      <End Role="ContentItem" EntitySet="ContentItem" />
+    </AssociationSet>
+    <AssociationSet Name="ContentItemContentItemLang" Association="Shop.Store.ContentItemContentItemLang">
+      <End Role="ContentItem" EntitySet="ContentItem" />
+      <End Role="ContentItemLang" EntitySet="ContentItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageContentItemLang" Association="Shop.Store.LanguageContentItemLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ContentItemLang" EntitySet="ContentItemLang" />
+    </AssociationSet>
+    <AssociationSet Name="ContentItemContentItemImage" Association="Shop.Store.ContentItemContentItemImage">
+      <End Role="ContentItem" EntitySet="ContentItem" />
+      <End Role="ContentItemImage" EntitySet="ContentItemImage" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
@@ -358,6 +377,31 @@
     <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="ArticleItemId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ContentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ContentItemImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContentItemId" Type="int" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ContentItemLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="ContentItemId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -699,6 +743,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ContentContentItem">
+    <End Role="Content" Type="Shop.Store.Content" Multiplicity="1" />
+    <End Role="ContentItem" Type="Shop.Store.ContentItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Content">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentItem">
+        <PropertyRef Name="ContentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContentItemContentItemLang">
+    <End Role="ContentItem" Type="Shop.Store.ContentItem" Multiplicity="1" />
+    <End Role="ContentItemLang" Type="Shop.Store.ContentItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentItemLang">
+        <PropertyRef Name="ContentItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageContentItemLang">
+    <End Role="Language" Type="Shop.Store.Language" Multiplicity="1" />
+    <End Role="ContentItemLang" Type="Shop.Store.ContentItemLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentItemLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ContentItemContentItemImage">
+    <End Role="ContentItem" Type="Shop.Store.ContentItem" Multiplicity="1" />
+    <End Role="ContentItemImage" Type="Shop.Store.ContentItemImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContentItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContentItemImage">
+        <PropertyRef Name="ContentItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CategoryProductAttribute_Category">
     <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
     <End Role="CategoryProductAttribute" Type="Shop.Store.CategoryProductAttribute" Multiplicity="*" />
@@ -889,6 +981,25 @@
             <End Role="ArticleItem" EntitySet="ArticleItem" />
             <End Role="ArticleItemImage" EntitySet="ArticleItemImage" />
           </AssociationSet>
+          <EntitySet Name="ContentItem" EntityType="Shop.ContentItem" />
+          <EntitySet Name="ContentItemImage" EntityType="Shop.ContentItemImage" />
+          <EntitySet Name="ContentItemLang" EntityType="Shop.ContentItemLang" />
+          <AssociationSet Name="ContentContentItem" Association="Shop.ContentContentItem">
+            <End Role="Content" EntitySet="Content" />
+            <End Role="ContentItem" EntitySet="ContentItem" />
+          </AssociationSet>
+          <AssociationSet Name="ContentItemContentItemLang" Association="Shop.ContentItemContentItemLang">
+            <End Role="ContentItem" EntitySet="ContentItem" />
+            <End Role="ContentItemLang" EntitySet="ContentItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageContentItemLang" Association="Shop.LanguageContentItemLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ContentItemLang" EntitySet="ContentItemLang" />
+          </AssociationSet>
+          <AssociationSet Name="ContentItemContentItemImage" Association="Shop.ContentItemContentItemImage">
+            <End Role="ContentItem" EntitySet="ContentItem" />
+            <End Role="ContentItemImage" EntitySet="ContentItemImage" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -906,6 +1017,7 @@
           <NavigationProperty Name="ContentLangs" Relationship="Shop.LanguageContentLang" FromRole="Language" ToRole="ContentLang" />
           <NavigationProperty Name="ArticleLangs" Relationship="Shop.LanguageArticleLang" FromRole="Language" ToRole="ArticleLang" />
           <NavigationProperty Name="ArticleItemLangs" Relationship="Shop.LanguageArticleItemLang" FromRole="Language" ToRole="ArticleItemLang" />
+          <NavigationProperty Name="ContentItemLangs" Relationship="Shop.LanguageContentItemLang" FromRole="Language" ToRole="ContentItemLang" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -1316,6 +1428,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <Property Type="Boolean" Name="IsCatalogue" Nullable="false" />
           <NavigationProperty Name="ContentLangs" Relationship="Shop.ContentContentLang" FromRole="Content" ToRole="ContentLang" />
+          <NavigationProperty Name="ContentItems" Relationship="Shop.ContentContentItem" FromRole="Content" ToRole="ContentItem" />
         </EntityType>
         <EntityType Name="ContentLang">
           <Key>
@@ -1482,6 +1595,85 @@
             </Principal>
             <Dependent Role="ArticleItemImage">
               <PropertyRef Name="ArticleItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContentItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="Content" Relationship="Shop.ContentContentItem" FromRole="ContentItem" ToRole="Content" />
+          <Property Type="Int32" Name="ContentId" Nullable="false" />
+          <NavigationProperty Name="ContentItemLangs" Relationship="Shop.ContentItemContentItemLang" FromRole="ContentItem" ToRole="ContentItemLang" />
+          <NavigationProperty Name="ContentItemImages" Relationship="Shop.ContentItemContentItemImage" FromRole="ContentItem" ToRole="ContentItemImage" />
+        </EntityType>
+        <EntityType Name="ContentItemImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ContentItem" Relationship="Shop.ContentItemContentItemImage" FromRole="ContentItemImage" ToRole="ContentItem" />
+          <Property Type="Int32" Name="ContentItemId" Nullable="false" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ContentItemLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="ContentItem" Relationship="Shop.ContentItemContentItemLang" FromRole="ContentItemLang" ToRole="ContentItem" />
+          <Property Type="Int32" Name="ContentItemId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Shop.LanguageContentItemLang" FromRole="ContentItemLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+        </EntityType>
+        <Association Name="ContentContentItem">
+          <End Type="Shop.Content" Role="Content" Multiplicity="1" />
+          <End Type="Shop.ContentItem" Role="ContentItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Content">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentItem">
+              <PropertyRef Name="ContentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContentItemContentItemLang">
+          <End Type="Shop.ContentItem" Role="ContentItem" Multiplicity="1" />
+          <End Type="Shop.ContentItemLang" Role="ContentItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContentItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentItemLang">
+              <PropertyRef Name="ContentItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageContentItemLang">
+          <End Type="Shop.Language" Role="Language" Multiplicity="1" />
+          <End Type="Shop.ContentItemLang" Role="ContentItemLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentItemLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContentItemContentItemImage">
+          <End Type="Shop.ContentItem" Role="ContentItem" Multiplicity="1" />
+          <End Type="Shop.ContentItemImage" Role="ContentItemImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContentItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContentItemImage">
+              <PropertyRef Name="ContentItemId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1714,6 +1906,34 @@
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ArticleItemId" ColumnName="ArticleItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ContentItem)">
+        <MappingFragment StoreEntitySet="ContentItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentItemImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ContentItemImage)">
+        <MappingFragment StoreEntitySet="ContentItemImage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContentItemId" ColumnName="ContentItemId" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContentItemLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ContentItemLang)">
+        <MappingFragment StoreEntitySet="ContentItemLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ContentItemId" ColumnName="ContentItemId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -46,5 +46,8 @@ namespace Shop.DatabaseModel
         public DbSet<ArticleItem> ArticleItem { get; set; }
         public DbSet<ArticleItemLang> ArticleItemLang { get; set; }
         public DbSet<ArticleItemImage> ArticleItemImage { get; set; }
+        public DbSet<ContentItem> ContentItem { get; set; }
+        public DbSet<ContentItemImage> ContentItemImage { get; set; }
+        public DbSet<ContentItemLang> ContentItemLang { get; set; }
     }
 }

@@ -12,19 +12,12 @@ namespace Shop.DatabaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Content
+    public partial class ContentItemImage
     {
-        public Content()
-        {
-            this.ContentLangs = new HashSet<ContentLang>();
-            this.ContentItems = new HashSet<ContentItem>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsCatalogue { get; set; }
+        public int ContentItemId { get; set; }
+        public string ImageSource { get; set; }
     
-        public virtual ICollection<ContentLang> ContentLangs { get; set; }
-        public virtual ICollection<ContentItem> ContentItems { get; set; }
+        public virtual ContentItem ContentItem { get; set; }
     }
 }

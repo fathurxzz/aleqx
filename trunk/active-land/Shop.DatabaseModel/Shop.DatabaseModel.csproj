@@ -70,6 +70,15 @@
     <Compile Include="Content.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="ContentItem.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContentItemImage.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContentItemLang.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="ContentLang.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
