@@ -318,7 +318,9 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="IsActive" Type="bool" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="ArticleLang">
     <Key>
@@ -1360,9 +1362,11 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
           <NavigationProperty Name="ArticleLangs" Relationship="Shop.ArticleArticleLang" FromRole="Article" ToRole="ArticleLang" />
           <NavigationProperty Name="ArticleItems" Relationship="Shop.ArticleArticleItem" FromRole="Article" ToRole="ArticleItem" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="ArticleLang">
           <Key>
@@ -1666,7 +1670,9 @@
         <MappingFragment StoreEntitySet="Article">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

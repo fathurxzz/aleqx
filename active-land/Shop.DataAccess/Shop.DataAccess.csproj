@@ -57,6 +57,7 @@
     <Compile Include="Entities\ContentLang.cs" />
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\Localization\Article.cs" />
+    <Compile Include="Entities\Localization\ArticleItem.cs" />
     <Compile Include="Entities\Localization\Category.cs" />
     <Compile Include="Entities\Localization\Content.cs" />
     <Compile Include="Entities\Localization\Product.cs" />
