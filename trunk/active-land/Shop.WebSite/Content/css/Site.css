@@ -70,7 +70,13 @@ body {
     position: relative;
     margin: -35px auto 0 auto;
     background: url("../img/chose-your-bike.png");
-    cursor: pointer;
+    /*cursor: pointer;*/
+}
+
+#chose-your-bike a {
+    display: block;
+    width: inherit;
+    height: inherit;
 }
 
 #banners {

@@ -362,7 +362,7 @@ namespace Shop.WebSite.Helpers.Graphics
             //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
             string imageSrc = GetCachedImage(originalPath, fileName, thumbnail);
             if (string.IsNullOrEmpty(imageSrc))
-                return "image file not found";
+                return string.Format("image file {0} not found", fileName);
             sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc ?? ""), fileName, className ?? "", _width, _height);
             return sb.ToString();
         }

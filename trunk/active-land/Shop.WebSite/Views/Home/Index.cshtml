@@ -1,4 +1,7 @@
-﻿@using Shop.WebSite.Models
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers
+@using Shop.WebSite.Helpers.Graphics
+@using Shop.WebSite.Models
 @model Shop.WebSite.Models.SiteModel
 @{
     ViewBag.Title = "Index";
@@ -8,97 +11,121 @@
 
 <div id="main-page-banner">
     <div id="menu-panel-main-page">
-        @Html.Raw(Html.ActionLink("[LINK]","Index","Home",null,new{id="logo"}).ToString().Replace("[LINK]",""))
-        <div id="menu-items">
-            <ul class="main-menu-items">
-                
-                @foreach (var item in Model.Contents.Where(c=>c.ContentType>0) .OrderBy(c=>c.SortOrder))
-                {
-                    if (item.ContentType == 1)
-                    {
-                        <li class="main-menu-item catalog">@Html.ActionLink(item.Title, "Catalogue", "Home")</li>
-                    }
-                    else
-                    {
-                        <li class="main-menu-item"><a href="#">@item.Title</a></li>
-                    }
-                }
-                
-                @*<li class="main-menu-item delivery"><a href="#">Гарантия, оплата и доставка</a></li>
-                <li class="main-menu-item rent"><a href="#">Вело-прокат</a></li>
-                <li class="main-menu-item"><a href="#">Мастерская</a></li>
-                <li class="main-menu-item"><a href="#">Прямой контакт</a></li>*@
-            </ul>
+        @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+        @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
+    </div>
+</div>
+
+
+@if (Model.Content.IsMainPage)
+{
+    <div id="about">
+        <div id="avatar"></div>
+        <div class="text">
+            Привет! Я &mdash; Григорий Войтишин, создатель &laquo;Эктив Лэнда&raquo;. Велосипеды &mdash; моё давнее
+            пристрастие, поэтому, всё что ты здесь увидишь, отобрано в ходе большого опыта, проб, ошибок,
+            падений &mdash; и подъемов :)
         </div>
+        <div id="glad-to-see-you">Рад тебя видеть и с удовольствием помогу тебе</div>
     </div>
-</div>
 
-
-<div id="about">
-    <div id="avatar"></div>
-    <div class="text">
-        Привет! Я &mdash; Григорий Войтишин, создатель &laquo;Эктив Лэнда&raquo;. Велосипеды &mdash; моё давнее
-        пристрастие, поэтому, всё что ты здесь увидишь, отобрано в ходе большого опыта, проб, ошибок,
-        падений &mdash; и подъемов :)
+    <div id="chose-your-bike">
+        @Html.Raw(Html.ActionLink("[LINK]", "Catalogue", "Home").ToString().Replace("[LINK]", ""))
     </div>
-    <div id="glad-to-see-you">Рад тебя видеть и с удовольствием помогу тебе</div>
-</div>
-
-<div id="chose-your-bike"></div>
-
-<div id="banners">
-    <div class="banner" id="banner1"></div>
-    <div class="banner" id="banner2"></div>
-</div>
 
 
-
-
-@Html.Partial("SiteTitle",new BreadCrumbs{new BreadCrumb(){ Title =  "Специальные предложения"}})
-<div id="special-offers">
-    @foreach (var product in Model.SpecialOffers)
-    {
-        @Html.Partial("ProductPreview", new ProductPreview
+    <div id="banners">
+        <div class="banner" id="banner1"></div>
+        <div class="banner" id="banner2"></div>
+    </div>
+}
+@if (Model.Content.ContentType == 2 && Model.Articles.Any())
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Новости и события" } })
+    
+    <div class="article-large-previews">
+        
+        @{
+            var i = 0;
+            foreach (var article in Model.Articles)
             {
-                Title = product.Title, 
-                Label = 
-                product.IsNew ? ProductPreviewLabel.WowNew 
-                : product.IsTopSale ? ProductPreviewLabel.TopSale
-                : product.IsDiscount ? ProductPreviewLabel.Discount
-                : ProductPreviewLabel.None, 
+                i++;
+                <div class="article-large-preview">
+                    <div class="image">
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", article.ImageSource, SiteSettings.GetThumbnail("articlePreview")))
+                    </div>
+                    <div class="date">@SiteHelper.GetMonthName(article.Date.Month,Model.CurrentLangCode), @article.Date.Day, @article.Date.Year</div>
+                    <div class="title">@Html.ActionLink(article.Title,"ArticleDetails","Home",new{article=article.Name},null)</div>
+                    <div class="text">@article.Description</div>
+                </div>
+                if (i%4 == 0)
+                {
+                    <div class="clearfix"></div>
+                }
+            }
+        }
+        <div class="clearfix"></div>
+    </div>
+}
+
+@if (Model.Content != null && !string.IsNullOrEmpty(Model.Content.Text))
+{
+    <div class="content-text">
+        @Html.Raw(Model.Content.Text)
+    </div>
+}
+
+
+@if (Model.SpecialOffers.Any())
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Специальные предложения" } })
+    <div id="special-offers">
+        @foreach (var product in Model.SpecialOffers)
+        {
+            @Html.Partial("ProductPreview", new ProductPreview
+            {
+                Title = product.Title,
+                Label =
+                    product.IsNew ? ProductPreviewLabel.WowNew
+                        : product.IsTopSale ? ProductPreviewLabel.TopSale
+                            : product.IsDiscount ? ProductPreviewLabel.Discount
+                                : ProductPreviewLabel.None,
                 Price = product.Price,
                 OldPrice = product.OldPrice,
                 ImageSource = product.ImageSource,
                 Name = product.Name
             })
-    }
-
-   @* @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew, Price = 2.300M ,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = 2.300M,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = 2.300M,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = 2.300M,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew,Price = 2.300M,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale,Price = 2.300M,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount,Price = 2.300M,ImageSource = "bike-image.png"})
-    @Html.Partial("ProductPreview",new ProductPreview{Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None,Price = 2.300M,ImageSource = "bike-image.png",OldPrice = 5.550M})*@
-    <div class="clearfix"></div>
-</div>
+        }
+        <div class="clearfix"></div>
+    </div>
+}
 
 
 
-@Html.Partial("SiteTitle",new BreadCrumbs{ new BreadCrumb(){Title = "Новости и события"}})
-<div id="articles">
-   
-    @foreach (var article in Shop.WebSite.TempData.Article.GetArticles())
-    {
-        @Html.Partial("Article",article)
-    }
-    <div class="clearfix"></div>
-</div>
+@if (Model.Content.ContentType != 2 && Model.Articles.Any())
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs {new BreadCrumb {Title = "Новости и события"}})
+    <div id="articles">
+        @{
+            var i = 0;
+            foreach (var article in Model.Articles)
+            {
+                i++;
+                @Html.Partial("Article", article)
+                if (i%2 == 0)
+                {
+                    <div class="clearfix"></div>
+                }
+            }
+        }
+        <div class="clearfix"></div>
+    </div>
+
+}
 
 
 
-@Html.Partial("SiteTitle",new BreadCrumbs{new BreadCrumb(){Title = "О подборе байка"}})
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "О подборе байка" } })
 <div id="about-bike-choosing">
     Велосипе́д (стар. фр. vélocipède, от лат. vēlōx «быстрый» и pēs «нога») — колёсное транспортное средство,
     приводимое в движение мускульной силой человека через ножные педали или (крайне редко) через ручные рычаги.

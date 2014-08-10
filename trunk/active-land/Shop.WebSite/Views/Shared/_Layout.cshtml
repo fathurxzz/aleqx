@@ -6,12 +6,15 @@
         <title>@ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/css/jquery.bxslider.css")" rel="stylesheet" type="text/css" />
         @Styles.Render(
 
                  //"~/Content/css/bootstrap.min.css",
                  //             "~/Content/css/bootstrap-select.min.css",
         
             "~/Content/css/main.css",
+            "~/Content/css/content.css",
             "~/Content/css/site.css",
             "~/Content/css/header.css",
             "~/Content/css/menu.css",
@@ -27,24 +30,49 @@
 
             "~/Content/css/footer.css"
             )
+        
+        @Scripts.Render("~/bundles/jquery")
 
         @Scripts.Render(
-            "~/Scripts/jquery-1.11.1.min.js",
+            //"~/Scripts/jquery-1.11.1.min.js",
             "~/Scripts/jquery-ui.min.js",
                      "~/Scripts/bootstrap.min.js",
                      "~/Scripts/bootstrap-select.js",
             "~/Scripts/main.js")
+        
+        @Scripts.Render("~/Scripts/jquery.bxslider.min.js")
+        @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
 
         @RenderSection("includes", required: false)
         
         @RenderSection("scripts", required: false)
         
-       @* <script type="text/javascript">
+        
+       
+
+         <script type="text/javascript">
                $(function () {
                    
-                   $('.selectpicker').selectpicker();
+                   //$('.selectpicker').selectpicker();
+
+                   
+
+                   $('.bxsliderArticleItemImages').bxSlider({
+                       mode: 'fade',
+                       //auto: autostart,
+                       pause: 5000,
+                       speed: 500,
+                       pager: false,
+                       nextSelector: '#slider-next',
+                       prevSelector: '#slider-prev',
+                       nextText: '',
+                       prevText: ''
+                   });
+
+
+                   $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
                })
-        </script>*@
+        </script>
 
     </head>
     
@@ -67,7 +95,9 @@
             <div id="header-inner">
                 <div id="header">
                     <div id="logo-small"></div>
-                    <div id="user-greeting">Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!</div>
+                    <div id="user-greeting">
+                        @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
+                    </div>
                     <a href="cart.html" id="cart-icon">
                         <div id="cart-items-count">3</div>
                     </a>

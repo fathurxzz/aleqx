@@ -23,12 +23,31 @@ namespace Shop.Api.Repositories
 
         public void DeleteArticleItem(int id, Action<string> deleteImages)
         {
-            throw new NotImplementedException();
+            var articleItem = _store.ArticleItems.SingleOrDefault(ai => ai.Id == id);
+            if (articleItem == null)
+            {
+                throw new Exception(string.Format("ArticleItem with id={0} not found", id));
+            }
+            while (articleItem.ArticleItemLangs.Any())
+            {
+                var lang = articleItem.ArticleItemLangs.First();
+                _store.ArticleItemLangs.Remove(lang);
+            }
+            while (articleItem.ArticleItemImages.Any())
+            {
+                var image = articleItem.ArticleItemImages.First();
+                deleteImages(image.ImageSource);
+                _store.ArticleItemImages.Remove(image);
+            }
+            _store.ArticleItems.Remove(articleItem);
+            _store.SaveChanges();
         }
 
         public void SaveArticleItem(ArticleItem articleItem)
         {
-            throw new NotImplementedException();
+            var cache = _store.ArticleItems.Single(c => c.Id == articleItem.Id);
+            CreateOrChangeEntityLanguage(cache);
+            _store.SaveChanges();
         }
 
         public int AddArticleItem(ArticleItem articleItem)

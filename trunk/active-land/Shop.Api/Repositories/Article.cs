@@ -10,9 +10,9 @@ namespace Shop.Api.Repositories
 {
     public partial class ShopRepository : IShopRepository
     {
-        public IEnumerable<Article> GetArticles()
+        public IEnumerable<Article> GetArticles(bool showOnlyActive = false)
         {
-            var articles = _store.Articles.ToList();
+            var articles = _store.Articles.Where(a => a.IsActive || !showOnlyActive).ToList();
             foreach (var article in articles)
             {
                 article.CurrentLang = LangId;
@@ -68,10 +68,7 @@ namespace Shop.Api.Repositories
                 _store.ArticleLangs.Remove(artcleLang);
             }
 
-            //while (article.ArticleItems.Any())
-            //{
-                
-            //}
+            deleteImages(article.ImageSource);
 
             _store.Articles.Remove(article);
             _store.SaveChanges();

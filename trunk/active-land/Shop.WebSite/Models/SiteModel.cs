@@ -21,14 +21,20 @@ namespace Shop.WebSite.Models
         public IEnumerable<Product> SpecialOffers { get; set; }
         public IEnumerable<Product> AllProducts { get; set; }
         public IEnumerable<DataAccess.Entities.Content> Contents { get; set; }
+        public Shop.DataAccess.Entities.Content Content { get; set; }
+        public IEnumerable<Article> Articles { get; set; }
+        public string CurrentLangCode { get; set; }
 
-        public SiteModel(IShopRepository repository)
+
+        public SiteModel(IShopRepository repository, string contentName )
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
             AllProducts = repository.GetProducts();
             SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
             Contents = repository.GetContents();
+            Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
+            Articles = repository.GetArticles(true);
         }
     
     }

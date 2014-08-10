@@ -60,7 +60,7 @@ namespace Shop.DataAccess.Repositories
         void DeleteProductImage(int id, Action<String> deleteImage);
 
         // Articles
-        IEnumerable<Article> GetArticles();
+        IEnumerable<Article> GetArticles(bool showOnlyActive=false);
         Article GetArticle(int id);
         Article GetArticle(string name);
         void DeleteArticle(int id, Action<string> deleteImages);
@@ -68,16 +68,20 @@ namespace Shop.DataAccess.Repositories
         void SaveArticle(Article article);
 
         // ArticleItems
-
         ArticleItem GetArticleItem(int id);
         void DeleteArticleItem(int id, Action<string> deleteImages);
         void SaveArticleItem(ArticleItem articleItem);
         int AddArticleItem(ArticleItem articleItem);
-
+        
+        // ArticleItemImages
+        ArticleItemImage GetArticleItemImage(int id);
+        void DeleteArticleItemImage(int id, Action<string> deleteImages);
+        
         // Content
         IEnumerable<Content> GetContents();
         Content GetContent(int id);
         Content GetContent(string name);
+        Content GetContent();
         void DeleteContent(int id);
         void SaveContent(Content content);
         int AddContent(Content content);

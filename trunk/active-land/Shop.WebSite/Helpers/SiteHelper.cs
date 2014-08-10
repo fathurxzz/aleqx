@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -32,6 +33,19 @@ namespace Shop.WebSite.Helpers
             return Transliterate(title.ToLower().Replace(" ", "-").Replace("'", "").Trim());
         }
 
+        public static string GetMonthName(int month, string cultureInfoName)
+        {
+            return months.ContainsKey(cultureInfoName) 
+                ? months[cultureInfoName][month] 
+                : month.ToString();
+        }
 
+        private static Dictionary<string, string[]> months = new Dictionary<string, string[]>
+        {
+            {"ru", new [] {"","январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"}},
+            {"ua", new [] {"","січень","лютий","березень","квітень","травень","червень","липень","серпень","вересень","жовтень","листопад","грудень"}},
+            {"en", new [] {"","january","february","march","april","may","june","july","august","september","october","november","december"}},
+        };
     }
+
 }

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Shop.DataAccess.Entities.Article>
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model IEnumerable<Shop.DataAccess.Entities.Article>
 
 @{
     ViewBag.Title = "Index";
@@ -32,6 +34,9 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.IsCorrectLang)
         </th>
         <th>
@@ -47,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageSource)
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articleAdminPreview")))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
@@ -58,6 +63,11 @@
             <td class="adminTextContainer">
                 <div>
                     @Html.DisplayFor(modelItem => item.Description)
+                </div>
+            </td>
+            <td class="adminTextContainer">
+                <div>
+                    @Html.Raw(item.Text)
                 </div>
             </td>
             <td>
