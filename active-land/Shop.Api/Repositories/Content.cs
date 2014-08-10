@@ -45,6 +45,14 @@ namespace Shop.Api.Repositories
             return content;
         }
 
+        public Content GetContent()
+        {
+            var content = _store.Contents.FirstOrDefault(c => c.ContentType == 0);
+            if(content!=null)
+                content.CurrentLang = LangId;
+            return content;
+        }
+
         public void DeleteContent(int id)
         {
             var content = _store.Contents.SingleOrDefault(c => c.Id == id);

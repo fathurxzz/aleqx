@@ -28,13 +28,24 @@ namespace Shop.WebSite
                 new[] { "Shop.WebSite.Controllers" }
             );
 
+           
+
+
             routes.MapRoute(
-              "Main",
-              "{lang}",
-              new { controller = "Home", action = "Index"},
+              "Content",
+              "{lang}/content/{id}",
+              new { controller = "Home", action = "Index", id = UrlParameter.Optional },
               new { lang = @"ru|en" },
               new[] { "Shop.WebSite.Controllers" }
           );
+
+            routes.MapRoute(
+              "Main",
+              "{lang}",
+              new { controller = "Home", action = "Index" },
+              new { lang = @"ru|en" },
+              new[] { "Shop.WebSite.Controllers" }
+            );
 
             routes.MapRoute(
                "Catalogue",
@@ -51,6 +62,15 @@ namespace Shop.WebSite
                new { lang = @"ru|en" },
                new[] { "Shop.WebSite.Controllers" }
            );
+
+            routes.MapRoute(
+               "ArticleDetails",
+               "{lang}/articles/{article}",
+               new { controller = "Home", action = "ArticleDetails", article = UrlParameter.Optional },
+               new { lang = @"ru|en" },
+               new[] { "Shop.WebSite.Controllers" }
+           );
+
             
 
             routes.MapRoute(

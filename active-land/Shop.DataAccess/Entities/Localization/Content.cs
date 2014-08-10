@@ -15,6 +15,10 @@ namespace Shop.DataAccess.Entities
         public string SeoText { get; set; }
         public bool IsCorrectLang { get; protected set; }
 
+        public bool IsMainPage {
+            get { return ContentType == 0; }
+        }
+
         private int _currentLang;
 
         public int CurrentLang

@@ -12,9 +12,11 @@ namespace Shop.WebSite.Models
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<ProductAttribute> ProductAttributes { get; set; }
         public Product Product { get; set; }
+        public Article Article { get; set; }
 
-        public CatalogueModel(IShopRepository repository, string categoryName=null, string subCategoryName=null, string productName=null)
-            : base(repository)
+
+        public CatalogueModel(IShopRepository repository, string categoryName=null, string subCategoryName=null, string productName=null, string articleName = null)
+            : base(repository,null)
         {
             Products = AllProducts;
             ProductAttributes = new List<ProductAttribute>();
@@ -36,6 +38,11 @@ namespace Shop.WebSite.Models
             if (productName != null)
             {
                 this.Product = repository.GetProduct(productName);
+            }
+
+            if (articleName != null)
+            {
+                this.Article = repository.GetArticle(articleName);
             }
 
         }

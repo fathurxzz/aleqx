@@ -1,4 +1,6 @@
-﻿@model Shop.DataAccess.Entities.Article
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model Shop.DataAccess.Entities.Article
 
 @{
     ViewBag.Title = "Details";
@@ -13,10 +15,37 @@
 <div class="container">
 
     <h3>@Model.Title</h3>
+    <div>
+        @Html.Raw(Model.Text)
+    </div>
+
     <div class="">
         @foreach (var articleItem in Model.ArticleItems)
         {
-            <div style="border: 1px solid silver; margin: 10px 0; padding: 10px">@articleItem.Text</div>
+            <div style="border: 1px solid silver; margin: 10px 0; padding: 10px">
+                <div>
+                    @Html.ActionLink("Редактировать","Edit","ArticleItem",new{id=articleItem.Id},null)
+                    @Html.ActionLink("Удалить","Delete","ArticleItem",new{id=articleItem.Id},new{onclick="return confirm('Удалить блок?')"})
+                </div>
+
+                @Html.Raw(articleItem.Text)
+
+                @if (articleItem.ArticleItemImages.Any())
+                {
+                    <div style="padding-top: 10px">
+                        @foreach (var image in articleItem.ArticleItemImages)
+                        {
+                            <div style="float: left">
+                                <div style="position: absolute">
+                                @Html.ActionLink("Удал.","DeleteImage","ArticleItem",new{id=image.Id},new{onclick="return confirm('Удалить изображение?')"})
+                                </div>
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleItemImageAdminPreview")))    
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            </div>
         }
     </div>
     <p>

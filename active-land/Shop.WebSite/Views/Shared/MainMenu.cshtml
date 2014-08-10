@@ -1,0 +1,19 @@
+﻿@model Shop.WebSite.Models.MainMenuModel
+<div id="menu-items">
+    <ul class="main-menu-items">
+
+        @foreach (var item in Model.Contents.Where(c => c.ContentType > 0).OrderBy(c => c.SortOrder))
+        {
+            if (item.ContentType == 1)
+            {
+            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink(item.Title, "Catalogue", "Home")
+                @Html.Partial("CategoriesMenu", Model.Categories)
+            </li>
+            }
+            else
+            {
+            <li class="main-menu-item">@Html.ActionLink(item.Name, "Index", "Home", new { id = item.Name }, null)</li>
+            }
+        }
+    </ul>
+</div>

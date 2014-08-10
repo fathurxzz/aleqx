@@ -50,10 +50,12 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     SeoDescription = model.SeoDescription,
                     ContentType = model.ContentType,
                     SeoKeywords = model.SeoKeywords,
-                    Text = model.Text??"",
+                    
                     SeoText = model.SeoText,
                     SortOrder = model.SortOrder
                 };
+
+                content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 _repository.AddContent(content);
             }
@@ -90,7 +92,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var content = _repository.GetContent(model.Id);
                 content.Name = SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(content, new[] { "Name", "Title", "SeoDescription", "ContentType", "SeoKeywords", "Seotext", "SortOrder" });
-                content.Text = model.Text ?? "";
+                content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
                 _repository.SaveContent(content);
             }
             catch (Exception ex)
@@ -115,3 +117,5 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         }
     }
 }
+
+

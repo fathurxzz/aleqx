@@ -8,70 +8,13 @@
 
 <div id="menu-panel">
     @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
-    <div id="menu-items">
-        <ul class="main-menu-items">
-            
-
-            @*<li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
-                @Html.Partial("CategoriesMenu", Model.Categories)
-            </li>*@
-            
-                @foreach (var item in Model.Contents.Where(c=>c.ContentType>0).OrderBy(c=>c.SortOrder))
-                {
-                    if (item.ContentType == 1)
-                    {
-                        <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink("Вело-каталог", "Catalogue", "Home")
-                            @Html.Partial("CategoriesMenu", Model.Categories)
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="main-menu-item"><a href="#">@item.Title</a></li>
-                    }
-                }
-            
-
-            @*<li class="main-menu-item"><a href="#">Новости и события</a></li>
-            <li class="main-menu-item"><a href="#">Гарантия, оплата и доставка</a></li>
-            <li class="main-menu-item rent"><a href="#">Вело-прокат</a></li>
-            <li class="main-menu-item"><a href="#">Мастерская</a></li>
-            <li class="main-menu-item"><a href="#">Прямой контакт</a></li>*@
-        </ul>
-
-    </div>
+    @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
 </div>
 <div id="main-banner">
 </div>
 
 
-
-@Html.Partial("SiteTitle", new BreadCrumbs{new BreadCrumb(){Title =  "Детские и подростковые"} })
-
-@*<div class="site-title">
-    <div class="container clearfix block">
-        <div class="block first-block">
-            <!--<span>-->
-            <!--<a href="#">Велосипеды</a> &raquo;-->
-            <!--</span>-->
-
-        </div>
-        <div class="block first-block-tail"></div>
-        <div class="block title">Детские и подростковые</div>
-        <div class="block bike"></div>
-        <div class="block">
-            <div class="stretch-element">
-                <div class="table-cell after-bike">
-                    &nbsp;
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="block after-bike-fading"></div>
-</div>*@
-
-
-
-
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Детские и подростковые" } })
 <div id="catalogue">
     <div id="filters-container">
 
@@ -81,8 +24,6 @@
                 <option>Сначала дешевые</option>
             </select>
         </div>
-
-
 
         @foreach (var productAttribute in Model.ProductAttributes)
         {
@@ -101,7 +42,6 @@
                 </div>
             </div>
         }
-
 
         @*<div id="brand-selector" class="selector checkbox-selector">
             <div class="title">Бренды:</div>

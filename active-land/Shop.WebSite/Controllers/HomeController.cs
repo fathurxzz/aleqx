@@ -18,10 +18,10 @@ namespace Shop.WebSite.Controllers
             _repository = repository;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             _repository.LangId = CurrentLangId;
-            var model = new SiteModel(_repository);
+            var model = new SiteModel(_repository, id) { CurrentLangCode = CurrentLangCode };
             this.SetSeoContent(model);
             return View(model);
         }
@@ -29,14 +29,21 @@ namespace Shop.WebSite.Controllers
         public ActionResult Catalogue(string category, string subcategory)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, category, subcategory);
+            var model = new CatalogueModel(_repository, category, subcategory) {CurrentLangCode = CurrentLangCode};
             return View(model);
         }
 
         public ActionResult ProductDetails(string product)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, productName: product);
+            var model = new CatalogueModel(_repository, productName: product) {CurrentLangCode = CurrentLangCode};
+            return View(model);
+        }
+
+        public ActionResult ArticleDetails(string article)
+        {
+            _repository.LangId = CurrentLangId;
+            var model = new CatalogueModel(_repository, articleName: article) { CurrentLangCode = CurrentLangCode };
             return View(model);
         }
     }

@@ -50,9 +50,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     Date = model.Date,
                     Title = model.Title,
                     Description = model.Description,
-                    Text = model.Text,
                     IsActive = false
                 };
+
+                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))
@@ -66,7 +67,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 }
                 else
                 {
-                    article.ImageSource = "";
+                    article.ImageSource = article.ImageSource ?? "";
                 }
 
                 _repository.AddArticle(article);
@@ -110,9 +111,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             {
                 var article = _repository.GetArticle(model.Id);
                 article.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(article, new[] { "Title", "Date", "Description", "Text", "IsActive" });
+                TryUpdateModel(article, new[] { "Title", "Date", "Description",  "IsActive" });
 
-
+                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))
@@ -131,7 +132,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 }
                 else
                 {
-                    article.ImageSource = "";
+                    article.ImageSource = article.ImageSource ?? "";
                 }
                 
 

@@ -1,0 +1,87 @@
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers
+@using Shop.WebSite.Helpers.Graphics
+@using Shop.WebSite.Models
+@model CatalogueModel
+
+@{
+    ViewBag.Title = "ArticleDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts
+{
+   @* <script type="text/javascript">
+        $('.bxsliderArticleItemImages').bxSlider({
+            mode: 'fade',
+            //auto: autostart,
+            pause: 5000,
+            speed: 500,
+            pager: false,
+            nextSelector: '#slider-next',
+            prevSelector: '#slider-prev',
+            nextText: '',
+            prevText: ''
+        });
+    </script>*@
+}
+
+<div id="main-page-banner">
+    <div id="menu-panel-main-page">
+        @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+        @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
+    </div>
+</div>
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Новости и события" } })
+
+<div class="article-details">
+    <div class="date">@SiteHelper.GetMonthName(Model.Article.Date.Month,Model.CurrentLangCode), @Model.Article.Date.Day, @Model.Article.Date.Year</div>
+    <div class="title">@Model.Article.Title</div>
+    <div class="text">@Html.Raw(Model.Article.Text)</div>
+    
+    @foreach (var articleItem in Model.Article.ArticleItems)
+    {
+        <div class="articleItem">
+            <div class="text">
+            @Html.Raw(articleItem.Text)
+            </div>
+            @if (articleItem.ArticleItemImages.Any())
+            {
+
+                <div class="slider-container">
+                    <div class="slider-image-wrapper">
+
+                        <div id="slider-prev"></div>
+                        <div id="slider-next"></div>
+                        <ul class="bxsliderArticleItemImages">
+                            @foreach (var image in articleItem.ArticleItemImages)
+                            {
+                                <li>
+                                    <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                        <div class="zoom"></div>
+                                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+</div>
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "О подборе байка" } })
+<div id="about-bike-choosing">
+    Велосипе́д (стар. фр. vélocipède, от лат. vēlōx «быстрый» и pēs «нога») — колёсное транспортное средство,
+    приводимое в движение мускульной силой человека через ножные педали или (крайне редко) через ручные рычаги.
+    Наиболее распространены велосипеды с двумя колесами, но бывают также одноколёсные и трёхколёсные велосипеды, а
+    также велосипеды с большим количеством колёс.
+    <br>
+    <br>
+    Правила дорожного движения России определяют велосипед как «транспортное средство, кроме инвалидных колясок,
+    имеющее два колеса или более и приводимое в движение мускульной силой людей, находящихся на нём»
+</div>
+

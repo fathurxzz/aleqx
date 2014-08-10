@@ -1,16 +1,16 @@
-﻿@model Shop.WebSite.TempData.Article
-
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model Shop.DataAccess.Entities.Article
 <div class="article-preview">
-    <img src="~/content/img/tmp/@Model.ImageSource" class="preview-image">
-
+    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("articleSmallPreview"),"preview-image"))
     <div class="content">
         <div class="date">@Model.Date</div>
         <div class="title">@Model.Title</div>
         <div class="text">
-            @Html.Raw(Model.Text)
+            @Html.Raw(Model.Description)
         </div>
         <div class="all-article-link">
-            <a href="#">Вся новость</a> &raquo;
+            @Html.ActionLink("Вся новость","ArticleDetails","Home",new{article=Model.Name},null) &raquo;
         </div>
     </div>
 </div>
