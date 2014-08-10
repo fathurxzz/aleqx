@@ -1,0 +1,62 @@
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@model Shop.DataAccess.Entities.Content
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Content")
+}
+
+<div class="container">
+
+    <h3>@Model.Title</h3>
+    <div>
+        @Html.Raw(Model.Text)
+    </div>
+
+    <div class="">
+        @foreach (var contentItem in Model.ContentItems)
+        {
+            <div style="border: 1px solid silver; margin: 10px 0; padding: 10px">
+                <div>
+                    @Html.ActionLink("Редактировать","Edit","ContentItem",new{id=contentItem.Id},null)
+                    @Html.ActionLink("Удалить","Delete","ContentItem",new{id=contentItem.Id},new{onclick="return confirm('Удалить блок?')"})
+                </div>
+
+                @Html.Raw(contentItem.Text)
+
+                @if (contentItem.ContentItemImages.Any())
+                {
+                    <div style="padding-top: 10px">
+                        @foreach (var image in contentItem.ContentItemImages)
+                        {
+                            <div style="float: left">
+                                <div style="position: absolute">
+                                @Html.ActionLink("Удал.","DeleteImage","ContentItem",new{id=image.Id},new{onclick="return confirm('Удалить изображение?')"})
+                                </div>
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleItemImageAdminPreview")))    
+                            </div>
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <p>
+
+        @Html.ActionLink("Добавить блок", "Create", "ContentItem", new { id = Model.Id }, null)
+    </p>
+
+    <p>
+        @Html.ActionLink("Назад к списку", "Index", "Content")
+    </p>
+</div>
+
+
+

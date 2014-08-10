@@ -28,9 +28,12 @@ namespace Shop.Api.Repositories
             if (content == null)
             {
                 throw new Exception(string.Format("Content with id={0} not found", id));
-
             }
             content.CurrentLang = LangId;
+            foreach (var contentItem in content.ContentItems)
+            {
+                contentItem.CurrentLang = LangId;
+            }
             return content;
         }
 

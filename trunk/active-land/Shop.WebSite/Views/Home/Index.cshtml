@@ -72,6 +72,36 @@
 {
     <div class="content-text">
         @Html.Raw(Model.Content.Text)
+        
+        @foreach (var contentItem in Model.Content.ContentItems)
+    {
+        <div class="articleItem">
+            <div class="text">
+            @Html.Raw(contentItem.Text)
+            </div>
+            @if (contentItem.ContentItemImages.Any())
+            {
+                <div class="slider-container">
+                    <div class="slider-image-wrapper">
+
+                        <div id="slider-prev"></div>
+                        <div id="slider-next"></div>
+                        <ul class="bxsliderArticleItemImages">
+                            @foreach (var image in contentItem.ContentItemImages)
+                            {
+                                <li>
+                                    <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                        <div class="zoom"></div>
+                                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    }
     </div>
 }
 

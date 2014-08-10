@@ -103,6 +103,13 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int id)
+        {
+            _repository.LangId = CurrentLangId;
+            var content = _repository.GetContent(id);
+            return View(content);
+        }
+
         public ActionResult Delete(int id)
         {
             try
