@@ -155,6 +155,7 @@
     <Compile Include="Areas\Admin\Controllers\ArticleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeValueController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeValueTagController.cs" />
@@ -323,6 +324,9 @@
     <Content Include="Areas\Admin\Views\Content\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ArticleItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ContentItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Details.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>

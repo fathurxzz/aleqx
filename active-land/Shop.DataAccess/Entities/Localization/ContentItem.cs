@@ -8,11 +8,7 @@ namespace Shop.DataAccess.Entities
 {
     partial class ContentItem
     {
-        public string Title { get; set; }
         public string Text { get; set; }
-        public string SeoDescription { get; set; }
-        public string SeoKeywords { get; set; }
-        public string SeoText { get; set; }
         public bool IsCorrectLang { get; protected set; }
 
         private int _currentLang;
@@ -50,9 +46,6 @@ namespace Shop.DataAccess.Entities
             Text = entityLang.Text;
         }
 
-        public override string ToString()
-        {
-            return Title;
-        }
+      
     }
 }
