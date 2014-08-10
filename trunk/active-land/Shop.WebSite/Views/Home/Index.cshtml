@@ -108,7 +108,7 @@
     <div id="articles">
         @{
             var i = 0;
-            foreach (var article in Model.Articles)
+            foreach (var article in Model.Articles.OrderByDescending(a=>a.Date).Take(2))
             {
                 i++;
                 @Html.Partial("Article", article)

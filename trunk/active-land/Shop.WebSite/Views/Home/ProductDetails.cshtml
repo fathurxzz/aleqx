@@ -14,23 +14,29 @@
 </div>
 
 
-@Html.Partial("SiteTitle", new BreadCrumbs
-{
-    new BreadCrumb()
+
+@{
+    var bc = new BreadCrumbs();
+    if (Model.Product.Category.Parent != null)
     {
-        Title = Model.Product.Category.Parent.Title, 
-        Name = Model.Product.Category.Parent.Name
-    }, 
-    new BreadCrumb()
+        bc.Add(new BreadCrumb()
+        {
+            Title = Model.Product.Category.Parent.Title,
+            Name = Model.Product.Category.Parent.Name
+        });
+    }
+    bc.Add(new BreadCrumb()
     {
-        Title = Model.Product.Category.Title, 
+        Title = Model.Product.Category.Title,
         Name = Model.Product.Category.Name
-    },
-    new BreadCrumb()
+    });
+    bc.Add(new BreadCrumb()
     {
         Title = Model.Product.Title
-    }
-})
+    });
+}
+
+@Html.Partial("SiteTitle", bc)
 
 
 @Html.Partial("_ProductDetails",Model.Product)

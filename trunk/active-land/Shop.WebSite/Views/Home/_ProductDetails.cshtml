@@ -4,12 +4,15 @@
 
 <div id="product-details">
     <div id="product-images-section">
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage")))
-
+        <a href="/Content/Images/@Model.ImageSource" rel="group1" class="fancy">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage")))
+        </a>
         <div id="product-previews">
             @foreach (var image in Model.ProductImages)
             {
-                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
+                @*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
+                @*</a>*@
             }
         </div>
         <div id="support">
