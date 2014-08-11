@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Shop.WebSite.Helpers
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -25,6 +26,10 @@
             "~/Content/css/catalogue.css",
             "~/Content/css/product-details.css",
             "~/Content/css/support.css",
+            "~/Content/css/cart.css",
+            "~/Content/css/order.css",
+            "~/Content/css/order-thanking.css",
+            
 
                    
 
@@ -42,6 +47,7 @@
         
         @Scripts.Render("~/Scripts/jquery.bxslider.min.js")
         @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
+        @Scripts.Render("~/Scripts/cart.js")
 
         @RenderSection("includes", required: false)
         
@@ -98,9 +104,10 @@
                     <div id="user-greeting">
                         @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
                     </div>
-                    <a href="cart.html" id="cart-icon">
-                        <div id="cart-items-count">3</div>
-                    </a>
+                    @Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))
+                    @*<a href="cart.html" id="cart-icon">*@
+                        @*<div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>*@
+                    @*</a>*@
                     <div class="socials">
                         <div class="social instagram"></div>
                         <div class="social fb"></div>

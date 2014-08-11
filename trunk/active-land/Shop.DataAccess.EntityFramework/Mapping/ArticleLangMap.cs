@@ -18,11 +18,11 @@ namespace Shop.DataAccess.EntityFramework.Mapping
 
             this.Property(t => t.Description)
                 .IsRequired()
-                .HasMaxLength(1073741823);
+                .HasMaxLength(1000);
 
             this.Property(t => t.Text)
                 .IsRequired()
-                .HasMaxLength(1073741823);
+                .HasMaxLength(10000);
 
             // Table & Column Mappings
             this.ToTable("ArticleLang", "gbua_active_dev");

@@ -1,0 +1,93 @@
+﻿@using Shop.WebSite.Models
+@model Shop.WebSite.Models.CartModel
+
+@{
+    ViewBag.Title = "CheckOutConfirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="menu-panel">
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
+</div>
+<div id="main-banner">
+</div>
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Оформляем заказ, шаг 2" } })
+
+
+<div class="order-fields">
+    <div class="field">
+        <div class="title">имя и фамилия:</div>
+        <div class="order-value">
+            @Model.Order.CustomerName
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="field">
+        <div class="title">
+            номер мобильного:<br>
+            <span>Например: (097) 999-22-33</span>
+        </div>
+        <div class="order-value">
+            @Model.Order.CustomerPhone
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="field">
+        <div class="title">емейл-адрес:</div>
+        <div class="order-value">
+            @Model.Order.CustomerEmail
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Данные по доставке и оплате" } })
+
+
+<div class="order-fields">
+    <div class="field">
+        <div class="title double-row">доставка или самовывоз?</div>
+        <div class="order-value">
+            @(Model.Order.DeliveryMethod==0?"Выбираю доставку":"Выбираю самовывоз")
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="field">
+        <div class="title">
+            Город доставки:<br>
+        </div>
+        <div class="order-value">
+            @Model.Order.DeliveryCity
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="field">
+        <div class="title">улица:</div>
+        <div class="order-value">
+            @Model.Order.DeliveryStreet
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="field">
+        <div class="title double-row">№ дома и<br>
+            квартиры (офиса):</div>
+        <div class="order-value">
+            @Model.Order.DeliveryOffice
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="field">
+        <div class="title">Способ оплаты:</div>
+        <div class="order-value">
+            @(Model.Order.PaymentMethod==0?"Оплачиваю наличными курьеру при доставке":"Оплачиваю карточкой")
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div id="order-done-wrapper">
+    <div id="order-done">
+        @Html.ActionLink("Всё верно","ThankYou")
+    </div>
+</div>

@@ -14,12 +14,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class ProductController : AdminController
     {
-        private readonly IShopRepository _repository;
 
         public ProductController(IShopRepository repository)
             : base(repository)
         {
-            _repository = repository;
         }
 
         public ActionResult Index()

@@ -29,6 +29,8 @@ namespace Shop.DatabaseModel.DataAccess.Models
         public DbSet<ContentItemLang> ContentItemLangs { get; set; }
         public DbSet<ContentLang> ContentLangs { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<ProductAttributeLang> ProductAttributeLangs { get; set; }
@@ -56,6 +58,8 @@ namespace Shop.DatabaseModel.DataAccess.Models
             modelBuilder.Configurations.Add(new ContentItemLangMap());
             modelBuilder.Configurations.Add(new ContentLangMap());
             modelBuilder.Configurations.Add(new LanguageMap());
+            modelBuilder.Configurations.Add(new OrderMap());
+            modelBuilder.Configurations.Add(new OrderItemMap());
             modelBuilder.Configurations.Add(new ProductMap());
             modelBuilder.Configurations.Add(new ProductAttributeMap());
             modelBuilder.Configurations.Add(new ProductAttributeLangMap());

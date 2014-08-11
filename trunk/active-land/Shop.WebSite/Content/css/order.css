@@ -129,7 +129,7 @@
     background: #f5f5f5;
 }
 
-#order-done a {
+#order-done input, #order-done a {
     display: block;
     width: 176px;
     height: 46px;
@@ -140,4 +140,7 @@
     background: url("../img/order-done.png");
     text-decoration: none;
     line-height: 44px;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }

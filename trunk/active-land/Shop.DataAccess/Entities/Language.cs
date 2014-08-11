@@ -23,6 +23,8 @@ namespace Shop.DataAccess.Entities
         public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public bool IsDefault { get; set; }
+        public bool IsAdminDefault { get; set; }
         public virtual ICollection<ArticleItemLang> ArticleItemLangs { get; set; }
         public virtual ICollection<ArticleLang> ArticleLangs { get; set; }
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }

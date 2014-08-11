@@ -98,6 +98,14 @@
     color: inherit;
 }
 
+#title-price-in-cart-section .in-cart #product-in-cart-text.hidden {
+    display: none;
+}
+
+#title-price-in-cart-section .in-cart #product-add-to-cart.hidden {
+    display: none;
+}
+
 #product-attributes {
     margin-top: 40px;
 }

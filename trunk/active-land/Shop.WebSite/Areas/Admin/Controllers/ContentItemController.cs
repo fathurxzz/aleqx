@@ -13,11 +13,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class ContentItemController : AdminController
     {
-        private readonly IShopRepository _repository;
-
         public ContentItemController(IShopRepository repository) : base(repository)
         {
-            _repository = repository;
+
         }
 
         public ActionResult Create(int id)

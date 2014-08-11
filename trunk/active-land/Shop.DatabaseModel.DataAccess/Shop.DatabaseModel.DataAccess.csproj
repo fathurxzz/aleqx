@@ -74,6 +74,8 @@
     <Compile Include="Models\Mapping\ContentLangMap.cs" />
     <Compile Include="Models\Mapping\ContentMap.cs" />
     <Compile Include="Models\Mapping\LanguageMap.cs" />
+    <Compile Include="Models\Mapping\OrderItemMap.cs" />
+    <Compile Include="Models\Mapping\OrderMap.cs" />
     <Compile Include="Models\Mapping\ProductAttributeLangMap.cs" />
     <Compile Include="Models\Mapping\ProductAttributeMap.cs" />
     <Compile Include="Models\Mapping\ProductAttributeStaticValueLangMap.cs" />
@@ -85,6 +87,8 @@
     <Compile Include="Models\Mapping\ProductImageMap.cs" />
     <Compile Include="Models\Mapping\ProductLangMap.cs" />
     <Compile Include="Models\Mapping\ProductMap.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductAttribute.cs" />
     <Compile Include="Models\ProductAttributeLang.cs" />

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Shop.WebSite.Models
+namespace Shop.DataAccess.Entities
 {
-    public class OrderItem
+    partial class OrderItem
     {
         public string CategoryName { get; set; }
-        public string ProductName { get; set; }
     }
 }
