@@ -53,9 +53,8 @@
         <EntityTypeShape EntityType="Shop.ArticleItemLang" Width="1.5" PointX="5.75" PointY="11.625" />
         <AssociationConnector Association="Shop.ArticleItemArticleItemLang" />
         <AssociationConnector Association="Shop.LanguageArticleItemLang" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.375" PointY="10.742398647135412" />
-          <ConnectorPoint PointX="6.484577552251845" PointY="10.742398647135412" />
-          <ConnectorPoint PointX="6.484577552251845" PointY="11.625" />
+          <ConnectorPoint PointX="9.375" PointY="12.014150390625002" />
+          <ConnectorPoint PointX="7.25" PointY="12.014150390625002" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ArticleItemImage" Width="1.875" PointX="0.625" PointY="11.625" />
         <AssociationConnector Association="Shop.ArticleItemArticleItemImage" />
@@ -66,6 +65,9 @@
         <AssociationConnector Association="Shop.ContentItemContentItemLang" />
         <AssociationConnector Association="Shop.LanguageContentItemLang" />
         <AssociationConnector Association="Shop.ContentItemContentItemImage" />
+        <EntityTypeShape EntityType="Shop.Order" Width="1.5" PointX="2.75" PointY="15.125" />
+        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.5" PointX="5.375" PointY="15" />
+        <AssociationConnector Association="Shop.OrderOrderItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

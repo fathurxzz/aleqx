@@ -31,6 +31,8 @@ namespace Shop.DatabaseModel
         public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public bool IsDefault { get; set; }
+        public bool IsAdminDefault { get; set; }
     
         public virtual ICollection<CategoryLang> CategoryLangs { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
