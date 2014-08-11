@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -30,6 +30,8 @@
     <EntitySet Name="ContentItem" EntityType="Shop.Store.ContentItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContentItemImage" EntityType="Shop.Store.ContentItemImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContentItemLang" EntityType="Shop.Store.ContentItemLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="Shop.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderItem" EntityType="Shop.Store.OrderItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LanguageCategoryLang" Association="Shop.Store.LanguageCategoryLang">
@@ -172,6 +174,10 @@
       <End Role="ContentItem" EntitySet="ContentItem" />
       <End Role="ContentItemImage" EntitySet="ContentItemImage" />
     </AssociationSet>
+    <AssociationSet Name="OrderOrderItem" Association="Shop.Store.OrderOrderItem">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
     <Key>
@@ -180,6 +186,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Code" Type="char" Nullable="false" MaxLength="2" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsDefault" Type="bool" Nullable="false" />
+    <Property Name="IsAdminDefault" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -403,6 +411,39 @@
     <Property Name="Text" Type="longtext" Nullable="false" />
     <Property Name="ContentItemId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="CustomerPhone" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="CustomerEmail" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="DeliveryAddress" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Completed" Type="bool" Nullable="false" />
+    <Property Name="Info" Type="longtext" Nullable="true" />
+    <Property Name="Subscribed" Type="bool" Nullable="false" />
+    <Property Name="DeliveryMethod" Type="int" Nullable="false" />
+    <Property Name="DeliveryCity" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DeliveryStreet" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="DeliveryOffice" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="PaymentMethod" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductTitle" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -792,6 +833,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="OrderOrderItem">
+    <End Role="Order" Type="Shop.Store.Order" Multiplicity="1" />
+    <End Role="OrderItem" Type="Shop.Store.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CategoryProductAttribute_Category">
     <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
     <End Role="CategoryProductAttribute" Type="Shop.Store.CategoryProductAttribute" Multiplicity="*" />
@@ -1001,6 +1054,12 @@
             <End Role="ContentItem" EntitySet="ContentItem" />
             <End Role="ContentItemImage" EntitySet="ContentItemImage" />
           </AssociationSet>
+          <EntitySet Name="Order" EntityType="Shop.Order" />
+          <EntitySet Name="OrderItem" EntityType="Shop.OrderItem" />
+          <AssociationSet Name="OrderOrderItem" Association="Shop.OrderOrderItem">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -1019,6 +1078,8 @@
           <NavigationProperty Name="ArticleLangs" Relationship="Shop.LanguageArticleLang" FromRole="Language" ToRole="ArticleLang" />
           <NavigationProperty Name="ArticleItemLangs" Relationship="Shop.LanguageArticleItemLang" FromRole="Language" ToRole="ArticleItemLang" />
           <NavigationProperty Name="ContentItemLangs" Relationship="Shop.LanguageContentItemLang" FromRole="Language" ToRole="ContentItemLang" />
+          <Property Type="Boolean" Name="IsDefault" Nullable="false" />
+          <Property Type="Boolean" Name="IsAdminDefault" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -1679,6 +1740,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="CustomerName" MaxLength="200" />
+          <Property Type="String" Name="CustomerPhone" MaxLength="200" />
+          <Property Type="String" Name="CustomerEmail" MaxLength="200" />
+          <Property Type="String" Name="DeliveryAddress" MaxLength="200" />
+          <Property Type="Boolean" Name="Completed" Nullable="false" />
+          <Property Type="String" Name="Info" />
+          <NavigationProperty Name="OrderItems" Relationship="Shop.OrderOrderItem" FromRole="Order" ToRole="OrderItem" />
+          <Property Type="Boolean" Name="Subscribed" Nullable="false" />
+          <Property Type="Int32" Name="DeliveryMethod" Nullable="false" />
+          <Property Type="String" Name="DeliveryCity" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="DeliveryStreet" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="DeliveryOffice" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="PaymentMethod" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="ImageSource" MaxLength="200" />
+          <Property Type="Decimal" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="ProductName" MaxLength="200" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="ProductTitle" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Order" Relationship="Shop.OrderOrderItem" FromRole="OrderItem" ToRole="Order" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+        </EntityType>
+        <Association Name="OrderOrderItem">
+          <End Type="Shop.Order" Role="Order" Multiplicity="1" />
+          <End Type="Shop.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1691,6 +1799,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="IsAdminDefault" ColumnName="IsAdminDefault" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1937,6 +2047,41 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="ContentItemId" ColumnName="ContentItemId" />
           <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.Order)">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerPhone" ColumnName="CustomerPhone" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+          <ScalarProperty Name="Subscribed" ColumnName="Subscribed" />
+          <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+          <ScalarProperty Name="DeliveryCity" ColumnName="DeliveryCity" />
+          <ScalarProperty Name="DeliveryStreet" ColumnName="DeliveryStreet" />
+          <ScalarProperty Name="DeliveryOffice" ColumnName="DeliveryOffice" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItem">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.OrderItem)">
+        <MappingFragment StoreEntitySet="OrderItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

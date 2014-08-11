@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/09/2014 00:13:22
--- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 08/11/2014 09:55:00
+-- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -54,6 +54,7 @@ USE `gbua_active_dev`;
 --    ALTER TABLE `ContentItemLang` DROP CONSTRAINT `FK_ContentItemContentItemLang`;
 --    ALTER TABLE `ContentItemLang` DROP CONSTRAINT `FK_LanguageContentItemLang`;
 --    ALTER TABLE `ContentItemImage` DROP CONSTRAINT `FK_ContentItemContentItemImage`;
+--    ALTER TABLE `OrderItem` DROP CONSTRAINT `FK_OrderOrderItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -83,6 +84,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ContentItem`;
     DROP TABLE IF EXISTS `ContentItemImage`;
     DROP TABLE IF EXISTS `ContentItemLang`;
+    DROP TABLE IF EXISTS `Order`;
+    DROP TABLE IF EXISTS `OrderItem`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
@@ -94,7 +97,9 @@ SET foreign_key_checks = 1;
 CREATE TABLE `Language`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Code` char (2) NOT NULL, 
-	`Name` varchar (50) NOT NULL);
+	`Name` varchar (50) NOT NULL, 
+	`IsDefault` bool NOT NULL, 
+	`IsAdminDefault` bool NOT NULL);
 
 ALTER TABLE `Language` ADD PRIMARY KEY (Id);
 
@@ -366,6 +371,43 @@ CREATE TABLE `ContentItemLang`(
 	`LanguageId` int NOT NULL);
 
 ALTER TABLE `ContentItemLang` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `Order`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Date` datetime NOT NULL, 
+	`CustomerName` varchar (200), 
+	`CustomerPhone` varchar (200), 
+	`CustomerEmail` varchar (200), 
+	`DeliveryAddress` varchar (200), 
+	`Completed` bool NOT NULL, 
+	`Info` longtext, 
+	`Subscribed` bool NOT NULL, 
+	`DeliveryMethod` int NOT NULL, 
+	`DeliveryCity` varchar (200) NOT NULL, 
+	`DeliveryStreet` varchar (200) NOT NULL, 
+	`DeliveryOffice` varchar (200) NOT NULL, 
+	`PaymentMethod` int NOT NULL);
+
+ALTER TABLE `Order` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `OrderItem`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Description` longtext, 
+	`ImageSource` varchar (200), 
+	`Price` decimal( 10, 2 )  NOT NULL, 
+	`Quantity` int NOT NULL, 
+	`ProductName` varchar (200), 
+	`ProductId` int NOT NULL, 
+	`ProductTitle` varchar (200) NOT NULL, 
+	`OrderId` int NOT NULL);
+
+ALTER TABLE `OrderItem` ADD PRIMARY KEY (Id);
 
 
 
@@ -906,6 +948,21 @@ ADD CONSTRAINT `FK_ContentItemContentItemImage`
 CREATE INDEX `IX_FK_ContentItemContentItemImage` 
     ON `ContentItemImage`
     (`ContentItemId`);
+
+-- Creating foreign key on `OrderId` in table 'OrderItem'
+
+ALTER TABLE `OrderItem`
+ADD CONSTRAINT `FK_OrderOrderItem`
+    FOREIGN KEY (`OrderId`)
+    REFERENCES `Order`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_OrderOrderItem'
+
+CREATE INDEX `IX_FK_OrderOrderItem` 
+    ON `OrderItem`
+    (`OrderId`);
 
 -- --------------------------------------------------
 -- Script has ended

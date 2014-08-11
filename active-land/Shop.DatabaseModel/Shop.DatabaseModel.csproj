@@ -85,6 +85,12 @@
     <Compile Include="Language.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderItem.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
