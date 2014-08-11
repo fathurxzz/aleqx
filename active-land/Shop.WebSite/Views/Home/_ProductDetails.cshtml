@@ -10,9 +10,9 @@
         <div id="product-previews">
             @foreach (var image in Model.ProductImages)
             {
-                @*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
-                @*</a>*@
+@*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
+                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
+@*</a>*@
             }
         </div>
         <div id="support">
@@ -30,7 +30,30 @@
         </div>
         <div id="title-price-in-cart-section">
             <div class="title">@Model.Title</div>
-            <div class="in-cart">товар в <a href="#">корзине</a></div>
+            <div class="in-cart">
+
+                @{
+                    string productincarttexthidden = string.Empty;
+                    string productaddtocarthidden = string.Empty;
+                    if (Model.IsInCart)
+                    {
+                        productaddtocarthidden = "hidden";
+                    }
+                    else
+                    {
+                        productincarttexthidden = "hidden";
+                    }
+                }
+
+                <div id="product-in-cart-text" class="@productincarttexthidden">
+                    товар в @Html.ActionLink("корзине", "Index", "Cart", new { lang = ViewBag.CurrentLangCode }, null)
+                </div>
+
+                <div id="product-add-to-cart" class="@productaddtocarthidden">
+                    <a href="#" onclick="Shop.addToCart(@Model.Id)">в корзину</a>
+                </div>
+
+            </div>
             <div class="price">@Model.Price.ToString("###,###") <sup>грн</sup></div>
         </div>
         <div class="clearfix"></div>
@@ -45,8 +68,8 @@
                     <div class="title">@pruductAttribute.Title @Html.Raw(!string.IsNullOrEmpty(pruductAttribute.UnitTitle) ? ", " + pruductAttribute.UnitTitle : "")</div>
                     <div class="value">
 
-                        
-                        
+
+
                         <div class="value-text">
                             @if (pruductAttribute.IsStatic)
                             {
@@ -54,7 +77,7 @@
                                 {
                                     if (pav.ProductAttributeId == pruductAttribute.Id)
                                     {
-                                        @pav.Title
+                                @pav.Title
                                     }
                                 }
                             }
@@ -67,17 +90,17 @@
                                     {
                                         if (cnt != 0)
                                         {
-                                            @Html.Raw(", ")
+                                @Html.Raw(", ")
                                         }
                                         else
                                         {
                                             if (pav.ProductAttributeValueTag != null)
                                             {
-                                                <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
+                                <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
                                             }
                                         }
                                         cnt++;
-                                        @pav.Title
+                                @pav.Title
                                     }
                                 }
                             }

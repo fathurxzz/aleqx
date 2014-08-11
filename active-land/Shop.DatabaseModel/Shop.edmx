@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -207,9 +207,9 @@
     <Property Name="LanguageId" Type="int" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
-    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
-    <Property Name="SeoText" Type="longtext" Nullable="true" />
+    <Property Name="SeoDescription" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="SeoKeywords" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoText" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -250,10 +250,10 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="Description" Type="longtext" Nullable="true" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
-    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
-    <Property Name="SeoText" Type="longtext" Nullable="true" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoDescription" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="SeoKeywords" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoText" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
   </EntityType>
@@ -335,10 +335,10 @@
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
     <Property Name="ContentId" Type="int" Nullable="false" />
-    <Property Name="Text" Type="longtext" Nullable="false" />
-    <Property Name="SeoDescription" Type="longtext" Nullable="true" />
-    <Property Name="SeoKeywords" Type="longtext" Nullable="true" />
-    <Property Name="SeoText" Type="longtext" Nullable="true" />
+    <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
+    <Property Name="SeoDescription" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="SeoKeywords" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="SeoText" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="Article">
     <Key>
@@ -356,8 +356,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
-    <Property Name="Description" Type="longtext" Nullable="false" />
-    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1000" />
+    <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
     <Property Name="ArticleId" Type="int" Nullable="false" />
   </EntityType>
@@ -374,7 +374,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
     <Property Name="ArticleItemId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
   </EntityType>
@@ -408,7 +408,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="longtext" Nullable="false" />
+    <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
     <Property Name="ContentItemId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
   </EntityType>
@@ -423,7 +423,7 @@
     <Property Name="CustomerEmail" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="DeliveryAddress" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="Completed" Type="bool" Nullable="false" />
-    <Property Name="Info" Type="longtext" Nullable="true" />
+    <Property Name="Info" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="Subscribed" Type="bool" Nullable="false" />
     <Property Name="DeliveryMethod" Type="int" Nullable="false" />
     <Property Name="DeliveryCity" Type="varchar" Nullable="false" MaxLength="200" />
@@ -436,7 +436,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Description" Type="longtext" Nullable="true" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="Price" Type="decimal" Nullable="false" />
     <Property Name="Quantity" Type="int" Nullable="false" />
@@ -1104,9 +1104,9 @@
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="SeoDescription" Nullable="true" />
-          <Property Type="String" Name="SeoKeywords" Nullable="true" />
-          <Property Type="String" Name="SeoText" Nullable="true" />
+          <Property Type="String" Name="SeoDescription" Nullable="true" MaxLength="10000" />
+          <Property Type="String" Name="SeoKeywords" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoText" Nullable="true" MaxLength="10000" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageCategoryLang" FromRole="CategoryLang" ToRole="Language" />
           <NavigationProperty Name="Category" Relationship="Shop.CategoryCategoryLang" FromRole="CategoryLang" ToRole="Category" />
         </EntityType>
@@ -1159,10 +1159,10 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Description" Nullable="true" />
-          <Property Type="String" Name="SeoDescription" Nullable="true" />
-          <Property Type="String" Name="SeoKeywords" Nullable="true" />
-          <Property Type="String" Name="SeoText" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoDescription" Nullable="true" MaxLength="10000" />
+          <Property Type="String" Name="SeoKeywords" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="SeoText" Nullable="true" MaxLength="10000" />
           <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageProductLang" FromRole="ProductLang" ToRole="Language" />
@@ -1503,10 +1503,10 @@
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
           <NavigationProperty Name="Content" Relationship="Shop.ContentContentLang" FromRole="ContentLang" ToRole="Content" />
           <Property Type="Int32" Name="ContentId" Nullable="false" />
-          <Property Type="String" Name="Text" Nullable="false" />
-          <Property Type="String" Name="SeoDescription" />
-          <Property Type="String" Name="SeoKeywords" />
-          <Property Type="String" Name="SeoText" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
+          <Property Type="String" Name="SeoDescription" MaxLength="10000" />
+          <Property Type="String" Name="SeoKeywords" MaxLength="1000" />
+          <Property Type="String" Name="SeoText" MaxLength="10000" />
         </EntityType>
         <Association Name="LanguageContentLang">
           <End Type="Shop.Language" Role="Language" Multiplicity="1" />
@@ -1550,8 +1550,8 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="Description" Nullable="false" />
-          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageArticleLang" FromRole="ArticleLang" ToRole="Language" />
           <Property Type="Int32" Name="LanguageId" Nullable="false" />
           <NavigationProperty Name="Article" Relationship="Shop.ArticleArticleLang" FromRole="ArticleLang" ToRole="Article" />
@@ -1609,7 +1609,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
           <NavigationProperty Name="ArticleItem" Relationship="Shop.ArticleItemArticleItemLang" FromRole="ArticleItemLang" ToRole="ArticleItem" />
           <Property Type="Int32" Name="ArticleItemId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageArticleItemLang" FromRole="ArticleItemLang" ToRole="Language" />
@@ -1686,7 +1686,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
           <NavigationProperty Name="ContentItem" Relationship="Shop.ContentItemContentItemLang" FromRole="ContentItemLang" ToRole="ContentItem" />
           <Property Type="Int32" Name="ContentItemId" Nullable="false" />
           <NavigationProperty Name="Language" Relationship="Shop.LanguageContentItemLang" FromRole="ContentItemLang" ToRole="Language" />
@@ -1751,7 +1751,7 @@
           <Property Type="String" Name="CustomerEmail" MaxLength="200" />
           <Property Type="String" Name="DeliveryAddress" MaxLength="200" />
           <Property Type="Boolean" Name="Completed" Nullable="false" />
-          <Property Type="String" Name="Info" />
+          <Property Type="String" Name="Info" MaxLength="1000" />
           <NavigationProperty Name="OrderItems" Relationship="Shop.OrderOrderItem" FromRole="Order" ToRole="OrderItem" />
           <Property Type="Boolean" Name="Subscribed" Nullable="false" />
           <Property Type="Int32" Name="DeliveryMethod" Nullable="false" />
@@ -1765,7 +1765,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Description" />
+          <Property Type="String" Name="Description" MaxLength="1000" />
           <Property Type="String" Name="ImageSource" MaxLength="200" />
           <Property Type="Decimal" Name="Price" Nullable="false" />
           <Property Type="Int32" Name="Quantity" Nullable="false" />

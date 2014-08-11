@@ -8,6 +8,11 @@ namespace Shop.DataAccess.EntityFramework
         readonly ShopContext _context = new ShopContext();
 
 
+        public IDbSet<Language> Languages
+        {
+            get { return _context.Languages; }
+        }
+
         public IDbSet<Category> Categories
         {
             get { return _context.Categories; }
@@ -94,22 +99,38 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.ArticleItemImages; }
         }
 
-        public IDbSet<Content> Contents {
+        public IDbSet<Content> Contents
+        {
             get { return _context.Contents; }
         }
-        public IDbSet<ContentLang> ContentLangs {
+        public IDbSet<ContentLang> ContentLangs
+        {
             get { return _context.ContentLangs; }
         }
 
-        public IDbSet<ContentItem> ContentItems {
+        public IDbSet<ContentItem> ContentItems
+        {
             get { return _context.ContentItems; }
         }
-        public IDbSet<ContentItemLang> ContentItemLangs {
+        public IDbSet<ContentItemLang> ContentItemLangs
+        {
             get { return _context.ContentItemLangs; }
         }
-        public IDbSet<ContentItemImage> ContentItemImages {
+        public IDbSet<ContentItemImage> ContentItemImages
+        {
             get { return _context.ContentItemImages; }
         }
+
+        public IDbSet<Order> Orders
+        {
+            get { return _context.Orders; }
+        }
+
+        public IDbSet<OrderItem> OrderItems
+        {
+            get { return _context.OrderItems; }
+        }
+
 
         public int SaveChanges()
         {

@@ -24,6 +24,8 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Code).HasColumnName("Code");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.IsDefault).HasColumnName("IsDefault");
+            this.Property(t => t.IsAdminDefault).HasColumnName("IsAdminDefault");
         }
     }
 }

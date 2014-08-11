@@ -1,0 +1,28 @@
+﻿@model Shop.WebSite.Models.OrderComplete
+
+@{
+    ViewBag.Title = "ThankYou";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="thanks">
+    <div id="order-number">
+        <div class="title">Номер вашего заказа</div>
+        <div class="value">@Model.Number</div>
+    </div>
+    <div id="order-total-amount">
+        <div class="title">К оплате, грн.:</div>
+        <div class="value">@Model.Amount.ToString("N")</div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div id="thanks-text">
+        Спасибо, @Model.CustomerName! Мы с Вами свяжемся<br>
+        в ближайжее время
+    </div>
+    <div id="main-page-link">
+        @Html.ActionLink("В начало сайта","Index","Home") &raquo;
+    </div>
+</div>
+<div class="line"></div>

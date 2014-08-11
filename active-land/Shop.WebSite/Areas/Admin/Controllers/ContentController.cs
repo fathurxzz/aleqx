@@ -13,11 +13,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class ContentController : AdminController
     {
-        private readonly IShopRepository _repository;
 
         public ContentController(IShopRepository repository) : base(repository)
         {
-            _repository = repository;
         }
 
         public ActionResult Index()

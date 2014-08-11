@@ -10,11 +10,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class ProductAttributeValueController : AdminController
     {
-        private readonly IShopRepository _repository;
 
         public ProductAttributeValueController(IShopRepository repository) : base(repository)
         {
-            _repository = repository;
         }
 
         public ActionResult Index(int id)

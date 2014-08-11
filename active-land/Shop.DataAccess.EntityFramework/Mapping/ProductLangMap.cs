@@ -16,16 +16,16 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .HasMaxLength(200);
 
             this.Property(t => t.Description)
-                .HasMaxLength(1073741823);
+                .HasMaxLength(1000);
 
             this.Property(t => t.SeoDescription)
-                .HasMaxLength(1073741823);
+                .HasMaxLength(10000);
 
             this.Property(t => t.SeoKeywords)
-                .HasMaxLength(1073741823);
+                .HasMaxLength(1000);
 
             this.Property(t => t.SeoText)
-                .HasMaxLength(1073741823);
+                .HasMaxLength(10000);
 
             // Table & Column Mappings
             this.ToTable("ProductLang", "gbua_active_dev");

@@ -12,6 +12,10 @@ namespace Shop.DataAccess.Repositories
     {
         int LangId { get; set; }
 
+        // Languages
+
+        IEnumerable<Language> GetLanguages();
+            
         // Categories
         IEnumerable<Category> GetCategories();
         Category GetCategory(int id);
@@ -96,5 +100,11 @@ namespace Shop.DataAccess.Repositories
         ContentItemImage GetContentItemImage(int id);
         void DeleteContentItemImage(int id, Action<string> deleteImages);
 
+        // Order
+        int AddOrder(Order order);
+        IEnumerable<Order> GetOrders();
+        Order GetOrder(int id);
+        void DeleteOrder(int id);
+        void SaveOrder(Order order);
     }
 }

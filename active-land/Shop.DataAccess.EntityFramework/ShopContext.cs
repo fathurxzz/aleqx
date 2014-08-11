@@ -45,6 +45,9 @@ namespace Shop.DataAccess.EntityFramework
         public DbSet<ContentItemImage> ContentItemImages { get; set; }
         public DbSet<ContentItemLang> ContentItemLangs { get; set; }
         public DbSet<ContentLang> ContentLangs { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
 
         
 
@@ -74,6 +77,8 @@ namespace Shop.DataAccess.EntityFramework
             modelBuilder.Configurations.Add(new ContentItemImageMap());
             modelBuilder.Configurations.Add(new ContentItemLangMap());
             modelBuilder.Configurations.Add(new ContentLangMap());
+            modelBuilder.Configurations.Add(new OrderMap());
+            modelBuilder.Configurations.Add(new OrderItemMap());
 
         }
     }

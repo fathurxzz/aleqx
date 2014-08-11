@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/11/2014 09:55:00
--- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 08/11/2014 21:14:35
+-- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -123,9 +123,9 @@ CREATE TABLE `CategoryLang`(
 	`LanguageId` int NOT NULL, 
 	`CategoryId` int NOT NULL, 
 	`Title` varchar (200) NOT NULL, 
-	`SeoDescription` longtext, 
-	`SeoKeywords` longtext, 
-	`SeoText` longtext);
+	`SeoDescription` varchar (10000), 
+	`SeoKeywords` varchar (1000), 
+	`SeoText` varchar (10000));
 
 ALTER TABLE `CategoryLang` ADD PRIMARY KEY (Id);
 
@@ -174,10 +174,10 @@ ALTER TABLE `ProductImage` ADD PRIMARY KEY (Id);
 CREATE TABLE `ProductLang`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Title` varchar (200) NOT NULL, 
-	`Description` longtext, 
-	`SeoDescription` longtext, 
-	`SeoKeywords` longtext, 
-	`SeoText` longtext, 
+	`Description` varchar (1000), 
+	`SeoDescription` varchar (10000), 
+	`SeoKeywords` varchar (1000), 
+	`SeoText` varchar (10000), 
 	`ProductId` int NOT NULL, 
 	`LanguageId` int NOT NULL);
 
@@ -277,10 +277,10 @@ CREATE TABLE `ContentLang`(
 	`Title` varchar (200) NOT NULL, 
 	`LanguageId` int NOT NULL, 
 	`ContentId` int NOT NULL, 
-	`Text` longtext NOT NULL, 
-	`SeoDescription` longtext, 
-	`SeoKeywords` longtext, 
-	`SeoText` longtext);
+	`Text` varchar (10000) NOT NULL, 
+	`SeoDescription` varchar (10000), 
+	`SeoKeywords` varchar (1000), 
+	`SeoText` varchar (10000));
 
 ALTER TABLE `ContentLang` ADD PRIMARY KEY (Id);
 
@@ -302,8 +302,8 @@ ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 CREATE TABLE `ArticleLang`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Title` varchar (200) NOT NULL, 
-	`Description` longtext NOT NULL, 
-	`Text` longtext NOT NULL, 
+	`Description` varchar (1000) NOT NULL, 
+	`Text` varchar (10000) NOT NULL, 
 	`LanguageId` int NOT NULL, 
 	`ArticleId` int NOT NULL);
 
@@ -324,7 +324,7 @@ ALTER TABLE `ArticleItem` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `ArticleItemLang`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Text` longtext NOT NULL, 
+	`Text` varchar (10000) NOT NULL, 
 	`ArticleItemId` int NOT NULL, 
 	`LanguageId` int NOT NULL);
 
@@ -366,7 +366,7 @@ ALTER TABLE `ContentItemImage` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `ContentItemLang`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Text` longtext NOT NULL, 
+	`Text` varchar (10000) NOT NULL, 
 	`ContentItemId` int NOT NULL, 
 	`LanguageId` int NOT NULL);
 
@@ -383,7 +383,7 @@ CREATE TABLE `Order`(
 	`CustomerEmail` varchar (200), 
 	`DeliveryAddress` varchar (200), 
 	`Completed` bool NOT NULL, 
-	`Info` longtext, 
+	`Info` varchar (1000), 
 	`Subscribed` bool NOT NULL, 
 	`DeliveryMethod` int NOT NULL, 
 	`DeliveryCity` varchar (200) NOT NULL, 
@@ -398,7 +398,7 @@ ALTER TABLE `Order` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `OrderItem`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Description` longtext, 
+	`Description` varchar (1000), 
 	`ImageSource` varchar (200), 
 	`Price` decimal( 10, 2 )  NOT NULL, 
 	`Quantity` int NOT NULL, 

@@ -71,6 +71,8 @@
     <Compile Include="Mapping\ContentLangMap.cs" />
     <Compile Include="Mapping\ContentMap.cs" />
     <Compile Include="Mapping\LanguageMap.cs" />
+    <Compile Include="Mapping\OrderItemMap.cs" />
+    <Compile Include="Mapping\OrderMap.cs" />
     <Compile Include="Mapping\ProductAttributeLangMap.cs" />
     <Compile Include="Mapping\ProductAttributeMap.cs" />
     <Compile Include="Mapping\ProductAttributeStaticValueLangMap.cs" />

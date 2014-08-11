@@ -27,10 +27,16 @@
     width: 154px;
     height: 154px;
     /*border: 1px solid #f7f7f7;*/
-    border: 1px solid #ccc;
-    border-radius: 10px;
     float: left;
     margin: 8px;
+}
+
+.cart-item .image img {
+    width: 154px;
+    height: 154px;
+    border: 1px solid #ccc;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .cart-item .description {
@@ -168,4 +174,10 @@
     margin-left: 70px;
     margin-top: 70px;
     cursor: pointer;
+}
+
+.cart-item .delete-cart-item a {
+    display: block;
+    width: inherit;
+    height: inherit;
 }

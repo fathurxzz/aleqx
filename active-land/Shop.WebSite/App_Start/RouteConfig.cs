@@ -27,9 +27,24 @@ namespace Shop.WebSite
                 new { controller = "Auth", action = "Logout" },
                 new[] { "Shop.WebSite.Controllers" }
             );
+            routes.MapRoute(
+              "AddToCart", // Route name
+              "addtocart/{id}", // URL with parameters
+              new { controller = "Cart", action = "Add", id = "" },
+              new string[1] { "Shop.WebSite.Controllers" }
+          );
+
+            
+
+            routes.MapRoute(
+               "Cart", // Route name
+               "{lang}/cart/{action}", // URL with parameters
+               new { controller = "Cart", action = "Index"},
+               new { lang = @"ru|en" },
+               new string[1] { "Shop.WebSite.Controllers" }
+           );
 
            
-
 
             routes.MapRoute(
               "Content",

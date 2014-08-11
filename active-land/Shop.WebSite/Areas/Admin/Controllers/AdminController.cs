@@ -14,7 +14,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
     {
 
 
-        public AdminController(IShopRepository repository)
+        public AdminController(IShopRepository repository) : base(repository)
         {
             
         }

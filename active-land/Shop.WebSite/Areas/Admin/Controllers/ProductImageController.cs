@@ -13,12 +13,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class ProductImageController : AdminController
     {
-        private readonly IShopRepository _repository;
 
         public ProductImageController(IShopRepository repository)
             : base(repository)
         {
-            _repository = repository;
         }
 
         public ActionResult Index(int id)
@@ -42,7 +40,6 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             var productId = model.ProductId;
             try
             {
-               
                 var product = _repository.GetProduct(productId);
                 
                 for (int i = 0; i < Request.Files.Count; i++)

@@ -10,11 +10,9 @@ namespace Shop.WebSite.Areas.Admin.Controllers
     public class CategoryController : AdminController
     {
 
-        private readonly IShopRepository _repository;
 
         public CategoryController(IShopRepository repository):base(repository)
         {
-            _repository = repository;
         }
 
         public ActionResult Index()

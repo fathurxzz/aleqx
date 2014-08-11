@@ -19,7 +19,7 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
             this.ToTable("Content", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
-            this.Property(t => t.IsCatalogue).HasColumnName("IsCatalogue");
+            this.Property(t => t.ContentType).HasColumnName("ContentType");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
         }
     }

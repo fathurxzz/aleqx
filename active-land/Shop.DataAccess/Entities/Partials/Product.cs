@@ -9,5 +9,6 @@ namespace Shop.DataAccess.Entities
     partial class Product
     {
         public string ImageSource { get; set; }
+        public bool IsInCart { get; set; }
     }
 }

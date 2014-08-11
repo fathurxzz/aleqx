@@ -11,11 +11,9 @@ namespace Shop.WebSite.Controllers
 {
     public class HomeController : DefaultController
     {
-        private readonly IShopRepository _repository;
 
-        public HomeController(IShopRepository repository)
+        public HomeController(IShopRepository repository) : base(repository)
         {
-            _repository = repository;
         }
 
         public ActionResult Index(string id)
@@ -37,6 +35,7 @@ namespace Shop.WebSite.Controllers
         {
             _repository.LangId = CurrentLangId;
             var model = new CatalogueModel(_repository, productName: product) {CurrentLangCode = CurrentLangCode};
+            ViewBag.CurrentLangCode = CurrentLangCode;
             return View(model);
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
+using Shop.WebSite.Helpers;
 
 namespace Shop.WebSite.Models
 {
@@ -38,6 +39,7 @@ namespace Shop.WebSite.Models
             if (productName != null)
             {
                 this.Product = repository.GetProduct(productName);
+                this.Product.IsInCart = WebSession.OrderItems.ContainsKey(Product.Id);
             }
 
             if (articleName != null)

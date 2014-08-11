@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.SessionState;
+using Shop.DataAccess.Entities;
 using Shop.WebSite.Models;
 
 namespace Shop.WebSite.Helpers
@@ -17,6 +18,18 @@ namespace Shop.WebSite.Helpers
             }
         }
 
+        public static Order Order
+        {
+            get
+            {
+                return (Order)Session["order"];
+            }
+            set
+            {
+                Session["order"] = value;
+            }
+        }
+
         public static Dictionary<int, OrderItem> OrderItems
         {
             get
@@ -26,5 +39,7 @@ namespace Shop.WebSite.Helpers
                 return (Dictionary<int, OrderItem>)Session["orderItems"];
             }
         }
+
+        public static IEnumerable<Language> Languages { get; set; }
     }
 }

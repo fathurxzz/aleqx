@@ -53,8 +53,10 @@
         <EntityTypeShape EntityType="Shop.ArticleItemLang" Width="1.5" PointX="5.75" PointY="11.625" />
         <AssociationConnector Association="Shop.ArticleItemArticleItemLang" />
         <AssociationConnector Association="Shop.LanguageArticleItemLang" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.375" PointY="12.014150390625002" />
-          <ConnectorPoint PointX="7.25" PointY="12.014150390625002" />
+          <ConnectorPoint PointX="9.375" PointY="10.934700079427078" />
+          <ConnectorPoint PointX="9" PointY="10.934700079427078" />
+          <ConnectorPoint PointX="9" PointY="12.486258411021268" />
+          <ConnectorPoint PointX="7.25" PointY="12.486258411021268" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ArticleItemImage" Width="1.875" PointX="0.625" PointY="11.625" />
         <AssociationConnector Association="Shop.ArticleItemArticleItemImage" />

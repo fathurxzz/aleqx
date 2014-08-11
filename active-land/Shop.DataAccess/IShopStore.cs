@@ -5,6 +5,8 @@ namespace Shop.DataAccess
 {
     public interface IShopStore
     {
+        IDbSet<Language> Languages { get; }
+
         IDbSet<Category> Categories { get; }
         IDbSet<CategoryLang> CategoryLangs { get; }
 
@@ -40,6 +42,9 @@ namespace Shop.DataAccess
         IDbSet<ContentItemLang> ContentItemLangs { get; }
 
         IDbSet<ContentItemImage> ContentItemImages { get; }
+
+        IDbSet<Order> Orders { get; }
+        IDbSet<OrderItem> OrderItems { get; }
 
         int SaveChanges();
     }

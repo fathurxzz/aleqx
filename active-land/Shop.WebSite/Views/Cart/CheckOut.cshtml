@@ -1,0 +1,125 @@
+﻿@using Shop.WebSite.Models
+@model Shop.WebSite.Models.SiteModel
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="menu-panel">
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
+</div>
+<div id="main-banner">
+</div>
+
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Оформляем заказ, шаг 1" } })
+
+
+@using (Html.BeginForm())
+{
+    <div class="order-fields">
+        <div class="field">
+            <div class="title">имя и фамилия:</div>
+            <div class="input">
+                <input type="text" name="customerName" value="">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="field">
+            <div class="title">
+                номер мобильного:<br>
+                <span>Например: (097) 999-22-33</span>
+            </div>
+            <div class="input">
+                <input type="text" name="mobilePhone" value=""></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="field">
+            <div class="title">емейл-адрес:</div>
+            <div class="input">
+                <input type="text" name="email" value="">
+            </div>
+            <div class="radio subscribe">
+                <ul>
+                    <li class="r">
+                        <input type="radio" class="radiobutton" id="subscribe-radio" name="subscribe-radio" value="ok"></li>
+                    <li class="radio-title">Хочу платить меньше<br>
+                        за покупки в "Эктив Ленде"
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    @Html.Partial("SiteTitle", new BreadCrumbs {new BreadCrumb() {Title = "Данные по доставке и оплате"}})
+
+    <div class="order-fields">
+
+        <div class="field">
+            <div class="title double-row">доставка или самовывоз?</div>
+            <div class="radio">
+                <ul>
+                    <li class="r">
+                        <input class="radiobutton" type="radio" name="delivery-method" value="delivery">
+                    </li>
+                    <li class="radio-title">Выбираю<br>
+                        доставку
+                    </li>
+                    <li class="r">
+                        <input class="radiobutton" type="radio" name="delivery-method" value="takeout"></li>
+                    <li class="radio-title">Выбираю<br>
+                        самовывоз</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="field">
+            <div class="title">
+                Город доставки:<br>
+            </div>
+            <div class="input">
+                <input type="text" name="city" value=""></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="field">
+            <div class="title">улица:</div>
+            <div class="input">
+                <input type="text" name="street" value=""></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="field">
+            <div class="title double-row">№ дома и<br>
+                квартиры (офиса):</div>
+            <div class="input">
+                <input type="text" name="office" value=""></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="field">
+            <div class="title">Способ оплаты:</div>
+            <div class="radio">
+                <ul>
+                    <li class="r">
+                        <input class="radiobutton" type="radio" name="payment-method" value="cache">
+                    </li>
+                    <li class="radio-title">Наличными<br>
+                        при доставке
+                    </li>
+                    <li class="r">
+                        <input class="radiobutton" type="radio" name="payment-method" value="card"></li>
+                    <li class="radio-title one-line">Оплата карточкой</li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div id="order-done-wrapper">
+        <div id="order-done">
+            <input type="submit" value="Готово!"/>
+            @*<a href="#" onclick="this.form[0].submit()">Готово!</a>*@
+        </div>
+    </div>
+}
