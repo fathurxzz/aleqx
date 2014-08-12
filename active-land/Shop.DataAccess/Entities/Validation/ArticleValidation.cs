@@ -12,6 +12,7 @@ namespace Shop.DataAccess.Entities
     {
 
     }
+
     public class ArticleValidation
     {
         [Display(Name = "Заголовок")]

@@ -89,6 +89,7 @@
     <Compile Include="Entities\Validation\ArticleValidation.cs" />
     <Compile Include="Entities\Validation\CategoryValidation.cs" />
     <Compile Include="Entities\Validation\ContentValidation.cs" />
+    <Compile Include="Entities\Validation\OrderValidation.cs" />
     <Compile Include="Entities\Validation\ProductAttribute.cs" />
     <Compile Include="Entities\Validation\ProductAttributeStaticValue.cs" />
     <Compile Include="Entities\Validation\ProductAttributeValue.cs" />

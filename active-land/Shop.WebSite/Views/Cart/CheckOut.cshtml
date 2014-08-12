@@ -23,7 +23,7 @@
         <div class="field">
             <div class="title">имя и фамилия:</div>
             <div class="input">
-                <input type="text" name="customerName" value="">
+                <input type="text" name="customerName" id="customerName" value="">
             </div>
             <div class="clearfix"></div>
         </div>
@@ -33,13 +33,13 @@
                 <span>Например: (097) 999-22-33</span>
             </div>
             <div class="input">
-                <input type="text" name="mobilePhone" value=""></div>
+                <input type="text" name="mobilePhone" id="mobilePhone" value=""></div>
             <div class="clearfix"></div>
         </div>
         <div class="field">
             <div class="title">емейл-адрес:</div>
             <div class="input">
-                <input type="text" name="email" value="">
+                <input type="text" name="email" id="email" value="">
             </div>
             <div class="radio subscribe">
                 <ul>
@@ -60,8 +60,8 @@
 
         <div class="field">
             <div class="title double-row">доставка или самовывоз?</div>
-            <div class="radio">
-                <ul>
+            <div class="radio" id="delivery-method-list">
+                <ul >
                     <li class="r">
                         <input class="radiobutton" type="radio" name="delivery-method" value="delivery">
                     </li>
@@ -81,26 +81,26 @@
                 Город доставки:<br>
             </div>
             <div class="input">
-                <input type="text" name="city" value=""></div>
+                <input type="text" name="city" id="city" value=""></div>
             <div class="clearfix"></div>
         </div>
         <div class="field">
             <div class="title">улица:</div>
             <div class="input">
-                <input type="text" name="street" value=""></div>
+                <input type="text" name="street" id="street" value=""></div>
             <div class="clearfix"></div>
         </div>
         <div class="field">
             <div class="title double-row">№ дома и<br>
                 квартиры (офиса):</div>
             <div class="input">
-                <input type="text" name="office" value=""></div>
+                <input type="text" name="office" id="office" value=""></div>
             <div class="clearfix"></div>
         </div>
         <div class="field">
             <div class="title">Способ оплаты:</div>
             <div class="radio">
-                <ul>
+                <ul id="payment-method-list">
                     <li class="r">
                         <input class="radiobutton" type="radio" name="payment-method" value="cache">
                     </li>
@@ -118,7 +118,7 @@
 
     <div id="order-done-wrapper">
         <div id="order-done">
-            <input type="submit" value="Готово!"/>
+            <input type="submit" onclick="return Order.validateFields()" value="Готово!"/>
             @*<a href="#" onclick="this.form[0].submit()">Готово!</a>*@
         </div>
     </div>

@@ -333,6 +333,7 @@
     <Content Include="Areas\Admin\Views\ContentItem\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
@@ -447,6 +448,7 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ordervalidation.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
