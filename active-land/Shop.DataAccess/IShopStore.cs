@@ -46,6 +46,9 @@ namespace Shop.DataAccess
         IDbSet<Order> Orders { get; }
         IDbSet<OrderItem> OrderItems { get; }
 
+        IDbSet<QuickAdvice> QuickAdvices { get; }
+        IDbSet<QuickAdviceLang> QuickAdviceLangs { get; }
+
         int SaveChanges();
     }
 }

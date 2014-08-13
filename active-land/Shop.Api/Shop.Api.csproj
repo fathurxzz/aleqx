@@ -63,6 +63,7 @@
     <Compile Include="Repositories\ProductAttributeValue.cs" />
     <Compile Include="Repositories\ProductAttributeValueTag.cs" />
     <Compile Include="Repositories\ProductImage.cs" />
+    <Compile Include="Repositories\QuickAdvice.cs" />
     <Compile Include="Repositories\ShopRepository.cs" />
   </ItemGroup>
   <ItemGroup>

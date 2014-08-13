@@ -106,5 +106,11 @@ namespace Shop.DataAccess.Repositories
         Order GetOrder(int id);
         void DeleteOrder(int id);
         void SaveOrder(Order order);
+
+        int AddQuickAdvice(QuickAdvice quickAdvice);
+        IEnumerable<QuickAdvice> GetQuickAdvices(bool showOnlyActive = false);
+        QuickAdvice GetQuickAdvice(int id);
+        void DeleteQuickAdvice(int id);
+        void SaveQuickAdvice(QuickAdvice quickAdvice);
     }
 }

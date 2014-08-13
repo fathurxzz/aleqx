@@ -47,6 +47,8 @@ namespace Shop.DataAccess.EntityFramework
         public DbSet<ContentLang> ContentLangs { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<QuickAdvice> QuickAdvices { get; set; }
+        public DbSet<QuickAdviceLang> QuickAdviceLangs { get; set; }
 
 
         
@@ -79,7 +81,8 @@ namespace Shop.DataAccess.EntityFramework
             modelBuilder.Configurations.Add(new ContentLangMap());
             modelBuilder.Configurations.Add(new OrderMap());
             modelBuilder.Configurations.Add(new OrderItemMap());
-
+            modelBuilder.Configurations.Add(new QuickAdviceMap());
+            modelBuilder.Configurations.Add(new QuickAdviceLangMap());
         }
     }
 }

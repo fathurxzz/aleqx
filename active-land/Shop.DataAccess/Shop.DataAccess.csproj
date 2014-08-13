@@ -69,6 +69,7 @@
     <Compile Include="Entities\Localization\ProductAttributeStaticValue.cs" />
     <Compile Include="Entities\Localization\ProductAttributeValue.cs" />
     <Compile Include="Entities\Localization\ProductAttributeValueTag.cs" />
+    <Compile Include="Entities\Localization\QuickAdvice.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderItem.cs" />
     <Compile Include="Entities\Partials\Category.cs" />
