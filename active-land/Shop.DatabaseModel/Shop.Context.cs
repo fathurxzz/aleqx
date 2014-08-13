@@ -51,5 +51,7 @@ namespace Shop.DatabaseModel
         public DbSet<ContentItemLang> ContentItemLang { get; set; }
         public DbSet<Order> Order { get; set; }
         public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<QuickAdvice> QuickAdvice { get; set; }
+        public DbSet<QuickAdviceLang> QuickAdviceLang { get; set; }
     }
 }

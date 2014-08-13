@@ -53,10 +53,11 @@
         <EntityTypeShape EntityType="Shop.ArticleItemLang" Width="1.5" PointX="5.75" PointY="11.625" />
         <AssociationConnector Association="Shop.ArticleItemArticleItemLang" />
         <AssociationConnector Association="Shop.LanguageArticleItemLang" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.375" PointY="10.934700079427078" />
-          <ConnectorPoint PointX="9" PointY="10.934700079427078" />
-          <ConnectorPoint PointX="9" PointY="12.486258411021268" />
-          <ConnectorPoint PointX="7.25" PointY="12.486258411021268" />
+          <ConnectorPoint PointX="9.9687475" PointY="12.595602213541666" />
+          <ConnectorPoint PointX="9.9687475" PointY="13.293666810368457" />
+          <ConnectorPoint PointX="9.7239545833333327" PointY="13.293666810368457" />
+          <ConnectorPoint PointX="9.5572879166666649" PointY="13.293666810368457" />
+          <ConnectorPoint PointX="7.25" PointY="13.293666810368457" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Shop.ArticleItemImage" Width="1.875" PointX="0.625" PointY="11.625" />
         <AssociationConnector Association="Shop.ArticleItemArticleItemImage" />
@@ -67,9 +68,13 @@
         <AssociationConnector Association="Shop.ContentItemContentItemLang" />
         <AssociationConnector Association="Shop.LanguageContentItemLang" />
         <AssociationConnector Association="Shop.ContentItemContentItemImage" />
-        <EntityTypeShape EntityType="Shop.Order" Width="1.5" PointX="2.75" PointY="15.125" />
-        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.5" PointX="5.375" PointY="15" />
+        <EntityTypeShape EntityType="Shop.Order" Width="1.5" PointX="2.875" PointY="18.125" />
+        <EntityTypeShape EntityType="Shop.OrderItem" Width="1.5" PointX="5.5" PointY="18" />
         <AssociationConnector Association="Shop.OrderOrderItem" />
+        <EntityTypeShape EntityType="Shop.QuickAdvice" Width="1.5" PointX="3" PointY="14.875" />
+        <EntityTypeShape EntityType="Shop.QuickAdviceLang" Width="1.75" PointX="5.75" PointY="14.875" />
+        <AssociationConnector Association="Shop.QuickAdviceQuickAdviceLang" />
+        <AssociationConnector Association="Shop.LanguageQuickAdviceLang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

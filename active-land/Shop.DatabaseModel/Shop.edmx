@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -32,6 +32,8 @@
     <EntitySet Name="ContentItemLang" EntityType="Shop.Store.ContentItemLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Order" EntityType="Shop.Store.Order" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OrderItem" EntityType="Shop.Store.OrderItem" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuickAdvice" EntityType="Shop.Store.QuickAdvice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuickAdviceLang" EntityType="Shop.Store.QuickAdviceLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LanguageCategoryLang" Association="Shop.Store.LanguageCategoryLang">
@@ -177,6 +179,14 @@
     <AssociationSet Name="OrderOrderItem" Association="Shop.Store.OrderOrderItem">
       <End Role="Order" EntitySet="Order" />
       <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="QuickAdviceQuickAdviceLang" Association="Shop.Store.QuickAdviceQuickAdviceLang">
+      <End Role="QuickAdvice" EntitySet="QuickAdvice" />
+      <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageQuickAdviceLang" Association="Shop.Store.LanguageQuickAdviceLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
@@ -444,6 +454,24 @@
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="ProductTitle" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuickAdvice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Active" Type="bool" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuickAdviceLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuickAdviceId" Type="int" Nullable="false" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -845,6 +873,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="QuickAdviceQuickAdviceLang">
+    <End Role="QuickAdvice" Type="Shop.Store.QuickAdvice" Multiplicity="1" />
+    <End Role="QuickAdviceLang" Type="Shop.Store.QuickAdviceLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuickAdvice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuickAdviceLang">
+        <PropertyRef Name="QuickAdviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LanguageQuickAdviceLang">
+    <End Role="Language" Type="Shop.Store.Language" Multiplicity="1" />
+    <End Role="QuickAdviceLang" Type="Shop.Store.QuickAdviceLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuickAdviceLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CategoryProductAttribute_Category">
     <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
     <End Role="CategoryProductAttribute" Type="Shop.Store.CategoryProductAttribute" Multiplicity="*" />
@@ -1060,6 +1112,16 @@
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderItem" EntitySet="OrderItem" />
           </AssociationSet>
+          <EntitySet Name="QuickAdvice" EntityType="Shop.QuickAdvice" />
+          <EntitySet Name="QuickAdviceLang" EntityType="Shop.QuickAdviceLang" />
+          <AssociationSet Name="QuickAdviceQuickAdviceLang" Association="Shop.QuickAdviceQuickAdviceLang">
+            <End Role="QuickAdvice" EntitySet="QuickAdvice" />
+            <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
+          </AssociationSet>
+          <AssociationSet Name="LanguageQuickAdviceLang" Association="Shop.LanguageQuickAdviceLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -1080,6 +1142,7 @@
           <NavigationProperty Name="ContentItemLangs" Relationship="Shop.LanguageContentItemLang" FromRole="Language" ToRole="ContentItemLang" />
           <Property Type="Boolean" Name="IsDefault" Nullable="false" />
           <Property Type="Boolean" Name="IsAdminDefault" Nullable="false" />
+          <NavigationProperty Name="QuickAdviceLangs" Relationship="Shop.LanguageQuickAdviceLang" FromRole="Language" ToRole="QuickAdviceLang" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -1787,6 +1850,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="QuickAdvice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="QuickAdviceLangs" Relationship="Shop.QuickAdviceQuickAdviceLang" FromRole="QuickAdvice" ToRole="QuickAdviceLang" />
+        </EntityType>
+        <EntityType Name="QuickAdviceLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="QuickAdvice" Relationship="Shop.QuickAdviceQuickAdviceLang" FromRole="QuickAdviceLang" ToRole="QuickAdvice" />
+          <Property Type="Int32" Name="QuickAdviceId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Shop.LanguageQuickAdviceLang" FromRole="QuickAdviceLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
+        </EntityType>
+        <Association Name="QuickAdviceQuickAdviceLang">
+          <End Type="Shop.QuickAdvice" Role="QuickAdvice" Multiplicity="1" />
+          <End Type="Shop.QuickAdviceLang" Role="QuickAdviceLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuickAdvice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuickAdviceLang">
+              <PropertyRef Name="QuickAdviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LanguageQuickAdviceLang">
+          <End Type="Shop.Language" Role="Language" Multiplicity="1" />
+          <End Type="Shop.QuickAdviceLang" Role="QuickAdviceLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuickAdviceLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2082,6 +2190,26 @@
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuickAdvice">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.QuickAdvice)">
+        <MappingFragment StoreEntitySet="QuickAdvice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuickAdviceLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.QuickAdviceLang)">
+        <MappingFragment StoreEntitySet="QuickAdviceLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuickAdviceId" ColumnName="QuickAdviceId" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

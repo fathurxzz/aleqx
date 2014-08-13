@@ -86,6 +86,8 @@
     <Compile Include="Entities\ProductAttributeValueTagLang.cs" />
     <Compile Include="Entities\ProductImage.cs" />
     <Compile Include="Entities\ProductLang.cs" />
+    <Compile Include="Entities\QuickAdvice.cs" />
+    <Compile Include="Entities\QuickAdviceLang.cs" />
     <Compile Include="Entities\Validation\ArticleValidation.cs" />
     <Compile Include="Entities\Validation\CategoryValidation.cs" />
     <Compile Include="Entities\Validation\ContentValidation.cs" />

@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 {
-    public class ArticleLangMap : EntityTypeConfiguration<ArticleLang>
+    public class QuickAdviceLangMap : EntityTypeConfiguration<QuickAdviceLang>
     {
-        public ArticleLangMap()
+        public QuickAdviceLangMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
@@ -15,30 +15,25 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
-            this.Property(t => t.Description)
-                .IsRequired()
-                .HasMaxLength(1000);
-
             this.Property(t => t.Text)
                 .IsRequired()
                 .HasMaxLength(10000);
 
             // Table & Column Mappings
-            this.ToTable("ArticleLang", "gbua_active_dev");
+            this.ToTable("QuickAdviceLang", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
-            this.Property(t => t.Title).HasColumnName("Title");
-            this.Property(t => t.Description).HasColumnName("Description");
-            this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.QuickAdviceId).HasColumnName("QuickAdviceId");
             this.Property(t => t.LanguageId).HasColumnName("LanguageId");
-            this.Property(t => t.ArticleId).HasColumnName("ArticleId");
+            this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.Text).HasColumnName("Text");
 
             // Relationships
-            this.HasRequired(t => t.Article)
-                .WithMany(t => t.ArticleLangs)
-                .HasForeignKey(d => d.ArticleId);
             this.HasRequired(t => t.Language)
-                .WithMany(t => t.ArticleLangs)
+                .WithMany(t => t.QuickAdviceLangs)
                 .HasForeignKey(d => d.LanguageId);
+            this.HasRequired(t => t.QuickAdvice)
+                .WithMany(t => t.QuickAdviceLangs)
+                .HasForeignKey(d => d.QuickAdviceId);
 
         }
     }

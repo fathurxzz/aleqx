@@ -125,6 +125,12 @@
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickAdvice.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuickAdviceLang.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Shop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

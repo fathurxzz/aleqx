@@ -13,7 +13,7 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
             // Properties
             this.Property(t => t.Text)
                 .IsRequired()
-                .HasMaxLength(1073741823);
+                .HasMaxLength(10000);
 
             // Table & Column Mappings
             this.ToTable("ArticleItemLang", "gbua_active_dev");
