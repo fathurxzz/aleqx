@@ -4,52 +4,52 @@
 @model Shop.WebSite.Models.ProductPreview
 
 <div class="product-preview">
-    <div class="image">
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductPreview")))
+    <a href="@Url.Action("ProductDetails","Home",new { product=Model.Name })">
 
-        @*<img src="~/content/img/tmp/@Model.ImageSource">*@
-    </div>
-    
-    @{
-        switch (Model.Label)
-        {
-            case ProductPreviewLabel.WowNew:
-                <div class="wow-new"></div>
-            break;            
-            case ProductPreviewLabel.TopSale:
-                <div class="top-sale"></div>
-            break;
-            case ProductPreviewLabel.Discount:
-                <div class="discount"></div>
-            break;
+        <div class="image">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductPreview")))
+        </div>
+        @{
+            switch (Model.Label)
+            {
+                case ProductPreviewLabel.WowNew:
+                    <div class="wow-new"></div>
+                    break;            
+                case ProductPreviewLabel.TopSale:
+                    <div class="top-sale"></div>
+                    break;
+                case ProductPreviewLabel.Discount:
+                    <div class="discount"></div>
+                    break;
+            }
         }
-    }
+   
     
-        <div class="title-price">
-            <div class="title">
-                <span>
-                    @Html.ActionLink(Model.Title,"ProductDetails","Home",new
-                    {
-                        //category=Model.CategoryName,
-                        //subcategory=Model.SubCategoryName , 
-                        product=Model.Name
-                    },null)
-                </span>
-            </div>
+
+    <div class="title-price">
+        <div class="title">
+            <span>
+                @Model.Title
+                @*@Html.ActionLink(Model.Title,"ProductDetails","Home",new { product=Model.Name },null)*@
+            </span>
+        </div>
             
-            <div class="price">
-                @if (Model.Label==ProductPreviewLabel.Discount)
-                {
-                    <span>
+        <div class="price">
+            @if (Model.Label==ProductPreviewLabel.Discount)
+            {
+                <span>
                     <s>@Model.OldPrice.ToString("###,###")</s><sup>грн</sup><br>
                     <b>@Model.Price.ToString("###,###")<sup>грн</sup></b>
-                    </span>
-                }
-                else
-                {
-                    <span>@Model.Price.ToString("###,###")<sup>грн</sup>
-                    </span>
-                }
-            </div>
+                </span>
+            }
+            else
+            {
+                <span>@Model.Price.ToString("###,###")<sup>грн</sup>
+                </span>
+            }
         </div>
     </div>
+    
+         </a>
+      
+</div>

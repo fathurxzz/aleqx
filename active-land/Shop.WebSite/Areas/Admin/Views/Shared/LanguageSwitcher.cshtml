@@ -7,16 +7,16 @@
         @if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
         {
             var routeData = ViewContext.RouteData.GetCopy();
-            routeData.Values["lang"] = "en";
-            <button type="button" class="btn btn-primary btn-default">На русском</button>
-            <button type="button" class="btn btn-default">@Html.RouteLink("In English", routeData.Values)</button>
+            routeData.Values["lang"] = "ua";
+            <button type="button" class="btn btn-primary btn-default">Русский</button>
+            <button type="button" class="btn btn-default">@Html.RouteLink("Українська", routeData.Values)</button>
         }
         else
         {
             var routeData = ViewContext.RouteData.GetCopy();
             routeData.Values["lang"] = "ru";
-            <button type="button" class="btn btn-default">@Html.RouteLink("На русском", routeData.Values)</button>
-            <button type="button" class="btn btn-primary btn-default">In English</button>
+            <button type="button" class="btn btn-default">@Html.RouteLink("Русский", routeData.Values)</button>
+            <button type="button" class="btn btn-primary btn-default">Українська</button>
         }
     </div>
 </div>

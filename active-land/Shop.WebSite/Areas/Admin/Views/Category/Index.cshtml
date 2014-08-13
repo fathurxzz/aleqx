@@ -13,7 +13,9 @@
 
 
 <p>
-    <button type="button" class="btn btn-success btn-sm">@Html.ActionLink("Добавить", "Create")</button>
+    @*<button type="button" class="btn btn-success btn-sm">*@
+        @Html.ActionLink("Добавить", "Create")
+    @*</button>*@
 </p>
 
 <table class="table table-striped">
@@ -75,10 +77,10 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Доб. подкат.", "Create", new { id = item.Id }) |
-                @Html.ActionLink("Ред.", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Атр.", "Attributes", new { id = item.Id }) |
-                @Html.ActionLink("Удал.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" })
+                @Html.ActionLink("Добавить подкатегорию", "Create", new { id = item.Id }) |
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" })
             </td>
         </tr>
     }

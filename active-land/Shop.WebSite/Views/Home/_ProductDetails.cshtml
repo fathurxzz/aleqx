@@ -2,22 +2,51 @@
 @using Shop.WebSite.Helpers.Graphics
 @model Shop.DataAccess.Entities.Product
 
+
+
+
 <div id="product-details">
     <div id="product-images-section">
-        <a href="/Content/Images/@Model.ImageSource" rel="group1" class="fancy">
+        <div class="main-view-container">
+            <div class="picture">
+        
+                @if (Model.ProductImages.Count > 0)
+                {
+                    var cnt = 1;
+                    foreach (var image in Model.ProductImages)
+                    {
+                        string imageid = "image" + image.Id;
+                        string class1001 = cnt == 1 ? "class1001" : "";
+                        <a id="@imageid" rel="group1" href="/Content/Images/@image.ImageSource" class="fancy pictureLink1 @class1001">
+                            @*<img src="/ImageCache/projectImage/@image.ImageSource"/>*@
+                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage"))) 
+                        </a>
+
+                        cnt++;
+                    }
+                }
+
+       @* <a href="/Content/Images/@Model.ImageSource" rel="group1" class="fancy">
             @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage")))
-        </a>
+        </a>*@
+    </div>
+            </div>
+        
+
         <div id="product-previews">
             @foreach (var image in Model.ProductImages)
             {
-@*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
-                @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
-@*</a>*@
+                <div class="preview" style="cursor: pointer" onclick="ProductCatalogue.changeImage(@image.Id) ">
+                    @*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
+                    @*</a>*@
+                </div>
             }
+            <div class="clearfix"></div>
         </div>
         <div id="support">
             <div class="info">
-                Есть вопросы? &mdash; Я на связи: <a href="#">написать</a> / <a href="#">позвонить</a>
+                Есть вопросы? &mdash; Я на связи: <a href="@SiteSettings.MailTo">написать</a> / <a href="#">позвонить</a>
             </div>
         </div>
     </div>
@@ -113,3 +142,9 @@
     </div>
     <div class="clearfix"></div>
 </div>
+
+
+
+<script type="text/javascript">
+    ProductCatalogue.setFirstImage();
+</script>

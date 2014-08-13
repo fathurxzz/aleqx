@@ -47,7 +47,7 @@ namespace Shop.WebSite.Controllers
                 DefaultLangId = WebSession.Languages.First(l => l.IsDefault).Id;
                 DefaultAdminLangId = WebSession.Languages.First(l => l.IsAdminDefault).Id;
 
-                var ci = new CultureInfo(CurrentLangCode);
+                var ci = new CultureInfo(CurrentLangCode == "ua" ? "uk" : CurrentLangCode);
                 Thread.CurrentThread.CurrentUICulture = ci;
                 Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
             }

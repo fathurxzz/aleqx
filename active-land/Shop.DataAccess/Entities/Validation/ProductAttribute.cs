@@ -15,14 +15,14 @@ namespace Shop.DataAccess.Entities
 
     public class ProductAttributeValidation
     {
-        [Display(Name = "Заголовок")]
-        [Required(ErrorMessage = "Введите заголовок")]
+        [Display(Name = "Название атрибута")]
+        [Required(ErrorMessage = "Введите название атрибута")]
         public string Title { get; set; }
 
-        [Display(Name = "Заголовок значения")]
+        [Display(Name = "Единицы измерения")]
         public string UnitTitle { get; set; }
 
-        [Display(Name = "Статический")]
+        [Display(Name = "Прописной")]
         public bool IsStatic { get; set; }
 
         [Display(Name = "Отображать в кратком описании")]

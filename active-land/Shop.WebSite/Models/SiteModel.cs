@@ -24,6 +24,7 @@ namespace Shop.WebSite.Models
         public Shop.DataAccess.Entities.Content Content { get; set; }
         public IEnumerable<Article> Articles { get; set; }
         public string CurrentLangCode { get; set; }
+        public IEnumerable<QuickAdvice> QuickAdvices { get; set; }
 
 
         public SiteModel(IShopRepository repository, string contentName )
@@ -35,6 +36,7 @@ namespace Shop.WebSite.Models
             Contents = repository.GetContents();
             Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
             Articles = repository.GetArticles(true);
+            QuickAdvices = repository.GetQuickAdvices(true);
         }
     
     }

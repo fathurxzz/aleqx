@@ -98,6 +98,7 @@
     <Compile Include="Entities\Validation\ProductAttributeValue.cs" />
     <Compile Include="Entities\Validation\ProductAttributeValueTag.cs" />
     <Compile Include="Entities\Validation\ProductValidation.cs" />
+    <Compile Include="Entities\Validation\QuickAdviceValidation.cs" />
     <Compile Include="IShopStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />

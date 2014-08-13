@@ -21,6 +21,12 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Active).HasColumnName("Active");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
+
+            // Ignored
+            this.Ignore(t => t.Title);
+            this.Ignore(t => t.Text);
+            this.Ignore(t => t.IsCorrectLang);
+            this.Ignore(t => t.CurrentLang);
         }
     }
 }

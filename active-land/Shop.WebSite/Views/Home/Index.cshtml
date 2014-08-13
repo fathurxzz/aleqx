@@ -4,7 +4,10 @@
 @using Shop.WebSite.Models
 @model Shop.WebSite.Models.SiteModel
 @{
-    ViewBag.Title = "Index";
+    if (Model.Content != null && !string.IsNullOrEmpty(Model.Content.Title))
+    {
+        ViewBag.Title += " — " + Model.Content.Title;
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -44,25 +47,25 @@
     @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Новости и события" } })
     
     <div class="article-large-previews">
-        
+
         @{
-            var i = 0;
-            foreach (var article in Model.Articles)
-            {
-                i++;
-                <div class="article-large-preview">
-                    <div class="image">
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", article.ImageSource, SiteSettings.GetThumbnail("articlePreview")))
-                    </div>
-                    <div class="date">@SiteHelper.GetMonthName(article.Date.Month,Model.CurrentLangCode), @article.Date.Day, @article.Date.Year</div>
-                    <div class="title">@Html.ActionLink(article.Title,"ArticleDetails","Home",new{article=article.Name},null)</div>
-                    <div class="text">@article.Description</div>
+    var i = 0;
+    foreach (var article in Model.Articles)
+    {
+        i++;
+            <div class="article-large-preview">
+                <div class="image">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", article.ImageSource, SiteSettings.GetThumbnail("articlePreview")))
                 </div>
-                if (i%4 == 0)
-                {
-                    <div class="clearfix"></div>
-                }
-            }
+                <div class="date">@SiteHelper.GetMonthName(article.Date.Month, Model.CurrentLangCode), @article.Date.Day, @article.Date.Year</div>
+                <div class="title">@Html.ActionLink(article.Title, "ArticleDetails", "Home", new { article = article.Name }, null)</div>
+                <div class="text">@article.Description</div>
+            </div>
+        if (i % 4 == 0)
+        {
+            <div class="clearfix"></div>
+        }
+    }
         }
         <div class="clearfix"></div>
     </div>
@@ -72,36 +75,36 @@
 {
     <div class="content-text">
         @Html.Raw(Model.Content.Text)
-        
-        @foreach (var contentItem in Model.Content.ContentItems)
-    {
-        <div class="articleItem">
-            <div class="text">
-            @Html.Raw(contentItem.Text)
-            </div>
-            @if (contentItem.ContentItemImages.Any())
-            {
-                <div class="slider-container">
-                    <div class="slider-image-wrapper">
 
-                        <div id="slider-prev"></div>
-                        <div id="slider-next"></div>
-                        <ul class="bxsliderArticleItemImages">
-                            @foreach (var image in contentItem.ContentItemImages)
-                            {
-                                <li>
-                                    <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
-                                        <div class="zoom"></div>
-                                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+        @foreach (var contentItem in Model.Content.ContentItems)
+        {
+            <div class="articleItem">
+                <div class="text">
+                    @Html.Raw(contentItem.Text)
                 </div>
-            }
-        </div>
-    }
+                @if (contentItem.ContentItemImages.Any())
+                {
+                    <div class="slider-container">
+                        <div class="slider-image-wrapper">
+
+                            <div id="slider-prev"></div>
+                            <div id="slider-next"></div>
+                            <ul class="bxsliderArticleItemImages">
+                                @foreach (var image in contentItem.ContentItemImages)
+                                {
+                                    <li>
+                                        <a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">
+                                            <div class="zoom"></div>
+                                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("articleCaruselItem")))
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     </div>
 }
 
@@ -134,19 +137,19 @@
 
 @if (Model.Content.ContentType != 2 && Model.Articles.Any())
 {
-    @Html.Partial("SiteTitle", new BreadCrumbs {new BreadCrumb {Title = "Новости и события"}})
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = "Новости и события" } })
     <div id="articles">
         @{
-            var i = 0;
-            foreach (var article in Model.Articles.OrderByDescending(a=>a.Date).Take(2))
-            {
-                i++;
-                @Html.Partial("Article", article)
-                if (i%2 == 0)
-                {
-                    <div class="clearfix"></div>
-                }
-            }
+    var i = 0;
+    foreach (var article in Model.Articles.OrderByDescending(a => a.Date).Take(2))
+    {
+        i++;
+            @Html.Partial("Article", article)
+        if (i % 2 == 0)
+        {
+            <div class="clearfix"></div>
+        }
+    }
         }
         <div class="clearfix"></div>
     </div>
@@ -155,17 +158,15 @@
 
 
 
-@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "О подборе байка" } })
-<div id="about-bike-choosing">
-    Велосипе́д (стар. фр. vélocipède, от лат. vēlōx «быстрый» и pēs «нога») — колёсное транспортное средство,
-    приводимое в движение мускульной силой человека через ножные педали или (крайне редко) через ручные рычаги.
-    Наиболее распространены велосипеды с двумя колесами, но бывают также одноколёсные и трёхколёсные велосипеды, а
-    также велосипеды с большим количеством колёс.
-    <br>
-    <br>
-    Правила дорожного движения России определяют велосипед как «транспортное средство, кроме инвалидных колясок,
-    имеющее два колеса или более и приводимое в движение мускульной силой людей, находящихся на нём»
-</div>
+@foreach (var item in Model.QuickAdvices)
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = item.Title } })
+    <div class="about-bike-choosing">
+        @Html.Raw(item.Text)
+    </div>
+}
+
+<div class="bottom-page"></div>
 
 
 

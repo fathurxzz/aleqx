@@ -40,7 +40,7 @@ namespace Shop.WebSite
                "Cart", // Route name
                "{lang}/cart/{action}", // URL with parameters
                new { controller = "Cart", action = "Index"},
-               new { lang = @"ru|en" },
+               new { lang = @"ru|ua" },
                new string[1] { "Shop.WebSite.Controllers" }
            );
 
@@ -50,7 +50,7 @@ namespace Shop.WebSite
               "Content",
               "{lang}/content/{id}",
               new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-              new { lang = @"ru|en" },
+              new { lang = @"ru|ua" },
               new[] { "Shop.WebSite.Controllers" }
           );
 
@@ -58,7 +58,7 @@ namespace Shop.WebSite
               "Main",
               "{lang}",
               new { controller = "Home", action = "Index" },
-              new { lang = @"ru|en" },
+              new { lang = @"ru|ua" },
               new[] { "Shop.WebSite.Controllers" }
             );
 
@@ -66,7 +66,7 @@ namespace Shop.WebSite
                "Catalogue",
                "{lang}/catalogue/{category}/{subcategory}",
                new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional },
-               new { lang = @"ru|en" },
+               new { lang = @"ru|ua" },
                new[] { "Shop.WebSite.Controllers" }
            );
 
@@ -74,7 +74,7 @@ namespace Shop.WebSite
                "Product",
                "{lang}/product/{product}",
                new { controller = "Home", action = "ProductDetails", product = UrlParameter.Optional },
-               new { lang = @"ru|en" },
+               new { lang = @"ru|ua" },
                new[] { "Shop.WebSite.Controllers" }
            );
 
@@ -82,7 +82,7 @@ namespace Shop.WebSite
                "ArticleDetails",
                "{lang}/articles/{article}",
                new { controller = "Home", action = "ArticleDetails", article = UrlParameter.Optional },
-               new { lang = @"ru|en" },
+               new { lang = @"ru|ua" },
                new[] { "Shop.WebSite.Controllers" }
            );
 
@@ -92,7 +92,7 @@ namespace Shop.WebSite
                 "Default",
                 "{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang = "ru" },
-                new { lang = @"ru|en" },
+                new { lang = @"ru|ua" },
                 new[] { "Shop.WebSite.Controllers" }
             );
         }
