@@ -336,6 +336,8 @@
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\QuickAdvice\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QuickAdvice\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\QuickAdvice\Edit.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
@@ -451,6 +453,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ordervalidation.js" />
+    <Content Include="Scripts\product.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

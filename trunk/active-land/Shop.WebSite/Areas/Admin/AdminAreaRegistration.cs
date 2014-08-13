@@ -18,7 +18,7 @@ namespace Shop.WebSite.Areas.Admin
                   "Admin",
                   "admin",
                   new { controller = "Admin", action = "Default", lang = "ru" },
-                  new { lang = @"ru|en" },
+                  new { lang = @"ru|ua" },
                   new[] { "Shop.WebSite.Areas.Admin.Controllers" }
               );
 
@@ -26,7 +26,7 @@ namespace Shop.WebSite.Areas.Admin
                "Admin_Category",
                "{lang}/admin/{controller}/{action}/{id}",
                new { controller = "Admin", action = "Default", id = UrlParameter.Optional },
-               new { lang = @"ru|en" },
+               new { lang = @"ru|ua" },
                new[] { "Shop.WebSite.Areas.Admin.Controllers" }
            );
         }

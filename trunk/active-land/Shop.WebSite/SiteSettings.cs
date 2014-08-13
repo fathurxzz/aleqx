@@ -16,9 +16,9 @@ namespace Shop.WebSite
             Thumbnails = new Dictionary<string, ThumbnailPicture>
                               {
                                     {"adminProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =200 ,Width = 200 }, CacheFolder = "adminProductPreview", ScaleMode = ScaleMode.Crop}},
-                                    {"siteProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =215 ,Width = 268 }, CacheFolder = "siteProductPreview", ScaleMode = ScaleMode.Crop}},
-                                    {"siteProductDetailsMainImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =344 ,Width = 597 }, CacheFolder = "siteProductDetailsMainImage", ScaleMode = ScaleMode.Crop}},
-                                    {"siteProductDetailsThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Height =90 ,Width = 90 }, CacheFolder = "siteProductDetailsThumbnail", ScaleMode = ScaleMode.Crop}},
+                                    {"siteProductPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =215 ,Width = 268 }, CacheFolder = "siteProductPreview", ScaleMode = ScaleMode.Insert}},
+                                    {"siteProductDetailsMainImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =344 ,Width = 597 }, CacheFolder = "siteProductDetailsMainImage", ScaleMode = ScaleMode.Insert}},
+                                    {"siteProductDetailsThumbnail",new ThumbnailPicture{ PictureSize =new PictureSize {Height =90 ,Width = 90 }, CacheFolder = "siteProductDetailsThumbnail", ScaleMode = ScaleMode.Insert}},
                                     
                                     {"articlePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =130 ,Width = 276 }, CacheFolder = "articlePreview", ScaleMode = ScaleMode.Crop}},
                                     {"articleSmallPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =133 ,Width = 133 }, CacheFolder = "articleSmallPreview", ScaleMode = ScaleMode.Crop}},
@@ -42,12 +42,17 @@ namespace Shop.WebSite
         {
             if (Thumbnails.ContainsKey(cacheFolder))
                 return Thumbnails[cacheFolder];
-            throw new Exception("Can't find thumbnail " + cacheFolder);
+            throw new Exception("Can't find thumbnail " + cacheFolder); 
         }
 
         public static string Version
         {
             get { return "0.0.3"; }
+        }
+
+        public static string MailTo
+        {
+            get { return "mailto:miller.kak.miller@gmail.com"; }
         }
 
     }

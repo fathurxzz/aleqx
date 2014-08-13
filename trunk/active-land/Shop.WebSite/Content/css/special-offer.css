@@ -73,8 +73,8 @@
     font-weight: bold;
 }
 
- .product-preview .title a {
-
+ .product-preview .title {
+     text-decoration: underline;
     color: #0076a3;
 }
 

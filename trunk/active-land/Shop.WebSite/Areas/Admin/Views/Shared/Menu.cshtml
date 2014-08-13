@@ -30,11 +30,11 @@
     
     @if (Model == "Product")
     {
-        <li class="active">@Html.ActionLink("Продукты", "Index", "Product", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Товары", "Index", "Product", new { area = "Admin" }, null)</li>
     }
     else
     {
-        <li>@Html.ActionLink("Продукты", "Index", "Product", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Товары", "Index", "Product", new { area = "Admin" }, null)</li>
     }
     
      @if (Model == "Article")
@@ -55,6 +55,15 @@
         <li>@Html.ActionLink("Страницы контента", "Index", "Content", new { area = "Admin" }, null)</li>
     }
     
+    @if (Model == "QuickAdvice")
+    {
+        <li class="active">@Html.ActionLink("Советы", "Index", "QuickAdvice", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Советы", "Index", "QuickAdvice", new { area = "Admin" }, null)</li>
+    }
+
     @if (Model == "Order")
     {
         <li class="active">@Html.ActionLink("Заказы", "Index", "Order", new { area = "Admin" }, null)</li>
@@ -63,6 +72,7 @@
     {
         <li>@Html.ActionLink("Заказы", "Index", "Order", new { area = "Admin" }, null)</li>
     }
+    
     
 </ul>
     </div>

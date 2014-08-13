@@ -11,7 +11,9 @@
 }
 
 <p>
-    <button type="button" class="btn btn-success btn-sm">@Html.ActionLink("Добавить", "Create")</button>
+    @*<button type="button" class="btn btn-success btn-sm">*@
+        @Html.ActionLink("Добавить", "Create")
+    @*</button>*@
 </p>
 <table class="table table-striped">
     <tr>
@@ -125,10 +127,10 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.ActionLink("Ред.", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Атр.", "Attributes", new { id = item.Id }) |
-                @Html.ActionLink("Изобр.", "Index", "ProductImage", new { id = item.Id }, null) |
-                @Html.ActionLink("Удал.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить продукт?')" })
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id }) |
+                @Html.ActionLink("Изображения", "Index", "ProductImage", new { id = item.Id }, null) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')" })
             </td>
         </tr>
     }

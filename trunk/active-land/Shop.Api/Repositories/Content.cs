@@ -42,7 +42,8 @@ namespace Shop.Api.Repositories
             var content = _store.Contents.SingleOrDefault(c => c.Name == name);
             if (content == null)
             {
-                throw new Exception(string.Format("Content with name={0} not found", name));
+                return null;
+                //throw new Exception(string.Format("Content with name={0} not found", name));
             }
             content.CurrentLang = LangId;
             return content;

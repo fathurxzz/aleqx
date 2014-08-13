@@ -74,7 +74,6 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     SeoDescription = model.SeoDescription,
                     SeoKeywords = model.SeoKeywords,
                     SeoText = model.SeoText,
-                    Description = model.Description,
                     IsActive = model.IsActive,
                     IsDiscount = model.IsDiscount,
                     IsNew = model.IsNew,
@@ -82,6 +81,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     OldPrice = model.OldPrice,
                     Price = model.Price
                 };
+
+                product.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
 
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
@@ -160,11 +161,12 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
 
                 product.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(product, new[] { "Title", "Description", "SeoDescription", "SeoKeywords", "SeoText", "IsActive", "IsDiscount", "IsNew", "IsTopSale" });
+                TryUpdateModel(product, new[] { "Title", "SeoDescription", "SeoKeywords", "SeoText", "IsActive", "IsDiscount", "IsNew", "IsTopSale" });
                 int categoryId = int.Parse(form["categoryId"]);
                 product.Price = decimal.Parse(form["Price"]);
                 product.OldPrice = decimal.Parse(form["OldPrice"]);
                 product.CategoryId = categoryId;
+                product.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
 
 
                 for (int i = 0; i < Request.Files.Count; i++)

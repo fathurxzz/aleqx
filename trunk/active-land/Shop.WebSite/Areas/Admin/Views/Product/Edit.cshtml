@@ -14,7 +14,7 @@
 
 
 <div class="container">
-    <h3>Редактирование продукта</h3>
+    <h3>Редактирование товарв</h3>
     @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
@@ -68,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                <textarea class="form-control" rows="3" name="Description">@Model.Description</textarea>
+                <textarea class="form-control ckeditor" rows="3" name="Description">@Model.Description</textarea>
             </div>
             @Html.ValidationMessageFor(model => model.Description)
         </div>
@@ -173,4 +173,6 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="/Controls/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Controls/ckeditor/adapters/jquery.js"></script>
 }

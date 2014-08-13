@@ -5,7 +5,7 @@
 @model CatalogueModel
 
 @{
-    ViewBag.Title = "ArticleDetails";
+    ViewBag.Title += " — Новости";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -73,15 +73,12 @@
 
 </div>
 
-@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "О подборе байка" } })
-<div id="about-bike-choosing">
-    Велосипе́д (стар. фр. vélocipède, от лат. vēlōx «быстрый» и pēs «нога») — колёсное транспортное средство,
-    приводимое в движение мускульной силой человека через ножные педали или (крайне редко) через ручные рычаги.
-    Наиболее распространены велосипеды с двумя колесами, но бывают также одноколёсные и трёхколёсные велосипеды, а
-    также велосипеды с большим количеством колёс.
-    <br>
-    <br>
-    Правила дорожного движения России определяют велосипед как «транспортное средство, кроме инвалидных колясок,
-    имеющее два колеса или более и приводимое в движение мускульной силой людей, находящихся на нём»
-</div>
+@foreach (var item in Model.QuickAdvices)
+{
+    @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = item.Title } })
+    <div class="about-bike-choosing">
+        @Html.Raw(item.Text)
+    </div>
+}
 
+<div class="bottom-page"></div>

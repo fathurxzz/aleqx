@@ -102,10 +102,10 @@ body {
 
 
 
-#about-bike-choosing
+.about-bike-choosing
 {
     margin-top: 40px;
-    margin-bottom: 140px;
+    /*margin-bottom: 140px;*/
     font-family: 'PT Sans' serif;
     font-size: 15px;
 }
@@ -116,3 +116,6 @@ label {
     cursor: pointer;
 }
 
+.bottom-page {
+    margin-bottom: 140px;
+}
