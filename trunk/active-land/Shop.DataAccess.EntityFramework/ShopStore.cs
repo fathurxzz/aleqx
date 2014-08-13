@@ -131,6 +131,16 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.OrderItems; }
         }
 
+        public IDbSet<QuickAdvice> QuickAdvices
+        {
+            get { return _context.QuickAdvices; }
+        }
+
+        public IDbSet<QuickAdviceLang> QuickAdviceLangs
+        {
+            get { return _context.QuickAdviceLangs; }
+        }
+
 
         public int SaveChanges()
         {
