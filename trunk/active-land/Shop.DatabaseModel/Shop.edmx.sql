@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/11/2014 21:14:35
--- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 08/13/2014 08:52:06
+-- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -408,6 +408,28 @@ CREATE TABLE `OrderItem`(
 	`OrderId` int NOT NULL);
 
 ALTER TABLE `OrderItem` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `QuickAdvice`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Active` bool NOT NULL, 
+	`SortOrder` int NOT NULL);
+
+ALTER TABLE `QuickAdvice` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `QuickAdviceLang`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`QuickAdviceId` int NOT NULL, 
+	`LanguageId` int NOT NULL, 
+	`Title` varchar (200) NOT NULL, 
+	`Text` varchar (10000) NOT NULL);
+
+ALTER TABLE `QuickAdviceLang` ADD PRIMARY KEY (Id);
 
 
 
@@ -963,6 +985,36 @@ ADD CONSTRAINT `FK_OrderOrderItem`
 CREATE INDEX `IX_FK_OrderOrderItem` 
     ON `OrderItem`
     (`OrderId`);
+
+-- Creating foreign key on `QuickAdviceId` in table 'QuickAdviceLang'
+
+ALTER TABLE `QuickAdviceLang`
+ADD CONSTRAINT `FK_QuickAdviceQuickAdviceLang`
+    FOREIGN KEY (`QuickAdviceId`)
+    REFERENCES `QuickAdvice`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_QuickAdviceQuickAdviceLang'
+
+CREATE INDEX `IX_FK_QuickAdviceQuickAdviceLang` 
+    ON `QuickAdviceLang`
+    (`QuickAdviceId`);
+
+-- Creating foreign key on `LanguageId` in table 'QuickAdviceLang'
+
+ALTER TABLE `QuickAdviceLang`
+ADD CONSTRAINT `FK_LanguageQuickAdviceLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageQuickAdviceLang'
+
+CREATE INDEX `IX_FK_LanguageQuickAdviceLang` 
+    ON `QuickAdviceLang`
+    (`LanguageId`);
 
 -- --------------------------------------------------
 -- Script has ended

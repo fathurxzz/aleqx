@@ -87,6 +87,8 @@
     <Compile Include="Models\Mapping\ProductImageMap.cs" />
     <Compile Include="Models\Mapping\ProductLangMap.cs" />
     <Compile Include="Models\Mapping\ProductMap.cs" />
+    <Compile Include="Models\Mapping\QuickAdviceLangMap.cs" />
+    <Compile Include="Models\Mapping\QuickAdviceMap.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Product.cs" />
@@ -100,6 +102,8 @@
     <Compile Include="Models\ProductAttributeValueTagLang.cs" />
     <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Models\ProductLang.cs" />
+    <Compile Include="Models\QuickAdvice.cs" />
+    <Compile Include="Models\QuickAdviceLang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -42,6 +42,8 @@ namespace Shop.DatabaseModel.DataAccess.Models
         public DbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductLang> ProductLangs { get; set; }
+        public DbSet<QuickAdvice> QuickAdvices { get; set; }
+        public DbSet<QuickAdviceLang> QuickAdviceLangs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -71,6 +73,8 @@ namespace Shop.DatabaseModel.DataAccess.Models
             modelBuilder.Configurations.Add(new ProductAttributeValueTagLangMap());
             modelBuilder.Configurations.Add(new ProductImageMap());
             modelBuilder.Configurations.Add(new ProductLangMap());
+            modelBuilder.Configurations.Add(new QuickAdviceMap());
+            modelBuilder.Configurations.Add(new QuickAdviceLangMap());
         }
     }
 }

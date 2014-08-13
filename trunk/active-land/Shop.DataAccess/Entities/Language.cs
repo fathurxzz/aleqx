@@ -18,6 +18,7 @@ namespace Shop.DataAccess.Entities
             this.ProductAttributeValueLangs = new List<ProductAttributeValueLang>();
             this.ProductAttributeValueTagLangs = new List<ProductAttributeValueTagLang>();
             this.ProductLangs = new List<ProductLang>();
+            this.QuickAdviceLangs = new List<QuickAdviceLang>();
         }
 
         public int Id { get; set; }
@@ -35,5 +36,6 @@ namespace Shop.DataAccess.Entities
         public virtual ICollection<ProductAttributeValueLang> ProductAttributeValueLangs { get; set; }
         public virtual ICollection<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
+        public virtual ICollection<QuickAdviceLang> QuickAdviceLangs { get; set; }
     }
 }

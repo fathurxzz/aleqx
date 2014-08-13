@@ -12,7 +12,7 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
 
             // Properties
             this.Property(t => t.Description)
-                .HasMaxLength(1073741823);
+                .HasMaxLength(1000);
 
             this.Property(t => t.ImageSource)
                 .HasMaxLength(200);

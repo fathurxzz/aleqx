@@ -84,6 +84,8 @@
     <Compile Include="Mapping\ProductImageMap.cs" />
     <Compile Include="Mapping\ProductLangMap.cs" />
     <Compile Include="Mapping\ProductMap.cs" />
+    <Compile Include="Mapping\QuickAdviceLangMap.cs" />
+    <Compile Include="Mapping\QuickAdviceMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopContext.cs" />
     <Compile Include="ShopStore.cs" />

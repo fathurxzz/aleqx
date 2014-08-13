@@ -24,7 +24,7 @@ namespace Shop.DatabaseModel.DataAccess.Models.Mapping
                 .HasMaxLength(200);
 
             this.Property(t => t.Info)
-                .HasMaxLength(1073741823);
+                .HasMaxLength(1000);
 
             this.Property(t => t.DeliveryCity)
                 .IsRequired()
