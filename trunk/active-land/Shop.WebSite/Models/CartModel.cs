@@ -10,10 +10,11 @@ namespace Shop.WebSite.Models
     public class CartModel:SiteModel
     {
         public Order Order { get; set; }
+        public OrderComplete OrderComplete { get; set; }
 
         public CartModel(IShopRepository repository, string contentName) : base(repository, contentName)
         {
-
+            
         }
     }
 }

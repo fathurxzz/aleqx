@@ -1,0 +1,19 @@
+﻿@using System.Threading
+@using Shop.WebSite.Helpers
+
+<ul class="language-switcher">
+    @if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+    {
+        var routeData = ViewContext.RouteData.GetCopy();
+        routeData.Values["lang"] = "ua";
+        <li>@Html.RouteLink("Укр", routeData.Values)</li>
+        <li>Рус</li>
+    }
+    else
+    {
+        var routeData = ViewContext.RouteData.GetCopy();
+        routeData.Values["lang"] = "ru";
+        <li>Укр</li>
+        <li>@Html.RouteLink("Рус", routeData.Values)</li>
+    }
+</ul>
