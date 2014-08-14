@@ -1,19 +1,19 @@
 ﻿@using Shop.WebSite.Helpers
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>@ViewBag.Title</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-        <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/css/jquery.bxslider.css")" rel="stylesheet" type="text/css" />
-        @Styles.Render(
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/jquery.bxslider.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render(
 
                  //"~/Content/css/bootstrap.min.css",
-                 //             "~/Content/css/bootstrap-select.min.css",
-        
+            //             "~/Content/css/bootstrap-select.min.css",
+
             "~/Content/css/main.css",
             "~/Content/css/content.css",
             "~/Content/css/site.css",
@@ -29,112 +29,121 @@
             "~/Content/css/cart.css",
             "~/Content/css/order.css",
             "~/Content/css/order-thanking.css",
-            
 
-                   
+
+
 
             "~/Content/css/footer.css"
             )
-        
-        @Scripts.Render("~/bundles/jquery")
 
-        @Scripts.Render(
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render(
             //"~/Scripts/jquery-1.11.1.min.js",
             "~/Scripts/jquery-ui.min.js",
                      "~/Scripts/bootstrap.min.js",
                      "~/Scripts/bootstrap-select.js",
             "~/Scripts/main.js")
-        
-        @Scripts.Render("~/Scripts/jquery.bxslider.min.js")
-        @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
-        @Scripts.Render("~/Scripts/cart.js")
-        @Scripts.Render("~/Scripts/ordervalidation.js")
 
-        @RenderSection("includes", required: false)
-        
-        @RenderSection("scripts", required: false)
-        
-        
-       
+    @Scripts.Render("~/Scripts/jquery.bxslider.min.js")
+    @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
+    @Scripts.Render("~/Scripts/cart.js")
+    @Scripts.Render("~/Scripts/ordervalidation.js")
 
-         <script type="text/javascript">
-               $(function () {
-                   //$('.selectpicker').selectpicker();
-                   $('.bxsliderArticleItemImages').bxSlider({
-                       mode: 'fade',
-                       //auto: autostart,
-                       pause: 5000,
-                       speed: 500,
-                       pager: false,
-                       nextSelector: '#slider-next',
-                       prevSelector: '#slider-prev',
-                       nextText: '',
-                       prevText: ''
-                   });
-                   
-               })
-        </script>
+    @RenderSection("includes", required: false)
 
-    </head>
-    
+    @RenderSection("scripts", required: false)
 
-    <body>
-    
-            
-        <div id="header-outer">
-      
-            @if (Request.IsAuthenticated)
-            {
-                <div style="position: absolute; padding: 10px">
-                    @*<div class="btn-group btn-group-xs">
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            //$('.selectpicker').selectpicker();
+            $('.bxsliderArticleItemImages').bxSlider({
+                mode: 'fade',
+                //auto: autostart,
+                pause: 5000,
+                speed: 500,
+                pager: false,
+                nextSelector: '#slider-next',
+                prevSelector: '#slider-prev',
+                nextText: '',
+                prevText: ''
+            });
+
+        })
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <div id="header-outer">
+
+        @if (Request.IsAuthenticated)
+        {
+            <div style="position: absolute; padding: 10px">
+                @*<div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-info">@Html.ActionLink("В админку", "Index", "Category", new { area = "Admin" }, null)</button>
                     </div>*@
-                    @Html.ActionLink("Админка", "Index", "Category", new {area = "Admin"}, null)    
-                </div>
-            }
+                @Html.ActionLink("Админка", "Index", "Category", new { area = "Admin" }, null)
+            </div>
+        }
 
-            <div id="header-inner">
-                <div id="header">
-                    <div id="logo-small"></div>
-                    <div id="user-greeting">
-                        @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
-                    </div>
-                    @Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))
-                    @*<a href="cart.html" id="cart-icon">*@
-                        @*<div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>*@
-                    @*</a>*@
-                    <div class="socials">
-                        <div class="social instagram"></div>
-                        <div class="social fb"></div>
-                        <div class="social vk"></div>
-                    </div>
-                    <div id="search-wrapper">
-                        <div id="search-icon"></div>
-                        <input id="search-input" name="search-input" type="text" placeholder="Я ищу...">
-                    </div>
-                    <div id="phone-panel">
-                        (044) 123-45-67, (067) 202-39-99
-                    </div>
+        <div id="header-inner">
+            <div id="header">
+                <div id="logo-small"></div>
+                <div id="user-greeting">
+                    @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
+                </div>
+
+                @*@Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))*@
+
+                <a href="@Url.Action("Index", "Cart", null)" id="cart-icon">
+                    @if (WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0)
+                    {
+                        <div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
+                    }
+                </a>
+
+                @*<a href="cart.html" id="cart-icon">*@
+                @*<div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>*@
+                @*</a>*@
+                <div class="socials">
+                    <div class="social instagram"></div>
+                    <div class="social fb"></div>
+                    <div class="social vk"></div>
+                </div>
+                <div id="search-wrapper">
+                    <div id="search-icon"></div>
+                    <input id="search-input" name="search-input" type="text" placeholder="Я ищу...">
+                </div>
+                <div id="phone-panel">
+                    (044) 123-45-67, (067) 202-39-99
                 </div>
             </div>
         </div>
-        <div id="page">
+    </div>
+    <div id="page">
         @RenderBody()
-             </div>
+    </div>
 
-        <div id="footer">
-            <div id="footer-inner">
-                <div id="copyright">
-                    &copy; 2014<br>
-                    Веломагазин Григория Войтишина
-                </div>
-                <div id="em-studio">
-                    Сделано в
+    <div id="footer">
+        <div id="footer-inner">
+            <div id="copyright">
+                &copy; 2014<br>
+                Веломагазин Григория Войтишина
+            </div>
+            <div id="em-studio">
+                Сделано в
                     <br>
-                    <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
-                </div>
+                <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
             </div>
         </div>
-         
-    </body>
+    </div>
+
+</body>
 </html>

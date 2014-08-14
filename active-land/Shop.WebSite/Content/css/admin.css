@@ -24,12 +24,12 @@
     padding-right: 50px;
 }
 
-.language-switcher {
+.admin-language-switcher {
     padding-top: 5px;
     padding-bottom: 10px;
 }
 
-.language-switcher a {
+.admin-language-switcher a {
     text-decoration: none !important;
 }
 
