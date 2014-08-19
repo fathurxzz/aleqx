@@ -77,10 +77,14 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Добавить подкатегорию", "Create", new { id = item.Id }) |
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Атрибуты", "Attributes", new { id = item.Id }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить категорию?')" })
+                @if (item.CategoryLevel == 0)
+                {
+                    <text> | </text>
+                    @Html.ActionLink("Добавить подкатегорию", "Create", new {id = item.Id})
+                }
             </td>
         </tr>
     }
