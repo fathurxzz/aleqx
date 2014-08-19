@@ -13,7 +13,7 @@ namespace Shop.WebSite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("favicon.ico");
-            
+
             routes.MapRoute(
                 "Login",
                 "login",
@@ -34,17 +34,17 @@ namespace Shop.WebSite
               new string[1] { "Shop.WebSite.Controllers" }
           );
 
-            
+
 
             routes.MapRoute(
                "Cart", // Route name
                "{lang}/cart/{action}", // URL with parameters
-               new { controller = "Cart", action = "Index"},
+               new { controller = "Cart", action = "Index" },
                new { lang = @"ru|ua" },
                new string[1] { "Shop.WebSite.Controllers" }
            );
 
-           
+
 
             routes.MapRoute(
               "Content",
@@ -64,11 +64,19 @@ namespace Shop.WebSite
 
             routes.MapRoute(
                "Catalogue",
-               "{lang}/catalogue/{category}/{subcategory}",
-               new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional },
+               "{lang}/catalogue/{category}/{subcategory}/{filter}",
+               new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, filter = UrlParameter.Optional },
                new { lang = @"ru|ua" },
                new[] { "Shop.WebSite.Controllers" }
            );
+
+            //routes.MapRoute(
+            //    "Catalogue",
+            //    "{lang}/catalogue/{category}/{subcategory}",
+            //    new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional },
+            //    new { lang = @"ru|ua" },
+            //    new[] { "Shop.WebSite.Controllers" }
+            //);
 
             routes.MapRoute(
                "Product",
@@ -86,7 +94,7 @@ namespace Shop.WebSite
                new[] { "Shop.WebSite.Controllers" }
            );
 
-            
+
 
             routes.MapRoute(
                 "Default",

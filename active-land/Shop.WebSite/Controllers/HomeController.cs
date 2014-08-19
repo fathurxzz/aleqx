@@ -24,10 +24,10 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult Catalogue(string category, string subcategory)
+        public ActionResult Catalogue(string category, string subcategory, string filter)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, category, subcategory) {CurrentLangCode = CurrentLangCode};
+            var model = new CatalogueModel(_repository, category, subcategory, filter:filter) {CurrentLangCode = CurrentLangCode};
             this.SetSeoContent(model);
             return View(model);
         }

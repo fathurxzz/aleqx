@@ -1,5 +1,7 @@
 $(function () {
 
+   
+
     $(".categories-menu-link").mousemove(function() {
         $(".category-menu").css("visibility", "visible");
     });
@@ -38,4 +40,20 @@ $(function () {
 //    });
 
     }
+
+    $(".attribute-checkbox").change(function() {
+        var filterValue = $(this).attr("filter");
+        
+        if (filterValue == "") {
+            location.href = location.href.replace(location.href.substring(location.href.lastIndexOf("/"), location.href.length), "");
+        } else {
+            if (location.href.split("/").length == 7) {
+                location.href = location.href+ "/" + filterValue;
+            } else {
+                location.href =  filterValue;
+            }
+        }
+    });
+
+
 });

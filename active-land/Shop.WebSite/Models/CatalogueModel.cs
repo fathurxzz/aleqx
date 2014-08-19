@@ -10,18 +10,44 @@ namespace Shop.WebSite.Models
 {
     public class CatalogueModel : SiteModel
     {
-        public IEnumerable<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
         public IEnumerable<ProductAttribute> ProductAttributes { get; set; }
         public Product Product { get; set; }
         public Article Article { get; set; }
+        public string CurrentFilter { get; set; }
+        public string[] FilterArray { get; set; }
 
 
-        public CatalogueModel(IShopRepository repository, string categoryName=null, string subCategoryName=null, string productName=null, string articleName = null)
-            : base(repository,null)
+        public CatalogueModel(IShopRepository repository, string categoryName = null, string subCategoryName = null, string productName = null, string articleName = null, string filter = null)
+            : base(repository, null)
         {
-            Products = AllProducts;
-            ProductAttributes = new List<ProductAttribute>();
             
+            
+            ProductAttributes = new List<ProductAttribute>();
+            CurrentFilter = filter;
+            FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
+
+            Products = new List<Product>();
+
+            if (FilterArray.Any())
+            {
+                
+                foreach (var product in from product in AllProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
+                {
+                    if (!Products.Contains(product))
+                        Products.Add(product);
+                }
+            }
+            else
+            {
+                foreach (var product in AllProducts)
+                {
+                    Products.Add(product);
+                }
+            }
+            
+
+
             //if (!string.IsNullOrEmpty(categoryName))
             //{
             //    var category = Categories.First(c => c.Name == categoryName);
