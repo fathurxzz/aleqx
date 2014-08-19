@@ -1,4 +1,5 @@
-﻿@using Shop.WebSite.Models
+﻿@using Shop.WebSite.Helpers
+@using Shop.WebSite.Models
 @model Shop.WebSite.Models.CatalogueModel
 
 @{
@@ -32,10 +33,10 @@
                 <div class="title">@productAttribute.Title:</div>
                 <div class="selectors">
                     <ul>
-                        @foreach (var categoryValue in productAttribute.ProductAttributeValues)
+                        @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a=>a.Title))
                         {
                             <li>
-                                <input type="checkbox" id="cb_@categoryValue.Id">
+                                <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString())?"checked":"") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray,categoryValue.Id.ToString(),Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
                                 <label for="cb_@categoryValue.Id">@categoryValue.Title</label>
                             </li>   
                         }
