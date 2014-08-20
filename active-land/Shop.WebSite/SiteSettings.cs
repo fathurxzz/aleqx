@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Razor.Text;
 using Shop.WebSite.Helpers.Graphics;
 
 namespace Shop.WebSite
@@ -47,7 +48,7 @@ namespace Shop.WebSite
 
         public static string Version
         {
-            get { return "0.0.3"; }
+            get { return "0.0.4"; }
         }
 
         public static string MailTo
@@ -57,6 +58,5 @@ namespace Shop.WebSite
 
         public static int AdminProductsPageSize = 50;
         public static int ProductsPageSize = 15;
-
     }
 }

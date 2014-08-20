@@ -9,9 +9,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div id="menu-panel">
-     @Html.Partial("LanguageSwitcher")
+    @Html.Partial("LanguageSwitcher")
     @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
     @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
 </div>
@@ -34,7 +33,9 @@
                 <div class="title">
                     @Html.ActionLink(orderItem.Value.ProductTitle, "ProductDetails", "Home", new { product = orderItem.Value.ProductName }, null)
                 </div>
-                @orderItem.Value.Description
+                <div class="text">
+                    @Html.Raw(orderItem.Value.Description)
+                </div>
             </div>
             <div class="quantity">
                 <div class="arrow-inc"></div>
@@ -44,9 +45,9 @@
                 <div class="arrow-dec"></div>
             </div>
             <div class="quantity-unit">шт</div>
-            <div class="price">@(orderItem.Value.Quantity * orderItem.Value.Price) грн</div>
+            <div class="price">@((orderItem.Value.Quantity * orderItem.Value.Price).ToString("###,###")) грн</div>
             <div class="delete-cart-item">
-                @Html.Raw(Html.ActionLink("[LINK]", "Delete", "Cart", new {id=orderItem.Key }, new{onclick="return confirm('Удалить товар из корзины?')"}).ToString().Replace("[LINK]", ""))
+                @Html.Raw(Html.ActionLink("[LINK]", "Delete", "Cart", new { id = orderItem.Key }, new { onclick = "return confirm('Удалить товар из корзины?')" }).ToString().Replace("[LINK]", ""))
             </div>
             <div class="clearfix"></div>
         </div>
@@ -58,10 +59,10 @@
     }
 
     <div id="total">
-        <span id="amount">Итого: 7,000 грн</span>
+        <span id="amount">Итого: @WebSession.OrderItems.Sum(o => o.Value.Quantity * o.Value.Price).ToString("###,###") грн</span>
     </div>
 
     <div id="buy-button">
-        @Html.Raw(Html.ActionLink("[LINK]","CheckOut","Cart").ToString().Replace("[LINK]",""))
+        @Html.Raw(Html.ActionLink("[LINK]", "CheckOut", "Cart").ToString().Replace("[LINK]", ""))
     </div>
 </div>
