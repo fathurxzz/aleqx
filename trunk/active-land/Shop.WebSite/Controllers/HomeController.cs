@@ -24,10 +24,12 @@ namespace Shop.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult Catalogue(string category, string subcategory, string filter)
+        public ActionResult Catalogue(string category, string subcategory, string filter, int? page)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, category, subcategory, filter:filter) {CurrentLangCode = CurrentLangCode};
+            var model = new CatalogueModel(_repository, page, category, subcategory, filter: filter) { CurrentLangCode = CurrentLangCode };
+            ViewBag.ProductTotalCount = model.ProductTotalCount;
+            ViewBag.Page = model.Page;
             this.SetSeoContent(model);
             return View(model);
         }
@@ -35,7 +37,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult ProductDetails(string product)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, productName: product) {CurrentLangCode = CurrentLangCode};
+            var model = new CatalogueModel(_repository, null, productName: product) { CurrentLangCode = CurrentLangCode };
             this.SetSeoContent(model);
             ViewBag.CurrentLangCode = CurrentLangCode;
             return View(model);
@@ -44,7 +46,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult ArticleDetails(string article)
         {
             _repository.LangId = CurrentLangId;
-            var model = new CatalogueModel(_repository, articleName: article) { CurrentLangCode = CurrentLangCode };
+            var model = new CatalogueModel(_repository, null, articleName: article) { CurrentLangCode = CurrentLangCode };
             this.SetSeoContent(model);
             return View(model);
         }
