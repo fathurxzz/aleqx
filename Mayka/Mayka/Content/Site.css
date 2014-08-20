@@ -287,6 +287,10 @@ a {
     margin:0 50px 50px 0;
 }
 
+.product.red {
+    border: 11px solid #f00;
+}
+
 .productDetails {
     /*width: 350px;
     height: 390px;

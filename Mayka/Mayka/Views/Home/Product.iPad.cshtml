@@ -1,5 +1,12 @@
 ﻿@using SiteExtensions.Graphics
 @model Mayka.Models.Product
-<div class="product">
+@{
+    string className = "product";
+    if (Model.Id == 61)
+    {
+        className += " red";
+    }
+}
+<div class="@className">
     @Html.Raw(@Html.ActionLink("[IMAGE]", "ProductDetails", "Home",new{id=Model.Id},null).ToString().Replace("[IMAGE]", Html.OriginalImage("/Content/Images", Model.PreviewImageSourceIpad??Model.PreviewImageSource)))
 </div>
