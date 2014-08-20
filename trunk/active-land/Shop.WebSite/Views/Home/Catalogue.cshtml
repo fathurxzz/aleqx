@@ -16,7 +16,9 @@
 </div>
 
 
-@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb() { Title = "Детские и подростковые" } })
+
+@Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
+
 <div id="catalogue">
     <div id="filters-container">
 

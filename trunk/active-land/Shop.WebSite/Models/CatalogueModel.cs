@@ -17,6 +17,7 @@ namespace Shop.WebSite.Models
         public string CurrentFilter { get; set; }
         public string[] FilterArray { get; set; }
         public int ProductTotalCount { get; set; }
+        public Category CurrentCategory { get; set; }
         public int Page { get; set; }
 
 
@@ -71,6 +72,7 @@ namespace Shop.WebSite.Models
             if (category != null)
             {
                 ProductAttributes = repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);
+                CurrentCategory = repository.GetCategory(category.Id);
             }
 
             if (productName != null)
