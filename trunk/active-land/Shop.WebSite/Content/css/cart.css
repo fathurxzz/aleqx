@@ -60,6 +60,10 @@
     color: inherit;
 }
 
+.cart-item .description .text {
+    padding-bottom: 20px;
+}
+
 .cart-tying-products-link {
     position: relative;
     width: 220px;
