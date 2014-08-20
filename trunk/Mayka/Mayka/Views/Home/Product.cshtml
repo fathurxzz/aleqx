@@ -1,7 +1,14 @@
 ﻿@using SiteExtensions.Graphics
 @model Mayka.Models.Product
 
-<div class="product">
+@{
+    string className = "product";
+    if (Model.Id == 61)
+    {
+        className += " red";
+    }
+}
+<div class="@className">
     @if (Request.IsAuthenticated)
     {
         <div class="adminLinkContainer">
