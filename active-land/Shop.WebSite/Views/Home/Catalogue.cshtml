@@ -102,10 +102,10 @@
             {
                 Title = product.Title,
                 Label =
-                product.IsNew ? ProductPreviewLabel.WowNew
-                : product.IsTopSale ? ProductPreviewLabel.TopSale
-                : product.IsDiscount ? ProductPreviewLabel.Discount
-                : ProductPreviewLabel.None,
+                    product.IsNew ? ProductPreviewLabel.WowNew
+                        : product.IsTopSale ? ProductPreviewLabel.TopSale
+                            : product.IsDiscount ? ProductPreviewLabel.Discount
+                                : ProductPreviewLabel.None,
                 Price = product.Price,
                 OldPrice = product.OldPrice,
                 ImageSource = product.ImageSource,
@@ -121,6 +121,9 @@
     </div>
 
     <div class="clearfix"></div>
+</div>
+<div>
+    @Html.Partial("Paging")
 </div>
 
 

@@ -7,13 +7,14 @@
                 foreach (var category in Model.Where(c => c.Parent == null))
                 {
                     cnt++;
-                <li class="main">
-                    @if (cnt == 1)
-                    {
-                        <div class="arrow top"></div>
-                    }
-                    @Html.ActionLink(category.Title,"Catalogue","Home",new{category=category.Name,subcategory=""},null)
-                    @if (category.Children.Any())
+                    <li class="main">
+                        
+                        @if (cnt == 1)
+                        {
+                            <div class="arrow top"></div>
+                        }
+                        
+                        @if (category.Children.Any())
                     {
                         var childCnt = 0;
                         <div class="menu-group-wrapper sub-menu">
@@ -33,8 +34,11 @@
                         </div>
                     }
 
+                        @Html.ActionLink(category.Title,"Catalogue","Home",new{category=category.Name,subcategory=""},null)
+                    
 
-                </li>
+
+                    </li>
                 }
             }
 

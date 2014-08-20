@@ -1,0 +1,32 @@
+﻿#pager {
+    margin: 10px 0;
+    text-align: center;
+    line-height: 20px;
+    font-family: 'PT Sans Caption', serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+    #pager div {
+        background-color: #00aeef;
+        display: inline-block;
+        width: 34px;
+        height: 28px;
+        padding-top: 6px;
+        border-radius: 17px;
+        -webkit-border-radius: 17px;
+        -moz-border-radius: 17px;
+        margin-right: 7px;
+        color: #fff;
+    }
+
+        #pager div.current {
+            color: #99ccff;
+        }
+
+    #pager a {
+        display: block;
+        width: inherit;
+        height: inherit;
+        color: #fff;
+    }

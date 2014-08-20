@@ -55,5 +55,8 @@ namespace Shop.WebSite
             get { return "mailto:miller.kak.miller@gmail.com"; }
         }
 
+        public static int AdminProductsPageSize = 50;
+        public static int ProductsPageSize = 15;
+
     }
 }

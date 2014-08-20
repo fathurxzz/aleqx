@@ -16,13 +16,15 @@ namespace Shop.WebSite.Models
         public Article Article { get; set; }
         public string CurrentFilter { get; set; }
         public string[] FilterArray { get; set; }
+        public int ProductTotalCount { get; set; }
+        public int Page { get; set; }
 
 
-        public CatalogueModel(IShopRepository repository, string categoryName = null, string subCategoryName = null, string productName = null, string articleName = null, string filter = null)
+        public CatalogueModel(IShopRepository repository, int? page, string categoryName = null, string subCategoryName = null, string productName = null, string articleName = null, string filter = null)
             : base(repository, null)
         {
-            
-            
+
+
             ProductAttributes = new List<ProductAttribute>();
             CurrentFilter = filter;
             FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
@@ -31,7 +33,7 @@ namespace Shop.WebSite.Models
 
             if (FilterArray.Any())
             {
-                
+
                 foreach (var product in from product in AllProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
                 {
                     if (!Products.Contains(product))
@@ -45,7 +47,16 @@ namespace Shop.WebSite.Models
                     Products.Add(product);
                 }
             }
-            
+
+            ProductTotalCount = Products.Count;
+
+            IQueryable<Product> products = null;
+
+            products = Products.OrderBy(p => p.Id).AsQueryable();
+
+            products = ApplyPaging(products, page, SiteSettings.ProductsPageSize);
+
+            Products = products.ToList();
 
 
             //if (!string.IsNullOrEmpty(categoryName))
@@ -73,6 +84,17 @@ namespace Shop.WebSite.Models
                 this.Article = repository.GetArticle(articleName);
             }
 
+        }
+
+        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page, int pageSize)
+        {
+            if (products == null)
+                return null;
+            int currentPage = page ?? 0;
+            Page = currentPage;
+            if (page < 0)
+                return products;
+            return products.Skip(currentPage * pageSize).Take(pageSize);
         }
     }
 }

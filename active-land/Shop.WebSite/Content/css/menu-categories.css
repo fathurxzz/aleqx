@@ -58,13 +58,14 @@
 {
     display: none;
     position: absolute;
-    margin-top: -31px;
+    /*margin-top: -31px;*/
     /*display: none;*/
 }
 
 .menu-group-wrapper.sub-menu.show
 {
     display: block;
+    z-index: 100;
 }
 
 .menu-group-wrapper.sub-menu li div.arrow
