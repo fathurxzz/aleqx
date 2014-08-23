@@ -46,7 +46,7 @@ $(function () {
         if (filterValue == "") {
             location.href = location.href.replace(location.href.substring(location.href.lastIndexOf("/"), location.href.length), "");
         } else {
-            if (location.href.split("/").length == 7) {
+            if (location.href.split("/").length == 6) {
                 location.href = location.href+ "/" + filterValue;
             } else {
                 location.href =  filterValue;
