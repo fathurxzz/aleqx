@@ -24,8 +24,6 @@ namespace Shop.WebSite.Models
         public CatalogueModel(IShopRepository repository, int? page, string categoryName = null, string subCategoryName = null, string productName = null, string articleName = null, string filter = null)
             : base(repository, null)
         {
-
-
             ProductAttributes = new List<ProductAttribute>();
             CurrentFilter = filter;
             FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
