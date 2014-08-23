@@ -27,17 +27,13 @@
                                         {
                                             <div class="arrow left"></div>
                                         }
-                                        @Html.ActionLink(child.Title,"Catalogue","Home",new{category=category.Name,subcategory=child.Name},null)
+                                        @Html.ActionLink(child.Title,"Catalogue","Home",new{category=child.Name},null)
                                     </li>
                                 }
                             </ul>
                         </div>
                     }
-
-                        @Html.ActionLink(category.Title,"Catalogue","Home",new{category=category.Name,subcategory=""},null)
-                    
-
-
+                        @Html.ActionLink(category.Title,"Catalogue","Home",new{category=category.Name},null)
                     </li>
                 }
             }

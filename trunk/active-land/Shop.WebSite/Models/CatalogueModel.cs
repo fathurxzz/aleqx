@@ -21,7 +21,7 @@ namespace Shop.WebSite.Models
         public int Page { get; set; }
 
 
-        public CatalogueModel(IShopRepository repository, int? page, string categoryName = null, string subCategoryName = null, string productName = null, string articleName = null, string filter = null)
+        public CatalogueModel(IShopRepository repository, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null)
             : base(repository, null)
         {
             ProductAttributes = new List<ProductAttribute>();
@@ -29,6 +29,8 @@ namespace Shop.WebSite.Models
             FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
 
             Products = new List<Product>();
+
+            AllProducts = AllProducts.Where(p => p.Category.Name == categoryName);
 
             if (FilterArray.Any())
             {
@@ -64,9 +66,7 @@ namespace Shop.WebSite.Models
             //    ProductAttributes = category.ProductAttributes.Where(pa => pa.IsFilterable);
             //}
 
-            var currentCategory = !string.IsNullOrEmpty(subCategoryName) ? subCategoryName : categoryName;
-
-            var category = Categories.FirstOrDefault(c => c.Name == currentCategory);
+            var category = Categories.FirstOrDefault(c => c.Name == categoryName);
             if (category != null)
             {
                 ProductAttributes = repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);

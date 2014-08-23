@@ -64,8 +64,8 @@ namespace Shop.WebSite
 
             routes.MapRoute(
                "Catalogue",
-               "{lang}/catalogue/{category}/{subcategory}/{filter}",
-               new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, subcategory = UrlParameter.Optional, filter = UrlParameter.Optional },
+               "{lang}/catalogue/{category}/{filter}",
+               new { controller = "Home", action = "Catalogue", category = UrlParameter.Optional, filter = UrlParameter.Optional },
                new { lang = @"ru|ua" },
                new[] { "Shop.WebSite.Controllers" }
            );
