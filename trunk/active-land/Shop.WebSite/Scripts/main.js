@@ -36,8 +36,6 @@ $(function () {
                     .addClass("show")
                 ;
         });
-
-
     }
 
     $(".attribute-checkbox").change(function() {
@@ -53,6 +51,7 @@ $(function () {
             }
         }
     });
+
 
 
 });

@@ -49,5 +49,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             _repository.SaveOrder(order);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Details(int id)
+        {
+            var order = _repository.GetOrder(id);
+            return View(order);
+        }
     }
 }

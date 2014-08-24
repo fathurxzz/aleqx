@@ -1,0 +1,34 @@
+﻿@model Shop.DataAccess.Entities.Order
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Order")
+}
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Название</th>
+        <th>Заголовок</th>
+        <th>Количество</th>
+        <th>Описание</th>
+    </tr>
+    @foreach (var item in Model.OrderItems)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.ProductName</td>
+            <td>@item.ProductTitle</td>
+            <td>@item.Quantity</td>
+            <td>@Html.Raw(item.Description)</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Назад", "Index", "Order", null, new { @class = "col-sm-2 control-label" })

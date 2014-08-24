@@ -58,6 +58,17 @@ namespace Shop.WebSite.Controllers
             return WebSession.OrderItems.Sum(o => o.Value.Quantity);
         }
 
+        [OutputCache(NoStore = true, VaryByParam = "*", Duration = 1)]
+        public void Update(int id, int quantity)
+        {
+            if (WebSession.OrderItems.ContainsKey(id))
+            {
+                WebSession.OrderItems[id].Quantity = quantity;
+            }
+            //return WebSession.OrderItems.Sum(o => o.Value.Quantity);
+        }
+
+
         public ActionResult Delete(int id)
         {
             WebSession.OrderItems.Remove(id);
