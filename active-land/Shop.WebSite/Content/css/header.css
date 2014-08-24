@@ -81,7 +81,13 @@
     margin-left: 22px;
     margin-top: -2px;
     text-decoration: none;
+    display: none;
 }
+
+#cart-items-count.show {
+    display: block;
+}
+
 
 
 #phone-panel

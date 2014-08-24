@@ -340,6 +340,7 @@
     <Content Include="Areas\Admin\Views\QuickAdvice\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuickAdvice\Create.cshtml" />
     <Content Include="Areas\Admin\Views\QuickAdvice\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>

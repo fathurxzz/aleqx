@@ -97,10 +97,7 @@
                 @*@Html.Raw(Html.ActionLink("[LINK]","Index","Cart",null,new{id="cart-icon"}).ToString().Replace("[LINK]","<div id=\"cart-items-count\">"+ WebSession.OrderItems.Sum(o => o.Value.Quantity)+"</div>"))*@
 
                 <a href="@Url.Action("Index", "Cart", null)" id="cart-icon">
-                    @if (WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0)
-                    {
-                        <div id="cart-items-count">@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
-                    }
+                    <div id="cart-items-count" class="@(WebSession.OrderItems.Sum(o => o.Value.Quantity) > 0?"show":"")" >@WebSession.OrderItems.Sum(o => o.Value.Quantity)</div>
                 </a>
 
                 @*<a href="cart.html" id="cart-icon">*@

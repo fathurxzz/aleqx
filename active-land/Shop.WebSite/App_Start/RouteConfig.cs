@@ -27,6 +27,14 @@ namespace Shop.WebSite
                 new { controller = "Auth", action = "Logout" },
                 new[] { "Shop.WebSite.Controllers" }
             );
+
+            routes.MapRoute(
+              "UpdateCart", // Route name
+              "updatecart", // URL with parameters
+              new { controller = "Cart", action = "Update", id = UrlParameter.Optional, quantity = UrlParameter.Optional },
+              new string[1] { "Shop.WebSite.Controllers" }
+          );
+
             routes.MapRoute(
               "AddToCart", // Route name
               "addtocart/{id}", // URL with parameters
@@ -34,6 +42,7 @@ namespace Shop.WebSite
               new string[1] { "Shop.WebSite.Controllers" }
           );
 
+            
 
 
             routes.MapRoute(

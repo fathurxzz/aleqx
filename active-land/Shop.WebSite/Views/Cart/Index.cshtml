@@ -26,6 +26,16 @@
     @foreach (var orderItem in WebSession.OrderItems)
     {
         <div class="cart-item">
+            <div class="hidden hidden-order-item-id">
+                @orderItem.Key
+            </div>
+            <div class="hidden hidden-price">
+                @orderItem.Value.Price.ToString("####")
+            </div>
+            <div class="hidden hidden-total-by-item-price">
+                @((orderItem.Value.Quantity * orderItem.Value.Price).ToString("####"))
+            </div>
+
             <div class="image">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", orderItem.Value.ImageSource, SiteSettings.GetThumbnail("cartProductImage")))
             </div>
@@ -59,7 +69,7 @@
     }
 
     <div id="total">
-        <span id="amount">Итого: @WebSession.OrderItems.Sum(o => o.Value.Quantity * o.Value.Price).ToString("###,###") грн</span>
+        <span id="amount">Итого: <span id="totalPrice">@WebSession.OrderItems.Sum(o => o.Value.Quantity * o.Value.Price).ToString("###,###")</span> грн</span>
     </div>
 
     <div id="buy-button">
