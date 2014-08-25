@@ -87,6 +87,7 @@
     text-transform: uppercase;
     float: left;
     margin-top: 8px;
+    width: 210px;
 }
 
 #title-price-in-cart-section .price {

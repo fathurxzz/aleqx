@@ -21,6 +21,11 @@ namespace Shop.Api.Repositories
                 {
                     value.CurrentLang = LangId;
                 }
+
+                foreach (var category in productAttribute.Categories)
+                {
+                    category.CurrentLang = LangId;
+                }
             }
             return productAttributes;
         }

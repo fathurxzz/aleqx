@@ -1,8 +1,4 @@
 ﻿<div class="logout-button-container">
-    <div class="btn-group btn-group-xs">
-        <button type="button" class="btn btn-danger">@Html.ActionLink("Выйти из админки", "Logout", "Auth", new { area = "" }, null)</button>
-    </div>
-    <div class="btn-group btn-group-xs">
-        <button type="button" class="btn btn-info">@Html.ActionLink("На сайт", "Index", "Home", new { area = "", lang="ru",id="" }, null)</button>
-    </div>
+    <a href="@Url.Action("Logout", "Auth", new { area = "" })"><button type="button" class="btn btn-danger btn-xs">Выйти из админки</button></a>
+    <a href="@Url.Action("Index", "Home", new { area = "", lang = "ru", id = "" })"><button type="button" class="btn btn-info  btn-xs">На сайт</button></a>
 </div>

@@ -19,15 +19,12 @@ namespace Shop.DataAccess.Entities
         public string Date { get; set; }
 
         [Display(Name = "Имя")]
-        [Required(ErrorMessage = "Введите имя")]
         public string CustomerName { get; set; }
 
         [Display(Name = "Телефон")]
-        [Required(ErrorMessage = "Введите телефон")]
         public string CustomerPhone { get; set; }
 
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "Введите еmail адрес")]
         public string CustomerEmail { get; set; }
 
         [Display(Name = "Обработан")]
@@ -43,23 +40,18 @@ namespace Shop.DataAccess.Entities
         public bool Subscribed { get; set; }
 
         [Display(Name = "Способ доставки")]
-        [Required(ErrorMessage = "Выберите способ доставки")]
         public int DeliveryMethod { get; set; }
 
         [Display(Name = "Город")]
-        [Required(ErrorMessage = "Введите город")]
         public bool DeliveryCity { get; set; }
 
         [Display(Name = "Улица")]
-        [Required(ErrorMessage = "Введите улица")]
         public bool DeliveryStreet { get; set; }
 
         [Display(Name = "Квартира / Офис")]
-        [Required(ErrorMessage = "Введите квартиру / офис")]
         public bool DeliveryOffice { get; set; }
 
         [Display(Name = "Способ оплаты")]
-        [Required(ErrorMessage = "Выберите способ оплаты")]
         public int PaymentMethod { get; set; }
     }
 

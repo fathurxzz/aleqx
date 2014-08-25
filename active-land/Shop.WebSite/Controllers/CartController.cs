@@ -141,19 +141,29 @@ namespace Shop.WebSite.Controllers
         public ActionResult ThankYou()
         {
             var model = new CartModel(_repository, null);
-
-            var order = WebSession.Order;
-            var amount = order.OrderItems.Sum(oi => oi.Quantity*oi.Price);
-            var number = _repository.AddOrder(order);
-            WebSession.OrderItems.Clear();
-            model.OrderComplete = new OrderComplete
+            try
             {
-                Amount = amount,
-                Number = number.ToString(),
-                CustomerName = order.CustomerName
-            };
+                
 
-            return View(model);
+                var order = WebSession.Order;
+                var amount = order.OrderItems.Sum(oi => oi.Quantity * oi.Price);
+                var number = _repository.AddOrder(order);
+                WebSession.OrderItems.Clear();
+                model.OrderComplete = new OrderComplete
+                {
+                    Amount = amount,
+                    Number = number.ToString(),
+                    CustomerName = order.CustomerName
+                };
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                
+            }
+            return RedirectToAction("CheckOut");
         }
 
         [HttpPost]

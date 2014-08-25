@@ -19,6 +19,9 @@
 <table class="table table-striped">
     <tr>
         <th>
+            Категории
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -27,15 +30,15 @@
         <th>
             @Html.DisplayNameFor(model => model.IsCorrectLang)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsStatic)
+        <th title="@Html.DisplayNameFor(model => model.IsStatic)">
+            П
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DisplayOnPreview)
+        <th title="@Html.DisplayNameFor(model => model.DisplayOnPreview)">
+            О
         </th>
         
-        <th>
-            @Html.DisplayNameFor(model => model.IsFilterable)
+        <th title="@Html.DisplayNameFor(model => model.IsFilterable)">
+            Ф
         </th>
         <th>Значения</th>
         <th></th>
@@ -45,6 +48,12 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @foreach (var cat in item.Categories)
+                {
+                    @Html.Raw(cat.Title+" ");
+                }
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -70,21 +79,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsFilterable)
             </td>
-             <td>
+            <td>
                 @if (!item.IsStatic)
                 {
-                     foreach (var value in item.ProductAttributeValues)
-                     {
-                         @Html.Raw(value.Title+", ")
-                     }
+                    foreach (var value in item.ProductAttributeValues)
+                    {
+                        @Html.Raw(value.Title+", ")
+                    }
                 }
             </td>
             <td>
-                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут?')" }) 
+                @Html.ActionLink("Ред.", "Edit", new { id = item.Id },new{title="Редактировать"}) |
+                @Html.ActionLink("Уд.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут?')",title="Удалить" }) 
                 @if (!item.IsStatic)
                 {
-                    <text>|</text> @Html.ActionLink("Значения", "Index", "ProductAttributeValue", new {area = "Admin", id = item.Id}, null)
+                    <text>|</text> @Html.ActionLink("Знач.", "Index", "ProductAttributeValue", new {area = "Admin", id = item.Id}, new{title="Значения"})
                 }
             </td>
            

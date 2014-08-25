@@ -32,15 +32,12 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .HasMaxLength(1000);
 
             this.Property(t => t.DeliveryCity)
-                .IsRequired()
                 .HasMaxLength(200);
 
             this.Property(t => t.DeliveryStreet)
-                .IsRequired()
                 .HasMaxLength(200);
 
             this.Property(t => t.DeliveryOffice)
-                .IsRequired()
                 .HasMaxLength(200);
 
             // Table & Column Mappings
