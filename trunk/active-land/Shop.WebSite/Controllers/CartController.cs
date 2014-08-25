@@ -156,6 +156,8 @@ namespace Shop.WebSite.Controllers
                     CustomerName = order.CustomerName
                 };
 
+                MailHelper.Notify(order, number);
+
                 return View(model);
             }
             catch (Exception ex)
