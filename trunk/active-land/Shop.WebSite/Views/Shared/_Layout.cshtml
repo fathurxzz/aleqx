@@ -1,4 +1,5 @@
 ﻿@using Shop.WebSite
+@using Shop.WebSite.App_LocalResources
 @using Shop.WebSite.Helpers
 <!DOCTYPE html>
 <html>
@@ -73,23 +74,25 @@
 
 
 <body>
-
+    @if (TempData["errorMessage"] != null)
+    {
+        <div style="text-align: center">
+            <h4><span class="label label-danger">@TempData["errorMessage"]</span>    </h4>
+        </div>
+    }
 
     <div id="header-outer">
 
-        @if (Request.IsAuthenticated)
-        {
-            <div style="position: absolute; padding: 10px">
-                @*<div class="btn-group btn-group-xs">
-                        <button type="button" class="btn btn-info">@Html.ActionLink("В админку", "Index", "Category", new { area = "Admin" }, null)</button>
-                    </div>*@
-                @Html.ActionLink("Админка", "Index", "Category", new { area = "Admin" }, null)
-            </div>
-        }
 
         <div id="header-inner">
             <div id="header">
                 <div id="logo-small"></div>
+                          @if (Request.IsAuthenticated)
+        {
+            <div style="position: absolute; padding-top: 10px; padding-left: 50px">
+                <a href="@Url.Action("Index", "Category", new { area = "Admin" })"><button type="button" class="btn btn-danger btn-xs">@GlobalRes.Adminisration</button></a>
+            </div>
+        }
                 <div id="user-greeting">
                     @*Здравствуйте, <span><a href="#">Игорь Толмацкий</a></span>!*@
                 </div>
@@ -115,8 +118,12 @@
                 <div id="phone-panel">
                     (044) 123-45-67, (067) 202-39-99
                 </div>
+                
+         
             </div>
         </div>
+             
+
     </div>
     <div id="page">
         @RenderBody()

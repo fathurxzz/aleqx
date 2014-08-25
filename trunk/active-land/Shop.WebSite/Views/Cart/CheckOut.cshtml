@@ -1,4 +1,5 @@
-﻿@using Shop.WebSite.Models
+﻿@using Shop.WebSite.App_LocalResources
+@using Shop.WebSite.Models
 @model Shop.WebSite.Models.SiteModel
 
 @{
@@ -45,9 +46,12 @@
             <div class="radio subscribe">
                 <ul>
                     <li class="r">
-                        <input type="radio" class="radiobutton" id="subscribe-radio" name="subscribe-radio" value="ok"></li>
-                    <li class="radio-title">Хочу платить меньше<br>
+                        <input type="checkbox" class="radiobutton" id="subscribe-radio" name="subscribe-radio" value="ok"></li>
+                    <li class="radio-title">
+                        <label for="subscribe-radio">
+                        Хочу платить меньше<br>
                         за покупки в "Эктив Ленде"
+                            </label>
                     </li>
                 </ul>
             </div>
@@ -64,20 +68,20 @@
             <div class="radio" id="delivery-method-list">
                 <ul >
                     <li class="r">
-                        <input class="radiobutton" type="radio" name="delivery-method" value="delivery">
+                        <input class="radiobutton" type="radio" name="delivery-method" onclick="Order.checkRadios(this.value)" value="delivery">
                     </li>
                     <li class="radio-title">Выбираю<br>
                         доставку
                     </li>
                     <li class="r">
-                        <input class="radiobutton" type="radio" name="delivery-method" value="takeout"></li>
+                        <input class="radiobutton" type="radio" name="delivery-method" onclick="Order.checkRadios(this.value)" value="takeout"></li>
                     <li class="radio-title">Выбираю<br>
                         самовывоз</li>
                 </ul>
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="field">
+        <div class="field delivery-field">
             <div class="title">
                 Город доставки:<br>
             </div>
@@ -85,13 +89,13 @@
                 <input type="text" name="city" id="city" value=""></div>
             <div class="clearfix"></div>
         </div>
-        <div class="field">
+        <div class="field delivery-field">
             <div class="title">улица:</div>
             <div class="input">
                 <input type="text" name="street" id="street" value=""></div>
             <div class="clearfix"></div>
         </div>
-        <div class="field">
+        <div class="field delivery-field">
             <div class="title double-row">№ дома и<br>
                 квартиры (офиса):</div>
             <div class="input">
@@ -105,12 +109,11 @@
                     <li class="r">
                         <input class="radiobutton" type="radio" name="payment-method" value="cache">
                     </li>
-                    <li class="radio-title">Наличными<br>
-                        при доставке
+                    <li class="radio-title one-line">@GlobalRes.PayByCash
                     </li>
                     <li class="r">
                         <input class="radiobutton" type="radio" name="payment-method" value="card"></li>
-                    <li class="radio-title one-line">Оплата карточкой</li>
+                    <li class="radio-title one-line">@GlobalRes.PayByCard</li>
                 </ul>
             </div>
             <div class="clearfix"></div>

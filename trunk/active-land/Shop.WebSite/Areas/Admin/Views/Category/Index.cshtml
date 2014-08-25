@@ -10,8 +10,6 @@
     @Html.Partial("Menu","Category")
 }
 
-
-
 <p>
     @*<button type="button" class="btn btn-success btn-sm">*@
         @Html.ActionLink("Добавить", "Create")
@@ -26,17 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeoDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeoKeywords)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SeoText)
-        </th>
-        <th style="width: 1px">
-            @Html.DisplayNameFor(model => model.IsCorrectLang)
+     
+        <th style="width: 1px" title="@Html.DisplayNameFor(model => model.IsCorrectLang)">
+            Язык
         </th>
         <th></th>
     </tr>
@@ -51,21 +41,7 @@
             <td class="@categoryLevel">
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td class="adminTextContainer">
-                <div>
-                    @Html.DisplayFor(modelItem => item.SeoDescription)
-                </div>
-            </td>
-            <td class="adminTextContainer">
-                <div>
-                    @Html.DisplayFor(modelItem => item.SeoKeywords)
-                </div>
-            </td>
-            <td class="adminTextContainer">
-                <div>
-                    @Html.DisplayFor(modelItem => item.SeoText)
-                </div>
-            </td>
+          
             <td>
                 @if (!item.IsCorrectLang)
                 {

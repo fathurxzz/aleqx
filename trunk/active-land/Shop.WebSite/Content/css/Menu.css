@@ -1,27 +1,31 @@
-#menu-panel {
+#menu-panel, #menu-panel-main-page {
     height: 75px;
-    background-color: #ababab;
     position: relative;
 }
 
+#menu-panel {
+    background-color: #ababab;
+}
+
 #menu-panel-main-page {
-    height: 70px;
-    position: relative;
     background-color: rgba(0,0,0,0.5);
 }
 
 #logo {
     position: absolute;
-    width: 174px;
-    height: 40px;
-    background: url("../img/logo.png");
-    margin-left: 20px;
-    margin-top: 22px;
+    /*width: 174px;
+    height: 40px;*/
+    width: 222px;
+    height: 53px;
+    background: url("../img/logo_new.png");
+    /*margin-left: 20px;
+    margin-top: 22px;*/
+    margin-top: 17px;
     display: block;
 }
 
 #menu-items {
-    margin-left: 225px;
+    margin-left: 255px;
     padding-top: 15px;
 }
 
@@ -80,6 +84,7 @@
 }
 
 #menu-panel-main-page #menu-items {
-    margin-left: 225px;
+    /*margin-left: 225px;*/
+    margin-left: 255px;
     /*padding-top: 23px;*/
 }
