@@ -188,6 +188,7 @@
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Helpers\Graphics\PictureSize.cs" />
     <Compile Include="Helpers\ISiteModel.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\MenuItem.cs" />
     <Compile Include="Helpers\MVCHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
