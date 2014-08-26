@@ -28,11 +28,11 @@
 
 #logo-small
 {
-    width: 32px;
-    height: 31px;
+    width: 33px;
+    height: 33px;
     background: url("../img/logo-small.png") no-repeat;
     position: absolute;
-    margin-top: 6px;
+    margin-top: 4px;
     margin-left: 2px;
 }
 
