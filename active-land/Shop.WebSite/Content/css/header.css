@@ -121,9 +121,16 @@
     float: left;
 }
 
+.social a {
+    display: block;
+    width: inherit;
+    height: inherit;
+}
+
 .social.instagram
 {
     background-image: url("../img/social-instagram.png");
+    opacity: 0.5;
 }
 
 .social.fb
