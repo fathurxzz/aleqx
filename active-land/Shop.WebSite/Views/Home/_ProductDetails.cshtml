@@ -95,49 +95,49 @@
 
             @foreach (var pruductAttribute in Model.Category.ProductAttributes)
             {
-                <div class="attribute">
-                    <div class="title">@pruductAttribute.Title @Html.Raw(!string.IsNullOrEmpty(pruductAttribute.UnitTitle) ? ", " + pruductAttribute.UnitTitle : "")</div>
-                    <div class="value">
-
-
-
-                        <div class="value-text">
-                            @if (pruductAttribute.IsStatic)
-                            {
-                                foreach (var pav in Model.ProductAttributeStaticValues)
+                if (Model.ProductAttributeValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id) || Model.ProductAttributeStaticValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id))
+                {
+                    <div class="attribute">
+                        <div class="title">@pruductAttribute.Title @Html.Raw(!string.IsNullOrEmpty(pruductAttribute.UnitTitle) ? ", " + pruductAttribute.UnitTitle : "")</div>
+                        <div class="value">
+                            <div class="value-text">
+                                @if (pruductAttribute.IsStatic)
                                 {
-                                    if (pav.ProductAttributeId == pruductAttribute.Id)
+                                    foreach (var pav in Model.ProductAttributeStaticValues)
                                     {
-                                @pav.Title
+                                        if (pav.ProductAttributeId == pruductAttribute.Id)
+                                        {
+                                            @pav.Title
+                                        }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                var cnt = 0;
-                                foreach (var pav in Model.ProductAttributeValues)
+                                else
                                 {
-                                    if (pav.ProductAttributeId == pruductAttribute.Id)
+                                    var cnt = 0;
+                                    foreach (var pav in Model.ProductAttributeValues)
                                     {
-                                        if (cnt != 0)
+                                        if (pav.ProductAttributeId == pruductAttribute.Id)
                                         {
-                                @Html.Raw(", ")
-                                        }
-                                        else
-                                        {
-                                            if (pav.ProductAttributeValueTag != null)
+                                            if (cnt != 0)
                                             {
-                                <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
+                                                @Html.Raw(", ")
                                             }
+                                            else
+                                            {
+                                                if (pav.ProductAttributeValueTag != null)
+                                                {
+                                                    <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
+                                                }
+                                            }
+                                            cnt++;
+                                            @pav.Title
                                         }
-                                        cnt++;
-                                @pav.Title
                                     }
                                 }
-                            }
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         </div>
         <div class="clearfix"></div>

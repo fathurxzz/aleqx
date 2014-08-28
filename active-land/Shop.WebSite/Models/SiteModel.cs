@@ -31,7 +31,7 @@ namespace Shop.WebSite.Models
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
-            AllProducts = repository.GetProducts();
+            AllProducts = repository.GetProducts().Where(p=>p.IsActive);
             SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
             Contents = repository.GetContents();
             Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
