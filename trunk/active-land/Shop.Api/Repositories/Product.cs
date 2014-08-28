@@ -95,11 +95,15 @@ namespace Shop.Api.Repositories
                 throw new Exception(string.Format("Product with id={0} not found", id));
             }
 
+            product.Category = null;
+
             while (product.ProductLangs.Any())
             {
                 var productLang = product.ProductLangs.First();
                 _store.ProductLangs.Remove(productLang);
             }
+
+            _store.SaveChanges();
 
             while (product.ProductAttributeValues.Any())
             {
@@ -108,11 +112,31 @@ namespace Shop.Api.Repositories
                 while (pav.ProductAttributeValueLangs.Any())
                 {
                     var pavl = pav.ProductAttributeValueLangs.First();
-                    pav.ProductAttributeValueLangs.Remove(pavl);
+                    //pav.ProductAttributeValueLangs.Remove(pavl);
+                    _store.ProductAttributeValueLangs.Remove(pavl);
+                    //_store.SaveChanges();
+                }
+                product.ProductAttributeValues.Remove(pav);
+                //_store.SaveChanges();
+                //_store.ProductAttributeValues.Remove(pav);
+            }
+            //product.ProductAttributeValues = null;
+            _store.SaveChanges();
+
+            while (product.ProductAttributeStaticValues.Any())
+            {
+                var pav = product.ProductAttributeStaticValues.First();
+
+                while (pav.ProductAttributeStaticValueLangs.Any())
+                {
+                    var pavl = pav.ProductAttributeStaticValueLangs.First();
+                    _store.ProductAttributeStaticValueLangs.Remove(pavl);
+                    //pav.ProductAttributeStaticValueLangs.Remove(pavl);
                 }
 
-                _store.ProductAttributeValues.Remove(pav);
+                product.ProductAttributeStaticValues.Remove(pav);
             }
+            _store.SaveChanges();
 
             while (product.ProductImages.Any())
             {
@@ -122,6 +146,12 @@ namespace Shop.Api.Repositories
                 //images(pi.ImageSource);
                 _store.ProductImages.Remove(pi);
             }
+            _store.SaveChanges();
+
+            product.ProductLangs = null;
+            product.ProductAttributeStaticValues = null;
+            product.ProductAttributeValues = null;
+            product.ProductImages = null;
 
             _store.Products.Remove(product);
             _store.SaveChanges();
