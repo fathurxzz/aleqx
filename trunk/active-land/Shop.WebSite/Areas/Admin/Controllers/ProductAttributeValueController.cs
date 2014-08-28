@@ -11,7 +11,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
     public class ProductAttributeValueController : AdminController
     {
 
-        public ProductAttributeValueController(IShopRepository repository) : base(repository)
+        public ProductAttributeValueController(IShopRepository repository)
+            : base(repository)
         {
         }
 
@@ -22,7 +23,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             var productAttributeValues = productAttribute.ProductAttributeValues;
             ViewBag.ProductAttributeId = id;
             ViewBag.ProductAttributeTitle = productAttribute.Title;
-            return View(productAttributeValues);   
+            return View(productAttributeValues);
         }
 
         public ActionResult Create(int id)
@@ -30,12 +31,13 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             _repository.LangId = CurrentLangId;
             var tags = _repository.GetProductAttributeValueTags();
             ViewBag.Tags = tags;
-            return View(new ProductAttributeValue {ProductAttributeId = id, CurrentLang = CurrentLangId});
+            return View(new ProductAttributeValue { ProductAttributeId = id, CurrentLang = CurrentLangId });
         }
 
         [HttpPost]
         public ActionResult Create(ProductAttributeValue model, FormCollection form)
         {
+
             int tagId = int.Parse(form["tag"]);
             var tag = _repository.GetProductAttributeValueTag(tagId);
 
@@ -47,14 +49,15 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 Title = model.Title,
                 ProductAttributeValueTag = tag
             };
-
-            
-            
-            
-            //model.ProductAttribute = productAttribute;
-            _repository.AddProductAttributeValue(productAttributeValue);
-
-            return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId});
+            try
+            {
+                _repository.AddProductAttributeValue(productAttributeValue);
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+            }
+            return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId });
         }
 
         public ActionResult Edit(int id)
@@ -84,10 +87,10 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 var productAttributeValue = _repository.GetProductAttributeValue(model.Id);
-                TryUpdateModel(productAttributeValue, new[] { "Title"});
+                TryUpdateModel(productAttributeValue, new[] { "Title" });
                 productAttributeValue.ProductAttributeValueTag = tag;
                 _repository.SaveProductAttributeValue(productAttributeValue);
-                return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId});
+                return RedirectToAction("Index", new { id = productAttributeValue.ProductAttributeId });
             }
             catch (Exception ex)
             {
@@ -99,7 +102,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Delete(int id, int productAttributeId)
         {
             _repository.DeleteProductAttributeValue(id);
-            return RedirectToAction("Index",new{id=productAttributeId});
+            return RedirectToAction("Index", new { id = productAttributeId });
         }
 
     }
