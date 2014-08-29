@@ -9,9 +9,6 @@ namespace Kiki.WebSite.Controllers
 {
     public class HomeController : DefaultController
     {
-        //
-        // GET: /Home/
-
         public HomeController(ISiteRepository repository) : base(repository)
         {
 
@@ -19,7 +16,8 @@ namespace Kiki.WebSite.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var content = _repository.GetContent("main");
+            return View(content);
         }
 
     }
