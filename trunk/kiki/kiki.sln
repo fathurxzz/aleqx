@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiki.WebSite", "Kiki.WebSite\Kiki.WebSite.csproj", "{EFCA6FEB-643E-4CEC-A19B-4A2C7326E150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiki.DataAccess", "Kiki.DataAccess\Kiki.DataAccess.csproj", "{A6DFA683-561D-4348-98A0-6E975522ADFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiki.Database", "Kiki.Database\Kiki.Database.csproj", "{AA8ED256-7927-425F-9AEC-4BA7A14768DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiki.DataAccess.EntityFramework", "Kiki.DataAccess.EntityFramework\Kiki.DataAccess.EntityFramework.csproj", "{D7F9719A-4C02-4166-B7DD-CAF7B25114D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kiki.Api", "Kiki.Api\Kiki.Api.csproj", "{E191D183-2231-4EB7-95B9-6224B459CFB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFCA6FEB-643E-4CEC-A19B-4A2C7326E150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCA6FEB-643E-4CEC-A19B-4A2C7326E150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCA6FEB-643E-4CEC-A19B-4A2C7326E150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCA6FEB-643E-4CEC-A19B-4A2C7326E150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6DFA683-561D-4348-98A0-6E975522ADFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6DFA683-561D-4348-98A0-6E975522ADFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6DFA683-561D-4348-98A0-6E975522ADFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6DFA683-561D-4348-98A0-6E975522ADFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA8ED256-7927-425F-9AEC-4BA7A14768DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA8ED256-7927-425F-9AEC-4BA7A14768DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA8ED256-7927-425F-9AEC-4BA7A14768DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA8ED256-7927-425F-9AEC-4BA7A14768DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7F9719A-4C02-4166-B7DD-CAF7B25114D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F9719A-4C02-4166-B7DD-CAF7B25114D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F9719A-4C02-4166-B7DD-CAF7B25114D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F9719A-4C02-4166-B7DD-CAF7B25114D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E191D183-2231-4EB7-95B9-6224B459CFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E191D183-2231-4EB7-95B9-6224B459CFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E191D183-2231-4EB7-95B9-6224B459CFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E191D183-2231-4EB7-95B9-6224B459CFB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
