@@ -17,7 +17,7 @@ namespace Kiki.WebSite.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller="Admin", action = "Default", id = UrlParameter.Optional },
                 new[] { "Kiki.WebSite.Areas.Admin.Controllers" }
             );
         }
