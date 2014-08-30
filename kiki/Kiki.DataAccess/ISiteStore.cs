@@ -20,5 +20,7 @@ namespace Kiki.DataAccess
         IDbSet<ServiceItem> ServiceItems { get; }
         IDbSet<SiteImage> SiteImages { get; }
         IDbSet<Subscriber> Subscribers { get; }
+
+        int SaveChanges();
     }
 }

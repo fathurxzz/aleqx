@@ -1,0 +1,78 @@
+﻿@model string
+<div class="menu">
+<ul class="nav nav-tabs" role="tablist">
+    @if (Model == "Category")
+    {
+        <li class="active">@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Категории", "Index", "Category", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "ProductAttribute")
+    {
+        <li class="active">@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Атрибуты", "Index", "ProductAttribute", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "ProductAttributeValueTag")
+    {
+        <li class="active">@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Теги значений атрибутов", "Index", "ProductAttributeValueTag", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "Product")
+    {
+        <li class="active">@Html.ActionLink("Товары", "Index", "Product", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Товары", "Index", "Product", new { area = "Admin" }, null)</li>
+    }
+    
+     @if (Model == "Article")
+    {
+        <li class="active">@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "Content")
+    {
+        <li class="active">@Html.ActionLink("Страницы контента", "Index", "Content", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Страницы контента", "Index", "Content", new { area = "Admin" }, null)</li>
+    }
+    
+    @if (Model == "QuickAdvice")
+    {
+        <li class="active">@Html.ActionLink("Советы", "Index", "QuickAdvice", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Советы", "Index", "QuickAdvice", new { area = "Admin" }, null)</li>
+    }
+
+    @if (Model == "Order")
+    {
+        <li class="active">@Html.ActionLink("Заказы", "Index", "Order", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Заказы", "Index", "Order", new { area = "Admin" }, null)</li>
+    }
+    
+    
+</ul>
+    </div>

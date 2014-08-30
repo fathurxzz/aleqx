@@ -47,5 +47,10 @@ namespace Kiki.DataAccess.Models
         {
             get { return _context.Subscribers; }
         }
+
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }
