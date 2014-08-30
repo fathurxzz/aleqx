@@ -12,6 +12,21 @@ namespace Kiki.WebSite
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("favicon.ico");
+
+            routes.MapRoute(
+                "Login",
+                "login",
+                new { controller = "Auth", action = "Login" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+            routes.MapRoute(
+                "LogOut",
+                "logout",
+                new { controller = "Auth", action = "Logout" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
 
             routes.MapRoute(
                  "Default",
