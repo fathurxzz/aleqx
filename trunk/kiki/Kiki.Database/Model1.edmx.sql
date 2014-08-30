@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/29/2014 23:33:03
+-- Date Created: 08/30/2014 22:27:23
 -- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -19,6 +19,7 @@ USE `gbua_leoslr`;
 -- NOTE: if the constraint does not exist, an ignorable error will be reported.
 -- --------------------------------------------------
 
+--    ALTER TABLE `ServiceItem` DROP CONSTRAINT `FK_ServiceServiceItem`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -63,7 +64,7 @@ ALTER TABLE `Attention` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Content`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Name` varchar (200) NOT NULL UNIQUE, 
+	`Name` varchar (200) NOT NULL, 
 	`Title` varchar (200) NOT NULL, 
 	`MenuTitle` varchar (200), 
 	`SortOrder` int NOT NULL, 
@@ -80,7 +81,7 @@ ALTER TABLE `Content` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Subscriber`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Email` varchar (200) NOT NULL UNIQUE);
+	`Email` varchar (200) NOT NULL);
 
 ALTER TABLE `Subscriber` ADD PRIMARY KEY (Id);
 
@@ -100,7 +101,9 @@ CREATE TABLE `Article`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Date` datetime NOT NULL, 
 	`Title` varchar (200) NOT NULL, 
-	`Text` varchar (10000) NOT NULL);
+	`Text` varchar (10000) NOT NULL, 
+	`Name` varchar (200) NOT NULL, 
+	`ImageSource` varchar (200) NOT NULL);
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
@@ -109,7 +112,7 @@ ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `Service`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Name` varchar (200) NOT NULL UNIQUE, 
+	`Name` varchar (200) NOT NULL, 
 	`Title` varchar (200), 
 	`Description` varchar (1000), 
 	`Price` varchar (50), 

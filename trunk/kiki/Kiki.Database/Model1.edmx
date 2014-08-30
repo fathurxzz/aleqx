@@ -75,6 +75,8 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Service">
     <Key>
@@ -207,6 +209,8 @@
           <Property Type="DateTime" Name="Date" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -331,6 +335,8 @@
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -15,11 +15,10 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         {
 
         }
-
-        public ActionResult Index()
+        
+        public ActionResult Default()
         {
             return View();
         }
-
     }
 }

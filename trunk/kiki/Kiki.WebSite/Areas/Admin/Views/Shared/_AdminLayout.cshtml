@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Active Land &mdash; Система администрирования &mdash; @ViewBag.Title</title>
+    @Styles.Render("~/Content/css/bootstrap.min.css", "~/Content/css/bootstrap-select.min.css", "~/Content/css/jquery-ui.min.css", "~/Content/css/jquery-ui.structure.min.css", "~/Content/css/Admin.css")
+</head>
+<body>
+    
+    
+    
+    @Html.Partial("LogOut")
+
+
+    @RenderSection("AdminNavigation", false)
+
+
+    @if (TempData["errorMessage"] != null)
+    {
+        <div style="text-align: center">
+            <h4><span class="label label-danger">@TempData["errorMessage"]</span>    </h4>
+        </div>
+    }
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/Scripts/bootstrap.min.js", "~/Scripts/bootstrap-select.js")
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+            $('.selectpicker').selectpicker();
+        })
+    </script>
+
+</body>
+</html>

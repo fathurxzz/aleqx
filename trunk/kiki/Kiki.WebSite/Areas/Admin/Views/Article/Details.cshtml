@@ -1,0 +1,26 @@
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@model Kiki.DataAccess.Entities.Article
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Article")
+}
+
+<div class="container">
+
+    <h3>@Model.Title</h3>
+    <div>
+        @Html.Raw(Model.Text)
+    </div>
+    <p>
+        @Html.ActionLink("Назад к списку", "Index", "Article")
+    </p>
+</div>
+
+
