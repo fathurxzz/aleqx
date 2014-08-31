@@ -22,6 +22,9 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
 
             this.Property(t => t.MenuTitle)
                 .HasMaxLength(200);
+            
+            this.Property(t => t.ImageSource)
+                .HasMaxLength(200);
 
             this.Property(t => t.SeoDescription)
                 .HasMaxLength(1000);
@@ -47,6 +50,7 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.SeoKeywords).HasColumnName("SeoKeywords");
             this.Property(t => t.SeoText).HasColumnName("SeoText");
             this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.ImageSource).HasColumnName("ImageSource");
         }
     }
 }

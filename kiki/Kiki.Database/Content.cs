@@ -24,5 +24,7 @@ namespace Kiki.Database
         public string SeoKeywords { get; set; }
         public string SeoText { get; set; }
         public string Text { get; set; }
+        public string TitleImageSource { get; set; }
+        public string BannerImageSource { get; set; }
     }
 }

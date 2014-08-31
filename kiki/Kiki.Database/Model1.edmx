@@ -52,6 +52,8 @@
     <Property Name="SeoKeywords" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="SeoText" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="Text" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="TitleImageSource" Type="longtext" Nullable="false" />
+    <Property Name="BannerImageSource" Type="longtext" Nullable="false" />
   </EntityType>
   <EntityType Name="Subscriber">
     <Key>
@@ -66,6 +68,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ImageType" Type="int" Nullable="false" />
+    <Property Name="Text" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Article">
     <Key>
@@ -77,6 +81,7 @@
     <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Service">
     <Key>
@@ -186,6 +191,8 @@
           <Property Type="String" Name="SeoKeywords" MaxLength="1000" />
           <Property Type="String" Name="SeoText" MaxLength="10000" />
           <Property Type="String" Name="Text" MaxLength="10000" />
+          <Property Type="String" Name="TitleImageSource" Nullable="false" />
+          <Property Type="String" Name="BannerImageSource" Nullable="false" />
         </EntityType>
         <EntityType Name="Subscriber">
           <Key>
@@ -200,6 +207,8 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="ImageType" Nullable="false" />
+          <Property Type="String" Name="Text" MaxLength="200" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -211,6 +220,7 @@
           <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Description" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -309,6 +319,8 @@
           <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
           <ScalarProperty Name="SeoText" ColumnName="SeoText" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TitleImageSource" ColumnName="TitleImageSource" />
+          <ScalarProperty Name="BannerImageSource" ColumnName="BannerImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -325,6 +337,8 @@
         <MappingFragment StoreEntitySet="SiteImage">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -337,6 +351,7 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

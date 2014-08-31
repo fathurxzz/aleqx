@@ -289,6 +289,8 @@
     <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\LogOut.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -326,7 +328,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Content\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Content\tmpImages\" />
     <Folder Include="Models\" />
