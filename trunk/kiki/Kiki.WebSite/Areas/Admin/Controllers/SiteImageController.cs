@@ -15,6 +15,5 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         {
             return View();
         }
-
     }
 }

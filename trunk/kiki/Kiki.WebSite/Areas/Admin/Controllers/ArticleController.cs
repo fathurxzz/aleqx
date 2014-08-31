@@ -44,6 +44,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                         : SiteHelper.UpdatePageWebName(model.Name),
                     Date = model.Date,
                     Title = model.Title,
+                    Description = model.Description,
                     Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text)
                 };
 
@@ -94,7 +95,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             {
                 var article = _repository.GetArticle(model.Id);
                 article.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(article, new[] { "Title", "Date"});
+                TryUpdateModel(article, new[] { "Title", "Date", "Description"});
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 

@@ -15,11 +15,19 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.ImageSource)
                 .IsRequired()
                 .HasMaxLength(200);
+            
+            this.Property(t => t.Text)
+                .HasMaxLength(200);
+
+
+
 
             // Table & Column Mappings
             this.ToTable("SiteImage", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
+            this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.ImageType).HasColumnName("ImageType");
         }
     }
 }

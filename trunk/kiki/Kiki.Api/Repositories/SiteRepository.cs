@@ -18,41 +18,7 @@ namespace Kiki.Api.Repositories
 
        
 
-        public IEnumerable<Content> GetContents()
-        {
-            var contents = _store.Contents.ToList();
-            return contents;
-        }
-
-        public Content GetContent(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Content GetContent(string name)
-        {
-            return _store.Contents.FirstOrDefault(c => c.Name == name);
-        }
-
-        public Content GetContent()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteContent(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveContent(Content content)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int AddContent(Content content)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public IEnumerable<Reason> GetReasons()
         {

@@ -12,5 +12,6 @@ namespace Kiki.DataAccess.Entities
         public string SeoKeywords { get; set; }
         public string SeoText { get; set; }
         public string Text { get; set; }
+        public string ImageSource { get; set; }
     }
 }

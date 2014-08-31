@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/30/2014 22:27:23
+-- Date Created: 08/31/2014 11:59:16
 -- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_leoslr`;
-CREATE DATABASE `gbua_leoslr`;
-USE `gbua_leoslr`;
+DROP DATABASE IF EXISTS `gbua_kiki`;
+CREATE DATABASE `gbua_kiki`;
+USE `gbua_kiki`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -72,7 +72,9 @@ CREATE TABLE `Content`(
 	`SeoDescription` varchar (1000), 
 	`SeoKeywords` varchar (1000), 
 	`SeoText` varchar (10000), 
-	`Text` varchar (10000));
+	`Text` varchar (10000), 
+	`TitleImageSource` longtext NOT NULL, 
+	`BannerImageSource` longtext NOT NULL);
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);
 
@@ -90,7 +92,9 @@ ALTER TABLE `Subscriber` ADD PRIMARY KEY (Id);
 
 CREATE TABLE `SiteImage`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`ImageSource` varchar (200) NOT NULL);
+	`ImageSource` varchar (200) NOT NULL, 
+	`ImageType` int NOT NULL, 
+	`Text` varchar (200));
 
 ALTER TABLE `SiteImage` ADD PRIMARY KEY (Id);
 
@@ -103,7 +107,8 @@ CREATE TABLE `Article`(
 	`Title` varchar (200) NOT NULL, 
 	`Text` varchar (10000) NOT NULL, 
 	`Name` varchar (200) NOT NULL, 
-	`ImageSource` varchar (200) NOT NULL);
+	`ImageSource` varchar (200) NOT NULL, 
+	`Description` varchar (200) NOT NULL);
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 

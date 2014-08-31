@@ -19,9 +19,7 @@ namespace Kiki.DataAccess.Repositories
         Content GetContent(int id);
         Content GetContent(string name);
         Content GetContent();
-        void DeleteContent(int id);
         void SaveContent(Content content);
-        int AddContent(Content content);
 
         // Reason
         IEnumerable<Reason> GetReasons();
