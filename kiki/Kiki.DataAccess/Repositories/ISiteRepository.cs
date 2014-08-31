@@ -6,7 +6,9 @@ namespace Kiki.DataAccess.Repositories
 {
     public interface ISiteRepository:IRepository
     {
-        IEnumerable<Article> GetArticles(bool showOnlyActive = false);
+
+        // Articles
+        IEnumerable<Article> GetArticles();
         Article GetArticle(int id);
         Article GetArticle(string name);
         void DeleteArticle(int id, Action<string> deleteImages);
@@ -23,19 +25,37 @@ namespace Kiki.DataAccess.Repositories
 
         // Reason
         IEnumerable<Reason> GetReasons();
-        Content GetReason(int id);
-        Content GetReason();
+        Reason GetReason(int id);
         void DeleteReason(int id);
-        void SaveReason(Reason content);
-        int AddReason(Reason content);
+        void SaveReason(Reason reason);
+        int AddReason(Reason reason);
 
-        // Attention 
-        IEnumerable<Attention> GetAttentions();
-        Content GetAttention(int id);
-        Content GetAttention();
-        void DeleteAttention(int id);
-        void SaveAttention(Attention content);
-        int AddAttention(Attention content);
+        // SiteImage
+        IEnumerable<SiteImage> GetSiteImages(ImageType imageType);
+        SiteImage GetSiteImage(int id);
+        void DeleteSiteImage(int id, Action<string> deleteImages);
+        int AddSiteImage(SiteImage siteImage);
+        void SaveSiteImage(SiteImage siteImage);
+
+        // Sales
+        IEnumerable<Sale> GetSales();
+        Sale GetSale(int id);
+        Sale GetSale(string name);
+        void DeleteSale(int id, Action<string> deleteImages);
+        int AddSale(Sale sale);
+        void SaveSale(Sale sale);
+
+        // GalleryImage
+        IEnumerable<GalleryImage> GetGalleryImages();
+        void DeleteGalleryImage(int id, Action<string> deleteImages);
+        int AddGalleryImage(GalleryImage galleryImage);
+
+        // Subscribers 
+        IEnumerable<Subscriber> GetSubscribers();
+        Subscriber GetSubscriber(int id);
+        void DeleteSubscriber(int id);
+        void SaveSubscriber(Subscriber subscriber);
+        int AddSubscriber(Subscriber subscriber);
 
     }
 }

@@ -12,22 +12,25 @@ using Kiki.WebSite.Helpers.Graphics;
 
 namespace Kiki.WebSite.Areas.Admin.Controllers
 {
-    public class AttentionController : AdminController
+    public class BannerController : AdminController
     {
-        public AttentionController(ISiteRepository repository) : base(repository)
+        //
+        // GET: /Admin/Banner/
+
+        public BannerController(ISiteRepository repository) : base(repository)
         {
 
         }
 
         public ActionResult Index()
         {
-            var siteImages = _repository.GetSiteImages(ImageType.Attention);
+            var siteImages = _repository.GetSiteImages(ImageType.Banner);
             return View(siteImages);
         }
 
         public ActionResult Create()
         {
-            return View(new SiteImage { ImageType = (int)ImageType.Attention });
+            return View(new SiteImage { ImageType = (int)ImageType.Banner });
         }
 
         [HttpPost]
@@ -68,57 +71,9 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
-        {
-            try
-            {
-                var siteImage = _repository.GetSiteImage(id);
-                return View(siteImage);
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return RedirectToAction("Index");
-            }
-        }
+ 
 
-        [HttpPost]
-        public ActionResult Edit(SiteImage model)
-        {
-            try
-            {
-                var article = _repository.GetSiteImage(model.Id);
-                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
-
-                var file = Request.Files[0];
-                if (file != null && !string.IsNullOrEmpty(file.FileName))
-                {
-                    if (!string.IsNullOrEmpty(article.ImageSource))
-                    {
-                        ImageHelper.DeleteImage(article.ImageSource);
-                    }
-
-                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
-                    string filePath = Server.MapPath("~/Content/Images");
-
-                    filePath = Path.Combine(filePath, fileName);
-                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
-                    article.ImageSource = fileName;
-                }
-                else
-                {
-                    article.ImageSource = article.ImageSource ?? "";
-                }
-
-                _repository.SaveSiteImage(article);
-            }
-            catch (Exception ex)
-            {
-                TempData["errorMessage"] = ex.Message;
-                return View(model);
-            }
-            return RedirectToAction("Index");
-        }
+        
 
         public ActionResult Delete(int id)
         {

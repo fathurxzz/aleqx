@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="SiteContext.cs" />
     <Compile Include="Mapping\ArticleMap.cs" />
-    <Compile Include="Mapping\AttentionMap.cs" />
     <Compile Include="Mapping\ContentMap.cs" />
     <Compile Include="Mapping\GalleryImageMap.cs" />
     <Compile Include="Mapping\ReasonMap.cs" />

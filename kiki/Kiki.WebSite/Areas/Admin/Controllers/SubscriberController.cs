@@ -1,47 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kiki.DataAccess.Entities;
 using Kiki.DataAccess.Repositories;
-using Kiki.WebSite.Helpers;
-using Kiki.WebSite.Helpers.Graphics;
 
 namespace Kiki.WebSite.Areas.Admin.Controllers
 {
-    public class ReasonController : AdminController
+    public class SubscriberController : AdminController
     {
-        public ReasonController(ISiteRepository repository) : base(repository)
+        //
+        // GET: /Admin/Subscriber/
+
+        public SubscriberController(ISiteRepository repository) : base(repository)
         {
         }
 
         public ActionResult Index()
         {
-            var articles = _repository.GetReasons();
+            var articles = _repository.GetSubscribers();
             return View(articles);
         }
 
         public ActionResult Create()
         {
-            return View(new Reason ());
+            return View(new Subscriber());
         }
 
         [HttpPost]
-        public ActionResult Create(Reason model)
+        public ActionResult Create(Subscriber model)
         {
             try
             {
                 model.Id = 0;
-                var article = new Reason
+                var article = new Subscriber
                 {
-                    Title = model.Title,
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
-                    SortOrder = model.SortOrder
+                   Email = model.Email
                 };
 
-                _repository.AddReason(article);
+                _repository.AddSubscriber(article);
             }
             catch (Exception ex)
             {
@@ -56,7 +54,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                var article = _repository.GetReason(id);
+                var article = _repository.GetSubscriber(id);
                 return View(article);
             }
             catch (Exception ex)
@@ -71,11 +69,10 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                var article = _repository.GetReason(model.Id);
-                TryUpdateModel(article, new[] { "Title", "SortOrder"});
+                var article = _repository.GetSubscriber(model.Id);
+                TryUpdateModel(article, new[] { "Email" });
 
-                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
-                _repository.SaveReason(article);
+                _repository.SaveSubscriber(article);
             }
             catch (Exception ex)
             {
@@ -89,7 +86,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                _repository.DeleteReason(id);
+                _repository.DeleteSubscriber(id);
             }
             catch (Exception ex)
             {
@@ -97,6 +94,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
 
     }
 }

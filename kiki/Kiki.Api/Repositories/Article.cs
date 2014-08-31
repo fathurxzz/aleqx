@@ -10,7 +10,7 @@ namespace Kiki.Api.Repositories
 {
     public partial class SiteRepository : ISiteRepository
     {
-        public IEnumerable<Article> GetArticles(bool showOnlyActive = false)
+        public IEnumerable<Article> GetArticles()
         {
             return _store.Articles.ToList();
         }

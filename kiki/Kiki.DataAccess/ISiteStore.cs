@@ -11,7 +11,6 @@ namespace Kiki.DataAccess
     public interface ISiteStore
     {
         IDbSet<Article> Articles { get; }
-        IDbSet<Attention> Attentions { get; }
         IDbSet<Content> Contents { get; }
         IDbSet<GalleryImage> GalleryImages { get; }
         IDbSet<Reason> Reasons { get; }
@@ -20,6 +19,7 @@ namespace Kiki.DataAccess
         IDbSet<ServiceItem> ServiceItems { get; }
         IDbSet<SiteImage> SiteImages { get; }
         IDbSet<Subscriber> Subscribers { get; }
+
 
         int SaveChanges();
     }

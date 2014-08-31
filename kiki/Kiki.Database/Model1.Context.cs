@@ -26,7 +26,6 @@ namespace Kiki.Database
         }
     
         public DbSet<Reason> Reason { get; set; }
-        public DbSet<Attention> Attention { get; set; }
         public DbSet<Content> Content { get; set; }
         public DbSet<Subscriber> Subscriber { get; set; }
         public DbSet<SiteImage> SiteImage { get; set; }

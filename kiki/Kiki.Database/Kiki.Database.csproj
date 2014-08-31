@@ -49,9 +49,6 @@
     <Compile Include="Article.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Attention.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Content.cs">
       <DependentUpon>Model1.tt</DependentUpon>
