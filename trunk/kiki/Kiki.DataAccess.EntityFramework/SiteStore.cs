@@ -11,10 +11,7 @@ namespace Kiki.DataAccess.Models
         {
             get { return _context.Articles; }
         }
-        public IDbSet<Attention> Attentions
-        {
-            get { return _context.Attentions; }
-        }
+        
         public IDbSet<Content> Contents
         {
             get { return _context.Contents; }

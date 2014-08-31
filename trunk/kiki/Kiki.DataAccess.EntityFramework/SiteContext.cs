@@ -19,7 +19,6 @@ namespace Kiki.DataAccess.Models
         }
 
         public DbSet<Article> Articles { get; set; }
-        public DbSet<Attention> Attentions { get; set; }
         public DbSet<Content> Contents { get; set; }
         public DbSet<GalleryImage> GalleryImages { get; set; }
         public DbSet<Reason> Reasons { get; set; }
@@ -32,7 +31,6 @@ namespace Kiki.DataAccess.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ArticleMap());
-            modelBuilder.Configurations.Add(new AttentionMap());
             modelBuilder.Configurations.Add(new ContentMap());
             modelBuilder.Configurations.Add(new GalleryImageMap());
             modelBuilder.Configurations.Add(new ReasonMap());

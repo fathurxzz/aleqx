@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kiki.DataAccess;
 using Kiki.DataAccess.Entities;
 using Kiki.DataAccess.Repositories;
 using Kiki.WebSite.Helpers;
@@ -11,39 +12,35 @@ using Kiki.WebSite.Helpers.Graphics;
 
 namespace Kiki.WebSite.Areas.Admin.Controllers
 {
-    public class SaleController : AdminController
+    public class MainImageController : AdminController
     {
-        public SaleController(ISiteRepository repository) : base(repository)
+        public MainImageController(ISiteRepository repository)
+            : base(repository)
         {
+
         }
 
         public ActionResult Index()
         {
-            var articles = _repository.GetSales();
-            return View(articles);
+            var siteImages = _repository.GetSiteImages(ImageType.MainImage);
+            return View(siteImages);
         }
 
         public ActionResult Create()
         {
-            return View(new Sale(){StartDate = DateTime.Now, EndDate = DateTime.Now});
+            return View(new SiteImage{ImageType = (int)ImageType.MainImage});
         }
 
         [HttpPost]
-        public ActionResult Create(Sale model)
+        public ActionResult Create(SiteImage model)
         {
             try
             {
                 model.Id = 0;
-                var article = new Sale
+                var siteImage = new SiteImage
                 {
-                    Name = string.IsNullOrEmpty(model.Name)
-                        ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
-                        : SiteHelper.UpdatePageWebName(model.Name),
-                    StartDate = model.StartDate,
-                    EndDate = model.EndDate,
-                    Title = model.Title,
-                    Description = model.Description,
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text)
+                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
+                    ImageType = model.ImageType
                 };
 
                 var file = Request.Files[0];
@@ -54,14 +51,14 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
 
                     filePath = Path.Combine(filePath, fileName);
                     GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
-                    article.ImageSource = fileName;
+                    siteImage.ImageSource = fileName;
                 }
                 else
                 {
-                    article.ImageSource = article.ImageSource ?? "";
+                    siteImage.ImageSource = siteImage.ImageSource ?? "";
                 }
 
-                _repository.AddSale(article);
+                _repository.AddSiteImage(siteImage);
             }
             catch (Exception ex)
             {
@@ -76,8 +73,8 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                var article = _repository.GetSale(id);
-                return View(article);
+                var siteImage = _repository.GetSiteImage(id);
+                return View(siteImage);
             }
             catch (Exception ex)
             {
@@ -87,14 +84,11 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Sale model)
+        public ActionResult Edit(SiteImage model)
         {
             try
             {
-                var article = _repository.GetSale(model.Id);
-                article.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(article, new[] { "Title", "StartDate", "EndDate", "Description" });
-
+                var article = _repository.GetSiteImage(model.Id);
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 
                 var file = Request.Files[0];
@@ -117,7 +111,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                     article.ImageSource = article.ImageSource ?? "";
                 }
 
-                _repository.SaveSale(article);
+                _repository.SaveSiteImage(article);
             }
             catch (Exception ex)
             {
@@ -127,17 +121,11 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details(int id)
-        {
-            var article = _repository.GetSale(id);
-            return View(article);
-        }
-
         public ActionResult Delete(int id)
         {
             try
             {
-                _repository.DeleteSale(id, ImageHelper.DeleteImage);
+                _repository.DeleteSiteImage(id, ImageHelper.DeleteImage);
             }
             catch (Exception ex)
             {

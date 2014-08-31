@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/31/2014 11:59:16
+-- Date Created: 09/01/2014 01:17:28
 -- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -26,7 +26,6 @@ USE `gbua_kiki`;
 -- --------------------------------------------------
 SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Reason`;
-    DROP TABLE IF EXISTS `Attention`;
     DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `Subscriber`;
     DROP TABLE IF EXISTS `SiteImage`;
@@ -48,16 +47,6 @@ CREATE TABLE `Reason`(
 	`Text` varchar (1000));
 
 ALTER TABLE `Reason` ADD PRIMARY KEY (Id);
-
-
-
-
-CREATE TABLE `Attention`(
-	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
-	`Text` varchar (200), 
-	`ImageSource` varchar (200) NOT NULL);
-
-ALTER TABLE `Attention` ADD PRIMARY KEY (Id);
 
 
 
@@ -151,7 +140,8 @@ CREATE TABLE `Sale`(
 	`Text` varchar (10000), 
 	`StartDate` datetime NOT NULL, 
 	`EndDate` datetime NOT NULL, 
-	`ImageSource` varchar (200));
+	`ImageSource` varchar (200), 
+	`Name` varchar (200) NOT NULL);
 
 ALTER TABLE `Sale` ADD PRIMARY KEY (Id);
 

@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kiki.DataAccess;
+using Kiki.DataAccess.Repositories;
 
 namespace Kiki.WebSite.Areas.Admin.Controllers
 {
-    public class SiteImageController : Controller
+    public class SiteImageController : AdminController
     {
         //
         // GET: /Admin/SiteImage/
 
-        public ActionResult Index()
+
+        public SiteImageController(ISiteRepository repository) : base(repository)
         {
-            return View();
+
         }
     }
 }

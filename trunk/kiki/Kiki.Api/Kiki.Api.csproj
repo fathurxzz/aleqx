@@ -49,7 +49,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Article.cs" />
     <Compile Include="Repositories\Content.cs" />
+    <Compile Include="Repositories\GalleryImage.cs" />
+    <Compile Include="Repositories\Reason.cs" />
+    <Compile Include="Repositories\Sale.cs" />
+    <Compile Include="Repositories\SiteImage.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
+    <Compile Include="Repositories\Subscriber.cs" />
     <Compile Include="UserExceptions.cs" />
   </ItemGroup>
   <ItemGroup>

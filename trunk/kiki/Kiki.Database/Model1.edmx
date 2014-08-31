@@ -7,7 +7,6 @@
     <Schema Namespace="Model1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="Reason" EntityType="Model1.Store.Reason" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Attention" EntityType="Model1.Store.Attention" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Model1.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Subscriber" EntityType="Model1.Store.Subscriber" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SiteImage" EntityType="Model1.Store.SiteImage" store:Type="Tables" Schema="dbo" />
@@ -29,14 +28,6 @@
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Text" Type="varchar" Nullable="true" MaxLength="1000" />
-  </EntityType>
-  <EntityType Name="Attention">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Text" Type="varchar" Nullable="true" MaxLength="200" />
-    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -119,6 +110,7 @@
     <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="GalleryImage">
     <Key>
@@ -146,7 +138,6 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Reason" EntityType="Model1.Reason" />
-          <EntitySet Name="Attention" EntityType="Model1.Attention" />
           <EntitySet Name="Content" EntityType="Model1.Content" />
           <EntitySet Name="Subscriber" EntityType="Model1.Subscriber" />
           <EntitySet Name="SiteImage" EntityType="Model1.SiteImage" />
@@ -168,14 +159,6 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="Title" MaxLength="200" Nullable="false" />
           <Property Type="String" Name="Text" MaxLength="1000" />
-        </EntityType>
-        <EntityType Name="Attention">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Text" MaxLength="200" />
-          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -260,6 +243,7 @@
           <Property Type="DateTime" Name="StartDate" Nullable="false" />
           <Property Type="DateTime" Name="EndDate" Nullable="false" />
           <Property Type="String" Name="ImageSource" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="GalleryImage">
           <Key>
@@ -294,15 +278,6 @@
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Attention">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.Attention)">
-        <MappingFragment StoreEntitySet="Attention">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
-          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -392,6 +367,7 @@
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
