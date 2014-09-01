@@ -12,7 +12,7 @@ namespace Kiki.Api.Repositories
     {
         public IEnumerable<Reason> GetReasons()
         {
-            return _store.Reasons.ToList();
+            return _store.Reasons.OrderBy(r=>r.SortOrder).ToList();
         }
 
         public Reason GetReason(int id)

@@ -1,9 +1,75 @@
-﻿@model Kiki.DataAccess.Entities.Content
-
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@using Kiki.WebSite.Models
+@model Kiki.WebSite.Models.SiteModel
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-@Model.Title
+@section TopMenu
+{
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Menu
+{
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Banner
+{
+    @if (Model.Banner != null)
+    {
+        @Html.Partial("Banner",Model.Banner.ImageSource)
+    }
+}
+
+<div class="main-image-container">
+    <div class="main-image-wrapper">
+        <div class="main-image-layout"></div>
+        <div class="main-image-text-container">
+            <div class="text">
+                Настоящий<br>
+                мужской мейк-ап &mdash;<br>
+                всего за<br>
+                <span class="digit">40</span><br>
+                <span
+                    class="bottom">минут</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 1px;"></div>
+<div class="secret">
+</div>
+<div class="secret-frame">
+    вот <a href="#secret-info">почему</a> вы<br>
+    к нам вернетесь:
+</div>
+<div class="vertical-line-top"></div>
+<div class="horizontal-line"></div>
+<div class="vertical-line-bottom"></div>
+
+<div class="secret-info" id="secret-info">
+     @foreach (var item in Model.Reasons)
+        {
+            <div class="secret-info-block">
+        
+       
+                <div class="container">
+                    <div class="digit-frame">@item.SortOrder</div>
+                </div>
+                <div class="container">
+                    <div class="title">@item.Title</div>
+                </div>
+                <div class="container">
+                    <div class="text">
+                        @Html.Raw(item.Text)
+                    </div>
+                </div>
+        
+            </div>
+        }
+</div>
+
+

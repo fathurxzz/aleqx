@@ -1,0 +1,28 @@
+.services
+{
+    margin-top: 150px;
+}
+
+.service-search
+{
+    width: 547px;
+    height: 87px;
+    background: url("../img/service-search.png");
+    margin: 0 auto;
+    position: relative;
+}
+
+#search
+{
+    margin-top: 34px;
+    margin-left: 5px;
+    width: 510px;
+    height: 45px;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 22px;
+    padding-left: 20px;
+    color: #4b4b4b;
+    font-style: italic;
+}

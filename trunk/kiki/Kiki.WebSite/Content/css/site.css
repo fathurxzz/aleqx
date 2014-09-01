@@ -1,0 +1,15 @@
+body
+{
+    background-color: #ffffff;
+    font-family: 'PT Sans',serif;
+}
+
+.page {
+    width: 1224px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+a
+{color: #00bff3;}

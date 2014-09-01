@@ -1,0 +1,36 @@
+.header-top {
+    height: 23px;
+    background-color: #f4f4f4;
+    text-transform: uppercase;
+    color: #444444;
+    font-family: 'PT Sans Narrow', serif;
+    font-size: 13px;
+    text-align: center;
+    min-width: 1224px;
+    font-weight: 700;
+}
+
+.header-top li {
+    list-style: none;
+    display: inline-block;
+    padding: 3px 40px;
+}
+
+.header-top a {
+    color: #3cccf3;
+}
+
+#logo {
+    position: absolute;
+    width: 208px;
+    height: 55px;
+    background: url("../img/logo.png") no-repeat;
+    margin-left: 33px;
+    margin-top: 63px;
+}
+
+.header
+{
+    position: relative;
+    height: 160px;
+}
