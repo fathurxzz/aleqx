@@ -1,0 +1,36 @@
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@using Kiki.WebSite.Models
+@model Kiki.WebSite.Models.SiteModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TopMenu
+{
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Menu
+{
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Banner
+{
+    @if (Model.Banner != null)
+    {
+        @Html.Partial("Banner", Model.Banner.ImageSource)
+    }
+}
+
+@Html.Partial("Title",new SiteTitle{Title = Model.Content.Title, ImageSource = Model.Content.ImageSource} )
+
+
+
+<div class="site-content">
+    @Html.Raw(Model.Content.Text)
+</div>
+
+
+

@@ -23,6 +23,10 @@ namespace Kiki.WebSite.Models
         public IEnumerable<Content> Contents { get; set; }
         public Content Content { get; set; }
         public IEnumerable<Reason> Reasons { get; set; }
+        public IEnumerable<Article> Articles { get; set; }
+        public IEnumerable<Sale> Sales { get; set; }
+        public SiteImage MainImage { get; set; }
+        public SiteImage Attention { get; set; }
 
         public SiteModel(ISiteRepository repository, string contentName)
         {
@@ -31,12 +35,17 @@ namespace Kiki.WebSite.Models
             Attentions = repository.GetSiteImages(ImageType.Attention);
             Banners = repository.GetSiteImages(ImageType.Banner);
             Contents = repository.GetContents();
+            Articles = repository.GetArticles();
+            Sales = repository.GetSales();
 
             Content = contentName != null 
                 ? Contents.FirstOrDefault(c => c.Name == contentName) 
                 : Contents.FirstOrDefault(c => c.ContentType == 0);
 
             Banner = Banners.OrderBy(r => Guid.NewGuid()).Take(1).FirstOrDefault();
+            MainImage = MainImages.OrderBy(r => Guid.NewGuid()).Take(1).FirstOrDefault();
+            Attention = Attentions.OrderBy(r => Guid.NewGuid()).Take(1).FirstOrDefault();
+
             Reasons = repository.GetReasons();
 
         }

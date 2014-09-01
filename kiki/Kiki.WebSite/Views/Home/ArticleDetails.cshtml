@@ -1,0 +1,59 @@
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@using Kiki.WebSite.Models
+@model Kiki.WebSite.Models.ArticleModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TopMenu
+{
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Menu
+{
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+
+@Html.Partial("Title",new SiteTitle{Title = Model.Article.Title, ImageSource = Model.Article.ImageSource} )
+
+
+ <div class="article-details">
+
+        <div class="article-preview">
+            <div class="image">
+                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Article.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))
+            </div>
+            <div class="date">@Model.Article.Date.ToShortDateString()</div>
+            <div class="title">@Model.Article.Title</div>
+        </div>
+
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+
+
+
+
+        <div class="article-details-footer link">
+            <a href="@Url.Action("Index","Home",new{id="articles"})">&laquo; Вернуться к хорошим новостям</a>
+        </div>
+
+    </div>

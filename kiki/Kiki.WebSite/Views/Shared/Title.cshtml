@@ -1,8 +1,14 @@
-﻿@model string
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@model Kiki.WebSite.Models.SiteTitle
 
 <div class="content-title">
-        <div class="title-image"></div>
-        <div class="title">
-            @Html.Raw(Model)
-        </div>
+    
+    <div class="title-image">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteTitle")))    
     </div>
+    
+    <div class="title">
+        @Html.Raw(Model.Title)
+    </div>
+</div>

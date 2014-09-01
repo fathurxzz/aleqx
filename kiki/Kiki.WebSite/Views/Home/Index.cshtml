@@ -24,10 +24,24 @@
     }
 }
 
+
+<div class="attention">
+    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Attention.ImageSource, SiteSettings.GetThumbnail("attention")))
+</div>
+
+
 <div class="main-image-container">
     <div class="main-image-wrapper">
-        <div class="main-image-layout"></div>
-        <div class="main-image-text-container">
+        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainImage.ImageSource, SiteSettings.GetThumbnail("mainImage")))
+    </div>
+</div>
+<div class="pay-attention">
+</div>
+<div class="pay-attention-text">
+    @Html.Raw(Model.Attention.Text)
+</div>
+
+<div class="main-image-text-container">
             <div class="text">
                 Настоящий<br>
                 мужской мейк-ап &mdash;<br>
@@ -37,8 +51,7 @@
                     class="bottom">минут</span>
             </div>
         </div>
-    </div>
-</div>
+
 <div style="height: 1px;"></div>
 <div class="secret">
 </div>

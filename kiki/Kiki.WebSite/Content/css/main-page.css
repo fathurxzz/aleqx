@@ -1,23 +1,27 @@
 .main-image-container {
     position: absolute;
-    height: 800px;
+    height: 748px;
     /*margin-top: 160px;*/
     margin-left: 62px;
 }
 
+
+
 .main-image-container .main-image-wrapper {
     position: absolute;
-    width: 800px;
-    height: 800px;
+    width: 748px;
+    height: 748px;
 
-    background: url("../img/tmp/image1.png");
+        border-radius: 374px;
+    -moz-border-radius: 374px;
+    -webkit-border-radius: 374px;
+    overflow: hidden;
 
+    /*background: url("../img/tmp/image1.png");*/
+    margin-top: 20px;
 }
 
-.main-image-layout {
-    width: 800px;
-    height: 800px;
-    background: url("../img/main-image-layout.png");
+.main-image-container .main-image-wrapper img {
     position: absolute;
 }
 
@@ -26,8 +30,8 @@
     width: 227px;
     height: 218px;
     background: url("../img/main-image-text-container.png");
-    margin-top: 510px;
-    margin-left: 570px;
+    margin-top: 520px;
+    margin-left: 600px;
 }
 
 .main-image-text-container .text {
@@ -56,7 +60,7 @@
     height: 55px;
     background: url("../img/secret.png");
     margin-left: 920px;
-    margin-top: 600px;
+    margin-top: 410px;
 }
 
 .secret-frame {
@@ -145,4 +149,41 @@
     width: 330px;
     color: #656565;
     font-size: 12px;
+}
+
+
+.attention {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    background-color: #96c11f;
+    border-radius: 125px;
+    -moz-border-radius: 125px;
+    -webkit-border-radius: 125px;
+    margin-left: 870px;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+.pay-attention {
+    width: 116px;
+    height: 37px;
+    background: url('../img/pay-attention.png') no-repeat;
+    position: absolute;
+    margin-left: 850px;
+    margin-top: 30px;
+}
+
+.pay-attention-text {
+    background-color: #96c11f;
+    width: 143px;
+    height: 32px;
+    padding-top: 4px;
+    position: absolute;
+    margin-left: 995px;
+    margin-top: 239px;
+    text-align: center;
+    font-family: 'PT Sans Caption',serif;
+    font-size: 10px;
+    color: #fff;
 }
