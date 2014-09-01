@@ -8,7 +8,7 @@ using Kiki.WebSite.Controllers;
 
 namespace Kiki.WebSite.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AdminController : DefaultController
     {
         public AdminController(ISiteRepository repository) : base(repository)

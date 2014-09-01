@@ -1,0 +1,47 @@
+﻿.subscribe-panel
+{
+    width: 207px;
+    height: 181px;
+    margin: 37px 37px 70px;
+    float: left;
+    padding-left: 20px;
+    padding-top: 66px;
+    padding-right: 20px;
+    
+}
+
+.subscribe-panel {
+    background-color: #f9f9f9;
+}
+
+.subscribe-panel .title {
+    font-size: 20px;
+    color: #97c31c;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.subscribe-panel .text {
+    font-size: 12px;
+    color: #414141;
+    letter-spacing: 1px;
+}
+
+#email {
+    margin-top: 15px;
+    border: 2px solid #f2f2f2;
+    outline: none;
+    height: 22px;
+    width: 200px;
+}
+
+#subscribe-btn {
+    background-color: #8baa35;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 3px 8px;
+    margin-top: 15px;
+    width: 60px;
+    cursor: pointer;
+}
+

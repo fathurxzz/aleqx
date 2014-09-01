@@ -1,0 +1,81 @@
+﻿.sales
+{
+    margin-top: 150px;
+    margin-left: -37px;
+    margin-right: -37px;
+}
+
+.sales .sale-preview
+{
+    width: 250px;
+    margin: 37px 37px 70px;
+    float: left;
+}
+
+.sale-preview .title
+{
+    font-weight: 700;
+    font-size: 12px;
+    color: #8dc63f;
+    padding-top: 22px;
+    text-transform: uppercase;
+}
+
+.sale-preview .description
+{
+    font-size: 12px;
+    color: #414141;
+    padding-top: 18px;
+    letter-spacing: 1px;
+}
+
+.sale-preview .link
+{
+    font-size: 12px;
+    color: #00bff3;
+    padding-top: 18px;
+    letter-spacing: 1px;
+}
+
+.sale-preview .link a
+{
+    color: inherit;
+}
+
+.sale-preview .image
+{
+    width: 245px;
+    height: 245px;
+    border: 1px solid #dddcdd;
+}
+
+.sale-preview .image img
+{
+    width: 245px;
+    height: 245px;
+}
+
+.sale-preview .period {
+    height: 36px;
+    position: absolute;
+    color: #ffffff;
+    text-align: center;
+    background-color: #97c31c;
+    position: absolute;
+    display: block;
+    width: 245px;
+    margin-top: 207px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding-top: 2px;
+}
+
+.sale-preview .period.expired {
+    background-color: #dbdbdb;
+    vertical-align: middle;
+    text-transform: uppercase;
+        height: 26px;
+        padding-top: 12px;
+
+}
+

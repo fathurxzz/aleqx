@@ -24,7 +24,7 @@
 
 }
 
-    @Html.Partial("Title",Model.Content.Title)
+@Html.Partial("Title",new SiteTitle{Title = Model.Content.Title, ImageSource = Model.Content.ImageSource} )
 
 
 

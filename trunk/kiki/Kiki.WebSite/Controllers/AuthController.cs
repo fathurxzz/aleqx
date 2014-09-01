@@ -38,7 +38,7 @@ namespace Shop.WebSite.Controllers
         public ActionResult Login(LoginModel loginModel, string returnUrl)
         {
             //if (Membership.ValidateUser(loginModel.Name, loginModel.Password))
-            if (loginModel.Name == "admin" && loginModel.Password == "cde32wsx")
+            if (loginModel.Name == "admin" && loginModel.Password == "kiki")
             {
                 FormsAuthentication.SetAuthCookie(loginModel.Name, loginModel.Keep);
                 return RedirectToLocal(returnUrl);

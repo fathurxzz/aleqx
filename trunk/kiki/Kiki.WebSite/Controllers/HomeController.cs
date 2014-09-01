@@ -13,7 +13,8 @@ namespace Kiki.WebSite.Controllers
 {
     public class HomeController : DefaultController
     {
-        public HomeController(ISiteRepository repository) : base(repository)
+        public HomeController(ISiteRepository repository)
+            : base(repository)
         {
 
         }
@@ -22,14 +23,36 @@ namespace Kiki.WebSite.Controllers
         {
             var model = new SiteModel(_repository, id);
             this.SetSeoContent(model);
-            switch ((ContentType)model.Content.ContentType)
+            switch ((ContentType) model.Content.ContentType)
             {
                 case ContentType.Gallery:
                     return View("Gallery", model);
+                case ContentType.Articles:
+                    return View("Articles", model);
+                case ContentType.Sales:
+                    return View("Sales", model);
+                case ContentType.Contacts:
+                    return View("Contacts", model);
+                case ContentType.Services:
+                    return View("Services", model);
+
                 default:
                     return View(model);
             }
         }
 
-    }
+        public ActionResult ArticleDetails(string id, string contentName)
+        {
+            var model = new ArticleModel(_repository, contentName, id);
+
+            return View(model);
+        }
+
+        public ActionResult SaleDetails(string id, string contentName)
+        {
+            var model = new SaleModel(_repository, contentName, id);
+
+            return View(model);
+        }
+}
 }
