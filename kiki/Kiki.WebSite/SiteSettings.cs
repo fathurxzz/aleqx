@@ -27,6 +27,8 @@ namespace Kiki.WebSite
                                     {"bannerAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 100 }, CacheFolder = "bannerAdminPreview", ScaleMode = ScaleMode.Crop}},
                                     {"saleAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 100 }, CacheFolder = "saleAdminPreview", ScaleMode = ScaleMode.Crop}},
                                     {"contentTitleAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 100 }, CacheFolder = "contentTitleAdminPreview", ScaleMode = ScaleMode.Crop}},
+                                    {"mainImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =800 ,Width = 800 }, CacheFolder = "mainImage", ScaleMode = ScaleMode.Crop}},
+                                    {"banner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =385 ,Width = 1200 }, CacheFolder = "banner", ScaleMode = ScaleMode.Crop}},
                                     //{"articleItemImageAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 50 }, CacheFolder = "articleItemImageAdminPreview", ScaleMode = ScaleMode.Crop}},
                                     //{"articleCaruselItem",new ThumbnailPicture{ PictureSize =new PictureSize {Height =391 ,Width = 522 }, CacheFolder = "articleCaruselItem", ScaleMode = ScaleMode.Crop}},
                                     //{"cartProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =154 ,Width = 154 }, CacheFolder = "cartProductImage", ScaleMode = ScaleMode.Crop}},

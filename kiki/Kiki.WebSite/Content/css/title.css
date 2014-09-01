@@ -1,0 +1,29 @@
+.content-title
+{
+
+}
+
+.content-title .title-image
+{
+    width: 604px;
+    height: 139px;
+    background: url("../img/tmp/image2.png");
+}
+
+.content-title .title
+{
+    position: relative;
+    background-color: rgba(0,0,0,0.3);
+    height: 28px;
+    font-family: 'PT Sans Narrow',serif;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 20px;
+    margin-left: 413px;
+    margin-top: -80px;
+    text-transform: uppercase;
+    padding-top: 2px;
+    padding-left: 7px;
+    letter-spacing: 2px;
+}
+

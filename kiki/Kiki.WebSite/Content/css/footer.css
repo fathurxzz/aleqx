@@ -1,0 +1,25 @@
+.footer {
+    height: 77px;
+    background-color: #f9f9f9;
+    margin-top: 100px;
+    padding-top: 40px;
+    font-family: 'PT Sans Caption', serif;
+    font-size: 11px;
+    color: #000000;
+}
+
+.footer a
+{
+color: #00aeef;
+}
+
+.footer .em {
+    height: 35px;
+    background: url("../img/em-logo.png") no-repeat;
+    width: 140px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 61px;
+    padding-top: 5px;
+}
+

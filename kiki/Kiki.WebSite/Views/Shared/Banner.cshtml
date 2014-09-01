@@ -1,0 +1,10 @@
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@model string
+<div class="banner">
+        
+        <div class="banner-image">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model, SiteSettings.GetThumbnail("banner")))
+        </div>  
+    <div class="banner-shadow"></div>  
+</div>

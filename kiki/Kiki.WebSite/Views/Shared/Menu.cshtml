@@ -1,0 +1,20 @@
+﻿@model Kiki.WebSite.Models.SiteMenuModel
+<div class="menu">
+    <ul>
+        @foreach (var item in Model.Contents.Where(m=>m.ContentType!=5&&m.ContentType!=0).OrderBy(m=>m.SortOrder))
+        {
+            if (item.Name == Model.CurrentMenuItemName)
+            {
+                <li>@Html.Raw(item.MenuTitle)</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink(item.MenuTitle, "Index", "Home", new { area = "", id=item.Name }, null)</li>
+            }
+        }
+        @*<li><a href="articles.html">что нового</a></li>
+        <li><a href="welcome.html">в гостях у &laquo;кики&raquo;</a></li>
+        <li><a href="services.html">1000 и одна услуга</a></li>
+        <li><a href="index.html">хотите подарок? :)</a></li>*@
+    </ul>
+</div>

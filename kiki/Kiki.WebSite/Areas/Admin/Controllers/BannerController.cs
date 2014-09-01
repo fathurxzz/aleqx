@@ -39,28 +39,19 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 model.Id = 0;
-                var siteImage = new SiteImage
+                for (int i = 0; i < Request.Files.Count; i++)
                 {
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
-                    ImageType = model.ImageType
-                };
-
-                var file = Request.Files[0];
-                if (file != null && !string.IsNullOrEmpty(file.FileName))
-                {
+                    var siteImage = new SiteImage{ImageType = (int)ImageType.Banner};
+                    var file = Request.Files[i];
+                    if (file == null) continue;
                     string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
                     string filePath = Server.MapPath("~/Content/Images");
 
                     filePath = Path.Combine(filePath, fileName);
                     GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
                     siteImage.ImageSource = fileName;
+                    _repository.AddSiteImage(siteImage);
                 }
-                else
-                {
-                    siteImage.ImageSource = siteImage.ImageSource ?? "";
-                }
-
-                _repository.AddSiteImage(siteImage);
             }
             catch (Exception ex)
             {

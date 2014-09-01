@@ -166,16 +166,31 @@
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\MVCHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
+    <Compile Include="Models\SiteMenuModel.cs" />
+    <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\admin.css" />
+    <Content Include="Content\css\articles.css" />
+    <Content Include="Content\css\banner.css" />
     <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\footer.css" />
+    <Content Include="Content\css\header.css" />
     <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\jquery-ui.structure.min.css" />
     <Content Include="Content\css\jquery.bxslider.css" />
+    <Content Include="Content\css\main-page.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\mini-gallery.css" />
+    <Content Include="Content\css\services.css" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\css\socials.css" />
+    <Content Include="Content\css\title.css" />
+    <Content Include="Content\css\welcome.css" />
     <Content Include="Content\fancybox\blank.gif" />
     <Content Include="Content\fancybox\fancybox-x.png" />
     <Content Include="Content\fancybox\fancybox-y.png" />
@@ -201,6 +216,24 @@
     <Content Include="Content\fancybox\jquery.fancybox-1.3.4.js" />
     <Content Include="Content\fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Content\img\banner-shadow.png" />
+    <Content Include="Content\img\carousel.png" />
+    <Content Include="Content\img\em-logo.png" />
+    <Content Include="Content\img\fb.png" />
+    <Content Include="Content\img\instagram.png" />
+    <Content Include="Content\img\line-horizontal.png" />
+    <Content Include="Content\img\line-vertical.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\main-image-layout.png" />
+    <Content Include="Content\img\main-image-text-container.png" />
+    <Content Include="Content\img\secret-frame.png" />
+    <Content Include="Content\img\secret.png" />
+    <Content Include="Content\img\service-search.png" />
+    <Content Include="Content\img\sign.png" />
+    <Content Include="Content\img\tmp\image1.png" />
+    <Content Include="Content\img\tmp\image2.png" />
+    <Content Include="Content\img\vk.png" />
+    <Content Include="Content\img\zoom.png" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
@@ -347,13 +380,17 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Shared\TopMenu.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Shared\Title.cshtml" />
+    <Content Include="Views\Shared\Banner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Content\tmpImages\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

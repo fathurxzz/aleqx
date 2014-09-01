@@ -1,0 +1,44 @@
+.mini-gallery {
+    margin-top: 60px;
+    width: 553px;
+    height: 542px;
+    margin-left: 610px;
+}
+
+.mini-gallery .carousel
+{
+    width: 553px;
+    height: 542px;
+    background: url("../img/carousel.png");
+}
+
+.mini-gallery .carousel .image-container
+{
+    padding-top: 25px;
+    padding-left: 80px;
+
+    -moz-transform: rotate(1deg);  /* Firefox */
+    -o-transform: rotate(1deg);  /* Opera */
+    -webkit-transform: rotate(1deg);  /* Safari y Chrome */
+    /*filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476); *//* IE */
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.mini-gallery .carousel .image-container .image
+{
+    width: 390px;
+    height: 390px;
+    background-color: #ccc;
+}
+
+.mini-gallery .carousel .image-container .image .zoom
+{
+    width: 32px;
+    height: 33px;
+    background: url("../img/zoom.png");
+    margin-left: 335px;
+    position: absolute;
+    margin-top: 20px;
+}
+

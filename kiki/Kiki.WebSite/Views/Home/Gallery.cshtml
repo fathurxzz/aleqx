@@ -1,0 +1,47 @@
+﻿@using Kiki.WebSite.Models
+@model Kiki.WebSite.Models.SiteModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TopMenu
+{
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Menu
+{
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Banner
+{
+    @if (Model.Banner != null)
+    {
+        @Html.Partial("Banner",Model.Banner.ImageSource)
+    }
+
+}
+
+    @Html.Partial("Title",Model.Content.Title)
+
+
+
+    <div class="welcome">
+        <div class="text">
+            Мы знаем не по наслышке , что такое ответственность за внешний вид клиентов. Эта идея собрала команду лучших
+            специалистов, которые повышают свой уровень ежечасно &mdash; только для тебя.
+            <div class="title">Играй главную роль!</div>
+            <div class="sign"></div>
+        </div>
+        <div class="mini-gallery">
+            <div class="carousel">
+                <div class="image-container">
+                    <div class="image">
+                        <div class="zoom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

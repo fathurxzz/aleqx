@@ -4,13 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css/main.css",
+    "~/Content/css/header.css",
+    "~/Content/css/site.css",
+    "~/Content/css/main-page.css",
+    "~/Content/css/socials.css",
+    "~/Content/css/menu.css",
+    "~/Content/css/footer.css",
+    "~/Content/css/mini-gallery.css",
+    "~/Content/css/articles.css",
+    "~/Content/css/services.css",
+    "~/Content/css/title.css",
+    "~/Content/css/banner.css",
+    "~/Content/css/welcome.css")
     @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    @RenderBody()
-
+    
+    
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="header-top">
+        @RenderSection("TopMenu")
+    </div>
+    <div class="page">
+        <div class="header">
+            <div id="logo"></div>
+            <div class="social instagram"><a href="http://instagram.com/"></a></div>
+            <div class="social fb"><a href="https://www.facebook.com/"></a></div>
+            <div class="social vk"><a href="http://vk.com/"></a></div>
+            @RenderSection("Menu")
+        </div>
+        @RenderBody()
+    </div>
+    @RenderSection("Banner",false)
+    <div class="footer">
+        <div class="em">
+            Сделано в<br>
+            <a href="http://eugene-miller.com">Студии Евгения Миллера</a>
+        </div>
+    </div>
 </body>
 </html>
