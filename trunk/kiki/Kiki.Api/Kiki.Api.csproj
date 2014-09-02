@@ -52,6 +52,8 @@
     <Compile Include="Repositories\GalleryImage.cs" />
     <Compile Include="Repositories\Reason.cs" />
     <Compile Include="Repositories\Sale.cs" />
+    <Compile Include="Repositories\Service.cs" />
+    <Compile Include="Repositories\Serviceitem.cs" />
     <Compile Include="Repositories\SiteImage.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
     <Compile Include="Repositories\Subscriber.cs" />
