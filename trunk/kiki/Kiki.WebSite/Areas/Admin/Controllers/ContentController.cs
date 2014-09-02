@@ -46,7 +46,9 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 var content = _repository.GetContent(model.Id);
-                content.Name = SiteHelper.UpdatePageWebName(model.Name);
+                content.Name = string.IsNullOrEmpty(model.Name)
+                    ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
+                    : SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(content, new[] { "Title", "MenuTitle", "SeoDescription", "ContentType", "SeoKeywords", "Seotext", "SortOrder" });
                 content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
 

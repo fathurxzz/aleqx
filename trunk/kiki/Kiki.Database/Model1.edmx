@@ -81,9 +81,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Title" Type="varchar" Nullable="true" MaxLength="200" />
-    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="1000" />
-    <Property Name="Price" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
@@ -95,7 +93,6 @@
     <Property Name="Title" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="Description" Type="varchar" Nullable="true" MaxLength="1000" />
     <Property Name="Price" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="Text" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="ServiceId" Type="int" Nullable="false" />
   </EntityType>
@@ -212,9 +209,7 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="Title" MaxLength="200" />
-          <Property Type="String" Name="Description" MaxLength="1000" />
-          <Property Type="String" Name="Price" MaxLength="50" />
-          <Property Type="String" Name="Text" Nullable="false" MaxLength="10000" />
+          <Property Type="String" Name="Description" MaxLength="10000" />
           <Property Type="String" Name="ImageSource" MaxLength="200" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="ServiceItems" Relationship="Model1.ServiceServiceItem" FromRole="Service" ToRole="ServiceItem" />
@@ -227,7 +222,6 @@
           <Property Type="String" Name="Title" MaxLength="200" />
           <Property Type="String" Name="Description" MaxLength="1000" />
           <Property Type="String" Name="Price" MaxLength="50" />
-          <Property Type="String" Name="Text" MaxLength="10000" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="Service" Relationship="Model1.ServiceServiceItem" FromRole="ServiceItem" ToRole="Service" />
           <Property Type="Int32" Name="ServiceId" Nullable="false" />
@@ -337,8 +331,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
         </MappingFragment>
@@ -351,7 +343,6 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
         </MappingFragment>

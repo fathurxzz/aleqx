@@ -1,0 +1,60 @@
+﻿@model Kiki.DataAccess.Entities.ServiceItem
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Service")
+}
+
+<div class="container">
+    <h3>Добавление позиции</h3>
+    @using (Html.BeginForm("Create", "ServiceItem", FormMethod.Post, new { role = "form", @class = "form-horizontal"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ServiceId)
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Title" id="Title" placeholder="Введите заголовок" value="@Model.Title">
+            </div>
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="Price" id="Price" placeholder="Введите цену" value="@Model.Title">
+            </div>
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <textarea class="form-control " rows="3" name="Description" placeholder="Описание">@Model.Description</textarea>
+            </div>
+        </div>
+          <div class="form-group">
+            @Html.LabelFor(model => model.SortOrder, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="SortOrder" id="SortOrder" placeholder="Введите порядок отображения" value="@Model.Title">
+            </div>
+            @Html.ValidationMessageFor(model => model.SortOrder)
+        </div>
+        <div class="form-group">
+            @Html.ActionLink("Назад", "Index", "Service", null, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

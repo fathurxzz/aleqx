@@ -6,7 +6,6 @@ namespace Kiki.DataAccess.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
-        public string Text { get; set; }
         public int SortOrder { get; set; }
         public int ServiceId { get; set; }
         public virtual Service Service { get; set; }
