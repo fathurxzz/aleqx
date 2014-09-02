@@ -21,16 +21,12 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Price)
                 .HasMaxLength(50);
 
-            this.Property(t => t.Text)
-                .HasMaxLength(10000);
-
             // Table & Column Mappings
             this.ToTable("ServiceItem", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Title).HasColumnName("Title");
             this.Property(t => t.Description).HasColumnName("Description");
             this.Property(t => t.Price).HasColumnName("Price");
-            this.Property(t => t.Text).HasColumnName("Text");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.ServiceId).HasColumnName("ServiceId");
 

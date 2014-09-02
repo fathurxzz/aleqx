@@ -93,7 +93,9 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 var article = _repository.GetArticle(model.Id);
-                article.Name = SiteHelper.UpdatePageWebName(model.Name);
+                article.Name = string.IsNullOrEmpty(model.Name)
+                    ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
+                    : SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(article, new[] { "Title", "Date"});
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);

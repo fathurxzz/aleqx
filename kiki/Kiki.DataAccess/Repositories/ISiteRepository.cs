@@ -4,7 +4,7 @@ using Kiki.DataAccess.Entities;
 
 namespace Kiki.DataAccess.Repositories
 {
-    public interface ISiteRepository:IRepository
+    public interface ISiteRepository : IRepository
     {
 
         // Articles
@@ -57,5 +57,18 @@ namespace Kiki.DataAccess.Repositories
         void SaveSubscriber(Subscriber subscriber);
         int AddSubscriber(Subscriber subscriber);
 
+        //Service
+        IEnumerable<Service> GetServices();
+        Service GetService(int id);
+        Service GetService(string name);
+        void DeleteService(int id, Action<string> deleteImages);
+        void SaveService(Service service);
+        int AddService(Service service);
+
+        //ServiceItem
+        ServiceItem GetServiceItem(int id);
+        void DeleteServiceItem(int id);
+        void SaveServiceItem(ServiceItem service);
+        int AddServiceItem(ServiceItem service);
     }
 }

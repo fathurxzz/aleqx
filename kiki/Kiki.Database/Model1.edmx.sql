@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/01/2014 01:17:28
+-- Date Created: 09/02/2014 21:01:49
 -- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -108,9 +108,7 @@ CREATE TABLE `Service`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`Name` varchar (200) NOT NULL, 
 	`Title` varchar (200), 
-	`Description` varchar (1000), 
-	`Price` varchar (50), 
-	`Text` varchar (10000) NOT NULL, 
+	`Description` varchar (10000), 
 	`ImageSource` varchar (200), 
 	`SortOrder` int NOT NULL);
 
@@ -124,7 +122,6 @@ CREATE TABLE `ServiceItem`(
 	`Title` varchar (200), 
 	`Description` varchar (1000), 
 	`Price` varchar (50), 
-	`Text` varchar (10000), 
 	`SortOrder` int NOT NULL, 
 	`ServiceId` int NOT NULL);
 

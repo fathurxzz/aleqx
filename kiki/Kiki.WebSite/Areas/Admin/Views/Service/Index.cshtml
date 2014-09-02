@@ -1,0 +1,88 @@
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@model IEnumerable<Kiki.DataAccess.Entities.Service>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminNavigation
+{
+    @Html.Partial("Menu", "Service")
+}
+
+<p>
+    @*<button type="button" class="btn btn-success btn-sm">*@
+    @Html.ActionLink("Добавить", "Create")
+    @*</button>*@
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.ImageSource != null)
+                {
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articleAdminPreview")))
+                }
+            </td>
+            <td>
+                @Html.Raw(item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
+            </td>
+            <td>
+                @Html.ActionLink("Добавить позицию", "Create", "ServiceItem", new { id = item.Id }, null) |
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+
+                foreach (var serviceItem in item.ServiceItems)
+                {
+        <tr>
+
+            <td>@serviceItem.Title</td>
+            <td></td>
+            <td>@serviceItem.Price</td>
+            <td>@serviceItem.Description</td>
+            <td>@serviceItem.SortOrder</td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit","ServiceItem", new { id = serviceItem.Id },null) |
+                @Html.ActionLink("Удалить", "Delete","ServiceItem", new { id = serviceItem.Id }, new { onclick = "return confirm('Удалить запись?')" })
+            </td>
+        </tr>
+                }
+
+    }
+
+</table>
