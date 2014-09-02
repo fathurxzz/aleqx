@@ -94,7 +94,6 @@ namespace Shop.Api.Repositories
             var cache = _store.Articles.SingleOrDefault(a => a.Id == article.Id);
             CreateOrChangeEntityLanguage(cache);
             _store.SaveChanges();
-
         }
 
         private void CreateOrChangeEntityLanguage(Article cache)

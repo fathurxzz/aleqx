@@ -26,28 +26,32 @@
    
     
 
-    <div class="title-price">
-        <div class="title">
-            <span>
-                @Model.Title
-            </span>
-        </div>
+        <div class="title-price">
             
-        <div class="price">
-            @if (Model.Label==ProductPreviewLabel.Discount)
-            {
+            <ul>
+
+            <li class="title">
                 <span>
-                    <s>@Model.OldPrice.ToString("###,###")</s><sup>грн</sup><br>
-                    <b>@Model.Price.ToString("###,###")<sup>грн</sup></b>
+                    @Model.Title
                 </span>
-            }
-            else
-            {
-                <span>@Model.Price.ToString("###,###")<sup>грн</sup>
-                </span>
-            }
+            </li>
+            
+            <li class="price">
+                @if (Model.Label==ProductPreviewLabel.Discount)
+                {
+                    <span>
+                        <s>@Model.OldPrice.ToString("###,###")</s><sup>грн</sup><br>
+                        <b>@Model.Price.ToString("###,###")<sup>грн</sup></b>
+                    </span>
+                }
+                else
+                {
+                    <span>@Model.Price.ToString("###,###")<sup>грн</sup>
+                    </span>
+                }
+            </li>
+                </ul>
         </div>
-    </div>
     
          </a>
       
