@@ -30,11 +30,20 @@
     .product-preview .title-price {
         height: 50px;
     }
+ 
+       .product-preview .title-price ul li
+{
+    list-style: none;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
 
         .product-preview .title-price .title,
         .product-preview .title-price .price {
             height: 50px;
-            float: left;
+            /*float: left;*/
         }
 
         .product-preview .title-price .title {
@@ -42,14 +51,13 @@
             font-weight: 700;
             font-size: 18px;
             text-align: left;
-            width: 64%;
-            padding-right: 5px;
+            min-width: 160px;
         }
 
         .product-preview .title-price .price {
             font-family: Trebuchet MS, serif;
             font-size: 20px;
-            width: 33%;
+            padding: 0 10px 0 15px;
         }
 
         .product-preview .title-price .title span {
@@ -69,6 +77,7 @@
         .product-preview a {
             color: #000;
             font-weight: 700;
+            text-decoration: none;
         }
         .product-preview a:active {
             color: #000;
