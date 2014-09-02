@@ -29,11 +29,6 @@ namespace Kiki.Api.Repositories
         public Content GetContent(string name)
         {
             var content = _store.Contents.SingleOrDefault(c => c.Name == name);
-            if (content == null)
-            {
-                return null;
-                //throw new Exception(string.Format("Content with name={0} not found", name));
-            }
             return content;
         }
 
