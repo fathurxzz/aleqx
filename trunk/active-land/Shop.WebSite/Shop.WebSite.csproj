@@ -275,6 +275,7 @@
     <Content Include="Content\img\main-page-banner.png" />
     <Content Include="Content\img\menu-item-arrow-left.png" />
     <Content Include="Content\img\menu-item-arrow-top.png" />
+    <Content Include="Content\img\old-price-line-through.png" />
     <Content Include="Content\img\order-done.png" />
     <Content Include="Content\img\phone-panel.png" />
     <Content Include="Content\img\product-details-price.png" />

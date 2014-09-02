@@ -105,6 +105,21 @@
     margin-top: 3px;
 }
 
+    #title-price-in-cart-section .price .old {
+        position: absolute;
+        margin-top: -40px;
+        width: 99px;
+        color: #f26522;
+    }
+    #title-price-in-cart-section .price .old .line-through {
+        width: 129px;
+        height: 16px;
+        background: url("../img/old-price-line-through.png") no-repeat 10px 0px;
+        margin-top: 4px;
+        position: absolute;
+    }
+
+
 #title-price-in-cart-section .price sup {
     font-size: 20px;
 }

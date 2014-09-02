@@ -1,5 +1,6 @@
 ﻿@using Shop.WebSite
 @using Shop.WebSite.Helpers.Graphics
+@using Shop.WebSite.Models
 @model Shop.DataAccess.Entities.Product
 
 
@@ -85,7 +86,17 @@
                 </div>
 
             </div>
-            <div class="price">@Model.Price.ToString("###,###") <sup>грн</sup></div>
+            <div class="price">
+                @if (Model.IsDiscount)
+                {
+                    <div class="old">
+                        <div class="line-through"></div>
+                        @Model.Price.ToString("###,###")
+                        
+                    </div>
+                }
+                @Model.Price.ToString("###,###") <sup>грн</sup>
+            </div>
         </div>
         <div class="clearfix"></div>
         <div id="description">
