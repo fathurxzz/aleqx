@@ -1,0 +1,447 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 2.6.2
+-- http://www.phpmyadmin.net
+-- 
+-- Host: mysql306.1gb.ua:3306
+-- Generation Time: Sep 03, 2014 at 11:07 PM
+-- Server version: 5.1.47
+-- PHP Version: 5.2.14
+-- 
+-- Database: `gbua_leoslr`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Applications`
+-- 
+
+CREATE TABLE `Applications` (
+  `ApplicationId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `ApplicationName` varchar(235) CHARACTER SET utf8 NOT NULL,
+  `Description` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`ApplicationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Article`
+-- 
+
+CREATE TABLE `Article` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Date` datetime NOT NULL,
+  `Published` tinyint(1) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ArticleItem`
+-- 
+
+CREATE TABLE `ArticleItem` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SortOrder` int(11) NOT NULL,
+  `ArticleId` int(11) NOT NULL,
+  `ContentType` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_ArticleArticleItem` (`ArticleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ArticleItemImage`
+-- 
+
+CREATE TABLE `ArticleItemImage` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ImageSource` varchar(255) NOT NULL,
+  `ArticleItemId` int(11) NOT NULL,
+  `SortOrder` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_ArticleItemArticleItemImage` (`ArticleItemId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ArticleItemLang`
+-- 
+
+CREATE TABLE `ArticleItemLang` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Text` longtext NOT NULL,
+  `ArticleItemId` int(11) NOT NULL,
+  `LanguageId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_ArticleItemArticleItemLang` (`ArticleItemId`),
+  KEY `IX_FK_LanguageArticleItemLang` (`LanguageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ArticleLang`
+-- 
+
+CREATE TABLE `ArticleLang` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` longtext NOT NULL,
+  `Description` longtext NOT NULL,
+  `ArticleId` int(11) NOT NULL,
+  `LanguageId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_ArticleArticleLang` (`ArticleId`),
+  KEY `IX_FK_LanguageArticleLang` (`LanguageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Category`
+-- 
+
+CREATE TABLE `Category` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(200) NOT NULL,
+  `CategoryId` int(11) DEFAULT NULL,
+  `SortOrder` int(11) NOT NULL,
+  `CategoryLevel` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_CategoryCategory` (`CategoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `CategoryImage`
+-- 
+
+CREATE TABLE `CategoryImage` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ImageSource` varchar(255) NOT NULL,
+  `CategoryId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_CategoryCategoryImage` (`CategoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `CategoryLang`
+-- 
+
+CREATE TABLE `CategoryLang` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(200) DEFAULT NULL,
+  `CategoryId` int(11) NOT NULL,
+  `LanguageId` int(11) NOT NULL,
+  `Text` longtext,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_CategoryCategoryLang` (`CategoryId`),
+  KEY `IX_FK_LanguageCategoryLang` (`LanguageId`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=13 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Language`
+-- 
+
+CREATE TABLE `Language` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Code` varchar(2) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Memberships`
+-- 
+
+CREATE TABLE `Memberships` (
+  `UserId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `ApplicationId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `Password` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `PasswordFormat` int(11) NOT NULL,
+  `PasswordSalt` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `Email` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `PasswordQuestion` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `PasswordAnswer` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
+  `IsApproved` tinyint(1) NOT NULL,
+  `IsLockedOut` tinyint(1) NOT NULL,
+  `CreateDate` datetime NOT NULL,
+  `LastLoginDate` datetime NOT NULL,
+  `LastPasswordChangedDate` datetime NOT NULL,
+  `LastLockoutDate` datetime NOT NULL,
+  `FailedPasswordAttemptCount` int(11) NOT NULL,
+  `FailedPasswordAttemptWindowStart` datetime NOT NULL,
+  `FailedPasswordAnswerAttemptCount` int(11) NOT NULL,
+  `FailedPasswordAnswerAttemptWindowsStart` datetime NOT NULL,
+  `Comment` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`UserId`),
+  KEY `ApplicationId` (`ApplicationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Product`
+-- 
+
+CREATE TABLE `Product` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(200) NOT NULL,
+  `SortOrder` int(11) NOT NULL,
+  `CategoryId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_CategoryProduct` (`CategoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ProductImage`
+-- 
+
+CREATE TABLE `ProductImage` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `ImageSource` varchar(255) NOT NULL,
+  `ProductId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_ProductProductImage` (`ProductId`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ProductLang`
+-- 
+
+CREATE TABLE `ProductLang` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `LanguageId` int(11) NOT NULL,
+  `ProductId` int(11) NOT NULL,
+  `Title` varchar(200) NOT NULL,
+  `Text` longtext NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_LanguageProductLang` (`LanguageId`),
+  KEY `IX_FK_ProductProductLang` (`ProductId`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=5 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Profiles`
+-- 
+
+CREATE TABLE `Profiles` (
+  `UserId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `PropertyNames` longtext NOT NULL,
+  `PropertyValueStrings` longtext NOT NULL,
+  `PropertyValueBinary` longblob NOT NULL,
+  `LastUpdatedDate` datetime NOT NULL,
+  PRIMARY KEY (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Roles`
+-- 
+
+CREATE TABLE `Roles` (
+  `RoleId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `ApplicationId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `RoleName` varchar(256) CHARACTER SET utf8 NOT NULL,
+  `Description` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`RoleId`),
+  KEY `ApplicationId` (`ApplicationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `SpecialContent`
+-- 
+
+CREATE TABLE `SpecialContent` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `PageImageSource` varchar(255) NOT NULL,
+  `ContentImageSource` varchar(255) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=11 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `SpecialContentLang`
+-- 
+
+CREATE TABLE `SpecialContentLang` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(200) NOT NULL,
+  `Text` longtext NOT NULL,
+  `SpecialContentId` int(11) NOT NULL,
+  `LanguageId` int(11) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id` (`Id`),
+  KEY `IX_FK_SpecialContentSpecialContentLang` (`SpecialContentId`),
+  KEY `IX_FK_LanguageSpecialContentLang` (`LanguageId`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=cp1251 AUTO_INCREMENT=17 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Users`
+-- 
+
+CREATE TABLE `Users` (
+  `UserId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `ApplicationId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `UserName` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `IsAnonymous` tinyint(1) NOT NULL,
+  `LastActivityDate` datetime NOT NULL,
+  PRIMARY KEY (`UserId`),
+  KEY `ApplicationId` (`ApplicationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `UsersInRoles`
+-- 
+
+CREATE TABLE `UsersInRoles` (
+  `UserId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  `RoleId` char(36) CHARACTER SET cp1251 COLLATE cp1251_bin NOT NULL,
+  PRIMARY KEY (`UserId`,`RoleId`),
+  KEY `UsersInRole_Role` (`RoleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=cp1251;
+
+-- 
+-- Constraints for dumped tables
+-- 
+
+-- 
+-- Constraints for table `ArticleItem`
+-- 
+ALTER TABLE `ArticleItem`
+  ADD CONSTRAINT `FK_ArticleArticleItem` FOREIGN KEY (`ArticleId`) REFERENCES `Article` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `ArticleItemImage`
+-- 
+ALTER TABLE `ArticleItemImage`
+  ADD CONSTRAINT `FK_ArticleItemArticleItemImage` FOREIGN KEY (`ArticleItemId`) REFERENCES `ArticleItem` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `ArticleItemLang`
+-- 
+ALTER TABLE `ArticleItemLang`
+  ADD CONSTRAINT `FK_ArticleItemArticleItemLang` FOREIGN KEY (`ArticleItemId`) REFERENCES `ArticleItem` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_LanguageArticleItemLang` FOREIGN KEY (`LanguageId`) REFERENCES `Language` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `ArticleLang`
+-- 
+ALTER TABLE `ArticleLang`
+  ADD CONSTRAINT `FK_ArticleArticleLang` FOREIGN KEY (`ArticleId`) REFERENCES `Article` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_LanguageArticleLang` FOREIGN KEY (`LanguageId`) REFERENCES `Language` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `Category`
+-- 
+ALTER TABLE `Category`
+  ADD CONSTRAINT `FK_CategoryCategory` FOREIGN KEY (`CategoryId`) REFERENCES `Category` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `CategoryImage`
+-- 
+ALTER TABLE `CategoryImage`
+  ADD CONSTRAINT `FK_CategoryCategoryImage` FOREIGN KEY (`CategoryId`) REFERENCES `Category` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `CategoryLang`
+-- 
+ALTER TABLE `CategoryLang`
+  ADD CONSTRAINT `FK_CategoryCategoryLang` FOREIGN KEY (`CategoryId`) REFERENCES `Category` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_LanguageCategoryLang` FOREIGN KEY (`LanguageId`) REFERENCES `Language` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `Memberships`
+-- 
+ALTER TABLE `Memberships`
+  ADD CONSTRAINT `MembershipEntity_Application` FOREIGN KEY (`ApplicationId`) REFERENCES `Applications` (`ApplicationId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `MembershipEntity_User` FOREIGN KEY (`UserId`) REFERENCES `Users` (`UserId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `Product`
+-- 
+ALTER TABLE `Product`
+  ADD CONSTRAINT `FK_CategoryProduct` FOREIGN KEY (`CategoryId`) REFERENCES `Category` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `ProductImage`
+-- 
+ALTER TABLE `ProductImage`
+  ADD CONSTRAINT `FK_ProductProductImage` FOREIGN KEY (`ProductId`) REFERENCES `Product` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `ProductLang`
+-- 
+ALTER TABLE `ProductLang`
+  ADD CONSTRAINT `FK_LanguageProductLang` FOREIGN KEY (`LanguageId`) REFERENCES `Language` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_ProductProductLang` FOREIGN KEY (`ProductId`) REFERENCES `Product` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `Profiles`
+-- 
+ALTER TABLE `Profiles`
+  ADD CONSTRAINT `ProfileEntity_User` FOREIGN KEY (`UserId`) REFERENCES `Users` (`UserId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `Roles`
+-- 
+ALTER TABLE `Roles`
+  ADD CONSTRAINT `RoleEntity_Application` FOREIGN KEY (`ApplicationId`) REFERENCES `Applications` (`ApplicationId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `SpecialContentLang`
+-- 
+ALTER TABLE `SpecialContentLang`
+  ADD CONSTRAINT `FK_LanguageSpecialContentLang` FOREIGN KEY (`LanguageId`) REFERENCES `Language` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_SpecialContentSpecialContentLang` FOREIGN KEY (`SpecialContentId`) REFERENCES `SpecialContent` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `Users`
+-- 
+ALTER TABLE `Users`
+  ADD CONSTRAINT `User_Application` FOREIGN KEY (`ApplicationId`) REFERENCES `Applications` (`ApplicationId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- 
+-- Constraints for table `UsersInRoles`
+-- 
+ALTER TABLE `UsersInRoles`
+  ADD CONSTRAINT `UsersInRole_Role` FOREIGN KEY (`RoleId`) REFERENCES `Roles` (`RoleId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `UsersInRole_User` FOREIGN KEY (`UserId`) REFERENCES `Users` (`UserId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+        
