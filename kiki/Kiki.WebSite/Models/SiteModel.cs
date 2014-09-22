@@ -25,6 +25,7 @@ namespace Kiki.WebSite.Models
         public IEnumerable<Reason> Reasons { get; set; }
         public IEnumerable<Article> Articles { get; set; }
         public IEnumerable<Sale> Sales { get; set; }
+        public IEnumerable<Service> Services { get; set; }
         public SiteImage MainImage { get; set; }
         public SiteImage Attention { get; set; }
 
@@ -37,6 +38,7 @@ namespace Kiki.WebSite.Models
             Contents = repository.GetContents();
             Articles = repository.GetArticles();
             Sales = repository.GetSales();
+            Services = repository.GetServices();
 
             Content = contentName != null 
                 ? Contents.FirstOrDefault(c => c.Name == contentName) 

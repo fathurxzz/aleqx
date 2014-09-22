@@ -54,5 +54,11 @@ namespace Kiki.WebSite.Controllers
 
             return View(model);
         }
-}
+
+        public ActionResult ServiceDetails(string id, string contentName)
+        {
+            var model = new ServiceModel(_repository, contentName, id);
+            return View(model);
+        }
+    }
 }

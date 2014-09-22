@@ -1,0 +1,86 @@
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@using Kiki.WebSite.Models
+@model Kiki.WebSite.Models.ServiceModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section TopMenu
+{
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Menu
+{
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+}
+
+@section Banner
+{
+    @if (Model.Banner != null)
+    {
+        @Html.Partial("Banner", Model.Banner.ImageSource)
+    }
+}
+
+@Html.Partial("Title", new SiteTitle { Title = Model.Content.Title, ImageSource = Model.Content.ImageSource })
+
+
+<div class="services">
+
+    <div class="service-search-container">
+        <div class="service-search">
+            <input id="search" name="search" type="text"  value="" placeholder="@Model.Service.Title">
+        </div>
+        <div class="service-search-result" id="service-search-result">
+            <div class="service-search-result-top"></div>
+            <div class="service-search-result-middle">
+                <ul id="sResult">
+                </ul>
+            </div>
+            <div class="service-search-result-bottom"></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="service-details">
+    <div class="left-side">
+        
+        <div class="title-image">
+        <div class="title">
+            @Model.Service.Title
+        </div>
+            <div class="image">
+                @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Service.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))
+            </div>
+            </div>
+    </div>
+    <div class="right-side">
+        <div class="description">
+        @Html.Raw(Model.Service.Description)
+    </div>
+
+    @if (Model.Service.ServiceItems.Any())
+    {
+        int i = 1;
+        <table class="service-items">
+
+            @foreach (var serviceItem in Model.Service.ServiceItems)
+            {
+                i++;
+                string className = i%2 == 0 ? "item" : "";
+                string priceClassName = i%2 == 1 ? "item" : "";
+                <tr>
+                    <td class="title @className">@serviceItem.Title</td>
+                    <td class="@className">@serviceItem.Description</td>
+                    <td class="price @priceClassName">@serviceItem.Price</td>
+                </tr>
+            }
+        </table>
+    }
+    </div>
+
+    
+</div>

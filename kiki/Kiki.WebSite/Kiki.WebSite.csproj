@@ -154,6 +154,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,6 +169,8 @@
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\SaleModel.cs" />
+    <Compile Include="Models\SearchResult.cs" />
+    <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\SiteMenuModel.cs" />
     <Compile Include="Models\SiteModel.cs" />
     <Compile Include="Models\SiteTitle.cs" />
@@ -234,6 +237,9 @@
     <Content Include="Content\img\pay-attention.png" />
     <Content Include="Content\img\secret-frame.png" />
     <Content Include="Content\img\secret.png" />
+    <Content Include="Content\img\service-search-result-bottom.png" />
+    <Content Include="Content\img\service-search-result-middle.png" />
+    <Content Include="Content\img\service-search-result-top.png" />
     <Content Include="Content\img\service-search.png" />
     <Content Include="Content\img\sign.png" />
     <Content Include="Content\img\tmp\image1.png" />
@@ -376,6 +382,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -403,6 +410,7 @@
     <Content Include="Views\Home\SaleDetails.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\ServiceDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
