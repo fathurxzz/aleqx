@@ -31,6 +31,45 @@ namespace Kiki.Api.Repositories
             return service;
         }
 
+        public IEnumerable<Service> GetSearchableServices(string query)
+        {
+            var result = new List<Service>();
+
+            var services = _store.Services.ToList();
+            foreach (var service in services)
+            {
+                if (service.Title.Contains(query))
+                {
+                    result.Add(service);
+                    continue;
+                }
+
+                foreach (var serviceItem in service.ServiceItems)
+                {
+                    if (serviceItem.Title.Contains(query))
+                    {
+                        result.Add(service);
+                        break;
+                    }
+                }
+            }
+
+            foreach (var service in result)
+            {
+                foreach (var serviceItem in service.ServiceItems)
+                {
+
+                }
+            }
+
+            return result;
+        }
+
+        public IEnumerable<ServiceItem> GetSearchableServiceItems(string query)
+        {
+            return _store.ServiceItems.Where(serviceItem => serviceItem.Title.ToLower().Contains(query)).ToList();
+        }
+
         public void DeleteService(int id, Action<string> deleteImages)
         {
             var service = _store.Services.SingleOrDefault(a => a.Id == id);

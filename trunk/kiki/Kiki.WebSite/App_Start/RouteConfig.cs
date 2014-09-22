@@ -29,6 +29,21 @@ namespace Kiki.WebSite
             );
 
             routes.MapRoute(
+                "Search",
+                "search/{q}",
+                new { controller = "Service", action = "Search", q = UrlParameter.Optional },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+            routes.MapRoute(
+                "Services",
+                "services/{id}",
+                new { controller = "Home", action = "ServiceDetails", id = UrlParameter.Optional, contentName="services" },
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+
+            routes.MapRoute(
                  "Default",
                  "{controller}/{action}/{id}",
                  new { controller = "Home", action = "Index", id = UrlParameter.Optional },

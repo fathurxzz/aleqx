@@ -1,29 +1,31 @@
-﻿<!DOCTYPE html>
+﻿@using Kiki.WebSite
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    @Styles.Render("~/Content/css/main.css",
-    "~/Content/css/header.css",
-    "~/Content/css/site.css",
-    "~/Content/css/main-page.css",
-    "~/Content/css/socials.css",
-    "~/Content/css/menu.css",
-    "~/Content/css/footer.css",
-    "~/Content/css/mini-gallery.css",
-    "~/Content/css/articles.css",
-    "~/Content/css/services.css",
-    "~/Content/css/title.css",
-    "~/Content/css/banner.css",
-    "~/Content/css/subscribe.css",
-    "~/Content/css/sale.css",
-    "~/Content/css/welcome.css")
+    @Styles.Render("~/Content/css/main.css?v="+SiteSettings.Version,
+    "~/Content/css/header.css?v="+SiteSettings.Version,
+    "~/Content/css/site.css?v="+SiteSettings.Version,
+    "~/Content/css/main-page.css?v="+SiteSettings.Version,
+    "~/Content/css/socials.css?v="+SiteSettings.Version,
+    "~/Content/css/menu.css?v="+SiteSettings.Version,
+    "~/Content/css/footer.css?v="+SiteSettings.Version,
+    "~/Content/css/mini-gallery.css?v="+SiteSettings.Version,
+    "~/Content/css/articles.css?v="+SiteSettings.Version,
+    "~/Content/css/services.css?v="+SiteSettings.Version,
+    "~/Content/css/title.css?v="+SiteSettings.Version,
+    "~/Content/css/banner.css?v="+SiteSettings.Version,
+    "~/Content/css/subscribe.css?v="+SiteSettings.Version,
+    "~/Content/css/sale.css?v="+SiteSettings.Version,
+    "~/Content/css/welcome.css?v="+SiteSettings.Version)
     @Scripts.Render("~/bundles/modernizr")
     
     
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/site.js?v="+SiteSettings.Version)
     @RenderSection("scripts", required: false)
 </head>
 <body>
