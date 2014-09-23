@@ -71,6 +71,13 @@
                 padding: 10px 0;
             }
 
+            .service-search-container .service-search-result ul li span.price {
+                padding-left: 20px;
+                white-space:nowrap;
+                /*float: right;*/
+                /*display: table-cell;*/
+            }
+
                 .service-search-container .service-search-result ul li:hover {
                     background-color: #eee;
                     cursor: pointer;
