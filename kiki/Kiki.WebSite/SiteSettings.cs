@@ -32,6 +32,7 @@ namespace Kiki.WebSite
                                     {"banner",new ThumbnailPicture{ PictureSize =new PictureSize {Height =385 ,Width = 1200 }, CacheFolder = "banner", ScaleMode = ScaleMode.Crop}},
                                     {"articlePreviw",new ThumbnailPicture{ PictureSize =new PictureSize {Height =245 ,Width = 245 }, CacheFolder = "articlePreviw", ScaleMode = ScaleMode.Crop}},
                                     {"siteTitle",new ThumbnailPicture{ PictureSize =new PictureSize {Height =139 ,Width = 604 }, CacheFolder = "siteTitle", ScaleMode = ScaleMode.Crop}},
+                                    {"galleryImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =390 ,Width = 390 }, CacheFolder = "galleryImage", ScaleMode = ScaleMode.Crop}},
                                     //{"articleItemImageAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =50 ,Width = 50 }, CacheFolder = "articleItemImageAdminPreview", ScaleMode = ScaleMode.Crop}},
                                     //{"articleCaruselItem",new ThumbnailPicture{ PictureSize =new PictureSize {Height =391 ,Width = 522 }, CacheFolder = "articleCaruselItem", ScaleMode = ScaleMode.Crop}},
                                     //{"cartProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height =154 ,Width = 154 }, CacheFolder = "cartProductImage", ScaleMode = ScaleMode.Crop}},
@@ -56,7 +57,7 @@ namespace Kiki.WebSite
 
         public static string Version
         {
-            get { return "0.0.10"; }
+            get { return "0.0.11"; }
         }
 
         public static string MailTo

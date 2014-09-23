@@ -20,11 +20,17 @@
     "~/Content/css/banner.css?v="+SiteSettings.Version,
     "~/Content/css/subscribe.css?v="+SiteSettings.Version,
     "~/Content/css/sale.css?v="+SiteSettings.Version,
-    "~/Content/css/welcome.css?v="+SiteSettings.Version)
+    "~/Content/css/welcome.css?v="+SiteSettings.Version,
+    "~/Content/css/jquery.bxslider.css")
+    
+    <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
+
     @Scripts.Render("~/bundles/modernizr")
     
     
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.bxslider.min.js")
+    @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
     @Scripts.Render("~/Scripts/site.js?v="+SiteSettings.Version)
     @RenderSection("scripts", required: false)
 </head>

@@ -1,4 +1,6 @@
-﻿@using Kiki.WebSite.Models
+﻿@using Kiki.WebSite
+@using Kiki.WebSite.Helpers.Graphics
+@using Kiki.WebSite.Models
 @model Kiki.WebSite.Models.SiteModel
 
 @{
@@ -19,29 +21,76 @@
 {
     @if (Model.Banner != null)
     {
-        @Html.Partial("Banner",Model.Banner.ImageSource)
+        @Html.Partial("Banner", Model.Banner.ImageSource)
     }
 
 }
 
-@Html.Partial("Title",new SiteTitle{Title = Model.Content.Title, ImageSource = Model.Content.ImageSource} )
+@Html.Partial("Title", new SiteTitle { Title = Model.Content.Title, ImageSource = Model.Content.ImageSource })
 
 
 
-    <div class="welcome">
-        <div class="text">
-            Мы знаем не по наслышке , что такое ответственность за внешний вид клиентов. Эта идея собрала команду лучших
-            специалистов, которые повышают свой уровень ежечасно &mdash; только для тебя.
-            <div class="title">Играй главную роль!</div>
-            <div class="sign"></div>
-        </div>
-        <div class="mini-gallery">
-            <div class="carousel">
-                <div class="image-container">
-                    <div class="image">
-                        <div class="zoom"></div>
-                    </div>
+<div class="welcome">
+    <div class="text">
+        Мы знаем не по наслышке , что такое ответственность за внешний вид клиентов. Эта идея собрала команду лучших
+        специалистов, которые повышают свой уровень ежечасно &mdash; только для тебя.
+        <div class="title">Играй главную роль!</div>
+        <div class="sign"></div>
+    </div>
+    <div class="mini-gallery">
+        <div class="carousel">
+            
+
+            
+
+            <div class="image-container">
+                
+
+                <div class="image">
+
+            <div id="slider-prev"></div>
+            <div id="slider-next"></div>        
+
+                    <ul class="bxsliderProducts">
+                        @foreach (var item in Model.GalleryImages.OrderBy(c => c.SortOrder))
+                        {
+                            <li>
+                                <a href="/Content/Images/@item.ImageSource" rel="group1" class="fancy">
+                                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("galleryImage")))
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                    <div class="zoom"></div>
                 </div>
+                
+                
             </div>
         </div>
     </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+
+            var autostart = @(Model.GalleryImages.Count() > 1 ? "true" : "false")
+            //alert(autostart);
+
+             $('.bxsliderProducts').bxSlider({
+                 mode: 'fade',
+                 auto: autostart,
+                 pause: 5000,
+                 speed: 500,
+                 pager: false,
+                 nextSelector: '#slider-next',
+                 prevSelector: '#slider-prev',
+                 nextText: '',
+                 prevText: ''
+             });
+        });
+    </script>
+}

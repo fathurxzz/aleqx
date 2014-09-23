@@ -42,3 +42,33 @@
     margin-top: 20px;
 }
 
+
+
+
+
+.mini-gallery  #slider-prev,
+.mini-gallery  #slider-next
+ {
+    width: 60px;
+    height: 110px;
+    position: absolute;
+}
+
+.mini-gallery  #slider-prev {
+    margin-top: 178px;
+    margin-left: -80px;
+
+}
+
+.mini-gallery  #slider-next {
+    
+    margin-top: 170px;
+    margin-left: 413px;
+}
+
+.mini-gallery  #slider-prev a, .mini-gallery  #slider-next a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+

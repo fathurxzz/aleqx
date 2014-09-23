@@ -1,5 +1,7 @@
 ﻿$(function () {
 
+    $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
+
     var query;
 
     $("#search").keyup(function () {
