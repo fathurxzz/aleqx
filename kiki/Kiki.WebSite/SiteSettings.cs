@@ -57,7 +57,7 @@ namespace Kiki.WebSite
 
         public static string Version
         {
-            get { return "0.0.11"; }
+            get { return "0.0.12"; }
         }
 
         public static string MailTo
