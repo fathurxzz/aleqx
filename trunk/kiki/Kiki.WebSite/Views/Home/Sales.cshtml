@@ -29,17 +29,23 @@
 
 <div class="sales">
     <div class="subscribe-panel">
+        <div id="subscribe-controls">
         <div class="title">
             будь в курсе!
         </div>
         <div class="text">
-            Кики сразу же напишет тебе о свежей хорошей новости, просто введи свой емейл-адрес:
+            Кики сразу же напишет тебе о новой подарочной акции, просто введи свой емейл-адрес:
         </div>
         <input type="text" name="email" id="email"/>
-        <div id="subscribe-btn">
-            Отправить!
+            <div id="subscribe-btn">
+                Отправить!
+            </div>
+            </div>
+        <div id="subscribed">
+        твой емейл подписан на подарочные акции :)    
         </div>
     </div>
+
     
     @{
         int i = 1;
@@ -67,9 +73,9 @@
                     </div>
                 }
 
-                <a href="@Url.Action("ArticleDetails","Home",new{contentName=Model.Content.Name, id=item.Name})">
+                @*<a href="@Url.Action("SaleDetails","Home",new{contentName=Model.Content.Name, id=item.Name})">*@
                     @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))    
-                </a>
+                @*</a>*@
                 
                 @*<img src="img/tmp/image1.png">*@
                 

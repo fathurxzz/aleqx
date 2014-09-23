@@ -36,6 +36,13 @@ namespace Kiki.WebSite
             );
 
             routes.MapRoute(
+                "Subscribe",
+                "subscribe",
+                new { controller = "Service", action = "Subscribe"},
+                new[] { "Kiki.WebSite.Controllers" }
+            );
+
+            routes.MapRoute(
                 "Services",
                 "services/{id}",
                 new { controller = "Home", action = "ServiceDetails", id = UrlParameter.Optional, contentName="services" },
