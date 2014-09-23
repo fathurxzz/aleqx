@@ -31,9 +31,12 @@
                                 //alert(index + ": " + value.Title);
 
                                 $("#sResult").append(
-                                    $('<li>').append(
-                                    $('<a>').attr('href','/services/'+value.Name).append(value.Title)
-                                ));
+
+                                    $('<li>')
+                                    .append($('<a>').attr('href', '/services/' + value.Name).append(value.Title))
+                                    .append($('<span>').attr('class', 'price').append(value.Price))
+
+                               );
                             });
 
                             $("#service-search-result").show();
