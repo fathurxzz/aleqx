@@ -28,6 +28,7 @@ namespace Kiki.WebSite.Models
         public IEnumerable<Service> Services { get; set; }
         public SiteImage MainImage { get; set; }
         public SiteImage Attention { get; set; }
+        public IEnumerable<GalleryImage> GalleryImages { get; set; }
 
         public SiteModel(ISiteRepository repository, string contentName)
         {
@@ -39,6 +40,7 @@ namespace Kiki.WebSite.Models
             Articles = repository.GetArticles();
             Sales = repository.GetSales();
             Services = repository.GetServices();
+            GalleryImages = repository.GetGalleryImages();
 
             Content = contentName != null 
                 ? Contents.FirstOrDefault(c => c.Name == contentName) 
