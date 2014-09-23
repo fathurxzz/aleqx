@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kiki.DataAccess.Entities;
 using Kiki.DataAccess.Repositories;
 using Kiki.WebSite.Models;
 using Newtonsoft.Json;
@@ -42,6 +43,21 @@ namespace Kiki.WebSite.Controllers
                 return Json(json, JsonRequestBehavior.AllowGet);
             }
             return null;
+        }
+
+        public JsonResult Subscribe(string email)
+        {
+            try
+            {
+                var subscriber = new Subscriber() { Email = email };
+                int id = _repository.AddSubscriber(subscriber);
+                return Json(new {errorCode = 0}, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return Json(new { errorCode = 1, }, JsonRequestBehavior.AllowGet);
         }
 
     }

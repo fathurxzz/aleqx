@@ -1,4 +1,9 @@
-﻿.sales
+﻿.sale-details
+{
+    margin: 150px 0 0;
+}
+
+.sales
 {
     margin-top: 150px;
     margin-left: -37px;

@@ -20,58 +20,63 @@
 {
     @if (Model.Banner != null)
     {
-        @Html.Partial("Banner",Model.Banner.ImageSource)
+        @Html.Partial("Banner", Model.Banner.ImageSource)
     }
 }
 
-    @Html.Partial("Title",new SiteTitle{Title = Model.Content.Title, ImageSource = Model.Content.ImageSource} )
+@Html.Partial("Title", new SiteTitle { Title = Model.Content.Title, ImageSource = Model.Content.ImageSource })
 
 
 <div class="articles">
-    
+
     <div class="subscribe-panel">
-        <div class="title">
-            будь в курсе!
+        <div id="subscribe-controls">
+            <div class="title">
+                будь в курсе!
+            </div>
+            <div class="text">
+                Кики сразу же напишет тебе о свежей хорошей новости, просто введи свой емейл-адрес:
+            </div>
+            <input type="text" name="email" id="email" />
+            <div id="subscribe-btn">
+                Отправить!
+            </div>
         </div>
-        <div class="text">
-            Кики сразу же напишет тебе о свежей хорошей новости, просто введи свой емейл-адрес:
-        </div>
-        <input type="text" name="email" id="email"/>
-        <div id="subscribe-btn">
-            Отправить!
+        <div id="subscribed">
+        твой емейл подписан на хорошие новости :)    
         </div>
     </div>
-    
+
     @{
         int i = 1;
     }
-    
+
     @foreach (var item in Model.Articles)
     {
         i++;
         
         <div class="article-preview">
             <div class="image">
-                <a href="@Url.Action("ArticleDetails","Home",new{contentName=Model.Content.Name, id=item.Name})">
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))    
+                <a href="@Url.Action("ArticleDetails", "Home", new { contentName = Model.Content.Name, id = item.Name })">
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))
                 </a>
-                
+
                 @*<img src="img/tmp/image1.png">*@
             </div>
             <div class="date">@item.Date.ToShortDateString()</div>
             <div class="title">@item.Title</div>
-            <div class="link"><a href="@Url.Action("ArticleDetails","Home",new{contentName=Model.Content.Name, id=item.Name})">Вся новость</a> &raquo; </div>
+            <div class="link"><a href="@Url.Action("ArticleDetails", "Home", new { contentName = Model.Content.Name, id = item.Name })">Вся новость</a> &raquo; </div>
         </div>
         
         if (i % 4 == 0)
         {
-           <div class="clear"></div> 
+        <div class="clear"></div> 
         }
     }
 
-    
 
-   @* <div class="article-preview">
+
+    @* <div class="article-preview">
         <div class="image">
             <img src="img/tmp/image1.png">
         </div>

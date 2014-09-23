@@ -60,4 +60,32 @@
 
     });
 
+
+    $("#subscribe-btn").click(function() {
+        var email = $("#email").val();
+
+        if (IsEmail(email)) {
+
+            $.ajax({
+                url: '/subscribe/?email=' + email,
+                dataType: "json",
+                success: function (data) {
+
+                    $("#subscribe-controls").hide();
+                    $("#subscribed").show();
+                }
+            });
+            
+        } else {
+            $("#email").css("border-color", "red");
+        }
+
+    });
+
+
+    function IsEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+
 });

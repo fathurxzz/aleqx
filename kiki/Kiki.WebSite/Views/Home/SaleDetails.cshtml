@@ -17,7 +17,7 @@
 }
 
 
-    @Html.Partial("Title",Model.Sale.Title)
+@Html.Partial("Title",new SiteTitle{Title = Model.Sale.Title, ImageSource = Model.Sale.ImageSource} )
 
 
  <div class="sale-details">
@@ -30,30 +30,13 @@
             <div class="description">@Model.Sale.Description</div>
         </div>
 
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
-        asd flaskd flasdk flks dflkas dflkasd jflkas dflkas dlfkasj dlfkjasdlfkjasld kfjlas dkfjlasdk jfldkasj
+        @Html.Raw(Model.Sale.Text)
 
 
 
 
         <div class="article-details-footer link">
-            <a href="@Url.Action("Index","Home",new{id="sales"})">&laquo; Вернуться к хорошим новостям</a>
+            <a href="@Url.Action("Index","Home",new{id="sales"})">&laquo; Вернуться к акциям</a>
         </div>
 
     </div>
