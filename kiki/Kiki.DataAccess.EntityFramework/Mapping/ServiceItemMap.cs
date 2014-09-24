@@ -15,7 +15,13 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Title)
                 .HasMaxLength(200);
 
+            this.Property(t => t.TitleEng)
+                .HasMaxLength(200);
+
             this.Property(t => t.Description)
+                .HasMaxLength(1000);
+
+            this.Property(t => t.DescriptionEng)
                 .HasMaxLength(1000);
 
             this.Property(t => t.Price)
@@ -25,7 +31,9 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.ToTable("ServiceItem", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEng).HasColumnName("TitleEng");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DescriptionEng).HasColumnName("DescriptionEng");
             this.Property(t => t.Price).HasColumnName("Price");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.ServiceId).HasColumnName("ServiceId");

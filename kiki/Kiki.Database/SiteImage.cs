@@ -18,5 +18,6 @@ namespace Kiki.Database
         public string ImageSource { get; set; }
         public int ImageType { get; set; }
         public string Text { get; set; }
+        public string TextEng { get; set; }
     }
 }

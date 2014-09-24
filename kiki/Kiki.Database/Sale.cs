@@ -22,5 +22,8 @@ namespace Kiki.Database
         public System.DateTime EndDate { get; set; }
         public string ImageSource { get; set; }
         public string Name { get; set; }
+        public string TitleEng { get; set; }
+        public string DescriptionEng { get; set; }
+        public string TextEng { get; set; }
     }
 }

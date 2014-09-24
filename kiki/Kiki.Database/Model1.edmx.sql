@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/02/2014 21:01:49
--- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
+-- Date Created: 09/24/2014 09:52:51
+-- Generated from EDMX file: D:\projects\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `gbua_kiki`;
-CREATE DATABASE `gbua_kiki`;
-USE `gbua_kiki`;
+DROP DATABASE IF EXISTS `test`;
+CREATE DATABASE `test`;
+USE `test`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -44,7 +44,9 @@ CREATE TABLE `Reason`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`SortOrder` int NOT NULL, 
 	`Title` varchar (200) NOT NULL, 
-	`Text` varchar (1000));
+	`Text` varchar (1000), 
+	`TitleEng` varchar (200) NOT NULL, 
+	`TextEng` varchar (1000));
 
 ALTER TABLE `Reason` ADD PRIMARY KEY (Id);
 
@@ -63,7 +65,10 @@ CREATE TABLE `Content`(
 	`SeoText` varchar (10000), 
 	`Text` varchar (10000), 
 	`TitleImageSource` longtext NOT NULL, 
-	`BannerImageSource` longtext NOT NULL);
+	`BannerImageSource` longtext NOT NULL, 
+	`TitleEng` longtext NOT NULL, 
+	`MenuTitleEng` varchar (200), 
+	`TextEng` varchar (10000));
 
 ALTER TABLE `Content` ADD PRIMARY KEY (Id);
 
@@ -83,7 +88,8 @@ CREATE TABLE `SiteImage`(
 	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
 	`ImageSource` varchar (200) NOT NULL, 
 	`ImageType` int NOT NULL, 
-	`Text` varchar (200));
+	`Text` varchar (200), 
+	`TextEng` varchar (200));
 
 ALTER TABLE `SiteImage` ADD PRIMARY KEY (Id);
 
@@ -97,7 +103,10 @@ CREATE TABLE `Article`(
 	`Text` varchar (10000) NOT NULL, 
 	`Name` varchar (200) NOT NULL, 
 	`ImageSource` varchar (200) NOT NULL, 
-	`Description` varchar (200) NOT NULL);
+	`Description` varchar (200) NOT NULL, 
+	`TitleEng` varchar (200), 
+	`TextEng` varchar (10000), 
+	`DescriptionEng` varchar (200));
 
 ALTER TABLE `Article` ADD PRIMARY KEY (Id);
 
@@ -110,7 +119,9 @@ CREATE TABLE `Service`(
 	`Title` varchar (200), 
 	`Description` varchar (10000), 
 	`ImageSource` varchar (200), 
-	`SortOrder` int NOT NULL);
+	`SortOrder` int NOT NULL, 
+	`TitleEng` varchar (200), 
+	`DescriptionEng` varchar (10000));
 
 ALTER TABLE `Service` ADD PRIMARY KEY (Id);
 
@@ -123,7 +134,9 @@ CREATE TABLE `ServiceItem`(
 	`Description` varchar (1000), 
 	`Price` varchar (50), 
 	`SortOrder` int NOT NULL, 
-	`ServiceId` int NOT NULL);
+	`ServiceId` int NOT NULL, 
+	`TitleEng` varchar (200), 
+	`DescriptionEng` varchar (1000));
 
 ALTER TABLE `ServiceItem` ADD PRIMARY KEY (Id);
 
@@ -138,7 +151,10 @@ CREATE TABLE `Sale`(
 	`StartDate` datetime NOT NULL, 
 	`EndDate` datetime NOT NULL, 
 	`ImageSource` varchar (200), 
-	`Name` varchar (200) NOT NULL);
+	`Name` varchar (200) NOT NULL, 
+	`TitleEng` varchar (200), 
+	`DescriptionEng` varchar (1000), 
+	`TextEng` varchar (10000));
 
 ALTER TABLE `Sale` ADD PRIMARY KEY (Id);
 

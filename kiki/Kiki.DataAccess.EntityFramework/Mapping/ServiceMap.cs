@@ -19,7 +19,13 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Title)
                 .HasMaxLength(200);
 
+            this.Property(t => t.TitleEng)
+                .HasMaxLength(200);
+
             this.Property(t => t.Description)
+                .HasMaxLength(10000);
+
+            this.Property(t => t.DescriptionEng)
                 .HasMaxLength(10000);
 
             this.Property(t => t.ImageSource)
@@ -30,7 +36,9 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEng).HasColumnName("TitleEng");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DescriptionEng).HasColumnName("DescriptionEng");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
         }

@@ -19,6 +19,9 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Text)
                 .HasMaxLength(200);
 
+            this.Property(t => t.TextEng)
+                .HasMaxLength(200);
+
 
 
 
@@ -27,6 +30,7 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
             this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.TextEng).HasColumnName("TextEng");
             this.Property(t => t.ImageType).HasColumnName("ImageType");
         }
     }

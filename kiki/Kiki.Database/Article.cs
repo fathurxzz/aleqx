@@ -21,5 +21,8 @@ namespace Kiki.Database
         public string Name { get; set; }
         public string ImageSource { get; set; }
         public string Description { get; set; }
+        public string TitleEng { get; set; }
+        public string TextEng { get; set; }
+        public string DescriptionEng { get; set; }
     }
 }

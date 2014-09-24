@@ -20,7 +20,14 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
+            this.Property(t => t.TitleEng)
+                .IsRequired()
+                .HasMaxLength(200);
+
             this.Property(t => t.MenuTitle)
+                .HasMaxLength(200);
+
+            this.Property(t => t.MenuTitleEng)
                 .HasMaxLength(200);
             
             this.Property(t => t.ImageSource)
@@ -38,18 +45,24 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Text)
                 .HasMaxLength(10000);
 
+            this.Property(t => t.TextEng)
+                .HasMaxLength(10000);
+
             // Table & Column Mappings
             this.ToTable("Content", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEng).HasColumnName("TitleEng");
             this.Property(t => t.MenuTitle).HasColumnName("MenuTitle");
+            this.Property(t => t.MenuTitleEng).HasColumnName("MenuTitleEng");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.ContentType).HasColumnName("ContentType");
             this.Property(t => t.SeoDescription).HasColumnName("SeoDescription");
             this.Property(t => t.SeoKeywords).HasColumnName("SeoKeywords");
             this.Property(t => t.SeoText).HasColumnName("SeoText");
             this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.TextEng).HasColumnName("TextEng");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
         }
     }
