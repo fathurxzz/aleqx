@@ -56,6 +56,14 @@
     <Compile Include="Entities\ServiceItem.cs" />
     <Compile Include="Entities\SiteImage.cs" />
     <Compile Include="Entities\Subscriber.cs" />
+    <Compile Include="Entities\Validation\ArticleValidation.cs" />
+    <Compile Include="Entities\Validation\ContentValidation.cs" />
+    <Compile Include="Entities\Validation\GalleryImageValidation.cs" />
+    <Compile Include="Entities\Validation\ReasonValidation.cs" />
+    <Compile Include="Entities\Validation\SaleValidation.cs" />
+    <Compile Include="Entities\Validation\ServiceItemValidation.cs" />
+    <Compile Include="Entities\Validation\ServiceValidation.cs" />
+    <Compile Include="Entities\Validation\SiteImageValidation.cs" />
     <Compile Include="ImageType.cs" />
     <Compile Include="ISiteStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

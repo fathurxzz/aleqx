@@ -8,12 +8,12 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name ,Lang = Model.LangCode})
 }
 
 @section Banner
@@ -24,14 +24,14 @@
     }
 }
 
-@Html.Partial("Title", new SiteTitle { Title = Model.Content.Title, ImageSource = Model.Content.ImageSource })
+@Html.Partial("Title", new SiteTitle { Title = Model.LangCode=="en"?Model.Content.TitleEng: Model.Content.Title, ImageSource = Model.Content.ImageSource })
 
 
 <div class="services">
 
     <div class="service-search-container">
         <div class="service-search">
-            <input id="search" name="search" type="text"  value="" placeholder="@Model.Service.Title">
+            <input id="search" name="search" type="text"  value="" placeholder="@(Model.LangCode=="en"? Model.Service.TitleEng:Model.Service.Title)">
         </div>
         <div class="service-search-result" id="service-search-result">
             <div class="service-search-result-top"></div>
@@ -59,7 +59,7 @@
     </div>
     <div class="right-side">
         <div class="description">
-        @Html.Raw(Model.Service.Description)
+        @Html.Raw(Model.LangCode=="en"?Model.Service.DescriptionEng:Model.Service.Description)
     </div>
 
     @if (Model.Service.ServiceItems.Any())
@@ -73,8 +73,8 @@
                 string className = i%2 == 0 ? "item" : "";
                 string priceClassName = i%2 == 1 ? "item" : "";
                 <tr>
-                    <td class="title @className">@serviceItem.Title</td>
-                    <td class="@className">@serviceItem.Description</td>
+                    <td class="title @className">@(Model.LangCode=="en"?serviceItem.TitleEng:serviceItem.Title)</td>
+                    <td class="@className">@(Model.LangCode=="en"?serviceItem.DescriptionEng:serviceItem.Description)</td>
                     <td class="price @priceClassName">@serviceItem.Price</td>
                 </tr>
             }

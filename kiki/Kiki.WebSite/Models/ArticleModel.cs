@@ -11,7 +11,7 @@ namespace Kiki.WebSite.Models
     {
         public Article Article { get; set; }
 
-        public ArticleModel(ISiteRepository repository, string contentName, string articleId) : base(repository, contentName)
+        public ArticleModel(ISiteRepository repository, string contentName, string articleId,string lang) : base(repository, contentName,lang)
         {
             Article = Articles.First(a => a.Name == articleId);
         }

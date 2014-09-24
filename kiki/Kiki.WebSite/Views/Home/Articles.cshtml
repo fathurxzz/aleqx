@@ -1,4 +1,5 @@
 ﻿@using Kiki.WebSite
+@using Kiki.WebSite.App_LocalResources
 @using Kiki.WebSite.Helpers.Graphics
 @using Kiki.WebSite.Models
 @model Kiki.WebSite.Models.SiteModel
@@ -8,12 +9,12 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Banner
@@ -24,7 +25,7 @@
     }
 }
 
-@Html.Partial("Title", new SiteTitle { Title = Model.Content.Title, ImageSource = Model.Content.ImageSource })
+@Html.Partial("Title", new SiteTitle { Title = Model.LangCode=="en"?Model.Content.TitleEng: Model.Content.Title, ImageSource = Model.Content.ImageSource })
 
 
 <div class="articles">
@@ -35,15 +36,15 @@
                 будь в курсе!
             </div>
             <div class="text">
-                Кики сразу же напишет тебе о свежей хорошей новости, просто введи свой емейл-адрес:
+                @GlobalRes.PleaseSubscribeToNews
             </div>
             <input type="text" name="email" id="email" />
             <div id="subscribe-btn">
-                Отправить!
+                @GlobalRes.Send
             </div>
         </div>
         <div id="subscribed">
-        твой емейл подписан на хорошие новости :)    
+            @GlobalRes.SubscribedToNews
         </div>
     </div>
 
@@ -64,8 +65,8 @@
                 @*<img src="img/tmp/image1.png">*@
             </div>
             <div class="date">@item.Date.ToShortDateString()</div>
-            <div class="title">@item.Title</div>
-            <div class="link"><a href="@Url.Action("ArticleDetails", "Home", new { contentName = Model.Content.Name, id = item.Name })">Вся новость</a> &raquo; </div>
+            <div class="title">@(Model.LangCode=="en"?item.TitleEng:item.Title)</div>
+            <div class="link"><a href="@Url.Action("ArticleDetails", "Home", new { contentName = Model.Content.Name, id = item.Name })">@GlobalRes.AllArticle</a> &raquo; </div>
         </div>
         
         if (i % 4 == 0)
@@ -73,68 +74,4 @@
         <div class="clear"></div> 
         }
     }
-
-
-
-    @* <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-    <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-    <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-
-    <div class="clear"></div>
-
-    <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-    <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-    <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-    <div class="article-preview">
-        <div class="image">
-            <img src="img/tmp/image1.png">
-        </div>
-        <div class="date">16.11.2014</div>
-        <div class="title">Скоро! Точнее, 20 ноября состоится мастер-класс по надменному взгляду.</div>
-        <div class="link"><a href="article-details.html">Вся новость</a> &raquo; </div>
-    </div>
-
-    <div class="clear"></div>*@
 </div>

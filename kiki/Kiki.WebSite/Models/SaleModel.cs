@@ -11,7 +11,7 @@ namespace Kiki.WebSite.Models
     {
         public Sale Sale { get; set; }
 
-        public SaleModel(ISiteRepository repository, string contentName, string saleId) : base(repository, contentName)
+        public SaleModel(ISiteRepository repository, string contentName, string saleId,string lang) : base(repository, contentName,lang)
         {
             Sale = Sales.First(a => a.Name == saleId);
         }

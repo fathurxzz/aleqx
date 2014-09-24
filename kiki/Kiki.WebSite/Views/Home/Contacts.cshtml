@@ -8,12 +8,12 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Banner
@@ -24,12 +24,12 @@
     }
 }
 
-@Html.Partial("Title",new SiteTitle{Title = Model.Content.Title, ImageSource = Model.Content.ImageSource} )
+@Html.Partial("Title",new SiteTitle{Title = Model.LangCode=="en"?Model.Content.TitleEng: Model.Content.Title, ImageSource = Model.Content.ImageSource} )
 
 
 
 <div class="site-content">
-    @Html.Raw(Model.Content.Text)
+    @Html.Raw(Model.LangCode=="en"? Model.Content.TextEng:Model.Content.Text)
 </div>
 
 

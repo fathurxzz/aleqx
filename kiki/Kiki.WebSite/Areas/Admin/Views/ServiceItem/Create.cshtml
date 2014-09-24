@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="Price" id="Price" placeholder="Введите цену" value="@Model.Title">
+                <input type="text" class="form-control" name="Price" id="Price" placeholder="Введите цену" value="@Model.Price">
             </div>
             @Html.ValidationMessageFor(model => model.Price)
         </div>

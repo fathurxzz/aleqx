@@ -1,0 +1,20 @@
+﻿@using System.Threading
+@using Kiki.WebSite.Helpers
+
+
+<div class="language-switcher">
+    @if (Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+    {
+        var routeData = ViewContext.RouteData.GetCopy();
+        routeData.Values["lang"] = "en";
+        @Html.RouteLink("ENG", routeData.Values)
+        <text> | RU</text>
+    }
+    else
+    {
+        var routeData = ViewContext.RouteData.GetCopy();
+        routeData.Values["lang"] = "ru";
+        <text>ENG | </text>
+        @Html.RouteLink("RU", routeData.Values)
+    }
+</div>

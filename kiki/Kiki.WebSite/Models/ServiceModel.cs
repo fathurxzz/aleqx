@@ -12,7 +12,7 @@ namespace Kiki.WebSite.Models
         public Service Service { get; set; }
         public string Query { get; set; }
 
-        public ServiceModel(ISiteRepository repository, string contentName, string serviceId) : base(repository, contentName)
+        public ServiceModel(ISiteRepository repository, string contentName, string serviceId,string lang) : base(repository, contentName,lang)
         {
             Service = Services.First(s => s.Name == serviceId);
         }

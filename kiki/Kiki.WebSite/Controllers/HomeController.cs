@@ -21,7 +21,7 @@ namespace Kiki.WebSite.Controllers
 
         public ActionResult Index(string id)
         {
-            var model = new SiteModel(_repository, id);
+            var model = new SiteModel(_repository, id, CurrentLangCode);
             this.SetSeoContent(model);
             switch ((ContentType) model.Content.ContentType)
             {
@@ -44,21 +44,21 @@ namespace Kiki.WebSite.Controllers
 
         public ActionResult ArticleDetails(string id, string contentName)
         {
-            var model = new ArticleModel(_repository, contentName, id);
+            var model = new ArticleModel(_repository, contentName, id,CurrentLangCode);
 
             return View(model);
         }
 
         public ActionResult SaleDetails(string id, string contentName)
         {
-            var model = new SaleModel(_repository, contentName, id);
+            var model = new SaleModel(_repository, contentName, id, CurrentLangCode);
 
             return View(model);
         }
 
         public ActionResult ServiceDetails(string id, string contentName)
         {
-            var model = new ServiceModel(_repository, contentName, id);
+            var model = new ServiceModel(_repository, contentName, id, CurrentLangCode);
             return View(model);
         }
     }
