@@ -16,6 +16,10 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
+            this.Property(t => t.TitleEng)
+                .IsRequired()
+                .HasMaxLength(200);
+
             this.Property(t => t.Name)
                 .IsRequired()
                 .HasMaxLength(200);
@@ -23,7 +27,13 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Description)
                 .HasMaxLength(1000);
 
+            this.Property(t => t.DescriptionEng)
+                .HasMaxLength(1000);
+
             this.Property(t => t.Text)
+                .HasMaxLength(10000);
+
+            this.Property(t => t.TextEng)
                 .HasMaxLength(10000);
 
             this.Property(t => t.ImageSource)
@@ -33,8 +43,11 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.ToTable("Sale", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEng).HasColumnName("TitleEng");
             this.Property(t => t.Description).HasColumnName("Description");
+            this.Property(t => t.DescriptionEng).HasColumnName("DescriptionEng");
             this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.TextEng).HasColumnName("TextEng");
             this.Property(t => t.StartDate).HasColumnName("StartDate");
             this.Property(t => t.EndDate).HasColumnName("EndDate");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");

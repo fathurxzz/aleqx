@@ -20,6 +20,8 @@ namespace Kiki.Database
         public string Price { get; set; }
         public int SortOrder { get; set; }
         public int ServiceId { get; set; }
+        public string TitleEng { get; set; }
+        public string DescriptionEng { get; set; }
     
         public virtual Service Service { get; set; }
     }

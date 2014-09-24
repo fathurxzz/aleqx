@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="Reason" EntityType="Model1.Store.Reason" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Model1.Store.Content" store:Type="Tables" Schema="dbo" />
@@ -28,6 +28,8 @@
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Text" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="TitleEng" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="TextEng" Type="varchar" Nullable="true" MaxLength="1000" />
   </EntityType>
   <EntityType Name="Content">
     <Key>
@@ -45,6 +47,9 @@
     <Property Name="Text" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="TitleImageSource" Type="longtext" Nullable="false" />
     <Property Name="BannerImageSource" Type="longtext" Nullable="false" />
+    <Property Name="TitleEng" Type="longtext" Nullable="false" />
+    <Property Name="MenuTitleEng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="TextEng" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="Subscriber">
     <Key>
@@ -61,6 +66,7 @@
     <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="ImageType" Type="int" Nullable="false" />
     <Property Name="Text" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="TextEng" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Article">
     <Key>
@@ -73,6 +79,9 @@
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Description" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="TitleEng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="TextEng" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="DescriptionEng" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Service">
     <Key>
@@ -84,6 +93,8 @@
     <Property Name="Description" Type="varchar" Nullable="true" MaxLength="10000" />
     <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="TitleEng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="DescriptionEng" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="ServiceItem">
     <Key>
@@ -95,6 +106,8 @@
     <Property Name="Price" Type="varchar" Nullable="true" MaxLength="50" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="ServiceId" Type="int" Nullable="false" />
+    <Property Name="TitleEng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="DescriptionEng" Type="varchar" Nullable="true" MaxLength="1000" />
   </EntityType>
   <EntityType Name="Sale">
     <Key>
@@ -108,6 +121,9 @@
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="Name" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="TitleEng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="DescriptionEng" Type="varchar" Nullable="true" MaxLength="1000" />
+    <Property Name="TextEng" Type="varchar" Nullable="true" MaxLength="10000" />
   </EntityType>
   <EntityType Name="GalleryImage">
     <Key>
@@ -156,6 +172,8 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="Title" MaxLength="200" Nullable="false" />
           <Property Type="String" Name="Text" MaxLength="1000" />
+          <Property Type="String" Name="TitleEng" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="TextEng" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Content">
           <Key>
@@ -173,6 +191,9 @@
           <Property Type="String" Name="Text" MaxLength="10000" />
           <Property Type="String" Name="TitleImageSource" Nullable="false" />
           <Property Type="String" Name="BannerImageSource" Nullable="false" />
+          <Property Type="String" Name="TitleEng" Nullable="false" />
+          <Property Type="String" Name="MenuTitleEng" MaxLength="200" />
+          <Property Type="String" Name="TextEng" MaxLength="10000" />
         </EntityType>
         <EntityType Name="Subscriber">
           <Key>
@@ -189,6 +210,7 @@
           <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
           <Property Type="Int32" Name="ImageType" Nullable="false" />
           <Property Type="String" Name="Text" MaxLength="200" />
+          <Property Type="String" Name="TextEng" MaxLength="200" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -201,6 +223,9 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="Description" MaxLength="200" Nullable="false" />
+          <Property Type="String" Name="TitleEng" MaxLength="200" />
+          <Property Type="String" Name="TextEng" MaxLength="10000" />
+          <Property Type="String" Name="DescriptionEng" MaxLength="200" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -213,6 +238,8 @@
           <Property Type="String" Name="ImageSource" MaxLength="200" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="ServiceItems" Relationship="Model1.ServiceServiceItem" FromRole="Service" ToRole="ServiceItem" />
+          <Property Type="String" Name="TitleEng" MaxLength="200" />
+          <Property Type="String" Name="DescriptionEng" MaxLength="10000" />
         </EntityType>
         <EntityType Name="ServiceItem">
           <Key>
@@ -225,6 +252,8 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <NavigationProperty Name="Service" Relationship="Model1.ServiceServiceItem" FromRole="ServiceItem" ToRole="Service" />
           <Property Type="Int32" Name="ServiceId" Nullable="false" />
+          <Property Type="String" Name="TitleEng" MaxLength="200" />
+          <Property Type="String" Name="DescriptionEng" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -238,6 +267,9 @@
           <Property Type="DateTime" Name="EndDate" Nullable="false" />
           <Property Type="String" Name="ImageSource" MaxLength="200" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="TitleEng" MaxLength="200" />
+          <Property Type="String" Name="DescriptionEng" MaxLength="1000" />
+          <Property Type="String" Name="TextEng" MaxLength="10000" />
         </EntityType>
         <EntityType Name="GalleryImage">
           <Key>
@@ -272,6 +304,8 @@
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -290,6 +324,9 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="TitleImageSource" ColumnName="TitleImageSource" />
           <ScalarProperty Name="BannerImageSource" ColumnName="BannerImageSource" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="MenuTitleEng" ColumnName="MenuTitleEng" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -308,6 +345,7 @@
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="ImageType" ColumnName="ImageType" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -321,6 +359,9 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
+          <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -333,6 +374,8 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -345,6 +388,8 @@
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -359,6 +404,9 @@
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
+          <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+          <ScalarProperty Name="TextEng" ColumnName="TextEng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

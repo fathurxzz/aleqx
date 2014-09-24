@@ -15,6 +15,10 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Title)
                 .IsRequired()
                 .HasMaxLength(200);
+            
+            this.Property(t => t.TitleEng)
+                .IsRequired()
+                .HasMaxLength(200);
 
             this.Property(t => t.Name)
                 .IsRequired()
@@ -27,14 +31,20 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Text)
                 .IsRequired()
                 .HasMaxLength(10000);
+            
+            this.Property(t => t.TextEng)
+                .IsRequired()
+                .HasMaxLength(10000);
 
             // Table & Column Mappings
             this.ToTable("Article", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Date).HasColumnName("Date");
             this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEng).HasColumnName("TitleEng");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.TextEng).HasColumnName("TextEng");
             this.Property(t => t.ImageSource).HasColumnName("ImageSource");
         }
     }

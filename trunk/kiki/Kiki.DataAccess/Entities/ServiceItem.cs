@@ -4,7 +4,9 @@ namespace Kiki.DataAccess.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string TitleEng { get; set; }
         public string Description { get; set; }
+        public string DescriptionEng { get; set; }
         public string Price { get; set; }
         public int SortOrder { get; set; }
         public int ServiceId { get; set; }

@@ -16,15 +16,23 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
+            this.Property(t => t.TitleEng)
+                .IsRequired()
+                .HasMaxLength(200);
+
             this.Property(t => t.Text)
+                .HasMaxLength(1000);
+
+            this.Property(t => t.TextEng)
                 .HasMaxLength(1000);
 
             // Table & Column Mappings
             this.ToTable("Reason", "gbua_kiki");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
-            this.Property(t => t.Title).HasColumnName("Title");
+            this.Property(t => t.TitleEng).HasColumnName("TitleEng");
             this.Property(t => t.Text).HasColumnName("Text");
+            this.Property(t => t.TextEng).HasColumnName("TextEng");
         }
     }
 }
