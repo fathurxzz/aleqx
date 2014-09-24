@@ -44,16 +44,18 @@ namespace Kiki.WebSite
 
             routes.MapRoute(
                 "Services",
-                "services/{id}",
+                "{lang}/services/{id}",
                 new { controller = "Home", action = "ServiceDetails", id = UrlParameter.Optional, contentName="services" },
+                new { lang = @"ru|en" },
                 new[] { "Kiki.WebSite.Controllers" }
             );
 
 
             routes.MapRoute(
                  "Default",
-                 "{controller}/{action}/{id}",
+                 "{lang}/{controller}/{action}/{id}",
                  new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                 new { lang = @"ru|en" },
                  new[] { "Kiki.WebSite.Controllers" }
             );
         }
