@@ -19,7 +19,13 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleEng)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.MenuTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenuTitleEng)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -36,6 +42,9 @@
 
         <th>
             @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEng)
         </th>
 @*        <th>
             @Html.DisplayNameFor(model => model.SeoDescription)
@@ -56,7 +65,13 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TitleEng)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.MenuTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuTitleEng)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -93,6 +108,11 @@
             <td>
                 <div>
                     @Html.Raw(item.Text)
+                </div>
+            </td>
+            <td>
+                <div>
+                    @Html.Raw(item.TextEng)
                 </div>
             </td>
 @*             <td class="adminTextContainer">

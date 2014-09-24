@@ -65,7 +65,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Article model)
+        public ActionResult Edit(Subscriber model)
         {
             try
             {

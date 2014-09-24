@@ -54,7 +54,7 @@ namespace Kiki.WebSite
             routes.MapRoute(
                  "Default",
                  "{lang}/{controller}/{action}/{id}",
-                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                 new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang="ru" },
                  new { lang = @"ru|en" },
                  new[] { "Kiki.WebSite.Controllers" }
             );

@@ -36,14 +36,17 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 model.Id = 0;
                 var article = new Sale
                 {
-                    Name = string.IsNullOrEmpty(model.Name)
-                        ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
-                        : SiteHelper.UpdatePageWebName(model.Name),
+                    //Name = string.IsNullOrEmpty(model.Name)
+                    //    ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
+                    //    : SiteHelper.UpdatePageWebName(model.Name),
                     StartDate = model.StartDate,
                     EndDate = model.EndDate,
                     Title = model.Title,
+                    TitleEng = model.TitleEng,
                     Description = model.Description,
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text)
+                    DescriptionEng = model.DescriptionEng,
+                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
+                    TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng)
                 };
 
                 var file = Request.Files[0];
@@ -92,10 +95,11 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 var article = _repository.GetSale(model.Id);
-                article.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(article, new[] { "Title", "StartDate", "EndDate", "Description" });
+                //article.Name = SiteHelper.UpdatePageWebName(model.Name);
+                TryUpdateModel(article, new[] { "Title", "TitleEng", "StartDate", "EndDate", "Description", "DescriptionEng" });
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))

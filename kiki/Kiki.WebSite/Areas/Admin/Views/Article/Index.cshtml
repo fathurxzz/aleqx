@@ -33,7 +33,13 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleEng)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEng)
         </th>
         <th></th>
     </tr>
@@ -53,9 +59,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleEng)
+            </td>
             <td class="adminTextContainer">
                 <div>
                     @Html.Raw(item.Text)
+                </div>
+            </td>
+            <td class="adminTextContainer">
+                <div>
+                    @Html.Raw(item.TextEng)
                 </div>
             </td>
             <td>

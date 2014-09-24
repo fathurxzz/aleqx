@@ -26,15 +26,34 @@
 
 
 <div class="attention">
-    @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Attention.ImageSource, SiteSettings.GetThumbnail("attention")))
+    <ul class="bxsliderProducts">
+            @foreach (var item in Model.Attentions)
+            {
+                <li>
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("attention")))
+                </li>    
+            }
+        </ul>
 </div>
 
+
+ 
 
 <div class="main-image-container">
     <div class="main-image-wrapper">
-        @Html.Raw(Html.CachedImage("~/Content/Images/", Model.MainImage.ImageSource, SiteSettings.GetThumbnail("mainImage")))
+        <ul class="bxsliderProducts">
+            @foreach (var item in Model.MainImages)
+            {
+                <li>
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("mainImage")))
+                </li>    
+            }
+        </ul>
     </div>
 </div>
+
+ 
+
 <div class="pay-attention">
 </div>
 <div class="pay-attention-text">
@@ -86,3 +105,22 @@
 </div>
 
 
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(function () {
+
+            
+            //alert(autostart);
+
+             $('.bxsliderProducts').bxSlider({
+                 mode: 'fade',
+                 auto: true,
+                 pause: 5000,
+                 speed: 500,
+                 pager: false
+             });
+        });
+    </script>
+}

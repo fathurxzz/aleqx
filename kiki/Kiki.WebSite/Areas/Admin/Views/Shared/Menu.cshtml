@@ -12,38 +12,38 @@
     
     @if (Model == "Attention")
     {
-        <li class="active">@Html.ActionLink("Дополнительные изображения на главной странице", "Index", "Attention", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Обратите внимание", "Index", "Attention", new { area = "Admin" }, null)</li>
     }
     else
     {
-        <li>@Html.ActionLink("Дополнительные изображения на главной странице", "Index", "Attention", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Обратите внимание", "Index", "Attention", new { area = "Admin" }, null)</li>
     }
     
     @if (Model == "Banner")
     {
-        <li class="active">@Html.ActionLink("Баннеры", "Index", "Banner", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Картинка внизу", "Index", "Banner", new { area = "Admin" }, null)</li>
     }
     else
     {
-        <li>@Html.ActionLink("Баннеры", "Index", "Banner", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Картинка внизу", "Index", "Banner", new { area = "Admin" }, null)</li>
     }
     
     @if (Model == "Sale")
     {
-        <li class="active">@Html.ActionLink("Акции", "Index", "Sale", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Хотите подарок?", "Index", "Sale", new { area = "Admin" }, null)</li>
     }
     else
     {
-        <li>@Html.ActionLink("Акции", "Index", "Sale", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Хотите подарок?", "Index", "Sale", new { area = "Admin" }, null)</li>
     }
     
      @if (Model == "Article")
     {
-        <li class="active">@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("Что нового", "Index", "Article", new { area = "Admin" }, null)</li>
     }
     else
     {
-        <li>@Html.ActionLink("Новости", "Index", "Article", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Что нового", "Index", "Article", new { area = "Admin" }, null)</li>
     }
     
     @if (Model == "Content")
@@ -57,11 +57,11 @@
     
     @if (Model == "GalleryImage")
     {
-        <li class="active">@Html.ActionLink("Мини галерея", "Index", "GalleryImage", new { area = "Admin" }, null)</li>
+        <li class="active">@Html.ActionLink("В гостях у Кики", "Index", "GalleryImage", new { area = "Admin" }, null)</li>
     }
     else
     {
-        <li>@Html.ActionLink("Мини галерея", "Index", "GalleryImage", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("В гостях у Кики", "Index", "GalleryImage", new { area = "Admin" }, null)</li>
     }
 
     @if (Model == "Reason")

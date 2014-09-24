@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEng)
+        </th>
         <th></th>
     </tr>
 
@@ -38,6 +41,11 @@
             <td>
                 <div>
                     @Html.Raw(item.Text)
+                </div>
+            </td>
+            <td>
+                <div>
+                    @Html.Raw(item.TextEng)
                 </div>
             </td>
             <td>

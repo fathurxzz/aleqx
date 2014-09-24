@@ -30,7 +30,20 @@
     width: 390px;
     height: 390px;
     background-color: #ccc;
+    
 }
+
+/*.mini-gallery .carousel .image-container .image a {
+cursor: url(../img/zoom.png);
+ 
+}*/
+
+
+.mini-gallery .carousel .image-container .image a {
+     cursor: url(../img/zoom.png), pointer;
+}
+
+
 
 .mini-gallery .carousel .image-container .image .zoom
 {
