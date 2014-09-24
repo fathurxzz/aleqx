@@ -26,7 +26,11 @@
     <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
 
     @Scripts.Render("~/bundles/modernizr")
-    
+        <script type="text/javascript">
+            var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+            var lang = '@(ViewBag.Lang)';
+        </script>
+
     
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.bxslider.min.js")

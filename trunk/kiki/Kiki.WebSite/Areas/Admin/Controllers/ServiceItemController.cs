@@ -32,7 +32,9 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 {
                     Service = service,
                     Title = model.Title,
+                    TitleEng = model.TitleEng,
                     Description = model.Description,
+                    DescriptionEng = model.DescriptionEng,
                     SortOrder = model.SortOrder,
                     Price = model.Price
                 };
@@ -67,7 +69,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 var service = _repository.GetServiceItem(model.Id);
-                TryUpdateModel(service, new[] { "Title", "Description", "SortOrder" ,"Price"});
+                TryUpdateModel(service, new[] { "Title", "TitleEng", "Description", "DescriptionEng", "SortOrder", "Price" });
                 _repository.SaveServiceItem(service);
             }
             catch (Exception ex)

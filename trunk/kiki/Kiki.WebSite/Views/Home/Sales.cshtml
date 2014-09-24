@@ -51,7 +51,7 @@
         int i = 1;
     }
     
-    @foreach (var item in Model.Sales)
+    @foreach (var item in Model.Sales.OrderByDescending(c=>c.EndDate))
     {
         i++;
         
@@ -73,9 +73,9 @@
                     </div>
                 }
 
-                @*<a href="@Url.Action("SaleDetails","Home",new{contentName=Model.Content.Name, id=item.Name})">*@
+                <a href="/Content/Images/@item.ImageSource"  class="fancy">
                     @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))    
-                @*</a>*@
+                </a>
                 
                 @*<img src="img/tmp/image1.png">*@
                 

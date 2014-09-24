@@ -44,7 +44,9 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                         : SiteHelper.UpdatePageWebName(model.Name),
                     Date = model.Date,
                     Title = model.Title,
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text)
+                    TitleEng = model.TitleEng,
+                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
+                    TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng)
                 };
 
                 var file = Request.Files[0];
@@ -99,6 +101,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 TryUpdateModel(article, new[] { "Title", "Date"});
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))

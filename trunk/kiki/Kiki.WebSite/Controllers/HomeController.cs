@@ -37,6 +37,7 @@ namespace Kiki.WebSite.Controllers
                     return View("Services", model);
 
                 default:
+                    ViewBag.isHomePage = true;
                     return View(model);
             }
         }

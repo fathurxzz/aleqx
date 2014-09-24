@@ -21,7 +21,7 @@ namespace Kiki.DataAccess.EntityFramework.Mapping
                 .HasMaxLength(200);
 
             this.Property(t => t.Name)
-                .IsRequired()
+                //.IsRequired()
                 .HasMaxLength(200);
 
             this.Property(t => t.Description)

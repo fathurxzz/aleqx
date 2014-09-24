@@ -24,6 +24,9 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleEng)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -31,6 +34,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionEng)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SortOrder)
@@ -46,6 +52,9 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TitleEng)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
@@ -56,6 +65,9 @@
             </td>
             <td>
                 @Html.Raw(item.Description)
+            </td>
+            <td>
+                @Html.Raw(item.DescriptionEng)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SortOrder)
@@ -72,9 +84,11 @@
         <tr>
 
             <td style="padding-left: 50px">@serviceItem.Title</td>
+            <td style="padding-left: 50px">@serviceItem.TitleEng</td>
             <td></td>
             <td>@serviceItem.Price</td>
             <td>@serviceItem.Description</td>
+            <td>@serviceItem.DescriptionEng</td>
             <td>@serviceItem.SortOrder</td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit","ServiceItem", new { id = serviceItem.Id },null) |

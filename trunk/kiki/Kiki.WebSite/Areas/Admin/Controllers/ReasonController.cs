@@ -37,7 +37,9 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 var article = new Reason
                 {
                     Title = model.Title,
+                    TitleEng = model.TitleEng,
                     Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
+                    TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng),
                     SortOrder = model.SortOrder
                 };
 
@@ -72,9 +74,10 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 var article = _repository.GetReason(model.Id);
-                TryUpdateModel(article, new[] { "Title", "SortOrder"});
+                TryUpdateModel(article, new[] { "Title","TitleEng", "SortOrder"});
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
                 _repository.SaveReason(article);
             }
             catch (Exception ex)

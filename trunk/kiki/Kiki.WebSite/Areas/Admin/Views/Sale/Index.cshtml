@@ -20,9 +20,9 @@
 
 <table class="table table-striped">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Name)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ImageSource)
         </th>
@@ -36,10 +36,19 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TitleEng)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DescriptionEng)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEng)
         </th>
         <th></th>
     </tr>
@@ -47,9 +56,9 @@
     @foreach (var item in Model.OrderByDescending(a => a.StartDate))
     {
         <tr>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
+            </td>*@
             <td>
                 @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("saleAdminPreview")))
             </td>
@@ -63,14 +72,19 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <div>
-                    @Html.Raw(item.Description)
-                </div>
+                @Html.DisplayFor(modelItem => item.TitleEng)
             </td>
-            <td class="adminTextContainer">
-                <div>
-                    @Html.Raw(item.Text)
-                </div>
+            <td>
+                @Html.Raw(item.Description)
+            </td>
+            <td>
+                @Html.Raw(item.DescriptionEng)
+            </td>
+            <td>
+                @Html.Raw(item.Text)
+            </td>
+            <td>
+                @Html.Raw(item.TextEng)
             </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
