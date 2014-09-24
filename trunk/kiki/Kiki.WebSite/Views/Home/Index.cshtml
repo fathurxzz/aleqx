@@ -1,4 +1,5 @@
 ﻿@using Kiki.WebSite
+@using Kiki.WebSite.App_LocalResources
 @using Kiki.WebSite.Helpers.Graphics
 @using Kiki.WebSite.Models
 @model Kiki.WebSite.Models.SiteModel
@@ -8,12 +9,12 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Banner
@@ -57,17 +58,22 @@
 <div class="pay-attention">
 </div>
 <div class="pay-attention-text">
-    @Html.Raw(Model.Attention.Text)
+    @Html.Raw(Model.LangCode=="en"? Model.Attention.TextEng: Model.Attention.Text)
 </div>
 
 <div class="main-image-text-container">
             <div class="text">
-                Настоящий<br>
+                
+                @Html.Raw(GlobalRes.MainText)
+                
+                @*Настоящий<br>
                 мужской мейк-ап &mdash;<br>
                 всего за<br>
                 <span class="digit">40</span><br>
                 <span
-                    class="bottom">минут</span>
+                    class="bottom">минут</span>*@
+                
+
             </div>
         </div>
 
@@ -75,8 +81,9 @@
 <div class="secret">
 </div>
 <div class="secret-frame">
-    вот <a href="#secret-info">почему</a> вы<br>
-    к нам вернетесь:
+    @Html.Raw(GlobalRes.Why)
+    
+    @*вот <a href="#secret-info">почему</a> вы<br>к нам вернетесь:*@
 </div>
 <div class="vertical-line-top"></div>
 <div class="horizontal-line"></div>
@@ -92,11 +99,11 @@
                     <div class="digit-frame">@item.SortOrder</div>
                 </div>
                 <div class="container">
-                    <div class="title">@item.Title</div>
+                    <div class="title">@(Model.LangCode=="en"? item.TitleEng:item.Title)</div>
                 </div>
                 <div class="container">
                     <div class="text">
-                        @Html.Raw(item.Text)
+                        @Html.Raw(Model.LangCode=="en"? item.TextEng:item.Text)
                     </div>
                 </div>
         

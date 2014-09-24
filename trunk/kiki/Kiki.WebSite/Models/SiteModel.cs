@@ -29,9 +29,11 @@ namespace Kiki.WebSite.Models
         public SiteImage MainImage { get; set; }
         public SiteImage Attention { get; set; }
         public IEnumerable<GalleryImage> GalleryImages { get; set; }
+        public string LangCode { get; set; }
 
-        public SiteModel(ISiteRepository repository, string contentName)
+        public SiteModel(ISiteRepository repository, string contentName, string lang)
         {
+            LangCode = lang;
             Title = "Kiki Mornet image salon";
             MainImages = repository.GetSiteImages(ImageType.MainImage);
             Attentions = repository.GetSiteImages(ImageType.Attention);

@@ -8,16 +8,16 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 
-@Html.Partial("Title",new SiteTitle{Title = Model.Sale.Title, ImageSource = Model.Sale.ImageSource} )
+@Html.Partial("Title",new SiteTitle{Title =Model.LangCode=="en"? Model.Sale.TitleEng:Model.Sale.Title, ImageSource = Model.Sale.ImageSource} )
 
 
  <div class="sale-details">

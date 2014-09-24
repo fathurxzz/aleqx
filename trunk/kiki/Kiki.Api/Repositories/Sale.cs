@@ -62,7 +62,7 @@ namespace Kiki.Api.Repositories
 
         public void SaveSale(Sale sale)
         {
-            throw new NotImplementedException();
+            _store.SaveChanges();
         }
     }
 }

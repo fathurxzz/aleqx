@@ -1,17 +1,18 @@
-﻿@model Kiki.WebSite.Models.SiteMenuModel
+﻿@using Kiki.WebSite.App_LocalResources
+@model Kiki.WebSite.Models.SiteMenuModel
 <ul>
-    <li>8:00 - 22:00 ежедневно</li>
+    <li>8:00 - 22:00 @GlobalRes.EveryDay</li>
     <li>+38 (044) 258-00-07</li>
     @*<li><a href="#">карта проезда</a></li>*@
     @foreach (var item in Model.Contents.Where(m => m.ContentType == 5))
     {
         if (item.Name == Model.CurrentMenuItemName)
         {
-            <li>@item.MenuTitle</li>
+            <li>@(Model.Lang=="en"? item.MenuTitleEng:item.MenuTitle)</li>
         }
         else
         {
-            <li>@Html.ActionLink(item.MenuTitle, "Index", "Home", new { area = "", id = item.Name }, null)</li>
+            <li>@Html.ActionLink(Model.Lang=="en"? item.MenuTitleEng:item.MenuTitle, "Index", "Home", new { area = "", id = item.Name }, null)</li>
         }
     }
 </ul>

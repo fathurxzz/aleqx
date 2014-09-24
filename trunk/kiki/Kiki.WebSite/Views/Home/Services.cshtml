@@ -8,12 +8,12 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 @section Banner
@@ -24,14 +24,14 @@
     }
 }
 
-@Html.Partial("Title", new SiteTitle { Title = Model.Content.Title, ImageSource = Model.Content.ImageSource })
+@Html.Partial("Title", new SiteTitle { Title = Model.LangCode=="en"?Model.Content.TitleEng: Model.Content.Title, ImageSource = Model.Content.ImageSource })
 
 
 <div class="services">
 
     <div class="service-search-container">
         <div class="service-search">
-            <input id="search" name="search" type="text" value="" placeholder="Стрижка">
+            <input id="search" name="search" type="text" value="" placeholder="@(Model.LangCode=="en"? "Haircut":"Стрижка")">
         </div>
         <div class="service-search-result" id="service-search-result">
             <div class="service-search-result-top"></div>

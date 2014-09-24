@@ -1,4 +1,5 @@
 ﻿@using Kiki.WebSite
+@using Kiki.WebSite.App_LocalResources
 @using Kiki.WebSite.Helpers.Graphics
 @using Kiki.WebSite.Models
 @model Kiki.WebSite.Models.ArticleModel
@@ -8,16 +9,16 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode})
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
 }
 
 
-@Html.Partial("Title",new SiteTitle{Title = Model.Article.Title, ImageSource = Model.Article.ImageSource} )
+@Html.Partial("Title",new SiteTitle{Title = Model.LangCode=="en"?Model.Article.TitleEng :Model.Article.Title, ImageSource = Model.Article.ImageSource} )
 
 
  <div class="article-details">
@@ -30,13 +31,13 @@
             <div class="title">@Model.Article.Title</div>
         </div>
 
-        @Html.Raw(Model.Article.Text)
+        @Html.Raw(Model.LangCode=="en"?Model.Article.TextEng:Model.Article.Text)
 
 
 
 
         <div class="article-details-footer link">
-            <a href="@Url.Action("Index","Home",new{id="articles"})">&laquo; Вернуться к хорошим новостям</a>
+            <a href="@Url.Action("Index","Home",new{id="articles"})">&laquo; @GlobalRes.BackToNews</a>
         </div>
 
     </div>

@@ -98,7 +98,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 article.Name = string.IsNullOrEmpty(model.Name)
                     ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
                     : SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(article, new[] { "Title", "Date"});
+                TryUpdateModel(article, new[] { "Title","TitleEng", "Date"});
 
                 article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
                 article.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
