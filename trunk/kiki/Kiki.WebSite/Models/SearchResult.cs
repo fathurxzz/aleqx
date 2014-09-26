@@ -11,5 +11,6 @@ namespace Kiki.WebSite.Models
         public string Name { get; set; }
         public string Price { get; set; }
         public string ContentName { get; set; }
+        public List<SearchResult> Children { get; set; }
     }
 }

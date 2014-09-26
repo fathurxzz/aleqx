@@ -5,14 +5,14 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/24/2014 09:52:51
--- Generated from EDMX file: D:\projects\kiki\Kiki.Database\Model1.edmx
+-- Date Created: 09/27/2014 01:14:36
+-- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
-DROP DATABASE IF EXISTS `test`;
-CREATE DATABASE `test`;
-USE `test`;
+DROP DATABASE IF EXISTS `gbua_kiki`;
+CREATE DATABASE `gbua_kiki`;
+USE `gbua_kiki`;
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
@@ -121,7 +121,8 @@ CREATE TABLE `Service`(
 	`ImageSource` varchar (200), 
 	`SortOrder` int NOT NULL, 
 	`TitleEng` varchar (200), 
-	`DescriptionEng` varchar (10000));
+	`DescriptionEng` varchar (10000), 
+	`TitleR` varchar (200));
 
 ALTER TABLE `Service` ADD PRIMARY KEY (Id);
 

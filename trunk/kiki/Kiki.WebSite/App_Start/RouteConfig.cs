@@ -30,8 +30,9 @@ namespace Kiki.WebSite
 
             routes.MapRoute(
                 "Search",
-                "search/{q}",
+                "{lang}/search/{q}",
                 new { controller = "Service", action = "Search", q = UrlParameter.Optional },
+                new { lang = @"ru|en" },
                 new[] { "Kiki.WebSite.Controllers" }
             );
 

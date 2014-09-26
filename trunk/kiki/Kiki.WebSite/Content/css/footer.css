@@ -18,7 +18,7 @@ color: #00aeef;
     background: url("../img/em-logo.png") no-repeat;
     width: 140px;
     margin: 0 auto;
-    position: relative;
+    /*position: relative;*/
     padding-left: 61px;
     padding-top: 5px;
 }

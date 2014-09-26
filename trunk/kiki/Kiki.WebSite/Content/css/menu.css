@@ -22,4 +22,7 @@
 .menu a
 {
     color: #3fcff6;
+    text-decoration: none;
+    background: url('../img/wave-small.png') repeat-x;
+    background-position: 0 bottom;
 }

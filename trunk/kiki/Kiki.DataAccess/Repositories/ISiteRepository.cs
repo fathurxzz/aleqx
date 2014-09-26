@@ -63,6 +63,7 @@ namespace Kiki.DataAccess.Repositories
         Service GetService(string name);
         IEnumerable<Service> GetSearchableServices(string query);
         IEnumerable<ServiceItem> GetSearchableServiceItems(string query);
+        IEnumerable<Service> GetSearchableData(string query);
         void DeleteService(int id, Action<string> deleteImages);
         void SaveService(Service service);
         int AddService(Service service);

@@ -40,6 +40,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 var service = new Service
                 {
                     Title = model.Title,
+                    TitleR = model.TitleR,
                     TitleEng = model.TitleEng,
                     Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description),
                     DescriptionEng = model.DescriptionEng == null ? "" : HttpUtility.HtmlDecode(model.DescriptionEng),
@@ -98,7 +99,7 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 service.Name = string.IsNullOrEmpty(model.Name)
                    ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
                    : SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(service, new[] { "Title","TitleEng","SortOrder"});
+                TryUpdateModel(service, new[] { "Title", "TitleR", "TitleEng", "SortOrder" });
 
                 service.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
                 service.DescriptionEng = model.DescriptionEng == null ? "" : HttpUtility.HtmlDecode(model.DescriptionEng);

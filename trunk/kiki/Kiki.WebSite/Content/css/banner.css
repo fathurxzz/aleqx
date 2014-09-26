@@ -1,20 +1,25 @@
 ﻿.banner {
-    height: 385px;
+    /*height: 385px;*/
     margin-top: 100px;
-}
-
-.banner-shadow {
     width: 1269px;
-    height: 11px;
     background: url("../img/banner-shadow.png") no-repeat;
-    position: relative;
-    margin: 0 auto 0 auto;
-    margin-top: -385px;
+    margin-left: -23px;
 }
 
-.banner-image {
+.banner .banner-image {
     width: 1200px;
-    height: 385px;
-    position: relative;
+    /*height: 385px;*/
+    /*position: relative;*/
     margin: 0 auto;
 }
+
+.banner .banner-shadow {
+    
+    height: 11px;
+    
+    /*position: relative;*/
+    margin: 0 auto 0 auto;
+    /*margin-top: -385px;*/
+}
+
+

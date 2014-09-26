@@ -120,6 +120,9 @@
   <data name="AllArticle" xml:space="preserve">
     <value>All Article</value>
   </data>
+  <data name="AllServices" xml:space="preserve">
+    <value>all services of</value>
+  </data>
   <data name="BackToNews" xml:space="preserve">
     <value>Back to good news</value>
   </data>

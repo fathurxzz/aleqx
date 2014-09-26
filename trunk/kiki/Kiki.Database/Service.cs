@@ -27,6 +27,7 @@ namespace Kiki.Database
         public int SortOrder { get; set; }
         public string TitleEng { get; set; }
         public string DescriptionEng { get; set; }
+        public string TitleR { get; set; }
     
         public virtual ICollection<ServiceItem> ServiceItems { get; set; }
     }
