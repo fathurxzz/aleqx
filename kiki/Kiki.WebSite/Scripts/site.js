@@ -43,7 +43,7 @@
                                 $("#sResult").append(
 
                                     $('<li>')
-                                    .append($('<a>').attr('href', '/services/' + value.Name).append(value.Title))
+                                    .append($('<a>').attr('href', '/ru/services/' + value.Name).append(value.Title))
                                     .append($('<span>').attr('class', 'price').append(value.Price))
 
                                );
