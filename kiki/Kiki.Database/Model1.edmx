@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="Reason" EntityType="Model1.Store.Reason" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Content" EntityType="Model1.Store.Content" store:Type="Tables" Schema="dbo" />
@@ -95,6 +95,7 @@
     <Property Name="SortOrder" Type="int" Nullable="false" />
     <Property Name="TitleEng" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="DescriptionEng" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="TitleR" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="ServiceItem">
     <Key>
@@ -240,6 +241,7 @@
           <NavigationProperty Name="ServiceItems" Relationship="Model1.ServiceServiceItem" FromRole="Service" ToRole="ServiceItem" />
           <Property Type="String" Name="TitleEng" MaxLength="200" />
           <Property Type="String" Name="DescriptionEng" MaxLength="10000" />
+          <Property Type="String" Name="TitleR" MaxLength="200" />
         </EntityType>
         <EntityType Name="ServiceItem">
           <Key>
@@ -376,6 +378,7 @@
           <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="TitleEng" ColumnName="TitleEng" />
           <ScalarProperty Name="DescriptionEng" ColumnName="DescriptionEng" />
+          <ScalarProperty Name="TitleR" ColumnName="TitleR" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

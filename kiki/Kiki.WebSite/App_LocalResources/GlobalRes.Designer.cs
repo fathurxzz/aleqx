@@ -70,6 +70,15 @@ namespace Kiki.WebSite.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to все услуги.
+        /// </summary>
+        public static string AllServices {
+            get {
+                return ResourceManager.GetString("AllServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вернуться к хорошим новостям.
         /// </summary>
         public static string BackToNews {

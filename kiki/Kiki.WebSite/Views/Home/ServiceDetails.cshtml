@@ -1,4 +1,5 @@
 ﻿@using Kiki.WebSite
+@using Kiki.WebSite.App_LocalResources
 @using Kiki.WebSite.Helpers.Graphics
 @using Kiki.WebSite.Models
 @model Kiki.WebSite.Models.ServiceModel
@@ -8,12 +9,12 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name, Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name ,Lang = Model.LangCode})
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name, Lang = Model.LangCode })
 }
 
 @section Banner
@@ -24,63 +25,94 @@
     }
 }
 
-@Html.Partial("Title", new SiteTitle { Title = Model.LangCode=="en"?Model.Content.TitleEng: Model.Content.Title, ImageSource = Model.Content.ImageSource })
+@Html.Partial("Title", new SiteTitle { Title = Model.LangCode == "en" ? Model.Content.TitleEng : Model.Content.Title, ImageSource = Model.Content.ImageSource })
 
 
 <div class="services">
 
-    <div class="service-search-container">
-        <div class="service-search">
-            <input id="search" name="search" type="text"  value="" placeholder="@(Model.LangCode=="en"? Model.Service.TitleEng:Model.Service.Title)">
-        </div>
-        <div class="service-search-result" id="service-search-result">
-            <div class="service-search-result-top"></div>
-            <div class="service-search-result-middle">
-                <ul id="sResult">
-                </ul>
+
+    <div class="service-search-container-wrapper">
+        <div class="service-search-container">
+            <div class="service-search">
+                <input id="search" name="search" type="text"  value="" placeholder="@(Model.LangCode == "en" ? Model.Service.TitleEng : Model.Service.Title)">
             </div>
-            <div class="service-search-result-bottom"></div>
+            <div class="service-search-result" id="service-search-result">
+                <div class="service-search-result-top"></div>
+                <div class="service-search-result-middle">
+                    <ul id="sResult">
+                    </ul>
+                </div>
+                <div class="service-search-result-bottom"></div>
+            </div>
         </div>
     </div>
+
 
 </div>
 
 <div class="service-details">
     <div class="left-side">
-        
+
         <div class="title-image">
-        <div class="title">
-            @Model.Service.Title
-        </div>
+            <div class="title">
+                @Model.Service.Title
+            </div>
             <div class="image">
                 @Html.Raw(Html.CachedImage("~/Content/Images/", Model.Service.ImageSource, SiteSettings.GetThumbnail("articlePreviw")))
             </div>
-            </div>
+        </div>
     </div>
     <div class="right-side">
         <div class="description">
-        @Html.Raw(Model.LangCode=="en"?Model.Service.DescriptionEng:Model.Service.Description)
+            @Html.Raw(Model.LangCode == "en" ? Model.Service.DescriptionEng : Model.Service.Description)
+        </div>
+
+        @if (Model.SearchableServiceItems.Any())
+        {
+            int i = 1;
+            <table class="service-items">
+
+                @foreach (var serviceItem in Model.SearchableServiceItems)
+                {
+                    i++;
+                    string className = i % 2 == 0 ? "item" : "";
+                    string priceClassName = i % 2 == 1 ? "item" : "";
+                    <tr>
+                        <td class="title @className">@(Model.LangCode == "en" ? serviceItem.TitleEng : serviceItem.Title)</td>
+                        <td class="@className">@(Model.LangCode == "en" ? serviceItem.DescriptionEng : serviceItem.Description)</td>
+                        <td class="price @priceClassName">@serviceItem.Price</td>
+                    </tr>
+                }
+            </table>
+        }
+
+        @if (Model.Service.ServiceItems.Any())
+        {
+            <div id="all-services-toggle-link">
+                <span>@GlobalRes.AllServices @(Model.LangCode == "en" ? Model.Service.TitleEng : Model.Service.TitleR)
+                </span>
+            </div>
+            
+            int i = 1;
+            <div id="all-service-items">
+                <table class="service-items">
+
+                    @foreach (var serviceItem in Model.Service.ServiceItems)
+                    {
+                        i++;
+                        string className = i % 2 == 0 ? "item" : "";
+                        string priceClassName = i % 2 == 1 ? "item" : "";
+                        <tr>
+                            <td class="title @className">@(Model.LangCode == "en" ? serviceItem.TitleEng : serviceItem.Title)</td>
+                            <td class="@className">@(Model.LangCode == "en" ? serviceItem.DescriptionEng : serviceItem.Description)</td>
+                            <td class="price @priceClassName">@serviceItem.Price</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+
     </div>
 
-    @if (Model.Service.ServiceItems.Any())
-    {
-        int i = 1;
-        <table class="service-items">
 
-            @foreach (var serviceItem in Model.Service.ServiceItems)
-            {
-                i++;
-                string className = i%2 == 0 ? "item" : "";
-                string priceClassName = i%2 == 1 ? "item" : "";
-                <tr>
-                    <td class="title @className">@(Model.LangCode=="en"?serviceItem.TitleEng:serviceItem.Title)</td>
-                    <td class="@className">@(Model.LangCode=="en"?serviceItem.DescriptionEng:serviceItem.Description)</td>
-                    <td class="price @priceClassName">@serviceItem.Price</td>
-                </tr>
-            }
-        </table>
-    }
-    </div>
-
-    
 </div>

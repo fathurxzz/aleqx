@@ -120,6 +120,9 @@
   <data name="AllArticle" xml:space="preserve">
     <value>Вся новость</value>
   </data>
+  <data name="AllServices" xml:space="preserve">
+    <value>все услуги</value>
+  </data>
   <data name="BackToNews" xml:space="preserve">
     <value>Вернуться к хорошим новостям</value>
   </data>

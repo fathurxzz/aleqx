@@ -17,6 +17,35 @@ namespace Kiki.WebSite.Controllers
 
         }
 
+        //public JsonResult Search(string q)
+        //{
+        //    if (!string.IsNullOrEmpty(q))
+        //    {
+        //        q = q.ToLower();
+        //        var parentResult = new List<ParentResult>();
+        //        var result = new List<SearchResult>();
+
+        //        var serviceItems = _repository.GetSearchableServiceItems(q);
+        //        foreach (var serviceItem in serviceItems)
+        //        {
+        //            if (serviceItem.Title.ToLower().Contains(q))
+        //            {
+        //                result.Add(new SearchResult
+        //                {
+        //                    Name = serviceItem.Service.Name,
+        //                    Price = serviceItem.Price,
+        //                    Title = serviceItem.Title
+        //                });
+        //            }
+        //        }
+
+        //        var json = JsonConvert.SerializeObject(result);
+
+        //        return Json(json, JsonRequestBehavior.AllowGet);
+        //    }
+        //    return null;
+        //}
+
         public JsonResult Search(string q)
         {
             if (!string.IsNullOrEmpty(q))
@@ -24,17 +53,37 @@ namespace Kiki.WebSite.Controllers
                 q = q.ToLower();
                 var result = new List<SearchResult>();
 
-                var serviceItems = _repository.GetSearchableServiceItems(q);
-                foreach (var serviceItem in serviceItems)
+                
+                var services = _repository.GetSearchableData(q).ToList();
+
+                foreach (var service in services)
                 {
-                    if (serviceItem.Title.ToLower().Contains(q))
+                    var sr = new SearchResult
                     {
-                        result.Add(new SearchResult
+                        Children = new List<SearchResult>(),
+                        Title = service.Title
+                    };
+
+                    foreach (var serviceItem in service.ServiceItems)
+                    {
+                        if ((CurrentLangCode == "en" && !string.IsNullOrEmpty(serviceItem.TitleEng) && serviceItem.TitleEng.ToLower().Contains(q)) || (CurrentLangCode == "ru" && !string.IsNullOrEmpty(serviceItem.Title) && serviceItem.Title.ToLower().Contains(q)))
                         {
-                            Name = serviceItem.Service.Name,
-                            Price = serviceItem.Price,
-                            Title = serviceItem.Title
-                        });
+                            sr.Children.Add(new SearchResult()
+                            {
+                                Name = serviceItem.Service.Name,
+                                Price = serviceItem.Price,
+                                Title = (CurrentLangCode == "en" ? serviceItem.TitleEng : serviceItem.Title)??""
+                            });
+                        }
+                    }
+                    if (sr.Children.Any())
+                    {
+                        result.Add(sr);
+                        continue;
+                    }
+                    if (sr.Title.ToLower().Contains(q))
+                    {
+                        result.Add(sr);
                     }
                 }
 
@@ -44,6 +93,7 @@ namespace Kiki.WebSite.Controllers
             }
             return null;
         }
+
 
         public JsonResult Subscribe(string email)
         {

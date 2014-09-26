@@ -256,6 +256,8 @@
     <Content Include="Content\img\tmp\image1.png" />
     <Content Include="Content\img\tmp\image2.png" />
     <Content Include="Content\img\vk.png" />
+    <Content Include="Content\img\wave-big.png" />
+    <Content Include="Content\img\wave-small.png" />
     <Content Include="Content\img\zoom.png" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\Web.config" />

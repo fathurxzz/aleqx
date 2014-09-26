@@ -8,6 +8,11 @@
 
     $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
+    $("#all-services-toggle-link").click(function() {
+        $("#all-service-items").toggle("slow", function() {
+            
+        });
+    });
 
 
     var query;
@@ -20,7 +25,7 @@
                 query = q;
 
                 $.ajax({
-                    url: '/search/' + q,
+                    url: '/' + window.lang + '/search/' + q,
                     dataType: "json",
                     success: function (data) {
 
@@ -39,14 +44,22 @@
 
                             $.each(arrFromJson, function (index, value) {
                                 //alert(index + ": " + value.Title);
-
                                 $("#sResult").append(
-
                                     $('<li>')
-                                    .append($('<a>').attr('href', '/ru/services/' + value.Name).append(value.Title))
+                                    .append($('<span>').attr('class', 'service-parent-title').append(value.Title+' &raquo;'))
                                     .append($('<span>').attr('class', 'price').append(value.Price))
-
                                );
+
+                                $.each(value.Children, function(idx, val) {
+
+                                    $("#sResult").append(
+                                    $('<li>').attr('class', 'service-title')
+                                    .append($('<a>').attr('href', '/' + window.lang + '/services/' + val.Name + '?q=' + q).append(val.Title))
+                                    .append($('<span>').attr('class', 'price').append(val.Price))
+                                    );
+                                });
+
+
                             });
 
                             $("#service-search-result").show();

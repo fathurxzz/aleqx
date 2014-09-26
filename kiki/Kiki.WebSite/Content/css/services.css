@@ -1,7 +1,9 @@
 .services {
     margin-top: 150px;
     /*margin-bottom: 300px;*/
-    min-height: 300px;
+    /*min-height: 300px;*/
+    min-height: 100px;
+
 }
 
 
@@ -20,11 +22,17 @@
     font-style: italic;
 }
 
+.service-search-container-wrapper {
+    width: 547px;
+    margin: 0 auto;
+    z-index: 1000;
+}
 
 .service-search-container {
     width: 547px;
     margin: 0 auto;
-    position: relative;
+    /*position: relative;*/
+    position: absolute;
 }
 
     .service-search-container .service-search {
@@ -65,10 +73,14 @@
 
             .service-search-container .service-search-result ul li {
                 font-family: "PT Sans";
-                font-size: 22px;
+                font-size: 18px;
                 color: #666666;
                 font-style: italic;
                 padding: 10px 0;
+            }
+
+            .service-search-container .service-search-result ul li.service-title {
+                padding-left: 40px;
             }
 
             .service-search-container .service-search-result ul li span.price {
@@ -77,10 +89,22 @@
                 /*float: right;*/
                 /*display: table-cell;*/
             }
+             .service-search-container .service-search-result ul li span.service-parent-title {
+                 font-family: "PT Sans Caption";
+                 font-style: normal;
+                 font-size: 15px;
+                 text-transform: uppercase;
+                 font-weight: 700;
+                 color: #d1d2d2;
+                /*padding-left: 20px;*/
+                white-space:nowrap;
+                /*float: right;*/
+                /*display: table-cell;*/
+            }
 
-                .service-search-container .service-search-result ul li:hover {
+                .service-search-container .service-search-result ul li.service-title:hover {
                     background-color: #eee;
-                    cursor: pointer;
+                    /*cursor: pointer;*/
                 }
 
 
@@ -88,6 +112,7 @@
 
 .service-details {
     color: #565656;
+    margin-top: 100px;
 }
 
 .service-details .left-side {
@@ -127,7 +152,7 @@
 
 .service-items {
     border-collapse: collapse;
-    margin-top: 95px;
+    margin-top: 40px;
 
 }
 
@@ -152,4 +177,24 @@
 .service-items .title {
     width: 300px;
     padding-right: 20px;
+}
+
+#all-services-toggle-link {
+    margin-top: 70px;
+    text-align: center;
+    font-family: "PT Sans Narrow";
+    font-size: 22px;
+    color: #00aeef;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+#all-services-toggle-link span {
+    background: url('../img/wave-big.png') repeat-x;
+    background-position: 0 bottom;
+}
+
+
+#all-service-items {
+    display: none;
 }

@@ -18,6 +18,9 @@ namespace Kiki.DataAccess.Entities
         [Display(Name = "Заголовок")]
         public string Title { get; set; }
 
+        [Display(Name = "Заголовок в родительном падеже")]
+        public string TitleR { get; set; }
+
         [Display(Name = "Заголовок (ENG)")]
         public string TitleEng { get; set; }
 

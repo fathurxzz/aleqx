@@ -67,7 +67,15 @@ namespace Kiki.Api.Repositories
 
         public IEnumerable<ServiceItem> GetSearchableServiceItems(string query)
         {
-            return _store.ServiceItems.Where(serviceItem => serviceItem.Title.ToLower().Contains(query)).ToList();
+            return _store.ServiceItems.Where(serviceItem => serviceItem.Title.ToLower().Contains(query.ToLower())).ToList();
+        }
+
+        public IEnumerable<Service> GetSearchableData(string query)
+        {
+
+            return _store.Services;
+
+            //return _store.ServiceItems.Where(serviceItem => serviceItem.Title.ToLower().Contains(query.ToLower())).ToList();
         }
 
         public void DeleteService(int id, Action<string> deleteImages)

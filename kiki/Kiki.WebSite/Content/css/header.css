@@ -18,6 +18,9 @@
 
 .header-top a {
     color: #3cccf3;
+       text-decoration: none;
+    background: url('../img/wave-small.png') repeat-x;
+    background-position: 0 bottom;
 }
 
 #logo {
