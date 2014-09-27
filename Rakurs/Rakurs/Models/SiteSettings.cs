@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SiteExtensions.Graphics;
+using Rakurs.Helpers.Graphics;
+
 
 namespace Rakurs.Models
 {
