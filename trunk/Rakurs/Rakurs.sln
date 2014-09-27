@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rakurs", "Rakurs\Rakurs.csproj", "{B1FA613D-4EC5-403C-881C-694FFDC56EFA}"
 EndProject
 Global

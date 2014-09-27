@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -138,6 +139,7 @@ namespace Rakurs.Models
         private ObjectSet<ProductAttribute> _ProductAttribute;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -173,11 +175,11 @@ namespace Rakurs.Models
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -210,6 +212,7 @@ namespace Rakurs.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -456,6 +459,7 @@ namespace Rakurs.Models
         partial void OnTextEngChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -564,6 +568,7 @@ namespace Rakurs.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -600,6 +605,7 @@ namespace Rakurs.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -918,6 +924,7 @@ namespace Rakurs.Models
         partial void OnTextEngChanged();
 
         #endregion
+
     
     }
     
@@ -949,6 +956,7 @@ namespace Rakurs.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1195,6 +1203,7 @@ namespace Rakurs.Models
         partial void OnDiscountTextChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1259,6 +1268,7 @@ namespace Rakurs.Models
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1287,6 +1297,7 @@ namespace Rakurs.Models
         }
 
         #endregion
+
         #region Primitive Properties
     
         /// <summary>
@@ -1365,6 +1376,7 @@ namespace Rakurs.Models
         partial void OnTitleEngChanged();
 
         #endregion
+
     
         #region Navigation Properties
     
@@ -1413,8 +1425,10 @@ namespace Rakurs.Models
         }
 
         #endregion
+
     }
 
     #endregion
+
     
 }
