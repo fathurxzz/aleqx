@@ -25,7 +25,7 @@ namespace Kiki.WebSite.Models
             {
                 foreach (
                     var serviceItem in
-                        Service.ServiceItems.Where(serviceItem => serviceItem.Title.ToLower().Contains(query.ToLower()))
+                        Service.ServiceItems.Where(serviceItem => (LangCode == "en" && !string.IsNullOrEmpty(serviceItem.TitleEng) && serviceItem.TitleEng.ToLower().Contains(query.ToLower())) || (LangCode == "ru" && !string.IsNullOrEmpty(serviceItem.Title) && serviceItem.Title.ToLower().Contains(query.ToLower())))
                     )
                 {
                     SearchableServiceItems.Add(serviceItem);

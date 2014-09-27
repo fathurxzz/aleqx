@@ -5,6 +5,8 @@
         $("#logo").css("cursor", "pointer").click(function () { location.href = "/"+window.lang; });
     }
 
+    $("#search").focus();
+
 
     $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
@@ -46,7 +48,7 @@
                                 //alert(index + ": " + value.Title);
                                 $("#sResult").append(
                                     $('<li>')
-                                    .append($('<span>').attr('class', 'service-parent-title').append(value.Title+' &raquo;'))
+                                    .append($('<a>').attr('href', '/' + window.lang + '/services/' + value.Name + '?q=' + q).attr('class', 'service-parent-title').append(value.Title + ' &raquo;'))
                                     .append($('<span>').attr('class', 'price').append(value.Price))
                                );
 

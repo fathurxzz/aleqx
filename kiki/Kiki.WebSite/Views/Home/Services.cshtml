@@ -31,7 +31,7 @@
     <div class="service-search-container-wrapper">
         <div class="service-search-container">
             <div class="service-search">
-                <input id="search" name="search" type="text" value="" placeholder="@(Model.LangCode == "en" ? "Haircut" : "Стрижка")">
+                <input id="search" name="search" type="text" value="">
             </div>
             <div class="service-search-result" id="service-search-result">
                 <div class="service-search-result-top"></div>
@@ -44,3 +44,12 @@
         </div>
     </div>
 </div>
+
+@*@section scripts
+{
+    <script>
+        $(function() {
+            $("#search").focus();
+        });
+    </script>
+}*@
