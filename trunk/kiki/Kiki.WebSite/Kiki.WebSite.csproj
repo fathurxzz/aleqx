@@ -201,6 +201,7 @@
     <Content Include="Content\css\jquery.bxslider.css" />
     <Content Include="Content\css\main-page.css" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\map.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\mini-gallery.css" />
     <Content Include="Content\css\sale.css" />
@@ -211,6 +212,7 @@
     <Content Include="Content\css\title.css" />
     <Content Include="Content\css\welcome.css" />
     <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancy-close.png" />
     <Content Include="Content\fancybox\fancybox-x.png" />
     <Content Include="Content\fancybox\fancybox-y.png" />
     <Content Include="Content\fancybox\fancybox.png" />
@@ -245,6 +247,7 @@
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\main-image-layout.png" />
     <Content Include="Content\img\main-image-text-container.png" />
+    <Content Include="Content\img\map-icons.png" />
     <Content Include="Content\img\pay-attention.png" />
     <Content Include="Content\img\secret-frame.png" />
     <Content Include="Content\img\secret.png" />
@@ -379,6 +382,7 @@
     <Content Include="Areas\Admin\Views\ServiceItem\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\prod.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="map.html" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />

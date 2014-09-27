@@ -10,6 +10,8 @@
 
     $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
+    $(".fancyPanel").fancybox({ hideOnContentClick: false, hideOnOverlayClick: true, showNavArrows: false, padding: 0, margin: 0, centerOnScroll: true, overlayShow: true, showCloseButton: true});
+
     $("#all-services-toggle-link").click(function() {
         $("#all-service-items").toggle("slow", function() {
             
