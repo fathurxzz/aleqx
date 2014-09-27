@@ -9,7 +9,10 @@
             }
             else
             {
-                <li>@Html.ActionLink(Model.Lang=="en"?item.MenuTitleEng:item.MenuTitle, "Index", "Home", new { area = "", id=item.Name }, null)</li>
+                <li><span>
+                    @Html.ActionLink(Model.Lang=="en"?item.MenuTitleEng:item.MenuTitle, "Index", "Home", new { area = "", id=item.Name }, null)
+                    </span>
+                </li>
             }
         }
         @*<li><a href="articles.html">что нового</a></li>

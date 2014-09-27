@@ -19,10 +19,15 @@
     color: #96c11f;
 }
 
+.menu span {
+    background: url('../img/wave-small.png') repeat-x;
+    background-position: 0 bottom;
+    padding-bottom: 2px;
+}
+
+
 .menu a
 {
     color: #3fcff6;
     text-decoration: none;
-    background: url('../img/wave-small.png') repeat-x;
-    background-position: 0 bottom;
 }
