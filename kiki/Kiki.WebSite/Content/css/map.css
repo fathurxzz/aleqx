@@ -1,0 +1,26 @@
+﻿.map-container {
+            width: 1200px;
+            border-radius: 30px;
+            -moz-border-radius: 30px;
+            -webkit-border-radius: 30px;
+        }
+
+        .map-container .title {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .map-container .map-icons {
+            width: 243px;
+            height: 123px;
+            position: relative;
+            margin: 50px auto 0 auto;
+            background: url('../img/map-icons.png')
+        }
+
+        #map {
+            margin: 50px auto 170px auto;
+            width: 650px;
+            height: 450px;
+            position: relative;
+        }

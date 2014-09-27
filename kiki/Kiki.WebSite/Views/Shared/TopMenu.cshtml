@@ -3,7 +3,9 @@
 <ul>
     <li>8:00 - 22:00 @GlobalRes.EveryDay</li>
     <li>+38 (044) 258-00-07</li>
-    @*<li><a href="#">карта проезда</a></li>*@
+    
+    @*<li><a href="~/map.html" class="fancyPanel">карта проезда</a></li>*@
+
     @foreach (var item in Model.Contents.Where(m => m.ContentType == 5))
     {
         if (item.Name == Model.CurrentMenuItemName)
@@ -12,7 +14,9 @@
         }
         else
         {
-            <li>@Html.ActionLink(Model.Lang=="en"? item.MenuTitleEng:item.MenuTitle, "Index", "Home", new { area = "", id = item.Name }, null)</li>
+            <li><a href="~/map.html" class="fancyPanel">@(Model.Lang=="en"? item.MenuTitleEng:item.MenuTitle)</a></li>
+        
+            @*<li>@Html.ActionLink(Model.Lang=="en"? item.MenuTitleEng:item.MenuTitle, "Index", "Home", new { area = "", id = item.Name }, new{@class="fancyPanel"})</li>*@
         }
     }
 </ul>
