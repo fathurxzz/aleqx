@@ -89,7 +89,7 @@
                 /*float: right;*/
                 /*display: table-cell;*/
             }
-             .service-search-container .service-search-result ul li span.service-parent-title {
+             .service-search-container .service-search-result ul li a.service-parent-title {
                  font-family: "PT Sans Caption";
                  font-style: normal;
                  font-size: 15px;
@@ -102,7 +102,7 @@
                 /*display: table-cell;*/
             }
 
-                .service-search-container .service-search-result ul li.service-title:hover {
+                .service-search-container .service-search-result ul li:hover {
                     background-color: #eee;
                     /*cursor: pointer;*/
                 }

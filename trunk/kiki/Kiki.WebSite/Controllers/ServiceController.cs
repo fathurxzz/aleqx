@@ -61,7 +61,8 @@ namespace Kiki.WebSite.Controllers
                     var sr = new SearchResult
                     {
                         Children = new List<SearchResult>(),
-                        Title = service.Title
+                        Title = service.Title,
+                        Name = service.Name
                     };
 
                     foreach (var serviceItem in service.ServiceItems)
