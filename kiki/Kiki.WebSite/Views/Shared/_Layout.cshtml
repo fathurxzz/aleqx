@@ -7,40 +7,56 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700|PT+Sans+Caption&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    @Styles.Render("~/Content/css/main.css?v="+SiteSettings.Version,
-    "~/Content/css/header.css?v="+SiteSettings.Version,
-    "~/Content/css/site.css?v="+SiteSettings.Version,
-    "~/Content/css/main-page.css?v="+SiteSettings.Version,
-    "~/Content/css/socials.css?v="+SiteSettings.Version,
-    "~/Content/css/menu.css?v="+SiteSettings.Version,
-    "~/Content/css/footer.css?v="+SiteSettings.Version,
-    "~/Content/css/mini-gallery.css?v="+SiteSettings.Version,
-    "~/Content/css/articles.css?v="+SiteSettings.Version,
-    "~/Content/css/services.css?v="+SiteSettings.Version,
-    "~/Content/css/title.css?v="+SiteSettings.Version,
-    "~/Content/css/banner.css?v="+SiteSettings.Version,
-    "~/Content/css/subscribe.css?v="+SiteSettings.Version,
-    "~/Content/css/sale.css?v="+SiteSettings.Version,
-    "~/Content/css/welcome.css?v="+SiteSettings.Version,
+    @Styles.Render("~/Content/css/main.css?v=" + SiteSettings.Version,
+    "~/Content/css/header.css?v=" + SiteSettings.Version,
+    "~/Content/css/site.css?v=" + SiteSettings.Version,
+    "~/Content/css/main-page.css?v=" + SiteSettings.Version,
+    "~/Content/css/socials.css?v=" + SiteSettings.Version,
+    "~/Content/css/menu.css?v=" + SiteSettings.Version,
+    "~/Content/css/footer.css?v=" + SiteSettings.Version,
+    "~/Content/css/mini-gallery.css?v=" + SiteSettings.Version,
+    "~/Content/css/articles.css?v=" + SiteSettings.Version,
+    "~/Content/css/services.css?v=" + SiteSettings.Version,
+    "~/Content/css/title.css?v=" + SiteSettings.Version,
+    "~/Content/css/map.css?v=" + SiteSettings.Version,
+    "~/Content/css/banner.css?v=" + SiteSettings.Version,
+    "~/Content/css/subscribe.css?v=" + SiteSettings.Version,
+    "~/Content/css/sale.css?v=" + SiteSettings.Version,
+    "~/Content/css/welcome.css?v=" + SiteSettings.Version,
     "~/Content/css/jquery.bxslider.css")
-    
+
     <link href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.4.css")" rel="stylesheet" type="text/css" />
 
     @Scripts.Render("~/bundles/modernizr")
-        <script type="text/javascript">
-            var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
-            var lang = '@(ViewBag.Lang)';
-        </script>
-
+    <script type="text/javascript">
+        var isHomePage =  @(ViewBag.isHomePage != null ? (ViewBag.isHomePage).ToString().ToLowerInvariant() : "false");
+        var lang = '@(ViewBag.Lang)';
+    </script>
     
+    @*<script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=mc8XElbI-XeFnzjNp4osN-DIv1k5hJv_&id=map"></script>*@
+    <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=HK32HZNPBBE4H5m7mDp8vaGWYbnHhZYf&id=map"></script>
+
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/Scripts/jquery.bxslider.min.js")*@
     @Scripts.Render("~/Scripts/jquery.bxslider.js")
     @Scripts.Render("~/Content/fancybox/jquery.fancybox-1.3.4.js")
-    @Scripts.Render("~/Scripts/site.js?v="+SiteSettings.Version)
+    @Scripts.Render("~/Scripts/site.js?v=" + SiteSettings.Version)
     @RenderSection("scripts", required: false)
 </head>
 <body>
+    <div class="layout">
+        <div class="map-container">
+            <div class="fancy-close-btn"></div>
+            <div class="title">
+                Ежедневно с 8 до 22:00<br />
+                Киев, ул. Голосеевская 13<br />
+                +38 (044) 258-00-07 
+            </div>
+            <div class="map-icons"></div>
+            <div id="map">
+            </div>
+        </div>
+    </div>
     <div class="header-top">
         @RenderSection("TopMenu")
     </div>
@@ -54,7 +70,7 @@
             @RenderSection("Menu")
         </div>
         @RenderBody()
-        @RenderSection("Banner",false)
+        @RenderSection("Banner", false)
     </div>
     <div class="footer">
         <div class="em">

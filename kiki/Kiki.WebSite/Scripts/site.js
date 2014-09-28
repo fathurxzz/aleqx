@@ -7,6 +7,16 @@
 
     $("#search").focus();
 
+    $(".fancy-close-btn").click(function() {
+        $(".layout").hide();
+    });
+
+
+    
+
+    $(".fancyMap").click(function() {
+        $(".layout").show();
+    });
 
     $(".fancy").fancybox({ hideOnContentClick: false, showCloseButton: false, cyclic: true, showNavArrows: true, padding: 0, margin: 0, centerOnScroll: true });
 
