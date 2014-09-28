@@ -4,7 +4,7 @@
         <ul id="category-menu">
             @{
                 var cnt = 0;
-                foreach (var category in Model.Where(c => c.Parent == null))
+                foreach (var category in Model.Where(c => c.Parent == null&&c.IsActive))
                 {
                     cnt++;
                     <li class="main">
@@ -19,7 +19,7 @@
                         var childCnt = 0;
                         <div class="menu-group-wrapper sub-menu">
                             <ul>
-                                @foreach (var child in category.Children)
+                                @foreach (var child in category.Children.Where(c=>c.IsActive))
                                 {
                                     childCnt++;
                                     <li>

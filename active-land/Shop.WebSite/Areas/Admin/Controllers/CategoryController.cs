@@ -50,6 +50,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     SortOrder = model.SortOrder,
                     Parent = parent,
                     CategoryLevel = categoryLevel,
+                    IsActive = model.IsActive,
                     
                     Title = model.Title,
                     SeoDescription = model.SeoDescription,
@@ -93,7 +94,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             {
                 var category = _repository.GetCategory(model.Id);
                 category.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(category, new[] { "SortOrder", "CategoryLevel", "Title", "SeoDescription", "SeoKeywords", "SeoText" });
+                TryUpdateModel(category, new[] { "SortOrder","IsActive", "CategoryLevel", "Title", "SeoDescription", "SeoKeywords", "SeoText" });
                 _repository.SaveCategory(category);
             }
             catch (Exception ex)

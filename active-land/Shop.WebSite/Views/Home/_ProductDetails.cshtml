@@ -4,6 +4,16 @@
 @model Shop.DataAccess.Entities.Product
 
 
+@if (Model.Title==null)
+{
+    
+     <div style="text-align: center">
+            <h4><span class="label label-danger">Продукт не найден</span></h4>
+        </div>
+    return;
+}
+    
+
 
 
 <div id="product-details">
@@ -91,7 +101,7 @@
                 {
                     <div class="old">
                         <div class="line-through"></div>
-                        @Model.Price.ToString("###,###")
+                        @Model.OldPrice.ToString("###,###")
                         
                     </div>
                 }

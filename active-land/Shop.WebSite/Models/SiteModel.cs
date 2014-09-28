@@ -25,7 +25,7 @@ namespace Shop.WebSite.Models
         public IEnumerable<Article> Articles { get; set; }
         public string CurrentLangCode { get; set; }
         public IEnumerable<QuickAdvice> QuickAdvices { get; set; }
-
+        public string ErrorMessage { get; set; }
 
         public SiteModel(IShopRepository repository, string contentName )
         {

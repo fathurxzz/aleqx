@@ -59,6 +59,15 @@
             </div>
             @Html.ValidationMessageFor(model => model.SeoText)
         </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model=>model.IsActive) @Html.LabelFor(model => model.IsActive)
+                    </label>
+                </div>
+            </div>
+        </div>
        
         <div class="form-group">
             @Html.ActionLink("Назад", "Index", "Category", null, new { @class = "col-sm-2 control-label" })

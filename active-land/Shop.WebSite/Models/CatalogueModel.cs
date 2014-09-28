@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Web;
 using Shop.DataAccess.Entities;
@@ -75,8 +76,15 @@ namespace Shop.WebSite.Models
 
             if (productName != null)
             {
-                this.Product = repository.GetProduct(productName);
-                this.Product.IsInCart = WebSession.OrderItems.ContainsKey(Product.Id);
+                try
+                {
+                    this.Product = repository.GetProduct(productName);
+                    this.Product.IsInCart = WebSession.OrderItems.ContainsKey(Product.Id);
+                }
+                catch (ObjectNotFoundException)
+                {
+                    ErrorMessage = "Продукт не найден";
+                }
             }
 
             if (articleName != null)
