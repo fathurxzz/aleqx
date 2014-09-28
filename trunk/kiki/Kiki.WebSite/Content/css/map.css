@@ -1,26 +1,51 @@
 ﻿.map-container {
-            width: 1200px;
-            border-radius: 30px;
-            -moz-border-radius: 30px;
-            -webkit-border-radius: 30px;
-        }
+    width: 1000px;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    background-color: #fff;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
 
-        .map-container .title {
-            margin-top: 100px;
-            text-align: center;
-        }
+}
 
-        .map-container .map-icons {
-            width: 243px;
-            height: 123px;
-            position: relative;
-            margin: 50px auto 0 auto;
-            background: url('../img/map-icons.png')
-        }
+    .map-container .title {
+        margin-top: 70px;
+        text-align: center;
+    }
 
-        #map {
-            margin: 50px auto 170px auto;
-            width: 650px;
-            height: 450px;
-            position: relative;
-        }
+    .map-container .map-icons {
+        width: 243px;
+        height: 123px;
+        position: relative;
+        margin: 50px auto 0 auto;
+        background: url('../img/map-icons.png');
+    }
+
+#map {
+    margin: 50px auto 100px auto;
+    width: 650px;
+    height: 450px;
+    position: relative;
+}
+
+#fancybox-content {
+    /*width: 1200px !important;*/
+}
+
+.fancy-close-btn {
+    width: 56px;
+    height: 56px;
+    background: url('../img/fancy-close.png');
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.layout {
+    display: none;
+}

@@ -240,6 +240,7 @@
     <Content Include="Content\img\banner-shadow.png" />
     <Content Include="Content\img\carousel.png" />
     <Content Include="Content\img\em-logo.png" />
+    <Content Include="Content\img\fancy-close.png" />
     <Content Include="Content\img\fb.png" />
     <Content Include="Content\img\instagram.png" />
     <Content Include="Content\img\line-horizontal.png" />
