@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/27/2014 01:14:36
+-- Date Created: 09/28/2014 12:41:27
 -- Generated from EDMX file: C:\vsp\kiki\Kiki.Database\Model1.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -89,7 +89,11 @@ CREATE TABLE `SiteImage`(
 	`ImageSource` varchar (200) NOT NULL, 
 	`ImageType` int NOT NULL, 
 	`Text` varchar (200), 
-	`TextEng` varchar (200));
+	`TextEng` varchar (200), 
+	`Text2` varchar (200), 
+	`Text2Eng` varchar (200), 
+	`Text0` varchar (200), 
+	`Text0Eng` varchar (200));
 
 ALTER TABLE `SiteImage` ADD PRIMARY KEY (Id);
 

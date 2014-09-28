@@ -1,4 +1,5 @@
 ﻿@using Kiki.WebSite
+@using Kiki.WebSite.App_LocalResources
 @using Kiki.WebSite.Helpers.Graphics
 @using Kiki.WebSite.Models
 @model Kiki.WebSite.Models.SiteModel
@@ -30,7 +31,11 @@
 <div class="services">
     <div class="service-search-container-wrapper">
         <div class="service-search-container">
+            <div class="service-search-title">
+                    @GlobalRes.ServiceSearchTitle
+            </div>
             <div class="service-search">
+                
                 <input id="search" name="search" type="text" value="">
             </div>
             <div class="service-search-result" id="service-search-result">

@@ -42,7 +42,7 @@ namespace Kiki.Api.Repositories
 
         public void SaveSiteImage(SiteImage siteImage)
         {
-            var cache = _store.Contents.Single(c => c.Id == siteImage.Id);
+            //var cache = _store.SiteImages.Single(c => c.Id == siteImage.Id);
             _store.SaveChanges();
         }
     }

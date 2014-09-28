@@ -39,8 +39,11 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 model.Id = 0;
                 var siteImage = new SiteImage
                 {
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
-                    ImageType = model.ImageType
+                    ImageType = model.ImageType,
+                    Text = model.Text ?? "",
+                    TextEng = model.TextEng ?? "",
+                    Text2 = model.Text2 ?? "",
+                    Text2Eng = model.Text2Eng ?? ""
                 };
 
                 var file = Request.Files[0];
@@ -89,7 +92,11 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
             try
             {
                 var article = _repository.GetSiteImage(model.Id);
-                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                //article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                article.Text = model.Text ?? "";
+                article.TextEng = model.TextEng ?? "";
+                article.Text2 = model.Text2 ?? "";
+                article.Text2Eng = model.Text2Eng ?? "";
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))

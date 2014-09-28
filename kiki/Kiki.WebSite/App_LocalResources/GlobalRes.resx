@@ -126,8 +126,14 @@
   <data name="BackToNews" xml:space="preserve">
     <value>Вернуться к хорошим новостям</value>
   </data>
+  <data name="Em" xml:space="preserve">
+    <value>Сделано в&lt;br&gt;&lt;a href="http://eugene-miller.com"&gt;Студии Евгения Миллера&lt;/a&gt;</value>
+  </data>
   <data name="EveryDay" xml:space="preserve">
     <value>ежедневно</value>
+  </data>
+  <data name="KeepInTouch" xml:space="preserve">
+    <value>Будь в курсе</value>
   </data>
   <data name="MainText" xml:space="preserve">
     <value>Настоящий&lt;br&gt;
@@ -157,6 +163,9 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Отправить!</value>
+  </data>
+  <data name="ServiceSearchTitle" xml:space="preserve">
+    <value>начни вводить название услуги</value>
   </data>
   <data name="SubscribedToNews" xml:space="preserve">
     <value>твой емейл подписан на хорошие новости :)</value>

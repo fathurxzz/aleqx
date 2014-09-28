@@ -9,80 +9,91 @@
 
 @section TopMenu
 {
-    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
+    @Html.Partial("TopMenu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name, Lang = Model.LangCode })
 }
 
 @section Menu
 {
-    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name,Lang = Model.LangCode })
+    @Html.Partial("Menu", new SiteMenuModel { Contents = Model.Contents, CurrentMenuItemName = Model.Content.Name, Lang = Model.LangCode })
 }
 
 @section Banner
 {
     @if (Model.Banner != null)
     {
-        @Html.Partial("Banner",Model.Banner.ImageSource)
+        @Html.Partial("Banner", Model.Banner.ImageSource)
     }
 }
 
 
 <div class="attention">
-    <ul class="bxsliderProducts">
-            @foreach (var item in Model.Attentions)
-            {
-                <li>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("attention")))
-                </li>    
-            }
-        </ul>
+    <ul class="bxsliderProducts" id="attentions">
+        @foreach (var item in Model.Attentions)
+        {
+            <li>
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("attention")))
+            </li>    
+        }
+    </ul>
 </div>
 
 
- 
+
 
 <div class="main-image-container">
     <div class="main-image-wrapper">
-        <ul class="bxsliderProducts">
+        <ul class="bxsliderProducts" id="mainImages">
             @foreach (var item in Model.MainImages)
             {
                 <li>
-                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("mainImage")))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("mainImage"), Model.LangCode=="en"? item.TextEng+"<hr>"+item.Text2Eng:item.Text+"<hr>"+item.Text2))
                 </li>    
             }
         </ul>
     </div>
 </div>
 
- 
 
-<div class="pay-attention">
-</div>
+@if (Model.LangCode == "en")
+{
+    <div class="pay-attention-en">
+    </div>
+}
+else
+{
+    <div class="pay-attention">
+    </div>  
+}
+
+
 <div class="pay-attention-text">
-    @Html.Raw(Model.LangCode=="en"? Model.Attention.TextEng: Model.Attention.Text)
+    @Html.Raw(Model.LangCode == "en" ? Model.Attention.TextEng : Model.Attention.Text)
 </div>
 
 <div class="main-image-text-container">
-            <div class="text">
-                
-                @Html.Raw(GlobalRes.MainText)
-                
-                @*Настоящий<br>
-                мужской мейк-ап &mdash;<br>
-                всего за<br>
-                <span class="digit">40</span><br>
-                <span
-                    class="bottom">минут</span>*@
-                
-
-            </div>
-        </div>
+    <div class="text" >
+        <span id="captionText">
+            
+        </span>
+        @*@Html.Raw(GlobalRes.MainText)*@
+    </div>
+</div>
 
 <div style="height: 1px;"></div>
-<div class="secret">
+@if (Model.LangCode == "en")
+{
+    <div class="secret-en">
 </div>
+}
+else
+{
+<div class="secret">
+</div>  
+}
+
 <div class="secret-frame">
     @Html.Raw(GlobalRes.Why)
-    
+
     @*вот <a href="#secret-info">почему</a> вы<br>к нам вернетесь:*@
 </div>
 <div class="vertical-line-top"></div>
@@ -90,25 +101,25 @@
 <div class="vertical-line-bottom"></div>
 
 <div class="secret-info" id="secret-info">
-     @foreach (var item in Model.Reasons)
-        {
-            <div class="secret-info-block">
-        
-       
-                <div class="container">
-                    <div class="digit-frame">@item.SortOrder</div>
-                </div>
-                <div class="container">
-                    <div class="title">@(Model.LangCode=="en"? item.TitleEng:item.Title)</div>
-                </div>
-                <div class="container">
-                    <div class="text">
-                        @Html.Raw(Model.LangCode=="en"? item.TextEng:item.Text)
-                    </div>
-                </div>
-        
+    @foreach (var item in Model.Reasons)
+    {
+        <div class="secret-info-block">
+
+
+            <div class="container">
+                <div class="digit-frame">@item.SortOrder</div>
             </div>
-        }
+            <div class="container">
+                <div class="title">@(Model.LangCode == "en" ? item.TitleEng : item.Title)</div>
+            </div>
+            <div class="container">
+                <div class="text">
+                    @Html.Raw(Model.LangCode == "en" ? item.TextEng : item.Text)
+                </div>
+            </div>
+
+        </div>
+    }
 </div>
 
 
@@ -118,16 +129,25 @@
 
         $(function () {
 
-            
+
             //alert(autostart);
 
-             $('.bxsliderProducts').bxSlider({
-                 mode: 'fade',
-                 auto: true,
-                 pause: 5000,
-                 speed: 500,
-                 pager: false
-             });
+            $('#attentions').bxSlider({
+                mode: 'fade',
+                auto: true,
+                pause: 5000,
+                speed: 500,
+                pager: false
+            });
+
+            $('#mainImages').bxSlider({
+                mode: 'fade',
+                auto: true,
+                pause: 5000,
+                speed: 500,
+                pager: false,
+                captions:true
+            });
         });
     </script>
 }
