@@ -31,7 +31,7 @@
         @foreach (var item in Model.Attentions)
         {
             <li>
-                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("attention")))
+                @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("attention"), Model.LangCode=="en"? item.TextEng:item.Text))
             </li>    
         }
     </ul>
@@ -66,18 +66,16 @@ else
 }
 
 
-<div class="pay-attention-text">
+@*<div class="pay-attention-text">
     @Html.Raw(Model.LangCode == "en" ? Model.Attention.TextEng : Model.Attention.Text)
-</div>
+</div>*@
 
-<div class="main-image-text-container">
+@*<div class="main-image-text-container">
     <div class="text" >
         <span id="captionText">
-            
         </span>
-        @*@Html.Raw(GlobalRes.MainText)*@
     </div>
-</div>
+</div>*@
 
 <div style="height: 1px;"></div>
 @if (Model.LangCode == "en")
@@ -137,7 +135,8 @@ else
                 auto: true,
                 pause: 5000,
                 speed: 500,
-                pager: false
+                pager: false,
+                captions: true
             });
 
             $('#mainImages').bxSlider({

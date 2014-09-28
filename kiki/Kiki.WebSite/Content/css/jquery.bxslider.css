@@ -178,9 +178,9 @@
         width: 35px;
     }
 
-    /* IMAGE CAPTIONS */
+/* IMAGE CAPTIONS */
 
-    /*.bx-wrapper .bx-caption {
+/*.bx-wrapper .bx-caption {
 	position: absolute;
 	top: 108px;
 	left: 108px;
@@ -191,43 +191,86 @@
 }*/
 
 
-    .bx-wrapper .bx-caption {
-        position: absolute;
-        top: 500px;
-        left: 540px;
-        /*background: rgba(256, 556, 256, 0.75);*/
-        width: 227px;
-        height: 218px;
-        background: url("../img/main-image-text-container.png");
-        z-index: 1120;
-        position: absolute;
+.main-image-container .bx-wrapper .bx-caption {
+    position: absolute;
+    top: 500px;
+    left: 522px;
+    /*background: rgba(256, 556, 256, 0.75);*/
+    width: 227px;
+    height: 218px;
+    background: url("../img/main-image-text-container.png");
+    z-index: 1120;
+    position: absolute;
+}
+
+
+
+    .main-image-container .bx-wrapper .bx-caption span {
+        display: block;
+        text-align: center;
+        /*padding-top: 20px;*/
+        font-weight: 700;
+        font-family: "PT Sans";
+        text-transform: uppercase;
+        line-height: 22px;
+        font-size: 15px;
+        color: #fff;
+        margin: 40px auto 0 auto;
+        width: 120px;
     }
 
-
-
-        .bx-wrapper .bx-caption span {
-            display: block;
-            text-align: center;
-            /*padding-top: 20px;*/
-            font-weight: 700;
-            font-family: "PT Sans";
-            text-transform: uppercase;
-            line-height: 22px;
-            font-size: 15px;
-            color: #fff;
-            margin: 40px auto 0 auto;
-            width: 120px;
-        }
-
-        .bx-wrapper .bx-caption span hr {
+        .main-image-container .bx-wrapper .bx-caption span hr {
             width: 50px;
             margin: 10px auto;
         }
 
-            .bx-wrapper .bx-caption span a {
-                font-size: 15px;
-                font-family: "Trebuchet MS";
-                color: #0072bc;
-            }
+        .main-image-container .bx-wrapper .bx-caption span a {
+            font-size: 15px;
+            font-family: "Trebuchet MS";
+            color: #0072bc;
+        }
 
 
+
+.attention .bx-wrapper .bx-caption {
+    z-index: 1120;
+    background-color: #96c11f;
+    width: 143px;
+    height: 32px;
+    padding-top: 4px;
+    position: absolute;
+    left: 110px;
+    top: 214px;
+    text-align: center;
+    font-family: 'PT Sans Caption',serif;
+    font-size: 10px;
+    color: #fff;
+
+}
+
+
+
+    /*.attention .bx-wrapper .bx-caption span {
+        display: block;
+        text-align: center;
+        
+        font-weight: 700;
+        font-family: "PT Sans";
+        text-transform: uppercase;
+        line-height: 22px;
+        font-size: 15px;
+        color: #fff;
+        margin: 40px auto 0 auto;
+        width: 120px;
+    }
+
+        .attention .bx-wrapper .bx-caption span hr {
+            width: 50px;
+            margin: 10px auto;
+        }
+
+        .attention .bx-wrapper .bx-caption span a {
+            font-size: 15px;
+            font-family: "Trebuchet MS";
+            color: #0072bc;
+        }*/

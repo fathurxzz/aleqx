@@ -23,13 +23,22 @@
     background-position: 0 bottom;
 }
 
-#logo {
+/*#logo {
     position: absolute;
     width: 208px;
     height: 55px;
     background: url("../img/logo.png") no-repeat;
     margin-left: 33px;
     margin-top: 63px;
+}*/
+
+#logo {
+    position: absolute;
+    width: 211px;
+    height: 121px;
+    background: url("../img/logo-new.png") no-repeat;
+    margin-left: 33px;
+    margin-top: 10px;
 }
 
 .header
