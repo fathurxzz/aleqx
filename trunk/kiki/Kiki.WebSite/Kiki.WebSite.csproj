@@ -245,6 +245,7 @@
     <Content Include="Content\img\instagram.png" />
     <Content Include="Content\img\line-horizontal.png" />
     <Content Include="Content\img\line-vertical.png" />
+    <Content Include="Content\img\logo-new.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\main-image-layout.png" />
     <Content Include="Content\img\main-image-text-container.png" />
