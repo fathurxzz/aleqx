@@ -23,9 +23,18 @@
         <th>
             @Html.DisplayNameFor(model => model.ImageSource)
         </th>
-@*        <th>
+        <th>
             @Html.DisplayNameFor(model => model.Text)
-        </th>*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TextEng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text2Eng)
+        </th>
         <th></th>
     </tr>
 
@@ -35,11 +44,26 @@
             <td>
                 @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("articleAdminPreview")))
             </td>
-@*            <td>
+            <td>
                 <div>
                     @Html.Raw(item.Text)
                 </div>
-            </td>*@
+            </td>
+            <td>
+                <div>
+                    @Html.Raw(item.TextEng)
+                </div>
+            </td>
+            <td>
+                <div>
+                    @Html.Raw(item.Text2)
+                </div>
+            </td>
+            <td>
+                <div>
+                    @Html.Raw(item.Text2Eng)
+                </div>
+            </td>
             <td>
                 @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить изображение?')" })

@@ -43,6 +43,10 @@ cursor: url(../img/zoom.png);
      cursor: url(../img/zoom.png), pointer;
 }
 
+a.bx-prev, a.bx-next {
+    cursor: pointer !important;
+}
+
 
 
 .mini-gallery .carousel .image-container .image .zoom

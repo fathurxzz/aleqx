@@ -42,8 +42,26 @@
     font-family: 'PT Sans', serif;
     font-weight: 700;
     font-size: 17px;
-    padding-top: 40px;
 }
+
+.main-image-text-container .text span {
+    display: block;
+            text-align: center;
+            /*padding-top: 20px;*/
+            font-weight: 700;
+            font-family: "PT Sans";
+            text-transform: uppercase;
+            line-height: 22px;
+            font-size: 15px;
+            color: #fff;
+            margin: 40px auto 0 auto;
+            width: 120px;
+}
+
+.main-image-text-container .text span hr {
+            width: 50px;
+            margin: 10px auto;
+        }
 
 .main-image-text-container .text .digit {
     font-size: 50px;
@@ -55,11 +73,24 @@
     line-height: 25px;
 }
 
+
+
+
+
 .secret {
     position: relative;
     width: 189px;
     height: 55px;
     background: url("../img/secret.png");
+    margin-left: 920px;
+    margin-top: 410px;
+}
+
+.secret-en {
+    position: relative;
+    width: 186px;
+    height: 55px;
+    background: url("../img/secret-en.png");
     margin-left: 920px;
     margin-top: 410px;
 }
@@ -170,6 +201,16 @@
     width: 116px;
     height: 37px;
     background: url('../img/pay-attention.png') no-repeat;
+    position: absolute;
+    margin-left: 850px;
+    margin-top: 30px;
+    z-index: 1000
+}
+
+.pay-attention-en {
+    width: 118px;
+    height: 37px;
+    background: url('../img/pay-attention-en.png') no-repeat;
     position: absolute;
     margin-left: 850px;
     margin-top: 30px;

@@ -67,6 +67,10 @@
     <Property Name="ImageType" Type="int" Nullable="false" />
     <Property Name="Text" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="TextEng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Text2" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Text2Eng" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Text0" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Text0Eng" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="Article">
     <Key>
@@ -212,6 +216,10 @@
           <Property Type="Int32" Name="ImageType" Nullable="false" />
           <Property Type="String" Name="Text" MaxLength="200" />
           <Property Type="String" Name="TextEng" MaxLength="200" />
+          <Property Type="String" Name="Text2" MaxLength="200" />
+          <Property Type="String" Name="Text2Eng" MaxLength="200" />
+          <Property Type="String" Name="Text0" MaxLength="200" />
+          <Property Type="String" Name="Text0Eng" MaxLength="200" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -348,6 +356,10 @@
           <ScalarProperty Name="ImageType" ColumnName="ImageType" />
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="TextEng" ColumnName="TextEng" />
+          <ScalarProperty Name="Text2" ColumnName="Text2" />
+          <ScalarProperty Name="Text2Eng" ColumnName="Text2Eng" />
+          <ScalarProperty Name="Text0" ColumnName="Text0" />
+          <ScalarProperty Name="Text0Eng" ColumnName="Text0Eng" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

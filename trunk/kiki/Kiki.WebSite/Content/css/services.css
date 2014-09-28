@@ -9,7 +9,7 @@
 
 
 #search {
-    margin-top: 34px;
+    margin-top: 10px;
     margin-left: 5px;
     width: 510px;
     height: 45px;
@@ -37,8 +37,20 @@
 
     .service-search-container .service-search {
         width: 547px;
-        height: 87px;
+        height: 63px;
         background: url("../img/service-search.png");
+        /*background-position: bottom;
+        background-repeat: no-repeat;*/
+    }
+
+    .service-search-container .service-search-title {
+        padding-bottom: 10px;
+        font-family: "PT Sans Caption";
+        font-weight: 700;
+        font-size: 16px;
+        color: #96c11f;
+        text-transform: uppercase;
+        text-align: center;
     }
 
     .service-search-container .service-search-result {

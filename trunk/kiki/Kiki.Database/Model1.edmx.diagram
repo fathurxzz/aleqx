@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="Model1.Reason" Width="1.5" PointX="4.375" PointY="2.375" />
         <EntityTypeShape EntityType="Model1.Content" Width="1.75" PointX="9.5" PointY="2.375" />
         <EntityTypeShape EntityType="Model1.Subscriber" Width="1.5" PointX="12.875" PointY="2.25" />
-        <EntityTypeShape EntityType="Model1.SiteImage" Width="1.5" PointX="13" PointY="4.625" />
+        <EntityTypeShape EntityType="Model1.SiteImage" Width="1.5" PointX="13.125" PointY="4.25" />
         <EntityTypeShape EntityType="Model1.Article" Width="1.5" PointX="16.125" PointY="2.5" />
         <EntityTypeShape EntityType="Model1.Service" Width="1.5" PointX="10.625" PointY="7" />
         <EntityTypeShape EntityType="Model1.ServiceItem" Width="1.5" PointX="13.75" PointY="7.5" />

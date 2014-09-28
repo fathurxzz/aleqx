@@ -88,11 +88,29 @@ namespace Kiki.WebSite.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сделано в&lt;br&gt;&lt;a href=&quot;http://eugene-miller.com&quot;&gt;Студии Евгения Миллера&lt;/a&gt;.
+        /// </summary>
+        public static string Em {
+            get {
+                return ResourceManager.GetString("Em", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ежедневно.
         /// </summary>
         public static string EveryDay {
             get {
                 return ResourceManager.GetString("EveryDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Будь в курсе.
+        /// </summary>
+        public static string KeepInTouch {
+            get {
+                return ResourceManager.GetString("KeepInTouch", resourceCulture);
             }
         }
         
@@ -170,6 +188,15 @@ namespace Kiki.WebSite.App_LocalResources {
         public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to начни вводить название услуги.
+        /// </summary>
+        public static string ServiceSearchTitle {
+            get {
+                return ResourceManager.GetString("ServiceSearchTitle", resourceCulture);
             }
         }
         

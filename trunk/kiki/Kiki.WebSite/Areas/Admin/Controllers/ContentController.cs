@@ -50,8 +50,8 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                     ? SiteHelper.UpdatePageWebName(model.Name, model.Title)
                     : SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(content, new[] { "Title", "TitleEng", "MenuTitle", "MenuTitleEng", "SeoDescription", "ContentType", "SeoKeywords", "Seotext", "SortOrder" });
-                content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
-                content.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
+                //content.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
+                //content.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
 
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))

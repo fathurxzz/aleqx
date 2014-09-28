@@ -348,21 +348,21 @@ namespace Kiki.WebSite.Helpers.Graphics
 
 
 
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, string title=null)
         {
-            return CachedImage(helper, originalPath, fileName, thumbnail, null);
+            return CachedImage(helper, originalPath, fileName, thumbnail, null,title);
         }
 
-        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, string className)
+        public static string CachedImage(this HtmlHelper helper, string originalPath, string fileName, ThumbnailPicture thumbnail, string className, string title)
         {
             StringBuilder sb = new StringBuilder();
-            string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" />";
+            string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" width=\"{3}\" height=\"{4}\" title1=\"{5}\" />";
             //string formatString = "<img src=\"{0}\" alt=\"{1}\" class=\"{2}\" />";
             string imageSrc = GetCachedImage(originalPath, fileName, thumbnail);
             if (string.IsNullOrEmpty(imageSrc))
                 //return string.Format("image file {0} not found", fileName);
                 return string.Format("file not found", fileName);
-            sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc ?? ""), fileName, className ?? "", _width, _height);
+            sb.AppendFormat(formatString, VirtualPathUtility.ToAbsolute(imageSrc ?? ""), fileName, className ?? "", _width, _height, title);
             return sb.ToString();
         }
 

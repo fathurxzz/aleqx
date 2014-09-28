@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AllArticle" xml:space="preserve">
-    <value>All Article</value>
+    <value>Read article</value>
   </data>
   <data name="AllServices" xml:space="preserve">
     <value>all services of</value>
@@ -126,8 +126,14 @@
   <data name="BackToNews" xml:space="preserve">
     <value>Back to good news</value>
   </data>
+  <data name="Em" xml:space="preserve">
+    <value>Made in&lt;br&gt;&lt;a href="http://eugene-miller.com"&gt;Eugene Miller design studio&lt;/a&gt;</value>
+  </data>
   <data name="EveryDay" xml:space="preserve">
-    <value>every day</value>
+    <value>Daily</value>
+  </data>
+  <data name="KeepInTouch" xml:space="preserve">
+    <value>Keep in touch</value>
   </data>
   <data name="MainText" xml:space="preserve">
     <value>Настоящий&lt;br&gt;
@@ -141,34 +147,37 @@
     <value>Play main role!</value>
   </data>
   <data name="PleaseSubscribeToNews" xml:space="preserve">
-    <value>Please Subscribe To News:</value>
+    <value>Kiki will write you only good news, just type in you email:</value>
   </data>
   <data name="PleaseSubscribeToSales" xml:space="preserve">
-    <value>Кики сразу же напишет тебе о новой подарочной акции, просто введи свой емейл-адрес:</value>
+    <value>Kiki will write you only good news, just type in you email:</value>
   </data>
   <data name="SaleFrom" xml:space="preserve">
-    <value>Active from</value>
+    <value>Offer actual from</value>
   </data>
   <data name="SalePassed" xml:space="preserve">
-    <value>sale has passed! :)</value>
+    <value>Offer is over :)</value>
   </data>
   <data name="SaleTo" xml:space="preserve">
-    <value>to</value>
+    <value>till</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send!</value>
   </data>
+  <data name="ServiceSearchTitle" xml:space="preserve">
+    <value>Just type in beauty service name you looking for...</value>
+  </data>
   <data name="SubscribedToNews" xml:space="preserve">
-    <value>you have subscribed to news :)</value>
+    <value>You up to good news!</value>
   </data>
   <data name="SubscribedToSales" xml:space="preserve">
-    <value>you have subscribed to sales :)</value>
+    <value>You up to good news!</value>
   </data>
   <data name="WeKnow" xml:space="preserve">
     <value>Мы знаем не по наслышке , что такое ответственность за внешний вид клиентов. Эта идея собрала команду лучших
         специалистов, которые повышают свой уровень ежечасно &amp;mdash; только для тебя.</value>
   </data>
   <data name="Why" xml:space="preserve">
-    <value>вот &lt;a href="#secret-info"&gt;почему&lt;/a&gt; вы&lt;br&gt;к нам вернетесь:</value>
+    <value>&lt;a href="#secret-info"&gt;That's why&lt;/a&gt;&lt;br&gt;you'll come back:</value>
   </data>
 </root>

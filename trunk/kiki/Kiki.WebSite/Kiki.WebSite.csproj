@@ -248,7 +248,9 @@
     <Content Include="Content\img\main-image-layout.png" />
     <Content Include="Content\img\main-image-text-container.png" />
     <Content Include="Content\img\map-icons.png" />
+    <Content Include="Content\img\pay-attention-en.png" />
     <Content Include="Content\img\pay-attention.png" />
+    <Content Include="Content\img\secret-en.png" />
     <Content Include="Content\img\secret-frame.png" />
     <Content Include="Content\img\secret.png" />
     <Content Include="Content\img\service-search-result-bottom.png" />
@@ -383,6 +385,7 @@
     <None Include="Properties\PublishProfiles\prod.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="map.html" />
+    <Content Include="pass.txt" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -390,6 +393,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.bxslider.js" />
     <Content Include="Scripts\jquery.bxslider.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
