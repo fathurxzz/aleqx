@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Shop.Api.Repositories
             var product = _store.Products.SingleOrDefault(p => p.Id == id);
             if (product == null)
             {
-                throw new Exception(string.Format("Product with id={0} not found", id));
+                throw new ObjectNotFoundException(string.Format("Product with id={0} not found", id));
             }
             product.CurrentLang = LangId;
 
@@ -59,7 +60,7 @@ namespace Shop.Api.Repositories
             var product = _store.Products.SingleOrDefault(p => p.Name == name);
             if (product == null)
             {
-                throw new Exception(string.Format("Product with name={0} not found", name));
+                throw new ObjectNotFoundException(string.Format("Product with name={0} not found", name));
             }
             product.CurrentLang = LangId;
 
@@ -92,7 +93,7 @@ namespace Shop.Api.Repositories
 
             if (product == null)
             {
-                throw new Exception(string.Format("Product with id={0} not found", id));
+                throw new ObjectNotFoundException(string.Format("Product with id={0} not found", id));
             }
 
             product.Category = null;
@@ -161,7 +162,7 @@ namespace Shop.Api.Repositories
         {
             if (_store.Products.Any(c => c.Name == product.Name))
             {
-                throw new Exception(string.Format("Product {0} already exists", product.Name));
+                throw new ObjectNotFoundException(string.Format("Product {0} already exists", product.Name));
             }
 
             _store.Products.Add(product);

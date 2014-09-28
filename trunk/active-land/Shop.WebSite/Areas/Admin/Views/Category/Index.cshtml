@@ -24,7 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-     
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
         <th style="width: 1px" title="@Html.DisplayNameFor(model => model.IsCorrectLang)">
             Язык
         </th>
@@ -41,7 +43,9 @@
             <td class="@categoryLevel">
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-          
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
             <td>
                 @if (!item.IsCorrectLang)
                 {

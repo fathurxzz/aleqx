@@ -1,8 +1,9 @@
-﻿@using Shop.WebSite.Models
+﻿@using Shop.DataAccess.Entities
+@using Shop.WebSite.Models
 @model CatalogueModel
 
 @{
-    ViewBag.Title += " — Каталог товаров  — " + Model.Product.Title;
+    ViewBag.Title += " — Каталог товаров  — " + (Model.Product!=null? Model.Product.Title:"");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,33 +15,53 @@
 <div id="main-banner">
 </div>
 
-
+@*@section Error
+{
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div style="text-align: center">
+            <h4><span class="label label-danger">@Model.ErrorMessage</span></h4>
+        </div>
+    }
+}*@
 
 @{
     var bc = new BreadCrumbs();
-    if (Model.Product.Category.Parent != null)
+    if (Model.Product != null)
     {
-        bc.Add(new BreadCrumb()
+        if (Model.Product.Category.Parent != null)
         {
-            Title = Model.Product.Category.Parent.Title,
-            Name = Model.Product.Category.Parent.Name
+            bc.Add(new BreadCrumb
+            {
+                Title = Model.Product.Category.Parent.Title,
+                Name = Model.Product.Category.Parent.Name
+            });
+        }
+        bc.Add(new BreadCrumb
+        {
+            Title = Model.Product.Category.Title,
+            Name = Model.Product.Category.Name
+        });
+        bc.Add(new BreadCrumb
+        {
+            Title = Model.Product.Title
         });
     }
-    bc.Add(new BreadCrumb()
-    {
-        Title = Model.Product.Category.Title,
-        Name = Model.Product.Category.Name
-    });
-    bc.Add(new BreadCrumb()
-    {
-        Title = Model.Product.Title
-    });
 }
 
-@Html.Partial("SiteTitle", bc)
+@if (Model.Product != null)
+{
+    @Html.Partial("SiteTitle", bc)
+}
 
-
-@Html.Partial("_ProductDetails", Model.Product)
+@if (Model.Product != null)
+{
+    @Html.Partial("_ProductDetails", Model.Product)
+}
+else
+{
+  @Html.Partial("_ProductDetails", new Product())
+}
 
 
 

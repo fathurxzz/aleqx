@@ -23,6 +23,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             // Table & Column Mappings
             this.ToTable("Category", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.IsActive).HasColumnName("IsActive");
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.CategoryLevel).HasColumnName("CategoryLevel");

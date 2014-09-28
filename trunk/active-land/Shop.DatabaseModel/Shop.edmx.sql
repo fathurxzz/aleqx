@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 08/13/2014 08:52:06
--- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 09/28/2014 21:16:44
+-- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -55,6 +55,8 @@ USE `gbua_active_dev`;
 --    ALTER TABLE `ContentItemLang` DROP CONSTRAINT `FK_LanguageContentItemLang`;
 --    ALTER TABLE `ContentItemImage` DROP CONSTRAINT `FK_ContentItemContentItemImage`;
 --    ALTER TABLE `OrderItem` DROP CONSTRAINT `FK_OrderOrderItem`;
+--    ALTER TABLE `QuickAdviceLang` DROP CONSTRAINT `FK_QuickAdviceQuickAdviceLang`;
+--    ALTER TABLE `QuickAdviceLang` DROP CONSTRAINT `FK_LanguageQuickAdviceLang`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -86,6 +88,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `ContentItemLang`;
     DROP TABLE IF EXISTS `Order`;
     DROP TABLE IF EXISTS `OrderItem`;
+    DROP TABLE IF EXISTS `QuickAdvice`;
+    DROP TABLE IF EXISTS `QuickAdviceLang`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
@@ -111,7 +115,8 @@ CREATE TABLE `Category`(
 	`Name` varchar (200) NOT NULL, 
 	`SortOrder` int NOT NULL, 
 	`CategoryLevel` int NOT NULL, 
-	`CategoryId` int);
+	`CategoryId` int, 
+	`IsActive` bool NOT NULL);
 
 ALTER TABLE `Category` ADD PRIMARY KEY (Id);
 
