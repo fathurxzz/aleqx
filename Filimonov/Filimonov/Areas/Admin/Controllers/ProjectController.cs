@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Filimonov.Models;
 using SiteExtensions;
@@ -156,6 +157,64 @@ namespace Filimonov.Areas.Admin.Controllers
                 return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
             }
         }
+
+        public ActionResult AddFlashToProject(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == id);
+
+                ViewBag.projectId = project.Id;
+                ViewBag.projectName = project.Name;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFlashToProject(FlashContent model, int projectId, HttpPostedFileBase fileUpload)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == projectId);
+
+                
+                var file = fileUpload;
+                if (file != null)
+                {
+
+                    var pi = new FlashContent();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Flash", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Flash");
+                    string flashSourceFilePath = filePath;
+                    string flashDestFilePath = filePath;
+
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    pi.ImageSource = fileName;
+                    project.FlashContents.Add(pi);
+                    context.SaveChanges();
+
+                    flashSourceFilePath = Path.Combine(flashSourceFilePath, "virtualtour.xml");
+                    flashDestFilePath = Path.Combine(flashSourceFilePath, fileName);
+                    System.IO.File.Copy(flashSourceFilePath, flashDestFilePath);
+                }
+
+
+                //if (fileUpload != null)
+                //{
+                //    var pi = new ProjectImage();
+                //    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
+                //    string filePath = Server.MapPath("~/Content/Images");
+                //    filePath = Path.Combine(filePath, fileName);
+                //    fileUpload.SaveAs(filePath);
+                //    pi.ImageSource = fileName;
+                //    project.ProjectImages.Add(pi);
+                //    context.SaveChanges();
+                //}
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
+
 
         public ActionResult DeleteImage(int id)
         {

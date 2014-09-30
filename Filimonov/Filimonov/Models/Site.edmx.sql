@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 02/14/2013 08:57:31
--- Generated from EDMX file: D:\AlexK\projects\Filimonov\Filimonov\Models\Site.edmx
+-- Date Created: 09/30/2014 21:30:40
+-- Generated from EDMX file: C:\vsp\Filimonov\Filimonov\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
 
@@ -31,45 +31,56 @@ SET foreign_key_checks = 1;
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'Content'
+CREATE TABLE `Content`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Title` char (200) NOT NULL, 
+	`ContentType` int NOT NULL, 
+	`Text` longtext, 
+	`SeoDescription` longtext, 
+	`SeoKeywords` longtext, 
+	`SortOrder` int NOT NULL);
 
-CREATE TABLE `Content` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `ContentType` int  NOT NULL,
-    `Text` longtext  NULL,
-    `SeoDescription` longtext  NULL,
-    `SeoKeywords` longtext  NULL,
-    `SortOrder` int  NOT NULL
-);
-
--- Creating table 'Project'
-
-CREATE TABLE `Project` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `Name` varchar( 200 )  NOT NULL,
-    `Title` varchar( 200 )  NOT NULL,
-    `DescriptionTitle` varchar( 200 )  NULL,
-    `Description` longtext  NULL,
-    `SortOrder` int  NOT NULL,
-    `ImageSource` varchar( 200 )  NULL,
-    `VideoSource` longtext  NULL
-);
-
--- Creating table 'ProjectImage'
-
-CREATE TABLE `ProjectImage` (
-    `Id` int AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `ImageSource` varchar( 200 )  NOT NULL,
-    `ProjectId` int  NOT NULL,
-    `MainImage` bool  NOT NULL
-);
+ALTER TABLE `Content` ADD PRIMARY KEY (Id);
 
 
 
--- --------------------------------------------------
--- Creating all PRIMARY KEY constraints
--- --------------------------------------------------
+
+CREATE TABLE `Project`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Name` char (200) NOT NULL, 
+	`Title` char (200) NOT NULL, 
+	`DescriptionTitle` char (200), 
+	`Description` longtext, 
+	`SortOrder` int NOT NULL, 
+	`ImageSource` char (200), 
+	`VideoSource` longtext);
+
+ALTER TABLE `Project` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ProjectImage`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ImageSource` char (200) NOT NULL, 
+	`ProjectId` int NOT NULL, 
+	`MainImage` bool NOT NULL);
+
+ALTER TABLE `ProjectImage` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `FlashContent`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ImageSource` varchar (200) NOT NULL, 
+	`Title` varchar (200) NOT NULL, 
+	`ProjectId` int NOT NULL);
+
+ALTER TABLE `FlashContent` ADD PRIMARY KEY (Id);
+
+
+
 
 
 
@@ -90,6 +101,21 @@ ADD CONSTRAINT `FK_ProjectProjectImage`
 
 CREATE INDEX `IX_FK_ProjectProjectImage` 
     ON `ProjectImage`
+    (`ProjectId`);
+
+-- Creating foreign key on `ProjectId` in table 'FlashContent'
+
+ALTER TABLE `FlashContent`
+ADD CONSTRAINT `FK_ProjectFlashContent`
+    FOREIGN KEY (`ProjectId`)
+    REFERENCES `Project`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjectFlashContent'
+
+CREATE INDEX `IX_FK_ProjectFlashContent` 
+    ON `FlashContent`
     (`ProjectId`);
 
 -- --------------------------------------------------

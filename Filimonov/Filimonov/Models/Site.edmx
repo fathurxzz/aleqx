@@ -9,9 +9,14 @@
     <EntitySet Name="Content" EntityType="Site.Store.Content" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Project" EntityType="Site.Store.Project" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProjectImage" EntityType="Site.Store.ProjectImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FlashContent" EntityType="Site.Store.FlashContent" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProjectProjectImage" Association="Site.Store.ProjectProjectImage">
       <End Role="Project" EntitySet="Project" />
       <End Role="ProjectImage" EntitySet="ProjectImage" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectFlashContent" Association="Site.Store.ProjectFlashContent">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="FlashContent" EntitySet="FlashContent" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Content">
@@ -19,7 +24,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="char" Nullable="false" MaxLength="200" />
     <Property Name="ContentType" Type="int" Nullable="false" />
     <Property Name="Text" Type="longtext" Nullable="true" />
     <Property Name="SeoDescription" Type="longtext" Nullable="true" />
@@ -31,12 +36,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="Title" Type="nchar" Nullable="false" MaxLength="200" />
-    <Property Name="DescriptionTitle" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="Name" Type="char" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="char" Nullable="false" MaxLength="200" />
+    <Property Name="DescriptionTitle" Type="char" Nullable="true" MaxLength="200" />
     <Property Name="Description" Type="longtext" Nullable="true" />
     <Property Name="SortOrder" Type="int" Nullable="false" />
-    <Property Name="ImageSource" Type="nchar" Nullable="true" MaxLength="200" />
+    <Property Name="ImageSource" Type="char" Nullable="true" MaxLength="200" />
     <Property Name="VideoSource" Type="longtext" Nullable="true" />
   </EntityType>
   <EntityType Name="ProjectImage">
@@ -44,9 +49,18 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ImageSource" Type="nchar" Nullable="false" MaxLength="200" />
+    <Property Name="ImageSource" Type="char" Nullable="false" MaxLength="200" />
     <Property Name="ProjectId" Type="int" Nullable="false" />
     <Property Name="MainImage" Type="bool" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlashContent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ProjectProjectImage">
     <End Role="Project" Type="Site.Store.Project" Multiplicity="1" />
@@ -56,6 +70,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ProjectImage">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectFlashContent">
+    <End Role="Project" Type="Site.Store.Project" Multiplicity="1" />
+    <End Role="FlashContent" Type="Site.Store.FlashContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FlashContent">
         <PropertyRef Name="ProjectId" />
       </Dependent>
     </ReferentialConstraint>
@@ -71,6 +97,11 @@
           <AssociationSet Name="ProjectProjectImage" Association="Site.ProjectProjectImage">
             <End Role="Project" EntitySet="Project" />
             <End Role="ProjectImage" EntitySet="ProjectImage" />
+          </AssociationSet>
+          <EntitySet Name="FlashContent" EntityType="Site.FlashContent" />
+          <AssociationSet Name="ProjectFlashContent" Association="Site.ProjectFlashContent">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="FlashContent" EntitySet="FlashContent" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Content">
@@ -98,6 +129,7 @@
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
           <Property Type="String" Name="ImageSource" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="VideoSource" />
+          <NavigationProperty Name="FlashContents" Relationship="Site.ProjectFlashContent" FromRole="Project" ToRole="FlashContent" />
         </EntityType>
         <EntityType Name="ProjectImage">
           <Key>
@@ -117,6 +149,28 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ProjectImage">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FlashContent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Project" Relationship="Site.ProjectFlashContent" FromRole="FlashContent" ToRole="Project" />
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProjectFlashContent">
+          <End Type="Site.Project" Role="Project" Multiplicity="1" />
+          <End Type="Site.FlashContent" Role="FlashContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FlashContent">
               <PropertyRef Name="ProjectId" />
             </Dependent>
           </ReferentialConstraint>
@@ -164,6 +218,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="FlashContent">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.FlashContent)">
+        <MappingFragment StoreEntitySet="FlashContent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -191,6 +255,8 @@
           <ConnectorPoint PointX="7.5" PointY="3.43724609375" />
           <ConnectorPoint PointX="8.625" PointY="3.43724609375" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="Site.FlashContent" Width="1.5" PointX="7" PointY="5" />
+        <AssociationConnector Association="Site.ProjectFlashContent" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
