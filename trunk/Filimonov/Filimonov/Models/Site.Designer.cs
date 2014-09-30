@@ -20,6 +20,7 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("Site", "ProjectProjectImage", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "ProjectImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProjectImage), true)]
+[assembly: EdmRelationshipAttribute("Site", "ProjectFlashContent", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "FlashContent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.FlashContent), true)]
 
 #endregion
 
@@ -118,6 +119,22 @@ namespace Filimonov.Models
             }
         }
         private ObjectSet<ProjectImage> _ProjectImage;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<FlashContent> FlashContent
+        {
+            get
+            {
+                if ((_FlashContent == null))
+                {
+                    _FlashContent = base.CreateObjectSet<FlashContent>("FlashContent");
+                }
+                return _FlashContent;
+            }
+        }
+        private ObjectSet<FlashContent> _FlashContent;
 
         #endregion
 
@@ -145,6 +162,14 @@ namespace Filimonov.Models
         public void AddToProjectImage(ProjectImage projectImage)
         {
             base.AddObject("ProjectImage", projectImage);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the FlashContent EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFlashContent(FlashContent flashContent)
+        {
+            base.AddObject("FlashContent", flashContent);
         }
 
         #endregion
@@ -360,6 +385,183 @@ namespace Filimonov.Models
         #endregion
 
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="FlashContent")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class FlashContent : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new FlashContent object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="projectId">Initial value of the ProjectId property.</param>
+        public static FlashContent CreateFlashContent(global::System.Int32 id, global::System.String imageSource, global::System.String title, global::System.Int32 projectId)
+        {
+            FlashContent flashContent = new FlashContent();
+            flashContent.Id = id;
+            flashContent.ImageSource = imageSource;
+            flashContent.Title = title;
+            flashContent.ProjectId = projectId;
+            return flashContent;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProjectId
+        {
+            get
+            {
+                return _ProjectId;
+            }
+            set
+            {
+                OnProjectIdChanging(value);
+                ReportPropertyChanging("ProjectId");
+                _ProjectId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProjectId");
+                OnProjectIdChanged();
+            }
+        }
+        private global::System.Int32 _ProjectId;
+        partial void OnProjectIdChanging(global::System.Int32 value);
+        partial void OnProjectIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ProjectFlashContent", "Project")]
+        public Project Project
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectFlashContent", "Project").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectFlashContent", "Project").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Project> ProjectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectFlashContent", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("Site.ProjectFlashContent", "Project", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
@@ -611,6 +813,28 @@ namespace Filimonov.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProjectImage>("Site.ProjectProjectImage", "ProjectImage", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ProjectFlashContent", "FlashContent")]
+        public EntityCollection<FlashContent> FlashContents
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<FlashContent>("Site.ProjectFlashContent", "FlashContent");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<FlashContent>("Site.ProjectFlashContent", "FlashContent", value);
                 }
             }
         }
