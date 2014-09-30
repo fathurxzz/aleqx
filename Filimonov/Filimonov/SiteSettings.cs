@@ -36,5 +36,10 @@ namespace Filimonov
                 return Thumbnails[cacheFolder];
             throw new Exception("Can't find thumbnail " + cacheFolder);
         }
+
+        public static string Version
+        {
+            get { return "0.0.1"; }
+        }
     }
 }

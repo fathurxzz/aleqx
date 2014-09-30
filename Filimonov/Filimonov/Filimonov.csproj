@@ -399,6 +399,7 @@
     <Content Include="setcookie.aspx" />
     <Content Include="soon.gif" />
     <Content Include="soon.htm" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -522,6 +523,7 @@
     </EntityDeploy>
     <Content Include="Views\Shared\FeedbackForm.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
+    <None Include="Properties\PublishProfiles\prod.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SiteExtensions\SiteExtensions.csproj">
