@@ -24,7 +24,8 @@ namespace Filimonov
                                   {"caruselPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 73, Height = 73}, CacheFolder = "caruselPreview", ScaleMode =  ScaleMode.Crop}},
                                   {"projectImage",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 528, Height = 528}, CacheFolder = "projectImage", ScaleMode =  ScaleMode.Crop}},
                                   {"categoryPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 300, Height = 225}, CacheFolder = "categoryPreview", ScaleMode =  ScaleMode.Crop}},
-                                  {"categoryProduct",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 300, Height = 225}, CacheFolder = "categoryProduct", ScaleMode =  ScaleMode.Crop}}
+                                  {"categoryProduct",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 300, Height = 225}, CacheFolder = "categoryProduct", ScaleMode =  ScaleMode.Crop}},
+                                  {"siteBgPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Width = 200, Height = 200}, CacheFolder = "siteBgPreview", ScaleMode =  ScaleMode.Crop}}
                               };
         }
 

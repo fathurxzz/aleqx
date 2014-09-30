@@ -10,6 +10,8 @@
     <EntitySet Name="Project" EntityType="Site.Store.Project" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProjectImage" EntityType="Site.Store.ProjectImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FlashContent" EntityType="Site.Store.FlashContent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Song" EntityType="Site.Store.Song" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SiteBackground" EntityType="Site.Store.SiteBackground" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProjectProjectImage" Association="Site.Store.ProjectProjectImage">
       <End Role="Project" EntitySet="Project" />
       <End Role="ProjectImage" EntitySet="ProjectImage" />
@@ -17,6 +19,10 @@
     <AssociationSet Name="ProjectFlashContent" Association="Site.Store.ProjectFlashContent">
       <End Role="Project" EntitySet="Project" />
       <End Role="FlashContent" EntitySet="FlashContent" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectSong" Association="Site.Store.ProjectSong">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Song" EntitySet="Song" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Content">
@@ -62,6 +68,22 @@
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="ProjectId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Song">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="FileName" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SiteBackground">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
   <Association Name="ProjectProjectImage">
     <End Role="Project" Type="Site.Store.Project" Multiplicity="1" />
     <End Role="ProjectImage" Type="Site.Store.ProjectImage" Multiplicity="*" />
@@ -86,6 +108,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProjectSong">
+    <End Role="Project" Type="Site.Store.Project" Multiplicity="1" />
+    <End Role="Song" Type="Site.Store.Song" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Song">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -103,6 +137,12 @@
             <End Role="Project" EntitySet="Project" />
             <End Role="FlashContent" EntitySet="FlashContent" />
           </AssociationSet>
+          <EntitySet Name="Song" EntityType="Site.Song" />
+          <AssociationSet Name="ProjectSong" Association="Site.ProjectSong">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Song" EntitySet="Song" />
+          </AssociationSet>
+          <EntitySet Name="SiteBackground" EntityType="Site.SiteBackground" />
         </EntityContainer>
         <EntityType Name="Content">
           <Key>
@@ -130,6 +170,7 @@
           <Property Type="String" Name="ImageSource" FixedLength="true" MaxLength="200" />
           <Property Type="String" Name="VideoSource" />
           <NavigationProperty Name="FlashContents" Relationship="Site.ProjectFlashContent" FromRole="Project" ToRole="FlashContent" />
+          <NavigationProperty Name="Songs" Relationship="Site.ProjectSong" FromRole="Project" ToRole="Song" />
         </EntityType>
         <EntityType Name="ProjectImage">
           <Key>
@@ -175,6 +216,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Song">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="FileName" Nullable="false" MaxLength="200" />
+          <NavigationProperty Name="Project" Relationship="Site.ProjectSong" FromRole="Song" ToRole="Project" />
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+        </EntityType>
+        <Association Name="ProjectSong">
+          <End Type="Site.Project" Role="Project" Multiplicity="1" />
+          <End Type="Site.Song" Role="Song" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Song">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SiteBackground">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageSource" Nullable="false" MaxLength="200" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -228,6 +298,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Song">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.Song)">
+        <MappingFragment StoreEntitySet="Song">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteBackground">
+      <EntityTypeMapping TypeName="IsTypeOf(Site.SiteBackground)">
+        <MappingFragment StoreEntitySet="SiteBackground">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -255,8 +343,11 @@
           <ConnectorPoint PointX="7.5" PointY="3.43724609375" />
           <ConnectorPoint PointX="8.625" PointY="3.43724609375" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Site.FlashContent" Width="1.5" PointX="7" PointY="5" />
+        <EntityTypeShape EntityType="Site.FlashContent" Width="1.5" PointX="7.125" PointY="5.375" />
         <AssociationConnector Association="Site.ProjectFlashContent" />
+        <EntityTypeShape EntityType="Site.Song" Width="1.5" PointX="9.625" PointY="7.5" />
+        <AssociationConnector Association="Site.ProjectSong" />
+        <EntityTypeShape EntityType="Site.SiteBackground" Width="1.5" PointX="13.125" PointY="4.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

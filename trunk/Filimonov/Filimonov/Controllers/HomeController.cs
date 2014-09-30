@@ -19,6 +19,7 @@ namespace Filimonov.Controllers
             {
                 var model = new SiteModel(context);
                 this.SetSeoContent(model);
+                ViewBag.SiteBgFileName = model.RandomSiteBgFileName;
                 return View(model);
             }
         }
@@ -28,6 +29,7 @@ namespace Filimonov.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new ProjectModel(context, id);
+                ViewBag.SiteBgFileName = model.RandomSiteBgFileName;
                 return View(model);
             }
         }
@@ -37,6 +39,7 @@ namespace Filimonov.Controllers
             using (var context = new SiteContainer())
             {
                 var model = new ProjectModel(context, id);
+                ViewBag.SiteBgFileName = model.RandomSiteBgFileName;
                 return View(model.Project);
             }
         }

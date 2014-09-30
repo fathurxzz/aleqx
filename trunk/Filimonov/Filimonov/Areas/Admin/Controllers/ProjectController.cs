@@ -191,12 +191,14 @@ namespace Filimonov.Areas.Admin.Controllers
                     filePath = Path.Combine(filePath, fileName);
                     file.SaveAs(filePath);
                     pi.ImageSource = fileName;
+                    pi.Title = model.Title;
                     project.FlashContents.Add(pi);
-                    context.SaveChanges();
-
+                    
                     flashSourceFilePath = Path.Combine(flashSourceFilePath, "virtualtour.xml");
-                    flashDestFilePath = Path.Combine(flashSourceFilePath, fileName);
+                    flashDestFilePath = Path.Combine(flashDestFilePath, Path.GetFileNameWithoutExtension(fileName) + ".xml");
                     System.IO.File.Copy(flashSourceFilePath, flashDestFilePath);
+
+                    context.SaveChanges();
                 }
 
 
@@ -211,6 +213,42 @@ namespace Filimonov.Areas.Admin.Controllers
                 //    project.ProjectImages.Add(pi);
                 //    context.SaveChanges();
                 //}
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
+
+        public ActionResult AddSongToProject(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == id);
+
+                ViewBag.projectId = project.Id;
+                ViewBag.projectName = project.Name;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddSongToProject(Song model, int projectId, HttpPostedFileBase fileUpload)
+        {
+            using (var context = new SiteContainer())
+            {
+                var project = context.Project.First(p => p.Id == projectId);
+                var file = fileUpload;
+                if (file != null)
+                {
+
+                    var pi = new Song();
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Music/mp3", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Music/mp3");
+                    filePath = Path.Combine(filePath, fileName);
+                    file.SaveAs(filePath);
+                    pi.FileName = fileName;
+                    pi.Title = model.Title;
+                    project.Songs.Add(pi);
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
             }
         }
@@ -233,6 +271,33 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
+        public ActionResult DeleteFlash(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var projectImage = context.FlashContent.Include("Project").First(pi => pi.Id == id);
+                var project = projectImage.Project;
+                IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource);
+                IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource, "xml");
+                context.DeleteObject(projectImage);
+                context.SaveChanges();
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
+
+        public ActionResult DeleteSong(int id)
+        {
+            using (var context = new SiteContainer())
+            {
+                var projectImage = context.Song.Include("Project").First(pi => pi.Id == id);
+                var project = projectImage.Project;
+                IOHelper.DeleteFile("~/Content/Music/mp3", projectImage.FileName);
+                context.DeleteObject(projectImage);
+                context.SaveChanges();
+                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+            }
+        }
+
         public ActionResult Delete(int id)
         {
             using (var context = new SiteContainer())
@@ -247,6 +312,15 @@ namespace Filimonov.Areas.Admin.Controllers
                     {
                         IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, projectImage.ImageSource);
                     }
+
+                    context.DeleteObject(projectImage);
+                }
+
+                while (project.FlashContents.Any())
+                {
+                    var projectImage = project.FlashContents.First();
+                    IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource);
+                    IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource, "xml");
 
                     context.DeleteObject(projectImage);
                 }

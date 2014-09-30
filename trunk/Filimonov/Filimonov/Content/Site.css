@@ -336,3 +336,20 @@ body
     font-family: FreeSetC, Verdana;
     
 }
+
+.flash-links, .music {
+    margin: 50px 0;
+}
+
+.music-item, .flash-item {
+    padding: 10px 0;
+}
+
+.siteBgContainer {
+    padding: 0 30px;
+}
+
+.siteBgContainer .image {
+    float: left;
+    padding: 20px;
+}

@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 09/30/2014 21:30:40
+-- Date Created: 09/30/2014 23:34:01
 -- Generated from EDMX file: C:\vsp\Filimonov\Filimonov\Models\Site.edmx
 -- Target version: 2.0.0.0
 -- --------------------------------------------------
@@ -17,6 +17,8 @@
 -- --------------------------------------------------
 
 --    ALTER TABLE `ProjectImage` DROP CONSTRAINT `FK_ProjectProjectImage`;
+--    ALTER TABLE `FlashContent` DROP CONSTRAINT `FK_ProjectFlashContent`;
+--    ALTER TABLE `Song` DROP CONSTRAINT `FK_ProjectSong`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -25,6 +27,8 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `Content`;
     DROP TABLE IF EXISTS `Project`;
     DROP TABLE IF EXISTS `ProjectImage`;
+    DROP TABLE IF EXISTS `FlashContent`;
+    DROP TABLE IF EXISTS `Song`;
 SET foreign_key_checks = 1;
 
 -- --------------------------------------------------
@@ -82,6 +86,26 @@ ALTER TABLE `FlashContent` ADD PRIMARY KEY (Id);
 
 
 
+CREATE TABLE `Song`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Title` varchar (200) NOT NULL, 
+	`FileName` varchar (200) NOT NULL, 
+	`ProjectId` int NOT NULL);
+
+ALTER TABLE `Song` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `SiteBackground`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`ImageSource` varchar (200) NOT NULL);
+
+ALTER TABLE `SiteBackground` ADD PRIMARY KEY (Id);
+
+
+
+
 
 
 -- --------------------------------------------------
@@ -116,6 +140,21 @@ ADD CONSTRAINT `FK_ProjectFlashContent`
 
 CREATE INDEX `IX_FK_ProjectFlashContent` 
     ON `FlashContent`
+    (`ProjectId`);
+
+-- Creating foreign key on `ProjectId` in table 'Song'
+
+ALTER TABLE `Song`
+ADD CONSTRAINT `FK_ProjectSong`
+    FOREIGN KEY (`ProjectId`)
+    REFERENCES `Project`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjectSong'
+
+CREATE INDEX `IX_FK_ProjectSong` 
+    ON `Song`
     (`ProjectId`);
 
 -- --------------------------------------------------

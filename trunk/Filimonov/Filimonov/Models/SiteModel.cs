@@ -13,6 +13,7 @@ namespace Filimonov.Models
         public string SeoKeywords { get; set; }
         public Menu Menu { get; set; }
         public bool IsHomePage { get; set; }
+        public string RandomSiteBgFileName { get; set; }
 
         public IEnumerable<Content> Contents { get; set; }
         public IEnumerable<Project> Projects { get; set; }
@@ -25,6 +26,14 @@ namespace Filimonov.Models
 
             SeoDescription = Contents.First().SeoDescription;
             SeoKeywords = Contents.First().SeoKeywords;
+
+            var allBackgrounds = context.SiteBackground.ToList();
+            var sitebg = allBackgrounds.OrderBy(s => Guid.NewGuid()).Take(1).FirstOrDefault();
+            if (sitebg != null)
+            {
+                RandomSiteBgFileName = sitebg.ImageSource;
+            }
+
 
         }
     }

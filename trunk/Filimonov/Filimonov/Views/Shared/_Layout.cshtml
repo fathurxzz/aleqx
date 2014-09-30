@@ -19,13 +19,17 @@
     }
     else
     {
-        <script type="text/javascript">
+
+        if (!string.IsNullOrEmpty(ViewBag.SiteBgFileName))
+        {
+            <script type="text/javascript">
             $(function () {
-                $.scrollingParallax('/content/img/site-bg.jpg', {
+                $.scrollingParallax('/Content/Images/@ViewBag.SiteBgFileName', {
                     staticSpeed: .2
                 });
             });
         </script>
+        }
     }
 
     @if (Request.IsAuthenticated)
@@ -43,8 +47,12 @@
             {
                 <div class="adminLinkContainer">
                     @Html.ActionLink("Выйти из системы администрирования", "LogOff", "Account", null, new { @class = "adminLink" })
+                    <br/>
+                    @Html.ActionLink("Фоновые изображения сайта", "Index", "SiteBackground", new{area="Admin"}, new { @class = "adminLink" })
                 </div>
             }
+            
+
         </div>
         <div id="header">
         </div>
