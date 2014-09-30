@@ -24,6 +24,21 @@ namespace SiteExtensions
                 File.Delete(path);
         }
 
+        public static void DeleteFile(string relativePath, string fileName, string extension)
+        {
+            string absolutePath = HttpContext.Current.Server.MapPath(relativePath);
+
+            if (Path.HasExtension(fileName))
+            {
+
+                fileName = Path.GetFileNameWithoutExtension(fileName) +"."+ extension;
+            }
+
+            string path = Path.Combine(absolutePath, fileName);
+            if (File.Exists(path))
+                File.Delete(path);
+        }
+
         /// <summary>
         /// 
         /// </summary>

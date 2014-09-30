@@ -21,6 +21,7 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("Site", "ProjectProjectImage", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "ProjectImage", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.ProjectImage), true)]
 [assembly: EdmRelationshipAttribute("Site", "ProjectFlashContent", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "FlashContent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.FlashContent), true)]
+[assembly: EdmRelationshipAttribute("Site", "ProjectSong", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Filimonov.Models.Project), "Song", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Filimonov.Models.Song), true)]
 
 #endregion
 
@@ -135,6 +136,38 @@ namespace Filimonov.Models
             }
         }
         private ObjectSet<FlashContent> _FlashContent;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Song> Song
+        {
+            get
+            {
+                if ((_Song == null))
+                {
+                    _Song = base.CreateObjectSet<Song>("Song");
+                }
+                return _Song;
+            }
+        }
+        private ObjectSet<Song> _Song;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SiteBackground> SiteBackground
+        {
+            get
+            {
+                if ((_SiteBackground == null))
+                {
+                    _SiteBackground = base.CreateObjectSet<SiteBackground>("SiteBackground");
+                }
+                return _SiteBackground;
+            }
+        }
+        private ObjectSet<SiteBackground> _SiteBackground;
 
         #endregion
 
@@ -170,6 +203,22 @@ namespace Filimonov.Models
         public void AddToFlashContent(FlashContent flashContent)
         {
             base.AddObject("FlashContent", flashContent);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Song EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSong(Song song)
+        {
+            base.AddObject("Song", song);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SiteBackground EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSiteBackground(SiteBackground siteBackground)
+        {
+            base.AddObject("SiteBackground", siteBackground);
         }
 
         #endregion
@@ -838,6 +887,28 @@ namespace Filimonov.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ProjectSong", "Song")]
+        public EntityCollection<Song> Songs
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Song>("Site.ProjectSong", "Song");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Song>("Site.ProjectSong", "Song", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1012,6 +1083,266 @@ namespace Filimonov.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("Site.ProjectProjectImage", "Project", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="SiteBackground")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SiteBackground : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SiteBackground object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="imageSource">Initial value of the ImageSource property.</param>
+        public static SiteBackground CreateSiteBackground(global::System.Int32 id, global::System.String imageSource)
+        {
+            SiteBackground siteBackground = new SiteBackground();
+            siteBackground.Id = id;
+            siteBackground.ImageSource = imageSource;
+            return siteBackground;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageSource
+        {
+            get
+            {
+                return _ImageSource;
+            }
+            set
+            {
+                OnImageSourceChanging(value);
+                ReportPropertyChanging("ImageSource");
+                _ImageSource = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ImageSource");
+                OnImageSourceChanged();
+            }
+        }
+        private global::System.String _ImageSource;
+        partial void OnImageSourceChanging(global::System.String value);
+        partial void OnImageSourceChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Site", Name="Song")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Song : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Song object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="fileName">Initial value of the FileName property.</param>
+        /// <param name="projectId">Initial value of the ProjectId property.</param>
+        public static Song CreateSong(global::System.Int32 id, global::System.String title, global::System.String fileName, global::System.Int32 projectId)
+        {
+            Song song = new Song();
+            song.Id = id;
+            song.Title = title;
+            song.FileName = fileName;
+            song.ProjectId = projectId;
+            return song;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FileName
+        {
+            get
+            {
+                return _FileName;
+            }
+            set
+            {
+                OnFileNameChanging(value);
+                ReportPropertyChanging("FileName");
+                _FileName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FileName");
+                OnFileNameChanged();
+            }
+        }
+        private global::System.String _FileName;
+        partial void OnFileNameChanging(global::System.String value);
+        partial void OnFileNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProjectId
+        {
+            get
+            {
+                return _ProjectId;
+            }
+            set
+            {
+                OnProjectIdChanging(value);
+                ReportPropertyChanging("ProjectId");
+                _ProjectId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProjectId");
+                OnProjectIdChanged();
+            }
+        }
+        private global::System.Int32 _ProjectId;
+        partial void OnProjectIdChanging(global::System.Int32 value);
+        partial void OnProjectIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Site", "ProjectSong", "Project")]
+        public Project Project
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectSong", "Project").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectSong", "Project").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Project> ProjectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("Site.ProjectSong", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("Site.ProjectSong", "Project", value);
                 }
             }
         }

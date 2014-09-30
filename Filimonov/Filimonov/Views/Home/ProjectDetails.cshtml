@@ -75,15 +75,50 @@
                 }
                 <div class="clear"></div>
             </div>
-            <div class="flash-links">
-                <a href="/Content/Flash/virtualtour.swf" target="_blank">virtualtour.swf</a>
-            </div>
+            
+            @if (Model.FlashContents.Any())
+            {
+                <div class="flash-links">
+                    @foreach (var flash in Model.FlashContents)
+                    {
+                        <div class="flash-item">
+                            <a href="/Content/Flash/@flash.ImageSource" target="_blank">@flash.Title</a>
+                            @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                            {
+                                @Html.ActionLink("Удалить", "DeleteFlash", "Project", new {area = "Admin", id = flash.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить флеш?')"})
+                            }
+                        </div>
+                    }
+                </div>
+            }
+            
+
+            @if (Model.Songs.Any())
+            {
+                <div class="music">
+                @foreach (var song in Model.Songs)
+                {
+                    <div class="music-item">
+                        <object data="/Content/Music/dewplayer.swf" width="200" height="20" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
+                            <param name="movie" value="dewplayer.swf" />
+                            <param name="flashvars" value="mp3=/Content/Music/mp3/@song.FileName" />
+                            <param name="wmode" value="transparent" />
+                        </object>                        @song.Title                        @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
+                            {
+                                @Html.ActionLink("Удалить", "DeleteSong", "Project", new {area = "Admin", id = song.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить mp3?')"})
+                            }                    </div>
+                }
+                </div>
+            }
+
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div class="adminLinkContainer">
+                    @Html.ActionLink("Добавить изображение", "AddImageToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" }) &nbsp; 
                     
+                    @Html.ActionLink("Добавить флеш", "AddFlashToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;
                     
-                    @Html.ActionLink("Добавить изображение", "AddImageToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Добавить mp3", "AddSongToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;
                     
                     @Html.ActionLink("Удалить проект", "Delete", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект?')" })
                 </div>
