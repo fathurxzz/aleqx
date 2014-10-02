@@ -113,8 +113,65 @@
             @Html.Raw(Model.Description)
         </div>
         <div id="product-attributes">
+            
+            
+            <table>
+            
+            @foreach (var pruductAttribute in Model.Category.ProductAttributes.OrderBy(p=>p.SortOrder))
+            {
+                if (Model.ProductAttributeValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id) || Model.ProductAttributeStaticValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id))
+                {
+                    <tr class="attribute">
+                        <td class="title">
+                            @pruductAttribute.Title @Html.Raw(!string.IsNullOrEmpty(pruductAttribute.UnitTitle) ? ", " + pruductAttribute.UnitTitle : "")
+                        </td>
+                        <td class="value">
+                            
+                                <div class="value-text">
+                                    @if (pruductAttribute.IsStatic)
+                                    {
+                                        foreach (var pav in Model.ProductAttributeStaticValues)
+                                        {
+                                            if (pav.ProductAttributeId == pruductAttribute.Id)
+                                            {
+                                                @pav.Title
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        var cnt = 0;
+                                        foreach (var pav in Model.ProductAttributeValues)
+                                        {
+                                            if (pav.ProductAttributeId == pruductAttribute.Id)
+                                            {
+                                                if (cnt != 0)
+                                                {
+                                                    @Html.Raw(", ")
+                                                }
+                                                else
+                                                {
+                                                    if (pav.ProductAttributeValueTag != null)
+                                                    {
+                                                        <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
+                                                    }
+                                                }
+                                                cnt++;
+                                                @pav.Title
+                                            }
+                                        }
+                                    }
+                                </div>
+                        </td>
+                
+                </tr>
+                }
+            }
+            </table>
 
-            @foreach (var pruductAttribute in Model.Category.ProductAttributes)
+            
+
+            @*            @foreach (var pruductAttribute in Model.Category.ProductAttributes)
             {
                 if (Model.ProductAttributeValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id) || Model.ProductAttributeStaticValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id))
                 {
@@ -159,7 +216,7 @@
                         </div>
                     </div>
                 }
-            }
+            }*@
         </div>
         <div class="clearfix"></div>
     </div>

@@ -26,13 +26,14 @@ namespace Shop.WebSite.Models
         public string CurrentLangCode { get; set; }
         public IEnumerable<QuickAdvice> QuickAdvices { get; set; }
         public string ErrorMessage { get; set; }
+        //public DateTime QueryTime { get; set; }
 
         public SiteModel(IShopRepository repository, string contentName )
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
-            AllProducts = repository.GetProducts().Where(p=>p.IsActive);
-            SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
+            AllProducts = repository.GetActiveProducts();
+            SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale).OrderBy(p=>Guid.NewGuid()).Take(8);
             Contents = repository.GetContents();
             Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
             Articles = repository.GetArticles(true);

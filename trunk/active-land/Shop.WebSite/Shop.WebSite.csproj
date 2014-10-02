@@ -471,6 +471,7 @@
     <Content Include="Scripts\ordervalidation.js" />
     <Content Include="Scripts\product.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="todo.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

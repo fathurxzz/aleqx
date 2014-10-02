@@ -25,7 +25,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Create(int? id)
         {
             _repository.LangId = CurrentLangId;
-            return View(new Category { CategoryId = id, CurrentLang = CurrentLangId });
+            return View(new Category { CategoryId = id, CurrentLang = CurrentLangId, SortOrder = 0});
         }
 
         [HttpPost]

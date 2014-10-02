@@ -109,7 +109,8 @@
         position: absolute;
         margin-top: -40px;
         width: 99px;
-        color: #f26522;
+        /*color: #f26522;*/
+        color: #000;
     }
     #title-price-in-cart-section .price .old .line-through {
         width: 129px;
@@ -165,38 +166,45 @@
 
 }
 
+#product-attributes table {
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+
+
 #product-attributes .attribute .title,
 #product-attributes .attribute .value {
     background-color: #dde8ef;
-    height: 36px;
+    /*height: 36px;*/
     border-radius: 6px;
     margin-right: 5px;
     margin-bottom: 5px;
     font-family: 'PT Sans', serif;
     font-size: 11px;
-    line-height: 35px;
     font-weight: 700;
-
+    padding: 8px 0;
+    line-height: 20px;
 }
 
 #product-attributes .attribute.alternative-item .title,
 #product-attributes .attribute.alternative-item .value {
     background-color: #e0e2eb;
-
 }
 
 #product-attributes .attribute .title {
-    float: left;
+    /*float: left;*/
     width: 129px;
     color: #0072bc;
     padding-left: 17px;
 }
 
 #product-attributes .attribute .value {
-    margin-left: 151px;;
+    /*margin-left: 151px;*/
     width: 359px;
     color: #5a5a5a;
     padding-left: 11px;
+    padding-right: 11px;
 }
 
 
@@ -214,11 +222,6 @@
 }
 
 
-#product-attributes .attribute .value .value-text
-{
-    position: absolute;
-    margin-left: 0px;
-}
 #product-attributes .attribute .value .value-text .tag {
     /*padding-top: 10px;*/
     /*display: inline-block;*/

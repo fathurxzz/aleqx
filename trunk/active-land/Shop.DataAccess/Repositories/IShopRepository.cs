@@ -53,6 +53,7 @@ namespace Shop.DataAccess.Repositories
 
         // Products
         IEnumerable<Product> GetProducts();
+        IEnumerable<Product> GetActiveProducts();
         Product GetProduct(int id);
         Product GetProduct(string name);
         void DeleteProduct(int id, Action<String> deleteImages);

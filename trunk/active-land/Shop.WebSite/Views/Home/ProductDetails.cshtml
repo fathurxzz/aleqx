@@ -9,7 +9,7 @@
 
 <div id="menu-panel">
     @Html.Partial("LanguageSwitcher")
-    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", null, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+    @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new{id=""}, new { id = "logo" }).ToString().Replace("[LINK]", ""))
     @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
 </div>
 <div id="main-banner">
