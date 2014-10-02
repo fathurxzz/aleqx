@@ -34,5 +34,9 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Доступность на текущем языке")]
         public bool IsCorrectLang { get; set; }
 
+        [Display(Name = "Порядок отображения")]
+        [Required(ErrorMessage = "Введите порядок отображения")]
+        public string SortOrder { get; set; }
+
     }
 }

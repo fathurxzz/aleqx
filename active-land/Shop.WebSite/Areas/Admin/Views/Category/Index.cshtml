@@ -25,6 +25,9 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.SortOrder)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th style="width: 1px" title="@Html.DisplayNameFor(model => model.IsCorrectLang)">
@@ -42,6 +45,9 @@
             </td>
             <td class="@categoryLevel">
                 @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)

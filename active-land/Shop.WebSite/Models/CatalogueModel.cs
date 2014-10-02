@@ -54,7 +54,7 @@ namespace Shop.WebSite.Models
 
             IQueryable<Product> products = null;
 
-            products = Products.OrderBy(p => p.Id).AsQueryable();
+            products = Products.OrderBy(p => p.Title).ThenBy(p=>p.Price).AsQueryable();
 
             products = ApplyPaging(products, page, SiteSettings.ProductsPageSize);
 

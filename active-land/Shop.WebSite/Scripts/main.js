@@ -1,6 +1,8 @@
 $(function () {
 
     var obj = $("#category-menu");
+    var hideMenu = true;
+
 
     $(".categories-menu-link").mousemove(function () {
         if (obj[0] != undefined) {
@@ -11,6 +13,17 @@ $(function () {
             }
 
         $(".category-menu").css("visibility", "visible");
+        hideMenu = false;
+    });
+
+
+    $(".category-menu").mouseout(function () {
+        hideMenu = true;
+        setTimeout(function () {
+            if (hideMenu) {
+                $(".category-menu").css("visibility", "hidden");
+            }
+        }, 2000);
     });
 
     

@@ -37,15 +37,19 @@
             О
         </th>
         
+        
         <th title="@Html.DisplayNameFor(model => model.IsFilterable)">
             Ф
+        </th>
+        <th title="@Html.DisplayNameFor(model => model.SortOrder)">
+            C
         </th>
         <th>Значения</th>
         <th></th>
         
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(m=>m.SortOrder))
     {
         <tr>
             <td>
@@ -80,6 +84,9 @@
                 @Html.DisplayFor(modelItem => item.IsFilterable)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.SortOrder)
+            </td>
+            <td>
                 @if (!item.IsStatic)
                 {
                     foreach (var value in item.ProductAttributeValues)
@@ -88,6 +95,7 @@
                     }
                 }
             </td>
+
             <td>
                 @Html.ActionLink("Ред.", "Edit", new { id = item.Id },new{title="Редактировать"}) |
                 @Html.ActionLink("Уд.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить атрибут?')",title="Удалить" }) 

@@ -26,7 +26,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Create()
         {
             _repository.LangId = CurrentLangId;
-            return View(new ProductAttribute(){CurrentLang = CurrentLangId});
+            return View(new ProductAttribute(){CurrentLang = CurrentLangId,SortOrder = 0});
         }
 
         [HttpPost]
@@ -43,7 +43,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     IsStatic = model.IsStatic,
                     DisplayOnPreview = model.DisplayOnPreview,
                     IsFilterable = model.IsFilterable,
-                    SortOrder = 0
+                    SortOrder = model.SortOrder
                 };
                 _repository.AddProductAttribute(productAttibute);
             }
@@ -77,7 +77,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 var productAttribute = _repository.GetProductAttribute(model.Id);
-                TryUpdateModel(productAttribute, new[] { "Title", "UnitTitle", "IsStatic", "DisplayOnPreview", "IsFilterable" });
+                TryUpdateModel(productAttribute, new[] { "Title", "UnitTitle", "IsStatic", "DisplayOnPreview", "IsFilterable","SortOrder" });
                 _repository.SaveProductAttribute(productAttribute);
             }
             catch (Exception ex)
