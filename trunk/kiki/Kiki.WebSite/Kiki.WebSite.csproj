@@ -196,6 +196,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\footer.css" />
     <Content Include="Content\css\header.css" />
+    <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\jquery-ui.min.css" />
     <Content Include="Content\css\jquery-ui.structure.min.css" />
     <Content Include="Content\css\jquery.bxslider.css" />
@@ -395,6 +396,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.bxslider.js" />
     <Content Include="Scripts\jquery.bxslider.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
