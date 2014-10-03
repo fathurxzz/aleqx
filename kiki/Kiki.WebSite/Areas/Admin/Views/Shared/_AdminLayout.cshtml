@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Kiki.WebSite
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Kiki &mdash; Система администрирования &mdash; @ViewBag.Title</title>
-    @Styles.Render("~/Content/css/bootstrap.min.css", "~/Content/css/bootstrap-select.min.css", "~/Content/css/jquery-ui.min.css", "~/Content/css/jquery-ui.structure.min.css", "~/Content/css/Admin.css")
+    @Styles.Render("~/Content/css/bootstrap.min.css", "~/Content/css/bootstrap-select.min.css", "~/Content/css/jquery-ui.min.css", "~/Content/css/jquery-ui.structure.min.css", "~/Content/css/Admin.css","~/Content/css/jquery-ui.css?v=" + SiteSettings.Version)
 </head>
 <body>
     
@@ -25,16 +26,9 @@
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
-
     @Scripts.Render("~/Scripts/bootstrap.min.js", "~/Scripts/bootstrap-select.js")
-
+    @Scripts.Render("~/Scripts/jquery-ui.js?v=" + SiteSettings.Version)
     @RenderSection("scripts", required: false)
-
-    <script type="text/javascript">
-        $(function () {
-            $('.selectpicker').selectpicker();
-        })
-    </script>
 
 </body>
 </html>
