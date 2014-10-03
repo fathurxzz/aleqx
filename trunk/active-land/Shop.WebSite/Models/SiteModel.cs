@@ -32,8 +32,9 @@ namespace Shop.WebSite.Models
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
-            AllProducts = repository.GetActiveProducts();
-            SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale).OrderBy(p=>Guid.NewGuid()).Take(8);
+            //AllProducts = repository.GetActiveProducts();
+            //SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale).OrderBy(p=>Guid.NewGuid()).Take(8);
+            SpecialOffers = repository.GetSpecialOffers(8);
             Contents = repository.GetContents();
             Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
             Articles = repository.GetArticles(true);
