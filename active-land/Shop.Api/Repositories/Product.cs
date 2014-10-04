@@ -44,6 +44,28 @@ namespace Shop.Api.Repositories
             return products;
         }
 
+        public IEnumerable<Product> GetSpecialOffers(int quantity)
+        {
+            var products = _store.Products
+                .Where(p => p.IsActive && (p.IsDiscount || p.IsNew || p.IsTopSale))
+                //.OrderBy(p=>Guid.NewGuid())
+                .Take(quantity)
+                .ToList();
+
+            foreach (var product in products)
+            {
+                product.CurrentLang = LangId;
+                product.Category.CurrentLang = LangId;
+
+                if (product.ProductImages.Any())
+                {
+                    var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
+                    product.ImageSource = pi.ImageSource;
+                }
+            }
+            return products;
+        }
+
         public Product GetProduct(int id)
         {
             var product = _store.Products.SingleOrDefault(p => p.Id == id);

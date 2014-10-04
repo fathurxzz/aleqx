@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using Shop.DataAccess.Entities;
 
 namespace Shop.DataAccess.EntityFramework
