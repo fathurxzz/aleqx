@@ -34,7 +34,7 @@ namespace Shop.Api.Repositories
         }
         public IEnumerable<Product> GetActiveProducts()
         {
-            var products = _store.Products.Where(p=>p.IsActive).ToList();
+            var products = _store.Products.Where(p => p.IsActive).ToList();
             foreach (var product in products)
             {
                 product.CurrentLang = LangId;
@@ -190,7 +190,7 @@ namespace Shop.Api.Repositories
 
             string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " "));
 
-            product.SearchCriteria = searchCriteria;
+            product.SearchCriteria = searchCriteria + " " + product.Name;
             _store.SaveChanges();
             return product.Id;
         }
@@ -216,7 +216,7 @@ namespace Shop.Api.Repositories
 
             CreateOrChangeEntityLanguage(cache);
             string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " "));
-            product.SearchCriteria = searchCriteria;
+            product.SearchCriteria = searchCriteria + " " + product.Name;
             _store.SaveChanges();
         }
 
