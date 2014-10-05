@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/05/2014 11:27:32
+-- Date Created: 10/05/2014 13:17:36
 -- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -90,7 +90,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `OrderItem`;
     DROP TABLE IF EXISTS `QuickAdvice`;
     DROP TABLE IF EXISTS `QuickAdviceLang`;
-    DROP TABLE IF EXISTS `ShopSettings`;
+    DROP TABLE IF EXISTS `ShopSetting`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
@@ -147,7 +147,8 @@ CREATE TABLE `Product`(
 	`IsTopSale` bool NOT NULL, 
 	`Price` decimal( 10, 2 )  NOT NULL, 
 	`OldPrice` decimal( 10, 2 )  NOT NULL, 
-	`IsActive` bool NOT NULL);
+	`IsActive` bool NOT NULL, 
+	`SearchCriteria` varchar (1000) NOT NULL);
 
 ALTER TABLE `Product` ADD PRIMARY KEY (Id);
 

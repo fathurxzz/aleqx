@@ -40,6 +40,11 @@ namespace Shop.WebSite.Controllers
             }
 
 
+            if (WebSession.ShopSettings == null)
+            {
+                WebSession.ShopSettings = _repository.GetShopSettings().ToList();
+            }
+
             if (requestContext.RouteData.Values["lang"] != null && requestContext.RouteData.Values["lang"] as string != "null")
             {
                 CurrentLangCode = requestContext.RouteData.Values["lang"] as string;

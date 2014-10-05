@@ -1,13 +1,15 @@
 ﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers
 @{
-    int pageSize = SiteSettings.ProductsPageSize;
+    
+    int pageSize = int.Parse(WebSession.ShopSettings.First(ss => ss.Key == "ProductsPageSize").Value);
     int totalCount = (int)ViewBag.ProductTotalCount;
     int pageCount = totalCount / pageSize;
     int page = (int)ViewBag.Page;
     pageCount += ((totalCount % pageSize) > 0) ? 1 : 0;
     
 }
-@if (totalCount > SiteSettings.ProductsPageSize)
+@if (totalCount > pageSize)
 {
     <div id="pager">
         @for (int i = 0; i < pageCount; i++)

@@ -358,6 +358,7 @@
     <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\AdminPaging.cshtml" />
     <Content Include="Areas\Admin\Views\ShopSetting\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopSetting\Edit.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>

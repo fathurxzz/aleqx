@@ -18,7 +18,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             // Properties
             this.Property(t => t.Key)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(200);
 
             this.Property(t => t.Value)
                 .HasMaxLength(200);

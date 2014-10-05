@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Razor.Text;
+using Shop.Api.Repositories;
+using Shop.DataAccess;
+using Shop.DataAccess.EntityFramework;
+using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers.Graphics;
 
 namespace Shop.WebSite
@@ -48,7 +52,7 @@ namespace Shop.WebSite
 
         public static string Version
         {
-            get { return "0.0.11"; }
+            get { return "0.0.12"; }
         }
 
         public static string MailTo
@@ -56,7 +60,7 @@ namespace Shop.WebSite
             get { return "mailto:miller.kak.miller@gmail.com"; }
         }
 
-        public static int AdminProductsPageSize = 20;
-        public static int ProductsPageSize = 15;
+        //public static int AdminProductsPageSize = 20;
+        //public static int ProductsPageSize = 15;
     }
 }
