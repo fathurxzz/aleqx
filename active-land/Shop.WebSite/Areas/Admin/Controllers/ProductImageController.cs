@@ -67,6 +67,23 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return RedirectToAction("Index", new {id = productId});
         }
 
+        public ActionResult SetDefault(int id, int productId)
+        {
+            _repository.LangId = CurrentLangId;
+            var product = _repository.GetProduct(productId);
+            //var productImage = _repository.GetProductImage(id);
+            foreach (var image in product.ProductImages)
+            {
+                image.IsDefault = false;
+            }
+            var productImage = product.ProductImages.First(p => p.Id == id);
+            productImage.IsDefault = true;
+            product.ImageSource = productImage.ImageSource;
+            _repository.SaveProduct(product);
+            //_repository.SaveProductImage(productImage);
+            return RedirectToAction("Index", new {id = productId});
+        }
+
         public ActionResult Delete(int id, int productId)
         {
             _repository.DeleteProductImage(id, ImageHelper.DeleteImage);

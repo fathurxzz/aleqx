@@ -36,7 +36,7 @@ namespace Shop.WebSite.Models
 
             if (FilterArray.Any())
             {
-
+                SourceProducts = SourceProducts.ToList();
                 foreach (var product in from product in SourceProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
                 {
                     if (!Products.Contains(product))

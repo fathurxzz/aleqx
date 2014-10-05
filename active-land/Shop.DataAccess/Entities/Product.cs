@@ -18,6 +18,7 @@ namespace Shop.DataAccess.Entities
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string SearchCriteria { get; set; }
+        public string SearchCriteriaAttributes { get; set; }
         public bool IsNew { get; set; }
         public bool IsDiscount { get; set; }
         public bool IsTopSale { get; set; }

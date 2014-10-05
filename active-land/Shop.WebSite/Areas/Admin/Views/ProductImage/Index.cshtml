@@ -19,9 +19,10 @@
 
     @foreach (var item in Model)
     {
-        <div class="adminProductImage">
+        <div class="adminProductImage @(item.IsDefault?"defaultImage":"")">
             <div>
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id, productId = item.ProductId }, new { onclick = "return confirm('Удалить изображение?')" })
+                @Html.ActionLink("Установить главным", "SetDefault", new { id = item.Id, productId = item.ProductId }, new { onclick = "return confirm('Установить это изображение главным для продукта?')" })
             </div>
             @Html.Raw(Html.CachedImage("~/Content/Images/", item.ImageSource, SiteSettings.GetThumbnail("adminProductPreview")))
         </div>

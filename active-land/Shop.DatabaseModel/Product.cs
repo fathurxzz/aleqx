@@ -32,6 +32,7 @@ namespace Shop.DatabaseModel
         public decimal OldPrice { get; set; }
         public bool IsActive { get; set; }
         public string SearchCriteria { get; set; }
+        public string SearchCriteriaAttributes { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }

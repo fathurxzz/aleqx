@@ -64,6 +64,8 @@ namespace Shop.DataAccess.Repositories
         // ProductImages
         ProductImage GetProductImage(int id);
         void DeleteProductImage(int id, Action<String> deleteImage);
+        void SaveProductImage(ProductImage productImage);
+
 
         // Articles
         IEnumerable<Article> GetActiveArticles();

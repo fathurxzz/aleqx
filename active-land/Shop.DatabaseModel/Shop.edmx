@@ -237,6 +237,7 @@
     <Property Name="OldPrice" Type="decimal" Nullable="false" />
     <Property Name="IsActive" Type="bool" Nullable="false" />
     <Property Name="SearchCriteria" Type="varchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SearchCriteriaAttributes" Type="varchar" Nullable="false" MaxLength="1000" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -1206,6 +1207,7 @@
           <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.ProductAttributeValueProduct" FromRole="Product" ToRole="ProductAttributeValue" />
           <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductProductAttributeStaticValue" FromRole="Product" ToRole="ProductAttributeStaticValue" />
           <Property Type="String" Name="SearchCriteria" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="SearchCriteriaAttributes" Nullable="false" MaxLength="1000" />
         </EntityType>
         <EntityType Name="ProductAttribute">
           <Key>
@@ -1974,6 +1976,7 @@
           <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="SearchCriteria" ColumnName="SearchCriteria" />
+          <ScalarProperty Name="SearchCriteriaAttributes" ColumnName="SearchCriteriaAttributes" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
