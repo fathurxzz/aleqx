@@ -65,6 +65,7 @@
     <Compile Include="Repositories\ProductImage.cs" />
     <Compile Include="Repositories\QuickAdvice.cs" />
     <Compile Include="Repositories\ShopRepository.cs" />
+    <Compile Include="Repositories\ShopSetting.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shop.DataAccess\Shop.DataAccess.csproj">

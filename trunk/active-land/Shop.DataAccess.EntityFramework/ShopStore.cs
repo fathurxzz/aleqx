@@ -142,6 +142,10 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.QuickAdviceLangs; }
         }
 
+        public IDbSet<ShopSetting> ShopSettings {
+            get { return _context.ShopSettings; }
+        }
+
 
         public int SaveChanges()
         {

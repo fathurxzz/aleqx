@@ -34,6 +34,7 @@
     <EntitySet Name="OrderItem" EntityType="Shop.Store.OrderItem" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuickAdvice" EntityType="Shop.Store.QuickAdvice" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuickAdviceLang" EntityType="Shop.Store.QuickAdviceLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ShopSetting" EntityType="Shop.Store.ShopSetting" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LanguageCategoryLang" Association="Shop.Store.LanguageCategoryLang">
@@ -473,6 +474,15 @@
     <Property Name="LanguageId" Type="int" Nullable="false" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
     <Property Name="Text" Type="varchar" Nullable="false" MaxLength="10000" />
+  </EntityType>
+  <EntityType Name="ShopSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Value" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -1123,6 +1133,7 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
           </AssociationSet>
+          <EntitySet Name="ShopSetting" EntityType="Shop.ShopSetting" />
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -1897,6 +1908,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ShopSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Key" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Value" MaxLength="200" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2213,6 +2233,16 @@
           <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopSetting">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ShopSetting)">
+        <MappingFragment StoreEntitySet="ShopSetting">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

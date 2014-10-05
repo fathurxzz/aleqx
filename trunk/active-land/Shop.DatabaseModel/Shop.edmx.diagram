@@ -75,6 +75,7 @@
         <EntityTypeShape EntityType="Shop.QuickAdviceLang" Width="1.75" PointX="5.75" PointY="14.875" />
         <AssociationConnector Association="Shop.QuickAdviceQuickAdviceLang" />
         <AssociationConnector Association="Shop.LanguageQuickAdviceLang" />
+        <EntityTypeShape EntityType="Shop.ShopSetting" Width="1.5" PointX="1" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

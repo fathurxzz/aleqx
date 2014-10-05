@@ -12,7 +12,7 @@ namespace Shop.WebSite.Models
         public Order Order { get; set; }
         public OrderComplete OrderComplete { get; set; }
 
-        public CartModel(IShopRepository repository, string contentName) : base(repository, contentName)
+        public CartModel(IShopRepository repository, int langId, string contentName) : base(repository,langId, contentName)
         {
             
         }

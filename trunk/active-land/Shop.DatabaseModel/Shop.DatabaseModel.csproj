@@ -146,6 +146,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Shop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ShopSetting.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Shop.edmx">
