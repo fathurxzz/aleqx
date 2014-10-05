@@ -31,5 +31,10 @@ namespace Shop.Api.Repositories
             _store.ProductImages.Remove(productImage);
             _store.SaveChanges();
         }
+
+        public void SaveProductImage(ProductImage productImage)
+        {
+            _store.SaveChanges();
+        }
     }
 }

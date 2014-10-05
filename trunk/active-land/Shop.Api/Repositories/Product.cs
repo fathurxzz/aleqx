@@ -188,9 +188,9 @@ namespace Shop.Api.Repositories
 
             CreateOrChangeEntityLanguage(product);
 
-            string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " "));
+            string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " ")) + " " + product.Name;
 
-            product.SearchCriteria = searchCriteria + " " + product.Name;
+            product.SearchCriteria = searchCriteria;
             _store.SaveChanges();
             return product.Id;
         }
@@ -215,8 +215,8 @@ namespace Shop.Api.Repositories
             //cache.SeoText = category.SeoText;
 
             CreateOrChangeEntityLanguage(cache);
-            string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " "));
-            product.SearchCriteria = searchCriteria + " " + product.Name;
+            string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " ")) + " " + product.Name;
+            product.SearchCriteria = searchCriteria;
             _store.SaveChanges();
         }
 

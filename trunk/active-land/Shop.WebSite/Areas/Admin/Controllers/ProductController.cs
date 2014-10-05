@@ -268,6 +268,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             PostData staticAttrData = form.ProcessPostData("tb", "productId");
 
             product.ProductAttributeValues.Clear();
+            string searchCriteriaAttributes = "";
 
             foreach (var kvp in attrData)
             {
@@ -277,6 +278,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 if (attributeValue)
                 {
                     var productAttributeValue = _repository.GetProductAttributeValue(attributeValueId);
+                    searchCriteriaAttributes += attributeValueId + ";";
                     product.ProductAttributeValues.Add(productAttributeValue);
                 }
             }
@@ -321,6 +323,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     }
                 }
             }
+
+            product.SearchCriteriaAttributes = searchCriteriaAttributes;
 
             _repository.SaveProduct(product);
 
