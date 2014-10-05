@@ -57,7 +57,7 @@ namespace Shop.WebSite.Models
 
             products = Products.OrderBy(p => p.Title).ThenBy(p=>p.Price).AsQueryable();
 
-            products = ApplyPaging(products, page, SiteSettings.ProductsPageSize);
+            products = ApplyPaging(products, page, int.Parse(WebSession.ShopSettings.First(ss=>ss.Key=="ProductsPageSize").Value));
 
             Products = products.ToList();
             foreach (var product in Products)

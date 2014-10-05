@@ -41,5 +41,7 @@ namespace Shop.WebSite.Helpers
         }
 
         public static IEnumerable<Language> Languages { get; set; }
+
+        public static IEnumerable<ShopSetting> ShopSettings { get; set; }
     }
 }

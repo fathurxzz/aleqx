@@ -32,15 +32,16 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return products.Skip(currentPage * pageSize).Take(pageSize);
         }
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string q)
         {
             _repository.LangId = CurrentLangId;
-            var orderedProducts = _repository.GetAllProducts().OrderBy(p => p.CategoryId).ThenBy(p=>p.Title).AsQueryable();
-
-            //var randomProducts = orderedProducts.OrderBy(p => Guid.NewGuid()).Take(4).ToList();
+            q = q != null ? q.ToLower() : null;
+            var orderedProducts = _repository.GetAllProducts()
+                .Where(p => string.IsNullOrEmpty(q) || p.SearchCriteria.ToLower().Contains(q))
+                .OrderBy(p => p.CategoryId).ThenBy(p => p.Title).AsQueryable();
 
             int productsCount = orderedProducts.Count();
-            orderedProducts = ApplyPaging(orderedProducts, page, SiteSettings.AdminProductsPageSize);
+            orderedProducts = ApplyPaging(orderedProducts, page, int.Parse(WebSession.ShopSettings.First(ss => ss.Key == "AdminProductsPageSize").Value));
             var products = orderedProducts.ToList();
             foreach (var product in products)
             {
@@ -55,6 +56,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
             ViewBag.ProductTotalCount = productsCount;
             ViewBag.Page = Page;
+            ViewBag.Q = q;
 
             return View(products);
         }

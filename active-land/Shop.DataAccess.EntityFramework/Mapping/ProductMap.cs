@@ -15,11 +15,16 @@ namespace Shop.DataAccess.EntityFramework.Mapping
                 .IsRequired()
                 .HasMaxLength(200);
 
+            this.Property(t => t.SearchCriteria)
+              .IsRequired()
+              .HasMaxLength(1000);
+
             // Table & Column Mappings
             this.ToTable("Product", "gbua_active_dev");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.CategoryId).HasColumnName("CategoryId");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.SearchCriteria).HasColumnName("SearchCriteria");
             this.Property(t => t.IsNew).HasColumnName("IsNew");
             this.Property(t => t.IsDiscount).HasColumnName("IsDiscount");
             this.Property(t => t.IsTopSale).HasColumnName("IsTopSale");

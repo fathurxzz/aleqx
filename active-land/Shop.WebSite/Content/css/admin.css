@@ -98,3 +98,8 @@
         height: inherit;
         padding:5px 8px;
     }
+
+
+.navbar-form .form-control.search {
+    width: 300px !important;
+}
