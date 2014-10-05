@@ -26,7 +26,7 @@ namespace Shop.WebSite.Controllers
 
             decimal totalAmount = WebSession.OrderItems.Sum(oi => oi.Value.Price * oi.Value.Quantity);
             ViewBag.TotalAmount = totalAmount;
-            var model = new SiteModel(_repository, null) { CurrentLangCode = CurrentLangCode };
+            var model = new SiteModel(_repository, CurrentLangId, null) { CurrentLangCode = CurrentLangCode };
             this.SetSeoContent(model);
             return View(model);
         }
@@ -85,7 +85,7 @@ namespace Shop.WebSite.Controllers
 
         public ActionResult CheckOut()
         {
-            var model = new SiteModel(_repository, null);
+            var model = new SiteModel(_repository, CurrentLangId, null);
             this.SetSeoContent(model);
             return View(model);
         }
@@ -130,7 +130,7 @@ namespace Shop.WebSite.Controllers
 
         public ActionResult CheckOutConfirm()
         {
-            var model = new CartModel(_repository, null)
+            var model = new CartModel(_repository,CurrentLangId, null)
             {
                 Order = WebSession.Order
             };
@@ -140,7 +140,7 @@ namespace Shop.WebSite.Controllers
 
         public ActionResult ThankYou()
         {
-            var model = new CartModel(_repository, null);
+            var model = new CartModel(_repository, CurrentLangId, null);
             try
             {
                 

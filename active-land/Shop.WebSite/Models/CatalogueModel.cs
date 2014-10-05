@@ -12,6 +12,7 @@ namespace Shop.WebSite.Models
     public class CatalogueModel : SiteModel
     {
         public List<Product> Products { get; set; }
+        public IEnumerable<Product> SourceProducts { get; set; }
         public IEnumerable<ProductAttribute> ProductAttributes { get; set; }
         public Product Product { get; set; }
         public Article Article { get; set; }
@@ -22,8 +23,8 @@ namespace Shop.WebSite.Models
         public int Page { get; set; }
 
 
-        public CatalogueModel(IShopRepository repository, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null)
-            : base(repository, null)
+        public CatalogueModel(IShopRepository repository, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null)
+            : base(repository, langId, null)
         {
             ProductAttributes = new List<ProductAttribute>();
             CurrentFilter = filter;
@@ -31,12 +32,12 @@ namespace Shop.WebSite.Models
 
             Products = new List<Product>();
 
-            AllProducts = AllProducts.Where(p => p.Category.Name == categoryName);
+            SourceProducts = repository.GetProductsByCategory(categoryName);
 
             if (FilterArray.Any())
             {
 
-                foreach (var product in from product in AllProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
+                foreach (var product in from product in SourceProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
                 {
                     if (!Products.Contains(product))
                         Products.Add(product);
@@ -44,7 +45,7 @@ namespace Shop.WebSite.Models
             }
             else
             {
-                foreach (var product in AllProducts)
+                foreach (var product in SourceProducts)
                 {
                     Products.Add(product);
                 }
@@ -59,6 +60,16 @@ namespace Shop.WebSite.Models
             products = ApplyPaging(products, page, SiteSettings.ProductsPageSize);
 
             Products = products.ToList();
+            foreach (var product in Products)
+            {
+                product.CurrentLang = langId;
+                product.Category.CurrentLang = langId;
+                if (product.ProductImages.Any())
+                {
+                    var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
+                    product.ImageSource = pi.ImageSource;
+                }
+            }
 
 
             //if (!string.IsNullOrEmpty(categoryName))

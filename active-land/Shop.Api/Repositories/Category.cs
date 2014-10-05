@@ -16,16 +16,6 @@ namespace Shop.Api.Repositories
             foreach (var category in categories)
             {
                 category.CurrentLang = LangId;
-
-                //foreach (var productAttribute in category.ProductAttributes)
-                //{
-                //    productAttribute.CurrentLang = LangId;
-
-                //    foreach (var productAttributeValue in productAttribute.ProductAttributeValues)
-                //    {
-                //        productAttributeValue.CurrentLang = LangId;
-                //    }
-                //}
             }
             return ApplySorting(categories);
         }

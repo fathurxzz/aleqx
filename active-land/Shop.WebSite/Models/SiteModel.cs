@@ -19,27 +19,71 @@ namespace Shop.WebSite.Models
         public IEnumerable<Category> Categories { get; set; }
         public IEnumerable<MenuItem> MenuItems { get; set; }
         public IEnumerable<Product> SpecialOffers { get; set; }
-        public IEnumerable<Product> AllProducts { get; set; }
         public IEnumerable<DataAccess.Entities.Content> Contents { get; set; }
         public Shop.DataAccess.Entities.Content Content { get; set; }
+        public IEnumerable<Article> LastArticles { get; set; }
         public IEnumerable<Article> Articles { get; set; }
         public string CurrentLangCode { get; set; }
         public IEnumerable<QuickAdvice> QuickAdvices { get; set; }
         public string ErrorMessage { get; set; }
-        //public DateTime QueryTime { get; set; }
 
-        public SiteModel(IShopRepository repository, string contentName )
+        public SiteModel(IShopRepository repository, int langId, string contentName )
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
-            //AllProducts = repository.GetActiveProducts();
-            //SpecialOffers = AllProducts.Where(p => p.IsDiscount || p.IsNew || p.IsTopSale).OrderBy(p=>Guid.NewGuid()).Take(8);
-            SpecialOffers = repository.GetSpecialOffers(8);
+            SpecialOffers = GetSpecialOffers(repository, langId, 8);
             Contents = repository.GetContents();
             Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
-            Articles = repository.GetArticles(true);
+
+            if (Content.ContentType == 2)
+            {
+                Articles = GetAllArticles(repository, langId);
+            }
+
+            LastArticles = GetLastArticles(repository, langId, 2);
             QuickAdvices = repository.GetQuickAdvices(true);
         }
-    
+
+        private static IEnumerable<Product> GetSpecialOffers(IShopRepository repository, int langId, int quantity)
+        {
+            var orderedProducts = repository.GetAllProducts().Where(p => p.IsDiscount || p.IsNew || p.IsTopSale);
+            var randomProducts = orderedProducts.OrderBy(p => Guid.NewGuid()).Take(quantity).ToList();
+            foreach (var product in randomProducts)
+            {
+                product.CurrentLang = langId;
+                product.Category.CurrentLang = langId;
+                if (product.ProductImages.Any())
+                {
+                    var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
+                    product.ImageSource = pi.ImageSource;
+                }
+            }
+            return randomProducts;
+        }
+
+        private static IEnumerable<Article> GetLastArticles(IShopRepository repository, int langId, int quantity)
+        {
+            var articles = repository.GetActiveArticles().OrderByDescending(a => a.Date).Take(quantity).ToList();
+            return LoadArticles(articles, langId);
+        }
+
+        private static IEnumerable<Article> GetAllArticles(IShopRepository repository, int langId)
+        {
+            var articles = repository.GetActiveArticles().OrderByDescending(a => a.Date).ToList();
+            return LoadArticles(articles, langId);
+        }
+
+        private static IEnumerable<Article> LoadArticles(IEnumerable<Article> articles, int langId)
+        {
+            foreach (var article in articles)
+            {
+                article.CurrentLang = langId;
+                foreach (var articleItem in article.ArticleItems)
+                {
+                    articleItem.CurrentLang = langId;
+                }
+            }
+            return articles;
+        }
     }
 }

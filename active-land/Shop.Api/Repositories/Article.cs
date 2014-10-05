@@ -10,6 +10,12 @@ namespace Shop.Api.Repositories
 {
     public partial class ShopRepository : IShopRepository
     {
+        public IEnumerable<Article> GetActiveArticles()
+        {
+            var articles = _store.Articles.Where(a => a.IsActive);
+            return articles;
+        }
+
         public IEnumerable<Article> GetArticles(bool showOnlyActive = false)
         {
             var articles = _store.Articles.Where(a => a.IsActive || !showOnlyActive).ToList();

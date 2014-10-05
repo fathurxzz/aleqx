@@ -49,6 +49,8 @@ namespace Shop.DataAccess
         IDbSet<QuickAdvice> QuickAdvices { get; }
         IDbSet<QuickAdviceLang> QuickAdviceLangs { get; }
 
+        IDbSet<ShopSetting> ShopSettings { get; }
+
         int SaveChanges();
     }
 }

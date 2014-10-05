@@ -73,6 +73,15 @@
         <li>@Html.ActionLink("Заказы", "Index", "Order", new { area = "Admin" }, null)</li>
     }
     
+    @if (Model == "ShopSettings")
+    {
+        <li class="active">@Html.ActionLink("Настройки", "Index", "ShopSetting", new { area = "Admin" }, null)</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Настройки", "Index", "ShopSetting", new { area = "Admin" }, null)</li>
+    }
+    
     
 </ul>
     </div>

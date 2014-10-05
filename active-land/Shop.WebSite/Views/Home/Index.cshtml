@@ -136,13 +136,13 @@
 
 
 
-@if (Model.Content.ContentType != 2 && Model.Articles.Any())
+@if (Model.Content.ContentType != 2 && Model.LastArticles.Any())
 {
     @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = "Новости и события" } })
     <div id="articles">
         @{
     var i = 0;
-    foreach (var article in Model.Articles.OrderByDescending(a => a.Date).Take(2))
+    foreach (var article in Model.LastArticles)
     {
         i++;
             @Html.Partial("Article", article)

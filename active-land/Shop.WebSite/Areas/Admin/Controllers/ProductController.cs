@@ -14,16 +14,48 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 {
     public class ProductController : AdminController
     {
+        public int Page { get; set; }
 
         public ProductController(IShopRepository repository)
             : base(repository)
         {
         }
 
-        public ActionResult Index()
+        IQueryable<Product> ApplyPaging(IQueryable<Product> products, int? page, int pageSize)
+        {
+            if (products == null)
+                return null;
+            int currentPage = page ?? 0;
+            Page = currentPage;
+            if (page < 0)
+                return products;
+            return products.Skip(currentPage * pageSize).Take(pageSize);
+        }
+
+        public ActionResult Index(int? page)
         {
             _repository.LangId = CurrentLangId;
-            var products = _repository.GetProducts();
+            var orderedProducts = _repository.GetAllProducts().OrderBy(p => p.CategoryId).ThenBy(p=>p.Title).AsQueryable();
+
+            //var randomProducts = orderedProducts.OrderBy(p => Guid.NewGuid()).Take(4).ToList();
+
+            int productsCount = orderedProducts.Count();
+            orderedProducts = ApplyPaging(orderedProducts, page, SiteSettings.AdminProductsPageSize);
+            var products = orderedProducts.ToList();
+            foreach (var product in products)
+            {
+                product.CurrentLang = CurrentLangId;
+                product.Category.CurrentLang = CurrentLangId;
+                if (product.ProductImages.Any())
+                {
+                    var pi = product.ProductImages.FirstOrDefault(c => c.IsDefault) ?? product.ProductImages.First();
+                    product.ImageSource = pi.ImageSource;
+                }
+            }
+
+            ViewBag.ProductTotalCount = productsCount;
+            ViewBag.Page = Page;
+
             return View(products);
         }
 

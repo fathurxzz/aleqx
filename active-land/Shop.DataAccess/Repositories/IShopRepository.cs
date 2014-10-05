@@ -52,10 +52,9 @@ namespace Shop.DataAccess.Repositories
         void SaveProductAttributeValueTag(ProductAttributeValueTag productAttributeValueTag);
 
         // Products
-        IEnumerable<Product> GetProducts();
+        IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetActiveProducts();
-        IEnumerable<Product> GetSpecialOffers(int quantity);
-
+        IEnumerable<Product> GetProductsByCategory(string categoryName);
         Product GetProduct(int id);
         Product GetProduct(string name);
         void DeleteProduct(int id, Action<String> deleteImages);
@@ -67,6 +66,7 @@ namespace Shop.DataAccess.Repositories
         void DeleteProductImage(int id, Action<String> deleteImage);
 
         // Articles
+        IEnumerable<Article> GetActiveArticles();
         IEnumerable<Article> GetArticles(bool showOnlyActive=false);
         Article GetArticle(int id);
         Article GetArticle(string name);
@@ -110,10 +110,19 @@ namespace Shop.DataAccess.Repositories
         void DeleteOrder(int id);
         void SaveOrder(Order order);
 
+        // QuickAdvice
         int AddQuickAdvice(QuickAdvice quickAdvice);
         IEnumerable<QuickAdvice> GetQuickAdvices(bool showOnlyActive = false);
         QuickAdvice GetQuickAdvice(int id);
         void DeleteQuickAdvice(int id);
         void SaveQuickAdvice(QuickAdvice quickAdvice);
+
+
+        // ShopSettings
+        void SaveShopSettings(ShopSetting shopSettings);
+        ShopSetting GetShopSetting(string key);
+        ShopSetting GetShopSetting(int id);
+        IEnumerable<ShopSetting> GetShopSettings();
+
     }
 }

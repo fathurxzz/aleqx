@@ -173,6 +173,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuickAdviceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShopSettingController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\MenuItem.cs" />
     <Compile Include="Helpers\MVCHelper.cs" />
+    <Compile Include="Helpers\ProductHelper.cs" />
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\Graphics\ThumbnailPicture.cs" />
     <Compile Include="Helpers\WebExtensions.cs" />
@@ -354,6 +356,8 @@
     <Content Include="Areas\Admin\Views\QuickAdvice\Create.cshtml" />
     <Content Include="Areas\Admin\Views\QuickAdvice\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\AdminPaging.cshtml" />
+    <Content Include="Areas\Admin\Views\ShopSetting\Index.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
