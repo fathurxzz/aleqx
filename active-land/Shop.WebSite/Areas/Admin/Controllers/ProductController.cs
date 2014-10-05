@@ -54,6 +54,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 }
             }
 
+            //foreach (var product in products)
+            //{
+            //    _repository.SaveProduct(product);
+            //}
+
             ViewBag.ProductTotalCount = productsCount;
             ViewBag.Page = Page;
             ViewBag.Q = q;
