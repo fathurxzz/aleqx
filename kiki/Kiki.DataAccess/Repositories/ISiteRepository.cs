@@ -40,7 +40,6 @@ namespace Kiki.DataAccess.Repositories
         // Sales
         IEnumerable<Sale> GetSales();
         Sale GetSale(int id);
-        Sale GetSale(string name);
         void DeleteSale(int id, Action<string> deleteImages);
         int AddSale(Sale sale);
         void SaveSale(Sale sale);

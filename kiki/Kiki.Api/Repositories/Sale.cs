@@ -25,16 +25,6 @@ namespace Kiki.Api.Repositories
             return article;
         }
 
-        public Sale GetSale(string name)
-        {
-            var article = _store.Sales.SingleOrDefault(a => a.Name == name);
-            if (article == null)
-            {
-                throw new Exception(string.Format("Sale with name={0} not found", name));
-            }
-            return article;
-        }
-
         public void DeleteSale(int id, Action<string> deleteImages)
         {
             var article = _store.Sales.SingleOrDefault(a => a.Id == id);
@@ -50,11 +40,6 @@ namespace Kiki.Api.Repositories
 
         public int AddSale(Sale sale)
         {
-            if (_store.Sales.Any(c => c.Name == sale.Name))
-            {
-                throw new Exception(string.Format("Sale {0} already exists", sale.Name));
-            }
-
             _store.Sales.Add(sale);
             _store.SaveChanges();
             return sale.Id;
