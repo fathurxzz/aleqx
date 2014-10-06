@@ -56,6 +56,11 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
             //foreach (var product in products)
             //{
+            //    foreach (var pav in product.ProductAttributeValues)
+            //    {
+            //        product.SearchCriteriaAttributes += pav.ProductAttributeId + "-" + pav.Id + ";";
+            //    }
+
             //    _repository.SaveProduct(product);
             //}
 

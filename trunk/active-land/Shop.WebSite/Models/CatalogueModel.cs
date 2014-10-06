@@ -34,8 +34,11 @@ namespace Shop.WebSite.Models
 
             SourceProducts = repository.GetProductsByCategory(categoryName);
 
+            
+
             if (FilterArray.Any())
             {
+
                 //foreach (var product in SourceProducts)
                 //{
                 //    var criteria = product.SearchCriteriaAttributes.Split(new[] {";"}, StringSplitOptions.RemoveEmptyEntries);
@@ -44,6 +47,64 @@ namespace Shop.WebSite.Models
                 //        Products.Add(product);
                 //    }
                 //}
+
+
+
+
+
+
+
+
+                //SourceProducts = SourceProducts.Where(p =>
+                //            p.Name == "fuji-crosstown-26-11-ls-2013" || 
+                //            p.Name == "fuji-nevada-19-2013" ||
+                //            p.Name == "giant-escape-city-w-2012");
+
+                //foreach (var product in SourceProducts)
+                //{
+                //    var dict = new Dictionary<string, List<string>>();
+                //    var criteriaGroups = product.SearchCriteriaAttributes.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+                //    foreach (var s in criteriaGroups)
+                //    {
+                //        var criteriaGroupItem = s.Split(new[] {"-"}, StringSplitOptions.RemoveEmptyEntries);
+                //        var productAttributeId = criteriaGroupItem[0];
+                //        var productAttributeValueId = criteriaGroupItem[1];
+                //        if (dict.ContainsKey(productAttributeId))
+                //        {
+                //            var tmp = dict[productAttributeId];
+                //            tmp.Add(productAttributeValueId);
+                //            dict[productAttributeId] = tmp;
+                //        }
+                //        else
+                //        {
+                //            dict.Add(productAttributeId, new List<string> {productAttributeValueId});
+                //        }
+                //    }
+
+                //    var productIsMatch = false;
+
+                //    foreach (var groupItem in dict)
+                //    {
+                //        foreach (var filterId in FilterArray)
+                //        {
+                //            productIsMatch = groupItem.Value.Contains(filterId);
+                //            if(productIsMatch)
+                //                break;
+                //        }
+                //    }
+                //    if (productIsMatch)
+                //    {
+                //        Products.Add(product);
+                //    }
+
+
+
+                //}
+
+
+
+
+
 
                 SourceProducts = SourceProducts.ToList();
                 foreach (var product in from product in SourceProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
