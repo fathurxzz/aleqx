@@ -36,6 +36,15 @@ namespace Shop.WebSite.Models
 
             if (FilterArray.Any())
             {
+                //foreach (var product in SourceProducts)
+                //{
+                //    var criteria = product.SearchCriteriaAttributes.Split(new[] {";"}, StringSplitOptions.RemoveEmptyEntries);
+                //    if (FilterArray.Any(criteria.Contains))
+                //    {
+                //        Products.Add(product);
+                //    }
+                //}
+
                 SourceProducts = SourceProducts.ToList();
                 foreach (var product in from product in SourceProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
                 {

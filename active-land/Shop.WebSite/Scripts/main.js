@@ -60,7 +60,7 @@ $(function () {
             if (location.href.split("/").length == 6) {
                 location.href = location.href+ "/" + filterValue;
             } else {
-                location.href =  filterValue;
+                location.href = filterValue;
             }
         }
     });
