@@ -49,13 +49,6 @@ namespace Kiki.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult SaleDetails(string id, string contentName)
-        {
-            var model = new SaleModel(_repository, contentName, id, CurrentLangCode);
-
-            return View(model);
-        }
-
         public ActionResult ServiceDetails(string id, string contentName, string q)
         {
             var model = new ServiceModel(_repository, contentName, id, CurrentLangCode, q);

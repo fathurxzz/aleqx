@@ -33,16 +33,7 @@ namespace Kiki.DataAccess.Entities
         [Display(Name = "Описание (ENG)")]
         public string DescriptionEng { get; set; }
 
-        [Display(Name = "Идентификатор")]
-        public string Name { get; set; }
-
         [Display(Name = "Изображение")]
         public string ImageSource { get; set; }
-
-        [Display(Name = "Текст")]
-        public string Text { get; set; }
-
-        [Display(Name = "Текст (ENG)")]
-        public string TextEng { get; set; }
     }
 }

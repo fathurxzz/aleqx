@@ -45,8 +45,6 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                     TitleEng = model.TitleEng,
                     Description = model.Description,
                     DescriptionEng = model.DescriptionEng,
-                    Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text),
-                    TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng)
                 };
 
                 var file = Request.Files[0];
@@ -98,9 +96,6 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 //article.Name = SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(article, new[] { "Title", "TitleEng", "StartDate", "EndDate", "Description", "DescriptionEng" });
 
-                article.Text = model.Text == null ? "" : HttpUtility.HtmlDecode(model.Text);
-                article.TextEng = model.TextEng == null ? "" : HttpUtility.HtmlDecode(model.TextEng);
-
                 var file = Request.Files[0];
                 if (file != null && !string.IsNullOrEmpty(file.FileName))
                 {
@@ -129,12 +124,6 @@ namespace Kiki.WebSite.Areas.Admin.Controllers
                 return View(model);
             }
             return RedirectToAction("Index");
-        }
-
-        public ActionResult Details(int id)
-        {
-            var article = _repository.GetSale(id);
-            return View(article);
         }
 
         public ActionResult Delete(int id)

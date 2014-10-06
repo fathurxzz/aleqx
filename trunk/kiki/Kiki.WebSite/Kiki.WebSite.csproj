@@ -179,7 +179,6 @@
     <Compile Include="Helpers\SiteHelper.cs" />
     <Compile Include="Helpers\WebExtensions1.cs" />
     <Compile Include="Models\ArticleModel.cs" />
-    <Compile Include="Models\SaleModel.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\ServiceModel.cs" />
     <Compile Include="Models\SiteMenuModel.cs" />
@@ -370,7 +369,6 @@
     <Content Include="Areas\Admin\Views\Banner\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Sale\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\GalleryImage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\GalleryImage\Create.cshtml" />
@@ -433,7 +431,6 @@
     <Content Include="Views\Home\Articles.cshtml" />
     <Content Include="Views\Home\ArticleDetails.cshtml" />
     <Content Include="Views\Home\Sales.cshtml" />
-    <Content Include="Views\Home\SaleDetails.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\ServiceDetails.cshtml" />
