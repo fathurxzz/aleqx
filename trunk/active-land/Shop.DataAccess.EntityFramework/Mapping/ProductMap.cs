@@ -17,7 +17,11 @@ namespace Shop.DataAccess.EntityFramework.Mapping
 
             this.Property(t => t.SearchCriteria)
               .IsRequired()
-              .HasMaxLength(1000);
+              .HasMaxLength(2000);
+            
+            this.Property(t => t.SearchCriteriaAttributes)
+              .IsRequired()
+              .HasMaxLength(2000);
 
             // Table & Column Mappings
             this.ToTable("Product", "gbua_active_dev");

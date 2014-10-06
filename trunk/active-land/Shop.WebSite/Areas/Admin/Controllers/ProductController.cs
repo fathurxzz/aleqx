@@ -278,7 +278,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 if (attributeValue)
                 {
                     var productAttributeValue = _repository.GetProductAttributeValue(attributeValueId);
-                    searchCriteriaAttributes += attributeValueId + ";";
+                    searchCriteriaAttributes += productAttributeValue.ProductAttributeId + "-" + attributeValueId + ";";
                     product.ProductAttributeValues.Add(productAttributeValue);
                 }
             }
