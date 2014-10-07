@@ -123,7 +123,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     IsNew = model.IsNew,
                     IsTopSale = model.IsTopSale,
                     OldPrice = model.OldPrice,
-                    Price = model.Price
+                    Price = model.Price,
+                    SearchCriteriaAttributes = ""
                 };
 
                 product.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
@@ -211,6 +212,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 product.OldPrice = decimal.Parse(form["OldPrice"]);
                 product.CategoryId = categoryId;
                 product.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
+                product.SearchCriteriaAttributes = "";
 
 
                 for (int i = 0; i < Request.Files.Count; i++)

@@ -22,95 +22,142 @@ namespace Shop.WebSite.Models
         public Category CurrentCategory { get; set; }
         public int Page { get; set; }
 
+        private IShopRepository _repository { get; set; }
 
-        public CatalogueModel(IShopRepository repository, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null)
-            : base(repository, langId, null)
+        private Dictionary<string, List<string>> GroupFilterString(string categoryName, string filterString)
         {
+            var result = new Dictionary<string, List<string>>();
+            if (!string.IsNullOrEmpty(filterString) && !string.IsNullOrEmpty(categoryName))
+            {
+
+                string[] filterArray = FilterArray = filterString.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
+                
+
+                var attributes = _repository.GetProductAttributes(categoryName);
+                foreach (var attribute in attributes)
+                {
+                    foreach (var value in attribute.ProductAttributeValues)
+                    {
+                        if (filterArray.Contains(value.Id.ToString()))
+                        {
+                            if (result.ContainsKey(attribute.Id.ToString()))
+                            {
+                                var tmp = result[attribute.Id.ToString()];
+                                tmp.Add(value.Id.ToString());
+                                result[attribute.Id.ToString()] = tmp;
+                            }
+                            else
+                            {
+                                result.Add(attribute.Id.ToString(), new List<string> { value.Id.ToString() });
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+
+        private Dictionary<string, List<string>> GroupProductAttributesString(Product product)
+        {
+            var result = new Dictionary<string, List<string>>();
+            var criteriaGroups = product.SearchCriteriaAttributes.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var s in criteriaGroups)
+            {
+                var criteriaGroupItem = s.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries);
+                var productAttributeId = criteriaGroupItem[0];
+                var productAttributeValueId = criteriaGroupItem[1];
+                if (result.ContainsKey(productAttributeId))
+                {
+                    var tmp = result[productAttributeId];
+                    tmp.Add(productAttributeValueId);
+                    result[productAttributeId] = tmp;
+                }
+                else
+                {
+                    result.Add(productAttributeId, new List<string> { productAttributeValueId });
+                }
+            }
+            return result;
+        }
+
+        private bool CompareGroups(List<string> value1, List<string> value2)
+        {
+            foreach (var s1 in value1)
+            {
+                if (value2.Contains(s1))
+                    return true;
+            }
+            return false;
+        }
+
+
+        public CatalogueModel(IShopRepository repository1, int langId, int? page, string categoryName = null, string productName = null, string articleName = null, string filter = null)
+            : base(repository1, langId, null)
+        {
+            _repository = repository1;
+            FilterArray = new string[0];
             ProductAttributes = new List<ProductAttribute>();
             CurrentFilter = filter;
-            FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
+
+
+
+            var filterValueGroups = GroupFilterString(categoryName, filter);
+
+
+
 
             Products = new List<Product>();
 
-            SourceProducts = repository.GetProductsByCategory(categoryName);
+            SourceProducts = _repository.GetProductsByCategory(categoryName);
 
-            
+            //FilterArray = filter != null ? filter.Split(new[] { "-" }, StringSplitOptions.RemoveEmptyEntries) : new string[0];
 
-            if (FilterArray.Any())
+
+            //SourceProducts = SourceProducts.Where(p =>
+            //            p.Name == "fuji-female" ||
+            //            p.Name == "fuji-male" ||
+            //            p.Name == "giant-female" ||
+            //            p.Name == "giant-male"||
+            //            p.Name == "fuji-none"
+            //            );
+
+
+            if (filterValueGroups.Any())
             {
-
-                //foreach (var product in SourceProducts)
-                //{
-                //    var criteria = product.SearchCriteriaAttributes.Split(new[] {";"}, StringSplitOptions.RemoveEmptyEntries);
-                //    if (FilterArray.Any(criteria.Contains))
-                //    {
-                //        Products.Add(product);
-                //    }
-                //}
-
-
-
-
-
-
-
-
-                //SourceProducts = SourceProducts.Where(p =>
-                //            p.Name == "fuji-crosstown-26-11-ls-2013" || 
-                //            p.Name == "fuji-nevada-19-2013" ||
-                //            p.Name == "giant-escape-city-w-2012");
-
-                //foreach (var product in SourceProducts)
-                //{
-                //    var dict = new Dictionary<string, List<string>>();
-                //    var criteriaGroups = product.SearchCriteriaAttributes.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-                //    foreach (var s in criteriaGroups)
-                //    {
-                //        var criteriaGroupItem = s.Split(new[] {"-"}, StringSplitOptions.RemoveEmptyEntries);
-                //        var productAttributeId = criteriaGroupItem[0];
-                //        var productAttributeValueId = criteriaGroupItem[1];
-                //        if (dict.ContainsKey(productAttributeId))
-                //        {
-                //            var tmp = dict[productAttributeId];
-                //            tmp.Add(productAttributeValueId);
-                //            dict[productAttributeId] = tmp;
-                //        }
-                //        else
-                //        {
-                //            dict.Add(productAttributeId, new List<string> {productAttributeValueId});
-                //        }
-                //    }
-
-                //    var productIsMatch = false;
-
-                //    foreach (var groupItem in dict)
-                //    {
-                //        foreach (var filterId in FilterArray)
-                //        {
-                //            productIsMatch = groupItem.Value.Contains(filterId);
-                //            if(productIsMatch)
-                //                break;
-                //        }
-                //    }
-                //    if (productIsMatch)
-                //    {
-                //        Products.Add(product);
-                //    }
-
-
-
-                //}
-
-
-
-
-
-
-                SourceProducts = SourceProducts.ToList();
-                foreach (var product in from product in SourceProducts from pav in product.ProductAttributeValues.Where(pav => FilterArray.Contains(pav.Id.ToString())) select product)
+                foreach (var product in SourceProducts)
                 {
-                    if (!Products.Contains(product))
+                    var productAttributeValueGroups = GroupProductAttributesString(product);
+                    var matchCount = 0;
+                    var mismatchConut = 0;
+
+                    foreach (var filterValueGroup in filterValueGroups)
+                    {
+                        var found = 0;
+                        foreach (var productAttributeValueGroup in productAttributeValueGroups)
+                        {
+                            if (filterValueGroup.Key == productAttributeValueGroup.Key)
+                            {
+                                found++;
+                                if (CompareGroups(productAttributeValueGroup.Value, filterValueGroup.Value))
+                                {
+                                    matchCount++;
+                                    break;
+                                }
+                                mismatchConut++;
+                                break;
+                            }
+                        }
+                        if (found == 0)
+                        {
+                            mismatchConut++;
+                        }
+                    }
+
+                    if (matchCount>0&&mismatchConut==0)
+                    {
                         Products.Add(product);
+                    }
                 }
             }
             else
@@ -125,9 +172,9 @@ namespace Shop.WebSite.Models
 
             IQueryable<Product> products = null;
 
-            products = Products.OrderBy(p => p.Title).ThenBy(p=>p.Price).AsQueryable();
+            products = Products.OrderBy(p => p.Title).ThenBy(p => p.Price).AsQueryable();
 
-            products = ApplyPaging(products, page, int.Parse(WebSession.ShopSettings.First(ss=>ss.Key=="ProductsPageSize").Value));
+            products = ApplyPaging(products, page, int.Parse(WebSession.ShopSettings.First(ss => ss.Key == "ProductsPageSize").Value));
 
             Products = products.ToList();
             foreach (var product in Products)
@@ -151,15 +198,15 @@ namespace Shop.WebSite.Models
             var category = Categories.FirstOrDefault(c => c.Name == categoryName);
             if (category != null)
             {
-                ProductAttributes = repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);
-                CurrentCategory = repository.GetCategory(category.Id);
+                ProductAttributes = _repository.GetProductAttributes(category.Id).Where(pa => pa.IsFilterable);
+                CurrentCategory = _repository.GetCategory(category.Id);
             }
 
             if (productName != null)
             {
                 try
                 {
-                    this.Product = repository.GetProduct(productName);
+                    this.Product = _repository.GetProduct(productName);
                     this.Product.IsInCart = WebSession.OrderItems.ContainsKey(Product.Id);
                 }
                 catch (ObjectNotFoundException)
@@ -170,7 +217,7 @@ namespace Shop.WebSite.Models
 
             if (articleName != null)
             {
-                this.Article = repository.GetArticle(articleName);
+                this.Article = _repository.GetArticle(articleName);
             }
 
         }

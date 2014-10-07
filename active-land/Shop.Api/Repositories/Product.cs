@@ -191,6 +191,7 @@ namespace Shop.Api.Repositories
             string searchCriteria = product.ProductLangs.Aggregate("", (current, productLang) => current + (productLang.Title + " ")) + " " + product.Name;
 
             product.SearchCriteria = searchCriteria;
+            
             _store.SaveChanges();
             return product.Id;
         }

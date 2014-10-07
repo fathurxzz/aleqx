@@ -26,6 +26,7 @@ namespace Shop.DataAccess.Repositories
         // ProductAttributes
         IEnumerable<ProductAttribute> GetProductAttributes();
         IEnumerable<ProductAttribute> GetProductAttributes(int categoryId);
+        IEnumerable<ProductAttribute> GetProductAttributes(string categoryName);
         ProductAttribute GetProductAttribute(int id);
         void DeleteProductAttribute(int id);
         int AddProductAttribute(ProductAttribute productAttribute);
