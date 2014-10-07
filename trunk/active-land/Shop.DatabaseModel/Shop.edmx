@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -35,6 +35,7 @@
     <EntitySet Name="QuickAdvice" EntityType="Shop.Store.QuickAdvice" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="QuickAdviceLang" EntityType="Shop.Store.QuickAdviceLang" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ShopSetting" EntityType="Shop.Store.ShopSetting" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductStock" EntityType="Shop.Store.ProductStock" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryProductAttribute" EntityType="Shop.Store.CategoryProductAttribute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductAttributeValueProduct" EntityType="Shop.Store.ProductAttributeValueProduct" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LanguageCategoryLang" Association="Shop.Store.LanguageCategoryLang">
@@ -189,6 +190,10 @@
       <End Role="Language" EntitySet="Language" />
       <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
     </AssociationSet>
+    <AssociationSet Name="ProductProductStock" Association="Shop.Store.ProductProductStock">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductStock" EntitySet="ProductStock" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Language">
     <Key>
@@ -248,6 +253,7 @@
     <Property Name="IsStatic" Type="bool" Nullable="false" />
     <Property Name="DisplayOnPreview" Type="bool" Nullable="false" />
     <Property Name="IsFilterable" Type="bool" Nullable="false" />
+    <Property Name="IsPublic" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductImage">
     <Key>
@@ -485,6 +491,17 @@
     <Property Name="Key" Type="varchar" Nullable="false" MaxLength="20" />
     <Property Name="Value" Type="varchar" Nullable="true" MaxLength="200" />
     <Property Name="Title" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ProductStock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StockNumber" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Size" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Color" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="IsAvailable" Type="bool" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryProductAttribute">
     <Key>
@@ -910,6 +927,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ProductProductStock">
+    <End Role="Product" Type="Shop.Store.Product" Multiplicity="1" />
+    <End Role="ProductStock" Type="Shop.Store.ProductStock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductStock">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CategoryProductAttribute_Category">
     <End Role="Category" Type="Shop.Store.Category" Multiplicity="1" />
     <End Role="CategoryProductAttribute" Type="Shop.Store.CategoryProductAttribute" Multiplicity="*" />
@@ -1136,6 +1165,11 @@
             <End Role="QuickAdviceLang" EntitySet="QuickAdviceLang" />
           </AssociationSet>
           <EntitySet Name="ShopSetting" EntityType="Shop.ShopSetting" />
+          <EntitySet Name="ProductStock" EntityType="Shop.ProductStock" />
+          <AssociationSet Name="ProductProductStock" Association="Shop.ProductProductStock">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductStock" EntitySet="ProductStock" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Language">
           <Key>
@@ -1208,6 +1242,7 @@
           <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductProductAttributeStaticValue" FromRole="Product" ToRole="ProductAttributeStaticValue" />
           <Property Type="String" Name="SearchCriteria" Nullable="false" MaxLength="1000" />
           <Property Type="String" Name="SearchCriteriaAttributes" Nullable="false" MaxLength="1000" />
+          <NavigationProperty Name="ProductStocks" Relationship="Shop.ProductProductStock" FromRole="Product" ToRole="ProductStock" />
         </EntityType>
         <EntityType Name="ProductAttribute">
           <Key>
@@ -1222,6 +1257,7 @@
           <NavigationProperty Name="ProductAttributeValues" Relationship="Shop.ProductAttributeProductAttributeValue" FromRole="ProductAttribute" ToRole="ProductAttributeValue" />
           <NavigationProperty Name="ProductAttributeStaticValues" Relationship="Shop.ProductAttributeProductAttributeStaticValue" FromRole="ProductAttribute" ToRole="ProductAttributeStaticValue" />
           <NavigationProperty Name="ProductAttributeLangs" Relationship="Shop.ProductAttributeProductAttributeLang" FromRole="ProductAttribute" ToRole="ProductAttributeLang" />
+          <Property Type="Boolean" Name="IsPublic" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -1921,6 +1957,30 @@
           <Property Type="String" Name="Value" MaxLength="200" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="200" />
         </EntityType>
+        <EntityType Name="ProductStock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StockNumber" MaxLength="200" Nullable="false" />
+          <Property Type="String" Name="Size" MaxLength="100" />
+          <Property Type="String" Name="Color" MaxLength="100" />
+          <NavigationProperty Name="Product" Relationship="Shop.ProductProductStock" FromRole="ProductStock" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Boolean" Name="IsAvailable" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductProductStock">
+          <End Type="Shop.Product" Role="Product" Multiplicity="1" />
+          <End Type="Shop.ProductStock" Role="ProductStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductStock">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1988,6 +2048,7 @@
           <ScalarProperty Name="IsStatic" ColumnName="IsStatic" />
           <ScalarProperty Name="DisplayOnPreview" ColumnName="DisplayOnPreview" />
           <ScalarProperty Name="IsFilterable" ColumnName="IsFilterable" />
+          <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2249,6 +2310,18 @@
           <ScalarProperty Name="Key" ColumnName="Key" />
           <ScalarProperty Name="Value" ColumnName="Value" />
           <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductStock">
+      <EntityTypeMapping TypeName="IsTypeOf(Shop.ProductStock)">
+        <MappingFragment StoreEntitySet="ProductStock">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StockNumber" ColumnName="StockNumber" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -10,6 +10,7 @@ namespace Shop.DataAccess.Entities
         {
             this.ProductAttributeStaticValues = new List<ProductAttributeStaticValue>();
             this.ProductImages = new List<ProductImage>();
+            this.ProductStocks = new List<ProductStock>();
             this.ProductLangs = new List<ProductLang>();
             this.ProductAttributeValues = new List<ProductAttributeValue>();
         }
@@ -28,6 +29,7 @@ namespace Shop.DataAccess.Entities
         public virtual Category Category { get; set; }
         public virtual ICollection<ProductAttributeStaticValue> ProductAttributeStaticValues { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
+        public virtual ICollection<ProductStock> ProductStocks { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }

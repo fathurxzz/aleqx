@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/05/2014 18:06:47
--- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 10/07/2014 15:25:46
+-- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -161,7 +161,8 @@ CREATE TABLE `ProductAttribute`(
 	`SortOrder` int NOT NULL, 
 	`IsStatic` bool NOT NULL, 
 	`DisplayOnPreview` bool NOT NULL, 
-	`IsFilterable` bool NOT NULL);
+	`IsFilterable` bool NOT NULL, 
+	`IsPublic` bool NOT NULL);
 
 ALTER TABLE `ProductAttribute` ADD PRIMARY KEY (Id);
 
@@ -449,6 +450,19 @@ CREATE TABLE `ShopSetting`(
 	`Title` varchar (200) NOT NULL);
 
 ALTER TABLE `ShopSetting` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ProductStock`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`StockNumber` varchar (200) NOT NULL, 
+	`Size` varchar (100), 
+	`Color` varchar (100), 
+	`ProductId` int NOT NULL, 
+	`IsAvailable` bool NOT NULL);
+
+ALTER TABLE `ProductStock` ADD PRIMARY KEY (Id);
 
 
 
@@ -1034,6 +1048,21 @@ ADD CONSTRAINT `FK_LanguageQuickAdviceLang`
 CREATE INDEX `IX_FK_LanguageQuickAdviceLang` 
     ON `QuickAdviceLang`
     (`LanguageId`);
+
+-- Creating foreign key on `ProductId` in table 'ProductStock'
+
+ALTER TABLE `ProductStock`
+ADD CONSTRAINT `FK_ProductProductStock`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductProductStock'
+
+CREATE INDEX `IX_FK_ProductProductStock` 
+    ON `ProductStock`
+    (`ProductId`);
 
 -- --------------------------------------------------
 -- Script has ended

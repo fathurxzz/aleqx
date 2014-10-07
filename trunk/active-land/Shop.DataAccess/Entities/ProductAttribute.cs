@@ -19,6 +19,7 @@ namespace Shop.DataAccess.Entities
         public bool IsStatic { get; set; }
         public bool DisplayOnPreview { get; set; }
         public bool IsFilterable { get; set; }
+        public bool IsPublic { get; set; }
         public virtual ICollection<ProductAttributeLang> ProductAttributeLangs { get; set; }
         public virtual ICollection<ProductAttributeStaticValue> ProductAttributeStaticValues { get; set; }
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
