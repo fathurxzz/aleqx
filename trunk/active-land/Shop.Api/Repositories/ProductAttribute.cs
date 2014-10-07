@@ -30,6 +30,12 @@ namespace Shop.Api.Repositories
             return productAttributes;
         }
 
+
+        public IEnumerable<ProductAttribute> GetProductAttributes(string categoryName)
+        {
+            return _store.Categories.Single(c => c.Name == categoryName).ProductAttributes;
+        }
+
         public IEnumerable<ProductAttribute> GetProductAttributes(int categoryId)
         {
             var category = _store.Categories.Single(c => c.Id == categoryId);
