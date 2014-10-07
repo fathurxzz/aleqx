@@ -39,6 +39,7 @@ namespace Shop.DataAccess.EntityFramework
         public DbSet<ProductAttributeValueTag> ProductAttributeValueTags { get; set; }
         public DbSet<ProductAttributeValueTagLang> ProductAttributeValueTagLangs { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductStock> ProductStocks { get; set; }
         public DbSet<ProductLang> ProductLangs { get; set; }
         public DbSet<Content> Contents { get; set; }
         public DbSet<ContentItem> ContentItems { get; set; }
@@ -74,6 +75,7 @@ namespace Shop.DataAccess.EntityFramework
             modelBuilder.Configurations.Add(new ProductAttributeValueTagMap());
             modelBuilder.Configurations.Add(new ProductAttributeValueTagLangMap());
             modelBuilder.Configurations.Add(new ProductImageMap());
+            modelBuilder.Configurations.Add(new ProductStockMap());
             modelBuilder.Configurations.Add(new ProductLangMap());
             modelBuilder.Configurations.Add(new ContentMap());
             modelBuilder.Configurations.Add(new ContentItemMap());

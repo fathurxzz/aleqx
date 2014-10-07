@@ -25,6 +25,9 @@ namespace Shop.DataAccess.Entities
         [Display(Name = "Прописной")]
         public bool IsStatic { get; set; }
 
+        [Display(Name = "Отображается на сайте")]
+        public bool IsPublic { get; set; }
+
         [Display(Name = "Отображать в кратком описании")]
         public bool DisplayOnPreview { get; set; }
 

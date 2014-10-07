@@ -41,6 +41,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     Title = model.Title,
                     UnitTitle = model.UnitTitle,
                     IsStatic = model.IsStatic,
+                    IsPublic = model.IsPublic,
                     DisplayOnPreview = model.DisplayOnPreview,
                     IsFilterable = model.IsFilterable,
                     SortOrder = model.SortOrder
@@ -77,7 +78,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 var productAttribute = _repository.GetProductAttribute(model.Id);
-                TryUpdateModel(productAttribute, new[] { "Title", "UnitTitle", "IsStatic", "DisplayOnPreview", "IsFilterable","SortOrder" });
+                TryUpdateModel(productAttribute, new[] { "Title", "UnitTitle", "IsStatic", "IsPublic", "DisplayOnPreview", "IsFilterable", "SortOrder" });
                 _repository.SaveProductAttribute(productAttribute);
             }
             catch (Exception ex)

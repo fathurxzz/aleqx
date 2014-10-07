@@ -124,6 +124,9 @@
     <Compile Include="ProductLang.cs">
       <DependentUpon>Shop.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductStock.cs">
+      <DependentUpon>Shop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuickAdvice.cs">
       <DependentUpon>Shop.tt</DependentUpon>

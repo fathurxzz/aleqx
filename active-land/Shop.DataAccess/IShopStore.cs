@@ -26,6 +26,7 @@ namespace Shop.DataAccess
         IDbSet<ProductLang> ProductLangs { get; }
         
         IDbSet<ProductImage> ProductImages { get; }
+        IDbSet<ProductStock> ProductStocks { get; }
 
         IDbSet<Article> Articles { get; }
         IDbSet<ArticleLang> ArticleLangs { get; }

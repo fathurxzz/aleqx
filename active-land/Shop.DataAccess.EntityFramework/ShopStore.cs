@@ -79,6 +79,11 @@ namespace Shop.DataAccess.EntityFramework
             get { return _context.ProductImages; }
         }
 
+        public IDbSet<ProductStock> ProductStocks
+        {
+            get { return _context.ProductStocks; }
+        }
+
         public IDbSet<Article> Articles
         {
             get { return _context.Articles; }

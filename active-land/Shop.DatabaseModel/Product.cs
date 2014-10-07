@@ -20,6 +20,7 @@ namespace Shop.DatabaseModel
             this.ProductLangs = new HashSet<ProductLang>();
             this.ProductAttributeValues = new HashSet<ProductAttributeValue>();
             this.ProductAttributeStaticValues = new HashSet<ProductAttributeStaticValue>();
+            this.ProductStocks = new HashSet<ProductStock>();
         }
     
         public int Id { get; set; }
@@ -39,5 +40,6 @@ namespace Shop.DatabaseModel
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
         public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
         public virtual ICollection<ProductAttributeStaticValue> ProductAttributeStaticValues { get; set; }
+        public virtual ICollection<ProductStock> ProductStocks { get; set; }
     }
 }
