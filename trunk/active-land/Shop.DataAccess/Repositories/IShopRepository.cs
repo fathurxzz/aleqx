@@ -128,7 +128,7 @@ namespace Shop.DataAccess.Repositories
         IEnumerable<ShopSetting> GetShopSettings();
 
         // ProductStocks
-        ProductStock GetProductStocks(int id);
+        ProductStock GetProductStock(int id);
         void DeleteProductStock(int id);
         void SaveProductStock(ProductStock productStock);
         

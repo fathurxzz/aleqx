@@ -10,7 +10,7 @@ namespace Shop.Api.Repositories
 {
     public partial class ShopRepository : IShopRepository
     {
-        public ProductStock GetProductStocks(int id)
+        public ProductStock GetProductStock(int id)
         {
             var productImage = _store.ProductStocks.SingleOrDefault(p => p.Id == id);
             if (productImage == null)
