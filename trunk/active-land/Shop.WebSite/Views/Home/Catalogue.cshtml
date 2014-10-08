@@ -20,109 +20,89 @@
 @Html.Partial("SiteTitle", new BreadCrumbs { new BreadCrumb { Title = Model.CurrentCategory!=null?Model.CurrentCategory.Title: "Каталог" } })
 
 <div id="catalogue">
+    
+    <div class="category-previews">
+    @if (Model.CurrentCategory == null)
+    {
+        
+
+         foreach (var category in Model.Categories.Where(c=>c.Parent==null&&c.IsActive))
+         {
+            @Html.Partial("CategoryPreview", new CategoryPreview
+                {
+                    Title = category.Title,
+                    ImageSource = category.ImageSource,
+                    Name = category.Name
+                })
+         }
+            
+           
+        
+         
+    }
+    else
+    {
+        foreach (var category in Model.CurrentCategory.Children.Where(c=>c.IsActive))
+         {
+            @Html.Partial("CategoryPreview", new CategoryPreview
+                {
+                    Title = category.Title,
+                    ImageSource = category.ImageSource,
+                    Name = category.Name
+                })
+         }
+    }
+         <div class="clearfix"></div>
+        </div>
+    
     <div id="filters-container">
 
-        <div id="price-sort-selector" class="selector">
-            @*<select class="selectpicker" name="priceOrder">
+            <div id="price-sort-selector" class="selector">
+                @*<select class="selectpicker" name="priceOrder">
                 <option>Сначала дорогие</option>
                 <option>Сначала дешевые</option>
             </select>*@
-        </div>
-
-        @foreach (var productAttribute in Model.ProductAttributes)
-        {
-            <div class="selector checkbox-selector">
-                <div class="title">@productAttribute.Title:</div>
-                <div class="selectors">
-                    <ul>
-                        @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a=>a.Title))
-                        {
-                            <li>
-                                <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString())?"checked":"") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray,categoryValue.Id.ToString(),Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
-                                <label for="cb_@categoryValue.Id">@categoryValue.Title</label>
-                            </li>   
-                        }
-                    </ul>
-                </div>
             </div>
-        }
 
-        @*<div id="brand-selector" class="selector checkbox-selector">
-            <div class="title">Бренды:</div>
-            <div class="selectors">
-                <ul>
-                    <li>
-                        <input type="checkbox" id="brand1">
-                        <label for="brand1">felt</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="brand2">
-                        <label for="brand2">comanche</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="brand3">
-                        <label for="brand3">hydra</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="brand4">
-                        <label for="brand4">tycoon</label>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-        <div id="price-range-selector" class="selector">
-        </div>
-
-        <div id="category-selector" class="selector checkbox-selector">
-            <div class="title">Категории:</div>
-            <div class="selectors">
-                <ul>
-                    <li>
-                        <input type="checkbox">
-                        горный</li>
-                    <li>
-                        <input type="checkbox">
-                        городской</li>
-                    <li>
-                        <input type="checkbox">
-                        детский</li>
-                    <li>
-                        <input type="checkbox">
-                        женский</li>
-
-                </ul>
-            </div>
-        </div>*@
-
-    </div>
-    <div id="products">
-        @foreach (var product in Model.Products)
-        {
-            @Html.Partial("ProductPreview", new ProductPreview
+            @foreach (var productAttribute in Model.ProductAttributes)
             {
-                Title = product.Title,
-                Label =
-                    product.IsNew ? ProductPreviewLabel.WowNew
-                        : product.IsTopSale ? ProductPreviewLabel.TopSale
-                            : product.IsDiscount ? ProductPreviewLabel.Discount
-                                : ProductPreviewLabel.None,
-                Price = product.Price,
-                OldPrice = product.OldPrice,
-                ImageSource = product.ImageSource,
-                Name = product.Name
-            })
-        }
+                <div class="selector checkbox-selector">
+                    <div class="title">@productAttribute.Title:</div>
+                    <div class="selectors">
+                        <ul>
+                            @foreach (var categoryValue in productAttribute.ProductAttributeValues.OrderBy(a => a.Title))
+                            {
+                                <li>
+                                    <input class="attribute-checkbox" @Html.Raw(Model.FilterArray.Contains(categoryValue.Id.ToString()) ? "checked" : "") filter="@CatalogueFilterHelper.GetFilterStringForCheckbox(Model.FilterArray, categoryValue.Id.ToString(), Model.FilterArray.Contains(categoryValue.Id.ToString()))" type="checkbox" id="cb_@categoryValue.Id">
+                                    <label for="cb_@categoryValue.Id">@categoryValue.Title</label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
 
-        @*@Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale, Price = "2,330", ImageSource = "bike-image.png" })
-        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.Discount, Price = "2,330", ImageSource = "bike-image.png" })
-        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.None, Price = "2,330", ImageSource = "bike-image.png" })
-        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.WowNew, Price = "2,330", ImageSource = "bike-image.png" })
-        @Html.Partial("ProductPreview", new ProductPreview { Title = "Marin Supersized 14\"", Label = ProductPreviewLabel.TopSale, Price = "2,330", ImageSource = "bike-image.png" })*@
-    </div>
+        </div>
+        <div id="products">
+            @foreach (var product in Model.Products)
+            {
+                @Html.Partial("ProductPreview", new ProductPreview
+                {
+                    Title = product.Title,
+                    Label =
+                        product.IsNew ? ProductPreviewLabel.WowNew
+                            : product.IsTopSale ? ProductPreviewLabel.TopSale
+                                : product.IsDiscount ? ProductPreviewLabel.Discount
+                                    : ProductPreviewLabel.None,
+                    Price = product.Price,
+                    OldPrice = product.OldPrice,
+                    ImageSource = product.ImageSource,
+                    Name = product.Name
+                })
+            }
+        </div>
+        <div class="clearfix"></div>
 
-    <div class="clearfix"></div>
 </div>
 <div>
     @Html.Partial("Paging")

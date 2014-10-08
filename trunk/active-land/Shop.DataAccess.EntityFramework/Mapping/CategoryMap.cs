@@ -25,6 +25,7 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.IsActive).HasColumnName("IsActive");
             this.Property(t => t.Name).HasColumnName("Name");
+            this.Property(t => t.ImageSource).HasColumnName("ImageSource");
             this.Property(t => t.SortOrder).HasColumnName("SortOrder");
             this.Property(t => t.CategoryLevel).HasColumnName("CategoryLevel");
             this.Property(t => t.CategoryId).HasColumnName("CategoryId");

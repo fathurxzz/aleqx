@@ -36,7 +36,7 @@ namespace Shop.Api.Repositories
             return category;
         }
 
-        public void DeleteCategory(int id)
+        public void DeleteCategory(int id, Action<string> deleteImages)
         {
             var category = _store.Categories.SingleOrDefault(c => c.Id == id);
 
@@ -63,6 +63,8 @@ namespace Shop.Api.Repositories
 
                 _store.ProductAttributes.Remove(pa);
             }
+
+            deleteImages(category.ImageSource);
 
             _store.Categories.Remove(category);
             _store.SaveChanges();

@@ -6,7 +6,7 @@
         {
             if (item.ContentType == 1)
             {
-            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink(item.Title, "Catalogue", "Home")
+            <li class="main-menu-item catalog categories-menu-link">@Html.ActionLink(item.Title, "Catalogue", "Home",new{category=""},null)
                 @Html.Partial("CategoriesMenu", Model.Categories)
             </li>
             }

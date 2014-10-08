@@ -1,9 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using Shop.DataAccess.Entities;
 using Shop.DataAccess.Repositories;
 using Shop.WebSite.Helpers;
+using Shop.WebSite.Helpers.Graphics;
 
 namespace Shop.WebSite.Areas.Admin.Controllers
 {
@@ -51,12 +53,27 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     Parent = parent,
                     CategoryLevel = categoryLevel,
                     IsActive = model.IsActive,
-                    
                     Title = model.Title,
                     SeoDescription = model.SeoDescription,
                     SeoKeywords = model.SeoKeywords,
                     SeoText = model.SeoText
                 };
+
+                var file = Request.Files[0];
+                if (file != null && !string.IsNullOrEmpty(file.FileName))
+                {
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    category.ImageSource = fileName;
+                }
+                else
+                {
+                    category.ImageSource = category.ImageSource ?? "";
+                }
+
 
                 _repository.AddCategory(category);
             }
@@ -95,6 +112,26 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 var category = _repository.GetCategory(model.Id);
                 category.Name = SiteHelper.UpdatePageWebName(model.Name);
                 TryUpdateModel(category, new[] { "SortOrder","IsActive", "CategoryLevel", "Title", "SeoDescription", "SeoKeywords", "SeoText" });
+                var file = Request.Files[0];
+                if (file != null && !string.IsNullOrEmpty(file.FileName))
+                {
+                    if (!string.IsNullOrEmpty(category.ImageSource))
+                    {
+                        ImageHelper.DeleteImage(category.ImageSource);
+                    }
+
+                    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", file.FileName);
+                    string filePath = Server.MapPath("~/Content/Images");
+
+                    filePath = Path.Combine(filePath, fileName);
+                    GraphicsHelper.SaveOriginalImage(filePath, fileName, file, 1500);
+                    category.ImageSource = fileName;
+                }
+                else
+                {
+                    category.ImageSource = category.ImageSource ?? "";
+                }
+
                 _repository.SaveCategory(category);
             }
             catch (Exception ex)
@@ -109,7 +146,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             try
             {
-                _repository.DeleteCategory(id);
+                _repository.DeleteCategory(id, ImageHelper.DeleteImage);
             }
             catch (Exception ex)
             {

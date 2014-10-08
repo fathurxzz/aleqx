@@ -28,6 +28,7 @@ namespace Shop.DatabaseModel
         public int CategoryLevel { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public bool IsActive { get; set; }
+        public string ImageSource { get; set; }
     
         public virtual ICollection<Category> Children { get; set; }
         public virtual Category Parent { get; set; }

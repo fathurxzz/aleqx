@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/07/2014 15:25:46
--- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 10/08/2014 21:11:44
+-- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -57,6 +57,7 @@ USE `gbua_active_dev`;
 --    ALTER TABLE `OrderItem` DROP CONSTRAINT `FK_OrderOrderItem`;
 --    ALTER TABLE `QuickAdviceLang` DROP CONSTRAINT `FK_QuickAdviceQuickAdviceLang`;
 --    ALTER TABLE `QuickAdviceLang` DROP CONSTRAINT `FK_LanguageQuickAdviceLang`;
+--    ALTER TABLE `ProductStock` DROP CONSTRAINT `FK_ProductProductStock`;
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -91,6 +92,7 @@ SET foreign_key_checks = 0;
     DROP TABLE IF EXISTS `QuickAdvice`;
     DROP TABLE IF EXISTS `QuickAdviceLang`;
     DROP TABLE IF EXISTS `ShopSetting`;
+    DROP TABLE IF EXISTS `ProductStock`;
     DROP TABLE IF EXISTS `CategoryProductAttribute`;
     DROP TABLE IF EXISTS `ProductAttributeValueProduct`;
 SET foreign_key_checks = 1;
@@ -117,7 +119,8 @@ CREATE TABLE `Category`(
 	`SortOrder` int NOT NULL, 
 	`CategoryLevel` int NOT NULL, 
 	`CategoryId` int, 
-	`IsActive` bool NOT NULL);
+	`IsActive` bool NOT NULL, 
+	`ImageSource` varchar (200));
 
 ALTER TABLE `Category` ADD PRIMARY KEY (Id);
 
