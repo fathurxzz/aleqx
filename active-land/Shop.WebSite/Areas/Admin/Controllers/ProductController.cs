@@ -247,6 +247,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         {
             _repository.LangId = CurrentLangId;
             var product = _repository.GetProduct(id);
+            ViewBag.ProductTitle = product.Title;
             var productAttributes = _repository.GetProductAttributes(product.CategoryId);
             ViewBag.ProductAttributeValues = product.ProductAttributeValues.ToList();
             ViewBag.ProductId = product.Id;
