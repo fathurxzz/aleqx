@@ -206,7 +206,8 @@
 
 
     .main-image-container .bx-wrapper .bx-caption span {
-        display: block;
+        /*display: block;*/
+        display: table-cell;
         text-align: center;
         /*padding-top: 20px;*/
         font-weight: 700;
@@ -216,7 +217,12 @@
         font-size: 15px;
         color: #fff;
         margin: 40px auto 0 auto;
-        width: 120px;
+        /*width: 120px;*/
+        width: 150px;
+        height: 218px;
+        vertical-align: middle;
+        padding-left: 40px;
+
     }
 
         .main-image-container .bx-wrapper .bx-caption span hr {
