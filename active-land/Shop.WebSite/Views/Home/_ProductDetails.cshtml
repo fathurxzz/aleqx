@@ -24,7 +24,7 @@
                 @if (Model.ProductImages.Count > 0)
                 {
                     var cnt = 1;
-                    foreach (var image in Model.ProductImages)
+                    foreach (var image in Model.ProductImages.OrderBy(pi=>pi.IsDefault))
                     {
                         string imageid = "image" + image.Id;
                         //string classTopImage = cnt == 1 ? "class1001" : "";
@@ -46,7 +46,7 @@
         
 
         <div id="product-previews">
-            @foreach (var image in Model.ProductImages)
+            @foreach (var image in Model.ProductImages.OrderByDescending(pi => pi.IsDefault))
             {
                 <div class="preview" style="cursor: pointer" onclick="ProductCatalogue.changeImage(@image.Id) ">
                     @*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
