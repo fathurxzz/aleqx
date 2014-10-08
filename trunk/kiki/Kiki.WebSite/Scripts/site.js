@@ -60,7 +60,7 @@
                                 //alert(index + ": " + value.Title);
                                 $("#sResult").append(
                                     $('<li>')
-                                    .append($('<a>').attr('href', '/' + window.lang + '/services/' + value.Name + '?q=' + q).attr('class', 'service-parent-title').append(value.Title + ' &raquo;'))
+                                    .append($('<a>').attr('href', '/' + window.lang + '/services/' + value.Name + '?q=' + value.Title).attr('class', 'service-parent-title').append(value.Title + ' &raquo;'))
                                     .append($('<span>').attr('class', 'price').append(value.Price))
                                );
 
