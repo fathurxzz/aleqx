@@ -2,7 +2,7 @@
 @model IEnumerable<Shop.DataAccess.Entities.ProductAttribute>
 
 @{
-    ViewBag.Title = "Attributes";
+    ViewBag.Title = "Атрибуты товара";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
     var productValues = ((IEnumerable<ProductAttributeValue>)ViewBag.ProductAttributeValues).ToList();
@@ -14,6 +14,8 @@
 }
 
 <div class="container">
+    <h3>Атрибуты товара</h3>
+    <h3>@ViewBag.ProductTitle</h3>
     @using (Html.BeginForm("Attributes", "Product", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
     {
         @Html.Hidden("productId", (int)ViewBag.ProductId)
@@ -48,9 +50,9 @@
                         {
                             foreach (var attributeValue in item.ProductAttributeValues.OrderBy(a => a.Title))
                             {
-                            @Html.CheckBox("attr_" + attributeValue.Id, productValues.Contains(attributeValue))
-                            @attributeValue.Title
-                            @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                                @Html.CheckBox("attr_" + attributeValue.Id, productValues.Contains(attributeValue))
+                                @attributeValue.Title
+                                @Html.Raw("&nbsp;&nbsp;&nbsp;")
                             }
                         }
                     </td>

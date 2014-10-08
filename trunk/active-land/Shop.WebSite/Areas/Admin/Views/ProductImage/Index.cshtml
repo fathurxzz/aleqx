@@ -12,7 +12,8 @@
 }
 
 <div class="container">
-    <h3>Изображения продукта</h3>
+    <h3>Изображения товара</h3>
+    <h3>@ViewBag.ProductTitle</h3>
     <p>
         @Html.ActionLink("Добавить", "Create", new { id = (int)ViewBag.ProductId })
     </p>
@@ -30,7 +31,7 @@
     
     <div style="clear: both"></div>
     <div style="margin-top: 30px">
-        @Html.ActionLink("Назад к продуктам", "Index", "Product")
+        @Html.ActionLink("Назад к товарам", "Index", "Product")
     </div>
 
 </div>

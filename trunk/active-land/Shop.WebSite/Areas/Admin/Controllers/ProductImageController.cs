@@ -24,6 +24,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             ViewBag.ProductId = id;
             _repository.LangId = CurrentLangId;
             var product = _repository.GetProduct(id);
+            ViewBag.ProductTitle = product.Title;
             return View(product.ProductImages);
         }
 
