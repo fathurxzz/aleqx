@@ -89,7 +89,7 @@ namespace Shop.Api.Repositories
                 throw new ObjectNotFoundException(string.Format("Product with name={0} not found", name));
             }
             product.CurrentLang = LangId;
-
+            
             foreach (var productAttributeValue in product.ProductAttributeValues)
             {
                 productAttributeValue.CurrentLang = LangId;
@@ -108,6 +108,11 @@ namespace Shop.Api.Repositories
             foreach (var productAttribute in product.Category.ProductAttributes)
             {
                 productAttribute.CurrentLang = LangId;
+            }
+
+            foreach (var image in product.ProductImages.Where(pi=>pi.IsDefault))
+            {
+                product.ImageSource = image.ImageSource;
             }
 
             return product;
