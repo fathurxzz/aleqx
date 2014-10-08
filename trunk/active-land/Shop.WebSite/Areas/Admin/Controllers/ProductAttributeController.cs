@@ -26,7 +26,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
         public ActionResult Create()
         {
             _repository.LangId = CurrentLangId;
-            return View(new ProductAttribute(){CurrentLang = CurrentLangId,SortOrder = 0});
+            return View(new ProductAttribute(){CurrentLang = CurrentLangId,SortOrder = 0, IsPublic = true});
         }
 
         [HttpPost]
