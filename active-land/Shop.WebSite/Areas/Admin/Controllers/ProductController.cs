@@ -253,6 +253,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             return View(productAttributes);
         }
 
+
+
         public ActionResult Delete(int id)
         {
             try

@@ -172,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductAttributeValueTagController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductStockController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuickAdviceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ShopSettingController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -360,6 +361,9 @@
     <Content Include="Areas\Admin\Views\Shared\AdminPaging.cshtml" />
     <Content Include="Areas\Admin\Views\ShopSetting\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ShopSetting\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductStock\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductStock\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductStock\Edit.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>

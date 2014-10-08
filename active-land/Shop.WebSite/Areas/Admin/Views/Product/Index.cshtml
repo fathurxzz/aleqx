@@ -109,6 +109,7 @@
             <td>
                 @Html.ActionLink("Ред.", "Edit", new { id = item.Id },new{title="Редактировать товар"}) |
                 @Html.ActionLink("Атр.", "Attributes", new { id = item.Id },new{title="Атрибуты (свойства) товара"}) |
+                @Html.ActionLink("Арт.", "Index","ProductStock", new { id = item.Id },new{title="Артикулы товара"}) |
                 @Html.ActionLink("Изобр.", "Index", "ProductImage", new { id = item.Id }, new{title="Изображения товара"}) |
                 @Html.ActionLink("Удал.", "Delete", new { id = item.Id }, new { onclick = "return confirm('Удалить товар?')",title="Удалить товар" })
             </td>
