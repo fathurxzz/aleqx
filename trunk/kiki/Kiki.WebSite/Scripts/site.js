@@ -68,7 +68,7 @@
 
                                     $("#sResult").append(
                                     $('<li>').attr('class', 'service-title')
-                                    .append($('<a>').attr('href', '/' + window.lang + '/services/' + val.Name + '?q=' + q).append(val.Title))
+                                    .append($('<a>').attr('href', '/' + window.lang + '/services/' + val.Name + '?q=' + val.Title).append(val.Title))
                                     .append($('<span>').attr('class', 'price').append(val.Price))
                                     );
                                 });
