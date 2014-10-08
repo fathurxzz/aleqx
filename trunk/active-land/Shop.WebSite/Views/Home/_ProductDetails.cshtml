@@ -4,15 +4,15 @@
 @model Shop.DataAccess.Entities.Product
 
 
-@if (Model.Title==null)
+@if (Model.Title == null)
 {
     
-     <div style="text-align: center">
-            <h4><span class="label label-danger">Продукт не найден</span></h4>
-        </div>
+    <div style="text-align: center">
+        <h4><span class="label label-danger">Продукт не найден</span></h4>
+    </div>
     return;
 }
-    
+
 
 
 
@@ -20,37 +20,37 @@
     <div id="product-images-section">
         <div class="main-view-container">
             <div class="picture">
-        
+
                 @if (Model.ProductImages.Count > 0)
                 {
                     var cnt = 1;
-                    foreach (var image in Model.ProductImages.OrderBy(pi=>pi.IsDefault))
+                    foreach (var image in Model.ProductImages.OrderBy(pi => pi.IsDefault))
                     {
                         string imageid = "image" + image.Id;
                         //string classTopImage = cnt == 1 ? "class1001" : "";
                         string classTopImage = Model.ImageSource == image.ImageSource ? "class1001" : "";
-                        <a id="@imageid" rel="group1" href="/Content/Images/@image.ImageSource" class="fancy pictureLink1 @classTopImage">
-                            @*<img src="/ImageCache/projectImage/@image.ImageSource"/>*@
-                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage"))) 
-                        </a>
+                    <a id="@imageid" rel="group1" href="/Content/Images/@image.ImageSource" class="fancy pictureLink1 @classTopImage">
+                        @*<img src="/ImageCache/projectImage/@image.ImageSource"/>*@
+                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage")))
+                    </a>
 
                         cnt++;
                     }
                 }
 
-       @* <a href="/Content/Images/@Model.ImageSource" rel="group1" class="fancy">
+@* <a href="/Content/Images/@Model.ImageSource" rel="group1" class="fancy">
             @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsMainImage")))
         </a>*@
-    </div>
             </div>
-        
+        </div>
+
 
         <div id="product-previews">
             @foreach (var image in Model.ProductImages.OrderByDescending(pi => pi.IsDefault))
             {
                 <div class="preview" style="cursor: pointer" onclick="ProductCatalogue.changeImage(@image.Id) ">
                     @*<a href="/Content/Images/@image.ImageSource" rel="group1" class="fancy">*@
-                        @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
+                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("siteProductDetailsThumbnail")))
                     @*</a>*@
                 </div>
             }
@@ -103,7 +103,7 @@
                     <div class="old">
                         <div class="line-through"></div>
                         @Model.OldPrice.ToString("###,###")
-                        
+
                     </div>
                 }
                 @Model.Price.ToString("###,###") <sup>грн</sup>
@@ -114,63 +114,76 @@
             @Html.Raw(Model.Description)
         </div>
         <div id="product-attributes">
-            
-            
+
+
             <table>
-            
-            @foreach (var pruductAttribute in Model.Category.ProductAttributes.Where(pa=>pa.IsPublic).OrderBy(p=>p.SortOrder))
-            {
-                if (Model.ProductAttributeValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id) || Model.ProductAttributeStaticValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id))
+
+                @foreach (var pruductAttribute in Model.Category.ProductAttributes.Where(pa => pa.IsPublic).OrderBy(p => p.SortOrder))
                 {
+                    if (Model.ProductAttributeValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id) || Model.ProductAttributeStaticValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id))
+                    {
                     <tr class="attribute">
                         <td class="title">
                             @pruductAttribute.Title @Html.Raw(!string.IsNullOrEmpty(pruductAttribute.UnitTitle) ? ", " + pruductAttribute.UnitTitle : "")
                         </td>
                         <td class="value">
-                            
-                                <div class="value-text">
-                                    @if (pruductAttribute.IsStatic)
+
+                            <div class="value-text">
+                                @if (pruductAttribute.IsStatic)
+                                {
+                                    foreach (var pav in Model.ProductAttributeStaticValues)
                                     {
-                                        foreach (var pav in Model.ProductAttributeStaticValues)
+                                        if (pav.ProductAttributeId == pruductAttribute.Id)
                                         {
-                                            if (pav.ProductAttributeId == pruductAttribute.Id)
-                                            {
-                                                @pav.Title
-                                            }
+                                    @pav.Title
                                         }
                                     }
-                                    else
+                                }
+                                else
+                                {
+                                    var cnt = 0;
+                                    foreach (var pav in Model.ProductAttributeValues)
                                     {
-                                        var cnt = 0;
-                                        foreach (var pav in Model.ProductAttributeValues)
+                                        if (pav.ProductAttributeId == pruductAttribute.Id)
                                         {
-                                            if (pav.ProductAttributeId == pruductAttribute.Id)
+                                            if (cnt != 0)
                                             {
-                                                if (cnt != 0)
-                                                {
-                                                    @Html.Raw(", ")
-                                                }
-                                                else
-                                                {
-                                                    if (pav.ProductAttributeValueTag != null)
-                                                    {
-                                                        <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
-                                                    }
-                                                }
-                                                cnt++;
-                                                @pav.Title
+                                    @Html.Raw(", ")
                                             }
+                                            else
+                                            {
+                                                if (pav.ProductAttributeValueTag != null)
+                                                {
+                                    <span class="tag @pav.ProductAttributeValueTag.Name">@pav.ProductAttributeValueTag.Title</span>
+                                                }
+                                            }
+                                            cnt++;
+                                    @pav.Title
                                         }
                                     }
-                                </div>
+                                }
+                            </div>
                         </td>
-                
-                </tr>
+
+                    </tr>
+                    }
                 }
-            }
+
+                @foreach (var productStock in Model.ProductStocks)
+                {
+                    <tr class="attribute">
+                        <td class="title">Наличие: цвет, размер
+                        </td>
+                        <td class="value">
+                            <div class="value-text">
+                                @productStock.Color, @productStock.Size
+                            </div>
+                        </td>
+                    </tr>
+                }
             </table>
 
-            
+
 
             @*            @foreach (var pruductAttribute in Model.Category.ProductAttributes)
             {
