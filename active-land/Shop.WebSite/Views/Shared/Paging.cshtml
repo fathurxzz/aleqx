@@ -14,17 +14,53 @@
     <div id="pager">
         @for (int i = 0; i < pageCount; i++)
         {
+            if (i == 0)
+            {
+                if (page != 0)
+                {
+                    
+                    <div>
+                        @Html.ActionLink("<", "Catalogue", "Home", new { page = (page - 1)}, null)
+                    </div>
+                }
+                else
+                {
+                    
+                    <div class="current"><</div>
+                }
+            }
+            
             if (i == page)
             {
                 <div class="current">
                     @Html.Raw((i + 1).ToString())
                 </div>
             }
+            else if (page < i - 1 || page > i + 1)
+            {
+                if (page == i - 2 || page == i + 2)
+                {
+                    <span>...&nbsp;&nbsp;</span>
+                }
+            }
             else
             {
                 <div>
                     @Html.ActionLink((i + 1).ToString(), "Catalogue", "Home", new { page = i }, null)
                 </div>
+            }
+            if (i == pageCount - 1)
+            {
+                if (page != pageCount - 1)
+                {
+                    <div>
+                        @Html.ActionLink(">", "Catalogue", "Home", new { page = (page + 1)}, null)
+                    </div>
+                }
+                else
+                {
+                    <div class="current">></div>
+                }
             }
         }
     </div>

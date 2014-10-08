@@ -201,6 +201,7 @@
     <Compile Include="Models\BreadCrumbs.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CatalogueModel.cs" />
+    <Compile Include="Models\CategoryPreview.cs" />
     <Compile Include="Models\MainMenuModel.cs" />
     <Compile Include="Models\ProductPreview.cs" />
     <Compile Include="Models\ProductPreviewLabel.cs" />
@@ -224,6 +225,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\cart.css" />
     <Content Include="Content\css\catalogue.css" />
+    <Content Include="Content\css\category.css" />
     <Content Include="Content\css\content.css" />
     <Content Include="Content\css\footer.css" />
     <Content Include="Content\css\header.css" />
@@ -512,6 +514,7 @@
     <Content Include="Views\Cart\ThankYou.cshtml" />
     <Content Include="Views\Shared\LanguageSwitcher.cshtml" />
     <Content Include="Views\Shared\Paging.cshtml" />
+    <Content Include="Views\Shared\CategoryPreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

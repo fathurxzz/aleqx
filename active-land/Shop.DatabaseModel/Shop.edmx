@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -215,6 +215,7 @@
     <Property Name="CategoryLevel" Type="int" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="true" />
     <Property Name="IsActive" Type="bool" Nullable="false" />
+    <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="200" />
   </EntityType>
   <EntityType Name="CategoryLang">
     <Key>
@@ -1207,6 +1208,7 @@
           <NavigationProperty Name="Products" Relationship="Shop.CategoryProduct" FromRole="Category" ToRole="Product" />
           <NavigationProperty Name="ProductAttributes" Relationship="Shop.CategoryProductAttribute" FromRole="Category" ToRole="ProductAttribute" />
           <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="ImageSource" MaxLength="200" />
         </EntityType>
         <EntityType Name="CategoryLang">
           <Key>
@@ -2007,6 +2009,7 @@
           <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
           <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

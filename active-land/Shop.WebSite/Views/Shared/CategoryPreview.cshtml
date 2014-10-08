@@ -1,0 +1,22 @@
+﻿@using Shop.WebSite
+@using Shop.WebSite.Helpers.Graphics
+@using Shop.WebSite.Models
+@model Shop.WebSite.Models.CategoryPreview
+
+<div class="category-preview">
+    <a href="@Url.Action("Catalogue", "Home", new { category = Model.Name })">
+
+        <div class="image">
+            @Html.Raw(Html.CachedImage("~/Content/Images/", Model.ImageSource, SiteSettings.GetThumbnail("siteProductPreview")))
+        </div>
+        <div class="title-price">
+            <ul>
+                <li class="title">
+                    <span>
+                        @Model.Title
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </a>
+</div>
