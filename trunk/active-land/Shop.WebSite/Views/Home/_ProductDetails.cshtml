@@ -118,7 +118,7 @@
             
             <table>
             
-            @foreach (var pruductAttribute in Model.Category.ProductAttributes.OrderBy(p=>p.SortOrder))
+            @foreach (var pruductAttribute in Model.Category.ProductAttributes.Where(pa=>pa.IsPublic).OrderBy(p=>p.SortOrder))
             {
                 if (Model.ProductAttributeValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id) || Model.ProductAttributeStaticValues.Select(p => p.ProductAttributeId).Contains(pruductAttribute.Id))
                 {
