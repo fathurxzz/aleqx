@@ -80,16 +80,16 @@ namespace Shop.WebSite.Areas.Admin.Controllers
             try
             {
                 var productStock = _repository.GetProductStock(model.Id);
+                var productId = productStock.ProductId;
                 TryUpdateModel(productStock, new[] { "StockNumber", "Size", "Color", "IsAvailable"});
                 _repository.SaveProductStock(productStock);
+                return RedirectToAction("Index", new { id = productId });
             }
             catch (Exception ex)
             {
                 TempData["errorMessage"] = ex.Message;
                 return View(model);
             }
-            return RedirectToAction("Index");
-
         }
 
         public ActionResult Delete(int id, int productId)
