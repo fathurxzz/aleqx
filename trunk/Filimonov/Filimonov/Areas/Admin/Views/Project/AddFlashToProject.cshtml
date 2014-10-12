@@ -14,6 +14,8 @@
     }
 </style>
 <div class="adminContentContainer">
+    
+    @ViewBag.Errormessage
     @using (Html.BeginForm("AddFlashToProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)

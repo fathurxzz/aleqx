@@ -30,6 +30,11 @@ namespace Filimonov.Models
                 
                 Project.Songs.Load();
                 Project.FlashContents.Load();
+                foreach (var flashContent in Project.FlashContents)
+                {
+                    flashContent.DirectoryName = flashContent.ImageSource;
+                    flashContent.ImageSource = flashContent.ImageSource + ".html";
+                }
             }
 
         }

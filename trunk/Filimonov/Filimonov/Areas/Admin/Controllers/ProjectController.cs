@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using Filimonov.Models;
+using Ionic.Zip;
 using SiteExtensions;
 
 namespace Filimonov.Areas.Admin.Controllers
@@ -62,7 +63,6 @@ namespace Filimonov.Areas.Admin.Controllers
                 return View(project);
             }
         }
-
 
 
         [HttpPost]
@@ -170,50 +170,132 @@ namespace Filimonov.Areas.Admin.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public ActionResult AddFlashToProject(FlashContent model, int projectId, HttpPostedFileBase fileUpload)
+        //{
+
+        //    using (var context = new SiteContainer())
+        //    {
+        //        var project = context.Project.First(p => p.Id == projectId);
+        //        ViewBag.projectId = project.Id;
+        //        ViewBag.projectName = project.Name;
+
+
+        //        try
+        //        {
+        //            var file = fileUpload;
+        //            if (file != null)
+        //            {
+
+        //                var pi = new FlashContent();
+        //                string fileName = IOHelper.GetUniqueFileName("~/Content/Flash", file.FileName);
+        //                string filePath = Server.MapPath("~/Content/Flash");
+        //                string flashSourceFilePath = filePath;
+        //                string flashDestFilePath = filePath;
+
+        //                filePath = Path.Combine(filePath, fileName);
+        //                file.SaveAs(filePath);
+        //                pi.ImageSource = fileName;
+        //                pi.Title = model.Title;
+        //                project.FlashContents.Add(pi);
+
+        //                flashSourceFilePath = Path.Combine(flashSourceFilePath, "virtualtour.xml");
+        //                flashDestFilePath = Path.Combine(flashDestFilePath, Path.GetFileNameWithoutExtension(fileName) + ".xml");
+        //                System.IO.File.Copy(flashSourceFilePath, flashDestFilePath);
+
+        //                context.SaveChanges();
+        //            }
+
+        //            return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return View();
+        //        }
+
+        //        //string filePath = Server.MapPath("~/Content/Flash1/ponedelnik.zip");
+        //        //string destPath = Server.MapPath("~/Content/Flash2");
+
+        //        //using (ZipFile zip = ZipFile.Read(filePath))
+        //        //{
+        //        //    foreach (ZipEntry e in zip)
+        //        //    {
+        //        //        e.Extract(destPath, true);  // true => overwrite existing files
+        //        //    }
+        //        //}
+        //    }
+        //}
+        
+        
         [HttpPost]
         public ActionResult AddFlashToProject(FlashContent model, int projectId, HttpPostedFileBase fileUpload)
         {
+
             using (var context = new SiteContainer())
             {
                 var project = context.Project.First(p => p.Id == projectId);
+                ViewBag.projectId = project.Id;
+                ViewBag.projectName = project.Name;
 
-                
-                var file = fileUpload;
-                if (file != null)
+                try
                 {
-
-                    var pi = new FlashContent();
-                    string fileName = IOHelper.GetUniqueFileName("~/Content/Flash", file.FileName);
-                    string filePath = Server.MapPath("~/Content/Flash");
-                    string flashSourceFilePath = filePath;
-                    string flashDestFilePath = filePath;
-
-                    filePath = Path.Combine(filePath, fileName);
-                    file.SaveAs(filePath);
-                    pi.ImageSource = fileName;
-                    pi.Title = model.Title;
-                    project.FlashContents.Add(pi);
                     
-                    flashSourceFilePath = Path.Combine(flashSourceFilePath, "virtualtour.xml");
-                    flashDestFilePath = Path.Combine(flashDestFilePath, Path.GetFileNameWithoutExtension(fileName) + ".xml");
-                    System.IO.File.Copy(flashSourceFilePath, flashDestFilePath);
+                    var file = fileUpload;
+                    if (file != null)
+                    {
+                        var pi = new FlashContent();
+                        string fileName = IOHelper.GetUploadFileName("~/Content/TmpArchive", file.FileName);
+                        string filePath = Server.MapPath("~/Content/TmpArchive");
 
-                    context.SaveChanges();
+                        
+
+                        //string flashSourceFilePath = filePath;
+                        //string flashDestFilePath = filePath;
+
+                        filePath = Path.Combine(filePath, fileName);
+                        file.SaveAs(filePath);
+
+                        string archiveName =  Path.GetFileNameWithoutExtension(fileName);
+                        
+                        string extractedArchivePath = Path.Combine(Server.MapPath("~/Content/FlashContent" ), archiveName);
+
+                        Directory.CreateDirectory(extractedArchivePath);
+
+                        using (ZipFile zip = ZipFile.Read(filePath))
+                        {
+                            foreach (ZipEntry e in zip)
+                            {
+                                e.Extract(extractedArchivePath, true);  // true => overwrite existing files
+                            }
+                        }
+
+                        System.IO.File.Delete(filePath);
+
+                        pi.ImageSource = archiveName;
+                        pi.Title = model.Title;
+                        project.FlashContents.Add(pi);
+
+                        context.SaveChanges();
+                    }
+
+                    return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Errormessage = ex.Message;
+                    return View();
                 }
 
+                //string filePath = Server.MapPath("~/Content/Flash1/ponedelnik.zip");
+                //string destPath = Server.MapPath("~/Content/Flash2");
 
-                //if (fileUpload != null)
+                //using (ZipFile zip = ZipFile.Read(filePath))
                 //{
-                //    var pi = new ProjectImage();
-                //    string fileName = IOHelper.GetUniqueFileName("~/Content/Images", fileUpload.FileName);
-                //    string filePath = Server.MapPath("~/Content/Images");
-                //    filePath = Path.Combine(filePath, fileName);
-                //    fileUpload.SaveAs(filePath);
-                //    pi.ImageSource = fileName;
-                //    project.ProjectImages.Add(pi);
-                //    context.SaveChanges();
+                //    foreach (ZipEntry e in zip)
+                //    {
+                //        e.Extract(destPath, true);  // true => overwrite existing files
+                //    }
                 //}
-                return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
             }
         }
 
@@ -271,16 +353,35 @@ namespace Filimonov.Areas.Admin.Controllers
             }
         }
 
+        //public ActionResult DeleteFlash(int id)
+        //{
+        //    using (var context = new SiteContainer())
+        //    {
+        //        var projectImage = context.FlashContent.Include("Project").First(pi => pi.Id == id);
+        //        var project = projectImage.Project;
+        //        IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource);
+        //        IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource, "xml");
+        //        context.DeleteObject(projectImage);
+        //        context.SaveChanges();
+        //        return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
+        //    }
+        //}
+
         public ActionResult DeleteFlash(int id)
         {
             using (var context = new SiteContainer())
             {
                 var projectImage = context.FlashContent.Include("Project").First(pi => pi.Id == id);
                 var project = projectImage.Project;
-                IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource);
-                IOHelper.DeleteFile("~/Content/Flash", projectImage.ImageSource, "xml");
-                context.DeleteObject(projectImage);
-                context.SaveChanges();
+                try
+                {
+                    IOHelper.DeleteDirectory("~/Content/FlashContent", projectImage.ImageSource);
+                }
+                catch
+                {
+                    context.DeleteObject(projectImage);
+                    context.SaveChanges();
+                }
                 return RedirectToAction("Projects", "Home", new { area = "", id = project.Name });
             }
         }
@@ -339,5 +440,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 return RedirectToAction("Projects", "Home", new { area = "" });
             }
         }
+
+        
     }
 }

@@ -10,7 +10,7 @@ namespace Filimonov.Models
     [MetadataType(typeof(FlashContentValidation))]
     public partial class FlashContent
     {
-
+        public string DirectoryName { get; set; }
     }
 
     public class FlashContentValidation
