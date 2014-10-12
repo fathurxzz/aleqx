@@ -82,7 +82,7 @@
                     @foreach (var flash in Model.FlashContents)
                     {
                         <div class="flash-item">
-                            <a href="/Content/Flash/@flash.ImageSource" target="_blank">@flash.Title</a>
+                            <a href="/Content/FlashContent/@flash.DirectoryName/@flash.ImageSource" target="_blank">@flash.Title</a>
                             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
                             {
                                 @Html.ActionLink("Удалить", "DeleteFlash", "Project", new {area = "Admin", id = flash.Id}, new {@class = "adminLink", onclick = "return confirm('Удалить флеш?')"})
