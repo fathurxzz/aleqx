@@ -30,6 +30,8 @@ namespace Shop.DataAccess.EntityFramework.Mapping
             this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.SearchCriteria).HasColumnName("SearchCriteria");
             this.Property(t => t.SearchCriteriaAttributes).HasColumnName("SearchCriteriaAttributes");
+            this.Property(t => t.ExternalId).HasColumnName("ExternalId");
+            this.Property(t => t.OriginalUrl).HasColumnName("OriginalUrl");
             this.Property(t => t.IsNew).HasColumnName("IsNew");
             this.Property(t => t.IsDiscount).HasColumnName("IsDiscount");
             this.Property(t => t.IsTopSale).HasColumnName("IsTopSale");

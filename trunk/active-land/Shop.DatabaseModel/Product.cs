@@ -34,6 +34,8 @@ namespace Shop.DatabaseModel
         public bool IsActive { get; set; }
         public string SearchCriteria { get; set; }
         public string SearchCriteriaAttributes { get; set; }
+        public string ExternalId { get; set; }
+        public string OriginalUrl { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Shop.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="ShopStoreContainer">
     <EntitySet Name="Language" EntityType="Shop.Store.Language" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Category" EntityType="Shop.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -244,6 +244,8 @@
     <Property Name="IsActive" Type="bool" Nullable="false" />
     <Property Name="SearchCriteria" Type="varchar" Nullable="false" MaxLength="1000" />
     <Property Name="SearchCriteriaAttributes" Type="varchar" Nullable="false" MaxLength="1000" />
+    <Property Name="ExternalId" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="OriginalUrl" Type="varchar" Nullable="true" MaxLength="500" />
   </EntityType>
   <EntityType Name="ProductAttribute">
     <Key>
@@ -1245,6 +1247,8 @@
           <Property Type="String" Name="SearchCriteria" Nullable="false" MaxLength="1000" />
           <Property Type="String" Name="SearchCriteriaAttributes" Nullable="false" MaxLength="1000" />
           <NavigationProperty Name="ProductStocks" Relationship="Shop.ProductProductStock" FromRole="Product" ToRole="ProductStock" />
+          <Property Type="String" Name="ExternalId" MaxLength="200" />
+          <Property Type="String" Name="OriginalUrl" MaxLength="500" />
         </EntityType>
         <EntityType Name="ProductAttribute">
           <Key>
@@ -2040,6 +2044,8 @@
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="SearchCriteria" ColumnName="SearchCriteria" />
           <ScalarProperty Name="SearchCriteriaAttributes" ColumnName="SearchCriteriaAttributes" />
+          <ScalarProperty Name="ExternalId" ColumnName="ExternalId" />
+          <ScalarProperty Name="OriginalUrl" ColumnName="OriginalUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

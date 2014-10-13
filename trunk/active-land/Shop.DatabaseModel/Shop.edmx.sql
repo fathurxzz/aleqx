@@ -5,8 +5,8 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 10/08/2014 21:11:44
--- Generated from EDMX file: C:\vsp\active-land\Shop.DatabaseModel\Shop.edmx
+-- Date Created: 10/13/2014 14:52:46
+-- Generated from EDMX file: D:\projects\active-land\Shop.DatabaseModel\Shop.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
 
@@ -152,7 +152,9 @@ CREATE TABLE `Product`(
 	`OldPrice` decimal( 10, 2 )  NOT NULL, 
 	`IsActive` bool NOT NULL, 
 	`SearchCriteria` varchar (1000) NOT NULL, 
-	`SearchCriteriaAttributes` varchar (1000) NOT NULL);
+	`SearchCriteriaAttributes` varchar (1000) NOT NULL, 
+	`ExternalId` varchar (200), 
+	`OriginalUrl` varchar (500));
 
 ALTER TABLE `Product` ADD PRIMARY KEY (Id);
 

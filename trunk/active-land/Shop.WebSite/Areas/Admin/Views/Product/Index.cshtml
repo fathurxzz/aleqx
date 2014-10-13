@@ -32,6 +32,9 @@
         <th>Категория
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ExternalId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -66,6 +69,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExternalId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

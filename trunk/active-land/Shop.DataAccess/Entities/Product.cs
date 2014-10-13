@@ -20,6 +20,8 @@ namespace Shop.DataAccess.Entities
         public string Name { get; set; }
         public string SearchCriteria { get; set; }
         public string SearchCriteriaAttributes { get; set; }
+        public string ExternalId { get; set; }
+        public string OriginalUrl { get; set; }
         public bool IsNew { get; set; }
         public bool IsDiscount { get; set; }
         public bool IsTopSale { get; set; }
