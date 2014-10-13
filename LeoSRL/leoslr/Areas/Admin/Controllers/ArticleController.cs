@@ -52,7 +52,7 @@ namespace Leo.Areas.Admin.Controllers
                 {
                     Category = category,
                     Published = model.Published,
-                    Date = DateTime.Now,
+                    Date = model.Date,
                     Title = model.Title,
                     Description = model.Description
                 };
@@ -90,7 +90,7 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = _context.Articles.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "Title", "Published" });
+                    TryUpdateModel(cache, new[] { "Title","Date", "Published" });
                     cache.Description = model.Description;
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)
