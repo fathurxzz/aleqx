@@ -162,3 +162,11 @@ textarea
 .adminTextContainer {
     max-height: 100px; overflow: hidden; max-width: 800px
 }
+
+table.table tr.item {
+    background-color: rgb(240, 240, 240) !important;
+}
+
+table.table tr.alt-item {
+    background-color: #ffffff !important;
+}

@@ -33,7 +33,7 @@
 <p>
     @Html.ActionLink("Добавить категорию", "Create")
 </p>
-<table class="table table-striped">
+<table class="table">
     @*<table class="table">*@
     <tr>
         <th>
@@ -53,22 +53,26 @@
         </th>
         <th></th>
     </tr>
-
+    
     @foreach (var item in Model)
     {
         
-        <tr>
+        <tr class="item">
             <td>
                 @if (item.CategoryLevel > 0)
                 {
                     string categoryLevel = "level" + item.CategoryLevel;
                     <span class="category-level-indicator @categoryLevel"></span>
                 }
-                @if (item.IsNewsCategory)
+                @if (item.Products.Any())
                 {
-                    <span class="label label-info">Категория новостей</span>
+                    <span class="label label-info">@item.Name</span>
                 }
-                @item.Name
+                else
+                {
+                    @item.Name
+                }
+                
             </td>
             <td>
                 @item.SortOrder
@@ -104,12 +108,12 @@
                 else
                 {
                     @Html.ActionLink("Добавить подкатегорию", "Create", "Category", new { id = item.Id }, null) <text>|</text>
-                    @Html.ActionLink("Добавить продукт", "Create", "Product", new { id = item.Id }, null) 
+                    @Html.ActionLink("Добавить раздел", "Create", "Product", new { id = item.Id }, null) 
                 }
             </td>
         </tr>
 
-                foreach (var product in item.Products)
+                foreach (var product in item.Products.OrderBy(p=>p.SortOrder))
                 {
                     <tr>
                         <td style="white-space: nowrap">
@@ -126,9 +130,14 @@
                         <td>@product.SortOrder</td>
                         <td>@product.Title</td>
                         <td>
-                            <div class="adminTextContainer">
-                                @Html.Raw(product.Text)
-                            </div>
+                            @foreach (var image in product.ProductImages)
+                            {
+                                <div style="float: left; margin: 0 3px">
+                                    <div style="position: absolute">@Html.ActionLink("Удалить", "DeleteImage", "Product", new { id = image.Id }, new { @class="adminLink" ,onclick = "return confirm('Удалить изображение?')" })</div>
+                                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImageAdminPreview")))
+                                </div>
+                            }
+
                         </td>
                         <td>
                             @if (!product.IsCorrectLang)
@@ -145,19 +154,6 @@
                             @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="6">
-                            @foreach (var image in product.ProductImages)
-                            {
-                                <div style="float: left; margin: 0 3px">
-                                    @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImagePreview")))
-                                    <br />
-                                    @Html.ActionLink("Удалить", "DeleteImage", "Product", new { id = image.Id }, new { onclick = "return confirm('Удалить изображение?')" })
-                                </div>
-                            }
-                        </td>
-                    </tr>
-  
                 }
 
 
@@ -182,6 +178,8 @@
                             <div class="adminTextContainer">
                                 @Html.Raw(article.Description)
                             </div>
+                            
+                            
                         </td>
                         <td>
                             @if (!article.IsCorrectLang)

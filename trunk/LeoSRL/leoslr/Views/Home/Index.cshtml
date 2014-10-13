@@ -220,7 +220,7 @@
         {
     <div class="product-selector-container">
         <select class="product-selector" id="productSelector">
-            @foreach (var product in Model.Category.Products)
+            @foreach (var product in Model.Category.Products.OrderBy(p=>p.SortOrder))
             {
                 if (Model.Product.Name == product.Name)
                 {
