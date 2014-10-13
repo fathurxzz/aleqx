@@ -25,7 +25,7 @@ namespace Leo.Models
         [Required(ErrorMessage = "Введите порядок отображения")]
         public string SortOrder { get; set; }
 
-        [Display(Name = "Идентификатор (является частью адреса в строке браузера)")]
+        [Display(Name = "Идентификатор (является частью адреса в строке браузера, вводить латиницей!!!)")]
         [Required(ErrorMessage = "Введите идентификатор")]
         public string Name { get; set; }
 

@@ -75,21 +75,23 @@ $(function () {
         };
 
         var changeImageFadeInOnly = function () {
-            if (i == LEO.settings.specialContent.items.length) {
-                i = 0;
+            if (LEO.settings.specialContent != undefined) {
+                if (i == LEO.settings.specialContent.items.length) {
+                    i = 0;
+                }
+                console.log(i);
+                var item = LEO.settings.specialContent.items[i];
+                console.log(item);
+                var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
+                var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
+                i++;
+                $("#bg-layer").css({ 'background-image': pagebg }).animate({ opacity: 1 }, 'slow', function() {
+                    $("#contentFrameWrapper").css("display", "block");
+                    $("#title").html(item.title);
+                    $("#text").html(item.text);
+                    $("#contentFrame").css("background-image", contentbg);
+                });
             }
-            console.log(i);
-            var item = LEO.settings.specialContent.items[i];
-            console.log(item);
-            var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
-            var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
-            i++;
-            $("#bg-layer").css({ 'background-image': pagebg }).animate({ opacity: 1 }, 'slow', function () {
-                $("#contentFrameWrapper").css("display", "block");
-                $("#title").html(item.title);
-                $("#text").html(item.text);
-                $("#contentFrame").css("background-image", contentbg);
-            });
         };
 
         changeImageFadeInOnly();
