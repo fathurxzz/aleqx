@@ -165,11 +165,34 @@
     }
     else if (Model.Category.HasContentPages && Model.Product != null)
     {
+        
     <div class="site-content-container">
         <div class="category-title articles">
             @Model.Category.Title
         </div>
-        <div class="article-separator"></div>
+        
+        @if (Model.Category.Products.Count > 1)
+        {
+            <div>
+                <ul class="products-contents">
+                    @foreach (var product in Model.Category.Products)
+                    {
+                        if (product.Name == Model.Product.Name)
+                        {
+                            <li>@product.Title</li>
+                        }
+                        else
+                        {
+                            
+                            <li>@Html.ActionLink(product.Title,"Index","Home",new{product=product.Name},null)</li>
+                        }
+                
+                    }
+                </ul>
+                </div>
+        }
+
+        <div class="content-separator"></div>
         <div class="title">@Model.Product.Title</div>
         <div class="text">@Html.Raw(Model.Product.Text)</div>
 

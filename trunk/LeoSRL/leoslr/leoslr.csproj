@@ -272,6 +272,7 @@
     <Content Include="Content\img\zoom.png" />
     <Content Include="Content\index.css" />
     <Content Include="Content\intro.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery.bxslider.css" />

@@ -27,6 +27,12 @@
     font-size: 13px;
 }
 
+.product-selector option {
+    /*background-color:rgba(0,0,0,0.3);*/
+    /*background: url("img/select-bg-big.png");*/
+    color: #000;
+}
+
 
 
 #productFrameWrapper{
