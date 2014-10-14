@@ -72,7 +72,18 @@
             </span>
         </div>
         <div class="menu">
-            <div class="logo"></div>
+            
+            
+            @if (ViewBag.IsHomePAge!="1")
+            {
+                <a href="@Url.Action("Index","Home",new{category=ViewBag.Category,subcategory=""})"><div class="logo"></div></a>
+            }
+            else
+            {
+                <div class="logo"></div>
+            }
+            
+            
 
             @Html.Partial("Menu", Model.SiteMenu)
 
@@ -184,9 +195,9 @@
                         else
                         {
                             
-                            <li>@Html.ActionLink(product.Title,"Index","Home",new{product=product.Name},null)</li>
+                            <li>@Html.ActionLink(product.Title, "Index", "Home", new { product = product.Name }, null)</li>
                         }
-                
+
                     }
                 </ul>
                 </div>
@@ -243,7 +254,7 @@
         {
     <div class="product-selector-container">
         <select class="product-selector" id="productSelector">
-            @foreach (var product in Model.Category.Products.OrderBy(p=>p.SortOrder))
+            @foreach (var product in Model.Category.Products.OrderBy(p => p.SortOrder))
             {
                 if (Model.Product.Name == product.Name)
                 {
