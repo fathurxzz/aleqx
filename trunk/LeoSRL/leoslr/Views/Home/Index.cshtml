@@ -281,12 +281,15 @@
     <div id="productFrameWrapper">
         <div id="productFrame">
             <div id="productContainer">
+                <div class="cross"></div>
+                <div class="product-content-wrapper">
                 <div id="productTitle">
                     @Html.Raw(Model.Product.Title)
                 </div>
-                <div id="productText">
-                    @Html.Raw(Model.Product.Text)
-                </div>
+                    <div id="productText">
+                        @Html.Raw(Model.Product.Text)
+                    </div>
+                    </div>
             </div>
         </div>
     </div>

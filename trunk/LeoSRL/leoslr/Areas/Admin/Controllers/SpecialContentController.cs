@@ -57,7 +57,9 @@ namespace Leo.Areas.Admin.Controllers
                     ContentImageSource = "",
                     PageImageSource = "",
                     Title = model.Title ?? "",
-                    Text = model.Text ?? ""
+                    Text = model.Text ?? "",
+                    IsFirstCategory = model.IsFirstCategory,
+                    IsSecondCategory = model.IsSecondCategory
                 };
 
                 if (pageImage != null)
@@ -115,6 +117,9 @@ namespace Leo.Areas.Admin.Controllers
                 model.Text = HttpUtility.HtmlDecode(model.Text);
                 var cache = _context.SpecialContents.First(c => c.Id == model.Id);
                 cache.CurrentLang = CurrentLang.Id;
+                cache.IsFirstCategory = model.IsFirstCategory;
+                cache.IsSecondCategory = model.IsSecondCategory;
+
 
                 if (pageImage != null)
                 {
