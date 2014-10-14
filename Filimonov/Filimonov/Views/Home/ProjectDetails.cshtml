@@ -118,7 +118,7 @@
                     
                     @Html.ActionLink("Добавить флеш", "AddFlashToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;
                     
-                    @Html.ActionLink("Добавить mp3", "AddSongToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;
+                    @*@Html.ActionLink("Добавить mp3", "AddSongToProject", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })&nbsp;*@
                     
                     @Html.ActionLink("Удалить проект", "Delete", "Project", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick = "return confirm('Удалить проект?')" })
                 </div>
