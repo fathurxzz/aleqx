@@ -31,6 +31,7 @@ namespace Leo.Controllers
             ViewBag.Language = CurrentLang.Code;
             ViewBag.Category = category;
             ViewBag.SubCategory = subcategory;
+            ViewBag.IsHomePAge = subcategory == null?"1":"";
 
             this.SetSeoContent(model);
             return View(model);
