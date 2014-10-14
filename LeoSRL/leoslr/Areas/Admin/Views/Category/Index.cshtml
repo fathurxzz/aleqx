@@ -53,9 +53,17 @@
         </th>
         <th></th>
     </tr>
-    
+    @{
+        var cnt = 0;
+    }
     @foreach (var item in Model)
     {
+       if (item.CategoryLevel == 0&&cnt!=0)
+        {
+            <tr >
+                <td style="height: 10px; background-color: #ccc" colspan="6"></td>
+            </tr>
+        }
         
         <tr class="item">
             <td>
@@ -112,6 +120,8 @@
                 }
             </td>
         </tr>
+        
+        
 
                 foreach (var product in item.Products.OrderBy(p=>p.SortOrder))
                 {
@@ -157,7 +167,7 @@
                 }
 
 
-                foreach (var article in item.Articles.OrderBy(a=>a.Date))
+                foreach (var article in item.Articles.OrderByDescending(a=>a.Date))
                 {
                     <tr>
                         <td>
@@ -243,6 +253,8 @@
   
                     }
                 }
+        cnt++;
+
     }
 
 </table>
