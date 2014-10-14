@@ -3,7 +3,7 @@
     position: relative;
     margin: 0 auto;
     background-color: #faf9f1;
-    height: 900px;
+    min-height: 900px;
 }
 
     .site-content-container .title {
