@@ -232,3 +232,7 @@ textarea
     margin: 20px auto 40px auto;
     border-bottom: 1px solid #9b9987;
 }
+
+table td, table th {
+    border-color: #ddddd3 !important;
+}

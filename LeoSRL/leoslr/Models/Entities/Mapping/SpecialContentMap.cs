@@ -30,6 +30,9 @@ namespace Leo.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.PageImageSource).HasColumnName("PageImageSource");
             this.Property(t => t.ContentImageSource).HasColumnName("ContentImageSource");
+
+            this.Property(t => t.IsFirstCategory).HasColumnName("IsFirstCategory");
+            this.Property(t => t.IsSecondCategory).HasColumnName("IsSecondCategory");
         }
     }
 }

@@ -33,7 +33,20 @@
                 @Html.TextAreaFor(model => model.Text, new { @class = "ckeditor" })
                 @Html.ValidationMessageFor(model => model.Text)
             </div>
-
+                 <div class="editor-label">
+                "Создаю"
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.IsFirstCategory)
+                @Html.ValidationMessageFor(model => model.IsFirstCategory)
+            </div>
+             <div class="editor-label">
+                "Инвестирую"
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.IsSecondCategory)
+                @Html.ValidationMessageFor(model => model.IsSecondCategory)
+            </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.PageImageSource)
             </div>

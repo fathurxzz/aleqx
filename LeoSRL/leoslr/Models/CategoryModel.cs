@@ -24,10 +24,24 @@ namespace Leo.Models
         public CategoryModel(Language lang, SiteContext context, string categoryName = null, string subcategoryName = null, string productName=null, int? articleId=null, bool intro = false)
             : base(lang, context, categoryName)
         {
+
+
+            Categories = _context.Categories.ToList();
+            var currentCategoryName = subcategoryName ?? categoryName;
+            Category = Categories.FirstOrDefault(c => c.Name == currentCategoryName);
+
+
+            int? currentCategoryId = null;
+            var cc= Categories.FirstOrDefault(c => c.Name == categoryName);
+            if (cc != null)
+            {
+                currentCategoryId = cc.Id;
+            }
             
+
             if (subcategoryName == null)
             {
-                SpecialContents = _context.SpecialContents.ToList();
+                SpecialContents = _context.SpecialContents.Where(sc => (sc.IsFirstCategory && currentCategoryId == 1) || (sc.IsSecondCategory && currentCategoryId == 2)).ToList().OrderBy(sc => Guid.NewGuid());
                 foreach (var specialContent in SpecialContents)
                 {
                     specialContent.CurrentLang = lang.Id;
@@ -56,10 +70,9 @@ namespace Leo.Models
            
 
 
-            Categories = _context.Categories.ToList();
+           
             
-            var currentCategoryName = subcategoryName ?? categoryName;
-            Category = Categories.FirstOrDefault(c => c.Name == currentCategoryName);
+            
 
             var nextCategory = Categories.FirstOrDefault(c => c.Parent == null && c.Name != categoryName);
             if (nextCategory != null)

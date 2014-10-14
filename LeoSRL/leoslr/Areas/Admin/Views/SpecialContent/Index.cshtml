@@ -29,12 +29,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Text)
         </th>
+         <th>"Создаю"</th>
+        <th>"Инвестирую"</th>
         <th>
             @Html.DisplayNameFor(model => model.PageImageSource)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ContentImageSource)
         </th>
+       
         <th></th>
     </tr>
 
@@ -46,6 +49,8 @@
         <td>
             @Html.Raw(item.Text)
         </td>
+        <td>@Html.DisplayFor(modelItem => item.IsFirstCategory)</td>
+        <td>@Html.DisplayFor(modelItem => item.IsSecondCategory)</td>
         <td>
             @if (!string.IsNullOrEmpty(item.PageImageSource))
             {
@@ -58,6 +63,7 @@
                 @Html.Raw(Html.CachedImage("~/Content/Images/", item.ContentImageSource, SiteSettings.GetThumbnail("specialContentPreview")))
             }
         </td>
+        
         <td>
             @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
             @*@Html.ActionLink("Details", "Details", new { id=item.Id }) | *@ 

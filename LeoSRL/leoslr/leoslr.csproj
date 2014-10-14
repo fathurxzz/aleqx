@@ -258,6 +258,7 @@
     <Content Include="Content\fancybox\jquery.fancybox-1.3.4.pack.js" />
     <Content Include="Content\fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Content\Fonts.css" />
+    <Content Include="Content\img\cross.png" />
     <Content Include="Content\img\em.png" />
     <Content Include="Content\img\hand.png" />
     <Content Include="Content\img\intro.png" />
