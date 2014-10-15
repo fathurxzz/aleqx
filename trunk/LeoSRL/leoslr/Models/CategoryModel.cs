@@ -41,7 +41,7 @@ namespace Leo.Models
 
             if (subcategoryName == null)
             {
-                SpecialContents = _context.SpecialContents.Where(sc => (sc.IsFirstCategory && currentCategoryId == 1) || (sc.IsSecondCategory && currentCategoryId == 2)).ToList().OrderBy(sc => Guid.NewGuid());
+                SpecialContents = _context.SpecialContents.Where(sc => (sc.IsFirstCategory && currentCategoryId == 2) || (sc.IsSecondCategory && currentCategoryId == 1)).ToList().OrderBy(sc => Guid.NewGuid());
                 foreach (var specialContent in SpecialContents)
                 {
                     specialContent.CurrentLang = lang.Id;

@@ -53,7 +53,7 @@ $(function () {
         if (LEO.settings.randomImageFromProductImages == undefined) {
 
             var i = 0;
-            var delay = 5000;
+            var delay = 8000;
 
 
             var changeImage = function() {
