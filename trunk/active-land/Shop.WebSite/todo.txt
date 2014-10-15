@@ -1,7 +1,4 @@
-﻿alter table `Product` add `ExternalId` varchar (200);
-alter table `Product` add	`OriginalUrl` varchar (500);
-
-1b87e7c57890
+﻿1b87e7c57890
 
 todo:
 2
