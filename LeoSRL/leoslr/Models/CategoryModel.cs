@@ -28,8 +28,7 @@ namespace Leo.Models
 
             Categories = _context.Categories.ToList();
             var currentCategoryName = subcategoryName ?? categoryName;
-            Category = Categories.FirstOrDefault(c => c.Name == currentCategoryName);
-
+            Category = categoryName!=null ? Categories.FirstOrDefault(c => c.Name == currentCategoryName) : Categories.FirstOrDefault(c => c.Parent==null);
 
             int? currentCategoryId = null;
             var cc= Categories.FirstOrDefault(c => c.Name == categoryName);
@@ -155,8 +154,9 @@ namespace Leo.Models
                 return;
             }
 
-            var currentCategory = Categories.First(c => c.Name == categoryName);
-            Categories = currentCategory.Children;
+            //var currentCategory = Categories.First(c => c.Name == Category.Name);
+            //Categories = currentCategory.Children;
+            Categories = Category.Children;
 
 
             if (Product != null && Product.ProductImages.Any()&&!Product.IsContentPage)

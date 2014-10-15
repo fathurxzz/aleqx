@@ -52,6 +52,14 @@ namespace Leo
                 new[] { "Leo.Controllers" }
             );
 
+            //routes.MapRoute(
+            //    "Def",
+            //    "{lang}",
+            //    new { controller = "Home", action = "Index", category = "investor", subcategory = UrlParameter.Optional },
+            //    new { lang = @"ru|en" },
+            //    new[] { "Leo.Controllers" }
+            //);
+
             routes.MapRoute(
                 "CategoryParent",
                 "{lang}/{category}",
