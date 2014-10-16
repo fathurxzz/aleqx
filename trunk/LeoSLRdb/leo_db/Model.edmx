@@ -20,6 +20,9 @@
     <EntitySet Name="CategoryImage" EntityType="Model.Store.CategoryImage" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SpecialContent" EntityType="Model.Store.SpecialContent" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SpecialContentLang" EntityType="Model.Store.SpecialContentLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductTextBlock" EntityType="Model.Store.ProductTextBlock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductTextBlockLang" EntityType="Model.Store.ProductTextBlockLang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductTextBlockFile" EntityType="Model.Store.ProductTextBlockFile" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CategoryCategoryLang" Association="Model.Store.CategoryCategoryLang">
       <End Role="Category" EntitySet="Category" />
       <End Role="CategoryLang" EntitySet="CategoryLang" />
@@ -87,6 +90,22 @@
     <AssociationSet Name="CategoryArticle" Association="Model.Store.CategoryArticle">
       <End Role="Category" EntitySet="Category" />
       <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="LanguageProductTextBlockLang" Association="Model.Store.LanguageProductTextBlockLang">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="ProductTextBlockLang" EntitySet="ProductTextBlockLang" />
+    </AssociationSet>
+    <AssociationSet Name="ProductTextBlockProductTextBlockLang" Association="Model.Store.ProductTextBlockProductTextBlockLang">
+      <End Role="ProductTextBlock" EntitySet="ProductTextBlock" />
+      <End Role="ProductTextBlockLang" EntitySet="ProductTextBlockLang" />
+    </AssociationSet>
+    <AssociationSet Name="ProductTextBlockProductTextBlockFile" Association="Model.Store.ProductTextBlockProductTextBlockFile">
+      <End Role="ProductTextBlock" EntitySet="ProductTextBlock" />
+      <End Role="ProductTextBlockFile" EntitySet="ProductTextBlockFile" />
+    </AssociationSet>
+    <AssociationSet Name="ProductProductTextBlock" Association="Model.Store.ProductProductTextBlock">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductTextBlock" EntitySet="ProductTextBlock" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Category">
@@ -217,6 +236,34 @@
     <Property Name="Text" Type="longtext" Nullable="false" />
     <Property Name="SpecialContentId" Type="int" Nullable="false" />
     <Property Name="LanguageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductTextBlock">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductTextBlockLang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="varchar" Nullable="true" MaxLength="10000" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="LanguageId" Type="int" Nullable="false" />
+    <Property Name="ProductTextBlockId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductTextBlockFile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="ImageSource" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="FileName" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="ProductTextBlockId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="CategoryCategoryLang">
     <End Role="Category" Type="Model.Store.Category" Multiplicity="1" />
@@ -422,6 +469,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="LanguageProductTextBlockLang">
+    <End Role="Language" Type="Model.Store.Language" Multiplicity="1" />
+    <End Role="ProductTextBlockLang" Type="Model.Store.ProductTextBlockLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductTextBlockLang">
+        <PropertyRef Name="LanguageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductTextBlockProductTextBlockLang">
+    <End Role="ProductTextBlock" Type="Model.Store.ProductTextBlock" Multiplicity="1" />
+    <End Role="ProductTextBlockLang" Type="Model.Store.ProductTextBlockLang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductTextBlock">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductTextBlockLang">
+        <PropertyRef Name="ProductTextBlockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductTextBlockProductTextBlockFile">
+    <End Role="ProductTextBlock" Type="Model.Store.ProductTextBlock" Multiplicity="1" />
+    <End Role="ProductTextBlockFile" Type="Model.Store.ProductTextBlockFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductTextBlock">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductTextBlockFile">
+        <PropertyRef Name="ProductTextBlockId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductProductTextBlock">
+    <End Role="Product" Type="Model.Store.Product" Multiplicity="1" />
+    <End Role="ProductTextBlock" Type="Model.Store.ProductTextBlock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductTextBlock">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -509,6 +604,25 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
+          <EntitySet Name="ProductTextBlock" EntityType="Model.ProductTextBlock" />
+          <EntitySet Name="ProductTextBlockLang" EntityType="Model.ProductTextBlockLang" />
+          <EntitySet Name="ProductTextBlockFile" EntityType="Model.ProductTextBlockFile" />
+          <AssociationSet Name="LanguageProductTextBlockLang" Association="Model.LanguageProductTextBlockLang">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="ProductTextBlockLang" EntitySet="ProductTextBlockLang" />
+          </AssociationSet>
+          <AssociationSet Name="ProductTextBlockProductTextBlockLang" Association="Model.ProductTextBlockProductTextBlockLang">
+            <End Role="ProductTextBlock" EntitySet="ProductTextBlock" />
+            <End Role="ProductTextBlockLang" EntitySet="ProductTextBlockLang" />
+          </AssociationSet>
+          <AssociationSet Name="ProductTextBlockProductTextBlockFile" Association="Model.ProductTextBlockProductTextBlockFile">
+            <End Role="ProductTextBlock" EntitySet="ProductTextBlock" />
+            <End Role="ProductTextBlockFile" EntitySet="ProductTextBlockFile" />
+          </AssociationSet>
+          <AssociationSet Name="ProductProductTextBlock" Association="Model.ProductProductTextBlock">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductTextBlock" EntitySet="ProductTextBlock" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -539,6 +653,7 @@
           <NavigationProperty Name="ArticleItemLangs" Relationship="Model.LanguageArticleItemLang" FromRole="Language" ToRole="ArticleItemLang" />
           <NavigationProperty Name="ProductLangs" Relationship="Model.LanguageProductLang" FromRole="Language" ToRole="ProductLang" />
           <NavigationProperty Name="SpecialContentLangs" Relationship="Model.LanguageSpecialContentLang" FromRole="Language" ToRole="SpecialContentLang" />
+          <NavigationProperty Name="ProductTextBlockLangs" Relationship="Model.LanguageProductTextBlockLang" FromRole="Language" ToRole="ProductTextBlockLang" />
         </EntityType>
         <EntityType Name="CategoryLang">
           <Key>
@@ -729,6 +844,7 @@
           <NavigationProperty Name="Category" Relationship="Model.CategoryProduct" FromRole="Product" ToRole="Category" />
           <Property Type="Int32" Name="CategoryId" Nullable="false" />
           <Property Type="Int32" Name="ContentType" Nullable="false" />
+          <NavigationProperty Name="ProductTextBlocks" Relationship="Model.ProductProductTextBlock" FromRole="Product" ToRole="ProductTextBlock" />
         </EntityType>
         <EntityType Name="ProductImage">
           <Key>
@@ -874,6 +990,88 @@
             </Principal>
             <Dependent Role="Article">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductTextBlock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <NavigationProperty Name="ProductTextBlockLangs" Relationship="Model.ProductTextBlockProductTextBlockLang" FromRole="ProductTextBlock" ToRole="ProductTextBlockLang" />
+          <NavigationProperty Name="ProductTextBlockFiles" Relationship="Model.ProductTextBlockProductTextBlockFile" FromRole="ProductTextBlock" ToRole="ProductTextBlockFile" />
+          <NavigationProperty Name="Product" Relationship="Model.ProductProductTextBlock" FromRole="ProductTextBlock" ToRole="Product" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductTextBlockLang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" MaxLength="10000" />
+          <Property Type="String" Name="Title" MaxLength="200" />
+          <NavigationProperty Name="Language" Relationship="Model.LanguageProductTextBlockLang" FromRole="ProductTextBlockLang" ToRole="Language" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="ProductTextBlock" Relationship="Model.ProductTextBlockProductTextBlockLang" FromRole="ProductTextBlockLang" ToRole="ProductTextBlock" />
+          <Property Type="Int32" Name="ProductTextBlockId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductTextBlockFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" MaxLength="200" />
+          <Property Type="String" Name="ImageSource" MaxLength="500" />
+          <Property Type="String" Name="FileName" MaxLength="500" />
+          <NavigationProperty Name="ProductTextBlock" Relationship="Model.ProductTextBlockProductTextBlockFile" FromRole="ProductTextBlockFile" ToRole="ProductTextBlock" />
+          <Property Type="Int32" Name="ProductTextBlockId" Nullable="false" />
+        </EntityType>
+        <Association Name="LanguageProductTextBlockLang">
+          <End Type="Model.Language" Role="Language" Multiplicity="1" />
+          <End Type="Model.ProductTextBlockLang" Role="ProductTextBlockLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductTextBlockLang">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductTextBlockProductTextBlockLang">
+          <End Type="Model.ProductTextBlock" Role="ProductTextBlock" Multiplicity="1" />
+          <End Type="Model.ProductTextBlockLang" Role="ProductTextBlockLang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTextBlock">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductTextBlockLang">
+              <PropertyRef Name="ProductTextBlockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductTextBlockProductTextBlockFile">
+          <End Type="Model.ProductTextBlock" Role="ProductTextBlock" Multiplicity="1" />
+          <End Type="Model.ProductTextBlockFile" Role="ProductTextBlockFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductTextBlock">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductTextBlockFile">
+              <PropertyRef Name="ProductTextBlockId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductProductTextBlock">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.ProductTextBlock" Role="ProductTextBlock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductTextBlock">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1023,6 +1221,37 @@
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="SpecialContentId" ColumnName="SpecialContentId" />
           <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTextBlock">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductTextBlock)">
+        <MappingFragment StoreEntitySet="ProductTextBlock">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTextBlockLang">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductTextBlockLang)">
+        <MappingFragment StoreEntitySet="ProductTextBlockLang">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+          <ScalarProperty Name="ProductTextBlockId" ColumnName="ProductTextBlockId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTextBlockFile">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductTextBlockFile)">
+        <MappingFragment StoreEntitySet="ProductTextBlockFile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ImageSource" ColumnName="ImageSource" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ProductTextBlockId" ColumnName="ProductTextBlockId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

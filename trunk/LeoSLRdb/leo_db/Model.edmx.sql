@@ -5,7 +5,7 @@
 -- -----------------------------------------------------------
 -- Entity Designer DDL Script for MySQL Server 4.1 and higher
 -- -----------------------------------------------------------
--- Date Created: 07/13/2014 00:45:10
+-- Date Created: 10/16/2014 23:20:30
 -- Generated from EDMX file: C:\vsp\LeoSLRdb\leo_db\Model.edmx
 -- Target version: 3.0.0.0
 -- --------------------------------------------------
@@ -211,6 +211,40 @@ CREATE TABLE `SpecialContentLang`(
 	`LanguageId` int NOT NULL);
 
 ALTER TABLE `SpecialContentLang` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ProductTextBlock`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`SortOrder` int NOT NULL, 
+	`ProductId` int NOT NULL);
+
+ALTER TABLE `ProductTextBlock` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ProductTextBlockLang`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Text` varchar (10000), 
+	`Title` varchar (200), 
+	`LanguageId` int NOT NULL, 
+	`ProductTextBlockId` int NOT NULL);
+
+ALTER TABLE `ProductTextBlockLang` ADD PRIMARY KEY (Id);
+
+
+
+
+CREATE TABLE `ProductTextBlockFile`(
+	`Id` int NOT NULL AUTO_INCREMENT UNIQUE, 
+	`Title` varchar (200), 
+	`ImageSource` varchar (500), 
+	`FileName` varchar (500), 
+	`ProductTextBlockId` int NOT NULL);
+
+ALTER TABLE `ProductTextBlockFile` ADD PRIMARY KEY (Id);
 
 
 
@@ -475,6 +509,66 @@ ADD CONSTRAINT `FK_CategoryArticle`
 CREATE INDEX `IX_FK_CategoryArticle` 
     ON `Article`
     (`CategoryId`);
+
+-- Creating foreign key on `LanguageId` in table 'ProductTextBlockLang'
+
+ALTER TABLE `ProductTextBlockLang`
+ADD CONSTRAINT `FK_LanguageProductTextBlockLang`
+    FOREIGN KEY (`LanguageId`)
+    REFERENCES `Language`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LanguageProductTextBlockLang'
+
+CREATE INDEX `IX_FK_LanguageProductTextBlockLang` 
+    ON `ProductTextBlockLang`
+    (`LanguageId`);
+
+-- Creating foreign key on `ProductTextBlockId` in table 'ProductTextBlockLang'
+
+ALTER TABLE `ProductTextBlockLang`
+ADD CONSTRAINT `FK_ProductTextBlockProductTextBlockLang`
+    FOREIGN KEY (`ProductTextBlockId`)
+    REFERENCES `ProductTextBlock`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductTextBlockProductTextBlockLang'
+
+CREATE INDEX `IX_FK_ProductTextBlockProductTextBlockLang` 
+    ON `ProductTextBlockLang`
+    (`ProductTextBlockId`);
+
+-- Creating foreign key on `ProductTextBlockId` in table 'ProductTextBlockFile'
+
+ALTER TABLE `ProductTextBlockFile`
+ADD CONSTRAINT `FK_ProductTextBlockProductTextBlockFile`
+    FOREIGN KEY (`ProductTextBlockId`)
+    REFERENCES `ProductTextBlock`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductTextBlockProductTextBlockFile'
+
+CREATE INDEX `IX_FK_ProductTextBlockProductTextBlockFile` 
+    ON `ProductTextBlockFile`
+    (`ProductTextBlockId`);
+
+-- Creating foreign key on `ProductId` in table 'ProductTextBlock'
+
+ALTER TABLE `ProductTextBlock`
+ADD CONSTRAINT `FK_ProductProductTextBlock`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `Product`
+        (`Id`)
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductProductTextBlock'
+
+CREATE INDEX `IX_FK_ProductProductTextBlock` 
+    ON `ProductTextBlock`
+    (`ProductId`);
 
 -- --------------------------------------------------
 -- Script has ended

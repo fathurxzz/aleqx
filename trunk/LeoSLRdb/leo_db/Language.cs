@@ -21,6 +21,7 @@ namespace leo_db
             this.ArticleItemLangs = new HashSet<ArticleItemLang>();
             this.ProductLangs = new HashSet<ProductLang>();
             this.SpecialContentLangs = new HashSet<SpecialContentLang>();
+            this.ProductTextBlockLangs = new HashSet<ProductTextBlockLang>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,6 @@ namespace leo_db
         public virtual ICollection<ArticleItemLang> ArticleItemLangs { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
         public virtual ICollection<SpecialContentLang> SpecialContentLangs { get; set; }
+        public virtual ICollection<ProductTextBlockLang> ProductTextBlockLangs { get; set; }
     }
 }

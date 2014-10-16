@@ -39,5 +39,8 @@ namespace leo_db
         public DbSet<CategoryImage> CategoryImage { get; set; }
         public DbSet<SpecialContent> SpecialContent { get; set; }
         public DbSet<SpecialContentLang> SpecialContentLang { get; set; }
+        public DbSet<ProductTextBlock> ProductTextBlock { get; set; }
+        public DbSet<ProductTextBlockLang> ProductTextBlockLang { get; set; }
+        public DbSet<ProductTextBlockFile> ProductTextBlockFile { get; set; }
     }
 }
