@@ -20,6 +20,7 @@ namespace Leo.Models
         public virtual Category Category { get; set; }
         public virtual ICollection<ProductImage> ProductImages { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
+        public virtual ICollection<ProductTextBlock> ProductTextBlocks { get; set; }
 
     }
 }

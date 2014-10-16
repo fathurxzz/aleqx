@@ -26,6 +26,9 @@ namespace Leo.Models
         public DbSet<CategoryLang> CategoryLangs { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductTextBlock> ProductTextBlocks { get; set; }
+        public DbSet<ProductTextBlockFile> ProductTextBlockFiles { get; set; }
+        public DbSet<ProductTextBlockLang> ProductTextBlockLangs { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductLang> ProductLangs { get; set; }
         public DbSet<SpecialContent> SpecialContents { get; set; }
@@ -43,6 +46,9 @@ namespace Leo.Models
             modelBuilder.Configurations.Add(new CategoryLangMap());
             modelBuilder.Configurations.Add(new LanguageMap());
             modelBuilder.Configurations.Add(new ProductMap());
+            modelBuilder.Configurations.Add(new ProductTextBlockMap());
+            modelBuilder.Configurations.Add(new ProductTextBlockFileMap());
+            modelBuilder.Configurations.Add(new ProductTextBlockLangMap());
             modelBuilder.Configurations.Add(new ProductImageMap());
             modelBuilder.Configurations.Add(new ProductLangMap());
             modelBuilder.Configurations.Add(new SpecialContentMap());
