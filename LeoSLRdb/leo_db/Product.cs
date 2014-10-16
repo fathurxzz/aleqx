@@ -18,6 +18,7 @@ namespace leo_db
         {
             this.ProductImages = new HashSet<ProductImage>();
             this.ProductLangs = new HashSet<ProductLang>();
+            this.ProductTextBlocks = new HashSet<ProductTextBlock>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,6 @@ namespace leo_db
         public virtual ICollection<ProductImage> ProductImages { get; set; }
         public virtual ICollection<ProductLang> ProductLangs { get; set; }
         public virtual Category Category { get; set; }
+        public virtual ICollection<ProductTextBlock> ProductTextBlocks { get; set; }
     }
 }

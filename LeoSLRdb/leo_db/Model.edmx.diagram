@@ -30,12 +30,19 @@
         <AssociationConnector Association="Model.ProductProductLang" />
         <EntityTypeShape EntityType="Model.CategoryImage" Width="1.5" PointX="0.5" PointY="1" />
         <AssociationConnector Association="Model.CategoryCategoryImage" />
-        <EntityTypeShape EntityType="Model.SpecialContent" Width="1.75" PointX="12.75" PointY="4.625" />
-        <EntityTypeShape EntityType="Model.SpecialContentLang" Width="1.75" PointX="10" PointY="4.625" />
+        <EntityTypeShape EntityType="Model.SpecialContent" Width="1.75" PointX="12.5" PointY="8" />
+        <EntityTypeShape EntityType="Model.SpecialContentLang" Width="1.75" PointX="9.875" PointY="8" />
         <AssociationConnector Association="Model.SpecialContentSpecialContentLang" />
         <AssociationConnector Association="Model.LanguageSpecialContentLang" />
         <AssociationConnector Association="Model.CategoryProduct" />
         <AssociationConnector Association="Model.CategoryArticle" />
+        <EntityTypeShape EntityType="Model.ProductTextBlock" Width="1.75" PointX="12.75" PointY="4.625" />
+        <EntityTypeShape EntityType="Model.ProductTextBlockLang" Width="1.875" PointX="10.125" PointY="4.625" />
+        <EntityTypeShape EntityType="Model.ProductTextBlockFile" Width="2.375" PointX="15.25" PointY="4.625" />
+        <AssociationConnector Association="Model.LanguageProductTextBlockLang" />
+        <AssociationConnector Association="Model.ProductTextBlockProductTextBlockLang" />
+        <AssociationConnector Association="Model.ProductTextBlockProductTextBlockFile" />
+        <AssociationConnector Association="Model.ProductProductTextBlock" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
