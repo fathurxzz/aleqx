@@ -184,7 +184,14 @@
     <Compile Include="Models\Entities\Localization\ArticleItem.cs" />
     <Compile Include="Models\Entities\Localization\Category.cs" />
     <Compile Include="Models\Entities\Localization\Product.cs" />
+    <Compile Include="Models\Entities\Localization\ProductTextBlock.cs" />
     <Compile Include="Models\Entities\Localization\SpecialContent.cs" />
+    <Compile Include="Models\Entities\Mapping\ProductTextBlockFileMap.cs" />
+    <Compile Include="Models\Entities\Mapping\ProductTextBlockLangMap.cs" />
+    <Compile Include="Models\Entities\Mapping\ProductTextBlockMap.cs" />
+    <Compile Include="Models\Entities\ProductTextBlock.cs" />
+    <Compile Include="Models\Entities\ProductTextBlockFile.cs" />
+    <Compile Include="Models\Entities\ProductTextBlockLang.cs" />
     <Compile Include="Models\Json\item.cs" />
     <Compile Include="Models\Json\SpecialContentJsonModel.cs" />
     <Compile Include="Models\SiteContext.cs" />
