@@ -219,6 +219,8 @@
     <Compile Include="Models\Validation\ArticleItemValidation.cs" />
     <Compile Include="Models\Validation\ArticleValidation.cs" />
     <Compile Include="Models\Validation\CategoryValidation.cs" />
+    <Compile Include="Models\Validation\ProductTextBlockFileValidation.cs" />
+    <Compile Include="Models\Validation\ProductTextBlockValidation.cs" />
     <Compile Include="Models\Validation\ProductValidation.cs" />
     <Compile Include="Models\Validation\SpecialContentValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
