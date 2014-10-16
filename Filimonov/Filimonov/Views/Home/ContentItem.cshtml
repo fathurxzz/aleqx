@@ -7,7 +7,8 @@
             @if (Roles.IsUserInRole(User.Identity.Name, "Administrators"))
             {
                 <div>
-                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" })
+                    @Html.ActionLink("Редактировать", "Edit", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink" }) 
+                    @Html.ActionLink("Удалить", "Delete", "Content", new { area = "Admin", id = Model.Id }, new { @class = "adminLink", onclick="return confirm('Удалить проект?')" })
                 </div>
             }
         </div>
