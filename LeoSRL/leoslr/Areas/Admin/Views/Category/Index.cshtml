@@ -161,9 +161,58 @@
                         </td>
                         <td>
                             @Html.ActionLink("Редактировать", "Edit", "Product", new { id = product.Id }, null) |
+                            @Html.ActionLink("Добавить текстовый блок", "Create", "ProductTextBlock", new { id = product.Id }, null) |
                             @Html.ActionLink("Удалить", "Delete", "Product", new { id = product.Id }, new { onclick = "return confirm('Удалить продукт?')" })
                         </td>
                     </tr>
+        
+                    foreach (var textBlock in product.ProductTextBlocks)
+                    {
+                        
+                        <tr>
+                        <td style="white-space: nowrap">
+                            
+                        </td>
+                        <td>@textBlock.SortOrder</td>
+                        <td>@textBlock.Title</td>
+                            <td>
+                                
+                                @Html.Raw(textBlock.Text)
+
+                                @foreach (var image in textBlock.ProductTextBlockFiles)
+                                {
+                                    <div style="float: left; margin: 0 3px; width: 200px; height: 110px;">
+                                        <div style="float: left; margin-right: 5px">
+                                            @Html.Raw(Html.CachedImage("~/Content/Images/", image.ImageSource, SiteSettings.GetThumbnail("productImageAdminPreview")))
+                                        </div>
+                                        @Html.ActionLink("Редактировать", "Edit", "ProductTextBlockFile", new { id = image.Id }, new { @class="adminLink"})
+                                        <br/>
+                                        @Html.ActionLink("Удалить", "Delete", "ProductTextBlockFile", new { id = image.Id }, new { @class="adminLink" ,onclick = "return confirm('Удалить файл?')" })
+                                        <br/>
+                                        @image.FileName
+                                        
+                                        
+                                    </div>
+                                }
+                                <div class="clear"></div>
+                            </td>
+                        <td>
+                            @if (!textBlock.IsCorrectLang)
+                            {
+                                <span class="label label-danger">!</span>
+                            }
+                            else
+                            {
+                                <span class="label label-success">ok</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Редактировать", "Edit", "ProductTextBlock", new { id = textBlock.Id }, null) |
+                            @Html.ActionLink("Добавить документ", "Create", "ProductTextBlockFile", new { id = textBlock.Id }, null) |
+                            @Html.ActionLink("Удалить", "Delete", "ProductTextBlock", new { id = textBlock.Id }, new { onclick = "return confirm('Удалить продукт?')" })
+                        </td>
+                    </tr>
+                    }
                 }
 
 

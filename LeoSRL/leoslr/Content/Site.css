@@ -236,3 +236,32 @@ textarea
 table td, table th {
     border-color: #ddddd3 !important;
 }
+
+
+.text-box-files {
+    
+}
+
+.text-box-file {
+    width: 210px;
+    height: 50px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 22px;
+}
+
+.text-box-file a {
+    display: block;
+    
+    height: 100%;
+}
+
+.text-box-file a:hover {
+    background-color: #ecece4;
+}
+
+
+.text-box-file img {
+    float: left;
+    margin-right: 10px;
+}

@@ -18,5 +18,14 @@ namespace Leo.Helpers
                 IOHelper.DeleteFile("~/ImageCache/" + thumbnail.Key, fileName);
             }
         }
+
+        public static void DeleteFile(string fileName)
+        {
+            if (string.IsNullOrEmpty(fileName))
+                return;
+            IOHelper.DeleteFile("~/Content/Files", fileName);
+        }
+
+
     }
 }

@@ -29,6 +29,11 @@ namespace Leo.Areas.Admin.Controllers
                 foreach (var product in category.Products)
                 {
                     product.CurrentLang = CurrentLang.Id;
+
+                    foreach (var textBlock in product.ProductTextBlocks)
+                    {
+                        textBlock.CurrentLang = CurrentLang.Id;
+                    }
                 }
 
                 foreach (var article in category.Articles)
