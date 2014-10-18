@@ -223,5 +223,6 @@ namespace Leo.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
+
     }
 }

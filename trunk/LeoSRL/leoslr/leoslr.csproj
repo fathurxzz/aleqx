@@ -160,6 +160,8 @@
     <Compile Include="Areas\Admin\Controllers\ArticleItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductTextBlockController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductTextBlockFileController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpecialContentController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -330,6 +332,10 @@
     <Content Include="Content\fonts\Lato-SemiboldItalic.ttf" />
     <Content Include="Content\fonts\Lato-Thin.ttf" />
     <Content Include="Content\fonts\Lato-ThinItalic.ttf" />
+    <Content Include="Areas\Admin\Views\ProductTextBlock\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductTextBlock\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductTextBlockFile\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductTextBlockFile\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\leosrl.pubxml" />
     <None Include="Properties\PublishProfiles\leo_prod_real.pubxml" />
     <None Include="Properties\PublishProfiles\prod_1gb.pubxml" />
@@ -381,6 +387,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Content\Files\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Content\tmpImages\" />
     <Folder Include="ImageCache\" />

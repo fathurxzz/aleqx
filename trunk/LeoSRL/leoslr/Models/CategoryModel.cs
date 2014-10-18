@@ -120,6 +120,10 @@ namespace Leo.Models
                 if (productName != null)
                 {
                     Product = Category.Products.First(p => p.Name == productName);
+                    foreach (var block in Product.ProductTextBlocks)
+                    {
+                        block.CurrentLang = lang.Id;
+                    }
                 }
                 else if (subcategoryName != null && Products.Any())
                 {

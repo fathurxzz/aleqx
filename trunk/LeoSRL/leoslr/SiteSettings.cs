@@ -20,6 +20,7 @@ namespace Leo
                                   {"productImageAdminPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 80,Width = 80}, CacheFolder = "productImageAdminPreview", ScaleMode = ScaleMode.Crop}},
                                   {"articleItemImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 100,Width = 100}, CacheFolder = "articleItemImagePreview", ScaleMode = ScaleMode.Crop}},
                                   {"articleCaruselItem",new ThumbnailPicture{ PictureSize =new PictureSize {Height =391 ,Width = 522 }, CacheFolder = "articleCaruselItem", ScaleMode = ScaleMode.Crop}},
+                                  {"documentPreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height =42 ,Width = 42 }, CacheFolder = "documentPreview", ScaleMode = ScaleMode.Crop}},
                                   //{"adminPreviewProductImage",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 200,Width = 200}, CacheFolder = "adminPreviewProductImage", ScaleMode = ScaleMode.Crop}},
 
                                   //{"brandImagePreview",new ThumbnailPicture{ PictureSize =new PictureSize {Height = 150,Width = 215}, CacheFolder = "brandImagePreview", ScaleMode = ScaleMode.Crop}},

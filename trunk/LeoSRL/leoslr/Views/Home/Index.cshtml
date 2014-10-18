@@ -205,7 +205,36 @@
 
         <div class="content-separator"></div>
         <div class="title">@Model.Product.Title</div>
-        <div class="text">@Html.Raw(Model.Product.Text)</div>
+        <div class="text">
+            @Html.Raw(Model.Product.Text)
+            
+            @foreach (var textBlock in Model.Product.ProductTextBlocks)
+            {
+                <div>
+                    @Html.Raw(textBlock.Text)
+                </div>
+
+                if (textBlock.ProductTextBlockFiles.Any())
+                {
+                    
+                    <div class="text-box-files">
+                        
+                        
+                        @foreach (var file in textBlock.ProductTextBlockFiles)
+                        {
+                            <div class="text-box-file">
+                                <a href="~/Content/Files/@file.FileName">
+                                @Html.Raw(Html.CachedImage("~/Content/Images/", file.ImageSource, SiteSettings.GetThumbnail("documentPreview")))
+                                <div>@file.Title</div>
+                                </a>
+                            </div>
+                        }
+                        <div class="clear"></div>
+                    </div>
+                }
+            }
+
+        </div>
 
 
 
@@ -234,7 +263,9 @@
             </div>
         }
 
-
+        <div style="height: 25px;">
+            
+        </div>
 
 
 
