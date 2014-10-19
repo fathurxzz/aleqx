@@ -27,7 +27,12 @@ body {
 #main-page-banner
 {
     height: 478px;
-    background: url("../img/main-page-banner.jpg");
+    /*background: url("../img/main-page-banner.jpg");*/
+}
+#main-page-banner .slider {
+    /*height: 478px;*/
+    /*position: absolute;*/
+    /*height: 200px;*/
 }
 
 #about {

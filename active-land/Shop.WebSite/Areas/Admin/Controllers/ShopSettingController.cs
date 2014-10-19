@@ -16,6 +16,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
         public ShopSettingController(IShopRepository repository) : base(repository)
         {
+
         }
 
         public ActionResult Index()

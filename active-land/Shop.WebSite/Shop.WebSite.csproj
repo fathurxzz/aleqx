@@ -166,6 +166,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DataTrasferController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAttributeValueController.cs" />
@@ -219,6 +220,10 @@
     <Compile Include="TempData\Article.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bg\main-01.jpg" />
+    <Content Include="Content\bg\main-02.jpg" />
+    <Content Include="Content\bg\main-03.jpg" />
+    <Content Include="Content\bg\main-04.jpg" />
     <Content Include="Content\css\admin.css" />
     <Content Include="Content\css\article.css" />
     <Content Include="Content\css\bootstrap-select.min.css" />
@@ -366,6 +371,7 @@
     <Content Include="Areas\Admin\Views\ProductStock\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductStock\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductStock\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DataTrasfer\Index.cshtml" />
     <None Include="CodeTemplates\AddView\CSHTML\Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Create.cshtml</LastGenOutput>
