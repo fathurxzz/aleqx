@@ -124,7 +124,8 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                     IsTopSale = model.IsTopSale,
                     OldPrice = model.OldPrice,
                     Price = model.Price,
-                    SearchCriteriaAttributes = ""
+                    SearchCriteriaAttributes = "",
+                    ExternalId = model.ExternalId
                 };
 
                 product.Description = model.Description == null ? "" : HttpUtility.HtmlDecode(model.Description);
@@ -206,7 +207,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
 
 
                 product.Name = SiteHelper.UpdatePageWebName(model.Name);
-                TryUpdateModel(product, new[] { "Title", "SeoDescription", "SeoKeywords", "SeoText", "IsActive", "IsDiscount", "IsNew", "IsTopSale" });
+                TryUpdateModel(product, new[] { "Title", "SeoDescription", "SeoKeywords", "SeoText", "IsActive", "IsDiscount", "IsNew", "IsTopSale", "ExternalId" });
                 int categoryId = int.Parse(form["categoryId"]);
                 product.Price = decimal.Parse(form["Price"]);
                 product.OldPrice = decimal.Parse(form["OldPrice"]);
