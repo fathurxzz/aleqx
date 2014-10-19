@@ -6,7 +6,7 @@
     min-width: 1195px;
     position: relative;
     margin: 0 auto;
-    z-index: 100;
+    z-index: 10001;
 }
 
 #header-inner

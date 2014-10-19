@@ -1,6 +1,14 @@
-#menu-panel, #menu-panel-main-page {
+#menu-panel {
     height: 75px;
     position: relative;
+}
+
+#menu-panel-main-page {
+    height: 75px;
+    position: relative;
+    margin-top: -472px;
+    /*position: absolute;*/
+    z-index: 1000;
 }
 
 #menu-panel {

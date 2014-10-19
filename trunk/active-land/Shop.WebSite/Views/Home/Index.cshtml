@@ -12,10 +12,28 @@
 }
 
 
+@section scripts
+{
+
+}
+
 <div id="main-page-banner">
-    <div id="menu-panel-main-page">
+    <div class="slider">
+        <ul class="bxsliderProducts" id="mainImages">
+            <li>
+                <img src="/Content/bg/main-01.jpg" alt="" /></li>
+            <li>
+                <img src="/Content/bg/main-02.jpg" alt="" /></li>
+            <li>
+                <img src="/Content/bg/main-03.jpg" alt="" /></li>
+            <li>
+                <img src="/Content/bg/main-04.jpg" alt="" /></li>
+        </ul>
+    </div>
+    
+     <div id="menu-panel-main-page">
         @Html.Partial("LanguageSwitcher")
-        @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new{id=""}, new { id = "logo" }).ToString().Replace("[LINK]", ""))
+        @Html.Raw(Html.ActionLink("[LINK]", "Index", "Home", new { id = "" }, new { id = "logo" }).ToString().Replace("[LINK]", ""))
         @Html.Partial("MainMenu", new MainMenuModel { Categories = Model.Categories, Contents = Model.Contents })
     </div>
 </div>
