@@ -37,7 +37,7 @@ namespace Leo.Areas.Admin.Controllers
                     Product = product,
                     SortOrder = model.SortOrder,
                     Text = model.Text,
-                    //Title = model.Title
+                    Title = model.Title
                 };
 
                 product.ProductTextBlocks.Add(cache);
@@ -77,7 +77,7 @@ namespace Leo.Areas.Admin.Controllers
                 var cache = _context.ProductTextBlocks.FirstOrDefault(p => p.Id == model.Id);
                 if (cache != null)
                 {
-                    TryUpdateModel(cache, new[] { "SortOrder", /*"Title",*/ "Text" });
+                    TryUpdateModel(cache, new[] { "SortOrder", "Title", "Text" });
 
                     var lang = _context.Languages.FirstOrDefault(p => p.Id == model.CurrentLang);
                     if (lang != null)

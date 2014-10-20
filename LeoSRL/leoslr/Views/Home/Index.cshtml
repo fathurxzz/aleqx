@@ -210,10 +210,15 @@
             
             @foreach (var textBlock in Model.Product.ProductTextBlocks)
             {
-                <div>
-                    @Html.Raw(textBlock.Text)
+                <div class="text-box-title">
+                    @textBlock.Title
                 </div>
-
+                if (!string.IsNullOrEmpty(textBlock.Text))
+                {
+                    <div class="text-box-text">
+                        @Html.Raw(textBlock.Text)
+                    </div>
+                }
                 if (textBlock.ProductTextBlockFiles.Any())
                 {
                     
