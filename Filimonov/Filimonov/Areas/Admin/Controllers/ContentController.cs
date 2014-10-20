@@ -29,7 +29,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 using (var context  = new SiteContainer())
                 {
                     var content = new Content();
-                    TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords" });
+                    TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords","SortOrder" });
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
                     context.AddToContent(content);
                     context.SaveChanges();
@@ -65,7 +65,7 @@ namespace Filimonov.Areas.Admin.Controllers
                 using (var context = new SiteContainer())
                 {
                     var content = context.Content.First(c => c.Id == id);
-                    TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords" });
+                    TryUpdateModel(content, new[] { "Title", "SeoDescription", "SeoKeywords","SortOrder" });
                     content.Text = HttpUtility.HtmlDecode(form["Text"]);
                     context.SaveChanges();
                     return RedirectToAction("Index", "Home", new { area = "" });
