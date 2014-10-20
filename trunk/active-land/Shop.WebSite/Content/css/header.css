@@ -105,6 +105,24 @@
     padding-top: 7px;
 }
 
+#phone-panel span.skype {
+    height: 23px;
+    background: url("../img/skype.png") no-repeat;
+    background-position: 0 3px;
+    padding-left: 27px;
+    margin-left: 10px;
+    
+}
+
+#phone-panel span.skype a {
+    color: inherit;
+    font-weight: normal;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 400;
+}
+
+
+
 #header .socials
 {
     height: 26px;

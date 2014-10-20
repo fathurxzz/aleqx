@@ -31,7 +31,7 @@ namespace Shop.WebSite.Models
         {
             Title = "Active Land";
             Categories = repository.GetCategories();
-            SpecialOffers = GetSpecialOffers(repository, langId, 8);
+            SpecialOffers = GetSpecialOffers(repository, langId, int.Parse(SiteSettings.GetShopSetting( "SpecialOffersQuantity")));
             Contents = repository.GetContents();
             Content = contentName != null ? repository.GetContent(contentName) : repository.GetContent();
 
@@ -40,7 +40,7 @@ namespace Shop.WebSite.Models
                 Articles = GetAllArticles(repository, langId);
             }
 
-            LastArticles = GetLastArticles(repository, langId, 2);
+            LastArticles = GetLastArticles(repository, langId, int.Parse(SiteSettings.GetShopSetting( "ArticlesQuantity")));
             QuickAdvices = repository.GetQuickAdvices(true);
         }
 

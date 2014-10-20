@@ -41,7 +41,7 @@ namespace Shop.WebSite.Areas.Admin.Controllers
                 .OrderBy(p => p.CategoryId).ThenBy(p => p.Title).AsQueryable();
 
             int productsCount = orderedProducts.Count();
-            orderedProducts = ApplyPaging(orderedProducts, page, int.Parse(WebSession.ShopSettings.First(ss => ss.Key == "AdminProductsPageSize").Value));
+            orderedProducts = ApplyPaging(orderedProducts, page, int.Parse(SiteSettings.GetShopSetting("AdminProductsPageSize")));
             var products = orderedProducts.ToList();
             foreach (var product in products)
             {

@@ -7,6 +7,7 @@ using Shop.Api.Repositories;
 using Shop.DataAccess;
 using Shop.DataAccess.EntityFramework;
 using Shop.DataAccess.Repositories;
+using Shop.WebSite.Helpers;
 using Shop.WebSite.Helpers.Graphics;
 
 namespace Shop.WebSite
@@ -40,8 +41,24 @@ namespace Shop.WebSite
                                   //{"designerAdminPreview",new ThumbnailPicture{ PictureSize = new PictureSize {Width = 100,Height = 100}, CacheFolder = "designerAdminPreview", ScaleMode = ScaleMode.Crop}},
                                   //{"portfolioPreview",new ThumbnailPicture{ PictureSize = new PictureSize {Width = 213,Height = 213}, CacheFolder = "portfolioPreview", ScaleMode = ScaleMode.Crop}}
                               };
+
         }
 
+        public static string GetShopSetting(string key)
+        {
+            if (WebSession.ShopSettings == null || WebSession.ShopSettings.FirstOrDefault(ss => ss.Key == key) == null)
+            {
+                IShopStore store = new ShopStore();
+                IShopRepository repository = new ShopRepository(store);
+                WebSession.ShopSettings = repository.GetShopSettings().ToList();
+            }
+
+            var setting = WebSession.ShopSettings.FirstOrDefault(ss => ss.Key == key);
+            if (setting != null)
+                return setting.Value;
+
+            throw new Exception("Can't find site settings  " + key +" key");
+        }
 
         public static ThumbnailPicture GetThumbnail(string cacheFolder)
         {
@@ -52,7 +69,7 @@ namespace Shop.WebSite
 
         public static string Version
         {
-            get { return "0.0.15"; }
+            get { return "0.0.16"; }
         }
 
         public static string MailTo

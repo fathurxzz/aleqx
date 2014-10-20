@@ -174,7 +174,7 @@ namespace Shop.WebSite.Models
 
             products = Products.OrderBy(p => p.Title).ThenBy(p => p.Price).AsQueryable();
 
-            products = ApplyPaging(products, page, int.Parse(WebSession.ShopSettings.First(ss => ss.Key == "ProductsPageSize").Value));
+            products = ApplyPaging(products, page, int.Parse(SiteSettings.GetShopSetting("ProductsPageSize")));
 
             Products = products.ToList();
             foreach (var product in Products)
