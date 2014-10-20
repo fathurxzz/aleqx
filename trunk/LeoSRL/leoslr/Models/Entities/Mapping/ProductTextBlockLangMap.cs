@@ -14,9 +14,9 @@ namespace Leo.Models.Mapping
             this.HasKey(t => t.Id);
 
             // Properties
-            this.Property(t => t.Text)
-                .IsRequired()
-                .HasMaxLength(1073741823);
+            //this.Property(t => t.Text)
+                //.IsRequired()
+                //.HasMaxLength(1073741823);
 
             // Table & Column Mappings
             this.ToTable("ProductTextBlockLang", "gbua_Leo");
