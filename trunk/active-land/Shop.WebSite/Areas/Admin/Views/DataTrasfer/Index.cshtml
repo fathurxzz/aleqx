@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Shop.DataAccess.Entities.Category>
 
 @{
     ViewBag.Title = "Index";
@@ -10,4 +10,18 @@
     @Html.Partial("Menu", "Export")
 }
 
-@Html.ActionLink("export to file","Export","DataTrasfer")
+@{
+    var list = Model.Select(category => new SelectListItem {Selected = false, Text = category.Title, Value = category.Name}).ToList();
+}
+
+
+
+
+
+@using (Html.BeginForm("Export", "DataTrasfer", FormMethod.Get))
+{
+    <div>
+        @Html.DropDownList("categoryName", (IEnumerable<SelectListItem>)list)
+        <input type="submit" value="Экспорт"/>
+    </div>
+}
