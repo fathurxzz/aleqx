@@ -32,6 +32,7 @@ namespace Leo.Controllers
             ViewBag.Category = category;
             ViewBag.SubCategory = subcategory;
             ViewBag.IsHomePAge = subcategory == null?"1":"";
+            ViewBag.RandomImageSource = model.RandomImageSource;
 
             this.SetSeoContent(model);
             return View(model);
