@@ -26,9 +26,11 @@
             if (!('specialContent' in settings)) {
                 @Html.Raw(Model.SpecialContentJson)
             }
+
             if (!('ranomBackground' in settings)) {
                 @Html.Raw(Model.RandomImageFromProductImages)
             }
+
             settings.language = '@ViewBag.Language';
             settings.category = '@ViewBag.Category';
             settings.subcategory = '@ViewBag.SubCategory';
@@ -53,9 +55,9 @@
 
         $(function() {
             
-            $.scrollingParallax('/Content/Images/@ViewBag.RandomImageSource', {
+          @*  $.scrollingParallax('/Content/Images/@ViewBag.RandomImageSource', {
                 staticSpeed: .2
-            });
+            });*@
         })
 
         
@@ -365,7 +367,7 @@
 
 @section Footer
 {
-    <div class="footer">
+    <div class="footer" id="footer">
         <div class="copy">&copy; 2014 LEO SRL. Все права защищены</div>
         <div class="em">
             Сайт создан в<br>

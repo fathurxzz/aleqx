@@ -42,8 +42,12 @@ $(function () {
         if ('randomImageFromProductImages' in LEO.settings) {
             //console.log(LEO.settings.randomImageFromProductImages);
             var randombg = 'url(/content/images/' + LEO.settings.randomImageFromProductImages + ')';
-            $("#bg-layer").css('background-image', randombg);
-            $("#bg-layer").css('opacity', '1');
+            //$("#bg-layer").css('background-image', randombg);
+            //$("#bg-layer").css('opacity', '1');
+
+            $.scrollingParallax('/Content/Images/' + LEO.settings.randomImageFromProductImages, {
+                staticSpeed: .2
+            });
         }
 
 
@@ -62,9 +66,7 @@ $(function () {
                         if (i == LEO.settings.specialContent.items.length) {
                             i = 0;
                         }
-                        //console.log(i);
                         var item = LEO.settings.specialContent.items[i];
-                        //console.log(item);
                         var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
                         var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
                         i++;
@@ -72,6 +74,7 @@ $(function () {
                         $("#title").html(item.title);
                         $("#text").html(item.text);
                         $("#contentFrame").css("background-image", contentbg);
+                        $("#footer").css("margin-top", "1000px");
                     }
                 });
             };
@@ -84,6 +87,7 @@ $(function () {
                     //console.log(i);
                     var item = LEO.settings.specialContent.items[i];
                     //console.log(item);
+                    $("#footer").css("margin-top", "1000px");
                     var pagebg = 'url(' + LEO.settings.specialContent.imagePath + item.pageImageSource + ')';
                     var contentbg = 'url(' + LEO.settings.specialContent.imagePath + item.contentImageSource + ')';
                     i++;
