@@ -224,6 +224,7 @@
     <Content Include="Ionic.Zip.dll" />
     <Content Include="Models\Library.edmx.sql" />
     <Content Include="Models\Site.edmx.sql" />
+    <Content Include="music.html" />
     <Content Include="query.txt" />
     <Content Include="Scripts\Catalogue.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -242,6 +243,7 @@
     <Content Include="Scripts\PageScripts.js" />
     <Content Include="Scripts\Presentation.js" />
     <Content Include="Scripts\Survey.js" />
+    <Content Include="Scripts\swfobject.js" />
     <Content Include="setcookie.aspx" />
     <Content Include="soon.gif" />
     <Content Include="soon.htm" />
@@ -372,6 +374,7 @@
     <Content Include="Views\Shared\FeedbackForm.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
     <None Include="Properties\PublishProfiles\prod.pubxml" />
+    <Content Include="Views\Home\Music.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SiteExtensions\SiteExtensions.csproj">
